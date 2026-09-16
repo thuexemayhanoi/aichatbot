@@ -13,8 +13,12 @@ import { extractContactChannels } from './entities/contact-channel.js';
  * here, so the analyzer stays pure and testable without a DOM or network.
  *
  * Pipeline: normalize -> tokenize -> synonyms -> entities -> intent.
+ *
+ * `language` (default 'vi') is echoed in every Analysis object so a future
+ * language router (v42) can route on it without touching this module.
+ * One analyzer instance serves one language; routing composes instances.
  */
-export function createAnalyzer({ business, pricing, faq, intents, threshold } = {}) {
+export function createAnalyzer({ business, pricing, faq, intents, threshold, language = 'vi' } = {}) {
   const synonymMap = createSynonymMap(faq?.synonyms);
   const vehicleMatcher = createVehicleMatcher(pricing);
   const locationMatcher = createLocationMatcher(business);
@@ -32,6 +36,6 @@ export function createAnalyzer({ business, pricing, faq, intents, threshold } = 
     const entities = { vehicles, durations, totalDays, displacements, locations, contactChannels };
     const intent = intentMatcher.match(tokens, entities, threshold);
 
-    return { raw: text, normalized, tokens, intent, entities };
+    return { raw: text, normalized, tokens, intent, entities, language };
   };
 }

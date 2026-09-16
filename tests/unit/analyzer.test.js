@@ -29,3 +29,9 @@ test('accented and unaccented questions analyze identically', () => {
   assert.equal(a.intent.id, b.intent.id);
   assert.equal(a.intent.id, 'deposit_query');
 });
+
+test('analysis carries the configured language for future routing', () => {
+  assert.equal(analyze('thuê xe').language, 'vi');
+  const analyzeEn = createAnalyzer({ business, pricing, faq, language: 'en' });
+  assert.equal(analyzeEn('hello').language, 'en');
+});
