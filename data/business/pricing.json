@@ -1,0 +1,134 @@
+{
+  "$schema": "motoai/pricing@1",
+  "currency": "VND",
+  "currency_symbol": "đ",
+  "disclaimer": "Đây là giá ước tính theo bảng giá tham khảo. Giá thực tế, tình trạng xe, tiền đặt cọc và chi phí giao nhận xe cần được xác nhận trực tiếp với Nguyễn Tú trước khi đặt xe.",
+  "rental_types": [
+    { "id": "day", "name": "Theo ngày", "days": 1 },
+    { "id": "week", "name": "Theo tuần", "days": 7 },
+    { "id": "month", "name": "Theo tháng", "days": 30 }
+  ],
+  "category_aliases": {
+    "Xe tay ga": ["xe ga"],
+    "Xe 50cc": ["50cc"],
+    "Xe máy điện": ["xe điện"]
+  },
+  "vehicles": [
+    {
+      "id": "honda-wave",
+      "name": "Honda Wave",
+      "category": "Xe số",
+      "aliases": ["Wave", "Honda Wave"],
+      "description": "Xe côn truyền thống, dễ điều khiển",
+      "rates": {
+        "day": { "min": 150000, "max": 150000 },
+        "week": { "min": null, "max": null },
+        "month": { "min": null, "max": null }
+      },
+      "deposit": { "min": null, "max": null },
+      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "popular": true,
+      "order": 1
+    },
+    {
+      "id": "honda-vision",
+      "name": "Honda Vision",
+      "category": "Xe tay ga",
+      "aliases": ["Vision", "Honda Vision"],
+      "description": "Xe ga hiện đại, thoải mái",
+      "rates": {
+        "day": { "min": 200000, "max": 200000 },
+        "week": { "min": 800000, "max": 1000000 },
+        "month": { "min": 1800000, "max": 2000000 }
+      },
+      "deposit": { "min": null, "max": null },
+      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "popular": true,
+      "order": 2
+    },
+    {
+      "id": "honda-airblade",
+      "name": "Honda Air Blade",
+      "category": "Xe tay ga",
+      "aliases": ["Air Blade", "Airblade", "Honda Air Blade", "Honda Airblade"],
+      "description": "Xe ga hiện đại, mạnh mẽ",
+      "rates": {
+        "day": { "min": 200000, "max": 200000 },
+        "week": { "min": 800000, "max": 800000 },
+        "month": { "min": 1400000, "max": 1400000 }
+      },
+      "deposit": { "min": null, "max": null },
+      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "popular": true,
+      "order": 3
+    },
+    {
+      "id": "honda-click",
+      "name": "Honda Click / Yamaha Mio",
+      "category": "Xe tay ga",
+      "aliases": ["Click", "Honda Click", "Mio", "Yamaha Mio"],
+      "description": "Xe ga giá rẻ, tiết kiệm",
+      "rates": {
+        "day": { "min": 150000, "max": 150000 },
+        "week": { "min": 600000, "max": 700000 },
+        "month": { "min": 1000000, "max": 1200000 }
+      },
+      "deposit": { "min": null, "max": null },
+      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "popular": true,
+      "order": 4
+    },
+    {
+      "id": "xe-50cc",
+      "name": "Xe 50cc",
+      "category": "Xe 50cc",
+      "aliases": ["Xe 50cc", "50cc"],
+      "matches_as_category": true,
+      "description": "Xe 50cc nhẹ, dễ điều khiển, phù hợp quãng đường ngắn trong nội thành.",
+      "rates": {
+        "day": { "min": null, "max": null },
+        "week": { "min": null, "max": null },
+        "month": { "min": null, "max": null }
+      },
+      "deposit": { "min": null, "max": null },
+      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "popular": false,
+      "order": 5,
+      "note": "Liên hệ Nguyễn Tú để kiểm tra giá hiện tại"
+    },
+    {
+      "id": "electric-bike",
+      "name": "Xe máy điện",
+      "category": "Xe máy điện",
+      "aliases": ["Xe máy điện", "Xe điện"],
+      "description": "Xe thân thiện môi trường, không phát thải",
+      "rates": {
+        "day": { "min": null, "max": null },
+        "week": { "min": null, "max": null },
+        "month": { "min": null, "max": null }
+      },
+      "deposit": { "min": null, "max": null },
+      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "popular": true,
+      "order": 6,
+      "note": "Liên hệ Nguyễn Tú để kiểm tra giá hiện tại"
+    },
+    {
+      "id": "electric-scooter",
+      "name": "Xe đạp điện",
+      "category": "Xe đạp điện",
+      "aliases": ["Xe đạp điện"],
+      "description": "Nhẹ nhàng, phù hợp cho khoảng cách ngắn",
+      "rates": {
+        "day": { "min": null, "max": null },
+        "week": { "min": null, "max": null },
+        "month": { "min": null, "max": null }
+      },
+      "deposit": { "min": null, "max": null },
+      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "popular": false,
+      "order": 7,
+      "note": "Liên hệ Nguyễn Tú để kiểm tra giá hiện tại"
+    }
+  ]
+}

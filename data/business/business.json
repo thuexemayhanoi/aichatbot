@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/business@1",
+  "brand": "Nguyễn Tú",
+  "display_name": "Thuê Xe Máy Hà Nội Nguyễn Tú",
+  "url": "https://thuexemaynguyentu.com/",
+  "address": {
+    "street": "112 Nguyễn Văn Cừ",
+    "district": "Bồ Đề",
+    "city": "Long Biên",
+    "region": "Hà Nội",
+    "country": "Việt Nam",
+    "full": "112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội, Việt Nam"
+  },
+  "contact": {
+    "phone": "0942467674",
+    "phone_display": "0942 467 674",
+    "phone_uri": "tel:+84942467674",
+    "zalo": "https://zalo.me/0942467674",
+    "whatsapp": "https://wa.me/84942467674",
+    "email": "nguyentuantu8x@gmail.com",
+    "maps": "https://maps.app.goo.gl/rQBfa43FA2WNnuSy9?g_st=ic"
+  },
+  "hours": {
+    "open": "09:00",
+    "close": "21:00",
+    "openHour": 9,
+    "closeHour": 21,
+    "display": "09:00 - 21:00",
+    "timeZone": "Asia/Ho_Chi_Minh"
+  },
+  "policies": {
+    "deposit": {
+      "min": 2000000,
+      "max": 5000000,
+      "currency": "VND",
+      "note": "Tiền đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe. Mức cọc chính xác được xác nhận khi đặt xe."
+    },
+    "insurance": {
+      "provided": false,
+      "note": "Không cung cấp bảo hiểm. Người thuê cần tự chuẩn bị bảo hiểm xe máy của riêng mình."
+    },
+    "delivery": {
+      "available": true,
+      "fees": null,
+      "note": "Có giao xe trong giờ hoạt động. Không giao xe ngoài giờ hoạt động (09:00 - 21:00). Thời gian và chi phí giao nhận phải được xác nhận trước khi đặt xe."
+    },
+    "rescue": null,
+    "promotions": null
+  },
+  "service_areas": [
+    "Long Biên",
+    "Bồ Đề",
+    "Gia Lâm",
+    "Hoàn Kiếm",
+    "Phố Cổ",
+    "Ba Đình",
+    "Tây Hồ",
+    "Nội thành Hà Nội"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "motoai",
+  "version": "41.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MotoAI - local-first Vietnamese motorbike rental chatbot for GitHub Pages",
+  "scripts": {
+    "test": "node --test"
+  }
+}
