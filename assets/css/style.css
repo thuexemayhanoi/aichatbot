@@ -1,0 +1,240 @@
+/* MotoAI chat UI — scoped under .motoai-app to avoid host CSS conflicts
+   (relevant when the same page embeds other widgets). Mobile-first. */
+
+:root {
+  --motoai-bg: #f5f7fa;
+  --motoai-panel: #ffffff;
+  --motoai-ink: #1c2733;
+  --motoai-ink-soft: #5a6b7b;
+  --motoai-accent: #c8102e;
+  --motoai-accent-ink: #ffffff;
+  --motoai-bubble-user: #c8102e;
+  --motoai-bubble-user-ink: #ffffff;
+  --motoai-bubble-bot: #eef2f7;
+  --motoai-border: #dde4ec;
+  --motoai-radius: 14px;
+}
+
+html[data-motoai-theme="dark"] {
+  --motoai-bg: #14181d;
+  --motoai-panel: #1d232a;
+  --motoai-ink: #e8edf3;
+  --motoai-ink-soft: #9fadbd;
+  --motoai-bubble-bot: #272f38;
+  --motoai-border: #303a45;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--motoai-bg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.motoai-app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--motoai-panel);
+  color: var(--motoai-ink);
+  padding:
+    calc(env(safe-area-inset-top, 0px) + 10px)
+    calc(env(safe-area-inset-right, 0px) + 12px)
+    calc(env(safe-area-inset-bottom, 0px) + 10px)
+    calc(env(safe-area-inset-left, 0px) + 12px);
+  gap: 8px;
+}
+
+.motoai-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid var(--motoai-border);
+  padding-bottom: 8px;
+}
+
+.motoai-title {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.2px;
+}
+
+.motoai-subtitle {
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+  color: var(--motoai-ink-soft);
+}
+
+.motoai-status {
+  font-size: 0.72rem;
+  color: var(--motoai-ink-soft);
+  white-space: nowrap;
+}
+
+.motoai-messages {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.motoai-msg {
+  max-width: 86%;
+  padding: 8px 12px;
+  border-radius: var(--motoai-radius);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.motoai-msg-user {
+  align-self: flex-end;
+  background: var(--motoai-bubble-user);
+  color: var(--motoai-bubble-user-ink);
+  border-bottom-right-radius: 4px;
+}
+
+.motoai-msg-bot {
+  align-self: flex-start;
+  background: var(--motoai-bubble-bot);
+  border-bottom-left-radius: 4px;
+}
+
+.motoai-msg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.motoai-msg-actions a {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--motoai-accent);
+  color: var(--motoai-accent-ink);
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.motoai-quick {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 2px 0 6px;
+  scrollbar-width: none;
+}
+
+.motoai-quick::-webkit-scrollbar { display: none; }
+
+.motoai-chip {
+  flex: 0 0 auto;
+  border: 1px solid var(--motoai-border);
+  background: transparent;
+  color: var(--motoai-ink);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.motoai-ai-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.motoai-ai-toggle {
+  align-self: flex-start;
+  border: 1px solid var(--motoai-border);
+  background: var(--motoai-bubble-bot);
+  color: var(--motoai-ink);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.motoai-ai-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--motoai-ink-soft);
+}
+
+.motoai-ai-progress {
+  width: 100px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--motoai-bubble-bot);
+  overflow: hidden;
+}
+
+.motoai-ai-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--motoai-accent);
+  transition: width 0.2s ease;
+}
+
+.motoai-ai-off {
+  border: none;
+  background: none;
+  color: var(--motoai-ink-soft);
+  text-decoration: underline;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.motoai-composer {
+  display: flex;
+  gap: 8px;
+}
+
+.motoai-input {
+  flex: 1;
+  border: 1px solid var(--motoai-border);
+  border-radius: var(--motoai-radius);
+  background: var(--motoai-panel);
+  color: var(--motoai-ink);
+  padding: 11px 14px;
+  font-size: 1rem; /* >=16px so iOS Safari does not zoom on focus */
+}
+
+.motoai-input:focus { outline: 2px solid var(--motoai-accent); outline-offset: 1px; }
+
+.motoai-send {
+  border: none;
+  border-radius: var(--motoai-radius);
+  background: var(--motoai-accent);
+  color: var(--motoai-accent-ink);
+  padding: 0 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.motoai-disclosure {
+  margin: 0;
+  font-size: 0.68rem;
+  color: var(--motoai-ink-soft);
+  text-align: center;
+}
+
+/* Embed iframe mode: fill the frame, no page chrome. */
+body[data-motoai-embed="1"] .motoai-app {
+  max-width: none;
+  height: 100%;
+}
