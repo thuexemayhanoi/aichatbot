@@ -39,13 +39,10 @@ src/context/             # Session, history, slots (context memory), agenda
 src/app/                 # Wiring dùng chung cho direct mode + embed iframe
 src/storage, src/utils
 assets/                  # UI trực tiếp (HTML/CSS/JS module, không framework)
-embed.js                 # Embed widget v1.1.0 (iframe isolation, data-open-delay)
-manifest.webmanifest     # PWA manifest (scope /aichatbot/)
-service-worker.js        # PWA offline shell (versioned caches, không precache model)
-integrations/            # WordPress plugin (loader mỏng) + Capacitor mobile wrapper foundation
-tests/                   # 447 test (node --test): unit, integration, golden + multi-turn + distribution
-docs/                    # LOCAL-AI.md, EMBED.md, ARCHITECTURE.md, COMPATIBILITY.md, WORKFLOW.md, TESTING.md, UI-UX.md, WORDPRESS.md, PWA.md, MOBILE.md, DISTRIBUTION.md
-docs/matrix/             # Master Matrix (276 tasks, BOT-0001..BOT-0276) + test matrix
+embed.js                 # Embed widget (iframe isolation, không phụ thuộc)
+tests/                   # 406 test (node --test): unit, integration, golden + multi-turn
+docs/                    # LOCAL-AI.md, EMBED.md, ARCHITECTURE.md, COMPATIBILITY.md, WORKFLOW.md, TESTING.md, UI-UX.md
+docs/matrix/             # Master Matrix (257 tasks, BOT-0001..BOT-0257) + test matrix
 docs/state/active-work.json  # checkpoint/lock cho các scheduled run
 reports/                 # evidence report theo từng run
 tools/gen-matrix.mjs     # tái tạo Master Matrix (idempotent)
@@ -70,31 +67,18 @@ LLM **không bao giờ** được phép bịa giá, chính sách, địa chỉ, 
 ## Chạy test
 
 ```bash
-npm test        # node --test — 447 tests
+npm test        # node --test — 406 tests
 ```
 
 Golden conversation regression nằm ở `tests/integration/golden.test.js`, kỳ vọng đọc trực tiếp từ `data/business/*.json` (không hard-code).
 
-CI chạy toàn bộ suite trên mỗi push/PR tới `main`, kèm secret-scan và bundle regression guard. Quy trình scheduled run: xem `docs/WORKFLOW.md` (RESUME > FIX > VERIFY > IMPROVE > NEW FEATURE). Danh sách 276 task và trạng thái: `docs/matrix/chatbot-master-matrix.csv`.
+CI chạy toàn bộ suite trên mỗi push/PR tới `main`, kèm secret-scan và bundle regression guard. Quy trình scheduled run: xem `docs/WORKFLOW.md` (RESUME > FIX > VERIFY > IMPROVE > NEW FEATURE). Danh sách 257 task và trạng thái: `docs/matrix/chatbot-master-matrix.csv`.
 
 ## Cấu hình
 
 Direct link hỗ trợ query params: `?lang=vi|en&theme=auto|light|dark&source=<label>&embed=1`.
 
 Embed: `data-lang`, `data-theme`, `data-position`, `data-title`, `data-source`, `data-open` — xem `docs/EMBED.md`.
-
-## Phân phối (Distribution)
-
-MotoAI có thể chạy dưới 6 hình thức, tất cả dùng **một engine canonical duy nhất** (không fork business logic):
-
-1. **Direct web app** — <https://thuexemayhanoi.github.io/aichatbot/>
-2. **Embed widget** — một thẻ `<script>` (docs/EMBED.md)
-3. **WordPress plugin** — loader mỏng `integrations/wordpress/`, ZIP `dist/motoai-agent.zip` (docs/WORDPRESS.md)
-4. **PWA / Add to Home Screen** — manifest + service worker, offline shell (docs/PWA.md)
-5. **Android wrapper** — nền Capacitor (docs/MOBILE.md)
-6. **iOS wrapper** — nền Capacitor (docs/MOBILE.md)
-
-Không kênh nào cần API key, backend hay inference từ xa. Chi tiết chiến lược versioning/build: docs/DISTRIBUTION.md.
 
 ## Local AI — model được chọn động (v43.1)
 
@@ -107,3 +91,77 @@ MotoAI yêu cầu: KHÔNG backend, KHÔNG API key, KHÔNG paid inference API. M�
 ## Trình duyệt
 
 Chatbot cơ bản chạy trên mọi trình duyệt hiện đại (kể cả không có WebGPU). Local AI cần WebGPU — xem `docs/COMPATIBILITY.md`.
+
+---
+
+# v47 — ULTRA BLOG + NATIONAL APP SEO FOUNDATION (2026-09-26)
+
+Từ v47, repo này không chỉ là chatbot: nó là **(1) sản phẩm web chat-first, (2) landing page SEO quốc gia cho intent app/ứng dụng thuê xe máy & xe điện, (3) nền tảng blog 2.000 bài, (4) nguồn tri thức tùy chọn cho Agent, (5) sản phẩm embed/mobile-ready.** Agent cũ KHÔNG bị thay thế — toàn bộ kiến trúc trả lời cũ giữ nguyên, blog là tier MỚI thấp nhất.
+
+## AI PHẢI ĐỌC TRƯỚC KHI LÀM VIỆC
+
+1. File này (README) — toàn bộ.
+2. `docs/SEO-OWNERSHIP.md` — quyền từ khóa quốc gia + an toàn cross-repo.
+3. `docs/BLOG.md` + `docs/BLOG-FACTORY.md` + `docs/ARTICLE-RULES.md` + `docs/KNOWLEDGE-RETRIEVAL.md`.
+4. `data/blog/content-matrix.csv` + `reports/blog-factory-run.md` + `docs/state/` (lock/transaction nếu có → `resume` ngay).
+
+## Kiến trúc trả lời (mở rộng v47)
+
+```
+Google/User → Homepage/Blog → Search/Agent → Context Memory → Intent/Entity
+→ Rules → Hybrid Retrieval (business) → Blog Knowledge (tùy chọn, tier thấp nhất)
+→ Recommendation/Calculator → Local Agent phrasing (opt-in) → Fact Guard → Answer/CTA
+```
+
+Blog KHÔNG BAO GIỜ override giá/địa chỉ/điện thoại/giờ/cọc/chính sách đã xác minh trong `data/business/`. Blog retriever (`src/search/blog-knowledge.js`) khước từ mọi intent dữ liệu kinh doanh và chỉ chạy khi engine đã khước từ.
+
+## Danh mục blog (6, mỗi bài đúng 1 danh mục)
+
+| ID | Hub | Tên | Kế hoạch |
+|----|-----|-----|----------|
+| APP | `/blog/app/` | App & Ứng dụng | 350 |
+| RENT | `/blog/thue-xe/` | Thuê xe máy | 400 |
+| EV | `/blog/xe-dien/` | Xe điện / xe máy điện | 300 |
+| GUIDE | `/blog/huong-dan/` | Hướng dẫn / thủ tục | 300 |
+| SAFE | `/blog/an-toan/` | An toàn / pháp lý | 250 |
+| LOCAL | `/blog/dia-phuong/` | Địa phương / du lịch | 400 |
+
+## Ma trận 2.000 bài
+
+`data/blog/content-matrix.csv` — 2.000 dòng, 40 lô × 50, sinh bởi `node tools/gen-blog-matrix.mjs` (idempotent). Trạng thái `PLANNED`. KHÔNG mass-write trong run thường; chỉ qua `tools/blog-factory.mjs` theo scheduled run procedure trong `docs/BLOG-FACTORY.md`. Hiện có 2 bài pilot PUBLISHED (fixture, `notes=pilot/fixture`).
+
+## Công cụ
+
+```bash
+npm test                                   # toàn bộ test (unit + integration + blog)
+node tools/gen-blog-matrix.mjs             # tái tạo ma trận (deterministic)
+node tools/build-blog.mjs                  # dựng blog + indexes + sitemap
+node tools/blog-factory.mjs validate       # QA ma trận
+node tools/blog-factory.mjs publish BA-xxxx# publish 1 bài (transaction)
+node tools/blog-factory.mjs resume         # phục hồi transaction đứt quãng
+```
+
+## Homepage (v47)
+
+- H1: “Ứng dụng thuê xe máy & xe điện” (intent quốc gia, không nhắm commercial intent của repo khác).
+- Menu ☰ drawer thay icon chổi: Agent, Blog/Cẩm nang, Thủ tục, Giá thuê, Xe điện, Địa chỉ, Zalo, Gọi, Bản đồ, Xóa hội thoại. Link liên hệ resolve từ `business.json` lúc render.
+- Quick bar 12 action giữ nguyên MỘT hàng cuộn ngang.
+- SEO: canonical, OG/Twitter, schema `WebApplication` + `Organization` + `FAQPage`; KHÔNG giới thiệu là app native trên store.
+- Embed iframe: KHÔNG hero, KHÔNG menu — widget tối giản như cũ.
+
+## Hiệu năng
+
+Homepage không tải: metadata 2.000 bài, full blog index, model embedding, model WebLLM khi mở trang. Knowledge index chỉ fetch sau lượt chat đầu tiên (direct mode). Blog search index chỉ fetch khi gõ truy vấn đầu tiên.
+
+## Kiểm thử
+
+`tests/unit/blog-foundation.test.js` + `tests/unit/blog-knowledge.test.js` phủ: 2.000 dòng/40×50/phân bố, id/slug/path duy nhất, hub tồn tại, sitemap không chứa bài chưa publish, search/knowledge index chỉ chứa bài PUBLISHED, legal gate cho SAFE, doorway guard cho LOCAL, ownership từ khóa, business facts override blog. CI thêm bundle guard (xem `.github/workflows/ci.yml`).
+
+## Lệnh scheduled sản xuất nội dung (không tự chạy)
+
+Khi được yêu cầu rõ ràng, run theo lô:
+
+```
+Đọc README → docs/BLOG-FACTORY.md (procedure) → lock → viết 50 bài 1 lô
+→ QA từng bài → publish transaction từng bài → validate + npm test → unlock → report
+```

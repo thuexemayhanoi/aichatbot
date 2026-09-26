@@ -25,8 +25,10 @@ const css = readFileSync(join(ROOT, 'assets/css/style.css'), 'utf8');
 const embedJs = readFileSync(join(ROOT, 'embed.js'), 'utf8');
 
 // --- 5. Header label ---
-test('visible header title is "Hỗ trợ Agent" (MotoAI stays internal)', () => {
-  assert.match(html, /<h1 class="motoai-title">Hỗ trợ Agent<\/h1>/);
+test('visible chat header title is "Hỗ trợ Agent" (MotoAI stays internal)', () => {
+  assert.match(html, /<h2 class="motoai-title">Hỗ trợ Agent<\/h2>/);
+  // v47: the app-intent H1 lives in the hero above the chat card.
+  assert.match(html, /<h1 class="motoai-hero-title">[^<]*thuê xe máy/i);
 });
 
 // --- 6. Header subtitle / address ---

@@ -5,6 +5,7 @@ import { createEngine } from '../core/engine.js';
 import { createLocalStore } from '../storage/local-store.js';
 import { createConfig } from '../config/defaults.js';
 import { createHybridRetriever } from '../search/hybrid-retriever.js';
+import { createBlogRetriever } from '../search/blog-knowledge.js';
 import { createLocalLlm } from '../ai/local-llm.js';
 import { guardAnswer } from '../ai/fact-guard.js';
 import { planTurn } from '../core/planner.js';
@@ -60,6 +61,18 @@ export function createMotoApp({
     retrieve: async (query, limit) => search.retrieve(query, limit)
   });
 
+  // Blog knowledge tier (OPTIONAL, lowest retrieval priority): injected
+  // lazily by the UI after load (data/blog/knowledge-index.json). Rules and
+  // business-data retrieval always win; the blog tier only runs when the
+  // engine would otherwise return the honest fallback.
+  let blogRetriever = null;
+  /** Attach published blog chunks as a retrieval source (never on startup). */
+  function attachBlogIndex(chunks) {
+    if (!Array.isArray(chunks) || chunks.length === 0) return false;
+    blogRetriever = createBlogRetriever({ chunks });
+    return blogRetriever.size > 0;
+  }
+
   let semanticWarmed = false;
   /** Lazy semantic warm-up: called after the first user turn, never on load. */
   function warmSemantic() {
@@ -105,6 +118,23 @@ export function createMotoApp({
       return result;
     }
     if (result.source !== 'fallback') return result;
+
+    // Blog knowledge tier: BELOW rules and business data, ABOVE the LLM.
+    if (blogRetriever) {
+      let blog = null;
+      try {
+        blog = blogRetriever.retriever(text, { analysis: result.analysis, slots: result.slots });
+      } catch { /* malformed blog tier must never break a turn */ }
+      if (blog) {
+        return {
+          ...result,
+          reply: { ...result.reply, text: blog.answer, meta: { ...result.reply.meta, source: 'blog-knowledge', confidence: blog.confidence } },
+          confidence: blog.confidence,
+          source: 'blog-knowledge'
+        };
+      }
+    }
+
     if (localLlm.state.status !== 'ready') return result;
     const ai = await localLlm.answer(text);
     if (!ai) return result;
@@ -121,5 +151,5 @@ export function createMotoApp({
     engine.resetContext();
   }
 
-  return { engine, search, localLlm, send, resetContext, data };
+  return { engine, search, localLlm, send, resetContext, attachBlogIndex, data };
 }

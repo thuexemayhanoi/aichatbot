@@ -459,19 +459,128 @@ body[data-motoai-embed="1"] .motoai-app {
 .motoai-reset:hover { background: var(--color-surface-elevated); color: var(--color-text); }
 .motoai-reset:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
-/* --- PWA install pill (v45) — shown only when the browser offers install --- */
-.motoai-install {
+/* ---------- v47: hero + menu drawer ---------- */
+.motoai-shell {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top, 0px) + var(--space-3)) var(--space-2) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Hero: national app-intent headline, hidden in embed mode. */
+.motoai-hero {
+  padding: var(--space-2) var(--space-2) 0;
+}
+.motoai-hero-title {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+}
+@media (max-width: 380px) { .motoai-hero-title { font-size: 1.22rem; } }
+.motoai-hero-copy {
+  margin: 6px 0 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+.motoai-hero-links { margin-top: var(--space-2); }
+.motoai-hero-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 7px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 550;
+}
+.motoai-hero-links a:hover { border-color: var(--color-primary); }
+
+/* The chat app keeps its own shell below the hero. */
+.motoai-app { height: auto; min-height: 62dvh; }
+
+/* Menu button replaces the old broom icon in the header. */
+.motoai-menu {
   flex: none;
+  min-width: 44px;
   min-height: 44px;
-  padding: 0 12px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  background: var(--color-primary);
-  color: #fff;
-  font-size: 0.82rem;
-  font-weight: 600;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1.15rem;
+  line-height: 1;
   cursor: pointer;
 }
-.motoai-install:hover { filter: brightness(1.08); }
-.motoai-install:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-.motoai-ios-hint { color: var(--color-text-muted); }
+.motoai-menu:hover { background: var(--color-surface-elevated); }
+.motoai-menu:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+/* Drawer */
+.motoai-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 20, 27, 0.45);
+  z-index: 40;
+}
+.motoai-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  width: min(84vw, 300px);
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  z-index: 41;
+  padding: calc(env(safe-area-inset-top, 0px) + var(--space-3)) var(--space-3) var(--space-4);
+  overflow-y: auto;
+}
+.motoai-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+.motoai-drawer-close {
+  min-width: 40px;
+  min-height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.motoai-drawer-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.motoai-drawer-list a,
+.motoai-drawer-list button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text);
+  font-size: 0.92rem;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.motoai-drawer-list a:hover,
+.motoai-drawer-list button:hover { background: var(--color-primary-soft); color: var(--color-primary); }
+.motoai-drawer-list a[hidden], .motoai-drawer-list button[hidden] { display: none; }
+
+/* Embed iframe mode: no hero, no menu — the widget stays minimal. */
+body[data-motoai-embed="1"] .motoai-shell { max-width: none; padding: 0; }
+body[data-motoai-embed="1"] .motoai-hero,
+body[data-motoai-embed="1"] .motoai-drawer,
+body[data-motoai-embed="1"] .motoai-drawer-backdrop,
+body[data-motoai-embed="1"] .motoai-menu { display: none; }
+body[data-motoai-embed="1"] .motoai-app { max-width: none; height: 100%; min-height: 0; }

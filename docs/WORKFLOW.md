@@ -55,3 +55,13 @@ test results, fact gates, live checks, next BOT-xxx).
 Re-running this task must not: duplicate Matrix rows (generator is single-source),
 duplicate tests, duplicate widgets (embed guard), overwrite business data,
 or reset DONE/VERIFIED tasks.
+
+## Scheduled run procedure cho BLOG factory (v47)
+
+1. FETCH: README.md → docs/BLOG.md → docs/BLOG-FACTORY.md → data/blog/content-matrix.csv → reports/blog-factory-run.md → docs/state/blog-factory.lock + .transaction.json (nếu có).
+2. Nếu marker transaction tồn tại: `node tools/blog-factory.mjs resume` TRƯỚC khi làm gì khác.
+3. `node tools/blog-factory.mjs lock`.
+4. Chọn lô `PLANNED` nhỏ nhất (batch_id), viết từng bài qua QA theo docs/ARTICLE-RULES.md, publish từng bài qua transaction.
+5. `node tools/blog-factory.mjs validate` + `npm test` (phải xanh).
+6. `unlock`, ghi report vào reports/blog-factory-run.md.
+7. KHÔNG phụ thuộc bộ nhớ chat/session — mọi state nằm trong file repo.

@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MotoAI — Trợ lý thuê xe máy Hà Nội</title>
-  <meta name="description" content="MotoAI — trợ lý tự động trả lời giá thuê xe máy, đặt cọc, giao xe, giờ mở cửa của Thuê Xe Máy Hà Nội Nguyễn Tú.">
+  <title>MotoAI — Ứng dụng thuê xe máy & xe điện: hỏi giá, chọn xe, tính chi phí</title>
+  <meta name="description" content="Ứng dụng web thuê xe máy và xe điện: Agent trả lời giá thuê, chọn xe, tính chi phí theo ngày/tuần/tháng, thủ tục nhận xe và địa chỉ của Thuê Xe Máy Hà Nội Nguyễn Tú.">
   <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/">
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#4f46e5">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MotoAI — Thuê Xe Máy Hà Nội Nguyễn Tú">
+  <meta property="og:title" content="MotoAI — Ứng dụng thuê xe máy & xe điện">
+  <meta property="og:description" content="Hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe máy bằng Agent — chạy ngay trên trình duyệt.">
+  <meta property="og:url" content="https://thuexemayhanoi.github.io/aichatbot/">
+  <meta property="og:locale" content="vi_VN">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MotoAI — Ứng dụng thuê xe máy & xe điện">
+  <meta name="twitter:description" content="Hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe máy bằng Agent — chạy ngay trên trình duyệt.">
   <script>
     // Apply theme before first paint to avoid a flash.
     (function () {
@@ -22,59 +28,140 @@
   </script>
 </head>
 <body>
-  <main class="motoai-app" id="motoai-app">
-    <header class="motoai-header">
-      <div class="motoai-header-text">
-        <div class="motoai-brand-mark" aria-hidden="true">🏍️</div>
-        <div>
-          <h1 class="motoai-title">Hỗ trợ Agent</h1>
-          <p class="motoai-subtitle" id="motoai-subtitle">Thuê xe máy Nguyễn Tú — 112 Nguyễn Văn Cừ, Long Biên, Hà Nội</p>
+  <main class="motoai-shell">
+    <!-- Hero: national app-intent headline. Hidden in embed iframe mode. -->
+    <section class="motoai-hero" id="motoai-hero">
+      <h1 class="motoai-hero-title">Ứng dụng thuê xe máy &amp; xe điện</h1>
+      <p class="motoai-hero-copy">
+        Hỏi Agent về giá thuê, chọn loại xe phù hợp, tính chi phí theo ngày – tuần – tháng,
+        xem thủ tục nhận xe, tìm địa chỉ và đọc cẩm nang thuê xe. MotoAI là app thuê xe máy, app thuê xe điện
+        và ứng dụng thuê xe máy điện dạng web — trả lời ngay trên trình duyệt, không cần cài đặt.
+      </p>
+      <nav class="motoai-hero-links" aria-label="Liên kết nhanh">
+        <a href="/aichatbot/blog/">📚 Cẩm nang thuê xe</a>
+      </nav>
+    </section>
+
+    <section class="motoai-app" id="motoai-app">
+      <header class="motoai-header">
+        <div class="motoai-header-text">
+          <div class="motoai-brand-mark" aria-hidden="true">🏍️</div>
+          <div>
+            <h2 class="motoai-title">Hỗ trợ Agent</h2>
+            <p class="motoai-subtitle" id="motoai-subtitle">Thuê xe máy Nguyễn Tú — 112 Nguyễn Văn Cừ, Long Biên, Hà Nội</p>
+          </div>
+        </div>
+        <span class="motoai-status" id="motoai-status" role="status" aria-live="polite"></span>
+        <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰</button>
+      </header>
+
+      <section class="motoai-messages" id="motoai-messages" aria-live="polite" aria-label="Tin nhắn"></section>
+
+      <div class="motoai-quick" id="motoai-quick" role="group" aria-label="Câu hỏi nhanh"></div>
+
+      <div class="motoai-ai-panel" id="motoai-ai-panel">
+        <div class="motoai-ai-explain" id="motoai-ai-explain" hidden>
+          <strong>Agent (tùy chọn, nâng cao)</strong>
+          <ul>
+            <li>Agent chạy trên thiết bị của bạn và không cần API key — không gửi hội thoại đi đâu.</li>
+            <li>Model AI chỉ tải sau khi bạn bấm xác nhận bên dưới và có thể nặng vài trăm MB.</li>
+            <li>Dùng bộ nhớ và dung lượng của thiết bị; cần trình duyệt hỗ trợ WebGPU.</li>
+            <li>Luôn tắt được; trợ lý cơ bản hoạt động bình thường mà không cần nó.</li>
+          </ul>
+          <button type="button" class="motoai-ai-confirm" id="motoai-ai-confirm">Tải model và bật Agent</button>
+          <button type="button" class="motoai-ai-cancel" id="motoai-ai-cancel">Để sau</button>
+        </div>
+        <div class="motoai-ai-status" id="motoai-ai-status" hidden>
+          <div class="motoai-ai-progress"><div class="motoai-ai-progress-bar" id="motoai-ai-progress-bar"></div></div>
+          <span id="motoai-ai-status-text"></span>
+          <button type="button" class="motoai-ai-off" id="motoai-ai-off" hidden>Tắt</button>
         </div>
       </div>
-      <span class="motoai-status" id="motoai-status" role="status" aria-live="polite"></span>
-      <button type="button" class="motoai-reset" id="motoai-reset" title="Xoá hội thoại và ngữ cảnh đã nhớ" aria-label="Xoá hội thoại và ngữ cảnh">🧹</button>
-      <button type="button" class="motoai-install" id="motoai-install" hidden title="Cài MotoAI như một ứng dụng" aria-label="Cài Agent">Cài Agent</button>
-    </header>
 
-    <section class="motoai-messages" id="motoai-messages" aria-live="polite" aria-label="Tin nhắn"></section>
+      <form class="motoai-composer" id="motoai-composer">
+        <textarea class="motoai-input" id="motoai-input" name="message" rows="1"
+               placeholder="Nhập câu hỏi của bạn..." autocomplete="off"
+               enterkeyhint="send" maxlength="2000" aria-label="Câu hỏi"></textarea>
+        <button class="motoai-send" type="submit" id="motoai-send" aria-label="Gửi câu hỏi">Gửi</button>
+      </form>
 
-    <div class="motoai-quick" id="motoai-quick" role="group" aria-label="Câu hỏi nhanh"></div>
-
-    <div class="motoai-ai-panel" id="motoai-ai-panel">
-      <button type="button" class="motoai-ai-toggle" id="motoai-ai-toggle" hidden>
-        ⚡ Agent
-      </button>
-      <div class="motoai-ai-explain" id="motoai-ai-explain" hidden>
-        <strong>Agent (tùy chọn, nâng cao)</strong>
-        <ul>
-          <li>Agent chạy trên thiết bị của bạn và không cần API key — không gửi hội thoại đi đâu.</li>
-          <li>Model AI chỉ tải sau khi bạn bấm xác nhận bên dưới và có thể nặng vài trăm MB.</li>
-          <li>Dùng bộ nhớ và dung lượng của thiết bị; cần trình duyệt hỗ trợ WebGPU.</li>
-          <li>Luôn tắt được; trợ lý cơ bản hoạt động bình thường mà không cần nó.</li>
-        </ul>
-        <button type="button" class="motoai-ai-confirm" id="motoai-ai-confirm">Tải model và bật Agent</button>
-        <button type="button" class="motoai-ai-cancel" id="motoai-ai-cancel">Để sau</button>
-      </div>
-      <div class="motoai-ai-status" id="motoai-ai-status" hidden>
-        <div class="motoai-ai-progress"><div class="motoai-ai-progress-bar" id="motoai-ai-progress-bar"></div></div>
-        <span id="motoai-ai-status-text"></span>
-        <button type="button" class="motoai-ai-off" id="motoai-ai-off" hidden>Tắt</button>
-      </div>
-    </div>
-
-    <form class="motoai-composer" id="motoai-composer">
-      <textarea class="motoai-input" id="motoai-input" name="message" rows="1"
-             placeholder="Nhập câu hỏi của bạn..." autocomplete="off"
-             enterkeyhint="send" maxlength="2000" aria-label="Câu hỏi"></textarea>
-      <button class="motoai-send" type="submit" id="motoai-send" aria-label="Gửi câu hỏi">Gửi</button>
-    </form>
-
-    <p class="motoai-disclosure" id="motoai-disclosure">
-      Trợ lý trả lời tự động dựa trên dữ liệu có sẵn. Không gửi dữ liệu đi đâu — Agent (nếu bật) chạy ngay trên máy bạn.
-    </p>
+      <p class="motoai-disclosure" id="motoai-disclosure">
+        Trợ lý trả lời tự động dựa trên dữ liệu có sẵn. Không gửi dữ liệu đi đâu — Agent (nếu bật) chạy ngay trên máy bạn.
+      </p>
+    </section>
   </main>
 
+  <!-- Menu drawer (hidden in embed mode): navigation + contact + clear action. -->
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><button type="button" id="motoai-menu-agent">⚡ Agent</button></li>
+      <li><a href="/aichatbot/blog/">📚 Blog / Cẩm nang</a></li>
+      <li><a href="/aichatbot/blog/huong-dan/">📄 Thủ tục</a></li>
+      <li><a href="/aichatbot/blog/thue-xe/">💰 Giá thuê</a></li>
+      <li><a href="/aichatbot/blog/xe-dien/">⚡ Xe điện</a></li>
+      <li><button type="button" id="motoai-menu-address">📍 Địa chỉ</button></li>
+      <li><a id="motoai-menu-zalo" href="#" rel="noopener noreferrer" target="_blank">💬 Zalo</a></li>
+      <li><a id="motoai-menu-call" href="#">📞 Gọi</a></li>
+      <li><a id="motoai-menu-map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản đồ</a></li>
+      <li><button type="button" id="motoai-reset">🧹 Xóa hội thoại</button></li>
+    </ul>
+  </nav>
+
   <noscript>MotoAI cần JavaScript để hoạt động. Vui lòng gọi 0942 467 674 để được hỗ trợ.</noscript>
+
+  <script type="application/ld+json" id="motoai-schema">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MotoAI — Ứng dụng thuê xe máy & xe điện",
+    "url": "https://thuexemayhanoi.github.io/aichatbot/",
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "Web browser",
+    "inLanguage": "vi",
+    "description": "Ứng dụng web hỏi đáp thuê xe máy và xe điện: giá thuê, chọn xe, tính chi phí, thủ tục và địa chỉ của Thuê Xe Máy Hà Nội Nguyễn Tú.",
+    "offers": { "@type": "Offer", "price": "150000", "priceCurrency": "VND", "description": "Giá thuê xe máy tham khảo theo ngày, bắt đầu từ 150.000đ." },
+    "author": {
+      "@type": "Organization",
+      "name": "Thuê Xe Máy Hà Nội Nguyễn Tú",
+      "url": "https://thuexemayhanoi.github.io/aichatbot/",
+      "telephone": "+84942467674",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "112 Nguyễn Văn Cừ",
+        "addressLocality": "Long Biên, Hà Nội",
+        "addressCountry": "VN"
+      }
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Ứng dụng thuê xe máy MotoAI là gì?",
+        "acceptedAnswer": { "@type": "Answer", "text": "MotoAI là ứng dụng web hỏi đáp thuê xe máy và xe điện: hỏi giá theo loại xe và thời gian, được gợi ý chọn xe, tính chi phí thuê, xem thủ tục nhận xe và tìm địa chỉ — chạy ngay trên trình duyệt, không cần cài đặt, không cần tài khoản." }
+      },
+      {
+        "@type": "Question",
+        "name": "Thuê xe máy cần thủ tục gì?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Bạn cần giấy tờ tùy thân (CCCD hoặc hộ chiếu), bằng lái phù hợp với dung tích xe và tiền đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe. Mức cọc chính xác được xác nhận khi đặt xe." }
+      },
+      {
+        "@type": "Question",
+        "name": "Cửa hàng mở cửa lúc mấy giờ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Cửa hàng ở 112 Nguyễn Văn Cừ, Long Biên, Hà Nội, hoạt động 09:00 - 21:00 hằng ngày." }
+      }
+    ]
+  }
+  </script>
 
   <script type="module" src="assets/js/main.js"></script>
 </body>

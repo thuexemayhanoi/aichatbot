@@ -8,7 +8,6 @@ import { createMotoApp } from '../../src/app/moto-app.js';
 import { parseQueryConfig } from '../../src/app/query-config.js';
 import { detectCapabilities } from '../../src/ai/capability.js';
 import { DEFAULT_CHIPS, nextSuggestions, resolveChipHref } from '../../src/app/suggestions.js';
-import { initPwa } from './pwa.js';
 import { ENABLE_STORAGE_KEY } from './ai-settings.js';
 
 const DATA_FILES = [
@@ -37,17 +36,14 @@ function setStatus(el, text, tone = '') {
 
 async function init() {
   const config = parseQueryConfig(location.search);
-  // Mobile wrapper (Capacitor) detection: label the distribution channel
-  // when the app runs inside the Android/iOS shell (spec §21).
-  if (!config.source && window.Capacitor?.isNativePlatform?.()) {
-    const platform = window.Capacitor.getPlatform?.(); // 'android' | 'ios'
-    if (platform === 'android' || platform === 'ios') config.source = platform;
-  }
-  initPwa(config); // direct/PWA mode only; no-op in embed mode
   document.documentElement.lang = config.lang;
   if (config.embed) {
     document.body.dataset.motoaiEmbed = '1';
     document.querySelector('.motoai-disclosure')?.remove();
+  } else {
+    // Menu drawer (direct mode only). Contact hrefs come from verified
+    // business.json — never hard-coded in this UI logic.
+    wireMenu();
   }
   document.title = config.lang === 'en' ? 'MotoAI — Hanoi motorbike rental assistant' : document.title;
 
@@ -58,7 +54,15 @@ async function init() {
     input: document.getElementById('motoai-input'),
     send: document.getElementById('motoai-send'),
     status: document.getElementById('motoai-status'),
-    aiToggle: document.getElementById('motoai-ai-toggle'),
+    aiToggle: document.getElementById('motoai-menu-agent'),
+    menuBtn: document.getElementById('motoai-menu-btn'),
+    drawer: document.getElementById('motoai-drawer'),
+    drawerBackdrop: document.getElementById('motoai-drawer-backdrop'),
+    drawerClose: document.getElementById('motoai-drawer-close'),
+    menuAddress: document.getElementById('motoai-menu-address'),
+    menuZalo: document.getElementById('motoai-menu-zalo'),
+    menuCall: document.getElementById('motoai-menu-call'),
+    menuMap: document.getElementById('motoai-menu-map'),
     aiExplain: document.getElementById('motoai-ai-explain'),
     aiConfirm: document.getElementById('motoai-ai-confirm'),
     aiCancel: document.getElementById('motoai-ai-cancel'),
@@ -69,6 +73,39 @@ async function init() {
     reset: document.getElementById('motoai-reset')
   };
   const DEBUG = new URLSearchParams(location.search).get('debug') === '1';
+
+  // Menu drawer: contact hrefs are resolved from verified business.json
+  // once it finishes loading (fillMenuLinks below).
+  let drawerOpen = false;
+  function setDrawer(open) {
+    drawerOpen = open;
+    elements.drawer.hidden = !open;
+    elements.drawerBackdrop.hidden = !open;
+    elements.menuBtn?.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function wireMenu() {
+    elements.menuBtn?.addEventListener('click', () => setDrawer(!drawerOpen));
+    elements.drawerClose?.addEventListener('click', () => setDrawer(false));
+    elements.drawerBackdrop?.addEventListener('click', () => setDrawer(false));
+    elements.drawer?.addEventListener('click', (event) => {
+      if (event.target.closest('a, button')) setDrawer(false); // any action closes
+    });
+    elements.menuAddress?.addEventListener('click', () => {
+      elements.input.value = 'Địa chỉ ở đâu?';
+      autoGrow();
+      submit();
+    });
+  }
+  function fillMenuLinks(businessData) {
+    const setHref = (el, href) => {
+      if (!el || !href) return;
+      el.href = href;
+      el.hidden = false;
+    };
+    setHref(elements.menuZalo, resolveChipHref({ ref: 'zalo' }, businessData));
+    setHref(elements.menuCall, resolveChipHref({ ref: 'phone_uri' }, businessData));
+    setHref(elements.menuMap, resolveChipHref({ ref: 'maps' }, businessData));
+  }
 
   // True when the reader is already near the bottom; only then auto-scroll,
   // so reading older messages is never interrupted by a scroll jump.
@@ -123,6 +160,7 @@ async function init() {
   try {
     const data = await loadBusinessData();
     businessData = data.business;
+    fillMenuLinks(businessData);
     const store = createLocalStore({ namespace: `motoai-${config.embed ? 'embed' : 'direct'}-${config.source ?? 'root'}` });
     app = createMotoApp({
       data,
@@ -176,6 +214,18 @@ async function init() {
   }
   renderChips(DEFAULT_CHIPS);
 
+  // Blog knowledge tier: fetched lazily after the first turn (never on load)
+  // so the initial payload stays minimal. Optional: failures are silent.
+  let blogWarmed = false;
+  function warmBlogKnowledge() {
+    if (blogWarmed || config.embed) return;
+    blogWarmed = true;
+    fetch('data/blog/knowledge-index.json', { cache: 'no-cache' })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((index) => { if (index?.chunks?.length) app.attachBlogIndex(index.chunks); })
+      .catch(() => { /* blog retrieval is optional; silent on failure */ });
+  }
+
   let busy = false;
   function setBusy(value) {
     busy = value;
@@ -208,6 +258,7 @@ async function init() {
         slots: result.slots ?? {}
       }));
       setStatus(elements.status, '');
+      warmBlogKnowledge();
     } catch (error) {
       hideTyping();
       renderMessage(elements.messages, {
@@ -248,6 +299,10 @@ async function init() {
 
   // Inside an embed iframe, Escape must close the widget on the host page.
   document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !config.embed && !elements.drawer.hidden) {
+      setDrawer(false);
+      return;
+    }
     if (config.embed && event.key === 'Escape' && window.parent !== window) {
       window.parent.postMessage('motoai:close', '*');
     }

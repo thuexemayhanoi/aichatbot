@@ -57,13 +57,20 @@ Rules vẫn là authority tuyệt đối cho giá/cọc/giờ/địa chỉ/liên
 - Semantic layer fail/không tải được → hybrid retriever về BM25-only, nguồn trả lời vẫn trace được.
 - Context stale không bao giờ đè input mới: "Không, Air Blade cơ" thay vehicle đã nhớ (multi-turn test F).
 - Model embedding chỉ warm-up SAU lượt chat đầu; không tải model nào lúc load trang.
-## v45 — Distribution layer
 
-Một engine canonical (`src/`, `data/business/`, `assets/`, `embed.js`) phục vụ 6 kênh; không kênh nào chứa engine riêng:
+## v47 — Blog + Agent knowledge tier (2026-09-26)
 
-- **Direct/PWA**: `index.html` + `manifest.webmanifest` + `service-worker.js` (versioned caches `motoai-shell-v45`/`motoai-data-v45`; cross-origin passthrough — không precache model).
-- **Embed**: `embed.js` v1.1.0 (thêm `data-open-delay`, tương thích ngược đầy đủ).
-- **WordPress**: `integrations/wordpress/motoai-agent/` — loader mỏng in một thẻ script async trỏ embed.js canonical; Settings API + shortcode; ZIP tất định từ `tools/build-wordpress-plugin.mjs`.
-- **Mobile**: `integrations/mobile/` — shell Capacitor bọc web app canonical (copy sang `www/` bằng `tools-sync-web.mjs`); tự gắn `source=android|ios`.
+Pipeline trả lời mới (thứ tự mở rộng, ưu tiên không đổi cho phần cũ):
 
-Bất biến phân phối: SW chỉ đăng ký ngoài embed mode; PHP chỉ loader (không bundle engine); mobile wrapper không fork logic; không kênh nào thêm API key/backend. Test: `tests/unit/{pwa,wordpress-plugin,wordpress-zip,mobile-config}.test.js`.
+```
+Rules → Business data → Blog knowledge (tùy chọn, tier thấp nhất)
+      → Recommendation/Calculator → Local Agent phrasing → Fact Guard → Answer/CTA
+```
+
+- `src/search/blog-knowledge.js` — BM25 retriever trên chunks của bài blog PUBLISHED; khước từ mọi intent dữ liệu kinh doanh (PROTECTED_INTENTS); chỉ được hỏi sau khi engine trả honest fallback.
+- `src/app/moto-app.js` — `attachBlogIndex(chunks)` gắn tier lazy; tier nằm TRÊN honest fallback, DƯỚI LLM fallback.
+- `tools/gen-blog-matrix.mjs` — ma trận nội dung 2.000 bài (40×50), tách biệt ma trận phát triển.
+- `tools/build-blog.mjs` — dựng blog/ 6 hubs + bài, search-index.json, knowledge-index.json, sitemap.xml, robots.txt; resolve `{{ business.* }}` từ business.json.
+- `tools/blog-factory.mjs` — state machine PLANNED→…→PUBLISHED, run lock, transaction marker, resume, report.
+- `assets/js/blog.js` — tìm kiếm blog client-side, mục lục tải theo yêu cầu.
+- Blog UI: `assets/css/blog.css`; homepage hero + menu drawer: `assets/css/style.css` (v47 section).

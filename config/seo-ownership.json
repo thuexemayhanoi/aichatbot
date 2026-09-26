@@ -1,0 +1,37 @@
+{
+  "$schema": "motoai/seo-ownership@1",
+  "repository": "thuexemayhanoi/aichatbot",
+  "primary_identity": "APP / WEB APPLICATION / DIGITAL RENTAL ASSISTANT",
+  "owned_keywords": [
+    "app thuê xe máy",
+    "ứng dụng thuê xe máy",
+    "app thuê xe điện",
+    "ứng dụng thuê xe máy điện",
+    "trợ lý thuê xe máy",
+    "công cụ tính giá thuê xe máy",
+    "digital rental assistant"
+  ],
+  "secondary_keywords": [
+    "ứng dụng thuê xe",
+    "app tìm xe máy thuê",
+    "chọn xe máy phù hợp",
+    "ứng dụng tìm xe máy",
+    "thuê xe máy online",
+    "thuê xe điện online"
+  ],
+  "protected_commercial_intents": [
+    {
+      "keyword": "thuê xe máy Hà Nội",
+      "owner": "other-repository (thuexemayhanoi/shop, thuexemayhanoi/vanchinh)",
+      "rule": "this repository must NOT create a generic homepage or landing page targeting this exact commercial keyword; local articles must add a distinct Agent/app/informational angle",
+      "enforced_by": "tests/unit/seo-ownership.test.js"
+    },
+    {
+      "keyword": "cho thuê xe máy Hà Nội",
+      "owner": "other-repository",
+      "rule": "same as above"
+    }
+  ],
+  "national_scope_note": "National SEO scope = national informational/product search intent ONLY. Business rental availability stays grounded in verified business data (data/business/business.json). Never claim nationwide rental inventory or service.",
+  "pwa_wording_rule": "Never present the web application as an App Store/Google Play native app. Use 'ứng dụng web', 'Agent', 'công cụ trực tuyến'."
+}
