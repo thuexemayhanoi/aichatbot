@@ -79,3 +79,7 @@ test('quick questions cover the core topics', () => {
     assert.ok(ids.includes(expected), `missing quick question: ${expected}`);
   }
 });
+
+test('greeting microcopy (v52): exact customer-facing text', () => {
+  assert.equal(faq.assistant.greeting, 'Xin chào! Mình là trợ lý của Nguyễn Tú. Thuê xe nhanh: tìm Google “Thuê xe máy Nguyễn Tú” để xem bản đồ và chỉ đường 😎');
+});

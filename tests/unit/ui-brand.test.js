@@ -124,7 +124,7 @@ test('visible subtitle contains the verified business address', () => {
   const m = /<p class="motoai-subtitle"[^>]*>([^<]+)<\/p>/.exec(html);
   assert.ok(m, 'subtitle element present');
   assert.ok(m[1].includes(business.address.full), 'subtitle shows business.address.full');
-  assert.equal(m[1], `Thuê xe máy ${business.brand} — ${business.address.full}`);
+  assert.equal(m[1], `Địa chỉ: ${business.address.full}, ${business.address.country}`); // v52 microcopy
 });
 
 test('subtitle and status wrap instead of clipping on small screens', () => {

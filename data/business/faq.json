@@ -2,39 +2,143 @@
   "$schema": "motoai/faq@1",
   "assistant": {
     "name": "MotoAI",
-    "greeting": "Xin chào! Mình là trợ lý của Nguyễn Tú. Mình có thể giúp gì cho bạn?",
+    "greeting": "Xin chào! Mình là trợ lý của Nguyễn Tú. Thuê xe nhanh: tìm Google “Thuê xe máy Nguyễn Tú” để xem bản đồ và chỉ đường 😎",
     "placeholder": "Nhập câu hỏi của bạn...",
     "not_found": "Mình chưa có thông tin chắc chắn về nội dung này. Bạn có thể liên hệ Nguyễn Tú qua Zalo, WhatsApp hoặc điện thoại để xác nhận.",
     "disclosure": "Trợ lý trả lời tự động dựa trên dữ liệu có sẵn trên website. Không sử dụng API AI."
   },
   "quick_questions": [
-    { "id": "pricing", "question": "Bảng giá", "answer": "Bạn có thể xem bảng giá chi tiết trên website hoặc dùng công cụ tính giá ngay bên dưới." },
-    { "id": "calculator", "question": "Tính giá", "answer": "Dùng công cụ Tính giá thuê xe để ước tính chi phí thuê xe." },
-    { "id": "address", "question": "Địa chỉ", "answer": "{{ business.address.full }}" },
-    { "id": "hours", "question": "Giờ mở cửa", "answer": "Chúng tôi hoạt động từ {{ business.hours.display }}. Không giao xe ngoài giờ này." },
-    { "id": "phone", "question": "Số điện thoại", "answer": "Số điện thoại: {{ business.contact.phone_display }}" },
-    { "id": "deposit", "question": "Đặt cọc", "answer": "Tiền đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe. Mức cọc chính xác được xác nhận khi đặt xe." },
-    { "id": "insurance", "question": "Bảo hiểm", "answer": "Không cung cấp bảo hiểm. Người thuê cần tự chuẩn bị bảo hiểm xe máy của riêng mình." },
-    { "id": "zalo", "question": "Zalo", "answer": "Bạn có thể liên hệ Nguyễn Tú qua Zalo." },
-    { "id": "whatsapp", "question": "WhatsApp", "answer": "Bạn có thể liên hệ Nguyễn Tú qua WhatsApp." },
-    { "id": "maps", "question": "Google Maps", "answer": "Xem vị trí của chúng tôi trên Google Maps." },
-    { "id": "honda-wave", "question": "Xe số", "answer": "Xe số bao gồm Honda Wave. Giá thuê từ 150.000đ/ngày." },
-    { "id": "honda-vision", "question": "Xe ga", "answer": "Xe ga bao gồm Honda Vision, Honda Air Blade, Honda Click, Yamaha Mio. Giá thuê từ 150.000đ-200.000đ/ngày." },
-    { "id": "xe-50cc", "question": "Xe 50cc", "answer": "Xe 50cc nhẹ, dễ điều khiển, phù hợp quãng đường ngắn trong nội thành. Giá thuê liên hệ trực tiếp." },
-    { "id": "electric-bike", "question": "Xe điện", "answer": "Xe điện thân thiện môi trường. Vui lòng liên hệ Nguyễn Tú để biết giá." },
-    { "id": "electric-scooter", "question": "Xe đạp điện", "answer": "Xe đạp điện nhẹ nhàng, phù hợp cho khoảng cách gần. Vui lòng liên hệ để biết giá." },
-    { "id": "daily-rental", "question": "Thuê theo ngày", "answer": "Thuê theo ngày linh hoạt cho nhu cầu ngắn hạn. Giá phụ thuộc vào loại xe." },
-    { "id": "weekly-rental", "question": "Thuê theo tuần", "answer": "Thuê theo tuần phù hợp cho chuyến đi dài ngày. Giá thuê theo tuần tùy loại xe và được xác nhận khi liên hệ." },
-    { "id": "monthly-rental", "question": "Thuê theo tháng", "answer": "Thuê theo tháng phù hợp cho thuê dài hạn. Giá thuê theo tháng tùy loại xe và được xác nhận khi liên hệ." }
+    {
+      "id": "pricing",
+      "question": "Bảng giá",
+      "answer": "Bạn có thể xem bảng giá chi tiết trên website hoặc dùng công cụ tính giá ngay bên dưới."
+    },
+    {
+      "id": "calculator",
+      "question": "Tính giá",
+      "answer": "Dùng công cụ Tính giá thuê xe để ước tính chi phí thuê xe."
+    },
+    {
+      "id": "address",
+      "question": "Địa chỉ",
+      "answer": "{{ business.address.full }}"
+    },
+    {
+      "id": "hours",
+      "question": "Giờ mở cửa",
+      "answer": "Chúng tôi hoạt động từ {{ business.hours.display }}. Không giao xe ngoài giờ này."
+    },
+    {
+      "id": "phone",
+      "question": "Số điện thoại",
+      "answer": "Số điện thoại: {{ business.contact.phone_display }}"
+    },
+    {
+      "id": "deposit",
+      "question": "Đặt cọc",
+      "answer": "Tiền đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe. Mức cọc chính xác được xác nhận khi đặt xe."
+    },
+    {
+      "id": "insurance",
+      "question": "Bảo hiểm",
+      "answer": "Không cung cấp bảo hiểm. Người thuê cần tự chuẩn bị bảo hiểm xe máy của riêng mình."
+    },
+    {
+      "id": "zalo",
+      "question": "Zalo",
+      "answer": "Bạn có thể liên hệ Nguyễn Tú qua Zalo."
+    },
+    {
+      "id": "whatsapp",
+      "question": "WhatsApp",
+      "answer": "Bạn có thể liên hệ Nguyễn Tú qua WhatsApp."
+    },
+    {
+      "id": "maps",
+      "question": "Google Maps",
+      "answer": "Xem vị trí của chúng tôi trên Google Maps."
+    },
+    {
+      "id": "honda-wave",
+      "question": "Xe số",
+      "answer": "Xe số bao gồm Honda Wave. Giá thuê từ 150.000đ/ngày."
+    },
+    {
+      "id": "honda-vision",
+      "question": "Xe ga",
+      "answer": "Xe ga bao gồm Honda Vision, Honda Air Blade, Honda Click, Yamaha Mio. Giá thuê từ 150.000đ-200.000đ/ngày."
+    },
+    {
+      "id": "xe-50cc",
+      "question": "Xe 50cc",
+      "answer": "Xe 50cc nhẹ, dễ điều khiển, phù hợp quãng đường ngắn trong nội thành. Giá thuê liên hệ trực tiếp."
+    },
+    {
+      "id": "electric-bike",
+      "question": "Xe điện",
+      "answer": "Xe điện thân thiện môi trường. Vui lòng liên hệ Nguyễn Tú để biết giá."
+    },
+    {
+      "id": "electric-scooter",
+      "question": "Xe đạp điện",
+      "answer": "Xe đạp điện nhẹ nhàng, phù hợp cho khoảng cách gần. Vui lòng liên hệ để biết giá."
+    },
+    {
+      "id": "daily-rental",
+      "question": "Thuê theo ngày",
+      "answer": "Thuê theo ngày linh hoạt cho nhu cầu ngắn hạn. Giá phụ thuộc vào loại xe."
+    },
+    {
+      "id": "weekly-rental",
+      "question": "Thuê theo tuần",
+      "answer": "Thuê theo tuần phù hợp cho chuyến đi dài ngày. Giá thuê theo tuần tùy loại xe và được xác nhận khi liên hệ."
+    },
+    {
+      "id": "monthly-rental",
+      "question": "Thuê theo tháng",
+      "answer": "Thuê theo tháng phù hợp cho thuê dài hạn. Giá thuê theo tháng tùy loại xe và được xác nhận khi liên hệ."
+    }
   ],
   "synonyms": [
-    ["giá", "giá thuê", "chi phí", "phí thuê", "bao nhiêu tiền"],
-    ["xe ga", "xe tay ga"],
-    ["xe máy điện", "xe điện"],
-    ["đặt cọc", "tiền cọc", "cọc"],
-    ["giấy tờ", "chứng minh nhân dân", "hộ chiếu", "bằng lái"],
-    ["giao xe", "giao tận nơi", "giao đến", "ship xe"],
-    ["trả xe", "hoàn xe"],
-    ["bản đồ", "maps"]
+    [
+      "giá",
+      "giá thuê",
+      "chi phí",
+      "phí thuê",
+      "bao nhiêu tiền"
+    ],
+    [
+      "xe ga",
+      "xe tay ga"
+    ],
+    [
+      "xe máy điện",
+      "xe điện"
+    ],
+    [
+      "đặt cọc",
+      "tiền cọc",
+      "cọc"
+    ],
+    [
+      "giấy tờ",
+      "chứng minh nhân dân",
+      "hộ chiếu",
+      "bằng lái"
+    ],
+    [
+      "giao xe",
+      "giao tận nơi",
+      "giao đến",
+      "ship xe"
+    ],
+    [
+      "trả xe",
+      "hoàn xe"
+    ],
+    [
+      "bản đồ",
+      "maps"
+    ]
   ]
 }
