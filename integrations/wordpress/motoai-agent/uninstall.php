@@ -5,4 +5,4 @@
 
 defined('WP_UNINSTALL_PLUGIN') || exit;
 
-delete_option('motoai_agent_settings');
+delete_option( 'motoai_agent_settings' );

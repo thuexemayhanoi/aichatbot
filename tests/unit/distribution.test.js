@@ -76,23 +76,27 @@ test('WordPress plugin loader: thin, canonical URL, guards, no second engine', (
   assert.match(php, /MOTOAI_AGENT_EMBED_URL', 'https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/embed\.js'/);
   assert.match(php, /defined\('ABSPATH'\) \|\| exit/);
   assert.match(php, /static \$printed = false;/); // never inject twice
-  assert.match(php, /add_shortcode\('motoai_agent'/);
+  assert.match(php, /add_shortcode\( 'motoai_agent'/);
   assert.match(php, /wp_footer/);
   assert.equal(/eval\(|base64_decode|system\(|exec\(/.test(php), false);
 });
 
 test('WordPress settings: capability + Settings API + sanitize whitelist', () => {
   const php = read('integrations/wordpress/motoai-agent/includes/class-motoai-settings.php');
-  assert.match(php, /current_user_can\('manage_options'\)/);
+  const main = read('integrations/wordpress/motoai-agent/motoai-agent.php');
+  assert.match(php, /current_user_can\( 'manage_options' \)/);
   assert.match(php, /register_setting/);
-  assert.match(php, /sanitize/);
-  assert.match(php, /absint/);
+  assert.match(php, /settings_fields\( self::GROUP \)/);
+  assert.match(php, /'sanitize_callback' => 'motoai_agent_sanitize_settings'/);
+  assert.match(php, /'show_in_rest'\s*=>\s*false/);
+  // absint lives in the global sanitize whitelist (main plugin file)
+  assert.match(main, /absint/);
 });
 
 test('WordPress uninstall removes only the plugin option', () => {
   const php = read('integrations/wordpress/motoai-agent/uninstall.php');
   assert.match(php, /WP_UNINSTALL_PLUGIN/);
-  assert.match(php, /delete_option\('motoai_agent_settings'\)/);
+  assert.match(php, /delete_option\( 'motoai_agent_settings' \)/);
   assert.equal((php.match(/delete_option/g) ?? []).length, 1);
 });
 
