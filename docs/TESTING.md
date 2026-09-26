@@ -20,6 +20,9 @@ tests/helpers/       # data loaders, engine fixture, storage stubs
 | integration/embed | widget contract: attributes, isolation, duplicate guard, escape/focus | must be green |
 | integration/golden | Golden Conversation regression incl. business-fact gates | must be green, 100% fact accuracy |
 | regression | never-regress locks | must be green |
+| unit/model-selection | model được chọn động, luôn tồn tại trong model_list, empty list → graceful | must be green |
+| unit/privacy | không inference endpoint, không API key, outbound URL chỉ CDN tĩnh | must be green |
+| unit/ui-tokens | token palette tồn tại, không dùng đỏ lỗi làm màu chính, a11y (focus-visible, reduced-motion, 16px input, safe-area) | must be green |
 
 ## Non-negotiable gates
 

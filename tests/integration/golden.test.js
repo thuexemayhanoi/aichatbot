@@ -104,6 +104,7 @@ test('golden: deterministic answers never routed through the LLM', async () => {
   let llmAsked = 0;
   const app = createApp({
     importFn: async () => ({
+      prebuiltAppConfig: { model_list: [{ model_id: 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC', vram_required_MB: 944, low_resource_required: true }] },
       CreateMLCEngine: async () => ({
         chat: { completions: { create: async () => {
           llmAsked += 1;
@@ -124,6 +125,7 @@ test('golden: deterministic answers never routed through the LLM', async () => {
 test('golden: local LLM only serves fallback turns, guarded', async () => {
   const app = createApp({
     importFn: async () => ({
+      prebuiltAppConfig: { model_list: [{ model_id: 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC', vram_required_MB: 944, low_resource_required: true }] },
       CreateMLCEngine: async () => ({
         chat: { completions: { create: async () => ({
           choices: [{ message: { content: `Bạn hãy gọi ${business.contact.phone_display} để được hỗ trợ nhé.` } }]

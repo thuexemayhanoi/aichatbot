@@ -24,7 +24,7 @@ Bước 3 chỉ được chạy khi bước 1 và 2 đều khước từ, và ou
 | `src/core/` | Engine pipeline (analyze → slots → agenda → rules → retriever → fallback), responder (resolve template `{{ business.x }}`, sanitize action href), events. |
 | `src/context/` | Session, history, slots, agenda (multi-turn, clarify-then-answer). |
 | `src/search/` | `bm25.js` (BM25 Okapi thuần, không dependency), `corpus.js` (docs từ business/pricing/faq, keyword song ngữ vi–en), `retriever.js` (adapter cho engine + stopword filter). |
-| `src/ai/` | `capability.js` (WebGPU/deviceMemory/storage detection), `local-llm.js` (WebLLM loader, timeout, progress, decline-safe), `grounding.js` (prompt, validate, fact guard, disclosure). |
+| `src/ai/` | `capability.js` (WebGPU/deviceMemory/storage detection), `model-selection.js` (chọn model động từ `prebuiltAppConfig.model_list` — không hard-code id), `local-llm.js` (WebLLM loader, timeout, progress, decline-safe, lỗi thân thiện), `grounding.js` (prompt, validate, fact guard, disclosure). |
 | `src/app/` | `moto-app.js` (wiring production: engine + search + local LLM), `query-config.js` (parse URL params, build iframe URL). |
 | `assets/` | UI: `index.html`, `assets/css/style.css`, `assets/js/main.js` (chat loop, Local AI panel), `assets/js/ai-settings.js` (storage key dùng chung). |
 | `embed.js` | Embed widget độc lập (classic script + importable trong test). |

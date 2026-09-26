@@ -25,7 +25,22 @@ Ghi chú: số liệu dung lượng/tốc độ là ước lượng công khai c
 - **Generative layer:** WebLLM (Apache-2.0, không backend, không API key, model cache bằng Cache API, chạy trong Web Worker được). Lý do loại khác: Transformers.js/ORT Web phù hợp embeddings hơn là generate; wllama thiếu bản build WASM phổ biến và WebGPU chưa ổn định upstream.
 - **Retrieval layer:** BM25 thuần tự viết (không dependency, ~5 KB, chạy tốt trên điện thoại yếu). Semantic embeddings (Transformers.js) là bước nâng sau, bật bằng flag, không phải mặc định.
 
-Model benchmark ban đầu: **Qwen2.5-0.5B-Instruct-q4f16_1MLC** — nhỏ, multilingual (vi/en), instruct, download ~350–500 MB.
+### Model discovery (v43.1 — sửa lỗi "Cannot find model record in appConfig")
+
+Root cause: v42 hard-code id `Qwen2.5-0.5B-Instruct-q4f16_1MLC` (thiếu dấu `-` trước `MLC`) — id này KHÔNG tồn tại trong `prebuiltAppConfig.model_list` của WebLLM hiện tại, gây lỗi "Cannot find model record in appConfig".
+
+Luồng mới (`src/ai/model-selection.js`), theo đúng thứ tự:
+
+1. Tải module WebLLM (chỉ JS, chưa tải model bytes).
+2. Đọc `webllm.prebuiltAppConfig.model_list` — nguồn sự thật duy nhất.
+3. `selectBestLocalModel()` chọn deterministic theo thứ tự ưu tiên: candidate có trong list (`MODEL_CANDIDATES` chỉ là danh sách ƯA THÍCH, luôn verify) → `low_resource_required` → VRAM thấp nhất → instruct → multilingual (Qwen) → ≤1.5B tham số → vừa RAM thiết bị.
+4. Nếu không có model an toàn nào → AI tại chỗ tắt nhẹ nhàng (không crash, không loading vô hạn), trợ lý cơ bản vẫn trả lời đầy đủ.
+
+Candidate ưa thích hiện tại (không đảm bảo mãi mãi, luôn verify runtime): `Qwen2.5-0.5B-Instruct-q4f16_1-MLC` (VRAM ~945 MB, low-resource, multilingual vi/en), rồi `Qwen3-0.6B`, `Qwen3.5-0.8B`, `Qwen2-0.5B`, `Qwen2.5-1.5B`, `Llama-3.2-1B`. Download lần đầu ~350–500 MB (cache sau đó).
+
+### Lỗi thân thiện
+
+Lỗi kỹ thuật (raw WebLLM message) chỉ vào `console.debug` + `state.error` (diagnostics). UI luôn hiển thị câu tiếng Việt: "AI tại chỗ chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường." Không bao giờ lộ stack/config internals cho người dùng.
 
 ## Cơ chế bảo vệ (không thể bịa giá)
 

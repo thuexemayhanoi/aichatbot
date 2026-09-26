@@ -1,55 +1,71 @@
 import { detectCapabilities } from './capability.js';
 import { buildPrompt, validateLlmOutput, guardFacts, withDisclosure } from './grounding.js';
+import { selectBestLocalModel, MODEL_CANDIDATES } from './model-selection.js';
 
 /**
  * Optional local LLM layer on top of WebLLM (https://github.com/mlc-ai/web-llm).
  *
  * Design constraints:
- *  - NEVER auto-downloads a model. The user must explicitly enable it.
+ *  - NEVER auto-downloads a model. The user must explicitly confirm.
+ *  - The model id is DISCOVERED at runtime from the loaded WebLLM module's
+ *    `prebuiltAppConfig.model_list` (see model-selection.js) — no id is
+ *    assumed to exist, so WebLLM upgrades cannot break Local AI.
  *  - `importFn` is injected so tests can stub the WebLLM module; production
  *    dynamically imports the WebLLM ESM bundle from a CDN only when enabled.
- *  - Every failure path (no WebGPU, import error, model error, timeout,
- *    invalid output) resolves to a decline — the deterministic engine and
- *    fallback always remain available. No blank screens, no endless loading.
+ *  - Every failure path (no WebGPU, import error, no compatible model,
+ *    engine error, timeout, invalid output) resolves to a decline — the
+ *    deterministic engine and fallback always remain available.
+ *  - Technical errors never reach the UI: `state.error` is for the console
+ *    and diagnostics; `state.userMessage` is the friendly Vietnamese line.
  */
 
-export const DEFAULT_MODEL = 'Qwen2.5-0.5B-Instruct-q4f16_1MLC';
 const DEFAULT_IMPORT_URL = 'https://esm.run/@mlc-ai/web-llm';
 const INIT_TIMEOUT_MS = 120_000;
 const GENERATION_TIMEOUT_MS = 45_000;
 const MAX_NEW_TOKENS = 256;
 
+export const FRIENDLY_MESSAGES = Object.freeze({
+  unsupported: 'AI tại chỗ chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.',
+  failed: 'AI tại chỗ chưa khởi động được. Trợ lý cơ bản vẫn hoạt động bình thường.',
+  noModel: 'Không tìm thấy model AI phù hợp trong thư viện hiện tại. Trợ lý cơ bản vẫn hoạt động bình thường.'
+});
+
 /**
  * @param {object} [options]
- * @param {string}    [options.model]      - WebLLM model id.
- * @param {string}    [options.importUrl] - WebLLM ESM module URL.
- * @param {function}  [options.importFn]  - injected dynamic import (tests).
- * @param {object}    [options.env]       - environment for capability detection.
- * @param {object}    [options.data]      - { business, pricing, faq }.
- * @param {function}  [options.retrieve]  - (query, limit) => docs (search layer).
+ * @param {string}    [options.importUrl]  - WebLLM ESM module URL.
+ * @param {function}  [options.importFn]   - injected dynamic import (tests).
+ * @param {object}    [options.env]        - environment for capability detection.
+ * @param {object}    [options.data]        - { business, pricing, faq }.
+ * @param {function}  [options.retrieve]   - (query, limit) => docs (search layer).
  * @param {string}    [options.disclosure] - footer line for AI answers.
+ * @param {Array}     [options.candidates]  - override model preference order (tests).
  */
 export function createLocalLlm(options = {}) {
-  const model = options.model ?? DEFAULT_MODEL;
   const importUrl = options.importUrl ?? DEFAULT_IMPORT_URL;
   const importFn = options.importFn ?? ((url) => import(/* @vite-ignore */ url));
   const env = options.env ?? globalThis;
   const data = options.data ?? {};
   const retrieve = options.retrieve ?? null;
   const disclosure = options.disclosure ?? 'Câu trả lời được tạo bởi AI tại chỗ (thử nghiệm), dựa trên dữ liệu của cửa hàng.';
+  const candidates = options.candidates ?? MODEL_CANDIDATES;
 
   let engine = null;          // WebLLM engine once loaded
   let loadPromise = null;     // in-flight load
+  let selectedModel = null;  // { modelId, record, reason } discovered at runtime
   const state = {
     status: 'idle', // idle -> loading -> ready | failed | unsupported
     progress: 0,
-    error: null,
+    error: null,        // technical detail — console/diagnostics only
+    userMessage: null,  // friendly Vietnamese line for normal UI
+    selectedModelId: null,
     capabilities: detectCapabilities(env)
   };
 
   function setStatus(status, patch = {}) {
     state.status = status;
     Object.assign(state, patch);
+    // Keep technical details out of the default console; debug only.
+    if (state.error) console.debug('[MotoAI local-llm]', state.status, state.error);
   }
 
   /**
@@ -62,17 +78,38 @@ export function createLocalLlm(options = {}) {
     if (loadPromise) return loadPromise;
 
     if (!state.capabilities.canUseLocalLlm) {
-      setStatus('unsupported', { error: state.capabilities.reasons.join('; ') });
+      setStatus('unsupported', {
+        error: state.capabilities.reasons.join('; '),
+        userMessage: FRIENDLY_MESSAGES.unsupported
+      });
       return Promise.resolve(false);
     }
 
     loadPromise = (async () => {
-      setStatus('loading', { progress: 0, error: null });
+      setStatus('loading', { progress: 0, error: null, userMessage: null });
       try {
+        // 1. Load the WebLLM module (JS only — no model bytes yet).
         const mod = await withTimeout(importFn(importUrl), INIT_TIMEOUT_MS, 'import webllm');
         if (!mod?.CreateMLCEngine) throw new Error('CreateMLCEngine missing in WebLLM module');
+
+        // 2. Discover the ACTUAL built-in model list — never assume an id.
+        const modelList = mod?.prebuiltAppConfig?.model_list ?? [];
+        selectedModel = selectBestLocalModel({
+          modelList,
+          capabilities: state.capabilities,
+          deviceMemoryGb: state.capabilities.deviceMemoryGb,
+          candidates
+        });
+        if (!selectedModel) {
+          throw Object.assign(new Error(`no compatible model in model_list (${modelList.length} records)`), {
+            userMessage: FRIENDLY_MESSAGES.noModel
+          });
+        }
+        state.selectedModelId = selectedModel.modelId;
+
+        // 3. Initialize with the verified id (this starts the model download).
         const llm = await withTimeout(
-          mod.CreateMLCEngine(model, {
+          mod.CreateMLCEngine(selectedModel.modelId, {
             initProgressCallback: (report) => {
               const frac = typeof report?.progress === 'number' ? report.progress : null;
               if (frac != null) {
@@ -82,15 +119,18 @@ export function createLocalLlm(options = {}) {
             }
           }),
           INIT_TIMEOUT_MS,
-          'engine init'
+          `engine init ${selectedModel.modelId}`
         );
         engine = llm;
-        setStatus('ready', { progress: 1, error: null });
+        setStatus('ready', { progress: 1, error: null, userMessage: null });
         return true;
       } catch (error) {
         engine = null;
         loadPromise = null;
-        setStatus('failed', { error: error?.message ?? String(error) });
+        setStatus('failed', {
+          error: error?.message ?? String(error),
+          userMessage: typeof error?.userMessage === 'string' ? error.userMessage : FRIENDLY_MESSAGES.failed
+        });
         return false;
       }
     })();
@@ -100,7 +140,7 @@ export function createLocalLlm(options = {}) {
   function unload() {
     engine = null;
     loadPromise = null;
-    setStatus('idle', { progress: 0, error: null });
+    setStatus('idle', { progress: 0, error: null, userMessage: null });
   }
 
   /**
@@ -143,7 +183,8 @@ export function createLocalLlm(options = {}) {
     unload,
     answer,
     state,
-    get modelId() { return model; }
+    get modelId() { return state.selectedModelId; },
+    get selection() { return selectedModel; }
   };
 }
 

@@ -23,10 +23,13 @@
   <main class="motoai-app" id="motoai-app">
     <header class="motoai-header">
       <div class="motoai-header-text">
-        <h1 class="motoai-title">MotoAI</h1>
-        <p class="motoai-subtitle" id="motoai-subtitle">Trợ lý thuê xe máy Hà Nội Nguyễn Tú</p>
+        <div class="motoai-brand-mark" aria-hidden="true">🏍️</div>
+        <div>
+          <h1 class="motoai-title">MotoAI</h1>
+          <p class="motoai-subtitle" id="motoai-subtitle">Trợ lý thuê xe máy Hà Nội Nguyễn Tú</p>
+        </div>
       </div>
-      <span class="motoai-status" id="motoai-status" role="status"></span>
+      <span class="motoai-status" id="motoai-status" role="status" aria-live="polite"></span>
     </header>
 
     <section class="motoai-messages" id="motoai-messages" aria-live="polite" aria-label="Tin nhắn"></section>
@@ -35,8 +38,19 @@
 
     <div class="motoai-ai-panel" id="motoai-ai-panel">
       <button type="button" class="motoai-ai-toggle" id="motoai-ai-toggle" hidden>
-        ⚡ Bật AI tại chỗ (Local AI)
+        ⚡ AI tại chỗ
       </button>
+      <div class="motoai-ai-explain" id="motoai-ai-explain" hidden>
+        <strong>AI tại chỗ (tùy chọn, nâng cao)</strong>
+        <ul>
+          <li>Chạy hoàn toàn trên thiết bị của bạn — không API key, không gửi hội thoại đi đâu.</li>
+          <li>Model AI chỉ tải sau khi bạn bấm xác nhận bên dưới và có thể nặng vài trăm MB.</li>
+          <li>Dùng bộ nhớ và dung lượng của thiết bị; cần trình duyệt hỗ trợ WebGPU.</li>
+          <li>Luôn tắt được; trợ lý cơ bản hoạt động bình thường mà không cần nó.</li>
+        </ul>
+        <button type="button" class="motoai-ai-confirm" id="motoai-ai-confirm">Tải model và bật AI</button>
+        <button type="button" class="motoai-ai-cancel" id="motoai-ai-cancel">Để sau</button>
+      </div>
       <div class="motoai-ai-status" id="motoai-ai-status" hidden>
         <div class="motoai-ai-progress"><div class="motoai-ai-progress-bar" id="motoai-ai-progress-bar"></div></div>
         <span id="motoai-ai-status-text"></span>
@@ -45,10 +59,10 @@
     </div>
 
     <form class="motoai-composer" id="motoai-composer">
-      <input class="motoai-input" id="motoai-input" type="text" name="message"
+      <textarea class="motoai-input" id="motoai-input" name="message" rows="1"
              placeholder="Nhập câu hỏi của bạn..." autocomplete="off"
-             enterkeyhint="send" maxlength="2000" aria-label="Câu hỏi">
-      <button class="motoai-send" type="submit" aria-label="Gửi">Gửi</button>
+             enterkeyhint="send" maxlength="2000" aria-label="Câu hỏi"></textarea>
+      <button class="motoai-send" type="submit" id="motoai-send" aria-label="Gửi câu hỏi">Gửi</button>
     </form>
 
     <p class="motoai-disclosure" id="motoai-disclosure">

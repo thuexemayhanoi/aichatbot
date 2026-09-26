@@ -1,5 +1,11 @@
 # UI/UX — viewport matrix & review checklist
 
+## Design tokens (v43.1 — calm premium palette)
+
+Bảng màu cũ dùng đỏ #c8102e làm màu chính — quá chói/gắt. Từ v43.1 màu chính là **indigo trầm** (`--color-primary: #4f46e5`, dark mode `#7c7cf4`), đỏ CHỈ dành cho lỗi thật (`--color-error: #d2193c`). Toàn bộ UI dùng semantic tokens (`assets/css/style.css`): `--color-bg/surface/surface-elevated/primary/primary-hover/primary-soft/text/text-muted/border/success/warning/error` + scale `--radius-*`, `--space-*`, `--duration-*`, `--shadow-*`.
+
+Ghi chú UX mobile: input 16px+ (không zoom iOS), touch target ≥44px, quick chips `flex-wrap` (không còn bị cắt ngang), composer dính dưới + `100dvh` + safe-area, typing indicator 3 chấm (tôn `prefers-reduced-motion`), autoscroll chỉ khi đang ở gần đáy, Enter gửi / Shift+Enter xuống dòng (textarea auto-grow), gửi bị khóa khi đang xử lý (tránh gửi trùng), Local AI hai bước: giải thích rõ (chạy tại chỗ, không API key, model nặng vài trăm MB, cần WebGPU) → người dùng bấm "Tải model và bật AI" → mới tải.
+
 The deterministic chatbot must be excellent *without* AI; the AI layer must never
 break the basic chat. No screenshots in CI — this is a manual/per-release matrix
 recorded in the run report.

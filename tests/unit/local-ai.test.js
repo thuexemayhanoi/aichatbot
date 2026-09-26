@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { detectCapabilities } from '../../src/ai/capability.js';
-import { createLocalLlm, DEFAULT_MODEL } from '../../src/ai/local-llm.js';
+import { createLocalLlm, FRIENDLY_MESSAGES } from '../../src/ai/local-llm.js';
 import { buildPrompt, validateLlmOutput, guardFacts, withDisclosure } from '../../src/ai/grounding.js';
 import { business, pricing, faq } from '../helpers/load-data.js';
+import { createWebllmImportFn, REALISTIC_MODEL_LIST } from '../helpers/webllm-stub.js';
 
 const DATA = { business, pricing, faq };
 
@@ -35,7 +36,7 @@ test('capability detection: no WebGPU => not allowed, reason recorded', () => {
 });
 
 test('capability detection: low device memory declines LLM', () => {
-  const caps = detectCapabilities(env({ navigator: { gpu: {}, deviceMemory: 1 } }));
+  const caps = detectCapabilities(env({ navigator: { gpu: { requestAdapter() {} }, deviceMemory: 1 } }));
   assert.equal(caps.canUseLocalLlm, false);
   assert.ok(caps.reasons.some((r) => r.includes('deviceMemory')));
 });
@@ -55,7 +56,7 @@ test('local LLM never auto-loads and declines when WebGPU is missing', async () 
   assert.equal(await llm.answer('anything'), null);
 });
 
-test('local LLM model load failure falls back cleanly (no throw)', async () => {
+test('local LLM model load failure falls back cleanly (no throw, friendly message)', async () => {
   const llm = createLocalLlm({
     env: env(),
     data: DATA,
@@ -64,26 +65,75 @@ test('local LLM model load failure falls back cleanly (no throw)', async () => {
   const ok = await llm.load();
   assert.equal(ok, false);
   assert.equal(llm.state.status, 'failed');
-  assert.match(llm.state.error, /network down/);
+  assert.match(llm.state.error, /network down/); // technical detail in state only
+  assert.equal(llm.state.userMessage, FRIENDLY_MESSAGES.failed);
+  assert.match(llm.state.userMessage, /Trợ lý cơ bản vẫn hoạt động bình thường/);
 });
 
-test('local LLM reports progress then becomes ready', async () => {
+test('local LLM reports progress then becomes ready with a DISCOVERED model', async () => {
   const progressCalls = [];
   const llm = createLocalLlm({
     env: env(),
     data: DATA,
-    importFn: async () => ({
-      CreateMLCEngine: async (model, { initProgressCallback }) => {
-        initProgressCallback({ progress: 0.4, text: 'shard 1/2' });
-        initProgressCallback({ progress: 1, text: 'done' });
-        return { chat: { completions: { create: async () => ({ choices: [{ message: { content: 'ok' } }] }) } } };
-      }
-    })
+    importFn: createWebllmImportFn()
   });
+  // Model ids must come from the module's model_list, never assumed.
+  const stub = await createWebllmImportFn()();
+  assert.ok(stub.prebuiltAppConfig.model_list.length > 0);
+
   const ok = await llm.load({ onProgress: (frac, text) => progressCalls.push([frac, text]) });
   assert.equal(ok, true);
   assert.equal(llm.state.status, 'ready');
+  assert.ok(REALISTIC_MODEL_LIST.some((m) => m.model_id === llm.modelId));
   assert.deepEqual(progressCalls[0], [0.4, 'shard 1/2']);
+});
+
+test('empty model_list in the WebLLM module -> graceful friendly fallback', async () => {
+  const llm = createLocalLlm({
+    env: env(),
+    data: DATA,
+    importFn: createWebllmImportFn({ modelList: [] })
+  });
+  const ok = await llm.load();
+  assert.equal(ok, false);
+  assert.equal(llm.state.status, 'failed');
+  assert.equal(llm.state.userMessage, FRIENDLY_MESSAGES.noModel);
+  assert.equal(llm.modelId, null);
+  assert.equal(await llm.answer('hi'), null);
+});
+
+test('engine init failure (e.g. model record missing) -> friendly message, never raw internals', async () => {
+  const llm = createLocalLlm({
+    env: env(),
+    data: DATA,
+    importFn: createWebllmImportFn({ engineError: 'Cannot find model record in appConfig for X' })
+  });
+  const ok = await llm.load();
+  assert.equal(ok, false);
+  // Raw technical text stays in state.error (console/diagnostics only)...
+  assert.match(llm.state.error, /Cannot find model record/);
+  // ...while the UI-facing message is friendly Vietnamese without internals.
+  assert.equal(llm.state.userMessage, FRIENDLY_MESSAGES.failed);
+  assert.doesNotMatch(llm.state.userMessage, /appConfig|model record|record/i);
+  assert.match(llm.state.userMessage, /Trợ lý cơ bản vẫn hoạt động bình thường/);
+});
+
+test('no silent model download: engine is only created inside explicit load()', async () => {
+  let inits = 0;
+  const importFn = createWebllmImportFn();
+  const wrapped = async () => {
+    const mod = await importFn();
+    return {
+      ...mod,
+      CreateMLCEngine: async (...args) => { inits += 1; return mod.CreateMLCEngine(...args); }
+    };
+  };
+  const llm = createLocalLlm({ env: env(), data: DATA, importFn: wrapped });
+  assert.equal(inits, 0, 'construction must not initialize any model');
+  assert.equal(await llm.answer('hi'), null, 'answering before load must decline');
+  assert.equal(inits, 0);
+  await llm.load();
+  assert.equal(inits, 1, 'exactly one init after explicit load');
 });
 
 test('answer() grounds in retrieved facts and guards numbers', async () => {
@@ -92,15 +142,7 @@ test('answer() grounds in retrieved facts and guards numbers', async () => {
     env: env(),
     data: DATA,
     retrieve: () => docs,
-    importFn: async () => ({
-      CreateMLCEngine: async () => ({
-        chat: {
-          completions: {
-            create: async () => ({ choices: [{ message: { content: 'Honda Wave giá 150.000đ/ngày theo bảng giá.' } }] })
-          }
-        }
-      })
-    })
+    importFn: createWebllmImportFn({ reply: 'Honda Wave giá 150.000đ/ngày theo bảng giá.' })
   });
   await llm.load();
   const result = await llm.answer('Wave giá bao nhiêu?');
@@ -116,11 +158,7 @@ test('answer() rejects invented prices (fact guard)', async () => {
     env: env(),
     data: DATA,
     retrieve: () => docs,
-    importFn: async () => ({
-      CreateMLCEngine: async () => ({
-        chat: { completions: { create: async () => ({ choices: [{ message: { content: 'Honda Wave giá 99.000đ/ngày.' } }] }) } }
-      })
-    })
+    importFn: createWebllmImportFn({ reply: 'Honda Wave giá 99.000đ/ngày.' })
   });
   await llm.load();
   const result = await llm.answer('Wave giá bao nhiêu?');
@@ -132,11 +170,7 @@ test('answer() declines when the model says NOINFO', async () => {
     env: env(),
     data: DATA,
     retrieve: () => [],
-    importFn: async () => ({
-      CreateMLCEngine: async () => ({
-        chat: { completions: { create: async () => ({ choices: [{ message: { content: 'NOINFO' } }] }) } }
-      })
-    })
+    importFn: createWebllmImportFn({ reply: 'NOINFO' })
   });
   await llm.load();
   assert.equal(await llm.answer('random question'), null);
@@ -176,7 +210,11 @@ test('withDisclosure appends the disclosure line once', () => {
   assert.equal(withDisclosure('Hello', ''), 'Hello');
 });
 
-test('default model is a small multilingual instruct model', () => {
-  assert.match(DEFAULT_MODEL, /0\.5B/);
-  assert.match(DEFAULT_MODEL, /Instruct/);
+test('unload returns to idle and clears model selection', async () => {
+  const llm = createLocalLlm({ env: env(), data: DATA, importFn: createWebllmImportFn() });
+  await llm.load();
+  assert.equal(llm.state.status, 'ready');
+  llm.unload();
+  assert.equal(llm.state.status, 'idle');
+  assert.equal(await llm.answer('hi'), null);
 });

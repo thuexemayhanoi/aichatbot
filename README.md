@@ -17,7 +17,7 @@ src/app/                 # Wiring dùng chung cho direct mode + embed iframe
 src/core, src/context, src/storage, src/utils
 assets/                  # UI trực tiếp (HTML/CSS/JS module, không framework)
 embed.js                 # Embed widget (iframe isolation, không phụ thuộc)
-tests/                   # 292 test (node --test): unit, integration, golden conversations
+tests/                   # 317 test (node --test): unit, integration, golden conversations
 docs/                    # LOCAL-AI.md, EMBED.md, ARCHITECTURE.md, COMPATIBILITY.md, WORKFLOW.md, TESTING.md, UI-UX.md
 docs/matrix/             # Master Matrix (203 tasks, BOT-0001..BOT-0203) + test matrix
 docs/state/active-work.json  # checkpoint/lock cho các scheduled run
@@ -38,7 +38,7 @@ LLM **không bao giờ** được phép bịa giá, chính sách, địa chỉ, 
 ## Chạy test
 
 ```bash
-npm test        # node --test — 292 tests
+npm test        # node --test — 317 tests
 ```
 
 Golden conversation regression nằm ở `tests/integration/golden.test.js`, kỳ vọng đọc trực tiếp từ `data/business/*.json` (không hard-code).
@@ -51,9 +51,13 @@ Direct link hỗ trợ query params: `?lang=vi|en&theme=auto|light|dark&source=<
 
 Embed: `data-lang`, `data-theme`, `data-position`, `data-title`, `data-source`, `data-open` — xem `docs/EMBED.md`.
 
+## Local AI — model được chọn động (v43.1)
+
+Model id KHÔNG bị hard-code. Khi người dùng xác nhận bật AI tại chỗ, MotoAI tải module WebLLM, đọc `prebuiltAppConfig.model_list` của chính module đó và chọn model nhỏ phù hợp nhất (ưu tiên Qwen 0.5B multilingual, low-resource, ≤1.5B tham số, đủ VRAM). Không có model phù hợp → AI tại chỗ tắt nhẹ nhàng, trợ lý cơ bản vẫn hoạt động. Lỗi kỹ thuật chỉ vào console/debug; người dùng chỉ thấy câu tiếng Việt thân thiện.
+
 ## Quyền riêng tư
 
-Mặc định mọi câu trả lời chạy trên thiết bị người dùng. Không gửi hội thoại đi đâu, không API key, không secret. Local AI (WebLLM) tải model về máy người dùng và cache (Cache API), chỉ bật khi người dùng chủ động chọn. Xem `docs/LOCAL-AI.md`.
+MotoAI yêu cầu: KHÔNG backend, KHÔNG API key, KHÔNG paid inference API. Mặc định mọi câu trả lời chạy trên thiết bị người dùng; không hội thoại nào được gửi tới API bên thứ ba. CDN (esm.run, Hugging Face model shards) chỉ dùng để tải asset tĩnh — inference luôn chạy trong browser người dùng. Local AI (WebLLM) tải model về máy người dùng và cache (Cache API), chỉ bật khi người dùng chủ động chọn. Xem `docs/LOCAL-AI.md`.
 
 ## Trình duyệt
 

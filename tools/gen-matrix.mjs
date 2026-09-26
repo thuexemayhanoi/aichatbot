@@ -250,6 +250,23 @@ R('nlu','Case-insensitivity across all matching','P1','—','VERIFIED','Case nev
 R('nlu','Trim/collapse whitespace normalization','P1','—','VERIFIED','Whitespace-insensitive','unit normalizer','tests/unit/normalizer.test.js','v41');
 R('rules','Rules never emit numbers absent from repo data','P0','—','VERIFIED','Static audit + tests','rules tests','tests/unit/rules.test.js','v42');
 R('ai','Prompt-injection resistance (user text never enters system role)','P2','—','VERIFIED','Prompt structure audited','unit local-ai','tests/unit/local-ai.test.js','v42');
+// ===== v43.1: UI/UX refresh + Local AI dynamic model discovery =====
+R('ui','Visual refresh: calm indigo/slate palette replaces harsh red #c8102e','P0','—','DONE','Red reserved for errors only; premium assistant look','ui-tokens test','tests/unit/ui-tokens.test.js','v43.1');
+R('ui','Semantic design-token system (CSS variables light+dark)','P0','—','DONE','--color-* tokens exist in both themes','ui-tokens test','tests/unit/ui-tokens.test.js','v43.1');
+R('ui','Responsive quick-action chips (wrap, no clipping)','P1','—','DONE','Chips wrap on narrow viewports','ui-tokens test + manual viewport','tests/unit/ui-tokens.test.js','v43.1');
+R('ui','Composer UX (textarea Enter/Shift+Enter, auto-grow, disabled while busy)','P1','—','DONE','Duplicate submission blocked; newline works','manual + code review','assets/js/main.js','v43.1');
+R('ui','Typing indicator + smart autoscroll (only near bottom)','P1','—','DONE','No scroll jump while reading history','manual viewport matrix','assets/js/main.js','v43.1');
+R('ui','Accessibility pass (focus-visible, reduced-motion, aria, touch targets)','P0','—','DONE','Keyboard-only run; reduced motion honored','ui-tokens test','tests/unit/ui-tokens.test.js','v43.1');
+R('ai','Local AI model discovery from prebuiltAppConfig.model_list','P0','—','DONE','No hard-coded model id; runtime verification','model-selection test','tests/unit/model-selection.test.js','v43.1');
+R('ai','Fix Cannot-find-model-record bug (invalid id ...q4f16_1MLC)','P0','BOT-0210','DONE','Invalid ids can never be selected','model-selection test','tests/unit/model-selection.test.js','v43.1');
+R('ai','Graceful fallback: empty model list / no WebGPU / init failure','P0','BOT-0210','DONE','Friendly message; basic chatbot unaffected','local-ai test','tests/unit/local-ai.test.js','v43.1');
+R('ai','User-friendly Vietnamese errors (no technical internals in UI)','P0','BOT-0212','DONE','Raw WebLLM errors only in console/debug + state','local-ai test','tests/unit/local-ai.test.js','v43.1');
+R('ai','Two-step explicit consent before model download','P0','—','DONE','Explain panel then confirm; never silent download','ui-tokens test + code review','tests/unit/ui-tokens.test.js','v43.1');
+R('privacy','No inference API endpoints / API keys (enforced as tests)','P0','—','DONE','privacy.test.js scans whole project','privacy test','tests/unit/privacy.test.js','v43.1');
+R('perf','Base JS budget maintained (134117 bytes < 150000 guard)','P1','—','DONE','CI bundle guard green with new baseline','ci.yml','.github/workflows/ci.yml','v43.1');
+R('direct','Direct + embed consistency after UI refresh','P0','—','DONE','lang/theme/source/embed/auto-open/Escape preserved','embed + golden tests','tests/integration/embed.test.js','v43.1');
+R('ops','Docs + matrix + state updated for v43.1 run','P1','—','DONE','All docs current','this run','docs/','this run');
+
 R('ops','Matrix regenerator script tools/gen-matrix.mjs','P2','—','VERIFIED','Idempotent generation','this run','tools/gen-matrix.mjs','this run');
 
 // status summary printed to stderr-ish

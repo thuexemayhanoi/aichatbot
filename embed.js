@@ -108,9 +108,9 @@
     launcher.setAttribute('aria-expanded', 'false');
     setStyle(launcher, {
       width: '56px', height: '56px', borderRadius: '50%',
-      background: '#c8102e', color: '#fff', border: 'none', cursor: 'pointer',
+      background: '#4f46e5', color: '#fff', border: 'none', cursor: 'pointer',
       fontSize: '24px', lineHeight: '56px', textAlign: 'center',
-      boxShadow: '0 4px 14px rgba(0,0,0,.25)'
+      boxShadow: '0 4px 14px rgba(0,0,0,.22)'
     });
     launcher.textContent = '🏍️';
 
@@ -127,9 +127,9 @@
       height: 'min(78vh, 640px)',
       borderRadius: '16px',
       overflow: 'hidden',
-      boxShadow: '0 12px 40px rgba(0,0,0,.3)',
+      boxShadow: '0 12px 40px rgba(0,0,0,.28)',
       zIndex: '2147483000',
-      background: '#fff'
+      background: '#ffffff'
     });
 
     var iframe = doc.createElement('iframe');

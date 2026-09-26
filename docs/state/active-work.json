@@ -1,13 +1,13 @@
 {
   "$schema": "motoai/active-work@1",
-  "feature_id": "BOT-0188",
-  "feature_desc": "Project-control infrastructure: Master Matrix, run docs, CI workflow, checkpoint state",
-  "run_id": "2026-09-27-scheduled",
+  "feature_id": "BOT-0204",
+  "feature_desc": "v43.1: UI/UX calm-palette refresh + Local AI dynamic model discovery (fix Cannot-find-model-record)",
+  "run_id": "2026-09-27-ui-localai",
   "status": "DONE",
-  "started_at": "2026-09-27T04:05:00Z",
-  "start_commit": "49e3aaae5b13ecf024d758bbe390db6a116a75c3",
-  "last_checkpoint": "Tests 292/292 green on start SHA; matrix 203 rows generated; docs WORKFLOW/TESTING/UI-UX written; ci.yml added; ready to commit+push.",
-  "checkpoint_commit": "08e008607391f608055c334331f7ff1d52253fdd",
+  "started_at": "2026-09-27T06:30:00Z",
+  "start_commit": "4dbe23cf6bb7d95933c7c296157586b3e1bde957",
+  "last_checkpoint": "317/317 tests green; model selection dynamic from prebuiltAppConfig.model_list; red removed from brand; privacy tests added; docs+matrix updated; ready to push.",
+  "checkpoint_commit": "",
   "attempt": 1,
-  "notes": "Run complete: project-control layer shipped in commit 08e0086 (matrix, docs, CI, state, report). All 292 tests green before and after; no product code changed. Matrix: 203 rows (VERIFIED 143, PLANNED 59, DONE 1)."
+  "notes": "UI: indigo/slate tokens, wrapping chips, textarea composer, typing indicator, two-step Local AI consent. Local AI: model-selection.js + friendly Vietnamese errors. Bundle 134117 bytes < 150000 guard (baseline updated)."
 }

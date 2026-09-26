@@ -25,6 +25,8 @@ Yêu cầu: **WebGPU** (`navigator.gpu`), đủ RAM (~2 GB+), Cache API để ca
 
 WASM fallback cho generative LLM: WebLLM không có; khi thiếu WebGPU, MotoAI **không** tự chạy model WASM (chậm, đốt pin trên mobile) — chatbot dùng rule + retrieval, vẫn trả lời đúng mọi fact kinh doanh.
 
+Model id được phát hiện động từ `prebuiltAppConfig.model_list` của bản WebLLM đang tải (`src/ai/model-selection.js`), nên việc WebLLM thêm/bỏ model theo version không phá Local AI. Thiếu model phù hợp → AI tại chỗ tự tắt nhẹ nhàng.
+
 ## Hành vi khi thiếu/nhỏ tài nguyên
 
 - Thiếu WebGPU / RAM thấp / không storage: không hiện nút Local AI; chatbot 100% chức năng.
