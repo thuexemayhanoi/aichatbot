@@ -237,29 +237,34 @@ html, body {
   40% { transform: scale(1); opacity: 1; }
 }
 
-/* ---------- Quick actions ---------- */
+/* ---------- Quick actions (ONE single horizontal row) ---------- */
 .motoai-quick {
   display: flex;
-  flex-wrap: nowrap;            /* one horizontal row */
+  flex-wrap: nowrap;            /* one horizontal row, never a second line */
   gap: var(--space-2);
   padding: var(--space-1) 0 var(--space-1);
-  overflow-x: auto;             /* scroll instead of ugly partial clipping */
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;        /* thin inline bar; chips stay fully visible */
+  overflow-x: auto;             /* swipe/scroll sideways to reveal later chips */
+  overflow-y: hidden;           /* never leaks vertical scroll or layout shift */
+  overscroll-behavior-x: contain; /* swipe does not scroll the host page */
+  -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+  scrollbar-width: none;        /* hidden scrollbar; chips stay fully visible */
 }
 .motoai-quick::-webkit-scrollbar { display: none; }
 
 .motoai-chip {
   flex: 0 0 auto;               /* never squashed, never half-clipped */
-  min-height: 40px;              /* comfortable touch target */
+  display: inline-flex;        /* button and link chips render identically */
+  align-items: center;
+  min-height: 40px;             /* consistent chip height, comfortable touch target */
   padding: 8px 14px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   background: var(--color-surface);
   color: var(--color-text);
   font-size: 0.8rem;
+  line-height: 1.2;
   white-space: nowrap;
+  text-decoration: none;        /* link chips look exactly like button chips */
   cursor: pointer;
   transition: background var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease);
 }

@@ -7,7 +7,7 @@ import { createConfig } from '../../src/config/defaults.js';
 import { createMotoApp } from '../../src/app/moto-app.js';
 import { parseQueryConfig } from '../../src/app/query-config.js';
 import { detectCapabilities } from '../../src/ai/capability.js';
-import { DEFAULT_CHIPS, nextSuggestions } from '../../src/app/suggestions.js';
+import { DEFAULT_CHIPS, nextSuggestions, resolveChipHref } from '../../src/app/suggestions.js';
 import { ENABLE_STORAGE_KEY } from './ai-settings.js';
 
 const DATA_FILES = [
@@ -111,8 +111,10 @@ async function init() {
   }
 
   let app;
+  let businessData = null; // verified business.json — the ONLY source for link chips
   try {
     const data = await loadBusinessData();
+    businessData = data.business;
     const store = createLocalStore({ namespace: `motoai-${config.embed ? 'embed' : 'direct'}-${config.source ?? 'root'}` });
     app = createMotoApp({
       data,
@@ -128,17 +130,46 @@ async function init() {
   // --- Chat loop ---
   renderMessage(elements.messages, { role: 'assistant', text: app.data.faq.assistant.greeting });
 
-  // Quick chips: max 4 primary, one scrollable row; every chip routes through
-  // the normal deterministic engine (chip query = plain user message).
+  // Quick actions: ONE single horizontally scrollable row (CSS keeps it on
+  // one line; swipe sideways to reveal later chips). Query chips route through
+  // the normal deterministic engine; link chips use verified hrefs resolved
+  // from business.json — contact data is never hard-coded here.
   function renderChips(chips) {
     elements.quick.replaceChildren();
     for (const chip of chips) {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'motoai-chip';
-      button.textContent = chip.label;
-      button.addEventListener('click', () => { elements.input.value = chip.query; autoGrow(); submit(); });
-      elements.quick.appendChild(button);
+      if (chip.type === 'link') {
+        const href = resolveChipHref(chip, businessData);
+        if (!href) continue; // no verified data -> never guess a contact URL
+        const link = document.createElement('a');
+        link.className = 'motoai-chip';
+        link.textContent = chip.label;
+        link.href = href;
+        link.rel = 'noopener noreferrer';
+        if (!link.href.startsWith('tel:')) link.target = '_blank';
+        elements.quick.appendChild(link);
+      } else if (chip.type === 'agent') {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'motoai-chip';
+        button.textContent = chip.label;
+        button.addEventListener('click', () => {
+          if (!elements.aiToggle.hidden) {
+            elements.aiToggle.click(); // not started yet: open the explain flow
+          } else if (elements.aiStatus.hidden) {
+            setStatus(elements.status, 'Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.', 'warning');
+          } else {
+            setStatus(elements.status, 'Agent đang chạy.', 'success'); // loading or ready
+          }
+        });
+        elements.quick.appendChild(button);
+      } else {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'motoai-chip';
+        button.textContent = chip.label;
+        button.addEventListener('click', () => { elements.input.value = chip.query; autoGrow(); submit(); });
+        elements.quick.appendChild(button);
+      }
     }
   }
   renderChips(DEFAULT_CHIPS);
@@ -179,7 +210,7 @@ async function init() {
       hideTyping();
       renderMessage(elements.messages, {
         role: 'assistant',
-        text: 'Xin lỗi, vừa có lỗi kỹ thuật. Bạn thử lại hoặc gọi 0942 467 674 giúp mình nhé.'
+        text: `Xin lỗi, vừa có lỗi kỹ thuật. Bạn thử lại hoặc gọi ${businessData?.contact?.phone_display ?? 'điện thoại của quán'} giúp mình nhé.`
       });
       setStatus(elements.status, 'Lỗi tạm thời, thử lại nhé.', 'error');
     } finally {

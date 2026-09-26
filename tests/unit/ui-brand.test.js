@@ -9,7 +9,8 @@ import { createConfig } from '../../src/config/defaults.js';
 import { createMotoApp } from '../../src/app/moto-app.js';
 import {
   DEFAULT_CHIPS,
-  nextSuggestions
+  nextSuggestions,
+  resolveChipHref
 } from '../../src/app/suggestions.js';
 
 /**
@@ -105,14 +106,49 @@ test('the long technical ready message is removed; status auto-hides', () => {
   assert.match(mainJs, /'Agent chưa dùng được trên thiết bị này\./);
 });
 
-// --- 1 + 2. Quick chips ---
-test('primary chip bar defaults to exactly 4 compact chips', () => {
-  assert.equal(DEFAULT_CHIPS.length, 4);
+// --- 1 + 2. Quick chips: ONE single horizontal scrollable row ---
+test('primary chip bar holds the full 12-action set in the agreed default order', () => {
+  assert.equal(DEFAULT_CHIPS.length, 12);
   const labels = DEFAULT_CHIPS.map((c) => c.label);
-  assert.deepEqual(labels, ['💰 Giá thuê', '🛵 Xe ga', '🏍️ Xe số', '📅 Theo tháng']);
+  assert.deepEqual(labels, [
+    '⚡ Agent', '💰 Giá thuê', '🛵 Xe ga', '🏍️ Xe số', '📅 Theo tháng',
+    '💵 Đặt cọc', '📄 Thủ tục', '💬 Zalo', '📞 Gọi', '📍 Địa chỉ',
+    '☎️ Liên hệ', '🗺️ Bản đồ'
+  ]);
   for (const chip of DEFAULT_CHIPS) {
-    assert.ok(chip.query && typeof chip.query === 'string', 'chip must carry an engine query');
-    assert.ok(!/\d{3}\.\d{3}đ/.test(chip.label + chip.query), 'no prices hard-coded in the UI');
+    assert.ok(chip.id && chip.label, 'chip needs id and label');
+    assert.ok(!/\d{3}\.\d{3}đ/.test(chip.label + (chip.query ?? '')), 'no prices hard-coded in the UI');
+  }
+});
+
+test('every chip is exactly one of the three kinds (query, link, agent)', () => {
+  for (const chip of DEFAULT_CHIPS) {
+    if (chip.type === 'link') {
+      assert.ok(chip.ref, 'link chip must carry a business-data ref');
+      assert.ok(!('href' in chip) && !('url' in chip), 'link chips must not carry hard-coded hrefs');
+    } else if (chip.type === 'agent') {
+      assert.ok(!chip.query, 'agent chip does not send an engine query');
+    } else {
+      assert.ok(chip.query && typeof chip.query === 'string', 'query chip must carry an engine query');
+    }
+  }
+});
+
+test('link chips resolve hrefs only from verified business.json data', () => {
+  const byId = Object.fromEntries(DEFAULT_CHIPS.map((c) => [c.id, c]));
+  assert.equal(resolveChipHref(byId.zalo, business), business.contact.zalo);
+  assert.equal(resolveChipHref(byId.call, business), business.contact.phone_uri);
+  assert.equal(resolveChipHref(byId.map, business), business.contact.maps);
+  // No verified data -> empty href, never a guessed contact URL.
+  assert.equal(resolveChipHref(byId.zalo, {}), '');
+  assert.equal(resolveChipHref(byId.zalo, null), '');
+});
+
+test('contact data is never duplicated into UI logic files', () => {
+  const phone = business.contact.phone;
+  for (const source of [mainJs, css]) {
+    assert.ok(!source.includes(phone), 'UI files must not hard-code the business phone');
+    assert.ok(!source.includes(business.contact.maps), 'UI files must not hard-code the maps URL');
   }
 });
 
@@ -146,7 +182,7 @@ test('every chip query is answered by the deterministic engine (no fallback)', a
     ...nextSuggestions({ intentId: 'price_query', slots: {} }),
     ...nextSuggestions({ intentId: 'bike_type_query', slots: {} }),
     ...nextSuggestions({ intentId: 'location_query', slots: {} })
-  ];
+  ].filter((chip) => chip.query); // only query chips go through the engine
   const seen = new Set();
   for (const chip of all) {
     if (seen.has(chip.query)) continue;
