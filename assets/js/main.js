@@ -8,6 +8,7 @@ import { createMotoApp } from '../../src/app/moto-app.js';
 import { parseQueryConfig } from '../../src/app/query-config.js';
 import { detectCapabilities } from '../../src/ai/capability.js';
 import { DEFAULT_CHIPS, nextSuggestions, resolveChipHref } from '../../src/app/suggestions.js';
+import { initPwa } from './pwa.js';
 import { ENABLE_STORAGE_KEY } from './ai-settings.js';
 
 const DATA_FILES = [
@@ -36,6 +37,13 @@ function setStatus(el, text, tone = '') {
 
 async function init() {
   const config = parseQueryConfig(location.search);
+  // Mobile wrapper (Capacitor) detection: label the distribution channel
+  // when the app runs inside the Android/iOS shell (spec §21).
+  if (!config.source && window.Capacitor?.isNativePlatform?.()) {
+    const platform = window.Capacitor.getPlatform?.(); // 'android' | 'ios'
+    if (platform === 'android' || platform === 'ios') config.source = platform;
+  }
+  initPwa(config); // direct/PWA mode only; no-op in embed mode
   document.documentElement.lang = config.lang;
   if (config.embed) {
     document.body.dataset.motoaiEmbed = '1';
