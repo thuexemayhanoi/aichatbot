@@ -84,7 +84,7 @@ test('WordPress plugin loader: thin, canonical URL, guards, no second engine', (
 test('WordPress settings: capability + Settings API + sanitize whitelist', () => {
   const php = read('integrations/wordpress/motoai-agent/includes/class-motoai-settings.php');
   const main = read('integrations/wordpress/motoai-agent/motoai-agent.php');
-  assert.match(php, /current_user_can\( 'manage_options' \)/);
+  assert.match(php, /current_user_can\(\s*'manage_options'\s*\)/);
   assert.match(php, /register_setting/);
   assert.match(php, /settings_fields\( self::GROUP \)/);
   assert.match(php, /'sanitize_callback' => 'motoai_agent_sanitize_settings'/);
