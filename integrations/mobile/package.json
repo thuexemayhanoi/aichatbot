@@ -1,0 +1,20 @@
+{
+  "name": "motoai-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MotoAI mobile wrapper foundation (Capacitor shell around the canonical local-first web app)",
+  "scripts": {
+    "prebuild": "node -e \"console.log('wrapper only: no build step needed')\"",
+    "add:android": "npx cap add android",
+    "add:ios": "npx cap add ios",
+    "sync": "npx cap sync",
+    "open:android": "npx cap open android",
+    "open:ios": "npx cap open ios"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.2.1",
+    "@capacitor/cli": "^6.2.1",
+    "@capacitor/core": "^6.2.1",
+    "@capacitor/ios": "^6.2.1"
+  }
+}

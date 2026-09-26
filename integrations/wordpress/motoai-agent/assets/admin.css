@@ -1,0 +1,19 @@
+/* MotoAI Agent — admin settings page (minimal, no framework). */
+.motoai-admin-wrap h1::before { content: "🏍️ "; }
+
+.motoai-admin-note {
+  background: #f0f6fc;
+  border-left: 4px solid #4f46e5;
+  padding: 10px 14px;
+  margin: 12px 0 20px;
+  max-width: 720px;
+  line-height: 1.5;
+}
+
+.motoai-admin-note code { background: #eef2f7; padding: 1px 5px; border-radius: 3px; }
+
+.form-table th { width: 260px; }
+
+@media (max-width: 782px) {
+  .form-table th { width: auto; }
+}
