@@ -56,7 +56,9 @@ test('service worker uses versioned cache names', () => {
   assert.match(sw, /const CORE_VERSION = 'v\d+'/);
   assert.match(sw, /const SHELL_CACHE = 'motoai-shell-' \+ CORE_VERSION/);
   assert.match(sw, /const DATA_CACHE = 'motoai-data-' \+ CORE_VERSION/);
-  assert.match(sw, /'v45'/, 'cache version tracks core version');
+  const major = readFileSync(join(ROOT, 'package.json'), 'utf8');
+  const v = JSON.parse(major).version.split('.')[0];
+  assert.ok(sw.includes(`'v${v}'`), `cache version tracks core version (v${v})`);
 });
 
 test('service worker implements safe cache cleanup on activate', () => {

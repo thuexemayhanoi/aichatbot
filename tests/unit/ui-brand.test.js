@@ -279,3 +279,16 @@ test('every chip query is answered by the deterministic engine (no fallback)', a
     assert.notEqual(r.source, 'local-llm', 'chips must never rely on the LLM');
   }
 });
+
+test('index.html links the stylesheet (root app must never render unstyled)', () => {
+  const html = readFileSync(join(ROOT, 'index.html'), 'utf8');
+  assert.match(html, /<link rel="stylesheet" href="assets\/css\/style\.css">/);
+  // must appear after canonical/manifest, before runtime scripts
+  const linkPos = html.indexOf('<link rel="stylesheet"');
+  const canonicalPos = html.indexOf('rel="canonical"');
+  const manifestPos = html.indexOf('rel="manifest"');
+  const scriptPos = html.indexOf('<script');
+  assert.ok(linkPos > -1, 'stylesheet link present');
+  assert.ok(linkPos > canonicalPos && linkPos > manifestPos, 'stylesheet after canonical/manifest');
+  assert.ok(scriptPos === -1 || linkPos < scriptPos, 'stylesheet before runtime scripts');
+});
