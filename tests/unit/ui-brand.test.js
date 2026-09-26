@@ -433,3 +433,25 @@ test('on-primary text is light in BOTH themes — no dark text on purple', () =>
     assert.match(value, /^#(fff|ffffff|f8fafc|f1f5f9)$/i, `on-primary must be light/white, got ${value}`);
   }
 });
+
+// --- 5k. Menu discoverability (v51): "☰ Menu" pill with finite attention cue ---
+test('menu button: icon + visible "Menu" text, pill style, ARIA intact, finite pulse', () => {
+  // 1. Icon + text label, not icon-only.
+  const btn = /<button[^>]*class="motoai-menu"[^>]*>([\s\S]*?)<\/button>/.exec(html)?.[1] ?? '';
+  assert.ok(btn.includes('☰'), 'hamburger icon kept');
+  assert.match(btn, /<span class="motoai-menu-label">Menu<\/span>/, 'visible "Menu" text label');
+  // 2. ARIA behavior unchanged.
+  assert.match(html, /id="motoai-menu-btn"[^>]*aria-label="Mở menu"[^>]*aria-expanded="false"[^>]*aria-controls="motoai-drawer"/);
+  // 3. Pill: purple primary with light text, border, 44px target.
+  assert.match(css, /\.motoai-menu\s*\{[^}]*min-height:\s*44px;[^}]*border-radius:\s*var\(--radius-full\);[^}]*background:\s*var\(--color-primary\);[^}]*color:\s*var\(--color-on-primary\);/s);
+  assert.match(css, /\.motoai-menu:hover\s*\{\s*background:\s*var\(--color-primary-hover\);/);
+  assert.match(css, /\.motoai-menu:active[^{]*\{[^}]*transform:\s*scale\(0\.97\);/s, 'obvious tap state');
+  // 4. Attention cue is FINITE: 3 iterations, no infinite.
+  const anim = css.match(/\.motoai-menu\s*\{[^}]*animation:\s*([^;}]+);/s)?.[1] ?? '';
+  assert.ok(anim.includes('motoai-menu-glow'), 'glow animation defined');
+  assert.ok(/\b3\b/.test(anim), 'pulse runs a finite number of cycles (3)');
+  assert.ok(!/infinite/.test(anim), 'menu pulse is never infinite (typing-dots indicator exempt)');
+  // 5. Reduced motion disables the pulse entirely.
+  const rm = css.slice(css.lastIndexOf('@media (prefers-reduced-motion: reduce)'));
+  assert.match(rm, /\.motoai-menu\s*\{\s*animation:\s*none;\s*\}/, 'reduced-motion kills the pulse');
+});
