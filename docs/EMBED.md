@@ -29,6 +29,7 @@ Không cần React/Vue, không cần build step, không CSS xung đột.
 | `data-title` | text (max 40 ký tự) | `Hỗ trợ Agent` | aria-label của launcher + dialog. |
 | `data-source` | text (max 64 ký tự) | — | Nhãn nguồn, tách storage scope từng trang. |
 | `data-open` | `true`/`false` | `false` | Mở widget ngay khi tải trang. |
+| `data-open-delay` | ms `0`–`10000` | `0` | Trễ trước auto-open (v45b, embed v1.1.0; tương thích ngược đầy đủ). |
 
 ## Cách hoạt động
 

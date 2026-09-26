@@ -45,3 +45,14 @@ Model id được phát hiện động từ `prebuiltAppConfig.model_list` của
 - **Lớp semantic** (Transformers.js, WASM): lazy — chỉ warm-up sau lượt chat đầu, không chặn tương tác đầu; model `Xenova/multilingual-e5-small` (~30MB quantized, cache Cache Storage khi trình duyệt cho phép). Máy yếu/mất mạng/không tải được → tự động về BM25-only, không báo lỗi cho người dùng.
 - **Local LLM (WebLLM)**: như v43.1 — cần WebGPU (không có trên iOS Safari hiện tại); không có thì chatbot chính vẫn đầy đủ.
 - Bundle base JS: 186.095 bytes (guard CI < 190.000); embed launcher không đổi (7.657 bytes). Không thêm dependency bundle nào — Transformers.js/WebLLM đều CDN-import runtime.
+## v45 — Local Agent theo môi trường wrapper
+
+| Môi trường | WebGPU | Local Agent |
+|---|---|---|
+| Chrome desktop / Android 121+ | Có | Chạy được (opt-in, nặng RAM) |
+| Android WebView (Capacitor) | Disable mặc định | Coi là KHÔNG hỗ trợ |
+| Safari iOS 18+ | Có (Safari) | Có thể; không đảm bảo |
+| iOS WKWebView (Capacitor) | Không như Safari | Coi là KHÔNG hỗ trợ |
+| PWA install (Android/iOS) | Theo browser host | Theo host |
+
+Rules / BM25 / Calculator / Recommendation không phụ thuộc WebLLM: khi Local Agent không chạy, mọi tính năng cơ bản vẫn đầy đủ (bắt buộc bởi kiến trúc + test). Xem docs/MOBILE.md và docs/PWA.md.

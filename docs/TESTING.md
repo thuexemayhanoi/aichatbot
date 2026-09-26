@@ -50,3 +50,11 @@ tests/helpers/       # data loaders, engine fixture, storage stubs
 - `tests/integration/multi-turn.test.js` — golden multi-turn A–G: follow-up keeps Vision, height carries into recommendation, Wave 12 ngày breakdown, 150k budget, English context, "Không, Air Blade cơ" override, "xe 50cc" never 50 days; date-range pricing; English durations; comparison; resetContext.
 
 Total: **393 tests** (was 317). No old assertion weakened; slot-shape tests updated to the extended context-memory schema.
+## v45 — distribution suites
+
+- `tests/unit/wordpress-plugin.test.js` — cấu trúc plugin, header chuẩn WP, Settings API (capability + nonce), sanitize/escape toàn vẹn, loader đúng URL canonical + async + once-guard, data-attribute đầy đủ, visibility rules, shortcode whitelist, uninstall sạch, không secrets/endpoints.
+- `tests/unit/wordpress-zip.test.js` — ZIP tất định (2 lần build byte-identical), root `motoai-agent/`, đủ file, không dev files, CRC từng entry, không secrets, installable qua WP Upload.
+- `tests/unit/pwa.test.js` — manifest hợp lệ + scope `/aichatbot/`, versioned caches, không precache model, SW không đăng ký trong embed mode, install UI gated, iOS hint one-time, direct mode không đổi.
+- `tests/unit/mobile-config.test.js` — Capacitor config/scripts, chỉ deps `@capacitor/*`, không platform dirs/node_modules, sync tái dùng app canonical, không secrets.
+
+Total: **447 tests** (was 406). No old assertion weakened. PHP syntax check chạy khi có `php` binary (không bắt buộc); CI build ZIP + sinh icon PNG (distribution.yml).
