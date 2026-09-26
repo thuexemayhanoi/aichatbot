@@ -84,4 +84,4 @@ Rules → Business data → Blog knowledge (tùy chọn, tier thấp nhất)
 - `tools/build-blog.mjs` — dựng blog/ 6 hubs + bài, search-index.json, knowledge-index.json, sitemap.xml, robots.txt; resolve `{{ business.* }}` từ business.json.
 - `tools/blog-factory.mjs` — state machine PLANNED→…→PUBLISHED, run lock, transaction marker, resume, report.
 - `assets/js/blog.js` — tìm kiếm blog client-side, mục lục tải theo yêu cầu.
-- Blog UI: `assets/css/blog.css`; homepage hero + menu drawer: `assets/css/style.css` (v47 section).
+- Blog UI: `assets/css/blog.css`; chatbot-first homepage + menu drawer: `assets/css/style.css` (v47.1 section — chat app trước, đoạn SEO `.motoai-seo` sau).

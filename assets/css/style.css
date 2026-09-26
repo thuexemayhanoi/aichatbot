@@ -459,51 +459,29 @@ body[data-motoai-embed="1"] .motoai-app {
 .motoai-reset:hover { background: var(--color-surface-elevated); color: var(--color-text); }
 .motoai-reset:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
-/* ---------- v47: hero + menu drawer ---------- */
+/* ---------- v47.1: chatbot-first shell + menu drawer ---------- */
+/* The chatbot IS the homepage — no hero above it. Supporting SEO copy
+   (.motoai-seo) renders AFTER the app, unobtrusive and muted. */
 .motoai-shell {
   max-width: 720px;
   margin: 0 auto;
-  padding: calc(env(safe-area-inset-top, 0px) + var(--space-3)) var(--space-2) 0;
+  padding: calc(env(safe-area-inset-top, 0px) + var(--space-2)) var(--space-2) var(--space-3);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
 }
 
-/* Hero: national app-intent headline, hidden in embed mode. */
-.motoai-hero {
-  padding: var(--space-2) var(--space-2) 0;
-}
-.motoai-hero-title {
+/* The chat app fills the first viewport on its own. */
+.motoai-shell .motoai-app { height: auto; min-height: calc(100dvh - 24px); }
+
+/* Unobtrusive SEO copy below the chatbot (hidden in embed mode). */
+.motoai-seo { padding: var(--space-3) var(--space-2) 0; }
+.motoai-seo-copy {
   margin: 0;
-  font-size: 1.45rem;
-  line-height: 1.25;
-  letter-spacing: 0.2px;
-}
-@media (max-width: 380px) { .motoai-hero-title { font-size: 1.22rem; } }
-.motoai-hero-copy {
-  margin: 6px 0 0;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   line-height: 1.55;
   color: var(--color-text-muted);
 }
-.motoai-hero-links { margin-top: var(--space-2); }
-.motoai-hero-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 38px;
-  padding: 7px 14px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
-  background: var(--color-surface);
-  color: var(--color-primary);
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 550;
-}
-.motoai-hero-links a:hover { border-color: var(--color-primary); }
-
-/* The chat app keeps its own shell below the hero. */
-.motoai-app { height: auto; min-height: 62dvh; }
+.motoai-seo-copy a { color: var(--color-primary); }
 
 /* Install button (PWA) — hidden until beforeinstallprompt fires. */
 .motoai-install {
@@ -595,9 +573,9 @@ body[data-motoai-embed="1"] .motoai-install { display: none; }
 .motoai-drawer-list button:hover { background: var(--color-primary-soft); color: var(--color-primary); }
 .motoai-drawer-list a[hidden], .motoai-drawer-list button[hidden] { display: none; }
 
-/* Embed iframe mode: no hero, no menu — the widget stays minimal. */
+/* Embed iframe mode: no SEO copy, no menu — the widget stays minimal. */
 body[data-motoai-embed="1"] .motoai-shell { max-width: none; padding: 0; }
-body[data-motoai-embed="1"] .motoai-hero,
+body[data-motoai-embed="1"] .motoai-seo,
 body[data-motoai-embed="1"] .motoai-drawer,
 body[data-motoai-embed="1"] .motoai-drawer-backdrop,
 body[data-motoai-embed="1"] .motoai-menu { display: none; }

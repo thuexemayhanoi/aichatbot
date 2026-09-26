@@ -157,13 +157,14 @@ node tools/blog-factory.mjs publish BA-xxxx# publish 1 bài (transaction)
 node tools/blog-factory.mjs resume         # phục hồi transaction đứt quãng
 ```
 
-## Homepage (v47)
+## Homepage (v47.1 — chatbot-first)
 
-- H1: “Ứng dụng thuê xe máy & xe điện” (intent quốc gia, không nhắm commercial intent của repo khác).
-- Menu ☰ drawer thay icon chổi: Agent, Blog/Cẩm nang, Thủ tục, Giá thuê, Xe điện, Địa chỉ, Zalo, Gọi, Bản đồ, Xóa hội thoại. Link liên hệ resolve từ `business.json` lúc render.
+- Chatbot LÀ homepage: mở URL là vào ngay Agent (header "Hỗ trợ Agent", địa chỉ đã xác minh, ☰ menu, messages, quick bar, composer) — KHÔNG hero phía trên, KHÔNG cần cuộn.
+- H1 của trang là "Hỗ trợ Agent"; intent app quốc gia giữ qua title/meta/schema và đoạn SEO hỗ trợ nhỏ đặt SAU chatbot (`.motoai-seo`, ẩn trong embed mode).
+- Menu ☰ drawer: Agent, Blog/Cẩm nang, App & Ứng dụng, Thuê xe máy, Xe điện, Hướng dẫn/Thủ tục, An toàn/Pháp lý, Địa phương/Du lịch, Tìm bài, Giá thuê, Địa chỉ, Zalo, Gọi, Bản đồ, Xóa hội thoại. Link liên hệ resolve từ `business.json` lúc render.
 - Quick bar 12 action giữ nguyên MỘT hàng cuộn ngang.
-- SEO: canonical, OG/Twitter, schema `WebApplication` + `Organization` + `FAQPage`; KHÔNG giới thiệu là app native trên store.
-- Embed iframe: KHÔNG hero, KHÔNG menu — widget tối giản như cũ.
+- SEO: title, meta, canonical, OG/Twitter, schema `WebApplication` + `Organization` + `FAQPage`; từ khóa sở hữu (app thuê xe máy, ứng dụng thuê xe máy, app thuê xe điện, ứng dụng thuê xe máy điện) nằm trong đoạn SEO sau chatbot; KHÔNG giới thiệu là app native trên store.
+- Embed iframe: KHÔNG menu, KHÔNG đoạn SEO — widget tối giản như cũ.
 
 ## Hiệu năng
 

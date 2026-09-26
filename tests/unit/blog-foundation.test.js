@@ -206,7 +206,11 @@ test('blog home loads search lazily and never lists all matrix rows', () => {
 test('homepage owns the national APP intent; no generic rental landing title', () => {
   const html = read('index.html');
   assert.match(html, /<title>[^<]*Ứng dụng thuê xe máy/i);
-  assert.match(html, /<h1 class="motoai-hero-title">[^<]*thuê xe máy/i);
+  // v47.1: chatbot-first homepage — no hero above the app; the owned app-intent
+  // keywords live in the unobtrusive SEO section AFTER the chatbot.
+  assert.ok(!html.includes('motoai-hero'), 'no hero section above the chatbot');
+  assert.match(html, /class="motoai-seo"/);
+  assert.ok(html.indexOf('id="motoai-app"') < html.indexOf('class="motoai-seo"'), 'chatbot renders before the SEO copy');
   const ownership = JSON.parse(read('config/seo-ownership.json'));
   for (const kw of ownership.owned_keywords.slice(0, 4)) {
     assert.ok(html.toLowerCase().includes(kw.split(' ').slice(-4).join(' ').toLowerCase()) || kw.includes('digital'), `homepage should reference the owned intent (${kw})`);

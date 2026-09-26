@@ -31,25 +31,13 @@
 </head>
 <body>
   <main class="motoai-shell">
-    <!-- Hero: national app-intent headline. Hidden in embed iframe mode. -->
-    <section class="motoai-hero" id="motoai-hero">
-      <h1 class="motoai-hero-title">Ứng dụng thuê xe máy &amp; xe điện</h1>
-      <p class="motoai-hero-copy">
-        Hỏi Agent về giá thuê, chọn loại xe phù hợp, tính chi phí theo ngày – tuần – tháng,
-        xem thủ tục nhận xe, tìm địa chỉ và đọc cẩm nang thuê xe. MotoAI là app thuê xe máy, app thuê xe điện
-        và ứng dụng thuê xe máy điện dạng web — trả lời ngay trên trình duyệt, không cần cài đặt.
-      </p>
-      <nav class="motoai-hero-links" aria-label="Liên kết nhanh">
-        <a href="/aichatbot/blog/">📚 Cẩm nang thuê xe</a>
-      </nav>
-    </section>
-
+    <!-- The chatbot IS the homepage: it opens directly, no landing hero above it. -->
     <section class="motoai-app" id="motoai-app">
       <header class="motoai-header">
         <div class="motoai-header-text">
           <div class="motoai-brand-mark" aria-hidden="true">🏍️</div>
           <div>
-            <h2 class="motoai-title">Hỗ trợ Agent</h2>
+            <h1 class="motoai-title">Hỗ trợ Agent</h1>
             <p class="motoai-subtitle" id="motoai-subtitle">Thuê xe máy Nguyễn Tú — 112 Nguyễn Văn Cừ, Long Biên, Hà Nội</p>
           </div>
         </div>
@@ -92,6 +80,16 @@
         Trợ lý trả lời tự động dựa trên dữ liệu có sẵn. Không gửi dữ liệu đi đâu — Agent (nếu bật) chạy ngay trên máy bạn.
       </p>
     </section>
+
+    <!-- Supporting SEO copy (v47.1): AFTER the chatbot, unobtrusive. Hidden in embed mode. -->
+    <section class="motoai-seo" id="motoai-seo" aria-label="Giới thiệu MotoAI">
+      <p class="motoai-seo-copy">
+        MotoAI là app thuê xe máy, app thuê xe điện và ứng dụng thuê xe máy điện dạng web:
+        hỏi giá thuê, chọn loại xe phù hợp, tính chi phí theo ngày – tuần – tháng, xem thủ tục
+        nhận xe và tìm địa chỉ của Thuê Xe Máy Hà Nội Nguyễn Tú — trả lời ngay trên trình duyệt,
+        không cần cài đặt. Đọc thêm <a href="/aichatbot/blog/">cẩm nang thuê xe máy &amp; xe điện</a>.
+      </p>
+    </section>
   </main>
 
   <!-- Menu drawer (hidden in embed mode): navigation + contact + clear action. -->
@@ -104,9 +102,14 @@
     <ul class="motoai-drawer-list">
       <li><button type="button" id="motoai-menu-agent">⚡ Agent</button></li>
       <li><a href="/aichatbot/blog/">📚 Blog / Cẩm nang</a></li>
-      <li><a href="/aichatbot/blog/huong-dan/">📄 Thủ tục</a></li>
-      <li><a href="/aichatbot/blog/thue-xe/">💰 Giá thuê</a></li>
+      <li><a href="/aichatbot/blog/app/">📱 App &amp; Ứng dụng</a></li>
+      <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê xe máy</a></li>
       <li><a href="/aichatbot/blog/xe-dien/">⚡ Xe điện</a></li>
+      <li><a href="/aichatbot/blog/huong-dan/">📄 Hướng dẫn / Thủ tục</a></li>
+      <li><a href="/aichatbot/blog/an-toan/">🛡️ An toàn / Pháp lý</a></li>
+      <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa phương / Du lịch</a></li>
+      <li><a href="/aichatbot/blog/">🔎 Tìm bài</a></li>
+      <li><a href="/aichatbot/blog/thue-xe/">💰 Giá thuê</a></li>
       <li><button type="button" id="motoai-menu-address">📍 Địa chỉ</button></li>
       <li><a id="motoai-menu-zalo" href="#" rel="noopener noreferrer" target="_blank">💬 Zalo</a></li>
       <li><a id="motoai-menu-call" href="#">📞 Gọi</a></li>

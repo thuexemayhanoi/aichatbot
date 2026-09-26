@@ -26,9 +26,15 @@ const embedJs = readFileSync(join(ROOT, 'embed.js'), 'utf8');
 
 // --- 5. Header label ---
 test('visible chat header title is "Hỗ trợ Agent" (MotoAI stays internal)', () => {
-  assert.match(html, /<h2 class="motoai-title">Hỗ trợ Agent<\/h2>/);
-  // v47: the app-intent H1 lives in the hero above the chat card.
-  assert.match(html, /<h1 class="motoai-hero-title">[^<]*thuê xe máy/i);
+  // v47.1: chatbot-first homepage — the chat H1 is the page H1; there is no
+  // landing hero above the app, and supporting SEO copy renders AFTER it.
+  assert.match(html, /<h1 class="motoai-title">Hỗ trợ Agent<\/h1>/);
+  assert.ok(!html.includes('motoai-hero'), 'no hero section above the chatbot');
+  const appIdx = html.indexOf('id="motoai-app"');
+  const seoIdx = html.indexOf('class="motoai-seo"');
+  assert.ok(appIdx >= 0 && seoIdx > appIdx, 'SEO copy must come after the chatbot');
+  assert.match(html, /app thuê xe máy/i);
+  assert.match(html, /ứng dụng thuê xe máy điện/i);
 });
 
 // --- 6. Header subtitle / address ---
