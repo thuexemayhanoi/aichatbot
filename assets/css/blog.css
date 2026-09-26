@@ -80,3 +80,76 @@
   font-size: 0.78rem; color: var(--color-text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2);
 }
 .blog-article-footer a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
+
+/* ---------- v54 Blog App Foundation: app shell shared components ---------- */
+
+/* Compact app header: back-to-Agent, brand, theme control. */
+.blog-back {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: 0 12px; margin-left: calc(-1 * var(--space-2));
+  color: var(--color-text-muted); text-decoration: none;
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+}
+.blog-back:hover { color: var(--color-primary); }
+.blog-header-tools { display: flex; align-items: center; gap: var(--space-2); margin-left: auto; }
+.blog-theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; min-width: 44px; padding: 0 10px;
+  border: 1px solid var(--color-border); border-radius: var(--radius-full);
+  background: var(--color-surface); color: var(--color-text);
+  font-size: 0.82rem; line-height: 1; cursor: pointer;
+}
+.blog-theme-toggle:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.blog-theme-toggle:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+/* Verified business open/closed chip (hours from business.json, rendered by JS). */
+.blog-status {
+  margin: 0; align-self: flex-start;
+  font-size: 0.78rem; font-weight: 600; line-height: 1.4;
+  padding: 4px 12px; border-radius: var(--radius-full);
+  border: 1px solid var(--color-border); background: var(--color-surface);
+  color: var(--color-text-muted);
+}
+.blog-status[data-state="open"] { color: var(--color-success); border-color: var(--color-success); }
+.blog-status[data-state="closed"] { color: var(--color-text-muted); }
+
+/* Category bar: ONE horizontal scroll row on mobile — never a second line. */
+.blog-categories {
+  display: flex; flex-wrap: nowrap; gap: var(--space-2);
+  overflow-x: auto; overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.blog-categories::-webkit-scrollbar { display: none; }
+.blog-categories a {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; min-height: 40px;
+  padding: 6px 14px; border-radius: var(--radius-full);
+  border: 1px solid var(--color-border); background: var(--color-surface);
+  color: var(--color-text-muted); text-decoration: none;
+  font-size: 0.82rem; white-space: nowrap;
+}
+.blog-categories a:hover { color: var(--color-primary); border-color: var(--color-primary); }
+.blog-categories a[aria-current="page"] {
+  color: var(--color-on-primary); background: var(--color-primary);
+  border-color: var(--color-primary); font-weight: 600;
+}
+
+/* Compact verified-contact CTA row (hrefs filled from business.json at runtime). */
+.blog-contacts { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.blog-contact {
+  display: inline-flex; align-items: center; min-height: 42px;
+  padding: 8px 16px; border-radius: var(--radius-full);
+  background: var(--color-primary); color: var(--color-on-primary);
+  text-decoration: none; font-weight: 600; font-size: 0.82rem; white-space: nowrap;
+}
+.blog-contact:hover { background: var(--color-primary-hover); }
+.blog-contact[data-contact-ref] {
+  background: var(--color-surface); color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+.blog-contact[data-contact-ref]:hover { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-surface); }
+
+/* Dark mode readability: status/categories inherit tokens — no extra rules needed. */

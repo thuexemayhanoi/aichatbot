@@ -15,15 +15,26 @@
   <meta name="twitter:description" content="Cẩm nang thuê xe máy và xe điện: cách dùng ứng dụng thuê xe, bảng giá, thủ tục nhận xe, an toàn và hành trình Hà Nội.">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/blog.css">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
 </head>
 <body>
 <main class="blog-page">
   <header class="blog-header">
-    <a class="blog-brand" href="/aichatbot/">🏍️ MotoAI — Cẩm nang thuê xe</a>
-    <nav class="blog-nav">
-      <a href="/aichatbot/">Agent</a><a href="/aichatbot/blog/" aria-current="page">Cẩm nang</a>
-    </nav>
+    <a class="blog-back" href="/aichatbot/">← Agent</a>
+    <a class="blog-brand" href="/aichatbot/blog/">Cẩm nang</a>
+    <div class="blog-header-tools">
+      <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động">Auto</button>
+    </div>
   </header>
+  <p class="blog-status" id="blog-business-status" hidden></p>
+  <nav class="blog-categories" aria-label="Danh mục">
+      <a href="/aichatbot/blog/app/">Ứng dụng</a>
+      <a href="/aichatbot/blog/thue-xe/">Thuê xe</a>
+      <a href="/aichatbot/blog/xe-dien/">Xe điện</a>
+      <a href="/aichatbot/blog/huong-dan/">Hướng dẫn</a>
+      <a href="/aichatbot/blog/an-toan/">An toàn</a>
+      <a href="/aichatbot/blog/dia-phuong/">Địa phương</a>
+  </nav>
   <section class="blog-hero">
     <h1>Cẩm nang thuê xe máy &amp; xe điện</h1>
     <p>Bài viết về ứng dụng thuê xe, bảng giá, xe điện, thủ tục, an toàn và hành trình Hà Nội — viết kèm Agent để bạn hỏi sâu hơn từng chủ đề.</p>
@@ -35,39 +46,10 @@
   <p class="blog-search-note">Tìm theo tiêu đề và từ khóa của các bài đã xuất bản.</p>
   <div class="blog-grid" id="blog-search-results"></div>
   <section>
-    <h2 style="font-size:1.1rem">Danh mục</h2>
-    <div class="blog-grid">
-      <a class="blog-card" href="/aichatbot/blog/app/">
-        <span class="cat">App & Ứng dụng</span>
-        <h3>Ứng dụng web, Agent và cách dùng công cụ thuê xe máy trực tuyến.</h3>
-      </a>
-      <a class="blog-card" href="/aichatbot/blog/thue-xe/">
-        <span class="cat">Thuê xe máy</span>
-        <h3>Giá thuê, loại xe, kỳ thuê và kinh nghiệm thuê xe máy.</h3>
-      </a>
-      <a class="blog-card" href="/aichatbot/blog/xe-dien/">
-        <span class="cat">Xe điện / xe máy điện</span>
-        <h3>Thuê xe điện: pin, phạm vi, sạc và cách chọn xe điện phù hợp.</h3>
-      </a>
-      <a class="blog-card" href="/aichatbot/blog/huong-dan/">
-        <span class="cat">Hướng dẫn / thủ tục</span>
-        <h3>Thủ tục nhận xe, giấy tờ, đặt cọc và quy trình trả xe.</h3>
-      </a>
-      <a class="blog-card" href="/aichatbot/blog/an-toan/">
-        <span class="cat">An toàn / pháp lý</span>
-        <h3>Luật giao thông, an toàn lái xe và trách nhiệm khi thuê xe.</h3>
-      </a>
-      <a class="blog-card" href="/aichatbot/blog/dia-phuong/">
-        <span class="cat">Địa phương / du lịch</span>
-        <h3>Hành trình Hà Nội và vùng ven bằng xe máy thuê.</h3>
-      </a>
-    </div>
-  </section>
-  <section>
     <h2 style="font-size:1.1rem">Bài đã xuất bản</h2>
     <div class="blog-grid">
       <a class="blog-card" href="/aichatbot/blog/app/app-thue-xe-may-la-gi/">
-        <span class="cat">App & Ứng dụng</span>
+        <span class="cat">App &amp; Ứng dụng</span>
         <h2>App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe và thủ tục trong một chỗ</h2>
         <p>Tìm hiểu app thuê xe máy là gì, ứng dụng web MotoAI giúp hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe ngay trên trình duyệt, không cần cài đặt.</p>
       </a>
@@ -80,9 +62,16 @@
   </section>
   <div class="blog-cta">
     <p>Cần trả lời ngay cho tình huống của bạn? Hỏi Agent — trả lời từ dữ liệu cửa hàng, chạy trên máy bạn.</p>
-    <a href="/aichatbot/">⚡ Hỏi Agent</a>
+    <div class="blog-contacts">
+      <a class="blog-contact" href="/aichatbot/">⚡ Hỏi Agent</a>
+      <a class="blog-contact" data-contact-ref="call" href="#">📞 Gọi</a>
+      <a class="blog-contact" data-contact-ref="zalo" href="#">💬 Zalo</a>
+      <a class="blog-contact" data-contact-ref="whatsapp" href="#">🟢 WhatsApp</a>
+      <a class="blog-contact" data-contact-ref="map" href="#">🗺️ Bản đồ</a>
+    </div>
   </div>
   <script src="/aichatbot/assets/js/blog.js"></script>
+  <script type="module" src="/aichatbot/assets/js/blog-app.js"></script>
 </main>
 </body>
 </html>

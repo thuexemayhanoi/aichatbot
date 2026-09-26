@@ -1,14 +1,15 @@
 {
-  "feature_id": "BOT-0260",
-  "feature_desc": "v47.1 reconciliation: re-merge parallel v45b distribution commits (PWA wiring in index.html/main.js/style.css, ci inference-endpoint scan, docs) with the v47 blog/SEO foundation; recreate distribution tooling that was never pushed (tools/gen-icons.py, integrations/wordpress/motoai-agent 1.0.0, tools/build-wordpress-plugin.mjs, integrations/mobile Capacitor foundation, distribution tests)",
-  "run_id": "2026-09-26-v471-reconciliation",
-  "started_at": "2026-09-26T13:28:00Z",
-  "start_commit": "b884c06d8b2f88a7c75bc7407f357e28b0f74741",
-  "last_checkpoint": "CONVERGED at b79f5f4: CI + Distribution + Pages all green on main; 484/484 tests; PWA PNG icons committed by Distribution workflow and live; WordPress plugin ZIP artifact building; live verified: homepage hero + menu, blog/, 6 hubs, pilot articles, search-index, knowledge-index, sitemap.xml, robots.txt, manifest, service-worker, embed.js all 200.",
-  "checkpoint_commit": "b79f5f474cbcdba0c38783e6b63380b6e017acdd",
+  "feature_id": "BLOG-APP-UX-FOUNDATION",
+  "feature_desc": "v54 Blog App Foundation: app-like blog shell, Light/Dark/Auto theme, verified business open/closed status, category nav, contact CTA from business.json, search UX audit, Blog App UX matrix",
+  "run_id": "2026-09-26-blog-app-foundation",
+  "started_at": "2026-09-26T16:00:00Z",
+  "start_commit": "cf241064206dbb73c77db25fb693147f0f72ffd0",
+  "last_checkpoint": "COMPLETED: v54 Blog App Foundation implemented; 525/525 tests green; pushing to main; awaiting CI/Pages verification",
+  "checkpoint_commit": null,
   "tests": {
     "suite": "node --test",
-    "expected_state": "all green (v47 blog suites + distribution suites + legacy suites)"
+    "result": "525/525 pass (509 existing + 16 new blog-app-ux)"
   },
-  "notes": "Root cause: v47 push (34fea38, b884c06) was built from a pre-v45b snapshot and reverted newer v45b content in shared files (ci.yml, README, index.html, main.js, style.css, docs, package.json, embed.js); v45b's workspace-only files (gen-icons.py, WordPress plugin, zip builder, mobile wrapper, distribution tests) had never been pushed, leaving distribution.yml broken on main. Reconciliation restores both feature sets in one tree; no business logic forked, no test weakened."
+  "notes": "NO MASS ARTICLE GENERATION. Matrix: docs/matrix/blog-app-ux-matrix.csv (24 rows, 20 DONE, 4 deferred PLANNED). Report: reports/blog-app-foundation-latest.md",
+  "status": "COMPLETED"
 }

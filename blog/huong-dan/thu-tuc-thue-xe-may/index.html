@@ -15,9 +15,18 @@
   <meta name="twitter:description" content="Hướng dẫn thủ tục thuê xe máy: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ, và dịch vụ giao xe tận nơi.">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/blog.css">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
 </head>
 <body>
 <main class="blog-page blog-article">
+  <header class="blog-header">
+    <a class="blog-back" href="/aichatbot/">← Agent</a>
+    <a class="blog-brand" href="/aichatbot/blog/">Cẩm nang</a>
+    <div class="blog-header-tools">
+      <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động">Auto</button>
+    </div>
+  </header>
+
   <nav class="blog-breadcrumb"><a href="../../">Trang chủ</a> › <a href="../../blog/">Cẩm nang</a> › <a href="../">Hướng dẫn / thủ tục</a></nav>
   <h1>Thủ tục thuê xe máy: giấy tờ, đặt cọc, nhận và trả xe</h1>
   <p class="byline">MotoAI Editorial · 2026-09-26 · Hướng dẫn / thủ tục</p>
@@ -26,7 +35,7 @@
   <h2>Trước khi nhận xe cần chuẩn bị gì</h2>
   <p>Thuê xe máy ở Hà Nội không cần hồ sơ phức tạp, nhưng bạn nên chuẩn bị trước ba thứ: giấy tờ tùy thân (CCCD/hộ chiếu), bằng lái phù hợp với dung tích xe, và tiền đặt cọc. Với khách nước ngoài, bạn cần hộ chiếu và giấy phép lái xe quốc tế (IDP) hoặc bằng lái Việt Nam được công nhận.</p>
   <h2>Tiền đặt cọc</h2>
-  <p>Cửa hàng thu tiền đặt cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, và hoàn trả khi bạn trả xe đúng tình trạng. Mức cọc chính xác cho từng xe được xác nhận lúc bạn đặt xe — hãy hỏi rõ trước khi cầm tiền.</p>
+  <p>Cửa hàng thu tiền đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe, và hoàn trả khi bạn trả xe đúng tình trạng. Mức cọc chính xác cho từng xe được xác nhận lúc bạn đặt xe — hãy hỏi rõ trước khi cầm tiền.</p>
   <h2>Nhận và trả xe</h2>
   <p>Giờ hoạt động của cửa hàng là 09:00 - 21:00 hằng ngày, nên bạn nên sắp xếp nhận và trả xe trong khung giờ này. Khi nhận xe, hãy dành vài phút: kiểm tra đèn, còi, phanh, lốp, mức xăng/diện và chụp lại vài tấm ảnh tình trạng xe. Khi trả xe, nguyên tắc chung là hoàn trả nhiên liệu và giờ giống lúc nhận để tránh phát sinh thêm chi phí.</p>
   <h2>Giao xe tận nơi</h2>
@@ -36,7 +45,13 @@
   </article>
   <div class="blog-cta">
     <p>Hỏi Agent về chủ đề bài viết này — trả lời từ dữ liệu cửa hàng đã xác minh.</p>
-    <a href="../../">⚡ Hỏi Agent</a>
+  <div class="blog-contacts">
+    <a class="blog-contact" href="/aichatbot/">⚡ Hỏi Agent</a>
+    <a class="blog-contact" data-contact-ref="call" href="#">📞 Gọi</a>
+    <a class="blog-contact" data-contact-ref="zalo" href="#">💬 Zalo</a>
+    <a class="blog-contact" data-contact-ref="whatsapp" href="#">🟢 WhatsApp</a>
+    <a class="blog-contact" data-contact-ref="map" href="#">🗺️ Bản đồ</a>
+  </div>
   </div>
     <footer class="blog-article-footer">
     <span>Cẩm nang thuê xe máy — Thuê xe máy Hà Nội Nguyễn Tú</span>
@@ -49,6 +64,7 @@
   <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Cẩm nang","item":"https://thuexemayhanoi.github.io/aichatbot/blog/"},{"@type":"ListItem","position":2,"name":"Hướng dẫn / thủ tục","item":"https://thuexemayhanoi.github.io/aichatbot/blog/huong-dan/"},{"@type":"ListItem","position":3,"name":"Thủ tục thuê xe máy: giấy tờ, đặt cọc, nhận và trả xe","item":"https://thuexemayhanoi.github.io/aichatbot/blog/huong-dan/thu-tuc-thue-xe-may/"}]}
   </script>
+  <script type="module" src="/aichatbot/assets/js/blog-app.js"></script>
 </main>
 </body>
 </html>

@@ -182,3 +182,31 @@ Khi được yêu cầu rõ ràng, run theo lô:
 Đọc README → docs/BLOG-FACTORY.md (procedure) → lock → viết 50 bài 1 lô
 → QA từng bài → publish transaction từng bài → validate + npm test → unlock → report
 ```
+
+# BLOG APP UX FOUNDATION (v54 — 2026-09-26)
+
+MotoAI gồm **hai bề mặt của cùng một hệ sản phẩm**, dùng chung design language (theme tokens trong `assets/css/style.css`), verified business data (`data/business/business.json`), contact actions, navigation philosophy, accessibility, mobile safe-area và PWA/app-like UX:
+
+1. **Agent Application** — `/` = chatbot full-screen. Mở URL là vào ngay Agent. KHÔNG bị biến thành landing page.
+2. **Blog / Cẩm nang Application** — `/blog/` = content application. Blog là ecosystem phụ được mở từ Agent (menu ☰ → Cẩm nang; mỗi blog page có nút "← Agent" và CTA "⚡ Hỏi Agent").
+
+## Nền tảng blog v54
+
+- **Shell thống nhất**: mọi blog page (home + 6 hub + 2 bài pilot) dùng chung compact app header (← Agent, Cẩm nang, theme control), category bar 6 danh mục (một hàng cuộn ngang, `aria-current="page"` trên hub hiện tại), breadcrumb trên hub/bài.
+- **Theme Light/Dark/Auto** (`assets/js/theme.js`): preference lưu `localStorage('motoai-theme')`, áp qua `<html data-motoai-theme="dark">` — cùng attribute mà Agent tokens đã theme. Inline head script áp theme trước first paint (no flash). Toggle `#blog-theme-toggle` cycle Auto → ☀️ → 🌙. Theme trên Agent root: DEFERRED (xem `docs/matrix/blog-app-ux-matrix.csv` BLOGUX-0021).
+- **Business open/closed status** (`assets/js/business-status.js`): tính theo giờ trong timezone kinh doanh (`Asia/Ho_Chi_Minh`, từ `business.json`), không theo giờ thiết bị; xử lý midnight-wrap; thiếu dữ liệu → ẩn chip, không đoán.
+- **Contact CTA**: `.blog-contacts` row (⚡ Hỏi Agent + Gọi/Zalo/WhatsApp/Bản đồ) — href resolve runtime từ `business.json` qua `data-contact-ref` (`assets/js/blog-app.js`); KHÔNG hard-code phone/Zalo/WhatsApp/Maps trong UI runtime.
+- **Search**: giữ nguyên `assets/js/blog.js` (lazy index + debounce + empty state) — audited, không đổi.
+
+## NO MASS ARTICLE GENERATION
+
+Blog App Foundation KHÔNG sinh bài. `data/blog/content-matrix.csv` giữ nguyên 2.000 dòng PLANNED; chỉ 2 bài pilot PUBLISHED. Ma trận UI/UX riêng: `docs/matrix/blog-app-ux-matrix.csv`.
+
+## Roadmap theo phase
+
+- v53 — Chat Shell / interaction consistency (DONE)
+- v54 — Blog App Foundation (phase này)
+- v55 — Blog UX + SEO Matrix execution
+- v56 — Full-system audit & polish
+
+Sau v56 mới scale article production theo `docs/BLOG-FACTORY.md`.
