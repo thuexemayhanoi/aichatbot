@@ -1,8 +1,12 @@
 <?php
 /**
- * Uninstall — xoá duy nhất option của plugin, không để lại dữ liệu khác.
+ * Uninstall cleanup for MotoAI Agent.
+ * Runs only when the plugin is deleted from WordPress admin.
  */
 
-defined('WP_UNINSTALL_PLUGIN') || exit;
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+	exit;
+}
 
-delete_option( 'motoai_agent_settings' );
+// The plugin stores nothing else: no transients, no user meta, no tables.
+delete_option('motoai_agent_settings');

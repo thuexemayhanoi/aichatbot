@@ -1,41 +1,39 @@
 === MotoAI Agent ===
 Contributors: thuexemayhanoi
-Tags: chatbot, rental, motorbike, assistant, widget
-Requires at least: 6.0
+Tags: chatbot, support, widget, motorbike rental, local-first
+Requires at least: 5.8
 Tested up to: 6.7
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPL-2.0-or-later
+License URI: https://opensource.org/licenses/GPL-2.0
 
-Lớp loader mỏng cho widget trợ lý thuê xe máy MotoAI. KHÔNG bundle engine chat — chỉ in một thẻ script async tải embed.js từ URL canonical.
+Lightweight loader for the MotoAI motorbike-rental chatbot. No API key, no backend, no bundled engine — the canonical Agent is loaded from GitHub Pages.
 
 == Description ==
 
-Plugin MotoAI Agent gắn widget trợ lý thuê xe máy (MotoAI) vào site WordPress:
+MotoAI Agent adds the MotoAI chat widget to any WordPress site with one settings page. The plugin is a thin, safe loader: it prints a single async script tag that loads the canonical embed.js. All chat logic (deterministic rules, BM25 + hybrid retrieval, calculator, recommendation) stays on GitHub Pages and is updated there — updating the Agent does NOT require reinstalling or updating this plugin.
 
-* Loader mỏng: một thẻ `<script async>` tải embed.js từ GitHub Pages canonical — engine luôn mới nhất, không cần cài lại plugin.
-* Widget chạy hoàn toàn trên trình duyệt người dùng (iframe cách ly): không API key, không backend, không inference từ xa, không gửi dữ liệu khách về server WordPress.
-* Shortcode `[motoai_agent lang="vi" theme="auto" source="wordpress" open="false"]`.
-* Visibility rules: bật/tắt, mobile/desktop, include/exclude page IDs.
-* Settings API chuẩn, sanitize toàn bộ input, escape toàn bộ output, nonce + capability `manage_options`.
+Privacy: the plugin stores only its own settings. Chat conversations are processed in the user's browser (local-first); no conversation data is sent to your WordPress server or to any inference API.
 
 == Installation ==
 
-1. Tải `dist/motoai-agent.zip` (GitHub artifact/Release của repo) và cài qua Plugins → Add New → Upload Plugin.
-2. Kích hoạt plugin.
-3. Settings → MotoAI Agent → bật Agent.
+1. Upload `motoai-agent.zip` via Plugins → Add Plugin → Upload Plugin, then activate.
+2. Open Settings → MotoAI Agent and enable the Agent.
+3. Optional: restrict pages via include/exclude page IDs, or place `[motoai_agent]` in any post.
 
 == Frequently Asked Questions ==
 
-= Widget có gửi dữ liệu khách đi đâu không? =
+= Does it need an API key? =
+No. There is no OpenAI/Anthropic/Google/Mistral key, no backend, no paid inference. Static CDN asset delivery only.
 
-Không. Engine chat chạy trong iframe trên trình duyệt người dùng. Plugin chỉ lưu option cấu hình của chính nó.
+= How do I update the chatbot? =
+You usually don't. The engine lives on GitHub Pages and is updated centrally. Only reinstall the plugin when its loader/settings change.
 
-= Cần cập nhật plugin mỗi khi Agent cập nhật không? =
-
-Không. Engine sống ở GitHub Pages; site tự nhận bản mới ở lần tải sau.
+= Does it work with caching plugins? =
+Yes. The loader is a plain async script tag in wp_footer and is cache-safe.
 
 == Changelog ==
 
 = 1.0.0 =
-* Bản đầu: loader + shortcode + visibility rules + Settings API.
+* Initial release: settings page (Settings API), visibility rules, device rules, include/exclude pages, auto-open with delay, `[motoai_agent]` shortcode, uninstall cleanup.
