@@ -9,6 +9,7 @@ import { parseQueryConfig } from '../../src/app/query-config.js';
 import { detectCapabilities } from '../../src/ai/capability.js';
 import { DEFAULT_CHIPS, nextSuggestions, resolveChipHref } from '../../src/app/suggestions.js';
 import { ENABLE_STORAGE_KEY } from './ai-settings.js';
+import { initPwa } from './pwa.js';
 
 const DATA_FILES = [
   ['business', 'data/business/business.json'],
@@ -45,6 +46,13 @@ async function init() {
     // business.json — never hard-coded in this UI logic.
     wireMenu();
   }
+  // Mobile wrapper (Capacitor) detection: label the distribution channel
+  // when the app runs inside the Android/iOS shell (spec §21).
+  if (!config.source && window.Capacitor?.isNativePlatform?.()) {
+    const platform = window.Capacitor.getPlatform?.(); // 'android' | 'ios'
+    if (platform === 'android' || platform === 'ios') config.source = platform;
+  }
+  initPwa(config); // direct/PWA mode only; no-op in embed mode
   document.title = config.lang === 'en' ? 'MotoAI — Hanoi motorbike rental assistant' : document.title;
 
   const elements = {
