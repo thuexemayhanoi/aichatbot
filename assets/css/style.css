@@ -465,13 +465,13 @@ body[data-motoai-embed="1"] .motoai-app {
 .motoai-shell {
   max-width: 720px;
   margin: 0 auto;
-  padding: calc(env(safe-area-inset-top, 0px) + var(--space-2)) var(--space-2) var(--space-3);
   display: flex;
   flex-direction: column;
 }
 
-/* The chat app fills the first viewport on its own. */
-.motoai-shell .motoai-app { height: auto; min-height: calc(100dvh - 24px); }
+/* The chat app fills the viewport exactly, edge-to-edge — "full màn hình như app".
+   The SEO copy lives below the 100dvh app, so it is never in the first viewport. */
+.motoai-shell .motoai-app { height: 100dvh; min-height: 100dvh; }
 
 /* Unobtrusive SEO copy below the chatbot (hidden in embed mode). */
 .motoai-seo { padding: var(--space-3) var(--space-2) 0; }

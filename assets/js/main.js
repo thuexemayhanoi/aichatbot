@@ -68,6 +68,7 @@ async function init() {
     drawerBackdrop: document.getElementById('motoai-drawer-backdrop'),
     drawerClose: document.getElementById('motoai-drawer-close'),
     menuAddress: document.getElementById('motoai-menu-address'),
+    menuContact: document.getElementById('motoai-menu-contact'),
     menuZalo: document.getElementById('motoai-menu-zalo'),
     menuCall: document.getElementById('motoai-menu-call'),
     menuMap: document.getElementById('motoai-menu-map'),
@@ -100,6 +101,13 @@ async function init() {
     });
     elements.menuAddress?.addEventListener('click', () => {
       elements.input.value = 'Địa chỉ ở đâu?';
+      autoGrow();
+      submit();
+    });
+    // Liên hệ (Kiểu ChatGPT-style menu): the Agent answers from verified
+    // business.json — no hard-coded contact info in the UI.
+    elements.menuContact?.addEventListener('click', () => {
+      elements.input.value = 'Liên hệ';
       autoGrow();
       submit();
     });

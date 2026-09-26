@@ -37,6 +37,37 @@ test('visible chat header title is "Hỗ trợ Agent" (MotoAI stays internal)', 
   assert.match(html, /ứng dụng thuê xe máy điện/i);
 });
 
+// --- 5b. Chatbot opens full-screen like an app (ChatGPT-style) ---
+test('chat app fills the viewport exactly — no hero, no scroll to reach the chat', () => {
+  // The shell adds no padding of its own; the app itself is exactly 100dvh.
+  // (Embed-mode rules like `body[data-motoai-embed="1"] .motoai-shell` are exempt.)
+  const shellRule = css.match(/^\.motoai-shell\s*\{[^}]*\}/m)?.[0] ?? '';
+  assert.ok(shellRule.includes('max-width: 720px'), 'shell keeps the centered column');
+  assert.ok(!shellRule.includes('padding'), 'shell must not pad the app away from the edges');
+  assert.match(css, /\.motoai-shell \.motoai-app\s*\{\s*height:\s*100dvh;\s*min-height:\s*100dvh;\s*\}/);
+  // SEO copy sits below the 100dvh app — never inside the first viewport.
+  assert.match(css, /\.motoai-seo\s*\{/);
+});
+
+// --- 5c. Menu drawer = navigation to the blog ecosystem + contact actions ---
+test('☰ menu navigates the blog ecosystem and contact actions', () => {
+  const drawer = html.match(/<ul class="motoai-drawer-list">([\s\S]*?)<\/ul>/)?.[1] ?? '';
+  assert.ok(drawer, 'drawer list present');
+  // Every blog hub route is reachable from the menu.
+  for (const hub of ['blog/', 'blog/app/', 'blog/thue-xe/', 'blog/xe-dien/', 'blog/huong-dan/', 'blog/an-toan/', 'blog/dia-phuong/']) {
+    assert.ok(drawer.includes(`/aichatbot/${hub}`), `menu must link /aichatbot/${hub}`);
+  }
+  // ChatGPT-style condensed entry: Liên hệ asks the Agent (no hard-coded contacts).
+  assert.match(drawer, /id="motoai-menu-contact">📞 Liên hệ</);
+  assert.match(mainJs, /menuContact/);
+  assert.match(mainJs, /elements\.input\.value = 'Liên hệ';/);
+  // Contact hrefs still resolve only from verified business.json.
+  assert.match(mainJs, /fillMenuLinks/);
+  for (const source of [drawer, css]) {
+    assert.ok(!source.includes(business.contact.phone), 'menu must not hard-code the phone');
+  }
+});
+
 // --- 6. Header subtitle / address ---
 test('visible subtitle contains the verified business address', () => {
   const m = /<p class="motoai-subtitle"[^>]*>([^<]+)<\/p>/.exec(html);
