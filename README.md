@@ -56,7 +56,7 @@ LLM **tùy chọn hoàn toàn** — không có API key, không backend, không p
 
 ## UI khách hàng (v45)
 
-Header hiển thị **"Hỗ trợ Agent"** + subtitle địa chỉ verified ("Thuê xe máy Nguyễn Tú — 112 Nguyễn Văn Cừ, Long Biên, Hà Nội"); MotoAI chỉ còn là tên nội bộ của dự án. Quick chips: 4 chip chính (💰 Giá thuê / 🛵 Xe ga / 🏍️ Xe số / 📅 Theo tháng) trên một hàng cuộn ngang, sau mỗi câu trả lời chips contextual được chọn deterministic từ intent + slots (`src/app/suggestions.js`) — LLM không sinh suggestion, UI không hard-code giá. Nhãn khách hàng cho Local AI là **"Agent"**: "Đang chuẩn bị Agent...", "Agent sẵn sàng" (tự ẩn), model id/WebLLM/VRAM không bao giờ hiện ở UI thường (chỉ ở `?debug=1`, console, docs).
+Header hiển thị **"Hỗ trợ Agent"** + subtitle địa chỉ verified ("Thuê xe máy Nguyễn Tú — 112 Nguyễn Văn Cừ, Long Biên, Hà Nội"); MotoAI chỉ còn là tên nội bộ của dự án. Quick chips: 12 primary tag cố định (v53) trên một hàng cuộn ngang — thanh tag KHÔNG bao giờ bị thay bằng chips contextual sau mỗi câu trả lời. Primary tag là action độc lập (`app.sendFresh`): chạy với slot vehicle/duration đã xoá sạch nên không bị dính ngữ cảnh câu trước; free-text chat vẫn dùng context memory đầy đủ. Liên hệ/Maps/WhatsApp luôn resolve từ `data/business/business.json` (`src/app/suggestions.js`) — LLM không sinh suggestion, UI không hard-code giá. Nhãn khách hàng cho Local AI là **"Agent"**: "Đang chuẩn bị Agent...", "Agent sẵn sàng" (tự ẩn), model id/WebLLM/VRAM không bao giờ hiện ở UI thường (chỉ ở `?debug=1`, console, docs).
 
 ## Thứ tự ưu tiên trả lời (không đổi)
 

@@ -89,7 +89,20 @@ export function createMotoApp({
    * guard keeps the deterministic template answer.
    */
   async function send(text) {
-    const result = await engine.sendMessage(text);
+    return finish(await engine.sendMessage(text), text);
+  }
+
+  /**
+   * Primary quick-tag / dock action (v53): explicit navigation — runs with
+   * topic-skewing slots cleared so it can never inherit a stale vehicle or
+   * duration from an earlier turn. Free-text chat keeps full memory.
+   */
+  async function sendFresh(text) {
+    return finish(await engine.sendFreshMessage(text), text);
+  }
+
+  /** Shared post-pipeline: planner gate, optional LLM phrasing, blog tier, LLM fallback. */
+  async function finish(result, text) {
     warmSemantic();
 
     // Planner gate: the local LLM may only touch turns whose route allows it
@@ -151,5 +164,5 @@ export function createMotoApp({
     engine.resetContext();
   }
 
-  return { engine, search, localLlm, send, resetContext, attachBlogIndex, data };
+  return { engine, search, localLlm, send, sendFresh, resetContext, attachBlogIndex, data };
 }

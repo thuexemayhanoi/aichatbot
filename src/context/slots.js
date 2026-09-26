@@ -69,7 +69,25 @@ export function createSlots({ store, sessionId, ttlMs = null } = {}) {
     store.remove(key);
   }
 
-  return { get, updateFromAnalysis, clear, key };
+  /**
+   * Selectively reset named fields (v53 primary quick actions).
+   * Only listed fields become null; everything else in the conversation
+   * memory is untouched — used so a quick-tag action never inherits a
+   * stale vehicle/duration from a previous turn.
+   * @returns the updated slots.
+   */
+  function clearFields(fields) {
+    if (!Array.isArray(fields) || fields.length === 0) return get();
+    const current = get();
+    const next = { ...current };
+    for (const field of fields) {
+      if (Object.prototype.hasOwnProperty.call(next, field)) next[field] = null;
+    }
+    store.set(key, next, { ttlMs });
+    return get();
+  }
+
+  return { get, updateFromAnalysis, clear, clearFields, key };
 }
 
 /** Prefer a concrete model over a category when both appear in one turn. */

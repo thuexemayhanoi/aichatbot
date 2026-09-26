@@ -7,7 +7,7 @@ import { createConfig } from '../../src/config/defaults.js';
 import { createMotoApp } from '../../src/app/moto-app.js';
 import { parseQueryConfig } from '../../src/app/query-config.js';
 import { detectCapabilities } from '../../src/ai/capability.js';
-import { DEFAULT_CHIPS, nextSuggestions, resolveChipHref } from '../../src/app/suggestions.js';
+import { DEFAULT_CHIPS, resolveChipHref } from '../../src/app/suggestions.js';
 import { ENABLE_STORAGE_KEY } from './ai-settings.js';
 import { initPwa } from './pwa.js';
 
@@ -80,7 +80,9 @@ async function init() {
     aiOff: document.getElementById('motoai-ai-off'),
     reset: document.getElementById('motoai-reset'),
     dockPrice: document.getElementById('motoai-dock-price'),
-    dockMap: document.getElementById('motoai-dock-map')
+    dockContact: document.getElementById('motoai-dock-contact'),
+    dockMap: document.getElementById('motoai-dock-map'),
+    menuWhatsapp: document.getElementById('motoai-menu-whatsapp')
   };
   const DEBUG = new URLSearchParams(location.search).get('debug') === '1';
 
@@ -105,20 +107,28 @@ async function init() {
     elements.menuAddress?.addEventListener('click', () => {
       elements.input.value = 'Địa chỉ ở đâu?';
       autoGrow();
-      submit();
+      submit(null, { fresh: true });
     });
     // Liên hệ (Kiểu ChatGPT-style menu): the Agent answers from verified
     // business.json — no hard-coded contact info in the UI.
     elements.menuContact?.addEventListener('click', () => {
       elements.input.value = 'Liên hệ';
       autoGrow();
-      submit();
+      submit(null, { fresh: true });
     });
     // Dock "Giá thuê": run the verified Agent price flow — never hard-coded prices.
     elements.dockPrice?.addEventListener('click', () => {
       elements.input.value = 'Giá thuê xe bao nhiêu?';
       autoGrow();
-      submit();
+      submit(null, { fresh: true });
+    });
+    // Dock "Liên hệ": open the drawer straight into the verified contact group
+    // (Gọi / Zalo / WhatsApp / Địa chỉ / Bản đồ from business.json) — no
+    // hard-coded external contact URL on the dock itself.
+    elements.dockContact?.addEventListener('click', () => {
+      setDrawer(true);
+      const groupBtn = document.getElementById('motoai-group-lh-btn');
+      if (groupBtn && groupBtn.getAttribute('aria-expanded') !== 'true') groupBtn.click();
     });
     // Grouped menu accordion (v50): one group open at a time, ARIA-backed.
     const groupButtons = [...document.querySelectorAll('.motoai-group-btn')];
@@ -152,6 +162,7 @@ async function init() {
       el.hidden = false;
     };
     setHref(elements.menuZalo, resolveChipHref({ ref: 'zalo' }, businessData));
+    setHref(elements.menuWhatsapp, resolveChipHref({ ref: 'whatsapp' }, businessData));
     setHref(elements.menuCall, resolveChipHref({ ref: 'phone_uri' }, businessData));
     setHref(elements.menuMap, resolveChipHref({ ref: 'maps' }, businessData));
     // Dock "Bản đồ": same verified maps URL — the canonical link lives in business.json.
@@ -229,6 +240,8 @@ async function init() {
 
   // Quick actions: ONE horizontal scrollable row. Query chips go through the
   // deterministic engine; link chips resolve verified hrefs from business.json.
+  // The 12 primary tags are FIXED (v53): the bar never swaps to contextual
+  // chips after an answer — it renders once and stays put.
   function renderChips(chips) {
     elements.quick.replaceChildren();
     for (const chip of chips) {
@@ -258,10 +271,15 @@ async function init() {
         button.type = 'button';
         button.className = 'motoai-chip';
         button.textContent = chip.label;
-        button.addEventListener('click', () => { elements.input.value = chip.query; autoGrow(); submit(); });
+        // Primary tags are explicit actions: always run FRESH so a stale
+        // vehicle/duration from an earlier turn can never skew the answer.
+        button.addEventListener('click', () => { elements.input.value = chip.query; autoGrow(); submit(null, { fresh: true }); });
         elements.quick.appendChild(button);
       }
     }
+    // Re-render must never keep an old horizontal scroll position (v53):
+    // always start at the first chip, never half-clipped on the left.
+    elements.quick.scrollLeft = 0;
   }
   renderChips(DEFAULT_CHIPS);
 
@@ -284,8 +302,8 @@ async function init() {
     elements.composer.setAttribute('aria-busy', value ? 'true' : 'false');
   }
 
-  async function submit() {
-    const text = elements.input.value.trim();
+  async function submit(overrideText = null, { fresh = false } = {}) {
+    const text = (overrideText ?? elements.input.value).trim();
     if (!text || busy) return;
     setBusy(true);
     elements.input.value = '';
@@ -294,7 +312,8 @@ async function init() {
     showTyping();
     setStatus(elements.status, 'Đang trả lời…');
     try {
-      const result = await app.send(text);
+      // fresh = quick-tag/dock action: engine clears topic-skewing slots first.
+      const result = fresh ? await app.sendFresh(text) : await app.send(text);
       hideTyping();
       renderMessage(elements.messages, result.reply);
       if (DEBUG && result.source) {
@@ -303,11 +322,7 @@ async function init() {
           text: `[debug] nguồn: ${result.source}` // internal trace, debug mode only
         });
       }
-      // Contextual follow-up chips, chosen deterministically from the turn.
-      renderChips(nextSuggestions({
-        intentId: result.analysis?.intent?.id ?? null,
-        slots: result.slots ?? {}
-      }));
+      // Primary bar is FIXED (v53): no contextual chip swap after an answer.
       setStatus(elements.status, '');
       warmBlogKnowledge();
     } catch (error) {

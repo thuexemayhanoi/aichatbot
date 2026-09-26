@@ -5,7 +5,7 @@
  * Agent chips open the local Agent flow in the UI.
  */
 
-const LINK_REFS = Object.freeze({ zalo: 'zalo', call: 'phone_uri', map: 'maps' });
+const LINK_REFS = Object.freeze({ zalo: 'zalo', call: 'phone_uri', map: 'maps', whatsapp: 'whatsapp' });
 
 /** Primary quick-action bar: ONE horizontal row, fixed order, never shortened. */
 export const DEFAULT_CHIPS = Object.freeze([
@@ -29,6 +29,7 @@ export function resolveChipHref(chip, business) {
   const value = chip?.ref === LINK_REFS.zalo ? contact.zalo
     : chip?.ref === LINK_REFS.call ? contact.phone_uri
     : chip?.ref === LINK_REFS.map ? contact.maps
+    : chip?.ref === LINK_REFS.whatsapp ? contact.whatsapp
     : null;
   return typeof value === 'string' && value.length > 0 ? value : '';
 }

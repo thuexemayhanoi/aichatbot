@@ -357,19 +357,23 @@ test('responsive: safe-area insets survive at every breakpoint', () => {
   }
 });
 
-// --- 5g. Bottom dock (v50): 4-item customer navigation ---
-test('bottom dock: exactly 4 items, short labels, correct actions, single row', () => {
+// --- 5g. Bottom dock (v53): flat bottom navigation, NOT tag-like ---
+test('bottom dock: exactly 4 items, flat nav look, verified actions, one row', () => {
   const dockStart = html.indexOf('class="motoai-dock"');
   const dock = html.slice(dockStart, html.indexOf('</nav>', dockStart));
   assert.ok(dock, 'dock present');
-  assert.equal((dock.match(/motoai-dock-item/g) || []).length, 4, 'dock has exactly 4 items');
-  for (const label of ['🛵 Dịch vụ', '☎️ Liên hệ', '💰 Giá thuê', '🗺️ Bản đồ']) {
-    assert.ok(dock.includes(label), `dock must contain "${label}"`);
+  assert.equal((dock.match(/class="motoai-dock-item"/g) || []).length, 4, 'dock has exactly 4 items');
+  for (const label of ['Dịch vụ', 'Liên hệ', 'Giá thuê', 'Bản đồ']) {
+    assert.ok(dock.includes(`>${label}<`), `dock must contain "${label}"`);
   }
+  // Icon-above-label markup (app bottom-nav, not a chip row).
+  assert.match(dock, /motoai-dock-icon/);
   // Dịch vụ routes to the existing service hub — no invented page.
-  assert.match(dock, /href="\/aichatbot\/blog\/thue-xe\/">🛵 Dịch vụ/);
-  // Liên hệ opens the mandated external URL safely.
-  assert.match(dock, /href="https:\/\/share\.google\/jXpr3Dkq1yUyTT1Kr"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
+  assert.match(dock, /href="\/aichatbot\/blog\/thue-xe\/"/);
+  // Liên hệ: NO hard-coded contact URL — it opens the drawer contact group.
+  assert.ok(!html.includes('share.google'), 'no hard-coded share.google URL anywhere');
+  assert.match(dock, /id="motoai-dock-contact"/);
+  assert.match(mainJs, /dockContact\?\.addEventListener\('click', \(\) => \{[\s\S]*?setDrawer\(true\);[\s\S]*?motoai-group-lh-btn[\s\S]*?groupBtn\.click\(\)/);
   // Giá thuê is an Agent action — no hard-coded price values in the dock.
   assert.match(dock, /id="motoai-dock-price"/);
   assert.ok(!/\d{3}[.,]?\d{3}\s*(đ|vnd|VND)/.test(dock), 'dock must not hard-code prices');
@@ -381,8 +385,54 @@ test('bottom dock: exactly 4 items, short labels, correct actions, single row', 
   assert.ok(html.indexOf('id="motoai-composer"') < dockStart, 'dock after composer');
   assert.match(css, /\.motoai-dock\s*\{[^}]*grid-template-columns:\s*repeat\(4, 1fr\);/s);
   assert.match(css, /\.motoai-dock-item\s*\{[^}]*min-height:\s*44px;/s);
+  // Flat nav contract: transparent cells, no pill, no per-item border.
+  const item = css.match(/\.motoai-dock-item\s*\{[\s\S]*?\}/)[0];
+  assert.match(item, /background:\s*transparent/, 'dock cells are transparent');
+  assert.match(item, /border:\s*none/, 'no per-item border');
+  assert.match(item, /border-radius:\s*0/, 'no pill radius');
+  assert.match(item, /color:\s*var\(--color-text-muted\)/, 'muted default text');
+  // Hover ONLY under fine-pointer media query — never sticky on touch.
+  assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)\s*\{[\s\S]*?\.motoai-dock-item:hover\s*\{[^}]*color:\s*var\(--color-primary\);/);
+  assert.match(css, /\.motoai-dock-item:active\s*\{\s*color:\s*var\(--color-primary\);\s*\}/, 'tap feedback');
+  assert.match(css, /-webkit-tap-highlight-color:\s*transparent/, 'no sticky grey flash on iOS');
+  // No persistent selected state — dock items are actions, not tabs.
+  assert.ok(!/\.motoai-dock-item\.motoai-active|aria-current/.test(css + dock), 'no sticky selected state');
   assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-dock\s*\{\s*display:\s*none;/, 'embed hides the dock');
-  assert.ok(!/flex-wrap:\s*wrap/.test(css.match(/\.motoai-dock\s*\{[\s\S]*?\}/)[0]), 'dock never wraps');
+  // Dark/light contrast: dock never renders dark text on a purple surface.
+  assert.ok(!/background:\s*var\(--color-primary\)/.test(item), 'dock cells are never purple');
+});
+
+// --- 5g2. Contact group (v53): WhatsApp from business.json, no hard-coded contacts ---
+test('contact group: WhatsApp + Zalo + Gọi + Bản đồ all resolve from verified business.json', () => {
+  const drawerStart = html.indexOf('<nav class="motoai-drawer"');
+  const drawer = html.slice(drawerStart, html.indexOf('</nav>', drawerStart));
+  assert.match(drawer, /id="motoai-menu-whatsapp"/, 'WhatsApp menu item exists');
+  assert.match(mainJs, /setHref\(elements\.menuWhatsapp, resolveChipHref\(\{ ref: 'whatsapp' \}, businessData\)\)/);
+  // resolveChipHref resolves the whatsapp ref exactly from business.json.
+  assert.equal(resolveChipHref({ ref: 'whatsapp' }, business), business.contact.whatsapp);
+  assert.equal(resolveChipHref({ ref: 'whatsapp' }, { contact: {} }), '', 'missing data -> empty href');
+  // No hard-coded phone/Zalo/WhatsApp/Maps anywhere in the UI markup.
+  for (const src of [html]) {
+    assert.ok(!src.includes(business.contact.phone), 'no hard-coded phone');
+    assert.ok(!src.includes(business.contact.zalo), 'no hard-coded Zalo URL');
+    assert.ok(!src.includes(business.contact.whatsapp), 'no hard-coded WhatsApp URL');
+    assert.ok(!src.includes(business.contact.maps), 'no hard-coded Maps URL');
+  }
+});
+
+// --- 5g3. Quick tag bar is FIXED (v53) ---
+test('quick bar: 12 primary tags fixed — never swapped by contextual chips', () => {
+  // UI never imports nextSuggestions and never re-renders the bar per-turn.
+  assert.ok(!mainJs.includes('nextSuggestions'), 'main.js must not use contextual suggestions');
+  assert.match(mainJs, /import \{ DEFAULT_CHIPS, resolveChipHref \} from/);
+  // Only the initial render and the reset render DEFAULT_CHIPS.
+  assert.equal((mainJs.match(/renderChips\(DEFAULT_CHIPS\)/g) || []).length, 2, 'initial render + reset render only');
+  // After an answer the bar is NOT re-rendered (no contextual swap call).
+  assert.ok(!/renderChips\(nextSuggestions/.test(mainJs), 'submit must not swap the primary bar');
+  // One row contract unchanged.
+  assert.match(css, /\.motoai-quick\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*overflow-x:\s*auto;[^}]*overflow-y:\s*hidden/s);
+  // Scroll resets to the first chip on every render — no half-clipped chip.
+  assert.match(mainJs, /elements\.quick\.scrollLeft = 0;/);
 });
 
 // --- 5h. Grouped menu accordion (v50) ---

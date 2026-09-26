@@ -198,8 +198,26 @@ export function createEngine({
     events.emit('context-reset', { sessionId: session.id });
   }
 
+  /**
+   * A fresh action turn (v53): primary quick tags / dock actions are explicit
+   * navigation, so topic-skewing slots (vehicle, duration, ...) are cleared
+   * first and any pending clarification agenda is dropped. Free-text turns
+   * keep the full conversational memory (sendMessage is unchanged).
+   * @returns the same shape as sendMessage.
+   */
+  const FRESH_FIELDS = Object.freeze([
+    'vehicle', 'durationDays', 'dateRange', 'transmission', 'electric',
+    'luggage', 'usage', 'budget', 'destination'
+  ]);
+  async function sendFreshMessage(text, { resetFields = FRESH_FIELDS } = {}) {
+    agenda.clear();
+    slots.clearFields(resetFields);
+    return sendMessage(text);
+  }
+
   return {
     sendMessage,
+    sendFreshMessage,
     session,
     history,
     slots,
