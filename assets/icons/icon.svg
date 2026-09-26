@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="MotoAI">
+  <!-- Placeholder vector icon: indigo tile + white motorbike glyph.
+       PNG raster equivalents are generated deterministically by
+       tools/gen-icons.py (run in CI) for full PWA installability. -->
+  <rect width="512" height="512" rx="96" fill="#4f46e5"/>
+  <circle cx="160" cy="344" r="64" fill="none" stroke="#ffffff" stroke-width="24"/>
+  <circle cx="352" cy="344" r="64" fill="none" stroke="#ffffff" stroke-width="24"/>
+  <path d="M160 344 L240 344 L288 216 L344 216" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M288 216 L344 216 L352 344" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="344" cy="216" r="18" fill="#ffffff"/>
+  <path d="M216 168 h96" stroke="#ffffff" stroke-width="20" stroke-linecap="round"/>
+</svg>
