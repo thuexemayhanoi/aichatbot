@@ -18,7 +18,12 @@ src/core, src/context, src/storage, src/utils
 assets/                  # UI trực tiếp (HTML/CSS/JS module, không framework)
 embed.js                 # Embed widget (iframe isolation, không phụ thuộc)
 tests/                   # 292 test (node --test): unit, integration, golden conversations
-docs/                    # LOCAL-AI.md, EMBED.md, ARCHITECTURE.md, COMPATIBILITY.md
+docs/                    # LOCAL-AI.md, EMBED.md, ARCHITECTURE.md, COMPATIBILITY.md, WORKFLOW.md, TESTING.md, UI-UX.md
+docs/matrix/             # Master Matrix (203 tasks, BOT-0001..BOT-0203) + test matrix
+docs/state/active-work.json  # checkpoint/lock cho các scheduled run
+reports/                 # evidence report theo từng run
+tools/gen-matrix.mjs     # tái tạo Master Matrix (idempotent)
+.github/workflows/ci.yml # CI: full tests + secret scan + bundle guard
 ```
 
 ## Thứ tự ưu tiên trả lời (không đổi)
@@ -37,6 +42,8 @@ npm test        # node --test — 292 tests
 ```
 
 Golden conversation regression nằm ở `tests/integration/golden.test.js`, kỳ vọng đọc trực tiếp từ `data/business/*.json` (không hard-code).
+
+CI chạy toàn bộ suite trên mỗi push/PR tới `main`, kèm secret-scan và bundle regression guard. Quy trình scheduled run: xem `docs/WORKFLOW.md` (RESUME > FIX > VERIFY > IMPROVE > NEW FEATURE). Danh sách 203 task và trạng thái: `docs/matrix/chatbot-master-matrix.csv`.
 
 ## Cấu hình
 

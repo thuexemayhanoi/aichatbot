@@ -1,0 +1,13 @@
+id,area,kind,count,frequency,gate,owner,notes
+TMX-0001,unit,automated,292 every push,CI required,green = merge allowed,CI
+TMX-0002,integration/conversations,multi-turn,CI required,green = merge allowed,CI
+TMX-0003,integration/embed,widget contract,CI required,green = merge allowed,CI
+TMX-0004,integration/golden,regression,CI required,100% fact accuracy,CI,expectations read from data/business
+TMX-0005,business-facts,gate,CI required,0 wrong price/address/policy,CI
+TMX-0006,local-ai fallback,CI required,no blank screen on model failure,CI
+TMX-0007,secret scan,CI required,no keys/secrets,CI
+TMX-0008,embed live smoke,per release,direct+embed reachable,Pages URL 200,manual/scheduled
+TMX-0009,viewport matrix,per release,manual matrix per docs/UI-UX.md,manual
+TMX-0010,a11y keyboard,per release,keyboard + escape + focus,manual
+TMX-0011,privacy audit,per release,no third-party calls in chat path,manual/scheduled
+TMX-0012,bundle budget,per release,base JS < 40 KB target,manual/scheduled
