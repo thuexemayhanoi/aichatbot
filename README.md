@@ -40,9 +40,9 @@ src/app/                 # Wiring dùng chung cho direct mode + embed iframe
 src/storage, src/utils
 assets/                  # UI trực tiếp (HTML/CSS/JS module, không framework)
 embed.js                 # Embed widget (iframe isolation, không phụ thuộc)
-tests/                   # 393 test (node --test): unit, integration, golden + multi-turn
+tests/                   # 406 test (node --test): unit, integration, golden + multi-turn
 docs/                    # LOCAL-AI.md, EMBED.md, ARCHITECTURE.md, COMPATIBILITY.md, WORKFLOW.md, TESTING.md, UI-UX.md
-docs/matrix/             # Master Matrix (248 tasks, BOT-0001..BOT-0248) + test matrix
+docs/matrix/             # Master Matrix (257 tasks, BOT-0001..BOT-0257) + test matrix
 docs/state/active-work.json  # checkpoint/lock cho các scheduled run
 reports/                 # evidence report theo từng run
 tools/gen-matrix.mjs     # tái tạo Master Matrix (idempotent)
@@ -50,6 +50,10 @@ tools/gen-matrix.mjs     # tái tạo Master Matrix (idempotent)
 ```
 
 LLM **tùy chọn hoàn toàn** — không có API key, không backend, không paid inference; mọi tính năng cơ bản (rules, NLU, BM25, recommendation, calculator, context) chạy không cần LLM. Lớp semantic cũng là local-first: model embedding tải từ CDN tĩnh, chạy WASM trong trình duyệt, chỉ warm-up SAU lượt chat đầu tiên, fail thì BM25 vẫn đầy đủ. Toàn bộ context memory nằm trong localStorage của người dùng (nút 🧹 để xoá).
+
+## UI khách hàng (v45)
+
+Header hiển thị **"Hỗ trợ Agent"** + subtitle địa chỉ verified ("Thuê xe máy Nguyễn Tú — 112 Nguyễn Văn Cừ, Long Biên, Hà Nội"); MotoAI chỉ còn là tên nội bộ của dự án. Quick chips: 4 chip chính (💰 Giá thuê / 🛵 Xe ga / 🏍️ Xe số / 📅 Theo tháng) trên một hàng cuộn ngang, sau mỗi câu trả lời chips contextual được chọn deterministic từ intent + slots (`src/app/suggestions.js`) — LLM không sinh suggestion, UI không hard-code giá. Nhãn khách hàng cho Local AI là **"Agent"**: "Đang chuẩn bị Agent...", "Agent sẵn sàng" (tự ẩn), model id/WebLLM/VRAM không bao giờ hiện ở UI thường (chỉ ở `?debug=1`, console, docs).
 
 ## Thứ tự ưu tiên trả lời (không đổi)
 
@@ -63,12 +67,12 @@ LLM **không bao giờ** được phép bịa giá, chính sách, địa chỉ, 
 ## Chạy test
 
 ```bash
-npm test        # node --test — 393 tests
+npm test        # node --test — 406 tests
 ```
 
 Golden conversation regression nằm ở `tests/integration/golden.test.js`, kỳ vọng đọc trực tiếp từ `data/business/*.json` (không hard-code).
 
-CI chạy toàn bộ suite trên mỗi push/PR tới `main`, kèm secret-scan và bundle regression guard. Quy trình scheduled run: xem `docs/WORKFLOW.md` (RESUME > FIX > VERIFY > IMPROVE > NEW FEATURE). Danh sách 248 task và trạng thái: `docs/matrix/chatbot-master-matrix.csv`.
+CI chạy toàn bộ suite trên mỗi push/PR tới `main`, kèm secret-scan và bundle regression guard. Quy trình scheduled run: xem `docs/WORKFLOW.md` (RESUME > FIX > VERIFY > IMPROVE > NEW FEATURE). Danh sách 257 task và trạng thái: `docs/matrix/chatbot-master-matrix.csv`.
 
 ## Cấu hình
 

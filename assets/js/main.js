@@ -7,6 +7,7 @@ import { createConfig } from '../../src/config/defaults.js';
 import { createMotoApp } from '../../src/app/moto-app.js';
 import { parseQueryConfig } from '../../src/app/query-config.js';
 import { detectCapabilities } from '../../src/ai/capability.js';
+import { DEFAULT_CHIPS, nextSuggestions } from '../../src/app/suggestions.js';
 import { ENABLE_STORAGE_KEY } from './ai-settings.js';
 
 const DATA_FILES = [
@@ -14,9 +15,6 @@ const DATA_FILES = [
   ['pricing', 'data/business/pricing.json'],
   ['faq', 'data/business/faq.json']
 ];
-
-/** Quick actions shown as chips (id order per UI spec). */
-const QUICK_ACTION_IDS = ['pricing', 'calculator', 'address', 'hours', 'phone'];
 
 async function loadBusinessData() {
   const entries = await Promise.all(DATA_FILES.map(async ([key, path]) => {
@@ -130,17 +128,20 @@ async function init() {
   // --- Chat loop ---
   renderMessage(elements.messages, { role: 'assistant', text: app.data.faq.assistant.greeting });
 
-  const quickById = new Map((app.data.faq.quick_questions ?? []).map((q) => [q.id, q]));
-  for (const id of QUICK_ACTION_IDS) {
-    const chip = quickById.get(id);
-    if (!chip) continue;
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'motoai-chip';
-    button.textContent = chip.question;
-    button.addEventListener('click', () => { elements.input.value = chip.question; autoGrow(); submit(); });
-    elements.quick.appendChild(button);
+  // Quick chips: max 4 primary, one scrollable row; every chip routes through
+  // the normal deterministic engine (chip query = plain user message).
+  function renderChips(chips) {
+    elements.quick.replaceChildren();
+    for (const chip of chips) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'motoai-chip';
+      button.textContent = chip.label;
+      button.addEventListener('click', () => { elements.input.value = chip.query; autoGrow(); submit(); });
+      elements.quick.appendChild(button);
+    }
   }
+  renderChips(DEFAULT_CHIPS);
 
   let busy = false;
   function setBusy(value) {
@@ -168,6 +169,11 @@ async function init() {
           text: `[debug] nguồn: ${result.source}` // internal trace, debug mode only
         });
       }
+      // Contextual follow-up chips, chosen deterministically from the turn.
+      renderChips(nextSuggestions({
+        intentId: result.analysis?.intent?.id ?? null,
+        slots: result.slots ?? {}
+      }));
       setStatus(elements.status, '');
     } catch (error) {
       hideTyping();
@@ -203,6 +209,7 @@ async function init() {
     try { app.resetContext(); } catch { /* engine wiring missing — nothing remembered */ }
     elements.messages.replaceChildren();
     renderMessage(elements.messages, { role: 'assistant', text: app.data.faq.assistant.greeting });
+    renderChips(DEFAULT_CHIPS);
     setStatus(elements.status, 'Đã xoá hội thoại và ngữ cảnh.', 'success');
   });
 
@@ -234,30 +241,38 @@ async function init() {
     }
   } else {
     elements.aiToggle.hidden = true;
-    setStatus(elements.status, 'AI tại chỗ chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.', 'warning');
+    setStatus(elements.status, 'Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.', 'warning');
   }
 
   async function startLocalAi() {
     elements.aiToggle.hidden = true;
     elements.aiStatus.hidden = false;
     elements.aiStatus.dataset.tone = '';
-    elements.aiStatusText.textContent = 'Đang chuẩn bị AI tại chỗ (chỉ lần đầu, sau đó có cache)...';
+    elements.aiStatusText.textContent = 'Đang chuẩn bị Agent...';
     const ok = await app.localLlm.load({
       onProgress: (frac, text) => {
         elements.aiBar.style.width = `${Math.round(frac * 100)}%`;
-        elements.aiStatusText.textContent = text || `Đang tải model AI... ${Math.round(frac * 100)}%`;
+        // Generic progress line only — technical model info stays in console/debug.
+        elements.aiStatusText.textContent =
+          (text && DEBUG) ? text : `Đang tải... ${Math.round(frac * 100)}%`;
       }
     });
     if (ok) {
       elements.aiStatus.dataset.tone = 'success';
-      elements.aiStatusText.textContent =
-        `AI tại chỗ đã sẵn sàng (${app.localLlm.modelId ?? 'model nhỏ'}). Chạy 100% trên máy bạn.`;
+      elements.aiStatusText.textContent = 'Agent sẵn sàng';
       elements.aiOff.hidden = false;
+      // Status is temporary: auto-hide the ready line, keep the Off control.
+      setTimeout(() => {
+        if (app.localLlm.state.status === 'ready') {
+          elements.aiStatusText.textContent = '';
+          elements.aiBar.style.width = '0';
+        }
+      }, 2500);
     } else {
       // Friendly line only — technical detail goes to console (debug) + state.
       elements.aiStatus.dataset.tone = 'warning';
       elements.aiStatusText.textContent =
-        app.localLlm.state.userMessage ?? 'AI tại chỗ chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.';
+        app.localLlm.state.userMessage ?? 'Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.';
     }
     elements.aiOff.addEventListener('click', () => {
       localStorage.removeItem(ENABLE_STORAGE_KEY);

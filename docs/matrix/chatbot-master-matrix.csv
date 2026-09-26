@@ -247,3 +247,12 @@ BOT-0245,perf,Initial load unchanged: rules+NLU+BM25 only; embeddings/LLM lazy +
 BOT-0246,test,"Multi-turn golden conversations A-G (follow-up, height carry, override, 50cc, EN context)",P0,—,VERIFIED,tests/integration/multi-turn.test.js 12 flows,multi-turn suite,tests/integration/multi-turn.test.js,v44
 BOT-0247,test,"Test count 317 -> 393, no old assertion weakened",P0,—,VERIFIED,node --test 393/393,full suite,npm test,v44
 BOT-0248,ops,Docs + README + matrix + state updated for v44 hybrid intelligence run,P1,—,DONE,All docs current,this run,docs/,v44
+BOT-0249,ui,"Quick chips: compact 4-chip primary bar, one scrollable row, no partial clipping",P0,—,VERIFIED,DEFAULT_CHIPS = Giá thuê / Xe ga / Xe số / Theo tháng; chips route through the engine,ui-brand tests,tests/unit/ui-brand.test.js,v45
+BOT-0250,ui,"Dynamic contextual suggestions after answers (deterministic, intent+slots based)",P0,—,VERIFIED,Price/vehicle/contact follow-up chips; LLM never generates suggestions,ui-brand + suggestions tests,tests/unit/ui-brand.test.js,v45
+BOT-0251,ui,"Customer-facing label renamed ""AI tại chỗ"" -> ""Agent"" (index.html, main.js, local-llm friendly lines)",P0,—,VERIFIED,"No ""AI tại chỗ"" in normal UI; technical names stay internal",ui-brand tests,tests/unit/ui-brand.test.js,v45
+BOT-0252,ui,"Ready status: short ""Agent sẵn sàng"" then auto-hide; model id never exposed in UI",P0,—,VERIFIED,Long Qwen/MLC ready line removed; model info only in state/debug/console,ui-brand tests,tests/unit/ui-brand.test.js,v45
+BOT-0253,ui,"Header title ""Hỗ trợ Agent"" (MotoAI remains internal code name)",P1,—,VERIFIED,Direct + embed default launcher title updated,ui-brand + embed tests,tests/unit/ui-brand.test.js,v45
+BOT-0254,data,"Address consistency: 112 Nguyễn Văn Cừ, Long Biên, Hà Nội across header, business.json, location rule, embed",P0,—,VERIFIED,Location answers and subtitle use business.address.full; no stale variants,ui-brand tests,tests/unit/ui-brand.test.js,v45
+BOT-0255,ui,"Mobile polish: subtitle/status wrap (never clipped), chips touch targets 40px+",P1,—,VERIFIED,iPhone-safe single-row chips; no horizontal break,ui-tokens + ui-brand tests,tests/unit/ui-brand.test.js,v45
+BOT-0256,test,"Test count 393 -> 406, no old assertion weakened",P0,—,VERIFIED,node --test 406/406,full suite,npm test,v45
+BOT-0257,ops,Docs + matrix + state updated for v45 UI polish run,P1,—,DONE,All docs current,this run,docs/,v45

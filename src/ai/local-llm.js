@@ -25,8 +25,8 @@ const GENERATION_TIMEOUT_MS = 45_000;
 const MAX_NEW_TOKENS = 256;
 
 export const FRIENDLY_MESSAGES = Object.freeze({
-  unsupported: 'AI tại chỗ chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.',
-  failed: 'AI tại chỗ chưa khởi động được. Trợ lý cơ bản vẫn hoạt động bình thường.',
+  unsupported: 'Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.',
+  failed: 'Agent chưa khởi động được. Trợ lý cơ bản vẫn hoạt động bình thường.',
   noModel: 'Không tìm thấy model AI phù hợp trong thư viện hiện tại. Trợ lý cơ bản vẫn hoạt động bình thường.'
 });
 
@@ -46,7 +46,7 @@ export function createLocalLlm(options = {}) {
   const env = options.env ?? globalThis;
   const data = options.data ?? {};
   const retrieve = options.retrieve ?? null;
-  const disclosure = options.disclosure ?? 'Câu trả lời được tạo bởi AI tại chỗ (thử nghiệm), dựa trên dữ liệu của cửa hàng.';
+  const disclosure = options.disclosure ?? 'Câu trả lời được tạo bởi Agent (thử nghiệm), dựa trên dữ liệu của cửa hàng.';
   const candidates = options.candidates ?? MODEL_CANDIDATES;
 
   let engine = null;          // WebLLM engine once loaded

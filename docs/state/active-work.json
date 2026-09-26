@@ -1,13 +1,13 @@
 {
   "$schema": "motoai/active-work@1",
-  "feature_id": "BOT-0219",
-  "feature_desc": "v44: Context-aware hybrid intelligence — context memory, analyzeTurn/planTurn planner, hybrid retrieval (BM25 + lazy local Transformers.js), deterministic recommendation engine, smart calculator (date ranges, breakdowns, comparison), LLM as phrasing layer behind planner + Fact Guard v2",
-  "run_id": "2026-09-26-hybrid-intelligence",
+  "feature_id": "BOT-0220",
+  "feature_desc": "v45: Focused UI/UX polish — 4-chip quick bar + deterministic dynamic suggestions, customer-facing \"Agent\" label, short auto-hiding ready status (no model id), header \"Hỗ trợ Agent\" + verified address subtitle, address consistency audit",
+  "run_id": "2026-09-26-ui-polish",
   "status": "DONE",
   "started_at": "2026-09-26T00:00:00Z",
-  "start_commit": "2e1f79c08ada114a829416ea65abcb464e1a1476",
-  "last_checkpoint": "393/393 tests green; planner gates LLM away from all business facts; semantic layer lazy + BM25 fallback; bundle 186095 < 190000 guard (baseline updated); docs+matrix (248 rows) updated; ready to push.",
-  "checkpoint_commit": "26b2dca85fc6f4cc484a18379bfdc5aabd7ee12d",
+  "start_commit": "1c3a948f29ae81a7f2bb672e9d6a7382a23027dd",
+  "last_checkpoint": "406/406 tests green; bundle 189634 < 190000 guard; address single source of truth; no \"AI tại chỗ\" left in normal UI; ready to push.",
+  "checkpoint_commit": null,
   "attempt": 1,
-  "notes": "New modules: src/nlu/entities/{rider,dates}.js, src/nlu/{language,analyze-turn}.js, src/core/planner.js, src/calc/rental-calculator.js, src/recommend/recommender.js, src/rules/recommend-rule.js, src/search/{semantic-retriever,reranker,hybrid-retriever}.js, src/ai/fact-guard.js. Modified: analyzer, slots (context memory), intents, pricing-rule (date ranges/breakdown/comparison), engine (planner trace, structured, resetContext), moto-app (hybrid wiring, planner-gated LLM phrasing), defaults (semantic on, lazy), main.js (reset button + ?debug=1), index.html, ci.yml (baseline 190000), README/docs/matrix. Tests 317 -> 393."
+  "notes": "New module: src/app/suggestions.js (DEFAULT_CHIPS + nextSuggestions, deterministic). Modified: index.html (header/subtitle/Agent labels), assets/js/main.js (renderChips + dynamic suggestions + Agent status flow, ready auto-hide, no modelId), assets/css/style.css (single scrollable chip row, wrap subtitle/status, compact mobile), embed.js (default title Hỗ trợ Agent), data/business/business.json (address.full = 112 Nguyễn Văn Cừ, Long Biên, Hà Nội), src/ai/local-llm.js (Agent wording), tests/unit/ui-tokens.test.js + local-ai.test.js (label spec updated, no assertion weakened), new tests/unit/ui-brand.test.js, ci.yml note, README/docs/matrix (257 rows)/EMBED/UI-UX/LOCAL-AI/COMPATIBILITY."
 }

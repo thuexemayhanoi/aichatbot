@@ -60,11 +60,13 @@ test('mobile: input font >= 16px (no iOS focus zoom) and touch targets are sensi
   assert.match(css, /min-height:\s*4[4-9]px/, 'send/composer touch targets should be >= 44px');
 });
 
-test('quick chips wrap responsively instead of clipping', () => {
-  const quickBlock = css.split('.motoai-quick').shift(); // block before .motoai-quick def
-  void quickBlock;
-  assert.match(css, /\.motoai-quick\s*\{[^}]*flex-wrap:\s*wrap/, 'chips must wrap');
-  assert.ok(!/\.motoai-quick\s*\{[^}]*overflow-x:\s*auto/.test(css), 'no horizontal scroll-only chips');
+test('quick chips render one compact horizontally scrollable row (max 4)', () => {
+  // New v45 spec: single row, no wrap, no partial clipping — chips stay whole
+  // and the row scrolls horizontally on narrow screens.
+  assert.match(css, /\.motoai-quick\s*\{[^}]*flex-wrap:\s*nowrap/, 'chips stay on one row');
+  assert.match(css, /\.motoai-quick\s*\{[^}]*overflow-x:\s*auto/, 'row scrolls horizontally');
+  assert.match(css, /\.motoai-chip\s*\{[^}]*flex:\s*0 0 auto/, 'chips are never squashed or half-clipped');
+  assert.match(css, /\.motoai-chip\s*\{[^}]*white-space:\s*nowrap/);
 });
 
 test('safe-area handling present for iPhone', () => {
@@ -84,5 +86,7 @@ test('UI strings never expose technical internals to users', () => {
   // Friendly Vietnamese lines instead of raw WebLLM errors.
   assert.ok(!html.includes('Cannot find model record'));
   assert.ok(!html.includes('appConfig'));
-  assert.match(html, /AI tại chỗ/);
+  // v45: customers see "Agent", never the old "AI tại chỗ" label.
+  assert.match(html, /Agent/);
+  assert.ok(!/AI tại chỗ/.test(html), 'old customer-facing "AI tại chỗ" label must be gone');
 });

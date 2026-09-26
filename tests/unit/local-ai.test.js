@@ -149,7 +149,8 @@ test('answer() grounds in retrieved facts and guards numbers', async () => {
   assert.ok(result);
   assert.equal(result.source, 'local-llm');
   assert.match(result.text, /150\.000đ/);
-  assert.match(result.text, /AI tại chỗ/);
+  // v45: disclosure label is "Agent" in customer-facing text
+  assert.match(result.text, /Agent/);
 });
 
 test('answer() rejects invented prices (fact guard)', async () => {

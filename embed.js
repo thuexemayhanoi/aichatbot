@@ -8,7 +8,7 @@
  * Usage:
  *   <script src="https://thuexemayhanoi.github.io/aichatbot/embed.js"
  *           data-motoai data-lang="vi" data-theme="auto"
- *           data-position="right" data-title="MotoAI" data-open="false" async></script>
+ *           data-position="right" data-title="Hỗ trợ Agent" data-open="false" async></script>
  */
 (function (root, factory) {
   var api = factory(root);
@@ -24,7 +24,7 @@
     lang: 'vi',
     theme: 'auto',
     position: 'right',
-    title: 'MotoAI',
+    title: 'Hỗ trợ Agent',
     source: null,
     open: false
   };

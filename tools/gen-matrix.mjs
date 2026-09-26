@@ -301,6 +301,17 @@ R('test','Multi-turn golden conversations A-G (follow-up, height carry, override
 R('test','Test count 317 -> 393, no old assertion weakened','P0','—','VERIFIED','node --test 393/393','full suite','npm test','v44');
 R('ops','Docs + README + matrix + state updated for v44 hybrid intelligence run','P1','—','DONE','All docs current','this run','docs/','v44');
 
+// ===== v45: FOCUSED UI/UX POLISH (quick chips + Agent label + header) =====
+R('ui','Quick chips: compact 4-chip primary bar, one scrollable row, no partial clipping','P0','—','VERIFIED','DEFAULT_CHIPS = Giá thuê / Xe ga / Xe số / Theo tháng; chips route through the engine','ui-brand tests','tests/unit/ui-brand.test.js','v45');
+R('ui','Dynamic contextual suggestions after answers (deterministic, intent+slots based)','P0','—','VERIFIED','Price/vehicle/contact follow-up chips; LLM never generates suggestions','ui-brand + suggestions tests','tests/unit/ui-brand.test.js','v45');
+R('ui','Customer-facing label renamed "AI tại chỗ" -> "Agent" (index.html, main.js, local-llm friendly lines)','P0','—','VERIFIED','No "AI tại chỗ" in normal UI; technical names stay internal','ui-brand tests','tests/unit/ui-brand.test.js','v45');
+R('ui','Ready status: short "Agent sẵn sàng" then auto-hide; model id never exposed in UI','P0','—','VERIFIED','Long Qwen/MLC ready line removed; model info only in state/debug/console','ui-brand tests','tests/unit/ui-brand.test.js','v45');
+R('ui','Header title "Hỗ trợ Agent" (MotoAI remains internal code name)','P1','—','VERIFIED','Direct + embed default launcher title updated','ui-brand + embed tests','tests/unit/ui-brand.test.js','v45');
+R('data','Address consistency: 112 Nguyễn Văn Cừ, Long Biên, Hà Nội across header, business.json, location rule, embed','P0','—','VERIFIED','Location answers and subtitle use business.address.full; no stale variants','ui-brand tests','tests/unit/ui-brand.test.js','v45');
+R('ui','Mobile polish: subtitle/status wrap (never clipped), chips touch targets 40px+','P1','—','VERIFIED','iPhone-safe single-row chips; no horizontal break','ui-tokens + ui-brand tests','tests/unit/ui-brand.test.js','v45');
+R('test','Test count 393 -> 406, no old assertion weakened','P0','—','VERIFIED','node --test 406/406','full suite','npm test','v45');
+R('ops','Docs + matrix + state updated for v45 UI polish run','P1','—','DONE','All docs current','this run','docs/','v45');
+
 // status summary printed to stderr-ish
 const counts = {};
 for (const r of rows) counts[r[5]] = (counts[r[5]]||0)+1;

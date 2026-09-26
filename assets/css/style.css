@@ -144,15 +144,17 @@ html, body {
   margin: 2px 0 0;
   font-size: 0.74rem;
   color: var(--color-text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;        /* full address wraps cleanly on small screens */
+  overflow-wrap: break-word;
+}
+@media (max-width: 359px) {
+  .motoai-subtitle { font-size: 0.68rem; } /* compact but complete, never clipped */
 }
 
 .motoai-status {
   font-size: 0.72rem;
   color: var(--color-text-muted);
-  white-space: nowrap;
+  white-space: normal;         /* status lines wrap on narrow screens, never clipped */
   min-height: 1em;
 }
 
@@ -238,20 +240,26 @@ html, body {
 /* ---------- Quick actions ---------- */
 .motoai-quick {
   display: flex;
-  flex-wrap: wrap;               /* wrap instead of clipping */
+  flex-wrap: nowrap;            /* one horizontal row */
   gap: var(--space-2);
   padding: var(--space-1) 0 var(--space-1);
+  overflow-x: auto;             /* scroll instead of ugly partial clipping */
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;        /* thin inline bar; chips stay fully visible */
 }
+.motoai-quick::-webkit-scrollbar { display: none; }
 
 .motoai-chip {
-  flex: 0 1 auto;
-  min-height: 36px;              /* comfortable touch target */
-  padding: 7px 13px;
+  flex: 0 0 auto;               /* never squashed, never half-clipped */
+  min-height: 40px;              /* comfortable touch target */
+  padding: 8px 14px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   background: var(--color-surface);
   color: var(--color-text);
   font-size: 0.8rem;
+  white-space: nowrap;
   cursor: pointer;
   transition: background var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease);
 }

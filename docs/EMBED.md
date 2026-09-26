@@ -9,7 +9,7 @@
   data-lang="vi"
   data-theme="auto"
   data-position="right"
-  data-title="MotoAI"
+  data-title="Hỗ trợ Agent"
   data-source="myblog"
   data-open="false"
   async>
@@ -26,7 +26,7 @@ Không cần React/Vue, không cần build step, không CSS xung đột.
 | `data-lang` | `vi`, `en` | `vi` | Ngôn ngữ chat. |
 | `data-theme` | `auto`, `light`, `dark` | `auto` | `auto` theo `prefers-color-scheme`. |
 | `data-position` | `right`, `left` | `right` | Vị trí launcher. |
-| `data-title` | text (max 40 ký tự) | `MotoAI` | aria-label của launcher + dialog. |
+| `data-title` | text (max 40 ký tự) | `Hỗ trợ Agent` | aria-label của launcher + dialog. |
 | `data-source` | text (max 64 ký tự) | — | Nhãn nguồn, tách storage scope từng trang. |
 | `data-open` | `true`/`false` | `false` | Mở widget ngay khi tải trang. |
 

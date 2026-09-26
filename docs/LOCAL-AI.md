@@ -34,13 +34,13 @@ Luồng mới (`src/ai/model-selection.js`), theo đúng thứ tự:
 1. Tải module WebLLM (chỉ JS, chưa tải model bytes).
 2. Đọc `webllm.prebuiltAppConfig.model_list` — nguồn sự thật duy nhất.
 3. `selectBestLocalModel()` chọn deterministic theo thứ tự ưu tiên: candidate có trong list (`MODEL_CANDIDATES` chỉ là danh sách ƯA THÍCH, luôn verify) → `low_resource_required` → VRAM thấp nhất → instruct → multilingual (Qwen) → ≤1.5B tham số → vừa RAM thiết bị.
-4. Nếu không có model an toàn nào → AI tại chỗ tắt nhẹ nhàng (không crash, không loading vô hạn), trợ lý cơ bản vẫn trả lời đầy đủ.
+4. Nếu không có model an toàn nào → Agent tắt nhẹ nhàng (không crash, không loading vô hạn), trợ lý cơ bản vẫn trả lời đầy đủ.
 
 Candidate ưa thích hiện tại (không đảm bảo mãi mãi, luôn verify runtime): `Qwen2.5-0.5B-Instruct-q4f16_1-MLC` (VRAM ~945 MB, low-resource, multilingual vi/en), rồi `Qwen3-0.6B`, `Qwen3.5-0.8B`, `Qwen2-0.5B`, `Qwen2.5-1.5B`, `Llama-3.2-1B`. Download lần đầu ~350–500 MB (cache sau đó).
 
 ### Lỗi thân thiện
 
-Lỗi kỹ thuật (raw WebLLM message) chỉ vào `console.debug` + `state.error` (diagnostics). UI luôn hiển thị câu tiếng Việt: "AI tại chỗ chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường." Không bao giờ lộ stack/config internals cho người dùng.
+Lỗi kỹ thuật (raw WebLLM message) chỉ vào `console.debug` + `state.error` (diagnostics). UI luôn hiển thị câu tiếng Việt: "Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường." (v45) Không bao giờ lộ stack/config internals cho người dùng.
 
 ## Cơ chế bảo vệ (không thể bịa giá)
 
@@ -60,7 +60,7 @@ Xem `src/ai/grounding.js`:
 - `navigator.deviceMemory` ≥ 2 GB (nếu có API)
 - storage API cho cache (Cache API / IndexedDB / localStorage)
 
-Không đạt → nút "Bật AI tại chỗ" không hiện, chatbot hoạt động 100% bằng rule + retrieval. Người dùng bấm nút thì WebLLM module được dynamic import (esm.run CDN), hiện progress bar; lỗi/t/timeout bất kỳ → status "failed" + thông báo, chatbot tiếp tục bình thường. Tắt = `unload()`, model cache giữ lại cho lần sau.
+Không đạt → nút "Bật Agent" không hiện, chatbot hoạt động 100% bằng rule + retrieval. Người dùng bấm nút thì WebLLM module được dynamic import (esm.run CDN), hiện progress bar; lỗi/t/timeout bất kỳ → status "failed" + thông báo, chatbot tiếp tục bình thường. Tắt = `unload()`, model cache giữ lại cho lần sau.
 
 ## Hiệu năng
 

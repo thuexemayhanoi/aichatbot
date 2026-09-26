@@ -4,7 +4,15 @@
 
 Bảng màu cũ dùng đỏ #c8102e làm màu chính — quá chói/gắt. Từ v43.1 màu chính là **indigo trầm** (`--color-primary: #4f46e5`, dark mode `#7c7cf4`), đỏ CHỈ dành cho lỗi thật (`--color-error: #d2193c`). Toàn bộ UI dùng semantic tokens (`assets/css/style.css`): `--color-bg/surface/surface-elevated/primary/primary-hover/primary-soft/text/text-muted/border/success/warning/error` + scale `--radius-*`, `--space-*`, `--duration-*`, `--shadow-*`.
 
-Ghi chú UX mobile: input 16px+ (không zoom iOS), touch target ≥44px, quick chips `flex-wrap` (không còn bị cắt ngang), composer dính dưới + `100dvh` + safe-area, typing indicator 3 chấm (tôn `prefers-reduced-motion`), autoscroll chỉ khi đang ở gần đáy, Enter gửi / Shift+Enter xuống dòng (textarea auto-grow), gửi bị khóa khi đang xử lý (tránh gửi trùng), Local AI hai bước: giải thích rõ (chạy tại chỗ, không API key, model nặng vài trăm MB, cần WebGPU) → người dùng bấm "Tải model và bật AI" → mới tải.
+Ghi chú UX mobile: input 16px+ (không zoom iOS), touch target ≥44px, quick chips **một hàng ngang cuộn được** (v45: `flex-wrap: nowrap` + `overflow-x: auto`, chip `flex: 0 0 auto` — không cắt nửa chip, tối đa 4 chip chính), composer dính dưới + `100dvh` + safe-area, typing indicator 3 chấm (tôn `prefers-reduced-motion`), autoscroll chỉ khi đang ở gần đáy, Enter gửi / Shift+Enter xuống dòng (textarea auto-grow), gửi bị khóa khi đang xử lý (tránh gửi trùng), Local AI hai bước: giải thích rõ (chạy tại chỗ, không API key, model nặng vài trăm MB, cần WebGPU) → người dùng bấm "Tải model và bật Agent" → mới tải.
+
+## Customer-facing labels (v45)
+
+- Header: **"Hỗ trợ Agent"** (không còn tên sản phẩm MotoAI ở UI; MotoAI vẫn là tên nội bộ của dự án/mã nguồn).
+- Subtitle: "Thuê xe máy Nguyễn Tú — 112 Nguyễn Văn Cừ, Long Biên, Hà Nội" (wrap sạch trên màn nhỏ, không cắt).
+- Nhãn khách hàng cho AI tại chỗ là **"Agent"**: "Bật Agent", "Đang chuẩn bị Agent...", "Agent sẵn sàng" (tự ẩn sau ~2.5s), "Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường."
+- Model id / WebLLM / MLC / VRAM KHÔNG bao giờ hiển thị ở UI thường — chỉ trong internal state, `?debug=1`, console và docs.
+- Quick chips mặc định: 💰 Giá thuê / 🛵 Xe ga / 🏍️ Xe số / 📅 Theo tháng; sau mỗi câu trả lời chips contextual xuất hiện từ logic deterministic (`src/app/suggestions.js`, intent + slots của lượt vừa xong — LLM không bao giờ sinh suggestion).
 
 The deterministic chatbot must be excellent *without* AI; the AI layer must never
 break the basic chat. No screenshots in CI — this is a manual/per-release matrix

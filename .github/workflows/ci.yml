@@ -25,8 +25,7 @@ jobs:
           size=$(find src assets -name '*.js' -print0 | xargs -0 cat | wc -c)
           size2=$(wc -c < embed.js)
           total=$((size + size2))
-          echo "base JS bytes: $total (baseline 2026-09-26 v44: 186095)"
-          # v44 adds context memory, planner, hybrid retrieval (lazy, no external
-          # deps in the bundle — Transformers.js is CDN-imported at runtime only),
-          # recommendation engine and calculator. Embed launcher stays tiny.
+          echo "base JS bytes: $total (baseline 2026-09-26 v45: 189634)"
+          # v45 adds deterministic suggestion chips (src/app/suggestions.js) and
+          # the Agent label refresh on top of the v44 feature set. Embed stays tiny.
           test "$total" -lt 190000
