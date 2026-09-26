@@ -78,7 +78,9 @@ async function init() {
     aiBar: document.getElementById('motoai-ai-progress-bar'),
     aiStatusText: document.getElementById('motoai-ai-status-text'),
     aiOff: document.getElementById('motoai-ai-off'),
-    reset: document.getElementById('motoai-reset')
+    reset: document.getElementById('motoai-reset'),
+    dockPrice: document.getElementById('motoai-dock-price'),
+    dockMap: document.getElementById('motoai-dock-map')
   };
   const DEBUG = new URLSearchParams(location.search).get('debug') === '1';
 
@@ -96,7 +98,9 @@ async function init() {
     elements.drawerClose?.addEventListener('click', () => setDrawer(false));
     elements.drawerBackdrop?.addEventListener('click', () => setDrawer(false));
     elements.drawer?.addEventListener('click', (event) => {
-      if (event.target.closest('a, button')) setDrawer(false); // any action closes
+      // Any action closes — except accordion group toggles, which expand in place.
+      if (event.target.closest('.motoai-group-btn')) return;
+      if (event.target.closest('a, button')) setDrawer(false);
     });
     elements.menuAddress?.addEventListener('click', () => {
       elements.input.value = 'Địa chỉ ở đâu?';
@@ -110,6 +114,33 @@ async function init() {
       autoGrow();
       submit();
     });
+    // Dock "Giá thuê": run the verified Agent price flow — never hard-coded prices.
+    elements.dockPrice?.addEventListener('click', () => {
+      elements.input.value = 'Giá thuê xe bao nhiêu?';
+      autoGrow();
+      submit();
+    });
+    // Grouped menu accordion (v50): one group open at a time, ARIA-backed.
+    const groupButtons = [...document.querySelectorAll('.motoai-group-btn')];
+    const closeGroups = (except) => {
+      for (const btn of groupButtons) {
+        if (btn === except) continue;
+        btn.setAttribute('aria-expanded', 'false');
+        document.getElementById(btn.getAttribute('aria-controls'))?.setAttribute('hidden', '');
+      }
+    };
+    for (const btn of groupButtons) {
+      btn.addEventListener('click', () => {
+        const items = document.getElementById(btn.getAttribute('aria-controls'));
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        closeGroups(btn);
+        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        if (items) {
+          if (expanded) items.setAttribute('hidden', '');
+          else items.removeAttribute('hidden');
+        }
+      });
+    }
   }
   // Direct mode only, and only now that `elements` + wireMenu are fully
   // defined — this is the single place menu wiring happens.
@@ -123,6 +154,8 @@ async function init() {
     setHref(elements.menuZalo, resolveChipHref({ ref: 'zalo' }, businessData));
     setHref(elements.menuCall, resolveChipHref({ ref: 'phone_uri' }, businessData));
     setHref(elements.menuMap, resolveChipHref({ ref: 'maps' }, businessData));
+    // Dock "Bản đồ": same verified maps URL — the canonical link lives in business.json.
+    setHref(elements.dockMap, resolveChipHref({ ref: 'maps' }, businessData));
   }
 
   // True when the reader is already near the bottom; only then auto-scroll,

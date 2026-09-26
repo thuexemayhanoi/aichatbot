@@ -47,15 +47,17 @@ test('root app contract: body opens directly into the chat app in spec order', (
   assert.match(css, /\.motoai-quick\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*overflow-x:\s*auto;[^}]*overflow-y:\s*hidden/s);
   // 5. Only ONE h1 — the visible app header; no giant SEO H1.
   assert.equal((html.match(/<h1/g) || []).length, 1);
-  // 6. Every drawer link targets its spec route.
+  // 6. Grouped drawer (v50): every hub route is reachable with short labels.
   const routes = {
-    '📚 Blog / Cẩm nang': '/aichatbot/blog/',
-    '📱 App &amp; Ứng dụng': '/aichatbot/blog/app/',
-    '🏍️ Thuê xe máy': '/aichatbot/blog/thue-xe/',
+    '🏍️ Xe máy': '/aichatbot/blog/thue-xe/',
     '⚡ Xe điện': '/aichatbot/blog/xe-dien/',
-    '📄 Hướng dẫn / Thủ tục': '/aichatbot/blog/huong-dan/',
-    '🛡️ An toàn / Pháp lý': '/aichatbot/blog/an-toan/',
-    '📍 Địa phương / Du lịch': '/aichatbot/blog/dia-phuong/'
+    '📱 Ứng dụng': '/aichatbot/blog/app/',
+    '📄 Hướng dẫn': '/aichatbot/blog/huong-dan/',
+    '🛡️ An toàn': '/aichatbot/blog/an-toan/',
+    '📍 Địa phương': '/aichatbot/blog/dia-phuong/',
+    '🔎 Tìm bài': '/aichatbot/blog/',
+    '🔒 Bảo mật': '/aichatbot/privacy/',
+    '📃 Điều khoản': '/aichatbot/terms/'
   };
   for (const [label, href] of Object.entries(routes)) {
     const li = html.match(new RegExp(`<li><a href="${href.replace(/\//g, '\\/')}"[^>]*>${label}</a></li>`));
@@ -97,15 +99,17 @@ test('chat app fills the viewport exactly — no hero, no scroll to reach the ch
 });
 
 // --- 5c. Menu drawer = navigation to the blog ecosystem + contact actions ---
-test('☰ menu navigates the blog ecosystem and contact actions', () => {
-  const drawer = html.match(/<ul class="motoai-drawer-list">([\s\S]*?)<\/ul>/)?.[1] ?? '';
-  assert.ok(drawer, 'drawer list present');
+test('☰ menu is a grouped accordion navigating the blog ecosystem + contact actions', () => {
+  // Capture the whole drawer (nested <ul> groups), not just the first list.
+  const drawerStart = html.indexOf('<nav class="motoai-drawer"');
+  const drawer = html.slice(drawerStart, html.indexOf('</nav>', drawerStart));
+  assert.ok(drawer, 'drawer present');
   // Every blog hub route is reachable from the menu.
   for (const hub of ['blog/', 'blog/app/', 'blog/thue-xe/', 'blog/xe-dien/', 'blog/huong-dan/', 'blog/an-toan/', 'blog/dia-phuong/']) {
     assert.ok(drawer.includes(`/aichatbot/${hub}`), `menu must link /aichatbot/${hub}`);
   }
   // ChatGPT-style condensed entry: Liên hệ asks the Agent (no hard-coded contacts).
-  assert.match(drawer, /id="motoai-menu-contact">📞 Liên hệ</);
+  assert.match(drawer, /id="motoai-menu-contact">☎️ Liên hệ</);
   assert.match(mainJs, /menuContact/);
   assert.match(mainJs, /elements\.input\.value = 'Liên hệ';/);
   // Contact hrefs still resolve only from verified business.json.
@@ -308,9 +312,10 @@ test('mobile app-lock: body locked, app pinned, only messages scroll, embed unch
   assert.match(css, /\.motoai-messages\s*\{[^}]*overscroll-behavior-y:\s*contain;/s);
   // Pristine state: lone greeting centers upper-middle (no top-hugging dead space).
   assert.match(css, /\.motoai-messages > \.motoai-msg:only-child\s*\{[^}]*margin-top:\s*auto;[^}]*margin-bottom:\s*auto;/s);
-  // Disclosure is legible (>= 0.75rem), not whisper-sized.
-  const d = css.match(/\.motoai-disclosure\s*\{[^}]*font-size:\s*([\d.]+)rem/s);
-  assert.ok(d && Number(d[1]) >= 0.75, `disclosure font-size must be >= 0.75rem, got ${d?.[1]}`);
+  // Disclosure paragraph is GONE (v50): replaced by the bottom dock, no empty gap.
+  assert.ok(!html.includes('motoai-disclosure'), 'no disclosure text in main UI');
+  assert.ok(!html.includes('Trợ lý trả lời tự động dựa trên dữ liệu'), 'old disclosure copy removed');
+  assert.match(css, /\.motoai-dock\s*\{/);
   // Composer sits directly above the safe area (app padding keeps env inset).
   assert.match(css, /\.motoai-app\s*\{[^}]*calc\(env\(safe-area-inset-bottom/s);
 });
@@ -343,11 +348,88 @@ test('responsive: mobile base stays app-locked, laptop/desktop center a capped c
 });
 
 test('responsive: safe-area insets survive at every breakpoint', () => {
+  // Check EVERY media block at the given width (dock, app, etc. may each own one).
   for (const bp of ['768px', '1200px']) {
-    const start = css.indexOf(`@media (min-width: ${bp})`);
-    const end = start === -1 ? -1 : css.indexOf('@media', start + 1);
-    const block = css.slice(start, end === -1 ? undefined : end);
-    assert.ok(block.includes('env(safe-area-inset-top'), `${bp} keeps safe-area top inset`);
-    assert.ok(block.includes('env(safe-area-inset-bottom'), `${bp} keeps safe-area bottom inset`);
+    const blocks = [...css.matchAll(new RegExp(`@media \\(min-width: ${bp}\\)\\s*\\{[\\s\\S]*?\\n\\}`, 'g'))].map((m) => m[0]).join('\n');
+    const joined = blocks + css.slice(css.indexOf(`@media (min-width: ${bp})`));
+    assert.ok(joined.includes('env(safe-area-inset-top'), `${bp} keeps safe-area top inset`);
+    assert.ok(joined.includes('env(safe-area-inset-bottom'), `${bp} keeps safe-area bottom inset`);
+  }
+});
+
+// --- 5g. Bottom dock (v50): 4-item customer navigation ---
+test('bottom dock: exactly 4 items, short labels, correct actions, single row', () => {
+  const dockStart = html.indexOf('class="motoai-dock"');
+  const dock = html.slice(dockStart, html.indexOf('</nav>', dockStart));
+  assert.ok(dock, 'dock present');
+  assert.equal((dock.match(/motoai-dock-item/g) || []).length, 4, 'dock has exactly 4 items');
+  for (const label of ['🛵 Dịch vụ', '☎️ Liên hệ', '💰 Giá thuê', '🗺️ Bản đồ']) {
+    assert.ok(dock.includes(label), `dock must contain "${label}"`);
+  }
+  // Dịch vụ routes to the existing service hub — no invented page.
+  assert.match(dock, /href="\/aichatbot\/blog\/thue-xe\/">🛵 Dịch vụ/);
+  // Liên hệ opens the mandated external URL safely.
+  assert.match(dock, /href="https:\/\/share\.google\/jXpr3Dkq1yUyTT1Kr"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
+  // Giá thuê is an Agent action — no hard-coded price values in the dock.
+  assert.match(dock, /id="motoai-dock-price"/);
+  assert.ok(!/\d{3}[.,]?\d{3}\s*(đ|vnd|VND)/.test(dock), 'dock must not hard-code prices');
+  assert.match(mainJs, /dockPrice\?\.addEventListener[\s\S]*?'Giá thuê xe bao nhiêu\?'/);
+  // Bản đồ resolves from verified business.json (never hard-coded in markup).
+  assert.match(dock, /id="motoai-dock-map" href="#"/);
+  assert.match(mainJs, /setHref\(elements\.dockMap, resolveChipHref\(\{ ref: 'maps' \}, businessData\)\)/);
+  // Dock sits below the composer in DOM order and is one row.
+  assert.ok(html.indexOf('id="motoai-composer"') < dockStart, 'dock after composer');
+  assert.match(css, /\.motoai-dock\s*\{[^}]*grid-template-columns:\s*repeat\(4, 1fr\);/s);
+  assert.match(css, /\.motoai-dock-item\s*\{[^}]*min-height:\s*44px;/s);
+  assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-dock\s*\{\s*display:\s*none;/, 'embed hides the dock');
+  assert.ok(!/flex-wrap:\s*wrap/.test(css.match(/\.motoai-dock\s*\{[\s\S]*?\}/)[0]), 'dock never wraps');
+});
+
+// --- 5h. Grouped menu accordion (v50) ---
+test('grouped menu: parent/child accordion with ARIA + one-open + Escape', () => {
+  const groups = [...html.matchAll(/<li class="motoai-group">/g)].length;
+  assert.equal(groups, 4, 'exactly 4 parent groups: Dịch vụ, Cẩm nang, Liên hệ, Pháp lý');
+  // Every group button is ARIA-backed and controls an items list.
+  for (const btn of html.matchAll(/class="motoai-group-btn"[^>]*aria-expanded="false" aria-controls="([^"]+)"/g)) {
+    assert.ok(html.includes(`id="${btn[1]}"`), `group items list ${btn[1]} exists`);
+  }
+  // Short customer labels only — old long labels are gone.
+  for (const old of ['Blog / Cẩm nang', 'App &amp; Ứng dụng', 'Thuê xe máy</a>', 'Hướng dẫn / Thủ tục', 'An toàn / Pháp lý', 'Địa phương / Du lịch', 'Xóa hội thoại', 'Chính sách bảo mật</a>', 'Điều khoản sử dụng</a>']) {
+    assert.ok(!html.includes(old), `long label "${old}" must be simplified`);
+  }
+  assert.ok(html.includes('🧹 Xóa chat'), 'reset label is "Xóa chat"');
+  // One-open accordion + Escape/backdrop close are wired in JS.
+  assert.match(mainJs, /closeGroups\(btn\)/, 'opening a group closes the others');
+  assert.match(mainJs, /setAttribute\('aria-expanded'/);
+  assert.match(mainJs, /closest\('\.motoai-group-btn'\)\) return;/, 'group toggle does not close the drawer');
+  assert.match(mainJs, /event\.key === 'Escape'/, 'Escape still closes the drawer');
+  // Children are visually indented.
+  assert.match(css, /\.motoai-group-items\s*\{[^}]*padding:[^;]*var\(--space-4\);/s);
+  assert.match(css, /\.motoai-group-items\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
+});
+
+// --- 5i. Privacy + Terms pages (v50) ---
+test('privacy and terms routes exist, are real pages, and are in the sitemap', () => {
+  const privacy = readFileSync(join(ROOT, 'privacy/index.html'), 'utf8');
+  const terms = readFileSync(join(ROOT, 'terms/index.html'), 'utf8');
+  assert.match(privacy, /<title>Chính sách bảo mật/);
+  assert.match(terms, /<title>Điều khoản sử dụng/);
+  assert.match(privacy, /rel="canonical" href="https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/privacy\/"/);
+  assert.match(terms, /rel="canonical" href="https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/terms\/"/);
+  // Truthful privacy: no absolute "zero data leaves device" claim; mentions external links.
+  assert.ok(privacy.includes('localStorage'), 'privacy explains local storage');
+  assert.ok(privacy.toLowerCase().includes('zalo') && privacy.toLowerCase().includes('maps'), 'privacy covers external links');
+  assert.ok(privacy.includes('API key') === false || privacy.includes('không cần API key'), 'API-key claim consistent');
+  const sitemap = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
+  assert.ok(sitemap.includes('/aichatbot/privacy/'), 'sitemap lists privacy');
+  assert.ok(sitemap.includes('/aichatbot/terms/'), 'sitemap lists terms');
+});
+
+// --- 5j. Color contract (v50): light/white text on true purple primary surfaces ---
+test('on-primary text is light in BOTH themes — no dark text on purple', () => {
+  const onPrimary = [...css.matchAll(/--color-on-primary:\s*([^;]+);/g)].map((m) => m[1].trim());
+  assert.ok(onPrimary.length >= 2, 'on-primary defined in both themes');
+  for (const value of onPrimary) {
+    assert.match(value, /^#(fff|ffffff|f8fafc|f1f5f9)$/i, `on-primary must be light/white, got ${value}`);
   }
 });
