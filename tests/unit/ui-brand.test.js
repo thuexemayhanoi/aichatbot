@@ -24,6 +24,53 @@ const mainJs = readFileSync(join(ROOT, 'assets/js/main.js'), 'utf8');
 const css = readFileSync(join(ROOT, 'assets/css/style.css'), 'utf8');
 const embedJs = readFileSync(join(ROOT, 'embed.js'), 'utf8');
 
+// --- 5d. ROOT URL = THE CHAT APPLICATION (explicit acceptance contract) ---
+test('root app contract: body opens directly into the chat app in spec order', () => {
+  const body = html.slice(html.indexOf('<body'));
+  // 1. No landing structure may precede the app.
+  const appTag = '<section class="motoai-app"';
+  const appIdx = body.indexOf(appTag);
+  assert.ok(appIdx >= 0, 'chat app exists');
+  assert.ok(!/class="motoai-(hero|landing|intro|features|benefits|cta|banner|blog-preview|app-marketing)/.test(body), 'no landing structure in the root page');
+  const beforeApp = body.slice(0, appIdx);
+  assert.ok(!/<(section|header|footer|nav|div|article|aside|h1|h2|p)\b/.test(beforeApp), 'no element renders before the chat app — body opens directly into it');
+  // 2. Spec order inside the app: header → messages → quick → composer.
+  const order = ['motoai-header', 'id="motoai-messages"', 'id="motoai-quick"', 'id="motoai-composer"'];
+  const idx = order.map(id => html.indexOf(id));
+  assert.ok(idx.every(i => i >= 0), 'all contract sections present');
+  for (let i = 1; i < idx.length; i++) assert.ok(idx[i] > idx[i - 1], `${order[i]} must come after ${order[i - 1]}`);
+  // 3. Full-screen app layout: html/body 100%, app 100dvh flex column, chat area flexes.
+  assert.match(css, /html, body\s*\{[^}]*height:\s*100%/s);
+  assert.match(css, /\.motoai-app\s*\{[^}]*display:\s*flex;[^}]*flex-direction:\s*column;[^}]*height:\s*100dvh/s);
+  assert.match(css, /\.motoai-messages\s*\{[^}]*flex:\s*1;[^}]*overflow-y:\s*auto/s);
+  // 4. Quick bar stays ONE horizontal row.
+  assert.match(css, /\.motoai-quick\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*overflow-x:\s*auto;[^}]*overflow-y:\s*hidden/s);
+  // 5. Only ONE h1 — the visible app header; no giant SEO H1.
+  assert.equal((html.match(/<h1/g) || []).length, 1);
+  // 6. Every drawer link targets its spec route.
+  const routes = {
+    '📚 Blog / Cẩm nang': '/aichatbot/blog/',
+    '📱 App &amp; Ứng dụng': '/aichatbot/blog/app/',
+    '🏍️ Thuê xe máy': '/aichatbot/blog/thue-xe/',
+    '⚡ Xe điện': '/aichatbot/blog/xe-dien/',
+    '📄 Hướng dẫn / Thủ tục': '/aichatbot/blog/huong-dan/',
+    '🛡️ An toàn / Pháp lý': '/aichatbot/blog/an-toan/',
+    '📍 Địa phương / Du lịch': '/aichatbot/blog/dia-phuong/'
+  };
+  for (const [label, href] of Object.entries(routes)) {
+    const li = html.match(new RegExp(`<li><a href="${href.replace(/\//g, '\\/')}"[^>]*>${label}</a></li>`));
+    assert.ok(li, `menu entry "${label}" must link ${href}`);
+  }
+  // 7. Embed mode never gains blog/SEO UI.
+  assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-seo,\s*[\s\S]*?\.motoai-menu\s*\{\s*display:\s*none/s);
+  // 8. SEO surface survives without a hero: title/meta/schema keep the owned intent.
+  assert.match(html, /<title>[^<]*Ứng dụng thuê xe máy/i);
+  assert.ok(html.includes('"@type": "WebApplication"'));
+  assert.match(html, /rel="canonical"/);
+  assert.ok(html.toLowerCase().includes('app thuê xe điện'));
+  assert.ok(html.toLowerCase().includes('ứng dụng thuê xe máy điện'));
+});
+
 // --- 5. Header label ---
 test('visible chat header title is "Hỗ trợ Agent" (MotoAI stays internal)', () => {
   // v47.1: chatbot-first homepage — the chat H1 is the page H1; there is no
