@@ -1,23 +1,24 @@
 {
   "$schema": "motoai/distribution-report@1",
-  "generated_at": "2026-09-26T13:05:00Z",
+  "generated_at": "2026-09-26T13:55:00Z",
   "run_id": "2026-09-26-distribution-upgrade",
   "start_commit": "1c3a948f29ae81b7f2bb672e9d6a7382a23027dd",
-  "final_commit": "pending-push (recorded after push)",
-  "core_version": "v45 (package.json 45.0.0)",
+  "final_commit": "0d513ff2c2a808130b89cdde402849978736980a",
+  "core_version": "v47.1 (package.json 47.1.0, blog/SEO foundation + distribution surface)",
   "wordpress_plugin_version": "1.0.0",
   "pwa_cache_version": "motoai-shell-v45 / motoai-data-v45",
   "mobile_wrapper_version": "1.0.0 (capacitor foundation)",
   "embed_version": "1.1.0 (data-open-delay)",
   "test_status": {
     "before": 406,
-    "after": 447,
-    "pass": 447,
-    "fail": 0
+    "after": 484,
+    "pass": 484,
+    "fail": 0,
+    "note": "distribution 38 + v47.1 reconciliation tests; wordpress suite reconciled (GPL header, unspaced ABSPATH guard, once-guard, spacing-agnostic assertions)"
   },
   "bundle_guard": {
-    "bytes": 195121,
-    "limit": 196000,
+    "bytes": 204057,
+    "limit": 220000,
     "result": "pass"
   },
   "scans": {
@@ -30,7 +31,7 @@
     "builder": "tools/build-wordpress-plugin.mjs",
     "deterministic": true,
     "entries": 6,
-    "size_bytes": 20583,
+    "size_bytes": 20704,
     "root": "motoai-agent/",
     "validation": "tests/unit/wordpress-zip.test.js (CRC per entry, byte-identical rebuild)",
     "delivery": "CI artifact (distribution.yml) + GitHub Release asset on tags; binary files cannot be committed through the text-only GitHub connector in this run"
