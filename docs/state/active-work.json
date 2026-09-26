@@ -3,11 +3,11 @@
   "feature_id": "BOT-0188",
   "feature_desc": "Project-control infrastructure: Master Matrix, run docs, CI workflow, checkpoint state",
   "run_id": "2026-09-27-scheduled",
-  "status": "IN_PROGRESS",
+  "status": "DONE",
   "started_at": "2026-09-27T04:05:00Z",
   "start_commit": "49e3aaae5b13ecf024d758bbe390db6a116a75c3",
   "last_checkpoint": "Tests 292/292 green on start SHA; matrix 203 rows generated; docs WORKFLOW/TESTING/UI-UX written; ci.yml added; ready to commit+push.",
-  "checkpoint_commit": null,
+  "checkpoint_commit": "08e008607391f608055c334331f7ff1d52253fdd",
   "attempt": 1,
-  "notes": "Previous run (v42, commit 49e3aaa) shipped search+ai+embed+UI+292 tests, all green. No unfinished QA_FAILED/BLOCKED work found — v42 verified before this run began. This run adds the missing project-control layer only."
+  "notes": "Run complete: project-control layer shipped in commit 08e0086 (matrix, docs, CI, state, report). All 292 tests green before and after; no product code changed. Matrix: 203 rows (VERIFIED 143, PLANNED 59, DONE 1)."
 }
