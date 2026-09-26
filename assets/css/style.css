@@ -417,8 +417,10 @@ html, body {
 /* ---------- Disclosure ---------- */
 .motoai-disclosure {
   margin: 0;
-  font-size: 0.68rem;
-  color: var(--color-text-muted);
+  font-size: 0.75rem; /* legible disclosure — no longer whisper-sized */
+  color: var(--color-text);
+  opacity: 0.75;
+  line-height: 1.5;
   text-align: center;
   padding: 0 var(--space-2);
 }
@@ -580,3 +582,25 @@ body[data-motoai-embed="1"] .motoai-drawer,
 body[data-motoai-embed="1"] .motoai-drawer-backdrop,
 body[data-motoai-embed="1"] .motoai-menu { display: none; }
 body[data-motoai-embed="1"] .motoai-app { max-width: none; height: 100%; min-height: 0; }
+/* ---------- v47.4: mobile app-lock refinements (iPhone Safari) ---------- */
+/* The document never scroll-panes during chat use: the body is locked and
+   only .motoai-messages scrolls. Embed mode keeps its own document flow. */
+html, body { overflow: hidden; overscroll-behavior: none; }
+body[data-motoai-embed="1"] { overflow: auto; overscroll-behavior: auto; } /* embed unchanged */
+
+/* App pinned edge-to-edge: the header can never drift under Safari chrome. */
+.motoai-shell .motoai-app { position: fixed; inset: 0; }
+body[data-motoai-embed="1"] .motoai-app { position: static; inset: auto; }
+
+/* Stable zones: header / chips / composer never shrink or reflow. */
+.motoai-header, .motoai-quick, .motoai-composer { flex: 0 0 auto; }
+.motoai-messages { overscroll-behavior-y: contain; } /* chat scroll never chains to body */
+
+/* Pristine state: a lone greeting sits upper-middle instead of hugging the
+   top with dead space below. Applies only while it is the only message. */
+.motoai-messages > .motoai-msg:only-child {
+  margin-top: auto;
+  margin-bottom: auto;
+  translate: 0 -6vh;
+}
+

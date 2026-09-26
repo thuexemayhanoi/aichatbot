@@ -292,3 +292,25 @@ test('index.html links the stylesheet (root app must never render unstyled)', ()
   assert.ok(linkPos > canonicalPos && linkPos > manifestPos, 'stylesheet after canonical/manifest');
   assert.ok(scriptPos === -1 || linkPos < scriptPos, 'stylesheet before runtime scripts');
 });
+
+// --- 5e. Mobile app-lock (v47.4): full-screen chat, no body scroll, safe pristine state ---
+test('mobile app-lock: body locked, app pinned, only messages scroll, embed unchanged', () => {
+  // Body is locked in direct mode; overflow can never pan the document.
+  assert.match(css, /html, body\s*\{[^}]*overflow:\s*hidden;[^}]*overscroll-behavior:\s*none;/s);
+  // Embed mode keeps its own document flow (unchanged behavior).
+  assert.match(css, /body\[data-motoai-embed="1"\]\s*\{\s*overflow:\s*auto;[^}]*\}/);
+  // App pinned edge-to-edge: header can never drift under Safari chrome.
+  assert.match(css, /\.motoai-shell \.motoai-app\s*\{[^}]*position:\s*fixed;[^}]*inset:\s*0;/s);
+  assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-app\s*\{[^}]*position:\s*static;[^}]*inset:\s*auto;/s);
+  // Header, chips row, composer form stable non-shrinking zones.
+  assert.match(css, /\.motoai-header, \.motoai-quick, \.motoai-composer\s*\{\s*flex:\s*0 0 auto;\s*\}/);
+  // Message scroll never chains to the body.
+  assert.match(css, /\.motoai-messages\s*\{[^}]*overscroll-behavior-y:\s*contain;/s);
+  // Pristine state: lone greeting centers upper-middle (no top-hugging dead space).
+  assert.match(css, /\.motoai-messages > \.motoai-msg:only-child\s*\{[^}]*margin-top:\s*auto;[^}]*margin-bottom:\s*auto;/s);
+  // Disclosure is legible (>= 0.75rem), not whisper-sized.
+  const d = css.match(/\.motoai-disclosure\s*\{[^}]*font-size:\s*([\d.]+)rem/s);
+  assert.ok(d && Number(d[1]) >= 0.75, `disclosure font-size must be >= 0.75rem, got ${d?.[1]}`);
+  // Composer sits directly above the safe area (app padding keeps env inset).
+  assert.match(css, /\.motoai-app\s*\{[^}]*calc\(env\(safe-area-inset-bottom/s);
+});
