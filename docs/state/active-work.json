@@ -4,8 +4,8 @@
   "run_id": "2026-09-26-v471-reconciliation",
   "started_at": "2026-09-26T13:28:00Z",
   "start_commit": "b884c06d8b2f88a7c75bc7407f357e28b0f74741",
-  "last_checkpoint": "v47.1 merged tree: v47 blog/SEO foundation + v45b distribution surface reunited; gen-icons.py verified deterministic (byte-identical reruns); plugin ZIP builds and validates; full suite green; ready to push reconciliation commit.",
-  "checkpoint_commit": "pending-push",
+  "last_checkpoint": "CONVERGED at b79f5f4: CI + Distribution + Pages all green on main; 484/484 tests; PWA PNG icons committed by Distribution workflow and live; WordPress plugin ZIP artifact building; live verified: homepage hero + menu, blog/, 6 hubs, pilot articles, search-index, knowledge-index, sitemap.xml, robots.txt, manifest, service-worker, embed.js all 200.",
+  "checkpoint_commit": "b79f5f474cbcdba0c38783e6b63380b6e017acdd",
   "tests": {
     "suite": "node --test",
     "expected_state": "all green (v47 blog suites + distribution suites + legacy suites)"
