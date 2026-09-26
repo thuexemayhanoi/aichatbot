@@ -314,3 +314,40 @@ test('mobile app-lock: body locked, app pinned, only messages scroll, embed unch
   // Composer sits directly above the safe area (app padding keeps env inset).
   assert.match(css, /\.motoai-app\s*\{[^}]*calc\(env\(safe-area-inset-bottom/s);
 });
+
+// --- 5f. Responsive device classes (v49): structural CSS contracts, not visual ---
+// These assert the stylesheet's responsive rules per breakpoint. They are
+// STRUCTURAL guarantees (selectors/values present), not pixel-rendered visuals.
+test('responsive: mobile base stays app-locked, laptop/desktop center a capped column', () => {
+  // Breakpoints exist and cover the device classes.
+  assert.match(css, /@media \(min-width: 768px\)/, 'laptop/tablet breakpoint');
+  assert.match(css, /@media \(min-width: 1200px\)/, 'desktop breakpoint');
+  assert.match(css, /@media \(min-width: 1600px\)/, 'large-desktop breakpoint');
+  // Laptop (768): centered 820px column, messages 80%, drawer 320px.
+  const laptop = css.slice(css.indexOf('@media (min-width: 768px)'), css.indexOf('@media (min-width: 1200px)'));
+  assert.match(laptop, /\.motoai-shell \.motoai-app\s*\{[^}]*max-width:\s*820px;/);
+  assert.match(laptop, /\.motoai-msg\s*\{[^}]*max-width:\s*80%;/);
+  assert.match(laptop, /\.motoai-drawer\s*\{[^}]*width:\s*320px;/);
+  assert.match(laptop, /body\[data-motoai-embed="1"\] \.motoai-app\s*\{[^}]*max-width:\s*none;/, 'embed stays unconstrained');
+  // Desktop (1200): 940px column, messages 74%, drawer 340px, premium composer.
+  const desk = css.slice(css.indexOf('@media (min-width: 1200px)'), css.indexOf('@media (min-width: 1600px)'));
+  assert.match(desk, /\.motoai-shell \.motoai-app\s*\{[^}]*max-width:\s*940px;/);
+  assert.match(desk, /\.motoai-msg\s*\{[^}]*max-width:\s*74%;[^}]*font-size:\s*0\.95rem;/s);
+  assert.match(desk, /\.motoai-drawer\s*\{[^}]*width:\s*340px;/);
+  assert.match(desk, /\.motoai-input\s*\{[^}]*padding:\s*13px 18px;/);
+  // Large desktop (1600): capped at 1000px — chat never spans the monitor.
+  const xl = css.slice(css.indexOf('@media (min-width: 1600px)'));
+  assert.match(xl, /\.motoai-shell \.motoai-app\s*\{[^}]*max-width:\s*1000px;/);
+  assert.match(xl, /\.motoai-msg\s*\{[^}]*max-width:\s*72%;/);
+  assert.match(xl, /\.motoai-drawer\s*\{[^}]*width:\s*360px;/);
+});
+
+test('responsive: safe-area insets survive at every breakpoint', () => {
+  for (const bp of ['768px', '1200px']) {
+    const start = css.indexOf(`@media (min-width: ${bp})`);
+    const end = start === -1 ? -1 : css.indexOf('@media', start + 1);
+    const block = css.slice(start, end === -1 ? undefined : end);
+    assert.ok(block.includes('env(safe-area-inset-top'), `${bp} keeps safe-area top inset`);
+    assert.ok(block.includes('env(safe-area-inset-bottom'), `${bp} keeps safe-area bottom inset`);
+  }
+});

@@ -53,7 +53,9 @@ test('accessibility: focus-visible states and reduced motion are handled', () =>
 });
 
 test('mobile: input font >= 16px (no iOS focus zoom) and touch targets are sensible', () => {
-  const inputBlock = css.split('.motoai-input {').pop().split('}')[0];
+  // The BASE rule (first occurrence) must keep font-size >= 16px; later
+  // responsive overrides adjust padding only, never the font size.
+  const inputBlock = css.split('.motoai-input {').slice(1).shift();
   const size = /font-size:\s*(\d+(?:\.\d+)?)px/.exec(inputBlock);
   assert.ok(size, 'motoai-input font-size missing');
   assert.ok(Number(size[1]) >= 16, `input font-size ${size[1]}px must be >= 16px`);

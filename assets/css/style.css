@@ -604,3 +604,54 @@ body[data-motoai-embed="1"] .motoai-app { position: static; inset: auto; }
   translate: 0 -6vh;
 }
 
+
+/* ---------- v49: responsive device classes (mobile-first) ---------- */
+/* Base (<=767px) is the mobile app-lock above: full-screen chat, messages
+   86% wide, drawer min(84vw, 300px). Larger classes below do NOT stretch the
+   phone UI — they re-center a comfortable chat column and relax density. */
+
+/* Laptop / tablet landscape 768–1199px: centered chat application. */
+@media (min-width: 768px) {
+  .motoai-shell { max-width: 820px; }
+  .motoai-shell .motoai-app { max-width: 820px; }
+  body[data-motoai-embed="1"] .motoai-app { max-width: none; } /* embed keeps its own flow */
+  .motoai-app {
+    padding:
+      calc(env(safe-area-inset-top, 0px) + var(--space-3))
+      calc(env(safe-area-inset-right, 0px) + var(--space-4))
+      calc(env(safe-area-inset-bottom, 0px) + var(--space-3))
+      calc(env(safe-area-inset-left, 0px) + var(--space-4));
+    gap: var(--space-3);
+  }
+  .motoai-header { padding: var(--space-3) var(--space-1) var(--space-4); }
+  .motoai-msg { max-width: 80%; }               /* readable line length */
+  .motoai-input { padding: 12px 16px; }
+  .motoai-drawer { width: 320px; }               /* intentional with a mouse */
+}
+
+/* Desktop 1200–1599px: premium centered column — never a stretched phone. */
+@media (min-width: 1200px) {
+  .motoai-shell { max-width: 940px; }
+  .motoai-shell .motoai-app { max-width: 940px; }
+  .motoai-app {
+    padding:
+      calc(env(safe-area-inset-top, 0px) + var(--space-4))
+      calc(env(safe-area-inset-right, 0px) + var(--space-5))
+      calc(env(safe-area-inset-bottom, 0px) + var(--space-4))
+      calc(env(safe-area-inset-left, 0px) + var(--space-5));
+    gap: var(--space-4);
+  }
+  .motoai-header { padding: var(--space-4) var(--space-2) var(--space-5); }
+  .motoai-msg { max-width: 74%; font-size: 0.95rem; }
+  .motoai-input { padding: 13px 18px; }
+  .motoai-send { padding: 0 24px; }
+  .motoai-drawer { width: 340px; }
+}
+
+/* Large desktop >=1600px: capped column with balanced side breathing room. */
+@media (min-width: 1600px) {
+  .motoai-shell { max-width: 1000px; }
+  .motoai-shell .motoai-app { max-width: 1000px; }
+  .motoai-msg { max-width: 72%; }
+  .motoai-drawer { width: 360px; }
+}
