@@ -6,6 +6,8 @@
   <title>MotoAI — Trợ lý thuê xe máy Hà Nội</title>
   <meta name="description" content="MotoAI — trợ lý tự động trả lời giá thuê xe máy, đặt cọc, giao xe, giờ mở cửa của Thuê Xe Máy Hà Nội Nguyễn Tú.">
   <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#4f46e5">
   <link rel="stylesheet" href="assets/css/style.css">
   <script>
     // Apply theme before first paint to avoid a flash.
@@ -25,12 +27,13 @@
       <div class="motoai-header-text">
         <div class="motoai-brand-mark" aria-hidden="true">🏍️</div>
         <div>
-          <h1 class="motoai-title">Hỗ trợ Agent</h1>
-          <p class="motoai-subtitle" id="motoai-subtitle">Thuê xe máy Nguyễn Tú — 112 Nguyễn Văn Cừ, Long Biên, Hà Nội</p>
+          <h1 class="motoai-title">MotoAI</h1>
+          <p class="motoai-subtitle" id="motoai-subtitle">Trợ lý thuê xe máy Hà Nội Nguyễn Tú</p>
         </div>
       </div>
       <span class="motoai-status" id="motoai-status" role="status" aria-live="polite"></span>
       <button type="button" class="motoai-reset" id="motoai-reset" title="Xoá hội thoại và ngữ cảnh đã nhớ" aria-label="Xoá hội thoại và ngữ cảnh">🧹</button>
+      <button type="button" class="motoai-install" id="motoai-install" hidden title="Cài MotoAI như một ứng dụng" aria-label="Cài Agent">Cài Agent</button>
     </header>
 
     <section class="motoai-messages" id="motoai-messages" aria-live="polite" aria-label="Tin nhắn"></section>
@@ -39,17 +42,17 @@
 
     <div class="motoai-ai-panel" id="motoai-ai-panel">
       <button type="button" class="motoai-ai-toggle" id="motoai-ai-toggle" hidden>
-        ⚡ Agent
+        ⚡ AI tại chỗ
       </button>
       <div class="motoai-ai-explain" id="motoai-ai-explain" hidden>
-        <strong>Agent (tùy chọn, nâng cao)</strong>
+        <strong>AI tại chỗ (tùy chọn, nâng cao)</strong>
         <ul>
-          <li>Agent chạy trên thiết bị của bạn và không cần API key — không gửi hội thoại đi đâu.</li>
+          <li>Chạy hoàn toàn trên thiết bị của bạn — không API key, không gửi hội thoại đi đâu.</li>
           <li>Model AI chỉ tải sau khi bạn bấm xác nhận bên dưới và có thể nặng vài trăm MB.</li>
           <li>Dùng bộ nhớ và dung lượng của thiết bị; cần trình duyệt hỗ trợ WebGPU.</li>
           <li>Luôn tắt được; trợ lý cơ bản hoạt động bình thường mà không cần nó.</li>
         </ul>
-        <button type="button" class="motoai-ai-confirm" id="motoai-ai-confirm">Tải model và bật Agent</button>
+        <button type="button" class="motoai-ai-confirm" id="motoai-ai-confirm">Tải model và bật AI</button>
         <button type="button" class="motoai-ai-cancel" id="motoai-ai-cancel">Để sau</button>
       </div>
       <div class="motoai-ai-status" id="motoai-ai-status" hidden>
@@ -67,7 +70,7 @@
     </form>
 
     <p class="motoai-disclosure" id="motoai-disclosure">
-      Trợ lý trả lời tự động dựa trên dữ liệu có sẵn. Không gửi dữ liệu đi đâu — Agent (nếu bật) chạy ngay trên máy bạn.
+      Trợ lý trả lời tự động dựa trên dữ liệu có sẵn. Không gửi dữ liệu đi đâu — AI (nếu bật) chạy ngay trên máy bạn.
     </p>
   </main>
 

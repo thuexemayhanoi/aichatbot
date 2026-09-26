@@ -1,0 +1,39 @@
+{
+  "name": "MotoAI — Trợ lý thuê xe máy Hà Nội",
+  "short_name": "MotoAI",
+  "description": "Trợ lý tự động trả lời giá thuê xe máy, đặt cọc, giao xe, giờ mở cửa. Chạy hoàn toàn trên thiết bị của bạn.",
+  "id": "/aichatbot/",
+  "start_url": "/aichatbot/?source=pwa",
+  "scope": "/aichatbot/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f6fa",
+  "theme_color": "#4f46e5",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "/aichatbot/assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/aichatbot/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/aichatbot/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/aichatbot/assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

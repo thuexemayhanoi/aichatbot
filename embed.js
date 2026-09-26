@@ -8,7 +8,7 @@
  * Usage:
  *   <script src="https://thuexemayhanoi.github.io/aichatbot/embed.js"
  *           data-motoai data-lang="vi" data-theme="auto"
- *           data-position="right" data-title="Hỗ trợ Agent" data-open="false" async></script>
+ *           data-position="right" data-title="MotoAI" data-open="false" async></script>
  */
 (function (root, factory) {
   var api = factory(root);
@@ -24,9 +24,10 @@
     lang: 'vi',
     theme: 'auto',
     position: 'right',
-    title: 'Hỗ trợ Agent',
+    title: 'MotoAI',
     source: null,
-    open: false
+    open: false,
+    openDelay: 0
   };
 
   /** Parse the host <script> attributes into a normalized config. */
@@ -40,7 +41,9 @@
       position: attr('data-position') === 'left' ? 'left' : DEFAULTS.position,
       title: (attr('data-title') || DEFAULTS.title).slice(0, 40),
       source: attr('data-source') ? String(attr('data-source')).slice(0, 64) : null,
-      open: /^(true|1|yes)$/i.test(String(attr('data-open') || ''))
+      open: /^(true|1|yes)$/i.test(String(attr('data-open') || '')),
+      // Optional auto-open delay in ms, clamped to 0..10000 ("never" > 10s).
+      openDelay: Math.max(0, Math.min(10000, parseInt(String(attr('data-open-delay') || '0'), 10) || 0))
     };
     if (['vi', 'en'].indexOf(config.lang) === -1) config.lang = DEFAULTS.lang;
     if (['auto', 'light', 'dark'].indexOf(config.theme) === -1) config.theme = DEFAULTS.theme;
@@ -169,7 +172,14 @@
 
     var instance = { config: config, open: open, close: close, toggle: toggle, frameUrl: frameUrl };
     doc[MOUNT_FLAG] = instance;
-    if (config.open) open();
+    if (config.open) {
+      if (config.openDelay > 0) {
+        // Delayed auto-open never blocks the host page (timer, not a promise chain).
+        setTimeout(function () { open(); }, config.openDelay);
+      } else {
+        open();
+      }
+    }
     return { already: false, instance: instance };
   }
 
@@ -192,7 +202,7 @@
   }
 
   return {
-    version: '1.0.0',
+    version: '1.1.0',
     parseConfig: parseConfig,
     buildFrameUrl: buildFrameUrl,
     currentScriptEl: currentScriptEl,
