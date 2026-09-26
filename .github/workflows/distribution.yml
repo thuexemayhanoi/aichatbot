@@ -1,0 +1,55 @@
+name: Distribution
+
+# Binary distribution artifacts (PWA icons, WordPress ZIP) are generated
+# deterministically in CI (pure stdlib, byte-stable output).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Full test suite (gates before any artifact)
+        run: node --test
+
+      - name: Generate PWA raster icons (deterministic, stdlib-only)
+        run: python3 tools/gen-icons.py
+
+      - name: Commit generated icons if missing/changed
+        # GITHUB_TOKEN pushes never re-trigger workflows (documented GitHub behavior).
+        run: |
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git add assets/icons/*.png
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: generate PWA raster icons [skip ci]"
+            git push
+          else
+            echo "icons unchanged"
+          fi
+
+      - name: Build WordPress plugin ZIP (deterministic)
+        run: node tools/build-wordpress-plugin.mjs
+
+      - name: Upload WordPress plugin ZIP artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: motoai-agent-${{ github.sha }}
+          path: dist/motoai-agent.zip
+          if-no-files-found: error
+
+      - name: Create GitHub release with the ZIP (tags only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/motoai-agent.zip

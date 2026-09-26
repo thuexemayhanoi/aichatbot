@@ -17,8 +17,13 @@ jobs:
         run: node --test
       - name: Secret scan (no keys, no tokens)
         run: |
-          if grep -rInE "(api[_-]?key|secret|token)[\"' ]*[:=][\"' ]*[A-Za-z0-9+/]{16,}" src assets embed.js index.html data; then
+          if grep -rInE "(api[_-]?key|secret|token)[\"' ]*[:=][\"' ]*[A-Za-z0-9+/]{16,}" src assets embed.js index.html data integrations service-worker.js manifest.webmanifest tools; then
             echo "::error::Possible secret found"; exit 1
+          fi
+      - name: Inference endpoint scan (v45 distribution surface)
+        run: |
+          if grep -rInE "api\.(openai|anthropic|mistral)\.com|generativelanguage\.googleapis\.com|api\.(groq|deepseek|together)\.(com|xyz)" src assets integrations service-worker.js manifest.webmanifest tools embed.js index.html; then
+            echo "::error::Remote inference endpoint found"; exit 1
           fi
       - name: Bundle regression guard (fail if base JS grows past 196KB)
         run: |
