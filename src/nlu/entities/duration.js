@@ -1,6 +1,11 @@
 import { parseNumber } from '../tokenizer.js';
 
-const UNITS_IN_DAYS = { ngay: 1, tuan: 7, thang: 30 };
+const UNITS_IN_DAYS = {
+  ngay: 1, tuan: 7, thang: 30,
+  // English units (tokenized forms, no diacritics involved).
+  day: 1, days: 1, week: 7, weeks: 7, month: 30, months: 30
+};
+
 const DISPLACEMENT = /^(\d+)cc$/;
 
 /**

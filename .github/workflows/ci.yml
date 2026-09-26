@@ -20,10 +20,13 @@ jobs:
           if grep -rInE "(api[_-]?key|secret|token)[\"' ]*[:=][\"' ]*[A-Za-z0-9+/]{16,}" src assets embed.js index.html data; then
             echo "::error::Possible secret found"; exit 1
           fi
-      - name: Bundle regression guard (fail if base JS grows past 135KB)
+      - name: Bundle regression guard (fail if base JS grows past 190KB)
         run: |
           size=$(find src assets -name '*.js' -print0 | xargs -0 cat | wc -c)
           size2=$(wc -c < embed.js)
           total=$((size + size2))
-          echo "base JS bytes: $total (baseline 2026-09-27 v43.1: 134117)"
-          test "$total" -lt 150000
+          echo "base JS bytes: $total (baseline 2026-09-26 v44: 186095)"
+          # v44 adds context memory, planner, hybrid retrieval (lazy, no external
+          # deps in the bundle — Transformers.js is CDN-imported at runtime only),
+          # recommendation engine and calculator. Embed launcher stays tiny.
+          test "$total" -lt 190000

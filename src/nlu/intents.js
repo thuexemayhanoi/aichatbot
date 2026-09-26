@@ -19,6 +19,8 @@ export const INTENT_DEFINITIONS = [
   { id: 'duration_query', phrases: ['thuê bao lâu', 'thời gian thuê', 'thuê theo ngày', 'thuê theo tuần', 'thuê theo tháng', 'thuê dài hạn', 'thuê ngắn hạn'] },
   { id: 'location_query', phrases: ['ở đâu', 'khu vực', 'quận nào', 'địa chỉ', 'giao ở đâu'] },
   { id: 'hours_query', phrases: ['giờ mở cửa', 'giờ hoạt động', 'mấy giờ', 'mở cửa', 'đóng cửa'] },
+  { id: 'recommendation_query', phrases: ['nên thuê xe gì', 'nên chọn xe nào', 'nên thuê xe nào', 'xe nào phù hợp', 'gợi ý xe', 'tư vấn xe', 'which bike', 'recommend', 'xe gì hợp', 'chọn xe nào', 'nên chọn xe gì', 'chọn xe gì', 'nên lấy xe'] },
+  { id: 'compare_query', phrases: ['rẻ hơn', 'rẻ nhất', 'so sánh', 'cái nào rẻ', 'xe nào rẻ', 'which is cheaper', 'cheaper', 'giá nào tốt hơn'] },
   { id: 'greeting', phrases: ['xin chào', 'chào bạn', 'hello', 'hi', 'chào'] }
 ];
 
@@ -78,6 +80,8 @@ export function createIntentMatcher(definitions = INTENT_DEFINITIONS) {
 function inferFromEntities(entities) {
   if (!entities) return null;
   if (entities.vehicles && entities.vehicles.length) return 'price_query';
+  // A stated trip shape (destination/road) without a vehicle is advice-seeking.
+  if (entities.rider && (entities.rider.destination || entities.rider.usage)) return 'recommendation_query';
   if (entities.durations && entities.durations.length) return 'duration_query';
   if (entities.displacements && entities.displacements.length) return 'bike_type_query';
   if (entities.locations && entities.locations.length) return 'location_query';

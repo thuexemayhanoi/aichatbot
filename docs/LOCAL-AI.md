@@ -67,3 +67,12 @@ Không đạt → nút "Bật AI tại chỗ" không hiện, chatbot hoạt đ�
 - Base JS (không WebLLM): ~116 KB source chưa nén (src + assets), ước tính ~30–35 KB gzip, 0 dependency.
 - WebLLM + model chỉ load khi người dùng bật. First render không phụ thuộc AI.
 - Đo thực tế trên thiết bị thật khi triển khai: first-token latency, init time, memory — ghi lại ở docs/COMPATIBILITY.md khi có số liệu.
+
+## v44 — Local LLM là lớp PHRASING, không phải nguồn sự thật
+
+Từ v44, LLM tại chỗ có hai vai trò, cả hai đều bị chặn:
+
+1. **Fallback synthesis (như cũ)** — chỉ khi rules + retrieval khước từ; output phải qua `guardFacts`.
+2. **Phrasing (mới)** — khi engine trả kết quả có `structured` (recommendation/calculator) VÀ planner cho phép (`route.useLocalLlm`), LLM nhận đúng text kết quả tất định và chỉ được diễn đạt lại. Output phải qua **Fact Guard v2** (`src/ai/fact-guard.js`): mọi số, số điện thoại, giờ mở cửa phải khớp verified bundle, nếu không bỏ và dùng câu template gốc.
+
+Planner (`src/core/planner.js`) cứng: giá/cọc/giờ/địa chỉ/liên hệ/chính sách → `useLocalLlm: false`. LLM không bao giờ được chạm business fact. Fail ở bất kỳ khâu nào → câu trả lời tất định mặc định, người dùng không thấy lỗi.

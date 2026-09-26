@@ -8,9 +8,11 @@ export const DEFAULTS = Object.freeze({
   language: 'vi',
   replyDelayMs: 300,
   features: Object.freeze({
-    // Optional semantic layer: off by default so weak phones get the fast lexical path.
-    semanticSearch: false,
-    hybridSearch: false,
+    // Optional LOCAL semantic layer (Transformers.js, in-browser, lazy):
+    // enabled but never loaded on page load — warm-up starts after the
+    // first user turn and failure degrades silently to BM25-only.
+    semanticSearch: true,
+    hybridSearch: true,
     persistHistory: true,
     telemetry: false
   }),

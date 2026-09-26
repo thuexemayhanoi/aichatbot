@@ -6,6 +6,7 @@ import { createReturnRule } from './return-rule.js';
 import { createPolicyRule } from './policy-rule.js';
 import { createLocationRule } from './location-rule.js';
 import { createBikeTypeRule } from './bike-type-rule.js';
+import { createRecommendRule } from './recommend-rule.js';
 import { createPricingRule } from './pricing-rule.js';
 import { createDurationRule } from './duration-rule.js';
 import { createGreetingRule } from './greeting-rule.js';
@@ -34,6 +35,7 @@ const RULE_FACTORIES = [
   createPolicyRule, // 6. insurance + other policies
   createLocationRule, // 7. business address
   createBikeTypeRule, // 8. catalog listing
+  createRecommendRule, // 8b. deterministic grounded recommendation (rider context)
   createPricingRule, // 9. prices and estimates (may clarify vehicle)
   createDurationRule, // 10. general rental-duration questions
   createGreetingRule // 11. greetings

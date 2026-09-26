@@ -15,9 +15,17 @@ function analysis({ vehicles = [], durations = [], totalDays = null, locations =
 const VISION = { type: 'model', id: 'honda-vision', name: 'Honda Vision' };
 const XE_SO = { type: 'category', id: 'xe-so', name: 'Xe số' };
 
+/** v44 context-memory shape: core slots + rider/trip fields, all null. */
+const EMPTY_CONTEXT = {
+  vehicle: null, durationDays: null, location: null,
+  language: null, dateRange: null, heightCm: null, experience: null,
+  transmission: null, electric: null, luggage: null, usage: null,
+  budget: null, destination: null, prevIntent: null
+};
+
 test('slots start empty', () => {
   const { slots } = makeSlots();
-  assert.deepEqual(slots.get(), { vehicle: null, durationDays: null, location: null });
+  assert.deepEqual(slots.get(), EMPTY_CONTEXT);
 });
 
 test('updateFromAnalysis fills vehicle, duration and location', () => {
@@ -25,7 +33,7 @@ test('updateFromAnalysis fills vehicle, duration and location', () => {
   const next = slots.updateFromAnalysis(
     analysis({ vehicles: [VISION], totalDays: 7, locations: [{ name: 'Tây Hồ' }] })
   );
-  assert.deepEqual(next, { vehicle: VISION, durationDays: 7, location: 'Tây Hồ' });
+  assert.deepEqual(next, { ...EMPTY_CONTEXT, vehicle: VISION, durationDays: 7, location: 'Tây Hồ', prevIntent: 'price_query' });
   assert.deepEqual(slots.get(), next);
 });
 
@@ -89,14 +97,14 @@ test('corrupted slot records are sanitized on read', () => {
   const store = createLocalStore({ namespace: 'slot-test', backend: null });
   store.set('slots:s1', { vehicle: 'vision', durationDays: 'week', location: 42, extra: true });
   const slots = createSlots({ store, sessionId: 's1' });
-  assert.deepEqual(slots.get(), { vehicle: null, durationDays: null, location: null });
+  assert.deepEqual(slots.get(), EMPTY_CONTEXT);
 });
 
 test('clear resets the slots', () => {
   const { slots } = makeSlots();
   slots.updateFromAnalysis(analysis({ vehicles: [VISION], totalDays: 7 }));
   slots.clear();
-  assert.deepEqual(slots.get(), { vehicle: null, durationDays: null, location: null });
+  assert.deepEqual(slots.get(), EMPTY_CONTEXT);
 });
 
 test('missing store or sessionId throws', () => {

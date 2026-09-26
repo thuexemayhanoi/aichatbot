@@ -194,7 +194,9 @@ test('stale session state is discarded and recreated (TTL)', async () => {
   const second = createTestEngine({ store, scope: 'ttl', config });
   assert.notEqual(second.engine.session.id, first.engine.session.id);
   assert.deepEqual(second.engine.history.list(), []);
-  assert.deepEqual(second.engine.slots.get(), { vehicle: null, durationDays: null, location: null });
+  // v44: the context-memory shape includes rider/trip fields; TTL discards all.
+  const fresh = second.engine.slots.get();
+  for (const [key, value] of Object.entries(fresh)) assert.equal(value, null, `slot ${key} must be reset`);
 });
 
 test('duplicate session initialization keeps one session and one history', async () => {

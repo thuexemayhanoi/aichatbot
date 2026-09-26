@@ -37,3 +37,16 @@ tests/helpers/       # data loaders, engine fixture, storage stubs
 - New embed attribute → extend `tests/integration/embed.test.js`.
 - New slang/typo handling → add cases to golden suite (typo, no-accent, mixed vi/en batches exist as groups).
 - Matrix row for the feature should reference the test file in its `evidence` column.
+
+## v44 — hybrid intelligence suites
+
+- `tests/unit/rider.test.js` — rider/trip entity parsing (height, experience, transmission, budget, luggage, usage, destination, electric), "50cc never a height", vi/en language detection.
+- `tests/unit/dates.test.js` — date ranges: inclusive day counts, invalid/reversed ranges rejected, leap years, 2-digit years, Vietnamese/English connectors.
+- `tests/unit/analyze-turn.test.js` — `analyzeTurn` + `planTurn`: resolved entities (context merge, turn wins), missing entities, route gating (price → NO LLM).
+- `tests/unit/recommender.test.js` — deterministic recommendation: verified models only, no invented specs, height → missingInfo, budget filter, transmission filter.
+- `tests/unit/rental-calculator.test.js` — 1/7/12/30 days, transparent cheapest-package breakdown, 35-day comparison sorted, unpriced = null.
+- `tests/unit/hybrid.test.js` — deterministic reranker (max-normalization, tie-break by id), hybrid retriever with stubbed local embeddings, BM25-only degradation, irrelevant-query rejection.
+- `tests/unit/fact-guard.test.js` — Fact Guard v2: invented prices/phones/hours rejected; verified numbers pass; legacy guardFacts intact.
+- `tests/integration/multi-turn.test.js` — golden multi-turn A–G: follow-up keeps Vision, height carries into recommendation, Wave 12 ngày breakdown, 150k budget, English context, "Không, Air Blade cơ" override, "xe 50cc" never 50 days; date-range pricing; English durations; comparison; resetContext.
+
+Total: **393 tests** (was 317). No old assertion weakened; slot-shape tests updated to the extended context-memory schema.

@@ -8,9 +8,11 @@ test('defaults are frozen and Vietnamese-first', () => {
   assert.equal(DEFAULTS.language, 'vi');
 });
 
-test('semantic search is disabled by default', () => {
-  assert.equal(DEFAULTS.features.semanticSearch, false);
-  assert.equal(DEFAULTS.features.hybridSearch, false);
+test('hybrid search is enabled by default but strictly lazy + local', () => {
+  // v44: BM25 stays primary; the semantic layer only warms up after the
+  // first user turn, in-browser, degrading to BM25 when unavailable.
+  assert.equal(DEFAULTS.features.semanticSearch, true);
+  assert.equal(DEFAULTS.features.hybridSearch, true);
 });
 
 test('reply delay preserves the baseline behavior', () => {
@@ -18,11 +20,11 @@ test('reply delay preserves the baseline behavior', () => {
 });
 
 test('createConfig merges one level deep without mutating defaults', () => {
-  const cfg = createConfig({ replyDelayMs: 100, features: { semanticSearch: true } });
+  const cfg = createConfig({ replyDelayMs: 100, features: { semanticSearch: false } });
   assert.equal(cfg.replyDelayMs, 100);
-  assert.equal(cfg.features.semanticSearch, true);
+  assert.equal(cfg.features.semanticSearch, false);
   assert.equal(cfg.features.persistHistory, true);
-  assert.equal(DEFAULTS.features.semanticSearch, false);
+  assert.equal(DEFAULTS.features.semanticSearch, true); // untouched frozen defaults
 });
 
 test('paths stay relative for GitHub Pages compatibility', () => {

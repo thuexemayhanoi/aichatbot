@@ -50,6 +50,7 @@ export function cheapestPackage(days, rates, bound = 'min') {
   for (const pkg of feasiblePackages(n)) {
     let cost = 0;
     let feasible = true;
+    const units = {};
     for (const [tier, count] of [
       ['month', pkg.months],
       ['week', pkg.weeks],
@@ -61,10 +62,11 @@ export function cheapestPackage(days, rates, bound = 'min') {
         feasible = false;
         break;
       }
+      units[tier] = unit;
       cost += count * unit;
     }
     if (!feasible) continue;
-    if (!best || cost < best.cost) best = { ...pkg, cost };
+    if (!best || cost < best.cost) best = { ...pkg, cost, units };
   }
   return best;
 }

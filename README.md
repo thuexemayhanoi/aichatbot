@@ -8,23 +8,48 @@ MotoAI là chatbot thuê xe máy cho **Thuê Xe Máy Hà Nội Nguyễn Tú**, c
 ## Kiến trúc (xem `docs/ARCHITECTURE.md`)
 
 ```
+User
+→ Context Memory        (src/context — vehicle, duration, date range, height,
+                         experience, destination, budget, transmission,
+                         language, prevIntent; localStorage local-only)
+→ Intent/Entity         (src/nlu — analyzeTurn: intent + entities +
+                         missingEntities + confidence, 100% deterministic)
+→ Rules                 (src/rules — giá, cọc, giờ, địa chỉ, liên hệ luôn thắng)
+→ Hybrid Retrieval      (src/search — BM25 luôn chạy; lớp semantic
+                         Transformers.js LAZY, in-browser, degrade về BM25)
+→ Recommendation /     (src/recommend + src/calc — engine gợi ý tất định
+  Calculator             + calculator chi tiết gói rẻ nhất từ pricing.json)
+→ Local LLM phrasing    (src/ai — CHỈ diễn đạt lại kết quả đã verify,
+   (tùy chọn)            planner chặn LLM với mọi business fact)
+→ Fact Guard            (src/ai/fact-guard.js — số/điện thoại/giờ phải
+                         khớp dữ liệu verify, nếu không bỏ output)
+→ Answer                (responder + honest fallback)
+```
+
+```
 data/business/          # SỰ THẬT KINH DOANH (business.json, pricing.json, faq.json)
-src/nlu/                 # Phân tích ngôn ngữ: intents, entities, synonyms
-src/rules/               # Rule engine tất định (giá, cọc, giao xe, giờ, liên hệ...)
-src/search/              # BM25 + corpus từ dữ liệu repo (retrieval, vi + en)
-src/ai/                  # Local AI: capability detection, WebLLM loader, grounding
+src/nlu/                 # Intents, entities (duration/dates/rider/vehicles/...), synonyms, language
+src/core/                # engine pipeline + planner (planTurn) + responder + events
+src/rules/               # Rule engine tất định + recommend-rule
+src/search/              # bm25, corpus, retriever, hybrid-retriever, semantic-retriever, reranker
+src/recommend/           # Engine gợi ý xe tất định (chỉ dùng dữ liệu verify)
+src/calc/                # Smart rental calculator (breakdown, date range, so sánh)
+src/ai/                  # Local AI: capability, model-selection, local-llm, grounding, fact-guard
+src/context/             # Session, history, slots (context memory), agenda
 src/app/                 # Wiring dùng chung cho direct mode + embed iframe
-src/core, src/context, src/storage, src/utils
+src/storage, src/utils
 assets/                  # UI trực tiếp (HTML/CSS/JS module, không framework)
 embed.js                 # Embed widget (iframe isolation, không phụ thuộc)
-tests/                   # 317 test (node --test): unit, integration, golden conversations
+tests/                   # 393 test (node --test): unit, integration, golden + multi-turn
 docs/                    # LOCAL-AI.md, EMBED.md, ARCHITECTURE.md, COMPATIBILITY.md, WORKFLOW.md, TESTING.md, UI-UX.md
-docs/matrix/             # Master Matrix (203 tasks, BOT-0001..BOT-0203) + test matrix
+docs/matrix/             # Master Matrix (248 tasks, BOT-0001..BOT-0248) + test matrix
 docs/state/active-work.json  # checkpoint/lock cho các scheduled run
 reports/                 # evidence report theo từng run
 tools/gen-matrix.mjs     # tái tạo Master Matrix (idempotent)
 .github/workflows/ci.yml # CI: full tests + secret scan + bundle guard
 ```
+
+LLM **tùy chọn hoàn toàn** — không có API key, không backend, không paid inference; mọi tính năng cơ bản (rules, NLU, BM25, recommendation, calculator, context) chạy không cần LLM. Lớp semantic cũng là local-first: model embedding tải từ CDN tĩnh, chạy WASM trong trình duyệt, chỉ warm-up SAU lượt chat đầu tiên, fail thì BM25 vẫn đầy đủ. Toàn bộ context memory nằm trong localStorage của người dùng (nút 🧹 để xoá).
 
 ## Thứ tự ưu tiên trả lời (không đổi)
 
@@ -38,12 +63,12 @@ LLM **không bao giờ** được phép bịa giá, chính sách, địa chỉ, 
 ## Chạy test
 
 ```bash
-npm test        # node --test — 317 tests
+npm test        # node --test — 393 tests
 ```
 
 Golden conversation regression nằm ở `tests/integration/golden.test.js`, kỳ vọng đọc trực tiếp từ `data/business/*.json` (không hard-code).
 
-CI chạy toàn bộ suite trên mỗi push/PR tới `main`, kèm secret-scan và bundle regression guard. Quy trình scheduled run: xem `docs/WORKFLOW.md` (RESUME > FIX > VERIFY > IMPROVE > NEW FEATURE). Danh sách 203 task và trạng thái: `docs/matrix/chatbot-master-matrix.csv`.
+CI chạy toàn bộ suite trên mỗi push/PR tới `main`, kèm secret-scan và bundle regression guard. Quy trình scheduled run: xem `docs/WORKFLOW.md` (RESUME > FIX > VERIFY > IMPROVE > NEW FEATURE). Danh sách 248 task và trạng thái: `docs/matrix/chatbot-master-matrix.csv`.
 
 ## Cấu hình
 

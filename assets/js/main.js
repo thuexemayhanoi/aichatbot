@@ -59,8 +59,10 @@ async function init() {
     aiStatus: document.getElementById('motoai-ai-status'),
     aiBar: document.getElementById('motoai-ai-progress-bar'),
     aiStatusText: document.getElementById('motoai-ai-status-text'),
-    aiOff: document.getElementById('motoai-ai-off')
+    aiOff: document.getElementById('motoai-ai-off'),
+    reset: document.getElementById('motoai-reset')
   };
+  const DEBUG = new URLSearchParams(location.search).get('debug') === '1';
 
   // True when the reader is already near the bottom; only then auto-scroll,
   // so reading older messages is never interrupted by a scroll jump.
@@ -160,6 +162,12 @@ async function init() {
       const result = await app.send(text);
       hideTyping();
       renderMessage(elements.messages, result.reply);
+      if (DEBUG && result.source) {
+        renderMessage(elements.messages, {
+          role: 'assistant',
+          text: `[debug] nguồn: ${result.source}` // internal trace, debug mode only
+        });
+      }
       setStatus(elements.status, '');
     } catch (error) {
       hideTyping();
@@ -189,6 +197,14 @@ async function init() {
     }
   });
   elements.input.addEventListener('input', autoGrow);
+
+  // Clear conversation + remembered context (local only; nothing to delete server-side).
+  elements.reset?.addEventListener('click', () => {
+    try { app.resetContext(); } catch { /* engine wiring missing — nothing remembered */ }
+    elements.messages.replaceChildren();
+    renderMessage(elements.messages, { role: 'assistant', text: app.data.faq.assistant.greeting });
+    setStatus(elements.status, 'Đã xoá hội thoại và ngữ cảnh.', 'success');
+  });
 
   // Inside an embed iframe, Escape must close the widget on the host page.
   document.addEventListener('keydown', (event) => {

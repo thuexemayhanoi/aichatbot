@@ -54,7 +54,7 @@ test('no API keys or inference secrets in the codebase', () => {
 });
 
 test('all outbound URLs are static-asset CDNs only (no inference calls)', () => {
-  const checked = [join(ROOT, 'src/ai/local-llm.js'), join(ROOT, 'index.html')];
+  const checked = [join(ROOT, 'src/ai/local-llm.js'), join(ROOT, 'src/search/semantic-retriever.js'), join(ROOT, 'index.html')];
   for (const file of checked) {
     const content = readFileSync(file, 'utf8');
     const urls = [...content.matchAll(/https:\/\/[a-z0-9.\-/]+/gi)].map((m) => m[0]);

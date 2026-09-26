@@ -31,6 +31,9 @@ const MAX_INPUT_LENGTH = 2000;
  * @param {function} [options.retriever]   - optional (query, {analysis, slots}) => result|null.
  * @param {function} [options.now]         - clock injection for deterministic tests.
  * @param {function} [options.idGenerator] - session id injection for tests.
+ * @param {function} [options.planner]     - optional (plan) => route; used for
+ *   per-turn route tracing (event 'plan') and source/debug metadata only —
+ *   the deterministic pipeline itself is unchanged.
  */
 export function createEngine({
   analyzer,
@@ -43,7 +46,8 @@ export function createEngine({
   emitter,
   retriever = null,
   now = () => new Date(),
-  idGenerator
+  idGenerator,
+  planner = null
 } = {}) {
   if (typeof analyzer !== 'function') throw new TypeError('createEngine requires an analyzer function');
   if (!Array.isArray(rules) || rules.length === 0) throw new TypeError('createEngine requires a non-empty rules array');
@@ -87,11 +91,21 @@ export function createEngine({
     events.emit('turn', { text: input, sessionId: session.id });
     sessionManager.touch(session);
 
-    // 1. Analyze.
-    const analysis = analyzer(input);
+    // 1. Analyze (the injected clock keeps date-range parsing deterministic).
+    const analysis = analyzer(input, now());
 
     // 2. Update slots (a turn only fills the fields it carries).
     const currentSlots = slots.updateFromAnalysis(analysis);
+
+    // 2b. Optional planner trace (route decision; no behavior change here).
+    if (typeof planner === 'function') {
+      try {
+        const plan = planner({ text: input, context: currentSlots, nlu: { analysis }, businessData: null });
+        events.emit('plan', { intentId: plan?.intent?.id ?? null, route: plan?.route ?? null });
+      } catch (error) {
+        events.emit('plan', { intentId: null, route: null, error: error?.message ?? 'planner error' });
+      }
+    }
 
     // 3. Pending agenda: if the turn satisfied it, replay the pending intent.
     let effectiveAnalysis = analysis;
@@ -163,6 +177,7 @@ export function createEngine({
       reply,
       analysis: effectiveAnalysis,
       slots: slots.get(),
+      structured: outcome.structured ?? null,
       confidence: reply.meta.confidence,
       source: reply.meta.source
     };
@@ -175,12 +190,21 @@ export function createEngine({
     return { reply, analysis: null, slots: slots.get(), confidence: reply.meta.confidence, source: reply.meta.source };
   }
 
+  /** Forget the remembered context (slots + pending agenda + history). */
+  function resetContext() {
+    slots.clear();
+    agenda.clear();
+    history.clear();
+    events.emit('context-reset', { sessionId: session.id });
+  }
+
   return {
     sendMessage,
     session,
     history,
     slots,
     agenda,
+    resetContext,
     emitter: events
   };
 }

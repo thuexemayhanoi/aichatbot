@@ -150,7 +150,7 @@ export function createLocalLlm(options = {}) {
    */
   async function answer(question) {
     if (!engine) return null;
-    const docs = typeof retrieve === 'function' ? retrieve(question, MAX_CONTEXT_DOCS) : [];
+    const docs = typeof retrieve === 'function' ? await Promise.resolve(retrieve(question, MAX_CONTEXT_DOCS)) : [];
     const { system, user } = buildPrompt({ question, docs, business: data.business });
     let raw;
     try {
@@ -178,14 +178,55 @@ export function createLocalLlm(options = {}) {
     return { text: withDisclosure(cleaned, disclosure), source: 'local-llm', retrieval: docs };
   }
 
+
+  /**
+   * PHRASING mode (v44): reword already-verified deterministic facts.
+   * The model receives ONLY the structured facts; any output that fails
+   * the injected guard (Fact Guard v2) is discarded — the deterministic
+   * template answer is used instead.
+   * @returns {Promise<{text}|null>} null = declined.
+   */
+  async function phrase({ question, facts, guard }) {
+    if (!engine || typeof question !== 'string' || typeof facts !== 'string') return null;
+    const system = [
+      'You are MotoAI, an assistant for a Vietnamese motorbike rental business.',
+      'Rewrite the VERIFIED FACTS below as a short, natural, conversational answer to the user question.',
+      'HARD RULES: use ONLY the numbers and facts given; never add prices, policies, phone numbers, hours or availability; keep every number exactly as given; reply in the language of the question; at most 4 sentences.'
+    ].join(' ');
+    let raw;
+    try {
+      const chunks = await withTimeout(
+        engine.chat.completions.create({
+          messages: [
+            { role: 'system', content: system },
+            { role: 'user', content: `USER QUESTION: ${question}\n\nVERIFIED FACTS:\n${facts}` }
+          ],
+          temperature: 0.2,
+          max_tokens: MAX_NEW_TOKENS
+        }),
+        GENERATION_TIMEOUT_MS,
+        'phrasing'
+      );
+      raw = chunks?.choices?.[0]?.message?.content ?? null;
+    } catch {
+      return null;
+    }
+    const cleaned = validateLlmOutput(raw);
+    if (!cleaned) return null;
+    if (typeof guard === 'function' && !guard(cleaned)) return null;
+    return { text: cleaned, source: 'local-llm-phrased' };
+  }
+
   return {
     load,
     unload,
     answer,
+    phrase,
     state,
     get modelId() { return state.selectedModelId; },
     get selection() { return selectedModel; }
   };
+
 }
 
 function withTimeout(promise, ms, label) {

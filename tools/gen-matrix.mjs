@@ -269,6 +269,38 @@ R('ops','Docs + matrix + state updated for v43.1 run','P1','—','DONE','All doc
 
 R('ops','Matrix regenerator script tools/gen-matrix.mjs','P2','—','VERIFIED','Idempotent generation','this run','tools/gen-matrix.mjs','this run');
 
+// ===== v44: CONTEXT-AWARE HYBRID INTELLIGENCE =====
+R('context','Context memory: rider profile (height, experience, transmission, luggage, budget, usage, destination)','P0','BOT-0031..BOT-0034','VERIFIED','User-stated rider facts carried across turns without repetition','multi-turn tests A/B/F','tests/integration/multi-turn.test.js','v44');
+R('context','Context memory: language tracking (vi/en) with per-turn detection','P1','—','VERIFIED','Follow-up English turns answered in English with verified facts','multi-turn test E','tests/integration/multi-turn.test.js','v44');
+R('context','Anti-stale-context guarantee: explicit new entity always overrides memory','P0','—','VERIFIED','"Không, Air Blade cơ" replaces Vision','multi-turn test F','tests/integration/multi-turn.test.js','v44');
+R('context','Clear-context/reset behavior (UI button + engine.resetContext, local only)','P0','—','VERIFIED','Slots, agenda and history fully cleared; no server state exists','multi-turn reset test','tests/integration/multi-turn.test.js','v44');
+R('context','Date-range context (start/end dates persisted in slots)','P1','—','VERIFIED','Range reused when follow-up references it','unit dates + slots','tests/unit/dates.test.js','v44');
+R('nlu','Intent/entity planning stage analyzeTurn(text, context)','P0','—','VERIFIED','{intent, entities, missingEntities, confidence, normalizedQuery} produced','unit analyze-turn tests','tests/unit/analyze-turn.test.js','v44');
+R('nlu','New intents: recommendation_query, compare_query','P0','—','VERIFIED','Advice and comparison turns routed deterministically','unit analyze-turn + multi-turn','tests/unit/analyze-turn.test.js','v44');
+R('nlu','New entities: height, experience, transmission, budget, luggage, usage, destination, electric, date range','P0','—','VERIFIED','All rider/trip entities extracted with zero LLM use','unit rider + dates tests','tests/unit/rider.test.js','v44');
+R('nlu','English duration units (week/weeks/month/months)','P1','—','VERIFIED','"Air Blade 2 weeks" priced by calculator','multi-turn test','tests/integration/multi-turn.test.js','v44');
+R('nlu','Destination gazetteer with word-boundary matching (no false "hue" in "thuê")','P1','—','VERIFIED','Tam Dao detected; thang/hue never misread','unit rider tests','tests/unit/rider.test.js','v44');
+R('planner','Conversation planner planTurn: rule/calculator/retriever/recommendation/LLM routes','P0','—','VERIFIED','Price turns NEVER allow LLM; recommendation allows grounded phrasing only','unit planner tests + golden LLM gate','tests/unit/analyze-turn.test.js','v44');
+R('calc','Smart rental calculator with transparent cheapest-package breakdown','P0','—','VERIFIED','12 days = 1 tuần + 5 ngày lines; every number from pricing.json','unit rental-calculator tests','tests/unit/rental-calculator.test.js','v44');
+R('calc','Date-range pricing (từ 5/10 đến 18/10) with inclusive day count','P0','—','VERIFIED','14-day estimate with date labels and breakdown','multi-turn test','tests/integration/multi-turn.test.js','v44');
+R('calc','Cross-model comparison (35 ngày cái nào rẻ hơn) sorted cheapest first','P1','—','VERIFIED','Deterministic ranking, unpriced models excluded','unit calculator + multi-turn','tests/unit/rental-calculator.test.js','v44');
+R('recommend','Deterministic recommendation engine grounded in verified descriptions','P0','—','VERIFIED','Structured {recommendedModels, reasons, tradeoffs, missingInfo, confidenceSource}; no invented specs','unit recommender tests','tests/unit/recommender.test.js','v44');
+R('recommend','Height handling: no seat-height data published, fit flagged as confirm-by-phone','P0','—','VERIFIED','missingInfo states the gap instead of guessing','unit recommender + multi-turn B','tests/unit/recommender.test.js','v44');
+R('recommend','Budget-aware filtering from verified rates','P1','—','VERIFIED','150k ceiling excludes unaffordable models','unit recommender tests','tests/unit/recommender.test.js','v44');
+R('search','Hybrid retrieval: BM25 + local semantic (Transformers.js, lazy) + deterministic reranker','P0','—','VERIFIED','Paraphrase queries answered; weights 0.6/0.4; id tie-break','unit hybrid tests','tests/unit/hybrid.test.js','v44');
+R('search','Semantic layer: Xenova/multilingual-e5-small, in-browser WASM, cacheable, no API','P0','—','VERIFIED','Failure degrades silently to BM25-only','unit hybrid tests','tests/unit/hybrid.test.js','v44');
+R('search','Semantic warm-up only AFTER first user turn (never on page load)','P0','—','VERIFIED','moto-app warmSemantic fire-and-forget post-first-turn','code review + hybrid tests','src/app/moto-app.js','v44');
+R('search','Irrelevant document rejection retained under hybrid merge','P0','—','VERIFIED','Out-of-domain queries decline to null (honest fallback)','unit hybrid tests','tests/unit/hybrid.test.js','v44');
+R('ai','Local LLM as phrasing/synthesis layer only (planner-gated)','P0','—','VERIFIED','Deterministic prices never routed through LLM; recommendation phrasing guarded','golden LLM gate + planner tests','tests/integration/golden.test.js','v44');
+R('ai','Fact Guard v2: numbers, phones, opening hours validated against verified bundle','P0','—','VERIFIED','Invented phone/time/price rejected; legacy guard intact','unit fact-guard tests','tests/unit/fact-guard.test.js','v44');
+R('ai','Source trace: internal answer source on every turn; debug label only in ?debug=1','P1','—','VERIFIED','Normal users see clean answers; debug mode shows nguồn','multi-turn + main.js debug path','assets/js/main.js','v44');
+R('context','Clarification logic: exactly ONE question, never repeating answered facts','P1','—','VERIFIED','Agenda asks only missing slot; context-aware','existing agenda tests + multi-turn','tests/unit/agenda.test.js','v44');
+R('privacy','All context storage local (localStorage-backed, namespaced); no upload, no profiles','P0','—','VERIFIED','privacy tests scan endpoints/keys/URLs incl. semantic layer','unit privacy tests','tests/unit/privacy.test.js','v44');
+R('perf','Initial load unchanged: rules+NLU+BM25 only; embeddings/LLM lazy + opt-in','P0','—','VERIFIED','CI bundle guard 186095 < 190000; CDN import at runtime only','CI bundle guard','.github/workflows/ci.yml','v44');
+R('test','Multi-turn golden conversations A-G (follow-up, height carry, override, 50cc, EN context)','P0','—','VERIFIED','tests/integration/multi-turn.test.js 12 flows','multi-turn suite','tests/integration/multi-turn.test.js','v44');
+R('test','Test count 317 -> 393, no old assertion weakened','P0','—','VERIFIED','node --test 393/393','full suite','npm test','v44');
+R('ops','Docs + README + matrix + state updated for v44 hybrid intelligence run','P1','—','DONE','All docs current','this run','docs/','v44');
+
 // status summary printed to stderr-ish
 const counts = {};
 for (const r of rows) counts[r[5]] = (counts[r[5]]||0)+1;

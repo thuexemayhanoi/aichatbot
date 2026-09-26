@@ -40,3 +40,8 @@ recorded in the run report.
 - standalone layout at both viewports; `?lang`, `?theme`, `?source` params; refresh; local storage; accessibility (keyboard-only run-through)
 
 Record results of the latest review in `reports/` (see the run report of each scheduled run).
+
+## v44 — Context reset + debug trace
+
+- Nút **🧹** ở header (direct + embed): xoá hội thoại và toàn bộ context đã nhớ (slots, agenda, history) — mọi dữ liệu đều localStorage local, không có gì phía server để xoá. Touch target ≥ 44px, `:focus-visible`, dùng token màu hiện có.
+- **Debug mode**: thêm `?debug=1` (direct) để hiển thị nhãn nguồn nội bộ (`[debug] nguồn: pricing-data` / `recommendation` / `hybrid-search`...) sau mỗi câu trả lời. Người dùng bình thường không bao giờ thấy nhãn này hay phần trăm giả.

@@ -38,3 +38,10 @@ Model id được phát hiện động từ `prebuiltAppConfig.model_list` của
 - Base JS: ~116 KB source / ~30–35 KB gzip, 0 dependency.
 - First chat render: chỉ phụ thuộc 3 file JSON (~15 KB).
 - Model Qwen2.5-0.5B q4f16: download ~350–500 MB (một lần, sau đó cache), init vài giây–vài chục giây tùy GPU.
+
+## v44 — Hybrid retrieval (semantic layer)
+
+- **BM25 + rules + NLU + context**: chạy trên mọi trình duyệt hiện đại, kể cả không WebGPU, không WASM.
+- **Lớp semantic** (Transformers.js, WASM): lazy — chỉ warm-up sau lượt chat đầu, không chặn tương tác đầu; model `Xenova/multilingual-e5-small` (~30MB quantized, cache Cache Storage khi trình duyệt cho phép). Máy yếu/mất mạng/không tải được → tự động về BM25-only, không báo lỗi cho người dùng.
+- **Local LLM (WebLLM)**: như v43.1 — cần WebGPU (không có trên iOS Safari hiện tại); không có thì chatbot chính vẫn đầy đủ.
+- Bundle base JS: 186.095 bytes (guard CI < 190.000); embed launcher không đổi (7.657 bytes). Không thêm dependency bundle nào — Transformers.js/WebLLM đều CDN-import runtime.
