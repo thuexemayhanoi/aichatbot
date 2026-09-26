@@ -50,11 +50,17 @@ tests/helpers/       # data loaders, engine fixture, storage stubs
 - `tests/integration/multi-turn.test.js` — golden multi-turn A–G: follow-up keeps Vision, height carries into recommendation, Wave 12 ngày breakdown, 150k budget, English context, "Không, Air Blade cơ" override, "xe 50cc" never 50 days; date-range pricing; English durations; comparison; resetContext.
 
 Total: **393 tests** (was 317). No old assertion weakened; slot-shape tests updated to the extended context-memory schema.
+
 ## v45 — distribution suites
 
-- `tests/unit/wordpress-plugin.test.js` — cấu trúc plugin, header chuẩn WP, Settings API (capability + nonce), sanitize/escape toàn vẹn, loader đúng URL canonical + async + once-guard, data-attribute đầy đủ, visibility rules, shortcode whitelist, uninstall sạch, không secrets/endpoints.
-- `tests/unit/wordpress-zip.test.js` — ZIP tất định (2 lần build byte-identical), root `motoai-agent/`, đủ file, không dev files, CRC từng entry, không secrets, installable qua WP Upload.
-- `tests/unit/pwa.test.js` — manifest hợp lệ + scope `/aichatbot/`, versioned caches, không precache model, SW không đăng ký trong embed mode, install UI gated, iOS hint one-time, direct mode không đổi.
-- `tests/unit/mobile-config.test.js` — Capacitor config/scripts, chỉ deps `@capacitor/*`, không platform dirs/node_modules, sync tái dùng app canonical, không secrets.
+- `tests/unit/distribution.test.js` — manifest + SW versioned caches (không precache model), SW không đăng ký trong embed mode, install pill wiring, gen-icons.py stdlib-only deterministic, workflow gates, plugin loader (canonical URL, once-guard, shortcode, không eval/secrets), Settings API (capability + sanitize whitelist), uninstall sạch, ZIP builder dependency-free deterministic, embed v1.1.0 data-open-delay.
+- `tests/unit/mobile-config.test.js` — cấu hình Capacitor, scripts, chỉ deps `@capacitor/*`, không platform dirs/node_modules/www, sync tái sử dụng app canonical.
 
-Total: **447 tests** (was 406). No old assertion weakened. PHP syntax check chạy khi có `php` binary (không bắt buộc); CI build ZIP + sinh icon PNG (distribution.yml).
+CI (distribution.yml) chạy toàn suite, sinh icon PNG (`tools/gen-icons.py`) và build ZIP (`tools/build-wordpress-plugin.mjs`) — binary artifacts do CI commit/upload, không commit tay.
+
+## v47 — blog suites
+
+- `tests/unit/blog-foundation.test.js` — ma trận 2.000 dòng (40×50, phân bố danh mục), id/slug/canonical duy nhất, hub tồn tại, search/knowledge index chỉ chứa bài PUBLISHED, sitemap không có bài chưa publish, protected keywords, SEO ownership.
+- `tests/unit/blog-knowledge.test.js` — blog tier khước từ intent dữ liệu kinh doanh, minScore gate, confidence hợp lệ, business facts luôn thắng blog.
+
+Suite tổng chạy bằng `npm test` (node --test). Không assertion cũ bị yếu đi.

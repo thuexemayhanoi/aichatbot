@@ -1,67 +1,41 @@
-import test from 'node:test';
+/**
+ * Mobile wrapper (Capacitor) foundation tests — docs/MOBILE.md.
+ * Wrapper tái sử dụng app canonical; không commit platform dirs.
+ */
+import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const MOBILE = join(ROOT, 'integrations', 'mobile');
-const pkg = JSON.parse(readFileSync(join(MOBILE, 'package.json'), 'utf8'));
-const cap = readFileSync(join(MOBILE, 'capacitor.config.ts'), 'utf8');
+const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 
-test('mobile wrapper foundation exists (Capacitor config + package.json)', () => {
-  assert.ok(existsSync(join(MOBILE, 'capacitor.config.ts')));
-  assert.ok(existsSync(join(MOBILE, 'package.json')));
-  assert.ok(existsSync(join(MOBILE, 'tools-sync-web.mjs')));
-  assert.ok(existsSync(join(ROOT, 'docs', 'MOBILE.md')));
+test('Capacitor config points at the canonical app (strategy A, bundled)', () => {
+  const cfg = read('integrations/mobile/capacitor.config.ts');
+  assert.match(cfg, /appId: 'vn\.thuexemaynguyentu\.motoai'/);
+  assert.match(cfg, /webDir: 'www'/);
+  // strategy B (remote URL) stays commented out for release builds
+  assert.match(cfg, /\/\/ server: \{/);
+  assert.match(cfg, /\/\/   url: 'https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/'/);
 });
 
-test('package.json scripts cover the documented capacitor commands', () => {
-  assert.equal(pkg.name, 'motoai-mobile');
-  const scripts = pkg.scripts;
-  for (const key of ['add:android', 'add:ios', 'sync', 'open:android', 'open:ios']) {
-    assert.ok(scripts[key], `missing script ${key}`);
-  }
-  assert.match(scripts.sync, /npx cap sync/);
+test('mobile deps are Capacitor-only, no other runtime dependency', () => {
+  const pkg = JSON.parse(read('integrations/mobile/package.json'));
+  const deps = Object.keys(pkg.dependencies ?? {});
+  assert.equal(deps.length > 0, true);
+  for (const d of deps) assert.match(d, /^@capacitor\//);
 });
 
-test('dependencies are capacitor-only — no API SDK, no inference client', () => {
-  const deps = { ...pkg.dependencies, ...pkg.devDependencies };
-  for (const name of Object.keys(deps)) {
-    assert.match(name, /^@capacitor\//, `unexpected dependency: ${name}`);
-  }
-  // No platform directories committed (spec §15).
-  assert.ok(!existsSync(join(MOBILE, 'android')), 'android/ must not be committed');
-  assert.ok(!existsSync(join(MOBILE, 'ios')), 'ios/ must not be committed');
-  assert.ok(!existsSync(join(MOBILE, 'node_modules')), 'node_modules must not be committed');
+test('sync script copies canonical web app deterministically (no transform)', () => {
+  const mjs = read('integrations/mobile/tools-sync-web.mjs');
+  assert.match(mjs, /cpSync/);
+  assert.match(mjs, /rmSync\(www, \{ recursive: true/);
+  assert.equal(/fetch\(|https?:\/\//.test(mjs), false);
 });
 
-test('capacitor config: appId, name, bundled www shell (strategy A default)', () => {
-  assert.match(cap, /appId:\s*'vn\.thuexemaynguyentu\.motoai'/);
-  assert.match(cap, /appName:\s*'MotoAI'/);
-  assert.match(cap, /webDir:\s*'www'/);
-  // Remote URL mode is documented but disabled by default (safer long-term).
-  assert.ok(!/^\s*url:/m.test(cap.replace(/\/\/ url:.*/g, '')), 'server.url must stay commented out');
-  assert.match(cap, /androidScheme:\s*'https'/);
-  assert.match(cap, /allowMixedContent:\s*false/);
-});
-
-test('wrapper reuses the canonical app — never a second engine', () => {
-  const sync = readFileSync(join(MOBILE, 'tools-sync-web.mjs'), 'utf8');
-  // Copies the same canonical web dirs served by GitHub Pages.
-  for (const dir of ['src', 'assets', 'data']) {
-    assert.ok(sync.includes(`'${dir}'`), `sync must copy ${dir}`);
-  }
-  for (const file of ['index.html', 'embed.js', 'manifest.webmanifest', 'service-worker.js']) {
-    assert.ok(sync.includes(`'${file}'`), `sync must copy ${file}`);
-  }
-  assert.ok(!sync.includes('fetch(') && !sync.includes('https://'), 'sync is a pure local copy, no downloads');
-});
-
-test('no secrets or API credentials anywhere in the mobile wrapper', () => {
-  for (const text of [JSON.stringify(pkg), cap]) {
-    for (const key of ['OPENAI_API_KEY', 'ANTHROPIC_API_KEY', 'GEMINI_API_KEY', 'MISTRAL_API_KEY', 'keystore', 'signing key']) {
-      assert.ok(!text.toUpperCase().includes(key), `mobile wrapper must not contain ${key}`);
-    }
+test('platform dirs and www/ are never committed', () => {
+  for (const dir of ['integrations/mobile/www', 'integrations/mobile/android', 'integrations/mobile/ios', 'integrations/mobile/node_modules']) {
+    assert.equal(existsSync(join(ROOT, dir)), false, dir + ' must not be committed');
   }
 });

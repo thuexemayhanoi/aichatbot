@@ -1,0 +1,15 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# Generated artifacts (CI or local builds — never committed)
+dist/
+integrations/mobile/www/
+integrations/mobile/android/
+integrations/mobile/ios/
+
+# Local scratch
+*.log

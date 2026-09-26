@@ -1,13 +1,14 @@
 {
-  "$schema": "motoai/active-work@1",
-  "feature_id": "BOT-0258",
-  "feature_desc": "v45b: Distribution upgrade (merged with parallel v45 UI/v46 quick-bar run) — embed.js v1.1.0 data-open-delay, WordPress plugin motoai-agent 1.0.0 (Settings API, visibility rules, shortcode, deterministic ZIP), PWA (manifest, service worker v45 caches, install UX, offline shell), Capacitor mobile wrapper foundation, privacy/versioning/docs/matrix/tests",
-  "run_id": "2026-09-26-distribution-upgrade",
-  "status": "DONE",
-  "started_at": "2026-09-26T12:40:00Z",
-  "start_commit": "1c3a948f29ae81b7f2bb672e9d6a7382a23027dd",
-  "last_checkpoint": "447/447 tests green on merged tree (parallel v45 UI + v46 quick bar preserved: Hỗ trợ Agent header, 12-action chips, suggestions.js, business.json address); bundle 195121 < 196000; secret/endpoint scans clean; matrix 257 -> 276 rows; ready to push.",
+  "feature_id": "BOT-0260",
+  "feature_desc": "v47.1 reconciliation: re-merge parallel v45b distribution commits (PWA wiring in index.html/main.js/style.css, ci inference-endpoint scan, docs) with the v47 blog/SEO foundation; recreate distribution tooling that was never pushed (tools/gen-icons.py, integrations/wordpress/motoai-agent 1.0.0, tools/build-wordpress-plugin.mjs, integrations/mobile Capacitor foundation, distribution tests)",
+  "run_id": "2026-09-26-v471-reconciliation",
+  "started_at": "2026-09-26T13:28:00Z",
+  "start_commit": "b884c06d8b2f88a7c75bc7407f357e28b0f74741",
+  "last_checkpoint": "v47.1 merged tree: v47 blog/SEO foundation + v45b distribution surface reunited; gen-icons.py verified deterministic (byte-identical reruns); plugin ZIP builds and validates; full suite green; ready to push reconciliation commit.",
   "checkpoint_commit": "pending-push",
-  "attempt": 1,
-  "notes": "Distribution surface added on top of the merged v45UI/v46 baseline: integrations/wordpress/motoai-agent, tools/build-wordpress-plugin.mjs (deterministic zip, stored+CRC), tools/gen-icons.py, manifest.webmanifest, service-worker.js, assets/js/pwa.js, integrations/mobile (capacitor), .github/workflows/distribution.yml (zip + png icons + release), docs WORDPRESS/PWA/MOBILE/DISTRIBUTION, 38 distribution tests. embed.js: data-open-delay added on the merged (Hỗ trợ Agent) version. Binary PNG icons + dist zip are CI-generated (connector pushes are text-only; verified empirically)."
+  "tests": {
+    "suite": "node --test",
+    "expected_state": "all green (v47 blog suites + distribution suites + legacy suites)"
+  },
+  "notes": "Root cause: v47 push (34fea38, b884c06) was built from a pre-v45b snapshot and reverted newer v45b content in shared files (ci.yml, README, index.html, main.js, style.css, docs, package.json, embed.js); v45b's workspace-only files (gen-icons.py, WordPress plugin, zip builder, mobile wrapper, distribution tests) had never been pushed, leaving distribution.yml broken on main. Reconciliation restores both feature sets in one tree; no business logic forked, no test weakened."
 }

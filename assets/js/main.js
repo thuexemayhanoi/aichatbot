@@ -42,17 +42,17 @@ async function init() {
     document.body.dataset.motoaiEmbed = '1';
     document.querySelector('.motoai-disclosure')?.remove();
   } else {
+    // Mobile wrapper (Capacitor) detection: label the distribution channel
+    // when the app runs inside the Android/iOS shell (spec §21).
+    if (!config.source && window.Capacitor?.isNativePlatform?.()) {
+      const platform = window.Capacitor.getPlatform?.(); // 'android' | 'ios'
+      if (platform === 'android' || platform === 'ios') config.source = platform;
+    }
+    initPwa(config); // direct/PWA mode only; no-op in embed mode
     // Menu drawer (direct mode only). Contact hrefs come from verified
     // business.json — never hard-coded in this UI logic.
     wireMenu();
   }
-  // Mobile wrapper (Capacitor) detection: label the distribution channel
-  // when the app runs inside the Android/iOS shell (spec §21).
-  if (!config.source && window.Capacitor?.isNativePlatform?.()) {
-    const platform = window.Capacitor.getPlatform?.(); // 'android' | 'ios'
-    if (platform === 'android' || platform === 'ios') config.source = platform;
-  }
-  initPwa(config); // direct/PWA mode only; no-op in embed mode
   document.title = config.lang === 'en' ? 'MotoAI — Hanoi motorbike rental assistant' : document.title;
 
   const elements = {

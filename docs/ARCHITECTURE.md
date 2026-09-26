@@ -58,6 +58,17 @@ Rules vẫn là authority tuyệt đối cho giá/cọc/giờ/địa chỉ/liên
 - Context stale không bao giờ đè input mới: "Không, Air Blade cơ" thay vehicle đã nhớ (multi-turn test F).
 - Model embedding chỉ warm-up SAU lượt chat đầu; không tải model nào lúc load trang.
 
+## v45 — Distribution layer
+
+Một engine canonical (`src/`, `data/business/`, `assets/`, `embed.js`) phục vụ 6 kênh; không kênh nào chứa engine riêng:
+
+- **Direct/PWA**: `index.html` + `manifest.webmanifest` + `service-worker.js` (versioned caches `motoai-shell-v45`/`motoai-data-v45`; cross-origin passthrough — không precache model).
+- **Embed**: `embed.js` v1.1.0 (thêm `data-open-delay`, tương thích ngược đầy đủ).
+- **WordPress**: `integrations/wordpress/motoai-agent/` — loader mỏng in một thẻ script async trỏ embed.js canonical; Settings API + shortcode; ZIP tất định từ `tools/build-wordpress-plugin.mjs`.
+- **Mobile**: `integrations/mobile/` — shell Capacitor bọc web app canonical (copy sang `www/` bằng `tools-sync-web.mjs`); tự gắn `source=android|ios`.
+
+Bất biến phân phối: SW chỉ đăng ký ngoài embed mode; PHP chỉ loader (không bundle engine); mobile wrapper không fork logic; không kênh nào thêm API key/backend. Test: `tests/unit/distribution.test.js` + `tests/unit/mobile-config.test.js`.
+
 ## v47 — Blog + Agent knowledge tier (2026-09-26)
 
 Pipeline trả lời mới (thứ tự mở rộng, ưu tiên không đổi cho phần cũ):
