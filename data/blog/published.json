@@ -1,0 +1,35 @@
+{
+  "$schema": "motoai/blog-published@1",
+  "articles": [
+    {
+      "article_id": "BA-0001",
+      "category": "APP",
+      "slug": "app-thue-xe-may-la-gi",
+      "title": "App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe và thủ tục trong một chỗ",
+      "description": "Tìm hiểu app thuê xe máy là gì, ứng dụng web MotoAI giúp hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe ngay trên trình duyệt, không cần cài đặt.",
+      "published_date": "2026-09-26",
+      "author": "MotoAI Editorial",
+      "pilot": true,
+      "body": "data/blog/articles/app-thue-xe-may-la-gi.body.html",
+      "knowledge_chunks": [
+        "App thuê xe máy là ứng dụng web hoặc trợ lý trực tuyến giúp hỏi giá theo loại xe và thời gian, so sánh xe số với xe ga, ước tính chi phí theo ngày tuần tháng, xem thủ tục nhận xe và tìm địa chỉ cửa hàng.",
+        "MotoAI của Thuê xe máy Hà Nội Nguyễn Tú là ứng dụng web chạy tĩnh, không cần tải về, không cần tài khoản, toàn bộ hỏi đáp chạy trên thiết bị người dùng và không gửi hội thoại đi đâu."
+      ]
+    },
+    {
+      "article_id": "BA-0004",
+      "category": "GUIDE",
+      "slug": "thu-tuc-thue-xe-may",
+      "title": "Thủ tục thuê xe máy: giấy tờ, đặt cọc, nhận và trả xe",
+      "description": "Hướng dẫn thủ tục thuê xe máy: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ, và dịch vụ giao xe tận nơi.",
+      "published_date": "2026-09-26",
+      "author": "MotoAI Editorial",
+      "pilot": true,
+      "body": "data/blog/articles/thu-tuc-thue-xe-may.body.html",
+      "knowledge_chunks": [
+        "Thủ tục thuê xe máy cần: giấy tờ tùy thân (CCCD hoặc hộ chiếu), bằng lái phù hợp dung tích xe, và tiền đặt cọc. Khách nước ngoài cần hộ chiếu và giấy phép lái xe quốc tế (IDP) hoặc bằng lái Việt Nam được công nhận.",
+        "Khi nhận xe máy thuê nên kiểm tra đèn, còi, phanh, lốp, mức nhiên liệu và chụp ảnh tình trạng xe; hoàn trả xe trong giờ hoạt động và nguyên tắc hoàn trả nhiên liệu giống lúc nhận."
+      ]
+    }
+  ]
+}

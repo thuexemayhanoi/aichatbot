@@ -1,0 +1,20 @@
+<p>Bài viết pilot (fixture) — nội dung ngắn hơn chuẩn sản xuất 1.600–2.000 từ. Nội dung mang tính giới thiệu, mọi số liệu kinh doanh được lấy từ dữ liệu đã xác minh của cửa hàng.</p>
+<h2>App thuê xe máy hiểu theo cách đơn giản nhất</h2>
+<p>“App thuê xe máy” là cách gọi chung cho ứng dụng web hoặc trợ lý trực tuyến giúp bạn chuẩn bị chuyến đi trước khi lên xe: hỏi giá theo loại xe và thời gian, so sánh xe số với xe ga, ước tính chi phí theo ngày/tuần/tháng, xem lại thủ tục nhận xe và tìm địa chỉ cửa hàng. Thay vì gọi điện nhiều lần để hỏi từng thông tin, bạn đặt câu hỏi bằng tiếng Việt và nhận câu trả lời ngay trên trình duyệt.</p>
+<p>Ứng dụng mà bài viết này thuộc về — MotoAI của Thuê xe máy Hà Nội Nguyễn Tú — là một <strong>ứng dụng web</strong>, chạy tĩnh trên GitHub Pages, không cần tải về máy và không cần tạo tài khoản. Toàn bộ phần hỏi đáp chạy ngay trên thiết bị của bạn.</p>
+<h2>Agent giúp được gì</h2>
+<ul>
+<li>Hỏi giá thuê theo loại xe và theo ngày, tuần, tháng.</li>
+<li>Gợi ý loại xe phù hợp với kinh nghiệm lái và mục đích sử dụng.</li>
+<li>Tính chi phí thuê theo thời gian bạn dự kiến.</li>
+<li>Giải thích thủ tục: giấy tờ cần mang, tiền đặt cọc, giờ nhận và trả xe.</li>
+<li>Chỉ địa chỉ, giờ mở cửa và cách liên hệ Zalo/điện thoại.</li>
+</ul>
+<h2>Ứng dụng web và app native khác nhau ra sao</h2>
+<p>App native là ứng dụng tải từ App Store hoặc Google Play. Ứng dụng web mở trực tiếp bằng đường link, không chiếm dung lượng máy và luôn dùng được bản mới nhất. MotoAI hiện là ứng dụng web; chúng tôi không có ứng dụng native trên cửa hàng app, nên mọi tính năng đều truy cập qua đường link này.</p>
+<h2>Dữ liệu của bạn ở đâu</h2>
+<p>Chế độ hỏi đáp cơ bản không gửi hội thoại đi đâu: câu hỏi được phân tích ngay trên trình duyệt, câu trả lời sinh từ dữ liệu cửa hàng lưu sẵn trong trang. Nếu bạn chủ động bật Agent nâng cao, mô hình ngôn ngữ cũng chạy trên thiết bị của bạn. Cửa hàng không thu th hội thoại của bạn trên máy chủ.</p>
+<h2>Câu hỏi thường gặp</h2>
+<p><strong>App có báo đúng giá không?</strong> Giá hiển thị là bảng giá tham khảo của cửa hàng; giá chính thức được xác nhận khi bạn liên hệ đặt xe theo số {{ business.contact.phone_display }}.</p>
+<p><strong>Cần đặt cọc bao nhiêu?</strong> Tiền cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe, mức chính xác xác nhận khi đặt xe.</p>
+<p><strong>Nhận xe ở đâu?</strong> Cửa hàng ở {{ business.address.full }}, hoạt động từ {{ business.hours.display }} hằng ngày.</p>
