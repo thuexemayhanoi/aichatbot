@@ -1,30 +1,13 @@
 /**
- * Customer-facing suggestion chips.
- *
- * Deterministic ONLY: every mapping below is derived from intent/context of
- * the previous turn. The Local LLM never contributes suggestion actions.
- * Chip queries are plain user messages routed through the normal engine,
- * so answers stay rule/data-driven (no prices hard-coded in the UI).
- *
- * Chip kinds:
- *  - query chip: { query } -> sent to the engine as a normal user message.
- *  - link chip:  { type:'link', ref } -> href resolved at render time from
- *    the verified business data (business.json), never hard-coded here.
- *  - agent chip: { type:'agent' } -> opens the local Agent flow in the UI.
+ * Customer-facing suggestion chips — deterministic only, never from the LLM.
+ * Query chips are plain user messages routed through the normal engine.
+ * Link chips carry a ref resolved from business.json at render time.
+ * Agent chips open the local Agent flow in the UI.
  */
 
-/** Business contact key -> link chip ref. Resolved via resolveChipHref(). */
-const LINK_REFS = Object.freeze({
-  zalo: 'zalo',
-  call: 'phone_uri',
-  map: 'maps'
-});
+const LINK_REFS = Object.freeze({ zalo: 'zalo', call: 'phone_uri', map: 'maps' });
 
-/**
- * Primary quick-action bar shown on load. ONE horizontal row, never wrapped;
- * the UI scrolls sideways to reveal later chips on narrow screens.
- * Order is the agreed default and must not be shortened per screen size.
- */
+/** Primary quick-action bar: ONE horizontal row, fixed order, never shortened. */
 export const DEFAULT_CHIPS = Object.freeze([
   Object.freeze({ id: 'agent', label: '⚡ Agent', type: 'agent' }),
   Object.freeze({ id: 'pricing', label: '💰 Giá thuê', query: 'Giá thuê xe bao nhiêu?' }),
@@ -40,12 +23,7 @@ export const DEFAULT_CHIPS = Object.freeze([
   Object.freeze({ id: 'map', label: '🗺️ Bản đồ', type: 'link', ref: LINK_REFS.map })
 ]);
 
-/**
- * Resolve a link chip's href from verified business data.
- * @param {{ref?: string}} chip
- * @param {{contact?: object}} business - loaded business.json
- * @returns {string} verified href (empty string if the data is missing)
- */
+/** Link chip href from verified business.json ('' when data is missing). */
 export function resolveChipHref(chip, business) {
   const contact = business?.contact ?? {};
   const value = chip?.ref === LINK_REFS.zalo ? contact.zalo
@@ -55,7 +33,7 @@ export function resolveChipHref(chip, business) {
   return typeof value === 'string' && value.length > 0 ? value : '';
 }
 
-/** After a price / comparison / calculator answer. */
+
 const PRICE_CHIPS = Object.freeze([
   Object.freeze({ id: 'day', label: '1 ngày', query: 'Thuê 1 ngày' }),
   Object.freeze({ id: 'week', label: '1 tuần', query: 'Thuê 1 tuần' }),
@@ -63,7 +41,7 @@ const PRICE_CHIPS = Object.freeze([
   Object.freeze({ id: 'book', label: 'Đặt xe', query: 'Liên hệ đặt xe' })
 ]);
 
-/** After a vehicle-type / recommendation answer. */
+
 const VEHICLE_CHIPS = Object.freeze([
   Object.freeze({ id: 'vision', label: 'Vision', query: 'Honda Vision' }),
   Object.freeze({ id: 'air-blade', label: 'Air Blade', query: 'Honda Air Blade' }),
@@ -71,7 +49,7 @@ const VEHICLE_CHIPS = Object.freeze([
   Object.freeze({ id: 'month', label: 'Theo tháng', query: 'Thuê theo tháng' })
 ]);
 
-/** After a location / contact / hours / delivery answer. */
+
 const CONTACT_CHIPS = Object.freeze([
   Object.freeze({ id: 'directions', label: 'Chỉ đường', query: 'Địa chỉ ở đâu?' }),
   Object.freeze({ id: 'call', label: 'Gọi điện', query: 'Số điện thoại' }),
@@ -83,12 +61,7 @@ const PRICE_INTENTS = new Set(['price_query', 'compare_query', 'deposit_query'])
 const CONTACT_INTENTS = new Set(['location_query', 'contact_query', 'hours_query', 'delivery_query']);
 const VEHICLE_INTENTS = new Set(['bike_type_query', 'recommendation_query']);
 
-/**
- * Pick the next chip row from the finished turn's intent + remembered context.
- * Contextual chips render in the SAME single horizontal row as the defaults.
- * @param {{intentId?: string|null, slots?: object}} turn
- * @returns {ReadonlyArray<{id: string, label: string, query: string}>}
- */
+/** Next chip row from the finished turn; renders in the SAME single row. */
 export function nextSuggestions(turn = {}) {
   const intentId = turn?.intentId ?? null;
   const slots = turn?.slots ?? {};

@@ -130,16 +130,14 @@ async function init() {
   // --- Chat loop ---
   renderMessage(elements.messages, { role: 'assistant', text: app.data.faq.assistant.greeting });
 
-  // Quick actions: ONE single horizontally scrollable row (CSS keeps it on
-  // one line; swipe sideways to reveal later chips). Query chips route through
-  // the normal deterministic engine; link chips use verified hrefs resolved
-  // from business.json — contact data is never hard-coded here.
+  // Quick actions: ONE horizontal scrollable row. Query chips go through the
+  // deterministic engine; link chips resolve verified hrefs from business.json.
   function renderChips(chips) {
     elements.quick.replaceChildren();
     for (const chip of chips) {
       if (chip.type === 'link') {
         const href = resolveChipHref(chip, businessData);
-        if (!href) continue; // no verified data -> never guess a contact URL
+        if (!href) continue; // no verified data -> never guess a URL
         const link = document.createElement('a');
         link.className = 'motoai-chip';
         link.textContent = chip.label;
@@ -153,13 +151,9 @@ async function init() {
         button.className = 'motoai-chip';
         button.textContent = chip.label;
         button.addEventListener('click', () => {
-          if (!elements.aiToggle.hidden) {
-            elements.aiToggle.click(); // not started yet: open the explain flow
-          } else if (elements.aiStatus.hidden) {
-            setStatus(elements.status, 'Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.', 'warning');
-          } else {
-            setStatus(elements.status, 'Agent đang chạy.', 'success'); // loading or ready
-          }
+          if (!elements.aiToggle.hidden) elements.aiToggle.click(); // open explain flow
+          else if (elements.aiStatus.hidden) setStatus(elements.status, 'Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.', 'warning');
+          else setStatus(elements.status, 'Agent đang chạy.', 'success');
         });
         elements.quick.appendChild(button);
       } else {

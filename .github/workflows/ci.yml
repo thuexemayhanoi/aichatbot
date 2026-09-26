@@ -20,12 +20,12 @@ jobs:
           if grep -rInE "(api[_-]?key|secret|token)[\"' ]*[:=][\"' ]*[A-Za-z0-9+/]{16,}" src assets embed.js index.html data; then
             echo "::error::Possible secret found"; exit 1
           fi
-      - name: Bundle regression guard (fail if base JS grows past 190KB)
+      - name: Bundle regression guard (fail if base JS grows past 196KB)
         run: |
           size=$(find src assets -name '*.js' -print0 | xargs -0 cat | wc -c)
           size2=$(wc -c < embed.js)
           total=$((size + size2))
-          echo "base JS bytes: $total (baseline 2026-09-26 v45: 189634)"
-          # v45 adds deterministic suggestion chips (src/app/suggestions.js) and
-          # the Agent label refresh on top of the v44 feature set. Embed stays tiny.
-          test "$total" -lt 190000
+          echo "base JS bytes: $total (baseline 2026-09-26 v46: 192000)"
+          # v46 adds the 12-action quick bar (suggestions.js chip kinds +
+          # main.js renderer for query/link/agent chips). Embed stays tiny.
+          test "$total" -lt 196000
