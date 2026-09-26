@@ -76,7 +76,7 @@ class MotoAI_Settings {
 	}
 
 	public static function render() {
-		if ( ! current_user_can('manage_options') ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( esc_html__( 'Bạn không có quyền truy cập trang này.', 'motoai-agent' ) );
 		}
 		echo '<div class="wrap"><h1>' . esc_html__( 'MotoAI Agent', 'motoai-agent' ) . '</h1>';
