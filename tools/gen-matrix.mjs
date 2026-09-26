@@ -312,6 +312,27 @@ R('ui','Mobile polish: subtitle/status wrap (never clipped), chips touch targets
 R('test','Test count 393 -> 406, no old assertion weakened','P0','—','VERIFIED','node --test 406/406','full suite','npm test','v45');
 R('ops','Docs + matrix + state updated for v45 UI polish run','P1','—','DONE','All docs current','this run','docs/','v45');
 
+// ===== v45b: DISTRIBUTION UPGRADE (web + wordpress + pwa + mobile) =====
+R('distribution','WordPress plugin motoai-agent (thin loader, no bundled engine)','P0','BOT-0248','VERIFIED','Structure, header, no src/data vendored','wordpress-plugin + zip tests','tests/unit/wordpress-plugin.test.js','v45');
+R('distribution','WP admin settings page via Settings API (enable, lang, theme, position, title, source, auto-open, delay, mobile/desktop, include/exclude pages)','P0','—','VERIFIED','Capability+nonce, sanitize inputs, escape outputs','wordpress-plugin test','tests/unit/wordpress-plugin.test.js','v45');
+R('distribution','WP frontend loader: async, footer, once-per-request, sanitized data attributes','P0','—','VERIFIED','No duplicate injection, canonical embed URL','wordpress-plugin test','tests/unit/wordpress-plugin.test.js','v45');
+R('distribution','WP shortcode [motoai_agent] lang/theme/source/open mounts canonical embed','P1','—','VERIFIED','Whitelisted attrs, no engine duplication','wordpress-plugin test','tests/unit/wordpress-plugin.test.js','v45');
+R('distribution','Deterministic plugin ZIP builder (tools/build-wordpress-plugin.mjs) -> dist/motoai-agent.zip','P0','—','VERIFIED','Byte-identical rebuilds, root motoai-agent/, CRC valid, installable via WP Upload','wordpress-zip test','tests/unit/wordpress-zip.test.js','v45');
+R('pwa','manifest.webmanifest valid (name, start_url, scope /aichatbot/, display, icons)','P0','—','VERIFIED','Valid JSON, absolute subpath-safe URLs, source=pwa','pwa test','tests/unit/pwa.test.js','v45');
+R('pwa','service-worker.js: versioned caches (v45), safe cleanup, no model precache','P0','—','VERIFIED','Shell cache-first+revalidate, data network-first, cross-origin passthrough','pwa test','tests/unit/pwa.test.js','v45');
+R('pwa','Offline shell after first load (rules+BM25+cached data; no guaranteed offline LLM)','P1','—','VERIFIED','Offline behavior documented + SW strategy tested','pwa test + docs/PWA.md','docs/PWA.md','v45');
+R('pwa','Install UX: beforeinstallprompt pill "Cài Agent", iOS one-time A2HS hint, no nagging','P1','—','VERIFIED','Hidden unless installable; hidden after interaction','pwa test','tests/unit/pwa.test.js','v45');
+R('pwa','Raster icons generated deterministically (tools/gen-icons.py, CI-committed)','P1','—','DONE','192/512/maskable PNG; svg committed now','distribution.yml + pwa test','.github/workflows/distribution.yml','v45');
+R('mobile','Capacitor wrapper foundation (integrations/mobile: config, package, web-sync)','P0','—','VERIFIED','No second engine; canonical app copied to www/','mobile-config test','tests/unit/mobile-config.test.js','v45');
+R('mobile','Android wrapper docs: APK/AAB build steps + manual Play requirements documented','P1','—','DONE','No store claim; account/id/signing/listing documented','docs/MOBILE.md','docs/MOBILE.md','v45');
+R('mobile','iOS wrapper docs: Xcode build + manual App Store requirements documented','P1','—','DONE','No submission claim; account/bundle/signing/ASC documented','docs/MOBILE.md','docs/MOBILE.md','v45');
+R('mobile','Local Agent compatibility audit per environment (Safari/WKWebView/Android WebView/Chrome Android)','P0','—','DONE','Base chatbot independent of WebLLM everywhere','COMPATIBILITY.md + docs/MOBILE.md','docs/COMPATIBILITY.md','v45');
+R('privacy','Distribution privacy: no analytics, no chat-text tracking, source labels non-personal across all channels','P0','—','VERIFIED','Privacy tests + docs across web/wp/pwa/mobile','privacy + distribution tests','tests/unit/privacy.test.js','v45');
+R('ops','Versioning strategy: core v45 / wp plugin 1.0.0 / pwa cache v45 / mobile 1.0.0 (decoupled)','P1','—','DONE','Plugin not coupled to core updates','docs/DISTRIBUTION.md','docs/DISTRIBUTION.md','v45');
+R('ops','Distribution docs set: WORDPRESS.md, PWA.md, MOBILE.md, DISTRIBUTION.md; README distribution section','P0','—','DONE','All channels documented','this run','docs/','v45');
+R('test','Test count 406 -> 447, no old assertion weakened','P0','—','VERIFIED','node --test 447/447','full suite','npm test','v45b');
+R('ops','Docs + README + matrix + state updated for v45 distribution run','P1','—','DONE','All docs current','this run','docs/','v45');
+
 // status summary printed to stderr-ish
 const counts = {};
 for (const r of rows) counts[r[5]] = (counts[r[5]]||0)+1;
