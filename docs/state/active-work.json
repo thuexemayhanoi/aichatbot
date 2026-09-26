@@ -1,13 +1,13 @@
 {
   "$schema": "motoai/active-work@1",
-  "feature_id": "BOT-0204",
-  "feature_desc": "v43.1: UI/UX calm-palette refresh + Local AI dynamic model discovery (fix Cannot-find-model-record)",
-  "run_id": "2026-09-27-ui-localai",
+  "feature_id": "BOT-0219",
+  "feature_desc": "v44: Context-aware hybrid intelligence — context memory, analyzeTurn/planTurn planner, hybrid retrieval (BM25 + lazy local Transformers.js), deterministic recommendation engine, smart calculator (date ranges, breakdowns, comparison), LLM as phrasing layer behind planner + Fact Guard v2",
+  "run_id": "2026-09-26-hybrid-intelligence",
   "status": "DONE",
-  "started_at": "2026-09-27T06:30:00Z",
-  "start_commit": "4dbe23cf6bb7d95933c7c296157586b3e1bde957",
-  "last_checkpoint": "317/317 tests green; model selection dynamic from prebuiltAppConfig.model_list; red removed from brand; privacy tests added; docs+matrix updated; ready to push.",
-  "checkpoint_commit": "d9185c9d889bb5cf5bf963188bbb11d3622e6968",
+  "started_at": "2026-09-26T00:00:00Z",
+  "start_commit": "2e1f79c08ada114a829416ea65abcb464e1a1476",
+  "last_checkpoint": "393/393 tests green; planner gates LLM away from all business facts; semantic layer lazy + BM25 fallback; bundle 186095 < 190000 guard (baseline updated); docs+matrix (248 rows) updated; ready to push.",
+  "checkpoint_commit": "26b2dca85fc6f4cc484a18379bfdc5aabd7ee12d",
   "attempt": 1,
-  "notes": "UI: indigo/slate tokens, wrapping chips, textarea composer, typing indicator, two-step Local AI consent. Local AI: model-selection.js + friendly Vietnamese errors. Bundle 134117 bytes < 150000 guard (baseline updated)."
+  "notes": "New modules: src/nlu/entities/{rider,dates}.js, src/nlu/{language,analyze-turn}.js, src/core/planner.js, src/calc/rental-calculator.js, src/recommend/recommender.js, src/rules/recommend-rule.js, src/search/{semantic-retriever,reranker,hybrid-retriever}.js, src/ai/fact-guard.js. Modified: analyzer, slots (context memory), intents, pricing-rule (date ranges/breakdown/comparison), engine (planner trace, structured, resetContext), moto-app (hybrid wiring, planner-gated LLM phrasing), defaults (semantic on, lazy), main.js (reset button + ?debug=1), index.html, ci.yml (baseline 190000), README/docs/matrix. Tests 317 -> 393."
 }

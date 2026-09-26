@@ -2,7 +2,8 @@
 
 - Run ID: `2026-09-26-hybrid-intelligence`
 - Start SHA: `2e1f79c08ada114a829416ea65abcb464e1a1476`
-- Status: COMPLETE (this report finalized after live verification)
+- Status: COMPLETE
+- Feature commit: `26b2dca85fc6f4cc484a18379bfdc5aabd7ee12d`
 - Tests: **317 → 393**, all green (`node --test`, 393/393)
 
 ## What changed
