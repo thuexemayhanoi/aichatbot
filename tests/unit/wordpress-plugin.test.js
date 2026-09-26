@@ -88,7 +88,7 @@ test('loader outputs the full data-attribute set from sanitized settings', () =>
     'data-motoai', 'data-lang', 'data-theme', 'data-position',
     'data-title', 'data-source', 'data-open', 'data-open-delay'
   ]) {
-    assert.ok(MAIN.includes(`${'${'}${attr}'`), `loader must emit ${attr}`);
+    assert.ok(MAIN.includes(\`'\${attr}'\`), `loader must emit ${attr}`);
   }
   assert.match(MAIN, /esc_attr\( \$attr \), esc_attr\( \$value \)/);
 });
@@ -113,7 +113,7 @@ test('shortcode [motoai_agent] registers with sanitized attributes', () => {
   assert.match(MAIN, /add_shortcode\(\s*'motoai_agent',\s*'motoai_agent_shortcode'\s*\)/);
   assert.match(MAIN, /shortcode_atts\(/);
   for (const attr of ['lang', 'theme', 'source', 'open']) {
-    assert.ok(MAIN.includes(`${'${'}${attr}'`), `shortcode attribute ${attr}`);
+    assert.ok(MAIN.includes(\`'\${attr}'\`), `shortcode attribute ${attr}`);
   }
   // Shortcode values are validated against whitelists, never echoed raw.
   assert.match(MAIN, /shortcode_atts/);
