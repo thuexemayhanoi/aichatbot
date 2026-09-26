@@ -11,3 +11,7 @@ TMX-0009,viewport matrix,per release,manual matrix per docs/UI-UX.md,manual
 TMX-0010,a11y keyboard,per release,keyboard + escape + focus,manual
 TMX-0011,privacy audit,per release,no third-party calls in chat path,manual/scheduled
 TMX-0012,bundle budget,per release,base JS < 40 KB target,manual/scheduled
+TMX-0013,unit/wordpress,plugin+zip,CI required,structure+security+CRC green,CI,v45b
+TMX-0014,unit/pwa,manifest+sw,CI required,valid manifest, versioned caches, no model precache,CI,v45b
+TMX-0015,unit/mobile-config,capacitor,CI required,no engine fork, no secrets,CI,v45b
+TMX-0016,distribution,zip build,per release,artifact uploaded + release attach,CI distribution.yml,v45b

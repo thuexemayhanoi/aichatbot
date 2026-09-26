@@ -39,10 +39,13 @@ src/context/             # Session, history, slots (context memory), agenda
 src/app/                 # Wiring dùng chung cho direct mode + embed iframe
 src/storage, src/utils
 assets/                  # UI trực tiếp (HTML/CSS/JS module, không framework)
-embed.js                 # Embed widget (iframe isolation, không phụ thuộc)
-tests/                   # 406 test (node --test): unit, integration, golden + multi-turn
-docs/                    # LOCAL-AI.md, EMBED.md, ARCHITECTURE.md, COMPATIBILITY.md, WORKFLOW.md, TESTING.md, UI-UX.md
-docs/matrix/             # Master Matrix (257 tasks, BOT-0001..BOT-0257) + test matrix
+embed.js                 # Embed widget v1.1.0 (iframe isolation, data-open-delay)
+manifest.webmanifest     # PWA manifest (scope /aichatbot/)
+service-worker.js        # PWA offline shell (versioned caches, không precache model)
+integrations/            # WordPress plugin (loader mỏng) + Capacitor mobile wrapper foundation
+tests/                   # 447 test (node --test): unit, integration, golden + multi-turn + distribution
+docs/                    # LOCAL-AI.md, EMBED.md, ARCHITECTURE.md, COMPATIBILITY.md, WORKFLOW.md, TESTING.md, UI-UX.md, WORDPRESS.md, PWA.md, MOBILE.md, DISTRIBUTION.md
+docs/matrix/             # Master Matrix (276 tasks, BOT-0001..BOT-0276) + test matrix
 docs/state/active-work.json  # checkpoint/lock cho các scheduled run
 reports/                 # evidence report theo từng run
 tools/gen-matrix.mjs     # tái tạo Master Matrix (idempotent)
@@ -67,18 +70,31 @@ LLM **không bao giờ** được phép bịa giá, chính sách, địa chỉ, 
 ## Chạy test
 
 ```bash
-npm test        # node --test — 406 tests
+npm test        # node --test — 447 tests
 ```
 
 Golden conversation regression nằm ở `tests/integration/golden.test.js`, kỳ vọng đọc trực tiếp từ `data/business/*.json` (không hard-code).
 
-CI chạy toàn bộ suite trên mỗi push/PR tới `main`, kèm secret-scan và bundle regression guard. Quy trình scheduled run: xem `docs/WORKFLOW.md` (RESUME > FIX > VERIFY > IMPROVE > NEW FEATURE). Danh sách 257 task và trạng thái: `docs/matrix/chatbot-master-matrix.csv`.
+CI chạy toàn bộ suite trên mỗi push/PR tới `main`, kèm secret-scan và bundle regression guard. Quy trình scheduled run: xem `docs/WORKFLOW.md` (RESUME > FIX > VERIFY > IMPROVE > NEW FEATURE). Danh sách 276 task và trạng thái: `docs/matrix/chatbot-master-matrix.csv`.
 
 ## Cấu hình
 
 Direct link hỗ trợ query params: `?lang=vi|en&theme=auto|light|dark&source=<label>&embed=1`.
 
 Embed: `data-lang`, `data-theme`, `data-position`, `data-title`, `data-source`, `data-open` — xem `docs/EMBED.md`.
+
+## Phân phối (Distribution)
+
+MotoAI có thể chạy dưới 6 hình thức, tất cả dùng **một engine canonical duy nhất** (không fork business logic):
+
+1. **Direct web app** — <https://thuexemayhanoi.github.io/aichatbot/>
+2. **Embed widget** — một thẻ `<script>` (docs/EMBED.md)
+3. **WordPress plugin** — loader mỏng `integrations/wordpress/`, ZIP `dist/motoai-agent.zip` (docs/WORDPRESS.md)
+4. **PWA / Add to Home Screen** — manifest + service worker, offline shell (docs/PWA.md)
+5. **Android wrapper** — nền Capacitor (docs/MOBILE.md)
+6. **iOS wrapper** — nền Capacitor (docs/MOBILE.md)
+
+Không kênh nào cần API key, backend hay inference từ xa. Chi tiết chiến lược versioning/build: docs/DISTRIBUTION.md.
 
 ## Local AI — model được chọn động (v43.1)
 

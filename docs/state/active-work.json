@@ -1,13 +1,13 @@
 {
   "$schema": "motoai/active-work@1",
-  "feature_id": "BOT-0220",
-  "feature_desc": "v45: Focused UI/UX polish — 4-chip quick bar + deterministic dynamic suggestions, customer-facing \"Agent\" label, short auto-hiding ready status (no model id), header \"Hỗ trợ Agent\" + verified address subtitle, address consistency audit",
-  "run_id": "2026-09-26-ui-polish",
+  "feature_id": "BOT-0258",
+  "feature_desc": "v45b: Distribution upgrade (merged with parallel v45 UI/v46 quick-bar run) — embed.js v1.1.0 data-open-delay, WordPress plugin motoai-agent 1.0.0 (Settings API, visibility rules, shortcode, deterministic ZIP), PWA (manifest, service worker v45 caches, install UX, offline shell), Capacitor mobile wrapper foundation, privacy/versioning/docs/matrix/tests",
+  "run_id": "2026-09-26-distribution-upgrade",
   "status": "DONE",
-  "started_at": "2026-09-26T00:00:00Z",
-  "start_commit": "1c3a948f29ae81a7f2bb672e9d6a7382a23027dd",
-  "last_checkpoint": "406/406 tests green; bundle 189634 < 190000 guard; address single source of truth; no \"AI tại chỗ\" left in normal UI; ready to push.",
-  "checkpoint_commit": null,
+  "started_at": "2026-09-26T12:40:00Z",
+  "start_commit": "1c3a948f29ae81b7f2bb672e9d6a7382a23027dd",
+  "last_checkpoint": "447/447 tests green on merged tree (parallel v45 UI + v46 quick bar preserved: Hỗ trợ Agent header, 12-action chips, suggestions.js, business.json address); bundle 195121 < 196000; secret/endpoint scans clean; matrix 257 -> 276 rows; ready to push.",
+  "checkpoint_commit": "pending-push",
   "attempt": 1,
-  "notes": "New module: src/app/suggestions.js (DEFAULT_CHIPS + nextSuggestions, deterministic). Modified: index.html (header/subtitle/Agent labels), assets/js/main.js (renderChips + dynamic suggestions + Agent status flow, ready auto-hide, no modelId), assets/css/style.css (single scrollable chip row, wrap subtitle/status, compact mobile), embed.js (default title Hỗ trợ Agent), data/business/business.json (address.full = 112 Nguyễn Văn Cừ, Long Biên, Hà Nội), src/ai/local-llm.js (Agent wording), tests/unit/ui-tokens.test.js + local-ai.test.js (label spec updated, no assertion weakened), new tests/unit/ui-brand.test.js, ci.yml note, README/docs/matrix (257 rows)/EMBED/UI-UX/LOCAL-AI/COMPATIBILITY."
+  "notes": "Distribution surface added on top of the merged v45UI/v46 baseline: integrations/wordpress/motoai-agent, tools/build-wordpress-plugin.mjs (deterministic zip, stored+CRC), tools/gen-icons.py, manifest.webmanifest, service-worker.js, assets/js/pwa.js, integrations/mobile (capacitor), .github/workflows/distribution.yml (zip + png icons + release), docs WORDPRESS/PWA/MOBILE/DISTRIBUTION, 38 distribution tests. embed.js: data-open-delay added on the merged (Hỗ trợ Agent) version. Binary PNG icons + dist zip are CI-generated (connector pushes are text-only; verified empirically)."
 }
