@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const manifest = JSON.parse(readFileSync(join(ROOT, 'manifest.webmanifest'), 'utf8'));
@@ -128,4 +128,25 @@ test('no API keys / inference endpoints in PWA layer (no-API guarantee)', () => 
       assert.ok(!text.includes(endpoint), `PWA layer must not reference ${endpoint}`);
     }
   }
+});
+
+/** Direct-mode init must not reference DOM elements before they exist (TDZ guard). */
+test('main.js never calls wireMenu before `elements` is defined', () => {
+  const defs = mainJs.indexOf('const elements = {');
+  const callSites = [...mainJs.matchAll(/(?<!function )wireMenu\(\)/g)].map((m) => m.index);
+  assert.ok(defs > -1, 'elements object defined');
+  assert.ok(callSites.length >= 1, 'wireMenu is invoked at least once');
+  for (const pos of callSites) {
+    assert.ok(pos > defs, `wireMenu call at ${pos} must come after elements (at ${defs})`);
+  }
+  assert.match(mainJs, /if \(!config\.embed\) wireMenu\(\);/, 'wireMenu invoked in direct mode only');
+});
+
+/** Initial quick-action row must render DEFAULT_CHIPS. */
+test('main.js renders DEFAULT_CHIPS into the quick row on init', async () => {
+  assert.match(mainJs, /renderChips\(DEFAULT_CHIPS\)/);
+  assert.match(mainJs, /import \{[^}]*DEFAULT_CHIPS[^}]*\} from '\.\.\/\.\.\/src\/app\/suggestions\.js';/);
+  // And the chips list itself is non-empty with query/href actions.
+  const mod = await import(pathToFileURL(join(ROOT, 'src/app/suggestions.js')).href);
+  assert.ok(Array.isArray(mod.DEFAULT_CHIPS) && mod.DEFAULT_CHIPS.length >= 10);
 });

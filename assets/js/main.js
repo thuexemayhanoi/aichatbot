@@ -49,9 +49,8 @@ async function init() {
       if (platform === 'android' || platform === 'ios') config.source = platform;
     }
     initPwa(config); // direct/PWA mode only; no-op in embed mode
-    // Menu drawer (direct mode only). Contact hrefs come from verified
-    // business.json — never hard-coded in this UI logic.
-    wireMenu();
+    // Menu drawer wiring happens below, AFTER `elements` is defined —
+    // wireMenu must never run before the DOM references exist (TDZ).
   }
   document.title = config.lang === 'en' ? 'MotoAI — Hanoi motorbike rental assistant' : document.title;
 
@@ -112,6 +111,9 @@ async function init() {
       submit();
     });
   }
+  // Direct mode only, and only now that `elements` + wireMenu are fully
+  // defined — this is the single place menu wiring happens.
+  if (!config.embed) wireMenu();
   function fillMenuLinks(businessData) {
     const setHref = (el, href) => {
       if (!el || !href) return;
