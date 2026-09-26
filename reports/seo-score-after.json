@@ -1,0 +1,85 @@
+{
+  "tool": "tools/seo-score.mjs",
+  "total": 99.7,
+  "max": 100,
+  "pages": [
+    "index.html",
+    "blog/index.html",
+    "blog/app/index.html",
+    "blog/thue-xe/index.html",
+    "blog/xe-dien/index.html",
+    "blog/huong-dan/index.html",
+    "blog/an-toan/index.html",
+    "blog/dia-phuong/index.html",
+    "blog/app/app-thue-xe-may-la-gi/index.html",
+    "blog/huong-dan/thu-tuc-thue-xe-may/index.html",
+    "privacy/index.html",
+    "terms/index.html"
+  ],
+  "subscores": {
+    "TECHNICAL": {
+      "label": "Technical SEO",
+      "weight": 25,
+      "raw": 24.7,
+      "max": 25,
+      "ratio": 0.99,
+      "issues": [
+        "privacy/index.html: missing og:locale (vi_VN)",
+        "terms/index.html: missing og:locale (vi_VN)"
+      ]
+    },
+    "CONTENT": {
+      "label": "Content / On-page",
+      "weight": 25,
+      "raw": 25,
+      "max": 25,
+      "ratio": 1,
+      "issues": []
+    },
+    "STRUCTURED": {
+      "label": "Structured Data",
+      "weight": 15,
+      "raw": 15,
+      "max": 15,
+      "ratio": 1,
+      "issues": []
+    },
+    "LINKS": {
+      "label": "Internal Linking",
+      "weight": 10,
+      "raw": 10,
+      "max": 10,
+      "ratio": 1,
+      "issues": []
+    },
+    "CRAWL": {
+      "label": "Crawl / Indexability",
+      "weight": 10,
+      "raw": 10,
+      "max": 10,
+      "ratio": 1,
+      "issues": []
+    },
+    "UX": {
+      "label": "UX / Performance Structure",
+      "weight": 10,
+      "raw": 10,
+      "max": 10,
+      "ratio": 1,
+      "issues": []
+    },
+    "AIGEO": {
+      "label": "AI Search / GEO Readiness",
+      "weight": 5,
+      "raw": 5,
+      "max": 5,
+      "ratio": 1,
+      "issues": []
+    }
+  },
+  "issue_count": 2,
+  "issues": [
+    "privacy/index.html: missing og:locale (vi_VN)",
+    "terms/index.html: missing og:locale (vi_VN)"
+  ]
+}

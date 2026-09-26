@@ -1,15 +1,15 @@
 {
-  "feature_id": "BLOG-APP-UX-FOUNDATION",
-  "feature_desc": "v54 Blog App Foundation: app-like blog shell, Light/Dark/Auto theme, verified business open/closed status, category nav, contact CTA from business.json, search UX audit, Blog App UX matrix",
-  "run_id": "2026-09-26-blog-app-foundation",
-  "started_at": "2026-09-26T16:00:00Z",
-  "start_commit": "cf241064206dbb73c77db25fb693147f0f72ffd0",
-  "last_checkpoint": "COMPLETED: v54 Blog App Foundation implemented; 525/525 tests green; pushing to main; awaiting CI/Pages verification",
+  "feature_id": "SEO-AUDIT-OPTIMIZE",
+  "feature_desc": "RUN 06:00: deterministic local SEO scoring tool + baseline/after audit + optimize existing pages only (root Agent, blog home, 6 hubs, 2 pilot articles); no mass article generation",
+  "run_id": "2026-09-27-seo-run",
+  "started_at": "2026-09-26T23:00:00Z",
+  "start_commit": "ff2ce4139a6cb69e66e6561f1ca318f075d1c729",
+  "last_checkpoint": "SEO changes implemented; scoring before=89.8 after=99.7; pushing to main; awaiting CI/Pages verification",
   "checkpoint_commit": null,
   "tests": {
     "suite": "node --test",
-    "result": "525/525 pass (509 existing + 16 new blog-app-ux)"
+    "result": "portable contracts verified in sandbox; full suite to be confirmed by CI"
   },
-  "notes": "NO MASS ARTICLE GENERATION. Matrix: docs/matrix/blog-app-ux-matrix.csv (24 rows, 20 DONE, 4 deferred PLANNED). Report: reports/blog-app-foundation-latest.md",
+  "notes": "NO MASS ARTICLE GENERATION. content-matrix.csv untouched (2,000 rows, 2 PUBLISHED). Fixed real v54 bug: broken stylesheet hrefs on blog home + hubs + articles (404 verified live). Reports: reports/seo-score-before.md, reports/seo-score-after.md, reports/seo-audit-latest.md. Matrix: docs/matrix/seo-content-matrix.csv.",
   "status": "COMPLETED"
 }
