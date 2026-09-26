@@ -7,7 +7,7 @@
   "started_at": "2026-09-27T06:30:00Z",
   "start_commit": "4dbe23cf6bb7d95933c7c296157586b3e1bde957",
   "last_checkpoint": "317/317 tests green; model selection dynamic from prebuiltAppConfig.model_list; red removed from brand; privacy tests added; docs+matrix updated; ready to push.",
-  "checkpoint_commit": "",
+  "checkpoint_commit": "d9185c9d889bb5cf5bf963188bbb11d3622e6968",
   "attempt": 1,
   "notes": "UI: indigo/slate tokens, wrapping chips, textarea composer, typing indicator, two-step Local AI consent. Local AI: model-selection.js + friendly Vietnamese errors. Bundle 134117 bytes < 150000 guard (baseline updated)."
 }
