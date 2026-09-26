@@ -76,7 +76,7 @@ test('WordPress plugin loader: thin, canonical URL, guards, no second engine', (
   assert.match(php, /MOTOAI_AGENT_EMBED_URL', 'https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/embed\.js'/);
   assert.match(php, /defined\('ABSPATH'\) \|\| exit/);
   assert.match(php, /static \$printed = false;/); // never inject twice
-  assert.match(php, /add_shortcode\( 'motoai_agent'/);
+  assert.match(php, /add_shortcode\(\s*'motoai_agent'/);
   assert.match(php, /wp_footer/);
   assert.equal(/eval\(|base64_decode|system\(|exec\(/.test(php), false);
 });
@@ -96,7 +96,7 @@ test('WordPress settings: capability + Settings API + sanitize whitelist', () =>
 test('WordPress uninstall removes only the plugin option', () => {
   const php = read('integrations/wordpress/motoai-agent/uninstall.php');
   assert.match(php, /WP_UNINSTALL_PLUGIN/);
-  assert.match(php, /delete_option\( 'motoai_agent_settings' \)/);
+  assert.match(php, /delete_option\(\s*'motoai_agent_settings'\s*\)/);
   assert.equal((php.match(/delete_option/g) ?? []).length, 1);
 });
 
