@@ -303,6 +303,9 @@ async function init() {
   }
 
   async function submit(overrideText = null, { fresh = false } = {}) {
+    // Only restore focus if the user was ALREADY typing in the textarea.
+    // Quick-action chips must never summon the mobile (iOS) keyboard.
+    const inputWasFocused = document.activeElement === elements.input;
     const text = (overrideText ?? elements.input.value).trim();
     if (!text || busy) return;
     setBusy(true);
@@ -334,7 +337,16 @@ async function init() {
       setStatus(elements.status, 'Lỗi tạm thời, thử lại nhé.', 'error');
     } finally {
       setBusy(false);
-      elements.input.focus();
+      // Restore focus ONLY when the user was already typing. Tapping a quick
+      // chip (unfocused textarea) must NOT open the keyboard or move the
+      // host viewport. preventScroll avoids any scroll side effects.
+      if (inputWasFocused && document.activeElement !== elements.input) {
+        try {
+          elements.input.focus({ preventScroll: true });
+        } catch (_) {
+          elements.input.focus();
+        }
+      }
     }
   }
 

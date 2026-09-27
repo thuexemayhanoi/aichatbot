@@ -42,7 +42,7 @@ test('root app contract: body opens directly into the chat app in spec order', (
   // 3. Full-screen app layout: html/body 100%, app 100dvh flex column, chat area flexes.
   assert.match(css, /html, body\s*\{[^}]*height:\s*100%/s);
   assert.match(css, /\.motoai-app\s*\{[^}]*display:\s*flex;[^}]*flex-direction:\s*column;[^}]*height:\s*100dvh/s);
-  assert.match(css, /\.motoai-messages\s*\{[^}]*flex:\s*1;[^}]*overflow-y:\s*auto/s);
+  assert.match(css, /\.motoai-messages\s*\{[^}]*flex:\s*1 1 auto;[^}]*min-height:\s*0;[^}]*overflow-y:\s*auto/s);
   // 4. Quick bar stays ONE horizontal row.
   assert.match(css, /\.motoai-quick\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*overflow-x:\s*auto;[^}]*overflow-y:\s*hidden/s);
   // 5. Only ONE h1 — the visible app header; no giant SEO H1.
@@ -286,7 +286,7 @@ test('every chip query is answered by the deterministic engine (no fallback)', a
 
 test('index.html links the stylesheet (root app must never render unstyled)', () => {
   const html = readFileSync(join(ROOT, 'index.html'), 'utf8');
-  assert.match(html, /<link rel="stylesheet" href="assets\/css\/style\.css">/);
+  assert.match(html, /<link rel="stylesheet" href="assets\/css\/style\.css\?v=[\w.-]+">/);
   // must appear after canonical/manifest, before runtime scripts
   const linkPos = html.indexOf('<link rel="stylesheet"');
   const canonicalPos = html.indexOf('rel="canonical"');

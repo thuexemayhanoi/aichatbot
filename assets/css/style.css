@@ -164,8 +164,10 @@ html, body {
 
 /* ---------- Messages ---------- */
 .motoai-messages {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;               /* critical: lets the area shrink when the iOS keyboard reduces iframe height */
   overflow-y: auto;
+  overflow-x: hidden;           /* vertical-only chat scroll; no horizontal leak */
   -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
@@ -677,6 +679,46 @@ body[data-motoai-embed="1"] { overflow: auto; overscroll-behavior: auto; } /* em
 /* App pinned edge-to-edge: the header can never drift under Safari chrome. */
 .motoai-shell .motoai-app { position: fixed; inset: 0; }
 body[data-motoai-embed="1"] .motoai-app { position: static; inset: auto; }
+
+/* ---------- EMBED HEIGHT CHAIN FIX (embed-layout-2) ----------
+   The iframe's own 100% height is canonical in embed mode: the host /shop
+   panel/iframe already follows visualViewport. Previously .motoai-app used
+   height:100% but .motoai-shell had NO definite height, so 100% did not
+   resolve reliably on iOS Safari and the app collapsed to content height,
+   leaving a large blank area below the composer. Definite chain:
+   html -> body -> .motoai-shell -> .motoai-app, all height:100%, min-height:0.
+   No independent 100dvh layout is used in embed mode. */
+body[data-motoai-embed="1"] {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body[data-motoai-embed="1"] .motoai-shell {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body[data-motoai-embed="1"] .motoai-app {
+  position: static;
+  inset: auto;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  max-width: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
 
 /* Stable zones: header / chips / composer never shrink or reflow. */
 .motoai-header, .motoai-quick, .motoai-composer { flex: 0 0 auto; }
