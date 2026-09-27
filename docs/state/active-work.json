@@ -1,15 +1,15 @@
 {
-  "feature_id": "SEO-AUDIT-OPTIMIZE",
-  "feature_desc": "RUN 06:00: deterministic local SEO scoring tool + baseline/after audit + optimize existing pages only (root Agent, blog home, 6 hubs, 2 pilot articles); no mass article generation",
-  "run_id": "2026-09-27-seo-run",
-  "started_at": "2026-09-26T23:00:00Z",
-  "start_commit": "ff2ce4139a6cb69e66e6561f1ca318f075d1c729",
-  "last_checkpoint": "Pushed d5c62ba (SEO v55); CI failed on new seo-score test attribution regex; fix 07d5836 pushed; CI + Distribution + deploy + report-build-status all success; Pages live verified (root, blog home, 6 hubs, 2 articles, blog.css 200)",
-  "checkpoint_commit": "07d58365b0ad5b5986b78a3c00f850a32cd3d9f1",
+  "feature_id": "UX-BLOG-AUDIT",
+  "feature_desc": "RUN 03:00: full UX/Blog App audit (BLOGUX-0024) + auto repair. Fixed SEO-008 (og:locale privacy/terms); seo-score 100/100; no P0/P1 issue found; no mass generation",
+  "run_id": "2026-09-27-ux-audit",
+  "started_at": "2026-09-27T03:00:00+07:00",
+  "start_commit": "9450adc2cc4c22371b21a00dc96688609fd967d4",
+  "last_checkpoint": "Audit complete on baseline 9450adc: 528/528 tests green, blog-factory validate OK, build-blog OK, 0 broken internal refs, 22 live routes 200, live pages byte-match HEAD. Fixed SEO-008 og:locale (privacy/terms) -> seo-score 100/100. Matrix: BLOGUX-0024 DONE, SEO-008 DONE. Pushing.",
+  "checkpoint_commit": "9450adc2cc4c22371b21a00dc96688609fd967d4",
   "tests": {
     "suite": "node --test",
-    "result": "CI green on 07d5836 (CI + Distribution both success); full static contracts also re-verified in sandbox"
+    "result": "528/528 pass after fix; seo-score 100/100, 0 issues"
   },
-  "notes": "NO MASS ARTICLE GENERATION. content-matrix.csv untouched (2,000 rows, 2 PUBLISHED). Fixed real v54 bug: broken stylesheet hrefs on blog home + hubs + articles (404 verified live). Fixed run-2 P0: seo-score test issue-attribution regex. Reports: reports/seo-score-before.md, reports/seo-score-after.md, reports/seo-audit-latest.md. Matrix: docs/matrix/seo-content-matrix.csv.",
-  "status": "COMPLETED"
+  "notes": "NO MASS ARTICLE GENERATION. content-matrix.csv untouched (2,000 rows, 2 PUBLISHED). Observation (REVIEW, no action): gen-matrix.mjs emits 276 rows vs committed master matrix 260 — reconcile later, do not regenerate blindly. Report: reports/2026-09-27-ux-audit-run.md",
+  "status": "PUSHING"
 }

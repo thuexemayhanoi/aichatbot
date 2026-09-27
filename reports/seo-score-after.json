@@ -1,6 +1,6 @@
 {
   "tool": "tools/seo-score.mjs",
-  "total": 99.7,
+  "total": 100,
   "max": 100,
   "pages": [
     "index.html",
@@ -20,13 +20,10 @@
     "TECHNICAL": {
       "label": "Technical SEO",
       "weight": 25,
-      "raw": 24.7,
+      "raw": 25,
       "max": 25,
-      "ratio": 0.99,
-      "issues": [
-        "privacy/index.html: missing og:locale (vi_VN)",
-        "terms/index.html: missing og:locale (vi_VN)"
-      ]
+      "ratio": 1,
+      "issues": []
     },
     "CONTENT": {
       "label": "Content / On-page",
@@ -77,9 +74,6 @@
       "issues": []
     }
   },
-  "issue_count": 2,
-  "issues": [
-    "privacy/index.html: missing og:locale (vi_VN)",
-    "terms/index.html: missing og:locale (vi_VN)"
-  ]
+  "issue_count": 0,
+  "issues": []
 }

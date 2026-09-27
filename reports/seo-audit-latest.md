@@ -50,7 +50,7 @@ Baseline caveat: the BEFORE run was scored on best-available remote copies; the 
 ## Deliberately NOT done
 
 - No new articles (content matrix untouched: 2,000 rows, 2 PUBLISHED — enforced by tests).
-- No edits to `privacy/` and `terms/` (missing og:locale remains the only open issue, DEFERRED in the matrix — needs a byte-exact edit of hand-written pages; next run).
+- No edits to `privacy/` and `terms/` in the 06:00 run (og:locale was DEFERRED to the next run). **Update 2026-09-27 03:00 run: fixed** — `og:locale vi_VN` added to both pages (byte-exact edit, same format as other pages); `tools/seo-score.mjs` now returns **100/100, 0 issues**; matrix row SEO-008 → DONE.
 
 ## Tests
 
@@ -69,6 +69,6 @@ Baseline caveat: the BEFORE run was scored on best-available remote copies; the 
 
 ## Next recommendation
 
-1. Byte-exact edit of `privacy/` + `terms/` (og:locale) to reach 100/100.
+1. ~~Byte-exact edit of `privacy/` + `terms/` (og:locale)~~ DONE by the 2026-09-27 03:00 run (100/100).
 2. Manual visual pass on mobile at 320px: blog now actually styled — check theme toggle, category bar, status chip.
 3. Next production batch should come from the existing content matrix pipeline (per-article legal gate for SAFE rows).
