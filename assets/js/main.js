@@ -68,7 +68,6 @@ async function init() {
     drawerClose: document.getElementById('motoai-drawer-close'),
     menuAddress: document.getElementById('motoai-menu-address'),
     menuContact: document.getElementById('motoai-menu-contact'),
-    menuZalo: document.getElementById('motoai-menu-zalo'),
     menuCall: document.getElementById('motoai-menu-call'),
     menuMap: document.getElementById('motoai-menu-map'),
     aiExplain: document.getElementById('motoai-ai-explain'),
@@ -123,7 +122,7 @@ async function init() {
       submit(null, { fresh: true });
     });
     // Dock "Liên hệ": open the drawer straight into the verified contact group
-    // (Gọi / Zalo / WhatsApp / Địa chỉ / Bản đồ from business.json) — no
+    // (Gọi / WhatsApp / Địa chỉ / Bản đồ from business.json) — no
     // hard-coded external contact URL on the dock itself.
     elements.dockContact?.addEventListener('click', () => {
       setDrawer(true);
@@ -162,7 +161,6 @@ async function init() {
       el.href = href;
       el.hidden = false;
     };
-    setHref(elements.menuZalo, resolveChipHref({ ref: 'zalo' }, businessData));
     setHref(elements.menuWhatsapp, resolveChipHref({ ref: 'whatsapp' }, businessData));
     setHref(elements.menuCall, resolveChipHref({ ref: 'phone_uri' }, businessData));
     setHref(elements.menuMap, resolveChipHref({ ref: 'maps' }, businessData));
@@ -283,6 +281,30 @@ async function init() {
     elements.quick.scrollLeft = 0;
   }
   renderChips(DEFAULT_CHIPS);
+
+  // Content screens (blog category/article, legal) deep-link back into the
+  // home chat screen: ?ask=<topic> prefills the composer; ?action=<id> runs
+  // the same deterministic flows the drawer/dock buttons trigger.
+  const entry = new URLSearchParams(location.search);
+  const askTopic = entry.get('ask');
+  const action = entry.get('action');
+  if (askTopic) {
+    elements.input.value = askTopic.slice(0, 2000);
+    autoGrow();
+    try { elements.input.focus({ preventScroll: true }); } catch (_) { elements.input.focus(); }
+  } else if (action === 'price') {
+    elements.input.value = 'Giá thuê xe bao nhiêu?';
+    autoGrow();
+    submit(null, { fresh: true });
+  } else if (action === 'contact') {
+    elements.input.value = 'Liên hệ';
+    autoGrow();
+    submit(null, { fresh: true });
+  } else if (action === 'address') {
+    elements.input.value = 'Địa chỉ ở đâu?';
+    autoGrow();
+    submit(null, { fresh: true });
+  }
 
   // Blog knowledge tier: fetched lazily after the first turn (never on load)
   // so the initial payload stays minimal. Optional: failures are silent.

@@ -1,32 +1,53 @@
-/* Blog shell — reuses design tokens from assets/css/style.css.
-   Premium, chat-first consistent with the Agent app. No framework. */
+/* Content screens INSIDE the single MotoAI app shell — reuses design tokens
+   from assets/css/style.css (same background, typography, purple accent,
+   card radius, spacing, dark/light theme). No standalone blog chrome. */
 
-/* ---------- Blog layout ---------- */
-.blog-page {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: calc(env(safe-area-inset-top, 0px) + var(--space-4)) var(--space-3) calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
-  min-height: 100dvh;
+/* ---------- Screen layout (inside .motoai-app) ---------- */
+.motoai-screen { height: auto; min-height: 100dvh; }
+.motoai-screen .motoai-header-text { text-decoration: none; color: inherit; }
+.motoai-screen .motoai-header-text:hover .motoai-title { color: var(--color-primary); }
+.motoai-screen .motoai-status { flex: none; }
+
+/* Main viewport slot: only this area changes per screen. */
+.motoai-screen-body {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
+  overflow: visible;           /* the page scrolls, the app chrome stays */
+  padding: var(--space-2) 0 var(--space-3);
+}
+/* Desktop: content screens use a wider reading column than the chat screen,
+   but the same chrome, tokens and centered app feel. */
+@media (min-width: 1024px) {
+  .motoai-shell-content .motoai-app { max-width: 1080px; }
 }
 
-.blog-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; }
-.blog-brand { display: flex; align-items: center; gap: var(--space-2); font-weight: 650; font-size: 1.05rem; color: var(--color-text); text-decoration: none; }
-.blog-brand:hover { color: var(--color-primary); }
-.blog-nav { display: flex; gap: var(--space-2); flex-wrap: wrap; }
-.blog-nav a {
-  color: var(--color-text-muted); text-decoration: none; font-size: 0.8rem;
-  padding: 7px 12px; border: 1px solid var(--color-border); border-radius: var(--radius-full);
-  background: var(--color-surface); white-space: nowrap;
+/* Compact screen header (inside the body): small label + H1 + lead.
+   NO giant blog hero, NO marketing page look. */
+.blog-screen-label {
+  margin: 0; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--color-primary);
 }
-.blog-nav a:hover, .blog-nav a[aria-current="page"] { color: var(--color-primary); border-color: var(--color-primary); }
+.blog-screen-title { margin: 2px 0 6px; font-size: 1.45rem; line-height: 1.25; letter-spacing: 0.2px; }
+.blog-screen-lead { margin: 0; color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.55; }
 
-.blog-hero h1 { margin: 0 0 6px; font-size: 1.6rem; line-height: 1.25; letter-spacing: 0.2px; }
-.blog-hero p { margin: 0; color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.55; }
+/* Compact breadcrumb inside the screen. */
+.blog-breadcrumb { margin: 0; font-size: 0.74rem; color: var(--color-text-muted); }
+.blog-breadcrumb a { color: var(--color-text-muted); }
 
-/* ---------- Search ---------- */
+/* Native Ask Agent action — one slim row, not a marketing CTA box. */
+.screen-ask { display: flex; justify-content: center; margin-top: var(--space-2); }
+.screen-ask-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 46px; padding: 10px 22px; border-radius: var(--radius-full);
+  background: var(--color-primary); color: var(--color-on-primary);
+  text-decoration: none; font-weight: 600; font-size: 0.88rem; white-space: nowrap;
+}
+.screen-ask-btn:hover { background: var(--color-primary-hover); }
+.screen-ask-btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+/* ---------- Search (blog home screen) ---------- */
 .blog-search { display: flex; gap: var(--space-2); }
 .blog-search input {
   flex: 1; min-height: 46px; padding: 10px 14px; font-size: 16px;
@@ -55,45 +76,20 @@
 .card-feature { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: var(--space-4); }
 @media (max-width: 560px) { .card-feature { flex-direction: column; align-items: flex-start; } }
 
-/* ---------- Agent CTA ---------- */
-.blog-cta {
-  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap;
-  padding: var(--space-4); border-radius: var(--radius-md);
-  background: var(--color-primary-soft); border: 1px solid var(--color-primary);
-}
-.blog-cta p { margin: 0; font-size: 0.88rem; color: var(--color-text); }
-.blog-cta a {
-  display: inline-flex; align-items: center; min-height: 42px; padding: 8px 18px; border-radius: var(--radius-full);
-  background: var(--color-primary); color: var(--color-on-primary); text-decoration: none; font-weight: 600; font-size: 0.85rem; white-space: nowrap;
-}
+/* ---------- Article screen ---------- */
+.blog-article-body h1 { font-size: 1.5rem; line-height: 1.3; margin: 0 0 8px; }
+.blog-article-body .byline { font-size: 0.74rem; color: var(--color-text-muted); margin: 0 0 var(--space-4); }
+.blog-article-body h2 { font-size: 1.08rem; margin: 1.4em 0 0.5em; }
+.blog-article-body p, .blog-article-body li { font-size: 0.94rem; line-height: 1.65; }
+.blog-article-body a { color: var(--color-primary); }
+.byline { margin: 0; font-size: 0.74rem; color: var(--color-text-muted); }
+.blog-related h2 { margin: 0 0 var(--space-3); font-size: 1rem; }
 
-/* ---------- Article ---------- */
-.blog-article h1 { font-size: 1.5rem; line-height: 1.3; margin: 0 0 8px; }
-.blog-article .byline { font-size: 0.74rem; color: var(--color-text-muted); margin: 0 0 var(--space-4); }
-.blog-article h2 { font-size: 1.08rem; margin: 1.4em 0 0.5em; }
-.blog-article p, .blog-article li { font-size: 0.94rem; line-height: 1.65; }
-.blog-article a { color: var(--color-primary); }
-.blog-breadcrumb { font-size: 0.74rem; color: var(--color-text-muted); }
-.blog-breadcrumb a { color: var(--color-text-muted); }
-.blog-article-footer {
-  margin-top: var(--space-5); padding-top: var(--space-3); border-top: 1px solid var(--color-border);
-  font-size: 0.78rem; color: var(--color-text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2);
-}
-.blog-article-footer a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
+/* ---------- App shell components (shared with the chat home) ---------- */
 
-/* ---------- v54 Blog App Foundation: app shell shared components ---------- */
-
-/* Compact app header: back-to-Agent, brand, theme control. */
-.blog-back {
-  display: inline-flex; align-items: center; min-height: 44px;
-  padding: 0 12px; margin-left: calc(-1 * var(--space-2));
-  color: var(--color-text-muted); text-decoration: none;
-  font-size: 0.85rem; font-weight: 600; white-space: nowrap;
-}
-.blog-back:hover { color: var(--color-primary); }
-.blog-header-tools { display: flex; align-items: center; gap: var(--space-2); margin-left: auto; }
+/* Theme toggle in the top chrome (same tokens as the Agent app). */
 .blog-theme-toggle {
-  display: inline-flex; align-items: center; justify-content: center;
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
   min-height: 44px; min-width: 44px; padding: 0 10px;
   border: 1px solid var(--color-border); border-radius: var(--radius-full);
   background: var(--color-surface); color: var(--color-text);
@@ -102,61 +98,23 @@
 .blog-theme-toggle:hover { border-color: var(--color-primary); color: var(--color-primary); }
 .blog-theme-toggle:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
-/* Verified business open/closed chip (hours from business.json, rendered by JS). */
-.blog-status {
-  margin: 0; align-self: flex-start;
-  font-size: 0.78rem; font-weight: 600; line-height: 1.4;
-  padding: 4px 12px; border-radius: var(--radius-full);
-  border: 1px solid var(--color-border); background: var(--color-surface);
-  color: var(--color-text-muted);
-}
-.blog-status[data-state="open"] { color: var(--color-success); border-color: var(--color-success); }
-.blog-status[data-state="closed"] { color: var(--color-text-muted); }
-
-/* Category bar: ONE horizontal scroll row on mobile — never a second line. */
-.blog-categories {
-  display: flex; flex-wrap: nowrap; gap: var(--space-2);
-  overflow-x: auto; overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 2px;
-}
-.blog-categories::-webkit-scrollbar { display: none; }
-.blog-categories a {
+/* Category chips row: ONE horizontal scroll row on mobile. */
+.blog-chips { display: flex; flex-wrap: nowrap; gap: var(--space-2); margin: 0; overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px; }
+.blog-chips::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) { .blog-chips { flex-wrap: wrap; overflow-x: visible; } }
+.blog-chip {
   flex: 0 0 auto;
-  display: inline-flex; align-items: center; min-height: 40px;
-  padding: 6px 14px; border-radius: var(--radius-full);
-  border: 1px solid var(--color-border); background: var(--color-surface);
-  color: var(--color-text-muted); text-decoration: none;
-  font-size: 0.82rem; white-space: nowrap;
+  display: inline-flex; align-items: center; min-height: 40px; padding: 5px 14px;
+  border: 1px solid var(--color-border); border-radius: var(--radius-full);
+  background: var(--color-surface); color: var(--color-primary);
+  text-decoration: none; font-size: 0.8rem; font-weight: 600; white-space: nowrap;
 }
-.blog-categories a:hover { color: var(--color-primary); border-color: var(--color-primary); }
-.blog-categories a[aria-current="page"] {
-  color: var(--color-on-primary); background: var(--color-primary);
-  border-color: var(--color-primary); font-weight: 600;
-}
+.blog-chip:hover { border-color: var(--color-primary); }
+.blog-chip[aria-current="page"] { background: var(--color-primary); color: var(--color-on-primary); border-color: var(--color-primary); }
+.blog-chip-count { margin-left: 6px; color: var(--color-text-muted); font-weight: 500; }
+.blog-chip[aria-current="page"] .blog-chip-count { color: var(--color-on-primary); }
 
-/* Compact verified-contact CTA row (hrefs filled from business.json at runtime). */
-.blog-contacts { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.blog-contact {
-  display: inline-flex; align-items: center; min-height: 42px;
-  padding: 8px 16px; border-radius: var(--radius-full);
-  background: var(--color-primary); color: var(--color-on-primary);
-  text-decoration: none; font-weight: 600; font-size: 0.82rem; white-space: nowrap;
-}
-.blog-contact:hover { background: var(--color-primary-hover); }
-.blog-contact[data-contact-ref] {
-  background: var(--color-surface); color: var(--color-text);
-  border: 1px solid var(--color-border);
-}
-.blog-contact[data-contact-ref]:hover { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-surface); }
-
-/* Dark mode readability: status/categories inherit tokens — no extra rules needed. */
-
-/* ---------- v56 App Blog Foundation: taxonomy, chips, footer, TOC, pagination ---------- */
-
-/* Parent cluster cards (blog home Level 2). */
+/* ---------- Taxonomy screens: clusters, categories ---------- */
 .blog-cluster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3); }
 .blog-cluster-card {
   padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
@@ -173,7 +131,6 @@
 }
 .blog-cluster-link:hover { color: var(--color-primary); border-color: var(--color-primary); }
 
-/* Category cards (Level 3). */
 .blog-cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-3); }
 .blog-cat-card {
   display: flex; flex-direction: column; gap: 6px; padding: var(--space-3);
@@ -185,20 +142,9 @@
 .blog-cat-card strong { font-size: 0.92rem; }
 .blog-cat-card span:last-child { font-size: 0.74rem; color: var(--color-text-muted); line-height: 1.45; }
 
-/* Subtopic chips (hub + article screens). */
-.blog-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; }
-.blog-chip {
-  display: inline-flex; align-items: center; min-height: 40px; padding: 5px 14px;
-  border: 1px solid var(--color-border); border-radius: var(--radius-full);
-  background: var(--color-surface); color: var(--color-primary);
-  text-decoration: none; font-size: 0.8rem; font-weight: 600; white-space: nowrap;
-}
-.blog-chip:hover { border-color: var(--color-primary); }
-.blog-chip-count { margin-left: 6px; color: var(--color-text-muted); font-weight: 500; }
-
-/* Shared app footer (generated from config/navigation.json). */
+/* Compact SEO footer at the END of screen content — clearly inside MotoAI. */
 .blog-footer {
-  margin-top: var(--space-5); padding: var(--space-4) var(--space-4) calc(env(safe-area-inset-bottom, 0px) + var(--space-4));
+  margin-top: var(--space-4); padding: var(--space-4);
   border: 1px solid var(--color-border); border-radius: var(--radius-md);
   background: var(--color-surface);
 }
@@ -232,7 +178,6 @@
 .blog-article-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
 .blog-dek { margin: 0 0 6px; font-size: 0.98rem; line-height: 1.5; color: var(--color-text); }
 @media (min-width: 1024px) {
-  .blog-page { max-width: 1180px; }
   .blog-article-layout { grid-template-columns: 230px minmax(0, 720px); gap: 40px; align-items: start; }
   .blog-toc-mobile { display: none; }
   .blog-toc-desktop { display: block; position: sticky; top: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); padding: 14px 16px; }
@@ -252,6 +197,9 @@
 /* Hub sibling category note. */
 .blog-hub-sibling { margin: 0; font-size: 0.82rem; color: var(--color-text-muted); }
 .blog-hub-sibling a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
+
+/* Legal screens: cards read as one column of app content. */
+.blog-legal-grid { grid-template-columns: 1fr; }
 
 /* Empty states. */
 .blog-empty { margin: 0; color: var(--color-text-muted); font-size: 0.88rem; line-height: 1.6; }
