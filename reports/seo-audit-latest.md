@@ -60,7 +60,12 @@ Baseline caveat: the BEFORE run was scored on best-available remote copies; the 
 
 ## CI / Distribution / Pages
 
-Filled after push + deploy verification.
+- Initial push d5c62ba: CI + Distribution both FAILED at `node --test` — root cause: `tests/unit/seo-score.test.js` issue-attribution regex `^(index\.html|blog\/|privacy\/|terms\/|site): ` did not match the scorer's real attribution format `privacy/index.html: ...` (the `privacy\/` alternative demanded `: ` immediately after the prefix). The 2 remaining issues (privacy/terms og:locale) therefore failed the regex.
+- Fix 07d5836 (`fix(test): seo-score issue-attribution regex must match real page paths`) — CI: SUCCESS, Distribution: SUCCESS.
+- Commit check-runs on 07d5836: test=success, build=success (CI), build=success (Distribution), deploy=success, report-build-status=success.
+- Pages live verification: root (`MotoAI — Ứng dụng thuê xe máy & xe điện`), blog home (`Cẩm nang thuê xe máy...`), all 6 hubs, both pilot articles serve the new build.
+- P1 fix verified live: `https://thuexemayhanoi.github.io/aichatbot/assets/css/blog.css` returns the stylesheet (200); the old broken hrefs (`/blog/assets/css/blog.css`, `/blog/app/assets/css/blog.css`) return GitHub Pages 404 as expected.
+- Final HEAD: 07d5836.
 
 ## Next recommendation
 
