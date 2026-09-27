@@ -127,7 +127,8 @@ async function init() {
     // hard-coded external contact URL on the dock itself.
     elements.dockContact?.addEventListener('click', () => {
       setDrawer(true);
-      const groupBtn = document.getElementById('motoai-group-lh-btn');
+      // v56: contact actions live in the Dịch vụ group.
+      const groupBtn = document.getElementById('motoai-group-dv-btn');
       if (groupBtn && groupBtn.getAttribute('aria-expanded') !== 'true') groupBtn.click();
     });
     // Grouped menu accordion (v50): one group open at a time, ARIA-backed.
