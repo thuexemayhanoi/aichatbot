@@ -199,12 +199,12 @@ test('the long technical ready message is removed; status auto-hides', () => {
 });
 
 // --- 1 + 2. Quick chips: ONE single horizontal scrollable row ---
-test('primary chip bar holds the full 12-action set in the agreed default order', () => {
-  assert.equal(DEFAULT_CHIPS.length, 12);
+test('primary chip bar holds the full 11-action set in the agreed default order', () => {
+  assert.equal(DEFAULT_CHIPS.length, 11); // v57: Zalo removed
   const labels = DEFAULT_CHIPS.map((c) => c.label);
   assert.deepEqual(labels, [
     '⚡ Agent', '💰 Giá thuê', '🛵 Xe ga', '🏍️ Xe số', '📅 Theo tháng',
-    '💵 Đặt cọc', '📄 Thủ tục', '💬 Zalo', '📞 Gọi', '📍 Địa chỉ',
+    '💵 Đặt cọc', '📄 Thủ tục', '📞 Gọi', '📍 Địa chỉ',
     '☎️ Liên hệ', '🗺️ Bản đồ'
   ]);
   for (const chip of DEFAULT_CHIPS) {
@@ -228,12 +228,12 @@ test('every chip is exactly one of the three kinds (query, link, agent)', () => 
 
 test('link chips resolve hrefs only from verified business.json data', () => {
   const byId = Object.fromEntries(DEFAULT_CHIPS.map((c) => [c.id, c]));
-  assert.equal(resolveChipHref(byId.zalo, business), business.contact.zalo);
   assert.equal(resolveChipHref(byId.call, business), business.contact.phone_uri);
   assert.equal(resolveChipHref(byId.map, business), business.contact.maps);
+  assert.equal(resolveChipHref({ ref: 'whatsapp' }, business), business.contact.whatsapp);
   // No verified data -> empty href, never a guessed contact URL.
-  assert.equal(resolveChipHref(byId.zalo, {}), '');
-  assert.equal(resolveChipHref(byId.zalo, null), '');
+  assert.equal(resolveChipHref(byId.call, {}), '');
+  assert.equal(resolveChipHref({ ref: 'whatsapp' }, null), '');
 });
 
 test('contact data is never duplicated into UI logic files', () => {
@@ -262,7 +262,7 @@ test('dynamic suggestions are deterministic from intent/context (never LLM)', ()
   assert.equal(withVehicle[0].label, '1 ngày');
 
   const contact = nextSuggestions({ intentId: 'location_query', slots: {} });
-  assert.deepEqual(contact.map((c) => c.label), ['Chỉ đường', 'Gọi điện', 'Zalo', 'Giờ mở cửa']);
+  assert.deepEqual(contact.map((c) => c.label), ['Chỉ đường', 'Gọi điện', 'Giờ mở cửa']);
 
   assert.equal(nextSuggestions({ intentId: null, slots: {} }), DEFAULT_CHIPS);
   assert.equal(nextSuggestions({}), DEFAULT_CHIPS);
@@ -405,7 +405,7 @@ test('bottom dock: exactly 4 items, flat nav look, verified actions, one row', (
 });
 
 // --- 5g2. Contact group (v53): WhatsApp from business.json, no hard-coded contacts ---
-test('contact group: WhatsApp + Zalo + Gọi + Bản đồ all resolve from verified business.json', () => {
+test('contact group: WhatsApp + Gọi + Bản đồ all resolve from verified business.json', () => {
   const drawerStart = html.indexOf('<nav class="motoai-drawer"');
   const drawer = html.slice(drawerStart, html.indexOf('</nav>', drawerStart));
   assert.match(drawer, /id="motoai-menu-whatsapp"/, 'WhatsApp menu item exists');
@@ -416,7 +416,6 @@ test('contact group: WhatsApp + Zalo + Gọi + Bản đồ all resolve from veri
   // No hard-coded phone/Zalo/WhatsApp/Maps anywhere in the UI markup.
   for (const src of [html]) {
     assert.ok(!src.includes(business.contact.phone), 'no hard-coded phone');
-    assert.ok(!src.includes(business.contact.zalo), 'no hard-coded Zalo URL');
     assert.ok(!src.includes(business.contact.whatsapp), 'no hard-coded WhatsApp URL');
     assert.ok(!src.includes(business.contact.maps), 'no hard-coded Maps URL');
   }
@@ -470,7 +469,7 @@ test('privacy and terms routes exist, are real pages, and are in the sitemap', (
   assert.match(terms, /rel="canonical" href="https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/terms\/"/);
   // Truthful privacy: no absolute "zero data leaves device" claim; mentions external links.
   assert.ok(privacy.includes('localStorage'), 'privacy explains local storage');
-  assert.ok(privacy.toLowerCase().includes('zalo') && privacy.toLowerCase().includes('maps'), 'privacy covers external links');
+  assert.ok(privacy.toLowerCase().includes('whatsapp') && privacy.toLowerCase().includes('maps'), 'privacy covers external links');
   assert.ok(privacy.includes('API key') === false || privacy.includes('không cần API key'), 'API-key claim consistent');
   const sitemap = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
   assert.ok(sitemap.includes('/aichatbot/privacy/'), 'sitemap lists privacy');

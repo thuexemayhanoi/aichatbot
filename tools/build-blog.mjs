@@ -1,33 +1,23 @@
 #!/usr/bin/env node
 /**
- * Build the blog from PUBLISHED article manifests (data/blog/published.json).
+ * Build the blog + legal screens from PUBLISHED article manifests
+ * (data/blog/published.json).
  *
- * Idempotent, deterministic, transactional-friendly generator (v56 app-blog
- * foundation — taxonomy driven):
- *   - article pages under blog/<category-dir>/<slug>/index.html with
- *     build-time table of contents, breadcrumb, related articles, Agent CTA
- *     and the shared footer
- *   - blog home + six category hubs (v54 app shell: compact header, theme
- *     toggle, verified business status, category bar, contact CTA)
- *   - three parent cluster cards on the blog home (taxonomy Level 2)
- *   - subtopic hub pages ONLY for subtopics with >= 1 PUBLISHED article
- *     (no empty SEO hubs — the factory needs no manual edits when more
- *     articles publish)
- *   - crawlable pagination on category hubs (24 cards per page)
- *   - shared app footer generated from ONE source of truth
- *     (config/navigation.json) — never copy/pasted per page
+ * v57 SINGLE APP SHELL: every generated screen (blog home, category hub,
+ * subtopic hub, article, paginated hub pages, privacy, terms) is rendered
+ * by tools/app-shell.mjs — the SAME permanent MotoAI shell as the chat
+ * homepage (top chrome + main viewport + bottom dock + drawer). Only the
+ * CENTER CONTENT changes; no page gets its own blog-style website chrome.
+ *
+ * Also produces (unchanged contracts):
  *   - blog/search-index.json with cluster/subtopic/location fields
  *   - data/blog/knowledge-index.json (Agent retrieval chunks)
- *   - sitemap.xml + robots.txt (homepage, blog home, hubs, subtopic hubs,
- *     published articles)
- *   - syncs matrix rows of published articles to status=PUBLISHED
+ *   - sitemap.xml + robots.txt
+ *   - matrix row sync for published articles
  *
  * Business facts inside article bodies use {{ business.* }} placeholders,
  * resolved from data/business/business.json — articles can never go stale
  * relative to the verified source of truth.
- *
- * Navigation/footer labels and category taxonomy come from
- * config/navigation.json + data/blog/taxonomy.json via tools/taxonomy.mjs.
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -35,12 +25,14 @@ import { fileURLToPath } from 'node:url';
 import {
   taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic
 } from './taxonomy.mjs';
+import {
+  SITE, esc, rel, pageHead, footerHtml, askAgentAction, appShellPage
+} from './app-shell.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 const write = (p, s) => { mkdirSync(dirname(join(ROOT, p)), { recursive: true }); writeFileSync(join(ROOT, p), s, 'utf8'); };
 
-export const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
 export const PER_PAGE = 24;
 
 /** Canonical category order (IDs never change). */
@@ -69,128 +61,7 @@ function jsonLd(obj) {
   return JSON.stringify(obj).replace(/</g, '\\u003c');
 }
 
-/** Escape & for HTML text/attribute contexts (titles, descriptions, names). */
-const esc = (s) => String(s).replace(/&(?![a-z]+;|#)/gi, '&amp;');
-
-/** Relative asset prefix from a page path back to repo root. */
-export function rel(path) {
-  const depth = path.replace(/^\/|\/$/g, '').split('/').filter(Boolean).length;
-  return '../'.repeat(depth);
-}
-
-function head({ title, description, path }) {
-  const url = SITE + path.replace(/^\//, '');
-  const prefix = rel(path);
-  return `<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>${esc(title)}</title>
-  <meta name="description" content="${esc(description)}">
-  <link rel="canonical" href="${url}">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
-  <meta property="og:locale" content="vi_VN">
-  <meta property="og:title" content="${esc(title)}">
-  <meta property="og:description" content="${esc(description)}">
-  <meta property="og:url" content="${url}">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="${esc(title)}">
-  <meta name="twitter:description" content="${esc(description)}">
-  <link rel="stylesheet" href="${prefix}assets/css/style.css">
-  <link rel="stylesheet" href="${prefix}assets/css/blog.css">
-  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
-</head>
-<body>
-`;
-}
-
-/** Shared v56 app shell header: back link, brand, theme toggle, category bar. */
-function shellHeader({ activeHub }) {
-  const items = navigation.categories.map((c) => {
-    const dir = taxonomy.categories[c.id].dir;
-    return `      <a href="/aichatbot/blog/${dir}/"${dir === activeHub ? ' aria-current="page"' : ''}>${esc(c.label)}</a>`;
-  }).join('\n');
-  return `  <header class="blog-header">
-    <a class="blog-back" href="/aichatbot/">← Agent</a>
-    <a class="blog-brand" href="/aichatbot/blog/">Cẩm nang</a>
-    <div class="blog-header-tools">
-      <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động">Auto</button>
-    </div>
-  </header>
-  <p class="blog-status" id="blog-business-status" hidden></p>
-  <nav class="blog-categories" aria-label="Danh mục">
-${items}
-  </nav>
-`;
-}
-
-/** Article-screen header (compact, no status chip). */
-function articleHeader() {
-  return `  <header class="blog-header">
-    <a class="blog-back" href="/aichatbot/">← Agent</a>
-    <a class="blog-brand" href="/aichatbot/blog/">Cẩm nang</a>
-    <div class="blog-header-tools">
-      <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động">Auto</button>
-    </div>
-  </header>
-`;
-}
-
-function contactsCta(copy) {
-  return `  <div class="blog-cta">
-    <p>${copy}</p>
-    <div class="blog-contacts">
-      <a class="blog-contact" href="/aichatbot/">⚡ Hỏi Agent</a>
-      <a class="blog-contact" data-contact-ref="call" href="#">📞 Gọi</a>
-      <a class="blog-contact" data-contact-ref="zalo" href="#">💬 Zalo</a>
-      <a class="blog-contact" data-contact-ref="whatsapp" href="#">🟢 WhatsApp</a>
-      <a class="blog-contact" data-contact-ref="map" href="#">🗺️ Bản đồ</a>
-    </div>
-  </div>
-`;
-}
-
-/**
- * Shared app footer — generated from ONE source of truth
- * (config/navigation.json footer_groups). Never copy/paste per page.
- */
-export function footerHtml() {
-  const groups = navigation.footer_groups.map((g) => {
-    const links = g.items.map((item) => {
-      if (item.ref) {
-        // Contact-backed destination (href resolved at runtime from business.json)
-        return `        <li><a data-contact-ref="${item.ref}" href="/aichatbot/">${esc(item.label)}</a></li>`;
-      }
-      return `        <li><a href="${item.url}">${esc(item.label)}</a></li>`;
-    }).join('\n');
-    return `      <div class="blog-footer-col">
-        <p class="blog-footer-title">${esc(g.title)}</p>
-        <ul>
-${links}
-        </ul>
-      </div>`;
-  }).join('\n');
-  return `  <footer class="blog-footer">
-    <div class="blog-footer-brand">
-      <a class="blog-footer-agent" href="/aichatbot/">⚡ Agent</a>
-      <p>Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
-    </div>
-    <nav class="blog-footer-nav" aria-label="Chân trang">
-${groups}
-    </nav>
-  </footer>
-`;
-}
-
-function scripts() {
-  return `  <script src="/aichatbot/assets/js/blog.js"></script>
-  <script type="module" src="/aichatbot/assets/js/blog-app.js"></script>
-`;
-}
-
-/** Article card (app-style). */
+/** Article card (app-style, used by every list screen). */
 function card(a, hub) {
   return `      <a class="blog-card" href="/aichatbot/blog/${hub.dir}/${a.slug}/">
         <span class="cat">${esc(hub.label)}</span>
@@ -199,7 +70,41 @@ function card(a, hub) {
       </a>`;
 }
 
-/** Blog home = content home screen of the app. */
+/** Compact screen head: small label + H1 + lead — never a giant hero. */
+function screenHead({ label, title, lead }) {
+  return `      <p class="blog-screen-label">${esc(label)}</p>
+      <h1 class="blog-screen-title">${esc(title)}</h1>
+      ${lead ? `<p class="blog-screen-lead">${esc(lead)}</p>` : ''}
+`;
+}
+
+/** Compact breadcrumb (inside the screen, not another site's chrome). */
+function breadcrumb(trail) {
+  const items = trail.map((t, i) =>
+    i === trail.length - 1
+      ? `<span>${esc(t.label)}</span>`
+      : `<a href="${t.href}">${esc(t.label)}</a>`)
+    .join(' › ');
+  return `      <nav class="blog-breadcrumb" aria-label="Đường dẫn">${items}</nav>
+`;
+}
+
+/** Category chips row (inside the screen, under the title). */
+function categoryChips({ activeHub }) {
+  const items = navigation.categories.map((c) => {
+    const dir = taxonomy.categories[c.id].dir;
+    return `        <a class="blog-chip" href="/aichatbot/blog/${dir}/"${dir === activeHub ? ' aria-current="page"' : ''}>${esc(c.label)}</a>`;
+  }).join('\n');
+  return `      <div class="blog-chips" aria-label="Danh mục">
+${items}
+      </div>
+`;
+}
+
+const CRUMB_HOME = { label: 'Agent', href: '/aichatbot/' };
+const CRUMB_BLOG = { label: 'Cẩm nang', href: '/aichatbot/blog/' };
+
+/** Blog home = the Cẩm nang screen of the app. */
 function buildHome(published) {
   const clusterCards = taxonomy.clusters.map((c) => {
     const cats = c.categories.map((id) => {
@@ -207,13 +112,13 @@ function buildHome(published) {
       const nav = navigation.categories.find((n) => n.id === id);
       return `      <a class="blog-cluster-link" href="/aichatbot/blog/${cat.dir}/">${nav.icon} ${esc(nav.label)}</a>`;
     }).join('\n');
-    return `    <section class="blog-cluster-card">
-      <h2>${esc(c.name)}</h2>
-      <p>${esc(c.desc)}</p>
-      <div class="blog-cluster-links">
+    return `      <section class="blog-cluster-card">
+        <h2>${esc(c.name)}</h2>
+        <p>${esc(c.desc)}</p>
+        <div class="blog-cluster-links">
 ${cats}
-      </div>
-    </section>`;
+        </div>
+      </section>`;
   }).join('\n');
 
   const categoryCards = navigation.categories.map((nav) => {
@@ -226,47 +131,49 @@ ${cats}
   }).join('\n');
 
   const cards = published.map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
-  const html = head({
+
+  const content = breadcrumb([CRUMB_HOME, { label: 'Cẩm nang', href: null }])
+    + screenHead({
+      label: 'Cẩm nang',
+      title: 'Thuê xe máy & xe điện',
+      lead: 'Hướng dẫn, ứng dụng, giá, xe, an toàn và địa phương — viết kèm Agent để bạn hỏi sâu hơn từng chủ đề.'
+    })
+    + `      <div class="blog-search">
+        <input id="blog-search-input" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết">
+        <button id="blog-search-btn" type="button" onclick="document.getElementById('blog-search-input').dispatchEvent(new Event('input'))">Tìm</button>
+      </div>
+      <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản.</p>
+      <div class="blog-grid" id="blog-search-results"></div>
+      <section class="blog-clusters" aria-label="Nhóm chủ đề">
+        <h2>Nhóm chủ đề</h2>
+        <div class="blog-cluster-grid">
+${clusterCards}
+        </div>
+      </section>
+      <section aria-label="Danh mục">
+        <h2>Danh mục</h2>
+        <div class="blog-cat-grid">
+${categoryCards}
+        </div>
+      </section>
+      <section>
+        <h2>Bài đã xuất bản</h2>
+        <div class="blog-grid">
+${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản. Hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
+        </div>
+      </section>
+${askAgentAction('thuê xe máy')}
+${footerHtml()}`;
+
+  const html = appShellPage({
     title: 'Cẩm nang thuê xe máy — ứng dụng, giá, xe điện, thủ tục',
     description: 'Cẩm nang thuê xe máy và xe điện: cách dùng ứng dụng thuê xe, bảng giá, thủ tục, an toàn và hành trình Hà Nội.',
-    path: 'blog/'
-  }) + `<main class="blog-page">
-${shellHeader({ activeHub: null })}
-  <section class="blog-hero">
-    <h1>Cẩm nang thuê xe máy &amp; xe điện</h1>
-    <p>Tìm hướng dẫn, ứng dụng, xe, an toàn và địa phương — viết kèm Agent để bạn hỏi sâu hơn từng chủ đề.</p>
-  </section>
-  <div class="blog-search">
-    <input id="blog-search-input" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết">
-    <button id="blog-search-btn" type="button" onclick="document.getElementById('blog-search-input').dispatchEvent(new Event('input'))">Tìm</button>
-  </div>
-  <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản.</p>
-  <div class="blog-grid" id="blog-search-results"></div>
-  <section class="blog-clusters" aria-label="Nhóm chủ đề">
-    <h2>Nhóm chủ đề</h2>
-    <div class="blog-cluster-grid">
-${clusterCards}
-    </div>
-  </section>
-  <section aria-label="Danh mục">
-    <h2>Danh mục</h2>
-    <div class="blog-cat-grid">
-${categoryCards}
-    </div>
-  </section>
-  <section>
-    <h2>Bài đã xuất bản</h2>
-    <div class="blog-grid">
-${cards || '      <p class="blog-empty">Chưa có bài đã xuất bản. Hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
-    </div>
-  </section>
-${contactsCta('Cần trả lời ngay cho tình huống của bạn? Hỏi Agent — trả lời từ dữ liệu cửa hàng, chạy trên máy bạn.')}
-${footerHtml()}
-${scripts()}
-</main>
-</body>
-</html>
-`;
+    path: 'blog/',
+    screen: 'blog-index',
+    activeHub: null,
+    contentHtml: content,
+    search: true
+  });
   write('blog/index.html', html);
 }
 
@@ -285,15 +192,15 @@ function paginationNav(hub, page, pages) {
     const href = p === 1 ? `/aichatbot/blog/${hub.dir}/` : `/aichatbot/blog/${hub.dir}/page/${p}/`;
     links.push(p === page ? `      <span class="blog-page-current" aria-current="page">${p}</span>` : `      <a href="${href}">${p}</a>`);
   }
-  return `  <nav class="blog-pagination" aria-label="Trang">
-    ${page > 1 ? `<a href="${page === 2 ? `/aichatbot/blog/${hub.dir}/` : `/aichatbot/blog/${hub.dir}/page/${page - 1}/`}">‹ Trước</a>` : ''}
+  return `      <nav class="blog-pagination" aria-label="Trang">
+        ${page > 1 ? `<a href="${page === 2 ? `/aichatbot/blog/${hub.dir}/` : `/aichatbot/blog/${hub.dir}/page/${page - 1}/`}">‹ Trước</a>` : ''}
 ${links.join('\n')}
-    ${page < pages.length ? `<a href="/aichatbot/blog/${hub.dir}/page/${page + 1}/">Sau ›</a>` : ''}
-  </nav>
+        ${page < pages.length ? `<a href="/aichatbot/blog/${hub.dir}/page/${page + 1}/">Sau ›</a>` : ''}
+      </nav>
 `;
 }
 
-/** Category hub (real content hub, paginated, subtopic chips when real). */
+/** Category hub screen (real content hub, paginated, subtopic chips). */
 function buildHub(hub, published, subtopicMap) {
   const articles = published.filter((a) => a.category === hub.id);
   const pages = paginate(articles);
@@ -301,7 +208,7 @@ function buildHub(hub, published, subtopicMap) {
   // Subtopic chips: only subtopics that actually hold a published article.
   const chips = (subtopicMap[hub.id] ?? [])
     .filter((s) => s.count > 0 && s.slug)
-    .map((s) => `      <a class="blog-chip" href="/aichatbot/blog/${hub.dir}/${s.slug}/">${esc(s.label)} <span class="blog-chip-count">${s.count}</span></a>`)
+    .map((s) => `        <a class="blog-chip" href="/aichatbot/blog/${hub.dir}/${s.slug}/">${esc(s.label)} <span class="blog-chip-count">${s.count}</span></a>`)
     .join('\n');
 
   // Sibling category in the same cluster (related category).
@@ -311,92 +218,87 @@ function buildHub(hub, published, subtopicMap) {
   for (let p = 0; p < pages.length; p++) {
     const pageNo = p + 1;
     const cards = pages[p].map((a) => card(a, hub)).join('\n')
-      || `      <p class="blog-empty">Chưa có bài đã xuất bản trong danh mục này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>`;
+      || `        <p class="blog-empty">Chưa có bài đã xuất bản trong danh mục này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>`;
     const nav = paginationNav(hub, pageNo, pages);
     const title = pages.length > 1 ? `${hub.name} — trang ${pageNo} — Cẩm nang thuê xe máy` : `${hub.name} — Cẩm nang thuê xe máy & xe điện`;
-    const html = head({
+
+    const content = breadcrumb([CRUMB_HOME, CRUMB_BLOG, { label: hub.label, href: null }])
+      + screenHead({ label: 'Danh mục', title: hub.name, lead: hub.desc })
+      + (hub.intro ? `      <p class="blog-screen-lead">${esc(hub.intro)}</p>\n` : '')
+      + categoryChips({ activeHub: hub.dir })
+      + (chips ? `      <div class="blog-chips" aria-label="Chủ đề">
+${chips}
+      </div>
+` : '')
+      + `      <div class="blog-grid">
+${cards}
+      </div>
+${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/aichatbot/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
+` : ''}${askAgentAction(hub.name)}
+${footerHtml()}`;
+
+    const html = appShellPage({
       title,
       description: hub.meta,
-      path: pageNo === 1 ? `blog/${hub.dir}/` : `blog/${hub.dir}/page/${pageNo}/`
-    }) + `<main class="blog-page">
-${shellHeader({ activeHub: hub.dir })}
-  <nav class="blog-breadcrumb"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <span>${esc(hub.label)}</span></nav>
-  <section class="blog-hero">
-    <h1>${esc(hub.name)}</h1>
-    <p>${esc(hub.desc)}</p>
-    <p>${esc(hub.intro)}</p>
-  </section>
-${chips ? `  <div class="blog-chips" aria-label="Chủ đề">
-${chips}
-  </div>
-` : ''}  <div class="blog-grid">
-${cards}
-  </div>
-${nav}${sibling ? `  <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/aichatbot/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
-` : ''}${contactsCta('Hỏi Agent về chủ đề này để nhận trả lời từ dữ liệu cửa hàng đã xác minh.')}
-${footerHtml()}
-  <script type="application/ld+json">
+      path: pageNo === 1 ? `blog/${hub.dir}/` : `blog/${hub.dir}/page/${pageNo}/`,
+      screen: `category-${hub.dir}`,
+      activeHub: hub.dir,
+      contentHtml: content,
+      schemaHtml: `  <script type="application/ld+json">
 ${jsonLd({
-    '@context': 'https://schema.org', '@type': 'CollectionPage',
-    name: hub.name, description: hub.meta, url: `${SITE}blog/${hub.dir}/`,
-    isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE }
-  })}
+        '@context': 'https://schema.org', '@type': 'CollectionPage',
+        name: hub.name, description: hub.meta, url: `${SITE}blog/${hub.dir}/`,
+        isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE }
+      })}
   </script>
   <script type="application/ld+json">
 ${jsonLd({
-    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Agent', item: SITE },
-      { '@type': 'ListItem', position: 2, name: 'Cẩm nang', item: `${SITE}blog/` },
-      { '@type': 'ListItem', position: 3, name: hub.label, item: `${SITE}blog/${hub.dir}/` }
-    ]
-  })}
+        '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Agent', item: SITE },
+          { '@type': 'ListItem', position: 2, name: 'Cẩm nang', item: `${SITE}blog/` },
+          { '@type': 'ListItem', position: 3, name: hub.label, item: `${SITE}blog/${hub.dir}/` }
+        ]
+      })}
   </script>
-${scripts()}
-</main>
-</body>
-</html>
-`;
+`
+    });
     if (pageNo === 1) write(`blog/${hub.dir}/index.html`, html);
     else write(`blog/${hub.dir}/page/${pageNo}/index.html`, html);
   }
 }
 
-/** Subtopic hub — generated ONLY for subtopics with >= 1 published article. */
+/** Subtopic hub screen — generated ONLY with >= 1 published article. */
 function buildSubtopic(hub, sub, articles) {
   const cards = articles.map((a) => card(a, hub)).join('\n');
-  const html = head({
+  const content = breadcrumb([CRUMB_HOME, CRUMB_BLOG, { label: hub.label, href: `/aichatbot/blog/${hub.dir}/` }, { label: sub.label, href: null }])
+    + screenHead({ label: hub.label, title: sub.label, lead: hub.desc })
+    + `      <div class="blog-grid">
+${cards}
+      </div>
+${askAgentAction(`${sub.label} — ${hub.name}`)}
+${footerHtml()}`;
+
+  const html = appShellPage({
     title: `${sub.label} — ${hub.name} — Cẩm nang thuê xe máy`,
     description: `${sub.label} trong ${hub.name.toLowerCase()}: ${hub.meta}`,
-    path: `blog/${hub.dir}/${sub.slug}/`
-  }) + `<main class="blog-page">
-${shellHeader({ activeHub: hub.dir })}
-  <nav class="blog-breadcrumb"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <a href="/aichatbot/blog/${hub.dir}/">${esc(hub.label)}</a> › <span>${esc(sub.label)}</span></nav>
-  <section class="blog-hero">
-    <h1>${esc(sub.label)}</h1>
-    <p>${esc(hub.desc)}</p>
-  </section>
-  <div class="blog-grid">
-${cards}
-  </div>
-${contactsCta('Hỏi Agent về chủ đề này để nhận trả lời từ dữ liệu cửa hàng đã xác minh.')}
-${footerHtml()}
-  <script type="application/ld+json">
+    path: `blog/${hub.dir}/${sub.slug}/`,
+    screen: `subtopic-${sub.slug}`,
+    activeHub: hub.dir,
+    contentHtml: content,
+    schemaHtml: `  <script type="application/ld+json">
 ${jsonLd({
-    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Agent', item: SITE },
-      { '@type': 'ListItem', position: 2, name: 'Cẩm nang', item: `${SITE}blog/` },
-      { '@type': 'ListItem', position: 3, name: hub.label, item: `${SITE}blog/${hub.dir}/` },
-      { '@type': 'ListItem', position: 4, name: sub.label, item: `${SITE}blog/${hub.dir}/${sub.slug}/` }
-    ]
-  })}
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Agent', item: SITE },
+        { '@type': 'ListItem', position: 2, name: 'Cẩm nang', item: `${SITE}blog/` },
+        { '@type': 'ListItem', position: 3, name: hub.label, item: `${SITE}blog/${hub.dir}/` },
+        { '@type': 'ListItem', position: 4, name: sub.label, item: `${SITE}blog/${hub.dir}/${sub.slug}/` }
+      ]
+    })}
   </script>
-${scripts()}
-</main>
-</body>
-</html>
-`;
+`
+  });
   write(`blog/${hub.dir}/${sub.slug}/index.html`, html);
 }
 
@@ -424,24 +326,24 @@ export function buildToc(bodyHtml) {
 function tocHtml(items) {
   if (items.length < 2) return { markup: '', html: items };
   const list = (cls) => `<ol class="${cls}">
-${items.map((it) => `      <li class="toc-l${it.level}"><a href="#${it.id}">${esc(it.text)}</a></li>`).join('\n')}
-    </ol>`;
+${items.map((it) => `        <li class="toc-l${it.level}"><a href="#${it.id}">${esc(it.text)}</a></li>`).join('\n')}
+      </ol>`;
   return {
-    markup: `  <nav class="blog-toc" aria-label="Mục lục">
-    <details class="blog-toc-mobile">
-      <summary>Mục lục</summary>
+    markup: `      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
 ${list('blog-toc-list')}
-    </details>
-    <div class="blog-toc-desktop">
-      <p class="blog-toc-title">Mục lục</p>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
 ${list('blog-toc-list')}
-    </div>
-  </nav>
+        </div>
+      </nav>
 `
   };
 }
 
-/** Article page = premium app detail screen. */
+/** Article screen = readable app detail screen inside the same shell. */
 function buildArticle(a, business, hub, published, row) {
   const bodyRaw = read(a.body);
   const body = resolveFacts(bodyRaw, business);
@@ -468,65 +370,101 @@ function buildArticle(a, business, hub, published, row) {
     .slice(0, 5)
     .map(({ x }) => card(x, HUB_BY_ID[x.category]))
     .join('\n');
-  const relatedSection = related ? `  <section class="blog-related">
-    <h2>Bài viết liên quan</h2>
-    <div class="blog-grid">
+  const relatedSection = related ? `      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
 ${related}
-    </div>
-  </section>
+        </div>
+      </section>
 ` : '';
 
-  const breadcrumb = [
+  const breadcrumbSchema = [
     { name: 'Agent', item: SITE },
     { name: 'Cẩm nang', item: `${SITE}blog/` },
     { name: hub.label, item: `${SITE}blog/${hub.dir}/` },
     ...(subHubUrl ? [{ name: sub.label, item: `${SITE}blog/${hub.dir}/${sub.slug}/` }] : []),
     { name: a.title, item: `${SITE}${path}` }
   ];
+  const crumbTrail = [
+    CRUMB_HOME, CRUMB_BLOG,
+    { label: hub.label, href: `/aichatbot/blog/${hub.dir}/` },
+    ...(subHubUrl ? [{ label: sub.label, href: subHubUrl }] : []),
+    { label: a.title, href: null }
+  ];
 
-  const html = head({ title: a.title, description: a.description, path }) + `<main class="blog-page blog-article">
-${articleHeader()}
-  <nav class="blog-breadcrumb"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <a href="/aichatbot/blog/${hub.dir}/">${esc(hub.label)}</a>${subHubUrl ? ` › <a href="${subHubUrl}">${esc(sub.label)}</a>` : ''} › <span>${esc(a.title)}</span></nav>
-  <p class="blog-chips">
-    <a class="blog-chip" href="/aichatbot/blog/${hub.dir}/">${esc(hub.label)}</a>${subHubUrl ? `
-    <a class="blog-chip" href="${subHubUrl}">${esc(sub.label)}</a>` : ''}
-  </p>
-  <h1>${esc(a.title)}</h1>
-  <p class="blog-dek">${esc(a.description)}</p>
-  <p class="byline">${esc(a.author)} · ${a.published_date} · ${esc(hub.label)}</p>
-  <div class="blog-article-layout">
-${toc.markup}  <article>
+  const content = breadcrumb(crumbTrail)
+    + `      <p class="blog-chips">
+        <a class="blog-chip" href="/aichatbot/blog/${hub.dir}/">${esc(hub.label)}</a>${subHubUrl ? `
+        <a class="blog-chip" href="${subHubUrl}">${esc(sub.label)}</a>` : ''}
+      </p>
+${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline">${esc(a.author)} · ${a.published_date} · ${esc(hub.label)}</p>
+      <div class="blog-article-layout">
+${toc.markup}        <article class="blog-article-body">
   ${bodyWithIds.trim().split('\n').join('\n  ')}
-  </article>
-  </div>
-${relatedSection}${contactsCta('Hỏi Agent về chủ đề bài viết này — trả lời từ dữ liệu cửa hàng đã xác minh.')}
-${footerHtml()}
-  <script type="application/ld+json">
-${jsonLd({
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: a.title,
+        </article>
+      </div>
+${relatedSection}${askAgentAction(a.title)}
+${footerHtml()}`;
+
+  const html = appShellPage({
+    title: a.title,
     description: a.description,
-    datePublished: a.published_date,
-    dateModified: a.published_date,
-    author: { '@type': 'Organization', name: a.author },
-    publisher: { '@type': 'Organization', name: business.display_name, url: SITE },
-    mainEntityOfPage: `${SITE}${path}`,
-    isAccessibleForFree: true
-  })}
+    path,
+    screen: `article-${a.slug}`,
+    activeHub: hub.dir,
+    contentHtml: content,
+    schemaHtml: `  <script type="application/ld+json">
+${jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: a.title,
+      description: a.description,
+      datePublished: a.published_date,
+      dateModified: a.published_date,
+      author: { '@type': 'Organization', name: a.author },
+      publisher: { '@type': 'Organization', name: business.display_name, url: SITE },
+      mainEntityOfPage: `${SITE}${path}`,
+      isAccessibleForFree: true
+    })}
   </script>
   <script type="application/ld+json">
 ${jsonLd({
-    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-    itemListElement: breadcrumb.map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
-  })}
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbSchema.map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
+    })}
   </script>
-${scripts()}
-</main>
-</body>
-</html>
-`;
+`
+  });
   write(`blog/${hub.dir}/${a.slug}/index.html`, html);
+}
+
+/** Legal screens (privacy, terms) — same shell, same source of truth. */
+function buildLegal({ dir, title, description, bodyPath, screen }) {
+  const body = read(bodyPath);
+  const content = breadcrumb([CRUMB_HOME, { label: title, href: null }])
+    + screenHead({ label: 'Pháp lý', title, lead: description })
+    + `      <div class="blog-grid blog-legal-grid">
+${body.trim().split('\n').join('\n')}
+      </div>
+${askAgentAction(title)}
+${footerHtml()}`;
+  const html = appShellPage({
+    title: `${title} — MotoAI`,
+    description,
+    path: `${dir}/`,
+    screen,
+    activeHub: dir,
+    contentHtml: content,
+    schemaHtml: `  <script type="application/ld+json">
+${jsonLd({
+      '@context': 'https://schema.org', '@type': 'WebPage',
+      name: title, description, url: `${SITE}${dir}/`,
+      isPartOf: { '@type': 'WebSite', name: 'MotoAI', url: SITE }
+    })}
+  </script>
+`
+  });
+  write(`${dir}/index.html`, html);
 }
 
 /** Parse the matrix CSV into { article_id -> row } (schema untouched). */
@@ -570,6 +508,20 @@ export function build() {
     }
   }
   for (const a of published) buildArticle(a, business, HUB_BY_ID[a.category], published, matrix[a.article_id]);
+
+  // Legal screens — inside the SAME app shell (v57).
+  buildLegal({
+    dir: 'privacy', screen: 'legal-privacy',
+    title: 'Chính sách bảo mật',
+    description: 'Chính sách bảo mật của MotoAI: dữ liệu lưu ở đâu, Agent chạy thế nào, liên kết ngoài và cách liên hệ.',
+    bodyPath: 'data/legal/privacy.body.html'
+  });
+  buildLegal({
+    dir: 'terms', screen: 'legal-terms',
+    title: 'Điều khoản sử dụng',
+    description: 'Điều khoản sử dụng MotoAI: nội dung tham khảo, xác nhận thông tin quan trọng và trách nhiệm khi sử dụng.',
+    bodyPath: 'data/legal/terms.body.html'
+  });
 
   // Search index (compact; only published; cluster/subtopic/location aware).
   write('blog/search-index.json', JSON.stringify({

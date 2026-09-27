@@ -191,7 +191,7 @@ test('blog home: cluster cards + category cards + search + latest, compact hero'
   for (const c of taxonomy.clusters) assert.ok(home.includes(`<h2>${c.name}</h2>`), `cluster card ${c.name}`);
   assert.equal((home.match(/class="blog-cat-card"/g) ?? []).length, 6, 'six category cards');
   assert.match(home, /blog-search-input/);
-  const h1 = /<h1>([^<]+)<\/h1>/.exec(home)[1];
+  const h1 = /<h1 class="blog-screen-title">([^<]+)<\/h1>/.exec(home)[1];
   assert.ok(h1.length < 60, 'no giant marketing hero');
 });
 
@@ -284,7 +284,7 @@ test('article TOC anchors resolve to unique ids inside the article', () => {
 test('article breadcrumbs: visible trail matches BreadcrumbList schema exactly', () => {
   for (const r of parseMatrix().filter((x) => x.status === 'PUBLISHED')) {
     const html = read(r.output_path);
-    const trail = /<nav class="blog-breadcrumb">([\s\S]*?)<\/nav>/.exec(html)[1];
+    const trail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1];
     const visible = [...trail.matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map((m) => m[1]).filter((t) => t !== ' › ');
     const ldRaw = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
       .map((m) => JSON.parse(m[1]))
@@ -292,7 +292,7 @@ test('article breadcrumbs: visible trail matches BreadcrumbList schema exactly',
     const schema = ldRaw.itemListElement.map((i) => i.name);
     assert.deepEqual(schema, visible, `${r.article_id}: BreadcrumbList equals the visible breadcrumb`);
     assert.equal(visible[0], 'Agent');
-    const h1 = /<h1>([^<]+)<\/h1>/.exec(html)[1];
+    const h1 = /<h1 class="blog-screen-title">([^<]+)<\/h1>/.exec(html)[1];
     assert.equal(visible[visible.length - 1], h1, 'article title is the last crumb');
   }
 });

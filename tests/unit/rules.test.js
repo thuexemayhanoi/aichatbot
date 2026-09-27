@@ -63,22 +63,21 @@ test('deposit-rule returns the pinned deposit note', () => {
   assert.equal(result.confidence, 1);
 });
 
-test('contact-rule answers phone by default with call and zalo actions', () => {
+test('contact-rule answers phone by default with the call action', () => {
   const { rules } = makeRegistry();
   const rule = rules.find((r) => r.id === 'contact-rule');
   const result = rule.respond(analysis('contact_query'), EMPTY_SLOTS);
   assert.ok(result.answer.includes('0942 467 674'));
   assert.deepEqual(result.actions, [
-    { label: 'Gọi điện', href: business.contact.phone_uri },
-    { label: 'Zalo', href: business.contact.zalo }
+    { label: 'Gọi điện', href: business.contact.phone_uri }
   ]);
 });
 
 test('contact-rule follows the detected channel', () => {
   const { rules } = makeRegistry();
   const rule = rules.find((r) => r.id === 'contact-rule');
-  const zalo = rule.respond(analysis('contact_query', { entities: { contactChannels: [{ id: 'zalo' }] } }), EMPTY_SLOTS);
-  assert.ok(zalo.answer.includes('Zalo'));
+  const whatsapp = rule.respond(analysis('contact_query', { entities: { contactChannels: [{ id: 'whatsapp' }] } }), EMPTY_SLOTS);
+  assert.ok(whatsapp.answer.includes('WhatsApp'));
   const maps = rule.respond(analysis('contact_query', { entities: { contactChannels: [{ id: 'maps' }] } }), EMPTY_SLOTS);
   assert.ok(maps.answer.includes('Google Maps'));
   const email = rule.respond(analysis('contact_query', { entities: { contactChannels: [{ id: 'email' }] } }), EMPTY_SLOTS);

@@ -4,8 +4,9 @@ import { business, pricing, faq } from '../helpers/load-data.js';
 
 test('business contact facts are present and verified', () => {
   assert.equal(business.contact.phone, '0942467674');
-  assert.equal(business.contact.zalo, 'https://zalo.me/0942467674');
+  assert.equal(business.contact.whatsapp, 'https://wa.me/84942467674');
   assert.equal(business.contact.phone_uri, 'tel:+84942467674');
+  assert.equal(business.contact.zalo, undefined); // v57: Zalo removed from the public surface
 });
 
 test('opening hours are 09:00 to 21:00', () => {

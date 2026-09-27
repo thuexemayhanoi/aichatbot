@@ -36,7 +36,7 @@ test('render keeps tel/https/mailto actions and drops everything else', () => {
   const message = makeResponder().render('Liên hệ', {
     actions: [
       { label: 'Gọi điện', href: business.contact.phone_uri },
-      { label: 'Zalo', href: business.contact.zalo },
+      { label: 'WhatsApp', href: business.contact.whatsapp },
       { label: 'Maps', href: business.contact.maps },
       { label: 'Evil', href: 'javascript:alert(1)' },
       { label: 'Data', href: 'data:text/html,x' },
@@ -46,7 +46,7 @@ test('render keeps tel/https/mailto actions and drops everything else', () => {
   });
   assert.deepEqual(
     message.actions.map((a) => a.href),
-    [business.contact.phone_uri, business.contact.zalo, business.contact.maps]
+    [business.contact.phone_uri, business.contact.whatsapp, business.contact.maps]
   );
 });
 

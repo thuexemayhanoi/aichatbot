@@ -170,7 +170,7 @@ test('blog hub pages exist for all six categories and link home', () => {
   const hubs = ['app', 'thue-xe', 'xe-dien', 'huong-dan', 'an-toan', 'dia-phuong'];
   for (const hub of hubs) {
     const page = read(`blog/${hub}/index.html`);
-    assert.match(page, /<h1>/);
+    assert.match(page, /<h1[\s>]/);
     assert.ok(page.includes('/aichatbot/blog/'), `${hub} hub links back to blog home`);
   }
   assert.ok(existsSync(join(ROOT, 'blog/index.html')));
@@ -180,7 +180,7 @@ test('published article pages have exactly one H1, canonical, Article + Breadcru
   const published = parseMatrix().filter((r) => r.status === 'PUBLISHED');
   for (const r of published) {
     const page = read(r.output_path);
-    assert.equal((page.match(/<h1>/g) ?? []).length, 1);
+    assert.equal((page.match(/<h1[\s>]/g) ?? []).length, 1);
     assert.ok(page.includes('<link rel="canonical"'));
     assert.ok(page.match(/\"@type\": ?\"Article\"/));
     assert.ok(page.match(/\"@type\": ?\"BreadcrumbList\"/));

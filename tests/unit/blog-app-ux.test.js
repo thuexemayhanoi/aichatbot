@@ -116,56 +116,52 @@ function blogPages() {
   return pages;
 }
 
-test('every blog page: one H1, canonical, no-flash theme script, blog-app.js wiring', () => {
-  const shellPages = ['blog/index.html', ...HUBS.map((h) => `blog/${h}/index.html`)];
-  const articlePages = blogPages().filter((p) => !shellPages.includes(p));
-  for (const page of blogPages()) {
+test('v57 single app shell: every content screen keeps the MotoAI chrome', () => {
+  for (const page of [...blogPages(), 'privacy/index.html', 'terms/index.html']) {
     const html = read(page);
-    assert.equal((html.match(/<h1>/g) ?? []).length, 1, `${page}: exactly one H1`);
+    // ONE permanent app shell: top chrome + main viewport + bottom dock + drawer.
+    assert.match(html, /class="motoai-app motoai-screen"/, `${page}: renders inside the app shell`);
+    assert.ok(html.includes('Hỗ trợ Agent'), `${page}: Agent identity in the top chrome`);
+    assert.ok(html.includes('id="motoai-menu-btn"'), `${page}: Menu button`);
+    assert.ok(html.includes('id="blog-theme-toggle"'), `${page}: theme control`);
+    assert.ok((html.match(/<nav class="motoai-dock"/g) ?? []).length === 1, `${page}: bottom dock`);
+    assert.ok(html.includes('id="motoai-drawer"'), `${page}: shared menu drawer`);
+    assert.equal((html.match(/<h1[\s>]/g) ?? []).length, 1, `${page}: exactly one H1`);
     assert.ok(html.includes('<link rel="canonical"'), `${page}: canonical`);
     assert.match(html, /motoai-theme/, `${page}: no-flash theme script`);
-    assert.ok(html.includes('blog-app.js'), `${page}: app shell script`);
-    assert.ok(html.includes('blog-back'), `${page}: back-to-Agent link`);
-  }
-  // Home + hubs carry the category bar; articles keep a breadcrumb instead.
-  for (const page of shellPages) {
-    assert.ok(read(page).includes('blog-categories'), `${page}: category bar`);
-    assert.ok(read(page).includes('blog-theme-toggle'), `${page}: theme control`);
-  }
-  for (const page of articlePages) {
-    assert.ok(read(page).includes('blog-breadcrumb'), `${page}: breadcrumb`);
+    assert.ok(html.includes('app-shell.js'), `${page}: app shell runtime`);
+    // Legacy standalone blog chrome must be gone.
+    for (const legacy of ['class="blog-back"', 'class="blog-header"', 'class="blog-hero"', 'class="blog-cta"', 'class="blog-contact"', 'id="motoai-menu-zalo"']) {
+      assert.ok(!html.includes(legacy), `${page}: legacy chrome "${legacy}" removed`);
+    }
+    // Ask Agent is a native action that returns to the HOME chat screen.
+    assert.ok(html.includes('/aichatbot/?ask='), `${page}: Ask Agent action`);
   }
 });
 
-test('hub pages mark their own category with aria-current and keep a breadcrumb', () => {
+test('hub screens mark their own category with aria-current and keep a breadcrumb', () => {
   for (const hub of HUBS) {
     const html = read(`blog/${hub}/index.html`);
-    const links = [...html.matchAll(/<a href="\/aichatbot\/blog\/([a-z-]+)\/"[^>]*>/g)].map((m) => m[1]);
-    assert.ok(links.includes(hub), `${hub}: category bar links to itself`);
-    assert.ok(html.includes('aria-current="page"'), `${hub}: active category marked`);
-    assert.ok(html.includes('blog-breadcrumb') || /Cẩm nang/.test(html), `${hub}: breadcrumb present`);
+    const links = [...html.matchAll(/href="\/aichatbot\/blog\/([a-z-]+)\/"[^>]*aria-current="page"/g)].map((m) => m[1]);
+    assert.ok(links.includes(hub), `${hub}: active category marked`);
+    assert.ok(html.includes('blog-breadcrumb'), `${hub}: breadcrumb present`);
+    // Category chips live INSIDE the screen body, not as a second top nav.
+    assert.match(html, /<div class="blog-chips" aria-label="Danh mục">/);
   }
 });
 
-test('category bar is one non-wrapping horizontal row (CSS contract)', () => {
+test('category chips are one non-wrapping horizontal row on mobile (CSS contract)', () => {
   const css = read('assets/css/blog.css');
-  assert.match(css, /\.blog-categories\s*\{[^}]*flex-wrap:\s*nowrap/);
-  assert.match(css, /\.blog-categories\s*\{[^}]*overflow-x:\s*auto/);
-  assert.match(css, /\.blog-categories a\s*\{[^}]*flex:\s*0 0 auto/);
+  assert.match(css, /\.blog-chips\s*\{[^}]*flex-wrap:\s*nowrap/);
+  assert.match(css, /\.blog-chips\s*\{[^}]*overflow-x:\s*auto/);
+  assert.match(css, /\.blog-chip\s*\{[^}]*flex:\s*0 0 auto/);
 });
 
-test('business status chip element exists and starts hidden (never guesses)', () => {
-  // v56: shell/list pages = home + hubs + subtopic hubs (they carry the category
-  // bar); only article detail screens keep the compact header.
-  for (const page of blogPages()) {
+test('business status line exists on every screen and starts hidden (never guesses)', () => {
+  for (const page of [...blogPages(), 'privacy/index.html', 'terms/index.html']) {
     const html = read(page);
-    const isShell = page === 'blog/index.html' || HUBS.some((h) => page === `blog/${h}/index.html`) || html.includes('blog-categories');
-    if (isShell) {
-      assert.ok(html.includes('id="blog-business-status"'), `${page}: status element`);
-      assert.match(html, /id="blog-business-status"[^>]*hidden/, `${page}: hidden until data loads`);
-    } else {
-      assert.ok(!html.includes('blog-business-status'), `${page}: articles keep the compact header (no status chip)`);
-    }
+    assert.ok(html.includes('id="blog-business-status"'), `${page}: status element`);
+    assert.match(html, /id="blog-business-status"[^>]*hidden/, `${page}: hidden until data loads`);
   }
 });
 
@@ -184,7 +180,7 @@ test('articles resolve contact CTA hrefs at runtime — no hard-coded contact va
   for (const p of walk('blog').filter((p) => p.endsWith('.html'))) {
     const html = read(p);
     // No hard-coded verified contact values in the runtime UI shell.
-    assert.ok(!html.includes(business.contact.zalo), `${p}: Zalo URL must come from business.json`);
+    assert.ok(!/zalo/i.test(html), `${p}: no Zalo anywhere in the public UI`);
     assert.ok(!html.includes(business.contact.whatsapp), `${p}: WhatsApp URL must come from business.json`);
     assert.ok(!html.includes(business.contact.maps), `${p}: Maps URL must come from business.json`);
     assert.ok(!html.includes(business.contact.phone_uri), `${p}: phone URI must come from business.json`);
@@ -193,17 +189,18 @@ test('articles resolve contact CTA hrefs at runtime — no hard-coded contact va
   }
 });
 
-test('contact mechanism: data-contact-ref anchors cover zalo, whatsapp, call and map', () => {
+test('contact mechanism: data-contact-ref anchors cover whatsapp, call and map (no Zalo)', () => {
   const refs = new Set();
   const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
-  for (const p of walk('blog').filter((p) => p.endsWith('.html'))) {
+  for (const p of [...walk('blog'), 'privacy', 'terms'].filter((p) => p.endsWith('.html'))) {
     for (const m of read(p).matchAll(/data-contact-ref="([a-z]+)"/g)) refs.add(m[1]);
   }
-  for (const ref of ['zalo', 'whatsapp', 'call', 'map']) {
-    assert.ok(refs.has(ref), `contact ref "${ref}" used somewhere in blog UI`);
+  for (const ref of ['whatsapp', 'call', 'map']) {
+    assert.ok(refs.has(ref), `contact ref "${ref}" used somewhere in the app UI`);
   }
-  const app = read('assets/js/blog-app.js');
+  assert.ok(!refs.has('zalo'), 'Zalo is not a contact ref anymore');
+  const app = read('assets/js/app-shell.js');
   assert.ok(app.includes("phone_uri"), 'call ref maps to verified phone_uri');
   assert.ok(app.includes('noopener noreferrer'), 'external links are safe');
 });
@@ -213,7 +210,7 @@ test('theme styles: shared data-motoai-theme tokens + focus-visible + touch targ
   assert.ok(css.includes('data-motoai-theme="dark"]') || /html\[data-motoai-theme="dark"\]/.test(read('assets/css/style.css')), 'dark theme reuses shared tokens');
   assert.match(css, /:focus-visible/);
   assert.match(css, /\.blog-theme-toggle\s*\{[^}]*min-height:\s*4\dpx/);
-  assert.match(css, /\.blog-contact\s*\{[^}]*min-height:\s*4\dpx/);
+  assert.match(css, /\.screen-ask-btn\s*\{[^}]*min-height:\s*4\dpx/);
 });
 
 // ---------- Content factory safety ----------

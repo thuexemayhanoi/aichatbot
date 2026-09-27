@@ -5,9 +5,12 @@ import { tokenize } from '../../src/nlu/tokenizer.js';
 
 const c = (text) => extractContactChannels(tokenize(text)).map((x) => x.id);
 
-test('detects zalo and whatsapp', () => {
-  assert.deepEqual(c('zalo của bạn'), ['zalo']);
-  assert.deepEqual(c('whatsapp'), ['whatsapp']);
+test('detects whatsapp', () => {
+  assert.deepEqual(c('whatsapp của bạn'), ['whatsapp']);
+});
+
+test('zalo is no longer a supported channel', () => {
+  assert.equal(c('zalo của bạn').length, 0);
 });
 
 test('detects phone channel', () => {
