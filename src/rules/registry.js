@@ -29,7 +29,7 @@ import { createFallbackRule } from './fallback-rule.js';
 const RULE_FACTORIES = [
   createHoursRule, // 1. opening hours + live status
   createDepositRule, // 2. deposit range
-  createContactRule, // 3. phone/zalo/whatsapp/email/maps
+  createContactRule, // 3. phone/whatsapp/email/maps
   createDeliveryRule, // 4. delivery areas
   createReturnRule, // 5. return process (honest unknown)
   createPolicyRule, // 6. insurance + other policies

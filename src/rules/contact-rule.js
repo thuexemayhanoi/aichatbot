@@ -1,7 +1,9 @@
 /**
- * Contact rule: phone/Zalo/WhatsApp/email/maps answers.
+ * Contact rule: phone/WhatsApp/email/maps answers.
  * Channel priority follows the entities detected in the turn; when several
  * channels appear, the first detected one wins (deterministic).
+ * v57: the previously offered chat channel was removed from the public
+ * surface — the UI never mentions or links it.
  */
 export function createContactRule({ business } = {}) {
   return {
@@ -14,15 +16,6 @@ export function createContactRule({ business } = {}) {
       const brand = business.brand;
       const channel = analysis?.entities?.contactChannels?.[0]?.id ?? 'phone';
 
-      if (channel === 'zalo') {
-        return {
-          handled: true,
-          answer: `Bạn có thể liên hệ ${brand} qua Zalo: ${contact.phone_display}.`,
-          actions: [{ label: 'Mở Zalo', href: contact.zalo }],
-          confidence: 1,
-          source: 'business-data'
-        };
-      }
       if (channel === 'whatsapp') {
         return {
           handled: true,
@@ -52,10 +45,9 @@ export function createContactRule({ business } = {}) {
       }
       return {
         handled: true,
-        answer: `Số điện thoại của ${brand}: ${contact.phone_display}. Bạn có thể gọi điện hoặc nhắn Zalo qua số này.`,
+        answer: `Số điện thoại của ${brand}: ${contact.phone_display}. Bạn có thể gọi điện hoặc nhắn tin qua số này (hỗ trợ WhatsApp).`,
         actions: [
-          { label: 'Gọi điện', href: contact.phone_uri },
-          { label: 'Zalo', href: contact.zalo }
+          { label: 'Gọi điện', href: contact.phone_uri }
         ],
         confidence: 1,
         source: 'business-data'

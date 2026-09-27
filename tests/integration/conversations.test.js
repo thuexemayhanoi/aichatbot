@@ -119,7 +119,7 @@ test('contact questions include the phone number with actions', async () => {
   const { replies } = await converse(['số điện thoại là bao nhiêu']);
   assert.ok(replies[0].reply.text.includes('0942 467 674'));
   assert.ok(replies[0].reply.actions.some((a) => a.href.startsWith('tel:')));
-  assert.ok(replies[0].reply.actions.some((a) => a.href.includes('zalo.me')));
+  assert.ok(replies[0].reply.text.includes('WhatsApp'));
 });
 
 test('multi-intent turn resolves by rule priority (contact before pricing)', async () => {

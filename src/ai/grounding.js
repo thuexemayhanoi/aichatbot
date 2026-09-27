@@ -31,7 +31,7 @@ export function buildPrompt({ question, docs = [], business = null }) {
     .join('\n');
   const contact = business?.contact;
   const footer = contact
-    ? `\nContact facts: phone ${contact.phone_display ?? ''}, Zalo ${contact.zalo ?? ''}.`
+    ? `\nContact facts: phone ${contact.phone_display ?? ''}, WhatsApp ${contact.whatsapp ?? ''}.`
     : '';
   return {
     system: SYSTEM_PROMPT,

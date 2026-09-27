@@ -54,8 +54,8 @@ export function buildCorpus({ business, pricing, faq } = {}) {
 
   push('business:contact', 'business-data',
     'Số điện thoại? / How can I contact you?',
-    `Số điện thoại: {{ business.contact.phone_display }}. Zalo/WhatsApp: {{ business.contact.phone_display }}. Email: {{ business.contact.email }}.`,
-    ['phone number', 'so dien thoai', 'contact', 'lien he', 'call', 'zalo', 'whatsapp', 'email', 'hotline', 'telephone']);
+    `Số điện thoại: {{ business.contact.phone_display }}. WhatsApp: {{ business.contact.phone_display }}. Email: {{ business.contact.email }}.`,
+    ['phone number', 'so dien thoai', 'contact', 'lien he', 'call', 'whatsapp', 'email', 'hotline', 'telephone']);
 
   push('business:deposit', 'business-data',
     'Có cần đặt cọc không? / Do I need a deposit?',

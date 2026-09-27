@@ -98,6 +98,6 @@ function contactActions(doc, business) {
   const contact = business?.contact ?? {};
   return [
     { label: '📞 Gọi điện', href: contact.phone_uri ?? 'tel:' },
-    { label: '💬 Zalo', href: contact.zalo ?? '' }
+    { label: '🟢 WhatsApp', href: contact.whatsapp ?? '' }
   ].filter((action) => action.href && action.href.length > 0);
 }

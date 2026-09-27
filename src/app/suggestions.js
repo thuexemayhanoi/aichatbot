@@ -5,7 +5,7 @@
  * Agent chips open the local Agent flow in the UI.
  */
 
-const LINK_REFS = Object.freeze({ zalo: 'zalo', call: 'phone_uri', map: 'maps', whatsapp: 'whatsapp' });
+const LINK_REFS = Object.freeze({ call: 'phone_uri', map: 'maps', whatsapp: 'whatsapp' });
 
 /** Primary quick-action bar: ONE horizontal row, fixed order, never shortened. */
 export const DEFAULT_CHIPS = Object.freeze([
@@ -16,7 +16,6 @@ export const DEFAULT_CHIPS = Object.freeze([
   Object.freeze({ id: 'monthly', label: '📅 Theo tháng', query: 'Thuê theo tháng' }),
   Object.freeze({ id: 'deposit', label: '💵 Đặt cọc', query: 'Đặt cọc bao nhiêu?' }),
   Object.freeze({ id: 'procedure', label: '📄 Thủ tục', query: 'Thuê xe cần giấy tờ gì?' }),
-  Object.freeze({ id: 'zalo', label: '💬 Zalo', type: 'link', ref: LINK_REFS.zalo }),
   Object.freeze({ id: 'call', label: '📞 Gọi', type: 'link', ref: LINK_REFS.call }),
   Object.freeze({ id: 'address', label: '📍 Địa chỉ', query: 'Địa chỉ ở đâu?' }),
   Object.freeze({ id: 'contact', label: '☎️ Liên hệ', query: 'Liên hệ' }),
@@ -26,8 +25,7 @@ export const DEFAULT_CHIPS = Object.freeze([
 /** Link chip href from verified business.json ('' when data is missing). */
 export function resolveChipHref(chip, business) {
   const contact = business?.contact ?? {};
-  const value = chip?.ref === LINK_REFS.zalo ? contact.zalo
-    : chip?.ref === LINK_REFS.call ? contact.phone_uri
+  const value = chip?.ref === LINK_REFS.call ? contact.phone_uri
     : chip?.ref === LINK_REFS.map ? contact.maps
     : chip?.ref === LINK_REFS.whatsapp ? contact.whatsapp
     : null;
@@ -54,7 +52,6 @@ const VEHICLE_CHIPS = Object.freeze([
 const CONTACT_CHIPS = Object.freeze([
   Object.freeze({ id: 'directions', label: 'Chỉ đường', query: 'Địa chỉ ở đâu?' }),
   Object.freeze({ id: 'call', label: 'Gọi điện', query: 'Số điện thoại' }),
-  Object.freeze({ id: 'zalo', label: 'Zalo', query: 'Zalo' }),
   Object.freeze({ id: 'hours', label: 'Giờ mở cửa', query: 'Giờ mở cửa' })
 ]);
 

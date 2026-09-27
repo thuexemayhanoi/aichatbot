@@ -243,7 +243,7 @@ function withTimeout(promise, ms, label) {
 function contactFooter(business) {
   const c = business?.contact;
   if (!c) return '';
-  return `phone ${c.phone_display ?? ''} zalo ${c.zalo ?? ''} hours ${business.hours?.display ?? ''}`;
+  return `phone ${c.phone_display ?? ''} whatsapp ${c.whatsapp ?? ''} hours ${business.hours?.display ?? ''}`;
 }
 
 const MAX_CONTEXT_DOCS = 4;

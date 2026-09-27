@@ -11,7 +11,7 @@ export const INTENT_DEFINITIONS = [
   { id: 'price_query', phrases: ['giá', 'giá thuê', 'giá xe', 'chi phí', 'phí thuê', 'bao nhiêu tiền'] },
   { id: 'deposit_query', phrases: ['đặt cọc', 'tiền cọc', 'thế chân'] },
   { id: 'documents_query', phrases: ['giấy tờ', 'chứng minh nhân dân', 'hộ chiếu', 'bằng lái', 'cần gì để thuê', 'điều kiện thuê'] },
-  { id: 'contact_query', phrases: ['liên hệ', 'số điện thoại', 'sdt', 'gọi điện', 'zalo', 'whatsapp', 'email'] },
+  { id: 'contact_query', phrases: ['liên hệ', 'số điện thoại', 'sdt', 'gọi điện', 'whatsapp', 'email'] },
   { id: 'delivery_query', phrases: ['giao xe', 'giao tận nơi', 'giao đến', 'giao ở', 'giao tại', 'ship xe', 'nhận xe tại'] },
   { id: 'return_query', phrases: ['trả xe', 'hoàn xe', 'muộn trả', 'trễ trả'] },
   { id: 'policy_query', phrases: ['chính sách', 'điều khoản', 'quy định', 'bảo hiểm', 'hủy'] },
