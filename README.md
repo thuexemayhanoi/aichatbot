@@ -210,3 +210,19 @@ Blog App Foundation KHÔNG sinh bài. `data/blog/content-matrix.csv` giữ nguy�
 - v56 — Full-system audit & polish (audit phase executed early by the 2026-09-27 03:00 run: BLOGUX-0024 DONE; only open SEO gap og:locale privacy/terms fixed; seo-score 100/100)
 
 Sau v56 mới scale article production theo `docs/BLOG-FACTORY.md`.
+
+# v56 — BLOG APP FOUNDATION (2026-09-27)
+
+Blog trở thành một màn hình của cùng ứng dụng, với phân loại cha/con cho 2.000 bài. KHÔNG sinh bài mới trong run này (2 bài pilot giữ nguyên; 1.998 dòng PLANNED).
+
+## Nền tảng v56
+
+- **Phân loại 5 tầng** (`data/blog/taxonomy.json` + `tools/taxonomy.mjs`): Agent → Cẩm nang → 3 cụm (Ứng Dụng, Thuê Xe, Khám Phá) → 6 danh mục canonical (ID không đổi) → subtopic → bài. Mọi trường phái sinh tính tất định từ dòng ma trận — CSV không đổi schema/ID.
+- **Menu + Footer một nguồn sự thật** (`config/navigation.json`): nhãn ngắn 1–2 từ, cùng nhãn + URL ở drawer và footer; footer sinh tự động cho mọi trang content; viewport chat KHÔNG có footer (giữ full-screen app).
+- **Blog home**: compact hero + tìm kiếm + 3 thẻ cụm + 6 thẻ danh mục + bài mới + CTA Agent.
+- **Hub danh mục**: intro, chips subtopic (chỉ khi có bài), phân trang crawlable 24/trang, danh mục liên quan cùng cụm, CollectionPage + BreadcrumbList.
+- **Subtopic hub**: chỉ sinh khi ≥ 1 bài PUBLISHED — không hub rỗng; bài #37/#500/#2,000 tự xuất hiện đúng chỗ, không sửa navigation thủ công.
+- **Bài viết**: chips danh mục/subtopic, dek, TOC build-time (anchor tiếng Việt an toàn; mobile accordion, desktop sticky rail 230px + content 720px), related theo subtopic → danh mục, breadcrumb khớp BreadcrumbList, CTA Agent, footer.
+- **Tìm kiếm**: index thêm trường cluster/subtopic/location (vẫn compact, lazy-load).
+- **Địa phương Hà Nội** (`data/local/hanoi.json`): dữ liệu hành chính chính thống theo NQ 1656/NQ-UBTVQH15 (hiệu lực 01/07/2025: 51 phường + 75 xã, không còn cấp quận) — dùng cho chiến lược 400 bài LOCAL, chống doorway.
+- Test mới: `tests/unit/blog-app-foundation.test.js` (24 test: taxonomy, nav/footer vocabulary, subtopic gate, pagination, TOC, breadcrumb↔schema, sitemap, local data, factory safety). Tổng suite 552/552; seo-score 100/100.

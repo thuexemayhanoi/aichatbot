@@ -1,15 +1,15 @@
 {
-  "feature_id": "UX-BLOG-AUDIT",
-  "feature_desc": "RUN 03:00: full UX/Blog App audit (BLOGUX-0024) + auto repair. Fixed SEO-008 (og:locale privacy/terms); seo-score 100/100; no P0/P1 issue found; no mass generation",
-  "run_id": "2026-09-27-ux-audit",
-  "started_at": "2026-09-27T03:00:00+07:00",
-  "start_commit": "9450adc2cc4c22371b21a00dc96688609fd967d4",
-  "last_checkpoint": "Pushed b712eeb (v55.1): CI test=success build=success; Distribution build=success; Pages deploy=success; report-build-status=success. Live verified: root + blog home + 6 hubs + 2 articles + privacy/terms + assets all 200; og:locale live on privacy/terms; seo-score 100/100; node --test 528/528.",
-  "checkpoint_commit": "b712eeb496ce3fe7286acab6e5a68aa156bb4dc1",
+  "feature_id": "BLOG-APP-FOUNDATION",
+  "feature_desc": "RUN v56: parent/child taxonomy (3 clusters -> 6 canonical categories -> subtopics), nav source of truth (config/navigation.json), menu + shared footer with one vocabulary, blog home cluster/category cards, crawlable hub pagination, subtopic hubs only when non-empty, article TOC/breadcrumb/related, verified Hanoi 2025 locality data. NO article generation.",
+  "run_id": "2026-09-27-blog-app-foundation",
+  "started_at": "2026-09-27T17:00:00+07:00",
+  "start_commit": "b712eeb496ce3fe7286acab6e5a68aa156bb4dc1",
+  "last_checkpoint": "Pending push of v56 foundation. node --test 552/552; blog-factory validate OK (2000 rows, 2 PUBLISHED); seo-score 100/100 (0 issues); build deterministic (2 articles, 1 subtopic hub, 13 sitemap urls). Report: reports/2026-09-27-blog-app-foundation-run.md",
+  "checkpoint_commit": "",
   "tests": {
     "suite": "node --test",
-    "result": "528/528 pass after fix; seo-score 100/100, 0 issues"
+    "result": "552/552 pass (528 baseline + 24 new blog-app-foundation tests)"
   },
-  "notes": "NO MASS ARTICLE GENERATION. content-matrix.csv untouched (2,000 rows, 2 PUBLISHED). Observation (REVIEW, no action): gen-matrix.mjs emits 276 rows vs committed master matrix 260 — reconcile later, do not regenerate blindly. Report: reports/2026-09-27-ux-audit-run.md",
+  "notes": "NO MASS ARTICLE GENERATION. content-matrix.csv untouched (2,000 rows, 2 PUBLISHED pilots). data/local/hanoi.json verified vs NQ 1656/NQ-UBTVQH15 (51 phường + 75 xã, hiệu lực 01/07/2025); xã list is a verified subset of 75 — complete before LOCAL production for remaining communes.",
   "status": "COMPLETED"
 }

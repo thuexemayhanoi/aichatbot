@@ -49,3 +49,27 @@ Nguồn sự thật publish là `data/blog/published.json` + body partials trong
 
 - 2 bài pilot PUBLISHED (BA-0001, BA-0004) — fixture để kiểm thử pipeline, KHÔNG phải sản lượng sản xuất; đánh dấu `notes=pilot/fixture`.
 - 1.998 dòng PLANNED chờ factory chạy theo lô trong các scheduled run.
+
+## Phân loại cha/con (v56 — 2026-09-27)
+
+Toàn bộ blog dùng mô hình phân loại 5 tầng, nguồn sự thật duy nhất trong `data/blog/taxonomy.json` + `tools/taxonomy.mjs`:
+
+```
+LEVEL 0  Agent (/)
+LEVEL 1  Cẩm nang (/blog/)
+LEVEL 2  3 cụm cha: Ứng Dụng [APP, GUIDE] · Thuê Xe [RENT, EV] · Khám Phá [SAFE, LOCAL]
+LEVEL 3  6 danh mục canonical (APP/RENT/EV/GUIDE/SAFE/LOCAL — ID không đổi)
+LEVEL 4  subtopic hubs (chỉ tồn tại khi có ≥ 1 bài PUBLISHED)
+LEVEL 5  bài viết
+```
+
+- Mọi trường phái sinh (parent_cluster, subtopic_code/label, hub_url) được tính tất định từ mỗi dòng ma trận bằng `deriveSubtopic` — CSV không đổi schema, không đổi ID.
+- Trang subtopic (`blog/<danh-mục>/<subtopic>/`) chỉ được sinh khi có ≥ 1 bài PUBLISHED — không có hub rỗng.
+- Hub danh mục phân trang crawlable: 24 thẻ/trang (`blog/<cat>/page/2/`).
+- Bài viết có TOC sinh lúc build (ID anchor tiếng Việt an toàn, dedupe), breadcrumb khớp 100% với BreadcrumbList, related theo subtopic → danh mục.
+- Blog home hiển thị 3 thẻ cụm + 6 thẻ danh mục + tìm kiếm + bài mới + CTA Agent.
+- Footer dùng chung sinh từ `config/navigation.json` (một nguồn sự thật cho menu + footer); chữ ký thấy ở mọi trang content, không có trong viewport chat của Agent.
+
+## Dữ liệu địa phương Hà Nội (v56)
+
+`data/local/hanoi.json` — dữ liệu hành chính chính thống đã xác minh theo Nghị quyết 1656/NQ-UBTVQH15 (hiệu lực 01/07/2025): Hà Nội có 51 phường + 75 xã, không còn cấp quận/huyện. Bài LOCAL không bao giờ được dùng danh sách quận/phường cũ làm dữ kiện hiện hành, và không được tự nhận có điểm nhận xe tại một địa phương nếu không có trong `data/business/`.

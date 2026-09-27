@@ -86,6 +86,7 @@ export function resolveHref(pagePath, href) {
   else if (p.startsWith('/')) return null; // outside this Pages site
   else p = normalizeRepoPath(`${dirname(pagePath)}/${p}`);
   p = p.replace(/#.*$/, '');
+  p = p.replace(/\?.*$/, '');
   if (p === '' || p.endsWith('/')) p += 'index.html';
   return p;
 }

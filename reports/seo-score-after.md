@@ -1,4 +1,4 @@
-# MotoAI SEO Score — AFTER RUN 06:00 SEO optimization
+# MotoAI SEO Score — 2026-09-27
 
 **TOTAL: 100/100**
 
@@ -14,7 +14,7 @@
 
 ## Issues (0)
 
-None. The two previously deferred og:locale gaps (privacy/, terms/) were fixed by the 2026-09-27 03:00 audit run.
+No issues detected.
 
 ---
 
@@ -31,3 +31,4 @@ Pages audited: 12
 - blog/huong-dan/thu-tuc-thue-xe-may/index.html
 - privacy/index.html
 - terms/index.html
+
