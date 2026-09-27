@@ -4,9 +4,17 @@
 
 /* ---------- Screen layout (inside .motoai-app) ---------- */
 .motoai-screen { height: auto; min-height: 100dvh; }
+/* v58: single content grid — header, screen body and dock all sit on the same
+   16px mobile side padding (safe-area aware). No mixed width systems. */
+.motoai-screen .motoai-app {
+  padding-left: calc(env(safe-area-inset-left, 0px) + 16px);
+  padding-right: calc(env(safe-area-inset-right, 0px) + 16px);
+}
+.motoai-screen .motoai-header { padding-left: 0; padding-right: 0; }
 .motoai-screen .motoai-header-text { text-decoration: none; color: inherit; }
 .motoai-screen .motoai-header-text:hover .motoai-title { color: var(--color-primary); }
 .motoai-screen .motoai-status { flex: none; }
+.motoai-screen .blog-theme-toggle { flex: none; }
 
 /* Main viewport slot: only this area changes per screen. */
 .motoai-screen-body {
@@ -16,6 +24,7 @@
   gap: var(--space-3);
   overflow: visible;           /* the page scrolls, the app chrome stays */
   padding: var(--space-2) 0 var(--space-3);
+  min-width: 0;                /* breadcrumb/H1/cards align, never push page wide */
 }
 /* Desktop: content screens use a wider reading column than the chat screen,
    but the same chrome, tokens and centered app feel. */
@@ -98,8 +107,16 @@
 .blog-theme-toggle:hover { border-color: var(--color-primary); color: var(--color-primary); }
 .blog-theme-toggle:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
-/* Category chips row: ONE horizontal scroll row on mobile. */
-.blog-chips { display: flex; flex-wrap: nowrap; gap: var(--space-2); margin: 0; overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px; }
+/* Category chips rail (v58): ONE intentional horizontal scroll row on mobile —
+   never multi-line wrap, never a clipped last chip. */
+.blog-chips {
+  display: flex; flex-wrap: nowrap; gap: var(--space-2); margin: 0;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;           /* unobtrusive rail */
+  scroll-padding-inline: var(--space-2);
+  padding-bottom: 2px;
+}
 .blog-chips::-webkit-scrollbar { display: none; }
 @media (min-width: 768px) { .blog-chips { flex-wrap: wrap; overflow-x: visible; } }
 .blog-chip {

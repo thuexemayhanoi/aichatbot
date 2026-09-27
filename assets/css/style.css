@@ -111,14 +111,17 @@ html, body {
 /* ---------- Header ---------- */
 .motoai-header {
   display: flex;
+  flex-wrap: wrap;          /* narrow screens: status wraps to its OWN row */
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-2);
+  column-gap: var(--space-2);
+  row-gap: var(--space-1);
   padding: var(--space-2) var(--space-2) var(--space-3);
   border-bottom: 1px solid var(--color-border);
 }
 
-.motoai-header-text { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+.motoai-header-text { display: flex; align-items: center; gap: var(--space-3); flex: 1 1 auto; min-width: 0; }
+.motoai-header-text > div { min-width: 0; }  /* title/address may shrink, never force overflow */
 
 .motoai-brand-mark {
   flex: 0 0 auto;
@@ -134,21 +137,30 @@ html, body {
 
 .motoai-title {
   margin: 0;
-  font-size: 1.02rem;
+  font-size: 1.02rem;      /* ~17px mobile — readable, one line */
   font-weight: 650;
   letter-spacing: 0.2px;
   line-height: 1.2;
+  white-space: nowrap;     /* never stacks word-per-line */
+  overflow: hidden;
+  text-overflow: ellipsis; /* safety net on the very narrowest phones */
 }
 
 .motoai-subtitle {
   margin: 2px 0 0;
-  font-size: 0.74rem;
+  font-size: 0.74rem;          /* ~13px mobile */
   color: var(--color-text-muted);
-  white-space: normal;        /* full address wraps cleanly on small screens */
+  white-space: normal;         /* full address wraps cleanly on small screens */
   overflow-wrap: break-word;
+  display: -webkit-box;        /* cap at 2 lines — never a tall address block */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 @media (max-width: 359px) {
   .motoai-subtitle { font-size: 0.68rem; } /* compact but complete, never clipped */
+  .motoai-menu-label { display: none; }    /* icon-only Menu: identity keeps its width */
+  .motoai-menu { padding: 0 12px; min-width: 44px; }
 }
 
 .motoai-status {
@@ -161,6 +173,15 @@ html, body {
 .motoai-status[data-tone="warning"] { color: var(--color-warning); }
 .motoai-status[data-tone="error"] { color: var(--color-error); }
 .motoai-status[data-tone="success"] { color: var(--color-success); }
+
+/* v58 mobile header contract: status never steals width from the identity.
+   Below 768px it wraps onto its own full-width row (it is hidden when empty). */
+@media (max-width: 767px) {
+  .motoai-status {
+    order: 5;               /* after Auto/Menu in row 1 */
+    flex-basis: 100%;       /* forces the second row */
+  }
+}
 
 /* ---------- Messages ---------- */
 .motoai-messages {
