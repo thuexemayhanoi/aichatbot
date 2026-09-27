@@ -47,8 +47,12 @@
 - Commit: `fix(seo): add og:locale to privacy/terms (SEO-008) + record full-system audit (BLOGUX-0024)`
 - Push: see below.
 
-## CI / DISTRIBUTION / PAGES / LIVE
-- Filled after push verification.
+## CI / DISTRIBUTION / PAGES / LIVE (verified)
+- Final HEAD: `b712eeb496ce3fe7286acab6e5a68aa156bb4dc1`
+- Check-runs on b712eeb: test=success, build=success (CI), build=success (Distribution), deploy=success, report-build-status=success.
+- Pages live: root, blog home, all 6 hubs, both pilot articles, privacy/, terms/, blog.css, sitemap.xml — all HTTP 200.
+- Live content check: `og:locale vi_VN` present on /privacy/ and /terms/; blog home byte-identical to HEAD.
+- (Transient 404 statuses observed on the Fastly edge for ~2 minutes post-deploy while serving the new bytes — resolved; noted, no action.)
 
 ## NEXT ACTION FOR 06:00
 - Read this report first. SEO is now 100/100; no open SEO issues remain.

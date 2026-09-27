@@ -4,12 +4,12 @@
   "run_id": "2026-09-27-ux-audit",
   "started_at": "2026-09-27T03:00:00+07:00",
   "start_commit": "9450adc2cc4c22371b21a00dc96688609fd967d4",
-  "last_checkpoint": "Audit complete on baseline 9450adc: 528/528 tests green, blog-factory validate OK, build-blog OK, 0 broken internal refs, 22 live routes 200, live pages byte-match HEAD. Fixed SEO-008 og:locale (privacy/terms) -> seo-score 100/100. Matrix: BLOGUX-0024 DONE, SEO-008 DONE. Pushing.",
-  "checkpoint_commit": "9450adc2cc4c22371b21a00dc96688609fd967d4",
+  "last_checkpoint": "Pushed b712eeb (v55.1): CI test=success build=success; Distribution build=success; Pages deploy=success; report-build-status=success. Live verified: root + blog home + 6 hubs + 2 articles + privacy/terms + assets all 200; og:locale live on privacy/terms; seo-score 100/100; node --test 528/528.",
+  "checkpoint_commit": "b712eeb496ce3fe7286acab6e5a68aa156bb4dc1",
   "tests": {
     "suite": "node --test",
     "result": "528/528 pass after fix; seo-score 100/100, 0 issues"
   },
   "notes": "NO MASS ARTICLE GENERATION. content-matrix.csv untouched (2,000 rows, 2 PUBLISHED). Observation (REVIEW, no action): gen-matrix.mjs emits 276 rows vs committed master matrix 260 — reconcile later, do not regenerate blindly. Report: reports/2026-09-27-ux-audit-run.md",
-  "status": "PUSHING"
+  "status": "COMPLETED"
 }
