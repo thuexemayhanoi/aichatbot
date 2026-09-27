@@ -48,16 +48,18 @@ test('root app contract: body opens directly into the chat app in spec order', (
   // 5. Only ONE h1 — the visible app header; no giant SEO H1.
   assert.equal((html.match(/<h1/g) || []).length, 1);
   // 6. Grouped drawer (v50): every hub route is reachable with short labels.
+  // v56: short 1-2 word labels; all six canonical categories sit inside the
+  // Cẩm nang group; contact actions sit inside the Dịch vụ group.
   const routes = {
-    '🏍️ Xe máy': '/aichatbot/blog/thue-xe/',
-    '⚡ Xe điện': '/aichatbot/blog/xe-dien/',
-    '📱 Ứng dụng': '/aichatbot/blog/app/',
-    '📄 Hướng dẫn': '/aichatbot/blog/huong-dan/',
-    '🛡️ An toàn': '/aichatbot/blog/an-toan/',
-    '📍 Địa phương': '/aichatbot/blog/dia-phuong/',
-    '🔎 Tìm bài': '/aichatbot/blog/',
-    '🔒 Bảo mật': '/aichatbot/privacy/',
-    '📃 Điều khoản': '/aichatbot/terms/'
+    '📱 Ứng Dụng': '/aichatbot/blog/app/',
+    '📄 Hướng Dẫn': '/aichatbot/blog/huong-dan/',
+    '🏍️ Thuê Xe': '/aichatbot/blog/thue-xe/',
+    '⚡ Xe Điện': '/aichatbot/blog/xe-dien/',
+    '🛡️ An Toàn': '/aichatbot/blog/an-toan/',
+    '📍 Địa Phương': '/aichatbot/blog/dia-phuong/',
+    '🔎 Tìm Bài': '/aichatbot/blog/',
+    '🔒 Bảo Mật': '/aichatbot/privacy/',
+    '📃 Điều Khoản': '/aichatbot/terms/'
   };
   for (const [label, href] of Object.entries(routes)) {
     const li = html.match(new RegExp(`<li><a href="${href.replace(/\//g, '\\/')}"[^>]*>${label}</a></li>`));
@@ -109,7 +111,7 @@ test('☰ menu is a grouped accordion navigating the blog ecosystem + contact ac
     assert.ok(drawer.includes(`/aichatbot/${hub}`), `menu must link /aichatbot/${hub}`);
   }
   // ChatGPT-style condensed entry: Liên hệ asks the Agent (no hard-coded contacts).
-  assert.match(drawer, /id="motoai-menu-contact">☎️ Liên hệ</);
+  assert.match(drawer, /id="motoai-menu-contact">☎️ Liên Hệ</);
   assert.match(mainJs, /menuContact/);
   assert.match(mainJs, /elements\.input\.value = 'Liên hệ';/);
   // Contact hrefs still resolve only from verified business.json.
@@ -373,7 +375,7 @@ test('bottom dock: exactly 4 items, flat nav look, verified actions, one row', (
   // Liên hệ: NO hard-coded contact URL — it opens the drawer contact group.
   assert.ok(!html.includes('share.google'), 'no hard-coded share.google URL anywhere');
   assert.match(dock, /id="motoai-dock-contact"/);
-  assert.match(mainJs, /dockContact\?\.addEventListener\('click', \(\) => \{[\s\S]*?setDrawer\(true\);[\s\S]*?motoai-group-lh-btn[\s\S]*?groupBtn\.click\(\)/);
+  assert.match(mainJs, /dockContact\?\.addEventListener\('click', \(\) => \{[\s\S]*?setDrawer\(true\);[\s\S]*?motoai-group-dv-btn[\s\S]*?groupBtn\.click\(\)/);
   // Giá thuê is an Agent action — no hard-coded price values in the dock.
   assert.match(dock, /id="motoai-dock-price"/);
   assert.ok(!/\d{3}[.,]?\d{3}\s*(đ|vnd|VND)/.test(dock), 'dock must not hard-code prices');
@@ -438,7 +440,7 @@ test('quick bar: 12 primary tags fixed — never swapped by contextual chips', (
 // --- 5h. Grouped menu accordion (v50) ---
 test('grouped menu: parent/child accordion with ARIA + one-open + Escape', () => {
   const groups = [...html.matchAll(/<li class="motoai-group">/g)].length;
-  assert.equal(groups, 4, 'exactly 4 parent groups: Dịch vụ, Cẩm nang, Liên hệ, Pháp lý');
+  assert.equal(groups, 3, 'v56: exactly 3 parent groups: Cẩm nang (6 categories + Tìm Bài), Dịch vụ, Pháp lý');
   // Every group button is ARIA-backed and controls an items list.
   for (const btn of html.matchAll(/class="motoai-group-btn"[^>]*aria-expanded="false" aria-controls="([^"]+)"/g)) {
     assert.ok(html.includes(`id="${btn[1]}"`), `group items list ${btn[1]} exists`);

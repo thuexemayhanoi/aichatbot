@@ -155,14 +155,17 @@ test('category bar is one non-wrapping horizontal row (CSS contract)', () => {
 });
 
 test('business status chip element exists and starts hidden (never guesses)', () => {
-  for (const page of ['blog/index.html', ...HUBS.map((h) => `blog/${h}/index.html`)]) {
+  // v56: shell/list pages = home + hubs + subtopic hubs (they carry the category
+  // bar); only article detail screens keep the compact header.
+  for (const page of blogPages()) {
     const html = read(page);
-    assert.ok(html.includes('id="blog-business-status"'), `${page}: status element`);
-    assert.match(html, /id="blog-business-status"[^>]*hidden/, `${page}: hidden until data loads`);
-  }
-  const articles = blogPages().filter((p) => !['blog/index.html', ...HUBS.map((h) => `blog/${h}/index.html`)].includes(p));
-  for (const page of articles) {
-    assert.ok(!read(page).includes('blog-business-status'), `${page}: articles keep the compact header (no status chip)`);
+    const isShell = page === 'blog/index.html' || HUBS.some((h) => page === `blog/${h}/index.html`) || html.includes('blog-categories');
+    if (isShell) {
+      assert.ok(html.includes('id="blog-business-status"'), `${page}: status element`);
+      assert.match(html, /id="blog-business-status"[^>]*hidden/, `${page}: hidden until data loads`);
+    } else {
+      assert.ok(!html.includes('blog-business-status'), `${page}: articles keep the compact header (no status chip)`);
+    }
   }
 });
 
