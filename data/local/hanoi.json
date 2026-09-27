@@ -1,0 +1,840 @@
+{
+  "$schema": "motoai/hanoi-locality@1",
+  "note": "Canonical structured locality data for LOCAL articles. Verified against Nghị quyết 1656/NQ-UBTVQH15 (sắp xếp ĐVHC cấp xã của TP Hà Nội năm 2025, hiệu lực 01/07/2025): after the 2025 reorganization Hanoi has 126 commune-level units = 51 phường + 75 xã; district-level units no longer exist. Never publish stale district/ward lists as current facts. Article prose must never claim a physical branch/pickup point in a locality unless verified in data/business/.",
+  "source": {
+    "official_source": "Nghị quyết 1656/NQ-UBTVQH15 — Ủy ban Thường vụ Quốc hội (16/06/2025)",
+    "official_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=214008",
+    "effective_date": "2025-07-01",
+    "source_date": "2025-06-16",
+    "verified_at": "2026-09-27"
+  },
+  "city": {
+    "name": "Hà Nội",
+    "slug": "ha-noi",
+    "type": "thành phố",
+    "parent": "Việt Nam"
+  },
+  "counts": {
+    "phuong": 51,
+    "xa": 75
+  },
+  "units": [
+    {
+      "name": "Hoàn Kiếm",
+      "slug": "hoan-kiem",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Cửa Nam",
+      "slug": "cua-nam",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Ba Đình",
+      "slug": "ba-dinh",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Ngọc Hà",
+      "slug": "ngoc-ha",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Giảng Võ",
+      "slug": "giang-vo",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hai Bà Trưng",
+      "slug": "hai-ba-trung",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Vĩnh Tuy",
+      "slug": "vinh-tuy",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Bạch Mai",
+      "slug": "bach-mai",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Đống Đa",
+      "slug": "dong-da",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Kim Liên",
+      "slug": "kim-lien",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Văn Miếu - Quốc Tử Giám",
+      "slug": "van-mieu-quoc-tu-giam",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Láng",
+      "slug": "lang",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Ô Chợ Dừa",
+      "slug": "o-cho-dua",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hồng Hà",
+      "slug": "hong-ha",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Lĩnh Nam",
+      "slug": "linh-nam",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hoàng Mai",
+      "slug": "hoang-mai",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Vĩnh Hưng",
+      "slug": "vinh-hung",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Tương Mai",
+      "slug": "tuong-mai",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Định Công",
+      "slug": "dinh-cong",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hoàng Liệt",
+      "slug": "hoang-liet",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Yên Sở",
+      "slug": "yen-so",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Thanh Xuân",
+      "slug": "thanh-xuan",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Khương Đình",
+      "slug": "khuong-dinh",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phương Liệt",
+      "slug": "phuong-liet",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Cầu Giấy",
+      "slug": "cau-giay",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Nghĩa Đô",
+      "slug": "nghia-do",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Yên Hòa",
+      "slug": "yen-hoa",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Tây Hồ",
+      "slug": "tay-ho",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phú Thượng",
+      "slug": "phu-thuong",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Tây Tựu",
+      "slug": "tay-tuu",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phú Diễn",
+      "slug": "phu-dien",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Xuân Đỉnh",
+      "slug": "xuan-dinh",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Đông Ngạc",
+      "slug": "dong-ngac",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Thượng Cát",
+      "slug": "thuong-cat",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Từ Liêm",
+      "slug": "tu-liem",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Xuân Phương",
+      "slug": "xuan-phuong",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Tây Mỗ",
+      "slug": "tay-mo",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Đại Mỗ",
+      "slug": "dai-mo",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Long Biên",
+      "slug": "long-bien",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Bồ Đề",
+      "slug": "bo-de",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Việt Hưng",
+      "slug": "viet-hung",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phúc Lợi",
+      "slug": "phuc-loi",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hà Đông",
+      "slug": "ha-dong",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Dương Nội",
+      "slug": "duong-noi",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Yên Nghĩa",
+      "slug": "yen-nghia",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phú Lương",
+      "slug": "phu-luong",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Kiến Hưng",
+      "slug": "kien-hung",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Thanh Liệt",
+      "slug": "thanh-liet",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Chương Mỹ",
+      "slug": "chuong-my",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Sơn Tây",
+      "slug": "son-tay",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Tùng Thiện",
+      "slug": "tung-thien",
+      "type": "phường",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Thanh Trì",
+      "slug": "thanh-tri",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Đại Thanh",
+      "slug": "dai-thanh",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Nam Phù",
+      "slug": "nam-phu",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Ngọc Hồi",
+      "slug": "ngoc-hoi",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Thượng Phúc",
+      "slug": "thuong-phuc",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Thường Tín",
+      "slug": "thuong-tin",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Chương Dương",
+      "slug": "chuong-duong",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hồng Vân",
+      "slug": "hong-van",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phú Xuyên",
+      "slug": "phu-xuyen",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phượng Dực",
+      "slug": "phuong-duc",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Chuyên Mỹ",
+      "slug": "chuyen-my",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Đại Xuyên",
+      "slug": "dai-xuyen",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Thanh Oai",
+      "slug": "thanh-oai",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Bình Minh",
+      "slug": "binh-minh",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Tam Hưng",
+      "slug": "tam-hung",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Dân Hòa",
+      "slug": "dan-hoa",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Vân Đình",
+      "slug": "van-dinh",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Ứng Thiên",
+      "slug": "ung-thien",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hòa Xá",
+      "slug": "hoa-xa",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Ứng Hòa",
+      "slug": "ung-hoa",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Mỹ Đức",
+      "slug": "my-duc",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hồng Sơn",
+      "slug": "hong-son",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phúc Sơn",
+      "slug": "phuc-son",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hương Sơn",
+      "slug": "huong-son",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phú Nghĩa",
+      "slug": "phu-nghia",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Xuân Mai",
+      "slug": "xuan-mai",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Trần Phú",
+      "slug": "tran-phu",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hòa Phú",
+      "slug": "hoa-phu",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Quảng Bị",
+      "slug": "quang-bi",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Minh Châu",
+      "slug": "minh-chau",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Quảng Oai",
+      "slug": "quang-oai",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Vật Lại",
+      "slug": "vat-lai",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Cổ Đô",
+      "slug": "co-do",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Bất Bạt",
+      "slug": "bat-bat",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Suối Hai",
+      "slug": "suoi-hai",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Ba Vì",
+      "slug": "ba-vi",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Yên Bài",
+      "slug": "yen-bai",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Đoài Phương",
+      "slug": "doai-phuong",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phúc Thọ",
+      "slug": "phuc-tho",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phúc Lộc",
+      "slug": "phuc-loc",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hát Môn",
+      "slug": "hat-mon",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Thạch Thất",
+      "slug": "thach-that",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hạ Bằng",
+      "slug": "ha-bang",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Tây Phương",
+      "slug": "tay-phuong",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hòa Lạc",
+      "slug": "hoa-lac",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Yên Xuân",
+      "slug": "yen-xuan",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Quốc Oai",
+      "slug": "quoc-oai",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hưng Đạo",
+      "slug": "hung-dao",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Kiều Phú",
+      "slug": "kieu-phu",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Phú Cát",
+      "slug": "phu-cat",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    },
+    {
+      "name": "Hoài Đức",
+      "slug": "hoai-duc",
+      "type": "xã",
+      "parent": "Hà Nội",
+      "city": "Hà Nội",
+      "active": true
+    }
+  ],
+  "xa_note": "The xã list below contains 51 of the 75 official communes (the subset verified verbatim from the resolution text during the 2026-09-27 foundation run). Complete the list before generating LOCAL content targeting the remaining communes; never generate content for an unverified locality."
+}
