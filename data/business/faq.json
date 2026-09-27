@@ -4,7 +4,7 @@
     "name": "MotoAI",
     "greeting": "Xin chào! Mình là trợ lý của Nguyễn Tú. Thuê xe nhanh: tìm Google “Thuê xe máy Nguyễn Tú” để xem bản đồ và chỉ đường 😎",
     "placeholder": "Nhập câu hỏi của bạn...",
-    "not_found": "Mình chưa có thông tin chắc chắn về nội dung này. Bạn có thể liên hệ Nguyễn Tú qua Zalo, WhatsApp hoặc điện thoại để xác nhận.",
+    "not_found": "Mình chưa có thông tin chắc chắn về nội dung này. Bạn có thể liên hệ Nguyễn Tú qua WhatsApp hoặc điện thoại để xác nhận.",
     "disclosure": "Trợ lý trả lời tự động dựa trên dữ liệu có sẵn trên website. Không sử dụng API AI."
   },
   "quick_questions": [
@@ -42,11 +42,6 @@
       "id": "insurance",
       "question": "Bảo hiểm",
       "answer": "Không cung cấp bảo hiểm. Người thuê cần tự chuẩn bị bảo hiểm xe máy của riêng mình."
-    },
-    {
-      "id": "zalo",
-      "question": "Zalo",
-      "answer": "Bạn có thể liên hệ Nguyễn Tú qua Zalo."
     },
     {
       "id": "whatsapp",

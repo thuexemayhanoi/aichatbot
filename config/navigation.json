@@ -1,49 +1,166 @@
 {
   "$schema": "motoai/navigation@1",
   "note": "Single source of truth for the global menu (Agent drawer) and the shared blog footer. Labels are short (1-2 words); long SEO keywords live in page content, never in navigation.",
-  "agent": { "label": "Agent", "icon": "⚡", "url": "/aichatbot/" },
+  "agent": {
+    "label": "Agent",
+    "icon": "⚡",
+    "url": "/aichatbot/"
+  },
   "categories": [
-    { "id": "APP", "label": "Ứng Dụng", "icon": "📱", "url": "/aichatbot/blog/app/" },
-    { "id": "GUIDE", "label": "Hướng Dẫn", "icon": "📄", "url": "/aichatbot/blog/huong-dan/" },
-    { "id": "RENT", "label": "Thuê Xe", "icon": "🏍️", "url": "/aichatbot/blog/thue-xe/" },
-    { "id": "EV", "label": "Xe Điện", "icon": "⚡", "url": "/aichatbot/blog/xe-dien/" },
-    { "id": "SAFE", "label": "An Toàn", "icon": "🛡️", "url": "/aichatbot/blog/an-toan/" },
-    { "id": "LOCAL", "label": "Địa Phương", "icon": "📍", "url": "/aichatbot/blog/dia-phuong/" }
+    {
+      "id": "APP",
+      "label": "Ứng Dụng",
+      "icon": "📱",
+      "url": "/aichatbot/blog/app/"
+    },
+    {
+      "id": "GUIDE",
+      "label": "Hướng Dẫn",
+      "icon": "📄",
+      "url": "/aichatbot/blog/huong-dan/"
+    },
+    {
+      "id": "RENT",
+      "label": "Thuê Xe",
+      "icon": "🏍️",
+      "url": "/aichatbot/blog/thue-xe/"
+    },
+    {
+      "id": "EV",
+      "label": "Xe Điện",
+      "icon": "⚡",
+      "url": "/aichatbot/blog/xe-dien/"
+    },
+    {
+      "id": "SAFE",
+      "label": "An Toàn",
+      "icon": "🛡️",
+      "url": "/aichatbot/blog/an-toan/"
+    },
+    {
+      "id": "LOCAL",
+      "label": "Địa Phương",
+      "icon": "📍",
+      "url": "/aichatbot/blog/dia-phuong/"
+    }
   ],
-  "search": { "label": "Tìm Bài", "icon": "🔎", "url": "/aichatbot/blog/" },
+  "search": {
+    "label": "Tìm Bài",
+    "icon": "🔎",
+    "url": "/aichatbot/blog/"
+  },
   "services": [
-    { "label": "Giá Thuê", "icon": "💰", "action": "price" },
-    { "label": "Địa Chỉ", "icon": "📍", "action": "address" },
-    { "label": "Liên Hệ", "icon": "☎️", "action": "contact" },
-    { "label": "Gọi", "icon": "📞", "ref": "call" },
-    { "label": "Zalo", "icon": "💬", "ref": "zalo" },
-    { "label": "WhatsApp", "icon": "🟢", "ref": "whatsapp" },
-    { "label": "Bản Đồ", "icon": "🗺️", "ref": "map" }
+    {
+      "label": "Giá Thuê",
+      "icon": "💰",
+      "action": "price"
+    },
+    {
+      "label": "Địa Chỉ",
+      "icon": "📍",
+      "action": "address"
+    },
+    {
+      "label": "Liên Hệ",
+      "icon": "☎️",
+      "action": "contact"
+    },
+    {
+      "label": "Gọi",
+      "icon": "📞",
+      "ref": "call"
+    },
+    {
+      "label": "WhatsApp",
+      "icon": "🟢",
+      "ref": "whatsapp"
+    },
+    {
+      "label": "Bản Đồ",
+      "icon": "🗺️",
+      "ref": "map"
+    }
   ],
   "legal": [
-    { "label": "Bảo Mật", "icon": "🔒", "url": "/aichatbot/privacy/" },
-    { "label": "Điều Khoản", "icon": "📃", "url": "/aichatbot/terms/" }
+    {
+      "label": "Bảo Mật",
+      "icon": "🔒",
+      "url": "/aichatbot/privacy/"
+    },
+    {
+      "label": "Điều Khoản",
+      "icon": "📃",
+      "url": "/aichatbot/terms/"
+    }
   ],
   "footer_groups": [
-    { "title": "ỨNG DỤNG", "items": [
-      { "label": "Agent", "url": "/aichatbot/" },
-      { "label": "Ứng Dụng", "url": "/aichatbot/blog/app/" },
-      { "label": "Hướng Dẫn", "url": "/aichatbot/blog/huong-dan/" }
-    ]},
-    { "title": "THUÊ XE", "items": [
-      { "label": "Thuê Xe", "url": "/aichatbot/blog/thue-xe/" },
-      { "label": "Xe Điện", "url": "/aichatbot/blog/xe-dien/" }
-    ]},
-    { "title": "KHÁM PHÁ", "items": [
-      { "label": "An Toàn", "url": "/aichatbot/blog/an-toan/" },
-      { "label": "Địa Phương", "url": "/aichatbot/blog/dia-phuong/" },
-      { "label": "Tìm Bài", "url": "/aichatbot/blog/" }
-    ]},
-    { "title": "HỖ TRỢ", "items": [
-      { "label": "Liên Hệ", "url": "/aichatbot/" },
-      { "label": "Bản Đồ", "ref": "map" },
-      { "label": "Bảo Mật", "url": "/aichatbot/privacy/" },
-      { "label": "Điều Khoản", "url": "/aichatbot/terms/" }
-    ]}
+    {
+      "title": "ỨNG DỤNG",
+      "items": [
+        {
+          "label": "Agent",
+          "url": "/aichatbot/"
+        },
+        {
+          "label": "Ứng Dụng",
+          "url": "/aichatbot/blog/app/"
+        },
+        {
+          "label": "Hướng Dẫn",
+          "url": "/aichatbot/blog/huong-dan/"
+        }
+      ]
+    },
+    {
+      "title": "THUÊ XE",
+      "items": [
+        {
+          "label": "Thuê Xe",
+          "url": "/aichatbot/blog/thue-xe/"
+        },
+        {
+          "label": "Xe Điện",
+          "url": "/aichatbot/blog/xe-dien/"
+        }
+      ]
+    },
+    {
+      "title": "KHÁM PHÁ",
+      "items": [
+        {
+          "label": "An Toàn",
+          "url": "/aichatbot/blog/an-toan/"
+        },
+        {
+          "label": "Địa Phương",
+          "url": "/aichatbot/blog/dia-phuong/"
+        },
+        {
+          "label": "Tìm Bài",
+          "url": "/aichatbot/blog/"
+        }
+      ]
+    },
+    {
+      "title": "HỖ TRỢ",
+      "items": [
+        {
+          "label": "Liên Hệ",
+          "url": "/aichatbot/"
+        },
+        {
+          "label": "Bản Đồ",
+          "ref": "map"
+        },
+        {
+          "label": "Bảo Mật",
+          "url": "/aichatbot/privacy/"
+        },
+        {
+          "label": "Điều Khoản",
+          "url": "/aichatbot/terms/"
+        }
+      ]
+    }
   ]
 }

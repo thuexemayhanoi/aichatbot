@@ -56,7 +56,7 @@ Record results of the latest review in `reports/` (see the run report of each sc
 
 ## v56 — Blog App Foundation UX decisions (2026-09-27)
 
-- MENU: drawer giữ ngôn ngữ app; nhóm Cẩm nang chứa đủ 6 danh mục (nhãn ngắn: Ứng Dụng, Hướng Dẫn, Thuê Xe, Xe Điện, An Toàn, Địa Phương) + Tìm Bài; nhóm Dịch vụ chứa Giá Thuê/Địa Chỉ/Liên Hệ/Gọi/Zalo/WhatsApp/Bản Đồ; nhóm Pháp lý chứa Bảo Mật/Điều Khoản. Nhãn UI ngắn 1–2 từ; từ khóa SEO nằm trong nội dung, không nằm trong navigation.
+- MENU: drawer giữ ngôn ngữ app; nhóm Cẩm nang chứa đủ 6 danh mục (nhãn ngắn: Ứng Dụng, Hướng Dẫn, Thuê Xe, Xe Điện, An Toàn, Địa Phương) + Tìm Bài; nhóm Dịch vụ chứa Giá Thuê/Địa Chỉ/Liên Hệ/Gọi/WhatsApp/Bản Đồ (v57: Zalo bị loại khỏi giao diện khách); nhóm Pháp lý chứa Bảo Mật/Điều Khoản. Nhãn UI ngắn 1–2 từ; từ khóa SEO nằm trong nội dung, không nằm trong navigation.
 - MENU ↔ FOOTER: một nguồn sự thật `config/navigation.json`; cùng nhãn + cùng URL ở cả hai bề mặt (test `blog-app-foundation.test.js`).
 - FOOTER: chỉ ở các màn hình content (blog home, hub, subtopic, bài viết, privacy, terms). Màn hình chat Agent giữ full-screen: dock + drawer, KHÔNG nhét footer vào viewport chat (decision per §75 của đề án). Dock 4 item giữ nguyên (Dịch vụ/Liên hệ/Giá thuê/Bản đồ) — audit: vẫn là bộ tốt nhất, không tăng.
 - BÀI VIẾT: màn hình chi tiết app — chips danh mục/subtopic, H1, dek, meta, TOC (mobile: accordion "Mục lục"; ≥1024px: sticky rail 230px, content 720px, container ≤1180px), related, CTA "⚡ Hỏi Agent", footer.

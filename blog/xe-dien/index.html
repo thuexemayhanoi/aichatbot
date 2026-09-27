@@ -6,6 +6,7 @@
   <title>Xe điện / xe máy điện — Cẩm nang thuê xe máy &amp; xe điện</title>
   <meta name="description" content="Thuê xe điện: tầm hoạt động theo pin, cách sạc, chi phí và cách chọn xe máy điện phù hợp với hành trình của bạn.">
   <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/blog/xe-dien/">
+  <meta name="theme-color" content="#4f46e5">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
   <meta property="og:locale" content="vi_VN">
@@ -20,85 +21,134 @@
   <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
 </head>
 <body>
-<main class="blog-page">
-  <header class="blog-header">
-    <a class="blog-back" href="/aichatbot/">← Agent</a>
-    <a class="blog-brand" href="/aichatbot/blog/">Cẩm nang</a>
-    <div class="blog-header-tools">
-      <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động">Auto</button>
-    </div>
-  </header>
-  <p class="blog-status" id="blog-business-status" hidden></p>
-  <nav class="blog-categories" aria-label="Danh mục">
-      <a href="/aichatbot/blog/app/">Ứng Dụng</a>
-      <a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a>
-      <a href="/aichatbot/blog/thue-xe/">Thuê Xe</a>
-      <a href="/aichatbot/blog/xe-dien/" aria-current="page">Xe Điện</a>
-      <a href="/aichatbot/blog/an-toan/">An Toàn</a>
-      <a href="/aichatbot/blog/dia-phuong/">Địa Phương</a>
-  </nav>
+  <main class="motoai-shell motoai-shell-content">
+    <section class="motoai-app motoai-screen" id="motoai-app" data-motoai-screen="category-xe-dien">
+    <header class="motoai-header">
+      <a class="motoai-header-text" href="/aichatbot/" aria-label="Về màn hình Agent">
+        <div class="motoai-brand-mark" aria-hidden="true">🏍️</div>
+        <div>
+          <p class="motoai-title">Hỗ trợ Agent</p>
+          <p class="motoai-subtitle">112 Nguyễn Văn Cừ, Long Biên, Hà Nội · Cẩm nang</p>
+        </div>
+      </a>
+      <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+      <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer" data-screen="category-xe-dien">☰ <span class="motoai-menu-label">Menu</span></button>
+    </header>
 
-  <nav class="blog-breadcrumb"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <span>Xe Điện</span></nav>
-  <section class="blog-hero">
-    <h1>Xe điện / xe máy điện</h1>
-    <p>Thuê xe điện: pin, phạm vi, sạc và cách chọn xe điện phù hợp.</p>
-    <p>Thuê xe máy điện: tầm hoạt động theo pin, cách sạc, chi phí và cách chọn xe điện phù hợp với hành trình của bạn.</p>
-  </section>
-  <div class="blog-grid">
-      <p class="blog-empty">Chưa có bài đã xuất bản trong danh mục này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>
-  </div>
-  <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></p>
-  <div class="blog-cta">
-    <p>Hỏi Agent về chủ đề này để nhận trả lời từ dữ liệu cửa hàng đã xác minh.</p>
-    <div class="blog-contacts">
-      <a class="blog-contact" href="/aichatbot/">⚡ Hỏi Agent</a>
-      <a class="blog-contact" data-contact-ref="call" href="#">📞 Gọi</a>
-      <a class="blog-contact" data-contact-ref="zalo" href="#">💬 Zalo</a>
-      <a class="blog-contact" data-contact-ref="whatsapp" href="#">🟢 WhatsApp</a>
-      <a class="blog-contact" data-contact-ref="map" href="#">🗺️ Bản đồ</a>
+      <section class="motoai-screen-body" id="motoai-screen-body">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <span>Xe Điện</span></nav>
+      <p class="blog-screen-label">Danh mục</p>
+      <h1 class="blog-screen-title">Xe điện / xe máy điện</h1>
+      <p class="blog-screen-lead">Thuê xe điện: pin, phạm vi, sạc và cách chọn xe điện phù hợp.</p>
+      <p class="blog-screen-lead">Thuê xe máy điện: tầm hoạt động theo pin, cách sạc, chi phí và cách chọn xe điện phù hợp với hành trình của bạn.</p>
+      <div class="blog-chips" aria-label="Danh mục">
+        <a class="blog-chip" href="/aichatbot/blog/app/">Ứng Dụng</a>
+        <a class="blog-chip" href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a>
+        <a class="blog-chip" href="/aichatbot/blog/thue-xe/">Thuê Xe</a>
+        <a class="blog-chip" href="/aichatbot/blog/xe-dien/" aria-current="page">Xe Điện</a>
+        <a class="blog-chip" href="/aichatbot/blog/an-toan/">An Toàn</a>
+        <a class="blog-chip" href="/aichatbot/blog/dia-phuong/">Địa Phương</a>
+      </div>
+      <div class="blog-grid">
+        <p class="blog-empty">Chưa có bài đã xuất bản trong danh mục này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>
+      </div>
+      <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/aichatbot/?ask=Xe%20%C4%91i%E1%BB%87n%20%2F%20xe%20m%C3%A1y%20%C4%91i%E1%BB%87n">⚡ Hỏi Agent về chủ đề này</a>
     </div>
-  </div>
 
-  <footer class="blog-footer">
-    <div class="blog-footer-brand">
-      <a class="blog-footer-agent" href="/aichatbot/">⚡ Agent</a>
-      <p>Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
-    </div>
-    <nav class="blog-footer-nav" aria-label="Chân trang">
+    <footer class="blog-footer">
+      <div class="blog-footer-brand">
+        <a class="blog-footer-agent" href="/aichatbot/">⚡ Agent</a>
+        <p>Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+      </div>
+      <nav class="blog-footer-nav" aria-label="Chân trang">
       <div class="blog-footer-col">
         <p class="blog-footer-title">ỨNG DỤNG</p>
         <ul>
-        <li><a href="/aichatbot/">Agent</a></li>
-        <li><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
-        <li><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
+          <li><a href="/aichatbot/">Agent</a></li>
+          <li><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
+          <li><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
         </ul>
       </div>
       <div class="blog-footer-col">
         <p class="blog-footer-title">THUÊ XE</p>
         <ul>
-        <li><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
-        <li><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
+          <li><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
+          <li><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
         </ul>
       </div>
       <div class="blog-footer-col">
         <p class="blog-footer-title">KHÁM PHÁ</p>
         <ul>
-        <li><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
-        <li><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
-        <li><a href="/aichatbot/blog/">Tìm Bài</a></li>
+          <li><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
+          <li><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
+          <li><a href="/aichatbot/blog/">Tìm Bài</a></li>
         </ul>
       </div>
       <div class="blog-footer-col">
         <p class="blog-footer-title">HỖ TRỢ</p>
         <ul>
-        <li><a href="/aichatbot/">Liên Hệ</a></li>
-        <li><a data-contact-ref="map" href="/aichatbot/">Bản Đồ</a></li>
-        <li><a href="/aichatbot/privacy/">Bảo Mật</a></li>
-        <li><a href="/aichatbot/terms/">Điều Khoản</a></li>
+          <li><a href="/aichatbot/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/aichatbot/">Bản Đồ</a></li>
+          <li><a href="/aichatbot/privacy/">Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">Điều Khoản</a></li>
         </ul>
       </div>
+      </nav>
+    </footer>
+
+      </section>
+    <nav class="motoai-dock" id="motoai-dock" aria-label="Điều hướng nhanh">
+      <a class="motoai-dock-item" href="/aichatbot/blog/thue-xe/"><span class="motoai-dock-icon" aria-hidden="true">🛵</span><span>Dịch vụ</span></a>
+      <a class="motoai-dock-item" href="/aichatbot/?action=contact"><span class="motoai-dock-icon" aria-hidden="true">☎️</span><span>Liên hệ</span></a>
+      <a class="motoai-dock-item" href="/aichatbot/?action=price"><span class="motoai-dock-icon" aria-hidden="true">💰</span><span>Giá thuê</span></a>
+      <a class="motoai-dock-item" data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank"><span class="motoai-dock-icon" aria-hidden="true">🗺️</span><span>Bản đồ</span></a>
     </nav>
-  </footer>
+
+    </section>
+  </main>
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/aichatbot/">⚡ Agent</a></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li><a href="/aichatbot/blog/app/">📱 Ứng Dụng</a></li>
+          <li><a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+          <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+          <li><a href="/aichatbot/blog/xe-dien/" aria-current="page">⚡ Xe Điện</a></li>
+          <li><a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a></li>
+          <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a></li>
+          <li><a href="/aichatbot/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/aichatbot/?action=price">💰 Giá Thuê</a></li>
+          <li><a href="/aichatbot/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/aichatbot/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/aichatbot/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 
   <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CollectionPage","name":"Xe điện / xe máy điện","description":"Thuê xe điện: tầm hoạt động theo pin, cách sạc, chi phí và cách chọn xe máy điện phù hợp với hành trình của bạn.","url":"https://thuexemayhanoi.github.io/aichatbot/blog/xe-dien/","isPartOf":{"@type":"WebSite","name":"MotoAI — Cẩm nang thuê xe máy & xe điện","url":"https://thuexemayhanoi.github.io/aichatbot/"}}
@@ -106,9 +156,7 @@
   <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://thuexemayhanoi.github.io/aichatbot/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://thuexemayhanoi.github.io/aichatbot/blog/"},{"@type":"ListItem","position":3,"name":"Xe Điện","item":"https://thuexemayhanoi.github.io/aichatbot/blog/xe-dien/"}]}
   </script>
-  <script src="/aichatbot/assets/js/blog.js"></script>
-  <script type="module" src="/aichatbot/assets/js/blog-app.js"></script>
 
-</main>
+  <script type="module" src="/aichatbot/assets/js/app-shell.js"></script>
 </body>
 </html>
