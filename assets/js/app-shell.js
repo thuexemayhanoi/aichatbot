@@ -8,8 +8,8 @@
  * - Contact hrefs filled from verified business.json — never hard-coded
  * Pure vanilla ES module; no framework, no backend.
  */
-import { initTheme } from './theme.js';
-import { computeStatus, renderStatus } from './business-status.js';
+import { initTheme } from './theme.js?v=60';
+import { computeStatus, renderStatus } from './business-status.js?v=60';
 
 initTheme({ storage: globalThis.localStorage, matchMedia: globalThis.matchMedia?.bind(globalThis) });
 
@@ -84,3 +84,18 @@ if (needsData) {
     })
     .catch(() => { /* data unavailable: status stays hidden, links stay hidden */ });
 }
+
+// --- v60 scroll diagnostic (tiny, dev-friendly) ---
+// On the owner's iPhone: open the page, and the console shows whether the
+// document scrolls past the viewport and the footer is reachable.
+window.addEventListener('load', () => {
+  const doc = document.documentElement;
+  const footer = document.querySelector('.blog-footer');
+  const maxScrollY = Math.max(0, doc.scrollHeight - window.innerHeight);
+  console.info(
+    `[MotoAI v60] build=${document.querySelector('meta[name="motoai-build"]')?.content}` +
+    ` scrollHeight=${doc.scrollHeight} innerHeight=${window.innerHeight}` +
+    ` maxScrollY=${maxScrollY}` +
+    ` footer=${footer ? 'present, bottom at ' + Math.round(footer.getBoundingClientRect().top + window.scrollY) : 'MISSING'}`
+  );
+});

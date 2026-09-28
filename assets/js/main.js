@@ -10,7 +10,7 @@ import { detectCapabilities } from '../../src/ai/capability.js';
 import { DEFAULT_CHIPS, resolveChipHref } from '../../src/app/suggestions.js';
 import { ENABLE_STORAGE_KEY } from './ai-settings.js';
 import { initPwa } from './pwa.js';
-import { initTheme } from './theme.js';
+import { initTheme } from './theme.js?v=60';
 
 const DATA_FILES = [
   ['business', 'data/business/business.json'],

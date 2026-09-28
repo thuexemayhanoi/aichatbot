@@ -82,14 +82,29 @@ html[data-motoai-theme="dark"] {
 /* ---------- Base ---------- */
 * { box-sizing: border-box; }
 
-html, body {
+/* v60: the ROOT document is a normal scrolling document by default.
+   No global html/body height:100% — no global overflow lock. The chat
+   homepage (body.chat-home) locks its own viewport below; content pages
+   never inherit any app lock. */
+html {
   margin: 0;
   padding: 0;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   background: var(--color-bg);
   color: var(--color-text);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: inherit;
 }
 
 /* ---------- App shell ---------- */
@@ -709,10 +724,12 @@ body[data-motoai-embed="1"] .motoai-drawer,
 body[data-motoai-embed="1"] .motoai-drawer-backdrop,
 body[data-motoai-embed="1"] .motoai-menu { display: none; }
 body[data-motoai-embed="1"] .motoai-app { max-width: none; height: 100%; min-height: 0; }
-/* ---------- v47.4: mobile app-lock refinements (iPhone Safari) ---------- */
-/* The document never scroll-panes during chat use: the body is locked and
-   only .motoai-messages scrolls. Embed mode keeps its own document flow. */
-html, body { overflow: hidden; overscroll-behavior: none; }
+/* ---------- v47.4 / v60: mobile app-lock refinements (iPhone Safari) ----------
+   The document never scroll-panes during chat use: CHAT HOMEPAGE ONLY
+   (body.chat-home) locks the viewport. Per CSS spec, overflow on body with
+   html:visible propagates to the viewport — no html-level lock needed.
+   Content pages never load this lock. Embed mode keeps its own flow. */
+body.chat-home { overflow: hidden; overscroll-behavior: none; }
 body[data-motoai-embed="1"] { overflow: auto; overscroll-behavior: auto; } /* embed unchanged */
 
 /* App pinned edge-to-edge: the header can never drift under Safari chrome. */

@@ -2,28 +2,40 @@
    MotoAI content shell — compact site header, main column, real footer.
    Same design tokens as the chat homepage (colors, type, radius, theme). */
 
-/* ---------- Document scroll (v59) ----------
-   Content pages are NORMAL website pages: the document scrolls.
-   The chat app's html/body{height:100%} + .motoai-app{height:100dvh}
-   viewport lock applies ONLY to the chat homepage (index.html), never here. */
-html:has(body.content-page),
-body.content-page {
-  height: auto;
+/* ---------- Document scroll (v60) ----------
+   Content pages are NORMAL website pages: the DOCUMENT scrolls.
+   Direct, no :has() dependency, no iOS hacks: style.css no longer sets any
+   global html/body height or overflow lock (the chat homepage locks its
+   own viewport via body.chat-home), so this is belt-and-braces only. */
+html {
+  height: auto !important;
   min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 body.content-page {
-  overflow-x: hidden;                /* no horizontal page leak */
-  overflow-y: auto;                  /* normal document scrolling */
-  -webkit-overflow-scrolling: touch; /* iOS Safari momentum scroll */
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+  position: static;
 }
 body.content-page .site-main {
-  height: auto;
+  height: auto !important;
   min-height: 0;
-  overflow: visible;
+  max-height: none !important;
+  overflow: visible !important;
+  position: static;
 }
-@supports not (selector(:has(*))) {
-  body.content-page { min-height: 100vh; } /* old-browser fallback, no dvh lock */
-}
+body.content-page .blog-footer { position: static; }
+
+/* Closed drawer/backdrop must NEVER intercept touch gestures.
+   The hidden attribute fully removes them from layout AND hit-testing. */
+[hidden] { display: none !important; }
+#motoai-drawer-backdrop[hidden],
+#motoai-drawer[hidden] { display: none !important; pointer-events: none; }
+#motoai-drawer-backdrop,
+#motoai-drawer:not([hidden]) { pointer-events: auto; }
 
 /* ---------- Site header (shared chrome, generated from app-shell.mjs) ---------- */
 .site-header {

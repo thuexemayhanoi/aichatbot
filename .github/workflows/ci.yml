@@ -36,4 +36,6 @@ jobs:
           # v58 bumps the guard 220KB -> 222KB: blog search gains category
           # filter + clear + result count, and the chat homepage gains the
           # Auto/Sáng/Tối theme toggle (initTheme wiring in main.js).
-          test "$total" -lt 222000
+          # v60 bumps 222KB -> 223KB: app-shell.js gains a tiny build/scroll
+          # diagnostic for on-device verification (owner iPhone testing).
+          test "$total" -lt 223000
