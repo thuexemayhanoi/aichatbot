@@ -4,39 +4,42 @@
   "clusters": [
     {
       "id": "C-APP",
-      "name": "Ứng Dụng",
-      "desc": "Ứng dụng thuê xe và hướng dẫn sử dụng.",
+      "name": "Công cụ & Hướng dẫn",
+      "desc": "Công cụ và hướng dẫn sử dụng MotoAI: ứng dụng thuê xe, thủ tục nhận xe, giấy tờ và đặt cọc.",
       "categories": [
         "APP",
         "GUIDE"
       ],
       "dir": "cong-cu-huong-dan",
-      "intro": "Công cụ và hướng dẫn sử dụng MotoAI: từ ứng dụng web thuê xe đến thủ tục nhận xe, giấy tờ và đặt cọc.",
-      "meta": "Công cụ và hướng dẫn sử dụng MotoAI: ứng dụng web thuê xe, Agent hỗ trợ, thủ tục, giấy tờ và đặt cọc."
+      "intro": "Công cụ và hướng dẫn sử dụng MotoAI: từ ứng dụng web thuê xe và Agent hỗ trợ đến thủ tục nhận xe, giấy tờ cần mang và tiền đặt cọc — mọi bước để thuê xe nhanh và đúng quy trình.",
+      "meta": "Công cụ và hướng dẫn sử dụng MotoAI: ứng dụng web thuê xe, Agent hỗ trợ, thủ tục nhận xe, giấy tờ và đặt cọc.",
+      "icon": "🧰"
     },
     {
       "id": "C-RENT",
-      "name": "Thuê Xe",
-      "desc": "Thuê xe máy và xe điện: giá, thủ tục, chọn xe.",
+      "name": "Thuê xe & Phương tiện",
+      "desc": "Thuê xe máy và xe điện: bảng giá theo ngày tuần tháng, chọn xe số hay xe ga, pin và sạc cho xe điện.",
       "categories": [
         "RENT",
         "EV"
       ],
       "dir": "thue-xe-phuong-tien",
-      "intro": "Thuê xe máy và xe điện: bảng giá theo ngày tuần tháng, chọn xe số hay xe ga, pin và sạc cho xe điện.",
-      "meta": "Thuê xe máy và xe điện: bảng giá theo ngày tuần tháng, chọn xe số hay xe ga, pin, sạc và chi phí xe điện."
+      "intro": "Chọn đúng phương tiện cho chuyến đi: bảng giá thuê xe máy theo ngày, tuần, tháng; xe số hay xe ga; và khi nào xe máy điện là lựa chọn tốt hơn về chi phí, pin và phạm vi hoạt động.",
+      "meta": "Thuê xe máy và xe điện: bảng giá theo ngày tuần tháng, chọn xe số hay xe ga, pin, sạc và chi phí xe điện.",
+      "icon": "🏍️"
     },
     {
       "id": "C-EXPLORE",
-      "name": "Khám Phá",
-      "desc": "An toàn và hành trình địa phương Hà Nội.",
+      "name": "Khám phá & An toàn",
+      "desc": "An toàn giao thông và hành trình địa phương Hà Nội: kỹ năng lái xe, luật giao thông và cung đường tham quan.",
       "categories": [
         "SAFE",
         "LOCAL"
       ],
       "dir": "kham-pha-an-toan",
-      "intro": "An toàn giao thông và hành trình địa phương Hà Nội: kỹ năng lái xe, luật giao thông và cung đường tham quan.",
-      "meta": "An toàn giao thông và hành trình địa phương Hà Nội: kỹ năng lái xe, luật giao thông, cung đường và điểm tham quan."
+      "intro": "Khám phá Hà Nội và vùng ven bằng xe máy thuê một cách an toàn: kỹ năng lái xe, trang bị bảo hộ, luật giao thông cần biết và gợi ý cung đường, điểm đến theo khu vực.",
+      "meta": "An toàn giao thông và hành trình địa phương Hà Nội: kỹ năng lái xe, luật giao thông, cung đường và điểm tham quan.",
+      "icon": "🧭"
     }
   ],
   "categories": {

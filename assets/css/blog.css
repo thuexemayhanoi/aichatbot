@@ -382,3 +382,264 @@ body.content-page .blog-footer { position: static; }
 
 /* Clear footer separation on every content page. */
 body.content-page .blog-footer { margin-top: 0; }
+
+/* ==========================================================================
+   v61 — Glassmorphism 2.0 / Liquid Glass 2026 (blog/content pages ONLY).
+   Scoped to body.content-page + .blog-* + .site-* classes; the chat
+   homepage (body.chat-home) never loads blog.css, so the Agent UI is
+   untouched. CSS-first: no libraries, no WebGL, backdrop-filter with a
+   solid fallback when unsupported, prefers-reduced-motion respected.
+   ========================================================================== */
+
+/* ---------- Glass tokens (light + dark) ---------- */
+body.content-page {
+  --glass-bg: rgba(255, 255, 255, 0.58);
+  --glass-bg-strong: rgba(255, 255, 255, 0.74);
+  --glass-bg-soft: rgba(255, 255, 255, 0.38);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-border-soft: rgba(15, 23, 42, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.85);
+  --glass-blur: 16px;
+  --glass-shadow: 0 6px 24px rgba(31, 41, 55, 0.08), 0 1px 3px rgba(31, 41, 55, 0.06);
+  --glass-shadow-lift: 0 12px 32px rgba(31, 41, 55, 0.14), 0 2px 6px rgba(31, 41, 55, 0.08);
+}
+html[data-motoai-theme="dark"] body.content-page {
+  --glass-bg: rgba(22, 24, 33, 0.6);
+  --glass-bg-strong: rgba(26, 28, 38, 0.82);
+  --glass-bg-soft: rgba(22, 24, 33, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-border-soft: rgba(255, 255, 255, 0.07);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 6px 24px rgba(0, 0, 0, 0.32), 0 1px 3px rgba(0, 0, 0, 0.24);
+  --glass-shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.42), 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Ambient background (CSS-only, no images) ---------- */
+body.content-page {
+  background:
+    radial-gradient(560px 320px at 8% -4%, rgba(79, 70, 229, 0.1), transparent 70%),
+    radial-gradient(640px 380px at 96% 4%, rgba(99, 102, 241, 0.09), transparent 72%),
+    radial-gradient(520px 420px at 50% 108%, rgba(139, 92, 246, 0.07), transparent 70%),
+    #f7f8fc;
+  background-attachment: fixed;
+}
+html[data-motoai-theme="dark"] body.content-page {
+  background:
+    radial-gradient(560px 320px at 8% -4%, rgba(99, 102, 241, 0.14), transparent 70%),
+    radial-gradient(640px 380px at 96% 4%, rgba(124, 58, 237, 0.1), transparent 72%),
+    radial-gradient(520px 420px at 50% 108%, rgba(79, 70, 229, 0.08), transparent 70%),
+    #0d0e14;
+}
+
+/* ---------- Glass utilities ---------- */
+body.content-page .glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.6);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.6);
+  border: 1px solid var(--glass-border-soft);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  body.content-page { --glass-bg: rgba(255, 255, 255, 0.96); --glass-bg-soft: rgba(255, 255, 255, 0.96); --glass-bg-strong: #fff; }
+  html[data-motoai-theme="dark"] body.content-page { --glass-bg: #16181f; --glass-bg-soft: #16181f; --glass-bg-strong: #1b1d26; }
+}
+
+/* ---------- Liquid Glass header ---------- */
+body.content-page .site-header {
+  border-bottom: 1px solid var(--glass-border-soft);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.7);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.7);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+}
+@media (max-width: 899.98px) {
+  body.content-page .site-header { top: 0; }
+  body.content-page .site-header::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 1px; pointer-events: none;
+  }
+}
+body.content-page .site-search-link {
+  border-radius: var(--radius-full);
+  background: var(--glass-bg-soft);
+  border: 1px solid var(--glass-border-soft);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+  min-width: 40px; min-height: 40px;
+}
+body.content-page .site-search-link:hover { background: var(--color-primary-soft); }
+
+/* ---------- Desktop hub dropdowns (parent hub + glass panel) ---------- */
+@media (min-width: 900px) {
+  .site-nav-item { position: relative; }
+  .site-nav-parent { white-space: nowrap; }
+  .site-nav-caret { font-size: 0.6rem; margin-left: 2px; opacity: 0.7; }
+  .site-nav-drop {
+    display: none;
+    position: absolute; top: calc(100% + 6px); left: 0; z-index: 60;
+    min-width: 220px; padding: 8px;
+    border-radius: 16px;
+    background: var(--glass-bg-strong);
+    -webkit-backdrop-filter: blur(18px) saturate(1.7);
+    backdrop-filter: blur(18px) saturate(1.7);
+    border: 1px solid var(--glass-border-soft);
+    box-shadow: var(--glass-shadow-lift), inset 0 1px 0 var(--glass-highlight);
+  }
+  .site-nav-drop::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 38%);
+  }
+  html[data-motoai-theme="dark"] .site-nav-drop::before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 38%);
+  }
+  .site-nav-drop a {
+    display: flex; align-items: center; gap: 8px;
+    min-height: 44px; padding: 8px 14px; border-radius: 12px;
+    white-space: nowrap; font-size: 0.88rem;
+  }
+  .site-nav-drop a:hover { background: var(--color-primary-soft); color: var(--color-primary); }
+  .site-nav-item:hover .site-nav-drop,
+  .site-nav-item:focus-within .site-nav-drop,
+  .site-nav-item.open .site-nav-drop { display: block; }
+  .site-nav-item[data-active="1"] > .site-nav-parent { color: var(--color-primary); font-weight: 650; }
+}
+
+/* ---------- Glass cards (article / category / cluster / related) ---------- */
+body.content-page .blog-card,
+body.content-page .blog-cat-card,
+body.content-page .blog-cluster-card,
+body.content-page .blog-summary,
+body.content-page .blog-toc-mobile,
+body.content-page .blog-toc-desktop,
+body.content-page .blog-legal-card,
+body.content-page .table-wrap,
+body.content-page .blog-article-body {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
+  border: 1px solid var(--glass-border-soft);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+  border-radius: 18px;
+}
+body.content-page .blog-cluster-card { border-radius: 20px; padding: 4px 4px 0; }
+body.content-page .blog-card,
+body.content-page .blog-cat-card,
+body.content-page .blog-cluster-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+body.content-page .blog-card:hover,
+body.content-page .blog-cat-card:hover,
+body.content-page .blog-cluster-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glass-shadow-lift), inset 0 1px 0 var(--glass-highlight);
+  border-color: var(--color-primary-soft);
+}
+body.content-page .blog-cluster-card:hover { border-color: var(--color-primary); }
+body.content-page .blog-card:hover { border-color: var(--color-primary); }
+
+/* ---------- Article readability first: near-opaque reading surface ---------- */
+body.content-page .blog-article-body {
+  background: var(--glass-bg-strong);
+  padding: 6px clamp(14px, 3vw, 28px) 18px;
+  font-size: clamp(16.6px, 0.55vw + 16.2px, 18px);
+  line-height: 1.78;
+}
+body.content-page .blog-article-body p,
+body.content-page .blog-article-body li { font-size: inherit; line-height: 1.78; }
+body.content-page .blog-article-body a { text-decoration: underline; text-underline-offset: 2px; }
+@media (min-width: 1024px) {
+  /* Reading column stays 680–760px inside the shell grid (720px). */
+  body.content-page .blog-article-layout { gap: 40px; }
+}
+
+/* ---------- Liquid Glass chips / pills ---------- */
+body.content-page .blog-chip {
+  background: var(--glass-bg-soft);
+  border: 1px solid var(--glass-border-soft);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+  border-radius: var(--radius-full);
+}
+body.content-page .blog-chip:hover { background: var(--color-primary-soft); border-color: var(--color-primary); }
+body.content-page .blog-chip[aria-current="page"] {
+  background: linear-gradient(180deg, var(--color-primary), color-mix(in srgb, var(--color-primary) 82%, #000));
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+body.content-page .blog-chip-parent { font-weight: 600; }
+
+/* ---------- CTA: stronger accent glass ---------- */
+body.content-page .screen-ask-btn {
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+body.content-page .blog-search input,
+body.content-page .blog-search select {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border-soft);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+  border-radius: 14px;
+}
+body.content-page .blog-search button { border-radius: 14px; }
+
+/* ---------- Hub parent / cluster context links ---------- */
+.blog-hub-parent { margin: 0 0 var(--space-3); font-size: 0.82rem; color: var(--color-text-muted); }
+.blog-hub-parent a { color: var(--color-primary); text-decoration: none; font-weight: 650; }
+.blog-hub-parent a:hover { text-decoration: underline; }
+.blog-hub-cluster { margin: var(--space-3) 0 0; font-size: 0.84rem; color: var(--color-text-muted); }
+.blog-hub-cluster a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
+.blog-hub-cluster a:hover { text-decoration: underline; }
+.blog-cluster-child { display: flex; flex-direction: column; gap: var(--space-3); }
+.blog-cluster-child .blog-cat-card { margin-bottom: 0; }
+
+/* ---------- Glass footer ---------- */
+body.content-page .blog-footer {
+  border-top: 1px solid var(--glass-border-soft);
+  background: var(--glass-bg-soft);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+body.content-page .blog-footer-col a { min-height: 28px; }
+body.content-page .footer-hub-link { font-weight: 650; color: var(--color-primary); }
+body.content-page .footer-sub { padding-left: 12px; }
+body.content-page .footer-sub a::before { content: "↳ "; color: var(--color-text-muted); }
+.blog-footer-secondary {
+  max-width: 1160px; margin: 0 auto; padding-top: var(--space-3);
+  border-top: 1px solid var(--glass-border-soft);
+}
+.blog-footer-secondary .blog-footer-nav { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+@media (min-width: 768px) {
+  body.content-page .blog-footer-inner { flex-direction: row; align-items: flex-start; }
+}
+
+/* ---------- Mobile drawer: hub → children hierarchy ---------- */
+.motoai-hub { padding-top: 2px; }
+.motoai-hub-link {
+  display: flex; align-items: center; min-height: 48px;
+  font-weight: 700; font-size: 0.95rem;
+}
+.motoai-hub-items {
+  list-style: none; margin: 0; padding: 0 0 6px 14px;
+  border-left: 2px solid var(--color-primary-soft, rgba(79, 70, 229, 0.2));
+}
+.motoai-hub-items li a { display: flex; align-items: center; min-height: 44px; font-size: 0.9rem; }
+@media (min-width: 768px) {
+  .motoai-hub-items { border-left-color: var(--color-primary-soft); }
+}
+
+/* ---------- Reduced motion: no lifts, no transitions ---------- */
+@media (prefers-reduced-motion: reduce) {
+  body.content-page .blog-card,
+  body.content-page .blog-cat-card,
+  body.content-page .blog-cluster-card { transition: none; }
+  body.content-page .blog-card:hover,
+  body.content-page .blog-cat-card:hover,
+  body.content-page .blog-cluster-card:hover { transform: none; }
+}
+
+/* ---------- Compact hub labels on narrow desktops (900–1099px) ----------
+   Three Vietnamese parent-hub labels + brand + actions must fit without
+   overflow at 1024px; icons stay, padding and type tighten slightly. */
+@media (min-width: 900px) and (max-width: 1099.98px) {
+  body.content-page .site-nav a { padding: 6px 8px; font-size: 0.8rem; }
+  body.content-page .site-brand-text span { display: none; }
+  body.content-page .site-brand-text strong { font-size: 0.95rem; }
+}

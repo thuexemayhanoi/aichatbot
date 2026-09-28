@@ -1,6 +1,6 @@
 {
   "$schema": "motoai/navigation@1",
-  "note": "Single source of truth for the global menu (Agent drawer) and the shared blog footer. Labels are short (1-2 words); long SEO keywords live in page content, never in navigation.",
+  "note": "Single source of truth for the global menu (Agent drawer) and the shared blog footer. Hub columns (\"hub\": cluster id) are expanded from data/blog/taxonomy.json at build time — parent hub link + child category links. Labels are short (1-2 words); long SEO keywords live in page content, never in navigation.",
   "agent": {
     "label": "Agent",
     "icon": "⚡",
@@ -109,41 +109,25 @@
         {
           "label": "Giới Thiệu",
           "url": "/aichatbot/gioi-thieu/"
-        }
-      ]
-    },
-    {
-      "title": "CẨM NANG",
-      "items": [
-        {
-          "label": "Ứng Dụng",
-          "url": "/aichatbot/blog/app/"
         },
         {
-          "label": "Hướng Dẫn",
-          "url": "/aichatbot/blog/huong-dan/"
-        },
-        {
-          "label": "Thuê Xe",
-          "url": "/aichatbot/blog/thue-xe/"
-        },
-        {
-          "label": "Xe Điện",
-          "url": "/aichatbot/blog/xe-dien/"
-        },
-        {
-          "label": "An Toàn",
-          "url": "/aichatbot/blog/an-toan/"
-        },
-        {
-          "label": "Địa Phương",
-          "url": "/aichatbot/blog/dia-phuong/"
+          "label": "Cẩm nang",
+          "url": "/aichatbot/blog/"
         },
         {
           "label": "Tìm Bài",
           "url": "/aichatbot/blog/"
         }
       ]
+    },
+    {
+      "hub": "C-APP"
+    },
+    {
+      "hub": "C-RENT"
+    },
+    {
+      "hub": "C-EXPLORE"
     },
     {
       "title": "DỊCH VỤ",

@@ -23,7 +23,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic
+  taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav
 } from './taxonomy.mjs';
 import {
   SITE, esc, rel, pageHead, askAgentAction, appShellPage
@@ -111,30 +111,59 @@ ${items}
 
 const CRUMB_HOME = { label: 'Agent', href: '/aichatbot/' };
 const CRUMB_BLOG = { label: 'Cẩm nang', href: '/aichatbot/blog/' };
+/** Cluster crumb entry (v61: blog home → PARENT HUB → category → article). */
+const crumbCluster = (cluster) => ({ label: cluster.name, href: `/aichatbot/blog/${cluster.dir}/` });
+/** Visible + JSON-LD breadcrumb trail for any cluster/category/subtopic/article page. */
+function clusterTrail(cluster, extra = []) {
+  return [CRUMB_HOME, CRUMB_BLOG, crumbCluster(cluster), ...extra];
+}
+/** Schema trail entries (absolute item URLs) matching clusterTrail exactly. */
+function clusterTrailSchema(cluster, extra = []) {
+  const entries = [
+    { name: 'Agent', item: SITE },
+    { name: 'Cẩm nang', item: `${SITE}blog/` },
+    { name: cluster.name, item: `${SITE}blog/${cluster.dir}/` }
+  ];
+  for (const e of extra) entries.push({ name: e.label, item: e.href ? `${SITE}${e.href.replace('/aichatbot/', '')}` : `${SITE}${e.itemPath}` });
+  return entries;
+}
+/** Hub parent block: prominent link UP to the parent SEO hub (v61 §8). */
+function hubParentBlock(cluster) {
+  return `      <p class="blog-hub-parent">Nhóm chủ đề: <a href="/aichatbot/blog/${cluster.dir}/">${esc(cluster.name)}</a></p>\n`;
+}
+/** Bottom contextual block: explore the whole parent cluster (v61 §8). */
+function hubClusterFooter(cluster) {
+  const links = cluster.categories.map((id) => {
+    const c = taxonomy.categories[id];
+    return `<a href="/aichatbot/blog/${c.dir}/">${esc(c.label)}</a>`;
+  }).join(' · ');
+  return `      <p class="blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}: ${links}</p>\n`;
+}
 
-/** Blog home = the Cẩm nang screen of the app. */
+/** Blog home (v61 hub-first): H1/intro → search → 3 PARENT HUB cards →
+ *  Bài mới → the six child category cards. Users and crawlers see the
+ *  topical architecture before any single article. */
 function buildHome(published) {
-  const clusterCards = taxonomy.clusters.map((c) => {
-    const cats = c.categories.map((id) => {
-      const cat = taxonomy.categories[id];
-      const nav = navigation.categories.find((n) => n.id === id);
-      return `      <a class="blog-cluster-link" href="/aichatbot/blog/${cat.dir}/">${nav.icon} ${esc(nav.label)}</a>`;
-    }).join('\n');
-    return `      <section class="blog-cluster-card">
-        <h2>${esc(c.name)}</h2>
+  // Parent hub cards: hub name + its child categories listed underneath.
+  const hubCards = taxonomy.clusters.map((c) => {
+    const hub = clusterNav(c.id);
+    const kids = hub.children.map((ch) =>
+      `        <a class="blog-cluster-link" href="/aichatbot/blog/${ch.dir}/">${ch.icon} ${esc(ch.label)}</a>`).join('\n');
+    return `      <a class="blog-cluster-card blog-hub-card" href="${hub.url}">
+        <h2>${hub.icon} ${esc(hub.name)}</h2>
         <p>${esc(c.desc)}</p>
         <div class="blog-cluster-links">
-${cats}
+${kids}
         </div>
-        <a class="blog-cluster-more" href="/aichatbot/blog/${c.dir}/">Xem nhóm chủ đề →</a>
-      </section>`;
+        <span class="blog-cluster-more">Xem nhóm chủ đề →</span>
+      </a>`;
   }).join('\n');
 
-  const categoryCards = navigation.categories.map((nav) => {
-    const cat = taxonomy.categories[nav.id];
+  const categoryCards = navigation.categories.map((navItem) => {
+    const cat = taxonomy.categories[navItem.id];
     return `      <a class="blog-cat-card" href="/aichatbot/blog/${cat.dir}/">
-        <span class="cat-icon" aria-hidden="true">${nav.icon}</span>
-        <strong>${esc(nav.label)}</strong>
+        <span class="cat-icon" aria-hidden="true">${navItem.icon}</span>
+        <strong>${esc(navItem.label)}</strong>
         <span>${esc(cat.desc)}</span>
       </a>`;
   }).join('\n');
@@ -160,19 +189,19 @@ ${cats}
       <section class="blog-clusters" aria-label="Nhóm chủ đề">
         <h2>Nhóm chủ đề</h2>
         <div class="blog-cluster-grid">
-${clusterCards}
+${hubCards}
+        </div>
+      </section>
+      <section>
+        <h2>Bài mới</h2>
+        <div class="blog-grid">
+${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản. Hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
         </div>
       </section>
       <section aria-label="Danh mục">
         <h2>Danh mục</h2>
         <div class="blog-cat-grid">
 ${categoryCards}
-        </div>
-      </section>
-      <section>
-        <h2>Bài đã xuất bản</h2>
-        <div class="blog-grid">
-${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản. Hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
         </div>
       </section>
 ${askAgentAction('thuê xe máy')}`;
@@ -234,8 +263,9 @@ function buildHub(hub, published, subtopicMap) {
     const nav = paginationNav(hub, pageNo, pages);
     const title = pages.length > 1 ? `${hub.name} — trang ${pageNo} — Cẩm nang thuê xe máy` : `${hub.name} — Cẩm nang thuê xe máy & xe điện`;
 
-    const content = breadcrumb([CRUMB_HOME, CRUMB_BLOG, { label: hub.label, href: null }])
+    const content = breadcrumb(clusterTrail(cluster, [{ label: hub.label, href: null }]))
       + screenHead({ label: 'Danh mục', title: hub.name, lead: hub.desc })
+      + hubParentBlock(cluster)
       + (hub.intro ? `      <p class="blog-screen-lead">${esc(hub.intro)}</p>\n` : '')
       + categoryChips({ activeHub: hub.dir })
       + (chips ? `      <div class="blog-chips" aria-label="Chủ đề">
@@ -246,7 +276,7 @@ ${chips}
 ${cards}
       </div>
 ${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/aichatbot/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
-` : ''}${askAgentAction(hub.name)}`;
+` : ''}${hubClusterFooter(cluster)}${askAgentAction(hub.name)}`;
 
     const html = appShellPage({
       title,
@@ -254,6 +284,7 @@ ${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a 
       path: pageNo === 1 ? `blog/${hub.dir}/` : `blog/${hub.dir}/page/${pageNo}/`,
       screen: `category-${hub.dir}`,
       activeHub: hub.dir,
+      activeCluster: cluster.dir,
       contentHtml: content,
       schemaHtml: `  <script type="application/ld+json">
 ${jsonLd({
@@ -265,11 +296,7 @@ ${jsonLd({
   <script type="application/ld+json">
 ${jsonLd({
         '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Agent', item: SITE },
-          { '@type': 'ListItem', position: 2, name: 'Cẩm nang', item: `${SITE}blog/` },
-          { '@type': 'ListItem', position: 3, name: hub.label, item: `${SITE}blog/${hub.dir}/` }
-        ]
+        itemListElement: clusterTrailSchema(cluster, [{ label: hub.label, itemPath: `blog/${hub.dir}/` }]).map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
       })}
   </script>
 `
@@ -282,7 +309,8 @@ ${jsonLd({
 /** Subtopic hub screen — generated ONLY with >= 1 published article. */
 function buildSubtopic(hub, sub, articles) {
   const cards = articles.map((a) => card(a, hub)).join('\n');
-  const content = breadcrumb([CRUMB_HOME, CRUMB_BLOG, { label: hub.label, href: `/aichatbot/blog/${hub.dir}/` }, { label: sub.label, href: null }])
+  const cluster = CLUSTER_BY_ID[hub.cluster];
+  const content = breadcrumb(clusterTrail(cluster, [{ label: hub.label, href: `/aichatbot/blog/${hub.dir}/` }, { label: sub.label, href: null }]))
     + screenHead({ label: hub.label, title: sub.label, lead: hub.desc })
     + `      <div class="blog-grid">
 ${cards}
@@ -358,14 +386,29 @@ ${list('blog-toc-list')}
  * its two category hubs. Canonical category IDs and dirs are untouched.
  */
 function buildClusterHub(cluster, published) {
+  // v61: a REAL topical parent hub — H1, intro, child category cards,
+  // the strongest/latest articles per child, and the full cluster context.
   const cats = cluster.categories.map((id) => HUB_BY_ID[id]);
-  const catCards = cats.map((hub) => `      <a class="blog-cat-card" href="/aichatbot/blog/${hub.dir}/">
-        <span class="cat-icon" aria-hidden="true">${navigation.categories.find((n) => n.id === hub.id).icon}</span>
-        <strong>${esc(hub.label)}</strong>
-        <span>${esc(hub.desc)}</span>
-      </a>`).join('\n');
-  const articles = published.filter((a) => cluster.categories.includes(a.category));
-  const cards = articles.map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
+  const clusterArticles = published.filter((a) => cluster.categories.includes(a.category));
+
+  const catCards = cats.map((hub) => {
+    const navItem = navigation.categories.find((n) => n.id === hub.id);
+    const top = published.filter((a) => a.category === hub.id).slice(0, 3);
+    const topCards = top.map((a) => card(a, hub)).join('\n');
+    return `      <section class="blog-cluster-child">
+        <a class="blog-cat-card" href="/aichatbot/blog/${hub.dir}/">
+          <span class="cat-icon" aria-hidden="true">${navItem.icon}</span>
+          <strong>${esc(hub.label)}</strong>
+          <span>${esc(hub.desc)}</span>
+        </a>
+${topCards ? `        <div class="blog-grid">
+${topCards}
+        </div>` : ''}
+      </section>`;
+  }).join('\n');
+
+  const shown = new Set(clusterArticles.slice(0, 6).map((a) => a.article_id));
+  const latestCards = clusterArticles.slice(0, 6).map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
   const path = `blog/${cluster.dir}/`;
   const content = breadcrumb([CRUMB_HOME, CRUMB_BLOG, { label: cluster.name, href: null }])
     + screenHead({ label: 'Nhóm chủ đề', title: cluster.name, lead: cluster.desc })
@@ -374,34 +417,35 @@ function buildClusterHub(cluster, published) {
 ${catCards}
       </div>
       <section>
-        <h2>Bài đã xuất bản</h2>
+        <h2>Bài mới trong ${esc(cluster.name)}</h2>
         <div class="blog-grid">
-${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản trong nhóm này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
+${latestCards || '          <p class="blog-empty">Chưa có bài đã xuất bản trong nhóm này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
         </div>
       </section>
-${askAgentAction(cluster.name)}`;
+${hubClusterFooter(cluster)}${askAgentAction(cluster.name)}`;
+  const itemList = [
+    ...cats.map((hub) => ({ '@type': 'ListItem', position: cats.indexOf(hub) + 1, name: hub.name, url: `${SITE}blog/${hub.dir}/` })),
+    ...clusterArticles.slice(0, 10).map((a, i) => ({ '@type': 'ListItem', position: cats.length + 1 + i, name: a.title, url: `${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/` }))
+  ];
   const html = appShellPage({
     title: `${cluster.name} — Cẩm nang thuê xe máy`,
     description: cluster.meta,
     path,
     screen: `cluster-${cluster.dir}`,
-    activeHub: null,
+    activeCluster: cluster.dir,
     contentHtml: content,
     schemaHtml: `  <script type="application/ld+json">
 ${jsonLd({
       '@context': 'https://schema.org', '@type': 'CollectionPage',
       name: cluster.name, description: cluster.meta, url: `${SITE}${path}`,
-      isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE }
+      isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE },
+      mainEntity: { '@type': 'ItemList', name: `${cluster.name} — danh mục và bài viết`, itemListElement: itemList }
     })}
   </script>
   <script type="application/ld+json">
 ${jsonLd({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Agent', item: SITE },
-        { '@type': 'ListItem', position: 2, name: 'Cẩm nang', item: `${SITE}blog/` },
-        { '@type': 'ListItem', position: 3, name: cluster.name, item: `${SITE}${path}` }
-      ]
+      itemListElement: clusterTrailSchema(cluster).map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
     })}
   </script>
 `
@@ -447,24 +491,23 @@ ${related}
       </section>
 ` : '';
 
-  const breadcrumbSchema = [
-    { name: 'Agent', item: SITE },
-    { name: 'Cẩm nang', item: `${SITE}blog/` },
-    { name: hub.label, item: `${SITE}blog/${hub.dir}/` },
-    ...(subHubUrl ? [{ name: sub.label, item: `${SITE}blog/${hub.dir}/${sub.slug}/` }] : []),
-    { name: a.title, item: `${SITE}${path}` }
-  ];
-  const crumbTrail = [
-    CRUMB_HOME, CRUMB_BLOG,
+  const cluster = CLUSTER_BY_ID[hub.cluster];
+  const breadcrumbSchema = clusterTrailSchema(cluster, [
+    { label: hub.label, itemPath: `blog/${hub.dir}/` },
+    ...(subHubUrl ? [{ label: sub.label, itemPath: `blog/${hub.dir}/${sub.slug}/` }] : []),
+    { name: a.title, itemPath: path, label: a.title }
+  ]);
+  const crumbTrail = clusterTrail(cluster, [
     { label: hub.label, href: `/aichatbot/blog/${hub.dir}/` },
     ...(subHubUrl ? [{ label: sub.label, href: subHubUrl }] : []),
     { label: a.title, href: null }
-  ];
+  ]);
 
   const content = breadcrumb(crumbTrail)
     + `      <p class="blog-chips">
         <a class="blog-chip" href="/aichatbot/blog/${hub.dir}/">${esc(hub.label)}</a>${subHubUrl ? `
         <a class="blog-chip" href="${subHubUrl}">${esc(sub.label)}</a>` : ''}
+        <a class="blog-chip blog-chip-parent" href="/aichatbot/blog/${cluster.dir}/">${esc(cluster.name)}</a>
       </p>
 ${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline">${esc(a.author)} · ${a.published_date} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
       <div class="blog-summary" role="note">
@@ -476,7 +519,7 @@ ${toc.markup}        <article class="blog-article-body">
   ${bodyWithIds.trim().split('\n').join('\n  ')}
         </article>
       </div>
-${relatedSection}${askAgentAction(a.title)}`;
+${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.title)}`;
 
   const html = appShellPage({
     title: a.title,
@@ -484,6 +527,7 @@ ${relatedSection}${askAgentAction(a.title)}`;
     path,
     screen: `article-${a.slug}`,
     activeHub: hub.dir,
+    activeCluster: cluster.dir,
     contentHtml: content,
     schemaHtml: `  <script type="application/ld+json">
 ${jsonLd({

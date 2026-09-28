@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
+const esc = (s) => String(s).replace(/&/g, '&amp;');
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
@@ -129,7 +130,8 @@ test('menu ↔ footer vocabulary: footer destinations match the drawer with iden
   const html = read('index.html');
   const drawerStart = html.indexOf('<nav class="motoai-drawer"');
   const drawer = html.slice(drawerStart, html.indexOf('</nav>', drawerStart));
-  const footerItems = navigation.footer_groups.flatMap((g) => g.items);
+  // v61: hub columns expand from taxonomy (parent + children); other groups keep flat items.
+  const footerItems = navigation.footer_groups.flatMap((g) => g.items ?? []);
   for (const item of footerItems) {
     if (item.ref) {
       // Contact-backed destinations use data-contact-ref in BOTH surfaces.
@@ -147,6 +149,21 @@ test('menu ↔ footer vocabulary: footer destinations match the drawer with iden
   const footerText = blogPages().length ? read('blog/index.html') : '';
   for (const item of [...navigation.categories, navigation.search, ...navigation.legal]) {
     assert.ok(footerText.includes(`>${item.label}<`), `footer carries drawer label "${item.label}"`);
+  }
+});
+
+// v61: footer hub silo — every hub column carries its parent hub link and both children.
+test('footer hub columns express the parent → child hierarchy (v61)', () => {
+  const html = read('blog/index.html');
+  const footer = html.slice(html.indexOf('<footer class="blog-footer">'), html.indexOf('</footer>'));
+  for (const c of taxonomy.clusters) {
+    const escName = String(c.name).replace(/&/g, '&amp;');
+    assert.ok(footer.includes(`blog-footer-title">${escName}<`), `footer column ${c.name}`);
+    assert.ok(footer.includes(`class="footer-hub-link" href="/aichatbot/blog/${c.dir}/"`), `footer parent link ${c.name}`);
+    for (const id of c.categories) {
+      const nav = navigation.categories.find((n) => n.id === id);
+      assert.ok(footer.includes(`class="footer-sub"><a href="/aichatbot/blog/${taxonomy.categories[id].dir}/">${nav.label}<`), `footer child ${nav.label} under ${c.name}`);
+    }
   }
 });
 
@@ -169,13 +186,16 @@ test('every content screen renders the shared footer with an identical link set'
     assert.deepEqual(footerLinks(read(p)), first, `${p}: footer matches the shared footer`);
   }
   // Footer never dumps subtopics/wards — stable destinations only.
-  assert.ok(first.length <= 16, 'footer stays compact');
+  assert.ok(first.length <= 22, 'footer stays compact (v61 hub silo: 4 primary cols + parent links)');
 });
 
 test('footer labels come from the footer_groups source of truth', () => {
   const html = read('blog/index.html');
   for (const g of navigation.footer_groups) {
-    assert.ok(html.includes(`blog-footer-title">${g.title}<`), `footer group ${g.title}`);
+    // v61: { hub } columns take their title from taxonomy.clusters at build time.
+    const title = g.hub ? taxonomy.clusters.find((c) => c.id === g.hub).name : g.title;
+    const escTitle = String(title).replace(/&/g, '&amp;');
+    assert.ok(html.includes(`blog-footer-title">${escTitle}<`), `footer group ${title}`);
   }
 });
 
@@ -188,7 +208,7 @@ test('the chatbot homepage keeps NO full footer inside the chat viewport', () =>
 
 test('blog home: cluster cards + category cards + search + latest, compact hero', () => {
   const home = read('blog/index.html');
-  for (const c of taxonomy.clusters) assert.ok(home.includes(`<h2>${c.name}</h2>`), `cluster card ${c.name}`);
+  for (const c of taxonomy.clusters) assert.ok(home.includes(`<h2>${c.icon} ${esc(c.name)}</h2>`), `hub card ${c.name}`);
   assert.equal((home.match(/class="blog-cat-card"/g) ?? []).length, 6, 'six category cards');
   assert.match(home, /blog-search-input/);
   const h1 = /<h1 class="blog-screen-title">([^<]+)<\/h1>/.exec(home)[1];
@@ -285,14 +305,14 @@ test('article breadcrumbs: visible trail matches BreadcrumbList schema exactly',
   for (const r of parseMatrix().filter((x) => x.status === 'PUBLISHED')) {
     const html = read(r.output_path);
     const trail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1];
-    const visible = [...trail.matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map((m) => m[1]).filter((t) => t !== ' › ');
+    const visible = [...trail.matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map((m) => m[1]).filter((t) => t !== ' › ').map((t) => t.replace(/&amp;/g, '&'));
     const ldRaw = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
       .map((m) => JSON.parse(m[1]))
       .find((o) => o['@type'] === 'BreadcrumbList');
     const schema = ldRaw.itemListElement.map((i) => i.name);
     assert.deepEqual(schema, visible, `${r.article_id}: BreadcrumbList equals the visible breadcrumb`);
     assert.equal(visible[0], 'Agent');
-    const h1 = /<h1 class="blog-screen-title">([^<]+)<\/h1>/.exec(html)[1];
+    const h1 = /<h1 class="blog-screen-title">([^<]+)<\/h1>/.exec(html)[1].replace(/&amp;/g, '&');
     assert.equal(visible[visible.length - 1], h1, 'article title is the last crumb');
   }
 });

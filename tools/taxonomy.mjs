@@ -71,6 +71,23 @@ export function deriveArticleTaxonomy(categoryId, row) {
   };
 }
 
+/** Parent SEO hub navigation card: cluster link + child category links.
+ *  Single source of truth for the header dropdown, the drawer Cẩm nang
+ *  group and the footer hub columns (v61 hub → category model). */
+export function clusterNav(clusterId) {
+  const c = CLUSTER_BY_ID[clusterId];
+  if (!c) throw new Error(`unknown cluster: ${clusterId}`);
+  const navItem = navigation.categories.filter((n) => c.categories.includes(n.id));
+  if (navItem.length !== c.categories.length) throw new Error(`navigation.json is missing a category of cluster ${clusterId}`);
+  return {
+    id: c.id,
+    name: c.name,
+    icon: c.icon ?? '📂',
+    url: `/aichatbot/blog/${c.dir}/`,
+    children: c.categories.map((id) => categoryNav(id))
+  };
+}
+
 /** Category navigation card (short label + canonical URL). */
 export function categoryNav(categoryId) {
   const item = navigation.categories.find((c) => c.id === categoryId);
