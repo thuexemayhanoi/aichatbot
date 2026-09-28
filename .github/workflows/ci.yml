@@ -33,4 +33,7 @@ jobs:
           echo "base JS bytes: $total (baseline 2026-09-26 v47: 200000)"
           # v47 adds the blog shell: assets/js/blog.js (lazy blog search) and
           # menu-drawer wiring in main.js. Blog HTML is static, not counted.
-          test "$total" -lt 220000
+          # v58 bumps the guard 220KB -> 222KB: blog search gains category
+          # filter + clear + result count, and the chat homepage gains the
+          # Auto/Sáng/Tối theme toggle (initTheme wiring in main.js).
+          test "$total" -lt 222000

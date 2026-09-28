@@ -1,8 +1,6 @@
 /**
- * Blog search (v58) — client-side, index loaded ON DEMAND (never at load).
- * Supports: instant text filter, category filter (from the index), clear
- * button, live result count and an explicit empty state. Lightweight by
- * design: no dependency, works on weak phones.
+ * Blog search (v58) — client-side, index lazy-loaded on demand.
+ * Text filter + category filter + clear button + result count + empty state.
  * Index: blog/search-index.json (published articles only, compact fields).
  */
 const input = document.getElementById('blog-search-input');
@@ -14,7 +12,7 @@ if (input && results) {
   let index = null;
   let loading = null;
 
-  function loadIndex() {
+  const loadIndex = () => {
     if (index) return Promise.resolve(index);
     if (!loading) {
       loading = fetch('search-index.json').then((r) => {
@@ -22,40 +20,34 @@ if (input && results) {
         return r.json();
       }).then((data) => {
         index = data.articles ?? [];
-        buildFilterOptions();
+        // Category options derive from the index itself — no hard-coding.
+        if (filter) {
+          const seen = new Set();
+          for (const a of index) {
+            if (!a.category_name || seen.has(a.category)) continue;
+            seen.add(a.category);
+            const opt = document.createElement('option');
+            opt.value = a.category;
+            opt.textContent = a.category_name;
+            filter.appendChild(opt);
+          }
+        }
         return index;
       });
       loading.catch(() => { loading = null; });
     }
     return loading;
-  }
+  };
 
-  /** Category filter options derive from the index itself — no hard-coding. */
-  function buildFilterOptions() {
-    if (!filter) return;
-    const seen = new Set(['']);
-    for (const a of index) {
-      if (!a.category_name || seen.has(a.category)) continue;
-      seen.add(a.category);
-      const opt = document.createElement('option');
-      opt.value = a.category;
-      opt.textContent = a.category_name;
-      filter.appendChild(opt);
-    }
-  }
-
-  function norm(s) {
-    return String(s ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  }
-
-  function updateCount(hits, active) {
+  const norm = (s) => String(s ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const setCount = (hits, active) => {
     if (!countEl) return;
     if (!active) { countEl.hidden = true; countEl.textContent = ''; return; }
     countEl.hidden = false;
     countEl.textContent = `— ${hits.length} kết quả`;
-  }
+  };
 
-  function render(hits, active) {
+  const render = (hits, active) => {
     results.replaceChildren();
     if (hits.length === 0) {
       const p = document.createElement('p');
@@ -78,19 +70,15 @@ if (input && results) {
         results.appendChild(card);
       }
     }
-    updateCount(hits, active);
-  }
-
-  function activeQuery() {
-    return norm(input.value.trim()).length >= 2 || (filter && filter.value !== '');
-  }
+    setCount(hits, active);
+  };
 
   async function run() {
     const q = norm(input.value.trim());
     const cat = filter ? filter.value : '';
     if (q.length < 2 && !cat) {
       results.replaceChildren();
-      updateCount([], false);
+      setCount([], false);
       if (clearBtn) clearBtn.hidden = true;
       return;
     }
@@ -124,10 +112,9 @@ if (input && results) {
     input.value = '';
     if (filter) filter.value = '';
     results.replaceChildren();
-    updateCount([], false);
+    setCount([], false);
     clearBtn.hidden = true;
     input.focus();
   });
-  // Deep link support: /blog/#blog-search just focuses the field.
   if (location.hash === '#blog-search') input.focus();
 }
