@@ -67,23 +67,53 @@ test('v59: content pages use the normal document — no chat viewport, dock or c
   }
 });
 
-test('v59: CSS contract — content pages scroll as documents, chat lock stays chat-only', () => {
+test('v60: CSS contract — content pages scroll as documents, chat lock stays chat-only', () => {
   const css = read('assets/css/blog.css');
   const style = read('assets/css/style.css');
-  // Document scrolling on content pages.
-  assert.match(css, /body\.content-page\s*\{[^}]*overflow-y:\s*auto/, 'content body scrolls vertically');
-  assert.match(css, /body\.content-page\s*\{[^}]*overflow-x:\s*hidden/, 'no horizontal page leak');
-  assert.match(css, /body\.content-page\s*\{[^}]*-webkit-overflow-scrolling:\s*touch/, 'iOS momentum scroll');
-  assert.match(css, /body\.content-page\s*\.site-main\s*\{[^}]*height:\s*auto/, 'site-main is not viewport-locked');
-  assert.match(css, /body\.content-page\s*\.site-main\s*\{[^}]*overflow:\s*visible/, 'site-main does not trap scroll');
-  assert.match(css, /body\.content-page\s*\{[^}]*height:\s*auto/, 'body height auto overrides chat 100%');
+  // NO global root lock in style.css (the v59 killer bug).
+  assert.ok(!/html,\s*body\s*\{/.test(style), 'no global html,body selector block at all');
+  assert.ok(!/html(\s*,\s*body)?\s*\{[^}]*[;{\s]height:\s*100%/.test(style), 'no root height:100%');
+  assert.ok(!/html(\s*,\s*body)?\s*\{[^}]*[;{\s]overflow:\s*hidden/.test(style), 'no root overflow:hidden');
+  assert.ok(!/html(\s*,\s*body)?\s*\{[^}]*[;{\s]overscroll-behavior:\s*none/.test(style), 'no root overscroll-behavior:none');
+  // The chat lock is scoped to body.chat-home ONLY.
+  assert.match(style, /body\.chat-home\s*\{[^}]*overflow:\s*hidden/, 'chat lock scoped to body.chat-home');
+  assert.match(read('index.html'), /<body class="chat-home">/, 'chat homepage carries the chat-home class');
+  // v60 content reset: direct, no :has() dependency.
+  assert.ok(!/[.:#\[][\w-]*:has\(/.test(css), 'no :has() scroll dependency');
+  assert.match(css, /html\s*\{[^}]*height:\s*auto\s*!important/, 'html height auto');
+  assert.match(css, /html\s*\{[^}]*overflow-y:\s*auto/, 'html scrolls the document');
+  assert.match(css, /body\.content-page\s*\{[^}]*overflow-y:\s*visible/, 'body does not create a scroll container');
+  assert.match(css, /body\.content-page\s*\{[^}]*position:\s*static/, 'body position static');
+  assert.match(css, /\.site-main\s*\{[^}]*overflow:\s*visible\s*!important/, 'site-main never traps scroll');
+  assert.match(css, /\.site-main\s*\{[^}]*max-height:\s*none\s*!important/, 'site-main never height-capped');
+  // No root-level iOS momentum hack.
+  assert.ok(!/body\.content-page\s*\{[^}]*-webkit-overflow-scrolling/.test(css), 'no root momentum hack');
   // The 100dvh app lock exists ONLY for the chat shell.
   assert.match(style, /\.motoai-app\s*\{[^}]*height:\s*100dvh/, 'chat homepage keeps its app lock');
-  assert.ok(!/\.site-main\s*\{[^}]*100dvh/.test(css), 'no 100dvh on the content column');
-  assert.ok(!/body\.content-page[^{]*\{[^}]*100dvh/.test(css.replace(/@supports[^{]*\{/, '')), 'no 100dvh lock on content body');
+  assert.ok(!/\.site-main[\s\S]{0,80}100dvh/.test(css), 'no 100dvh on the content column');
   // Chips rail: horizontal scroll only, vertical swipes stay free.
   assert.match(css, /\.blog-chips\s*\{[^}]*overflow-x:\s*auto/, 'chips rail horizontal only');
   assert.ok(!/touch-action:\s*none/.test(css + style), 'no touch-action:none anywhere');
+  // Closed drawer/backdrop can never intercept touch gestures.
+  assert.match(css, /\[hidden\]\s*\{\s*display:\s*none\s*!important/, 'hidden attribute fully removes elements');
+  assert.match(css, /#motoai-drawer-backdrop\[hidden\][^}]*pointer-events:\s*none/, 'closed backdrop never intercepts swipes');
+});
+
+test('v60: asset cache-bust + build marker so iOS Safari cannot serve stale v58/v59 assets', () => {
+  for (const p of pages.slice(0, 6)) {
+    const html = read(p);
+    assert.match(html, /<meta name="motoai-build" content="v\d+">/, `${p}: build marker present`);
+    assert.match(html, /style\.css\?v=\d+/, `${p}: versioned style.css`);
+    assert.match(html, /blog\.css\?v=\d+/, `${p}: versioned blog.css`);
+    assert.match(html, /app-shell\.js\?v=\d+/, `${p}: versioned app-shell.js`);
+  }
+  const home = read('index.html');
+  assert.match(home, /<meta name="motoai-build" content="v\d+">/, 'homepage build marker');
+  assert.match(home, /style\.css\?v=\d+/, 'homepage versioned style.css');
+  assert.match(home, /main\.js\?v=\d+/, 'homepage versioned main.js');
+  const sw = read('service-worker.js');
+  assert.match(sw, /const CORE_VERSION = 'v\d+'/, 'SW version constant');
+  assert.ok(sw.includes('style.css?v='), 'SW precaches the versioned CSS');
 });
 
 test('v59: mobile header — search/theme hidden under 768px, live in the drawer instead', () => {

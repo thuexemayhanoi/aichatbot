@@ -22,6 +22,10 @@ import { navigation, taxonomy } from './taxonomy.mjs';
 
 export const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
 
+/** Build/cache version: bumped every release that changes shell CSS/JS so
+ *  iOS Safari can never keep serving a stale v58/v59 asset. */
+export const BUILD_VERSION = 'v60';
+
 /** Escape & for HTML text/attribute contexts (titles, descriptions, names). */
 export const esc = (s) => String(s).replace(/&(?![a-z]+;|#)/gi, '&amp;');
 
@@ -42,6 +46,7 @@ export function pageHead({ title, description, path }) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="${BUILD_VERSION}">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
   <link rel="canonical" href="${url}">
@@ -55,8 +60,8 @@ export function pageHead({ title, description, path }) {
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
-  <link rel="stylesheet" href="${prefix}assets/css/style.css">
-  <link rel="stylesheet" href="${prefix}assets/css/blog.css">
+  <link rel="stylesheet" href="${prefix}assets/css/style.css?v=60">
+  <link rel="stylesheet" href="${prefix}assets/css/blog.css?v=60">
   ${NO_FLASH_THEME}
 </head>
 <body class="content-page">
@@ -191,8 +196,8 @@ export function askAgentAction(topic) {
 }
 
 function shellScripts({ search }) {
-  return (search ? `  <script src="/aichatbot/assets/js/blog.js"></script>\n` : '')
-    + `  <script type="module" src="/aichatbot/assets/js/app-shell.js"></script>\n`;
+  return (search ? `  <script src="/aichatbot/assets/js/blog.js?v=60"></script>\n` : '')
+    + `  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=60"></script>\n`;
 }
 
 /**

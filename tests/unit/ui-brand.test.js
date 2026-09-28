@@ -39,8 +39,10 @@ test('root app contract: body opens directly into the chat app in spec order', (
   const idx = order.map(id => html.indexOf(id));
   assert.ok(idx.every(i => i >= 0), 'all contract sections present');
   for (let i = 1; i < idx.length; i++) assert.ok(idx[i] > idx[i - 1], `${order[i]} must come after ${order[i - 1]}`);
-  // 3. Full-screen app layout: html/body 100%, app 100dvh flex column, chat area flexes.
-  assert.match(css, /html, body\s*\{[^}]*height:\s*100%/s);
+  // 3. Full-screen app layout: the app itself is a 100dvh flex column.
+  //    v60: NO global html/body height:100% — the root document stays normal
+  //    (content pages scroll); the chat viewport comes from .motoai-app only.
+  assert.ok(!/html,\s*body\s*\{[^}]*height:\s*100%/.test(css), 'no global html/body 100% height');
   assert.match(css, /\.motoai-app\s*\{[^}]*display:\s*flex;[^}]*flex-direction:\s*column;[^}]*height:\s*100dvh/s);
   assert.match(css, /\.motoai-messages\s*\{[^}]*flex:\s*1 1 auto;[^}]*min-height:\s*0;[^}]*overflow-y:\s*auto/s);
   // 4. Quick bar stays ONE horizontal row.
@@ -300,9 +302,11 @@ test('index.html links the stylesheet (root app must never render unstyled)', ()
 });
 
 // --- 5e. Mobile app-lock (v47.4): full-screen chat, no body scroll, safe pristine state ---
-test('mobile app-lock: body locked, app pinned, only messages scroll, embed unchanged', () => {
-  // Body is locked in direct mode; overflow can never pan the document.
-  assert.match(css, /html, body\s*\{[^}]*overflow:\s*hidden;[^}]*overscroll-behavior:\s*none;/s);
+test('mobile app-lock: CHAT HOMEPAGE ONLY body lock, app pinned, messages scroll, embed unchanged', () => {
+  // v60: the lock is scoped to body.chat-home — content pages keep normal
+  // document scrolling. No global html/body overflow lock exists anymore.
+  assert.ok(!/html,\s*body\s*\{[^}]*overflow:\s*hidden/.test(css), 'no global html,body overflow lock');
+  assert.match(css, /body\.chat-home\s*\{[^}]*overflow:\s*hidden;[^}]*overscroll-behavior:\s*none;/s);
   // Embed mode keeps its own document flow (unchanged behavior).
   assert.match(css, /body\[data-motoai-embed="1"\]\s*\{\s*overflow:\s*auto;[^}]*\}/);
   // App pinned edge-to-edge: header can never drift under Safari chrome.
