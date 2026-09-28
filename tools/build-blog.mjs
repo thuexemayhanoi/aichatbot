@@ -26,7 +26,7 @@ import {
   taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic
 } from './taxonomy.mjs';
 import {
-  SITE, esc, rel, pageHead, footerHtml, askAgentAction, appShellPage
+  SITE, esc, rel, pageHead, askAgentAction, appShellPage
 } from './app-shell.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -175,8 +175,7 @@ ${categoryCards}
 ${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản. Hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
         </div>
       </section>
-${askAgentAction('thuê xe máy')}
-${footerHtml()}`;
+${askAgentAction('thuê xe máy')}`;
 
   const html = appShellPage({
     title: 'Cẩm nang thuê xe máy — ứng dụng, giá, xe điện, thủ tục',
@@ -247,8 +246,7 @@ ${chips}
 ${cards}
       </div>
 ${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/aichatbot/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
-` : ''}${askAgentAction(hub.name)}
-${footerHtml()}`;
+` : ''}${askAgentAction(hub.name)}`;
 
     const html = appShellPage({
       title,
@@ -289,8 +287,7 @@ function buildSubtopic(hub, sub, articles) {
     + `      <div class="blog-grid">
 ${cards}
       </div>
-${askAgentAction(`${sub.label} — ${hub.name}`)}
-${footerHtml()}`;
+${askAgentAction(`${sub.label} — ${hub.name}`)}`;
 
   const html = appShellPage({
     title: `${sub.label} — ${hub.name} — Cẩm nang thuê xe máy`,
@@ -382,8 +379,7 @@ ${catCards}
 ${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản trong nhóm này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
         </div>
       </section>
-${askAgentAction(cluster.name)}
-${footerHtml()}`;
+${askAgentAction(cluster.name)}`;
   const html = appShellPage({
     title: `${cluster.name} — Cẩm nang thuê xe máy`,
     description: cluster.meta,
@@ -480,8 +476,7 @@ ${toc.markup}        <article class="blog-article-body">
   ${bodyWithIds.trim().split('\n').join('\n  ')}
         </article>
       </div>
-${relatedSection}${askAgentAction(a.title)}
-${footerHtml()}`;
+${relatedSection}${askAgentAction(a.title)}`;
 
   const html = appShellPage({
     title: a.title,
@@ -524,8 +519,7 @@ function buildLegal({ dir, title, description, bodyPath, screen, business }) {
     + `      <div class="blog-grid blog-legal-grid">
 ${body.trim().split('\n').join('\n')}
       </div>
-${askAgentAction(title)}
-${footerHtml()}`;
+${askAgentAction(title)}`;
   const html = appShellPage({
     title: `${title} — MotoAI`,
     description,
@@ -750,8 +744,7 @@ ${rows}
         <p>${esc(pricing.disclaimer)}</p>
         <p>${esc(business.policies.deposit.note)}</p>
       </div>
-${askAgentAction('giá thuê xe')}
-${footerHtml()}`;
+${askAgentAction('giá thuê xe')}`;
 
   const html = appShellPage({
     title: 'Bảng giá thuê xe máy & xe điện — MotoAI',

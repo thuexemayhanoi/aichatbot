@@ -59,7 +59,7 @@ export function pageHead({ title, description, path }) {
   <link rel="stylesheet" href="${prefix}assets/css/blog.css">
   ${NO_FLASH_THEME}
 </head>
-<body>
+<body class="content-page">
 `;
 }
 
@@ -125,6 +125,7 @@ function siteDrawer({ activeHub }) {
     <ul class="motoai-drawer-list">
       <li><a href="/aichatbot/">⚡ Agent</a></li>
       <li><a href="${navigation.about.url}">${navigation.about.icon} ${esc(navigation.about.label)}</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
       <li class="motoai-group">
         <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
         <ul class="motoai-group-items" id="motoai-group-cm" hidden>

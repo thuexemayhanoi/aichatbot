@@ -16,7 +16,7 @@
  */
 'use strict';
 
-const CORE_VERSION = 'v58';
+const CORE_VERSION = 'v59';
 const SHELL_CACHE = 'motoai-shell-' + CORE_VERSION;
 const DATA_CACHE = 'motoai-data-' + CORE_VERSION;
 const KNOWN_CACHES = [SHELL_CACHE, DATA_CACHE];
@@ -80,16 +80,31 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Navigations: network-first, offline falls back to the cached shell.
+  // Navigations: network-first. Each URL is cached under ITS OWN key so a
+  // content page (e.g. /aichatbot/chinh-sach/) can NEVER overwrite the cached
+  // chat homepage. Offline fallback:
+  //   - the chat home URL falls back to the precached './index.html' shell;
+  //   - any other URL falls back to its own cached copy (if visited before),
+  //     never to the homepage.
   if (request.mode === 'navigate') {
+    const isHomeRequest = url.pathname === new URL(self.registration.scope).pathname
+      || url.pathname === new URL('./', self.registration.scope).pathname
+      || url.pathname.endsWith('/aichatbot/');
     event.respondWith(
       fetch(request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(SHELL_CACHE).then((cache) => cache.put('./index.html', copy));
+          if (response.ok && response.type === 'basic') {
+            const copy = response.clone();
+            caches.open(SHELL_CACHE).then((cache) => cache.put(request, copy));
+          }
           return response;
         })
-        .catch(() => caches.match('./index.html'))
+        .catch(() =>
+          caches.match(request).then((cached) =>
+            cached
+              || (isHomeRequest ? caches.match('./index.html') : null)
+              || new Response('<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Offline — MotoAI</title><style>body{font-family:system-ui;padding:32px;text-align:center;color:#333}a{color:#4f46e5}</style></head><body><h1>Không có kết nối</h1><p>Trang này chưa được lưu để xem offline.</p><p><a href="/aichatbot/">Về màn hình Agent</a></p></body></html>', { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } })
+          ))
     );
     return;
   }
