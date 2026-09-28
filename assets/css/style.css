@@ -532,6 +532,20 @@ body[data-motoai-embed="1"] .motoai-dock { display: none; }
 }
 .motoai-group-items[hidden] { display: none; }
 
+/* Hub → children hierarchy inside the Cẩm nang drawer group (v61):
+   the parent hub keeps a real crawlable link with a 44px+ touch target,
+   children sit indented underneath — no deep accordion nesting. */
+.motoai-hub { padding-top: 2px; }
+.motoai-hub-link {
+  display: flex; align-items: center; min-height: 48px;
+  font-weight: 700; font-size: 0.95rem;
+}
+.motoai-hub-items {
+  list-style: none; margin: 0; padding: 0 0 6px 14px;
+  border-left: 2px solid var(--color-primary-soft, rgba(79, 70, 229, 0.2));
+}
+.motoai-hub-items li a { display: flex; align-items: center; min-height: 44px; font-size: 0.9rem; }
+
 /* ---------- Accessibility ---------- */
 :focus-visible {
   outline: 2px solid var(--color-primary);

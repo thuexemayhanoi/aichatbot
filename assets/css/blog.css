@@ -211,7 +211,7 @@ body.content-page .blog-footer { position: static; }
 
 /* ---------- Taxonomy screens: clusters, categories ---------- */
 .blog-cluster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3); }
-.blog-cluster-card {
+.blog-cluster-card, .blog-hub-section {
   padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
   background: var(--color-surface); box-shadow: var(--shadow-sm);
 }
@@ -643,3 +643,17 @@ body.content-page .footer-sub a::before { content: "↳ "; color: var(--color-te
   body.content-page .site-brand-text span { display: none; }
   body.content-page .site-brand-text strong { font-size: 0.95rem; }
 }
+
+/* ---------- Blog home SUPER HUB sections (v62 §5) + article topic context (§8) ---------- */
+.blog-hubs { display: flex; flex-direction: column; gap: var(--space-4); margin: var(--space-4) 0; }
+.blog-hub-section { box-shadow: var(--shadow-md); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.blog-hub-section h2 { margin: 0 0 8px; font-size: 1.12rem; }
+.blog-hub-section h2 a { color: var(--color-text); text-decoration: none; }
+.blog-hub-section h2 a:hover { color: var(--color-primary); text-decoration: underline; }
+.blog-hub-section > p { margin: 0 0 var(--space-3); font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; }
+.blog-hub-section .blog-cluster-links { margin-bottom: var(--space-3); }
+.blog-topic-context { padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); margin-top: var(--space-4); }
+.blog-topic-context h2 { margin: 0 0 6px; font-size: 0.9rem; }
+.blog-topic-context p { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.86rem; }
+.blog-topic-context a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
+.blog-topic-context a:hover { text-decoration: underline; }

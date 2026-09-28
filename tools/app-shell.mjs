@@ -24,7 +24,7 @@ export const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
 
 /** Build/cache version: bumped every release that changes shell CSS/JS so
  *  iOS Safari can never keep serving a stale v58/v59 asset. */
-export const BUILD_VERSION = 'v61';
+export const BUILD_VERSION = 'v62';
 
 /** Escape & for HTML text/attribute contexts (titles, descriptions, names). */
 export const esc = (s) => String(s).replace(/&(?![a-z]+;|#)/gi, '&amp;');
@@ -61,7 +61,7 @@ export function pageHead({ title, description, path }) {
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
   <link rel="stylesheet" href="${prefix}assets/css/style.css?v=60">
-  <link rel="stylesheet" href="${prefix}assets/css/blog.css?v=61">
+  <link rel="stylesheet" href="${prefix}assets/css/blog.css?v=62">
   ${NO_FLASH_THEME}
 </head>
 <body class="content-page">
@@ -248,8 +248,8 @@ export function askAgentAction(topic) {
 }
 
 function shellScripts({ search }) {
-  return (search ? `  <script src="/aichatbot/assets/js/blog.js?v=61"></script>\n` : '')
-    + `  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=61"></script>\n`;
+  return (search ? `  <script src="/aichatbot/assets/js/blog.js?v=62"></script>\n` : '')
+    + `  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=62"></script>\n`;
 }
 
 /**

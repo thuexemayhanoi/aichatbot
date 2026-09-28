@@ -275,7 +275,8 @@ function checkUxPerformance(pages, io) {
   add(/\.screen-ask-btn\s*\{[^}]*min-height:\s*4\dpx/.test(css), 'blog.css tap targets <40px');
   add(/:focus-visible/.test(css), 'blog.css missing :focus-visible styles');
   const totalCss = (io.exists('assets/css/blog.css') ? io.size('assets/css/blog.css') : 0) + (io.exists('assets/css/style.css') ? io.size('assets/css/style.css') : 0);
-  add(totalCss < 60 * 1024, `total CSS ${totalCss} bytes (>=60KB)`);
+  // v62: hub-section + drawer-hierarchy UI raises the budget to 64KB.
+  add(totalCss < 64 * 1024, `total CSS ${totalCss} bytes (>=64KB)`);
   return { score: total ? pass / total : 0, issues };
 }
 

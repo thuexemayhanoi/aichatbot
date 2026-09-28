@@ -144,19 +144,26 @@ function hubClusterFooter(cluster) {
  *  Bài mới → the six child category cards. Users and crawlers see the
  *  topical architecture before any single article. */
 function buildHome(published) {
-  // Parent hub cards: hub name + its child categories listed underneath.
-  const hubCards = taxonomy.clusters.map((c) => {
+  // v61 SUPER HUB: three primary parent-hub sections — semantic <section>
+  // with a LINKED H2 (crawlable parent), short description, child-hub
+  // pills, the 2–4 latest articles of the parent, and a CTA to the hub.
+  const hubSections = taxonomy.clusters.map((c) => {
     const hub = clusterNav(c.id);
-    const kids = hub.children.map((ch) =>
+    const pills = hub.children.map((ch) =>
       `        <a class="blog-cluster-link" href="/aichatbot/blog/${ch.dir}/">${ch.icon} ${esc(ch.label)}</a>`).join('\n');
-    return `      <a class="blog-cluster-card blog-hub-card" href="${hub.url}">
-        <h2>${hub.icon} ${esc(hub.name)}</h2>
+    const latest = published.filter((a) => c.categories.includes(a.category)).slice(0, 4);
+    const latestCards = latest.map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
+    return `      <section class="blog-hub-section" aria-label="${esc(c.name)}">
+        <h2><a href="/aichatbot/blog/${c.dir}/">${hub.icon} ${esc(c.name)}</a></h2>
         <p>${esc(c.desc)}</p>
         <div class="blog-cluster-links">
-${kids}
+${pills}
         </div>
-        <span class="blog-cluster-more">Xem nhóm chủ đề →</span>
-      </a>`;
+${latestCards ? `        <div class="blog-grid">
+${latestCards}
+        </div>
+` : ''}        <a class="blog-cluster-more" href="/aichatbot/blog/${c.dir}/">Xem toàn bộ ${esc(c.name)} →</a>
+      </section>`;
   }).join('\n');
 
   const categoryCards = navigation.categories.map((navItem) => {
@@ -186,11 +193,8 @@ ${kids}
       </div>
       <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản. <span id="blog-search-count" hidden></span></p>
       <div class="blog-grid" id="blog-search-results"></div>
-      <section class="blog-clusters" aria-label="Nhóm chủ đề">
-        <h2>Nhóm chủ đề</h2>
-        <div class="blog-cluster-grid">
-${hubCards}
-        </div>
+      <section class="blog-hubs" aria-label="Nhóm chủ đề chính">
+${hubSections}
       </section>
       <section>
         <h2>Bài mới</h2>
@@ -213,7 +217,33 @@ ${askAgentAction('thuê xe máy')}`;
     screen: 'blog-index',
     activeHub: null,
     contentHtml: content,
-    search: true
+    search: true,
+    schemaHtml: `  <script type="application/ld+json">
+${jsonLd({
+      '@context': 'https://schema.org', '@type': 'CollectionPage',
+      name: 'Cẩm nang thuê xe máy & xe điện',
+      description: 'Cẩm nang thuê xe máy và xe điện: ứng dụng, giá, thủ tục, an toàn và hành trình Hà Nội.',
+      url: `${SITE}blog/`,
+      isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE },
+      mainEntity: {
+        '@type': 'ItemList',
+        name: 'Nhóm chủ đề chính',
+        itemListElement: taxonomy.clusters.map((c, i) => ({
+          '@type': 'ListItem', position: i + 1, name: c.name, url: `${SITE}blog/${c.dir}/`
+        }))
+      }
+    })}
+  </script>
+  <script type="application/ld+json">
+${jsonLd({
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Agent', item: SITE },
+        { '@type': 'ListItem', position: 2, name: 'Cẩm nang', item: `${SITE}blog/` }
+      ]
+    })}
+  </script>
+`
   });
   write('blog/index.html', html);
 }
@@ -503,6 +533,18 @@ ${related}
     { label: a.title, href: null }
   ]);
 
+  // v61 §8: topic context near the article end — the article states BOTH its
+  // parent hub and its child hub as crawlable links.
+  const topicContext = `      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/aichatbot/blog/${cluster.dir}/">${esc(cluster.name)}</a>
+          <span aria-hidden="true">→</span>
+          <a href="/aichatbot/blog/${hub.dir}/">${esc(hub.label)}</a>
+        </p>
+      </section>
+`;
+
   const content = breadcrumb(crumbTrail)
     + `      <p class="blog-chips">
         <a class="blog-chip" href="/aichatbot/blog/${hub.dir}/">${esc(hub.label)}</a>${subHubUrl ? `
@@ -519,7 +561,7 @@ ${toc.markup}        <article class="blog-article-body">
   ${bodyWithIds.trim().split('\n').join('\n  ')}
         </article>
       </div>
-${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.title)}`;
+${topicContext}${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.title)}`;
 
   const html = appShellPage({
     title: a.title,
