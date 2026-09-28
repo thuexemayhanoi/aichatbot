@@ -38,22 +38,30 @@ export function readPreference(storage) {
 export function initTheme({ storage, matchMedia, doc } = {}) {
   const document_ = doc ?? globalThis.document;
   const systemPrefersDark = () => Boolean(matchMedia?.('(prefers-color-scheme: dark)')?.matches);
-  const toggle = document_?.getElementById('blog-theme-toggle');
-  if (!toggle || !document_ || !storage) return;
+  if (!document_ || !storage) return;
+  // Every theme control on the page (header + drawer) stays in sync.
+  const toggles = typeof document_.querySelectorAll === 'function'
+    ? [...document_.querySelectorAll('.blog-theme-toggle')]
+    : (document_.getElementById?.('blog-theme-toggle') ? [document_.getElementById('blog-theme-toggle')] : []);
+  if (toggles.length === 0) return;
 
   const sync = () => {
     const preference = readPreference(storage);
     applyTheme(preference, document_, systemPrefersDark());
-    toggle.textContent = LABELS[preference];
-    toggle.setAttribute('aria-label', `Chủ đề: ${preference === 'auto' ? 'tự động' : preference === 'light' ? 'sáng' : 'tối'}`);
-    toggle.title = 'Chủ đề: Auto → Sáng → Tối';
+    for (const toggle of toggles) {
+      toggle.textContent = LABELS[preference];
+      toggle.setAttribute('aria-label', `Chủ đề: ${preference === 'auto' ? 'tự động' : preference === 'light' ? 'sáng' : 'tối'}`);
+      toggle.title = 'Chủ đề: Auto → Sáng → Tối';
+    }
   };
-  toggle.addEventListener('click', () => {
-    const current = readPreference(storage);
-    const next = PREFERENCES[(PREFERENCES.indexOf(current) + 1) % PREFERENCES.length];
-    try { storage.setItem(STORAGE_KEY, next); } catch { /* private mode: session-only */ }
-    sync();
-  });
+  for (const toggle of toggles) {
+    toggle.addEventListener('click', () => {
+      const current = readPreference(storage);
+      const next = PREFERENCES[(PREFERENCES.indexOf(current) + 1) % PREFERENCES.length];
+      try { storage.setItem(STORAGE_KEY, next); } catch { /* private mode: session-only */ }
+      sync();
+    });
+  }
   // System preference change only matters in auto mode.
   matchMedia?.('(prefers-color-scheme: dark)')?.addEventListener?.('change', () => {
     if (readPreference(storage) === 'auto') applyTheme('auto', document_, systemPrefersDark());

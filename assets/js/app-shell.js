@@ -1,5 +1,5 @@
 /**
- * MotoAI content-site runtime (v58): the shared companion of the single
+ * MotoAI content-site runtime (v59): the shared companion of the single
  * app shell. Runs on every generated screen EXCEPT the chat home
  * (assets/js/main.js owns the home screen).
  * - Theme (Light / Dark / Auto) — same storage + tokens as the Agent app

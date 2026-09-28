@@ -2,6 +2,29 @@
    MotoAI content shell — compact site header, main column, real footer.
    Same design tokens as the chat homepage (colors, type, radius, theme). */
 
+/* ---------- Document scroll (v59) ----------
+   Content pages are NORMAL website pages: the document scrolls.
+   The chat app's html/body{height:100%} + .motoai-app{height:100dvh}
+   viewport lock applies ONLY to the chat homepage (index.html), never here. */
+html:has(body.content-page),
+body.content-page {
+  height: auto;
+  min-height: 100%;
+}
+body.content-page {
+  overflow-x: hidden;                /* no horizontal page leak */
+  overflow-y: auto;                  /* normal document scrolling */
+  -webkit-overflow-scrolling: touch; /* iOS Safari momentum scroll */
+}
+body.content-page .site-main {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
+@supports not (selector(:has(*))) {
+  body.content-page { min-height: 100vh; } /* old-browser fallback, no dvh lock */
+}
+
 /* ---------- Site header (shared chrome, generated from app-shell.mjs) ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 40;
@@ -12,6 +35,20 @@
 .site-header-inner {
   display: flex; align-items: center; gap: var(--space-2);
   max-width: 1160px; margin: 0 auto; min-width: 0;
+}
+/* v59 mobile header: clean two-line layout under 768px.
+   Row 1: brand (left) + Menu (right). Row 2: open/closed status.
+   Search + theme live in the drawer on mobile (still in the header on desktop). */
+@media (max-width: 767.98px) {
+  .site-header-inner { flex-wrap: wrap; row-gap: 6px; }
+  .site-actions .site-search-link,
+  .site-actions .blog-theme-toggle { display: none; }
+  .site-actions .motoai-status { order: 3; flex-basis: 100%; margin-left: 0; min-height: 0; }
+}
+/* Drawer theme control (mobile primary, harmless on desktop). */
+.motoai-drawer-theme {
+  width: 100%; justify-content: flex-start; min-height: 48px;
+  border: none; background: none; font-weight: 550; font-size: 0.95rem; text-align: left;
 }
 .site-brand {
   display: inline-flex; align-items: center; gap: 10px; flex: 1 1 auto; min-width: 0;
@@ -315,3 +352,21 @@
   .blog-search input { flex: 1 1 100%; }
   .blog-search select { max-width: none; flex: 1 1 60%; }
 }
+
+/* ---------- v59: static/legal pages read like normal website sections ---------- */
+.blog-legal-grid { gap: var(--space-3); }
+.blog-legal-card {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+.blog-legal-card h2 { margin: 0 0 8px; font-size: 1.02rem; line-height: 1.35; }
+.blog-legal-card h2 + p { margin-top: 0; }
+.blog-legal-card p { margin: 0 0 10px; font-size: 0.92rem; line-height: 1.7; }
+.blog-legal-card p:last-child { margin-bottom: 0; }
+.blog-legal-card ul { margin: 0; padding-left: 1.25em; font-size: 0.92rem; line-height: 1.7; }
+.blog-legal-card a { color: var(--color-primary); }
+
+/* Clear footer separation on every content page. */
+body.content-page .blog-footer { margin-top: 0; }
