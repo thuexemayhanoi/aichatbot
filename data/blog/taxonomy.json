@@ -2,48 +2,93 @@
   "$schema": "motoai/blog-taxonomy@1",
   "note": "Parent/child taxonomy for the 2,000-article blog. LEVEL 0 Agent / LEVEL 1 Cẩm Nang / LEVEL 2 clusters / LEVEL 3 six canonical categories (IDs never change) / LEVEL 4 subtopics / LEVEL 5 articles. Subtopics are derived deterministically from each matrix row via the match keywords below (tools/taxonomy.mjs) — the CSV schema stays untouched.",
   "clusters": [
-    { "id": "C-APP", "name": "Ứng Dụng", "desc": "Ứng dụng thuê xe và hướng dẫn sử dụng.", "categories": ["APP", "GUIDE"] },
-    { "id": "C-RENT", "name": "Thuê Xe", "desc": "Thuê xe máy và xe điện: giá, thủ tục, chọn xe.", "categories": ["RENT", "EV"] },
-    { "id": "C-EXPLORE", "name": "Khám Phá", "desc": "An toàn và hành trình địa phương Hà Nội.", "categories": ["SAFE", "LOCAL"] }
+    {
+      "id": "C-APP",
+      "name": "Ứng Dụng",
+      "desc": "Ứng dụng thuê xe và hướng dẫn sử dụng.",
+      "categories": [
+        "APP",
+        "GUIDE"
+      ],
+      "dir": "cong-cu-huong-dan",
+      "intro": "Công cụ và hướng dẫn sử dụng MotoAI: từ ứng dụng web thuê xe đến thủ tục nhận xe, giấy tờ và đặt cọc.",
+      "meta": "Công cụ và hướng dẫn sử dụng MotoAI: ứng dụng web thuê xe, Agent hỗ trợ, thủ tục, giấy tờ và đặt cọc."
+    },
+    {
+      "id": "C-RENT",
+      "name": "Thuê Xe",
+      "desc": "Thuê xe máy và xe điện: giá, thủ tục, chọn xe.",
+      "categories": [
+        "RENT",
+        "EV"
+      ],
+      "dir": "thue-xe-phuong-tien",
+      "intro": "Thuê xe máy và xe điện: bảng giá theo ngày tuần tháng, chọn xe số hay xe ga, pin và sạc cho xe điện.",
+      "meta": "Thuê xe máy và xe điện: bảng giá theo ngày tuần tháng, chọn xe số hay xe ga, pin, sạc và chi phí xe điện."
+    },
+    {
+      "id": "C-EXPLORE",
+      "name": "Khám Phá",
+      "desc": "An toàn và hành trình địa phương Hà Nội.",
+      "categories": [
+        "SAFE",
+        "LOCAL"
+      ],
+      "dir": "kham-pha-an-toan",
+      "intro": "An toàn giao thông và hành trình địa phương Hà Nội: kỹ năng lái xe, luật giao thông và cung đường tham quan.",
+      "meta": "An toàn giao thông và hành trình địa phương Hà Nội: kỹ năng lái xe, luật giao thông, cung đường và điểm tham quan."
+    }
   ],
   "categories": {
     "APP": {
-      "dir": "app", "label": "Ứng Dụng", "cluster": "C-APP",
+      "dir": "app",
+      "label": "Ứng Dụng",
+      "cluster": "C-APP",
       "name": "Ứng dụng thuê xe máy",
       "desc": "Ứng dụng web, Agent và cách dùng công cụ thuê xe máy trực tuyến.",
       "intro": "Cách dùng ứng dụng thuê xe máy MotoAI: hỏi giá, chọn xe, tính chi phí và xem thủ tục ngay trên trình duyệt — không cần cài đặt, không cần tài khoản.",
       "meta": "Ứng dụng web, Agent và cách dùng công cụ thuê xe máy MotoAI: hỏi giá, chọn xe, tính chi phí và xem thủ tục ngay trên trình duyệt."
     },
     "RENT": {
-      "dir": "thue-xe", "label": "Thuê Xe", "cluster": "C-RENT",
+      "dir": "thue-xe",
+      "label": "Thuê Xe",
+      "cluster": "C-RENT",
       "name": "Thuê xe máy",
       "desc": "Giá thuê, loại xe, kỳ thuê và kinh nghiệm thuê xe máy.",
       "intro": "Giá thuê theo ngày, tuần, tháng; chọn xe số hay xe ga; kỳ thuê và kinh nghiệm thuê xe máy cho từng mục đích chuyến đi.",
       "meta": "Giá thuê xe máy theo ngày, tuần, tháng; chọn xe số hay xe ga; kỳ thuê và kinh nghiệm thuê xe máy cho từng mục đích chuyến đi."
     },
     "EV": {
-      "dir": "xe-dien", "label": "Xe Điện", "cluster": "C-RENT",
+      "dir": "xe-dien",
+      "label": "Xe Điện",
+      "cluster": "C-RENT",
       "name": "Xe điện / xe máy điện",
       "desc": "Thuê xe điện: pin, phạm vi, sạc và cách chọn xe điện phù hợp.",
       "intro": "Thuê xe máy điện: tầm hoạt động theo pin, cách sạc, chi phí và cách chọn xe điện phù hợp với hành trình của bạn.",
       "meta": "Thuê xe điện: tầm hoạt động theo pin, cách sạc, chi phí và cách chọn xe máy điện phù hợp với hành trình của bạn."
     },
     "GUIDE": {
-      "dir": "huong-dan", "label": "Hướng Dẫn", "cluster": "C-APP",
+      "dir": "huong-dan",
+      "label": "Hướng Dẫn",
+      "cluster": "C-APP",
       "name": "Hướng dẫn / thủ tục",
       "desc": "Thủ tục nhận xe, giấy tờ, đặt cọc và quy trình trả xe.",
       "intro": "Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ.",
       "meta": "Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ."
     },
     "SAFE": {
-      "dir": "an-toan", "label": "An Toàn", "cluster": "C-EXPLORE",
+      "dir": "an-toan",
+      "label": "An Toàn",
+      "cluster": "C-EXPLORE",
       "name": "An toàn / pháp lý",
       "desc": "Luật giao thông, an toàn lái xe và trách nhiệm khi thuê xe.",
       "intro": "An toàn khi thuê và lái xe máy: trang bị bảo hộ, luật giao thông và trách nhiệm của người thuê.",
       "meta": "An toàn khi thuê và lái xe máy: trang bị bảo hộ, luật giao thông và trách nhiệm của người thuê."
     },
     "LOCAL": {
-      "dir": "dia-phuong", "label": "Địa Phương", "cluster": "C-EXPLORE",
+      "dir": "dia-phuong",
+      "label": "Địa Phương",
+      "cluster": "C-EXPLORE",
       "name": "Địa phương / du lịch",
       "desc": "Hành trình Hà Nội và vùng ven bằng xe máy thuê, gợi ý điểm đến theo khu vực.",
       "intro": "Hành trình Hà Nội và vùng ven bằng xe máy thuê: gợi ý điểm đến, thời gian và cung đường cho từng khu vực.",
@@ -52,71 +97,532 @@
   },
   "subtopics": {
     "APP": [
-      { "code": "WEB", "label": "Web App", "slug": "web-app", "match": ["web app", "pwa", "trình duyệt", "không cần cài"] },
-      { "code": "TIM-XE", "label": "Tìm Xe", "slug": "tim-xe", "match": ["tìm xe", "tìm kiếm xe"] },
-      { "code": "TINH-GIA", "label": "Tính Giá", "slug": "tinh-gia", "match": ["tính giá", "tính chi phí", "ước tính"] },
-      { "code": "DAT-XE", "label": "Đặt Xe", "slug": "dat-xe", "match": ["đặt xe"] },
-      { "code": "TRO-LY", "label": "Trợ Lý", "slug": "tro-ly", "match": ["agent", "trợ lý", "chatbot", "ai hỗ trợ"] },
-      { "code": "CAI-APP", "label": "Cài App", "slug": "cai-app", "match": ["cài đặt", "cài app", "tải về", "tải app"] },
-      { "code": "SO-SANH", "label": "So Sánh", "slug": "so-sanh", "match": ["so sánh"] },
-      { "code": "HD-APP", "label": "Hướng Dẫn", "slug": "huong-dan", "match": ["hướng dẫn", "cách dùng", "cách sử dụng"] }
+      {
+        "code": "WEB",
+        "label": "Web App",
+        "slug": "web-app",
+        "match": [
+          "web app",
+          "pwa",
+          "trình duyệt",
+          "không cần cài"
+        ]
+      },
+      {
+        "code": "TIM-XE",
+        "label": "Tìm Xe",
+        "slug": "tim-xe",
+        "match": [
+          "tìm xe",
+          "tìm kiếm xe"
+        ]
+      },
+      {
+        "code": "TINH-GIA",
+        "label": "Tính Giá",
+        "slug": "tinh-gia",
+        "match": [
+          "tính giá",
+          "tính chi phí",
+          "ước tính"
+        ]
+      },
+      {
+        "code": "DAT-XE",
+        "label": "Đặt Xe",
+        "slug": "dat-xe",
+        "match": [
+          "đặt xe"
+        ]
+      },
+      {
+        "code": "TRO-LY",
+        "label": "Trợ Lý",
+        "slug": "tro-ly",
+        "match": [
+          "agent",
+          "trợ lý",
+          "chatbot",
+          "ai hỗ trợ"
+        ]
+      },
+      {
+        "code": "CAI-APP",
+        "label": "Cài App",
+        "slug": "cai-app",
+        "match": [
+          "cài đặt",
+          "cài app",
+          "tải về",
+          "tải app"
+        ]
+      },
+      {
+        "code": "SO-SANH",
+        "label": "So Sánh",
+        "slug": "so-sanh",
+        "match": [
+          "so sánh"
+        ]
+      },
+      {
+        "code": "HD-APP",
+        "label": "Hướng Dẫn",
+        "slug": "huong-dan",
+        "match": [
+          "hướng dẫn",
+          "cách dùng",
+          "cách sử dụng"
+        ]
+      }
     ],
     "RENT": [
-      { "code": "GIA-THUE", "label": "Giá Thuê", "slug": "gia-thue", "match": ["giá", "bảng giá", "chi phí"] },
-      { "code": "DAT-COC", "label": "Đặt Cọc", "slug": "dat-coc", "match": ["cọc"] },
-      { "code": "THU-TUC", "label": "Thủ Tục", "slug": "thu-tuc", "match": ["thủ tục", "giấy tờ"] },
-      { "code": "NHAN-XE", "label": "Nhận Xe", "slug": "nhan-xe", "match": ["nhận xe"] },
-      { "code": "TRA-XE", "label": "Trả Xe", "slug": "tra-xe", "match": ["trả xe"] },
-      { "code": "THUE-NGAY", "label": "Thuê Ngày", "slug": "thue-ngay", "match": ["thuê ngày", "theo ngày", "một ngày"] },
-      { "code": "THUE-TUAN", "label": "Thuê Tuần", "slug": "thue-tuan", "match": ["tuần"] },
-      { "code": "THUE-THANG", "label": "Thuê Tháng", "slug": "thue-thang", "match": ["tháng", "dài hạn", "dài ngày"] },
-      { "code": "CHON-XE", "label": "Chọn Xe", "slug": "chon-xe", "match": ["chọn xe", "xe số", "xe ga", "loại xe", "dung tích"] },
-      { "code": "DU-KHACH", "label": "Du Khách", "slug": "du-khach", "match": ["du khách", "khách nước ngoài", "người nước ngoài"] },
-      { "code": "NGUOI-MOI", "label": "Người Mới", "slug": "nguoi-moi", "match": ["người mới", "lần đầu"] }
+      {
+        "code": "GIA-THUE",
+        "label": "Giá Thuê",
+        "slug": "gia-thue",
+        "match": [
+          "giá",
+          "bảng giá",
+          "chi phí"
+        ]
+      },
+      {
+        "code": "DAT-COC",
+        "label": "Đặt Cọc",
+        "slug": "dat-coc",
+        "match": [
+          "cọc"
+        ]
+      },
+      {
+        "code": "THU-TUC",
+        "label": "Thủ Tục",
+        "slug": "thu-tuc",
+        "match": [
+          "thủ tục",
+          "giấy tờ"
+        ]
+      },
+      {
+        "code": "NHAN-XE",
+        "label": "Nhận Xe",
+        "slug": "nhan-xe",
+        "match": [
+          "nhận xe"
+        ]
+      },
+      {
+        "code": "TRA-XE",
+        "label": "Trả Xe",
+        "slug": "tra-xe",
+        "match": [
+          "trả xe"
+        ]
+      },
+      {
+        "code": "THUE-NGAY",
+        "label": "Thuê Ngày",
+        "slug": "thue-ngay",
+        "match": [
+          "thuê ngày",
+          "theo ngày",
+          "một ngày"
+        ]
+      },
+      {
+        "code": "THUE-TUAN",
+        "label": "Thuê Tuần",
+        "slug": "thue-tuan",
+        "match": [
+          "tuần"
+        ]
+      },
+      {
+        "code": "THUE-THANG",
+        "label": "Thuê Tháng",
+        "slug": "thue-thang",
+        "match": [
+          "tháng",
+          "dài hạn",
+          "dài ngày"
+        ]
+      },
+      {
+        "code": "CHON-XE",
+        "label": "Chọn Xe",
+        "slug": "chon-xe",
+        "match": [
+          "chọn xe",
+          "xe số",
+          "xe ga",
+          "loại xe",
+          "dung tích"
+        ]
+      },
+      {
+        "code": "DU-KHACH",
+        "label": "Du Khách",
+        "slug": "du-khach",
+        "match": [
+          "du khách",
+          "khách nước ngoài",
+          "người nước ngoài"
+        ]
+      },
+      {
+        "code": "NGUOI-MOI",
+        "label": "Người Mới",
+        "slug": "nguoi-moi",
+        "match": [
+          "người mới",
+          "lần đầu"
+        ]
+      }
     ],
     "EV": [
-      { "code": "PIN", "label": "Pin Xe", "slug": "pin-xe", "match": ["pin"] },
-      { "code": "SAC", "label": "Sạc Pin", "slug": "sac-pin", "match": ["sạc"] },
-      { "code": "QUANG-DUONG", "label": "Quãng Đường", "slug": "quang-duong", "match": ["quãng đường", "tầm hoạt động", "phạm vi"] },
-      { "code": "CHON-XE-EV", "label": "Chọn Xe", "slug": "chon-xe", "match": ["chọn xe điện", "chọn xe"] },
-      { "code": "CHI-PHI-EV", "label": "Chi Phí", "slug": "chi-phi", "match": ["chi phí", "giá"] },
-      { "code": "AN-TOAN-EV", "label": "An Toàn", "slug": "an-toan", "match": ["an toàn"] },
-      { "code": "SO-SANH-EV", "label": "So Sánh", "slug": "so-sanh", "match": ["so sánh"] },
-      { "code": "THUE-THANG-EV", "label": "Thuê Tháng", "slug": "thue-thang", "match": ["tháng"] },
-      { "code": "THUE-NGAY-EV", "label": "Thuê Ngày", "slug": "thue-ngay", "match": ["ngày"] }
+      {
+        "code": "PIN",
+        "label": "Pin Xe",
+        "slug": "pin-xe",
+        "match": [
+          "pin"
+        ]
+      },
+      {
+        "code": "SAC",
+        "label": "Sạc Pin",
+        "slug": "sac-pin",
+        "match": [
+          "sạc"
+        ]
+      },
+      {
+        "code": "QUANG-DUONG",
+        "label": "Quãng Đường",
+        "slug": "quang-duong",
+        "match": [
+          "quãng đường",
+          "tầm hoạt động",
+          "phạm vi"
+        ]
+      },
+      {
+        "code": "CHON-XE-EV",
+        "label": "Chọn Xe",
+        "slug": "chon-xe",
+        "match": [
+          "chọn xe điện",
+          "chọn xe"
+        ]
+      },
+      {
+        "code": "CHI-PHI-EV",
+        "label": "Chi Phí",
+        "slug": "chi-phi",
+        "match": [
+          "chi phí",
+          "giá"
+        ]
+      },
+      {
+        "code": "AN-TOAN-EV",
+        "label": "An Toàn",
+        "slug": "an-toan",
+        "match": [
+          "an toàn"
+        ]
+      },
+      {
+        "code": "SO-SANH-EV",
+        "label": "So Sánh",
+        "slug": "so-sanh",
+        "match": [
+          "so sánh"
+        ]
+      },
+      {
+        "code": "THUE-THANG-EV",
+        "label": "Thuê Tháng",
+        "slug": "thue-thang",
+        "match": [
+          "tháng"
+        ]
+      },
+      {
+        "code": "THUE-NGAY-EV",
+        "label": "Thuê Ngày",
+        "slug": "thue-ngay",
+        "match": [
+          "ngày"
+        ]
+      }
     ],
     "GUIDE": [
-      { "code": "DAT-XE", "label": "Đặt Xe", "slug": "dat-xe", "match": ["đặt xe"] },
-      { "code": "THU-TUC", "label": "Thủ Tục", "slug": "thu-tuc", "match": ["thủ tục"] },
-      { "code": "GIAY-TO", "label": "Giấy Tờ", "slug": "giay-to", "match": ["giấy tờ", "cccd", "hộ chiếu", "bằng lái"] },
-      { "code": "NHAN-XE", "label": "Nhận Xe", "slug": "nhan-xe", "match": ["nhận xe"] },
-      { "code": "TRA-XE", "label": "Trả Xe", "slug": "tra-xe", "match": ["trả xe"] },
-      { "code": "TINH-GIA", "label": "Tính Giá", "slug": "tinh-gia", "match": ["tính giá", "tính chi phí"] },
-      { "code": "LIEN-HE", "label": "Liên Hệ", "slug": "lien-he", "match": ["liên hệ"] },
-      { "code": "BAN-DO", "label": "Bản Đồ", "slug": "ban-do", "match": ["bản đồ", "địa chỉ"] },
-      { "code": "CHUAN-BI", "label": "Chuẩn Bị", "slug": "chuan-bi", "match": ["chuẩn bị", "mang gì", "cần gì"] }
+      {
+        "code": "DAT-XE",
+        "label": "Đặt Xe",
+        "slug": "dat-xe",
+        "match": [
+          "đặt xe"
+        ]
+      },
+      {
+        "code": "THU-TUC",
+        "label": "Thủ Tục",
+        "slug": "thu-tuc",
+        "match": [
+          "thủ tục"
+        ]
+      },
+      {
+        "code": "GIAY-TO",
+        "label": "Giấy Tờ",
+        "slug": "giay-to",
+        "match": [
+          "giấy tờ",
+          "cccd",
+          "hộ chiếu",
+          "bằng lái"
+        ]
+      },
+      {
+        "code": "NHAN-XE",
+        "label": "Nhận Xe",
+        "slug": "nhan-xe",
+        "match": [
+          "nhận xe"
+        ]
+      },
+      {
+        "code": "TRA-XE",
+        "label": "Trả Xe",
+        "slug": "tra-xe",
+        "match": [
+          "trả xe"
+        ]
+      },
+      {
+        "code": "TINH-GIA",
+        "label": "Tính Giá",
+        "slug": "tinh-gia",
+        "match": [
+          "tính giá",
+          "tính chi phí"
+        ]
+      },
+      {
+        "code": "LIEN-HE",
+        "label": "Liên Hệ",
+        "slug": "lien-he",
+        "match": [
+          "liên hệ"
+        ]
+      },
+      {
+        "code": "BAN-DO",
+        "label": "Bản Đồ",
+        "slug": "ban-do",
+        "match": [
+          "bản đồ",
+          "địa chỉ"
+        ]
+      },
+      {
+        "code": "CHUAN-BI",
+        "label": "Chuẩn Bị",
+        "slug": "chuan-bi",
+        "match": [
+          "chuẩn bị",
+          "mang gì",
+          "cần gì"
+        ]
+      }
     ],
     "SAFE": [
-      { "code": "LAI-XE", "label": "Lái Xe", "slug": "lai-xe", "match": ["lái xe", "kỹ thuật lái", "đi phố"] },
-      { "code": "MU-BAO-HIEM", "label": "Mũ Bảo Hiểm", "slug": "mu-bao-hiem", "match": ["mũ bảo hiểm", "bảo hộ"] },
-      { "code": "DUONG-PHO", "label": "Đường Phố", "slug": "duong-pho", "match": ["đường phố", "đô thị", "kẹt xe", "giờ cao điểm"] },
-      { "code": "THOI-TIET", "label": "Thời Tiết", "slug": "thoi-tiet", "match": ["thời tiết", "mưa", "mùa đông", "nắng nóng"] },
-      { "code": "SU-CO", "label": "Sự Cố", "slug": "su-co", "match": ["sự cố", "hỏng xe", "cứu hộ", "tai nạn", "mất xe"] },
-      { "code": "PHAP-LUAT", "label": "Pháp Luật", "slug": "phap-luat", "match": ["luật", "phạt", "nồng độ", "pháp lý"] },
-      { "code": "BANG-LAI", "label": "Bằng Lái", "slug": "bang-lai", "match": ["bằng lái", "giấy phép lái", "idp"] },
-      { "code": "BIEN-BAO", "label": "Biển Báo", "slug": "bien-bao", "match": ["biển báo", "khẩu hiệu"] },
-      { "code": "XE-DIEN-SAFE", "label": "Xe Điện", "slug": "xe-dien", "match": ["xe điện"] },
-      { "code": "DU-LICH", "label": "Du Lịch", "slug": "du-lich", "match": ["du lịch", "đường dài", "hành trình dài"] }
+      {
+        "code": "LAI-XE",
+        "label": "Lái Xe",
+        "slug": "lai-xe",
+        "match": [
+          "lái xe",
+          "kỹ thuật lái",
+          "đi phố"
+        ]
+      },
+      {
+        "code": "MU-BAO-HIEM",
+        "label": "Mũ Bảo Hiểm",
+        "slug": "mu-bao-hiem",
+        "match": [
+          "mũ bảo hiểm",
+          "bảo hộ"
+        ]
+      },
+      {
+        "code": "DUONG-PHO",
+        "label": "Đường Phố",
+        "slug": "duong-pho",
+        "match": [
+          "đường phố",
+          "đô thị",
+          "kẹt xe",
+          "giờ cao điểm"
+        ]
+      },
+      {
+        "code": "THOI-TIET",
+        "label": "Thời Tiết",
+        "slug": "thoi-tiet",
+        "match": [
+          "thời tiết",
+          "mưa",
+          "mùa đông",
+          "nắng nóng"
+        ]
+      },
+      {
+        "code": "SU-CO",
+        "label": "Sự Cố",
+        "slug": "su-co",
+        "match": [
+          "sự cố",
+          "hỏng xe",
+          "cứu hộ",
+          "tai nạn",
+          "mất xe"
+        ]
+      },
+      {
+        "code": "PHAP-LUAT",
+        "label": "Pháp Luật",
+        "slug": "phap-luat",
+        "match": [
+          "luật",
+          "phạt",
+          "nồng độ",
+          "pháp lý"
+        ]
+      },
+      {
+        "code": "BANG-LAI",
+        "label": "Bằng Lái",
+        "slug": "bang-lai",
+        "match": [
+          "bằng lái",
+          "giấy phép lái",
+          "idp"
+        ]
+      },
+      {
+        "code": "BIEN-BAO",
+        "label": "Biển Báo",
+        "slug": "bien-bao",
+        "match": [
+          "biển báo",
+          "khẩu hiệu"
+        ]
+      },
+      {
+        "code": "XE-DIEN-SAFE",
+        "label": "Xe Điện",
+        "slug": "xe-dien",
+        "match": [
+          "xe điện"
+        ]
+      },
+      {
+        "code": "DU-LICH",
+        "label": "Du Lịch",
+        "slug": "du-lich",
+        "match": [
+          "du lịch",
+          "đường dài",
+          "hành trình dài"
+        ]
+      }
     ],
     "LOCAL": [
-      { "code": "PHUONG", "label": "Phường / Xã", "slug": "phuong-xa", "match": ["phường", "xã"] },
-      { "code": "HA-NOI", "label": "Hà Nội", "slug": "ha-noi", "match": ["hà nội"] },
-      { "code": "GA-BEN", "label": "Ga / Bến Xe", "slug": "ga-ben-xe", "match": ["ga ", "bến xe", "sân bay", "nhà ga"] },
-      { "code": "DIEM-THAM-QUAN", "label": "Điểm Tham Quan", "slug": "diem-tham-quan", "match": ["điểm tham quan", "địa danh", "phố cổ", "hồ", "cầu"] },
-      { "code": "CUNG-DUONG", "label": "Cung Đường", "slug": "cung-duong", "match": ["cung đường", "tuyến", "lộ trình", "đường đi"] },
-      { "code": "SINH-VIEN", "label": "Sinh Viên", "slug": "sinh-vien", "match": ["sinh viên", "trường đại học", "khu đại học"] },
-      { "code": "DU-KHACH-LOCAL", "label": "Du Khách", "slug": "du-khach", "match": ["du khách", "khách nước ngoài"] },
-      { "code": "GIAO-THONG", "label": "Giao Thông", "slug": "giao-thong", "match": ["giao thông", "kết nối", "đi lại"] }
+      {
+        "code": "PHUONG",
+        "label": "Phường / Xã",
+        "slug": "phuong-xa",
+        "match": [
+          "phường",
+          "xã"
+        ]
+      },
+      {
+        "code": "HA-NOI",
+        "label": "Hà Nội",
+        "slug": "ha-noi",
+        "match": [
+          "hà nội"
+        ]
+      },
+      {
+        "code": "GA-BEN",
+        "label": "Ga / Bến Xe",
+        "slug": "ga-ben-xe",
+        "match": [
+          "ga ",
+          "bến xe",
+          "sân bay",
+          "nhà ga"
+        ]
+      },
+      {
+        "code": "DIEM-THAM-QUAN",
+        "label": "Điểm Tham Quan",
+        "slug": "diem-tham-quan",
+        "match": [
+          "điểm tham quan",
+          "địa danh",
+          "phố cổ",
+          "hồ",
+          "cầu"
+        ]
+      },
+      {
+        "code": "CUNG-DUONG",
+        "label": "Cung Đường",
+        "slug": "cung-duong",
+        "match": [
+          "cung đường",
+          "tuyến",
+          "lộ trình",
+          "đường đi"
+        ]
+      },
+      {
+        "code": "SINH-VIEN",
+        "label": "Sinh Viên",
+        "slug": "sinh-vien",
+        "match": [
+          "sinh viên",
+          "trường đại học",
+          "khu đại học"
+        ]
+      },
+      {
+        "code": "DU-KHACH-LOCAL",
+        "label": "Du Khách",
+        "slug": "du-khach",
+        "match": [
+          "du khách",
+          "khách nước ngoài"
+        ]
+      },
+      {
+        "code": "GIAO-THONG",
+        "label": "Giao Thông",
+        "slug": "giao-thong",
+        "match": [
+          "giao thông",
+          "kết nối",
+          "đi lại"
+        ]
+      }
     ]
   },
   "subtopic_hub_rule": "A subtopic hub page (blog/<category>/<subtopic-slug>/) is generated ONLY when at least one PUBLISHED article belongs to that subtopic. No empty SEO hubs."

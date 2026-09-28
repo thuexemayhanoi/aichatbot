@@ -21,7 +21,21 @@ node tools/blog-factory.mjs lock           # run lock (docs/state/blog-factory.l
 node tools/blog-factory.mjs unlock
 node tools/blog-factory.mjs publish BA-0001 # transaction cho 1 bài
 node tools/blog-factory.mjs resume         # phục hồi transaction đứt quãng
+node tools/blog-factory.mjs claim 10       # nhận tối đa 10 dòng PLANNED -> WRITING (cần lock)
+node tools/blog-factory.mjs finish-chunk BA-0001,BA-0002  # WRITING -> QA, ghi checkpoint
+node tools/blog-factory.mjs abandon-chunk  # crash recovery: WRITING -> PLANNED
+node tools/blog-factory.mjs checkpoint     # xem checkpoint (docs/state/blog-factory.checkpoint.json)
 ```
+
+## Vòng sản xuất liên tục (v58)
+
+```
+lock → claim ≤10 → WRITE 10 → finish-chunk → QA → SEO score ≥90
+→ publish từng bài (transaction) → build hubs/sitemap/search/report
+→ checkpoint → chunk tiếp theo (claim mới, KHÔNG nhận lại từ đầu)
+```
+
+Chunk tối đa 10 bài đang viết. Sau gián đoạn (runtime limit CI): `abandon-chunk` trả các dòng WRITING về PLANNED, unlock, rồi run mới `claim` tiếp tục — không duplicate claim, không duplicate article_id/output_path, không hồi PUBLISHED.
 
 ## Publish transaction
 

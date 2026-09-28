@@ -53,7 +53,7 @@
     {
       "label": "Giá Thuê",
       "icon": "💰",
-      "action": "price"
+      "url": "/aichatbot/gia-thue/"
     },
     {
       "label": "Địa Chỉ",
@@ -83,6 +83,11 @@
   ],
   "legal": [
     {
+      "label": "Chính Sách",
+      "icon": "📜",
+      "url": "/aichatbot/chinh-sach/"
+    },
+    {
       "label": "Bảo Mật",
       "icon": "🔒",
       "url": "/aichatbot/privacy/"
@@ -95,12 +100,21 @@
   ],
   "footer_groups": [
     {
-      "title": "ỨNG DỤNG",
+      "title": "MOTOAI",
       "items": [
         {
           "label": "Agent",
           "url": "/aichatbot/"
         },
+        {
+          "label": "Giới Thiệu",
+          "url": "/aichatbot/gioi-thieu/"
+        }
+      ]
+    },
+    {
+      "title": "CẨM NANG",
+      "items": [
         {
           "label": "Ứng Dụng",
           "url": "/aichatbot/blog/app/"
@@ -108,12 +122,7 @@
         {
           "label": "Hướng Dẫn",
           "url": "/aichatbot/blog/huong-dan/"
-        }
-      ]
-    },
-    {
-      "title": "THUÊ XE",
-      "items": [
+        },
         {
           "label": "Thuê Xe",
           "url": "/aichatbot/blog/thue-xe/"
@@ -121,12 +130,7 @@
         {
           "label": "Xe Điện",
           "url": "/aichatbot/blog/xe-dien/"
-        }
-      ]
-    },
-    {
-      "title": "KHÁM PHÁ",
-      "items": [
+        },
         {
           "label": "An Toàn",
           "url": "/aichatbot/blog/an-toan/"
@@ -142,15 +146,28 @@
       ]
     },
     {
-      "title": "HỖ TRỢ",
+      "title": "DỊCH VỤ",
       "items": [
         {
+          "label": "Giá Thuê",
+          "url": "/aichatbot/gia-thue/"
+        },
+        {
           "label": "Liên Hệ",
-          "url": "/aichatbot/"
+          "url": "/aichatbot/lien-he/"
         },
         {
           "label": "Bản Đồ",
           "ref": "map"
+        }
+      ]
+    },
+    {
+      "title": "PHÁP LÝ",
+      "items": [
+        {
+          "label": "Chính Sách",
+          "url": "/aichatbot/chinh-sach/"
         },
         {
           "label": "Bảo Mật",
@@ -162,5 +179,10 @@
         }
       ]
     }
-  ]
+  ],
+  "about": {
+    "label": "Giới Thiệu",
+    "icon": "🏢",
+    "url": "/aichatbot/gioi-thieu/"
+  }
 }
