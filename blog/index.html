@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="motoai-build" content="v60">
+  <meta name="motoai-build" content="v61">
   <title>Cẩm nang thuê xe máy — ứng dụng, giá, xe điện, thủ tục</title>
   <meta name="description" content="Cẩm nang thuê xe máy và xe điện: cách dùng ứng dụng thuê xe, bảng giá, thủ tục, an toàn và hành trình Hà Nội.">
   <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/blog/">
@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="Cẩm nang thuê xe máy — ứng dụng, giá, xe điện, thủ tục">
   <meta name="twitter:description" content="Cẩm nang thuê xe máy và xe điện: cách dùng ứng dụng thuê xe, bảng giá, thủ tục, an toàn và hành trình Hà Nội.">
   <link rel="stylesheet" href="../assets/css/style.css?v=60">
-  <link rel="stylesheet" href="../assets/css/blog.css?v=60">
+  <link rel="stylesheet" href="../assets/css/blog.css?v=61">
   <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
 </head>
 <body class="content-page">
@@ -32,13 +32,28 @@
           </span>
         </a>
         <nav class="site-nav" aria-label="Chuyên mục">
-<a href="/aichatbot/blog/">Cẩm nang</a>
-        <a href="/aichatbot/blog/app/">Ứng Dụng</a>
-        <a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a>
-        <a href="/aichatbot/blog/thue-xe/">Thuê Xe</a>
-        <a href="/aichatbot/blog/xe-dien/">Xe Điện</a>
-        <a href="/aichatbot/blog/an-toan/">An Toàn</a>
-        <a href="/aichatbot/blog/dia-phuong/">Địa Phương</a>
+          <a href="/aichatbot/blog/" aria-current="page">Cẩm nang</a>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/cong-cu-huong-dan/" aria-haspopup="true">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/app/">📱 Ứng Dụng</a>
+            <a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
         </nav>
         <div class="site-actions">
           <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
@@ -66,33 +81,48 @@
       <section class="blog-clusters" aria-label="Nhóm chủ đề">
         <h2>Nhóm chủ đề</h2>
         <div class="blog-cluster-grid">
-      <section class="blog-cluster-card">
-        <h2>Ứng Dụng</h2>
-        <p>Ứng dụng thuê xe và hướng dẫn sử dụng.</p>
+      <a class="blog-cluster-card blog-hub-card" href="/aichatbot/blog/cong-cu-huong-dan/">
+        <h2>🧰 Công cụ &amp; Hướng dẫn</h2>
+        <p>Công cụ và hướng dẫn sử dụng MotoAI: ứng dụng thuê xe, thủ tục nhận xe, giấy tờ và đặt cọc.</p>
         <div class="blog-cluster-links">
-      <a class="blog-cluster-link" href="/aichatbot/blog/app/">📱 Ứng Dụng</a>
-      <a class="blog-cluster-link" href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a>
+        <a class="blog-cluster-link" href="/aichatbot/blog/app/">📱 Ứng Dụng</a>
+        <a class="blog-cluster-link" href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a>
         </div>
-        <a class="blog-cluster-more" href="/aichatbot/blog/cong-cu-huong-dan/">Xem nhóm chủ đề →</a>
-      </section>
-      <section class="blog-cluster-card">
-        <h2>Thuê Xe</h2>
-        <p>Thuê xe máy và xe điện: giá, thủ tục, chọn xe.</p>
+        <span class="blog-cluster-more">Xem nhóm chủ đề →</span>
+      </a>
+      <a class="blog-cluster-card blog-hub-card" href="/aichatbot/blog/thue-xe-phuong-tien/">
+        <h2>🏍️ Thuê xe &amp; Phương tiện</h2>
+        <p>Thuê xe máy và xe điện: bảng giá theo ngày tuần tháng, chọn xe số hay xe ga, pin và sạc cho xe điện.</p>
         <div class="blog-cluster-links">
-      <a class="blog-cluster-link" href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a>
-      <a class="blog-cluster-link" href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a>
+        <a class="blog-cluster-link" href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a>
+        <a class="blog-cluster-link" href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a>
         </div>
-        <a class="blog-cluster-more" href="/aichatbot/blog/thue-xe-phuong-tien/">Xem nhóm chủ đề →</a>
-      </section>
-      <section class="blog-cluster-card">
-        <h2>Khám Phá</h2>
-        <p>An toàn và hành trình địa phương Hà Nội.</p>
+        <span class="blog-cluster-more">Xem nhóm chủ đề →</span>
+      </a>
+      <a class="blog-cluster-card blog-hub-card" href="/aichatbot/blog/kham-pha-an-toan/">
+        <h2>🧭 Khám phá &amp; An toàn</h2>
+        <p>An toàn giao thông và hành trình địa phương Hà Nội: kỹ năng lái xe, luật giao thông và cung đường tham quan.</p>
         <div class="blog-cluster-links">
-      <a class="blog-cluster-link" href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a>
-      <a class="blog-cluster-link" href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a>
+        <a class="blog-cluster-link" href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a>
+        <a class="blog-cluster-link" href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a>
         </div>
-        <a class="blog-cluster-more" href="/aichatbot/blog/kham-pha-an-toan/">Xem nhóm chủ đề →</a>
+        <span class="blog-cluster-more">Xem nhóm chủ đề →</span>
+      </a>
+        </div>
       </section>
+      <section>
+        <h2>Bài mới</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/aichatbot/blog/app/app-thue-xe-may-la-gi/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục</h2>
+        <p>Tìm hiểu app thuê xe máy là gì, ứng dụng web MotoAI giúp hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe ngay trên trình duyệt, không cần cài đặt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/huong-dan/thu-tuc-thue-xe-may/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Thủ tục thuê xe máy: giấy tờ, đặt cọc, nhận và trả xe</h2>
+        <p>Hướng dẫn thủ tục thuê xe máy: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ, và dịch vụ giao xe tận nơi.</p>
+      </a>
         </div>
       </section>
       <section aria-label="Danh mục">
@@ -130,21 +160,6 @@
       </a>
         </div>
       </section>
-      <section>
-        <h2>Bài đã xuất bản</h2>
-        <div class="blog-grid">
-      <a class="blog-card" href="/aichatbot/blog/app/app-thue-xe-may-la-gi/">
-        <span class="cat">Ứng Dụng</span>
-        <h2>App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục</h2>
-        <p>Tìm hiểu app thuê xe máy là gì, ứng dụng web MotoAI giúp hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe ngay trên trình duyệt, không cần cài đặt.</p>
-      </a>
-      <a class="blog-card" href="/aichatbot/blog/huong-dan/thu-tuc-thue-xe-may/">
-        <span class="cat">Hướng Dẫn</span>
-        <h2>Thủ tục thuê xe máy: giấy tờ, đặt cọc, nhận và trả xe</h2>
-        <p>Hướng dẫn thủ tục thuê xe máy: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ, và dịch vụ giao xe tận nơi.</p>
-      </a>
-        </div>
-      </section>
     <div class="screen-ask">
       <a class="screen-ask-btn" href="/aichatbot/?ask=thu%C3%AA%20xe%20m%C3%A1y">⚡ Hỏi Agent về chủ đề này</a>
     </div>
@@ -162,20 +177,38 @@
         <ul>
           <li><a href="/aichatbot/">Agent</a></li>
           <li><a href="/aichatbot/gioi-thieu/">Giới Thiệu</a></li>
-        </ul>
-      </div>
-      <div class="blog-footer-col">
-        <p class="blog-footer-title">CẨM NANG</p>
-        <ul>
-          <li><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
-          <li><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
-          <li><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
-          <li><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
-          <li><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
-          <li><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
+          <li><a href="/aichatbot/blog/">Cẩm nang</a></li>
           <li><a href="/aichatbot/blog/">Tìm Bài</a></li>
         </ul>
       </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
       <div class="blog-footer-col">
         <p class="blog-footer-title">DỊCH VỤ</p>
         <ul>
@@ -209,12 +242,27 @@
       <li class="motoai-group">
         <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
         <ul class="motoai-group-items" id="motoai-group-cm" hidden>
-          <li><a href="/aichatbot/blog/app/">📱 Ứng Dụng</a></li>
-          <li><a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a></li>
-          <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a></li>
-          <li><a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a></li>
-          <li><a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a></li>
-          <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a></li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/app/">📱 Ứng Dụng</a></li>
+            <li><a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
           <li><a href="/aichatbot/blog/">🔎 Tìm Bài</a></li>
         </ul>
       </li>
@@ -241,7 +289,7 @@
   </nav>
 
 
-  <script src="/aichatbot/assets/js/blog.js?v=60"></script>
-  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=60"></script>
+  <script src="/aichatbot/assets/js/blog.js?v=61"></script>
+  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=61"></script>
 </body>
 </html>
