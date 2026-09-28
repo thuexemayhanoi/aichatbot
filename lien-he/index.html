@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="../assets/css/blog.css">
   <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
 </head>
-<body>
+<body class="content-page">
     <header class="site-header">
       <div class="site-header-inner">
         <a class="site-brand" href="/aichatbot/" aria-label="MotoAI — về màn hình Agent">
@@ -73,52 +73,6 @@
     <div class="screen-ask">
       <a class="screen-ask-btn" href="/aichatbot/?ask=Li%C3%AAn%20h%E1%BB%87">⚡ Hỏi Agent về chủ đề này</a>
     </div>
-
-    <footer class="blog-footer">
-      <div class="blog-footer-inner">
-        <div class="blog-footer-brand">
-          <a class="blog-footer-agent" href="/aichatbot/">⚡ Agent</a>
-          <p>Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
-        </div>
-        <nav class="blog-footer-nav" aria-label="Chân trang">
-      <div class="blog-footer-col">
-        <p class="blog-footer-title">MOTOAI</p>
-        <ul>
-          <li><a href="/aichatbot/">Agent</a></li>
-          <li><a href="/aichatbot/gioi-thieu/">Giới Thiệu</a></li>
-        </ul>
-      </div>
-      <div class="blog-footer-col">
-        <p class="blog-footer-title">CẨM NANG</p>
-        <ul>
-          <li><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
-          <li><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
-          <li><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
-          <li><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
-          <li><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
-          <li><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
-          <li><a href="/aichatbot/blog/">Tìm Bài</a></li>
-        </ul>
-      </div>
-      <div class="blog-footer-col">
-        <p class="blog-footer-title">DỊCH VỤ</p>
-        <ul>
-          <li><a href="/aichatbot/gia-thue/">Giá Thuê</a></li>
-          <li><a href="/aichatbot/lien-he/">Liên Hệ</a></li>
-          <li><a data-contact-ref="map" href="/aichatbot/">Bản Đồ</a></li>
-        </ul>
-      </div>
-      <div class="blog-footer-col">
-        <p class="blog-footer-title">PHÁP LÝ</p>
-        <ul>
-          <li><a href="/aichatbot/chinh-sach/">Chính Sách</a></li>
-          <li><a href="/aichatbot/privacy/">Bảo Mật</a></li>
-          <li><a href="/aichatbot/terms/">Điều Khoản</a></li>
-        </ul>
-      </div>
-        </nav>
-      </div>
-    </footer>
 
   </main>
     <footer class="blog-footer">
@@ -176,6 +130,7 @@
     <ul class="motoai-drawer-list">
       <li><a href="/aichatbot/">⚡ Agent</a></li>
       <li><a href="/aichatbot/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
       <li class="motoai-group">
         <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
         <ul class="motoai-group-items" id="motoai-group-cm" hidden>
