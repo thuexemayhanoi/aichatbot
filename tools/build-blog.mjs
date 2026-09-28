@@ -48,13 +48,21 @@ export const HUBS = Object.freeze(['APP', 'RENT', 'EV', 'GUIDE', 'SAFE', 'LOCAL'
 })));
 const HUB_BY_ID = Object.fromEntries(HUBS.map((h) => [h.id, h]));
 
-/** Resolve {{ business.x.y }} / {{ business.x.y | vnd }} placeholders. */
+/** Resolve {{ business.x.y }} / {{ business.x.y | vnd }} placeholders.
+ *  {{ business.array | list }} joins arrays with ", " (for inline lists). */
 export function resolveFacts(html, business) {
-  return html.replace(/\{\{\s*business\.([a-z0-9_.]+)(?:\s*\|\s*\w+)?\s*\}\}/gi, (_, path) => {
+  return html.replace(/\{\{\s*business\.([a-z0-9_.]+)(?:\s*\|\s*(\w+))?\s*\}\}/gi, (_, path, filter) => {
     const value = path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), business);
     if (value === undefined) throw new Error(`unresolved business fact: business.${path}`);
+    if (filter === 'list' && Array.isArray(value)) return value.join(', ');
     return typeof value === 'number' ? value.toLocaleString('vi-VN') + 'đ' : String(value);
   });
+}
+
+/** Deterministic reading time: visible words / 200 per minute, min 1. */
+export function readingTime(bodyHtml) {
+  const words = bodyHtml.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
 }
 
 function jsonLd(obj) {
@@ -118,6 +126,7 @@ function buildHome(published) {
         <div class="blog-cluster-links">
 ${cats}
         </div>
+        <a class="blog-cluster-more" href="/aichatbot/blog/${c.dir}/">Xem nhóm chủ đề →</a>
       </section>`;
   }).join('\n');
 
@@ -140,9 +149,13 @@ ${cats}
     })
     + `      <div class="blog-search">
         <input id="blog-search-input" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết">
+        <select id="blog-search-filter" aria-label="Lọc theo danh mục">
+          <option value="">Tất cả danh mục</option>
+        </select>
         <button id="blog-search-btn" type="button" onclick="document.getElementById('blog-search-input').dispatchEvent(new Event('input'))">Tìm</button>
+        <button id="blog-search-clear" type="button" aria-label="Xóa tìm kiếm" hidden>✕</button>
       </div>
-      <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản.</p>
+      <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản. <span id="blog-search-count" hidden></span></p>
       <div class="blog-grid" id="blog-search-results"></div>
       <section class="blog-clusters" aria-label="Nhóm chủ đề">
         <h2>Nhóm chủ đề</h2>
@@ -343,7 +356,67 @@ ${list('blog-toc-list')}
   };
 }
 
-/** Article screen = readable app detail screen inside the same shell. */
+/**
+ * Parent cluster hub (/blog/<cluster-dir>/) — a real parent page connecting
+ * its two category hubs. Canonical category IDs and dirs are untouched.
+ */
+function buildClusterHub(cluster, published) {
+  const cats = cluster.categories.map((id) => HUB_BY_ID[id]);
+  const catCards = cats.map((hub) => `      <a class="blog-cat-card" href="/aichatbot/blog/${hub.dir}/">
+        <span class="cat-icon" aria-hidden="true">${navigation.categories.find((n) => n.id === hub.id).icon}</span>
+        <strong>${esc(hub.label)}</strong>
+        <span>${esc(hub.desc)}</span>
+      </a>`).join('\n');
+  const articles = published.filter((a) => cluster.categories.includes(a.category));
+  const cards = articles.map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
+  const path = `blog/${cluster.dir}/`;
+  const content = breadcrumb([CRUMB_HOME, CRUMB_BLOG, { label: cluster.name, href: null }])
+    + screenHead({ label: 'Nhóm chủ đề', title: cluster.name, lead: cluster.desc })
+    + (cluster.intro ? `      <p class="blog-screen-lead">${esc(cluster.intro)}</p>\n` : '')
+    + `      <div class="blog-cat-grid">
+${catCards}
+      </div>
+      <section>
+        <h2>Bài đã xuất bản</h2>
+        <div class="blog-grid">
+${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản trong nhóm này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
+        </div>
+      </section>
+${askAgentAction(cluster.name)}
+${footerHtml()}`;
+  const html = appShellPage({
+    title: `${cluster.name} — Cẩm nang thuê xe máy`,
+    description: cluster.meta,
+    path,
+    screen: `cluster-${cluster.dir}`,
+    activeHub: null,
+    contentHtml: content,
+    schemaHtml: `  <script type="application/ld+json">
+${jsonLd({
+      '@context': 'https://schema.org', '@type': 'CollectionPage',
+      name: cluster.name, description: cluster.meta, url: `${SITE}${path}`,
+      isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE }
+    })}
+  </script>
+  <script type="application/ld+json">
+${jsonLd({
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Agent', item: SITE },
+        { '@type': 'ListItem', position: 2, name: 'Cẩm nang', item: `${SITE}blog/` },
+        { '@type': 'ListItem', position: 3, name: cluster.name, item: `${SITE}${path}` }
+      ]
+    })}
+  </script>
+`
+  });
+  write(`${path}index.html`, html);
+}
+
+/**
+ * Build the article screen. v58 editorial upgrades: quick-answer summary box,
+ * deterministic reading time (words/200, ceil), TOC, related articles.
+ */
 function buildArticle(a, business, hub, published, row) {
   const bodyRaw = read(a.body);
   const body = resolveFacts(bodyRaw, business);
@@ -397,7 +470,11 @@ ${related}
         <a class="blog-chip" href="/aichatbot/blog/${hub.dir}/">${esc(hub.label)}</a>${subHubUrl ? `
         <a class="blog-chip" href="${subHubUrl}">${esc(sub.label)}</a>` : ''}
       </p>
-${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline">${esc(a.author)} · ${a.published_date} · ${esc(hub.label)}</p>
+${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline">${esc(a.author)} · ${a.published_date} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>${esc(a.description)}</p>
+      </div>
       <div class="blog-article-layout">
 ${toc.markup}        <article class="blog-article-body">
   ${bodyWithIds.trim().split('\n').join('\n  ')}
@@ -438,11 +515,12 @@ ${jsonLd({
   write(`blog/${hub.dir}/${a.slug}/index.html`, html);
 }
 
-/** Legal screens (privacy, terms) — same shell, same source of truth. */
-function buildLegal({ dir, title, description, bodyPath, screen }) {
-  const body = read(bodyPath);
+/** Legal/static screens (privacy, terms, about, policy, contact, price) —
+ *  same shell, same source of truth. */
+function buildLegal({ dir, title, description, bodyPath, screen, business }) {
+  const body = resolveFacts(read(bodyPath), business ?? JSON.parse(read('data/business/business.json')));
   const content = breadcrumb([CRUMB_HOME, { label: title, href: null }])
-    + screenHead({ label: 'Pháp lý', title, lead: description })
+    + screenHead({ label: 'MotoAI', title, lead: description })
     + `      <div class="blog-grid blog-legal-grid">
 ${body.trim().split('\n').join('\n')}
       </div>
@@ -490,6 +568,7 @@ export function build() {
   const updated = published.reduce((m, a) => a.published_date > m ? a.published_date : m, '2026-09-26');
 
   buildHome(published);
+  for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published);
   for (const hub of HUBS) buildHub(hub, published, subtopicCounts(published, matrix));
   const subtopicPages = [];
   for (const hub of HUBS) {
@@ -522,6 +601,27 @@ export function build() {
     description: 'Điều khoản sử dụng MotoAI: nội dung tham khảo, xác nhận thông tin quan trọng và trách nhiệm khi sử dụng.',
     bodyPath: 'data/legal/terms.body.html'
   });
+
+  // Static screens — same shell, verified facts only (v58).
+  buildLegal({
+    dir: 'gioi-thieu', screen: 'about',
+    title: 'Giới thiệu',
+    description: 'Giới thiệu MotoAI: thuê xe máy Hà Nội Nguyễn Tú, Agent hỗ trợ, phạm vi phục vụ và cách liên hệ.',
+    bodyPath: 'data/site/gioi-thieu.body.html', business
+  });
+  buildLegal({
+    dir: 'chinh-sach', screen: 'policy',
+    title: 'Chính sách dịch vụ & thuê xe',
+    description: 'Chính sách thuê xe: giờ hoạt động, đặt cọc, giao nhận xe, giấy tờ và xác nhận trước khi đặt.',
+    bodyPath: 'data/site/chinh-sach.body.html', business
+  });
+  buildLegal({
+    dir: 'lien-he', screen: 'contact',
+    title: 'Liên hệ',
+    description: 'Liên hệ Thuê Xe Máy Hà Nội Nguyễn Tú: điện thoại, WhatsApp, bản đồ và Agent hỗ trợ.',
+    bodyPath: 'data/site/lien-he.body.html', business
+  });
+  buildPrice(business);
 
   // Search index (compact; only published; cluster/subtopic/location aware).
   write('blog/search-index.json', JSON.stringify({
@@ -563,10 +663,12 @@ export function build() {
 
   // Sitemap: homepage, blog home, hubs, non-empty subtopic hubs, published articles only.
   const urls = [SITE, `${SITE}blog/`,
+    ...taxonomy.clusters.map((c) => `${SITE}blog/${c.dir}/`),
     ...HUBS.map((h) => `${SITE}blog/${h.dir}/`),
     ...subtopicPages.map((p) => `${SITE}${p}`),
     ...published.map((a) => `${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`),
-    `${SITE}privacy/`, `${SITE}terms/`];
+    `${SITE}privacy/`, `${SITE}terms/`,
+    `${SITE}gioi-thieu/`, `${SITE}chinh-sach/`, `${SITE}lien-he/`, `${SITE}gia-thue/`];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
@@ -592,6 +694,82 @@ Sitemap: ${SITE}sitemap.xml
   }
   write('data/blog/content-matrix.csv', csv.join('\n'));
   console.log(`blog built: ${published.length} published articles, ${subtopicPages.length} subtopic hubs, ${urls.length} sitemap urls`);
+}
+
+/**
+ * Giá thuê screen (/gia-thue/): renders ONLY verified pricing.json data.
+ * No invented prices, no fabricated deposit — unverified cells show the
+ * "confirm with the owner" note instead of a number.
+ */
+const hasRate = (r) => r && (r.min != null || r.max != null);
+const rate = (r) => {
+  if (!r || (r.min == null && r.max == null)) return null;
+  if (r.min != null && r.max != null && r.min !== r.max) return `${r.min.toLocaleString('vi-VN')}đ – ${r.max.toLocaleString('vi-VN')}đ`;
+  const v = r.min ?? r.max;
+  return `${v.toLocaleString('vi-VN')}đ`;
+};
+
+function buildPrice(business) {
+  const pricing = JSON.parse(read('data/business/pricing.json'));
+  const rows = pricing.vehicles
+    .slice()
+    .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
+    .map((v) => {
+      const cells = pricing.rental_types.map((rt) => {
+        const r = rate(v.rates[rt.id]);
+        return `<td>${r ?? 'Xác nhận trực tiếp'}</td>`;
+      }).join('');
+      return `        <tr>
+          <th scope="row">${esc(v.name)}<span class="blog-price-note">${esc(v.category)}</span></th>
+${cells}
+        </tr>`;
+    }).join('\n');
+  const head = pricing.rental_types.map((rt) => `              <th scope="col">${esc(rt.name)}</th>`).join('\n');
+  const content = breadcrumb([CRUMB_HOME, { label: 'Giá thuê', href: null }])
+    + screenHead({
+      label: 'Dịch vụ',
+      title: 'Bảng giá thuê xe',
+      lead: 'Giá tham khảo theo loại xe và thời gian thuê. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.'
+    })
+    + `      <div class="table-wrap">
+        <table class="blog-table">
+          <caption class="visually-hidden">Bảng giá thuê xe theo ngày, tuần và tháng</caption>
+          <thead>
+            <tr>
+              <th scope="col">Xe</th>
+${head}
+            </tr>
+          </thead>
+          <tbody>
+${rows}
+          </tbody>
+        </table>
+      </div>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Lưu ý</p>
+        <p>${esc(pricing.disclaimer)}</p>
+        <p>${esc(business.policies.deposit.note)}</p>
+      </div>
+${askAgentAction('giá thuê xe')}
+${footerHtml()}`;
+
+  const html = appShellPage({
+    title: 'Bảng giá thuê xe máy & xe điện — MotoAI',
+    description: 'Bảng giá thuê xe máy và xe điện theo ngày, tuần, tháng. Giá tham khảo, xác nhận trực tiếp trước khi đặt xe.',
+    path: 'gia-thue/',
+    screen: 'price',
+    activeHub: 'gia-thue',
+    contentHtml: content,
+    schemaHtml: `  <script type="application/ld+json">
+${jsonLd({
+      '@context': 'https://schema.org', '@type': 'WebPage',
+      name: 'Bảng giá thuê xe', description: pricing.disclaimer, url: `${SITE}gia-thue/`,
+      isPartOf: { '@type': 'WebSite', name: 'MotoAI', url: SITE }
+    })}
+  </script>
+`
+  });
+  write('gia-thue/index.html', html);
 }
 
 /** Subtopic counts per category for hub chips (only real subtopics counted). */

@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 /**
- * MotoAI SINGLE APP SHELL (v57) — the ONE source of truth for every
- * generated content screen (blog home, category hub, subtopic hub,
- * article, paginated hub pages, legal screens).
+ * MotoAI CONTENT SITE SHELL (v58) — the ONE source of truth for every
+ * generated content page (blog home, parent cluster hubs, category hubs,
+ * subtopic hubs, articles, search, static pages, privacy, terms).
  *
- * The chat app (index.html) stays the permanent shell of the product:
- *   TOP AREA   = Hỗ trợ Agent identity + address/status + theme + Menu
- *   MAIN       = screen-specific content (only this slot changes)
- *   BOTTOM     = the same 4-item MotoAI dock
- *   DRAWER     = the same menu, built from config/navigation.json
- *
- * SEO URLs stay normal crawlable URLs — every page consumes THIS shell,
- * so a category or article opens INSIDE the app, never as a separate
- * blog-style website with its own chrome.
+ * Product model (final):
+ *   /aichatbot/        = CHAT HOMEPAGE — the app screen (own shell in
+ *                        index.html, no footer, Menu on the right).
+ *   every other page   = NORMAL professional content website page that
+ *                        consumes THIS shell: compact site header
+ *                        (identity left, category nav center on desktop,
+ *                        search/theme/Menu RIGHT), main content column and
+ *                        a real footer generated from config/navigation.json.
+ * Same brand, colors, typography, theme tokens — different page purpose.
+ * No chat dock, no chat-window look on content pages.
  *
  * Navigation/footer vocabulary comes from config/navigation.json via
  * tools/taxonomy.mjs — labels are never copy/pasted per page.
@@ -63,55 +64,53 @@ export function pageHead({ title, description, path }) {
 }
 
 /**
- * Top chrome — IDENTICAL structure to the chat homepage header:
- * identity (tapping it returns to the Agent home screen), verified
- * address, open/closed status line, theme toggle, Menu button.
+ * Shared content-site header. LEFT: MotoAI / Hỗ trợ Agent identity (link
+ * back to the chat homepage). CENTER (>= 900px): Cẩm nang + the six
+ * categories. RIGHT: search, theme toggle and Menu — always the LAST
+ * element on the row (flex margin-left:auto keeps it right-aligned).
  */
-function shellHeader({ screen }) {
-  return `    <header class="motoai-header">
-      <a class="motoai-header-text" href="/aichatbot/" aria-label="Về màn hình Agent">
-        <div class="motoai-brand-mark" aria-hidden="true">🏍️</div>
-        <div>
-          <p class="motoai-title">Hỗ trợ Agent</p>
-          <p class="motoai-subtitle">112 Nguyễn Văn Cừ, Long Biên, Hà Nội · Cẩm nang</p>
+function siteHeader({ activeHub }) {
+  const navItems = [`<a href="/aichatbot/blog/">Cẩm nang</a>`,
+    ...navigation.categories.map((c) => {
+      const dir = taxonomy.categories[c.id].dir;
+      return `        <a href="/aichatbot/blog/${dir}/"${dir === activeHub ? ' aria-current="page"' : ''}>${esc(c.label)}</a>`;
+    })].join('\n');
+  return `    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/aichatbot/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+${navItems}
+        </nav>
+        <div class="site-actions">
+          <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+          <a class="site-search-link" href="/aichatbot/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
         </div>
-      </a>
-      <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
-      <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
-      <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer" data-screen="${esc(screen)}">☰ <span class="motoai-menu-label">Menu</span></button>
+      </div>
     </header>
 `;
 }
 
 /**
- * Bottom dock — the SAME 4-item navigation as the chat homepage.
- * Chat actions (Liên hệ / Giá thuê) become links that return to the
- * home screen with the action parameter; the home app runs the flow.
+ * Menu drawer — same structure and labels as the chat homepage drawer
+ * (config/navigation.json). Actions link to real pages or open the Agent
+ * flow; contact refs are resolved at runtime from verified business.json.
  */
-function shellDock({ activeScreen }) {
-  const isServices = activeScreen === 'thue-xe';
-  return `    <nav class="motoai-dock" id="motoai-dock" aria-label="Điều hướng nhanh">
-      <a class="motoai-dock-item"${isServices ? ' aria-current="page"' : ''} href="/aichatbot/blog/thue-xe/"><span class="motoai-dock-icon" aria-hidden="true">🛵</span><span>Dịch vụ</span></a>
-      <a class="motoai-dock-item" href="/aichatbot/?action=contact"><span class="motoai-dock-icon" aria-hidden="true">☎️</span><span>Liên hệ</span></a>
-      <a class="motoai-dock-item" href="/aichatbot/?action=price"><span class="motoai-dock-icon" aria-hidden="true">💰</span><span>Giá thuê</span></a>
-      <a class="motoai-dock-item" data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank"><span class="motoai-dock-icon" aria-hidden="true">🗺️</span><span>Bản đồ</span></a>
-    </nav>
-`;
-}
-
-/**
- * Menu drawer — same structure as the chat homepage drawer, same labels
- * from config/navigation.json. Actions (price/address/contact) link
- * back to the home screen with the action parameter; contact refs are
- * resolved at runtime from verified business.json.
- */
-function shellDrawer({ activeHub }) {
+function siteDrawer({ activeHub }) {
   const cmItems = [...navigation.categories.map((c) => {
     const dir = taxonomy.categories[c.id].dir;
     const active = dir === activeHub ? ' aria-current="page"' : '';
     return `          <li><a href="/aichatbot/blog/${dir}/"${active}>${c.icon} ${esc(c.label)}</a></li>`;
   }), `          <li><a href="${navigation.search.url}">${navigation.search.icon} ${esc(navigation.search.label)}</a></li>`].join('\n');
   const dvItems = navigation.services.map((s) => {
+    if (s.url) return `          <li><a href="${s.url}">${s.icon} ${esc(s.label)}</a></li>`;
     if (s.action) return `          <li><a href="/aichatbot/?action=${esc(s.action)}">${s.icon} ${esc(s.label)}</a></li>`;
     return `          <li><a data-contact-ref="${esc(s.ref)}" href="#" rel="noopener noreferrer" target="_blank">${s.icon} ${esc(s.label)}</a></li>`;
   }).join('\n');
@@ -125,6 +124,7 @@ function shellDrawer({ activeHub }) {
     </div>
     <ul class="motoai-drawer-list">
       <li><a href="/aichatbot/">⚡ Agent</a></li>
+      <li><a href="${navigation.about.url}">${navigation.about.icon} ${esc(navigation.about.label)}</a></li>
       <li class="motoai-group">
         <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
         <ul class="motoai-group-items" id="motoai-group-cm" hidden>
@@ -148,8 +148,8 @@ ${plItems}
 `;
 }
 
-/** Compact SEO footer (config/navigation.json) — lives at the END of the
- *  screen content, clearly inside the MotoAI app, never another site chrome. */
+/** Real site footer (config/navigation.json footer_groups) — the shared
+ *  chrome for every content page. Never copy/pasted per page. */
 export function footerHtml() {
   const groups = navigation.footer_groups.map((g) => {
     const links = g.items.map((item) => {
@@ -166,13 +166,15 @@ ${links}
       </div>`;
   }).join('\n');
   return `    <footer class="blog-footer">
-      <div class="blog-footer-brand">
-        <a class="blog-footer-agent" href="/aichatbot/">⚡ Agent</a>
-        <p>Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
-      </div>
-      <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <a class="blog-footer-agent" href="/aichatbot/">⚡ Agent</a>
+          <p>Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
 ${groups}
-      </nav>
+        </nav>
+      </div>
     </footer>
 `;
 }
@@ -189,32 +191,27 @@ export function askAgentAction(topic) {
 
 function shellScripts({ search }) {
   return (search ? `  <script src="/aichatbot/assets/js/blog.js"></script>\n` : '')
-    + `  <script type="module" src="/aichatbot/assets/js/app-shell.js"></script>
-`;
+    + `  <script type="module" src="/aichatbot/assets/js/app-shell.js"></script>\n`;
 }
 
 /**
- * Compose one full content-screen page inside the single app shell.
+ * Compose one full content page inside the shared content-site shell.
  * @param {object} o
  * @param {string} o.title / o.description / o.path — SEO head values
- * @param {string} o.screen — screen id (chat-home sibling), used for stats
- * @param {string} o.activeHub — active category dir (drawer/dock state)
- * @param {string} o.contentHtml — the MAIN VIEWPORT slot (screen body)
+ * @param {string} o.screen — screen id (page stats)
+ * @param {string} o.activeHub — active category dir (header/drawer state)
+ * @param {string} o.contentHtml — the main content column
  * @param {string} o.schemaHtml — JSON-LD scripts (placed before closing body)
  * @param {boolean} o.search — include the blog search runtime (blog home only)
  */
 export function appShellPage({ title, description, path, screen, activeHub = null, contentHtml, schemaHtml = '', search = false }) {
   return pageHead({ title, description, path })
-    + `  <main class="motoai-shell motoai-shell-content">
-    <section class="motoai-app motoai-screen" id="motoai-app" data-motoai-screen="${esc(screen)}">
-${shellHeader({ screen })}
-      <section class="motoai-screen-body" id="motoai-screen-body">
+    + siteHeader({ activeHub })
+    + `  <main class="site-main" id="site-main" data-motoai-screen="${esc(screen)}">
 ${contentHtml}
-      </section>
-${shellDock({ activeScreen: activeHub })}
-    </section>
   </main>
-${shellDrawer({ activeHub })}
+${footerHtml()}
+${siteDrawer({ activeHub })}
 ${schemaHtml}
 ${shellScripts({ search })}</body>
 </html>

@@ -24,12 +24,17 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from './build-blog.mjs';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const ROOT = process.env.MOTOAI_FACTORY_ROOT
+  ?? join(dirname(fileURLToPath(import.meta.url)), '..');
 const MATRIX = join(ROOT, 'data/blog/content-matrix.csv');
 const MANIFEST = join(ROOT, 'data/blog/published.json');
 const LOCK = join(ROOT, 'docs/state/blog-factory.lock');
 const TX = join(ROOT, 'docs/state/blog-factory.transaction.json');
 const REPORT = join(ROOT, 'reports/blog-factory-run.md');
+
+/** v58 production-loop constants: chunk writer + checkpoint. */
+const CHECKPOINT = join(ROOT, 'docs/state/blog-factory.checkpoint.json');
+const MAX_CHUNK = 10; // maximum articles actively claimed per writer run
 
 const read = (p) => readFileSync(p, 'utf8');
 const write = (p, s) => writeFileSync(p, s, 'utf8');
@@ -177,6 +182,89 @@ function resume(now) {
   void now;
 }
 
+/**
+ * v58 production loop — claim / finish / abandon in MAX_CHUNK-sized batches.
+ * claim: atomically take up to 10 PLANNED rows -> WRITING (lock required,
+ * no duplicate claim possible: a second claim sees non-PLANNED rows).
+ */
+function claim(writer, count) {
+  if (!existsSync(LOCK)) { console.error('refusing to claim without the run lock'); process.exit(1); }
+  const n = Math.min(Math.max(1, Number(count) || MAX_CHUNK), MAX_CHUNK);
+  const rows = parseMatrix();
+  const taken = [];
+  for (const r of rows) {
+    if (taken.length >= n) break;
+    if (r.status !== 'PLANNED') continue;
+    if (writer && r.writer && r.writer !== writer) continue;
+    r.status = 'WRITING';
+    taken.push(r.article_id);
+  }
+  if (taken.length === 0) { console.log('claim: nothing PLANNED available'); return; }
+  saveMatrix(rows);
+  const cp = existsSync(CHECKPOINT) ? JSON.parse(read(CHECKPOINT)) : { claimed: [], finished: [] };
+  cp.claimed = [...new Set([...(cp.claimed ?? []), ...taken])];
+  cp.updated = new Date().toISOString();
+  write(CHECKPOINT, JSON.stringify(cp, null, 2) + '\n');
+  report(`CLAIM ${taken.length}: ${taken.join(', ')}`);
+  console.log(`claimed ${taken.length}: ${taken.join(', ')}`);
+}
+
+/** finish-chunk: WRITING rows of the given ids -> QA (writer's job done). */
+function finishChunk(ids) {
+  if (!ids || ids.length === 0) { console.error('finish-chunk <id,id,...>'); process.exit(1); }
+  const want = new Set(ids.split(',').map((s) => s.trim()).filter(Boolean));
+  const rows = parseMatrix();
+  const done = [];
+  for (const r of rows) {
+    if (want.has(r.article_id) && r.status === 'WRITING') { r.status = 'QA'; done.push(r.article_id); }
+  }
+  if (done.length === 0) { console.error('no WRITING rows matched'); process.exit(1); }
+  saveMatrix(rows);
+  const cp = existsSync(CHECKPOINT) ? JSON.parse(read(CHECKPOINT)) : { claimed: [], finished: [] };
+  cp.finished = [...new Set([...(cp.finished ?? []), ...done])];
+  cp.claimed = (cp.claimed ?? []).filter((id) => !done.includes(id));
+  cp.updated = new Date().toISOString();
+  write(CHECKPOINT, JSON.stringify(cp, null, 2) + '\n');
+  report(`FINISH-CHUNK ${done.join(', ')}`);
+  console.log(`finished ${done.length}: ${done.join(', ')}`);
+}
+
+/** abandon-chunk: return still-WRITING rows to PLANNED after a crashed run. */
+function abandonChunk(ids) {
+  const want = ids ? new Set(ids.split(',').map((s) => s.trim()).filter(Boolean)) : null;
+  const rows = parseMatrix();
+  let returned = 0;
+  for (const r of rows) {
+    if (r.status !== 'WRITING') continue;
+    if (want && !want.has(r.article_id)) continue;
+    r.status = 'PLANNED';
+    returned++;
+  }
+  if (returned === 0) { console.log('abandon-chunk: nothing to return'); return; }
+  saveMatrix(rows);
+  const cp = existsSync(CHECKPOINT) ? JSON.parse(read(CHECKPOINT)) : { claimed: [], finished: [] };
+  cp.claimed = [];
+  cp.updated = new Date().toISOString();
+  write(CHECKPOINT, JSON.stringify(cp, null, 2) + '\n');
+  report(`ABANDON-CHUNK returned ${returned} rows to PLANNED`);
+  console.log(`returned ${returned} rows to PLANNED`);
+}
+
+function showCheckpoint() {
+  if (!existsSync(CHECKPOINT)) { console.log('checkpoint: none'); return; }
+  const cp = JSON.parse(read(CHECKPOINT));
+  console.log(`checkpoint updated ${cp.updated ?? '?'}`);
+  console.log(`  claimed (in flight): ${(cp.claimed ?? []).length}`);
+  console.log(`  finished (awaiting publish): ${(cp.finished ?? []).length}`);
+}
+
+/** Serialize the parsed matrix back to CSV (schema and order untouched). */
+function saveMatrix(rows) {
+  const header = read(MATRIX).trim().split('\n')[0];
+  const cols = header.split(',');
+  write(MATRIX, [header, ...rows.map((r) => cols.map((c) => r[c] ?? '').join(','))].join('\n') + '\n');
+}
+
 const [cmd, arg] = process.argv.slice(2);
 const now = new Date().toISOString().slice(0, 10);
 switch (cmd) {
@@ -186,6 +274,10 @@ switch (cmd) {
   case 'unlock': unlock(); break;
   case 'publish': publish(arg, now); break;
   case 'resume': resume(now); break;
+  case 'claim': claim(undefined, arg); break;
+  case 'finish-chunk': finishChunk(arg); break;
+  case 'abandon-chunk': abandonChunk(arg); break;
+  case 'checkpoint': showCheckpoint(); break;
   default:
-    console.log('usage: blog-factory.mjs status | validate | lock | unlock | publish <BA-id> | resume');
+    console.log('usage: blog-factory.mjs status | validate | lock | unlock | publish <BA-id> | resume | claim [n<=10] | finish-chunk <ids> | abandon-chunk [ids|all] | checkpoint');
 }

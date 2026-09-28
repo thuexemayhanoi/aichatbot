@@ -39,8 +39,8 @@ test('seo-score is deterministic across runs', () => {
 
 test('every audited page exists and every issue names a page or site', () => {
   const result = JSON.parse(runTool(['--json']));
-  assert.ok(result.pages.length >= 11, 'home + blog + 6 hubs + articles + legal');
+  assert.ok(result.pages.length >= 17, 'home + blog + 3 cluster hubs + 6 hubs + articles + 6 legal/static');
   assert.ok(result.pages.every((p) => p.endsWith('index.html')));
   for (const issue of result.issues) {
-    assert.match(issue, /^(index\.html|blog\/[\w./-]*|privacy\/index\.html|terms\/index\.html|site): /, `unattributed issue: ${issue}`);
+    assert.match(issue, /^(index\.html|blog\/[\w./-]*|privacy\/index\.html|terms\/index\.html|gioi-thieu\/index\.html|chinh-sach\/index\.html|lien-he\/index\.html|gia-thue\/index\.html|site): /, `unattributed issue: ${issue}`);
   }});

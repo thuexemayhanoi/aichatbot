@@ -105,10 +105,14 @@ test('renderStatus: open/closed copy and hidden fallback', async () => {
   assert.ok(el.textContent.includes('09:00'));
 });
 
-// ---------- Blog shell contract (home + 6 hubs + articles) ----------
+// ---------- Blog shell contract (v58: chat homepage + normal content site) ----------
+
+const STATIC_PAGES = ['privacy/index.html', 'terms/index.html',
+  'gioi-thieu/index.html', 'chinh-sach/index.html', 'lien-he/index.html', 'gia-thue/index.html'];
+const CLUSTER_DIRS = ['cong-cu-huong-dan', 'thue-xe-phuong-tien', 'kham-pha-an-toan'];
 
 function blogPages() {
-  const pages = ['blog/index.html', ...HUBS.map((h) => `blog/${h}/index.html`)];
+  const pages = ['blog/index.html', ...CLUSTER_DIRS.map((c) => `blog/${c}/index.html`), ...HUBS.map((h) => `blog/${h}/index.html`)];
   const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
   pages.push(...walk('blog/app').filter((p) => p.endsWith('index.html') && p !== 'blog/app/index.html'));
@@ -116,16 +120,23 @@ function blogPages() {
   return pages;
 }
 
-test('v57 single app shell: every content screen keeps the MotoAI chrome', () => {
-  for (const page of [...blogPages(), 'privacy/index.html', 'terms/index.html']) {
+test('v58 content site: every generated page uses the shared site header + footer', () => {
+  for (const page of [...blogPages(), ...STATIC_PAGES]) {
     const html = read(page);
-    // ONE permanent app shell: top chrome + main viewport + bottom dock + drawer.
-    assert.match(html, /class="motoai-app motoai-screen"/, `${page}: renders inside the app shell`);
-    assert.ok(html.includes('Hỗ trợ Agent'), `${page}: Agent identity in the top chrome`);
+    // Normal website chrome: shared site header with the MotoAI identity.
+    assert.match(html, /<header class="site-header">/, `${page}: shared site header`);
+    assert.ok(html.includes('Hỗ trợ Agent'), `${page}: Agent identity in the header`);
     assert.ok(html.includes('id="motoai-menu-btn"'), `${page}: Menu button`);
     assert.ok(html.includes('id="blog-theme-toggle"'), `${page}: theme control`);
-    assert.ok((html.match(/<nav class="motoai-dock"/g) ?? []).length === 1, `${page}: bottom dock`);
     assert.ok(html.includes('id="motoai-drawer"'), `${page}: shared menu drawer`);
+    // Menu stays RIGHT: it is the last interactive element after the theme toggle.
+    const m = html.match(/id="blog-theme-toggle"[\s\S]{0,400}?id="motoai-menu-btn"/);
+    assert.ok(m, `${page}: theme toggle before Menu (Menu right-aligned)`);
+    // Real footer on every content page — generated from navigation config.
+    assert.match(html, /<footer class="blog-footer">/, `${page}: site footer`);
+    assert.ok(html.includes('blog-footer-nav'), `${page}: footer nav groups`);
+    // No chat dock on content pages: they are NOT chat windows.
+    assert.ok(!html.includes('<nav class="motoai-dock"'), `${page}: no chat dock on content pages`);
     assert.equal((html.match(/<h1[\s>]/g) ?? []).length, 1, `${page}: exactly one H1`);
     assert.ok(html.includes('<link rel="canonical"'), `${page}: canonical`);
     assert.match(html, /motoai-theme/, `${page}: no-flash theme script`);
@@ -137,6 +148,29 @@ test('v57 single app shell: every content screen keeps the MotoAI chrome', () =>
     // Ask Agent is a native action that returns to the HOME chat screen.
     assert.ok(html.includes('/aichatbot/?ask='), `${page}: Ask Agent action`);
   }
+});
+
+test('chat homepage keeps the app shell: dock present, NO site footer, Menu on the right', () => {
+  const html = read('index.html');
+  assert.ok(html.includes('<nav class="motoai-dock"'), 'chat homepage keeps the bottom service dock');
+  assert.ok(!html.includes('class="blog-footer"'), 'chat homepage has NO traditional footer');
+  assert.ok(!html.includes('class="site-header"'), 'chat homepage keeps its own app header');
+  assert.ok(html.includes('id="motoai-menu-btn"'), 'Menu button present');
+  // Menu is the LAST control of the header row (right-aligned on mobile + desktop).
+  const header = html.slice(0, html.indexOf('</header>'));
+  const lastBtn = Math.max(header.lastIndexOf('id="motoai-menu-btn"'), 0);
+  const lastToggle = Math.max(header.lastIndexOf('id="motoai-theme-toggle"'), 0);
+  assert.ok(lastBtn > lastToggle, 'Menu sits after the theme toggle (right side)');
+});
+
+test('site header CSS contract: sticky header, actions pinned right, no tiny identity column', () => {
+  const css = read('assets/css/blog.css');
+  assert.match(css, /\.site-header\s*\{[^}]*position:\s*sticky/, 'sticky site header');
+  assert.match(css, /\.site-actions\s*\{[^}]*margin-left:\s*auto/, 'actions (Menu) pinned to the right');
+  assert.match(css, /\.site-brand\s*\{[^}]*min-width:\s*0/, 'identity block can shrink safely');
+  assert.match(css, /\.site-main\s*\{[^}]*min-width:\s*0/, 'main column never forces page overflow');
+  assert.match(css, /\.site-nav\s*\{[^}]*display:\s*none/, 'desktop nav hidden on mobile');
+  assert.match(css, /min-width:\s*900px[\s\S]{0,200}\.site-nav\s*\{[^}]*display:\s*flex/, 'desktop nav appears >= 900px');
 });
 
 test('hub screens mark their own category with aria-current and keep a breadcrumb', () => {
@@ -157,18 +191,18 @@ test('category chips are one non-wrapping horizontal row on mobile (CSS contract
   assert.match(css, /\.blog-chip\s*\{[^}]*flex:\s*0 0 auto/);
 });
 
-test('business status line exists on every screen and starts hidden (never guesses)', () => {
-  for (const page of [...blogPages(), 'privacy/index.html', 'terms/index.html']) {
+test('business status line exists on every page and starts hidden (never guesses)', () => {
+  for (const page of [...blogPages(), ...STATIC_PAGES]) {
     const html = read(page);
     assert.ok(html.includes('id="blog-business-status"'), `${page}: status element`);
     assert.match(html, /id="blog-business-status"[^>]*hidden/, `${page}: hidden until data loads`);
   }
 });
 
-test('no unrendered template placeholders anywhere in blog HTML', () => {
+test('no unrendered template placeholders anywhere in generated HTML', () => {
   const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
-  for (const p of walk('blog').filter((p) => p.endsWith('.html'))) {
+  for (const p of [...walk('blog').filter((p) => p.endsWith('.html')), ...STATIC_PAGES]) {
     assert.ok(!read(p).includes('{{'), `${p}: no template placeholders`);
   }
 });
@@ -193,7 +227,7 @@ test('contact mechanism: data-contact-ref anchors cover whatsapp, call and map (
   const refs = new Set();
   const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
-  for (const p of [...walk('blog'), 'privacy', 'terms'].filter((p) => p.endsWith('.html'))) {
+  for (const p of [...walk('blog'), 'privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue'].filter((p) => p.endsWith('.html'))) {
     for (const m of read(p).matchAll(/data-contact-ref="([a-z]+)"/g)) refs.add(m[1]);
   }
   for (const ref of ['whatsapp', 'call', 'map']) {

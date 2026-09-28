@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -237,4 +237,77 @@ test('cross-repository protected keywords are declared and enforced', () => {
   const doc = read('docs/SEO-OWNERSHIP.md');
   assert.ok(doc.includes('aichatbot'));
   assert.ok(doc.toLowerCase().includes('app thuê xe máy'));
+});
+
+// ---------- v58: parent clusters, static pages, Zalo walk ----------
+
+test('v58: parent cluster hub pages exist and connect their category hubs', () => {
+  const tax = JSON.parse(read('data/blog/taxonomy.json'));
+  assert.equal(tax.clusters.length, 3);
+  for (const c of tax.clusters) {
+    const html = read(`blog/${c.dir}/index.html`);
+    assert.match(html, /<h1 class="blog-screen-title">[^<]*<\/h1>/);
+    assert.ok(html.includes('blog-breadcrumb'), `${c.dir}: breadcrumb`);
+    for (const id of c.categories) {
+      const dir = tax.categories[id].dir;
+      assert.ok(html.includes(`/aichatbot/blog/${dir}/`), `${c.dir}: links ${id}`);
+    }
+    assert.ok(html.includes('Cẩm nang'), `${c.dir}: back to blog root`);
+    assert.ok(html.includes('/aichatbot/?ask='), `${c.dir}: Ask Agent`);
+  }
+});
+
+test('v58: about, policy, contact and price pages exist with verified facts only', () => {
+  const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
+  const business = JSON.parse(read('data/business/business.json'));
+  const pages = {
+    'gioi-thieu': ['Giới thiệu', business.address.full],
+    'chinh-sach': ['Chính sách', business.policies.deposit.note],
+    'lien-he': ['Liên hệ', business.contact.phone_display],
+    'gia-thue': ['Bảng giá', null]
+  };
+  for (const [dir, [label, fact]] of Object.entries(pages)) {
+    const html = read(`${dir}/index.html`);
+    assert.ok(html.includes('<h1'), `${dir}: H1`);
+    assert.ok(html.includes(label) || html.includes('blog-screen-title'), `${dir}: title`);
+    assert.ok(html.includes(`rel="canonical" href="${SITE}${dir}/"`), `${dir}: canonical`);
+    assert.ok(html.includes('blog-footer'), `${dir}: footer`);
+    if (fact) assert.ok(html.includes(fact), `${dir}: verified business fact rendered`);
+  }
+  // Price page: only verified pricing.json numbers — spot-check two rates.
+  const pricing = JSON.parse(read('data/business/pricing.json'));
+  const priceHtml = read('gia-thue/index.html');
+  const wave = pricing.vehicles.find((v) => v.id === 'honda-wave');
+  if (wave.rates.day.min != null) {
+    assert.ok(priceHtml.includes(wave.rates.day.min.toLocaleString('vi-VN') + 'đ'), 'verified day rate rendered');
+  }
+  assert.ok(priceHtml.includes(pricing.disclaimer), 'pricing disclaimer present');
+  assert.ok(priceHtml.includes(business.policies.deposit.note), 'deposit note from business.json');
+  // No invented numbers: every "đ" figure in the table must exist in pricing.json.
+  const all = new Set();
+  for (const v of pricing.vehicles) for (const rt of Object.values(v.rates)) {
+    if (rt?.min != null) all.add(rt.min.toLocaleString('vi-VN') + 'đ');
+    if (rt?.max != null) all.add(rt.max.toLocaleString('vi-VN') + 'đ');
+  }
+  for (const m of priceHtml.matchAll(/>([\d.]+đ(?: – [\d.]+đ)?)</g)) {
+    for (const fig of m[1].split(' – ')) {
+      assert.ok(all.has(fig), `unverified price in the table: ${fig}`);
+    }
+  }
+});
+
+test('v58: zero public Zalo references across the whole generated surface', () => {
+  const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
+  for (const p of [...walk('blog'), ...walk('assets'), 'index.html', ...['privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue'].map((d) => `${d}/index.html`)].filter((p) => /\.(html|js)$/.test(p))) {
+    assert.ok(!/zalo/i.test(read(p)), `${p}: public Zalo reference`);
+  }
+});
+
+test('v58: homepage header keeps Menu as the last control (right-aligned)', () => {
+  const html = read('index.html');
+  const header = html.slice(0, html.indexOf('</header>'));
+  const idxs = ['blog-theme-toggle', 'motoai-menu-btn'].map((id) => header.indexOf(`id="${id}"`));
+  assert.ok(idxs[0] !== -1 && idxs[1] !== -1, 'theme toggle and Menu both in the header');
+  assert.ok(idxs[1] > idxs[0], 'Menu after theme toggle = right side');
 });
