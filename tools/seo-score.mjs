@@ -27,15 +27,21 @@ import { fileURLToPath } from 'node:url';
 
 export const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
 export const HUBS = ['app', 'thue-xe', 'xe-dien', 'huong-dan', 'an-toan', 'dia-phuong'];
+export const CLUSTER_DIRS = ['cong-cu-huong-dan', 'thue-xe-phuong-tien', 'kham-pha-an-toan'];
 
 export function pageSet(published) {
   const pages = [
     { path: 'index.html', kind: 'home' },
     { path: 'blog/index.html', kind: 'blog-home' },
+    ...CLUSTER_DIRS.map((c) => ({ path: `blog/${c}/index.html`, kind: 'hub', hub: c })),
     ...HUBS.map((h) => ({ path: `blog/${h}/index.html`, kind: 'hub', hub: h })),
     ...published.map((a) => ({ path: `blog/${a.dir}/${a.slug}/index.html`, kind: 'article', slug: a.slug, dir: a.dir, title: a.title })),
     { path: 'privacy/index.html', kind: 'legal' },
-    { path: 'terms/index.html', kind: 'legal' }
+    { path: 'terms/index.html', kind: 'legal' },
+    { path: 'gioi-thieu/index.html', kind: 'legal' },
+    { path: 'chinh-sach/index.html', kind: 'legal' },
+    { path: 'lien-he/index.html', kind: 'legal' },
+    { path: 'gia-thue/index.html', kind: 'legal' }
   ];
   return pages;
 }
@@ -266,7 +272,7 @@ function checkUxPerformance(pages, io) {
     }
   }
   const css = io.exists('assets/css/blog.css') ? io.read('assets/css/blog.css') : '';
-  add(/\.blog-contact\s*\{[^}]*min-height:\s*4\dpx/.test(css), 'blog.css tap targets <40px');
+  add(/\.screen-ask-btn\s*\{[^}]*min-height:\s*4\dpx/.test(css), 'blog.css tap targets <40px');
   add(/:focus-visible/.test(css), 'blog.css missing :focus-visible styles');
   const totalCss = (io.exists('assets/css/blog.css') ? io.size('assets/css/blog.css') : 0) + (io.exists('assets/css/style.css') ? io.size('assets/css/style.css') : 0);
   add(totalCss < 60 * 1024, `total CSS ${totalCss} bytes (>=60KB)`);
