@@ -1,6 +1,6 @@
 # SEO Ownership — repo `thuexemayhanoi/aichatbot`
 
-Bản quyền SEO của repo này là **APP / WEB APPLICATION / DIGITAL RENTAL ASSISTANT** (trợ lý thuê xe số). Cấu hình máy đọc được: `config/seo-ownership.json` (kiểm thử: `tests/unit/blog-foundation.test.js`).
+Bản quyền SEO của repo này là **APP / WEB APPLICATION / DIGITAL RENTAL ASSISTANT** (trợ lý thuê xe số). Cấu hình máy đọc được: `config/seo-ownership.json` (kiểm thử: `tests/unit/seo-ownership.test.js` + `tests/unit/blog-foundation.test.js`).
 
 ## 1. Từ khóa quốc gia repo này SỞ HỮU
 
@@ -48,4 +48,4 @@ Không bao giờ giới thiệu sản phẩm này là app native trên App Store
 ## 5. Kiểm thử liên quan
 
 - `tests/unit/blog-foundation.test.js` — ownership, homepage intent, schema, sitemap, indexes.
-- `tests/unit/seo-ownership` nằm gộp trong blog-foundation (protected keywords + docs tồn tại).
+- `tests/unit/seo-ownership.test.js` — dedicated gate (v63.1): protected commercial keywords không bao giờ là title/H1 landing chính xác; homepage giữ identity APP/WebApplication; bài LOCAL bắt buộc angle Agent/app/informational.

@@ -221,3 +221,86 @@ test('URL freeze: no hub/article URL or canonical changed', () => {
     assert.ok(read(`blog/${dir}/index.html`).includes(`rel="canonical" href="${SITE}blog/${dir}/"`), `${dir}: canonical self`);
   }
 });
+
+// ---------- v63.1 hybrid hardening: subtopic layer of the link graph ----------
+
+const ARTICLE_PATHS = new Set(ARTICLES.map((a) => `blog/${taxonomy.categories[a.category].dir}/${a.slug}/index.html`));
+/** Subtopic hub pages = one dir under a silo that is NOT an article page. */
+const subtopicPages = () => blogPages().filter((p) =>
+  /^blog\/[a-z-]+\/[a-z0-9-]+\/index\.html$/.test(p) && !ARTICLE_PATHS.has(p));
+const ldjsonOf = (html) => [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+  .map((m) => JSON.parse(m[1]));
+const visibleTrailOf = (html) => {
+  const trail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1];
+  return [...trail.matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map((m) => unesc(m[1])).filter((t) => t !== '›');
+};
+
+test('audit: SUBTOPIC_WITHOUT_SILO_LINK = 0 (subtopic links silo AND parent hub)', () => {
+  assert.ok(subtopicPages().length >= 1, 'at least one subtopic hub is published');
+  for (const p of subtopicPages()) {
+    const siloDir = /^blog\/([a-z-]+)\//.exec(p)[1];
+    const [catId, cat] = Object.entries(taxonomy.categories).find(([, c]) => c.dir === siloDir);
+    const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);
+    const html = read(p);
+    assert.ok(html.includes(`href="/aichatbot/blog/${siloDir}/"`), `${p}: silo link`);
+    assert.ok(html.includes(`href="/aichatbot/blog/${cluster.dir}/"`), `${p}: parent hub link (breadcrumb)`);
+  }
+});
+
+test('audit: subtopic schema = CollectionPage + ItemList + BreadcrumbList; visible == JSON-LD', () => {
+  for (const p of subtopicPages()) {
+    const siloDir = /^blog\/([a-z-]+)\//.exec(p)[1];
+    const subSlug = /^blog\/[a-z-]+\/([a-z0-9-]+)\//.exec(p)[1];
+    const [catId, cat] = Object.entries(taxonomy.categories).find(([, c]) => c.dir === siloDir);
+    const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);
+    const sub = (taxonomy.subtopics[catId] ?? []).find((s) => s.slug === subSlug);
+    const html = read(p);
+    const lds = ldjsonOf(html);
+    const col = lds.find((o) => o['@type'] === 'CollectionPage');
+    assert.ok(col, `${p}: CollectionPage`);
+    assert.ok(col.mainEntity?.['@type'] === 'ItemList', `${p}: ItemList mainEntity`);
+    assert.equal(col.url, `${'https://thuexemayhanoi.github.io/aichatbot/'}${p.replace(/index\.html$/, '')}`, `${p}: CollectionPage url is self`);
+    const crumbs = lds.find((o) => o['@type'] === 'BreadcrumbList').itemListElement.map((i) => i.name);
+    const visible = visibleTrailOf(html);
+    assert.deepEqual(visible, crumbs, `${p}: visible breadcrumb == JSON-LD`);
+    assert.equal(crumbs.length, 5, `${p}: full 5-level trail`);
+    assert.deepEqual([crumbs[0], crumbs[1], crumbs[2], crumbs[3]], ['Agent', 'Cẩm nang', cluster.name, cat.label], `${p}: Agent › Cẩm nang › hub › silo`);
+    assert.equal(crumbs[4], sub.label, `${p}: subtopic level`);
+  }
+});
+
+test('audit: canonical hygiene — every blog page self-canonical, zero duplicates', () => {
+  const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
+  const seen = new Map();
+  for (const p of blogPages()) {
+    const html = read(p);
+    const canon = /<link rel="canonical" href="([^"]+)"\/?>/.exec(html)?.[1];
+    assert.ok(canon, `${p}: canonical present`);
+    assert.equal(canon, `${SITE}${p.replace(/index\.html$/, '')}`, `${p}: self-canonical`);
+    assert.ok(!seen.has(canon), `duplicate canonical ${canon} (${p} vs ${seen.get(canon)})`);
+    seen.set(canon, p);
+  }
+});
+
+test('audit: full hybrid chain Super Hub → Parent Hub → Silo → Subtopic → Article', () => {
+  // Walk the real chain of every published article: the super hub must link
+  // the parent hub, the hub the silo, the silo the subtopic (when one exists),
+  // and the subtopic/silo the article itself.
+  const superHub = read('blog/index.html');
+  for (const a of ARTICLES) {
+    const cat = taxonomy.categories[a.category];
+    const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);
+    assert.ok(superHub.includes(`href="/aichatbot/blog/${cluster.dir}/"`), `super hub → ${cluster.dir}`);
+    const hubPage = read(`blog/${cluster.dir}/index.html`);
+    assert.ok(hubPage.includes(`href="/aichatbot/blog/${cat.dir}/"`), `hub ${cluster.dir} → silo ${cat.dir}`);
+    const siloPage = read(`blog/${cat.dir}/index.html`);
+    const subSlug = subtopicPages().find((p) => p.startsWith(`blog/${cat.dir}/`))?.match(/\/([a-z0-9-]+)\/index\.html$/)?.[1];
+    if (subSlug) {
+      assert.ok(siloPage.includes(`href="/aichatbot/blog/${cat.dir}/${subSlug}/"`), `silo ${cat.dir} → subtopic ${subSlug}`);
+      const subPage = read(`blog/${cat.dir}/${subSlug}/index.html`);
+      assert.ok(subPage.includes(`href="/aichatbot/blog/${cat.dir}/${a.slug}/"`), `subtopic ${subSlug} → article ${a.slug}`);
+    } else {
+      assert.ok(siloPage.includes(`href="/aichatbot/blog/${cat.dir}/${a.slug}/"`), `silo ${cat.dir} → article ${a.slug}`);
+    }
+  }
+});

@@ -354,15 +354,29 @@ ${askAgentAction(`${sub.label} — ${hub.name}`)}`;
     screen: `subtopic-${sub.slug}`,
     activeHub: hub.dir,
     contentHtml: content,
+    // v63.1 hybrid hardening: subtopic schema = CollectionPage + ItemList
+    // + BreadcrumbList whose trail EXACTLY matches the visible breadcrumb
+    // (Agent › Cẩm nang › parent hub › silo › subtopic), derived from the
+    // same clusterTrailSchema helper as hubs/articles — no self-conflict.
     schemaHtml: `  <script type="application/ld+json">
 ${jsonLd({
+      '@context': 'https://schema.org', '@type': 'CollectionPage',
+      name: sub.label, description: `${sub.label} trong ${hub.name.toLowerCase()}`, url: `${SITE}blog/${hub.dir}/${sub.slug}/`,
+      isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE },
+      mainEntity: {
+        '@type': 'ItemList',
+        name: `${sub.label} — bài viết`,
+        itemListElement: articles.map((a, i) => ({ '@type': 'ListItem', position: i + 1, name: a.title, url: `${SITE}blog/${hub.dir}/${a.slug}/` }))
+      }
+    })}
+  </script>
+  <script type="application/ld+json">
+${jsonLd({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Agent', item: SITE },
-        { '@type': 'ListItem', position: 2, name: 'Cẩm nang', item: `${SITE}blog/` },
-        { '@type': 'ListItem', position: 3, name: hub.label, item: `${SITE}blog/${hub.dir}/` },
-        { '@type': 'ListItem', position: 4, name: sub.label, item: `${SITE}blog/${hub.dir}/${sub.slug}/` }
-      ]
+      itemListElement: clusterTrailSchema(cluster, [
+        { label: hub.label, itemPath: `blog/${hub.dir}/` },
+        { label: sub.label, itemPath: `blog/${hub.dir}/${sub.slug}/` }
+      ]).map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
     })}
   </script>
 `
