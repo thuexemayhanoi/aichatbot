@@ -168,5 +168,37 @@
     "label": "Giới Thiệu",
     "icon": "🏢",
     "url": "/aichatbot/gioi-thieu/"
+  },
+  "drawer": {
+    "note": "Canonical order/labels/icons of the CORE drawer shared by the chat homepage (index.html) and every content page (tools/app-shell.mjs). tools/taxonomy.mjs drawerCore() resolves this into a normalized list; the generator renders it and tests/global-menu asserts index.html matches it.",
+    "theme": { "icon": "🌗", "label": "Chủ đề" },
+    "groups": [
+      {
+        "id": "cm",
+        "label": "Cẩm nang",
+        "icon": "📚",
+        "children": [
+          { "set": "hubs" },
+          { "ref": "search" }
+        ]
+      },
+      {
+        "id": "dv",
+        "label": "Dịch vụ",
+        "icon": "🛵",
+        "children": [{ "set": "services" }]
+      },
+      {
+        "id": "pl",
+        "label": "Pháp lý",
+        "icon": "🔒",
+        "children": [{ "set": "legal" }]
+      }
+    ]
+  },
+  "chat_extras": {
+    "note": "Chat-homepage-only utility appended AFTER the core drawer: a divider + the reset action. Never rendered on content pages.",
+    "divider": true,
+    "reset": { "label": "Xóa chat", "icon": "🧹" }
   }
 }

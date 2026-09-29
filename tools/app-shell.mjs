@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * MotoAI CONTENT SITE SHELL (v58) — the ONE source of truth for every
+ * MotoAI CONTENT SITE SHELL (v63) — the ONE source of truth for every
  * generated content page (blog home, parent cluster hubs, category hubs,
  * subtopic hubs, articles, search, static pages, privacy, terms).
  *
@@ -17,14 +17,23 @@
  *
  * Navigation/footer vocabulary comes from config/navigation.json via
  * tools/taxonomy.mjs — labels are never copy/pasted per page.
+ * v63: the drawer is rendered from taxonomy.drawerCore() (the SAME core
+ * menu the chat homepage must match) and the footer gains a brand block +
+ * verified business bottom bar (data/business/business.json).
  */
-import { navigation, taxonomy, clusterNav } from './taxonomy.mjs';
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { navigation, taxonomy, clusterNav, drawerCore } from './taxonomy.mjs';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const BUSINESS = JSON.parse(readFileSync(join(ROOT, 'data/business/business.json'), 'utf8'));
 
 export const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
 
 /** Build/cache version: bumped every release that changes shell CSS/JS so
- *  iOS Safari can never keep serving a stale v58/v59 asset. */
-export const BUILD_VERSION = 'v62';
+ *  iOS Safari can never keep serving a stale v62 asset. */
+export const BUILD_VERSION = 'v63';
 
 /** Escape & for HTML text/attribute contexts (titles, descriptions, names). */
 export const esc = (s) => String(s).replace(/&(?![a-z]+;|#)/gi, '&amp;');
@@ -60,8 +69,8 @@ export function pageHead({ title, description, path }) {
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
-  <link rel="stylesheet" href="${prefix}assets/css/style.css?v=60">
-  <link rel="stylesheet" href="${prefix}assets/css/blog.css?v=62">
+  <link rel="stylesheet" href="${prefix}assets/css/style.css?v=63">
+  <link rel="stylesheet" href="${prefix}assets/css/blog.css?v=63">
   ${NO_FLASH_THEME}
 </head>
 <body class="content-page">
@@ -72,7 +81,12 @@ export function pageHead({ title, description, path }) {
  * Shared content-site header. LEFT: MotoAI / Hỗ trợ Agent identity (link
  * back to the chat homepage). CENTER (>= 900px): Cẩm nang + the six
  * categories. RIGHT: search, theme toggle and Menu — always the LAST
- * element on the row (flex margin-left:auto keeps it right-aligned).
+ * element of the .site-actions group (flex margin-left:auto keeps the
+ * group right-aligned). The business open/closed status is a SEPARATE
+ * flex child of .site-header-inner AFTER .site-actions: on mobile it
+ * wraps onto its own full-width row under the header (v63 iPhone fix —
+ * it can never squeeze itself between the brand and the Menu button),
+ * on desktop it is a small muted line next to the actions.
  */
 function siteHeader({ activeHub, activeCluster }) {
   // v61: the desktop menu prioritizes the 3 PARENT SEO HUBS. Each parent
@@ -106,44 +120,64 @@ ${kids}
 ${hubItems}
         </nav>
         <div class="site-actions">
-          <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
           <a class="site-search-link" href="/aichatbot/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
           <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
           <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
         </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
       </div>
     </header>
 `;
 }
 
 /**
- * Menu drawer — same structure and labels as the chat homepage drawer
- * (config/navigation.json). Actions link to real pages or open the Agent
- * flow; contact refs are resolved at runtime from verified business.json.
+ * Menu drawer — rendered from config/navigation.json via taxonomy.drawerCore()
+ * (v63): the SAME order/labels/icons/links/accordion structure as the chat
+ * homepage drawer. Chat-only extras (divider + Xóa chat) are intentionally
+ * NOT rendered here. Actions link to real pages or open the Agent flow;
+ * contact refs are resolved at runtime from verified business.json.
  */
 function siteDrawer({ activeHub, activeCluster }) {
-  // v61: Cẩm nang = the SAME parent-hub → category hierarchy as the desktop
-  // menu. Parent hubs are real links; children sit directly underneath
-  // (no second accordion level), each with a >= 44px touch target.
-  const cmItems = [...taxonomy.clusters.map((c) => {
-    const hub = clusterNav(c.id);
-    const hubActive = c.dir === activeCluster || hub.children.some((ch) => ch.dir === activeHub);
-    const kids = hub.children.map((ch) =>
-      `            <li><a href="/aichatbot/blog/${ch.dir}/"${ch.dir === activeHub ? ' aria-current="page"' : ''}>${ch.icon} ${esc(ch.label)}</a></li>`).join('\n');
-    return `          <li class="motoai-hub">
-            <a class="motoai-hub-link" href="${hub.url}"${hubActive ? ' aria-current="page"' : ''}>${hub.icon} ${esc(hub.name)}</a>
-            <ul class="motoai-hub-items">
+  const isActiveLink = (url) => {
+    const dir = url.replace(/^\/aichatbot\//, '').replace(/\/$/, '');
+    return dir === activeHub || dir === activeCluster;
+  };
+  const renderItem = (item, indent = '          ') => {
+    const current = item.kind === 'link' && isActiveLink(item.url) ? ' aria-current="page"' : '';
+    if (item.kind === 'theme') {
+      return `${indent}<li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">${item.icon} ${esc(item.label)}: Auto</button></li>`;
+    }
+    if (item.kind === 'hub') {
+      const hubActive = item.url.replace(/^\/aichatbot\/blog\//, '').replace(/\/$/, '') === activeCluster
+        || item.children.some((ch) => ch.url.replace(/^\/aichatbot\/blog\//, '').replace(/\/$/, '') === activeHub);
+      const kids = item.children.map((ch) =>
+        `            <li><a href="${ch.url}"${ch.url.replace(/^\/aichatbot\/blog\//, '').replace(/\/$/, '') === activeHub ? ' aria-current="page"' : ''}>${ch.icon} ${esc(ch.label)}</a></li>`).join('\n');
+      return `${indent}<li class="motoai-hub">
+${indent}  <a class="motoai-hub-link" href="${item.url}"${hubActive ? ' aria-current="page"' : ''}>${item.icon} ${esc(item.label)}</a>
+${indent}  <ul class="motoai-hub-items">
 ${kids}
-            </ul>
-          </li>`;
-  }), `          <li><a href="${navigation.search.url}">${navigation.search.icon} ${esc(navigation.search.label)}</a></li>`].join('\n');
-  const dvItems = navigation.services.map((s) => {
-    if (s.url) return `          <li><a href="${s.url}">${s.icon} ${esc(s.label)}</a></li>`;
-    if (s.action) return `          <li><a href="/aichatbot/?action=${esc(s.action)}">${s.icon} ${esc(s.label)}</a></li>`;
-    return `          <li><a data-contact-ref="${esc(s.ref)}" href="#" rel="noopener noreferrer" target="_blank">${s.icon} ${esc(s.label)}</a></li>`;
+${indent}  </ul>
+${indent}</li>`;
+    }
+    if (item.kind === 'action') {
+      return `${indent}<li><a href="/aichatbot/?action=${esc(item.action)}">${item.icon} ${esc(item.label)}</a></li>`;
+    }
+    if (item.kind === 'contact') {
+      return `${indent}<li><a data-contact-ref="${esc(item.ref)}" href="#" rel="noopener noreferrer" target="_blank">${item.icon} ${esc(item.label)}</a></li>`;
+    }
+    return `${indent}<li><a href="${item.url}"${current}>${item.icon} ${esc(item.label)}</a></li>`;
+  };
+  const listHtml = drawerCore().map((entry) => {
+    if (entry.kind === 'group') {
+      return `      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-${entry.id}">${entry.icon} ${esc(entry.label)} <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-${entry.id}" hidden>
+${entry.children.map((child) => renderItem(child)).join('\n')}
+        </ul>
+      </li>`;
+    }
+    return renderItem(entry, '      ');
   }).join('\n');
-  const plItems = navigation.legal.map((l) =>
-    `          <li><a href="${l.url}"${activeHub === l.url.replace(/^\/aichatbot\//, '').replace(/\/$/, '') ? ' aria-current="page"' : ''}>${l.icon} ${esc(l.label)}</a></li>`).join('\n');
   return `  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
   <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
     <div class="motoai-drawer-head">
@@ -151,36 +185,20 @@ ${kids}
       <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
     </div>
     <ul class="motoai-drawer-list">
-      <li><a href="/aichatbot/">⚡ Agent</a></li>
-      <li><a href="${navigation.about.url}">${navigation.about.icon} ${esc(navigation.about.label)}</a></li>
-      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
-      <li class="motoai-group">
-        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
-        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
-${cmItems}
-        </ul>
-      </li>
-      <li class="motoai-group">
-        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
-        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
-${dvItems}
-        </ul>
-      </li>
-      <li class="motoai-group">
-        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
-        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
-${plItems}
-        </ul>
-      </li>
+${listHtml}
     </ul>
   </nav>
 `;
 }
 
-/** Real site footer (v61 SEO hub silo): column 1 = MotoAI, columns 2–4 =
- *  each parent hub + its child categories (expanded from taxonomy.json via
- *  the "hub" field in navigation.footer_groups), then a compact secondary
- *  row for Dịch vụ + Pháp lý. Every entry is a real crawlable <a>. */
+/** Real site footer (v63): brand block (🏍️ MotoAI · Hỗ trợ Agent + short
+ *  description + ⚡ Hỏi Agent CTA), link columns from
+ *  config/navigation.json (column 1 = MOTOAI, columns 2–4 = each parent
+ *  hub + its child categories expanded from taxonomy.json via the "hub"
+ *  field, then a compact secondary row for Dịch vụ + Pháp lý) and a
+ *  verified business bottom bar (address + hours from
+ *  data/business/business.json — never hard-coded, never 24/7).
+ *  Every entry is a real crawlable <a>. */
 export function footerHtml() {
   const primary = [];
   const secondary = [];
@@ -218,11 +236,15 @@ ${links}
       </div>`);
     }
   }
+  const brand = BUSINESS.brand;             // "Nguyễn Tú" — verified business.json
+  const address = BUSINESS.address.full;     // "112 Nguyễn Văn Cừ, Long Biên, Hà Nội"
+  const hours = BUSINESS.hours.display;      // "09:00 - 21:00"
   return `    <footer class="blog-footer">
       <div class="blog-footer-inner">
         <div class="blog-footer-brand">
-          <a class="blog-footer-agent" href="/aichatbot/">⚡ Agent</a>
-          <p>Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội ${esc(brand)}</p>
+          <a class="blog-footer-cta" href="/aichatbot/">⚡ Hỏi Agent</a>
         </div>
         <nav class="blog-footer-nav" aria-label="Chân trang">
 ${primary.join('\n')}
@@ -232,6 +254,10 @@ ${primary.join('\n')}
         <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
 ${secondary.join('\n')}
         </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy ${esc(brand)} · ${esc(address)}</p>
+        <p>${esc(hours)} mỗi ngày</p>
       </div>
     </footer>
 `;
@@ -248,8 +274,8 @@ export function askAgentAction(topic) {
 }
 
 function shellScripts({ search }) {
-  return (search ? `  <script src="/aichatbot/assets/js/blog.js?v=62"></script>\n` : '')
-    + `  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=62"></script>\n`;
+  return (search ? `  <script src="/aichatbot/assets/js/blog.js?v=63"></script>\n` : '')
+    + `  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=63"></script>\n`;
 }
 
 /**

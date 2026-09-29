@@ -10,8 +10,8 @@
  *   toggle so tablets are not hover-only; Escape and outside click close
  * Pure vanilla ES module; no framework, no backend.
  */
-import { initTheme } from './theme.js?v=61';
-import { computeStatus, renderStatus } from './business-status.js?v=61';
+import { initTheme } from './theme.js?v=63';
+import { computeStatus, renderStatus } from './business-status.js?v=63';
 
 initTheme({ storage: globalThis.localStorage, matchMedia: globalThis.matchMedia?.bind(globalThis) });
 

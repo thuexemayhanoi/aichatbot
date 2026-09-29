@@ -48,20 +48,29 @@ body.content-page .blog-footer { position: static; }
   display: flex; align-items: center; gap: var(--space-2);
   max-width: 1160px; margin: 0 auto; min-width: 0;
 }
-/* v59 mobile header: clean two-line layout under 768px.
-   Row 1: brand (left) + Menu (right). Row 2: open/closed status.
-   Search + theme live in the drawer on mobile (still in the header on desktop). */
+/* v63 mobile header (iPhone fix): row 1 = brand LEFT + theme/Menu RIGHT;
+   row 2 = open/closed status badge under the header. The status is a direct
+   flex child AFTER .site-actions (never inside the action group), so it can
+   never squeeze itself between the brand and the Menu button. Search stays
+   in the drawer + blog search on mobile. Menu keeps >= 44px and is the LAST
+   control of .site-actions. */
 @media (max-width: 767.98px) {
   .site-header-inner { flex-wrap: wrap; row-gap: 6px; }
-  .site-actions .site-search-link,
-  .site-actions .blog-theme-toggle { display: none; }
-  .site-actions .motoai-status { order: 3; flex-basis: 100%; margin-left: 0; min-height: 0; }
+  .site-actions .site-search-link { display: none; }
+  .site-actions .blog-theme-toggle { min-width: 44px; padding: 0 10px; font-size: 0.78rem; }
+  .site-header .motoai-status { order: 5; flex-basis: 100%; margin-left: 0; min-height: 0; font-size: 0.7rem; }
 }
-/* Drawer theme control (mobile primary, harmless on desktop). */
-.motoai-drawer-theme {
-  width: 100%; justify-content: flex-start; min-height: 48px;
-  border: none; background: none; font-weight: 550; font-size: 0.95rem; text-align: left;
+/* Desktop: status is a small muted line right after the actions, safely
+   shrinkable (ellipsis) so 900–1099px navs never overflow the header. */
+@media (min-width: 768px) {
+  .site-header .motoai-status {
+    flex: 0 1 auto; min-width: 0; max-width: 240px;
+    margin-left: 8px; align-self: center; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
 }
+.site-header .motoai-status[data-state="open"] { color: var(--color-success); }
+.site-header .motoai-status[data-state="closed"] { color: var(--color-text-muted); }
 .site-brand {
   display: inline-flex; align-items: center; gap: 10px; flex: 1 1 auto; min-width: 0;
   text-decoration: none; color: var(--color-text);
@@ -88,7 +97,6 @@ body.content-page .blog-footer { position: static; }
 
 /* RIGHT actions — always the last row element (margin-left: auto). */
 .site-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; flex: none; }
-.site-actions .motoai-status { flex: none; }
 .site-search-link {
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 44px; min-height: 44px; border-radius: var(--radius-full);
@@ -237,7 +245,10 @@ body.content-page .blog-footer { position: static; }
 .blog-cat-card strong { font-size: 0.92rem; }
 .blog-cat-card span:last-child { font-size: 0.74rem; color: var(--color-text-muted); line-height: 1.45; }
 
-/* Real full-width site footer (v58) — generated once from navigation.json. */
+/* Real full-width site footer (v63) — generated once from navigation.json +
+   verified business.json. Brand block, link columns, secondary row and a
+   business bottom bar. Touch targets >= 44px, mobile 2 columns (1 column
+   only under ~320px), dark/light via shared tokens, no CLS (static markup). */
 .blog-footer {
   margin-top: var(--space-4);
   padding: var(--space-4) calc(env(safe-area-inset-right, 0px) + 16px) calc(env(safe-area-inset-bottom, 0px) + var(--space-4)) calc(env(safe-area-inset-left, 0px) + 16px);
@@ -245,14 +256,25 @@ body.content-page .blog-footer { position: static; }
   background: var(--color-surface);
 }
 .blog-footer-inner { max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-3); }
-@media (min-width: 768px) { .blog-footer-inner { flex-direction: row; gap: var(--space-5); } .blog-footer-brand { max-width: 260px; } }
-.blog-footer-brand { display: flex; flex-direction: column; gap: 4px; margin-bottom: var(--space-3); }
-.blog-footer-agent { color: var(--color-primary); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
-.blog-footer-brand p { margin: 0; font-size: 0.76rem; color: var(--color-text-muted); }
+@media (min-width: 768px) { .blog-footer-inner { flex-direction: row; gap: var(--space-5); } .blog-footer-brand { max-width: 260px; flex: 0 0 auto; } }
+.blog-footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: var(--space-3); }
+.blog-footer-brand-name { margin: 0; font-size: 0.95rem; color: var(--color-text); }
+.blog-footer-brand-name strong { font-size: 1.02rem; }
+.blog-footer-agent { color: var(--color-text-muted); font-weight: 550; }
+.blog-footer-desc { margin: 0; font-size: 0.76rem; color: var(--color-text-muted); line-height: 1.5; }
+.blog-footer-cta {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px;
+  margin-top: 4px; border: 1px solid var(--color-primary-soft, rgba(79, 70, 229, 0.35));
+  border-radius: var(--radius-full); background: transparent;
+  color: var(--color-primary); font-size: 0.85rem; font-weight: 650;
+  text-decoration: none; cursor: pointer;
+}
+.blog-footer-cta:hover { background: var(--color-primary-soft); }
+.blog-footer-cta:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 .blog-footer-nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-3); }
 .blog-footer-title { margin: 0 0 8px; font-size: 0.7rem; letter-spacing: 0.8px; text-transform: uppercase; color: var(--color-text-muted); }
-.blog-footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
-.blog-footer-col a { display: inline-flex; align-items: center; color: var(--color-text); text-decoration: none; font-size: 0.82rem; min-height: 24px; }
+.blog-footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.blog-footer-col a { display: flex; align-items: center; color: var(--color-text); text-decoration: none; font-size: 0.82rem; min-height: 44px; }
 .blog-footer-col a:hover { color: var(--color-primary); }
 
 /* Table of contents: mobile accordion; desktop sticky rail. */
@@ -597,7 +619,6 @@ body.content-page .blog-footer {
   backdrop-filter: blur(14px) saturate(1.4);
   box-shadow: inset 0 1px 0 var(--glass-highlight);
 }
-body.content-page .blog-footer-col a { min-height: 28px; }
 body.content-page .footer-hub-link { font-weight: 650; color: var(--color-primary); }
 body.content-page .footer-sub { padding-left: 12px; }
 body.content-page .footer-sub a::before { content: "↳ "; color: var(--color-text-muted); }
@@ -606,24 +627,24 @@ body.content-page .footer-sub a::before { content: "↳ "; color: var(--color-te
   border-top: 1px solid var(--glass-border-soft);
 }
 .blog-footer-secondary .blog-footer-nav { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+/* v63 bottom bar: verified business identity + hours (never 24/7). */
+.blog-footer-bottom {
+  max-width: 1160px; margin: 0 auto; padding-top: var(--space-3);
+  border-top: 1px solid var(--glass-border-soft);
+  display: flex; flex-wrap: wrap; gap: 4px var(--space-3);
+  justify-content: space-between; align-items: center;
+}
+.blog-footer-bottom p { margin: 0; font-size: 0.74rem; color: var(--color-text-muted); }
 @media (min-width: 768px) {
   body.content-page .blog-footer-inner { flex-direction: row; align-items: flex-start; }
+  .blog-footer-bottom { flex-wrap: nowrap; }
 }
 
-/* ---------- Mobile drawer: hub → children hierarchy ---------- */
-.motoai-hub { padding-top: 2px; }
-.motoai-hub-link {
-  display: flex; align-items: center; min-height: 48px;
-  font-weight: 700; font-size: 0.95rem;
-}
-.motoai-hub-items {
-  list-style: none; margin: 0; padding: 0 0 6px 14px;
-  border-left: 2px solid var(--color-primary-soft, rgba(79, 70, 229, 0.2));
-}
-.motoai-hub-items li a { display: flex; align-items: center; min-height: 44px; font-size: 0.9rem; }
-@media (min-width: 768px) {
-  .motoai-hub-items { border-left-color: var(--color-primary-soft); }
-}
+/* ---------- Mobile drawer: hub → children hierarchy ----------
+   v63: .motoai-drawer / .motoai-group / .motoai-hub / .motoai-drawer-theme
+   styles live ONCE in style.css — both the chat homepage and content pages
+   load it, so the two drawers can never look different. Nothing to see
+   here; this comment only documents the single-source decision. */
 
 /* ---------- Reduced motion: no lifts, no transitions ---------- */
 @media (prefers-reduced-motion: reduce) {

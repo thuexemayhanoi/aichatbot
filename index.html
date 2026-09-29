@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="motoai-build" content="v60">
+  <meta name="motoai-build" content="v63">
   <title>MotoAI — Ứng dụng thuê xe máy &amp; xe điện: hỏi giá, tính chi phí</title>
   <meta name="description" content="Ứng dụng web thuê xe máy và xe điện: Agent trả lời giá thuê, chọn xe, tính chi phí theo ngày/tuần/tháng, thủ tục nhận xe và địa chỉ của Thuê Xe Máy Hà Nội Nguyễn Tú.">
   <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#4f46e5">
-  <link rel="stylesheet" href="assets/css/style.css?v=62">
+  <link rel="stylesheet" href="assets/css/style.css?v=63">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MotoAI — Thuê Xe Máy Hà Nội Nguyễn Tú">
   <meta property="og:title" content="MotoAI — Ứng dụng thuê xe máy & xe điện">
@@ -44,7 +44,7 @@
           </div>
         </div>
         <span class="motoai-status" id="motoai-status" role="status" aria-live="polite"></span>
-        <button type="button" class="motoai-theme" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+        <button type="button" class="motoai-theme blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
         <button type="button" class="motoai-install" id="motoai-install" hidden title="Cài MotoAI như một ứng dụng" aria-label="Cài Agent">Cài Agent</button>
         <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
       </header>
@@ -111,31 +111,32 @@
     <ul class="motoai-drawer-list">
       <li><button type="button" id="motoai-menu-agent">⚡ Agent</button></li>
       <li><a href="/aichatbot/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
       <li class="motoai-group">
         <button type="button" class="motoai-group-btn" id="motoai-group-cm-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
         <ul class="motoai-group-items" id="motoai-group-cm">
-          <li><a href="/aichatbot/blog/">🔎 Tìm Bài</a></li>
           <li class="motoai-hub">
             <a class="motoai-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a>
             <ul class="motoai-hub-items">
-              <li><a href="/aichatbot/blog/app/">↳ 📱 Ứng Dụng</a></li>
-              <li><a href="/aichatbot/blog/huong-dan/">↳ 📄 Hướng Dẫn</a></li>
+              <li><a href="/aichatbot/blog/app/">📱 Ứng Dụng</a></li>
+              <li><a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a></li>
             </ul>
           </li>
           <li class="motoai-hub">
             <a class="motoai-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
             <ul class="motoai-hub-items">
-              <li><a href="/aichatbot/blog/thue-xe/">↳ 🏍️ Thuê Xe</a></li>
-              <li><a href="/aichatbot/blog/xe-dien/">↳ ⚡ Xe Điện</a></li>
+              <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+              <li><a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a></li>
             </ul>
           </li>
           <li class="motoai-hub">
             <a class="motoai-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
             <ul class="motoai-hub-items">
-              <li><a href="/aichatbot/blog/an-toan/">↳ 🛡️ An Toàn</a></li>
-              <li><a href="/aichatbot/blog/dia-phuong/">↳ 📍 Địa Phương</a></li>
+              <li><a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a></li>
+              <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a></li>
             </ul>
           </li>
+          <li><a href="/aichatbot/blog/">🔎 Tìm Bài</a></li>
         </ul>
       </li>
       <li class="motoai-group">
@@ -157,6 +158,7 @@
           <li><a href="/aichatbot/terms/">📃 Điều Khoản</a></li>
         </ul>
       </li>
+      <li class="motoai-drawer-divider" role="separator"></li>
       <li><button type="button" id="motoai-reset">🧹 Xóa chat</button></li>
     </ul>
   </nav>
@@ -212,6 +214,6 @@
   }
   </script>
 
-  <script type="module" src="assets/js/main.js?v=62"></script>
+  <script type="module" src="assets/js/main.js?v=63"></script>
 </body>
 </html>

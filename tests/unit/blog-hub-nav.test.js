@@ -66,7 +66,9 @@ test('v61 drawer Cẩm nang group mirrors the hub → category hierarchy with re
       }
     }
   }
-  const css = read('assets/css/blog.css');
+  // v63: drawer visual rules live ONCE in style.css (loaded by BOTH the chat
+  // homepage and content pages) — single source, identical look.
+  const css = read('assets/css/style.css');
   assert.match(css, /\.motoai-hub-link\s*\{[^}]*min-height:\s*48px/, 'drawer hub links >= 44px');
   assert.match(css, /\.motoai-hub-items li a\s*\{[^}]*min-height:\s*44px/, 'drawer child links >= 44px');
 });

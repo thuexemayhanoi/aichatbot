@@ -116,16 +116,37 @@ test('v60: asset cache-bust + build marker so iOS Safari cannot serve stale v58/
   assert.ok(sw.includes('style.css?v='), 'SW precaches the versioned CSS');
 });
 
-test('v59: mobile header — search/theme hidden under 768px, live in the drawer instead', () => {
+test('v63: mobile header — brand left, theme compact + Menu right, status on its own row', () => {
   const css = read('assets/css/blog.css');
-  assert.match(css, /max-width:\s*767\.98px[\s\S]{0,220}\.site-actions \.site-search-link,[\s\S]{0,60}\.site-actions \.blog-theme-toggle\s*\{\s*display:\s*none/, 'search + theme hidden on mobile header');
-  assert.match(css, /max-width:\s*767\.98px[\s\S]{0,400}\.site-actions \.motoai-status\s*\{[^}]*flex-basis:\s*100%/, 'status drops to its own row');
+  // Theme stays visible as a compact >= 44px control next to Menu.
+  assert.match(css, /max-width:\s*767\.98px[\s\S]{0,300}\.site-actions \.blog-theme-toggle\s*\{[^}]*min-width:\s*44px/, 'compact theme toggle on mobile');
+  // Only the search link hides on mobile (search lives in the drawer + blog search).
+  assert.match(css, /max-width:\s*767\.98px[\s\S]{0,220}\.site-actions \.site-search-link\s*\{\s*display:\s*none/, 'search link hidden on mobile header');
+  assert.ok(!/\.site-actions \.blog-theme-toggle[^{]*\{[^}]*display:\s*none/.test(css), 'theme toggle never hides on mobile');
+  // Status is NOT part of the action group: it drops to its own full-width row.
+  assert.match(css, /max-width:\s*767\.98px[\s\S]{0,400}\.site-header \.motoai-status\s*\{[^}]*flex-basis:\s*100%/, 'status drops to its own row');
   assert.match(css, /\.site-actions\s*\{[^}]*margin-left:\s*auto/, 'Menu stays right-aligned');
-  // Drawer carries the theme control so it is still reachable on mobile.
+  assert.ok(!/\.site-actions \.motoai-status/.test(css), 'status is never a child of .site-actions');
+  // Drawer carries the theme control so it is also reachable inside the menu.
   for (const p of pages.slice(0, 5)) {
     const html = read(p);
     assert.ok(html.includes('motoai-drawer-theme'), `${p}: theme control in drawer`);
     assert.ok((html.match(/blog-theme-toggle/g) ?? []).length >= 2, `${p}: header + drawer theme controls`);
+  }
+});
+
+test('v63: generated header markup — Menu is the LAST control of the action group, status outside it', () => {
+  for (const p of pages.slice(0, 5)) {
+    const html = read(p);
+    const actions = html.slice(html.indexOf('<div class="site-actions">'), html.indexOf('</div>', html.indexOf('<div class="site-actions">')));
+    assert.ok(actions.includes('id="motoai-menu-btn"'), `${p}: Menu inside the action group`);
+    assert.ok(/id="motoai-menu-btn"[\s\S]*$/.test(actions), `${p}: Menu is the last control of .site-actions`);
+    assert.ok(!actions.includes('blog-business-status'), `${p}: business status never inside .site-actions`);
+    const brandIdx = html.indexOf('class="site-brand"');
+    const menuIdx = html.indexOf('id="motoai-menu-btn"');
+    const statusIdx = html.indexOf('id="blog-business-status"');
+    assert.ok(brandIdx > -1 && menuIdx > brandIdx, `${p}: brand before Menu`);
+    assert.ok(statusIdx > menuIdx, `${p}: status sits after the action group (never between brand and Menu)`);
   }
 });
 

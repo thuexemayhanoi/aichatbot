@@ -546,6 +546,26 @@ body[data-motoai-embed="1"] .motoai-dock { display: none; }
 }
 .motoai-hub-items li a { display: flex; align-items: center; min-height: 44px; font-size: 0.9rem; }
 
+/* Drawer theme row (v63): shared by the chat homepage AND content pages —
+   one implementation, identical look. Kept in sync by theme.js which
+   preserves the "🌗 Chủ đề: " label on .motoai-drawer-theme toggles. */
+.motoai-drawer-theme {
+  width: 100%;
+  justify-content: flex-start;
+  min-height: 48px;
+  border: none;
+  background: none;
+  font-weight: 550;
+  font-size: 0.95rem;
+  text-align: left;
+}
+/* Chat-only utility separator before the Xóa chat action (chat homepage). */
+.motoai-drawer-divider {
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+  margin: 8px 4px;
+}
+
 /* ---------- Accessibility ---------- */
 :focus-visible {
   outline: 2px solid var(--color-primary);
@@ -692,8 +712,9 @@ body[data-motoai-embed="1"] .motoai-install { display: none; }
   border-left: 1px solid var(--color-border);
   box-shadow: var(--shadow-md);
   z-index: 41;
-  padding: calc(env(safe-area-inset-top, 0px) + var(--space-3)) var(--space-3) var(--space-4);
-  overflow-y: auto;
+  padding: calc(env(safe-area-inset-top, 0px) + var(--space-3)) var(--space-3) calc(env(safe-area-inset-bottom, 0px) + var(--space-4));
+  overflow-y: auto;                      /* long menus scroll INSIDE the drawer */
+  -webkit-overflow-scrolling: touch;
 }
 .motoai-drawer-head {
   display: flex;

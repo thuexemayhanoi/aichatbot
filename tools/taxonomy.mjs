@@ -95,3 +95,47 @@ export function categoryNav(categoryId) {
   const cat = taxonomy.categories[categoryId];
   return { ...item, dir: cat.dir, cluster: cat.cluster };
 }
+
+/**
+ * Normalized CORE drawer (v63) — the single menu contract shared by the
+ * chat homepage (index.html) and every content page (tools/app-shell.mjs).
+ * Order: Agent → Giới Thiệu → Chủ đề (theme) → Cẩm nang (hubs + Tìm Bài)
+ * → Dịch vụ → Pháp lý. Chat-only extras (divider + Xóa chat) are NOT part
+ * of the core; they are listed in navigation.chat_extras and only rendered
+ * on the chat homepage. The regression tests parse both surfaces and
+ * compare them against this list, so the two can never drift again.
+ */
+export function drawerCore() {
+  const link = (item) => ({ kind: 'link', icon: item.icon, label: item.label, url: item.url });
+  const core = [link(navigation.agent), link(navigation.about)];
+  if (navigation.drawer?.theme) {
+    core.push({ kind: 'theme', icon: navigation.drawer.theme.icon, label: navigation.drawer.theme.label });
+  }
+  const resolveChild = (child) => {
+    if (child.set === 'hubs') {
+      return taxonomy.clusters.map((c) => {
+        const hub = clusterNav(c.id);
+        return {
+          kind: 'hub', icon: hub.icon, label: hub.name, url: hub.url,
+          children: hub.children.map((ch) => link({ ...ch, url: `/aichatbot/blog/${ch.dir}/` }))
+        };
+      });
+    }
+    if (child.set === 'services') {
+      return navigation.services.map((s) =>
+        s.url ? link(s)
+          : s.action ? { kind: 'action', icon: s.icon, label: s.label, action: s.action }
+            : { kind: 'contact', icon: s.icon, label: s.label, ref: s.ref });
+    }
+    if (child.set === 'legal') return navigation.legal.map(link);
+    if (child.ref === 'search') return [link(navigation.search)];
+    throw new Error(`unknown drawer child in navigation.json: ${JSON.stringify(child)}`);
+  };
+  for (const g of navigation.drawer?.groups ?? []) {
+    core.push({
+      kind: 'group', id: g.id, icon: g.icon, label: g.label,
+      children: (g.children ?? []).flatMap(resolveChild)
+    });
+  }
+  return core;
+}

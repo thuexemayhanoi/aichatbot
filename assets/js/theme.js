@@ -49,7 +49,10 @@ export function initTheme({ storage, matchMedia, doc } = {}) {
     const preference = readPreference(storage);
     applyTheme(preference, document_, systemPrefersDark());
     for (const toggle of toggles) {
-      toggle.textContent = LABELS[preference];
+      // v63: drawer toggles keep their "🌗 Chủ đề: " label (they are menu rows);
+      // header toggles stay compact ("Auto"/"☀️"/"🌙").
+      const text = LABELS[preference];
+      toggle.textContent = toggle.classList.contains('motoai-drawer-theme') ? `🌗 Chủ đề: ${text}` : text;
       toggle.setAttribute('aria-label', `Chủ đề: ${preference === 'auto' ? 'tự động' : preference === 'light' ? 'sáng' : 'tối'}`);
       toggle.title = 'Chủ đề: Auto → Sáng → Tối';
     }

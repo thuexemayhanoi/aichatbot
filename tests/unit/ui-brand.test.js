@@ -54,14 +54,14 @@ test('root app contract: body opens directly into the chat app in spec order', (
   // Cẩm nang group; contact actions sit inside the Dịch vụ group.
   const routes = {
     '🧰 Công cụ &amp; Hướng dẫn': '/aichatbot/blog/cong-cu-huong-dan/',
-    '↳ 📱 Ứng Dụng': '/aichatbot/blog/app/',
-    '↳ 📄 Hướng Dẫn': '/aichatbot/blog/huong-dan/',
+    '📱 Ứng Dụng': '/aichatbot/blog/app/',
+    '📄 Hướng Dẫn': '/aichatbot/blog/huong-dan/',
     '🏍️ Thuê xe &amp; Phương tiện': '/aichatbot/blog/thue-xe-phuong-tien/',
-    '↳ 🏍️ Thuê Xe': '/aichatbot/blog/thue-xe/',
-    '↳ ⚡ Xe Điện': '/aichatbot/blog/xe-dien/',
+    '🏍️ Thuê Xe': '/aichatbot/blog/thue-xe/',
+    '⚡ Xe Điện': '/aichatbot/blog/xe-dien/',
     '🧭 Khám phá &amp; An toàn': '/aichatbot/blog/kham-pha-an-toan/',
-    '↳ 🛡️ An Toàn': '/aichatbot/blog/an-toan/',
-    '↳ 📍 Địa Phương': '/aichatbot/blog/dia-phuong/',
+    '🛡️ An Toàn': '/aichatbot/blog/an-toan/',
+    '📍 Địa Phương': '/aichatbot/blog/dia-phuong/',
     '🔎 Tìm Bài': '/aichatbot/blog/',
     '🔒 Bảo Mật': '/aichatbot/privacy/',
     '📃 Điều Khoản': '/aichatbot/terms/'
