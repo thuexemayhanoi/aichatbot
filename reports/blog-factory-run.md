@@ -5,3 +5,5 @@
 - 2026-09-30 PUBLISHED BA-0002 (thue-xe-may-gia-re) — page, matrix, indexes, sitemap consistent
 - 2026-09-30 QA PASS BA-0003
 - 2026-09-30 PUBLISHED BA-0003 (app-thue-xe-dien) — page, matrix, indexes, sitemap consistent
+- 2026-09-30 QA PASS BA-0005
+- 2026-09-30 PUBLISHED BA-0005 (luat-giao-thong-duong-bo-co-ban) — page, matrix, indexes, sitemap consistent
