@@ -149,9 +149,12 @@ test('factory: the real repo matrix is never mutated by these tests', () => {
   assert.equal(lines.length - 1, 2000);
   const statuses = lines.slice(1).map((l) => l.split(',')[3]);
   const manifest = JSON.parse(readFileSync(join(REPO, 'data/blog/published.json'), 'utf8'));
-  // Production-tolerant invariant: every PUBLISHED row matches the manifest
-  // (the micro loop publishes one article per cycle, so this grows over time).
-  assert.equal(statuses.filter((s) => s === 'PUBLISHED').length, manifest.articles.length);
+  // v64: PUBLISHED rows must all be in the manifest; the manifest may hold
+  // in-flight drafts (QA/PASS) committed by a writer cycle — but never a
+  // stray WRITING row (claim is local-only).
+  const manifestIds = new Set(manifest.articles.map((a) => a.article_id));
+  const publishedIds = lines.slice(1).filter((l) => l.split(',')[3] === 'PUBLISHED').map((l) => l.split(',')[0]);
+  for (const id of publishedIds) assert.ok(manifestIds.has(id), `PUBLISHED ${id} missing from manifest`);
   assert.equal(statuses.filter((s) => s === 'WRITING').length, 0);
   assert.ok(!existsSync(join(REPO, 'docs/state/blog-factory.lock')), 'no lock left in the real repo');
   assert.ok(!existsSync(join(REPO, 'docs/state/blog-factory.transaction.json')), 'no txn left in the real repo');

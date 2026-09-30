@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { taxonomy } from '../../tools/taxonomy.mjs';
+import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
 
 /**
  * v63.1 SEO OWNERSHIP GATE — enforces config/seo-ownership.json:
@@ -62,7 +63,8 @@ test('homepage identity: owned APP keywords + WebApplication schema, no native-a
 });
 
 test('LOCAL articles keep a distinct Agent/app/informational angle', () => {
-  const ARTICLES = JSON.parse(read('data/blog/published.json')).articles;
+  // v64: audit only PUBLISHED articles (a draft QA row has no built page yet).
+  const ARTICLES = publishedManifestArticles(ROOT);
   const ANGLES = ['agent', 'app', 'ứng dụng', 'công cụ', 'hướng dẫn', 'thủ tục', 'kinh nghiệm', 'an toàn', 'cẩm nang'];
   for (const a of ARTICLES.filter((x) => x.category === 'LOCAL')) {
     const dir = taxonomy.categories.LOCAL.dir;

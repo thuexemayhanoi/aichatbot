@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { taxonomy, navigation } from '../../tools/taxonomy.mjs';
+import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
 
 /**
  * v61 contract: SEO hub → category → article architecture + Liquid Glass UI.
@@ -129,7 +130,9 @@ test('v61 category hubs link UP to their parent hub (visible + schema + bottom b
 // ---------- Articles: child hub + parent hub + related, no orphans ----------
 
 test('v61 articles link to their child hub AND parent hub (chip + breadcrumb + cluster block)', () => {
-  const published = JSON.parse(read('data/blog/published.json')).articles;
+  // v64: a writer cycle may commit a draft manifest entry before the
+  // publish workflow builds its page — audit only PUBLISHED articles.
+  const published = publishedManifestArticles(ROOT);
   for (const a of published) {
     const cat = taxonomy.categories[a.category];
     const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);

@@ -62,6 +62,22 @@ export const readJson = (dir, p) => JSON.parse(readFileSync(join(dir, p), 'utf8'
 export const writeJson = (dir, p, value) =>
   writeFileSync(join(dir, p), JSON.stringify(value, null, 2) + '\n');
 
+/** Manifest articles whose matrix row is PUBLISHED. In-flight drafts
+ *  (QA/PASS/REVIEW rows committed by a writer cycle) are not built yet
+ *  and must never be page-audited — only the factory workflow builds them. */
+export function publishedManifestArticles(dir) {
+  const ids = new Set(readMatrix(dir).slice(1)
+    .filter((l) => l.split(',')[3] === 'PUBLISHED')
+    .map((l) => l.split(',')[0]));
+  return readJson(dir, 'data/blog/published.json').articles.filter((a) => ids.has(a.article_id));
+}
+
+/** Manifest entries whose matrix row is NOT PUBLISHED (in-flight drafts). */
+export function draftManifestArticles(dir) {
+  const published = new Set(publishedManifestArticles(dir).map((a) => a.article_id));
+  return readJson(dir, 'data/blog/published.json').articles.filter((a) => !published.has(a.article_id));
+}
+
 /** First PLANNED row of a category (matrix order) — full parsed row. */
 export function firstPlanned(dir, category) {
   const lines = readMatrix(dir);

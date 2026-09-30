@@ -311,10 +311,21 @@ export function scoreRepo(io) {
   const ownership = JSON.parse(io.read('config/seo-ownership.json'));
   const business = JSON.parse(io.read('data/business/business.json'));
   const manifest = JSON.parse(io.read('data/blog/published.json'));
-  const published = manifest.articles.map((a) => {
-    const hub = { APP: 'app', RENT: 'thue-xe', EV: 'xe-dien', GUIDE: 'huong-dan', SAFE: 'an-toan', LOCAL: 'dia-phuong' }[a.category];
-    return { ...a, dir: hub };
-  });
+  // v64: only articles whose matrix row is PUBLISHED are audited. Between a
+  // writer push and the publish workflow's derived commit, the manifest can
+  // hold one in-flight draft (QA/PASS row) whose page is not built yet.
+  const matrixStatuses = new Map();
+  const csv = io.read('data/blog/content-matrix.csv').trim().split('\n');
+  for (const line of csv.slice(1)) {
+    const cells = line.split(',');
+    matrixStatuses.set(cells[0], cells[3]);
+  }
+  const published = manifest.articles
+    .filter((a) => matrixStatuses.get(a.article_id) === 'PUBLISHED')
+    .map((a) => {
+      const hub = { APP: 'app', RENT: 'thue-xe', EV: 'xe-dien', GUIDE: 'huong-dan', SAFE: 'an-toan', LOCAL: 'dia-phuong' }[a.category];
+      return { ...a, dir: hub };
+    });
   const ctx = { ownership, business, published };
   const pages = pageSet(published);
 

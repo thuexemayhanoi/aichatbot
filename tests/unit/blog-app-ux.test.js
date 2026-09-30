@@ -249,14 +249,18 @@ test('theme styles: shared data-motoai-theme tokens + focus-visible + touch targ
 
 // ---------- Content factory safety ----------
 
-test('NO mass article generation: matrix stays 2,000 rows, PUBLISHED matches the manifest', () => {
+test('NO mass article generation: matrix stays 2,000 rows, manifest stays in sync', () => {
   const lines = read('data/blog/content-matrix.csv').trim().split('\n');
   assert.equal(lines.length - 1, 2000);
   const statuses = lines.slice(1).map((l) => l.split(',')[3]);
   const published = statuses.filter((s) => s === 'PUBLISHED').length;
-  // v64 micro loop: one article publishes per cycle, so this count grows
-  // over time — the invariant is sync with published.json, not a fixed 2.
+  // v64 micro loop: one article per cycle. The manifest may hold ONE
+  // in-flight draft (QA/PASS row) before the workflow's derived commit;
+  // every PUBLISHED matrix row must exist in the manifest.
   const manifest = JSON.parse(read('data/blog/published.json'));
-  assert.equal(published, manifest.articles.length, 'PUBLISHED rows match published.json');
+  const manifestIds = new Set(manifest.articles.map((a) => a.article_id));
+  const publishedIds = lines.slice(1).filter((l) => l.split(',')[3] === 'PUBLISHED').map((l) => l.split(',')[0]);
+  for (const id of publishedIds) assert.ok(manifestIds.has(id), `PUBLISHED ${id} missing from manifest`);
+  assert.ok(manifest.articles.length >= published, 'manifest cannot lag behind the matrix');
   assert.ok(published >= 2, 'pilot articles remain published');
 });

@@ -17,13 +17,16 @@ import { taxonomy, navigation } from '../../tools/taxonomy.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 const unesc = (s) => String(s).replace(/&amp;/g, '&');
+// v64: audit only articles whose matrix row is PUBLISHED — a writer cycle
+// may commit a draft (QA row) before the publish workflow builds it.
+import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
 
 const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
 const blogPages = () => walk('blog').filter((p) => p.endsWith('index.html'));
 const PARENT_DIRS = taxonomy.clusters.map((c) => c.dir);
 const CHILD_DIRS = Object.values(taxonomy.categories).map((c) => c.dir);
-const ARTICLES = JSON.parse(read('data/blog/published.json')).articles;
+const ARTICLES = publishedManifestArticles(ROOT);
 const STATIC = ['privacy/index.html', 'terms/index.html', 'gioi-thieu/index.html',
   'chinh-sach/index.html', 'lien-he/index.html', 'gia-thue/index.html'];
 
