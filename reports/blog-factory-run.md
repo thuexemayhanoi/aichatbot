@@ -9,3 +9,5 @@
 - 2026-09-30 PUBLISHED BA-0005 (luat-giao-thong-duong-bo-co-ban) — page, matrix, indexes, sitemap consistent
 - 2026-09-30 QA PASS BA-0006
 - 2026-09-30 PUBLISHED BA-0006 (thue-xe-may-quanh-long-bien) — page, matrix, indexes, sitemap consistent
+- 2026-09-30 QA PASS BA-0007
+- 2026-09-30 PUBLISHED BA-0007 (cach-dung-ung-dung-thue-xe-may) — page, matrix, indexes, sitemap consistent
