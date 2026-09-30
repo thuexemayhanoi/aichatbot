@@ -13,3 +13,5 @@
 - 2026-09-30 PUBLISHED BA-0007 (cach-dung-ung-dung-thue-xe-may) — page, matrix, indexes, sitemap consistent
 - 2026-09-30 QA PASS BA-0008
 - 2026-09-30 PUBLISHED BA-0008 (gia-thue-xe-may-theo-ngay) — page, matrix, indexes, sitemap consistent
+- 2026-09-30 QA PASS BA-0009
+- 2026-09-30 PUBLISHED BA-0009 (ung-dung-thue-xe-may-dien) — page, matrix, indexes, sitemap consistent
