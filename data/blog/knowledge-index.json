@@ -1,6 +1,6 @@
 {
   "$schema": "motoai/blog-knowledge@1",
-  "updated": "2026-09-26",
+  "updated": "2026-09-30",
   "chunks": [
     {
       "id": "BA-0001:c1",
@@ -33,6 +33,22 @@
       "url": "/aichatbot/blog/huong-dan/thu-tuc-thue-xe-may/",
       "category": "GUIDE",
       "text": "Khi nhận xe máy thuê nên kiểm tra đèn, còi, phanh, lốp, mức nhiên liệu và chụp ảnh tình trạng xe; hoàn trả xe trong giờ hoạt động và nguyên tắc hoàn trả nhiên liệu giống lúc nhận."
+    },
+    {
+      "id": "BA-0002:c1",
+      "article_id": "BA-0002",
+      "title": "Thuê xe máy giá rẻ: cách tính tổng chi phí và tránh phí phát sinh",
+      "url": "/aichatbot/blog/thue-xe/thue-xe-may-gia-re/",
+      "category": "RENT",
+      "text": "Thuê xe máy giá rẻ cần tính tổng chi phí thay vì chỉ so giá niêm yết: giá theo ngày tuần tháng, nhiên liệu cả chuyến, chi phí đi nhận xe, tiền đặt cọc và các khoản phát sinh như trả xe trễ giờ, hư hỏng hay thất lạc mũ bảo hiểm."
+    },
+    {
+      "id": "BA-0002:c2",
+      "article_id": "BA-0002",
+      "title": "Thuê xe máy giá rẻ: cách tính tổng chi phí và tránh phí phát sinh",
+      "url": "/aichatbot/blog/thue-xe/thue-xe-may-gia-re/",
+      "category": "RENT",
+      "text": "Bảng giá tham khảo của Thuê xe máy Hà Nội Nguyễn Tú: Honda Wave và Honda Click khoảng 150.000đ một ngày, Honda Vision và Air Blade khoảng 200.000đ một ngày; giá tuần từ 600.000đ đến 1.000.000đ và giá tháng từ 1.000.000đ đến 2.000.000đ tùy dòng xe, rẻ hơn rõ khi so với giá ngày."
     }
   ]
 }
