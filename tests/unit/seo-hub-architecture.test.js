@@ -3,7 +3,10 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { taxonomy, navigation } from '../../tools/taxonomy.mjs';
+import { taxonomy, navigation, deriveSubtopic } from '../../tools/taxonomy.mjs';
+import { parseMatrix } from '../../tools/blog-factory.mjs';
+
+const ROWS = Object.fromEntries(parseMatrix().map((r) => [r.article_id, r]));
 
 /**
  * v62 SEO HUB LINK-GRAPH AUDIT (task §17) over the v61 hub architecture:
@@ -297,11 +300,15 @@ test('audit: full hybrid chain Super Hub → Parent Hub → Silo → Subtopic �
     const hubPage = read(`blog/${cluster.dir}/index.html`);
     assert.ok(hubPage.includes(`href="/aichatbot/blog/${cat.dir}/"`), `hub ${cluster.dir} → silo ${cat.dir}`);
     const siloPage = read(`blog/${cat.dir}/index.html`);
-    const subSlug = subtopicPages().find((p) => p.startsWith(`blog/${cat.dir}/`))?.match(/\/([a-z0-9-]+)\/index\.html$/)?.[1];
-    if (subSlug) {
-      assert.ok(siloPage.includes(`href="/aichatbot/blog/${cat.dir}/${subSlug}/"`), `silo ${cat.dir} → subtopic ${subSlug}`);
-      const subPage = read(`blog/${cat.dir}/${subSlug}/index.html`);
-      assert.ok(subPage.includes(`href="/aichatbot/blog/${cat.dir}/${a.slug}/"`), `subtopic ${subSlug} → article ${a.slug}`);
+    // v64.3: derive the article's OWN subtopic from the canonical taxonomy
+    // model (matrix row) instead of grabbing the first subtopic page of the
+    // silo — a silo may hold several subtopics plus fallback articles, and
+    // each subtopic page only lists its own members.
+    const sub = deriveSubtopic(a.category, ROWS[a.article_id] ?? {});
+    if (!sub.fallback) {
+      assert.ok(siloPage.includes(`href="/aichatbot/blog/${cat.dir}/${sub.slug}/"`), `silo ${cat.dir} → subtopic ${sub.slug}`);
+      const subPage = read(`blog/${cat.dir}/${sub.slug}/index.html`);
+      assert.ok(subPage.includes(`href="/aichatbot/blog/${cat.dir}/${a.slug}/"`), `subtopic ${sub.slug} → article ${a.slug}`);
     } else {
       assert.ok(siloPage.includes(`href="/aichatbot/blog/${cat.dir}/${a.slug}/"`), `silo ${cat.dir} → article ${a.slug}`);
     }
