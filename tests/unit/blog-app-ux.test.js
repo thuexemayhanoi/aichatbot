@@ -249,10 +249,14 @@ test('theme styles: shared data-motoai-theme tokens + focus-visible + touch targ
 
 // ---------- Content factory safety ----------
 
-test('NO mass article generation: content matrix stays 2,000 rows, all PLANNED', () => {
+test('NO mass article generation: matrix stays 2,000 rows, PUBLISHED matches the manifest', () => {
   const lines = read('data/blog/content-matrix.csv').trim().split('\n');
   assert.equal(lines.length - 1, 2000);
   const statuses = lines.slice(1).map((l) => l.split(',')[3]);
   const published = statuses.filter((s) => s === 'PUBLISHED').length;
-  assert.equal(published, 2, 'only the two pilot articles are published');
+  // v64 micro loop: one article publishes per cycle, so this count grows
+  // over time — the invariant is sync with published.json, not a fixed 2.
+  const manifest = JSON.parse(read('data/blog/published.json'));
+  assert.equal(published, manifest.articles.length, 'PUBLISHED rows match published.json');
+  assert.ok(published >= 2, 'pilot articles remain published');
 });

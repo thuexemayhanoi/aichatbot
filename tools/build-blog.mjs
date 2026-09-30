@@ -779,10 +779,13 @@ Sitemap: ${SITE}sitemap.xml
   for (let i = 1; i < csv.length; i++) {
     const cols = csv[i].split(',');
     if (ids.has(cols[0])) {
+      const a = published.find((x) => x.article_id === cols[0]);
       cols[3] = 'PUBLISHED';
-      cols[21] = published.find((a) => a.article_id === cols[0]).published_date;
+      cols[21] = a.published_date;
       cols[22] = updated;
-      if (cols[23] === '') cols[23] = 'pilot/fixture';
+      // v64: only pilot/fixture articles get the pilot note; factory
+      // production articles keep notes empty (they are not fixtures).
+      if (cols[23] === '' && a.pilot) cols[23] = 'pilot/fixture';
       csv[i] = cols.join(',');
     }
   }

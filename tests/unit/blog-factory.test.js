@@ -1,120 +1,132 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, readFileSync, cpSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  repoSandbox, factory, readMatrix, readJson, REPO
+} from '../helpers/factory-sandbox.mjs';
 
 /**
- * v58 content factory production-loop contract — tested in a SANDBOX copy so
- * the real matrix is never touched:
- *   lock -> claim (<=10) -> finish-chunk -> checkpoint -> abandon-chunk
- *   no duplicate claim, no PLANNED regression, resumable chunks.
+ * v64 micro production-loop contract — tested in a SANDBOX copy so the
+ * real matrix is never touched:
+ *   lock -> claim EXACTLY 1 -> finish 1 -> (scoped QA in article-qa.test.js)
+ *   -> abandon for crash recovery, checkpoint, no duplicate WRITING.
  */
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const TOOL = join(ROOT, 'tools', 'blog-factory.mjs');
-
-function sandbox() {
-  const dir = mkdtempSync(join(tmpdir(), 'motoai-factory-'));
-  cpSync(join(ROOT, 'data'), join(dir, 'data'), { recursive: true });
-  cpSync(join(ROOT, 'docs', 'state'), join(dir, 'docs', 'state'), { recursive: true });
-  cpSync(join(ROOT, 'reports'), join(dir, 'reports'), { recursive: true });
-  return dir;
-}
-
-function run(dir, args, expectFail = false) {
-  try {
-    return execFileSync('node', [TOOL, ...args],
-      { encoding: 'utf8', env: { ...process.env, MOTOAI_FACTORY_ROOT: dir } });
-  } catch (e) {
-    if (expectFail) return { fail: true, msg: String(e) };
-    throw e;
-  }
-}
-
-const readMatrix = (dir) =>
-  readFileSync(join(dir, 'data/blog/content-matrix.csv'), 'utf8').trim().split('\n');
-
 test('factory: lock is exclusive and unlock frees it', () => {
-  const dir = sandbox();
-  assert.match(run(dir, ['lock']), /lock created/);
-  const fail = run(dir, ['lock'], true);
+  const dir = repoSandbox();
+  assert.match(factory(dir, ['lock']), /lock created/);
+  const fail = factory(dir, ['lock'], true);
   assert.ok(fail.fail, 'second lock must fail');
-  assert.match(run(dir, ['unlock']), /released/);
+  assert.match(factory(dir, ['unlock']), /released/);
 });
 
-test('factory: claim refuses without the run lock, then takes at most 10 rows', () => {
-  const dir = sandbox();
-  const fail = run(dir, ['claim'], true);
+test('factory: claim refuses without the run lock', () => {
+  const dir = repoSandbox();
+  const fail = factory(dir, ['claim'], true);
   assert.ok(fail.fail, 'claim without lock must fail');
-  run(dir, ['lock']);
-  const out = run(dir, ['claim', '10']);
-  assert.match(out, /^claimed 10:/);
-  const claimed = readMatrix(dir).filter((l) => l.split(',')[3] === 'WRITING');
-  assert.equal(claimed.length, 10);
+});
+
+test('factory: claim defaults to EXACTLY 1 row (1 article / cycle)', () => {
+  const dir = repoSandbox();
+  factory(dir, ['lock']);
+  const out = factory(dir, ['claim']);
+  assert.match(out, /^claimed 1: BA-0002/);
+  const writing = readMatrix(dir).filter((l) => l.split(',')[3] === 'WRITING');
+  assert.equal(writing.length, 1, 'exactly one row is WRITING');
   assert.equal(readMatrix(dir).length, 2001, 'matrix size never changes (header + 2000)');
 });
 
-test('factory: claim never exceeds MAX_CHUNK and never duplicates', () => {
-  const dir = sandbox();
-  run(dir, ['lock']);
-  run(dir, ['claim', '10']);
-  const out = run(dir, ['claim', '50']);
-  assert.match(out, /^claimed 10:/, '50 is clamped to MAX_CHUNK');
+test('factory: claim refuses while another article is WRITING (single-flight)', () => {
+  const dir = repoSandbox();
+  factory(dir, ['lock']);
+  factory(dir, ['claim']);
+  const fail = factory(dir, ['claim'], true);
+  assert.ok(fail.fail, 'a second concurrent claim must fail');
+  assert.match(fail.msg, /already WRITING/);
+  assert.equal(readMatrix(dir).filter((l) => l.split(',')[3] === 'WRITING').length, 1);
+});
+
+test('factory: claim with an explicit BA-id claims exactly that row', () => {
+  const dir = repoSandbox();
+  factory(dir, ['lock']);
+  const out = factory(dir, ['claim', 'BA-0005']);
+  assert.match(out, /^claimed 1: BA-0005/);
   const writing = readMatrix(dir).filter((l) => l.split(',')[3] === 'WRITING');
-  assert.equal(writing.length, 20, 'two chunks of 10 in flight');
-  const ids = writing.map((l) => l.split(',')[0]);
-  assert.equal(new Set(ids).size, 20, 'no duplicate article_id between chunks');
+  assert.equal(writing.length, 1);
+  assert.ok(writing[0].startsWith('BA-0005,'));
 });
 
-test('factory: finish-chunk moves WRITING -> QA and records the checkpoint', () => {
-  const dir = sandbox();
-  run(dir, ['lock']);
-  const claimed = run(dir, ['claim', '10']).trim().match(/^claimed 10: (.+)$/)[1].split(', ');
-  const out = run(dir, ['finish-chunk', claimed.join(',')]);
-  assert.match(out, /^finished 10:/);
+test('factory: claim refuses non-PLANNED rows and unknown ids', () => {
+  const dir = repoSandbox();
+  factory(dir, ['lock']);
+  const fail1 = factory(dir, ['claim', 'BA-0001'], true); // PUBLISHED
+  assert.ok(fail1.fail, 'claiming a PUBLISHED row must fail');
+  const fail2 = factory(dir, ['claim', 'BA-9999'], true);
+  assert.ok(fail2.fail, 'claiming an unknown id must fail');
+});
+
+test('factory: numeric chunk sizes are refused (chunk contract retired)', () => {
+  const dir = repoSandbox();
+  factory(dir, ['lock']);
+  const fail = factory(dir, ['claim', '10'], true);
+  assert.ok(fail.fail, 'claim 10 must fail under the 1-article/cycle contract');
+  assert.match(fail.msg, /1 article \/ cycle/);
+  assert.equal(readMatrix(dir).filter((l) => l.split(',')[3] === 'WRITING').length, 0,
+    'no row was mutated by the refused claim');
+});
+
+test('factory: finish moves the single WRITING row to QA and records the checkpoint', () => {
+  const dir = repoSandbox();
+  factory(dir, ['lock']);
+  factory(dir, ['claim']);
+  const out = factory(dir, ['finish', 'BA-0002']);
+  assert.match(out, /^finished 1: BA-0002/);
   const rows = readMatrix(dir);
-  assert.equal(rows.filter((l) => l.split(',')[3] === 'QA').length, 10);
+  assert.equal(rows.filter((l) => l.split(',')[3] === 'QA').length, 1);
   assert.equal(rows.filter((l) => l.split(',')[3] === 'WRITING').length, 0);
-  const cp = JSON.parse(readFileSync(join(dir, 'docs/state/blog-factory.checkpoint.json'), 'utf8'));
-  assert.equal(cp.finished.length, 10);
-  assert.equal(cp.claimed.length, 0);
+  const cp = readJson(dir, 'docs/state/blog-factory.checkpoint.json');
+  assert.deepEqual(cp.finished, ['BA-0002']);
+  assert.deepEqual(cp.claimed, []);
 });
 
-test('factory: abandon-chunk returns unfinished rows to PLANNED (crash recovery)', () => {
-  const dir = sandbox();
-  run(dir, ['lock']);
-  const claimed = run(dir, ['claim', '10']).trim().match(/^claimed 10: (.+)$/)[1].split(', ');
-  run(dir, ['finish-chunk', claimed.slice(0, 3).join(',')]);
-  const out = run(dir, ['abandon-chunk']);
-  assert.match(out, /returned 7 rows to PLANNED/);
+test('factory: finish-chunk alias still works for backward compatibility', () => {
+  const dir = repoSandbox();
+  factory(dir, ['lock']);
+  factory(dir, ['claim']);
+  assert.match(factory(dir, ['finish-chunk', 'BA-0002']), /^finished 1: BA-0002/);
+  assert.equal(readMatrix(dir).filter((l) => l.split(',')[3] === 'QA').length, 1);
+});
+
+test('factory: abandon returns the unfinished row to PLANNED (crash recovery)', () => {
+  const dir = repoSandbox();
+  factory(dir, ['lock']);
+  factory(dir, ['claim']);
+  const out = factory(dir, ['abandon-chunk']);
+  assert.match(out, /returned 1 row/);
   const rows = readMatrix(dir);
-  assert.equal(rows.filter((l) => l.split(',')[3] === 'PLANNED').length, 1995); // 1998 - 10 claimed + 7 returned
-  assert.equal(rows.filter((l) => l.split(',')[3] === 'QA').length, 3);
+  assert.equal(rows.filter((l) => l.split(',')[3] === 'PLANNED').length, 1998);
+  assert.equal(rows.filter((l) => l.split(',')[3] === 'WRITING').length, 0);
   const dist = {};
-  for (const l of rows.slice(1)) {
-    const cat = l.split(',')[2];
-    dist[cat] = (dist[cat] ?? 0) + 1;
-  }
+  for (const l of rows.slice(1)) dist[l.split(',')[2]] = (dist[l.split(',')[2]] ?? 0) + 1;
   assert.deepEqual(dist, { APP: 350, RENT: 400, EV: 300, GUIDE: 300, SAFE: 250, LOCAL: 400 },
     'abandon never breaks the category distribution');
 });
 
 test('factory: checkpoint command reports in-flight and finished rows', () => {
-  const dir = sandbox();
-  assert.match(run(dir, ['checkpoint']), /checkpoint: none/);
-  run(dir, ['lock']);
-  run(dir, ['claim', '5']);
-  const out = run(dir, ['checkpoint']);
-  assert.match(out, /in flight\): 5/);
+  const dir = repoSandbox();
+  assert.match(factory(dir, ['checkpoint']), /checkpoint: none/);
+  factory(dir, ['lock']);
+  factory(dir, ['claim']);
+  const out = factory(dir, ['checkpoint']);
+  assert.match(out, /in flight\): 1/);
   assert.match(out, /awaiting publish\): 0/);
 });
 
-test('factory: validate still passes on an untouched sandbox (2000 rows, 2 PUBLISHED)', () => {
-  const dir = sandbox();
-  assert.match(run(dir, ['validate']), /matrix OK/);
+test('factory: validate still passes on an untouched sandbox (2000 rows, pilots published)', () => {
+  const dir = repoSandbox();
+  assert.match(factory(dir, ['validate']), /matrix OK/);
   const statuses = {};
   for (const l of readMatrix(dir).slice(1)) {
     const s = l.split(',')[3];
@@ -125,17 +137,22 @@ test('factory: validate still passes on an untouched sandbox (2000 rows, 2 PUBLI
 });
 
 test('factory: status reports lock and state in the sandbox', () => {
-  const dir = sandbox();
-  const out = run(dir, ['status']);
+  const dir = repoSandbox();
+  const out = factory(dir, ['status']);
   assert.match(out, /total: 2000/);
   assert.match(out, /PUBLISHED: 2/);
   assert.match(out, /lock: free/);
 });
 
 test('factory: the real repo matrix is never mutated by these tests', () => {
-  const lines = readFileSync(join(ROOT, 'data/blog/content-matrix.csv'), 'utf8').trim().split('\n');
+  const lines = readFileSync(join(REPO, 'data/blog/content-matrix.csv'), 'utf8').trim().split('\n');
   assert.equal(lines.length - 1, 2000);
   const statuses = lines.slice(1).map((l) => l.split(',')[3]);
-  assert.equal(statuses.filter((s) => s === 'PUBLISHED').length, 2);
+  const manifest = JSON.parse(readFileSync(join(REPO, 'data/blog/published.json'), 'utf8'));
+  // Production-tolerant invariant: every PUBLISHED row matches the manifest
+  // (the micro loop publishes one article per cycle, so this grows over time).
+  assert.equal(statuses.filter((s) => s === 'PUBLISHED').length, manifest.articles.length);
   assert.equal(statuses.filter((s) => s === 'WRITING').length, 0);
+  assert.ok(!existsSync(join(REPO, 'docs/state/blog-factory.lock')), 'no lock left in the real repo');
+  assert.ok(!existsSync(join(REPO, 'docs/state/blog-factory.transaction.json')), 'no txn left in the real repo');
 });

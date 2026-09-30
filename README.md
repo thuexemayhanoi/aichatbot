@@ -50,6 +50,7 @@ docs/state/active-work.json  # checkpoint/lock cho các scheduled run
 reports/                 # evidence report theo từng run
 tools/gen-matrix.mjs     # tái tạo Master Matrix (idempotent)
 .github/workflows/ci.yml # CI: full tests + secret scan + bundle guard
+.github/workflows/blog-factory-publish.yml # micro loop publish: đúng 1 bài/cycle (scoped QA + transaction + derived state)
 ```
 
 LLM **tùy chọn hoàn toàn** — không có API key, không backend, không paid inference; mọi tính năng cơ bản (rules, NLU, BM25, recommendation, calculator, context) chạy không cần LLM. Lớp semantic cũng là local-first: model embedding tải từ CDN tĩnh, chạy WASM trong trình duyệt, chỉ warm-up SAU lượt chat đầu tiên, fail thì BM25 vẫn đầy đủ. Toàn bộ context memory nằm trong localStorage của người dùng (nút 🧹 để xoá).
@@ -153,6 +154,9 @@ npm test                                   # toàn bộ test (unit + integration
 node tools/gen-blog-matrix.mjs             # tái tạo ma trận (deterministic)
 node tools/build-blog.mjs                  # dựng blog + indexes + sitemap
 node tools/blog-factory.mjs validate       # QA ma trận
+node tools/blog-factory.mjs claim [BA-id]  # nhận ĐÚNG 1 dòng PLANNED -> WRITING (cần lock)
+node tools/blog-factory.mjs finish BA-xxxx # WRITING -> QA
+node tools/blog-factory.mjs qa BA-xxxx     # scoped QA deterministic (PASS/FAIL)
 node tools/blog-factory.mjs publish BA-xxxx# publish 1 bài (transaction)
 node tools/blog-factory.mjs resume         # phục hồi transaction đứt quãng
 ```
@@ -176,11 +180,14 @@ Homepage không tải: metadata 2.000 bài, full blog index, model embedding, mo
 
 ## Lệnh scheduled sản xuất nội dung (không tự chạy)
 
-Khi được yêu cầu rõ ràng, run theo lô:
+Khi được yêu cầu rõ ràng, run theo LIGHTWEIGHT MICRO LOOP — 1 BÀI / CYCLE (v64):
 
 ```
-Đọc README → docs/BLOG-FACTORY.md (procedure) → lock → viết 50 bài 1 lô
-→ QA từng bài → publish transaction từng bài → validate + npm test → unlock → report
+Đọc README → docs/BLOG-FACTORY.md (procedure) → lock → claim đúng 1 PLANNED
+→ viết đúng 1 bài (body + manifest draft) → finish → push
+→ blog-factory-publish.yml: scoped QA → publish transaction → rebuild + verify
+→ commit derived state → clean txn/lock → xanh
+→ fetch fresh main → cycle kế tiếp (chỉ khi được yêu cầu tiếp)
 ```
 
 # BLOG APP UX FOUNDATION (v54 — 2026-09-26)
@@ -242,3 +249,18 @@ Mô hình sản phẩm cuối cùng: `/aichatbot/` = MÀN HÌNH CHAT (không foo
 - **Zalo public = 0** trên toàn bộ UI; liên hệ qua data-contact-ref resolve từ `business.json`.
 - Homepage thêm nút chủ đề (Auto/Sáng/Tối) trước Menu; homepage không có footer website.
 - Test: `blog-app-ux` (18), `blog-foundation` (23), `blog-factory` (9 sandbox), seo-score mở rộng 17+ trang. Suite 498/498; seo-score 100/100; matrix 2.000 dòng bất biến (2 PUBLISHED pilot).
+
+# v64 — BLOG FACTORY MICRO LOOP: 1 ARTICLE / CYCLE (2026-09-30)
+
+Đơn giản hóa blog factory thành LIGHTWEIGHT MICRO LOOP (lấy ý tưởng /vanchinh, phù hợp kiến trúc /aichatbot). KHÔNG thay đổi 2 bài pilot PUBLISHED; không viết/claim/publish bài mới trong run này.
+
+## Thay đổi
+
+- **Hợp đồng sản xuất**: chunk ≤10 (v58) nghỉ hưu. `claim` nhận ĐÚNG 1 dòng (PLANNED đầu tiên hoặc BA-id explicit); refuse khi đã có dòng WRITING (single-flight happy path); refuse tham số số.
+- **Scoped QA mới** (`tools/article-qa.mjs`): checklist deterministic PASS/FAIL cho đúng 1 bài (id/slug/path, body 1.600–2.000 từ, không filler/dup/spun/cannibal, title/meta/slug/date, SEO ownership + doorway guard, business facts verified, SAFE legal gate, internal links, retrieval consistency). Repo chưa có article-level numeric score nên không dựng hệ chấm điểm mới.
+- **Lệnh mới**: `finish <BA-id>` (WRITING→QA), `qa <BA-id>` (QA→PASS hoặc REVIEW, quá 3 lần → BLOCKED). `finish-chunk`/`abandon-chunk`/`resume`/`publish`/`checkpoint` giữ nguyên; `publish` verify thêm self-canonical + Article/BreadcrumbList schema + đúng 1 H1.
+- **Push selection** (`tools/factory-select.mjs`): detect exact ID từ diff push; >1 file bài → REFUSE; PLANNED/WRITING có file → REFUSE; PUBLISHED-row edit → SKIP.
+- **Workflow mới** `.github/workflows/blog-factory-publish.yml`: detect exact ID → guard lock/txn → lock → scoped QA → publish transaction → validate → clean txn/lock → MỘT commit derived state (`[skip ci]`, GITHUB_TOKEN). KHÔNG chạy full chatbot test suite cho từng bài; `node --test` đầy đủ giữ nguyên trong `ci.yml` cho mọi engine/tool/workflow change.
+- **build-blog**: chỉ stamp `notes=pilot/fixture` cho bài `pilot:true` (bài production không bị đánh dấu fixture).
+- Test invariant production-tolerant: PUBLISHED sync với `published.json` thay vì hardcode "2".
+- Test mới: `article-qa` (22), `blog-factory-cycle` (9 sandbox full-repo: claim→finish→qa→publish→resume→cycle 2→no-dup), `blog-factory` viết lại cho micro loop (14). Suite 2 PUBLISHED pilot / 1.998 PLANNED bất biến.

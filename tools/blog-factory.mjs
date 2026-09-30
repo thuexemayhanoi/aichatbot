@@ -2,44 +2,54 @@
 /**
  * Blog content factory — resumable, transactional publish pipeline.
  *
+ * v64 LIGHTWEIGHT MICRO LOOP: production contract = 1 ARTICLE / CYCLE.
+ * (v58 chunk contract `claim <=10` is retired.)
+ *
  * State machine per article (data/blog/content-matrix.csv `status`):
  *   PLANNED -> WRITING -> QA -> PASS -> PUBLISHED
  *   (+ REVIEW / REPAIR (max 3) / FAIL / BLOCKED)
- * Only PASS articles may publish. Mass writing is NEVER automatic here;
- * writing happens in scheduled runs (see docs/BLOG-FACTORY.md).
+ * Only PASS articles may publish. Writing is NEVER automatic here;
+ * writing happens in explicit writer runs (see docs/BLOG-FACTORY.md).
  *
  * Commands:
  *   node tools/blog-factory.mjs status
  *   node tools/blog-factory.mjs validate
  *   node tools/blog-factory.mjs lock            (create run lock)
  *   node tools/blog-factory.mjs unlock
+ *   node tools/blog-factory.mjs claim [BA-id]   (EXACTLY 1 article: next PLANNED, or the given id)
+ *   node tools/blog-factory.mjs finish <BA-id>  (WRITING -> QA; finish-chunk alias kept)
+ *   node tools/blog-factory.mjs qa <BA-id>      (scoped deterministic QA: PASS or REVIEW/BLOCKED)
  *   node tools/blog-factory.mjs publish <BA-id> (single-article transaction)
- *   node tools/blog-factory.mjs resume         (recover an interrupted publish)
+ *   node tools/blog-factory.mjs resume          (recover an interrupted publish)
+ *   node tools/blog-factory.mjs abandon-chunk   (crash recovery: WRITING -> PLANNED)
+ *   node tools/blog-factory.mjs checkpoint
  *
  * Transaction semantics: marker -> write -> verify consistency -> clear marker.
  * Never depends on chat/session memory; state lives in the repo files only.
+ * QA is deterministic PASS/FAIL (tools/article-qa.mjs) — this repo has no
+ * article-level numeric score, so none is invented here.
  */
 import { readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from './build-blog.mjs';
+import { SITE } from './app-shell.mjs';
+import { scopedQa } from './article-qa.mjs';
 
 const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
-const MATRIX = join(ROOT, 'data/blog/content-matrix.csv');
-const MANIFEST = join(ROOT, 'data/blog/published.json');
+export const MATRIX = join(ROOT, 'data/blog/content-matrix.csv');
+export const MANIFEST = join(ROOT, 'data/blog/published.json');
 const LOCK = join(ROOT, 'docs/state/blog-factory.lock');
 const TX = join(ROOT, 'docs/state/blog-factory.transaction.json');
 const REPORT = join(ROOT, 'reports/blog-factory-run.md');
-
-/** v58 production-loop constants: chunk writer + checkpoint. */
 const CHECKPOINT = join(ROOT, 'docs/state/blog-factory.checkpoint.json');
-const MAX_CHUNK = 10; // maximum articles actively claimed per writer run
 
 const read = (p) => readFileSync(p, 'utf8');
 const write = (p, s) => writeFileSync(p, s, 'utf8');
 
-function parseMatrix() {
+/** Parse the matrix CSV into row objects (schema and order untouched). */
+export function parseMatrix() {
   const lines = read(MATRIX).trim().split('\n');
   const header = lines[0].split(',');
   return lines.slice(1).map((l) => {
@@ -126,6 +136,16 @@ function txPhase(phase) {
 
 function txClear() { if (existsSync(TX)) rmSync(TX); }
 
+/** Checkpoint helpers (operational state only; the matrix is the source of truth). */
+function loadCheckpoint() {
+  return existsSync(CHECKPOINT) ? JSON.parse(read(CHECKPOINT)) : { claimed: [], finished: [] };
+}
+
+function saveCheckpoint(cp) {
+  cp.updated = new Date().toISOString();
+  write(CHECKPOINT, JSON.stringify(cp, null, 2) + '\n');
+}
+
 /** Publish one article: marker -> write -> verify -> clear marker. */
 function publish(id, now) {
   const manifest = JSON.parse(read(MANIFEST));
@@ -152,10 +172,21 @@ function publish(id, now) {
     const okMatrix = fresh.status === 'PUBLISHED';
     const sitemap = read(join(ROOT, 'sitemap.xml'));
     const okSitemap = sitemap.includes(row.output_path.replace(/index\.html$/, ''));
-    if (!(okPage && okMatrix && okSitemap)) {
-      throw new Error(`verify failed: page=${okPage} matrix=${okMatrix} sitemap=${okSitemap}`);
+    // v64 page-level verify: self-canonical + Article/BreadcrumbList schema + one H1.
+    const page = okPage ? read(pagePath) : '';
+    const expectedUrl = SITE + row.output_path.replace(/index\.html$/, '');
+    const canonical = (page.match(/<link rel="canonical" href="([^"]*)"/) || [])[1] || '';
+    const okCanonical = canonical === expectedUrl;
+    const okSchema = /"@type":\s*"Article"/.test(page) && /"@type":\s*"BreadcrumbList"/.test(page);
+    const okH1 = (page.match(/<h1\b/g) || []).length === 1;
+    if (!(okPage && okMatrix && okSitemap && okCanonical && okSchema && okH1)) {
+      throw new Error(`verify failed: page=${okPage} matrix=${okMatrix} sitemap=${okSitemap} canonical=${okCanonical} schema=${okSchema} h1=${okH1}`);
     }
     txClear();
+    const cp = loadCheckpoint();
+    cp.finished = (cp.finished ?? []).filter((x) => x !== id);
+    cp.claimed = (cp.claimed ?? []).filter((x) => x !== id);
+    saveCheckpoint(cp);
     report(`PUBLISHED ${id} (${article.slug}) — page, matrix, indexes, sitemap consistent`);
     console.log(`published ${id} -> ${row.output_path}`);
   } catch (error) {
@@ -173,6 +204,10 @@ function resume(now) {
   const row = parseMatrix().find((r) => r.article_id === tx.article_id);
   if (row?.status === 'PUBLISHED' && existsSync(join(ROOT, row.output_path))) {
     txClear();
+    const cp = loadCheckpoint();
+    cp.finished = (cp.finished ?? []).filter((x) => x !== tx.article_id);
+    cp.claimed = (cp.claimed ?? []).filter((x) => x !== tx.article_id);
+    saveCheckpoint(cp);
     report(`RESUMED ${tx.article_id} — rebuild verified, marker cleared`);
     console.log(`resumed ${tx.article_id} OK`);
   } else {
@@ -183,33 +218,50 @@ function resume(now) {
 }
 
 /**
- * v58 production loop — claim / finish / abandon in MAX_CHUNK-sized batches.
- * claim: atomically take up to 10 PLANNED rows -> WRITING (lock required,
- * no duplicate claim possible: a second claim sees non-PLANNED rows).
+ * v64 micro loop claim — EXACTLY ONE article per cycle (lock required).
+ * - no argument: take the first PLANNED row (matrix order)
+ * - BA-id: take exactly that row (must still be PLANNED)
+ * - numeric chunk sizes are refused: the chunk contract is retired.
+ * Happy path invariant: at most ONE row is WRITING at any time.
  */
-function claim(writer, count) {
+function claim(argId) {
   if (!existsSync(LOCK)) { console.error('refusing to claim without the run lock'); process.exit(1); }
-  const n = Math.min(Math.max(1, Number(count) || MAX_CHUNK), MAX_CHUNK);
-  const rows = parseMatrix();
-  const taken = [];
-  for (const r of rows) {
-    if (taken.length >= n) break;
-    if (r.status !== 'PLANNED') continue;
-    if (writer && r.writer && r.writer !== writer) continue;
-    r.status = 'WRITING';
-    taken.push(r.article_id);
+  if (argId && /^\d+$/.test(argId)) {
+    console.error('chunk claiming removed (v64): production is 1 article / cycle — pass a BA-id or omit the argument');
+    process.exit(1);
   }
-  if (taken.length === 0) { console.log('claim: nothing PLANNED available'); return; }
+  const rows = parseMatrix();
+  const inFlight = rows.find((r) => r.status === 'WRITING');
+  if (inFlight) {
+    console.error(`refuse: ${inFlight.article_id} is already WRITING — finish or abandon-chunk it first (1 article / cycle)`);
+    process.exit(1);
+  }
+  let row;
+  if (argId) {
+    row = rows.find((r) => r.article_id === argId);
+    if (!row) { console.error(`unknown matrix id ${argId}`); process.exit(1); }
+    if (row.status !== 'PLANNED') { console.error(`refuse: ${argId} status is ${row.status} (only PLANNED may be claimed)`); process.exit(1); }
+  } else {
+    row = rows.find((r) => r.status === 'PLANNED');
+    if (!row) { console.log('claim: nothing PLANNED available'); return; }
+  }
+  row.status = 'WRITING';
   saveMatrix(rows);
-  const cp = existsSync(CHECKPOINT) ? JSON.parse(read(CHECKPOINT)) : { claimed: [], finished: [] };
-  cp.claimed = [...new Set([...(cp.claimed ?? []), ...taken])];
-  cp.updated = new Date().toISOString();
-  write(CHECKPOINT, JSON.stringify(cp, null, 2) + '\n');
-  report(`CLAIM ${taken.length}: ${taken.join(', ')}`);
-  console.log(`claimed ${taken.length}: ${taken.join(', ')}`);
+  const cp = loadCheckpoint();
+  cp.claimed = [...new Set([...(cp.claimed ?? []), row.article_id])];
+  saveCheckpoint(cp);
+  report(`CLAIM 1: ${row.article_id}`);
+  console.log(`claimed 1: ${row.article_id}`);
 }
 
-/** finish-chunk: WRITING rows of the given ids -> QA (writer's job done). */
+/** finish: WRITING -> QA for exactly one article (writer's job done). */
+function finish(id) {
+  if (!id || !/^BA-\d{4}$/.test(id)) { console.error('finish <BA-id>'); process.exit(1); }
+  finishChunk(id);
+}
+
+/** finish-chunk: WRITING rows of the given ids -> QA (kept for compatibility;
+ *  the micro loop passes exactly one id). */
 function finishChunk(ids) {
   if (!ids || ids.length === 0) { console.error('finish-chunk <id,id,...>'); process.exit(1); }
   const want = new Set(ids.split(',').map((s) => s.trim()).filter(Boolean));
@@ -220,13 +272,49 @@ function finishChunk(ids) {
   }
   if (done.length === 0) { console.error('no WRITING rows matched'); process.exit(1); }
   saveMatrix(rows);
-  const cp = existsSync(CHECKPOINT) ? JSON.parse(read(CHECKPOINT)) : { claimed: [], finished: [] };
+  const cp = loadCheckpoint();
   cp.finished = [...new Set([...(cp.finished ?? []), ...done])];
-  cp.claimed = (cp.claimed ?? []).filter((id) => !done.includes(id));
-  cp.updated = new Date().toISOString();
-  write(CHECKPOINT, JSON.stringify(cp, null, 2) + '\n');
-  report(`FINISH-CHUNK ${done.join(', ')}`);
+  cp.claimed = (cp.claimed ?? []).filter((id2) => !done.includes(id2));
+  saveCheckpoint(cp);
+  report(`FINISH ${done.join(', ')}`);
   console.log(`finished ${done.length}: ${done.join(', ')}`);
+}
+
+/**
+ * Scoped QA for exactly one article (deterministic PASS/FAIL — no numeric
+ * article score exists in this repo, so none is invented).
+ * PASS -> status PASS; failure -> REVIEW (repair_attempts++, BLOCKED after 3).
+ */
+function qa(id, now) {
+  if (!id || !/^BA-\d{4}$/.test(id)) { console.error('qa <BA-id>'); process.exit(1); }
+  const rows = parseMatrix();
+  const row = rows.find((r) => r.article_id === id);
+  if (!row) { console.error(`unknown matrix id ${id}`); process.exit(1); }
+  if (!['QA', 'REVIEW', 'REPAIR'].includes(row.status)) {
+    console.error(`refuse: ${id} status is ${row.status} (qa runs on QA/REVIEW/REPAIR rows)`);
+    process.exit(1);
+  }
+  const result = scopedQa(id);
+  for (const c of result.checks) {
+    console.log(`${c.ok ? 'PASS' : 'FAIL'}  ${c.name}${c.ok ? '' : ` — ${c.detail}`}`);
+  }
+  if (result.pass) {
+    setRowStatus(id, 'PASS', { quality_status: 'PASS', last_checked: now });
+    report(`QA PASS ${id}`);
+    console.log(`QA PASS ${id} — ready to publish`);
+  } else {
+    const attempts = Number(row.repair_attempts || 0) + 1;
+    if (attempts > 3) {
+      setRowStatus(id, 'BLOCKED', { quality_status: 'FAIL', repair_attempts: attempts, last_checked: now });
+      report(`QA FAIL ${id} -> BLOCKED (repair overflow)`);
+      console.error(`QA FAIL ${id} -> BLOCKED (repair overflow): ${result.failures.join(', ')}`);
+    } else {
+      setRowStatus(id, 'REVIEW', { quality_status: 'FAIL', repair_attempts: attempts, last_checked: now });
+      report(`QA FAIL ${id} -> REVIEW (attempt ${attempts})`);
+      console.error(`QA FAIL ${id} -> REVIEW (attempt ${attempts}): ${result.failures.join(', ')}`);
+    }
+    process.exit(1);
+  }
 }
 
 /** abandon-chunk: return still-WRITING rows to PLANNED after a crashed run. */
@@ -242,12 +330,11 @@ function abandonChunk(ids) {
   }
   if (returned === 0) { console.log('abandon-chunk: nothing to return'); return; }
   saveMatrix(rows);
-  const cp = existsSync(CHECKPOINT) ? JSON.parse(read(CHECKPOINT)) : { claimed: [], finished: [] };
+  const cp = loadCheckpoint();
   cp.claimed = [];
-  cp.updated = new Date().toISOString();
-  write(CHECKPOINT, JSON.stringify(cp, null, 2) + '\n');
-  report(`ABANDON-CHUNK returned ${returned} rows to PLANNED`);
-  console.log(`returned ${returned} rows to PLANNED`);
+  saveCheckpoint(cp);
+  report(`ABANDON returned ${returned} row(s) to PLANNED`);
+  console.log(`returned ${returned} row(s) to PLANNED`);
 }
 
 function showCheckpoint() {
@@ -265,19 +352,25 @@ function saveMatrix(rows) {
   write(MATRIX, [header, ...rows.map((r) => cols.map((c) => r[c] ?? '').join(','))].join('\n') + '\n');
 }
 
-const [cmd, arg] = process.argv.slice(2);
-const now = new Date().toISOString().slice(0, 10);
-switch (cmd) {
-  case 'status': status(); break;
-  case 'validate': validate(); break;
-  case 'lock': lock(now); break;
-  case 'unlock': unlock(); break;
-  case 'publish': publish(arg, now); break;
-  case 'resume': resume(now); break;
-  case 'claim': claim(undefined, arg); break;
-  case 'finish-chunk': finishChunk(arg); break;
-  case 'abandon-chunk': abandonChunk(arg); break;
-  case 'checkpoint': showCheckpoint(); break;
-  default:
-    console.log('usage: blog-factory.mjs status | validate | lock | unlock | publish <BA-id> | resume | claim [n<=10] | finish-chunk <ids> | abandon-chunk [ids|all] | checkpoint');
+const isCli = typeof process !== 'undefined' && process.argv && process.argv[1] &&
+  import.meta.url === new URL(`file://${process.argv[1]}`).href;
+if (isCli) {
+  const [cmd, arg] = process.argv.slice(2);
+  const now = new Date().toISOString().slice(0, 10);
+  switch (cmd) {
+    case 'status': status(); break;
+    case 'validate': validate(); break;
+    case 'lock': lock(now); break;
+    case 'unlock': unlock(); break;
+    case 'publish': publish(arg, now); break;
+    case 'resume': resume(now); break;
+    case 'claim': claim(arg); break;
+    case 'finish': finish(arg); break;
+    case 'finish-chunk': finishChunk(arg); break;
+    case 'qa': qa(arg, now); break;
+    case 'abandon-chunk': abandonChunk(arg); break;
+    case 'checkpoint': showCheckpoint(); break;
+    default:
+      console.log('usage: blog-factory.mjs status | validate | lock | unlock | claim [BA-id] | finish <BA-id> | qa <BA-id> | publish <BA-id> | resume | abandon-chunk [ids|all] | checkpoint');
+  }
 }

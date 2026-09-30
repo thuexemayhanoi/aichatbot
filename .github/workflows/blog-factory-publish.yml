@@ -1,0 +1,119 @@
+name: Blog Factory Publish (1 article / cycle)
+
+# Lightweight MICRO LOOP publish pipeline (v64). Deterministic, NO AI,
+# NO API keys, NO secrets inside Actions. Exactly ONE article per run:
+#
+#   detect exact ID -> guard -> lock -> scoped QA (deterministic PASS/FAIL)
+#   -> publish transaction (build + verify) -> matrix smoke
+#   -> clean txn/lock -> commit derived state (single commit)
+#
+# Triggers:
+#   - push to main adding/modifying files under data/blog/articles/**
+#     (the writer's cycle commit: body + manifest draft + matrix QA row)
+#   - workflow_dispatch with an explicit BA-id (manual approval path)
+#
+# This workflow intentionally does NOT run the full chatbot test suite:
+# article-only production runs scoped QA + light matrix smoke. The full
+# node --test suite stays in ci.yml and covers engine/tool/workflow changes.
+# GITHUB_TOKEN pushes never re-trigger workflows, so the derived-state
+# commit does not loop this workflow.
+#
+# Refuse rules (tools/factory-select.mjs):
+#   - a push touching more than one article body -> REFUSE (1 article/cycle)
+#   - WRITING/PLANNED rows with a pushed file -> REFUSE (claim+finish first)
+#   - PUBLISHED-row edits -> SKIP (shell rebuild, not a publish)
+
+on:
+  push:
+    branches: [main]
+    paths: ['data/blog/articles/**']
+  workflow_dispatch:
+    inputs:
+      article_id:
+        description: 'BA-id chính xác (vd BA-0002). Bỏ trống để tự detect từ lần push gần nhất.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blog-factory-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Detect exact article (exactly 1 per cycle)
+        id: detect
+        run: |
+          set -e
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.article_id }}" ]; then
+            node tools/factory-select.mjs --id "${{ github.event.inputs.article_id }}" | tee /tmp/select.out
+          else
+            git diff --name-only --diff-filter=AM HEAD~1 HEAD -- data/blog/articles/ > /tmp/changed.txt || true
+            node tools/factory-select.mjs --files /tmp/changed.txt | tee /tmp/select.out
+          fi
+          id=$(sed -n 's/^id=//p' /tmp/select.out)
+          mode=$(sed -n 's/^mode=//p' /tmp/select.out)
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "detected: mode=$mode id=$id"
+
+      - name: Guard — no lock, no pending transaction
+        if: steps.detect.outputs.mode == 'publish'
+        run: |
+          test ! -f docs/state/blog-factory.lock \
+            || { echo "::error::lock present — run: node tools/blog-factory.mjs unlock"; exit 1; }
+          test ! -f docs/state/blog-factory.transaction.json \
+            || { echo "::error::pending transaction — run: node tools/blog-factory.mjs resume"; exit 1; }
+
+      - name: Lock the cycle (single writer)
+        if: steps.detect.outputs.mode == 'publish'
+        run: node tools/blog-factory.mjs lock
+
+      - name: Scoped QA (deterministic PASS/FAIL for the exact 1 article)
+        if: steps.detect.outputs.mode == 'publish'
+        run: node tools/blog-factory.mjs qa ${{ steps.detect.outputs.id }}
+
+      - name: Publish transaction (build + verify consistency)
+        if: steps.detect.outputs.mode == 'publish'
+        run: node tools/blog-factory.mjs publish ${{ steps.detect.outputs.id }}
+
+      - name: Matrix smoke (rows, distribution, uniqueness)
+        if: steps.detect.outputs.mode == 'publish'
+        run: node tools/blog-factory.mjs validate
+
+      - name: Clean lock + assert no transaction marker
+        if: steps.detect.outputs.mode == 'publish'
+        run: |
+          node tools/blog-factory.mjs unlock
+          test ! -f docs/state/blog-factory.transaction.json \
+            || { echo "::error::transaction marker still present"; exit 1; }
+
+      - name: Commit derived state (single commit; lock/txn never committed)
+        if: steps.detect.outputs.mode == 'publish'
+        run: |
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git add data/blog/content-matrix.csv data/blog/knowledge-index.json \
+            blog sitemap.xml robots.txt reports/blog-factory-run.md
+          if [ -f docs/state/blog-factory.checkpoint.json ]; then
+            git add docs/state/blog-factory.checkpoint.json
+          fi
+          git reset -q -- docs/state/blog-factory.lock docs/state/blog-factory.transaction.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no derived changes to commit"
+          else
+            git commit -m "factory: publish ${{ steps.detect.outputs.id }} (1 article/cycle) [skip ci]"
+            git push
+          fi

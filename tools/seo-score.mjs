@@ -47,8 +47,10 @@ export function pageSet(published) {
 }
 
 // ---------- helpers ----------
+// v64: exported so tools/article-qa.mjs reuses the SAME extraction logic
+// (no duplicated text/meta/word-count code across factory tools).
 
-const text = (html) => String(html)
+export const text = (html) => String(html)
   .replace(/<script[\s\S]*?<\/script>/gi, ' ')
   .replace(/<style[\s\S]*?<\/style>/gi, ' ')
   .replace(/<[^>]+>/g, ' ')
@@ -56,14 +58,14 @@ const text = (html) => String(html)
   .replace(/\s+/g, ' ')
   .trim();
 
-const words = (s) => (s ? s.split(/\s+/).filter(Boolean).length : 0);
+export const words = (s) => (s ? s.split(/\s+/).filter(Boolean).length : 0);
 
-function tag(html, name) {
+export function tag(html, name) {
   const m = String(html).match(new RegExp(`<${name}\\b[^>]*>([\\s\\S]*?)</${name}>`, 'i'));
   return m ? m[1].trim() : '';
 }
 
-function meta(html, name) {
+export function meta(html, name) {
   const m = String(html).match(new RegExp(`<meta[^>]+(?:name|property)="${name}"[^>]*content="([^"]*)"`, 'i'));
   return m ? m[1] : '';
 }

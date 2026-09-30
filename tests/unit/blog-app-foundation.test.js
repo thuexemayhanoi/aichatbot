@@ -387,11 +387,19 @@ test('LOCAL quality gate: published articles never claim an unverified locality 
 
 // ---------- Factory safety (unchanged) ----------
 
-test('factory safety: 2000 rows preserved, 2 pilots published, distribution intact', () => {
+test('factory safety: 2000 rows preserved, PUBLISHED matches the manifest, distribution intact', () => {
   const rows = parseMatrix();
   assert.equal(rows.length, 2000);
   const dist = {};
   for (const r of rows) dist[r.category] = (dist[r.category] ?? 0) + 1;
   assert.deepEqual(dist, { APP: 350, RENT: 400, EV: 300, GUIDE: 300, SAFE: 250, LOCAL: 400 });
-  assert.equal(rows.filter((r) => r.status === 'PUBLISHED').length, 2, 'NO mass generation in this run');
+  // v64 micro loop publishes ONE article per cycle: the PUBLISHED count
+  // grows over time and must always match the publish manifest exactly.
+  const manifest = JSON.parse(read('data/blog/published.json'));
+  const publishedIds = new Set(manifest.articles.map((a) => a.article_id));
+  const matrixPublished = rows.filter((r) => r.status === 'PUBLISHED');
+  assert.equal(matrixPublished.length, manifest.articles.length,
+    'PUBLISHED rows and published.json must stay in sync (no mass generation)');
+  for (const r of matrixPublished) assert.ok(publishedIds.has(r.article_id));
+  assert.ok(manifest.articles.length >= 2, 'pilot articles remain published');
 });

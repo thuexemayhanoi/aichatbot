@@ -70,15 +70,20 @@ test('every row belongs to an existing category hub directory', () => {
   }
 });
 
-test('all matrix rows are PLANNED except published pilots', () => {
+test('matrix statuses follow the factory state machine; only pilots are fixtures', () => {
   const rows = parseMatrix();
-  const allowed = new Set(['PLANNED', 'PUBLISHED']);
+  // v64 micro loop: main may legitimately hold QA/REVIEW rows between a
+  // writer push and the publish workflow's derived commit — but never a
+  // stray WRITING (claim is local-only) or an unknown status.
+  const allowed = new Set(['PLANNED', 'QA', 'REVIEW', 'PASS', 'PUBLISHED']);
   for (const r of rows) assert.ok(allowed.has(r.status), `unexpected status ${r.status}`);
   const published = rows.filter((r) => r.status === 'PUBLISHED');
   for (const r of published) {
     assert.ok(r.published_date.length > 0, 'published rows carry a date');
-    assert.equal(r.notes, 'pilot/fixture');
   }
+  // Fixture/pilot rows stay flagged; factory production articles are not fixtures.
+  const pilots = rows.filter((r) => r.status === 'PUBLISHED' && r.notes === 'pilot/fixture');
+  assert.ok(pilots.length >= 2, 'the two pilot articles remain flagged pilot/fixture');
 });
 
 test('legal/safety rows require the legal source gate', () => {
