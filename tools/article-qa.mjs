@@ -8,7 +8,7 @@
  *
  * Checks (docs/BLOG-FACTORY.md §Scoped QA):
  *   matrix-row / manifest-entry / id-slug-path / body-exists
- *   body-words 1.600–2.000 / structure (>=2 H2, no H1, has list)
+ *   body-words 1.500–4.000 / structure (>=2 H2, no H1, has list)
  *   no filler / duplicate paragraphs / duplicate sentences
  *   no paragraph shared with any other article body (anti-spun/anti-dup)
  *   no keyword cannibalization (unique primary_keyword + unique title)
@@ -39,9 +39,12 @@ export const ROOT = process.env.MOTOAI_FACTORY_ROOT
 const HUB_DIR = Object.fromEntries(HUBS.map((h) => [h.id, h.dir]));
 const read = (p) => readFileSync(isAbsolute(p) ? p : join(ROOT, p), 'utf8');
 
-/** QA gate for article depth (docs/ARTICLE-RULES.md). */
-export const MIN_WORDS = 1600;
-export const MAX_WORDS = 2000;
+/** QA gate for article depth (docs/ARTICLE-RULES.md: 1.500–4.000 useful
+ *  Vietnamese words). Length follows search intent — no padding to reach
+ *  the floor, no truncation to force the ceiling; >MAX means the writer
+ *  trims meaningfully (REVIEW), the tool never cuts text. */
+export const MIN_WORDS = 1500;
+export const MAX_WORDS = 4000;
 
 /** Paragraph fingerprints (same heuristic family as seo-score, no new system). */
 function paragraphKeys(bodyText) {

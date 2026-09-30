@@ -151,10 +151,19 @@ test('select: explicit --id validates the row state', () => {
 
 test('cycle: the real repo is untouched by every sandbox cycle', () => {
   const lines = readFileSync(join(REPO, 'data/blog/content-matrix.csv'), 'utf8').trim().split('\n');
-  const statuses = lines.slice(1).map((l) => l.split(',')[3]);
-  assert.equal(statuses.filter((s) => s === 'PUBLISHED').length, 2);
-  assert.equal(statuses.filter((s) => s === 'PLANNED').length, 1998);
-  assert.equal(statuses.filter((s) => s === 'WRITING').length, 0);
+  const rows = lines.slice(1).map((l) => l.split(','));
+  const by = {};
+  for (const c of rows) by[c[3]] = (by[c[3]] ?? 0) + 1;
+  assert.equal(rows.length, 2000, 'matrix size never changes');
+  assert.ok((by.PUBLISHED ?? 0) >= 2, 'pilots stay published');
+  assert.equal(by.WRITING ?? 0, 0, 'claim is local-only, never committed');
+  // v64.2: production advances (PUBLISHED grows, writer drafts sit in QA),
+  // so exact status counts are impossible — assert the invariants instead.
+  const manifest = JSON.parse(readFileSync(join(REPO, 'data/blog/published.json'), 'utf8'));
+  const manifestIds = new Set(manifest.articles.map((a) => a.article_id));
+  for (const c of rows) {
+    if (c[3] === 'PUBLISHED') assert.ok(manifestIds.has(c[0]), `PUBLISHED ${c[0]} missing from manifest`);
+  }
   assert.ok(!existsSync(join(REPO, 'docs/state/blog-factory.lock')));
   assert.ok(!existsSync(join(REPO, 'docs/state/blog-factory.transaction.json')));
 });

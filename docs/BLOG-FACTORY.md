@@ -84,7 +84,7 @@ Nếu bất kỳ bước nào fail: marker GIỮ NGUYÊN, lệnh `resume` dựng
 `tools/article-qa.mjs` kiểm đúng 1 bài theo checklist:
 
 1. Đúng ID / slug / output_path / body path nhất quán giữa matrix và manifest.
-2. Body tồn tại, 1.600–2.000 từ (trừ khi rubric quyết định khác), ≥2 H2, không H1 trong body, có list.
+2. Body tồn tại, 1.500–4.000 từ hữu ích theo search intent (không padding, không truncate), ≥2 H2, không H1 trong body, có list.
 3. Không filler, không đoạn trùng trong bài, không câu lặp (spun), không đoạn đã dùng ở bài khác.
 4. Không cannibalization: primary_keyword và tiêu đề duy nhất toàn ma trận.
 5. Title/meta/slug/date hợp lệ (title 10–70, description 50–165, YYYY-MM-DD).

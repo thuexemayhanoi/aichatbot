@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
-  repoSandbox, qaCli, installFixture, fixtureBody, readJson, writeJson, firstPlanned
+  repoSandbox, qaCli, installFixture, fixtureBody, fixtureBodyExact, countWords,
+  readJson, writeJson, firstPlanned
 } from '../helpers/factory-sandbox.mjs';
 
 /**
@@ -11,8 +12,9 @@ import {
  * article. Every case runs in a full repo sandbox; the real matrix and
  * the two PUBLISHED pilots are never touched.
  *
- * Base fixture: a valid 1.600–2.000-word draft for the first PLANNED row
- * of a category. Each failure case mutates exactly one thing.
+ * Base fixture: a valid draft for the first PLANNED row of a category,
+ * inside the 1.500–4.000-word range (docs/ARTICLE-RULES.md). Each failure
+ * case mutates exactly one thing.
  */
 
 const BASE = {
@@ -40,12 +42,64 @@ test('qa: valid fixture article PASSES every scoped check', () => {
   }
 });
 
-test('qa: FAIL body-words — a 300-word draft is rejected', () => {
+test('qa: FAIL body-words — a ~450-word draft is rejected', () => {
   const dir = repoSandbox();
   const id = install(dir, { body: fixtureBody({ paragraphs: 3 }) });
   const out = qaCli(dir, [id], true);
   assert.ok(out.fail);
   assert.match(out.out, /FAIL\s+body-words/);
+});
+
+// ---------- length gate 1.500–4.000 (docs/ARTICLE-RULES.md) ----------
+// Word counts are EXACT visible-word counts (tags stripped, facts resolved)
+// — the same number tools/article-qa.mjs sees.
+
+test('qa: length gate — exactly 1.499 words FAILs (thin-content risk)', () => {
+  const dir = repoSandbox();
+  const body = fixtureBodyExact(dir, 1499);
+  assert.equal(countWords(dir, body), 1499);
+  const id = install(dir, { body });
+  const out = qaCli(dir, [id], true);
+  assert.ok(out.fail);
+  assert.match(out.out, /FAIL\s+body-words/);
+});
+
+test('qa: length gate — exactly 1.500 words PASSES', () => {
+  const dir = repoSandbox();
+  const body = fixtureBodyExact(dir, 1500);
+  assert.equal(countWords(dir, body), 1500);
+  const id = install(dir, { body });
+  assert.match(qaCli(dir, [id]), /QA PASS/);
+});
+
+test('qa: length gate — exactly 2.500 words PASSES (no 2.000 ceiling)', () => {
+  const dir = repoSandbox();
+  const body = fixtureBodyExact(dir, 2500);
+  assert.equal(countWords(dir, body), 2500);
+  const id = install(dir, { body });
+  assert.match(qaCli(dir, [id]), /QA PASS/);
+});
+
+test('qa: length gate — exactly 4.000 words PASSES (deep topic is fine)', () => {
+  const dir = repoSandbox();
+  const body = fixtureBodyExact(dir, 4000);
+  assert.equal(countWords(dir, body), 4000);
+  const id = install(dir, { body });
+  assert.match(qaCli(dir, [id]), /QA PASS/);
+});
+
+test('qa: length gate — 4.001 words FAILs (writer trims, tool never truncates)', () => {
+  const dir = repoSandbox();
+  const body = fixtureBodyExact(dir, 4001);
+  assert.equal(countWords(dir, body), 4001);
+  const id = install(dir, { body });
+  const out = qaCli(dir, [id], true);
+  assert.ok(out.fail);
+  assert.match(out.out, /FAIL\s+body-words/);
+  // No truncation anywhere: the body file still holds every word after QA.
+  const row = readJson(dir, 'data/blog/published.json').articles.find((a) => a.article_id === id);
+  const after = readFileSync(join(dir, row.body), 'utf8');
+  assert.equal(countWords(dir, after), 4001, 'QA must never cut the body');
 });
 
 test('qa: FAIL body-exists — missing body file', () => {

@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, cpSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, cpSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,6 +13,13 @@ import { fileURLToPath } from 'node:url';
  *
  * Tools are executed from the sandbox's own copy (no MOTOAI_FACTORY_ROOT
  * override), which guarantees every file the factory touches lives in tmp.
+ *
+ * v64.2: the sandbox ALWAYS starts from the canonical baseline — the two
+ * pilot articles PUBLISHED, every other row PLANNED — no matter how far
+ * real production has gone (writer drafts in QA/PASS, rows the workflow
+ * already published). Factory contract tests must not depend on live
+ * production state, otherwise CI breaks on every writer push (draft
+ * matrix) and after every publish (published count drifts).
  */
 
 export const REPO = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -20,7 +27,41 @@ export const REPO = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 export function repoSandbox() {
   const dir = mkdtempSync(join(tmpdir(), 'motoai-factory-'));
   cpSync(REPO, dir, { recursive: true, filter: (src) => !src.includes('/.git') });
+  baselineSandbox(dir);
   return dir;
+}
+
+/** Reset a sandbox copy to the canonical baseline (pilots published, rest PLANNED). */
+function baselineSandbox(dir) {
+  // 1. Matrix: pilot rows keep PUBLISHED; every other row becomes PLANNED again.
+  const pilots = new Set(readJson(dir, 'data/blog/published.json').articles
+    .filter((a) => a.pilot === true).map((a) => a.article_id));
+  const lines = readMatrix(dir);
+  const out = lines.map((l, i) => {
+    if (i === 0) return l;
+    const cells = l.split(',');
+    if (!pilots.has(cells[0])) cells[3] = 'PLANNED';
+    return cells.join(',');
+  });
+  writeFileSync(join(dir, 'data/blog/content-matrix.csv'), out.join('\n') + '\n');
+  // 2. Manifest: only entries whose (baseline) row is PUBLISHED — drop drafts.
+  const published = new Set(out.slice(1)
+    .filter((l) => l.split(',')[3] === 'PUBLISHED').map((l) => l.split(',')[0]));
+  const manifest = readJson(dir, 'data/blog/published.json');
+  manifest.articles = manifest.articles.filter((a) => published.has(a.article_id));
+  writeJson(dir, 'data/blog/published.json', manifest);
+  // 3. Remove draft body files and built pages of demoted rows (PLANNED rows
+  //    must have no body committed) — pilots and pilot pages stay untouched.
+  for (const l of out.slice(1)) {
+    const cells = l.split(',');
+    if (published.has(cells[0])) continue;
+    rmSync(join(dir, 'data/blog/articles', `${cells[8]}.body.html`), { force: true });
+    rmSync(join(dir, cells[9].replace(/index\.html$/, '')), { recursive: true, force: true });
+  }
+  // 4. Never inherit a writer's run state into the sandbox.
+  for (const f of ['blog-factory.lock', 'blog-factory.transaction.json', 'blog-factory.checkpoint.json']) {
+    rmSync(join(dir, 'docs/state', f), { force: true });
+  }
 }
 
 /** Run a repo tool from the sandbox copy (all writes land in the sandbox). */
@@ -92,7 +133,8 @@ export function firstPlanned(dir, category) {
 }
 
 /**
- * Deterministic fixture body, 1.600–2.000 words (docs/ARTICLE-RULES.md).
+ * Deterministic fixture body, inside the 1.500–4.000-word range
+ * (docs/ARTICLE-RULES.md: length follows search intent).
  * Paragraphs are indexed so no duplicate-paragraph/sentence check trips.
  * Contains only verified facts via {{ business.* }} placeholders.
  */
@@ -114,6 +156,60 @@ export function fixtureBody({ paragraphs = 16 } = {}) {
   out.push('<p>Tiền cọc dao động từ 2.000.000đ đến 5.000.000đ tùy loại xe và mức cọc chính xác được xác nhận khi đặt xe. Bạn nên mang theo giấy tờ tùy thân và bằng lái phù hợp với dung tích xe.</p>');
   out.push('<p>Bài viết này thuộc <a href="/aichatbot/blog/">cẩm nang thuê xe</a>, bạn có thể xem thêm trong <a href="/aichatbot/blog/thue-xe/">danh mục thuê xe</a> hoặc hỏi trực tiếp trên <a href="/aichatbot/">Agent</a> để tính chi phí cho hành trình cụ thể.</p>');
   return out.join('\n');
+}
+
+/**
+ * Count visible words EXACTLY like tools/article-qa.mjs: resolve business
+ * facts first, then strip tags/entities (same pipeline as tools/seo-score.mjs
+ * `text()`), then split on whitespace. No HTML tag, schema or navigation
+ * text is ever counted.
+ */
+export function countWords(dir, html) {
+  const business = readJson(dir, 'data/business/business.json');
+  const resolved = html.replace(/\{\{\s*business\.([a-z0-9_.]+)(?:\s*\|\s*(\w+))?\s*\}\}/gi,
+    (_, path) => {
+      const v = path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), business);
+      if (v === undefined) throw new Error(`unresolved business fact: business.${path}`);
+      return typeof v === 'number' ? v.toLocaleString('vi-VN') + 'đ' : String(v);
+    });
+  const visible = String(resolved)
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&').replace(/&[a-z]+;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return visible ? visible.split(/\s+/).filter(Boolean).length : 0;
+}
+
+/**
+ * Fixture body with an EXACT visible word count — used by the length-gate
+ * boundary tests (1.499 FAIL / 1.500 / 2.500 / 4.000 PASS / >4.000 REVIEW).
+ * Builds on fixtureBody({paragraphs:1}) and appends UNIQUE one-sentence
+ * paragraphs (no duplicate sentences, no filler markers, no truncation)
+ * until the target lands precisely.
+ */
+export function fixtureBodyExact(dir, target) {
+  const aspects = ['chi phí', 'loại xe', 'thủ tục', 'thời gian', 'nhiên liệu',
+    'tuyến đường', 'an toàn', 'bảo quản', 'khởi động', 'lưu giữ xe'];
+  let body = fixtureBody({ paragraphs: 1 });
+  let n = 0;
+  while (countWords(dir, body) < target) {
+    const remaining = target - countWords(dir, body);
+    n++;
+    const a = aspects[n % aspects.length];
+    const full = `Đoạn đệm số ${n} về ${a}: khách nên so sánh giá thuê theo ngày tuần tháng và hỏi trước các khoản phát sinh để chủ động ngân sách.`;
+    if (full.split(/\s+/).filter(Boolean).length <= remaining) {
+      body += `\n<p>${full}</p>`;
+      continue;
+    }
+    // Exact-fit tail paragraph made of unique 1-word tokens.
+    const parts = remaining === 1 ? [`đệm-${n}`]
+      : remaining === 2 ? ['Đoạn', `đệm-${n}`]
+        : ['Đoạn', `đệm-${n}`, ...Array.from({ length: remaining - 2 }, (_, k) => `đệm-${n}-${k}`)];
+    body += `\n<p>${parts.join(' ')}.</p>`;
+  }
+  return body;
 }
 
 /** Manifest draft entry for a fixture article (published.json). */
