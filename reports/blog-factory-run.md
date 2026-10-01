@@ -131,3 +131,7 @@
 - 2026-10-01 FINISH BA-0038
 - 2026-10-01 QA PASS BA-0038
 - 2026-10-01 PUBLISHED BA-0038 (thue-xe-ga) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0039
+- 2026-10-01 FINISH BA-0039
+- 2026-10-01 QA PASS BA-0039
+- 2026-10-01 PUBLISHED BA-0039 (pham-vi-hoat-dong-cua-xe-dien) — page, matrix, indexes, sitemap consistent
