@@ -111,3 +111,7 @@
 - 2026-10-01 FINISH BA-0033
 - 2026-10-01 QA PASS BA-0033
 - 2026-10-01 PUBLISHED BA-0033 (pin-cua-xe-may-dien) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0034
+- 2026-10-01 FINISH BA-0034
+- 2026-10-01 QA PASS BA-0034
+- 2026-10-01 PUBLISHED BA-0034 (kiem-tra-xe-khi-nhan) — page, matrix, indexes, sitemap consistent
