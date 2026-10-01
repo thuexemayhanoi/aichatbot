@@ -15,3 +15,7 @@
 - 2026-09-30 PUBLISHED BA-0008 (gia-thue-xe-may-theo-ngay) — page, matrix, indexes, sitemap consistent
 - 2026-09-30 QA PASS BA-0009
 - 2026-09-30 PUBLISHED BA-0009 (ung-dung-thue-xe-may-dien) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0010
+- 2026-10-01 FINISH BA-0010
+- 2026-10-01 QA PASS BA-0010
+- 2026-10-01 PUBLISHED BA-0010 (giay-to-can-khi-thue-xe) — page, matrix, indexes, sitemap consistent
