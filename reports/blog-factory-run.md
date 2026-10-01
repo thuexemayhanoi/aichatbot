@@ -127,3 +127,7 @@
 - 2026-10-01 FINISH BA-0037
 - 2026-10-01 QA PASS BA-0037
 - 2026-10-01 PUBLISHED BA-0037 (web-app-va-app-native-khac-gi-nhau) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0038
+- 2026-10-01 FINISH BA-0038
+- 2026-10-01 QA PASS BA-0038
+- 2026-10-01 PUBLISHED BA-0038 (thue-xe-ga) — page, matrix, indexes, sitemap consistent
