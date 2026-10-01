@@ -43,3 +43,7 @@
 - 2026-10-01 FINISH BA-0016
 - 2026-10-01 QA PASS BA-0016
 - 2026-10-01 PUBLISHED BA-0016 (huong-dan-dat-xe-nhanh) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0017
+- 2026-10-01 FINISH BA-0017
+- 2026-10-01 QA PASS BA-0017
+- 2026-10-01 PUBLISHED BA-0017 (mu-bao-hiem-chuan) — page, matrix, indexes, sitemap consistent
