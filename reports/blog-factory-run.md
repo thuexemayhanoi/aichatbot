@@ -119,3 +119,7 @@
 - 2026-10-01 FINISH BA-0035
 - 2026-10-01 QA PASS BA-0035
 - 2026-10-01 PUBLISHED BA-0035 (bang-lai-a1-a2-khac-gi) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0036
+- 2026-10-01 FINISH BA-0036
+- 2026-10-01 QA PASS BA-0036
+- 2026-10-01 PUBLISHED BA-0036 (cau-giay-di-xe-may) — page, matrix, indexes, sitemap consistent
