@@ -182,6 +182,21 @@
         "Kiểm tra an toàn của một ứng dụng thuê xe qua ba lớp: thông tin cá nhân — không gửi ảnh giấy tờ, mã OTP hay số thẻ trước khi có thỏa thuận cụ thể; giao dịch — mức cọc và chính sách hoàn cọc nói rõ trước theo từng dòng xe; dịch vụ — giấy tờ hướng dẫn khớp quy định bằng lái A1 và chính sách phát sinh được trả lời rõ.",
         "Một công cụ thuê xe đáng tin công khai đầy đủ tên cửa hàng, địa chỉ, số điện thoại, giờ làm việc, và thông tin trên công cụ khớp với câu trả lời khi gọi điện kiểm chứng; trợ lý trực tuyến chỉ đáng tin khi trả lời từ dữ liệu cửa hàng đã xác minh thay vì tự chế số liệu."
       ]
+    },
+    {
+      "article_id": "BA-0014",
+      "category": "RENT",
+      "slug": "thue-xe-may-theo-tuan",
+      "title": "Thuê xe máy theo tuần: khi nào đáng lấy và cần hỏi gì trước",
+      "description": "Thuê xe máy theo tuần hợp khi cần xe từ khoảng 5 ngày: cách tính giá tuần so với giá ngày, checklist nhận xe, trách nhiệm trong 7 ngày và khoản phát sinh khi trả.",
+      "published_date": "2026-10-01",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-may-theo-tuan.body.html",
+      "knowledge_chunks": [
+        "Thuê xe máy theo tuần thường hợp khi cần xe từ khoảng 5 ngày trở lên: gói tuần tính theo khung chung rẻ hơn cộng dồn 7 giá ngày, nhưng mức chiết khấu theo từng dòng xe nên phải hỏi báo giá trực tiếp cho đúng xe; hỏi rõ cả 3 mức ngày, tuần, tháng rồi chia giá tuần theo số ngày thực tế để so.",
+        "Hợp đồng thuê xe theo tuần cần chốt trước: cách tính khung 7 ngày, chính sách trả trễ, bên chịu sửa nếu xe hỏng giữa tuần, và giữ lại ảnh chụp tình trạng xe cùng mực nhiên liệu lúc nhận; cọc hoàn trả khi trả xe đúng tình trạng, xe thuê không kèm bảo hiểm cho người lái."
+      ]
     }
   ]
 }
