@@ -47,3 +47,7 @@
 - 2026-10-01 FINISH BA-0017
 - 2026-10-01 QA PASS BA-0017
 - 2026-10-01 PUBLISHED BA-0017 (mu-bao-hiem-chuan) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0018
+- 2026-10-01 FINISH BA-0018
+- 2026-10-01 QA PASS BA-0018
+- 2026-10-01 PUBLISHED BA-0018 (du-lich-hoan-kiem-bang-xe-may) — page, matrix, indexes, sitemap consistent
