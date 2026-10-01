@@ -75,3 +75,7 @@
 - 2026-10-01 FINISH BA-0024
 - 2026-10-01 QA PASS BA-0024
 - 2026-10-01 PUBLISHED BA-0024 (ho-tay-va-xe-may) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0025
+- 2026-10-01 FINISH BA-0025
+- 2026-10-01 QA PASS BA-0025
+- 2026-10-01 PUBLISHED BA-0025 (chon-xe-bang-agent) — page, matrix, indexes, sitemap consistent
