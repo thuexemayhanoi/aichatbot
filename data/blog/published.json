@@ -356,6 +356,21 @@
         "Chọn xe bằng Agent dựa trên năm nhóm thông tin: khoảng cách và loại chặng, số người và đồ mang theo, khung giờ thuê, kinh nghiệm lái của người thuê và các điều kiện đặc biệt như cần cốp rộng hay ưu tiên xe điện; mô tả rõ từ câu đầu giúp trợ lý gợi ý dòng xe phù hợp trong một lượt hội thoại.",
         "Sau khi nhận gợi ý dòng xe từ Agent, khách nên hỏi lại bốn điều trong cùng một tin nhắn: tình trạng còn xe ở khung giờ cần thuê, điều kiện thuê của dòng đó, báo giá đầy đủ và thủ tục nhận trả xe; Agent gợi ý theo nhóm dòng xe và luôn xác nhận lại xe còn thực tế thay vì hứa trước một chiếc cụ thể."
       ]
+    },
+    {
+      "article_id": "BA-0026",
+      "category": "RENT",
+      "slug": "cho-thue-xe-may-thu-tuc-don-gian",
+      "title": "Cho thuê xe máy thủ tục đơn giản: ba bước là cầm xe",
+      "description": "Cho thuê xe máy thủ tục đơn giản: chốt xe bằng một tin nhắn, giấy tờ gọn gàng với mức đặt cọc rõ ràng, ba bước từ hỏi giá đến nhận xe và các cách rút ngắn thủ tục.",
+      "published_date": "2026-10-01",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cho-thue-xe-may-thu-tuc-don-gian.body.html",
+      "knowledge_chunks": [
+        "Thủ tục thuê xe máy đơn giản gói trong ba bước: mô tả nhu cầu qua một tin nhắn kèm ngày giờ nhận xe, xác nhận báo giá cùng mức đặt cọc của dòng xe được chọn, rồi mang giấy tờ đến nhận xe trong khung giờ mở cửa; người Việt cần căn cước công dân và giấy phép lái đúng loại xe, khách nước ngoài cần hộ chiếu kèm giấy phép lái được công nhận.",
+        "Các điều kiện cố định của thủ tục: tiền đặt cọc dao động theo dòng xe trong khoảng 2.000.000đ đến 5.000.000đ và được hoàn lại khi trả xe đúng hiện trạng, dịch vụ không kèm bảo hiểm nên người thuê tự chuẩn bị, giao xe tận nơi chỉ trong khung giờ mở cửa với thời gian và phí được xác nhận trước khi đặt."
+      ]
     }
   ]
 }
