@@ -139,3 +139,7 @@
 - 2026-10-01 FINISH BA-0040
 - 2026-10-01 QA PASS BA-0040
 - 2026-10-01 PUBLISHED BA-0040 (hop-dong-thue-xe-can-nhung-gi) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0041
+- 2026-10-01 FINISH BA-0041
+- 2026-10-01 QA PASS BA-0041
+- 2026-10-01 PUBLISHED BA-0041 (nguoi-nuoc-ngoai-lai-xe-o-viet-nam) — page, matrix, indexes, sitemap consistent
