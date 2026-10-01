@@ -103,3 +103,7 @@
 - 2026-10-01 FINISH BA-0031
 - 2026-10-01 QA PASS BA-0031
 - 2026-10-01 PUBLISHED BA-0031 (thue-xe-online-nhu-the-nao) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0032
+- 2026-10-01 FINISH BA-0032
+- 2026-10-01 QA PASS BA-0032
+- 2026-10-01 PUBLISHED BA-0032 (thue-xe-so) — page, matrix, indexes, sitemap consistent
