@@ -2,9 +2,20 @@ name: Distribution
 
 # Binary distribution artifacts (PWA icons, WordPress ZIP) are generated
 # deterministically in CI (pure stdlib, byte-stable output).
+# Article-only production pushes are exempt (scoped QA lives in
+# blog-factory-publish.yml); every engine/tool/workflow change still runs
+# the full suite + artifact build. workflow_dispatch keeps a manual path.
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'data/blog/articles/**'
+      - 'data/blog/published.json'
+      - 'data/blog/content-matrix.csv'
+      - 'blog/**'
+      - 'sitemap.xml'
+      - 'reports/**'
+      - 'docs/state/**'
   workflow_dispatch:
 
 jobs:

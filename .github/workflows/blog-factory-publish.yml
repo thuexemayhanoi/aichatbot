@@ -1,32 +1,44 @@
 name: Blog Factory Publish (1 article / cycle)
 
-# Lightweight MICRO LOOP publish pipeline (v64). Deterministic, NO AI,
-# NO API keys, NO secrets inside Actions. Exactly ONE article per run:
+# v65 CONTINUOUS-READY publish pipeline (docs/CONTINUOUS-WRITER.md).
+# Deterministic, NO AI, NO API keys, NO secrets inside Actions. Exactly ONE
+# article per run. GitHub owns the state transitions so the writer's happy
+# path is just: write 1 article source + its manifest draft entry -> push.
 #
-#   detect exact ID -> guard -> lock -> scoped QA (deterministic PASS/FAIL)
+#   detect exact ID (tools/factory-select.mjs)
+#   -> RECOVER first (resume any pending transaction, clear stale lock)
+#   -> lock -> prepare (auto-claim: PLANNED -> WRITING -> QA, no-op on QA/PASS)
+#   -> scoped QA (deterministic PASS/FAIL)
 #   -> publish transaction (build + verify) -> matrix smoke
 #   -> clean txn/lock -> commit derived state (single commit)
 #
 # Triggers:
-#   - push to main adding/modifying files under data/blog/articles/**
-#     (the writer's cycle commit: body + manifest draft + matrix QA row)
-#   - workflow_dispatch with an explicit BA-id (manual approval path)
+#   - push to main under data/blog/articles/** or data/blog/published.json
+#     (the writer's cycle commit: article body + manifest draft entry;
+#     the matrix is NOT part of a writer push anymore — the workflow owns it)
+#   - workflow_dispatch with an explicit BA-id (manual path)
 #
 # This workflow intentionally does NOT run the full chatbot test suite:
 # article-only production runs scoped QA + light matrix smoke. The full
-# node --test suite stays in ci.yml and covers engine/tool/workflow changes.
-# GITHUB_TOKEN pushes never re-trigger workflows, so the derived-state
-# commit does not loop this workflow.
+# node --test suite stays in ci.yml (which itself skips article-only pushes
+# via paths-ignore) and covers engine/tool/workflow changes.
+#
+# The derived-state commit never touches the trigger paths (data/blog/articles,
+# data/blog/published.json) and GITHUB_TOKEN pushes never re-trigger
+# workflows, so publishing cannot loop this workflow.
 #
 # Refuse rules (tools/factory-select.mjs):
 #   - a push touching more than one article body -> REFUSE (1 article/cycle)
-#   - WRITING/PLANNED rows with a pushed file -> REFUSE (claim+finish first)
-#   - PUBLISHED-row edits -> SKIP (shell rebuild, not a publish)
+#   - a body without a matching manifest draft entry -> REFUSE
+#   - duplicate article_id in the manifest -> REFUSE
+#   - a draft for ANOTHER unfinished article pending -> REFUSE (resume first)
+#   - unknown slug / pushed run state -> REFUSE
+#   - PUBLISHED-row edits -> SKIP (manual rebuild, never auto-rewritten)
 
 on:
   push:
     branches: [main]
-    paths: ['data/blog/articles/**']
+    paths: ['data/blog/articles/**', 'data/blog/published.json']
   workflow_dispatch:
     inputs:
       article_id:
@@ -60,29 +72,43 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.article_id }}" ]; then
             node tools/factory-select.mjs --id "${{ github.event.inputs.article_id }}" | tee /tmp/select.out
           else
-            git diff --name-only --diff-filter=AM HEAD~1 HEAD -- data/blog/articles/ > /tmp/changed.txt || true
+            git diff --name-only --diff-filter=AM HEAD~1 HEAD > /tmp/changed.txt || true
             node tools/factory-select.mjs --files /tmp/changed.txt | tee /tmp/select.out
           fi
           id=$(sed -n 's/^id=//p' /tmp/select.out)
           mode=$(sed -n 's/^mode=//p' /tmp/select.out)
+          claim=$(sed -n 's/^claim=//p' /tmp/select.out)
+          qa=$(sed -n 's/^qa=//p' /tmp/select.out)
           echo "id=$id" >> "$GITHUB_OUTPUT"
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
-          echo "detected: mode=$mode id=$id"
+          echo "claim=${claim:-no}" >> "$GITHUB_OUTPUT"
+          echo "qa=${qa:-no}" >> "$GITHUB_OUTPUT"
+          echo "detected: mode=$mode id=$id claim=${claim:-no} qa=${qa:-no}"
 
-      - name: Guard — no lock, no pending transaction
+      - name: Recover first — resume pending transaction, clear stale lock
         if: steps.detect.outputs.mode == 'publish'
         run: |
-          test ! -f docs/state/blog-factory.lock \
-            || { echo "::error::lock present — run: node tools/blog-factory.mjs unlock"; exit 1; }
+          if [ -f docs/state/blog-factory.transaction.json ]; then
+            echo "pending transaction found — resuming BEFORE any new article"
+            node tools/blog-factory.mjs resume
+          fi
+          if [ -f docs/state/blog-factory.lock ]; then
+            echo "stale lock found (runs are serialized; locks are never committed) — removing"
+            node tools/blog-factory.mjs unlock
+          fi
           test ! -f docs/state/blog-factory.transaction.json \
-            || { echo "::error::pending transaction — run: node tools/blog-factory.mjs resume"; exit 1; }
+            || { echo "::error::transaction marker still present after resume"; exit 1; }
 
       - name: Lock the cycle (single writer)
         if: steps.detect.outputs.mode == 'publish'
         run: node tools/blog-factory.mjs lock
 
+      - name: Prepare — auto-claim the exact article (PLANNED -> QA)
+        if: steps.detect.outputs.mode == 'publish' && steps.detect.outputs.claim == 'yes'
+        run: node tools/blog-factory.mjs prepare ${{ steps.detect.outputs.id }}
+
       - name: Scoped QA (deterministic PASS/FAIL for the exact 1 article)
-        if: steps.detect.outputs.mode == 'publish'
+        if: steps.detect.outputs.mode == 'publish' && steps.detect.outputs.qa == 'yes'
         run: node tools/blog-factory.mjs qa ${{ steps.detect.outputs.id }}
 
       - name: Publish transaction (build + verify consistency)
@@ -111,6 +137,9 @@ jobs:
             git add docs/state/blog-factory.checkpoint.json
           fi
           git reset -q -- docs/state/blog-factory.lock docs/state/blog-factory.transaction.json 2>/dev/null || true
+          # Never stage the writer source (article body files or the
+          # manifest) — the push that triggered this run stays untouched
+          # and the derived commit cannot re-trigger this workflow.
           if git diff --cached --quiet; then
             echo "no derived changes to commit"
           else

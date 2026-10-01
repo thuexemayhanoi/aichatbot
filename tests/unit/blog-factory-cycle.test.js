@@ -4,7 +4,7 @@ import { existsSync, writeFileSync, rmSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  repoSandbox, factory, selectCli, installFixture, fixtureBody, readJson, readMatrix, matrixRow, REPO
+  repoSandbox, factory, selectCli, installFixture, fixtureBody, readJson, readMatrix, matrixRow, setStatus, REPO
 } from '../helpers/factory-sandbox.mjs';
 
 /**
@@ -99,6 +99,9 @@ test('select: push detection — exactly 1 article file maps to exactly 1 publis
   const out = selectCli(dir, ['--files', '/tmp/motoai-select-one.txt']);
   assert.match(out, /mode=publish/);
   assert.match(out, new RegExp(`id=${id}`));
+  // already-QA row: the workflow must NOT re-claim, but scoped QA re-runs
+  assert.match(out, /claim=no/);
+  assert.match(out, /qa=yes/);
 });
 
 test('select: push touching two article files is REFUSED (1 article / cycle)', () => {
@@ -129,14 +132,35 @@ test('select: non-article pushes and published-row edits skip cleanly', () => {
   assert.match(out, /mode=skip/);
 });
 
-test('select: PLANNED/WRITING rows with a pushed file are refused (claim+finish first)', () => {
+test('select: v65 continuous contract — a PLANNED row with a valid draft push AUTO-CLAIMS', () => {
+  const dir = repoSandbox();
+  // Writer push = body + manifest draft entry, matrix row still PLANNED.
+  const row = matrixRow(dir, 'BA-0002');
+  const id = installFixture(dir, { ...BASE, body: fixtureBody(), rowId: 'BA-0002', status: 'PLANNED' });
+  assert.equal(id, 'BA-0002');
+  writeFileSync('/tmp/motoai-select-planned.txt', `data/blog/articles/${row.slug}.body.html\n`);
+  const out = selectCli(dir, ['--files', '/tmp/motoai-select-planned.txt']);
+  assert.match(out, /mode=publish/);
+  assert.match(out, /id=BA-0002/);
+  assert.match(out, /claim=yes/, 'workflow must auto-claim the PLANNED row (prepare)');
+  assert.match(out, /qa=yes/);
+
+  // A WRITING row (legacy push) auto-claims too — finish brings it to QA.
+  setStatus(dir, 'BA-0002', 'WRITING');
+  const out2 = selectCli(dir, ['--files', '/tmp/motoai-select-planned.txt']);
+  assert.match(out2, /mode=publish/);
+  assert.match(out2, /claim=yes/);
+});
+
+test('select: a body without a manifest draft entry is REFUSED', () => {
   const dir = repoSandbox();
   const row = matrixRow(dir, 'BA-0002');
   writeFileSync(join(dir, 'data/blog/articles', `${row.slug}.body.html`), fixtureBody());
-  writeFileSync('/tmp/motoai-select-planned.txt', `data/blog/articles/${row.slug}.body.html\n`);
-  const out = selectCli(dir, ['--files', '/tmp/motoai-select-planned.txt'], true);
+  writeFileSync('/tmp/motoai-select-nomanifest.txt', `data/blog/articles/${row.slug}.body.html\n`);
+  const out = selectCli(dir, ['--files', '/tmp/motoai-select-nomanifest.txt'], true);
   assert.ok(out.fail);
-  assert.match(out.out, /claim BA-0002/);
+  assert.match(out.out, /mode=refuse/);
+  assert.match(out.out, /no manifest draft entry/);
 });
 
 test('select: explicit --id validates the row state', () => {
@@ -147,6 +171,9 @@ test('select: explicit --id validates the row state', () => {
   assert.ok(refuse.fail, 'unknown id refuses');
   const skip = selectCli(dir, ['--id', 'BA-0001']);
   assert.match(skip, /mode=skip/, 'PUBLISHED row skips instead of republishing');
+  // PASS rows skip the scoped QA re-run (already deterministic-passed)
+  setStatus(dir, id, 'PASS');
+  assert.match(selectCli(dir, ['--id', id]), /qa=no/);
 });
 
 test('cycle: the real repo is untouched by every sandbox cycle', () => {

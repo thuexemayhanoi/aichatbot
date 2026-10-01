@@ -44,7 +44,7 @@ manifest.webmanifest     # PWA manifest (scope /aichatbot/)
 service-worker.js        # PWA offline shell (versioned caches, không precache model)
 integrations/            # WordPress plugin (loader mỏng) + Capacitor mobile wrapper foundation
 tests/                   # node --test: unit, integration, golden + multi-turn + distribution + blog
-docs/                    # LOCAL-AI, EMBED, ARCHITECTURE, COMPATIBILITY, WORKFLOW, TESTING, UI-UX, WORDPRESS, PWA, MOBILE, DISTRIBUTION, SEO-OWNERSHIP, BLOG, BLOG-FACTORY, ARTICLE-RULES, KNOWLEDGE-RETRIEVAL
+docs/                    # LOCAL-AI, EMBED, ARCHITECTURE, COMPATIBILITY, WORKFLOW, TESTING, UI-UX, WORDPRESS, PWA, MOBILE, DISTRIBUTION, SEO-OWNERSHIP, BLOG, BLOG-FACTORY, CONTINUOUS-WRITER, ARTICLE-RULES, KNOWLEDGE-RETRIEVAL
 docs/matrix/             # Master Matrix (260 tasks, BOT-0001..BOT-0260) + test matrix
 docs/state/active-work.json  # checkpoint/lock cho các scheduled run
 reports/                 # evidence report theo từng run
@@ -145,7 +145,7 @@ Blog KHÔNG BAO GIỜ override giá/địa chỉ/điện thoại/giờ/cọc/ch�
 
 ## Ma trận 2.000 bài
 
-`data/blog/content-matrix.csv` — 2.000 dòng, 40 lô × 50, sinh bởi `node tools/gen-blog-matrix.mjs` (idempotent). Trạng thái `PLANNED`. KHÔNG mass-write trong run thường; chỉ qua `tools/blog-factory.mjs` theo scheduled run procedure trong `docs/BLOG-FACTORY.md`. Hiện có 2 bài pilot PUBLISHED (fixture, `notes=pilot/fixture`).
+`data/blog/content-matrix.csv` — 2.000 dòng, 40 lô × 50, sinh bởi `node tools/gen-blog-matrix.mjs` (idempotent). Trạng thái `PLANNED`. KHÔNG mass-write trong run thường; chỉ qua `tools/blog-factory.mjs` theo scheduled run procedure trong `docs/BLOG-FACTORY.md` + hợp đồng continuous trong `docs/CONTINUOUS-WRITER.md`. Hiện có 2 bài pilot PUBLISHED (fixture, `notes=pilot/fixture`).
 
 ## Công cụ
 
@@ -156,10 +156,13 @@ node tools/build-blog.mjs                  # dựng blog + indexes + sitemap
 node tools/blog-factory.mjs validate       # QA ma trận
 node tools/blog-factory.mjs claim [BA-id]  # nhận ĐÚNG 1 dòng PLANNED -> WRITING (cần lock)
 node tools/blog-factory.mjs finish BA-xxxx # WRITING -> QA
+node tools/blog-factory.mjs prepare BA-xxxx # auto-claim PLANNED/WRITING -> QA (workflow dùng lệnh này)
 node tools/blog-factory.mjs qa BA-xxxx     # scoped QA deterministic (PASS/FAIL)
 node tools/blog-factory.mjs publish BA-xxxx# publish 1 bài (transaction)
 node tools/blog-factory.mjs resume         # phục hồi transaction đứt quãng
 ```
+
+Writer production (continuous, 1 bài/cycle): viết body + manifest draft entry → local scoped QA → push; `blog-factory-publish.yml` tự detect đúng bài, auto-claim, scoped QA, publish, verify và commit derived state. Chi tiết: `docs/CONTINUOUS-WRITER.md`. Article-only push không chạy full chatbot CI (`ci.yml`/`distribution.yml` bỏ qua qua `paths-ignore`); engine/tool/workflow changes vẫn chạy full suite.
 
 ## Homepage (v47.1 — chatbot-first)
 

@@ -317,6 +317,33 @@ function qa(id, now) {
   }
 }
 
+/**
+ * v65 continuous-ready prepare — the state transitions the writer no longer
+ * performs by hand. Idempotent, lock required, driven by the publish
+ * workflow after factory-select picks the exact article:
+ *   PLANNED -> claim exact id -> finish -> QA
+ *   WRITING -> finish -> QA
+ *   QA/REVIEW/REPAIR/PASS -> no-op (resume/QA/publish continue from there)
+ * Any other status refuses (human review).
+ */
+function prepare(id) {
+  if (!id || !/^BA-\d{4}$/.test(id)) { console.error('prepare <BA-id>'); process.exit(1); }
+  if (!existsSync(LOCK)) { console.error('refusing to prepare without the run lock'); process.exit(1); }
+  const row = parseMatrix().find((r) => r.article_id === id);
+  if (!row) { console.error(`unknown matrix id ${id}`); process.exit(1); }
+  if (row.status === 'PLANNED') {
+    claim(id);
+    finish(id);
+  } else if (row.status === 'WRITING') {
+    finish(id);
+  } else if (['QA', 'REVIEW', 'REPAIR', 'PASS'].includes(row.status)) {
+    console.log(`prepare: ${id} already at ${row.status}`);
+  } else {
+    console.error(`refuse: ${id} status is ${row.status} — needs human review`);
+    process.exit(1);
+  }
+}
+
 /** abandon-chunk: return still-WRITING rows to PLANNED after a crashed run. */
 function abandonChunk(ids) {
   const want = ids ? new Set(ids.split(',').map((s) => s.trim()).filter(Boolean)) : null;
@@ -368,9 +395,10 @@ if (isCli) {
     case 'finish': finish(arg); break;
     case 'finish-chunk': finishChunk(arg); break;
     case 'qa': qa(arg, now); break;
+    case 'prepare': prepare(arg); break;
     case 'abandon-chunk': abandonChunk(arg); break;
     case 'checkpoint': showCheckpoint(); break;
     default:
-      console.log('usage: blog-factory.mjs status | validate | lock | unlock | claim [BA-id] | finish <BA-id> | qa <BA-id> | publish <BA-id> | resume | abandon-chunk [ids|all] | checkpoint');
+      console.log('usage: blog-factory.mjs status | validate | lock | unlock | claim [BA-id] | finish <BA-id> | prepare <BA-id> | qa <BA-id> | publish <BA-id> | resume | abandon-chunk [ids|all] | checkpoint');
   }
 }
