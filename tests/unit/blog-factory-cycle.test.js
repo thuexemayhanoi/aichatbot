@@ -93,18 +93,18 @@ test('cycle: second run claims the NEXT PLANNED article — never a duplicate', 
 
 test('select: push detection — exactly 1 article file maps to exactly 1 publish id', () => {
   const dir = repoSandbox();
-  const id = installFixture(dir, { ...BASE, body: fixtureBody() });
+  const id = installFixture(dir, { ...BASE, body: fixtureBody() }); // default status: QA
   writeFileSync('/tmp/motoai-select-one.txt',
     `data/blog/articles/${matrixRow(dir, id).slug}.body.html\n`);
   const out = selectCli(dir, ['--files', '/tmp/motoai-select-one.txt']);
-  assert.match(out, /mode=publish/);
-  assert.match(out, new RegExp(`id=${id}`));
+  assert.match(out, /mode=repair/);
+  assert.match(out, new RegExp(`ids=${id}`));
   // already-QA row: the workflow must NOT re-claim, but scoped QA re-runs
-  assert.match(out, /claim=no/);
-  assert.match(out, /qa=yes/);
+  assert.match(out, /claim_ids=$/m);
+  assert.match(out, new RegExp(`qa_ids=${id}`));
 });
 
-test('select: push touching two article files is REFUSED (1 article / cycle)', () => {
+test('select: push touching TWO article files selects BOTH (2-article micro batch)', () => {
   const dir = repoSandbox();
   const id1 = installFixture(dir, { ...BASE, body: fixtureBody() });
   const second = installFixture(dir, {
@@ -116,10 +116,11 @@ test('select: push touching two article files is REFUSED (1 article / cycle)', (
   const slugs = [matrixRow(dir, id1).slug, matrixRow(dir, second).slug];
   writeFileSync('/tmp/motoai-select-two.txt',
     slugs.map((s) => `data/blog/articles/${s}.body.html`).join('\n') + '\n');
-  const out = selectCli(dir, ['--files', '/tmp/motoai-select-two.txt'], true);
-  assert.ok(out.fail, 'more than one article per push must refuse');
-  assert.match(out.out, /mode=refuse/);
-  assert.match(out.out, /EXACTLY 1 article per cycle/);
+  const out = selectCli(dir, ['--files', '/tmp/motoai-select-two.txt']);
+  assert.match(out, /mode=repair/); // both fixtures default to QA rows
+  assert.match(out, new RegExp(`ids=${id1},${second}`));
+  assert.match(out, /claim_ids=$/m);
+  assert.match(out, new RegExp(`qa_ids=${id1},${second}`));
 });
 
 test('select: non-article pushes and published-row edits skip cleanly', () => {
@@ -132,7 +133,7 @@ test('select: non-article pushes and published-row edits skip cleanly', () => {
   assert.match(out, /mode=skip/);
 });
 
-test('select: v65 continuous contract — a PLANNED row with a valid draft push AUTO-CLAIMS', () => {
+test('select: v66 continuous contract — PLANNED rows with valid draft pushes AUTO-CLAIM', () => {
   const dir = repoSandbox();
   // Writer push = body + manifest draft entry, matrix row still PLANNED.
   const row = matrixRow(dir, 'BA-0002');
@@ -140,16 +141,16 @@ test('select: v65 continuous contract — a PLANNED row with a valid draft push 
   assert.equal(id, 'BA-0002');
   writeFileSync('/tmp/motoai-select-planned.txt', `data/blog/articles/${row.slug}.body.html\n`);
   const out = selectCli(dir, ['--files', '/tmp/motoai-select-planned.txt']);
-  assert.match(out, /mode=publish/);
-  assert.match(out, /id=BA-0002/);
-  assert.match(out, /claim=yes/, 'workflow must auto-claim the PLANNED row (prepare)');
-  assert.match(out, /qa=yes/);
+  assert.match(out, /mode=new/);
+  assert.match(out, /ids=BA-0002/);
+  assert.match(out, /claim_ids=BA-0002/, 'workflow must auto-claim the PLANNED row (prepare-chunk)');
+  assert.match(out, /qa_ids=BA-0002/);
 
   // A WRITING row (legacy push) auto-claims too — finish brings it to QA.
   setStatus(dir, 'BA-0002', 'WRITING');
   const out2 = selectCli(dir, ['--files', '/tmp/motoai-select-planned.txt']);
-  assert.match(out2, /mode=publish/);
-  assert.match(out2, /claim=yes/);
+  assert.match(out2, /mode=new/);
+  assert.match(out2, /claim_ids=BA-0002/);
 });
 
 test('select: a body without a manifest draft entry is REFUSED', () => {
@@ -166,14 +167,16 @@ test('select: a body without a manifest draft entry is REFUSED', () => {
 test('select: explicit --id validates the row state', () => {
   const dir = repoSandbox();
   const id = installFixture(dir, { ...BASE, body: fixtureBody() });
-  assert.match(selectCli(dir, ['--id', id]), new RegExp(`mode=publish\\nid=${id}`));
+  assert.match(selectCli(dir, ['--id', id]), new RegExp(`mode=repair\\nproceed=true\\nids=${id}`));
   const refuse = selectCli(dir, ['--id', 'BA-9999'], true);
   assert.ok(refuse.fail, 'unknown id refuses');
   const skip = selectCli(dir, ['--id', 'BA-0001']);
   assert.match(skip, /mode=skip/, 'PUBLISHED row skips instead of republishing');
   // PASS rows skip the scoped QA re-run (already deterministic-passed)
   setStatus(dir, id, 'PASS');
-  assert.match(selectCli(dir, ['--id', id]), /qa=no/);
+  const passOut = selectCli(dir, ['--id', id]);
+  assert.match(passOut, /qa_ids=$/m);
+  assert.match(passOut, new RegExp(`ready_ids=${id}`));
 });
 
 test('cycle: the real repo is untouched by every sandbox cycle', () => {

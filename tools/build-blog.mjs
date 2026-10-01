@@ -657,8 +657,15 @@ function matrixRows() {
 export function build() {
   const business = JSON.parse(read('data/business/business.json'));
   const manifest = JSON.parse(read('data/blog/published.json'));
-  const published = manifest.articles;
   const matrix = matrixRows();
+  // v66 chunk contract: the MATRIX decides what is published — a manifest
+  // draft whose row is not PUBLISHED yet (QA/REVIEW/REPAIR in-flight draft of
+  // a chunk, or a backlog draft from a dead workflow) must NOT be built,
+  // indexed or matrix-synced by this build. The factory marks rows
+  // PUBLISHED before calling build(), so this changes nothing for the
+  // happy path.
+  const published = manifest.articles
+    .filter((a) => matrix[a.article_id]?.status === 'PUBLISHED');
   const updated = published.reduce((m, a) => a.published_date > m ? a.published_date : m, '2026-09-26');
 
   buildHome(published);

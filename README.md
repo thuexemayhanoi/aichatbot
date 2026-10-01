@@ -50,7 +50,7 @@ docs/state/active-work.json  # checkpoint/lock cho các scheduled run
 reports/                 # evidence report theo từng run
 tools/gen-matrix.mjs     # tái tạo Master Matrix (idempotent)
 .github/workflows/ci.yml # CI: full tests + secret scan + bundle guard
-.github/workflows/blog-factory-publish.yml # micro loop publish: đúng 1 bài/cycle (scoped QA + transaction + derived state)
+.github/workflows/blog-factory-publish.yml # micro batch publish: 2 bài/chunk (scoped QA + grouped transaction + 1 derived commit)
 ```
 
 LLM **tùy chọn hoàn toàn** — không có API key, không backend, không paid inference; mọi tính năng cơ bản (rules, NLU, BM25, recommendation, calculator, context) chạy không cần LLM. Lớp semantic cũng là local-first: model embedding tải từ CDN tĩnh, chạy WASM trong trình duyệt, chỉ warm-up SAU lượt chat đầu tiên, fail thì BM25 vẫn đầy đủ. Toàn bộ context memory nằm trong localStorage của người dùng (nút 🧹 để xoá).
@@ -162,7 +162,7 @@ node tools/blog-factory.mjs publish BA-xxxx# publish 1 bài (transaction)
 node tools/blog-factory.mjs resume         # phục hồi transaction đứt quãng
 ```
 
-Writer production (continuous, 1 bài/cycle): viết body + manifest draft entry → local scoped QA → push; `blog-factory-publish.yml` tự detect đúng bài, auto-claim, scoped QA, publish, verify và commit derived state. Chi tiết: `docs/CONTINUOUS-WRITER.md`. Article-only push không chạy full chatbot CI (`ci.yml`/`distribution.yml` bỏ qua qua `paths-ignore`); engine/tool/workflow changes vẫn chạy full suite.
+Writer production (continuous, 2 bài/chunk): viết 2 bodies + 2 manifest draft entries → local scoped QA từng bài → push; `blog-factory-publish.yml` tự detect đúng các bài, auto-claim, scoped QA, grouped publish (1 build/chunk), verify và commit derived state. Chi tiết: `docs/CONTINUOUS-WRITER.md`. Article-only push không chạy full chatbot CI (`ci.yml`/`distribution.yml` bỏ qua qua `paths-ignore`); engine/tool/workflow changes vẫn chạy full suite.
 
 ## Homepage (v47.1 — chatbot-first)
 
@@ -186,7 +186,7 @@ Homepage không tải: metadata 2.000 bài, full blog index, model embedding, mo
 Khi được yêu cầu rõ ràng, run theo LIGHTWEIGHT MICRO LOOP — 1 BÀI / CYCLE (v64):
 
 ```
-Đọc README → docs/BLOG-FACTORY.md (procedure) → lock → claim đúng 1 PLANNED
+Đọc README → docs/BLOG-FACTORY.md (procedure) → lock → claim đúng các bài theo hợp đồng chunk
 → viết đúng 1 bài (body + manifest draft) → finish → push
 → blog-factory-publish.yml: scoped QA → publish transaction → rebuild + verify
 → commit derived state → clean txn/lock → xanh

@@ -2,8 +2,11 @@
 /**
  * Blog content factory — resumable, transactional publish pipeline.
  *
- * v64 LIGHTWEIGHT MICRO LOOP: production contract = 1 ARTICLE / CYCLE.
- * (v58 chunk contract `claim <=10` is retired.)
+ * v66 TWO-ARTICLE MICRO BATCH: canonical writer chunk = 2 ARTICLES
+ * (docs/CONTINUOUS-WRITER.md), mirroring /vanchinh. The workflow ceiling is
+ * 50 ids per run; production uses chunks of 2 (1 allowed at a corpus
+ * boundary). The chunk contract (v58 claim <=10) stays retired — chunks are
+ * EXPLICIT id lists, never blind numeric claims.
  *
  * State machine per article (data/blog/content-matrix.csv `status`):
  *   PLANNED -> WRITING -> QA -> PASS -> PUBLISHED
@@ -19,12 +22,19 @@
  *   node tools/blog-factory.mjs claim [BA-id]   (EXACTLY 1 article: next PLANNED, or the given id)
  *   node tools/blog-factory.mjs finish <BA-id>  (WRITING -> QA; finish-chunk alias kept)
  *   node tools/blog-factory.mjs qa <BA-id>      (scoped deterministic QA: PASS or REVIEW/BLOCKED)
- *   node tools/blog-factory.mjs publish <BA-id> (single-article transaction)
- *   node tools/blog-factory.mjs resume          (recover an interrupted publish)
+ *   node tools/blog-factory.mjs prepare <BA-id>        (single-article auto-claim, v65 semantics)
+ *   node tools/blog-factory.mjs prepare-chunk <id,...> (multi-id prepare: PLANNED/WRITING -> QA)
+ *   node tools/blog-factory.mjs qa-chunk <id,...>      (multi-id scoped QA, independent results)
+ *   node tools/blog-factory.mjs publish <BA-id>        (single-article transaction; alias of publish-chunk)
+ *   node tools/blog-factory.mjs publish-chunk <id,...> (GROUPED transactional publish: ONE build for the whole chunk)
+ *   node tools/blog-factory.mjs resume          (recover an interrupted transaction — single or chunk)
  *   node tools/blog-factory.mjs abandon-chunk   (crash recovery: WRITING -> PLANNED)
  *   node tools/blog-factory.mjs checkpoint
  *
- * Transaction semantics: marker -> write -> verify consistency -> clear marker.
+ * Transaction semantics: marker (exact id list) -> write -> verify
+ * consistency -> clear marker. publish-chunk NEVER calls build() per
+ * article: the whole chunk is ONE build + ONE verify pass + ONE checkpoint
+ * update, so 2 PASS articles cost exactly one site rebuild (build_calls=1).
  * Never depends on chat/session memory; state lives in the repo files only.
  * QA is deterministic PASS/FAIL (tools/article-qa.mjs) — this repo has no
  * article-level numeric score, so none is invented here.
@@ -47,6 +57,39 @@ const CHECKPOINT = join(ROOT, 'docs/state/blog-factory.checkpoint.json');
 
 const read = (p) => readFileSync(p, 'utf8');
 const write = (p, s) => writeFileSync(p, s, 'utf8');
+
+/**
+ * Build-call instrumentation: proves that a chunk publish rebuilds the site
+ * exactly ONCE (2 PASS articles = build_calls=1, never 2). Counted per
+ * process invocation; publish-chunk and resume report it in their output.
+ */
+let buildCalls = 0;
+export function buildCallCount() { return buildCalls; }
+export function resetBuildCalls() { buildCalls = 0; }
+function buildOnce() {
+  build(); // regenerates pages, indexes, sitemap, matrix sync
+  buildCalls++;
+}
+
+/** Parse a comma-separated BA-id list: valid ids only, order preserved,
+ *  duplicates refused. Every chunk command goes through this gate. */
+function parseIds(raw) {
+  if (!raw || !raw.trim()) {
+    console.error('expected a comma-separated list of BA-ids'); process.exit(1);
+  }
+  const ids = raw.split(',').map((s) => s.trim()).filter(Boolean);
+  const seen = new Set();
+  for (const id of ids) {
+    if (!/^BA-\d{4}$/.test(id)) {
+      console.error(`invalid article id: ${id}`); process.exit(1);
+    }
+    if (seen.has(id)) {
+      console.error(`duplicate article id in chunk: ${id}`); process.exit(1);
+    }
+    seen.add(id);
+  }
+  return ids;
+}
 
 /** Parse the matrix CSV into row objects (schema and order untouched). */
 export function parseMatrix() {
@@ -124,8 +167,14 @@ function report(line) {
   write(REPORT, prev + `- ${stamp} ${line}\n`);
 }
 
-function txWrite(id) {
-  write(TX, JSON.stringify({ article_id: id, phase: 'write', started: new Date().toISOString() }, null, 2));
+function txWrite(ids) {
+  write(TX, JSON.stringify({
+    article_ids: [...ids],
+    // legacy field kept so pre-v66 markers resume without migration
+    article_id: ids[0],
+    phase: 'write',
+    started: new Date().toISOString(),
+  }, null, 2));
 }
 
 function txPhase(phase) {
@@ -135,6 +184,12 @@ function txPhase(phase) {
 }
 
 function txClear() { if (existsSync(TX)) rmSync(TX); }
+
+/** Ids recorded in a pending transaction marker (chunk or legacy single). */
+function txIds() {
+  const tx = JSON.parse(read(TX));
+  return tx.article_ids ?? [tx.article_id];
+}
 
 /** Checkpoint helpers (operational state only; the matrix is the source of truth). */
 function loadCheckpoint() {
@@ -146,75 +201,131 @@ function saveCheckpoint(cp) {
   write(CHECKPOINT, JSON.stringify(cp, null, 2) + '\n');
 }
 
-/** Publish one article: marker -> write -> verify -> clear marker. */
-function publish(id, now) {
-  const manifest = JSON.parse(read(MANIFEST));
-  const article = manifest.articles.find((a) => a.article_id === id);
-  if (!article) { console.error(`article ${id} not in data/blog/published.json`); process.exit(1); }
-  if (!existsSync(join(ROOT, article.body))) { console.error(`body partial missing: ${article.body}`); process.exit(1); }
-  const rows = parseMatrix();
-  const row = rows.find((r) => r.article_id === id);
-  if (!row) { console.error(`unknown matrix id ${id}`); process.exit(1); }
-  if (!['PASS', 'PUBLISHED'].includes(row.status)) {
-    console.error(`refuse: ${id} status is ${row.status} (only PASS may publish)`);
-    process.exit(1);
-  }
+/** Page-level verify of ONE published article (same gates as v64). */
+function verifyArticle(row) {
+  const pagePath = join(ROOT, row.output_path);
+  const okPage = existsSync(pagePath);
+  const fresh = parseMatrix().find((r) => r.article_id === row.article_id);
+  const okMatrix = fresh?.status === 'PUBLISHED';
+  const sitemap = read(join(ROOT, 'sitemap.xml'));
+  const okSitemap = sitemap.includes(row.output_path.replace(/index\.html$/, ''));
+  // v64 page-level verify: self-canonical + Article/BreadcrumbList schema + one H1.
+  const page = okPage ? read(pagePath) : '';
+  const expectedUrl = SITE + row.output_path.replace(/index\.html$/, '');
+  const canonical = (page.match(/<link rel="canonical" href="([^"]*)"/) || [])[1] || '';
+  const okCanonical = canonical === expectedUrl;
+  const okSchema = /"@type":\s*"Article"/.test(page) && /"@type":\s*"BreadcrumbList"/.test(page);
+  const okH1 = (page.match(/<h1\b/g) || []).length === 1;
+  return {
+    ok: okPage && okMatrix && okSitemap && okCanonical && okSchema && okH1,
+    detail: `page=${okPage} matrix=${okMatrix} sitemap=${okSitemap} canonical=${okCanonical} schema=${okSchema} h1=${okH1}`,
+  };
+}
 
-  txWrite(id);
+/**
+ * GROUPED transactional publish (v66) — the whole chunk is ONE transaction:
+ *   marker(exact PASS ids) -> mark all PUBLISHED -> build() ONCE
+ *   -> verify EVERY article -> clear marker -> checkpoint ONCE -> report ONCE.
+ * Never calls build() per article: 2 PASS articles = build_calls=1.
+ * If any step fails the marker is retained — `resume` re-drives the exact
+ * same id list deterministically.
+ */
+function publishChunk(ids, now) {
+  const manifest = JSON.parse(read(MANIFEST));
+  const rows = parseMatrix();
+  const targets = [];
+  for (const id of ids) {
+    const article = manifest.articles.find((a) => a.article_id === id);
+    if (!article) { console.error(`article ${id} not in data/blog/published.json`); process.exit(1); }
+    if (!existsSync(join(ROOT, article.body))) { console.error(`body partial missing: ${article.body}`); process.exit(1); }
+    const row = rows.find((r) => r.article_id === id);
+    if (!row) { console.error(`unknown matrix id ${id}`); process.exit(1); }
+    if (row.status === 'PUBLISHED') {
+      console.log(`skip: ${id} already PUBLISHED`);
+      continue;
+    }
+    if (row.status !== 'PASS') {
+      console.error(`refuse: ${id} status is ${row.status} (only PASS may publish)`);
+      process.exit(1);
+    }
+    targets.push({ row, article });
+  }
+  if (targets.length === 0) { console.log('nothing to publish'); return; }
+
+  txWrite(targets.map((t) => t.row.article_id));
   try {
-    setRowStatus(id, 'PUBLISHED', { published_date: article.published_date, last_checked: now });
+    for (const { row, article } of targets) {
+      setRowStatus(row.article_id, 'PUBLISHED', { published_date: article.published_date, last_checked: now });
+    }
     txPhase('build');
-    build(); // regenerates pages, indexes, sitemap, matrix sync
+    buildOnce(); // ONE rebuild for the whole chunk — never per article
     txPhase('verify');
-    const pagePath = join(ROOT, row.output_path);
-    const okPage = existsSync(pagePath);
-    const fresh = parseMatrix().find((r) => r.article_id === id);
-    const okMatrix = fresh.status === 'PUBLISHED';
-    const sitemap = read(join(ROOT, 'sitemap.xml'));
-    const okSitemap = sitemap.includes(row.output_path.replace(/index\.html$/, ''));
-    // v64 page-level verify: self-canonical + Article/BreadcrumbList schema + one H1.
-    const page = okPage ? read(pagePath) : '';
-    const expectedUrl = SITE + row.output_path.replace(/index\.html$/, '');
-    const canonical = (page.match(/<link rel="canonical" href="([^"]*)"/) || [])[1] || '';
-    const okCanonical = canonical === expectedUrl;
-    const okSchema = /"@type":\s*"Article"/.test(page) && /"@type":\s*"BreadcrumbList"/.test(page);
-    const okH1 = (page.match(/<h1\b/g) || []).length === 1;
-    if (!(okPage && okMatrix && okSitemap && okCanonical && okSchema && okH1)) {
-      throw new Error(`verify failed: page=${okPage} matrix=${okMatrix} sitemap=${okSitemap} canonical=${okCanonical} schema=${okSchema} h1=${okH1}`);
+    for (const { row } of targets) {
+      const v = verifyArticle(row);
+      if (!v.ok) throw new Error(`verify failed for ${row.article_id}: ${v.detail}`);
     }
     txClear();
     const cp = loadCheckpoint();
-    cp.finished = (cp.finished ?? []).filter((x) => x !== id);
-    cp.claimed = (cp.claimed ?? []).filter((x) => x !== id);
-    saveCheckpoint(cp);
-    report(`PUBLISHED ${id} (${article.slug}) — page, matrix, indexes, sitemap consistent`);
-    console.log(`published ${id} -> ${row.output_path}`);
+    const done = new Set(targets.map((t) => t.row.article_id));
+    cp.finished = (cp.finished ?? []).filter((x) => !done.has(x));
+    cp.claimed = (cp.claimed ?? []).filter((x) => !done.has(x));
+    saveCheckpoint(cp); // ONE checkpoint update for the whole chunk
+    const idList = targets.map((t) => t.row.article_id).join(', ');
+    report(`PUBLISHED ${targets.length} (${idList}) — one grouped build, pages, matrix, indexes, sitemap consistent`);
+    for (const { row } of targets) console.log(`published ${row.article_id} -> ${row.output_path}`);
+    console.log(`publish-chunk: ${targets.length} published (${idList}) — build_calls=${buildCalls}`);
   } catch (error) {
-    // Marker stays on disk: `resume` rebuilds from the manifest (source of truth).
+    // Marker stays on disk: `resume` re-drives the EXACT chunk from the marker.
     console.error('transaction failed, marker retained for resume:', error.message);
     process.exit(1);
   }
 }
 
-/** Resume: rebuild everything from the manifest and clear a stale marker. */
+/** Single-article publish kept for backward compatibility (one grouped call). */
+function publish(id, now) {
+  if (!id || !/^BA-\d{4}$/.test(id)) { console.error('publish <BA-id>'); process.exit(1); }
+  publishChunk([id], now);
+}
+
+/**
+ * Resume an interrupted transaction — single (legacy marker) or chunk.
+ * Deterministic full-chunk recovery: the marker carries the exact ids, so
+ * resume re-marks any still-PASS rows PUBLISHED (crash before the matrix
+ * write), rebuilds ONCE, verifies EVERY id, and only then clears the marker
+ * and updates the checkpoint once.
+ */
 function resume(now) {
   if (!existsSync(TX)) { console.log('no transaction marker — nothing to resume'); return; }
-  const tx = JSON.parse(read(TX));
-  build();
-  const row = parseMatrix().find((r) => r.article_id === tx.article_id);
-  if (row?.status === 'PUBLISHED' && existsSync(join(ROOT, row.output_path))) {
-    txClear();
-    const cp = loadCheckpoint();
-    cp.finished = (cp.finished ?? []).filter((x) => x !== tx.article_id);
-    cp.claimed = (cp.claimed ?? []).filter((x) => x !== tx.article_id);
-    saveCheckpoint(cp);
-    report(`RESUMED ${tx.article_id} — rebuild verified, marker cleared`);
-    console.log(`resumed ${tx.article_id} OK`);
-  } else {
-    console.error('resume verify failed — marker retained');
-    process.exit(1);
+  const ids = txIds();
+  const rows = parseMatrix();
+  for (const id of ids) {
+    const row = rows.find((r) => r.article_id === id);
+    if (!row) { console.error(`resume: unknown matrix id ${id} in transaction marker`); process.exit(1); }
+    if (row.status === 'PASS') {
+      // Crash happened before the matrix write — re-drive this exact row.
+      const article = JSON.parse(read(MANIFEST)).articles.find((a) => a.article_id === id);
+      setRowStatus(id, 'PUBLISHED', { published_date: article?.published_date, last_checked: now });
+    }
   }
-  void now;
+  buildOnce();
+  const fresh = parseMatrix();
+  for (const id of ids) {
+    const row = fresh.find((r) => r.article_id === id);
+    const v = row ? verifyArticle(row) : { ok: false, detail: 'row missing' };
+    if (!v.ok) {
+      console.error(`resume verify failed for ${id}: ${v.detail} — marker retained`);
+      process.exit(1);
+    }
+  }
+  txClear();
+  const cp = loadCheckpoint();
+  const done = new Set(ids);
+  cp.finished = (cp.finished ?? []).filter((x) => !done.has(x));
+  cp.claimed = (cp.claimed ?? []).filter((x) => !done.has(x));
+  saveCheckpoint(cp);
+  const idList = ids.join(', ');
+  report(`RESUMED ${ids.length} (${idList}) — rebuild verified, marker cleared`);
+  console.log(`resumed ${idList} OK — build_calls=${buildCalls}`);
 }
 
 /**
@@ -227,13 +338,13 @@ function resume(now) {
 function claim(argId) {
   if (!existsSync(LOCK)) { console.error('refusing to claim without the run lock'); process.exit(1); }
   if (argId && /^\d+$/.test(argId)) {
-    console.error('chunk claiming removed (v64): production is 1 article / cycle — pass a BA-id or omit the argument');
+    console.error('numeric chunk claiming removed: pass a BA-id or omit the argument (writer chunks use prepare-chunk with explicit ids)');
     process.exit(1);
   }
   const rows = parseMatrix();
   const inFlight = rows.find((r) => r.status === 'WRITING');
   if (inFlight) {
-    console.error(`refuse: ${inFlight.article_id} is already WRITING — finish or abandon-chunk it first (1 article / cycle)`);
+    console.error(`refuse: ${inFlight.article_id} is already WRITING — finish or abandon-chunk it first (claim is single-flight)`);
     process.exit(1);
   }
   let row;
@@ -281,12 +392,12 @@ function finishChunk(ids) {
 }
 
 /**
- * Scoped QA for exactly one article (deterministic PASS/FAIL — no numeric
- * article score exists in this repo, so none is invented).
- * PASS -> status PASS; failure -> REVIEW (repair_attempts++, BLOCKED after 3).
+ * Scoped QA of ONE article (deterministic PASS/FAIL — no numeric article
+ * score exists in this repo, so none is invented). Performs the matrix
+ * transition (PASS, or REVIEW/BLOCKED on failure) and RETURNS the outcome
+ * so chunk callers can keep articles independent.
  */
-function qa(id, now) {
-  if (!id || !/^BA-\d{4}$/.test(id)) { console.error('qa <BA-id>'); process.exit(1); }
+function qaOne(id, now) {
   const rows = parseMatrix();
   const row = rows.find((r) => r.article_id === id);
   if (!row) { console.error(`unknown matrix id ${id}`); process.exit(1); }
@@ -302,19 +413,53 @@ function qa(id, now) {
     setRowStatus(id, 'PASS', { quality_status: 'PASS', last_checked: now });
     report(`QA PASS ${id}`);
     console.log(`QA PASS ${id} — ready to publish`);
-  } else {
-    const attempts = Number(row.repair_attempts || 0) + 1;
-    if (attempts > 3) {
-      setRowStatus(id, 'BLOCKED', { quality_status: 'FAIL', repair_attempts: attempts, last_checked: now });
-      report(`QA FAIL ${id} -> BLOCKED (repair overflow)`);
-      console.error(`QA FAIL ${id} -> BLOCKED (repair overflow): ${result.failures.join(', ')}`);
-    } else {
-      setRowStatus(id, 'REVIEW', { quality_status: 'FAIL', repair_attempts: attempts, last_checked: now });
-      report(`QA FAIL ${id} -> REVIEW (attempt ${attempts})`);
-      console.error(`QA FAIL ${id} -> REVIEW (attempt ${attempts}): ${result.failures.join(', ')}`);
-    }
-    process.exit(1);
+    return { pass: true };
   }
+  const attempts = Number(row.repair_attempts || 0) + 1;
+  if (attempts > 3) {
+    setRowStatus(id, 'BLOCKED', { quality_status: 'FAIL', repair_attempts: attempts, last_checked: now });
+    report(`QA FAIL ${id} -> BLOCKED (repair overflow)`);
+    console.error(`QA FAIL ${id} -> BLOCKED (repair overflow): ${result.failures.join(', ')}`);
+  } else {
+    setRowStatus(id, 'REVIEW', { quality_status: 'FAIL', repair_attempts: attempts, last_checked: now });
+    report(`QA FAIL ${id} -> REVIEW (attempt ${attempts})`);
+    console.error(`QA FAIL ${id} -> REVIEW (attempt ${attempts}): ${result.failures.join(', ')}`);
+  }
+  return { pass: false, attempts };
+}
+
+/** qa <BA-id> — single-article CLI (backward compatible: FAIL exits 1). */
+function qa(id, now) {
+  if (!id || !/^BA-\d{4}$/.test(id)) { console.error('qa <BA-id>'); process.exit(1); }
+  const r = qaOne(id, now);
+  if (!r.pass) process.exit(1);
+}
+
+/**
+ * qa-chunk <id,...> — multi-id scoped QA. Every article keeps an
+ * INDEPENDENT result: one bad article never corrupts the good one, PASS
+ * ids may publish while REVIEW/REPAIR ids stay for repair. QA thresholds
+ * are never lowered. Exit 0 when the chunk was processed (even with
+ * content failures — the workflow reads pass_ids/fail_ids); exit 1 only
+ * on usage/hard errors.
+ */
+function qaChunk(rawIds, now) {
+  const ids = parseIds(rawIds);
+  const pass = [];
+  const fail = [];
+  for (const id of ids) {
+    const status = parseMatrix().find((r) => r.article_id === id)?.status;
+    if (status === 'PASS') {
+      console.log(`skip: ${id} already PASS — publish without re-QA`);
+      pass.push(id);
+      continue;
+    }
+    const r = qaOne(id, now);
+    (r.pass ? pass : fail).push(id);
+  }
+  console.log(`qa-chunk: ${pass.length} pass, ${fail.length} fail`);
+  console.log(`pass_ids=${pass.join(',')}`);
+  console.log(`fail_ids=${fail.join(',')}`);
 }
 
 /**
@@ -342,6 +487,19 @@ function prepare(id) {
     console.error(`refuse: ${id} status is ${row.status} — needs human review`);
     process.exit(1);
   }
+}
+
+/**
+ * prepare-chunk <id,...> — deterministic multi-id prepare for the exact
+ * selection scope (v66). Idempotent per article, lock required, driven by
+ * the publish workflow. Each row is driven fully to QA before the next one
+ * so the single-flight WRITING invariant of `claim` is never violated.
+ */
+function prepareChunk(rawIds) {
+  const ids = parseIds(rawIds);
+  if (!existsSync(LOCK)) { console.error('refusing to prepare without the run lock'); process.exit(1); }
+  for (const id of ids) prepare(id);
+  console.log(`prepare-chunk: ${ids.length} row(s) at QA-or-later`);
 }
 
 /** abandon-chunk: return still-WRITING rows to PLANNED after a crashed run. */
@@ -390,15 +548,18 @@ if (isCli) {
     case 'lock': lock(now); break;
     case 'unlock': unlock(); break;
     case 'publish': publish(arg, now); break;
+    case 'publish-chunk': publishChunk(parseIds(arg), now); break;
     case 'resume': resume(now); break;
     case 'claim': claim(arg); break;
     case 'finish': finish(arg); break;
     case 'finish-chunk': finishChunk(arg); break;
     case 'qa': qa(arg, now); break;
+    case 'qa-chunk': qaChunk(arg, now); break;
     case 'prepare': prepare(arg); break;
+    case 'prepare-chunk': prepareChunk(arg); break;
     case 'abandon-chunk': abandonChunk(arg); break;
     case 'checkpoint': showCheckpoint(); break;
     default:
-      console.log('usage: blog-factory.mjs status | validate | lock | unlock | claim [BA-id] | finish <BA-id> | prepare <BA-id> | qa <BA-id> | publish <BA-id> | resume | abandon-chunk [ids|all] | checkpoint');
+      console.log('usage: blog-factory.mjs status | validate | lock | unlock | claim [BA-id] | finish <BA-id> | prepare <BA-id> | prepare-chunk <id,...> | qa <BA-id> | qa-chunk <id,...> | publish <BA-id> | publish-chunk <id,...> | resume | abandon-chunk [ids|all] | checkpoint');
   }
 }

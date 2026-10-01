@@ -137,24 +137,37 @@ export function firstPlanned(dir, category) {
  * (docs/ARTICLE-RULES.md: length follows search intent).
  * Paragraphs are indexed so no duplicate-paragraph/sentence check trips.
  * Contains only verified facts via {{ business.* }} placeholders.
+ * `tag` prefixes every block so TWO fixture articles in one sandbox chunk
+ * stay unique for the no-cross-article-duplicate QA gate (default: none,
+ * keeping the historical single-article output byte-identical).
  */
-export function fixtureBody({ paragraphs = 16 } = {}) {
+export function fixtureBody({ paragraphs = 16, tag = '' } = {}) {
   const aspects = ['chi phí', 'loại xe', 'thủ tục', 'thời gian', 'nhiên liệu',
     'tuyến đường', 'an toàn', 'bảo quản', 'khởi động', 'lưu giữ xe'];
+  // Tag EVERY sentence (not just the paragraph): the anti-duplicate
+  // fingerprints are sentence-level, so two tagged fixture articles in one
+  // chunk stay fully distinct.
+  const T = (s) => (tag ? `${tag} ${s}` : s);
   const out = [];
-  out.push('<h2>Tổng quan chi phí thuê xe</h2>');
-  out.push('<p>Bài này giúp bạn ước tính chi phí thuê trước khi liên hệ. Giờ mở cửa là {{ business.hours.display }} và số điện thoại đã xác minh là {{ business.contact.phone_display }}.</p>');
-  out.push('<ul><li>So sánh giá theo ngày, tuần và tháng</li><li>Kiểm tra tình trạng xe trước khi nhận</li><li>Xác nhận khoản phát sinh nếu trả xe trễ</li></ul>');
+  out.push(`<h2>${T('Tổng quan chi phí thuê xe')}</h2>`);
+  out.push(`<p>${T('Bài này giúp bạn ước tính chi phí thuê trước khi liên hệ.')} ${T('Giờ mở cửa là {{ business.hours.display }} và số điện thoại đã xác minh là {{ business.contact.phone_display }}.')}</p>`);
+  out.push(`<ul><li>${T('So sánh giá theo ngày, tuần và tháng')}</li><li>${T('Kiểm tra tình trạng xe trước khi nhận')}</li><li>${T('Xác nhận khoản phát sinh nếu trả xe trễ')}</li></ul>`);
   let n = 0;
   for (let p = 0; p < paragraphs; p++) {
     const a = aspects[p % aspects.length];
     n++;
     const s = (k) => `Lưu ý số ${n}.${k} về ${a}: khách nên kiểm tra kỹ trước khi quyết định thuê.`;
-    out.push(`<p>${s(1)} Mẹo ${n}a: giá thuê thay đổi theo mùa và theo loại xe nên bạn cần hỏi giá trực tiếp. ${s(2)} Mẹo ${n}b: với hành trình ngắn trong nội thành, chi phí thường thấp hơn so với hành trình dài. ${s(3)} Mẹo ${n}c: bạn nên chụp ảnh tình trạng xe để tránh tranh chấp khi trả xe.</p>`);
+    // Every QA fingerprint segment (text between ". " boundaries) starts with
+    // the tag, so tagged fixture articles share no paragraph/sentence keys.
+    out.push(`<p>${[
+      s(1), `Mẹo ${n}a: giá thuê thay đổi theo mùa và theo loại xe nên bạn cần hỏi giá trực tiếp.`,
+      s(2), `Mẹo ${n}b: với hành trình ngắn trong nội thành, chi phí thường thấp hơn so với hành trình dài.`,
+      s(3), `Mẹo ${n}c: bạn nên chụp ảnh tình trạng xe để tránh tranh chấp khi trả xe.`,
+    ].map(T).join(' ')}</p>`);
   }
-  out.push('<h2>Tiền cọc và các khoản cần xác nhận</h2>');
-  out.push('<p>Tiền cọc dao động từ 2.000.000đ đến 5.000.000đ tùy loại xe và mức cọc chính xác được xác nhận khi đặt xe. Bạn nên mang theo giấy tờ tùy thân và bằng lái phù hợp với dung tích xe.</p>');
-  out.push('<p>Bài viết này thuộc <a href="/aichatbot/blog/">cẩm nang thuê xe</a>, bạn có thể xem thêm trong <a href="/aichatbot/blog/thue-xe/">danh mục thuê xe</a> hoặc hỏi trực tiếp trên <a href="/aichatbot/">Agent</a> để tính chi phí cho hành trình cụ thể.</p>');
+  out.push(`<h2>${T('Tiền cọc và các khoản cần xác nhận')}</h2>`);
+  out.push(`<p>${T('Tiền cọc dao động từ 2.000.000đ đến 5.000.000đ tùy loại xe và mức cọc chính xác được xác nhận khi đặt xe.')} ${T('Bạn nên mang theo giấy tờ tùy thân và bằng lái phù hợp với dung tích xe.')}</p>`);
+  out.push(`<p>${T('Bài viết này thuộc')} <a href="/aichatbot/blog/">cẩm nang thuê xe</a>, ${T('bạn có thể xem thêm trong')} <a href="/aichatbot/blog/thue-xe/">danh mục thuê xe</a> ${T('hoặc hỏi trực tiếp trên')} <a href="/aichatbot/">Agent</a> ${T('để tính chi phí cho hành trình cụ thể.')}</p>`);
   return out.join('\n');
 }
 

@@ -67,12 +67,12 @@ test('factory: claim refuses non-PLANNED rows and unknown ids', () => {
   assert.ok(fail2.fail, 'claiming an unknown id must fail');
 });
 
-test('factory: numeric chunk sizes are refused (chunk contract retired)', () => {
+test('factory: numeric chunk sizes are refused (explicit-id chunks only)', () => {
   const dir = repoSandbox();
   factory(dir, ['lock']);
   const fail = factory(dir, ['claim', '10'], true);
-  assert.ok(fail.fail, 'claim 10 must fail under the 1-article/cycle contract');
-  assert.match(fail.msg, /1 article \/ cycle/);
+  assert.ok(fail.fail, 'claim 10 must fail: chunks are explicit id lists (prepare-chunk)');
+  assert.match(fail.msg, /prepare-chunk/);
   assert.equal(readMatrix(dir).filter((l) => l.split(',')[3] === 'WRITING').length, 0,
     'no row was mutated by the refused claim');
 });

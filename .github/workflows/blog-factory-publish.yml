@@ -1,22 +1,28 @@
-name: Blog Factory Publish (1 article / cycle)
+name: Blog Factory Publish (2-article micro batch)
 
-# v65 CONTINUOUS-READY publish pipeline (docs/CONTINUOUS-WRITER.md).
-# Deterministic, NO AI, NO API keys, NO secrets inside Actions. Exactly ONE
-# article per run. GitHub owns the state transitions so the writer's happy
-# path is just: write 1 article source + its manifest draft entry -> push.
+# v66 CONTINUOUS-READY publish pipeline (docs/CONTINUOUS-WRITER.md).
+# Deterministic, NO AI, NO API keys, NO secrets inside Actions. The writer's
+# canonical chunk = 2 ARTICLES per push (1 allowed at a corpus boundary);
+# the workflow ceiling is 50 ids per run, mirroring /vanchinh.
 #
-#   detect exact ID (tools/factory-select.mjs)
+#   derive the EXACT scope from the push (tools/factory-select.mjs)
+#     mode=new     : pushed bodies on PLANNED/WRITING rows (+ pending + backlog)
+#     mode=repair  : pushed/pending QA/REVIEW/REPAIR/PASS rows — never claims PLANNED
+#     mode=backlog : PLANNED rows whose body + manifest draft already exist
+#                    (an earlier workflow died) — discovered deterministically
 #   -> RECOVER first (resume any pending transaction, clear stale lock)
-#   -> lock -> prepare (auto-claim: PLANNED -> WRITING -> QA, no-op on QA/PASS)
-#   -> scoped QA (deterministic PASS/FAIL)
-#   -> publish transaction (build + verify) -> matrix smoke
-#   -> clean txn/lock -> commit derived state (single commit)
+#   -> lock -> prepare-chunk (auto-claim the exact ids: PLANNED -> QA)
+#   -> scoped QA per article (independent PASS/FAIL, qa-chunk)
+#   -> collect PASS ids -> ONE grouped transactional publish (ONE build
+#      for the whole chunk) -> verify EVERY article -> matrix smoke
+#   -> clean txn/lock -> ONE derived-state commit (single commit)
 #
 # Triggers:
 #   - push to main under data/blog/articles/** or data/blog/published.json
-#     (the writer's cycle commit: article body + manifest draft entry;
-#     the matrix is NOT part of a writer push anymore — the workflow owns it)
-#   - workflow_dispatch with an explicit BA-id (manual path)
+#     (the writer's chunk commit: 2 article bodies + their manifest draft
+#     entries; the matrix is NOT part of a writer push — the workflow owns it)
+#   - workflow_dispatch with explicit BA-ids (manual repair path), or with
+#     no ids (manual backlog scan)
 #
 # This workflow intentionally does NOT run the full chatbot test suite:
 # article-only production runs scoped QA + light matrix smoke. The full
@@ -28,12 +34,13 @@ name: Blog Factory Publish (1 article / cycle)
 # workflows, so publishing cannot loop this workflow.
 #
 # Refuse rules (tools/factory-select.mjs):
-#   - a push touching more than one article body -> REFUSE (1 article/cycle)
+#   - a push touching more than 50 article bodies -> REFUSE (ceiling)
 #   - a body without a matching manifest draft entry -> REFUSE
-#   - duplicate article_id in the manifest -> REFUSE
-#   - a draft for ANOTHER unfinished article pending -> REFUSE (resume first)
-#   - unknown slug / pushed run state -> REFUSE
+#   - duplicate article_id in the manifest / duplicate slug in the push -> REFUSE
+#   - unknown slug / pushed run state / published.json without a body -> REFUSE
+#   - FAIL/BLOCKED rows -> REFUSE (needs human review)
 #   - PUBLISHED-row edits -> SKIP (manual rebuild, never auto-rewritten)
+#   - unfinished resume/repair rows always win before new PLANNED work
 
 on:
   push:
@@ -41,8 +48,8 @@ on:
     paths: ['data/blog/articles/**', 'data/blog/published.json']
   workflow_dispatch:
     inputs:
-      article_id:
-        description: 'BA-id chính xác (vd BA-0002). Bỏ trống để tự detect từ lần push gần nhất.'
+      article_ids:
+        description: 'BA-ids chính xác, phân cách phẩy (vd BA-0002,BA-0003). Bỏ trống để quét backlog/pending.'
         required: false
         default: ''
 
@@ -65,31 +72,32 @@ jobs:
         with:
           node-version: 22
 
-      - name: Detect exact article (exactly 1 per cycle)
-        id: detect
+      - name: Select exact push scope (claim/qa/ready ids from the push diff)
+        id: select
         run: |
           set -e
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.article_id }}" ]; then
-            node tools/factory-select.mjs --id "${{ github.event.inputs.article_id }}" | tee /tmp/select.out
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.article_ids }}" ]; then
+            node tools/factory-select.mjs --ids "${{ github.event.inputs.article_ids }}" | tee /tmp/select.out
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            node tools/factory-select.mjs --backlog | tee /tmp/select.out
           else
             git diff --name-only --diff-filter=AM HEAD~1 HEAD > /tmp/changed.txt || true
             node tools/factory-select.mjs --files /tmp/changed.txt | tee /tmp/select.out
           fi
-          id=$(sed -n 's/^id=//p' /tmp/select.out)
-          mode=$(sed -n 's/^mode=//p' /tmp/select.out)
-          claim=$(sed -n 's/^claim=//p' /tmp/select.out)
-          qa=$(sed -n 's/^qa=//p' /tmp/select.out)
-          echo "id=$id" >> "$GITHUB_OUTPUT"
-          echo "mode=$mode" >> "$GITHUB_OUTPUT"
-          echo "claim=${claim:-no}" >> "$GITHUB_OUTPUT"
-          echo "qa=${qa:-no}" >> "$GITHUB_OUTPUT"
-          echo "detected: mode=$mode id=$id claim=${claim:-no} qa=${qa:-no}"
+          get() { sed -n "s/^$1=//p" /tmp/select.out; }
+          echo "proceed=$(get proceed)" >> "$GITHUB_OUTPUT"
+          echo "mode=$(get mode)" >> "$GITHUB_OUTPUT"
+          echo "ids=$(get ids)" >> "$GITHUB_OUTPUT"
+          echo "claim_ids=$(get claim_ids)" >> "$GITHUB_OUTPUT"
+          echo "qa_ids=$(get qa_ids)" >> "$GITHUB_OUTPUT"
+          echo "ready_ids=$(get ready_ids)" >> "$GITHUB_OUTPUT"
+          echo "selected: mode=$(get mode) proceed=$(get proceed) claim=$(get claim_ids) qa=$(get qa_ids) ready=$(get ready_ids)"
 
       - name: Recover first — resume pending transaction, clear stale lock
-        if: steps.detect.outputs.mode == 'publish'
+        if: steps.select.outputs.proceed == 'true'
         run: |
           if [ -f docs/state/blog-factory.transaction.json ]; then
-            echo "pending transaction found — resuming BEFORE any new article"
+            echo "pending transaction found — resuming BEFORE any new work"
             node tools/blog-factory.mjs resume
           fi
           if [ -f docs/state/blog-factory.lock ]; then
@@ -99,35 +107,48 @@ jobs:
           test ! -f docs/state/blog-factory.transaction.json \
             || { echo "::error::transaction marker still present after resume"; exit 1; }
 
-      - name: Lock the cycle (single writer)
-        if: steps.detect.outputs.mode == 'publish'
+      - name: Lock the run (single writer)
+        if: steps.select.outputs.proceed == 'true'
         run: node tools/blog-factory.mjs lock
 
-      - name: Prepare — auto-claim the exact article (PLANNED -> QA)
-        if: steps.detect.outputs.mode == 'publish' && steps.detect.outputs.claim == 'yes'
-        run: node tools/blog-factory.mjs prepare ${{ steps.detect.outputs.id }}
+      - name: Prepare chunk — auto-claim the exact ids (PLANNED -> QA)
+        if: steps.select.outputs.proceed == 'true' && steps.select.outputs.claim_ids != ''
+        run: node tools/blog-factory.mjs prepare-chunk ${{ steps.select.outputs.claim_ids }}
 
-      - name: Scoped QA (deterministic PASS/FAIL for the exact 1 article)
-        if: steps.detect.outputs.mode == 'publish' && steps.detect.outputs.qa == 'yes'
-        run: node tools/blog-factory.mjs qa ${{ steps.detect.outputs.id }}
+      - name: Scoped QA chunk (independent PASS/FAIL per article, no lowered thresholds)
+        if: steps.select.outputs.proceed == 'true' && steps.select.outputs.qa_ids != ''
+        run: |
+          node tools/blog-factory.mjs qa-chunk ${{ steps.select.outputs.qa_ids }} | tee /tmp/qa.out
+          PASS_IDS=$(sed -n 's/^pass_ids=//p' /tmp/qa.out)
+          FAIL_IDS=$(sed -n 's/^fail_ids=//p' /tmp/qa.out)
+          echo "qa pass=[$PASS_IDS] fail=[$FAIL_IDS]"
+          echo "PASS_IDS=$PASS_IDS" >> "$GITHUB_ENV"
+          echo "FAIL_IDS=$FAIL_IDS" >> "$GITHUB_ENV"
 
-      - name: Publish transaction (build + verify consistency)
-        if: steps.detect.outputs.mode == 'publish'
-        run: node tools/blog-factory.mjs publish ${{ steps.detect.outputs.id }}
+      - name: Collect publishable ids (QA PASS + already-PASS rows)
+        if: steps.select.outputs.proceed == 'true'
+        run: |
+          PUBLISH_IDS="$(echo "$PASS_IDS${PASS_IDS:+,}${{ steps.select.outputs.ready_ids }}" | sed 's/,,*/,/g; s/^,//; s/,$//')"
+          echo "PUBLISH_IDS=$PUBLISH_IDS" >> "$GITHUB_ENV"
+          if [ -n "$PUBLISH_IDS" ]; then echo "publishable: $PUBLISH_IDS"; else echo "no PASS rows — nothing to publish (REVIEW/REPAIR rows stay for repair)"; fi
+
+      - name: Grouped transactional publish — ONE build for the whole chunk
+        if: steps.select.outputs.proceed == 'true' && env.PUBLISH_IDS != ''
+        run: node tools/blog-factory.mjs publish-chunk $PUBLISH_IDS
 
       - name: Matrix smoke (rows, distribution, uniqueness)
-        if: steps.detect.outputs.mode == 'publish'
+        if: steps.select.outputs.proceed == 'true'
         run: node tools/blog-factory.mjs validate
 
       - name: Clean lock + assert no transaction marker
-        if: steps.detect.outputs.mode == 'publish'
+        if: steps.select.outputs.proceed == 'true'
         run: |
           node tools/blog-factory.mjs unlock
           test ! -f docs/state/blog-factory.transaction.json \
             || { echo "::error::transaction marker still present"; exit 1; }
 
       - name: Commit derived state (single commit; lock/txn never committed)
-        if: steps.detect.outputs.mode == 'publish'
+        if: steps.select.outputs.proceed == 'true'
         run: |
           git config user.name "motoai-bot"
           git config user.email "nguyentuantu2482@users.noreply.github.com"
@@ -143,6 +164,12 @@ jobs:
           if git diff --cached --quiet; then
             echo "no derived changes to commit"
           else
-            git commit -m "factory: publish ${{ steps.detect.outputs.id }} (1 article/cycle) [skip ci]"
+            git commit -m "factory: publish [${{ steps.select.outputs.ids }}] ${{ steps.select.outputs.mode }} chunk (2-article micro batch) [skip ci]"
             git push
           fi
+
+      - name: Report QA failures (REVIEW/REPAIR rows stay for repair)
+        if: steps.select.outputs.proceed == 'true' && env.FAIL_IDS != ''
+        run: |
+          echo "::error::QA failures recorded (rows stay in REVIEW for repair): $FAIL_IDS"
+          exit 1
