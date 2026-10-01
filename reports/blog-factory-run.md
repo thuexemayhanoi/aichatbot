@@ -91,3 +91,7 @@
 - 2026-10-01 FINISH BA-0028
 - 2026-10-01 QA PASS BA-0028
 - 2026-10-01 PUBLISHED BA-0028 (quy-trinh-tra-xe) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0029
+- 2026-10-01 FINISH BA-0029
+- 2026-10-01 QA PASS BA-0029
+- 2026-10-01 PUBLISHED BA-0029 (di-xe-khong-giay-phep) — page, matrix, indexes, sitemap consistent
