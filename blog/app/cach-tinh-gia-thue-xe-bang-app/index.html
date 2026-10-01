@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v63">
+  <title>Cách tính giá thuê xe bằng app: đọc đúng một báo giá</title>
+  <meta name="description" content="Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.">
+  <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/blog/app/cach-tinh-gia-thue-xe-bang-app/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Cách tính giá thuê xe bằng app: đọc đúng một báo giá">
+  <meta property="og:description" content="Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.">
+  <meta property="og:url" content="https://thuexemayhanoi.github.io/aichatbot/blog/app/cach-tinh-gia-thue-xe-bang-app/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cách tính giá thuê xe bằng app: đọc đúng một báo giá">
+  <meta name="twitter:description" content="Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=63">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=63">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/aichatbot/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/aichatbot/blog/">Cẩm nang</a>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/aichatbot/blog/cong-cu-huong-dan/" aria-haspopup="true" aria-current="page">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/app/" aria-current="page">📱 Ứng Dụng</a>
+            <a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/aichatbot/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-cach-tinh-gia-thue-xe-bang-app">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <a href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a> › <a href="/aichatbot/blog/app/">Ứng Dụng</a> › <a href="/aichatbot/blog/app/tinh-gia/">Tính Giá</a> › <span>Cách tính giá thuê xe bằng app: đọc đúng một báo giá</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/aichatbot/blog/app/">Ứng Dụng</a>
+        <a class="blog-chip" href="/aichatbot/blog/app/tinh-gia/">Tính Giá</a>
+        <a class="blog-chip blog-chip-parent" href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+      </p>
+      <p class="blog-screen-label">Ứng Dụng</p>
+      <h1 class="blog-screen-title">Cách tính giá thuê xe bằng app: đọc đúng một báo giá</h1>
+      <p class="blog-screen-lead">Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.</p>
+      <p class="byline">MotoAI Editorial · 2026-10-01 · Ứng Dụng · 9 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#ba-thanh-phan-cua-mot-bao-gia-thue-xe">Ba thành phần của một báo giá thuê xe</a></li>
+        <li class="toc-l2"><a href="#khung-thoi-gian-la-yeu-to-chi-phoi-don-gia-manh-nhat">Khung thời gian là yếu tố chi phối đơn giá mạnh nhất</a></li>
+        <li class="toc-l2"><a href="#dong-xe-va-thoi-diem-anh-huong-den-gia-the-nao">Dòng xe và thời điểm ảnh hưởng đến giá thế nào</a></li>
+        <li class="toc-l2"><a href="#cac-khoan-ngoai-gia-niem-yet-can-hoi-ro">Các khoản ngoài giá niêm yết cần hỏi rõ</a></li>
+        <li class="toc-l2"><a href="#checklist-doc-mot-bao-gia-truoc-khi-bam-nhan">Checklist đọc một báo giá trước khi bấm nhận</a></li>
+        <li class="toc-l2"><a href="#so-bao-gia-qua-app-voi-dat-truc-tiep">So báo giá qua app với đặt trực tiếp</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-ve-cach-tinh-gia-thue-xe-bang-app">Câu hỏi thường gặp về cách tính giá thuê xe bằng app</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#ba-thanh-phan-cua-mot-bao-gia-thue-xe">Ba thành phần của một báo giá thuê xe</a></li>
+        <li class="toc-l2"><a href="#khung-thoi-gian-la-yeu-to-chi-phoi-don-gia-manh-nhat">Khung thời gian là yếu tố chi phối đơn giá mạnh nhất</a></li>
+        <li class="toc-l2"><a href="#dong-xe-va-thoi-diem-anh-huong-den-gia-the-nao">Dòng xe và thời điểm ảnh hưởng đến giá thế nào</a></li>
+        <li class="toc-l2"><a href="#cac-khoan-ngoai-gia-niem-yet-can-hoi-ro">Các khoản ngoài giá niêm yết cần hỏi rõ</a></li>
+        <li class="toc-l2"><a href="#checklist-doc-mot-bao-gia-truoc-khi-bam-nhan">Checklist đọc một báo giá trước khi bấm nhận</a></li>
+        <li class="toc-l2"><a href="#so-bao-gia-qua-app-voi-dat-truc-tiep">So báo giá qua app với đặt trực tiếp</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-ve-cach-tinh-gia-thue-xe-bang-app">Câu hỏi thường gặp về cách tính giá thuê xe bằng app</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Trợ lý và ứng dụng thuê xe trả lời câu hỏi giá gần như ngay lập tức, nhưng một báo giá nhanh chỉ thực sự hữu ích khi bạn đọc hiểu được nó gồm những gì. Nhiều khách so sánh hai báo giá chỉ bằng con số tổng, rồi bất ngờ khi hóa đơn thực tế có thêm khoản mà mình không để ý lúc đặt. Bài viết này tách giá thuê xe tính bằng app thành từng thành phần, giải thích cái gì chi phối con số chính, và đưa ra checklist để bạn đọc một báo giá không bỏ sót khoản nào trước khi bấm nhận.</p>
+  
+  <h2 id="ba-thanh-phan-cua-mot-bao-gia-thue-xe">Ba thành phần của một báo giá thuê xe</h2>
+  <p>Một báo giá thuê xe đầy đủ luôn có thể tách thành ba lớp. Lớp thứ nhất là giá thuê thuần: tiền thuê chiếc xe theo dòng xe và khung thời gian bạn chọn, đây là con số lớn nhất và cũng là con số mọi người hay so sánh với nhau. Lớp thứ hai là các khoản phụ thuộc tình huống: phí giao nhận xe nếu bạn không đến cửa hàng lấy, phụ thu giờ cao điểm hoặc mùa lễ tùy chính sách từng nơi, và các khoản phát sinh khi trả xe trễ hơn dự kiến. Lớp thứ ba là tiền đặt cọc: khoản này không phải chi phí mà là tiền giữ chỗ, được hoàn trả khi bạn trả xe đúng tình trạng ban đầu.</p>
+  <p>Phân lớp như vậy giúp bạn đặt câu hỏi đúng ngay từ đầu. Lấy ví dụ từ chính dữ liệu cửa hàng: tiền đặt cọc dao động từ 2.000.000đ đến 5.000.000đ tùy dòng xe, còn giá thuê thuần của từng dòng lại là con số hỏi riêng theo khung thời gian. Khi hai báo giá có cùng con số lớn nhưng khác nhau ở phụ phí và cọc, tổng chi phí thực tế của bạn chưa chắc ai rẻ hơn.</p>
+  
+  <h2 id="khung-thoi-gian-la-yeu-to-chi-phoi-don-gia-manh-nhat">Khung thời gian là yếu tố chi phối đơn giá mạnh nhất</h2>
+  <p>Giá thuê xe máy không tính theo một đơn giá trải đều. Khung theo ngày hợp cho chuyến ngắn, khung theo tuần thường có đơn giá ngày thấp hơn khi cộng dồn, còn khung theo tháng dành cho người cần xe dài hạn. Vì vậy, trước khi so giá giữa hai dòng xe, bạn nên xác định trước khung thời gian của mình rồi mới so: so giá ngày của nơi này với giá tuần của nơi khác là so lệch khung.</p>
+  <p>Một thói quen đáng hình thành: khi định thuê khoảng năm ngày trở lên, hãy hỏi cùng lúc cả báo giá theo ngày cộng dồn lẫn báo giá trọn gói tuần, rồi chia giá tuần cho số ngày thực tế để xem đơn giá ngày của gói. Đây đúng là phép tính mà mọi người thuê lâu kỳ đều làm, và câu hỏi này chỉ tốn một dòng tin nhắn trong lúc đặt xe. Bạn có thể đọc thêm cách chốt gói thuê theo tuần trong bài <a href="/aichatbot/blog/thue-xe/thue-xe-may-theo-tuan/">thuê xe máy theo tuần</a>.</p>
+  <p>Khung giờ trong ngày cũng ảnh hưởng đến trải nghiệm hơn con số: đặt xe nhận sáng sớm cho bạn cả ngày di chuyển, trong khi nhận xế chiều khiến bạn trả tiền trọn một ngày nhưng chỉ dùng được vài tiếng. Người thuê có kinh nghiệm thường xếp giờ nhận vào buổi sáng và giờ trả vào buổi chiều hoặc tối hôm sau, để mỗi ngày thuê đều được dùng hết.</p>
+  
+  <h2 id="dong-xe-va-thoi-diem-anh-huong-den-gia-the-nao">Dòng xe và thời điểm ảnh hưởng đến giá thế nào</h2>
+  <p>Trong cùng một khung thời gian, dòng xe là yếu tố quyết định giá thuê thuần. Xe số phổ thông thường ở phân khúc giá thấp nhất, xe tay ga ở tầng trên, còn dòng xe máy điện hay các dòng cao cấp có giá thuê riêng theo cấu hình và nhu cầu của từng khách. Sự chênh lệch này phản ánh giá trị của xe, chi phí bảo dưỡng và nhu cầu thị trường của từng dòng.</p>
+  <p>Thời điểm trong năm cũng là biến số thật: mùa cao điểm du lịch, các dịp lễ dài và cao điểm Tết là lúc nhu cầu tăng nhanh, xe tốt thường được đặt kín sớm và các chính sách khuyến mãi khó xuất hiện như ngày thường. Ngược lại, giữa tuần lặng gió là lúc bạn dễ hỏi được phương án giá hơn. Điều này không có nghĩa chờ giá giảm để đặt sát ngày: gần ngày cần xe, lựa chọn dòng xe thường ít hơn, nên cách cân bằng là đặt sớm vào thời điểm thấp điểm thay vì canh sát giờ vào mùa cao.</p>
+  <p>Một nguyên tắc bền vững với mọi thời điểm: hãy lấy báo giá cho đúng dòng xe và đúng khung thời gian của mình, thay vì lấy một con số trung bình trên mạng rồi đem so. Con số trung bình không tồn tại trong hợp đồng thuê xe, chỉ có báo giá cụ thể cho nhu cầu cụ thể.</p>
+  
+  <h2 id="cac-khoan-ngoai-gia-niem-yet-can-hoi-ro">Các khoản ngoài giá niêm yết cần hỏi rõ</h2>
+  <p>Bảng giá niêm yết thường chỉ hiển thị giá thuê thuần theo khung, nên bốn khoản dưới đây là thứ bạn cần chủ động hỏi hoặc tìm thấy trong điều khoản trước khi đặt:</p>
+  <ul>
+  <li>Phí giao nhận xe: nếu bạn muốn xe giao đến điểm khác thay vì nhận tại cửa hàng, mức phí và khả năng thực hiện phải được xác nhận trước, vì cửa hàng làm việc trong khung giờ 09:00 - 21:00 hằng ngày.</li>
+  <li>Chính sách giờ trễ: trả xe muộn hơn khung đã chốt có thể phát sinh phụ phí theo giờ hoặc quy đổi sang ngày, nên hãy hỏi cách tính trước thay vì mặc định là miễn.</li>
+  <li>Trách nhiệm hư hỏng: trong quá trình thuê, xe gặp trục trặc thì ai chi trả khoản nào, và xe thuê thông thường không kèm bảo hiểm cho người lái nên bạn cần nắm rõ giới hạn trách nhiệm của mình.</li>
+  <li>Điều kiện hoàn cọc: cọc được hoàn khi xe trả đúng tình trạng nhận, vì vậy hãy cùng chụp lại vài tấm ảnh tình trạng xe lúc nhận để có bằng chứng đối chiếu lúc trả.</li>
+  </ul>
+  <p>Bốn khoản này không phải khoản mập mờ, chúng chỉ là phần nằm ngoài bảng giá rút gọn. Hỏi đủ bốn khoản trong một tin nhắn đặt xe là cách bạn biến báo giá nhanh thành hợp đồng minh bạch, đúng như cách làm việc qua app vẫn hướng tới: mọi con số ghi rõ trước khi hai bên chốt.</p>
+  
+  <h2 id="checklist-doc-mot-bao-gia-truoc-khi-bam-nhan">Checklist đọc một báo giá trước khi bấm nhận</h2>
+  <p>Để không bỏ sót gì, hãy rà năm điểm dưới đây trên từng báo giá bạn nhận được:</p>
+  <ul>
+  <li>Giá thuê thuần đã đúng dòng xe và đúng khung thời gian mình chọn chưa.</li>
+  <li>Các khoản phụ thuộc tình huống đã liệt kê đủ chưa: giao xe, giờ trễ, trách nhiệm hư hỏng.</li>
+  <li>Mức cọc cụ thể cho dòng xe này là bao nhiêu và điều kiện hoàn cọc viết ra sao.</li>
+  <li>Tổng số tiền cần chuẩn bị lúc nhận xe, tính cả cọc, đã rõ chưa.</li>
+  <li>Báo giá có ghi rõ thời điểm có hiệu lực không, nếu bạn đặt trước xa ngày thì giá giữ được đến khi nào.</li>
+  </ul>
+  <p>Năm dòng rà này mất chưa đến một phút nhưng loại bỏ gần như toàn bộ các cuộc tranh luận lúc nhận xe. Với trợ lý trên ứng dụng của Nguyễn Tú, bạn có thể hỏi từng dòng một trước khi chốt: các câu trả lời lấy từ dữ liệu cửa hàng đã xác minh tại 112 Nguyễn Văn Cừ, Long Biên, Hà Nội, vì vậy con số bạn đối chiếu là con số cửa hàng thật dùng, không phải phỏng đoán.</p>
+  
+  <h2 id="so-bao-gia-qua-app-voi-dat-truc-tiep">So báo giá qua app với đặt trực tiếp</h2>
+  <p>Một câu hỏi thường gặp: giá qua app có đắt hơn gọi điện không. Câu trả lời nằm ở cùng nguồn dữ liệu: khi ứng dụng và trợ lý đọc cùng một bảng giá của cửa hàng, báo giá hai kênh là một. Chênh lệch chỉ xuất hiện khi một bên cập nhật khuyến mãi mà bên kia chưa kịp, và đó là lý do nên hỏi rõ báo giá đang áp dụng khung nào, đang có điều kiện gì. Bạn có thể nắm cách vận hành kênh đặt qua ứng dụng trong bài <a href="/aichatbot/blog/app/cach-dung-ung-dung-thue-xe-may/">cách dùng ứng dụng thuê xe máy</a>, và nếu quan tâm đến độ tin cậy của các kênh này, bài <a href="/aichatbot/blog/app/ung-dung-thue-xe-co-an-toan-khong/">ứng dụng thuê xe có an toàn không</a> sẽ hữu ích trước khi bạn gửi thông tin cá nhân đi.</p>
+  <p>Cách thực dụng nhất vẫn là lấy báo giá qua kênh bạn tiện dùng, rồi lưu lại bản chốt bằng văn bản: một tin nhắn có đủ dòng xe, khung thời gian, cọc và các khoản phụ. Bản chốt này chính là tài liệu để bạn đối chiếu khi nhận xe và khi trả xe, bất kể báo giá ban đầu đến từ kênh nào.</p>
+  
+  <h2 id="cau-hoi-thuong-gap-ve-cach-tinh-gia-thue-xe-bang-app">Câu hỏi thường gặp về cách tính giá thuê xe bằng app</h2>
+  <p><strong>Giá thuê xe trên app đã gồm tiền cọc chưa?</strong> Báo giá chuẩn tách riêng giá thuê và tiền cọc, vì cọc là khoản hoàn trả khi bạn trả xe đúng tình trạng. Hãy đọc kỹ hoặc hỏi lại nếu báo giá chỉ có một con số tổng, để biết tổng đó đã gộp cọc chưa.</p>
+  <p><strong>Thuê càng lâu giá ngày càng rẻ đúng không?</strong> Xu hướng chung là khung tuần và tháng có đơn giá ngày thấp hơn cộng dồn từng ngày, nhưng mức chênh lệch tùy từng cửa hàng và từng dòng xe, nên hãy yêu cầu báo giá song song hai khung rồi tự so.</p>
+  <p><strong>Vì sao hai dòng xe giống nhau mà giá thuê khác nhau?</strong> Giá thuê phản ánh giá trị xe, chi phí bảo dưỡng và nhu cầu của từng dòng, nên kể cả khi hai chiếc trông gần giống nhau, dòng cao cấp hơn hoặc ít xe sẵn hơn thường có giá thuê cao hơn.</p>
+  <p><strong>Trả xe trễ tính tiền thế nào?</strong> Mỗi nơi có cách quy riêng: phụ phí theo giờ, quy cả ngày, hoặc miễn trong khoảng dung sai nhỏ. Đây là khoản cần hỏi rõ ngay lúc đặt xe để tránh bất ngờ lúc trả, cùng với chính sách hoàn cọc đi kèm.</p>
+  <p><strong>Đặt qua app có được giữ giá không?</strong> Báo giá bạn nhận được luôn gắn với thời điểm và khung thời gian cụ thể. Nếu đặt trước xa ngày, hãy hỏi báo giá có hiệu lực đến khi nào để tránh hiểu lầm giữa con số lúc hỏi và con số lúc nhận xe.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+          <span aria-hidden="true">→</span>
+          <a href="/aichatbot/blog/app/">Ứng Dụng</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/aichatbot/blog/app/app-thue-xe-may-la-gi/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục</h2>
+        <p>Tìm hiểu app thuê xe máy là gì, ứng dụng web MotoAI giúp hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe ngay trên trình duyệt, không cần cài đặt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/cach-dung-ung-dung-thue-xe-may/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách dùng ứng dụng thuê xe máy: 5 bước từ hỏi giá đến nhận xe</h2>
+        <p>Hướng dẫn dùng ứng dụng trợ lý thuê xe máy trên web: đặt câu hỏi đúng cách, hỏi giá theo khung thời gian, chốt dòng xe, xác nhận thủ tục và lưu tin nhắn chốt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/ung-dung-thue-xe-co-an-toan-khong/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Ứng dụng thuê xe có an toàn không: cách kiểm tra trước khi đặt xe</h2>
+        <p>Ứng dụng thuê xe an toàn hay không phụ thuộc ba lớp: thông tin cá nhân, giao dịch đặt cọc và dịch vụ đi kèm, kèm checklist kiểm tra công cụ thuê xe trước khi đặt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/thue-xe/thue-xe-may-gia-re/">
+        <span class="cat">Thuê Xe</span>
+        <h2>Thuê xe máy giá rẻ: cách tính tổng chi phí và tránh phí phát sinh</h2>
+        <p>Cách tính tổng chi phí thuê xe máy giá rẻ: giá theo ngày, tuần, tháng, xăng, đặt cọc, giao xe và checklist tránh phí phát sinh trước khi đặt xe.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/xe-dien/app-thue-xe-dien/">
+        <span class="cat">Xe Điện</span>
+        <h2>App thuê xe điện là gì? Cách hỏi giá và chọn xe điện qua trợ lý</h2>
+        <p>Giải thích app thuê xe điện là gì, khác biệt giữa xe máy điện và xe xăng, cách hỏi giá, pin, giao xe qua trợ lý và những điều cần biết trước khi đặt xe điện.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Công cụ &amp; Hướng dẫn: <a href="/aichatbot/blog/app/">Ứng Dụng</a> · <a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/aichatbot/?ask=C%C3%A1ch%20t%C3%ADnh%20gi%C3%A1%20thu%C3%AA%20xe%20b%E1%BA%B1ng%20app%3A%20%C4%91%E1%BB%8Dc%20%C4%91%C3%BAng%20m%E1%BB%99t%20b%C3%A1o%20gi%C3%A1">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/aichatbot/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/aichatbot/">Agent</a></li>
+          <li><a href="/aichatbot/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/aichatbot/blog/">Cẩm nang</a></li>
+          <li><a href="/aichatbot/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/aichatbot/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/aichatbot/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/aichatbot/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/aichatbot/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/aichatbot/">⚡ Agent</a></li>
+      <li><a href="/aichatbot/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/" aria-current="page">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/app/" aria-current="page">📱 Ứng Dụng</a></li>
+            <li><a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/aichatbot/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/aichatbot/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/aichatbot/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/aichatbot/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/aichatbot/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Cách tính giá thuê xe bằng app: đọc đúng một báo giá","description":"Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://thuexemayhanoi.github.io/aichatbot/"},"mainEntityOfPage":"https://thuexemayhanoi.github.io/aichatbot/blog/app/cach-tinh-gia-thue-xe-bang-app/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://thuexemayhanoi.github.io/aichatbot/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://thuexemayhanoi.github.io/aichatbot/blog/"},{"@type":"ListItem","position":3,"name":"Công cụ & Hướng dẫn","item":"https://thuexemayhanoi.github.io/aichatbot/blog/cong-cu-huong-dan/"},{"@type":"ListItem","position":4,"name":"Ứng Dụng","item":"https://thuexemayhanoi.github.io/aichatbot/blog/app/"},{"@type":"ListItem","position":5,"name":"Tính Giá","item":"https://thuexemayhanoi.github.io/aichatbot/blog/app/tinh-gia/"},{"@type":"ListItem","position":6,"name":"Cách tính giá thuê xe bằng app: đọc đúng một báo giá","item":"https://thuexemayhanoi.github.io/aichatbot/blog/app/cach-tinh-gia-thue-xe-bang-app/"}]}
+  </script>
+
+  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=63"></script>
+</body>
+</html>
