@@ -147,3 +147,7 @@
 - 2026-10-01 FINISH BA-0042
 - 2026-10-01 QA PASS BA-0042
 - 2026-10-01 PUBLISHED BA-0042 (dong-da-va-xe-may) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0043
+- 2026-10-01 FINISH BA-0043
+- 2026-10-01 QA PASS BA-0043
+- 2026-10-01 PUBLISHED BA-0043 (dat-xe-bang-ung-dung) — page, matrix, indexes, sitemap consistent
