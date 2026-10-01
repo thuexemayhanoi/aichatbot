@@ -99,3 +99,7 @@
 - 2026-10-01 FINISH BA-0030
 - 2026-10-01 QA PASS BA-0030
 - 2026-10-01 PUBLISHED BA-0030 (ba-dinh-xe-may-phuong) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0031
+- 2026-10-01 FINISH BA-0031
+- 2026-10-01 QA PASS BA-0031
+- 2026-10-01 PUBLISHED BA-0031 (thue-xe-online-nhu-the-nao) — page, matrix, indexes, sitemap consistent
