@@ -39,3 +39,7 @@
 - 2026-10-01 FINISH BA-0015
 - 2026-10-01 QA PASS BA-0015
 - 2026-10-01 PUBLISHED BA-0015 (chon-xe-dien-phu-hop) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0016
+- 2026-10-01 FINISH BA-0016
+- 2026-10-01 QA PASS BA-0016
+- 2026-10-01 PUBLISHED BA-0016 (huong-dan-dat-xe-nhanh) — page, matrix, indexes, sitemap consistent
