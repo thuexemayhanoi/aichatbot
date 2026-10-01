@@ -83,3 +83,7 @@
 - 2026-10-01 FINISH BA-0026
 - 2026-10-01 QA PASS BA-0026
 - 2026-10-01 PUBLISHED BA-0026 (cho-thue-xe-may-thu-tuc-don-gian) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0027
+- 2026-10-01 FINISH BA-0027
+- 2026-10-01 QA PASS BA-0027
+- 2026-10-01 PUBLISHED BA-0027 (thue-xe-dien-dai-ngay) — page, matrix, indexes, sitemap consistent
