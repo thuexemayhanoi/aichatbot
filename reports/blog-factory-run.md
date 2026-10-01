@@ -19,3 +19,7 @@
 - 2026-10-01 FINISH BA-0010
 - 2026-10-01 QA PASS BA-0010
 - 2026-10-01 PUBLISHED BA-0010 (giay-to-can-khi-thue-xe) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0011
+- 2026-10-01 FINISH BA-0011
+- 2026-10-01 QA PASS BA-0011
+- 2026-10-01 PUBLISHED BA-0011 (nong-do-con-khi-lai-xe) — page, matrix, indexes, sitemap consistent
