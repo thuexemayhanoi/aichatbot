@@ -472,6 +472,12 @@ test('pipeline: blog-factory-publish.yml is the SIMPLE PRODUCTION MODE workflow 
   assert.match(y, /group: blog-factory-publish/, 'serialized: one production workflow at a time');
   assert.match(y, /cancel-in-progress: false/, 'queued runs are never cancelled mid-publish');
   assert.match(y, /factory-select\.mjs --files/, 'detect derives the exact scope from the push');
+  // GitHub's YAML parser rejects unquoted scalars containing ": " — that broke
+  // the whole workflow in v67 (invalid workflow file, 0 jobs). Guard every name.
+  for (const line of y.split('\n')) {
+    assert.ok(!/^\s*-\s*name: [^'"'].*\S: /.test(line), `unquoted YAML name with a colon breaks GitHub parsing: ${line.trim()}`);
+    assert.ok(!/^\s*name: [^'"'].*\S: /.test(line), `unquoted YAML name with a colon breaks GitHub parsing: ${line.trim()}`);
+  }
   assert.match(y, /blog-factory\.mjs prepare-chunk/, 'workflow auto-claims the chunk (writer no longer claims by hand)');
   assert.match(y, /blog-factory\.mjs qa-chunk/, 'workflow runs independent scoped QA per article');
   assert.match(y, /blog-factory\.mjs publish-chunk/, 'workflow runs ONE grouped transactional publish');

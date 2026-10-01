@@ -99,7 +99,7 @@ jobs:
           test ! -f docs/state/blog-factory.transaction.json \
             || { echo "::error::transaction marker still present after resume"; exit 1; }
 
-      - name: Prepare chunk (auto-claim the exact pushed ids: PLANNED -> QA)
+      - name: Prepare chunk (auto-claim the exact pushed ids — PLANNED -> QA)
         if: steps.select.outputs.proceed == 'true' && steps.select.outputs.claim_ids != ''
         run: node tools/blog-factory.mjs prepare-chunk ${{ steps.select.outputs.claim_ids }}
 
