@@ -167,3 +167,7 @@
 - 2026-10-01 FINISH BA-0047
 - 2026-10-01 QA PASS BA-0047
 - 2026-10-01 PUBLISHED BA-0047 (idp-va-bang-lai-quoc-te) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0048
+- 2026-10-01 FINISH BA-0048
+- 2026-10-01 QA PASS BA-0048
+- 2026-10-01 PUBLISHED BA-0048 (thanh-xuan-duong-di) — page, matrix, indexes, sitemap consistent
