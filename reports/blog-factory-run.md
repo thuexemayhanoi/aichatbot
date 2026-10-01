@@ -163,3 +163,7 @@
 - 2026-10-01 FINISH BA-0046
 - 2026-10-01 QA PASS BA-0046
 - 2026-10-01 PUBLISHED BA-0046 (dat-coc-the-nao) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0047
+- 2026-10-01 FINISH BA-0047
+- 2026-10-01 QA PASS BA-0047
+- 2026-10-01 PUBLISHED BA-0047 (idp-va-bang-lai-quoc-te) — page, matrix, indexes, sitemap consistent
