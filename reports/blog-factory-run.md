@@ -27,3 +27,7 @@
 - 2026-10-01 FINISH BA-0012
 - 2026-10-01 QA PASS BA-0012
 - 2026-10-01 PUBLISHED BA-0012 (di-pho-co-bang-xe-may) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0013
+- 2026-10-01 FINISH BA-0013
+- 2026-10-01 QA PASS BA-0013
+- 2026-10-01 PUBLISHED BA-0013 (ung-dung-thue-xe-co-an-toan-khong) — page, matrix, indexes, sitemap consistent
