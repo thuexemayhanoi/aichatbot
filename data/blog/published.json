@@ -617,6 +617,21 @@
         "Một đơn đặt xe máy đủ độ chốt gồm năm mảnh: dòng xe, thời lượng thuê tính theo ngày tuần hay tháng, khung giờ nhận và trả kèm ngày cụ thể, thông tin người nhận kèm giấy tờ và bằng lái đúng hạng, cùng cách nhận xe và khoản đặt cọc đối chiếu trực tiếp lúc nhận trong khung min đến max theo dòng xe. Trợ lý trên website hỏi lần lượt cho tới khi đủ các mảnh rồi trả về bản tóm tắt để khách đọc lại trước khi xác nhận.",
         "Trình tự đặt xe bằng ứng dụng gồm bốn bước: mở trợ lý và nêu nhu cầu bằng câu thường, trả lời các mảnh còn thiếu, đọc báo giá trong hội thoại, xác nhận đơn trong một tin nhắn cuối. Muốn đổi giờ hoặc đổi dòng xe thì nhắn lại trong chính cuộc trò chuyện đó càng sớm càng dễ xếp; không mở cuộc trò chuyện mới đặt đè lên đơn cũ. Bốn lỗi hay gặp: nhầm ngày nhận, nói thời lượng mập mờ, chốt khi chưa đọc báo giá, không ghi lại khung giờ nhận trả đã chốt."
       ]
+    },
+    {
+      "article_id": "BA-0044",
+      "category": "RENT",
+      "slug": "thue-xe-50cc",
+      "title": "Thuê xe 50cc: ranh giới cần nhớ, ai hợp nhóm này và cách thuê đúng",
+      "description": "Thuê xe 50cc: ranh giới dưới 50 cm³ và từ 50 cm³, ai hợp nhóm xe gắn máy, cần hỏi gì trước khi chốt, giấy tờ, cọc và trải nghiệm chạy phố.",
+      "published_date": "2026-10-01",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-50cc.body.html",
+      "knowledge_chunks": [
+        "Ranh giới pháp lý của nhóm xe 50cc theo Luật 36/2024/QH15 từ đầu 2025: xe dưới 50 cm³ hoặc điện không quá 4 kW là xe gắn máy, đủ 16 tuổi được lái và không cần GPLX; từ 50 cm³ trở lên là mô tô hai bánh, cần bằng A1 và đủ 18 tuổi. Xe quảng cáo 50cc chưa chắc thuộc nhóm không cần bằng, phải hỏi rõ dung tích. Nhóm xe gắn máy không cố định trong danh sách phổ thông của cửa hàng, giá và tình trạng xác nhận trực tiếp theo từng thời điểm.",
+        "Thuê xe 50cc hợp nhất cho người 16 đến dưới 18 tuổi, người mới biết lái quãng ngắn nội thành và người vóc dáng nhỏ. Trước khi chốt cần hỏi: xe thuộc nhóm nào theo dung tích, tình trạng xe, giá trực tiếp và mức cọc trong dải min đến max hoàn khi trả đúng hiện trạng, mũ bảo hiểm đi kèm hay thuê thêm. Giấy tờ tùy thân bản gốc bắt buộc; nếu không còn xe gắn máy, phương án thay thế gần là xe số phổ thông nhưng cần A1 và đủ 18 tuổi."
+      ]
     }
   ]
 }
