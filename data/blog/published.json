@@ -269,6 +269,21 @@
         "Báo giá thuê xe gồm ba lớp: giá thuê thuần theo dòng xe và khung thời gian, các khoản phụ thuộc tình huống như phí giao xe hay phụ phí trả trễ, và tiền đặt cọc được hoàn khi trả xe đúng tình trạng; so sánh báo giá cần so cả ba lớp thay vì chỉ so con số tổng.",
         "Khung thời gian chi phối đơn giá mạnh nhất: thuê từ khoảng năm ngày nên hỏi song song báo giá ngày cộng dồn và gói tuần rồi chia giá tuần theo số ngày thực tế; ngoài bảng giá niêm yết cần hỏi rõ phí giao xe, cách tính giờ trễ, trách nhiệm hư hỏng và điều kiện hoàn cọc trước khi đặt."
       ]
+    },
+    {
+      "article_id": "BA-0020",
+      "category": "RENT",
+      "slug": "thue-xe-may-theo-thang",
+      "title": "Thuê xe máy theo tháng: khi nào đáng lấy và hợp đồng cần gì",
+      "description": "Thuê xe máy theo tháng hợp khi cần xe trên hai phần ba ngày trong tháng: so đơn giá với gói tuần, tám điều khoản cần chốt, cách giữ xe và điều kiện trả sớm.",
+      "published_date": "2026-10-01",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-may-theo-thang.body.html",
+      "knowledge_chunks": [
+        "Gói tháng hợp khi cần xe trên khoảng hai phần ba số ngày trong tháng: đơn giá ngày của gói tháng thường thấp hơn gói tuần và gói tuần thấp hơn cộng dồn ngày rời; hãy lấy báo giá ba khung cùng dòng xe rồi quy về đơn giá ngày để so đúng, và hỏi rõ điều kiện chấm dứt sớm vì gói tháng bỏ dở có thể đắt hơn gói tuần đúng hạn.",
+        "Hợp đồng thuê tháng cần ghi rõ tám điểm: giá và thời điểm thanh toán đầu kỳ, điều kiện trả sớm, ai lo bảo dưỡng giữa kỳ, chính sách đổi xe khi hỏng lớn, giới hạn km hoặc khu vực nếu có, chìa dự phòng, mức cọc hoàn khi trả xe đúng tình trạng và trách nhiệm khi xe thuê không kèm bảo hiểm cho người lái."
+      ]
     }
   ]
 }
