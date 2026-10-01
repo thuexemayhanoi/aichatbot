@@ -641,6 +641,22 @@
       "url": "/aichatbot/blog/dia-phuong/thanh-xuan-duong-di/",
       "category": "LOCAL",
       "text": "Cách đi khu Thanh Xuân bằng xe máy thuê từ Long Biên: qua cầu Chương Dương bám trục Nguyễn Trãi thẳng vào khu, hoặc qua cầu Long Biên theo Đại Cồ Việt nối Trường Chinh rẽ xuống Khuất Duy Tiến, chừng ba mươi đến bốn mươi phút giờ vắng. Gửi xe ở bãi quanh mép công viên, hầm gửi của tổ hợp theo giờ, hoặc bãi có người trông gần cụm sinh viên. Xe máy luôn đi mặt đường dưới, không theo nhánh lên đường trên cao vành đai. Ghép dễ nhất với Cầu Giấy qua Lê Văn Lương, hoặc một buổi Đống Đa phía trên trục Nguyễn Trãi."
+    },
+    {
+      "id": "BA-0049:c1",
+      "article_id": "BA-0049",
+      "title": "Privacy và xử lý cục bộ trong app thuê xe: dữ liệu nằm ở đâu",
+      "url": "/aichatbot/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe/",
+      "category": "APP",
+      "text": "App thuê xe MotoAI xử lý cục bộ: hội thoại và cài đặt lưu trong localStorage của trình duyệt trên thiết bị, không cần tài khoản. Nút xóa hội thoại xóa tận gốc; xóa dữ liệu trình duyệt hoặc gỡ PWA cũng xóa sạch. Bản ghi có nhãn phiên bản và thời hạn nên phiên cũ hỏng tự bị bỏ; hội thoại không đồng bộ giữa các thiết bị."
+    },
+    {
+      "id": "BA-0049:c2",
+      "article_id": "BA-0049",
+      "title": "Privacy và xử lý cục bộ trong app thuê xe: dữ liệu nằm ở đâu",
+      "url": "/aichatbot/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe/",
+      "category": "APP",
+      "text": "Trợ lý cơ bản trả lời bằng dữ liệu cửa hàng kiểm chứng, chạy trên trình duyệt, không cần API key, không gửi hội thoại lên máy chủ. Agent nâng cao tùy chọn: model AI tải về và chạy ngay trên thiết bị. Vẫn rời thiết bị: tài nguyên tĩnh qua GitHub Pages, liên kết ngoài như WhatsApp hay Google Maps theo chính sách bên thứ ba. Không gõ số thẻ hay giấy tờ nhạy cảm trong chat; cọc và giấy tờ đối chiếu trực tiếp lúc nhận xe."
     }
   ]
 }

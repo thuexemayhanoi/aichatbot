@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v63">
+  <title>Privacy và xử lý cục bộ trong app thuê xe: dữ liệu nằm ở đâu</title>
+  <meta name="description" content="Cách app thuê xe MotoAI xử lý cục bộ: hội thoại lưu trong trình duyệt, không cần tài khoản, Agent chạy trên thiết bị, và bạn xóa dữ liệu khi muốn.">
+  <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Privacy và xử lý cục bộ trong app thuê xe: dữ liệu nằm ở đâu">
+  <meta property="og:description" content="Cách app thuê xe MotoAI xử lý cục bộ: hội thoại lưu trong trình duyệt, không cần tài khoản, Agent chạy trên thiết bị, và bạn xóa dữ liệu khi muốn.">
+  <meta property="og:url" content="https://thuexemayhanoi.github.io/aichatbot/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Privacy và xử lý cục bộ trong app thuê xe: dữ liệu nằm ở đâu">
+  <meta name="twitter:description" content="Cách app thuê xe MotoAI xử lý cục bộ: hội thoại lưu trong trình duyệt, không cần tài khoản, Agent chạy trên thiết bị, và bạn xóa dữ liệu khi muốn.">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=63">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=63">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/aichatbot/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/aichatbot/blog/">Cẩm nang</a>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/aichatbot/blog/cong-cu-huong-dan/" aria-haspopup="true" aria-current="page">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/app/" aria-current="page">📱 Ứng Dụng</a>
+            <a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/aichatbot/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-privacy-va-xu-ly-cuc-bo-trong-app-thue-xe">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <a href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a> › <a href="/aichatbot/blog/app/">Ứng Dụng</a> › <span>Privacy và xử lý cục bộ trong app thuê xe: dữ liệu nằm ở đâu</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/aichatbot/blog/app/">Ứng Dụng</a>
+        <a class="blog-chip blog-chip-parent" href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+      </p>
+      <p class="blog-screen-label">Ứng Dụng</p>
+      <h1 class="blog-screen-title">Privacy và xử lý cục bộ trong app thuê xe: dữ liệu nằm ở đâu</h1>
+      <p class="blog-screen-lead">Cách app thuê xe MotoAI xử lý cục bộ: hội thoại lưu trong trình duyệt, không cần tài khoản, Agent chạy trên thiết bị, và bạn xóa dữ liệu khi muốn.</p>
+      <p class="byline">MotoAI Editorial · 2026-10-01 · Ứng Dụng · 10 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Cách app thuê xe MotoAI xử lý cục bộ: hội thoại lưu trong trình duyệt, không cần tài khoản, Agent chạy trên thiết bị, và bạn xóa dữ liệu khi muốn.</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#xu-ly-cuc-bo-trong-app-thue-xe-la-gi">Xử lý cục bộ trong app thuê xe là gì</a></li>
+        <li class="toc-l2"><a href="#cuoc-tro-chuyen-cua-ban-luu-o-dau">Cuộc trò chuyện của bạn lưu ở đâu</a></li>
+        <li class="toc-l2"><a href="#tro-ly-co-ban-va-agent-nang-cao-xu-ly-du-lieu-the-nao">Trợ lý cơ bản và Agent nâng cao xử lý dữ liệu thế nào</a></li>
+        <li class="toc-l2"><a href="#nhung-du-lieu-nao-van-roi-khoi-thiet-bi">Những dữ liệu nào vẫn rời khỏi thiết bị</a></li>
+        <li class="toc-l2"><a href="#ban-kiem-soat-du-lieu-cua-minh-ra-sao">Bạn kiểm soát dữ liệu của mình ra sao</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-ve-privacy-trong-app-thue-xe">Câu hỏi thường gặp về privacy trong app thuê xe</a></li>
+        <li class="toc-l2"><a href="#tom-lai-rieng-tu-kieu-dep-duoc-tu-goc">Tóm lại: riêng tư kiểu dẹp được từ gốc</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#xu-ly-cuc-bo-trong-app-thue-xe-la-gi">Xử lý cục bộ trong app thuê xe là gì</a></li>
+        <li class="toc-l2"><a href="#cuoc-tro-chuyen-cua-ban-luu-o-dau">Cuộc trò chuyện của bạn lưu ở đâu</a></li>
+        <li class="toc-l2"><a href="#tro-ly-co-ban-va-agent-nang-cao-xu-ly-du-lieu-the-nao">Trợ lý cơ bản và Agent nâng cao xử lý dữ liệu thế nào</a></li>
+        <li class="toc-l2"><a href="#nhung-du-lieu-nao-van-roi-khoi-thiet-bi">Những dữ liệu nào vẫn rời khỏi thiết bị</a></li>
+        <li class="toc-l2"><a href="#ban-kiem-soat-du-lieu-cua-minh-ra-sao">Bạn kiểm soát dữ liệu của mình ra sao</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-ve-privacy-trong-app-thue-xe">Câu hỏi thường gặp về privacy trong app thuê xe</a></li>
+        <li class="toc-l2"><a href="#tom-lai-rieng-tu-kieu-dep-duoc-tu-goc">Tóm lại: riêng tư kiểu dẹp được từ gốc</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Khi thuê xe qua một ứng dụng trò chuyện, thứ bạn gõ vào khung tin nhắn thường là tên, số điện thoại và kế hoạch di chuyển của mình. Chính vì nội dung ấy nhạy cảm theo một cách rất đời thường, cách ứng dụng xử lý dữ liệu đáng được nói rõ hơn là giấu trong một trang chính sách dài. App thuê xe của MotoAI đi theo hướng xử lý cục bộ: phần lớn việc tính toán và lưu trữ diễn ra ngay trên thiết bị của bạn thay vì trên một máy chủ nào đó. Bài này giải thích xử lý cục bộ là gì, hội thoại của bạn nằm ở đâu, phần trợ lý hoạt động ra sao, và những giới hạn thật của mô hình này để bạn tự quyết định nên tin tưởng tới mức nào.</p>
+  
+  <h2 id="xu-ly-cuc-bo-trong-app-thue-xe-la-gi">Xử lý cục bộ trong app thuê xe là gì</h2>
+  <p>Nói ngắn gọn, xử lý cục bộ nghĩa là tin nhắn của bạn được đọc và xử lý bởi mã chạy ngay trong trình duyệt trên máy hoặc điện thoại của bạn, kết quả lưu lại cũng nằm trong bộ nhớ của chính thiết bị đó. Khác với kiểu ứng dụng gửi từng câu chat lên một dịch vụ đám mây rồi đợi máy chủ trả về, ở đây trình duyệt đảm nhận vai trò chính. Cách làm này có một cái giá rất rõ: ứng dụng phải gọn và không thể dựa vào các tính năng máy chủ to lớn. Đổi lại, phần rò rỉ dữ liệu vốn là mối lo của nhiều nền tảng chat biến mất từ gốc, vì không có kho hội thoại trung tâm để rò rỉ.</p>
+  <p>Trong thực tế thuê xe, điều này mang lại một trải nghiệm khá gọn: bạn mở <a href="/aichatbot/">trợ lý trên website của cửa hàng</a>, hỏi về dòng xe, giá theo ngày hay thủ tục nhận xe, và nhận câu trả lời ngay cả khi đường truyền yếu, vì phần dữ liệu cần cho câu trả lời đã nằm sẵn trong trang. Không cần đăng ký, không cần nhập email để dùng thử, và không có bước nào buộc bạn đồng ý chia sẻ danh bạ hay vị trí mới vào được màn hình trò chuyện.</p>
+  
+  <h2 id="cuoc-tro-chuyen-cua-ban-luu-o-dau">Cuộc trò chuyện của bạn lưu ở đâu</h2>
+  <p>Giống như trang chính sách bảo mật của website đã nêu, lịch sử hội thoại và các cài đặt được lưu trong bộ nhớ của trình duyệt trên thiết bị của bạn, thường gọi là localStorage. Vài hệ quả thực tế của cách lưu này đáng để bạn biết trước khi dùng.</p>
+  <ul>
+  <li>Không có tài khoản: hội thoại gắn với một cặp thiết bị và trình duyệt cụ thể, nên mở trên máy tính rồi sang điện thoại thì cuộc trò chuyện cũ không đi theo. Đây là nhược điểm hay ưu điểm còn tùy góc nhìn, nhưng nó đồng nghĩa với việc không có hồ sơ người dùng nào nằm chờ trên máy chủ.</li>
+  <li>Bạn xóa được tận gốc: một nút xóa hội thoại có sẵn trong menu của trợ lý, bấm là toàn bộ nội dung trò chuyện biến mất khỏi thiết bị. Xóa dữ liệu trình duyệt của website, hoặc gỡ ứng dụng nếu bạn cài dưới dạng PWA, cũng cho kết quả tương tự.</li>
+  <li>Phiên cũ tự loại bỏ: các bản ghi được đóng gói kèm nhãn phiên bản và thời hạn, nên một phiên hội thoại cũ kỹ hoặc hỏng sẽ bị xem như không tồn tại thay vì nằm lại trong máy gây lỗi, và phần mở lại luôn bắt đầu từ trạng thái sạch.</li>
+  </ul>
+  <p>Điểm mấu chốt để bạn hình dung mức kiểm soát: mọi dữ liệu của bạn nằm ở một nơi duy nhất mà bạn sờ tới được, chính là chiếc thiết bị trong tay bạn. Không có bản sao lưu trên đám mây cần xin xỏ, cũng không có trang quản lý hồ sơ cần đăng nhập mới xem được.</p>
+  
+  <h2 id="tro-ly-co-ban-va-agent-nang-cao-xu-ly-du-lieu-the-nao">Trợ lý cơ bản và Agent nâng cao xử lý dữ liệu thế nào</h2>
+  <p>Ứng dụng có hai lớp trợ lý, và cả hai giữ đúng nguyên tắc cục bộ nhưng theo cách khác nhau. Lớp cơ bản trả lời bằng dữ liệu cửa hàng đã kiểm chứng về dòng xe, giá, cọc và thủ tục; lớp này chạy trực tiếp trên trình duyệt, không cần khóa API và không gửi hội thoại lên máy chủ nào. Câu hỏi của bạn đi vào trình duyệt, câu trả lời ra từ trình duyệt, chấm hết.</p>
+  <p>Lớp thứ hai là Agent nâng cao, mang trí tuệ nhân tạo thật. Đây là tính năng tùy chọn: nếu bạn chủ động bật, model AI được tải về thiết bị của bạn và chạy ngay trên thiết bị đó, không gửi nội dung hội thoại đi đâu trong lúc trả lời. Tức là thay vì gửi câu hỏi của bạn tới một khu máy chủ xa để máy ấy đọc, chiếc máy đọc câu hỏi ngay tại chỗ. Tải model lần đầu tốn băng thông và dung lượng, nhưng đổi lại toàn bộ phần suy luận sau đó diễn ra nội bộ.</p>
+  <p>Nếu bạn phân vân giữa dùng web như thế này và cài một ứng dụng riêng từ kho ứng dụng, bài về <a href="/aichatbot/blog/app/web-app-va-app-native-khac-gi-nhau/">web app và app native khác nhau chỗ nào</a> so sánh chi tiết hai hướng đó; còn nếu mối quan tâm là độ tin cậy khi đặt xe trực tuyến, các khía cạnh an toàn đã được gỡ kỹ trong bài <a href="/aichatbot/blog/app/ung-dung-thue-xe-co-an-toan-khong/">ứng dụng thuê xe có an toàn không</a>.</p>
+  
+  <h2 id="nhung-du-lieu-nao-van-roi-khoi-thiet-bi">Những dữ liệu nào vẫn rời khỏi thiết bị</h2>
+  <p>Nói thật thà: không có ứng dụng web nào cam kết tuyệt đối rằng không một byte nào rời khỏi thiết bị, và app này cũng không tự nhận như vậy. Ba luồng dữ liệu vẫn ra ngoài cần được kể đủ để lời hứa cục bộ không biến thành quảng cáo.</p>
+  <ul>
+  <li>Tài nguyên tĩnh: trang web được phân phối qua GitHub Pages, nên HTML, CSS, mã JavaScript và cả model AI nếu bạn bật Agent đều được tải về từ mạng mỗi khi cần. Trình duyệt cũng gửi các yêu cầu mạng thông thường như mọi trang web khác.</li>
+  <li>Liên kết ngoài: nút gọi điện, WhatsApp hay Google Maps mở dịch vụ của bên thứ ba; khi bạn bấm sang đó, chính sách riêng của dịch vụ ấy sẽ áp dụng cho phần bạn làm tiếp trên nền tảng của họ.</li>
+  <li>Phần bạn chủ động chia sẻ: khi bạn gọi hoặc nhắn cho cửa hàng để chốt đơn, thông tin bạn cung cấp qua kênh đó dĩ nhiên nằm với cửa hàng như mọi giao dịch thuê xe thông thường.</li>
+  </ul>
+  <p>Ranh giới nằm ở chỗ nào đó khá gọn: phần trò chuyện với trợ lý, phần lưu trữ, phần suy luận của model là chuyện riêng giữa bạn và thiết bị; phần tải trang và phần bạn bấm sang dịch vụ ngoài thì tuân theo luật của môi trường mạng. Hiểu đúng ranh giới này giúp bạn vừa có được sự riêng tư thật, vừa không ôm một kỳ vọng sai vào những chỗ không ai bảo đảm nổi.</p>
+  
+  <h2 id="ban-kiem-soat-du-lieu-cua-minh-ra-sao">Bạn kiểm soát dữ liệu của mình ra sao</h2>
+  <p>Kiểm soát thực tế nhất là tập thói quen, và với một ứng dụng lưu mọi thứ trên thiết bị, các thói quen dưới đây đều ngắn và đủ dùng.</p>
+  <ul>
+  <li>Gõ vừa đủ: khi hỏi giá hay dòng xe, không cần gõ kèm số căn cước, số thẻ hay địa chỉ nhà. Mọi chuyện giấy tờ và cọc được đối chiếu trực tiếp lúc nhận xe tại cửa hàng, nên không có lý do gửi tài liệu nhạy cảm qua khung chat.</li>
+  <li>Dùng nút xóa: xong một chuyến đi, một cú bấm xóa hội thoại dọn sạch bản lưu trên máy, tiện khi bạn dùng điện thoại chung với người khác.</li>
+  <li>Biết đường dọn tay: nếu chỉ muốn thử cho biết, mở thẻ ẩn danh hoặc trình duyệt riêng rồi đóng lại cũng là một kiểu không để lại vết.</li>
+  <li>Không trông chờ đồng bộ: vì không có tài khoản, nếu bạn muốn giữ lại tóm tắt đơn thuê, chụp màn hình hoặc ghi chú ra ngoài là cách chắc nhất, thay vì đóng cửa sổ rồi hy vọng tìm lại trên thiết bị khác.</li>
+  </ul>
+  <p>Cách nghĩ thực dụng nhất về ứng dụng kiểu này: hãy đối xử với cuộc trò chuyện như một tờ giấy nháp nằm trong túi bạn, chứ không phải như một hồ sơ nằm trong két sắt của người khác. Giấy nháp thì bạn có thể xé bỏ bất cứ lúc nào, và chẳng ai giữ bản sao.</p>
+  
+  <h2 id="cau-hoi-thuong-gap-ve-privacy-trong-app-thue-xe">Câu hỏi thường gặp về privacy trong app thuê xe</h2>
+  <p>Mấy câu dưới đây là phần được hỏi nhiều nhất quanh chuyện dữ liệu khi dùng trợ lý đặt xe.</p>
+  <ul>
+  <li>Tôi có phải tạo tài khoản hay nhập email mới hỏi được không? Không. Mở trang, gõ câu hỏi tiếng Việt là trợ lý trả lời ngay; không đăng ký, không xác nhận thư điện tử, không số điện thoại bắt buộc.</li>
+  <li>Chủ cửa hàng có đọc được hội thoại của tôi không? Phần trò chuyện giữa bạn và trợ lý chỉ nằm trong trình duyệt của bạn, không có bản nào nằm trên hệ thống của cửa hàng cả. Cửa hàng chỉ biết những gì bạn chủ động nói với họ khi gọi điện hay nhắn tin chốt đơn.</li>
+  <li>Xóa hội thoại có làm mất đơn đã đặt không? Việc xác nhận đơn làm việc trực tiếp với cửa hàng qua điện thoại hoặc tin nhắn bạn tự gửi, nên xóa hội thoại trong trợ lý chỉ dọn bản lưu cục bộ trên thiết bị. Tuy nhiên nếu bạn để phòng, hãy lưu sẵn tóm tắt đơn trước khi xóa.</li>
+  <li>Tôi và người nhà dùng chung một cái điện thoại thì sao? Mỗi lần dùng xong, bấm xóa hội thoại cho sạch, hoặc nhờ tính năng lịch sử mà quay lại đúng tin nhắn cuối. Vì dữ liệu không bay đi đâu, chuyện dọn cũng chỉ là một cú bấm.</li>
+  <li>Điện thoại cấu hình yếu có dùng được không? Trợ lý cơ bản chạy thẳng trong trình duyệt và không cần tải model lớn nên gọn nhẹ. Phần Agent nâng cao là tùy chọn riêng cho máy đủ chỗ, không bật cũng không ảnh hưởng gì phần hỏi đáp thường ngày.</li>
+  </ul>
+  
+  <h2 id="tom-lai-rieng-tu-kieu-dep-duoc-tu-goc">Tóm lại: riêng tư kiểu dẹp được từ gốc</h2>
+  <p>Xử lý cục bộ không phải một khẩu hiệu marketing mà là một lựa chọn kiến trúc có lợi có giá, và app thuê xe này chọn nó vì lợi của người dùng trông rõ hơn giá mà nhà phát triển phải trả. Hội thoại của bạn nằm trong thiết bị của bạn, nút xóa nằm ngay trong tầm tay, không có kho dữ liệu trung tâm nào mang tên bạn. Với phần cần con người thật, như hỏi thêm một điều chưa rõ hay chốt lịch nhận xe, cứ nhấn số 0942 467 674 trong giờ 09:00 - 21:00; cửa hàng đặt tại 112 Nguyễn Văn Cừ, Long Biên, Hà Nội, nơi khoản cọc trong dải 2.000.000đ đến 5.000.000đ được đối chiếu trực tiếp lúc cầm chìa và quay về bạn khi xe trở lại đúng hiện trạng. Trò chuyện tự do trên máy của mình, gặp người thật khi cần, đó là cách mô hình này định nghĩa sự yên tâm.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+          <span aria-hidden="true">→</span>
+          <a href="/aichatbot/blog/app/">Ứng Dụng</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/aichatbot/blog/app/app-thue-xe-may-la-gi/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục</h2>
+        <p>Tìm hiểu app thuê xe máy là gì, ứng dụng web MotoAI giúp hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe ngay trên trình duyệt, không cần cài đặt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/cach-dung-ung-dung-thue-xe-may/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách dùng ứng dụng thuê xe máy: 5 bước từ hỏi giá đến nhận xe</h2>
+        <p>Hướng dẫn dùng ứng dụng trợ lý thuê xe máy trên web: đặt câu hỏi đúng cách, hỏi giá theo khung thời gian, chốt dòng xe, xác nhận thủ tục và lưu tin nhắn chốt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/ung-dung-thue-xe-co-an-toan-khong/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Ứng dụng thuê xe có an toàn không: cách kiểm tra trước khi đặt xe</h2>
+        <p>Ứng dụng thuê xe an toàn hay không phụ thuộc ba lớp: thông tin cá nhân, giao dịch đặt cọc và dịch vụ đi kèm, kèm checklist kiểm tra công cụ thuê xe trước khi đặt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/cach-tinh-gia-thue-xe-bang-app/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách tính giá thuê xe bằng app: đọc đúng một báo giá</h2>
+        <p>Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/chon-xe-bang-agent/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Chọn xe bằng Agent: nói nhu cầu để nhận đúng dòng xe</h2>
+        <p>Chọn xe bằng Agent: năm thông tin cần mô tả để trợ lý gợi ý dòng xe phù hợp với chuyến đi, cách Agent suy luận từ nhu cầu và các câu hỏi nên hỏi lại trước khi chốt.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Công cụ &amp; Hướng dẫn: <a href="/aichatbot/blog/app/">Ứng Dụng</a> · <a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/aichatbot/?ask=Privacy%20v%C3%A0%20x%E1%BB%AD%20l%C3%BD%20c%E1%BB%A5c%20b%E1%BB%99%20trong%20app%20thu%C3%AA%20xe%3A%20d%E1%BB%AF%20li%E1%BB%87u%20n%E1%BA%B1m%20%E1%BB%9F%20%C4%91%C3%A2u">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/aichatbot/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/aichatbot/">Agent</a></li>
+          <li><a href="/aichatbot/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/aichatbot/blog/">Cẩm nang</a></li>
+          <li><a href="/aichatbot/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/aichatbot/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/aichatbot/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/aichatbot/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/aichatbot/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/aichatbot/">⚡ Agent</a></li>
+      <li><a href="/aichatbot/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/" aria-current="page">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/app/" aria-current="page">📱 Ứng Dụng</a></li>
+            <li><a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/aichatbot/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/aichatbot/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/aichatbot/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/aichatbot/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/aichatbot/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Privacy và xử lý cục bộ trong app thuê xe: dữ liệu nằm ở đâu","description":"Cách app thuê xe MotoAI xử lý cục bộ: hội thoại lưu trong trình duyệt, không cần tài khoản, Agent chạy trên thiết bị, và bạn xóa dữ liệu khi muốn.","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://thuexemayhanoi.github.io/aichatbot/"},"mainEntityOfPage":"https://thuexemayhanoi.github.io/aichatbot/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://thuexemayhanoi.github.io/aichatbot/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://thuexemayhanoi.github.io/aichatbot/blog/"},{"@type":"ListItem","position":3,"name":"Công cụ & Hướng dẫn","item":"https://thuexemayhanoi.github.io/aichatbot/blog/cong-cu-huong-dan/"},{"@type":"ListItem","position":4,"name":"Ứng Dụng","item":"https://thuexemayhanoi.github.io/aichatbot/blog/app/"},{"@type":"ListItem","position":5,"name":"Privacy và xử lý cục bộ trong app thuê xe: dữ liệu nằm ở đâu","item":"https://thuexemayhanoi.github.io/aichatbot/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe/"}]}
+  </script>
+
+  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=63"></script>
+</body>
+</html>

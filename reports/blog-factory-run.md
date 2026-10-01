@@ -171,3 +171,7 @@
 - 2026-10-01 FINISH BA-0048
 - 2026-10-01 QA PASS BA-0048
 - 2026-10-01 PUBLISHED BA-0048 (thanh-xuan-duong-di) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0049
+- 2026-10-01 FINISH BA-0049
+- 2026-10-01 QA PASS BA-0049
+- 2026-10-01 PUBLISHED BA-0049 (privacy-va-xu-ly-cuc-bo-trong-app-thue-xe) — page, matrix, indexes, sitemap consistent
