@@ -50,7 +50,7 @@ docs/state/active-work.json  # checkpoint/lock cho các scheduled run
 reports/                 # evidence report theo từng run
 tools/gen-matrix.mjs     # tái tạo Master Matrix (idempotent)
 .github/workflows/ci.yml # CI: full tests + secret scan + bundle guard
-.github/workflows/blog-factory-publish.yml # micro batch publish: 2 bài/chunk (scoped QA + grouped transaction + 1 derived commit)
+.github/workflows/blog-factory-publish.yml # simple production mode: 2 bài/chunk (select exact ids → scoped QA + grouped transaction + light matrix smoke + 1 derived commit; không lock, không chờ Pages)
 ```
 
 LLM **tùy chọn hoàn toàn** — không có API key, không backend, không paid inference; mọi tính năng cơ bản (rules, NLU, BM25, recommendation, calculator, context) chạy không cần LLM. Lớp semantic cũng là local-first: model embedding tải từ CDN tĩnh, chạy WASM trong trình duyệt, chỉ warm-up SAU lượt chat đầu tiên, fail thì BM25 vẫn đầy đủ. Toàn bộ context memory nằm trong localStorage của người dùng (nút 🧹 để xoá).
@@ -156,13 +156,13 @@ node tools/build-blog.mjs                  # dựng blog + indexes + sitemap
 node tools/blog-factory.mjs validate       # QA ma trận
 node tools/blog-factory.mjs claim [BA-id]  # nhận ĐÚNG 1 dòng PLANNED -> WRITING (cần lock)
 node tools/blog-factory.mjs finish BA-xxxx # WRITING -> QA
-node tools/blog-factory.mjs prepare BA-xxxx # auto-claim PLANNED/WRITING -> QA (workflow dùng lệnh này)
+node tools/blog-factory.mjs prepare BA-xxxx # auto-claim PLANNED/WRITING -> QA (workflow dùng; lock-free từ v67)
 node tools/blog-factory.mjs qa BA-xxxx     # scoped QA deterministic (PASS/FAIL)
 node tools/blog-factory.mjs publish BA-xxxx# publish 1 bài (transaction)
 node tools/blog-factory.mjs resume         # phục hồi transaction đứt quãng
 ```
 
-Writer production (continuous, 2 bài/chunk): viết 2 bodies + 2 manifest draft entries → local scoped QA từng bài → push; `blog-factory-publish.yml` tự detect đúng các bài, auto-claim, scoped QA, grouped publish (1 build/chunk), verify và commit derived state. Chi tiết: `docs/CONTINUOUS-WRITER.md`. Article-only push không chạy full chatbot CI (`ci.yml`/`distribution.yml` bỏ qua qua `paths-ignore`); engine/tool/workflow changes vẫn chạy full suite.
+Writer production (continuous, 2 bài/chunk, SIMPLE PRODUCTION MODE v67): viết 2 bodies + 2 manifest draft entries → local scoped QA từng bài → push; `blog-factory-publish.yml` select đúng exact ids (NEW/REPAIR/BACKLOG tách rời, không trộn scope), auto-claim, scoped QA đúng 2 bài, grouped publish (1 build/chunk), light matrix smoke và MỘT derived commit; không lock, không chờ Pages. Chi tiết: `docs/CONTINUOUS-WRITER.md`. Article-only push không chạy full chatbot CI (`ci.yml`/`distribution.yml` bỏ qua qua `paths-ignore`); engine/tool/workflow changes vẫn chạy full suite.
 
 ## Homepage (v47.1 — chatbot-first)
 
@@ -183,14 +183,15 @@ Homepage không tải: metadata 2.000 bài, full blog index, model embedding, mo
 
 ## Lệnh scheduled sản xuất nội dung (không tự chạy)
 
-Khi được yêu cầu rõ ràng, run theo LIGHTWEIGHT MICRO LOOP — 1 BÀI / CYCLE (v64):
+Khi được yêu cầu rõ ràng, run theo SIMPLE PRODUCTION MODE — 2 BÀI / MICRO CHUNK (v66→v67, /vanchinh style):
 
 ```
-Đọc README → docs/BLOG-FACTORY.md (procedure) → lock → claim đúng các bài theo hợp đồng chunk
-→ viết đúng 1 bài (body + manifest draft) → finish → push
-→ blog-factory-publish.yml: scoped QA → publish transaction → rebuild + verify
-→ commit derived state → clean txn/lock → xanh
-→ fetch fresh main → cycle kế tiếp (chỉ khi được yêu cầu tiếp)
+Đọc README → docs/BLOG-FACTORY.md (procedure) → docs/CONTINUOUS-WRITER.md (hợp đồng)
+→ fetch fresh main → RECOVER IF NEEDED (txn marker → resume; state sạch → đi thẳng)
+→ viết đúng 2 bài (2 bodies + 2 manifest drafts) → local scoped QA each → push 2
+→ blog-factory-publish.yml: select exact ids → prepare-chunk → qa-chunk
+   → publish-chunk (MỘT build cho chunk) → light matrix smoke → MỘT derived commit
+→ factory green = checkpoint production (KHÔNG chờ Pages) → fetch fresh main → cặp kế tiếp
 ```
 
 # BLOG APP UX FOUNDATION (v54 — 2026-09-26)

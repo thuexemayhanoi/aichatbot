@@ -17,12 +17,13 @@
  * Commands:
  *   node tools/blog-factory.mjs status
  *   node tools/blog-factory.mjs validate
- *   node tools/blog-factory.mjs lock            (create run lock)
+ *   node tools/blog-factory.mjs lock            (manual runs only — the publish
+ *                                                 workflow no longer uses a lock, v67)
  *   node tools/blog-factory.mjs unlock
- *   node tools/blog-factory.mjs claim [BA-id]   (EXACTLY 1 article: next PLANNED, or the given id)
+ *   node tools/blog-factory.mjs claim [BA-id]   (manual, lock required: EXACTLY 1 article)
  *   node tools/blog-factory.mjs finish <BA-id>  (WRITING -> QA; finish-chunk alias kept)
  *   node tools/blog-factory.mjs qa <BA-id>      (scoped deterministic QA: PASS or REVIEW/BLOCKED)
- *   node tools/blog-factory.mjs prepare <BA-id>        (single-article auto-claim, v65 semantics)
+ *   node tools/blog-factory.mjs prepare <BA-id>        (single-article auto-claim, lock-free v67)
  *   node tools/blog-factory.mjs prepare-chunk <id,...> (multi-id prepare: PLANNED/WRITING -> QA)
  *   node tools/blog-factory.mjs qa-chunk <id,...>      (multi-id scoped QA, independent results)
  *   node tools/blog-factory.mjs publish <BA-id>        (single-article transaction; alias of publish-chunk)
@@ -329,18 +330,17 @@ function resume(now) {
 }
 
 /**
- * v64 micro loop claim — EXACTLY ONE article per cycle (lock required).
+ * v64 micro loop claim — EXACTLY ONE article per cycle.
  * - no argument: take the first PLANNED row (matrix order)
  * - BA-id: take exactly that row (must still be PLANNED)
  * - numeric chunk sizes are refused: the chunk contract is retired.
  * Happy path invariant: at most ONE row is WRITING at any time.
+ * The manual CLI keeps the lock requirement; the publish workflow no
+ * longer uses a lock (v67 Simple Production Mode) — its runs are serialized
+ * by the workflow concurrency group and crash safety lives in the txn
+ * marker, so `claimRow` below is lock-free.
  */
-function claim(argId) {
-  if (!existsSync(LOCK)) { console.error('refusing to claim without the run lock'); process.exit(1); }
-  if (argId && /^\d+$/.test(argId)) {
-    console.error('numeric chunk claiming removed: pass a BA-id or omit the argument (writer chunks use prepare-chunk with explicit ids)');
-    process.exit(1);
-  }
+function claimRow(argId) {
   const rows = parseMatrix();
   const inFlight = rows.find((r) => r.status === 'WRITING');
   if (inFlight) {
@@ -363,6 +363,16 @@ function claim(argId) {
   saveCheckpoint(cp);
   report(`CLAIM 1: ${row.article_id}`);
   console.log(`claimed 1: ${row.article_id}`);
+}
+
+/** Manual claim CLI — keeps the run-lock requirement (backward compatible). */
+function claim(argId) {
+  if (!existsSync(LOCK)) { console.error('refusing to claim without the run lock'); process.exit(1); }
+  if (argId && /^\d+$/.test(argId)) {
+    console.error('numeric chunk claiming removed: pass a BA-id or omit the argument (writer chunks use prepare-chunk with explicit ids)');
+    process.exit(1);
+  }
+  claimRow(argId);
 }
 
 /** finish: WRITING -> QA for exactly one article (writer's job done). */
@@ -464,8 +474,10 @@ function qaChunk(rawIds, now) {
 
 /**
  * v65 continuous-ready prepare — the state transitions the writer no longer
- * performs by hand. Idempotent, lock required, driven by the publish
- * workflow after factory-select picks the exact article:
+ * performs by hand. Idempotent, driven by the publish workflow after
+ * factory-select picks the exact ids. v67 Simple Production Mode: no run
+ * lock — workflow runs are serialized by the concurrency group and crash
+ * safety lives in the txn marker (the manual claim CLI keeps its lock).
  *   PLANNED -> claim exact id -> finish -> QA
  *   WRITING -> finish -> QA
  *   QA/REVIEW/REPAIR/PASS -> no-op (resume/QA/publish continue from there)
@@ -473,11 +485,10 @@ function qaChunk(rawIds, now) {
  */
 function prepare(id) {
   if (!id || !/^BA-\d{4}$/.test(id)) { console.error('prepare <BA-id>'); process.exit(1); }
-  if (!existsSync(LOCK)) { console.error('refusing to prepare without the run lock'); process.exit(1); }
   const row = parseMatrix().find((r) => r.article_id === id);
   if (!row) { console.error(`unknown matrix id ${id}`); process.exit(1); }
   if (row.status === 'PLANNED') {
-    claim(id);
+    claimRow(id);
     finish(id);
   } else if (row.status === 'WRITING') {
     finish(id);
@@ -491,13 +502,13 @@ function prepare(id) {
 
 /**
  * prepare-chunk <id,...> — deterministic multi-id prepare for the exact
- * selection scope (v66). Idempotent per article, lock required, driven by
- * the publish workflow. Each row is driven fully to QA before the next one
- * so the single-flight WRITING invariant of `claim` is never violated.
+ * selection scope (v66). Idempotent per article, driven by the publish
+ * workflow. v67: no run lock (see prepare). Each row is driven fully to QA
+ * before the next one so the single-flight WRITING invariant is never
+ * violated.
  */
 function prepareChunk(rawIds) {
   const ids = parseIds(rawIds);
-  if (!existsSync(LOCK)) { console.error('refusing to prepare without the run lock'); process.exit(1); }
   for (const id of ids) prepare(id);
   console.log(`prepare-chunk: ${ids.length} row(s) at QA-or-later`);
 }

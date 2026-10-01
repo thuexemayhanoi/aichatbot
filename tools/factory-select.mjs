@@ -18,23 +18,25 @@
  *   id=<first scope id>            # legacy single-id field kept for compatibility
  *   mode=refuse ... -> contract violation (exit 1)
  *
- * v66 TWO-ARTICLE MICRO BATCH (docs/CONTINUOUS-WRITER.md): the writer pushes a
- * micro chunk of 2 articles (1 allowed at a corpus boundary); the workflow
- * ceiling is 50 changed bodies per push, mirroring /vanchinh. Every id maps
- * uniquely to matrix + manifest; PUBLISHED edits never auto-rewrite;
- * unfinished repair/resume rows take priority over new PLANNED work.
+ * v67 SIMPLE PRODUCTION MODE (docs/CONTINUOUS-WRITER.md, mirrors /vanchinh):
+ * the writer pushes a micro chunk of 2 articles (1 allowed at a corpus
+ * boundary); the workflow ceiling is 50 changed bodies per push. NEW /
+ * REPAIR / BACKLOG are MUTUALLY EXCLUSIVE scopes — a run never mixes them.
+ * Every id maps uniquely to matrix + manifest; PUBLISHED edits never
+ * auto-rewrite.
  *
  * Selection rules (deterministic, matrix is truth):
- *   NEW:     pushed bodies on PLANNED/WRITING rows -> claim (auto-claim via
- *            prepare-chunk). Pushed QA/REVIEW/REPAIR rows -> scoped QA re-run.
- *            Pushed PASS rows -> ready (publish without re-QA).
- *   REPAIR:  no new bodies pushed, but pushed/known rows are in
+ *   NEW:     pushed bodies on PLANNED/WRITING rows -> claim EXACTLY those
+ *            (auto-claim via prepare-chunk). Pushed QA/REVIEW/REPAIR rows in
+ *            the SAME push -> scoped QA re-run (they are part of the push).
+ *            Pushed PASS rows -> ready (publish without re-QA). Unrelated
+ *            pending/backlog rows are NEVER mixed into a NEW run.
+ *   REPAIR:  no new bodies pushed, but pushed rows are in
  *            QA/REVIEW/REPAIR/PASS -> process EXACTLY those; never claim PLANNED.
- *   BACKLOG: PLANNED rows whose body + valid manifest draft already exist on
- *            disk (an earlier workflow died) are discovered deterministically —
- *            no re-push needed to retrigger them.
- *   PENDING: rows NOT in this push that are still unfinished (QA/REVIEW/
- *            REPAIR/PASS with a valid draft) always win before new work.
+ *   BACKLOG: only when NO article bodies were pushed (--backlog scan or a
+ *            push without article files): unfinished rows with a valid draft
+ *            (QA/REVIEW/REPAIR/PASS) first, then PLANNED rows whose body +
+ *            manifest draft already exist on disk (an earlier workflow died).
  *   SKIP:    nothing actionable (PUBLISHED-only edit, tooling-only push).
  *
  * Refuse rules (writer push violations):
@@ -117,8 +119,7 @@ function validDraft(row, manifest, { refuse = true } = {}) {
   return entry;
 }
 
-/** Classify a scope of rows into claim / qa / ready lists (scope order kept:
- *  resume/repair rows first, then pushed, then backlog). */
+/** Classify a scope of rows into claim / qa / ready lists (scope order kept). */
 function classify(scopeRows) {
   const claim = [];
   const qa = [];
@@ -141,10 +142,11 @@ function classify(scopeRows) {
   };
 }
 
-/** Unfinished rows NOT part of the push: resume/repair priority + backlog
- *  discovery. A PLANNED row with a body + valid draft on disk is backlog (an
- *  earlier workflow died before claiming it) — it must be re-triggered
- *  without rewriting or re-pushing the article. */
+/** Unfinished rows NOT part of a push (backlog scan only, /vanchinh style):
+ *  recovery net for a dead earlier run. QA/REVIEW/REPAIR/PASS rows with a
+ *  valid draft are pending (repair-first); a PLANNED row with a body + valid
+ *  draft on disk is backlog (an earlier workflow died before claiming it) —
+ *  both are re-triggered without rewriting or re-pushing the article. */
 function discoverPending(rows, manifest, pushedIds) {
   const pending = [];
   const backlog = [];
@@ -234,21 +236,25 @@ function selectFromFiles(fileListPath) {
     });
   }
 
-  // Resume/repair priority: unfinished rows NOT in this push are processed
-  // in the same run, BEFORE the newly pushed articles.
-  const pushedIds = new Set(pushed.map((r) => r.article_id));
-  const { pending, backlog } = discoverPending(rows, manifest, pushedIds);
-
-  // Priority order = trim order: resume/repair rows win, then the pushed
-  // articles (the trigger), then backlog. Anything beyond the ceiling stays
-  // discoverable by the next run's pending/backlog scan.
-  const scope = [...pending, ...pushed, ...backlog].slice(0, MAX_PUSH_BODIES);
-  const isNew = pushed.some((r) => ['PLANNED', 'WRITING'].includes(r.status));
-  const out = classify(scope);
-  const mode = isNew ? 'new'
-    : pushed.some((r) => ['QA', 'REVIEW', 'REPAIR', 'PASS'].includes(r.status)) ? 'repair'
-      : 'backlog';
-  emit(mode, out);
+  // SIMPLE PRODUCTION MODE (v67, mirrors /vanchinh): NEW / REPAIR are derived
+  // from THIS push only — mutually exclusive, never mixed with unrelated
+  // pending/backlog rows. Unfinished rows NOT in the push are picked up by a
+  // repair push (body edit) or the --backlog scan, never auto-mixed here.
+  const idSort = (a, b) => a.article_id.localeCompare(b.article_id);
+  const newRows = pushed.filter((r) => ['PLANNED', 'WRITING'].includes(r.status)).sort(idSort);
+  const repairRows = pushed.filter((r) => ['QA', 'REVIEW', 'REPAIR'].includes(r.status)).sort(idSort);
+  const readyRows = pushed.filter((r) => r.status === 'PASS').sort(idSort);
+  if (newRows.length > 0) {
+    // NEW: claim EXACTLY the pushed PLANNED/WRITING rows. Pushed repair rows
+    // ride along (same push, /vanchinh semantics); pushed PASS rows publish
+    // without re-QA. Nothing outside the push is ever claimed or re-QA'd.
+    // Scope is sorted by article_id so the printed ids are deterministic.
+    emit('new', classify([...newRows, ...repairRows, ...readyRows].sort(idSort)));
+  } else {
+    // REPAIR: re-QA exactly the pushed QA/REVIEW/REPAIR rows; pushed PASS rows
+    // publish without re-QA. NEVER claims fresh PLANNED rows.
+    emit('repair', classify([...repairRows, ...readyRows].sort(idSort)));
+  }
 }
 
 function selectByIds(rawIds) {

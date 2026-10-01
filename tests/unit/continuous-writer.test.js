@@ -8,12 +8,15 @@ import {
 } from '../helpers/factory-sandbox.mjs';
 
 /**
- * v66 TWO-ARTICLE MICRO BATCH contract (docs/CONTINUOUS-WRITER.md) — SANDBOX ONLY.
+ * v67 SIMPLE PRODUCTION MODE contract (docs/CONTINUOUS-WRITER.md) — SANDBOX ONLY.
  *
  * The writer's happy path is: write TWO article sources + their manifest
  * draft entries -> push. GitHub owns claim/QA/publish/verify:
- *   select --files -> recover -> lock -> prepare-chunk (auto-claim)
+ *   select --files -> recover-if-needed (NO lock) -> prepare-chunk (auto-claim)
  *   -> qa-chunk (independent PASS/FAIL) -> publish-chunk (ONE grouped build)
+ * NEW / REPAIR / BACKLOG scopes are mutually exclusive (mirrors /vanchinh):
+ * a NEW push processes EXACTLY the pushed ids and never mixes unrelated
+ * pending/backlog rows.
  * Every test below drives that exact workflow sequence inside a sandbox.
  */
 
@@ -60,7 +63,7 @@ test('chunk: 2 PLANNED bodies + 2 manifest entries -> select both -> prepare-chu
   assert.match(out, /qa_ids=BA-0002,BA-0003/);
 
   // Workflow sequence, exactly as blog-factory-publish.yml runs it.
-  factory(dir, ['lock']);
+  // v67: NO lock — the run is serialized by the workflow concurrency group.
   assert.match(factory(dir, ['prepare-chunk', 'BA-0002,BA-0003']), /prepare-chunk: 2 row\(s\) at QA-or-later/);
   assert.match(factory(dir, ['prepare-chunk', 'BA-0002,BA-0003']), /already at QA/); // idempotent
   assert.equal(matrixRow(dir, a).status, 'QA');
@@ -79,7 +82,6 @@ test('chunk: 2 PLANNED bodies + 2 manifest entries -> select both -> prepare-chu
   assert.match(pub, /published BA-0003 -> /);
   assert.match(pub, /build_calls=1/, 'ONE grouped build for the whole chunk, not two');
   assert.match(factory(dir, ['validate']), /matrix OK/);
-  factory(dir, ['unlock']);
 
   for (const id of [a, b]) {
     const row = matrixRow(dir, id);
@@ -88,7 +90,7 @@ test('chunk: 2 PLANNED bodies + 2 manifest entries -> select both -> prepare-chu
     assert.ok(readFileSync(join(dir, 'sitemap.xml'), 'utf8').includes(row.output_path.replace(/index\.html$/, '')));
   }
   assert.ok(!existsSync(join(dir, 'docs/state/blog-factory.transaction.json')), 'txn cleared');
-  assert.ok(!existsSync(join(dir, 'docs/state/blog-factory.lock')), 'lock released');
+  assert.ok(!existsSync(join(dir, 'docs/state/blog-factory.lock')), 'happy path creates no lock');
   const cp = readJson(dir, 'docs/state/blog-factory.checkpoint.json');
   assert.deepEqual(cp.claimed, []);
   assert.deepEqual(cp.finished, []);
@@ -100,7 +102,6 @@ test('chunk: one PASS + one REVIEW -> publish ONLY the PASS id; the failed one s
   const bad = installFixture(dir, {
     ...BASE2, body: fixtureBody({ paragraphs: 0, tag: 'Gói xe B' }), rowId: 'BA-0003', status: 'QA'
   }); // <1.500 words -> QA FAIL
-  factory(dir, ['lock']);
   const qaOut = factory(dir, ['qa-chunk', `${good},${bad}`]);
   assert.match(qaOut, /pass_ids=BA-0002/);
   assert.match(qaOut, /fail_ids=BA-0003/);
@@ -114,7 +115,6 @@ test('chunk: one PASS + one REVIEW -> publish ONLY the PASS id; the failed one s
   assert.equal(matrixRow(dir, bad).status, 'REVIEW', 'one bad article never corrupts the good one');
   assert.ok(existsSync(join(dir, matrixRow(dir, good).output_path)));
   assert.ok(!existsSync(join(dir, matrixRow(dir, bad).output_path)), 'nothing published from a failed QA');
-  factory(dir, ['unlock']);
 });
 
 test('chunk: publish-chunk refuses a non-PASS id and writes no transaction marker', () => {
@@ -128,21 +128,17 @@ test('chunk: publish-chunk refuses a non-PASS id and writes no transaction marke
 
 test('chunk: duplicate id inside a chunk command is REFUSED', () => {
   const dir = repoSandbox();
-  factory(dir, ['lock']);
   const out = factory(dir, ['prepare-chunk', 'BA-0002,BA-0002'], true);
   assert.ok(out.fail);
   assert.match(out.msg, /duplicate article id in chunk/);
-  factory(dir, ['unlock']);
 });
 
 test('chunk: crash mid grouped publish keeps the marker; resume recovers the EXACT same ids', () => {
   const dir = repoSandbox();
   const [a, b] = installChunk(dir);
-  factory(dir, ['lock']);
   factory(dir, ['prepare-chunk', 'BA-0002,BA-0003']);
   factory(dir, ['qa-chunk', 'BA-0002,BA-0003']);
   factory(dir, ['publish-chunk', 'BA-0002,BA-0003']);
-  factory(dir, ['unlock']);
   assert.equal(matrixRow(dir, a).status, 'PUBLISHED');
   assert.equal(matrixRow(dir, b).status, 'PUBLISHED');
 
@@ -166,7 +162,6 @@ test('chunk: crash mid grouped publish keeps the marker; resume recovers the EXA
 test('chunk: resume re-drives a PASS row that crashed before the matrix write', () => {
   const dir = repoSandbox();
   const [a, b] = installChunk(dir);
-  factory(dir, ['lock']);
   factory(dir, ['prepare-chunk', 'BA-0002,BA-0003']);
   factory(dir, ['qa-chunk', 'BA-0002,BA-0003']);
   // Crash between marker write and the matrix write: rows still PASS.
@@ -183,10 +178,8 @@ test('chunk: resume re-drives a PASS row that crashed before the matrix write', 
 test('chunk: legacy single-id marker still resumes (backward compatibility)', () => {
   const dir = repoSandbox();
   const id = installFixture(dir, { ...BASE, body: fixtureBody(), rowId: 'BA-0002', status: 'QA' });
-  factory(dir, ['lock']);
   factory(dir, ['qa', id]);
   factory(dir, ['publish', id]);
-  factory(dir, ['unlock']);
   writeFileSync(join(dir, 'docs/state/blog-factory.transaction.json'),
     JSON.stringify({ article_id: id, phase: 'write', started: '2026-09-30T00:00:00.000Z' }, null, 2));
   rmSync(join(dir, matrixRow(dir, id).output_path));
@@ -205,35 +198,72 @@ test('chunk: single-article push still works (corpus-boundary chunk size 1)', ()
   assert.match(out, /mode=new/);
   assert.match(out, /claim_ids=BA-0002/);
   assert.match(out, /qa_ids=BA-0002/);
-  factory(dir, ['lock']);
   factory(dir, ['prepare-chunk', id]);
   factory(dir, ['qa-chunk', id]);
   assert.match(factory(dir, ['publish-chunk', id]), /build_calls=1/);
-  factory(dir, ['unlock']);
   assert.equal(matrixRow(dir, id).status, 'PUBLISHED');
 });
 
-test('chunk: unfinished drafts take priority — they are processed WITH the new push, not refused', () => {
+test('chunk: NEW push processes EXACTLY the pushed ids — unrelated pending rows are NOT mixed (v67, /vanchinh)', () => {
   const dir = repoSandbox();
-  installFixture(dir, { ...BASE, body: bodyA(), rowId: 'BA-0002', status: 'QA' }); // pending draft #1
-  const second = installFixture(dir, { ...BASE2, body: bodyB(), rowId: 'BA-0003', status: 'PLANNED' }); // new push target
+  // An unfinished row NOT part of the push (QA with a valid draft on disk).
+  installFixture(dir, { ...BASE, body: bodyA(), rowId: 'BA-0002', status: 'QA' });
+  // The writer pushes exactly one new article (BA-0003).
+  const second = installFixture(dir, { ...BASE2, body: bodyB(), rowId: 'BA-0003', status: 'PLANNED' });
   const slug = matrixRow(dir, second).slug;
-  const out = selectCli(dir, ['--files', writeFileList('pending', [
+  const out = selectCli(dir, ['--files', writeFileList('exact-new', [
     `data/blog/articles/${slug}.body.html`, 'data/blog/published.json'
   ])]);
   assert.match(out, /mode=new/);
-  assert.match(out, /ids=BA-0002,BA-0003/, 'pending draft comes FIRST (resume wins)');
+  assert.match(out, /ids=BA-0003/, 'scope = exactly the pushed ids');
+  assert.ok(!out.includes('BA-0002'), 'unrelated pending rows never join a NEW run');
+  assert.match(out, /claim_ids=BA-0003/);
+  assert.match(out, /qa_ids=BA-0003/);
+  // The grouped run completes exactly the pushed pair — the pending row stays untouched.
+  factory(dir, ['prepare-chunk', 'BA-0003']);
+  factory(dir, ['qa-chunk', 'BA-0003']);
+  const pub = factory(dir, ['publish-chunk', 'BA-0003']);
+  assert.match(pub, /build_calls=1/);
+  assert.equal(matrixRow(dir, 'BA-0003').status, 'PUBLISHED');
+  assert.equal(matrixRow(dir, 'BA-0002').status, 'QA', 'pending row waits for its own repair push / backlog scan');
+});
+
+test('chunk: repair rows pushed TOGETHER with new rows ride along in the same run (they are part of the push)', () => {
+  const dir = repoSandbox();
+  const repair = installFixture(dir, { ...BASE, body: bodyA(), rowId: 'BA-0002', status: 'REVIEW' });
+  const fresh = installFixture(dir, { ...BASE2, body: bodyB(), rowId: 'BA-0003', status: 'PLANNED' });
+  const slugs = [matrixRow(dir, repair).slug, matrixRow(dir, fresh).slug];
+  const out = selectCli(dir, ['--files', writeFileList('new-plus-repair', [
+    `data/blog/articles/${slugs[0]}.body.html`,
+    `data/blog/articles/${slugs[1]}.body.html`,
+    'data/blog/published.json'
+  ])]);
+  assert.match(out, /mode=new/);
   assert.match(out, /claim_ids=BA-0003/);
   assert.match(out, /qa_ids=BA-0002,BA-0003/);
-  // And the grouped run completes both.
-  factory(dir, ['lock']);
   factory(dir, ['prepare-chunk', 'BA-0003']);
   factory(dir, ['qa-chunk', 'BA-0002,BA-0003']);
   const pub = factory(dir, ['publish-chunk', 'BA-0002,BA-0003']);
   assert.match(pub, /build_calls=1/);
   assert.equal(matrixRow(dir, 'BA-0002').status, 'PUBLISHED');
   assert.equal(matrixRow(dir, 'BA-0003').status, 'PUBLISHED');
-  factory(dir, ['unlock']);
+});
+
+test('chunk: pending rows are recovered by the --backlog scan, never by a NEW push', () => {
+  const dir = repoSandbox();
+  installFixture(dir, { ...BASE, body: bodyA(), rowId: 'BA-0002', status: 'QA' }); // pending draft
+  installFixture(dir, { ...BASE2, body: bodyB(), rowId: 'BA-0003', status: 'PLANNED' }); // backlog row
+  const out = selectCli(dir, ['--backlog']);
+  assert.match(out, /mode=repair/, 'pending rows first — they are the recovery net');
+  assert.match(out, /ids=BA-0002,BA-0003/);
+  assert.match(out, /claim_ids=BA-0003/);
+  assert.match(out, /qa_ids=BA-0002,BA-0003/);
+  factory(dir, ['prepare-chunk', 'BA-0003']);
+  factory(dir, ['qa-chunk', 'BA-0002,BA-0003']);
+  const pub = factory(dir, ['publish-chunk', 'BA-0002,BA-0003']);
+  assert.match(pub, /build_calls=1/);
+  assert.equal(matrixRow(dir, 'BA-0002').status, 'PUBLISHED');
+  assert.equal(matrixRow(dir, 'BA-0003').status, 'PUBLISHED');
 });
 
 test('chunk: BACKLOG discovery — PLANNED rows with existing bodies+drafts are found without a new push', () => {
@@ -242,7 +272,7 @@ test('chunk: BACKLOG discovery — PLANNED rows with existing bodies+drafts are 
   installFixture(dir, { ...BASE, body: bodyA(), rowId: 'BA-0002', status: 'PLANNED' });
   installFixture(dir, { ...BASE2, body: bodyB(), rowId: 'BA-0003', status: 'PLANNED' });
 
-  // A tooling-only push (no article files) still triggers deterministic backlog scan.
+  // A push without article files falls through to the deterministic backlog scan.
   const out = selectCli(dir, ['--files', writeFileList('backlog', ['README.md'])]);
   assert.match(out, /mode=backlog/);
   assert.match(out, /claim_ids=BA-0002,BA-0003/);
@@ -254,11 +284,9 @@ test('chunk: BACKLOG discovery — PLANNED rows with existing bodies+drafts are 
   assert.match(out2, /claim_ids=BA-0002,BA-0003/);
 
   // And the factory completes the backlog without any re-push of the articles.
-  factory(dir, ['lock']);
   factory(dir, ['prepare-chunk', 'BA-0002,BA-0003']);
   factory(dir, ['qa-chunk', 'BA-0002,BA-0003']);
   factory(dir, ['publish-chunk', 'BA-0002,BA-0003']);
-  factory(dir, ['unlock']);
   assert.equal(matrixRow(dir, 'BA-0002').status, 'PUBLISHED');
   assert.equal(matrixRow(dir, 'BA-0003').status, 'PUBLISHED');
 });
@@ -358,10 +386,8 @@ test('chunk: published.json without a new article body is REFUSED', () => {
 test('chunk: stale writer state loses — remote main (PUBLISHED) wins, no rewrite', () => {
   const dir = repoSandbox();
   const id = installFixture(dir, { ...BASE, body: fixtureBody(), rowId: 'BA-0002', status: 'QA' });
-  factory(dir, ['lock']);
   factory(dir, ['qa-chunk', id]);
   factory(dir, ['publish-chunk', id]);
-  factory(dir, ['unlock']);
   assert.equal(matrixRow(dir, id).status, 'PUBLISHED');
   const slug = matrixRow(dir, id).slug;
   const out = selectCli(dir, ['--files', writeFileList('stale', [`data/blog/articles/${slug}.body.html`])]);
@@ -373,7 +399,6 @@ test('chunk: a sub-1.500-word draft fails scoped QA inside the chunk -> REVIEW (
   const dir = repoSandbox();
   const short = fixtureBody({ paragraphs: 0 });
   const id = installFixture(dir, { ...BASE, body: short, rowId: 'BA-0002', status: 'QA' });
-  factory(dir, ['lock']);
   const out = factory(dir, ['qa-chunk', id]);
   assert.match(out, /fail_ids=BA-0002/);
   const row = matrixRow(dir, id);
@@ -381,7 +406,6 @@ test('chunk: a sub-1.500-word draft fails scoped QA inside the chunk -> REVIEW (
   assert.equal(row.repair_attempts, '1');
   assert.equal(row.quality_status, 'FAIL');
   assert.ok(!existsSync(join(dir, row.output_path)), 'nothing published from a failed QA');
-  factory(dir, ['unlock']);
 });
 
 test('chunk: qa-chunk skips an already-PASS row without re-running QA', () => {
@@ -399,7 +423,6 @@ test('chunk: publish never truncates — a 2.500-word article keeps its full bod
   const id = installFixture(dir, { ...BASE, body, rowId: 'BA-0002', status: 'QA' });
   const bodyPath = join(dir, 'data/blog/articles', `${matrixRow(dir, id).slug}.body.html`);
   const before = readFileSync(bodyPath, 'utf8');
-  factory(dir, ['lock']);
   factory(dir, ['qa-chunk', id]);
   factory(dir, ['publish-chunk', id]);
   assert.equal(readFileSync(bodyPath, 'utf8'), before, 'body source byte-identical after publish');
@@ -407,22 +430,21 @@ test('chunk: publish never truncates — a 2.500-word article keeps its full bod
   const lastPara = before.trim().split('\n').pop();
   assert.ok(page.includes(lastPara), 'built page contains the final paragraph (no mid-article truncation)');
   assert.equal(matrixRow(dir, id).status, 'PUBLISHED');
-  factory(dir, ['unlock']);
 });
 
-test('chunk: prepare-chunk refuses without the lock / on terminal rows', () => {
+test('chunk: prepare-chunk is lock-free (v67) but still refuses terminal rows', () => {
   const dir = repoSandbox();
   const id = installFixture(dir, { ...BASE, body: fixtureBody(), rowId: 'BA-0002', status: 'PLANNED' });
-  const noLock = factory(dir, ['prepare-chunk', id], true);
-  assert.ok(noLock.fail, 'prepare-chunk requires the run lock');
-  factory(dir, ['lock']);
+  // Simple Production Mode: the workflow path never takes a lock.
+  assert.match(factory(dir, ['prepare-chunk', id]), /prepare-chunk: 1 row\(s\) at QA-or-later/);
+  assert.equal(matrixRow(dir, id).status, 'QA');
+  assert.ok(!existsSync(join(dir, 'docs/state/blog-factory.lock')), 'no lock created on the happy path');
   setStatus(dir, id, 'FAIL');
   const refused = factory(dir, ['prepare-chunk', id], true);
   assert.ok(refused.fail, 'FAIL rows need human review, not auto-prepare');
   assert.match(refused.msg, /FAIL/);
   const published = factory(dir, ['prepare-chunk', 'BA-0001'], true); // pilot is PUBLISHED
   assert.ok(published.fail, 'PUBLISHED rows are never re-prepared');
-  factory(dir, ['unlock']);
 });
 
 // ---------- pipeline contract: workflows + docs must match the code ----------
@@ -443,7 +465,7 @@ test('pipeline: article-only pushes skip heavy CI — ci.yml and distribution.ym
   }
 });
 
-test('pipeline: blog-factory-publish.yml triggers on the writer push and cannot recurse', () => {
+test('pipeline: blog-factory-publish.yml is the SIMPLE PRODUCTION MODE workflow and cannot recurse', () => {
   const y = read('.github/workflows/blog-factory-publish.yml');
   assert.ok(y.includes("'data/blog/articles/**'"), 'trigger includes article bodies');
   assert.ok(y.includes("'data/blog/published.json'"), 'trigger includes the manifest draft push');
@@ -453,20 +475,33 @@ test('pipeline: blog-factory-publish.yml triggers on the writer push and cannot 
   assert.match(y, /blog-factory\.mjs prepare-chunk/, 'workflow auto-claims the chunk (writer no longer claims by hand)');
   assert.match(y, /blog-factory\.mjs qa-chunk/, 'workflow runs independent scoped QA per article');
   assert.match(y, /blog-factory\.mjs publish-chunk/, 'workflow runs ONE grouped transactional publish');
-  assert.match(y, /blog-factory\.mjs resume/, 'recovery runs before any new work');
+  assert.match(y, /blog-factory\.mjs validate/, 'light matrix smoke runs after publish');
+  // Recovery is CONDITIONAL: resume only when a real txn marker exists.
+  assert.match(y, /if \[ -f docs\/state\/blog-factory\.transaction\.json \]/, 'resume runs only when a real txn marker exists');
+  // v67: no persistent workflow lock anywhere in the pipeline.
+  assert.ok(!y.includes('blog-factory.mjs lock'), 'the workflow never takes a lock');
+  // The workflow never waits on the Pages deploy.
+  assert.ok(!y.includes('deploy-pages') && !y.includes('pages-build'), 'no Pages deploy/wait steps');
   assert.match(y, /\[skip ci\]/, 'derived commit is marked skip-ci');
-  // The derived commit must not touch the trigger paths (no recursive runs).
-  const commitStep = y.split('Commit derived state')[1] ?? '';
+  // The derived commit must not touch the trigger paths (no recursive runs)
+  // and never stages run state.
+  const commitStep = (y.split('Commit derived state')[1] ?? '').split('Assert clean')[0];
   assert.ok(commitStep, 'derived commit step exists');
   assert.ok(!commitStep.includes('data/blog/articles'), 'derived commit never touches article bodies');
   assert.ok(!commitStep.includes('data/blog/published.json'), 'derived commit never touches the manifest');
-  assert.ok(commitStep.includes('blog-factory.lock'), 'lock is explicitly unstaged');
+  assert.ok(!commitStep.includes('blog-factory.lock'), 'derived commit never stages a lock');
+  assert.ok(!commitStep.includes('blog-factory.transaction.json'), 'derived commit never stages the txn marker');
+  // Assert-clean is the final gate of the canonical path.
+  assert.match(y, /Assert clean state/, 'assert-clean step closes the pipeline');
 });
 
 test('pipeline: docs match code — CONTINUOUS-WRITER contract + no outdated wording', () => {
   const cw = read('docs/CONTINUOUS-WRITER.md');
   assert.ok(cw.includes('FETCH FRESH MAIN') && cw.includes('REPEAT'), 'canonical loop is documented');
-  assert.ok(cw.includes('RECOVER') && cw.includes('RESUME'), 'recovery is part of the loop');
+  assert.ok(cw.includes('RECOVER IF NEEDED') && cw.includes('RESUME'), 'recovery-if-needed is part of the loop');
+  assert.ok(cw.includes('SIMPLE PRODUCTION MODE'), 'simple production mode contract is documented');
+  assert.ok(cw.includes('MUTUALLY EXCLUSIVE'), 'scope separation (NEW/REPAIR/BACKLOG) is documented');
+  assert.ok(!cw.includes('LUÔN được ưu tiên trước bài PLANNED mới trong cùng một run'), 'outdated mixed-scope rule removed');
   assert.ok(cw.includes('2 ARTICLES / MICRO CHUNK'), 'canonical chunk size 2 is documented');
   assert.ok(cw.includes('WRITE 2') && cw.includes('PUSH 2') && cw.includes('NEXT 2'), 'chunk loop is documented');
   assert.ok(cw.includes('1.500–4.000'), 'length rule is stated');
@@ -477,6 +512,7 @@ test('pipeline: docs match code — CONTINUOUS-WRITER contract + no outdated wor
   assert.ok(bf.includes('continuous-ready'), 'factory is declared continuous-ready');
   assert.ok(bf.includes('prepare-chunk'), 'the chunk auto-claim command is documented');
   assert.ok(bf.includes('publish-chunk'), 'the grouped publish command is documented');
+  assert.ok(bf.includes('SIMPLE PRODUCTION MODE'), 'factory doc documents the simple production mode contract');
   const rules = read('docs/ARTICLE-RULES.md');
   assert.ok(rules.includes('1.500–4.000'), 'article rules keep the synced length gate');
   const qa = read('tools/article-qa.mjs');
