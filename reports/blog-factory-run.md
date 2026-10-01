@@ -55,3 +55,7 @@
 - 2026-10-01 FINISH BA-0019
 - 2026-10-01 QA PASS BA-0019
 - 2026-10-01 PUBLISHED BA-0019 (cach-tinh-gia-thue-xe-bang-app) — page, matrix, indexes, sitemap consistent
+- 2026-10-01 CLAIM 1: BA-0020
+- 2026-10-01 FINISH BA-0020
+- 2026-10-01 QA PASS BA-0020
+- 2026-10-01 PUBLISHED BA-0020 (thue-xe-may-theo-thang) — page, matrix, indexes, sitemap consistent
