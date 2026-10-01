@@ -341,6 +341,21 @@
         "Hồ Tây và xe máy hợp nhất khi chạy một vòng quanh hồ theo chiều ngược kim đồng hồ để giữ mặt nước bên phải tay lái, dừng ở chùa Trấn Quốc, đường Thanh Niên, công viên nước và các điểm nhìn hoàng hôn ven hồ, hoàn tất trong khoảng hai mươi phút chạy thong thả không tính điểm dừng.",
         "Khu vực hồ Tây có đường rộng và bãi gửi xe dễ tìm hơn phố cổ nhưng nhiều đoạn ven hồ có người quản lý trật tự: khi dừng ngắn hãy khóa cổ xe và rút chìa, khi vào quán lâu nên hỏi quán có chỗ để xe thay vì chèn lên vỉa hè."
       ]
+    },
+    {
+      "article_id": "BA-0025",
+      "category": "APP",
+      "slug": "chon-xe-bang-agent",
+      "title": "Chọn xe bằng Agent: nói nhu cầu để nhận đúng dòng xe",
+      "description": "Chọn xe bằng Agent: năm thông tin cần mô tả để trợ lý gợi ý dòng xe phù hợp với chuyến đi, cách Agent suy luận từ nhu cầu và các câu hỏi nên hỏi lại trước khi chốt.",
+      "published_date": "2026-10-01",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chon-xe-bang-agent.body.html",
+      "knowledge_chunks": [
+        "Chọn xe bằng Agent dựa trên năm nhóm thông tin: khoảng cách và loại chặng, số người và đồ mang theo, khung giờ thuê, kinh nghiệm lái của người thuê và các điều kiện đặc biệt như cần cốp rộng hay ưu tiên xe điện; mô tả rõ từ câu đầu giúp trợ lý gợi ý dòng xe phù hợp trong một lượt hội thoại.",
+        "Sau khi nhận gợi ý dòng xe từ Agent, khách nên hỏi lại bốn điều trong cùng một tin nhắn: tình trạng còn xe ở khung giờ cần thuê, điều kiện thuê của dòng đó, báo giá đầy đủ và thủ tục nhận trả xe; Agent gợi ý theo nhóm dòng xe và luôn xác nhận lại xe còn thực tế thay vì hứa trước một chiếc cụ thể."
+      ]
     }
   ]
 }
