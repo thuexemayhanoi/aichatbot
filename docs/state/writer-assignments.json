@@ -1,0 +1,264 @@
+{
+  "$schema": "motoai/writer-assignments@1",
+  "active": {
+    "batch_id": "WRITER-BATCH-0001",
+    "base_sha": "",
+    "status": "ACTIVE",
+    "created_at": "2026-10-02T17:50:48.151Z",
+    "limit": 50,
+    "total": 50,
+    "chunks": [
+      {
+        "seq": 1,
+        "writer": "writer_A",
+        "ids": [
+          "BA-0051",
+          "BA-0052"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 2,
+        "writer": "writer_B",
+        "ids": [
+          "BA-0053",
+          "BA-0054"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 3,
+        "writer": "writer_C",
+        "ids": [
+          "BA-0055",
+          "BA-0056"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 4,
+        "writer": "writer_A",
+        "ids": [
+          "BA-0057",
+          "BA-0058"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 5,
+        "writer": "writer_B",
+        "ids": [
+          "BA-0059",
+          "BA-0060"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 6,
+        "writer": "writer_C",
+        "ids": [
+          "BA-0061",
+          "BA-0062"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 7,
+        "writer": "writer_A",
+        "ids": [
+          "BA-0063",
+          "BA-0064"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 8,
+        "writer": "writer_B",
+        "ids": [
+          "BA-0065",
+          "BA-0066"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 9,
+        "writer": "writer_C",
+        "ids": [
+          "BA-0067",
+          "BA-0068"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 10,
+        "writer": "writer_A",
+        "ids": [
+          "BA-0069",
+          "BA-0070"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 11,
+        "writer": "writer_B",
+        "ids": [
+          "BA-0071",
+          "BA-0072"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 12,
+        "writer": "writer_C",
+        "ids": [
+          "BA-0073",
+          "BA-0074"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 13,
+        "writer": "writer_A",
+        "ids": [
+          "BA-0075",
+          "BA-0076"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 14,
+        "writer": "writer_B",
+        "ids": [
+          "BA-0077",
+          "BA-0078"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 15,
+        "writer": "writer_C",
+        "ids": [
+          "BA-0079",
+          "BA-0080"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 16,
+        "writer": "writer_A",
+        "ids": [
+          "BA-0081",
+          "BA-0082"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 17,
+        "writer": "writer_B",
+        "ids": [
+          "BA-0083",
+          "BA-0084"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 18,
+        "writer": "writer_C",
+        "ids": [
+          "BA-0085",
+          "BA-0086"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 19,
+        "writer": "writer_A",
+        "ids": [
+          "BA-0087",
+          "BA-0088"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 20,
+        "writer": "writer_B",
+        "ids": [
+          "BA-0089",
+          "BA-0090"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 21,
+        "writer": "writer_C",
+        "ids": [
+          "BA-0091",
+          "BA-0092"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 22,
+        "writer": "writer_A",
+        "ids": [
+          "BA-0093",
+          "BA-0094"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 23,
+        "writer": "writer_B",
+        "ids": [
+          "BA-0095",
+          "BA-0096"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 24,
+        "writer": "writer_C",
+        "ids": [
+          "BA-0097",
+          "BA-0098"
+        ],
+        "status": "RESERVED",
+        "events": []
+      },
+      {
+        "seq": 25,
+        "writer": "writer_A",
+        "ids": [
+          "BA-0099",
+          "BA-0100"
+        ],
+        "status": "RESERVED",
+        "events": []
+      }
+    ]
+  },
+  "history": []
+}
