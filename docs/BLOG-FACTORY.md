@@ -126,4 +126,6 @@ FETCH → README → docs/BLOG.md → docs/BLOG-FACTORY.md → docs/CONTINUOUS-W
      → fetch fresh main → cặp 2 bài kế tiếp (REPEAT cho đến khi corpus xong)
 ```
 
+PARALLEL WRITER MODE (v68, `docs/PARALLEL-WRITER.md`, `tools/writer-queue.mjs`): 3 external writer song song + 1 central coordinator + 1 serialized publisher. Coordinator reserve tối đa 50 PLANNED một batch, chia micro-chunk 2 bài round-robin cho writer A/B/C; writer chỉ push branch riêng, publisher serialized đưa đúng từng chunk lên main rồi dispatch factory đúng 2 id đó. Factory KHÔNG thay đổi: vẫn exact-scope, vẫn grouped build MỘT lần mỗi chunk 2 bài, vẫn NEW/REPAIR/BACKLOG tách rời như v67.
+
 Factory là continuous-ready: khi owner yêu cầu rõ ràng, external AI writer chạy vòng lặp canonical 2 bài/chunk liên tục theo `docs/CONTINUOUS-WRITER.md`. GitHub Actions KHÔNG tự tạo prose — Actions chỉ thực hiện QA/publish/verify deterministic; vòng lặp viết liên tục do external writer đảm nhiệm. Viết bài không tự kích hoạt trong các run thường; chỉ chạy khi được chủ repo yêu cầu rõ ràng.

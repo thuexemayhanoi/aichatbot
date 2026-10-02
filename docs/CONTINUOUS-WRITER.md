@@ -8,6 +8,15 @@ Tài liệu này là nguồn chuẩn duy nhất cho cách một writer run (agen
 - **GitHub Actions** (`blog-factory-publish.yml`) thực hiện phần deterministic: detect đúng các bài, auto-claim, scoped QA, grouped transactional publish, rebuild, verify, commit derived state.
 - **Actions KHÔNG BAO GIỜ tự viết prose, không gọi AI, không schedule writer.** Continuous production chỉ chạy khi owner yêu cầu rõ ràng; factory đã continuous-ready.
 
+## 3 writer song song (PARALLEL WRITER MODE, v68)
+
+Khi cần tăng throughput phần WRITE, repo chạy 3 external writer song song với MỘT central coordinator + MỘT serialized publisher. Hợp đồng đầy đủ nằm ở `docs/PARALLEL-WRITER.md`, tool là `tools/writer-queue.mjs`, tests là `tests/unit/writer-queue.test.js`. Tóm tắt bất biến:
+
+- CHỈ coordinator được reserve article ID (tối đa 50 PLANNED một batch, chia micro-chunk 2 bài, round-robin A/B/C). Manifest `docs/state/writer-assignments.json` là nguồn sự thật duy nhất; duplicate ID → fail closed.
+- Writer chỉ làm queue riêng, KHÔNG tự chọn "next PLANNED", KHÔNG push main — chỉ push branch `writer/<batch>/<A|B|C>` (2 bodies + chunk file `writer-work/...`).
+- Publisher serialized duy nhất đẩy lên main: FIFO theo chunk seq, mỗi lần đúng một chunk 2 bài, fresh-main verification trước push, published chunk không bao giờ chạy lại.
+- SIMPLE PRODUCTION MODE (v67) bên dưới được giữ nguyên: NEW/REPAIR/BACKLOG tách rời, factory exact-scope 2 bài, một build mỗi chunk. 3 writer không làm thay bất kỳ gate nào.
+
 ## Mô hình canonical — 2 ARTICLES / MICRO CHUNK, SIMPLE PRODUCTION MODE (v67)
 
 - Đơn vị làm việc = MỘT MICRO CHUNK gồm 2 bài mỗi lượt writer. Push = đúng 2 article source (2 body mới tại `data/blog/articles/<slug>.body.html`) + đúng 2 manifest draft entries (`data/blog/published.json`). Nếu chỉ còn đúng 1 bài actionable ở biên batch/corpus, chunk size 1 được cho phép.

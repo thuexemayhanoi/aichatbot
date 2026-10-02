@@ -1,0 +1,267 @@
+name: 'Writer Publisher (serialized)'
+
+# v68 PARALLEL WRITER MODE (docs/PARALLEL-WRITER.md).
+#
+# The ONLY component allowed to push article content to main. Writers push
+# bodies + chunk files to their own branches (writer/<batch>/<A|B|C>) and are
+# never allowed to push main. This publisher:
+#
+#   1. extracts the writer-work view of ALL writer branches (global FIFO);
+#   2. selects the next READY_TO_PUSH chunk — strict sequence order, exactly
+#      ONE 2-article chunk at a time, never ahead of a lower sequence;
+#   3. waits for the factory to be quiet (no derived-commit races);
+#   4. stages the chunk (2 bodies + 2 manifest drafts) on FRESH main and
+#      verifies it (batch ACTIVE, chunk READY_TO_PUSH, ids still PLANNED,
+#      no manifest/body conflict, push scope EXACTLY 2 bodies + published.json);
+#   5. pushes, dispatches blog-factory-publish with the EXACT 2 ids
+#      (a GITHUB_TOKEN push cannot trigger workflows, so the factory run is
+#      dispatched explicitly with article_ids);
+#   6. on success marks the chunk PUBLISHED in the manifest; on failure marks
+#      FACTORY_FAILED — the ids stay untouched for the REPAIR/BACKLOG pipeline.
+#
+# Concurrency group writer-publisher + cancel-in-progress false: publishers
+# are strictly serialized. Chunk states RESERVED/READY_TO_PUSH make every
+# step idempotent — a crashed run can be retried without double publishing.
+# A push failure keeps the chunk RESERVED (retry-safe); a factory timeout
+# also leaves it RESERVED with a recorded PUSH_FAILED event.
+#
+# workflow_dispatch recovery actions:
+#   mark-published <batch> <seq>   complete after a manual factory re-run
+#   mark-failed <batch> <seq>       terminal FAILED (owner decision)
+#   mark-factory-failed <batch> <seq>
+#   factory-requeue <ids>          dispatch blog-factory-publish with explicit ids
+
+on:
+  push:
+    branches: ['writer/**']
+    paths: ['writer-work/**']
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'auto | mark-published | mark-failed | mark-factory-failed | factory-requeue'
+        required: false
+        default: 'auto'
+      batch:
+        description: 'WRITER-BATCH-xxxx (recovery actions)'
+        required: false
+        default: ''
+      seq:
+        description: 'chunk seq (recovery actions)'
+        required: false
+        default: ''
+      ids:
+        description: 'BA-ids cho factory-requeue (vd BA-0001,BA-0002)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: writer-publisher
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # ------------------------------------------------------------------
+      # Recovery actions (manual, idempotent)
+      # ------------------------------------------------------------------
+      - name: 'Recovery action (manual dispatch)'
+        id: recovery
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.action != 'auto' && github.event.inputs.action != ''
+        run: |
+          B="${{ github.event.inputs.batch }}"
+          S="${{ github.event.inputs.seq }}"
+          case "${{ github.event.inputs.action }}" in
+            mark-published)        node tools/writer-queue.mjs complete "$B" "$S" ;;
+            mark-failed)          node tools/writer-queue.mjs fail "$B" "$S" --state failed ;;
+            mark-factory-failed)  node tools/writer-queue.mjs fail "$B" "$S" --state factory-failed ;;
+            factory-requeue)
+              IDS="${{ github.event.inputs.ids }}"
+              if [ -z "$IDS" ]; then echo "::error::factory-requeue needs ids"; exit 1; fi
+              gh workflow run blog-factory-publish.yml --ref main -f article_ids="$IDS"
+              echo "factory re-queued for $IDS"
+              ;;
+            *) echo "::error::unknown action"; exit 1 ;;
+          esac
+
+      - name: 'Commit manifest changes from the recovery action'
+        if: steps.recovery.outcome == 'success' && github.event_name == 'workflow_dispatch' && github.event.inputs.action != 'auto' && github.event.inputs.action != 'factory-requeue' && github.event.inputs.action != ''
+        run: |
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git add docs/state/writer-assignments.json
+          if git diff --cached --quiet; then
+            echo "no manifest change"
+          else
+            git commit -m "writer-publisher: recovery ${{ github.event.inputs.action }} ${{ github.event.inputs.batch }}#${{ github.event.inputs.seq }} [skip ci]"
+            git push
+          fi
+
+      # ------------------------------------------------------------------
+      # Auto path (writer branch push): global FIFO selection
+      # ------------------------------------------------------------------
+      - name: 'Collect ALL writer branches (global FIFO view)'
+        if: github.event_name == 'push' || github.event.inputs.action == 'auto'
+        run: |
+          git fetch --prune origin 'refs/heads/writer/*:refs/remotes/origin/writer/*' || true
+          mkdir -p /tmp/writers
+          FOUND=0
+          for ref in $(git for-each-ref --format='%(refname)' refs/remotes/origin/writer); do
+            echo "extracting $ref"
+            git archive "$ref" writer-work 2>/dev/null | tar -x -C /tmp/writers || true
+            git archive "$ref" data/blog/articles 2>/dev/null | tar -x -C /tmp/writers || true
+            FOUND=1
+          done
+          echo "writer branches extracted: $FOUND"
+
+      - name: 'Select the next READY_TO_PUSH chunk (strict FIFO, exactly one)'
+        id: select
+        if: github.event_name == 'push' || github.event.inputs.action == 'auto'
+        run: |
+          node tools/writer-queue.mjs select-publish --work /tmp/writers | tee /tmp/select.out
+          get() { sed -n "s/^$1=//p" /tmp/select.out; }
+          {
+            echo "action=$(get action)"
+            echo "batch=$(get batch)"
+            echo "seq=$(get seq)"
+            echo "ids=$(get ids)"
+          } >> "$GITHUB_OUTPUT"
+          echo "selection: action=$(get action) batch=$(get batch) seq=$(get seq) ids=$(get ids)"
+
+      - name: 'Stop when nothing is publishable'
+        if: (github.event_name == 'push' || github.event.inputs.action == 'auto') && steps.select.outputs.action != 'publish'
+        run: echo "nothing to publish (action=${{ steps.select.outputs.action }}) — FIFO stays strict"
+
+      - name: 'Wait for factory quiet (avoid derived-commit races)'
+        if: steps.select.outputs.action == 'publish'
+        run: |
+          for i in $(seq 1 60); do
+            BUSY=$(gh run list --workflow blog-factory-publish.yml --json status --jq '[.[] | select(.status == "in_progress" or .status == "in_queued")] | length' 2>/dev/null || echo 0)
+            if [ "$BUSY" = "0" ]; then echo "factory quiet"; exit 0; fi
+            echo "factory busy ($BUSY run(s)) — waiting 30s"
+            sleep 30
+          done
+          echo "::error::factory still busy after 30 minutes"
+          exit 1
+
+      - name: 'Stage, verify and push the exact 2-article chunk to main'
+        if: steps.select.outputs.action == 'publish'
+        id: push
+        env:
+          B: ${{ steps.select.outputs.batch }}
+          S: ${{ steps.select.outputs.seq }}
+        run: |
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          for ATTEMPT in 1 2 3; do
+            git fetch origin main
+            git checkout -B main origin/main
+            git clean -fd data/blog/articles || true
+            node tools/writer-queue.mjs stage "$B" "$S" --work /tmp/writers
+            node tools/writer-queue.mjs verify-push "$B" "$S" --work /tmp/writers
+            git add data/blog/articles data/blog/published.json
+            # HARD GUARD: the push scope is EXACTLY 2 bodies + published.json.
+            TOTAL=$(git diff --cached --name-only | wc -l | tr -d ' ')
+            BODIES=$(git diff --cached --name-only | grep -c '^data/blog/articles/[^/]*\.body\.html$' || true)
+            MANIFEST=$(git diff --cached --name-only | grep -c '^data/blog/published.json$' || true)
+            OTHER=$(git diff --cached --name-only | grep -cv -e '^data/blog/articles/[^/]*\.body\.html$' -e '^data/blog/published.json$' || true)
+            echo "staged scope: total=$TOTAL bodies=$BODIES manifest=$MANIFEST other=$OTHER"
+            if [ "$TOTAL" != "3" ] || [ "$BODIES" != "2" ] || [ "$MANIFEST" != "1" ] || [ "$OTHER" != "0" ]; then
+              echo "::error::bad push scope — exactly 2 bodies + published.json required"
+              exit 1
+            fi
+            git commit -m "writer-publisher: publish chunk $B#$S (2-article micro batch) [skip ci]"
+            if git push; then
+              echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+              echo "pushed $(git rev-parse HEAD)"
+              exit 0
+            fi
+            echo "push failed (attempt $ATTEMPT) — refetching fresh main"
+          done
+          echo "::error::cannot push after 3 attempts — chunk stays RESERVED (retry-safe)"
+          exit 1
+
+      - name: 'Run the factory for exactly this chunk'
+        if: steps.select.outputs.action == 'publish'
+        id: factory
+        env:
+          IDS: ${{ steps.select.outputs.ids }}
+          SHA: ${{ steps.push.outputs.sha }}
+        run: |
+          gh workflow run blog-factory-publish.yml --ref main -f article_ids="$IDS"
+          echo "factory dispatched for $IDS"
+          RUN_ID=""
+          for i in $(seq 1 10); do
+            RUN_ID=$(gh run list --workflow blog-factory-publish.yml --event workflow_dispatch --commit "$SHA" --json databaseId --jq '.[0].databaseId // empty' 2>/dev/null || true)
+            [ -n "$RUN_ID" ] && break
+            sleep 30
+          done
+          if [ -z "$RUN_ID" ]; then
+            # The coordinator may have pushed a manifest commit between our push
+            # and the dispatch — fall back to the newest dispatched factory run.
+            RUN_ID=$(gh run list --workflow blog-factory-publish.yml --event workflow_dispatch --json databaseId --jq '.[0].databaseId // empty' 2>/dev/null || true)
+          fi
+          if [ -z "$RUN_ID" ]; then
+            echo "::error::factory run not found — chunk stays RESERVED (retry-safe)"
+            exit 1
+          fi
+          echo "watching factory run $RUN_ID"
+          echo "run_id=$RUN_ID" >> "$GITHUB_OUTPUT"
+          if gh run watch "$RUN_ID" --exit-status > /dev/null 2>&1; then
+            echo "result=success" >> "$GITHUB_OUTPUT"
+          else
+            echo "result=failure" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 'Mark the chunk PUBLISHED in the manifest (idempotent)'
+        if: steps.select.outputs.action == 'publish' && steps.factory.outputs.result == 'success'
+        env:
+          B: ${{ steps.select.outputs.batch }}
+          S: ${{ steps.select.outputs.seq }}
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
+          node tools/writer-queue.mjs complete "$B" "$S"
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git add docs/state/writer-assignments.json
+          if git diff --cached --quiet; then
+            echo "no manifest change (already completed)"
+          else
+            git commit -m "writer-publisher: chunk $B#$S PUBLISHED [skip ci]"
+            git push
+          fi
+
+      - name: 'Factory failed (mark FACTORY_FAILED, ids stay for the REPAIR pipeline)'
+        if: steps.select.outputs.action == 'publish' && steps.factory.outputs.result == 'failure'
+        env:
+          B: ${{ steps.select.outputs.batch }}
+          S: ${{ steps.select.outputs.seq }}
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
+          node tools/writer-queue.mjs fail "$B" "$S" --state factory-failed --reason "factory run ${{ steps.factory.outputs.run_id }} failed"
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git add docs/state/writer-assignments.json
+          if git diff --cached --quiet; then
+            echo "no manifest change"
+          else
+            git commit -m "writer-publisher: chunk $B#$S FACTORY_FAILED [skip ci]"
+            git push
+          fi

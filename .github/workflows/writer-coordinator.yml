@@ -1,0 +1,81 @@
+name: 'Writer Coordinator (central reservation)'
+
+# v68 PARALLEL WRITER MODE (docs/PARALLEL-WRITER.md).
+#
+# The ONLY component allowed to claim article ids. It reserves at most 50
+# PLANNED ids of a fresh matrix into ONE deterministic batch, splits them into
+# 2-article micro chunks and assigns them round-robin to writer_A/B/C. The
+# committed manifest (docs/state/writer-assignments.json) is the single
+# source of truth; writers never pick "next PLANNED" themselves.
+#
+# Guards (tools/writer-queue.mjs plan):
+#   - an ACTIVE batch is never re-reserved (crash/resume keeps the manifest);
+#   - duplicate article ids anywhere in the batch FAIL CLOSED;
+#   - rows with an existing draft or body (pending/repair/backlog) are never
+#     mixed into a NEW batch (v67 SIMPLE PRODUCTION MODE stays untouched);
+#   - the manifest write is an atomic exclusive create, so two racing
+#     coordinators can never both reserve.
+#
+# dry_run=true (the default) plans and prints WITHOUT writing anything.
+# The manifest commit never touches article paths, so it cannot trigger the
+# factory workflow; [skip ci] keeps ci.yml quiet too.
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'So article ID toi da mot batch (1-50)'
+        required: false
+        default: '50'
+      dry_run:
+        description: 'true = chi in ke hoach, khong ghi manifest'
+        required: false
+        default: 'true'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: writer-coordinator
+  cancel-in-progress: false
+
+jobs:
+  coordinate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 'Plan the next writer batch (central reservation)'
+        id: plan
+        run: |
+          LIMIT="${{ github.event.inputs.limit || '50' }}"
+          DRY="${{ github.event.inputs.dry_run || 'true' }}"
+          EXTRA=""
+          if [ "$DRY" != "false" ]; then EXTRA="--dry-run"; fi
+          node tools/writer-queue.mjs plan --limit "$LIMIT" $EXTRA --base-sha "${{ github.sha }}" | tee /tmp/plan.out
+          get() { sed -n "s/^$1=//p" /tmp/plan.out; }
+          {
+            echo "created=$(get created)"
+            echo "batch_id=$(get batch_id)"
+          } >> "$GITHUB_OUTPUT"
+          echo "plan: created=$(get created) batch=$(get batch_id) total=$(get total)"
+
+      - name: 'Commit the assignment manifest (single source of truth)'
+        if: steps.plan.outputs.created == 'true'
+        run: |
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git add docs/state/writer-assignments.json
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "writer-coordinator: reserve batch ${{ steps.plan.outputs.batch_id }} (3-writer assignment manifest) [skip ci]"
+            git push
+          fi
