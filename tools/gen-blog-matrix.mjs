@@ -342,10 +342,30 @@ export function refillMatrix() {
   return { refilled: appended.length, planned_before: plannedBefore, planned_after: planned, appended: appended.length };
 }
 
-function localScope(topic) {
-  const places = ['long biên', 'hoàn kiếm', 'phố cổ', 'hồ tây', 'tây hồ', 'ba đình', 'cầu giấy', 'đống đa', 'thanh xuân', 'hai bà trưng', 'gia lâm', 'hà nội'];
-  for (const p of places) if (topic.includes(p)) return titleCase(p);
-  return 'Hà Nội (khu vực)';
+// LOCAL rows must only ever claim a locality that exists in
+// data/local/hanoi.json (the LOCAL quality gate enforces this for PUBLISHED
+// rows). Landmarks such as "phố cổ" or "hồ tây" are NOT verified unit names,
+// so they must stay unclaimed (''), never guessed into a phường.
+const LOCALITY_CLAIMS = Object.freeze({
+  'long biên': 'Long Biên',
+  'hoàn kiếm': 'Hoàn Kiếm',
+  'tây hồ': 'Tây Hồ',
+  'ba đình': 'Ba Đình',
+  'cầu giấy': 'Cầu Giấy',
+  'đống đa': 'Đống Đa',
+  'thanh xuân': 'Thanh Xuân',
+  'hai bà trưng': 'Hai Bà Trưng'
+});
+
+/** Canonical verified-unit claim for a LOCAL topic ('' = claim nothing). */
+export function localScope(topic) {
+  const t = String(topic || '').toLowerCase();
+  // 'hồ tây' must be tested before 'tây hồ' would ever match the same text.
+  if (t.includes('hồ tây') || t.includes('phố cổ')) return '';
+  for (const [needle, unit] of Object.entries(LOCALITY_CLAIMS)) {
+    if (t.includes(needle)) return unit;
+  }
+  return '';
 }
 
 function titleCase(s) {
