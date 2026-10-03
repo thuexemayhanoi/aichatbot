@@ -220,3 +220,6 @@
 - 2026-10-03 FINISH BA-0062
 - 2026-10-03 QA FAIL BA-0061 -> REVIEW (attempt 1)
 - 2026-10-03 QA FAIL BA-0062 -> REVIEW (attempt 1)
+- 2026-10-03 QA PASS BA-0061
+- 2026-10-03 QA PASS BA-0062
+- 2026-10-03 PUBLISHED 2 (BA-0061, BA-0062) — one grouped build, pages, matrix, indexes, sitemap consistent
