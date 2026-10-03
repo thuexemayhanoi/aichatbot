@@ -77,9 +77,25 @@ Chunk FAILED là terminal: publisher bỏ qua (không chặn FIFO), các id gi�
 ## 6. Crash / resume
 
 - Coordinator chết: batch ACTIVE còn nguyên trong manifest → lần `plan` sau từ chối reserve lại (`created=false, reason=never re-reserve`), writer/publisher resume từ manifest.
-- Publisher chết giữa chừng: chunk còn RESERVED/READY_TO_PUSH → push branch writer lần nữa (hoặc dispatch `auto`) để publisher làm lại từ đầu; mọi bước idempotent, không double push (verify-push chặn).
+- Publisher chết giữa chừng: chunk còn RESERVED/READY_TO_PUSH → push branch writer lần nữa (hoặc dispatch `auto`) để publisher làm lại từ đầu; mọi bước idempotent, không double push (verify-push chặn). Nếu run cũ đã push main nhưng chưa dispatch được factory (crash window), publisher tự phân loại và requeue — xem §6G.
 - Factory chết: txn marker của v67 + `resume` giữ nguyên; chunk chỉ `complete` khi matrix thực sự PUBLISHED.
 - Writer chết: `begin` lại chính chunk của mình; không writer khác nhận được id đó.
+
+## 6G. Crash window giữa push main và factory dispatch (§6G)
+
+Vụ thật: publisher run 37044896012 đã push chunk #1 của WRITER-BATCH-0001 lên main (2 bodies + 2 drafts) rồi chết với HTTP 403 “Resource not accessible by integration” ngay tại bước dispatch factory — workflow thiếu `actions: write`. Trạng thái sót lại: matrix PLANNED, body/draft đã trên main, chunk vẫn RESERVED trong manifest. Đường `stage` bình thường từ chối vĩnh viễn trạng thái này (“body already exists”) — chunk kẹt nếu không có cơ chế riêng.
+
+Hợp đồng §6G (đã fix + có test regression):
+
+- `writer-publisher.yml` khai báo `permissions: contents: write, actions: write` — `gh workflow run` / `gh run list` / `gh run watch` cần `actions: write` để dispatch và theo dõi factory.
+- `select-publish` KHÔNG BAO GIỜ re-stage mù: trước khi publish nó audit từng id trên fresh main (matrix/body/manifest entry) và phân loại:
+  - mọi id PUBLISHED → `action=requeue mode=complete-only` (chỉ hoàn tất manifest, không ghi content, không dispatch);
+  - mọi id PLANNED, chưa có body/entry trên main → `action=publish mode=first-publish` (đường publish bình thường);
+  - mọi id PLANNED, body đã trên main, ≤1 entry → `action=requeue mode=restore`;
+  - còn lại (mixed/duplicate/torn) → FAIL CLOSED, không publish, không requeue.
+- Lệnh mới `requeue <batch> <seq> --work <dir>`: recovery hai pass, writer branch là authority. Pass 1 classify từng id (entry >1 → die; PLANNED mà lệch entry/body → die “torn push”; body trên main khác writer branch → die). Pass 2 restore đúng những gì thiếu (body/entry); trùng khớp hết thì ghi 0/0. Không bao giờ ghi đè nội dung khác biệt, không bao giờ đánh PUBLISHED giả.
+- Publisher workflow: khi `action=requeue`, bước push chạy `requeue` thay cho `stage` — scope tối đa 2 bodies + published.json, 0 file khác, không commit nếu không cần restore gì. Factory vẫn dispatch đúng ids của chunk; `complete-only` bỏ qua dispatch, đi thẳng `complete`.
+- Chunk chỉ thành PUBLISHED trong manifest SAU factory success (`complete` vẫn yêu cầu matrix PUBLISHED).
 
 ## 7. Không trộn backlog, không phá SIMPLE PRODUCTION MODE
 
@@ -96,7 +112,7 @@ Chunk FAILED là terminal: publisher bỏ qua (không chặn FIFO), các id gi�
 
 ## 9. Tests
 
-`tests/unit/writer-queue.test.js` phủ toàn bộ hợp đồng: 50 id unique, round-robin deterministic, duplicate fail-closed, hai coordinator chạy đua chỉ một thắng, writer không viết chunk của writer khác, publisher chỉ lấy READY_TO_PUSH và đúng MỘT chunk, FIFO nghiêm ngặt, fresh-main verification, published chunk không chạy lại, crash/resume không duplicate, stage conflict từ chối, stress 100 vòng scheduling (DUPLICATE_ASSIGNMENT=0) và 100 vòng lifecycle publisher (DOUBLE_PUBLISH=0), dry-run không đổi production inventory.
+`tests/unit/writer-queue.test.js` phủ toàn bộ hợp đồng: 50 id unique, round-robin deterministic, duplicate fail-closed, hai coordinator chạy đua chỉ một thắng, writer không viết chunk của writer khác, publisher chỉ lấy READY_TO_PUSH và đúng MỘT chunk, FIFO nghiêm ngặt, fresh-main verification, published chunk không chạy lại, crash/resume không duplicate, stage conflict từ chối, stress 100 vòng scheduling (DUPLICATE_ASSIGNMENT=0) và 100 vòng lifecycle publisher (DOUBLE_PUBLISH=0), dry-run không đổi production inventory. Suite riêng `tests/unit/writer-queue-requeue.test.js` (16 test) phủ hợp đồng §6G: phân loại crash window, restore idempotent từ writer branch, duplicate/torn/diverged/mixed fail closed, complete-only, FIFO, vòng đời requeue → factory → complete → chunk kế tiếp, và static contract rằng publisher có `actions: write` + wiring requeue đủ — lỗi 403 không tái diễn.
 
 ## 10. Lệnh tool
 
@@ -113,4 +129,5 @@ node tools/writer-queue.mjs stage <batch> <seq> --work <dir>
 node tools/writer-queue.mjs verify-push <batch> <seq> --work <dir>
 node tools/writer-queue.mjs complete <batch> <seq>
 node tools/writer-queue.mjs fail <batch> <seq> --state failed|factory-failed|push-failed
+node tools/writer-queue.mjs requeue <batch> <seq> --work <dir>   # §6G crash-window recovery
 ```
