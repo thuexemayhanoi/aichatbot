@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01",
+  "updated": "2026-10-02",
   "articles": [
     {
       "title": "App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục",
@@ -650,6 +650,32 @@
       "subtopic_name": "",
       "location": "",
       "url": "/aichatbot/blog/thue-xe/thue-honda-vision/"
+    },
+    {
+      "title": "Khác biệt xe điện và xe xăng: nên chọn loại nào khi thuê",
+      "keywords": "Khác biệt xe điện và xe xăng: nên chọn loại nào khi thuê So sánh khác biệt xe điện và xe xăng về cách vận hành, chi phí, quãng đường và cảm giác lái, giúp bạn chọn đúng loại xe máy phù hợp khi thuê ở Hà Nội.",
+      "summary": "So sánh khác biệt xe điện và xe xăng về cách vận hành, chi phí, quãng đường và cảm giác lái, giúp bạn chọn đúng loại xe máy phù hợp khi thuê ở Hà Nội.",
+      "category": "EV",
+      "category_name": "Xe điện / xe máy điện",
+      "cluster": "C-RENT",
+      "cluster_name": "Thuê xe & Phương tiện",
+      "subtopic": "",
+      "subtopic_name": "",
+      "location": "",
+      "url": "/aichatbot/blog/xe-dien/khac-biet-xe-dien-va-xe-xang/"
+    },
+    {
+      "title": "Nhận lại tiền cọc thuê xe máy: điều kiện và lưu ý",
+      "keywords": "Nhận lại tiền cọc thuê xe máy: điều kiện và lưu ý Điều kiện để nhận lại đủ tiền cọc khi thuê xe máy: trả đúng giờ, giữ giấy tờ, chụp ảnh tình trạng xe và những tình huống hay bị trừ cọc cần biết trước. Thủ Tục",
+      "summary": "Điều kiện để nhận lại đủ tiền cọc khi thuê xe máy: trả đúng giờ, giữ giấy tờ, chụp ảnh tình trạng xe và những tình huống hay bị trừ cọc cần biết trước.",
+      "category": "GUIDE",
+      "category_name": "Hướng dẫn / thủ tục",
+      "cluster": "C-APP",
+      "cluster_name": "Công cụ & Hướng dẫn",
+      "subtopic": "THU-TUC",
+      "subtopic_name": "Thủ Tục",
+      "location": "",
+      "url": "/aichatbot/blog/huong-dan/nhan-lai-tien-coc/"
     }
   ]
 }
