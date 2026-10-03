@@ -1,0 +1,286 @@
+name: 'Ops Supervisor Agent #5'
+
+# v70 OPS AGENTS (docs/OPS-AGENTS.md) — SECOND-LINE RECOVERY / INDEPENDENT
+# VERIFICATION.
+#
+# Agent #5 NEVER writes article content. It is dispatched ONLY with the SAME
+# incident_id after Agent #4 reaches a terminal state (SUCCESS or ESCALATE),
+# or — via allow_crashed_handoff=true — when Agent #4's run died mid-incident
+# (Agent #4 already spent its single attempt; it can never re-enter).
+# tools/ops-agent.mjs agent5-begin refuses to start otherwise, so #4 and #5
+# can never repair simultaneously and #5 can never start before #4 is
+# terminal.
+#
+# Flow: independent verification (never trusting Agent #4's report) -> if
+# healthy: VERIFIED. Otherwise EXACTLY ONE minimal safe second-line repair
+# attempt (same deterministic recipe playbook) -> RECOVERED or FAILED_MANUAL.
+# VERIFIED/RECOVERED release the maintenance lock; FAILED_MANUAL keeps the
+# lock for a human, writes an incident report and leaves production PAUSED.
+# Production is resumed only via EXACTLY ONE normal production entrypoint and
+# only when the owner's production_enabled switch is true — today it is
+# false, so agents never auto-resume production.
+
+on:
+  workflow_dispatch:
+    inputs:
+      incident_id:
+        description: 'Incident ID — phải là incident_id Agent #4 vừa xử lý'
+        required: true
+      base_sha:
+        description: 'Base SHA Agent #4 đã ghi (kiểm chứng quan hệ HEAD)'
+        required: false
+        default: ''
+      allow_crashed_handoff:
+        description: 'true CHỈ khi Agent #4 bàn giao incident OPEN bị crash'
+        required: false
+        default: 'false'
+
+permissions:
+  # contents: write — (1) incident state file transitions (agent5-begin /
+  # agent5-result), (2) the FAILED_MANUAL incident report commit, (3) the one
+  # second-line deterministic repair commit, (4) deleting the maintenance
+  # lock ref when the incident closes healthy.
+  # actions: write — inspect runs for INDEPENDENT verification (needs read)
+  # and dispatch EXACTLY ONE production entrypoint on resume. This is the
+  # only permission able to start production; it exists solely for the
+  # resume step below.
+  contents: write
+  actions: write
+
+concurrency:
+  group: ops-supervisor
+  cancel-in-progress: false
+
+jobs:
+  supervise:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 'Take over the incident (refuses unless Agent #4 is terminal)'
+        id: takeover
+        run: |
+          set -e
+          node tools/ops-agent.mjs agent5-begin \
+            --incident-id "${{ inputs.incident_id }}" \
+            ${{ inputs.allow_crashed_handoff == 'true' && '--allow-crashed-handoff' || '' }} | tee /tmp/takeover.out
+          get() { sed -n "s/^$1=//p" /tmp/takeover.out; }
+          {
+            echo "prior_status=$(get prior_status)"
+          } >> "$GITHUB_OUTPUT"
+          echo "Agent #5 owns the incident (prior Agent #4 state: $(get prior_status))"
+
+      # Independent verification — never trust Agent #4's report.
+      - name: 'Independently verify repository / queue / checkpoint / CI state'
+        id: verify
+        run: |
+          set +e
+          REASON=""
+          fail() { REASON="${REASON}${1}; "; }
+
+          # 1. HEAD/base relationship: base_sha must be an ancestor of main.
+          git fetch origin main
+          BASE="${{ inputs.base_sha }}"
+          if [ -n "$BASE" ]; then
+            if git merge-base --is-ancestor "$BASE" origin/main; then
+              echo "base relationship OK ($BASE is an ancestor of main)"
+            else
+              fail "base_sha $BASE is NOT an ancestor of main"
+            fi
+          fi
+
+          # 2. Queue + factory integrity (the central reservation and the
+          #    publish pipeline validate their own invariants).
+          node tools/writer-queue.mjs validate || fail "writer-queue validate"
+          node tools/blog-factory.mjs validate || fail "blog-factory validate"
+
+          # 3. No half-finished transaction, no retired lockfile left behind.
+          [ ! -f docs/state/blog-factory.transaction.json ] || fail "transaction marker present"
+          [ ! -f docs/state/blog-factory.lock ] || fail "retired lockfile present"
+
+          # 4. The maintenance lock for THIS incident is held (atomic ref).
+          if git ls-remote --refs origin "refs/ops/maintenance-lock/${{ inputs.incident_id }}" | grep -q .; then
+            echo "lock ref held by this incident"
+          else
+            fail "lock ref missing for ${{ inputs.incident_id }}"
+          fi
+
+          # 5. Writer assignment / checkpoint state parses (preserved intact).
+          for F in docs/state/writer-assignments.json docs/state/active-work.json docs/state/blog-factory.checkpoint.json; do
+            if [ -f "$F" ]; then
+              node -e "JSON.parse(require('fs').readFileSync('$F','utf8'))" || fail "$F does not parse"
+            fi
+          done
+
+          # 6. Targeted regression of the infrastructure suites (the full
+          #    suite stays red on the KNOWN CONTENT BLOCKER — content is
+          #    never an infra failure and never masks an incident).
+          timeout 300 node --test \
+            tests/unit/writer-queue.test.js tests/unit/writer-queue-requeue.test.js \
+            tests/unit/blog-factory.test.js tests/unit/article-qa.test.js \
+            tests/unit/ops-agents.test.js || fail "targeted regression suites"
+
+          # 7. CI / build state — observed, not trusted: a red CI caused by
+          #    the recorded content blocker is NOT an infra failure.
+          CI=$(gh run list --workflow ci.yml -L 1 --json conclusion --jq '.[0].conclusion // "none"' 2>/dev/null)
+          echo "latest CI conclusion: ${CI:-unknown} (known content blockers are recorded in the ops state)"
+
+          if [ -z "$REASON" ]; then
+            echo "verify_ok=true" >> "$GITHUB_OUTPUT"
+            echo "independent verification PASS"
+          else
+            echo "verify_ok=false" >> "$GITHUB_OUTPUT"
+            echo "independent verification FAIL: $REASON"
+          fi
+
+      - name: 'Close the incident as VERIFIED (checks healthy — no repair)'
+        id: close_verified
+        if: steps.verify.outputs.verify_ok == 'true'
+        run: |
+          set -e
+          node tools/ops-agent.mjs agent5-result \
+            --incident-id "${{ inputs.incident_id }}" \
+            --result VERIFIED \
+            --note "independent verification healthy after Agent #4 (${{ steps.takeover.outputs.prior_status }}); no second-line repair needed" | tee /tmp/close.out
+          get() { sed -n "s/^$1=//p" /tmp/close.out; }
+          {
+            echo "release_lock=$(get release_lock)"
+            echo "resume_production=$(get resume_production)"
+          } >> "$GITHUB_OUTPUT"
+          echo "AGENT_5_RESULT=VERIFIED"
+
+      # ---- exactly ONE minimal safe second-line repair attempt ----
+
+      - name: 'Re-diagnose on fresh state (read-only)'
+        id: diagnose
+        if: steps.verify.outputs.verify_ok != 'true'
+        run: |
+          set -e
+          node tools/ops-agent.mjs suggest-repair | tee /tmp/repair.out
+          get() { sed -n "s/^$1=//p" /tmp/repair.out; }
+          {
+            echo "recipe=$(get recipe)"
+            echo "commands=$(get commands)"
+            echo "verify=$(get verify)"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: 'Execute the ONE second-line repair attempt'
+        id: repair2
+        if: steps.verify.outputs.verify_ok != 'true' && steps.diagnose.outputs.recipe != 'ESCALATE'
+        run: |
+          set -e
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B main origin/main
+          echo "second-line recipe: ${{ steps.diagnose.outputs.recipe }}"
+          sh -c "${{ steps.diagnose.outputs.commands }}"
+          sh -c "${{ steps.diagnose.outputs.verify }}"
+          if [ "${{ steps.diagnose.outputs.recipe }}" = "RESUME_PENDING_TRANSACTION" ]; then
+            git add data/blog/content-matrix.csv data/blog/knowledge-index.json \
+              blog sitemap.xml robots.txt reports/blog-factory-run.md \
+              docs/state/blog-factory.checkpoint.json docs/state/blog-factory.transaction.json 2>/dev/null || true
+            git commit -m "factory: resume pending transaction (ops incident ${{ inputs.incident_id }}, second line) [skip ci]" \
+              || echo "nothing to commit — the recorded transaction was already consistent"
+            git push
+          else
+            git add -A docs/state/
+            git commit -m "ops: second-line repair ${{ steps.diagnose.outputs.recipe }} (incident ${{ inputs.incident_id }}) [skip ci]" \
+              || echo "nothing to commit"
+            git push
+          fi
+
+      - name: 'Scope guard: article/assignment surfaces NEVER change'
+        if: steps.repair2.outcome == 'success' && !cancelled()
+        run: |
+          set -e
+          git fetch origin main
+          git diff --name-only origin/main...HEAD | node tools/ops-agent.mjs guard
+          echo "scope guard PASS — no article bodies, writer branches or assignments touched"
+
+      - name: 'Targeted regression after the second-line repair'
+        id: regression
+        if: steps.repair2.outcome == 'success'
+        run: |
+          set -e
+          node tools/writer-queue.mjs validate
+          node tools/blog-factory.mjs validate
+          timeout 300 node --test \
+            tests/unit/writer-queue.test.js tests/unit/writer-queue-requeue.test.js \
+            tests/unit/blog-factory.test.js tests/unit/ops-agents.test.js
+
+      - name: 'Close the incident: RECOVERED or FAILED_MANUAL (report first)'
+        id: close_final
+        if: steps.verify.outputs.verify_ok != 'true' && !cancelled()
+        run: |
+          set -e
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B main origin/main
+          RESULT=FAILED_MANUAL
+          NOTE="no safe deterministic second-line repair (recipe ${{ steps.diagnose.outputs.recipe }}) — manual intervention required"
+          if [ "${{ steps.repair2.outcome }}" = "success" ] && [ "${{ steps.regression.outcome }}" = "success" ]; then
+            RESULT=RECOVERED
+            NOTE="second-line repair ${{ steps.diagnose.outputs.recipe }} applied and verified"
+          fi
+          if [ "$RESULT" = "FAILED_MANUAL" ]; then
+            # The incident report is written BEFORE closing — the report
+            # command reads the active incident. The lock is KEPT.
+            mkdir -p docs/state/operations/incident-reports
+            node tools/ops-agent.mjs report > "docs/state/operations/incident-reports/${{ inputs.incident_id }}.md"
+            printf '%s\n' \
+              "- Agent #5 second-line result: FAILED_MANUAL — both single attempts exhausted." \
+              "- Lock refs/ops/maintenance-lock/${{ inputs.incident_id }} is KEPT until a human resolves this." \
+              >> "docs/state/operations/incident-reports/${{ inputs.incident_id }}.md"
+            git add docs/state/operations/incident-reports/
+            git commit -m "ops: incident report ${{ inputs.incident_id }} (manual intervention required) [skip ci]" \
+              || echo "report unchanged"
+            git push
+          fi
+          node tools/ops-agent.mjs agent5-result \
+            --incident-id "${{ inputs.incident_id }}" \
+            --result "$RESULT" \
+            --note "$NOTE" | tee /tmp/close.out
+          get() { sed -n "s/^$1=//p" /tmp/close.out; }
+          {
+            echo "release_lock=$(get release_lock)"
+            echo "resume_production=$(get resume_production)"
+          } >> "$GITHUB_OUTPUT"
+          echo "AGENT_5_RESULT=$RESULT"
+
+      - name: 'Release the maintenance lock (healthy close only)'
+        if: >-
+          (steps.close_verified.outcome == 'success' && steps.close_verified.outputs.release_lock == 'true') ||
+          (steps.close_final.outcome == 'success' && steps.close_final.outputs.release_lock == 'true')
+        run: |
+          set -e
+          node tools/ops-agent.mjs release-lock --incident-id "${{ inputs.incident_id }}"
+          echo "maintenance lock released — production gate is open again"
+
+      - name: 'Resume production via EXACTLY ONE normal entrypoint'
+        if: >-
+          (steps.close_verified.outputs.resume_production == 'true' && steps.close_verified.outcome == 'success') ||
+          (steps.close_final.outputs.resume_production == 'true' && steps.close_final.outcome == 'success')
+        run: |
+          set -e
+          # ONE dispatch — the coordinator fans out to the writers itself.
+          gh workflow run writer-coordinator.yml --ref main -f dry_run=false -f limit=18
+          echo "production resumed via the single production entrypoint (writer-coordinator, dry_run=false, limit=18)"
+
+      - name: 'Production stays stopped by the owner (production_enabled=false)'
+        if: >-
+          (steps.close_verified.outcome == 'success' && steps.close_verified.outputs.resume_production != 'true') ||
+          (steps.close_final.outcome == 'success' && steps.close_final.outputs.resume_production != 'true')
+        run: |
+          echo "resume_production=false — the owner keeps production stopped; agents NEVER auto-resume."
