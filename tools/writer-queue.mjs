@@ -41,6 +41,7 @@
  *   node tools/writer-queue.mjs verify-push <batch> <seq> --work <dir>
  *   node tools/writer-queue.mjs complete <batch> <seq>
  *   node tools/writer-queue.mjs fail <batch> <seq> --state failed|factory-failed|push-failed [--reason X]
+ *   node tools/writer-queue.mjs requeue <batch> <seq> --work <dir>   (§6G crash-window recovery)
  *
  * `--work <dir>` points at an extracted view of the writer branches (the
  * directory that CONTAINS writer-work/); the publisher workflow builds it
@@ -294,10 +295,16 @@ function cmdPlan(args) {
   const assignments = loadAssignments();
   if (assignments.active && assignments.active.status === 'ACTIVE') {
     // §8 crash/resume: a restart NEVER re-reserves an active batch.
+    // §6G: the resume message stays machine-readable under --dry-run
+    // (dry_run flag + a summary of the ACTIVE batch) so contract tests run
+    // against the real repo while a batch is in progress.
     emit({
       created: 'false',
+      ...(dryRun ? { dry_run: 'true' } : {}),
       reason: `active batch ${assignments.active.batch_id} still has unfinished chunks — resume it, never re-reserve`,
       batch_id: assignments.active.batch_id,
+      total: String(assignments.active.chunks.reduce((n, c) => n + c.ids.length, 0)),
+      chunks: String(assignments.active.chunks.length),
     });
     return;
   }
@@ -572,11 +579,60 @@ function cmdSelectPublish(args) {
     return existsSync(f) ? readJson(f).status : null;
   };
   const d = decidePublish(a, statusFor);
+  if (d.action === 'publish') {
+    // §6G crash-window audit: a previous publisher run may have already
+    // pushed this chunk to main and died before/during the factory dispatch
+    // (e.g. the HTTP 403 dispatch failure, run 37044896012). Such a chunk
+    // must NEVER be re-staged blindly — classify its real state against
+    // fresh main first and fail closed on anything ambiguous.
+    const rows = loadRows();
+    const manifest = existsSync(MANIFEST) ? readJson(MANIFEST) : { articles: [] };
+    const states = d.ids.map((id) => {
+      const row = rowById(rows, id);
+      if (!row) die(`matrix row missing for ${id}`);
+      return {
+        id,
+        matrixStatus: row.status,
+        bodyOnMain: existsSync(join(ROOT, bodyPathOf(row))),
+        entries: manifest.articles.filter((x) => x.article_id === id).length,
+      };
+    });
+    if (states.every((s) => s.matrixStatus === 'PUBLISHED')) {
+      // The factory already finished this chunk but the manifest completion
+      // never ran — complete it without writing any content, no dispatch.
+      emit({
+        action: 'requeue', mode: 'complete-only',
+        batch: d.batch, seq: String(d.seq), writer: d.writer, ids: d.ids.join(','),
+        reason: 'factory already finished this chunk — complete the manifest, no content writes',
+      });
+      return;
+    }
+    if (states.every((s) => s.matrixStatus === 'PLANNED' && !s.bodyOnMain && s.entries === 0)) {
+      // Clean first publish: nothing of this chunk is on main yet.
+      emit({
+        action: 'publish', mode: 'first-publish',
+        batch: d.batch, seq: String(d.seq), writer: d.writer, ids: d.ids.join(','),
+        reason: 'fresh chunk — nothing on main yet, normal stage/verify/publish path',
+      });
+      return;
+    }
+    if (states.every((s) => s.matrixStatus === 'PLANNED' && s.bodyOnMain && s.entries <= 1)) {
+      // Crash window: the chunk is on main but the factory never ran.
+      emit({
+        action: 'requeue', mode: 'restore',
+        batch: d.batch, seq: String(d.seq), writer: d.writer, ids: d.ids.join(','),
+        reason: 'previous publisher run pushed this chunk but the factory never ran — verify/restore, then dispatch',
+      });
+      return;
+    }
+    die(`chunk ${d.batch}#${d.seq} is in an inconsistent crash-window state (`
+      + states.map((s) => `${s.id}=${s.matrixStatus},body=${s.bodyOnMain ? 1 : 0},entries=${s.entries}`).join(' ')
+      + ') — refusing to publish or requeue, fail closed');
+  }
   emit({
     action: d.action,
     batch: d.batch ?? '',
     seq: d.seq !== undefined ? String(d.seq) : '',
-    ...(d.action === 'publish' ? { writer: d.writer, ids: d.ids.join(',') } : {}),
     ...(d.reason ? { reason: d.reason } : {}),
   });
 }
@@ -675,6 +731,115 @@ function cmdVerifyPush(args) {
   });
 }
 
+// ---------------------------------------------------------------------------
+// §6G crash-window recovery (docs/PARALLEL-WRITER.md §6G)
+// ---------------------------------------------------------------------------
+function cmdRequeue(args) {
+  const [batchId, seqRaw] = args._;
+  const workRoot = workRootOf(args);
+  const a = loadAssignments();
+  const b = a.active;
+  if (!b || b.batch_id !== batchId) die(`unknown batch: ${batchId}`);
+  if (!['ACTIVE', 'COMPLETED'].includes(b.status)) die(`batch ${batchId} is ${b.status}`);
+  const chunk = findChunk(b, seqRaw);
+  if (chunk.status !== 'RESERVED') {
+    die(`chunk ${chunk.seq} is ${chunk.status} — requeue only recovers a RESERVED chunk (PUBLISHED/FAILED are terminal)`);
+  }
+  const file = chunkFileFor(workRoot, batchId, chunk.writer, chunk.seq);
+  if (!existsSync(file)) die('chunk file not found in the writer-branch view — requeue needs the writer branch as the restore authority');
+  const rec = readJson(file);
+  if (rec.status !== 'READY_TO_PUSH') die(`chunk file status is ${rec.status}, expected READY_TO_PUSH`);
+  if (JSON.stringify(rec.ids) !== JSON.stringify(chunk.ids)) {
+    die('chunk file ids do not match the central assignment — conflict, fail closed');
+  }
+  if (!Array.isArray(rec.drafts) || rec.drafts.length !== chunk.ids.length) die('chunk file carries no complete drafts');
+
+  const rows = loadRows();
+  const manifest = existsSync(MANIFEST) ? readJson(MANIFEST) : die('data/blog/published.json missing');
+  validateDrafts(rec.drafts, chunk, rows); // refuses on any id/slug/body mismatch
+
+  // Pass 1 — classify every id against fresh main. Anything ambiguous dies.
+  const cls = chunk.ids.map((id) => {
+    const row = rowById(rows, id);
+    if (!row) die(`matrix row missing for ${id}`);
+    const entries = manifest.articles.filter((x) => x.article_id === id);
+    return {
+      id, row, entries,
+      bodyOnMain: existsSync(join(ROOT, bodyPathOf(row))),
+      bodyOnWriter: existsSync(join(workRoot, bodyPathOf(row))),
+      draft: rec.drafts.find((d) => d.article_id === id),
+    };
+  });
+  for (const c of cls) {
+    if (c.row.status === 'PUBLISHED') {
+      if (c.entries.length !== 1) die(`${c.id} is PUBLISHED but has ${c.entries.length} manifest entries — inconsistent, fail closed`);
+      if (!c.bodyOnMain) die(`${c.id} is PUBLISHED but its body is missing on main — inconsistent, fail closed`);
+      continue;
+    }
+    if (c.row.status !== 'PLANNED') die(`${c.id} is ${c.row.status} — requeue only recovers PLANNED/PUBLISHED crash windows`);
+    if (c.entries.length > 1) die(`${c.id} has ${c.entries.length} manifest entries — duplicate, fail closed`);
+    if (c.entries.length === 1) {
+      const e = c.entries[0];
+      if (e.slug !== c.row.slug || e.body !== bodyPathOf(c.row)) {
+        die(`manifest entry of ${c.id} does not match the matrix — fail closed`);
+      }
+      if (!c.bodyOnMain) die(`${c.id} has a staged manifest entry but no body on main — torn push, fail closed`);
+    }
+    if (c.entries.length === 0 && c.bodyOnMain) die(`${c.id} has a body on main but no manifest entry — torn push, fail closed`);
+    if (!c.bodyOnWriter) die(`body missing on the writer branch: ${bodyPathOf(c.row)} — cannot verify/restore`);
+  }
+
+  // Pass 2 — verify everything that exists, restore exactly what is missing.
+  // NEVER overwrite content that differs: the writer branch is the authority,
+  // but a diverged main means a human must look first.
+  let restoredBodies = 0;
+  let restoredDrafts = 0;
+  let verifiedBodies = 0;
+  let verifiedDrafts = 0;
+  for (const c of cls) {
+    if (c.row.status === 'PUBLISHED') { verifiedBodies++; verifiedDrafts++; continue; }
+    const mainBody = join(ROOT, bodyPathOf(c.row));
+    if (c.bodyOnMain) {
+      if (readFileSync(mainBody, 'utf8') !== readFileSync(join(workRoot, bodyPathOf(c.row)), 'utf8')) {
+        die(`body of ${c.id} on main differs from the writer branch — main has diverged, fail closed`);
+      }
+      verifiedBodies++;
+    } else {
+      copyFileSync(join(workRoot, bodyPathOf(c.row)), mainBody);
+      restoredBodies++;
+    }
+    if (c.entries.length === 0) {
+      manifest.articles.push(c.draft); // the draft is already validated against the matrix
+      restoredDrafts++;
+    } else {
+      const e = c.entries[0];
+      if (e.title !== c.draft.title || e.description !== c.draft.description
+        || (e.published_date ?? '') !== (c.draft.published_date ?? '')) {
+        die(`staged manifest entry of ${c.id} differs from the writer draft — main has diverged, fail closed`);
+      }
+      verifiedDrafts++;
+    }
+  }
+  if (restoredDrafts > 0) writeJson(MANIFEST, manifest);
+
+  const allPublished = cls.every((c) => c.row.status === 'PUBLISHED');
+  const completeOnly = allPublished && restoredBodies === 0 && restoredDrafts === 0;
+  emit({
+    action: 'requeue',
+    mode: completeOnly ? 'complete-only' : 'restore',
+    batch_id: batchId,
+    seq: String(chunk.seq),
+    writer: chunk.writer,
+    ids: chunk.ids.join(','),
+    restored_bodies: String(restoredBodies),
+    restored_drafts: String(restoredDrafts),
+    verified_bodies: String(verifiedBodies),
+    verified_drafts: String(verifiedDrafts),
+    dispatch_needed: completeOnly ? 'no' : 'yes',
+    note: 'crash-window chunk verified/restored against the writer branch — factory dispatch required',
+  });
+}
+
 function cmdComplete(args) {
   const [batchId, seqRaw] = args._;
   const a = loadAssignments();
@@ -766,7 +931,8 @@ const USAGE = `usage: writer-queue.mjs <command> [args]
   stage <batch> <seq> --work <dir>                copy the 2 bodies + merge drafts into published.json
   verify-push <batch> <seq> --work <dir>          fresh-main verification before the push
   complete <batch> <seq>                          factory finished: mark the chunk PUBLISHED (idempotent)
-  fail <batch> <seq> --state failed|factory-failed|push-failed`;
+  fail <batch> <seq> --state failed|factory-failed|push-failed
+  requeue <batch> <seq> --work <dir>              §6G crash-window recovery (classify + restore, fail closed)`;
 
 const isMain = process.argv[1]
   && import.meta.url === (await import('node:url')).pathToFileURL(process.argv[1]).href;
@@ -787,6 +953,7 @@ if (isMain) {
     case 'verify-push': cmdVerifyPush(args); break;
     case 'complete': cmdComplete(args); break;
     case 'fail': cmdFail(args); break;
+    case 'requeue': cmdRequeue(args); break;
     default:
       console.error(USAGE);
       process.exit(cmd ? 1 : 0);

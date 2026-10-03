@@ -25,6 +25,14 @@ name: 'Writer Publisher (serialized)'
 # A push failure keeps the chunk RESERVED (retry-safe); a factory timeout
 # also leaves it RESERVED with a recorded PUSH_FAILED event.
 #
+# §6G crash-window recovery: if a previous run already pushed the chunk
+# to main but died before/while dispatching the factory (the 403 failure,
+# run 37044896012), select-publish classifies the chunk and the run
+# REQUEUES it instead of re-staging: the engine 'requeue' verifies/restores
+# the exact 2 bodies + drafts from the writer branch, then the factory is
+# dispatched with the same ids. A chunk whose matrix rows are already
+# PUBLISHED completes the manifest without any dispatch (complete-only).
+#
 # workflow_dispatch recovery actions:
 #   mark-published <batch> <seq>   complete after a manual factory re-run
 #   mark-failed <batch> <seq>       terminal FAILED (owner decision)
@@ -56,6 +64,10 @@ on:
 
 permissions:
   contents: write
+  # §6G fix (HTTP 403 "Resource not accessible by integration", publisher run
+  # 37044896012): dispatching blog-factory-publish.yml and watching its run
+  # (gh workflow run / gh run list / gh run watch) needs actions: write.
+  actions: write
 
 concurrency:
   group: writer-publisher
@@ -137,18 +149,20 @@ jobs:
           get() { sed -n "s/^$1=//p" /tmp/select.out; }
           {
             echo "action=$(get action)"
+            echo "mode=$(get mode)"
             echo "batch=$(get batch)"
             echo "seq=$(get seq)"
+            echo "writer=$(get writer)"
             echo "ids=$(get ids)"
           } >> "$GITHUB_OUTPUT"
-          echo "selection: action=$(get action) batch=$(get batch) seq=$(get seq) ids=$(get ids)"
+          echo "selection: action=$(get action) mode=$(get mode) batch=$(get batch) seq=$(get seq) ids=$(get ids)"
 
       - name: 'Stop when nothing is publishable'
-        if: (github.event_name == 'push' || github.event.inputs.action == 'auto') && steps.select.outputs.action != 'publish'
+        if: (github.event_name == 'push' || github.event.inputs.action == 'auto') && steps.select.outputs.action != 'publish' && steps.select.outputs.action != 'requeue'
         run: echo "nothing to publish (action=${{ steps.select.outputs.action }}) — FIFO stays strict"
 
       - name: 'Wait for factory quiet (avoid derived-commit races)'
-        if: steps.select.outputs.action == 'publish'
+        if: steps.select.outputs.action == 'publish' || steps.select.outputs.action == 'requeue'
         run: |
           for i in $(seq 1 60); do
             BUSY=$(gh run list --workflow blog-factory-publish.yml --json status --jq '[.[] | select(.status == "in_progress" or .status == "in_queued")] | length' 2>/dev/null || echo 0)
@@ -159,12 +173,13 @@ jobs:
           echo "::error::factory still busy after 30 minutes"
           exit 1
 
-      - name: 'Stage, verify and push the exact 2-article chunk to main'
-        if: steps.select.outputs.action == 'publish'
+      - name: 'Stage, verify and push the exact 2-article chunk (publish) — or requeue it (§6G)'
+        if: steps.select.outputs.action == 'publish' || steps.select.outputs.action == 'requeue'
         id: push
         env:
           B: ${{ steps.select.outputs.batch }}
           S: ${{ steps.select.outputs.seq }}
+          ACTION: ${{ steps.select.outputs.action }}
         run: |
           git config user.name "motoai-bot"
           git config user.email "nguyentuantu2482@users.noreply.github.com"
@@ -172,6 +187,35 @@ jobs:
             git fetch origin main
             git checkout -B main origin/main
             git clean -fd data/blog/articles || true
+            if [ "$ACTION" = "requeue" ]; then
+              # §6G: verify/restore the crash-window chunk from the writer
+              # branch. Fails closed on any inconsistency; a legitimate
+              # requeue may restore LESS than a full chunk (0-2 bodies and/or
+              # the manifest) because the previous run already pushed it.
+              node tools/writer-queue.mjs requeue "$B" "$S" --work /tmp/writers | tee /tmp/requeue.out
+              git add data/blog/articles data/blog/published.json
+              TOTAL=$(git diff --cached --name-only | wc -l | tr -d ' ')
+              BODIES=$(git diff --cached --name-only | grep -c '^data/blog/articles/[^/]*\.body\.html$' || true)
+              MANIFEST=$(git diff --cached --name-only | grep -c '^data/blog/published.json$' || true)
+              OTHER=$(git diff --cached --name-only | grep -cv -e '^data/blog/articles/[^/]*\.body\.html$' -e '^data/blog/published.json$' || true)
+              echo "requeue scope: total=$TOTAL bodies=$BODIES manifest=$MANIFEST other=$OTHER"
+              if [ "$OTHER" != "0" ] || [ "$BODIES" -gt 2 ] || [ "$MANIFEST" -gt 1 ]; then
+                echo "::error::bad requeue scope — at most 2 bodies + published.json allowed"
+                exit 1
+              fi
+              if [ "$TOTAL" = "0" ]; then
+                echo "nothing to restore — main already carries the crash-window content"
+                echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              git commit -m "writer-publisher: requeue chunk $B#$S (§6G crash-window recovery) [skip ci]"
+              if git push; then
+                echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+              echo "requeue push failed (attempt $ATTEMPT) — refetching fresh main"
+              continue
+            fi
             node tools/writer-queue.mjs stage "$B" "$S" --work /tmp/writers
             node tools/writer-queue.mjs verify-push "$B" "$S" --work /tmp/writers
             git add data/blog/articles data/blog/published.json
@@ -197,12 +241,18 @@ jobs:
           exit 1
 
       - name: 'Run the factory for exactly this chunk'
-        if: steps.select.outputs.action == 'publish'
+        if: steps.select.outputs.action == 'publish' || steps.select.outputs.action == 'requeue'
         id: factory
         env:
           IDS: ${{ steps.select.outputs.ids }}
           SHA: ${{ steps.push.outputs.sha }}
+          MODE: ${{ steps.select.outputs.mode }}
         run: |
+          if [ "$MODE" = "complete-only" ]; then
+            echo "complete-only: the factory already finished this chunk — no dispatch"
+            echo "result=success" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           gh workflow run blog-factory-publish.yml --ref main -f article_ids="$IDS"
           echo "factory dispatched for $IDS"
           RUN_ID=""
@@ -229,7 +279,7 @@ jobs:
           fi
 
       - name: 'Mark the chunk PUBLISHED in the manifest (idempotent)'
-        if: steps.select.outputs.action == 'publish' && steps.factory.outputs.result == 'success'
+        if: (steps.select.outputs.action == 'publish' || steps.select.outputs.action == 'requeue') && steps.factory.outputs.result == 'success'
         env:
           B: ${{ steps.select.outputs.batch }}
           S: ${{ steps.select.outputs.seq }}
@@ -248,7 +298,7 @@ jobs:
           fi
 
       - name: 'Factory failed (mark FACTORY_FAILED, ids stay for the REPAIR pipeline)'
-        if: steps.select.outputs.action == 'publish' && steps.factory.outputs.result == 'failure'
+        if: (steps.select.outputs.action == 'publish' || steps.select.outputs.action == 'requeue') && steps.factory.outputs.result == 'failure'
         env:
           B: ${{ steps.select.outputs.batch }}
           S: ${{ steps.select.outputs.seq }}
