@@ -1,0 +1,154 @@
+name: 'Ops Watchdog Agent #6'
+
+# v70 OPS AGENTS (docs/OPS-AGENTS.md) — PRODUCTION WATCHDOG / DIRECTOR.
+#
+# Agent #6 has EXACTLY ONE responsibility: wake production when it has
+# genuinely stopped for 2 continuous hours. It NEVER repairs anything,
+# NEVER edits code/articles/matrix/manifests, NEVER starts a writer
+# individually and NEVER creates a duplicate production cycle.
+#
+# VALID progress (resets the 2h timer): real writer staging (commits touching
+# data/blog/articles/), successful publish (PUBLISHED commits), writer branch
+# pushes, and the recorded last_valid_progress_at in the ops state. Logs,
+# heartbeats, checks, watchdog runs themselves, failed runs and Agent #4/#5
+# activity NEVER reset the timer.
+#
+# Before waking it re-verifies EVERY blocker through
+# tools/ops-agent.mjs wake-decision: owner stop (production_enabled=false),
+# active incident, maintenance lock, Agent #4/#5 active, any production
+# workflow running or queued. If ANY condition holds: DO NOTHING.
+# A wake dispatches EXACTLY ONE normal production entrypoint
+# (writer-coordinator) — the production system fans out to the 3 writers
+# itself. The concurrency group serializes simultaneous watchdogs so two can
+# never double-dispatch; the second one then observes the queued cycle and
+# does nothing.
+
+on:
+  schedule:
+    # Twice an hour, lightweight — the ONLY schedule in the ops system.
+    - cron: '17,47 * * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'true = chỉ in quyết định wake, KHÔNG dispatch entrypoint'
+        required: false
+        default: 'false'
+
+permissions:
+  # contents: read — observe the repository (ops state, article commits,
+  # writer branches) and read docs/state/operations/maintenance.json. The
+  # watchdog has NO write access to repository contents by design.
+  # actions: write — the sole reason it exists: dispatch EXACTLY ONE
+  # production entrypoint (gh workflow run) after a verified 2h stop. It also
+  # covers the read-only run observations (gh run list).
+  contents: read
+  actions: write
+
+concurrency:
+  # Serializes simultaneous watchdog runs: the second scheduled run waits for
+  # the first, then observes the queued production cycle and does nothing.
+  group: ops-watchdog
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0 # full history + all branches: the observation needs it
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 'Observe (read-only): valid progress, blockers, active runs'
+        id: observe
+        run: |
+          set -e
+          # --- owner switch + recorded progress (ops state, read-only) ---
+          PROD_ENABLED=$(jq -r '.production_enabled // false' docs/state/operations/maintenance.json)
+          STATE_TS=$(jq -r '.last_valid_progress_at // ""' docs/state/operations/maintenance.json)
+          STATE_S=0
+          if [ -n "$STATE_TS" ] && [ "$STATE_TS" != "null" ]; then
+            STATE_S=$(date -u -d "$STATE_TS" +%s 2>/dev/null || echo 0)
+          fi
+
+          # --- VALID progress signals only (this run's own activity is not one) ---
+          STAGE_S=$(git --no-pager log -1 --format=%ct origin/main -- data/blog/articles/ 2>/dev/null || echo 0)
+          STAGE_S=${STAGE_S:-0}
+          PUB_S=$(git --no-pager log -i --grep=PUBLISHED -1 --format=%ct origin/main 2>/dev/null || echo 0)
+          PUB_S=${PUB_S:-0}
+          WRITER_S=$(git for-each-ref --sort=-committerdate --count=1 \
+            --format=%(committerdate:unix) refs/remotes/origin/writer/ 2>/dev/null || echo 0)
+          WRITER_S=${WRITER_S:-0}
+          LAST_MS=0
+          for S in "$STAGE_S" "$PUB_S" "$WRITER_S" "$STATE_S"; do
+            MS=$((S * 1000))
+            if [ "$MS" -gt "$LAST_MS" ]; then LAST_MS=$MS; fi
+          done
+          echo "last valid progress: ${LAST_MS}ms (staging=${STAGE_S}s publish=${PUB_S}s writer=${WRITER_S}s state=${STATE_S}s)"
+
+          # --- production runs: active or queued -> never a duplicate cycle ---
+          ACTIVE_COUNT=0
+          QUEUED_COUNT=0
+          for W in writer-coordinator.yml writer-publisher.yml blog-factory-publish.yml pages-build-deployment; do
+            RUNS=$(gh run list --workflow "$W" --limit 10 --json status \
+              --jq '[.[] | select(.status == "in_progress" or .status == "queued")] | length' 2>/dev/null || echo 0)
+            RUNS=${RUNS:-0}
+            ACTIVE_COUNT=$((ACTIVE_COUNT + RUNS))
+          done
+          # split active vs queued for the log (both block the wake)
+          QUEUED_COUNT=$(gh run list --workflow writer-coordinator.yml --limit 10 --json status \
+            --jq '[.[] | select(.status == "queued")] | length' 2>/dev/null || echo 0)
+          QUEUED_COUNT=${QUEUED_COUNT:-0}
+
+          # --- Agent #4 / #5 activity (a queued supervisor counts: it WILL run) ---
+          A4=$(gh run list --workflow ops-repair-agent.yml --limit 10 --json status \
+            --jq '[.[] | select(.status == "in_progress" or .status == "queued")] | length' 2>/dev/null || echo 0)
+          A5=$(gh run list --workflow ops-supervisor.yml --limit 10 --json status \
+            --jq '[.[] | select(.status == "in_progress" or .status == "queued")] | length' 2>/dev/null || echo 0)
+
+          BOOL() { if [ "$1" -gt 0 ] 2>/dev/null; then echo true; else echo false; fi; }
+          {
+            echo "production_enabled=$PROD_ENABLED"
+            echo "last_progress_epoch=$LAST_MS"
+            echo "active_production=$(BOOL "$ACTIVE_COUNT")"
+            echo "queued_production=$(BOOL "$QUEUED_COUNT")"
+            echo "agent4_active=$(BOOL "$A4")"
+            echo "agent5_active=$(BOOL "$A5")"
+          } >> "$GITHUB_OUTPUT"
+          echo "observation: production_enabled=$PROD_ENABLED active_runs=$ACTIVE_COUNT queued=$QUEUED_COUNT agent4=$A4 agent5=$A5"
+
+      - name: 'Decide: wake only after a verified genuine 2h stop'
+        id: decide
+        run: |
+          set -e
+          node tools/ops-agent.mjs wake-decision \
+            --production-enabled "${{ steps.observe.outputs.production_enabled }}" \
+            --last-progress-epoch "${{ steps.observe.outputs.last_progress_epoch }}" \
+            --now-epoch "$(date +%s%3N)" \
+            --active-production "${{ steps.observe.outputs.active_production }}" \
+            --queued-production "${{ steps.observe.outputs.queued_production }}" \
+            --agent4-active "${{ steps.observe.outputs.agent4_active }}" \
+            --agent5-active "${{ steps.observe.outputs.agent5_active }}" | tee /tmp/wake.out
+          WAKE=$(sed -n 's/^wake=//p' /tmp/wake.out)
+          echo "wake=$WAKE" >> "$GITHUB_OUTPUT"
+          echo "Agent #6 decision: wake=$WAKE"
+
+      - name: 'Wake production: EXACTLY ONE normal entrypoint'
+        if: steps.decide.outputs.wake == 'true' && inputs.dry_run != 'true'
+        run: |
+          set -e
+          # ONE dispatch — the coordinator fans out to the writers itself.
+          gh workflow run writer-coordinator.yml --ref main -f dry_run=false -f limit=18
+          echo "Agent #6 woke production via the single production entrypoint (writer-coordinator, dry_run=false, limit=18)"
+
+      - name: 'Do nothing (blocked, owner-stopped, or dry-run)'
+        if: steps.decide.outputs.wake != 'true' || inputs.dry_run == 'true'
+        run: |
+          echo "Agent #6 does nothing — see the decision reason above. It never repairs, never edits, never starts writers."
