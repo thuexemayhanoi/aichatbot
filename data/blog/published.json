@@ -861,6 +861,36 @@
         "Bát Tràng thuộc Gia Lâm, bên bờ bắc sông Hồng: chợ gốm bán bát đĩa men lam, tranh gốm ghép mảnh và quà lưu niệm; nhiều xưởng mở lớp trải nghiệm bàn xoay làm gốm, nung rồi nhận lại sản phẩm. Giữa trưa ăn ở nhà hàng quanh chợ gốm, chiều men theo đường đê sông Hồng đoạn Gia Lâm và Long Biên ngắm ruộng và hoàng hôn về phía cầu.",
         "Hành trình một ngày thường thuê xe máy tại 112 Nguyễn Văn Cừ, Long Biên, mở cửa 09:00-21:00. Cửa hàng giao xe tận nơi trong Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành; tiền cọc phổ biến từ 2.000.000đ đến 5.000.000đ và được hoàn khi trả xe nguyên trạng. Giá tham khảo Air Blade và Vision khoảng 200.000đ mỗi ngày, Click, Mio và Wave khoảng 150.000đ mỗi ngày."
       ]
+    },
+    {
+      "article_id": "BA-0061",
+      "category": "APP",
+      "slug": "ung-dung-thue-xe-may-hoat-dong-ra-sao",
+      "title": "Ứng dụng thuê xe máy hoạt động ra sao: từ câu hỏi tới chiếc xe",
+      "description": "Cơ chế hoạt động của ứng dụng thuê xe máy MotoAI: đọc câu hỏi tiếng Việt, tính giá theo ngày tuần tháng, dữ liệu lưu cục bộ trên thiết bị và luồng chốt xe.",
+      "published_date": "2026-10-03",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ung-dung-thue-xe-may-hoat-dong-ra-sao.body.html",
+      "knowledge_chunks": [
+        "Ứng dụng thuê xe máy MotoAI đọc câu hỏi tiếng Việt, tách ý chính gồm dòng xe, thời gian thuê và khu vực nhận xe. Cụm \"xe 50cc\" luôn được hiểu là dòng xe số nhỏ, không bao giờ bị nhầm thành số ngày thuê. Câu thiếu dấu hay sai trật tự vẫn xử lý được nhờ bộ từ đồng nghĩa soạn sẵn; nếu thiếu kỳ thuê, ứng dụng hỏi lại trước khi báo giá.",
+        "Phần tính giá áp theo kỳ: Air Blade khoảng 200.000đ một ngày, 800.000đ một tuần, 1.400.000đ một tháng; Vision khoảng 200.000đ một ngày; Click, Mio và Wave khoảng 150.000đ một ngày. Tiền cọc dao động 2.000.000đ đến 5.000.000đ tùy dòng xe, được hoàn khi trả xe đúng nguyên trạng.",
+        "Ứng dụng chạy tĩnh trên GitHub Pages và xử lý cục bộ trong trình duyệt: không cần tài khoản, không thu thập hội thoại trên máy chủ, xoá dữ liệu trang là xoá sạch dấu vết. Bước chốt cuối cùng luôn xác nhận lại với cửa hàng tại 112 Nguyễn Văn Cừ, Long Biên, mở cửa 09:00-21:00, hoặc giao xe tận nơi trong khu vực phục vụ."
+      ]
+    },
+    {
+      "article_id": "BA-0062",
+      "category": "RENT",
+      "slug": "thue-wave-alpha",
+      "title": "Thuê Wave Alpha: dòng xe số rẻ, bền, nhẹ xăng cho phố",
+      "description": "Đặc điểm Honda Wave Alpha, ai hợp với xe số, giá thuê theo ngày, thủ tục nhận xe tại Long Biên và vài mẹo chạy xe số trong nội thành Hà Nội.",
+      "published_date": "2026-10-03",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-wave-alpha.body.html",
+      "knowledge_chunks": [
+        "Honda Wave Alpha là xe số phổ thông 110 phân khối, bốn cấp số, khối lượng gần một trăm kilôgam, tiết kiệm xăng và phụ tùng có mặt ở hầu hết tiệm sửa. Dòng xe hợp người quen xe số đi quanh Long Biên và Gia Lâm, thuê dài hạn theo tuần hoặc theo tháng với ngân sách tối thiểu.",
+        "Phí thuê Wave Alpha khoảng 150.000đ mỗi ngày, mức thấp nhất của cửa hàng; thuê tuần hoặc tháng có ưu đãi riêng. Tiền cọc 2.000.000đ đến 5.000.000đ tùy dòng xe, hoàn khi trả xe nguyên trạng; cần mang căn cước công dân hoặc hộ chiếu, mũ bảo hiểm đi kèm xe.",
+        "Nhận xe tại 112 Nguyễn Văn Cừ, quận Long Biên, mở cửa 09:00-21:00; cửa hàng giao tận nơi trong Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành. Ai quen xe ga nên chọn Vision hoặc Air Blade, khoảng 200.000đ mỗi ngày."
+      ]
     }
   ]
 }
