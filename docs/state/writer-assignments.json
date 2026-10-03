@@ -130,12 +130,25 @@
           "BA-0061",
           "BA-0062"
         ],
-        "status": "FACTORY_FAILED",
+        "status": "PUBLISHED",
         "events": [
           {
             "state": "FACTORY_FAILED",
             "at": "2026-10-03T06:52:50.584Z",
             "reason": "factory run 37104459039 failed"
+          },
+          {
+            "state": "PUSHED",
+            "at": "2026-10-03T07:07:40.135Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-03T07:07:40.135Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-03T07:07:40.135Z",
+            "reason": "completed after out-of-band REPAIR: factory run 37104459039 QA FAIL (duplicate deposit sentence), bodies fixed in 993c89df, repair factory run re-QA PASS and published both rows on main"
           }
         ]
       },
