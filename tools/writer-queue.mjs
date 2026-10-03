@@ -672,10 +672,13 @@ function cmdStage(args) {
     if (!row) die(`matrix row missing for ${id}`);
     if (row.status === 'PUBLISHED') die(`${id} is already PUBLISHED — double publish refused`);
     if (row.status !== 'PLANNED') die(`${id} is ${row.status} — repair rows belong to the REPAIR pipeline, never a NEW batch push`);
+    // §6G B8: check the body FIRST — in the crash window (bodies already on
+    // main) the operator must see "body already exists", the exact signal
+    // that stage is the wrong tool and requeue is the right one.
+    if (existsSync(join(ROOT, bodyPathOf(row)))) die(`body already exists on main: ${bodyPathOf(row)} — conflict, stop`);
     if (manifest.articles.some((x) => x.article_id === id)) {
       die(`${id} already has a manifest entry outside this assignment — conflict, stop`);
     }
-    if (existsSync(join(ROOT, bodyPathOf(row)))) die(`body already exists on main: ${bodyPathOf(row)} — conflict, stop`);
     if (!existsSync(join(workRoot, bodyPathOf(row)))) die(`body missing on the writer branch: ${bodyPathOf(row)}`);
   }
 
@@ -788,7 +791,11 @@ function cmdRequeue(args) {
       if (e.slug !== c.row.slug || e.body !== bodyPathOf(c.row)) {
         die(`manifest entry of ${c.id} does not match the matrix — fail closed`);
       }
-      if (!c.bodyOnMain) die(`${c.id} has a staged manifest entry but no body on main — torn push, fail closed`);
+      // §6G B2: a staged entry whose body is missing on main is exactly what
+      // requeue RESTORES — the writer branch is the authority (checked below:
+      // a missing writer body fails closed; a diverged main body fails closed
+      // in pass 2). The old "torn push" refusal here made recovery of a
+      // partially deleted main impossible.
     }
     if (c.entries.length === 0 && c.bodyOnMain) die(`${c.id} has a body on main but no manifest entry — torn push, fail closed`);
     if (!c.bodyOnWriter) die(`body missing on the writer branch: ${bodyPathOf(c.row)} — cannot verify/restore`);
@@ -960,7 +967,10 @@ if (isMain) {
     case 'fail': cmdFail(args); break;
     case 'requeue': cmdRequeue(args); break;
     default:
-      console.error(USAGE);
+      // Bare invocation prints usage on stdout (exit 0) so tooling can
+      // assert the CLI surface (§6G A4); an unknown command stays stderr + exit 1.
+      if (cmd) console.error(USAGE);
+      else console.log(USAGE);
       process.exit(cmd ? 1 : 0);
   }
 }

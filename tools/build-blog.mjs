@@ -35,6 +35,15 @@ const write = (p, s) => { mkdirSync(dirname(join(ROOT, p)), { recursive: true })
 
 export const PER_PAGE = 24;
 
+/** Blog home "Bài mới" cap (v69.1 lazy-home contract): the home screen must
+ *  never render the whole corpus — it holds hub sections + the newest
+ *  articles + lazy search (tests/unit/blog-foundation.test.js asserts
+ *  < 60 cards). Older articles stay reachable via hub pagination, subtopic
+ *  hubs and sitemap.xml. */
+export const HOME_LATEST_CARDS = 24;
+/** Newest-first slice of a manifest-sorted (oldest-first) list. */
+export const newestFirst = (articles, n) => articles.slice(-n).reverse();
+
 /** Canonical category order (IDs never change). */
 export const HUBS = Object.freeze(['APP', 'RENT', 'EV', 'GUIDE', 'SAFE', 'LOCAL'].map((id) => ({
   id,
@@ -151,7 +160,7 @@ function buildHome(published) {
     const hub = clusterNav(c.id);
     const pills = hub.children.map((ch) =>
       `        <a class="blog-cluster-link" href="/aichatbot/blog/${ch.dir}/">${ch.icon} ${esc(ch.label)}</a>`).join('\n');
-    const latest = published.filter((a) => c.categories.includes(a.category)).slice(0, 4);
+    const latest = newestFirst(published.filter((a) => c.categories.includes(a.category)), 4);
     const latestCards = latest.map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
     return `      <section class="blog-hub-section" aria-label="${esc(c.name)}">
         <h2><a href="/aichatbot/blog/${c.dir}/">${hub.icon} ${esc(c.name)}</a></h2>
@@ -175,7 +184,9 @@ ${latestCards}
       </a>`;
   }).join('\n');
 
-  const cards = published.map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
+  // v69.1: cap + newest-first (the section is labelled "Bài mới"); the whole
+  // corpus stays discoverable through hub pagination and lazy search.
+  const cards = newestFirst(published, HOME_LATEST_CARDS).map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
 
   const content = breadcrumb([CRUMB_HOME, { label: 'Cẩm nang', href: null }])
     + screenHead({
