@@ -207,3 +207,10 @@
 - 2026-10-03 QA PASS BA-0057
 - 2026-10-03 QA PASS BA-0058
 - 2026-10-03 PUBLISHED 2 (BA-0057, BA-0058) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-03 CLAIM 1: BA-0059
+- 2026-10-03 FINISH BA-0059
+- 2026-10-03 CLAIM 1: BA-0060
+- 2026-10-03 FINISH BA-0060
+- 2026-10-03 QA PASS BA-0059
+- 2026-10-03 QA PASS BA-0060
+- 2026-10-03 PUBLISHED 2 (BA-0059, BA-0060) — one grouped build, pages, matrix, indexes, sitemap consistent
