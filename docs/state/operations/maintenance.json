@@ -5,5 +5,36 @@
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
   "active_incident": null,
   "incidents": [],
-  "known_content_blockers": []
+  "known_content_blockers": [
+    {
+      "article_id": "BA-0012",
+      "type": "unverified_locality",
+      "reason": "bài dùng locality branch \"Phố cổ\" chưa có phường xác minh (LOCAL quality gate)",
+      "status": "open"
+    },
+    {
+      "article_id": "BA-0024",
+      "type": "unverified_locality",
+      "reason": "bài dùng locality branch \"hồ Tây\" chưa có phường xác minh (LOCAL quality gate)",
+      "status": "open"
+    },
+    {
+      "article_id": "BA-0030",
+      "type": "locality_normalization",
+      "reason": "casing/locality normalization: \"ba Đình\" -> \"Ba Đình\"",
+      "status": "open"
+    },
+    {
+      "article_id": "BA-0042",
+      "type": "locality_normalization",
+      "reason": "casing/locality normalization: \"Đống đa\" -> \"Đống Đa\"",
+      "status": "open"
+    },
+    {
+      "article_id": "BA-0054",
+      "type": "locality_normalization",
+      "reason": "casing/locality normalization: \"Hai bà Trưng\" -> \"Hai Bà Trưng\"",
+      "status": "open"
+    }
+  ]
 }
