@@ -107,8 +107,21 @@
           "BA-0059",
           "BA-0060"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-03T06:47:33.114Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-03T06:47:33.114Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-03T06:47:33.114Z"
+          }
+        ]
       },
       {
         "seq": 6,
