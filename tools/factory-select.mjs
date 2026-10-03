@@ -12,7 +12,7 @@
  *   proceed=true|false
  *   ids=BA-0002,BA-0003            # full scope, deterministic priority order
  *   claim_ids=...                  # rows the workflow must prepare (PLANNED/WRITING + backlog)
- *   qa_ids=...                     # rows needing scoped QA after prepare (claim_ids + QA/REVIEW/REPAIR)
+ *   qa_ids=...                     # rows needing scoped QA after prepare (claim_ids + QA/REPAIR)
  *   ready_ids=...                  # rows already PASS (publish without re-QA)
  *   reason=...                     # skip/refuse explanation
  *   id=<first scope id>            # legacy single-id field kept for compatibility
@@ -27,15 +27,15 @@
  *
  * Selection rules (deterministic, matrix is truth):
  *   NEW:     pushed bodies on PLANNED/WRITING rows -> claim EXACTLY those
- *            (auto-claim via prepare-chunk). Pushed QA/REVIEW/REPAIR rows in
+ *            (auto-claim via prepare-chunk). Pushed QA/REPAIR rows in
  *            the SAME push -> scoped QA re-run (they are part of the push).
  *            Pushed PASS rows -> ready (publish without re-QA). Unrelated
  *            pending/backlog rows are NEVER mixed into a NEW run.
  *   REPAIR:  no new bodies pushed, but pushed rows are in
- *            QA/REVIEW/REPAIR/PASS -> process EXACTLY those; never claim PLANNED.
+ *            QA/REPAIR/PASS -> process EXACTLY those; never claim PLANNED.
  *   BACKLOG: only when NO article bodies were pushed (--backlog scan or a
  *            push without article files): unfinished rows with a valid draft
- *            (QA/REVIEW/REPAIR/PASS) first, then PLANNED rows whose body +
+ *            (QA/REPAIR/PASS) first, then PLANNED rows whose body +
  *            manifest draft already exist on disk (an earlier workflow died).
  *   SKIP:    nothing actionable (PUBLISHED-only edit, tooling-only push).
  *
@@ -60,8 +60,13 @@ const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
 
 const BODY_RE = /^data\/blog\/articles\/([^/]+)\.body\.html$/;
-/** Rows the factory may (re-)drive automatically. */
-const ACTIONABLE = new Set(['PLANNED', 'WRITING', 'QA', 'REVIEW', 'REPAIR', 'PASS']);
+/**
+ * Rows the factory may (re-)drive automatically.
+ * v69: the REVIEW state is retired — a legacy REVIEW row is treated as
+ * REPAIR via statusOf() and migrated one-way by blog-factory qa/prepare.
+ */
+const statusOf = (row) => (row.status === 'REVIEW' ? 'REPAIR' : row.status);
+const ACTIONABLE = new Set(['PLANNED', 'WRITING', 'QA', 'REPAIR', 'PASS']);
 /** Workflow ceiling per push, mirroring /vanchinh (writer canonical chunk = 2). */
 export const MAX_PUSH_BODIES = 50;
 
@@ -128,9 +133,9 @@ function classify(scopeRows) {
     if (['PLANNED', 'WRITING'].includes(row.status)) {
       claim.push(row.article_id); // prepare-chunk: PLANNED/WRITING -> QA, then scoped QA
     }
-    if (['PLANNED', 'WRITING', 'QA', 'REVIEW', 'REPAIR'].includes(row.status)) {
+    if (['PLANNED', 'WRITING', 'QA', 'REPAIR'].includes(statusOf(row))) {
       qa.push(row.article_id); // claimed rows become QA after prepare-chunk
-    } else if (row.status === 'PASS') {
+    } else if (statusOf(row) === 'PASS') {
       ready.push(row.article_id);
     }
   }
@@ -143,7 +148,7 @@ function classify(scopeRows) {
 }
 
 /** Unfinished rows NOT part of a push (backlog scan only, /vanchinh style):
- *  recovery net for a dead earlier run. QA/REVIEW/REPAIR/PASS rows with a
+ *  recovery net for a dead earlier run. QA/REPAIR/PASS rows with a
  *  valid draft are pending (repair-first); a PLANNED row with a body + valid
  *  draft on disk is backlog (an earlier workflow died before claiming it) —
  *  both are re-triggered without rewriting or re-pushing the article. */
@@ -153,10 +158,10 @@ function discoverPending(rows, manifest, pushedIds) {
   for (const row of rows) {
     if (pushedIds.has(row.article_id)) continue;
     if (row.status === 'PUBLISHED') continue;
-    if (!ACTIONABLE.has(row.status)) continue; // FAIL/BLOCKED need a human
+    if (!ACTIONABLE.has(statusOf(row))) continue; // FAIL/BLOCKED need a human
     if (!validDraft(row, manifest, { refuse: false })) continue;
     if (row.status === 'PLANNED') backlog.push(row);
-    else pending.push(row); // WRITING/QA/REVIEW/REPAIR/PASS — resume/repair first
+    else pending.push(row); // WRITING/QA/REPAIR/PASS — resume/repair first
   }
   return { pending, backlog };
 }
@@ -216,7 +221,7 @@ function selectFromFiles(fileListPath) {
       publishedEdits.push(row);
       continue;
     }
-    if (!ACTIONABLE.has(row.status)) {
+    if (!ACTIONABLE.has(statusOf(row))) {
       refused.push(row);
       continue;
     }
@@ -242,7 +247,7 @@ function selectFromFiles(fileListPath) {
   // repair push (body edit) or the --backlog scan, never auto-mixed here.
   const idSort = (a, b) => a.article_id.localeCompare(b.article_id);
   const newRows = pushed.filter((r) => ['PLANNED', 'WRITING'].includes(r.status)).sort(idSort);
-  const repairRows = pushed.filter((r) => ['QA', 'REVIEW', 'REPAIR'].includes(r.status)).sort(idSort);
+  const repairRows = pushed.filter((r) => ['QA', 'REPAIR'].includes(statusOf(r))).sort(idSort);
   const readyRows = pushed.filter((r) => r.status === 'PASS').sort(idSort);
   if (newRows.length > 0) {
     // NEW: claim EXACTLY the pushed PLANNED/WRITING rows. Pushed repair rows
@@ -251,7 +256,7 @@ function selectFromFiles(fileListPath) {
     // Scope is sorted by article_id so the printed ids are deterministic.
     emit('new', classify([...newRows, ...repairRows, ...readyRows].sort(idSort)));
   } else {
-    // REPAIR: re-QA exactly the pushed QA/REVIEW/REPAIR rows; pushed PASS rows
+    // REPAIR: re-QA exactly the pushed QA/REPAIR rows; pushed PASS rows
     // publish without re-QA. NEVER claims fresh PLANNED rows.
     emit('repair', classify([...repairRows, ...readyRows].sort(idSort)));
   }
@@ -268,8 +273,8 @@ function selectByIds(rawIds) {
     if (row.status === 'PUBLISHED') {
       return emit('skip', { ids: [id], reason: `${id} already PUBLISHED — manual rebuild only` });
     }
-    if (!ACTIONABLE.has(row.status)) {
-      return emit('refuse', { ids: [id], reason: `${id} is ${row.status} — needs human review` });
+    if (!ACTIONABLE.has(statusOf(row))) {
+      return emit('refuse', { ids: [id], reason: `${id} is ${statusOf(row)} — needs human review` });
     }
     validDraft(row, manifest);
     scope.push(row);

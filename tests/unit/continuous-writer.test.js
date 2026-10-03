@@ -96,23 +96,24 @@ test('chunk: 2 PLANNED bodies + 2 manifest entries -> select both -> prepare-chu
   assert.deepEqual(cp.finished, []);
 });
 
-test('chunk: one PASS + one REVIEW -> publish ONLY the PASS id; the failed one stays for repair', () => {
+test('chunk: one PASS + one REPAIR -> publish ONLY the PASS id; the failed one stays for repair', () => {
   const dir = repoSandbox();
   const good = installFixture(dir, { ...BASE, body: bodyA(), rowId: 'BA-0002', status: 'QA' });
   const bad = installFixture(dir, {
-    ...BASE2, body: fixtureBody({ paragraphs: 0, tag: 'Gói xe B' }), rowId: 'BA-0003', status: 'QA'
-  }); // <1.500 words -> QA FAIL
+    ...BASE2, body: fixtureBody({ tag: 'Gói xe B' }) + '\n<p>Gọi ngay số 0987 654 321 để biết thêm chi tiết.</p>', rowId: 'BA-0003', status: 'QA'
+  }); // invented phone -> critical gate -> score 0 -> QA FAIL
   const qaOut = factory(dir, ['qa-chunk', `${good},${bad}`]);
   assert.match(qaOut, /pass_ids=BA-0002/);
   assert.match(qaOut, /fail_ids=BA-0003/);
   assert.equal(matrixRow(dir, good).status, 'PASS');
-  assert.equal(matrixRow(dir, bad).status, 'REVIEW');
+  assert.equal(matrixRow(dir, bad).status, 'REPAIR');
   assert.equal(matrixRow(dir, bad).repair_attempts, '1');
+  assert.equal(matrixRow(dir, bad).score, '0');
 
   const pub = factory(dir, ['publish-chunk', good]);
   assert.match(pub, /build_calls=1/);
   assert.equal(matrixRow(dir, good).status, 'PUBLISHED');
-  assert.equal(matrixRow(dir, bad).status, 'REVIEW', 'one bad article never corrupts the good one');
+  assert.equal(matrixRow(dir, bad).status, 'REPAIR', 'one bad article never corrupts the good one');
   assert.ok(existsSync(join(dir, matrixRow(dir, good).output_path)));
   assert.ok(!existsSync(join(dir, matrixRow(dir, bad).output_path)), 'nothing published from a failed QA');
 });
@@ -230,7 +231,7 @@ test('chunk: NEW push processes EXACTLY the pushed ids — unrelated pending row
 
 test('chunk: repair rows pushed TOGETHER with new rows ride along in the same run (they are part of the push)', () => {
   const dir = repoSandbox();
-  const repair = installFixture(dir, { ...BASE, body: bodyA(), rowId: 'BA-0002', status: 'REVIEW' });
+  const repair = installFixture(dir, { ...BASE, body: bodyA(), rowId: 'BA-0002', status: 'REPAIR' });
   const fresh = installFixture(dir, { ...BASE2, body: bodyB(), rowId: 'BA-0003', status: 'PLANNED' });
   const slugs = [matrixRow(dir, repair).slug, matrixRow(dir, fresh).slug];
   const out = selectCli(dir, ['--files', writeFileList('new-plus-repair', [
@@ -293,7 +294,7 @@ test('chunk: BACKLOG discovery — PLANNED rows with existing bodies+drafts are 
 
 test('chunk: repair push (QA row body edit) is mode=repair and NEVER claims fresh PLANNED rows', () => {
   const dir = repoSandbox();
-  const id = installFixture(dir, { ...BASE, body: fixtureBody(), rowId: 'BA-0002', status: 'REVIEW' });
+  const id = installFixture(dir, { ...BASE, body: fixtureBody(), rowId: 'BA-0002', status: 'REPAIR' });
   // BA-0003 stays a clean PLANNED row: no body, no draft — never claimable.
   const slug = matrixRow(dir, id).slug;
   const out = selectCli(dir, ['--files', writeFileList('repair', [
@@ -395,17 +396,26 @@ test('chunk: stale writer state loses — remote main (PUBLISHED) wins, no rewri
   assert.match(out, /already PUBLISHED/);
 });
 
-test('chunk: a sub-1.500-word draft fails scoped QA inside the chunk -> REVIEW (no publish)', () => {
+test('chunk: a sub-1.500-word draft only WARNs — QA PASS with score 95 (v69 guideline, publish allowed)', () => {
   const dir = repoSandbox();
-  const short = fixtureBody({ paragraphs: 0 });
-  const id = installFixture(dir, { ...BASE, body: short, rowId: 'BA-0002', status: 'QA' });
+  const shortish = fixtureBody({ paragraphs: 3 }); // ~450 words: >=300 (not a stub), <1.500 (guideline)
+  const id = installFixture(dir, { ...BASE, body: shortish, rowId: 'BA-0002', status: 'QA' });
   const out = factory(dir, ['qa-chunk', id]);
-  assert.match(out, /fail_ids=BA-0002/);
+  assert.match(out, /pass_ids=BA-0002/);
+  assert.ok(!/fail_ids=BA-0002/.test(out));
   const row = matrixRow(dir, id);
-  assert.equal(row.status, 'REVIEW');
-  assert.equal(row.repair_attempts, '1');
-  assert.equal(row.quality_status, 'FAIL');
-  assert.ok(!existsSync(join(dir, row.output_path)), 'nothing published from a failed QA');
+  assert.equal(row.status, 'PASS');
+  assert.equal(row.score, '95');
+  assert.equal(row.quality_status, 'PASS');
+});
+
+test('chunk: a legacy REVIEW row is migrated one-way to REPAIR before QA (v69)', () => {
+  const dir = repoSandbox();
+  const id = installFixture(dir, { ...BASE, body: fixtureBody(), rowId: 'BA-0002', status: 'QA' });
+  setStatus(dir, id, 'REVIEW'); // pre-v69 legacy state
+  const out = factory(dir, ['qa', id]);
+  assert.match(out, /migrate BA-0002 REVIEW -> REPAIR/);
+  assert.equal(matrixRow(dir, id).status, 'PASS');
 });
 
 test('chunk: qa-chunk skips an already-PASS row without re-running QA', () => {

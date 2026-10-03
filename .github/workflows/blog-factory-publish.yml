@@ -17,7 +17,7 @@ name: Blog Factory Publish (2-article micro batch)
 #   new     : pushed bodies on PLANNED/WRITING rows — claim EXACTLY those;
 #             pushed repair rows in the same push ride along in scoped QA;
 #             unrelated pending/backlog rows are never mixed in.
-#   repair  : pushed QA/REVIEW/REPAIR/PASS rows — re-QA exactly those;
+#   repair  : pushed QA/REPAIR/PASS rows — re-QA exactly those;
 #             NEVER claims fresh PLANNED rows.
 #   backlog : only when no article bodies were pushed (workflow_dispatch
 #             without ids) — unfinished rows with a valid draft first, then
@@ -103,7 +103,7 @@ jobs:
         if: steps.select.outputs.proceed == 'true' && steps.select.outputs.claim_ids != ''
         run: node tools/blog-factory.mjs prepare-chunk ${{ steps.select.outputs.claim_ids }}
 
-      - name: Scoped QA chunk (independent PASS/FAIL per article, no lowered thresholds)
+      - name: Minimal QA chunk (score >= 70 -> PASS; independent result per article)
         if: steps.select.outputs.proceed == 'true' && steps.select.outputs.qa_ids != ''
         run: |
           node tools/blog-factory.mjs qa-chunk ${{ steps.select.outputs.qa_ids }} | tee /tmp/qa.out
@@ -117,7 +117,7 @@ jobs:
           if [ -n "$PUBLISH_IDS" ]; then
             node tools/blog-factory.mjs publish-chunk "$PUBLISH_IDS"
           else
-            echo "no PASS rows — nothing to publish (REVIEW/REPAIR rows stay for repair)"
+            echo "no PASS rows — nothing to publish (REPAIR rows stay in the repair queue)"
           fi
 
       - name: Light matrix smoke (rows, distribution, uniqueness)
@@ -149,6 +149,6 @@ jobs:
           test ! -f docs/state/blog-factory.transaction.json || { echo "::error::txn marker left behind"; exit 1; }
           test ! -f docs/state/blog-factory.lock || { echo "::error::lock left behind"; exit 1; }
           if [ -n "$FAIL_IDS" ]; then
-            echo "::error::QA failures recorded (rows stay in REVIEW for repair): $FAIL_IDS"
+            echo "::error::QA failures recorded (rows stay in REPAIR for repair): $FAIL_IDS"
             exit 1
           fi

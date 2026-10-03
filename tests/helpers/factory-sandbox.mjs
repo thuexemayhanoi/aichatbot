@@ -104,7 +104,7 @@ export const writeJson = (dir, p, value) =>
   writeFileSync(join(dir, p), JSON.stringify(value, null, 2) + '\n');
 
 /** Manifest articles whose matrix row is PUBLISHED. In-flight drafts
- *  (QA/PASS/REVIEW rows committed by a writer cycle) are not built yet
+ *  (QA/PASS/REPAIR rows committed by a writer cycle) are not built yet
  *  and must never be page-audited — only the factory workflow builds them. */
 export function publishedManifestArticles(dir) {
   const ids = new Set(readMatrix(dir).slice(1)
@@ -197,7 +197,7 @@ export function countWords(dir, html) {
 
 /**
  * Fixture body with an EXACT visible word count — used by the length-gate
- * boundary tests (1.499 FAIL / 1.500 / 2.500 / 4.000 PASS / >4.000 REVIEW).
+ * boundary tests (v69: 1.499 WARN / 1.500 / 2.500 / 4.000 PASS / >4.000 WARN).
  * Builds on fixtureBody({paragraphs:1}) and appends UNIQUE one-sentence
  * paragraphs (no duplicate sentences, no filler markers, no truncation)
  * until the target lands precisely.

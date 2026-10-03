@@ -401,7 +401,7 @@ test('factory safety: 2000 rows preserved, manifest sync intact, distribution in
   const manifestIds = new Set(manifest.articles.map((a) => a.article_id));
   for (const r of publishedRows) assert.ok(manifestIds.has(r.article_id),
     `PUBLISHED row ${r.article_id} missing from published.json`);
-  const inFlight = new Set(['QA', 'PASS', 'REVIEW']);
+  const inFlight = new Set(['QA', 'PASS', 'REPAIR']); // v69: REVIEW retired
   for (const a of manifest.articles) {
     const r = byId.get(a.article_id);
     assert.ok(r, `manifest entry ${a.article_id} missing from the matrix`);

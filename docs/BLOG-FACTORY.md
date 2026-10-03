@@ -6,11 +6,11 @@ Công cụ: `tools/blog-factory.mjs`. Nguyên tắc an toàn giống các hệ t
 
 ```
 PLANNED → WRITING → QA → PASS → PUBLISHED
-                ↘ REVIEW → REPAIR (tối đa 3 lần sửa có nghĩa) → PASS
+                ↘ REPAIR (tối đa 3 lần sửa có nghĩa) → PASS
                 ↘ FAIL / BLOCKED
 ```
 
-Chỉ bài `PASS` mới được publish. Bài FAIL/BLOCKED phải được người phụ trách xem xét lại; không tự động retry vượt 3 lần.
+Chỉ bài `PASS` mới được publish. Bài FAIL/BLOCKED phải được người phụ trách xem xét lại; không tự động retry vượt 3 lần. (v69: state REVIEW đã retire — QA score <70 đi thẳng REPAIR; dòng REVIEW cũ được migrate một chiều sang REPAIR.)
 
 ## Hợp đồng sản xuất v66→v67 — TWO-ARTICLE MICRO BATCH + SIMPLE PRODUCTION MODE
 
@@ -28,11 +28,11 @@ select exact ids (factory-select.mjs: từ diff push, --ids, hoặc --backlog)
 Quy tắc bất biến:
 
 - Chunk = danh sách BA-id EXPLICIT (`prepare-chunk/qa-chunk/publish-chunk BA-0002,BA-0003`). Không bao giờ nhận tham số số (chunk mù đã bỏ).
-- **Scope tách rời (v67, /vanchinh)**: NEW / REPAIR / BACKLOG mutually exclusive. NEW xử lý đúng các id trong push (body của dòng QA/REVIEW/REPAIR cùng push được QA kèm); REPAIR xử lý đúng các id pushed, KHÔNG claim PLANNED mới; BACKLOG chỉ chạy khi không có body push. Unrelated pending/backlog KHÔNG BAO GIỜ bị trộn vào run NEW.
+- **Scope tách rời (v67, /vanchinh)**: NEW / REPAIR / BACKLOG mutually exclusive. NEW xử lý đúng các id trong push (body của dòng QA/REPAIR cùng push được QA kèm); REPAIR xử lý đúng các id pushed, KHÔNG claim PLANNED mới; BACKLOG chỉ chạy khi không có body push. Unrelated pending/backlog KHÔNG BAO GIỜ bị trộn vào run NEW.
 - **Không lock trên happy path (v67)**: workflow serialize bằng concurrency group; crash safety nằm ở txn marker + backlog discovery. `lock`/`unlock` CLI giữ cho run thủ công; `claim` thủ công vẫn cần lock.
 - `claim` không tham số vẫn nhận đúng 1 dòng PLANNED đầu; `claim <BA-id>` nhận đúng dòng đó. Từ chối khi đã có dòng WRITING và từ chối tham số số.
 - `finish <BA-id>` đưa đúng 1 dòng WRITING → QA (`finish-chunk` giữ tương thích ngược).
-- `qa-chunk`: mỗi bài một kết quả QA độc lập; PASS publish được, REVIEW/REPAIR ở lại; threshold không hạ; QA scoped đúng chunk, không quét toàn site mỗi cặp 2 bài.
+- `qa-chunk`: mỗi bài một kết quả QA độc lập; PASS publish được, REPAIR ở lại repair queue; threshold không hạ; QA scoped đúng chunk (12–18 bài cycle), không quét toàn site.
 - `publish-chunk`: MỘT build() cho toàn bộ chunk (2 bài PASS = build_calls=1), MỘT marker txn chứa đúng các id PASS, verify từng bài (page + matrix + sitemap + canonical + schema + 1 H1), MỘT checkpoint update, MỘT commit derived state.
 - Không duplicate claim, không duplicate article_id/output_path, không hồi PUBLISHED.
 - Backlog: dòng PLANNED có sẵn body + manifest draft (workflow cũ chết) được discovery deterministic và xử lý, không cần push lại bài.
@@ -50,7 +50,7 @@ node tools/blog-factory.mjs claim [BA-id]  # thủ công, cần lock: ĐÚNG 1 d
 node tools/blog-factory.mjs finish BA-0002 # WRITING → QA, ghi checkpoint
 node tools/blog-factory.mjs prepare BA-0002        # auto-claim 1 bài: PLANNED/WRITING → QA (lock-free v67)
 node tools/blog-factory.mjs prepare-chunk BA-0002,BA-0003 # auto-claim nhiều id → QA (workflow dùng lệnh này; lock-free v67)
-node tools/blog-factory.mjs qa BA-0002     # scoped QA 1 bài → PASS hoặc REVIEW/BLOCKED
+node tools/blog-factory.mjs qa BA-0002     # minimal QA 1 bài: score >= 70 → PASS, thiếu → REPAIR/BLOCKED
 node tools/blog-factory.mjs qa-chunk BA-0002,BA-0003 # scoped QA nhiều bài, kết quả độc lập (pass_ids/fail_ids)
 node tools/blog-factory.mjs publish BA-0002        # transaction 1 bài (alias publish-chunk)
 node tools/blog-factory.mjs publish-chunk BA-0002,BA-0003 # GROUPED transactional publish: 1 build cho cả chunk
@@ -97,22 +97,23 @@ marker (docs/state/blog-factory.transaction.json — chứa ĐÚNG các id PASS 
 
 Nếu bất kỳ bước nào fail: marker GIỮ NGUYÊN, lệnh `resume` dựng lại từ marker (re-drive đúng các id, một build, verify từng id) và chỉ xóa marker khi verify pass cả chunk.
 
-## Scoped QA trước publish (bắt buộc, deterministic PASS/FAIL)
+## Minimal production QA trước publish (v69, score gate)
 
-`tools/article-qa.mjs` kiểm đúng từng bài trong chunk (kết quả độc lập mỗi bài) theo checklist:
+`tools/article-qa.mjs` kiểm đúng từng bài trong chunk (kết quả độc lập mỗi bài). **Score = 100 − 5×warning; 70–100 = PASS, <70 = FAIL → REPAIR** (tối đa 3 lần sửa, vượt → BLOCKED). Không REVIEW, không EXCELLENT. Bài >=70 không bị sửa chỉ để tăng điểm.
 
-1. Đúng ID / slug / output_path / body path nhất quán giữa matrix và manifest.
-2. Body tồn tại, 1.500–4.000 từ hữu ích theo search intent (không padding, không truncate), ≥2 H2, không H1 trong body, có list.
-3. Không filler, không đoạn trùng trong bài, không câu lặp (spun), không đoạn đã dùng ở bài khác.
-4. Không cannibalization: primary_keyword và tiêu đề duy nhất toàn ma trận.
-5. Title/meta/slug/date hợp lệ (title 10–70, description 50–165, YYYY-MM-DD).
-6. SEO ownership: không nhắm đúng protected commercial keyword, không claim app native store, không claim cho thuê toàn quốc, không doorway "quận X".
-7. Business facts: `{{ business.* }}` resolve được; số điện thoại và mức cọc chỉ được khớp dữ liệu đã xác minh.
-8. Bài SAFE giữ legal gate: `source_policy=legal-gate`, `agent_retrieval=no`, knowledge chunks rỗng, có link nguồn chính gov.vn/vbpl.vn.
-9. Internal links đều trỏ tới file thật; `source_policy=no-external` → không external link.
-10. Consistency Agent retrieval: `agent_retrieval=yes` → có knowledge chunks (<800 ký tự).
+Critical gate (7 nhóm, mỗi lỗi → score 0, chặn publish):
 
-QA FAIL → REVIEW (tối đa 3 lần sửa, vượt → BLOCKED). QA PASS → PASS → được publish.
+1. Bài rỗng/cụt nghiêm trọng: body thiếu hoặc <300 từ (`body-exists`, `body-substantial`).
+2. Duplicate article ID (`unique-article-id`, `matrix-row`).
+3. Duplicate slug (`unique-slug`).
+4. Duplicate/sai canonical mapping: id/slug/output_path/body path lệch matrix↔manifest (`id-slug-path`, `manifest-entry`).
+5. HTML/frontmatter hỏng khiến trang không render: script nhúng, tag p/h2/h3/ul/ol/blockquote không cân, JSON manifest hỏng (`html-render-safe`, `manifest-entry`).
+6. Sai giá hoặc policy kinh doanh đã xác minh: `{{ business.* }}` không resolve, số điện thoại/mức cọc không khớp dữ liệu đã xác minh (`fact-resolution`, `verified-phones-only`, `verified-deposits-only`).
+7. Broken link nghiêm trọng: internal link không trỏ tới file thật (`internal-links-resolve`).
+
+Warning (−5 điểm mỗi lỗi, KHÔNG chặn publish): body-words (guideline 1.500–4.000 từ) · body-structure (≥2 H2, không H1, có list) · no-filler · không đoạn/câu trùng trong bài · không đoạn đã dùng ở bài khác · không cannibalization · title/meta/slug/date · SEO ownership · local-angle (LOCAL) · SAFE legal gate + nguồn gov.vn/vbpl.vn · no-external-links · retrieval-consistency.
+
+QA scoped đúng các bài mới của cycle (12–18 bài): không quét lại toàn site, không re-audit bài PUBLISHED. Một bài FAIL → repair queue; các bài PASS cùng chunk vẫn publish — một bài FAIL không giữ cycle.
 
 ## Scheduled run procedure (continuous-ready)
 
@@ -120,7 +121,7 @@ QA FAIL → REVIEW (tối đa 3 lần sửa, vượt → BLOCKED). QA PASS → P
 FETCH → README → docs/BLOG.md → docs/BLOG-FACTORY.md → docs/CONTINUOUS-WRITER.md
      → data/blog/content-matrix.csv + reports/blog-factory-run.md
      → RECOVER IF NEEDED (txn marker → resume; state sạch → đi thẳng)
-     → REPAIR/RESUME bài đang dở (QA/REVIEW/REPAIR/PASS): sửa rồi push body trước
+     → REPAIR/RESUME bài đang dở (QA/REPAIR/PASS): sửa rồi push body trước
      → WRITE 2 (bodies + manifest drafts) → local scoped QA each → push
      → workflow: prepare-chunk → qa-chunk → publish-chunk (1 build) → verify → green
      → fetch fresh main → cặp 2 bài kế tiếp (REPEAT cho đến khi corpus xong)

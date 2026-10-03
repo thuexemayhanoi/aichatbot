@@ -5,8 +5,9 @@
  * Contract (upgrade over the v67 single sequential writer):
  *
  *   - ONLY the coordinator (`plan`) may claim article ids. It reserves at
- *     most MAX_BATCH PLANNED ids of a fresh matrix in ONE deterministic
- *     batch, splits them into MICRO_CHUNK (2-article) chunks and assigns
+ *     most MAX_BATCH (18) PLANNED ids of a fresh matrix in ONE deterministic
+ *     batch (v69 cycle: 12-18 articles), splits them into MICRO_CHUNK
+ *     (2-article) chunks and assigns
  *     the chunks round-robin to 3 writers. The resulting manifest
  *     (docs/state/writer-assignments.json) is the SINGLE SOURCE OF TRUTH.
  *   - Writers NEVER pick "next PLANNED" themselves and NEVER push main.
@@ -60,7 +61,11 @@ const ROOT = process.env.MOTOAI_FACTORY_ROOT
 
 export const WRITERS = ['writer_A', 'writer_B', 'writer_C'];
 export const MICRO_CHUNK = 2;
-export const MAX_BATCH = 50;
+/**
+ * v69 production cycle: 12-18 articles per cycle (hard ceiling 18).
+ * The coordinator may reserve fewer (workflow input limit), never more.
+ */
+export const MAX_BATCH = 18;
 export const ASSIGNMENTS = join(ROOT, 'docs/state/writer-assignments.json');
 export const FILE_SCHEMA = 'motoai/writer-assignments@1';
 export const CHUNK_SCHEMA = 'motoai/writer-chunk@1';

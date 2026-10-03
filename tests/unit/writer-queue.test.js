@@ -163,22 +163,22 @@ function setStatusInMatrix(root, ids, status) {
 // §1/§2/§16 coordinator: reserve, split, round-robin, uniqueness
 // ---------------------------------------------------------------------------
 
-test('coordinator reserves exactly 50 unique ids, round-robin A=9/B=8/C=8 chunks (18/16/16)', () => {
+test('coordinator clamps --limit 50 to the v69 cycle ceiling of 18 (round-robin A/B/C = 6/6/6)', () => {
   const root = fixtureRoot({ planned: 60 });
   const out = parseOut(runCli(root, ['plan', '--limit', '50']));
   assert.equal(out.created, 'true');
-  assert.equal(out.total, '50');
-  assert.equal(out.chunks, '25');
-  assert.equal(out.writer_A_ids, '18');
-  assert.equal(out.writer_B_ids, '16');
-  assert.equal(out.writer_C_ids, '16');
+  assert.equal(out.total, '18'); // MAX_BATCH=18 clamp, never 50
+  assert.equal(out.chunks, '9');
+  assert.equal(out.writer_A_ids, '6');
+  assert.equal(out.writer_B_ids, '6');
+  assert.equal(out.writer_C_ids, '6');
 
   const b = assignmentsOf(root).active;
   assert.equal(b.batch_id, 'WRITER-BATCH-0001');
   assert.equal(b.status, 'ACTIVE');
   const all = b.chunks.flatMap((c) => c.ids);
-  assert.equal(all.length, 50); // not 49, not 51
-  assert.equal(new Set(all).size, 50); // UNIQUE(article_id) = TRUE
+  assert.equal(all.length, 18); // not 17, not 19
+  assert.equal(new Set(all).size, 18); // UNIQUE(article_id) = TRUE
   for (const w of WRITERS.slice(1).concat(WRITERS.slice(0, 1))) void w;
   // writers never share ids
   const byWriter = WRITERS.map((w) => b.chunks.filter((c) => c.writer === w).flatMap((c) => c.ids));
@@ -188,7 +188,7 @@ test('coordinator reserves exactly 50 unique ids, round-robin A=9/B=8/C=8 chunks
         `writers ${WRITERS[i]} and ${WRITERS[j]} share ids`);
     }
   }
-  // micro chunk = 2 everywhere (50 ids = 25 chunks, no boundary chunk needed)
+  // micro chunk = 2 everywhere (18 ids = 9 chunks, no boundary chunk needed)
   assert.ok(b.chunks.every((c) => c.ids.length === MICRO_CHUNK));
   assert.ok(validateBatch(b).ok);
 });
@@ -279,8 +279,8 @@ test('selection never mixes drafts/backlog/repair rows into a NEW batch', () => 
     }],
     // BA-0009 has a body on disk but no draft (dead workflow — BACKLOG)
     bodySlugs: ['bai-9'],
-    // BA-0011 is mid-review (REPAIR scope)
-    statuses: { 'BA-0011': 'REVIEW', 'BA-0012': 'QA', 'BA-0013': 'PUBLISHED' },
+    // BA-0011 is mid-pipeline (REPAIR scope)
+    statuses: { 'BA-0011': 'REPAIR', 'BA-0012': 'QA', 'BA-0013': 'PUBLISHED' },
   });
   const out = parseOut(runCli(root, ['plan', '--limit', '20']));
   assert.equal(out.created, 'true');
@@ -559,9 +559,9 @@ test('batch lifecycle: all chunks terminal -> COMPLETED; the next plan reserves 
   const a = assignmentsOf(main);
   assert.equal(a.active.status, 'COMPLETED');
 
-  // the factory-failed rows stay mid-pipeline (REVIEW) — never re-reserved,
+  // the factory-failed rows stay mid-pipeline (REPAIR) — never re-reserved,
   // exactly like REPAIR/BACKLOG rows: no mixing into the next NEW batch.
-  setStatusInMatrix(main, a.active.chunks[1].ids, 'REVIEW');
+  setStatusInMatrix(main, a.active.chunks[1].ids, 'REPAIR');
   const out = parseOut(runCli(main, ['plan', '--limit', '2']));
   assert.equal(out.created, 'true');
   assert.equal(out.batch_id, 'WRITER-BATCH-0002');
@@ -700,8 +700,10 @@ test('dry-run against the REAL repo: nothing written, production inventory uncha
   assert.equal(hash(join(REPO, 'data/blog/published.json')), before.manifest);
   assert.equal(hash(join(REPO, 'docs/state/writer-assignments.json')), before.assignments);
   assert.ok(!existsSync(join(REPO, 'writer-work')), 'dry-run must not create writer-work');
-  // the dry-run still plans a real batch shape: unique ids, micro chunk 2
-  assert.ok(Number(out.total) > 0 && Number(out.total) <= MAX_BATCH);
+  // the dry-run still plans a real batch shape: unique ids, micro chunk 2.
+  // (No <= MAX_BATCH assert: the live ACTIVE batch predates v69 and holds 50
+  // reserved ids, so its reported total legitimately exceeds the new 18 cap.)
+  assert.ok(Number(out.total) > 0);
   assert.ok(out.batch_id.startsWith('WRITER-BATCH-'));
 });
 

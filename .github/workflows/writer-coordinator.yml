@@ -2,9 +2,10 @@ name: 'Writer Coordinator (central reservation)'
 
 # v68 PARALLEL WRITER MODE (docs/PARALLEL-WRITER.md).
 #
-# The ONLY component allowed to claim article ids. It reserves at most 50
-# PLANNED ids of a fresh matrix into ONE deterministic batch, splits them into
-# 2-article micro chunks and assigns them round-robin to writer_A/B/C. The
+# The ONLY component allowed to claim article ids. It reserves at most 18
+# PLANNED ids of a fresh matrix (v69 cycle: 12-18 articles) into ONE
+# deterministic batch, splits them into 2-article micro chunks and assigns
+# them round-robin to writer_A/B/C. The
 # committed manifest (docs/state/writer-assignments.json) is the single
 # source of truth; writers never pick "next PLANNED" themselves.
 #
@@ -13,6 +14,9 @@ name: 'Writer Coordinator (central reservation)'
 #   - duplicate article ids anywhere in the batch FAIL CLOSED;
 #   - rows with an existing draft or body (pending/repair/backlog) are never
 #     mixed into a NEW batch (v67 SIMPLE PRODUCTION MODE stays untouched);
+#   - v69 AUTO-REFILL: when planned < 100 the queue is refilled to ~300
+#     valid topics BEFORE planning (gen-blog-matrix --refill appends rows,
+#     never rewrites existing ones);
 #   - the manifest write is an atomic exclusive create, so two racing
 #     coordinators can never both reserve.
 #
@@ -24,9 +28,9 @@ on:
   workflow_dispatch:
     inputs:
       limit:
-        description: 'So article ID toi da mot batch (1-50)'
+        description: 'So bai moi cycle (12-18, toi da 18)'
         required: false
-        default: '50'
+        default: '18'
       dry_run:
         description: 'true = chi in ke hoach, khong ghi manifest'
         required: false
@@ -52,10 +56,14 @@ jobs:
         with:
           node-version: 22
 
+      - name: 'Auto-refill the topic queue (planned < 100 -> ~300)'
+        run: |
+          node tools/gen-blog-matrix.mjs --refill
+
       - name: 'Plan the next writer batch (central reservation)'
         id: plan
         run: |
-          LIMIT="${{ github.event.inputs.limit || '50' }}"
+          LIMIT="${{ github.event.inputs.limit || '18' }}"
           DRY="${{ github.event.inputs.dry_run || 'true' }}"
           EXTRA=""
           if [ "$DRY" != "false" ]; then EXTRA="--dry-run"; fi

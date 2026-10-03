@@ -4,7 +4,7 @@ Tài liệu này là hợp đồng vận hành của PARALLEL WRITER MODE, nâng
 
 ## Phân vai
 
-- **Central Coordinator** (workflow `writer-coordinator.yml`): thành phần DUY NHẤT được chọn/claim/reserve article ID. Mỗi đợt reserve tối đa 50 dòng PLANNED theo thứ tự ma trận, chia micro-chunk 2 bài, gán round-robin cho 3 writer, ghi manifest `docs/state/writer-assignments.json` lên main. Manifest là nguồn sự thật duy nhất của mọi assignment.
+- **Central Coordinator** (workflow `writer-coordinator.yml`): thành phần DUY NHẤT được chọn/claim/reserve article ID. v69: trước khi plan, nếu planned < 100 workflow tự refill queue lên ~300 topic hợp lệ (`gen-blog-matrix --refill`, chỉ append, không ghi đè dòng cũ); mỗi cycle reserve tối đa 18 dòng PLANNED (cycle 12–18 bài) theo thứ tự ma trận, chia micro-chunk 2 bài, gán round-robin cho 3 writer, ghi manifest `docs/state/writer-assignments.json` lên main. Manifest là nguồn sự thật duy nhất của mọi assignment.
 - **Writer A/B/C** (external AI session, mỗi writer một session riêng): KHÔNG BAO GIỜ tự tìm PLANNED, không tự lấy "next article", không tự scan matrix. Writer chỉ đọc queue riêng của mình từ manifest, viết 2 bài, local QA, rồi push lên branch riêng `writer/<batch>/<A|B|C>`. Writer KHÔNG BAO GIỜ push main.
 - **Serialized Publisher** (workflow `writer-publisher.yml`): thành phần DUY NHẤT đưa bài lên main. Xử lý tuần tự FIFO theo chunk seq, mỗi lần đúng một micro-chunk 2 bài, có fresh-main verification trước khi push.
 - **GitHub Actions KHÔNG BAO GIỜ viết prose.** Việc viết vẫn do external writer đảm nhiệm; Actions chỉ deterministic.
@@ -14,7 +14,7 @@ Ba writer "song song" ở mức viết: trong khi publisher/factory xử lý c�
 ## Luồng tổng quan
 
 ```
-COORDINATOR: plan (max 50 PLANNED, deterministic) -> manifest docs/state/writer-assignments.json (commit main)
+COORDINATOR: auto-refill (planned < 100 -> ~300) + plan (max 18 PLANNED, deterministic) -> manifest docs/state/writer-assignments.json (commit main)
 WRITER A/B/C (từng session, branch riêng):
     next <writer>          -> chunk kế tiếp của CHỈ writer đó
     begin <writer> <batch> <seq>       -> WRITING (chunk file trong writer-work/)
@@ -34,8 +34,8 @@ PUBLISHER (mỗi lần MỘT chunk, FIFO nghiêm ngặt):
 ## 1. Central reservation (nguyên tắc quan trọng nhất)
 
 - Chỉ coordinator reserve. Writer tuyệt đối không tự chọn ID ngoài queue được giao.
-- Coordinator fetch fresh main, chọn tối đa 50 dòng PLANNED hợp lệ theo thứ tự ma trận, reserve TOÀN BỘ trong một thao tác (một commit manifest duy nhất).
-- Phân chia: chunk 01 → writer_A, 02 → writer_B, 03 → writer_C, 04 → writer_A, … round-robin xác định (50 bài = 25 chunk: A 9 chunk/18 bài, B 8/16, C 8/16). Chunk size 1 chỉ được phép ở biên corpus.
+- Coordinator fetch fresh main, tự refill topic queue khi planned < 100 (lên ~300), chọn tối đa 18 dòng PLANNED hợp lệ theo thứ tự ma trận (cycle 12–18 bài), reserve TOÀN BỘ trong một thao tác (một commit manifest duy nhất).
+- Phân chia: chunk 01 → writer_A, 02 → writer_B, 03 → writer_C, 04 → writer_A, … round-robin xác định (18 bài = 9 chunk: A 3 chunk/6 bài, B 3/6, C 3/6). Chunk size 1 chỉ được phép ở biên corpus.
 - BẤT BUỘC: `UNIQUE(article_id across writer_A + writer_B + writer_C) = TRUE`. Tool `validate` fail closed khi có duplicate; batch duplicate không bao giờ được commit, không writer nào chạy trên nó.
 - Ghi manifest dùng atomic exclusive create: hai coordinator chạy đồng thời chỉ một bên thắng, bên thua báo `created=false`, không ghi đè.
 
@@ -99,9 +99,9 @@ Hợp đồng §6G (đã fix + có test regression):
 
 ## 7. Không trộn backlog, không phá SIMPLE PRODUCTION MODE
 
-- Batch 50 id là scope riêng: không kéo REVIEW/REPAIR/BACKLOG cũ hay PLANNED ngoài manifest (guard trong `selectCandidateIds` + factory-select v67).
+- Batch 12–18 id là scope riêng: không kéo REPAIR/BACKLOG cũ hay PLANNED ngoài manifest (guard trong `selectCandidateIds` + factory-select v67).
 - Factory vẫn exact-scope 2 bài/chunk, grouped build MỘT lần; không biến factory thành xử lý 6 bài cùng transaction.
-- 3 writer chỉ tăng throughput phần WRITE. Mọi gate QA/publish của v67 giữ nguyên threshold.
+- 3 writer chỉ tăng throughput phần WRITE. QA là minimal production gate v69: score 70–100 = PASS, <70 → REPAIR, chỉ 7 critical gate chặn publish, mọi lỗi SEO nhẹ khác chỉ warning (chi tiết: `docs/CONTINUOUS-WRITER.md` §Minimal production QA).
 
 ## 8. Vận hành
 

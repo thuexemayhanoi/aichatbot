@@ -31,9 +31,9 @@ Khi cần tăng throughput phần WRITE, repo chạy 3 external writer song song
 
 Factory-select bắt buộc các scope MUTUALLY EXCLUSIVE, không trộn:
 
-- **NEW**: push chứa body của dòng PLANNED/WRITING → claim + QA đúng đúng các id đã push. Body của dòng QA/REVIEW/REPAIR nằm trong cùng push → QA cùng chạy (thuộc scope push). NEW KHÔNG BAO GIỜ tự kéo unrelated pending/backlog vào cùng run.
-- **REPAIR**: push chỉ chứa body của dòng QA/REVIEW/REPAIR/PASS → xử lý đúng các id đó, KHÔNG claim dòng PLANNED mới.
-- **BACKLOG**: chỉ chạy khi KHÔNG có body nào được push (workflow_dispatch không ids): dòng dở (QA/REVIEW/REPAIR/PASS có draft hợp lệ) trước, rồi dòng PLANNED có sẵn body + draft (workflow cũ chết). Deterministic, tối đa 50.
+- **NEW**: push chứa body của dòng PLANNED/WRITING → claim + QA đúng đúng các id đã push. Body của dòng QA/REPAIR nằm trong cùng push → QA cùng chạy (thuộc scope push). NEW KHÔNG BAO GIỜ tự kéo unrelated pending/backlog vào cùng run.
+- **REPAIR**: push chỉ chứa body của dòng QA/REPAIR/PASS → xử lý đúng các id đó, KHÔNG claim dòng PLANNED mới.
+- **BACKLOG**: chỉ chạy khi KHÔNG có body nào được push (workflow_dispatch không ids): dòng dở (QA/REPAIR/PASS có draft hợp lệ) trước, rồi dòng PLANNED có sẵn body + draft (workflow cũ chết). Deterministic, tối đa 50.
 
 Hệ quả cho writer: dòng dở KHÔNG còn tự được factory trộn vào run NEW. Writer phải sửa bài dở rồi push body sửa (→ REPAIR), hoặc owner dispatch quét backlog.
 
@@ -42,7 +42,7 @@ Hệ quả cho writer: dòng dở KHÔNG còn tự được factory trộn vào 
 ```
 FETCH FRESH MAIN
 → RECOVER IF NEEDED (txn marker → resume; state sạch → đi thẳng)
-→ REPAIR/RESUME bài đang dở (QA/REVIEW/REPAIR/PASS): sửa rồi push body (REPAIR) TRƯỚC
+→ REPAIR/RESUME bài đang dở (QA/REPAIR/PASS): sửa rồi push body (REPAIR) TRƯỚC
 → SELECT next 2 actionable rows (PLANNED kế tiếp theo thứ tự ma trận)
 → RESEARCH (nguồn xác minh; bài SAFE cần nguồn gov.vn/vbpl.vn)
 → WRITE 2 (bodies + manifest draft entries; 1.500–4.000 từ hữu ích mỗi bài)
@@ -89,21 +89,34 @@ Happy path sạch đi thẳng production, không thao tác recovery:
 
 1. txn marker còn → `resume` đúng TOÀN BỘ các id trong marker TRƯỚC (rebuild + verify từng id + clear marker); không có marker → không chạy gì cả.
 2. lock đã retired khỏi workflow (v67): run serialize bằng concurrency group `blog-factory-publish`, `cancel-in-progress: false`; stale lock (nếu có) bị dọn ở bước recover.
-3. crash giữa prepare/QA → dòng ở lại QA/REVIEW/PLANNED với body + draft trên main → lần push kế của writer tự claim tiếp (backlog logic), hoặc owner dispatch `--backlog`.
+3. crash giữa prepare/QA → dòng ở lại QA/PLANNED với body + draft trên main → lần push kế của writer tự claim tiếp (backlog logic), hoặc owner dispatch `--backlog`.
 4. crash giữa publish → txn marker + `resume` dựng lại đúng chunk (một build).
 
 Writer phía mình: fetch fresh main, đọc matrix + manifest, không push từ stale HEAD, không force push.
 
-## Length rule (chính thức, đồng bộ `docs/ARTICLE-RULES.md` + `tools/article-qa.mjs`)
+## Length guideline (v69 — GUIDELINE, không còn là gate chặn publish)
 
-- **1.500–4.000 từ tiếng Việt hữu ích.** <1.500 → FAIL/REVIEW. >4.000 → REVIEW để writer rút gọn có nghĩa, tool không tự truncate.
+- **<300 từ → critical FAIL (bài rác/cụt nghiêm trọng).**
+- 300–1.499 từ → warning `-5` điểm (score vẫn PASS được nếu >=70). 1.500–4.000 từ → không cảnh báo. >4.000 từ → warning, writer rút gọn có nghĩa, tool không tự truncate.
 - Không padding để đạt sàn; không cắt tại 2.000 từ; không truncate giữa câu/đoạn. Độ dài theo search intent.
 
-## Scoped QA (hard gates, `tools/article-qa.mjs` — KHÔNG hạ gate)
+## Minimal production QA (v69, `tools/article-qa.mjs`)
 
-ID/slug/output_path nhất quán · body tồn tại · 1.500–4.000 từ · title/meta/canonical · Article/Breadcrumb schema · không filler/trùng/spin · không trùng primary intent · internal links hợp lệ · business facts chỉ từ dữ liệu đã xác minh · SEO ownership · SAFE legal gate + nguồn chính gov.vn/vbpl.vn · không doorway page.
+Score: **70–100 = PASS; <70 = FAIL → REPAIR** (tối đa 3 lần sửa có nghĩa, vượt → BLOCKED). Không REVIEW, không EXCELLENT, không warning score band, không yêu cầu 75/90/100. Bài >=70 KHÔNG BAO GIỜ bị sửa chỉ để tăng điểm.
 
-QA scoped tới đúng 2 bài của chunk (không quét 50/500/2.000 bài mỗi micro chunk). Mỗi bài có kết quả QA độc lập (qa-chunk): một bài FAIL không làm hỏng bài PASS trong cùng chunk; chỉ các id PASS được publish, các id REVIEW/REPAIR ở lại chờ sửa. Threshold không bao giờ bị hạ.
+Critical gate (duy nhất 7 nhóm, mỗi lỗi → score 0):
+
+1. bài rỗng/cụt nghiêm trọng (<300 từ);
+2. duplicate article ID;
+3. duplicate slug;
+4. duplicate/sai canonical (id-slug-path lệch matrix/manifest);
+5. HTML/frontmatter hỏng khiến trang không render (script nhúng, tag không cân);
+6. sai giá hoặc policy kinh doanh đã xác minh (fact-resolution, verified-phones-only, verified-deposits-only);
+7. broken link nghiêm trọng (internal links không trỏ tới file thật).
+
+Mọi lỗi SEO nhẹ khác chỉ là warning `-5` điểm, KHÔNG chặn publish: body-words (guideline 1.500–4.000) · body-structure · no-filler · no-duplicate-paragraphs/sentences · no-cross-article-duplicate · no-cannibalization · title-meta-valid · seo-ownership · local-angle · safe-legal-gate (gov.vn/vbpl.vn) · no-external-links · retrieval-consistency.
+
+QA scoped tới đúng các bài mới của cycle hiện tại (12–18 bài, không quét lại toàn site, không re-audit bài PUBLISHED). Mỗi bài kết quả độc lập (qa-chunk): một bài FAIL chuyển sang repair queue, các bài PASS tiếp tục publish trong cùng cycle — một bài FAIL KHÔNG giữ toàn bộ cycle.
 
 ## CI theo loại push
 

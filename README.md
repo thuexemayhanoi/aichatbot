@@ -268,3 +268,32 @@ Mô hình sản phẩm cuối cùng: `/aichatbot/` = MÀN HÌNH CHAT (không foo
 - **build-blog**: chỉ stamp `notes=pilot/fixture` cho bài `pilot:true` (bài production không bị đánh dấu fixture).
 - Test invariant production-tolerant: PUBLISHED sync với `published.json` thay vì hardcode "2".
 - Test mới: `article-qa` (22), `blog-factory-cycle` (9 sandbox full-repo: claim→finish→qa→publish→resume→cycle 2→no-dup), `blog-factory` viết lại cho micro loop (14). Suite 2 PUBLISHED pilot / 1.998 PLANNED bất biến.
+
+## v69 — MINIMAL PRODUCTION QA GATE + 12–18 ARTICLE CYCLE (2026-10-03)
+
+Thay QA scoped dạng hard-gate bằng MINIMAL PRODUCTION QA GATE. Mục tiêu: writer viết nhanh → QA scoped bài mới → PASS → coordinator publish. QA KHÔNG còn là full-site SEO audit.
+
+### QA policy (v69)
+
+- Score **70–100 = PASS**; **<70 = FAIL → REPAIR** (tối đa 3 lần sửa, vượt → BLOCKED). KHÔNG REVIEW, KHÔNG EXCELLENT, KHÔNG warning score band, KHÔNG yêu cầu 75/90/100. Bài >=70 không bao giờ bị sửa chỉ để tăng điểm.
+- Score = 100 − 5×warning; một critical gate → score 0.
+- Chỉ giữ 7 critical gate: (1) bài rỗng/cụt nghiêm trọng <300 từ; (2) duplicate article ID; (3) duplicate slug; (4) duplicate/sai canonical mapping; (5) HTML/frontmatter hỏng khiến trang không render; (6) sai giá/policy kinh doanh đã xác minh; (7) broken internal link nghiêm trọng.
+- Mọi lỗi SEO nhẹ khác chỉ là warning −5 điểm, KHÔNG chặn publish (độ dài 1.500–4.000 từ giờ là GUIDELINE).
+
+### Pipeline (v69)
+
+- AUTO-REFILL: planned <100 → `tools/gen-blog-matrix.mjs --refill` append lên ~300 topic hợp lệ (không ghi đè dòng cũ, không tái dùng topic).
+- Cycle 12–18 bài: `writer-queue.mjs MAX_BATCH=18`; coordinator workflow mặc định limit 18, chia micro-chunk 2 bài round-robin cho 3 writer.
+- QA scoped CHỈ các bài mới của cycle hiện tại; không quét lại toàn site; không re-audit bài PUBLISHED; một bài FAIL → repair queue, các bài PASS vẫn publish.
+- Legacy state REVIEW retire: migrate một chiều REVIEW → REPAIR (blog-factory qa/prepare, factory-select statusOf).
+
+### Files đổi
+
+- `tools/article-qa.mjs`: viết lại — scopedQa trả { pass, score, critical, warnings, checks }; PASS_SCORE=70, WARN_PENALTY=5, MIN_CRITICAL_WORDS=300.
+- `tools/blog-factory.mjs`: qaOne score gate + ghi cột score + migrate REVIEW→REPAIR; validate chuyển sang floor-based (>=2000 dòng, per-category minimum) cho tương thích refill.
+- `tools/factory-select.mjs`: statusOf legacy alias; ACTIONABLE không còn REVIEW.
+- `tools/writer-queue.mjs`: MAX_BATCH 50 → 18.
+- `tools/gen-blog-matrix.mjs`: --refill + refillMatrix() export, ROOT theo MOTOAI_FACTORY_ROOT, capacity guard chống vòng lặp vô hạn.
+- Workflows: `writer-coordinator.yml` (refill step + limit 18), `blog-factory-publish.yml` (minimal QA step, bỏ REVIEW wording).
+- Docs: CONTINUOUS-WRITER, BLOG-FACTORY, ARTICLE-RULES, PARALLEL-WRITER đồng bộ v69.
+- Tests: `article-qa.test.js` viết lại (34 test: boundary 70/65, 12 warning đơn lẻ, 12 critical); continuous-writer, writer-queue, blog-foundation, blog-app-foundation cập nhật theo policy mới.

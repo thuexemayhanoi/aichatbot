@@ -10,7 +10,8 @@
  *
  * State machine per article (data/blog/content-matrix.csv `status`):
  *   PLANNED -> WRITING -> QA -> PASS -> PUBLISHED
- *   (+ REVIEW / REPAIR (max 3) / FAIL / BLOCKED)
+ *   (+ REPAIR (max 3) / FAIL / BLOCKED — the REVIEW state is retired in
+ *    v69: a legacy REVIEW row is migrated one-way to REPAIR)
  * Only PASS articles may publish. Writing is NEVER automatic here;
  * writing happens in explicit writer runs (see docs/BLOG-FACTORY.md).
  *
@@ -22,7 +23,7 @@
  *   node tools/blog-factory.mjs unlock
  *   node tools/blog-factory.mjs claim [BA-id]   (manual, lock required: EXACTLY 1 article)
  *   node tools/blog-factory.mjs finish <BA-id>  (WRITING -> QA; finish-chunk alias kept)
- *   node tools/blog-factory.mjs qa <BA-id>      (scoped deterministic QA: PASS or REVIEW/BLOCKED)
+ *   node tools/blog-factory.mjs qa <BA-id>      (minimal QA: score >= 70 PASS, else REPAIR/BLOCKED)
  *   node tools/blog-factory.mjs prepare <BA-id>        (single-article auto-claim, lock-free v67)
  *   node tools/blog-factory.mjs prepare-chunk <id,...> (multi-id prepare: PLANNED/WRITING -> QA)
  *   node tools/blog-factory.mjs qa-chunk <id,...>      (multi-id scoped QA, independent results)
@@ -37,8 +38,10 @@
  * article: the whole chunk is ONE build + ONE verify pass + ONE checkpoint
  * update, so 2 PASS articles cost exactly one site rebuild (build_calls=1).
  * Never depends on chat/session memory; state lives in the repo files only.
- * QA is deterministic PASS/FAIL (tools/article-qa.mjs) — this repo has no
- * article-level numeric score, so none is invented here.
+ * QA is the v69 minimal production gate (tools/article-qa.mjs): score
+ * 70-100 = PASS, < 70 = FAIL -> REPAIR, a critical gate = score 0. No REVIEW
+ * state, no EXCELLENT band; an article that passes is never edited again
+ * just to raise its score.
  */
 import { readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -128,11 +131,14 @@ function validate() {
     if (r.category === 'SAFE' && r.source_policy !== 'legal-gate') errs.push(`SAFE without legal gate: ${r.article_id}`);
     if (Number(r.repair_attempts) > 3) errs.push(`repair overflow ${r.article_id}`);
   }
-  const expected = { APP: 350, RENT: 400, EV: 300, GUIDE: 300, SAFE: 250, LOCAL: 400 };
-  for (const k of Object.keys(expected)) if (dist[k] !== expected[k]) errs.push(`dist ${k}: ${dist[k]} != ${expected[k]}`);
-  if (rows.length !== 2000) errs.push(`rows ${rows.length} != 2000`);
+  // v69 floor-based: --refill (tools/gen-blog-matrix.mjs) APPENDS rows when
+  // planned < 100, so the exact 2000/40x50 layout became minimums. A refill
+  // never deletes or rewrites existing rows.
+  const min = { APP: 350, RENT: 400, EV: 300, GUIDE: 300, SAFE: 250, LOCAL: 400 };
+  for (const k of Object.keys(min)) if (dist[k] < min[k]) errs.push(`dist ${k}: ${dist[k]} < ${min[k]}`);
+  if (rows.length < 2000) errs.push(`rows ${rows.length} < 2000`);
   if (errs.length > 0) { console.error('FAIL\n' + errs.join('\n')); process.exit(1); }
-  console.log('matrix OK: 2000 rows, 40x50, distribution exact, unique ids/slugs/paths');
+  console.log(`matrix OK: ${rows.length} rows (>= 2000), distribution at or above floor, unique ids/slugs/paths`);
 }
 
 function lock(now) {
@@ -402,40 +408,50 @@ function finishChunk(ids) {
 }
 
 /**
- * Scoped QA of ONE article (deterministic PASS/FAIL — no numeric article
- * score exists in this repo, so none is invented). Performs the matrix
- * transition (PASS, or REVIEW/BLOCKED on failure) and RETURNS the outcome
- * so chunk callers can keep articles independent.
+ * Minimal QA of ONE article (v69 score gate: 70-100 = PASS, < 70 =
+ * FAIL -> REPAIR; a critical gate = score 0). Performs the matrix
+ * transition and RETURNS the outcome so chunk callers keep articles
+ * independent — one FAIL never holds the cycle. A legacy REVIEW row is
+ * migrated one-way to REPAIR before QA (v69 has no REVIEW state).
  */
 function qaOne(id, now) {
   const rows = parseMatrix();
   const row = rows.find((r) => r.article_id === id);
   if (!row) { console.error(`unknown matrix id ${id}`); process.exit(1); }
-  if (!['QA', 'REVIEW', 'REPAIR'].includes(row.status)) {
-    console.error(`refuse: ${id} status is ${row.status} (qa runs on QA/REVIEW/REPAIR rows)`);
+  if (row.status === 'REVIEW') { // legacy one-way migration (v69 has no REVIEW)
+    console.log(`migrate ${id} REVIEW -> REPAIR`);
+    setRowStatus(id, 'REPAIR');
+    row.status = 'REPAIR';
+  }
+  if (!['QA', 'REPAIR'].includes(row.status)) {
+    console.error(`refuse: ${id} status is ${row.status} (qa runs on QA/REPAIR rows)`);
     process.exit(1);
   }
   const result = scopedQa(id);
   for (const c of result.checks) {
-    console.log(`${c.ok ? 'PASS' : 'FAIL'}  ${c.name}${c.ok ? '' : ` — ${c.detail}`}`);
+    const tag = c.ok ? 'PASS' : (c.level === 'critical' ? 'FAIL' : 'WARN');
+    console.log(`${tag}  ${c.name}${c.ok ? '' : ` — ${c.detail}`}`);
   }
   if (result.pass) {
-    setRowStatus(id, 'PASS', { quality_status: 'PASS', last_checked: now });
-    report(`QA PASS ${id}`);
-    console.log(`QA PASS ${id} — ready to publish`);
-    return { pass: true };
+    setRowStatus(id, 'PASS', { quality_status: 'PASS', score: result.score, last_checked: now });
+    report(`QA PASS ${id} score=${result.score}`);
+    console.log(`QA PASS ${id} score=${result.score} warnings=${result.warnings.length} — ready to publish`);
+    return { pass: true, score: result.score };
   }
+  const why = result.critical.length > 0
+    ? `critical: ${result.critical.join(', ')}`
+    : `score ${result.score} < 70: ${result.warnings.join(', ')}`;
   const attempts = Number(row.repair_attempts || 0) + 1;
   if (attempts > 3) {
-    setRowStatus(id, 'BLOCKED', { quality_status: 'FAIL', repair_attempts: attempts, last_checked: now });
+    setRowStatus(id, 'BLOCKED', { quality_status: 'FAIL', score: result.score, repair_attempts: attempts, last_checked: now });
     report(`QA FAIL ${id} -> BLOCKED (repair overflow)`);
-    console.error(`QA FAIL ${id} -> BLOCKED (repair overflow): ${result.failures.join(', ')}`);
+    console.error(`QA FAIL ${id} -> BLOCKED (repair overflow): ${why}`);
   } else {
-    setRowStatus(id, 'REVIEW', { quality_status: 'FAIL', repair_attempts: attempts, last_checked: now });
-    report(`QA FAIL ${id} -> REVIEW (attempt ${attempts})`);
-    console.error(`QA FAIL ${id} -> REVIEW (attempt ${attempts}): ${result.failures.join(', ')}`);
+    setRowStatus(id, 'REPAIR', { quality_status: 'FAIL', score: result.score, repair_attempts: attempts, last_checked: now });
+    report(`QA FAIL ${id} -> REPAIR (attempt ${attempts}) score=${result.score}`);
+    console.error(`QA FAIL ${id} -> REPAIR (attempt ${attempts}) score=${result.score}: ${why}`);
   }
-  return { pass: false, attempts };
+  return { pass: false, attempts, score: result.score };
 }
 
 /** qa <BA-id> — single-article CLI (backward compatible: FAIL exits 1). */
@@ -448,7 +464,7 @@ function qa(id, now) {
 /**
  * qa-chunk <id,...> — multi-id scoped QA. Every article keeps an
  * INDEPENDENT result: one bad article never corrupts the good one, PASS
- * ids may publish while REVIEW/REPAIR ids stay for repair. QA thresholds
+ * ids may publish while REPAIR ids stay in the repair queue. QA thresholds
  * are never lowered. Exit 0 when the chunk was processed (even with
  * content failures — the workflow reads pass_ids/fail_ids); exit 1 only
  * on usage/hard errors.
@@ -480,7 +496,8 @@ function qaChunk(rawIds, now) {
  * safety lives in the txn marker (the manual claim CLI keeps its lock).
  *   PLANNED -> claim exact id -> finish -> QA
  *   WRITING -> finish -> QA
- *   QA/REVIEW/REPAIR/PASS -> no-op (resume/QA/publish continue from there)
+ *   QA/REPAIR/PASS -> no-op (resume/QA/publish continue from there)
+ *   REVIEW (legacy) -> one-way migration to REPAIR (v69 has no REVIEW)
  * Any other status refuses (human review).
  */
 function prepare(id) {
@@ -492,7 +509,10 @@ function prepare(id) {
     finish(id);
   } else if (row.status === 'WRITING') {
     finish(id);
-  } else if (['QA', 'REVIEW', 'REPAIR', 'PASS'].includes(row.status)) {
+  } else if (row.status === 'REVIEW') { // legacy one-way migration (v69)
+    setRowStatus(id, 'REPAIR');
+    console.log(`migrate ${id} REVIEW -> REPAIR`);
+  } else if (['QA', 'REPAIR', 'PASS'].includes(row.status)) {
     console.log(`prepare: ${id} already at ${row.status}`);
   } else {
     console.error(`refuse: ${id} status is ${row.status} — needs human review`);

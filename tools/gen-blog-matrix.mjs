@@ -3,19 +3,33 @@
  * Generate the BLOG content matrix (data/blog/content-matrix.csv).
  *
  * SEPARATE from the chatbot development matrix (docs/matrix/).
- * Exactly 2,000 production article rows, 40 batches x 50 articles.
+ * Baseline: 2,000 production article rows, 40 batches x 50 articles.
  * Distribution: APP 350, RENT 400, EV 300, GUIDE 300, SAFE 250, LOCAL 400.
  * Idempotent: regenerating overwrites with identical output (no Date/random).
+ *
+ * v69 AUTO-REFILL: `--refill` APPENDS fresh PLANNED rows when the queue
+ * runs low (planned < REFILL_MIN_PLANNED = 100) up to ~REFILL_TARGET = 300
+ * planned rows. It NEVER deletes or rewrites existing rows (statuses,
+ * scores and dates survive untouched), never recycles used topics and
+ * stops cleanly at each category's topic capacity. Production loops must
+ * use --refill; a bare run regenerates the 2,000-row baseline and WIPES
+ * live statuses (that is the original generator behaviour, kept for
+ * local rebuilds only).
  *
  * Rows are PLANNED only. Publication happens through tools/blog-factory.mjs
  * (state machine PLANNED -> WRITING -> QA -> PASS -> PUBLISHED).
  */
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const ROOT = process.env.MOTOAI_FACTORY_ROOT
+  ?? join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'data/blog/content-matrix.csv');
+
+/** v69 auto-refill thresholds (docs/CONTINUOUS-WRITER.md). */
+export const REFILL_MIN_PLANNED = 100;
+export const REFILL_TARGET = 300;
 
 export const CATEGORIES = Object.freeze([
   { id: 'APP', dir: 'app', name: 'App & Ứng dụng', count: 350 },
@@ -191,10 +205,13 @@ const SOURCE_POLICY = { APP: 'no-external', RENT: 'no-external', EV: 'no-externa
 function buildTopics(catId, count) {
   const seeds = TOPICS[catId];
   const variants = VARIANTS[catId];
+  // Capacity guard: seeds x (bare + variants) unique titles exist; asking
+  // for more would loop forever. The refill stops at capacity instead.
+  const maxI = seeds.length * (variants.length + 1);
   const list = [];
   const seen = new Set();
   let i = 0;
-  while (list.length < count) {
+  while (list.length < count && i < maxI) {
     const seed = seeds[i % seeds.length];
     const round = Math.floor(i / seeds.length);
     const title = round === 0 ? seed : `${seed} ${variants[round % variants.length]}`;
@@ -211,6 +228,48 @@ function csvCell(value) {
   return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 }
 
+/** Deterministic unique slug for a topic (suffix -2, -3… on collision). */
+function uniqueSlugOf(topic, usedSlugs, n) {
+  let slug = slugify(topic);
+  if (slug.length === 0) slug = `bai-viet-${n}`;
+  let unique = slug;
+  let suffix = 2;
+  while (usedSlugs.has(unique)) unique = `${slug}-${suffix++}`;
+  usedSlugs.add(unique);
+  return unique;
+}
+
+/** One PLANNED matrix row (shared by the baseline generator and --refill). */
+function makeRow(n, cat, topic, usedSlugs) {
+  const slug = uniqueSlugOf(topic, usedSlugs, n);
+  return {
+    article_id: `BA-${String(n).padStart(4, '0')}`,
+    batch_id: `B${String(Math.ceil(n / 50)).padStart(2, '0')}`,
+    category: cat.id,
+    status: 'PLANNED',
+    primary_keyword: topic,
+    secondary_keywords: `${cat.name}; ${topic}`,
+    search_intent: INTENT[cat.id],
+    working_title: titleCase(topic),
+    slug,
+    output_path: `blog/${cat.dir}/${slug}/index.html`,
+    parent_hub: `blog/${cat.dir}/`,
+    local_scope: cat.id === 'LOCAL' ? localScope(topic) : '',
+    requires_sources: cat.id === 'SAFE' ? 'yes' : 'no',
+    source_policy: SOURCE_POLICY[cat.id],
+    internal_link_targets: `blog/${cat.dir}/; /`,
+    commercial_link_target: 'none',
+    agent_retrieval: cat.id === 'SAFE' ? 'no' : 'yes',
+    author: AUTHOR,
+    score: '',
+    quality_status: '',
+    repair_attempts: '0',
+    published_date: '',
+    last_checked: '',
+    notes: cat.id === 'SAFE' ? 'legal-gate: CLAIM->SUBJECT->CONDITION->RULE->VERSION->PRIMARY SOURCE required' : ''
+  };
+}
+
 export function buildRows() {
   const queues = CATEGORIES.map((c) => ({ cat: c, topics: buildTopics(c.id, c.count) }));
   const rows = [];
@@ -225,43 +284,62 @@ export function buildRows() {
       if (idx >= topics.length) continue;
       indexes[q]++;
       n++;
-      const topic = topics[idx];
-      let slug = slugify(topic);
-      if (slug.length === 0) slug = `bai-viet-${n}`;
-      let unique = slug;
-      let suffix = 2;
-      while (usedSlugs.has(unique)) unique = `${slug}-${suffix++}`;
-      usedSlugs.add(unique);
-      const batchId = `B${String(Math.ceil(n / 50)).padStart(2, '0')}`;
-      rows.push({
-        article_id: `BA-${String(n).padStart(4, '0')}`,
-        batch_id: batchId,
-        category: cat.id,
-        status: 'PLANNED',
-        primary_keyword: topic,
-        secondary_keywords: `${cat.name}; ${topic}`,
-        search_intent: INTENT[cat.id],
-        working_title: titleCase(topic),
-        slug: unique,
-        output_path: `blog/${cat.dir}/${unique}/index.html`,
-        parent_hub: `blog/${cat.dir}/`,
-        local_scope: cat.id === 'LOCAL' ? localScope(topic) : '',
-        requires_sources: cat.id === 'SAFE' ? 'yes' : 'no',
-        source_policy: SOURCE_POLICY[cat.id],
-        internal_link_targets: `blog/${cat.dir}/; /`,
-        commercial_link_target: 'none',
-        agent_retrieval: cat.id === 'SAFE' ? 'no' : 'yes',
-        author: AUTHOR,
-        score: '',
-        quality_status: '',
-        repair_attempts: '0',
-        published_date: '',
-        last_checked: '',
-        notes: cat.id === 'SAFE' ? 'legal-gate: CLAIM->SUBJECT->CONDITION->RULE->VERSION->PRIMARY SOURCE required' : ''
-      });
+      rows.push(makeRow(n, cat, topics[idx], usedSlugs));
     }
   }
   return rows;
+}
+
+/**
+ * v69 auto-refill: append fresh PLANNED rows when planned < 100 until
+ * ~300 planned. Existing rows (statuses, scores, dates) are byte-preserved:
+ * the new rows are appended as CSV lines, never merged or reordered.
+ * Topics already used anywhere in the matrix are skipped, so keywords and
+ * slugs stay unique. Returns { refilled, planned_before, planned_after,
+ * appended } and is a no-op on a healthy queue.
+ */
+export function refillMatrix() {
+  const raw = readFileSync(OUT, 'utf8');
+  const lines = raw.trim().split('\n');
+  const header = lines[0].split(',');
+  const rows = lines.slice(1).map((l) => {
+    const cells = l.split(',');
+    const row = {};
+    header.forEach((h, i) => { row[h] = cells[i] ?? ''; });
+    return row;
+  });
+  const plannedBefore = rows.filter((r) => r.status === 'PLANNED').length;
+  if (plannedBefore >= REFILL_MIN_PLANNED) {
+    return { refilled: 0, planned_before: plannedBefore, planned_after: plannedBefore, appended: 0 };
+  }
+  const usedKeywords = new Set(rows.map((r) => r.primary_keyword.trim().toLowerCase()));
+  const usedSlugs = new Set(rows.map((r) => r.slug));
+  let maxN = rows.reduce((m, r) => Math.max(m, Number(String(r.article_id).replace('BA-', '')) || 0), 0);
+  // Full topic pools (capacity-guarded), skipping topics the matrix used.
+  const pools = CATEGORIES.map((c) => ({ cat: c, topics: buildTopics(c.id, Infinity) }));
+  const cursors = new Array(pools.length).fill(0);
+  const appended = [];
+  let planned = plannedBefore;
+  while (planned < REFILL_TARGET) {
+    let added = 0;
+    for (let q = 0; q < pools.length && planned < REFILL_TARGET; q++) {
+      const { cat, topics } = pools[q];
+      while (cursors[q] < topics.length && usedKeywords.has(topics[cursors[q]].toLowerCase())) cursors[q]++;
+      if (cursors[q] >= topics.length) continue; // category at capacity
+      const topic = topics[cursors[q]++];
+      usedKeywords.add(topic.toLowerCase());
+      maxN++;
+      planned++;
+      added++;
+      appended.push(makeRow(maxN, cat, topic, usedSlugs));
+    }
+    if (added === 0) break; // every category exhausted its topic capacity
+  }
+  if (appended.length > 0) {
+    const prefix = raw.endsWith('\n') ? raw : raw + '\n';
+    writeFileSync(OUT, prefix + appended.map((r) => csvLine(r)).join('\n') + '\n', 'utf8');
+  }
+  return { refilled: appended.length, planned_before: plannedBefore, planned_after: planned, appended: appended.length };
 }
 
 function localScope(topic) {
@@ -276,13 +354,21 @@ function titleCase(s) {
 
 export const COLUMNS = ['article_id', 'batch_id', 'category', 'status', 'primary_keyword', 'secondary_keywords', 'search_intent', 'working_title', 'slug', 'output_path', 'parent_hub', 'local_scope', 'requires_sources', 'source_policy', 'internal_link_targets', 'commercial_link_target', 'agent_retrieval', 'author', 'score', 'quality_status', 'repair_attempts', 'published_date', 'last_checked', 'notes'];
 
+/** One CSV data line for a row object (shared by toCsv and --refill). */
+const csvLine = (row) => COLUMNS.map((c) => csvCell(row[c])).join(',');
+
 export function toCsv(rows) {
   const lines = [COLUMNS.join(',')];
-  for (const row of rows) lines.push(COLUMNS.map((c) => csvCell(row[c])).join(','));
+  for (const row of rows) lines.push(csvLine(row));
   return lines.join('\n') + '\n';
 }
 
 export function main() {
+  if (process.argv.includes('--refill')) {
+    const r = refillMatrix();
+    console.log(`refill: refilled=${r.refilled} planned_before=${r.planned_before} planned_after=${r.planned_after} appended=${r.appended}`);
+    return;
+  }
   const rows = buildRows();
   mkdirSync(dirname(OUT), { recursive: true });
   writeFileSync(OUT, toCsv(rows), 'utf8');

@@ -72,10 +72,11 @@ test('every row belongs to an existing category hub directory', () => {
 
 test('matrix statuses follow the factory state machine; only pilots are fixtures', () => {
   const rows = parseMatrix();
-  // v64 micro loop: main may legitimately hold QA/REVIEW rows between a
+  // v64 micro loop: main may legitimately hold QA/REPAIR rows between a
   // writer push and the publish workflow's derived commit — but never a
   // stray WRITING (claim is local-only) or an unknown status.
-  const allowed = new Set(['PLANNED', 'QA', 'REVIEW', 'PASS', 'PUBLISHED']);
+  // (v69: REVIEW retired — a legacy REVIEW row is migrated one-way to REPAIR.)
+  const allowed = new Set(['PLANNED', 'QA', 'REPAIR', 'PASS', 'PUBLISHED']);
   for (const r of rows) assert.ok(allowed.has(r.status), `unexpected status ${r.status}`);
   const published = rows.filter((r) => r.status === 'PUBLISHED');
   for (const r of published) {

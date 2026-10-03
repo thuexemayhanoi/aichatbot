@@ -659,7 +659,7 @@ export function build() {
   const manifest = JSON.parse(read('data/blog/published.json'));
   const matrix = matrixRows();
   // v66 chunk contract: the MATRIX decides what is published — a manifest
-  // draft whose row is not PUBLISHED yet (QA/REVIEW/REPAIR in-flight draft of
+  // draft whose row is not PUBLISHED yet (QA/REPAIR in-flight draft of
   // a chunk, or a backlog draft from a dead workflow) must NOT be built,
   // indexed or matrix-synced by this build. The factory marks rows
   // PUBLISHED before calling build(), so this changes nothing for the

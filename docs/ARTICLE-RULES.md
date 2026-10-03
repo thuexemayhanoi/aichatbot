@@ -4,10 +4,11 @@
 
 ## Kích thước & cấu trúc
 
-- 1.500–4.000 từ tiếng Việt hữu ích. Độ dài theo search intent: chủ đề đơn giản ~1.500–2.000 từ, chủ đề cần giải thích sâu có thể 2.500–4.000 từ.
+- GUIDELINE 1.500–4.000 từ tiếng Việt hữu ích (v69: warning, KHÔNG chặn publish). Độ dài theo search intent: chủ đề đơn giản ~1.500–2.000 từ, chủ đề cần giải thích sâu có thể 2.500–4.000 từ.
+- Chỉ <300 từ là critical (bài rác/cụt nghiêm trọng → score 0). 300–1.499 và >4.000 chỉ là warning -5 điểm; score >=70 vẫn PASS.
 - Không padding/filler chỉ để đạt 1.500 từ; không ép bài nào cũng phải gần 4.000 từ.
 - Bài đang 3.000–4.000 từ nhưng hữu ích và QA sạch → PASS, không bắt cắt về 2.000.
-- QA chỉ chấm độ dài trên text thực của body (bỏ HTML tags/schema/navigation); vượt 4.000 từ → REVIEW để writer rút gọn có nghĩa, tuyệt đối không truncate giữa câu/đoạn hay làm mất kết luận/FAQ.
+- QA chỉ chấm độ dài trên text thực của body (bỏ HTML tags/schema/navigation); vượt 4.000 từ → warning, writer rút gọn có nghĩa nếu muốn, tuyệt đối không truncate giữa câu/đoạn hay làm mất kết luận/FAQ.
 - Đúng 1 H1 (được sinh tự động từ tiêu đề bài).
 - Tiêu đề duy nhất, meta description duy nhất, self-canonical.
 - Schema: `Article` + `BreadcrumbList`; author + date; link về hub danh mục; internal links theo ngữ cảnh.
