@@ -89,6 +89,18 @@ jobs:
         with:
           node-version: 22
 
+      # v70 ops gate: the publisher is the ONLY component that pushes article
+      # content to main — it must refuse while an ops incident is active
+      # (MAINTENANCE_LOCK && PRODUCTION_MUTATION = IMPOSSIBLE). Recovery
+      # actions are production mutations too, so the gate covers the whole job.
+      - name: 'Ops maintenance gate (incident/lock -> production paused)'
+        run: |
+          LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*' || true)
+          if [ -n "$LOCKS" ]; then
+            echo "::error::maintenance lock active — production paused"; exit 1
+          fi
+          node tools/ops-agent.mjs gate
+
       # ------------------------------------------------------------------
       # Recovery actions (manual, idempotent)
       # ------------------------------------------------------------------
@@ -314,4 +326,30 @@ jobs:
           else
             git commit -m "writer-publisher: chunk $B#$S FACTORY_FAILED [skip ci]"
             git push
+          fi
+          # v70 ops classification: a factory failure is either CONTENT QA
+          # (ids stay in the REPAIR pipeline — never an ops incident) or an
+          # INFRASTRUCTURE failure, which dispatches Agent #4 explicitly.
+          # (GITHUB_TOKEN-dispatched runs may not fire workflow_run reliably,
+          # so the publisher hands the failure over itself — docs/OPS-AGENTS.md.)
+          FAILED_STEPS=$(gh api "repos/$GH_REPO/actions/runs/${{ steps.factory.outputs.run_id }}/jobs" \
+            --jq '[.jobs[].steps[]? | select(.conclusion == "failure") | .name] | join(";;")' 2>/dev/null || true)
+          set +e
+          node tools/ops-agent.mjs classify \
+            --workflow 'Blog Factory Publish (2-article micro batch)' \
+            --failed-steps "$FAILED_STEPS" > /tmp/classify.out
+          RC=$?
+          set -e
+          if [ "$RC" -eq 0 ]; then
+            gh workflow run ops-repair-agent.yml --ref main \
+              -f source_workflow='Blog Factory Publish (2-article micro batch)' \
+              -f source_run_id="${{ steps.factory.outputs.run_id }}" \
+              -f source_url="https://github.com/$GH_REPO/actions/runs/${{ steps.factory.outputs.run_id }}" \
+              -f reason="factory infrastructure failure while publishing chunk $B#$S"
+            echo "Agent #4 dispatched (infrastructure failure)"
+          elif [ "$RC" -eq 3 ]; then
+            echo "content QA failure — ids stay in the REPAIR pipeline, no ops incident"
+          else
+            cat /tmp/classify.out || true
+            echo "::warning::ops classification unavailable (rc=$RC) — manual dispatch ops-repair-agent if needed"
           fi

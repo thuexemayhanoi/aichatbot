@@ -56,6 +56,17 @@ jobs:
         with:
           node-version: 22
 
+      # v70 ops gate: refuse to reserve/refill while an ops incident is
+      # active (MAINTENANCE_LOCK && PRODUCTION_MUTATION = IMPOSSIBLE).
+      # The refill mutates the matrix, so the gate must run BEFORE it.
+      - name: 'Ops maintenance gate (incident/lock -> production paused)'
+        run: |
+          LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*' || true)
+          if [ -n "$LOCKS" ]; then
+            echo "::error::maintenance lock active — production paused"; exit 1
+          fi
+          node tools/ops-agent.mjs gate
+
       - name: 'Auto-refill the topic queue (planned < 100 -> ~300)'
         run: |
           node tools/gen-blog-matrix.mjs --refill

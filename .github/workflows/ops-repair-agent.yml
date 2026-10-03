@@ -1,0 +1,250 @@
+name: 'Ops Repair Agent #4'
+
+# v70 OPS AGENTS (docs/OPS-AGENTS.md) — FIRST-LINE INFRASTRUCTURE REPAIR.
+#
+# Agent #4 NEVER writes article content. It is triggered by real failure
+# events (workflow_run of the production workflows, or an explicit dispatch
+# from the writer-publisher when a factory run fails for infrastructure
+# reasons), classifies the failure, and only opens an incident for genuine
+# infrastructure failures — a content QA failure ("Assert clean state;
+# report QA failures") is recorded as a content blocker and NEVER triggers
+# a repair incident.
+#
+# Per incident Agent #4 gets EXACTLY ONE autonomous repair attempt, and only
+# a deterministic, well-understood recipe (tools/ops-agent.mjs
+# REPAIR_RECIPES). Anything unclear, destructive or security-sensitive is
+# ESCALATED to Agent #5 with the SAME incident_id. It never polls in a
+# loop, never blind-retries (the atomic lock + dedup make every re-trigger
+# a no-op), and its pushes never touch article bodies, writer branches,
+# writer assignments or the production inventory (scope guard below).
+#
+# CI / Distribution failures are deliberately NOT in the workflow_run list:
+# the suite is currently red on a known CONTENT BLOCKER, so auto-triggering
+# on every CI failure would create incident noise without end. Build-level
+# failures remain reachable via manual dispatch and via Agent #5's
+# verification, which checks CI/build state explicitly.
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_workflow:
+        description: 'Workflow báo lỗi (vd writer-publisher)'
+        required: false
+        default: ''
+      source_run_id:
+        description: 'Run id báo lỗi (điều tra, read-only)'
+        required: false
+        default: ''
+      source_url:
+        description: 'URL run báo lỗi'
+        required: false
+        default: ''
+      reason:
+        description: 'Mô tả ngắn sự cố hạ tầng'
+        required: false
+        default: 'manual dispatch'
+      trigger:
+        description: 'Cách phát hiện sự cố'
+        required: false
+        default: 'manual'
+  workflow_run:
+    workflows:
+      - 'Writer Publisher (serialized)'
+      - 'Writer Coordinator (central reservation)'
+      - 'Blog Factory Publish (2-article micro batch)'
+      - 'pages build and deployment'
+    types: [completed]
+
+permissions:
+  # contents: write — the atomic lock ref (refs/ops/maintenance-lock/<id>),
+  # the incident state file and the deterministic infra repair commit.
+  # actions: read — inspect the failing run's failed steps (diagnosis only).
+  contents: write
+  actions: read
+
+concurrency:
+  group: ops-repair-agent
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    # Real failures only: a manual dispatch, or a workflow_run that failed.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'failure')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 'Resolve the failing source run (read-only)'
+        id: src
+        run: |
+          set -e
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+            W="${{ github.event.workflow_run.name }}"
+            RID="${{ github.event.workflow_run.id }}"
+            URL="${{ github.event.workflow_run.html_url }}"
+            REASON="workflow_run failure: ${{ github.event.workflow_run.name }}"
+          else
+            W="${{ github.event.inputs.source_workflow }}"
+            RID="${{ github.event.inputs.source_run_id }}"
+            URL="${{ github.event.inputs.source_url }}"
+            REASON="${{ github.event.inputs.reason }}"
+          fi
+          STEPS=""
+          if [ -n "$RID" ]; then
+            STEPS=$(gh api "repos/$GH_REPO/actions/runs/$RID/jobs" \
+              --jq '[.jobs[].steps[]? | select(.conclusion == "failure") | .name] | join(";;")' 2>/dev/null || true)
+          fi
+          {
+            echo "workflow=$W"
+            echo "run_id=$RID"
+            echo "url=$URL"
+            echo "reason=$REASON"
+            echo "failed_steps=$STEPS"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: 'Classify: content QA NEVER triggers a repair incident'
+        id: classify
+        run: |
+          set +e
+          node tools/ops-agent.mjs classify \
+            --workflow "${{ steps.src.outputs.workflow }}" \
+            --failed-steps "${{ steps.src.outputs.failed_steps }}" > /tmp/classify.out
+          RC=$?
+          set -e
+          if [ "$RC" -ne 0 ] && [ "$RC" -ne 3 ]; then cat /tmp/classify.out; exit "$RC"; fi
+          get() { sed -n "s/^$1=//p" /tmp/classify.out; }
+          {
+            echo "classification=$(get classification)"
+            echo "signature=$(get signature)"
+          } >> "$GITHUB_OUTPUT"
+          echo "classification: $(get classification) (signature $(get signature))"
+
+      - name: 'Record the content blocker and stop (no incident)'
+        if: steps.classify.outputs.classification == 'CONTENT'
+        run: |
+          node tools/ops-agent.mjs record-content-blocker \
+            --workflow "${{ steps.src.outputs.workflow }}" \
+            --failed-steps "${{ steps.src.outputs.failed_steps }}" \
+            --note "content QA failure — the REPAIR pipeline owns it, agents never touch article content"
+          echo "CONTENT failure recorded — Agent #4 does not repair articles."
+
+      - name: 'Begin the incident (atomic lock ref + pause production)'
+        id: incident
+        if: steps.classify.outputs.classification == 'INFRA'
+        run: |
+          set -e
+          node tools/ops-agent.mjs incident-begin \
+            --reason "${{ steps.src.outputs.reason }}" \
+            --trigger "${{ github.event_name }}" \
+            --source-workflow "${{ steps.src.outputs.workflow }}" \
+            --source-run-id "${{ steps.src.outputs.run_id }}" \
+            --source-url "${{ steps.src.outputs.url }}" \
+            --signature "${{ steps.classify.outputs.signature }}" \
+            --base-sha "${{ github.sha }}" | tee /tmp/incident.out
+          get() { sed -n "s/^$1=//p" /tmp/incident.out; }
+          {
+            echo "action=$(get action)"
+            echo "incident_id=$(get incident_id)"
+          } >> "$GITHUB_OUTPUT"
+          if [ "$(get action)" != "START" ] && [ "$(get action)" != "HANDOFF_CRASHED" ]; then
+            echo "no new incident ($(get action): $(get reason)) — zero repair attempts spent"
+          fi
+
+      - name: 'Hand a crashed incident straight to Agent #5 (no second #4 attempt)'
+        if: steps.incident.outputs.action == 'HANDOFF_CRASHED'
+        run: |
+          gh workflow run ops-supervisor.yml --ref main \
+            -f incident_id="${{ steps.incident.outputs.incident_id }}" \
+            -f base_sha="${{ github.sha }}" \
+            -f allow_crashed_handoff=true
+          echo "crashed OPEN incident handed to Agent #5 — Agent #4 never gets a second attempt"
+
+      - name: 'Diagnose: deterministic recipes only (read-only)'
+        id: diagnose
+        if: steps.incident.outputs.action == 'START'
+        run: |
+          set -e
+          node tools/ops-agent.mjs suggest-repair | tee /tmp/repair.out
+          get() { sed -n "s/^$1=//p" /tmp/repair.out; }
+          {
+            echo "recipe=$(get recipe)"
+            echo "commands=$(get commands)"
+            echo "verify=$(get verify)"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: 'Execute the ONE repair attempt (safe deterministic recipe)'
+        id: repair
+        if: steps.incident.outputs.action == 'START' && steps.diagnose.outputs.recipe != 'ESCALATE'
+        run: |
+          set -e
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B main origin/main
+          echo "recipe: ${{ steps.diagnose.outputs.recipe }}"
+          sh -c "${{ steps.diagnose.outputs.commands }}"
+          sh -c "${{ steps.diagnose.outputs.verify }}"
+          if [ "${{ steps.diagnose.outputs.recipe }}" = "RESUME_PENDING_TRANSACTION" ]; then
+            # The recipe completes the RECORDED transaction only — its derived
+            # state mirrors the factory's own derived commit, nothing else.
+            git add data/blog/content-matrix.csv data/blog/knowledge-index.json \
+              blog sitemap.xml robots.txt reports/blog-factory-run.md \
+              docs/state/blog-factory.checkpoint.json docs/state/blog-factory.transaction.json 2>/dev/null || true
+            git commit -m "factory: resume pending transaction (ops incident ${{ steps.incident.outputs.incident_id }}) [skip ci]" \
+              || echo "nothing to commit — the recorded transaction was already consistent"
+            git push
+          else
+            git add -A docs/state/
+            git commit -m "ops: deterministic repair ${{ steps.diagnose.outputs.recipe }} (incident ${{ steps.incident.outputs.incident_id }}) [skip ci]" \
+              || echo "nothing to commit"
+            git push
+          fi
+
+      - name: 'Scope guard: article/assignment surfaces NEVER change'
+        if: steps.incident.outputs.action == 'START' && !cancelled()
+        run: |
+          set -e
+          git fetch origin main
+          git diff --name-only origin/main...HEAD | node tools/ops-agent.mjs guard
+          echo "scope guard PASS — no article bodies, writer branches or assignments touched"
+
+      - name: 'Targeted regression after the repair'
+        id: regression
+        if: steps.repair.outcome == 'success'
+        run: |
+          set -e
+          node tools/writer-queue.mjs validate
+          node tools/blog-factory.mjs validate
+          timeout 300 node --test \
+            tests/unit/writer-queue.test.js tests/unit/writer-queue-requeue.test.js \
+            tests/unit/blog-factory.test.js tests/unit/ops-agents.test.js
+
+      - name: 'Record AGENT_4_RESULT and hand the SAME incident to Agent #5'
+        if: steps.incident.outputs.action == 'START' && !cancelled()
+        run: |
+          set -e
+          RESULT="ESCALATE"
+          NOTE="no deterministic recipe matched (or the recipe failed verification) — second-line review required"
+          if [ "${{ steps.repair.outcome }}" = "success" ] && [ "${{ steps.regression.outcome }}" = "success" ]; then
+            RESULT="SUCCESS"
+            NOTE="recipe ${{ steps.diagnose.outputs.recipe }} applied and verified"
+          fi
+          node tools/ops-agent.mjs agent4-result \
+            --incident-id "${{ steps.incident.outputs.incident_id }}" \
+            --result "$RESULT" --note "$NOTE" | tee /tmp/a4.out
+          gh workflow run ops-supervisor.yml --ref main \
+            -f incident_id="${{ steps.incident.outputs.incident_id }}" \
+            -f base_sha="${{ github.sha }}"
+          echo "AGENT_4_RESULT=$RESULT — incident handed to Agent #5 (same incident_id)"
