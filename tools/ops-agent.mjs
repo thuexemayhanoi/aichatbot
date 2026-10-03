@@ -542,7 +542,9 @@ const USAGE = `usage: ops-agent.mjs <command> [args]
   wake-decision --production-enabled B --last-progress-epoch N --now-epoch N
                 [--active-production B] [--queued-production B] [--agent4-active B] [--agent5-active B]
   suggest-repair                         deterministic recipe for the checked-out repo, or ESCALATE
-  guard                                  stdin paths -> exit 1 when any agent-forbidden path changed
+  guard [--resume-derived]             stdin paths -> exit 1 when any agent-forbidden path changed
+                                       (--resume-derived: every path must also stay on the factory
+                                       derived/state surface — RESUME_PENDING_TRANSACTION contract)
   report                                 prints the incident report for the active incident`;
 
 const emit = (o) => { for (const [k, v] of Object.entries(o)) console.log(`${k}=${v}`); };
@@ -707,9 +709,20 @@ function cmdReport() {
   process.stdout.write(report);
 }
 
-function cmdGuard() {
+function cmdGuard(args) {
   const paths = readFileSync(0, 'utf8').split('\n').map((l) => l.trim()).filter(Boolean);
   const violations = repairForbiddenViolations(paths);
+  // Strict mode for RESUME_PENDING_TRANSACTION: the commit must contain ONLY
+  // the factory's recorded-transaction derived/state surfaces — no tool, test
+  // or documentation detours, even ones the generic guard would allow.
+  if (flag(args?.['resume-derived'])) {
+    for (const p of paths) {
+      if (!resumeDerivedAccepts(p)) {
+        console.error('RESUME_DERIVED_VIOLATION=' + p);
+        violations.push(p);
+      }
+    }
+  }
   if (violations.length > 0) {
     for (const v of violations) console.error('FORBIDDEN_CHANGE=' + v);
     die('agent scope guard: article/assignment surfaces must never change during repair');
@@ -734,7 +747,7 @@ if (isMain) {
     case 'release-lock': cmdReleaseLock(args); break;
     case 'wake-decision': cmdWakeDecision(args); break;
     case 'suggest-repair': cmdSuggestRepair(); break;
-    case 'guard': cmdGuard(); break;
+    case 'guard': cmdGuard(args); break;
     case 'report': cmdReport(); break;
     default:
       if (cmd) console.error(USAGE);
