@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_C",
+  "seq": 3,
+  "ids": [
+    "BA-0055",
+    "BA-0056"
+  ],
+  "body_paths": [
+    "data/blog/articles/app-thue-xe-cho-khach-du-lich.body.html",
+    "data/blog/articles/thue-honda-air-blade.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0055",
+      "category": "APP",
+      "slug": "app-thue-xe-cho-khach-du-lich",
+      "title": "Ứng dụng web thuê xe máy cho khách du lịch: tiện ở đâu",
+      "description": "Khách du lịch dùng trợ lý trực tuyến của cửa hàng để chọn dòng xe, ước tính giá theo ngày hoặc tuần, tra mức cọc và đặt xe nhanh mà không cần cài đặt gì.",
+      "published_date": "2026-10-03",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/app-thue-xe-cho-khach-du-lich.body.html",
+      "knowledge_chunks": [
+        "Trợ lý trực tuyến của cửa hàng cho phép khách du lịch chọn dòng xe theo nhu cầu, ước tính giá theo ngày, tuần hoặc tháng, tra mức cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe và hỏi thủ tục trước khi đến. Công cụ chạy trên trình duyệt, không cần cài đặt.",
+        "Các dòng xe tham khảo tại cửa hàng: Honda Wave, Honda Vision, Honda Air Blade, Honda Click hoặc Yamaha Mio, xe 50cc và xe máy điện. Giá ví dụ theo bảng giá tham khảo: Air Blade 200.000đ mỗi ngày, Wave 150.000đ mỗi ngày, Vision 200.000đ mỗi ngày; thuê theo tuần hoặc tháng thường rẻ hơn tính lẻ theo ngày.",
+        "Cửa hàng mở cửa từ 09:00 đến 21:00 tại 112 Nguyễn Văn Cừ, Long Biên, Hà Nội. Khách nên đặt xe qua kênh chính thức, đối chiếu giá khi nhận xe, chụp ảnh tình trạng xe và trả xe trong giờ mở cửa."
+      ]
+    },
+    {
+      "article_id": "BA-0056",
+      "category": "RENT",
+      "slug": "thue-honda-air-blade",
+      "title": "Thuê Honda Air Blade: giá tham khảo và kinh nghiệm chọn xe",
+      "description": "Giá thuê Honda Air Blade tham khảo theo ngày, tuần và tháng tại cửa hàng, đặc điểm dòng xe, cách kiểm tra khi nhận xe và so sánh với các dòng xe cho thuê khác.",
+      "published_date": "2026-10-03",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-honda-air-blade.body.html",
+      "knowledge_chunks": [
+        "Honda Air Blade là dòng xe tay ga của Honda với hai dung tích động cơ 110 phân khối và 125 phân khối tùy phiên bản, phun xăng điện tử, cốp rộng. Tại Thuê xe máy Hà Nội Nguyễn Tú, giá tham khảo: 200.000đ mỗi ngày, 800.000đ mỗi tuần, 1.400.000đ mỗi tháng; giá thực tế cần xác nhận trước khi đặt.",
+        "So sánh các dòng cùng cửa hàng theo bảng giá tham khảo: Honda Vision 200.000đ mỗi ngày và 800.000đ đến 1.000.000đ mỗi tuần; Honda Click hoặc Yamaha Mio 150.000đ mỗi ngày; Honda Wave 150.000đ mỗi ngày. Air Blade phù hợp khách thích xe ga đầm, dáng thể thao và cốp rộng.",
+        "Cửa hàng ở 112 Nguyễn Văn Cừ, Long Biên, Hà Nội, mở cửa từ 09:00 đến 21:00, đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe. Khi nhận xe khách nên kiểm tra phanh, đèn, còi, mức nhiên liệu và chụp ảnh hiện trạng để đối chiếu khi trả."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-03T06:28:49.918Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-03T06:28:49.918Z"
+    }
+  ]
+}
