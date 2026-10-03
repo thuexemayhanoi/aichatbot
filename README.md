@@ -297,3 +297,13 @@ Thay QA scoped dạng hard-gate bằng MINIMAL PRODUCTION QA GATE. Mục tiêu: 
 - Workflows: `writer-coordinator.yml` (refill step + limit 18), `blog-factory-publish.yml` (minimal QA step, bỏ REVIEW wording).
 - Docs: CONTINUOUS-WRITER, BLOG-FACTORY, ARTICLE-RULES, PARALLEL-WRITER đồng bộ v69.
 - Tests: `article-qa.test.js` viết lại (34 test: boundary 70/65, 12 warning đơn lẻ, 12 critical); continuous-writer, writer-queue, blog-foundation, blog-app-foundation cập nhật theo policy mới.
+
+## v70 — OPS AGENTS #4/#5/#6 (2026-10-03)
+
+Hệ thống vận hành hạ tầng tự trị, KHÔNG viết bài (docs/OPS-AGENTS.md):
+
+- **Agent #4** (`ops-repair-agent.yml`): event-driven first-line repair — classify CONTENT/INFRA (content QA chỉ được record, không mở incident), MỘT recipe deterministic mỗi incident, scope guard cấm chạm bài/assignments, bàn giao cùng `incident_id`.
+- **Agent #5** (`ops-supervisor.yml`): độc lập kiểm chứng (không tin báo cáo #4) + MỘT lần sửa tuyến hai → VERIFIED/RECOVERED (release lock) hoặc FAILED_MANUAL (giữ lock, ghi incident report, production vẫn pause).
+- **Agent #6** (`ops-watchdog.yml`): schedule 2 lần/giờ, chỉ wake production sau 2h không có progress THẬT, kiểm tra lại mọi blocker, dispatch đúng MỘT entrypoint (writer-coordinator).
+- **Maintenance lock** atomic bằng git ref `refs/ops/maintenance-lock/<incident_id>`; gate `ops-agent.mjs gate` chặn mọi production workflow khi có incident/lock. State: `docs/state/operations/maintenance.json` — `production_enabled=false` (owner stop) ⇒ KHÔNG agent nào tự resume production.
+- `tools/ops-agent.mjs` + 70 test (`ops-agents/ops-supervisor/ops-watchdog.test.js`) bao 30 required regression + stress race x100 + crash recovery.
