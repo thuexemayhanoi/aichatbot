@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_A",
+  "seq": 7,
+  "ids": [
+    "BA-0063",
+    "BA-0064"
+  ],
+  "body_paths": [
+    "data/blog/articles/thoi-gian-sac-xe-may-dien.body.html",
+    "data/blog/articles/nhien-lieu-khi-nhan-tra-xe.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0063",
+      "category": "EV",
+      "slug": "thoi-gian-sac-xe-may-dien",
+      "title": "Thời gian sạc xe máy điện: bao lâu thì đầy và nên sạc khi nào",
+      "description": "Sạc đầy xe máy điện mất khoảng 6 đến 8 tiếng bằng sạc zin theo xe, dòng hỗ trợ sạc nhanh rút xuống còn 2 đến 4 tiếng. Tìm hiểu các yếu tố ảnh hưởng và cách sạc hợp lý khi thuê xe.",
+      "published_date": "2026-10-03",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thoi-gian-sac-xe-may-dien.body.html",
+      "knowledge_chunks": [
+        "Thời gian sạc xe máy điện phổ thông (pin lithium 60V-72V, 20Ah-30Ah) bằng sạc zin theo xe mất 6-8 tiếng để đầy; dòng hỗ trợ sạc nhanh hoặc tháo pin mang về sạc rút xuống 2-4 tiếng; trạm đổi pin chỉ mất vài phút. Khi nhận xe thuê, hỏi rõ chiếc xe đó sạc bao lâu và có tháo pin được không.",
+        "Nên cắm sạc khi pin còn 20-30%, không cần ép đầy 100% mỗi lần, rút sạc khoảng nửa tiếng sau khi đèn báo đầy. Tránh sạc khi pin còn nóng sau chuyến chạy xa, tránh nơi ẩm ướt, dùng đúng bộ sạc đi kèm xe. Với quãng đường 60-90 km mỗi lần sạc, sạc qua đêm là giải pháp phổ biến nhất.",
+        "Một lần sạc đầy tiêu thụ khoảng 1-2 kWh, tương đương vài nghìn đồng, rẻ hơn nhiều so với xăng cho cùng quãng đường. Khi thuê xe điện, xác nhận chỗ ở có ổ điện 220V cho sạc qua đêm, chụp lại mức pin lúc nhận xe, và hỏi số điện thoại hỗ trợ khi xe gặp sự cố giữa đường."
+      ]
+    },
+    {
+      "article_id": "BA-0064",
+      "category": "GUIDE",
+      "slug": "nhien-lieu-khi-nhan-tra-xe",
+      "title": "Nhiên liệu khi nhận trả xe: quy ước mức xăng khi thuê xe máy",
+      "description": "Mức xăng lúc nhận và trả xe là chi tiết dễ gây tranh cãi nhất khi thuê xe máy. Hướng dẫn thống nhất quy ước, chụp ảnh ghi chú và cách xử lý khi thiếu hoặc thừa nhiên liệu.",
+      "published_date": "2026-10-03",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/nhien-lieu-khi-nhan-tra-xe.body.html",
+      "knowledge_chunks": [
+        "Quy ước mức xăng phổ biến nhất khi thuê xe máy: nhận ở mức nào thì trả ở mức đó. Hai kiểu khác là giao xe thoải mái rồi tính chênh lệch, hoặc khuyến khích trả xe đầy bình kèm ưu đãi nhỏ. Điều quan trọng là quy ước được nói rõ trước khi cầm xe.",
+        "Để không tranh cãi khi trả xe: chụp cụm đồng hồ xăng kèm công-tơ-mét trong cùng khung hình ngay lúc nhận xe, gửi ảnh qua tin nhắn cho bên cho thuê để có mốc thời gian, và chụp lại tương tự lúc trả. Trả thiếu xăng thì đổ bù ở trạm gần điểm trả trước khi hoàn tất thủ tục.",
+        "Đừng mặc định khoản cọc tự động trừ vào phần xăng thiếu: tiền cọc là khoản bảo đảm tình trạng xe, còn nhiên liệu là khoản riêng. Xe số như Wave Alpha tiêu hao dưới 2 lít mỗi trăm km, nên chi phí đổ bù thường nhỏ; luôn đổ ở trạm lớn có đồng hồ đo chuẩn."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-03T07:14:13.351Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-03T07:14:13.351Z"
+    }
+  ]
+}
