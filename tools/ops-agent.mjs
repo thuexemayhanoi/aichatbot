@@ -15,6 +15,9 @@
  *     Creating a ref is atomic (the push fails if it exists) — no check-then-write
  *     race. The production workflows (coordinator/publisher/factory) refuse to run
  *     while ANY lock ref or an active incident exists (`node tools/ops-agent.mjs gate`).
+ *     The owner switch production_enabled is a HARD GATE of the same command:
+ *     while it is false, no production workflow may mutate anything — even a
+ *     push of article bodies / published.json cannot start a real production.
  *
  *   - #4_ACTIVE && #5_ACTIVE = IMPOSSIBLE
  *     #5 may only take over an incident whose status is a #4 terminal state
@@ -357,18 +360,26 @@ export function agent5Result(state, { incidentId, result, note = '', now = nowIs
 }
 
 // ---------------------------------------------------------------------------
-// Production gate (MAINTENANCE_LOCK && PRODUCTION_MUTATION = IMPOSSIBLE)
+// Production gate (OWNER_STOP && MAINTENANCE_LOCK && PRODUCTION_MUTATION = IMPOSSIBLE)
 // ---------------------------------------------------------------------------
 
-/** Pure decision for the gate step of every production workflow. */
+/**
+ * Pure decision for the gate step of every production workflow.
+ * The owner switch is checked FIRST and fail-closed (only an explicit
+ * `production_enabled: true` allows production): while the owner keeps
+ * production stopped, no incident is needed — the gate refuses on its own.
+ */
 export function productionGate(state, lockRefs = []) {
+  if (state.production_enabled !== true) {
+    return { allowed: false, reason: 'production is intentionally stopped by the owner (production_enabled=false) — hard gate' };
+  }
   if (state.active_incident) {
     return { allowed: false, reason: `ops incident ${state.active_incident.incident_id} active (${state.active_incident.status}) — production paused` };
   }
   if (lockRefs.length > 0) {
     return { allowed: false, reason: `maintenance lock present (${lockRefs.join(', ')}) — production paused` };
   }
-  return { allowed: true, reason: 'no incident, no lock' };
+  return { allowed: true, reason: 'owner enabled, no incident, no lock' };
 }
 
 // ---------------------------------------------------------------------------

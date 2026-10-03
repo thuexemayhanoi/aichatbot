@@ -369,12 +369,18 @@ test('a young crashed incident is NOT handed off yet (its run may still be alive
 // ---------------------------------------------------------------------------
 
 test('productionGate blocks on an active incident and on a bare lock ref', () => {
+  // v70.1: the owner stop (production_enabled=false) is a HARD GATE — a clean
+  // state with no incident and no lock still refuses while the owner keeps
+  // production stopped.
   const s = freshState();
-  assert.equal(productionGate(s, []).allowed, true);
-  const s2 = freshState();
+  assert.equal(productionGate(s, []).allowed, false, 'owner stop blocks production with no incident/lock');
+  assert.match(productionGate(s, []).reason, /production_enabled=false/);
+  const on = emptyOpsState({ productionEnabled: true, lastValidProgressAt: '2026-10-03T07:14:41.000Z' });
+  assert.equal(productionGate(on, []).allowed, true, 'owner-enabled clean state allows production');
+  const s2 = emptyOpsState({ productionEnabled: true, lastValidProgressAt: '2026-10-03T07:14:41.000Z' });
   beginIncidentFlow(s2, memStore(), beginOpts());
   assert.equal(productionGate(s2, []).allowed, false, 'active incident blocks production');
-  const bare = productionGate(freshState(), [LOCK_REF_PREFIX + 'INC-x']);
+  const bare = productionGate(on, [LOCK_REF_PREFIX + 'INC-x']);
   assert.equal(bare.allowed, false, 'a lock ref blocks production even without state');
 });
 
