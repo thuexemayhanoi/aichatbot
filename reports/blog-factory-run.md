@@ -229,3 +229,6 @@
 - 2026-10-03 FINISH BA-0064
 - 2026-10-03 QA FAIL BA-0063 -> REVIEW (attempt 1)
 - 2026-10-03 QA FAIL BA-0064 -> REVIEW (attempt 1)
+- 2026-10-04 QA PASS BA-0063 score=95
+- 2026-10-04 QA PASS BA-0064 score=95
+- 2026-10-04 PUBLISHED 2 (BA-0063, BA-0064) — one grouped build, pages, matrix, indexes, sitemap consistent
