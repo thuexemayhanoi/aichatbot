@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_C",
+  "seq": 9,
+  "ids": [
+    "BA-0067",
+    "BA-0068"
+  ],
+  "body_paths": [
+    "data/blog/articles/tro-ly-thue-xe-may-la-gi.body.html",
+    "data/blog/articles/thue-xe-hang-nhe.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0067",
+      "category": "APP",
+      "slug": "tro-ly-thue-xe-may-la-gi",
+      "title": "Trợ lý thuê xe máy là gì: người bạn đồng hành hỏi đáp trước chuyến đi",
+      "description": "Trợ lý thuê xe máy là đầu mối hỏi đáp nhanh về giá, thủ tục và tuyến đường, giúp bạn chốt đúng dòng xe trước khi nhận xe tại Long Biên.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/tro-ly-thue-xe-may-la-gi.body.html",
+      "knowledge_chunks": [
+        "Trợ lý thuê xe máy là đầu mối hỏi đáp tự động về giá thuê từng dòng xe, giấy tờ cần mang khi nhận xe, khung giờ giao xe và chính sách tiền cọc, hoạt động ngay trên trang web của cửa hàng mà khách không cần gọi điện.",
+        "Khi khách hỏi về tuyến đường, trợ lý gợi ý lộ trình từ 112 Nguyễn Văn Cừ đến khu Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ kèm lưu ý giờ cao tốc và đoạn hay kẹt xe, giúp khách hình dung thời gian di chuyển trước khi thuê.",
+        "Trợ lý không thay thế việc chốt hợp đồng: mọi con số về giá ngày, giá tháng, tiền cọc từ 2.000.000đ đến 5.000.000đ và giờ mở cửa 09:00-21:00 đều lấy từ thông tin cửa hàng xác nhận, khách vẫn kiểm tra lại tại quầy khi nhận xe."
+      ]
+    },
+    {
+      "article_id": "BA-0068",
+      "category": "RENT",
+      "slug": "thue-xe-hang-nhe",
+      "title": "Thuê xe hạng nhẹ: chọn dòng xe số nhỏ gọn cho phố",
+      "description": "Thuê xe hạng nhẹ hợp đi phố: cách chọn dòng xe số nhỏ gọn, tư thế lái an toàn, lưu ý nhiên liệu và cọc trước khi nhận xe ở Long Biên.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-hang-nhe.body.html",
+      "knowledge_chunks": [
+        "Xe hạng nhẹ là nhóm xe máy nhỏ gọn, vào số nhẹ, bốc đầu nhanh, hợp khách đi phố hoặc mới tập lái; đại diện phổ biến là Wave Alpha với giá thuê 150.000đ/ngày, chạy phố trong khu Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ.",
+        "Khi thuê xe hạng nhẹ cần lưu ý: tiền cọc từ 2.000.000đ đến 5.000.000đ tùy dòng xe, cửa hàng không kèm bảo hiểm, xe giao và hoàn trả trong khung giờ 09:00-21:00, bình xăng nhỏ đủ một hai ngày đi phố nên chú ý đổ nhiên liệu.",
+        "Đi xe hạng nhẹ an toàn cần giữ khoảng cách phanh đều đặn, kiểm tra áp suất lốp theo khuyến cáo ghi trên xe trước chuyến dài, và nếu vốn quen xe tay ga thì thử vào số vài lần ở đoạn vắng trước khi hòa vào dòng xe chính."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-04T07:28:15.346Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-04T07:28:15.348Z"
+    }
+  ]
+}
