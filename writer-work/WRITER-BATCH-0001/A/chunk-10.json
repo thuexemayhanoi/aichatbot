@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_A",
+  "seq": 10,
+  "ids": [
+    "BA-0069",
+    "BA-0070"
+  ],
+  "body_paths": [
+    "data/blog/articles/chi-phi-dien-khi-thue-xe-dien.body.html",
+    "data/blog/articles/giao-xe-tan-noi-thu-tuc.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0069",
+      "category": "EV",
+      "slug": "chi-phi-dien-khi-thue-xe-dien",
+      "title": "Chi phí điện khi thuê xe điện: khoản chi nhỏ cần rõ từ đầu",
+      "description": "Chi phí điện khi thuê xe điện gồm phần đã gói trong giá thuê và khoản sạc thêm giữa đường; hiểu cách theo dõi pin để không bất ngờ giữa chuyến đi.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/chi-phi-dien-khi-thue-xe-dien.body.html",
+      "knowledge_chunks": [
+        "Khi thuê xe điện, giá thuê là giá trọn gói cho xe đã sạc sẵn pin lúc bàn giao, cửa hàng không tách hóa đơn tiền điện riêng; chi phí điện phát sinh chỉ khi khách phải sạc thêm giữa đường, và các chuyến đi phố thường không cần sạc lần nào.",
+        "Xe máy điện sạc qua bộ sạc rời cắm ổ điện dân dụng; sạc tại nhà qua đêm tiêu tốn lượng điện nhỏ trong hóa đơn sinh hoạt, nhỏ hơn nhiều so với một lần đổ xăng đầy bình; sạc ở điểm công cộng có nơi miễn phí cho khách tiêu dùng, có nơi thu khoản nhỏ, nên hỏi trước khi cắm.",
+        "Khi nhận xe điện, khách nên ghi lại và chụp ảnh mức pin trên đồng hồ, hỏi cửa hàng về mức pin mong muốn khi hoàn trả, và báo trước nếu không sạc lại được; thỏa thuận rõ từ đầu giúp buổi trả xe suôn sẻ."
+      ]
+    },
+    {
+      "article_id": "BA-0070",
+      "category": "GUIDE",
+      "slug": "giao-xe-tan-noi-thu-tuc",
+      "title": "Giao xe tận nơi thủ tục: chốt gì trước khi nhận xe",
+      "description": "Thủ tục giao xe tận nơi: khung giờ 09:00-21:00, khu vực giao xe, thông tin cần chốt trước khi đặt, bước kiểm tra xe và ký kết tại điểm hẹn.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/giao-xe-tan-noi-thu-tuc.body.html",
+      "knowledge_chunks": [
+        "MotoAI tại 112 Nguyễn Văn Cừ, Long Biên chỉ giao xe tận nơi trong giờ hoạt động 09:00-21:00, không giao ngoài giờ, phục vụ các khu Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và các phường lân cận; thời gian và chi phí giao nhận được xác nhận trước khi đặt xe.",
+        "Trước khi đặt giao xe tận nơi, khách nên gói một tin nhắn gồm dòng xe, thời gian nhận và trả, địa điểm giao cụ thể, giấy tờ sẽ xuất trình và câu hỏi về tiền cọc; điểm hẹn càng rõ ràng, buổi giao càng nhanh.",
+        "Khi người giao xe đến, hai bên cùng kiểm tra tình trạng xe, chụp ảnh xe trước khi nhận, xuất trình giấy tờ, ký hợp đồng và hoàn tất tiền cọc trong khoảng 2.000.000đ đến 5.000.000đ tùy loại xe; cửa hàng không kèm bảo hiểm."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-04T08:18:16.941Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-04T08:18:16.944Z"
+    }
+  ]
+}
