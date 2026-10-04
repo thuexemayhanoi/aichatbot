@@ -398,8 +398,21 @@
           "BA-0085",
           "BA-0086"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-04T09:41:26.797Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-04T09:41:26.798Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-04T09:41:26.798Z"
+          }
+        ]
       },
       {
         "seq": 19,
