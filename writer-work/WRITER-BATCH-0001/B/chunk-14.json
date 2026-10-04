@@ -1,0 +1,56 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_B",
+  "seq": 14,
+  "ids": [
+    "BA-0077",
+    "BA-0078"
+  ],
+  "body_paths": [
+    "data/blog/articles/kham-suc-khoe-lai-xe.body.html",
+    "data/blog/articles/pho-co-am-thuc-xe-may.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0077",
+      "category": "SAFE",
+      "slug": "kham-suc-khoe-lai-xe",
+      "title": "Khám sức khỏe lái xe: điều kiện pháp lý và thực tế cần biết",
+      "description": "Sức khỏe là điều kiện pháp lý của người lái xe theo Luật 2024; bài viết nói rõ giấy khám sức khỏe dùng khi nào và khi nào không nên cố lái.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/kham-suc-khoe-lai-xe.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0078",
+      "category": "LOCAL",
+      "slug": "pho-co-am-thuc-xe-may",
+      "title": "Phố cổ ẩm thực bằng xe máy: một buổi tối qua bốn món",
+      "description": "Tuyến ẩm thực phố cổ Hà Nội bằng xe máy gợi ý bốn chặng món ăn, cách gửi xe, khung giờ đẹp cho buổi ăn đêm và lưu ý khi đi nhóm đông giữa các phường nhỏ.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/pho-co-am-thuc-xe-may.body.html",
+      "knowledge_chunks": [
+        "Phố cổ Hà Nội gom nhiều phường nhỏ trong bán kính hẹp, mỗi phường có góc ăn đặc trưng; khoảng cách giữa các cụm món ngon chỉ vài phút chạy xe máy nên hợp ghép nhiều điểm trong một buổi tối, nhiều gánh và quán nhỏ chỉ bung ra khung chiều tối tới khuya.",
+        "Gửi xe là yếu tố quyết định buổi ăn đêm phố cổ: hầu như phố nào cũng có bãi gửi xe nhưng giờ cao điểm có bãi chật; nên chọn bãi gần chặng đầu tiên, ghi nhớ mã vé và kiểm tra gương xe trước khi giao, chấp nhận chạy chậm vì đường nhỏ có đoạn cấm ngược chiều.",
+        "Buổi tối phố cổ có hai nhịp: nhịp sớm trước tám giờ đông và dễ tìm bãi xe, nhịp muộn sau chín giờ thưa người, lên đèn kiểu cà phê đêm và các gánh món khuya; khách thuê xe quanh Long Biên qua cầu là vào giữa khu, tự do đi về theo giờ mình muốn và cửa hàng hoạt động 09:00 đến 21:00 hằng ngày."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-04T08:49:51.478Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-04T08:49:51.480Z"
+    }
+  ]
+}
