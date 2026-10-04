@@ -87,6 +87,7 @@ export function createHybridRetriever(data, options = {}) {
     corpus: base.corpus,
     warmup,
     semantic,
+    get semanticEnabled() { return semanticEnabled; },
     get hybridActive() { return hybridReady; },
     get size() { return base.size; }
   };

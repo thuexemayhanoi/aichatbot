@@ -39,7 +39,7 @@ jobs:
           if grep -rInE "api\.(openai|anthropic|mistral)\.com|generativelanguage\.googleapis\.com|api\.(groq|deepseek|together)\.(com|xyz)" src assets integrations service-worker.js manifest.webmanifest tools embed.js index.html; then
             echo "::error::Remote inference endpoint found"; exit 1
           fi
-      - name: Bundle regression guard (fail if base JS grows past 225KB)
+      - name: Bundle regression guard (fail if base JS grows past 232KB)
         run: |
           size=$(find src assets -name '*.js' -print0 | xargs -0 cat | wc -c)
           size2=$(wc -c < embed.js)
@@ -53,4 +53,9 @@ jobs:
           # v61 bumps 223KB -> 225KB: app-shell.js gains the parent-hub
           # dropdown touch/keyboard toggle (hover-only menus are inaccessible
           # on tablets). v60 previously added the tiny scroll diagnostic.
-          test "$total" -lt 225000
+          # v65 bumps 225KB -> 232KB: low-resource iOS freeze prevention —
+          # capability.js gains the conservative Apple-mobile/low-RAM policy,
+          # agent-session.js adds the pure startup policy, moto-app.js gates
+          # semantic warm-up, main.js adds single-flight start + background
+          # GPU release. Tests are NOT counted in this guard.
+          test "$total" -lt 232000

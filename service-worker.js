@@ -16,7 +16,7 @@
  */
 'use strict';
 
-const CORE_VERSION = 'v64';
+const CORE_VERSION = 'v65';
 const SHELL_CACHE = 'motoai-shell-' + CORE_VERSION;
 const DATA_CACHE = 'motoai-data-' + CORE_VERSION;
 const KNOWN_CACHES = [SHELL_CACHE, DATA_CACHE];

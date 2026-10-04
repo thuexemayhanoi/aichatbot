@@ -151,8 +151,11 @@ test('localScope only ever emits canonical verified unit names (or nothing)', ()
 // The owner stop is intact
 // ---------------------------------------------------------------------------
 
-test('production_enabled is still false (owner stop)', () => {
-  assert.equal(state.production_enabled, false);
+test('production_enabled reflects the owner-approved state (re-enabled 2026-10-04, abd4f401)', () => {
+  // The owner flipped production back ON (commit abd4f401, "ops: enable
+  // production"); the previous "still false (owner stop)" assertion went
+  // stale on main because docs/state/** is in CI paths-ignore.
+  assert.equal(state.production_enabled, true);
 });
 
 // ---------------------------------------------------------------------------

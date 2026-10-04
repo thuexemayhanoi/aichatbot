@@ -7,6 +7,7 @@ import { createConfig } from '../../src/config/defaults.js';
 import { createMotoApp } from '../../src/app/moto-app.js';
 import { parseQueryConfig } from '../../src/app/query-config.js';
 import { detectCapabilities } from '../../src/ai/capability.js';
+import { resolveAgentStartup } from '../../src/ai/agent-session.js';
 import { DEFAULT_CHIPS, resolveChipHref } from '../../src/app/suggestions.js';
 import { ENABLE_STORAGE_KEY } from './ai-settings.js';
 import { initPwa } from './pwa.js';
@@ -413,9 +414,21 @@ async function init() {
   });
 
   // --- Optional Local AI (two-step explicit consent) ---
+  // v65: the engine NEVER auto-starts on page load — not even for returning
+  // users with saved consent. Booting WebLLM while the page settles froze
+  // low-memory iPads/iPhones. Consent + model cache are kept; the user
+  // starts the Agent with an explicit tap in the current session.
   const capabilities = detectCapabilities(globalThis);
-  if (capabilities.canUseLocalLlm) {
+  const agentStartup = resolveAgentStartup({
+    capabilities,
+    consent: readStoredConsent()
+  });
+  function readStoredConsent() {
+    try { return globalThis.localStorage?.getItem(ENABLE_STORAGE_KEY) ?? null; } catch { return null; }
+  }
+  if (agentStartup.showToggle) {
     elements.aiToggle.hidden = false;
+    if (agentStartup.hint) setStatus(elements.status, agentStartup.hint, 'info');
     elements.aiToggle.addEventListener('click', () => {
       elements.aiExplain.hidden = false; // explain BEFORE any download
       elements.aiConfirm.focus();
@@ -423,57 +436,91 @@ async function init() {
     elements.aiCancel.addEventListener('click', () => { elements.aiExplain.hidden = true; });
     elements.aiConfirm.addEventListener('click', () => {
       elements.aiExplain.hidden = true;
-      localStorage.setItem(ENABLE_STORAGE_KEY, '1');
+      try { localStorage.setItem(ENABLE_STORAGE_KEY, '1'); } catch { /* private mode: session-only */ }
       startLocalAi();
     });
-    // Returning users already consented once; still never silent: status shown.
-    if (localStorage.getItem(ENABLE_STORAGE_KEY) === '1') {
-      elements.aiToggle.hidden = true;
-      startLocalAi();
-    }
   } else {
     elements.aiToggle.hidden = true;
     setStatus(elements.status, 'Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.', 'warning');
   }
-
-  async function startLocalAi() {
-    elements.aiToggle.hidden = true;
-    elements.aiStatus.hidden = false;
-    elements.aiStatus.dataset.tone = '';
-    elements.aiStatusText.textContent = 'Đang chuẩn bị Agent...';
-    const ok = await app.localLlm.load({
-      onProgress: (frac, text) => {
-        elements.aiBar.style.width = `${Math.round(frac * 100)}%`;
-        // Generic progress line only — technical model info stays in console/debug.
-        elements.aiStatusText.textContent =
-          (text && DEBUG) ? text : `Đang tải... ${Math.round(frac * 100)}%`;
+  // Bound ONCE (v65): startLocalAi() may run several times per session
+  // (manual start, background release + re-enable) — the Off control must
+  // never accumulate listeners.
+  elements.aiOff.addEventListener('click', () => {
+    try { localStorage.removeItem(ENABLE_STORAGE_KEY); } catch { /* ignore */ }
+    app.localLlm.unload();
+    elements.aiStatus.hidden = true;
+    elements.aiOff.hidden = true;
+    elements.aiToggle.hidden = false;
+  });
+  // Background release (v65): a hidden tab must not hold GPU/RAM hostage.
+  // The model CACHE is never deleted — only the live engine is released
+  // after the tab stays hidden for 5 minutes; re-enabling reuses the cache.
+  let hiddenReleaseTimer = null;
+  document.addEventListener('visibilitychange', () => {
+    clearTimeout(hiddenReleaseTimer);
+    if (document.visibilityState !== 'hidden') return;
+    hiddenReleaseTimer = setTimeout(() => {
+      if (document.visibilityState === 'hidden' && app.localLlm.state.status === 'ready') {
+        app.localLlm.unload();
+        elements.aiStatus.hidden = true;
+        elements.aiOff.hidden = true;
+        elements.aiToggle.hidden = !agentStartup.showToggle;
+        setStatus(elements.status, 'Agent đã tạm dừng để tiết kiệm tài nguyên. Bật lại được ngay khi cần.', 'info');
       }
-    });
-    if (ok) {
-      elements.aiStatus.dataset.tone = 'success';
-      elements.aiStatusText.textContent = 'Agent sẵn sàng';
-      elements.aiOff.hidden = false;
-      // Status is temporary: auto-hide the ready line, keep the Off control.
-      setTimeout(() => {
-        if (app.localLlm.state.status === 'ready') {
-          elements.aiStatusText.textContent = '';
-          elements.aiBar.style.width = '0';
+    }, 5 * 60 * 1000);
+  });
+
+  // Single-flight guard: double-tapping the confirm button (or a fast
+  // confirm + re-enable) must never start two engine loads.
+  let aiStarting = false;
+  // Throttled progress paint (~8fps): WebLLM fires progress callbacks in
+  // bursts and repainting every one janks weak phones.
+  let lastProgressPaint = 0;
+  async function startLocalAi() {
+    if (aiStarting) return;
+    aiStarting = true;
+    try {
+      elements.aiToggle.hidden = true;
+      elements.aiStatus.hidden = false;
+      elements.aiStatus.dataset.tone = '';
+      elements.aiStatusText.textContent = 'Đang chuẩn bị Agent...';
+      const ok = await app.localLlm.load({
+        onProgress: (frac, text) => {
+          const now = (typeof performance !== 'undefined' && performance.now)
+            ? performance.now()
+            : Date.now();
+          if (frac < 1 && now - lastProgressPaint < 120) return;
+          lastProgressPaint = now;
+          elements.aiBar.style.width = `${Math.round(frac * 100)}%`;
+          // Generic progress line only — technical model info stays in console/debug.
+          elements.aiStatusText.textContent =
+            (text && DEBUG) ? text : `Đang tải... ${Math.round(frac * 100)}%`;
         }
-      }, 2500);
-    } else {
-      // Friendly line only — technical detail goes to console (debug) + state.
-      elements.aiStatus.dataset.tone = 'warning';
-      elements.aiStatusText.textContent =
-        app.localLlm.state.userMessage ?? 'Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.';
+      });
+      if (ok) {
+        elements.aiStatus.dataset.tone = 'success';
+        elements.aiStatusText.textContent = 'Agent sẵn sàng';
+        elements.aiOff.hidden = false;
+        // Status is temporary: auto-hide the ready line, keep the Off control.
+        setTimeout(() => {
+          if (app.localLlm.state.status === 'ready') {
+            elements.aiStatusText.textContent = '';
+            elements.aiBar.style.width = '0';
+          }
+        }, 2500);
+      } else {
+        // Friendly line only — technical detail goes to console (debug) + state.
+        elements.aiStatus.dataset.tone = 'warning';
+        elements.aiStatusText.textContent =
+          app.localLlm.state.userMessage ?? 'Agent chưa dùng được trên thiết bị này. Trợ lý cơ bản vẫn hoạt động bình thường.';
+        elements.aiToggle.hidden = !agentStartup.showToggle; // manual retry stays possible
+      }
+    } finally {
+      aiStarting = false;
     }
-    elements.aiOff.addEventListener('click', () => {
-      localStorage.removeItem(ENABLE_STORAGE_KEY);
-      app.localLlm.unload();
-      elements.aiStatus.hidden = true;
-      elements.aiOff.hidden = true;
-      elements.aiToggle.hidden = false;
-    });
   }
+
 }
 
 init();

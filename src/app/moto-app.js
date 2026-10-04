@@ -6,6 +6,7 @@ import { createLocalStore } from '../storage/local-store.js';
 import { createConfig } from '../config/defaults.js';
 import { createHybridRetriever } from '../search/hybrid-retriever.js';
 import { createBlogRetriever } from '../search/blog-knowledge.js';
+import { detectCapabilities } from '../ai/capability.js';
 import { createLocalLlm } from '../ai/local-llm.js';
 import { guardAnswer } from '../ai/fact-guard.js';
 import { planTurn } from '../core/planner.js';
@@ -29,13 +30,19 @@ export function createMotoApp({
   config,
   env = globalThis,
   importFn,             // injected WebLLM import (tests)
+  semanticImportFn,      // injected Transformers.js import (tests)
   now,
   llmModel
 } = {}) {
   const runtimeConfig = config ?? createConfig();
+  // v65 low-resource gating: on weak devices (low RAM / few cores /
+  // unknown-memory iOS) the semantic layer stays off — BM25 answers alone
+  // and Transformers.js (~30MB) is never downloaded.
+  const capabilities = detectCapabilities(env);
+  const semanticEnabled = runtimeConfig.features?.semanticSearch !== false && !capabilities.lowResource;
   const search = createHybridRetriever(data, {
-    semantic: runtimeConfig.features?.semanticSearch !== false,
-    ...(importFn ? { semanticOptions: {} } : {})
+    semantic: semanticEnabled,
+    ...(semanticImportFn ? { semanticOptions: { importFn: semanticImportFn } } : {})
   });
   const analyzer = createAnalyzer(data);
   const { rules, fallback } = createRuleRegistry(data);
@@ -73,12 +80,34 @@ export function createMotoApp({
     return blogRetriever.size > 0;
   }
 
+  // v65: warm-ups never run on the answer path. The semantic model is only
+  // scheduled when (a) the device is strong enough, and (b) the local LLM
+  // is not loading/ready — two AI workloads must never share weak RAM.
   let semanticWarmed = false;
+  let warmScheduled = false;
+  function scheduleIdleWarmup(fn) {
+    if (typeof env.requestIdleCallback === 'function') {
+      env.requestIdleCallback(() => fn(), { timeout: 3000 });
+      return;
+    }
+    const st = typeof env.setTimeout === 'function' ? env.setTimeout : setTimeout;
+    const timer = st(fn, 2000);
+    // Node tests: never hold the process open for a background warm-up.
+    if (typeof timer?.unref === 'function') timer.unref();
+  }
   /** Lazy semantic warm-up: called after the first user turn, never on load. */
   function warmSemantic() {
-    if (semanticWarmed) return;
-    semanticWarmed = true;
-    void search.warmup(); // fire-and-forget; BM25 covers everything meanwhile
+    if (semanticWarmed || warmScheduled || !semanticEnabled || capabilities.lowResource) return;
+    const status = localLlm.state.status;
+    if (status === 'loading' || status === 'ready') return; // never compete with the LLM
+    warmScheduled = true;
+    scheduleIdleWarmup(() => {
+      warmScheduled = false;
+      const nowStatus = localLlm.state.status;
+      if (semanticWarmed || capabilities.lowResource || nowStatus === 'loading' || nowStatus === 'ready') return;
+      semanticWarmed = true;
+      void search.warmup(); // fire-and-forget; BM25 covers everything meanwhile
+    });
   }
 
   /**
@@ -164,5 +193,5 @@ export function createMotoApp({
     engine.resetContext();
   }
 
-  return { engine, search, localLlm, send, sendFresh, resetContext, attachBlogIndex, data };
+  return { engine, search, localLlm, capabilities, send, sendFresh, resetContext, attachBlogIndex, data };
 }
