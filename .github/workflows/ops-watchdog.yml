@@ -84,7 +84,7 @@ jobs:
           PUB_S=$(git --no-pager log -i --grep=PUBLISHED -1 --format=%ct origin/main 2>/dev/null || echo 0)
           PUB_S=${PUB_S:-0}
           WRITER_S=$(git for-each-ref --sort=-committerdate --count=1 \
-            --format=%(committerdate:unix) refs/remotes/origin/writer/ 2>/dev/null || echo 0)
+            --format='%(committerdate:unix)' refs/remotes/origin/writer/ 2>/dev/null || echo 0)
           WRITER_S=${WRITER_S:-0}
           LAST_MS=0
           for S in "$STAGE_S" "$PUB_S" "$WRITER_S" "$STATE_S"; do

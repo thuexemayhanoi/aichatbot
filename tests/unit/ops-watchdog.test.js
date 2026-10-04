@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { watchdogShouldWake, WATCHDOG_IDLE_MS, PRODUCTION_ENTRYPOINT } from '../../tools/ops-agent.mjs';
@@ -103,4 +104,62 @@ test('every blocker flag reaches the wake decision (owner stop, agents, active+q
 test('Agent #6 never leaks tokens into logs', () => {
   assert.ok(!YML.includes('set -x'), 'never echo commands');
   assert.ok(!/echo\s+"?\$?\{?(GH_TOKEN|GITHUB_TOKEN)/.test(YML), 'no token is ever echoed');
+});
+
+// ---------------------------------------------------------------------------
+// Runtime canary regression: the observe step failed on the real runner with
+// `syntax error near unexpected token '('` because --format=%(committerdate:unix)
+// was unquoted. Bash parses `(` as a shell token -> the whole step died before
+// any observation. These tests keep that class of bug dead.
+// ---------------------------------------------------------------------------
+
+/** Every `run: |` block of the workflow, dedented, in file order. */
+function runBlocks() {
+  const blocks = [];
+  const re = /run: \|\n((?: {10}[^\n]*\n)+)/g;
+  let m;
+  while ((m = re.exec(YML)) !== null) {
+    blocks.push(m[1].split('\n').map((l) => l.slice(10)).join('\n'));
+  }
+  return blocks;
+}
+
+test('git ref formats are shell-quoted — the %(committerdate:unix) regression stays dead', () => {
+  assert.ok(!/--format=%\(/.test(YML), 'no unquoted --format=%(...) — Bash parses the bare ( as a shell token');
+  assert.match(YML, /--format='%\(committerdate:unix\)'/, 'the writer-ref timestamp uses the quoted form');
+});
+
+test('every run block parses under the runner Bash (bash -n)', () => {
+  const blocks = runBlocks();
+  assert.ok(blocks.length >= 4, 'observe + decide + wake + do-nothing blocks found');
+  for (const [i, src] of blocks.entries()) {
+    const r = spawnSync('bash', ['-n'], { input: src, encoding: 'utf8' });
+    assert.equal(r.status, 0, `run block ${i} has a bash syntax error: ${r.stderr}`);
+  }
+});
+
+test('production_enabled=false => wake=false and zero dispatches (dry run or not)', () => {
+  const now = Date.parse('2026-10-04T12:00:00Z');
+  // Even with EVERY other blocker clear and the 2h timer genuinely elapsed,
+  // the owner stop alone keeps the watchdog asleep.
+  const r = watchdogShouldWake({
+    nowEpochMs: now, productionEnabled: false, activeIncident: null, lockRefs: [],
+    agent4Active: false, agent5Active: false,
+    activeProductionRuns: false, queuedProductionRuns: false,
+    lastValidProgressEpochMs: now - WATCHDOG_IDLE_MS - 60 * 1000
+  });
+  assert.equal(r.wake, false, 'the owner stop is a hard gate for the watchdog');
+  assert.match(r.reason, /production_enabled=false/);
+});
+
+test('a dry run can never reach the dispatch step — no writers, factory, publisher or coordinator', () => {
+  const gate = YML.slice(idx('Wake production: EXACTLY ONE'), idx('Wake production: EXACTLY ONE') + 300);
+  assert.match(gate, /if: steps\.decide\.outputs\.wake == 'true' && inputs\.dry_run != 'true'/,
+    'the single dispatch is reachable only with wake=true AND dry_run != true');
+  const dispatchLines = YML.split('\n').filter((l) => l.includes('gh workflow run') && !l.trim().startsWith('#'));
+  assert.equal(dispatchLines.length, 1, 'exactly one dispatch line in the whole workflow');
+  assert.ok(dispatchLines[0].includes('writer-coordinator.yml'));
+  for (const never of ['writer-a', 'writer-b', 'writer-c', 'writer-publisher', 'blog-factory-publish', 'ops-repair-agent', 'ops-supervisor']) {
+    assert.ok(!YML.includes(`gh workflow run ${never}.yml`), `#6 must never dispatch ${never}`);
+  }
 });
