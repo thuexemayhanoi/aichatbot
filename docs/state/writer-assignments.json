@@ -175,8 +175,14 @@
           "BA-0065",
           "BA-0066"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "FACTORY_FAILED",
+        "events": [
+          {
+            "state": "FACTORY_FAILED",
+            "at": "2026-10-04T06:51:55.065Z",
+            "reason": "factory run 37184027887 failed"
+          }
+        ]
       },
       {
         "seq": 9,
