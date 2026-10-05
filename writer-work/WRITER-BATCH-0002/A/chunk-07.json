@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0002",
+  "writer": "writer_A",
+  "seq": 7,
+  "ids": [
+    "BA-0113",
+    "BA-0114"
+  ],
+  "body_paths": [
+    "data/blog/articles/tam-nhin-khi-lai-xe.body.html",
+    "data/blog/articles/pho-sach-ha-noi.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "id": "BA-0113",
+      "title": "Tầm Nhìn Khi Lái xe",
+      "slug": "tam-nhin-khi-lai-xe",
+      "description": "Tầm nhìn khi lái xe: tình huống làm giảm tầm nhìn, quy định pháp luật về tốc độ theo tầm nhìn và kỹ năng giữ tầm nhìn tối ưu.",
+      "category": "SAFE",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body_path": "data/blog/articles/tam-nhin-khi-lai-xe.body.html",
+      "agent_retrieval": false,
+      "knowledge_chunks": [],
+      "article_id": "BA-0113",
+      "body": "data/blog/articles/tam-nhin-khi-lai-xe.body.html"
+    },
+    {
+      "id": "BA-0114",
+      "title": "Phố Sách hà Nội",
+      "slug": "pho-sach-ha-noi",
+      "description": "Phố sách Hà Nội gần chợ Đồng Xuân: mùa đẹp nhất, mẹo thuê xe đi phố cổ và các điểm hẹn xung quanh.",
+      "category": "LOCAL",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body_path": "data/blog/articles/pho-sach-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Phố sách Hà Nội nằm trong khu phố cổ gần chợ Đồng Xuân, tập trung nhiều nhà sách và tiệm sách cũ, nên đỗ xe ở bãi quanh chợ rồi đi bộ.",
+        "Mùa thu là thời điểm đẹp nhất để đi phố sách Hà Nội; mùa hè nên đi sớm hoặc chiều muộn, cuối tuần có phiên chợ đêm khu phố cổ.",
+        "Khu phố cổ nhiều đoạn cấm xe theo giờ và phố một chiều, nên dùng ứng dụng bản đồ có cảnh báo khi thuê xe máy đi dạo."
+      ],
+      "article_id": "BA-0114",
+      "body": "data/blog/articles/pho-sach-ha-noi.body.html"
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-05T18:35:42.561Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-05T18:35:42.565Z"
+    }
+  ]
+}
