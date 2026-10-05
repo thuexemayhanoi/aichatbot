@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_A",
+  "seq": 25,
+  "ids": [
+    "BA-0099",
+    "BA-0100"
+  ],
+  "body_paths": [
+    "data/blog/articles/bao-duong-xe-dien.body.html",
+    "data/blog/articles/di-hai-nguoi-tren-xe-thue.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0099",
+      "category": "EV",
+      "slug": "bao-duong-xe-dien",
+      "title": "Bảo dưỡng xe điện khi thuê: chăm pin, tự kiểm và lịch định kỳ",
+      "description": "Bảo dưỡng xe máy điện xoay quanh pin, phanh và thói quen sạc đúng cách. Danh mục việc tự làm hằng tuần, dấu hiệu cần thợ và lưu ý khi thuê dài ngày.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/bao-duong-xe-dien.body.html",
+      "knowledge_chunks": [
+        "Bảo dưỡng xe máy điện khác xe xáng: trọng tâm là pin, động cơ và phanh. Pin là bộ phận đắt nhất và suy giảm dần qua các chu kỳ sạc, nên giữ pin trong vùng điện áp an toàn là việc quan trọng nhất.",
+        "Hằng tuần người dùng tự làm được: lau khô hộc sạc sau khi đi mưa, kiểm tra áp lực lốp, vặn lại ốc gương và chắn bùn, theo dõi đồng hồ điện và sạc khi pin về vùng thấp thay vì cạn kiệt.",
+        "Khi thuê xe điện dài ngày nên đỗ xe nơi có mái che, sạc bổ sung giữa trưa thay vì sạc một lần dài vào tối. Xe thuê gặp dấu hiệu bất thường giữa kỳ nên gọi nhà xe thay vì tự can thiệp mạch điện."
+      ]
+    },
+    {
+      "article_id": "BA-0100",
+      "category": "GUIDE",
+      "slug": "di-hai-nguoi-tren-xe-thue",
+      "title": "Đi hai người trên xe thuê: vai trò, tốc độ và lưu ý an toàn",
+      "description": "Chở hai người thay đổi độ ổn định và đường thắng của xe máy. Hướng dẫn phân công vai trò, kiểm tra xe, tốc độ an toàn và hành lý khi đi hai người trên xe thuê.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/di-hai-nguoi-tren-xe-thue.body.html",
+      "knowledge_chunks": [
+        "Đi hai người trên xe máy thuê cần thống nhất vai trò trước: người lái quyết định toàn bộ, người ngồi sau giữ chắc, không rẽ người bất ngờ và lên xuống theo hiệu lệnh.",
+        "Buổi nhận xe nên kiểm tra kỹ nhún sau, lốp, phanh và đủ hai mũ bảo hiểm đạt chuẩn, vì chở thêm người là tải nặng nhất cho xe máy phổ thông.",
+        "Chở hai người nên giảm mười đến hai mươi phần trăm tốc độ và tăng gấp đôi khoảng cách với xe phía trước. Vào cua giảm tốc trước khi nghiêng xe, người sau nghiêng theo cùng chiều với xe."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-05T15:11:48.252Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-05T15:11:48.253Z"
+    }
+  ]
+}
