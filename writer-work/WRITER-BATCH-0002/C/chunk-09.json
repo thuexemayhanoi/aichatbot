@@ -1,0 +1,64 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0002",
+  "writer": "writer_C",
+  "seq": 9,
+  "ids": [
+    "BA-0117",
+    "BA-0118"
+  ],
+  "body_paths": [
+    "data/blog/articles/xe-dien-trong-pho.body.html",
+    "data/blog/articles/ky-nang-lai-xe-an-toan-co-ban.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "id": "BA-0117",
+      "title": "xe Điện Trong Phố",
+      "slug": "xe-dien-trong-pho",
+      "description": "Xe điện trong phố: ưu thế khi chạy nội thành Hà Nội, quản lý pin và an toàn khi đường đông.",
+      "category": "EV",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body_path": "data/blog/articles/xe-dien-trong-pho.body.html",
+      "knowledge_chunks": [
+        "Xe máy điện phù hợp nội thành nhờ máy êm, tăng tốc nhẹ và chi phí vận hành rẻ, nhưng cần làm quen tay ga điện trước khi vào đường đông.",
+        "Trong phố, dừng đèn đỏ liên tục và chạy thấp tốc tiêu hao pin nhanh, nên theo dõi thanh pin và tranh thủ sạc khi còn dư.",
+        "Xe điện êm nên người đi bộ và xe khác khó nhận ra, cần bật đèn kể cả ban ngày và bấm còi nhẹ tại ngã tư."
+      ],
+      "article_id": "BA-0117",
+      "body": "data/blog/articles/xe-dien-trong-pho.body.html"
+    },
+    {
+      "id": "BA-0118",
+      "title": "kỹ Năng Lái xe an Toàn cơ Bản",
+      "slug": "ky-nang-lai-xe-an-toan-co-ban",
+      "description": "Kỹ năng lái xe an toàn cơ bản: quan sát, giữ khoảng cách, phanh đúng cách và xử lý tình huống thường gặp.",
+      "category": "GUIDE",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body_path": "data/blog/articles/ky-nang-lai-xe-an-toan-co-ban.body.html",
+      "knowledge_chunks": [
+        "Ba nguyên tắc lái xe an toàn nền tảng là quan sát xa, giữ khoảng cách và báo hiệu trước khi rẽ hay dừng.",
+        "Phanh an toàn là phanh đều hai bánh, nhẹ và sớm, không bóp cứng một bên, đường mưa cần khoảng cách gấp rưỡi.",
+        "Khi đi sau xe tải hoặc container cần tăng khoảng cách và lệch nhẹ để quan sát qua, không cắt đầu khi xe đang rẽ."
+      ],
+      "article_id": "BA-0118",
+      "body": "data/blog/articles/ky-nang-lai-xe-an-toan-co-ban.body.html"
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-05T18:59:42.363Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-05T18:59:42.365Z"
+    }
+  ]
+}
