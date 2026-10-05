@@ -153,8 +153,21 @@
           "BA-0113",
           "BA-0114"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-05T18:37:08.373Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-05T18:37:08.373Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-05T18:37:08.373Z"
+          }
+        ]
       },
       {
         "seq": 8,
