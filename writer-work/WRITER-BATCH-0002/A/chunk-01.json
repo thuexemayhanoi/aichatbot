@@ -1,0 +1,17 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0002",
+  "writer": "writer_A",
+  "seq": 1,
+  "ids": [
+    "BA-0101",
+    "BA-0102"
+  ],
+  "body_paths": [
+    "data/blog/articles/mua-lon-va-lai-xe.body.html",
+    "data/blog/articles/lang-chu-tich-qua-pho.body.html"
+  ],
+  "status": "WRITING",
+  "drafts": [],
+  "history": []
+}
