@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-04",
+  "updated": "2026-10-05",
   "articles": [
     {
       "title": "App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục",
@@ -1352,6 +1352,32 @@
       "subtopic_name": "Trả Xe",
       "location": "",
       "url": "/aichatbot/blog/thue-xe/kiem-tra-xe-truoc-khi-nhan/"
+    },
+    {
+      "title": "Xe Điện Khi Mưa: Lái, Sạc Và Bảo Vệ Pin An Toàn",
+      "keywords": "Xe Điện Khi Mưa: Lái, Sạc Và Bảo Vệ Pin An Toàn Xe máy điện chạy được trong mưa khi cụm pin khô và tay lái đúng kỹ năng. Bài viết hướng dẫn chuẩn bị xe, lái trên đường ướt và sạc an toàn sau chuyến mưa.",
+      "summary": "Xe máy điện chạy được trong mưa khi cụm pin khô và tay lái đúng kỹ năng. Bài viết hướng dẫn chuẩn bị xe, lái trên đường ướt và sạc an toàn sau chuyến mưa.",
+      "category": "EV",
+      "category_name": "Xe điện / xe máy điện",
+      "cluster": "C-RENT",
+      "cluster_name": "Thuê xe & Phương tiện",
+      "subtopic": "",
+      "subtopic_name": "",
+      "location": "",
+      "url": "/aichatbot/blog/xe-dien/xe-dien-khi-mua/"
+    },
+    {
+      "title": "Bản đồ và Định vị Khi Thuê xe: Dựng Tuyến, Gắn Máy Và Không Lạc",
+      "keywords": "Bản đồ và Định vị Khi Thuê xe: Dựng Tuyến, Gắn Máy Và Không Lạc Dùng bản đồ và định vị hiệu quả khi thuê xe máy: tải bản đồ ngoại tuyến, lưu điểm nhận trả xe, chọn tuyến cho xe máy và ghi nhớ bãi gửi. Thủ Tục",
+      "summary": "Dùng bản đồ và định vị hiệu quả khi thuê xe máy: tải bản đồ ngoại tuyến, lưu điểm nhận trả xe, chọn tuyến cho xe máy và ghi nhớ bãi gửi.",
+      "category": "GUIDE",
+      "category_name": "Hướng dẫn / thủ tục",
+      "cluster": "C-APP",
+      "cluster_name": "Công cụ & Hướng dẫn",
+      "subtopic": "THU-TUC",
+      "subtopic_name": "Thủ Tục",
+      "location": "",
+      "url": "/aichatbot/blog/huong-dan/ban-do-va-dinh-vi-khi-thue-xe/"
     }
   ]
 }
