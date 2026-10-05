@@ -1526,6 +1526,34 @@
         "Khi thuê xe máy, nên tải bản đồ ngoại tuyến, lưu sẵn điểm nhận và trả xe, gắn điện thoại trên giá cố định và bật chỉ dẫn bằng giọng nói để giữ mắt trên đường."
       ],
       "agent_retrieval": true
+    },
+    {
+      "article_id": "BA-0107",
+      "category": "SAFE",
+      "slug": "suong-mu-mua-dong",
+      "title": "Sương Mù Mùa Đông: Tầm Nhìn, Đèn Pha Và Kỹ Năng Lái An Toàn",
+      "description": "Sương mù mùa đông Hà Nội làm tầm nhìn suy giảm mạnh. Bài viết nêu yêu cầu pháp lý về đèn và tốc độ, khung giờ sương dày nhất và kỹ năng lái xe máy an toàn.",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/suong-mu-mua-dong.body.html",
+      "knowledge_chunks": [],
+      "agent_retrieval": false
+    },
+    {
+      "article_id": "BA-0108",
+      "category": "LOCAL",
+      "slug": "bao-tang-ha-noi-hanh-trinh",
+      "title": "Bảo Tàng Hà Nội Hành Trình: Lịch Trình Một Ngày Bằng Xe Máy",
+      "description": "Hành trình thăm bảo tàng Hà Nội bằng xe máy thuê từ Long Biên: lịch trình ba bảo tàng, bãi gửi xe, khung giờ mở cửa và cách tính tuyến đường quanh phố.",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/bao-tang-ha-noi-hanh-trinh.body.html",
+      "knowledge_chunks": [
+        "Các bảo tàng lớn Hà Nội gồm Bảo tàng Dân tộc học Việt Nam trên đường Nguyễn Văn Huyên (Cầu Giấy), Bảo tàng Lịch sử quân sự Việt Nam trên đường Điện Biên Phủ (Ba Đình) và Bảo tàng Hà Nội trên đường Phạm Văn Đồng phía nam hồ Tây; các bảo tàng thường nghỉ thứ hai và đóng cửa sớm buổi chiều, bãi gửi xe máy có người trông giữ kèm vé xem.",
+        "Từ 112 Nguyễn Văn Cừ, Long Biên đi xe máy tới Bảo tàng Dân tộc học mất ba mươi tới bốn mươi phút qua cầu Nhật Tân, tới Bảo tàng Lịch sử quân sự mất khoảng hai mươi lăm phút qua đường Trần Nhân Tông và Điện Biên Phủ, về Long Biên khoảng ba mươi phút.",
+        "Một ngày thực tế ghép được hai đến ba bảo tàng, mỗi điểm cần tối thiểu một tiếng rưỡi; nên xếp bảo tàng có khu trưng bày ngoài trời vào buổi sáng và các điểm gần trục về vào buổi chiều để tránh trễ giờ trả xe."
+      ],
+      "agent_retrieval": true
     }
   ]
 }
