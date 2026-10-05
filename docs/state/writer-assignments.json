@@ -15,8 +15,21 @@
           "BA-0119",
           "BA-0120"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-05T19:09:59.970Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-05T19:09:59.970Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-05T19:09:59.970Z"
+          }
+        ]
       },
       {
         "seq": 2,
