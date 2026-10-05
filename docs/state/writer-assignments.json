@@ -159,12 +159,17 @@
           "BA-0063",
           "BA-0064"
         ],
-        "status": "FACTORY_FAILED",
+        "status": "PUBLISHED",
         "events": [
           {
             "state": "FACTORY_FAILED",
             "at": "2026-10-03T07:15:02.809Z",
             "reason": "factory run 37105692009 failed"
+          },
+          {
+            "state": "RECONCILED_PUBLISHED",
+            "at": "2026-10-05T14:40:09.464Z",
+            "reason": "ids published outside the original factory run (repair pipeline); evidence verified: matrix PUBLISHED + single manifest entry + body on disk"
           }
         ]
       },
@@ -175,12 +180,17 @@
           "BA-0065",
           "BA-0066"
         ],
-        "status": "FACTORY_FAILED",
+        "status": "PUBLISHED",
         "events": [
           {
             "state": "FACTORY_FAILED",
             "at": "2026-10-04T06:51:55.065Z",
             "reason": "factory run 37184027887 failed"
+          },
+          {
+            "state": "RECONCILED_PUBLISHED",
+            "at": "2026-10-05T14:40:09.466Z",
+            "reason": "ids published outside the original factory run (repair pipeline); evidence verified: matrix PUBLISHED + single manifest entry + body on disk"
           }
         ]
       },

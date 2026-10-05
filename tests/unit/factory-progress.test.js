@@ -1,8 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdtempSync, rmSync, cpSync } from 'node:fs';
 import { join } from 'node:path';
+import { tmpdir } from 'node:os';
 import { repoSandbox, readJson, REPO } from '../helpers/factory-sandbox.mjs';
 import { buildProgress } from '../../tools/factory-progress.mjs';
 
@@ -54,12 +55,18 @@ test('progress report exposes the FIFO next chunk of the active writer batch', (
 });
 
 test('default mode writes reports/factory-progress.json and --check verifies freshness', () => {
-  const dir = repoSandbox();
+  // Dedicated throwaway fixture: a sandbox copy would drag the PRODUCTION
+  // report along, so the "report does not exist yet" case needs a clean tree.
+  const dir = mkdtempSync(join(tmpdir(), 'motoai-progress-fx-'));
+  cpSync(REPO, dir, { recursive: true, filter: (src) => !src.includes('/.git') });
+  rmSync(join(dir, 'reports/factory-progress.json'), { force: true }); // fixture: never built before
+  // 1. CREATE-NEW: the report does not exist; the tool writes it.
   assert.ok(!existsSync(join(dir, 'reports/factory-progress.json')));
   execFileSync('node', ['tools/factory-progress.mjs'], { cwd: dir });
   assert.ok(existsSync(join(dir, 'reports/factory-progress.json')));
   execFileSync('node', ['tools/factory-progress.mjs', '--check'], { cwd: dir }); // fresh: exit 0
-  // After a real publish the stored report goes stale — --check must fail closed.
+  const created = JSON.parse(readFileSync(join(dir, 'reports/factory-progress.json'), 'utf8'));
+  // 2. STALE DETECTION: a publish mutation makes the stored report stale.
   const lines = readFileSync(join(dir, 'data/blog/content-matrix.csv'), 'utf8');
   const flipped = lines.split('\n').map((l, i) =>
     (i > 0 && l.split(',')[3] === 'PLANNED')
@@ -68,7 +75,16 @@ test('default mode writes reports/factory-progress.json and --check verifies fre
   ).join('\n');
   writeFileSync(join(dir, 'data/blog/content-matrix.csv'), flipped);
   assert.throws(() =>
-    execFileSync('node', ['tools/factory-progress.mjs', '--check'], { cwd: dir }));
+    execFileSync('node', ['tools/factory-progress.mjs', '--check'], { cwd: dir }),
+    /stale/, '--check must fail closed on a stale report');
+  // 3. UPDATE-EXISTING: re-running the tool refreshes the stored report.
+  execFileSync('node', ['tools/factory-progress.mjs'], { cwd: dir });
+  const updated = JSON.parse(readFileSync(join(dir, 'reports/factory-progress.json'), 'utf8'));
+  assert.ok(updated.matrix.published > created.matrix.published, 'report updated with new truth');
+  execFileSync('node', ['tools/factory-progress.mjs', '--check'], { cwd: dir }); // fresh again
+  // Fixture isolation: the PRODUCTION report was never touched.
+  const prod = JSON.parse(readFileSync(join(REPO, 'reports/factory-progress.json'), 'utf8'));
+  assert.equal(prod.matrix.published, created.matrix.published);
 });
 
 test('buildProgress import works against the real repository (read-only)', () => {

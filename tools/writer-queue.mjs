@@ -42,6 +42,7 @@
  *   node tools/writer-queue.mjs verify-push <batch> <seq> --work <dir>
  *   node tools/writer-queue.mjs complete <batch> <seq>
  *   node tools/writer-queue.mjs fail <batch> <seq> --state failed|factory-failed|push-failed [--reason X]
+ *   node tools/writer-queue.mjs reconcile [--seq N]   (repair-ledger sync: factory-failed chunk whose ids are all PUBLISHED)
  *   node tools/writer-queue.mjs requeue <batch> <seq> --work <dir>   (§6G crash-window recovery)
  *
  * `--work <dir>` points at an extracted view of the writer branches (the
@@ -891,6 +892,87 @@ function cmdComplete(args) {
   });
 }
 
+// ---------------------------------------------------------------------------
+/**
+ * reconcile — repair-ledger reconciliation for factory-failed chunks whose
+ * articles were later published by the REPAIR/BACKLOG pipeline.
+ *
+ * Contract (fail-closed, history-preserving):
+ *   - ONLY FACTORY_FAILED / FAILED chunks are inspected; PUBLISHED chunks
+ *     are untouched (idempotent no-op); RESERVED chunks belong to the normal
+ *     publisher flow and are never touched here.
+ *   - A chunk is reconciled to PUBLISHED ONLY when EVERY id carries full
+ *     publish evidence on this tree: matrix row PUBLISHED, exactly ONE
+ *     published.json entry, and the body file present on disk. Anything
+ *     ambiguous (missing row, non-PUBLISHED status, duplicate entries,
+ *     missing body) leaves the chunk untouched and is reported as
+ *     inconsistent — never silently flipped.
+ *   - The original FACTORY_FAILED event history is PRESERVED; a
+ *     RECONCILED_PUBLISHED event is appended with the evidence reason.
+ *   - Batch flips to COMPLETED only when every chunk is terminal.
+ *   - Published articles are NEVER re-claimed or rewritten.
+ */
+function cmdReconcile(args) {
+  const seqFilter = args['--seq'] ? Number(args['--seq']) : null;
+  const a = loadAssignments();
+  const b = a.active;
+  if (!b) die('no active batch — nothing to reconcile');
+  if (!['ACTIVE', 'COMPLETED'].includes(b.status)) die(`batch ${b.batch_id} is ${b.status}`);
+  const rows = loadRows();
+  const manifest = existsSync(MANIFEST) ? readJson(MANIFEST) : die('data/blog/published.json missing');
+
+  const reconciled = [];
+  const already = [];
+  const inconsistent = [];
+  for (const chunk of b.chunks) {
+    if (seqFilter !== null && chunk.seq !== seqFilter) continue;
+    if (chunk.status === 'PUBLISHED') { if (seqFilter !== null) already.push(chunk.seq); continue; }
+    if (chunk.status !== 'FACTORY_FAILED' && chunk.status !== 'FAILED') continue;
+    const evidence = chunk.ids.map((id) => {
+      const row = rowById(rows, id);
+      const entries = manifest.articles.filter((x) => x.article_id === id);
+      return {
+        id,
+        row,
+        published: !!row && row.status === 'PUBLISHED',
+        singleEntry: entries.length === 1,
+        bodyOnDisk: !!row && existsSync(join(ROOT, bodyPathOf(row))),
+      };
+    });
+    const bad = evidence.filter((e) => !(e.published && e.singleEntry && e.bodyOnDisk));
+    if (bad.length > 0) {
+      inconsistent.push({
+        seq: chunk.seq,
+        ids: bad.map((e) => `${e.id}(${e.row ? e.row.status : 'no-row'},${e.singleEntry ? '1' : 'n'}-entries,${e.bodyOnDisk ? 'body' : 'no-body'})`).join('|'),
+      });
+      continue;
+    }
+    chunk.status = 'PUBLISHED';
+    chunk.events.push({
+      state: 'RECONCILED_PUBLISHED',
+      at: now(),
+      reason: 'ids published outside the original factory run (repair pipeline); evidence verified: matrix PUBLISHED + single manifest entry + body on disk',
+    });
+    reconciled.push(chunk.seq);
+  }
+  if (b.chunks.every((c) => TERMINAL_CHUNK_STATES.has(c.status))) b.status = 'COMPLETED';
+  saveAssignments(a); // idempotent; events/history preserved
+  emit({
+    action: 'reconcile',
+    batch_id: b.batch_id,
+    reconciled: reconciled.join(',') || 'none',
+    already_published: already.join(',') || 'none',
+    inconsistent: inconsistent.map((x) => `${x.seq}:${x.ids}`).join('; ') || 'none',
+    batch_status: b.status,
+  });
+  if (inconsistent.length > 0) {
+    // Inconsistent chunks are a legitimate recorded state (nothing mutated);
+    // the command stays exit-0 so operator scripts can consume the report.
+    // Fail-closed = the chunk is NEVER flipped, and the ids are listed.
+    emit({ action: 'reconcile', note: 'inconsistent chunks left untouched (fail-closed)' });
+  }
+}
+
 function cmdFail(args) {
   const [batchId, seqRaw] = args._;
   const state = args['--state'] ?? 'failed';
@@ -965,6 +1047,7 @@ if (isMain) {
     case 'verify-push': cmdVerifyPush(args); break;
     case 'complete': cmdComplete(args); break;
     case 'fail': cmdFail(args); break;
+    case 'reconcile': cmdReconcile(args); break;
     case 'requeue': cmdRequeue(args); break;
     default:
       // Bare invocation prints usage on stdout (exit 0) so tooling can
