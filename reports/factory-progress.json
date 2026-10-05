@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-10-05T13:56:06.048Z",
+  "matrix": {
+    "rows": 2000,
+    "by_status": {
+      "PUBLISHED": 94,
+      "PLANNED": 1906
+    },
+    "by_category": {
+      "APP": 350,
+      "RENT": 400,
+      "EV": 300,
+      "GUIDE": 300,
+      "SAFE": 250,
+      "LOCAL": 400
+    },
+    "published": 94
+  },
+  "writer_batch": {
+    "batch_id": "WRITER-BATCH-0001",
+    "status": "ACTIVE",
+    "chunk_states": {
+      "PUBLISHED": 20,
+      "FACTORY_FAILED": 2,
+      "RESERVED": 3
+    },
+    "next_chunk": {
+      "seq": 23,
+      "writer": "writer_B",
+      "status": "RESERVED",
+      "ids": [
+        "BA-0095",
+        "BA-0096"
+      ]
+    }
+  },
+  "throughput": {
+    "last_published_date": "2026-10-04",
+    "published_last_7_days": 92
+  }
+}
