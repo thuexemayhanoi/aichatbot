@@ -11,7 +11,47 @@
     "data/blog/articles/mua-lon-va-lai-xe.body.html",
     "data/blog/articles/lang-chu-tich-qua-pho.body.html"
   ],
-  "status": "WRITING",
-  "drafts": [],
-  "history": []
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0101",
+      "category": "SAFE",
+      "slug": "mua-lon-va-lai-xe",
+      "title": "Mưa lớn và lái xe máy: quy định, trang bị và kỹ năng đường ướt",
+      "description": "Lái xe máy dưới mưa lớn không bị cấm nhưng đòi hỏi trang bị theo quy định. Bài viết nêu yêu cầu pháp lý, nhóm lỗi bị xử phạt và kỹ năng lái an toàn trên đường ướt.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/mua-lon-va-lai-xe.body.html",
+      "knowledge_chunks": [],
+      "agent_retrieval": false
+    },
+    {
+      "article_id": "BA-0102",
+      "category": "LOCAL",
+      "slug": "lang-chu-tich-qua-pho",
+      "title": "Lăng Chủ tịch qua phố bằng xe máy: khung giờ và hành trình Ba Đình",
+      "description": "Lăng Chủ tịch ở Quảng trường Ba Đình đón khách buổi sáng. Hướng dẫn di chuyển bằng xe máy từ Long Biên, trang phục, khung giờ và lịch trình ghép các điểm Ba Đình.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/lang-chu-tich-qua-pho.body.html",
+      "knowledge_chunks": [
+        "Lăng Chủ tịch Hồ Chí Minh nằm giữa Quảng trường Ba Đình, Hà Nội, đón khách tham quan buổi sáng, đóng cửa buổi chiều và hai ngày bảo dưỡng định kỳ. Trang phục lịch sự và giữ im lặng là yêu cầu bắt buộc.",
+        "Từ Long Biên, chạy xe qua cầu Long Biên, đường Trần Nhân Tông và Chùa Một Cột tới đường Điện Biên Phủ mất khoảng hai mươi phút. Đỗ xe ở bãi có người trông giữ quanh Điện Biên Phủ và Hùng Vương.",
+        "Lịch trình mẫu buổi sáng: xem nghi thức thăm cờ ở cột cờ Hoàng Thành trước, xếp hàng vào lăng, sau đó ghé Phủ Chủ tịch, nhà sàn Bác Hồ rồi ăn trưa gần Văn Miếu. Trẻ em cần được dặn trước về sự trang nghiêm."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-05T15:20:40.929Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-05T15:20:40.931Z"
+    }
+  ]
 }
