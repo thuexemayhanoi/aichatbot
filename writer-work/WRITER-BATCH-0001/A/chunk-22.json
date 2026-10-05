@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_A",
+  "seq": 22,
+  "ids": [
+    "BA-0093",
+    "BA-0094"
+  ],
+  "body_paths": [
+    "data/blog/articles/xe-dien-an-toan-khong.body.html",
+    "data/blog/articles/cho-hanh-ly-khi-thue-xe.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0093",
+      "category": "EV",
+      "slug": "xe-dien-an-toan-khong",
+      "title": "Xe điện có an toàn không: góc nhìn thẳng từ người dùng",
+      "description": "Xe điện có an toàn không: pin và bộ sạc đúng chuẩn, thói quen lái với xe chạy êm, lưu ý khi mưa và những câu khách thuê hay hỏi trước khi chọn xe.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/xe-dien-an-toan-khong.body.html",
+      "knowledge_chunks": [
+        "Xe điện có khung thấp trọng tâm dưới nên khá vững khi chạy chậm trong phố. Pin chính hãng có hệ thống quản lý ngắt khi quá nhiệt hoặc sạc đầy, rủi ro cháy thường đến từ pin trôi nổi, sạc không chuẩn hoặc va chạm mạnh làm hỏng vỏ pin. Khách thuê nên dùng đúng bộ sạc của xe và không để xe gần nguồn nhiệt.",
+        "Xe điện chạy êm nên người đi bộ và các xe khác nhiều khi không nhận ra, cần chủ động giữ khoảng cách, giảm tốc ở ngã tư đông người và báo hiệu bằng chuông. Mô tơ điện tăng tốc nhanh nên quay ga từ tốn, theo dõi mức pin để chủ động sạc, khi mưa tránh đoạn ngập sâu.",
+        "Thói quen an toàn trên xe điện gồm kiểm tra phanh và lốp trước chuyến dài, dùng cả hai tay phanh đồng điệu, liếc đồng hồ tốc độ thường xuyên vì cảm giác êm dễ khiến chạy nhanh hơn dự định. Nên thử xe quanh khu vực quen thuộc trước khi vào lịch trình chính."
+      ]
+    },
+    {
+      "article_id": "BA-0094",
+      "category": "GUIDE",
+      "slug": "cho-hanh-ly-khi-thue-xe",
+      "title": "Chở hành lý khi thuê xe máy: xếp đồ, buộc chằng và chọn dòng xe",
+      "description": "Cách chở hành lý khi thuê xe máy: chọn xe theo lượng đồ, buộc chằng an toàn, chở kèm người ngồi sau và những lỗi nên tránh trước khi lăn bánh.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cho-hanh-ly-khi-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Nguyên tắc chở hành lý trên xe máy: đồ nhẹ buộc cao và chặt, đồ nặng để thấp và sát giữa xe để trọng tâm thấp. Balo nhẹ có thể đeo sau lưng, vali mềm vừa buộc sau yên trên cốp đã đóng, đồ dài buộc dọc thân xe chừa phần nhô sau. Tránh che đèn hậu và biển số.",
+        "Khi chở kèm người ngồi sau, tháo balo quá phồng ra khỏi lưng hành khách, giữ tốc độ thấp hơn bình thường, vào cua rộng và phanh sớm. Với vali to đi sân bay nên tách hai xe hoặc hỏi nhà xe về dòng xe hàng nhẹ có giàn sau rộng và tải trọng lớn hơn.",
+        "Trước khi lăn bánh nên kéo thử từng điểm buộc, chụp ảnh tình trạng xe và cách hành lý được buộc để đối chiếu khi trả. Mùa mưa phủ áo mưa hoặc bạt lên hành lý rồi buộc lại lần nữa. Đồ giá trị để trong cốp hoặc túi đeo trước ngực thay vì giỏ ngoài trời."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-05T11:58:42.530Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-05T11:58:42.532Z"
+    }
+  ]
+}
