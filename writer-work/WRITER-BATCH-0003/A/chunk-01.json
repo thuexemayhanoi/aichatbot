@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0003",
+  "writer": "writer_A",
+  "seq": 1,
+  "ids": [
+    "BA-0119",
+    "BA-0120"
+  ],
+  "body_paths": [
+    "data/blog/articles/xe-co-phia-truoc-va-khoang-cach-an-toan.body.html",
+    "data/blog/articles/nha-tho-lon-ha-noi.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "id": "BA-0119",
+      "title": "xe cộ Phía Trước và Khoảng Cách an Toàn",
+      "slug": "xe-co-phia-truoc-va-khoang-cach-an-toan",
+      "description": "Khoảng cách an toàn với xe cộ phía trước: quy tắc ba giây, quy định pháp luật và kỹ năng duy trì khoảng cách trong phố.",
+      "category": "SAFE",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body_path": "data/blog/articles/xe-co-phia-truoc-va-khoang-cach-an-toan.body.html",
+      "agent_retrieval": false,
+      "knowledge_chunks": [],
+      "article_id": "BA-0119",
+      "body": "data/blog/articles/xe-co-phia-truoc-va-khoang-cach-an-toan.body.html"
+    },
+    {
+      "id": "BA-0120",
+      "title": "Nhà Thờ Lớn hà Nội",
+      "slug": "nha-tho-lon-ha-noi",
+      "description": "Nhà Thờ Lớn Hà Nội: vị trí, thời điểm đẹp để ghé, chuẩn bị chuyến đi và các điểm hẹn quanh phố Nhà Thờ.",
+      "category": "LOCAL",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body_path": "data/blog/articles/nha-tho-lon-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Nhà Thờ Lớn Hà Nội nằm cuối phố Nhà Thờ, quận Hoàn Kiếm, kiến trúc Gothic với hai tháp chuông, nên đỗ xe ở bãi trông giữ rồi đi bộ.",
+        "Buổi tối cuối tuần và mùa Giáng sinh là lúc khu phố Nhà Thờ sôi động và đẹp nhất, rất đông khách tham quan.",
+        "Từ Nhà Thờ Lớn có thể chạy xe vài phút tới Hồ Gươm, Hàng Mã, chợ Đồng Xuân và các phố ẩm thực đêm."
+      ],
+      "article_id": "BA-0120",
+      "body": "data/blog/articles/nha-tho-lon-ha-noi.body.html"
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-05T19:08:27.678Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-05T19:08:27.681Z"
+    }
+  ]
+}
