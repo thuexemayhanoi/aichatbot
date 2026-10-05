@@ -1554,6 +1554,40 @@
         "Một ngày thực tế ghép được hai đến ba bảo tàng, mỗi điểm cần tối thiểu một tiếng rưỡi; nên xếp bảo tàng có khu trưng bày ngoài trời vào buổi sáng và các điểm gần trục về vào buổi chiều để tránh trễ giờ trả xe."
       ],
       "agent_retrieval": true
+    },
+    {
+      "id": "BA-0109",
+      "title": "Gợi Ý Chọn xe Máy Phù Hợp",
+      "slug": "goi-y-chon-xe-may-phu-hop",
+      "description": "Gợi ý chọn xe máy phù hợp với nhu cầu, ngân sách và lộ trình di chuyển khi thuê xe ở Hà Nội.",
+      "category": "APP",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body_path": "data/blog/articles/goi-y-chon-xe-may-phu-hop.body.html",
+      "knowledge_chunks": [
+        "Chọn xe máy thuê phù hợp phụ thuộc vào ba yếu tố chính: mục đích di chuyển, ngân sách và kinh nghiệm lái xe của người thuê.",
+        "Với lộ trình nội thành ngắn, xe số hoặc xe tay ga nhỏ gọn tiết kiệm chi phí thuê và dễ xoay trở trong phố đông Hà Nội.",
+        "Với hành trình đường dài hoặc chở hai người, nên ưu tiên xe tay ga động cơ lớn hơn để đảm bảo an toàn và sự êm ái khi vận hành."
+      ],
+      "article_id": "BA-0109",
+      "body": "data/blog/articles/goi-y-chon-xe-may-phu-hop.body.html"
+    },
+    {
+      "id": "BA-0110",
+      "title": "Điều Kiện Thuê xe Máy ở hà Nội",
+      "slug": "dieu-kien-thue-xe-may-o-ha-noi",
+      "description": "Điều kiện thuê xe máy ở Hà Nội: giấy tờ cần thiết, độ tuổi, bằng lái và quy định khi sử dụng xe.",
+      "category": "RENT",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body_path": "data/blog/articles/dieu-kien-thue-xe-may-o-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Điều kiện thuê xe máy ở Hà Nội gồm đủ 18 tuổi, có giấy tờ tùy thân bản gốc và bằng lái phù hợp với phân khối xe.",
+        "Khách quốc tế cần hộ chiếu bản gốc, visa còn hạn và một số nơi yêu cầu giấy phép lái xe quốc tế.",
+        "Trước khi nhận xe cần kiểm tra tình trạng xe, ghi chú vết xước vào biên bản và đọc kỹ hợp đồng thuê."
+      ],
+      "article_id": "BA-0110",
+      "body": "data/blog/articles/dieu-kien-thue-xe-may-o-ha-noi.body.html"
     }
   ]
 }
