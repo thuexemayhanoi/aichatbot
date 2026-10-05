@@ -490,8 +490,21 @@
           "BA-0093",
           "BA-0094"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-05T12:00:25.332Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-05T12:00:25.332Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-05T12:00:25.332Z"
+          }
+        ]
       },
       {
         "seq": 23,
