@@ -84,8 +84,21 @@
           "BA-0107",
           "BA-0108"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-05T18:09:03.812Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-05T18:09:03.812Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-05T18:09:03.812Z"
+          }
+        ]
       },
       {
         "seq": 5,
