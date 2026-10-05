@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T13:56:06.048Z",
+  "generated_at": "2026-10-05T14:47:27.808Z",
   "matrix": {
     "rows": 2000,
     "by_status": {
@@ -20,8 +20,7 @@
     "batch_id": "WRITER-BATCH-0001",
     "status": "ACTIVE",
     "chunk_states": {
-      "PUBLISHED": 20,
-      "FACTORY_FAILED": 2,
+      "PUBLISHED": 22,
       "RESERVED": 3
     },
     "next_chunk": {
