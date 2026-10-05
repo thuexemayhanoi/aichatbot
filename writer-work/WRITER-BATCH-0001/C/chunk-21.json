@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_C",
+  "seq": 21,
+  "ids": [
+    "BA-0091",
+    "BA-0092"
+  ],
+  "body_paths": [
+    "data/blog/articles/cong-cu-tinh-gia-thue-xe-may-online.body.html",
+    "data/blog/articles/tra-xe-thue-dung-gio.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0091",
+      "category": "APP",
+      "slug": "cong-cu-tinh-gia-thue-xe-may-online",
+      "title": "Công cụ tính giá thuê xe máy online: ước tính chi phí trước khi đặt xe",
+      "description": "Dùng công cụ tính giá thuê xe máy online trong ứng dụng MotoAI: chọn dòng xe, thời gian thuê, so sánh giá theo ngày tuần tháng và đặt xe ngay sau khi ước tính.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cong-cu-tinh-gia-thue-xe-may-online.body.html",
+      "knowledge_chunks": [
+        "Công cụ tính giá trong ứng dụng MotoAI cho mức giá tham khảo theo dòng xe, thời gian thuê theo ngày tuần hoặc tháng và khu vực giao xe. Cách dùng: mở ứng dụng, vào mục tính giá, chọn dòng xe, nhập thời gian thuê, đọc mức giá hiển thị và có thể đổi dòng xe hoặc thời gian để so sánh nhiều phương án trong dưới một phút.",
+        "Giá thuê phụ thuộc dòng xe, thời gian thuê và tình trạng xe cũng như thời điểm thuê. Thuê theo tuần hoặc theo tháng thường có đơn giá ưu đãi hơn thuê lẻ theo ngày, nên nếu dự kiến thuê dài quá ba ngày thì nên tính gói tuần hoặc tháng. Mức giá tham khảo cần xác nhận lại khi nhận xe vì xe sẵn có thay đổi liên tục.",
+        "Ngoài giá thuê cần chuẩn bị tiền đặt cọc dao động từ 2.000.000đ đến 5.000.000đ tùy dòng xe, hoàn lại khi trả xe đúng điều kiện. Công cụ tính giá chưa bao gồm khoản cọc này. Với xe điện, xe đạp điện và xe 50cc cần liên hệ để được báo giá cụ thể theo tình trạng xe hiện có."
+      ]
+    },
+    {
+      "article_id": "BA-0092",
+      "category": "RENT",
+      "slug": "tra-xe-thue-dung-gio",
+      "title": "Trả xe thuê đúng giờ: quy trình gọn và những lỗi nên tránh",
+      "description": "Trả xe thuê đúng giờ trong khung 09:00 tới 21:00: trình tự trả xe, đối chiếu nhiên liệu và pin, điều kiện hoàn tiền đặt cọc và cách xử lý khi có nguy cơ trả trễ.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/tra-xe-thue-dung-gio.body.html",
+      "knowledge_chunks": [
+        "Trả xe cần hoàn tất trong giờ hoạt động 09:00 tới 21:00 hằng ngày. Trình tự: chạy xe về điểm trả đúng giờ, trả chìa khóa, cùng nhà xe kiểm tra vết trầy đèn còi lốp theo ghi nhận lúc nhận xe, đối chiếu nhiên liệu hoặc pin theo mức ghi trong phiếu, ký xác nhận và nhận lại tiền đặt cọc theo điều kiện thỏa thuận.",
+        "Nguyên tắc nhiên liệu và pin: nhận ở mức nào thì trả lại ở mức tương đương, nếu chênh lệch sẽ được tính thêm vào chi phí. Nên châm xăng hoặc sạc pin trước khi chạy về điểm trả. Trước ngày trả nên tự kiểm tra lại xe, chụp ảnh so sánh trước và sau khi thuê, giữ phiếu nhận xe nguyên vẹn.",
+        "Khi có nguy cơ trả trễ do kẹt xe, chuyến bay hoãn hay lịch trình thay đổi, báo cho nhà xe càng sớm càng tốt và cân nhắc gia hạn thời gian thuê thay vì để tự vượt hạn. Mức đặt cọc dao động từ 2.000.000đ tới 5.000.000đ tùy dòng xe và hoàn lại khi trả xe đúng giờ đúng tình trạng."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-05T11:41:23.922Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-05T11:41:23.924Z"
+    }
+  ]
+}
