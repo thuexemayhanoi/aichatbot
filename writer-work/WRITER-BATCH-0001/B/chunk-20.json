@@ -1,0 +1,56 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_B",
+  "seq": 20,
+  "ids": [
+    "BA-0089",
+    "BA-0090"
+  ],
+  "body_paths": [
+    "data/blog/articles/ky-nang-phanh-gap.body.html",
+    "data/blog/articles/ven-de-song-hong.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0089",
+      "category": "SAFE",
+      "slug": "ky-nang-phanh-gap",
+      "title": "Kỹ năng phanh gấp trên xe máy: luyện đúng và tránh ba lỗi hay ngã",
+      "description": "Kỹ năng phanh gấp xe máy: phối hợp phanh trước sau, khoảng cách an toàn theo quy định hiện hành, bốn bước luyện và ba lỗi biến cú phanh cứu thành cú ngã.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ky-nang-phanh-gap.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0090",
+      "category": "LOCAL",
+      "slug": "ven-de-song-hong",
+      "title": "Ven đê sông Hồng bằng xe máy: cung đường thoáng của Hà Nội",
+      "description": "Chạy ven đê sông Hồng bằng xe máy: đoạn nào đáng đi, khung giờ đẹp nhất, lưu ý an toàn đường đê và cách kết hợp với chợ Long Biên, Hồ Tây trong một buổi chiều.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ven-de-song-hong.body.html",
+      "knowledge_chunks": [
+        "Đường đê sông Hồng chạy dọc qua nhiều khu của Hà Nội, từ phía Gia Lâm, Long Biên lên phía Tây Hồ. Cung đi cho cảm giác thoáng: đường dài, cây xanh hai bên, một bên là mặt sông rộng, chạy liền mạch không gặp đèn đỏ. Khung chiều từ khoảng bốn năm giờ là đẹp nhất, nắng nghiêng và gió sông lên mạnh.",
+        "Lưu ý an toàn đường đê: đường đê hẹp hơn đường phố nên bám lề phải và giảm tốc khi gặp xe ngược chiều, mặt đê có đoạn gợn và ổ gà nhỏ, các ngã xuống đê dễ có người bộ hành, trời mưa mặt đê trơn và lún chỗ nên đổi lịch đi, hoàng hôn chói ngược chiều nên đeo kính mát.",
+        "Ven đê kết hợp được với chợ Long Biên về đêm, tuyến cầu Long Biên nhìn ra sông và vòng ven Hồ Tây trong cùng một buổi. Hầu như mọi dòng xe máy cho thuê đều hợp với đường đê; xe điện càng hợp vì động cơ êm, chỉ cần để ý tầm pin nếu chạy dài hết tuyến rồi vòng về."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-05T11:21:26.112Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-05T11:21:26.116Z"
+    }
+  ]
+}
