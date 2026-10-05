@@ -1622,6 +1622,37 @@
       ],
       "article_id": "BA-0112",
       "body": "data/blog/articles/ung-dung-ban-do-cho-nguoi-thue-xe.body.html"
+    },
+    {
+      "id": "BA-0113",
+      "title": "Tầm Nhìn Khi Lái xe",
+      "slug": "tam-nhin-khi-lai-xe",
+      "description": "Tầm nhìn khi lái xe: tình huống làm giảm tầm nhìn, quy định pháp luật về tốc độ theo tầm nhìn và kỹ năng giữ tầm nhìn tối ưu.",
+      "category": "SAFE",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body_path": "data/blog/articles/tam-nhin-khi-lai-xe.body.html",
+      "agent_retrieval": false,
+      "knowledge_chunks": [],
+      "article_id": "BA-0113",
+      "body": "data/blog/articles/tam-nhin-khi-lai-xe.body.html"
+    },
+    {
+      "id": "BA-0114",
+      "title": "Phố Sách hà Nội",
+      "slug": "pho-sach-ha-noi",
+      "description": "Phố sách Hà Nội gần chợ Đồng Xuân: mùa đẹp nhất, mẹo thuê xe đi phố cổ và các điểm hẹn xung quanh.",
+      "category": "LOCAL",
+      "published_date": "2026-10-05",
+      "author": "MotoAI Editorial",
+      "body_path": "data/blog/articles/pho-sach-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Phố sách Hà Nội nằm trong khu phố cổ gần chợ Đồng Xuân, tập trung nhiều nhà sách và tiệm sách cũ, nên đỗ xe ở bãi quanh chợ rồi đi bộ.",
+        "Mùa thu là thời điểm đẹp nhất để đi phố sách Hà Nội; mùa hè nên đi sớm hoặc chiều muộn, cuối tuần có phiên chợ đêm khu phố cổ.",
+        "Khu phố cổ nhiều đoạn cấm xe theo giờ và phố một chiều, nên dùng ứng dụng bản đồ có cảnh báo khi thuê xe máy đi dạo."
+      ],
+      "article_id": "BA-0114",
+      "body": "data/blog/articles/pho-sach-ha-noi.body.html"
     }
   ]
 }
