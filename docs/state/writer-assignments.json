@@ -176,12 +176,17 @@
           "BA-0115",
           "BA-0116"
         ],
-        "status": "FACTORY_FAILED",
+        "status": "PUBLISHED",
         "events": [
           {
             "state": "FACTORY_FAILED",
             "at": "2026-10-05T18:44:20.776Z",
             "reason": "factory run 37358140248 failed"
+          },
+          {
+            "state": "RECONCILED_PUBLISHED",
+            "at": "2026-10-05T18:56:46.803Z",
+            "reason": "ids published outside the original factory run (repair pipeline); evidence verified: matrix PUBLISHED + single manifest entry + body on disk"
           }
         ]
       },
