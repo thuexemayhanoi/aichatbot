@@ -1,0 +1,57 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_B",
+  "seq": 23,
+  "ids": [
+    "BA-0095",
+    "BA-0096"
+  ],
+  "body_paths": [
+    "data/blog/articles/guong-chieu-hau-an-toan.body.html",
+    "data/blog/articles/cot-co-hoang-thanh.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0095",
+      "category": "SAFE",
+      "slug": "guong-chieu-hau-an-toan",
+      "title": "Gương chiếu hậu an toàn: quy định, kiểm định và thói quen quan sát",
+      "description": "Gương chiếu hậu là bộ phận bắt buộc trên xe máy theo pháp luật. Bài viết giải thích quy định, cách kiểm tra gương khi nhận xe thuê và thói quen quan sát an toàn.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/guong-chieu-hau-an-toan.body.html",
+      "knowledge_chunks": [],
+      "agent_retrieval": false
+    },
+    {
+      "article_id": "BA-0096",
+      "category": "LOCAL",
+      "slug": "cot-co-hoang-thanh",
+      "title": "Cột cờ Hoàng Thành bằng xe máy: nghi thức và hành trình Ba Đình",
+      "description": "Cột cờ Hoàng Thành trên đường Điện Biên Phủ gắn với nghi thức thăm cờ mỗi sáng. Hướng dẫn di chuyển bằng xe máy, khung giờ đẹp và lưu ý khi tham quan Ba Đình.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cot-co-hoang-thanh.body.html",
+      "knowledge_chunks": [
+        "Cột cờ Hoàng Thành nằm trên đường Điện Biên Phủ, quận Ba Đình, trong quần thể di tích phía nam Hoàng thành Thăng Long. Nghi thức thăm cờ diễn ra mỗi sáng, thu hút nhiều người dân và du khách đến xem.",
+        "Từ Long Biên, chạy xe qua cầu Long Biên, đường Trần Nhân Tông và Chùa Một Cột tới khu Ba Đình mất khoảng hai mươi phút. Khởi hành lúc bảy giờ rưỡi giúp tránh giờ cao điểm và kịp xem nghi lễ.",
+        "Quanh cột cờ có Quảng trường Ba Đình, lăng Chủ tịch Hồ Chí Minh, Bảo tàng Hồ Chí Minh, Chùa Một Cột và Văn Miếu. Đỗ xe ở bãi có người trông giữ và đến sớm vào dịp lễ là hai lưu ý thực tế nhất."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-05T14:53:56.094Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-05T14:53:56.096Z"
+    }
+  ]
+}
