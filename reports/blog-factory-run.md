@@ -407,3 +407,10 @@
 - 2026-10-05 QA PASS BA-0113 score=85
 - 2026-10-05 QA PASS BA-0114 score=85
 - 2026-10-05 PUBLISHED 2 (BA-0113, BA-0114) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-05 CLAIM 1: BA-0115
+- 2026-10-05 FINISH BA-0115
+- 2026-10-05 CLAIM 1: BA-0116
+- 2026-10-05 FINISH BA-0116
+- 2026-10-05 QA FAIL BA-0115 -> REPAIR (attempt 1) score=0
+- 2026-10-05 QA PASS BA-0116 score=90
+- 2026-10-05 PUBLISHED 1 (BA-0116) — one grouped build, pages, matrix, indexes, sitemap consistent
