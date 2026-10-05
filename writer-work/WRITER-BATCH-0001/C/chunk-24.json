@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0001",
+  "writer": "writer_C",
+  "seq": 24,
+  "ids": [
+    "BA-0097",
+    "BA-0098"
+  ],
+  "body_paths": [
+    "data/blog/articles/hoi-dap-voi-agent-thue-xe.body.html",
+    "data/blog/articles/phi-tre-han-khi-thue-xe.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0097",
+      "category": "APP",
+      "slug": "hoi-dap-voi-agent-thue-xe",
+      "title": "Hỏi đáp với Agent thuê xe máy: cách đặt câu hỏi và nhận trả lời chuẩn",
+      "description": "Agent thuê xe máy trên website MotoAI trả lời về giá, giấy tờ, giờ giao xe và chính sách thuê. Hướng dẫn đặt câu hỏi hiệu quả và giới hạn trả lời của trợ lý.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/hoi-dap-voi-agent-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Agent thuê xe máy là trợ lý hội thoại trên website MotoAI, đọc hiểu câu hỏi tiếng Việt và trả lời dựa trên dữ liệu nghiệp vụ nội bộ đã kiểm chứng về giá, giấy tờ, giờ giao xe và chính sách thuê.",
+        "Nên nói rõ dòng xe, số ngày thuê và điểm giao xe mong muốn khi hỏi agent. Chia câu hỏi dài thành từng lượt ngắn giúp agent trả lời đúng trọng tâm từng phần.",
+        "Agent không thay thế trang hướng dẫn: với câu hỏi phức tạp, agent trỏ tới bài viết chuyên đề. Cần chốt xe gấp cho khung giờ cụ thể, hotline vẫn là kênh quyết định nhanh nhất."
+      ]
+    },
+    {
+      "article_id": "BA-0098",
+      "category": "RENT",
+      "slug": "phi-tre-han-khi-thue-xe",
+      "title": "Phí trễ hạn khi thuê xe máy: cách tính và cách tránh phát sinh",
+      "description": "Phí trễ hạn khi thuê xe máy được tính theo giờ hoặc quy về một ngày thuê. Bài viết giải thích các mốc tính, cách báo trễ và vì sao gia hạn trước hạn trả luôn rẻ hơn.",
+      "published_date": "2026-10-04",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/phi-tre-han-khi-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Phí trễ hạn áp dụng khi trả xe muộn hơn giờ ghi trong thỏa thuận. Trễ vài giờ tính theo giờ, trễ quá nửa ngày thường quy về giá thuê thêm một ngày.",
+        "Báo trước là yếu tố quan trọng nhất: gọi điện thông báo trễ ngay khi biết không kịp giờ hẹn giúp nhà xe xếp lại lịch và có thể được linh hoạt hơn.",
+        "Gia hạn trước hạn trả chỉ bù phần chênh giá theo ngày và không phát sinh phụ trội, nên gần như luôn rẻ hơn để xe trễ. Trả xe khi không có người kiểm tra làm mất bằng chứng về tình trạng xe."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-05T15:04:32.546Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-05T15:04:32.548Z"
+    }
+  ]
+}
