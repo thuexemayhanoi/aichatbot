@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0011",
+  "writer": "writer_C",
+  "seq": 9,
+  "ids": [
+    "BA-0279",
+    "BA-0280"
+  ],
+  "body_paths": [
+    "data/blog/articles/kiem-tra-xe-dien-truoc-khi-thue.body.html",
+    "data/blog/articles/di-duong-truong-bang-xe-thue.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0279",
+      "category": "EV",
+      "slug": "kiem-tra-xe-dien-truoc-khi-thue",
+      "title": "Kiểm Tra xe Điện Trước Khi Thuê",
+      "description": "Kiểm tra xe điện trước khi thuê: pin và quãng đường còn lại, động cơ, phanh tái sinh, lốp, phụ kiện sạc và chụp ảnh lưu bằng chứng khi nhận xe.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/kiem-tra-xe-dien-truoc-khi-thue.body.html",
+      "knowledge_chunks": [
+        "Khi nhận xe điện thuê cần kiểm tra pin trước hết: yêu cầu sạc đầy, xem thanh báo pin đạt mức cao nhất, hỏi quãng đường thực tế chạy được, và thử ga xem phần trăm pin có nhảy loạn không.",
+        "Vặn ga thử tại chỗ để kiểm tra động cơ mượt không giật, thử cả phanh trước và phanh sau gồm phanh tái sinh, kiểm tra đèn pha đèn hậu còi và chạy thử một vòng ngắn xem tay lái có lỏng không.",
+        "Kiểm tra lốp còn hoa và căng đúng mức, thân xe không nứt vỏ nhựa đặc biệt khoang pin dưới yên, đủ sạc kèm theo, chìa khóa hoạt động, và chụp ảnh bốn phía xe làm bằng chứng trước khi rời cửa hàng."
+      ]
+    },
+    {
+      "article_id": "BA-0280",
+      "category": "GUIDE",
+      "slug": "di-duong-truong-bang-xe-thue",
+      "title": "đi Đường Trường Bằng xe Thuê",
+      "description": "Đi đường trường bằng xe máy thuê: kiểm tra xe kỹ, chia chặng lộ trình, kỹ năng vượt an toàn trên quốc lộ, nghỉ giải nhiệt và quy trình trả xe.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/di-duong-truong-bang-xe-thue.body.html",
+      "knowledge_chunks": [
+        "Trước khi đi đường trường bằng xe thuê cần kiểm tra lốp còn hoa và căng đúng, phanh chắc, xích có mỡ, đèn còi đầy đủ, đổ xăng đầy trước khi rời thành phố và đổi xe sớm nếu thấy bất thường khi nhận.",
+        "Trên quốc lộ giữ làn phải, không bám sát xe tải, chỉ vượt ở đoạn thẳng tầm nhìn thoáng, giảm tốc qua thị trấn có chợ bày lòng đường, và chia chặng nghỉ mỗi khoảng một tiếng đến một tiếng rưỡi.",
+        "Trên chặng dài cần nghỉ ngay khi có dấu hiệu mệt mỏi, đỗ xe vào lề an toàn khi hỏng giữa tuyến và gọi hỗ trợ, đổ xăng về đúng mức khi trả, và gia hạn kỳ thuê trước nếu dự kiến về muộn."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T21:01:05.047Z",
+      "event": "chunk created and locally validated (links resolve; no junk; no external links; no invented business data)"
+    },
+    {
+      "at": "2026-10-06T21:01:05.047Z",
+      "event": "WRITING -> LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T21:01:05.047Z",
+      "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+    }
+  ]
+}
