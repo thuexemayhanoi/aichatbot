@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0008",
+  "writer": "writer_C",
+  "seq": 3,
+  "ids": [
+    "BA-0213",
+    "BA-0214"
+  ],
+  "body_paths": [
+    "data/blog/articles/xe-dien-het-han-pin.body.html",
+    "data/blog/articles/giao-xe-tai-khach-san.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0213",
+      "category": "EV",
+      "slug": "xe-dien-het-han-pin",
+      "title": "xe Điện Hết Hạn Pin",
+      "description": "Pin xe máy điện lão hóa theo chu kỳ sạc xả làm giảm tầm xa: dấu hiệu nhận biết pin hết hạn, cách kiểm tra khi nhận xe thuê và thói quen giữ pin bền khi thuê dài ngày.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/xe-dien-het-han-pin.body.html",
+      "knowledge_chunks": [
+        "Pin lithium lão hóa dần theo số chu kỳ sạc xả, nhiệt độ và thói quen sạc; pin hết hạn khiến xe đầy pin nhưng chạy được quãng ngắn hơn.",
+        "Hết pin giữa đường là thiếu năng lượng trong chuyến đi, còn pin hết hạn là giảm dung lượng sẵn có, nên cách xử lý khác nhau.",
+        "Khi nhận xe điện nên hỏi mức pin, tầm xa thực tế theo kinh nghiệm cửa hàng, chạy thử vòng ngắn và ghi lại mức pin lúc nhận làm mốc."
+      ]
+    },
+    {
+      "article_id": "BA-0214",
+      "category": "GUIDE",
+      "slug": "giao-xe-tai-khach-san",
+      "title": "Giao xe Tại Khách Sạn",
+      "description": "Quy trình nhận xe máy thuê giao tại sảnh khách sạn: chốt địa chỉ và giờ, chuẩn bị giấy tờ trước, kiểm tra xe và chụp ảnh ngay tại chỗ trước khi người giao xe rời đi.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/giao-xe-tai-khach-san.body.html",
+      "knowledge_chunks": [
+        "Giao xe tại khách sạn thuận tiện vì địa chỉ rõ ràng, dễ hẹn và mọi thủ tục làm được ngay tại sảnh trong vài phút.",
+        "Cần chốt trước tên khách sạn kèm chi nhánh, giờ giao, loại xe, thời gian thuê và số điện thoại liên lạc của hai bên.",
+        "Tại sảnh vẫn phải kiểm tra đủ bộ: vết xước, đèn còi, máy nổ, chụp ảnh toàn bộ xe và chạy thử vòng ngắn trước khi người giao xe rời đi."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T14:33:25.956Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T14:33:25.956Z"
+    }
+  ]
+}
