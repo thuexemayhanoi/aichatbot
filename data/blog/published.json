@@ -3647,6 +3647,36 @@
         "Chạy đèo Tam Đảo cần giữ làn phải nhường xe xuống dốc, vào cua chậm ra ga sau, phanh nhịp nhàng và bật đèn khi sương mù vì đường một bên núi một bên vực nhiều cua gắt.",
         "Nên khởi hành sớm để qua đèo lúc trời sáng, canh giờ về trước chiều muộn vì sương mù và mưa dẻo có thể dày lên nhanh trên độ cao, thị trấn nhỏ đi bộ được hết các điểm chính."
       ]
+    },
+    {
+      "article_id": "BA-0253",
+      "category": "APP",
+      "slug": "tim-hieu-hybrid-search-trong-ung-dung-thue-xe",
+      "title": "Tìm Hiểu Hybrid Search Trong Ứng Dụng Thuê xe",
+      "description": "Hybrid search kết hợp tìm theo từ khóa và theo ngữ nghĩa trong app thuê xe: hiểu từ đồng nghĩa, gõ thiếu dấu, câu hỏi dài, vẫn chạy tốt trên điện thoại yếu.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/tim-hieu-hybrid-search-trong-ung-dung-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Hybrid search trong app thuê xe kết hợp lớp từ khóa khớp chính xác tên xe và biển giá với lớp ngữ nghĩa hiểu câu hỏi tự nhiên, từ đồng nghĩa và gõ thiếu dấu.",
+        "Nhờ gắn nhãn loại truy vấn trước khi chấm điểm, cụm như xe 50cc luôn được hiểu là phân khối xe chứ không bao giờ bị nhầm thành thời gian thuê tính theo ngày.",
+        "Lớp từ khóa chạy trước cho kết quả tức thời trên máy yếu, lớp ngữ nghĩa là phần tùy chọn bật thêm khi thiết bị cho phép, nên mọi tính năng cốt lõi vẫn dùng được không cần máy mạnh."
+      ]
+    },
+    {
+      "article_id": "BA-0254",
+      "category": "RENT",
+      "slug": "bang-gia-thue-xe-tham-khao",
+      "title": "Bảng Giá Thuê xe Tham Khảo",
+      "description": "Bảng giá thuê xe máy tham khảo theo ngày tuần tháng cho các dòng Wave, Vision, Air Blade, Click kèm cọc, phí giao xe và cách chọn gói theo độ dài chuyến đi.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/bang-gia-thue-xe-tham-khao.body.html",
+      "knowledge_chunks": [
+        "Giá tham khảo theo ngày ở mức một trăm lẻ năm mươi nghìn cho xe số Wave và xe ga nhỏ Click Mio, hai trăm nghìn cho Vision và Air Blade; nhóm 50cc và xe điện báo giá trực tiếp theo xe sẵn có.",
+        "Từ bốn ngày thuê liên tục trở lên nên hỏi gói tuần vì đơn giá ngày giảm dần theo chu kỳ, nhưng lịch thưa thì hai gói ngắn có khi vẫn rẻ hơn một gói tuần tính chẵn cả ngày nghỉ.",
+        "Ngoài đơn giá cần hỏi trọn ba khoản: tiền đặt cọc hoàn khi trả xe đúng hiện trạng, phí giao xe tận nơi tùy khoảng cách, và mức phạt trễ hạn để tránh mọi tranh kể khi trả xe."
+      ]
     }
   ]
 }
