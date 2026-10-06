@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0003",
+  "writer": "writer_C",
+  "seq": 9,
+  "ids": [
+    "BA-0135",
+    "BA-0136"
+  ],
+  "body_paths": [
+    "data/blog/articles/dang-ky-thue-xe-dien.body.html",
+    "data/blog/articles/chay-xe-dien-lan-dau.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0135",
+      "category": "EV",
+      "slug": "dang-ky-thue-xe-dien",
+      "title": "Đăng ký Thuê xe Điện",
+      "description": "Quy trình đăng ký thuê xe điện: thông tin cần chuẩn bị, khác biệt so với xe xăng về pin và sạc, cùng các sai lầm thường gặp.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/dang-ky-thue-xe-dien.body.html",
+      "knowledge_chunks": [
+        "Đăng ký thuê xe điện cần chuẩn bị dòng xe, thời gian thuê, hành trình, giấy tờ và kế hoạch sạc trước khi liên hệ.",
+        "Phiếu đăng ký nên ghi thêm phần trăm pin lúc nhận và hiện trạng lốp để tránh tranh luận khi trả xe.",
+        "Ba câu bắt buộc khi đăng ký xe điện: pin lúc nhận, quãng đường mỗi ngày và điểm sạc gần nơi ở."
+      ]
+    },
+    {
+      "article_id": "BA-0136",
+      "category": "GUIDE",
+      "slug": "chay-xe-dien-lan-dau",
+      "title": "Chạy xe Điện Lần Đầu",
+      "description": "Kinh nghiệm chạy xe điện lần đầu: khác biệt về ga và phanh, mười phút làm quen, ba nguyên tắc ngày đầu và lỗi cần tránh.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/chay-xe-dien-lan-dau.body.html",
+      "knowledge_chunks": [
+        "Xe điện yên tĩnh nên tốc độ dễ bị cảm nhận thấp hơn thực tế; dùng còi nhiều hơn thói quen chạy xe xăng.",
+        "Mười phút đầu nên thử ga nhẹ, cả hai phanh, đọc đồng hồ pin và kiểm tra còi đèn trước khi ra đường.",
+        "Ngày đầu chạy xe điện: ga từ tốn, giữ khoảng cách lớn hơn và theo dõi pin theo từng chặng."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T04:11:30.818Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T04:11:30.821Z"
+    }
+  ]
+}
