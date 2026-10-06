@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0006",
+  "writer": "writer_C",
+  "seq": 6,
+  "ids": [
+    "BA-0183",
+    "BA-0184"
+  ],
+  "body_paths": [
+    "data/blog/articles/ung-dung-tim-cho-sac-xe.body.html",
+    "data/blog/articles/dich-cong-chung-giay-to-thue-xe.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0183",
+      "category": "EV",
+      "slug": "ung-dung-tim-cho-sac-xe",
+      "title": "Ứng Dụng Tìm Chỗ Sạc xe",
+      "description": "Cách ứng dụng tìm chỗ sạc xe máy điện hoạt động, tiêu chí chọn ứng dụng phù hợp và thói quen lên kế hoạch sạc pin khi di chuyển quanh Hà Nội.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ung-dung-tim-cho-sac-xe.body.html",
+      "knowledge_chunks": [
+        "Ứng dụng tìm chỗ sạc giúp định vị các điểm sạc gần, lọc theo loại cổng tương thích với pin xe máy điện.",
+        "Nên kiểm tra pin sớm và tìm sẵn vài điểm sạc dự phòng thay vì chờ đến khi pin cạn mới tra cứu.",
+        "Dữ liệu điểm sạc cộng đồng có thể lỗi thời, nên xem thời điểm ghi chú gần nhất trước khi di chuyển."
+      ]
+    },
+    {
+      "article_id": "BA-0184",
+      "category": "GUIDE",
+      "slug": "dich-cong-chung-giay-to-thue-xe",
+      "title": "Dịch Công Chứng Giấy tờ Thuê xe",
+      "description": "Hướng dẫn dịch công chứng giấy tờ thuê xe máy cho người nước ngoài: giấy tờ nào cần dịch, quy trình thực hiện và lỗi thường gặp cần tránh.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/dich-cong-chung-giay-to-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Giấy phép lái xe quốc tế hoặc nước ngoài cần bản dịch tiếng Việt có công chứng để lái xe hợp pháp tại Việt Nam.",
+        "Quy trình: mang bản gốc đến công ty dịch thuật hoặc văn phòng công chứng, phiên dịch viên thực hiện và công chứng viên xác nhận.",
+        "Nên làm thêm bản photo công chứng dự phòng và kiểm tra tên, số giấy tờ khớp với bản gốc."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T09:36:39.236Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T09:36:39.238Z"
+    }
+  ]
+}
