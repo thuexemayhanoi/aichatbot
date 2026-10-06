@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0012",
+  "writer": "writer_B",
+  "seq": 2,
+  "ids": [
+    "BA-0283",
+    "BA-0284"
+  ],
+  "body_paths": [
+    "data/blog/articles/lo-trinh-tinh-nang-cua-ung-dung-thue-xe-may.body.html",
+    "data/blog/articles/chon-xe-theo-muc-dich-su-dung.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0283",
+      "category": "APP",
+      "slug": "lo-trinh-tinh-nang-cua-ung-dung-thue-xe-may",
+      "title": "lộ Trình Tính Năng Của Ứng Dụng Thuê xe Máy",
+      "description": "Lộ trình tính năng của ứng dụng thuê xe máy: từ đặt xe cơ bản, trợ lý trả lời tự động, công cụ gợi ý chọn xe tới tìm kiếm kết hợp hiểu tiếng Việt.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/lo-trinh-tinh-nang-cua-ung-dung-thue-xe-may.body.html",
+      "knowledge_chunks": [
+        "Lộ trình tính năng của ứng dụng thuê xe máy gồm bốn vòng nối tiếp: đặt xe cơ bản với bảng giá rõ ràng, trợ lý trả lời thay cuộc gọi, công cụ gợi ý chọn xe cá nhân hóa, và tìm kiếm kết hợp hiểu câu hỏi tiếng Việt đời thường.",
+        "Trợ lý trong ứng dụng thuê xe nhận câu hỏi bằng ngôn ngữ tự nhiên về giá, giấy tờ và giao xe, trả lời tức thì bằng văn bản, giúp khách quyết định nhanh và tránh trao đổi qua điện thoại nhiều lần.",
+        "Ứng dụng thuê xe ưu tiên xử lý dữ liệu cục bộ trên máy người dùng và chạy nhẹ trên điện thoại phổ thông nhờ tìm kiếm kiểu lai, không phụ thuộc dịch vụ đám mây tốn kém."
+      ]
+    },
+    {
+      "article_id": "BA-0284",
+      "category": "RENT",
+      "slug": "chon-xe-theo-muc-dich-su-dung",
+      "title": "Chọn xe Theo Mục Đích sử Dụng",
+      "description": "Chọn xe máy thuê theo mục đích sử dụng: đi phố, đường trường, chở hai người và hành lý, chạy dịch vụ giao hàng và cách dùng công cụ gợi ý chốt nhanh.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/chon-xe-theo-muc-dich-su-dung.body.html",
+      "knowledge_chunks": [
+        "Chọn xe máy thuê theo mục đích: đi phố chọn xe số nhỏ gọn hoặc xe ga phổ thông vì chặng ngắn và đỗ xe nhiều; đường trường chọn xe số cỡ trung hoặc xe ga trung cấp khỏe, kiểm tra lốp phanh xích kỹ trước khi nhận.",
+        "Khi chở hai người và hành lý, chọn xe đủ công suất, yên rộng và có baga hoặc thùng gắn thêm chắc chắn; hỏi trước về chỗ gắn đồ nếu mang vali hoặc túi lớn.",
+        "Với mục đích chạy dịch vụ và giao hàng trong bán kính ngắn, xe số nhỏ tiết kiệm xăng dễ sửa là hợp lý; dòng dưới năm mươi phân khối có lưu ý riêng về giấy tờ và điều kiện lái cần đọc trước khi thuê."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T21:08:58.300Z",
+      "event": "chunk created and locally validated (links resolve; no junk; no external links; no invented business data or product promises)"
+    },
+    {
+      "at": "2026-10-06T21:08:58.300Z",
+      "event": "WRITING -> LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T21:08:58.300Z",
+      "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+    }
+  ]
+}
