@@ -107,8 +107,21 @@
           "BA-0253",
           "BA-0254"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-06T20:18:41.717Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-06T20:18:41.717Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-06T20:18:41.717Z"
+          }
+        ]
       },
       {
         "seq": 6,
