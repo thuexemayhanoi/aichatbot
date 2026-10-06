@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0005",
+  "writer": "writer_C",
+  "seq": 6,
+  "ids": [
+    "BA-0165",
+    "BA-0166"
+  ],
+  "body_paths": [
+    "data/blog/articles/het-pin-giua-duong-phai-lam-gi.body.html",
+    "data/blog/articles/sua-xe-nho-khi-dang-thue.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0165",
+      "category": "EV",
+      "slug": "het-pin-giua-duong-phai-lam-gi",
+      "title": "Hết Pin Giữa Đường Phải Làm gì",
+      "description": "Hướng dẫn xử lý an toàn khi xe máy điện hết pin giữa đường: dừng đúng chỗ, tắt nguồn, khóa xe và gọi cửa hàng hỗ trợ nhanh nhất.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/het-pin-giua-duong-phai-lam-gi.body.html",
+      "knowledge_chunks": [
+        "Khi xe máy điện hết pin giữa đường, hãy giảm tốc từ từ, dừng vào lề an toàn, tắt hoàn toàn nguồn điện và khóa xe cẩn thận trước khi gọi hỗ trợ.",
+        "Sau khi dừng xe an toàn, gọi ngay cho cửa hàng qua số điện thoại để báo vị trí và tình trạng pin, nhân viên sẽ tư vấn điểm sạc gần nhất hoặc phương án thay xe.",
+        "Để tránh hết pin giữa đường, hãy hỏi quãng đường thực tế xe đi được khi sạc đầy, chia lịch trình thành chặng ngắn và chủ động sạc dừng giữa hành trình."
+      ]
+    },
+    {
+      "article_id": "BA-0166",
+      "category": "GUIDE",
+      "slug": "sua-xe-nho-khi-dang-thue",
+      "title": "Sửa xe Nhỏ Khi Đang Thuê",
+      "description": "Cách xử lý hư hỏng nhỏ trong lúc thuê xe máy: kiểm tra, chụp bằng chứng, báo cửa hàng trước khi sửa và giữ hóa đơn phát sinh.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/sua-xe-nho-khi-dang-thue.body.html",
+      "knowledge_chunks": [
+        "Hư hỏng nhỏ khi thuê xe gồm gương lỏng, đèn chập chờn, lốp non hơi hay còi rè; các lỗi này thường được hướng dẫn khắc phục tại chỗ qua điện thoại.",
+        "Trước khi sửa bất kỳ linh kiện nào trên xe thuê, hãy gọi báo cửa hàng, mô tả rõ lỗi và vị trí để tránh mất chế độ bảo hành và tranh chấp chi phí.",
+        "Chụp ảnh xe khi nhận xe và giữ hóa đơn sửa chữa là bằng chứng quan trọng để phân định trách nhiệm hao mòn tự nhiên và hư hỏng do người thuê gây ra."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T05:35:53.001Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T05:35:53.001Z"
+    }
+  ]
+}
