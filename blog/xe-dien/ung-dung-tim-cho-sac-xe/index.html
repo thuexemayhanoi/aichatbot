@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v63">
+  <title>Ứng Dụng Tìm Chỗ Sạc xe</title>
+  <meta name="description" content="Cách ứng dụng tìm chỗ sạc xe máy điện hoạt động, tiêu chí chọn ứng dụng phù hợp và thói quen lên kế hoạch sạc pin khi di chuyển quanh Hà Nội.">
+  <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/blog/xe-dien/ung-dung-tim-cho-sac-xe/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Ứng Dụng Tìm Chỗ Sạc xe">
+  <meta property="og:description" content="Cách ứng dụng tìm chỗ sạc xe máy điện hoạt động, tiêu chí chọn ứng dụng phù hợp và thói quen lên kế hoạch sạc pin khi di chuyển quanh Hà Nội.">
+  <meta property="og:url" content="https://thuexemayhanoi.github.io/aichatbot/blog/xe-dien/ung-dung-tim-cho-sac-xe/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ứng Dụng Tìm Chỗ Sạc xe">
+  <meta name="twitter:description" content="Cách ứng dụng tìm chỗ sạc xe máy điện hoạt động, tiêu chí chọn ứng dụng phù hợp và thói quen lên kế hoạch sạc pin khi di chuyển quanh Hà Nội.">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=63">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=63">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/aichatbot/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/aichatbot/blog/">Cẩm nang</a>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/cong-cu-huong-dan/" aria-haspopup="true">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/app/">📱 Ứng Dụng</a>
+            <a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/aichatbot/blog/thue-xe-phuong-tien/" aria-haspopup="true" aria-current="page">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/aichatbot/blog/xe-dien/" aria-current="page">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/aichatbot/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-ung-dung-tim-cho-sac-xe">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <a href="/aichatbot/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a> › <a href="/aichatbot/blog/xe-dien/">Xe Điện</a> › <a href="/aichatbot/blog/xe-dien/sac-pin/">Sạc Pin</a> › <span>Ứng Dụng Tìm Chỗ Sạc xe</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/aichatbot/blog/xe-dien/">Xe Điện</a>
+        <a class="blog-chip" href="/aichatbot/blog/xe-dien/sac-pin/">Sạc Pin</a>
+        <a class="blog-chip blog-chip-parent" href="/aichatbot/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a>
+      </p>
+      <p class="blog-screen-label">Xe Điện</p>
+      <h1 class="blog-screen-title">Ứng Dụng Tìm Chỗ Sạc xe</h1>
+      <p class="blog-screen-lead">Cách ứng dụng tìm chỗ sạc xe máy điện hoạt động, tiêu chí chọn ứng dụng phù hợp và thói quen lên kế hoạch sạc pin khi di chuyển quanh Hà Nội.</p>
+      <p class="byline">MotoAI Editorial · 2026-10-06 · Xe Điện · 5 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Cách ứng dụng tìm chỗ sạc xe máy điện hoạt động, tiêu chí chọn ứng dụng phù hợp và thói quen lên kế hoạch sạc pin khi di chuyển quanh Hà Nội.</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#ung-dung-tim-cho-sac-hoat-dong-nhu-the-nao">Ứng dụng tìm chỗ sạc hoạt động như thế nào</a></li>
+        <li class="toc-l2"><a href="#tieu-chi-chon-ung-dung-phu-hop">Tiêu chí chọn ứng dụng phù hợp</a></li>
+        <li class="toc-l2"><a href="#dung-ung-dung-hieu-qua-khi-di-chuyen">Dùng ứng dụng hiệu quả khi di chuyển</a></li>
+        <li class="toc-l2"><a href="#thuc-te-o-ha-noi-can-biet">Thực tế ở Hà Nội cần biết</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+        <li class="toc-l3"><a href="#ung-dung-tim-cho-sac-co-mien-phi-khong">Ứng dụng tìm chỗ sạc có miễn phí không?</a></li>
+        <li class="toc-l3"><a href="#du-lieu-diem-sac-tren-ung-dung-co-chinh-xac-khong">Dữ liệu điểm sạc trên ứng dụng có chính xác không?</a></li>
+        <li class="toc-l3"><a href="#sac-xe-may-dien-mat-bao-lau">Sạc xe máy điện mất bao lâu?</a></li>
+        <li class="toc-l3"><a href="#co-can-mang-theo-sac-du-phong-khong">Có cần mang theo sạc dự phòng không?</a></li>
+        <li class="toc-l3"><a href="#ung-dung-co-ton-pin-dien-thoai-khong">Ứng dụng có tốn pin điện thoại không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#ung-dung-tim-cho-sac-hoat-dong-nhu-the-nao">Ứng dụng tìm chỗ sạc hoạt động như thế nào</a></li>
+        <li class="toc-l2"><a href="#tieu-chi-chon-ung-dung-phu-hop">Tiêu chí chọn ứng dụng phù hợp</a></li>
+        <li class="toc-l2"><a href="#dung-ung-dung-hieu-qua-khi-di-chuyen">Dùng ứng dụng hiệu quả khi di chuyển</a></li>
+        <li class="toc-l2"><a href="#thuc-te-o-ha-noi-can-biet">Thực tế ở Hà Nội cần biết</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+        <li class="toc-l3"><a href="#ung-dung-tim-cho-sac-co-mien-phi-khong">Ứng dụng tìm chỗ sạc có miễn phí không?</a></li>
+        <li class="toc-l3"><a href="#du-lieu-diem-sac-tren-ung-dung-co-chinh-xac-khong">Dữ liệu điểm sạc trên ứng dụng có chính xác không?</a></li>
+        <li class="toc-l3"><a href="#sac-xe-may-dien-mat-bao-lau">Sạc xe máy điện mất bao lâu?</a></li>
+        <li class="toc-l3"><a href="#co-can-mang-theo-sac-du-phong-khong">Có cần mang theo sạc dự phòng không?</a></li>
+        <li class="toc-l3"><a href="#ung-dung-co-ton-pin-dien-thoai-khong">Ứng dụng có tốn pin điện thoại không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Lo lắng lớn nhất khi dùng xe máy điện ở Hà Nội không phải pin ngày đầu tiên mà là tìm được chỗ sạc ở nơi lạ. Ứng dụng tìm chỗ sạc ra đời để giải quyết đúng nỗi lo này: mở điện thoại, gõ vị trí, xem các điểm sạc gần nhất cùng thông tin loại cổng. Bài viết này giải thích các ứng dụng đó hoạt động ra sao, tiêu chí chọn và cách dùng hiệu quả khi di chuyển bằng xe máy điện quanh thành phố.</p>
+  
+  <h2 id="ung-dung-tim-cho-sac-hoat-dong-nhu-the-nao">Ứng dụng tìm chỗ sạc hoạt động như thế nào</h2>
+  
+  <p>Về bản chất, đây là bản đồ cộng dữ liệu: ứng dụng định vị bạn qua GPS, sau đó hiển thị danh sách điểm sạc mà cộng đồng hoặc đơn vị vận hành đã cập nhật. Với xe máy điện, dữ liệu quan trọng nhất không phải số lượng trạm mà là loại cổng tương thích với xe của bạn, vì mỗi hãng pin có thiết kế riêng. Ứng dụng tốt cho phép lọc theo loại cổng và hiển thị ghi chú của người dùng trước về tình trạng trạm.</p>
+  
+  <ul>
+  <li>Tra cứu vị trí điểm sạc quanh khu vực hiện tại hoặc theo điểm đến.</li>
+  <li>Lọc theo loại cổng sạc tương thích với pin xe của bạn.</li>
+  <li>Xem ghi chú cộng đồng: trạm hoạt động hay hỏng, có chỗ để xe không.</li>
+  <li>Gợi ý quãng đường dự kiến theo phần trăm pin.</li>
+  </ul>
+  
+  <h2 id="tieu-chi-chon-ung-dung-phu-hop">Tiêu chí chọn ứng dụng phù hợp</h2>
+  
+  <p>Không phải ứng dụng nào cũng hữu ích cho xe máy điện ở Việt Nam. Một số ứng dụng quốc tế tập trung vào ô tô điện nên dày đặc dữ liệu trạm nhanh nhưng lại bỏ sót các điểm sạc pin tháo rời quen thuộc của xe máy. Với người dùng xe máy điện, ứng dụng nên đáp ứng tối thiểu ba điều: dữ liệu điểm sạc được cập nhật gần đây, lọc được theo loại pin hoặc hãng xe, và hoạt động mượt khi mạng yếu vì bạn thường tra cứu ngay khi đang di chuyển.</p>
+  
+  <p>Ngoài ra nên ưu tiên ứng dụng cho phép tải bản đồ khu vực hay dùng offline, vì tín hiệu trong hẻm hoặc tầng hầm khu chung cư thường chập chờn. Nếu bạn chưa quen với hệ sinh thái xe máy điện nói chung, bài <a href="/aichatbot/blog/xe-dien/app-thue-xe-dien/index.html">App thuê xe điện</a> giới thiệu cách ứng dụng kết nối với việc thuê xe điện, còn vấn đề pin được giải thích chi tiết tại <a href="/aichatbot/blog/xe-dien/pin-cua-xe-may-dien/index.html">Pin của xe máy điện</a>.</p>
+  
+  <h2 id="dung-ung-dung-hieu-qua-khi-di-chuyen">Dùng ứng dụng hiệu quả khi di chuyển</h2>
+  
+  <ul>
+  <li>Kiểm tra pin và tìm sẵn hai ba điểm sạc dự phòng trước khi pin về mức thấp.</li>
+  <li>Đừng chờ đến khi hết pin mới mở ứng dụng: quãng đường còn lại phụ thuộc tốc độ và địa hình.</li>
+  <li>Ưu tiên điểm sạc có nơi để xe an toàn và có người trông giữ.</li>
+  <li>Ghi chú lại các điểm sạc tốt dọc tuyến đường quen thuộc để dùng về sau không cần mở ứng dụng.</li>
+  <li>Trường hợp đã rơi vào tình huống pin cạn, tham khảo ngay <a href="/aichatbot/blog/xe-dien/het-pin-giua-duong-phai-lam-gi/index.html">Hết pin giữa đường phải làm gì</a>.</li>
+  </ul>
+  
+  <h2 id="thuc-te-o-ha-noi-can-biet">Thực tế ở Hà Nội cần biết</h2>
+  
+  <p>Mật độ điểm sạc quanh trung tâm khá cao nhưng phân bố không đều: khu quận nội thành có nhiều cửa hàng tiện lợi và trụ sở hãng hỗ trợ sạc, trong khi ven đô thưa hơn. Trước chuyến đi xa ngoài rìa thành phố, việc đánh dấu sẵn điểm sạc trên ứng dụng theo lộ trình giúp tránh tình trạng quay đầu giữa chừng. Danh sách địa điểm sạc phổ biến được tóm tắt trong bài <a href="/aichatbot/blog/xe-dien/sac-pin-xe-dien-o-dau/index.html">Sạc pin xe điện ở đâu</a>.</p>
+  
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  
+  <h3 id="ung-dung-tim-cho-sac-co-mien-phi-khong">Ứng dụng tìm chỗ sạc có miễn phí không?</h3>
+  <p>Phần lớn tính năng tra cứu cơ bản miễn phí, một số mở rộng tính năng dự báo lộ trình theo phí nhỏ hoặc tích hợp với dịch vụ thuê xe của chính hãng.</p>
+  
+  <h3 id="du-lieu-diem-sac-tren-ung-dung-co-chinh-xac-khong">Dữ liệu điểm sạc trên ứng dụng có chính xác không?</h3>
+  <p>Chính xác ở mức tốt với các trạm do đơn vị vận hành cập nhật, nhưng điểm sạc cộng đồng có thể lỗi thời. Nên xem thời điểm ghi chú gần nhất trước khi đi.</p>
+  
+  <h3 id="sac-xe-may-dien-mat-bao-lau">Sạc xe máy điện mất bao lâu?</h3>
+  <p>Thời gian sạc tùy dung lượng pin và loại sạc, phổ biến từ vài giờ trở lên. Nên dùng thời gian sạc để kết hợp ăn uống hoặc nghỉ giải lao thay vì chờ đứng.</p>
+  
+  <h3 id="co-can-mang-theo-sac-du-phong-khong">Có cần mang theo sạc dự phòng không?</h3>
+  <p>Không cần thiết bị sạc dự phòng nếu bạn lên kế hoạch điểm dừng, nhưng nên mang theo ổ cắm chuyển đổi nếu xe của bạn dùng cổng đặc trưng.</p>
+  
+  <h3 id="ung-dung-co-ton-pin-dien-thoai-khong">Ứng dụng có tốn pin điện thoại không?</h3>
+  <p>GPS chạy liên tục sẽ tốn pin điện thoại. Nên tra cứu theo từng chặng rồi tắt định vị thay vì để bản đồ chạy nền suốt chuyến đi.</p>
+  
+  <h2 id="ket-luan">Kết luận</h2>
+  
+  <p>Ứng dụng tìm chỗ sạc biến nỗi lo trụ sạc thành việc tra cứu vài giây, nhưng hiệu quả thật sự đến từ thói quen lên kế hoạch: kiểm tra pin sớm, lọc đúng loại cổng và ghi nhớ các điểm sạc tin cậy trên tuyến quen thuộc. Nếu bạn định thuê xe máy điện để trải nghiệm trước khi mua, MotoAI sẵn sàng tư vấn loại xe phù hợp. Bạn ghé 112 Nguyễn Văn Cừ, Long Biên, Hà Nội trong giờ 09:00 - 21:00, hoặc gọi 0942 467 674 để được hướng dẫn nhanh.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/aichatbot/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a>
+          <span aria-hidden="true">→</span>
+          <a href="/aichatbot/blog/xe-dien/">Xe Điện</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/aichatbot/blog/xe-dien/thoi-gian-sac-xe-may-dien/">
+        <span class="cat">Xe Điện</span>
+        <h2>Thời gian sạc xe máy điện: bao lâu thì đầy và nên sạc khi nào</h2>
+        <p>Sạc đầy xe máy điện mất khoảng 6 đến 8 tiếng bằng sạc zin theo xe, dòng hỗ trợ sạc nhanh rút xuống còn 2 đến 4 tiếng. Tìm hiểu các yếu tố ảnh hưởng và cách sạc hợp lý khi thuê xe.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/xe-dien/app-thue-xe-dien/">
+        <span class="cat">Xe Điện</span>
+        <h2>App thuê xe điện là gì? Cách hỏi giá và chọn xe điện qua trợ lý</h2>
+        <p>Giải thích app thuê xe điện là gì, khác biệt giữa xe máy điện và xe xăng, cách hỏi giá, pin, giao xe qua trợ lý và những điều cần biết trước khi đặt xe điện.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/xe-dien/ung-dung-thue-xe-may-dien/">
+        <span class="cat">Xe Điện</span>
+        <h2>Ứng dụng thuê xe máy điện: hỏi pin, giá và dòng xe qua trợ lý</h2>
+        <p>Cách dùng ứng dụng thuê xe máy điện: hỏi tình trạng pin, quãng đường, giá theo khung thời gian, chính sách sạc và checklist nhận xe điện trước khi lăn bánh.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/xe-dien/chon-xe-dien-phu-hop/">
+        <span class="cat">Xe Điện</span>
+        <h2>Chọn xe điện phù hợp: tiêu chí theo nhu cầu đi lại mỗi ngày</h2>
+        <p>Cách chọn xe điện phù hợp khi thuê: quãng đường mỗi ngày và chỗ sạc, người chở, giấy phép hạng A1 đến 11 kW, câu hỏi cho cửa hàng và điểm kiểm tra pin lúc nhận xe.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/xe-dien/thue-xe-dien-theo-ngay/">
+        <span class="cat">Xe Điện</span>
+        <h2>Thuê xe điện theo ngày: kế hoạch pin và checklist nhận xe</h2>
+        <p>Thuê xe điện theo ngày: khi nào hợp với xe điện, kế hoạch pin cho một ngày, chi phí gồm giá thuê và tiền sạc, mực pin lúc trả và checklist nhận xe an toàn.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Thuê xe &amp; Phương tiện: <a href="/aichatbot/blog/thue-xe/">Thuê Xe</a> · <a href="/aichatbot/blog/xe-dien/">Xe Điện</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/aichatbot/?ask=%E1%BB%A8ng%20D%E1%BB%A5ng%20T%C3%ACm%20Ch%E1%BB%97%20S%E1%BA%A1c%20xe">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/aichatbot/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/aichatbot/">Agent</a></li>
+          <li><a href="/aichatbot/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/aichatbot/blog/">Cẩm nang</a></li>
+          <li><a href="/aichatbot/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/aichatbot/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/aichatbot/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/aichatbot/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/aichatbot/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/aichatbot/">⚡ Agent</a></li>
+      <li><a href="/aichatbot/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/app/">📱 Ứng Dụng</a></li>
+            <li><a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/" aria-current="page">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/aichatbot/blog/xe-dien/" aria-current="page">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/aichatbot/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/aichatbot/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/aichatbot/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/aichatbot/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/aichatbot/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Ứng Dụng Tìm Chỗ Sạc xe","description":"Cách ứng dụng tìm chỗ sạc xe máy điện hoạt động, tiêu chí chọn ứng dụng phù hợp và thói quen lên kế hoạch sạc pin khi di chuyển quanh Hà Nội.","datePublished":"2026-10-06","dateModified":"2026-10-06","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://thuexemayhanoi.github.io/aichatbot/"},"mainEntityOfPage":"https://thuexemayhanoi.github.io/aichatbot/blog/xe-dien/ung-dung-tim-cho-sac-xe/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://thuexemayhanoi.github.io/aichatbot/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://thuexemayhanoi.github.io/aichatbot/blog/"},{"@type":"ListItem","position":3,"name":"Thuê xe & Phương tiện","item":"https://thuexemayhanoi.github.io/aichatbot/blog/thue-xe-phuong-tien/"},{"@type":"ListItem","position":4,"name":"Xe Điện","item":"https://thuexemayhanoi.github.io/aichatbot/blog/xe-dien/"},{"@type":"ListItem","position":5,"name":"Sạc Pin","item":"https://thuexemayhanoi.github.io/aichatbot/blog/xe-dien/sac-pin/"},{"@type":"ListItem","position":6,"name":"Ứng Dụng Tìm Chỗ Sạc xe","item":"https://thuexemayhanoi.github.io/aichatbot/blog/xe-dien/ung-dung-tim-cho-sac-xe/"}]}
+  </script>
+
+  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=63"></script>
+</body>
+</html>
