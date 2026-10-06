@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0005",
+  "writer": "writer_B",
+  "seq": 8,
+  "ids": [
+    "BA-0169",
+    "BA-0170"
+  ],
+  "body_paths": [
+    "data/blog/articles/rental-assistant-la-gi.body.html",
+    "data/blog/articles/uu-dai-thue-xe-dai-han.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0169",
+      "category": "APP",
+      "slug": "rental-assistant-la-gi",
+      "title": "Rental Assistant là gì",
+      "description": "Rental assistant là trợ lý thuê xe trên website và ứng dụng: khái niệm, khả năng trả lời giá và thủ tục, khác biệt với nhân viên tư vấn.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/rental-assistant-la-gi.body.html",
+      "knowledge_chunks": [
+        "Rental assistant là trợ lý thuê xe dạng chat trên website, trả lời câu hỏi về giá, dòng xe và thủ tục dựa trên dữ liệu cấu hình của cửa hàng.",
+        "Trợ lý thuê xe xử lý nhanh các câu hỏi phổ biến, giúp khách không phải chờ điện thoại, còn nhân viên lo các tình huống đặc thù như đổi lịch hay sự cố.",
+        "Để dùng trợ lý hiệu quả, hãy hỏi ngắn gọn một chủ đề mỗi câu, đưa đủ ngữ cảnh thời gian thuê và xác nhận lại các con số quan trọng trước khi chốt."
+      ]
+    },
+    {
+      "article_id": "BA-0170",
+      "category": "RENT",
+      "slug": "uu-dai-thue-xe-dai-han",
+      "title": "ưu Đãi Thuê xe Dài Hạn",
+      "description": "Ưu đãi thuê xe dài hạn: các dạng giảm giá theo tuần tháng, cách thương lượng gói trọn và những điều khoản cần xác nhận trước khi ký.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/uu-dai-thue-xe-dai-han.body.html",
+      "knowledge_chunks": [
+        "Thuê dài hạn thường có giá ngày rẻ hơn thuê lẻ: giá theo tuần rẻ hơn từng ngày và theo tháng rẻ hơn theo tuần, vì cửa hàng giảm chi phí giao nhận.",
+        "Các dạng ưu đãi dài hạn gồm giảm giá gói, miễn phí giao xe, ưu tiên giữ nguyên một xe tốt và hỗ trợ bảo dưỡng định kỳ giữa kỳ thuê.",
+        "Trước khi chốt gói dài hạn cần xác nhận cách tính ngày, điều kiện đặt cọc và hoàn tiền, chính sách trả sớm và trách nhiệm bảo dưỡng trong hợp đồng."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T09:11:21.518Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T09:11:21.518Z"
+    }
+  ]
+}
