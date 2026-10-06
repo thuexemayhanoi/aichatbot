@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v63">
+  <title>Giao xe Tại Khách Sạn</title>
+  <meta name="description" content="Quy trình nhận xe máy thuê giao tại sảnh khách sạn: chốt địa chỉ và giờ, chuẩn bị giấy tờ trước, kiểm tra xe và chụp ảnh ngay tại chỗ trước khi người giao xe rời đi.">
+  <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/blog/huong-dan/giao-xe-tai-khach-san/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Giao xe Tại Khách Sạn">
+  <meta property="og:description" content="Quy trình nhận xe máy thuê giao tại sảnh khách sạn: chốt địa chỉ và giờ, chuẩn bị giấy tờ trước, kiểm tra xe và chụp ảnh ngay tại chỗ trước khi người giao xe rời đi.">
+  <meta property="og:url" content="https://thuexemayhanoi.github.io/aichatbot/blog/huong-dan/giao-xe-tai-khach-san/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Giao xe Tại Khách Sạn">
+  <meta name="twitter:description" content="Quy trình nhận xe máy thuê giao tại sảnh khách sạn: chốt địa chỉ và giờ, chuẩn bị giấy tờ trước, kiểm tra xe và chụp ảnh ngay tại chỗ trước khi người giao xe rời đi.">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=63">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=63">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/aichatbot/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/aichatbot/blog/">Cẩm nang</a>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/aichatbot/blog/cong-cu-huong-dan/" aria-haspopup="true" aria-current="page">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/app/">📱 Ứng Dụng</a>
+            <a href="/aichatbot/blog/huong-dan/" aria-current="page">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/aichatbot/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-giao-xe-tai-khach-san">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <a href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a> › <a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a> › <a href="/aichatbot/blog/huong-dan/thu-tuc/">Thủ Tục</a> › <span>Giao xe Tại Khách Sạn</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a>
+        <a class="blog-chip" href="/aichatbot/blog/huong-dan/thu-tuc/">Thủ Tục</a>
+        <a class="blog-chip blog-chip-parent" href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+      </p>
+      <p class="blog-screen-label">Hướng Dẫn</p>
+      <h1 class="blog-screen-title">Giao xe Tại Khách Sạn</h1>
+      <p class="blog-screen-lead">Quy trình nhận xe máy thuê giao tại sảnh khách sạn: chốt địa chỉ và giờ, chuẩn bị giấy tờ trước, kiểm tra xe và chụp ảnh ngay tại chỗ trước khi người giao xe rời đi.</p>
+      <p class="byline">MotoAI Editorial · 2026-10-06 · Hướng Dẫn · 5 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Quy trình nhận xe máy thuê giao tại sảnh khách sạn: chốt địa chỉ và giờ, chuẩn bị giấy tờ trước, kiểm tra xe và chụp ảnh ngay tại chỗ trước khi người giao xe rời đi.</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#vi-sao-khach-san-la-diem-giao-xe-thuan-tien">Vì sao khách sạn là điểm giao xe thuận tiện</a></li>
+        <li class="toc-l2"><a href="#dat-xe-va-chot-thong-tin-giao-tan-noi">Đặt xe và chốt thông tin giao tận nơi</a></li>
+        <li class="toc-l2"><a href="#giay-to-can-chuan-bi-truoc-luc-giao-xe">Giấy tờ cần chuẩn bị trước lúc giao xe</a></li>
+        <li class="toc-l2"><a href="#kiem-tra-xe-ngay-tai-sanh-khach-san">Kiểm tra xe ngay tại sảnh khách sạn</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+        <li class="toc-l3"><a href="#giao-xe-tai-khach-san-co-phu-thu-khong">Giao xe tại khách sạn có phụ thu không?</a></li>
+        <li class="toc-l3"><a href="#neu-chuyen-bay-tre-gio-giao-xe-thay-doi-the-nao">Nếu chuyến bay trễ, giờ giao xe thay đổi thế nào?</a></li>
+        <li class="toc-l3"><a href="#giao-xe-gio-sang-som-co-lam-duoc-khong">Giao xe giờ sáng sớm có làm được không?</a></li>
+        <li class="toc-l3"><a href="#le-tan-khach-san-co-can-lam-gi-khong">Lễ tân khách sạn có cần làm gì không?</a></li>
+        <li class="toc-l3"><a href="#nhan-xong-co-chay-thu-quanh-khach-san-duoc-khong">Nhận xong có chạy thử quanh khách sạn được không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#vi-sao-khach-san-la-diem-giao-xe-thuan-tien">Vì sao khách sạn là điểm giao xe thuận tiện</a></li>
+        <li class="toc-l2"><a href="#dat-xe-va-chot-thong-tin-giao-tan-noi">Đặt xe và chốt thông tin giao tận nơi</a></li>
+        <li class="toc-l2"><a href="#giay-to-can-chuan-bi-truoc-luc-giao-xe">Giấy tờ cần chuẩn bị trước lúc giao xe</a></li>
+        <li class="toc-l2"><a href="#kiem-tra-xe-ngay-tai-sanh-khach-san">Kiểm tra xe ngay tại sảnh khách sạn</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+        <li class="toc-l3"><a href="#giao-xe-tai-khach-san-co-phu-thu-khong">Giao xe tại khách sạn có phụ thu không?</a></li>
+        <li class="toc-l3"><a href="#neu-chuyen-bay-tre-gio-giao-xe-thay-doi-the-nao">Nếu chuyến bay trễ, giờ giao xe thay đổi thế nào?</a></li>
+        <li class="toc-l3"><a href="#giao-xe-gio-sang-som-co-lam-duoc-khong">Giao xe giờ sáng sớm có làm được không?</a></li>
+        <li class="toc-l3"><a href="#le-tan-khach-san-co-can-lam-gi-khong">Lễ tân khách sạn có cần làm gì không?</a></li>
+        <li class="toc-l3"><a href="#nhan-xong-co-chay-thu-quanh-khach-san-duoc-khong">Nhận xong có chạy thử quanh khách sạn được không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Sáng hôm sau bạn muốn lên đường sớm, còn đi bộ ra cửa hàng nhận xe thì mất cả tiếng đồng hồ quý giá. Giao xe tận nơi ra đời để giải bài toán đó, và địa điểm được chọn nhiều nhất chính là sảnh khách sạn: tiện cho khách, dễ tìm cho người giao xe, và mọi thủ tục đều làm được ngay tại chỗ. Bài viết này đi qua quy trình nhận xe máy thuê tại khách sạn: đặt trước thế nào, cần chuẩn bị giấy tờ gì, và những gì nên kiểm tra ngay tại sảnh.</p>
+  
+  <h2 id="vi-sao-khach-san-la-diem-giao-xe-thuan-tien">Vì sao khách sạn là điểm giao xe thuận tiện</h2>
+  
+  <p>Khách sạn có địa chỉ rõ ràng, lễ tân xác nhận được thông tin, và thường có khu vực lối vào để dừng xe trong vài phút. Với người giao xe, đó là điểm hẹn không thể nhầm; với bạn, đó là chỗ ngồi có mái che để đọc kỹ hợp đồng và kiểm tra xe. So với hẹn ở ngã tư hay quán cà phê, giao xe tại khách sạn giảm hầu hết rủi ro chờ đợi hai bên không gặp nhau.</p>
+  
+  <h2 id="dat-xe-va-chot-thong-tin-giao-tan-noi">Đặt xe và chốt thông tin giao tận nơi</h2>
+  
+  <p>Giao xe tận nơi là một hình thức nhận xe riêng nên thủ tục chốt hơi khác đơn thuần đến cửa hàng: bạn cần báo trước địa chỉ khách sạn, giờ nhận dự kiến và số điện thoại liên lạc. Nếu bạn thuê trong mùa cao điểm, đặt xe trước một hai ngày và xác nhận lại buổi sáng hôm đó là cách chắc ăn nhất. Những điểm cần chốt trong tin nhắn cuối: tên khách sạn kèm phân biệt chi nhánh nếu cùng thương hiệu, giờ đón khách tại sảnh, loại xe và thời gian thuê. Về quy trình tổng quát của việc giao tận nơi, bạn có thể đọc <a href="/aichatbot/blog/huong-dan/giao-xe-tan-noi-thu-tuc/index.html">bài về giao xe tận nơi và thủ tục</a>.</p>
+  
+  <ul>
+  <li>Chốt tên khách sạn chính xác, kèm phân biệt chi nhánh.</li>
+  <li>Xác nhận giờ giao và số điện thoại hai bên.</li>
+  <li>Nhắc lại loại xe và thời gian thuê trong tin cuối cùng.</li>
+  </ul>
+  
+  <h2 id="giay-to-can-chuan-bi-truoc-luc-giao-xe">Giấy tờ cần chuẩn bị trước lúc giao xe</h2>
+  
+  <p>Người giao xe sẽ đối chiếu giấy tờ ngay tại sảnh, nên hãy chuẩn bị sẵn trước giờ hẹn: giấy tờ tùy thân gốc, và với khách quốc tế thì hộ chiếu cùng các giấy tờ lái xe theo quy định. Danh sách chi tiết tùy đối tượng đã được tóm trong <a href="/aichatbot/blog/huong-dan/giay-to-can-khi-thue-xe/index.html">bài về giấy tờ cần khi thuê xe</a>. Chuẩn bị sẵn giúp buổi giao xe chỉ mất vài phút thay vì hai bên đứng chờ nhau ở sảnh.</p>
+  
+  <h2 id="kiem-tra-xe-ngay-tai-sanh-khach-san">Kiểm tra xe ngay tại sảnh khách sạn</h2>
+  
+  <p>Đừng vì đang đứng trước lễ tân mà bỏ qua bước kiểm tra. Vẫn đủ bộ quy trình rút gọn: đi một vòng quanh xe xem vết xước, thử đèn và còi, nghe tiếng máy nổ, và chụp ảnh toàn bộ xe trước khi người giao rời đi. Bộ ảnh này là hồ sơ cơ sở nếu có tranh luận về tình trạng xe lúc trả; cách chụp nào đầy đủ nhất đã có sẵn trong <a href="/aichatbot/blog/huong-dan/chup-anh-xe-truoc-khi-nhan/index.html">bài về chụp ảnh xe trước khi nhận</a>. Nếu phát hiện vết xước hoặc lỗi nhỏ, ghi thẳng vào biên bản giao nhận hoặc nhắn ngay cho cửa hàng lưu lại trong hội thoại để không ai phải nhớ miệng.</p>
+  
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  
+  <h3 id="giao-xe-tai-khach-san-co-phu-thu-khong">Giao xe tại khách sạn có phụ thu không?</h3>
+  <p>Tùy chính sách từng dịch vụ và khoảng cách; nhiều nơi miễn trong bán kính gần và tính thêm cho xa, nên hỏi rõ chi phí trọn gói lúc đặt.</p>
+  
+  <h3 id="neu-chuyen-bay-tre-gio-giao-xe-thay-doi-the-nao">Nếu chuyến bay trễ, giờ giao xe thay đổi thế nào?</h3>
+  <p>Báo ngay cho cửa hàng qua điện thoại hoặc tin nhắn để dời giờ; đặt giờ giao dự phòng trễ hơn giờ dự kiến hạ cánh là cách an toàn với chuyến bay đêm.</p>
+  
+  <h3 id="giao-xe-gio-sang-som-co-lam-duoc-khong">Giao xe giờ sáng sớm có làm được không?</h3>
+  <p>Được nếu chốt trước trong ngày làm việc hôm đó; xem thêm <a href="/aichatbot/blog/huong-dan/thoi-gian-nhan-xe-som/index.html">hướng dẫn nhận xe sớm trong ngày</a> để biết khung giờ và cách chuẩn bị.</p>
+  
+  <h3 id="le-tan-khach-san-co-can-lam-gi-khong">Lễ tân khách sạn có cần làm gì không?</h3>
+  <p>Không bắt buộc; thường chỉ cần bạn ra đúng giờ. Một số khách báo trước cho lễ tân để tiện chỉ điểm hẹn cho người giao xe trong trường hợp khách sạn có nhiều khu vực.</p>
+  
+  <h3 id="nhan-xong-co-chay-thu-quanh-khach-san-duoc-khong">Nhận xong có chạy thử quanh khách sạn được không?</h3>
+  <p>Nên chạy thử một vòng ngắn quanh khu vực trước khi người giao xe rời đi, để mọi lỗi cảm nhận được phát hiện ngay tại chỗ.</p>
+  
+  <h2 id="ket-luan">Kết luận</h2>
+  
+  <p>Giao xe tại khách sạn biến buổi nhận xe thành mười phút gọn gàng ngay dưới sảnh: chốt địa chỉ và giờ trước, chuẩn bị giấy tờ sẵn, kiểm tra xe đủ bộ dù gấp. MotoAI hỗ trợ giao xe tận nơi cho khách thuê tại 112 Nguyễn Văn Cừ, Long Biên, Hà Nội, trong giờ 09:00 - 21:00; đặt trước qua 0942 467 674 để xe có mặt đúng lúc bạn bước ra sảnh.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+          <span aria-hidden="true">→</span>
+          <a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/aichatbot/blog/huong-dan/thu-tuc-thue-xe-may/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Thủ tục thuê xe máy: giấy tờ, đặt cọc, nhận và trả xe</h2>
+        <p>Hướng dẫn thủ tục thuê xe máy: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ, và dịch vụ giao xe tận nơi.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/huong-dan/giay-to-can-khi-thue-xe/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Giấy tờ cần khi thuê xe máy: từ căn cước đến bằng lái quốc tế</h2>
+        <p>Giấy tờ cần khi thuê xe máy: CCCD hoặc hộ chiếu, bằng lái hạng A1, GPLX điện tử VNeID, IDP Công ước Vienna 1968 cho khách nước ngoài kèm checklist nhận xe.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/huong-dan/huong-dan-dat-xe-nhanh/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Hướng dẫn đặt xe nhanh: chốt xe máy trong một tin nhắn</h2>
+        <p>Hướng dẫn đặt xe nhanh: bốn thông tin cần chốt trước khi gọi, mẫu tin nhắn đặt xe gửi một lần, mức cọc, giấy tờ và khung giờ nhận xe tại cửa hàng.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/huong-dan/quy-trinh-nhan-xe/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Quy trình nhận xe máy thuê: năm bước trong mười phút</h2>
+        <p>Quy trình nhận xe máy thuê gồm năm bước: đối chiếu dòng xe và cọc, rà xe theo trình tự, chụp ảnh tình trạng, chạy thử và chốt văn bản để tránh tranh chấp lúc trả.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/huong-dan/quy-trinh-tra-xe/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Quy trình trả xe máy thuê: bốn bước lấy lại cọc trọn vẹn</h2>
+        <p>Quy trình trả xe máy thuê: ghi nhận hiện trạng từ lúc nhận, cân nhiên liệu về mốc ban đầu, bốn bước ở phút trả và cách xử lý trả sớm, trả muộn, gia hạn giữa chừng.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Công cụ &amp; Hướng dẫn: <a href="/aichatbot/blog/app/">Ứng Dụng</a> · <a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/aichatbot/?ask=Giao%20xe%20T%E1%BA%A1i%20Kh%C3%A1ch%20S%E1%BA%A1n">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/aichatbot/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/aichatbot/">Agent</a></li>
+          <li><a href="/aichatbot/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/aichatbot/blog/">Cẩm nang</a></li>
+          <li><a href="/aichatbot/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/aichatbot/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/aichatbot/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/aichatbot/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/aichatbot/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/aichatbot/">⚡ Agent</a></li>
+      <li><a href="/aichatbot/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/" aria-current="page">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/app/">📱 Ứng Dụng</a></li>
+            <li><a href="/aichatbot/blog/huong-dan/" aria-current="page">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/aichatbot/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/aichatbot/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/aichatbot/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/aichatbot/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/aichatbot/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Giao xe Tại Khách Sạn","description":"Quy trình nhận xe máy thuê giao tại sảnh khách sạn: chốt địa chỉ và giờ, chuẩn bị giấy tờ trước, kiểm tra xe và chụp ảnh ngay tại chỗ trước khi người giao xe rời đi.","datePublished":"2026-10-06","dateModified":"2026-10-06","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://thuexemayhanoi.github.io/aichatbot/"},"mainEntityOfPage":"https://thuexemayhanoi.github.io/aichatbot/blog/huong-dan/giao-xe-tai-khach-san/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://thuexemayhanoi.github.io/aichatbot/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://thuexemayhanoi.github.io/aichatbot/blog/"},{"@type":"ListItem","position":3,"name":"Công cụ & Hướng dẫn","item":"https://thuexemayhanoi.github.io/aichatbot/blog/cong-cu-huong-dan/"},{"@type":"ListItem","position":4,"name":"Hướng Dẫn","item":"https://thuexemayhanoi.github.io/aichatbot/blog/huong-dan/"},{"@type":"ListItem","position":5,"name":"Thủ Tục","item":"https://thuexemayhanoi.github.io/aichatbot/blog/huong-dan/thu-tuc/"},{"@type":"ListItem","position":6,"name":"Giao xe Tại Khách Sạn","item":"https://thuexemayhanoi.github.io/aichatbot/blog/huong-dan/giao-xe-tai-khach-san/"}]}
+  </script>
+
+  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=63"></script>
+</body>
+</html>
