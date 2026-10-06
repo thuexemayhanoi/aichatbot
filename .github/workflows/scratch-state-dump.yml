@@ -1,0 +1,40 @@
+name: scratch-state-dump
+on:
+  push:
+    branches: [scratch/state-dump]
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: dump
+        run: |
+          {
+            echo "=== matrix BA-0297..BA-0306 ==="
+            grep -E "^BA-029[7-9],|^BA-030[0-6]," data/blog/content-matrix.csv
+            echo "=== hub app ==="
+            ls blog/app
+            echo "=== hub thue-xe ==="
+            ls blog/thue-xe
+            echo "=== hub xe-dien ==="
+            ls blog/xe-dien
+            echo "=== hub an-toan ==="
+            ls blog/an-toan
+            echo "=== hub dia-phuong ==="
+            ls blog/dia-phuong
+            echo "=== hub huong-dan ==="
+            ls blog/huong-dan
+            echo "=== published count ==="
+            node -e "const p=require('./data/blog/published.json');console.log(p.articles.length)"
+            echo "=== active batch ==="
+            node -e "const a=require('./docs/state/writer-assignments.json');console.log(a.active.batch_id, a.active.chunks.map(c=>c.seq+':'+c.status).join(' '))"
+          } > state-dump.txt 2>&1
+      - name: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add state-dump.txt
+          git commit -m "state dump [skip ci]" || echo "nothing"
+          git push
