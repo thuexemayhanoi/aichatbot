@@ -1,10 +1,10 @@
 {
   "$schema": "motoai/writer-assignments@1",
   "active": {
-    "batch_id": "WRITER-BATCH-0008",
-    "base_sha": "2b19639b15417dbbf6d81dd01a107d99f54a3bab",
-    "status": "COMPLETED",
-    "created_at": "2026-10-06T14:25:47.801Z",
+    "batch_id": "WRITER-BATCH-0009",
+    "base_sha": "3fdb07a51ef799cca621762c46bdd8721d6aac80",
+    "status": "ACTIVE",
+    "created_at": "2026-10-06T14:44:40.385Z",
     "limit": 18,
     "total": 18,
     "chunks": [
@@ -12,208 +12,91 @@
         "seq": 1,
         "writer": "writer_A",
         "ids": [
-          "BA-0209",
-          "BA-0210"
+          "BA-0227",
+          "BA-0228"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-06T14:29:13.403Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-06T14:29:13.403Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-06T14:29:13.403Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 2,
         "writer": "writer_B",
         "ids": [
-          "BA-0211",
-          "BA-0212"
+          "BA-0229",
+          "BA-0230"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-06T14:31:53.739Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-06T14:31:53.739Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-06T14:31:53.739Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 3,
         "writer": "writer_C",
         "ids": [
-          "BA-0213",
-          "BA-0214"
+          "BA-0231",
+          "BA-0232"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-06T14:34:21.514Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-06T14:34:21.514Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-06T14:34:21.514Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 4,
         "writer": "writer_A",
         "ids": [
-          "BA-0215",
-          "BA-0216"
+          "BA-0233",
+          "BA-0234"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-06T14:36:25.075Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-06T14:36:25.075Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-06T14:36:25.075Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 5,
         "writer": "writer_B",
         "ids": [
-          "BA-0217",
-          "BA-0218"
+          "BA-0235",
+          "BA-0236"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-06T14:38:33.111Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-06T14:38:33.111Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-06T14:38:33.111Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 6,
         "writer": "writer_C",
         "ids": [
-          "BA-0219",
-          "BA-0220"
+          "BA-0237",
+          "BA-0238"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-06T14:40:53.260Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-06T14:40:53.260Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-06T14:40:53.260Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 7,
         "writer": "writer_A",
         "ids": [
-          "BA-0221",
-          "BA-0222"
+          "BA-0239",
+          "BA-0240"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-06T14:42:06.675Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-06T14:42:06.675Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-06T14:42:06.675Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 8,
         "writer": "writer_B",
         "ids": [
-          "BA-0223",
-          "BA-0224"
+          "BA-0241",
+          "BA-0242"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-06T14:43:07.672Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-06T14:43:07.672Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-06T14:43:07.672Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 9,
         "writer": "writer_C",
         "ids": [
-          "BA-0225",
-          "BA-0226"
+          "BA-0243",
+          "BA-0244"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-06T14:44:15.002Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-06T14:44:15.002Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-06T14:44:15.002Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       }
     ]
   },
@@ -266,6 +149,13 @@
       "published": 9,
       "failed": 0,
       "completed_at": "2026-10-06T14:25:47.801Z"
+    },
+    {
+      "batch_id": "WRITER-BATCH-0008",
+      "total": 18,
+      "published": 9,
+      "failed": 0,
+      "completed_at": "2026-10-06T14:44:40.385Z"
     }
   ]
 }
