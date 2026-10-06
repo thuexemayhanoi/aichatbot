@@ -1,0 +1,56 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0008",
+  "writer": "writer_A",
+  "seq": 4,
+  "ids": [
+    "BA-0215",
+    "BA-0216"
+  ],
+  "body_paths": [
+    "data/blog/articles/ai-chiu-phat-khi-di-xe-thue.body.html",
+    "data/blog/articles/cau-nhat-tan-hoang-hon.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0215",
+      "category": "SAFE",
+      "slug": "ai-chiu-phat-khi-di-xe-thue",
+      "title": "ai Chịu Phạt Khi đi xe Thuê",
+      "description": "Phân định trách nhiệm phạt giao thông với xe máy thuê: lỗi chạy xe thuộc người điều khiển, lỗi giấy tờ xe thuộc chủ xe, và vai trò của hợp đồng thuê trong mọi tranh luận còn lại.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ai-chiu-phat-khi-di-xe-thue.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0216",
+      "category": "LOCAL",
+      "slug": "cau-nhat-tan-hoang-hon",
+      "title": "Cầu Nhật Tân Hoàng Hôn",
+      "description": "Ngắm hoàng hôn từ cầu Nhật Tân bằng xe máy thuê: khung giờ vàng, các điểm dừng an toàn quanh hai đầu cầu và cách ghép Hồ Tây, sông Hồng vào một buổi chiều.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cau-nhat-tan-hoang-hon.body.html",
+      "knowledge_chunks": [
+        "Cầu Nhật Tân khánh thành năm 2015, bắc qua sông Hồng nối Tây Hồ với Đông Anh, năm nhịp dây văng với tháp cao là khung ảnh đặc trưng.",
+        "Từ Hồ Gươm đi xe máy khoảng hai mươi phút theo tuyến Xuân Thủy; không dừng xe trên làn cầu, chọn điểm ven sông hoặc hai đầu cầu để chụp.",
+        "Kịch bản buổi chiều: ngắm hoàng hôn Hồ Tây trước, lên cầu lúc nắng cam đậm, ghép thêm sông Hồng và cầu Long Biên nếu còn thời gian."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T14:35:30.853Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T14:35:30.853Z"
+    }
+  ]
+}
