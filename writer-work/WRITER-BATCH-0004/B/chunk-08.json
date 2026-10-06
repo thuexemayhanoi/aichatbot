@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0004",
+  "writer": "writer_B",
+  "seq": 8,
+  "ids": [
+    "BA-0151",
+    "BA-0152"
+  ],
+  "body_paths": [
+    "data/blog/articles/kich-ban-dung-app-thue-xe-cho-nguoi-moi.body.html",
+    "data/blog/articles/cho-nguoi-than-tren-xe-thue.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0151",
+      "category": "APP",
+      "slug": "kich-ban-dung-app-thue-xe-cho-nguoi-moi",
+      "title": "Kịch Bản Dùng App Thuê xe Cho Người Mới",
+      "description": "Kịch bản dùng app thuê xe cho người mới: tạo tài khoản, chọn xe, nhận xe, trả xe và hoàn cọc, kèm timeline mẫu trọn vẹn một buổi thuê xe.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/kich-ban-dung-app-thue-xe-cho-nguoi-moi.body.html",
+      "knowledge_chunks": [
+        "Người mới dùng app thuê xe cần giấy tờ tùy thân và giấy phép lái xe, chụp ảnh rõ nét để hồ sơ được duyệt nhanh.",
+        "Trước khi nhận xe qua app, hãy kiểm tra đèn còi phanh, chụp ảnh hiện trạng từ nhiều góc để tránh tranh chấp khi trả xe.",
+        "Gia hạn trong app trước khi hết giờ thuê để tránh phụ phí trễ giờ cao hơn giá thuê thông thường."
+      ]
+    },
+    {
+      "article_id": "BA-0152",
+      "category": "RENT",
+      "slug": "cho-nguoi-than-tren-xe-thue",
+      "title": "Chở Người Thân Trên xe Thuê",
+      "description": "Chở người thân trên xe máy thuê: chọn dòng xe đủ mạnh, hai mũ bảo hiểm đạt chuẩn, kỹ năng lái khi chở đôi và thủ tục cọc khi đi hai người.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cho-nguoi-than-tren-xe-thue.body.html",
+      "knowledge_chunks": [
+        "Chở hai người nên chọn xe ga dòng lớn có yên rộng và phanh mạnh, đặc biệt khi người thân lớn tuổi cần yên thấp dễ lên xuống.",
+        "Người ngồi sau cũng phải đội mũ bảo hiểm đạt chuẩn, cửa hàng cho thuê cần phát đủ hai mũ khi nhận xe.",
+        "Xe chở đôi cần phanh sớm hơn và giữ khoảng cách gấp đôi với xe phía trước vì quãng phanh dài hơn."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T04:53:05.908Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T04:53:05.911Z"
+    }
+  ]
+}
