@@ -3,7 +3,8 @@ name: ops-qa-runner
 # One-shot ops helper (precedent: ops-owner-lock-release.yml).
 # Triggered by pushes of ops/candidate/** to main. Dumps requested matrix
 # rows + hub listings, and runs the local writer-queue/article-qa pipeline
-# on candidate bodies + chunk file when present. Commits ops/qa-result.txt.
+# on candidate bodies + chunk file when present. Commits ops/qa-result.txt
+# with if: always() so failures are captured in the result file.
 
 on:
   push:
@@ -21,6 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: dump state and run qa
+        id: dump
         run: |
           mkdir -p ops/out
           {
@@ -55,24 +57,25 @@ jobs:
               mkdir -p "ops/work/writers/writer-work/$BATCH/$WRITER"
               cp ops/candidate/chunk.json "ops/work/writers/writer-work/$BATCH/$WRITER/chunk-$(printf '%02d' $SEQ).json"
               echo "--- select-publish ---"
-              node tools/writer-queue.mjs select-publish --work ops/work/writers
+              node tools/writer-queue.mjs select-publish --work ops/work/writers || echo "SELECT_PUBLISH_FAILED"
               echo "--- stage ---"
-              node tools/writer-queue.mjs stage "$BATCH" "$SEQ" --work ops/work/writers
+              node tools/writer-queue.mjs stage "$BATCH" "$SEQ" --work ops/work/writers || echo "STAGE_FAILED"
               echo "--- article-qa $ID1 ---"
-              node tools/article-qa.mjs "$ID1"
+              node tools/article-qa.mjs "$ID1" || echo "QA_FAILED_$ID1"
               echo "--- article-qa $ID2 ---"
-              node tools/article-qa.mjs "$ID2"
+              node tools/article-qa.mjs "$ID2" || echo "QA_FAILED_$ID2"
               echo "--- verify-push ---"
-              node tools/writer-queue.mjs verify-push "$BATCH" "$SEQ" --work ops/work/writers
+              node tools/writer-queue.mjs verify-push "$BATCH" "$SEQ" --work ops/work/writers || echo "VERIFY_PUSH_FAILED"
             else
               echo "=== no candidate bodies, state dump only ==="
             fi
             echo "=== END ==="
-          } > ops/qa-result.txt 2>&1
+          } > ops/qa-result.txt 2>&1 || true
       - name: commit result
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ops/qa-result.txt
+          git add ops/qa-result.txt || true
           git commit -m "ops: qa-runner result [skip ci]" || echo "nothing"
-          git push
+          git push || echo "push failed"
