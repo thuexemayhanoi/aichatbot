@@ -1,0 +1,56 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0007",
+  "writer": "writer_A",
+  "seq": 1,
+  "ids": [
+    "BA-0191",
+    "BA-0192"
+  ],
+  "body_paths": [
+    "data/blog/articles/ngap-nuoc-va-xe-may.body.html",
+    "data/blog/articles/banh-cuon-va-hanh-trinh.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0191",
+      "category": "SAFE",
+      "slug": "ngap-nuoc-va-xe-may",
+      "title": "Ngập Nước và xe Máy",
+      "description": "Cách xử lý an toàn khi gặp đường ngập bằng xe máy: đánh giá độ sâu, kỹ thuật vượt ngập, kiểm tra xe sau ngập và quy định pháp lý liên quan.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ngap-nuoc-va-xe-may.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0192",
+      "category": "LOCAL",
+      "slug": "banh-cuon-va-hanh-trinh",
+      "title": "Bánh Cuốn và Hành Trình",
+      "description": "Hành trình thưởng thức bánh cuốn Hà Nội bằng xe máy: khu vực quán ngon, lịch trình theo cụm và lưu ý an toàn khi di chuyển giữa các quận.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/banh-cuon-va-hanh-trinh.body.html",
+      "knowledge_chunks": [
+        "Bánh cuốn Hà Nội đặc trưng với bánh tráng mỏng, nhân thịt bằm mộc, nước mắm chua ngọt, chả quế và hành khô.",
+        "Quán ngon thường nằm trong ngõ hoặc đầu phố dân cư, khung sáng sớm là lúc bánh tráng tại chỗ nóng nhất.",
+        "Lộ trình nên chia theo cụm hai ba quán gần nhau, ăn xong mới di chuyển, kết hợp phố cổ và ven Hồ Tây."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T10:00:08.527Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T10:00:08.529Z"
+    }
+  ]
+}
