@@ -1,0 +1,57 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0010",
+  "writer": "writer_A",
+  "seq": 4,
+  "ids": [
+    "BA-0251",
+    "BA-0252"
+  ],
+  "body_paths": [
+    "data/blog/articles/nhan-dien-hop-dong-thue-xe-hop-phap.body.html",
+    "data/blog/articles/tam-dao-bang-xe-may.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0251",
+      "category": "SAFE",
+      "slug": "nhan-dien-hop-dong-thue-xe-hop-phap",
+      "title": "Nhận Diện Hợp Đồng Thuê xe Hợp Pháp",
+      "description": "Hợp đồng thuê xe là hợp đồng thuê tài sản theo Bộ luật Dân sự 2015, lập được bằng văn bản, lời nói hay tin nhắn; bài chỉ cách nhận diện hợp đồng rõ ràng.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/nhan-dien-hop-dong-thue-xe-hop-phap.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0252",
+      "category": "LOCAL",
+      "slug": "tam-dao-bang-xe-may",
+      "title": "Tam Đảo Bằng xe Máy",
+      "description": "Tam Đảo cách Hà Nội khoảng 80km qua quốc lộ 2 và 2B với chặng đèo 13km: lộ trình xe máy, kỹ năng chạy đèo an toàn, điểm dừng và thời điểm đi đẹp.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/tam-dao-bang-xe-may.body.html",
+      "knowledge_chunks": [
+        "Tam Đảo thuộc Vĩnh Phúc cách Hà Nội khoảng tám mươi cây số, đi quốc lộ 2 tới Vĩnh Yên rồi rẽ quốc lộ 2B còn khoảng hai mươi tư cây số trong đó có chặng đèo dài khoảng mười ba cây số.",
+        "Chạy đèo Tam Đảo cần giữ làn phải nhường xe xuống dốc, vào cua chậm ra ga sau, phanh nhịp nhàng và bật đèn khi sương mù vì đường một bên núi một bên vực nhiều cua gắt.",
+        "Nên khởi hành sớm để qua đèo lúc trời sáng, canh giờ về trước chiều muộn vì sương mù và mưa dẻo có thể dày lên nhanh trên độ cao, thị trấn nhỏ đi bộ được hết các điểm chính."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T20:22:00.000Z",
+      "event": "WRITING"
+    },
+    {
+      "at": "2026-10-06T20:26:00.000Z",
+      "event": "LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T20:26:00.000Z",
+      "event": "READY_TO_PUSH"
+    }
+  ]
+}
