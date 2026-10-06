@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0008",
+  "writer": "writer_B",
+  "seq": 5,
+  "ids": [
+    "BA-0217",
+    "BA-0218"
+  ],
+  "body_paths": [
+    "data/blog/articles/goi-dien-tu-ung-dung-thue-xe.body.html",
+    "data/blog/articles/thue-xe-giao-tan-noi.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0217",
+      "category": "APP",
+      "slug": "goi-dien-tu-ung-dung-thue-xe",
+      "title": "Gọi Điện từ Ứng Dụng Thuê xe",
+      "description": "Nút gọi điện trong ứng dụng thuê xe máy dùng vào lúc nào, chuẩn bị nội dung thế nào để cuộc gọi hiệu quả và cách dự phòng khi điện thoại yếu pin hoặc mất sóng.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/goi-dien-tu-ung-dung-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Gọi điện từ ứng dụng phù hợp tình huống cần quyết ngay như chờ người giao xe hay sự cố giữa đường, còn câu hỏi chưa gấp nên dùng chat.",
+        "Nút gọi trong ứng dụng nối sẵn đúng đầu mối hỗ trợ nên không cần nhớ số, hữu ích cả với khách nước ngoài chưa nhớ số nội địa.",
+        "Trước khi gọi nên chuẩn bị ba thứ: đơn thuê của mình, việc cần giải quyết và đề xuất; sau cuộc gọi chốt lại bằng một tin nhắn."
+      ]
+    },
+    {
+      "article_id": "BA-0218",
+      "category": "RENT",
+      "slug": "thue-xe-giao-tan-noi",
+      "title": "Thuê xe Giao Tận Nơi",
+      "description": "Thuê xe máy có giao tận nơi: thủ tục đủ bộ làm tại địa điểm bạn chọn, cách tính phụ thu theo khoảng cách và ba tình huống hình thức này đáng tiền hơn tự đến cửa hàng.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-giao-tan-noi.body.html",
+      "knowledge_chunks": [
+        "Thuê xe giao tận nơi giữ nguyên thủ tục như thuê thường, chỉ khác địa điểm: khách sạn, nhà riêng, văn phòng hoặc điểm gần ga.",
+        "Phụ thu giao xe thường tính theo khoảng cách, nhiều dịch vụ miễn trong bán kính gần; luôn chốt giá trọn gói trong tin nhắn trước khi xác nhận.",
+        "Hình thức này đáng tiền khi lịch trình dày, ở xa cửa hàng, hoặc cần nhận sớm trả khuya ngoài giờ mở cửa của cửa hàng."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T14:37:37.393Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T14:37:37.393Z"
+    }
+  ]
+}
