@@ -1,0 +1,57 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0003",
+  "writer": "writer_A",
+  "seq": 7,
+  "ids": [
+    "BA-0131",
+    "BA-0132"
+  ],
+  "body_paths": [
+    "data/blog/articles/den-do-va-camera-phat-nguoi.body.html",
+    "data/blog/articles/bat-trang-gom-xe-may.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0131",
+      "category": "SAFE",
+      "slug": "den-do-va-camera-phat-nguoi",
+      "title": "Đèn đỏ và camera phạt nguội: quy định và mức phạt hiện hành",
+      "description": "Đèn đỏ là cấm đi theo khoản 4 Điều 11 Luật trật tự an toàn giao thông 2024, xe máy vượt đèn đỏ phạt 4-6 triệu theo Nghị định 168/2024 và camera ghi nhận vi phạm.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "agent_retrieval": false,
+      "knowledge_chunks": [],
+      "body": "data/blog/articles/den-do-va-camera-phat-nguoi.body.html"
+    },
+    {
+      "article_id": "BA-0132",
+      "category": "LOCAL",
+      "slug": "bat-trang-gom-xe-may",
+      "title": "Bát Tràng gốm và xe máy: mua sắm, đóng gói, chở về an toàn",
+      "description": "Chuyến mua sắm gốm Bát Tràng bằng xe máy thuê: cách chọn hàng, trả giá, đóng gói từng món, xếp cốp và lộ trình sáng sớm trọn vẹn.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/bat-trang-gom-xe-may.body.html",
+      "knowledge_chunks": [
+        "Mua gốm Bát Tràng bằng xe máy nên ưu tiên món gọn chồng xếp được, bọc giấy xốp từng món và xếp chặt cốp theo trọng lượng để về nguyên vẹn.",
+        "Đi chợ gốm buổi sáng sớm để hàng còn nguyên bộ và trời mát, quét khu ngoài nắm mặt bằng giá rồi vào trong so chất men trước khi quyết.",
+        "Với đơn gốm nặng hoặc số lượng lớn, nên dùng dịch vụ ship của xưởng và chỉ chở phần nhẹ bằng xe máy, giữ tốc độ đều trên đường đê về."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T03:59:11.529Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T03:59:11.531Z"
+    }
+  ]
+}
