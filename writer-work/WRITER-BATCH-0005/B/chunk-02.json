@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0005",
+  "writer": "writer_B",
+  "seq": 2,
+  "ids": [
+    "BA-0157",
+    "BA-0158"
+  ],
+  "body_paths": [
+    "data/blog/articles/so-sanh-ung-dung-thue-xe-may-dien-va-xe-xang.body.html",
+    "data/blog/articles/di-pho-co-bang-xe-may-thue.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0157",
+      "category": "APP",
+      "slug": "so-sanh-ung-dung-thue-xe-may-dien-va-xe-xang",
+      "title": "so Sánh Ứng Dụng Thuê xe Máy Điện và xe Xăng",
+      "description": "So sánh thuê xe máy điện và xe xăng qua app: tìm xe, giá thuê, trải nghiệm lái, ngưỡng pin và nhiên liệu cần hỏi khi nhận và trả xe.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/so-sanh-ung-dung-thue-xe-may-dien-va-xe-xang.body.html",
+      "knowledge_chunks": [
+        "Xe điện trên app thường rẻ hơn xe xăng cùng phân khúc ở chặng phố ngắn, còn xe xăng mạnh hơn khi đi xa hoặc chở nặng.",
+        "Khi nhận xe xăng qua app, hỏi ngưỡng nhiên liệu tối thiểu khi trả; với xe điện, hỏi mức pin tối thiểu để tránh tranh chấp hoàn cọc.",
+        "Người mới lái thường dễ làm quen xe điện dòng nhỏ vì không vào số và máy êm, phù hợp đi quanh khu trung tâm."
+      ]
+    },
+    {
+      "article_id": "BA-0158",
+      "category": "RENT",
+      "slug": "di-pho-co-bang-xe-may-thue",
+      "title": "đi Phố cổ Bằng xe Máy Thuê",
+      "description": "Đi phố cổ Hà Nội bằng xe máy thuê: chọn dòng xe nhỏ gọn, lộ trình một buổi, bãi gửi xe hợp lệ và quy định cấm dừng đỗ cần nhớ.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/di-pho-co-bang-xe-may-thue.body.html",
+      "knowledge_chunks": [
+        "Đi phố cổ nên chọn xe nhỏ gọn như xe số hoặc xe ga phổ thông vì ngõ hẹp và nhiều đường một chiều.",
+        "Buổi sáng sớm là khung giờ đẹp nhất để đi phố cổ, cuối tuần khu phố đi bộ quanh Hồ Gươm cấm xe máy.",
+        "Luôn gửi xe ở bãi có người trông và lấy vé quanh phố cổ vì nhiều đoạn cấm dừng đỗ và có thể bị xử phạt."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T05:09:05.665Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T05:09:05.667Z"
+    }
+  ]
+}
