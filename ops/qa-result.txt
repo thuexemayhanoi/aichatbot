@@ -363,29 +363,78 @@ ung-dung-ban-do-cho-nguoi-thue-xe
 === active batch ===
 WRITER-BATCH-0012 ACTIVE 1:PUBLISHED 2:PUBLISHED 3:PUBLISHED 4:PUBLISHED 5:PUBLISHED 6:PUBLISHED 7:PUBLISHED 8:PUBLISHED 9:RESERVED
 === QA PIPELINE ===
+--- work view ---
+ops/work/writers/writer-work/WRITER-BATCH-0012/C/chunk-09.json
 --- select-publish ---
-action=wait
+action=publish
+mode=first-publish
 batch=WRITER-BATCH-0012
 seq=9
-reason=chunk 9 (writer writer_C) is not started — strict FIFO: never publish ahead of a lower sequence
+writer=writer_C
+ids=BA-0297,BA-0298
+reason=fresh chunk — nothing on main yet, normal stage/verify/publish path
 --- stage ---
-ERROR: chunk file not found in the writer-branch view — the writer has not readied this chunk
-STAGE_FAILED
+action=stage
+batch_id=WRITER-BATCH-0012
+seq=9
+writer=writer_C
+ids=BA-0297,BA-0298
+staged=data/blog/articles/bao-quan-xe-dien-mua-mua.body.html,data/blog/articles/tra-xe-dung-gio-de-tranh-phi.body.html,data/blog/published.json
 --- article-qa BA-0297 ---
 PASS  matrix-row
 PASS  unique-article-id
 PASS  unique-slug
-FAIL  manifest-entry — published.json needs a complete draft entry (title, description, slug, category, body, published_date, author)
-QA FAIL BA-0297 score=0: critical: manifest-entry
-QA_FAILED_BA-0297
+PASS  manifest-entry
+PASS  id-slug-path
+PASS  body-exists
+PASS  fact-resolution
+PASS  body-substantial
+PASS  html-render-safe
+PASS  verified-phones-only
+PASS  verified-deposits-only
+PASS  internal-links-resolve
+WARN  body-words — 1376 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
+PASS  body-structure
+PASS  no-filler
+PASS  no-duplicate-paragraphs
+PASS  no-duplicate-sentences
+PASS  no-cross-article-duplicate
+PASS  no-cannibalization
+PASS  title-meta-valid
+PASS  seo-ownership
+PASS  no-external-links
+PASS  retrieval-consistency
+QA PASS BA-0297 score=95 warnings=1
 --- article-qa BA-0298 ---
 PASS  matrix-row
 PASS  unique-article-id
 PASS  unique-slug
-FAIL  manifest-entry — published.json needs a complete draft entry (title, description, slug, category, body, published_date, author)
-QA FAIL BA-0298 score=0: critical: manifest-entry
-QA_FAILED_BA-0298
+PASS  manifest-entry
+PASS  id-slug-path
+PASS  body-exists
+PASS  fact-resolution
+PASS  body-substantial
+PASS  html-render-safe
+PASS  verified-phones-only
+PASS  verified-deposits-only
+PASS  internal-links-resolve
+WARN  body-words — 1209 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
+PASS  body-structure
+PASS  no-filler
+PASS  no-duplicate-paragraphs
+PASS  no-duplicate-sentences
+PASS  no-cross-article-duplicate
+PASS  no-cannibalization
+PASS  title-meta-valid
+PASS  seo-ownership
+PASS  no-external-links
+PASS  retrieval-consistency
+QA PASS BA-0298 score=95 warnings=1
 --- verify-push ---
-ERROR: chunk file missing in the writer-branch view
-VERIFY_PUSH_FAILED
+proceed=true
+batch_id=WRITER-BATCH-0012
+seq=9
+writer=writer_C
+ids=BA-0297,BA-0298
+note=fresh-main verified: ACTIVE batch, READY_TO_PUSH chunk, both ids still PLANNED with exactly one draft each
 === END ===
