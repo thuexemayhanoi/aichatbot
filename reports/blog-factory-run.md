@@ -458,3 +458,10 @@
 - 2026-10-06 QA PASS BA-0127 score=95
 - 2026-10-06 QA PASS BA-0128 score=95
 - 2026-10-06 PUBLISHED 2 (BA-0127, BA-0128) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-06 CLAIM 1: BA-0129
+- 2026-10-06 FINISH BA-0129
+- 2026-10-06 CLAIM 1: BA-0130
+- 2026-10-06 FINISH BA-0130
+- 2026-10-06 QA PASS BA-0129 score=95
+- 2026-10-06 QA PASS BA-0130 score=95
+- 2026-10-06 PUBLISHED 2 (BA-0129, BA-0130) — one grouped build, pages, matrix, indexes, sitemap consistent
