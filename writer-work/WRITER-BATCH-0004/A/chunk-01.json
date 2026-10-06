@@ -1,0 +1,56 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0004",
+  "writer": "writer_A",
+  "seq": 1,
+  "ids": [
+    "BA-0137",
+    "BA-0138"
+  ],
+  "body_paths": [
+    "data/blog/articles/di-nguoc-chieu-hau-qua.body.html",
+    "data/blog/articles/duong-dong-by-bike.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0137",
+      "category": "SAFE",
+      "slug": "di-nguoc-chieu-hau-qua",
+      "title": "Đi Ngược Chiều Hậu Quả",
+      "description": "Hậu quả pháp lý và an toàn của lỗi đi ngược chiều theo Nghị định 168/2024: mức phạt 4-6 triệu đồng với xe máy, rủi ro va chạm chính diện và cách xử lý khi vào nhầm đường một chiều.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/di-nguoc-chieu-hau-qua.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0138",
+      "category": "LOCAL",
+      "slug": "duong-dong-by-bike",
+      "title": "Đường Đồng by Bike",
+      "description": "Trải nghiệm chạy đường Đồng bằng xe máy: trục nối Hồ Tây, bảo tàng Hà Nội và Cầu Giấy, khung giờ hợp lý, lưu ý an toàn và lịch trình mẫu một ngày.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/duong-dong-by-bike.body.html",
+      "knowledge_chunks": [
+        "Đường Đồng là trục phía bắc nối Hồ Tây, bảo tàng Hà Nội và khu Cầu Giấy, hợp đi sáng sớm hoặc chiều tối.",
+        "Khung giờ tan làm trên đường Đồng rất đông, chỉ nên đi khi có mục tiêu cụ thể.",
+        "Lịch trình mẫu: sáng ven Hồ Tây, giữa sáng bảo tàng, chiều lên phía trên trục, chiều tối ăn tối quanh khu ven hồ."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T04:18:38.804Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T04:18:38.806Z"
+    }
+  ]
+}
