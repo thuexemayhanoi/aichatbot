@@ -15,8 +15,21 @@
           "BA-0281",
           "BA-0282"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-06T21:08:09.394Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-06T21:08:09.395Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-06T21:08:09.395Z"
+          }
+        ]
       },
       {
         "seq": 2,
