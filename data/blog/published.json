@@ -2042,6 +2042,36 @@
         "Kiểm tra thời hạn bằng lái theo độ tuổi trước khi thuê; người trực tiếp điều khiển phải tự ký phiếu thuê.",
         "Nói trước năm điểm an toàn khi giao xe: né giờ cao điểm, đi chậm bên phải, mũ vừa đầu cài quai, số dự phòng và đánh giá tầm nhìn phản xạ."
       ]
+    },
+    {
+      "article_id": "BA-0141",
+      "category": "EV",
+      "slug": "coc-khi-thue-xe-dien",
+      "title": "Cọc Khi Thuê xe Điện",
+      "description": "Cọc khi thuê xe điện: khoảng đặt cọc theo dòng xe, ảnh hưởng của pin và phụ kiện sạc tới hoàn cọc, và điều kiện nhận lại đủ tiền cọc.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/coc-khi-thue-xe-dien.body.html",
+      "knowledge_chunks": [
+        "Khoảng cọc thuê xe điện chung với xe xăng, tùy dòng xe chứ không tùy nhiên liệu.",
+        "Với xe điện, ghi phần trăm pin lúc nhận và kiểm tra phụ kiện sạc để tránh tranh luận khi trả xe.",
+        "Hoàn cọc gắn với trả xe đúng giờ, đúng hiện trạng và pin trong mức thỏa thuận ghi trên phiếu."
+      ]
+    },
+    {
+      "article_id": "BA-0142",
+      "category": "GUIDE",
+      "slug": "do-xe-o-ha-noi",
+      "title": "Đỗ xe ở Hà Nội",
+      "description": "Hướng dẫn đỗ xe máy ở Hà Nội: chỗ được đỗ và cấm đỗ, cách chọn chỗ đỗ theo từng loại điểm đến và chuẩn bị khi đỗ xe thuê.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/do-xe-o-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Đỗ xe máy đúng chỗ: có vạch hoặc biển cho phép, bám lề phải, chừa lối đi bộ, không che cửa ngõ.",
+        "Ở phố cổ ưu tiên bãi giữ xe trong ngõ và luôn lấy vé khi gửi xe.",
+        "Xe thuê cần khóa cổ, mang theo đồ giá trị và chụp hiện trạng khi xe bị va đập ngoài đường."
+      ]
     }
   ]
 }
