@@ -1,10 +1,11 @@
 name: ops-qa-runner
 
 # One-shot ops helper (precedent: ops-owner-lock-release.yml).
-# Triggered by pushes of ops/candidate/** to main. Dumps requested matrix
-# rows + hub listings, and runs the local writer-queue/article-qa pipeline
-# on candidate bodies + chunk file when present. Commits ops/qa-result.txt
-# with if: always() so failures are captured in the result file.
+# Triggered by pushes of ops/candidate/** to main. Two modes:
+# - request line 1 starting with "plan": coordinator fallback, runs
+#   writer-queue plan and commits the new assignments.json.
+# - bodies + chunk.json present: full local select-publish/stage/QA pipeline.
+# Always commits ops/qa-result.txt with if: always().
 
 on:
   push:
@@ -21,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: dump state and run qa
+      - name: dump state, optional plan, run qa
         id: dump
         run: |
           mkdir -p ops/out
@@ -45,6 +46,13 @@ jobs:
             node -e "const p=require('./data/blog/published.json');console.log(p.articles.length)"
             echo "=== active batch ==="
             node -e "const a=require('./docs/state/writer-assignments.json');console.log(a.active.batch_id, a.active.status, a.active.chunks.map(c=>c.seq+':'+c.status).join(' '))"
+            if [ -f ops/candidate/request.txt ] && head -1 ops/candidate/request.txt | grep -q '^plan'; then
+              echo "=== PLAN MODE ==="
+              PLIMIT=$(head -1 ops/candidate/request.txt | grep -oE '[0-9]+' || true)
+              PLIMIT=${PLIMIT:-18}
+              node tools/writer-queue.mjs plan --limit "$PLIMIT" --base-sha "$(git rev-parse HEAD)" || echo "PLAN_FAILED"
+              cp docs/state/writer-assignments.json ops/out/assignments-next.json
+            fi
             if ls ops/candidate/bodies/*.body.html >/dev/null 2>&1; then
               echo "=== QA PIPELINE ==="
               mkdir -p ops/work/writers/writer-work ops/work/writers/data/blog/articles
@@ -80,6 +88,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add ops/qa-result.txt || true
-          git commit -m "ops: qa-runner result [skip ci]" || echo "nothing"
+          git add ops/out/assignments-next.json 2>/dev/null || true
+          git add docs/state/writer-assignments.json 2>/dev/null || true
+          MSG="ops: qa-runner result [skip ci]"
+          if ! git diff --cached --quiet -- docs/state/writer-assignments.json 2>/dev/null; then
+            BID=$(node -e "console.log(require('./docs/state/writer-assignments.json').active.batch_id)")
+            TOT=$(node -e "console.log(require('./docs/state/writer-assignments.json').active.total)")
+            NCH=$(node -e "console.log(require('./docs/state/writer-assignments.json').active.chunks.length)")
+            MSG="writer-coordinator: plan $BID ($TOT ids, $NCH chunks) [skip ci]"
+          fi
+          git commit -m "$MSG" || echo "nothing"
           git pull --rebase || true
           git push || echo "push failed"
