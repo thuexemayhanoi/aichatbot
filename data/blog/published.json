@@ -2012,6 +2012,36 @@
         "Khung giờ tan làm trên đường Đồng rất đông, chỉ nên đi khi có mục tiêu cụ thể.",
         "Lịch trình mẫu: sáng ven Hồ Tây, giữa sáng bảo tàng, chiều lên phía trên trục, chiều tối ăn tối quanh khu ven hồ."
       ]
+    },
+    {
+      "article_id": "BA-0139",
+      "category": "APP",
+      "slug": "chatbot-thue-xe-may-co-dang-tin-khong",
+      "title": "Chatbot Thuê xe Máy có Đáng Tin Không",
+      "description": "Đánh giá độ tin cậy của chatbot thuê xe máy: ba lớp dữ liệu, khi nào nên tin câu trả lời, khi nào nên gọi cửa hàng và cách kiểm chứng.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/chatbot-thue-xe-may-co-dang-tin-khong.body.html",
+      "knowledge_chunks": [
+        "Giá, cọc, giờ mở cửa và địa chỉ do chatbot đọc từ cấu hình cửa hàng, không do mô hình tự nghĩ ra.",
+        "Tin chatbot ở các câu kiểm chứng được ngay, hỏi lại nhân viên với tình trạng xe cụ thể hoặc yêu cầu đặc biệt.",
+        "Kiểm chứng nhanh bằng cách hỏi lại cùng một câu theo cách diễn đạt khác; hai con số khác nhau là tín hiệu nên gọi điện."
+      ]
+    },
+    {
+      "article_id": "BA-0140",
+      "category": "RENT",
+      "slug": "thue-xe-cho-nguoi-cao-tuoi",
+      "title": "Thuê xe Cho Người Cao Tuổi",
+      "description": "Hướng dẫn thuê xe máy cho người cao tuổi: chọn dòng xe dễ điều khiển, kiểm tra bằng lái theo tuổi, năm điểm an toàn và phần nhận xe hộ.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-cho-nguoi-cao-tuoi.body.html",
+      "knowledge_chunks": [
+        "Chọn xe cho người cao tuổi theo ba tiêu chí: xe thấp dễ chống chân, ga và phanh nhẹ, trọng lượng nhẹ.",
+        "Kiểm tra thời hạn bằng lái theo độ tuổi trước khi thuê; người trực tiếp điều khiển phải tự ký phiếu thuê.",
+        "Nói trước năm điểm an toàn khi giao xe: né giờ cao điểm, đi chậm bên phải, mũ vừa đầu cài quai, số dự phòng và đánh giá tầm nhìn phản xạ."
+      ]
     }
   ]
 }
