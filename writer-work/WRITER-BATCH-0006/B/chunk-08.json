@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0006",
+  "writer": "writer_B",
+  "seq": 8,
+  "ids": [
+    "BA-0187",
+    "BA-0188"
+  ],
+  "body_paths": [
+    "data/blog/articles/nhan-xe-khi-dat-qua-ung-dung.body.html",
+    "data/blog/articles/lien-he-dat-xe-nhanh.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0187",
+      "category": "APP",
+      "slug": "nhan-xe-khi-dat-qua-ung-dung",
+      "title": "Nhận xe Khi Đặt Qua Ứng Dụng",
+      "description": "Trình tự nhận xe khi đặt qua ứng dụng: kiểm tra đơn trước khi đến, đối chiếu mã và giấy tờ, nghiệm thu xe và xử lý phát sinh.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/nhan-xe-khi-dat-qua-ung-dung.body.html",
+      "knowledge_chunks": [
+        "Trước khi đến điểm nhận xe nên mở lại đơn để kiểm tra giờ nhận, loại xe đã chốt và địa điểm nhận cụ thể.",
+        "Tại quầy cần đối chiếu mã đơn và giấy tờ bản gốc, một số ứng dụng yêu cầu quét mã QR hoặc bắt đầu phiên thuê trong ứng dụng.",
+        "Vẫn phải tự nghiệm thu tình trạng xe trước khi rời điểm nhận và lưu lại bằng chứng trong ứng dụng."
+      ]
+    },
+    {
+      "article_id": "BA-0188",
+      "category": "RENT",
+      "slug": "lien-he-dat-xe-nhanh",
+      "title": "Liên hệ Đặt xe Nhanh",
+      "description": "Cách liên hệ đặt xe máy nhanh: chọn đúng kênh, chuẩn bị đủ thông tin trong một lượt trao đổi và phòng tránh điểm liên hệ giả mạo.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/lien-he-dat-xe-nhanh.body.html",
+      "knowledge_chunks": [
+        "Gọi điện nhanh nhất khi cần xe gấp, nhắn chat tiện khi cần gửi ảnh giấy tờ, đặt qua website phù hợp khi đặt trước.",
+        "Một lượt liên hệ nên gồm khung giờ nhận trả, loại xe, số lượng xe, giấy tờ đang có và điểm nhận xe.",
+        "Chỉ dùng số hiển thị trên trang chính chủ, không chuyển tiền trước qua số cá nhân chưa xác thực."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T09:47:40.349Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T09:47:40.351Z"
+    }
+  ]
+}
