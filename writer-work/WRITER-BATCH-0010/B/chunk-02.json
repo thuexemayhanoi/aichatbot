@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0010",
+  "writer": "writer_B",
+  "seq": 2,
+  "ids": [
+    "BA-0247",
+    "BA-0248"
+  ],
+  "body_paths": [
+    "data/blog/articles/cach-ung-dung-hieu-cau-hoi-ve-gia-xe.body.html",
+    "data/blog/articles/khoang-chi-phi-di-lai-khi-thue-xe.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0247",
+      "category": "APP",
+      "slug": "cach-ung-dung-hieu-cau-hoi-ve-gia-xe",
+      "title": "Cách Ứng Dụng Hiểu Câu Hỏi về Giá xe",
+      "description": "Cách ứng dụng thuê xe hiểu câu hỏi về giá: tách loại xe, thời lượng và yêu cầu phụ, vì sao cùng câu hỏi ra giá khác nhau, và cách hỏi cho báo giá chuẩn ngay một lần.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cach-ung-dung-hieu-cau-hoi-ve-gia-xe.body.html",
+      "knowledge_chunks": [
+        "Ứng dụng thuê xe hiểu câu hỏi giá bằng cách tách câu thành loại xe, thời lượng thuê, điểm đến và yêu cầu phụ rồi tra đúng bảng giá đồng bộ của cửa hàng.",
+        "Câu hỏi thiếu thông tin khiến hệ thống hỏi lại thay vì đoán bừa, nên nêu thẳng loại xe, số ngày và khung giờ giúp nhận báo giá chuẩn ngay một lần.",
+        "Cùng một câu hỏi có thể ra giá khác nhau vì chu kỳ thuê khác nhau, khung giờ cao điểm có chính sách riêng, và hai dòng xe nhìn na nhau có thể khác lớp giá."
+      ]
+    },
+    {
+      "article_id": "BA-0248",
+      "category": "RENT",
+      "slug": "khoang-chi-phi-di-lai-khi-thue-xe",
+      "title": "Khoảng Chi Phí đi Lại Khi Thuê xe",
+      "description": "Tổng chi phí đi lại khi thuê xe máy gồm giá thuê, xăng theo quãng đường, phí giữ xe và phí phát sinh; cách chọn gói ngày tuần tháng để tổng ngân sách sát thực tế.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/khoang-chi-phi-di-lai-khi-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Tổng chi phí đi lại bằng giá thuê cộng tiền xăng theo quãng đường cộng phí giữ xe tại các điểm dừng, phần xăng nên cộng thêm khoảng một phần năm cho rủi ro đi vòng.",
+        "Từ bốn ngày thuê trở lên nên hỏi gói tuần vì quy đổi thường rẻ hơn giá ngày nhân đôi, còn nếu lịch thưa thì gói ngắn vẫn rẻ hơn tổng chi phí thực trên mỗi ngày dùng.",
+        "Phí giữ xe, phí giao xe tận nơi và phí trễ hạn là ba khoản nhỏ dễ bỏ quên khi lên ngân sách, trong đó trễ hạn tránh được hoàn toàn bằng cách chủ động hỏi gia hạn sớm."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T19:59:51.303Z",
+      "event": "WRITING"
+    },
+    {
+      "at": "2026-10-06T19:59:51.303Z",
+      "event": "LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T19:59:51.303Z",
+      "event": "READY_TO_PUSH"
+    }
+  ]
+}
