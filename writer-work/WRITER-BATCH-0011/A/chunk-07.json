@@ -1,0 +1,57 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0011",
+  "writer": "writer_A",
+  "seq": 7,
+  "ids": [
+    "BA-0275",
+    "BA-0276"
+  ],
+  "body_paths": [
+    "data/blog/articles/bao-ve-du-lieu-ca-nhan-khi-thue-xe.body.html",
+    "data/blog/articles/cua-lo-ven-bien.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0275",
+      "category": "SAFE",
+      "slug": "bao-ve-du-lieu-ca-nhan-khi-thue-xe",
+      "title": "Bảo vệ dữ Liệu cá Nhân Khi Thuê xe",
+      "description": "Quyền bảo vệ dữ liệu cá nhân khi thuê xe máy theo Nghị định 13/2023/NĐ-CP: đồng ý thu thập, quyền truy cập, chỉnh sửa, xóa và thời hạn xử lý 72 giờ.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/bao-ve-du-lieu-ca-nhan-khi-thue-xe.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0276",
+      "category": "LOCAL",
+      "slug": "cua-lo-ven-bien",
+      "title": "Cửa Lò Ven Biển",
+      "description": "Kinh nghiệm đi Cửa Lò từ Hà Nội bằng xe máy thuê: chặng 300 km quốc lộ 1A, chia lộ trình, kiểm tra xe, đảo Ngư và lưu ý đường trường.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cua-lo-ven-bien.body.html",
+      "knowledge_chunks": [
+        "Từ Hà Nội đi Cửa Lò dài khoảng ba trăm kilômét theo quốc lộ 1A qua Hà Nam, Ninh Bình, Thanh Hóa rồi vào Nghệ An; Cửa Lò cách trung tâm thành phố Vinh khoảng mười sáu ki lômét.",
+        "Xe máy không được lên cao tốc nên phải đi trọn quốc lộ 1A; với chặng ba trăm ki lômét nên khởi hành sớm, nghỉ giải nhiệt mỗi khoảng một giờ hoặc chia hai ngày nghỉ đêm giữa tuyến.",
+        "Tại Cửa Lò có thể thuê thuyền của ngư dân ra đảo Ngư; giá và giờ đi phụ thuộc thời điểm và thời tiết, hỏi trực tiếp tại bến thuyền, và nên gửi xe ở bãi có người trông khi đi chơi biển."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T20:55:25.801Z",
+      "event": "chunk created and locally validated (SAFE legal gate: Nghị định 13/2023/NĐ-CP claims in CLAIM->SUBJECT->CONDITION->RULE->VERSION->PRIMARY SOURCE form, vbpl link; LOCAL Cửa Lò facts verified: ~300km QL1A, ~16km from Vinh; links resolve; no junk)"
+    },
+    {
+      "at": "2026-10-06T20:55:25.801Z",
+      "event": "WRITING -> LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T20:55:25.801Z",
+      "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+    }
+  ]
+}
