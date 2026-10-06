@@ -362,5 +362,30 @@ ung-dung-ban-do-cho-nguoi-thue-xe
 296
 === active batch ===
 WRITER-BATCH-0012 ACTIVE 1:PUBLISHED 2:PUBLISHED 3:PUBLISHED 4:PUBLISHED 5:PUBLISHED 6:PUBLISHED 7:PUBLISHED 8:PUBLISHED 9:RESERVED
-=== no candidate bodies, state dump only ===
+=== QA PIPELINE ===
+--- select-publish ---
+action=wait
+batch=WRITER-BATCH-0012
+seq=9
+reason=chunk 9 (writer writer_C) is not started — strict FIFO: never publish ahead of a lower sequence
+--- stage ---
+ERROR: chunk file not found in the writer-branch view — the writer has not readied this chunk
+STAGE_FAILED
+--- article-qa BA-0297 ---
+PASS  matrix-row
+PASS  unique-article-id
+PASS  unique-slug
+FAIL  manifest-entry — published.json needs a complete draft entry (title, description, slug, category, body, published_date, author)
+QA FAIL BA-0297 score=0: critical: manifest-entry
+QA_FAILED_BA-0297
+--- article-qa BA-0298 ---
+PASS  matrix-row
+PASS  unique-article-id
+PASS  unique-slug
+FAIL  manifest-entry — published.json needs a complete draft entry (title, description, slug, category, body, published_date, author)
+QA FAIL BA-0298 score=0: critical: manifest-entry
+QA_FAILED_BA-0298
+--- verify-push ---
+ERROR: chunk file missing in the writer-branch view
+VERIFY_PUSH_FAILED
 === END ===
