@@ -18,7 +18,7 @@
       "category": "SAFE",
       "slug": "thuoc-va-lai-xe",
       "title": "Thuốc và Lái xe",
-      "description": "Quy định pháp luật và mức phạt khi lái xe trong tình trạng có chất cấm trong cơ thể, cùng cảnh báo về thuốc gây buồn ngủ cho người thuê xe máy.",
+      "description": "Tác động của thuốc lên khả năng lái xe, mức phạt theo Luật 36/2024/QH15 và Nghị định 168/2024/NĐ-CP, cùng nguyên tắc an toàn khi thuê xe máy.",
       "published_date": "2026-10-06",
       "author": "MotoAI Editorial",
       "body": "data/blog/articles/thuoc-va-lai-xe.body.html",
@@ -29,14 +29,14 @@
       "category": "LOCAL",
       "slug": "hoang-hon-ho-tay",
       "title": "Hoàng Hôn hồ Tây",
-      "description": "Hành trình ngắm hoàng hôn quanh Hồ Tây bằng xe máy thuê: lộ trình ven hồ, điểm dừng đẹp, thời điểm lý tưởng và lưu ý an toàn buổi chiều tối.",
+      "description": "Lộ trình đuổi hoàng hôn quanh hồ Tây bằng xe máy: giờ vàng, điểm dừng đẹp, chỗ gửi xe và lưu ý an toàn buổi chiều đông đúc.",
       "published_date": "2026-10-06",
       "author": "MotoAI Editorial",
       "body": "data/blog/articles/hoang-hon-ho-tay.body.html",
       "knowledge_chunks": [
-        "Hồ Tây là hồ tự nhiên lớn nhất nội thành Hà Nội và là một trong những điểm ngắm hoàng hôn đẹp, phù hợp đi vòng quanh bằng xe máy thuê vào buổi chiều.",
-        "Lộ trình gợi ý gồm đường Âu Cơ, khu Quảng An nhiều quán cà phê view hồ, chùa Tây Hồ ở phía nam và đường Thanh Niên nối giữa Hồ Tây và Hồ Trúc Bạch.",
-        "Nên khởi hành trước giờ mặt trời lặn khoảng một tiếng, đi chậm đúng làn, không dừng xe giữa đường chụp ảnh và chuẩn bị áo ấm vào mùa đông vì gió ven hồ."
+        "Hoàng hôn hồ Tây đẹp nhất từ khoảng ba mươi phút trước khi mặt trời lặn, khi ánh nắng ngả sang màu cam dịu, phù hợp chạy xe chậm dọc đường bao quanh hồ.",
+        "Lộ trình gợi ý bắt đầu từ đường Thanh Niên giữa Hồ Tây và Hồ Trúc Bạch, chạy dọc Quán Thánh lên phía Nhật Tân, hết khoảng một đến hai giờ chạy chậm.",
+        "Khi ra hồ ngắm hoàng hôn nên gửi xe ở các bãi có người trông dọc Xuân Diệu và Thanh Niên, khóa xe kỹ và không đỗ xe trên vạch người đi bộ."
       ]
     }
   ],
@@ -44,13 +44,13 @@
     {
       "from": "WRITING",
       "to": "LOCAL_QA_PASS",
-      "at": "2026-10-06T09:09:40.538Z",
+      "at": "2026-10-06T11:36:14.568Z",
       "reason": "local scoped QA PASS"
     },
     {
       "from": "LOCAL_QA_PASS",
       "to": "READY_TO_PUSH",
-      "at": "2026-10-06T09:09:40.538Z"
+      "at": "2026-10-06T11:36:14.568Z"
     }
   ]
 }
