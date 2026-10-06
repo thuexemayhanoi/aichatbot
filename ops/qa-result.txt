@@ -1,17 +1,7 @@
 === request ===
-^BA-029[7-9],|^BA-030[0-6],
-retry: 3
+plan 18
 === matrix rows ===
-BA-0297,B06,EV,PLANNED,bảo quản xe điện mùa mưa,Xe điện / xe máy điện; bảo quản xe điện mùa mưa,informational-product,Bảo Quản xe Điện Mùa Mưa,bao-quan-xe-dien-mua-mua,blog/xe-dien/bao-quan-xe-dien-mua-mua/index.html,blog/xe-dien/,,no,no-external,blog/xe-dien/; /,none,yes,MotoAI Editorial,,,0,,,
-BA-0298,B06,GUIDE,PLANNED,trả xe đúng giờ để tránh phí,Hướng dẫn / thủ tục; trả xe đúng giờ để tránh phí,informational,Trả xe Đúng Giờ để Tránh Phí,tra-xe-dung-gio-de-tranh-phi,blog/huong-dan/tra-xe-dung-gio-de-tranh-phi/index.html,blog/huong-dan/,,no,no-external,blog/huong-dan/; /,none,yes,MotoAI Editorial,,,0,,,
-BA-0299,B06,SAFE,PLANNED,mũ bảo hiểm chuẩn cho du khách,An toàn / pháp lý; mũ bảo hiểm chuẩn cho du khách,informational-legal,mũ Bảo Hiểm Chuẩn Cho du Khách,mu-bao-hiem-chuan-cho-du-khach,blog/an-toan/mu-bao-hiem-chuan-cho-du-khach/index.html,blog/an-toan/,,yes,legal-gate,blog/an-toan/; /,none,no,MotoAI Editorial,,,0,,,legal-gate: CLAIM->SUBJECT->CONDITION->RULE->VERSION->PRIMARY SOURCE required
-BA-0300,B06,LOCAL,PLANNED,cúc phương weekend,Địa phương / du lịch; cúc phương weekend,local-informational,Cúc Phương Weekend,cuc-phuong-weekend,blog/dia-phuong/cuc-phuong-weekend/index.html,blog/dia-phuong/,,no,no-external,blog/dia-phuong/; /,none,yes,MotoAI Editorial,,,0,,,
-BA-0301,B07,APP,PLANNED,module gợi ý xe trong ứng dụng thuê xe,App & Ứng dụng; module gợi ý xe trong ứng dụng thuê xe,informational-product,Module Gợi ý xe Trong Ứng Dụng Thuê xe,module-goi-y-xe-trong-ung-dung-thue-xe,blog/app/module-goi-y-xe-trong-ung-dung-thue-xe/index.html,blog/app/,,no,no-external,blog/app/; /,none,yes,MotoAI Editorial,,,0,,,
-BA-0302,B07,RENT,PLANNED,xe nào dễ điều khiển,Thuê xe máy; xe nào dễ điều khiển,commercial-informational,xe Nào dễ Điều Khiển,xe-nao-de-dieu-khien,blog/thue-xe/xe-nao-de-dieu-khien/index.html,blog/thue-xe/,,no,no-external,blog/thue-xe/; /,none,yes,MotoAI Editorial,,,0,,,
-BA-0303,B07,EV,PLANNED,xe điện cho thành phố nhỏ,Xe điện / xe máy điện; xe điện cho thành phố nhỏ,informational-product,xe Điện Cho Thành Phố Nhỏ,xe-dien-cho-thanh-pho-nho,blog/xe-dien/xe-dien-cho-thanh-pho-nho/index.html,blog/xe-dien/,,no,no-external,blog/xe-dien/; /,none,yes,MotoAI Editorial,,,0,,,
-BA-0304,B07,GUIDE,PLANNED,đánh giá cửa hàng sau khi thuê,Hướng dẫn / thủ tục; đánh giá cửa hàng sau khi thuê,informational,Đánh Giá Cửa Hàng Sau Khi Thuê,danh-gia-cua-hang-sau-khi-thue,blog/huong-dan/danh-gia-cua-hang-sau-khi-thue/index.html,blog/huong-dan/,,no,no-external,blog/huong-dan/; /,none,yes,MotoAI Editorial,,,0,,,
-BA-0305,B07,SAFE,PLANNED,tốc độ cho phép trong phố cho du khách,An toàn / pháp lý; tốc độ cho phép trong phố cho du khách,informational-legal,Tốc độ Cho Phép Trong Phố Cho du Khách,toc-do-cho-phep-trong-pho-cho-du-khach,blog/an-toan/toc-do-cho-phep-trong-pho-cho-du-khach/index.html,blog/an-toan/,,yes,legal-gate,blog/an-toan/; /,none,no,MotoAI Editorial,,,0,,,legal-gate: CLAIM->SUBJECT->CONDITION->RULE->VERSION->PRIMARY SOURCE required
-BA-0306,B07,LOCAL,PLANNED,hành trình mài châu,Địa phương / du lịch; hành trình mài châu,local-informational,Hành Trình Mài Châu,hanh-trinh-mai-chau,blog/dia-phuong/hanh-trinh-mai-chau/index.html,blog/dia-phuong/,,no,no-external,blog/dia-phuong/; /,none,yes,MotoAI Editorial,,,0,,,
+(no matrix rows)
 === hub app ===
 agent-chon-xe-giup-ban
 ai-tra-loi-trong-ung-dung-thue-xe
@@ -140,6 +130,7 @@ app-mo-khoa-xe-dien
 app-theo-doi-pin-xe-dien
 app-thue-xe-dien
 bao-duong-xe-dien
+bao-quan-xe-dien-mua-mua
 cach-giu-pin-ben-khi-thue-xe-dien
 chi-phi
 chi-phi-dien-khi-thue-xe-dien
@@ -355,31 +346,34 @@ thue-xe-can-nguoi-bao-lanh-khong
 thue-xe-cho-nguoi-duoi-18-tuoi
 thue-xe-va-check-in-khach-san
 tinh-lo-trinh-thue-xe-theo-ngay
+tra-xe-dung-gio-de-tranh-phi
 troi-mua-thue-xe-may
 trom-cap-xe-va-xe-thue
 ung-dung-ban-do-cho-nguoi-thue-xe
 === published count ===
-296
+298
 === active batch ===
-WRITER-BATCH-0012 ACTIVE 1:PUBLISHED 2:PUBLISHED 3:PUBLISHED 4:PUBLISHED 5:PUBLISHED 6:PUBLISHED 7:PUBLISHED 8:PUBLISHED 9:RESERVED
+WRITER-BATCH-0012 COMPLETED 1:PUBLISHED 2:PUBLISHED 3:PUBLISHED 4:PUBLISHED 5:PUBLISHED 6:PUBLISHED 7:PUBLISHED 8:PUBLISHED 9:PUBLISHED
+=== PLAN MODE ===
+created=true
+batch_id=WRITER-BATCH-0013
+total=18
+chunks=9
+writer_A_ids=6
+writer_B_ids=6
+writer_C_ids=6
+assignment_file=docs/state/writer-assignments.json
 === QA PIPELINE ===
 --- work view ---
 ops/work/writers/writer-work/WRITER-BATCH-0012/C/chunk-09.json
 --- select-publish ---
-action=publish
-mode=first-publish
-batch=WRITER-BATCH-0012
-seq=9
-writer=writer_C
-ids=BA-0297,BA-0298
-reason=fresh chunk — nothing on main yet, normal stage/verify/publish path
+action=wait
+batch=WRITER-BATCH-0013
+seq=1
+reason=chunk 1 (writer writer_A) is not started — strict FIFO: never publish ahead of a lower sequence
 --- stage ---
-action=stage
-batch_id=WRITER-BATCH-0012
-seq=9
-writer=writer_C
-ids=BA-0297,BA-0298
-staged=data/blog/articles/bao-quan-xe-dien-mua-mua.body.html,data/blog/articles/tra-xe-dung-gio-de-tranh-phi.body.html,data/blog/published.json
+ERROR: unknown batch: WRITER-BATCH-0012
+STAGE_FAILED
 --- article-qa BA-0297 ---
 PASS  matrix-row
 PASS  unique-article-id
@@ -431,10 +425,6 @@ PASS  no-external-links
 PASS  retrieval-consistency
 QA PASS BA-0298 score=95 warnings=1
 --- verify-push ---
-proceed=true
-batch_id=WRITER-BATCH-0012
-seq=9
-writer=writer_C
-ids=BA-0297,BA-0298
-note=fresh-main verified: ACTIVE batch, READY_TO_PUSH chunk, both ids still PLANNED with exactly one draft each
+ERROR: batch WRITER-BATCH-0012 is not the ACTIVE assignment (superseded or missing) — push refused
+VERIFY_PUSH_FAILED
 === END ===
