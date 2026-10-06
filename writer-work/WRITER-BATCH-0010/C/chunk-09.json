@@ -1,0 +1,61 @@
+{
+ "$schema": "motoai/writer-chunk@1",
+ "batch_id": "WRITER-BATCH-0010",
+ "writer": "writer_C",
+ "seq": 9,
+ "ids": [
+  "BA-0261",
+  "BA-0262"
+ ],
+ "body_paths": [
+  "data/blog/articles/app-mo-khoa-xe-dien.body.html",
+  "data/blog/articles/troi-mua-thue-xe-may.body.html"
+ ],
+ "status": "READY_TO_PUSH",
+ "drafts": [
+  {
+   "article_id": "BA-0261",
+   "category": "EV",
+   "slug": "app-mo-khoa-xe-dien",
+   "title": "App mở Khóa xe Điện",
+   "description": "Cách ứng dụng trên điện thoại mở khóa xe máy điện cho thuê: nguyên lý khóa điện tử, trải nghiệm nhận xe, mã dự phòng và những việc cần làm trước khi khởi hành.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/app-mo-khoa-xe-dien.body.html",
+   "knowledge_chunks": [
+    "Xe máy điện cho thuê dùng khóa điện tử điều khiển qua app: điện thoại gửi tín hiệu mã hóa mở khóa, quyền gắn với thời gian thuê và tự thu hồi khi hết hạn.",
+    "Trước khi nhận xe điện khóa app, hãy thử mở khóa vài lần, hỏi mã dự phòng khi điện thoại hết pin và kiểm tra mức pin hiển thị khớp với cam kết hợp đồng.",
+    "Khóa app loại bỏ rủi ro mất chìa và thường đi kèm bảng hiển thị pin, quãng đường; khi trả xe nhớ khóa lại bằng app để trạng thái được ghi nhận."
+   ]
+  },
+  {
+   "article_id": "BA-0262",
+   "category": "GUIDE",
+   "slug": "troi-mua-thue-xe-may",
+   "title": "Trời Mưa Thuê xe Máy",
+   "description": "Kỹ năng thuê và điều khiển xe máy ngày mưa: trang bị áo mưa hai mảnh, kiểm tra lốp khi nhận xe, cách chạy đường ướt và phương án dừng khi mưa lớn bất chợt.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/troi-mua-thue-xe-may.body.html",
+   "knowledge_chunks": [
+    "Mưa nhỏ và mưa rào ngắn hiếm khi là lý do hủy chuyến thuê xe máy, nhưng mưa lớn kéo dài đòi hỏi tính lại lộ trình và chuẩn bị trang bị chống nước cho điện thoại, giấy tờ.",
+    "Khi đường ướt, mọi thao tác lái cần chậm và sớm hơn: giảm tốc trước vạch sơn, miệng cống và vũng nước, không phanh gấp, tăng gấp đôi khoảng cách với xe phía trước.",
+    "Gặp mưa lớn giữa chặng, hãy tìm chỗ dừng có mái che và chờ mưa dịu thay vì chạy tiếp; trao đổi sớm với cửa hàng nếu muốn đổi lịch vì thời tiết xấu."
+   ]
+  }
+ ],
+ "history": [
+  {
+   "at": "2026-10-06T20:34:13.963Z",
+   "event": "chunk created and locally validated (bodies QA-clean, links resolve, no junk, matrix titles/slugs verified)"
+  },
+  {
+   "at": "2026-10-06T20:34:13.963Z",
+   "event": "WRITING -> LOCAL_QA_PASS"
+  },
+  {
+   "at": "2026-10-06T20:34:13.963Z",
+   "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+  }
+ ]
+}
