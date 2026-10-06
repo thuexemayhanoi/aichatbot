@@ -1,0 +1,61 @@
+{
+ "$schema": "motoai/writer-chunk@1",
+ "batch_id": "WRITER-BATCH-0010",
+ "writer": "writer_B",
+ "seq": 8,
+ "ids": [
+  "BA-0259",
+  "BA-0260"
+ ],
+ "body_paths": [
+  "data/blog/articles/ai-tra-loi-trong-ung-dung-thue-xe.body.html",
+  "data/blog/articles/cach-doc-bang-gia-thue-xe.body.html"
+ ],
+ "status": "READY_TO_PUSH",
+ "drafts": [
+  {
+   "article_id": "BA-0259",
+   "category": "APP",
+   "slug": "ai-tra-loi-trong-ung-dung-thue-xe",
+   "title": "ai Trả Lời Trong Ứng Dụng Thuê xe",
+   "description": "Cách trợ lý tự động trong ứng dụng thuê xe trả lời câu hỏi phổ biến về giá, giấy tờ, thủ tục và khi nào hội thoại được chuyển tới nhân viên thật của cửa hàng.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/ai-tra-loi-trong-ung-dung-thue-xe.body.html",
+   "knowledge_chunks": [
+    "Trong ứng dụng thuê xe, trợ lý tự động trả lời tức thì nhóm câu hỏi phổ biến có đáp án cố định như giá, giấy tờ và thủ tục, còn câu hỏi tình huống đặc thù được chuyển tới nhân viên cửa hàng.",
+    "Để được trả lời nhanh khi thuê xe qua app, hãy nêu đủ ngay câu đầu loại xe, thời gian và địa điểm, hỏi từng việc một và hỏi thẳng con số khi cần so sánh.",
+    "Cách phân biệt đang nói chuyện với máy hay người trong app thuê xe là nhìn nhãn công cụ và thông báo chuyển tiếp; khi cần quyết định chính xác, gọi điện vẫn là kênh nhanh nhất."
+   ]
+  },
+  {
+   "article_id": "BA-0260",
+   "category": "RENT",
+   "slug": "cach-doc-bang-gia-thue-xe",
+   "title": "Cách Đọc Bảng Giá Thuê xe",
+   "description": "Kỹ năng đọc bảng giá thuê xe máy: nhận diện chu kỳ ngày tuần tháng, phần ghi chú nhỏ dưới bảng, khoản phát sinh ngoài giá niêm yết và cách yêu cầu báo giá trọn gói.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/cach-doc-bang-gia-thue-xe.body.html",
+   "knowledge_chunks": [
+    "Đọc bảng giá thuê xe đúng cách cần xác định chu kỳ giá ngày tuần tháng trước, vì gói dài hạn thường có đơn giá riêng rẻ hơn quy tắc nhân lên từ giá ngày.",
+    "Giá niêm yết chưa phải tổng chi phí; ngoài cột giá còn có khoản giữ chỗ hoàn lại, phí giao xe và phí phát sinh, nên hãy yêu cầu báo giá trọn gói theo đúng lịch trình rồi so hai con số cuối.",
+    "Phần chữ nhỏ dưới bảng giá chứa điều kiện áp dụng, cách tính ngày và mức theo mùa; với dải giá nên hỏi mức áp đúng cho khung thời gian mình thuê thay vì lấy trung bình."
+   ]
+  }
+ ],
+ "history": [
+  {
+   "at": "2026-10-06T20:30:00.821Z",
+   "event": "chunk created and locally validated (bodies QA-clean, links resolve, no junk, matrix titles/slugs verified)"
+  },
+  {
+   "at": "2026-10-06T20:30:00.821Z",
+   "event": "WRITING -> LOCAL_QA_PASS"
+  },
+  {
+   "at": "2026-10-06T20:30:00.821Z",
+   "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+  }
+ ]
+}
