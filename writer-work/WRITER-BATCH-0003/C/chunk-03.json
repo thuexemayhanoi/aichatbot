@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0003",
+  "writer": "writer_C",
+  "seq": 3,
+  "ids": [
+    "BA-0123",
+    "BA-0124"
+  ],
+  "body_paths": [
+    "data/blog/articles/xe-dien-cho-hai-nguoi.body.html",
+    "data/blog/articles/chay-xe-so-cho-nguoi-moi.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0123",
+      "category": "EV",
+      "slug": "xe-dien-cho-hai-nguoi",
+      "title": "Xe điện chở hai người: chọn xe, chạy đôi và lưu ý pin",
+      "description": "Xe điện chở hai người có yên dài và khung chắc, hợp cho cặp đôi đi phố. Hướng dẫn chọn xe, an toàn khi chạy đôi và trù bị pin khi chở thêm người.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/xe-dien-cho-hai-nguoi.body.html",
+      "knowledge_chunks": [
+        "Xe điện chở hai người có yên dài, khung chịu lực và cốp rộng, phù hợp cặp đôi đi phố, trong khi xe điện mini tối ưu cho một người quãng ngắn.",
+        "Chở hai người làm xe điện tiêu hao pin nhanh hơn và ì hơn khi tăng tốc, nên tính trù dư lượng pin và xác định điểm sạc trước khi đi xa.",
+        "Khi chạy đôi cần khởi hành nhẹ ga, tăng khoảng cách phanh, cả hai đội mũ bảo hiểm cài quai và không chở quá hai người."
+      ]
+    },
+    {
+      "article_id": "BA-0124",
+      "category": "GUIDE",
+      "slug": "chay-xe-so-cho-nguoi-moi",
+      "title": "Chạy xe số cho người mới: khởi hành, lên số và phanh đúng cách",
+      "description": "Hướng dẫn chạy xe số cho người mới từ con số không: làm quen tay côn chân ga, khởi hành không tắt máy, lên xuống số đúng nhịp và phanh an toàn.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/chay-xe-so-cho-nguoi-moi.body.html",
+      "knowledge_chunks": [
+        "Khởi hành xe số gồm bốn bước: bóp côn về số 0 nổ máy, ấn cần về số 1, nhả côn từ từ tới điểm ma sát kết hợp ga nhẹ, rồi nhả hết côn khi xe trôi đều.",
+        "Lên số khi máy đã đều và xe có đà, xuống số khi giảm tốc hoặc cần lực, luôn bóp côn đủ trước khi đổi số để bảo vệ hộp số.",
+        "Phanh ưu tiên phanh sau từ từ, phối hợp phanh trước nhẹ nhàng, không bóp phanh trước khi xe đang nghiêng trong cua và luôn giảm số trước khi vào cua."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T03:38:21.358Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T03:38:21.360Z"
+    }
+  ]
+}
