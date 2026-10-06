@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v63">
+  <title>Ứng Dụng Thuê xe và Khách Vãng Lai</title>
+  <meta name="description" content="Ứng dụng thuê xe cho khách vãng lai: xem giá và tình trạng xe tức thì, không cần tài khoản, thủ tục rút gọn khi đến trực tiếp và mẹo dùng app tại quầy.">
+  <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/blog/app/ung-dung-thue-xe-va-khach-vang-lai/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Ứng Dụng Thuê xe và Khách Vãng Lai">
+  <meta property="og:description" content="Ứng dụng thuê xe cho khách vãng lai: xem giá và tình trạng xe tức thì, không cần tài khoản, thủ tục rút gọn khi đến trực tiếp và mẹo dùng app tại quầy.">
+  <meta property="og:url" content="https://thuexemayhanoi.github.io/aichatbot/blog/app/ung-dung-thue-xe-va-khach-vang-lai/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ứng Dụng Thuê xe và Khách Vãng Lai">
+  <meta name="twitter:description" content="Ứng dụng thuê xe cho khách vãng lai: xem giá và tình trạng xe tức thì, không cần tài khoản, thủ tục rút gọn khi đến trực tiếp và mẹo dùng app tại quầy.">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=63">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=63">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/aichatbot/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/aichatbot/blog/">Cẩm nang</a>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/aichatbot/blog/cong-cu-huong-dan/" aria-haspopup="true" aria-current="page">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/app/" aria-current="page">📱 Ứng Dụng</a>
+            <a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/aichatbot/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-ung-dung-thue-xe-va-khach-vang-lai">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <a href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a> › <a href="/aichatbot/blog/app/">Ứng Dụng</a> › <span>Ứng Dụng Thuê xe và Khách Vãng Lai</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/aichatbot/blog/app/">Ứng Dụng</a>
+        <a class="blog-chip blog-chip-parent" href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+      </p>
+      <p class="blog-screen-label">Ứng Dụng</p>
+      <h1 class="blog-screen-title">Ứng Dụng Thuê xe và Khách Vãng Lai</h1>
+      <p class="blog-screen-lead">Ứng dụng thuê xe cho khách vãng lai: xem giá và tình trạng xe tức thì, không cần tài khoản, thủ tục rút gọn khi đến trực tiếp và mẹo dùng app tại quầy.</p>
+      <p class="byline">MotoAI Editorial · 2026-10-06 · Ứng Dụng · 6 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Ứng dụng thuê xe cho khách vãng lai: xem giá và tình trạng xe tức thì, không cần tài khoản, thủ tục rút gọn khi đến trực tiếp và mẹo dùng app tại quầy.</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#khach-vang-lai-khac-khach-dat-truoc-o-diem-nao">Khách vãng lai khác khách đặt trước ở điểm nào</a></li>
+        <li class="toc-l2"><a href="#xem-gia-va-tinh-trang-xe-trong-vai-giay">Xem giá và tình trạng xe trong vài giây</a></li>
+        <li class="toc-l2"><a href="#khong-can-tai-khoan-khong-can-dat-truoc">Không cần tài khoản, không cần đặt trước</a></li>
+        <li class="toc-l2"><a href="#khi-den-noi-moi-mo-app-vai-meo-nho">Khi đến nơi mới mở app: vài mẹo nhỏ</a></li>
+        <li class="toc-l2"><a href="#vang-lai-hom-nay-khach-quen-tuan-sau">Vãng lai hôm nay, khách quen tuần sau</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+        <li class="toc-l3"><a href="#den-cua-hang-khong-dat-truoc-thi-con-xe-khong">Đến cửa hàng không đặt trước thì còn xe không?</a></li>
+        <li class="toc-l3"><a href="#dung-app-co-bat-tao-tai-khoan-khong">Dùng app có bắt tạo tài khoản không?</a></li>
+        <li class="toc-l3"><a href="#gia-trong-app-va-gia-tai-quay-co-khac-nhau-khong">Giá trong app và giá tại quầy có khác nhau không?</a></li>
+        <li class="toc-l3"><a href="#thue-gap-can-chuan-bi-giay-to-gi">Thuê gấp cần chuẩn bị giấy tờ gì?</a></li>
+        <li class="toc-l3"><a href="#khach-vang-lai-co-duoc-gia-nhu-khach-dat-truoc-khong">Khách vãng lai có được giá như khách đặt trước không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#khach-vang-lai-khac-khach-dat-truoc-o-diem-nao">Khách vãng lai khác khách đặt trước ở điểm nào</a></li>
+        <li class="toc-l2"><a href="#xem-gia-va-tinh-trang-xe-trong-vai-giay">Xem giá và tình trạng xe trong vài giây</a></li>
+        <li class="toc-l2"><a href="#khong-can-tai-khoan-khong-can-dat-truoc">Không cần tài khoản, không cần đặt trước</a></li>
+        <li class="toc-l2"><a href="#khi-den-noi-moi-mo-app-vai-meo-nho">Khi đến nơi mới mở app: vài mẹo nhỏ</a></li>
+        <li class="toc-l2"><a href="#vang-lai-hom-nay-khach-quen-tuan-sau">Vãng lai hôm nay, khách quen tuần sau</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+        <li class="toc-l3"><a href="#den-cua-hang-khong-dat-truoc-thi-con-xe-khong">Đến cửa hàng không đặt trước thì còn xe không?</a></li>
+        <li class="toc-l3"><a href="#dung-app-co-bat-tao-tai-khoan-khong">Dùng app có bắt tạo tài khoản không?</a></li>
+        <li class="toc-l3"><a href="#gia-trong-app-va-gia-tai-quay-co-khac-nhau-khong">Giá trong app và giá tại quầy có khác nhau không?</a></li>
+        <li class="toc-l3"><a href="#thue-gap-can-chuan-bi-giay-to-gi">Thuê gấp cần chuẩn bị giấy tờ gì?</a></li>
+        <li class="toc-l3"><a href="#khach-vang-lai-co-duoc-gia-nhu-khach-dat-truoc-khong">Khách vãng lai có được giá như khách đặt trước không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Không phải khách thuê xe nào cũng đặt trước: nhiều người đi ngang qua, thấy cửa hàng cho thuê và muốn lấy xe ngay trong vài phút. Nhóm khách vãng lai này có nhu cầu riêng: muốn biết giá nhanh, muốn chắc chắn còn xe, và không thích phải đăng ký tài khoản hay thao tác phức tạp khi chỉ cần một chiếc xe cho vài giờ chiều. Bài viết này xem xét cách ứng dụng thuê xe phục vụ khách vãng lai, và vì sao dùng app không hề rườm rà dù bạn chỉ ghé qua.</p>
+  
+  <h2 id="khach-vang-lai-khac-khach-dat-truoc-o-diem-nao">Khách vãng lai khác khách đặt trước ở điểm nào</h2>
+  <p>Khách đặt trước có thời gian tìm hiểu kỹ; khách vãng lai thì ngược lại, quyết định diễn ra ngay tại cửa hàng hoặc chỉ vài phút trước đó. Điều họ cần nhất là ba thông tin tức thì: còn xe loại mình muốn không, giá bao nhiêu, và cần giấy tờ gì. Với nhóm này, ứng dụng đóng vai trò như bảng giá và bảng xe sống động: mở lên là thấy, không phải chờ nhân viên rảnh tay mới được trả lời. Sự khác biệt giữa hai luồng thuê này đã được so sánh trong bài <a href="/aichatbot/blog/app/so-sanh-cach-thue-xe-truyen-thong-va-qua-app/index.html">so sánh cách thuê xe truyền thống và qua app</a>, còn bài <a href="/aichatbot/blog/thue-xe/dat-xe-truoc-hay-den-truc-tiep/index.html">đặt xe trước hay đến trực tiếp</a> giúp bạn chọn luồng hợp với hoàn cảnh của mình.</p>
+  
+  <h2 id="xem-gia-va-tinh-trang-xe-trong-vai-giay">Xem giá và tình trạng xe trong vài giây</h2>
+  <p>Khi ghé qua và thấy dòng xe ưng ý, việc đầu tiên là mở ứng dụng tra nhanh: giá theo ngày hiển thị rõ, tình trạng các loại xe được cập nhật để bạn biết còn hay hết mà không cần hỏi từng chiếc. Danh sách các loại xe cùng khung giá nằm trong bài <a href="/aichatbot/blog/thue-xe/bang-gia-thue-xe-tham-khao/index.html">bảng giá thuê xe tham khảo</a>, còn cách đọc bảng giá chuẩn xem tại bài <a href="/aichatbot/blog/thue-xe/cach-doc-bang-gia-thue-xe/index.html">cách đọc bảng giá thuê xe</a>. Nếu chưa quen dùng dòng ứng dụng này, hướng dẫn từng bước trong bài <a href="/aichatbot/blog/app/cach-dung-ung-dung-thue-xe-may/index.html">cách dùng ứng dụng thuê xe máy</a> chỉ mất vài phút đọc.</p>
+  
+  <h2 id="khong-can-tai-khoan-khong-can-dat-truoc">Không cần tài khoản, không cần đặt trước</h2>
+  <p>Ứng dụng được thiết kế để khách vãng lai dùng ngay lập tức: không bắt buộc tạo tài khoản trước khi xem xe và giá, như đã trình bày trong bài <a href="/aichatbot/blog/app/app-thue-xe-khong-can-tai-khoan/index.html">app thuê xe không cần tài khoản</a>. Với khách chỉ cần xe trong buổi, luồng thao tác rút gọn giúp từ lúc mở app tới lúc nhận xe chỉ gồm vài bước: chọn xe, xem giá, trình giấy tờ tại quầy và ký hợp đồng. Thủ tục thuê về bản chất vẫn đơn giản như mô tả trong bài <a href="/aichatbot/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian/index.html">cho thuê xe máy thủ tục đơn giản</a>; ứng dụng chỉ giúp phần chuẩn bị thông tin nhanh hơn phần còn lại.</p>
+  
+  <h2 id="khi-den-noi-moi-mo-app-vai-meo-nho">Khi đến nơi mới mở app: vài mẹo nhỏ</h2>
+  <p>Với khách quyết định tại chỗ, bốn mẹo sau giúp chuyến thuê xe vãng lai suôn sẻ:</p>
+  <ul>
+  <li>Mở app trước khi bước vào quầy để biết sẵn dòng xe mình cần còn không, tránh quay lại giữa chừng.</li>
+  <li>Chụp lại bảng giá hiển thị trong app để đối chiếu khi ký hợp đồng.</li>
+  <li>Chuẩn bị sẵn giấy tờ tùy thân theo danh mục trong bài <a href="/aichatbot/blog/huong-dan/giay-to-can-khi-thue-xe/index.html">giấy tờ cần khi thuê xe</a>, dù thuê gấp cũng không được bỏ qua.</li>
+  <li>Hỏi trợ lý trong app ngay khi có thắc mắc về phụ phí, thay vì tự đoán rồi tranh chấp lúc trả xe.</li>
+  </ul>
+  <p>Các câu hỏi nhanh về giá và thủ tục đều có thể gửi qua trợ lý như hướng dẫn trong bài <a href="/aichatbot/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot/index.html">cách hỏi giá xe nhanh bằng chatbot</a>, rất hợp với khách đứng ngay tại cửa hàng.</p>
+  
+  <h2 id="vang-lai-hom-nay-khach-quen-tuan-sau">Vãng lai hôm nay, khách quen tuần sau</h2>
+  <p>Điểm thú vị của trải nghiệm vãng lai suôn sẻ là nó biến khách qua đường thành khách quen: lần sau cần xe, bạn đã biết cách mở app, đã biết giá và đã tin vào cách làm việc minh bạch của cửa hàng. Lúc đó, các tính năng dành cho khách đặt trước như đặt xe từ xa, gia hạn kỳ thuê hay nhận xe tận nơi sẽ phát huy tác dụng, với cách dùng đã được giới thiệu trong bài <a href="/aichatbot/blog/app/dat-xe-bang-ung-dung/index.html">đặt xe bằng ứng dụng</a>. Không có áp lực phải chuyển luồng: dùng app như bảng giá bỏ túi hay như công cụ đặt xe trước đều tùy bạn.</p>
+  
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  
+  <h3 id="den-cua-hang-khong-dat-truoc-thi-con-xe-khong">Đến cửa hàng không đặt trước thì còn xe không?</h3>
+  <p>Tình trạng xe được cập nhật trong ứng dụng, nên mở app lên xem là biết nhanh nhất. Những ngày lễ và cao điểm dễ hết xe dòng phổ biến, nên nếu lịch trình cho phép, đặt trước dù chỉ trước một tiếng cũng tăng khả năng có đúng xe bạn muốn.</p>
+  
+  <h3 id="dung-app-co-bat-tao-tai-khoan-khong">Dùng app có bắt tạo tài khoản không?</h3>
+  <p>Không bắt buộc. Bạn có thể xem xe, xem giá và thuê mà không cần đăng ký tài khoản. Tài khoản chỉ hữu ích khi bạn muốn lưu lịch sử thuê để lần sau nhanh hơn.</p>
+  
+  <h3 id="gia-trong-app-va-gia-tai-quay-co-khac-nhau-khong">Giá trong app và giá tại quầy có khác nhau không?</h3>
+  <p>Giá hiển thị trong ứng dụng là giá chuẩn dùng để đối chiếu khi ký hợp đồng. Nếu thấy bất kỳ sai lệch nào giữa app và quầy, hãy hỏi ngay để hai bên cùng chốt lại trước khi đặt cọc.</p>
+  
+  <h3 id="thue-gap-can-chuan-bi-giay-to-gi">Thuê gấp cần chuẩn bị giấy tờ gì?</h3>
+  <p>Giấy tờ tùy thân theo yêu cầu của cửa hàng và giấy tờ liên quan tới người điều khiển nếu có. Danh sách chi tiết đã có sẵn trong app, nên mở nhanh mục giấy tờ trước khi tới quầy để không phải quay về lấy.</p>
+  
+  <h3 id="khach-vang-lai-co-duoc-gia-nhu-khach-dat-truoc-khong">Khách vãng lai có được giá như khách đặt trước không?</h3>
+  <p>Cách tính giá theo loại xe và thời gian thuê như nhau ở cả hai luồng. Khách đặt trước chỉ có lợi thế giữ xe trước; về giá, app hiển thị cùng khung cho mọi khách.</p>
+  
+  <h2 id="ket-luan">Kết luận</h2>
+  <p>Khách vãng lai không hề thiệt khi dùng ứng dụng thuê xe: ngược lại, app chính là cách nhanh nhất để biết còn xe, giá bao nhiêu và cần giấy tờ gì ngay khi đang đứng trước quầy. Cửa hàng tại 112 Nguyễn Văn Cừ, Long Biên, Hà Nội mở cửa 09:00 - 21:00 hằng ngày, đón mọi khách ghé qua; và nếu cần hỏi trước khi tới, số 0942 467 674 luôn sẵn sàng trả lời bạn trong vài phút.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+          <span aria-hidden="true">→</span>
+          <a href="/aichatbot/blog/app/">Ứng Dụng</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/aichatbot/blog/app/app-thue-xe-may-la-gi/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục</h2>
+        <p>Tìm hiểu app thuê xe máy là gì, ứng dụng web MotoAI giúp hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe ngay trên trình duyệt, không cần cài đặt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/cach-dung-ung-dung-thue-xe-may/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách dùng ứng dụng thuê xe máy: 5 bước từ hỏi giá đến nhận xe</h2>
+        <p>Hướng dẫn dùng ứng dụng trợ lý thuê xe máy trên web: đặt câu hỏi đúng cách, hỏi giá theo khung thời gian, chốt dòng xe, xác nhận thủ tục và lưu tin nhắn chốt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/ung-dung-thue-xe-co-an-toan-khong/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Ứng dụng thuê xe có an toàn không: cách kiểm tra trước khi đặt xe</h2>
+        <p>Ứng dụng thuê xe an toàn hay không phụ thuộc ba lớp: thông tin cá nhân, giao dịch đặt cọc và dịch vụ đi kèm, kèm checklist kiểm tra công cụ thuê xe trước khi đặt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/cach-tinh-gia-thue-xe-bang-app/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách tính giá thuê xe bằng app: đọc đúng một báo giá</h2>
+        <p>Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/chon-xe-bang-agent/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Chọn xe bằng Agent: nói nhu cầu để nhận đúng dòng xe</h2>
+        <p>Chọn xe bằng Agent: năm thông tin cần mô tả để trợ lý gợi ý dòng xe phù hợp với chuyến đi, cách Agent suy luận từ nhu cầu và các câu hỏi nên hỏi lại trước khi chốt.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Công cụ &amp; Hướng dẫn: <a href="/aichatbot/blog/app/">Ứng Dụng</a> · <a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/aichatbot/?ask=%E1%BB%A8ng%20D%E1%BB%A5ng%20Thu%C3%AA%20xe%20v%C3%A0%20Kh%C3%A1ch%20V%C3%A3ng%20Lai">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/aichatbot/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/aichatbot/">Agent</a></li>
+          <li><a href="/aichatbot/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/aichatbot/blog/">Cẩm nang</a></li>
+          <li><a href="/aichatbot/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/aichatbot/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/aichatbot/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/aichatbot/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/aichatbot/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/aichatbot/">⚡ Agent</a></li>
+      <li><a href="/aichatbot/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/" aria-current="page">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/app/" aria-current="page">📱 Ứng Dụng</a></li>
+            <li><a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/aichatbot/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/aichatbot/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/aichatbot/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/aichatbot/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/aichatbot/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Ứng Dụng Thuê xe và Khách Vãng Lai","description":"Ứng dụng thuê xe cho khách vãng lai: xem giá và tình trạng xe tức thì, không cần tài khoản, thủ tục rút gọn khi đến trực tiếp và mẹo dùng app tại quầy.","datePublished":"2026-10-06","dateModified":"2026-10-06","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://thuexemayhanoi.github.io/aichatbot/"},"mainEntityOfPage":"https://thuexemayhanoi.github.io/aichatbot/blog/app/ung-dung-thue-xe-va-khach-vang-lai/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://thuexemayhanoi.github.io/aichatbot/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://thuexemayhanoi.github.io/aichatbot/blog/"},{"@type":"ListItem","position":3,"name":"Công cụ & Hướng dẫn","item":"https://thuexemayhanoi.github.io/aichatbot/blog/cong-cu-huong-dan/"},{"@type":"ListItem","position":4,"name":"Ứng Dụng","item":"https://thuexemayhanoi.github.io/aichatbot/blog/app/"},{"@type":"ListItem","position":5,"name":"Ứng Dụng Thuê xe và Khách Vãng Lai","item":"https://thuexemayhanoi.github.io/aichatbot/blog/app/ung-dung-thue-xe-va-khach-vang-lai/"}]}
+  </script>
+
+  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=63"></script>
+</body>
+</html>
