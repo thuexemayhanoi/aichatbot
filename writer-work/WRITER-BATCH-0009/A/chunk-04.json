@@ -8,7 +8,7 @@
     "BA-0234"
   ],
   "body_paths": [
-    "data/blog/articles/kien-dinh-xe-may.body.html",
+    "data/blog/articles/kiem-dinh-xe-may.body.html",
     "data/blog/articles/ba-vi-cuoi-tuan.body.html"
   ],
   "status": "READY_TO_PUSH",
@@ -16,19 +16,19 @@
     {
       "article_id": "BA-0233",
       "category": "SAFE",
-      "slug": "kien-dinh-xe-may",
+      "slug": "kiem-dinh-xe-may",
       "title": "Kiểm Định xe Máy",
-      "description": "Giải thích rõ kiểm định xe máy hiện nay: xe máy cá nhân không phải kiểm định định kỳ như ô tô, lộ trình kiểm định khí thải từ 2027 và mức phạt theo Nghị định 168/2024/NĐ-CP.",
+      "description": "Kiểm định xe máy hiện nay quy định thế nào, xe máy cá nhân có phải kiểm định định kỳ không và lộ trình kiểm định khí thải từ 2027.",
       "published_date": "2026-10-06",
       "author": "MotoAI Editorial",
-      "body": "data/blog/articles/kien-dinh-xe-may.body.html",
+      "body": "data/blog/articles/kiem-dinh-xe-may.body.html",
       "knowledge_chunks": []
     },
     {
       "article_id": "BA-0234",
       "category": "LOCAL",
       "slug": "ba-vi-cuoi-tuan",
-      "title": "Ba Vì Cuối tuần",
+      "title": "ba vì Cuối Tuần",
       "description": "Kế hoạch cuối tuần đi Ba Vì bằng xe máy thuê: lộ trình từ Hà Nội khoảng 60 km, điểm đến trong vườn quốc gia Ba Vì và những gì cần chuẩn bị trước khi lên đường.",
       "published_date": "2026-10-06",
       "author": "MotoAI Editorial",
