@@ -51,11 +51,14 @@ jobs:
               cp ops/candidate/bodies/*.body.html ops/work/writers/data/blog/articles/
               BATCH=$(node -e "console.log(require('./ops/candidate/chunk.json').batch_id)")
               WRITER=$(node -e "console.log(require('./ops/candidate/chunk.json').writer)")
+              WDIR=${WRITER#writer_}
               SEQ=$(node -e "console.log(require('./ops/candidate/chunk.json').seq)")
               ID1=$(node -e "console.log(require('./ops/candidate/chunk.json').ids[0])")
               ID2=$(node -e "console.log(require('./ops/candidate/chunk.json').ids[1])")
-              mkdir -p "ops/work/writers/writer-work/$BATCH/$WRITER"
-              cp ops/candidate/chunk.json "ops/work/writers/writer-work/$BATCH/$WRITER/chunk-$(printf '%02d' $SEQ).json"
+              mkdir -p "ops/work/writers/writer-work/$BATCH/$WDIR"
+              cp ops/candidate/chunk.json "ops/work/writers/writer-work/$BATCH/$WDIR/chunk-$(printf '%02d' $SEQ).json"
+              echo "--- work view ---"
+              find ops/work/writers/writer-work -type f | head -20
               echo "--- select-publish ---"
               node tools/writer-queue.mjs select-publish --work ops/work/writers || echo "SELECT_PUBLISH_FAILED"
               echo "--- stage ---"
@@ -78,4 +81,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add ops/qa-result.txt || true
           git commit -m "ops: qa-runner result [skip ci]" || echo "nothing"
+          git pull --rebase || true
           git push || echo "push failed"
