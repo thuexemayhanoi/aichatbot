@@ -176,8 +176,21 @@
           "BA-0223",
           "BA-0224"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-06T14:43:07.672Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-06T14:43:07.672Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-06T14:43:07.672Z"
+          }
+        ]
       },
       {
         "seq": 9,
