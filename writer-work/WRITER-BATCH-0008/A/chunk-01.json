@@ -1,0 +1,56 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0008",
+  "writer": "writer_A",
+  "seq": 1,
+  "ids": [
+    "BA-0209",
+    "BA-0210"
+  ],
+  "body_paths": [
+    "data/blog/articles/phat-nguoi-va-xe-thue.body.html",
+    "data/blog/articles/chua-mot-cot-ha-noi.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0209",
+      "category": "SAFE",
+      "slug": "phat-nguoi-va-xe-thue",
+      "title": "Phạt Nguội và xe Thuê",
+      "description": "Cơ chế phạt nguội với xe máy thuê theo Nghị định 168/2024/NĐ-CP: ai bị liên hệ trước, mức phạt phổ biến với xe máy và cách người thuê bảo vệ trách nhiệm của mình.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/phat-nguoi-va-xe-thue.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0210",
+      "category": "LOCAL",
+      "slug": "chua-mot-cot-ha-noi",
+      "title": "Chùa Một Cột hà Nội",
+      "description": "Chùa Một Cột ở Ba Đình: chuyện tích ngôi chùa hình sen trên một cột đá từ năm 1049, cách đi từ Hồ Gươm bằng xe máy và các điểm nên ghép thêm quanh khu di tích.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/chua-mot-cot-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Chùa Một Cột dựng năm 1049 thời Lý Thái Tông, tên chữ Diên Hựu, hình bông sen trên một cột đá giữa ao, nằm ở quận Ba Đình gần Hoàng thành Thăng Long.",
+        "Từ Hồ Gươm đi xe máy khoảng mười lăm phút theo tuyến Hàng Đâu, Trần Phú, Hoàng Hoa Thám; nên đi sáng sớm hoặc chiều muộn và gửi xe ở bãi gần khu di tích.",
+        "Quanh chùa có thể ghép Cột cờ Hoàng thành, Hoàng thành Thăng Long, phố cổ và Hồ Gươm ban đêm trong cùng một buổi bằng xe máy."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T14:28:20.915Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T14:28:20.915Z"
+    }
+  ]
+}
