@@ -1,0 +1,56 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0007",
+  "writer": "writer_A",
+  "seq": 7,
+  "ids": [
+    "BA-0203",
+    "BA-0204"
+  ],
+  "body_paths": [
+    "data/blog/articles/camera-phat-nguoi-khi-thue-xe.body.html",
+    "data/blog/articles/cho-hoa-quan-tam.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0203",
+      "category": "SAFE",
+      "slug": "camera-phat-nguoi-khi-thue-xe",
+      "title": "Camera Phạt Nguội Khi Thuê xe",
+      "description": "Cơ chế camera phạt nguội với xe thuê: mức phạt theo Nghị định 168/2024/NĐ-CP, ai chịu trách nhiệm và cách người thuê tự bảo vệ bằng hợp đồng.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/camera-phat-nguoi-khi-thue-xe.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0204",
+      "category": "LOCAL",
+      "slug": "cho-hoa-quan-tam",
+      "title": "Chợ Hoa Quận Tám",
+      "description": "Làm rõ tên gọi chợ hoa quận tám không thuộc Hà Nội, giới thiệu chợ hoa Hà Nội quanh Hồ Tây và ven sông Hồng, cùng lưu ý đi chợ sớm bằng xe thuê.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cho-hoa-quan-tam.body.html",
+      "knowledge_chunks": [
+        "Hà Nội không có Quận 8, cụm từ chợ hoa quận tám thường liên tưởng tới các khu chợ ở thành phố phía Nam nên cần kiểm tra kỹ tên địa điểm trước khi đặt xe.",
+        "Các chợ hoa Hà Nội họch từ khuya tới rạng sáng quanh khu vực Hồ Tây và ven sông Hồng, phiên sớm có giá tốt nhất.",
+        "Đi chợ hoa sớm bằng xe thuê cần kiểm tra đèn pha, phanh và chở hoa gọn không che gương chiếu hậu."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T14:13:46.036Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T14:13:46.036Z"
+    }
+  ]
+}
