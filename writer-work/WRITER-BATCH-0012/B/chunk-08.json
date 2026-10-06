@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0012",
+  "writer": "writer_B",
+  "seq": 8,
+  "ids": [
+    "BA-0295",
+    "BA-0296"
+  ],
+  "body_paths": [
+    "data/blog/articles/cach-gui-feedback-cho-ung-dung-thue-xe.body.html",
+    "data/blog/articles/xe-nao-tiet-kiem-xang-khi-thue.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0295",
+      "category": "APP",
+      "slug": "cach-gui-feedback-cho-ung-dung-thue-xe",
+      "title": "Cách Gửi Feedback Cho Ứng Dụng Thuê xe",
+      "description": "Cách gửi feedback cho ứng dụng thuê xe: chọn kênh theo mức độ gấp, viết góp ý có đủ bối cảnh, đính kèm ảnh chụp màn hình và kỳ vọng hợp lý sau khi gửi.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cach-gui-feedback-cho-ung-dung-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Gửi feedback cho ứng dụng thuê xe qua bốn kênh: mục góp ý trong app, chat với trợ lý, Zalo kèm ảnh chụp màn hình, và gọi điện cho vấn đề cần xử lý ngay trong chuyến đi.",
+        "Một góp ý hữu ích gồm ba mảnh: bạn làm gì, điều gì xảy ra, và bạn kỳ vọng điều gì; góp ý về giá cần kèm dòng xe và số ngày thuê để đối chiếu với bảng giá công khai.",
+        "Lỗi chặn việc thuê xe như không thấy nút đặt hoặc app văng khi thanh toán cần báo ngay qua kênh gọi hoặc Zalo kèm ảnh; góp ý giao diện và tính năng gửi trong ứng dụng để xếp vào bản cập nhật kế tiếp."
+      ]
+    },
+    {
+      "article_id": "BA-0296",
+      "category": "RENT",
+      "slug": "xe-nao-tiet-kiem-xang-khi-thue",
+      "title": "xe Nào Tiết Kiệm Xăng Khi Thuê",
+      "description": "Xe nào tiết kiệm xăng khi thuê: so sánh xe số, xe ga cỡ nhỏ và xe điện, yếu tố kỹ thuật, cách lái đỡ tốn xăng và tính tổng chi phí cả kỳ thuê.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/xe-nao-tiet-kiem-xang-khi-thue.body.html",
+      "knowledge_chunks": [
+        "Mức tiêu hao xăng của xe thuê phụ thuộc ba nhóm yếu tố: dung tích máy và tải trọng, tình trạng kỹ thuật như lốp và bugi, và cách lái giữ ga đều, phanh sớm thay vì phanh gấp liên tục.",
+        "Trong cùng phân khúc, xe số thường tiết kiệm xăng hơn xe ga nhờ truyền động đơn giản và thân xe nhẹ; xe ga cỡ nhỏ như Vision tiện nghi nhưng hao hơn chút, còn xe máy điện không tiêu thụ xăng.",
+        "Chọn xe tiết kiệm cần tính tổng chi phí cả kỳ thuê: xe rẻ hơn vài chục nghìn tiền thuê nhưng hao xăng hơn có thể đắt tổng chi phí; chở nặng bằng máy quá nhỏ còn làm máy gồng, tốn xăng và dễ hỏng giữa đường."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T21:30:50.426Z",
+      "event": "chunk created and locally validated (links resolve; no junk; no external links; no invented business data)"
+    },
+    {
+      "at": "2026-10-06T21:30:50.426Z",
+      "event": "WRITING -> LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T21:30:50.426Z",
+      "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+    }
+  ]
+}
