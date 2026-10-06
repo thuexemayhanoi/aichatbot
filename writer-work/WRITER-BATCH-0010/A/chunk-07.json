@@ -1,0 +1,48 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0010",
+  "writer": "writer_A",
+  "seq": 7,
+  "ids": [
+    "BA-0257",
+    "BA-0258"
+  ],
+  "body_paths": [
+    "data/blog/articles/quyen-cua-nguoi-thue-xe.body.html",
+    "data/blog/articles/moc-chau-hanh-trinh-dai.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0257",
+      "category": "SAFE",
+      "slug": "quyen-cua-nguoi-thue-xe",
+      "title": "Quyền Của Người Thuê xe",
+      "description": "Người thuê xe máy có quyền nhận xe đúng cam kết, sử dụng ổn định suốt kỳ thuê, được sửa khi xe hỏng không do mình và nhận lại cọc khi trả đúng hạn; bài giải thích từng quyền kèm cách giữ bằng chứng.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/quyen-cua-nguoi-thue-xe.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0258",
+      "category": "LOCAL",
+      "slug": "moc-chau-hanh-trinh-dai",
+      "title": "Mộc Châu Hành Trình Dài",
+      "description": "Hành trình xe máy Hà Nội Mộc Châu gần 200km theo quốc lộ 6: chia lộ trình hai ngày một đêm, chạy đường trường an toàn, điểm dừng trên cao nguyên chè và thời điểm đẹp nhất trong năm.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/moc-chau-hanh-trinh-dai.body.html",
+      "knowledge_chunks": [
+        "Mộc Châu thuộc Sơn La cách Hà Nội gần hai trăm cây số theo quốc lộ 6, xe máy mất khoảng bốn đến sáu tiếng tùy tốc độ và số lần dừng nghỉ trên đường.",
+        "Cung chuẩn đi qua Hòa Bình lên Mai Châu rồi vượt đoạn đèo trước cao nguyên; chặng Mai Châu trở đi đường co lại với dốc dài và cua gắt nên cần chỉnh cách lái.",
+        "Với chuyến hai ngày nên nghỉ lại một đêm trên cao nguyên để tận dụng khung sáng sớm trên đồi chè; khứ hồi một ngày chỉ dành cho người quen đường trường và khởi hành rất sớm."
+      ]
+    }
+  ],
+  "history": [
+    { "at": "2026-10-06T21:02:00.000Z", "event": "WRITING" },
+    { "at": "2026-10-06T21:06:00.000Z", "event": "LOCAL_QA_PASS" },
+    { "at": "2026-10-06T21:06:00.000Z", "event": "READY_TO_PUSH" }
+  ]
+}
