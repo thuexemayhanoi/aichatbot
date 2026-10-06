@@ -3333,6 +3333,36 @@
         "Điểm hẹn quanh ga nên gần lối ra chính và dễ mô tả qua điện thoại giữa đám đông.",
         "Với bến xe khách, chọn cột mốc cố định làm điểm hẹn và hỏi trước quy định để xe nếu định để qua đêm."
       ]
+    },
+    {
+      "article_id": "BA-0231",
+      "category": "EV",
+      "slug": "xe-dien-va-duong-doc",
+      "title": "xe Điện và Đường Dốc",
+      "description": "Xe máy điện leo dốc thế nào, cách giữ pin và phanh an toàn khi thuê xe điện đi đường dốc quanh Hà Nội.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/xe-dien-va-duong-doc.body.html",
+      "knowledge_chunks": [
+        "Xe máy điện vẫn leo dốc tốt nếu pin đủ và khởi động đều, nhưng nên chọn xe có công suất phù hợp khi đi đường dốc dài như Ba Vì hay Sơn Tây.",
+        "Khi đi xe điện lên dốc nên giữ tốc độ ổn định, tránh tăng ga đột ngột để pin không tụt nhanh và mô tơ không quá tải.",
+        "Xuống dốc bằng xe điện nên dùng phanh nhịp nhàng kết hợp hãm tái sinh, kiểm tra phanh trước mỗi chuyến đi đường dốc."
+      ]
+    },
+    {
+      "article_id": "BA-0232",
+      "category": "GUIDE",
+      "slug": "len-ke-hoach-hanh-trinh-voi-agent",
+      "title": "Lên Kế Hoạch Hành Trình với Agent",
+      "description": "Hướng dẫn dùng trợ lý AI trong MotoAI để lập kế hoạch hành trình thuê xe máy: điểm đến, quãng đường, thời gian và chi phí.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/len-ke-hoach-hanh-trinh-voi-agent.body.html",
+      "knowledge_chunks": [
+        "Trợ lý AI trong MotoAI có thể gợi ý lộ trình thuê xe theo ngày, điểm dừng nghỉ và thời điểm xuất phát dựa trên nhu cầu người thuê.",
+        "Khi lập kế hoạch hành trình với agent nên nêu rõ số người, số ngày và loại xe mong muốn để nhận gợi ý sát thực tế hơn.",
+        "Agent giúp so sánh chi phí thuê theo ngày, tuần hoặc tháng và nhắc các thủ tục cần chuẩn bị trước khi nhận xe."
+      ]
     }
   ]
 }
