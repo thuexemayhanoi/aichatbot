@@ -1,0 +1,61 @@
+{
+ "$schema": "motoai/writer-chunk@1",
+ "batch_id": "WRITER-BATCH-0011",
+ "writer": "writer_B",
+ "seq": 5,
+ "ids": [
+  "BA-0271",
+  "BA-0272"
+ ],
+ "body_paths": [
+  "data/blog/articles/cau-hoi-thuong-gap-ve-app-thue-xe.body.html",
+  "data/blog/articles/thue-xe-cho-cong-viec-giao-hang.body.html"
+ ],
+ "status": "READY_TO_PUSH",
+ "drafts": [
+  {
+   "article_id": "BA-0271",
+   "category": "APP",
+   "slug": "cau-hoi-thuong-gap-ve-app-thue-xe",
+   "title": "Câu Hỏi Thường Gặp về App Thuê xe",
+   "description": "Gom các câu hỏi ai cũng hỏi về app thuê xe: tài khoản, giấy tờ, giá có đắt hơn không, đặt giữ xe chắc chưa, hủy có mất phí và giao tận nơi được không.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/cau-hoi-thuong-gap-ve-app-thue-xe.body.html",
+   "knowledge_chunks": [
+    "Các câu hỏi về app thuê xe gom thành ba cụm: điều kiện vào cửa gồm tài khoản và giấy tờ, nhóm tiền gồm giá và thanh toán, và nhóm vận hành gồm đặt, hủy, giao nhận xe.",
+    "Giá hiển thị trong ứng dụng thuê xe lấy từ cùng bảng giá của cửa hàng nên không đắt hơn thuê trực tiếp, và gói ưu đãi trên kênh số nhiều khi còn rẻ hơn.",
+    "Tin nhắn xác nhận lịch từ cửa hàng trong ứng dụng là dấu hiệu xe được giữ; nếu không thấy xác nhận trong thời gian hợp lý, hãy hỏi lại trước khi coi như đặt thành công."
+   ]
+  },
+  {
+   "article_id": "BA-0272",
+   "category": "RENT",
+   "slug": "thue-xe-cho-cong-viec-giao-hang",
+   "title": "Thuê xe Cho Công Việc Giao Hàng",
+   "description": "Thuê xe máy chạy giao hàng: chọn xe bền cốp rộng, chốt gói tuần tháng thay vì ngày, kiểm soát nhiên liệu và giữ an toàn khi chạy dồn dập trong ngày.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/thue-xe-cho-cong-viec-giao-hang.body.html",
+   "knowledge_chunks": [
+    "Chạy giao hàng bằng xe thuê nên chọn xe theo thứ tự: tình trạng máy phanh trước, cốp rộng chắc thứ hai, nhiên liệu thấp thứ ba và phụ tùng dễ tìm thứ tư.",
+    "Chạy từ bốn ngày mỗi tuần trở lên thì thuê gói tuần luôn gọn hơn thuê ngày cộng dồn, và gói dài hạn ít biến động theo mùa hơn gói ngày.",
+    "Khi thuê xe chạy giao hàng nên nói rõ mục đích với cửa hàng để nhận chiếc xe tình trạng tốt và được tư vấn gói bảo dưỡng giữa kỳ cho cường độ cao."
+   ]
+  }
+ ],
+ "history": [
+  {
+   "at": "2026-10-06T20:49:13.927Z",
+   "event": "chunk created and locally validated (bodies QA-clean, links resolve, no junk, matrix titles/slugs verified)"
+  },
+  {
+   "at": "2026-10-06T20:49:13.927Z",
+   "event": "WRITING -> LOCAL_QA_PASS"
+  },
+  {
+   "at": "2026-10-06T20:49:13.927Z",
+   "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+  }
+ ]
+}
