@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0011",
+  "writer": "writer_C",
+  "seq": 6,
+  "ids": [
+    "BA-0273",
+    "BA-0274"
+  ],
+  "body_paths": [
+    "data/blog/articles/dich-vu-sua-xe-dien.body.html",
+    "data/blog/articles/nang-nong-va-lai-xe.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0273",
+      "category": "EV",
+      "slug": "dich-vu-sua-xe-dien",
+      "title": "Dịch vụ Sửa xe Điện",
+      "description": "Dịch vụ sửa xe điện và hỗ trợ kỹ thuật khi thuê xe máy điện: các sự cố thường gặp, cách liên hệ hỗ trợ và lưu ý để chuyến đi luôn thông suốt.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/dich-vu-sua-xe-dien.body.html",
+      "knowledge_chunks": [
+        "Dịch vụ sửa xe điện khi thuê xe máy điện gồm hỗ trợ sự cố pin, phanh, lốp và bảng điều khiển; khách liên hệ hotline để được hướng dẫn xử lý sớm hoặc đổi xe nếu hư hỏng ảnh hưởng di chuyển.",
+        "Các sự cố xe điện thường gặp gồm xe hết pin giữa đường, sạc không vào, phanh yếu và đèn báo lỗi; xe điện ít hỏng cơ khí hơn xe xăng nhưng cần kiểm tra pin và phanh định kỳ.",
+        "Trong khi thuê xe điện, khách không tự tháo pin hay mở hàng che hệ thống điện; mọi sửa chữa nên qua bộ phận kỹ thuật để tránh mất quyền lợi và đảm bảo an toàn khi vận hành."
+      ]
+    },
+    {
+      "article_id": "BA-0274",
+      "category": "GUIDE",
+      "slug": "nang-nong-va-lai-xe",
+      "title": "Nắng Nóng và Lái xe",
+      "description": "Hướng dẫn lái xe máy thuê trong ngày nắng nóng: chọn khung giờ mát, trang bị chống nắng, nghỉ giữa chuyến và bảo vệ sức khỏe lẫn chiếc xe.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/nang-nong-va-lai-xe.body.html",
+      "knowledge_chunks": [
+        "Khi lái xe máy thuê trong ngày nắng nóng nên đi khung giờ sáng sớm hoặc sau bốn giờ chiều, tránh nắng gắt từ mười một giờ đến mười lăm giờ và nghỉ bóng mát mỗi khoảng bốn mươi lăm phút.",
+        "Trang bị chống nắng khi đi xe gồm nón bảo hiểm che nắng tốt, áo dài tay thoáng khí, găng tay mỏng và kính râm; uống nước từng ngụm nhỏ nhiều lần để tránh say nắng và mất nước.",
+        "Xe máy trời nóng cần lốp căng đúng chuẩn, phanh nhạy và đổ đủ xăng; không đỗ xe lâu dưới nắng trực tiếp, không để đồ điện tử trong cốp và liên hệ đổi xe nếu xe có dấu hiệu bất thường giữa kỳ thuê."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T20:52:18.537Z",
+      "event": "chunk created and locally validated (links resolve; no junk; no external links; no invented business data)"
+    },
+    {
+      "at": "2026-10-06T20:52:18.537Z",
+      "event": "WRITING -> LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T20:52:18.537Z",
+      "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+    }
+  ]
+}
