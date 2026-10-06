@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0007",
+  "writer": "writer_C",
+  "seq": 9,
+  "ids": [
+    "BA-0207",
+    "BA-0208"
+  ],
+  "body_paths": [
+    "data/blog/articles/chinh-sach-khuyen-khich-xe-dien.body.html",
+    "data/blog/articles/nhan-xe-ban-dem.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0207",
+      "category": "EV",
+      "slug": "chinh-sach-khuyen-khich-xe-dien",
+      "title": "Chính Sách Khuyến Khích xe Điện",
+      "description": "Định hướng chính sách khuyến khích xe điện tại Việt Nam và lợi ích thiết thực với khách thuê: giá cạnh tranh, chi phí năng lượng thấp và hạ tầng sạc ngày càng hoàn thiện.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/chinh-sach-khuyen-khich-xe-dien.body.html",
+      "knowledge_chunks": [
+        "Chính sách khuyến khích xe điện tại Việt Nam gồm ưu đãi thuế phí, quy hoạch hạ tầng sạc và đổi pin, khuyến khích doanh nghiệp cho thuê chuyển dần sang đội xe điện.",
+        "Với khách thuê, xe điện mang lại chi phí năng lượng thấp hơn xăng, vận hành êm, dễ lái và giá thuê ngày càng cạnh tranh theo thời gian.",
+        "Trước khi thuê xe điện, hãy hỏi quãng đường xe chạy được khi pin đầy và các điểm sạc gần khu vực mình ở để chủ động lên kế hoạch cho hành trình dài."
+      ]
+    },
+    {
+      "article_id": "BA-0208",
+      "category": "GUIDE",
+      "slug": "nhan-xe-ban-dem",
+      "title": "Nhận xe Ban Đêm",
+      "description": "Quy trình nhận xe thuê vào ban đêm: đặt xe trước, chuẩn bị đủ giấy tờ, kiểm tra xe dưới ánh sáng tốt và lưu ý an toàn sau khi lăn bánh.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/nhan-xe-ban-dem.body.html",
+      "knowledge_chunks": [
+        "Khi nhận xe ban đêm, hãy đặt xe trước ít nhất nửa ngày, chốt loại xe, giờ nhận, địa điểm giao và giá trọn gói để tránh phát sinh lúc đêm muộn.",
+        "Yêu cầu giao xe ở nơi đủ sáng, mang theo đèn pin soi các điểm khuất và chụp ảnh toàn xe kèm công tơ mét ngay tại chỗ.",
+        "Sau khi nhận xe đêm, hãy bật đèn pha, chọn tuyến đường chính có đèn đường, giữ tốc độ vừa phải và lưu số hỗ trợ của cửa hàng vào điện thoại."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T11:40:59.712Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T11:40:59.712Z"
+    }
+  ]
+}
