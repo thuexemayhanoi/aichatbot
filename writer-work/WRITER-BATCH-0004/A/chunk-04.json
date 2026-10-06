@@ -1,0 +1,56 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0004",
+  "writer": "writer_A",
+  "seq": 4,
+  "ids": [
+    "BA-0143",
+    "BA-0144"
+  ],
+  "body_paths": [
+    "data/blog/articles/dien-thoai-khi-lai-xe.body.html",
+    "data/blog/articles/van-giang-ev-and-bikes.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0143",
+      "category": "SAFE",
+      "slug": "dien-thoai-khi-lai-xe",
+      "title": "Điện Thoại Khi Lái xe",
+      "description": "Quy định và mức phạt khi sử dụng điện thoại khi lái xe máy theo Nghị định 168/2024: 400.000-600.000 đồng, các tình huống tranh luận và ba nguyên tắc dùng máy hợp lệ khi thuê xe.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/dien-thoai-khi-lai-xe.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0144",
+      "category": "LOCAL",
+      "slug": "van-giang-ev-and-bikes",
+      "title": "Văn Giang ev And Bikes",
+      "description": "Đi Văn Giang bằng xe máy và xe điện từ Hà Nội: trục ven sông Hồng, vườn cây ăn trái, cách tính pin cho xe điện và lịch trình mẫu một ngày thuê.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/van-giang-ev-and-bikes.body.html",
+      "knowledge_chunks": [
+        "Văn Giang cách nội thành Hà Nội chưa đầy một tiếng chạy, nổi bật với trục đê ven sông Hồng và vườn cây ăn trái theo mùa.",
+        "Đi xe điện tới Văn Giang cần tính ba con số: tổng chiều dài cung, tầm pin của dòng xe và điểm sạc dự phòng.",
+        "Lịch trình mẫu: sáng lên đê, giữa sáng vào vườn, trưa ăn ven trục nghỉ sạc, chiều ngắm nắng nghiêng rồi vòng về."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T04:31:11.468Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T04:31:11.470Z"
+    }
+  ]
+}
