@@ -978,3 +978,10 @@
 - 2026-10-06 QA PASS BA-0275 score=95
 - 2026-10-06 QA PASS BA-0276 score=90
 - 2026-10-06 PUBLISHED 2 (BA-0275, BA-0276) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-06 CLAIM 1: BA-0277
+- 2026-10-06 FINISH BA-0277
+- 2026-10-06 CLAIM 1: BA-0278
+- 2026-10-06 FINISH BA-0278
+- 2026-10-06 QA PASS BA-0277 score=95
+- 2026-10-06 QA PASS BA-0278 score=95
+- 2026-10-06 PUBLISHED 2 (BA-0277, BA-0278) — one grouped build, pages, matrix, indexes, sitemap consistent
