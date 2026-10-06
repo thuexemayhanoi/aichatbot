@@ -2817,6 +2817,36 @@
         "Trước khi đặt cần xác nhận: loại xe, khung giờ, tổng các mục tính phí, cách tính trễ giờ và điều kiện hoàn khoản bảo đảm.",
         "Yêu cầu chốt giá bằng tin nhắn hoặc đơn đặt rồi đối chiếu lại tại quầy trước khi nhận xe."
       ]
+    },
+    {
+      "article_id": "BA-0195",
+      "category": "EV",
+      "slug": "xe-dien-va-mui-moi-truong",
+      "title": "xe Điện và Mùi Môi Trường",
+      "description": "Xe máy điện và các yếu tố mùi môi trường: không khói xả, không mùi dầu cháy, cùng những tín hiệu mùi nhỏ cần kiểm tra trên xe điện.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/xe-dien-va-mui-moi-truong.body.html",
+      "knowledge_chunks": [
+        "Xe máy điện không có ống xả nên không phát sinh mùi dầu cháy quanh người khi di chuyển.",
+        "Không khí đô thị là bài toán nhiều nguồn, nhưng phạm vi cá nhân lợi ích không thở khí thải từ xe mình là trực tiếp.",
+        "Mùi khét từ sạc hoặc pin nóng là tín hiệu cần ngắt và kiểm tra, không phải hiện tượng bình thường."
+      ]
+    },
+    {
+      "article_id": "BA-0196",
+      "category": "GUIDE",
+      "slug": "thue-xe-can-nguoi-bao-lanh-khong",
+      "title": "Thuê xe Cần Người Bảo Lãnh Không",
+      "description": "Giải đáp thuê xe máy có cần người bảo lãnh không: khi nào được yêu cầu, hình thức bảo lãnh nhân thân và khoản bảo đảm, cách chuẩn bị giấy tờ.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-can-nguoi-bao-lanh-khong.body.html",
+      "knowledge_chunks": [
+        "Bảo lãnh nhân thân là người đủ tuổi chịu trách nhiệm liên đới, còn khoản bảo đảm bằng tiền được dùng phổ biến hơn.",
+        "Yêu cầu bảo lãnh thường gặp với người dưới 18 tuổi, xe giá trị cao, thuê dài ngày hoặc giấy tờ không đầy đủ.",
+        "Khi giao khoản bảo đảm cần hỏi rõ số tiền, điều kiện trừ, điều kiện hoàn và yêu cầu biên nhận."
+      ]
     }
   ]
 }
