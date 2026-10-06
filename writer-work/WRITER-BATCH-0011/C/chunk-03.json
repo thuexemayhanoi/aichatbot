@@ -1,0 +1,61 @@
+{
+ "$schema": "motoai/writer-chunk@1",
+ "batch_id": "WRITER-BATCH-0011",
+ "writer": "writer_C",
+ "seq": 3,
+ "ids": [
+  "BA-0267",
+  "BA-0268"
+ ],
+ "body_paths": [
+  "data/blog/articles/cua-hang-cho-thue-xe-dien.body.html",
+  "data/blog/articles/mua-dong-thue-xe-ha-noi.body.html"
+ ],
+ "status": "READY_TO_PUSH",
+ "drafts": [
+  {
+   "article_id": "BA-0267",
+   "category": "EV",
+   "slug": "cua-hang-cho-thue-xe-dien",
+   "title": "Cửa Hàng Cho Thuê xe Điện",
+   "description": "Dấu hiệu một cửa hàng cho thuê xe điện đáng tin: công khai tình trạng pin, chính sách sạc rõ ràng, quy trình hỗ trợ giữa kỳ và bốn câu hỏi nên đặt trước khi đặt xe.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/cua-hang-cho-thue-xe-dien.body.html",
+   "knowledge_chunks": [
+    "Một cửa hàng cho thuê xe điện đáng tin công khai tình trạng pin từng chiếc, ghi rõ giá theo dòng kèm chính sách sạc, và có đội xe đủ để đổi xe giữa kỳ khi cần.",
+    "Trước khi thuê xe điện, hãy hỏi bốn câu: pin còn bao nhiêu phần trăm và chạy được bao xa, sạc ở đâu và có được mượn sạc không, quy trình hỗ trợ khi pin hỏng giữa kỳ, và giá đã gồm sạc chưa.",
+    "Xe điện hợp nhất với nhóm khách đi trong đô thị, khách du lịch muốn chạy êm và người cần tiết kiệm nhiên liệu dài hạn; chạy tuyến núi hay xa liên tục thì nên cân nhắc phạm vi pin."
+   ]
+  },
+  {
+   "article_id": "BA-0268",
+   "category": "GUIDE",
+   "slug": "mua-dong-thue-xe-ha-noi",
+   "title": "Mùa Đông Thuê xe hà Nội",
+   "description": "Kỹ năng thuê và chạy xe máy mùa đông ở Hà Nội: trang bị giữ ấm, chạy trong sương mù theo tầm nhìn, sự cố ắc quy lốp khi trời lạnh và khung giờ di chuyển an toàn.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/mua-dong-thue-xe-ha-noi.body.html",
+   "knowledge_chunks": [
+    "Thuê xe máy mùa đông cần trang bị ấm kín gồm găng dày, áo gió, quần dày và nón lót trong mũ, vì tay tê cứng làm phản xạ phanh chậm đi rõ rệt.",
+    "Sương mù mùa đông dày nhất sáng sớm ven sông và đoạn trũng; khi chạy trong sương mù hãy hạ tốc theo tầm nhìn, bật đèn, giữ khoảng cách gấp đôi và không vượt xe.",
+    "Trời lạnh làm ắc quy yếu khó nổ và lốp non hơi nhanh hơn, nên khi nhận xe mùa đông hãy để ý tiếng đề máy, áp suất lốp và độ ăn của phanh ngay lần bấm đầu tiên."
+   ]
+  }
+ ],
+ "history": [
+  {
+   "at": "2026-10-06T20:44:26.309Z",
+   "event": "chunk created and locally validated (bodies QA-clean, links resolve, no junk, matrix titles/slugs verified)"
+  },
+  {
+   "at": "2026-10-06T20:44:26.309Z",
+   "event": "WRITING -> LOCAL_QA_PASS"
+  },
+  {
+   "at": "2026-10-06T20:44:26.309Z",
+   "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+  }
+ ]
+}
