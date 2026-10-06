@@ -38,8 +38,14 @@
           "BA-0229",
           "BA-0230"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "FACTORY_FAILED",
+        "events": [
+          {
+            "state": "FACTORY_FAILED",
+            "at": "2026-10-06T14:48:23.601Z",
+            "reason": "factory run 37481970371 failed"
+          }
+        ]
       },
       {
         "seq": 3,
