@@ -1,7 +1,17 @@
 === request ===
-plan 18
+^BA-03(0[7-9]|1[0-6]),
+retry: 1
 === matrix rows ===
-(no matrix rows)
+BA-0307,B07,APP,PLANNED,tại sao nên dùng ứng dụng trước khi gọi điện,App & Ứng dụng; tại sao nên dùng ứng dụng trước khi gọi điện,informational-product,Tại Sao Nên Dùng Ứng Dụng Trước Khi Gọi Điện,tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien,blog/app/tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien/index.html,blog/app/,,no,no-external,blog/app/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0308,B07,RENT,PLANNED,thuê xe máy cũ hay mới,Thuê xe máy; thuê xe máy cũ hay mới,commercial-informational,Thuê xe Máy cũ Hay Mới,thue-xe-may-cu-hay-moi,blog/thue-xe/thue-xe-may-cu-hay-moi/index.html,blog/thue-xe/,,no,no-external,blog/thue-xe/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0309,B07,EV,PLANNED,tương lai xe điện cho thuê,Xe điện / xe máy điện; tương lai xe điện cho thuê,informational-product,Tương Lai xe Điện Cho Thuê,tuong-lai-xe-dien-cho-thue,blog/xe-dien/tuong-lai-xe-dien-cho-thue/index.html,blog/xe-dien/,,no,no-external,blog/xe-dien/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0310,B07,GUIDE,PLANNED,thủ tục thuê xe máy cho người mới,Hướng dẫn / thủ tục; thủ tục thuê xe máy cho người mới,informational,Thủ Tục Thuê xe Máy Cho Người Mới,thu-tuc-thue-xe-may-cho-nguoi-moi,blog/huong-dan/thu-tuc-thue-xe-may-cho-nguoi-moi/index.html,blog/huong-dan/,,no,no-external,blog/huong-dan/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0311,B07,SAFE,PLANNED,đi xe không giấy phép cho du khách,An toàn / pháp lý; đi xe không giấy phép cho du khách,informational-legal,đi xe Không Giấy Phép Cho du Khách,di-xe-khong-giay-phep-cho-du-khach,blog/an-toan/di-xe-khong-giay-phep-cho-du-khach/index.html,blog/an-toan/,,yes,legal-gate,blog/an-toan/; /,none,no,MotoAI Editorial,,,0,,,legal-gate: CLAIM->SUBJECT->CONDITION->RULE->VERSION->PRIMARY SOURCE required
+BA-0312,B07,LOCAL,PLANNED,đà lạt đường xa,Địa phương / du lịch; đà lạt đường xa,local-informational,đà Lạt Đường xa,da-lat-duong-xa,blog/dia-phuong/da-lat-duong-xa/index.html,blog/dia-phuong/,,no,no-external,blog/dia-phuong/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0313,B07,APP,PLANNED,soạn câu hỏi hiệu quả cho Agent thuê xe,App & Ứng dụng; soạn câu hỏi hiệu quả cho Agent thuê xe,informational-product,Soạn Câu Hỏi Hiệu Quả Cho Agent Thuê xe,soan-cau-hoi-hieu-qua-cho-agent-thue-xe,blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/index.html,blog/app/,,no,no-external,blog/app/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0314,B07,RENT,PLANNED,tình trạng xe tại cửa hàng,Thuê xe máy; tình trạng xe tại cửa hàng,commercial-informational,Tình Trạng xe Tại Cửa Hàng,tinh-trang-xe-tai-cua-hang,blog/thue-xe/tinh-trang-xe-tai-cua-hang/index.html,blog/thue-xe/,,no,no-external,blog/thue-xe/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0315,B07,EV,PLANNED,app thuê xe điện cho khách du lịch,Xe điện / xe máy điện; app thuê xe điện cho khách du lịch,informational-product,App Thuê xe Điện Cho Khách du Lịch,app-thue-xe-dien-cho-khach-du-lich,blog/xe-dien/app-thue-xe-dien-cho-khach-du-lich/index.html,blog/xe-dien/,,no,no-external,blog/xe-dien/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0316,B07,GUIDE,PLANNED,giấy tờ cần khi thuê xe cho người mới,Hướng dẫn / thủ tục; giấy tờ cần khi thuê xe cho người mới,informational,Giấy tờ Cần Khi Thuê xe Cho Người Mới,giay-to-can-khi-thue-xe-cho-nguoi-moi,blog/huong-dan/giay-to-can-khi-thue-xe-cho-nguoi-moi/index.html,blog/huong-dan/,,no,no-external,blog/huong-dan/; /,none,yes,MotoAI Editorial,,,0,,,
 === hub app ===
 agent-chon-xe-giup-ban
 ai-tra-loi-trong-ung-dung-thue-xe
@@ -353,78 +363,6 @@ ung-dung-ban-do-cho-nguoi-thue-xe
 === published count ===
 298
 === active batch ===
-WRITER-BATCH-0012 COMPLETED 1:PUBLISHED 2:PUBLISHED 3:PUBLISHED 4:PUBLISHED 5:PUBLISHED 6:PUBLISHED 7:PUBLISHED 8:PUBLISHED 9:PUBLISHED
-=== PLAN MODE ===
-created=true
-batch_id=WRITER-BATCH-0013
-total=18
-chunks=9
-writer_A_ids=6
-writer_B_ids=6
-writer_C_ids=6
-assignment_file=docs/state/writer-assignments.json
-=== QA PIPELINE ===
---- work view ---
-ops/work/writers/writer-work/WRITER-BATCH-0012/C/chunk-09.json
---- select-publish ---
-action=wait
-batch=WRITER-BATCH-0013
-seq=1
-reason=chunk 1 (writer writer_A) is not started — strict FIFO: never publish ahead of a lower sequence
---- stage ---
-ERROR: unknown batch: WRITER-BATCH-0012
-STAGE_FAILED
---- article-qa BA-0297 ---
-PASS  matrix-row
-PASS  unique-article-id
-PASS  unique-slug
-PASS  manifest-entry
-PASS  id-slug-path
-PASS  body-exists
-PASS  fact-resolution
-PASS  body-substantial
-PASS  html-render-safe
-PASS  verified-phones-only
-PASS  verified-deposits-only
-PASS  internal-links-resolve
-WARN  body-words — 1376 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
-PASS  body-structure
-PASS  no-filler
-PASS  no-duplicate-paragraphs
-PASS  no-duplicate-sentences
-PASS  no-cross-article-duplicate
-PASS  no-cannibalization
-PASS  title-meta-valid
-PASS  seo-ownership
-PASS  no-external-links
-PASS  retrieval-consistency
-QA PASS BA-0297 score=95 warnings=1
---- article-qa BA-0298 ---
-PASS  matrix-row
-PASS  unique-article-id
-PASS  unique-slug
-PASS  manifest-entry
-PASS  id-slug-path
-PASS  body-exists
-PASS  fact-resolution
-PASS  body-substantial
-PASS  html-render-safe
-PASS  verified-phones-only
-PASS  verified-deposits-only
-PASS  internal-links-resolve
-WARN  body-words — 1209 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
-PASS  body-structure
-PASS  no-filler
-PASS  no-duplicate-paragraphs
-PASS  no-duplicate-sentences
-PASS  no-cross-article-duplicate
-PASS  no-cannibalization
-PASS  title-meta-valid
-PASS  seo-ownership
-PASS  no-external-links
-PASS  retrieval-consistency
-QA PASS BA-0298 score=95 warnings=1
---- verify-push ---
-ERROR: batch WRITER-BATCH-0012 is not the ACTIVE assignment (superseded or missing) — push refused
-VERIFY_PUSH_FAILED
+WRITER-BATCH-0013 ACTIVE 1:RESERVED 2:RESERVED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
+=== no candidate bodies, state dump only ===
 === END ===
