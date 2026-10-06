@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0004",
+  "writer": "writer_C",
+  "seq": 9,
+  "ids": [
+    "BA-0153",
+    "BA-0154"
+  ],
+  "body_paths": [
+    "data/blog/articles/thue-xe-dien-cho-khach-du-lich.body.html",
+    "data/blog/articles/trom-cap-xe-va-xe-thue.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0153",
+      "category": "EV",
+      "slug": "thue-xe-dien-cho-khach-du-lich",
+      "title": "Thuê xe Điện Cho Khách du Lịch",
+      "description": "Thuê xe điện cho khách du lịch: lợi ích, các dòng xe, checklist hỏi pin sạc trước khi nhận và cách lên kế hoạch hành trình quanh Hà Nội.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-dien-cho-khach-du-lich.body.html",
+      "knowledge_chunks": [
+        "Xe điện phù hợp du khách vì chi phí năng lượng thấp, êm và dễ điều khiển, một lần sạc đủ cho hành trình trong ngày quanh trung tâm.",
+        "Khi thuê xe điện, hỏi quãng đường một lần sạc đầy, trạm sạc gần nơi lưu trú và sạc có đi kèm xe hay không.",
+        "Khách du lịch thuê xe điện nên chia chuyến đi thành chặng ngắn và hỏi số hỗ trợ khi hết pin giữa đường."
+      ]
+    },
+    {
+      "article_id": "BA-0154",
+      "category": "GUIDE",
+      "slug": "trom-cap-xe-va-xe-thue",
+      "title": "Trộm Cắp xe và xe Thuê",
+      "description": "Trộm cắp xe thuê: thói quen phòng tránh, quy trình bốn bước khi xe bị mất gồm báo cửa hàng và trình công an, cùng trách nhiệm bồi thường.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/trom-cap-xe-va-xe-thue.body.html",
+      "knowledge_chunks": [
+        "Luôn gửi xe thuê ở bãi có người trông và lấy vé, kể cả khi chỉ dừng vài phút, để giảm rủi ro trộm cắp.",
+        "Khi xe thuê bị mất cắp, hãy xác nhận hiện trường, gọi cửa hàng, trình báo công an và xin bản ghi nhận sự vụ làm căn cứ.",
+        "Theo hợp đồng thuê, khách thường bồi thường theo giá trị xe quy định khi xe bị mất, nên đọc kỹ điều khoản trước khi ký."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T04:57:32.756Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T04:57:32.758Z"
+    }
+  ]
+}
