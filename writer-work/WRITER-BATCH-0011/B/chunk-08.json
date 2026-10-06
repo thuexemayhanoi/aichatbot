@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0011",
+  "writer": "writer_B",
+  "seq": 8,
+  "ids": [
+    "BA-0277",
+    "BA-0278"
+  ],
+  "body_paths": [
+    "data/blog/articles/dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi.body.html",
+    "data/blog/articles/thue-xe-chay-dich-vu.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0277",
+      "category": "APP",
+      "slug": "dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi",
+      "title": "Dùng Ứng Dụng Thuê xe Khi đi du Lịch Hà Nội",
+      "description": "Dùng ứng dụng thuê xe máy khi du lịch Hà Nội: đặt xe từ trước, tính năng trợ lý và bảng giá, điểm tham quan quanh phố cổ và lưu ý lái xe cho du khách.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Khách du lịch thuê xe máy tại Hà Nội nên đặt qua ứng dụng trước chuyến đi để có xe đúng giờ, xem giá trước khi đặt và nhận hướng dẫn nhận xe bằng văn bản, tránh trao đổi qua điện thoại nhiều lần.",
+        "Ứng dụng thuê xe hỗ trợ khách du lịch bằng trợ lý trả lời câu hỏi về giá và thủ tục, bảng giá theo ngày và tuần, hướng dẫn từng bước thủ tục, và chạy tốt trên điện thoại cũ cấu hình thấp.",
+        "Với chiếc xe máy thuê, du khách có thể đi phố cổ quanh hồ Hoàn Kiếm, gốm Bát Tràng, hồ Tây và các điểm ven đô Hà Nội; nên đi chậm, bật định vị vì nhiều tuyến một chiều và gửi xe ở bãi có người trông."
+      ]
+    },
+    {
+      "article_id": "BA-0278",
+      "category": "RENT",
+      "slug": "thue-xe-chay-dich-vu",
+      "title": "Thuê xe Chạy Dịch vụ",
+      "description": "Thuê xe máy chạy dịch vụ: chọn loại xe bền theo công việc, thuê theo tuần hoặc tháng, tính chi phí thực tế và chốt điều khoản bảo dưỡng, hỗ trợ sự cố.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-chay-dich-vu.body.html",
+      "knowledge_chunks": [
+        "Thuê xe máy chạy dịch vụ khác thuê đi chơi ở cường độ sử dụng cao, nên ba yếu tố quan trọng nhất là độ bền xe, giá thuê dài ngày và tốc độ hỗ trợ khi xe gặp sự cố giữa giờ làm việc.",
+        "Người chạy dịch vụ nên thuê theo tuần hoặc theo tháng vì giá ngày giảm dần theo độ dài kỳ thuê; cần tính cả tiền xăng, phụ phí và quỹ thời gian xe nằm sửa trước khi ký hợp đồng dài ngày.",
+        "Trước khi ký hợp đồng thuê dài hạn để chạy dịch vụ nên chốt rõ ai chịu chi phí bảo dưỡng định kỳ, thời gian xử lý sự cố, có xe thay thế hay không và điều kiện hoàn tiền cọc khi kết thúc."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T20:57:52.213Z",
+      "event": "chunk created and locally validated (links resolve; no junk; no external links; no invented business data; deposit policy not stated beyond general terms)"
+    },
+    {
+      "at": "2026-10-06T20:57:52.213Z",
+      "event": "WRITING -> LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T20:57:52.213Z",
+      "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+    }
+  ]
+}
