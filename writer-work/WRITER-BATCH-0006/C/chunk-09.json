@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0006",
+  "writer": "writer_C",
+  "seq": 9,
+  "ids": [
+    "BA-0189",
+    "BA-0190"
+  ],
+  "body_paths": [
+    "data/blog/articles/cong-cu-uoc-tinh-quang-duong-xe-dien.body.html",
+    "data/blog/articles/thue-xe-cho-nguoi-duoi-18-tuoi.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0189",
+      "category": "EV",
+      "slug": "cong-cu-uoc-tinh-quang-duong-xe-dien",
+      "title": "Công cụ Ước Tính Quãng Đường xe Điện",
+      "description": "Cách công cụ ước tính quãng đường xe điện hoạt động, vì sao số liệu hay lệch thực tế và cách dùng để lên kế hoạch chuyến đi an toàn.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cong-cu-uoc-tinh-quang-duong-xe-dien.body.html",
+      "knowledge_chunks": [
+        "Công cụ ước tính quãng đường chuyển phần trăm pin thành số cây số dự kiến dựa trên mức tiêu hao trung bình của xe.",
+        "Số liệu lệch thực tế do pin suy giảm theo thời gian, địa hình dốc, chở nặng, phanh ga liên tục và nhiệt độ thấp.",
+        "Khi lên kế hoạch nên trừ 15 đến 20 phần trăm quãng đường làm dự phòng và đánh dấu sẵn điểm sạc dọc lộ trình."
+      ]
+    },
+    {
+      "article_id": "BA-0190",
+      "category": "GUIDE",
+      "slug": "thue-xe-cho-nguoi-duoi-18-tuoi",
+      "title": "Thuê xe Cho Người Dưới 18 Tuổi",
+      "description": "Điều kiện thuê xe máy cho người dưới 18 tuổi: giấy phép lái xe theo độ tuổi, tư cách xác lập hợp đồng và hình thức người đủ tuổi đứng tên.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-cho-nguoi-duoi-18-tuoi.body.html",
+      "knowledge_chunks": [
+        "Giấy phép lái xe hạng A1 được cấp cho người từ đủ 16 tuổi, hạng A cho người từ đủ 18 tuổi.",
+        "Người từ đủ 15 đến chưa đủ 18 tuổi chỉ tự xác lập giao dịch nhỏ, nên phần lớn điểm thuê yêu cầu người đủ 18 tuổi đứng tên hợp đồng.",
+        "Hình thức phổ biến: người trên 18 tuổi đứng tên thuê, người dưới 18 chỉ sử dụng xe khi có giấy phép lái xe hợp lệ với loại xe."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T09:53:33.093Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T09:53:33.094Z"
+    }
+  ]
+}
