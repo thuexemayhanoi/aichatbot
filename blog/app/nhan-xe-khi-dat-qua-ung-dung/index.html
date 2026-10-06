@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v63">
+  <title>Nhận xe Khi Đặt Qua Ứng Dụng</title>
+  <meta name="description" content="Trình tự nhận xe khi đặt qua ứng dụng: kiểm tra đơn trước khi đến, đối chiếu mã và giấy tờ, nghiệm thu xe và xử lý phát sinh.">
+  <link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/blog/app/nhan-xe-khi-dat-qua-ung-dung/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Nhận xe Khi Đặt Qua Ứng Dụng">
+  <meta property="og:description" content="Trình tự nhận xe khi đặt qua ứng dụng: kiểm tra đơn trước khi đến, đối chiếu mã và giấy tờ, nghiệm thu xe và xử lý phát sinh.">
+  <meta property="og:url" content="https://thuexemayhanoi.github.io/aichatbot/blog/app/nhan-xe-khi-dat-qua-ung-dung/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nhận xe Khi Đặt Qua Ứng Dụng">
+  <meta name="twitter:description" content="Trình tự nhận xe khi đặt qua ứng dụng: kiểm tra đơn trước khi đến, đối chiếu mã và giấy tờ, nghiệm thu xe và xử lý phát sinh.">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=63">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=63">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/aichatbot/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/aichatbot/blog/">Cẩm nang</a>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/aichatbot/blog/cong-cu-huong-dan/" aria-haspopup="true" aria-current="page">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/app/" aria-current="page">📱 Ứng Dụng</a>
+            <a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/aichatbot/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/aichatbot/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-nhan-xe-khi-dat-qua-ung-dung">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/aichatbot/">Agent</a> › <a href="/aichatbot/blog/">Cẩm nang</a> › <a href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a> › <a href="/aichatbot/blog/app/">Ứng Dụng</a> › <span>Nhận xe Khi Đặt Qua Ứng Dụng</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/aichatbot/blog/app/">Ứng Dụng</a>
+        <a class="blog-chip blog-chip-parent" href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+      </p>
+      <p class="blog-screen-label">Ứng Dụng</p>
+      <h1 class="blog-screen-title">Nhận xe Khi Đặt Qua Ứng Dụng</h1>
+      <p class="blog-screen-lead">Trình tự nhận xe khi đặt qua ứng dụng: kiểm tra đơn trước khi đến, đối chiếu mã và giấy tờ, nghiệm thu xe và xử lý phát sinh.</p>
+      <p class="byline">MotoAI Editorial · 2026-10-06 · Ứng Dụng · 5 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Trình tự nhận xe khi đặt qua ứng dụng: kiểm tra đơn trước khi đến, đối chiếu mã và giấy tờ, nghiệm thu xe và xử lý phát sinh.</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#truoc-khi-den-diem-nhan-xe">Trước khi đến điểm nhận xe</a></li>
+        <li class="toc-l2"><a href="#quy-trinh-nhan-xe-trong-ung-dung-hoat-dong-ra-sao">Quy trình nhận xe trong ứng dụng hoạt động ra sao</a></li>
+        <li class="toc-l2"><a href="#nghiem-thu-xe-buoc-khong-nen-bo-qua">Nghiệm thu xe: bước không nên bỏ qua</a></li>
+        <li class="toc-l2"><a href="#phat-sinh-khi-nhan-xe-khac-hoac-gio-tre">Phát sinh khi nhận: xe khác hoặc giờ trễ</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+        <li class="toc-l3"><a href="#nhan-xe-qua-ung-dung-co-can-giay-to-ban-goc-khong">Nhận xe qua ứng dụng có cần giấy tờ bản gốc không?</a></li>
+        <li class="toc-l3"><a href="#neu-den-som-hon-gio-dat-thi-co-nhan-duoc-ngay-khong">Nếu đến sớm hơn giờ đặt thì có nhận được ngay không?</a></li>
+        <li class="toc-l3"><a href="#ma-don-bi-loi-hoac-khong-hien-thi-thi-lam-the-nao">Mã đơn bị lỗi hoặc không hiển thị thì làm thế nào?</a></li>
+        <li class="toc-l3"><a href="#nghiem-thu-xe-xong-co-can-ky-xac-nhan-trong-ung-dung-khong">Nghiệm thu xe xong có cần ký xác nhận trong ứng dụng không?</a></li>
+        <li class="toc-l3"><a href="#co-the-doi-loai-xe-tai-thoi-diem-nhan-khong">Có thể đổi loại xe tại thời điểm nhận không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#truoc-khi-den-diem-nhan-xe">Trước khi đến điểm nhận xe</a></li>
+        <li class="toc-l2"><a href="#quy-trinh-nhan-xe-trong-ung-dung-hoat-dong-ra-sao">Quy trình nhận xe trong ứng dụng hoạt động ra sao</a></li>
+        <li class="toc-l2"><a href="#nghiem-thu-xe-buoc-khong-nen-bo-qua">Nghiệm thu xe: bước không nên bỏ qua</a></li>
+        <li class="toc-l2"><a href="#phat-sinh-khi-nhan-xe-khac-hoac-gio-tre">Phát sinh khi nhận: xe khác hoặc giờ trễ</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+        <li class="toc-l3"><a href="#nhan-xe-qua-ung-dung-co-can-giay-to-ban-goc-khong">Nhận xe qua ứng dụng có cần giấy tờ bản gốc không?</a></li>
+        <li class="toc-l3"><a href="#neu-den-som-hon-gio-dat-thi-co-nhan-duoc-ngay-khong">Nếu đến sớm hơn giờ đặt thì có nhận được ngay không?</a></li>
+        <li class="toc-l3"><a href="#ma-don-bi-loi-hoac-khong-hien-thi-thi-lam-the-nao">Mã đơn bị lỗi hoặc không hiển thị thì làm thế nào?</a></li>
+        <li class="toc-l3"><a href="#nghiem-thu-xe-xong-co-can-ky-xac-nhan-trong-ung-dung-khong">Nghiệm thu xe xong có cần ký xác nhận trong ứng dụng không?</a></li>
+        <li class="toc-l3"><a href="#co-the-doi-loai-xe-tai-thoi-diem-nhan-khong">Có thể đổi loại xe tại thời điểm nhận không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Đặt xe qua ứng dụng chỉ là nửa đầu của quy trình; nửa còn lại là bước nhận xe, và đây chính là lúc nhiều vấn đề phát sinh: sai giờ, sai loại xe, hoặc giấy tờ chưa sẵn sàng. Hiểu trước trình tự nhận xe khi đặt qua ứng dụng giúp bạn rút ngắn thời gian chờ và tránh những tranh chấp nhỏ không đáng có. Bài viết này đi qua từng bước nhận xe trong bối cảnh đặt qua ứng dụng, từ xác nhận đơn đến nghiệm thu xe.</p>
+  
+  <h2 id="truoc-khi-den-diem-nhan-xe">Trước khi đến điểm nhận xe</h2>
+  
+  <p>Ứng dụng thường hiển thị trạng thái đơn theo từng bước: chờ xác nhận, đã xác nhận, sẵn sàng nhận. Trước khi khởi hành đến điểm nhận, bạn nên mở lại đơn để kiểm tra ba thông tin: giờ nhận đã chọn, loại xe đã chốt và địa điểm nhận cụ thể. Nếu đơn có ghi chú từ phía cửa hàng, đọc kỹ trước khi đi để tránh phải quay lại lấy thêm giấy tờ.</p>
+  
+  <ul>
+  <li>Xem lại mã đơn hoặc mã đặt xe để trình nhanh tại quầy.</li>
+  <li>Chuẩn bị giấy tờ đúng danh mục hiển thị trong đơn, tham khảo <a href="/aichatbot/blog/huong-dan/giay-to-can-khi-thue-xe/index.html">Giấy tờ cần khi thuê xe</a>.</li>
+  <li>Kiểm tra bản ghi thanh toán hoặc khoản bảo đảm đã hoàn tất.</li>
+  <li>Bật thông báo để nhận tin nhắn đổi giờ nếu có.</li>
+  </ul>
+  
+  <h2 id="quy-trinh-nhan-xe-trong-ung-dung-hoat-dong-ra-sao">Quy trình nhận xe trong ứng dụng hoạt động ra sao</h2>
+  
+  <p>Tại điểm nhận, nhân viên đối chiếu mã đơn với hệ thống rồi bàn giao xe theo đúng loại đã đặt. Một số ứng dụng yêu cầu bạn quét mã QR trên xe hoặc bấm nút bắt đầu thuê ngay trong ứng dụng, và thời gian thuê tính từ khoảnh khắc đó. Cách này giúp hai bên có mốc thời gian thống nhất, tránh tranh luận về giờ trả sau này. Tổng quan về cách ứng dụng vận hành được giới thiệu trong bài <a href="/aichatbot/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao/index.html">Ứng dụng thuê xe máy hoạt động ra sao</a>.</p>
+  
+  <ul>
+  <li>Đối chiếu mã đơn và giấy tờ bản gốc khi đến quầy.</li>
+  <li>Bắt đầu phiên thuê trong ứng dụng nếu hệ thống yêu cầu.</li>
+  <li>Kiểm tra mức nhiên liệu hoặc phần trăm pin ghi trong đơn.</li>
+  <li>Chụp lại tình trạng xe trước khi rời điểm nhận.</li>
+  </ul>
+  
+  <h2 id="nghiem-thu-xe-buoc-khong-nen-bo-qua">Nghiệm thu xe: bước không nên bỏ qua</h2>
+  
+  <p>Dù đặt qua ứng dụng có ghi nhận thông tin xe, bạn vẫn phải tự kiểm tra tình trạng thực tế trước khi nhận. Bước này quan trọng vì mọi hư hỏng phát hiện sau khi bạn đã rời đi sẽ khó chứng minh là có sẵn từ trước. Danh mục cần kiểm tra gồm: phanh, đèn, còi, gương, lốp, nhớt hoặc pin và các vết trầy có sẵn. Cách kiểm tra chi tiết được hướng dẫn tại <a href="/aichatbot/blog/huong-dan/kiem-tra-xe-khi-nhan/index.html">Kiểm tra xe khi nhận</a>, còn trình tự tổng thể nằm trong bài <a href="/aichatbot/blog/huong-dan/quy-trinh-nhan-xe/index.html">Quy trình nhận xe</a>.</p>
+  
+  <h2 id="phat-sinh-khi-nhan-xe-khac-hoac-gio-tre">Phát sinh khi nhận: xe khác hoặc giờ trễ</h2>
+  
+  <ul>
+  <li>Nếu xe bàn giao khác loại đã đặt, yêu cầu điều chỉnh lại đơn trong ứng dụng trước khi nhận.</li>
+  <li>Nếu đến trễ do tắc đường, báo ngay qua kênh chat của đơn để giữ xe lâu hơn.</li>
+  <li>Nếu ứng dụng báo lỗi không bắt đầu được phiên thuê, nhờ nhân viên xác nhận thủ công và chụp màn hình làm bằng chứng.</li>
+  <li>Lưu lại mọi tin nhắn trao đổi trong ứng dụng để đối chiếu nếu có tranh chấp.</li>
+  </ul>
+  
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  
+  <h3 id="nhan-xe-qua-ung-dung-co-can-giay-to-ban-goc-khong">Nhận xe qua ứng dụng có cần giấy tờ bản gốc không?</h3>
+  <p>Có. Ứng dụng chỉ ghi nhận yêu cầu, còn bản gốc giấy tờ vẫn phải đối chiếu tại điểm nhận xe.</p>
+  
+  <h3 id="neu-den-som-hon-gio-dat-thi-co-nhan-duoc-ngay-khong">Nếu đến sớm hơn giờ đặt thì có nhận được ngay không?</h3>
+  <p>Tùy tình trạng xe sẵn có. Nếu xe đã sẵn sàng, đa số điểm thuê cho nhận sớm, nhưng nên xác nhận qua ứng dụng trước.</p>
+  
+  <h3 id="ma-don-bi-loi-hoac-khong-hien-thi-thi-lam-the-nao">Mã đơn bị lỗi hoặc không hiển thị thì làm thế nào?</h3>
+  <p>Báo nhân viên đối chiếu bằng số điện thoại đã đặt, đồng thời chụp lại màn hình lỗi gửi về kênh hỗ trợ của ứng dụng.</p>
+  
+  <h3 id="nghiem-thu-xe-xong-co-can-ky-xac-nhan-trong-ung-dung-khong">Nghiệm thu xe xong có cần ký xác nhận trong ứng dụng không?</h3>
+  <p>Nếu ứng dụng có bước xác nhận tình trạng xe, hãy hoàn tất bước đó trước khi rời đi để lưu bằng chứng hai bên đã nghiệm thu.</p>
+  
+  <h3 id="co-the-doi-loai-xe-tai-thoi-diem-nhan-khong">Có thể đổi loại xe tại thời điểm nhận không?</h3>
+  <p>Có thể nếu còn xe và hai bên đồng ý, nhưng đừng quên cập nhật lại đơn trong ứng dụng để giá và loại xe khớp thực tế.</p>
+  
+  <h2 id="ket-luan">Kết luận</h2>
+  
+  <p>Nhận xe là bước biến đơn đặt trên ứng dụng thành chuyến đi thực sự: kiểm tra đơn trước khi đi, đối chiếu mã và giấy tờ tại quầy, nghiệm thu xe kỹ lưỡng và lưu lại bằng chứng trong ứng dụng. Nếu bạn chưa quen dùng ứng dụng thuê xe, bài <a href="/aichatbot/blog/app/app-thue-xe-may-la-gi/index.html">App thuê xe máy là gì</a> là điểm khởi đầu phù hợp. MotoAI hỗ trợ trực tiếp tại 112 Nguyễn Văn Cừ, Long Biên, Hà Nội trong giờ 09:00 - 21:00.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/aichatbot/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+          <span aria-hidden="true">→</span>
+          <a href="/aichatbot/blog/app/">Ứng Dụng</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/aichatbot/blog/app/app-thue-xe-may-la-gi/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục</h2>
+        <p>Tìm hiểu app thuê xe máy là gì, ứng dụng web MotoAI giúp hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe ngay trên trình duyệt, không cần cài đặt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/cach-dung-ung-dung-thue-xe-may/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách dùng ứng dụng thuê xe máy: 5 bước từ hỏi giá đến nhận xe</h2>
+        <p>Hướng dẫn dùng ứng dụng trợ lý thuê xe máy trên web: đặt câu hỏi đúng cách, hỏi giá theo khung thời gian, chốt dòng xe, xác nhận thủ tục và lưu tin nhắn chốt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/ung-dung-thue-xe-co-an-toan-khong/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Ứng dụng thuê xe có an toàn không: cách kiểm tra trước khi đặt xe</h2>
+        <p>Ứng dụng thuê xe an toàn hay không phụ thuộc ba lớp: thông tin cá nhân, giao dịch đặt cọc và dịch vụ đi kèm, kèm checklist kiểm tra công cụ thuê xe trước khi đặt.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/cach-tinh-gia-thue-xe-bang-app/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách tính giá thuê xe bằng app: đọc đúng một báo giá</h2>
+        <p>Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.</p>
+      </a>
+      <a class="blog-card" href="/aichatbot/blog/app/chon-xe-bang-agent/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Chọn xe bằng Agent: nói nhu cầu để nhận đúng dòng xe</h2>
+        <p>Chọn xe bằng Agent: năm thông tin cần mô tả để trợ lý gợi ý dòng xe phù hợp với chuyến đi, cách Agent suy luận từ nhu cầu và các câu hỏi nên hỏi lại trước khi chốt.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Công cụ &amp; Hướng dẫn: <a href="/aichatbot/blog/app/">Ứng Dụng</a> · <a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/aichatbot/?ask=Nh%E1%BA%ADn%20xe%20Khi%20%C4%90%E1%BA%B7t%20Qua%20%E1%BB%A8ng%20D%E1%BB%A5ng">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/aichatbot/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/aichatbot/">Agent</a></li>
+          <li><a href="/aichatbot/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/aichatbot/blog/">Cẩm nang</a></li>
+          <li><a href="/aichatbot/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/aichatbot/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/aichatbot/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/aichatbot/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/aichatbot/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/aichatbot/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/aichatbot/">⚡ Agent</a></li>
+      <li><a href="/aichatbot/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/cong-cu-huong-dan/" aria-current="page">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/app/" aria-current="page">📱 Ứng Dụng</a></li>
+            <li><a href="/aichatbot/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/aichatbot/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/aichatbot/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/aichatbot/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/aichatbot/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/aichatbot/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/aichatbot/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/aichatbot/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/aichatbot/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/aichatbot/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/aichatbot/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/aichatbot/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Nhận xe Khi Đặt Qua Ứng Dụng","description":"Trình tự nhận xe khi đặt qua ứng dụng: kiểm tra đơn trước khi đến, đối chiếu mã và giấy tờ, nghiệm thu xe và xử lý phát sinh.","datePublished":"2026-10-06","dateModified":"2026-10-06","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://thuexemayhanoi.github.io/aichatbot/"},"mainEntityOfPage":"https://thuexemayhanoi.github.io/aichatbot/blog/app/nhan-xe-khi-dat-qua-ung-dung/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://thuexemayhanoi.github.io/aichatbot/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://thuexemayhanoi.github.io/aichatbot/blog/"},{"@type":"ListItem","position":3,"name":"Công cụ & Hướng dẫn","item":"https://thuexemayhanoi.github.io/aichatbot/blog/cong-cu-huong-dan/"},{"@type":"ListItem","position":4,"name":"Ứng Dụng","item":"https://thuexemayhanoi.github.io/aichatbot/blog/app/"},{"@type":"ListItem","position":5,"name":"Nhận xe Khi Đặt Qua Ứng Dụng","item":"https://thuexemayhanoi.github.io/aichatbot/blog/app/nhan-xe-khi-dat-qua-ung-dung/"}]}
+  </script>
+
+  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=63"></script>
+</body>
+</html>
