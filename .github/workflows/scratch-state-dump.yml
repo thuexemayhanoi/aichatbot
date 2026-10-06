@@ -1,7 +1,8 @@
 name: scratch-state-dump
 on:
   push:
-    branches: [scratch/state-dump]
+    branches:
+      - scratch/state-dump
 jobs:
   dump:
     runs-on: ubuntu-latest
@@ -30,6 +31,7 @@ jobs:
             node -e "const p=require('./data/blog/published.json');console.log(p.articles.length)"
             echo "=== active batch ==="
             node -e "const a=require('./docs/state/writer-assignments.json');console.log(a.active.batch_id, a.active.chunks.map(c=>c.seq+':'+c.status).join(' '))"
+            echo "=== DONE ==="
           } > state-dump.txt 2>&1
       - name: commit
         run: |
