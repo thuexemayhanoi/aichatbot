@@ -3,7 +3,7 @@
   "active": {
     "batch_id": "WRITER-BATCH-0008",
     "base_sha": "2b19639b15417dbbf6d81dd01a107d99f54a3bab",
-    "status": "ACTIVE",
+    "status": "COMPLETED",
     "created_at": "2026-10-06T14:25:47.801Z",
     "limit": 18,
     "total": 18,
@@ -199,8 +199,21 @@
           "BA-0225",
           "BA-0226"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-06T14:44:15.002Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-06T14:44:15.002Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-06T14:44:15.002Z"
+          }
+        ]
       }
     ]
   },
