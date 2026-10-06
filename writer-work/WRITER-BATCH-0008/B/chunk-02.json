@@ -55,6 +55,12 @@
       "from": "LOCAL_QA_PASS",
       "to": "READY_TO_PUSH",
       "at": "2026-10-06T14:30:56.784Z"
+    },
+    {
+      "from": "READY_TO_PUSH",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T14:32:08.512Z",
+      "reason": "retrigger publisher to complete chunk 2 manifest marking (articles already on main)"
     }
   ]
 }
