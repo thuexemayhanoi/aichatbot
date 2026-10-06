@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0006",
+  "writer": "writer_B",
+  "seq": 5,
+  "ids": [
+    "BA-0181",
+    "BA-0182"
+  ],
+  "body_paths": [
+    "data/blog/articles/dat-coc-va-ung-dung-thue-xe.body.html",
+    "data/blog/articles/dat-xe-truoc-hay-den-truc-tiep.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0181",
+      "category": "APP",
+      "slug": "dat-coc-va-ung-dung-thue-xe",
+      "title": "Đặt Cọc và Ứng Dụng Thuê xe",
+      "description": "Cơ chế đặt cọc trong ứng dụng thuê xe máy: cách hoạt động, điều kiện hoàn tiền và những điều cần kiểm tra trước khi xác nhận thanh toán.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/dat-coc-va-ung-dung-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Đặt cọc qua ứng dụng thuê xe là khoản bảo đảm tách riêng với phí thuê, có bản ghi giao dịch rõ ràng.",
+        "Trước khi xác nhận thanh toán nên đọc kỹ điều kiện hoàn cọc, khung giờ nhận trả xe và các phụ phí.",
+        "Khoản đặt cọc thường không hoàn khi xe hư hỏng do lỗi người thuê, bị mất hoặc quá hạn trả không liên lạc được."
+      ]
+    },
+    {
+      "article_id": "BA-0182",
+      "category": "RENT",
+      "slug": "dat-xe-truoc-hay-den-truc-tiep",
+      "title": "Đặt xe Trước Hay Đến Trực Tiếp",
+      "description": "So sánh đặt xe trước và đến trực tiếp khi thuê xe máy Hà Nội: ưu điểm từng cách, tình huống phù hợp và lỗi thường gặp cần tránh.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/dat-xe-truoc-hay-den-truc-tiep.body.html",
+      "knowledge_chunks": [
+        "Đặt xe trước giúp chắc chắn có đúng loại xe trong khung giờ mong muốn, quan trọng vào mùa cao điểm.",
+        "Đến trực tiếp cho phép xem tình trạng xe thực tế và đổi xe ngay nếu không ưng ý.",
+        "Giữa tuần ngày thường đến trực tiếp thường vẫn nhiều lựa chọn, mùa lễ nên đặt trước vài ngày."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T09:31:33.880Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T09:31:33.883Z"
+    }
+  ]
+}
