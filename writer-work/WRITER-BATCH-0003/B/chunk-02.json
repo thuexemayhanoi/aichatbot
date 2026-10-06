@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0003",
+  "writer": "writer_B",
+  "seq": 2,
+  "ids": [
+    "BA-0121",
+    "BA-0122"
+  ],
+  "body_paths": [
+    "data/blog/articles/ung-dung-tim-xe-may-gia-tot.body.html",
+    "data/blog/articles/bang-lai-a1-va-thue-xe-may.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0121",
+      "category": "APP",
+      "slug": "ung-dung-tim-xe-may-gia-tot",
+      "title": "Ứng dụng tìm xe máy giá tốt: so sánh giá theo ngày, tuần, tháng",
+      "description": "Dùng ứng dụng tìm xe máy giá tốt để so sánh giá theo loại xe và thời gian thuê, hỏi giá nhanh bằng chatbot và tránh bẫy giá niêm yết thấp phụ phí cao.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ung-dung-tim-xe-may-gia-tot.body.html",
+      "knowledge_chunks": [
+        "Ứng dụng tìm xe máy giá tốt là công cụ web giúp so sánh giá thuê theo loại xe và thời gian trước khi đặt, MotoAI chạy trên trình duyệt không cần tải về hay tạo tài khoản.",
+        "Giá thuê tốt phụ thuộc thời gian thuê: gói tuần và gói tháng thường có đơn giá thấp hơn tính lẻ theo ngày, nên so sánh tổng chi phí thay vì chỉ đơn giá.",
+        "Tránh bẫy giá rẻ: hỏi kèm mức cọc, phí giao nhận và điều kiện phạt trễ trước khi thuê, giá niêm yết thấp không phải là chi phí cuối cùng."
+      ]
+    },
+    {
+      "article_id": "BA-0122",
+      "category": "RENT",
+      "slug": "bang-lai-a1-va-thue-xe-may",
+      "title": "Bằng lái A1 và thuê xe máy: điều kiện, thủ tục và lưu ý",
+      "description": "Bằng lái A1 cấp cho xe mô tô hai bánh dưới 175cm3 và đủ điều kiện thuê xe máy phổ thông. Thủ tục, giấy tờ cần mang và câu hỏi thường gặp khi thuê xe với bằng A1.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/bang-lai-a1-va-thue-xe-may.body.html",
+      "knowledge_chunks": [
+        "Bằng lái A1 cấp cho xe mô tô hai bánh từ 50cm3 đến dưới 175cm3, phù hợp hầu hết xe số và xe ga phổ thông cho thuê tại Hà Nội.",
+        "Thuê xe máy cần bằng lái còn hiệu lực, giấy tờ tùy thân hợp lệ và tiền đặt cọc; không có bằng lái hợp lệ thì không được tự điều khiển xe thuê.",
+        "Khách quốc tế cần giấy phép lái phù hợp quy định Việt Nam, kiểm tra hiệu lực và mang kèm hộ chiếu trước khi thuê xe máy."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T03:32:02.535Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T03:32:02.539Z"
+    }
+  ]
+}
