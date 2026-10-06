@@ -1,0 +1,57 @@
+{
+ "$schema": "motoai/writer-chunk@1",
+ "batch_id": "WRITER-BATCH-0011",
+ "writer": "writer_A",
+ "seq": 1,
+ "ids": [
+  "BA-0263",
+  "BA-0264"
+ ],
+ "body_paths": [
+  "data/blog/articles/nghia-vu-cua-ben-cho-thue.body.html",
+  "data/blog/articles/ninh-binh-cuoi-tuan-xe-may.body.html"
+ ],
+ "status": "READY_TO_PUSH",
+ "drafts": [
+  {
+   "article_id": "BA-0263",
+   "category": "SAFE",
+   "slug": "nghia-vu-cua-ben-cho-thue",
+   "title": "Nghĩa vụ Của Bên Cho Thuê",
+   "description": "Nghĩa vụ của bên cho thuê theo Điều 479 Bộ luật Dân sự 2015: giao xe đúng cam kết, không tăng giá giữa kỳ, bảo dưỡng trong kỳ thuê, bồi thường khi giao sai.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/nghia-vu-cua-ben-cho-thue.body.html",
+   "knowledge_chunks": []
+  },
+  {
+   "article_id": "BA-0264",
+   "category": "LOCAL",
+   "slug": "ninh-binh-cuoi-tuan-xe-may",
+   "title": "Ninh Bình Cuối Tuần xe Máy",
+   "description": "Lịch trình hai ngày một đêm đi Ninh Bình bằng xe máy qua quốc lộ 1A: chặng chạy, điểm nghỉ, kỹ thuật đường trường và kế hoạch thuyền, núi, cố đô.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/ninh-binh-cuoi-tuan-xe-may.body.html",
+   "knowledge_chunks": [
+    "Chặng Hà Nội đi thành phố Ninh Bình bằng xe máy dài khoảng chín mươi cây số theo quốc lộ 1A qua hướng Giải Phóng, Hà Nam và Phủ Lý, chạy thảnh thơi mất khoảng hai tiếng đến hai tiếng rưỡi.",
+    "Tuyến cao tốc song song chỉ dành cho ô tô, xe máy phải đi quốc lộ 1A; đường đông xe tải nên chạy làn phải, vượt khi quan sát rõ và giảm tốc khi qua thị trấn có chợ bày lòng đường.",
+    "Kế hoạch hợp lý cho cuối tuần là hai ngày một đêm: chiều hôm đầu đi thuyền và thăm khu cố đô, tối nghỉ lại thành phố, sáng hôm sau leo núi ngắm đồng lúa rồi về Hà Nội sau bữa trưa."
+   ]
+  }
+ ],
+ "history": [
+  {
+   "at": "2026-10-06T20:39:52.067Z",
+   "event": "chunk created and locally validated (legal gate verified BLDS 2015 Art 479 + vbpl link; LOCAL facts verified; links resolve; no junk)"
+  },
+  {
+   "at": "2026-10-06T20:39:52.067Z",
+   "event": "WRITING -> LOCAL_QA_PASS"
+  },
+  {
+   "at": "2026-10-06T20:39:52.067Z",
+   "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+  }
+ ]
+}
