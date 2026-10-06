@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0009",
+  "writer": "writer_B",
+  "seq": 2,
+  "ids": [
+    "BA-0229",
+    "BA-0230"
+  ],
+  "body_paths": [
+    "data/blog/articles/ung-dung-thue-xe-tren-dien-thoai-cu.body.html",
+    "data/blog/articles/thue-xe-o-ga-tau-san-bay.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0229",
+      "category": "APP",
+      "slug": "ung-dung-thue-xe-tren-dien-thoai-cu",
+      "title": "Ứng Dụng Thuê xe Trên Điện Thoại Cũ",
+      "description": "Mẹo dùng ứng dụng thuê xe trên điện thoại cũ: chọn bản web nhẹ, dọn bộ nhớ trước khi mở, gõ câu ngắn và xử lý khi pin yếu hoặc mạng chậm.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ung-dung-thue-xe-tren-dien-thoai-cu.body.html",
+      "knowledge_chunks": [
+        "Điện thoại cũ nên dùng bản web của ứng dụng thuê xe vì không cần cài, không chiếm dung lượng mà vẫn đủ các bước đặt xe.",
+        "Trước khi đặt xe nên đóng thẻ trình duyệt khác, tắt ứng dụng nền và giữ khoảng một phần tư bộ nhớ trống.",
+        "Khi pin yếu giảm độ sáng màn hình, gõ câu ngắn và gọi trực tiếp nếu mạng chậm giữa khâu chốt đơn."
+      ]
+    },
+    {
+      "article_id": "BA-0230",
+      "category": "RENT",
+      "slug": "thue-xe-o-ga-tau-san-bay",
+      "title": "Thuê xe ở ga Tàu Sân Bay",
+      "description": "Cách thuê xe máy nhận tại ga tàu và bến xe khách: chốt giờ theo giờ tàu, chọn điểm hẹn dễ mô tả, xử lý tàu trễ và so sánh nhanh với taxi.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-o-ga-tau-san-bay.body.html",
+      "knowledge_chunks": [
+        "Nhận xe tại ga tàu phụ thuộc giờ tàu thực tế, nên chốt khung giờ trước và báo ngay khi tàu chạy trễ.",
+        "Điểm hẹn quanh ga nên gần lối ra chính và dễ mô tả qua điện thoại giữa đám đông.",
+        "Với bến xe khách, chọn cột mốc cố định làm điểm hẹn và hỏi trước quy định để xe nếu định để qua đêm."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T14:47:26.368Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T14:47:26.368Z"
+    }
+  ]
+}
