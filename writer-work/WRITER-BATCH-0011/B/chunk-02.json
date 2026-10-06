@@ -1,0 +1,61 @@
+{
+ "$schema": "motoai/writer-chunk@1",
+ "batch_id": "WRITER-BATCH-0011",
+ "writer": "writer_B",
+ "seq": 2,
+ "ids": [
+  "BA-0265",
+  "BA-0266"
+ ],
+ "body_paths": [
+  "data/blog/articles/chinh-sach-du-lieu-cua-ung-dung-thue-xe.body.html",
+  "data/blog/articles/gia-thue-thay-doi-theo-mua-khong.body.html"
+ ],
+ "status": "READY_TO_PUSH",
+ "drafts": [
+  {
+   "article_id": "BA-0265",
+   "category": "APP",
+   "slug": "chinh-sach-du-lieu-cua-ung-dung-thue-xe",
+   "title": "Chính Sách dữ Liệu Của Ứng Dụng Thuê xe",
+   "description": "Ứng dụng thuê xe thu thập gì, dữ liệu vị trí dùng làm sao, ai đọc được tin nhắn hợp đồng, và ba bước kiểm tra chính sách dữ liệu trước khi cấp quyền cho ứng dụng.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/chinh-sach-du-lieu-cua-ung-dung-thue-xe.body.html",
+   "knowledge_chunks": [
+    "Ứng dụng thuê xe thu thập ba nhóm thông tin: dữ liệu tự nhập như tên và giấy tờ, dữ liệu sinh ra khi dùng như lịch thuê và tin nhắn, và dữ liệu thiết bị như vị trí khi đặt xe hoặc giao tận nơi.",
+    "Chip định vị gắn trên xe thuê báo vị trí của chiếc xe để cửa hàng quản lý tài sản và chống mất cắp, tách biệt với vị trí điện thoại của người thuê vốn chỉ cần khi dùng tính năng tìm xe hay giao xe tận nơi.",
+    "Trước khi cấp quyền cho app thuê xe, hãy đọc mục mô tả quyền, hỏi rõ nơi xử lý dữ liệu và thời gian lưu giữ, và gửi mọi thỏa thuận quan trọng qua tin nhắn trong app để có dấu vết thời gian."
+   ]
+  },
+  {
+   "article_id": "BA-0266",
+   "category": "RENT",
+   "slug": "gia-thue-thay-doi-theo-mua-khong",
+   "title": "Giá Thuê Thay Đổi Theo Mùa Không",
+   "description": "Giá thuê xe máy nhích theo mùa chủ yếu ở gói ngày dịp lễ; đặt sớm, chốt giá bằng văn bản và dịch ngày thuê khỏi khung cao điểm giữ giá ổn định quanh năm.",
+   "published_date": "2026-10-06",
+   "author": "MotoAI Editorial",
+   "body": "data/blog/articles/gia-thue-thay-doi-theo-mua-khong.body.html",
+   "knowledge_chunks": [
+    "Giá thuê xe máy biến động theo mùa chủ yếu ở gói ngắn hạn trong dịp lễ và cao điểm du lịch, còn gói tuần và gói tháng ổn định hơn hẳn vì nhóm khách dài hạn đặt sớm.",
+    "Để giữ giá ổn định, hãy đặt sớm kèm mức giá chốt bằng văn bản, dịch ngày nhận xe khỏi khung lễ cao điểm, và với chuyến dài thì hỏi giá gói tuần thay vì cộng dồn giá ngày.",
+    "Mùa thấp điểm là lúc điều kiện thuê mềm nhất trong năm: gói dài hạn dễ thương lượng, đổi lịch linh hoạt và dòng xe nhiều lựa chọn hơn hẳn mùa cao điểm."
+   ]
+  }
+ ],
+ "history": [
+  {
+   "at": "2026-10-06T20:42:38.754Z",
+   "event": "chunk created and locally validated (bodies QA-clean, links resolve, no junk, matrix titles/slugs verified)"
+  },
+  {
+   "at": "2026-10-06T20:42:38.754Z",
+   "event": "WRITING -> LOCAL_QA_PASS"
+  },
+  {
+   "at": "2026-10-06T20:42:38.754Z",
+   "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+  }
+ ]
+}
