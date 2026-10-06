@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0009",
+  "writer": "writer_C",
+  "seq": 9,
+  "ids": [
+    "BA-0243",
+    "BA-0244"
+  ],
+  "body_paths": [
+    "data/blog/articles/phanh-xe-may-dien.body.html",
+    "data/blog/articles/di-cho-bang-xe-thue.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0243",
+      "category": "EV",
+      "slug": "phanh-xe-may-dien",
+      "title": "Phanh xe Máy Điện",
+      "description": "Phanh xe máy điện hoạt động thế nào, khác biệt phanh tái sinh và phanh cơ khí, dấu hiệu cần kiểm tra, và cách phanh an toàn khi thuê xe điện.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/phanh-xe-may-dien.body.html",
+      "knowledge_chunks": [
+        "Xe máy điện có chế độ phanh tái sinh giúp giảm tốc từ từ và sạc lại một phần pin khi nhả ga, nhưng phanh chính vẫn là hệ thống phanh cơ khí.",
+        "Khi nhận xe điện thuê, nên bóp thử cả hai cần phanh, chạy thử trong ngõ vắng và lưu ý tiếng rít hoặc cần phanh trũng sâu để báo cửa hàng kịp thời.",
+        "Trời mưa làm giảm độ bám phanh trong vài giây đầu, nên phanh sớm và phanh nhịp nhiều lần cho nước văng bớt rồi mới tăng lực."
+      ]
+    },
+    {
+      "article_id": "BA-0244",
+      "category": "GUIDE",
+      "slug": "di-cho-bang-xe-thue",
+      "title": "đi Chợ Bằng xe Thuê",
+      "description": "Kinh nghiệm đi chợ bằng xe thuê: chọn phiên chợ và khung giờ, giữ xe quanh chợ, chở hàng an toàn trên xe máy, và nên thuê theo ngày hay theo tuần.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/di-cho-bang-xe-thue.body.html",
+      "knowledge_chunks": [
+        "Đi chợ bằng xe máy thuê nên bám theo phiên chợ: chợ phiên vùng ven đi sáng sớm khi hàng tươi, chợ dân sinh đi cả ngày, chợ đêm đi sau giờ tan tầm.",
+        "Khi gửi xe quanh chợ, nên chọn bãi có người trông thật sự, không để đồ giá trị trong cốp, và chụp ảnh thân xe trước khi rời cửa hàng cho thuê.",
+        "Hàng nặng để cốp sau giữ trọng tâm, hàng dễ vỡ mang theo người, còn mua nhiều quá nên chia chặng thay vì cố chở một chuyến cho rồi."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T16:53:56.854Z",
+      "event": "WRITING"
+    },
+    {
+      "at": "2026-10-06T16:53:56.854Z",
+      "event": "LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T16:53:56.854Z",
+      "event": "READY_TO_PUSH"
+    }
+  ]
+}
