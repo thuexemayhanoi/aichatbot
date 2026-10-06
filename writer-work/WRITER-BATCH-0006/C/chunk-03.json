@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0006",
+  "writer": "writer_C",
+  "seq": 3,
+  "ids": [
+    "BA-0177",
+    "BA-0178"
+  ],
+  "body_paths": [
+    "data/blog/articles/app-theo-doi-pin-xe-dien.body.html",
+    "data/blog/articles/giay-to-nguoi-nuoc-ngoai-thue-xe.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0177",
+      "category": "EV",
+      "slug": "app-theo-doi-pin-xe-dien",
+      "title": "App Theo Dõi Pin xe Điện",
+      "description": "App theo dõi pin xe máy điện hiển thị gì, cách kết nối khi thuê xe và đọc quãng đường dự kiến thế nào cho an toàn giữa chuyến đi.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/app-theo-doi-pin-xe-dien.body.html",
+      "knowledge_chunks": [
+        "App theo dõi pin xe điện hiển thị phần trăm pin, quãng đường dự kiến còn lại và cảnh báo ngưỡng pin thấp qua kết nối với xe.",
+        "Khi thuê xe điện, hãy hỏi cửa hàng xe có hỗ trợ app không và kết nối thử ngay tại chỗ trước khi rời đi.",
+        "Quãng đường dự kiến trên app chỉ là ước tính, nên giảm khoảng hai mươi phần trăm để chừa an toàn và chủ động sạc dừng giữa hành trình."
+      ]
+    },
+    {
+      "article_id": "BA-0178",
+      "category": "GUIDE",
+      "slug": "giay-to-nguoi-nuoc-ngoai-thue-xe",
+      "title": "Giấy tờ Người Nước Ngoài Thuê xe",
+      "description": "Danh sách giấy tờ người nước ngoài cần khi thuê xe máy ở Việt Nam: hộ chiếu, giấy phép lái xe quốc tế và lưu ý về thế chấp giấy tờ.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/giay-to-nguoi-nuoc-ngoai-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Người nước ngoài thuê xe máy cần hộ chiếu còn hiệu lực kèm giấy tờ nhập cảnh hợp lệ và giấy phép lái được chấp nhận tại Việt Nam.",
+        "Giấy phép lái xe quốc tế theo Công ước Vienna 1968 được chấp nhận ở Việt Nam, miễn cuống giấy phép còn hạn và có hạng mô tô phù hợp.",
+        "Nếu cửa hàng yêu cầu thế chấp giấy tờ, hãy kiểm tra hợp đồng ghi rõ loại giấy tờ được giữ và hoàn trả nguyên trạng khi kết thúc thuê."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T09:22:29.798Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T09:22:29.798Z"
+    }
+  ]
+}
