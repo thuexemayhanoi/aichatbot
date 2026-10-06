@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0012",
+  "writer": "writer_B",
+  "seq": 5,
+  "ids": [
+    "BA-0289",
+    "BA-0290"
+  ],
+  "body_paths": [
+    "data/blog/articles/ung-dung-thue-xe-va-khach-vang-lai.body.html",
+    "data/blog/articles/thue-xe-so-hay-xe-ga-cho-nguoi-moi.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0289",
+      "category": "APP",
+      "slug": "ung-dung-thue-xe-va-khach-vang-lai",
+      "title": "Ứng Dụng Thuê xe và Khách Vãng Lai",
+      "description": "Ứng dụng thuê xe cho khách vãng lai: xem giá và tình trạng xe tức thì, không cần tài khoản, thủ tục rút gọn khi đến trực tiếp và mẹo dùng app tại quầy.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ung-dung-thue-xe-va-khach-vang-lai.body.html",
+      "knowledge_chunks": [
+        "Khách vãng lai cần ba thông tin tức thì: còn xe loại mình muốn không, giá bao nhiêu và cần giấy tờ gì; ứng dụng hiển thị cả ba ngay khi mở, không phải chờ hỏi tại quầy.",
+        "Ứng dụng thuê xe không bắt buộc tạo tài khoản: khách ghé qua vẫn xem xe, xem giá và thuê ngay với luồng thao tác rút gọn, trình giấy tờ tại quầy và ký hợp đồng như thường lệ.",
+        "Với khách quyết định tại chỗ, nên mở app trước khi bước vào quầy để biết dòng xe còn không, chụp bảng giá hiển thị để đối chiếu khi ký hợp đồng và chuẩn bị sẵn giấy tờ theo danh mục trong app."
+      ]
+    },
+    {
+      "article_id": "BA-0290",
+      "category": "RENT",
+      "slug": "thue-xe-so-hay-xe-ga-cho-nguoi-moi",
+      "title": "Thuê xe số Hay xe ga Cho Người Mới",
+      "description": "Thuê xe số hay xe ga cho người mới: so sánh độ dễ bắt đầu, chi phí, cốp và độ bền theo từng tình huống, cách chọn theo tay lái và thử xe trước khi nhận.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-so-hay-xe-ga-cho-nguoi-moi.body.html",
+      "knowledge_chunks": [
+        "Xe số ít linh kiện nên bền, rẻ và dễ sửa, giá thuê thấp hơn xe ga cùng phân khối, tiết kiệm xăng trên chặng dài; nhược điểm là mỏi tay khi bóp côn trong giao thông dày và thường không có cốp lớn.",
+        "Xe ga không có côn số nên dễ bắt đầu với người chưa từng lái, cốp rộng đựng được đồ, yên thấp dễ lên xuống; đổi lại giá thuê thường cao hơn chút và lốp nhỏ nhạy với gờ đường hơn.",
+        "Người mới nên chọn dòng xe mình từng chạy, hoặc chọn xe ga và đi chậm khu vực vắng trước khi vào đường lớn; chạy thử ga và cả hai phanh quanh cửa hàng trước khi ký hợp đồng thuê xe."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T21:14:35.107Z",
+      "event": "chunk created and locally validated (links resolve; no junk; no external links; no invented business data)"
+    },
+    {
+      "at": "2026-10-06T21:14:35.107Z",
+      "event": "WRITING -> LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T21:14:35.107Z",
+      "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+    }
+  ]
+}
