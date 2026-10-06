@@ -1,0 +1,56 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0005",
+  "writer": "writer_A",
+  "seq": 1,
+  "ids": [
+    "BA-0155",
+    "BA-0156"
+  ],
+  "body_paths": [
+    "data/blog/articles/quy-dinh-mu-bao-hiem-tre-em.body.html",
+    "data/blog/articles/den-nguyen-can-bang-xe.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0155",
+      "category": "SAFE",
+      "slug": "quy-dinh-mu-bao-hiem-tre-em",
+      "title": "Quy Định mũ Bảo Hiểm Trẻ em",
+      "description": "Quy định mũ bảo hiểm trẻ em theo Luật 36/2024/QH15 và Nghị định 168/2024/NĐ-CP: tiêu chuẩn, mức phạt 400.000 đến 600.000 đồng và cách chọn mũ đúng cho trẻ.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/quy-dinh-mu-bao-hiem-tre-em.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0156",
+      "category": "LOCAL",
+      "slug": "den-nguyen-can-bang-xe",
+      "title": "Đền Nguyễn Cần Bằng xe",
+      "description": "Khám phá các đền và nhà thờ danh nhân họ Nguyễn quanh Hà Nội bằng xe máy: lộ trình tới đền Quang Trung Đống Đa, nhà thờ Nguyễn Khả Trạc và kinh nghiệm gửi xe.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/den-nguyen-can-bang-xe.body.html",
+      "knowledge_chunks": [
+        "Các đền thờ nhân vật họ Nguyễn ở Hà Nội thường nhỏ, nằm trong khu dân cư, nhiều nơi chỉ mở cửa ngày rằm hoặc ngày lễ.",
+        "Đền thờ Hoàng đế Quang Trung ở Đống Đa là di tích họ Nguyễn tiêu biểu gần trung tâm, lễ hội thường vào mùng 5 tháng Giêng âm lịch.",
+        "Khi thăm đền nhỏ bằng xe máy, hỏi người trông đền hoặc hàng xóm về điểm gửi xe gần nhất trước khi đỗ xe."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T05:04:22.790Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T05:04:22.792Z"
+    }
+  ]
+}
