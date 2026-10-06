@@ -1,0 +1,57 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0012",
+  "writer": "writer_A",
+  "seq": 4,
+  "ids": [
+    "BA-0287",
+    "BA-0288"
+  ],
+  "body_paths": [
+    "data/blog/articles/luat-giao-thong-duong-bo-co-ban-cho-du-khach.body.html",
+    "data/blog/articles/trang-an-ride.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0287",
+      "category": "SAFE",
+      "slug": "luat-giao-thong-duong-bo-co-ban-cho-du-khach",
+      "title": "Luật Giao Thông Đường bộ cơ Bản Cho du Khách",
+      "description": "Luật giao thông đường bộ cơ bản cho du khách tự lái xe máy tại Việt Nam: giấy phép lái quốc tế, mũ bảo hiểm bắt buộc, cấm tuyệt đối rượu bia và quy tắc dòng chảy.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/luat-giao-thong-duong-bo-co-ban-cho-du-khach.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0288",
+      "category": "LOCAL",
+      "slug": "trang-an-ride",
+      "title": "Tràng an Ride",
+      "description": "Chuyến Tràng An bằng xe máy thuê từ Hà Nội: chặng 90 km quốc lộ 1A, di sản UNESCO 2014, thuyền xuyên hang động, kế hoạch một ngày và chuẩn bị xe.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/trang-an-ride.body.html",
+      "knowledge_chunks": [
+        "Từ Hà Nội đi Tràng An thuộc Ninh Bình khoảng chín mươi ki lômét theo quốc lộ 1A qua Hà Nam, chạy hai tiếng đến hai tiếng rưỡi; xe máy không được lên cao tốc song song.",
+        "Năm 2014 quần thể danh thắng Tràng An được UNESCO công nhận là Di sản Văn hóa và Thiên nhiên thế giới, di sản hỗn hợp đầu tiên và duy nhất của Đông Nam Á tại thời điểm đó, rộng hơn mười hai nghìn héc-ta gồm ba khu bảo tồn.",
+        "Tràng An nổi bật với tuyến thuyền xuyên qua hệ thống hang động đá vôi giữa các thung lũng, ghé các đền chúa cổ; chuyến thuyền thường kéo dài khoảng ba tiếng tùy tuyến, nên hỏi lịch đò cuối ngày trước khi mua vé."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T21:12:29.083Z",
+      "event": "chunk created and locally validated (SAFE legal gate: IDP Công ước Viên 1968, mũ bảo hiểm, cấm cồn tuyệt đối theo Luật TTATGT 2024 claims in CLAIM->SUBJECT->CONDITION->RULE->VERSION->PRIMARY SOURCE form, vbpl link; LOCAL Tràng An facts verified: ~90km QL1A, UNESCO 2014 mixed heritage, boat ~3h; links resolve; no junk)"
+    },
+    {
+      "at": "2026-10-06T21:12:29.083Z",
+      "event": "WRITING -> LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T21:12:29.083Z",
+      "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+    }
+  ]
+}
