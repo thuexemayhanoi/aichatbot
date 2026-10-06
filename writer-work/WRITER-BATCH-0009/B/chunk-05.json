@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0009",
+  "writer": "writer_B",
+  "seq": 5,
+  "ids": [
+    "BA-0235",
+    "BA-0236"
+  ],
+  "body_paths": [
+    "data/blog/articles/app-thue-xe-khong-can-tai-khoan.body.html",
+    "data/blog/articles/so-sanh-thue-xe-may-va-taxi.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0235",
+      "category": "APP",
+      "slug": "app-thue-xe-khong-can-tai-khoan",
+      "title": "App Thuê xe Không Cần Tài Khoản",
+      "description": "Các app thuê xe không cần tài khoản hoạt động thế nào, khi nào nên chọn, và những điểm cần kiểm tra trước khi đặt xe qua ứng dụng không yêu cầu đăng ký.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/app-thue-xe-khong-can-tai-khoan.body.html",
+      "knowledge_chunks": [
+        "Một số ứng dụng cho thuê xe máy cho phép đặt xe mà không cần tạo tài khoản, chỉ cần để lại số điện thoại và đặt cọc theo quy định của cửa hàng.",
+        "Đặt xe qua app không cần tài khoản thường nhanh hơn cho người thuê lần đầu, nhưng nên đọc kỹ điều kiện hủy, giờ trả xe và cách tính phí trước khi xác nhận.",
+        "Với người thuê tự túc tại Hà Nội, hình thức không cần tài khoản phù hợp chuyến đi ngắn, còn chuyến dài ngày nên dùng tài khoản để lưu lại lịch sử đặt xe."
+      ]
+    },
+    {
+      "article_id": "BA-0236",
+      "category": "RENT",
+      "slug": "so-sanh-thue-xe-may-va-taxi",
+      "title": "so Sánh Thuê xe Máy và Taxi",
+      "description": "So sánh thuê xe máy và taxi theo từng loại chuyến đi: chi phí theo chuyến hay theo chu kỳ, thời gian chờ, linh hoạt lộ trình và nên chọn gì trong từng tình huống.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/so-sanh-thue-xe-may-va-taxi.body.html",
+      "knowledge_chunks": [
+        "Taxi tính phí theo từng chuyến di chuyển, trong khi thuê xe máy tính theo chu kỳ (ngày, tuần), nên càng nhiều điểm dừng và di chuyển trong ngày thì thuê xe càng có lợi.",
+        "Thuê xe máy phù hợp hành trình nhiều điểm, ven đô hoặc đi theo lịch trình tự do; taxi phù hợp chuyến một chiều, ban đêm hoặc khi người thuê mệt, có hành lý cồng kềnh.",
+        "Người tự túc ở Hà Nội nên cân nhắc kỹ tốc độ giao thông nội đô và lộ trình trước khi chọn giữa thuê xe máy và taxi để tránh chi phí phát sinh."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T16:26:40.525Z",
+      "event": "WRITING"
+    },
+    {
+      "at": "2026-10-06T16:26:40.525Z",
+      "event": "LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T16:26:40.525Z",
+      "event": "READY_TO_PUSH"
+    }
+  ]
+}
