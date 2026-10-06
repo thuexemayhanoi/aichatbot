@@ -815,3 +815,5 @@
 - 2026-10-06 QA PASS BA-0229 score=95
 - 2026-10-06 QA FAIL BA-0230 -> REPAIR (attempt 1) score=0
 - 2026-10-06 PUBLISHED 1 (BA-0229) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-06 QA PASS BA-0230 score=95
+- 2026-10-06 PUBLISHED 1 (BA-0230) — one grouped build, pages, matrix, indexes, sitemap consistent
