@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0003",
+  "writer": "writer_C",
+  "seq": 6,
+  "ids": [
+    "BA-0129",
+    "BA-0130"
+  ],
+  "body_paths": [
+    "data/blog/articles/van-toc-xe-may-dien.body.html",
+    "data/blog/articles/chay-xe-ga-lan-dau.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0129",
+      "category": "EV",
+      "slug": "van-toc-xe-may-dien",
+      "title": "Vận tốc xe máy điện: cảm giác êm, đồng hồ và cách hỏi đúng",
+      "description": "Vận tốc xe máy điện phụ thuộc dòng xe, tải trọng và pin. Hiểu vì sao xe điện êm dễ chạy nhanh hơn ý thức và hỏi đúng thông số khi thuê xe.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/van-toc-xe-may-dien.body.html",
+      "knowledge_chunks": [
+        "Xe máy điện êm và tăng tốc nhanh ở dải thấp, dễ khiến người lái chạy nhanh hơn ý thức, nên cần liếc đồng hồ thường xuyên và giữ tốc độ theo dòng xe.",
+        "Tốc độ thực tế của xe điện phụ thuộc tải trọng, tình trạng pin và địa hình, không nên tin con số lý tưởng của nhà sản xuất cho mọi điều kiện.",
+        "Chạy nhanh tiêu pin phi tuyến, nên lộ trình xa cần đi tốc độ ổn định và giữ dư lượng pin cho đoạn về."
+      ]
+    },
+    {
+      "article_id": "BA-0130",
+      "category": "GUIDE",
+      "slug": "chay-xe-ga-lan-dau",
+      "title": "Chạy xe ga lần đầu: thao tác ga phanh và luyện cho người mới",
+      "description": "Hướng dẫn chạy xe ga lần đầu cho người mới: quy tắc vàng ga phanh không bóp cùng lúc, kỹ năng phanh phối hợp, tình huống phố và checklist nhận xe ga.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/chay-xe-ga-lan-dau.body.html",
+      "knowledge_chunks": [
+        "Quy tắc vàng khi chạy xe ga: tay phải chỉ làm một việc tại một thời điểm, vặn ga khi đi và buông ga bóp phanh khi dừng, không ga phanh cùng lúc.",
+        "Phanh xe ga phối hợp nhịp nhẹ: phanh sau hãm chính khi giảm tốc từ từ, phanh trước bổ sung khi dừng chắc, không bóp phanh trước gấp trong cua hoặc đường trơn.",
+        "Người mới chạy xe ga nên làm quen tại chỗ, chạy thử ở đường vắng vài ngày, không chở người sau khi tay lái chưa ổn và kiểm tra đủ đèn phanh lốp trước khi rời cửa hàng."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T03:54:01.803Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T03:54:01.805Z"
+    }
+  ]
+}
