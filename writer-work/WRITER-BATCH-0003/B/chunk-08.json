@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0003",
+  "writer": "writer_B",
+  "seq": 8,
+  "ids": [
+    "BA-0133",
+    "BA-0134"
+  ],
+  "body_paths": [
+    "data/blog/articles/cong-cu-chon-xe-theo-kinh-nghiem-lai.body.html",
+    "data/blog/articles/khach-du-lich-thue-xe-may.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0133",
+      "category": "APP",
+      "slug": "cong-cu-chon-xe-theo-kinh-nghiem-lai",
+      "title": "Công cụ Chọn xe Theo Kinh Nghiệm Lái",
+      "description": "Cách dùng công cụ chọn xe theo kinh nghiệm lái của MotoAI: ba lượt hỏi mẫu để nhận đề xuất dòng xe máy phù hợp trình độ và hành trình.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cong-cu-chon-xe-theo-kinh-nghiem-lai.body.html",
+      "knowledge_chunks": [
+        "Công cụ chọn xe theo kinh nghiệm lái hỏi về trình độ, thói quen và hành trình để đề xuất dòng xe máy phù hợp.",
+        "Ba lượt hỏi gồm kinh nghiệm lái, hành trình và điều kiện cụ thể như cốp rộng hoặc chở người sau.",
+        "Đề xuất dựa trên dữ liệu thật, không đoán mò."
+      ]
+    },
+    {
+      "article_id": "BA-0134",
+      "category": "RENT",
+      "slug": "khach-du-lich-thue-xe-may",
+      "title": "Khách du Lịch Thuê xe Máy",
+      "description": "Hướng dẫn khách du lịch thuê xe máy tại Hà Nội: chuẩn bị giấy tờ, chọn xe theo lịch trình, quy trình nhận xe và kinh nghiệm chạy xe lần đầu.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/khach-du-lich-thue-xe-may.body.html",
+      "knowledge_chunks": [
+        "Khách du lịch thuê xe máy cần biết đi đâu, đi mấy ngày và cần loại xe nào trước khi liên hệ.",
+        "Du khách nội địa cần bằng lái còn hiệu lực và đặt cọc, không cần hộ khẩu Hà Nội.",
+        "Chọn xe theo lịch trình: xe số nhẹ cho phố cổ, xe ga cho hai người hoặc hành trình xa."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T04:06:01.883Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T04:06:01.885Z"
+    }
+  ]
+}
