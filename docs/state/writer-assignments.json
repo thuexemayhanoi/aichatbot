@@ -107,8 +107,21 @@
           "BA-0163",
           "BA-0164"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-06T05:25:06.843Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-06T05:25:06.843Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-06T05:25:06.843Z"
+          }
+        ]
       },
       {
         "seq": 6,
