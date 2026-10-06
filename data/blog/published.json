@@ -2098,6 +2098,36 @@
         "Đi xe điện tới Văn Giang cần tính ba con số: tổng chiều dài cung, tầm pin của dòng xe và điểm sạc dự phòng.",
         "Lịch trình mẫu: sáng lên đê, giữa sáng vào vườn, trưa ăn ven trục nghỉ sạc, chiều ngắm nắng nghiêng rồi vòng về."
       ]
+    },
+    {
+      "article_id": "BA-0145",
+      "category": "APP",
+      "slug": "xu-ly-du-lieu-ca-nhan-khi-thue-xe-online",
+      "title": "Xử lý dữ Liệu cá Nhân Khi Thuê xe Online",
+      "description": "Xử lý dữ liệu cá nhân khi thuê xe online: ba nhóm dữ liệu cần cung cấp, cơ chế xử lý cục bộ trên thiết bị, quyền của người thuê và thói quen tự bảo vệ.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/xu-ly-du-lieu-ca-nhan-khi-thue-xe-online.body.html",
+      "knowledge_chunks": [
+        "Thuê xe online chỉ cần ba nhóm dữ liệu: liên hệ, định danh và giao dịch theo phiếu thuê.",
+        "Trợ lý chạy trên thiết bị người thuê, hội thoại và phiếu nằm trong bộ nhớ trình duyệt, không qua dịch vụ trung gian.",
+        "Người thuê có quyền hỏi thời gian lưu dữ liệu, yêu cầu xóa sau khi trả cọc và khiếu nại khi dữ liệu bị dùng sai mục đích."
+      ]
+    },
+    {
+      "article_id": "BA-0146",
+      "category": "RENT",
+      "slug": "thue-xe-hai-nguoi",
+      "title": "Thuê xe Hai Người",
+      "description": "Thuê xe máy chở hai người: chọn dòng xe máy lớn, chi phí so với thuê hai xe, an toàn khi chở người sau và phần kiểm tra xe riêng cho xe đôi.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-hai-nguoi.body.html",
+      "knowledge_chunks": [
+        "Thuê một xe chở hai người rẻ hơn thuê hai xe vì chỉ một giá thuê và một khoản cọc.",
+        "Hai người đi xa nên chọn xe ga máy lớn hoặc xe điện máy lớn, yên rộng cốp sâu.",
+        "Riêng xe chở đôi cần thử phanh khi đã chở đủ hai người và kiểm tra treo sau trước khi nhận."
+      ]
     }
   ]
 }
