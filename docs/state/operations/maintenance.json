@@ -5,10 +5,10 @@
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
   "active_incident": {
     "incident_id": "INC-20261006160640-4vj8",
-    "status": "OPEN",
-    "owner": "AGENT_4",
+    "status": "AGENT4_ESCALATE",
+    "owner": "NONE",
     "started_at": "2026-10-06T16:06:40.292Z",
-    "updated_at": "2026-10-06T16:06:40.292Z",
+    "updated_at": "2026-10-06T16:06:42.813Z",
     "base_sha": "38ccc2be0b22e2b5f27355589315a3dda6451d70",
     "reason": "workflow_run failure: Writer Publisher (serialized)",
     "trigger": "workflow_run",
@@ -24,7 +24,7 @@
       "agent5": 0
     },
     "production_paused": true,
-    "result_note": ""
+    "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required"
   },
   "incidents": [],
   "known_content_blockers": []
