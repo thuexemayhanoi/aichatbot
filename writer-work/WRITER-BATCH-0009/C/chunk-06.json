@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0009",
+  "writer": "writer_C",
+  "seq": 6,
+  "ids": [
+    "BA-0237",
+    "BA-0238"
+  ],
+  "body_paths": [
+    "data/blog/articles/lop-xe-dien.body.html",
+    "data/blog/articles/tinh-lo-trinh-thue-xe-theo-ngay.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0237",
+      "category": "EV",
+      "slug": "lop-xe-dien",
+      "title": "Lốp xe Điện",
+      "description": "Lốp xe điện khác gì lốp xe xăng, áp suất chuẩn, dấu hiệu cần thay và cách kiểm tra lốp khi nhận xe điện thuê, kèm xử lý khi xì lốp giữa chuyến đi.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/lop-xe-dien.body.html",
+      "knowledge_chunks": [
+        "Xe máy điện mang pin nặng nên bộ lốp chịu tải lớn hơn xe xang cùng phân khúc, lốp non còn làm xe tốn điện và giảm quãng đường chạy được mỗi lần sạc.",
+        "Khi nhận xe điện thuê, nên dành một đến hai phút kiểm tra độ mòn gai lốp, vết nứt thành lốp và độ căng bánh trước sau, đồng thời hỏi chủ xe lịch thay vá gần nhất.",
+        "Nếu lốp không xăm bị thủng nhỏ giữa đường, nên giảm tốc men vào lề và liên hệ ngay đơn vị cho thuê thay vì cố đi tiếp vì bánh non dễ làm hỏng vành xe."
+      ]
+    },
+    {
+      "article_id": "BA-0238",
+      "category": "GUIDE",
+      "slug": "tinh-lo-trinh-thue-xe-theo-ngay",
+      "title": "Tính lộ Trình Thuê xe Theo Ngày",
+      "description": "Cách tính lộ trình trước khi thuê xe theo ngày: nhóm điểm đến, ước lượng quãng đường và thời gian, đối chiếu bảng giá theo ngày, tuần và chừa khoảng đệm.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/tinh-lo-trinh-thue-xe-theo-ngay.body.html",
+      "knowledge_chunks": [
+        "Tính lộ trình theo cả chuyến đi trước rồi chia nhỏ từng ngày, vì tổng số ngày thuê quyết định mức giá, nên thuê bốn ngày trở lên thường nên hỏi giá theo tuần thay vì nhân giá ngày.",
+        "Mỗi ngày nên chừa khoảng một đến hai giờ đệm cho mưa, tắc đường hoặc lưu lại lâu ở điểm thích, và cộng thêm một phần tư đến một phần ba tổng thời gian chạy cho sự cố phát sinh.",
+        "Với đa số người thuê đi tham quan, khoảng tám mươi đến một trăm hai mươi cây số mỗi ngày là mức thoải mái; thuê xe điện thì cần đối chiếu quãng đường với tầm hoạt động của pin."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T16:34:31.383Z",
+      "event": "WRITING"
+    },
+    {
+      "at": "2026-10-06T16:34:31.383Z",
+      "event": "LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T16:34:31.383Z",
+      "event": "READY_TO_PUSH"
+    }
+  ]
+}
