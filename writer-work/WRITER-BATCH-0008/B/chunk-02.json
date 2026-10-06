@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0008",
+  "writer": "writer_B",
+  "seq": 2,
+  "ids": [
+    "BA-0211",
+    "BA-0212"
+  ],
+  "body_paths": [
+    "data/blog/articles/ket-noi-zalo-voi-ung-dung-thue-xe.body.html",
+    "data/blog/articles/ho-tro-khi-xe-thue-gap-su-co.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0211",
+      "category": "APP",
+      "slug": "ket-noi-zalo-voi-ung-dung-thue-xe",
+      "title": "Kết Nối Zalo Với Ứng Dụng Thuê xe",
+      "description": "Kết nối Zalo khi thuê xe máy: hỏi giá, gửi giấy tờ, nhận xác nhận và báo hỗ trợ trong một hội thoại có lịch sử, kèm lưu ý bảo mật thông tin cá nhân.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ket-noi-zalo-voi-ung-dung-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Zalo là kênh liên hệ phổ biến khi thuê xe máy: hỏi giá, gửi ảnh giấy tờ, chốt lịch nhận xe và báo sự cố đều làm được trong một hội thoại có lịch sử.",
+        "Kết nối qua nút Zalo trên trang liên hệ, quét mã QR tại cửa hàng hoặc tìm tài khoản Zalo chính thức; sau đó gửi ngay ngày nhận xe, thời gian thuê và loại xe quan tâm.",
+        "Khi gửi ảnh giấy tờ qua Zalo nên che bớt thông tin thừa, chỉ gửi cho tài khoản chính thức và có thể yêu cầu xóa ảnh sau khi kết thúc thuê."
+      ]
+    },
+    {
+      "article_id": "BA-0212",
+      "category": "RENT",
+      "slug": "ho-tro-khi-xe-thue-gap-su-co",
+      "title": "hỗ Trợ Khi xe Thuê Gặp sự cố",
+      "description": "Gọi hỗ trợ thế nào khi xe thuê gặp sự cố: các nhóm sự cố hay gặp, thông tin cần chuẩn bị khi gọi, phạm vi hỗ trợ thường có của cửa hàng và cách phân biệt sự cố nhẹ với nghiêm trọng.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/ho-tro-khi-xe-thue-gap-su-co.body.html",
+      "knowledge_chunks": [
+        "Sự cố hay gặp với xe thuê gồm thủng lốp, xe chết máy, mất chìa, hết xăng hoặc hết pin và va chạm nhẹ khi đỗ xe.",
+        "Khi gọi hỗ trợ cần chuẩn bị vị trí hiện tại, mô tả ngắn tình trạng xe, thời điểm sự cố và ảnh chụp tại chỗ làm bằng chứng.",
+        "Hỗ trợ thường có gồm hướng dẫn tại chỗ, chỉ điểm sửa gần nhất hoặc đổi xe; trách nhiệm chi phí theo hợp đồng, trong đó lỗi kỹ thuật của xe thuộc bên cho thuê."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T14:30:56.784Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T14:30:56.784Z"
+    }
+  ]
+}
