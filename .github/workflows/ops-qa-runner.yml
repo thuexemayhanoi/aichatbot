@@ -1,0 +1,78 @@
+name: ops-qa-runner
+
+# One-shot ops helper (precedent: ops-owner-lock-release.yml).
+# Triggered by pushes of ops/candidate/** to main. Dumps requested matrix
+# rows + hub listings, and runs the local writer-queue/article-qa pipeline
+# on candidate bodies + chunk file when present. Commits ops/qa-result.txt.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/candidate/**'
+      - '.github/workflows/ops-qa-runner.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: dump state and run qa
+        run: |
+          mkdir -p ops/out
+          {
+            echo "=== request ==="
+            cat ops/candidate/request.txt 2>/dev/null || echo "(no request)"
+            REQ="^BA-029[7-9],|^BA-030[0-6],"
+            if [ -f ops/candidate/request.txt ]; then
+              LINE=$(head -1 ops/candidate/request.txt)
+              if [ -n "$LINE" ]; then REQ="$LINE"; fi
+            fi
+            echo "=== matrix rows ==="
+            grep -E "$REQ" data/blog/content-matrix.csv || echo "(no matrix rows)"
+            echo "=== hub app ==="; ls blog/app 2>/dev/null
+            echo "=== hub thue-xe ==="; ls blog/thue-xe 2>/dev/null
+            echo "=== hub xe-dien ==="; ls blog/xe-dien 2>/dev/null
+            echo "=== hub an-toan ==="; ls blog/an-toan 2>/dev/null
+            echo "=== hub dia-phuong ==="; ls blog/dia-phuong 2>/dev/null
+            echo "=== hub huong-dan ==="; ls blog/huong-dan 2>/dev/null
+            echo "=== published count ==="
+            node -e "const p=require('./data/blog/published.json');console.log(p.articles.length)"
+            echo "=== active batch ==="
+            node -e "const a=require('./docs/state/writer-assignments.json');console.log(a.active.batch_id, a.active.status, a.active.chunks.map(c=>c.seq+':'+c.status).join(' '))"
+            if ls ops/candidate/bodies/*.body.html >/dev/null 2>&1; then
+              echo "=== QA PIPELINE ==="
+              mkdir -p ops/work/writers/writer-work ops/work/writers/data/blog/articles
+              cp ops/candidate/bodies/*.body.html ops/work/writers/data/blog/articles/
+              BATCH=$(node -e "console.log(require('./ops/candidate/chunk.json').batch_id)")
+              WRITER=$(node -e "console.log(require('./ops/candidate/chunk.json').writer)")
+              SEQ=$(node -e "console.log(require('./ops/candidate/chunk.json').seq)")
+              ID1=$(node -e "console.log(require('./ops/candidate/chunk.json').ids[0])")
+              ID2=$(node -e "console.log(require('./ops/candidate/chunk.json').ids[1])")
+              mkdir -p "ops/work/writers/writer-work/$BATCH/$WRITER"
+              cp ops/candidate/chunk.json "ops/work/writers/writer-work/$BATCH/$WRITER/chunk-$(printf '%02d' $SEQ).json"
+              echo "--- select-publish ---"
+              node tools/writer-queue.mjs select-publish --work ops/work/writers
+              echo "--- stage ---"
+              node tools/writer-queue.mjs stage "$BATCH" "$SEQ" --work ops/work/writers
+              echo "--- article-qa $ID1 ---"
+              node tools/article-qa.mjs "$ID1"
+              echo "--- article-qa $ID2 ---"
+              node tools/article-qa.mjs "$ID2"
+              echo "--- verify-push ---"
+              node tools/writer-queue.mjs verify-push "$BATCH" "$SEQ" --work ops/work/writers
+            else
+              echo "=== no candidate bodies, state dump only ==="
+            fi
+            echo "=== END ==="
+          } > ops/qa-result.txt 2>&1
+      - name: commit result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ops/qa-result.txt
+          git commit -m "ops: qa-runner result [skip ci]" || echo "nothing"
+          git push
