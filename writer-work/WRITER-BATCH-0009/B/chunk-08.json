@@ -1,0 +1,61 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0009",
+  "writer": "writer_B",
+  "seq": 8,
+  "ids": [
+    "BA-0241",
+    "BA-0242"
+  ],
+  "body_paths": [
+    "data/blog/articles/tro-ly-ao-tu-van-thue-xe-may.body.html",
+    "data/blog/articles/thue-xe-may-hay-di-grab.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0241",
+      "category": "APP",
+      "slug": "tro-ly-ao-tu-van-thue-xe-may",
+      "title": "Trợ lý ảo tư Vấn Thuê xe Máy",
+      "description": "Trợ lý ảo tư vấn thuê xe máy trả lời được gì, cách hỏi cho hiệu quả, khác biệt giữa trợ lý và agent chọn xe, và độ tin cậy của thông tin trong khung chat.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/tro-ly-ao-tu-van-thue-xe-may.body.html",
+      "knowledge_chunks": [
+        "Trợ lý ảo tư vấn thuê xe máy trực hai mươi tư giờ một ngày, trả lời về giá, giấy tờ và tình trạng xe trống theo dữ liệu chuẩn của cửa hàng.",
+        "Cách hỏi hiệu quả là câu ngắn và đủ thông tin: loại xe, số ngày, khung giờ, giúp trợ lý chốt nhanh đúng gói giá và giấy tờ cần chuẩn bị.",
+        "Trợ lý ảo trả lời theo dạng hỏi đáp, còn agent chọn xe tiến thêm một bước là đề xuất phương án cụ thể dựa trên nhu cầu như số người và hành trình."
+      ]
+    },
+    {
+      "article_id": "BA-0242",
+      "category": "RENT",
+      "slug": "thue-xe-may-hay-di-grab",
+      "title": "Thuê xe Máy Hay đi Grab",
+      "description": "Nên thuê xe máy hay đi Grab? So sánh theo mô hình tính tiền theo chu kỳ và theo chuyến, tình huống nên chọn từng bên, cùng yếu tố an toàn và giấy tờ.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thue-xe-may-hay-di-grab.body.html",
+      "knowledge_chunks": [
+        "Grab và các app gọi xe tính tiền theo từng chuyến, còn thuê xe máy tính theo chu kỳ ngày tuần, nên càng nhiều chặng trong ngày thì thuê xe càng có lợi.",
+        "Kinh nghiệm phổ biến là từ ba chuyến gọi mỗi ngày trở lên thì thuê xe máy nguyên ngày thường đã rẻ hơn, và các chuyến vùng ven kéo dài gần như luôn nên tự lái.",
+        "Đi xe có người lái thì phần an toàn dồn vào tài xế, còn tự lái xe thuê đòi hỏi đội mũ đúng cách, không rượu bia và chuẩn bị giấy tờ theo yêu cầu của cửa hàng."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T16:47:38.381Z",
+      "event": "WRITING"
+    },
+    {
+      "at": "2026-10-06T16:47:38.381Z",
+      "event": "LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T16:47:38.381Z",
+      "event": "READY_TO_PUSH"
+    }
+  ]
+}
