@@ -38,8 +38,21 @@
           "BA-0247",
           "BA-0248"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-06T20:01:18.052Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-06T20:01:18.052Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-06T20:01:18.052Z"
+          }
+        ]
       },
       {
         "seq": 3,
