@@ -2529,6 +2529,36 @@
         "Lộ trình gợi ý gồm đi bộ quanh hồ, ngắm cầu Thê Húc và đền Ngọc Sơn, ăn sáng phố cổ, rồi chậm rãi chạy dọc các phố như Hàng Mã trước khi xe cộ đông vào giờ đi làm.",
         "Xung quanh hồ thuộc phố cổ nên nhiều đoạn cấm đỗ xe, hãy gửi xe ở bãi có người trông, giữ vé cẩn thận và kết thúc chuyến trước khung giờ cao điểm sáng."
       ]
+    },
+    {
+      "article_id": "BA-0175",
+      "category": "APP",
+      "slug": "agent-chon-xe-giup-ban",
+      "title": "Agent Chọn xe Giúp Bạn",
+      "description": "Agent chọn xe hoạt động ra sao, cân nhắc những yếu tố nào và cách mô tả nhu cầu để nhận gợi ý dòng xe phù hợp nhất khi thuê xe máy.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/agent-chon-xe-giup-ban.body.html",
+      "knowledge_chunks": [
+        "Agent chọn xe là trợ lý nhận mô tả nhu cầu bằng vài câu rồi gợi ý dòng xe phù hợp, dựa trên bảng giá và dữ liệu xe thực của cửa hàng.",
+        "Agent cân nhắc kinh nghiệm lái, số người đi, loại đường, thời gian thuê và ngân sách để lọc dòng xe phù hợp thay vì để khách đọc hết bảng giá.",
+        "Để nhận gợi ý chuẩn, hãy mô tả đủ bốn thông tin: kinh nghiệm lái, điểm đến, thời gian thuê và số người đi, rồi kiểm tra lại cảm giác thật khi nhận xe."
+      ]
+    },
+    {
+      "article_id": "BA-0176",
+      "category": "RENT",
+      "slug": "mua-cao-diem-thue-xe-may",
+      "title": "Mùa Cao Điểm Thuê xe Máy",
+      "description": "Nhận diện các mùa cao điểm thuê xe máy quanh Tết, hè và dịp lễ: điều gì thay đổi và cách đặt sớm để giữ được dòng xe với giá tốt.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/mua-cao-diem-thue-xe-may.body.html",
+      "knowledge_chunks": [
+        "Mùa cao điểm thuê xe máy rơi vào quanh Tết Nguyên đán, mùa hè và các dịp lễ lớn, khi nhu cầu tăng vọt và dòng xe phổ biến hết sớm.",
+        "Trong mùa cao điểm, giá có thể cao hơn ngày thường, khung giờ giao nhận dày đặc và thủ tục nhận xe mất nhiều thời gian hơn.",
+        "Cách chuẩn bị tốt nhất là đặt xe trước một tới hai tuần với dịp lễ lớn, xác nhận lại gần ngày nhận và chuẩn bị sẵn giấy tờ để hoàn tất nhanh."
+      ]
     }
   ]
 }
