@@ -1,0 +1,58 @@
+name: 'Ops: owner manual lock release (one-shot recovery)'
+
+# Owner-initiated recovery per docs/OPS-AGENTS.md manual-intervention path:
+# Agent #4 could not dispatch Agent #5 (its GITHUB_TOKEN lacks actions:write),
+# so the owner closes the incident and releases the maintenance lock manually.
+# This workflow performs exactly ONE guarded action: deleting the recorded
+# maintenance-lock ref of an incident that is CLOSED (VERIFIED). It refuses to
+# run while the incident is still active and is a no-op when no ref exists.
+
+on:
+  push:
+    branches: [main]
+    paths: ['docs/state/operations/maintenance.json']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ops-owner-lock-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      INCIDENT_ID: INC-20261006160640-4vj8
+      LOCK_REF: refs/ops/maintenance-lock/INC-20261006160640-4vj8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: 'Verify the incident is CLOSED (VERIFIED) before releasing the lock'
+        run: |
+          set -e
+          node -e "
+            const s = require('./docs/state/operations/maintenance.json');
+            const id = process.env.INCIDENT_ID;
+            const active = s.active_incident && s.active_incident.incident_id === id;
+            const closed = (s.incidents || []).some((i) => i.incident_id === id && i.status === 'VERIFIED');
+            if (active || !closed) {
+              console.error('incident ' + id + ' is not closed VERIFIED - refusing to release the lock');
+              process.exit(1);
+            }
+            console.log('incident ' + id + ' closed VERIFIED - lock release allowed');
+          "
+
+      - name: 'Delete the maintenance lock ref (owner manual release)'
+        run: |
+          set -e
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          if git ls-remote --exit-code --refs origin "$LOCK_REF" >/dev/null 2>&1; then
+            git push origin --delete "$LOCK_REF"
+            echo "lock ref $LOCK_REF deleted"
+          else
+            echo "no lock ref $LOCK_REF present - nothing to release"
+          fi
