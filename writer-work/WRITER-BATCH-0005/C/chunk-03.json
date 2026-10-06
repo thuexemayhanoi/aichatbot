@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0005",
+  "writer": "writer_C",
+  "seq": 3,
+  "ids": [
+    "BA-0159",
+    "BA-0160"
+  ],
+  "body_paths": [
+    "data/blog/articles/cach-giu-pin-ben-khi-thue-xe-dien.body.html",
+    "data/blog/articles/khoa-xe-khi-thue.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0159",
+      "category": "EV",
+      "slug": "cach-giu-pin-ben-khi-thue-xe-dien",
+      "title": "cách Giữ Pin Bền Khi Thuê xe Điện",
+      "description": "Cách giữ pin bền khi thuê xe điện: thói quen lái tiết kiệm pin, sạc đúng cách, tránh nắng mưa và ngưỡng pin cần hỏi khi nhận và trả xe.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/cach-giu-pin-ben-khi-thue-xe-dien.body.html",
+      "knowledge_chunks": [
+        "Không chạy kiệt pin rồi mới sạc, sạc khi tỉnh táo và rút sạc khi pin đầy để giữ pin xe điện bền.",
+        "Tăng ga mượt, giảm ga sớm trước đèn đỏ và tránh chở quá tải giúp mỗi phần trăm pin đi được nhiều hơn.",
+        "Tránh để xe điện dưới nắng gắt và đi qua đoạn ngập nước, báo cửa hàng nếu xe từng qua chỗ ngập sâu."
+      ]
+    },
+    {
+      "article_id": "BA-0160",
+      "category": "GUIDE",
+      "slug": "khoa-xe-khi-thue",
+      "title": "khoá xe Khi Thuê",
+      "description": "Khóa xe khi thuê máy: các loại khóa, thói quen khóa cổ mỗi lần xuống xe, khóa bấm khi đỗ qua đêm và xử lý khi mất chìa xe thuê.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/khoa-xe-khi-thue.body.html",
+      "knowledge_chunks": [
+        "Khóa cổ ngay khi xuống xe và cài thêm khóa bấm khi đỗ qua đêm ở nơi không có bãi trông xe.",
+        "Khi nhận xe thuê, đếm số chìa được giao và giao lại đúng số chìa khi trả để tránh tranh chấp hoàn cọc.",
+        "Nếu chìa xe thuê bị mất hoặc gãy trong ổ, gọi ngay cửa hàng thay vì tự xử lý mạnh tay."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T05:13:34.233Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T05:13:34.235Z"
+    }
+  ]
+}
