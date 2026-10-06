@@ -1,0 +1,57 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0012",
+  "writer": "writer_A",
+  "seq": 7,
+  "ids": [
+    "BA-0293",
+    "BA-0294"
+  ],
+  "body_paths": [
+    "data/blog/articles/nong-do-con-khi-lai-xe-cho-du-khach.body.html",
+    "data/blog/articles/bai-dinh-xe-may.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0293",
+      "category": "SAFE",
+      "slug": "nong-do-con-khi-lai-xe-cho-du-khach",
+      "title": "Nồng độ Cồn Khi Lái xe Cho du Khách",
+      "description": "Nồng độ cồn khi lái xe cho du khách: cấm tuyệt đối theo Luật Trật tự an toàn giao thông 2024, xử phạt theo Nghị định 168/2024 và tình huống bia hơi với xe thuê.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/nong-do-con-khi-lai-xe-cho-du-khach.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0294",
+      "category": "LOCAL",
+      "slug": "bai-dinh-xe-may",
+      "title": "Bái Đính xe Máy",
+      "description": "Chùa Bái Đính bằng xe máy từ Hà Nội: lộ trình quốc lộ 1A, hành lang La Hán, kết hợp Tràng An trong ngày và chuẩn bị cho chặng đường trường đi lễ.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/bai-dinh-xe-may.body.html",
+      "knowledge_chunks": [
+        "Chùa Bái Đính nằm ở vùng đá Tràng An, Ninh Bình, cách Hà Nội khoảng 100 km theo quốc lộ 1A và cách trung tâm thành phố Ninh Bình khoảng 18 km; xe máy đi đường bộ mặt đất, cao tốc cấm xe hai bánh.",
+        "Khu chùa Bái Đính nổi tiếng với hành lang tượng La Hán hơn 230 gian dài gần 3 km đặt 500 pho tượng đá và các tượng Phật bằng đồng được ghi nhận nhiều kỷ lục; khuôn viên rộng nên khách đi bộ nhiều, cần giày êm và nước uống.",
+        "Mùa xuân sau Tết là cao điểm lễ hội chùa Bái Đính với dòng khách hành hương rất đông; nên đi sớm, giữa tuần, kết hợp thuyền Tràng An buổi chiều vì hai điểm nằm cạnh nhau."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-10-06T21:25:19.260Z",
+      "event": "chunk created and locally validated (links resolve; no junk; legal gate verified via web search; no invented business data)"
+    },
+    {
+      "at": "2026-10-06T21:25:19.260Z",
+      "event": "WRITING -> LOCAL_QA_PASS"
+    },
+    {
+      "at": "2026-10-06T21:25:19.260Z",
+      "event": "LOCAL_QA_PASS -> READY_TO_PUSH"
+    }
+  ]
+}
