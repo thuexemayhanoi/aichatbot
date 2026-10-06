@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0007",
+  "writer": "writer_C",
+  "seq": 6,
+  "ids": [
+    "BA-0201",
+    "BA-0202"
+  ],
+  "body_paths": [
+    "data/blog/articles/xe-dien-giam-tieng-on-pho.body.html",
+    "data/blog/articles/thoi-gian-nhan-xe-som.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0201",
+      "category": "EV",
+      "slug": "xe-dien-giam-tieng-on-pho",
+      "title": "xe Điện Giảm Tiếng ồn Phố",
+      "description": "Xe máy điện giúp giảm tiếng ồn phố: vì sao động cơ điện êm hơn, ý nghĩa với giao thông đô thị và lưu ý an toàn khi đi xe êm.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/xe-dien-giam-tieng-on-pho.body.html",
+      "knowledge_chunks": [
+        "Động cơ điện quay trực tiếp không có tiếng nổ buồng đốt nên xe máy điện êm hơn hẳn xe xăng khi lưu thông trong phố.",
+        "Tỷ lệ xe điện càng cao trên một tuyến phố thì âm lượng trung bình của dòng xe càng giảm, góp phần giảm tiếng ồn đô thị.",
+        "Xe điện quá êm khiến người đi bộ khó nghe thấy xe tới, nên người lái cần giảm tốc ở khu đông người và chủ động nhấn còi nhẹ khi cần."
+      ]
+    },
+    {
+      "article_id": "BA-0202",
+      "category": "GUIDE",
+      "slug": "thoi-gian-nhan-xe-som",
+      "title": "Thời Gian Nhận xe Sớm",
+      "description": "Cách đặt lịch nhận xe thuê sớm hơn giờ mở cửa: hỏi trước, xác nhận, phương án thay thế và các điểm cần kiểm tra kỹ hơn khi nhận sớm.",
+      "published_date": "2026-10-06",
+      "author": "MotoAI Editorial",
+      "body": "data/blog/articles/thoi-gian-nhan-xe-som.body.html",
+      "knowledge_chunks": [
+        "Nhận xe sớm hơn giờ mở cửa cần báo trước ít nhất một ngày và xác nhận lại với cửa hàng vào buổi tối trước ngày nhận.",
+        "Nếu cửa hàng không nhận sớm được, có thể nhận xe từ tối hôm trước, chọn giao tận nơi hoặc dời lịch trình theo giờ mở cửa chuẩn.",
+        "Khi nhận xe sớm nên kiểm tra kỹ pin, bình xăng, đèn và phanh vì xe thường vừa được kiểm tra hoặc sạc xong trong đêm."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-06T14:10:38.183Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-06T14:10:38.183Z"
+    }
+  ]
+}
