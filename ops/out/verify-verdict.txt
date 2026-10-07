@@ -1,0 +1,9 @@
+writer-queue-validate-exit=0
+blog-factory-validate-exit=0
+transaction-marker=no
+retired-lockfile=no
+tests-exit=1
+# tests 137
+# pass 136
+# fail 1
+not ok 135 - dry-run against the REAL repo: nothing written, production inventory unchanged
