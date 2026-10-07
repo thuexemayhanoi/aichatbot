@@ -1,8 +1,9 @@
 === request ===
-verify-infra
-retry: 1
+grep
+tests/unit/ops-agents.test.js|tests/unit/writer-queue-requeue.test.js
+REAL repo
 === mode ===
-verify-infra
+grep
 === matrix rows ===
 (no matrix rows)
 === hub app ===
@@ -359,46 +360,9 @@ ung-dung-ban-do-cho-nguoi-thue-xe
 302
 === active batch ===
 WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:FACTORY_FAILED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
-=== VERIFY-INFRA MODE ===
---- writer-queue usage (bare invocation) ---
-usage: writer-queue.mjs <command> [args]
-  plan [--limit N] [--dry-run] [--base-sha X]   coordinator: reserve one batch (max 18)
-  status | validate                              manifest inspection (duplicate -> fail closed)
-  next <writer_A|writer_B|writer_C>               next RESERVED chunk of THIS writer only
-  begin <writer> <batch> <seq>                    RESERVED -> WRITING (resume-safe)
-  ready <writer> <batch> <seq> --drafts F.json    WRITING -> LOCAL_QA_PASS -> READY_TO_PUSH
-  abort <writer> <batch> <seq> [--reason X]       writer gives the chunk back (stays reserved)
-  select-publish [--work <dir>]                   serialized publisher: next READY_TO_PUSH chunk (FIFO)
-  stage <batch> <seq> --work <dir>                copy the 2 bodies + merge drafts into published.json
-  verify-push <batch> <seq> --work <dir>          fresh-main verification before the push
-  complete <batch> <seq>                          factory finished: mark the chunk PUBLISHED (idempotent)
-  fail <batch> <seq> --state failed|factory-failed|push-failed
-  requeue <batch> <seq> --work <dir>              §6G crash-window recovery (classify + restore, fail closed)
---- writer-queue validate ---
-valid=true
-batch_id=WRITER-BATCH-0013
-unique_ids=18
-EXIT=0
---- blog-factory validate ---
-matrix OK: 2000 rows (>= 2000), distribution at or above floor, unique ids/slugs/paths
-EXIT=0
---- markers ---
-no transaction marker
-no retired lockfile
---- maintenance lock refs ---
-9c8816644a2aa058b583712b19f53a70cb895f82	refs/ops/maintenance-lock/INC-20261007073825-snqi
---- state JSON parse ---
-OK docs/state/writer-assignments.json
-OK docs/state/active-work.json
-OK docs/state/blog-factory.checkpoint.json
---- targeted tests (summary + failures only) ---
-TESTS_EXIT=1
-# tests 137
-# suites 0
-# pass 136
-# fail 1
-# cancelled 0
-# skipped 0
---- failing tests (if any) ---
-not ok 135 - dry-run against the REAL repo: nothing written, production inventory unchanged
+=== GREP MODE ===
+--- tests/unit/ops-agents.test.js ---
+(no match)
+--- tests/unit/writer-queue-requeue.test.js ---
+(no match)
 === END ===
