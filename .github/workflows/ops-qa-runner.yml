@@ -66,15 +66,20 @@ jobs:
             fi
             if [ "$MODE" = "verify-infra" ]; then
               echo "=== VERIFY-INFRA MODE ==="
+              : > ops/out/verify-verdict.txt
               echo "--- writer-queue usage (bare invocation) ---"
               node tools/writer-queue.mjs 2>&1 || true
               echo "--- writer-queue validate ---"
-              node tools/writer-queue.mjs validate 2>&1; echo "EXIT=$?"
+              node tools/writer-queue.mjs validate 2>&1; WQ=$?
+              echo "EXIT=$WQ"
+              echo "writer-queue-validate-exit=$WQ" >> ops/out/verify-verdict.txt
               echo "--- blog-factory validate ---"
-              node tools/blog-factory.mjs validate 2>&1; echo "EXIT=$?"
+              node tools/blog-factory.mjs validate 2>&1; BF=$?
+              echo "EXIT=$BF"
+              echo "blog-factory-validate-exit=$BF" >> ops/out/verify-verdict.txt
               echo "--- markers ---"
-              if [ -f docs/state/blog-factory.transaction.json ]; then echo "TRANSACTION_MARKER_PRESENT"; else echo "no transaction marker"; fi
-              if [ -f docs/state/blog-factory.lock ]; then echo "RETIRED_LOCKFILE_PRESENT"; else echo "no retired lockfile"; fi
+              if [ -f docs/state/blog-factory.transaction.json ]; then echo "TRANSACTION_MARKER_PRESENT"; echo "transaction-marker=yes" >> ops/out/verify-verdict.txt; else echo "no transaction marker"; echo "transaction-marker=no" >> ops/out/verify-verdict.txt; fi
+              if [ -f docs/state/blog-factory.lock ]; then echo "RETIRED_LOCKFILE_PRESENT"; echo "retired-lockfile=yes" >> ops/out/verify-verdict.txt; else echo "no retired lockfile"; echo "retired-lockfile=no" >> ops/out/verify-verdict.txt; fi
               echo "--- maintenance lock refs ---"
               git ls-remote --refs origin "refs/ops/maintenance-lock/*" || echo "(ls-remote failed)"
               echo "--- state JSON parse ---"
@@ -85,8 +90,16 @@ jobs:
                   echo "MISSING $F"
                 fi
               done
-              echo "--- targeted tests ---"
-              timeout 300 node --test tests/unit/writer-queue.test.js tests/unit/writer-queue-requeue.test.js tests/unit/blog-factory.test.js tests/unit/article-qa.test.js tests/unit/ops-agents.test.js; echo "TESTS_EXIT=$?"
+              echo "--- targeted tests (summary + failures only) ---"
+              timeout 300 node --test tests/unit/writer-queue.test.js tests/unit/writer-queue-requeue.test.js tests/unit/blog-factory.test.js tests/unit/article-qa.test.js tests/unit/ops-agents.test.js > /tmp/tests.tap 2>&1
+              TE=$?
+              echo "TESTS_EXIT=$TE"
+              grep -E '^# (tests|pass|fail|suites|cancelled|skipped) ' /tmp/tests.tap || echo "(no tap summary)"
+              echo "--- failing tests (if any) ---"
+              grep -E '^not ok' /tmp/tests.tap || echo "(none)"
+              echo "tests-exit=$TE" >> ops/out/verify-verdict.txt
+              grep -E '^# (tests|pass|fail) ' /tmp/tests.tap >> ops/out/verify-verdict.txt || true
+              grep -E '^not ok' /tmp/tests.tap >> ops/out/verify-verdict.txt || true
             fi
             if [ "$MODE" = "reconcile" ]; then
               echo "=== RECONCILE MODE ==="
@@ -129,7 +142,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add ops/qa-result.txt || true
-          git add ops/out/assignments-next.json 2>/dev/null || true
+          git add ops/out/ 2>/dev/null || true
           git add docs/state/writer-assignments.json 2>/dev/null || true
           MSG="ops: qa-runner result [skip ci]"
           if ! git diff --cached --quiet -- docs/state/writer-assignments.json 2>/dev/null; then
