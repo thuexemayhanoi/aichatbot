@@ -3,11 +3,12 @@ name: ops-qa-runner
 # One-shot ops helper (precedent: ops-owner-lock-release.yml).
 # Triggered by pushes of ops/candidate/** or this file to main. Mode is
 # selected by ops/candidate/request.txt line 1:
-# - "plan [N]"     -> coordinator fallback: writer-queue plan, commit assignments.
-# - "verify-infra" -> run the Agent #5 independent verification checks only.
-# - "reconcile"    -> writer-queue reconcile (sync factory-failed chunks).
-# - default        -> matrix regex; state dump; if bodies + chunk.json are
-#                     present, run the full local QA pipeline.
+# - "plan [N]"      -> coordinator fallback: writer-queue plan, commit assignments.
+# - "verify-infra"  -> run the Agent #5 independent verification checks only.
+# - "reconcile"     -> writer-queue reconcile (sync factory-failed chunks).
+# - "grep"          -> diagnostic: grep a pattern (line 3) in file paths (line 2, |-separated).
+# - default         -> matrix regex; state dump; if bodies + chunk.json are
+#                      present, run the full local QA pipeline.
 # Always commits ops/qa-result.txt with if: always().
 
 on:
@@ -52,8 +53,7 @@ jobs:
             echo "=== hub thue-xe ==="; ls blog/thue-xe 2>/dev/null
             echo "=== hub xe-dien ==="; ls blog/xe-dien 2>/dev/null
             echo "=== hub an-toan ==="; ls blog/an-toan 2>/dev/null
-            echo "=== hub dia-phuong ==="; ls blog/dia-phuong
- 2>/dev/null
+            echo "=== hub dia-phuong ==="; ls blog/dia-phuong 2>/dev/null
             echo "=== hub huong-dan ==="; ls blog/huong-dan 2>/dev/null
             echo "=== published count ==="
             node -e "const p=require('./data/blog/published.json');console.log(p.articles.length)"
@@ -81,8 +81,7 @@ jobs:
               echo "blog-factory-validate-exit=$BF" >> ops/out/verify-verdict.txt
               echo "--- markers ---"
               if [ -f docs/state/blog-factory.transaction.json ]; then echo "TRANSACTION_MARKER_PRESENT"; echo "transaction-marker=yes" >> ops/out/verify-verdict.txt; else echo "no transaction marker"; echo "transaction-marker=no" >> ops/out/verify-verdict.txt; fi
-              if [ -f docs/state/blog-factory.lock ]; then echo "RETIRED_LOCKFILE_PRESENT"; echo "retired-lockfile=
-yes" >> ops/out/verify-verdict.txt; else echo "no retired lockfile"; echo "retired-lockfile=no" >> ops/out/verify-verdict.txt; fi
+              if [ -f docs/state/blog-factory.lock ]; then echo "RETIRED_LOCKFILE_PRESENT"; echo "retired-lockfile=yes" >> ops/out/verify-verdict.txt; else echo "no retired lockfile"; echo "retired-lockfile=no" >> ops/out/verify-verdict.txt; fi
               echo "--- maintenance lock refs ---"
               git ls-remote --refs origin "refs/ops/maintenance-lock/*" || echo "(ls-remote failed)"
               echo "--- state JSON parse ---"
@@ -119,8 +118,7 @@ yes" >> ops/out/verify-verdict.txt; else echo "no retired lockfile"; echo "retir
               echo "--- assignments after reconcile ---"
               node -e "const a=require('./docs/state/writer-assignments.json');console.log(a.active.batch_id, a.active.status, a.active.chunks.map(c=>c.seq+':'+c.status).join(' '))"
             fi
-            if [ "$MODE" = "
-qa" ] && ls ops/candidate/bodies/*.body.html >/dev/null 2>&1; then
+            if [ "$MODE" = "qa" ] && ls ops/candidate/bodies/*.body.html >/dev/null 2>&1; then
               echo "=== QA PIPELINE ==="
               mkdir -p ops/work/writers/writer-work ops/work/writers/data/blog/articles
               cp ops/candidate/bodies/*.body.html ops/work/writers/data/blog/articles/
@@ -150,8 +148,7 @@ qa" ] && ls ops/candidate/bodies/*.body.html >/dev/null 2>&1; then
             echo "=== END ==="
           } > ops/qa-result.txt 2>&1 || true
       - name: commit result
-    
-    if: always()
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
