@@ -1,10 +1,13 @@
 name: ops-qa-runner
 
 # One-shot ops helper (precedent: ops-owner-lock-release.yml).
-# Triggered by pushes of ops/candidate/** to main. Two modes:
-# - request line 1 starting with "plan": coordinator fallback, runs
-#   writer-queue plan and commits the new assignments.json.
-# - bodies + chunk.json present: full local select-publish/stage/QA pipeline.
+# Triggered by pushes of ops/candidate/** or this file to main. Mode is
+# selected by ops/candidate/request.txt line 1:
+# - "plan [N]"     -> coordinator fallback: writer-queue plan, commit assignments.
+# - "verify-infra" -> run the Agent #5 independent verification checks only.
+# - "reconcile"    -> writer-queue reconcile (sync factory-failed chunks).
+# - default        -> matrix regex; state dump; if bodies + chunk.json are
+#                     present, run the full local QA pipeline.
 # Always commits ops/qa-result.txt with if: always().
 
 on:
@@ -22,18 +25,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: dump state, optional plan, run qa
+      - name: dump state, dispatch mode
         id: dump
         run: |
           mkdir -p ops/out
+          MODE=qa
+          REQ="^BA-029[7-9],|^BA-030[0-6],"
+          if [ -f ops/candidate/request.txt ]; then
+            LINE=$(head -1 ops/candidate/request.txt)
+            if [ -n "$LINE" ]; then REQ="$LINE"; fi
+            case "$LINE" in
+              plan*) MODE=plan ;;
+              verify-infra*) MODE=verify-infra ;;
+              reconcile*) MODE=reconcile ;;
+            esac
+          fi
           {
             echo "=== request ==="
             cat ops/candidate/request.txt 2>/dev/null || echo "(no request)"
-            REQ="^BA-029[7-9],|^BA-030[0-6],"
-            if [ -f ops/candidate/request.txt ]; then
-              LINE=$(head -1 ops/candidate/request.txt)
-              if [ -n "$LINE" ]; then REQ="$LINE"; fi
-            fi
+            echo "=== mode ==="
+            echo "$MODE"
             echo "=== matrix rows ==="
             grep -E "$REQ" data/blog/content-matrix.csv || echo "(no matrix rows)"
             echo "=== hub app ==="; ls blog/app 2>/dev/null
@@ -46,14 +57,44 @@ jobs:
             node -e "const p=require('./data/blog/published.json');console.log(p.articles.length)"
             echo "=== active batch ==="
             node -e "const a=require('./docs/state/writer-assignments.json');console.log(a.active.batch_id, a.active.status, a.active.chunks.map(c=>c.seq+':'+c.status).join(' '))"
-            if [ -f ops/candidate/request.txt ] && head -1 ops/candidate/request.txt | grep -q '^plan'; then
+            if [ "$MODE" = "plan" ]; then
               echo "=== PLAN MODE ==="
               PLIMIT=$(head -1 ops/candidate/request.txt | grep -oE '[0-9]+' || true)
               PLIMIT=${PLIMIT:-18}
               node tools/writer-queue.mjs plan --limit "$PLIMIT" --base-sha "$(git rev-parse HEAD)" || echo "PLAN_FAILED"
               cp docs/state/writer-assignments.json ops/out/assignments-next.json
             fi
-            if ls ops/candidate/bodies/*.body.html >/dev/null 2>&1; then
+            if [ "$MODE" = "verify-infra" ]; then
+              echo "=== VERIFY-INFRA MODE ==="
+              echo "--- writer-queue usage (bare invocation) ---"
+              node tools/writer-queue.mjs 2>&1 || true
+              echo "--- writer-queue validate ---"
+              node tools/writer-queue.mjs validate 2>&1; echo "EXIT=$?"
+              echo "--- blog-factory validate ---"
+              node tools/blog-factory.mjs validate 2>&1; echo "EXIT=$?"
+              echo "--- markers ---"
+              if [ -f docs/state/blog-factory.transaction.json ]; then echo "TRANSACTION_MARKER_PRESENT"; else echo "no transaction marker"; fi
+              if [ -f docs/state/blog-factory.lock ]; then echo "RETIRED_LOCKFILE_PRESENT"; else echo "no retired lockfile"; fi
+              echo "--- maintenance lock refs ---"
+              git ls-remote --refs origin "refs/ops/maintenance-lock/*" || echo "(ls-remote failed)"
+              echo "--- state JSON parse ---"
+              for F in docs/state/writer-assignments.json docs/state/active-work.json docs/state/blog-factory.checkpoint.json; do
+                if [ -f "$F" ]; then
+                  node -e "JSON.parse(require('fs').readFileSync('$F','utf8'))" && echo "OK $F" || echo "PARSE_FAIL $F"
+                else
+                  echo "MISSING $F"
+                fi
+              done
+              echo "--- targeted tests ---"
+              timeout 300 node --test tests/unit/writer-queue.test.js tests/unit/writer-queue-requeue.test.js tests/unit/blog-factory.test.js tests/unit/article-qa.test.js tests/unit/ops-agents.test.js; echo "TESTS_EXIT=$?"
+            fi
+            if [ "$MODE" = "reconcile" ]; then
+              echo "=== RECONCILE MODE ==="
+              node tools/writer-queue.mjs reconcile 2>&1; echo "EXIT=$?"
+              echo "--- assignments after reconcile ---"
+              node -e "const a=require('./docs/state/writer-assignments.json');console.log(a.active.batch_id, a.active.status, a.active.chunks.map(c=>c.seq+':'+c.status).join(' '))"
+            fi
+            if [ "$MODE" = "qa" ] && ls ops/candidate/bodies/*.body.html >/dev/null 2>&1; then
               echo "=== QA PIPELINE ==="
               mkdir -p ops/work/writers/writer-work ops/work/writers/data/blog/articles
               cp ops/candidate/bodies/*.body.html ops/work/writers/data/blog/articles/
@@ -78,7 +119,7 @@ jobs:
               echo "--- verify-push ---"
               node tools/writer-queue.mjs verify-push "$BATCH" "$SEQ" --work ops/work/writers || echo "VERIFY_PUSH_FAILED"
             else
-              echo "=== no candidate bodies, state dump only ==="
+              if [ "$MODE" = "qa" ]; then echo "=== no candidate bodies, state dump only ==="; fi
             fi
             echo "=== END ==="
           } > ops/qa-result.txt 2>&1 || true
