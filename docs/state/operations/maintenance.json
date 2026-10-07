@@ -3,7 +3,29 @@
   "schema_version": 1,
   "production_enabled": true,
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
-  "active_incident": null,
+  "active_incident": {
+    "incident_id": "INC-20261007073825-snqi",
+    "status": "OPEN",
+    "owner": "AGENT_4",
+    "started_at": "2026-10-07T07:38:25.558Z",
+    "updated_at": "2026-10-07T07:38:25.558Z",
+    "base_sha": "9c8816644a2aa058b583712b19f53a70cb895f82",
+    "reason": "factory infrastructure failure while publishing chunk WRITER-BATCH-0013#2",
+    "trigger": "workflow_dispatch",
+    "source": {
+      "workflow": "Blog Factory Publish (2-article micro batch)",
+      "run_id": "37588486057",
+      "url": "https://github.com/thuexemayhanoi/aichatbot/actions/runs/37588486057"
+    },
+    "classification": "INFRA",
+    "signature": "Blog Factory Publish (2-article micro batch)::Commit derived state (one commit per chunk)",
+    "attempts": {
+      "agent4": 1,
+      "agent5": 0
+    },
+    "production_paused": true,
+    "result_note": ""
+  },
   "incidents": [
     {
       "incident_id": "INC-20261006160640-4vj8",
