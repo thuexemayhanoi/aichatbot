@@ -1,53 +1,53 @@
 {
   "$schema": "motoai/writer-chunk@1",
   "batch_id": "WRITER-BATCH-0013",
-  "writer": "writer_B",
-  "seq": 2,
+  "writer": "writer_C",
+  "seq": 3,
   "ids": [
-    "BA-0301",
-    "BA-0302"
+    "BA-0303",
+    "BA-0304"
   ],
   "body_paths": [
-    "data/blog/articles/module-goi-y-xe-trong-ung-dung-thue-xe.body.html",
-    "data/blog/articles/xe-nao-de-dieu-khien.body.html"
+    "data/blog/articles/xe-dien-cho-thanh-pho-nho.body.html",
+    "data/blog/articles/danh-gia-cua-hang-sau-khi-thue.body.html"
   ],
   "status": "READY_TO_PUSH",
   "drafts": [
     {
-      "article_id": "BA-0301",
-      "category": "APP",
-      "slug": "module-goi-y-xe-trong-ung-dung-thue-xe",
-      "title": "Module Gợi ý xe Trong Ứng Dụng Thuê xe",
-      "description": "Module gợi ý xe trong ứng dụng thuê xe máy hoạt động thế nào, bạn nên nhập những thông tin nào để gợi ý trúng và khi nào nên tin gợi ý thay vì tự chọn xe.",
+      "article_id": "BA-0303",
+      "category": "EV",
+      "slug": "xe-dien-cho-thanh-pho-nho",
+      "title": "xe Điện Cho Thành Phố Nhỏ",
+      "description": "Xe điện cho thành phố nhỏ: vì sao nhóm xe máy điện hợp với phố tỉnh, cách tính quãng đường trong ngày, sạc pin qua đêm tại chỗ nghỉ và các lưu ý trước khi thuê.",
       "published_date": "2026-10-06",
       "author": "MotoAI Editorial",
-      "body": "data/blog/articles/module-goi-y-xe-trong-ung-dung-thue-xe.body.html",
+      "body": "data/blog/articles/xe-dien-cho-thanh-pho-nho.body.html",
       "knowledge_chunks": [
-        "Module gợi ý xe trong ứng dụng thuê xe thu hẹp danh sách xe dựa trên bốn nhóm tín hiệu: mục đích chuyến đi, số người đi cùng, kinh nghiệm và vóc dáng người lái, ngân sách dự kiến.",
-        "Để gợi ý trúng, người thuê nên mô tả rõ hành trình, số người, kinh nghiệm lái và ngân sách thay vì chỉ nói cần thuê một chiếc xe.",
-        "Gợi ý chỉ là bước chọn mẫu xe; khi nhận xe vẫn cần kiểm tra tình trạng thực tế từng chiếc như lốp, thắng và tiếng máy."
+        "Thành phố nhỏ có quãng di chuyển ngắn và tốc độ thấp nên xe máy điện phát huy lợi thế: chạy êm, không mùi xăng, sạc qua đêm tại chỗ nghỉ và chi phí mỗi cây số thấp hơn xe xăng.",
+        "Trước khi thuê xe điện ở phố tỉnh, nên liệt kê các điểm dự kiến trong ngày để chọn dòng pin đủ dài và hỏi trước chỗ nghỉ về ổ điện sạc qua đêm.",
+        "Khi đi xe điện cần giữ tốc độ vừa phải, biết cách xử lý khi hết pin giữa đường và bảo vệ cụm pin khi trời mưa hoặc đường ngập."
       ]
     },
     {
-      "article_id": "BA-0302",
-      "category": "RENT",
-      "slug": "xe-nao-de-dieu-khien",
-      "title": "xe Nào dễ Điều Khiển",
-      "description": "Tiêu chí chọn xe máy dễ điều khiển khi thuê: trọng lượng nhẹ, yên thấp, ga và thắng nhạy, so sánh xe số với xe ga và cách làm quen xe lạ trong mười phút đầu.",
+      "article_id": "BA-0304",
+      "category": "GUIDE",
+      "slug": "danh-gia-cua-hang-sau-khi-thue",
+      "title": "Đánh Giá Cửa Hàng Sau Khi Thuê",
+      "description": "Đánh giá cửa hàng sau khi thuê xe: năm tiêu chí trải nghiệm, bằng chứng nên giữ trong kỳ thuê, cách gửi phản hồi qua ứng dụng và khi nào cần khiếu nại chính thức.",
       "published_date": "2026-10-06",
       "author": "MotoAI Editorial",
-      "body": "data/blog/articles/xe-nao-de-dieu-khien.body.html",
+      "body": "data/blog/articles/danh-gia-cua-hang-sau-khi-thue.body.html",
       "knowledge_chunks": [
-        "Xe máy dễ điều khiển thường có trọng lượng nhẹ, yên thấp vừa vóc dáng để chân chạm đất khi dừng, cùng tay ga và tay thắng nhẹ.",
-        "Xe ga dễ làm quen vì không côn và không về số, còn xe số nhẹ và ổn định hơn khi vào cua nhưng đòi quen thao tác.",
-        "Khi nhận xe lạ, nên ngồi thử chỉnh gương, thử tay ga và thắng tại chỗ, rồi chạy một vòng ngắn quanh khu vực cửa hàng trước khi ra đường."
+        "Sau khi trả xe, người thuê nên đánh giá cửa hàng theo năm tiêu chí: giá minh bạch, xe đúng mô tả, giờ giấc chuẩn, hỗ trợ nhanh và thái độ chuyên nghiệp.",
+        "Bằng chứng nên giữ trong suốt kỳ thuê gồm ảnh xe khi nhận, tin nhắn báo giá, hóa đơn và thời gian giao trả xe.",
+        "Phản hồi cụ thể nên gửi qua ứng dụng sau khi hoàn tất hợp đồng; vi phạm hợp đồng như giữ tiền sai thỏa thuận cần khiếu nại chính thức."
       ]
     }
   ],
   "history": [
     {
-      "at": "2026-10-07T07:35:15.473Z",
-      "event": "writer_B drafted chunk 2 (BA-0301, BA-0302)"
+      "at": "2026-10-07T07:37:33.286Z",
+      "event": "writer_C drafted chunk 3 (BA-0303, BA-0304)"
     }
   ]
 }
