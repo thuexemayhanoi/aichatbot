@@ -51,7 +51,8 @@ jobs:
             grep -E "$REQ" data/blog/content-matrix.csv || echo "(no matrix rows)"
             echo "=== hub app ==="; ls blog/app 2>/dev/null
             echo "=== hub thue-xe ==="; ls blog/thue-xe 2>/dev/null
-            echo "=== hub xe-dien ==="; ls blog/xe-dien 2>/dev/null
+            echo "=== hub xe-dien ==="; ls blog/xe-dien 2>/dev
+/null
             echo "=== hub an-toan ==="; ls blog/an-toan 2>/dev/null
             echo "=== hub dia-phuong ==="; ls blog/dia-phuong 2>/dev/null
             echo "=== hub huong-dan ==="; ls blog/huong-dan 2>/dev/null
@@ -80,7 +81,8 @@ jobs:
               echo "EXIT=$BF"
               echo "blog-factory-validate-exit=$BF" >> ops/out/verify-verdict.txt
               echo "--- markers ---"
-              if [ -f docs/state/blog-factory.transaction.json ]; then echo "TRANSACTION_MARKER_PRESENT"; echo "transaction-marker=yes" >> ops/out/verify-verdict.txt; else echo "no transaction marker"; echo "transaction-marker=no" >> ops/out/verify-verdict.txt; fi
+              if [ -f docs/state/blog-factory.transaction.json ]; then echo "TRANSACTION_MARKER_PRESENT"; echo "transaction-marker=yes" >> ops/out/verify-verdict.txt; else echo "no transaction marker"; echo "transaction-marker=no" >> ops/out/ver
+ify-verdict.txt; fi
               if [ -f docs/state/blog-factory.lock ]; then echo "RETIRED_LOCKFILE_PRESENT"; echo "retired-lockfile=yes" >> ops/out/verify-verdict.txt; else echo "no retired lockfile"; echo "retired-lockfile=no" >> ops/out/verify-verdict.txt; fi
               echo "--- maintenance lock refs ---"
               git ls-remote --refs origin "refs/ops/maintenance-lock/*" || echo "(ls-remote failed)"
@@ -97,8 +99,10 @@ jobs:
               TE=$?
               echo "TESTS_EXIT=$TE"
               grep -E '^# (tests|pass|fail|suites|cancelled|skipped) ' /tmp/tests.tap || echo "(no tap summary)"
-              echo "--- failing tests (if any) ---"
-              grep -E '^not ok' /tmp/tests.tap || echo "(none)"
+              echo "--- failing tests (if any, with detail) ---"
+              grep -E -A40 '^not ok' /tmp/tests.tap || echo "(none)"
+              echo "--- writer-queue plan --dry-run output (test 135 subject) ---"
+              node tools/writer-queue.mjs plan --dry-run --limit 50 2>&1 | head -40
               echo "tests-exit=$TE" >> ops/out/verify-verdict.txt
               grep -E '^# (tests|pass|fail) ' /tmp/tests.tap >> ops/out/verify-verdict.txt || true
               grep -E '^not ok' /tmp/tests.tap >> ops/out/verify-verdict.txt || true
@@ -109,7 +113,8 @@ jobs:
               GP=$(sed -n '3p' ops/candidate/request.txt)
               for F in $(echo "$GF" | tr '|' ' '); do
                 echo "--- $F ---"
-                grep -n -E -B3 -A70 "$GP" "$F" 2>&1 || echo "(no match)"
+                grep -n -E
+ -B3 -A70 "$GP" "$F" 2>&1 || echo "(no match)"
               done
             fi
             if [ "$MODE" = "reconcile" ]; then
@@ -137,7 +142,8 @@ jobs:
               echo "--- stage ---"
               node tools/writer-queue.mjs stage "$BATCH" "$SEQ" --work ops/work/writers || echo "STAGE_FAILED"
               echo "--- article-qa $ID1 ---"
-              node tools/article-qa.mjs "$ID1" || echo "QA_FAILED_$ID1"
+              node tools/article-qa.mjs "$ID1" || echo "QA_FAILE
+D_$ID1"
               echo "--- article-qa $ID2 ---"
               node tools/article-qa.mjs "$ID2" || echo "QA_FAILED_$ID2"
               echo "--- verify-push ---"
