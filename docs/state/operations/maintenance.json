@@ -3,29 +3,7 @@
   "schema_version": 1,
   "production_enabled": true,
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
-  "active_incident": {
-    "incident_id": "INC-20261007073825-snqi",
-    "status": "AGENT5_WORKING",
-    "owner": "AGENT_5",
-    "started_at": "2026-10-07T07:38:25.558Z",
-    "updated_at": "2026-10-07T07:58:48.228Z",
-    "base_sha": "9c8816644a2aa058b583712b19f53a70cb895f82",
-    "reason": "factory infrastructure failure while publishing chunk WRITER-BATCH-0013#2",
-    "trigger": "workflow_dispatch",
-    "source": {
-      "workflow": "Blog Factory Publish (2-article micro batch)",
-      "run_id": "37588486057",
-      "url": "https://github.com/thuexemayhanoi/aichatbot/actions/runs/37588486057"
-    },
-    "classification": "INFRA",
-    "signature": "Blog Factory Publish (2-article micro batch)::Commit derived state (one commit per chunk)",
-    "attempts": {
-      "agent4": 1,
-      "agent5": 1
-    },
-    "production_paused": true,
-    "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required"
-  },
+  "active_incident": null,
   "incidents": [
     {
       "incident_id": "INC-20261006160640-4vj8",
@@ -50,6 +28,30 @@
       "production_paused": false,
       "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required | owner-initiated second-line review: Agent #4 misclassified a CONTENT failure (writer draft slug BA-0233 did not match the matrix) as INFRA; root cause corrected on the writer branch, no infra repair needed, state validated (writer-queue + blog-factory validate OK)",
       "closed_at": "2026-10-06T16:18:37.258Z"
+    },
+    {
+      "incident_id": "INC-20261007073825-snqi",
+      "status": "FAILED_MANUAL",
+      "owner": "NONE",
+      "started_at": "2026-10-07T07:38:25.558Z",
+      "updated_at": "2026-10-07T07:59:12.422Z",
+      "base_sha": "9c8816644a2aa058b583712b19f53a70cb895f82",
+      "reason": "factory infrastructure failure while publishing chunk WRITER-BATCH-0013#2",
+      "trigger": "workflow_dispatch",
+      "source": {
+        "workflow": "Blog Factory Publish (2-article micro batch)",
+        "run_id": "37588486057",
+        "url": "https://github.com/thuexemayhanoi/aichatbot/actions/runs/37588486057"
+      },
+      "classification": "INFRA",
+      "signature": "Blog Factory Publish (2-article micro batch)::Commit derived state (one commit per chunk)",
+      "attempts": {
+        "agent4": 1,
+        "agent5": 1
+      },
+      "production_paused": true,
+      "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required | no safe deterministic second-line repair (recipe ESCALATE) — manual intervention required",
+      "closed_at": "2026-10-07T07:59:12.422Z"
     }
   ],
   "known_content_blockers": []
