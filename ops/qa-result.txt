@@ -1,9 +1,9 @@
 === request ===
-^BA-0(299|300),
+^BA-03(01|02),
 retry: 1
 === matrix rows ===
-BA-0299,B06,SAFE,PLANNED,mũ bảo hiểm chuẩn cho du khách,An toàn / pháp lý; mũ bảo hiểm chuẩn cho du khách,informational-legal,mũ Bảo Hiểm Chuẩn Cho du Khách,mu-bao-hiem-chuan-cho-du-khach,blog/an-toan/mu-bao-hiem-chuan-cho-du-khach/index.html,blog/an-toan/,,yes,legal-gate,blog/an-toan/; /,none,no,MotoAI Editorial,,,0,,,legal-gate: CLAIM->SUBJECT->CONDITION->RULE->VERSION->PRIMARY SOURCE required
-BA-0300,B06,LOCAL,PLANNED,cúc phương weekend,Địa phương / du lịch; cúc phương weekend,local-informational,Cúc Phương Weekend,cuc-phuong-weekend,blog/dia-phuong/cuc-phuong-weekend/index.html,blog/dia-phuong/,,no,no-external,blog/dia-phuong/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0301,B07,APP,PLANNED,module gợi ý xe trong ứng dụng thuê xe,App & Ứng dụng; module gợi ý xe trong ứng dụng thuê xe,informational-product,Module Gợi ý xe Trong Ứng Dụng Thuê xe,module-goi-y-xe-trong-ung-dung-thue-xe,blog/app/module-goi-y-xe-trong-ung-dung-thue-xe/index.html,blog/app/,,no,no-external,blog/app/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0302,B07,RENT,PLANNED,xe nào dễ điều khiển,Thuê xe máy; xe nào dễ điều khiển,commercial-informational,xe Nào dễ Điều Khiển,xe-nao-de-dieu-khien,blog/thue-xe/xe-nao-de-dieu-khien/index.html,blog/thue-xe/,,no,no-external,blog/thue-xe/; /,none,yes,MotoAI Editorial,,,0,,,
 === hub app ===
 agent-chon-xe-giup-ban
 ai-tra-loi-trong-ung-dung-thue-xe
@@ -219,6 +219,7 @@ luat-giao-thong-duong-bo-co-ban-cho-du-khach
 met-moi-khi-lai-duong-dai
 mu-bao-hiem
 mu-bao-hiem-chuan
+mu-bao-hiem-chuan-cho-du-khach
 mua-ban-xe-may-giay-to
 mua-lon-va-lai-xe
 ngap-nuoc-va-xe-may
@@ -262,6 +263,7 @@ chua-mot-cot-ha-noi
 chua-va-ha-noi
 cot-co-hoang-thanh
 cua-lo-ven-bien
+cuc-phuong-weekend
 den-nguyen-can-bang-xe
 di-pho-co-bang-xe-may
 dong-da-va-xe-may
@@ -353,28 +355,28 @@ troi-mua-thue-xe-may
 trom-cap-xe-va-xe-thue
 ung-dung-ban-do-cho-nguoi-thue-xe
 === published count ===
-298
+300
 === active batch ===
-WRITER-BATCH-0013 ACTIVE 1:RESERVED 2:RESERVED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
+WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:RESERVED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
 === QA PIPELINE ===
 --- work view ---
-ops/work/writers/writer-work/WRITER-BATCH-0013/A/chunk-01.json
+ops/work/writers/writer-work/WRITER-BATCH-0013/B/chunk-02.json
 --- select-publish ---
 action=publish
 mode=first-publish
 batch=WRITER-BATCH-0013
-seq=1
-writer=writer_A
-ids=BA-0299,BA-0300
+seq=2
+writer=writer_B
+ids=BA-0301,BA-0302
 reason=fresh chunk — nothing on main yet, normal stage/verify/publish path
 --- stage ---
 action=stage
 batch_id=WRITER-BATCH-0013
-seq=1
-writer=writer_A
-ids=BA-0299,BA-0300
-staged=data/blog/articles/mu-bao-hiem-chuan-cho-du-khach.body.html,data/blog/articles/cuc-phuong-weekend.body.html,data/blog/published.json
---- article-qa BA-0299 ---
+seq=2
+writer=writer_B
+ids=BA-0301,BA-0302
+staged=data/blog/articles/module-goi-y-xe-trong-ung-dung-thue-xe.body.html,data/blog/articles/xe-nao-de-dieu-khien.body.html,data/blog/published.json
+--- article-qa BA-0301 ---
 PASS  matrix-row
 PASS  unique-article-id
 PASS  unique-slug
@@ -387,7 +389,7 @@ PASS  html-render-safe
 PASS  verified-phones-only
 PASS  verified-deposits-only
 PASS  internal-links-resolve
-PASS  body-words
+WARN  body-words — 1278 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
 PASS  body-structure
 PASS  no-filler
 PASS  no-duplicate-paragraphs
@@ -396,40 +398,39 @@ PASS  no-cross-article-duplicate
 PASS  no-cannibalization
 PASS  title-meta-valid
 PASS  seo-ownership
-PASS  safe-legal-gate
-PASS  retrieval-consistency
-QA PASS BA-0299 score=100 warnings=0
---- article-qa BA-0300 ---
-PASS  matrix-row
-PASS  unique-article-id
-PASS  unique-slug
-PASS  manifest-entry
-PASS  id-slug-path
-PASS  body-exists
-PASS  fact-resolution
-PASS  body-substantial
-PASS  html-render-safe
-PASS  verified-phones-only
-PASS  verified-deposits-only
-PASS  internal-links-resolve
-WARN  body-words — 1322 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
-PASS  body-structure
-PASS  no-filler
-PASS  no-duplicate-paragraphs
-PASS  no-duplicate-sentences
-PASS  no-cross-article-duplicate
-PASS  no-cannibalization
-PASS  title-meta-valid
-PASS  seo-ownership
-WARN  local-angle — LOCAL article should have a non-empty local_scope (distinct angle, not a doorway clone)
 PASS  no-external-links
 PASS  retrieval-consistency
-QA PASS BA-0300 score=90 warnings=2
+QA PASS BA-0301 score=95 warnings=1
+--- article-qa BA-0302 ---
+PASS  matrix-row
+PASS  unique-article-id
+PASS  unique-slug
+PASS  manifest-entry
+PASS  id-slug-path
+PASS  body-exists
+PASS  fact-resolution
+PASS  body-substantial
+PASS  html-render-safe
+PASS  verified-phones-only
+PASS  verified-deposits-only
+PASS  internal-links-resolve
+WARN  body-words — 1214 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
+PASS  body-structure
+PASS  no-filler
+PASS  no-duplicate-paragraphs
+PASS  no-duplicate-sentences
+PASS  no-cross-article-duplicate
+PASS  no-cannibalization
+PASS  title-meta-valid
+PASS  seo-ownership
+PASS  no-external-links
+PASS  retrieval-consistency
+QA PASS BA-0302 score=95 warnings=1
 --- verify-push ---
 proceed=true
 batch_id=WRITER-BATCH-0013
-seq=1
-writer=writer_A
-ids=BA-0299,BA-0300
+seq=2
+writer=writer_B
+ids=BA-0301,BA-0302
 note=fresh-main verified: ACTIVE batch, READY_TO_PUSH chunk, both ids still PLANNED with exactly one draft each
 === END ===
