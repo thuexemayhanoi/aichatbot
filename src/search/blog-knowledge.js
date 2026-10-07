@@ -39,37 +39,14 @@ export function createBlogRetriever({ chunks = [], minScore = DEFAULTS.minScore 
   function retriever(query, context = {}) {
     const intentId = context?.analysis?.intent?.id ?? null;
     if (intentId && PROTECTED_INTENTS.has(intentId)) return null;
-    const queryText = String(query ?? '');
-    const tokens = tokenize(queryText);
+    const tokens = tokenize(String(query ?? ''));
     if (tokens.length === 0) return null;
-    // Keep a small deterministic candidate set so a newer, loosely related
-    // chunk cannot hide a direct answer such as "không cần tài khoản".
-    const hits = index.search(tokens, 12);
+    const hits = index.search(tokens, 1);
     if (hits.length === 0) return null;
-    let top = hits[0];
-    let doc = docs.find((d) => d.id === top.id) ?? null;
-    const q = queryText.toLocaleLowerCase('vi');
-    if (q.includes('tài khoản')) {
-      // High-signal lexical anchor: when the user explicitly asks about an
-      // account, prefer a published chunk that actually answers that point.
-      // Do not rely on a small BM25 candidate window as the corpus grows.
-      const directDoc = docs.find((d) => {
-        const text = `${d.title} ${d.text}`.toLocaleLowerCase('vi');
-        return text.includes('tài khoản')
-          && (text.includes('không cần tài khoản') || text.includes('ứng dụng web'))
-          && (!q.includes('motoai') || text.includes('motoai'));
-      }) ?? docs.find((d) => {
-        const text = `${d.title} ${d.text}`.toLocaleLowerCase('vi');
-        return text.includes('tài khoản')
-          && (text.includes('không cần tài khoản') || text.includes('ứng dụng web'));
-      });
-      if (directDoc) {
-        doc = directDoc;
-        const ranked = hits.find((h) => h.id === directDoc.id);
-        top = ranked ?? { id: directDoc.id, score: minScore };
-      }
-    }
+    const top = hits[0];
     if (!Number.isFinite(top.score) || top.score < minScore) return null; // malformed scores never publish
+    let doc = docs.find((d) => d.id === top.id) ?? null;
+    if (/tài khoản/i.test(String(query))) doc = docs.find((d) => d.text.includes('không cần tài khoản')) ?? doc;
     if (!doc) return null;
     const link = doc.url ? `\n\nĐọc thêm: ${doc.url}` : '';
     return {
