@@ -1,9 +1,9 @@
 === request ===
-^BA-03(01|02),
+^BA-03(03|04),
 retry: 1
 === matrix rows ===
-BA-0301,B07,APP,PLANNED,module gợi ý xe trong ứng dụng thuê xe,App & Ứng dụng; module gợi ý xe trong ứng dụng thuê xe,informational-product,Module Gợi ý xe Trong Ứng Dụng Thuê xe,module-goi-y-xe-trong-ung-dung-thue-xe,blog/app/module-goi-y-xe-trong-ung-dung-thue-xe/index.html,blog/app/,,no,no-external,blog/app/; /,none,yes,MotoAI Editorial,,,0,,,
-BA-0302,B07,RENT,PLANNED,xe nào dễ điều khiển,Thuê xe máy; xe nào dễ điều khiển,commercial-informational,xe Nào dễ Điều Khiển,xe-nao-de-dieu-khien,blog/thue-xe/xe-nao-de-dieu-khien/index.html,blog/thue-xe/,,no,no-external,blog/thue-xe/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0303,B07,EV,PLANNED,xe điện cho thành phố nhỏ,Xe điện / xe máy điện; xe điện cho thành phố nhỏ,informational-product,xe Điện Cho Thành Phố Nhỏ,xe-dien-cho-thanh-pho-nho,blog/xe-dien/xe-dien-cho-thanh-pho-nho/index.html,blog/xe-dien/,,no,no-external,blog/xe-dien/; /,none,yes,MotoAI Editorial,,,0,,,
+BA-0304,B07,GUIDE,PLANNED,đánh giá cửa hàng sau khi thuê,Hướng dẫn / thủ tục; đánh giá cửa hàng sau khi thuê,informational,Đánh Giá Cửa Hàng Sau Khi Thuê,danh-gia-cua-hang-sau-khi-thue,blog/huong-dan/danh-gia-cua-hang-sau-khi-thue/index.html,blog/huong-dan/,,no,no-external,blog/huong-dan/; /,none,yes,MotoAI Editorial,,,0,,,
 === hub app ===
 agent-chon-xe-giup-ban
 ai-tra-loi-trong-ung-dung-thue-xe
@@ -355,28 +355,25 @@ troi-mua-thue-xe-may
 trom-cap-xe-va-xe-thue
 ung-dung-ban-do-cho-nguoi-thue-xe
 === published count ===
-300
+302
 === active batch ===
 WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:RESERVED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
 === QA PIPELINE ===
 --- work view ---
-ops/work/writers/writer-work/WRITER-BATCH-0013/B/chunk-02.json
+ops/work/writers/writer-work/WRITER-BATCH-0013/C/chunk-03.json
 --- select-publish ---
-action=publish
-mode=first-publish
+action=wait
 batch=WRITER-BATCH-0013
 seq=2
-writer=writer_B
-ids=BA-0301,BA-0302
-reason=fresh chunk — nothing on main yet, normal stage/verify/publish path
+reason=chunk 2 (writer writer_B) is not started — strict FIFO: never publish ahead of a lower sequence
 --- stage ---
 action=stage
 batch_id=WRITER-BATCH-0013
-seq=2
-writer=writer_B
-ids=BA-0301,BA-0302
-staged=data/blog/articles/module-goi-y-xe-trong-ung-dung-thue-xe.body.html,data/blog/articles/xe-nao-de-dieu-khien.body.html,data/blog/published.json
---- article-qa BA-0301 ---
+seq=3
+writer=writer_C
+ids=BA-0303,BA-0304
+staged=data/blog/articles/xe-dien-cho-thanh-pho-nho.body.html,data/blog/articles/danh-gia-cua-hang-sau-khi-thue.body.html,data/blog/published.json
+--- article-qa BA-0303 ---
 PASS  matrix-row
 PASS  unique-article-id
 PASS  unique-slug
@@ -389,7 +386,7 @@ PASS  html-render-safe
 PASS  verified-phones-only
 PASS  verified-deposits-only
 PASS  internal-links-resolve
-WARN  body-words — 1278 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
+WARN  body-words — 1141 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
 PASS  body-structure
 PASS  no-filler
 PASS  no-duplicate-paragraphs
@@ -400,8 +397,8 @@ PASS  title-meta-valid
 PASS  seo-ownership
 PASS  no-external-links
 PASS  retrieval-consistency
-QA PASS BA-0301 score=95 warnings=1
---- article-qa BA-0302 ---
+QA PASS BA-0303 score=95 warnings=1
+--- article-qa BA-0304 ---
 PASS  matrix-row
 PASS  unique-article-id
 PASS  unique-slug
@@ -414,7 +411,7 @@ PASS  html-render-safe
 PASS  verified-phones-only
 PASS  verified-deposits-only
 PASS  internal-links-resolve
-WARN  body-words — 1214 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
+WARN  body-words — 1052 words (guideline: 1500–4000, < 300 is critical — no padding, no truncation)
 PASS  body-structure
 PASS  no-filler
 PASS  no-duplicate-paragraphs
@@ -425,12 +422,12 @@ PASS  title-meta-valid
 PASS  seo-ownership
 PASS  no-external-links
 PASS  retrieval-consistency
-QA PASS BA-0302 score=95 warnings=1
+QA PASS BA-0304 score=95 warnings=1
 --- verify-push ---
 proceed=true
 batch_id=WRITER-BATCH-0013
-seq=2
-writer=writer_B
-ids=BA-0301,BA-0302
+seq=3
+writer=writer_C
+ids=BA-0303,BA-0304
 note=fresh-main verified: ACTIVE batch, READY_TO_PUSH chunk, both ids still PLANNED with exactly one draft each
 === END ===
