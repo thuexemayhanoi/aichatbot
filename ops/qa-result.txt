@@ -1,8 +1,7 @@
 === request ===
-verify-infra
-retry: 1
+reconcile
 === mode ===
-verify-infra
+reconcile
 === matrix rows ===
 (no matrix rows)
 === hub app ===
@@ -39,6 +38,7 @@ ket-noi-zalo-voi-ung-dung-thue-xe
 kich-ban-dung-app-thue-xe-cho-nguoi-moi
 kinh-nghiem-dung-tro-ly-thue-xe-lan-dau
 lo-trinh-tinh-nang-cua-ung-dung-thue-xe-may
+module-goi-y-xe-trong-ung-dung-thue-xe
 nhan-xe-khi-dat-qua-ung-dung
 page
 privacy-va-xu-ly-cuc-bo-trong-app-thue-xe
@@ -125,6 +125,7 @@ tra-xe
 tra-xe-thue-dung-gio
 uu-dai-thue-xe-dai-han
 xac-nhan-gia-truoc-khi-dat
+xe-nao-de-dieu-khien
 xe-nao-tiet-kiem-xang-khi-thue
 xe-thue-co-bao-hiem-khong
 === hub xe-dien ===
@@ -359,93 +360,14 @@ ung-dung-ban-do-cho-nguoi-thue-xe
 302
 === active batch ===
 WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:FACTORY_FAILED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
-=== VERIFY-INFRA MODE ===
---- writer-queue usage (bare invocation) ---
-usage: writer-queue.mjs <command> [args]
-  plan [--limit N] [--dry-run] [--base-sha X]   coordinator: reserve one batch (max 18)
-  status | validate                              manifest inspection (duplicate -> fail closed)
-  next <writer_A|writer_B|writer_C>               next RESERVED chunk of THIS writer only
-  begin <writer> <batch> <seq>                    RESERVED -> WRITING (resume-safe)
-  ready <writer> <batch> <seq> --drafts F.json    WRITING -> LOCAL_QA_PASS -> READY_TO_PUSH
-  abort <writer> <batch> <seq> [--reason X]       writer gives the chunk back (stays reserved)
-  select-publish [--work <dir>]                   serialized publisher: next READY_TO_PUSH chunk (FIFO)
-  stage <batch> <seq> --work <dir>                copy the 2 bodies + merge drafts into published.json
-  verify-push <batch> <seq> --work <dir>          fresh-main verification before the push
-  complete <batch> <seq>                          factory finished: mark the chunk PUBLISHED (idempotent)
-  fail <batch> <seq> --state failed|factory-failed|push-failed
-  requeue <batch> <seq> --work <dir>              §6G crash-window recovery (classify + restore, fail closed)
---- writer-queue validate ---
-valid=true
+=== RECONCILE MODE ===
+action=reconcile
 batch_id=WRITER-BATCH-0013
-unique_ids=18
+reconciled=2
+already_published=none
+inconsistent=none
+batch_status=ACTIVE
 EXIT=0
---- blog-factory validate ---
-matrix OK: 2000 rows (>= 2000), distribution at or above floor, unique ids/slugs/paths
-EXIT=0
---- markers ---
-no transaction marker
-no retired lockfile
---- maintenance lock refs ---
-9c8816644a2aa058b583712b19f53a70cb895f82	refs/ops/maintenance-lock/INC-20261007073825-snqi
---- state JSON parse ---
-OK docs/state/writer-assignments.json
-OK docs/state/active-work.json
-OK docs/state/blog-factory.checkpoint.json
---- targeted tests (summary + failures only) ---
-TESTS_EXIT=1
-# tests 137
-# suites 0
-# pass 136
-# fail 1
-# cancelled 0
-# skipped 0
---- failing tests (if any, with detail) ---
-not ok 135 - dry-run against the REAL repo: nothing written, production inventory unchanged
-  ---
-  duration_ms: 53.663251
-  type: 'test'
-  location: '/home/runner/work/aichatbot/aichatbot/tests/unit/writer-queue.test.js:689:1'
-  failureType: 'testCodeFailure'
-  error: 'dry-run must not create writer-work'
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: true
-  actual: false
-  operator: '=='
-  stack: |-
-    TestContext.<anonymous> (file:///home/runner/work/aichatbot/aichatbot/tests/unit/writer-queue.test.js:702:10)
-    Test.runInAsyncScope (node:async_hooks:214:14)
-    Test.run (node:internal/test_runner/test:1047:25)
-    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
-    Test.postRun (node:internal/test_runner/test:1173:19)
-    Test.run (node:internal/test_runner/test:1101:12)
-    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
-  ...
-# Subtest: nextBatchId is monotonic across active + history batches
-ok 136 - nextBatchId is monotonic across active + history batches
-  ---
-  duration_ms: 0.233332
-  type: 'test'
-  ...
-# Subtest: applyChunkTransition only allows legal state machine moves
-ok 137 - applyChunkTransition only allows legal state machine moves
-  ---
-  duration_ms: 0.482371
-  type: 'test'
-  ...
-1..137
-# tests 137
-# suites 0
-# pass 136
-# fail 1
-# cancelled 0
-# skipped 0
---- writer-queue plan --dry-run output (test 135 subject) ---
-created=false
-dry_run=true
-reason=active batch WRITER-BATCH-0013 still has unfinished chunks — resume it, never re-reserve
-batch_id=WRITER-BATCH-0013
-total=18
-chunks=9
+--- assignments after reconcile ---
+WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:PUBLISHED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
 === END ===

@@ -38,12 +38,17 @@
           "BA-0301",
           "BA-0302"
         ],
-        "status": "FACTORY_FAILED",
+        "status": "PUBLISHED",
         "events": [
           {
             "state": "FACTORY_FAILED",
             "at": "2026-10-07T07:38:08.863Z",
             "reason": "factory run 37588486057 failed"
+          },
+          {
+            "state": "RECONCILED_PUBLISHED",
+            "at": "2026-10-07T08:29:49.966Z",
+            "reason": "ids published outside the original factory run (repair pipeline); evidence verified: matrix PUBLISHED + single manifest entry + body on disk"
           }
         ]
       },
