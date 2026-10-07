@@ -1,4 +1,4 @@
-=== owner-review shim 2026-10-07T08:12:51Z run 37592263501 ===
+=== owner-review shim 2026-10-07T08:14:10Z run 37592402182 ===
 --- gh version ---
 gh version 2.101.0 (2026-09-15)
 https://github.com/cli/cli/releases/tag/v2.101.0
@@ -16,40 +16,12 @@ Writer Publisher (serialized)	active	373287672
 pages-build-deployment	active	359968564
 --- request.json ---
 {
-  "action": "resolve-incident",
-  "incident_id": "INC-20261007073825-snqi",
-  "fix": "remove-stale-writer-work",
-  "note": "Owner manual resolution per the FAILED_MANUAL checklist: root cause is the stale writer-work/ directory left on main by the pre-v70 manual flow (2026-10-05, WRITER-BATCH-0002 era). It makes the writer-queue dry-run unit test fail (dry-run must not create writer-work), which made Agent #5 independent verification fail. Fix: remove the stale directory, prove validators + targeted tests green, then release the maintenance lock ref."
+  "action": "factory-requeue",
+  "article_ids": "BA-0301,BA-0302",
+  "note": "Owner production resume step 1 after resolving INC-20261007073825-snqi: re-publish the factory-failed chunk WRITER-BATCH-0013#2. Rows are still PLANNED with drafts and bodies already on main, so the factory runs its normal new-chunk path."
 }
 --- dispatch ---
-action: resolve-incident
-owner manual resolution of INC-20261007073825-snqi
---- fix: remove-stale-writer-work ---
-[main c5c0f0f] ops: remove stale writer-work left on main by the pre-v70 manual flow (owner fix for INC-20261007073825-snqi) [skip ci]
- 2 files changed, 34 deletions(-)
- delete mode 100644 writer-work/WRITER-BATCH-0002/A/chunk-01.json
- delete mode 100644 writer-work/WRITER-BATCH-0002/B/chunk-02.json
-error: cannot pull with rebase: You have unstaged changes.
-error: Please commit or stash them.
-error: cannot pull with rebase: You have unstaged changes.
-error: Please commit or stash them.
-error: cannot pull with rebase: You have unstaged changes.
-error: Please commit or stash them.
---- writer-queue validate ---
-valid=true
-batch_id=WRITER-BATCH-0013
-unique_ids=18
---- blog-factory validate ---
-matrix OK: 2000 rows (>= 2000), distribution at or above floor, unique ids/slugs/paths
---- targeted tests ---
-# tests 137
-# pass 137
-# fail 0
-(no failing tests)
-validators + targeted tests green — releasing the maintenance lock
-To https://github.com/thuexemayhanoi/aichatbot
- - [deleted]         refs/ops/maintenance-lock/INC-20261007073825-snqi
-LOCK_RELEASED
---- remaining lock refs ---
-RESOLVE_EXIT=0
+action: factory-requeue
+https://github.com/thuexemayhanoi/aichatbot/actions/runs/37592418723
+DISPATCH_EXIT=0
 === end ===
