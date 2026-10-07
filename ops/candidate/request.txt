@@ -1,2 +1,3 @@
-verify-infra
-retry: 1
+grep
+tests/unit/ops-agents.test.js|tests/unit/writer-queue-requeue.test.js
+REAL repo

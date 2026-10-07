@@ -38,6 +38,7 @@ jobs:
               plan*) MODE=plan ;;
               verify-infra*) MODE=verify-infra ;;
               reconcile*) MODE=reconcile ;;
+              grep*) MODE=grep ;;
             esac
           fi
           {
@@ -51,7 +52,8 @@ jobs:
             echo "=== hub thue-xe ==="; ls blog/thue-xe 2>/dev/null
             echo "=== hub xe-dien ==="; ls blog/xe-dien 2>/dev/null
             echo "=== hub an-toan ==="; ls blog/an-toan 2>/dev/null
-            echo "=== hub dia-phuong ==="; ls blog/dia-phuong 2>/dev/null
+            echo "=== hub dia-phuong ==="; ls blog/dia-phuong
+ 2>/dev/null
             echo "=== hub huong-dan ==="; ls blog/huong-dan 2>/dev/null
             echo "=== published count ==="
             node -e "const p=require('./data/blog/published.json');console.log(p.articles.length)"
@@ -79,7 +81,8 @@ jobs:
               echo "blog-factory-validate-exit=$BF" >> ops/out/verify-verdict.txt
               echo "--- markers ---"
               if [ -f docs/state/blog-factory.transaction.json ]; then echo "TRANSACTION_MARKER_PRESENT"; echo "transaction-marker=yes" >> ops/out/verify-verdict.txt; else echo "no transaction marker"; echo "transaction-marker=no" >> ops/out/verify-verdict.txt; fi
-              if [ -f docs/state/blog-factory.lock ]; then echo "RETIRED_LOCKFILE_PRESENT"; echo "retired-lockfile=yes" >> ops/out/verify-verdict.txt; else echo "no retired lockfile"; echo "retired-lockfile=no" >> ops/out/verify-verdict.txt; fi
+              if [ -f docs/state/blog-factory.lock ]; then echo "RETIRED_LOCKFILE_PRESENT"; echo "retired-lockfile=
+yes" >> ops/out/verify-verdict.txt; else echo "no retired lockfile"; echo "retired-lockfile=no" >> ops/out/verify-verdict.txt; fi
               echo "--- maintenance lock refs ---"
               git ls-remote --refs origin "refs/ops/maintenance-lock/*" || echo "(ls-remote failed)"
               echo "--- state JSON parse ---"
@@ -101,13 +104,23 @@ jobs:
               grep -E '^# (tests|pass|fail) ' /tmp/tests.tap >> ops/out/verify-verdict.txt || true
               grep -E '^not ok' /tmp/tests.tap >> ops/out/verify-verdict.txt || true
             fi
+            if [ "$MODE" = "grep" ]; then
+              echo "=== GREP MODE ==="
+              GF=$(sed -n '2p' ops/candidate/request.txt)
+              GP=$(sed -n '3p' ops/candidate/request.txt)
+              for F in $(echo "$GF" | tr '|' ' '); do
+                echo "--- $F ---"
+                grep -n -E -B3 -A70 "$GP" "$F" 2>&1 || echo "(no match)"
+              done
+            fi
             if [ "$MODE" = "reconcile" ]; then
               echo "=== RECONCILE MODE ==="
               node tools/writer-queue.mjs reconcile 2>&1; echo "EXIT=$?"
               echo "--- assignments after reconcile ---"
               node -e "const a=require('./docs/state/writer-assignments.json');console.log(a.active.batch_id, a.active.status, a.active.chunks.map(c=>c.seq+':'+c.status).join(' '))"
             fi
-            if [ "$MODE" = "qa" ] && ls ops/candidate/bodies/*.body.html >/dev/null 2>&1; then
+            if [ "$MODE" = "
+qa" ] && ls ops/candidate/bodies/*.body.html >/dev/null 2>&1; then
               echo "=== QA PIPELINE ==="
               mkdir -p ops/work/writers/writer-work ops/work/writers/data/blog/articles
               cp ops/candidate/bodies/*.body.html ops/work/writers/data/blog/articles/
@@ -137,7 +150,8 @@ jobs:
             echo "=== END ==="
           } > ops/qa-result.txt 2>&1 || true
       - name: commit result
-        if: always()
+    
+    if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
