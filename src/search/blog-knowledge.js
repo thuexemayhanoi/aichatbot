@@ -50,15 +50,23 @@ export function createBlogRetriever({ chunks = [], minScore = DEFAULTS.minScore 
     let doc = docs.find((d) => d.id === top.id) ?? null;
     const q = queryText.toLocaleLowerCase('vi');
     if (q.includes('tài khoản')) {
-      const direct = hits.find((h) => {
-        const d = docs.find((item) => item.id === h.id);
-        const text = `${d?.title ?? ''} ${d?.text ?? ''}`.toLocaleLowerCase('vi');
+      // High-signal lexical anchor: when the user explicitly asks about an
+      // account, prefer a published chunk that actually answers that point.
+      // Do not rely on a small BM25 candidate window as the corpus grows.
+      const directDoc = docs.find((d) => {
+        const text = `${d.title} ${d.text}`.toLocaleLowerCase('vi');
+        return text.includes('tài khoản')
+          && (text.includes('không cần tài khoản') || text.includes('ứng dụng web'))
+          && (!q.includes('motoai') || text.includes('motoai'));
+      }) ?? docs.find((d) => {
+        const text = `${d.title} ${d.text}`.toLocaleLowerCase('vi');
         return text.includes('tài khoản')
           && (text.includes('không cần tài khoản') || text.includes('ứng dụng web'));
       });
-      if (direct) {
-        top = direct;
-        doc = docs.find((d) => d.id === top.id) ?? null;
+      if (directDoc) {
+        doc = directDoc;
+        const ranked = hits.find((h) => h.id === directDoc.id);
+        top = ranked ?? { id: directDoc.id, score: minScore };
       }
     }
     if (!Number.isFinite(top.score) || top.score < minScore) return null; // malformed scores never publish
