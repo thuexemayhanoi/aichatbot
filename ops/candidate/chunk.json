@@ -1,49 +1,53 @@
 {
   "$schema": "motoai/writer-chunk@1",
   "batch_id": "WRITER-BATCH-0013",
-  "writer": "writer_A",
-  "seq": 1,
+  "writer": "writer_B",
+  "seq": 2,
   "ids": [
-    "BA-0299",
-    "BA-0300"
+    "BA-0301",
+    "BA-0302"
   ],
   "body_paths": [
-    "data/blog/articles/mu-bao-hiem-chuan-cho-du-khach.body.html",
-    "data/blog/articles/cuc-phuong-weekend.body.html"
+    "data/blog/articles/module-goi-y-xe-trong-ung-dung-thue-xe.body.html",
+    "data/blog/articles/xe-nao-de-dieu-khien.body.html"
   ],
   "status": "READY_TO_PUSH",
   "drafts": [
     {
-      "article_id": "BA-0299",
-      "category": "SAFE",
-      "slug": "mu-bao-hiem-chuan-cho-du-khach",
-      "title": "mũ Bảo Hiểm Chuẩn Cho du Khách",
-      "description": "Mũ bảo hiểm chuẩn cho du khách thuê xe máy ở Việt Nam: quy định QCVN 2:2021/BKHCN, tem CR, mức phạt theo Nghị định 168/2024 và cách kiểm tra mũ khi nhận xe thuê.",
+      "article_id": "BA-0301",
+      "category": "APP",
+      "slug": "module-goi-y-xe-trong-ung-dung-thue-xe",
+      "title": "Module Gợi ý xe Trong Ứng Dụng Thuê xe",
+      "description": "Module gợi ý xe trong ứng dụng thuê xe máy hoạt động thế nào, bạn nên nhập những thông tin nào để gợi ý trúng và khi nào nên tin gợi ý thay vì tự chọn xe.",
       "published_date": "2026-10-06",
       "author": "MotoAI Editorial",
-      "body": "data/blog/articles/mu-bao-hiem-chuan-cho-du-khach.body.html",
-      "knowledge_chunks": []
+      "body": "data/blog/articles/module-goi-y-xe-trong-ung-dung-thue-xe.body.html",
+      "knowledge_chunks": [
+        "Module gợi ý xe trong ứng dụng thuê xe thu hẹp danh sách xe dựa trên bốn nhóm tín hiệu: mục đích chuyến đi, số người đi cùng, kinh nghiệm và vóc dáng người lái, ngân sách dự kiến.",
+        "Để gợi ý trúng, người thuê nên mô tả rõ hành trình, số người, kinh nghiệm lái và ngân sách thay vì chỉ nói cần thuê một chiếc xe.",
+        "Gợi ý chỉ là bước chọn mẫu xe; khi nhận xe vẫn cần kiểm tra tình trạng thực tế từng chiếc như lốp, thắng và tiếng máy."
+      ]
     },
     {
-      "article_id": "BA-0300",
-      "category": "LOCAL",
-      "slug": "cuc-phuong-weekend",
-      "title": "Cúc Phương Weekend",
-      "description": "Cúc Phương cuối tuần bằng xe máy: quãng đường khoảng 120 km từ Hà Nội qua Nho Quan, lịch trình một ngày rưỡi, điểm thăm trong vườn và lưu ý khi thuê xe đi đường dài.",
+      "article_id": "BA-0302",
+      "category": "RENT",
+      "slug": "xe-nao-de-dieu-khien",
+      "title": "xe Nào dễ Điều Khiển",
+      "description": "Tiêu chí chọn xe máy dễ điều khiển khi thuê: trọng lượng nhẹ, yên thấp, ga và thắng nhạy, so sánh xe số với xe ga và cách làm quen xe lạ trong mười phút đầu.",
       "published_date": "2026-10-06",
       "author": "MotoAI Editorial",
-      "body": "data/blog/articles/cuc-phuong-weekend.body.html",
+      "body": "data/blog/articles/xe-nao-de-dieu-khien.body.html",
       "knowledge_chunks": [
-        "Vườn quốc gia Cúc Phương thuộc huyện Nho Quan, tỉnh Ninh Bình, cách trung tâm Hà Nội khoảng 120 km, đi xe máy mất khoảng 2,5 đến 3 tiếng.",
-        "Cúc Phương là vườn quốc gia đầu tiên của Việt Nam, thành lập năm 1962, nổi tiếng với Hang Người Xưa, khu cứu hộ linh trưởng và cây chò chỉ nghìn năm tuổi.",
-        "Lộ trình cuối tuần đi xe máy từ Hà Nội: theo quốc lộ 1A hướng Nam, rẽ tại ngã ba Gián Khẩu gần thành phố Ninh Bình, qua thị trấn Nho Quan rồi rẽ vào đường lên vườn."
+        "Xe máy dễ điều khiển thường có trọng lượng nhẹ, yên thấp vừa vóc dáng để chân chạm đất khi dừng, cùng tay ga và tay thắng nhẹ.",
+        "Xe ga dễ làm quen vì không côn và không về số, còn xe số nhẹ và ổn định hơn khi vào cua nhưng đòi quen thao tác.",
+        "Khi nhận xe lạ, nên ngồi thử chỉnh gương, thử tay ga và thắng tại chỗ, rồi chạy một vòng ngắn quanh khu vực cửa hàng trước khi ra đường."
       ]
     }
   ],
   "history": [
     {
-      "at": "2026-10-07T05:40:50.655Z",
-      "event": "writer_A drafted chunk 1 (BA-0299, BA-0300)"
+      "at": "2026-10-07T07:35:15.473Z",
+      "event": "writer_B drafted chunk 2 (BA-0301, BA-0302)"
     }
   ]
 }
