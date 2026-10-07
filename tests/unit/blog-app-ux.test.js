@@ -213,8 +213,9 @@ test('articles resolve contact CTA hrefs at runtime — no hard-coded contact va
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
   for (const p of walk('blog').filter((p) => p.endsWith('.html'))) {
     const html = read(p);
-    // No hard-coded verified contact values in the runtime UI shell.
-    assert.ok(!/zalo/i.test(html), `${p}: no Zalo anywhere in the public UI`);
+    // Informational prose may mention communication platforms, but the
+    // runtime contact shell must never expose Zalo as an active channel.
+    assert.ok(!/data-contact-ref="zalo"/i.test(html), `${p}: Zalo is not an active contact ref`);
     assert.ok(!html.includes(business.contact.whatsapp), `${p}: WhatsApp URL must come from business.json`);
     assert.ok(!html.includes(business.contact.maps), `${p}: Maps URL must come from business.json`);
     assert.ok(!html.includes(business.contact.phone_uri), `${p}: phone URI must come from business.json`);

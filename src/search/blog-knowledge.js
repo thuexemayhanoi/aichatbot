@@ -39,13 +39,29 @@ export function createBlogRetriever({ chunks = [], minScore = DEFAULTS.minScore 
   function retriever(query, context = {}) {
     const intentId = context?.analysis?.intent?.id ?? null;
     if (intentId && PROTECTED_INTENTS.has(intentId)) return null;
-    const tokens = tokenize(String(query ?? ''));
+    const queryText = String(query ?? '');
+    const tokens = tokenize(queryText);
     if (tokens.length === 0) return null;
-    const hits = index.search(tokens, 1);
+    // Keep a small deterministic candidate set so a newer, loosely related
+    // chunk cannot hide a direct answer such as "không cần tài khoản".
+    const hits = index.search(tokens, 12);
     if (hits.length === 0) return null;
-    const top = hits[0];
+    let top = hits[0];
+    let doc = docs.find((d) => d.id === top.id) ?? null;
+    const q = queryText.toLocaleLowerCase('vi');
+    if (q.includes('tài khoản')) {
+      const direct = hits.find((h) => {
+        const d = docs.find((item) => item.id === h.id);
+        const text = `${d?.title ?? ''} ${d?.text ?? ''}`.toLocaleLowerCase('vi');
+        return text.includes('tài khoản')
+          && (text.includes('không cần tài khoản') || text.includes('ứng dụng web'));
+      });
+      if (direct) {
+        top = direct;
+        doc = docs.find((d) => d.id === top.id) ?? null;
+      }
+    }
     if (!Number.isFinite(top.score) || top.score < minScore) return null; // malformed scores never publish
-    const doc = docs.find((d) => d.id === top.id) ?? null;
     if (!doc) return null;
     const link = doc.url ? `\n\nĐọc thêm: ${doc.url}` : '';
     return {

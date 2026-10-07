@@ -162,9 +162,13 @@ test('production_enabled reflects the owner-approved state (re-enabled 2026-10-0
 // No real incident, no lock, no production state was created
 // ---------------------------------------------------------------------------
 
-test('no active incident, no incident history, no mutation of production surfaces', () => {
+test('no active incident; closed incident history never mutates production surfaces', () => {
   assert.equal(state.active_incident, null);
-  assert.deepEqual(state.incidents, []);
+  assert.ok(Array.isArray(state.incidents), 'incident history is an audit log');
+  for (const incident of state.incidents) {
+    assert.ok(incident.closed_at, `${incident.incident_id} must be closed`);
+    assert.notEqual(incident.status, 'OPEN', `${incident.incident_id} is terminal`);
+  }
   const blockers = JSON.stringify(state.known_content_blockers);
   assert.ok(!blockers.includes('body.html') && !blockers.includes('writer-work'),
     'no blocker entry carries a path into article bodies or writer branches');

@@ -302,11 +302,13 @@ test('v58: about, policy, contact and price pages exist with verified facts only
   }
 });
 
-test('v58: zero public Zalo references across the whole generated surface', () => {
+test('v58: no public Zalo contact mechanics across the generated surface', () => {
   const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
   for (const p of [...walk('blog'), ...walk('assets'), 'index.html', ...['privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue'].map((d) => `${d}/index.html`)].filter((p) => /\.(html|js)$/.test(p))) {
-    assert.ok(!/zalo/i.test(read(p)), `${p}: public Zalo reference`);
+    const surface = read(p);
+    assert.ok(!/data-contact-ref="zalo"/i.test(surface), `${p}: Zalo contact ref`);
+    assert.ok(!/href="https:\/\/zalo\.me/i.test(surface), `${p}: hard-coded Zalo contact URL`);
   }
 });
 

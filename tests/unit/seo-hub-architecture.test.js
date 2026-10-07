@@ -310,7 +310,12 @@ test('audit: full hybrid chain Super Hub → Parent Hub → Silo → Subtopic �
       const subPage = read(`blog/${cat.dir}/${sub.slug}/index.html`);
       assert.ok(subPage.includes(`href="/aichatbot/blog/${cat.dir}/${a.slug}/"`), `subtopic ${sub.slug} → article ${a.slug}`);
     } else {
-      assert.ok(siloPage.includes(`href="/aichatbot/blog/${cat.dir}/${a.slug}/"`), `silo ${cat.dir} → article ${a.slug}`);
+      const siloPages = blogPages().filter((p) =>
+        p === `blog/${cat.dir}/index.html` || p.startsWith(`blog/${cat.dir}/page/`));
+      assert.ok(
+        siloPages.some((p) => read(p).includes(`href="/aichatbot/blog/${cat.dir}/${a.slug}/"`)),
+        `silo ${cat.dir} pagination → article ${a.slug}`
+      );
     }
   }
 });
