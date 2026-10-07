@@ -1,6 +1,6 @@
 === request ===
 grep
-tests/unit/ops-agents.test.js|tests/unit/writer-queue-requeue.test.js
+tests/unit/writer-queue.test.js|tests/unit/blog-factory.test.js
 REAL repo
 === mode ===
 grep
@@ -361,8 +361,50 @@ ung-dung-ban-do-cho-nguoi-thue-xe
 === active batch ===
 WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:FACTORY_FAILED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
 === GREP MODE ===
---- tests/unit/ops-agents.test.js ---
-(no match)
---- tests/unit/writer-queue-requeue.test.js ---
+--- tests/unit/writer-queue.test.js ---
+686-// §12/§17 dry-run never touches production
+687-// ---------------------------------------------------------------------------
+688-
+689:test('dry-run against the REAL repo: nothing written, production inventory unchanged', () => {
+690-  const hash = (p) => existsSync(p) ? createHash('sha256').update(readFileSync(p)).digest('hex') : null;
+691-  const before = {
+692-    matrix: hash(join(REPO, 'data/blog/content-matrix.csv')),
+693-    manifest: hash(join(REPO, 'data/blog/published.json')),
+694-    assignments: hash(join(REPO, 'docs/state/writer-assignments.json')),
+695-  };
+696-  const out = parseOut(runCli(REPO, ['plan', '--dry-run', '--limit', '50']));
+697-  assert.equal(out.created, 'false');
+698-  assert.equal(out.dry_run, 'true');
+699-  assert.equal(hash(join(REPO, 'data/blog/content-matrix.csv')), before.matrix);
+700-  assert.equal(hash(join(REPO, 'data/blog/published.json')), before.manifest);
+701-  assert.equal(hash(join(REPO, 'docs/state/writer-assignments.json')), before.assignments);
+702-  assert.ok(!existsSync(join(REPO, 'writer-work')), 'dry-run must not create writer-work');
+703-  // the dry-run still plans a real batch shape: unique ids, micro chunk 2.
+704-  // (No <= MAX_BATCH assert: the live ACTIVE batch predates v69 and holds 50
+705-  // reserved ids, so its reported total legitimately exceeds the new 18 cap.)
+706-  assert.ok(Number(out.total) > 0);
+707-  assert.ok(out.batch_id.startsWith('WRITER-BATCH-'));
+708-});
+709-
+710-// ---------------------------------------------------------------------------
+711-// pure helpers: batch id sequence, guarded transitions
+712-// ---------------------------------------------------------------------------
+713-
+714-test('nextBatchId is monotonic across active + history batches', () => {
+715-  assert.equal(nextBatchId({ active: null, history: [] }), 'WRITER-BATCH-0001');
+716-  assert.equal(nextBatchId({ active: { batch_id: 'WRITER-BATCH-0003' }, history: [{ batch_id: 'WRITER-BATCH-0002' }] }), 'WRITER-BATCH-0004');
+717-  assert.equal(nextBatchId({ active: null, history: [{ batch_id: 'WRITER-BATCH-0007' }] }), 'WRITER-BATCH-0008');
+718-});
+719-
+720-test('applyChunkTransition only allows legal state machine moves', () => {
+721-  const rec = { status: 'WRITING', history: [] };
+722-  assert.equal(applyChunkTransition(rec, ['WRITING'], 'LOCAL_QA_PASS').ok, true);
+723-  assert.equal(applyChunkTransition(rec, ['RESERVED'], 'LOCAL_QA_PASS').ok, false); // illegal
+724-  const stepped = applyChunkTransition(rec, ['WRITING'], 'LOCAL_QA_PASS').next;
+725-  assert.equal(applyChunkTransition(stepped, ['LOCAL_QA_PASS'], 'READY_TO_PUSH').ok, true);
+726-  assert.equal(applyChunkTransition(stepped, ['WRITING'], 'READY_TO_PUSH').ok, false);
+727-  assert.equal(rec.status, 'WRITING', 'pure transition must not mutate the input');
+728-});
+--- tests/unit/blog-factory.test.js ---
 (no match)
 === END ===
