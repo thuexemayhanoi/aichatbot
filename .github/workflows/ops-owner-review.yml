@@ -3,7 +3,9 @@ name: ops-owner-review
 # One-shot owner shim (precedent: ops-owner-lock-release.yml).
 # Agent #4 dispatched ops-supervisor with actions:read only, so the Agent #5
 # run never started (0 runs). The owner pushes a request file; this shim
-# dispatches the designed second-line review with proper permissions.
+# dispatches the designed second-line review with proper permissions and
+# commits a diagnostic log to ops/out/shim-log.txt so the owner can read
+# exactly what happened.
 # Actions:
 #   supervisor       -> gh workflow run ops-supervisor.yml (same incident_id)
 #   factory-requeue  -> gh workflow run blog-factory-publish.yml with article_ids
@@ -16,7 +18,7 @@ on:
       - '.github/workflows/ops-owner-review.yml'
 
 permissions:
-  contents: read
+  contents: write
   actions: write
 
 jobs:
@@ -29,25 +31,56 @@ jobs:
       - uses: actions/checkout@v4
       - name: 'Read the owner request and dispatch'
         run: |
-          set -e
-          ACTION=$(node -e "console.log(require('./ops/owner-review/request.json').action || 'supervisor')")
-          echo "owner review action: $ACTION"
-          case "$ACTION" in
-            supervisor)
-              ID=$(node -e "console.log(require('./ops/owner-review/request.json').incident_id)")
-              BASE=$(node -e "console.log(require('./ops/owner-review/request.json').base_sha || ''")
-              ARGS=(-f incident_id="$ID")
-              if [ -n "$BASE" ]; then ARGS+=(-f base_sha="$BASE"); fi
-              gh workflow run ops-supervisor.yml --ref main "${ARGS[@]}"
-              echo "Agent #5 dispatched for $ID"
-              ;;
-            factory-requeue)
-              IDS=$(node -e "console.log(require('./ops/owner-review/request.json').article_ids")
-              gh workflow run blog-factory-publish.yml --ref main -f article_ids="$IDS"
-              echo "factory re-queued for $IDS"
-              ;;
-            *)
-              echo "::error::unknown owner review action: $ACTION"
-              exit 1
-              ;;
-          esac
+          set -uo pipefail
+          mkdir -p ops/out
+          LOG=ops/out/shim-log.txt
+          {
+            echo "=== owner-review shim $(date -u +%FT%TZ) run ${GITHUB_RUN_ID:-local} ==="
+            echo "--- gh version ---"
+            gh --version
+            echo "--- workflow list --all ---"
+            gh workflow list --all
+            echo "--- request.json ---"
+            cat ops/owner-review/request.json 2>&1
+            echo "--- dispatch ---"
+            ACTION=$(node -e "console.log(require('./ops/owner-review/request.json').action || 'supervisor')")
+            echo "action: $ACTION"
+            case "$ACTION" in
+              supervisor)
+                ID=$(node -e "console.log(require('./ops/owner-review/request.json').incident_id)")
+                BASE=$(node -e "console.log(require('./ops/owner-review/request.json').base_sha || '')")
+                ARGS=(-f incident_id="$ID")
+                if [ -n "$BASE" ]; then ARGS+=(-f base_sha="$BASE"); fi
+                gh workflow run ops-supervisor.yml --ref main "${ARGS[@]}"
+                echo "DISPATCH_EXIT=$?"
+                ;;
+              factory-requeue)
+                IDS=$(node -e "console.log(require('./ops/owner-review/request.json').article_ids)")
+                gh workflow run blog-factory-publish.yml --ref main -f article_ids="$IDS"
+                echo "DISPATCH_EXIT=$?"
+                ;;
+              *)
+                echo "UNKNOWN ACTION: $ACTION"
+                echo "DISPATCH_EXIT=2"
+                ;;
+            esac
+            echo "--- post-dispatch run list ---"
+            sleep 10
+            if [ "$ACTION" = "supervisor" ]; then
+              gh run list --workflow=ops-supervisor.yml -L 3
+            else
+              gh run list --workflow=blog-factory-publish.yml -L 3
+            fi
+            echo "=== end ==="
+          } 2>&1 | tee "$LOG"
+      - name: 'Commit the diagnostic log'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ops/out/shim-log.txt
+          git commit -m "ops: owner-review shim diagnostic log [skip ci]" || { echo "log unchanged"; exit 0; }
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then exit 0; fi
+            sleep 5
+          done
+          echo "::warning::could not push shim log after retries"
