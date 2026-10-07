@@ -1,0 +1,6 @@
+{
+  "action": "supervisor",
+  "incident_id": "INC-20261007073825-snqi",
+  "base_sha": "9c8816644a2aa058b583712b19f53a70cb895f82",
+  "note": "owner-initiated second-line review: Agent #4 dispatch of Agent #5 did not start (ops-repair-agent has actions:read only; ops-supervisor has 0 runs). Root cause of the factory failure: derived-state commit push race with concurrent ops/qa-runner commits on main while the factory run 37588486057 was in progress."
+}

@@ -1,0 +1,53 @@
+name: ops-owner-review
+
+# One-shot owner shim (precedent: ops-owner-lock-release.yml).
+# Agent #4 dispatched ops-supervisor with actions:read only, so the Agent #5
+# run never started (0 runs). The owner pushes a request file; this shim
+# dispatches the designed second-line review with proper permissions.
+# Actions:
+#   supervisor       -> gh workflow run ops-supervisor.yml (same incident_id)
+#   factory-requeue  -> gh workflow run blog-factory-publish.yml with article_ids
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/owner-review/**'
+      - '.github/workflows/ops-owner-review.yml'
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: 'Read the owner request and dispatch'
+        run: |
+          set -e
+          ACTION=$(node -e "console.log(require('./ops/owner-review/request.json').action || 'supervisor')")
+          echo "owner review action: $ACTION"
+          case "$ACTION" in
+            supervisor)
+              ID=$(node -e "console.log(require('./ops/owner-review/request.json').incident_id)")
+              BASE=$(node -e "console.log(require('./ops/owner-review/request.json').base_sha || ''")
+              ARGS=(-f incident_id="$ID")
+              if [ -n "$BASE" ]; then ARGS+=(-f base_sha="$BASE"); fi
+              gh workflow run ops-supervisor.yml --ref main "${ARGS[@]}"
+              echo "Agent #5 dispatched for $ID"
+              ;;
+            factory-requeue)
+              IDS=$(node -e "console.log(require('./ops/owner-review/request.json').article_ids")
+              gh workflow run blog-factory-publish.yml --ref main -f article_ids="$IDS"
+              echo "factory re-queued for $IDS"
+              ;;
+            *)
+              echo "::error::unknown owner review action: $ACTION"
+              exit 1
+              ;;
+          esac
