@@ -1,6 +1,6 @@
 {
-  "action": "supervisor",
+  "action": "resolve-incident",
   "incident_id": "INC-20261007073825-snqi",
-  "base_sha": "9c8816644a2aa058b583712b19f53a70cb895f82",
-  "note": "owner-initiated second-line review: Agent #4 dispatch of Agent #5 did not start (ops-repair-agent has actions:read only; ops-supervisor has 0 runs). Root cause of the factory failure: derived-state commit push race with concurrent ops/qa-runner commits on main while the factory run 37588486057 was in progress."
+  "fix": "remove-stale-writer-work",
+  "note": "Owner manual resolution per the FAILED_MANUAL checklist: root cause is the stale writer-work/ directory left on main by the pre-v70 manual flow (2026-10-05, WRITER-BATCH-0002 era). It makes the writer-queue dry-run unit test fail (dry-run must not create writer-work), which made Agent #5 independent verification fail. Fix: remove the stale directory, prove validators + targeted tests green, then release the maintenance lock ref."
 }

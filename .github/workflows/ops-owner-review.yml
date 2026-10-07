@@ -1,14 +1,15 @@
 name: ops-owner-review
 
-# One-shot owner shim (precedent: ops-owner-lock-release.yml).
-# Agent #4 dispatched ops-supervisor with actions:read only, so the Agent #5
-# run never started (0 runs). The owner pushes a request file; this shim
-# dispatches the designed second-line review with proper permissions and
-# commits a diagnostic log to ops/out/shim-log.txt so the owner can read
-# exactly what happened.
+# One-shot owner shim (precedent: ops-owner-lock-release.yml and the
+# owner-initiated second-line review of INC-20261006160640-4vj8).
+# The owner pushes a request file; this shim runs with proper permissions.
 # Actions:
-#   supervisor       -> gh workflow run ops-supervisor.yml (same incident_id)
-#   factory-requeue  -> gh workflow run blog-factory-publish.yml with article_ids
+#   supervisor        -> gh workflow run ops-supervisor.yml (same incident_id)
+#   factory-requeue   -> gh workflow run blog-factory-publish.yml with article_ids
+#   resolve-incident  -> owner manual-resolution checklist for a FAILED_MANUAL
+#                        incident: fix the recorded infra cause, prove the repo
+#                        healthy (validators + targeted tests), then release the
+#                        maintenance lock ref. Never touches article content.
 
 on:
   push:
@@ -29,6 +30,8 @@ jobs:
       GH_REPO: ${{ github.repository }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: 'Read the owner request and dispatch'
         run: |
           set -uo pipefail
@@ -59,26 +62,57 @@ jobs:
                 gh workflow run blog-factory-publish.yml --ref main -f article_ids="$IDS"
                 echo "DISPATCH_EXIT=$?"
                 ;;
+              resolve-incident)
+                ID=$(node -e "console.log(require('./ops/owner-review/request.json').incident_id)")
+                FIX=$(node -e "console.log(require('./ops/owner-review/request.json').fix || 'none')")
+                echo "owner manual resolution of $ID"
+                echo "--- fix: $FIX ---"
+                git config user.name "github-actions[bot]"
+                git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                if [ "$FIX" = "remove-stale-writer-work" ] && [ -d writer-work ]; then
+                  git rm -r -q writer-work
+                  git commit -m "ops: remove stale writer-work left on main by the pre-v70 manual flow (owner fix for $ID) [skip ci]" || echo "nothing to remove"
+                  for i in 1 2 3; do
+                    if git pull --rebase origin main && git push; then break; fi
+                    sleep 5
+                  done
+                else
+                  echo "(no repo fix requested or nothing to remove)"
+                fi
+                echo "--- writer-queue validate ---"
+                node tools/writer-queue.mjs validate; WQ=$?
+                echo "--- blog-factory validate ---"
+                node tools/blog-factory.mjs validate; BF=$?
+                echo "--- targeted tests ---"
+                timeout 300 node --test tests/unit/writer-queue.test.js tests/unit/writer-queue-requeue.test.js tests/unit/blog-factory.test.js tests/unit/article-qa.test.js tests/unit/ops-agents.test.js > /tmp/tests.tap 2>&1
+                TE=$?
+                grep -E '^# (tests|pass|fail) ' /tmp/tests.tap || echo "(no tap summary)"
+                grep -E '^not ok' /tmp/tests.tap || echo "(no failing tests)"
+                if [ "$WQ" -ne 0 ] || [ "$BF" -ne 0 ] || [ "$TE" -ne 0 ]; then
+                  echo "VALIDATION FAILED (wq=$WQ bf=$BF tests=$TE) — REFUSING to release the lock"
+                  echo "RESOLVE_EXIT=1"
+                else
+                  echo "validators + targeted tests green — releasing the maintenance lock"
+                  git push origin --delete "refs/ops/maintenance-lock/$ID" && echo "LOCK_RELEASED" || echo "LOCK_RELEASE_FAILED"
+                  echo "--- remaining lock refs ---"
+                  git ls-remote --refs origin "refs/ops/maintenance-lock/*" || echo "(no lock refs)"
+                  echo "RESOLVE_EXIT=0"
+                fi
+                ;;
               *)
                 echo "UNKNOWN ACTION: $ACTION"
                 echo "DISPATCH_EXIT=2"
                 ;;
             esac
-            echo "--- post-dispatch run list ---"
-            sleep 10
-            if [ "$ACTION" = "supervisor" ]; then
-              gh run list --workflow=ops-supervisor.yml -L 3
-            else
-              gh run list --workflow=blog-factory-publish.yml -L 3
-            fi
             echo "=== end ==="
           } 2>&1 | tee "$LOG"
-      - name: 'Commit the diagnostic log'
+      - name: 'Commit the shim log'
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ops/out/shim-log.txt
-          git commit -m "ops: owner-review shim diagnostic log [skip ci]" || { echo "log unchanged"; exit 0; }
+          git commit -m "ops: owner-review shim log [skip ci]" || { echo "log unchanged"; exit 0; }
           for i in 1 2 3; do
             if git pull --rebase origin main && git push; then exit 0; fi
             sleep 5
