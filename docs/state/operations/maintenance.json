@@ -5,10 +5,10 @@
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
   "active_incident": {
     "incident_id": "INC-20261007073825-snqi",
-    "status": "AGENT4_ESCALATE",
-    "owner": "NONE",
+    "status": "AGENT5_WORKING",
+    "owner": "AGENT_5",
     "started_at": "2026-10-07T07:38:25.558Z",
-    "updated_at": "2026-10-07T07:38:28.747Z",
+    "updated_at": "2026-10-07T07:58:48.228Z",
     "base_sha": "9c8816644a2aa058b583712b19f53a70cb895f82",
     "reason": "factory infrastructure failure while publishing chunk WRITER-BATCH-0013#2",
     "trigger": "workflow_dispatch",
@@ -21,7 +21,7 @@
     "signature": "Blog Factory Publish (2-article micro batch)::Commit derived state (one commit per chunk)",
     "attempts": {
       "agent4": 1,
-      "agent5": 0
+      "agent5": 1
     },
     "production_paused": true,
     "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required"
