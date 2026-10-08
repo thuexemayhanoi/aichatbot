@@ -1,9 +1,7 @@
 {
-  "action": "dry-run",
-  "model": "qwen3:4b-instruct",
-  "max_attempts": "2",
-  "request_id": "recovery-20261008-dryrun-9802077",
-  "verification_sha": "9802077647d7d137193eba754a9ee05e8ffc9902",
-  "smoke_run_id": "37820092737",
-  "note": "CI and Distribution passed. Generate BA-0305 and BA-0306 with real pair QA; preserve production, incident, lock and checkpoint."
+  "action": "smoke-test",
+  "model": "qwen3:1.7b",
+  "request_id": "recovery-20261008-smoke-small-open-model",
+  "verification_sha": "be87b3a5f3ae90bc0463230b14917df9f20aac78",
+  "note": "Qwen3 4B streaming survived 11 minutes but generated 1199/1147 words below QA. Verify Apache-2.0 Qwen3 1.7B local inference before bounded sectioned dry-run; production remains paused."
 }
