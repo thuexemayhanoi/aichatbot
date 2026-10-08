@@ -30,6 +30,21 @@ test('HTTP 200 OK text is an error, never mistaken for an article', async () => 
   assert.match(r.text, /non-JSON/);
 });
 
+test('section schemas are forwarded through the real streaming protocol', async () => {
+  const schema = { type: 'object', properties: { body_html: { type: 'string' } }, required: ['body_html'] };
+  let request;
+  const result = await callModel('local', [], { ...modelConfig({}), responseFormat: schema, numCtx: 4096, numPredict: 1000 },
+    async (_url, options) => {
+      request = JSON.parse(options.body);
+      return Response.json({ done: true, done_reason: 'stop', message: { content: '{"body_html":"<p>Tiếng Việt</p>"}' } });
+    });
+  assert.equal(result.error, undefined);
+  assert.deepEqual(request.format, schema);
+  assert.equal(request.stream, true);
+  assert.equal(request.options.num_ctx, 4096);
+  assert.equal(request.options.num_predict, 1000);
+});
+
 test('missing, truncated and HTTP-error responses fail closed', async () => {
   for (const body of [
     { done: true, message: { content: '' } },

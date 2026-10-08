@@ -5,7 +5,7 @@ import { callModel, modelConfig } from '../tools/auto-writer-model.mjs';
 const framesToFetch = (frames, splitIndex = 0) => async (_url, init) => {
   const payload = JSON.parse(init.body);
   assert.equal(payload.stream, true, 'Ollama must stream to avoid undici 300s headers timeout');
-  assert.equal(payload.options.num_ctx, 8192);
+  assert.equal(payload.options.num_ctx, 4096);
   const bytes = new TextEncoder().encode(frames.join(''));
   const chunks = splitIndex ? [bytes.slice(0, splitIndex), bytes.slice(splitIndex)] : [bytes];
   return new Response(new ReadableStream({

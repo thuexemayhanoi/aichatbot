@@ -34,8 +34,9 @@ import { tmpdir } from 'node:os';
 import { createHash } from 'node:crypto';
 import { parseMatrix } from './blog-factory.mjs';
 import { HUBS } from './build-blog.mjs';
-import { callModel, modelConfig, DEFAULT_MODEL } from './auto-writer-model.mjs';
+import { modelConfig, DEFAULT_MODEL } from './auto-writer-model.mjs';
 import { readPublicationBudget } from './factory-target.mjs';
+import { generateLongform } from './auto-writer-longform.mjs';
 
 export const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -361,24 +362,26 @@ async function generateArticle(row, ctx, opts, log) {
   let lastFailure = '';
   for (let attempt = 1; attempt <= opts.maxAttempts; attempt++) {
     const { system, user } = buildPrompt(row, ctx, feedback);
-    let content = null;
+    let cand = null;
     let lastModelErr = '';
     for (const model of models) {
       log(`attempt ${attempt} model ${model}`);
-      const r = await callModel(model, [{ role: 'system', content: system }, { role: 'user', content: user }], {
-        ...opts.config, onMetrics: (metrics) => log(`${row.article_id} inference metrics: ${JSON.stringify(metrics)}`),
-      });
-      if (r && r.content) { content = r.content; break; }
-      lastModelErr = r && r.error ? `${r.status}: ${r.text}` : 'empty';
+      try {
+        cand = await generateLongform({ model, system, user, needsChunks: ctx.needsChunks, config: opts.config,
+          log: (message) => log(`${row.article_id} ${message}`) });
+        break;
+      } catch (error) { lastModelErr = error.message; }
       lastFailure = lastModelErr;
       log(`  model ${model} failed: ${lastModelErr.slice(0, 120)}`);
     }
-    if (content === null) {
+    if (cand === null) {
       feedback = `Lỗi hệ thống sinh bài (model API): ${lastModelErr.slice(0, 200)}`;
       continue;
     }
-    const cand = extractJson(content);
-    if (!cand) { lastFailure = feedback = 'Output không phải JSON hợp lệ. Chỉ trả về JSON thuần.'; continue; }
+    // Preserve real candidates, including QA refusals, in Actions evidence.
+    const evidenceDir = join(ROOT, 'writer-work-auto-dryrun/candidates');
+    mkdirSync(evidenceDir, { recursive: true });
+    writeFileSync(join(evidenceDir, `${row.article_id}-attempt-${attempt}.json`), JSON.stringify(cand, null, 2) + '\n');
     const errs = validateCandidate(row, cand, ctx);
     if (errs.length) {
       log(`  local validation: ${errs.length} error(s)`);

@@ -1,7 +1,7 @@
 /** Local-only writer inference. GitHub Models retired on 2026-07-30.
  * Never forward the workflow's GitHub token to an inference server.
  */
-export const DEFAULT_MODEL = 'qwen3:4b-instruct';
+export const DEFAULT_MODEL = 'qwen3:1.7b';
 
 export function modelConfig(env = process.env) {
   const url = new URL(env.AUTO_WRITER_URL || 'http://127.0.0.1:11434/api/chat');
@@ -31,10 +31,10 @@ export async function callModel(model, messages, config = modelConfig(), fetchIm
       headers: { 'Content-Type': 'application/json', Accept: 'application/x-ndjson, application/json' },
       signal: ctrl.signal,
       body: JSON.stringify({
-        model, messages, stream: true, think: false, format: 'json', keep_alive: '30m',
+        model, messages, stream: true, think: false, format: config.responseFormat ?? 'json', keep_alive: '30m',
         options: {
           temperature: 0.7,
-          num_ctx: config.numCtx ?? 8192,
+          num_ctx: config.numCtx ?? 4096,
           num_predict: config.numPredict ?? 7000,
         },
       }),

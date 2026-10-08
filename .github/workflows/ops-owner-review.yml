@@ -119,13 +119,13 @@ jobs:
                 echo "review controls updated; no production action requested"
                 ;;
               smoke-test)
-                MODEL=$(node -e "console.log(require('./ops/owner-review/request.json').model || 'qwen3:4b-instruct')")
+                MODEL=$(node -e "console.log(require('./ops/owner-review/request.json').model || 'qwen3:1.7b')")
                 gh workflow run auto-writer.yml --ref main -f smoke_only=true -f dry_run=true -f model="$MODEL"
                 echo "DISPATCH_EXIT=0"
                 ;;
               dry-run)
                 echo "owner-requested AUTO FACTORY dry run (AI generation + QA, nothing pushed)"
-                MODEL=$(node -e "console.log(require('./ops/owner-review/request.json').model || 'qwen3:4b-instruct')")
+                MODEL=$(node -e "console.log(require('./ops/owner-review/request.json').model || 'qwen3:1.7b')")
                 ATTEMPTS=$(node -e "console.log(require('./ops/owner-review/request.json').max_attempts || '2')")
                 gh workflow run auto-writer.yml --ref main -f dry_run=true -f model="$MODEL" -f max_attempts="$ATTEMPTS"
                 echo "DISPATCH_EXIT=$?"

@@ -9,7 +9,7 @@ not a completion. Changing API tokens or cycling retired model names cannot
 restore that service. `/vanchinh` used external AI writers; its Actions only
 validated and published their files. It completed 2,000 articles.
 
-The replacement uses Ollama with `qwen3:4b-instruct` on the Actions runner.
+The replacement uses Ollama with `qwen3:1.7b` on the Actions runner.
 The server listens on loopback only. No paid inference API or model token
 is used; `GITHUB_TOKEN` remains limited to GitHub operations. The chatbot
 frontend continues to run locally without a remote inference service.
@@ -28,6 +28,12 @@ The site's canonical domain is **https://chatbot.thuexemaynguyentu.com**.
    maximum four. Requests have a 20-minute timeout; the job is bounded to
    120 minutes. CPU inference is slower than a hosted model, so a cron tick
    is an opportunity to run, not a promise of two articles every 25 minutes.
+   `auto-writer-longform.mjs` generates an AI outline and seven distinct
+   sections (220–270 words each), with at most two calls per component.
+   It uses a 4,096-token context and structured JSON schemas. All prose comes
+   from local inference; assembly never pads or repeats paragraphs. Full
+   article and pair QA still run after assembly. Rejected real candidates
+   are retained as Actions evidence for diagnosis.
 5. `writer-queue begin/ready` remains the only writer-state editor. Push two
    bodies and the chunk record to the assigned writer branch, explicitly
    dispatch the serialized publisher, and publish only QA-passing articles.
@@ -59,6 +65,13 @@ errors/timeouts and credential isolation. Workflow tests exercise a failed
 Bash pipeline and recovery from a staged writer branch in a temporary repo.
 Successful tests do not prove that a small CPU model will pass production QA;
 verify a real Actions run and matrix progress after deployment.
+
+Recovery measurement: run `37821331522` completed 11.45-minute and 8.50-minute
+streaming requests with Qwen3 4B, no swap use, but produced only 1,199 and
+1,147 words. Both were correctly rejected. The smaller Apache-2.0 model
+`qwen3:1.7b` passed real smoke run `37824564900`; smoke alone does not prove
+long-form QA. Sources: https://ollama.com/library/qwen3:1.7b and
+https://huggingface.co/Qwen/Qwen3-1.7B.
 
 ## Recovery verification and completion
 

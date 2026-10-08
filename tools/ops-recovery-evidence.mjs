@@ -103,6 +103,7 @@ function main() {
       if (bodies.some((p) => !(p in hashes))) throw new Error('published body inventory grew after dry-run');
       dryRunEvidence(evidence, { ...reserved, batch_id: active.batch_id }, hashes);
       assertTestedCode(evidence.code_sha, ['tools/auto-writer.mjs', 'tools/auto-writer-model.mjs',
+        'tools/auto-writer-longform.mjs',
         'tools/article-qa.mjs', 'tools/blog-factory.mjs', 'tools/factory-target.mjs', 'tools/writer-queue.mjs',
         '.github/workflows/auto-writer.yml', 'data/blog/writer-topic-facts.json', 'config']);
     } finally { rmSync(dir, { recursive: true, force: true }); }
