@@ -6,7 +6,7 @@
  * only fires under CommonJS, which browsers never define).
  *
  * Usage:
- *   <script src="https://thuexemayhanoi.github.io/aichatbot/embed.js"
+ *   <script src="https://chatbot.thuexemaynguyentu.com/embed.js"
  *           data-motoai data-lang="vi" data-theme="auto"
  *           data-position="right" data-title="Hỗ trợ Agent" data-open="false" async></script>
  */

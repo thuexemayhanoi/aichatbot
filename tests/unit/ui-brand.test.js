@@ -53,18 +53,18 @@ test('root app contract: body opens directly into the chat app in spec order', (
   // v56: short 1-2 word labels; all six canonical categories sit inside the
   // Cẩm nang group; contact actions sit inside the Dịch vụ group.
   const routes = {
-    '🧰 Công cụ &amp; Hướng dẫn': '/aichatbot/blog/cong-cu-huong-dan/',
-    '📱 Ứng Dụng': '/aichatbot/blog/app/',
-    '📄 Hướng Dẫn': '/aichatbot/blog/huong-dan/',
-    '🏍️ Thuê xe &amp; Phương tiện': '/aichatbot/blog/thue-xe-phuong-tien/',
-    '🏍️ Thuê Xe': '/aichatbot/blog/thue-xe/',
-    '⚡ Xe Điện': '/aichatbot/blog/xe-dien/',
-    '🧭 Khám phá &amp; An toàn': '/aichatbot/blog/kham-pha-an-toan/',
-    '🛡️ An Toàn': '/aichatbot/blog/an-toan/',
-    '📍 Địa Phương': '/aichatbot/blog/dia-phuong/',
-    '🔎 Tìm Bài': '/aichatbot/blog/',
-    '🔒 Bảo Mật': '/aichatbot/privacy/',
-    '📃 Điều Khoản': '/aichatbot/terms/'
+    '🧰 Công cụ &amp; Hướng dẫn': '/blog/cong-cu-huong-dan/',
+    '📱 Ứng Dụng': '/blog/app/',
+    '📄 Hướng Dẫn': '/blog/huong-dan/',
+    '🏍️ Thuê xe &amp; Phương tiện': '/blog/thue-xe-phuong-tien/',
+    '🏍️ Thuê Xe': '/blog/thue-xe/',
+    '⚡ Xe Điện': '/blog/xe-dien/',
+    '🧭 Khám phá &amp; An toàn': '/blog/kham-pha-an-toan/',
+    '🛡️ An Toàn': '/blog/an-toan/',
+    '📍 Địa Phương': '/blog/dia-phuong/',
+    '🔎 Tìm Bài': '/blog/',
+    '🔒 Bảo Mật': '/privacy/',
+    '📃 Điều Khoản': '/terms/'
   };
   for (const [label, href] of Object.entries(routes)) {
     const entry = html.match(new RegExp(`href="${href.replace(/\//g, '\\/')}"[^>]*>${label}</a>`));
@@ -113,7 +113,7 @@ test('☰ menu is a grouped accordion navigating the blog ecosystem + contact ac
   assert.ok(drawer, 'drawer present');
   // Every blog hub route is reachable from the menu.
   for (const hub of ['blog/', 'blog/app/', 'blog/thue-xe/', 'blog/xe-dien/', 'blog/huong-dan/', 'blog/an-toan/', 'blog/dia-phuong/']) {
-    assert.ok(drawer.includes(`/aichatbot/${hub}`), `menu must link /aichatbot/${hub}`);
+    assert.ok(drawer.includes(`/${hub}`), `menu must link /${hub}`);
   }
   // ChatGPT-style condensed entry: Liên hệ asks the Agent (no hard-coded contacts).
   assert.match(drawer, /id="motoai-menu-contact">☎️ Liên Hệ</);
@@ -378,7 +378,7 @@ test('bottom dock: exactly 4 items, flat nav look, verified actions, one row', (
   // Icon-above-label markup (app bottom-nav, not a chip row).
   assert.match(dock, /motoai-dock-icon/);
   // Dịch vụ routes to the existing service hub — no invented page.
-  assert.match(dock, /href="\/aichatbot\/blog\/thue-xe\/"/);
+  assert.match(dock, /href="\/blog\/thue-xe\/"/);
   // Liên hệ: NO hard-coded contact URL — it opens the drawer contact group.
   assert.ok(!html.includes('share.google'), 'no hard-coded share.google URL anywhere');
   assert.match(dock, /id="motoai-dock-contact"/);
@@ -472,15 +472,15 @@ test('privacy and terms routes exist, are real pages, and are in the sitemap', (
   const terms = readFileSync(join(ROOT, 'terms/index.html'), 'utf8');
   assert.match(privacy, /<title>Chính sách bảo mật/);
   assert.match(terms, /<title>Điều khoản sử dụng/);
-  assert.match(privacy, /rel="canonical" href="https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/privacy\/"/);
-  assert.match(terms, /rel="canonical" href="https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/terms\/"/);
+  assert.match(privacy, /rel="canonical" href="https:\/\/chatbot\.thuexemaynguyentu\.com\/privacy\/"/);
+  assert.match(terms, /rel="canonical" href="https:\/\/chatbot\.thuexemaynguyentu\.com\/terms\/"/);
   // Truthful privacy: no absolute "zero data leaves device" claim; mentions external links.
   assert.ok(privacy.includes('localStorage'), 'privacy explains local storage');
   assert.ok(privacy.toLowerCase().includes('whatsapp') && privacy.toLowerCase().includes('maps'), 'privacy covers external links');
   assert.ok(privacy.includes('API key') === false || privacy.includes('không cần API key'), 'API-key claim consistent');
   const sitemap = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
-  assert.ok(sitemap.includes('/aichatbot/privacy/'), 'sitemap lists privacy');
-  assert.ok(sitemap.includes('/aichatbot/terms/'), 'sitemap lists terms');
+  assert.ok(sitemap.includes('/privacy/'), 'sitemap lists privacy');
+  assert.ok(sitemap.includes('/terms/'), 'sitemap lists terms');
 });
 
 // --- 5j. Color contract (v50): light/white text on true purple primary surfaces ---

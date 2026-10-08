@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name:       MotoAI Agent
- * Plugin URI:        https://thuexemayhanoi.github.io/aichatbot/
+ * Plugin URI:        https://chatbot.thuexemaynguyentu.com/
  * Description:       Lightweight loader for the MotoAI motorbike-rental chatbot (local-first, no API key). Loads the canonical embed widget from GitHub Pages; the chat engine itself is never bundled.
  * Version:           1.0.0
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            Thuê Xe Máy Hà Nội Nguyễn Tú
- * Author URI:        https://thuexemayhanoi.github.io/aichatbot/
+ * Author URI:        https://chatbot.thuexemaynguyentu.com/
  * License:           GPL-2.0-or-later
  * Text Domain:       motoai-agent
  *
@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
 define( 'MOTOAI_AGENT_VERSION', '1.0.0' );
 define( 'MOTOAI_AGENT_OPTION', 'motoai_agent_settings' );
 // Canonical, version-less embed URL: always current published Agent.
-define( 'MOTOAI_AGENT_EMBED_URL', 'https://thuexemayhanoi.github.io/aichatbot/embed.js' );
+define( 'MOTOAI_AGENT_EMBED_URL', 'https://chatbot.thuexemaynguyentu.com/embed.js' );
 
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-motoai-settings.php';
 

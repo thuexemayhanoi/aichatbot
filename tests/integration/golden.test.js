@@ -169,11 +169,11 @@ test('query config: parse, defaults and clamping', () => {
 });
 
 test('query config: embed iframe URL generation', () => {
-  const url = buildEmbedUrl('https://thuexemayhanoi.github.io/aichatbot/embed.js', {
+  const url = buildEmbedUrl('https://chatbot.thuexemaynguyentu.com/embed.js', {
     lang: 'en', theme: 'dark', source: 'blog'
   });
-  assert.equal(url, 'https://thuexemayhanoi.github.io/aichatbot/index.html?lang=en&theme=dark&source=blog&embed=1');
-  const minimal = buildEmbedUrl('https://thuexemayhanoi.github.io/aichatbot/embed.js', {});
+  assert.equal(url, 'https://chatbot.thuexemaynguyentu.com/index.html?lang=en&theme=dark&source=blog&embed=1');
+  const minimal = buildEmbedUrl('https://chatbot.thuexemaynguyentu.com/embed.js', {});
   assert.ok(minimal.includes('embed=1'));
   assert.ok(minimal.includes('index.html'));
   assert.throws(() => buildEmbedUrl(''), TypeError);

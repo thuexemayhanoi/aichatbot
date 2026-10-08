@@ -117,7 +117,7 @@ R('ai','Retry/backoff on model init failure','P3','—','PLANNED','No infinite s
 // ===== APP / DIRECT MODE / UI =====
 R('app','Shared core wiring for direct + embed','P0','—','VERIFIED','One engine both modes','unit+integration engine tests','tests/integration/embed.test.js','v42');
 R('app','Query params: lang/theme/source/embed','P1','—','VERIFIED','Params applied','unit config/query-config','tests/unit/config.test.js','v42');
-R('app','index.html standalone layout','P0','—','VERIFIED','Renders on Pages','manual smoke','https://thuexemayhanoi.github.io/aichatbot/','v42');
+R('app','index.html standalone layout','P0','—','VERIFIED','Renders on Pages','manual smoke','https://chatbot.thuexemaynguyentu.com/','v42');
 R('app','Dark/light/auto theme','P1','—','VERIFIED','Theme applied','manual smoke','assets/css/style.css','v42');
 R('app','Responsive layout (mobile-first CSS)','P1','—','VERIFIED','Media queries present','manual + ui-ux workflow','assets/css/style.css','v42');
 R('app','iPhone safe-area support (env(safe-area-inset))','P1','—','VERIFIED','Safe areas respected','CSS audit','assets/css/style.css','v42');
@@ -318,7 +318,7 @@ R('distribution','WP admin settings page via Settings API (enable, lang, theme, 
 R('distribution','WP frontend loader: async, footer, once-per-request, sanitized data attributes','P0','—','VERIFIED','No duplicate injection, canonical embed URL','wordpress-plugin test','tests/unit/wordpress-plugin.test.js','v45');
 R('distribution','WP shortcode [motoai_agent] lang/theme/source/open mounts canonical embed','P1','—','VERIFIED','Whitelisted attrs, no engine duplication','wordpress-plugin test','tests/unit/wordpress-plugin.test.js','v45');
 R('distribution','Deterministic plugin ZIP builder (tools/build-wordpress-plugin.mjs) -> dist/motoai-agent.zip','P0','—','VERIFIED','Byte-identical rebuilds, root motoai-agent/, CRC valid, installable via WP Upload','wordpress-zip test','tests/unit/wordpress-zip.test.js','v45');
-R('pwa','manifest.webmanifest valid (name, start_url, scope /aichatbot/, display, icons)','P0','—','VERIFIED','Valid JSON, absolute subpath-safe URLs, source=pwa','pwa test','tests/unit/pwa.test.js','v45');
+R('pwa','manifest.webmanifest valid (name, start_url, scope /, display, icons)','P0','—','VERIFIED','Valid JSON, absolute subpath-safe URLs, source=pwa','pwa test','tests/unit/pwa.test.js','v45');
 R('pwa','service-worker.js: versioned caches (v45), safe cleanup, no model precache','P0','—','VERIFIED','Shell cache-first+revalidate, data network-first, cross-origin passthrough','pwa test','tests/unit/pwa.test.js','v45');
 R('pwa','Offline shell after first load (rules+BM25+cached data; no guaranteed offline LLM)','P1','—','VERIFIED','Offline behavior documented + SW strategy tested','pwa test + docs/PWA.md','docs/PWA.md','v45');
 R('pwa','Install UX: beforeinstallprompt pill "Cài Agent", iOS one-time A2HS hint, no nagging','P1','—','VERIFIED','Hidden unless installable; hidden after interaction','pwa test','tests/unit/pwa.test.js','v45');

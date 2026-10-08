@@ -33,6 +33,9 @@ jobs:
       - name: Full test suite (gates before any artifact)
         run: node --test
 
+      - name: Custom-domain runtime and PWA gate
+        run: node tools/site-audit.mjs
+
       - name: Generate PWA raster icons (deterministic, stdlib-only)
         run: python3 tools/gen-icons.py
 

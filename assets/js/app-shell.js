@@ -68,7 +68,7 @@ const contactNodes = [...document.querySelectorAll('[data-contact-ref]')];
 const needsData = Boolean(statusEl) || contactNodes.length > 0;
 
 if (needsData) {
-  fetch('/aichatbot/data/business/business.json', { cache: 'no-cache' })
+  fetch('/data/business/business.json', { cache: 'no-cache' })
     .then((r) => (r.ok ? r.json() : null))
     .then((business) => {
       if (!business) return;

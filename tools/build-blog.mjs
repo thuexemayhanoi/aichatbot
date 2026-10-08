@@ -80,7 +80,7 @@ function jsonLd(obj) {
 
 /** Article card (app-style, used by every list screen). */
 function card(a, hub) {
-  return `      <a class="blog-card" href="/aichatbot/blog/${hub.dir}/${a.slug}/">
+  return `      <a class="blog-card" href="/blog/${hub.dir}/${a.slug}/">
         <span class="cat">${esc(hub.label)}</span>
         <h2>${esc(a.title)}</h2>
         <p>${esc(a.description)}</p>
@@ -110,7 +110,7 @@ function breadcrumb(trail) {
 function categoryChips({ activeHub }) {
   const items = navigation.categories.map((c) => {
     const dir = taxonomy.categories[c.id].dir;
-    return `        <a class="blog-chip" href="/aichatbot/blog/${dir}/"${dir === activeHub ? ' aria-current="page"' : ''}>${esc(c.label)}</a>`;
+    return `        <a class="blog-chip" href="/blog/${dir}/"${dir === activeHub ? ' aria-current="page"' : ''}>${esc(c.label)}</a>`;
   }).join('\n');
   return `      <div class="blog-chips" aria-label="Danh mục">
 ${items}
@@ -118,10 +118,10 @@ ${items}
 `;
 }
 
-const CRUMB_HOME = { label: 'Agent', href: '/aichatbot/' };
-const CRUMB_BLOG = { label: 'Cẩm nang', href: '/aichatbot/blog/' };
+const CRUMB_HOME = { label: 'Agent', href: '/' };
+const CRUMB_BLOG = { label: 'Cẩm nang', href: '/blog/' };
 /** Cluster crumb entry (v61: blog home → PARENT HUB → category → article). */
-const crumbCluster = (cluster) => ({ label: cluster.name, href: `/aichatbot/blog/${cluster.dir}/` });
+const crumbCluster = (cluster) => ({ label: cluster.name, href: `/blog/${cluster.dir}/` });
 /** Visible + JSON-LD breadcrumb trail for any cluster/category/subtopic/article page. */
 function clusterTrail(cluster, extra = []) {
   return [CRUMB_HOME, CRUMB_BLOG, crumbCluster(cluster), ...extra];
@@ -133,18 +133,18 @@ function clusterTrailSchema(cluster, extra = []) {
     { name: 'Cẩm nang', item: `${SITE}blog/` },
     { name: cluster.name, item: `${SITE}blog/${cluster.dir}/` }
   ];
-  for (const e of extra) entries.push({ name: e.label, item: e.href ? `${SITE}${e.href.replace('/aichatbot/', '')}` : `${SITE}${e.itemPath}` });
+  for (const e of extra) entries.push({ name: e.label, item: e.href ? `${SITE}${e.href.replace('/', '')}` : `${SITE}${e.itemPath}` });
   return entries;
 }
 /** Hub parent block: prominent link UP to the parent SEO hub (v61 §8). */
 function hubParentBlock(cluster) {
-  return `      <p class="blog-hub-parent">Nhóm chủ đề: <a href="/aichatbot/blog/${cluster.dir}/">${esc(cluster.name)}</a></p>\n`;
+  return `      <p class="blog-hub-parent">Nhóm chủ đề: <a href="/blog/${cluster.dir}/">${esc(cluster.name)}</a></p>\n`;
 }
 /** Bottom contextual block: explore the whole parent cluster (v61 §8). */
 function hubClusterFooter(cluster) {
   const links = cluster.categories.map((id) => {
     const c = taxonomy.categories[id];
-    return `<a href="/aichatbot/blog/${c.dir}/">${esc(c.label)}</a>`;
+    return `<a href="/blog/${c.dir}/">${esc(c.label)}</a>`;
   }).join(' · ');
   return `      <p class="blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}: ${links}</p>\n`;
 }
@@ -159,11 +159,11 @@ function buildHome(published) {
   const hubSections = taxonomy.clusters.map((c) => {
     const hub = clusterNav(c.id);
     const pills = hub.children.map((ch) =>
-      `        <a class="blog-cluster-link" href="/aichatbot/blog/${ch.dir}/">${ch.icon} ${esc(ch.label)}</a>`).join('\n');
+      `        <a class="blog-cluster-link" href="/blog/${ch.dir}/">${ch.icon} ${esc(ch.label)}</a>`).join('\n');
     const latest = newestFirst(published.filter((a) => c.categories.includes(a.category)), 4);
     const latestCards = latest.map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
     return `      <section class="blog-hub-section" aria-label="${esc(c.name)}">
-        <h2><a href="/aichatbot/blog/${c.dir}/">${hub.icon} ${esc(c.name)}</a></h2>
+        <h2><a href="/blog/${c.dir}/">${hub.icon} ${esc(c.name)}</a></h2>
         <p>${esc(c.desc)}</p>
         <div class="blog-cluster-links">
 ${pills}
@@ -171,13 +171,13 @@ ${pills}
 ${latestCards ? `        <div class="blog-grid">
 ${latestCards}
         </div>
-` : ''}        <a class="blog-cluster-more" href="/aichatbot/blog/${c.dir}/">Xem toàn bộ ${esc(c.name)} →</a>
+` : ''}        <a class="blog-cluster-more" href="/blog/${c.dir}/">Xem toàn bộ ${esc(c.name)} →</a>
       </section>`;
   }).join('\n');
 
   const categoryCards = navigation.categories.map((navItem) => {
     const cat = taxonomy.categories[navItem.id];
-    return `      <a class="blog-cat-card" href="/aichatbot/blog/${cat.dir}/">
+    return `      <a class="blog-cat-card" href="/blog/${cat.dir}/">
         <span class="cat-icon" aria-hidden="true">${navItem.icon}</span>
         <strong>${esc(navItem.label)}</strong>
         <span>${esc(cat.desc)}</span>
@@ -210,7 +210,7 @@ ${hubSections}
       <section>
         <h2>Bài mới</h2>
         <div class="blog-grid">
-${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản. Hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
+${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản. Hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>'}
         </div>
       </section>
       <section aria-label="Danh mục">
@@ -271,13 +271,13 @@ function paginationNav(hub, page, pages) {
   const links = [];
   for (let i = 0; i < pages.length; i++) {
     const p = i + 1;
-    const href = p === 1 ? `/aichatbot/blog/${hub.dir}/` : `/aichatbot/blog/${hub.dir}/page/${p}/`;
+    const href = p === 1 ? `/blog/${hub.dir}/` : `/blog/${hub.dir}/page/${p}/`;
     links.push(p === page ? `      <span class="blog-page-current" aria-current="page">${p}</span>` : `      <a href="${href}">${p}</a>`);
   }
   return `      <nav class="blog-pagination" aria-label="Trang">
-        ${page > 1 ? `<a href="${page === 2 ? `/aichatbot/blog/${hub.dir}/` : `/aichatbot/blog/${hub.dir}/page/${page - 1}/`}">‹ Trước</a>` : ''}
+        ${page > 1 ? `<a href="${page === 2 ? `/blog/${hub.dir}/` : `/blog/${hub.dir}/page/${page - 1}/`}">‹ Trước</a>` : ''}
 ${links.join('\n')}
-        ${page < pages.length ? `<a href="/aichatbot/blog/${hub.dir}/page/${page + 1}/">Sau ›</a>` : ''}
+        ${page < pages.length ? `<a href="/blog/${hub.dir}/page/${page + 1}/">Sau ›</a>` : ''}
       </nav>
 `;
 }
@@ -286,11 +286,12 @@ ${links.join('\n')}
 function buildHub(hub, published, subtopicMap) {
   const articles = published.filter((a) => a.category === hub.id);
   const pages = paginate(articles);
+  const builtPaths = [];
 
   // Subtopic chips: only subtopics that actually hold a published article.
   const chips = (subtopicMap[hub.id] ?? [])
     .filter((s) => s.count > 0 && s.slug)
-    .map((s) => `        <a class="blog-chip" href="/aichatbot/blog/${hub.dir}/${s.slug}/">${esc(s.label)} <span class="blog-chip-count">${s.count}</span></a>`)
+    .map((s) => `        <a class="blog-chip" href="/blog/${hub.dir}/${s.slug}/">${esc(s.label)} <span class="blog-chip-count">${s.count}</span></a>`)
     .join('\n');
 
   // Sibling category in the same cluster (related category).
@@ -299,12 +300,16 @@ function buildHub(hub, published, subtopicMap) {
 
   for (let p = 0; p < pages.length; p++) {
     const pageNo = p + 1;
+    const path = pageNo === 1 ? `blog/${hub.dir}/` : `blog/${hub.dir}/page/${pageNo}/`;
+    builtPaths.push(path);
     const cards = pages[p].map((a) => card(a, hub)).join('\n')
-      || `        <p class="blog-empty">Chưa có bài đã xuất bản trong danh mục này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>`;
+      || `        <p class="blog-empty">Chưa có bài đã xuất bản trong danh mục này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>`;
     const nav = paginationNav(hub, pageNo, pages);
     const title = pages.length > 1 ? `${hub.name} — trang ${pageNo} — Cẩm nang thuê xe máy` : `${hub.name} — Cẩm nang thuê xe máy & xe điện`;
 
-    const content = breadcrumb(clusterTrail(cluster, [{ label: hub.label, href: null }]))
+    const trail = [{ label: hub.label, href: pageNo === 1 ? null : `/blog/${hub.dir}/` },
+      ...(pageNo > 1 ? [{ label: `Trang ${pageNo}`, href: null }] : [])];
+    const content = breadcrumb(clusterTrail(cluster, trail))
       + screenHead({ label: 'Danh mục', title: hub.name, lead: hub.desc })
       + hubParentBlock(cluster)
       + (hub.intro ? `      <p class="blog-screen-lead">${esc(hub.intro)}</p>\n` : '')
@@ -316,13 +321,13 @@ ${chips}
       + `      <div class="blog-grid">
 ${cards}
       </div>
-${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/aichatbot/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
+${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
 ` : ''}${hubClusterFooter(cluster)}${askAgentAction(hub.name)}`;
 
     const html = appShellPage({
       title,
       description: hub.meta,
-      path: pageNo === 1 ? `blog/${hub.dir}/` : `blog/${hub.dir}/page/${pageNo}/`,
+      path,
       screen: `category-${hub.dir}`,
       activeHub: hub.dir,
       activeCluster: cluster.dir,
@@ -330,14 +335,15 @@ ${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a 
       schemaHtml: `  <script type="application/ld+json">
 ${jsonLd({
         '@context': 'https://schema.org', '@type': 'CollectionPage',
-        name: hub.name, description: hub.meta, url: `${SITE}blog/${hub.dir}/`,
+        name: hub.name, description: hub.meta, url: `${SITE}${path}`,
         isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE }
       })}
   </script>
   <script type="application/ld+json">
 ${jsonLd({
         '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-        itemListElement: clusterTrailSchema(cluster, [{ label: hub.label, itemPath: `blog/${hub.dir}/` }]).map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
+        itemListElement: clusterTrailSchema(cluster, [{ label: hub.label, itemPath: `blog/${hub.dir}/` },
+          ...(pageNo > 1 ? [{ label: `Trang ${pageNo}`, itemPath: path }] : [])]).map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
       })}
   </script>
 `
@@ -345,13 +351,14 @@ ${jsonLd({
     if (pageNo === 1) write(`blog/${hub.dir}/index.html`, html);
     else write(`blog/${hub.dir}/page/${pageNo}/index.html`, html);
   }
+  return builtPaths;
 }
 
 /** Subtopic hub screen — generated ONLY with >= 1 published article. */
 function buildSubtopic(hub, sub, articles) {
   const cards = articles.map((a) => card(a, hub)).join('\n');
   const cluster = CLUSTER_BY_ID[hub.cluster];
-  const content = breadcrumb(clusterTrail(cluster, [{ label: hub.label, href: `/aichatbot/blog/${hub.dir}/` }, { label: sub.label, href: null }]))
+  const content = breadcrumb(clusterTrail(cluster, [{ label: hub.label, href: `/blog/${hub.dir}/` }, { label: sub.label, href: null }]))
     + screenHead({ label: hub.label, title: sub.label, lead: hub.desc })
     + `      <div class="blog-grid">
 ${cards}
@@ -451,7 +458,7 @@ function buildClusterHub(cluster, published) {
     const top = published.filter((a) => a.category === hub.id).slice(0, 3);
     const topCards = top.map((a) => card(a, hub)).join('\n');
     return `      <section class="blog-cluster-child">
-        <a class="blog-cat-card" href="/aichatbot/blog/${hub.dir}/">
+        <a class="blog-cat-card" href="/blog/${hub.dir}/">
           <span class="cat-icon" aria-hidden="true">${navItem.icon}</span>
           <strong>${esc(hub.label)}</strong>
           <span>${esc(hub.desc)}</span>
@@ -474,7 +481,7 @@ ${catCards}
       <section>
         <h2>Bài mới trong ${esc(cluster.name)}</h2>
         <div class="blog-grid">
-${latestCards || '          <p class="blog-empty">Chưa có bài đã xuất bản trong nhóm này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/aichatbot/">Agent</a> nếu cần thông tin ngay.</p>'}
+${latestCards || '          <p class="blog-empty">Chưa có bài đã xuất bản trong nhóm này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>'}
         </div>
       </section>
 ${hubClusterFooter(cluster)}${askAgentAction(cluster.name)}`;
@@ -521,7 +528,7 @@ function buildArticle(a, business, hub, published, row) {
 
   // Deterministic subtopic (from the canonical taxonomy model, not prose).
   const sub = deriveSubtopic(a.category, row ?? {});
-  const subHubUrl = sub.fallback ? null : `/aichatbot/blog/${hub.dir}/${sub.slug}/`;
+  const subHubUrl = sub.fallback ? null : `/blog/${hub.dir}/${sub.slug}/`;
 
   // Related: same subtopic first, then same category, then others. 3-5, never self.
   const score = (x) => {
@@ -553,7 +560,7 @@ ${related}
     { name: a.title, itemPath: path, label: a.title }
   ]);
   const crumbTrail = clusterTrail(cluster, [
-    { label: hub.label, href: `/aichatbot/blog/${hub.dir}/` },
+    { label: hub.label, href: `/blog/${hub.dir}/` },
     ...(subHubUrl ? [{ label: sub.label, href: subHubUrl }] : []),
     { label: a.title, href: null }
   ]);
@@ -563,18 +570,18 @@ ${related}
   const topicContext = `      <section class="blog-topic-context">
         <h2>Bài viết thuộc</h2>
         <p>
-          <a href="/aichatbot/blog/${cluster.dir}/">${esc(cluster.name)}</a>
+          <a href="/blog/${cluster.dir}/">${esc(cluster.name)}</a>
           <span aria-hidden="true">→</span>
-          <a href="/aichatbot/blog/${hub.dir}/">${esc(hub.label)}</a>
+          <a href="/blog/${hub.dir}/">${esc(hub.label)}</a>
         </p>
       </section>
 `;
 
   const content = breadcrumb(crumbTrail)
     + `      <p class="blog-chips">
-        <a class="blog-chip" href="/aichatbot/blog/${hub.dir}/">${esc(hub.label)}</a>${subHubUrl ? `
+        <a class="blog-chip" href="/blog/${hub.dir}/">${esc(hub.label)}</a>${subHubUrl ? `
         <a class="blog-chip" href="${subHubUrl}">${esc(sub.label)}</a>` : ''}
-        <a class="blog-chip blog-chip-parent" href="/aichatbot/blog/${cluster.dir}/">${esc(cluster.name)}</a>
+        <a class="blog-chip blog-chip-parent" href="/blog/${cluster.dir}/">${esc(cluster.name)}</a>
       </p>
 ${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline">${esc(a.author)} · ${a.published_date} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
       <div class="blog-summary" role="note">
@@ -591,6 +598,7 @@ ${topicContext}${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.t
   const html = appShellPage({
     title: a.title,
     description: a.description,
+    ogType: 'article',
     path,
     screen: `article-${a.slug}`,
     activeHub: hub.dir,
@@ -600,6 +608,7 @@ ${topicContext}${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.t
 ${jsonLd({
       '@context': 'https://schema.org',
       '@type': 'Article',
+      url: `${SITE}${path}`,
       headline: a.title,
       description: a.description,
       datePublished: a.published_date,
@@ -681,7 +690,7 @@ export function build() {
 
   buildHome(published);
   for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published);
-  for (const hub of HUBS) buildHub(hub, published, subtopicCounts(published, matrix));
+  const categoryPages = HUBS.flatMap((hub) => buildHub(hub, published, subtopicCounts(published, matrix)));
   const subtopicPages = [];
   for (const hub of HUBS) {
     const subs = (taxonomy.subtopics[hub.id] ?? []);
@@ -754,7 +763,7 @@ export function build() {
         subtopic: sub.fallback ? '' : sub.code,
         subtopic_name: sub.fallback ? '' : sub.label,
         location: row.local_scope ?? '',
-        url: `/aichatbot/blog/${hub.dir}/${a.slug}/`
+        url: `/blog/${hub.dir}/${a.slug}/`
       };
     })
   }, null, 2) + '\n');
@@ -767,7 +776,7 @@ export function build() {
       id: `${a.article_id}:c${i + 1}`,
       article_id: a.article_id,
       title: a.title,
-      url: `/aichatbot/blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`,
+      url: `/blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`,
       category: a.category,
       text
     })))
@@ -776,7 +785,7 @@ export function build() {
   // Sitemap: homepage, blog home, hubs, non-empty subtopic hubs, published articles only.
   const urls = [SITE, `${SITE}blog/`,
     ...taxonomy.clusters.map((c) => `${SITE}blog/${c.dir}/`),
-    ...HUBS.map((h) => `${SITE}blog/${h.dir}/`),
+    ...categoryPages.map((p) => `${SITE}${p}`),
     ...subtopicPages.map((p) => `${SITE}${p}`),
     ...published.map((a) => `${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`),
     `${SITE}privacy/`, `${SITE}terms/`,

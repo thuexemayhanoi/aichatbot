@@ -5,7 +5,7 @@
  * subtopic hubs, articles, search, static pages, privacy, terms).
  *
  * Product model (final):
- *   /aichatbot/        = CHAT HOMEPAGE — the app screen (own shell in
+ *   /        = CHAT HOMEPAGE — the app screen (own shell in
  *                        index.html, no footer, Menu on the right).
  *   every other page   = NORMAL professional content website page that
  *                        consumes THIS shell: compact site header
@@ -29,11 +29,12 @@ import { navigation, taxonomy, clusterNav, drawerCore } from './taxonomy.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BUSINESS = JSON.parse(readFileSync(join(ROOT, 'data/business/business.json'), 'utf8'));
 
-export const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
+import { SITE } from '../src/config/site.js';
+export { SITE };
 
 /** Build/cache version: bumped every release that changes shell CSS/JS so
  *  iOS Safari can never keep serving a stale v62 asset. */
-export const BUILD_VERSION = 'v63';
+export const BUILD_VERSION = 'v66';
 
 /** Escape & for HTML text/attribute contexts (titles, descriptions, names). */
 export const esc = (s) => String(s).replace(/&(?![a-z]+;|#)/gi, '&amp;');
@@ -47,7 +48,7 @@ export function rel(path) {
 const NO_FLASH_THEME = `<script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>`;
 
 /** <head> block — same meta contract as the chat homepage. */
-export function pageHead({ title, description, path }) {
+export function pageHead({ title, description, path, ogType = 'website' }) {
   const url = SITE + path.replace(/^\//, '');
   const prefix = rel(path);
   return `<!DOCTYPE html>
@@ -60,17 +61,22 @@ export function pageHead({ title, description, path }) {
   <meta name="description" content="${esc(description)}">
   <link rel="canonical" href="${url}">
   <meta name="theme-color" content="#4f46e5">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="${ogType}">
   <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:url" content="${url}">
+  <meta property="og:image" content="${SITE}assets/icons/icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
-  <link rel="stylesheet" href="${prefix}assets/css/style.css?v=63">
-  <link rel="stylesheet" href="${prefix}assets/css/blog.css?v=63">
+  <meta name="twitter:image" content="${SITE}assets/icons/icon-512.png">
+  <link rel="stylesheet" href="${prefix}assets/css/style.css?v=66">
+  <link rel="stylesheet" href="${prefix}assets/css/blog.css?v=66">
   ${NO_FLASH_THEME}
 </head>
 <body class="content-page">
@@ -98,7 +104,7 @@ function siteHeader({ activeHub, activeCluster }) {
     const hub = clusterNav(c.id);
     const hubActive = c.dir === activeCluster || hub.children.some((ch) => ch.dir === activeHub);
     const kids = hub.children.map((ch) =>
-      `            <a href="/aichatbot/blog/${ch.dir}/"${ch.dir === activeHub ? ' aria-current="page"' : ''}>${ch.icon} ${esc(ch.label)}</a>`).join('\n');
+      `            <a href="/blog/${ch.dir}/"${ch.dir === activeHub ? ' aria-current="page"' : ''}>${ch.icon} ${esc(ch.label)}</a>`).join('\n');
     return `        <div class="site-nav-item"${hubActive ? ' data-active="1"' : ''}>
           <a class="site-nav-parent" href="${hub.url}" aria-haspopup="true"${hubActive ? ' aria-current="page"' : ''}>${hub.icon} ${esc(hub.name)} <span class="site-nav-caret" aria-hidden="true">▾</span></a>
           <div class="site-nav-drop">
@@ -108,7 +114,7 @@ ${kids}
   }).join('\n');
   return `    <header class="site-header">
       <div class="site-header-inner">
-        <a class="site-brand" href="/aichatbot/" aria-label="MotoAI — về màn hình Agent">
+        <a class="site-brand" href="/" aria-label="MotoAI — về màn hình Agent">
           <span class="site-brand-mark" aria-hidden="true">🏍️</span>
           <span class="site-brand-text">
             <strong>MotoAI</strong>
@@ -116,11 +122,11 @@ ${kids}
           </span>
         </a>
         <nav class="site-nav" aria-label="Chuyên mục">
-          <a href="/aichatbot/blog/"${activeCluster === null && activeHub === null ? ' aria-current="page"' : ''}>Cẩm nang</a>
+          <a href="/blog/"${activeCluster === null && activeHub === null ? ' aria-current="page"' : ''}>Cẩm nang</a>
 ${hubItems}
         </nav>
         <div class="site-actions">
-          <a class="site-search-link" href="/aichatbot/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
           <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
           <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
         </div>
@@ -139,7 +145,7 @@ ${hubItems}
  */
 function siteDrawer({ activeHub, activeCluster }) {
   const isActiveLink = (url) => {
-    const dir = url.replace(/^\/aichatbot\//, '').replace(/\/$/, '');
+    const dir = url.replace(/^\/(?:blog\/)?/, '').replace(/\/$/, '');
     return dir === activeHub || dir === activeCluster;
   };
   const renderItem = (item, indent = '          ') => {
@@ -148,10 +154,10 @@ function siteDrawer({ activeHub, activeCluster }) {
       return `${indent}<li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">${item.icon} ${esc(item.label)}: Auto</button></li>`;
     }
     if (item.kind === 'hub') {
-      const hubActive = item.url.replace(/^\/aichatbot\/blog\//, '').replace(/\/$/, '') === activeCluster
-        || item.children.some((ch) => ch.url.replace(/^\/aichatbot\/blog\//, '').replace(/\/$/, '') === activeHub);
+      const hubActive = item.url.replace(/^\/blog\//, '').replace(/\/$/, '') === activeCluster
+        || item.children.some((ch) => ch.url.replace(/^\/blog\//, '').replace(/\/$/, '') === activeHub);
       const kids = item.children.map((ch) =>
-        `            <li><a href="${ch.url}"${ch.url.replace(/^\/aichatbot\/blog\//, '').replace(/\/$/, '') === activeHub ? ' aria-current="page"' : ''}>${ch.icon} ${esc(ch.label)}</a></li>`).join('\n');
+        `            <li><a href="${ch.url}"${ch.url.replace(/^\/blog\//, '').replace(/\/$/, '') === activeHub ? ' aria-current="page"' : ''}>${ch.icon} ${esc(ch.label)}</a></li>`).join('\n');
       return `${indent}<li class="motoai-hub">
 ${indent}  <a class="motoai-hub-link" href="${item.url}"${hubActive ? ' aria-current="page"' : ''}>${item.icon} ${esc(item.label)}</a>
 ${indent}  <ul class="motoai-hub-items">
@@ -160,7 +166,7 @@ ${indent}  </ul>
 ${indent}</li>`;
     }
     if (item.kind === 'action') {
-      return `${indent}<li><a href="/aichatbot/?action=${esc(item.action)}">${item.icon} ${esc(item.label)}</a></li>`;
+      return `${indent}<li><a href="/?action=${esc(item.action)}">${item.icon} ${esc(item.label)}</a></li>`;
     }
     if (item.kind === 'contact') {
       return `${indent}<li><a data-contact-ref="${esc(item.ref)}" href="#" rel="noopener noreferrer" target="_blank">${item.icon} ${esc(item.label)}</a></li>`;
@@ -206,7 +212,7 @@ export function footerHtml() {
     if (g.hub) {
       const hub = clusterNav(g.hub);
       const kids = hub.children.map((ch) =>
-        `            <li class="footer-sub"><a href="/aichatbot/blog/${ch.dir}/">${esc(ch.label)}</a></li>`).join('\n');
+        `            <li class="footer-sub"><a href="/blog/${ch.dir}/">${esc(ch.label)}</a></li>`).join('\n');
       primary.push(`      <div class="blog-footer-col">
         <p class="blog-footer-title">${esc(hub.name)}</p>
         <ul>
@@ -216,7 +222,7 @@ ${kids}
       </div>`);
     } else if (g.title === 'DỊCH VỤ' || g.title === 'PHÁP LÝ') {
       const links = g.items.map((item) => {
-        if (item.ref) return `          <li><a data-contact-ref="${esc(item.ref)}" href="/aichatbot/">${esc(item.label)}</a></li>`;
+        if (item.ref) return `          <li><a data-contact-ref="${esc(item.ref)}" href="/">${esc(item.label)}</a></li>`;
         return `          <li><a href="${item.url}">${esc(item.label)}</a></li>`;
       }).join('\n');
       secondary.push(`      <div class="blog-footer-col">
@@ -244,7 +250,7 @@ ${links}
         <div class="blog-footer-brand">
           <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
           <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội ${esc(brand)}</p>
-          <a class="blog-footer-cta" href="/aichatbot/">⚡ Hỏi Agent</a>
+          <a class="blog-footer-cta" href="/">⚡ Hỏi Agent</a>
         </div>
         <nav class="blog-footer-nav" aria-label="Chân trang">
 ${primary.join('\n')}
@@ -268,14 +274,14 @@ ${secondary.join('\n')}
 export function askAgentAction(topic) {
   const q = encodeURIComponent(topic);
   return `    <div class="screen-ask">
-      <a class="screen-ask-btn" href="/aichatbot/?ask=${q}">⚡ Hỏi Agent về chủ đề này</a>
+      <a class="screen-ask-btn" href="/?ask=${q}">⚡ Hỏi Agent về chủ đề này</a>
     </div>
 `;
 }
 
 function shellScripts({ search }) {
-  return (search ? `  <script src="/aichatbot/assets/js/blog.js?v=63"></script>\n` : '')
-    + `  <script type="module" src="/aichatbot/assets/js/app-shell.js?v=63"></script>\n`;
+  return (search ? `  <script src="/assets/js/blog.js?v=66"></script>\n` : '')
+    + `  <script type="module" src="/assets/js/app-shell.js?v=66"></script>\n`;
 }
 
 /**
@@ -288,8 +294,8 @@ function shellScripts({ search }) {
  * @param {string} o.schemaHtml — JSON-LD scripts (placed before closing body)
  * @param {boolean} o.search — include the blog search runtime (blog home only)
  */
-export function appShellPage({ title, description, path, screen, activeHub = null, activeCluster = null, contentHtml, schemaHtml = '', search = false }) {
-  return pageHead({ title, description, path })
+export function appShellPage({ title, description, path, screen, activeHub = null, activeCluster = null, contentHtml, schemaHtml = '', search = false, ogType = 'website' }) {
+  return pageHead({ title, description, path, ogType })
     + siteHeader({ activeHub, activeCluster })
     + `  <main class="site-main" id="site-main" data-motoai-screen="${esc(screen)}">
 ${contentHtml}

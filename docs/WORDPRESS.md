@@ -48,7 +48,7 @@ Mọi input được sanitize khi lưu (`sanitize_text_field`, `sanitize_key`, `
 
 ```
 WordPress site
-  → plugin in <script src="https://thuexemayhanoi.github.io/aichatbot/embed.js" async data-*>
+  → plugin in <script src="https://chatbot.thuexemaynguyentu.com/embed.js" async data-*>
     → embed.js mount launcher + iframe
       → iframe = index.html?embed=1 (CÙNG core với direct link)
 ```

@@ -167,7 +167,7 @@ export function fixtureBody({ paragraphs = 16, tag = '' } = {}) {
   }
   out.push(`<h2>${T('Tiền cọc và các khoản cần xác nhận')}</h2>`);
   out.push(`<p>${T('Tiền cọc dao động từ 2.000.000đ đến 5.000.000đ tùy loại xe và mức cọc chính xác được xác nhận khi đặt xe.')} ${T('Bạn nên mang theo giấy tờ tùy thân và bằng lái phù hợp với dung tích xe.')}</p>`);
-  out.push(`<p>${T('Bài viết này thuộc')} <a href="/aichatbot/blog/">cẩm nang thuê xe</a>, ${T('bạn có thể xem thêm trong')} <a href="/aichatbot/blog/thue-xe/">danh mục thuê xe</a> ${T('hoặc hỏi trực tiếp trên')} <a href="/aichatbot/">Agent</a> ${T('để tính chi phí cho hành trình cụ thể.')}</p>`);
+  out.push(`<p>${T('Bài viết này thuộc')} <a href="/blog/">cẩm nang thuê xe</a>, ${T('bạn có thể xem thêm trong')} <a href="/blog/thue-xe/">danh mục thuê xe</a> ${T('hoặc hỏi trực tiếp trên')} <a href="/">Agent</a> ${T('để tính chi phí cho hành trình cụ thể.')}</p>`);
   return out.join('\n');
 }
 

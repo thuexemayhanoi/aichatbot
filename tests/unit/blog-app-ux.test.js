@@ -146,7 +146,7 @@ test('v58 content site: every generated page uses the shared site header + foote
       assert.ok(!html.includes(legacy), `${page}: legacy chrome "${legacy}" removed`);
     }
     // Ask Agent is a native action that returns to the HOME chat screen.
-    assert.ok(html.includes('/aichatbot/?ask='), `${page}: Ask Agent action`);
+    assert.ok(html.includes('/?ask='), `${page}: Ask Agent action`);
   }
 });
 
@@ -176,7 +176,7 @@ test('site header CSS contract: sticky header, actions pinned right, no tiny ide
 test('hub screens mark their own category with aria-current and keep a breadcrumb', () => {
   for (const hub of HUBS) {
     const html = read(`blog/${hub}/index.html`);
-    const links = [...html.matchAll(/href="\/aichatbot\/blog\/([a-z-]+)\/"[^>]*aria-current="page"/g)].map((m) => m[1]);
+    const links = [...html.matchAll(/href="\/blog\/([a-z-]+)\/"[^>]*aria-current="page"/g)].map((m) => m[1]);
     assert.ok(links.includes(hub), `${hub}: active category marked`);
     assert.ok(html.includes('blog-breadcrumb'), `${hub}: breadcrumb present`);
     // Category chips live INSIDE the screen body, not as a second top nav.

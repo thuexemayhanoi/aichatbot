@@ -16,7 +16,7 @@
  */
 'use strict';
 
-const CORE_VERSION = 'v65';
+const CORE_VERSION = 'v66';
 const SHELL_CACHE = 'motoai-shell-' + CORE_VERSION;
 const DATA_CACHE = 'motoai-data-' + CORE_VERSION;
 const KNOWN_CACHES = [SHELL_CACHE, DATA_CACHE];
@@ -26,8 +26,8 @@ const SHELL_ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './assets/css/style.css?v=63',
-  './assets/js/main.js?v=63',
+  './assets/css/style.css?v=66',
+  './assets/js/main.js?v=66',
   './assets/js/ai-settings.js',
   './assets/js/pwa.js',
   './assets/icons/icon.svg'
@@ -81,7 +81,7 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Navigations: network-first. Each URL is cached under ITS OWN key so a
-  // content page (e.g. /aichatbot/chinh-sach/) can NEVER overwrite the cached
+  // content page (e.g. /chinh-sach/) can NEVER overwrite the cached
   // chat homepage. Offline fallback:
   //   - the chat home URL falls back to the precached './index.html' shell;
   //   - any other URL falls back to its own cached copy (if visited before),
@@ -89,7 +89,7 @@ self.addEventListener('fetch', (event) => {
   if (request.mode === 'navigate') {
     const isHomeRequest = url.pathname === new URL(self.registration.scope).pathname
       || url.pathname === new URL('./', self.registration.scope).pathname
-      || url.pathname.endsWith('/aichatbot/');
+      || url.pathname === new URL('index.html', self.registration.scope).pathname;
     event.respondWith(
       fetch(request)
         .then((response) => {
@@ -103,7 +103,7 @@ self.addEventListener('fetch', (event) => {
           caches.match(request).then((cached) =>
             cached
               || (isHomeRequest ? caches.match('./index.html') : null)
-              || new Response('<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Offline — MotoAI</title><style>body{font-family:system-ui;padding:32px;text-align:center;color:#333}a{color:#4f46e5}</style></head><body><h1>Không có kết nối</h1><p>Trang này chưa được lưu để xem offline.</p><p><a href="/aichatbot/">Về màn hình Agent</a></p></body></html>', { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } })
+              || new Response('<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Offline — MotoAI</title><style>body{font-family:system-ui;padding:32px;text-align:center;color:#333}a{color:#4f46e5}</style></head><body><h1>Không có kết nối</h1><p>Trang này chưa được lưu để xem offline.</p><p><a href="/">Về màn hình Agent</a></p></body></html>', { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } })
           ))
     );
     return;

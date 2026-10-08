@@ -1,6 +1,6 @@
 # ARTICLE-RULES — chuẩn bài viết blog
 
-Áp dụng cho mọi bài blog sản xuất của `/aichatbot/`.
+Áp dụng cho mọi bài blog sản xuất của `/`.
 
 ## Kích thước & cấu trúc
 

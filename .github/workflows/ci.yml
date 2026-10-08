@@ -29,6 +29,14 @@ jobs:
           node-version: 22
       - name: Run full test suite (unit + integration + golden + regression)
         run: node --test
+      - name: Regenerate blog and verify deterministic custom-domain output
+        run: |
+          node tools/build-blog.mjs
+          git diff --exit-code -- blog data/blog/knowledge-index.json sitemap.xml robots.txt privacy terms gioi-thieu chinh-sach lien-he gia-thue data/blog/content-matrix.csv
+      - name: Custom-domain migration and internal URL gate
+        run: node tools/site-audit.mjs
+      - name: SEO score against canonical custom domain
+        run: node tools/seo-score.mjs
       - name: Secret scan (no keys, no tokens)
         run: |
           if grep -rInE "(api[_-]?key|secret|token)[\"' ]*[:=][\"' ]*[A-Za-z0-9+/]{16,}" src assets embed.js index.html data blog config tools docs service-worker.js manifest.webmanifest integrations; then

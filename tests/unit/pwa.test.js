@@ -18,12 +18,12 @@ test('manifest.webmanifest is valid JSON with all required fields', () => {
   }
 });
 
-test('manifest base path works under /aichatbot/ (absolute paths)', () => {
-  assert.equal(manifest.scope, '/aichatbot/');
-  assert.equal(manifest.start_url, '/aichatbot/?source=pwa');
-  assert.ok(manifest.id === '/aichatbot/');
+test('manifest base path works under / (absolute paths)', () => {
+  assert.equal(manifest.scope, '/');
+  assert.equal(manifest.start_url, '/?source=pwa');
+  assert.ok(manifest.id === '/');
   for (const icon of manifest.icons) {
-    assert.ok(icon.src.startsWith('/aichatbot/'), `icon src must be absolute under /aichatbot/: ${icon.src}`);
+    assert.ok(icon.src.startsWith('/'), `icon src must be absolute under /: ${icon.src}`);
   }
 });
 

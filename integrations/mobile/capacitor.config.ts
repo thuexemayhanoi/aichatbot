@@ -11,7 +11,7 @@ const config: CapacitorConfig = {
   appName: 'MotoAI',
   webDir: 'www',
   // server: {
-  //   url: 'https://thuexemayhanoi.github.io/aichatbot/',
+  //   url: 'https://chatbot.thuexemaynguyentu.com/',
   //   cleartext: false
   // }
 };

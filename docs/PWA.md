@@ -1,18 +1,18 @@
 # PWA — MotoAI Add to Home Screen
 
-Direct app https://thuexemayhanoi.github.io/aichatbot/ là một PWA hợp lệ, cài được (installable).
+Direct app https://chatbot.thuexemaynguyentu.com/ là một PWA hợp lệ, cài được (installable).
 
 ## Tệp
 
 | Tệp | Vai trò |
 |---|---|
 | `manifest.webmanifest` | name, short_name, start_url, scope, display, icons. |
-| `service-worker.js` | Offline shell + chiến lược cache (scope `/aichatbot/`). |
+| `service-worker.js` | Offline shell + chiến lược cache (scope `/`). |
 | `assets/icons/icon.svg` | Icon vector (được commit). |
 | `assets/icons/icon-{192,512,maskable-512}.png` | Icon PNG sinh tất định bởi `tools/gen-icons.py` (CI commit). |
 | `assets/js/pwa.js` | Đăng ký SW + nút "Cài Agent" + hướng dẫn iOS. |
 
-Đường dẫn tuyệt đối (`/aichatbot/...`) trong manifest đảm bảo đúng scope khi app phục vụ dưới subpath của GitHub Pages.
+Đường dẫn tuyệt đối (`/...`) trong manifest đảm bảo đúng scope khi app phục vụ dưới subpath của GitHub Pages.
 
 ## Service worker — chiến lược cache
 
@@ -47,4 +47,4 @@ File PNG không thể commit qua một số automation path (binary). CI (`.gith
 
 ## Test
 
-`tests/unit/pwa.test.js`: manifest hợp lệ, scope `/aichatbot/`, versioned caches, không precache model, SW không đăng ký trong embed mode, offline shell, install UX, direct mode không đổi.
+`tests/unit/pwa.test.js`: manifest hợp lệ, scope `/`, versioned caches, không precache model, SW không đăng ký trong embed mode, offline shell, install UX, direct mode không đổi.

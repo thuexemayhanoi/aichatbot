@@ -17,7 +17,7 @@ test('Capacitor config points at the canonical app (strategy A, bundled)', () =>
   assert.match(cfg, /webDir: 'www'/);
   // strategy B (remote URL) stays commented out for release builds
   assert.match(cfg, /\/\/ server: \{/);
-  assert.match(cfg, /\/\/   url: 'https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/'/);
+  assert.match(cfg, /\/\/   url: 'https:\/\/chatbot\.thuexemaynguyentu\.com\/'/);
 });
 
 test('mobile deps are Capacitor-only, no other runtime dependency', () => {

@@ -4,56 +4,56 @@
   "agent": {
     "label": "Agent",
     "icon": "⚡",
-    "url": "/aichatbot/"
+    "url": "/"
   },
   "categories": [
     {
       "id": "APP",
       "label": "Ứng Dụng",
       "icon": "📱",
-      "url": "/aichatbot/blog/app/"
+      "url": "/blog/app/"
     },
     {
       "id": "GUIDE",
       "label": "Hướng Dẫn",
       "icon": "📄",
-      "url": "/aichatbot/blog/huong-dan/"
+      "url": "/blog/huong-dan/"
     },
     {
       "id": "RENT",
       "label": "Thuê Xe",
       "icon": "🏍️",
-      "url": "/aichatbot/blog/thue-xe/"
+      "url": "/blog/thue-xe/"
     },
     {
       "id": "EV",
       "label": "Xe Điện",
       "icon": "⚡",
-      "url": "/aichatbot/blog/xe-dien/"
+      "url": "/blog/xe-dien/"
     },
     {
       "id": "SAFE",
       "label": "An Toàn",
       "icon": "🛡️",
-      "url": "/aichatbot/blog/an-toan/"
+      "url": "/blog/an-toan/"
     },
     {
       "id": "LOCAL",
       "label": "Địa Phương",
       "icon": "📍",
-      "url": "/aichatbot/blog/dia-phuong/"
+      "url": "/blog/dia-phuong/"
     }
   ],
   "search": {
     "label": "Tìm Bài",
     "icon": "🔎",
-    "url": "/aichatbot/blog/"
+    "url": "/blog/"
   },
   "services": [
     {
       "label": "Giá Thuê",
       "icon": "💰",
-      "url": "/aichatbot/gia-thue/"
+      "url": "/gia-thue/"
     },
     {
       "label": "Địa Chỉ",
@@ -85,17 +85,17 @@
     {
       "label": "Chính Sách",
       "icon": "📜",
-      "url": "/aichatbot/chinh-sach/"
+      "url": "/chinh-sach/"
     },
     {
       "label": "Bảo Mật",
       "icon": "🔒",
-      "url": "/aichatbot/privacy/"
+      "url": "/privacy/"
     },
     {
       "label": "Điều Khoản",
       "icon": "📃",
-      "url": "/aichatbot/terms/"
+      "url": "/terms/"
     }
   ],
   "footer_groups": [
@@ -104,19 +104,19 @@
       "items": [
         {
           "label": "Agent",
-          "url": "/aichatbot/"
+          "url": "/"
         },
         {
           "label": "Giới Thiệu",
-          "url": "/aichatbot/gioi-thieu/"
+          "url": "/gioi-thieu/"
         },
         {
           "label": "Cẩm nang",
-          "url": "/aichatbot/blog/"
+          "url": "/blog/"
         },
         {
           "label": "Tìm Bài",
-          "url": "/aichatbot/blog/"
+          "url": "/blog/"
         }
       ]
     },
@@ -134,11 +134,11 @@
       "items": [
         {
           "label": "Giá Thuê",
-          "url": "/aichatbot/gia-thue/"
+          "url": "/gia-thue/"
         },
         {
           "label": "Liên Hệ",
-          "url": "/aichatbot/lien-he/"
+          "url": "/lien-he/"
         },
         {
           "label": "Bản Đồ",
@@ -151,15 +151,15 @@
       "items": [
         {
           "label": "Chính Sách",
-          "url": "/aichatbot/chinh-sach/"
+          "url": "/chinh-sach/"
         },
         {
           "label": "Bảo Mật",
-          "url": "/aichatbot/privacy/"
+          "url": "/privacy/"
         },
         {
           "label": "Điều Khoản",
-          "url": "/aichatbot/terms/"
+          "url": "/terms/"
         }
       ]
     }
@@ -167,7 +167,7 @@
   "about": {
     "label": "Giới Thiệu",
     "icon": "🏢",
-    "url": "/aichatbot/gioi-thieu/"
+    "url": "/gioi-thieu/"
   },
   "drawer": {
     "note": "Canonical order/labels/icons of the CORE drawer shared by the chat homepage (index.html) and every content page (tools/app-shell.mjs). tools/taxonomy.mjs drawerCore() resolves this into a normalized list; the generator renders it and tests/global-menu asserts index.html matches it.",

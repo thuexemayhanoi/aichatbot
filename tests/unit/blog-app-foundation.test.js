@@ -159,10 +159,10 @@ test('footer hub columns express the parent → child hierarchy (v61)', () => {
   for (const c of taxonomy.clusters) {
     const escName = String(c.name).replace(/&/g, '&amp;');
     assert.ok(footer.includes(`blog-footer-title">${escName}<`), `footer column ${c.name}`);
-    assert.ok(footer.includes(`class="footer-hub-link" href="/aichatbot/blog/${c.dir}/"`), `footer parent link ${c.name}`);
+    assert.ok(footer.includes(`class="footer-hub-link" href="/blog/${c.dir}/"`), `footer parent link ${c.name}`);
     for (const id of c.categories) {
       const nav = navigation.categories.find((n) => n.id === id);
-      assert.ok(footer.includes(`class="footer-sub"><a href="/aichatbot/blog/${taxonomy.categories[id].dir}/">${nav.label}<`), `footer child ${nav.label} under ${c.name}`);
+      assert.ok(footer.includes(`class="footer-sub"><a href="/blog/${taxonomy.categories[id].dir}/">${nav.label}<`), `footer child ${nav.label} under ${c.name}`);
     }
   }
 });
@@ -209,7 +209,7 @@ test('the chatbot homepage keeps NO full footer inside the chat viewport', () =>
 test('blog home: cluster cards + category cards + search + latest, compact hero', () => {
   const home = read('blog/index.html');
   for (const c of taxonomy.clusters) {
-    assert.ok(home.includes(`<h2><a href="/aichatbot/blog/${c.dir}/">${c.icon} ${esc(c.name)}</a></h2>`), `hub section ${c.name}`);
+    assert.ok(home.includes(`<h2><a href="/blog/${c.dir}/">${c.icon} ${esc(c.name)}</a></h2>`), `hub section ${c.name}`);
     assert.ok(home.includes(`Xem toàn bộ ${esc(c.name)} →`), `hub CTA ${c.name}`);
   }
   assert.ok(home.includes('blog-hub-section'), 'super-hub section markup');
@@ -251,7 +251,7 @@ test('published article subtopic chips point at real subtopic hub pages', () => 
     const s = deriveSubtopic(r.category, rows[r.article_id]);
     if (s.fallback) continue;
     const page = read(r.output_path);
-    const chip = new RegExp(`href="/aichatbot/blog/${taxonomy.categories[r.category].dir}/${s.slug}/">${s.label}<\\/a>`);
+    const chip = new RegExp(`href="/blog/${taxonomy.categories[r.category].dir}/${s.slug}/">${s.label}<\\/a>`);
     assert.ok(chip.test(page), `${r.article_id} shows its subtopic chip`);
   }
 });
@@ -329,7 +329,7 @@ test('sitemap includes subtopic hubs and every URL exists on disk, no duplicates
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   assert.equal(new Set(locs).size, locs.length);
   for (const loc of locs) {
-    const rel = loc.replace('https://thuexemayhanoi.github.io/aichatbot/', '');
+    const rel = loc.replace('https://chatbot.thuexemaynguyentu.com/', '');
     const path = rel === '' || rel.endsWith('/') ? join(rel, 'index.html') : rel;
     assert.ok(existsSync(join(ROOT, path)), `sitemap URL ${loc} has no file`);
   }

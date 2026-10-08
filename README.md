@@ -2,7 +2,7 @@
 
 MotoAI là chatbot thuê xe máy cho **Thuê Xe Máy Hà Nội Nguyễn Tú**, chạy hoàn toàn tĩnh trên GitHub Pages: không backend, không API key, không phí inference.
 
-- **Direct link:** <https://thuexemayhanoi.github.io/aichatbot/>
+- **Direct link:** <https://chatbot.thuexemaynguyentu.com/>
 - **Embed widget:** xem `docs/EMBED.md` — một thẻ `<script>` duy nhất.
 
 ## Kiến trúc (xem `docs/ARCHITECTURE.md`)
@@ -40,7 +40,7 @@ src/app/                 # Wiring dùng chung cho direct mode + embed iframe
 src/storage, src/utils
 assets/                  # UI trực tiếp (HTML/CSS/JS module, không framework)
 embed.js                 # Embed widget v1.1.0 (iframe isolation, data-open-delay)
-manifest.webmanifest     # PWA manifest (scope /aichatbot/)
+manifest.webmanifest     # PWA manifest (scope /)
 service-worker.js        # PWA offline shell (versioned caches, không precache model)
 integrations/            # WordPress plugin (loader mỏng) + Capacitor mobile wrapper foundation
 tests/                   # node --test: unit, integration, golden + multi-turn + distribution + blog
@@ -82,7 +82,7 @@ CI chạy toàn bộ suite trên mỗi push/PR tới `main`, kèm secret-scan, i
 
 MotoAI có thể chạy dưới 6 hình thức, tất cả dùng **một engine canonical duy nhất** (không fork business logic):
 
-1. **Direct web app** — <https://thuexemayhanoi.github.io/aichatbot/>
+1. **Direct web app** — <https://chatbot.thuexemaynguyentu.com/>
 2. **Embed widget** — một thẻ `<script>` (docs/EMBED.md)
 3. **WordPress plugin** — loader mỏng `integrations/wordpress/`, ZIP `dist/motoai-agent.zip` do CI sinh (docs/WORDPRESS.md)
 4. **PWA / Add to Home Screen** — manifest + service worker, offline shell, icon PNG sinh deterministic bởi `tools/gen-icons.py` trong CI (docs/PWA.md)
@@ -206,7 +206,7 @@ MotoAI gồm **hai bề mặt của cùng một hệ sản phẩm**, dùng chung
 - **Shell thống nhất**: mọi blog page (home + 6 hub + 2 bài pilot) dùng chung compact app header (← Agent, Cẩm nang, theme control), category bar 6 danh mục (một hàng cuộn ngang, `aria-current="page"` trên hub hiện tại), breadcrumb trên hub/bài.
 - **Theme Light/Dark/Auto** (`assets/js/theme.js`): preference lưu `localStorage('motoai-theme')`, áp qua `<html data-motoai-theme="dark">` — cùng attribute mà Agent tokens đã theme. Inline head script áp theme trước first paint (no flash). Toggle `#blog-theme-toggle` cycle Auto → ☀️ → 🌙. Theme trên Agent root: DEFERRED (xem `docs/matrix/blog-app-ux-matrix.csv` BLOGUX-0021).
 - **Business open/closed status** (`assets/js/business-status.js`): tính theo giờ trong timezone kinh doanh (`Asia/Ho_Chi_Minh`, từ `business.json`), không theo giờ thiết bị; xử lý midnight-wrap; thiếu dữ liệu → ẩn chip, không đoán.
-- **Single app shell (v57)**: mọi màn hình content (blog home, danh mục, subtopic, bài viết, privacy, terms) render bằng `tools/app-shell.mjs` — cùng top chrome + dock + drawer với màn hình chat; chỉ vùng nội dung giữa thay đổi. Hành động "⚡ Hỏi Agent" đưa về màn hình chat (`/aichatbot/?ask=<chủ đề>`), dock/menu action dùng `/aichatbot/?action=price|contact|address`. Runtime màn hình content: `assets/js/app-shell.js` (theme + drawer + status + contact refs).
+- **Single app shell (v57)**: mọi màn hình content (blog home, danh mục, subtopic, bài viết, privacy, terms) render bằng `tools/app-shell.mjs` — cùng top chrome + dock + drawer với màn hình chat; chỉ vùng nội dung giữa thay đổi. Hành động "⚡ Hỏi Agent" đưa về màn hình chat (`/?ask=<chủ đề>`), dock/menu action dùng `/?action=price|contact|address`. Runtime màn hình content: `assets/js/app-shell.js` (theme + drawer + status + contact refs).
 - **Search**: giữ nguyên `assets/js/blog.js` (lazy index + debounce + empty state) — audited, không đổi.
 
 ## NO MASS ARTICLE GENERATION
@@ -240,7 +240,7 @@ Blog trở thành một màn hình của cùng ứng dụng, với phân loại 
 
 # v58 — CHAT HOME + CONTENT SITE + FACTORY PRODUCTION LOOP (2026-09-28)
 
-Mô hình sản phẩm cuối cùng: `/aichatbot/` = MÀN HÌNH CHAT (không footer website, Menu bên phải, dock + drawer giữ nguyên). Mọi trang khác = trang content website chuyên nghiệp dùng chung một shell: site header gọn (identity trái, nav danh mục giữa ≥900px, search/theme/Menu PHẢI), cột nội dung, footer thật sinh từ `config/navigation.json`.
+Mô hình sản phẩm cuối cùng: `/` = MÀN HÌNH CHAT (không footer website, Menu bên phải, dock + drawer giữ nguyên). Mọi trang khác = trang content website chuyên nghiệp dùng chung một shell: site header gọn (identity trái, nav danh mục giữa ≥900px, search/theme/Menu PHẢI), cột nội dung, footer thật sinh từ `config/navigation.json`.
 
 ## Nền tảng v58
 

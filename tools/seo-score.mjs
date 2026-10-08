@@ -24,8 +24,10 @@
 import { readFileSync, existsSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SITE } from '../src/config/site.js';
+import { auditSite, createSiteIo, resolveInternal } from './site-audit.mjs';
 
-export const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
+export { SITE };
 export const HUBS = ['app', 'thue-xe', 'xe-dien', 'huong-dan', 'an-toan', 'dia-phuong'];
 export const CLUSTER_DIRS = ['cong-cu-huong-dan', 'thue-xe-phuong-tien', 'kham-pha-an-toan'];
 
@@ -88,15 +90,7 @@ function normalizeRepoPath(p) {
 
 /** Resolve an href against a page path inside the repo (no network). */
 export function resolveHref(pagePath, href) {
-  if (!href || href.startsWith('#') || /^(https?:|mailto:|tel:|data:|javascript:)/i.test(href)) return null;
-  let p = href;
-  if (p.startsWith('/aichatbot/')) p = p.slice('/aichatbot/'.length);
-  else if (p.startsWith('/')) return null; // outside this Pages site
-  else p = normalizeRepoPath(`${dirname(pagePath)}/${p}`);
-  p = p.replace(/#.*$/, '');
-  p = p.replace(/\?.*$/, '');
-  if (p === '' || p.endsWith('/')) p += 'index.html';
-  return p;
+  return resolveInternal(pagePath, href);
 }
 
 // ---------- check groups (each returns { score: 0..1, issues: [] }) ----------
@@ -118,7 +112,7 @@ function checkTechnical(pages, io) {
     add((html.match(/<h1\b/g) || []).length === 1, 'must have exactly one H1', p.path);
     add(!/noindex/i.test(html), 'noindex found', p.path);
     add(/name="viewport"/.test(html), 'missing viewport meta', p.path);
-    const ogOk = meta(html, 'og:title') && meta(html, 'og:description') && meta(html, 'og:url');
+    const ogOk = meta(html, 'og:title') && meta(html, 'og:description') && meta(html, 'og:url') === expected;
     add(!!ogOk, 'missing og:title/og:description/og:url', p.path);
     add(!!meta(html, 'og:locale'), 'missing og:locale (vi_VN)', p.path);
     const h1i = html.search(/<h1\b/i);
@@ -136,7 +130,9 @@ function checkTechnical(pages, io) {
       if (target && !io.exists(target)) issues.push(`${p.path}: broken internal link -> ${m[1]}`);
     }
   }
-  total += pages.length; pass += pages.length - issues.filter((i) => i.includes('broken internal link')).length;
+  total += pages.length;
+  const brokenPages = new Set(issues.filter((i) => i.includes('broken internal link')).map((i) => i.split(':')[0]));
+  pass += pages.length - brokenPages.size;
   return { score: total ? pass / total : 0, issues };
 }
 
@@ -240,7 +236,7 @@ function checkCrawl(pages, io) {
   const add = (ok, label, page) => { total++; if (ok) pass++; else issues.push(`${page || 'site'}: ${label}`); };
   const robots = io.exists('robots.txt') ? io.read('robots.txt') : '';
   add(/User-agent:\s*\*/i.test(robots) && /Allow:\s*\//i.test(robots), 'robots.txt missing/does not allow all');
-  add(/Sitemap:\s*\S+sitemap\.xml/i.test(robots), 'robots.txt missing Sitemap line');
+  add(robots.trim().split(/\r?\n/).includes(`Sitemap: ${SITE}sitemap.xml`), 'robots.txt Sitemap must use canonical origin');
   const xml = io.read('sitemap.xml');
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   add(new Set(locs).size === locs.length && locs.length >= pages.length, 'sitemap duplicates or missing URLs');
@@ -249,6 +245,7 @@ function checkCrawl(pages, io) {
     add(locs.includes(url), 'URL not in sitemap.xml', p.path);
   }
   for (const loc of locs) {
+    add(loc.startsWith(SITE), `sitemap URL has wrong origin (${loc})`);
     const rel = loc.replace(SITE, '');
     const file = rel === '' || rel.endsWith('/') ? rel + 'index.html' : rel;
     add(io.exists(file), `sitemap URL has no file (${loc})`);
@@ -328,6 +325,11 @@ export function scoreRepo(io) {
     });
   const ctx = { ownership, business, published };
   const pages = pageSet(published);
+  const known = new Set(pages.map((p) => p.path));
+  for (const p of io.files().filter((p) => p.startsWith('blog/') && p.endsWith('/index.html'))) {
+    if (!known.has(p)) pages.push({ path: p, kind: 'hub' });
+  }
+  const migration = auditSite(io);
 
   const groups = [
     { id: 'TECHNICAL', label: 'Technical SEO', weight: 25, run: () => checkTechnical(pages, io) },
@@ -351,18 +353,22 @@ export function scoreRepo(io) {
   }
   return {
     tool: 'tools/seo-score.mjs',
-    total: Math.round(total * 10) / 10,
+    origin: SITE,
+    pass: migration.pass,
+    // A failed migration can never advertise a passing 100/100 score.
+    total: migration.pass ? Math.round(total * 10) / 10 : 0,
     max: 100,
     pages: pages.map((p) => p.path),
     subscores,
-    issue_count: issues.length,
-    issues
+    migration,
+    issue_count: issues.length + migration.issues.length,
+    issues: [...issues, ...migration.issues.map((i) => `site: ${i}`)]
   };
 }
 
 /** Render the score payload as a markdown report. */
 export function renderMarkdown(result, header) {
-  const lines = [`# ${header || 'SEO Score'}`, '', `**TOTAL: ${result.total}/100**`, '', '| Group | Weight | Score | Ratio |', '|---|---|---|---|'];
+  const lines = [`# ${header || 'SEO Score'}`, '', `Origin: ${result.origin}`, `Migration gate: ${result.pass ? 'PASS' : 'FAIL'}`, '', `**TOTAL: ${result.total}/100**`, '', '| Group | Weight | Score | Ratio |', '|---|---|---|---|'];
   for (const k of Object.keys(result.subscores)) {
     const s = result.subscores[k];
     lines.push(`| ${s.label} | ${s.weight} | ${s.raw}/${s.weight} | ${Math.round(s.ratio * 100)}% |`);
@@ -379,12 +385,9 @@ const isCli = typeof process !== 'undefined' && process.argv && process.argv[1] 
   import.meta.url === new URL(`file://${process.argv[1]}`).href;
 if (isCli) {
   const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-  const io = {
-    read: (p) => readFileSync(join(ROOT, p), 'utf8'),
-    exists: (p) => existsSync(join(ROOT, p)),
-    size: (p) => statSync(join(ROOT, p)).size
-  };
+  const io = createSiteIo(ROOT);
   const result = scoreRepo(io);
   if (process.argv.includes('--json')) console.log(JSON.stringify(result, null, 2));
   else console.log(renderMarkdown(result, `MotoAI SEO Score — ${new Date().toISOString().slice(0, 10)}`));
+  if (!result.pass) process.exitCode = 1;
 }

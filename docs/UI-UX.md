@@ -64,7 +64,7 @@ Record results of the latest review in `reports/` (see the run report of each sc
 
 ## v58 — Chat home + content site (2026-09-28)
 
-- `/aichatbot/` là MÀN HÌNH CHAT: header app (identity trái, Auto + Menu PHẢI), messages, quick actions, composer, dock dịch vụ. KHÔNG footer website, KHÔNG blog feed dưới chat.
+- `/` là MÀN HÌNH CHAT: header app (identity trái, Auto + Menu PHẢI), messages, quick actions, composer, dock dịch vụ. KHÔNG footer website, KHÔNG blog feed dưới chat.
 - Mọi trang content dùng content-site shell: `.site-header` sticky (identity trái; `.site-nav` hiện ≥900px; `.site-actions` margin-left:auto → search/theme/Menu PHẢI), `.site-main` một hệ cột duy nhất (16px side padding + safe-area), `<footer class="blog-footer">` full-width sinh từ navigation config. Không dock chat trên trang content.
-- Trang bài: breadcrumb, chips, H1, dek, byline + reading time, hộp "Tóm tắt nhanh", TOC (mobile accordion / desktop sticky 230px + content 720px), bảng trong `.table-wrap`, related, một CTA "Hỏi Agent" (`/aichatbot/?ask=`).
+- Trang bài: breadcrumb, chips, H1, dek, byline + reading time, hộp "Tóm tắt nhanh", TOC (mobile accordion / desktop sticky 230px + content 720px), bảng trong `.table-wrap`, related, một CTA "Hỏi Agent" (`/?ask=`).
 - Ràng buộc tương phản/khả dụng giữ nguyên: focus-visible, min 44px cho control cảm ứng, một H1, aria-current, aria-expanded/controls cho drawer và nhóm menu.

@@ -22,7 +22,7 @@ Secondary (hỗ trợ ngữ nghĩa):
 - thuê xe máy online
 - thuê xe điện online
 
-Homepage (`/aichatbot/`) là landing page cho cụm này: H1 “Ứng dụng thuê xe máy & xe điện”, schema `WebApplication` + `Organization` + `FAQPage`.
+Homepage (`/`) là landing page cho cụm này: H1 “Ứng dụng thuê xe máy & xe điện”, schema `WebApplication` + `Organization` + `FAQPage`.
 
 ## 2. Phạm vi quốc gia = INTENT, không phải tồn kho
 

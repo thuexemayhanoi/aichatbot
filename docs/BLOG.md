@@ -1,6 +1,6 @@
 # Blog — kiến trúc cẩm nang 2.000 bài
 
-Blog của `/aichatbot/` là lớp nội dung SEO quốc gia cho intent **app / ứng dụng thuê xe máy & xe điện**, đồng thời là nguồn tri thức tùy chọn cho Agent. Xem quyền sở hữu từ khóa: `docs/SEO-OWNERSHIP.md`.
+Blog của `/` là lớp nội dung SEO quốc gia cho intent **app / ứng dụng thuê xe máy & xe điện**, đồng thời là nguồn tri thức tùy chọn cho Agent. Xem quyền sở hữu từ khóa: `docs/SEO-OWNERSHIP.md`.
 
 ## Cấu trúc
 

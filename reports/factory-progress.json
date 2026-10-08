@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-07T08:31:00.000Z",
+  "generated_at": "2026-10-08T06:11:20.304Z",
   "matrix": {
     "rows": 2000,
     "by_status": {
-      "PUBLISHED": 302,
-      "PLANNED": 1698
+      "PUBLISHED": 304,
+      "PLANNED": 1696
     },
     "by_category": {
       "APP": 350,
@@ -14,27 +14,27 @@
       "SAFE": 250,
       "LOCAL": 400
     },
-    "published": 302
+    "published": 304
   },
   "writer_batch": {
     "batch_id": "WRITER-BATCH-0013",
     "status": "ACTIVE",
     "chunk_states": {
-      "PUBLISHED": 2,
-      "RESERVED": 7
+      "PUBLISHED": 3,
+      "RESERVED": 6
     },
     "next_chunk": {
-      "seq": 3,
-      "writer": "writer_C",
+      "seq": 4,
+      "writer": "writer_A",
       "status": "RESERVED",
       "ids": [
-        "BA-0303",
-        "BA-0304"
+        "BA-0305",
+        "BA-0306"
       ]
     }
   },
   "throughput": {
     "last_published_date": "2026-10-06",
-    "published_last_7_days": 300
+    "published_last_7_days": 295
   }
 }

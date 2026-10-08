@@ -73,7 +73,7 @@ test('ZIP contains no secrets, no API keys, no inference endpoints', async () =>
   }
   // The only outbound URLs allowed inside the plugin: canonical embed + MIT license link.
   const urls = zipText.match(/https:\/\/[a-z0-9.\-]+/g) || [];
-  const ALLOWED = ['https://thuexemayhanoi.github.io', 'https://opensource.org'];
+  const ALLOWED = ['https://chatbot.thuexemaynguyentu.com', 'https://opensource.org'];
   for (const url of new Set(urls)) {
     assert.ok(ALLOWED.some((a) => url.startsWith(a)), `unexpected URL in plugin: ${url}`);
   }

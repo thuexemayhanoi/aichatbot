@@ -55,6 +55,7 @@ test('progress report exposes the FIFO next chunk of the active writer batch', (
 });
 
 test('default mode writes reports/factory-progress.json and --check verifies freshness', () => {
+  const productionReportBefore = readFileSync(join(REPO, 'reports/factory-progress.json'), 'utf8');
   // Dedicated throwaway fixture: a sandbox copy would drag the PRODUCTION
   // report along, so the "report does not exist yet" case needs a clean tree.
   const dir = mkdtempSync(join(tmpdir(), 'motoai-progress-fx-'));
@@ -83,8 +84,7 @@ test('default mode writes reports/factory-progress.json and --check verifies fre
   assert.ok(updated.matrix.published > created.matrix.published, 'report updated with new truth');
   execFileSync('node', ['tools/factory-progress.mjs', '--check'], { cwd: dir }); // fresh again
   // Fixture isolation: the PRODUCTION report was never touched.
-  const prod = JSON.parse(readFileSync(join(REPO, 'reports/factory-progress.json'), 'utf8'));
-  assert.equal(prod.matrix.published, created.matrix.published);
+  assert.equal(readFileSync(join(REPO, 'reports/factory-progress.json'), 'utf8'), productionReportBefore);
 });
 
 test('buildProgress import works against the real repository (read-only)', () => {

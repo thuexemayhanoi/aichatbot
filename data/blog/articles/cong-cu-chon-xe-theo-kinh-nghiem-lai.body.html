@@ -1,6 +1,6 @@
 <h2>Công cụ chọn xe theo kinh nghiệm lái giải quyết vấn đề gì</h2>
 <p>Mỗi người thuê xe máy có một trình độ và một sự tự tin khác nhau: người đã chạy mười năm chỉ cần hỏi xe còn hay không; người mới cầm bằng thì muốn dòng nhẹ, dễ đi, không có gì gây bất ngờ. Câu hỏi "nên thuê xe nào" vì vậy không có đáp án chung — đáp án đúng phụ thuộc kinh nghiệm lái của chính bạn. Công cụ chọn xe theo kinh nghiệm lái chính là lớp gợi ý đặt câu hỏi đó vào giữa: thay vì liệt kê dàn xe rồi để khách tự mò, công cụ hỏi về thói quen, trình độ và hành trình của bạn để đề xuất dòng xe hợp nhất.</p>
-<p>Trong ứng dụng web MotoAI của {{ business.brand }}, việc này diễn ra qua hội thoại: bạn trả lời vài câu ngắn về kinh nghiệm (mới lái, quen xe số hay xe ga, từng chạy phố đông chưa) và về kế hoạch (đi phố, đi xa, chở hai người hay đi một mình), hệ thống đối chiếu với đặc tính từng dòng xe trong dàn xe cho thuê rồi gợi ý. Toàn bộ phần hỏi đáp chạy trên thiết bị của bạn, không cần tài khoản, không cần cài đặt. Nếu bạn chưa từng dùng công cụ gợi ý xe, có thể bắt đầu từ <a href="/aichatbot/blog/app/chon-xe-bang-agent/">cách chọn xe qua Agent</a> hoặc xem <a href="/aichatbot/blog/app/goi-y-chon-xe-may-phu-hop/">tổng quan gợi ý chọn xe máy phù hợp</a>.</p>
+<p>Trong ứng dụng web MotoAI của {{ business.brand }}, việc này diễn ra qua hội thoại: bạn trả lời vài câu ngắn về kinh nghiệm (mới lái, quen xe số hay xe ga, từng chạy phố đông chưa) và về kế hoạch (đi phố, đi xa, chở hai người hay đi một mình), hệ thống đối chiếu với đặc tính từng dòng xe trong dàn xe cho thuê rồi gợi ý. Toàn bộ phần hỏi đáp chạy trên thiết bị của bạn, không cần tài khoản, không cần cài đặt. Nếu bạn chưa từng dùng công cụ gợi ý xe, có thể bắt đầu từ <a href="/blog/app/chon-xe-bang-agent/">cách chọn xe qua Agent</a> hoặc xem <a href="/blog/app/goi-y-chon-xe-may-phu-hop/">tổng quan gợi ý chọn xe máy phù hợp</a>.</p>
 <h2>Kinh nghiệm lái quyết định những gì khi chọn xe</h2>
 <p>Trình độ lái ảnh hưởng tới chọn xe ở bốn khía cạnh, và công cụ gợi ý lấy cả bốn làm đầu vào:</p>
 <ul>
@@ -9,7 +9,7 @@
 <li>Tốc độ tối đa bạn thật sự cần: chạy phố thì không cần dòng máy lớn; định chạy xa, nhiều dốc mới cần động cơ mạnh hơn.</li>
 <li>Độ quen của vị trí phanh và ga: người mới chuyển từ xe số sang xe ga cần thời gian quen phanh tay, nên chọn dòng phổ thông phản ứng nhẹ thay vì dòng ga nặng.</li>
 </ul>
-<p>Sai lầm kinh điển của khách du lịch là thuê dòng xe "đẹp" hoặc "mạnh" hơn trình độ: xe nặng khó giữ trong kẹt xe phố cổ, và máy mạnh khiến phản ứng ga nhạy hơn mong đợi. Chi tiết cảm giác lái từng dòng được so trong bài <a href="/aichatbot/blog/thue-xe/so-sanh-gia-cac-loai-xe-may-cho-thue/">so sánh các loại xe máy cho thuê</a> để bạn tự đối chiếu thêm.</p>
+<p>Sai lầm kinh điển của khách du lịch là thuê dòng xe "đẹp" hoặc "mạnh" hơn trình độ: xe nặng khó giữ trong kẹt xe phố cổ, và máy mạnh khiến phản ứng ga nhạy hơn mong đợi. Chi tiết cảm giác lái từng dòng được so trong bài <a href="/blog/thue-xe/so-sanh-gia-cac-loai-xe-may-cho-thue/">so sánh các loại xe máy cho thuê</a> để bạn tự đối chiếu thêm.</p>
 <h2>Cách dùng công cụ chọn xe hiệu quả trong ba lượt hỏi</h2>
 <p>Gợi ý tốt nhất đến từ thông tin thật, không phải thông tin "cho nhanh". Ba lượt hỏi mẫu để có đề xuất sát:</p>
 <ul>
@@ -17,7 +17,7 @@
 <li>Lượt 2 - Hành trình: "di pho co 2 ngay, co the di ven de" — nói rõ thời gian và loại đường dự kiến.</li>
 <li>Lượt 3 - Điều kiện: "muon xe nhe co hop do, hai nguoi di cung" — thêm yêu cầu cụ thể như cốp rộng, chở người sau.</li>
 </ul>
-<p>Sau ba lượt, đề xuất thường đã hội tụ về một hai dòng xe. Bạn có thể hỏi tiếp phần giá theo thời gian của chính dòng được gợi ý, nối sang <a href="/aichatbot/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang/">tính chi phí thuê theo ngày tuần tháng</a> để chốt gói. Nếu muốn tự kiểm chứng đề xuất bằng các bước tay, bài <a href="/aichatbot/blog/thue-xe/chon-xe/">cách chọn xe khi thuê</a> có checklist đối chiếu độc lập với công cụ.</p>
+<p>Sau ba lượt, đề xuất thường đã hội tụ về một hai dòng xe. Bạn có thể hỏi tiếp phần giá theo thời gian của chính dòng được gợi ý, nối sang <a href="/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang/">tính chi phí thuê theo ngày tuần tháng</a> để chốt gói. Nếu muốn tự kiểm chứng đề xuất bằng các bước tay, bài <a href="/blog/thue-xe/chon-xe/">cách chọn xe khi thuê</a> có checklist đối chiếu độc lập với công cụ.</p>
 <h2>Người mới lái nên được gợi ý dòng xe nào</h2>
 <p>Khi công cụ nhận tín hiệu "người mới", các tiêu chí ưu tiên thay đổi: an toàn thao tác đứng trên trải nghiệm và giá cả. Nhóm gợi ý phổ biến cho người mới:</p>
 <ul>
@@ -25,14 +25,14 @@
 <li>Xe ga phổ thông tầm trung: hợp người ngại tay côn, muốn cốp đựng đồ.</li>
 <li>Tránh dòng máy lớn và xe pin chưa rõ ràng với hành trình xa, vì hai nhóm này đòi hỏi kỹ năng quản lý nguồn lực mà người mới chưa có.</li>
 </ul>
-<p>Một lưu ý không công cụ nào thay được: hãy chạy thử quanh khu vực nhận xe trước khi nhận chính thức. Gợi ý của công cụ cho bạn vòng soát danh sách; vòng chạy thử là pha kiểm chứng cuối cùng về cảm giác thật trên tay. Kiểm tra đầy đủ trước khi rời cửa hàng theo <a href="/aichatbot/blog/thue-xe/kiem-tra-xe-truoc-khi-nhan/">hướng dẫn kiểm tra xe trước khi nhận</a>, và nếu bạn mới chạy xe ga lần đầu, đọc trước bài <a href="/aichatbot/blog/huong-dan/chay-xe-ga-lan-dau/">chạy xe ga lần đầu</a>.</p>
+<p>Một lưu ý không công cụ nào thay được: hãy chạy thử quanh khu vực nhận xe trước khi nhận chính thức. Gợi ý của công cụ cho bạn vòng soát danh sách; vòng chạy thử là pha kiểm chứng cuối cùng về cảm giác thật trên tay. Kiểm tra đầy đủ trước khi rời cửa hàng theo <a href="/blog/thue-xe/kiem-tra-xe-truoc-khi-nhan/">hướng dẫn kiểm tra xe trước khi nhận</a>, và nếu bạn mới chạy xe ga lần đầu, đọc trước bài <a href="/blog/huong-dan/chay-xe-ga-lan-dau/">chạy xe ga lần đầu</a>.</p>
 <h2>Gợi ý theo hành trình: phố, ven đê và xa hơn</h2>
 <p>Cùng một người, hai hành trình khác nhau có thể ra hai gợi ý khác nhau. Công cụ phân biệt theo loại đường và thời gian:</p>
 <ul>
 <li>Phố cổ, ngõ hẹp: ưu tiên xe nhẹ, góc quay nhỏ, tiện tấp lề.</li>
-<li>Ven đê, đường trường: ưu tiên xe bền máy, yên thoải mái cho chặng dài, xem gợi ý <a href="/aichatbot/blog/dia-phuong/ven-de-song-hong/">hành trình ven đê sông Hồng</a>.</li>
-<li>Chở hai người với hành lý: ưu tiên cốp rộng và khung chắc, tham khảo <a href="/aichatbot/blog/xe-dien/xe-dien-cho-hai-nguoi/">lựa chọn xe điện chở hai người</a> nếu định dùng xe điện.</li>
-<li>Mùa mưa, chạy đêm: gợi ý thêm phần trang bị và lưu ý an toàn theo <a href="/aichatbot/blog/an-toan/mua-lon-va-lai-xe/">kinh nghiệm chạy mưa</a>.</li>
+<li>Ven đê, đường trường: ưu tiên xe bền máy, yên thoải mái cho chặng dài, xem gợi ý <a href="/blog/dia-phuong/ven-de-song-hong/">hành trình ven đê sông Hồng</a>.</li>
+<li>Chở hai người với hành lý: ưu tiên cốp rộng và khung chắc, tham khảo <a href="/blog/xe-dien/xe-dien-cho-hai-nguoi/">lựa chọn xe điện chở hai người</a> nếu định dùng xe điện.</li>
+<li>Mùa mưa, chạy đêm: gợi ý thêm phần trang bị và lưu ý an toàn theo <a href="/blog/an-toan/mua-lon-va-lai-xe/">kinh nghiệm chạy mưa</a>.</li>
 </ul>
 <h2>Kết hợp gợi ý của công cụ với tư vấn tại cửa hàng</h2>
 <p>Công cụ đề xuất dựa trên dữ liệu cấu hình; cửa hàng biết tình trạng từng chiếc xe thật đang có. Kết hợp hai nguồn là quy trình chặt nhất: dùng công cụ để thu hẹp xuống một hai dòng, rồi gọi {{ business.contact.phone_display }} hoặc ghé {{ business.address.full }} trong giờ mở cửa {{ business.hours.display }} để hỏi chiếc cụ thể của dòng đó đang ở tình trạng nào. Tin cậy của một gợi ý nằm ở đúng chỗ giao giữa cấu hình và thực tế: dòng xe hợp trình độ, chiếc xe đang cho thuê ở tình trạng tốt, và mức cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} được xác nhận trước khi đặt.</p>
@@ -44,4 +44,4 @@
 <h3>Người cao hoặc thấp có được tính vào gợi ý không?</h3>
 <p>Có, chiều cao ảnh hưởng trực tiếp tới yên xe và tư thế dừng. Hãy nêu chiều cao ước lượng trong lượt hỏi kinh nghiệm, đề xuất sẽ ưu tiên dòng yên thấp vừa vặn cho bạn.</p>
 <h3>Công cụ có dùng cho xe điện không?</h3>
-<p>Có: các câu hỏi về pin, hành trình xa hay gần và kinh nghiệm chạy xe điện đều nằm trong dữ liệu gợi ý. Nếu chưa từng chạy xe điện, cứ nói rõ để được đề xuất kèm lưu ý chuyển đổi từ xe xăng, ví dụ như nội dung trong <a href="/aichatbot/blog/xe-dien/huong-dan-su-dung-xe-may-dien/">hướng dẫn sử dụng xe máy điện</a>.</p>
+<p>Có: các câu hỏi về pin, hành trình xa hay gần và kinh nghiệm chạy xe điện đều nằm trong dữ liệu gợi ý. Nếu chưa từng chạy xe điện, cứ nói rõ để được đề xuất kèm lưu ý chuyển đổi từ xe xăng, ví dụ như nội dung trong <a href="/blog/xe-dien/huong-dan-su-dung-xe-may-dien/">hướng dẫn sử dụng xe máy điện</a>.</p>

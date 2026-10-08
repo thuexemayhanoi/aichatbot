@@ -26,7 +26,7 @@ export function parseQueryConfig(input) {
 
 /**
  * Build an iframe URL for the embed widget from a base URL and config.
- * @param {string|URL} baseUrl - e.g. https://host/aichatbot/embed.js
+ * @param {string|URL} baseUrl - e.g. https://host/embed.js
  */
 export function buildEmbedUrl(baseUrl, config = {}) {
   if (!baseUrl) throw new TypeError('buildEmbedUrl requires a baseUrl');

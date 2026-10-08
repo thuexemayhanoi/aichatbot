@@ -18,7 +18,7 @@ MotoAI là một sản phẩm phân phối được qua 6 kênh, dùng **MỘT e
 
 | Kênh | Cơ chế | Source label |
 |---|---|---|
-| Direct web | https://thuexemayhanoi.github.io/aichatbot/ | (none) |
+| Direct web | https://chatbot.thuexemaynguyentu.com/ | (none) |
 | Embed widget | `<script src=".../embed.js" data-motoai ...>` — xem docs/EMBED.md | `data-source` |
 | WordPress plugin | `integrations/wordpress/` — loader mỏng; ZIP: `dist/motoai-agent.zip` — xem docs/WORDPRESS.md | `wordpress` |
 | PWA | manifest + service worker — xem docs/PWA.md | `pwa` |

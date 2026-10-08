@@ -35,8 +35,8 @@ const STATIC = ['privacy/index.html', 'terms/index.html', 'gioi-thieu/index.html
 
 function resolveHref(href) {
   if (!href || href.startsWith('#') || /^(https?:|mailto:|tel:|data:|javascript:)/i.test(href)) return null;
-  if (!href.startsWith('/aichatbot/')) return null;
-  let p = href.slice('/aichatbot/'.length).split('#')[0].split('?')[0];
+  if (!href.startsWith('/')) return null;
+  let p = href.slice('/'.length).split('#')[0].split('?')[0];
   if (p === '' || p.endsWith('/')) p += 'index.html';
   return p;
 }
@@ -71,7 +71,7 @@ test('audit: PARENT_WITHOUT_CHILD_LINK = 0 (every parent links both children)', 
   for (const c of taxonomy.clusters) {
     const html = read(`blog/${c.dir}/index.html`);
     for (const id of c.categories) {
-      assert.ok(html.includes(`href="/aichatbot/blog/${taxonomy.categories[id].dir}/"`),
+      assert.ok(html.includes(`href="/blog/${taxonomy.categories[id].dir}/"`),
         `${c.dir}: links child ${id}`);
     }
   }
@@ -81,8 +81,8 @@ test('audit: CHILD_WITHOUT_PARENT_LINK = 0 (every child links its parent, visibl
   for (const cat of Object.values(taxonomy.categories)) {
     const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);
     const html = read(`blog/${cat.dir}/index.html`);
-    assert.ok(html.includes(`href="/aichatbot/blog/${cluster.dir}/"`), `${cat.dir}: parent link`);
-    assert.ok(unesc(html).includes(`Nhóm chủ đề: <a href="/aichatbot/blog/${cluster.dir}/">${cluster.name}</a>`),
+    assert.ok(html.includes(`href="/blog/${cluster.dir}/"`), `${cat.dir}: parent link`);
+    assert.ok(unesc(html).includes(`Nhóm chủ đề: <a href="/blog/${cluster.dir}/">${cluster.name}</a>`),
       `${cat.dir}: prominent parent context`);
   }
 });
@@ -92,11 +92,11 @@ test('audit: ARTICLE_WITHOUT_CHILD_LINK = 0 and ARTICLE_WITHOUT_PARENT_CONTEXT =
     const cat = taxonomy.categories[a.category];
     const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);
     const html = read(`blog/${cat.dir}/${a.slug}/index.html`);
-    assert.ok(html.includes(`href="/aichatbot/blog/${cat.dir}/"`), `${a.slug}: child hub link`);
-    assert.ok(html.includes(`href="/aichatbot/blog/${cluster.dir}/"`), `${a.slug}: parent hub link`);
+    assert.ok(html.includes(`href="/blog/${cat.dir}/"`), `${a.slug}: child hub link`);
+    assert.ok(html.includes(`href="/blog/${cluster.dir}/"`), `${a.slug}: parent hub link`);
     assert.ok(html.includes('blog-topic-context'), `${a.slug}: topic context section`);
     assert.ok(unesc(html).includes('Bài viết thuộc'), `${a.slug}: topic context label`);
-    assert.ok(unesc(html).includes(`<a href="/aichatbot/blog/${cluster.dir}/">${cluster.name}</a>`), `${a.slug}: context names the parent`);
+    assert.ok(unesc(html).includes(`<a href="/blog/${cluster.dir}/">${cluster.name}</a>`), `${a.slug}: context names the parent`);
   }
 });
 
@@ -106,9 +106,9 @@ test('menu: desktop header exposes the 3 parent hubs as crawlable anchors', () =
   for (const page of ['blog/index.html', 'blog/thue-xe/index.html', ...STATIC]) {
     const html = read(page);
     for (const c of taxonomy.clusters) {
-      assert.ok(html.includes(`class="site-nav-parent" href="/aichatbot/blog/${c.dir}/"`), `${page}: parent anchor ${c.dir}`);
+      assert.ok(html.includes(`class="site-nav-parent" href="/blog/${c.dir}/"`), `${page}: parent anchor ${c.dir}`);
       for (const id of c.categories) {
-        assert.ok(html.includes(`href="/aichatbot/blog/${taxonomy.categories[id].dir}/"`), `${page}: dropdown child ${id}`);
+        assert.ok(html.includes(`href="/blog/${taxonomy.categories[id].dir}/"`), `${page}: dropdown child ${id}`);
       }
     }
   }
@@ -118,10 +118,10 @@ test('menu: chat homepage drawer mirrors the hub → child hierarchy (mobile men
   const html = read('index.html');
   const drawer = html.slice(html.indexOf('id="motoai-drawer"'), html.indexOf('</nav>', html.indexOf('id="motoai-drawer"')));
   for (const c of taxonomy.clusters) {
-    assert.ok(drawer.includes(`href="/aichatbot/blog/${c.dir}/"`), `home drawer: parent link ${c.dir}`);
+    assert.ok(drawer.includes(`href="/blog/${c.dir}/"`), `home drawer: parent link ${c.dir}`);
     assert.ok(unesc(drawer).includes(c.name), `home drawer: parent label ${c.name}`);
     for (const id of c.categories) {
-      assert.ok(drawer.includes(`href="/aichatbot/blog/${taxonomy.categories[id].dir}/"`), `home drawer: child ${id}`);
+      assert.ok(drawer.includes(`href="/blog/${taxonomy.categories[id].dir}/"`), `home drawer: child ${id}`);
     }
   }
   // Parent links keep 44px+ touch targets on the home shell too.
@@ -136,10 +136,10 @@ test('blog home: THREE primary hub sections with linked H2 + child pills + lates
   const home = read('blog/index.html');
   for (const c of taxonomy.clusters) {
     assert.ok(home.includes(`<section class="blog-hub-section" aria-label="`), 'semantic <section>');
-    assert.ok(unesc(home).includes(`<h2><a href="/aichatbot/blog/${c.dir}/">${c.icon} ${c.name}</a></h2>`), `linked H2 ${c.name}`);
+    assert.ok(unesc(home).includes(`<h2><a href="/blog/${c.dir}/">${c.icon} ${c.name}</a></h2>`), `linked H2 ${c.name}`);
     assert.ok(unesc(home).includes(`Xem toàn bộ ${c.name} →`), `CTA ${c.name}`);
     for (const id of c.categories) {
-      assert.ok(home.includes(`href="/aichatbot/blog/${taxonomy.categories[id].dir}/"`), `child pill ${id}`);
+      assert.ok(home.includes(`href="/blog/${taxonomy.categories[id].dir}/"`), `child pill ${id}`);
     }
   }
 });
@@ -198,11 +198,11 @@ test('footer: parent-hub columns with indented children + compact secondary row'
   const html = unesc(read('blog/index.html'));
   const footer = html.slice(html.indexOf('<footer class="blog-footer">'), html.indexOf('</footer>'));
   for (const c of taxonomy.clusters) {
-    assert.ok(footer.includes(`class="footer-hub-link" href="/aichatbot/blog/${c.dir}/"`), `footer parent ${c.name}`);
+    assert.ok(footer.includes(`class="footer-hub-link" href="/blog/${c.dir}/"`), `footer parent ${c.name}`);
     for (const id of c.categories) {
       const cat = taxonomy.categories[id];
       const navItem = navigation.categories.find((n) => n.id === id);
-      assert.ok(footer.includes(`href="/aichatbot/blog/${cat.dir}/">${navItem.label}<`), `footer child ${navItem.label}`);
+      assert.ok(footer.includes(`href="/blog/${cat.dir}/">${navItem.label}<`), `footer child ${navItem.label}`);
     }
   }
   assert.ok(footer.includes('blog-footer-secondary'), 'secondary service/legal row');
@@ -214,7 +214,7 @@ test('footer: parent-hub columns with indented children + compact secondary row'
 // ---------- URL freeze (task §16) ----------
 
 test('URL freeze: no hub/article URL or canonical changed', () => {
-  const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
+  const SITE = 'https://chatbot.thuexemaynguyentu.com/';
   const locs = [...read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   for (const dir of [...PARENT_DIRS, ...CHILD_DIRS]) {
     assert.ok(locs.includes(`${SITE}blog/${dir}/`), `sitemap keeps /blog/${dir}/`);
@@ -248,8 +248,8 @@ test('audit: SUBTOPIC_WITHOUT_SILO_LINK = 0 (subtopic links silo AND parent hub)
     const [catId, cat] = Object.entries(taxonomy.categories).find(([, c]) => c.dir === siloDir);
     const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);
     const html = read(p);
-    assert.ok(html.includes(`href="/aichatbot/blog/${siloDir}/"`), `${p}: silo link`);
-    assert.ok(html.includes(`href="/aichatbot/blog/${cluster.dir}/"`), `${p}: parent hub link (breadcrumb)`);
+    assert.ok(html.includes(`href="/blog/${siloDir}/"`), `${p}: silo link`);
+    assert.ok(html.includes(`href="/blog/${cluster.dir}/"`), `${p}: parent hub link (breadcrumb)`);
   }
 });
 
@@ -265,7 +265,7 @@ test('audit: subtopic schema = CollectionPage + ItemList + BreadcrumbList; visib
     const col = lds.find((o) => o['@type'] === 'CollectionPage');
     assert.ok(col, `${p}: CollectionPage`);
     assert.ok(col.mainEntity?.['@type'] === 'ItemList', `${p}: ItemList mainEntity`);
-    assert.equal(col.url, `${'https://thuexemayhanoi.github.io/aichatbot/'}${p.replace(/index\.html$/, '')}`, `${p}: CollectionPage url is self`);
+    assert.equal(col.url, `${'https://chatbot.thuexemaynguyentu.com/'}${p.replace(/index\.html$/, '')}`, `${p}: CollectionPage url is self`);
     const crumbs = lds.find((o) => o['@type'] === 'BreadcrumbList').itemListElement.map((i) => i.name);
     const visible = visibleTrailOf(html);
     assert.deepEqual(visible, crumbs, `${p}: visible breadcrumb == JSON-LD`);
@@ -276,7 +276,7 @@ test('audit: subtopic schema = CollectionPage + ItemList + BreadcrumbList; visib
 });
 
 test('audit: canonical hygiene — every blog page self-canonical, zero duplicates', () => {
-  const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
+  const SITE = 'https://chatbot.thuexemaynguyentu.com/';
   const seen = new Map();
   for (const p of blogPages()) {
     const html = read(p);
@@ -296,9 +296,9 @@ test('audit: full hybrid chain Super Hub → Parent Hub → Silo → Subtopic �
   for (const a of ARTICLES) {
     const cat = taxonomy.categories[a.category];
     const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);
-    assert.ok(superHub.includes(`href="/aichatbot/blog/${cluster.dir}/"`), `super hub → ${cluster.dir}`);
+    assert.ok(superHub.includes(`href="/blog/${cluster.dir}/"`), `super hub → ${cluster.dir}`);
     const hubPage = read(`blog/${cluster.dir}/index.html`);
-    assert.ok(hubPage.includes(`href="/aichatbot/blog/${cat.dir}/"`), `hub ${cluster.dir} → silo ${cat.dir}`);
+    assert.ok(hubPage.includes(`href="/blog/${cat.dir}/"`), `hub ${cluster.dir} → silo ${cat.dir}`);
     const siloPage = read(`blog/${cat.dir}/index.html`);
     // v64.3: derive the article's OWN subtopic from the canonical taxonomy
     // model (matrix row) instead of grabbing the first subtopic page of the
@@ -306,14 +306,14 @@ test('audit: full hybrid chain Super Hub → Parent Hub → Silo → Subtopic �
     // each subtopic page only lists its own members.
     const sub = deriveSubtopic(a.category, ROWS[a.article_id] ?? {});
     if (!sub.fallback) {
-      assert.ok(siloPage.includes(`href="/aichatbot/blog/${cat.dir}/${sub.slug}/"`), `silo ${cat.dir} → subtopic ${sub.slug}`);
+      assert.ok(siloPage.includes(`href="/blog/${cat.dir}/${sub.slug}/"`), `silo ${cat.dir} → subtopic ${sub.slug}`);
       const subPage = read(`blog/${cat.dir}/${sub.slug}/index.html`);
-      assert.ok(subPage.includes(`href="/aichatbot/blog/${cat.dir}/${a.slug}/"`), `subtopic ${sub.slug} → article ${a.slug}`);
+      assert.ok(subPage.includes(`href="/blog/${cat.dir}/${a.slug}/"`), `subtopic ${sub.slug} → article ${a.slug}`);
     } else {
       const siloPages = blogPages().filter((p) =>
         p === `blog/${cat.dir}/index.html` || p.startsWith(`blog/${cat.dir}/page/`));
       assert.ok(
-        siloPages.some((p) => read(p).includes(`href="/aichatbot/blog/${cat.dir}/${a.slug}/"`)),
+        siloPages.some((p) => read(p).includes(`href="/blog/${cat.dir}/${a.slug}/"`)),
         `silo ${cat.dir} pagination → article ${a.slug}`
       );
     }

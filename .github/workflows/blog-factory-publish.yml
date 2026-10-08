@@ -135,6 +135,10 @@ jobs:
         if: steps.select.outputs.proceed == 'true'
         run: node tools/blog-factory.mjs validate
 
+      - name: Verify custom-domain output before publishing derived state
+        if: steps.select.outputs.proceed == 'true'
+        run: node tools/site-audit.mjs
+
       - name: Commit derived state (one commit per chunk)
         if: steps.select.outputs.proceed == 'true'
         run: |

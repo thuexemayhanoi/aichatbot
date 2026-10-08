@@ -155,18 +155,18 @@ test('sitemap has no duplicates and no unpublished URLs', () => {
   assert.equal(new Set(locs).size, locs.length, 'no duplicate sitemap URLs');
   for (const r of parseMatrix()) {
     if (r.status !== 'PUBLISHED') {
-      assert.ok(!locs.includes(`https://thuexemayhanoi.github.io/aichatbot/${r.output_path}`), 'unpublished rows must not be in the sitemap');
+      assert.ok(!locs.includes(`https://chatbot.thuexemaynguyentu.com/${r.output_path}`), 'unpublished rows must not be in the sitemap');
     }
   }
-  assert.ok(locs.includes('https://thuexemayhanoi.github.io/aichatbot/'));
-  assert.ok(locs.includes('https://thuexemayhanoi.github.io/aichatbot/blog/'));
+  assert.ok(locs.includes('https://chatbot.thuexemaynguyentu.com/'));
+  assert.ok(locs.includes('https://chatbot.thuexemaynguyentu.com/blog/'));
 });
 
 test('sitemap URLs point at files that exist on disk', () => {
   const xml = read('sitemap.xml');
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   for (const loc of locs) {
-    const rel = loc.replace('https://thuexemayhanoi.github.io/aichatbot/', '');
+    const rel = loc.replace('https://chatbot.thuexemaynguyentu.com/', '');
     const path = rel === '' || rel.endsWith('/') ? join(rel, 'index.html') : rel;
     assert.ok(existsSync(join(ROOT, path)), `sitemap URL ${loc} has no file`);
   }
@@ -177,7 +177,7 @@ test('blog hub pages exist for all six categories and link home', () => {
   for (const hub of hubs) {
     const page = read(`blog/${hub}/index.html`);
     assert.match(page, /<h1[\s>]/);
-    assert.ok(page.includes('/aichatbot/blog/'), `${hub} hub links back to blog home`);
+    assert.ok(page.includes('/blog/'), `${hub} hub links back to blog home`);
   }
   assert.ok(existsSync(join(ROOT, 'blog/index.html')));
 });
@@ -256,15 +256,15 @@ test('v58: parent cluster hub pages exist and connect their category hubs', () =
     assert.ok(html.includes('blog-breadcrumb'), `${c.dir}: breadcrumb`);
     for (const id of c.categories) {
       const dir = tax.categories[id].dir;
-      assert.ok(html.includes(`/aichatbot/blog/${dir}/`), `${c.dir}: links ${id}`);
+      assert.ok(html.includes(`/blog/${dir}/`), `${c.dir}: links ${id}`);
     }
     assert.ok(html.includes('Cẩm nang'), `${c.dir}: back to blog root`);
-    assert.ok(html.includes('/aichatbot/?ask='), `${c.dir}: Ask Agent`);
+    assert.ok(html.includes('/?ask='), `${c.dir}: Ask Agent`);
   }
 });
 
 test('v58: about, policy, contact and price pages exist with verified facts only', () => {
-  const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
+  const SITE = 'https://chatbot.thuexemaynguyentu.com/';
   const business = JSON.parse(read('data/business/business.json'));
   const pages = {
     'gioi-thieu': ['Giới thiệu', business.address.full],

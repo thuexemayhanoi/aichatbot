@@ -1,6 +1,6 @@
 # Continuous Writer Contract — vòng lặp bắt buộc của external writer
 
-Tài liệu này là nguồn chuẩn duy nhất cho cách một writer run (agent AI bên ngoài) PHẢI hoạt động liên tục với `/aichatbot/`. `docs/BLOG-FACTORY.md`, `README.md` và workflow tham chiếu tài liệu này.
+Tài liệu này là nguồn chuẩn duy nhất cho cách một writer run (agent AI bên ngoài) PHẢI hoạt động liên tục với `/`. `docs/BLOG-FACTORY.md`, `README.md` và workflow tham chiếu tài liệu này.
 
 ## Phân vai (quan trọng)
 

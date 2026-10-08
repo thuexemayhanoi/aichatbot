@@ -40,7 +40,7 @@ If `active-work.json` exists from a previous run:
 
 ## 5. Deployment verification
 
-After push, verify https://thuexemayhanoi.github.io/aichatbot/ in BOTH modes:
+After push, verify https://chatbot.thuexemaynguyentu.com/ in BOTH modes:
 - DIRECT: load page, send a golden question, check answer matches verified data.
 - EMBED: script tag on any host page, launcher appears, widget opens.
 If stale → find cause (CDN delay vs failed build) before claiming success.

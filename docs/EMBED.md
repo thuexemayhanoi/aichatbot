@@ -4,7 +4,7 @@
 
 ```html
 <script
-  src="https://thuexemayhanoi.github.io/aichatbot/embed.js"
+  src="https://chatbot.thuexemaynguyentu.com/embed.js"
   data-motoai
   data-lang="vi"
   data-theme="auto"

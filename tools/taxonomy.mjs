@@ -66,7 +66,7 @@ export function deriveArticleTaxonomy(categoryId, row) {
     parent_cluster: cat.cluster,
     cluster_label: CLUSTER_BY_ID[cat.cluster].name,
     subtopic: deriveSubtopic(categoryId, row),
-    hub_url: `/aichatbot/blog/${cat.dir}/`,
+    hub_url: `/blog/${cat.dir}/`,
     subtopic_hub_url: null // resolved by the builder only for real hub pages
   };
 }
@@ -83,7 +83,7 @@ export function clusterNav(clusterId) {
     id: c.id,
     name: c.name,
     icon: c.icon ?? '📂',
-    url: `/aichatbot/blog/${c.dir}/`,
+    url: `/blog/${c.dir}/`,
     children: c.categories.map((id) => categoryNav(id))
   };
 }
@@ -117,7 +117,7 @@ export function drawerCore() {
         const hub = clusterNav(c.id);
         return {
           kind: 'hub', icon: hub.icon, label: hub.name, url: hub.url,
-          children: hub.children.map((ch) => link({ ...ch, url: `/aichatbot/blog/${ch.dir}/` }))
+          children: hub.children.map((ch) => link({ ...ch, url: `/blog/${ch.dir}/` }))
         };
       });
     }

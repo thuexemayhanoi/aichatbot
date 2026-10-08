@@ -26,7 +26,7 @@ function fakeDoc(scriptAttrs = {}) {
       querySelectorAll() { return []; }
     };
     if (tag === 'script') {
-      el.src = 'https://thuexemayhanoi.github.io/aichatbot/embed.js';
+      el.src = 'https://chatbot.thuexemaynguyentu.com/embed.js';
       el.attrs = { ...scriptAttrs };
     }
     if (tag === 'iframe') el.style = {};
@@ -87,12 +87,12 @@ test('embed: config attributes are parsed and clamped', () => {
 });
 
 test('embed: iframe URL carries lang/theme/source and embed flag', () => {
-  const url = api.buildFrameUrl('https://thuexemayhanoi.github.io/aichatbot/embed.js', {
+  const url = api.buildFrameUrl('https://chatbot.thuexemaynguyentu.com/embed.js', {
     lang: 'en', theme: 'auto', source: 'partner'
   });
   assert.equal(
     url,
-    'https://thuexemayhanoi.github.io/aichatbot/index.html?embed=1&lang=en&theme=auto&source=partner'
+    'https://chatbot.thuexemaynguyentu.com/index.html?embed=1&lang=en&theme=auto&source=partner'
   );
   assert.throws(() => api.buildFrameUrl(''), Error);
 });

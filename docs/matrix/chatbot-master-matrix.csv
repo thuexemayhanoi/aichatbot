@@ -88,7 +88,7 @@ BOT-0086,ai,Streaming token display,P3,—,PLANNED,Streamed render,embed+ui test
 BOT-0087,ai,Retry/backoff on model init failure,P3,—,PLANNED,No infinite spinners,failure tests,—,
 BOT-0088,app,Shared core wiring for direct + embed,P0,—,VERIFIED,One engine both modes,unit+integration engine tests,tests/integration/embed.test.js,v42
 BOT-0089,app,Query params: lang/theme/source/embed,P1,—,VERIFIED,Params applied,unit config/query-config,tests/unit/config.test.js,v42
-BOT-0090,app,index.html standalone layout,P0,—,VERIFIED,Renders on Pages,manual smoke,https://thuexemayhanoi.github.io/aichatbot/,v42
+BOT-0090,app,index.html standalone layout,P0,—,VERIFIED,Renders on Pages,manual smoke,https://chatbot.thuexemaynguyentu.com/,v42
 BOT-0091,app,Dark/light/auto theme,P1,—,VERIFIED,Theme applied,manual smoke,assets/css/style.css,v42
 BOT-0092,app,Responsive layout (mobile-first CSS),P1,—,VERIFIED,Media queries present,manual + ui-ux workflow,assets/css/style.css,v42
 BOT-0093,app,iPhone safe-area support (env(safe-area-inset)),P1,—,VERIFIED,Safe areas respected,CSS audit,assets/css/style.css,v42

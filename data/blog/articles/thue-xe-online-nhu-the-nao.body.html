@@ -7,15 +7,15 @@
 <h2>Vòng thuê xe online từ đầu đến cuối</h2>
 <p>Một vòng trọn vẹn gồm bốn chặng, mỗi chặng đều có thể hoàn thành trên điện thoại.</p>
 <ul>
-<li>Chặng tra cứu: mô tả nhu cầu vào cuộc trò chuyện, nhận lại gợi ý dòng xe theo tình huống của bạn, kể cả khi bạn chưa biết mình nên đi dòng nào, như cách làm trong bài <a href="/aichatbot/blog/app/chon-xe-bang-agent/">chọn xe bằng Agent</a>.</li>
-<li>Chặng báo giá: nhận một báo giá rõ ràng theo khung thời gian, với các khoản được tách sẵn; cách đọc báo giá chuẩn đã có trong bài <a href="/aichatbot/blog/app/cach-tinh-gia-thue-xe-bang-app/">cách tính giá thuê xe bằng app</a>.</li>
+<li>Chặng tra cứu: mô tả nhu cầu vào cuộc trò chuyện, nhận lại gợi ý dòng xe theo tình huống của bạn, kể cả khi bạn chưa biết mình nên đi dòng nào, như cách làm trong bài <a href="/blog/app/chon-xe-bang-agent/">chọn xe bằng Agent</a>.</li>
+<li>Chặng báo giá: nhận một báo giá rõ ràng theo khung thời gian, với các khoản được tách sẵn; cách đọc báo giá chuẩn đã có trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app/">cách tính giá thuê xe bằng app</a>.</li>
 <li>Chặng chốt: xác nhận dòng xe, ngày giờ nhận, cách nhận tại cửa hàng hay giao tận nơi, và mức đặt cọc áp cho dòng xe bạn chọn.</li>
 <li>Chặng nhận xe: gặp xe tại cửa hàng hoặc ở địa chỉ bạn nêu, đối chiếu giấy tờ gốc, đặt cọc, kiểm tra xe cùng nhân viên rồi lên đường.</li>
 </ul>
 <p>Bốn chặng này thường gói trong vài lượt hội thoại, và diễn biến trong cùng một buổi nếu bạn quyết nhanh. Không chặng nào yêu cầu cài đặt ứng dụng riêng: mọi thứ chạy trong trình duyệt của chiếc điện thoại bạn đang dùng, đúng tính chất của một ứng dụng web.</p>
 
 <h2>Cần chuẩn bị gì trước khi thuê xe online</h2>
-<p>Danh sách chuẩn bị của thuê online ngắn đến bất ngờ: một chiếc điện thoại, giấy tờ tùy thân và bằng lái còn hiệu lực, và một chút quyết định về lịch trình. Bạn không cần nộp gì trước, không cần scan giấy tờ gửi đi trước, vì khâu đối chiếu diễn ra trực tiếp lúc nhận xe. Việc duy nhất đáng làm trước là kiểm tra bằng lái còn hạn, và đọc lướt qua bài <a href="/aichatbot/blog/huong-dan/giay-to-can-khi-thue-xe/">giấy tờ cần khi thuê xe máy</a> nếu đây là lần đầu bạn thuê ở Việt Nam.</p>
+<p>Danh sách chuẩn bị của thuê online ngắn đến bất ngờ: một chiếc điện thoại, giấy tờ tùy thân và bằng lái còn hiệu lực, và một chút quyết định về lịch trình. Bạn không cần nộp gì trước, không cần scan giấy tờ gửi đi trước, vì khâu đối chiếu diễn ra trực tiếp lúc nhận xe. Việc duy nhất đáng làm trước là kiểm tra bằng lái còn hạn, và đọc lướt qua bài <a href="/blog/huong-dan/giay-to-can-khi-thue-xe/">giấy tờ cần khi thuê xe máy</a> nếu đây là lần đầu bạn thuê ở Việt Nam.</p>
 <p>Về lịch trình, ba câu tự vấn giúp cuộc trò chuyện đi thẳng: tôi nhận xe lúc nào và trả lúc nào, tôi đi quãng đường cỡ nào, và tôi có cần giao xe tận nơi không. Ba câu trả lời này quyết định gần hết báo giá, nên nói rõ ngay từ đầu tránh được chuỗi hỏi lại. Nếu bạn phân vân trọn ngày hay theo buổi, cứ nêu cả hai khung cho trợ lý so: một tin nhắn vẫn rẻ hơn một lần đoán sai.</p>
 
 <h2>Nhận xe khi thuê online: tại cửa hàng hay giao tận nơi</h2>
@@ -24,7 +24,7 @@
 
 <h2>Những hiểu lầm hay gặp về thuê xe online</h2>
 <p>Hiểu lầm thứ nhất: thuê online thì không cần gặp ai. Sai ở phần cuối: bạn vẫn gặp chiếc xe và phần kiểm tra, đối chiếu vẫn diễn ra trực tiếp, chỉ khác là phần giấy tờ lưu hành trên mạng còn phần cầm chìa thì không. Hiểu lầm thứ hai: thuê online là đặt cọc trước qua mạng. Với cách vận hành của {{ business.brand }}, khoản đặt cọc được đối chiếu trực tiếp lúc nhận xe, tùy dòng xe trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, nên không có khâu chuyển tiền trước rồi chờ hoàn; một lượt hội thoại chốt mức cọc rõ ràng thay cho mọi luồng chuyển tiền mù mờ. Hiểu lầm thứ ba: thuê online rủi ro hơn vì không ai chịu trách nhiệm. Ngược lại, mọi lời hứa trong cách này đều có văn bản: cuộc trò chuyện chính là ghi nhận của báo giá và điều kiện, thứ mà thuê miệng truyền thống không có.</p>
-<p>Nếu bạn còn nghi ngại về độ an toàn của việc thuê xe qua kênh online, bài <a href="/aichatbot/blog/app/ung-dung-thue-xe-co-an-toan-khong/">ứng dụng thuê xe có an toàn không</a> đã tách từng lớp kiểm chứng, từ thông tin cá nhân đến giao dịch. Còn nếu thắc mắc của bạn là liệu thủ tục online có rườm rà, bài <a href="/aichatbot/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian/">cho thuê xe máy thủ tục đơn giản</a> cho thấy phần giấy tờ gọn tới đâu khi mọi thứ đã chốt từ trước.</p>
+<p>Nếu bạn còn nghi ngại về độ an toàn của việc thuê xe qua kênh online, bài <a href="/blog/app/ung-dung-thue-xe-co-an-toan-khong/">ứng dụng thuê xe có an toàn không</a> đã tách từng lớp kiểm chứng, từ thông tin cá nhân đến giao dịch. Còn nếu thắc mắc của bạn là liệu thủ tục online có rườm rà, bài <a href="/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian/">cho thuê xe máy thủ tục đơn giản</a> cho thấy phần giấy tờ gọn tới đâu khi mọi thứ đã chốt từ trước.</p>
 
 <h2>Câu hỏi thường gặp về thuê xe online</h2>
 <p><strong>Thuê xe online cần cài ứng dụng gì không?</strong> Không cần cài gì cả; toàn bộ vòng hỏi giá, chốt và nhận xác nhận chạy trong trình duyệt của điện thoại hoặc máy tính, đúng nghĩa một ứng dụng web. Điểm cộng của cách này là không chiếm bộ nhớ máy và không có tài khoản mật khẩu phải nhớ.</p>

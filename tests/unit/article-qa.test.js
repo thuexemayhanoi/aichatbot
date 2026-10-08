@@ -206,7 +206,7 @@ test('qa: critical verified-deposits-only — invented deposit amount', () => {
 
 test('qa: critical internal-links-resolve — link to a non-existent page', () => {
   const dir = repoSandbox();
-  const id = install(dir, { body: fixtureBody() + '\n<p>Xem <a href="/aichatbot/blog/khong-ton-tai/">trang không tồn tại</a>.</p>' });
+  const id = install(dir, { body: fixtureBody() + '\n<p>Xem <a href="/blog/khong-ton-tai/">trang không tồn tại</a>.</p>' });
   const out = qaCli(dir, [id], true);
   assert.match(out.out, /FAIL\s+internal-links-resolve/);
   assert.match(out.out, /QA FAIL .*score=0: critical:/);

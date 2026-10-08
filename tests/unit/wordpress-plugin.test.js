@@ -70,7 +70,7 @@ test('no eval, no dynamic execution, no remote code writes, no secrets', () => {
 
 /** Loader contract (spec §5). */
 test('loader uses the canonical embed URL over https', () => {
-  assert.match(MAIN, /define\(\s*'MOTOAI_AGENT_EMBED_URL',\s*'https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/embed\.js'/);
+  assert.match(MAIN, /define\(\s*'MOTOAI_AGENT_EMBED_URL',\s*'https:\/\/chatbot\.thuexemaynguyentu\.com\/embed\.js'/);
   assert.match(MAIN, /esc_url\(\s*MOTOAI_AGENT_EMBED_URL,\s*array\(\s*'https'\s*\)\s*\)/);
 });
 

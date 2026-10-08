@@ -14,8 +14,8 @@ const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 
 test('manifest.webmanifest is valid JSON with the full icon set', () => {
   const manifest = JSON.parse(read('manifest.webmanifest'));
-  assert.equal(manifest.scope, '/aichatbot/');
-  assert.equal(manifest.start_url.includes('/aichatbot/'), true);
+  assert.equal(manifest.scope, '/');
+  assert.equal(manifest.start_url.includes('/'), true);
   assert.equal(manifest.lang, 'vi');
   const sizes = manifest.icons.map((i) => i.sizes);
   assert.ok(sizes.includes('192x192'));
@@ -73,7 +73,7 @@ test('distribution workflow runs icons + plugin zip after the test gate', () => 
 
 test('WordPress plugin loader: thin, canonical URL, guards, no second engine', () => {
   const php = read('integrations/wordpress/motoai-agent/motoai-agent.php');
-  assert.match(php, /MOTOAI_AGENT_EMBED_URL', 'https:\/\/thuexemayhanoi\.github\.io\/aichatbot\/embed\.js'/);
+  assert.match(php, /MOTOAI_AGENT_EMBED_URL', 'https:\/\/chatbot\.thuexemaynguyentu\.com\/embed\.js'/);
   assert.match(php, /defined\('ABSPATH'\) \|\| exit/);
   assert.match(php, /static \$printed = false;/); // never inject twice
   assert.match(php, /add_shortcode\(\s*'motoai_agent'/);

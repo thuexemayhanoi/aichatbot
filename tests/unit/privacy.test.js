@@ -60,7 +60,7 @@ test('all outbound URLs are static-asset CDNs only (no inference calls)', () => 
     const urls = [...content.matchAll(/https:\/\/[a-z0-9.\-/]+/gi)].map((m) => m[0]);
     for (const url of urls) {
       const host = new URL(url).host;
-      const allowedStatic = ['esm.run', 'thuexemayhanoi.github.io', 'thuexemaynguyentu.com', 'wa.me', 'maps.app.goo.gl', 'github.com', 'schema.org']; // github.com = doc link; schema.org = inert JSON-LD context (never fetched)
+      const allowedStatic = ['esm.run', 'chatbot.thuexemaynguyentu.com', 'thuexemaynguyentu.com', 'wa.me', 'maps.app.goo.gl', 'github.com', 'schema.org']; // github.com = doc link; schema.org = inert JSON-LD context (never fetched)
       assert.ok(allowedStatic.includes(host) || url.includes('huggingface.co/mlc-ai'),
         `unexpected outbound URL ${url} in ${file}`);
     }

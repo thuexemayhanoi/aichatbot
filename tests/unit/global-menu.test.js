@@ -81,7 +81,7 @@ function parseChildLi({ attrs, inner }) {
   const id = firstControlAttr(inner, 'id');
   const href = firstControlAttr(inner, 'href');
   const contactRef = firstControlAttr(inner, 'data-contact-ref');
-  const actionMatch = href && /^\/aichatbot\/\?action=([a-z]+)$/.exec(href);
+  const actionMatch = href && /^\/\?action=([a-z]+)$/.exec(href);
   if (contactRef) return { kind: 'contact', text, ref: contactRef };
   if (actionMatch) return { kind: 'action', text, action: actionMatch[1] };
   if (id && CHAT_ACTION_IDS[id]) return { kind: 'action', text, action: CHAT_ACTION_IDS[id] };
@@ -121,7 +121,7 @@ function parseDrawer(html) {
     }
     // Plain top-level item: Agent (button on chat home, <a> on content pages).
     if (/id="motoai-menu-agent"/.test(li.inner)) {
-      parsed.push({ kind: 'link', text: firstControlText(li.inner), url: '/aichatbot/' });
+      parsed.push({ kind: 'link', text: firstControlText(li.inner), url: '/' });
       continue;
     }
     parsed.push(parseChildLi(li));
@@ -187,7 +187,7 @@ test('v63: "Xóa chat" and the chat divider never appear on content pages', () =
 
 // ---------- 2. Body classes + footer presence contract ----------
 
-test('v63: /aichatbot/ stays the ChatGPT-style chat homepage — body.chat-home, NO footer', () => {
+test('v63: / stays the ChatGPT-style chat homepage — body.chat-home, NO footer', () => {
   const html = read('index.html');
   assert.match(html, /<body class="chat-home">/);
   assert.equal((html.match(/<footer/g) ?? []).length, 0, 'chat homepage never gains a footer');
@@ -247,7 +247,7 @@ test('v63: no duplicate id attributes on any page (chat home + content pages)', 
 
 /** Map a site URL to the repo file that must exist on disk. */
 function urlToFile(url) {
-  const path = url.split('#')[0].split('?')[0].replace(/^\/aichatbot\//, '');
+  const path = url.split('#')[0].split('?')[0].replace(/^\//, '');
   return path === '' ? 'index.html' : `${path.replace(/\/$/, '')}/index.html`;
 }
 
@@ -259,7 +259,7 @@ test('v63: every internal header/drawer/footer link resolves to a real page (no 
       html.slice(html.indexOf('<nav class="motoai-drawer"'), html.indexOf('</nav>', html.indexOf('<nav class="motoai-drawer"'))),
       html.slice(html.indexOf('<footer'), html.indexOf('</footer>') + 1)
     ].join('\n');
-    for (const m of chrome.matchAll(/href="(\/aichatbot\/[^"]*)"/g)) {
+    for (const m of chrome.matchAll(/href="(\/[^"]*)"/g)) {
       const file = urlToFile(m[1]);
       assert.ok(existsSync(join(ROOT, file)), `${p}: link ${m[1]} -> missing file ${file}`);
     }
@@ -269,7 +269,7 @@ test('v63: every internal header/drawer/footer link resolves to a real page (no 
 // ---------- 6. URL/canonical stability ----------
 
 test('v63: canonical URL of every page is unchanged (SITE + own path, trailing slash)', () => {
-  const SITE = 'https://thuexemayhanoi.github.io/aichatbot/';
+  const SITE = 'https://chatbot.thuexemaynguyentu.com/';
   const all = ['index.html', ...contentPages()];
   for (const p of all) {
     const html = read(p);
@@ -280,7 +280,7 @@ test('v63: canonical URL of every page is unchanged (SITE + own path, trailing s
   // The sitemap keeps exactly the same URL set as the generated pages.
   const sitemap = read('sitemap.xml');
   for (const loc of [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])) {
-    const file = urlToFile(loc.replace(SITE, '/aichatbot/'));
+    const file = urlToFile(loc.replace(SITE, '/'));
     assert.ok(existsSync(join(ROOT, file)), `sitemap loc ${loc} -> missing file ${file}`);
   }
 });

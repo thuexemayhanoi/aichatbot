@@ -30,17 +30,17 @@ test('v61 desktop menu prioritizes the 3 parent hubs, each as a REAL crawlable <
     const nav = html.slice(html.indexOf('<nav class="site-nav"'), html.indexOf('</nav>', html.indexOf('<nav class="site-nav"')));
     for (const c of taxonomy.clusters) {
       // Parent label is a link to its hub — never a JS-only button.
-      assert.ok(nav.includes(`class="site-nav-parent" href="/aichatbot/blog/${c.dir}/"`), `${page}: parent hub link ${c.dir}`);
+      assert.ok(nav.includes(`class="site-nav-parent" href="/blog/${c.dir}/"`), `${page}: parent hub link ${c.dir}`);
       assert.ok(nav.includes(esc(c.name)), `${page}: parent label ${c.name}`);
       for (const id of c.categories) {
         const dir = taxonomy.categories[id].dir;
-        assert.ok(nav.includes(`href="/aichatbot/blog/${dir}/"`), `${page}: dropdown child ${dir}`);
+        assert.ok(nav.includes(`href="/blog/${dir}/"`), `${page}: dropdown child ${dir}`);
       }
     }
     // The six child categories are NOT a flat top-level row anymore:
     // outside the dropdown panels, only Cẩm nang + the 3 parent hubs remain.
     const outsideDrops = nav.replace(/<div class="site-nav-drop">[\s\S]*?<\/div>/g, '');
-    const topLevel = [...outsideDrops.matchAll(/<a [^>]*href="\/aichatbot\/blog\/([a-z-]+)\/"[^>]*>/g)].map((m) => m[1]);
+    const topLevel = [...outsideDrops.matchAll(/<a [^>]*href="\/blog\/([a-z-]+)\/"[^>]*>/g)].map((m) => m[1]);
     assert.deepEqual(topLevel.sort(), CLUSTER_DIRS.slice().sort(), `${page}: top level = Cẩm nang + 3 parent hubs`);
   }
 });
@@ -61,9 +61,9 @@ test('v61 drawer Cẩm nang group mirrors the hub → category hierarchy with re
   for (const page of ALL_CONTENT) {
     const html = read(page);
     for (const c of taxonomy.clusters) {
-      assert.ok(html.includes(`class="motoai-hub-link" href="/aichatbot/blog/${c.dir}/"`), `${page}: drawer hub link ${c.dir}`);
+      assert.ok(html.includes(`class="motoai-hub-link" href="/blog/${c.dir}/"`), `${page}: drawer hub link ${c.dir}`);
       for (const id of c.categories) {
-        assert.ok(html.includes(`href="/aichatbot/blog/${taxonomy.categories[id].dir}/"`), `${page}: drawer child ${id}`);
+        assert.ok(html.includes(`href="/blog/${taxonomy.categories[id].dir}/"`), `${page}: drawer child ${id}`);
       }
     }
   }
@@ -95,7 +95,7 @@ test('v61 parent hub pages are topical hubs: H1, intro, child cards, ItemList', 
     assert.ok(html.includes('blog-screen-lead'), `${c.dir}: intro lead`);
     assert.ok(html.includes('blog-cluster-child'), `${c.dir}: child category section`);
     for (const id of c.categories) {
-      assert.ok(html.includes(`href="/aichatbot/blog/${taxonomy.categories[id].dir}/"`), `${c.dir}: links child ${id}`);
+      assert.ok(html.includes(`href="/blog/${taxonomy.categories[id].dir}/"`), `${c.dir}: links child ${id}`);
     }
     const lds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
     const col = lds.find((o) => o['@type'] === 'CollectionPage');
@@ -116,7 +116,7 @@ test('v61 category hubs link UP to their parent hub (visible + schema + bottom b
   for (const cat of Object.values(taxonomy.categories)) {
     const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);
     const html = read(`blog/${cat.dir}/index.html`);
-    assert.ok(html.includes(`blog-hub-parent">Nhóm chủ đề: <a href="/aichatbot/blog/${cluster.dir}/"`), `${cat.dir}: prominent parent link`);
+    assert.ok(html.includes(`blog-hub-parent">Nhóm chủ đề: <a href="/blog/${cluster.dir}/"`), `${cat.dir}: prominent parent link`);
     assert.ok(html.includes(`blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}`), `${cat.dir}: bottom cluster block`);
     const lds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
     const crumbs = lds.find((o) => o['@type'] === 'BreadcrumbList');
@@ -137,8 +137,8 @@ test('v61 articles link to their child hub AND parent hub (chip + breadcrumb + c
     const cat = taxonomy.categories[a.category];
     const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);
     const html = read(`blog/${cat.dir}/${a.slug}/index.html`);
-    assert.ok(html.includes(`href="/aichatbot/blog/${cat.dir}/"`), `${a.slug}: child hub link`);
-    assert.ok(html.includes(`class="blog-chip blog-chip-parent" href="/aichatbot/blog/${cluster.dir}/"`), `${a.slug}: parent hub chip`);
+    assert.ok(html.includes(`href="/blog/${cat.dir}/"`), `${a.slug}: child hub link`);
+    assert.ok(html.includes(`class="blog-chip blog-chip-parent" href="/blog/${cluster.dir}/"`), `${a.slug}: parent hub chip`);
     assert.ok(html.includes(`blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}`), `${a.slug}: parent cluster block`);
     const lds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
     const crumbs = lds.find((o) => o['@type'] === 'BreadcrumbList').itemListElement.map((i) => i.name);
@@ -153,14 +153,14 @@ test('v61 articles link to their child hub AND parent hub (chip + breadcrumb + c
 
 test('v61 URL safety: every hub, child and article URL is unchanged and canonical', () => {
   const xml = read('sitemap.xml');
-  for (const loc of [`${'https://thuexemayhanoi.github.io/aichatbot/'}blog/`,
-    ...CLUSTER_DIRS.map((d) => `${'https://thuexemayhanoi.github.io/aichatbot/'}blog/${d}/`),
-    ...Object.values(taxonomy.categories).map((c) => `${'https://thuexemayhanoi.github.io/aichatbot/'}blog/${c.dir}/`)]) {
+  for (const loc of [`${'https://chatbot.thuexemaynguyentu.com/'}blog/`,
+    ...CLUSTER_DIRS.map((d) => `${'https://chatbot.thuexemaynguyentu.com/'}blog/${d}/`),
+    ...Object.values(taxonomy.categories).map((c) => `${'https://chatbot.thuexemaynguyentu.com/'}blog/${c.dir}/`)]) {
     assert.ok(xml.includes(`<loc>${loc}</loc>`), `sitemap keeps ${loc}`);
   }
   for (const c of taxonomy.clusters) {
     const html = read(`blog/${c.dir}/index.html`);
-    assert.ok(html.includes(`<link rel="canonical" href="https://thuexemayhanoi.github.io/aichatbot/blog/${c.dir}/"`), `${c.dir}: self-canonical`);
+    assert.ok(html.includes(`<link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/blog/${c.dir}/"`), `${c.dir}: self-canonical`);
   }
 });
 
