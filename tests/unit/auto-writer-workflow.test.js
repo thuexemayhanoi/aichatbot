@@ -1,0 +1,60 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+
+const repo = new URL('../../', import.meta.url).pathname;
+const workflow = readFileSync(join(repo, '.github/workflows/auto-writer.yml'), 'utf8');
+
+test('a failed generation preserves outputs and reaches the failure handler', (t) => {
+  const dir = mkdtempSync(join(tmpdir(), 'writer-failure-'));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  writeFileSync(join(dir, 'node'), '#!/bin/bash\necho status=FAILED\necho batch=WRITER-BATCH-0013\nexit 1\n', { mode: 0o755 });
+  const output = join(dir, 'outputs');
+  const section = workflow.split("- name: 'Generate the next chunk")[1].split('\n      # ---')[0];
+  const script = section.split('        run: |\n')[1].split('\n').map((line) => line.replace(/^          /, '')).join('\n');
+  const result = spawnSync('bash', ['-e', '-c', script], {
+    env: { ...process.env, PATH: `${dir}:${process.env.PATH}`, GITHUB_OUTPUT: output, DRY_RUN: 'false', MAX_ATTEMPTS: '2' },
+    encoding: 'utf8',
+  });
+  assert.equal(result.status, 1);
+  assert.match(readFileSync(output, 'utf8'), /status=FAILED/);
+  const handler = workflow.split("- name: 'Fail closed on generation failure'")[1].split('\n      - name:')[0];
+  assert.match(handler, /if: failure\(\).*steps.gen.outputs.status == 'FAILED'/);
+  assert.match(handler, /source_run_id="\$GITHUB_RUN_ID"/);
+});
+
+test('inspect resumes a staged chunk without regenerating its prose', (t) => {
+  const dir = mkdtempSync(join(tmpdir(), 'writer-resume-'));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  const batch = { batch_id: 'WRITER-BATCH-0013', status: 'ACTIVE', chunks: [
+    { seq: 4, writer: 'writer_A', status: 'RESERVED', ids: ['BA-0305', 'BA-0306'] },
+  ] };
+  const record = { ...batch.chunks[0], batch_id: batch.batch_id, status: 'READY_TO_PUSH' };
+  mkdirSync(join(dir, 'docs/state'), { recursive: true });
+  writeFileSync(join(dir, 'docs/state/writer-assignments.json'), JSON.stringify({ active: batch }));
+  const chunkDir = join(dir, 'writer-work', batch.batch_id, 'A');
+  mkdirSync(chunkDir, { recursive: true });
+  writeFileSync(join(chunkDir, 'chunk-04.json'), JSON.stringify(record));
+  const git = (...args) => {
+    const r = spawnSync('git', args, { cwd: dir, encoding: 'utf8' });
+    assert.equal(r.status, 0, r.stderr);
+  };
+  git('init', '-q');
+  git('add', '.');
+  git('-c', 'user.name=test', '-c', 'user.email=test@example.com', 'commit', '-qm', 'fixture');
+  git('update-ref', `refs/remotes/origin/writer/${batch.batch_id}/A`, 'HEAD');
+  const inspect = () => spawnSync(process.execPath, [join(repo, 'tools/auto-writer.mjs'), 'inspect'], {
+    env: { ...process.env, MOTOAI_FACTORY_ROOT: dir }, encoding: 'utf8',
+  });
+  const ready = inspect();
+  assert.equal(ready.status, 0, ready.stderr);
+  assert.match(ready.stdout, /status=READY_EXISTING/);
+  git('update-ref', '-d', `refs/remotes/origin/writer/${batch.batch_id}/A`);
+  const fresh = inspect();
+  assert.match(fresh.stdout, /status=GENERATE/);
+  writeFileSync(join(dir, 'docs/state/writer-assignments.json'), JSON.stringify({ active: null }));
+  assert.match(inspect().stdout, /status=NEED_BATCH/);
+});

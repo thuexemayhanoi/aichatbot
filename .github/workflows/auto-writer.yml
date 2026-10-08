@@ -9,9 +9,9 @@ name: 'Auto Writer (AI article generation)'
 #   1. ops gate — refuse cleanly (idle, NOT red) while the owner switch is
 #      off or an incident/lock is active; otherwise ops-agent gate;
 #   2. tools/auto-writer.mjs run — pick the lowest-seq RESERVED chunk of the
-#      ACTIVE batch, generate both articles with GitHub Models inference,
+#      ACTIVE batch, generate both articles with local Ollama inference,
 #      run the FULL production QA in a sandbox root, bounded regenerate on
-#      QA failure (default 4 attempts, model fallback chain);
+#      QA failure (default 4 attempts, local Qwen model);
 #   3. READY_TO_PUSH -> writer-queue begin/ready (the ONLY state writers),
 #      push the writer branch (2 bodies + chunk file), then dispatch the
 #      writer-publisher explicitly (a GITHUB_TOKEN push triggers nothing);
@@ -19,7 +19,7 @@ name: 'Auto Writer (AI article generation)'
 #      exit 0 — the next scheduled run picks the new batch up;
 #   5. FAILED -> exit 1 (red): ops-repair-agent #4 opens an incident, the
 #      maintenance lock pauses all production until the owner RESUMEs
-#      (mandatory stop rule 7). Auth/quota failures carry a clear reason.
+#      (mandatory stop rule 7). Inference failures carry a clear reason.
 #
 # Schedule every 25 minutes + concurrency group auto-writer (serialized,
 # never cancelled mid-run) make the cycle safe against double-writer races:
@@ -37,13 +37,13 @@ on:
         required: false
         default: 'false'
       model:
-        description: 'Model override (vd openai/gpt-4o-mini) — bỏ trống dùng chuỗi mặc định'
+        description: 'Ollama model (mặc định qwen3:4b-instruct); chỉ mô hình local'
         required: false
         default: ''
       max_attempts:
         description: 'Số lần sinh lại tối đa mỗi bài khi QA fail'
         required: false
-        default: '4'
+        default: '2'
 
 permissions:
   # contents: write — push the writer branch writer/<batch>/<A|B|C> only.
@@ -52,10 +52,6 @@ permissions:
   # actions: write — dispatch writer-coordinator / writer-publisher
   # explicitly (a GITHUB_TOKEN push cannot trigger workflows).
   actions: write
-  # models: read — GitHub Models inference (https://models.github.ai).
-  # If GITHUB_TOKEN lacks models access, set the GH_MODELS_TOKEN secret
-  # (PAT with models:read) — auto-writer reports the 401/403 clearly.
-  models: read
 
 concurrency:
   # Two scheduled runs never generate in parallel; the second waits, then
@@ -66,11 +62,20 @@ concurrency:
 jobs:
   write:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 120
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_REPO: ${{ github.repository }}
-      AUTO_WRITER_TOKEN: ${{ secrets.GH_MODELS_TOKEN }}
+      AUTO_WRITER_MODEL: ${{ inputs.model || 'qwen3:4b-instruct' }}
+      AUTO_WRITER_URL: http://127.0.0.1:11434/api/chat
+      AUTO_WRITER_TIMEOUT_MS: '1200000'
+      OLLAMA_HOST: 127.0.0.1:11434
+      OLLAMA_MODELS: ${{ runner.temp }}/writer-models
+      OLLAMA_NUM_PARALLEL: '1'
+      OLLAMA_MAX_LOADED_MODELS: '1'
+      OLLAMA_CONTEXT_LENGTH: '16384'
+      OLLAMA_KV_CACHE_TYPE: q8_0
+      OLLAMA_FLASH_ATTENTION: '1'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -107,18 +112,62 @@ jobs:
           node tools/ops-agent.mjs gate
           echo "open=true" >> "$GITHUB_OUTPUT"
 
+      - name: 'Inspect queue before loading the model (resume staged chunks)'
+        id: inspect
+        if: steps.gate.outputs.open == 'true'
+        run: |
+          set -eo pipefail
+          node tools/auto-writer.mjs inspect | tee /tmp/inspect.out
+          sed -n 's/^status=/status=/p' /tmp/inspect.out >> "$GITHUB_OUTPUT"
+
+      - name: 'Cache local writer model'
+        if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ runner.temp }}/writer-models
+            ${{ runner.temp }}/ollama
+          key: local-writer-v1-ollama-0.40.1-${{ runner.os }}-${{ env.AUTO_WRITER_MODEL }}
+
+      - name: 'Start local Ollama and load the writer model (no API key)'
+        if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE'
+        timeout-minutes: 20
+        run: |
+          set -eo pipefail
+          if [ ! -x "$RUNNER_TEMP/ollama/bin/ollama" ]; then
+            ARCHIVE="$RUNNER_TEMP/ollama.tar.zst"
+            curl --fail --show-error --location --retry 3 \
+              https://github.com/ollama/ollama/releases/download/v0.40.1/ollama-linux-amd64.tar.zst \
+              --output "$ARCHIVE"
+            echo "a7aebbe3dd76ccf1351a56a3e57218ad4863cb5f9a9938c58de87a37555e355d  $ARCHIVE" | sha256sum --check
+            mkdir -p "$RUNNER_TEMP/ollama"
+            tar --zstd -xf "$ARCHIVE" -C "$RUNNER_TEMP/ollama"
+          fi
+          export PATH="$RUNNER_TEMP/ollama/bin:$PATH"
+          echo "$RUNNER_TEMP/ollama/bin" >> "$GITHUB_PATH"
+          ollama serve > "$RUNNER_TEMP/ollama.log" 2>&1 &
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:11434/api/version > /tmp/ollama-version.json; then break; fi
+            sleep 2
+          done
+          curl --fail --silent http://127.0.0.1:11434/api/version
+          ollama pull "$AUTO_WRITER_MODEL"
+          ollama show "$AUTO_WRITER_MODEL"
+
       # ----------------------------------------------------------------
       # Generate exactly one chunk (AI + full production QA, bounded retry)
       # ----------------------------------------------------------------
       - name: 'Generate the next chunk (AI writer + sandboxed production QA)'
         id: gen
-        if: steps.gate.outputs.open == 'true'
+        if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE'
+        env:
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+          MAX_ATTEMPTS: ${{ inputs.max_attempts || '2' }}
         run: |
           set -o pipefail
           ARGS=(run)
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS+=(--dry-run); fi
-          if [ -n "${{ github.event.inputs.model }}" ]; then ARGS+=(--model "${{ github.event.inputs.model }}"); fi
-          ARGS+=(--max-attempts "${{ github.event.inputs.max_attempts || '4' }}")
+          if [ "$DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          ARGS+=(--max-attempts "$MAX_ATTEMPTS")
           # The runner shell is bash -e: a failed generation pipeline must NOT
           # abort the step before the key=value outputs are captured — the
           # FAILED branch below dispatches Agent #4 based on status=FAILED.
@@ -144,7 +193,7 @@ jobs:
       # scheduled run (<= 25 min) picks the fresh ACTIVE batch up.
       # ----------------------------------------------------------------
       - name: 'No ACTIVE chunk — reserve the next batch'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'NEED_BATCH'
+        if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'NEED_BATCH' && github.event.inputs.dry_run != 'true'
         run: |
           set -e
           gh workflow run writer-coordinator.yml --ref main -f dry_run=false -f limit=18
@@ -196,7 +245,10 @@ jobs:
           else
             git checkout -B "$BRANCH" origin/main
           fi
-          for f in $PUSH_FILES; do cp "$STASH/$f" "$f"; done
+          for f in $PUSH_FILES; do
+            mkdir -p "$(dirname "$f")"
+            cp "$STASH/$f" "$f"
+          done
           git add $PUSH_FILES
           if git diff --cached --quiet; then
             echo "writer branch already carries this chunk — republish path"
@@ -206,7 +258,7 @@ jobs:
           git push origin "$BRANCH"
 
       - name: 'Dispatch the writer-publisher (GITHUB_TOKEN push triggers nothing)'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run != 'true'
+        if: steps.gate.outputs.open == 'true' && (steps.gen.outputs.status == 'READY_TO_PUSH' || steps.inspect.outputs.status == 'READY_EXISTING') && github.event.inputs.dry_run != 'true'
         run: |
           set -e
           gh workflow run writer-publisher.yml --ref main -f action=auto
@@ -222,12 +274,15 @@ jobs:
           echo "dry run: chunk validated (batch ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }}, ids ${{ steps.gen.outputs.ids }}) — nothing pushed, nothing published"
 
       - name: 'Fail closed on generation failure'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'FAILED'
+        if: failure() && steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'FAILED'
         run: |
           echo "::error::auto-writer FAILED — see the generation log above. Chunk stays RESERVED; Agent #4 will classify the failure."
           # A GITHUB_TOKEN-dispatched run cannot fire the workflow_run watcher,
           # so the failure is handed to Agent #4 explicitly (publisher precedent).
           if gh workflow run ops-repair-agent.yml --ref main \
+            -f source_workflow='Auto Writer (AI article generation)' \
+            -f source_run_id="$GITHUB_RUN_ID" \
+            -f source_url="https://github.com/$GH_REPO/actions/runs/$GITHUB_RUN_ID" \
             -f reason="auto-writer generation failed (chunk ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }}, ids ${{ steps.gen.outputs.ids }})" \
             -f trigger="auto-writer FAILED (explicit dispatch)"; then
             echo "ops-repair-agent dispatched"
@@ -237,7 +292,7 @@ jobs:
           exit 1
 
       - name: 'Guard: unknown generation status'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status != 'READY_TO_PUSH' && steps.gen.outputs.status != 'NEED_BATCH' && steps.gen.outputs.status != 'FAILED'
+        if: success() && steps.inspect.outputs.status == 'GENERATE' && steps.gen.outputs.status != 'READY_TO_PUSH'
         run: |
           echo "::error::unknown auto-writer status '${{ steps.gen.outputs.status }}'"
           exit 1
@@ -249,6 +304,9 @@ jobs:
           # GITHUB_TOKEN-dispatched run cannot fire the workflow_run watcher,
           # so hand it to Agent #4 explicitly (rule 7: red -> incident -> lock).
           if gh workflow run ops-repair-agent.yml --ref main \
+            -f source_workflow='Auto Writer (AI article generation)' \
+            -f source_run_id="$GITHUB_RUN_ID" \
+            -f source_url="https://github.com/$GH_REPO/actions/runs/$GITHUB_RUN_ID" \
             -f reason="auto-writer run failed outside the generation step (chunk ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }})" \
             -f trigger="auto-writer infra failure (explicit dispatch)"; then
             echo "ops-repair-agent dispatched"

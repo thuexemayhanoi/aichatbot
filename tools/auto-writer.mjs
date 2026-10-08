@@ -6,7 +6,7 @@
  * chat session. This tool lets a scheduled GitHub Actions job act as the
  * writer: it picks the lowest-seq RESERVED chunk of the ACTIVE batch
  * (manifest docs/state/writer-assignments.json — the ONLY source of truth),
- * generates the 2 articles with GitHub Models inference, runs the FULL
+ * generates the 2 articles with local Ollama inference, runs the FULL
  * production QA (tools/article-qa.mjs against a sandbox factory root that
  * carries the 2 draft entries), regenerates on QA failure (bounded), then
  * leaves READY_TO_PUSH staging for the workflow:
@@ -33,6 +33,7 @@ import { spawnSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { parseMatrix } from './blog-factory.mjs';
 import { HUBS } from './build-blog.mjs';
+import { callModel, modelConfig, DEFAULT_MODEL } from './auto-writer-model.mjs';
 
 export const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -40,8 +41,6 @@ export const ROOT = process.env.MOTOAI_FACTORY_ROOT
 const MANIFEST = join(ROOT, 'data/blog/published.json');
 const ASSIGNMENTS = join(ROOT, 'docs/state/writer-assignments.json');
 const ARTICLES_DIR = join(ROOT, 'data/blog/articles');
-const MODELS_URL = 'https://models.github.ai/inference/chat/completions';
-const DEFAULT_MODELS = ['openai/gpt-4o-mini', 'openai/gpt-4.1-mini', 'mistral-ai/mistral-large-2407'];
 const PLACEHOLDERS = [
   '{{ business.policies.deposit.min | vnd }}',
   '{{ business.policies.deposit.max | vnd }}',
@@ -208,7 +207,7 @@ export function buildPrompt(row, ctx, feedback) {
   return { system: ctx.systemPrompt, user: lines.join('\n') };
 }
 
-export const SYSTEM_PROMPT = `Bạn là writer chuyên nghiệp của MotoAI — blog thuê xe máy & xe điện tại Hà Nội (cửa hàng Thuê xe máy Nguyễn Tú, 112 Nguyễn Văn Cừ, Long Biên). Nhiệm vụ: viết MỘT bài blog tiếng Việt hoàn chỉnh cho khách thuê xe máy.
+export const SYSTEM_PROMPT = `Bạn là writer chuyên nghiệp của MotoAI — blog tại https://chatbot.thuexemaynguyentu.com về thuê xe máy & xe điện tại Hà Nội (cửa hàng Thuê xe máy Nguyễn Tú, 112 Nguyễn Văn Cừ, Long Biên). Nhiệm vụ: viết MỘT bài blog tiếng Việt hoàn chỉnh cho khách thuê xe máy.
 
 QUY TẮC BẤT BUỘC:
 1. Chỉ trả về MỘT đối tượng JSON hợp lệ, không thêm chữ nào ngoài JSON: {"title": "...", "description": "...", "knowledge_chunks": ["...","..."], "body_html": "..."}. body_html là chuỗi HTML.
@@ -256,92 +255,27 @@ function verifiedLegalLinks(entries) {
   return [...links].slice(0, 24);
 }
 
-function buildCtx(row) {
-  const entries = loadManifestEntries();
+export function buildCtx(row, entries = loadManifestEntries()) {
   const hubDir = HUB_DIR[row.category] ?? 'blog';
-  const hubPrefix = `/${hubDir}/`;
+  const hubPrefix = `/blog/${hubDir}/`;
   const hubSlugs = entries
-    .filter((e) => e.body && e.body.includes(`/${hubDir}/`))
+    .filter((e) => e.category === row.category)
     .map((e) => e.slug);
   const exampleTitles = entries
-    .filter((e) => e.body && e.body.includes(`/${hubDir}/`))
+    .filter((e) => e.category === row.category)
     .slice(-4)
     .map((e) => e.title);
   const needsLegalLink = row.source_policy === 'legal-gate';
   return {
     systemPrompt: SYSTEM_PROMPT,
     allowedHubPrefixes: [hubPrefix],
-    hubSlugs: hubSlugs.map((s) => `/${hubDir}/${s}/`),
+    hubSlugs: hubSlugs.map((s) => `${hubPrefix}${s}/`),
     exampleTitles,
     needsLegalLink,
     legalLinks: verifiedLegalLinks(entries),
     needsChunks: row.agent_retrieval === 'yes',
     allEntries: entries,
   };
-}
-
-// ---------------------------------------------------------------------------
-// model call
-// ---------------------------------------------------------------------------
-
-async function callModel(model, messages, maxAttemptsPerModel, token) {
-  const body = {
-    model,
-    messages,
-    temperature: 0.7,
-    max_tokens: 16000,
-  };
-  try {
-    body.response_format = { type: 'json_object' };
-  } catch { /* unreachable */ }
-  const tryOnce = async (payload) => {
-    const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 180000);
-    try {
-      const res = await fetch(MODELS_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(payload),
-        signal: ctrl.signal,
-      });
-      if (res.status === 400 && payload.response_format) {
-        const txt = await res.text();
-        if (/response_format/i.test(txt)) return { retryWithoutResponseFormat: true };
-      }
-      if (res.status === 401 || res.status === 403) {
-        return { authError: true, status: res.status, text: (await res.text()).slice(0, 200) };
-      }
-      if (!res.ok) {
-        return { error: true, status: res.status, text: (await res.text()).slice(0, 300) };
-      }
-      // Any non-JSON body (proxy, HTML error page, empty 200) must degrade
-      // to a retryable model error — NEVER crash the whole writer run.
-      let data;
-      try {
-        data = await res.json();
-      } catch (e) {
-        return { error: true, status: res.status, text: `non-JSON model response: ${String(e && e.message || e).slice(0, 120)}` };
-      }
-      const content = data?.choices?.[0]?.message?.content;
-      if (typeof content !== 'string' || !content.trim()) {
-        return { error: true, status: res.status, text: 'empty model response' };
-      }
-      return { content };
-    } finally {
-      clearTimeout(t);
-    }
-  };
-  let r = await tryOnce(body);
-  if (r && r.retryWithoutResponseFormat) {
-    const stripped = { ...body };
-    delete stripped.response_format;
-    r = await tryOnce(stripped);
-  }
-  return r;
 }
 
 // ---------------------------------------------------------------------------
@@ -397,34 +331,31 @@ export function runSandboxedQa(rootOverride, id) {
 // ---------------------------------------------------------------------------
 
 async function generateArticle(row, ctx, opts, log) {
-  const token = opts.token;
   const models = opts.models;
   let feedback = '';
+  let lastFailure = '';
   for (let attempt = 1; attempt <= opts.maxAttempts; attempt++) {
     const { system, user } = buildPrompt(row, ctx, feedback);
     let content = null;
     let lastModelErr = '';
     for (const model of models) {
       log(`attempt ${attempt} model ${model}`);
-      const r = await callModel(model, [{ role: 'system', content: system }, { role: 'user', content: user }], 1, token);
-      if (r && r.authError) return { fatal: `model API unauthorized (${r.status}) — set GH_MODELS_TOKEN secret or check models access` };
+      const r = await callModel(model, [{ role: 'system', content: system }, { role: 'user', content: user }], opts.config);
       if (r && r.content) { content = r.content; break; }
-      lastModelErr = r && r.error ? `${r.status}: ${r.text}` : (r && r.authError ? 'auth' : 'empty');
+      lastModelErr = r && r.error ? `${r.status}: ${r.text}` : 'empty';
+      lastFailure = lastModelErr;
       log(`  model ${model} failed: ${lastModelErr.slice(0, 120)}`);
     }
     if (content === null) {
-      if (/unauthorized|403|401/.test(lastModelErr)) {
-        return { fatal: 'model API unauthorized — set GH_MODELS_TOKEN secret or check models access' };
-      }
       feedback = `Lỗi hệ thống sinh bài (model API): ${lastModelErr.slice(0, 200)}`;
       continue;
     }
     const cand = extractJson(content);
-    if (!cand) { feedback = 'Output không phải JSON hợp lệ. Chỉ trả về JSON thuần.'; continue; }
+    if (!cand) { lastFailure = feedback = 'Output không phải JSON hợp lệ. Chỉ trả về JSON thuần.'; continue; }
     const errs = validateCandidate(row, cand, ctx);
     if (errs.length) {
       log(`  local validation: ${errs.length} error(s)`);
-      feedback = errs.map((e) => `- ${e}`).join('\n');
+      lastFailure = feedback = errs.map((e) => `- ${e}`).join('\n');
       continue;
     }
     // full production QA in a sandbox root
@@ -438,9 +369,9 @@ async function generateArticle(row, ctx, opts, log) {
     }
     if (qa.pass) return { cand };
     log(`  production QA failed:\n${qa.failures.join('\n')}`);
-    feedback = [...qa.failures, ...qa.out.split('\n').filter((l) => /^WARN\s/.test(l))].join('\n');
+    lastFailure = feedback = [...qa.failures, ...qa.out.split('\n').filter((l) => /^WARN\s/.test(l))].join('\n');
   }
-  return { fail: `exhausted ${opts.maxAttempts} attempts for ${row.article_id}` };
+  return { fail: `exhausted ${opts.maxAttempts} attempts for ${row.article_id}: ${lastFailure.replace(/\s+/g, " ").slice(0, 400)}` };
 }
 
 function manifestDraft(row, cand) {
@@ -475,17 +406,30 @@ function parseArgs(argv) {
   return args;
 }
 
+function cmdInspect() {
+  const { batch, chunk } = chooseChunk(loadAssignments());
+  if (!chunk) { emit({ status: 'NEED_BATCH' }); return; }
+  const branch = `writer/${batch.batch_id}/${writerShort(chunk.writer)}`;
+  const path = `writer-work/${batch.batch_id}/${writerShort(chunk.writer)}/chunk-${String(chunk.seq).padStart(2, '0')}.json`;
+  const previous = spawnSync('git', ['show', `origin/${branch}:${path}`], { cwd: ROOT, encoding: 'utf8' });
+  let record;
+  if (previous.status === 0) record = JSON.parse(previous.stdout);
+  if (record && (record.batch_id !== batch.batch_id || record.writer !== chunk.writer
+      || String(record.seq) !== String(chunk.seq) || JSON.stringify(record.ids) !== JSON.stringify(chunk.ids))) {
+    die('existing writer chunk does not match the assignment');
+  }
+  emit({ status: record?.status === 'READY_TO_PUSH' ? 'READY_EXISTING' : 'GENERATE',
+    batch: batch.batch_id, seq: chunk.seq, ids: chunk.ids.join(',') });
+}
+
 async function cmdRun(args) {
   const flags = args['--'];
-  const maxAttempts = parseInt((flags['--max-attempts'] ?? flags.maxAttempts) ?? '4', 10);
-  const models = [flags['--model'] ?? flags.model, process.env.AUTO_WRITER_MODEL, ...DEFAULT_MODELS]
-    .filter((m) => typeof m === 'string' && m.trim())
-    .filter((m, i, arr) => arr.indexOf(m) === i);
-  const token = process.env.AUTO_WRITER_TOKEN || process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  const maxAttempts = Number(flags['--max-attempts'] ?? '2');
+  if (!Number.isInteger(maxAttempts) || maxAttempts < 1 || maxAttempts > 4) die('max-attempts must be 1..4');
+  const models = [flags['--model'] || process.env.AUTO_WRITER_MODEL || DEFAULT_MODEL];
+  const config = modelConfig();
   const dryRun = (flags['--dry-run'] ?? flags.dryRun) === true || (flags['--dry-run'] ?? flags.dryRun) === 'true';
   const log = (m) => console.error('[auto-writer]', m);
-
-  if (!token) die('no model token (AUTO_WRITER_TOKEN/GITHUB_TOKEN)');
 
   const rows = parseMatrix();
   const byId = new Map(rows.map((r) => [r.article_id, r]));
@@ -507,7 +451,7 @@ async function cmdRun(args) {
     if (!row) die(`matrix row missing for ${id}`, { batch: batch.batch_id, seq: String(chunk.seq) });
     if (row.status !== 'PLANNED') die(`row ${id} is ${row.status} — only PLANNED rows can be written`, { batch: batch.batch_id, seq: String(chunk.seq) });
     const ctx = buildCtx(row);
-    const r = await generateArticle(row, ctx, { models, maxAttempts, token }, log);
+    const r = await generateArticle(row, ctx, { models, maxAttempts, config }, log);
     if (r.fatal) die(r.fatal, { batch: batch.batch_id, seq: String(chunk.seq), ids: ids.join(',') });
     if (r.fail) die(r.fail, { batch: batch.batch_id, seq: String(chunk.seq), ids: ids.join(',') });
     drafts.push(manifestDraft(row, r.cand));
@@ -543,7 +487,9 @@ async function cmdRun(args) {
 const isMain = process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href;
 if (isMain) {
   const [cmd, ...rest] = process.argv.slice(2);
-  if (cmd === 'run') {
+  if (cmd === 'inspect') {
+    try { cmdInspect(); } catch (e) { die(e.message); }
+  } else if (cmd === 'run') {
     cmdRun(parseArgs(rest)).catch((e) => die(String(e && e.stack ? e.stack : e)));
   } else {
     console.error('usage: node tools/auto-writer.mjs run [--dry-run] [--model <id>] [--max-attempts N]');

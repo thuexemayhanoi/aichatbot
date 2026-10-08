@@ -1,4 +1,4 @@
 {
-  "action": "dry-run",
-  "note": "Owner AUTO FACTORY pre-flight 2026-10-08: one dry run of the AI writer (generation + full QA for the next chunk, nothing pushed/published) to verify GitHub Models inference connectivity before resuming the 24/7 cycles."
+  "action": "resume",
+  "note": "Owner-authorized workflow repair 2026-10-08: replace retired GitHub Models with local Ollama inference, preserve production QA and resume from BA-0305/BA-0306 on https://chatbot.thuexemaynguyentu.com."
 }
