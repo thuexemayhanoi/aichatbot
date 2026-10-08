@@ -55,8 +55,8 @@ export const CONTENT_QA_STEP = 'Assert clean state; report QA failures';
 
 /** Exactly ONE production entrypoint for #5-resume and #6-wake. */
 export const PRODUCTION_ENTRYPOINT = Object.freeze({
-  workflow: 'writer-coordinator.yml',
-  inputs: Object.freeze({ dry_run: 'false', limit: '18' })
+  workflow: 'auto-writer.yml',
+  inputs: Object.freeze({ dry_run: 'false' })
 });
 
 /** Watchdog wakes only after 2 continuous hours without valid progress. */

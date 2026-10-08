@@ -49,6 +49,7 @@ on:
         default: 'manual'
   workflow_run:
     workflows:
+      - 'Auto Writer (AI article generation)'
       - 'Writer Publisher (serialized)'
       - 'Writer Coordinator (central reservation)'
       - 'Blog Factory Publish (2-article micro batch)'

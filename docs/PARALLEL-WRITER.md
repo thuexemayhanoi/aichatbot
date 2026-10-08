@@ -1,5 +1,7 @@
 # Parallel Writer Contract — 3 writer song song + central coordinator + serialized publisher (v68)
 
+> **Cập nhật v71 (2026-10-08, owner directive AUTO FACTORY 24/7):** external chat session KHÔNG còn là bắt buộc. `tools/auto-writer.mjs` + `.github/workflows/auto-writer.yml` (cron `*/25 * * * *`) giờ đảm nhiệm vai trò writer bằng GitHub Models inference với đầy đủ guardrail của hợp đồng này (chỉ đúng 2 id của chunk được giao, placeholder business facts, hub-internal links, QA PASS ≥ 70 trước ready). Mọi bất biến dưới đây GIỮ NGUYÊN: coordinator vẫn là nơi reserve duy nhất, writer-queue begin/ready vẫn là state writer duy nhất, publisher vẫn là thành phần duy nhất push main, FIFO nghiêm ngặt. Writer session bên ngoài vẫn hợp lệ và dùng chung queue này. Chi tiết: `docs/AUTO-WRITER.md`.
+
 Tài liệu này là hợp đồng vận hành của PARALLEL WRITER MODE, nâng cấp từ mô hình 1 writer tuần tự (v67, `docs/CONTINUOUS-WRITER.md`). Khi 3 writer bật, tài liệu này có hiệu lực song song với hợp đồng v67; mọi nguyên tắc tốt của v67 (MICRO_CHUNK=2, EXACT_SCOPE, NEW/REPAIR/BACKLOG tách rời, GROUPED_BUILD, factory KHÔNG chờ Pages) được giữ nguyên.
 
 ## Phân vai

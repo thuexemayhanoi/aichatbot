@@ -61,6 +61,18 @@ test('the other two production workflows run the same CLI gate', () => {
   }
 });
 
+test('the auto-writer never writes while the owner stop is on (idle gate, not red)', () => {
+  const y = read(join('.github/workflows', 'auto-writer.yml'));
+  assert.ok(y.includes('node tools/ops-agent.mjs gate'), 'auto-writer gates via the CLI when open');
+  const gateStep = y.slice(y.indexOf('Ops gate (owner stop / incident lock'));
+  assert.ok(/PROD_ENABLED.*!= "true"/.test(gateStep), 'the owner switch is checked first');
+  assert.ok(gateStep.includes('refs/ops/maintenance-lock/*'), 'active maintenance locks idle the factory');
+  assert.ok(/open=false/.test(gateStep), 'a closed gate exits idle (status open=false), never failed');
+  // and every mutation step is behind the gate output
+  const gated = y.split('\n').filter((l) => l.includes("steps.gate.outputs.open == 'true'"));
+  assert.ok(gated.length >= 4, 'all production steps require the open gate');
+});
+
 // ---------------------------------------------------------------------------
 // No backdoor: every other production-starting path also requires the switch
 // ---------------------------------------------------------------------------

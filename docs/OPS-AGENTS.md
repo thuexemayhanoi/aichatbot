@@ -16,7 +16,7 @@ push writer branch, chạy generator, hay resume production khi chủ chưa cho.
 
 ## Triggers
 
-- **#4** event-driven: `workflow_run` (conclusion=failure) của Writer Publisher, Writer Coordinator,
+- **#4** event-driven: `workflow_run` (conclusion=failure) của Auto Writer, Writer Publisher, Writer Coordinator,
   Blog Factory Publish, pages build and deployment; hoặc `workflow_dispatch` thủ công.
   Lưu ý semantics của `workflow_run` + `GITHUB_TOKEN`: workflow chạy bằng token của actor khác
   có thể không kích hoạt được (đã từng gây publisher 403) — vì vậy còn có **đường thứ hai**:
@@ -72,8 +72,8 @@ cấm `data/blog/articles/`, `writer-work/`, `docs/state/writer-assignments.json
 
 ## Resume / wake: chỉ qua MỘT production entrypoint
 
-Production entrypoint duy nhất: `gh workflow run writer-coordinator.yml --ref main -f dry_run=false -f limit=18`
-(coordinator tự fan-out 3 writer; không ai start writer riêng lẻ).
+Production entrypoint duy nhất (v71): `gh workflow run auto-writer.yml --ref main -f dry_run=false`
+(auto-writer tự viết chunk kế tiếp; khi queue hết batch ACTIVE nó tự dispatch coordinator để reserve batch mới — không ai start writer/publisher riêng lẻ).
 
 - #5 chỉ resume khi `agent5-result` trả `resume_production=true`: tức VERIFIED/RECOVERED
   VÀ `production_enabled === true`. Hôm nay `production_enabled=false` ⇒ agent không bao giờ tự resume.

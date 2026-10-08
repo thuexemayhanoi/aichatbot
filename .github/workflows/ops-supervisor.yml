@@ -299,9 +299,10 @@ jobs:
           (steps.close_final.outputs.resume_production == 'true' && steps.close_final.outcome == 'success')
         run: |
           set -e
-          # ONE dispatch — the coordinator fans out to the writers itself.
-          gh workflow run writer-coordinator.yml --ref main -f dry_run=false -f limit=18
-          echo "production resumed via the single production entrypoint (writer-coordinator, dry_run=false, limit=18)"
+          # ONE dispatch — the auto-writer writes the next chunk itself and
+          # reserves a new batch via the coordinator when the queue is empty.
+          gh workflow run auto-writer.yml --ref main -f dry_run=false
+          echo "production resumed via the single production entrypoint (auto-writer, dry_run=false)"
 
       - name: 'Production stays stopped by the owner (production_enabled=false)'
         if: >-

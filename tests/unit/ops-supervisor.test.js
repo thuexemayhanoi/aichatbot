@@ -75,8 +75,8 @@ test('lifecycle: with production_enabled=true a RECOVERED incident resumes via e
   agent5Begin(s, { incidentId });
   const closed = agent5Result(s, { incidentId, result: 'RECOVERED', note: 'second line fixed it' });
   assert.equal(closed.resumeProduction, true);
-  assert.equal(closed.entrypoint.workflow, 'writer-coordinator.yml');
-  assert.deepEqual(closed.entrypoint.inputs, { dry_run: 'false', limit: '18' });
+  assert.equal(closed.entrypoint.workflow, 'auto-writer.yml');
+  assert.deepEqual(closed.entrypoint.inputs, { dry_run: 'false' });
 });
 
 // ---------------------------------------------------------------------------
@@ -127,11 +127,10 @@ test('VERIFIED closes ONLY when the independent verification passed; the second-
 });
 
 test('resume: EXACTLY ONE production entrypoint dispatch, gated on resume_production', () => {
-  const dispatches = YML.split('gh workflow run writer-coordinator.yml').length - 1;
+  const dispatches = YML.split('gh workflow run auto-writer.yml').length - 1;
   assert.equal(dispatches, 1, 'exactly one entrypoint dispatch in the whole workflow');
   const resume = YML.slice(idx('Resume production via EXACTLY ONE'));
   assert.ok(resume.includes('-f dry_run=false'), 'the entrypoint is a REAL production cycle');
-  assert.ok(resume.includes('-f limit=18'), 'the entrypoint uses the v69 cycle limit');
   assert.ok(/resume_production == 'true'/.test(resume.slice(0, 600)), 'gated on the CLI resume verdict');
   for (const never of ['writer-publisher.yml', 'blog-factory-publish.yml']) {
     assert.ok(!YML.includes(`gh workflow run ${never}`), 'writers are NEVER started individually');

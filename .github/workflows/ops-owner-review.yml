@@ -10,6 +10,15 @@ name: ops-owner-review
 #                        incident: fix the recorded infra cause, prove the repo
 #                        healthy (validators + targeted tests), then release the
 #                        maintenance lock ref. Never touches article content.
+#   pause             -> owner STOP of the AUTO FACTORY: set
+#                        production_enabled=false in
+#                        docs/state/operations/maintenance.json and commit. The
+#                        switch is durable: every auto-writer run goes IDLE at
+#                        its ops gate and the watchdog never wakes production.
+#                        Published articles, queue and matrix stay untouched.
+#   resume            -> owner RESUME: set production_enabled=true, commit, and
+#                        dispatch auto-writer.yml so the first cycle starts
+#                        immediately instead of waiting for the cron.
 
 on:
   push:
@@ -98,6 +107,34 @@ jobs:
                   git ls-remote --refs origin "refs/ops/maintenance-lock/*" || echo "(no lock refs)"
                   echo "RESOLVE_EXIT=0"
                 fi
+                ;;
+              pause)
+                echo "owner STOP of the AUTO FACTORY (durable owner switch)"
+                git config user.name "github-actions[bot]"
+                git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                jq '.production_enabled = false' docs/state/operations/maintenance.json > /tmp/maint.tmp && mv /tmp/maint.tmp docs/state/operations/maintenance.json
+                git add docs/state/operations/maintenance.json
+                git commit -m "ops: owner STOP — AUTO FACTORY paused, queue untouched [skip ci]" || echo "already paused"
+                for i in 1 2 3; do
+                  if git pull --rebase origin main && git push; then break; fi
+                  sleep 5
+                done
+                echo "production_enabled=false committed — scheduled auto-writer runs now go IDLE at the ops gate"
+                echo "DISPATCH_EXIT=0"
+                ;;
+              resume)
+                echo "owner RESUME of the AUTO FACTORY"
+                git config user.name "github-actions[bot]"
+                git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                jq '.production_enabled = true' docs/state/operations/maintenance.json > /tmp/maint.tmp && mv /tmp/maint.tmp docs/state/operations/maintenance.json
+                git add docs/state/operations/maintenance.json
+                git commit -m "ops: owner RESUME — AUTO FACTORY enabled [skip ci]" || echo "already enabled"
+                for i in 1 2 3; do
+                  if git pull --rebase origin main && git push; then break; fi
+                  sleep 5
+                done
+                gh workflow run auto-writer.yml --ref main -f dry_run=false
+                echo "DISPATCH_EXIT=$?"
                 ;;
               *)
                 echo "UNKNOWN ACTION: $ACTION"

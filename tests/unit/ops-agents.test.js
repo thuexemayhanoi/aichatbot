@@ -267,8 +267,8 @@ test('with production_enabled=true a VERIFIED incident resumes via EXACTLY ONE e
   agent5Begin(s, { incidentId: id });
   const r = agent5Result(s, { incidentId: id, result: 'VERIFIED' });
   assert.equal(r.resumeProduction, true);
-  assert.equal(r.entrypoint.workflow, 'writer-coordinator.yml');
-  assert.deepEqual({ ...r.entrypoint.inputs }, { dry_run: 'false', limit: '18' });
+  assert.equal(r.entrypoint.workflow, 'auto-writer.yml');
+  assert.deepEqual({ ...r.entrypoint.inputs }, { dry_run: 'false' });
 });
 
 test('FAILED_MANUAL keeps production paused and the lock (humans clear it)', () => {
@@ -497,7 +497,7 @@ test('#6 wakes production ONLY after genuine 2h inactivity, targeting exactly ON
   const r = watchdogShouldWake(wakeBase());
   assert.equal(r.wake, true);
   assert.match(r.reason, /production entrypoint/);
-  assert.equal(PRODUCTION_ENTRYPOINT.workflow, 'writer-coordinator.yml', 'the single normal entrypoint');
+  assert.equal(PRODUCTION_ENTRYPOINT.workflow, 'auto-writer.yml', 'the single normal entrypoint');
 });
 
 test('two simultaneous watchdogs cannot create a duplicate production cycle (required 21)', () => {

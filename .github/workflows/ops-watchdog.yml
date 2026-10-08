@@ -18,7 +18,7 @@ name: 'Ops Watchdog Agent #6'
 # active incident, maintenance lock, Agent #4/#5 active, any production
 # workflow running or queued. If ANY condition holds: DO NOTHING.
 # A wake dispatches EXACTLY ONE normal production entrypoint
-# (writer-coordinator) — the production system fans out to the 3 writers
+# (auto-writer) — the AUTO FACTORY fans out to the coordinator/publisher
 # itself. The concurrency group serializes simultaneous watchdogs so two can
 # never double-dispatch; the second one then observes the queued cycle and
 # does nothing.
@@ -96,14 +96,14 @@ jobs:
           # --- production runs: active or queued -> never a duplicate cycle ---
           ACTIVE_COUNT=0
           QUEUED_COUNT=0
-          for W in writer-coordinator.yml writer-publisher.yml blog-factory-publish.yml pages-build-deployment; do
+          for W in auto-writer.yml writer-coordinator.yml writer-publisher.yml blog-factory-publish.yml pages-build-deployment; do
             RUNS=$(gh run list --workflow "$W" --limit 10 --json status \
               --jq '[.[] | select(.status == "in_progress" or .status == "queued")] | length' 2>/dev/null || echo 0)
             RUNS=${RUNS:-0}
             ACTIVE_COUNT=$((ACTIVE_COUNT + RUNS))
           done
           # split active vs queued for the log (both block the wake)
-          QUEUED_COUNT=$(gh run list --workflow writer-coordinator.yml --limit 10 --json status \
+          QUEUED_COUNT=$(gh run list --workflow auto-writer.yml --limit 10 --json status \
             --jq '[.[] | select(.status == "queued")] | length' 2>/dev/null || echo 0)
           QUEUED_COUNT=${QUEUED_COUNT:-0}
 
@@ -144,9 +144,10 @@ jobs:
         if: steps.decide.outputs.wake == 'true' && inputs.dry_run != 'true'
         run: |
           set -e
-          # ONE dispatch — the coordinator fans out to the writers itself.
-          gh workflow run writer-coordinator.yml --ref main -f dry_run=false -f limit=18
-          echo "Agent #6 woke production via the single production entrypoint (writer-coordinator, dry_run=false, limit=18)"
+          # ONE dispatch — the auto-writer writes the next chunk itself and
+          # reserves a new batch via the coordinator when the queue is empty.
+          gh workflow run auto-writer.yml --ref main -f dry_run=false
+          echo "Agent #6 woke production via the single production entrypoint (auto-writer, dry_run=false)"
 
       - name: 'Do nothing (blocked, owner-stopped, or dry-run)'
         if: steps.decide.outputs.wake != 'true' || inputs.dry_run == 'true'

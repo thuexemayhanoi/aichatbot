@@ -16,8 +16,8 @@ const idx = (n) => YML.indexOf(n);
 
 test('the wake threshold stays 2h and the entrypoint is the real production cycle', () => {
   assert.equal(WATCHDOG_IDLE_MS, 2 * 60 * 60 * 1000);
-  assert.equal(PRODUCTION_ENTRYPOINT.workflow, 'writer-coordinator.yml');
-  assert.deepEqual(PRODUCTION_ENTRYPOINT.inputs, { dry_run: 'false', limit: '18' });
+  assert.equal(PRODUCTION_ENTRYPOINT.workflow, 'auto-writer.yml');
+  assert.deepEqual(PRODUCTION_ENTRYPOINT.inputs, { dry_run: 'false' });
 });
 
 test('module sanity: a genuine 2h stop with every blocker clear still wakes once', () => {
@@ -57,12 +57,11 @@ test('wake dispatches EXACTLY ONE entrypoint, gated on the decision AND dry_run'
   const dispatches = YML.split('\n')
     .filter((l) => l.includes('gh workflow run') && !l.trim().startsWith('#')).length;
   assert.equal(dispatches, 1, 'exactly one gh workflow run in the whole workflow');
-  assert.ok(YML.includes('gh workflow run writer-coordinator.yml'), 'the one dispatch targets the coordinator');
+  assert.ok(YML.includes('gh workflow run auto-writer.yml'), 'the one dispatch targets the auto-writer');
   const wakeStep = YML.slice(idx('Wake production: EXACTLY ONE'));
   assert.match(wakeStep.slice(0, 200), /steps\.decide\.outputs\.wake == 'true'/, 'gated on the module decision');
   assert.match(wakeStep.slice(0, 200), /inputs\.dry_run != 'true'/, 'a dry run never dispatches');
   assert.ok(wakeStep.includes('-f dry_run=false'), 'the dispatch is a REAL production cycle');
-  assert.ok(wakeStep.includes('-f limit=18'), 'v69 cycle limit');
   // Read-only observations (gh run list) are fine; DISPATCHING anything else is not.
   const dispatchLines = YML.split('\n').filter((l) => l.includes('gh workflow run'));
   for (const never of ['writer-publisher', 'blog-factory-publish', 'ops-repair-agent', 'ops-supervisor', 'writer/', 'WRITER-']) {
@@ -158,7 +157,7 @@ test('a dry run can never reach the dispatch step — no writers, factory, publi
     'the single dispatch is reachable only with wake=true AND dry_run != true');
   const dispatchLines = YML.split('\n').filter((l) => l.includes('gh workflow run') && !l.trim().startsWith('#'));
   assert.equal(dispatchLines.length, 1, 'exactly one dispatch line in the whole workflow');
-  assert.ok(dispatchLines[0].includes('writer-coordinator.yml'));
+  assert.ok(dispatchLines[0].includes('auto-writer.yml'));
   for (const never of ['writer-a', 'writer-b', 'writer-c', 'writer-publisher', 'blog-factory-publish', 'ops-repair-agent', 'ops-supervisor']) {
     assert.ok(!YML.includes(`gh workflow run ${never}.yml`), `#6 must never dispatch ${never}`);
   }
