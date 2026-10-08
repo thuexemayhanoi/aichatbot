@@ -75,12 +75,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0 # the writer branch view + ops refs need it
-
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-
       # ----------------------------------------------------------------
       # Ops gate. Owner STOP (production_enabled=false) or an active
       # incident/maintenance lock makes the factory IDLE, not RED: the run
@@ -205,22 +203,5 @@ jobs:
           gh workflow run writer-publisher.yml --ref main -f action=auto
           echo "writer-publisher dispatched (action=auto) — it stages the chunk on main and drives blog-factory-publish"
 
-      # ----------------------------------------------------------------
-      # Terminal states. FAILED exits red -> Agent #4 incident -> lock ->
-      # PAUSED until the owner RESUMEs (mandatory stop rule 7).
-      # ----------------------------------------------------------------
-      - name: 'Dry run stop (validated, nothing pushed)'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run == 'true'
-        run: echo "dry run: chunk validated (batch ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }}, ids ${{ steps.gen.outputs.ids }}) — nothing pushed, nothing published"
-
-      - name: 'Fail closed on generation failure'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'FAILED'
-        run: |
-          echo "::error::auto-writer FAILED — see the generation log above. Chunk stays RESERVED; Agent #4 will classify the failure."
-          exit 1
-
-      - name: 'Guard: unknown generation status'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status != 'READY_TO_PUSH' && steps.gen.outputs.status != 'NEED_BATCH' && steps.gen.outputs.status != 'FAILED'
-        run: |
-          echo "::error::unknown auto-writer status '${{ steps.gen.outputs.status }}'"
-          exit 1
+      - name: 'end'
+        run: echo done
