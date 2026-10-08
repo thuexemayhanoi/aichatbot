@@ -16,39 +16,86 @@ export function modelConfig(env = process.env) {
   return { url: url.href, timeoutMs };
 }
 
+/**
+ * Ollama streams newline-delimited JSON (NDJSON). Using stream:false waits for
+ * the entire answer before HTTP headers arrive; Node/undici can terminate that
+ * wait after ~300s even when our AbortController timeout is 20 minutes.
+ * Streaming also makes mid-generation model crashes visible immediately.
+ */
 export async function callModel(model, messages, config = modelConfig(), fetchImpl = fetch) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), config.timeoutMs);
   try {
     const res = await fetchImpl(config.url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      headers: { 'Content-Type': 'application/json', Accept: 'application/x-ndjson, application/json' },
       signal: ctrl.signal,
       body: JSON.stringify({
-        model, messages, stream: false, think: false, format: 'json', keep_alive: '30m',
-        options: { temperature: 0.7, num_ctx: 16384, num_predict: 10000 },
+        model, messages, stream: true, think: false, format: 'json', keep_alive: '30m',
+        options: {
+          temperature: 0.7,
+          num_ctx: config.numCtx ?? 8192,
+          num_predict: config.numPredict ?? 7000,
+        },
       }),
     });
-    const raw = await res.text();
-    let data;
-    try { data = JSON.parse(raw); } catch {
-      return { error: true, status: res.status, text: 'non-JSON inference response (check the local Ollama server)' };
+    if (!res.ok) {
+      const raw = (await res.text()).slice(0, 300);
+      return { error: true, status: res.status, text: raw || 'Ollama HTTP error' };
     }
-    if (!res.ok || data.error) {
-      return { error: true, status: res.status, text: String(data.error || 'inference failed').slice(0, 300) };
+    if (!res.body) {
+      return { error: true, status: res.status, text: 'Ollama response stream missing' };
     }
-    if (data.done !== true || data.done_reason === 'length') {
+
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let content = '';
+    let done = false;
+    let doneReason = '';
+    let bytes = 0;
+    const MAX_BYTES = 4 * 1024 * 1024;
+    const processFrame = (line) => {
+      if (!line.trim()) return;
+      let frame;
+      try { frame = JSON.parse(line); }
+      catch { throw new Error('invalid Ollama NDJSON frame'); }
+      if (frame.error) throw new Error('Ollama: ' + String(frame.error).slice(0, 220));
+      if (typeof frame.message?.content === 'string') content += frame.message.content;
+      if (frame.done === true) {
+        done = true;
+        doneReason = frame.done_reason || '';
+      }
+    };
+    for await (const chunk of res.body) {
+      bytes += chunk.byteLength;
+      if (bytes > MAX_BYTES) throw new Error('Ollama response exceeded 4 MiB');
+      buffer += decoder.decode(chunk, { stream: true });
+      let pos;
+      while ((pos = buffer.indexOf('\n')) !== -1) {
+        processFrame(buffer.slice(0, pos));
+        buffer = buffer.slice(pos + 1);
+      }
+      if (buffer.length > 262144) throw new Error('oversized Ollama NDJSON frame');
+    }
+    buffer += decoder.decode();
+    if (buffer.trim()) processFrame(buffer);
+    if (!done) {
+      return { error: true, status: res.status, text: 'Ollama stream ended without done=true (model exited or connection dropped)' };
+    }
+    if (doneReason === 'length') {
       return { error: true, status: res.status, text: 'incomplete or truncated model response' };
     }
-    const content = data.message?.content;
-    if (typeof content !== 'string' || !content.trim()) {
+    if (!content.trim()) {
       return { error: true, status: res.status, text: 'empty model response' };
     }
     return { content };
   } catch (e) {
-    return { error: true, status: 0, text: ctrl.signal.aborted
-      ? `inference timed out after ${config.timeoutMs}ms`
-      : `local inference unavailable: ${e.message}` };
+    const code = e?.cause?.code ? ' (' + e.cause.code + ')' : '';
+    return {
+      error: true, status: 0, text: ctrl.signal.aborted
+        ? `inference timed out after ${config.timeoutMs}ms`
+        : `local inference unavailable: ${e.message}${code}`,
+    };
   } finally {
     clearTimeout(timer);
   }
