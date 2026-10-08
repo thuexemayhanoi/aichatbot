@@ -63,24 +63,6 @@ concurrency:
   group: auto-writer
   cancel-in-progress: false
 
-jobs:
-  write:
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GH_REPO: ${{ github.repository }}
-      AUTO_WRITER_TOKEN: ${{ secrets.GH_MODELS_TOKEN }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0 # the writer branch view + ops refs need it
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
       # ----------------------------------------------------------------
       # Ops gate. Owner STOP (production_enabled=false) or an active
       # incident/maintenance lock makes the factory IDLE, not RED: the run
@@ -224,3 +206,4 @@ jobs:
         run: |
           echo "::error::unknown auto-writer status '${{ steps.gen.outputs.status }}'"
           exit 1
+
