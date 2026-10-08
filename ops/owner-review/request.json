@@ -1,4 +1,7 @@
 {
-  "action": "noop",
-  "note": "Owner-authorized recovery controls; smoke and dry-run will be requested only after CI and Distribution pass. Production remains paused; incident and maintenance lock preserved."
+  "action": "smoke-test",
+  "model": "qwen3:4b-instruct",
+  "request_id": "recovery-20261008-smoke-e12b622",
+  "verification_sha": "e12b62201468c609ac95e625007590cf689acd8d",
+  "note": "CI and Distribution passed for e12b622. Run loopback Ollama smoke only; retain INC-20261008144724-577x, maintenance lock, 304 articles and checkpoints."
 }
