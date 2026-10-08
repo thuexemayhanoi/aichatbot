@@ -119,7 +119,13 @@ jobs:
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then ARGS+=(--dry-run); fi
           if [ -n "${{ github.event.inputs.model }}" ]; then ARGS+=(--model "${{ github.event.inputs.model }}"); fi
           ARGS+=(--max-attempts "${{ github.event.inputs.max_attempts || '4' }}")
+          # The runner shell is bash -e: a failed generation pipeline must NOT
+          # abort the step before the key=value outputs are captured — the
+          # FAILED branch below dispatches Agent #4 based on status=FAILED.
+          set +e
           node tools/auto-writer.mjs "${ARGS[@]}" 2>&1 | tee /tmp/auto-writer.out
+          GEN_RC=${PIPESTATUS[0]}
+          set -e
           get() { sed -n "s/^$1=//p" /tmp/auto-writer.out | tail -1; }
           {
             echo "status=$(get status)"
@@ -131,6 +137,7 @@ jobs:
             echo "drafts=$(get drafts)"
           } >> "$GITHUB_OUTPUT"
           echo "generation result: status=$(get status) batch=$(get batch)#$(get seq) ids=$(get ids)"
+          exit "$GEN_RC"
 
       # ----------------------------------------------------------------
       # NEED_BATCH: reserve the next 18 PLANNED rows, exit 0. The next
@@ -234,3 +241,17 @@ jobs:
         run: |
           echo "::error::unknown auto-writer status '${{ steps.gen.outputs.status }}'"
           exit 1
+
+      - name: 'Report non-generation failures to Agent #4 (begin/ready/push/dispatch infra)'
+        if: failure() && steps.gate.outputs.open == 'true' && steps.gen.outputs.status != 'FAILED'
+        run: |
+          # Any failure outside the generation step is infrastructure: a
+          # GITHUB_TOKEN-dispatched run cannot fire the workflow_run watcher,
+          # so hand it to Agent #4 explicitly (rule 7: red -> incident -> lock).
+          if gh workflow run ops-repair-agent.yml --ref main \
+            -f reason="auto-writer run failed outside the generation step (chunk ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }})" \
+            -f trigger="auto-writer infra failure (explicit dispatch)"; then
+            echo "ops-repair-agent dispatched"
+          else
+            echo "::warning::ops-repair-agent dispatch failed — the red run above still records the failure"
+          fi
