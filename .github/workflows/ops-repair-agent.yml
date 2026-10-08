@@ -59,9 +59,9 @@ on:
 permissions:
   # contents: write — the atomic lock ref (refs/ops/maintenance-lock/<id>),
   # the incident state file and the deterministic infra repair commit.
-  # actions: read — inspect the failing run's failed steps (diagnosis only).
+  # actions: write — inspect failed jobs AND dispatch Agent #5 for escalated incidents.
   contents: write
-  actions: read
+  actions: write
 
 concurrency:
   group: ops-repair-agent
