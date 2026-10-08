@@ -197,6 +197,12 @@ export function buildPrompt(row, ctx, feedback) {
   lines.push(`Tiêu đề làm việc (có thể tinh chỉnh, giữ 10-70 ký tự): ${row.working_title}`);
   lines.push(`Slug (bắt buộc dùng đúng): ${row.slug}`);
   lines.push(`Chuyên mục: ${row.category} (hub ${row.parent_hub})`);
+  if (row.local_scope) lines.push(`Góc địa phương bắt buộc: ${row.local_scope}`);
+  if (ctx.topicFacts) {
+    lines.push('DỮ KIỆN ĐÃ ĐỐI CHIẾU NGUỒN GỐC (viết lại bằng lời của bạn, không mở rộng thành khẳng định chưa kiểm chứng):');
+    lines.push(...ctx.topicFacts.facts);
+    lines.push(...(ctx.topicFacts.avoid ?? []).map((s) => `Giới hạn: ${s}`));
+  }
   if (ctx.needsLegalLink) {
     lines.push('Đây là bài pháp lý (legal-gate): PHẢI dẫn ít nhất 1 nguồn gov.vn hoặc vbpl.vn bằng thẻ <a href> trực tiếp trong thân bài. Chỉ dùng link từ danh sách nguồn đã kiểm chứng sau: ' + (ctx.legalLinks.slice(0, 8).join(' ')));
   } else {
@@ -279,13 +285,19 @@ export function buildCtx(row, entries = loadManifestEntries()) {
     .slice(-4)
     .map((e) => e.title);
   const needsLegalLink = row.source_policy === 'legal-gate';
+  const factsPath = join(ROOT, 'data/blog/writer-topic-facts.json');
+  const topicFacts = existsSync(factsPath) ? JSON.parse(read(factsPath))[row.article_id] : null;
+  if (topicFacts && (!Array.isArray(topicFacts.facts) || JSON.stringify(topicFacts).length > 4000)) {
+    throw new Error(`invalid or oversized topic facts for ${row.article_id}`);
+  }
   return {
     systemPrompt: SYSTEM_PROMPT,
     allowedHubPrefixes: [hubPrefix],
     hubSlugs: hubSlugs.map((s) => `${hubPrefix}${s}/`),
     exampleTitles,
     needsLegalLink,
-    legalLinks: verifiedLegalLinks(entries),
+    legalLinks: needsLegalLink ? [...new Set([...(topicFacts?.sources ?? []), ...verifiedLegalLinks(entries)])] : [],
+    topicFacts,
     needsChunks: row.agent_retrieval === 'yes',
     allEntries: entries,
   };

@@ -104,7 +104,7 @@ function main() {
       dryRunEvidence(evidence, { ...reserved, batch_id: active.batch_id }, hashes);
       assertTestedCode(evidence.code_sha, ['tools/auto-writer.mjs', 'tools/auto-writer-model.mjs',
         'tools/article-qa.mjs', 'tools/blog-factory.mjs', 'tools/factory-target.mjs', 'tools/writer-queue.mjs',
-        '.github/workflows/auto-writer.yml', 'config']);
+        '.github/workflows/auto-writer.yml', 'data/blog/writer-topic-facts.json', 'config']);
     } finally { rmSync(dir, { recursive: true, force: true }); }
   }
   console.log(`Independent recovery evidence PASS: CI/Distribution ${sha}, smoke=${process.env.SMOKE_RUN_ID || 'n/a'}, dry-run=${process.env.DRY_RUN_ID || 'n/a'}`);

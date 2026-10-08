@@ -4,7 +4,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   extractJson, countWords, splitLinks, validateCandidate, buildPrompt, chooseChunk,
-  SYSTEM_PROMPT,
+  SYSTEM_PROMPT, buildCtx,
 } from '../../tools/auto-writer.mjs';
 
 /**
@@ -227,4 +227,17 @@ test('buildPrompt switches to legal-gate mode and injects QA feedback on retry',
   assert.ok(legal.user.includes('legal-gate'));
   assert.ok(legal.user.includes('https://vbpl.vn/tt-29-2015'));
   assert.ok(legal.user.includes('description too short'), 'previous QA feedback must reach the model');
+});
+
+test('current recovery articles use verified subject-specific facts and preserve source policies', () => {
+  const legal = { ...PROMPT_ROW, article_id: 'BA-0305', category: 'SAFE', source_policy: 'legal-gate', agent_retrieval: 'no' };
+  const ctx = buildCtx(legal, []);
+  const prompt = buildPrompt(legal, ctx).user;
+  assert.match(prompt, /xe gắn máy tối đa 40 km\/h/);
+  assert.match(prompt, /38-bgtvt\.pdf/);
+  const local = { ...PROMPT_ROW, article_id: 'BA-0306', category: 'LOCAL', local_scope: 'Mai Châu; bản Lác', source_policy: 'no-external', agent_retrieval: 'yes' };
+  const localPrompt = buildPrompt(local, buildCtx(local, [])).user;
+  assert.match(localPrompt, /Tên địa danh đúng là Mai Châu/);
+  assert.match(localPrompt, /KHÔNG dùng bất kỳ liên kết ngoài nào/);
+  assert.equal(buildCtx(local, []).legalLinks.length, 0);
 });
