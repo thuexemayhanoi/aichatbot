@@ -609,9 +609,9 @@ test('Agent #4 workflow: event-driven triggers, minimal permissions, serialized'
   assert.match(y, /group: ops-repair-agent/);
   const perms = y.slice(y.indexOf('permissions:'), y.indexOf('concurrency:'));
   assert.match(perms, /contents:\s*write/);
-  assert.match(perms, /actions:\s*read/);
+  assert.match(perms, /actions:\s*write/, 'Agent #4 must be able to dispatch the same incident to Agent #5');
   assert.ok(!/pages:\s*write|packages:\s*write|id-token|secrets\.(?!(GITHUB_TOKEN))/.test(perms),
-    'no permissions beyond contents:write + actions:read');
+    'no permissions beyond contents:write + actions:write');
 });
 
 test('Agent #4 workflow: content QA never opens an incident; one attempt; scope guard; SAME incident handed to #5', () => {

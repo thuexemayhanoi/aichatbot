@@ -105,7 +105,7 @@ quan sát thấy cycle đã queued ⇒ không dispatch lần hai.
 
 ## Quyền hạn (tối thiểu, lý do từng quyền write)
 
-- **#4**: `contents:write` (lock ref, incident state, commit repair deterministic) + `actions:read` (đọc failed steps).
+- **#4**: `contents:write` (lock ref, incident state, commit repair deterministic) + `actions:write` (đọc failed steps và dispatch cùng incident sang #5; `actions:read` gây HTTP 403 ở bước bàn giao).
 - **#5**: `contents:write` (incident state, report FAILED_MANUAL, commit repair tuyến hai, xóa lock ref khi khoẻ)
   + `actions:write` (dispatch đúng MỘT entrypoint — quyền write duy nhất, chỉ dùng trong resume step).
 - **#6**: `contents:read` (quan sát, KHÔNG write content) + `actions:write` (dispatch đúng MỘT entrypoint).
