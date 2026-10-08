@@ -1,4 +1,4 @@
-=== owner-review shim 2026-10-08T14:36:11Z run 37793797248 ===
+=== owner-review shim 2026-10-08T17:42:10Z run 37818586897 ===
 --- gh version ---
 gh version 2.102.0 (2026-09-30)
 https://github.com/cli/cli/releases/tag/v2.102.0
@@ -17,21 +17,10 @@ Writer Publisher (serialized)	active	373287672
 pages-build-deployment	active	359968564
 --- request.json ---
 {
-  "action": "resume",
-  "note": "Owner-authorized workflow repair 2026-10-08: replace retired GitHub Models with local Ollama inference, preserve production QA and resume from BA-0305/BA-0306 on https://chatbot.thuexemaynguyentu.com."
+  "action": "noop",
+  "note": "Owner-authorized recovery controls; smoke and dry-run will be requested only after CI and Distribution pass. Production remains paused; incident and maintenance lock preserved."
 }
 --- dispatch ---
-action: resume
-owner RESUME of the AUTO FACTORY
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
-already enabled
-From https://github.com/thuexemayhanoi/aichatbot
- * branch            main       -> FETCH_HEAD
-Already up to date.
-Everything up-to-date
-https://github.com/thuexemayhanoi/aichatbot/actions/runs/37793822244
-DISPATCH_EXIT=0
+action: noop
+review controls updated; no production action requested
 === end ===
