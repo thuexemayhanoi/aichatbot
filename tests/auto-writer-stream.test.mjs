@@ -53,3 +53,12 @@ test('Ollama truncation is rejected even when done=true', async () => {
 test('model URL must remain on loopback, never expose GitHub tokens', () => {
   assert.throws(() => modelConfig({ AUTO_WRITER_URL:'https://example.com/api/chat' }), /loopback/);
 });
+
+test('Unicode bytes split in the middle of a character are preserved', async () => {
+  const frame = JSON.stringify({ message: { content: 'Hà Nội tiếng Việt' }, done: true, done_reason: 'stop', eval_count: 8 }) + '\n';
+  const offset = new TextEncoder().encode(frame.slice(0, frame.indexOf('à'))).length + 1;
+  let metrics;
+  const r = await callModel('test', [], { ...modelConfig(), onMetrics: (m) => { metrics = m; } }, framesToFetch([frame], offset));
+  assert.equal(r.content, 'Hà Nội tiếng Việt');
+  assert.equal(metrics.eval_count, 8);
+});

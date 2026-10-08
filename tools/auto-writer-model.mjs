@@ -64,6 +64,13 @@ export async function callModel(model, messages, config = modelConfig(), fetchIm
       if (frame.done === true) {
         done = true;
         doneReason = frame.done_reason || '';
+        if (config.onMetrics) {
+          const metrics = { done_reason: doneReason };
+          for (const key of ['total_duration', 'load_duration', 'prompt_eval_count', 'prompt_eval_duration', 'eval_count', 'eval_duration']) {
+            if (Number.isFinite(frame[key])) metrics[key] = frame[key];
+          }
+          config.onMetrics(metrics);
+        }
       }
     };
     for await (const chunk of res.body) {

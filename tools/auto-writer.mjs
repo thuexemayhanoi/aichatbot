@@ -139,7 +139,7 @@ export function validateCandidate(row, cand, ctx) {
   if (/<script|<style/i.test(body)) errs.push('body must not embed <script>/<style>');
   if (/\]\(|\)\s*<\/a>/i.test(body.replace(/<a href="[^"]*">[^<]*<\/a>/g, ''))) errs.push('markdown links are not allowed (use <a href>)');
   const wc = countWords(body);
-  if (wc < 1200 || wc > 4000) errs.push(`body word count ${wc} outside 1200-4000 (target 1600-2200)`);
+  if (wc < 1600 || wc > 2200) errs.push(`body word count ${wc} outside 1600-2200`);
   const { internal, external } = splitLinks(body);
   const prefixes = ctx.allowedHubPrefixes;
   for (const href of internal) {
@@ -260,7 +260,7 @@ export function buildCtx(row, entries = loadManifestEntries()) {
   const hubPrefix = `/blog/${hubDir}/`;
   const hubSlugs = entries
     .filter((e) => e.category === row.category)
-    .map((e) => e.slug);
+    .slice(-12).map((e) => e.slug);
   const exampleTitles = entries
     .filter((e) => e.category === row.category)
     .slice(-4)
@@ -340,7 +340,9 @@ async function generateArticle(row, ctx, opts, log) {
     let lastModelErr = '';
     for (const model of models) {
       log(`attempt ${attempt} model ${model}`);
-      const r = await callModel(model, [{ role: 'system', content: system }, { role: 'user', content: user }], opts.config);
+      const r = await callModel(model, [{ role: 'system', content: system }, { role: 'user', content: user }], {
+        ...opts.config, onMetrics: (metrics) => log(`${row.article_id} inference metrics: ${JSON.stringify(metrics)}`),
+      });
       if (r && r.content) { content = r.content; break; }
       lastModelErr = r && r.error ? `${r.status}: ${r.text}` : 'empty';
       lastFailure = lastModelErr;
@@ -355,6 +357,7 @@ async function generateArticle(row, ctx, opts, log) {
     const errs = validateCandidate(row, cand, ctx);
     if (errs.length) {
       log(`  local validation: ${errs.length} error(s)`);
+      log(errs.join('\n'));
       lastFailure = feedback = errs.map((e) => `- ${e}`).join('\n');
       continue;
     }
@@ -367,6 +370,7 @@ async function generateArticle(row, ctx, opts, log) {
     } finally {
       rmSync(tmp, { recursive: true, force: true });
     }
+    log(`${row.article_id} production QA evidence:\n${qa.out}`);
     if (qa.pass) return { cand };
     log(`  production QA failed:\n${qa.failures.join('\n')}`);
     lastFailure = feedback = [...qa.failures, ...qa.out.split('\n').filter((l) => /^WARN\s/.test(l))].join('\n');
@@ -458,6 +462,16 @@ async function cmdRun(args) {
     bodies.push([row.slug, r.cand.body_html]);
     log(`${id}: candidate accepted`);
   }
+
+  // Recheck together: separately accepted candidates can duplicate each other.
+  const pairRoot = buildTempFactoryRoot(drafts, bodies);
+  try {
+    for (const id of ids) {
+      const qa = runSandboxedQa(pairRoot, id);
+      log(`${id} combined-chunk QA evidence:\n${qa.out}`);
+      if (!qa.pass) die(`combined-chunk QA failed for ${id}`);
+    }
+  } finally { rmSync(pairRoot, { recursive: true, force: true }); }
 
   const draftsPath = join(ROOT, 'writer-work', batch.batch_id, writerShort(writer), `drafts-${chunk.seq}.json`);
   if (!dryRun) {

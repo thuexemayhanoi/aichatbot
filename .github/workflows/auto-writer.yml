@@ -195,7 +195,8 @@ jobs:
           import { callModel, modelConfig } from './tools/auto-writer-model.mjs';
           const response = await callModel(process.env.AUTO_WRITER_MODEL,
             [{ role: 'user', content: 'Return only the JSON object {"ok":true}.' }],
-            { ...modelConfig(), timeoutMs: 240000, numCtx: 2048, numPredict: 64 });
+            { ...modelConfig(), timeoutMs: 240000, numCtx: 2048, numPredict: 64,
+              onMetrics: (metrics) => console.log('smoke metrics:', JSON.stringify(metrics)) });
           if (response.error) {
             console.error('Ollama smoke failed:', response.status, response.text);
             process.exit(1);
@@ -204,6 +205,11 @@ jobs:
           if (parsed.ok !== true) throw new Error('Ollama smoke returned unexpected JSON');
           console.log('Local Ollama smoke PASS');
           NODE
+
+      - name: 'Snapshot production state before sandbox validation'
+        if: steps.gate.outputs.open == 'true' && inputs.dry_run == 'true'
+        run: |
+          git ls-files data/blog docs/state blog sitemap.xml robots.txt | xargs sha256sum > /tmp/validation-before.sha256
 
       - name: 'Generate the next chunk (AI writer + sandboxed production QA)'
         id: gen
@@ -374,6 +380,14 @@ jobs:
             echo "ops-repair-agent dispatched"
           else
             echo "::warning::ops-repair-agent dispatch failed — the red run above still records the failure"
+          fi
+
+      - name: 'Verify sandbox validation preserved production files'
+        if: always() && steps.gate.outputs.open == 'true' && inputs.dry_run == 'true'
+        run: |
+          if [ -f /tmp/validation-before.sha256 ]; then
+            sha256sum --check --quiet /tmp/validation-before.sha256
+            git diff --exit-code -- data/blog docs/state blog sitemap.xml robots.txt
           fi
 
       - name: 'Collect inference verification evidence'
