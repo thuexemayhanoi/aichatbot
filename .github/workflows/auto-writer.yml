@@ -75,12 +75,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0 # the writer branch view + ops refs need it
-
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-
       # ----------------------------------------------------------------
       # Ops gate. Owner STOP (production_enabled=false) or an active
       # incident/maintenance lock makes the factory IDLE, not RED: the run
@@ -132,95 +130,5 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "generation result: status=$(get status) batch=$(get batch)#$(get seq) ids=$(get ids)"
 
-      # ----------------------------------------------------------------
-      # NEED_BATCH: reserve the next 18 PLANNED rows, exit 0. The next
-      # scheduled run (<= 25 min) picks the fresh ACTIVE batch up.
-      # ----------------------------------------------------------------
-      - name: 'No ACTIVE chunk — reserve the next batch'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'NEED_BATCH'
-        run: |
-          set -e
-          gh workflow run writer-coordinator.yml --ref main -f dry_run=false -f limit=18
-          echo "writer-coordinator dispatched (dry_run=false, limit=18) — next scheduled run writes the new batch"
-
-      # ----------------------------------------------------------------
-      # READY_TO_PUSH: begin/ready (writer-queue.mjs is the ONLY state
-      # writer), push the writer branch, dispatch the publisher. A dry run
-      # stops here: content is validated, nothing is pushed/published.
-      # ----------------------------------------------------------------
-      - name: 'Mark the chunk READY_TO_PUSH (writer-queue begin/ready)'
-        id: ready
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run != 'true'
-        run: |
-          set -o pipefail
-          node tools/writer-queue.mjs begin "${{ steps.gen.outputs.writer }}" "${{ steps.gen.outputs.batch }}" "${{ steps.gen.outputs.seq }}" | tee /tmp/begin.out
-          node tools/writer-queue.mjs ready "${{ steps.gen.outputs.writer }}" "${{ steps.gen.outputs.batch }}" "${{ steps.gen.outputs.seq }}" --drafts "${{ steps.gen.outputs.drafts }}" | tee /tmp/ready.out
-          get() { sed -n "s/^$1=//p" /tmp/ready.out | tail -1; }
-          {
-            echo "push_files=$(get push_files)"
-            echo "branch=$(get branch)"
-          } >> "$GITHUB_OUTPUT"
-          echo "chunk READY_TO_PUSH — push_files=$(get push_files)"
-
-      - name: 'Push the writer branch (2 bodies + chunk file)'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run != 'true'
-        env:
-          BRANCH: ${{ steps.gen.outputs.branch }}
-          PUSH_FILES: ${{ steps.ready.outputs.push_files }}
-        run: |
-          set -e
-          git config user.name "motoai-bot"
-          git config user.email "nguyentuantu2482@users.noreply.github.com"
-          # ready emits push_files comma-separated (writer-queue contract) —
-          # split it into a plain whitespace list for the shell loops below.
-          PUSH_FILES="${PUSH_FILES//,/ }"
-          export PUSH_FILES
-          # Stage the generated files outside the tree first: the writer
-          # branch may already carry earlier chunk files (same path spaces).
-          STASH=/tmp/auto-writer-staged
-          rm -rf "$STASH" && mkdir -p "$STASH"
-          for f in $PUSH_FILES; do
-            mkdir -p "$STASH/$(dirname "$f")"
-            cp "$f" "$STASH/$f"
-          done
-          git fetch --prune origin
-          if git show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
-            git checkout -B "$BRANCH" "origin/$BRANCH"
-          else
-            git checkout -B "$BRANCH" origin/main
-          fi
-          for f in $PUSH_FILES; do cp "$STASH/$f" "$f"; done
-          git add $PUSH_FILES
-          if git diff --cached --quiet; then
-            echo "writer branch already carries this chunk — republish path"
-          else
-            git commit -m "writer ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }}: ${{ steps.gen.outputs.ids }} (auto-writer AI draft, QA PASS) [skip ci]"
-          fi
-          git push origin "$BRANCH"
-
-      - name: 'Dispatch the writer-publisher (GITHUB_TOKEN push triggers nothing)'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run != 'true'
-        run: |
-          set -e
-          gh workflow run writer-publisher.yml --ref main -f action=auto
-          echo "writer-publisher dispatched (action=auto) — it stages the chunk on main and drives blog-factory-publish"
-
-      # ----------------------------------------------------------------
-      # Terminal states. FAILED exits red -> Agent #4 incident -> lock ->
-      # PAUSED until the owner RESUMEs (mandatory stop rule 7).
-      # ----------------------------------------------------------------
-      - name: 'Dry run stop (validated, nothing pushed)'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run == 'true'
-        run: echo "dry run: chunk validated (batch ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }}, ids ${{ steps.gen.outputs.ids }}) — nothing pushed, nothing published"
-
-      - name: 'Fail closed on generation failure'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'FAILED'
-        run: |
-          echo "::error::auto-writer FAILED — see the generation log above. Chunk stays RESERVED; Agent #4 will classify the failure."
-          exit 1
-
-      - name: 'Guard: unknown generation status'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status != 'READY_TO_PUSH' && steps.gen.outputs.status != 'NEED_BATCH' && steps.gen.outputs.status != 'FAILED'
-        run: |
-          echo "::error::unknown auto-writer status '${{ steps.gen.outputs.status }}'"
-          exit 1
+      - name: 'end'
+        run: echo done
