@@ -171,6 +171,10 @@ jobs:
           set -e
           git config user.name "motoai-bot"
           git config user.email "nguyentuantu2482@users.noreply.github.com"
+          # ready emits push_files comma-separated (writer-queue contract) —
+          # split it into a plain whitespace list for the shell loops below.
+          PUSH_FILES="${PUSH_FILES//,/ }"
+          export PUSH_FILES
           # Stage the generated files outside the tree first: the writer
           # branch may already carry earlier chunk files (same path spaces).
           STASH=/tmp/auto-writer-staged
