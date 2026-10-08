@@ -1,7 +1,7 @@
-=== owner-review shim 2026-10-08T13:51:22Z run 37787663943 ===
+=== owner-review shim 2026-10-08T13:57:56Z run 37788555764 ===
 --- gh version ---
-gh version 2.101.0 (2026-09-15)
-https://github.com/cli/cli/releases/tag/v2.101.0
+gh version 2.102.0 (2026-09-30)
+https://github.com/cli/cli/releases/tag/v2.102.0
 --- workflow list --all ---
 Auto Writer (AI article generation)	active	378476267
 Blog Factory Publish (2-article micro batch)	active	371436848
@@ -39,6 +39,6 @@ error: cannot pull with rebase: You have unstaged changes.
 error: Please commit or stash them.
 error: cannot pull with rebase: You have unstaged changes.
 error: Please commit or stash them.
-https://github.com/thuexemayhanoi/aichatbot/actions/runs/37787721179
+https://github.com/thuexemayhanoi/aichatbot/actions/runs/37788610893
 DISPATCH_EXIT=0
 === end ===
