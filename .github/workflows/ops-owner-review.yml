@@ -48,7 +48,7 @@ jobs:
         run: |
           set -uo pipefail
           mkdir -p ops/out
-          LOG=ops/out/shim-log.txt
+          LOG="$RUNNER_TEMP/owner-review-shim.log"
           {
             echo "=== owner-review shim $(date -u +%FT%TZ) run ${GITHUB_RUN_ID:-local} ==="
             echo "--- gh version ---"
@@ -156,6 +156,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p ops/out
+          cp "$RUNNER_TEMP/owner-review-shim.log" ops/out/shim-log.txt
           git add ops/out/shim-log.txt
           git commit -m "ops: owner-review shim log [skip ci]" || { echo "log unchanged"; exit 0; }
           for i in 1 2 3; do

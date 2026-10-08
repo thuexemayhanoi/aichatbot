@@ -70,7 +70,6 @@ jobs:
       AUTO_WRITER_URL: http://127.0.0.1:11434/api/chat
       AUTO_WRITER_TIMEOUT_MS: '1200000'
       OLLAMA_HOST: 127.0.0.1:11434
-      OLLAMA_MODELS: ${{ runner.temp }}/writer-models
       OLLAMA_NUM_PARALLEL: '1'
       OLLAMA_MAX_LOADED_MODELS: '1'
       OLLAMA_CONTEXT_LENGTH: '16384'
@@ -143,6 +142,7 @@ jobs:
             mkdir -p "$RUNNER_TEMP/ollama"
             tar --zstd -xf "$ARCHIVE" -C "$RUNNER_TEMP/ollama"
           fi
+          export OLLAMA_MODELS="$RUNNER_TEMP/writer-models"
           export PATH="$RUNNER_TEMP/ollama/bin:$PATH"
           echo "$RUNNER_TEMP/ollama/bin" >> "$GITHUB_PATH"
           ollama serve > "$RUNNER_TEMP/ollama.log" 2>&1 &
