@@ -194,7 +194,7 @@ ${latestCards}
       title: 'Thuê xe máy & xe điện',
       lead: 'Hướng dẫn, ứng dụng, giá, xe, an toàn và địa phương — viết kèm Agent để bạn hỏi sâu hơn từng chủ đề.'
     })
-    + `      <div class="blog-search">
+    + `      <div class="blog-search" id="blog-search">
         <input id="blog-search-input" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết">
         <select id="blog-search-filter" aria-label="Lọc theo danh mục">
           <option value="">Tất cả danh mục</option>
