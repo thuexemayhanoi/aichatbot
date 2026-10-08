@@ -68,7 +68,7 @@ jobs:
       # recorded transaction is run by Agent #4 itself, not by this workflow).
       - name: 'Ops maintenance gate (incident/lock -> production paused)'
         run: |
-          LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*' || true)
+          LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*')
           if [ -n "$LOCKS" ]; then
             echo "::error::maintenance lock active — production paused"; exit 1
           fi
@@ -155,7 +155,16 @@ jobs:
             echo "no derived changes to commit"
           else
             git commit -m "factory: publish [${{ steps.select.outputs.ids }}] ${{ steps.select.outputs.mode }} chunk (2-article micro batch) [skip ci]"
-            git push
+            for ATTEMPT in 1 2 3; do
+              if git pull --rebase origin main && git push; then exit 0; fi
+              if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+                echo '::error::derived-state conflict — retain the failed run for recovery'
+                exit 1
+              fi
+              sleep 5
+            done
+            echo '::error::could not commit derived state after three attempts'
+            exit 1
           fi
 
       - name: Assert clean state; report QA failures

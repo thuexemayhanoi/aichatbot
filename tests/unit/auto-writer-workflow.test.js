@@ -61,6 +61,9 @@ test('inspect resumes a staged chunk without regenerating its prose', (t) => {
   const record = { ...batch.chunks[0], batch_id: batch.batch_id, status: 'READY_TO_PUSH' };
   mkdirSync(join(dir, 'docs/state'), { recursive: true });
   writeFileSync(join(dir, 'docs/state/writer-assignments.json'), JSON.stringify({ active: batch }));
+  mkdirSync(join(dir, 'data/blog'), { recursive: true });
+  writeFileSync(join(dir, 'data/blog/published.json'), JSON.stringify({ articles: [] }));
+  writeFileSync(join(dir, 'data/blog/content-matrix.csv'), 'article_id,status,slug,output_path\nBA-0305,PLANNED,article-305,blog/article-305/index.html\nBA-0306,PLANNED,article-306,blog/article-306/index.html\n');
   const chunkDir = join(dir, 'writer-work', batch.batch_id, 'A');
   mkdirSync(chunkDir, { recursive: true });
   writeFileSync(join(chunkDir, 'chunk-04.json'), JSON.stringify(record));

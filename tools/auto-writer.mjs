@@ -35,6 +35,7 @@ import { createHash } from 'node:crypto';
 import { parseMatrix } from './blog-factory.mjs';
 import { HUBS } from './build-blog.mjs';
 import { callModel, modelConfig, DEFAULT_MODEL } from './auto-writer-model.mjs';
+import { readPublicationBudget } from './factory-target.mjs';
 
 export const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -423,6 +424,8 @@ function parseArgs(argv) {
 }
 
 function cmdInspect() {
+  const budget = readPublicationBudget(ROOT);
+  if (budget.complete) { emit({ status: 'COMPLETE', ...budget }); return; }
   const { batch, chunk } = chooseChunk(loadAssignments());
   if (!chunk) { emit({ status: 'NEED_BATCH' }); return; }
   const branch = `writer/${batch.batch_id}/${writerShort(chunk.writer)}`;
@@ -449,6 +452,8 @@ async function cmdRun(args) {
   const log = (m) => console.error('[auto-writer]', m);
 
   const rows = parseMatrix();
+  const budget = readPublicationBudget(ROOT);
+  if (budget.complete) { emit({ status: 'COMPLETE', ...budget }); return; }
   const byId = new Map(rows.map((r) => [r.article_id, r]));
 
   const { batch, chunk } = chooseChunk(loadAssignments());
@@ -456,6 +461,7 @@ async function cmdRun(args) {
   if (!chunk) { emit({ status: 'NEED_BATCH', batch_id: batch.batch_id, reason: 'all chunks terminal' }); return; }
 
   const ids = chunk.ids;
+  if (ids.length > budget.remaining) die('reserved chunk would exceed the 2000-publication target');
   const writer = chunk.writer;
   const branch = `writer/${batch.batch_id}/${writerShort(writer)}`;
   log(`chunk ${batch.batch_id}#${chunk.seq} (${writer}) ids=${ids.join(',')}`);

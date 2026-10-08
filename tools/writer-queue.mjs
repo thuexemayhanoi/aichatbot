@@ -294,7 +294,7 @@ function validateDrafts(drafts, chunk, rows) {
 // ---------------------------------------------------------------------------
 
 function cmdPlan(args) {
-  const limit = Math.max(1, Math.min(MAX_BATCH, Number(args['--limit'] ?? MAX_BATCH) || MAX_BATCH));
+  let limit = Math.max(1, Math.min(MAX_BATCH, Number(args['--limit'] ?? MAX_BATCH) || MAX_BATCH));
   const dryRun = Boolean(args['--dry-run']);
   const baseSha = args['--base-sha'] ?? '';
 
@@ -317,6 +317,10 @@ function cmdPlan(args) {
 
   const rows = loadRows();
   const published = existsSync(MANIFEST) ? readJson(MANIFEST) : { articles: [] };
+  const publishedCount = rows.filter((r) => r.status === 'PUBLISHED').length;
+  if (publishedCount > 2000) die('publication target exceeded — fail closed');
+  if (publishedCount === 2000) { emit({ created: 'false', complete: 'true', reason: '2000 articles PUBLISHED' }); return; }
+  limit = Math.min(limit, 2000 - publishedCount);
   const activeIds = new Set(assignments.active?.chunks?.flatMap((c) => c.ids) ?? []);
   const ids = selectCandidateIds(rows, published, ROOT, limit).filter((id) => !activeIds.has(id));
   if (ids.length === 0) {

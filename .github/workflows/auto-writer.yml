@@ -154,6 +154,35 @@ jobs:
             ${{ runner.temp }}/ollama
           key: local-writer-v1-ollama-0.40.1-${{ runner.os }}-${{ env.AUTO_WRITER_MODEL }}
 
+      - name: 'Complete the factory at exactly 2000 verified publications'
+        if: steps.inspect.outputs.status == 'COMPLETE' && inputs.dry_run != 'true' && inputs.smoke_only != 'true'
+        run: |
+          set -euo pipefail
+          node tools/site-audit.mjs
+          node tools/blog-factory.mjs validate
+          mkdir -p reports
+          node --input-type=module <<'NODE'
+          import { readPublicationBudget } from './tools/factory-target.mjs';
+          import { readFileSync, writeFileSync } from 'node:fs';
+          const budget = readPublicationBudget();
+          if (!budget.complete) throw new Error('completion count changed');
+          const statePath = 'docs/state/operations/maintenance.json';
+          const state = JSON.parse(readFileSync(statePath, 'utf8'));
+          if (state.active_incident) throw new Error('cannot complete during an incident');
+          state.production_enabled = false;
+          state.owner_pause_reason = 'Factory complete: exactly 2000 verified PUBLISHED articles.';
+          writeFileSync(statePath, JSON.stringify(state, null, 2) + '\n');
+          writeFileSync('reports/factory-completion.json', JSON.stringify({ ...budget,
+            completed_at: new Date().toISOString(), run_id: process.env.GITHUB_RUN_ID,
+            verification_sha: process.env.GITHUB_SHA }, null, 2) + '\n');
+          NODE
+          git config user.name motoai-bot
+          git config user.email nguyentuantu2482@users.noreply.github.com
+          git add reports/factory-completion.json docs/state/operations/maintenance.json
+          git commit -m 'factory: COMPLETE — 2000 verified publications, production stopped [skip ci]'
+          git pull --rebase origin main
+          git push
+
       - name: 'Start local Ollama and load the writer model (no API key)'
         if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE'
         timeout-minutes: 20

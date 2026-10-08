@@ -98,20 +98,20 @@ jobs:
           QUEUED_COUNT=0
           for W in auto-writer.yml writer-coordinator.yml writer-publisher.yml blog-factory-publish.yml pages-build-deployment; do
             RUNS=$(gh run list --workflow "$W" --limit 10 --json status \
-              --jq '[.[] | select(.status == "in_progress" or .status == "queued")] | length' 2>/dev/null || echo 0)
+              --jq '[.[] | select(.status != "completed")] | length')
             RUNS=${RUNS:-0}
             ACTIVE_COUNT=$((ACTIVE_COUNT + RUNS))
           done
           # split active vs queued for the log (both block the wake)
           QUEUED_COUNT=$(gh run list --workflow auto-writer.yml --limit 10 --json status \
-            --jq '[.[] | select(.status == "queued")] | length' 2>/dev/null || echo 0)
+            --jq '[.[] | select(.status == "queued")] | length')
           QUEUED_COUNT=${QUEUED_COUNT:-0}
 
           # --- Agent #4 / #5 activity (a queued supervisor counts: it WILL run) ---
           A4=$(gh run list --workflow ops-repair-agent.yml --limit 10 --json status \
-            --jq '[.[] | select(.status == "in_progress" or .status == "queued")] | length' 2>/dev/null || echo 0)
+            --jq '[.[] | select(.status != "completed")] | length')
           A5=$(gh run list --workflow ops-supervisor.yml --limit 10 --json status \
-            --jq '[.[] | select(.status == "in_progress" or .status == "queued")] | length' 2>/dev/null || echo 0)
+            --jq '[.[] | select(.status != "completed")] | length')
 
           BOOL() { if [ "$1" -gt 0 ] 2>/dev/null; then echo true; else echo false; fi; }
           {

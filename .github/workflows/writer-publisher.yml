@@ -95,7 +95,7 @@ jobs:
       # actions are production mutations too, so the gate covers the whole job.
       - name: 'Ops maintenance gate (incident/lock -> production paused)'
         run: |
-          LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*' || true)
+          LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*')
           if [ -n "$LOCKS" ]; then
             echo "::error::maintenance lock active — production paused"; exit 1
           fi
@@ -177,7 +177,7 @@ jobs:
         if: steps.select.outputs.action == 'publish' || steps.select.outputs.action == 'requeue'
         run: |
           for i in $(seq 1 60); do
-            BUSY=$(gh run list --workflow blog-factory-publish.yml --json status --jq '[.[] | select(.status == "in_progress" or .status == "in_queued")] | length' 2>/dev/null || echo 0)
+            BUSY=$(gh run list --workflow blog-factory-publish.yml --json status --jq '[.[] | select(.status != "completed")] | length')
             if [ "$BUSY" = "0" ]; then echo "factory quiet"; exit 0; fi
             echo "factory busy ($BUSY run(s)) — waiting 30s"
             sleep 30
@@ -192,7 +192,10 @@ jobs:
           B: ${{ steps.select.outputs.batch }}
           S: ${{ steps.select.outputs.seq }}
           ACTION: ${{ steps.select.outputs.action }}
+          IDS: ${{ steps.select.outputs.ids }}
         run: |
+          EXPECTED_BODIES=$(node -e 'const ids=process.env.IDS.split(","); if(ids.length<1||ids.length>2||new Set(ids).size!==ids.length)process.exit(1); console.log(ids.length)')
+          EXPECTED_TOTAL=$((EXPECTED_BODIES + 1))
           git config user.name "motoai-bot"
           git config user.email "nguyentuantu2482@users.noreply.github.com"
           for ATTEMPT in 1 2 3; do
@@ -237,8 +240,8 @@ jobs:
             MANIFEST=$(git diff --cached --name-only | grep -c '^data/blog/published.json$' || true)
             OTHER=$(git diff --cached --name-only | grep -cv -e '^data/blog/articles/[^/]*\.body\.html$' -e '^data/blog/published.json$' || true)
             echo "staged scope: total=$TOTAL bodies=$BODIES manifest=$MANIFEST other=$OTHER"
-            if [ "$TOTAL" != "3" ] || [ "$BODIES" != "2" ] || [ "$MANIFEST" != "1" ] || [ "$OTHER" != "0" ]; then
-              echo "::error::bad push scope — exactly 2 bodies + published.json required"
+            if [ "$TOTAL" != "$EXPECTED_TOTAL" ] || [ "$BODIES" != "$EXPECTED_BODIES" ] || [ "$MANIFEST" != "1" ] || [ "$OTHER" != "0" ]; then
+              echo "::error::bad push scope — exactly the assigned $EXPECTED_BODIES bodies + published.json required"
               exit 1
             fi
             git commit -m "writer-publisher: publish chunk $B#$S (2-article micro batch) [skip ci]"

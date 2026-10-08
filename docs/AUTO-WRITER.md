@@ -59,3 +59,26 @@ errors/timeouts and credential isolation. Workflow tests exercise a failed
 Bash pipeline and recovery from a staged writer branch in a temporary repo.
 Successful tests do not prove that a small CPU model will pass production QA;
 verify a real Actions run and matrix progress after deployment.
+
+## Recovery verification and completion
+
+`smoke_only=true` and `dry_run=true` can verify inference under maintenance.
+They never change the incident, lock, reservation, matrix or published source.
+The owner request shim accepts `smoke-test` and `dry-run`; dispatch failures
+make its run fail. Evidence is an Actions artifact, not a log commit to main.
+
+The writer requires 1,600–2,200 words and checks both articles together before
+staging. Repeated paragraphs/sentences, cross-article copies and filler are
+rejected even if the general article score would otherwise pass. Dry-run
+artifacts include bodies, individual QA, model metrics and inventory hashes.
+
+`factory-target.mjs` counts PUBLISHED rows against matching manifest entries
+and existing source/page files. The coordinator limits the final reservation
+to the remaining slots; a one-article boundary chunk is allowed. At exactly
+2,000 publications the scheduled writer validates the site, records
+`reports/factory-completion.json`, and turns `production_enabled` off.
+More than 2,000 publications or inconsistent evidence fails closed.
+
+The watchdog refuses to wake production when Actions observations fail.
+Publisher waiting includes queued/pending factory jobs; derived commits retry
+safe push races three times and stop on an actual content conflict.
