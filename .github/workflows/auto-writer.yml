@@ -55,7 +55,6 @@ permissions:
   # models: read — GitHub Models inference (https://models.github.ai).
   # If GITHUB_TOKEN lacks models access, set the GH_MODELS_TOKEN secret
   # (PAT with models:read) — auto-writer reports the 401/403 clearly.
-  models: read
 
 concurrency:
   # Two scheduled runs never generate in parallel; the second waits, then
