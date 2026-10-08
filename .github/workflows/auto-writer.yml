@@ -101,23 +101,27 @@ jobs:
       # ----------------------------------------------------------------
       - name: 'Ops gate (owner stop / incident lock -> idle, not failed)'
         id: gate
+        env:
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
         run: |
           set -e
           # Read-only verification may run while production is locked. Every
           # begin/ready/push/dispatch below still requires production mode.
           if [ "$DRY_RUN" = "true" ] || [ "$SMOKE_ONLY" = "true" ]; then
             echo "open=true" >> "$GITHUB_OUTPUT"
+            echo "read_only=true" >> "$GITHUB_OUTPUT"
             echo "read-only inference verification; production lock preserved"
             exit 0
           fi
           PROD_ENABLED=$(jq -r '.production_enabled // false' docs/state/operations/maintenance.json)
           LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*')
+          INCIDENT=$(jq -r '.active_incident.incident_id // empty' docs/state/operations/maintenance.json)
           if [ "$PROD_ENABLED" != "true" ]; then
             echo "open=false" >> "$GITHUB_OUTPUT"
             echo "owner stop (production_enabled=false) — auto writer idle, queue untouched"
             exit 0
           fi
-          if [ -n "$LOCKS" ]; then
+          if [ -n "$LOCKS" ] || [ -n "$INCIDENT" ]; then
             echo "open=false" >> "$GITHUB_OUTPUT"
             echo "maintenance lock active — auto writer idle, waiting for owner RESUME"
             exit 0

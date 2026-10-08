@@ -52,6 +52,29 @@ test('network failures and timeouts produce actionable errors', async () => {
   assert.match(timedOut.text, /timed out/);
 });
 
+test('NDJSON preserves UTF-8 split inside a Vietnamese character and reports real inference metrics', async () => {
+  const content = '{"title":"Thuê xe ở Hà Nội"}';
+  const bytes = new TextEncoder().encode(JSON.stringify({ done: true, done_reason: 'stop', message: { content }, eval_count: 33, eval_duration: 2e9 }) + '\n');
+  const index = bytes.findIndex((b) => b > 127) + 1;
+  let metrics;
+  const r = await callModel('qwen', [], { ...modelConfig({}), onMetrics: (m) => { metrics = m; } }, async () => new Response(new ReadableStream({
+    start(controller) { controller.enqueue(bytes.slice(0, index)); controller.enqueue(bytes.slice(index)); controller.close(); },
+  })));
+  assert.equal(r.content, content);
+  assert.equal(metrics.generated_tokens, 33);
+  assert.equal(metrics.generation_seconds, 2);
+});
+
+test('data after the terminal frame is rejected rather than appended to a completed article', async () => {
+  const frames = [
+    { done: true, message: { content: '{"ok":true}' } },
+    { done: false, message: { content: 'corrupt suffix' } },
+  ].map(JSON.stringify).join('\n');
+  const r = await callModel('qwen', [], modelConfig({}), async () => new Response(frames));
+  assert.equal(r.error, true);
+  assert.match(r.text, /after final done/);
+});
+
 test('inference configuration refuses remote endpoints and invalid timeouts', () => {
   for (const url of ['https://models.github.ai/api/chat', 'http://example.com/api/chat', 'http://user:pass@localhost/api/chat']) {
     assert.throws(() => modelConfig({ AUTO_WRITER_URL: url }), /loopback/);

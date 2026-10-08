@@ -28,7 +28,6 @@ on:
     branches: [main]
     paths:
       - 'ops/owner-review/**'
-      - '.github/workflows/ops-owner-review.yml'
 
 permissions:
   contents: write
@@ -163,17 +162,10 @@ jobs:
             esac
             echo "=== end ==="
           } 2>&1 | tee "$LOG"
-      - name: 'Commit the shim log'
+      - name: 'Preserve the owner request log'
         if: always()
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          mkdir -p ops/out
-          cp "$RUNNER_TEMP/owner-review-shim.log" ops/out/shim-log.txt
-          git add ops/out/shim-log.txt
-          git commit -m "ops: owner-review shim log [skip ci]" || { echo "log unchanged"; exit 0; }
-          for i in 1 2 3; do
-            if git pull --rebase origin main && git push; then exit 0; fi
-            sleep 5
-          done
-          echo "::warning::could not push shim log after retries"
+        uses: actions/upload-artifact@v4
+        with:
+          name: owner-request-${{ github.run_id }}
+          path: ${{ runner.temp }}/owner-review-shim.log
+          if-no-files-found: error

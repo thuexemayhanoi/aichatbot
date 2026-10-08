@@ -8,6 +8,32 @@ import { join } from 'node:path';
 const repo = new URL('../../', import.meta.url).pathname;
 const workflow = readFileSync(join(repo, '.github/workflows/auto-writer.yml'), 'utf8');
 
+test('maintenance dry-run opens only sandbox verification; production remains blocked by the incident or failed lock lookup', (t) => {
+  const dir = mkdtempSync(join(tmpdir(), 'writer-gate-'));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  mkdirSync(join(dir, 'docs/state/operations'), { recursive: true });
+  writeFileSync(join(dir, 'docs/state/operations/maintenance.json'), JSON.stringify({ production_enabled: true, active_incident: { incident_id: 'INC-test' } }));
+  writeFileSync(join(dir, 'git'), '#!/bin/bash\nif [ "$FAIL_LOOKUP" = true ]; then exit 1; fi\necho "abc refs/ops/maintenance-lock/INC-test"\n', { mode: 0o755 });
+  const script = workflow.split("- name: 'Ops gate")[1].split("\n      - name:")[0]
+    .split('        run: |\n')[1].split('\n').map((line) => line.replace(/^          /, '')).join('\n');
+  const run = (dry, fail) => {
+    const output = join(dir, `output-${dry}-${fail}`);
+    const p = spawnSync('bash', ['-e', '-c', script], { cwd: dir, encoding: 'utf8', env: {
+      ...process.env, PATH: `${dir}:${process.env.PATH}`, DRY_RUN: dry, FAIL_LOOKUP: fail, GITHUB_OUTPUT: output,
+    } });
+    return { status: p.status, output: p.status === 0 ? readFileSync(output, 'utf8') : '' };
+  };
+  assert.match(run('true', 'true').output, /open=true\nread_only=true/);
+  assert.match(run('false', 'false').output, /open=false/);
+  assert.equal(run('false', 'true').status, 1, 'failed remote lookup must fail closed');
+  const before = readFileSync(join(dir, 'docs/state/operations/maintenance.json'), 'utf8');
+  assert.ok(before.includes('INC-test'), 'incident retained');
+  for (const name of ['Mark the chunk READY_TO_PUSH', 'Push the writer branch', 'Dispatch the writer-publisher', 'No ACTIVE chunk']) {
+    const step = workflow.split(`- name: '${name}`)[1].split('        run: |')[0];
+    assert.match(step, /dry_run != 'true'/, name + ' excludes dry-run');
+  }
+});
+
 test('a failed generation preserves outputs and reaches the failure handler', (t) => {
   const dir = mkdtempSync(join(tmpdir(), 'writer-failure-'));
   t.after(() => rmSync(dir, { recursive: true, force: true }));

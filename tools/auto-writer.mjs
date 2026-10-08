@@ -31,6 +31,7 @@ import { join, dirname, isAbsolute, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
+import { createHash } from 'node:crypto';
 import { parseMatrix } from './blog-factory.mjs';
 import { HUBS } from './build-blog.mjs';
 import { callModel, modelConfig, DEFAULT_MODEL } from './auto-writer-model.mjs';
@@ -85,6 +86,17 @@ export function extractJson(text) {
 export function countWords(html) {
   const text = String(html).replace(/<[^>]+>/g, ' ');
   return (text.match(/[A-Za-zÀ-ỹ0-9]+/g) || []).length;
+}
+
+function inventorySnapshot() {
+  const paths = [
+    'data/blog/content-matrix.csv', 'data/blog/published.json',
+    'docs/state/writer-assignments.json', 'docs/state/blog-factory.checkpoint.json',
+    'docs/state/operations/maintenance.json',
+    ...readdirSync(ARTICLES_DIR).sort().map((f) => `data/blog/articles/${f}`),
+  ];
+  return Object.fromEntries(paths.filter((p) => existsSync(join(ROOT, p)))
+    .map((p) => [p, createHash('sha256').update(readFileSync(join(ROOT, p))).digest('hex')]));
 }
 
 export const STRAY_RE = /[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff]/;
@@ -370,8 +382,8 @@ async function generateArticle(row, ctx, opts, log) {
     } finally {
       rmSync(tmp, { recursive: true, force: true });
     }
-    log(`${row.article_id} production QA evidence:\n${qa.out}`);
-    if (qa.pass) return { cand };
+    log(qa.out.trim());
+    if (qa.pass) return { cand, qa };
     log(`  production QA failed:\n${qa.failures.join('\n')}`);
     lastFailure = feedback = [...qa.failures, ...qa.out.split('\n').filter((l) => /^WARN\s/.test(l))].join('\n');
   }
@@ -433,6 +445,7 @@ async function cmdRun(args) {
   const models = [flags['--model'] || process.env.AUTO_WRITER_MODEL || DEFAULT_MODEL];
   const config = modelConfig();
   const dryRun = (flags['--dry-run'] ?? flags.dryRun) === true || (flags['--dry-run'] ?? flags.dryRun) === 'true';
+  const before = dryRun ? inventorySnapshot() : null;
   const log = (m) => console.error('[auto-writer]', m);
 
   const rows = parseMatrix();
@@ -450,26 +463,34 @@ async function cmdRun(args) {
 
   const drafts = [];
   const bodies = [];
+  const qaEvidence = [];
   for (const id of ids) {
     const row = byId.get(id);
     if (!row) die(`matrix row missing for ${id}`, { batch: batch.batch_id, seq: String(chunk.seq) });
     if (row.status !== 'PLANNED') die(`row ${id} is ${row.status} — only PLANNED rows can be written`, { batch: batch.batch_id, seq: String(chunk.seq) });
+    if (existsSync(join(ARTICLES_DIR, `${row.slug}.body.html`)) || loadManifestEntries().some((e) => e.article_id === id || e.slug === row.slug)) {
+      die(`${id} already has a body or manifest entry — recover the staged chunk, never overwrite it`);
+    }
     const ctx = buildCtx(row);
     const r = await generateArticle(row, ctx, { models, maxAttempts, config }, log);
     if (r.fatal) die(r.fatal, { batch: batch.batch_id, seq: String(chunk.seq), ids: ids.join(',') });
     if (r.fail) die(r.fail, { batch: batch.batch_id, seq: String(chunk.seq), ids: ids.join(',') });
     drafts.push(manifestDraft(row, r.cand));
     bodies.push([row.slug, r.cand.body_html]);
+    qaEvidence.push({ article_id: id, words: countWords(r.cand.body_html), qa: r.qa.out });
     log(`${id}: candidate accepted`);
   }
 
-  // Recheck together: separately accepted candidates can duplicate each other.
+  // Verify BOTH candidates together, including duplication between the pair.
   const pairRoot = buildTempFactoryRoot(drafts, bodies);
   try {
     for (const id of ids) {
       const qa = runSandboxedQa(pairRoot, id);
-      log(`${id} combined-chunk QA evidence:\n${qa.out}`);
-      if (!qa.pass) die(`combined-chunk QA failed for ${id}`);
+      log(`pair QA ${id}:\n${qa.out.trim()}`);
+      qaEvidence.find((e) => e.article_id === id).qa = qa.out;
+      if (!qa.pass || /^WARN\s+no-(?:cross-article-duplicate|duplicate-paragraphs|duplicate-sentences|filler)\b/m.test(qa.out)) {
+        die(`pair QA refused ${id}: ${qa.out.replace(/\s+/g, ' ').slice(-600)}`);
+      }
     }
   } finally { rmSync(pairRoot, { recursive: true, force: true }); }
 
@@ -481,18 +502,18 @@ async function cmdRun(args) {
       writeFileSync(join(ARTICLES_DIR, `${slug}.body.html`), html.endsWith('\n') ? html : html + '\n');
     }
   } else {
-    mkdirSync(join(ROOT, 'writer-work-auto-dryrun'), { recursive: true });
-    const evidence = join(ROOT, 'writer-work-auto-dryrun');
-    writeFileSync(join(evidence, `drafts-${chunk.seq}.json`), JSON.stringify(drafts, null, 2) + '\n');
-    for (const [slug, html] of bodies) writeFileSync(join(evidence, `${slug}.body.html`), html + '\n');
-    const qaRoot = buildTempFactoryRoot(drafts, bodies);
-    try {
-      for (const id of ids) {
-        const qa = runSandboxedQa(qaRoot, id);
-        writeFileSync(join(evidence, `${id}-qa.txt`), qa.out);
-        if (!qa.pass) die(`combined chunk QA failed for ${id}`);
-      }
-    } finally { rmSync(qaRoot, { recursive: true, force: true }); }
+    const evidenceDir = join(ROOT, 'writer-work-auto-dryrun');
+    mkdirSync(evidenceDir, { recursive: true });
+    writeFileSync(join(evidenceDir, `drafts-${chunk.seq}.json`), JSON.stringify(drafts, null, 2) + '\n');
+    for (const [slug, html] of bodies) writeFileSync(join(evidenceDir, `${slug}.body.html`), html);
+    for (const e of qaEvidence) writeFileSync(join(evidenceDir, `${e.article_id}-qa.txt`), e.qa);
+    const after = inventorySnapshot();
+    if (JSON.stringify(before) !== JSON.stringify(after)) die('dry-run changed production inventory or checkpoint');
+    const codeSha = spawnSync('git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8' }).stdout?.trim();
+    writeFileSync(join(evidenceDir, 'qa.json'), JSON.stringify({
+      code_sha: codeSha, batch: batch.batch_id, seq: chunk.seq, ids, models,
+      results: qaEvidence, inventory_unchanged: true, before, after,
+    }, null, 2) + '\n');
   }
 
   emit({

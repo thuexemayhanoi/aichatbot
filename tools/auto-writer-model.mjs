@@ -53,9 +53,11 @@ export async function callModel(model, messages, config = modelConfig(), fetchIm
     let done = false;
     let doneReason = '';
     let bytes = 0;
+    let metrics;
     const MAX_BYTES = 4 * 1024 * 1024;
     const processFrame = (line) => {
       if (!line.trim()) return;
+      if (done) throw new Error('Ollama sent data after final done marker');
       let frame;
       try { frame = JSON.parse(line); }
       catch { throw new Error('non-JSON Ollama NDJSON frame'); }
@@ -64,12 +66,16 @@ export async function callModel(model, messages, config = modelConfig(), fetchIm
       if (frame.done === true) {
         done = true;
         doneReason = frame.done_reason || '';
-        if (config.onMetrics) {
-          const metrics = { done_reason: doneReason };
-          for (const key of ['total_duration', 'load_duration', 'prompt_eval_count', 'prompt_eval_duration', 'eval_count', 'eval_duration']) {
-            if (Number.isFinite(frame[key])) metrics[key] = frame[key];
-          }
-          config.onMetrics(metrics);
+        metrics = {
+          done_reason: doneReason,
+          model: frame.model || model,
+          prompt_tokens: frame.prompt_eval_count,
+          generated_tokens: frame.eval_count,
+          generation_seconds: frame.eval_duration / 1e9,
+          load_seconds: frame.load_duration / 1e9,
+        };
+        for (const key of ['total_duration', 'load_duration', 'prompt_eval_count', 'prompt_eval_duration', 'eval_count', 'eval_duration']) {
+          if (Number.isFinite(frame[key])) metrics[key] = frame[key];
         }
       }
     };
@@ -95,6 +101,7 @@ export async function callModel(model, messages, config = modelConfig(), fetchIm
     if (!content.trim()) {
       return { error: true, status: res.status, text: 'empty model response' };
     }
+    config.onMetrics?.(metrics);
     return { content };
   } catch (e) {
     const code = e?.cause?.code ? ' (' + e.cause.code + ')' : '';
