@@ -218,6 +218,15 @@ jobs:
         if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'FAILED'
         run: |
           echo "::error::auto-writer FAILED — see the generation log above. Chunk stays RESERVED; Agent #4 will classify the failure."
+          # A GITHUB_TOKEN-dispatched run cannot fire the workflow_run watcher,
+          # so the failure is handed to Agent #4 explicitly (publisher precedent).
+          if gh workflow run ops-repair-agent.yml --ref main \
+            -f reason="auto-writer generation failed (chunk ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }}, ids ${{ steps.gen.outputs.ids }})" \
+            -f trigger="auto-writer FAILED (explicit dispatch)"; then
+            echo "ops-repair-agent dispatched"
+          else
+            echo "::warning::ops-repair-agent dispatch failed — the red run above still records the failure"
+          fi
           exit 1
 
       - name: 'Guard: unknown generation status'

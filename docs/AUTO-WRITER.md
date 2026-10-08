@@ -18,7 +18,7 @@ Owner directive 2026-10-08: production phải chạy 24/7 bằng GitHub Actions,
 2. `node tools/auto-writer.mjs run` → emit `status=READY_TO_PUSH|NEED_BATCH|FAILED`.
 3. `READY_TO_PUSH` → workflow gọi `begin` + `ready`, push branch (đúng 2 bodies + chunk file), dispatch `writer-publisher.yml -f action=auto` (push bằng GITHUB_TOKEN không trigger workflow).
 4. `NEED_BATCH` → dispatch `writer-coordinator.yml -f dry_run=false -f limit=18`, exit 0. Run cron kế tiếp (≤ 25 phút) lấy batch mới.
-5. `FAILED` → exit 1 (đỏ): Agent #4 mở incident + lock → production PAUSED cho đến khi owner RESUME (rule dừng bắt buộc).
+5. `FAILED` → exit 1 (đỏ) + dispatch tường minh `ops-repair-agent.yml` (run GITHUB_TOKEN không kích hoạt được watcher workflow_run): Agent #4 mở incident + lock → production PAUSED cho đến khi owner RESUME (rule dừng bắt buộc).
 
 ## Guardrail AI engine (giữ nguyên hợp đồng writer)
 
@@ -31,6 +31,7 @@ Owner directive 2026-10-08: production phải chạy 24/7 bằng GitHub Actions,
 
 - STOP: push `ops/owner-review/request.json` với `{"action":"pause"}` → shim set `production_enabled=false` trong `docs/state/operations/maintenance.json` (bền vững, commit main). Mọi run auto-writer kế tiếp IDLE ngay tại ops gate; watchdog không bao giờ wake. KHÔNG xóa bài đã publish, KHÔNG đụng queue/matrix.
 - RESUME: push `{"action":"resume"}` → shim set `production_enabled=true`, commit, và dispatch `auto-writer.yml -f dry_run=false` để chu kỳ đầu khởi động ngay.
+- DRY-RUN (kiểm tra an toàn): push `{"action":"dry-run"}` → dispatch `auto-writer.yml -f dry_run=true`: sinh bài + QA thật cho chunk kế tiếp nhưng KHÔNG push/publish gì. Dùng để kiểm tra kết nối GitHub Models trước khi bật chạy thật.
 - Nếu đang có incident/lock (workflow đỏ): giải quyết theo hướng dẫn resolve-incident của Agent #5, rồi RESUME như trên.
 
 ## Vòng tuần hoàn 24/7

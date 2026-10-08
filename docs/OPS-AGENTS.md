@@ -20,7 +20,9 @@ push writer branch, chạy generator, hay resume production khi chủ chưa cho.
   Blog Factory Publish, pages build and deployment; hoặc `workflow_dispatch` thủ công.
   Lưu ý semantics của `workflow_run` + `GITHUB_TOKEN`: workflow chạy bằng token của actor khác
   có thể không kích hoạt được (đã từng gây publisher 403) — vì vậy còn có **đường thứ hai**:
-  writer-publisher tự classify lỗi factory và `gh workflow run ops-repair-agent.yml` khi là INFRA.
+  writer-publisher tự classify lỗi factory và `gh workflow run ops-repair-agent.yml` khi là INFRA;
+  auto-writer cũng dispatch #4 tường minh khi generation FAILED (run GITHUB_TOKEN không được
+  tính là workflow_run watcher).
   CI/Distribution DELIBERATELY không nằm trong trigger list (suite đang đỏ vì content blocker
   đã ghi nhận — tự kích theo CI sẽ tạo incident noise vô hạn; build lỗi vẫn tới được qua #5).
 - **#5** KHÔNG tự trigger. Chỉ #4 dispatch (cùng `incident_id`) khi #4 terminal (SUCCESS/ESCALATE),

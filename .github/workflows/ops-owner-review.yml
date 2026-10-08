@@ -10,6 +10,9 @@ name: ops-owner-review
 #                        incident: fix the recorded infra cause, prove the repo
 #                        healthy (validators + targeted tests), then release the
 #                        maintenance lock ref. Never touches article content.
+#   dry-run           -> dispatch auto-writer.yml -f dry_run=true: AI generation
+#                        + full QA for the next chunk, NOTHING pushed/published.
+#                        Safe connectivity check for GitHub Models inference.
 #   pause             -> owner STOP of the AUTO FACTORY: set
 #                        production_enabled=false in
 #                        docs/state/operations/maintenance.json and commit. The
@@ -107,6 +110,11 @@ jobs:
                   git ls-remote --refs origin "refs/ops/maintenance-lock/*" || echo "(no lock refs)"
                   echo "RESOLVE_EXIT=0"
                 fi
+                ;;
+              dry-run)
+                echo "owner-requested AUTO FACTORY dry run (AI generation + QA, nothing pushed)"
+                gh workflow run auto-writer.yml --ref main -f dry_run=true
+                echo "DISPATCH_EXIT=$?"
                 ;;
               pause)
                 echo "owner STOP of the AUTO FACTORY (durable owner switch)"

@@ -318,7 +318,14 @@ async function callModel(model, messages, maxAttemptsPerModel, token) {
       if (!res.ok) {
         return { error: true, status: res.status, text: (await res.text()).slice(0, 300) };
       }
-      const data = await res.json();
+      // Any non-JSON body (proxy, HTML error page, empty 200) must degrade
+      // to a retryable model error — NEVER crash the whole writer run.
+      let data;
+      try {
+        data = await res.json();
+      } catch (e) {
+        return { error: true, status: res.status, text: `non-JSON model response: ${String(e && e.message || e).slice(0, 120)}` };
+      }
       const content = data?.choices?.[0]?.message?.content;
       if (typeof content !== 'string' || !content.trim()) {
         return { error: true, status: res.status, text: 'empty model response' };
