@@ -34,6 +34,18 @@ on:
         description: 'true CHỈ khi Agent #4 bàn giao incident OPEN bị crash'
         required: false
         default: 'false'
+      verification_sha:
+        description: 'SHA có CI và Distribution GREEN; mã chạy chưa thay đổi'
+        required: false
+        default: ''
+      dry_run_id:
+        description: 'Auto Writer dry-run đạt QA thật, bắt buộc cho writer incident'
+        required: false
+        default: ''
+      smoke_run_id:
+        description: 'Auto Writer smoke thật, bắt buộc cho writer incident'
+        required: false
+        default: ''
 
 permissions:
   # contents: write — (1) incident state file transitions (agent5-begin /
@@ -67,10 +79,18 @@ jobs:
         with:
           node-version: 22
 
+      - name: 'Require green checks and real inference proof before incident takeover'
+        env:
+          INCIDENT_ID: ${{ inputs.incident_id }}
+          VERIFICATION_SHA: ${{ inputs.verification_sha }}
+          DRY_RUN_ID: ${{ inputs.dry_run_id }}
+          SMOKE_RUN_ID: ${{ inputs.smoke_run_id }}
+        run: node tools/ops-recovery-evidence.mjs
+
       - name: 'Take over the incident (refuses unless Agent #4 is terminal)'
         id: takeover
         run: |
-          set -e
+          set -eo pipefail
           node tools/ops-agent.mjs agent5-begin \
             --incident-id "${{ inputs.incident_id }}" \
             ${{ inputs.allow_crashed_handoff == 'true' && '--allow-crashed-handoff' || '' }} | tee /tmp/takeover.out
@@ -89,7 +109,7 @@ jobs:
           fail() { REASON="${REASON}${1}; "; }
 
           # 1. HEAD/base relationship: base_sha must be an ancestor of main.
-          git fetch origin main
+          git fetch origin main || fail "cannot observe origin/main"
           BASE="${{ inputs.base_sha }}"
           if [ -n "$BASE" ]; then
             if git merge-base --is-ancestor "$BASE" origin/main; then
@@ -122,18 +142,14 @@ jobs:
             fi
           done
 
-          # 6. Targeted regression of the infrastructure suites (the full
-          #    suite stays red on the KNOWN CONTENT BLOCKER — content is
-          #    never an infra failure and never masks an incident).
+          # 6. Independent regression of queue, factory, QA and incident state.
           timeout 300 node --test \
             tests/unit/writer-queue.test.js tests/unit/writer-queue-requeue.test.js \
             tests/unit/blog-factory.test.js tests/unit/article-qa.test.js \
             tests/unit/ops-agents.test.js || fail "targeted regression suites"
 
-          # 7. CI / build state — observed, not trusted: a red CI caused by
-          #    the recorded content blocker is NOT an infra failure.
-          CI=$(gh run list --workflow ci.yml -L 1 --json conclusion --jq '.[0].conclusion // "none"' 2>/dev/null)
-          echo "latest CI conclusion: ${CI:-unknown} (known content blockers are recorded in the ops state)"
+          # CI/Distribution and real inference were checked before takeover.
+          # A red, pending, absent or unrelated check cannot close an incident.
 
           if [ -z "$REASON" ]; then
             echo "verify_ok=true" >> "$GITHUB_OUTPUT"

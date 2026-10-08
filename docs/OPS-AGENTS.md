@@ -113,6 +113,19 @@ quan sát thấy cycle đã queued ⇒ không dispatch lần hai.
 
 ## FAILED_MANUAL: quy trình can thiệp tay
 
+Trước khi #5 nhận incident, `ops-recovery-evidence.mjs` bắt buộc có CI và
+Distribution hoàn tất GREEN trên cùng SHA, với mã đang chạy chưa thay đổi.
+Writer incident còn cần `smoke_run_id` và `dry_run_id` của Auto Writer thật:
+đúng workflow/main, smoke đã chạy, generation và dry-run stop thành công,
+mọi bước mutation bị skip. Artifact phải có QA cho đúng chunk RESERVED,
+1.600–2.200 từ mỗi bài, không trùng lặp/filler, và hash inventory/checkpoint
+vẫn khớp production. Thiếu bằng chứng thì job fail trước `agent5-begin`;
+incident, lock và lượt thử duy nhất đều được giữ nguyên. Request `supervisor`
+truyền ba trường `verification_sha`, `dry_run_id`, `smoke_run_id` này.
+
+Owner RESUME từ chối incident hoặc maintenance lock còn hoạt động và không
+dispatch production nếu commit bật công tắc thất bại.
+
 Khi cả #4 và #5 đều thất bại:
 
 1. Đọc `docs/state/operations/incident-reports/<incident_id>.md` (workflow #5 đã ghi).

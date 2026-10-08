@@ -65,6 +65,10 @@ jobs:
                 BASE=$(node -e "console.log(require('./ops/owner-review/request.json').base_sha || '')")
                 ARGS=(-f incident_id="$ID")
                 if [ -n "$BASE" ]; then ARGS+=(-f base_sha="$BASE"); fi
+                for KEY in verification_sha dry_run_id smoke_run_id; do
+                  VALUE=$(node -e 'console.log(require("./ops/owner-review/request.json")[process.argv[1]] || "")' "$KEY")
+                  if [ -n "$VALUE" ]; then ARGS+=(-f "$KEY=$VALUE"); fi
+                done
                 gh workflow run ops-supervisor.yml --ref main "${ARGS[@]}"
                 echo "DISPATCH_EXIT=$?"
                 ;;
@@ -142,15 +146,25 @@ jobs:
                 ;;
               resume)
                 echo "owner RESUME of the AUTO FACTORY"
+                INCIDENT=$(jq -r '.active_incident.incident_id // empty' docs/state/operations/maintenance.json)
+                LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*')
+                if [ -n "$INCIDENT" ] || [ -n "$LOCKS" ]; then
+                  echo '::error::cannot RESUME with an active incident or maintenance lock'
+                  exit 1
+                fi
+                node tools/writer-queue.mjs validate
+                node tools/blog-factory.mjs validate
                 git config user.name "github-actions[bot]"
                 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
                 jq '.production_enabled = true' docs/state/operations/maintenance.json > /tmp/maint.tmp && mv /tmp/maint.tmp docs/state/operations/maintenance.json
                 git add docs/state/operations/maintenance.json
                 git commit -m "ops: owner RESUME — AUTO FACTORY enabled [skip ci]" || echo "already enabled"
+                PUSHED=false
                 for i in 1 2 3; do
-                  if git pull --rebase origin main && git push; then break; fi
+                  if git pull --rebase origin main && git push; then PUSHED=true; break; fi
                   sleep 5
                 done
+                [ "$PUSHED" = "true" ] || { echo '::error::RESUME state commit failed'; exit 1; }
                 gh workflow run auto-writer.yml --ref main -f dry_run=false
                 echo "DISPATCH_EXIT=$?"
                 ;;
