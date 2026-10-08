@@ -181,6 +181,7 @@ van-toc-xe-may-dien
 xe-dien-an-toan-khong
 xe-dien-chay-bao-xa
 xe-dien-cho-hai-nguoi
+xe-dien-cho-thanh-pho-nho
 xe-dien-giam-tieng-on-pho
 xe-dien-het-han-pin
 xe-dien-khi-mua
@@ -309,6 +310,7 @@ chay-xe-ga-lan-dau
 chay-xe-so-cho-nguoi-moi
 cho-hanh-ly-khi-thue-xe
 chup-anh-xe-truoc-khi-nhan
+danh-gia-cua-hang-sau-khi-thue
 dat-coc-the-nao
 dat-xe
 deo-doc-va-xe-may-thue
@@ -357,17 +359,17 @@ troi-mua-thue-xe-may
 trom-cap-xe-va-xe-thue
 ung-dung-ban-do-cho-nguoi-thue-xe
 === published count ===
-302
+304
 === active batch ===
-WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:FACTORY_FAILED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
+WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:PUBLISHED 3:PUBLISHED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
 === RECONCILE MODE ===
 action=reconcile
 batch_id=WRITER-BATCH-0013
-reconciled=2
+reconciled=none
 already_published=none
 inconsistent=none
 batch_status=ACTIVE
 EXIT=0
 --- assignments after reconcile ---
-WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:PUBLISHED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
+WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:PUBLISHED 3:PUBLISHED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
 === END ===
