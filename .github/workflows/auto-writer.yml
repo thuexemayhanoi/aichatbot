@@ -72,7 +72,7 @@ jobs:
       OLLAMA_HOST: 127.0.0.1:11434
       OLLAMA_NUM_PARALLEL: '1'
       OLLAMA_MAX_LOADED_MODELS: '1'
-      OLLAMA_CONTEXT_LENGTH: '16384'
+      OLLAMA_CONTEXT_LENGTH: '8192'
       OLLAMA_KV_CACHE_TYPE: q8_0
       OLLAMA_FLASH_ATTENTION: '1'
     steps:
@@ -157,6 +157,27 @@ jobs:
       # ----------------------------------------------------------------
       # Generate exactly one chunk (AI + full production QA, bounded retry)
       # ----------------------------------------------------------------
+      # Lightweight inference probe catches model crashes / RAM pressure
+      # before attempting a 1,600-2,200-word article.
+      - name: 'Smoke test local Ollama before long-form generation'
+        if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE'
+        timeout-minutes: 5
+        run: |
+          set -eo pipefail
+          node --input-type=module <<'NODE'
+          import { callModel, modelConfig } from './tools/auto-writer-model.mjs';
+          const response = await callModel(process.env.AUTO_WRITER_MODEL,
+            [{ role: 'user', content: 'Return only the JSON object {"ok":true}.' }],
+            { ...modelConfig(), timeoutMs: 240000, numCtx: 2048, numPredict: 64 });
+          if (response.error) {
+            console.error('Ollama smoke failed:', response.status, response.text);
+            process.exit(1);
+          }
+          const parsed = JSON.parse(response.content);
+          if (parsed.ok !== true) throw new Error('Ollama smoke returned unexpected JSON');
+          console.log('Local Ollama smoke PASS');
+          NODE
+
       - name: 'Generate the next chunk (AI writer + sandboxed production QA)'
         id: gen
         if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE'
@@ -187,6 +208,20 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "generation result: status=$(get status) batch=$(get batch)#$(get seq) ids=$(get ids)"
           exit "$GEN_RC"
+
+      - name: 'Ollama diagnostics on failure (resource pressure / crash)'
+        if: failure() && steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE'
+        run: |
+          set +e
+          echo '=== Available RAM / swap ==='
+          free -h
+          echo '=== Largest processes by resident memory ==='
+          ps -eo pid,ppid,rss,etime,comm --sort=-rss | head -n 18
+          echo '=== Ollama process status ==='
+          curl --silent --show-error --max-time 5 http://127.0.0.1:11434/api/ps
+          echo
+          echo '=== Ollama server log (last 100 lines) ==='
+          if [ -f "$RUNNER_TEMP/ollama.log" ]; then tail -n 100 "$RUNNER_TEMP/ollama.log"; fi
 
       # ----------------------------------------------------------------
       # NEED_BATCH: reserve the next 18 PLANNED rows, exit 0. The next
