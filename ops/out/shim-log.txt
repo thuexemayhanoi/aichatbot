@@ -1,9 +1,9 @@
-=== owner-review shim 2026-10-08T13:07:23Z run 37781880758 ===
+=== owner-review shim 2026-10-08T13:51:22Z run 37787663943 ===
 --- gh version ---
 gh version 2.101.0 (2026-09-15)
 https://github.com/cli/cli/releases/tag/v2.101.0
 --- workflow list --all ---
-.github/workflows/auto-writer.yml	active	378476267
+Auto Writer (AI article generation)	active	378476267
 Blog Factory Publish (2-article micro batch)	active	371436848
 CI	active	367429355
 Distribution	active	367708955
@@ -17,12 +17,28 @@ Writer Publisher (serialized)	active	373287672
 pages-build-deployment	active	359968564
 --- request.json ---
 {
-  "action": "factory-requeue",
-  "article_ids": "BA-0301,BA-0302",
-  "note": "Owner production resume step 1 after resolving INC-20261007073825-snqi: re-publish the factory-failed chunk WRITER-BATCH-0013#2. Rows are still PLANNED with drafts and bodies already on main, so the factory runs its normal new-chunk path."
+  "action": "resume",
+  "note": "Owner AUTO FACTORY activation 2026-10-08: production_enabled stays true; dispatch auto-writer.yml to start the first 24/7 cycle immediately instead of waiting for the cron."
 }
 --- dispatch ---
-action: factory-requeue
-https://github.com/thuexemayhanoi/aichatbot/actions/runs/37781901828
+action: resume
+owner RESUME of the AUTO FACTORY
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   ops/out/shim-log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+already enabled
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+https://github.com/thuexemayhanoi/aichatbot/actions/runs/37787721179
 DISPATCH_EXIT=0
 === end ===
