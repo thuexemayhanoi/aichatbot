@@ -211,7 +211,8 @@ jobs:
       # ----------------------------------------------------------------
       - name: 'Dry run stop (validated, nothing pushed)'
         if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run == 'true'
-        run: echo "dry run: chunk validated (batch ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }}, ids ${{ steps.gen.outputs.ids }}) — nothing pushed, nothing published"
+        run: |
+          echo "dry run: chunk validated (batch ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }}, ids ${{ steps.gen.outputs.ids }}) — nothing pushed, nothing published"
 
       - name: 'Fail closed on generation failure'
         if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'FAILED'
