@@ -1,7 +1,9 @@
 {
-  "action": "smoke-test",
+  "action": "dry-run",
   "model": "qwen3:4b-instruct",
-  "request_id": "recovery-20261008-smoke-e12b622",
-  "verification_sha": "e12b62201468c609ac95e625007590cf689acd8d",
-  "note": "CI and Distribution passed for e12b622. Run loopback Ollama smoke only; retain INC-20261008144724-577x, maintenance lock, 304 articles and checkpoints."
+  "max_attempts": "2",
+  "request_id": "recovery-20261008-dryrun-9802077",
+  "verification_sha": "9802077647d7d137193eba754a9ee05e8ffc9902",
+  "smoke_run_id": "37820092737",
+  "note": "CI and Distribution passed. Generate BA-0305 and BA-0306 with real pair QA; preserve production, incident, lock and checkpoint."
 }
