@@ -3,7 +3,29 @@
   "schema_version": 1,
   "production_enabled": true,
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
-  "active_incident": null,
+  "active_incident": {
+    "incident_id": "INC-20261008144724-577x",
+    "status": "OPEN",
+    "owner": "AGENT_4",
+    "started_at": "2026-10-08T14:47:24.988Z",
+    "updated_at": "2026-10-08T14:47:24.988Z",
+    "base_sha": "43cafac9bc7c27ca31486f80b2dc10c701981fcb",
+    "reason": "auto-writer generation failed (chunk WRITER-BATCH-0013#4, ids BA-0305,BA-0306)",
+    "trigger": "workflow_dispatch",
+    "source": {
+      "workflow": "Auto Writer (AI article generation)",
+      "run_id": "37793822244",
+      "url": "https://github.com/thuexemayhanoi/aichatbot/actions/runs/37793822244"
+    },
+    "classification": "INFRA",
+    "signature": "Auto Writer (AI article generation)::Fail closed on generation failure|Generate the next chunk (AI writer + sandboxed production QA)",
+    "attempts": {
+      "agent4": 1,
+      "agent5": 0
+    },
+    "production_paused": true,
+    "result_note": ""
+  },
   "incidents": [
     {
       "incident_id": "INC-20261006160640-4vj8",
