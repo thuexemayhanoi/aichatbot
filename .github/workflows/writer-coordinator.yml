@@ -46,6 +46,7 @@ concurrency:
 jobs:
   coordinate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -97,6 +98,21 @@ jobs:
             echo "nothing to commit"
           else
             git commit -m "writer-coordinator: reserve batch ${{ steps.plan.outputs.batch_id }} (3-writer assignment manifest) [skip ci]"
-            git pull --rebase origin main
-            git push
+            for ATTEMPT in 1 2 3; do
+              if git pull --rebase origin main && git push; then exit 0; fi
+              if [ -n "$(git diff --name-only --diff-filter=U)" ]; then exit 1; fi
+              sleep 5
+            done
+            echo '::error::reservation commit could not be pushed'
+            exit 1
           fi
+
+      - name: 'Start one writer job for the newly reserved batch'
+        if: steps.plan.outputs.created == 'true' && inputs.dry_run != 'true'
+        run: |
+          set -e
+          git fetch origin main
+          git checkout -B main origin/main
+          LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*')
+          if [ -n "$LOCKS" ] || ! node tools/ops-agent.mjs gate; then exit 0; fi
+          gh workflow run auto-writer.yml --ref main -f dry_run=false

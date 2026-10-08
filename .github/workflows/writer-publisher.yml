@@ -76,6 +76,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_REPO: ${{ github.repository }}
@@ -263,24 +264,23 @@ jobs:
           SHA: ${{ steps.push.outputs.sha }}
           MODE: ${{ steps.select.outputs.mode }}
         run: |
+          set -eo pipefail
           if [ "$MODE" = "complete-only" ]; then
             echo "complete-only: the factory already finished this chunk — no dispatch"
             echo "result=success" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          gh workflow run blog-factory-publish.yml --ref main -f article_ids="$IDS"
+          REQUEST_ID="${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          EXPECTED_TITLE="Factory $IDS request $REQUEST_ID"
+          gh workflow run blog-factory-publish.yml --ref main -f article_ids="$IDS" -f request_id="$REQUEST_ID"
           echo "factory dispatched for $IDS"
           RUN_ID=""
-          for i in $(seq 1 10); do
-            RUN_ID=$(gh run list --workflow blog-factory-publish.yml --event workflow_dispatch --commit "$SHA" --json databaseId --jq '.[0].databaseId // empty' 2>/dev/null || true)
+          for i in $(seq 1 12); do
+            RUN_ID=$(gh run list --workflow blog-factory-publish.yml --event workflow_dispatch --limit 30 --json databaseId,displayTitle \
+              | jq -r --arg wanted "$EXPECTED_TITLE" '[.[] | select(.displayTitle == $wanted)][0].databaseId // empty')
             [ -n "$RUN_ID" ] && break
-            sleep 30
+            sleep 10
           done
-          if [ -z "$RUN_ID" ]; then
-            # The coordinator may have pushed a manifest commit between our push
-            # and the dispatch — fall back to the newest dispatched factory run.
-            RUN_ID=$(gh run list --workflow blog-factory-publish.yml --event workflow_dispatch --json databaseId --jq '.[0].databaseId // empty' 2>/dev/null || true)
-          fi
           if [ -z "$RUN_ID" ]; then
             echo "::error::factory run not found — chunk stays RESERVED (retry-safe)"
             exit 1
@@ -299,18 +299,38 @@ jobs:
           B: ${{ steps.select.outputs.batch }}
           S: ${{ steps.select.outputs.seq }}
         run: |
-          git fetch origin main
-          git checkout -B main origin/main
-          node tools/writer-queue.mjs complete "$B" "$S"
+          set -e
           git config user.name "motoai-bot"
           git config user.email "nguyentuantu2482@users.noreply.github.com"
-          git add docs/state/writer-assignments.json
-          if git diff --cached --quiet; then
-            echo "no manifest change (already completed)"
-          else
+          for ATTEMPT in 1 2 3; do
+            git fetch origin main
+            git checkout -B main origin/main
+            node tools/writer-queue.mjs complete "$B" "$S"
+            git add docs/state/writer-assignments.json
+            if git diff --cached --quiet; then
+              echo "no manifest change (already completed)"
+              exit 0
+            fi
             git commit -m "writer-publisher: chunk $B#$S PUBLISHED [skip ci]"
-            git push
+            if git push; then exit 0; fi
+            sleep 5
+          done
+          echo '::error::cannot checkpoint the completed chunk after three attempts'
+          exit 1
+
+      - name: 'Continue with one new writer job after a verified publication'
+        if: (steps.select.outputs.action == 'publish' || steps.select.outputs.action == 'requeue') && steps.factory.outputs.result == 'success'
+        run: |
+          set -e
+          git fetch origin main
+          git checkout -B main origin/main
+          LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*')
+          if [ -n "$LOCKS" ] || ! node tools/ops-agent.mjs gate; then
+            echo 'production stopped — no continuation dispatch'
+            exit 0
           fi
+          gh workflow run auto-writer.yml --ref main -f dry_run=false
+          echo 'one new bounded writer job dispatched; cron and watchdog remain recovery heartbeats'
 
       - name: 'Factory failed (mark FACTORY_FAILED, ids stay for the REPAIR pipeline)'
         if: (steps.select.outputs.action == 'publish' || steps.select.outputs.action == 'requeue') && steps.factory.outputs.result == 'failure'

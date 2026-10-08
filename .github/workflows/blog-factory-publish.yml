@@ -1,4 +1,5 @@
 name: Blog Factory Publish (2-article micro batch)
+run-name: 'Factory ${{ inputs.article_ids || ''backlog'' }} request ${{ inputs.request_id || github.run_id }}'
 
 # v67 SIMPLE PRODUCTION MODE (docs/CONTINUOUS-WRITER.md, mirrors /vanchinh):
 #
@@ -43,6 +44,10 @@ on:
         description: 'BA-ids chính xác, phân cách phẩy (vd BA-0002,BA-0003). Bỏ trống để quét backlog/pending.'
         required: false
         default: ''
+      request_id:
+        description: 'Correlation ID supplied by the serialized publisher'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -54,6 +59,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
