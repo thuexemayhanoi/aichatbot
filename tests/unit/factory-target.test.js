@@ -19,10 +19,21 @@ test('the final reservation cannot overshoot 2000 and completion requires exactl
 
 test('duplicate or missing publication evidence fails closed rather than counting toward completion', () => {
   const [rows, entries] = corpus(2);
-  assert.throws(() => publicationBudget([rows[0], { ...rows[1], slug: rows[0].slug }], entries), /duplicate/);
-  assert.throws(() => publicationBudget(rows, [entries[0], entries[0]]), /evidence/);
+  assert.throws(() => publicationBudget([rows[0], { ...rows[1], slug: rows[0].slug }], [entries[0], { ...entries[1], slug: entries[0].slug }]), /duplicate/);
+  assert.throws(() => publicationBudget(rows, [entries[0], entries[0]]), /duplicate/);
   assert.throws(() => publicationBudget(rows, [{ ...entries[0], slug: 'wrong' }, entries[1]]), /evidence/);
-  assert.throws(() => publicationBudget(rows, [...entries, { article_id: 'ghost', slug: 'ghost' }]), /counts disagree/);
+  assert.throws(() => publicationBudget(rows, [...entries, { article_id: 'ghost', slug: 'ghost' }]), /evidence/);
+});
+
+test('publisher staging before the factory checkpoint is valid but never counted as PUBLISHED', () => {
+  const [rows, entries] = corpus(304);
+  const staged = { article_id: 'BA-0305', slug: 'next-article', status: 'PLANNED' };
+  const budget = publicationBudget([...rows, staged], [...entries, { article_id: staged.article_id, slug: staged.slug }]);
+  assert.equal(budget.published, 304);
+  assert.equal(budget.remaining, 1696);
+  assert.equal(budget.complete, false);
+  const [doneRows, doneEntries] = corpus(2000);
+  assert.throws(() => publicationBudget([...doneRows, staged], [...doneEntries, staged]), /staged manifest/);
 });
 
 test('real repository target inspection is read-only and consistent with publication truth', () => {

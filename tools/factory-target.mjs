@@ -8,8 +8,15 @@ const ROOT = process.env.MOTOAI_FACTORY_ROOT ?? join(dirname(fileURLToPath(impor
 
 export function publicationBudget(rows, entries, target = PUBLICATION_TARGET) {
   const published = rows.filter((r) => r.status === 'PUBLISHED');
-  if (!Array.isArray(entries) || entries.length !== published.length) {
-    throw new Error('manifest and PUBLISHED matrix counts disagree');
+  if (!Array.isArray(entries)) throw new Error('invalid manifest');
+  const matrix = new Map(rows.map((r) => [r.article_id, r]));
+  const manifestIds = new Set();
+  const manifestSlugs = new Set();
+  for (const entry of entries) {
+    const row = matrix.get(entry.article_id);
+    if (!row || row.slug !== entry.slug) throw new Error(`invalid manifest evidence for ${entry.article_id}`);
+    if (manifestIds.has(entry.article_id) || manifestSlugs.has(entry.slug)) throw new Error('duplicate manifest ID or slug');
+    manifestIds.add(entry.article_id); manifestSlugs.add(entry.slug);
   }
   const ids = new Set();
   const slugs = new Set();
@@ -20,6 +27,7 @@ export function publicationBudget(rows, entries, target = PUBLICATION_TARGET) {
     if (matching.length !== 1 || matching[0].slug !== row.slug) throw new Error(`invalid publication evidence for ${row.article_id}`);
   }
   if (published.length > target) throw new Error(`publication target exceeded: ${published.length} > ${target}`);
+  if (entries.length > target) throw new Error('staged manifest would exceed publication target');
   return { target, published: published.length, remaining: target - published.length, complete: published.length === target };
 }
 
