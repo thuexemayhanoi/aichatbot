@@ -1,5 +1,4 @@
 {
-  "action": "factory-requeue",
-  "article_ids": "BA-0301,BA-0302",
-  "note": "Owner production resume step 1 after resolving INC-20261007073825-snqi: re-publish the factory-failed chunk WRITER-BATCH-0013#2. Rows are still PLANNED with drafts and bodies already on main, so the factory runs its normal new-chunk path."
+  "action": "resume",
+  "note": "Owner AUTO FACTORY activation 2026-10-08: production_enabled stays true; dispatch auto-writer.yml to start the first 24/7 cycle immediately instead of waiting for the cron."
 }
