@@ -4,7 +4,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  loadOpsState, validateOpsState, recordContentBlocker, beginIncidentFlow
+  productionGate, loadOpsState, validateOpsState, recordContentBlocker, beginIncidentFlow
 } from '../../tools/ops-agent.mjs';
 import { localScope } from '../../tools/gen-blog-matrix.mjs';
 
@@ -153,11 +153,12 @@ test('localScope only ever emits canonical verified unit names (or nothing)', ()
 // The owner stop is intact
 // ---------------------------------------------------------------------------
 
-test('production_enabled reflects the owner-approved state (re-enabled 2026-10-04, abd4f401)', () => {
-  // The owner flipped production back ON (commit abd4f401, "ops: enable
-  // production"); the previous "still false (owner stop)" assertion went
-  // stale on main because docs/state/** is in CI paths-ignore.
-  assert.equal(state.production_enabled, true);
+test('production_enabled is a durable boolean owner switch; both owner choices remain valid', () => {
+  assert.equal(typeof state.production_enabled, 'boolean');
+  for (const enabled of [false, true]) {
+    const isolated = { ...state, active_incident: null, production_enabled: enabled };
+    assert.equal(productionGate(isolated, []).allowed, enabled);
+  }
 });
 
 // ---------------------------------------------------------------------------

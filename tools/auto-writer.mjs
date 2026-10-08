@@ -468,7 +468,17 @@ async function cmdRun(args) {
     }
   } else {
     mkdirSync(join(ROOT, 'writer-work-auto-dryrun'), { recursive: true });
-    writeFileSync(join(ROOT, 'writer-work-auto-dryrun', `drafts-${chunk.seq}.json`), JSON.stringify(drafts, null, 2) + '\n');
+    const evidence = join(ROOT, 'writer-work-auto-dryrun');
+    writeFileSync(join(evidence, `drafts-${chunk.seq}.json`), JSON.stringify(drafts, null, 2) + '\n');
+    for (const [slug, html] of bodies) writeFileSync(join(evidence, `${slug}.body.html`), html + '\n');
+    const qaRoot = buildTempFactoryRoot(drafts, bodies);
+    try {
+      for (const id of ids) {
+        const qa = runSandboxedQa(qaRoot, id);
+        writeFileSync(join(evidence, `${id}-qa.txt`), qa.out);
+        if (!qa.pass) die(`combined chunk QA failed for ${id}`);
+      }
+    } finally { rmSync(qaRoot, { recursive: true, force: true }); }
   }
 
   emit({

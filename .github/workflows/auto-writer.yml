@@ -36,6 +36,10 @@ on:
         description: 'true = sinh bài + QA nhưng KHÔNG begin/ready/push/publish'
         required: false
         default: 'false'
+      smoke_only:
+        description: 'true = chỉ kiểm tra Ollama trên runner, không sinh/publish bài'
+        required: false
+        default: 'false'
       model:
         description: 'Ollama model (mặc định qwen3:4b-instruct); chỉ mô hình local'
         required: false
@@ -70,6 +74,9 @@ jobs:
       AUTO_WRITER_URL: http://127.0.0.1:11434/api/chat
       AUTO_WRITER_TIMEOUT_MS: '1200000'
       OLLAMA_HOST: 127.0.0.1:11434
+      DRY_RUN: ${{ inputs.dry_run || 'false' }}
+      SMOKE_ONLY: ${{ inputs.smoke_only || 'false' }}
+      OLLAMA_NO_CLOUD: '1'
       OLLAMA_NUM_PARALLEL: '1'
       OLLAMA_MAX_LOADED_MODELS: '1'
       OLLAMA_CONTEXT_LENGTH: '8192'
@@ -96,8 +103,15 @@ jobs:
         id: gate
         run: |
           set -e
+          # Read-only verification may run while production is locked. Every
+          # begin/ready/push/dispatch below still requires production mode.
+          if [ "$DRY_RUN" = "true" ] || [ "$SMOKE_ONLY" = "true" ]; then
+            echo "open=true" >> "$GITHUB_OUTPUT"
+            echo "read-only inference verification; production lock preserved"
+            exit 0
+          fi
           PROD_ENABLED=$(jq -r '.production_enabled // false' docs/state/operations/maintenance.json)
-          LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*' || true)
+          LOCKS=$(git ls-remote --refs origin 'refs/ops/maintenance-lock/*')
           if [ "$PROD_ENABLED" != "true" ]; then
             echo "open=false" >> "$GITHUB_OUTPUT"
             echo "owner stop (production_enabled=false) — auto writer idle, queue untouched"
@@ -108,7 +122,11 @@ jobs:
             echo "maintenance lock active — auto writer idle, waiting for owner RESUME"
             exit 0
           fi
-          node tools/ops-agent.mjs gate
+          if ! node tools/ops-agent.mjs gate; then
+            echo "open=false" >> "$GITHUB_OUTPUT"
+            echo "maintenance state blocks production — idle"
+            exit 0
+          fi
           echo "open=true" >> "$GITHUB_OUTPUT"
 
       - name: 'Inspect queue before loading the model (resume staged chunks)'
@@ -116,7 +134,11 @@ jobs:
         if: steps.gate.outputs.open == 'true'
         run: |
           set -eo pipefail
-          node tools/auto-writer.mjs inspect | tee /tmp/inspect.out
+          if [ "$SMOKE_ONLY" = "true" ]; then
+            echo status=GENERATE | tee /tmp/inspect.out
+          else
+            node tools/auto-writer.mjs inspect | tee /tmp/inspect.out
+          fi
           sed -n 's/^status=/status=/p' /tmp/inspect.out >> "$GITHUB_OUTPUT"
 
       - name: 'Cache local writer model'
@@ -145,12 +167,17 @@ jobs:
           export OLLAMA_MODELS="$RUNNER_TEMP/writer-models"
           export PATH="$RUNNER_TEMP/ollama/bin:$PATH"
           echo "$RUNNER_TEMP/ollama/bin" >> "$GITHUB_PATH"
+          echo '=== Runner CPU / RAM / swap / disk ==='
+          nproc
+          free -h
+          df -h "$RUNNER_TEMP"
+          ollama --version
           ollama serve > "$RUNNER_TEMP/ollama.log" 2>&1 &
           for attempt in $(seq 1 60); do
             if curl --fail --silent http://127.0.0.1:11434/api/version > /tmp/ollama-version.json; then break; fi
             sleep 2
           done
-          curl --fail --silent http://127.0.0.1:11434/api/version
+          curl --fail --silent --max-time 5 http://127.0.0.1:11434/api/version
           ollama pull "$AUTO_WRITER_MODEL"
           ollama show "$AUTO_WRITER_MODEL"
 
@@ -180,7 +207,7 @@ jobs:
 
       - name: 'Generate the next chunk (AI writer + sandboxed production QA)'
         id: gen
-        if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE'
+        if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE' && inputs.smoke_only != 'true'
         env:
           DRY_RUN: ${{ inputs.dry_run || 'false' }}
           MAX_ATTEMPTS: ${{ inputs.max_attempts || '2' }}
@@ -228,7 +255,7 @@ jobs:
       # scheduled run (<= 25 min) picks the fresh ACTIVE batch up.
       # ----------------------------------------------------------------
       - name: 'No ACTIVE chunk — reserve the next batch'
-        if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'NEED_BATCH' && github.event.inputs.dry_run != 'true'
+        if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'NEED_BATCH' && github.event.inputs.dry_run != 'true' && inputs.smoke_only != 'true'
         run: |
           set -e
           gh workflow run writer-coordinator.yml --ref main -f dry_run=false -f limit=18
@@ -241,7 +268,7 @@ jobs:
       # ----------------------------------------------------------------
       - name: 'Mark the chunk READY_TO_PUSH (writer-queue begin/ready)'
         id: ready
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run != 'true'
+        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run != 'true' && inputs.smoke_only != 'true'
         run: |
           set -o pipefail
           node tools/writer-queue.mjs begin "${{ steps.gen.outputs.writer }}" "${{ steps.gen.outputs.batch }}" "${{ steps.gen.outputs.seq }}" | tee /tmp/begin.out
@@ -254,7 +281,7 @@ jobs:
           echo "chunk READY_TO_PUSH — push_files=$(get push_files)"
 
       - name: 'Push the writer branch (2 bodies + chunk file)'
-        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run != 'true'
+        if: steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'READY_TO_PUSH' && github.event.inputs.dry_run != 'true' && inputs.smoke_only != 'true'
         env:
           BRANCH: ${{ steps.gen.outputs.branch }}
           PUSH_FILES: ${{ steps.ready.outputs.push_files }}
@@ -293,7 +320,7 @@ jobs:
           git push origin "$BRANCH"
 
       - name: 'Dispatch the writer-publisher (GITHUB_TOKEN push triggers nothing)'
-        if: steps.gate.outputs.open == 'true' && (steps.gen.outputs.status == 'READY_TO_PUSH' || steps.inspect.outputs.status == 'READY_EXISTING') && github.event.inputs.dry_run != 'true'
+        if: steps.gate.outputs.open == 'true' && (steps.gen.outputs.status == 'READY_TO_PUSH' || steps.inspect.outputs.status == 'READY_EXISTING') && github.event.inputs.dry_run != 'true' && inputs.smoke_only != 'true'
         run: |
           set -e
           gh workflow run writer-publisher.yml --ref main -f action=auto
@@ -309,7 +336,7 @@ jobs:
           echo "dry run: chunk validated (batch ${{ steps.gen.outputs.batch }}#${{ steps.gen.outputs.seq }}, ids ${{ steps.gen.outputs.ids }}) — nothing pushed, nothing published"
 
       - name: 'Fail closed on generation failure'
-        if: failure() && steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'FAILED'
+        if: failure() && steps.gate.outputs.open == 'true' && steps.gen.outputs.status == 'FAILED' && inputs.dry_run != 'true' && inputs.smoke_only != 'true'
         run: |
           echo "::error::auto-writer FAILED — see the generation log above. Chunk stays RESERVED; Agent #4 will classify the failure."
           # A GITHUB_TOKEN-dispatched run cannot fire the workflow_run watcher,
@@ -327,13 +354,13 @@ jobs:
           exit 1
 
       - name: 'Guard: unknown generation status'
-        if: success() && steps.inspect.outputs.status == 'GENERATE' && steps.gen.outputs.status != 'READY_TO_PUSH'
+        if: success() && steps.inspect.outputs.status == 'GENERATE' && steps.gen.outputs.status != 'READY_TO_PUSH' && inputs.smoke_only != 'true'
         run: |
           echo "::error::unknown auto-writer status '${{ steps.gen.outputs.status }}'"
           exit 1
 
       - name: 'Report non-generation failures to Agent #4 (begin/ready/push/dispatch infra)'
-        if: failure() && steps.gate.outputs.open == 'true' && steps.gen.outputs.status != 'FAILED'
+        if: failure() && steps.gate.outputs.open == 'true' && steps.gen.outputs.status != 'FAILED' && inputs.dry_run != 'true' && inputs.smoke_only != 'true'
         run: |
           # Any failure outside the generation step is infrastructure: a
           # GITHUB_TOKEN-dispatched run cannot fire the workflow_run watcher,
@@ -348,3 +375,25 @@ jobs:
           else
             echo "::warning::ops-repair-agent dispatch failed — the red run above still records the failure"
           fi
+
+      - name: 'Collect inference verification evidence'
+        if: always() && steps.inspect.outputs.status == 'GENERATE'
+        run: |
+          mkdir -p "$RUNNER_TEMP/writer-evidence"
+          cp "$RUNNER_TEMP/ollama.log" "$RUNNER_TEMP/writer-evidence/" 2>/dev/null || true
+          cp /tmp/auto-writer.out "$RUNNER_TEMP/writer-evidence/" 2>/dev/null || true
+          cp -r writer-work-auto-dryrun "$RUNNER_TEMP/writer-evidence/" 2>/dev/null || true
+          {
+            free -h
+            ps -eo pid,ppid,rss,etime,comm --sort=-rss | head -n 18
+            curl --silent --show-error --max-time 5 http://127.0.0.1:11434/api/ps
+          } > "$RUNNER_TEMP/writer-evidence/resources.txt" 2>&1
+          git status --short > "$RUNNER_TEMP/writer-evidence/worktree.txt"
+
+      - name: 'Upload inference evidence (including dry-run bodies and QA)'
+        if: always() && steps.inspect.outputs.status == 'GENERATE'
+        uses: actions/upload-artifact@v4
+        with:
+          name: writer-evidence-${{ github.run_id }}
+          path: ${{ runner.temp }}/writer-evidence
+          retention-days: 14

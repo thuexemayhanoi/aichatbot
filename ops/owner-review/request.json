@@ -1,4 +1,4 @@
 {
-  "action": "resume",
-  "note": "Owner-authorized workflow repair 2026-10-08: replace retired GitHub Models with local Ollama inference, preserve production QA and resume from BA-0305/BA-0306 on https://chatbot.thuexemaynguyentu.com."
+  "action": "noop",
+  "note": "Owner-authorized recovery controls; smoke and dry-run will be requested only after CI and Distribution pass. Production remains paused; incident and maintenance lock preserved."
 }

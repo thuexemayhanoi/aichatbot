@@ -46,7 +46,7 @@ jobs:
           fetch-depth: 0
       - name: 'Read the owner request and dispatch'
         run: |
-          set -uo pipefail
+          set -euo pipefail
           mkdir -p ops/out
           LOG="$RUNNER_TEMP/owner-review-shim.log"
           {
@@ -103,6 +103,7 @@ jobs:
                 if [ "$WQ" -ne 0 ] || [ "$BF" -ne 0 ] || [ "$TE" -ne 0 ]; then
                   echo "VALIDATION FAILED (wq=$WQ bf=$BF tests=$TE) — REFUSING to release the lock"
                   echo "RESOLVE_EXIT=1"
+                  exit 1
                 else
                   echo "validators + targeted tests green — releasing the maintenance lock"
                   git push origin --delete "refs/ops/maintenance-lock/$ID" && echo "LOCK_RELEASED" || echo "LOCK_RELEASE_FAILED"
@@ -111,9 +112,19 @@ jobs:
                   echo "RESOLVE_EXIT=0"
                 fi
                 ;;
+              noop)
+                echo "review controls updated; no production action requested"
+                ;;
+              smoke-test)
+                MODEL=$(node -e "console.log(require('./ops/owner-review/request.json').model || 'qwen3:4b-instruct')")
+                gh workflow run auto-writer.yml --ref main -f smoke_only=true -f dry_run=true -f model="$MODEL"
+                echo "DISPATCH_EXIT=0"
+                ;;
               dry-run)
                 echo "owner-requested AUTO FACTORY dry run (AI generation + QA, nothing pushed)"
-                gh workflow run auto-writer.yml --ref main -f dry_run=true
+                MODEL=$(node -e "console.log(require('./ops/owner-review/request.json').model || 'qwen3:4b-instruct')")
+                ATTEMPTS=$(node -e "console.log(require('./ops/owner-review/request.json').max_attempts || '2')")
+                gh workflow run auto-writer.yml --ref main -f dry_run=true -f model="$MODEL" -f max_attempts="$ATTEMPTS"
                 echo "DISPATCH_EXIT=$?"
                 ;;
               pause)
@@ -147,6 +158,7 @@ jobs:
               *)
                 echo "UNKNOWN ACTION: $ACTION"
                 echo "DISPATCH_EXIT=2"
+                exit 2
                 ;;
             esac
             echo "=== end ==="

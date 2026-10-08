@@ -58,3 +58,29 @@ test('inspect resumes a staged chunk without regenerating its prose', (t) => {
   writeFileSync(join(dir, 'docs/state/writer-assignments.json'), JSON.stringify({ active: null }));
   assert.match(inspect().stdout, /status=NEED_BATCH/);
 });
+
+function stepScript(name) {
+  return workflow.split(`- name: '${name}'`)[1].split('\n      - name:')[0]
+    .split('        run: |\n')[1].split('\n').map(line => line.replace(/^          /, '')).join('\n');
+}
+
+test('smoke and dry-run gates permit read-only verification without changing a paused state', t => {
+  const dir = mkdtempSync(join(tmpdir(), 'writer-readonly-'));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  for (const mode of ['smoke', 'dry']) {
+    const output = join(dir, mode);
+    const result = spawnSync('bash', ['-e', '-c', stepScript('Ops gate (owner stop / incident lock -> idle, not failed)')], {
+      cwd: dir,
+      env: { ...process.env, GITHUB_OUTPUT: output, DRY_RUN: mode === 'dry' ? 'true' : 'false', SMOKE_ONLY: mode === 'smoke' ? 'true' : 'false' },
+      encoding: 'utf8',
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(readFileSync(output, 'utf8'), /open=true/);
+    assert.match(result.stdout, /production lock preserved/);
+  }
+  for (const name of ['Mark the chunk READY_TO_PUSH', 'Push the writer branch', 'Dispatch the writer-publisher', 'No ACTIVE chunk']) {
+    const block = workflow.split(`- name: '${name}`)[1].split('        run: |')[0];
+    assert.match(block, /dry_run != 'true'/);
+    assert.match(block, /smoke_only != 'true'/);
+  }
+});

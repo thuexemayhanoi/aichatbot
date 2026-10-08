@@ -1,7 +1,7 @@
 {
   "$schema": "motoai/ops-state@1",
   "schema_version": 1,
-  "production_enabled": true,
+  "production_enabled": false,
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
   "active_incident": {
     "incident_id": "INC-20261008144724-577x",
@@ -76,5 +76,6 @@
       "closed_at": "2026-10-07T07:59:12.422Z"
     }
   ],
-  "known_content_blockers": []
+  "known_content_blockers": [],
+  "owner_pause_reason": "Owner-authorized recovery verification: preserve incident and lock until CI, Distribution, real Ollama smoke and dry-run QA pass."
 }
