@@ -10,7 +10,7 @@ test('local inference accepts complete Ollama output and sends no GitHub credent
     const parts = [];
     for await (const part of req) parts.push(part);
     request = { headers: req.headers, body: JSON.parse(Buffer.concat(parts)) };
-    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Type', 'application/x-ndjson');
     res.end(JSON.stringify({ done: true, done_reason: 'stop', message: { content: '{"title":"Valid article"}' } }));
   });
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
@@ -19,7 +19,7 @@ test('local inference accepts complete Ollama output and sends no GitHub credent
   const r = await callModel('qwen3:4b-instruct', [{ role: 'user', content: 'write' }], config);
   assert.equal(r.content, '{"title":"Valid article"}');
   assert.equal(request.headers.authorization, undefined);
-  assert.equal(request.body.stream, false);
+  assert.equal(request.body.stream, true);
   assert.equal(request.body.format, 'json');
   assert.equal(request.body.think, false);
 });
