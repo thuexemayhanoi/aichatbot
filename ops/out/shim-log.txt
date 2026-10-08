@@ -1,4 +1,4 @@
-=== owner-review shim 2026-10-08T13:57:56Z run 37788555764 ===
+=== owner-review shim 2026-10-08T14:02:22Z run 37789166702 ===
 --- gh version ---
 gh version 2.102.0 (2026-09-30)
 https://github.com/cli/cli/releases/tag/v2.102.0
@@ -17,28 +17,12 @@ Writer Publisher (serialized)	active	373287672
 pages-build-deployment	active	359968564
 --- request.json ---
 {
-  "action": "resume",
-  "note": "Owner AUTO FACTORY activation 2026-10-08: production_enabled stays true; dispatch auto-writer.yml to start the first 24/7 cycle immediately instead of waiting for the cron."
+  "action": "dry-run",
+  "note": "Owner AUTO FACTORY pre-flight 2026-10-08: one dry run of the AI writer (generation + full QA for the next chunk, nothing pushed/published) to verify GitHub Models inference connectivity before resuming the 24/7 cycles."
 }
 --- dispatch ---
-action: resume
-owner RESUME of the AUTO FACTORY
-On branch main
-Your branch is up to date with 'origin/main'.
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-	modified:   ops/out/shim-log.txt
-
-no changes added to commit (use "git add" and/or "git commit -a")
-already enabled
-error: cannot pull with rebase: You have unstaged changes.
-error: Please commit or stash them.
-error: cannot pull with rebase: You have unstaged changes.
-error: Please commit or stash them.
-error: cannot pull with rebase: You have unstaged changes.
-error: Please commit or stash them.
-https://github.com/thuexemayhanoi/aichatbot/actions/runs/37788610893
+action: dry-run
+owner-requested AUTO FACTORY dry run (AI generation + QA, nothing pushed)
+https://github.com/thuexemayhanoi/aichatbot/actions/runs/37789194218
 DISPATCH_EXIT=0
 === end ===
