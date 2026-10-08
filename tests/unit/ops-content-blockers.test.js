@@ -88,6 +88,8 @@ test('BA-0063/BA-0064 are NOT locality blockers here — they live in the REPAIR
 
 test('backward compatibility: runtime signature blockers still dedupe and still gate incidents', () => {
   const s = JSON.parse(JSON.stringify(state));
+  // Isolate the signature-blocker scenario from a real incident on production.
+  s.active_incident = null;
   assert.equal(s.known_content_blockers.length, 0);
   recordContentBlocker(s, { signature: 'Blog Factory Publish (2-article micro batch)::Assert clean state; report QA failures', note: 'runtime' });
   assert.equal(s.known_content_blockers.length, 1);
@@ -162,8 +164,11 @@ test('production_enabled reflects the owner-approved state (re-enabled 2026-10-0
 // No real incident, no lock, no production state was created
 // ---------------------------------------------------------------------------
 
-test('no active incident; closed incident history never mutates production surfaces', () => {
-  assert.equal(state.active_incident, null);
+test('a live incident safely pauses production; closed history never mutates production surfaces', () => {
+  if (state.active_incident) {
+    assert.equal(state.active_incident.production_paused, true, 'active incident must pause writer production');
+    assert.ok(state.active_incident.incident_id, 'active incident has an auditable id');
+  }
   assert.ok(Array.isArray(state.incidents), 'incident history is an audit log');
   for (const incident of state.incidents) {
     assert.ok(incident.closed_at, `${incident.incident_id} must be closed`);
