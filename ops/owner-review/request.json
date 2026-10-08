@@ -1,4 +1,4 @@
 {
-  "action": "resume",
-  "note": "Owner AUTO FACTORY activation 2026-10-08: production_enabled stays true; dispatch auto-writer.yml to start the first 24/7 cycle immediately instead of waiting for the cron."
+  "action": "dry-run",
+  "note": "Owner AUTO FACTORY pre-flight 2026-10-08: one dry run of the AI writer (generation + full QA for the next chunk, nothing pushed/published) to verify GitHub Models inference connectivity before resuming the 24/7 cycles."
 }
