@@ -58,7 +58,7 @@ export async function callModel(model, messages, config = modelConfig(), fetchIm
       if (!line.trim()) return;
       let frame;
       try { frame = JSON.parse(line); }
-      catch { throw new Error('invalid Ollama NDJSON frame'); }
+      catch { throw new Error('non-JSON Ollama NDJSON frame'); }
       if (frame.error) throw new Error('Ollama: ' + String(frame.error).slice(0, 220));
       if (typeof frame.message?.content === 'string') content += frame.message.content;
       if (frame.done === true) {
