@@ -3,7 +3,9 @@ import { callModel } from './auto-writer-model.mjs';
 import { CONTENT_MIN_WORDS, CONTENT_MAX_WORDS } from './writer-content-policy.mjs';
 
 export const SECTION_COUNT = 3;
-export const SECTION_MIN_WORDS = 250;
+// Three 240-word sections plus 50-word intro and conclusion already exceed
+// the 800-word whole-article floor. Full 800-2000-word production QA is unchanged.
+export const SECTION_MIN_WORDS = 240;
 export const SECTION_MAX_WORDS = 450;
 const stray = /[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff]/;
 export const htmlWords = (s) => String(s).replace(/<[^>]*>/g, ' ').trim().split(/\s+/).filter(Boolean).length;
@@ -133,13 +135,13 @@ title 10-70 ký tự, viết như một câu tiếng Việt tự nhiên, không 
   for (const [i, section] of outline.sections.entries()) {
     feedback = '';
     let accepted = false;
-    let requestedWords = 250;
+    let requestedWords = 320;
     for (let retry = 0; retry < 2; retry++) {
       const { value: part, refusal } = await request(`Bạn viết MỘT phần thân bài tiếng Việt, chỉ JSON {"body_html":"..."}. ${policy}
 Viết khoảng ${requestedWords} từ tiếng Việt tự nhiên cho phần hiện tại, khoảng 4-5 đoạn cụ thể. Không viết h1/h2/h3, mở đầu cả bài, tổng kết cả bài, hoặc metadata.
 Chỉ giải quyết câu hỏi của phần này. Không lặp lại lời khuyên chung, không chuyển sang tiền cọc hoặc quy trình cửa hàng nếu không thuộc chủ đề của phần.
-Chỉ thẻ p/strong/a/ul/ol/li. Phần số 2 cần danh sách hành động cụ thể. Mỗi đoạn thêm thông tin hữu ích, không lặp ý để đạt độ dài. Không đưa hướng dẫn viết hoặc giới hạn của đề bài vào văn cho người đọc.
-Liên kết chỉ khi phù hợp, không chèn liên kết trong mọi phần. Dữ kiện pháp lý chỉ từ đề bài; chỉ dùng dữ kiện liên quan phần hiện tại, không nhắc lại toàn bộ quy định trong mọi phần.`,
+Chỉ thẻ p/strong/a/ul/ol/li. ${i === 1 ? 'BẮT BUỘC viết một danh sách <ul><li>...</li></ul> hoặc <ol><li>...</li></ol>, ít nhất 3 mục hành động thực tế trong PHẦN NÀY; không thay danh sách bằng văn xuôi.' : ''} Mỗi đoạn thêm thông tin hữu ích, không lặp ý để đạt độ dài. Không đưa hướng dẫn viết hoặc giới hạn của đề bài vào văn cho người đọc.
+Không tự tạo liên kết HTTPS (kể cả https://vbpl.vn) nếu đề bài không CẤP CHÍNH XÁC URL đã kiểm chứng. Liên kết nội bộ phải thuộc danh sách được cung cấp; không cần liên kết ở mọi phần. Dữ kiện pháp lý chỉ từ đề bài; chỉ dùng dữ kiện liên quan phần hiện tại, không nhắc lại toàn bộ quy định trong mọi phần.`,
         `${user}\nBa góc bài: ${outline.sections.map((s) => s.heading).join(' | ')}\nPHẦN ${i + 1}/${SECTION_COUNT}: ${section.heading}\nBrief: ${section.brief}\nChỉ viết phần này với khoảng ${requestedWords} từ. ${feedback}`,
         fragmentSchema, 1000, `section ${i + 1}/${SECTION_COUNT}`);
       const error = refusal || fragmentError(part.body_html, SECTION_MIN_WORDS, SECTION_MAX_WORDS, i === 1);
@@ -150,7 +152,7 @@ Liên kết chỉ khi phù hợp, không chèn liên kết trong mọi phần. D
         : words > SECTION_MAX_WORDS ? 'Rút gọn phần này, bỏ câu lặp và ý không thuộc câu hỏi hiện tại.'
         : words < SECTION_MIN_WORDS ? 'Bổ sung chi tiết thực tế liên quan câu hỏi này, mỗi đoạn thêm một ý hữu ích khác nhau.'
           : 'Sửa đúng ngôn ngữ và cấu trúc cho người đọc.';
-      if (words > 0) requestedWords = Math.max(180, Math.min(320, Math.round(requestedWords * 320 / words)));
+      if (words > 0) requestedWords = Math.max(300, Math.min(370, Math.round(requestedWords * 320 / words)));
       feedback = `Phần trước bị từ chối: ${error}. ${direction} Viết lại toàn bộ phần, không thêm đoạn đệm.`;
       log(feedback);
     }
