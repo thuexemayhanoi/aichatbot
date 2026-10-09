@@ -10,8 +10,8 @@ run-name: 'Factory ${{ inputs.article_ids || ''backlog'' }} request ${{ inputs.r
 #
 # No persistent workflow lock: runs are serialized by the concurrency group
 # below; crash safety lives in the txn marker (resume) and backlog discovery.
-# Pages deploys independently and is NEVER waited on — factory GREEN + the
-# derived commit are the production checkpoint.
+# The final step explicitly requests and verifies Pages for the derived SHA.
+# GITHUB_TOKEN pushes alone do not trigger a Pages build.
 #
 # Scope rules (tools/factory-select.mjs) — NEW / REPAIR / BACKLOG are
 # mutually exclusive:
@@ -51,6 +51,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: blog-factory-publish
@@ -60,6 +61,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -182,3 +186,8 @@ jobs:
             echo "::error::QA failures recorded (rows stay in REPAIR for repair): $FAIL_IDS"
             exit 1
           fi
+
+      - name: 'Request and verify Pages for the publication commit'
+        if: steps.select.outputs.proceed == 'true'
+        timeout-minutes: 12
+        run: node tools/factory-pages.mjs

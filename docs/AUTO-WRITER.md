@@ -95,3 +95,10 @@ More than 2,000 publications or inconsistent evidence fails closed.
 The watchdog refuses to wake production when Actions observations fail.
 Publisher waiting includes queued/pending factory jobs; derived commits retry
 safe push races three times and stop on an actual content conflict.
+
+Factory explicitly requests the existing main/root Pages build using
+`pages: write` after its derived commit, and verifies the exact deployed SHA.
+GITHUB_TOKEN pushes alone do not trigger Pages. Source settings and CNAME
+are checked and never changed. The owner `pages-test` request verifies this
+path against the already validated current site before RESUME. The coordinator
+has `actions: write` and GH_TOKEN to start one writer after a new reservation.

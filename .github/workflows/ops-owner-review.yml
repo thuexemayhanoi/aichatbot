@@ -32,6 +32,8 @@ on:
 permissions:
   contents: write
   actions: write
+  # Owner-requested rebuild of the already validated current Pages source.
+  pages: write
 
 jobs:
   dispatch:
@@ -117,6 +119,13 @@ jobs:
                 ;;
               noop)
                 echo "review controls updated; no production action requested"
+                ;;
+              pages-test)
+                node tools/writer-queue.mjs validate
+                node tools/blog-factory.mjs validate
+                node tools/site-audit.mjs
+                node tools/factory-pages.mjs
+                echo "DISPATCH_EXIT=0"
                 ;;
               smoke-test)
                 MODEL=$(node -e "console.log(require('./ops/owner-review/request.json').model || 'qwen3:1.7b')")
