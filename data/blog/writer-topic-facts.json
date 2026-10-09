@@ -9,18 +9,18 @@
     "facts": [
       "Thông tư 38/2024/TT-BGTVT có hiệu lực từ 01/01/2025. Điều 3 xác định khu đông dân cư qua biển bắt đầu và hết khu đông dân cư.",
       "Theo Điều 4 và Điều 6: khi không có biển tốc độ tối đa riêng, xe mô tô trong khu đông dân cư được tối đa 60 km/h trên đường đôi hoặc đường một chiều có từ hai làn xe cơ giới; 50 km/h trên đường hai chiều hoặc đường một chiều có một làn xe cơ giới.",
-      "Điều 7 quy định xe gắn máy tối đa 40 km/h, không lấy mức 50/60 km/h của xe mô tô áp cho xe gắn máy. Giới hạn tối đa không phải tốc độ nên chạy trong mọi điều kiện; phải quan sát biển thực tế.",
+      "Điều 7 quy định xe gắn máy tối đa 40 km/h, không lấy mức 50/60 km/h của xe mô tô áp cho xe gắn máy. Tốc độ thực tế phải nhỏ hơn hoặc bằng giới hạn tối đa và giảm khi cần; người lái không phải chạy bằng mức tối đa.",
       "Du khách điều khiển xe cũng phải tuân thủ giới hạn tốc độ như người lái khác; các dữ kiện trên không tạo ngoại lệ cho du khách. Điều 3 chỉ xác định khu đông dân cư, còn mức 60/50 km/h nêu tại Điều 6.",
       "Đường đôi có chiều đi và chiều về được phân biệt bằng dải phân cách giữa; không suy ra đường đôi chỉ vì có nhiều làn.",
       "Mật độ giao thông, trời mưa và tầm nhìn ảnh hưởng tốc độ an toàn nên lựa chọn; không thay thế loại đường và biển báo khi xác định mức tốc độ tối đa.",
       "Nguồn cv-3045.pdf là văn bản phổ biến Thông tư 38/2024/TT-BGTVT của Sở Giao thông vận tải Lai Châu; không đoán số hiệu công văn từ tên file."
     ],
     "avoid": [
-      "Phạm vi bài chỉ là tốc độ và cách lựa chọn tốc độ an toàn; nguồn đề bài chưa cung cấp mức phạt hay yêu cầu giấy phép.",
-      "Mỗi đường phố cần đối chiếu biển, loại phương tiện và cấu trúc đường; mức 50 km/h không đại diện cho mọi đường phố.",
-      "Không suy ra ngoại ô hoặc khu công nghiệp nằm ngoài khu đông dân cư chỉ từ tên gọi; nhận biết bằng biển bắt đầu và hết khu đông dân cư.",
-      "Dẫn nguồn bằng đúng tên Sở Giao thông vận tải Lai Châu và Thông tư 38/2024/TT-BGTVT đã cung cấp; không tự bịa số công văn hoặc cơ quan ban hành nguồn.",
-      "Không đưa giới hạn đề bài, nguồn chưa cung cấp, mức phạt hay giấy phép thành phần bài viết. Tập trung vào cách đọc biển, phân biệt loại đường/xe và lựa chọn tốc độ an toàn."
+      "Chỉ phân tích tốc độ, đọc biển và lựa chọn tốc độ an toàn; không thêm mức phạt hoặc giấy phép chưa kiểm chứng.",
+      "Đối chiếu biển, phương tiện và loại đường; 50 km/h không đại diện mọi đường phố.",
+      "Nhận biết khu đông dân cư bằng biển bắt đầu/kết thúc, không bằng tên ngoại ô hoặc khu công nghiệp.",
+      "Không đoán số công văn hoặc đổi cơ quan ban hành nguồn.",
+      "Chỉ trả lời câu hỏi thực tế về tốc độ; không viết mục về giới hạn đề bài hoặc nguồn chưa cung cấp."
     ],
     "reject_claims": [
       {
@@ -50,6 +50,14 @@
       {
         "pattern": "tài liệu hướng dẫn của Bộ Giao thông Vận tải",
         "reason": "Nguồn được dẫn là văn bản phổ biến của Sở Giao thông vận tải Lai Châu; không tự đổi cơ quan của nguồn."
+      },
+      {
+        "pattern": "(?:du khách|người lái|người điều khiển)(?:(?!không)[^.<>]){0,50}phải (?:chạy|đi) (?:ở|với) tốc độ tối đa",
+        "reason": "Giới hạn là trần tốc độ; không bắt buộc chạy bằng tốc độ tối đa."
+      },
+      {
+        "pattern": "(?:tốc độ tối đa|giới hạn tối đa)[^.<>]{0,120}không nên[^.<>]{0,60}giới hạn cứng nhắc",
+        "reason": "Điều kiện nguy hiểm cần giảm tốc; không cho phép vượt trần trên biển."
       }
     ],
     "citations": [

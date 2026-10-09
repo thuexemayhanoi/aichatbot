@@ -23,7 +23,7 @@
  *   internal-links-resolve every internal href exists on disk
  *
  * Warnings (never block publish, -5 each, score never goes below 0):
- *   body-words (guideline 1.500–4.000) / body-structure / no-filler /
+ *   body-words (guideline 800–2.000) / body-structure / no-filler /
  *   no-duplicate-paragraphs / no-duplicate-sentences /
  *   no-cross-article-duplicate / no-cannibalization / title-meta-valid /
  *   seo-ownership / local-angle / safe-legal-gate / no-external-links /
@@ -40,6 +40,7 @@ import { fileURLToPath } from 'node:url';
 import { text, words, resolveHref } from './seo-score.mjs';
 import { resolveFacts, HUBS } from './build-blog.mjs';
 import { parseMatrix, MATRIX, MANIFEST } from './blog-factory.mjs';
+import { CONTENT_MIN_WORDS, CONTENT_MAX_WORDS } from './writer-content-policy.mjs';
 
 export const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -51,8 +52,8 @@ export const WARN_PENALTY = 5;
 /** Below this the body is a stub — critical, not a length warning. */
 export const MIN_CRITICAL_WORDS = 300;
 /** Guideline floor/ceiling (docs/ARTICLE-RULES.md) — warnings only. */
-export const MIN_WORDS = 1500;
-export const MAX_WORDS = 4000;
+export const MIN_WORDS = CONTENT_MIN_WORDS;
+export const MAX_WORDS = CONTENT_MAX_WORDS;
 
 const HUB_DIR = Object.fromEntries(HUBS.map((h) => [h.id, h.dir]));
 const read = (p) => readFileSync(isAbsolute(p) ? p : join(ROOT, p), 'utf8');

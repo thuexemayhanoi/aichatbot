@@ -133,7 +133,7 @@ export function firstPlanned(dir, category) {
 }
 
 /**
- * Deterministic fixture body, inside the 1.500–4.000-word range
+ * Deterministic fixture body, inside the owner-approved 800–2.000-word range
  * (docs/ARTICLE-RULES.md: length follows search intent).
  * Paragraphs are indexed so no duplicate-paragraph/sentence check trips.
  * Contains only verified facts via {{ business.* }} placeholders.
@@ -197,7 +197,7 @@ export function countWords(dir, html) {
 
 /**
  * Fixture body with an EXACT visible word count — used by the length-gate
- * boundary tests (v69: 1.499 WARN / 1.500 / 2.500 / 4.000 PASS / >4.000 WARN).
+ * boundary tests (799 WARN / 800 / 1.200 / 2.000 PASS / >2.000 WARN).
  * Builds on fixtureBody({paragraphs:1}) and appends UNIQUE one-sentence
  * paragraphs (no duplicate sentences, no filler markers, no truncation)
  * until the target lands precisely.

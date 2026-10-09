@@ -61,7 +61,7 @@ test('qa: valid fixture article scores 100 (PASS, zero warnings)', () => {
   }
 });
 
-// ---------- length: <300 critical, 1.500–4.000 guideline warning ----------
+// ---------- length: <300 critical, 800–2.000 guideline warning ----------
 
 test('qa: ~450-word draft — body-words WARN only, score 95, still PASSES', () => {
   const dir = repoSandbox();
@@ -71,44 +71,44 @@ test('qa: ~450-word draft — body-words WARN only, score 95, still PASSES', () 
   assert.match(out, new RegExp(`QA PASS ${id} score=95 warnings=1`));
 });
 
-test('qa: length guideline — exactly 1.499 words WARNs (thin content) but PASSES', () => {
+test('qa: length guideline — exactly 799 words WARNs (thin content) but PASSES', () => {
   const dir = repoSandbox();
-  const body = fixtureBodyExact(dir, 1499);
-  assert.equal(countWords(dir, body), 1499);
+  const body = fixtureBodyExact(dir, 799);
+  assert.equal(countWords(dir, body), 799);
   const id = install(dir, { body });
   const out = qaCli(dir, [id]);
   assert.match(out, /WARN\s+body-words/);
   assert.match(out, new RegExp(`QA PASS ${id} score=95 warnings=1`));
 });
 
-test('qa: length guideline — exactly 1.500 words scores 100', () => {
+test('qa: length guideline — exactly 800 words scores 100', () => {
   const dir = repoSandbox();
-  const body = fixtureBodyExact(dir, 1500);
-  assert.equal(countWords(dir, body), 1500);
+  const body = fixtureBodyExact(dir, 800);
+  assert.equal(countWords(dir, body), 800);
   const id = install(dir, { body });
   assert.match(qaCli(dir, [id]), new RegExp(`QA PASS ${id} score=100 warnings=0`));
 });
 
-test('qa: length guideline — exactly 2.500 words scores 100 (no 2.000 ceiling)', () => {
+test('qa: length guideline — exactly 1.200 words scores 100 (within the approved range)', () => {
   const dir = repoSandbox();
-  const body = fixtureBodyExact(dir, 2500);
-  assert.equal(countWords(dir, body), 2500);
+  const body = fixtureBodyExact(dir, 1200);
+  assert.equal(countWords(dir, body), 1200);
   const id = install(dir, { body });
   assert.match(qaCli(dir, [id]), new RegExp(`QA PASS ${id} score=100 warnings=0`));
 });
 
-test('qa: length guideline — exactly 4.000 words scores 100 (deep topic is fine)', () => {
+test('qa: length guideline — exactly 2.000 words scores 100 (approved upper boundary)', () => {
   const dir = repoSandbox();
-  const body = fixtureBodyExact(dir, 4000);
-  assert.equal(countWords(dir, body), 4000);
+  const body = fixtureBodyExact(dir, 2000);
+  assert.equal(countWords(dir, body), 2000);
   const id = install(dir, { body });
   assert.match(qaCli(dir, [id]), new RegExp(`QA PASS ${id} score=100 warnings=0`));
 });
 
-test('qa: length guideline — 4.001 words WARNs (writer trims, tool never truncates)', () => {
+test('qa: length guideline — 2.001 words WARNs (writer trims, tool never truncates)', () => {
   const dir = repoSandbox();
-  const body = fixtureBodyExact(dir, 4001);
-  assert.equal(countWords(dir, body), 4001);
+  const body = fixtureBodyExact(dir, 2001);
+  assert.equal(countWords(dir, body), 2001);
   const id = install(dir, { body });
   const out = qaCli(dir, [id]);
   assert.match(out, /WARN\s+body-words/);
@@ -116,7 +116,7 @@ test('qa: length guideline — 4.001 words WARNs (writer trims, tool never trunc
   // No truncation anywhere: the body file still holds every word after QA.
   const row = readJson(dir, 'data/blog/published.json').articles.find((a) => a.article_id === id);
   const after = readFileSync(join(dir, row.body), 'utf8');
-  assert.equal(countWords(dir, after), 4001, 'QA must never cut the body');
+  assert.equal(countWords(dir, after), 2001, 'QA must never cut the body');
 });
 
 // ---------- critical gates (score 0, publish blocked) ----------
@@ -350,7 +350,7 @@ test('qa: WARN retrieval-consistency — agent_retrieval=yes without knowledge c
 test('qa: score boundary — exactly 70 PASSES (6 warnings, no REVIEW state)', () => {
   const dir = repoSandbox();
   const repeated = 'Đoạn lặp nguyên văn để kiểm thử mức điểm chính xác bảy mươi của bộ QA mới.'; // >40 chars: paragraph AND sentence key
-  const body = fixtureBody({ paragraphs: 3 }) // body-words (450 < 1.500)
+  const body = fixtureBody({ paragraphs: 3 }) // body-words (450 < 800)
     + '\n<h1>Tiêu đề H1 thứ hai không hợp lệ</h1>' // body-structure
     + '\n<p>Phần này TBD, đang cập nhật sau.</p>' // no-filler
     + `\n<p>${repeated}</p>\n<p>${repeated}</p>`; // no-duplicate-paragraphs + no-duplicate-sentences

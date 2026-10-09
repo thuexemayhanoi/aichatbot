@@ -1,4 +1,4 @@
-# Continuous Writer Contract — vòng lặp bắt buộc của external writer
+# Continuous Writer Contract — vận hành factory tự động
 
 Tài liệu này là nguồn chuẩn duy nhất cho cách một writer run (agent AI bên ngoài) PHẢI hoạt động liên tục với `/`. `docs/BLOG-FACTORY.md`, `README.md` và workflow tham chiếu tài liệu này.
 
@@ -6,11 +6,11 @@ Tài liệu này là nguồn chuẩn duy nhất cho cách một writer run (agen
 
 - **External AI writer** thực hiện vòng lặp viết liên tục: chọn bài, research, viết prose, push.
 - **GitHub Actions** (`blog-factory-publish.yml`) thực hiện phần deterministic: detect đúng các bài, auto-claim, scoped QA, grouped transactional publish, rebuild, verify, commit derived state.
-- **Actions KHÔNG BAO GIỜ tự viết prose, không gọi AI, không schedule writer.** Continuous production chỉ chạy khi owner yêu cầu rõ ràng; factory đã continuous-ready.
+- **Auto Writer chạy Ollama cục bộ trên GitHub Actions theo lịch và continuation được owner ủy quyền.** Production phải qua owner switch, incident/maintenance gate; quy trình hiện hành ở `docs/AUTO-WRITER.md`. Hợp đồng external writer bên dưới là đường staging tương thích, không phải phụ thuộc vận hành.
 
 ## 3 writer song song (PARALLEL WRITER MODE, v68)
 
-Khi cần tăng throughput phần WRITE, repo chạy 3 external writer song song với MỘT central coordinator + MỘT serialized publisher. Hợp đồng đầy đủ nằm ở `docs/PARALLEL-WRITER.md`, tool là `tools/writer-queue.mjs`, tests là `tests/unit/writer-queue.test.js`. Tóm tắt bất biến:
+Đường external writer có thể dùng 3 writer slot A/B/C với MỘT central coordinator + MỘT serialized publisher. Hợp đồng đầy đủ nằm ở `docs/PARALLEL-WRITER.md`, tool là `tools/writer-queue.mjs`, tests là `tests/unit/writer-queue.test.js`. Tóm tắt bất biến:
 
 - CHỈ coordinator được reserve article ID (tối đa 50 PLANNED một batch, chia micro-chunk 2 bài, round-robin A/B/C). Manifest `docs/state/writer-assignments.json` là nguồn sự thật duy nhất; duplicate ID → fail closed.
 - Writer chỉ làm queue riêng, KHÔNG tự chọn "next PLANNED", KHÔNG push main — chỉ push branch `writer/<batch>/<A|B|C>` (2 bodies + chunk file `writer-work/...`).
@@ -25,7 +25,7 @@ Khi cần tăng throughput phần WRITE, repo chạy 3 external writer song song
 - Push sớm từng cặp = safe checkpoint trên main: mất workspace/session không mất tiến độ. Không giữ nhiều bài chưa push trong workspace.
 - Hard invariant của workflow: tối đa 50 body thay đổi một push (giống /vanchinh). Micro loop chuẩn push đúng 2 mỗi lần; writer bình thường KHÔNG dùng 50.
 - Ma trận (2.000 dòng) vẫn là source of truth; checkpoint/lock/txn là derived operational state, không bao giờ được push.
-- Pages deploy chạy độc lập: factory KHÔNG chờ Pages xong. Factory GREEN + derived state committed là checkpoint production; writer có thể làm cặp sau ngay sau đó.
+- Factory yêu cầu Pages rebuild bằng quyền `pages: write` và xác minh đúng SHA đã commit. Publisher đợi đúng factory run và checkpoint rồi dispatch một lượt writer kế tiếp.
 
 ## Scope tách rời — NEW / REPAIR / BACKLOG (giống /vanchinh)
 
@@ -45,7 +45,7 @@ FETCH FRESH MAIN
 → REPAIR/RESUME bài đang dở (QA/REPAIR/PASS): sửa rồi push body (REPAIR) TRƯỚC
 → SELECT next 2 actionable rows (PLANNED kế tiếp theo thứ tự ma trận)
 → RESEARCH (nguồn xác minh; bài SAFE cần nguồn gov.vn/vbpl.vn)
-→ WRITE 2 (bodies + manifest draft entries; 1.500–4.000 từ hữu ích mỗi bài)
+→ WRITE 2 (bodies + manifest draft entries; 800–2.000 từ hữu ích mỗi bài)
 → LOCAL SCOPED QA each article (node tools/article-qa.mjs <BA-id> — PASS mới push)
 → PUSH 2 (2 bodies + 2 manifest draft entries; KHÔNG push matrix, lock, txn, checkpoint)
 → FACTORY GREEN (blog-factory-publish.yml xanh cho đúng SHA — grouped publish, 1 build)
@@ -97,8 +97,8 @@ Writer phía mình: fetch fresh main, đọc matrix + manifest, không push từ
 ## Length guideline (v69 — GUIDELINE, không còn là gate chặn publish)
 
 - **<300 từ → critical FAIL (bài rác/cụt nghiêm trọng).**
-- 300–1.499 từ → warning `-5` điểm (score vẫn PASS được nếu >=70). 1.500–4.000 từ → không cảnh báo. >4.000 từ → warning, writer rút gọn có nghĩa, tool không tự truncate.
-- Không padding để đạt sàn; không cắt tại 2.000 từ; không truncate giữa câu/đoạn. Độ dài theo search intent.
+- 300–799 từ → warning `-5` điểm trong QA chung. 800–2.000 từ → không cảnh báo độ dài. >2.000 từ → warning; Auto Writer còn kiểm tra cứng 800–2.000 trước staging. Tool không tự truncate.
+- Không padding để đạt sàn; khi bài mới vượt 2.000 từ, model viết lại gọn và đủ ý, không truncate giữa câu/đoạn. Giữ nguyên bài cũ.
 
 ## Minimal production QA (v69, `tools/article-qa.mjs`)
 
@@ -114,7 +114,7 @@ Critical gate (duy nhất 7 nhóm, mỗi lỗi → score 0):
 6. sai giá hoặc policy kinh doanh đã xác minh (fact-resolution, verified-phones-only, verified-deposits-only);
 7. broken link nghiêm trọng (internal links không trỏ tới file thật).
 
-Mọi lỗi SEO nhẹ khác chỉ là warning `-5` điểm, KHÔNG chặn publish: body-words (guideline 1.500–4.000) · body-structure · no-filler · no-duplicate-paragraphs/sentences · no-cross-article-duplicate · no-cannibalization · title-meta-valid · seo-ownership · local-angle · safe-legal-gate (gov.vn/vbpl.vn) · no-external-links · retrieval-consistency.
+Mọi lỗi SEO nhẹ khác chỉ là warning `-5` điểm, KHÔNG chặn publish: body-words (guideline 800–2.000) · body-structure · no-filler · no-duplicate-paragraphs/sentences · no-cross-article-duplicate · no-cannibalization · title-meta-valid · seo-ownership · local-angle · safe-legal-gate (gov.vn/vbpl.vn) · no-external-links · retrieval-consistency.
 
 QA scoped tới đúng các bài mới của cycle hiện tại (12–18 bài, không quét lại toàn site, không re-audit bài PUBLISHED). Mỗi bài kết quả độc lập (qa-chunk): một bài FAIL chuyển sang repair queue, các bài PASS tiếp tục publish trong cùng cycle — một bài FAIL KHÔNG giữ toàn bộ cycle.
 
@@ -122,8 +122,8 @@ QA scoped tới đúng các bài mới của cycle hiện tại (12–18 bài, k
 
 - Article-only push (bodies + manifest): chỉ `blog-factory-publish.yml` + scoped QA + light matrix smoke. `ci.yml` / `distribution.yml` bỏ qua qua `paths-ignore`.
 - Engine/tool/workflow/test/PWA/chatbot changes: full `node --test` + distribution vẫn chạy đầy đủ.
-- Derived commit của factory (`[skip ci]`, không chạm trigger paths) không recursive trigger. Pages deploy độc lập, KHÔNG bị factory chờ.
+- Derived commit của factory (`[skip ci]`, không chạm trigger paths) không recursive trigger. Factory kiểm chứng Pages đúng SHA; không dùng một deployment GREEN khác để thay thế.
 
 ## Verify (định nghĩa)
 
-VERIFY của mỗi chunk = workflow GREEN cho đúng SHA vừa push + matrix cả 2 dòng PUBLISHED + không lock + không txn. Không mở rộng scope sau mỗi cặp 2 bài; không chờ Pages để làm cặp kế tiếp.
+VERIFY của mỗi chunk = đúng factory run GREEN + matrix cả 2 dòng PUBLISHED + Pages đúng SHA + không lock/txn chưa giải quyết. Continuation tự dispatch lượt kế tiếp; không mở rộng scope sang bài cũ.

@@ -37,6 +37,7 @@ import { HUBS } from './build-blog.mjs';
 import { modelConfig, DEFAULT_MODEL } from './auto-writer-model.mjs';
 import { readPublicationBudget } from './factory-target.mjs';
 import { generateLongform } from './auto-writer-longform.mjs';
+import { CONTENT_MIN_WORDS, CONTENT_MAX_WORDS } from './writer-content-policy.mjs';
 
 export const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -161,7 +162,7 @@ export function validateCandidate(row, cand, ctx) {
   if (/<script|<style/i.test(body)) errs.push('body must not embed <script>/<style>');
   if (/\]\(|\)\s*<\/a>/i.test(body.replace(/<a href="[^"]*">[^<]*<\/a>/g, ''))) errs.push('markdown links are not allowed (use <a href>)');
   const wc = countWords(body);
-  if (wc < 1600 || wc > 2200) errs.push(`body word count ${wc} outside 1600-2200`);
+  if (wc < CONTENT_MIN_WORDS || wc > CONTENT_MAX_WORDS) errs.push(`body word count ${wc} outside ${CONTENT_MIN_WORDS}-${CONTENT_MAX_WORDS}`);
   const { internal, external } = splitLinks(body);
   const prefixes = ctx.allowedHubPrefixes;
   for (const href of internal) {
@@ -246,7 +247,7 @@ export const SYSTEM_PROMPT = `Bạn là writer chuyên nghiệp của MotoAI —
 QUY TẮC BẤT BUỘC:
 1. Chỉ trả về MỘT đối tượng JSON hợp lệ, không thêm chữ nào ngoài JSON: {"title": "...", "description": "...", "knowledge_chunks": ["...","..."], "body_html": "..."}. body_html là chuỗi HTML.
 2. body_html: chỉ dùng các thẻ <p>, <h2>, <ul>/<ol>/<li>, <strong>, <a>. KHÔNG dùng <h1>, <script>, <style>, markdown, mũi tên, bảng. Mở đầu bằng một <p> dẫn nhập; ít nhất 2 <h2>; ít nhất 1 danh sách <ul> hoặc <ol>; kết thúc bằng <h2> tổng kết có 1-2 câu kêu gọi hành động. Mục "Câu hỏi thường gặp" (nếu có) là <ul> gồm các <li> hỏi đáp ngắn.
-3. Độ dài: 1600-2200 từ tiếng Việt (đếm cả dấu). Bài phải đầy đủ, cụ thể, hữu ích cho khách thật; KHÔNG đệp chữ, KHÔNG lặp ý, KHÔNG đoạn "lorem".
+3. Độ dài: ${CONTENT_MIN_WORDS}-${CONTENT_MAX_WORDS} từ tiếng Việt (đếm trên văn bản hiển thị). Bài phải đầy đủ, cụ thể, hữu ích cho khách thật; KHÔNG đệp chữ, KHÔNG lặp ý, KHÔNG đoạn "lorem".
 4. Tiếng Việt chuẩn, tự nhiên, đúng chính tả. TUYỆT ĐỐI KHÔNG xuất hiện ký tự Trung/Nhận/Hàn/Cyrillic. Không lẫn từ tiếng Anh giữa câu.
 5. Dữ liệu kinh doanh CHỈ qua placeholder (bắt buộc dùng đúng từng ký tự): {{ business.policies.deposit.min | vnd }}, {{ business.policies.deposit.max | vnd }}, {{ business.hours.display }}, {{ business.brand }}, {{ business.contact.phone_display }}, {{ business.address.full }}. KHÔNG bịa giá thuê, số điện thoại, địa chỉ, giờ mở cửa khác. Câu nói về tiền cọc luôn dùng dải placeholder, nói cọc "được đối chiếu trực tiếp lúc nhận xe" và "quay về bạn khi trả xe đúng hiện trạng". KHÔNG viết con số tiền cọc hay giá thuê cụ thể nào.
 6. Không nhắc "app store" hay "google play". Không khẳng định cửa hàng có chi nhánh/giao xe tận nơi trừ khi dùng placeholder giờ mở cửa. Không khẳng định toàn quốc — cửa hàng ở Hà Nội.
@@ -405,7 +406,11 @@ async function generateArticle(row, ctx, opts, log) {
             const name = `${row.article_id}-attempt-${attempt}-${++component}-${label.replace(/[^a-z0-9]/gi, '-')}.json`;
             writeFileSync(join(dir, name), content);
             const contradictions = sourceFactErrors(content, ctx.topicFacts);
-            if (contradictions.length) throw new Error(contradictions.join('; '));
+            if (contradictions.length) {
+              const error = new Error(contradictions.join('; '));
+              error.code = 'WRITER_CONTENT_REFUSED';
+              throw error;
+            }
           },
         });
         break;

@@ -17,9 +17,12 @@ test('verified speed sources reject actual small-model contradictions without re
     'Dữ liệu pháp lý được cập nhật từ công văn số 3045/2024/CP.',
     'Phạm vi này chỉ bao gồm các khu vực dân cư, không mở rộng đến các khu vực khác như khu công nghiệp hay khu vực ngoại ô.',
     'Tài liệu hướng dẫn của Bộ Giao thông Vận tải cung cấp cơ sở pháp lý rõ ràng.',
+    'Điều này có nghĩa là du khách cũng phải chạy ở tốc độ tối đa được quy định, ví dụ như 60 km/h.',
+    'Tốc độ tối đa dù được ghi trên biển vẫn không nên được áp dụng như một giới hạn cứng nhắc.',
   ]) assert.ok(sourceFactErrors(statement, facts).length > 0);
   assert.deepEqual(sourceFactErrors('Theo Điều 6, khi không có biển tốc độ riêng, xe mô tô được tối đa 60 km/h trên đường đôi trong khu đông dân cư; du khách cũng phải tuân thủ quy định.', facts), []);
   assert.deepEqual(sourceFactErrors('Giới hạn tối đa không phải mức nên duy trì trong mọi điều kiện; cần giảm tốc khi trời mưa.', facts), []);
+  assert.deepEqual(sourceFactErrors('Người lái không phải chạy ở tốc độ tối đa; cần giảm tốc khi tầm nhìn kém và luôn giữ dưới mức trần.', facts), []);
 });
 
 /**
@@ -272,4 +275,14 @@ test('current recovery articles use verified subject-specific facts and preserve
   assert.match(localPrompt, /Tên địa danh đúng là Mai Châu/);
   assert.match(localPrompt, /KHÔNG dùng bất kỳ liên kết ngoài nào/);
   assert.equal(buildCtx(local, []).legalLinks.length, 0);
+});
+
+test('the approved writer range includes exactly 800 and 2000 words, refusing both adjacent boundaries', () => {
+  const bodyAt = (n) => {
+    const shell = '<h2>Quy trình thuê xe</h2><ul><li>Kiểm tra xe</li></ul><h2>Kết luận</h2><p></p>';
+    return shell.replace('<p></p>', '<p>' + Array.from({ length: n - countWords(shell) }, (_, i) => 'từ' + i).join(' ') + '</p>');
+  };
+  for (const n of [800, 2000]) assert.deepEqual(validateCandidate(ROW, CAND({ body_html: bodyAt(n) }), CTX), []);
+  for (const n of [799, 2001]) assert.ok(validateCandidate(ROW, CAND({ body_html: bodyAt(n) }), CTX).some((e) => /outside 800-2000/.test(e)));
+  assert.match(SYSTEM_PROMPT, /800-2000/);
 });

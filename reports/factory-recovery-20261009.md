@@ -68,3 +68,23 @@ Chưa có điều kiện nào ở trên được đánh dấu hoàn tất chỉ 
 - The fourth section now validates its action list within bounded component retry. Whole-article length and full pair QA remain mandatory.
 - The Work execution environment returned `409 environment_offline`. Repository access through GitHub remains available. Further full tests execute on GitHub Actions; read-only evidence review can expose the original artifact bodies/components without publishing them.
 - Another concrete remaining issue: 200 PLANNED legal-gate rows cover 47 subjects, but most still fall back to unrelated prior article links. Subject-specific current primary-source packs are being prepared. This work is not complete and production remains PAUSED with the incident and maintenance lock preserved.
+
+## Owner-approved 800–2,000-word recovery policy
+
+The latest owner directive lowers only new-article length to 800–2,000 words.
+A shared policy is applied to the writer, three-section assembly, general
+length guideline and Agent #5's independent dry-run evidence. Other QA,
+factual-source, duplicate, SEO and safety gates remain active. No published
+body, manifest, matrix, checkpoint, incident or maintenance lock is changed.
+
+Read-only artifact review run `37889557103` exposed two additional unsafe
+claims in the real refused BA-0305 candidate: that tourists must drive at
+the maximum speed, and that a posted ceiling need not be a binding limit.
+Both are explicitly refused against the verified source and tested alongside
+correct reduced-speed/negative wording. Source refusals can regenerate only
+the affected AI component, within the same bounded two attempts.
+
+Full verification of this policy will run in Actions because the local Work
+executor is offline. A new real two-article dry-run remains required. This
+change is not a production recovery claim: 304 articles remain published,
+BA-0305/0306 remain reserved, and production remains PAUSED.

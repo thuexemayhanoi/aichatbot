@@ -29,8 +29,8 @@ The site's canonical domain is **https://chatbot.thuexemaynguyentu.com**.
    maximum four. Requests have a 20-minute timeout; the job is bounded to
    120 minutes. CPU inference is slower than a hosted model, so a cron tick
    is an opportunity to run, not a promise of two articles every 25 minutes.
-   `auto-writer-longform.mjs` generates an AI outline and five distinct
-   sections (300–370 counted words each), with at most two calls per component.
+   `auto-writer-longform.mjs` generates an AI outline and three distinct
+   sections (250–450 counted words each), with at most two calls per component.
    It uses a 4,096-token context and structured JSON schemas. All prose comes
    from local inference; assembly never pads or repeats paragraphs. Full
    article and pair QA still run after assembly. Rejected real candidates
@@ -40,7 +40,7 @@ The site's canonical domain is **https://chatbot.thuexemaynguyentu.com**.
    dispatch the serialized publisher, and publish only QA-passing articles.
 6. Generation failures preserve key=value outputs despite Bash `-e` and
    explicitly dispatch the repair workflow using `failure()` and the exact
-   source run ID. Failures remain red; QA thresholds are unchanged.
+   source run ID. Failures remain red. All non-length QA gates remain mandatory.
 
 Internal URLs use `/blog/<hub>/<slug>/` and derive from manifest categories
 (the source bodies live in a flat directory). The coordinator persists any
@@ -81,7 +81,7 @@ They never change the incident, lock, reservation, matrix or published source.
 The owner request shim accepts `smoke-test` and `dry-run`; dispatch failures
 make its run fail. Evidence is an Actions artifact, not a log commit to main.
 
-The writer requires 1,600–2,200 words and checks both articles together before
+The writer requires 800–2,000 words under the owner's 2026-10-09 directive and checks both articles together before
 staging. Repeated paragraphs/sentences, cross-article copies and filler are
 rejected even if the general article score would otherwise pass. Dry-run
 artifacts include bodies, individual QA, model metrics and inventory hashes.
@@ -133,9 +133,9 @@ as a publication of **Sở Giao thông vận tải Lai Châu**. Its filename is 
 treated as a legal document number. The gov.vn/vbpl.vn link policy remains
 unchanged; other verified primary sources stay in the source record.
 
-The 4B trial's natural sections fit five substantive parts, so composition
-now uses five 300–370-word parts and retains the full 1,600–2,200-word
-article guard and production QA. Retry feedback explicitly shortens an
+The earlier five-part trial used 300–370-word parts and the then-current
+1,600–2,200-word article guard. The owner-approved update below replaces
+that composition and length policy; production QA remains mandatory. Retry feedback explicitly shortens an
 oversized part and asks for useful missing detail in a short one; the next
 requested length adapts to the measured count. Rejected text is regenerated,
 never sliced or padded. Headings about internal brief limits or reference
@@ -144,8 +144,30 @@ lists are refused, and writing instructions cannot leak into reader prose.
 Dry-run `37887122359` generated five BA-0305 sections of 314–358 counted
 words with stable streaming and 11 GiB available RAM, but the complete
 candidate was correctly refused for a missing HTML action list. Section
-four now checks that requirement within its two bounded attempts, before
+four was changed to check that requirement within its two bounded attempts, before
 whole-article QA. No list or prose is inserted by the engine. Read-only
 evidence rendering logs the original model bodies/components with a size
 limit and a safe line prefix; `evidence-review` in the owner shim can review
 a completed main writer run without changing production or incident state.
+
+## Owner-approved length update (2026-10-09)
+
+The owner changed the new-article range to **800–2,000 words**. A shared
+`writer-content-policy.mjs` supplies the writer, assembly, article length
+guideline and independent recovery evidence. Existing 304 publications are
+not rewritten or cut. New AI articles still face a hard range check plus
+full individual/pair QA, verified facts, source constraints and duplicate
+refusals. The general QA stub gate (<300) and score policy are preserved.
+
+Composition now uses three distinct 250–450-word sections, with an AI
+introduction and conclusion of 50–130 words each. The second section must
+contain a concrete action list; the model regenerates a refused component
+within two attempts. Original refusals remain in the evidence artifact.
+An explicitly classified source contradiction can use the same component
+retry; storage, transport and protocol failures cannot impersonate content
+repair. Maximum speed is a ceiling, never a requirement to drive at that
+speed. The observed contrary claims from run `37887122359` are regressions.
+
+Earlier measurements above used the older length policy and do not certify
+the new range. A fresh real Actions two-article dry-run is required before
+incident review and RESUME.

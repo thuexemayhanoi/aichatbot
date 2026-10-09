@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
+import { CONTENT_MIN_WORDS, CONTENT_MAX_WORDS } from './writer-content-policy.mjs';
 
 export function greenRun(runs, sha, name) {
   const run = runs.find((r) => r.headSha === sha);
@@ -50,7 +51,7 @@ export function dryRunEvidence(evidence, chunk, hashes) {
   for (const id of chunk.ids) {
     const r = evidence.results.find((v) => v.article_id === id);
     const score = r && new RegExp(`^QA PASS ${id} score=(\\d+)`, 'm').exec(r.qa);
-    if (!r || !Number.isInteger(r.words) || r.words < 1600 || r.words > 2200 || !score || Number(score[1]) < 70 ||
+    if (!r || !Number.isInteger(r.words) || r.words < CONTENT_MIN_WORDS || r.words > CONTENT_MAX_WORDS || !score || Number(score[1]) < 70 ||
         /^FAIL\s|^WARN\s+no-(?:cross-article-duplicate|duplicate-paragraphs|duplicate-sentences|filler)\b/m.test(r.qa)) {
       throw new Error(`${id} lacks passing long-form pair QA`);
     }
@@ -103,7 +104,7 @@ function main() {
       if (bodies.some((p) => !(p in hashes))) throw new Error('published body inventory grew after dry-run');
       dryRunEvidence(evidence, { ...reserved, batch_id: active.batch_id }, hashes);
       assertTestedCode(evidence.code_sha, ['tools/auto-writer.mjs', 'tools/auto-writer-model.mjs',
-        'tools/auto-writer-longform.mjs',
+        'tools/auto-writer-longform.mjs', 'tools/writer-content-policy.mjs',
         'tools/article-qa.mjs', 'tools/blog-factory.mjs', 'tools/factory-target.mjs', 'tools/writer-queue.mjs',
         '.github/workflows/auto-writer.yml', 'data/blog/writer-topic-facts.json', 'config']);
     } finally { rmSync(dir, { recursive: true, force: true }); }

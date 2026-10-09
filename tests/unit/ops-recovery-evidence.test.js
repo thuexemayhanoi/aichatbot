@@ -36,9 +36,13 @@ const chunk = { batch_id: 'B', seq: 4, ids: ['BA-0305', 'BA-0306'] };
 
 test('dry-run proof covers the exact chunk, full word range, pair QA, and unchanged checkpoint', () => {
   dryRunEvidence(evidence(), chunk, { checkpoint: 'hash' });
+  for (const words of [800, 2000]) {
+    const boundary = evidence(); boundary.results.forEach((r) => { r.words = words; });
+    dryRunEvidence(boundary, chunk, { checkpoint: 'hash' });
+  }
   for (const mutate of [
-    (e) => { e.ids.reverse(); }, (e) => { e.results[0].words = 1599; },
-    (e) => { e.results[0].words = 'unknown'; }, (e) => { e.results[0].qa = 'QA PASS BA-0305 score=20'; },
+    (e) => { e.ids.reverse(); }, (e) => { e.results[0].words = 799; },
+    (e) => { e.results[0].words = 2001; }, (e) => { e.results[0].words = 'unknown'; }, (e) => { e.results[0].qa = 'QA PASS BA-0305 score=20'; },
     (e) => { e.results[0].qa += '\nWARN no-duplicate-sentences repeated'; },
     (e) => { e.after.checkpoint = 'changed'; }, (e) => { e.inventory_unchanged = false; },
   ]) { const e = evidence(); mutate(e); assert.throws(() => dryRunEvidence(e, chunk, { checkpoint: 'hash' })); }
