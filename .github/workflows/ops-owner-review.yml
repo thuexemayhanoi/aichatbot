@@ -38,6 +38,7 @@ permissions:
 jobs:
   dispatch:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_REPO: ${{ github.repository }}
@@ -129,6 +130,15 @@ jobs:
               noop)
                 echo "review controls updated; no production action requested"
                 ;;
+              legal-source-review)
+                echo "read-only current primary-source PDF review"
+                if ! command -v pdftotext >/dev/null; then
+                  sudo apt-get update -qq
+                  sudo apt-get install -y -qq poppler-utils
+                fi
+                python3 tools/legal-source-review.py
+                echo "SOURCE_REVIEW_EXIT=$?"
+                ;;
               pages-test)
                 node tools/writer-queue.mjs validate
                 node tools/blog-factory.mjs validate
@@ -194,6 +204,14 @@ jobs:
             esac
             echo "=== end ==="
           } 2>&1 | tee "$LOG"
+      - name: 'Preserve original legal source documents'
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-source-review-${{ github.run_id }}
+          path: ops/out/legal-source-review
+          if-no-files-found: ignore
+          retention-days: 14
       - name: 'Preserve the owner request log'
         if: always()
         uses: actions/upload-artifact@v4
