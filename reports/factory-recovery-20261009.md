@@ -88,3 +88,11 @@ Full verification of this policy will run in Actions because the local Work
 executor is offline. A new real two-article dry-run remains required. This
 change is not a production recovery claim: 304 articles remain published,
 BA-0305/0306 remain reserved, and production remains PAUSED.
+
+Policy commit `ed315c621dfcd698f134efacfbedc680dde85b1d` ran the complete
+Actions suite: **951/952 passed, one failure, zero skipped**. CI
+`37890973143` and Distribution `37890972958` were RED because the
+documentation regression still demanded the old 1,500–4,000 range and
+literal old QA constants. The test is updated to verify the approved range
+and compare the actual exported QA constants against the shared policy.
+No failing test is skipped or removed. Full checks are rerun before dry-run.

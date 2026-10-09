@@ -1,3 +1,5 @@
+import { CONTENT_MIN_WORDS, CONTENT_MAX_WORDS } from '../../tools/writer-content-policy.mjs';
+import { MIN_WORDS as QA_MIN_WORDS, MAX_WORDS as QA_MAX_WORDS } from '../../tools/article-qa.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
@@ -396,9 +398,9 @@ test('chunk: stale writer state loses — remote main (PUBLISHED) wins, no rewri
   assert.match(out, /already PUBLISHED/);
 });
 
-test('chunk: a sub-1.500-word draft only WARNs — QA PASS with score 95 (v69 guideline, publish allowed)', () => {
+test('chunk: a sub-800-word draft only WARNs — QA PASS with score 95 (v69 guideline, publish allowed)', () => {
   const dir = repoSandbox();
-  const shortish = fixtureBody({ paragraphs: 3 }); // ~450 words: >=300 (not a stub), <1.500 (guideline)
+  const shortish = fixtureBody({ paragraphs: 3 }); // ~450 words: >=300 (not a stub), <800 (guideline)
   const id = installFixture(dir, { ...BASE, body: shortish, rowId: 'BA-0002', status: 'QA' });
   const out = factory(dir, ['qa-chunk', id]);
   assert.match(out, /pass_ids=BA-0002/);
@@ -520,7 +522,8 @@ test('pipeline: docs match code — CONTINUOUS-WRITER contract + no outdated wor
   assert.ok(!cw.includes('LUÔN được ưu tiên trước bài PLANNED mới trong cùng một run'), 'outdated mixed-scope rule removed');
   assert.ok(cw.includes('2 ARTICLES / MICRO CHUNK'), 'canonical chunk size 2 is documented');
   assert.ok(cw.includes('WRITE 2') && cw.includes('PUSH 2') && cw.includes('NEXT 2'), 'chunk loop is documented');
-  assert.ok(cw.includes('1.500–4.000'), 'length rule is stated');
+  const approvedRange = `${CONTENT_MIN_WORDS.toLocaleString('vi-VN')}–${CONTENT_MAX_WORDS.toLocaleString('vi-VN')}`;
+  assert.ok(cw.includes(approvedRange), 'owner-approved length rule is stated');
   assert.ok(cw.includes('Không được dừng vì') && cw.includes('Chỉ được dừng khi'), 'stop conditions are stated');
   assert.ok(cw.includes('Backlog') || cw.includes('backlog'), 'backlog discovery is documented');
   const bf = read('docs/BLOG-FACTORY.md');
@@ -530,9 +533,11 @@ test('pipeline: docs match code — CONTINUOUS-WRITER contract + no outdated wor
   assert.ok(bf.includes('publish-chunk'), 'the grouped publish command is documented');
   assert.ok(bf.includes('SIMPLE PRODUCTION MODE'), 'factory doc documents the simple production mode contract');
   const rules = read('docs/ARTICLE-RULES.md');
-  assert.ok(rules.includes('1.500–4.000'), 'article rules keep the synced length gate');
-  const qa = read('tools/article-qa.mjs');
-  assert.ok(qa.includes('MIN_WORDS = 1500') && qa.includes('MAX_WORDS = 4000'), 'QA tool keeps the synced length gate');
+  assert.ok(rules.includes(approvedRange), 'article rules keep the synced length gate');
+  assert.equal(CONTENT_MIN_WORDS, 800, 'approved floor');
+  assert.equal(CONTENT_MAX_WORDS, 2000, 'approved ceiling');
+  assert.equal(QA_MIN_WORDS, CONTENT_MIN_WORDS, 'QA floor stays synchronized');
+  assert.equal(QA_MAX_WORDS, CONTENT_MAX_WORDS, 'QA ceiling stays synchronized');
 });
 
 test('pipeline: the real repo is untouched by every sandbox chunk', () => {
