@@ -5,10 +5,10 @@
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
   "active_incident": {
     "incident_id": "INC-20261009174228-q3st",
-    "status": "OPEN",
-    "owner": "AGENT_4",
+    "status": "AGENT4_ESCALATE",
+    "owner": "NONE",
     "started_at": "2026-10-09T17:42:28.946Z",
-    "updated_at": "2026-10-09T17:42:28.946Z",
+    "updated_at": "2026-10-09T17:42:32.160Z",
     "base_sha": "2577c551d5570a1d2f893ba718815fb39e519420",
     "reason": "auto-writer generation failed (chunk WRITER-BATCH-0014#2, ids BA-0319,BA-0320)",
     "trigger": "workflow_dispatch",
@@ -24,7 +24,7 @@
       "agent5": 0
     },
     "production_paused": true,
-    "result_note": ""
+    "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required"
   },
   "incidents": [
     {
