@@ -84,8 +84,11 @@ export function assembleArticle(outline, fragments) {
     const error = fragmentError(html, SECTION_MIN_WORDS, SECTION_MAX_WORDS, i === 1);
     if (error) throw new Error(`section rejected: ${error}`);
   }
-  const body_html = [closeUnclosedParagraphs(outline.intro_html), ...fragments.map((html, i) => `<h2>${outline.sections[i].heading}</h2>\n${closeUnclosedParagraphs(html)}`),
+  const assembledHtml = [closeUnclosedParagraphs(outline.intro_html), ...fragments.map((html, i) => `<h2>${outline.sections[i].heading}</h2>\n${closeUnclosedParagraphs(html)}`),
     '<h2>Tổng kết</h2>', closeUnclosedParagraphs(outline.conclusion_html)].join('\n');
+  // Final deterministic HTML repair at section/conclusion boundaries; never
+  // rewrites prose, facts, links or keywords. Production QA remains mandatory.
+  const body_html = closeUnclosedParagraphs(assembledHtml);
   const words = htmlWords(body_html);
   if (words < CONTENT_MIN_WORDS || words > CONTENT_MAX_WORDS) throw new Error(`assembled article ${words} words outside ${CONTENT_MIN_WORDS}-${CONTENT_MAX_WORDS}`);
   return { title: outline.title, description: outline.description, knowledge_chunks: outline.knowledge_chunks, body_html };
