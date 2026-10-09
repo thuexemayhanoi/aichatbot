@@ -1,10 +1,5 @@
 {
-  "action": "supervisor",
-  "request_id": "owner-authorized-resume-20261009-qa-passed",
-  "incident_id": "INC-20261008144724-577x",
-  "base_sha": "43cafac9bc7c27ca31486f80b2dc10c701981fcb",
-  "verification_sha": "628511275dbc3de6edc9babbc7840f15a10e0b45",
-  "dry_run_id": "37891655179",
-  "smoke_run_id": "37880775795",
-  "note": "Owner explicitly authorized autonomous production. Agent #5 MUST independently verify real Ollama smoke, real BA-0305/0306 dry-run QA, CI, Distribution, queue state and held incident lock; close incident and release maintenance ref only on PASS. Keep owner STOP until the separate RESUME request, and fail closed otherwise."
+  "action": "resume",
+  "request_id": "owner-authorized-auto-factory-resume-20261009",
+  "note": "Owner explicitly requests GitHub Actions to resume autonomous REAL publication BA-0305/BA-0306 and continue safely to 2000. Agent #5 independently VERIFIED incident and released atomic maintenance lock, real dry-run QA 100/100 for both articles. Preserve all fail-closed gates, no external paid AI."
 }
