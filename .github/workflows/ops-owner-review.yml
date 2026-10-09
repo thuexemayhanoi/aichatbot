@@ -38,7 +38,7 @@ permissions:
 jobs:
   dispatch:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 100 # read-only Qwen dry-run + Agent #5 dispatch may take >20 min
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_REPO: ${{ github.repository }}
@@ -63,6 +63,37 @@ jobs:
             ACTION=$(node -e "console.log(require('./ops/owner-review/request.json').action || 'supervisor')")
             echo "action: $ACTION"
             case "$ACTION" in
+              recover-and-resume)
+                # Owner-initiated, bounded recovery. NEVER bypasses an incident
+                # lock: dry-run is read-only; Agent #5 independently verifies
+                # all evidence and is the ONLY actor allowed to close/release.
+                ID=$(node -e 'console.log(require("./ops/owner-review/request.json").incident_id || "")')
+                BASE=$(node -e 'console.log(require("./ops/owner-review/request.json").base_sha || "")')
+                SMOKE=$(node -e 'console.log(require("./ops/owner-review/request.json").smoke_run_id || "")')
+                node -e 'const s=require("./docs/state/operations/maintenance.json"); if (s.active_incident?.incident_id !== process.argv[1] || s.active_incident.status !== "AGENT4_ESCALATE" || s.active_incident.attempts?.agent5 !== 0 || s.production_enabled !== true) process.exit(1)' "$ID"
+                test -n "$BASE"
+                test -n "$SMOKE"
+                git ls-remote --refs origin "refs/ops/maintenance-lock/$ID" | grep -q .
+                CODE_SHA=$(git rev-parse HEAD)
+                BEFORE=$(gh run list --workflow auto-writer.yml --event workflow_dispatch -L 30 --json databaseId --jq '[.[].databaseId] | max // 0')
+                echo "recovery: run read-only AI Writer dry-run for the CURRENT RESERVED chunk, source=$CODE_SHA"
+                gh workflow run auto-writer.yml --ref main -f dry_run=true -f max_attempts=2 -f model=qwen3:4b-instruct-2507-q4_K_M
+                DRY_ID=""
+                for n in $(seq 1 60); do
+                  DRY_ID=$(gh run list --workflow auto-writer.yml --event workflow_dispatch -L 30 --json databaseId,headSha --jq "[.[] | select(.databaseId > $BEFORE and .headSha == \"$CODE_SHA\")] | sort_by(.databaseId) | .[0].databaseId // empty")
+                  if [ -n "$DRY_ID" ]; then break; fi
+                  sleep 3
+                done
+                test -n "$DRY_ID" || { echo "::error::dry-run dispatch not observable; incident remains locked"; exit 1; }
+                echo "dry-run=$DRY_ID — only successful real QA may proceed to independent Agent #5"
+                timeout 5400 gh run watch "$DRY_ID" --exit-status --interval 30
+                echo "dry-run green; dispatch Agent #5 with exact proof and NO lock bypass"
+                gh workflow run ops-supervisor.yml --ref main \
+                  -f incident_id="$ID" -f base_sha="$BASE" \
+                  -f verification_sha="$CODE_SHA" -f dry_run_id="$DRY_ID" \
+                  -f smoke_run_id="$SMOKE"
+                echo "RECOVERY_PROOF_DISPATCHED dry_run=$DRY_ID; only Agent #5 may resume production"
+                ;;
               supervisor)
                 ID=$(node -e "console.log(require('./ops/owner-review/request.json').incident_id)")
                 BASE=$(node -e "console.log(require('./ops/owner-review/request.json').base_sha || '')")
