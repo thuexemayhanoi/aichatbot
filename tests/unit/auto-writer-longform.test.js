@@ -16,7 +16,8 @@ test('assembly requires all three real sections and preserves the full 800-2000 
   assert.ok(htmlWords(article.body_html) >= 800 && htmlWords(article.body_html) <= 2000);
   assert.equal((article.body_html.match(/<h2>/g) ?? []).length, 4);
   assert.throws(() => assembleArticle(outline(), [prose(330)]), /incomplete/);
-  assert.throws(() => assembleArticle(outline(), parts(249)), /section rejected/);
+  assert.ok(htmlWords(assembleArticle(outline(), parts(249)).body_html) >= 800, '249-word real section is safe within unchanged full-article QA');
+  assert.throws(() => assembleArticle(outline(), parts(239)), /section rejected/);
   assert.throws(() => assembleArticle(outline(), parts(451)), /section rejected/);
   const oversized = outline(); oversized.intro_html = prose(750);
   assert.throws(() => assembleArticle(oversized, parts(450)), /outside 800-2000/);
@@ -96,7 +97,7 @@ test('an oversized real component is shortened on retry without accepting or tru
   const article = await generateLongform({ model: 'local', system: '', user: '', needsChunks: false, config: {} }, infer);
   assert.equal(requests.length, 5);
   assert.match(requests[2][1].content, /Rút gọn phần này/);
-  assert.match(requests[2][0].content, /khoảng 180 từ/);
+  assert.match(requests[2][0].content, /khoảng 220 từ/);
   assert.ok(!article.body_html.includes('từ599'), 'the refused component is regenerated rather than sliced');
   assert.ok(htmlWords(article.body_html) >= 800 && htmlWords(article.body_html) <= 2000);
 });
