@@ -3,29 +3,7 @@
   "schema_version": 1,
   "production_enabled": true,
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
-  "active_incident": {
-    "incident_id": "INC-20261009174228-q3st",
-    "status": "AGENT5_WORKING",
-    "owner": "AGENT_5",
-    "started_at": "2026-10-09T17:42:28.946Z",
-    "updated_at": "2026-10-09T23:20:18.768Z",
-    "base_sha": "2577c551d5570a1d2f893ba718815fb39e519420",
-    "reason": "auto-writer generation failed (chunk WRITER-BATCH-0014#2, ids BA-0319,BA-0320)",
-    "trigger": "workflow_dispatch",
-    "source": {
-      "workflow": "Auto Writer (AI article generation)",
-      "run_id": "37964227269",
-      "url": "https://github.com/thuexemayhanoi/aichatbot/actions/runs/37964227269"
-    },
-    "classification": "INFRA",
-    "signature": "Auto Writer (AI article generation)::Fail closed on generation failure|Generate the next chunk (AI writer + sandboxed production QA)",
-    "attempts": {
-      "agent4": 1,
-      "agent5": 1
-    },
-    "production_paused": true,
-    "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required"
-  },
+  "active_incident": null,
   "incidents": [
     {
       "incident_id": "INC-20261006160640-4vj8",
@@ -146,6 +124,30 @@
       "production_paused": false,
       "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required | independent verification healthy after Agent #4 (AGENT4_ESCALATE); no second-line repair needed",
       "closed_at": "2026-10-09T15:35:01.047Z"
+    },
+    {
+      "incident_id": "INC-20261009174228-q3st",
+      "status": "VERIFIED",
+      "owner": "NONE",
+      "started_at": "2026-10-09T17:42:28.946Z",
+      "updated_at": "2026-10-09T23:20:39.572Z",
+      "base_sha": "2577c551d5570a1d2f893ba718815fb39e519420",
+      "reason": "auto-writer generation failed (chunk WRITER-BATCH-0014#2, ids BA-0319,BA-0320)",
+      "trigger": "workflow_dispatch",
+      "source": {
+        "workflow": "Auto Writer (AI article generation)",
+        "run_id": "37964227269",
+        "url": "https://github.com/thuexemayhanoi/aichatbot/actions/runs/37964227269"
+      },
+      "classification": "INFRA",
+      "signature": "Auto Writer (AI article generation)::Fail closed on generation failure|Generate the next chunk (AI writer + sandboxed production QA)",
+      "attempts": {
+        "agent4": 1,
+        "agent5": 1
+      },
+      "production_paused": false,
+      "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required | independent verification healthy after Agent #4 (AGENT4_ESCALATE); no second-line repair needed",
+      "closed_at": "2026-10-09T23:20:39.572Z"
     }
   ],
   "known_content_blockers": [],
