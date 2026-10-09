@@ -1,6 +1,10 @@
 {
-  "action": "pages-test",
-  "request_id": "recovery-20261009-verify-native-pages-auth",
+  "action": "dry-run",
+  "model": "qwen3:1.7b",
+  "max_attempts": 2,
+  "request_id": "recovery-20261009-schema-constrained-dry-run",
   "verification_sha": "7c38d96c13928d9002486225d88e600e83e9d29f",
-  "note": "Verify explicit Pages build request with GITHUB_TOKEN and exact deployed SHA against the validated existing 304-article site; do not change article, queue, incident, lock or Pages settings."
+  "smoke_run_id": "37824564900",
+  "pages_test_run_id": "37879032899",
+  "note": "940 full tests PASS; CI/Distribution GREEN on 7c38d96; actual token-authenticated exact-SHA Pages rebuild PASS. Verify schema-constrained Vietnamese long-form pair and full QA without publishing; incident and lock remain intact."
 }
