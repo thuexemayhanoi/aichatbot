@@ -2,9 +2,9 @@
   "action": "dry-run",
   "model": "qwen3:4b-instruct-2507-q4_K_M",
   "max_attempts": 2,
-  "request_id": "recovery-20261009-instruct-pair-dry-run",
-  "verification_sha": "c914f4cd1655f1076d6e26215bc305c529a6d7d1",
+  "request_id": "recovery-20261009-metadata-bounded-pair-dry-run",
+  "verification_sha": "541f728f850299ab353f681b32a451f58987a033",
   "smoke_run_id": "37880775795",
   "pages_test_run_id": "37879032899",
-  "note": "942 full tests and CI/Distribution GREEN. Exact 4B Instruct real smoke GREEN; existing 304 articles and native Pages build verified. Generate real BA-0305/BA-0306 and full pair QA with source-contradiction guards; do not publish or alter incident/checkpoints."
+  "note": "944/944 full tests, CI and Distribution GREEN. Exact 4B Instruct real smoke and exact Pages build verified. Generate real BA-0305/BA-0306 with bounded metadata schema and topic-specific verified government sources; enforce unchanged full article/pair QA. No publishing or incident/checkpoint mutations."
 }
