@@ -1,7 +1,9 @@
 {
-  "action": "smoke-test",
+  "action": "dry-run",
   "model": "qwen3:1.7b",
-  "request_id": "recovery-20261008-smoke-small-open-model",
-  "verification_sha": "be87b3a5f3ae90bc0463230b14917df9f20aac78",
-  "note": "Qwen3 4B streaming survived 11 minutes but generated 1199/1147 words below QA. Verify Apache-2.0 Qwen3 1.7B local inference before bounded sectioned dry-run; production remains paused."
+  "max_attempts": 2,
+  "request_id": "recovery-20261009-sectioned-dry-run",
+  "verification_sha": "ce60a37c7fbbbdec3bbc80956df7a261f87c6f72",
+  "smoke_run_id": "37824564900",
+  "note": "Authorized real long-form generation and full pair QA for BA-0305/BA-0306; production and active incident remain paused. CI/Distribution are green on ce60a37; 935 local tests pass; smaller open local model smoke succeeded."
 }
