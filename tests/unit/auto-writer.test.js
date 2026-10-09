@@ -74,6 +74,19 @@ test('splitLinks separates root-relative internal from absolute external hrefs',
   assert.deepEqual(external, ['https://vbpl.vn/x']);
 });
 
+test('valid single-quoted HTML links cannot evade the link policy', () => {
+  const links = splitLinks("<a href='/blog/app/guide/'>guide</a><a href='https://example.com/'>outside</a>");
+  assert.deepEqual(links.internal, ['/blog/app/guide/']);
+  assert.deepEqual(links.external, ['https://example.com/']);
+});
+
+test('a legal topic cites its verified government source rather than unrelated older article links', () => {
+  const ctx = buildCtx({ article_id: 'BA-0305', category: 'SAFE', source_policy: 'legal-gate' }, []);
+  assert.deepEqual(ctx.legalLinks, ['https://pbgdpl.laichau.gov.vn/uploads/news/2024_12/cv-3045.pdf']);
+  const errors = validateCandidate(ROW, CAND({ body_html: longBody({ links: '<a href="https://vbpl.vn/unverified">nguồn</a>' }) }), { ...CTX, ...ctx });
+  assert.ok(errors.some((e) => e.includes('was not verified for this topic')));
+});
+
 // ---------------------------------------------------------------------------
 // validateCandidate — happy path and every guardrail
 // ---------------------------------------------------------------------------
@@ -244,7 +257,8 @@ test('current recovery articles use verified subject-specific facts and preserve
   const ctx = buildCtx(legal, []);
   const prompt = buildPrompt(legal, ctx).user;
   assert.match(prompt, /xe gắn máy tối đa 40 km\/h/);
-  assert.match(prompt, /38-bgtvt\.pdf/);
+  assert.match(prompt, /pbgdpl\.laichau\.gov\.vn\/uploads\/news\/2024_12\/cv-3045\.pdf/);
+  assert.ok(ctx.topicFacts.sources.some((url) => url.endsWith('/38-bgtvt.pdf')), 'original regulation remains in the verified source record');
   const local = { ...PROMPT_ROW, article_id: 'BA-0306', category: 'LOCAL', local_scope: 'Mai Châu; bản Lác', source_policy: 'no-external', agent_retrieval: 'yes' };
   const localPrompt = buildPrompt(local, buildCtx(local, [])).user;
   assert.match(localPrompt, /Tên địa danh đúng là Mai Châu/);

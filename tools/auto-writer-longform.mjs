@@ -6,7 +6,7 @@ const stray = /[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff]/;
 export const htmlWords = (s) => String(s).replace(/<[^>]*>/g, ' ').trim().split(/\s+/).filter(Boolean).length;
 const fragmentSchema = { type: 'object', properties: { body_html: { type: 'string' } }, required: ['body_html'], additionalProperties: false };
 const baseOutlineSchema = { type: 'object', properties: {
-  title: { type: 'string' }, description: { type: 'string' }, knowledge_chunks: { type: 'array', items: { type: 'string' } },
+  title: { type: 'string', minLength: 10, maxLength: 70 }, description: { type: 'string', minLength: 50, maxLength: 165 }, knowledge_chunks: { type: 'array', items: { type: 'string' } },
   intro_html: { type: 'string' }, conclusion_html: { type: 'string' },
   sections: { type: 'array', minItems: SECTION_COUNT, maxItems: SECTION_COUNT, items: { type: 'object',
     properties: { heading: { type: 'string' }, brief: { type: 'string' } }, required: ['heading', 'brief'], additionalProperties: false } },
@@ -28,7 +28,7 @@ function fragmentError(html, min, max) {
 
 export function outlineError(o, needsChunks) {
   if (!o || typeof o.title !== 'string' || o.title.length < 10 || o.title.length > 70) return 'title must be 10-70 chars';
-  if (typeof o.description !== 'string' || o.description.length < 50 || o.description.length > 165) return 'description must be 50-165 chars';
+  if (typeof o.description !== 'string' || o.description.length < 50 || o.description.length > 165) return `description must be 50-165 chars (got ${o.description?.length ?? 'missing'})`;
   if (!Array.isArray(o.knowledge_chunks) || o.knowledge_chunks.length !== (needsChunks ? 2 : 0) ||
       o.knowledge_chunks.some((s) => typeof s !== 'string' || s.length < 150 || s.length > 750)) {
     return `knowledge_chunks requires ${needsChunks ? 2 : 0} items of 150-750 chars; got ${JSON.stringify(o.knowledge_chunks?.map?.((s) => typeof s === 'string' ? s.length : typeof s))}`;
@@ -76,7 +76,7 @@ export async function generateLongform({ model, system, user, needsChunks, confi
 Lập bảy phần KHÁC NHAU và bám sát chủ đề, mỗi phần giải quyết một câu hỏi thực tế của khách thuê xe. Brief hướng dẫn cách giải thích, không tự suy diễn luật lệ.
 Không dùng phần tổng kết, kết luận, lời mời mở chat hoặc mục chỉ liệt kê liên kết trong bảy phần. Quy tắc về tiền cọc là giới hạn khi cần nhắc tới, không phải yêu cầu chèn tiền cọc vào chủ đề khác.
 intro_html và conclusion_html: mỗi chuỗi có 50-130 từ, chỉ thẻ p/a/strong; kết luận có lời mời mở chat phù hợp chủ đề.
-title 10-70 ký tự; description 50-165 ký tự; knowledge_chunks theo chính sách đề bài. Không viết các phần thân bài lúc này.`,
+title 10-70 ký tự; description chỉ MỘT câu ngắn khoảng 90-140 ký tự, bắt buộc không quá 165 ký tự; knowledge_chunks theo chính sách đề bài. Không viết các phần thân bài lúc này.`,
       `${user}\nNhiệm vụ hiện tại CHỈ là outline, mở đầu và kết luận, chưa phải bài 1600 từ. ${feedback}`, outlineSchema(needsChunks), 1800, 'outline');
     const error = outlineError(candidate, needsChunks);
     if (!error) { outline = candidate; break; }

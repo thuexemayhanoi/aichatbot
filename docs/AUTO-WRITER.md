@@ -112,3 +112,13 @@ outline sections that merely duplicate the conclusion. The 4B Instruct 2507
 Q4_K_M variant is selected for further real long-form verification:
 https://ollama.com/library/qwen3:4b-instruct-2507-q4_K_M and
 https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507.
+
+The exact 4B Instruct model passed real smoke `37880775795`. Dry-run
+`37880999484` rejected four descriptions of 195–283 characters before any
+body publication; description remains limited to 50–165 characters, now
+encoded in the inference schema. Verified legal-topic links take precedence
+over unrelated sources from older articles. BA-0305 cites the official
+government implementation notice at
+https://pbgdpl.laichau.gov.vn/uploads/news/2024_12/cv-3045.pdf (HTTP 200,
+speed table cross-checked); the original regulation PDF remains in the
+source record. HTML link checks support both valid quote styles.

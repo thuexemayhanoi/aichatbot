@@ -33,6 +33,9 @@ test('the inference grammar fixes SAFE retrieval metadata to an empty array and 
     const chunks = outlineSchema(needsChunks).properties.knowledge_chunks;
     assert.equal(chunks.minItems, needsChunks ? 2 : 0);
     assert.equal(chunks.maxItems, needsChunks ? 2 : 0);
+    assert.equal(outlineSchema(needsChunks).properties.description.maxLength, 165);
+    assert.equal(outlineSchema(needsChunks).properties.description.minLength, 50);
+    assert.equal(outlineSchema(needsChunks).properties.title.maxLength, 70);
   }
 });
 

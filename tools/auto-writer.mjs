@@ -112,7 +112,7 @@ export function sourceFactErrors(content, facts) {
 
 /** All hrefs of a body, split internal (root-relative) / external. */
 export function splitLinks(bodyHtml) {
-  const hrefs = [...String(bodyHtml).matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+  const hrefs = [...String(bodyHtml).matchAll(/\bhref\s*=\s*(["'])(.*?)\1/gi)].map((m) => m[2]);
   const internal = hrefs.filter((h) => h.startsWith('/'));
   const external = hrefs.filter((h) => /^https?:\/\//i.test(h));
   return { hrefs, internal, external };
@@ -175,6 +175,7 @@ export function validateCandidate(row, cand, ctx) {
     // leaks between .test() and .matchAll() and silently rejects valid links.
     const ok = ctx.needsLegalLink && /gov\.vn|vbpl\.vn/.test(href);
     if (!ok) errs.push(`external link not allowed (only gov.vn/vbpl.vn for legal-gate rows): ${href}`);
+    else if (ctx.legalLinks?.length && !ctx.legalLinks.includes(href)) errs.push(`legal source link was not verified for this topic: ${href}`);
   }
   if (ctx.needsLegalLink && !external.some((h) => /gov\.vn|vbpl\.vn/.test(h))) {
     errs.push('legal-gate row: body needs at least one gov.vn/vbpl.vn source link');
@@ -299,13 +300,22 @@ export function buildCtx(row, entries = loadManifestEntries()) {
   if (topicFacts && (!Array.isArray(topicFacts.facts) || JSON.stringify(topicFacts).length > 4000)) {
     throw new Error(`invalid or oversized topic facts for ${row.article_id}`);
   }
+  const governmentSource = (href) => {
+    try {
+      const url = new URL(href);
+      return ['http:', 'https:'].includes(url.protocol) && !url.username && !url.password
+        && (url.hostname.endsWith('.gov.vn') || url.hostname === 'vbpl.vn' || url.hostname.endsWith('.vbpl.vn'));
+    } catch { return false; }
+  };
+  const topicLegalLinks = (topicFacts?.sources ?? []).filter(governmentSource);
+  const legalLinks = topicLegalLinks.length ? topicLegalLinks : verifiedLegalLinks(entries).filter(governmentSource);
   return {
     systemPrompt: SYSTEM_PROMPT,
     allowedHubPrefixes: [hubPrefix],
     hubSlugs: hubSlugs.map((s) => `${hubPrefix}${s}/`),
     exampleTitles,
     needsLegalLink,
-    legalLinks: needsLegalLink ? [...new Set([...(topicFacts?.sources ?? []), ...verifiedLegalLinks(entries)])] : [],
+    legalLinks: needsLegalLink ? [...new Set(legalLinks)] : [],
     topicFacts,
     needsChunks: row.agent_retrieval === 'yes',
     allEntries: entries,
