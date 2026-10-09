@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0013",
+  "writer": "writer_B",
+  "seq": 5,
+  "ids": [
+    "BA-0307",
+    "BA-0308"
+  ],
+  "body_paths": [
+    "data/blog/articles/tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien.body.html",
+    "data/blog/articles/thue-xe-may-cu-hay-moi.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0307",
+      "category": "APP",
+      "slug": "tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien",
+      "title": "Tại Sao Nên Dùng Ứng Dụng Trước Khi Gọi Điện",
+      "description": "Hiểu rõ tại sao việc dùng ứng dụng trước khi gọi điện là bước quan trọng giúp tiết kiệm thời gian và nhận thông tin chính xác hơn.",
+      "published_date": "2026-10-09",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien.body.html",
+      "knowledge_chunks": [
+        "Ứng dụng cung cấp danh sách xe đang có sẵn, giá thuê, giờ hoạt động và điều kiện sử dụng. Điều này giúp bạn so sánh ngay lập tức mà không cần chờ gọi điện và chờ phản hồi từ nhân viên. Việc kiểm tra trước giúp tránh tình trạng đặt xe không phù hợp hoặc bị từ chối sau khi gọi điện.",
+        "Khi đã có thông tin cụ thể từ ứng dụng, bạn sẽ không còn cần hỏi lại những câu hỏi cơ bản như xe có sẵn không, giá bao gồm gì hay thời gian trả xe. Điều này giúp giảm thời gian trao đổi, tránh tình trạng trì hoãn hoặc hiểu sai thông tin giữa khách và nhân viên."
+      ]
+    },
+    {
+      "article_id": "BA-0308",
+      "category": "RENT",
+      "slug": "thue-xe-may-cu-hay-moi",
+      "title": "Thuê xe Máy cũ Hay Mới",
+      "description": "So sánh giữa việc thuê xe máy cũ và mới để chọn phương án tiết kiệm, phù hợp với mục đích sử dụng hàng ngày.",
+      "published_date": "2026-10-09",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-may-cu-hay-moi.body.html",
+      "knowledge_chunks": [
+        "Thuê xe máy cũ mang lại chi phí thấp hơn, phù hợp với những người chỉ cần xe để đi lại ngắn hạn hoặc không yêu cầu độ bền cao. Xe cũ thường được bảo trì định kỳ và được kiểm tra kỹ trước khi giao cho khách. Tuy nhiên, người thuê cần lưu ý tình trạng xe, số km đã chạy và lịch sử sử dụng để tránh rủi ro về an toàn hoặc hư hỏng không dự kiến. Việc này nên được xác nhận với cửa hàng trước khi nhận xe.",
+        "Xe máy mới có độ tin cậy cao, thiết bị hiện đại và dễ điều khiển, đặc biệt phù hợp với người mới bắt đầu hoặc những ai cần xe ổn định trong thời gian dài. Giá thuê cao hơn so với xe cũ, nhưng trải nghiệm vận hành mượt mà và ít xảy ra sự cố. Việc thuê xe mới cũng giúp đảm bảo an toàn hơn khi tham gia các tuyến đường đông đúc hoặc điều kiện giao thông phức tạp. Cửa hàng sẽ kiểm tra kỹ lưỡng trước khi giao xe và đảm bảo mọi chi tiết được minh bạch."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-09T07:26:35.438Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-09T07:26:35.438Z"
+    }
+  ]
+}
