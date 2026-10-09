@@ -77,7 +77,7 @@ jobs:
                 CODE_SHA=$(git rev-parse HEAD)
                 BEFORE=$(gh run list --workflow auto-writer.yml --event workflow_dispatch -L 30 --json databaseId --jq '[.[].databaseId] | max // 0')
                 echo "recovery: run read-only AI Writer dry-run for the CURRENT RESERVED chunk, source=$CODE_SHA"
-                gh workflow run auto-writer.yml --ref main -f dry_run=true -f max_attempts=2 -f model=qwen3:4b-instruct-2507-q4_K_M
+                gh workflow run auto-writer.yml --ref main -f dry_run=true -f max_attempts=3 -f model=qwen3:4b-instruct-2507-q4_K_M
                 DRY_ID=""
                 for n in $(seq 1 60); do
                   DRY_ID=$(gh run list --workflow auto-writer.yml --event workflow_dispatch -L 30 --json databaseId,headSha --jq "[.[] | select(.databaseId > $BEFORE and .headSha == \"$CODE_SHA\")] | sort_by(.databaseId) | .[0].databaseId // empty")
