@@ -47,7 +47,7 @@ on:
       max_attempts:
         description: 'Số lần sinh lại tối đa mỗi bài khi QA fail'
         required: false
-        default: '2'
+        default: '3'
 
 permissions:
   # contents: write — push the writer branch writer/<batch>/<A|B|C> only.
@@ -249,7 +249,7 @@ jobs:
         if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE' && inputs.smoke_only != 'true'
         env:
           DRY_RUN: ${{ inputs.dry_run || 'false' }}
-          MAX_ATTEMPTS: ${{ inputs.max_attempts || '2' }}
+          MAX_ATTEMPTS: ${{ inputs.max_attempts || '3' }}
         run: |
           set -o pipefail
           ARGS=(run)
