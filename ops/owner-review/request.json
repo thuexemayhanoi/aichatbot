@@ -1,6 +1,7 @@
 {
-  "action": "evidence-review",
-  "run_id": "37887122359",
-  "request_id": "recovery-20261009-review-retained-five-part-candidate",
-  "note": "Read-only original candidate/component inspection after RED dry-run; no generation, publication, resume, incident or checkpoint mutation."
+  "action": "dry-run",
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "max_attempts": 2,
+  "request_id": "recovery-20261009-approved-800-2000-three-sections",
+  "note": "Real two-article QA under the owner's approved 800–2000 range; production remains PAUSED and all publication mutations must be skipped."
 }
