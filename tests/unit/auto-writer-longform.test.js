@@ -40,10 +40,10 @@ test('missing paragraph closures are repaired only at block boundaries, without 
 test('closing a paragraph at the final section/conclusion boundary changes no article words', () => {
   const article = assembleArticle(outline(), parts(330));
   const countBefore = htmlWords(article.body_html);
-  const broken = article.body_html.replace('</p>\\n<h2>Tổng kết</h2>', '\\n<h2>Tổng kết</h2>');
-  assert.equal((broken.match(/<p>/g) ?? []).length, (broken.match(/<\\/p>/g) ?? []).length + 1);
+  const broken = article.body_html.replace('</p>\n<h2>Tổng kết</h2>', '\n<h2>Tổng kết</h2>');
+  assert.equal((broken.match(/<p>/g) ?? []).length, (broken.match(/<\/p>/g) ?? []).length + 1);
   const repaired = closeUnclosedParagraphs(broken);
-  assert.equal((repaired.match(/<p>/g) ?? []).length, (repaired.match(/<\\/p>/g) ?? []).length);
+  assert.equal((repaired.match(/<p>/g) ?? []).length, (repaired.match(/<\/p>/g) ?? []).length);
   assert.equal(htmlWords(repaired), countBefore, 'normalization never pads or truncates prose');
   assert.ok(repaired.includes('</p><h2>Tổng kết</h2>'));
   assert.equal(closeUnclosedParagraphs(repaired), repaired);
