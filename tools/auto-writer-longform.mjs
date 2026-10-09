@@ -7,6 +7,37 @@ export const SECTION_MIN_WORDS = 250;
 export const SECTION_MAX_WORDS = 450;
 const stray = /[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff]/;
 export const htmlWords = (s) => String(s).replace(/<[^>]*>/g, ' ').trim().split(/\s+/).filter(Boolean).length;
+
+// Only repair the narrow, deterministic LLM formatting defect: an omitted
+// </p> before another block or at the end of a generated component.
+// Never alter text, links, factual claims or unfamiliar markup. The complete
+// article still goes through the untouched production HTML/SEO/safety QA.
+export function closeUnclosedParagraphs(html) {
+  if (typeof html !== 'string') return html;
+  let openParagraph = false;
+  let repaired = '';
+  let last = 0;
+  const blocks = /<\/?(?:p|h2|h3|ul|ol|li|blockquote)\b[^>]*>/gi;
+  for (const match of html.matchAll(blocks)) {
+    const token = match[0];
+    const name = /^<\/?([a-z0-9]+)/i.exec(token)?.[1]?.toLowerCase();
+    const closing = /^<\//.test(token);
+    repaired += html.slice(last, match.index);
+    if (name === 'p') {
+      if (closing && !openParagraph) return html; // extra close: leave for QA refusal
+      if (!closing && openParagraph) repaired += '</p>';
+      openParagraph = !closing;
+    } else if (openParagraph) {
+      repaired += '</p>'; // a new block implicitly ends an open paragraph
+      openParagraph = false;
+    }
+    repaired += token;
+    last = match.index + token.length;
+  }
+  repaired += html.slice(last);
+  if (openParagraph) repaired += '</p>';
+  return repaired;
+}
 const fragmentSchema = { type: 'object', properties: { body_html: { type: 'string' } }, required: ['body_html'], additionalProperties: false };
 const baseOutlineSchema = { type: 'object', properties: {
   title: { type: 'string', minLength: 10, maxLength: 70 }, description: { type: 'string', minLength: 50, maxLength: 165 }, knowledge_chunks: { type: 'array', items: { type: 'string' } },
@@ -53,8 +84,8 @@ export function assembleArticle(outline, fragments) {
     const error = fragmentError(html, SECTION_MIN_WORDS, SECTION_MAX_WORDS, i === 1);
     if (error) throw new Error(`section rejected: ${error}`);
   }
-  const body_html = [outline.intro_html, ...fragments.map((html, i) => `<h2>${outline.sections[i].heading}</h2>\n${html}`),
-    '<h2>Tổng kết</h2>', outline.conclusion_html].join('\n');
+  const body_html = [closeUnclosedParagraphs(outline.intro_html), ...fragments.map((html, i) => `<h2>${outline.sections[i].heading}</h2>\n${closeUnclosedParagraphs(html)}`),
+    '<h2>Tổng kết</h2>', closeUnclosedParagraphs(outline.conclusion_html)].join('\n');
   const words = htmlWords(body_html);
   if (words < CONTENT_MIN_WORDS || words > CONTENT_MAX_WORDS) throw new Error(`assembled article ${words} words outside ${CONTENT_MIN_WORDS}-${CONTENT_MAX_WORDS}`);
   return { title: outline.title, description: outline.description, knowledge_chunks: outline.knowledge_chunks, body_html };
