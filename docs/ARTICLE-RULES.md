@@ -7,7 +7,8 @@
 - Chỉ đạo owner ngày 09/10/2026: bài mới của Auto Writer phải có **800–2.000 từ** hữu ích. Writer và bằng chứng recovery kiểm tra cứng khoảng này trước khi staging.
 - QA chung dùng cùng guideline 800–2.000 từ. Gate bài cụt <300 từ và score >=70 giữ nguyên; 300–799 hoặc >2.000 là warning -5 điểm trong QA chung.
 - Không padding/filler để đạt sàn; không lặp ý để tăng độ dài. Chủ đề cần giải thích rõ nhưng phải bám dữ kiện đã kiểm chứng.
-- Giữ nguyên 304 bài đã xuất bản. Thay đổi độ dài không cho phép viết đè, cắt hoặc tái xuất bản bài cũ.
+- Bảo toàn toàn bộ bài đã xuất bản, không phụ thuộc số lượng hiện tại. Thay đổi độ dài không cho phép viết đè, cắt hoặc tái xuất bản bài cũ.
+- File phát sinh `blog/search-index.json` phải được tái tạo cùng thay đổi metadata/matrix để CI deterministic-build không bị lệch; không tự sửa tiêu đề, slug hay URL đã publish.
 - Chấm trên text thực của body (bỏ HTML tags/schema/navigation). Khi bài mới vượt 2.000 từ, model viết lại gọn và đủ ý; tool không truncate giữa câu/đoạn.
 - Đúng 1 H1 (được sinh tự động từ tiêu đề bài).
 - Tiêu đề duy nhất, meta description duy nhất, self-canonical.
