@@ -1,5 +1,5 @@
 {
   "action": "legal-source-review",
-  "request_id": "recovery-20261009-current-primary-documents",
-  "note": "Read-only PDF retrieval and original-text evidence for current source coverage. Does not generate, publish, resume, resolve incidents or change checkpoints."
+  "request_id": "recovery-20261009-bounded-verified-ca-document-review",
+  "note": "Read-only repeat with an 80-second per-source budget. Missing intermediate certificates must validate against system roots; TLS verification remains enabled. No production or incident mutation."
 }
