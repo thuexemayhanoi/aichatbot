@@ -22,6 +22,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { normalizeInternalAnchors } from './site-audit.mjs';
 import {
   taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav
 } from './taxonomy.mjs';
@@ -521,7 +522,9 @@ ${jsonLd({
  */
 function buildArticle(a, business, hub, published, row) {
   const bodyRaw = read(a.body);
-  const body = resolveFacts(bodyRaw, business);
+  const linkPages = new Set(published.map((entry) => `blog/${HUB_BY_ID[entry.category].dir}/${entry.slug}/index.html`));
+  const body = normalizeInternalAnchors(resolveFacts(bodyRaw, business),
+    `blog/${hub.dir}/${a.slug}/index.html`, (path) => linkPages.has(path));
   const { html: bodyWithIds, items } = buildToc(body);
   const toc = tocHtml(items);
   const path = `blog/${hub.dir}/${a.slug}/`;

@@ -35,6 +35,11 @@ run-name: 'Factory ${{ inputs.article_ids || ''backlog'' }} request ${{ inputs.r
 # cannot loop this workflow.
 
 on:
+  # Retry staged drafts after a verified code repair, through the ordinary
+  # transaction/QA/Pages path. Both suites must pass on the same revision.
+  workflow_run:
+    workflows: ['CI', 'Distribution']
+    types: [completed]
   push:
     branches: [main]
     paths: ['data/blog/articles/**', 'data/blog/published.json']
@@ -58,7 +63,38 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  recovery-checks:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      ready: ${{ steps.checks.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: checks
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
+          VERIFY_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          if [ "$EVENT_NAME" != workflow_run ]; then
+            echo ready=true >> "$GITHUB_OUTPUT"
+          else
+            node tools/factory-recovery.mjs "$VERIFY_SHA" >> "$GITHUB_OUTPUT"
+          fi
+
   publish:
+    needs: recovery-checks
+    if: needs.recovery-checks.outputs.ready == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -90,7 +126,7 @@ jobs:
           set -e
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.article_ids }}" ]; then
             node tools/factory-select.mjs --ids "${{ github.event.inputs.article_ids }}" | tee /tmp/select.out
-          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "workflow_run" ]; then
             node tools/factory-select.mjs --backlog | tee /tmp/select.out
           else
             git diff --name-only --diff-filter=AM HEAD~1 HEAD > /tmp/changed.txt || true
@@ -196,3 +232,17 @@ jobs:
         run: |
           node tools/site-audit.mjs
           node tools/factory-pages.mjs
+
+      - name: 'Reconcile recovered chunks after verified deployment'
+        if: github.event_name == 'workflow_run' && steps.select.outputs.proceed == 'true'
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git checkout -B main origin/main
+          if [ "$(jq -r '.active.batch_id // empty' docs/state/writer-assignments.json)" = '' ]; then exit 0; fi
+          node tools/writer-queue.mjs reconcile
+          git add docs/state/writer-assignments.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'writer-publisher: reconcile recovered publication evidence [skip ci]'
+          git pull --rebase origin main
+          git push

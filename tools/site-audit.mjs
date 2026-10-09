@@ -22,7 +22,7 @@ export function createSiteIo(root) {
 }
 
 /** Resolve root, relative and same-origin absolute links, preserving host boundaries. */
-export function resolveInternal(pagePath, href) {
+export function resolveInternal(pagePath, href, existsFile = () => false) {
   if (!href || href.startsWith('#') || /^(mailto:|tel:|data:|javascript:|blob:)/i.test(href)) return null;
   let url;
   try { url = new URL(href.replace(/&amp;/g, '&'), SITE + pagePath); } catch { return null; }
@@ -30,7 +30,22 @@ export function resolveInternal(pagePath, href) {
   let path;
   try { path = decodeURIComponent(url.pathname).replace(/^\//, ''); } catch { return null; }
   if (!path || path.endsWith('/')) path += 'index.html';
+  // Pages serves an extensionless directory URL through its real index.
+  // Never infer a page from an arbitrary missing asset or unknown route.
+  else if (!/\.[^/]+$/.test(path) && !existsFile(path) && existsFile(`${path}/index.html`)) path += '/index.html';
   return path;
+}
+
+/** Canonicalize only anchor URLs backed by an actual directory page. */
+export function normalizeInternalAnchors(html, pagePath, existsFile) {
+  return html.replace(/(<a\b[^>]*?\shref\s*=\s*)(["'])(.*?)\2/gi, (tag, prefix, quote, href) => {
+    if (!href || href !== href.trim() || /[?#]/.test(href)) return tag;
+    const target = resolveInternal(pagePath, href, existsFile);
+    if (!target?.endsWith('/index.html') || !existsFile(target)) return tag;
+    const url = new URL(href.replace(/&amp;/g, '&'), SITE + pagePath);
+    if (url.pathname.endsWith('/') || /\.[^/]+$/.test(url.pathname)) return tag;
+    return `${prefix}${quote}${href}/${quote}`;
+  });
 }
 
 const pageUrl = (p) => SITE + p.replace(/index\.html$/, '');
@@ -46,7 +61,7 @@ export function auditSite(io) {
   let legacyPaths = 0, legacyOrigins = 0, checkedLinks = 0;
   const add = (ok, path, label) => { if (!ok) issues.push(`${path}: ${label}`); };
   const checkLink = (page, href) => {
-    const target = resolveInternal(page, href);
+    const target = resolveInternal(page, href, io.exists);
     if (target === null) return;
     checkedLinks++;
     if (!io.exists(target)) broken.push(`${page}: ${href} -> ${target}`);

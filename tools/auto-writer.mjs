@@ -38,6 +38,7 @@ import { modelConfig, DEFAULT_MODEL } from './auto-writer-model.mjs';
 import { readPublicationBudget } from './factory-target.mjs';
 import { generateLongform } from './auto-writer-longform.mjs';
 import { CONTENT_MIN_WORDS, CONTENT_MAX_WORDS } from './writer-content-policy.mjs';
+import { normalizeInternalAnchors } from './site-audit.mjs';
 
 export const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -430,6 +431,11 @@ async function generateArticle(row, ctx, opts, log) {
       feedback = `Lỗi hệ thống sinh bài (model API): ${lastModelErr.slice(0, 200)}`;
       continue;
     }
+    // Canonical URLs come from the supplied hub inventory, never guessed slugs.
+    const linkPages = new Set([...ctx.hubSlugs, ...ctx.allowedHubPrefixes]
+      .map((url) => url.replace(/^\//, '') + 'index.html'));
+    cand = { ...cand, body_html: normalizeInternalAnchors(cand.body_html, row.output_path,
+      (path) => linkPages.has(path)) };
     // Qwen sometimes adds an unsourced https:// link to non-legal topics.
     // Convert only a simple <a href="https://...">text</a> back to its
     // original visible text; any other unexpected markup fails ordinary QA.

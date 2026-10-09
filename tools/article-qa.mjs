@@ -34,10 +34,11 @@
  * Used by tools/blog-factory.mjs `qa <BA-id>` / `qa-chunk` (same contract).
  * Sandboxed tests run this via MOTOAI_FACTORY_ROOT.
  */
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, statSync } from 'node:fs';
 import { join, dirname, isAbsolute } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { text, words, resolveHref } from './seo-score.mjs';
+import { text, words } from './seo-score.mjs';
+import { resolveInternal } from './site-audit.mjs';
 import { resolveFacts, HUBS } from './build-blog.mjs';
 import { parseMatrix, MATRIX, MANIFEST } from './blog-factory.mjs';
 import { CONTENT_MIN_WORDS, CONTENT_MAX_WORDS } from './writer-content-policy.mjs';
@@ -226,9 +227,10 @@ export function scopedQa(id) {
 
   const pagePath = row.output_path;
   const badLinks = [];
-  for (const m of resolved.matchAll(/href="([^"]+)"/g)) {
-    const target = resolveHref(pagePath, m[1]);
-    if (target && !existsSync(join(ROOT, target))) badLinks.push(m[1]);
+  const existsFile = (path) => existsSync(join(ROOT, path)) && statSync(join(ROOT, path)).isFile();
+  for (const m of resolved.matchAll(/\bhref\s*=\s*(["'])(.*?)\1/gi)) {
+    const target = resolveInternal(pagePath, m[2], existsFile);
+    if (target && !existsFile(target)) badLinks.push(m[2]);
   }
   crit('internal-links-resolve', badLinks.length === 0, `broken internal link(s): ${badLinks.join(', ')}`);
 
