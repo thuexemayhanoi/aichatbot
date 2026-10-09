@@ -367,8 +367,16 @@ async function generateArticle(row, ctx, opts, log) {
     for (const model of models) {
       log(`attempt ${attempt} model ${model}`);
       try {
+        let component = 0;
         cand = await generateLongform({ model, system, user, needsChunks: ctx.needsChunks, config: opts.config,
-          log: (message) => log(`${row.article_id} ${message}`) });
+          log: (message) => log(`${row.article_id} ${message}`),
+          onComponent: (label, content) => {
+            const dir = join(ROOT, 'writer-work-auto-dryrun/components');
+            mkdirSync(dir, { recursive: true });
+            const name = `${row.article_id}-attempt-${attempt}-${++component}-${label.replace(/[^a-z0-9]/gi, '-')}.json`;
+            writeFileSync(join(dir, name), content);
+          },
+        });
         break;
       } catch (error) { lastModelErr = error.message; }
       lastFailure = lastModelErr;

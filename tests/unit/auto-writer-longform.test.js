@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { assembleArticle, generateLongform, outlineError, htmlWords } from '../../tools/auto-writer-longform.mjs';
+import { assembleArticle, generateLongform, outlineError, outlineSchema, htmlWords } from '../../tools/auto-writer-longform.mjs';
 
 // Counting/protocol fixtures only. Production QA and publication are never invoked.
 const prose = (n) => `<p>${Array.from({ length: n }, (_, i) => `từ${i}`).join(' ')}</p>`;
@@ -24,6 +24,14 @@ test('outline rejects missing chunks, duplicate coverage and invalid language', 
   assert.match(outlineError(duplicate, false), /distinct/);
   const stray = outline(); stray.title += ' 中文';
   assert.match(outlineError(stray, false), /Vietnamese/);
+});
+
+test('the inference grammar fixes SAFE retrieval metadata to an empty array and retrieval rows to exactly two', () => {
+  for (const needsChunks of [false, true]) {
+    const chunks = outlineSchema(needsChunks).properties.knowledge_chunks;
+    assert.equal(chunks.minItems, needsChunks ? 2 : 0);
+    assert.equal(chunks.maxItems, needsChunks ? 2 : 0);
+  }
 });
 
 test('section generation uses bounded calls, a schema and a smaller context, without article padding', async () => {
