@@ -436,7 +436,10 @@ jobs:
             curl --silent --show-error --max-time 5 http://127.0.0.1:11434/api/ps
           } > "$RUNNER_TEMP/writer-evidence/resources.txt" 2>&1
           git status --short > "$RUNNER_TEMP/writer-evidence/worktree.txt"
-          node tools/auto-writer-evidence.mjs writer-work-auto-dryrun
+          # The publish path checks out a writer branch which may lack newer ops scripts.
+          # Read the evidence renderer from the immutable workflow start SHA, not worktree.
+          git show "${GITHUB_SHA}:tools/auto-writer-evidence.mjs" > "$RUNNER_TEMP/auto-writer-evidence.mjs"
+          node "$RUNNER_TEMP/auto-writer-evidence.mjs" writer-work-auto-dryrun
 
       - name: 'Upload inference evidence (including dry-run bodies and QA)'
         if: always() && steps.inspect.outputs.status == 'GENERATE'
