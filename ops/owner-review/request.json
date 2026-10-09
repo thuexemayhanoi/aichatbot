@@ -1,13 +1,12 @@
 {
-  "action": "resume-validated-dryrun",
-  "request_id": "owner-auto-resume-20261009-verify-existing-run",
+  "action": "dry-run",
+  "request_id": "owner-recovery-html-final-qa-20261009",
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "max_attempts": "2",
   "incident_id": "INC-20261009075853-51ls",
-  "base_sha": "bbe635dc51e9d716779f2490623bd7ddcd6a009a",
-  "dry_run_id": "37906941490",
-  "smoke_run_id": "37880775795",
   "expected_ids": [
     "BA-0309",
     "BA-0310"
   ],
-  "note": "Owner authorizes RESUME only after same existing genuine dry-run QA PASS, full CI+Distribution GREEN at this request SHA, independent Agent #5 verification and clean incident/lock release. No extra generation run; preserve all 308 already published articles."
+  "note": "Owner authorized new REAL dry-run on patched final HTML normalization (after commit f3b12e86e), no mutation while maintenance lock is active. Validate both 800-2000-word articles with production QA before Agent #5 verified close. Do NOT clear incident or release lock from this request."
 }
