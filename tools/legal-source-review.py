@@ -2,9 +2,14 @@
 """Read-only primary-document review, bounded downloads and original excerpts."""
 import hashlib
 import json
+import re
+import signal
+import ssl
 from pathlib import Path
 import subprocess
 import urllib.request
+import urllib.error
+from urllib.parse import urlsplit
 
 SOURCES = [
     ("speed-2026", "https://moc.gov.vn/Images/FileVanBan/BXD_74-2026-VBHN-TT-BXD_15092026.pdf",
@@ -28,16 +33,87 @@ def excerpts(text, terms, radius=1100):
             found.append({"term": term, "position": None, "text": "TERM NOT FOUND"})
     return found
 
+
+def issuer_uri(details):
+    match = re.search(r"CA Issuers - URI:(https?://[^\s]+)", details)
+    if not match:
+        raise ValueError("certificate has no CA issuer URI")
+    url = match.group(1)
+    parsed = urlsplit(url)
+    domains = ("sectigo.com", "comodoca.com", "digicert.com", "globalsign.com", "godaddy.com", "entrust.net", "ssl.com", "geotrust.com")
+    if not parsed.hostname or parsed.username or parsed.password or parsed.port or not any(parsed.hostname == d or parsed.hostname.endswith("." + d) for d in domains):
+        raise ValueError("issuer URI is outside the supported public CA domains")
+    return url
+
+def complete_verified_chain(url, root):
+    """Repair only a missing intermediate; never add an untrusted root."""
+    hostname = urlsplit(url).hostname
+    if hostname != "moc.gov.vn":
+        raise ValueError("no certificate-chain repair for this primary host")
+    result = subprocess.run(["openssl", "s_client", "-connect", hostname + ":443", "-servername", hostname, "-showcerts"],
+                            input="", capture_output=True, text=True, timeout=15)
+    certs = re.findall(r"-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----", result.stdout, re.S)
+    if not certs:
+        raise ValueError("primary server did not expose a certificate")
+    leaf = root / "moc-leaf.pem"
+    leaf.write_text(certs[0] + "\n")
+    current = leaf
+    chain = []
+    for index in range(2):
+        details = subprocess.run(["openssl", "x509", "-in", str(current), "-noout", "-ext", "authorityInfoAccess"],
+                                 capture_output=True, text=True, check=True, timeout=10).stdout
+        ca_url = issuer_uri(details)
+        with urllib.request.urlopen(ca_url, timeout=15) as response:
+            data = response.read(1_000_001)
+        if len(data) > 1_000_000:
+            raise ValueError("CA issuer certificate is oversized")
+        encoded = root / ("moc-issuer-" + str(index) + ".crt")
+        encoded.write_bytes(data)
+        pem = root / ("moc-issuer-" + str(index) + ".pem")
+        args = ["openssl", "x509", "-in", str(encoded), "-out", str(pem)]
+        if not data.startswith(b"-----BEGIN"):
+            args += ["-inform", "DER"]
+        subprocess.run(args, check=True, capture_output=True, timeout=10)
+        chain.append(pem.read_text())
+        bundle = root / "moc-issuer-chain.pem"
+        bundle.write_text("\n".join(chain))
+        trusted = ssl.get_default_verify_paths().cafile
+        if not trusted:
+            raise ValueError("system trusted CA bundle missing")
+        verification = subprocess.run(["openssl", "verify", "-purpose", "sslserver", "-verify_hostname", hostname,
+                                       "-CAfile", trusted, "-untrusted", str(bundle), str(leaf)],
+                                      capture_output=True, text=True, timeout=10)
+        if verification.returncode == 0:
+            context = ssl.create_default_context()
+            context.load_verify_locations(cafile=str(bundle))
+            print("SOURCE | certificate chain verified against system roots: " + verification.stdout.strip(), flush=True)
+            return context
+        current = pem
+    raise ValueError("issuer chain does not verify against system trusted roots")
+
+def source_timeout(_signal, _frame):
+    raise TimeoutError("primary source exceeded its 80-second total review budget")
+
 def main():
     root = Path("ops/out/legal-source-review")
     root.mkdir(parents=True, exist_ok=True)
+    signal.signal(signal.SIGALRM, source_timeout)
     records = []
     print("SOURCE | READ ONLY: downloads do not certify any article or enable production.")
     for name, url, terms in SOURCES:
         record = {"id": name, "url": url}
         try:
+            signal.alarm(80)
             request = urllib.request.Request(url, headers={"User-Agent": "MotoAI-primary-source-review/1.0"})
-            with urllib.request.urlopen(request, timeout=40) as response:
+            try:
+                response = urllib.request.urlopen(request, timeout=20)
+            except urllib.error.URLError as error:
+                if not isinstance(error.reason, ssl.SSLCertVerificationError):
+                    raise
+                context = complete_verified_chain(url, root)
+                response = urllib.request.urlopen(request, timeout=20, context=context)
+                record["verified_chain_completed"] = True
+            with response:
                 data = response.read(MAX_BYTES + 1)
                 record["final_url"] = response.url
                 record["content_type"] = response.headers.get("content-type")
@@ -59,6 +135,8 @@ def main():
         except Exception as error:
             record.update(status="REFUSED", error=str(error))
             print("SOURCE | " + json.dumps(record, ensure_ascii=False))
+        finally:
+            signal.alarm(0)
         records.append(record)
     (root / "records.json").write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n")
     # Refusals remain explicit. A source read never changes factory state.
