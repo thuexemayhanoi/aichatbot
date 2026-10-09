@@ -1117,3 +1117,4 @@
 - 2026-10-09 FINISH BA-0312
 - 2026-10-09 QA PASS BA-0311 score=100
 - 2026-10-09 QA PASS BA-0312 score=95
+- 2026-10-09 PUBLISHED 2 (BA-0311, BA-0312) — one grouped build, pages, matrix, indexes, sitemap consistent
