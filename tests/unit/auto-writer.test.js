@@ -4,7 +4,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   extractJson, countWords, splitLinks, validateCandidate, buildPrompt, chooseChunk,
-  SYSTEM_PROMPT, buildCtx, sourceFactErrors,
+  SYSTEM_PROMPT, buildCtx, sourceFactErrors, unlinkUnverifiedExternalAnchors,
 } from '../../tools/auto-writer.mjs';
 
 test('verified speed sources reject actual small-model contradictions without rejecting correct conditional limits', () => {
@@ -86,6 +86,18 @@ test('valid single-quoted HTML links cannot evade the link policy', () => {
   const links = splitLinks("<a href='/blog/app/guide/'>guide</a><a href='https://example.com/'>outside</a>");
   assert.deepEqual(links.internal, ['/blog/app/guide/']);
   assert.deepEqual(links.external, ['https://example.com/']);
+});
+
+test('nonlegal cleanup removes only unsupported external anchor wrappers without changing prose', () => {
+  const source = '<p>Giới thiệu <a href="https://vbpl.vn">nguồn không được kiểm chứng</a> và <a href="/blog/app/guide/">hướng dẫn nội bộ</a>.</p>';
+  const cleaned = unlinkUnverifiedExternalAnchors(source, false);
+  assert.ok(!cleaned.includes('https://vbpl.vn'));
+  assert.ok(cleaned.includes('nguồn không được kiểm chứng'));
+  assert.ok(cleaned.includes('<a href="/blog/app/guide/">hướng dẫn nội bộ</a>'));
+  assert.equal(countWords(cleaned), countWords(source));
+  assert.equal(unlinkUnverifiedExternalAnchors(source, true), source, 'legal sources must never be silently removed');
+  const nested = '<p><a href="https://unknown.example"><strong>không hợp lệ</strong></a></p>';
+  assert.equal(unlinkUnverifiedExternalAnchors(nested), nested, 'unrecognized nested markup must fail normal QA');
 });
 
 test('a legal topic cites its verified government source rather than unrelated older article links', () => {
