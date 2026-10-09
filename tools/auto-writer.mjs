@@ -36,7 +36,7 @@ import { parseMatrix } from './blog-factory.mjs';
 import { HUBS } from './build-blog.mjs';
 import { modelConfig, DEFAULT_MODEL } from './auto-writer-model.mjs';
 import { readPublicationBudget } from './factory-target.mjs';
-import { generateLongform, closeUnclosedParagraphs, htmlWords } from './auto-writer-longform.mjs';
+import { generateLongform } from './auto-writer-longform.mjs';
 import { CONTENT_MIN_WORDS, CONTENT_MAX_WORDS } from './writer-content-policy.mjs';
 
 export const ROOT = process.env.MOTOAI_FACTORY_ROOT
@@ -421,21 +421,6 @@ async function generateArticle(row, ctx, opts, log) {
     if (cand === null) {
       feedback = `Lỗi hệ thống sinh bài (model API): ${lastModelErr.slice(0, 200)}`;
       continue;
-    }
-    // Models can omit </p> at the join to the final <h2> even after assembly.
-    // Re-normalize the COMPLETE candidate before all production QA checks.
-    // This ONLY closes open paragraph tags; every word, link and business
-    // assertion must be byte-for-byte identical when HTML tags are stripped.
-    // Any other malformed markup still fails the unmodified production QA.
-    const originalBody = cand.body_html;
-    const normalizedBody = closeUnclosedParagraphs(originalBody);
-    if (normalizedBody !== originalBody) {
-      if (htmlWords(normalizedBody) !== htmlWords(originalBody) ||
-          normalizedBody.replace(/<\/p>/gi, '') !== originalBody.replace(/<\/p>/gi, '')) {
-        throw new Error('paragraph normalization modified non-paragraph content');
-      }
-      log(`  repaired omitted </p> before final candidate validation`);
-      cand = { ...cand, body_html: normalizedBody };
     }
     // Preserve real candidates, including QA refusals, in Actions evidence.
     const evidenceDir = join(ROOT, 'writer-work-auto-dryrun/candidates');
