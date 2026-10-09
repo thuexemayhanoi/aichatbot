@@ -214,7 +214,12 @@ export function buildPrompt(row, ctx, feedback) {
     lines.push(...(ctx.topicFacts.avoid ?? []).map((s) => `Giới hạn: ${s}`));
   }
   if (ctx.needsLegalLink) {
-    lines.push('Đây là bài pháp lý (legal-gate): PHẢI dẫn ít nhất 1 nguồn gov.vn hoặc vbpl.vn bằng thẻ <a href> trực tiếp trong thân bài. Chỉ dùng link từ danh sách nguồn đã kiểm chứng sau: ' + (ctx.legalLinks.slice(0, 8).join(' ')));
+    const sources = ctx.legalLinks.slice(0, 8).map((url) => {
+      const citation = ctx.legalCitations?.find((c) => c.url === url);
+      return citation ? `${citation.label}: ${url}` : url;
+    });
+    lines.push('Đây là bài pháp lý (legal-gate): PHẢI dẫn ít nhất 1 nguồn gov.vn hoặc vbpl.vn bằng thẻ <a href> trực tiếp trong thân bài. Chỉ dùng link và tên nguồn đã kiểm chứng sau: ' + sources.join(' | '));
+    lines.push('Giữ đúng tên cơ quan và số hiệu đã cho; không đoán số văn bản từ tên file URL.');
   } else {
     lines.push('KHÔNG dùng bất kỳ liên kết ngoài nào. Mọi liên kết trong thân bài phải là liên kết nội bộ.');
   }
@@ -307,7 +312,12 @@ export function buildCtx(row, entries = loadManifestEntries()) {
         && (url.hostname.endsWith('.gov.vn') || url.hostname === 'vbpl.vn' || url.hostname.endsWith('.vbpl.vn'));
     } catch { return false; }
   };
-  const topicLegalLinks = (topicFacts?.sources ?? []).filter(governmentSource);
+  const legalCitations = topicFacts?.citations ?? [];
+  if (!Array.isArray(legalCitations) || legalCitations.some((c) =>
+    !governmentSource(c.url) || typeof c.label !== 'string' || c.label.length < 10 || c.label.length > 180 || /[<>]/.test(c.label))) {
+    throw new Error(`invalid legal citation for ${row.article_id}`);
+  }
+  const topicLegalLinks = (legalCitations.length ? legalCitations.map((c) => c.url) : topicFacts?.sources ?? []).filter(governmentSource);
   const legalLinks = topicLegalLinks.length ? topicLegalLinks : verifiedLegalLinks(entries).filter(governmentSource);
   return {
     systemPrompt: SYSTEM_PROMPT,
@@ -316,6 +326,7 @@ export function buildCtx(row, entries = loadManifestEntries()) {
     exampleTitles,
     needsLegalLink,
     legalLinks: needsLegalLink ? [...new Set(legalLinks)] : [],
+    legalCitations: needsLegalLink ? legalCitations : [],
     topicFacts,
     needsChunks: row.agent_retrieval === 'yes',
     allEntries: entries,

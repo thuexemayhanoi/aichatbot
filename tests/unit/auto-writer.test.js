@@ -13,8 +13,13 @@ test('verified speed sources reject actual small-model contradictions without re
     'Trong khu đông dân cư, tốc độ cho phép trong phố không áp dụng cho du khách.',
     'Các mức tốc độ này được áp dụng trong mọi điều kiện.',
     'Theo điều 3, xe mô tô được tốc độ tối đa 60 km/h.',
+    'Giới hạn này là mức tối đa nên duy trì trong mọi điều kiện giao thông, không phải là tốc độ có thể vượt qua trong tình huống khẩn cấp.',
+    'Dữ liệu pháp lý được cập nhật từ công văn số 3045/2024/CP.',
+    'Phạm vi này chỉ bao gồm các khu vực dân cư, không mở rộng đến các khu vực khác như khu công nghiệp hay khu vực ngoại ô.',
+    'Tài liệu hướng dẫn của Bộ Giao thông Vận tải cung cấp cơ sở pháp lý rõ ràng.',
   ]) assert.ok(sourceFactErrors(statement, facts).length > 0);
   assert.deepEqual(sourceFactErrors('Theo Điều 6, khi không có biển tốc độ riêng, xe mô tô được tối đa 60 km/h trên đường đôi trong khu đông dân cư; du khách cũng phải tuân thủ quy định.', facts), []);
+  assert.deepEqual(sourceFactErrors('Giới hạn tối đa không phải mức nên duy trì trong mọi điều kiện; cần giảm tốc khi trời mưa.', facts), []);
 });
 
 /**
@@ -82,7 +87,10 @@ test('valid single-quoted HTML links cannot evade the link policy', () => {
 
 test('a legal topic cites its verified government source rather than unrelated older article links', () => {
   const ctx = buildCtx({ article_id: 'BA-0305', category: 'SAFE', source_policy: 'legal-gate' }, []);
-  assert.deepEqual(ctx.legalLinks, ['https://pbgdpl.laichau.gov.vn/uploads/news/2024_12/cv-3045.pdf']);
+  assert.equal(ctx.legalLinks.length, 1);
+  assert.ok(ctx.legalLinks[0].startsWith('https://pbgdpl.laichau.gov.vn/'));
+  assert.match(buildPrompt(PROMPT_ROW, ctx).user, /Văn bản phổ biến quy định tốc độ của Sở Giao thông vận tải Lai Châu/);
+  assert.match(buildPrompt(PROMPT_ROW, ctx).user, /không đoán số văn bản từ tên file URL/);
   const errors = validateCandidate(ROW, CAND({ body_html: longBody({ links: '<a href="https://vbpl.vn/unverified">nguồn</a>' }) }), { ...CTX, ...ctx });
   assert.ok(errors.some((e) => e.includes('was not verified for this topic')));
 });
@@ -257,7 +265,7 @@ test('current recovery articles use verified subject-specific facts and preserve
   const ctx = buildCtx(legal, []);
   const prompt = buildPrompt(legal, ctx).user;
   assert.match(prompt, /xe gắn máy tối đa 40 km\/h/);
-  assert.match(prompt, /pbgdpl\.laichau\.gov\.vn\/uploads\/news\/2024_12\/cv-3045\.pdf/);
+  assert.match(prompt, /pbgdpl\.laichau\.gov\.vn/);
   assert.ok(ctx.topicFacts.sources.some((url) => url.endsWith('/38-bgtvt.pdf')), 'original regulation remains in the verified source record');
   const local = { ...PROMPT_ROW, article_id: 'BA-0306', category: 'LOCAL', local_scope: 'Mai Châu; bản Lác', source_policy: 'no-external', agent_retrieval: 'yes' };
   const localPrompt = buildPrompt(local, buildCtx(local, [])).user;

@@ -122,3 +122,13 @@ government implementation notice at
 https://pbgdpl.laichau.gov.vn/uploads/news/2024_12/cv-3045.pdf (HTTP 200,
 speed table cross-checked); the original regulation PDF remains in the
 source record. HTML link checks support both valid quote styles.
+
+Dry-run `37883733740` passed outline metadata but correctly rejected first
+sections of 312–351 words against the seven-section 220–270 window. Actual
+components also exposed a fabricated `3045/2024/CP` citation, wrong source
+issuer, an unsafe maximum-speed claim, and an unsupported exclusion of
+industrial/outlying areas. Those observed errors are regression fixtures
+and verified-source refusals. The citable notice is explicitly identified
+as a publication of **Sở Giao thông vận tải Lai Châu**. Its filename is not
+treated as a legal document number. The gov.vn/vbpl.vn link policy remains
+unchanged; other verified primary sources stay in the source record.
