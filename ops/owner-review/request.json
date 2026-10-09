@@ -1,13 +1,12 @@
 {
-  "action": "resume-validated-dryrun",
-  "request_id": "owner-verified-resume-after-fixed-html-20261009",
+  "action": "recover-and-resume",
+  "request_id": "owner-20261009-restore-ai-writer-qwen4b-800to2000",
   "incident_id": "INC-20261009075853-51ls",
   "base_sha": "bbe635dc51e9d716779f2490623bd7ddcd6a009a",
-  "dry_run_id": "37909493906",
   "smoke_run_id": "37880775795",
   "expected_ids": [
     "BA-0309",
     "BA-0310"
   ],
-  "note": "Owner explicitly authorizes AUTO FACTORY resume ONLY if the newer Qwen dry-run run 37909493906 passes full 800-2000 word QA for BOTH reserved articles, matching GREEN CI and Distribution, verified unchanged code and inventories, independent Agent #5 closes incident and releases the maintenance lock. Keep fail-closed otherwise. No paid AI API."
+  "note": "Explicit owner authorization: validate patched local Ollama Qwen 4B with fresh REAL dry-run + 800-2000 word full QA on BA-0309 and BA-0310; only on PASS plus matching CI/Distribution may independent Ops Supervisor Agent #5 close incident, release maintenance lock, then automatically dispatch real Auto Writer. Do not skip QA, invent article content, change existing 308 posts, use paid AI API, or bypass incident lock."
 }
