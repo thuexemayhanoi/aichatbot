@@ -94,6 +94,41 @@ jobs:
                   -f smoke_run_id="$SMOKE"
                 echo "RECOVERY_PROOF_DISPATCHED dry_run=$DRY_ID; only Agent #5 may resume production"
                 ;;
+              resume-validated-dryrun)
+                # Reuse an ALREADY-RUNNING read-only writer test; never create
+                # another inference job or skip the Agent #5 maintenance lock.
+                ID=$(node -e 'console.log(require("./ops/owner-review/request.json").incident_id || "")')
+                BASE=$(node -e 'console.log(require("./ops/owner-review/request.json").base_sha || "")')
+                DRY_ID=$(node -e 'console.log(require("./ops/owner-review/request.json").dry_run_id || "")')
+                SMOKE=$(node -e 'console.log(require("./ops/owner-review/request.json").smoke_run_id || "")')
+                CODE_SHA=$(git rev-parse HEAD)
+                node -e 'const s=require("./docs/state/operations/maintenance.json"); if (s.active_incident?.incident_id !== process.argv[1] || s.active_incident.status !== "AGENT4_ESCALATE" || s.active_incident.attempts?.agent5 !== 0 || s.production_enabled !== true) process.exit(1)' "$ID"
+                [[ "$DRY_ID" =~ ^[0-9]+$ ]] && [[ "$SMOKE" =~ ^[0-9]+$ ]] && test -n "$BASE"
+                git ls-remote --refs origin "refs/ops/maintenance-lock/$ID" | grep -q .
+                # The reuse proof is NOT a success assertion; the exact run,
+                # evidence artifact and unchanged article code are verified
+                # independently by tools/ops-recovery-evidence.mjs in Agent #5.
+                gh api "repos/$GH_REPO/actions/runs/$DRY_ID" --jq '.head_branch + " " + .path' |
+                  grep -Fx 'main .github/workflows/auto-writer.yml'
+                echo "Waiting for existing dry-run $DRY_ID only (no duplicate job)"
+                timeout 5400 gh run watch "$DRY_ID" --exit-status --interval 30
+                # CI/Distribution MUST be GREEN for the SHA of THIS request;
+                # a successful dry-run alone must never clear the incident.
+                GREEN=false
+                for n in $(seq 1 120); do
+                  CI=$(gh run list --workflow ci.yml -L 50 --json headSha,status,conclusion --jq "[.[] | select(.headSha == \"$CODE_SHA\" and .status == \"completed\" and .conclusion == \"success\")] | length")
+                  DIST=$(gh run list --workflow distribution.yml -L 50 --json headSha,status,conclusion --jq "[.[] | select(.headSha == \"$CODE_SHA\" and .status == \"completed\" and .conclusion == \"success\")] | length")
+                  if [ "$CI" -gt 0 ] && [ "$DIST" -gt 0 ]; then GREEN=true; break; fi
+                  sleep 20
+                done
+                [ "$GREEN" = true ] || { echo "::error::no GREEN CI/Distribution for $CODE_SHA; incident remains locked"; exit 1; }
+                echo "GREEN CI and Distribution confirmed for $CODE_SHA"
+                gh workflow run ops-supervisor.yml --ref main \
+                  -f incident_id="$ID" -f base_sha="$BASE" \
+                  -f verification_sha="$CODE_SHA" -f dry_run_id="$DRY_ID" \
+                  -f smoke_run_id="$SMOKE"
+                echo "VERIFIED_RECOVERY_REQUESTED dry_run=$DRY_ID ci=$CODE_SHA; Agent #5 controls lock and production"
+                ;;
               supervisor)
                 ID=$(node -e "console.log(require('./ops/owner-review/request.json').incident_id)")
                 BASE=$(node -e "console.log(require('./ops/owner-review/request.json').base_sha || '')")
