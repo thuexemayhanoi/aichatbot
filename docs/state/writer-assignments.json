@@ -38,8 +38,21 @@
           "BA-0319",
           "BA-0320"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-09T23:43:44.151Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-09T23:43:44.151Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-09T23:43:44.151Z"
+          }
+        ]
       },
       {
         "seq": 3,
