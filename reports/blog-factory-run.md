@@ -1076,3 +1076,10 @@
 - 2026-10-07 QA PASS BA-0303 score=95
 - 2026-10-07 QA PASS BA-0304 score=95
 - 2026-10-07 PUBLISHED 2 (BA-0303, BA-0304) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-09 CLAIM 1: BA-0305
+- 2026-10-09 FINISH BA-0305
+- 2026-10-09 CLAIM 1: BA-0306
+- 2026-10-09 FINISH BA-0306
+- 2026-10-09 QA PASS BA-0305 score=100
+- 2026-10-09 QA PASS BA-0306 score=100
+- 2026-10-09 PUBLISHED 2 (BA-0305, BA-0306) — one grouped build, pages, matrix, indexes, sitemap consistent
