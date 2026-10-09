@@ -1,0 +1,57 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0014",
+  "writer": "writer_A",
+  "seq": 1,
+  "ids": [
+    "BA-0317",
+    "BA-0318"
+  ],
+  "body_paths": [
+    "data/blog/articles/bang-lai-a1-a2-khac-gi-cho-du-khach.body.html",
+    "data/blog/articles/hue-xuyen-viet.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0317",
+      "category": "SAFE",
+      "slug": "bang-lai-a1-a2-khac-gi-cho-du-khach",
+      "title": "Bằng Lái a1 a2 Khác gì Cho du Khách",
+      "description": "Hiểu rõ khác biệt giữa bằng lái A1 và A2 giúp du khách an toàn hơn khi tham gia giao thông.",
+      "published_date": "2026-10-09",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/bang-lai-a1-a2-khac-gi-cho-du-khach.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0318",
+      "category": "LOCAL",
+      "slug": "hue-xuyen-viet",
+      "title": "Huế Xuyên Việt: Hành trình khám phá văn hóa và di sản tại cố đô",
+      "description": "Khám phá Huế Xuyên Việt – hành trình du lịch địa phương đậm chất văn hóa và thiên nhiên, phù hợp cho những ai yêu thích trải nghiệm bản địa.",
+      "published_date": "2026-10-09",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/hue-xuyen-viet.body.html",
+      "knowledge_chunks": [
+        "Huế Xuyên Việt là một hành trình trải nghiệm văn hóa và thiên nhiên tại vùng đất cố đô, nơi giao thoa giữa di sản lịch sử và đời sống hiện đại. Các điểm đến như Cố đô Huế, Phường Thanh Bình, và các làng nghề truyền thống mang đến cảm giác chân thực về lịch sử dân tộc. Không gian này phù hợp với du khách muốn tìm hiểu sâu về văn hóa, lễ hội và đời sống cộng đồng địa phương.",
+        "Khác với các điểm du lịch lớn, Huế Xuyên Việt nhấn mạnh sự gần gũi và trải nghiệm thực tế. Người dân địa phương thường xuyên chia sẻ câu chuyện, thói quen sinh hoạt và ẩm thực truyền thống, giúp du khách cảm nhận rõ nét tinh thần cộng đồng. Việc thuê xe tại đây không chỉ đơn thuần là phương tiện di chuyển mà còn là cách tiếp cận để hiểu sâu hơn về từng vùng miền."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-09T17:07:39.822Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-09T17:07:39.823Z"
+    }
+  ]
+}
