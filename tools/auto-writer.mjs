@@ -197,6 +197,14 @@ export function validateCandidate(row, cand, ctx) {
   return errs;
 }
 
+/** Remove only disallowed absolute-URL anchors on non-legal articles.
+ * Preserve the exact reader-visible text; do not alter internal links, claims,
+ * or legal-gate citations. Unrecognized/nested markup must still fail QA. */
+export function unlinkUnverifiedExternalAnchors(bodyHtml, needsLegalLink = false) {
+  if (needsLegalLink || typeof bodyHtml !== 'string') return bodyHtml;
+  return bodyHtml.replace(/<a\s+href\s*=\s*(["'])(https?:\/\/[^"']+)\1\s*>([^<>]*)<\/a>/gi, (_tag, _quote, _url, text) => text);
+}
+
 /** Build the writing prompt pair (system + user) for one row. Pure. */
 export function buildPrompt(row, ctx, feedback) {
   const hubDir = HUB_DIR[row.category] ?? 'blog';
@@ -421,6 +429,20 @@ async function generateArticle(row, ctx, opts, log) {
     if (cand === null) {
       feedback = `Lỗi hệ thống sinh bài (model API): ${lastModelErr.slice(0, 200)}`;
       continue;
+    }
+    // Qwen sometimes adds an unsourced https:// link to non-legal topics.
+    // Convert only a simple <a href="https://...">text</a> back to its
+    // original visible text; any other unexpected markup fails ordinary QA.
+    // Legal-gate sources remain untouched and must pass source verification.
+    if (!ctx.needsLegalLink) {
+      const unlinkedBody = unlinkUnverifiedExternalAnchors(cand.body_html, false);
+      if (unlinkedBody !== cand.body_html) {
+        if (countWords(unlinkedBody) !== countWords(cand.body_html)) {
+          throw new Error('external-link normalization changed reader-visible words');
+        }
+        log('  removed unverified external link markup; preserved reader-visible text');
+        cand = { ...cand, body_html: unlinkedBody };
+      }
     }
     // Preserve real candidates, including QA refusals, in Actions evidence.
     const evidenceDir = join(ROOT, 'writer-work-auto-dryrun/candidates');
