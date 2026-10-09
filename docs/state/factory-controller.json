@@ -6,13 +6,15 @@
       "attempts": 0,
       "smoke_request": "controller-INC-20261009174228-q3st-smoke-0",
       "smoke_run_id": "37978491402",
-      "dry_request": "controller-INC-20261009174228-q3st-dry-0"
+      "dry_request": "controller-INC-20261009174228-q3st-dry-0",
+      "dry_run_id": "37995554094",
+      "supervisor_requested": true
     }
   },
   "handled_runs": [],
   "dispatch": {
-    "key": "controller-INC-20261009174228-q3st-dry-0",
-    "workflow": "auto-writer.yml",
-    "at": "2026-10-09T21:47:31.462Z"
+    "key": "supervisor-INC-20261009174228-q3st",
+    "workflow": "ops-supervisor.yml",
+    "at": "2026-10-09T23:20:02.449Z"
   }
 }
