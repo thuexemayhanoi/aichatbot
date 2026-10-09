@@ -1,7 +1,7 @@
 {
   "$schema": "motoai/ops-state@1",
   "schema_version": 1,
-  "production_enabled": false,
+  "production_enabled": true,
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
   "active_incident": null,
   "incidents": [
