@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { assembleArticle, generateLongform, outlineError, outlineSchema, htmlWords } from '../../tools/auto-writer-longform.mjs';
+import { assembleArticle, closeUnclosedParagraphs, generateLongform, outlineError, outlineSchema, htmlWords } from '../../tools/auto-writer-longform.mjs';
 
 // Counting/protocol fixtures only. Production QA and publication are never invoked.
 const prose = (n) => `<p>${Array.from({ length: n }, (_, i) => `từ${i}`).join(' ')}</p>`;
@@ -20,6 +20,21 @@ test('assembly requires all three real sections and preserves the full 800-2000 
   assert.throws(() => assembleArticle(outline(), parts(451)), /section rejected/);
   const oversized = outline(); oversized.intro_html = prose(750);
   assert.throws(() => assembleArticle(oversized, parts(450)), /outside 800-2000/);
+});
+
+test('missing paragraph closures are repaired only at block boundaries, without changing article words', () => {
+  assert.equal(closeUnclosedParagraphs('<p>A</p><p>B'), '<p>A</p><p>B</p>');
+  assert.equal(closeUnclosedParagraphs('<p>A<p>B</p>'), '<p>A</p><p>B</p>');
+  assert.equal(closeUnclosedParagraphs('<p>A<ul><li>Do</li></ul>'), '<p>A</p><ul><li>Do</li></ul>');
+  assert.equal(closeUnclosedParagraphs('<p>A</p></p>'), '<p>A</p></p>', 'extra closing tag must still be refused by QA');
+  const o = outline();
+  o.intro_html = prose(80).slice(0, -4); // model omitted the very last </p>
+  const frags = parts(330);
+  frags[2] = frags[2].slice(0, -4);
+  const article = assembleArticle(o, frags);
+  assert.equal((article.body_html.match(/<p>/g) ?? []).length, (article.body_html.match(/<\\/p>/g) ?? []).length);
+  assert.ok(htmlWords(article.body_html) >= 800 && htmlWords(article.body_html) <= 2000);
+  assert.ok(article.body_html.includes('từ329</p>\\n<h2>Tổng kết</h2>'));
 });
 
 test('outline rejects missing chunks, duplicate coverage and invalid language', () => {
