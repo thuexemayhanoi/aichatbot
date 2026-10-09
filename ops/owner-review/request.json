@@ -1,12 +1,13 @@
 {
-  "action": "recover-and-resume",
-  "request_id": "recover-writer-ba0309-0310-after-deterministic-html-fix-20261009",
+  "action": "resume-validated-dryrun",
+  "request_id": "owner-auto-resume-20261009-verify-existing-run",
   "incident_id": "INC-20261009075853-51ls",
   "base_sha": "bbe635dc51e9d716779f2490623bd7ddcd6a009a",
+  "dry_run_id": "37906941490",
   "smoke_run_id": "37880775795",
   "expected_ids": [
     "BA-0309",
     "BA-0310"
   ],
-  "note": "Owner-authorized guarded real dry-run plus Agent #5 independent recovery; only VERIFIED incident closure may release lock and resume production. Preserve all 308 published articles, fail closed on QA or security issues."
+  "note": "Owner authorizes RESUME only after same existing genuine dry-run QA PASS, full CI+Distribution GREEN at this request SHA, independent Agent #5 verification and clean incident/lock release. No extra generation run; preserve all 308 already published articles."
 }
