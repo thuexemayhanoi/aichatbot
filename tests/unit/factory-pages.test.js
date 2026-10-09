@@ -37,5 +37,7 @@ test('Factory requests and verifies Pages after clean publication with scoped au
   assert.match(workflow, /pages: write/);
   assert.match(workflow, /GH_TOKEN: \$\{\{ secrets\.GITHUB_TOKEN \}\}/);
   assert.ok(workflow.indexOf('node tools/factory-pages.mjs') > workflow.indexOf('Assert clean state; report QA failures'));
-  assert.match(workflow, /steps\.select\.outputs\.proceed == 'true' \|\| inputs\.article_ids != ''/);
+  assert.match(workflow, /steps\.derived\.outcome == 'success'/);
+  assert.match(workflow, /success\(\) && inputs\.article_ids != ''/);
+  assert.match(workflow, /steps\.deploy\.outcome == 'success'/);
 });

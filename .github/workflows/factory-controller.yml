@@ -1,0 +1,42 @@
+name: Self-Healing Factory Controller
+on:
+  schedule:
+    - cron: '9,19,29,39,49,59 * * * *'
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['CI', 'Distribution', 'Auto Writer (AI article generation)', 'Writer Publisher (serialized)', 'Blog Factory Publish (2-article micro batch)', 'Ops Repair Agent #4', 'Ops Supervisor Agent #5']
+    types: [completed]
+permissions:
+  contents: write
+  actions: write
+  pages: write
+concurrency:
+  group: factory-controller
+  cancel-in-progress: false
+jobs:
+  heal:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event != 'pull_request')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Observe, fix only proven technical failures, defer content and verify production
+        run: node tools/factory-controller.mjs
+      - name: Controller summary
+        if: always()
+        run: |
+          node --input-type=module <<'NODE' >> "$GITHUB_STEP_SUMMARY"
+          import { readPublicationBudget } from './tools/factory-target.mjs';
+          import { readDlq } from './tools/factory-dlq.mjs';
+          console.log('Publication evidence:', JSON.stringify(readPublicationBudget()));
+          console.log('Dead-letter queue:', JSON.stringify(readDlq('.').articles));
+          NODE

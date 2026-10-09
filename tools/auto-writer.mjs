@@ -399,6 +399,7 @@ async function generateArticle(row, ctx, opts, log) {
   const models = opts.models;
   let feedback = '';
   let lastFailure = '';
+  let failureKind = 'INFRA';
   for (let attempt = 1; attempt <= opts.maxAttempts; attempt++) {
     const { system, user } = buildPrompt(row, ctx, feedback);
     let cand = null;
@@ -423,7 +424,7 @@ async function generateArticle(row, ctx, opts, log) {
           },
         });
         break;
-      } catch (error) { lastModelErr = error.message; }
+      } catch (error) { lastModelErr = error.message; failureKind = error.code === 'WRITER_CONTENT_REFUSED' ? 'CONTENT' : 'INFRA'; }
       lastFailure = lastModelErr;
       log(`  model ${model} failed: ${lastModelErr.slice(0, 120)}`);
     }
@@ -434,13 +435,13 @@ async function generateArticle(row, ctx, opts, log) {
     // Canonical URLs come from the supplied hub inventory, never guessed slugs.
     const linkPages = new Set([...ctx.hubSlugs, ...ctx.allowedHubPrefixes]
       .map((url) => url.replace(/^\//, '') + 'index.html'));
-    cand = { ...cand, body_html: normalizeInternalAnchors(cand.body_html, row.output_path,
+    if (typeof cand?.body_html === 'string') cand = { ...cand, body_html: normalizeInternalAnchors(cand.body_html, row.output_path,
       (path) => linkPages.has(path)) };
     // Qwen sometimes adds an unsourced https:// link to non-legal topics.
     // Convert only a simple <a href="https://...">text</a> back to its
     // original visible text; any other unexpected markup fails ordinary QA.
     // Legal-gate sources remain untouched and must pass source verification.
-    if (!ctx.needsLegalLink) {
+    if (!ctx.needsLegalLink && typeof cand?.body_html === 'string') {
       const unlinkedBody = unlinkUnverifiedExternalAnchors(cand.body_html, false);
       if (unlinkedBody !== cand.body_html) {
         if (countWords(unlinkedBody) !== countWords(cand.body_html)) {
@@ -456,6 +457,7 @@ async function generateArticle(row, ctx, opts, log) {
     writeFileSync(join(evidenceDir, `${row.article_id}-attempt-${attempt}.json`), JSON.stringify(cand, null, 2) + '\n');
     const errs = validateCandidate(row, cand, ctx);
     if (errs.length) {
+      failureKind = 'CONTENT';
       log(`  local validation: ${errs.length} error(s)`);
       log(errs.join('\n'));
       lastFailure = feedback = errs.map((e) => `- ${e}`).join('\n');
@@ -473,9 +475,10 @@ async function generateArticle(row, ctx, opts, log) {
     log(qa.out.trim());
     if (qa.pass) return { cand, qa };
     log(`  production QA failed:\n${qa.failures.join('\n')}`);
+    failureKind = 'CONTENT';
     lastFailure = feedback = [...qa.failures, ...qa.out.split('\n').filter((l) => /^WARN\s/.test(l))].join('\n');
   }
-  return { fail: `exhausted ${opts.maxAttempts} attempts for ${row.article_id}: ${lastFailure.replace(/\s+/g, " ").slice(0, 400)}` };
+  return { kind: failureKind, fail: `exhausted ${opts.maxAttempts} attempts for ${row.article_id}: ${lastFailure.replace(/\s+/g, " ").slice(0, 400)}` };
 }
 
 function manifestDraft(row, cand) {
@@ -557,6 +560,14 @@ async function cmdRun(args) {
   const drafts = [];
   const bodies = [];
   const qaEvidence = [];
+  const defer = (failedId, reason) => {
+    const evidence = { status: 'DEFERRED', failure_kind: 'CONTENT', reason,
+      batch: batch.batch_id, seq: chunk.seq, ids, failed_id: failedId,
+      run_id: process.env.GITHUB_RUN_ID, code_sha: process.env.GITHUB_SHA, attempts: maxAttempts };
+    mkdirSync(join(ROOT, 'writer-work-auto-dryrun'), { recursive: true });
+    writeFileSync(join(ROOT, 'writer-work-auto-dryrun/deferred.json'), JSON.stringify(evidence, null, 2) + '\n');
+    emit({ status: 'DEFERRED', reason, batch: batch.batch_id, seq: String(chunk.seq), ids: ids.join(',') });
+  };
   for (const id of ids) {
     const row = byId.get(id);
     if (!row) die(`matrix row missing for ${id}`, { batch: batch.batch_id, seq: String(chunk.seq) });
@@ -567,6 +578,10 @@ async function cmdRun(args) {
     const ctx = buildCtx(row);
     const r = await generateArticle(row, ctx, { models, maxAttempts, config }, log);
     if (r.fatal) die(r.fatal, { batch: batch.batch_id, seq: String(chunk.seq), ids: ids.join(',') });
+    if (r.fail && r.kind === 'CONTENT' && !dryRun) {
+      defer(id, r.fail);
+      return;
+    }
     if (r.fail) die(r.fail, { batch: batch.batch_id, seq: String(chunk.seq), ids: ids.join(',') });
     drafts.push(manifestDraft(row, r.cand));
     bodies.push([row.slug, r.cand.body_html]);
@@ -582,7 +597,9 @@ async function cmdRun(args) {
       log(`pair QA ${id}:\n${qa.out.trim()}`);
       qaEvidence.find((e) => e.article_id === id).qa = qa.out;
       if (!qa.pass || /^WARN\s+no-(?:cross-article-duplicate|duplicate-paragraphs|duplicate-sentences|filler)\b/m.test(qa.out)) {
-        die(`pair QA refused ${id}: ${qa.out.replace(/\s+/g, ' ').slice(-600)}`);
+        const reason = `pair QA refused ${id}: ${qa.out.replace(/\s+/g, ' ').slice(-600)}`;
+        if (!dryRun) { defer(id, reason); return; }
+        die(reason);
       }
     }
   } finally { rmSync(pairRoot, { recursive: true, force: true }); }

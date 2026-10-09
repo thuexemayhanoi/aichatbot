@@ -97,6 +97,7 @@ export function assembleArticle(outline, fragments) {
 }
 
 export async function generateLongform({ model, system, user, needsChunks, config, log = () => {}, onComponent = () => {} }, infer = callModel) {
+  const refused = (message) => Object.assign(new Error(message), { code: 'WRITER_CONTENT_REFUSED' });
   // Retain factual, business, language, link and originality rules. Article
   // length/shape rules belong to assembly, not each independent section call.
   const policy = system.split('\n').filter((line) => /^(?:[4-8]|10)\./.test(line)).join('\n');
@@ -113,7 +114,7 @@ export async function generateLongform({ model, system, user, needsChunks, confi
       if (error.code !== 'WRITER_CONTENT_REFUSED') throw error;
       return { refusal: error.message };
     }
-    try { return { value: JSON.parse(response.content) }; } catch { throw new Error(`${label}: invalid JSON`); }
+    try { return { value: JSON.parse(response.content) }; } catch { return { refusal: `${label}: invalid JSON` }; }
   };
 
   let outline;
@@ -130,7 +131,7 @@ title 10-70 ký tự, viết như một câu tiếng Việt tự nhiên, không 
     feedback = `Outline trước bị từ chối: ${error}. Viết lại đúng schema và độ dài.`;
     log(feedback);
   }
-  if (!outline) throw new Error(feedback || 'outline unavailable');
+  if (!outline) throw refused(feedback || 'outline unavailable');
   const fragments = [];
   for (const [i, section] of outline.sections.entries()) {
     feedback = '';
@@ -144,7 +145,7 @@ Chỉ thẻ p/strong/a/ul/ol/li. ${i === 1 ? 'BẮT BUỘC viết một danh sá
 Không tự tạo liên kết HTTPS (kể cả https://vbpl.vn) nếu đề bài không CẤP CHÍNH XÁC URL đã kiểm chứng. Liên kết nội bộ phải thuộc danh sách được cung cấp; không cần liên kết ở mọi phần. Dữ kiện pháp lý chỉ từ đề bài; chỉ dùng dữ kiện liên quan phần hiện tại, không nhắc lại toàn bộ quy định trong mọi phần.`,
         `${user}\nBa góc bài: ${outline.sections.map((s) => s.heading).join(' | ')}\nPHẦN ${i + 1}/${SECTION_COUNT}: ${section.heading}\nBrief: ${section.brief}\nChỉ viết phần này với khoảng ${requestedWords} từ. ${feedback}`,
         fragmentSchema, 1000, `section ${i + 1}/${SECTION_COUNT}`);
-      const error = refusal || fragmentError(part.body_html, SECTION_MIN_WORDS, SECTION_MAX_WORDS, i === 1);
+      const error = refusal || fragmentError(part?.body_html, SECTION_MIN_WORDS, SECTION_MAX_WORDS, i === 1);
       const words = htmlWords(part?.body_html ?? '');
       if (!error) { fragments.push(part.body_html); accepted = true; log(`section ${i + 1}/${SECTION_COUNT} accepted (${words} words)`); break; }
       const direction = refusal ? 'Sửa khẳng định sai theo dữ kiện đã kiểm chứng trong đề bài, giữ nguyên điều kiện và đối tượng áp dụng; không thêm suy diễn để thay thế câu sai.'
@@ -161,7 +162,7 @@ Không tự tạo liên kết HTTPS (kể cả https://vbpl.vn) nếu đề bài
       feedback = `Phần trước bị từ chối: ${error}. ${direction} Viết lại toàn bộ phần, không thêm đoạn đệm.`;
       log(feedback);
     }
-    if (!accepted) throw new Error(`section ${i + 1}/${SECTION_COUNT} failed after two bounded attempts: ${feedback}`);
+    if (!accepted) throw refused(`section ${i + 1}/${SECTION_COUNT} failed after two bounded attempts: ${feedback}`);
   }
-  return assembleArticle(outline, fragments);
+  try { return assembleArticle(outline, fragments); } catch (error) { throw refused(error.message); }
 }

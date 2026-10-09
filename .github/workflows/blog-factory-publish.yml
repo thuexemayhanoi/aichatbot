@@ -160,12 +160,54 @@ jobs:
         if: steps.select.outputs.proceed == 'true' && steps.select.outputs.claim_ids != ''
         run: node tools/blog-factory.mjs prepare-chunk ${{ steps.select.outputs.claim_ids }}
 
+      - name: FIX canonical anchors in the exact unpublished QA scope
+        if: steps.select.outputs.proceed == 'true' && steps.select.outputs.qa_ids != ''
+        env:
+          FIX_IDS: ${{ steps.select.outputs.qa_ids }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { fixDraftLinks } from './tools/factory-fix.mjs';
+          import { execFileSync } from 'node:child_process';
+          const paths = fixDraftLinks('.', process.env.FIX_IDS.split(','));
+          console.log('Deterministic FIX:', paths);
+          if (paths.length) {
+            const git = (...args) => execFileSync('git', args, { stdio: 'inherit' });
+            git('config', 'user.name', 'motoai-bot');
+            git('config', 'user.email', 'nguyentuantu2482@users.noreply.github.com');
+            git('add', ...paths);
+            git('commit', '-m', 'factory FIX: canonical anchors in unpublished drafts [skip ci]');
+            git('push', 'origin', 'HEAD:main');
+          }
+          NODE
+
       - name: Minimal QA chunk (score >= 70 -> PASS; independent result per article)
         if: steps.select.outputs.proceed == 'true' && steps.select.outputs.qa_ids != ''
         run: |
+          set -eo pipefail
           node tools/blog-factory.mjs qa-chunk ${{ steps.select.outputs.qa_ids }} | tee /tmp/qa.out
           echo "PASS_IDS=$(sed -n 's/^pass_ids=//p' /tmp/qa.out)" >> "$GITHUB_ENV"
           echo "FAIL_IDS=$(sed -n 's/^fail_ids=//p' /tmp/qa.out)" >> "$GITHUB_ENV"
+
+      - name: Retain scoped content QA evidence for bounded retry
+        if: steps.select.outputs.proceed == 'true'
+        env:
+          QA_IDS: ${{ steps.select.outputs.qa_ids }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { writeFileSync } from 'node:fs';
+          const ids = (process.env.FAIL_IDS || '').split(',').filter(Boolean);
+          writeFileSync(process.env.RUNNER_TEMP + '/factory-qa.json', JSON.stringify({
+            kind: 'CONTENT_QA', run_id: process.env.GITHUB_RUN_ID, code_sha: process.env.GITHUB_SHA,
+            fail_ids: ids, qa_ids: (process.env.QA_IDS || '').split(',').filter(Boolean)
+          }, null, 2) + '\n');
+          NODE
+
+      - uses: actions/upload-artifact@v4
+        if: steps.select.outputs.proceed == 'true'
+        with:
+          name: factory-evidence-${{ github.run_id }}
+          path: ${{ runner.temp }}/factory-qa.json
+          retention-days: 30
 
       - name: Grouped transactional publish (PASS + ready ids; ONE build for the chunk)
         if: steps.select.outputs.proceed == 'true'
@@ -185,7 +227,19 @@ jobs:
         if: steps.select.outputs.proceed == 'true'
         run: node tools/site-audit.mjs
 
+      - name: DISTRIBUTION build after accepted QA
+        if: steps.select.outputs.proceed == 'true'
+        run: node tools/build-wordpress-plugin.mjs
+
+      - uses: actions/upload-artifact@v4
+        if: steps.select.outputs.proceed == 'true'
+        with:
+          name: factory-distribution-${{ github.run_id }}
+          path: dist/motoai-agent.zip
+          if-no-files-found: error
+
       - name: Commit derived state (one commit per chunk)
+        id: derived
         if: steps.select.outputs.proceed == 'true'
         run: |
           git config user.name "motoai-bot"
@@ -224,13 +278,29 @@ jobs:
           fi
 
       - name: 'Request and verify Pages for the publication commit'
+        id: deploy
         # A crash after the derived commit can leave all ids PUBLISHED but
         # the deployment unfinished. Selection skips those old articles;
         # deployment verification must still run for their explicit requeue.
-        if: steps.select.outputs.proceed == 'true' || inputs.article_ids != ''
+        if: ${{ !cancelled() && ((steps.select.outputs.proceed == 'true' && steps.derived.outcome == 'success') || (success() && inputs.article_ids != '')) }}
         timeout-minutes: 12
         run: |
           node tools/site-audit.mjs
+          node tools/factory-pages.mjs
+
+      - name: VERIFY production bytes, manifest and sitemap before publication receipts
+        if: ${{ !cancelled() && steps.deploy.outcome == 'success' && (steps.derived.outcome == 'success' || inputs.article_ids != '') }}
+        env:
+          VERIFY_IDS: ${{ inputs.article_ids || steps.select.outputs.ids }}
+        run: |
+          set -euo pipefail
+          node tools/factory-verification.mjs --published-from "$VERIFY_IDS"
+          if [ ! -f docs/state/publication-receipts.json ]; then exit 0; fi
+          git add docs/state/publication-receipts.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'factory: production-verified publication receipts [skip ci]'
+          # Fast-forward only: concurrent ledger edits must never be overwritten.
+          git push origin HEAD:main
           node tools/factory-pages.mjs
 
       - name: 'Reconcile recovered chunks after verified deployment'

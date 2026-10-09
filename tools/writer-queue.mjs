@@ -56,9 +56,18 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync } from
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseMatrix, MATRIX, MANIFEST } from './blog-factory.mjs';
+import { readDlq, saveDlq, deferContent } from './factory-dlq.mjs';
+import { RECEIPTS_PATH, receiptValid } from './factory-verification.mjs';
 
 const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
+
+function productionVerified(row, entry) {
+  const path = join(ROOT, RECEIPTS_PATH);
+  if (!existsSync(path)) return true; // legacy migration; controller backfills real production evidence
+  return !!row && !!entry && existsSync(join(ROOT, entry.body))
+    && receiptValid(readJson(path).articles[row.article_id], row, entry, readFileSync(join(ROOT, entry.body), 'utf8'));
+}
 
 export const WRITERS = ['writer_A', 'writer_B', 'writer_C'];
 export const MICRO_CHUNK = 2;
@@ -164,10 +173,12 @@ export function validateBatch(batch) {
  *  REPAIR/BACKLOG pipeline (§9, v67 SIMPLE PRODUCTION MODE untouched). */
 export function selectCandidateIds(rows, publishedManifest, root, limit = MAX_BATCH) {
   const drafted = new Set((publishedManifest?.articles ?? []).map((a) => a.article_id));
+  const dlq = readDlq(root);
   const out = [];
   for (const row of rows) {
     if (out.length >= limit) break;
     if (row.status !== 'PLANNED') continue;
+    if (dlq.articles[row.article_id] && dlq.articles[row.article_id].status !== 'RETRY_READY') continue;
     if (drafted.has(row.article_id)) continue; // pending draft — repair pipeline
     if (existsSync(join(root, 'data/blog/articles', `${row.slug}.body.html`))) continue; // backlog
     out.push(row.article_id);
@@ -321,7 +332,7 @@ function cmdPlan(args) {
   if (publishedCount > 2000) die('publication target exceeded — fail closed');
   if (publishedCount === 2000) { emit({ created: 'false', complete: 'true', reason: '2000 articles PUBLISHED' }); return; }
   limit = Math.min(limit, 2000 - publishedCount);
-  const activeIds = new Set(assignments.active?.chunks?.flatMap((c) => c.ids) ?? []);
+  const activeIds = new Set(assignments.active?.status === 'ACTIVE' ? assignments.active.chunks.flatMap((c) => c.ids) : []);
   const ids = selectCandidateIds(rows, published, ROOT, limit).filter((id) => !activeIds.has(id));
   if (ids.length === 0) {
     emit({ created: 'false', reason: 'no eligible PLANNED ids (draft/backlog/review rows are never mixed into a NEW batch)' });
@@ -874,7 +885,8 @@ function cmdComplete(args) {
   const rows = loadRows();
   for (const id of chunk.ids) {
     const row = rowById(rows, id);
-    if (!row || row.status !== 'PUBLISHED') {
+    const matches = readJson(MANIFEST).articles.filter((e) => e.article_id === id);
+    if (!row || row.status !== 'PUBLISHED' || (existsSync(join(ROOT, RECEIPTS_PATH)) && (matches.length !== 1 || !productionVerified(row, matches[0])))) {
       die(`matrix row of ${id} is ${row?.status ?? 'missing'} — the factory has not finished this chunk (kept RESERVED, retry-safe)`);
     }
   }
@@ -938,7 +950,7 @@ function cmdReconcile(args) {
       return {
         id,
         row,
-        published: !!row && row.status === 'PUBLISHED',
+        published: !!row && row.status === 'PUBLISHED' && entries.length === 1 && productionVerified(row, entries[0]),
         singleEntry: entries.length === 1,
         bodyOnDisk: !!row && existsSync(join(ROOT, bodyPathOf(row))),
       };
@@ -1029,6 +1041,7 @@ const USAGE = `usage: writer-queue.mjs <command> [args]
   stage <batch> <seq> --work <dir>                copy the 2 bodies + merge drafts into published.json
   verify-push <batch> <seq> --work <dir>          fresh-main verification before the push
   complete <batch> <seq>                          factory finished: mark the chunk PUBLISHED (idempotent)
+  defer-content <evidence.json>                   controller: defer a refused fresh chunk with real run evidence
   fail <batch> <seq> --state failed|factory-failed|push-failed
   requeue <batch> <seq> --work <dir>              §6G crash-window recovery (classify + restore, fail closed)`;
 
@@ -1053,6 +1066,18 @@ if (isMain) {
     case 'fail': cmdFail(args); break;
     case 'reconcile': cmdReconcile(args); break;
     case 'requeue': cmdRequeue(args); break;
+    case 'defer-content': {
+      const evidence = readJson(args._[0]);
+      const assignments = loadAssignments(), dlq = readDlq(ROOT);
+      for (const id of evidence.ids ?? []) {
+        const row = loadRows().find((r) => r.article_id === id);
+        if (row && existsSync(join(ROOT, bodyPathOf(row)))) die('cannot defer an article with staged source');
+      }
+      if (deferContent(assignments, dlq, evidence, loadRows(), readJson(MANIFEST).articles)) {
+        saveDlq(ROOT, dlq); saveAssignments(assignments);
+      }
+      break;
+    }
     default:
       // Bare invocation prints usage on stdout (exit 0) so tooling can
       // assert the CLI surface (§6G A4); an unknown command stays stderr + exit 1.

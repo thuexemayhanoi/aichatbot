@@ -26,6 +26,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { RECEIPTS_PATH, unverifiedIds } from './factory-verification.mjs';
 
 const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -95,6 +96,9 @@ export function buildProgress(now = new Date()) {
       by_category: byCategory,
       published: publishedRows.length,
     },
+    production: existsSync(join(ROOT, RECEIPTS_PATH))
+      ? { verified: publishedRows.length - unverifiedIds(ROOT).length, awaiting_verification: unverifiedIds(ROOT).length }
+      : { verified: null, awaiting_verification: publishedRows.length },
     writer_batch: writerBatch,
     throughput: {
       last_published_date: lastPublishedDate,

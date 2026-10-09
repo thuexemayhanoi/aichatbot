@@ -1,4 +1,5 @@
 name: 'Auto Writer (AI article generation)'
+run-name: 'Auto Writer ${{ inputs.request_id || github.run_id }}'
 
 # v71 AUTO FACTORY (docs/AUTO-WRITER.md).
 #
@@ -32,6 +33,10 @@ on:
     - cron: '*/25 * * * *'
   workflow_dispatch:
     inputs:
+      request_id:
+        description: 'Controller correlation ID for read-only recovery proof'
+        required: false
+        default: ''
       dry_run:
         description: 'true = sinh bài + QA nhưng KHÔNG begin/ready/push/publish'
         required: false
@@ -56,6 +61,7 @@ permissions:
   # actions: write — dispatch writer-coordinator / writer-publisher
   # explicitly (a GITHUB_TOKEN push cannot trigger workflows).
   actions: write
+  pages: write
 
 concurrency:
   # Two scheduled runs never generate in parallel; the second waits, then
@@ -141,9 +147,21 @@ jobs:
           if [ "$SMOKE_ONLY" = "true" ]; then
             echo status=GENERATE | tee /tmp/inspect.out
           else
-            node tools/auto-writer.mjs inspect | tee /tmp/inspect.out
+            CONTROLLER_GATE=status=OPEN
+            if [ "$DRY_RUN" != "true" ]; then CONTROLLER_GATE=$(node tools/factory-controller.mjs writer-gate); fi
+            if echo "$CONTROLLER_GATE" | grep -q '^status=WAIT_CONTROLLER$'; then
+              echo status=WAIT_CONTROLLER | tee /tmp/inspect.out
+            else
+              node tools/auto-writer.mjs inspect | tee /tmp/inspect.out
+            fi
           fi
           sed -n 's/^status=/status=/p' /tmp/inspect.out >> "$GITHUB_OUTPUT"
+
+      - name: Request controller for retained content refusal
+        if: steps.inspect.outputs.status == 'WAIT_CONTROLLER' && inputs.dry_run != 'true' && inputs.smoke_only != 'true'
+        run: |
+          BUSY=$(gh run list --workflow factory-controller.yml --limit 20 --json status --jq 'any(.[]; .status != "completed")')
+          if [ "$BUSY" != true ]; then gh workflow run factory-controller.yml --ref main; fi
 
       - name: 'Cache local writer model'
         if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE'
@@ -158,6 +176,7 @@ jobs:
         if: steps.inspect.outputs.status == 'COMPLETE' && inputs.dry_run != 'true' && inputs.smoke_only != 'true'
         run: |
           set -euo pipefail
+          node tools/factory-verification.mjs --all
           node tools/site-audit.mjs
           node tools/blog-factory.mjs validate
           mkdir -p reports
@@ -178,10 +197,10 @@ jobs:
           NODE
           git config user.name motoai-bot
           git config user.email nguyentuantu2482@users.noreply.github.com
-          git add reports/factory-completion.json docs/state/operations/maintenance.json
+          git add reports/factory-completion.json docs/state/operations/maintenance.json docs/state/publication-receipts.json
           git commit -m 'factory: COMPLETE — 2000 verified publications, production stopped [skip ci]'
-          git pull --rebase origin main
-          git push
+          git push origin HEAD:main
+          node tools/factory-pages.mjs
 
       - name: 'Start local Ollama and load the writer model (no API key)'
         if: steps.gate.outputs.open == 'true' && steps.inspect.outputs.status == 'GENERATE'
@@ -393,10 +412,16 @@ jobs:
           exit 1
 
       - name: 'Guard: unknown generation status'
-        if: success() && steps.inspect.outputs.status == 'GENERATE' && steps.gen.outputs.status != 'READY_TO_PUSH' && inputs.smoke_only != 'true'
+        if: success() && steps.inspect.outputs.status == 'GENERATE' && steps.gen.outputs.status != 'READY_TO_PUSH' && steps.gen.outputs.status != 'DEFERRED' && inputs.smoke_only != 'true'
         run: |
           echo "::error::unknown auto-writer status '${{ steps.gen.outputs.status }}'"
           exit 1
+
+      - name: 'Content refusal retained for the dead-letter controller'
+        if: steps.gen.outputs.status == 'DEFERRED' && inputs.dry_run != 'true' && inputs.smoke_only != 'true'
+        run: |
+          test -s writer-work-auto-dryrun/deferred.json
+          echo 'Content did not pass QA: no source pushed, no article published; the scheduled controller defers this exact chunk.'
 
       - name: 'Report non-generation failures to Agent #4 (begin/ready/push/dispatch infra)'
         if: failure() && steps.gate.outputs.open == 'true' && steps.gen.outputs.status != 'FAILED' && inputs.dry_run != 'true' && inputs.smoke_only != 'true'

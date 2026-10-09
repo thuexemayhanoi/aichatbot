@@ -55,6 +55,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseMatrix, MATRIX, MANIFEST } from './blog-factory.mjs';
+import { readDlq } from './factory-dlq.mjs';
 
 const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -99,6 +100,11 @@ function loadManifest() {
 /** A row is publishable-in-principle when its manifest draft is valid and the
  *  body exists on disk. Refuses on any mismatch (contract violation). */
 function validDraft(row, manifest, { refuse = true } = {}) {
+  const deferred = readDlq(ROOT).articles[row.article_id];
+  if (deferred && !['RETRY_READY', 'RESOLVED'].includes(deferred.status)) {
+    if (!refuse) return null;
+    return emit('refuse', { ids: [row.article_id], reason: `bounded QA retry deferred: ${deferred.status}` });
+  }
   const entry = manifest.articles.find((a) => a.article_id === row.article_id);
   if (!entry) {
     if (!refuse) return null;

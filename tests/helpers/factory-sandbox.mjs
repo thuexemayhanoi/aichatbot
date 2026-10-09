@@ -59,7 +59,8 @@ function baselineSandbox(dir) {
     rmSync(join(dir, cells[9].replace(/index\.html$/, '')), { recursive: true, force: true });
   }
   // 4. Never inherit a writer's run state into the sandbox.
-  for (const f of ['blog-factory.lock', 'blog-factory.transaction.json', 'blog-factory.checkpoint.json']) {
+  for (const f of ['blog-factory.lock', 'blog-factory.transaction.json', 'blog-factory.checkpoint.json',
+    'publication-receipts.json', 'factory-dead-letter.json', 'factory-controller.json']) {
     rmSync(join(dir, 'docs/state', f), { force: true });
   }
 }

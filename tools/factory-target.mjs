@@ -2,6 +2,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { RECEIPTS_PATH, receiptValid } from './factory-verification.mjs';
 
 export const PUBLICATION_TARGET = 2000;
 const ROOT = process.env.MOTOAI_FACTORY_ROOT ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -42,6 +43,17 @@ export function readPublicationBudget(root = ROOT) {
     if (!existsSync(join(root, entry.body)) || !existsSync(join(root, row.output_path))) {
       throw new Error(`published source or page missing for ${row.article_id}`);
     }
+  }
+  const ledger = join(root, RECEIPTS_PATH);
+  if (existsSync(ledger)) {
+    const book = JSON.parse(readFileSync(ledger, 'utf8'));
+    if (book.schema_version !== 1 || !book.articles) throw new Error('invalid publication receipt ledger');
+    const verified = rows.filter((r) => r.status === 'PUBLISHED').filter((row) => {
+      const entry = entries.find((e) => e.article_id === row.article_id);
+      return receiptValid(book.articles[row.article_id], row, entry, readFileSync(join(root, entry.body), 'utf8'));
+    }).length;
+    return { target: budget.target, published: verified, unverified: budget.published - verified,
+      remaining: budget.target - verified, complete: verified === budget.target };
   }
   return budget;
 }
