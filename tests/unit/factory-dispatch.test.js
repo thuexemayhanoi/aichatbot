@@ -10,8 +10,8 @@ const start = publisher.indexOf("      - name: 'Run the factory for exactly this
 const block = publisher.slice(start, publisher.indexOf('\n      - name:', start + 1));
 const shell = block.slice(block.indexOf('        run: |\n') + '        run: |\n'.length).split('\n').map((s) => s.replace(/^          /, '')).join('\n');
 
-for (const includeOurRun of [true, false]) {
-  test(`publisher ${includeOurRun ? 'watches its correlated run even after HEAD moves' : 'refuses an unrelated GREEN run'}`, (t) => {
+for (const [includeOurRun, mode] of [[true, 'new'], [false, 'new'], [true, 'complete-only']]) {
+  test(`publisher ${includeOurRun ? `watches its correlated run for ${mode} even after HEAD moves` : 'refuses an unrelated GREEN run'}`, (t) => {
     const dir = mkdtempSync(join(tmpdir(), 'factory-dispatch-'));
     t.after(() => rmSync(dir, { recursive: true, force: true }));
     const runs = [{ databaseId: 99, displayTitle: 'Factory BA-0400,BA-0401 request 999-1' }];
@@ -21,7 +21,7 @@ for (const includeOurRun of [true, false]) {
     writeFileSync(join(dir, 'sleep'), '#!/bin/bash\nexit 0\n', { mode: 0o755 });
     const out = join(dir, 'outputs');
     const result = spawnSync('bash', ['-e', '-c', shell], { cwd: dir, encoding: 'utf8', env: { ...process.env,
-      PATH: `${dir}:${process.env.PATH}`, FIXTURE: dir, IDS: 'BA-0305,BA-0306', MODE: 'new', SHA: 'old-head',
+      PATH: `${dir}:${process.env.PATH}`, FIXTURE: dir, IDS: 'BA-0305,BA-0306', MODE: mode, SHA: 'old-head',
       GITHUB_RUN_ID: '123', GITHUB_RUN_ATTEMPT: '1', GITHUB_OUTPUT: out } });
     if (includeOurRun) {
       assert.equal(result.status, 0, result.stderr);

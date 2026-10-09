@@ -31,7 +31,8 @@ name: 'Writer Publisher (serialized)'
 # REQUEUES it instead of re-staging: the engine 'requeue' verifies/restores
 # the exact 2 bodies + drafts from the writer branch, then the factory is
 # dispatched with the same ids. A chunk whose matrix rows are already
-# PUBLISHED completes the manifest without any dispatch (complete-only).
+# PUBLISHED content is never regenerated. A complete-only recovery still
+# dispatches the factory to verify deployment before completing the manifest.
 #
 # workflow_dispatch recovery actions:
 #   mark-published <batch> <seq>   complete after a manual factory re-run
@@ -266,9 +267,7 @@ jobs:
         run: |
           set -eo pipefail
           if [ "$MODE" = "complete-only" ]; then
-            echo "complete-only: the factory already finished this chunk — no dispatch"
-            echo "result=success" >> "$GITHUB_OUTPUT"
-            exit 0
+            echo "complete-only: content checkpoint exists; verify Pages without rewriting articles"
           fi
           REQUEST_ID="${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           EXPECTED_TITLE="Factory $IDS request $REQUEST_ID"

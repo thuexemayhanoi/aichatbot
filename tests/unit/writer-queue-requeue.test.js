@@ -215,7 +215,7 @@ test('A3: requeue is wired through the whole publisher pipeline', () => {
   const stop = y.slice(stopIdx, stopIdx + 260);
   assert.ok(stop.includes("!= 'requeue'"), 'the stop step must NOT stop a requeue');
   assert.ok(y.includes('steps.select.outputs.mode'), 'select must export the mode output');
-  assert.ok(y.includes('MODE: ${{ steps.select.outputs.mode }}'), 'the factory step receives the mode (complete-only short-circuit)');
+  assert.ok(y.includes('MODE: ${{ steps.select.outputs.mode }}'), 'the factory step receives the content recovery mode while still verifying Pages');
   assert.ok(y.includes('node tools/writer-queue.mjs requeue'), 'the push step runs requeue instead of stage on action=requeue');
 });
 
@@ -291,7 +291,7 @@ test('B3: a duplicate manifest entry fails closed (never a second publish)', () 
   assert.ok(sel.fail, 'select-publish must refuse a duplicate entry too');
 });
 
-test('B4: all-PUBLISHED chunk requeues as complete-only (no dispatch)', () => {
+test('B4: all-PUBLISHED chunk requeues as complete-only (no content rewrite)', () => {
   const f = crashFixture();
   setStatusInMatrix(f.root, ['BA-0001', 'BA-0002'], 'PUBLISHED');
   const sel = parseOut(runCli(f.root, ['select-publish', '--work', f.view]));

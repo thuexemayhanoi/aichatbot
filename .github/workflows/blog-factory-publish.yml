@@ -188,6 +188,11 @@ jobs:
           fi
 
       - name: 'Request and verify Pages for the publication commit'
-        if: steps.select.outputs.proceed == 'true'
+        # A crash after the derived commit can leave all ids PUBLISHED but
+        # the deployment unfinished. Selection skips those old articles;
+        # deployment verification must still run for their explicit requeue.
+        if: steps.select.outputs.proceed == 'true' || inputs.article_ids != ''
         timeout-minutes: 12
-        run: node tools/factory-pages.mjs
+        run: |
+          node tools/site-audit.mjs
+          node tools/factory-pages.mjs
