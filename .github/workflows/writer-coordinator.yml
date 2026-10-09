@@ -38,6 +38,8 @@ on:
 
 permissions:
   contents: write
+  # The new reservation starts exactly one bounded writer job.
+  actions: write
 
 concurrency:
   group: writer-coordinator
@@ -47,6 +49,9 @@ jobs:
   coordinate:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
     steps:
       - uses: actions/checkout@v4
         with:

@@ -41,4 +41,8 @@ test('continuation is a separate bounded job after healthy publication or a new 
   assert.equal((continuation.match(/gh workflow run auto-writer\.yml/g) ?? []).length, 1);
   const coordinator = readFileSync(new URL('../../.github/workflows/writer-coordinator.yml', import.meta.url), 'utf8');
   assert.match(coordinator, /created == 'true' && inputs\.dry_run != 'true'/);
+  const permissions = coordinator.slice(coordinator.indexOf('permissions:'), coordinator.indexOf('\nconcurrency:'));
+  assert.match(permissions, /actions: write/);
+  assert.match(coordinator, /GH_TOKEN: \$\{\{ secrets\.GITHUB_TOKEN \}\}/);
+  assert.match(coordinator, /GH_REPO: \$\{\{ github\.repository \}\}/);
 });
