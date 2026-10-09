@@ -4,8 +4,18 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   extractJson, countWords, splitLinks, validateCandidate, buildPrompt, chooseChunk,
-  SYSTEM_PROMPT, buildCtx,
+  SYSTEM_PROMPT, buildCtx, sourceFactErrors,
 } from '../../tools/auto-writer.mjs';
+
+test('verified speed sources reject actual small-model contradictions without rejecting correct conditional limits', () => {
+  const facts = buildCtx({ article_id: 'BA-0305', category: 'SAFE', source_policy: 'legal-gate', agent_retrieval: 'no' }).topicFacts;
+  for (const statement of [
+    'Trong khu đông dân cư, tốc độ cho phép trong phố không áp dụng cho du khách.',
+    'Các mức tốc độ này được áp dụng trong mọi điều kiện.',
+    'Theo điều 3, xe mô tô được tốc độ tối đa 60 km/h.',
+  ]) assert.ok(sourceFactErrors(statement, facts).length > 0);
+  assert.deepEqual(sourceFactErrors('Theo Điều 6, khi không có biển tốc độ riêng, xe mô tô được tối đa 60 km/h trên đường đôi trong khu đông dân cư; du khách cũng phải tuân thủ quy định.', facts), []);
+});
 
 /**
  * v71 AUTO WRITER contract tests (docs/AUTO-WRITER.md).

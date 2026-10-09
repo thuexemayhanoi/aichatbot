@@ -41,7 +41,7 @@ on:
         required: false
         default: 'false'
       model:
-        description: 'Ollama model (mặc định qwen3:1.7b); chỉ mô hình local'
+        description: 'Ollama model (mặc định qwen3:4b-instruct-2507-q4_K_M); chỉ mô hình local'
         required: false
         default: ''
       max_attempts:
@@ -70,7 +70,7 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_REPO: ${{ github.repository }}
-      AUTO_WRITER_MODEL: ${{ inputs.model || 'qwen3:1.7b' }}
+      AUTO_WRITER_MODEL: ${{ inputs.model || 'qwen3:4b-instruct-2507-q4_K_M' }}
       AUTO_WRITER_URL: http://127.0.0.1:11434/api/chat
       AUTO_WRITER_TIMEOUT_MS: '1200000'
       OLLAMA_HOST: 127.0.0.1:11434

@@ -36,6 +36,7 @@ export function outlineError(o, needsChunks) {
   if (!Array.isArray(o.sections) || o.sections.length !== SECTION_COUNT ||
       new Set(o.sections.map((s) => s.heading?.toLowerCase())).size !== SECTION_COUNT ||
       o.sections.some((s) => !s.heading || s.heading.length > 90 || /[<>]/.test(s.heading) || !s.brief)) return 'need seven distinct concrete sections';
+  if (o.sections.some((s) => /^(?:tổng kết|kết luận)|lời mời mở chat/i.test(s.heading))) return 'conclusion belongs outside the seven substantive sections';
   if (stray.test(JSON.stringify(o))) return 'non-Vietnamese characters';
   return fragmentError(o.intro_html, 50, 130) || fragmentError(o.conclusion_html, 50, 130);
 }
@@ -72,7 +73,8 @@ export async function generateLongform({ model, system, user, needsChunks, confi
   let feedback = '';
   for (let retry = 0; retry < 2; retry++) {
     const candidate = await request(`Bạn là biên tập viên tiếng Việt. Chỉ trả JSON theo schema. ${policy}
-Lập bảy phần KHÁC NHAU cho bài, mỗi phần có một góc cụ thể và brief hướng dẫn; không dùng phần tổng kết trong bảy phần.
+Lập bảy phần KHÁC NHAU và bám sát chủ đề, mỗi phần giải quyết một câu hỏi thực tế của khách thuê xe. Brief hướng dẫn cách giải thích, không tự suy diễn luật lệ.
+Không dùng phần tổng kết, kết luận, lời mời mở chat hoặc mục chỉ liệt kê liên kết trong bảy phần. Quy tắc về tiền cọc là giới hạn khi cần nhắc tới, không phải yêu cầu chèn tiền cọc vào chủ đề khác.
 intro_html và conclusion_html: mỗi chuỗi có 50-130 từ, chỉ thẻ p/a/strong; kết luận có lời mời mở chat phù hợp chủ đề.
 title 10-70 ký tự; description 50-165 ký tự; knowledge_chunks theo chính sách đề bài. Không viết các phần thân bài lúc này.`,
       `${user}\nNhiệm vụ hiện tại CHỈ là outline, mở đầu và kết luận, chưa phải bài 1600 từ. ${feedback}`, outlineSchema(needsChunks), 1800, 'outline');
@@ -89,6 +91,7 @@ title 10-70 ký tự; description 50-165 ký tự; knowledge_chunks theo chính 
     for (let retry = 0; retry < 2; retry++) {
       const part = await request(`Bạn viết MỘT phần thân bài tiếng Việt, chỉ JSON {"body_html":"..."}. ${policy}
 Viết 240-260 từ cho phần hiện tại, khoảng 4-5 đoạn cụ thể. Không viết h1/h2/h3, mở đầu cả bài, tổng kết cả bài, hoặc metadata.
+Chỉ giải quyết câu hỏi của phần này. Không lặp lại lời khuyên chung, không chuyển sang tiền cọc hoặc quy trình cửa hàng nếu không thuộc chủ đề của phần.
 Chỉ thẻ p/strong/a/ul/ol/li. Phần số 4 cần danh sách hành động cụ thể. Mỗi đoạn thêm thông tin hữu ích, không lặp ý để đạt độ dài.
 Liên kết chỉ khi phù hợp, không chèn liên kết trong mọi phần. Dữ kiện pháp lý chỉ từ đề bài.`,
         `${user}\nBảy góc bài: ${outline.sections.map((s) => s.heading).join(' | ')}\nPHẦN ${i + 1}/7: ${section.heading}\nBrief: ${section.brief}\nChỉ viết phần này với 240-260 từ. ${feedback}`,

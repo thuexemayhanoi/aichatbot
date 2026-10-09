@@ -1,7 +1,7 @@
 /** Local-only writer inference. GitHub Models retired on 2026-07-30.
  * Never forward the workflow's GitHub token to an inference server.
  */
-export const DEFAULT_MODEL = 'qwen3:1.7b';
+export const DEFAULT_MODEL = 'qwen3:4b-instruct-2507-q4_K_M';
 
 export function modelConfig(env = process.env) {
   const url = new URL(env.AUTO_WRITER_URL || 'http://127.0.0.1:11434/api/chat');

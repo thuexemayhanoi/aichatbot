@@ -24,6 +24,8 @@ test('outline rejects missing chunks, duplicate coverage and invalid language', 
   assert.match(outlineError(duplicate, false), /distinct/);
   const stray = outline(); stray.title += ' 中文';
   assert.match(outlineError(stray, false), /Vietnamese/);
+  const filler = outline(); filler.sections[0].heading = 'Tổng kết và lời mời mở chat';
+  assert.match(outlineError(filler, false), /substantive/);
 });
 
 test('the inference grammar fixes SAFE retrieval metadata to an empty array and retrieval rows to exactly two', () => {

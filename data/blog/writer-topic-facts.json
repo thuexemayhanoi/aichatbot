@@ -5,9 +5,15 @@
     "facts": [
       "Thông tư 38/2024/TT-BGTVT có hiệu lực từ 01/01/2025. Điều 3 xác định khu đông dân cư qua biển bắt đầu và hết khu đông dân cư.",
       "Theo Điều 4 và Điều 6: khi không có biển tốc độ tối đa riêng, xe mô tô trong khu đông dân cư được tối đa 60 km/h trên đường đôi hoặc đường một chiều có từ hai làn xe cơ giới; 50 km/h trên đường hai chiều hoặc đường một chiều có một làn xe cơ giới.",
-      "Điều 7 quy định xe gắn máy tối đa 40 km/h, không lấy mức 50/60 km/h của xe mô tô áp cho xe gắn máy. Giới hạn tối đa không phải tốc độ nên chạy trong mọi điều kiện; phải quan sát biển thực tế."
+      "Điều 7 quy định xe gắn máy tối đa 40 km/h, không lấy mức 50/60 km/h của xe mô tô áp cho xe gắn máy. Giới hạn tối đa không phải tốc độ nên chạy trong mọi điều kiện; phải quan sát biển thực tế.",
+      "Du khách điều khiển xe cũng phải tuân thủ giới hạn tốc độ như người lái khác; các dữ kiện trên không tạo ngoại lệ cho du khách. Điều 3 chỉ xác định khu đông dân cư, còn mức 60/50 km/h nêu tại Điều 6."
     ],
-    "avoid": ["Không bịa mức phạt, giấy phép hoặc ngoại lệ dành cho du khách.", "Không gọi mọi đường phố là đường có giới hạn 50 km/h."]
+    "avoid": ["Phạm vi bài chỉ là tốc độ và cách lựa chọn tốc độ an toàn; nguồn đề bài chưa cung cấp mức phạt hay yêu cầu giấy phép.", "Mỗi đường phố cần đối chiếu biển, loại phương tiện và cấu trúc đường; mức 50 km/h không đại diện cho mọi đường phố."],
+    "reject_claims": [
+      { "pattern": "(?:tốc độ|quy định|mức phạt|giấy phép)[^.<>]{0,180}không (?:được )?áp dụng (?:cho|đối với)[^.<>]{0,80}du khách", "reason": "Quy định tốc độ vẫn áp dụng cho du khách; nguồn không tạo ngoại lệ về chế tài hoặc giấy phép." },
+      { "pattern": "các mức tốc độ này được áp dụng trong mọi điều kiện", "reason": "Giới hạn tối đa không phải tốc độ phù hợp trong mọi điều kiện; phải đối chiếu biển và giảm tốc khi cần." },
+      { "pattern": "theo điều 3[^.<>]{0,100}(?:60|50) km/h", "reason": "Điều 3 xác định khu đông dân cư; mức 60/50 km/h nằm tại Điều 6." }
+    ]
   },
   "BA-0306": {
     "verified_at": "2026-10-08",

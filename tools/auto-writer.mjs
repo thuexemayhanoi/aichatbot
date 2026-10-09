@@ -103,6 +103,13 @@ function inventorySnapshot() {
 
 export const STRAY_RE = /[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff]/;
 
+/** Reject specifically documented contradictions of verified primary sources. */
+export function sourceFactErrors(content, facts) {
+  const text = String(content).replace(/<[^>]*>/g, ' ');
+  return (facts?.reject_claims ?? []).filter((rule) => new RegExp(rule.pattern, 'iu').test(text))
+    .map((rule) => `verified-source contradiction: ${rule.reason}`);
+}
+
 /** All hrefs of a body, split internal (root-relative) / external. */
 export function splitLinks(bodyHtml) {
   const hrefs = [...String(bodyHtml).matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
@@ -144,6 +151,7 @@ export function validateCandidate(row, cand, ctx) {
     errs.push('knowledge_chunks must be empty for agent_retrieval=no rows');
   }
   const body = body_html;
+  errs.push(...sourceFactErrors(body, ctx.topicFacts));
   const stray = body.match(STRAY_RE);
   if (stray) errs.push(`stray CJK/Cyrillic character(s): ${[...new Set(stray)].join(',')}`);
   if (/<h1\b/i.test(body)) errs.push('body must not contain <h1>');
@@ -375,6 +383,8 @@ async function generateArticle(row, ctx, opts, log) {
             mkdirSync(dir, { recursive: true });
             const name = `${row.article_id}-attempt-${attempt}-${++component}-${label.replace(/[^a-z0-9]/gi, '-')}.json`;
             writeFileSync(join(dir, name), content);
+            const contradictions = sourceFactErrors(content, ctx.topicFacts);
+            if (contradictions.length) throw new Error(contradictions.join('; '));
           },
         });
         break;

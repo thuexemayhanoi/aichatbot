@@ -9,7 +9,8 @@ not a completion. Changing API tokens or cycling retired model names cannot
 restore that service. `/vanchinh` used external AI writers; its Actions only
 validated and published their files. It completed 2,000 articles.
 
-The replacement uses Ollama with `qwen3:1.7b` on the Actions runner.
+The replacement uses Ollama with the explicit non-thinking
+`qwen3:4b-instruct-2507-q4_K_M` model tag on the Actions runner.
 The server listens on loopback only. No paid inference API or model token
 is used; `GITHUB_TOKEN` remains limited to GitHub operations. The chatbot
 frontend continues to run locally without a remote inference service.
@@ -102,3 +103,12 @@ GITHUB_TOKEN pushes alone do not trigger Pages. Source settings and CNAME
 are checked and never changed. The owner `pages-test` request verifies this
 path against the already validated current site before RESUME. The coordinator
 has `actions: write` and GH_TOKEN to start one writer after a new reservation.
+
+Small-model verification: runs `37878076696` and `37879272052` were
+correctly rejected. Qwen3 1.7B failed metadata/length constraints and produced
+contradictions of the verified speed source. No content was published.
+The writer now rejects those observed source contradictions and excludes
+outline sections that merely duplicate the conclusion. The 4B Instruct 2507
+Q4_K_M variant is selected for further real long-form verification:
+https://ollama.com/library/qwen3:4b-instruct-2507-q4_K_M and
+https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507.
