@@ -1,10 +1,7 @@
 {
-  "action": "dry-run",
-  "model": "qwen3:1.7b",
-  "max_attempts": 2,
-  "request_id": "recovery-20261009-schema-constrained-dry-run",
-  "verification_sha": "7c38d96c13928d9002486225d88e600e83e9d29f",
-  "smoke_run_id": "37824564900",
-  "pages_test_run_id": "37879032899",
-  "note": "940 full tests PASS; CI/Distribution GREEN on 7c38d96; actual token-authenticated exact-SHA Pages rebuild PASS. Verify schema-constrained Vietnamese long-form pair and full QA without publishing; incident and lock remain intact."
+  "action": "smoke-test",
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "request_id": "recovery-20261009-instruct-model-smoke",
+  "verification_sha": "c914f4cd1655f1076d6e26215bc305c529a6d7d1",
+  "note": "942 full tests PASS and CI/Distribution GREEN. Verify exact Apache-2.0 non-thinking 4B Instruct Q4 tag on real Actions before long-form QA; preserve production pause, incident, maintenance lock and 304 published articles."
 }
