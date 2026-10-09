@@ -5,10 +5,10 @@
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
   "active_incident": {
     "incident_id": "INC-20261008144724-577x",
-    "status": "AGENT4_ESCALATE",
-    "owner": "NONE",
+    "status": "AGENT5_WORKING",
+    "owner": "AGENT_5",
     "started_at": "2026-10-08T14:47:24.988Z",
-    "updated_at": "2026-10-08T14:47:29.577Z",
+    "updated_at": "2026-10-09T06:42:33.750Z",
     "base_sha": "43cafac9bc7c27ca31486f80b2dc10c701981fcb",
     "reason": "auto-writer generation failed (chunk WRITER-BATCH-0013#4, ids BA-0305,BA-0306)",
     "trigger": "workflow_dispatch",
@@ -21,7 +21,7 @@
     "signature": "Auto Writer (AI article generation)::Fail closed on generation failure|Generate the next chunk (AI writer + sandboxed production QA)",
     "attempts": {
       "agent4": 1,
-      "agent5": 0
+      "agent5": 1
     },
     "production_paused": true,
     "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required"
