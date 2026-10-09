@@ -20,7 +20,7 @@ Production: https://chatbot.thuexemaynguyentu.com
 
 - Writer cũ dùng inference API GitHub Models đã ngừng hoạt động. Repository `/vanchinh` đã hoàn thành 2.000 bài bằng writer bên ngoài; chỉ áp dụng cơ chế QA/publish tương thích, không coi nó là bằng chứng inference local.
 - Ollama cũ đợi toàn bộ response dài trước khi trả về, gặp lỗi fetch ở khoảng 5 phút. Adapter hiện đọc streaming NDJSON, có timeout tổng hữu hạn, UTF-8 xuyên chunk, xác nhận done và từ chối dữ liệu bị cắt/lỗi/trailing.
-- Monolithic Qwen3 4B streaming ổn định nhưng chỉ sinh 1.199/1.147 từ, bị QA từ chối. Writer hiện sinh outline và bảy phần có giới hạn riêng, ghép bài rồi chạy QA thật cho từng bài và cả cặp; không thêm đoạn đệm.
+- Monolithic Qwen3 4B streaming ổn định nhưng chỉ sinh 1.199/1.147 từ, bị QA từ chối. Writer hiện sinh outline và năm phần có giới hạn riêng, ghép bài rồi chạy QA thật cho từng bài và cả cặp; không thêm đoạn đệm hoặc cắt bài để đạt độ dài.
 - Qwen3 1.7B không đáp ứng độ dài và sinh khẳng định pháp lý sai trong dry-run; không dùng các bài đó. Model hiện là `qwen3:4b-instruct-2507-q4_K_M`, context 4.096, một model/luồng inference, loopback, không API AI trả phí hay token model.
 - Schema retrieval cố định mảng rỗng cho SAFE và đúng hai knowledge chunks cho bài retrieval. Giới hạn title/description được đưa vào schema. Mọi component/candidate bị từ chối được lưu để điều tra.
 - BA-0305 dùng dữ kiện và nguồn tốc độ đã đối chiếu; loại liên kết pháp lý không liên quan. Các mâu thuẫn pháp lý đã quan sát bị từ chối. Chỉ sửa typo Mai Châu ở dòng BA-0306 còn PLANNED.
@@ -45,7 +45,11 @@ Production: https://chatbot.thuexemaynguyentu.com
 | Monolithic 4B dry-run | [37821331522](https://github.com/thuexemayhanoi/aichatbot/actions/runs/37821331522) | RED đúng chuẩn: 1.199/1.147 từ; HTTP streaming 11,45/8,50 phút, swap 0 |
 | 1.7B dry-runs | [37878076696](https://github.com/thuexemayhanoi/aichatbot/actions/runs/37878076696), [37879272052](https://github.com/thuexemayhanoi/aichatbot/actions/runs/37879272052) | RED đúng chuẩn; metadata/độ dài/khẳng định nguồn không đạt; không publish |
 | 4B Instruct metadata trial | [37880999484](https://github.com/thuexemayhanoi/aichatbot/actions/runs/37880999484) | RED đúng chuẩn: description 195–283 ký tự, vượt 165; RAM còn khoảng 11 GiB, swap 0 |
-| Dry-run sau bản sửa metadata | [37883733740](https://github.com/thuexemayhanoi/aichatbot/actions/runs/37883733740) | ĐANG CHẠY; chưa có bằng chứng cặp bài đạt QA |
+| Dry-run sau bản sửa metadata | [37883733740](https://github.com/thuexemayhanoi/aichatbot/actions/runs/37883733740) | RED đúng chuẩn: metadata qua, phần đầu 312–351 từ vượt khung ghép bảy phần cũ; chưa có cặp bài đạt QA |
+
+Component của run `37883733740` có số công văn bịa `3045/2024/CP`, tên cơ quan nguồn sai, câu khuyên duy trì tốc độ tối đa trong mọi điều kiện và khẳng định loại ngoại ô/khu công nghiệp khỏi phạm vi khu đông dân cư. Commit `0e8dd08953aaf31aeaa484c2eee4ec3af1b57ce0` đưa các lỗi quan sát đó vào regression và guard nguồn, cung cấp đúng tên văn bản của Sở Giao thông vận tải Lai Châu. Không nới allowlist nguồn.
+
+Bản ghép tiếp theo dùng năm phần 300–370 từ để khớp độ dài tự nhiên đã đo của 4B, với phản hồi retry đúng hướng rút gọn/bổ sung chi tiết. Bộ QA toàn bài/cặp và giới hạn 1.600–2.200 từ giữ nguyên; đây chưa phải bằng chứng production đã khôi phục.
 
 ## Điều kiện còn phải chứng minh
 

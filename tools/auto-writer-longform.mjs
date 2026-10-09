@@ -1,7 +1,9 @@
-/** Bounded AI outline + seven substantive sections; no synthetic padding. */
+/** Bounded AI outline + five substantive sections; no synthetic padding. */
 import { callModel } from './auto-writer-model.mjs';
 
-export const SECTION_COUNT = 7;
+export const SECTION_COUNT = 5;
+export const SECTION_MIN_WORDS = 300;
+export const SECTION_MAX_WORDS = 370;
 const stray = /[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af\u0400-\u04ff]/;
 export const htmlWords = (s) => String(s).replace(/<[^>]*>/g, ' ').trim().split(/\s+/).filter(Boolean).length;
 const fragmentSchema = { type: 'object', properties: { body_html: { type: 'string' } }, required: ['body_html'], additionalProperties: false };
@@ -22,6 +24,7 @@ export function outlineSchema(needsChunks) {
 function fragmentError(html, min, max) {
   if (typeof html !== 'string' || !html.trim()) return 'missing HTML';
   if (stray.test(html) || /<(?:h[1-6]|script|style|table)\b/i.test(html)) return 'invalid language or fragment markup';
+  if (/đề bài|schema|body_html|knowledge_chunks/i.test(html)) return 'internal writing instructions leaked into reader prose';
   const n = htmlWords(html);
   return n < min || n > max ? `đếm được ${n} từ; bắt buộc ${min}-${max} từ` : '';
 }
@@ -35,8 +38,9 @@ export function outlineError(o, needsChunks) {
   }
   if (!Array.isArray(o.sections) || o.sections.length !== SECTION_COUNT ||
       new Set(o.sections.map((s) => s.heading?.toLowerCase())).size !== SECTION_COUNT ||
-      o.sections.some((s) => !s.heading || s.heading.length > 90 || /[<>]/.test(s.heading) || !s.brief)) return 'need seven distinct concrete sections';
-  if (o.sections.some((s) => /^(?:tổng kết|kết luận)|lời mời mở chat/i.test(s.heading))) return 'conclusion belongs outside the seven substantive sections';
+      o.sections.some((s) => !s.heading || s.heading.length > 90 || /[<>]/.test(s.heading) || !s.brief)) return 'need five distinct concrete sections';
+  if (o.sections.some((s) => /^(?:tổng kết|kết luận)|lời mời mở chat/i.test(s.heading))) return 'conclusion belongs outside the five substantive sections';
+  if (o.sections.some((s) => /^(?:nguồn pháp lý|tài liệu tham khảo)|đề bài|điều kiện pháp lý.*(?:chưa|không bao gồm)/i.test(s.heading))) return 'each section must answer a reader question, not discuss sources or internal brief limits';
   if (stray.test(JSON.stringify(o))) return 'non-Vietnamese characters';
   return fragmentError(o.intro_html, 50, 130) || fragmentError(o.conclusion_html, 50, 130);
 }
@@ -44,7 +48,7 @@ export function outlineError(o, needsChunks) {
 export function assembleArticle(outline, fragments) {
   if (fragments.length !== SECTION_COUNT) throw new Error('incomplete article sections');
   for (const html of fragments) {
-    const error = fragmentError(html, 220, 270);
+    const error = fragmentError(html, SECTION_MIN_WORDS, SECTION_MAX_WORDS);
     if (error) throw new Error(`section rejected: ${error}`);
   }
   const body_html = [outline.intro_html, ...fragments.map((html, i) => `<h2>${outline.sections[i].heading}</h2>\n${html}`),
@@ -73,10 +77,10 @@ export async function generateLongform({ model, system, user, needsChunks, confi
   let feedback = '';
   for (let retry = 0; retry < 2; retry++) {
     const candidate = await request(`Bạn là biên tập viên tiếng Việt. Chỉ trả JSON theo schema. ${policy}
-Lập bảy phần KHÁC NHAU và bám sát chủ đề, mỗi phần giải quyết một câu hỏi thực tế của khách thuê xe. Brief hướng dẫn cách giải thích, không tự suy diễn luật lệ.
-Không dùng phần tổng kết, kết luận, lời mời mở chat hoặc mục chỉ liệt kê liên kết trong bảy phần. Quy tắc về tiền cọc là giới hạn khi cần nhắc tới, không phải yêu cầu chèn tiền cọc vào chủ đề khác.
+Lập năm phần KHÁC NHAU và bám sát chủ đề, mỗi phần giải quyết một câu hỏi thực tế của khách thuê xe. Brief hướng dẫn cách giải thích, không tự suy diễn luật lệ.
+Không dùng phần tổng kết, kết luận, lời mời mở chat hoặc mục về nguồn/tài liệu tham khảo trong năm phần. Không đưa giới hạn đề bài, dữ kiện chưa cung cấp hay hướng dẫn viết vào nội dung cho khách. Quy tắc về tiền cọc là giới hạn khi cần nhắc tới, không phải yêu cầu chèn tiền cọc vào chủ đề khác.
 intro_html và conclusion_html: mỗi chuỗi có 50-130 từ, chỉ thẻ p/a/strong; kết luận có lời mời mở chat phù hợp chủ đề.
-title 10-70 ký tự; description chỉ MỘT câu ngắn khoảng 90-140 ký tự, bắt buộc không quá 165 ký tự; knowledge_chunks theo chính sách đề bài. Không viết các phần thân bài lúc này.`,
+title 10-70 ký tự, viết như một câu tiếng Việt tự nhiên, không viết hoa từng từ; description chỉ MỘT câu ngắn khoảng 90-140 ký tự, bắt buộc không quá 165 ký tự; knowledge_chunks theo chính sách đề bài. Không viết các phần thân bài lúc này.`,
       `${user}\nNhiệm vụ hiện tại CHỈ là outline, mở đầu và kết luận, chưa phải bài 1600 từ. ${feedback}`, outlineSchema(needsChunks), 1800, 'outline');
     const error = outlineError(candidate, needsChunks);
     if (!error) { outline = candidate; break; }
@@ -88,20 +92,26 @@ title 10-70 ký tự; description chỉ MỘT câu ngắn khoảng 90-140 ký t�
   for (const [i, section] of outline.sections.entries()) {
     feedback = '';
     let accepted = false;
+    let requestedWords = 250;
     for (let retry = 0; retry < 2; retry++) {
       const part = await request(`Bạn viết MỘT phần thân bài tiếng Việt, chỉ JSON {"body_html":"..."}. ${policy}
-Viết 240-260 từ cho phần hiện tại, khoảng 4-5 đoạn cụ thể. Không viết h1/h2/h3, mở đầu cả bài, tổng kết cả bài, hoặc metadata.
+Viết khoảng ${requestedWords} từ tiếng Việt tự nhiên cho phần hiện tại, khoảng 4-5 đoạn cụ thể. Không viết h1/h2/h3, mở đầu cả bài, tổng kết cả bài, hoặc metadata.
 Chỉ giải quyết câu hỏi của phần này. Không lặp lại lời khuyên chung, không chuyển sang tiền cọc hoặc quy trình cửa hàng nếu không thuộc chủ đề của phần.
-Chỉ thẻ p/strong/a/ul/ol/li. Phần số 4 cần danh sách hành động cụ thể. Mỗi đoạn thêm thông tin hữu ích, không lặp ý để đạt độ dài.
-Liên kết chỉ khi phù hợp, không chèn liên kết trong mọi phần. Dữ kiện pháp lý chỉ từ đề bài.`,
-        `${user}\nBảy góc bài: ${outline.sections.map((s) => s.heading).join(' | ')}\nPHẦN ${i + 1}/7: ${section.heading}\nBrief: ${section.brief}\nChỉ viết phần này với 240-260 từ. ${feedback}`,
-        fragmentSchema, 1000, `section ${i + 1}/7`);
-      const error = fragmentError(part.body_html, 220, 270);
-      if (!error) { fragments.push(part.body_html); accepted = true; log(`section ${i + 1}/7 accepted (${htmlWords(part.body_html)} words)`); break; }
-      feedback = `Phần trước bị từ chối: ${error}. Viết lại toàn bộ phần này đủ độ dài, mỗi đoạn là một ý khác nhau.`;
+Chỉ thẻ p/strong/a/ul/ol/li. Phần số 4 cần danh sách hành động cụ thể. Mỗi đoạn thêm thông tin hữu ích, không lặp ý để đạt độ dài. Không đưa hướng dẫn viết hoặc giới hạn của đề bài vào văn cho người đọc.
+Liên kết chỉ khi phù hợp, không chèn liên kết trong mọi phần. Dữ kiện pháp lý chỉ từ đề bài; chỉ dùng dữ kiện liên quan phần hiện tại, không nhắc lại toàn bộ quy định trong mọi phần.`,
+        `${user}\nNăm góc bài: ${outline.sections.map((s) => s.heading).join(' | ')}\nPHẦN ${i + 1}/${SECTION_COUNT}: ${section.heading}\nBrief: ${section.brief}\nChỉ viết phần này với khoảng ${requestedWords} từ. ${feedback}`,
+        fragmentSchema, 1000, `section ${i + 1}/${SECTION_COUNT}`);
+      const error = fragmentError(part.body_html, SECTION_MIN_WORDS, SECTION_MAX_WORDS);
+      const words = htmlWords(part.body_html ?? '');
+      if (!error) { fragments.push(part.body_html); accepted = true; log(`section ${i + 1}/${SECTION_COUNT} accepted (${words} words)`); break; }
+      const direction = words > SECTION_MAX_WORDS ? 'Rút gọn phần này, bỏ câu lặp và ý không thuộc câu hỏi hiện tại.'
+        : words < SECTION_MIN_WORDS ? 'Bổ sung chi tiết thực tế liên quan câu hỏi này, mỗi đoạn thêm một ý hữu ích khác nhau.'
+          : 'Sửa đúng ngôn ngữ và cấu trúc cho người đọc.';
+      if (words > 0) requestedWords = Math.max(180, Math.min(320, Math.round(requestedWords * 335 / words)));
+      feedback = `Phần trước bị từ chối: ${error}. ${direction} Viết lại toàn bộ phần, không thêm đoạn đệm.`;
       log(feedback);
     }
-    if (!accepted) throw new Error(`section ${i + 1}/7 failed after two bounded attempts: ${feedback}`);
+    if (!accepted) throw new Error(`section ${i + 1}/${SECTION_COUNT} failed after two bounded attempts: ${feedback}`);
   }
   return assembleArticle(outline, fragments);
 }

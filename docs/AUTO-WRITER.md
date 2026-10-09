@@ -29,8 +29,8 @@ The site's canonical domain is **https://chatbot.thuexemaynguyentu.com**.
    maximum four. Requests have a 20-minute timeout; the job is bounded to
    120 minutes. CPU inference is slower than a hosted model, so a cron tick
    is an opportunity to run, not a promise of two articles every 25 minutes.
-   `auto-writer-longform.mjs` generates an AI outline and seven distinct
-   sections (220–270 words each), with at most two calls per component.
+   `auto-writer-longform.mjs` generates an AI outline and five distinct
+   sections (300–370 counted words each), with at most two calls per component.
    It uses a 4,096-token context and structured JSON schemas. All prose comes
    from local inference; assembly never pads or repeats paragraphs. Full
    article and pair QA still run after assembly. Rejected real candidates
@@ -132,3 +132,11 @@ and verified-source refusals. The citable notice is explicitly identified
 as a publication of **Sở Giao thông vận tải Lai Châu**. Its filename is not
 treated as a legal document number. The gov.vn/vbpl.vn link policy remains
 unchanged; other verified primary sources stay in the source record.
+
+The 4B trial's natural sections fit five substantive parts, so composition
+now uses five 300–370-word parts and retains the full 1,600–2,200-word
+article guard and production QA. Retry feedback explicitly shortens an
+oversized part and asks for useful missing detail in a short one; the next
+requested length adapts to the measured count. Rejected text is regenerated,
+never sliced or padded. Headings about internal brief limits or reference
+lists are refused, and writing instructions cannot leak into reader prose.
