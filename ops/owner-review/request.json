@@ -1,7 +1,10 @@
 {
-  "action": "smoke-test",
+  "action": "dry-run",
   "model": "qwen3:4b-instruct-2507-q4_K_M",
-  "request_id": "recovery-20261009-instruct-model-smoke",
+  "max_attempts": 2,
+  "request_id": "recovery-20261009-instruct-pair-dry-run",
   "verification_sha": "c914f4cd1655f1076d6e26215bc305c529a6d7d1",
-  "note": "942 full tests PASS and CI/Distribution GREEN. Verify exact Apache-2.0 non-thinking 4B Instruct Q4 tag on real Actions before long-form QA; preserve production pause, incident, maintenance lock and 304 published articles."
+  "smoke_run_id": "37880775795",
+  "pages_test_run_id": "37879032899",
+  "note": "942 full tests and CI/Distribution GREEN. Exact 4B Instruct real smoke GREEN; existing 304 articles and native Pages build verified. Generate real BA-0305/BA-0306 and full pair QA with source-contradiction guards; do not publish or alter incident/checkpoints."
 }
