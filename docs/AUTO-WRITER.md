@@ -140,3 +140,12 @@ oversized part and asks for useful missing detail in a short one; the next
 requested length adapts to the measured count. Rejected text is regenerated,
 never sliced or padded. Headings about internal brief limits or reference
 lists are refused, and writing instructions cannot leak into reader prose.
+
+Dry-run `37887122359` generated five BA-0305 sections of 314–358 counted
+words with stable streaming and 11 GiB available RAM, but the complete
+candidate was correctly refused for a missing HTML action list. Section
+four now checks that requirement within its two bounded attempts, before
+whole-article QA. No list or prose is inserted by the engine. Read-only
+evidence rendering logs the original model bodies/components with a size
+limit and a safe line prefix; `evidence-review` in the owner shim can review
+a completed main writer run without changing production or incident state.

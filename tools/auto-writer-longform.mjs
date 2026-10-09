@@ -21,10 +21,11 @@ export function outlineSchema(needsChunks) {
   } };
 }
 
-function fragmentError(html, min, max) {
+function fragmentError(html, min, max, needsList = false) {
   if (typeof html !== 'string' || !html.trim()) return 'missing HTML';
   if (stray.test(html) || /<(?:h[1-6]|script|style|table)\b/i.test(html)) return 'invalid language or fragment markup';
   if (/đề bài|schema|body_html|knowledge_chunks/i.test(html)) return 'internal writing instructions leaked into reader prose';
+  if (needsList && !/<(?:ul|ol)\b/i.test(html)) return 'thiếu danh sách hành động: bắt buộc một ul hoặc ol với các li cụ thể';
   const n = htmlWords(html);
   return n < min || n > max ? `đếm được ${n} từ; bắt buộc ${min}-${max} từ` : '';
 }
@@ -47,8 +48,8 @@ export function outlineError(o, needsChunks) {
 
 export function assembleArticle(outline, fragments) {
   if (fragments.length !== SECTION_COUNT) throw new Error('incomplete article sections');
-  for (const html of fragments) {
-    const error = fragmentError(html, SECTION_MIN_WORDS, SECTION_MAX_WORDS);
+  for (const [i, html] of fragments.entries()) {
+    const error = fragmentError(html, SECTION_MIN_WORDS, SECTION_MAX_WORDS, i === 3);
     if (error) throw new Error(`section rejected: ${error}`);
   }
   const body_html = [outline.intro_html, ...fragments.map((html, i) => `<h2>${outline.sections[i].heading}</h2>\n${html}`),
@@ -101,10 +102,11 @@ Chỉ thẻ p/strong/a/ul/ol/li. Phần số 4 cần danh sách hành động c�
 Liên kết chỉ khi phù hợp, không chèn liên kết trong mọi phần. Dữ kiện pháp lý chỉ từ đề bài; chỉ dùng dữ kiện liên quan phần hiện tại, không nhắc lại toàn bộ quy định trong mọi phần.`,
         `${user}\nNăm góc bài: ${outline.sections.map((s) => s.heading).join(' | ')}\nPHẦN ${i + 1}/${SECTION_COUNT}: ${section.heading}\nBrief: ${section.brief}\nChỉ viết phần này với khoảng ${requestedWords} từ. ${feedback}`,
         fragmentSchema, 1000, `section ${i + 1}/${SECTION_COUNT}`);
-      const error = fragmentError(part.body_html, SECTION_MIN_WORDS, SECTION_MAX_WORDS);
+      const error = fragmentError(part.body_html, SECTION_MIN_WORDS, SECTION_MAX_WORDS, i === 3);
       const words = htmlWords(part.body_html ?? '');
       if (!error) { fragments.push(part.body_html); accepted = true; log(`section ${i + 1}/${SECTION_COUNT} accepted (${words} words)`); break; }
-      const direction = words > SECTION_MAX_WORDS ? 'Rút gọn phần này, bỏ câu lặp và ý không thuộc câu hỏi hiện tại.'
+      const direction = /thiếu danh sách/.test(error) ? 'Viết lại phần này và PHẢI có danh sách HTML <ul><li>...</li></ul> hoặc <ol><li>...</li></ol>. Mỗi mục là một hành động hữu ích, không chèn thêm câu lặp.'
+        : words > SECTION_MAX_WORDS ? 'Rút gọn phần này, bỏ câu lặp và ý không thuộc câu hỏi hiện tại.'
         : words < SECTION_MIN_WORDS ? 'Bổ sung chi tiết thực tế liên quan câu hỏi này, mỗi đoạn thêm một ý hữu ích khác nhau.'
           : 'Sửa đúng ngôn ngữ và cấu trúc cho người đọc.';
       if (words > 0) requestedWords = Math.max(180, Math.min(320, Math.round(requestedWords * 335 / words)));

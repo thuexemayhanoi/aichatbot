@@ -117,6 +117,15 @@ jobs:
                   echo "RESOLVE_EXIT=0"
                 fi
                 ;;
+              evidence-review)
+                # Read-only inspection; does not clear incidents or certify GREEN.
+                RUN=$(node -e 'const id = String(require("./ops/owner-review/request.json").run_id || ""); if (!/^[0-9]+$/.test(id)) throw new Error("invalid run_id"); console.log(id)')
+                META=$(gh api "repos/$GH_REPO/actions/runs/$RUN")
+                printf '%s' "$META" | node --input-type=module -e 'let text = ""; for await (const chunk of process.stdin) text += chunk; const run = JSON.parse(text); if (run.head_branch !== "main" || run.path !== ".github/workflows/auto-writer.yml" || run.status !== "completed") throw new Error("review requires a completed main Auto Writer run")'
+                REVIEW_DIR=$(mktemp -d "$RUNNER_TEMP/writer-review.XXXXXX")
+                gh run download "$RUN" --name "writer-evidence-$RUN" --dir "$REVIEW_DIR"
+                node tools/auto-writer-evidence.mjs "$REVIEW_DIR/writer-work-auto-dryrun"
+                ;;
               noop)
                 echo "review controls updated; no production action requested"
                 ;;

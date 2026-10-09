@@ -60,3 +60,11 @@ Bản ghép tiếp theo dùng năm phần 300–370 từ để khớp độ dài
 5. Số bài trước/sau và hash 304 bài ban đầu được xác minh lại; lịch và chế độ vận hành tự động được xác nhận.
 
 Chưa có điều kiện nào ở trên được đánh dấu hoàn tất chỉ dựa vào unit test hoặc một smoke ngắn. Báo cáo sẽ được cập nhật bằng run ID, commit SHA và URL thực tế sau khi từng bước đạt.
+
+## Recovery continuation at 05:38 UTC
+- Full test suite at `aa8b95bb1f0d4f344aa9edea9cebdf4884c71b84`: 945 passed, zero failures/skips; CI `37886694135`, Distribution `37886694092`, Pages `37886693888` GREEN.
+- Real dry-run `37887122359` at `1a51254305c7136be7b64e25d95aa9f431a4be3e` is RED, not a successful recovery proof. Ollama smoke passed; two outlines were refused; the next outline and five sections succeeded (322, 358, 349, 314, 316 words). Complete BA-0305 was refused because it lacked the required HTML action list. BA-0306 was not accepted or published.
+- Runner: 15 GiB RAM, 11 GiB available after generation, 3 GiB swap configured with zero use; local streamed requests completed without fetch failures. Original evidence artifact: `11596679245`, SHA-256 `f477d82d9459de0c09ff46fe12146d383730d34c18527160d3048565d3b9da1f`.
+- The fourth section now validates its action list within bounded component retry. Whole-article length and full pair QA remain mandatory.
+- The Work execution environment returned `409 environment_offline`. Repository access through GitHub remains available. Further full tests execute on GitHub Actions; read-only evidence review can expose the original artifact bodies/components without publishing them.
+- Another concrete remaining issue: 200 PLANNED legal-gate rows cover 47 subjects, but most still fall back to unrelated prior article links. Subject-specific current primary-source packs are being prepared. This work is not complete and production remains PAUSED with the incident and maintenance lock preserved.
