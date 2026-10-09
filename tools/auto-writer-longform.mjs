@@ -152,7 +152,12 @@ Không tự tạo liên kết HTTPS (kể cả https://vbpl.vn) nếu đề bài
         : words > SECTION_MAX_WORDS ? 'Rút gọn phần này, bỏ câu lặp và ý không thuộc câu hỏi hiện tại.'
         : words < SECTION_MIN_WORDS ? 'Bổ sung chi tiết thực tế liên quan câu hỏi này, mỗi đoạn thêm một ý hữu ích khác nhau.'
           : 'Sửa đúng ngôn ngữ và cấu trúc cho người đọc.';
-      if (words > 0) requestedWords = Math.max(300, Math.min(370, Math.round(requestedWords * 320 / words)));
+      // Too-long prose should be shortened; a missing action list or a
+      // borderline-short section must instead request a comfortably longer
+      // concrete rewrite, not another sub-threshold section.
+      if (words > 0) requestedWords = words > SECTION_MAX_WORDS
+        ? Math.max(220, Math.min(300, Math.round(requestedWords * 320 / words)))
+        : Math.max(320, Math.min(370, Math.round(requestedWords * 320 / words)));
       feedback = `Phần trước bị từ chối: ${error}. ${direction} Viết lại toàn bộ phần, không thêm đoạn đệm.`;
       log(feedback);
     }
