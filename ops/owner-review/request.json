@@ -1,9 +1,6 @@
 {
-  "action": "dry-run",
-  "model": "qwen3:1.7b",
-  "max_attempts": 2,
-  "request_id": "recovery-20261009-sectioned-dry-run",
-  "verification_sha": "ce60a37c7fbbbdec3bbc80956df7a261f87c6f72",
-  "smoke_run_id": "37824564900",
-  "note": "Authorized real long-form generation and full pair QA for BA-0305/BA-0306; production and active incident remain paused. CI/Distribution are green on ce60a37; 935 local tests pass; smaller open local model smoke succeeded."
+  "action": "pages-test",
+  "request_id": "recovery-20261009-verify-native-pages-auth",
+  "verification_sha": "7c38d96c13928d9002486225d88e600e83e9d29f",
+  "note": "Verify explicit Pages build request with GITHUB_TOKEN and exact deployed SHA against the validated existing 304-article site; do not change article, queue, incident, lock or Pages settings."
 }
