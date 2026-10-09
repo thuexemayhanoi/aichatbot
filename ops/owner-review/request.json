@@ -1,7 +1,5 @@
 {
-  "action": "dry-run",
-  "model": "qwen3:4b-instruct-2507-q4_K_M",
-  "max_attempts": 2,
-  "request_id": "recovery-20261009-approved-800-2000-three-sections",
-  "note": "Real two-article QA under the owner's approved 800–2000 range; production remains PAUSED and all publication mutations must be skipped."
+  "action": "legal-source-review",
+  "request_id": "recovery-20261009-current-primary-documents",
+  "note": "Read-only PDF retrieval and original-text evidence for current source coverage. Does not generate, publish, resume, resolve incidents or change checkpoints."
 }
