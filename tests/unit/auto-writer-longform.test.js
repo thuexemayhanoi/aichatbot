@@ -32,9 +32,9 @@ test('missing paragraph closures are repaired only at block boundaries, without 
   const frags = parts(330);
   frags[2] = frags[2].slice(0, -4);
   const article = assembleArticle(o, frags);
-  assert.equal((article.body_html.match(/<p>/g) ?? []).length, (article.body_html.match(/<\\/p>/g) ?? []).length);
+  assert.equal((article.body_html.match(/<p>/g) ?? []).length, (article.body_html.match(/<\/p>/g) ?? []).length);
   assert.ok(htmlWords(article.body_html) >= 800 && htmlWords(article.body_html) <= 2000);
-  assert.ok(article.body_html.includes('từ329</p>\\n<h2>Tổng kết</h2>'));
+  assert.ok(article.body_html.includes('từ329</p>\n<h2>Tổng kết</h2>'));
 });
 
 test('outline rejects missing chunks, duplicate coverage and invalid language', () => {
