@@ -1,4 +1,4 @@
-# MotoAI — Local-first Vietnamese motorbike rental chatbot
+> **VẬN HÀNH NỘI DUNG HIỆN HÀNH (11/10/2026):** Chỉ có **1 AI writer bên ngoài GitHub Actions** viết và push bài; **không chạy Ollama/Qwen trong GitHub Actions**, không coordinator/publisher/controller/ops agents nữa. Push trực tiếp 1–10 tệp `data/blog/articles/<slug>.body.html`; `blog-factory-publish.yml` tự đăng ký manifest từ matrix, QA, build và verify. Xem [AGENTS.md](AGENTS.md), [External Writer](docs/EXTERNAL-WRITER.md), [Continuous Writer](docs/CONTINUOUS-WRITER.md). Các mục bên dưới mô tả chatbot local-first và lịch sử factory; nếu mâu thuẫn, hợp đồng vận hành mới thắng.\n\n# MotoAI — Local-first Vietnamese motorbike rental chatbot
 
 MotoAI là chatbot thuê xe máy cho **Thuê Xe Máy Hà Nội Nguyễn Tú**, chạy hoàn toàn tĩnh trên GitHub Pages: không backend, không API key, không phí inference.
 
