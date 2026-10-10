@@ -78,8 +78,21 @@
           "BA-0323",
           "BA-0324"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "PUBLISHED",
+        "events": [
+          {
+            "state": "PUSHED",
+            "at": "2026-10-10T02:42:01.832Z"
+          },
+          {
+            "state": "FACTORY_PROCESSING",
+            "at": "2026-10-10T02:42:01.832Z"
+          },
+          {
+            "state": "PUBLISHED",
+            "at": "2026-10-10T02:42:01.832Z"
+          }
+        ]
       },
       {
         "seq": 5,
