@@ -294,7 +294,31 @@ jobs:
           VERIFY_IDS: ${{ inputs.article_ids || steps.select.outputs.ids }}
         run: |
           set -euo pipefail
-          node tools/factory-verification.mjs --published-from "$VERIFY_IDS"
+          # GitHub Pages reports the build SHA before every edge cache necessarily
+          # serves the new manifest/matrix/pages. Retry ONLY those bounded
+          # production-consistency mismatches, never local/QA/safety failures.
+          # Receipts remain unwritten unless exact live evidence passes.
+          for attempt in $(seq 1 12); do
+            if proof=$(node tools/factory-verification.mjs --published-from "$VERIFY_IDS" 2>&1); then
+              printf '%s\n' "$proof"
+              break
+            fi
+            printf '%s\n' "$proof"
+            case "$proof" in
+              *"production manifest/matrix mismatch:"*|*"production page differs from distributed page:"*|*"sitemap evidence missing/duplicate:"*)
+                if [ "$attempt" -eq 12 ]; then
+                  echo "::error::Production stayed inconsistent after 12 checks; receipts NOT written"
+                  exit 1
+                fi
+                echo "::warning::Pages edge not consistent yet (attempt $attempt/12); retrying exact verification in 15s"
+                sleep 15
+                ;;
+              *)
+                echo "::error::Non-transient production verification failure; refusing retry"
+                exit 1
+                ;;
+            esac
+          done
           if [ ! -f docs/state/publication-receipts.json ]; then exit 0; fi
           git add docs/state/publication-receipts.json
           if git diff --cached --quiet; then exit 0; fi
