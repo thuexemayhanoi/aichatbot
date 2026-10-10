@@ -21,9 +21,9 @@
  * Guardrails kept identical to the human-writer contract:
  *   - only the chunk's exact ids, only its assigned writer slot;
  *   - business facts ONLY via verified placeholders;
- *   - internal links only within the row's hub (+ root);
+ *   - at most one relevant optional safe reader link; invalid links are unlinked;
  *   - SAFE legal-gate rows need a gov.vn/vbpl.vn link from the verified list;
- *   - no stray CJK/Cyrillic, no markdown, no <h1>, no external prose links;
+ *   - no stray CJK/Cyrillic, no markdown, no <h1>; external HTTPS links permitted;
  *   - knowledge_chunks per agent_retrieval (SAFE -> [], else 2 x <800 chars).
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, symlinkSync, statSync, mkdtempSync, rmSync } from 'node:fs';
@@ -38,7 +38,7 @@ import { modelConfig, DEFAULT_MODEL } from './auto-writer-model.mjs';
 import { readPublicationBudget } from './factory-target.mjs';
 import { generateLongform } from './auto-writer-longform.mjs';
 import { CONTENT_MIN_WORDS, CONTENT_MAX_WORDS } from './writer-content-policy.mjs';
-import { normalizeInternalAnchors } from './site-audit.mjs';
+import { normalizeInternalAnchors, sanitizeDraftAnchors } from './site-audit.mjs';
 
 export const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -164,23 +164,19 @@ export function validateCandidate(row, cand, ctx) {
   if (/\]\(|\)\s*<\/a>/i.test(body.replace(/<a href="[^"]*">[^<]*<\/a>/g, ''))) errs.push('markdown links are not allowed (use <a href>)');
   const wc = countWords(body);
   if (wc < CONTENT_MIN_WORDS || wc > CONTENT_MAX_WORDS) errs.push(`body word count ${wc} outside ${CONTENT_MIN_WORDS}-${CONTENT_MAX_WORDS}`);
-  const { internal, external } = splitLinks(body);
-  const prefixes = ctx.allowedHubPrefixes;
-  for (const href of internal) {
-    if (href === '/') continue;
-    if (!prefixes.some((p) => href === p || href.startsWith(p))) {
-      errs.push(`internal link outside the row's hub is not allowed: ${href}`);
+  const { external } = splitLinks(body);
+  // Ordinary editorial links are best-effort; the draft sanitizer removes
+  // broken/unsafe anchors before this check. Only verified legal citations
+  // remain mandatory, because a false law source is a content-safety issue.
+  if (ctx.needsLegalLink) {
+    for (const href of external) {
+      if (ctx.legalLinks?.length && !ctx.legalLinks.includes(href)) {
+        errs.push(`legal source link was not verified for this topic: ${href}`);
+      }
     }
-  }
-  for (const href of external) {
-    // NOTE: do not reuse the global LEGAL_LINK_RE here — its lastIndex state
-    // leaks between .test() and .matchAll() and silently rejects valid links.
-    const ok = ctx.needsLegalLink && /gov\.vn|vbpl\.vn/.test(href);
-    if (!ok) errs.push(`external link not allowed (only gov.vn/vbpl.vn for legal-gate rows): ${href}`);
-    else if (ctx.legalLinks?.length && !ctx.legalLinks.includes(href)) errs.push(`legal source link was not verified for this topic: ${href}`);
-  }
-  if (ctx.needsLegalLink && !external.some((h) => /gov\.vn|vbpl\.vn/.test(h))) {
-    errs.push('legal-gate row: body needs at least one gov.vn/vbpl.vn source link');
+    if (!external.some((h) => /^https:\/\/[^/]*(?:gov\.vn|vbpl\.vn)\//i.test(h))) {
+      errs.push('legal-gate row: body needs at least one gov.vn/vbpl.vn source link');
+    }
   }
   if (/app store|google play/i.test(body)) errs.push('forbidden strings: app store / google play');
   const phoneLike = body.match(/\+?\d(?:[\d\s.\-]{7,})\d/g);
@@ -231,9 +227,9 @@ export function buildPrompt(row, ctx, feedback) {
     lines.push('Đây là bài pháp lý (legal-gate): PHẢI dẫn ít nhất 1 nguồn gov.vn hoặc vbpl.vn bằng thẻ <a href> trực tiếp trong thân bài. Chỉ dùng link và tên nguồn đã kiểm chứng sau: ' + sources.join(' | '));
     lines.push('Giữ đúng tên cơ quan và số hiệu đã cho; không đoán số văn bản từ tên file URL.');
   } else {
-    lines.push('KHÔNG dùng bất kỳ liên kết ngoài nào. Mọi liên kết trong thân bài phải là liên kết nội bộ.');
+    lines.push('Chỉ cần TỐI ĐA MỘT liên kết hữu ích; có thể là nội bộ hoặc nguồn ngoài HTTPS đáng tin. Nếu không có URL chắc chắn thì không chèn link. Không tự bịa URL.');
   }
-  lines.push(`Liên kết nội bộ CHỈ ĐƯỢC PHEP trỏ tới các slug trong hub ${hubDir} (danh sách bên dưới) hoặc về trang chủ "/":`);
+  lines.push(`Gợi ý liên kết nội bộ đã xuất bản trong hub ${hubDir} (không tự đoán slug). Có thể về trang chủ \"/\" nếu cần:`);
   lines.push((ctx.hubSlugs.length ? ctx.hubSlugs.join(', ') : '(hub chưa có bài nào — chỉ dùng link về "/")'));
   if (ctx.exampleTitles.length) {
     lines.push('Vài tiêu đề đã xuất bản trong hub này (chỉ để đo hơi văn phong, TUYỆT ĐỐI không sao chép câu): ' + ctx.exampleTitles.join(' | '));
@@ -260,7 +256,7 @@ QUY TẮC BẤT BUỘC:
 4. Tiếng Việt chuẩn, tự nhiên, đúng chính tả. TUYỆT ĐỐI KHÔNG xuất hiện ký tự Trung/Nhận/Hàn/Cyrillic. Không lẫn từ tiếng Anh giữa câu.
 5. Dữ liệu kinh doanh CHỈ qua placeholder (bắt buộc dùng đúng từng ký tự): {{ business.policies.deposit.min | vnd }}, {{ business.policies.deposit.max | vnd }}, {{ business.hours.display }}, {{ business.brand }}, {{ business.contact.phone_display }}, {{ business.address.full }}. KHÔNG bịa giá thuê, số điện thoại, địa chỉ, giờ mở cửa khác. Câu nói về tiền cọc luôn dùng dải placeholder, nói cọc "được đối chiếu trực tiếp lúc nhận xe" và "quay về bạn khi trả xe đúng hiện trạng". KHÔNG viết con số tiền cọc hay giá thuê cụ thể nào.
 6. Không nhắc "app store" hay "google play". Không khẳng định cửa hàng có chi nhánh/giao xe tận nơi trừ khi dùng placeholder giờ mở cửa. Không khẳng định toàn quốc — cửa hàng ở Hà Nội.
-7. Liên kết nội bộ: 2-4 link dạng <a href="/blog/<hub>/<slug>/">chữ mô tả</a> trong văn — chỉ đúng slug được liệt kê, hoặc <a href="/">trang chủ</a>. Không thêm liên kết ngoài trừ bài legal-gate (chỉ link gov.vn/vbpl.vn được liệt kê sẵn).
+7. TỐI ĐA MỘT liên kết thật sự hữu ích cho cả bài, nội bộ dạng <a href="/blog/<hub>/<slug>/">chữ mô tả</a> theo slug đã xuất bản hoặc một nguồn ngoài HTTPS đáng tin. Không tự bịa URL. Không có nguồn chắc chắn thì không chèn link. Riêng bài pháp lý: bắt buộc ưu tiên MỘT trích dẫn gov.vn/vbpl.vn đã được cung cấp, không bỏ nguồn pháp lý.
 8. Mọi câu viết phải MỚI HOÀN TOÀN. Không sao chép câu, cụm kết luận, câu hỏi thường gặp quen mặt từ bất kỳ bài đã xuất bản nào.
 9. title: 10-70 ký tự, chứa từ khóa chính, tự nhiên. description: 50-165 ký tự, tóm đúng nội dung, có từ khóa chính.
 10. An toàn pháp lý: chỉ phát biểu luật lệ/chế tài đã cho trong đề bài hoặc tri thức phổ quát chắc chắn; khi không chắc, diễn đạt thận trọng ("nên xác nhận với cơ quan chức năng/cửa hàng").`;
@@ -432,24 +428,18 @@ async function generateArticle(row, ctx, opts, log) {
       feedback = `Lỗi hệ thống sinh bài (model API): ${lastModelErr.slice(0, 200)}`;
       continue;
     }
-    // Canonical URLs come from the supplied hub inventory, never guessed slugs.
-    const linkPages = new Set([...ctx.hubSlugs, ...ctx.allowedHubPrefixes]
-      .map((url) => url.replace(/^\//, '') + 'index.html'));
-    if (typeof cand?.body_html === 'string') cand = { ...cand, body_html: normalizeInternalAnchors(cand.body_html, row.output_path,
-      (path) => linkPages.has(path)) };
-    // Qwen sometimes adds an unsourced https:// link to non-legal topics.
-    // Convert only a simple <a href="https://...">text</a> back to its
-    // original visible text; any other unexpected markup fails ordinary QA.
-    // Legal-gate sources remain untouched and must pass source verification.
-    if (!ctx.needsLegalLink && typeof cand?.body_html === 'string') {
-      const unlinkedBody = unlinkUnverifiedExternalAnchors(cand.body_html, false);
-      if (unlinkedBody !== cand.body_html) {
-        if (countWords(unlinkedBody) !== countWords(cand.body_html)) {
-          throw new Error('external-link normalization changed reader-visible words');
-        }
-        log('  removed unverified external link markup; preserved reader-visible text');
-        cand = { ...cand, body_html: unlinkedBody };
+    // Best effort: one valid reader link, or none. Broken internal links
+    // become plain text instead of wasting expensive Qwen retries.
+    const existsPage = (path) => existsSync(join(ROOT, path)) && statSync(join(ROOT, path)).isFile();
+    if (typeof cand?.body_html === 'string') {
+      const canonical = normalizeInternalAnchors(cand.body_html, row.output_path, existsPage);
+      const sanitized = sanitizeDraftAnchors(canonical, row.output_path, existsPage,
+        { legalGate: ctx.needsLegalLink });
+      if (countWords(sanitized) !== countWords(cand.body_html)) {
+        throw new Error('reader-link normalization altered visible article words');
       }
+      if (sanitized !== cand.body_html) log('  normalized/unlinked draft anchors; visible wording preserved');
+      cand = { ...cand, body_html: sanitized };
     }
     // Preserve real candidates, including QA refusals, in Actions evidence.
     const evidenceDir = join(ROOT, 'writer-work-auto-dryrun/candidates');
