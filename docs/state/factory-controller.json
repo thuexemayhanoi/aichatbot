@@ -11,7 +11,9 @@
       "supervisor_requested": true
     }
   },
-  "handled_runs": [],
+  "handled_runs": [
+    "38057129936"
+  ],
   "dispatch": {
     "key": "supervisor-INC-20261009174228-q3st",
     "workflow": "ops-supervisor.yml",
