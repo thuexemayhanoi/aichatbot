@@ -12,7 +12,10 @@ export function recoveryChecksReady(runs, sha) {
 }
 
 export function recoveryCodeUnchanged(paths) {
-  return paths.every((path) => /^(?:data\/blog\/(?:articles\/|published\.json$|content-matrix\.csv$|knowledge-index\.json$)|blog\/|reports\/|docs\/state\/|sitemap\.xml$|robots\.txt$)/.test(path));
+  // Ops QA persists these diagnostic results with [skip ci] after full CI and
+  // Distribution have passed. They change no runtime code or article content.
+  // Do NOT allow ops/candidate, workflows or arbitrary ops paths to bypass CI.
+  return paths.every((path) => /^(?:data\/blog\/(?:articles\/|published\.json$|content-matrix\.csv$|knowledge-index\.json$)|blog\/|reports\/|docs\/state\/|sitemap\.xml$|robots\.txt$|ops\/(?:qa-result\.txt|out\/(?:assignments-next\.json|shim-log\.txt|verify-verdict\.txt))$)/.test(path));
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
