@@ -56,8 +56,10 @@ export function normalizeInternalAnchors(html, pagePath, existsFile) {
 export function sanitizeDraftAnchors(html, pagePath, existsFile, { legalGate = false } = {}) {
   if (typeof html !== 'string') return html;
   let retained = 0;
-  return html.replace(/<a\b([^<>]*?)\bhref\s*=\s*(["'])(.*?)\2([^<>]*)>([^<>]*)<\/a>/gi,
-    (tag, _before, _quote, href, _after, label) => {
+  return html.replace(/<a\b([^<>]*?)>([\s\S]*?)<\/a\s*>/gi,
+    (tag, attributes, label) => {
+      const href = /\bhref\s*=\s*(["'])(.*?)\1/i.exec(attributes)?.[2];
+      if (href === undefined) return tag;
       const internal = resolveInternal(pagePath, href, existsFile);
       let valid = internal !== null && existsFile(internal);
       let official = false;
