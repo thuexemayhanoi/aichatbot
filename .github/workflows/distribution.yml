@@ -8,6 +8,7 @@ name: Distribution
 on:
   push:
     branches: [main]
+    tags: ['v*'] # tag releases must trigger artifact/release generation
     paths-ignore:
       - 'data/blog/articles/**'
       - 'data/blog/published.json'
@@ -40,6 +41,9 @@ jobs:
         run: python3 tools/gen-icons.py
 
       - name: Commit generated icons if missing/changed
+        # Tag workflows check out a detached release SHA: never try to push
+        # generated assets from a tag. Icons must already be committed on main.
+        if: github.ref_type != 'tag'
         # GITHUB_TOKEN pushes never re-trigger workflows (documented GitHub behavior).
         run: |
           git config user.name "motoai-bot"
