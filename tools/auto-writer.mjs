@@ -395,6 +395,13 @@ export function runSandboxedQa(rootOverride, id) {
 // one-article generation with bounded retries
 // ---------------------------------------------------------------------------
 
+// Passing the production score is not sufficient for automated writing:
+// repeated/filler prose must be regenerated before a pair is staged.
+export function writerQualityWarnings(output) {
+  return String(output).split('\n').filter((line) =>
+    /^WARN\s+no-(?:cross-article-duplicate|duplicate-paragraphs|duplicate-sentences|filler)\b/.test(line));
+}
+
 async function generateArticle(row, ctx, opts, log) {
   const models = opts.models;
   let feedback = '';
@@ -465,7 +472,8 @@ async function generateArticle(row, ctx, opts, log) {
     }
     // full production QA in a sandbox root
     const draft = manifestDraft(row, cand);
-    const tmp = buildTempFactoryRoot([draft], [[row.slug, cand.body_html]]);
+    const tmp = buildTempFactoryRoot([...(opts.priorDrafts ?? []), draft],
+      [...(opts.priorBodies ?? []), [row.slug, cand.body_html]]);
     let qa;
     try {
       qa = runSandboxedQa(tmp, row.article_id);
@@ -473,8 +481,8 @@ async function generateArticle(row, ctx, opts, log) {
       rmSync(tmp, { recursive: true, force: true });
     }
     log(qa.out.trim());
-    if (qa.pass) return { cand, qa };
-    log(`  production QA failed:\n${qa.failures.join('\n')}`);
+    if (qa.pass && writerQualityWarnings(qa.out).length === 0) return { cand, qa };
+    log(`  production QA refused:\n${qa.failures.join('\n')}`);
     failureKind = 'CONTENT';
     lastFailure = feedback = [...qa.failures, ...qa.out.split('\n').filter((l) => /^WARN\s/.test(l))].join('\n');
   }
@@ -576,7 +584,8 @@ async function cmdRun(args) {
       die(`${id} already has a body or manifest entry — recover the staged chunk, never overwrite it`);
     }
     const ctx = buildCtx(row);
-    const r = await generateArticle(row, ctx, { models, maxAttempts, config }, log);
+    const r = await generateArticle(row, ctx,
+      { models, maxAttempts, config, priorDrafts: drafts, priorBodies: bodies }, log);
     if (r.fatal) die(r.fatal, { batch: batch.batch_id, seq: String(chunk.seq), ids: ids.join(',') });
     if (r.fail && r.kind === 'CONTENT' && !dryRun) {
       defer(id, r.fail);
@@ -596,7 +605,7 @@ async function cmdRun(args) {
       const qa = runSandboxedQa(pairRoot, id);
       log(`pair QA ${id}:\n${qa.out.trim()}`);
       qaEvidence.find((e) => e.article_id === id).qa = qa.out;
-      if (!qa.pass || /^WARN\s+no-(?:cross-article-duplicate|duplicate-paragraphs|duplicate-sentences|filler)\b/m.test(qa.out)) {
+      if (!qa.pass || writerQualityWarnings(qa.out).length > 0) {
         const reason = `pair QA refused ${id}: ${qa.out.replace(/\s+/g, ' ').slice(-600)}`;
         if (!dryRun) { defer(id, reason); return; }
         die(reason);
