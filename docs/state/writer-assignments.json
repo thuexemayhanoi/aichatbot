@@ -101,8 +101,14 @@
           "BA-0325",
           "BA-0326"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "FACTORY_FAILED",
+        "events": [
+          {
+            "state": "FACTORY_FAILED",
+            "at": "2026-10-10T03:01:27.970Z",
+            "reason": "factory run 38019053995 failed"
+          }
+        ]
       },
       {
         "seq": 6,
