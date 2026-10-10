@@ -3,7 +3,7 @@
   "articles": {
     "BA-0322": {
       "article_id": "BA-0322",
-      "status": "RETRY_WAIT",
+      "status": "RETRY_READY",
       "cycles": 1,
       "next_retry_at": "2026-10-10T01:50:27.969Z",
       "reason": "pair QA refused BA-0322: ASS id-slug-path PASS body-exists PASS fact-resolution PASS body-substantial PASS html-render-safe PASS verified-phones-only PASS verified-deposits-only PASS internal-links-resolve PASS body-words PASS body-structure PASS no-filler PASS no-duplicate-paragraphs PASS no-duplicate-sentences WARN no-cross-article-duplicate — paragraph already used in another article: \"Tiền cọc được đối chiếu trực tiếp lúc nhận xe và sẽ được quay về bạn khi trả xe \" PASS no-cannibalization PASS title-meta-valid PASS seo-ownership PASS no-external-links PASS retrieval-consistency QA PASS BA-0322 score=95 warnings=1 ",
@@ -15,7 +15,7 @@
     },
     "BA-0330": {
       "article_id": "BA-0330",
-      "status": "RETRY_WAIT",
+      "status": "RETRY_READY",
       "cycles": 1,
       "next_retry_at": "2026-10-10T08:08:07.091Z",
       "reason": "exhausted 3 attempts for BA-0330: FAIL internal-links-resolve — broken internal link(s): /blog/dia-phuong/hoi-an-cuoi-tuan/, /blog/dia-phuong/hoi-an-cuoi-tuan/ QA FAIL BA-0330 score=0: critical: internal-links-resolve WARN local-angle — LOCAL article should have a non-empty local_scope (distinct angle, not a doorway clone)",
@@ -27,7 +27,7 @@
     },
     "BA-0331": {
       "article_id": "BA-0331",
-      "status": "RETRY_WAIT",
+      "status": "RETRY_READY",
       "cycles": 1,
       "next_retry_at": "2026-10-10T09:53:00.962Z",
       "reason": "exhausted 3 attempts for BA-0331: FAIL internal-links-resolve — broken internal link(s): /blog/app/lo-trinh-tinh-nang-cua-ung-dung-thue-xin-may/, /blog/app/module-goi-y-xe-trong-ung-dung-thue-xi/ QA FAIL BA-0331 score=0: critical: internal-links-resolve",
@@ -39,7 +39,7 @@
     },
     "BA-0335": {
       "article_id": "BA-0335",
-      "status": "RETRY_WAIT",
+      "status": "RETRY_READY",
       "cycles": 1,
       "next_retry_at": "2026-10-10T15:58:13.641Z",
       "reason": "pair QA refused BA-0335: lution PASS body-substantial PASS html-render-safe PASS verified-phones-only PASS verified-deposits-only PASS internal-links-resolve PASS body-words PASS body-structure PASS no-filler WARN no-duplicate-paragraphs — duplicate paragraph detected inside the article PASS no-duplicate-sentences WARN no-cross-article-duplicate — paragraph already used in another article: \"Theo Thông tư hướng dẫn xử phạt vi phạm hành chính về trật tự an toàn giao thông\" PASS no-cannibalization PASS title-meta-valid PASS seo-ownership PASS safe-legal-gate PASS retrieval-consistency QA PASS BA-0335 score=90 warnings=2 ",
