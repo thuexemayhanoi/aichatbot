@@ -36,5 +36,7 @@ Tên miền chính phủ (gov.vn) KHÔNG tự động làm claim đúng. Lỗi t
 ## Từ khóa & liên kết
 
 - Mỗi bài đúng 1 primary_keyword (duy nhất trong ma trận) + secondary keywords tự nhiên.
-- Internal links phục vụ cả SEO và điều hướng tri thức Agent: hub danh mục, bài liên quan, trang Agent, trang thương mại đã xác minh (giới hạn, tránh spam thương mại).
+- Chỉ tối đa **1 link trong thân bài mới**, có thể là liên kết nội bộ đã xuất bản hoặc link ngoài HTTPS đáng tin; không bịa URL. Nếu không có nguồn/link chắc chắn thì không bắt buộc link. Link lỗi được bỏ thẻ, giữ nguyên chữ; QA chỉ cảnh báo, không khóa dây chuyền vì riêng lỗi link.
+- Bài SAFE vẫn phải có nguồn pháp lý chính thống được xác minh (ưu tiên 1 trích dẫn gov.vn/vbpl.vn). Cấm bỏ kiểm tra pháp lý, dữ liệu kinh doanh, HTML nguy hiểm, hoặc thay đổi các bài đã xuất bản.
+- Sau khi đủ 2.000 bài, owner sẽ audit/SEO tối ưu lại internal link toàn bộ.
 - Vòng: Homepage → Blog → bài → “Hỏi Agent về chủ đề này”; Agent gợi ý bài liên quan khi có chunk khớp. Không loop link vòng tròn spammy.
