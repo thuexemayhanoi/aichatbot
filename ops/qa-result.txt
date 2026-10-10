@@ -388,11 +388,11 @@ ung-dung-ban-do-cho-nguoi-thue-xe
 === published count ===
 330
 === active batch ===
-WRITER-BATCH-0015 ACTIVE 1:FACTORY_FAILED 2:FAILED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
+WRITER-BATCH-0015 ACTIVE 1:PUBLISHED 2:FAILED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
 === RECONCILE MODE ===
 action=reconcile
 batch_id=WRITER-BATCH-0015
-reconciled=1
+reconciled=none
 already_published=none
 inconsistent=2:BA-0332(PLANNED,n-entries,no-body)|BA-0335(PLANNED,n-entries,no-body)
 batch_status=ACTIVE
