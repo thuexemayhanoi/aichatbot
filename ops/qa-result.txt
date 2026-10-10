@@ -1,5 +1,6 @@
 === request ===
 reconcile
+# 2026-10-10: reconcile FACTORY_FAILED only with full matrix/manifest/body evidence; preserve historical event and all published content.
 === mode ===
 reconcile
 === matrix rows ===
@@ -18,6 +19,7 @@ cach-hoi-gia-xe-nhanh-bang-chatbot
 cach-tinh-gia-thue-xe-bang-app
 cach-ung-dung-hieu-cau-hoi-ve-gia-xe
 cai-app
+canh-giac-voi-app-thue-xe-gia-mao
 cau-hoi-thuong-gap-ve-app-thue-xe
 chatbot-thue-xe-may-co-dang-tin-khong
 chinh-sach-du-lieu-cua-ung-dung-thue-xe
@@ -46,6 +48,8 @@ rental-assistant-la-gi
 so-sanh
 so-sanh-cach-thue-xe-truyen-thong-va-qua-app
 so-sanh-ung-dung-thue-xe-may-dien-va-xe-xang
+soan-cau-hoi-hieu-qua-cho-agent-thue-xe
+tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien
 thue-xe-online-nhu-the-nao
 tim-hieu-hybrid-search-trong-ung-dung-thue-xe
 tim-xe
@@ -61,6 +65,7 @@ ung-dung-thue-xe-may-hoat-dong-ra-sao
 ung-dung-thue-xe-tieng-anh
 ung-dung-thue-xe-tren-dien-thoai-cu
 ung-dung-thue-xe-va-khach-vang-lai
+ung-dung-thue-xe-va-nguoi-moi-biet-lai-xe
 ung-dung-tim-xe-may-gia-tot
 ung-dung-web-thue-xe-may
 web-app
@@ -79,6 +84,7 @@ dat-coc
 dat-xe-truoc-hay-den-truc-tiep
 di-pho-co-bang-xe-may-thue
 dieu-kien-thue-xe-may-o-ha-noi
+dongo-kem-theo-xe-thue
 du-khach
 gia-thue
 gia-thue-thay-doi-theo-mua-khong
@@ -90,6 +96,7 @@ khach-du-lich-thue-xe-may
 khoang-chi-phi-di-lai-khi-thue-xe
 kiem-tra-xe-truoc-khi-nhan
 lien-he-dat-xe-nhanh
+mu-bao-hiem-khi-thue-xe
 mua-cao-diem-thue-xe-may
 nguoi-nuoc-ngoai-thue-xe-may-viet-nam
 nhan-xe
@@ -114,6 +121,7 @@ thue-xe-giao-tan-noi
 thue-xe-hai-nguoi
 thue-xe-hang-nhe
 thue-xe-khong-bang-lai-duoc-khong
+thue-xe-may-cu-hay-moi
 thue-xe-may-gia-re
 thue-xe-may-hay-di-grab
 thue-xe-may-theo-thang
@@ -121,6 +129,7 @@ thue-xe-may-theo-tuan
 thue-xe-o-ga-tau-san-bay
 thue-xe-so
 thue-xe-so-hay-xe-ga-cho-nguoi-moi
+tinh-trang-xe-tai-cua-hang
 tra-xe
 tra-xe-thue-dung-gio
 uu-dai-thue-xe-dai-han
@@ -133,6 +142,7 @@ an-toan
 app-mo-khoa-xe-dien
 app-theo-doi-pin-xe-dien
 app-thue-xe-dien
+app-thue-xe-dien-cho-khach-du-lich
 bao-duong-xe-dien
 bao-quan-xe-dien-mua-mua
 cach-giu-pin-ben-khi-thue-xe-dien
@@ -142,6 +152,7 @@ chia-khoa-xe-dien-thong-minh
 chinh-sach-khuyen-khich-xe-dien
 chon-xe
 chon-xe-dien-phu-hop
+chon-xe-dien-phu-hop-cho-khach-du-lich
 coc-khi-thue-xe-dien
 cong-cu-uoc-tinh-quang-duong-xe-dien
 cua-hang-cho-thue-xe-dien
@@ -174,8 +185,11 @@ thue-xe-dien-cho-khach-du-lich
 thue-xe-dien-co-re-khong
 thue-xe-dien-dai-ngay
 thue-xe-dien-theo-ngay
+thue-xe-dien-theo-ngay-cho-khach-du-lich
 tram-doi-pin
+tuong-lai-xe-dien-cho-thue
 ung-dung-thue-xe-may-dien
+ung-dung-thue-xe-may-dien-cho-khach-du-lich
 ung-dung-tim-cho-sac-xe
 van-toc-xe-may-dien
 xe-dien-an-toan-khong
@@ -194,6 +208,7 @@ xe-may-dien-cho-nguoi-moi
 ai-chiu-phat-khi-di-xe-thue
 an-toan-khi-thanh-toan-coc
 bang-lai-a1-a2-khac-gi
+bang-lai-a1-a2-khac-gi-cho-du-khach
 bao-hiem-khi-thue-xe-may
 bao-va-xe-may
 bao-ve-du-lieu-ca-nhan-khi-thue-xe
@@ -206,10 +221,12 @@ deo-non-dung-cach
 di-nguoc-chieu-hau-qua
 di-nhom-an-toan
 di-xe-khong-giay-phep
+di-xe-khong-giay-phep-cho-du-khach
 dien-thoai-khi-lai-xe
 goi-canh-sat-khi-tai-nan
 guong-chieu-hau-an-toan
 idp-va-bang-lai-quoc-te
+idp-va-bang-lai-quoc-te-cho-du-khach
 index.html
 kham-suc-khoe-lai-xe
 khien-nai-dich-vu-thue-xe
@@ -228,6 +245,7 @@ mua-lon-va-lai-xe
 ngap-nuoc-va-xe-may
 nghia-vu-cua-ben-cho-thue
 nguoi-nuoc-ngoai-lai-xe-o-viet-nam
+nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach
 nhan-dien-hop-dong-thue-xe-hop-phap
 nong-do-con-khi-lai-xe
 nong-do-con-khi-lai-xe-cho-du-khach
@@ -244,6 +262,7 @@ thu-tuc-khi-va-cham-nhe
 thue-va-phi-xe-may-ca-nhan
 thuoc-va-lai-xe
 toc-do-cho-phep-trong-pho
+toc-do-cho-phep-trong-pho-cho-du-khach
 trach-nhiem-khi-tai-nan-voi-xe-thue
 tranh-app-thue-xe-lua-dao
 trom-xe-va-phong-ngua
@@ -267,6 +286,8 @@ chua-va-ha-noi
 cot-co-hoang-thanh
 cua-lo-ven-bien
 cuc-phuong-weekend
+da-lat-duong-xa
+da-nang-hanh-trinh-bac-nam
 den-nguyen-can-bang-xe
 di-pho-co-bang-xe-may
 dong-da-va-xe-may
@@ -276,10 +297,12 @@ duong-dong-by-bike
 gia-lam-va-long-bien
 ha-long-duong-quoc-lo
 hai-ba-trung-hanh-trinh
+hanh-trinh-mai-chau
 ho-guom-ban-dem
 ho-tay-va-xe-may
 hoa-binh-duong-truong
 hoang-hon-ho-tay
+hue-xuyen-viet
 index.html
 lang-chu-tich-qua-pho
 lang-gom-bat-trang
@@ -327,6 +350,7 @@ giao-xe-tai-khach-san
 giao-xe-tai-san-bay-noi-bai
 giao-xe-tan-noi-thu-tuc
 giay-to-can-khi-thue-xe
+giay-to-can-khi-thue-xe-cho-nguoi-moi
 giay-to-nguoi-nuoc-ngoai-thue-xe
 hop-dong-thue-xe-can-nhung-gi
 huong-dan-dat-xe-nhanh
@@ -345,11 +369,14 @@ nhan-xe-ban-dem
 nhien-lieu-khi-nhan-tra-xe
 page
 quy-trinh-nhan-xe
+quy-trinh-nhan-xe-cho-nguoi-moi
 quy-trinh-tra-xe
+quy-trinh-tra-xe-cho-nguoi-moi
 sua-xe-nho-khi-dang-thue
 thoi-gian-nhan-xe-som
 thu-tuc
 thu-tuc-thue-xe-may
+thu-tuc-thue-xe-may-cho-nguoi-moi
 thue-xe-can-nguoi-bao-lanh-khong
 thue-xe-cho-nguoi-duoi-18-tuoi
 thue-xe-va-check-in-khach-san
@@ -359,17 +386,19 @@ troi-mua-thue-xe-may
 trom-cap-xe-va-xe-thue
 ung-dung-ban-do-cho-nguoi-thue-xe
 === published count ===
-304
+330
 === active batch ===
-WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:PUBLISHED 3:PUBLISHED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
+WRITER-BATCH-0015 ACTIVE 1:FACTORY_FAILED 2:FAILED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
 === RECONCILE MODE ===
 action=reconcile
-batch_id=WRITER-BATCH-0013
-reconciled=none
+batch_id=WRITER-BATCH-0015
+reconciled=1
 already_published=none
-inconsistent=none
+inconsistent=2:BA-0332(PLANNED,n-entries,no-body)|BA-0335(PLANNED,n-entries,no-body)
 batch_status=ACTIVE
+action=reconcile
+note=inconsistent chunks left untouched (fail-closed)
 EXIT=0
 --- assignments after reconcile ---
-WRITER-BATCH-0013 ACTIVE 1:PUBLISHED 2:PUBLISHED 3:PUBLISHED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
+WRITER-BATCH-0015 ACTIVE 1:PUBLISHED 2:FAILED 3:RESERVED 4:RESERVED 5:RESERVED 6:RESERVED 7:RESERVED 8:RESERVED 9:RESERVED
 === END ===

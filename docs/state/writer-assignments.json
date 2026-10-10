@@ -15,12 +15,17 @@
           "BA-0321",
           "BA-0329"
         ],
-        "status": "FACTORY_FAILED",
+        "status": "PUBLISHED",
         "events": [
           {
             "state": "FACTORY_FAILED",
             "at": "2026-10-10T13:48:58.177Z",
             "reason": "factory run 38057129936 failed"
+          },
+          {
+            "state": "RECONCILED_PUBLISHED",
+            "at": "2026-10-10T15:43:34.330Z",
+            "reason": "ids published outside the original factory run (repair pipeline); evidence verified: matrix PUBLISHED + single manifest entry + body on disk"
           }
         ]
       },
