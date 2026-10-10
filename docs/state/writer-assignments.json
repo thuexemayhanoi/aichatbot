@@ -31,8 +31,15 @@
           "BA-0332",
           "BA-0335"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "FAILED",
+        "events": [
+          {
+            "state": "CONTENT_DEFERRED",
+            "at": "2026-10-10T15:28:13.641Z",
+            "run_id": "38057237957",
+            "reason": "bounded retry / dead-letter queue; no article published"
+          }
+        ]
       },
       {
         "seq": 3,
