@@ -3521,6 +3521,17 @@
       "production_status": 200,
       "verified_at": "2026-10-09T23:43:15.002Z"
     },
+    "BA-0321": {
+      "article_id": "BA-0321",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/ung-dung-thue-xe-may-dien-cho-khach-du-lich/",
+      "publication_sha": "61f2af3116ca08bead97bbe49e718df7122d513a",
+      "page_sha256": "fbd1e138f339fe3019b1cdadbfbb04bb2e3835b67eb224f026fdbb614bef9e25",
+      "body_sha256": "73f169e1f502a409c4ff8add3519c7e8fda3530ae827ee11fc372632c83ec8de",
+      "entry_sha256": "1c9a9c45734652d1e40006020e1ca7a9702f83a7e55ac1cede7a19915934c3ab",
+      "production_status": 200,
+      "verified_at": "2026-10-10T13:58:58.967Z"
+    },
     "BA-0323": {
       "article_id": "BA-0323",
       "status": "PUBLISHED",
@@ -3586,6 +3597,17 @@
       "entry_sha256": "b1a0d9c5b650a8bfa3a0331bc059e570c428b8ff49a36a479c0c43120151cf99",
       "production_status": 200,
       "verified_at": "2026-10-10T03:23:59.292Z"
+    },
+    "BA-0329": {
+      "article_id": "BA-0329",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/idp-va-bang-lai-quoc-te-cho-du-khach/",
+      "publication_sha": "61f2af3116ca08bead97bbe49e718df7122d513a",
+      "page_sha256": "4e29627c4169f77548152c681f19b133ddfe5c7b808ec2d808f30c7af21f743d",
+      "body_sha256": "3b15598e38c04f34b882dcebbd15def66eaff00c1aff55c841375a212917976c",
+      "entry_sha256": "2b6896683f958c94dd4f7009d7aafbae47085829daeff90c5c96f5f963f8944c",
+      "production_status": 200,
+      "verified_at": "2026-10-10T13:58:58.965Z"
     },
     "BA-0333": {
       "article_id": "BA-0333",
