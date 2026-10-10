@@ -1,0 +1,57 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0015",
+  "writer": "writer_A",
+  "seq": 1,
+  "ids": [
+    "BA-0321",
+    "BA-0329"
+  ],
+  "body_paths": [
+    "data/blog/articles/ung-dung-thue-xe-may-dien-cho-khach-du-lich.body.html",
+    "data/blog/articles/idp-va-bang-lai-quoc-te-cho-du-khach.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0321",
+      "category": "EV",
+      "slug": "ung-dung-thue-xe-may-dien-cho-khach-du-lich",
+      "title": "Ứng Dụng Thuê xe Máy Điện Cho Khách du Lịch",
+      "description": "Ứng dụng thuê xe máy điện cho khách du lịch giúp di chuyển dễ dàng, tiết kiệm chi phí và thân thiện với môi trường trong từng chặng đường khám phá thành phố.",
+      "published_date": "2026-10-10",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ung-dung-thue-xe-may-dien-cho-khach-du-lich.body.html",
+      "knowledge_chunks": [
+        "Ứng dụng thuê xe máy điện cho khách du lịch giúp người dùng dễ dàng tìm kiếm, đặt xe chỉ trong vài thao tác. Các trang web và app tích hợp thông tin lộ trình, điểm đến và thời gian sử dụng, giúp khách du lịch lựa chọn phương tiện phù hợp với nhu cầu di chuyển cụ thể. Việc kết nối trực tiếp với cửa hàng cho phép kiểm tra tình trạng xe trước khi thuê, đảm bảo an toàn và hiệu quả khi vận hành.",
+        "Khi sử dụng dịch vụ, khách du lịch chỉ cần xác nhận thông tin thuê xe qua app, sau đó xe sẽ được đưa đến điểm hẹn. Quy trình trả xe được thực hiện tại điểm giao dịch, với yêu cầu kiểm tra hiện trạng xe. Tiền cọc được đối chiếu trực tiếp lúc nhận xe và quay về bạn khi trả xe đúng hiện trạng. Các chính sách bảo hành và bảo quản xe được cập nhật rõ ràng để đảm bảo trải nghiệm minh bạch."
+      ]
+    },
+    {
+      "article_id": "BA-0329",
+      "category": "SAFE",
+      "slug": "idp-va-bang-lai-quoc-te-cho-du-khach",
+      "title": "Idp và Bằng Lái Quốc Tế Cho Du Khách",
+      "description": "Hiểu rõ về IDP và bằng lái quốc tế giúp du khách an toàn hơn khi tham gia giao thông tại Việt Nam.",
+      "published_date": "2026-10-10",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/idp-va-bang-lai-quoc-te-cho-du-khach.body.html",
+      "knowledge_chunks": []
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-10T13:47:57.120Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-10T13:47:57.120Z"
+    }
+  ]
+}
