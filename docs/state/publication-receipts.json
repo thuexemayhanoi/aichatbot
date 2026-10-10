@@ -3543,6 +3543,28 @@
       "production_status": 200,
       "verified_at": "2026-10-10T02:41:30.842Z"
     },
+    "BA-0325": {
+      "article_id": "BA-0325",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/canh-giac-voi-app-thue-xe-gia-mao/",
+      "publication_sha": "7c0619346f786c14b76f211f1086a8dee8ffacc3",
+      "page_sha256": "4277562e281a9eb4aaeb475f25650c0e2f9da014df29a6bc18dc3a1c46337229",
+      "body_sha256": "42196033141fbbe64ac55d726a3c962efc6f07327fa129c88fe7ef4f3ed2fbff",
+      "entry_sha256": "b8a31392b9bf40edae81403f7887b02063789564ffb153b2cc4e978c744f7321",
+      "production_status": 200,
+      "verified_at": "2026-10-10T06:24:46.205Z"
+    },
+    "BA-0326": {
+      "article_id": "BA-0326",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/mu-bao-hiem-khi-thue-xe/",
+      "publication_sha": "7c0619346f786c14b76f211f1086a8dee8ffacc3",
+      "page_sha256": "560de7fd1261db0614b19a0cf8a7db8de38418226f6724a88ac1ce2761df1e61",
+      "body_sha256": "9e1614c9c72e85a8dec359245b72060bf90c0505cfc02f816fd3965c4a9967e2",
+      "entry_sha256": "0c3d72aba38e1f7128c1a271f2268292d695fcde7255843477277e06b988ad38",
+      "production_status": 200,
+      "verified_at": "2026-10-10T06:24:46.217Z"
+    },
     "BA-0327": {
       "article_id": "BA-0327",
       "status": "PUBLISHED",
