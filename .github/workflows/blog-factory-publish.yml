@@ -35,11 +35,8 @@ run-name: 'Factory ${{ inputs.article_ids || ''backlog'' }} request ${{ inputs.r
 # cannot loop this workflow.
 
 on:
-  # Retry staged drafts after a verified code repair, through the ordinary
-  # transaction/QA/Pages path. Both suites must pass on the same revision.
-  workflow_run:
-    workflows: ['CI', 'Distribution']
-    types: [completed]
+  # External AI writes bodies; GitHub performs deterministic QA and publish.
+  # Do not trigger old self-healing / Ollama recovery on CI or Distribution.
   push:
     branches: [main]
     paths: ['data/blog/articles/**', 'data/blog/published.json']
@@ -109,6 +106,7 @@ jobs:
         with:
           node-version: 22
 
+      # Production safety gate remains deterministic; old repair agents retired.
       # v70 ops gate: the factory mutates production derived state — it must
       # refuse while an ops incident is active (the deterministic resume of a
       # recorded transaction is run by Agent #4 itself, not by this workflow).
@@ -119,6 +117,15 @@ jobs:
             echo "::error::maintenance lock active — production paused"; exit 1
           fi
           node tools/ops-agent.mjs gate
+
+      - name: Register external AI article bodies using trusted matrix metadata
+        # Single external writer pushes 1..10 body files; no Ollama or API key.
+        # Manifest entries are produced in this job, never guessed by the AI.
+        if: github.event_name == 'push'
+        run: |
+          set -euo pipefail
+          git diff --name-only --diff-filter=AM HEAD~1 HEAD > /tmp/changed.txt
+          node tools/external-writer.mjs register --files /tmp/changed.txt
 
       - name: Select exact push scope (claim/qa/ready ids from the push diff)
         id: select
@@ -245,12 +252,13 @@ jobs:
           git config user.name "motoai-bot"
           git config user.email "nguyentuantu2482@users.noreply.github.com"
           git add data/blog/content-matrix.csv data/blog/knowledge-index.json \
-            blog sitemap.xml robots.txt reports/blog-factory-run.md
+            data/blog/published.json blog sitemap.xml robots.txt reports/blog-factory-run.md
           if [ -f docs/state/blog-factory.checkpoint.json ]; then
             git add docs/state/blog-factory.checkpoint.json
           fi
-          # Never stage the writer source (article bodies, manifest) or run
-          # state — the derived commit cannot re-trigger this workflow.
+          # Never stage writer-owned article bodies or operational run state.
+          # published.json contains deterministic registration of new bodies.
+          # GITHUB_TOKEN derived commits never recursively trigger workflows.
           if git diff --cached --quiet; then
             echo "no derived changes to commit"
           else
@@ -326,17 +334,3 @@ jobs:
           # Fast-forward only: concurrent ledger edits must never be overwritten.
           git push origin HEAD:main
           node tools/factory-pages.mjs
-
-      - name: 'Reconcile recovered chunks after verified deployment'
-        if: github.event_name == 'workflow_run' && steps.select.outputs.proceed == 'true'
-        run: |
-          set -euo pipefail
-          git fetch origin main
-          git checkout -B main origin/main
-          if [ "$(jq -r '.active.batch_id // empty' docs/state/writer-assignments.json)" = '' ]; then exit 0; fi
-          node tools/writer-queue.mjs reconcile
-          git add docs/state/writer-assignments.json
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'writer-publisher: reconcile recovered publication evidence [skip ci]'
-          git pull --rebase origin main
-          git push
