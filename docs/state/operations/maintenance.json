@@ -3,29 +3,7 @@
   "schema_version": 1,
   "production_enabled": true,
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
-  "active_incident": {
-    "incident_id": "INC-20261010030141-b76p",
-    "status": "AGENT5_WORKING",
-    "owner": "AGENT_5",
-    "started_at": "2026-10-10T03:01:41.886Z",
-    "updated_at": "2026-10-10T03:01:57.081Z",
-    "base_sha": "9a6fcdbb3dbfcf5cbda7eb73e7767741d6c7fa16",
-    "reason": "factory infrastructure failure while publishing chunk WRITER-BATCH-0014#5",
-    "trigger": "workflow_dispatch",
-    "source": {
-      "workflow": "Blog Factory Publish (2-article micro batch)",
-      "run_id": "38019053995",
-      "url": "https://github.com/thuexemayhanoi/aichatbot/actions/runs/38019053995"
-    },
-    "classification": "INFRA",
-    "signature": "Blog Factory Publish (2-article micro batch)::VERIFY production bytes, manifest and sitemap before publication receipts",
-    "attempts": {
-      "agent4": 1,
-      "agent5": 1
-    },
-    "production_paused": true,
-    "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required"
-  },
+  "active_incident": null,
   "incidents": [
     {
       "incident_id": "INC-20261006160640-4vj8",
@@ -170,6 +148,30 @@
       "production_paused": false,
       "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required | independent verification healthy after Agent #4 (AGENT4_ESCALATE); no second-line repair needed",
       "closed_at": "2026-10-09T23:20:39.572Z"
+    },
+    {
+      "incident_id": "INC-20261010030141-b76p",
+      "status": "VERIFIED",
+      "owner": "NONE",
+      "started_at": "2026-10-10T03:01:41.886Z",
+      "updated_at": "2026-10-10T03:02:17.167Z",
+      "base_sha": "9a6fcdbb3dbfcf5cbda7eb73e7767741d6c7fa16",
+      "reason": "factory infrastructure failure while publishing chunk WRITER-BATCH-0014#5",
+      "trigger": "workflow_dispatch",
+      "source": {
+        "workflow": "Blog Factory Publish (2-article micro batch)",
+        "run_id": "38019053995",
+        "url": "https://github.com/thuexemayhanoi/aichatbot/actions/runs/38019053995"
+      },
+      "classification": "INFRA",
+      "signature": "Blog Factory Publish (2-article micro batch)::VERIFY production bytes, manifest and sitemap before publication receipts",
+      "attempts": {
+        "agent4": 1,
+        "agent5": 1
+      },
+      "production_paused": false,
+      "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required | independent verification healthy after Agent #4 (AGENT4_ESCALATE); no second-line repair needed",
+      "closed_at": "2026-10-10T03:02:17.167Z"
     }
   ],
   "known_content_blockers": [],
