@@ -4743,6 +4743,33 @@
         "Quy trình trả xe bắt đầu khi bạn đến cửa hàng theo thời gian đã thỏa thuận. Cần trình bày hóa đơn thuê xe và xác nhận thông tin xe đã sử dụng. Cửa hàng sẽ kiểm tra hiện trạng xe, bao gồm tình trạng bánh xe, hệ thống phanh, đèn tín hiệu và các chi tiết bên ngoài. Nếu xe được sử dụng đúng quy định, người thuê sẽ được hoàn tiền cọc khi trả xe đúng hiện trạng, được đối chiếu trực tiếp lúc nhận xe.",
         "Nếu phát hiện hư hỏng không nằm trong phạm vi sử dụng hợp lý, cửa hàng sẽ yêu cầu người thuê chịu chi phí sửa chữa. Tuy nhiên, mọi vấn đề sẽ được ghi nhận và đối chiếu bằng hình ảnh hoặc video để minh bạch. Người thuê cần đồng thuận trước khi trả xe và giữ lại biên bản kiểm tra. Mọi thay đổi về tình trạng xe đều cần được ghi chép rõ ràng để tránh tranh chấp sau này."
       ]
+    },
+    {
+      "article_id": "BA-0321",
+      "category": "EV",
+      "slug": "ung-dung-thue-xe-may-dien-cho-khach-du-lich",
+      "title": "Ứng Dụng Thuê xe Máy Điện Cho Khách du Lịch",
+      "description": "Ứng dụng thuê xe máy điện cho khách du lịch giúp di chuyển dễ dàng, tiết kiệm chi phí và thân thiện với môi trường trong từng chặng đường khám phá thành phố.",
+      "published_date": "2026-10-10",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ung-dung-thue-xe-may-dien-cho-khach-du-lich.body.html",
+      "knowledge_chunks": [
+        "Ứng dụng thuê xe máy điện cho khách du lịch giúp người dùng dễ dàng tìm kiếm, đặt xe chỉ trong vài thao tác. Các trang web và app tích hợp thông tin lộ trình, điểm đến và thời gian sử dụng, giúp khách du lịch lựa chọn phương tiện phù hợp với nhu cầu di chuyển cụ thể. Việc kết nối trực tiếp với cửa hàng cho phép kiểm tra tình trạng xe trước khi thuê, đảm bảo an toàn và hiệu quả khi vận hành.",
+        "Khi sử dụng dịch vụ, khách du lịch chỉ cần xác nhận thông tin thuê xe qua app, sau đó xe sẽ được đưa đến điểm hẹn. Quy trình trả xe được thực hiện tại điểm giao dịch, với yêu cầu kiểm tra hiện trạng xe. Tiền cọc được đối chiếu trực tiếp lúc nhận xe và quay về bạn khi trả xe đúng hiện trạng. Các chính sách bảo hành và bảo quản xe được cập nhật rõ ràng để đảm bảo trải nghiệm minh bạch."
+      ]
+    },
+    {
+      "article_id": "BA-0329",
+      "category": "SAFE",
+      "slug": "idp-va-bang-lai-quoc-te-cho-du-khach",
+      "title": "Idp và Bằng Lái Quốc Tế Cho Du Khách",
+      "description": "Hiểu rõ về IDP và bằng lái quốc tế giúp du khách an toàn hơn khi tham gia giao thông tại Việt Nam.",
+      "published_date": "2026-10-10",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/idp-va-bang-lai-quoc-te-cho-du-khach.body.html",
+      "knowledge_chunks": []
     }
   ]
 }
