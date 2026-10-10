@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0015",
+  "writer": "writer_C",
+  "seq": 3,
+  "ids": [
+    "BA-0336",
+    "BA-0337"
+  ],
+  "body_paths": [
+    "data/blog/articles/sai-gon-duong-nam.body.html",
+    "data/blog/articles/tinh-nang-tim-hieu-thu-tuc-trong-app.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0336",
+      "category": "LOCAL",
+      "slug": "sai-gon-duong-nam",
+      "title": "Sài Gòn Đường Nam: Hành trình khám phá khu vực trung tâm TP.HCM",
+      "description": "Khám phá khu vực Sài Gòn Đường Nam – điểm đến du lịch hấp dẫn với không gian giao thông đặc trưng và nhiều điểm tham quan nổi bật.",
+      "published_date": "2026-10-10",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/sai-gon-duong-nam.body.html",
+      "knowledge_chunks": [
+        "Sài Gòn Đường Nam nằm ở khu vực trung tâm thành phố, kết nối nhiều tuyến đường huyết mạch và là nơi tập trung giao thông chính. Khu vực này phản ánh đầy đủ nhịp sống đô thị với các khu dân cư, khu thương mại và điểm giao cắt giao thông. Việc di chuyển tại đây thường cần chủ động lựa chọn thời gian, lộ trình để tránh ùn tắc do mật độ xe cộ cao.",
+        "Đối với người thuê xe, việc di chuyển qua Sài Gòn Đường Nam cần được thực hiện theo đúng quy định về sử dụng phương tiện. Cửa hàng tại khu vực này có chính sách rõ ràng về việc bảo quản xe, kiểm tra hiện trạng trước và sau khi trả xe. Tiền cọc được đối chiếu trực tiếp lúc nhận xe và quay về bạn khi trả xe đúng hiện trạng. Thời gian hoạt động của cửa hàng là {{ business.hours.display }}."
+      ]
+    },
+    {
+      "article_id": "BA-0337",
+      "category": "APP",
+      "slug": "tinh-nang-tim-hieu-thu-tuc-trong-app",
+      "title": "Tính Năng Tìm Hiểu Thủ Tục Trong App",
+      "description": "Tìm hiểu thủ tục thuê xe qua ứng dụng giúp bạn nhanh chóng nắm bắt quy trình, giảm thời gian chờ và đảm bảo thông tin chính xác khi sử dụng dịch vụ.",
+      "published_date": "2026-10-10",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tinh-nang-tim-hieu-thu-tuc-trong-app.body.html",
+      "knowledge_chunks": [
+        "Tính năng tìm hiểu thủ tục trong app cho phép người dùng xem chi tiết từng bước từ việc đăng ký đến quá trình trả xe. Mỗi bước đều được trình bày rõ ràng, dễ hiểu, giúp bạn tránh hiểu nhầm hoặc bỏ sót thông tin quan trọng. Nội dung được cập nhật thường xuyên để phản ánh đúng chính sách hiện hành của cửa hàng.",
+        "Việc sử dụng tính năng này giúp bạn tự chủ hơn trong quá trình thuê xe, đặc biệt khi chưa từng trải nghiệm trước. Bạn có thể đọc trước các quy định về trách nhiệm, điều kiện trả xe hoặc xử lý tình huống phát sinh mà không cần chờ nhân viên hỗ trợ trực tiếp. Tính năng này phù hợp với cả người mới bắt đầu và người đã có kinh nghiệm."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-10T18:03:53.449Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-10T18:03:53.449Z"
+    }
+  ]
+}
