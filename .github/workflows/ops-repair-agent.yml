@@ -74,10 +74,11 @@ concurrency:
 jobs:
   repair:
     if: ${{ false }} # RETIRED (never execute legacy production)
+    # Historical condition (RETIRED):
     # Real failures only: a manual dispatch, or a workflow_run that failed.
-    if: >-
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'failure')
+    # if: >-
+    #   github.event_name == 'workflow_dispatch' ||
+    #   (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'failure')
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
