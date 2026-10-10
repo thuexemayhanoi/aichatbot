@@ -521,7 +521,7 @@ test('pipeline: single external writer runbook replaces the retired Ollama/multi
   assert.match(cw, /REPAIR\/RESUME|RESUME unfinished/);
   assert.match(cw, /NEXT 2/);
   assert.match(cw, /2–10|1–10/);
-  assert.match(agents, /MỘT AI bên ngoài/);
+  assert.match(agents, /Một AI bên ngoài GitHub Actions viết prose/);
   assert.match(external, /Ollama/);
   assert.match(external, /published\.json/);
   assert.match(external, /factory-publish/);
