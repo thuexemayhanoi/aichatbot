@@ -81,3 +81,25 @@ test('external writer lists only unpublished and unregistered article IDs', (t) 
   assert.doesNotMatch(after.stdout, /BA-0400/);
   assert.doesNotMatch(after.stdout, /BA-0401/);
 });
+
+test('all legacy agent workflows are inert: no active schedule or dispatcher on main', () => {
+  const root = new URL('../../.github/workflows/', import.meta.url).pathname;
+  const retired = [
+    'auto-writer.yml', 'writer-coordinator.yml', 'writer-publisher.yml',
+    'factory-controller.yml', 'ops-watchdog.yml', 'ops-supervisor.yml',
+    'ops-repair-agent.yml', 'ops-owner-review.yml', 'ops-qa-runner.yml',
+  ];
+  for (const file of retired) {
+    const yml = readFileSync(join(root, file), 'utf8');
+    assert.match(yml, /^on:\n  push:\n    branches: \['__retired_agent_do_not_use__'\]/m, file);
+    assert.match(yml, /^    if: \$\{\{ false \}\}/m, file);
+    assert.doesNotMatch(yml, /^  schedule:/m, file);
+    assert.doesNotMatch(yml, /^  workflow_run:/m, file);
+    assert.doesNotMatch(yml, /^  workflow_dispatch:/m, file);
+  }
+  const factory = readFileSync(join(root, 'blog-factory-publish.yml'), 'utf8');
+  assert.match(factory, /external-writer\.mjs register --files/);
+  assert.match(factory, /git add data\/blog\/content-matrix\.csv/);
+  assert.match(factory, /data\/blog\/published\.json blog sitemap/);
+  assert.doesNotMatch(factory, /^  workflow_run:/m);
+});
