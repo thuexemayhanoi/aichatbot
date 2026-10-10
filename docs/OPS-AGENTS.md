@@ -1,4 +1,4 @@
-# OPS AGENTS (v70) — Agent #4 / #5 / #6
+> **RETIRED (2026-10-11):** nhóm ops-agent/automatic repair/watchdog không còn được trigger trong production. Tài liệu này chỉ giữ lại để điều tra lịch sử. Workflow vận hành hiện tại: `blog-factory-publish.yml` và một AI bên ngoài push body HTML; xem `AGENTS.md`.\n\n# OPS AGENTS (v70) — Agent #4 / #5 / #6
 
 Hệ thống vận hành tự trị cho hạ tầng, KHÔNG bao giờ viết nội dung bài.
 Bài viết thuộc về writer pipeline (docs/CONTINUOUS-WRITER.md, docs/PARALLEL-WRITER.md).
