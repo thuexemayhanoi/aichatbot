@@ -11,18 +11,23 @@ name: ops-qa-runner
 #                      present, run the full local QA pipeline.
 # Always commits ops/qa-result.txt with if: always().
 
+# RETIRED: external AI is the only writer. Historical trigger kept as comments for auditing.
+# on:
+#   push:
+#     branches: [main]
+#     paths:
+#       - 'ops/candidate/**'
+#       - '.github/workflows/ops-qa-runner.yml'
 on:
   push:
-    branches: [main]
-    paths:
-      - 'ops/candidate/**'
-      - '.github/workflows/ops-qa-runner.yml'
+    branches: ['__retired_agent_do_not_use__']
 
 permissions:
   contents: write
 
 jobs:
   run:
+    if: ${{ false }} # RETIRED (never execute legacy production)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

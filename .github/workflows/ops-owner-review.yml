@@ -23,11 +23,15 @@ name: ops-owner-review
 #                        dispatch auto-writer.yml so the first cycle starts
 #                        immediately instead of waiting for the cron.
 
+# RETIRED: external AI is the only writer. Historical trigger kept as comments for auditing.
+# on:
+#   push:
+#     branches: [main]
+#     paths:
+#       - 'ops/owner-review/**'
 on:
   push:
-    branches: [main]
-    paths:
-      - 'ops/owner-review/**'
+    branches: ['__retired_agent_do_not_use__']
 
 permissions:
   contents: write
@@ -37,6 +41,7 @@ permissions:
 
 jobs:
   dispatch:
+    if: ${{ false }} # RETIRED (never execute legacy production)
     runs-on: ubuntu-latest
     timeout-minutes: 100 # read-only Qwen dry-run + Agent #5 dispatch may take >20 min
     env:

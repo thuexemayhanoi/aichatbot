@@ -1,11 +1,16 @@
 name: Self-Healing Factory Controller
+# RETIRED: external AI is the only writer. Historical trigger kept as comments for auditing.
+# on:
+#   schedule:
+#     - cron: '9,19,29,39,49,59 * * * *'
+#   workflow_dispatch:
+#   workflow_run:
+#     workflows: ['CI', 'Distribution', 'Auto Writer (AI article generation)', 'Writer Publisher (serialized)', 'Blog Factory Publish (2-article micro batch)', 'Ops Repair Agent #4', 'Ops Supervisor Agent #5']
+#     types: [completed]
 on:
-  schedule:
-    - cron: '9,19,29,39,49,59 * * * *'
-  workflow_dispatch:
-  workflow_run:
-    workflows: ['CI', 'Distribution', 'Auto Writer (AI article generation)', 'Writer Publisher (serialized)', 'Blog Factory Publish (2-article micro batch)', 'Ops Repair Agent #4', 'Ops Supervisor Agent #5']
-    types: [completed]
+  push:
+    branches: ['__retired_agent_do_not_use__']
+
 permissions:
   contents: write
   actions: write
@@ -15,7 +20,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   heal:
-    if: github.event_name != 'workflow_run' || (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event != 'pull_request')
+    if: ${{ false }} # RETIRED (never execute legacy production)
+#     if: github.event_name != 'workflow_run' || (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event != 'pull_request')
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:

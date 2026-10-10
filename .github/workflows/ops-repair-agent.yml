@@ -24,37 +24,41 @@ name: 'Ops Repair Agent #4'
 # failures remain reachable via manual dispatch and via Agent #5's
 # verification, which checks CI/build state explicitly.
 
+# RETIRED: external AI is the only writer. Historical trigger kept as comments for auditing.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       source_workflow:
+#         description: 'Workflow báo lỗi (vd writer-publisher)'
+#         required: false
+#         default: ''
+#       source_run_id:
+#         description: 'Run id báo lỗi (điều tra, read-only)'
+#         required: false
+#         default: ''
+#       source_url:
+#         description: 'URL run báo lỗi'
+#         required: false
+#         default: ''
+#       reason:
+#         description: 'Mô tả ngắn sự cố hạ tầng'
+#         required: false
+#         default: 'manual dispatch'
+#       trigger:
+#         description: 'Cách phát hiện sự cố'
+#         required: false
+#         default: 'manual'
+#   workflow_run:
+#     workflows:
+#       - 'Auto Writer (AI article generation)'
+#       - 'Writer Publisher (serialized)'
+#       - 'Writer Coordinator (central reservation)'
+#       - 'Blog Factory Publish (2-article micro batch)'
+#       - 'pages build and deployment'
+#     types: [completed]
 on:
-  workflow_dispatch:
-    inputs:
-      source_workflow:
-        description: 'Workflow báo lỗi (vd writer-publisher)'
-        required: false
-        default: ''
-      source_run_id:
-        description: 'Run id báo lỗi (điều tra, read-only)'
-        required: false
-        default: ''
-      source_url:
-        description: 'URL run báo lỗi'
-        required: false
-        default: ''
-      reason:
-        description: 'Mô tả ngắn sự cố hạ tầng'
-        required: false
-        default: 'manual dispatch'
-      trigger:
-        description: 'Cách phát hiện sự cố'
-        required: false
-        default: 'manual'
-  workflow_run:
-    workflows:
-      - 'Auto Writer (AI article generation)'
-      - 'Writer Publisher (serialized)'
-      - 'Writer Coordinator (central reservation)'
-      - 'Blog Factory Publish (2-article micro batch)'
-      - 'pages build and deployment'
-    types: [completed]
+  push:
+    branches: ['__retired_agent_do_not_use__']
 
 permissions:
   # contents: write — the atomic lock ref (refs/ops/maintenance-lock/<id>),
@@ -69,6 +73,7 @@ concurrency:
 
 jobs:
   repair:
+    if: ${{ false }} # RETIRED (never execute legacy production)
     # Real failures only: a manual dispatch, or a workflow_run that failed.
     if: >-
       github.event_name == 'workflow_dispatch' ||
