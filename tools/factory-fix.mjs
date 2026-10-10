@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { normalizeInternalAnchors, createSiteIo } from './site-audit.mjs';
+import { normalizeInternalAnchors, sanitizeDraftAnchors, createSiteIo } from './site-audit.mjs';
 import { matrixRows } from './factory-verification.mjs';
 
 const ROOT = process.env.MOTOAI_FACTORY_ROOT ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -18,7 +18,9 @@ export function fixDraftLinks(root, ids) {
     const row = matches[0], drafts = entries.filter((e) => e.article_id === id);
     if (drafts.length !== 1 || drafts[0].slug !== row.slug || drafts[0].body !== `data/blog/articles/${row.slug}.body.html` || !io.exists(drafts[0].body)) throw new Error(`FIX source mismatch ${id}`);
     const path = drafts[0].body, before = io.read(path);
-    const after = normalizeInternalAnchors(before, row.output_path, io.exists);
+    const normalized = normalizeInternalAnchors(before, row.output_path, io.exists);
+    const after = sanitizeDraftAnchors(normalized, row.output_path, io.exists,
+      { legalGate: row.source_policy === 'legal-gate' });
     if (after !== before) changes.push({ path, after });
   }
   for (const { path, after } of changes) writeFileSync(join(root, path), after);
