@@ -3520,6 +3520,28 @@
       "entry_sha256": "6d6a0cd6a488306d28f70e0833320449ba55223975a17add66258ff5bcb2d60e",
       "production_status": 200,
       "verified_at": "2026-10-09T23:43:15.002Z"
+    },
+    "BA-0323": {
+      "article_id": "BA-0323",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach/",
+      "publication_sha": "b74fac00563d3c04834be1c25e4d0943ffb66379",
+      "page_sha256": "d2e1bd8a8ea4d3477ec19802ed24fefbe1b3718e2560954c8b66c78dee167887",
+      "body_sha256": "5034f4a83f9c3d977f3e284ad5809db9007319091eaacef421349a11368d13e1",
+      "entry_sha256": "8cf7c006bb002ba568da3708afdf702857eec65b9d6e448d002974b6d6de314e",
+      "production_status": 200,
+      "verified_at": "2026-10-10T02:41:30.836Z"
+    },
+    "BA-0324": {
+      "article_id": "BA-0324",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/da-nang-hanh-trinh-bac-nam/",
+      "publication_sha": "b74fac00563d3c04834be1c25e4d0943ffb66379",
+      "page_sha256": "2a6ed52ec1edbd2a3e77741504c3574763a4ef9ef01bd707fcdaf655f64a19a8",
+      "body_sha256": "51fdff03bf4f04ad56f157367c9282f0cc55b86b16d2181519d4de6e562a7dcb",
+      "entry_sha256": "71b87bebafa889cba146c09d77285d1c365b7292d1d5d2f6917245a2ab878f8a",
+      "production_status": 200,
+      "verified_at": "2026-10-10T02:41:30.842Z"
     }
   }
 }
