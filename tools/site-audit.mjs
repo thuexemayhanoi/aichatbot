@@ -48,6 +48,38 @@ export function normalizeInternalAnchors(html, pagePath, existsFile) {
   });
 }
 
+/** Keep at most one safe reader link in an UNPUBLISHED draft.
+ * Broken internal URLs and unsupported external URLs become plain anchor text.
+ * Legal-gate articles keep one government primary citation; business/HTML QA
+ * and the strict published-site audit remain unchanged.
+ */
+export function sanitizeDraftAnchors(html, pagePath, existsFile, { legalGate = false } = {}) {
+  if (typeof html !== 'string') return html;
+  let retained = 0;
+  return html.replace(/<a\b([^<>]*?)\bhref\s*=\s*(["'])(.*?)\2([^<>]*)>([^<>]*)<\/a>/gi,
+    (tag, _before, _quote, href, _after, label) => {
+      const internal = resolveInternal(pagePath, href, existsFile);
+      let valid = internal !== null && existsFile(internal);
+      let official = false;
+      if (internal === null) {
+        try {
+          const url = new URL(href);
+          valid = url.protocol === 'https:' && !!url.hostname && !url.username && !url.password
+            && url.hostname !== 'localhost' && !url.hostname.endsWith('.localhost');
+          official = valid && (url.hostname.endsWith('.gov.vn') || url.hostname === 'vbpl.vn'
+            || url.hostname.endsWith('.vbpl.vn'));
+        } catch {
+          valid = false;
+        }
+      }
+      // For legal topics, the single retained link must support the cited law.
+      if (legalGate && !official) valid = false;
+      if (!valid || retained >= 1) return label;
+      retained++;
+      return tag;
+    });
+}
+
 const pageUrl = (p) => SITE + p.replace(/index\.html$/, '');
 const attr = (html, name) => new RegExp(`<meta[^>]+(?:name|property)=["']${name}["'][^>]*content=["']([^"']*)["']`, 'i').exec(html)?.[1];
 const canonical = (html) => /<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']*)["']/i.exec(html)?.[1];
