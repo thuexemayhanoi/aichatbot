@@ -1,0 +1,60 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0014",
+  "writer": "writer_C",
+  "seq": 9,
+  "ids": [
+    "BA-0333",
+    "BA-0334"
+  ],
+  "body_paths": [
+    "data/blog/articles/thue-xe-dien-theo-ngay-cho-khach-du-lich.body.html",
+    "data/blog/articles/quy-trinh-tra-xe-cho-nguoi-moi.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0333",
+      "category": "EV",
+      "slug": "thue-xe-dien-theo-ngay-cho-khach-du-lich",
+      "title": "Thuê xe điện theo ngày cho khách du lịch",
+      "description": "Thuê xe điện theo ngày cho khách du lịch – lựa chọn tiện lợi, tiết kiệm và thân thiện với môi trường tại Hà Nội.",
+      "published_date": "2026-10-10",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-dien-theo-ngay-cho-khach-du-lich.body.html",
+      "knowledge_chunks": [
+        "Thuê xe điện theo ngày giúp khách du lịch tự do di chuyển giữa các điểm tham quan mà không cần lo lắng về phương tiện. Xe được kiểm tra kỹ trước khi thuê, đảm bảo an toàn và hoạt động ổn định. Quy trình thuê đơn giản, chỉ cần mang theo giấy tờ tùy thân và thực hiện thủ tục tại điểm giao xe. Tiền cọc được đối chiếu trực tiếp lúc nhận xe và quay về bạn khi trả xe đúng hiện trạng, đảm bảo minh bạch và an tâm cho người dùng.",
+        "Việc lựa chọn xe điện phù hợp với nhu cầu di chuyển là yếu tố then chốt. Các loại xe từ xe đạp điện đến xe máy điện có thể điều chỉnh theo độ tuổi, khoảng cách di chuyển và điều kiện đường xá. Cửa hàng hỗ trợ tư vấn chọn xe phù hợp dựa trên lịch trình và sở thích của du khách, từ đó tối ưu hóa trải nghiệm di chuyển."
+      ]
+    },
+    {
+      "article_id": "BA-0334",
+      "category": "GUIDE",
+      "slug": "quy-trinh-tra-xe-cho-nguoi-moi",
+      "title": "Quy Trình Trả Xe Cho Người Mới",
+      "description": "Hướng dẫn chi tiết quy trình trả xe cho người mới, từ bước chuẩn bị đến cách đối chiếu hiện trạng và hoàn trả tiền cọc.",
+      "published_date": "2026-10-10",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/quy-trinh-tra-xe-cho-nguoi-moi.body.html",
+      "knowledge_chunks": [
+        "Quy trình trả xe bắt đầu khi bạn đến cửa hàng theo thời gian đã thỏa thuận. Cần trình bày hóa đơn thuê xe và xác nhận thông tin xe đã sử dụng. Cửa hàng sẽ kiểm tra hiện trạng xe, bao gồm tình trạng bánh xe, hệ thống phanh, đèn tín hiệu và các chi tiết bên ngoài. Nếu xe được sử dụng đúng quy định, người thuê sẽ được hoàn tiền cọc khi trả xe đúng hiện trạng, được đối chiếu trực tiếp lúc nhận xe.",
+        "Nếu phát hiện hư hỏng không nằm trong phạm vi sử dụng hợp lý, cửa hàng sẽ yêu cầu người thuê chịu chi phí sửa chữa. Tuy nhiên, mọi vấn đề sẽ được ghi nhận và đối chiếu bằng hình ảnh hoặc video để minh bạch. Người thuê cần đồng thuận trước khi trả xe và giữ lại biên bản kiểm tra. Mọi thay đổi về tình trạng xe đều cần được ghi chép rõ ràng để tránh tranh chấp sau này."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-10T13:25:41.717Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-10T13:25:41.717Z"
+    }
+  ]
+}
