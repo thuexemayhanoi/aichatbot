@@ -27,32 +27,36 @@ run-name: 'Auto Writer ${{ inputs.request_id || github.run_id }}'
 # the chunk states (RESERVED -> READY_TO_PUSH) are idempotent and a crashed
 # run always leaves the chunk RESERVED for the next run to retry safely.
 
+# RETIRED: external AI is the only writer. Historical trigger kept as comments for auditing.
+# on:
+#   schedule:
+#     # Lightweight heartbeat of the AUTO FACTORY: one chunk per run, max.
+#     - cron: '*/25 * * * *'
+#   workflow_dispatch:
+#     inputs:
+#       request_id:
+#         description: 'Controller correlation ID for read-only recovery proof'
+#         required: false
+#         default: ''
+#       dry_run:
+#         description: 'true = sinh bài + QA nhưng KHÔNG begin/ready/push/publish'
+#         required: false
+#         default: 'false'
+#       smoke_only:
+#         description: 'true = chỉ kiểm tra Ollama trên runner, không sinh/publish bài'
+#         required: false
+#         default: 'false'
+#       model:
+#         description: 'Ollama model (mặc định qwen3:4b-instruct-2507-q4_K_M); chỉ mô hình local'
+#         required: false
+#         default: ''
+#       max_attempts:
+#         description: 'Số lần sinh lại tối đa mỗi bài khi QA fail'
+#         required: false
+#         default: '3'
 on:
-  schedule:
-    # Lightweight heartbeat of the AUTO FACTORY: one chunk per run, max.
-    - cron: '*/25 * * * *'
-  workflow_dispatch:
-    inputs:
-      request_id:
-        description: 'Controller correlation ID for read-only recovery proof'
-        required: false
-        default: ''
-      dry_run:
-        description: 'true = sinh bài + QA nhưng KHÔNG begin/ready/push/publish'
-        required: false
-        default: 'false'
-      smoke_only:
-        description: 'true = chỉ kiểm tra Ollama trên runner, không sinh/publish bài'
-        required: false
-        default: 'false'
-      model:
-        description: 'Ollama model (mặc định qwen3:4b-instruct-2507-q4_K_M); chỉ mô hình local'
-        required: false
-        default: ''
-      max_attempts:
-        description: 'Số lần sinh lại tối đa mỗi bài khi QA fail'
-        required: false
-        default: '3'
+  push:
+    branches: ['__retired_agent_do_not_use__']
 
 permissions:
   # contents: write — push the writer branch writer/<batch>/<A|B|C> only.
@@ -71,6 +75,7 @@ concurrency:
 
 jobs:
   write:
+    if: ${{ false }} # RETIRED (never execute legacy production)
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:

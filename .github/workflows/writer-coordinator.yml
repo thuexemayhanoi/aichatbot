@@ -24,17 +24,21 @@ name: 'Writer Coordinator (central reservation)'
 # The manifest commit never touches article paths, so it cannot trigger the
 # factory workflow; [skip ci] keeps ci.yml quiet too.
 
+# RETIRED: external AI is the only writer. Historical trigger kept as comments for auditing.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       limit:
+#         description: 'So bai moi cycle (12-18, toi da 18)'
+#         required: false
+#         default: '18'
+#       dry_run:
+#         description: 'true = chi in ke hoach, khong ghi manifest'
+#         required: false
+#         default: 'true'
 on:
-  workflow_dispatch:
-    inputs:
-      limit:
-        description: 'So bai moi cycle (12-18, toi da 18)'
-        required: false
-        default: '18'
-      dry_run:
-        description: 'true = chi in ke hoach, khong ghi manifest'
-        required: false
-        default: 'true'
+  push:
+    branches: ['__retired_agent_do_not_use__']
 
 permissions:
   contents: write
@@ -47,6 +51,7 @@ concurrency:
 
 jobs:
   coordinate:
+    if: ${{ false }} # RETIRED (never execute legacy production)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:

@@ -40,28 +40,32 @@ name: 'Writer Publisher (serialized)'
 #   mark-factory-failed <batch> <seq>
 #   factory-requeue <ids>          dispatch blog-factory-publish with explicit ids
 
+# RETIRED: external AI is the only writer. Historical trigger kept as comments for auditing.
+# on:
+#   push:
+#     branches: ['writer/**']
+#     paths: ['writer-work/**']
+#   workflow_dispatch:
+#     inputs:
+#       action:
+#         description: 'auto | mark-published | mark-failed | mark-factory-failed | factory-requeue'
+#         required: false
+#         default: 'auto'
+#       batch:
+#         description: 'WRITER-BATCH-xxxx (recovery actions)'
+#         required: false
+#         default: ''
+#       seq:
+#         description: 'chunk seq (recovery actions)'
+#         required: false
+#         default: ''
+#       ids:
+#         description: 'BA-ids cho factory-requeue (vd BA-0001,BA-0002)'
+#         required: false
+#         default: ''
 on:
   push:
-    branches: ['writer/**']
-    paths: ['writer-work/**']
-  workflow_dispatch:
-    inputs:
-      action:
-        description: 'auto | mark-published | mark-failed | mark-factory-failed | factory-requeue'
-        required: false
-        default: 'auto'
-      batch:
-        description: 'WRITER-BATCH-xxxx (recovery actions)'
-        required: false
-        default: ''
-      seq:
-        description: 'chunk seq (recovery actions)'
-        required: false
-        default: ''
-      ids:
-        description: 'BA-ids cho factory-requeue (vd BA-0001,BA-0002)'
-        required: false
-        default: ''
+    branches: ['__retired_agent_do_not_use__']
 
 permissions:
   contents: write
@@ -76,6 +80,7 @@ concurrency:
 
 jobs:
   publish:
+    if: ${{ false }} # RETIRED (never execute legacy production)
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:

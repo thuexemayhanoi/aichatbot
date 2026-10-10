@@ -1,129 +1,46 @@
-# Continuous Writer Contract — vận hành factory tự động
+# Continuous Writer — SINGLE EXTERNAL AI (hiện hành từ 11/10/2026)
 
-Tài liệu này là nguồn chuẩn duy nhất cho cách một writer run (agent AI bên ngoài) PHẢI hoạt động liên tục với `/`. `docs/BLOG-FACTORY.md`, `README.md` và workflow tham chiếu tài liệu này.
+**Source of truth:** `AGENTS.md`, `docs/EXTERNAL-WRITER.md` và trạng thái GitHub main. Đây là mô hình được rút gọn từ `/vanchinh`, áp dụng theo paths/schema thật của `/aichatbot`. Các mục cũ về Ollama/Qwen, multi-writer, coordinator, controller, 6 ops agents đều không còn hiệu lực.
 
-## Phân vai (quan trọng)
+## Ai làm gì?
 
-- **External AI writer** thực hiện vòng lặp viết liên tục: chọn bài, research, viết prose, push.
-- **GitHub Actions** (`blog-factory-publish.yml`) thực hiện phần deterministic: detect đúng các bài, auto-claim, scoped QA, grouped transactional publish, rebuild, verify, commit derived state.
-- **Auto Writer chạy Ollama cục bộ trên GitHub Actions theo lịch và continuation được owner ủy quyền.** Production phải qua owner switch, incident/maintenance gate; quy trình hiện hành ở `docs/AUTO-WRITER.md`. Hợp đồng external writer bên dưới là đường staging tương thích, không phải phụ thuộc vận hành.
+- **MỘT AI bên ngoài:** viết prose HTML thực tế theo đề tài matrix; có thể dùng dịch vụ AI do owner chọn, không gắn GitHub Actions với mô hình AI nào.
+- **MỘT production publisher deterministic:** `blog-factory-publish.yml` tự register metadata từ nội dung body mới, QA, cập nhật matrix, build, sitemap, receipt và verify Pages. Nó KHÔNG viết bài bằng AI.
+- `ci.yml` và `distribution.yml`: kiểm tra mã và bản phân phối khi engine thay đổi, không phải agent viết bài.
 
-## 3 writer song song (PARALLEL WRITER MODE, v68)
-
-Đường external writer có thể dùng 3 writer slot A/B/C với MỘT central coordinator + MỘT serialized publisher. Hợp đồng đầy đủ nằm ở `docs/PARALLEL-WRITER.md`, tool là `tools/writer-queue.mjs`, tests là `tests/unit/writer-queue.test.js`. Tóm tắt bất biến:
-
-- CHỈ coordinator được reserve article ID (tối đa 50 PLANNED một batch, chia micro-chunk 2 bài, round-robin A/B/C). Manifest `docs/state/writer-assignments.json` là nguồn sự thật duy nhất; duplicate ID → fail closed.
-- Writer chỉ làm queue riêng, KHÔNG tự chọn "next PLANNED", KHÔNG push main — chỉ push branch `writer/<batch>/<A|B|C>` (2 bodies + chunk file `writer-work/...`).
-- Publisher serialized duy nhất đẩy lên main: FIFO theo chunk seq, mỗi lần đúng một chunk 2 bài, fresh-main verification trước push, published chunk không bao giờ chạy lại.
-- SIMPLE PRODUCTION MODE (v67) bên dưới được giữ nguyên: NEW/REPAIR/BACKLOG tách rời, factory exact-scope 2 bài, một build mỗi chunk. 3 writer không làm thay bất kỳ gate nào.
-
-## Mô hình canonical — 2 ARTICLES / MICRO CHUNK, SIMPLE PRODUCTION MODE (v67)
-
-- Đơn vị làm việc = MỘT MICRO CHUNK gồm 2 bài mỗi lượt writer. Push = đúng 2 article source (2 body mới tại `data/blog/articles/<slug>.body.html`) + đúng 2 manifest draft entries (`data/blog/published.json`). Nếu chỉ còn đúng 1 bài actionable ở biên batch/corpus, chunk size 1 được cho phép.
-- Triết lý vận hành giống /vanchinh: SIMPLE → FAST → STABLE. Production push chỉ cần scoped verification. KHÔNG chạy full `node --test`, full-site SEO audit, full-site duplicate scan, full chatbot regression, distribution build hay toàn-site link audit cho mỗi cặp 2 bài. Các gate nặng chỉ chạy khi engine/workflow/tool thay đổi (trong `ci.yml`), hoặc ở audit cuối corpus 2.000 bài.
-- **Writer KHÔNG lock → claim → finish → push matrix bằng tay.** Ma trận không nằm trong writer push. Workflow không dùng persistent lock: các run đã serialize bằng concurrency group; crash safety nằm ở txn marker (`resume`) và backlog discovery.
-- Push sớm từng cặp = safe checkpoint trên main: mất workspace/session không mất tiến độ. Không giữ nhiều bài chưa push trong workspace.
-- Hard invariant của workflow: tối đa 50 body thay đổi một push (giống /vanchinh). Micro loop chuẩn push đúng 2 mỗi lần; writer bình thường KHÔNG dùng 50.
-- Ma trận (2.000 dòng) vẫn là source of truth; checkpoint/lock/txn là derived operational state, không bao giờ được push.
-- Factory yêu cầu Pages rebuild bằng quyền `pages: write` và xác minh đúng SHA đã commit. Publisher đợi đúng factory run và checkpoint rồi dispatch một lượt writer kế tiếp.
-
-## Scope tách rời — NEW / REPAIR / BACKLOG (giống /vanchinh)
-
-Factory-select bắt buộc các scope MUTUALLY EXCLUSIVE, không trộn:
-
-- **NEW**: push chứa body của dòng PLANNED/WRITING → claim + QA đúng đúng các id đã push. Body của dòng QA/REPAIR nằm trong cùng push → QA cùng chạy (thuộc scope push). NEW KHÔNG BAO GIỜ tự kéo unrelated pending/backlog vào cùng run.
-- **REPAIR**: push chỉ chứa body của dòng QA/REPAIR/PASS → xử lý đúng các id đó, KHÔNG claim dòng PLANNED mới.
-- **BACKLOG**: chỉ chạy khi KHÔNG có body nào được push (workflow_dispatch không ids): dòng dở (QA/REPAIR/PASS có draft hợp lệ) trước, rồi dòng PLANNED có sẵn body + draft (workflow cũ chết). Deterministic, tối đa 50.
-
-Hệ quả cho writer: dòng dở KHÔNG còn tự được factory trộn vào run NEW. Writer phải sửa bài dở rồi push body sửa (→ REPAIR), hoặc owner dispatch quét backlog.
-
-## LOOP (bắt buộc mỗi writer run)
+## Loop (ngay trong phiên AI bên ngoài)
 
 ```
 FETCH FRESH MAIN
-→ RECOVER IF NEEDED (txn marker → resume; state sạch → đi thẳng)
-→ REPAIR/RESUME bài đang dở (QA/REPAIR/PASS): sửa rồi push body (REPAIR) TRƯỚC
-→ SELECT next 2 actionable rows (PLANNED kế tiếp theo thứ tự ma trận)
-→ RESEARCH (nguồn xác minh; bài SAFE cần nguồn gov.vn/vbpl.vn)
-→ WRITE 2 (bodies + manifest draft entries; 800–2.000 từ hữu ích mỗi bài)
-→ LOCAL SCOPED QA each article (node tools/article-qa.mjs <BA-id> — PASS mới push)
-→ PUSH 2 (2 bodies + 2 manifest draft entries; KHÔNG push matrix, lock, txn, checkpoint)
-→ FACTORY GREEN (blog-factory-publish.yml xanh cho đúng SHA — grouped publish, 1 build)
-→ VERIFY remote state (workflow xanh, matrix=PUBLISHED cả 2, không lock, không txn)
-→ FETCH FRESH MAIN
-→ NEXT 2
-→ REPEAT (không dừng sau mỗi cặp 2 bài)
+ → READ AGENTS.md + ARTICLE-RULES.md + matrix + existing publications
+ → RESUME unfinished unpublished QA/REPAIR items before new content
+ → node tools/external-writer.mjs next
+ → CHOOSE 2 PLANNED IDs and correct paths (max 10 per push)
+ → RESEARCH + WRITE REAL HTML BODY for each
+ → PUSH only data/blog/articles/<slug>.body.html
+ → GitHub scoped QA + transaction PUBLISH + Pages verification
+ → FETCH FRESH MAIN
+ → NEXT 2... repeat while the external AI session is active
 ```
 
-Canonical writer: WRITE 2 → LOCAL QA → PUSH 2 → FACTORY → FETCH FRESH MAIN → NEXT 2.
+Nếu workflow QA FAIL: sửa nội dung thật và push lại file body chưa PUBLISHED. Nếu workflow bị gián đoạn: resume từ fresh GitHub main. Không reset/checkpoint/matrix, không force push, không nhận định chỉ dựa trên CI GREEN.
 
-## Không được dừng vì
+## Data protocol
 
-- một cặp 2 bài vừa publish (đó là checkpoint, KHÔNG phải điểm kết thúc);
-- một workflow vừa GREEN; một Pages deploy vừa xong;
-- tests vừa xanh; progress report vừa được sinh.
+- Nhịp mặc định 2 bài/commit; **2–10 bài/push** là khoảng write-ahead queue đã kiểm soát, không cho phép nhiều hơn 10. Dừng tại safe checkpoint, không bỏ tiến độ.
+- Matrix: `data/blog/content-matrix.csv` 2.000 dòng, ID và URL bất biến. `PUBLISHED` là bất khả xâm phạm với writer.
+- Body: `data/blog/articles/<slug>.body.html` chỉ văn bản bài; title/description/author/category/date được deterministic `tools/external-writer.mjs register --files` tạo từ matrix + body đã push.
+- Published manifest: `data/blog/published.json`; writer không cần và KHÔNG sửa tay. Factory commit cùng derived state, tất cả mutation qua QA.
+- Scope: NEW chỉ các body mới được push, REPAIR chỉ body sửa có row QA/REPAIR/PASS, BACKLOG qua workflow_dispatch nếu đã có cả body và manifest. Không tự claim những ID chưa có body.
+- Quantity: viết 2 bài mỗi lượt theo `/vanchinh`, tối đa 10 file body trong một push. Không dừng ngay sau một cặp nếu phiên AI ngoài vẫn còn chạy.
 
-## Chỉ được dừng khi
+## Safe migration
 
-1. toàn bộ corpus terminal hợp lệ (PUBLISHED theo ma trận, hoặc FAIL/BLOCKED chờ người);
-2. blocker thật cần con người (txn mơ hồ sau resume, validation critical);
-3. owner yêu cầu dừng;
-4. runtime/session/network/tool limit buộc dừng — dừng tại điểm an toàn: workflow đã xong, fresh main đã fetch, không lock, không txn.
+Không xóa 330 bài cũ hoặc matrix. `docs/state/writer-assignments.json` của 3-writer cũ chỉ để tham khảo, không phải authoritative cho external writer. `.github/workflows/auto-writer.yml`, `writer-coordinator.yml`, `writer-publisher.yml`, `factory-controller.yml` và ops agents đã retired và không được dispatch. Mọi yêu cầu "viết thêm" từ ChatGPT/Mistral phải dùng GitHub connection của **AI đó** để push files; GitHub Actions tự thân không gọi AI.
 
-Nếu runtime chết giữa chừng: remote GitHub state (matrix + manifest + bodies đã push) chính là checkpoint; run sau fetch fresh main và resume từ đó.
+## QA, SEO và recovery
 
-## Writer push — refuse rules (workflow REFUSE, writer phải sửa rồi push lại)
-
-- Push chứa **hơn 50 article body** → REFUSE (workflow ceiling; canonical = 2).
-- Body có slug **không tồn tại trong ma trận** → REFUSE. Slug trùng nhau trong push → REFUSE.
-- Body **không có** manifest draft entry khớp (id/slug/body path) → REFUSE.
-- **Duplicate article_id** trong manifest → REFUSE.
-- Push `docs/state/**` (lock/txn/checkpoint) → REFUSE.
-- `published.json` đổi mà không có body mới → REFUSE.
-- Bài **FAIL/BLOCKED** → REFUSE (cần người xem xét).
-- Bài **PUBLISHED** bị sửa body → workflow SKIP, không bao giờ tự rewrite.
-
-## Recovery (workflow — gọn như /vanchinh)
-
-Happy path sạch đi thẳng production, không thao tác recovery:
-
-1. txn marker còn → `resume` đúng TOÀN BỘ các id trong marker TRƯỚC (rebuild + verify từng id + clear marker); không có marker → không chạy gì cả.
-2. lock đã retired khỏi workflow (v67): run serialize bằng concurrency group `blog-factory-publish`, `cancel-in-progress: false`; stale lock (nếu có) bị dọn ở bước recover.
-3. crash giữa prepare/QA → dòng ở lại QA/PLANNED với body + draft trên main → lần push kế của writer tự claim tiếp (backlog logic), hoặc owner dispatch `--backlog`.
-4. crash giữa publish → txn marker + `resume` dựng lại đúng chunk (một build).
-
-Writer phía mình: fetch fresh main, đọc matrix + manifest, không push từ stale HEAD, không force push.
-
-## Length guideline (v69 — GUIDELINE, không còn là gate chặn publish)
-
-- **<300 từ → critical FAIL (bài rác/cụt nghiêm trọng).**
-- 300–799 từ → warning `-5` điểm trong QA chung. 800–2.000 từ → không cảnh báo độ dài. >2.000 từ → warning; Auto Writer còn kiểm tra cứng 800–2.000 trước staging. Tool không tự truncate.
-- Không padding để đạt sàn; khi bài mới vượt 2.000 từ, model viết lại gọn và đủ ý, không truncate giữa câu/đoạn. Giữ nguyên bài cũ.
-
-## Minimal production QA (v69, `tools/article-qa.mjs`)
-
-Score: **70–100 = PASS; <70 = FAIL → REPAIR** (tối đa 3 lần sửa có nghĩa, vượt → BLOCKED). Không REVIEW, không EXCELLENT, không warning score band, không yêu cầu 75/90/100. Bài >=70 KHÔNG BAO GIỜ bị sửa chỉ để tăng điểm.
-
-Critical gate (duy nhất 7 nhóm, mỗi lỗi → score 0):
-
-1. bài rỗng/cụt nghiêm trọng (<300 từ);
-2. duplicate article ID;
-3. duplicate slug;
-4. duplicate/sai canonical (id-slug-path lệch matrix/manifest);
-5. HTML/frontmatter hỏng khiến trang không render (script nhúng, tag không cân);
-6. sai giá hoặc policy kinh doanh đã xác minh (fact-resolution, verified-phones-only, verified-deposits-only);
-7. broken link nghiêm trọng (internal links không trỏ tới file thật).
-
-Mọi lỗi SEO nhẹ khác chỉ là warning `-5` điểm, KHÔNG chặn publish: body-words (guideline 800–2.000) · body-structure · no-filler · no-duplicate-paragraphs/sentences · no-cross-article-duplicate · no-cannibalization · title-meta-valid · seo-ownership · local-angle · safe-legal-gate (gov.vn/vbpl.vn) · no-external-links · retrieval-consistency.
-
-QA scoped tới đúng các bài mới của cycle hiện tại (12–18 bài, không quét lại toàn site, không re-audit bài PUBLISHED). Mỗi bài kết quả độc lập (qa-chunk): một bài FAIL chuyển sang repair queue, các bài PASS tiếp tục publish trong cùng cycle — một bài FAIL KHÔNG giữ toàn bộ cycle.
-
-## CI theo loại push
-
-- Article-only push (bodies + manifest): chỉ `blog-factory-publish.yml` + scoped QA + light matrix smoke. `ci.yml` / `distribution.yml` bỏ qua qua `paths-ignore`.
-- Engine/tool/workflow/test/PWA/chatbot changes: full `node --test` + distribution vẫn chạy đầy đủ.
-- Derived commit của factory (`[skip ci]`, không chạm trigger paths) không recursive trigger. Factory kiểm chứng Pages đúng SHA; không dùng một deployment GREEN khác để thay thế.
-
-## Verify (định nghĩa)
-
-VERIFY của mỗi chunk = đúng factory run GREEN + matrix cả 2 dòng PUBLISHED + Pages đúng SHA + không lock/txn chưa giải quyết. Continuation tự dispatch lượt kế tiếp; không mở rộng scope sang bài cũ.
+- Editorial guideline 800–2.000 từ/bài, không padding. Publish gate hiện có: score ≥70 và không critical, bảo toàn QA cũ; không hạ threshold vì tốc độ.
+- Business facts chỉ từ `data/business/business.json`, không dùng dữ liệu Văn Chính. SAFE/legal: đối chiếu văn bản gốc và ngày hiệu lực.
+- Txn marker: chỉ factory xử lý `node tools/blog-factory.mjs resume` sau crash; đừng xóa thủ công.
+- Chỉ đếm thành quả khi GitHub main có status PUBLISHED và production verified; body mới đẩy lên không mặc nhiên là published.

@@ -23,16 +23,20 @@ name: 'Ops Watchdog Agent #6'
 # never double-dispatch; the second one then observes the queued cycle and
 # does nothing.
 
+# RETIRED: external AI is the only writer. Historical trigger kept as comments for auditing.
+# on:
+#   schedule:
+#     # Twice an hour, lightweight — the ONLY schedule in the ops system.
+#     - cron: '17,47 * * * *'
+#   workflow_dispatch:
+#     inputs:
+#       dry_run:
+#         description: 'true = chỉ in quyết định wake, KHÔNG dispatch entrypoint'
+#         required: false
+#         default: 'false'
 on:
-  schedule:
-    # Twice an hour, lightweight — the ONLY schedule in the ops system.
-    - cron: '17,47 * * * *'
-  workflow_dispatch:
-    inputs:
-      dry_run:
-        description: 'true = chỉ in quyết định wake, KHÔNG dispatch entrypoint'
-        required: false
-        default: 'false'
+  push:
+    branches: ['__retired_agent_do_not_use__']
 
 permissions:
   # contents: read — observe the repository (ops state, article commits,
@@ -52,6 +56,7 @@ concurrency:
 
 jobs:
   watch:
+    if: ${{ false }} # RETIRED (never execute legacy production)
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

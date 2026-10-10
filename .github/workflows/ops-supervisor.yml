@@ -20,32 +20,36 @@ name: 'Ops Supervisor Agent #5'
 # only when the owner's production_enabled switch is true — today it is
 # false, so agents never auto-resume production.
 
+# RETIRED: external AI is the only writer. Historical trigger kept as comments for auditing.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       incident_id:
+#         description: 'Incident ID — phải là incident_id Agent #4 vừa xử lý'
+#         required: true
+#       base_sha:
+#         description: 'Base SHA Agent #4 đã ghi (kiểm chứng quan hệ HEAD)'
+#         required: false
+#         default: ''
+#       allow_crashed_handoff:
+#         description: 'true CHỈ khi Agent #4 bàn giao incident OPEN bị crash'
+#         required: false
+#         default: 'false'
+#       verification_sha:
+#         description: 'SHA có CI và Distribution GREEN; mã chạy chưa thay đổi'
+#         required: false
+#         default: ''
+#       dry_run_id:
+#         description: 'Auto Writer dry-run đạt QA thật, bắt buộc cho writer incident'
+#         required: false
+#         default: ''
+#       smoke_run_id:
+#         description: 'Auto Writer smoke thật, bắt buộc cho writer incident'
+#         required: false
+#         default: ''
 on:
-  workflow_dispatch:
-    inputs:
-      incident_id:
-        description: 'Incident ID — phải là incident_id Agent #4 vừa xử lý'
-        required: true
-      base_sha:
-        description: 'Base SHA Agent #4 đã ghi (kiểm chứng quan hệ HEAD)'
-        required: false
-        default: ''
-      allow_crashed_handoff:
-        description: 'true CHỈ khi Agent #4 bàn giao incident OPEN bị crash'
-        required: false
-        default: 'false'
-      verification_sha:
-        description: 'SHA có CI và Distribution GREEN; mã chạy chưa thay đổi'
-        required: false
-        default: ''
-      dry_run_id:
-        description: 'Auto Writer dry-run đạt QA thật, bắt buộc cho writer incident'
-        required: false
-        default: ''
-      smoke_run_id:
-        description: 'Auto Writer smoke thật, bắt buộc cho writer incident'
-        required: false
-        default: ''
+  push:
+    branches: ['__retired_agent_do_not_use__']
 
 permissions:
   # contents: write — (1) incident state file transitions (agent5-begin /
@@ -65,6 +69,7 @@ concurrency:
 
 jobs:
   supervise:
+    if: ${{ false }} # RETIRED (never execute legacy production)
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

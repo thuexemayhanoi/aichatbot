@@ -1,4 +1,4 @@
-# Blog Factory — nhà máy nội dung có thể phục hồi
+> **ACTIVE MODE (2026-10-11):** prose do một AI bên ngoài viết, GitHub Actions không chạy AI. Writer chỉ push body file; factory tự register manifest trước QA. Xem `AGENTS.md`, `docs/EXTERNAL-WRITER.md`, `docs/CONTINUOUS-WRITER.md`. Các phần nhắc auto-writer/coordinator/3 writer/nhập manifest thủ công bên dưới là tài liệu lịch sử, không còn là workflow thực thi.\n\n# Blog Factory — nhà máy nội dung có thể phục hồi
 
 Công cụ: `tools/blog-factory.mjs`. Nguyên tắc an toàn giống các hệ thống sản xuất trưởng thành: state machine, transaction, checkpoint, KHÔNG phụ thuộc bộ nhớ chat/session.
 
