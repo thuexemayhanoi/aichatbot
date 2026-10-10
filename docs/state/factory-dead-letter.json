@@ -24,10 +24,23 @@
         "38020455871"
       ],
       "code_sha": "7c0619346f786c14b76f211f1086a8dee8ffacc3"
+    },
+    "BA-0331": {
+      "article_id": "BA-0331",
+      "status": "RETRY_WAIT",
+      "cycles": 1,
+      "next_retry_at": "2026-10-10T09:53:00.962Z",
+      "reason": "exhausted 3 attempts for BA-0331: FAIL internal-links-resolve — broken internal link(s): /blog/app/lo-trinh-tinh-nang-cua-ung-dung-thue-xin-may/, /blog/app/module-goi-y-xe-trong-ung-dung-thue-xi/ QA FAIL BA-0331 score=0: critical: internal-links-resolve",
+      "failed_id": "BA-0331",
+      "evidence_runs": [
+        "38040113729"
+      ],
+      "code_sha": "31435c5d819c0ab555ffb44ae9fe236ffe82bdc8"
     }
   },
   "handled_runs": [
     "38005836742",
-    "38020455871"
+    "38020455871",
+    "38040113729"
   ]
 }
