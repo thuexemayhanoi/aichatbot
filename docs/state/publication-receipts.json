@@ -3542,6 +3542,28 @@
       "entry_sha256": "71b87bebafa889cba146c09d77285d1c365b7292d1d5d2f6917245a2ab878f8a",
       "production_status": 200,
       "verified_at": "2026-10-10T02:41:30.842Z"
+    },
+    "BA-0327": {
+      "article_id": "BA-0327",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/chon-xe-dien-phu-hop-cho-khach-du-lich/",
+      "publication_sha": "0879c772d24113aeae31977f8b614ca89008cbba",
+      "page_sha256": "d9d2021e9c26305b538822e35d460c163e6cdd6cb1d95e4b54b9267cc1c55e2d",
+      "body_sha256": "7cd32a548e23132645be2cfb88a07588ce14e91735428f4feb6d69f9772fce92",
+      "entry_sha256": "0e0103df0a7bb0e707bb47d75fac1328df4d91e2ac29c307b5a1eae94e9e0eb0",
+      "production_status": 200,
+      "verified_at": "2026-10-10T03:23:59.290Z"
+    },
+    "BA-0328": {
+      "article_id": "BA-0328",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/quy-trinh-nhan-xe-cho-nguoi-moi/",
+      "publication_sha": "0879c772d24113aeae31977f8b614ca89008cbba",
+      "page_sha256": "1472113f1d416cbbed60726039a6f98a27070afbf8b0fd96da1f7fd42e935f05",
+      "body_sha256": "92077df45d2839e51dfdef0751f864551278fce1ebf075e2f269484d971c926b",
+      "entry_sha256": "b1a0d9c5b650a8bfa3a0331bc059e570c428b8ff49a36a479c0c43120151cf99",
+      "production_status": 200,
+      "verified_at": "2026-10-10T03:23:59.292Z"
     }
   }
 }
