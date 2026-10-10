@@ -506,38 +506,36 @@ test('pipeline: blog-factory-publish.yml is the SIMPLE PRODUCTION MODE workflow 
   const commitStep = (y.split('Commit derived state')[1] ?? '').split('Assert clean')[0];
   assert.ok(commitStep, 'derived commit step exists');
   assert.ok(!commitStep.includes('data/blog/articles'), 'derived commit never touches article bodies');
-  assert.ok(!commitStep.includes('data/blog/published.json'), 'derived commit never touches the manifest');
+  assert.ok(commitStep.includes('data/blog/published.json'), 'factory commits deterministic external-writer manifest registration');
   assert.ok(!commitStep.includes('blog-factory.lock'), 'derived commit never stages a lock');
   assert.ok(!commitStep.includes('blog-factory.transaction.json'), 'derived commit never stages the txn marker');
   // Assert-clean is the final gate of the canonical path.
   assert.match(y, /Assert clean state/, 'assert-clean step closes the pipeline');
 });
 
-test('pipeline: docs match code — CONTINUOUS-WRITER contract + no outdated wording', () => {
+test('pipeline: single external writer runbook replaces the retired Ollama/multi-agent loop', () => {
   const cw = read('docs/CONTINUOUS-WRITER.md');
-  assert.ok(cw.includes('FETCH FRESH MAIN') && cw.includes('REPEAT'), 'canonical loop is documented');
-  assert.ok(cw.includes('RECOVER IF NEEDED') && cw.includes('RESUME'), 'recovery-if-needed is part of the loop');
-  assert.ok(cw.includes('SIMPLE PRODUCTION MODE'), 'simple production mode contract is documented');
-  assert.ok(cw.includes('MUTUALLY EXCLUSIVE'), 'scope separation (NEW/REPAIR/BACKLOG) is documented');
-  assert.ok(!cw.includes('LUÔN được ưu tiên trước bài PLANNED mới trong cùng một run'), 'outdated mixed-scope rule removed');
-  assert.ok(cw.includes('2 ARTICLES / MICRO CHUNK'), 'canonical chunk size 2 is documented');
-  assert.ok(cw.includes('WRITE 2') && cw.includes('PUSH 2') && cw.includes('NEXT 2'), 'chunk loop is documented');
-  const approvedRange = `${CONTENT_MIN_WORDS.toLocaleString('vi-VN')}–${CONTENT_MAX_WORDS.toLocaleString('vi-VN')}`;
-  assert.ok(cw.includes(approvedRange), 'owner-approved length rule is stated');
-  assert.ok(cw.includes('Không được dừng vì') && cw.includes('Chỉ được dừng khi'), 'stop conditions are stated');
-  assert.ok(cw.includes('Backlog') || cw.includes('backlog'), 'backlog discovery is documented');
+  const agents = read('AGENTS.md');
+  const external = read('docs/EXTERNAL-WRITER.md');
+  assert.match(cw, /FETCH FRESH MAIN/);
+  assert.match(cw, /REPAIR\/RESUME|RESUME unfinished/);
+  assert.match(cw, /NEXT 2/);
+  assert.match(cw, /2–10|1–10/);
+  assert.match(agents, /MỘT AI bên ngoài/);
+  assert.match(external, /Ollama/);
+  assert.match(external, /published\.json/);
+  assert.match(external, /factory-publish/);
+  assert.doesNotMatch(cw, /Auto Writer chạy Ollama cục bộ trên GitHub Actions theo lịch/);
   const bf = read('docs/BLOG-FACTORY.md');
-  assert.ok(!bf.includes('không tự chạy liên tục'), 'outdated non-continuous wording removed');
-  assert.ok(bf.includes('continuous-ready'), 'factory is declared continuous-ready');
-  assert.ok(bf.includes('prepare-chunk'), 'the chunk auto-claim command is documented');
-  assert.ok(bf.includes('publish-chunk'), 'the grouped publish command is documented');
-  assert.ok(bf.includes('SIMPLE PRODUCTION MODE'), 'factory doc documents the simple production mode contract');
+  assert.match(bf, /ACTIVE MODE \(2026-10-11\)/);
   const rules = read('docs/ARTICLE-RULES.md');
-  assert.ok(rules.includes(approvedRange), 'article rules keep the synced length gate');
-  assert.equal(CONTENT_MIN_WORDS, 800, 'approved floor');
-  assert.equal(CONTENT_MAX_WORDS, 2000, 'approved ceiling');
-  assert.equal(QA_MIN_WORDS, CONTENT_MIN_WORDS, 'QA floor stays synchronized');
-  assert.equal(QA_MAX_WORDS, CONTENT_MAX_WORDS, 'QA ceiling stays synchronized');
+  const approvedRange = `${CONTENT_MIN_WORDS.toLocaleString('vi-VN')}–${CONTENT_MAX_WORDS.toLocaleString('vi-VN')}`;
+  assert.ok(cw.includes(approvedRange), 'editorial word range remains documented');
+  assert.ok(rules.includes(approvedRange), 'article rules keep synced length range');
+  assert.equal(CONTENT_MIN_WORDS, 800);
+  assert.equal(CONTENT_MAX_WORDS, 2000);
+  assert.equal(QA_MIN_WORDS, CONTENT_MIN_WORDS);
+  assert.equal(QA_MAX_WORDS, CONTENT_MAX_WORDS);
 });
 
 test('pipeline: the real repo is untouched by every sandbox chunk', () => {
