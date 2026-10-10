@@ -1,4 +1,4 @@
-# Auto Writer — local inference in Actions
+> **RETIRED (2026-10-11):** Ollama/Qwen writer bên trong Actions đã tắt. Không tái kích hoạt model cache/generation/schedule; thay bằng AI bên ngoài (xem `docs/EXTERNAL-WRITER.md`). Các bước bên dưới chỉ là lịch sử.\n\n# Auto Writer — local inference in Actions
 
 ## Why the engine changed (2026-10-08)
 
