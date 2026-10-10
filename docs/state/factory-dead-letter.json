@@ -12,9 +12,22 @@
         "38005836742"
       ],
       "code_sha": "c97833629f6e17b025d02a3bd0a9d885e2160eab"
+    },
+    "BA-0330": {
+      "article_id": "BA-0330",
+      "status": "RETRY_WAIT",
+      "cycles": 1,
+      "next_retry_at": "2026-10-10T08:08:07.091Z",
+      "reason": "exhausted 3 attempts for BA-0330: FAIL internal-links-resolve — broken internal link(s): /blog/dia-phuong/hoi-an-cuoi-tuan/, /blog/dia-phuong/hoi-an-cuoi-tuan/ QA FAIL BA-0330 score=0: critical: internal-links-resolve WARN local-angle — LOCAL article should have a non-empty local_scope (distinct angle, not a doorway clone)",
+      "failed_id": "BA-0330",
+      "evidence_runs": [
+        "38020455871"
+      ],
+      "code_sha": "7c0619346f786c14b76f211f1086a8dee8ffacc3"
     }
   },
   "handled_runs": [
-    "38005836742"
+    "38005836742",
+    "38020455871"
   ]
 }
