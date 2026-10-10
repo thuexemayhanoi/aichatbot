@@ -1,10 +1,10 @@
 {
   "$schema": "motoai/writer-assignments@1",
   "active": {
-    "batch_id": "WRITER-BATCH-0014",
-    "base_sha": "5c324131d5954c413b673e927f99940b706e14ff",
-    "status": "COMPLETED",
-    "created_at": "2026-10-09T16:28:34.423Z",
+    "batch_id": "WRITER-BATCH-0015",
+    "base_sha": "1115931d5c6d9c5ad14ab26e073c49b581b2bdf2",
+    "status": "ACTIVE",
+    "created_at": "2026-10-10T13:28:12.043Z",
     "limit": 18,
     "total": 18,
     "chunks": [
@@ -12,183 +12,91 @@
         "seq": 1,
         "writer": "writer_A",
         "ids": [
-          "BA-0317",
-          "BA-0318"
+          "BA-0321",
+          "BA-0329"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-09T17:09:06.783Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-09T17:09:06.784Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-09T17:09:06.784Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 2,
         "writer": "writer_B",
         "ids": [
-          "BA-0319",
-          "BA-0320"
+          "BA-0332",
+          "BA-0335"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-09T23:43:44.151Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-09T23:43:44.151Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-09T23:43:44.151Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 3,
         "writer": "writer_C",
         "ids": [
-          "BA-0321",
-          "BA-0322"
+          "BA-0336",
+          "BA-0337"
         ],
-        "status": "FAILED",
-        "events": [
-          {
-            "state": "CONTENT_DEFERRED",
-            "at": "2026-10-10T01:20:27.969Z",
-            "run_id": "38005836742",
-            "reason": "bounded retry / dead-letter queue; no article published"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 4,
         "writer": "writer_A",
         "ids": [
-          "BA-0323",
-          "BA-0324"
+          "BA-0338",
+          "BA-0339"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-10T02:42:01.832Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-10T02:42:01.832Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-10T02:42:01.832Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 5,
         "writer": "writer_B",
         "ids": [
-          "BA-0325",
-          "BA-0326"
+          "BA-0340",
+          "BA-0341"
         ],
-        "status": "FACTORY_FAILED",
-        "events": [
-          {
-            "state": "FACTORY_FAILED",
-            "at": "2026-10-10T03:01:27.970Z",
-            "reason": "factory run 38019053995 failed"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 6,
         "writer": "writer_C",
         "ids": [
-          "BA-0327",
-          "BA-0328"
+          "BA-0342",
+          "BA-0343"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-10T03:24:39.421Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-10T03:24:39.421Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-10T03:24:39.421Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 7,
         "writer": "writer_A",
         "ids": [
-          "BA-0329",
-          "BA-0330"
+          "BA-0344",
+          "BA-0345"
         ],
-        "status": "FAILED",
-        "events": [
-          {
-            "state": "CONTENT_DEFERRED",
-            "at": "2026-10-10T07:38:07.091Z",
-            "run_id": "38020455871",
-            "reason": "bounded retry / dead-letter queue; no article published"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 8,
         "writer": "writer_B",
         "ids": [
-          "BA-0331",
-          "BA-0332"
+          "BA-0346",
+          "BA-0347"
         ],
-        "status": "FAILED",
-        "events": [
-          {
-            "state": "CONTENT_DEFERRED",
-            "at": "2026-10-10T09:23:00.962Z",
-            "run_id": "38040113729",
-            "reason": "bounded retry / dead-letter queue; no article published"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       },
       {
         "seq": 9,
         "writer": "writer_C",
         "ids": [
-          "BA-0333",
-          "BA-0334"
+          "BA-0348",
+          "BA-0349"
         ],
-        "status": "PUBLISHED",
-        "events": [
-          {
-            "state": "PUSHED",
-            "at": "2026-10-10T13:27:45.194Z"
-          },
-          {
-            "state": "FACTORY_PROCESSING",
-            "at": "2026-10-10T13:27:45.194Z"
-          },
-          {
-            "state": "PUBLISHED",
-            "at": "2026-10-10T13:27:45.194Z"
-          }
-        ]
+        "status": "RESERVED",
+        "events": []
       }
     ]
   },
@@ -283,6 +191,13 @@
       "published": 8,
       "failed": 1,
       "completed_at": "2026-10-09T16:28:34.423Z"
+    },
+    {
+      "batch_id": "WRITER-BATCH-0014",
+      "total": 18,
+      "published": 5,
+      "failed": 4,
+      "completed_at": "2026-10-10T13:28:12.044Z"
     }
   ]
 }
