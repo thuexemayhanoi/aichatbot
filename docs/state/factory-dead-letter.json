@@ -1,5 +1,20 @@
 {
   "schema_version": 1,
-  "articles": {},
-  "handled_runs": []
+  "articles": {
+    "BA-0322": {
+      "article_id": "BA-0322",
+      "status": "RETRY_WAIT",
+      "cycles": 1,
+      "next_retry_at": "2026-10-10T01:50:27.969Z",
+      "reason": "pair QA refused BA-0322: ASS id-slug-path PASS body-exists PASS fact-resolution PASS body-substantial PASS html-render-safe PASS verified-phones-only PASS verified-deposits-only PASS internal-links-resolve PASS body-words PASS body-structure PASS no-filler PASS no-duplicate-paragraphs PASS no-duplicate-sentences WARN no-cross-article-duplicate — paragraph already used in another article: \"Tiền cọc được đối chiếu trực tiếp lúc nhận xe và sẽ được quay về bạn khi trả xe \" PASS no-cannibalization PASS title-meta-valid PASS seo-ownership PASS no-external-links PASS retrieval-consistency QA PASS BA-0322 score=95 warnings=1 ",
+      "failed_id": "BA-0322",
+      "evidence_runs": [
+        "38005836742"
+      ],
+      "code_sha": "c97833629f6e17b025d02a3bd0a9d885e2160eab"
+    }
+  },
+  "handled_runs": [
+    "38005836742"
+  ]
 }

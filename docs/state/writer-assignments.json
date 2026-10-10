@@ -61,8 +61,15 @@
           "BA-0321",
           "BA-0322"
         ],
-        "status": "RESERVED",
-        "events": []
+        "status": "FAILED",
+        "events": [
+          {
+            "state": "CONTENT_DEFERRED",
+            "at": "2026-10-10T01:20:27.969Z",
+            "run_id": "38005836742",
+            "reason": "bounded retry / dead-letter queue; no article published"
+          }
+        ]
       },
       {
         "seq": 4,
