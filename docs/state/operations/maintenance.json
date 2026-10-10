@@ -5,10 +5,10 @@
   "last_valid_progress_at": "2026-10-03T07:14:41.000Z",
   "active_incident": {
     "incident_id": "INC-20261010030141-b76p",
-    "status": "OPEN",
-    "owner": "AGENT_4",
+    "status": "AGENT4_ESCALATE",
+    "owner": "NONE",
     "started_at": "2026-10-10T03:01:41.886Z",
-    "updated_at": "2026-10-10T03:01:41.886Z",
+    "updated_at": "2026-10-10T03:01:44.978Z",
     "base_sha": "9a6fcdbb3dbfcf5cbda7eb73e7767741d6c7fa16",
     "reason": "factory infrastructure failure while publishing chunk WRITER-BATCH-0014#5",
     "trigger": "workflow_dispatch",
@@ -24,7 +24,7 @@
       "agent5": 0
     },
     "production_paused": true,
-    "result_note": ""
+    "result_note": "no deterministic recipe matched (or the recipe failed verification) — second-line review required"
   },
   "incidents": [
     {
