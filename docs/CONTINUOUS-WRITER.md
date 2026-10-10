@@ -27,6 +27,7 @@ Nếu workflow QA FAIL: sửa nội dung thật và push lại file body chưa P
 
 ## Data protocol
 
+- Nhịp mặc định 2 bài/commit; **2–10 bài/push** là khoảng write-ahead queue đã kiểm soát, không cho phép nhiều hơn 10. Dừng tại safe checkpoint, không bỏ tiến độ.
 - Matrix: `data/blog/content-matrix.csv` 2.000 dòng, ID và URL bất biến. `PUBLISHED` là bất khả xâm phạm với writer.
 - Body: `data/blog/articles/<slug>.body.html` chỉ văn bản bài; title/description/author/category/date được deterministic `tools/external-writer.mjs register --files` tạo từ matrix + body đã push.
 - Published manifest: `data/blog/published.json`; writer không cần và KHÔNG sửa tay. Factory commit cùng derived state, tất cả mutation qua QA.
