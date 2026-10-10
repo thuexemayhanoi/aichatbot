@@ -72,5 +72,6 @@ test('backlog recovery requires completed CI and Distribution on the same main p
   assert.equal(recoveryCodeUnchanged(['.github/workflows/ci.yml']), false);
   const workflow = readFileSync(root + '.github/workflows/blog-factory-publish.yml', 'utf8');
   assert.match(workflow, /needs: recovery-checks\n    if: needs.recovery-checks.outputs.ready == 'true'/);
-  assert.ok(workflow.indexOf('Request and verify Pages') < workflow.indexOf('Reconcile recovered chunks'));
+  assert.match(workflow, /Request and verify Pages/, 'Pages verification remains mandatory');
+  assert.doesNotMatch(workflow, /Reconcile recovered chunks/, 'retired multi-writer reconciliation cannot mutate state');
 });
