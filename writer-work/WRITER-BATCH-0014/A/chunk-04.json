@@ -1,0 +1,57 @@
+{
+  "$schema": "motoai/writer-chunk@1",
+  "batch_id": "WRITER-BATCH-0014",
+  "writer": "writer_A",
+  "seq": 4,
+  "ids": [
+    "BA-0323",
+    "BA-0324"
+  ],
+  "body_paths": [
+    "data/blog/articles/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach.body.html",
+    "data/blog/articles/da-nang-hanh-trinh-bac-nam.body.html"
+  ],
+  "status": "READY_TO_PUSH",
+  "drafts": [
+    {
+      "article_id": "BA-0323",
+      "category": "SAFE",
+      "slug": "nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach",
+      "title": "Người Nước Ngoài Lái xe ở Việt Nam Cho du Khách",
+      "description": "Hướng dẫn pháp lý cho người nước ngoài lái xe cho du khách tại Việt Nam, đảm bảo an toàn và tuân thủ quy định pháp luật.",
+      "published_date": "2026-10-10",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0324",
+      "category": "LOCAL",
+      "slug": "da-nang-hanh-trinh-bac-nam",
+      "title": "Đà Nẵng Hành Trình Bắc Nam",
+      "description": "Khám phá hành trình Bắc Nam từ Đà Nẵng với các điểm đến nổi tiếng, phù hợp cho người yêu thiên nhiên và văn hóa.",
+      "published_date": "2026-10-10",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/da-nang-hanh-trinh-bac-nam.body.html",
+      "knowledge_chunks": [
+        "Đà Nẵng là điểm khởi đầu lý tưởng cho hành trình Bắc Nam, kết nối trực tiếp với các vùng miền khác như Ninh Bình, Thanh Hóa và Huế. Những chặng đường này không chỉ mang lại sự thay đổi về khí hậu mà còn mở ra những trải nghiệm văn hóa, lịch sử phong phú. Việc đi xe máy giúp bạn linh hoạt, dễ dàng thay đổi lộ trình và khám phá những điểm đến nhỏ nằm ngoài hành trình chính.",
+        "Mỗi địa phương trong hành trình đều có nét đặc trưng riêng: từ những cánh đồng lúa ở Ninh Bình, đến những làng nghề truyền thống tại Thanh Hóa, hay di sản cố đô Huế. Những chặng đường này phù hợp với người yêu thiên nhiên, ẩm thực và văn hóa dân gian. Tuy nhiên, nên xác nhận với cửa hàng về lộ trình cụ thể và điều kiện vận hành trước khi khởi hành để đảm bảo an toàn và thuận tiện."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "from": "WRITING",
+      "to": "LOCAL_QA_PASS",
+      "at": "2026-10-10T02:40:05.433Z",
+      "reason": "local scoped QA PASS"
+    },
+    {
+      "from": "LOCAL_QA_PASS",
+      "to": "READY_TO_PUSH",
+      "at": "2026-10-10T02:40:05.433Z"
+    }
+  ]
+}
