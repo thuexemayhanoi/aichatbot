@@ -165,5 +165,31 @@ jobs:
             MSG="writer-coordinator: plan $BID ($TOT ids, $NCH chunks) [skip ci]"
           fi
           git commit -m "$MSG" || echo "nothing"
-          git pull --rebase || true
-          git push || echo "push failed"
+          git pull --rebase
+          git push
+
+      - name: Surface diagnostic failures in Actions status
+        if: always()
+        run: |
+          set -euo pipefail
+          MODE="$(head -n 1 ops/candidate/request.txt 2>/dev/null || true)"
+          case "$MODE" in
+            verify-infra*)
+              if grep -Eq '(writer-queue-validate-exit=[1-9]|blog-factory-validate-exit=[1-9]|tests-exit=[1-9]|TESTS_EXIT=[1-9])' ops/out/verify-verdict.txt; then
+                echo "::error::Infrastructure diagnostic reported failures (see ops/out/verify-verdict.txt)"
+                exit 1
+              fi
+              ;;
+            plan*)
+              if grep -Fq PLAN_FAILED ops/qa-result.txt; then
+                echo "::error::Reservation plan failed (see ops/qa-result.txt)"
+                exit 1
+              fi
+              ;;
+            qa*|'')
+              if grep -Eq 'QA_FAILED_|SELECT_PUBLISH_FAILED|STAGE_FAILED|VERIFY_PUSH_FAILED' ops/qa-result.txt; then
+                echo "::error::Candidate QA/verification failed (see ops/qa-result.txt)"
+                exit 1
+              fi
+              ;;
+          esac
