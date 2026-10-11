@@ -5819,6 +5819,28 @@
       "entry_sha256": "34768dd323a1888411895f1d17bba8e91c647de2bba555c7938e50d0c8c2e16a",
       "production_status": 200,
       "verified_at": "2026-10-11T18:25:40.228Z"
+    },
+    "BA-0591": {
+      "article_id": "BA-0591",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/kiem-tra-xe-dien-truoc-khi-thue-cho-khach-du-lich/",
+      "publication_sha": "4928fcec880bf9317faad7f1f330919fac473261",
+      "page_sha256": "cff87675f9142ec4313717127f331d3b70ca960e859fb455bc5d154f30297861",
+      "body_sha256": "8541f7dc446abd0c525de8957a81e76d8911720563a8f1b8f04b39abe695988c",
+      "entry_sha256": "9880eb11fd202e951187369bdee6fc279356a051b2ec4fa62f821cd55e2e86d9",
+      "production_status": 200,
+      "verified_at": "2026-10-11T18:30:45.267Z"
+    },
+    "BA-0592": {
+      "article_id": "BA-0592",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/deo-doc-va-xe-may-thue-cho-nguoi-moi/",
+      "publication_sha": "4928fcec880bf9317faad7f1f330919fac473261",
+      "page_sha256": "5071726cb3304e5ca66f310926a91e01159eacad7dc38dff020a9470517eb967",
+      "body_sha256": "9dc68a771c4f71504e1efebfdf7ee5016005fd20c6b6342ba01133c1c0297677",
+      "entry_sha256": "fbb10599680c947acf8bcecdb8e9c508da27d39093be93ea2ad2ebdd872fe1e0",
+      "production_status": 200,
+      "verified_at": "2026-10-11T18:30:45.274Z"
     }
   }
 }
