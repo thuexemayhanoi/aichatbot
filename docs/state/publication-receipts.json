@@ -4268,6 +4268,28 @@
       "entry_sha256": "0c4109dd49034cfca0b9b74103dfd403ba31cad5ae1e4deea16ec0b4bbf41975",
       "production_status": 200,
       "verified_at": "2026-10-11T11:48:47.947Z"
+    },
+    "BA-0389": {
+      "article_id": "BA-0389",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/suong-mu-mua-dong-cho-du-khach/",
+      "publication_sha": "3c4d6e0e925034eefa6b07a7d830e524013d9243",
+      "page_sha256": "6453511a70e3de6ae14969ca2ea040f32fec72f9c310a620f84d1358ae19272b",
+      "body_sha256": "5434f5f551d8a8c8dee55ba30d69973d62eb07cd5608ba9172a2fabe61360f07",
+      "entry_sha256": "ab156ad0e038790d6058bd305af8b5b941cfce00e8b45d0fe22427b0e1c0dcb8",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:51:51.697Z"
+    },
+    "BA-0390": {
+      "article_id": "BA-0390",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ba-dinh-xe-may-phuong-hai-ngay-mot-dem/",
+      "publication_sha": "3c4d6e0e925034eefa6b07a7d830e524013d9243",
+      "page_sha256": "063000b727c72d005b386cd58aec8d69b7eeb03bc1c9ad82f14eb7214056dbc2",
+      "body_sha256": "889a6d6b42aba82797b694b2e3fbc03a7c397afcee711122038a528b61e64771",
+      "entry_sha256": "be7c4f110cc8a42b2e8e319a8f22757192c41c7468c7f331b10eb29c3228add8",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:51:51.689Z"
     }
   }
 }
