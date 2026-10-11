@@ -7668,6 +7668,36 @@
       "pilot": false,
       "body": "data/blog/articles/quyen-cua-nguoi-thue-xe-cho-du-khach.body.html",
       "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0541",
+      "category": "APP",
+      "slug": "agent-chon-xe-giup-ban-nam-2026",
+      "title": "Agent Chọn xe Giúp Bạn Năm 2026",
+      "description": "Mở trang thuê xe năm 2026, bạn sẽ ít phải đọc bảng giá dài hàng chục dòng: chỉ cần nhập một câu như cần một xe nhẹ chạy phố trong hai ngày, trợ lý",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/agent-chon-xe-giup-ban-nam-2026.body.html",
+      "knowledge_chunks": [
+        "Mở trang thuê xe năm 2026, bạn sẽ ít phải đọc bảng giá dài hàng chục dòng: chỉ cần nhập một câu như cần một xe nhẹ chạy phố trong hai ngày, trợ lý chọn xe gửi lại vài dòng xe kèm giá và lý do phù hợp. Trải nghiệm này đang đổi thói quen của khách thuê Việt, nhất là khi phần lớn lượt truy cập đến từ điện thoại và chẳng ai rảnh để so từng mục. Bài viết mô tả cách tính năng này vận hành trong năm 2026 cùng những thói quen nhỏ giúp bạn nhận gợi ý sát nhu cầu.",
+        "Luồng xử lý chung gồm ba bước. Bước một, hệ thống đọc câu mô tả của bạn và tách các thông tin then chốt: số người đi, trình độ lái, điểm đến, thời lượng thuê. Bước hai, các thông tin đó được so với danh sách xe thật của cửa hàng, loại bỏ dòng đã hết hoặc không hợp. Bước ba, trợ lý trả về vài gợi ý kèm lời giải thích ngắn để bạn hiểu vì sao dòng xe đó xuất hiện."
+      ]
+    },
+    {
+      "article_id": "BA-0542",
+      "category": "RENT",
+      "slug": "dat-xe-truoc-hay-den-truc-tiep-ky-nghi-le",
+      "title": "Đặt xe Trước Hay Đến Trực Tiếp kỳ Nghĩ lễ",
+      "description": "Mỗi khi kỳ nghỉ lễ tới gần, tin nhắn gửi cho các điểm thuê xe máy ở Hà Nội tăng vọt: khách hỏi giá, hỏi xe còn, rồi phân vân nên giữ chỗ trước hay cứ",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dat-xe-truoc-hay-den-truc-tiep-ky-nghi-le.body.html",
+      "knowledge_chunks": [
+        "Mỗi khi kỳ nghỉ lễ tới gần, tin nhắn gửi cho các điểm thuê xe máy ở Hà Nội tăng vọt: khách hỏi giá, hỏi xe còn, rồi phân vân nên giữ chỗ trước hay cứ đến tận nơi. Trước ngày 30 tháng 4 hay dịp 2 tháng 9, phần lớn xe số và xe ga phổ biến thường hết sớm, khiến quyết định này quan trọng hơn ngày thường rất nhiều. Bài viết so sánh hai cách theo đặc thù riêng của các kỳ nghỉ lễ để bạn kịp chốt phương án cho chuyến đi; bản so sánh cho ngày thường nằm tại đặt xe trước hay đến trực tiếp .",
+        "Hai yếu tố làm nên khác biệt. Thứ nhất, nhu cầu dồn vào cùng một khung giờ: hầu hết khách muốn nhận xe buổi sáng ngày đầu nghỉ và trả vào buổi chiều ngày cuối, nên cửa hàng gần như phục vụ tất cả khách trong hai khung cao điểm đó. Thứ hai, cơ hội thay thế rất mỏng: khi bạn tới muộn mà dòng xe ưng ý đã được người khác giữ, các lựa chọn còn lại thường là dòng bạn chưa từng dự tính. Vì thế, vào dịp lễ, quyết định đặt trước hay đến trực tiếp cần tính sớm hơn thói quen ngày thường."
+      ]
     }
   ]
 }
