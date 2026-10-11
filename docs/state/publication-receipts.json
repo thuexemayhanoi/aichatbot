@@ -4378,6 +4378,28 @@
       "entry_sha256": "93afe846706413d90d53f6656642a91786552d6fb3191f64baf12d4b094b0cc6",
       "production_status": 200,
       "verified_at": "2026-10-11T12:06:47.354Z"
+    },
+    "BA-0401": {
+      "article_id": "BA-0401",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan-cho-du-khach/",
+      "publication_sha": "ddaa7106a3cd3f1bcf787e885636c745f7388076",
+      "page_sha256": "8f2516fa1bd8e3f3ffc0aea10fdfadd41862cee18c7de8dd233ce8b4cd78f711",
+      "body_sha256": "99a225aad0a7aaaa25c290e3ae6911af13f1b8b894d94d00498e4d579c5a724c",
+      "entry_sha256": "be035d2493b8588bd98f15e5e6b0c7fbf82ef269ad5604896ebe95a4e8fc51cb",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:10:53.978Z"
+    },
+    "BA-0402": {
+      "article_id": "BA-0402",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/dong-da-va-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "ddaa7106a3cd3f1bcf787e885636c745f7388076",
+      "page_sha256": "e105f69b7c71d6447c5deab15f4d8343f29f8efa2cece82db69e82fdbd672b63",
+      "body_sha256": "997175d6c5a783bb4579fe8a4fbfd366421076446c41a9b385489844e1f989b1",
+      "entry_sha256": "85d168740f13e9cd9f628592050d32ee49ea3003f23892b5a9548c8bc65d7fc6",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:10:53.975Z"
     }
   }
 }
