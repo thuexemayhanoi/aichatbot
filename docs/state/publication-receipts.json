@@ -4422,6 +4422,28 @@
       "entry_sha256": "a7882559c70fc3ddb34db260404822cd159ea8260c608a3e0549b8a5662a5230",
       "production_status": 200,
       "verified_at": "2026-10-11T12:13:07.784Z"
+    },
+    "BA-0405": {
+      "article_id": "BA-0405",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/xe-dien-an-toan-khong-cho-khach-du-lich/",
+      "publication_sha": "9b842deb13c5cc50662215b47474c31e609d81ce",
+      "page_sha256": "ebca16313d9cdde74db92cef3bb08c1e72aae8b573e677a7238c494f0ef28755",
+      "body_sha256": "ebc86029a189534282b644e9b0b351b73e240c9c184db31e6236f35b3e191f9f",
+      "entry_sha256": "9e63b434bc40061eeff7778bb1ceaf4851778996f3233d0440bf5bb4ff1601e1",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:15:58.411Z"
+    },
+    "BA-0406": {
+      "article_id": "BA-0406",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/di-hai-nguoi-tren-xe-thue-cho-nguoi-moi/",
+      "publication_sha": "9b842deb13c5cc50662215b47474c31e609d81ce",
+      "page_sha256": "49c999ee628a0ac2f30cfd21cd49b812d66859b5edfaf8acbada08e567fbcfea",
+      "body_sha256": "c4dd75bd55f9845410d9232c7ea6a14f0d4a672e30e2ee3a4bf3f3149bc075da",
+      "entry_sha256": "083a9881b9735f7fbc3e494e43e2c42fc31740fccaab2fcc7a81eb053c24b5cb",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:15:58.413Z"
     }
   }
 }
