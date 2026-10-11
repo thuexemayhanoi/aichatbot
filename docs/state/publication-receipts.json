@@ -4752,6 +4752,28 @@
       "entry_sha256": "424e2f57d88c6cda4e7a8d1d679226caad785eaa87eec4cdf6a9e69d0e2a7175",
       "production_status": 200,
       "verified_at": "2026-10-11T14:11:53.319Z"
+    },
+    "BA-0443": {
+      "article_id": "BA-0443",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/deo-non-dung-cach-cho-du-khach/",
+      "publication_sha": "12a45a56ccb809185f82916d759117359086c286",
+      "page_sha256": "446e532e058b41c5da4867a755c203fc4db608c393207fc4cf86e951803ced60",
+      "body_sha256": "fd81197991021233881c7fef87db11d8841280f376f32a7f334160a2b594250d",
+      "entry_sha256": "a64199851489b1609351fc44d3b4c9f5a607be8c06d3c4626d9e9677635f2bc6",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:15:25.660Z"
+    },
+    "BA-0444": {
+      "article_id": "BA-0444",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ho-guom-ban-dem-hai-ngay-mot-dem/",
+      "publication_sha": "12a45a56ccb809185f82916d759117359086c286",
+      "page_sha256": "b6b8b847c3555338ab8287507f401e1cddfe457c0b5b736a74f4d826fee1e54a",
+      "body_sha256": "ae7a6b2b4208443b51da296d776030c2b8d61f48f3215f37ee6f4382ededda33",
+      "entry_sha256": "f208746c9520e67a6fb5c8b946c3b7a2fc393c45c94db50057b55ddfbc4fe674",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:15:25.654Z"
     }
   }
 }
