@@ -60,3 +60,9 @@ Source articles are never overwritten by the build. Rejected articles remain pen
 Active Actions: `blog-factory-publish.yml` (content publisher), `ci.yml`, `distribution.yml`. The 9 former autonomous/ops workflows are disabled at event and job level, preserved only for regression/incident history; they must never be re-enabled without an explicit owner decision. `src/ai` is optional **chatbot UI code**, not an article writer; the migration does not remove unrelated chatbot features.
 
 The system will NOT autonomously call the external AI, start a new AI chat or write 1,670 articles on its own. The external AI must have an active session and the required GitHub permission to create the HTML body files; the deterministic publisher handles the rest.
+
+## 6. Serialized publication and orphan recovery
+
+GitHub Actions serializes publish runs. Each run now freezes the **original push body list** before syncing the current `origin/main`, so a second push queued behind a previous publisher does not try to rebase regenerated sitemap/manifest files on stale state.
+
+**Do not push more than 10 article bodies per commit.** If a writer already pushed 11+ bodies and registration rejected the push, the HTML prose is still safely stored in GitHub. Requeue those same unpublished body files in separate commits of 2–10 by adding a harmless trailing newline (or a real editorial correction), then wait until each run is **PUBLISHED and production-verified** before pushing the next batch. Do not rewrite published articles, delete the original bodies, or hand-edit the matrix/manifest. If a run failed during the derived-state commit, do not trust an old job rerun with an old checkout; requeue its still-PLANNED body files on a fresh main commit instead.
