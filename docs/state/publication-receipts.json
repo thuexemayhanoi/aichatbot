@@ -3740,6 +3740,28 @@
       "entry_sha256": "6993e98a9de917d0671a749309002b3231a4894c312073b1320560d63d9ef08a",
       "production_status": 200,
       "verified_at": "2026-10-11T04:56:56.823Z"
+    },
+    "BA-0341": {
+      "article_id": "BA-0341",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cho-du-khach/",
+      "publication_sha": "807fddbb054bc78b5f930b835d31783a9c8bf006",
+      "page_sha256": "4ebe5ba15ded609b003c68794020779711905ae45a45fe7dc3ab0226df1971ab",
+      "body_sha256": "71f6de83e2c5751b2ef714d85d9f39a3a04c4d005dc005198988829f7785dc4e",
+      "entry_sha256": "63ac24abd736d8ffc81de139eedc1a47cf7a000c6d8d56f414316243816b0935",
+      "production_status": 200,
+      "verified_at": "2026-10-11T04:59:57.413Z"
+    },
+    "BA-0342": {
+      "article_id": "BA-0342",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/mekong-delta-ride/",
+      "publication_sha": "807fddbb054bc78b5f930b835d31783a9c8bf006",
+      "page_sha256": "1b8aff552cf9a79ae8964b93e63a980e2c4c5535135cf60d7200e4cff74be7d3",
+      "body_sha256": "f7eb5c100e312436df1655ebd9644762f776eaee774b9c3cafbbb93738b52f47",
+      "entry_sha256": "a8687204b819aec3d0b21acc383530ee7d0223f16f06850c45709b64c1ebb5ec",
+      "production_status": 200,
+      "verified_at": "2026-10-11T04:59:57.414Z"
     }
   }
 }
