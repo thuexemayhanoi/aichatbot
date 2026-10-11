@@ -5225,6 +5225,28 @@
       "entry_sha256": "e170fb5934f128e8f745d81a7858a1e3df407b8504a9eea1f15e93ec45cd038d",
       "production_status": 200,
       "verified_at": "2026-10-11T16:09:38.223Z"
+    },
+    "BA-0493": {
+      "article_id": "BA-0493",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/app-ho-tro-thu-tuc-thue-xe-nam-2026/",
+      "publication_sha": "2ffde945ad511ab1b62bef4b3f0e7e20dfd2ed60",
+      "page_sha256": "fdfe7d2538c2f850e183060e4119d366dc8cfce3a4736e1c836005e729311f5b",
+      "body_sha256": "1329a1d4a60670a965a2fef624e105e9de27778b8c99b6ec7404f67595aabaa7",
+      "entry_sha256": "1e62727ec87db8a5ea01418b6bdceda66d4c7570c41cf9003e85e6915921cf58",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:11:45.871Z"
+    },
+    "BA-0494": {
+      "article_id": "BA-0494",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/khach-du-lich-thue-xe-may-ky-nghi-le/",
+      "publication_sha": "2ffde945ad511ab1b62bef4b3f0e7e20dfd2ed60",
+      "page_sha256": "590b2e0087a1e1e5aa4a01b354a8bfd6589839dfe2af96f95289afaf17cc7d5e",
+      "body_sha256": "458dfe843456ef58c9af66ee4e1baabd9924519a64a93f75b02b6c465e0f25a4",
+      "entry_sha256": "b4eb546ad5dbd32ac1d4f7dee3b32dadf5d8a6fb3220684886c027b19735c09d",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:11:45.873Z"
     }
   }
 }
