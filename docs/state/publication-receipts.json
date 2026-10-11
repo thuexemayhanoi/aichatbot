@@ -4334,6 +4334,28 @@
       "entry_sha256": "085414e9480ba1fd9de349b8392986133aeb64bd47fb21c4f328a1a19ba29426",
       "production_status": 200,
       "verified_at": "2026-10-11T11:56:24.143Z"
+    },
+    "BA-0395": {
+      "article_id": "BA-0395",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/tam-nhin-khi-lai-xe-cho-du-khach/",
+      "publication_sha": "5f2300559b3d0df6cd029717aa507bc8a0c79376",
+      "page_sha256": "f4c9ee2c6b289b42262bc75e21adbf6c9212b45ca887db49e0c0b75d862b4ed3",
+      "body_sha256": "d62098f1f12676363f0c6889cef2abbbb9121f95e428a4b939fdff4a977f8f53",
+      "entry_sha256": "8a189ec8d611ad5057600709fde86abc8a4f3628ed38288898eb6c1088ae7f7f",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:00:14.521Z"
+    },
+    "BA-0396": {
+      "article_id": "BA-0396",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cau-giay-di-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "5f2300559b3d0df6cd029717aa507bc8a0c79376",
+      "page_sha256": "5d135b0d0990b97236092262604d67822a755abc8294b8a24aabb4e56a58a5da",
+      "body_sha256": "2cd2b4129ef4108aa2137d8bd4c8b9910d7d4d44bec305ce1b692e9dd3d79644",
+      "entry_sha256": "0a3d5dc9ca61946465306c7fac0dbecbfc6637f4d6356bef9a6b7bca195bfbda",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:00:14.522Z"
     }
   }
 }
