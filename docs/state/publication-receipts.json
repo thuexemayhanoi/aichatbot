@@ -5082,6 +5082,28 @@
       "entry_sha256": "ea33b717b8c71dd2790343a8446ceb13d86ebf4a948a3fb2f0b82f016671f4a2",
       "production_status": 200,
       "verified_at": "2026-10-11T15:44:47.533Z"
+    },
+    "BA-0477": {
+      "article_id": "BA-0477",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/het-pin-giua-duong-phai-lam-gi-cho-khach-du-lich/",
+      "publication_sha": "9b307cd4d105c3528f29349a3cdf1d16f2050bb3",
+      "page_sha256": "e113b18d2386faddc021bb9bee4047e7d7a54b17dbbc2b9bfa03e9cf887c6832",
+      "body_sha256": "ac612b17b2ea1e00363961946efd6e04cb451b4026cc4e261ad970a99a6377a8",
+      "entry_sha256": "828055cd8f372515836e33919d7314779134a1b7b31d0323abfb1df439dd6d53",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:50:49.384Z"
+    },
+    "BA-0478": {
+      "article_id": "BA-0478",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/gap-canh-sat-giao-thong-voi-xe-thue-cho-nguoi-moi/",
+      "publication_sha": "9b307cd4d105c3528f29349a3cdf1d16f2050bb3",
+      "page_sha256": "0549b7fa4e6336c44c316356e77f158f28243137d4eaa753a02c4710a0a72f88",
+      "body_sha256": "51be932cafef2e323eeb84d7cb1a8713839eda015ef0ca6fc35bf1f38bf77e11",
+      "entry_sha256": "0bbc711b96e6ee52ec3d6829429a536cb9dc2ebc4a37a0d9eaa8efb6833d711f",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:50:49.392Z"
     }
   }
 }
