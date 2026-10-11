@@ -6396,6 +6396,36 @@
         "Đến năm 2026, thuê xe máy ở Hà Nội có hai lối rõ rệt: một lối là gọi điện hoặc nhắn trực tiếp cho cửa hàng theo kiểu quen thuộc, một lối là mở phiên hội thoại với trợ lý và chốt xe ngay trên ứng dụng. Hỏi lối nào tốt hơn là hỏi sai câu, vì hai lối này phục vụ các tình huống khác nhau, và người thuê thông minh là người biết khi nào dùng lối nào. Bài này xếp hai cách cạnh nhau theo từng khâu của một kỳ thuê — tìm xe, chốt điều kiện, nhận trả xe và xử lý phát sinh — rồi chỉ đúng chỗ mà mỗi cách mạnh hơn. Bản so sánh chi tiết từng chặng đã có sẵn trong bài so sánh cách thuê xe truyền thống và qua ứng dụng , còn cách bắt đầu một phiên tìm xe trong",
         "Điều đổi rõ nhất trong hai cách thuê đến năm 2026 là tốc độ chốt: phiên hội thoại giờ giữ được xe theo khung giờ ngay khi bạn nói rõ lịch, nên khoảng trống giữa hỏi giá và quyết định — chỗ xe thường bị khách khác lấy mất — gần như biến mất trong lối qua ứng dụng. Điều giữ nguyên cũng đáng nói: dù chốt bằng cách nào, buổi nhận xe vẫn cần giấy tờ tùy thân, vẫn cần kiểm tình trạng xe tại chỗ, và phần cọc vẫn theo mức của từng dòng xe. Nói cách khác, công nghệ thu ngắn phần trò chuyện, còn phần trách nhiệm thì không rút ngắn được. Nếu bạn định bắt đầu bằng câu hỏi giá, cách đặt câu hiệu quả nhất nằm trong bài chọn thời điểm thuê xe bằng ứng dụng "
       ]
+    },
+    {
+      "article_id": "BA-0447",
+      "category": "EV",
+      "slug": "dang-ky-thue-xe-dien-cho-khach-du-lich",
+      "title": "Đăng ký Thuê xe Điện Cho Khách du Lịch",
+      "description": "Du khách muốn thuê xe máy điện ở Hà Nội thường lo nhất không phải dòng xe, mà là phần đăng ký: cần giấy tờ gì, nói gì trong tin nhắn đầu tiên, và",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dang-ky-thue-xe-dien-cho-khach-du-lich.body.html",
+      "knowledge_chunks": [
+        "Du khách muốn thuê xe máy điện ở Hà Nội thường lo nhất không phải dòng xe, mà là phần đăng ký: cần giấy tờ gì, nói gì trong tin nhắn đầu tiên, và phần đăng ký của xe điện có khác dòng xăng hay không. Tin tốt là phần đăng ký xe điện gọn hơn lo lắng của đa số du khách — không có bước khai báo riêng cho động cơ điện, mọi giấy tờ vẫn là bộ giấy tờ thuê xe quen thuộc. Bài này đi theo trình tự thực tế: chuẩn bị trước khi nhắn, nội dung tin nhắn đăng ký, phần đối chiếu khi nhận xe, và các câu hỏi du khách nước ngoài hay gửi nhiều nhất. Bản đăng ký xe điện nói chung nằm trong bài đăng ký thuê xe điện , còn bức tranh trọn về kỳ thuê xe điện của du khá",
+        "Phiên đăng ký nhanh hay chậm phụ thuộc vào việc bạn có sẵn ba thông tin hay không. Thứ nhất, ngày giờ cụ thể — ngày nhận, ngày trả, và khung giờ dự kiến cho từng đầu, vì xe điện ngoài khung giờ giữ chỗ cần người sắp lại lịch. Thứ hai, dòng xe và số lượng — du khách đi nhóm nên đếm trước từng loại: ai đi xe điện ga phổ thông, ai cần dòng có điện áp cao hơn, để cửa hàng xếp đủ xe cùng một khung. Thứ ba, điểm nhận — nhận tại cửa hàng hay giao tới khách sạn, vì phần giao tận nơi cần khung giờ rộng hơn. Ba thông tin này viết thành một tin nhắn là đủ cho một phiên đăng ký chuẩn; phần chọn khung giờ theo mùa cao điểm đã có hướng dẫn riêng trong bài "
+      ]
+    },
+    {
+      "article_id": "BA-0448",
+      "category": "GUIDE",
+      "slug": "do-xe-o-ha-noi-cho-nguoi-moi",
+      "title": "đỗ xe ở hà Nội Cho Người Mới",
+      "description": "Người mới chạy xe máy ở Hà Nội thường để ý đèn báo, đường một chiều và còi xe, rồi bỏ qua phần luyện đỗ xe — trong khi đỗ là thao tác lặp nhiều nhất",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/do-xe-o-ha-noi-cho-nguoi-moi.body.html",
+      "knowledge_chunks": [
+        "Người mới chạy xe máy ở Hà Nội thường để ý đèn báo, đường một chiều và còi xe, rồi bỏ qua phần luyện đỗ xe — trong khi đỗ là thao tác lặp nhiều nhất của một ngày đi phố. Mỗi lần tới một quán, một bãi, một hẻm, bạn đều phải quyết: đỗ đây có ổn không, giữ xe kiểu gì, và khi quay lại xe có còn nguyên vẹn không. Bài này dành cho người mới: cách đọc một điểm đỗ trong ba mươi giây, các loại chỗ giữ xe thường gặp ở Hà Nội, và những lỗi khiến người mới vừa mất tiền giữ xe vừa mất thời gian. Nội dung rộng về luật và thói quen đỗ xe Hà Nội nằm trong bài đỗ xe ở Hà Nội , còn phần riêng cho khu phố cổ có trong bài luật đỗ xe phố cổ — hai bài đó là phần t",
+        "Trước khi rời xe, đứng lại thêm nửa phút và quét bốn thứ. Thứ nhất, biển hiệu quanh đoạn: nhìn cả biển cấm lẫn biển bãi giữ, vì nhiều đoạn hợp lệ đỗ nhưng cấm đỗ ven, và ngược lại. Thứ hai, người trông: một điểm giữ xe có người trông lấy vé thì đáng tin hơn một đoạn vỉa hè không ai giữ dù có vẽ vạch. Thứ ba, lối ra vào: xe bạn không được chặn cửa hàng, lối lên vỉa hè hay miệng cống, vì những chỗ đó dễ bị di dời khi vắng bạn. Thứ tư, nền đường: đoạn ngập hay trơn dễ làm xe ngả, nên chọn chỗ phẳng và nghiêng nhẹ về phía chống chân. Bốn thứ này thành phản xạ sau khoảng mười lần đỗ, và đó là phản xạ đáng luyện sớm hơn mọi kỹ năng chạy."
+      ]
     }
   ]
 }
