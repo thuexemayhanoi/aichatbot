@@ -5439,6 +5439,33 @@
         "Thời gian là thứ du khách thiếu nhất, và cũng là thứ bị hiểu sai nhất về xe máy điện. Nhiều người hình dung sạc là chờ đợi, nên loại xe điện ra khỏi danh sách thuê chỉ vì sợ mất giờ. Thực tế của một chuyến du lịch gần như ngược lại: khoản sạc dài nhất diễn ra ban đêm khi bạn đang ngủ, còn phần giữa ngày chỉ là những lần cắm cộng dồn tiện ghép vào các điểm dừng sẵn có. Bài viết này gỡ bài toán thời gian ra khỏi cảm giác lo với ba khung sạc du khách thật sự dùng: đêm, bữa trưa và đổi pin, kèm cách hỏi đúng con số của chính chiếc xe mình thuê.",
         "Mỗi dòng xe có ba con số thời gian riêng, và hỏi được cả ba ngay tại quầy là bạn nắm phần cứng của cả chuyến. Con số thứ nhất: sạc từ mức thấp về đầy hết bao lâu trên chính chiếc xe này, vì xe cùng dòng có thể khác nhau chút ít tùy pin và sạc đi kèm. Con số thứ hai: tầm đi thực tế sau sạc đầy theo kiểu đường bạn định chạy, phố dừng liên tục và đường quê trơn với hai mức hao khác nhau. Con số thứ ba: nếu dùng trạm đổi pin, một lần đổi hết bao nhiêu phút và điểm gần khu lưu trú ở đâu. Cách quy đổi phần trăm pin còn lại thành lịch trình từng chặng được hướng dẫn trong bài về pin của xe máy điện cho khách du lịch , còn phần yếu tố ảnh hưởng thời "
       ]
+    },
+    {
+      "article_id": "BA-0378",
+      "category": "LOCAL",
+      "slug": "du-lich-hoan-kiem-bang-xe-may-hai-ngay-mot-dem",
+      "title": "du Lịch Hoàn Kiếm Bằng xe Máy Hai Ngày Một Đêm",
+      "description": "Hoàn Kiếm là quận nhỏ nhất của Hà Nội nhưng chứa những gì khiến cả thành phố có tên trong bản đồ du lịch: hồ Gươm, khu phố cổ, các con hàng buôn từ",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/du-lich-hoan-kiem-bang-xe-may-hai-ngay-mot-dem.body.html",
+      "knowledge_chunks": [
+        "Hoàn Kiếm là quận nhỏ nhất của Hà Nội nhưng chứa những gì khiến cả thành phố có tên trong bản đồ du lịch: hồ Gươm, khu phố cổ, các con hàng buôn từ đời đời và một khu phố kiến trúc kiểu cũ khác nằm quanh bờ nam hồ. Hai ngày một đêm là khung hợp lý để không phải chọn giữa các vùng: một ngày cho cụm phố cổ với con hàng và chợ, một ngày cho vòng hồ, bảo tàng và những quán cà phê tầng cao nhìn xuống phố. Thuê xe máy giúp hai ngày đó không bị nuốt mất trong các chuyển di chuyển, vì mọi điểm trong quận cách nhau chỉ vài phút lái. Bài viết này sắp hai ngày theo cụm vùng, để bạn đi hết Hoàn Kiếm mà không chạy đi chạy lại.",
+        "Hồ Gươm là trục tự nhiên của toàn bộ lịch trình, cứ coi mỗi buổi của bạn đều bắt đầu hoặc kết thúc ở một góc hồ. Sáng sớm mặt nước phẳng và hàng liễu đẹp nhất trong ngày; chiều muộn nắng xiên qua Tháp Rùa; đêm đèn cầu Thê Húc lên đỏ soi xuống mặt hồ. Với chiếc xe máy, một vòng quanh hồ giúp bạn định vị nhanh các cụm còn lại: khu phố cổ phía bắc, cụm phố và bảo tàng phía nam, các con hàng tỏa ra hai bên. Gửi xe một điểm gần hồ rồi đi bộ vòng chậm là cách xem hồ đúng nhất, và nếu bạn muốn khung giờ chi tiết cho từng góc, bài du lịch Hoàn Kiếm bằng xe máy đã tách riêng phần hồ với khung giờ cụ thể."
+      ]
+    },
+    {
+      "article_id": "BA-0377",
+      "category": "SAFE",
+      "slug": "guong-chieu-hau-an-toan-cho-du-khach",
+      "title": "Gương Chiếu Hậu an Toàn Cho du Khách",
+      "description": "Trên chiếc xe máy thuê, gương chiếu hậu là cặp mắt thứ hai của du khách: nó cho bạn thấy phần đường sau lưng mà đầu không quay nổi. Vấn đề là người",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/guong-chieu-hau-an-toan-cho-du-khach.body.html",
+      "knowledge_chunks": []
     }
   ]
 }
