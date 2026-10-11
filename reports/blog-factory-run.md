@@ -1279,3 +1279,10 @@
 - 2026-10-11 QA PASS BA-0361 score=100
 - 2026-10-11 QA PASS BA-0362 score=100
 - 2026-10-11 PUBLISHED 2 (BA-0361, BA-0362) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-11 CLAIM 1: BA-0363
+- 2026-10-11 FINISH BA-0363
+- 2026-10-11 CLAIM 1: BA-0364
+- 2026-10-11 FINISH BA-0364
+- 2026-10-11 QA PASS BA-0363 score=100
+- 2026-10-11 QA PASS BA-0364 score=100
+- 2026-10-11 PUBLISHED 2 (BA-0363, BA-0364) — one grouped build, pages, matrix, indexes, sitemap consistent
