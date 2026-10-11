@@ -5313,6 +5313,28 @@
       "entry_sha256": "abca18d379518bd1e1dfb34fc36bbf3521041ad9996f96114c8d97707dc72f7f",
       "production_status": 200,
       "verified_at": "2026-10-11T16:24:28.527Z"
+    },
+    "BA-0501": {
+      "article_id": "BA-0501",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/cong-cu-uoc-tinh-quang-duong-xe-dien-cho-khach-du-lich/",
+      "publication_sha": "32dfcce108e682d07f3f30e7d0c6e382a699ccbc",
+      "page_sha256": "f64351129d33ebb3465f21a9f6c4b7a25b0e45ec1db7595cc0cc6dbab226c57e",
+      "body_sha256": "6cf0b132ba7c57fc632159e734c456449e3f8e17f9b44649f5d5a6fda1404d60",
+      "entry_sha256": "e2030f0db7a9b1dcfcc4c3e4aa1c83db864a99da66f75532864551edcc281042",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:27:37.373Z"
+    },
+    "BA-0502": {
+      "article_id": "BA-0502",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/thue-xe-can-nguoi-bao-lanh-khong-cho-nguoi-moi/",
+      "publication_sha": "32dfcce108e682d07f3f30e7d0c6e382a699ccbc",
+      "page_sha256": "193edb33c36dfbf65d30a78c9e4ce11e4bea82a0732b523dc75be4a1ec97a358",
+      "body_sha256": "6539be1d9374e13073e202502aaf4bd3c3ab803b7b1d424f758957b3bc1f5eb9",
+      "entry_sha256": "6f0f57247a51f9ba745f44a1a19a53b5fc4bfd4986e557bf6cd1027078e54ae5",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:27:37.391Z"
     }
   }
 }
