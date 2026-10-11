@@ -3982,6 +3982,28 @@
       "entry_sha256": "7f4cec92a1972b4ffb9c297117fd5890672a7f2ee19e073fb8aa27bab68f52de",
       "production_status": 200,
       "verified_at": "2026-10-11T11:08:44.949Z"
+    },
+    "BA-0363": {
+      "article_id": "BA-0363",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/khac-biet-xe-dien-va-xe-xang-cho-khach-du-lich/",
+      "publication_sha": "b899f3658f76b9f6446a5b8c45a6ea9f7f61d347",
+      "page_sha256": "f692d0dbf4dd802424f188c1d18dac65d889ec6689e811e3d5e5861143345114",
+      "body_sha256": "89159652c2aac0faa4432c685fca823704eb59e123538e8fae87dfe335c52fb9",
+      "entry_sha256": "0b8c28e6af87c60fa9563bf7fe8067b00a59ab7358d73e66d7aa75054ade2bfe",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:11:47.089Z"
+    },
+    "BA-0364": {
+      "article_id": "BA-0364",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/chup-anh-xe-truoc-khi-nhan-cho-nguoi-moi/",
+      "publication_sha": "b899f3658f76b9f6446a5b8c45a6ea9f7f61d347",
+      "page_sha256": "077a1b4c916a4643f3e7429fbf3cccf6fdca9e79d97e5c556d20201fe76b789f",
+      "body_sha256": "b970763608332f2077040f6d30938d75586cfe858ea8da1e2f640308d07a1d42",
+      "entry_sha256": "43f8be5b4efa279927237d394f9e0c52f3f39189cfe1f8a08e07df0db31b957f",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:11:47.095Z"
     }
   }
 }
