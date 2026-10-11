@@ -1475,3 +1475,10 @@
 - 2026-10-11 QA PASS BA-0417 score=100
 - 2026-10-11 QA PASS BA-0418 score=100
 - 2026-10-11 PUBLISHED 2 (BA-0417, BA-0418) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-11 CLAIM 1: BA-0419
+- 2026-10-11 FINISH BA-0419
+- 2026-10-11 CLAIM 1: BA-0420
+- 2026-10-11 FINISH BA-0420
+- 2026-10-11 QA PASS BA-0419 score=100
+- 2026-10-11 QA PASS BA-0420 score=100
+- 2026-10-11 PUBLISHED 2 (BA-0419, BA-0420) — one grouped build, pages, matrix, indexes, sitemap consistent
