@@ -4466,6 +4466,28 @@
       "entry_sha256": "4848ed7d402ab280530d1088699ade1613f26042735ee3bf9e958cc303b0f031",
       "production_status": 200,
       "verified_at": "2026-10-11T12:26:24.114Z"
+    },
+    "BA-0411": {
+      "article_id": "BA-0411",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/bao-duong-xe-dien-cho-khach-du-lich/",
+      "publication_sha": "4da34cd075f24508bb89391f88da25901ddb1370",
+      "page_sha256": "b7df2e6d622f50acc57aec8c344924aea10cb236e7114b4223fe588824f89d4d",
+      "body_sha256": "6ca8acae095ee642d260134526fdcbba64c729ca48db0f2d854a44d379448170",
+      "entry_sha256": "ccf82e3a4d24cc1a84e5fe4930de67de61ad7f5b0565316817af1227170a0823",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:28:55.287Z"
+    },
+    "BA-0412": {
+      "article_id": "BA-0412",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/ban-do-va-dinh-vi-khi-thue-xe-cho-nguoi-moi/",
+      "publication_sha": "4da34cd075f24508bb89391f88da25901ddb1370",
+      "page_sha256": "183151bf97280eccf680e5bc49af43b8c11fd74aaf7022ce4b95de094c2ab670",
+      "body_sha256": "cdcbf024a984626a1224b87db5636221aea3f274274ad5d70b06b88e53d235fc",
+      "entry_sha256": "051c72a6b7f1738d0967d6359229d89e740adc703be6c05e212a31f47a3a2fb1",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:28:55.292Z"
     }
   }
 }
