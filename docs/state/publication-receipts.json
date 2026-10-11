@@ -5203,6 +5203,28 @@
       "entry_sha256": "ed07dcd965a0ba40b862e3dc0c0f0ac0545d8f34c2a4cd2fc3c1b88e2499bdd9",
       "production_status": 200,
       "verified_at": "2026-10-11T16:06:42.799Z"
+    },
+    "BA-0491": {
+      "article_id": "BA-0491",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/phat-nguoi-va-xe-thue-cho-du-khach/",
+      "publication_sha": "9f584feee3c187c7995a27c3ab2c9bdcbff0ce4c",
+      "page_sha256": "52c274f03658c84f009afa7c8c1915eac10b3a283265a2f1b5936b9567fdd133",
+      "body_sha256": "f32230eb0a4754b964c1cf28c760ef15cc61cda7e3a05a6941a4be5911595da7",
+      "entry_sha256": "ea28fa5247b570f17ae7bee0f230dee2994c683a6fa27f865e8f5cd2494c0b86",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:09:38.260Z"
+    },
+    "BA-0492": {
+      "article_id": "BA-0492",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/bat-trang-gom-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "9f584feee3c187c7995a27c3ab2c9bdcbff0ce4c",
+      "page_sha256": "ebd342539570497d960ff7bb9aeed5167034f093a81b4f882f1df44601979e2c",
+      "body_sha256": "5642a4b876afbfd166685e767b2fd246da8bd899be13fe49c29609a3c32c9ce4",
+      "entry_sha256": "e170fb5934f128e8f745d81a7858a1e3df407b8504a9eea1f15e93ec45cd038d",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:09:38.223Z"
     }
   }
 }
