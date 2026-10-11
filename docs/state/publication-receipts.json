@@ -3806,6 +3806,28 @@
       "entry_sha256": "131cf671957139f891a786860e2a8cc6b5ab44b14dd1afbb35722056353ed373",
       "production_status": 200,
       "verified_at": "2026-10-11T07:40:28.578Z"
+    },
+    "BA-0347": {
+      "article_id": "BA-0347",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/thu-tuc-khi-va-cham-nhe-cho-du-khach/",
+      "publication_sha": "2d2db697e89d79eb3aefdee8e202485c0f7e75b1",
+      "page_sha256": "5507f653f9b7ca1a34eda56ca6f3d403a76f5e20ab6f4842c229bb8c681f807b",
+      "body_sha256": "9fed145e6498315fe98c04c0bfb7247a26f517006b21a8e2998d689c6633265c",
+      "entry_sha256": "03249b0f3b81ca45cebb40d999c42fcde21792e5f8868548385a9e51e1360558",
+      "production_status": 200,
+      "verified_at": "2026-10-11T07:46:18.068Z"
+    },
+    "BA-0348": {
+      "article_id": "BA-0348",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ha-giang-vong-cung/",
+      "publication_sha": "2d2db697e89d79eb3aefdee8e202485c0f7e75b1",
+      "page_sha256": "d0abf895b132d71ebdc63b6712a2cadfb41944d09e287f5959f57a71ef017332",
+      "body_sha256": "e32f719d915b5cd5ec7c3a453bbd7a496f761d0b3c80c26c4cbe4111127ad999",
+      "entry_sha256": "7d100974362c1396fdd2877774602defab55d94c76264f202b921c215403b8c2",
+      "production_status": 200,
+      "verified_at": "2026-10-11T07:46:18.077Z"
     }
   }
 }
