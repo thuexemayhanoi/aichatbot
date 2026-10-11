@@ -1683,3 +1683,10 @@
 - 2026-10-11 QA PASS BA-0477 score=100
 - 2026-10-11 QA PASS BA-0478 score=100
 - 2026-10-11 PUBLISHED 2 (BA-0477, BA-0478) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-11 CLAIM 1: BA-0479
+- 2026-10-11 FINISH BA-0479
+- 2026-10-11 CLAIM 1: BA-0480
+- 2026-10-11 FINISH BA-0480
+- 2026-10-11 QA PASS BA-0479 score=100
+- 2026-10-11 QA PASS BA-0480 score=90
+- 2026-10-11 PUBLISHED 2 (BA-0479, BA-0480) — one grouped build, pages, matrix, indexes, sitemap consistent
