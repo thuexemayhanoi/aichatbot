@@ -4444,6 +4444,28 @@
       "entry_sha256": "083a9881b9735f7fbc3e494e43e2c42fc31740fccaab2fcc7a81eb053c24b5cb",
       "production_status": 200,
       "verified_at": "2026-10-11T12:15:58.413Z"
+    },
+    "BA-0409": {
+      "article_id": "BA-0409",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/dat-xe-bang-ung-dung-nam-2026/",
+      "publication_sha": "3969d14aa0f88ef3b5b81c68ca3494ef054d275b",
+      "page_sha256": "3c8274b5b6247815585c6676c6fa7bc16451d0a3d480cafb9569adf65bb8f775",
+      "body_sha256": "9ce9f844ad3c9d949b136a9472ee974d9ed46e8b73375d88eb4ccc331039cb57",
+      "entry_sha256": "e47787337e22eaf4b56c182303c11f3d0bf8daea31bd9830360f11807813357b",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:26:24.110Z"
+    },
+    "BA-0410": {
+      "article_id": "BA-0410",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-honda-vision-ky-nghi-le/",
+      "publication_sha": "3969d14aa0f88ef3b5b81c68ca3494ef054d275b",
+      "page_sha256": "6d159a90a32afd7391af86b314eb98c64a6bbc197988a97bde8f4fa11b67932c",
+      "body_sha256": "e0b9b6212cfb2c5a7f1fe7f789fdddb2f0cad4ef4d439041bb5bc372072fe44a",
+      "entry_sha256": "4848ed7d402ab280530d1088699ade1613f26042735ee3bf9e958cc303b0f031",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:26:24.114Z"
     }
   }
 }
