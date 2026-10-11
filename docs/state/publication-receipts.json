@@ -4070,6 +4070,28 @@
       "entry_sha256": "44c99f7d6c4eb078fe7e0f59fa045582a8146509f75f21c92115a0937d5386f1",
       "production_status": 200,
       "verified_at": "2026-10-11T11:22:45.509Z"
+    },
+    "BA-0371": {
+      "article_id": "BA-0371",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/ky-nang-phanh-gap-cho-du-khach/",
+      "publication_sha": "65e00c898bc852267654261c58753336c1f89aff",
+      "page_sha256": "063a8af05b7b75879e738dd6609d8c479e54294d9220159cbee085104901ca40",
+      "body_sha256": "7dcea50ccee49ca236bd0f7243259ee5ad27544614e5a374d180a86332f5564e",
+      "entry_sha256": "b224499dff96a46b3b479adc4698a4262d14a252a828970cad3317e14db9b5dc",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:25:13.592Z"
+    },
+    "BA-0372": {
+      "article_id": "BA-0372",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/di-pho-co-bang-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "65e00c898bc852267654261c58753336c1f89aff",
+      "page_sha256": "8896ae87c31917084c8a9d72a03b056250aac134b4ab15a0b03dc48dd7f7f3f1",
+      "body_sha256": "f416b007442969e1db74d42a23f311902625a94910ed5a4db33e9864bcd518f5",
+      "entry_sha256": "b30920a7edf961025ee4a107e36ab7a4ca10df4ecbbef4ffa15936e3fc95d094",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:25:13.595Z"
     }
   }
 }
