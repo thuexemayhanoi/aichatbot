@@ -3850,6 +3850,28 @@
       "entry_sha256": "b2938b36de36dff63016a65cd7487d292367f43f389ef275f94c008852c80a17",
       "production_status": 200,
       "verified_at": "2026-10-11T07:51:18.908Z"
+    },
+    "BA-0351": {
+      "article_id": "BA-0351",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/pham-vi-hoat-dong-cua-xe-dien-cho-khach-du-lich/",
+      "publication_sha": "66465bd24081d939017fcf2a567a5a3e61db7433",
+      "page_sha256": "f332c3f771d5ce097ebd4dc58307a92e8972b22b32a326475920a31c5678532b",
+      "body_sha256": "26892dbd0833701e4519eb46f0e38cba53d4e0e28f2dad758100a7099c768ce7",
+      "entry_sha256": "aa97586480da0c30d5d5e4b8eb95804157fc383ed49d602856b670be6555e618",
+      "production_status": 200,
+      "verified_at": "2026-10-11T10:07:27.345Z"
+    },
+    "BA-0352": {
+      "article_id": "BA-0352",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/dat-coc-the-nao-cho-nguoi-moi/",
+      "publication_sha": "66465bd24081d939017fcf2a567a5a3e61db7433",
+      "page_sha256": "f5115d920073f38c497cbb3d0840c85140466b1f65cce02b2d7db138f674b1c3",
+      "body_sha256": "52f09f89cd8ebfe319ce21654b5f109663b9d011e0371098622a21e7ec1a6c8b",
+      "entry_sha256": "d8a4e095f56478d708f71229697868cd38d316ca1f45eafb8af4e68ca054c9a8",
+      "production_status": 200,
+      "verified_at": "2026-10-11T10:07:27.338Z"
     }
   }
 }
