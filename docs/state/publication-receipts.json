@@ -5247,6 +5247,28 @@
       "entry_sha256": "b4eb546ad5dbd32ac1d4f7dee3b32dadf5d8a6fb3220684886c027b19735c09d",
       "production_status": 200,
       "verified_at": "2026-10-11T16:11:45.873Z"
+    },
+    "BA-0495": {
+      "article_id": "BA-0495",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/ung-dung-tim-cho-sac-xe-cho-khach-du-lich/",
+      "publication_sha": "727a4c858c5637734a38911b01d6cd8dea7b3d76",
+      "page_sha256": "6fc588199d21bbac7884bccee77fae50f8f66283d176221fa0088c4aab55085a",
+      "body_sha256": "6fd821c6ee4370c3233564c53764de683fc0b56a45f9c5e12d184a0a6a53e84f",
+      "entry_sha256": "221790f3a528bba0e8513c99d41b943df2d27d861a7f30104123f66ab33f65b0",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:15:06.993Z"
+    },
+    "BA-0496": {
+      "article_id": "BA-0496",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/thue-xe-cho-nguoi-duoi-18-tuoi-cho-nguoi-moi/",
+      "publication_sha": "727a4c858c5637734a38911b01d6cd8dea7b3d76",
+      "page_sha256": "bc430bc4fea312674ad1ec20be06bfe6ed76b5b5514c2420fd0aea363855425a",
+      "body_sha256": "2c6a22bb681efda9ff22c3e44ab56f7ef4135c51359bec16833c42b60e667134",
+      "entry_sha256": "783d80a8f7c27fc1fdac8475320ebed0b747efd1faa49338fd8e4218f7518ccf",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:15:06.960Z"
     }
   }
 }
