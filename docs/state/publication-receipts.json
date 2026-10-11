@@ -5687,6 +5687,28 @@
       "entry_sha256": "7c9bba88f85c86dd5b764474d0ad393be1bfaed18c166a84d29a0bdd24ff368b",
       "production_status": 200,
       "verified_at": "2026-10-11T17:50:27.654Z"
+    },
+    "BA-0571": {
+      "article_id": "BA-0571",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-tieng-anh-nam-2026/",
+      "publication_sha": "de68d3b57a3b4881be371e6e36ee7b7162497e83",
+      "page_sha256": "6f4b935d64844a6d42b7077606670cd486f32a19e9c3426cd44c7ee568df2cf2",
+      "body_sha256": "bcd3a8200a659a382dcbd8eb5e9ed518178384889f0207f179fdd3c95018afc4",
+      "entry_sha256": "b0752f6f24ef5c3b014ca6c6f7d9939a8ab7a5532d1afeda8b6377ea2a413fd2",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:53:35.604Z"
+    },
+    "BA-0572": {
+      "article_id": "BA-0572",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/ho-tro-khi-xe-thue-gap-su-co-ky-nghi-le/",
+      "publication_sha": "de68d3b57a3b4881be371e6e36ee7b7162497e83",
+      "page_sha256": "fc10a8747e89a25570f6728e5b7896814ac1e33ac7d3d78a8154d7dd9f5e1e19",
+      "body_sha256": "5b27ad033e9eef89e7848880158f7366cc93b8cf0b2d8746961984d648480353",
+      "entry_sha256": "c36a24ae1c0ac764acc2a732bae9bc71ec7050b60a11f1474ff962a8af19a744",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:53:35.601Z"
     }
   }
 }
