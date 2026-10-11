@@ -3916,6 +3916,28 @@
       "entry_sha256": "4b7166093b480dee038732078587b5439f4f1d3892462f8633bdfee4716e7932",
       "production_status": 200,
       "verified_at": "2026-10-11T10:12:52.180Z"
+    },
+    "BA-0357": {
+      "article_id": "BA-0357",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/huong-dan-su-dung-xe-may-dien-cho-khach-du-lich/",
+      "publication_sha": "a75cb938cbb7bdad2c380e5bd64c725b0eca1e14",
+      "page_sha256": "451fd7e827325d5866e7a2ccda04118fc944d61a0224da58e2bfca91efd5c25e",
+      "body_sha256": "b93174fd27a56d5d249f2d1c7ab5caf8719f00b1425f66b5eef433b309f5262e",
+      "entry_sha256": "57485ab28bb2ca871dcb2558c975a2c3682fb788d0d71f628a6aa418fe6e5e52",
+      "production_status": 200,
+      "verified_at": "2026-10-11T10:17:52.986Z"
+    },
+    "BA-0358": {
+      "article_id": "BA-0358",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/nhan-lai-tien-coc-cho-nguoi-moi/",
+      "publication_sha": "a75cb938cbb7bdad2c380e5bd64c725b0eca1e14",
+      "page_sha256": "8bcd16959a6015299faadc8f1b430cae069ac24dea3d6ec9ed178b0d6f21cec8",
+      "body_sha256": "dfd2ed34e28e60913e15b818162274ae25bb9e47411f493f5a7df5d435eb5827",
+      "entry_sha256": "6a48b332472636fe302a8a48dcc377aa5496582de5b8efae8c797e8f75d1e680",
+      "production_status": 200,
+      "verified_at": "2026-10-11T10:17:52.977Z"
     }
   }
 }
