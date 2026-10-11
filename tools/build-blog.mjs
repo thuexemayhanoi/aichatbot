@@ -688,7 +688,11 @@ export function build() {
   // PUBLISHED before calling build(), so this changes nothing for the
   // happy path.
   const published = manifest.articles
-    .filter((a) => matrix[a.article_id]?.status === 'PUBLISHED');
+    .filter((a) => matrix[a.article_id]?.status === 'PUBLISHED')
+    // Resolve facts in summaries as well as bodies: article-card excerpts,
+    // meta descriptions and search snippets must never expose {{ business.* }}.
+    // Keep published.json source untouched; use current verified business data.
+    .map((a) => ({ ...a, description: resolveFacts(a.description, business) }));
   const updated = published.reduce((m, a) => a.published_date > m ? a.published_date : m, '2026-09-26');
 
   buildHome(published);
