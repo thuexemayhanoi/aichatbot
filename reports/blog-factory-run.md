@@ -1419,3 +1419,10 @@
 - 2026-10-11 QA PASS BA-0401 score=100
 - 2026-10-11 QA PASS BA-0402 score=100
 - 2026-10-11 PUBLISHED 2 (BA-0401, BA-0402) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-11 CLAIM 1: BA-0403
+- 2026-10-11 FINISH BA-0403
+- 2026-10-11 CLAIM 1: BA-0404
+- 2026-10-11 FINISH BA-0404
+- 2026-10-11 QA PASS BA-0403 score=100
+- 2026-10-11 QA PASS BA-0404 score=100
+- 2026-10-11 PUBLISHED 2 (BA-0403, BA-0404) — one grouped build, pages, matrix, indexes, sitemap consistent
