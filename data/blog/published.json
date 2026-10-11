@@ -5640,6 +5640,36 @@
       "pilot": false,
       "body": "data/blog/articles/suong-mu-mua-dong-cho-du-khach.body.html",
       "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0391",
+      "category": "APP",
+      "slug": "chon-xe-bang-agent-nam-2026",
+      "title": "Chọn xe Bằng Agent Năm 2026",
+      "description": "Chọn xe là khâu ăn nhiều thời gian nhất của việc thuê: gọi hỏi từng dòng, so giá, rồi vẫn lăn tăn không biết dòng nào hợp. Dòng chảy chọn xe bằng",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chon-xe-bang-agent-nam-2026.body.html",
+      "knowledge_chunks": [
+        "Chọn xe là khâu ăn nhiều thời gian nhất của việc thuê: gọi hỏi từng dòng, so giá, rồi vẫn lăn tăn không biết dòng nào hợp. Dòng chảy chọn xe bằng Agent ra đời để cắt khâu đó, và sau một thời gian dài khách quen dần, năm 2026 là lúc cách dùng Agent đã ngấm thành thói quen: ít mô tả dài dòng, ít hỏi đi hỏi lại, và biết chính xác mình cần xác nhận những gì sau khi nhận gợi ý. Bài viết này tổng kết cách chọn xe bằng Agent theo đúng thói quen đã ổn định của năm 2026, từ câu mô tả nhu cầu gọn nhất tới phần soát lại gợi ý trước khi chốt.",
+        "Agent đọc nhu cầu của bạn theo từng mảnh thông tin, nên câu mở đầu gọn nhất vẫn cần đủ bốn thứ: điểm đến hoặc kiểu lộ trình, số người đi, khung ngày, và kinh nghiệm lái. Không cần viết văn xuôi dài, một câu theo kiểu ai đi, đi đâu, ngày nào, lái giỏi tới đâu là đủ để Agent gợi ý theo nhóm dòng xe phù hợp. Cách Agent suy luận từ những mảnh thông tin ấy sang dòng xe cụ thể được tách kỹ trong bài nền chọn xe bằng Agent , còn bản chất của Agent chọn xe nằm trong chủ đề Agent chọn xe giúp bạn . Kỹ năng viết câu hỏi hiệu quả đã quen thuộc hơn nhiều so với những năm đầu: mọi người học được rằng câu hỏi rõ khung giờ và rõ số người nhận gợi ý chuẩn hơ"
+      ]
+    },
+    {
+      "article_id": "BA-0392",
+      "category": "RENT",
+      "slug": "thue-xe-so-ky-nghi-le",
+      "title": "Thuê xe số kỳ Nghĩ lễ",
+      "description": "Kỳ nghỉ lễ đến, ai cũng lướt qua bảng giá xe ga bóng loáng rồi quay sang dòng xe số nằm khiêm tốn phía dưới, và phần đông vẫn chọn dòng số vì một lý",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-so-ky-nghi-le.body.html",
+      "knowledge_chunks": [
+        "Kỳ nghỉ lễ đến, ai cũng lướt qua bảng giá xe ga bóng loáng rồi quay sang dòng xe số nằm khiêm tốn phía dưới, và phần đông vẫn chọn dòng số vì một lý do rất thực tế: kỳ nghỉ lễ là lúc đi nhiều, dừng nhiều, gửi xe nhiều, và xe số vốn sinh ra cho đúng kiểu dịch chuyển ấy. Nhưng thuê xe số trong kỳ nghỉ lễ có vài điểm khác với ngày thường mà người chuẩn bị sớm luôn nhỉnh hơn. Bài viết này nói rõ vì sao xe số hợp kỳ nghỉ lễ, cách chốt dòng số trước cao điểm, và những gì cần kiểm tra lúc nhận xe số vào đúng lúc cửa hàng đông khách nhất.",
+        "Ba đặc điểm của xe số trùng khớp với ba đặc điểm của kỳ nghỉ lễ. Một, xe số nhẹ và gọn, mà kỳ lễ là lúc hàng xe gửi chật chội: dòng xe nhỏ len vào chỗ gửi kín dễ hơn hẳn dòng xe lớn. Hai, xe số tiết kiệm xăng theo quãng đường, mà kỳ lễ là lúc chạy nhiều vòng quanh phố thay vì đi hai chuyến trọn vẹn: đề tài liên tục, dừng liên tục, xe số không nóng máy kiểu xe ga phải để máy nổ khi dừng. Ba, xe số kiểm soát trực tiếp bằng côn và số, mà đường ngày lễ đông bất kể sáng trưa, phần phanh động cơ giúp người lái tự tin hơn khi rẽ giữa dòng. Phân tích kỹ những gì xe số mang lại cho người thuê nằm trong bài nền thuê xe số , còn so sánh với xe ga theo t"
+      ]
     }
   ]
 }
