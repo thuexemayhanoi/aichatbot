@@ -5544,6 +5544,28 @@
       "entry_sha256": "93377f6f5403bcf127947437ae6d030269e1f2eea738d415f3148d6433c2cf18",
       "production_status": 200,
       "verified_at": "2026-10-11T16:50:04.404Z"
+    },
+    "BA-0527": {
+      "article_id": "BA-0527",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/tranh-app-thue-xe-lua-dao-cho-du-khach/",
+      "publication_sha": "5e4d64fb1c16e2c847ea64566bcfa04a2287037a",
+      "page_sha256": "512fcdc4f6ec747007184ca9f5523fd1b39396115f974e2d2ad0d4aff6451969",
+      "body_sha256": "901f817d14524de59718de7e8fd9dde0efea37f434c47e042497737ac5834bbf",
+      "entry_sha256": "cc1836d48922d596269ed3fdb529868b6ea73a456be7c43690bf0e9c2d7ca607",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:08:27.844Z"
+    },
+    "BA-0528": {
+      "article_id": "BA-0528",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/hoang-hon-ho-tay-hai-ngay-mot-dem/",
+      "publication_sha": "5e4d64fb1c16e2c847ea64566bcfa04a2287037a",
+      "page_sha256": "c4516bdd6e56ba2f55b9b50becddcd20e1175a4d6c23d7744a92f2900afabc2d",
+      "body_sha256": "879fb35c782ef969259fac2e3b1729d3c161ff24ace25cd1e21b981a23618d29",
+      "entry_sha256": "3f3d68a639c278b9238b059acdbfec8753e6fb50fa6843e31c4281282aa51aba",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:08:27.845Z"
     }
   }
 }
