@@ -4202,6 +4202,28 @@
       "entry_sha256": "78a2e3afe7a412ed41f27b7b7afe67f4582775f9a85839f6898b78e5e4cbdcb3",
       "production_status": 200,
       "verified_at": "2026-10-11T11:38:49.381Z"
+    },
+    "BA-0383": {
+      "article_id": "BA-0383",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/mua-lon-va-lai-xe-cho-du-khach/",
+      "publication_sha": "321a782d3180f017ce775091540feacae0f0fb49",
+      "page_sha256": "cb48f81b826b1e88aaec84221597e4f00b4bfb0597fa0bdd1c7f23e93217d74e",
+      "body_sha256": "e6aa48a7629b3d77ed56043786747fb515447b4540272e3ff5897b31d4bdb754",
+      "entry_sha256": "ab4b0682a7db002ca5c6b70cb79ffb8a70ba8d6108cca1a9dc047d01cd8aefa6",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:43:04.051Z"
+    },
+    "BA-0384": {
+      "article_id": "BA-0384",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ho-tay-va-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "321a782d3180f017ce775091540feacae0f0fb49",
+      "page_sha256": "47f1bfadb31c1873240fda67e7b6d96a1ca8b361bece2c7c99a53394795190c4",
+      "body_sha256": "4a543bd01b3dd01de25097ce386d4c4f2550b5decf5c79a0f92f4db7096599ef",
+      "entry_sha256": "9bb5db522aec07cde2c8d6017a36f598e9489369677b509b7b466c5ed6799574",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:43:04.057Z"
     }
   }
 }
