@@ -4048,6 +4048,28 @@
       "entry_sha256": "e37b8b441a3efa49be5d5c6d0e73184635b8677c720f9f0b5eb204b51b09b5f2",
       "production_status": 200,
       "verified_at": "2026-10-11T11:20:02.789Z"
+    },
+    "BA-0369": {
+      "article_id": "BA-0369",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/sac-pin-xe-dien-o-dau-cho-khach-du-lich/",
+      "publication_sha": "3f51584becc0fa4a4e991254e2fdcd5a3f43f50a",
+      "page_sha256": "b7653831d1210f613932a4bb6a88671bfb996c1410f14c0db1eecab3e83f4742",
+      "body_sha256": "ac0cdb36f177ff48ebd623908f3b4a87f6f4201a67fb31ef6dc09e43fb4ce471",
+      "entry_sha256": "679575afd61afe8615b8ca050b2dc615c0d644be38182decef0caac9f4071a86",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:22:45.510Z"
+    },
+    "BA-0370": {
+      "article_id": "BA-0370",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/nhien-lieu-khi-nhan-tra-xe-cho-nguoi-moi/",
+      "publication_sha": "3f51584becc0fa4a4e991254e2fdcd5a3f43f50a",
+      "page_sha256": "1b5ad4d1b825182b8374063d4d7d7d58385637699e2b6ecb35ff97c7fcf9d6cb",
+      "body_sha256": "95e1dbdea02e3667e734df943e13ce12607da409b33bc0e128eb32271d44adb9",
+      "entry_sha256": "44c99f7d6c4eb078fe7e0f59fa045582a8146509f75f21c92115a0937d5386f1",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:22:45.509Z"
     }
   }
 }
