@@ -4994,6 +4994,28 @@
       "entry_sha256": "1465cecd1b4e7f2195138e19a776bdd1804a72bfac7466c734f5d0f39ebbbaa2",
       "production_status": 200,
       "verified_at": "2026-10-11T15:16:21.630Z"
+    },
+    "BA-0467": {
+      "article_id": "BA-0467",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/bao-va-xe-may-cho-du-khach/",
+      "publication_sha": "165f9e3d0e6595cae3cbdaaa7c1bc08839f53275",
+      "page_sha256": "82aa43007c6890465509ccc5f91f1f1b54c458cdb414f54614bfbf3a90114cef",
+      "body_sha256": "67088c2ee5ea056643dd0f078adbd550d6efc1ebb02d82f2c41bcb0795293887",
+      "entry_sha256": "8ba878259b1b6005838507571bea13a941b047d7c210835f241babb6b7b3f93a",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:23:51.837Z"
+    },
+    "BA-0468": {
+      "article_id": "BA-0468",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/bao-tang-ha-noi-hanh-trinh-hai-ngay-mot-dem/",
+      "publication_sha": "165f9e3d0e6595cae3cbdaaa7c1bc08839f53275",
+      "page_sha256": "6d9467dfc3db1179e9834e16e86386c768f273add15a25280d4b9e11c35309b9",
+      "body_sha256": "ec37a424ebb5ee8532ecf347b4be5063e69fa15730694194eae35438db07f8d3",
+      "entry_sha256": "64bbd8f97e046b73579a50cd8cc844e697e5403a82987a1faecf4350a70ff113",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:23:51.826Z"
     }
   }
 }
