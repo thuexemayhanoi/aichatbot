@@ -4290,6 +4290,28 @@
       "entry_sha256": "be7c4f110cc8a42b2e8e319a8f22757192c41c7468c7f331b10eb29c3228add8",
       "production_status": 200,
       "verified_at": "2026-10-11T11:51:51.689Z"
+    },
+    "BA-0391": {
+      "article_id": "BA-0391",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/chon-xe-bang-agent-nam-2026/",
+      "publication_sha": "3b0b2130e2a4aa85e336a234d961ca48ecaf8e59",
+      "page_sha256": "1f5e7a90b4c55a3cf470292ac99e0423c5a6bad6444e18fa35978cc5627334a2",
+      "body_sha256": "fa7e3fca4287055c373c546e495e23621dbd39b5547b4355f4c0d7ce2ac9a7e2",
+      "entry_sha256": "fc4bf548cbf4ff059f22c7dd0609e0f852b3e967e1e365f434a974a6d6309431",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:53:50.720Z"
+    },
+    "BA-0392": {
+      "article_id": "BA-0392",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-so-ky-nghi-le/",
+      "publication_sha": "3b0b2130e2a4aa85e336a234d961ca48ecaf8e59",
+      "page_sha256": "e16e0803a9b33983119b60436852f2b64d5317082ab8812a12d48cbb66eb5c50",
+      "body_sha256": "dd4d716df8615e8d227741d683b2be88a59a896b54948a9dc9218dafd4c244e8",
+      "entry_sha256": "9380bb0a8c1513d45d88696482f94d1e05ff1bf9faed76c0713de3d0eb30ec4f",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:53:50.724Z"
     }
   }
 }
