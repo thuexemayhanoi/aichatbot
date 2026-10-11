@@ -4686,6 +4686,28 @@
       "entry_sha256": "1aa553e66f5ae44add803cafa3dd989456f2212aa10ff96797f785903f9ce857",
       "production_status": 200,
       "verified_at": "2026-10-11T13:54:47.060Z"
+    },
+    "BA-0433": {
+      "article_id": "BA-0433",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/tro-ly-thue-xe-may-la-gi-nam-2026/",
+      "publication_sha": "abd7a0352fb39a3374d0b2109f089616b120869d",
+      "page_sha256": "bd537a10d944c310e09346ca29948ba82d30ee87db438e714efad7fd8782008b",
+      "body_sha256": "4566e9b4a37157bfc40f90584541e467550b5110dbcc9b0fe110c17b79f76012",
+      "entry_sha256": "d463d820a97c1d07fa90084600399cd76ecaf441459acf4647e8c24b9a73eb2d",
+      "production_status": 200,
+      "verified_at": "2026-10-11T13:57:19.009Z"
+    },
+    "BA-0434": {
+      "article_id": "BA-0434",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/so-sanh-gia-cac-loai-xe-may-cho-thue-ky-nghi-le/",
+      "publication_sha": "abd7a0352fb39a3374d0b2109f089616b120869d",
+      "page_sha256": "a6cab4bef075680a966d17fdf1659a5babcfdfb74b6b20f1bc703023da13327f",
+      "body_sha256": "b4c96b165a9cfa7908fa5873e4d45498485b5ac43fbc2d86401427ab5e92321a",
+      "entry_sha256": "6d6eb90da33329e820d38bcceab2b5380b29f82626b20fcfb6c2a9ac45d1721e",
+      "production_status": 200,
+      "verified_at": "2026-10-11T13:57:19.014Z"
     }
   }
 }
