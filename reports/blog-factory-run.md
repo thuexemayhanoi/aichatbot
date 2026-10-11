@@ -1753,3 +1753,10 @@
 - 2026-10-11 QA PASS BA-0497 score=95
 - 2026-10-11 QA PASS BA-0498 score=95
 - 2026-10-11 PUBLISHED 2 (BA-0497, BA-0498) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-11 CLAIM 1: BA-0499
+- 2026-10-11 FINISH BA-0499
+- 2026-10-11 CLAIM 1: BA-0500
+- 2026-10-11 FINISH BA-0500
+- 2026-10-11 QA PASS BA-0499 score=100
+- 2026-10-11 QA FAIL BA-0500 -> REPAIR (attempt 1) score=0
+- 2026-10-11 PUBLISHED 1 (BA-0499) — one grouped build, pages, matrix, indexes, sitemap consistent
