@@ -103,3 +103,17 @@ test('all legacy agent workflows are inert: no active schedule or dispatcher on 
   assert.match(factory, /data\/blog\/published\.json blog sitemap/);
   assert.doesNotMatch(factory, /^  workflow_run:/m);
 });
+
+test('publisher freezes the triggering push diff before checking out the latest main', () => {
+  const root = new URL('../../.github/workflows/', import.meta.url).pathname;
+  const factory = readFileSync(join(root, 'blog-factory-publish.yml'), 'utf8');
+  const freeze = factory.indexOf('git diff --name-only --diff-filter=AM HEAD~1 HEAD > /tmp/changed.txt');
+  const sync = factory.indexOf('git checkout -B main origin/main');
+  const register = factory.indexOf('node tools/external-writer.mjs register --files /tmp/changed.txt');
+  const select = factory.indexOf('node tools/factory-select.mjs --files /tmp/changed.txt');
+  assert.ok(freeze > 0 && sync > freeze && register > sync && select > register,
+    'exact triggering body list must survive refresh to latest derived state');
+  assert.equal(factory.match(/git diff --name-only --diff-filter=AM HEAD~1 HEAD/g)?.length, 1,
+    'do not recompute writer scope from newer derived commits');
+  assert.match(factory, /git fetch origin main\n          git checkout -B main origin\/main/);
+});

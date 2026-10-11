@@ -106,6 +106,19 @@ jobs:
         with:
           node-version: 22
 
+      # Workflow runs are serialized, but a queued push job checks out its old
+      # event SHA by default. Freeze that event's exact source diff FIRST, then
+      # refresh main so derived state from prior runs is not overwritten.
+      # The frozen diff is reused by both registration and scoped selection.
+      - name: Freeze writer push scope and sync fresh main
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "push" ]; then
+            git diff --name-only --diff-filter=AM HEAD~1 HEAD > /tmp/changed.txt
+          fi
+          git fetch origin main
+          git checkout -B main origin/main
+
       # Production safety gate remains deterministic; old repair agents retired.
       # v70 ops gate: the factory mutates production derived state — it must
       # refuse while an ops incident is active (the deterministic resume of a
@@ -124,7 +137,7 @@ jobs:
         if: github.event_name == 'push'
         run: |
           set -euo pipefail
-          git diff --name-only --diff-filter=AM HEAD~1 HEAD > /tmp/changed.txt
+          test -f /tmp/changed.txt
           node tools/external-writer.mjs register --files /tmp/changed.txt
 
       - name: Select exact push scope (claim/qa/ready ids from the push diff)
@@ -136,7 +149,7 @@ jobs:
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "workflow_run" ]; then
             node tools/factory-select.mjs --backlog | tee /tmp/select.out
           else
-            git diff --name-only --diff-filter=AM HEAD~1 HEAD > /tmp/changed.txt || true
+            test -f /tmp/changed.txt
             node tools/factory-select.mjs --files /tmp/changed.txt | tee /tmp/select.out
           fi
           get() { sed -n "s/^$1=//p" /tmp/select.out; }
