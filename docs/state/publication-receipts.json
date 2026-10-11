@@ -3872,6 +3872,28 @@
       "entry_sha256": "d8a4e095f56478d708f71229697868cd38d316ca1f45eafb8af4e68ca054c9a8",
       "production_status": 200,
       "verified_at": "2026-10-11T10:07:27.338Z"
+    },
+    "BA-0353": {
+      "article_id": "BA-0353",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/goi-canh-sat-khi-tai-nan-cho-du-khach/",
+      "publication_sha": "e959d40c31b017e6682f7a0861f35cd023cea0ed",
+      "page_sha256": "33b1478ad0bacf6e4148d8b3a6a447d7280bde5cae6f2d51b954401548fe9304",
+      "body_sha256": "e4569aef4420814cc8e80ea9cc6360bf59db6ac8e1cad0d32f36a62f3d5c9fed",
+      "entry_sha256": "eced94c561ca7fe874228e8c0cc190155465d2d3ce4ceed4ee56f57f8fc5ab97",
+      "production_status": 200,
+      "verified_at": "2026-10-11T10:10:56.069Z"
+    },
+    "BA-0354": {
+      "article_id": "BA-0354",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cao-nguyen-da-dong-van/",
+      "publication_sha": "e959d40c31b017e6682f7a0861f35cd023cea0ed",
+      "page_sha256": "36b44884824255a7e40f9fdc56708488453efd2f0ca36fbbaba667448ae352ae",
+      "body_sha256": "29bf07b44f9287323af8962fa87f0095325ef65f9cc3749d627c7cef281458f9",
+      "entry_sha256": "2eeda41a319b7f470f6d722dc10055eb45128490fc3af8d17564ad3f72894cac",
+      "production_status": 200,
+      "verified_at": "2026-10-11T10:10:56.074Z"
     }
   }
 }
