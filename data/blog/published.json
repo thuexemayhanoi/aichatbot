@@ -7293,6 +7293,36 @@
         "Một ngày cho Văn Giang hơi gọn: hết nửa buổi lên trục ven sông, phần còn lại bị kéo theo giờ, và nhiều khách về phố khi mới bắt đầu thấy chất quê. Ngủ lại một đêm ở homestay ven sông đổi hẳn nhịp chuyến đi, hợp nhóm muốn thoát phố trọn cuối tuần. Lịch trình hai ngày một đêm cũng hợp cả hai nhóm xe: xe xăng cho người muốn chạy thoải mái chặng dài, xe điện cho người thích êm, với đêm đầu tiên sạc ngay tại homestay. Bài này gợi ý khung hai ngày, chỗ gửi xe qua đêm và cách canh pin cho dòng điện.",
         "Nội dung cung đường chung của vùng đã có trong bài Văn Giang bằng xe điện và xe máy nói chung ; phần dưới xếp lại thành lịch hai ngày một đêm kèm đêm nghỉ."
       ]
+    },
+    {
+      "article_id": "BA-0505",
+      "category": "APP",
+      "slug": "chatbot-thue-xe-may-co-dang-tin-khong-nam-2026",
+      "title": "Chatbot Thuê xe Máy có Đáng Tin Không Năm 2026",
+      "description": "Câu hỏi cũ \"chatbot thuê xe máy có đáng tin không\" sang năm 2026 vẫn đúng chỗ đứng của nó, vì thuê xe vẫn là giao dịch thật: giá sai, giờ sai hoặc",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chatbot-thue-xe-may-co-dang-tin-khong-nam-2026.body.html",
+      "knowledge_chunks": [
+        "Câu hỏi cũ \"chatbot thuê xe máy có đáng tin không\" sang năm 2026 vẫn đúng chỗ đứng của nó, vì thuê xe vẫn là giao dịch thật: giá sai, giờ sai hoặc dòng xe sai đều thành rắc rối khi bạn đã ở cửa hàng. Điều đổi là bối cảnh: trợ lý giờ chạy ngay trên web, mở được từ Zalo, xử lý phần lớn hội thoại tại thiết bị của bạn, và được cập nhật theo mùa kinh doanh. Cách đánh giá vì vậy cũng đổi: thay vì hỏi chung, hãy kiểm thử trợ lý bằng chính chuyến đi của bạn trong vài phút trước khi tin.",
+        "Bản giải thích khái niệm và ranh giới dữ liệu đã có trong bài chatbot thuê xe máy có đáng tin không nói chung ; phần dưới viết riêng cho bản cập nhật năm 2026."
+      ]
+    },
+    {
+      "article_id": "BA-0506",
+      "category": "RENT",
+      "slug": "thue-xe-hai-nguoi-ky-nghi-le",
+      "title": "Thuê xe Hai Người kỳ Nghĩ lễ",
+      "description": "Dịp lễ là mùa của các cặp: cặp bạn thân đi chơi cùng nhau, hai vợ chồng đưa nhau ra phố, hoặc người yêu dẫn nhau đi ven sông. Một chiếc xe chở hai",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-hai-nguoi-ky-nghi-le.body.html",
+      "knowledge_chunks": [
+        "Dịp lễ là mùa của các cặp: cặp bạn thân đi chơi cùng nhau, hai vợ chồng đưa nhau ra phố, hoặc người yêu dẫn nhau đi ven sông. Một chiếc xe chở hai người vẫn rẻ hơn hai chiếc rõ rệt, nhưng mùa lễ đặt ba biến mới vào bài toán: đường đông hơn, dòng xe tốt bị đặt trước sớm, và khung giờ đẹp trong ngày có giới hạn. Bài này xếp các biến đó vào trình tự thuê xe cho nhóm hai người trong kỳ nghỉ lễ, từ chọn dòng tới trả xe.",
+        "Nội dung chung về thuê một xe chở hai người đã có trong bài thuê xe hai người nói chung ; phần dưới chỉ bàn riêng góc mùa lễ."
+      ]
     }
   ]
 }
