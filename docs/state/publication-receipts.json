@@ -4004,6 +4004,28 @@
       "entry_sha256": "43f8be5b4efa279927237d394f9e0c52f3f39189cfe1f8a08e07df0db31b957f",
       "production_status": 200,
       "verified_at": "2026-10-11T11:11:47.095Z"
+    },
+    "BA-0365": {
+      "article_id": "BA-0365",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/den-xe-va-an-toan-dem-cho-du-khach/",
+      "publication_sha": "da614182ebfe452e6a1e78a8297c006ee19fe687",
+      "page_sha256": "70b331aa7af7d590ee193d02dad26b1e15cb119a8c99ae9b70b2a5cbad7095ff",
+      "body_sha256": "1a64f3cb279e163fe7f5d06f6599f323eb7f49889680ab45e8fba2a864a5f7b0",
+      "entry_sha256": "fe0038c39db7b0232f97f8e1e2436b6933eda5ea149a2ed788e83d1757c3c9e3",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:17:53.804Z"
+    },
+    "BA-0366": {
+      "article_id": "BA-0366",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/thue-xe-may-quanh-long-bien-hai-ngay-mot-dem/",
+      "publication_sha": "da614182ebfe452e6a1e78a8297c006ee19fe687",
+      "page_sha256": "a0df07ba2287fd6daaf2d0b6567791bb197212f90f458f9d6643f33d9e74c3cd",
+      "body_sha256": "e562b107b12b007f46ba05f1956ec0893f8050554e4d6c3f9de500b3717b75c8",
+      "entry_sha256": "fb231a32cf45a0bad24d8dc623c0aa3a8e79146ccc660ee58c88d3a2840527af",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:17:53.809Z"
     }
   }
 }
