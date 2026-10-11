@@ -4576,6 +4576,28 @@
       "entry_sha256": "9ba233efbcc45c4218942ec5a1ec781f3c17c4f447655cc661e25c8f3570b8c9",
       "production_status": 200,
       "verified_at": "2026-10-11T12:45:14.744Z"
+    },
+    "BA-0423": {
+      "article_id": "BA-0423",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/di-xe-dien-duong-dai-cho-khach-du-lich/",
+      "publication_sha": "dac3c6c3681befa1083832fb1abaa1e663b3dbaa",
+      "page_sha256": "e5c9c32b68d63368ba8a5167988cca5da7e90ea22f584751370d35148df7278b",
+      "body_sha256": "d2a2a3ff1c19b553201922fe9d6323b876abb410f38d80162660aeaebe90a313",
+      "entry_sha256": "582d9a2da92bf241a73c2bfbb5ff60d672403129838bc06fdf25f9fe534faa0b",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:47:30.144Z"
+    },
+    "BA-0424": {
+      "article_id": "BA-0424",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/ky-nang-lai-xe-an-toan-co-ban-cho-nguoi-moi/",
+      "publication_sha": "dac3c6c3681befa1083832fb1abaa1e663b3dbaa",
+      "page_sha256": "175f5365f40b39cdab47864259a7bbde8ddd44b4b9303865d435c1f71644c74c",
+      "body_sha256": "defff69a26aa1033fb98e9c4123b9418b2b219582f198829a31b7e8a29361378",
+      "entry_sha256": "1a1bbeaae0da7f343d2cb8444b776016794604dd7481e2e1281b760cb09db90c",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:47:30.150Z"
     }
   }
 }
