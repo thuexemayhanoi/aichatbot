@@ -5291,6 +5291,17 @@
       "entry_sha256": "cb19e13517d0969a707a86f98633b04bed79e487d7033ba625c1327af8205a0e",
       "production_status": 200,
       "verified_at": "2026-10-11T16:17:29.877Z"
+    },
+    "BA-0499": {
+      "article_id": "BA-0499",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai-nam-2026/",
+      "publication_sha": "9cc50abf2d002ad0e0e80323bf4d034099c00713",
+      "page_sha256": "a8e9bce9227e1601c90c116a03b40736eff3505c4f77dec905b46e49c0adce6a",
+      "body_sha256": "1a717be9afa858824f22bfd170c4c8d5adb5939743bbed160a722db5f8ddb89d",
+      "entry_sha256": "2661f51d33322206ee6b42da003210371e13a0235808436e194a86aa084615e1",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:23:04.810Z"
     }
   }
 }
