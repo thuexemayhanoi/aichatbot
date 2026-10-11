@@ -5322,6 +5322,36 @@
         "Hỏi giá thuê xe máy theo ngày, câu trả lời chỉ đúng khi gắn kèm thời điểm. Cùng một chiếc xe, cùng một số ngày thuê, khoản tiền có thể lệch nhau chỉ vì lịch rơi vào kỳ nghỉ lễ. Ngày lễ khiến nhu cầu tăng vọt ở đúng vài ngày cố định, khiến xe tốt bị chốt sớm, và khiến cách tính ngày thuê của bạn đổi hình dáng: nhận trước lễ để chắc xe, trả sau lễ để trọn chuyến. Bài viết này nói về cơ chế giá theo ngày trong đúng bối cảnh kỳ nghỉ lễ, từ cách đếm ngày tới các mốc thời gian nên nhớ, để khoản tiền bạn dự trù sát với thực tế phải trả.",
         "Ngày thường, tính ngày thuê đơn giản: nhận sáng hôm nay, trả sáng mai là một ngày. Kỳ nghỉ lễ khác ở chỗ lịch của hàng nghìn người gộp lại cùng lúc. Người thuê thường muốn nhận xe từ chiều hôm trước ngày nghỉ đầu tiên và trả xe vào cuối ngày cuối cùng, khiến quãng thời gian thực tế luôn dài hơn số ngày nghỉ chính thức một nhịp. Chính nhịp dư đó tạo ra hai hiệu ứng: cung xe tại cửa hàng chật lại ở ngày trước lễ, và lượng xe về lại dồn về cuối ngày cuối kỳ. Ai tính chi phí chỉ theo số ngày nghỉ trong thông báo mà quên hai nhịp mép này sẽ bị lệch ngân sách, nên bước đầu tiên luôn là vẽ khung thời gian thật của mình: ngày nhận dự kiến, ngày trả d"
       ]
+    },
+    {
+      "article_id": "BA-0370",
+      "category": "GUIDE",
+      "slug": "nhien-lieu-khi-nhan-tra-xe-cho-nguoi-moi",
+      "title": "Nhiên Liệu Khi Nhận Trả xe Cho Người Mới",
+      "description": "Người mới thuê xe máy thường tập trung toàn bộ sự lo lắng vào tay lái, rồi bị bất ngờ bởi một chi tiết tưởng nhỏ: nhiên liệu trong bình. Bình xăng về",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/nhien-lieu-khi-nhan-tra-xe-cho-nguoi-moi.body.html",
+      "knowledge_chunks": [
+        "Người mới thuê xe máy thường tập trung toàn bộ sự lo lắng vào tay lái, rồi bị bất ngờ bởi một chi tiết tưởng nhỏ: nhiên liệu trong bình. Bình xăng về hơn một vạch lúc nhận, người thuê tưởng rằng xe tốn xăng, đổ thừa một lần rồi tranh cãi lúc trả. Trả xe mà kim thấp hơn lúc nhận, người thuê lại bị tính phần bù theo cách không nghĩ tới. Toàn bộ rắc rối này tránh được bằng vài phút xử lý ngay tại chỗ nhận xe và một câu hỏi trước khi cầm chìa khóa. Bài viết này đi từng bước cho người chưa từng thuê xe, từ phút đầu tiên nhìn kim xăng tới phút cuối cùng trước khi bàn giao xe lại cho cửa hàng.",
+        "Trước khi đề máy, hãy làm bốn việc nhỏ theo đúng thứ tự. Nhìn kim xăng hoặc vạch hiển thị trên đồng hồ và đo trong đầu mốc nó đang đứng: gần vạch thấp, giữa bình hay gần đầy. Chụp một tấm ảnh rõ đồng hồ nhiên liệu, có cả đồng hồ điện hiện số ki-lô-mét trong khung hình nếu xe có. Hỏi người giao xe xe này chạy được khoảng bao xa ở mức xăng hiện tại, để có cảm giác số thay vì cảm giác lo. Cuối cùng, lặp lại con số và mức kim vừa nhìn cho người giao xe nghe và ngầm xác nhận: một câu xác nhận ngay lúc đó đáng giá hơn mọi lời tranh luận hai ngày sau. Nếu xe là dòng điện hoặc lai, đồng hồ pin cũng đọc tương tự, phần hướng dẫn riêng đã có trong bài v"
+      ]
+    },
+    {
+      "article_id": "BA-0369",
+      "category": "EV",
+      "slug": "sac-pin-xe-dien-o-dau-cho-khach-du-lich",
+      "title": "Sạc Pin xe Điện ở Đâu Cho Khách du Lịch",
+      "description": "Khách du lịch chọn xe máy điện vì êm, rẻ điện năng và hợp lịch trình phố, nhưng câu đầu tiên khi nhận xe hầu như luôn là: sạc ở đâu. Người địa phương",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/sac-pin-xe-dien-o-dau-cho-khach-du-lich.body.html",
+      "knowledge_chunks": [
+        "Khách du lịch chọn xe máy điện vì êm, rẻ điện năng và hợp lịch trình phố, nhưng câu đầu tiên khi nhận xe hầu như luôn là: sạc ở đâu. Người địa phương có gara và ổ điện nhà mình, còn du khách chỉ có lịch trình, chỗ ngủ và những nơi ghé ngang. Tin tốt là bài toán sạc của du khách đơn giản hơn hình dung: phần lớn các chuyến đi chỉ cần sạc qua đêm ở chỗ ngủ, cộng vài lần cắm cộng dồn lúc dừng chân. Bài viết này xếp các điểm sạc theo đúng cách du khách gặp chúng, từ phòng ngủ tới quán cà phê giữa tuyến, kèm phần lên kế hoạch để pin không bao giờ là điều phải lo giữa chuyến.",
+        "Khách sạn, nhà nghỉ và homestay quanh Hà Nội phần lớn có khu để xe có ổ điện, và đây là điểm sạc nên gánh vai trò chính của cả chuyến. Cắm trước khi ngủ, sáng ra pin đầy, một ngày phố thoải mái. Ba việc nên làm ngay khi nhận phòng: xuống khu để xe xem vị trí ổ điện còn trống không, hỏi lễ tân xin phép cắm sạc qua đêm thay vì tự tiện, và hỏi luôn phí nếu có, vì một số chỗ tính tiền điện riêng cho khách lưu trú dài. Lưu ý nhỏ về dòng điện: xe máy điện sạc bằng ổ điện thông thường, không cần trạm chuyên dụng, nên một ổ điện gần chỗ để xe là đủ cho cả đêm."
+      ]
     }
   ]
 }
