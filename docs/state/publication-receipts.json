@@ -5357,6 +5357,28 @@
       "entry_sha256": "07739a75f65779e7ac84d0e44822bf10f5b5cdab1ed098640c3339429d919305",
       "production_status": 200,
       "verified_at": "2026-10-11T16:31:39.202Z"
+    },
+    "BA-0505": {
+      "article_id": "BA-0505",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/chatbot-thue-xe-may-co-dang-tin-khong-nam-2026/",
+      "publication_sha": "4dcab91c7d04122536f29c5e7ae0329e76f99cee",
+      "page_sha256": "53f5791ca7871715e40cc95aac6387e1c6e075196d49c647836c94afea0695e8",
+      "body_sha256": "d791cdb3069cf2e8f84c3de4fecb8679ca6dad08805d7d5394cafeb9859c917c",
+      "entry_sha256": "1171f174d8a2f13929fa7fabe504dd76478236d661c562e403e990a49e631560",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:34:02.912Z"
+    },
+    "BA-0506": {
+      "article_id": "BA-0506",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-hai-nguoi-ky-nghi-le/",
+      "publication_sha": "4dcab91c7d04122536f29c5e7ae0329e76f99cee",
+      "page_sha256": "394c2786dccd9c3b05f93994e75b0ef6fa9823073c086771ca839a2c7ddea852",
+      "body_sha256": "3b335600d8307ffe5fda1591236099341b8389b201d1e5dc239dd92a0705477c",
+      "entry_sha256": "2734141a5b490dcb36771beb47dba1e1cdbf4d4063e8c4c14a3bfbccefe647ce",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:34:02.903Z"
     }
   }
 }
