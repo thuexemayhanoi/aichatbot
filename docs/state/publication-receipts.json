@@ -4136,6 +4136,28 @@
       "entry_sha256": "4fd2fe318e97c5bc1f25cb8eb79054ffc0c627ddf31e6562aba5d07810fb4b61",
       "production_status": 200,
       "verified_at": "2026-10-11T11:30:12.430Z"
+    },
+    "BA-0377": {
+      "article_id": "BA-0377",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/guong-chieu-hau-an-toan-cho-du-khach/",
+      "publication_sha": "e8316e1e05c64d4f03c5366dda668a64b830a4c5",
+      "page_sha256": "87d1be9ef2f1e2a0de64cd2b35d9b32ef45d78bef9f27674186286ec70170e04",
+      "body_sha256": "44ffdd66b9954b5d4822f51aead8b03e19f9b1da0f82a2625e787a2bfaa0c8ec",
+      "entry_sha256": "9bcfaac9248333dafe3c831b762679a39cb8b4646a425a414abac1113b970e5e",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:33:12.998Z"
+    },
+    "BA-0378": {
+      "article_id": "BA-0378",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "e8316e1e05c64d4f03c5366dda668a64b830a4c5",
+      "page_sha256": "73e6eb78c7c305096662daf3c4001ba47df345c089277cd764a49fcb765062a3",
+      "body_sha256": "0c27d0f78c5d4311aa628394894f0b838679296c3236279a75f9cc2b2875cfd9",
+      "entry_sha256": "b6165fb0df097f5cb83093a7ad6053cf2b8f09087c4658a1668fce58ee6c5e18",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:33:12.984Z"
     }
   }
 }
