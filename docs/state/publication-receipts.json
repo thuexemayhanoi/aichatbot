@@ -5753,6 +5753,28 @@
       "entry_sha256": "c36a24ae1c0ac764acc2a732bae9bc71ec7050b60a11f1474ff962a8af19a744",
       "production_status": 200,
       "verified_at": "2026-10-11T17:53:35.601Z"
+    },
+    "BA-0575": {
+      "article_id": "BA-0575",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/nong-do-con-khi-lai-xe-cho-nguoi-moi/",
+      "publication_sha": "445bf3a9f87ba43c77a08da1bea8190da6645620",
+      "page_sha256": "2d9f1083a2e052e5f1536cb1ca71aab1f765945ecc6659d8ee703dbd73178d6b",
+      "body_sha256": "98a86098aca4669eb2ce69ca6585deb23c2ad2252725a4a210467f23051f803d",
+      "entry_sha256": "01558e7c7b15083c673ec45c77d0de0ed1108f15324176f51014389a189626c4",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:59:02.470Z"
+    },
+    "BA-0576": {
+      "article_id": "BA-0576",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cau-nhat-tan-hoang-hon-hai-ngay-mot-dem/",
+      "publication_sha": "445bf3a9f87ba43c77a08da1bea8190da6645620",
+      "page_sha256": "107040bba266d0ef7a385d4d29da06e22b3bc55f1882c35bebcc44a4070edc97",
+      "body_sha256": "812780243be7d8dc5069c9845aee3a047c03ae0a727b0c53a93891d7ff3ec336",
+      "entry_sha256": "8625da2baa20bd0ee0e3f8037a8d9f6c1422a96bfb7bbfc56e90cb37574a5259",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:59:02.478Z"
     }
   }
 }
