@@ -4158,6 +4158,28 @@
       "entry_sha256": "b6165fb0df097f5cb83093a7ad6053cf2b8f09087c4658a1668fce58ee6c5e18",
       "production_status": 200,
       "verified_at": "2026-10-11T11:33:12.984Z"
+    },
+    "BA-0379": {
+      "article_id": "BA-0379",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-co-an-toan-khong-nam-2026/",
+      "publication_sha": "5433a70ce1a39a63eed9d42e9c65f8c3a1b15b1d",
+      "page_sha256": "d2767bca863d22b17c36201727832165f6bf9645a744ccf9168e032c0f7d1002",
+      "body_sha256": "6e967cb6be96e4b531426f3b23f18dcf4b62b24fc9ba7182bcb34c3bca30a637",
+      "entry_sha256": "6c4a936fbd74fb92772ed3b11625d03f384cb5ad3997c4a4b857175d480d444d",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:36:36.823Z"
+    },
+    "BA-0380": {
+      "article_id": "BA-0380",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-may-theo-thang-ky-nghi-le/",
+      "publication_sha": "5433a70ce1a39a63eed9d42e9c65f8c3a1b15b1d",
+      "page_sha256": "6f4211b98c8b2789e612d2497367025b3fb70713dbbaab0d3501ed3a26d4dc7a",
+      "body_sha256": "aaa3f2431eb692f3611afec01a4af9dab2506fa40136843756c8e1be11ec4eb3",
+      "entry_sha256": "41a4687dbd54244db3d3aa4fd2195c8fc6ed963fb45e28ee1d818dc6a487338d",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:36:36.810Z"
     }
   }
 }
