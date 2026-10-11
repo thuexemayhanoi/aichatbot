@@ -3784,6 +3784,28 @@
       "entry_sha256": "88f1dd50dd4f40a9d04c9d6a194b9a4d0aedffdd5a6458bda269b5e11bf08350",
       "production_status": 200,
       "verified_at": "2026-10-11T05:02:40.478Z"
+    },
+    "BA-0345": {
+      "article_id": "BA-0345",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/pin-cua-xe-may-dien-cho-khach-du-lich/",
+      "publication_sha": "45711dab7cb107348991730a8572c1ad38ded19b",
+      "page_sha256": "3dc2d8ad9d9c1eca307d2fed09138a85d2962baaeb9eb0168cfd63d0cfc35c2e",
+      "body_sha256": "78c9fa84ff3fb8817182110ac5de58d0df26c563abfea9874c94ef6f95c8399e",
+      "entry_sha256": "3e949b4748191c55bd32d3a801fe8e1972d37d5e588a1c943123e433f56e13fb",
+      "production_status": 200,
+      "verified_at": "2026-10-11T07:40:28.583Z"
+    },
+    "BA-0346": {
+      "article_id": "BA-0346",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/hop-dong-thue-xe-can-nhung-gi-cho-nguoi-moi/",
+      "publication_sha": "45711dab7cb107348991730a8572c1ad38ded19b",
+      "page_sha256": "0f8ba647434f2c5c182798fccf2d52309ef107b692815581d9970a43fdc407a9",
+      "body_sha256": "145bf5d8bea49af1ba45dd4907e6aad2f4963bd869df88c47988941ce67393b9",
+      "entry_sha256": "131cf671957139f891a786860e2a8cc6b5ab44b14dd1afbb35722056353ed373",
+      "production_status": 200,
+      "verified_at": "2026-10-11T07:40:28.578Z"
     }
   }
 }
