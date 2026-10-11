@@ -4488,6 +4488,28 @@
       "entry_sha256": "051c72a6b7f1738d0967d6359229d89e740adc703be6c05e212a31f47a3a2fb1",
       "production_status": 200,
       "verified_at": "2026-10-11T12:28:55.292Z"
+    },
+    "BA-0413": {
+      "article_id": "BA-0413",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/den-do-va-camera-phat-nguoi-cho-du-khach/",
+      "publication_sha": "88529574e7d6ce8ff4463c3c1cd221d951e05069",
+      "page_sha256": "a5df0717d8fbc12c2817ebb8a1f81beede9f297c5593c11fce019e2c16c4ba1d",
+      "body_sha256": "91e298c040a858f7b7db3067ea5e9e17e8899764576c5ea4d6be6d7c380fa517",
+      "entry_sha256": "12061de5fcd38481caca508f201a709631266b6161645f909fab620a0eac05c6",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:33:23.868Z"
+    },
+    "BA-0414": {
+      "article_id": "BA-0414",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/hai-ba-trung-hanh-trinh-hai-ngay-mot-dem/",
+      "publication_sha": "88529574e7d6ce8ff4463c3c1cd221d951e05069",
+      "page_sha256": "4e8791ce22b8ba3c80fd6c6d93f0a4848a9839f9bbfe5cf0b80f9dfbf28ba174",
+      "body_sha256": "9c6870ba4e4c96545409c78bdb0e4759ce5a92223c3afa60d3ea856f6d23317f",
+      "entry_sha256": "70584a6a99c6062775d39becaad40c2a37eb0b942891b6615f87b614b3e4ed09",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:33:23.871Z"
     }
   }
 }
