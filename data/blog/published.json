@@ -6771,6 +6771,36 @@
       "pilot": false,
       "body": "data/blog/articles/bao-va-xe-may-cho-du-khach.body.html",
       "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0469",
+      "category": "APP",
+      "slug": "cach-hoi-gia-xe-nhanh-bang-chatbot-nam-2026",
+      "title": "Cách Hỏi Giá xe Nhanh Bằng Chatbot Năm 2026",
+      "description": "Hỏi giá thuê xe máy trước đây là một vòng gọi điện, nghe báo giá từng dòng rồi ghi lại. Từ năm 2026, phần lớn khách ở Hà Nội chuyển sang hỏi giá qua",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cach-hoi-gia-xe-nhanh-bang-chatbot-nam-2026.body.html",
+      "knowledge_chunks": [
+        "Hỏi giá thuê xe máy trước đây là một vòng gọi điện, nghe báo giá từng dòng rồi ghi lại. Từ năm 2026, phần lớn khách ở Hà Nội chuyển sang hỏi giá qua chatbot trong ứng dụng: gõ một câu, nhận giá của nhóm xe còn hàng đúng khung ngày mình định đi, và so sánh vài dòng trong cùng một phiên. Bài viết này trình bày cách hỏi giá xe nhanh bằng chatbot năm 2026: câu hỏi nên gộp những gì, giá trả về đọc từ đâu, và khi nào nên chuyển sang gọi điện.",
+        "Điểm mới của phiên chatbot năm 2026 là phần hội thoại giữ ngữ cảnh suốt kỳ hỏi: bạn hỏi giá ngày đầu, hỏi tiếp phụ phí ngày hôm sau trong cùng phiên, trợ lý vẫn nhớ dòng xe và khung ngày đã nói. Việc này đổi cách đặt câu: thay vì mô tả lại từ đầu mỗi lượt, bạn chỉ cần bổ sung chi tiết mới, và phần so sánh tự mở rộng theo lượt hỏi. Khung tư duy của một phiên hỏi giá trọn vẹn đã được trình bày trong bài hỏi đáp với agent thuê xe năm 2026 , còn bài này đi sâu vào phần giá."
+      ]
+    },
+    {
+      "article_id": "BA-0470",
+      "category": "RENT",
+      "slug": "dieu-kien-thue-xe-may-o-ha-noi-ky-nghi-le",
+      "title": "Điều Kiện Thuê xe Máy ở hà Nội kỳ Nghĩ lễ",
+      "description": "Kỳ nghỉ lễ là lúc nhu cầu thuê xe máy ở Hà Nội tăng vọt trong vài ngày, và phần khách bị trượt xe thường không phải vì hết xe mà vì chưa đáp ứng đủ",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dieu-kien-thue-xe-may-o-ha-noi-ky-nghi-le.body.html",
+      "knowledge_chunks": [
+        "Kỳ nghỉ lễ là lúc nhu cầu thuê xe máy ở Hà Nội tăng vọt trong vài ngày, và phần khách bị trượt xe thường không phải vì hết xe mà vì chưa đáp ứng đủ điều kiện khi đặt. Điều kiện thuê xe mùa lễ khác ngày thường ở ba điểm: phải đặt và giữ chỗ trước, giấy tờ phải mang đủ ngay lần đầu, và phần cọc cùng lịch nhận trả được chốt theo khung giờ cao điểm. Bài viết này liệt kê trọn bộ điều kiện thuê xe máy ở Hà Nội trong kỳ nghỉ lễ để bạn chuẩn bị từ trước ngày đi.",
+        "Điều kiện đầu tiên là giấy tờ, và ngày lễ không cho bạn thời gian quay lại lấy thêm. Khách trong nước cần thẻ căn cước công dân bản gốc để đối chiếu, cùng giấy phép lái xe còn hiệu lực đúng hạng với xe định thuê; khách nước ngoài cần hộ chiếu và giấy phép lái quốc tế hoặc giấy phép tương đương theo quy định. Mùa lễ các quán photo quanh khu cho thuê mở thất thường, nên chụp sẵn bản điện tử của cả hai loại giấy tờ trên điện thoại trước khi rời nhà. Chi tiết danh mục giấy tờ cho kỳ thuê ngày thường đã có trong bài điều kiện thuê xe máy ở Hà Nội , còn phần dưới đây là phần thay đổi theo mùa lễ."
+      ]
     }
   ]
 }
