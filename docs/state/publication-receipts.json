@@ -5412,6 +5412,28 @@
       "entry_sha256": "df73adf7276a653ca7847fac410a7719d5295af5196fe575b41ca05261e0f3c2",
       "production_status": 200,
       "verified_at": "2026-10-11T16:37:15.078Z"
+    },
+    "BA-0509": {
+      "article_id": "BA-0509",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/",
+      "publication_sha": "58c03a477cfab6e717008cd6364c33252544fe2f",
+      "page_sha256": "dde5ff3ad7614d2fa986885d13b8a3b8ad4111a1cab990e740e1f9321decf58d",
+      "body_sha256": "9d507279b6d9d889ca74ddfbbc0d5ede81164e5b52e0059623c1507bff4d6afd",
+      "entry_sha256": "ef6559e4b99005a77af5c18cadcb9a03ee8132c48841c2a43dbf938613069723",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:39:40.283Z"
+    },
+    "BA-0510": {
+      "article_id": "BA-0510",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/chua-va-ha-noi-hai-ngay-mot-dem/",
+      "publication_sha": "58c03a477cfab6e717008cd6364c33252544fe2f",
+      "page_sha256": "0d3601006fde17b9584900bc83bf338829e9c78ad959607e3863d3703211c574",
+      "body_sha256": "22fd252c579e48a29752696f46b6f64bb8f7ea22dd879ea251a820f93dc5c8c4",
+      "entry_sha256": "c1463bb7b0600e01b967784acc4cd64fdaf907dae00d8339af810096b664d1d6",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:39:40.171Z"
     }
   }
 }
