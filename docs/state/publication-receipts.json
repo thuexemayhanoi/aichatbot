@@ -5478,6 +5478,28 @@
       "entry_sha256": "0bceb24c04eb709275ec9225f35b397c93fe99cf09bed0e84ef049bd7c386194",
       "production_status": 200,
       "verified_at": "2026-10-11T16:41:53.979Z"
+    },
+    "BA-0523": {
+      "article_id": "BA-0523",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/so-sanh-ung-dung-thue-xe-may-dien-va-xe-xang-nam-2026/",
+      "publication_sha": "2eb48096d39c23761b17563f853d01d0024f904b",
+      "page_sha256": "836d5e450dc3d78e950ab31bed0a4a6fa0f95a89ab1d98d61731b5def3798ea0",
+      "body_sha256": "0e6205af9d7db17ffe080938d92548c80e97ba32a2b28a7d9e44a6641cc4bfb4",
+      "entry_sha256": "7dfa3016431bfc9c02b927f284023e3bfa727059849416e83b95f96d487d65e6",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:50:04.388Z"
+    },
+    "BA-0524": {
+      "article_id": "BA-0524",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-dai-ngay-gia-tot-ky-nghi-le/",
+      "publication_sha": "2eb48096d39c23761b17563f853d01d0024f904b",
+      "page_sha256": "5a9f2bcc8daba291acc1b5d8f4e56ec66a7b9ae0f8db57302d1c5167dc7d793d",
+      "body_sha256": "b822466680cbd250aa9e3c9d2127634a172150d3e80c636263116ef32b3553ce",
+      "entry_sha256": "93377f6f5403bcf127947437ae6d030269e1f2eea738d415f3148d6433c2cf18",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:50:04.404Z"
     }
   }
 }
