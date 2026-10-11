@@ -4818,6 +4818,28 @@
       "entry_sha256": "27f15b254fcfa618193ffdbb02d3ed17a77b866e41bc9d010b1a08ebc6f57f96",
       "production_status": 200,
       "verified_at": "2026-10-11T14:45:06.579Z"
+    },
+    "BA-0461": {
+      "article_id": "BA-0461",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/di-nhom-an-toan-cho-du-khach/",
+      "publication_sha": "e4b72443ddfab269c7ac86216c0c9ae6ab021d33",
+      "page_sha256": "1d99069d0b0adbad553ffb6134d1fca279817c477f10470eafd2593a7253a771",
+      "body_sha256": "1f98a473c5d3cf52740f0e2ae87973e5a97966efbd133b3900557e214824f116",
+      "entry_sha256": "121af334befa7300d4444cd82998860039aec1808452ca8d928d488963eccbdd",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:48:37.035Z"
+    },
+    "BA-0462": {
+      "article_id": "BA-0462",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/lang-chu-tich-qua-pho-hai-ngay-mot-dem/",
+      "publication_sha": "e4b72443ddfab269c7ac86216c0c9ae6ab021d33",
+      "page_sha256": "fb41fcc93f9bf01607fccd39768ba4bce07021a4c6aae55ad49813248f755b37",
+      "body_sha256": "9738aca81c6153de337fa9de145a67ee90e21c2454fa3be9e186f3c32a0614e2",
+      "entry_sha256": "2c8939674ec29c068f79d1be75f85dd675bfd72f72af5d48ef270dd3edc5d0d5",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:48:37.013Z"
     }
   }
 }
