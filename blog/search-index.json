@@ -5801,8 +5801,8 @@
     },
     {
       "title": "so Sánh Các Dòng xe Điện Cho Thuê Cho Khách du Lịch",
-      "keywords": "so Sánh Các Dòng xe Điện Cho Thuê Cho Khách du Lịch Du khách mới đến {{ business.brand }} thường hỏi cửa hàng một câu duy nhất: cho em chiếc xe điện nào cũng được. Cách hỏi đó chấp nhận rủi ro nhận So Sánh",
-      "summary": "Du khách mới đến {{ business.brand }} thường hỏi cửa hàng một câu duy nhất: cho em chiếc xe điện nào cũng được. Cách hỏi đó chấp nhận rủi ro nhận",
+      "keywords": "so Sánh Các Dòng xe Điện Cho Thuê Cho Khách du Lịch Du khách mới đến Nguyễn Tú thường hỏi cửa hàng một câu duy nhất: cho em chiếc xe điện nào cũng được. Cách hỏi đó chấp nhận rủi ro nhận So Sánh",
+      "summary": "Du khách mới đến Nguyễn Tú thường hỏi cửa hàng một câu duy nhất: cho em chiếc xe điện nào cũng được. Cách hỏi đó chấp nhận rủi ro nhận",
       "category": "EV",
       "category_name": "Xe điện / xe máy điện",
       "cluster": "C-RENT",
@@ -6032,6 +6032,32 @@
       "subtopic_name": "Trả Xe",
       "location": "",
       "url": "/blog/thue-xe/kiem-tra-xe-truoc-khi-nhan-ky-nghi-le/"
+    },
+    {
+      "title": "Khoá xe Khi Thuê Cho Người Mới",
+      "keywords": "Khoá xe Khi Thuê Cho Người Mới Khóa xe là phần người mới hay xem nhẹ nhất khi thuê xe lần đầu: xe nhận là xe chạy được, và chuyện khóa dường như chỉ là cầm chìa rồi vặn. Thực tế Thủ Tục",
+      "summary": "Khóa xe là phần người mới hay xem nhẹ nhất khi thuê xe lần đầu: xe nhận là xe chạy được, và chuyện khóa dường như chỉ là cầm chìa rồi vặn. Thực tế",
+      "category": "GUIDE",
+      "category_name": "Hướng dẫn / thủ tục",
+      "cluster": "C-APP",
+      "cluster_name": "Công cụ & Hướng dẫn",
+      "subtopic": "THU-TUC",
+      "subtopic_name": "Thủ Tục",
+      "location": "",
+      "url": "/blog/huong-dan/khoa-xe-khi-thue-cho-nguoi-moi/"
+    },
+    {
+      "title": "Thuê xe Điện Cho Khách du Lịch Cho Khách du Lịch",
+      "keywords": "Thuê xe Điện Cho Khách du Lịch Cho Khách du Lịch Thuê xe điện cho khách du lịch năm 2026 là một trải nghiệm trọn vòng: quyết định chọn dòng điện, buổi nhận xe, ngày đầu tiên chạy im giữa phố, các",
+      "summary": "Thuê xe điện cho khách du lịch năm 2026 là một trải nghiệm trọn vòng: quyết định chọn dòng điện, buổi nhận xe, ngày đầu tiên chạy im giữa phố, các",
+      "category": "EV",
+      "category_name": "Xe điện / xe máy điện",
+      "cluster": "C-RENT",
+      "cluster_name": "Thuê xe & Phương tiện",
+      "subtopic": "",
+      "subtopic_name": "",
+      "location": "",
+      "url": "/blog/xe-dien/thue-xe-dien-cho-khach-du-lich-cho-khach-du-lich/"
     }
   ]
 }
