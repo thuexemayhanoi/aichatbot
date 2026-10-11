@@ -3674,6 +3674,28 @@
       "entry_sha256": "3624fb28b81db0d5cd45467c18d2196c66eae103699f5b5edb3af55414d78fa4",
       "production_status": 200,
       "verified_at": "2026-10-10T13:27:04.712Z"
+    },
+    "BA-0335": {
+      "article_id": "BA-0335",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/bao-hiem-khi-thue-xe-may-cho-du-khach/",
+      "publication_sha": "f2aac926ba4e2faf1219fcfd034a31c90a033a2f",
+      "page_sha256": "2cc807e1d2854ef752c737bb0702ef6ff3b4471a95fd5c63d0469e20a9005df9",
+      "body_sha256": "123da82c26a7e3566b4430551653f6556b5c8d6793e2745910330be9948a382e",
+      "entry_sha256": "167fa8bc13149ebd30e3445ac0765a9625547bf86f527c46d715a699c2be45a8",
+      "production_status": 200,
+      "verified_at": "2026-10-11T04:47:06.662Z"
+    },
+    "BA-0336": {
+      "article_id": "BA-0336",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/sai-gon-duong-nam/",
+      "publication_sha": "f2aac926ba4e2faf1219fcfd034a31c90a033a2f",
+      "page_sha256": "05df09f3ec3e504cc39c24d18e55bd8467e0ecd44ef0b5f1c4c0d695e953b88d",
+      "body_sha256": "acf7b37f12e1c1046be62472512c5fc561e824adf01ae936a7c0ff8e3ca3f0cb",
+      "entry_sha256": "e5e5e91b8dcbfa1ef6d8aa5baaf0f1457612b692c89db6d32e87449f9747e04e",
+      "production_status": 200,
+      "verified_at": "2026-10-11T04:47:06.656Z"
     }
   }
 }
