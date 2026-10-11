@@ -4554,6 +4554,28 @@
       "entry_sha256": "e5f1b22a7bba1c84636e9b24c6036f17cd7ed220946a6ea72f37532675d83ec7",
       "production_status": 200,
       "verified_at": "2026-10-11T12:39:22.942Z"
+    },
+    "BA-0421": {
+      "article_id": "BA-0421",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/app-thue-xe-cho-khach-du-lich-nam-2026/",
+      "publication_sha": "3d56834fdf2baaa9caf4602a96113edd3b494a0b",
+      "page_sha256": "dd50163ea4003135e2690fb2bf051429673e1ad8c7f23e8db40b5d29c1aa10a7",
+      "body_sha256": "27fe1051ed29fa6cdf77d29871b5ea325becbbcbdd3ae11fdbb7511c328a1fd6",
+      "entry_sha256": "b0ebf53b5e60d2c1d9dc02e0bf3e96bd4c6ca9bd22acad0dda984a18c5e0d2bf",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:45:14.738Z"
+    },
+    "BA-0422": {
+      "article_id": "BA-0422",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-wave-alpha-ky-nghi-le/",
+      "publication_sha": "3d56834fdf2baaa9caf4602a96113edd3b494a0b",
+      "page_sha256": "a374e2bb6d7d03fa511bc10b5ae40500c9c3cdf6e14b39263f123b4751a429ea",
+      "body_sha256": "2605de172b6e97af02dc941a230b7f2c341c81a57e3db2f12ed2860f559c1ef8",
+      "entry_sha256": "9ba233efbcc45c4218942ec5a1ec781f3c17c4f447655cc661e25c8f3570b8c9",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:45:14.744Z"
     }
   }
 }
