@@ -5797,6 +5797,28 @@
       "entry_sha256": "711de844215d513239e4b301a772ee73a0d57d9b0d424640f8efbcd276e0fe2f",
       "production_status": 200,
       "verified_at": "2026-10-11T18:02:06.412Z"
+    },
+    "BA-0589": {
+      "article_id": "BA-0589",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/kinh-nghiem-dung-tro-ly-thue-xe-lan-dau-nam-2026/",
+      "publication_sha": "18363767bf51848f6ea09f4107a30345cc325e1e",
+      "page_sha256": "8f7346bd9f16e164abd87a849bd298a22a3a21d655e3fa45d05982109d7dc200",
+      "body_sha256": "c7d2b23f93f832925d9793ef4a411ffc9bc20f731571af0e7add09b2ee1f193a",
+      "entry_sha256": "c32e6901d59a69e6b20f960923bfb30b3fc14eedf2ca62b4c0d0414df9396c22",
+      "production_status": 200,
+      "verified_at": "2026-10-11T18:25:40.238Z"
+    },
+    "BA-0590": {
+      "article_id": "BA-0590",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-o-ga-tau-san-bay-ky-nghi-le/",
+      "publication_sha": "18363767bf51848f6ea09f4107a30345cc325e1e",
+      "page_sha256": "f4718706a74976dd714965ca9c1bf897a113acaeea11439ffba5ca6d9e6bd478",
+      "body_sha256": "6fa29a61499105b783545adea0b262b1714893177355e9f3552dcc8073a4105a",
+      "entry_sha256": "34768dd323a1888411895f1d17bba8e91c647de2bba555c7938e50d0c8c2e16a",
+      "production_status": 200,
+      "verified_at": "2026-10-11T18:25:40.228Z"
     }
   }
 }
