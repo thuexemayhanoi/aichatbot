@@ -4026,6 +4026,28 @@
       "entry_sha256": "fb231a32cf45a0bad24d8dc623c0aa3a8e79146ccc660ee58c88d3a2840527af",
       "production_status": 200,
       "verified_at": "2026-10-11T11:17:53.809Z"
+    },
+    "BA-0367": {
+      "article_id": "BA-0367",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/app-thue-xe-may-la-gi-nam-2026/",
+      "publication_sha": "c7e8e81bdf23ca1e531132b5e1d7227af0c9d49d",
+      "page_sha256": "d477f50c7bb1a60866c7b1190d3699f8ae174956a1fe066fa7d67b36aceadb38",
+      "body_sha256": "d6cd323d80d491bffeeb888dd4e958b14e26979d9fc7fa657b6dff7f7b1f4fec",
+      "entry_sha256": "975b53c92786fa613c69d8a822daf1931c79b6fee709e2be1cb253a11ac90217",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:20:02.778Z"
+    },
+    "BA-0368": {
+      "article_id": "BA-0368",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-xe-may-theo-ngay-ky-nghi-le/",
+      "publication_sha": "c7e8e81bdf23ca1e531132b5e1d7227af0c9d49d",
+      "page_sha256": "3c22fc00218a5eadee2e6d9164b14679d2eb599aa359ecf8e7a2b6004f6481f3",
+      "body_sha256": "9ed2377ec61ad4bec22ed757b992e746c996fb50cdd73077d0f218b0fe357fcd",
+      "entry_sha256": "e37b8b441a3efa49be5d5c6d0e73184635b8677c720f9f0b5eb204b51b09b5f2",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:20:02.789Z"
     }
   }
 }
