@@ -4796,6 +4796,28 @@
       "entry_sha256": "621a12a7bff1e9b92e5876e2b59154059d4e189725f3d1822e39e5acd065d66e",
       "production_status": 200,
       "verified_at": "2026-10-11T14:20:16.667Z"
+    },
+    "BA-0459": {
+      "article_id": "BA-0459",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/so-sanh-cac-dong-xe-dien-cho-thue-cho-khach-du-lich/",
+      "publication_sha": "f8dce4d5ceb49b663df4c5e79592aff80455af50",
+      "page_sha256": "3c059cef12fd0653085c1098c5fd89c099fd7ee255eac241d9f9080b76fd6c5b",
+      "body_sha256": "c59a78dd5a5053e5a1b45c9a98a11056d0bb960da9b0854e74c789e1c771e772",
+      "entry_sha256": "124725b0d520048419eb794c611c6284695630a7608610146d5353cebf38485f",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:45:06.588Z"
+    },
+    "BA-0460": {
+      "article_id": "BA-0460",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/trom-cap-xe-va-xe-thue-cho-nguoi-moi/",
+      "publication_sha": "f8dce4d5ceb49b663df4c5e79592aff80455af50",
+      "page_sha256": "a1d37203072791663c207ec7d103a371b5841cb2aa2c90bb692cd3ba0ae0a867",
+      "body_sha256": "25276e71d6378fb2be97535cc57fc71f78c9888093877a08bbfa3391973367d2",
+      "entry_sha256": "27f15b254fcfa618193ffdbb02d3ed17a77b866e41bc9d010b1a08ebc6f57f96",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:45:06.579Z"
     }
   }
 }
