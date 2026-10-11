@@ -5181,6 +5181,28 @@
       "entry_sha256": "59ee6354c94fb3e8b3c4ee5a9c66b9ea76dc4285857d5f7969acf2fb4a964b57",
       "production_status": 200,
       "verified_at": "2026-10-11T16:05:04.324Z"
+    },
+    "BA-0489": {
+      "article_id": "BA-0489",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/app-theo-doi-pin-xe-dien-cho-khach-du-lich/",
+      "publication_sha": "be640d0bde6b4f7d3a13beac990a64e25cf5e400",
+      "page_sha256": "430e79df4c72530a17074b11f750972eb473739eb5069a507cae41c92f459156",
+      "body_sha256": "573d50c7573abe0fb1fcf493431b7b6efedad797a15c456ff1df7e5a406d2725",
+      "entry_sha256": "4dce4a9477611e3b827953abded85508bb407e85c260b4bd243eab82933b97af",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:06:42.773Z"
+    },
+    "BA-0490": {
+      "article_id": "BA-0490",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/dich-cong-chung-giay-to-thue-xe-cho-nguoi-moi/",
+      "publication_sha": "be640d0bde6b4f7d3a13beac990a64e25cf5e400",
+      "page_sha256": "3b99d579814d8a41225c2a6444b87c39d9af44f4cded808e42af3e2be3a81266",
+      "body_sha256": "4ddde998e595d32c2987b192a1d9031bf6e1be6ccae4e98c7f9fd9729111cb3f",
+      "entry_sha256": "ed07dcd965a0ba40b862e3dc0c0f0ac0545d8f34c2a4cd2fc3c1b88e2499bdd9",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:06:42.799Z"
     }
   }
 }
