@@ -4664,6 +4664,28 @@
       "entry_sha256": "611eba173f4fd631ce0ee19e47e09766839caca5d5e573417d10bde5e06e1f39",
       "production_status": 200,
       "verified_at": "2026-10-11T13:48:09.944Z"
+    },
+    "BA-0431": {
+      "article_id": "BA-0431",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/cho-tre-em-tren-xe-may-cho-du-khach/",
+      "publication_sha": "0535e1acb6850b4f73285b1174ef9ba18903b4bf",
+      "page_sha256": "d1879d8ca127c8bdce3cafd33444ebbe3e5576fb33cb444100c1e6f7fe7a0874",
+      "body_sha256": "64a4a986274c9e741b3f1a6a4ee9ed85f3806dce994fcbd0e046e2f9d2df73aa",
+      "entry_sha256": "c008010befd422f18c4a75ff6a76aabac12d086c9e50c00cff6449e8a7f1b3ef",
+      "production_status": 200,
+      "verified_at": "2026-10-11T13:54:47.052Z"
+    },
+    "BA-0432": {
+      "article_id": "BA-0432",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cho-long-bien-dem-hai-ngay-mot-dem/",
+      "publication_sha": "0535e1acb6850b4f73285b1174ef9ba18903b4bf",
+      "page_sha256": "fe961dccfd65d96f8b8f378964bf8396d4cfe53497f3c475cd8f93d0017537f3",
+      "body_sha256": "1d8bd2a4cc1cc9ee08b0a916c3bc0ef5a8b896979bb4dace12e71efa27ab67a3",
+      "entry_sha256": "1aa553e66f5ae44add803cafa3dd989456f2212aa10ff96797f785903f9ce857",
+      "production_status": 200,
+      "verified_at": "2026-10-11T13:54:47.060Z"
     }
   }
 }
