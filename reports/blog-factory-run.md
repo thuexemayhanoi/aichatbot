@@ -1760,3 +1760,5 @@
 - 2026-10-11 QA PASS BA-0499 score=100
 - 2026-10-11 QA FAIL BA-0500 -> REPAIR (attempt 1) score=0
 - 2026-10-11 PUBLISHED 1 (BA-0499) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-11 QA PASS BA-0500 score=100
+- 2026-10-11 PUBLISHED 1 (BA-0500) — one grouped build, pages, matrix, indexes, sitemap consistent
