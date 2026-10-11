@@ -3960,6 +3960,28 @@
       "entry_sha256": "b56269e7a12a54694a996ba454e63b7d03df48136a2622f83d5f264ae6ea1b85",
       "production_status": 200,
       "verified_at": "2026-10-11T11:05:27.238Z"
+    },
+    "BA-0361": {
+      "article_id": "BA-0361",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/cau-chuyen-nguoi-dung-ung-dung-thue-xe/",
+      "publication_sha": "a9cb8c4f1ee15cf222e5cc68a620b455e2e999ba",
+      "page_sha256": "90b87d353734612051bfede233af110230135e2b9e8e094bbcb7ed77faf2c2f5",
+      "body_sha256": "1df818122c8955554c0bb0621e900b95dc1aa6a44773b0686a39361285f13028",
+      "entry_sha256": "211285dee1d6d4cf67a4f15407819d270bcc247ee66642ce61f211635564736e",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:08:44.943Z"
+    },
+    "BA-0362": {
+      "article_id": "BA-0362",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-may-gia-re-ky-nghi-le/",
+      "publication_sha": "a9cb8c4f1ee15cf222e5cc68a620b455e2e999ba",
+      "page_sha256": "642f62f6ff87682d1cd7830a8660d28158a12e21dd698f436621d419458704d4",
+      "body_sha256": "3c91c86605cde4d5d9ab174ded8fc78ce03819f54aeafd9161fd366d77219023",
+      "entry_sha256": "7f4cec92a1972b4ffb9c297117fd5890672a7f2ee19e073fb8aa27bab68f52de",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:08:44.949Z"
     }
   }
 }
