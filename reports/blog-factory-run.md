@@ -1533,3 +1533,10 @@
 - 2026-10-11 QA PASS BA-0433 score=100
 - 2026-10-11 QA PASS BA-0434 score=100
 - 2026-10-11 PUBLISHED 2 (BA-0433, BA-0434) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-11 CLAIM 1: BA-0435
+- 2026-10-11 FINISH BA-0435
+- 2026-10-11 CLAIM 1: BA-0436
+- 2026-10-11 FINISH BA-0436
+- 2026-10-11 QA PASS BA-0435 score=100
+- 2026-10-11 QA PASS BA-0436 score=100
+- 2026-10-11 PUBLISHED 2 (BA-0435, BA-0436) — one grouped build, pages, matrix, indexes, sitemap consistent
