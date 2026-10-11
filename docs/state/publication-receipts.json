@@ -5501,6 +5501,28 @@
       "production_status": 200,
       "verified_at": "2026-10-11T16:52:08.250Z"
     },
+    "BA-0521": {
+      "article_id": "BA-0521",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/thue-va-phi-xe-may-ca-nhan-cho-du-khach/",
+      "publication_sha": "60da6c09a5afbad6f6ec508b0ab64cc3c249d402",
+      "page_sha256": "f54b872a2944042446719fe94b808079146d71cd38d9384e1b74249ef54a5c31",
+      "body_sha256": "adfdf9289be18a46a159c5bd686b1cc102ec2ecdda0ab97271d4c9447bb0c3e4",
+      "entry_sha256": "31484d06a3759328d24e3d39975d45eb375e42f13337e746042728c737f9f104",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:54:14.859Z"
+    },
+    "BA-0522": {
+      "article_id": "BA-0522",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/quang-di-long-bien-view-hai-ngay-mot-dem/",
+      "publication_sha": "60da6c09a5afbad6f6ec508b0ab64cc3c249d402",
+      "page_sha256": "dd32b4c5a65d6a2474c7b82c4893e18222919f9dca2c91a8b4124248a43de156",
+      "body_sha256": "29b7e57d54981755f304693f0743e6fc181ca1647f2c75c4d158b70860ca88bd",
+      "entry_sha256": "e0f16246bf389a40651efbbe2cc8bc59b64fb5aefa0c3f7545708781cb00d577",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:54:14.868Z"
+    },
     "BA-0523": {
       "article_id": "BA-0523",
       "status": "PUBLISHED",
