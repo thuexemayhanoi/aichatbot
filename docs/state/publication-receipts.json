@@ -5390,6 +5390,28 @@
       "entry_sha256": "2734141a5b490dcb36771beb47dba1e1cdbf4d4063e8c4c14a3bfbccefe647ce",
       "production_status": 200,
       "verified_at": "2026-10-11T16:34:02.903Z"
+    },
+    "BA-0507": {
+      "article_id": "BA-0507",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/xe-dien-va-mui-moi-truong-cho-khach-du-lich/",
+      "publication_sha": "2c99066e9584ed1c8c80e5aa679f6591881927a8",
+      "page_sha256": "037d7952540a5839814237a800553603c84f10216d14145e2ded1ea0767e3b63",
+      "body_sha256": "bee1f9f877518d12f1550b764ad9d01518c89f6db369f8ed9268227a96d104de",
+      "entry_sha256": "06f9b93b947e37e547c90f967386354bdba957c4a8c3f5722a65eaead6be64d1",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:37:15.086Z"
+    },
+    "BA-0508": {
+      "article_id": "BA-0508",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/thoi-gian-nhan-xe-som-cho-nguoi-moi/",
+      "publication_sha": "2c99066e9584ed1c8c80e5aa679f6591881927a8",
+      "page_sha256": "3b1e749943e2cc67e683b395865052b1858c4bdd42be34375aed82b354daf57a",
+      "body_sha256": "38452d2e6870ff4f8ec6d1e6b17e64bef836160fbdbbfb20e2eee241d3b075d4",
+      "entry_sha256": "df73adf7276a653ca7847fac410a7719d5295af5196fe575b41ca05261e0f3c2",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:37:15.078Z"
     }
   }
 }
