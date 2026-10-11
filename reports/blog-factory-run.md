@@ -1876,3 +1876,10 @@
 - 2026-10-11 QA PASS BA-0541 score=100
 - 2026-10-11 QA PASS BA-0542 score=100
 - 2026-10-11 PUBLISHED 2 (BA-0541, BA-0542) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-11 CLAIM 1: BA-0543
+- 2026-10-11 FINISH BA-0543
+- 2026-10-11 CLAIM 1: BA-0544
+- 2026-10-11 FINISH BA-0544
+- 2026-10-11 QA PASS BA-0543 score=100
+- 2026-10-11 QA PASS BA-0544 score=100
+- 2026-10-11 PUBLISHED 2 (BA-0543, BA-0544) — one grouped build, pages, matrix, indexes, sitemap consistent
