@@ -3938,6 +3938,28 @@
       "entry_sha256": "6a48b332472636fe302a8a48dcc377aa5496582de5b8efae8c797e8f75d1e680",
       "production_status": 200,
       "verified_at": "2026-10-11T10:17:52.977Z"
+    },
+    "BA-0359": {
+      "article_id": "BA-0359",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/kham-suc-khoe-lai-xe-cho-du-khach/",
+      "publication_sha": "d90cd813526d7ddb3174884cf3f579545e31176e",
+      "page_sha256": "ea83dd3842aa16181e0294da67ecf297009c2a3e210ad0636f381ea16b06eaa4",
+      "body_sha256": "3d9ccddd202a2383f760e4803e00953803ae12799bc9c96f076e6a08da223ce3",
+      "entry_sha256": "147241ece47234b5187d2392b0e565c5938fb0c195f593d4677e9ca515b30a8e",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:05:27.242Z"
+    },
+    "BA-0360": {
+      "article_id": "BA-0360",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/meo-vac-dong-cao/",
+      "publication_sha": "d90cd813526d7ddb3174884cf3f579545e31176e",
+      "page_sha256": "c9cd18176e1f0b4a42e2a2de241a1846c920450b95f2a581e872c3bd07912de7",
+      "body_sha256": "b9bf0e97f9600c8cb994286c9f4a47430087d5e30e818af7ada1ccd837c996a3",
+      "entry_sha256": "b56269e7a12a54694a996ba454e63b7d03df48136a2622f83d5f264ae6ea1b85",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:05:27.238Z"
     }
   }
 }
