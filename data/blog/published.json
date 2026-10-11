@@ -7410,6 +7410,36 @@
         "Người mới lần đầu thuê xe máy bằng chatbot thường hỏi: mình bắt đầu từ đâu, hỏi gì trước, và lúc nào thì nhắn điện thoại thật. Câu trả lời gọn nhất là một kịch bản: trình tự các bước từ tối trước chuyến đi tới lúc trả xe, mỗi bước một vài câu hỏi mẫu cho trợ lý. Bài này dựng kịch bản dùng app thuê xe trọn vòng cho người mới trong năm 2026, theo đúng luồng mở link chat, hỏi giá, hỏi thủ tục, rồi tới quầy nhận xe — không cần tài khoản, không cần cài đặt gì thêm.",
         "Mở link chatbot trên trình duyệt điện thoại, và phiên đầu tiên nên là phiên hỏi giá. Hai câu hỏi mẫu mở đầu: \"cho thuê những dòng xe nào dịp này\" và \"giá thuê theo ngày là bao nhiêu\". Trợ lý trả lời từ bảng giá và danh sách xe hiện có của cửa hàng, nên bạn không phải đọc từng trang. So sánh giữa xe số và xe ga, giữa xe xăng và xe điện, đều hỏi được trong cùng một phiên chat; nếu bạn chưa biết nên chọn dòng nào, mô tả ngắn chuyến đi — số người, hành trình, kinh nghiệm lái — rồi để trợ lý gợi ý, cách mô tả nhu cầu đã hướng dẫn trong bài chọn xe bằng agent . Nhóm không muốn tạo tài khoản xem thêm bài thuê xe không cần tài khoản để biết phạm vi d"
       ]
+    },
+    {
+      "article_id": "BA-0512",
+      "category": "RENT",
+      "slug": "cho-nguoi-than-tren-xe-thue-ky-nghi-le",
+      "title": "Chở Người Thân Trên xe Thuê kỳ Nghĩ lễ",
+      "description": "Kỳ nghỉ lễ là dịp cả nhà rủ nhau đi chơi: đưa bố mẹ về quê thăm họ, chở con dạo Hồ Gươm, hoặc chỉ chạy vòng quanh tìm quán mới. Chở người thân trên",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cho-nguoi-than-tren-xe-thue-ky-nghi-le.body.html",
+      "knowledge_chunks": [
+        "Kỳ nghỉ lễ là dịp cả nhà rủ nhau đi chơi: đưa bố mẹ về quê thăm họ, chở con dạo Hồ Gươm, hoặc chỉ chạy vòng quanh tìm quán mới. Chở người thân trên xe thuê những ngày này vừa vui vừa cần chuẩn bị hơn ngày thường, vì đường đông, cửa hàng đông khách và lựa chọn dòng xe hẹp dần theo giờ. Bài viết gom các lưu ý riêng cho mùa lễ, còn phần kỹ năng lái xe chở hai người đã có sẵn trong bài chở người thân trên xe thuê nên sẽ không lặp lại ở đây.",
+        "Ba khác biệt lớn nhất: lượng xe lưu thông tăng mạnh trong khung giờ cao điểm, các điểm tham quan đông nên chỗ gửi xe xa hơn, và các dòng xe phổ biến ở cửa hàng gần hết từ chiều hôm trước. Người ngồi sau trong các chuyến lễ phần nhiều là người lớn tuổi hoặc trẻ nhỏ, nhóm cần yên rộng và chỗ lên xuống thoáng. Mọi lựa chọn từ dòng xe tới giờ xuất phát vì thế nên tính cho hai người chứ không chỉ cho người cầm lái. Nếu cả nhà đi kiểu du khách dịp lễ, kinh nghiệm trong bài khách du lịch thuê xe máy kỳ nghỉ lễ rất đáng tham khảo."
+      ]
+    },
+    {
+      "article_id": "BA-0511",
+      "category": "APP",
+      "slug": "xu-ly-du-lieu-ca-nhan-khi-thue-xe-online-nam-2026",
+      "title": "xử lý dữ Liệu cá Nhân Khi Thuê xe Online Năm 2026",
+      "description": "Thuê xe máy online dịp cuối năm 2026 nhanh hơn bao giờ hết: mở liên kết từ Zalo, hỏi trợ lý vài câu, chốt dòng xe rồi hẹn giờ nhận. Cái giá của sự",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/xu-ly-du-lieu-ca-nhan-khi-thue-xe-online-nam-2026.body.html",
+      "knowledge_chunks": [
+        "Thuê xe máy online dịp cuối năm 2026 nhanh hơn bao giờ hết: mở liên kết từ Zalo, hỏi trợ lý vài câu, chốt dòng xe rồi hẹn giờ nhận. Cái giá của sự tiện lợi là bạn để lại thông tin cá nhân trên môi trường số thường xuyên hơn trước, nên câu hỏi dữ liệu đi đâu, ai giữ và giữ bao lâu đáng được quan tâm hơn. Bài viết cập nhật góc nhìn năm 2026 về xử lý dữ liệu cá nhân khi thuê xe online, tập trung vào những thay đổi thực tế trong cách thuê xe hôm nay. Phần nền tảng về các nhóm dữ liệu đã được tóm lược trong bài xử lý dữ liệu cá nhân khi thuê xe online , vì vậy ở đây chỉ đi vào điều mới.",
+        "Cách thuê xe hai năm trước thường đi kèm đăng ký tài khoản: nhập email, đặt mật khẩu, xác minh rồi mới hỏi được giá. Năm 2026, ứng dụng thuê xe chạy thẳng trên trình duyệt, không cần tài khoản, mở được từ Zalo trên cả điện thoại cũ. Số nơi lưu thông tin của bạn vì thế giảm hẳn: không có tài khoản thì không có mật khẩu để lộ, không có hồ sơ chờ trên máy chủ lạ. Xu hướng này được phân tích trong bài app thuê xe không cần tài khoản và cách mở nhanh qua tin nhắn nằm trong bài kết nối Zalo với ứng dụng thuê xe ."
+      ]
     }
   ]
 }
