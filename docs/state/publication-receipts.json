@@ -4863,6 +4863,72 @@
       "production_status": 200,
       "verified_at": "2026-10-11T14:54:29.492Z"
     },
+    "BA-0453": {
+      "article_id": "BA-0453",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/coc-khi-thue-xe-dien-cho-khach-du-lich/",
+      "publication_sha": "1576163c0e14b5b8bdfc27a3374bd01095d86a6a",
+      "page_sha256": "6f2626d8131cef047a1c0813b4e50cedd427e5115f65886363e5f679e7da49e9",
+      "body_sha256": "d9a8ab5d6d6d657656c3b99062e9b1b5f43f3c2a304d2b8d0ee0529ae7358060",
+      "entry_sha256": "d14022788b707c56ed452680df760eba131582031adec257c977936de2110d54",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:59:46.819Z"
+    },
+    "BA-0454": {
+      "article_id": "BA-0454",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/luat-do-xe-pho-co-cho-nguoi-moi/",
+      "publication_sha": "1576163c0e14b5b8bdfc27a3374bd01095d86a6a",
+      "page_sha256": "c43eafb0ffdf3bc8c406bac3b6307fa404546b3d014852659c4cda213fa0b516",
+      "body_sha256": "aae08daf8f02b5f96bde1bdcad3890c7bdccfdcd243921702ebe76a0fe1a7b86",
+      "entry_sha256": "e64fafa7d4ea0d50a0c84454a9adc335af7db1361d8b8be6fbe35687fb30adfb",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:59:46.830Z"
+    },
+    "BA-0455": {
+      "article_id": "BA-0455",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/met-moi-khi-lai-duong-dai-cho-du-khach/",
+      "publication_sha": "1576163c0e14b5b8bdfc27a3374bd01095d86a6a",
+      "page_sha256": "5368ec265dcca8a9b753dc5eb6508625485e8253983bf5b9321a732a50db5488",
+      "body_sha256": "a502ecb52128c850334d2149b0018745704370b93236977ed44f84ee33e9e44a",
+      "entry_sha256": "75a8a1f9983be6d747cabada63438ed954374669b2d137019eed845786e67159",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:59:46.967Z"
+    },
+    "BA-0456": {
+      "article_id": "BA-0456",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cot-co-hoang-thanh-hai-ngay-mot-dem/",
+      "publication_sha": "1576163c0e14b5b8bdfc27a3374bd01095d86a6a",
+      "page_sha256": "168b1e6288456e66ecbbd798edb8ff6804c92e79f67799ae78d7d3c66a610bd6",
+      "body_sha256": "bac3716fa7b4e941eef75ffe506692e8f9511e371262e550a914fb1ab016217f",
+      "entry_sha256": "32c1cd6665c179051f227090e7e98d22649113d5b53e36c88c76ee26e5123e33",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:59:46.836Z"
+    },
+    "BA-0457": {
+      "article_id": "BA-0457",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/cong-cu-tinh-gia-thue-xe-may-online-nam-2026/",
+      "publication_sha": "1576163c0e14b5b8bdfc27a3374bd01095d86a6a",
+      "page_sha256": "6a38e7d280192acd003973b0ac537daa1bb27f9128ac3d583d619a23481b25ef",
+      "body_sha256": "cab88adb3d464c0e2b56d23d009858de6d72a405f78033d2180a4e50d9e2ea0e",
+      "entry_sha256": "055cc5bca1d96c41da10bdf3dbf5853df3b0deef180f6772e129b59bc84737be",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:59:46.850Z"
+    },
+    "BA-0458": {
+      "article_id": "BA-0458",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/phi-tre-han-khi-thue-xe-ky-nghi-le/",
+      "publication_sha": "1576163c0e14b5b8bdfc27a3374bd01095d86a6a",
+      "page_sha256": "fb3e70ae3b958c2765a45db47b1e33101ab4e22c78297cd2e58e77b0ce5dc837",
+      "body_sha256": "fd409e0563faf5a8bcc9a26f4741c430673210758b69560ac20de5122bc1f88c",
+      "entry_sha256": "1b27cbd4f1f1f423d80d16302e5bbc8746269bf5360fdc9fb887b3e2be5f83ce",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:59:46.845Z"
+    },
     "BA-0459": {
       "article_id": "BA-0459",
       "status": "PUBLISHED",
