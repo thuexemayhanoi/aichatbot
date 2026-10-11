@@ -4510,6 +4510,28 @@
       "entry_sha256": "70584a6a99c6062775d39becaad40c2a37eb0b942891b6615f87b614b3e4ed09",
       "production_status": 200,
       "verified_at": "2026-10-11T12:33:23.871Z"
+    },
+    "BA-0415": {
+      "article_id": "BA-0415",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe-nam-2026/",
+      "publication_sha": "d20bad1203e179982bf617b5136004c7e2184620",
+      "page_sha256": "93e3aaef0cc20abd3884fbc60205ccbf9bf9b6cb6e3d8ba97771b650b58c530c",
+      "body_sha256": "414475d1e93627c96d7ed70668724d18cfc6bdcbde80bf3df6527823d4e832af",
+      "entry_sha256": "274f57e21e3eb14488e4ce56238310c2c952da80570423b10c446482bf05ed25",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:36:24.169Z"
+    },
+    "BA-0416": {
+      "article_id": "BA-0416",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-honda-air-blade-ky-nghi-le/",
+      "publication_sha": "d20bad1203e179982bf617b5136004c7e2184620",
+      "page_sha256": "b192215e68a2b85706aae24f64c487a957e89f406f54d087509b6ae5dec1cc85",
+      "body_sha256": "1bf97460f7465f7f099d4f395ccd5c7996a5e82a05b8fc3ac2743983b3c458de",
+      "entry_sha256": "158901b372d84fe804c5139f070d72827527e13a97365e451081731e455d10f8",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:36:24.181Z"
     }
   }
 }
