@@ -5566,6 +5566,28 @@
       "entry_sha256": "3f3d68a639c278b9238b059acdbfec8753e6fb50fa6843e31c4281282aa51aba",
       "production_status": 200,
       "verified_at": "2026-10-11T17:08:27.845Z"
+    },
+    "BA-0539": {
+      "article_id": "BA-0539",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/quyen-cua-nguoi-thue-xe-cho-du-khach/",
+      "publication_sha": "555e47a7fdce3049fb5005894acab15253dc98ef",
+      "page_sha256": "3f1a9e56f6834836dcc41d988645e5c4896e94c9f36cd5e3eb38706d7f555a0a",
+      "body_sha256": "5af5ae493bcef6c614b79b632cef58ef21f965ccd1860876f73a522522e4eb6e",
+      "entry_sha256": "a77e78dc67bf4ed59f804af9ed58188aa12d9de3df6b99ccaaf54490f79f30e0",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:19:48.317Z"
+    },
+    "BA-0540": {
+      "article_id": "BA-0540",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ca-phe-pho-co-hai-ngay-mot-dem/",
+      "publication_sha": "555e47a7fdce3049fb5005894acab15253dc98ef",
+      "page_sha256": "c6ff53c01e0cde0d4e45464206273287252aa8c8acc6451c7e95164aa0aeb809",
+      "body_sha256": "1669295685b82cb274ad4e910d2e3cb50d1288f9bff9eccb3c93ca49e653f7ee",
+      "entry_sha256": "c7bdf79a92803bb0b970a56b321ef78ce00d69d106d63503ee23b6c1b7ec219d",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:19:48.314Z"
     }
   }
 }
