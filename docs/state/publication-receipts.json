@@ -5775,6 +5775,28 @@
       "entry_sha256": "8625da2baa20bd0ee0e3f8037a8d9f6c1422a96bfb7bbfc56e90cb37574a5259",
       "production_status": 200,
       "verified_at": "2026-10-11T17:59:02.478Z"
+    },
+    "BA-0581": {
+      "article_id": "BA-0581",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/mu-bao-hiem-chuan-cho-nguoi-moi/",
+      "publication_sha": "1df80d287d612f70f5892cc479fa645dcbb7e89a",
+      "page_sha256": "e35ab4b912a07f0f4be7c1b5abf396686d9d33bb3e89770a597b592b7d682f39",
+      "body_sha256": "b2b91b82a8f08e2e9bf50a2b209b770cd2f7c46c1f7d48375bdb117f231fcece",
+      "entry_sha256": "df8ea016fe805df7734321559f1b4b7fe66eeca6e3257bf625fc1a6c745144fd",
+      "production_status": 200,
+      "verified_at": "2026-10-11T18:02:06.410Z"
+    },
+    "BA-0582": {
+      "article_id": "BA-0582",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/duong-5-va-ngoai-o-hai-ngay-mot-dem/",
+      "publication_sha": "1df80d287d612f70f5892cc479fa645dcbb7e89a",
+      "page_sha256": "0499170c22d88acea58c6add3dd394f59d6fb810e6e7f87e83814830965b5908",
+      "body_sha256": "05d20a1de3035a955884d3492c4246670b992d86335b4ed238014e7413dcafab",
+      "entry_sha256": "711de844215d513239e4b301a772ee73a0d57d9b0d424640f8efbcd276e0fe2f",
+      "production_status": 200,
+      "verified_at": "2026-10-11T18:02:06.412Z"
     }
   }
 }
