@@ -4731,6 +4731,50 @@
       "production_status": 200,
       "verified_at": "2026-10-11T14:00:22.354Z"
     },
+    "BA-0437": {
+      "article_id": "BA-0437",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/quy-dinh-mu-bao-hiem-tre-em-cho-du-khach/",
+      "publication_sha": "901b1ba3fd354c1d595f6b2a99ee504f42339c2d",
+      "page_sha256": "950e62d103818d2445e940bf1c07704a7f86c6669bd7fc0a1e5d30026ee7aac5",
+      "body_sha256": "6ce8e119528e445cace04448fc60c667504a13852c30d5ef8713ee8a532af4f6",
+      "entry_sha256": "dd806066ec105f612901dab31733697b785d4672ed6d3e482be4a2ad331606fe",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:54:29.473Z"
+    },
+    "BA-0438": {
+      "article_id": "BA-0438",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/pho-co-am-thuc-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "901b1ba3fd354c1d595f6b2a99ee504f42339c2d",
+      "page_sha256": "3a1d95b3b1c31f4df0692db0c07208f16b38ca1be493d7084764f6b83f29aaaf",
+      "body_sha256": "f20a6cc8ff3251a5e836c2dc0c1e47a53a7669af19be3b67a13040a694f1e981",
+      "entry_sha256": "c359bbef59c21d37477b6c2ef1e072c0d7447ac3675d769e5b3cfda391d90f80",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:54:29.481Z"
+    },
+    "BA-0439": {
+      "article_id": "BA-0439",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/tim-xe-may-thue-bang-ung-dung-nam-2026/",
+      "publication_sha": "901b1ba3fd354c1d595f6b2a99ee504f42339c2d",
+      "page_sha256": "e5f2ce8582e869626258a9d27eb086c95e5402fd84e060551d0d150d85b17dcf",
+      "body_sha256": "86d763943fd77f20a6423194548378e0addf6e66d35e5441c5b29407c9140b6d",
+      "entry_sha256": "ffb27e08dc3b09c4c9ad15c80bc6c5bf1a33e6511ecc88e4adbc963fdea30712",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:54:29.478Z"
+    },
+    "BA-0440": {
+      "article_id": "BA-0440",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/coc-thue-xe-may-bao-nhieu-ky-nghi-le/",
+      "publication_sha": "901b1ba3fd354c1d595f6b2a99ee504f42339c2d",
+      "page_sha256": "e42ddd7aa50fd5d9b644538f831611dea64eb74b1ac4a626a478caab6377a8a6",
+      "body_sha256": "3d9dcaa4403f2bb8bd0141abcb14b1dcc83c6cf8f2710b158ecf4285a279d60a",
+      "entry_sha256": "543f2b66424b7d0be90044134a53fc469aa7a1ab623bd11de9c14b1a68b9c212",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:54:29.497Z"
+    },
     "BA-0441": {
       "article_id": "BA-0441",
       "status": "PUBLISHED",
@@ -4796,6 +4840,28 @@
       "entry_sha256": "621a12a7bff1e9b92e5876e2b59154059d4e189725f3d1822e39e5acd065d66e",
       "production_status": 200,
       "verified_at": "2026-10-11T14:20:16.667Z"
+    },
+    "BA-0449": {
+      "article_id": "BA-0449",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/thuoc-va-lai-xe-cho-du-khach/",
+      "publication_sha": "901b1ba3fd354c1d595f6b2a99ee504f42339c2d",
+      "page_sha256": "c6876f912bf980d0b7417c2ea51041fc9e747c9b8172be7bc244512858209b7e",
+      "body_sha256": "b53343a97b5bf8178239beaa2644c7ad0e6dbdc637692c8d6ab686406eea4d07",
+      "entry_sha256": "1cd6f607a0cb6c59da0d837110cbfb0db9e52c3db43bbb4f5de0ec82218350ab",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:54:29.487Z"
+    },
+    "BA-0450": {
+      "article_id": "BA-0450",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ven-de-song-hong-hai-ngay-mot-dem/",
+      "publication_sha": "901b1ba3fd354c1d595f6b2a99ee504f42339c2d",
+      "page_sha256": "ea90a08a4af73b8cf285e44f8feca939de87840f5d8b8dd1b93bdce461d36e8c",
+      "body_sha256": "7e2f1e56bd3ee7a3a9961c2b0777ec708d585184a5f23af3f0a59a4de2b5c29e",
+      "entry_sha256": "274cf2f826ff01e2be261e37ced95fd1407dbb2ec43e29d89d2c29995df4ac6c",
+      "production_status": 200,
+      "verified_at": "2026-10-11T14:54:29.492Z"
     },
     "BA-0459": {
       "article_id": "BA-0459",
