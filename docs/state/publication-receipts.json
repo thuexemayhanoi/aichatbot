@@ -5335,6 +5335,28 @@
       "entry_sha256": "6f0f57247a51f9ba745f44a1a19a53b5fc4bfd4986e557bf6cd1027078e54ae5",
       "production_status": 200,
       "verified_at": "2026-10-11T16:27:37.391Z"
+    },
+    "BA-0503": {
+      "article_id": "BA-0503",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/cam-do-xe-may-dung-luat-cho-du-khach/",
+      "publication_sha": "f68447b723cc0e09383fb8dd450f1997932a8354",
+      "page_sha256": "7ed4e17dd276dc92723dba276f60e788a0e7ab1048c47137bda9096937a7731b",
+      "body_sha256": "ac258d54760c0d3d9e67cf2b3461871bcc9c04ffb32879bd2e8103038a0d47d9",
+      "entry_sha256": "9f5bd62d4033d7f99af49e6a853f8b444d972a34afd48a079649f835c198a6c7",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:31:39.198Z"
+    },
+    "BA-0504": {
+      "article_id": "BA-0504",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/van-giang-ev-and-bikes-hai-ngay-mot-dem/",
+      "publication_sha": "f68447b723cc0e09383fb8dd450f1997932a8354",
+      "page_sha256": "2325b7957d89851f933d3767be730def768cca6cb8653e3bf7b6d63cded4c470",
+      "body_sha256": "dd559588453a6d981c73265e9a62dfd71d906f277bfc0f1b326a92efe384724a",
+      "entry_sha256": "07739a75f65779e7ac84d0e44822bf10f5b5cdab1ed098640c3339429d919305",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:31:39.202Z"
     }
   }
 }
