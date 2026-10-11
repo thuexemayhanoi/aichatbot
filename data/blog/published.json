@@ -4830,6 +4830,33 @@
         "Một trợ lý thuê xe chỉ thật sự hữu ích khi bạn hỏi được bằng chính ngôn ngữ mình đang có, kể cả khi đó không phải tiếng Việt chuẩn. Khách nội địa gõ câu không dấu, du khách bập bẹ tiếng Anh, người lai tạo câu hỏi trộn hai thứ tiếng: tất cả đều là tình huống thật hằng ngày tại một cửa hàng xe máy ở Hà Nội. Bài viết này chỉ ra cách trợ lý trên website xử lý các câu hỏi đa ngôn ngữ, và quan trọng hơn, cách bạn đặt câu để nhận câu trả lời chính xác ngay từ lần hỏi đầu tiên.",
         "Điểm mấu chốt cần hiểu trước: trợ lý thuê xe trên trang chủ không dịch lung tung các trang web bên ngoài, mà đối chiếu câu hỏi của bạn với kho dữ liệu của cửa hàng về giá, giấy tờ, đặt cọc, giờ mở cửa và khu vực phục vụ. Cơ chế này có hai hệ quả thực tế. Một là câu trả lời luôn bám số liệu thật của {{ business.brand }}, chẳng hạn khung giờ {{ business.hours.display }} hay mức cọc được xác nhận khi đặt. Hai là chất lượng câu trả lời phụ thuộc vào mức độ câu hỏi của bạn chạm được vào đúng chủ đề trong kho dữ liệu đó, và đó là lý do cách diễn đạt lại quan trọng."
       ]
+    },
+    {
+      "article_id": "BA-0335",
+      "category": "SAFE",
+      "slug": "bao-hiem-khi-thue-xe-may-cho-du-khach",
+      "title": "Bảo Hiểm Khi Thuê xe Máy Cho du Khách",
+      "description": "Du khách muốn tự lái xe máy khám phá Việt Nam thường hỏi về giá, xe và giấy tờ, nhưng ít người hỏi về bảo hiểm cho đến khi gặp sự cố. Với khách quốc",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/bao-hiem-khi-thue-xe-may-cho-du-khach.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0336",
+      "category": "LOCAL",
+      "slug": "sai-gon-duong-nam",
+      "title": "Sài Gòn Đường Nam",
+      "description": "Sài Gòn với một người cầm lái từ Hà Nội là trải nghiệm va chạm văn hóa giao thông rõ rệt nhất cả nước: dòng xe dày hơn, nhịp đường nhanh hơn, và cách",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/sai-gon-duong-nam.body.html",
+      "knowledge_chunks": [
+        "Sài Gòn với một người cầm lái từ Hà Nội là trải nghiệm va chạm văn hóa giao thông rõ rệt nhất cả nước: dòng xe dày hơn, nhịp đường nhanh hơn, và cách di chuyển trong nội thành theo logic riêng mà dân Bắc gọi vui là phải học lại từ đầu. Bài viết này dành cho ai đang lên kế hoạch cho hành trình về Nam bằng xe máy: chọn lộ trình hợp lý, hiểu đặc thù giao thông Sài Gòn để không bị dòng xe cuốn, và biết những cung đường quanh thành phố đáng để rải đều trong lịch trình.",
+        "Quãng đường Hà Nội đến thành phố Hồ Chí Minh theo quốc lộ kéo dài gần hai nghìn ki lô mét, quá lớn cho một chuyến đi nhanh. Với phần lớn người muốn trải nghiệm Sài Gòn bằng xe máy, cách thực tế là bay xuống rồi thuê xe tại địa phương để đi lại trong thành phố và các cung lân cận, giữ trọn thời gian cho miền Nam thay vì tiêu hết trên đường. Với nhóm muốn chinh phục trọn cung Bắc Nam, hành trình cần nhiều ngày, chia chặng qua Huế, Đà Nẵng và các tỉnh miền Trung; hai bài trải nghiệm xuyên Việt qua Huế và hành trình từ Hà Nội đến Đà Nẵng mô tả chi tiết hai chặng đầu của trục Bắc Nam, bạn nên đọc trước khi chốt tổng lộ trình."
+      ]
     }
   ]
 }
