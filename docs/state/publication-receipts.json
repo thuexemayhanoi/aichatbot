@@ -5302,6 +5302,17 @@
       "entry_sha256": "2661f51d33322206ee6b42da003210371e13a0235808436e194a86aa084615e1",
       "production_status": 200,
       "verified_at": "2026-10-11T16:23:04.810Z"
+    },
+    "BA-0500": {
+      "article_id": "BA-0500",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-cho-nguoi-cao-tuoi-ky-nghi-le/",
+      "publication_sha": "c3e308a695491de1433860b7fc9efa8b67747f7e",
+      "page_sha256": "ac50e4525741400bf363f2eb01ef33e9593d585f1e3ff9aaa078c371a1417f2e",
+      "body_sha256": "9f3bb965b4d36f5d6a35e041a1a174b65eb3e5d4759d7197873816c36749bde0",
+      "entry_sha256": "abca18d379518bd1e1dfb34fc36bbf3521041ad9996f96114c8d97707dc72f7f",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:24:28.527Z"
     }
   }
 }
