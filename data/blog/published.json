@@ -6456,6 +6456,36 @@
         "Năm 2026, nhắc tới thuê xe máy bằng ứng dụng, câu hỏi đầu tiên của nhiều khách đã đổi: tôi có phải cài gì không. Với ứng dụng web, câu trả lời là mở trình duyệt là xong, và đó chính là lý do dòng công cụ này giữ chỗ lớn trong thói quen thuê xe hiện tại. Bài này nói về ứng dụng web thuê xe máy dưới góc nhìn của năm 2026: nó mạnh ở đâu, phần nào của một kỳ thuê chạy trọn được trên trình duyệt, và lúc nào đáng kết hợp cùng trao đổi trực tiếp. Phần nền về ứng dụng web nói chung đã có trong bài ứng dụng web thuê xe máy , còn cuộc so sánh giữa web app và app cần cài đặt có trong bài web app và app native khác gì nhau năm 2026 — hai bài đó là phần k",
         "Ba khâu nặng nhất của một kỳ thuê giờ đều gói trong tab trình duyệt. Khâu xem xe và so dòng: bạn hỏi theo lịch, mức giá và dòng xe, nhận lại gợi ý đọc được ngay trên web mà không cần tải gói cài đặt về máy. Khâu chốt: nói rõ khung giờ nhận trả trong phiên hội thoại, xe được giữ theo khung đó, và phần trao đổi thành bản ghi bạn mở lại được sau này. Khâu chuẩn bị giấy tờ: phần gì cần mang theo được liệt kê ngay trong phiên, nên buổi nhận chỉ còn đối chiếu chứ không phải phát hiện thiếu. Ba khâu này dời sang web là phần đi lại và chờ đợi của kỳ thuê gần như biến mất, và đó là lý do dòng thói quen của năm 2026 nghiêng về trình duyệt trước mọi hìn"
       ]
+    },
+    {
+      "article_id": "BA-0459",
+      "category": "EV",
+      "slug": "so-sanh-cac-dong-xe-dien-cho-thue-cho-khach-du-lich",
+      "title": "so Sánh Các Dòng xe Điện Cho Thuê Cho Khách du Lịch",
+      "description": "Du khách mới đến {{ business.brand }} thường hỏi cửa hàng một câu duy nhất: cho em chiếc xe điện nào cũng được. Cách hỏi đó chấp nhận rủi ro nhận",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/so-sanh-cac-dong-xe-dien-cho-thue-cho-khach-du-lich.body.html",
+      "knowledge_chunks": [
+        "Du khách mới đến {{ business.brand }} thường hỏi cửa hàng một câu duy nhất: cho em chiếc xe điện nào cũng được. Cách hỏi đó chấp nhận rủi ro nhận nhầm dòng xe cho chuyến đi của mình, ví dụ chiếc nhẹ đi vòng phố lại bị đẩy lên chặng ven đô, hoặc chiếc máy lớn bị \"giam\" trong phố già nút mà không phát huy được tầm pin. So sánh các dòng xe điện cho thuê cho khách du lịch nên bắt đầu từ lịch trình: hôm nay đi bao nhiêu điểm, mỗi điểm cách nhau bao xa, mang theo đồ cồng kềnh hay không. Bài này đi theo đúng thứ tự đó, và khi bạn gọi {{ business.contact.phone_display }} hỏi giá, bạn sẽ gọi với một cái tên dòng xe cụ thể thay vì để cửa hàng đoán hộ.",
+        "Trước khi vào so sánh, du khách nên đọc lướt qua cách chọn xe điện phù hợp với du khách để nắm ba biến số cơ bản, rồi tham khảo kinh nghiệm đi xe điện đường dài cho du khách nếu chuyến đi của bạn có chặng ra khỏi nội thành."
+      ]
+    },
+    {
+      "article_id": "BA-0460",
+      "category": "GUIDE",
+      "slug": "trom-cap-xe-va-xe-thue-cho-nguoi-moi",
+      "title": "Trộm Cắp xe và xe Thuê Cho Người Mới",
+      "description": "Người mới thuê xe máy có một điểm yếu chung: họ chăm chú vào giá thuê và giấy tờ, nhưng ít ai hỏi chiếc xe đó có dễ bị trộm nhắm không. Trộm cắp xe",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/trom-cap-xe-va-xe-thue-cho-nguoi-moi.body.html",
+      "knowledge_chunks": [
+        "Người mới thuê xe máy có một điểm yếu chung: họ chăm chú vào giá thuê và giấy tờ, nhưng ít ai hỏi chiếc xe đó có dễ bị trộm nhắm không. Trộm cắp xe và xe thuê cho người mới là chủ đề đáng đọc kỹ trước chuyến thuê đầu tiên, vì người lần đầu chưa quen khóa xe cho thuê, chưa biết chỗ gửi xe tin cậy và chưa hình dung mình sẽ chịu trách nhiệm thế nào nếu xe mất. Bài hướng dẫn này đi theo đúng trình tự mà một người mới sẽ trải qua: nhận xe, dùng xe, rồi xử lý nếu chuyện xấu xảy ra, để bạn không phải học bằng trải nghiệm thật.",
+        "Nếu bạn mới bắt đầu cả kỹ năng lái, hãy kết hợp đọc kỹ năng lái xe an toàn cơ bản cho người mới , vì phần lớn rủi ro mất xe xuất phát từ thói quen dừng xe vội vàng ở nơi vắng vẻ."
+      ]
     }
   ]
 }
