@@ -3696,6 +3696,28 @@
       "entry_sha256": "e5e5e91b8dcbfa1ef6d8aa5baaf0f1457612b692c89db6d32e87449f9747e04e",
       "production_status": 200,
       "verified_at": "2026-10-11T04:47:06.656Z"
+    },
+    "BA-0337": {
+      "article_id": "BA-0337",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app/",
+      "publication_sha": "0e6ed5cb4d158de7fb5e828a8f0b000d7a4e39a2",
+      "page_sha256": "b7d33ba364f7736e6ea5a5e86e0891c2a71a801694f806231a80e10dfd5c8030",
+      "body_sha256": "2856e827083aff1dfa7cf7e517331497e2ac0ce3f6dca777e4da87e96d000a57",
+      "entry_sha256": "f4636fc02344b83dd7a10013e66d361cc3d4d727ff2aa2468aef8a3db5833cd2",
+      "production_status": 200,
+      "verified_at": "2026-10-11T04:54:18.071Z"
+    },
+    "BA-0338": {
+      "article_id": "BA-0338",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-xe-thang-cho-sinh-vien/",
+      "publication_sha": "0e6ed5cb4d158de7fb5e828a8f0b000d7a4e39a2",
+      "page_sha256": "2e26c9dc4971d31413efdf50606a5703e5860afe3596243c563a6f27eb0e20aa",
+      "body_sha256": "658e5ac97577b1ec553d7fb630de7d5138ff404f27d9ed51da4df19d1604ac4d",
+      "entry_sha256": "f9e200e16f8e74bf124e57f52b7b51583486680824f6a4d73f7b746a2d182110",
+      "production_status": 200,
+      "verified_at": "2026-10-11T04:54:18.066Z"
     }
   }
 }
