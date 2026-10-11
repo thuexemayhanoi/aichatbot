@@ -5269,6 +5269,28 @@
       "entry_sha256": "783d80a8f7c27fc1fdac8475320ebed0b747efd1faa49338fd8e4218f7518ccf",
       "production_status": 200,
       "verified_at": "2026-10-11T16:15:06.960Z"
+    },
+    "BA-0497": {
+      "article_id": "BA-0497",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/ai-chiu-phat-khi-di-xe-thue-cho-du-khach/",
+      "publication_sha": "ed32467bc4c9996871ae55cec20d4299589f028b",
+      "page_sha256": "fae128eaafa713e3fc171743c149dea09684093384abb80dd97bc4fffe34ba6f",
+      "body_sha256": "5e28612235a1980ea6feb99a5b3602c2028e4d301d19cbd256b9b0e09d7ecbe6",
+      "entry_sha256": "1e4aa0a23294a155ab9e5d98d5adf9e566deaab048956e5d5e9091ee5259524b",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:17:29.897Z"
+    },
+    "BA-0498": {
+      "article_id": "BA-0498",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/duong-dong-by-bike-hai-ngay-mot-dem/",
+      "publication_sha": "ed32467bc4c9996871ae55cec20d4299589f028b",
+      "page_sha256": "ee9cb11e87841e751abdc87ff209615fdc12be09818219d6eef1e4d9e8ec6bf6",
+      "body_sha256": "8a32c2f0f6b4281ae5f697e6a9f43e460a0594ac7b3eeb715d653ee28805f340",
+      "entry_sha256": "cb19e13517d0969a707a86f98633b04bed79e487d7033ba625c1327af8205a0e",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:17:29.877Z"
     }
   }
 }
