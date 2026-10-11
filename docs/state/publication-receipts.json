@@ -3828,6 +3828,28 @@
       "entry_sha256": "7d100974362c1396fdd2877774602defab55d94c76264f202b921c215403b8c2",
       "production_status": 200,
       "verified_at": "2026-10-11T07:46:18.077Z"
+    },
+    "BA-0349": {
+      "article_id": "BA-0349",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-ho-tro-thue-xe-theo-thang/",
+      "publication_sha": "22a36d0c8367f5e9501ee7e2f4d4543bfe4ffbc5",
+      "page_sha256": "22788ed651dfd6492f22165bdffd1e25107609839b3a6e69179dd9df5d457b27",
+      "body_sha256": "f8479d50c0eccd0e1925eecb3a5564c53734459e5506c414f3563dfeef8f22fb",
+      "entry_sha256": "83f188691019470e5f319f8a2c8b74569bba1a91ae0bda3993686df3cf36b79e",
+      "production_status": 200,
+      "verified_at": "2026-10-11T07:51:18.899Z"
+    },
+    "BA-0350": {
+      "article_id": "BA-0350",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/hop-dong-thue-xe-may/",
+      "publication_sha": "22a36d0c8367f5e9501ee7e2f4d4543bfe4ffbc5",
+      "page_sha256": "d26810550e43763ed50bdd15375b4729b8c6f4ac74e055d37834117f4535c648",
+      "body_sha256": "ec9913899d831bea83a733d9b4ae6ac6f1228b508450ffcdd91ec905d5e98039",
+      "entry_sha256": "b2938b36de36dff63016a65cd7487d292367f43f389ef275f94c008852c80a17",
+      "production_status": 200,
+      "verified_at": "2026-10-11T07:51:18.908Z"
     }
   }
 }
