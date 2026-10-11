@@ -5038,6 +5038,28 @@
       "entry_sha256": "b522337b9c9a2bed6c88367424911d8b8c1b8419d3a58cffb414669f9c54bffb",
       "production_status": 200,
       "verified_at": "2026-10-11T15:30:03.309Z"
+    },
+    "BA-0471": {
+      "article_id": "BA-0471",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/cach-giu-pin-ben-khi-thue-xe-dien-cho-khach-du-lich/",
+      "publication_sha": "0e80d2f110f5f58de3aecde9be4ad660d2aef583",
+      "page_sha256": "953aa421abb0623485cdbab1d6954a20792686c2bd0e3f8d9f88a19d88b324c4",
+      "body_sha256": "e057984fc315f9595981e41732861f64f58a88a54cea4bc9bdce957d766540ef",
+      "entry_sha256": "254e66ca27c0fde0c462b29e2f54cab15916f8a8acb62e83cb4081c1f177e37f",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:37:41.646Z"
+    },
+    "BA-0472": {
+      "article_id": "BA-0472",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/sua-xe-nho-khi-dang-thue-cho-nguoi-moi/",
+      "publication_sha": "0e80d2f110f5f58de3aecde9be4ad660d2aef583",
+      "page_sha256": "99bbeda526349b213a1e2714afc2610b88d4b085912c3a627898cd34c034b83e",
+      "body_sha256": "2f1f167e9d6337ca4d960aa05afd88aa5aab172c82d91c88618e92f3edb53803",
+      "entry_sha256": "52b3b420f52cce3cd79763dbaf5aeeb6568aa208c481eda4d9fd2ca4b70d9bb8",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:37:41.661Z"
     }
   }
 }
