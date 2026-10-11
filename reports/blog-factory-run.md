@@ -1510,3 +1510,5 @@
 - 2026-10-11 QA PASS BA-0427 score=95
 - 2026-10-11 QA FAIL BA-0428 -> REPAIR (attempt 1) score=0
 - 2026-10-11 PUBLISHED 1 (BA-0427) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-11 QA PASS BA-0428 score=100
+- 2026-10-11 PUBLISHED 1 (BA-0428) — one grouped build, pages, matrix, indexes, sitemap consistent
