@@ -5137,6 +5137,28 @@
       "entry_sha256": "4409931352f114b93cb6428d157914685edb8e35ef033f2d14bef87fb1b59073",
       "production_status": 200,
       "verified_at": "2026-10-11T15:54:46.423Z"
+    },
+    "BA-0483": {
+      "article_id": "BA-0483",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/tram-doi-pin-cho-khach-du-lich/",
+      "publication_sha": "3f9d47faf99b29e6237d1821fc97d8f869b2bd00",
+      "page_sha256": "dfe931dc78affb53e17963270b253ffd8027dd87155b6e00df8f36341a4868c4",
+      "body_sha256": "99b88983614f6210aff149d740d20dfc0c69bd40bf87c7f5f3064c5ccc95217a",
+      "entry_sha256": "f1220e9da32fe6a98553b9a7b130feb4cfd14afc43a69ae0f79a8dab6f548748",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:59:55.049Z"
+    },
+    "BA-0484": {
+      "article_id": "BA-0484",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/giay-to-nguoi-nuoc-ngoai-thue-xe-cho-nguoi-moi/",
+      "publication_sha": "3f9d47faf99b29e6237d1821fc97d8f869b2bd00",
+      "page_sha256": "f5079ebbad7aa26436d11699638216c8a46dcf1f2b0014b7294983768196542e",
+      "body_sha256": "b1de34977e78ae7b73b732ce492b3cb0413e831e64c314192ca3ebfc561f87fa",
+      "entry_sha256": "1692ba4decdda04f48163967f1de0e7ca350d9d77a03bcd3de38e98ee59f66d9",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:59:55.044Z"
     }
   }
 }
