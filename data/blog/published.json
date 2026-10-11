@@ -4800,6 +4800,36 @@
         "Lần đầu thuê xe máy thường là lần tốn nhiều thời gian nhất: bạn chưa biết cần hỏi gì, chưa rõ mức đặt cọc ra sao và không hình dung được quy trình ở cửa hàng diễn ra thế nào. Thực tế, toàn bộ hành trình từ lúc nhấc máy đến khi nhận chìa khóa có thể gói gọn trong chưa đầy một giờ nếu bạn nắm trước trình tự từng bước. Bài hướng dẫn này tách quá trình đặt xe thành năm bước dành riêng cho người mới, kèm các vướng mắc thường gặp nhất và cách tránh ngay từ lần liên hệ đầu tiên.",
         "Người mới thường mở đầu bằng câu còn xe không, trong khi bản thân chưa biết mình cần loại xe nào. Câu trả lời bạn cần có sẵn trước khi liên hệ là xe gì phù hợp với bằng lái đang giữ. Với bằng A1, các dòng xe số và xe tay ga phổ thông phục vụ di chuyển nội thành là lựa chọn chuẩn. Với bằng hạng cao hơn và vốn đường đã thuộc, bạn mới nên cân nhắc những dòng xe mạnh hơn cho hành trình dài."
       ]
+    },
+    {
+      "article_id": "BA-0332",
+      "category": "RENT",
+      "slug": "ao-mua-khi-thue-xe-may",
+      "title": "áo Mưa Khi Thuê xe Máy",
+      "description": "Áo mưa là món đồ nhỏ nhất nhưng quyết định nhiều nhất tới trải nghiệm thuê xe máy ở Hà Nội: một cơn mưa rào chiều hè không có áo mưa là ướt đến tận",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ao-mua-khi-thue-xe-may.body.html",
+      "knowledge_chunks": [
+        "Áo mưa là món đồ nhỏ nhất nhưng quyết định nhiều nhất tới trải nghiệm thuê xe máy ở Hà Nội: một cơn mưa rào chiều hè không có áo mưa là ướt đến tận trong lái, còn có áo mưa đúng loại thì chuyến đi chỉ tạm chậm lại vài phút. Bài viết này nói rõ vì sao áo mưa nên được xếp vào danh sách chuẩn bị của mọi khách thuê, loại nào hợp từng kiểu đi, hỏi cửa hàng thế nào về việc mượn hoặc kèm áo mưa, và cách xử lý khi dính mưa giữa đường với xe thuê.",
+        "Hà Nội có hai kiểu mưa rất khác nhau. Từ khoảng tháng năm đến tháng mười là mùa mưa rào và dông: mưa đến nhanh, xuống to trong một hai giờ rồi tạnh, thường dồn về buổi chiều. Từ khoảng tháng mười hai đến tháng hai lại là mùa mưa phùn: không to nhưng kéo dài cả ngày kèm độ ẩm cao, áo ướt nhòe rất lâu khô. Cả hai kiểu đều khiến người đi xe máy ướt trong vài phút đầu tiên, và cả hai đều trúng vào khung giờ cửa hàng hoạt động {{ business.hours.display }}. Khác với khách địa phương có tủ đồ sẵn trong xe, khách thuê xe cần quyết định mang hay mượn áo mưa trước khi xuất phát, vì giữa đường không có chỗ nào bán ngay khi mưa đã trút xuống."
+      ]
+    },
+    {
+      "article_id": "BA-0331",
+      "category": "APP",
+      "slug": "tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu",
+      "title": "Trợ lý Thuê xe xử lý Câu Hỏi đa Ngôn Ngữ",
+      "description": "Một trợ lý thuê xe chỉ thật sự hữu ích khi bạn hỏi được bằng chính ngôn ngữ mình đang có, kể cả khi đó không phải tiếng Việt chuẩn. Khách nội địa gõ",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu.body.html",
+      "knowledge_chunks": [
+        "Một trợ lý thuê xe chỉ thật sự hữu ích khi bạn hỏi được bằng chính ngôn ngữ mình đang có, kể cả khi đó không phải tiếng Việt chuẩn. Khách nội địa gõ câu không dấu, du khách bập bẹ tiếng Anh, người lai tạo câu hỏi trộn hai thứ tiếng: tất cả đều là tình huống thật hằng ngày tại một cửa hàng xe máy ở Hà Nội. Bài viết này chỉ ra cách trợ lý trên website xử lý các câu hỏi đa ngôn ngữ, và quan trọng hơn, cách bạn đặt câu để nhận câu trả lời chính xác ngay từ lần hỏi đầu tiên.",
+        "Điểm mấu chốt cần hiểu trước: trợ lý thuê xe trên trang chủ không dịch lung tung các trang web bên ngoài, mà đối chiếu câu hỏi của bạn với kho dữ liệu của cửa hàng về giá, giấy tờ, đặt cọc, giờ mở cửa và khu vực phục vụ. Cơ chế này có hai hệ quả thực tế. Một là câu trả lời luôn bám số liệu thật của {{ business.brand }}, chẳng hạn khung giờ {{ business.hours.display }} hay mức cọc được xác nhận khi đặt. Hai là chất lượng câu trả lời phụ thuộc vào mức độ câu hỏi của bạn chạm được vào đúng chủ đề trong kho dữ liệu đó, và đó là lý do cách diễn đạt lại quan trọng."
+      ]
     }
   ]
 }
