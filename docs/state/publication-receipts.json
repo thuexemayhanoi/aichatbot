@@ -4631,6 +4631,17 @@
       "entry_sha256": "e6c0d96b3f89164130b3b08b07656dd25b9f674bcce9f1662049f48919bf75b2",
       "production_status": 200,
       "verified_at": "2026-10-11T13:34:14.826Z"
+    },
+    "BA-0428": {
+      "article_id": "BA-0428",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-hang-nhe-ky-nghi-le/",
+      "publication_sha": "e006d7baf6d0114d456a803901bb7cb9a3105944",
+      "page_sha256": "7fac0072723c00258059062eced26883b97902e393ff629ca21bfc5b8c6a3f9f",
+      "body_sha256": "34dcc506d911a8249a571e217c51bdbf6c79104369a8f40919cbb889759aeca1",
+      "entry_sha256": "902c48bb25f100f6784c7f6ca3d55e0f159e2d7fca0a3cb8269d3c231b862478",
+      "production_status": 200,
+      "verified_at": "2026-10-11T13:41:33.972Z"
     }
   }
 }
