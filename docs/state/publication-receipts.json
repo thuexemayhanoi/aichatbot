@@ -3762,6 +3762,28 @@
       "entry_sha256": "a8687204b819aec3d0b21acc383530ee7d0223f16f06850c45709b64c1ebb5ec",
       "production_status": 200,
       "verified_at": "2026-10-11T04:59:57.414Z"
+    },
+    "BA-0343": {
+      "article_id": "BA-0343",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/quy-trinh-tu-van-tu-dong-chon-xe/",
+      "publication_sha": "2534ed13b5bd34c17291cd21033e72419981a358",
+      "page_sha256": "6d67cc1d07f1208b6806fcc7823b49b5f5a852bd0dcfe04e78cf7e9fb8785dbe",
+      "body_sha256": "908c3a13ac4c5ba03a4d19358bc64fec6db551f2fb1fe6c8be6eb40089300bb7",
+      "entry_sha256": "8b6f2e7dda69850cce15110b5cccc0eda3e150c761e001d37bac2dface1af7c6",
+      "production_status": 200,
+      "verified_at": "2026-10-11T05:02:40.473Z"
+    },
+    "BA-0344": {
+      "article_id": "BA-0344",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-dai-han-cho-nguoi-di-lam/",
+      "publication_sha": "2534ed13b5bd34c17291cd21033e72419981a358",
+      "page_sha256": "4695c391331898c5baa35a4f767ccf03d54d670a72e83606ff04e3de1da10b3b",
+      "body_sha256": "8061d30817b15865b6965f2fe718c44b3181919400a0f7e8169147b03de1a598",
+      "entry_sha256": "88f1dd50dd4f40a9d04c9d6a194b9a4d0aedffdd5a6458bda269b5e11bf08350",
+      "production_status": 200,
+      "verified_at": "2026-10-11T05:02:40.478Z"
     }
   }
 }
