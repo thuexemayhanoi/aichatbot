@@ -5643,6 +5643,28 @@
       "entry_sha256": "f5a9bbd5ed15390e57e2e2e42a0e3d25edc9e0f87f2d42202bc4617a66e9095f",
       "production_status": 200,
       "verified_at": "2026-10-11T17:36:28.196Z"
+    },
+    "BA-0565": {
+      "article_id": "BA-0565",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai-nam-2026/",
+      "publication_sha": "5298e89dddc9e4de5e90af8a734cf000ab2d5b90",
+      "page_sha256": "5a5fa67f1ea950739ad80bd1fab77ee159e91e10f264f201521db69bfd78cac6",
+      "body_sha256": "efd413869d6d161dad248c8d4fe73f68dbe0451bf0622fcca7df8547be4570e6",
+      "entry_sha256": "b154b4c71e21a752dd7b860f6cb7f39a0e636a0a9c8930a3aff5860665b73691",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:48:00.913Z"
+    },
+    "BA-0566": {
+      "article_id": "BA-0566",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/hong-xe-giua-duong-khi-thue-ky-nghi-le/",
+      "publication_sha": "5298e89dddc9e4de5e90af8a734cf000ab2d5b90",
+      "page_sha256": "7b7bd5412b00b29d7a134c9d067f3e43b740db13fed7eb32899bba10d98cba28",
+      "body_sha256": "80e46eba52bd45ea31b7d1f954d4396fbdb3c44b2fc67dc25f54c85c1eee0705",
+      "entry_sha256": "5df80d05803444d1403c61f2ec0bc688a7638c7c2baca4b70bbbc4e759346cdf",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:48:00.939Z"
     }
   }
 }
