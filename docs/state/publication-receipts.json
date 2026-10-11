@@ -5434,6 +5434,28 @@
       "entry_sha256": "c1463bb7b0600e01b967784acc4cd64fdaf907dae00d8339af810096b664d1d6",
       "production_status": 200,
       "verified_at": "2026-10-11T16:39:40.171Z"
+    },
+    "BA-0517": {
+      "article_id": "BA-0517",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/kich-ban-dung-app-thue-xe-cho-nguoi-moi-nam-2026/",
+      "publication_sha": "c3633768770063683e6bed3ab6fb023c86fd120c",
+      "page_sha256": "321f9140e1d23b11dd79c67b7f103b05f460a0edae378a652a7a8434215eb1f5",
+      "body_sha256": "84b589cd204c2117845f9137cb52d2bc3241ad1302e98a807130d9ebad665ba7",
+      "entry_sha256": "97a002d351fc87bae754bd22401825d52c9c188eabdda42971e61fc5d38032ff",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:41:53.978Z"
+    },
+    "BA-0518": {
+      "article_id": "BA-0518",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/di-pho-co-bang-xe-may-thue-ky-nghi-le/",
+      "publication_sha": "c3633768770063683e6bed3ab6fb023c86fd120c",
+      "page_sha256": "71a8b6085ffbcac959346abf11632d979834a4b58f6d56b7f2622c3e0cc49017",
+      "body_sha256": "820202029d26fc199191a65cabee45e2e8bb3947d96956d1bd14659b429df068",
+      "entry_sha256": "0bceb24c04eb709275ec9225f35b397c93fe99cf09bed0e84ef049bd7c386194",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:41:53.979Z"
     }
   }
 }
