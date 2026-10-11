@@ -5104,6 +5104,28 @@
       "entry_sha256": "0bbc711b96e6ee52ec3d6829429a536cb9dc2ebc4a37a0d9eaa8efb6833d711f",
       "production_status": 200,
       "verified_at": "2026-10-11T15:50:49.392Z"
+    },
+    "BA-0479": {
+      "article_id": "BA-0479",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/trom-xe-va-phong-ngua-cho-du-khach/",
+      "publication_sha": "2fdafb80435dabcffd4c04299ca4873dfa1e2630",
+      "page_sha256": "e9c831bdd820895154d30513533b6a8cc701587baefca1ab52e7359454616a5b",
+      "body_sha256": "fd2d3e54680dad142e102469506ac7a218b19cafcaf6cee9941eb60a6421b165",
+      "entry_sha256": "37b4248ac66a8f47682b29e60b0b03367a7eb98b3f8a07df454790019c80ac83",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:52:35.961Z"
+    },
+    "BA-0480": {
+      "article_id": "BA-0480",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/nha-tho-lon-ha-noi-hai-ngay-mot-dem/",
+      "publication_sha": "2fdafb80435dabcffd4c04299ca4873dfa1e2630",
+      "page_sha256": "8def9cce679e614ac5033e1557315362bd18533a1ce741689110663dad6caf38",
+      "body_sha256": "45517ad1dfaaf58af6aec659186732120cf0f17ded682fd67c9e0d470e93ae09",
+      "entry_sha256": "9a231e812670c4349d586b650df4bae4153cd3246b36acad3105bbf83966185c",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:52:35.958Z"
     }
   }
 }
