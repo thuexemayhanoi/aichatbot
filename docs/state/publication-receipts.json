@@ -5016,6 +5016,28 @@
       "entry_sha256": "64bbd8f97e046b73579a50cd8cc844e697e5403a82987a1faecf4350a70ff113",
       "production_status": 200,
       "verified_at": "2026-10-11T15:23:51.826Z"
+    },
+    "BA-0469": {
+      "article_id": "BA-0469",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot-nam-2026/",
+      "publication_sha": "16223b20f3ce264b4314c0cd33831d46b6581f5b",
+      "page_sha256": "3d3c5bc1d1c8efb23c7029b6f3ce3b99b6d003715754163de31e079d20890bac",
+      "body_sha256": "694c22c3aeadd120dea882f9f4c636468fefa6c938d49c2c1a87803cacb00e90",
+      "entry_sha256": "fa2356ef40ba5183055c4eeb4c317bda30ae98126e89cc5716095909ff93e166",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:30:03.320Z"
+    },
+    "BA-0470": {
+      "article_id": "BA-0470",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/dieu-kien-thue-xe-may-o-ha-noi-ky-nghi-le/",
+      "publication_sha": "16223b20f3ce264b4314c0cd33831d46b6581f5b",
+      "page_sha256": "75859efa9553d0bed22ae5f66c90add887fcb319c1188dea24e60eb2d52f0de2",
+      "body_sha256": "c06ae59381fffc17870caaf797351e4eb77e5a5fe2265bb4d69da3e1d6b4bd48",
+      "entry_sha256": "b522337b9c9a2bed6c88367424911d8b8c1b8419d3a58cffb414669f9c54bffb",
+      "production_status": 200,
+      "verified_at": "2026-10-11T15:30:03.309Z"
     }
   }
 }
