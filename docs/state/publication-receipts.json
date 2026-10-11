@@ -4400,6 +4400,28 @@
       "entry_sha256": "85d168740f13e9cd9f628592050d32ee49ea3003f23892b5a9548c8bc65d7fc6",
       "production_status": 200,
       "verified_at": "2026-10-11T12:10:53.975Z"
+    },
+    "BA-0403": {
+      "article_id": "BA-0403",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/web-app-va-app-native-khac-gi-nhau-nam-2026/",
+      "publication_sha": "1a8e887aaf6c5994a15c75717a23697763229c20",
+      "page_sha256": "d327522fc3c544acce0320f857c4bfdc66c0c2d568653d31785e5dd3c6a0fee2",
+      "body_sha256": "72fdb8a7bf7dd6f820a65c4e92462424a1dd3c8858eacd142a428e796ae09662",
+      "entry_sha256": "de045e748cd168f7da96eb87e20e7b01de1abb5951b393a29503613896df57a3",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:13:07.789Z"
+    },
+    "BA-0404": {
+      "article_id": "BA-0404",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-50cc-ky-nghi-le/",
+      "publication_sha": "1a8e887aaf6c5994a15c75717a23697763229c20",
+      "page_sha256": "f4d8bfd092c667a827f6ea71144782214860c5f5b8c38e84faee5411a2131207",
+      "body_sha256": "2f01063be842d7ea7a4a652f6a39db5dbada1bc1df9573bc2f231100ad5ae190",
+      "entry_sha256": "a7882559c70fc3ddb34db260404822cd159ea8260c608a3e0549b8a5662a5230",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:13:07.784Z"
     }
   }
 }
