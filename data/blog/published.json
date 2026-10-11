@@ -7950,6 +7950,36 @@
         "Rental assistant — trợ lý thuê xe — là từ bạn sẽ gặp nhiều trong năm 2026 khi đặt xe máy: một trợ lý trả lời ngay trên trang web, hiểu câu hỏi của bạn về giá, dòng xe, thủ tục, rồi gợi ý và hướng dẫn chốt. Nhưng gọi tên được chưa đủ, dùng tốt mới là điều đáng nói. Bài này giải thích rental assistant là gì, nó khác gì bảng giá và bộ lọc truyền thống, và cách hỏi để trợ lý làm được trọn phần việc của một nhân viên quầy trong một phiên chat.",
         "Một rental assistant là trợ lý trên trang thuê xe, trả lời bằng dữ liệu thật của cửa hàng: bảng giá hiện hành, danh sách dòng xe, điều kiện thuê, giấy tờ cần mang, giờ mở cửa, địa chỉ và liên hệ. Bạn hỏi bằng tiếng nói thường, trợ lý đối chiếu câu hỏi với dữ liệu rồi trả lời đúng mục bạn cần, thay vì để bạn đọc hết trang. Khác biệt với bộ lọc là ở chỗ trợ lý hiểu ngữ cảnh: hai người cùng hỏi dòng xe cho cuối tuần có thể nhận hai gợi ý khác nhau nếu một người mới biết lái và một người đi hai người. Khái niệm nền của mô hình này đã giới thiệu trong bài trợ lý thuê xe máy là gì , phần trợ lý gợi ý dòng xe nói riêng nằm ở bài agent chọn xe giúp b"
       ]
+    },
+    {
+      "article_id": "BA-0573",
+      "category": "EV",
+      "slug": "app-mo-khoa-xe-dien-cho-khach-du-lich",
+      "title": "App mở Khóa xe Điện Cho Khách du Lịch",
+      "description": "Khách du lịch lần đầu đến Hà Nội thường lo hai chuyện khi thuê xe: rào cản ngôn ngữ và mối bận tâm giữ chìa, giữ xe cho chu đáo. Dòng xe điện có khóa",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/app-mo-khoa-xe-dien-cho-khach-du-lich.body.html",
+      "knowledge_chunks": [
+        "Khách du lịch lần đầu đến Hà Nội thường lo hai chuyện khi thuê xe: rào cản ngôn ngữ và mối bận tâm giữ chìa, giữ xe cho chu đáo. Dòng xe điện có khóa mở bằng ứng dụng gỡ được cả hai: chiếc điện thoại vừa là chìa, vừa là bảng tin tình trạng xe, và quyền mở khóa tự tắt khi hết hạn thuê. Bài viết này dẫn khách du lịch qua từng bước dùng app mở khóa xe điện, từ lúc chuẩn bị trước chuyến đi đến khi trả xe.",
+        "Nhóm lợi ích này bám sát đặc thù của khách đi du lịch: thời gian ngắn, di chuyển nhiều và không quen đường. Bức tranh chung về dòng xe này cho người đi chơi đã được tổng hợp trong bài về thuê xe điện cho khách du lịch ."
+      ]
+    },
+    {
+      "article_id": "BA-0574",
+      "category": "GUIDE",
+      "slug": "mua-dong-thue-xe-ha-noi-cho-nguoi-moi",
+      "title": "Mùa Đông Thuê xe hà Nội Cho Người Mới",
+      "description": "Người lần đầu thuê xe máy mà đến Hà Nội vào đúng mùa đông sẽ phải giải quyết cùng lúc hai việc: làm quen quy trình thuê và thích nghi với thời tiết",
+      "published_date": "2026-10-11",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/mua-dong-thue-xe-ha-noi-cho-nguoi-moi.body.html",
+      "knowledge_chunks": [
+        "Người lần đầu thuê xe máy mà đến Hà Nội vào đúng mùa đông sẽ phải giải quyết cùng lúc hai việc: làm quen quy trình thuê và thích nghi với thời tiết lạnh. Kịch bản này không hiếm, vì dịp cuối năm cũng là lúc nhiều người có ngày nghỉ đầu tiên đủ dài để đi chơi. Bài viết gộp hai việc đó thành một danh sách việc cần làm theo thứ tự, để buổi đầu tiên chạy xe trong rét không bị quá tải thông tin.",
+        "Trời lạnh đã lấy đi phần vốn liếng thoải mái của người mới, nên phần chọn xe càng nên đơn giản:"
+      ]
     }
   ]
 }
