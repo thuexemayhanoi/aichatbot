@@ -5588,6 +5588,28 @@
       "entry_sha256": "c7bdf79a92803bb0b970a56b321ef78ce00d69d106d63503ee23b6c1b7ec219d",
       "production_status": 200,
       "verified_at": "2026-10-11T17:19:48.314Z"
+    },
+    "BA-0541": {
+      "article_id": "BA-0541",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/agent-chon-xe-giup-ban-nam-2026/",
+      "publication_sha": "386356b82e19095f0c99928e82bd7baca1f06618",
+      "page_sha256": "9a510933f754121b4307dccf39c878fe9d3ff72b0d550402dc18d93217033962",
+      "body_sha256": "1d00d2bf67b4335db5921be1e76b2d67a0a33889ee946144e9d147861cad06f1",
+      "entry_sha256": "e517db15111e74a3658a2dd6a568855c8dd83fe93897a663b8227a09e6d390e4",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:23:02.025Z"
+    },
+    "BA-0542": {
+      "article_id": "BA-0542",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/dat-xe-truoc-hay-den-truc-tiep-ky-nghi-le/",
+      "publication_sha": "386356b82e19095f0c99928e82bd7baca1f06618",
+      "page_sha256": "fa65d1b558d0448bb95368f9ca2b6fe6bda7dcee7d3f55397f1ca1b3a54a2a2b",
+      "body_sha256": "bb392a098edf55aad39a54fe5cde9d4621a10f895f3b3b7a566dc0bb1d6fe4cc",
+      "entry_sha256": "04c1322198f49cb409db640c550572cb5c2e99489b243ceae59b79f46d40bc8e",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:23:02.031Z"
     }
   }
 }
