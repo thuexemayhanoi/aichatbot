@@ -5665,6 +5665,28 @@
       "entry_sha256": "5df80d05803444d1403c61f2ec0bc688a7638c7c2baca4b70bbbc4e759346cdf",
       "production_status": 200,
       "verified_at": "2026-10-11T17:48:00.939Z"
+    },
+    "BA-0569": {
+      "article_id": "BA-0569",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/luat-giao-thong-duong-bo-co-ban-cho-nguoi-moi/",
+      "publication_sha": "5cf961e9d38a8f41a33a247ec3403b5f43fd36be",
+      "page_sha256": "d49a9e95681096beaca621ef9799460fa19a6614f55de0a56cde891a736b4b7b",
+      "body_sha256": "525e59ffc393f0204605fc5cd14d5e3182a535afd3aaa5be5a6751fc5f3e2e16",
+      "entry_sha256": "3ccf38aae01e44b3ab6ad3326c2a762cadb1b0f9a49ae9377dac6edce3d6f022",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:50:27.656Z"
+    },
+    "BA-0570": {
+      "article_id": "BA-0570",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/chua-mot-cot-ha-noi-hai-ngay-mot-dem/",
+      "publication_sha": "5cf961e9d38a8f41a33a247ec3403b5f43fd36be",
+      "page_sha256": "e8c16e65141ed04049b62465f234234c5839801aa092d4db22bbfdfd9bbef3fb",
+      "body_sha256": "62102bfbc1e433d94093486bac9d11a43596963f900abc21c8c3ab21fa3834ab",
+      "entry_sha256": "7c9bba88f85c86dd5b764474d0ad393be1bfaed18c166a84d29a0bdd24ff368b",
+      "production_status": 200,
+      "verified_at": "2026-10-11T17:50:27.654Z"
     }
   }
 }
