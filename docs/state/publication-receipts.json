@@ -3894,6 +3894,28 @@
       "entry_sha256": "2eeda41a319b7f470f6d722dc10055eb45128490fc3af8d17564ad3f72894cac",
       "production_status": 200,
       "verified_at": "2026-10-11T10:10:56.074Z"
+    },
+    "BA-0355": {
+      "article_id": "BA-0355",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/chon-thoi-diem-thue-xe-bang-ung-dung/",
+      "publication_sha": "28d3a6a5aa747ebe410520fbee047f1c2c1a3160",
+      "page_sha256": "6a9022c3d34231efd6f9dd85c33e4741b5f73e6ba73fb8154b6fa6cf438f53da",
+      "body_sha256": "7236975e00b10fa04564c02442caafde6e3b445a0876703a1841d7311c0c7fa7",
+      "entry_sha256": "4afe6fa943843f44dc3db513c57d9410991de9d949b18a5ed70f2808fc9ee012",
+      "production_status": 200,
+      "verified_at": "2026-10-11T10:12:52.170Z"
+    },
+    "BA-0356": {
+      "article_id": "BA-0356",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-cong-ty-cho-nhan-vien/",
+      "publication_sha": "28d3a6a5aa747ebe410520fbee047f1c2c1a3160",
+      "page_sha256": "d03f2c2b4e4ca769ffe64c34c4595ec4e42f20d5b3a4d2e208d115442caecd41",
+      "body_sha256": "32f73a107d863412a2bc4fa834e276fa6667439defe8cc0ce1f1a91b919fd495",
+      "entry_sha256": "4b7166093b480dee038732078587b5439f4f1d3892462f8633bdfee4716e7932",
+      "production_status": 200,
+      "verified_at": "2026-10-11T10:12:52.180Z"
     }
   }
 }
