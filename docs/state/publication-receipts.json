@@ -4224,6 +4224,28 @@
       "entry_sha256": "9bb5db522aec07cde2c8d6017a36f598e9489369677b509b7b466c5ed6799574",
       "production_status": 200,
       "verified_at": "2026-10-11T11:43:04.057Z"
+    },
+    "BA-0385": {
+      "article_id": "BA-0385",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/cach-tinh-gia-thue-xe-bang-app-nam-2026/",
+      "publication_sha": "153ced4f25f201274d289e5d8ec1b6fb4e85848c",
+      "page_sha256": "ea8ee24bee86b4888902697e6b051c97b5002b0b04aa54524674169fedb15738",
+      "body_sha256": "bd2394c8ee03b2d60ad3cde3df296c3b5cc7cd9aba3845acdd6dfe3987cb4baa",
+      "entry_sha256": "93e17015a66649dc203eb8818339226009ccbccea08132b97ab753c6fcee4c6d",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:46:40.673Z"
+    },
+    "BA-0386": {
+      "article_id": "BA-0386",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian-ky-nghi-le/",
+      "publication_sha": "153ced4f25f201274d289e5d8ec1b6fb4e85848c",
+      "page_sha256": "b5c061776503a30b87fc8dca6e926e7d76f78a438a9301b6d4a029ee4dada16e",
+      "body_sha256": "16d691041950f1540873ad0d8efc705364d1f4fed041653c33e98a14ecff6b0a",
+      "entry_sha256": "4c4fa39fdbf3e3343c359814fe22d1bc7226f1457c5e7e336f400d26852d1841",
+      "production_status": 200,
+      "verified_at": "2026-10-11T11:46:40.754Z"
     }
   }
 }
