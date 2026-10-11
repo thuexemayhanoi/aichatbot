@@ -4598,6 +4598,28 @@
       "entry_sha256": "1a1bbeaae0da7f343d2cb8444b776016794604dd7481e2e1281b760cb09db90c",
       "production_status": 200,
       "verified_at": "2026-10-11T12:47:30.150Z"
+    },
+    "BA-0425": {
+      "article_id": "BA-0425",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/dien-thoai-khi-lai-xe-cho-du-khach/",
+      "publication_sha": "79db05e0bfb71e0540d9156e35d93d594fb2511a",
+      "page_sha256": "18a2c84f3e1bed58dc9bc197b29406694b7e8186ad00d3e97f525d86da2cdbf9",
+      "body_sha256": "a75e2a22b01506bcb2677210a11ec86e5bad6df7f93265c57c8bb57e7773a154",
+      "entry_sha256": "0c0234271b7bea8a7af12daaa1b630e8ec633dff5ae68a983c454ce4f55cb55b",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:58:31.205Z"
+    },
+    "BA-0426": {
+      "article_id": "BA-0426",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/song-hong-va-cau-long-bien-hai-ngay-mot-dem/",
+      "publication_sha": "79db05e0bfb71e0540d9156e35d93d594fb2511a",
+      "page_sha256": "7c25fefc09879ae92914ad352569d859b2d10db773c4b76355dec917f9480423",
+      "body_sha256": "5240aa994532c3c878aa716a780f739200ebef417e26247b7f84f5e060b7fb9a",
+      "entry_sha256": "e7891547c65f943727d10e7c1913493274d818f3f952e61a934bb28cb3e1fb41",
+      "production_status": 200,
+      "verified_at": "2026-10-11T12:58:31.206Z"
     }
   }
 }
