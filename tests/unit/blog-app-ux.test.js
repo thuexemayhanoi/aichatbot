@@ -199,6 +199,16 @@ test('business status line exists on every page and starts hidden (never guesses
   }
 });
 
+test('article-card descriptions resolve verified business facts before rendering', async () => {
+  const { resolveFacts } = await import(join(ROOT, 'tools/build-blog.mjs'));
+  const business = JSON.parse(read('data/business/business.json'));
+  const raw = 'Du khách đến {{ business.brand }} cần hướng dẫn thuê xe.';
+  assert.equal(resolveFacts(raw, business), `Du khách đến ${business.brand} cần hướng dẫn thuê xe.`);
+  const builder = read('tools/build-blog.mjs');
+  assert.match(builder, /description: resolveFacts\(a\.description, business\)/,
+    'build must resolve summary placeholders for cards, snippets and meta');
+});
+
 test('no unrendered template placeholders anywhere in generated HTML', () => {
   const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
