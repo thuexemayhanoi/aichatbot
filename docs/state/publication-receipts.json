@@ -5159,6 +5159,28 @@
       "entry_sha256": "1692ba4decdda04f48163967f1de0e7ca350d9d77a03bcd3de38e98ee59f66d9",
       "production_status": 200,
       "verified_at": "2026-10-11T15:59:55.044Z"
+    },
+    "BA-0487": {
+      "article_id": "BA-0487",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-tim-xe-may-gia-tot-nam-2026/",
+      "publication_sha": "f21fa64e85c651d494b8276d41d893bd617ff123",
+      "page_sha256": "e26b18d70b9192cb1c3728dc48aece09fc14e6bbabcd892fd9916585543d1be5",
+      "body_sha256": "cde20bcb0b56a19d06175d3d2f524c158d6876a416a1f5f0e38253ceb2b297c5",
+      "entry_sha256": "fe85e9e64aea47f912fd13558f4fabe49d9f178d57c7ef051241ddacfddf4836",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:05:04.316Z"
+    },
+    "BA-0488": {
+      "article_id": "BA-0488",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/nguoi-nuoc-ngoai-thue-xe-may-viet-nam-ky-nghi-le/",
+      "publication_sha": "f21fa64e85c651d494b8276d41d893bd617ff123",
+      "page_sha256": "d4479dc69c143fa1ab0fd7563c165a09992c1181c9e91b1ae9c7150e1ffa55c5",
+      "body_sha256": "180e516203a2bc9e42d48ea7a2539a8a4f9968b18952667e00d29bf724d209e2",
+      "entry_sha256": "59ee6354c94fb3e8b3c4ee5a9c66b9ea76dc4285857d5f7969acf2fb4a964b57",
+      "production_status": 200,
+      "verified_at": "2026-10-11T16:05:04.324Z"
     }
   }
 }
