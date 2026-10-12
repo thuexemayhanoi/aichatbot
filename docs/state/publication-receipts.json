@@ -6974,6 +6974,28 @@
       "entry_sha256": "d5a0de3c90447375ddc4ef6d261e5e972550f18b681f95377b27f4c8b5b2a36c",
       "production_status": 200,
       "verified_at": "2026-10-12T08:41:05.621Z"
+    },
+    "BA-0673": {
+      "article_id": "BA-0673",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien-nam-2026/",
+      "publication_sha": "cd6ab1303ae5cf2243171ad599ff6662b1cdee21",
+      "page_sha256": "280a1aace44d39c7929969abe588a53df2d9b0a49255191e02cb848cfad7bab5",
+      "body_sha256": "5b24835b76bc093f1b0a9a5078dd8ab748cebcfbb8d8450c8d1340bc96a6a735",
+      "entry_sha256": "6273cafc74f3ba23fb93390383ee2bb9f915fc58cd7a58e723bfdd0fbd3deb15",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:44:38.529Z"
+    },
+    "BA-0674": {
+      "article_id": "BA-0674",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/tinh-trang-xe-tai-cua-hang-ky-nghi-le/",
+      "publication_sha": "cd6ab1303ae5cf2243171ad599ff6662b1cdee21",
+      "page_sha256": "0d2d813a32d71af01a243b9e03fc8cabb0143501ac128b127bf8816bd36c4274",
+      "body_sha256": "8e5c83d0661b14feb44713327edb90dbad0f6472744838d21b846bea7a76ce45",
+      "entry_sha256": "ba9df590b4ee36bbb1063ebc19a43de7331e88ba97d81f8a9f4e198d8753f683",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:44:38.531Z"
     }
   }
 }
