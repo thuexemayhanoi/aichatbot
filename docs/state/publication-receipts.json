@@ -7370,6 +7370,28 @@
       "entry_sha256": "edcd0a3afc049907558d5a7c27689ab744a655e9d5140348321567ce2fe8009d",
       "production_status": 200,
       "verified_at": "2026-10-12T16:03:08.063Z"
+    },
+    "BA-0711": {
+      "article_id": "BA-0711",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/xe-may-dien-cho-nguoi-moi-gia-tot/",
+      "publication_sha": "7221e6f87bb65710096ed473678170a9baacd92f",
+      "page_sha256": "131ccda85ff7e02a24e1b230d10e3830d4985ac603f7e93c02866bde75f474fc",
+      "body_sha256": "e32d698412410bf2332b61b1b10baae3dcfe815cf4226cc424b3822e65954f18",
+      "entry_sha256": "242d2cc43e81cc509b14e28015e44733a3742ed437e766c2c710d2e320b6fc7e",
+      "production_status": 200,
+      "verified_at": "2026-10-12T16:57:16.241Z"
+    },
+    "BA-0712": {
+      "article_id": "BA-0712",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/di-hai-nguoi-tren-xe-thue-cho-khach-nuoc-ngoai/",
+      "publication_sha": "7221e6f87bb65710096ed473678170a9baacd92f",
+      "page_sha256": "5991dbee79f9241ad49a7986462a5fd28f078b4a7c4614b155809959a898997c",
+      "body_sha256": "96c55329a6c054c0d4a44df74d4d35eb3eb6ed3374770bfb8fd7757b94b578e1",
+      "entry_sha256": "9503bba4a32af1ba755343aba5080a17509143c6e490435e5d12dd5cebc3c7ad",
+      "production_status": 200,
+      "verified_at": "2026-10-12T16:57:16.236Z"
     }
   }
 }
