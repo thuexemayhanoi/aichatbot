@@ -7788,6 +7788,28 @@
       "entry_sha256": "d6a258a420d013a37e4d5468776638d728702d8df874550b7d6f3c7f7f731d52",
       "production_status": 200,
       "verified_at": "2026-10-12T19:03:34.149Z"
+    },
+    "BA-0749": {
+      "article_id": "BA-0749",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/bao-va-xe-may-cho-nguoi-moi/",
+      "publication_sha": "6c13a19b939c925cef21d55e6d47fc77a0234b11",
+      "page_sha256": "f1cae44df53a2dbe703b8947b856314948e58460a76bbb7b568ae74313411e5d",
+      "body_sha256": "1baf56b97996ac97d407cc66b8a80526975fa33a12c82d12cfc1f50e2b870f91",
+      "entry_sha256": "af1b936384a58e6f607e346de4c7e3f414c98e0178c2478c0ac63d3df924ee31",
+      "production_status": 200,
+      "verified_at": "2026-10-12T19:12:06.212Z"
+    },
+    "BA-0750": {
+      "article_id": "BA-0750",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ba-dinh-xe-may-phuong-cuoi-tuan/",
+      "publication_sha": "6c13a19b939c925cef21d55e6d47fc77a0234b11",
+      "page_sha256": "9adebadcfdee3792e241aabb56c49177f3af0b4887e6ab429a0f8dfb4f293cb5",
+      "body_sha256": "cb25506d742d3230ef50ed0ba7c537844ea319b2afdc2a21ee8f05b0525edf47",
+      "entry_sha256": "73cf637056491c533f7b4ccc5fae0fdf67f131034907b06865c5758bc71221fa",
+      "production_status": 200,
+      "verified_at": "2026-10-12T19:12:06.220Z"
     }
   }
 }
