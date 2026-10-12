@@ -6864,6 +6864,28 @@
       "entry_sha256": "53969d90c4fad64061b100cb47d09acdaacc72231eb4b86fa6010a4bd4fa3a8d",
       "production_status": 200,
       "verified_at": "2026-10-12T08:00:38.967Z"
+    },
+    "BA-0663": {
+      "article_id": "BA-0663",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/pham-vi-hoat-dong-cua-xe-dien-gia-tot/",
+      "publication_sha": "fa6be62b5324f8cc13a6d8896d18cf1364a653ea",
+      "page_sha256": "32bd374c3621725a81c2e462d718fb29c4964f5f58b004f756b14e82a8fd5a8c",
+      "body_sha256": "5c3092173654dafc5d37ff3fdc3afbbfc6651447b793a78e1e7a16793ed2605d",
+      "entry_sha256": "105e9c9a1fa71cdebd509e9238e86657192bacea036839739240cd93492dfea7",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:06:15.380Z"
+    },
+    "BA-0664": {
+      "article_id": "BA-0664",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/nhan-lai-tien-coc-cho-khach-nuoc-ngoai/",
+      "publication_sha": "fa6be62b5324f8cc13a6d8896d18cf1364a653ea",
+      "page_sha256": "f9a6a20597e8e078afb535d15b4f5245b5fbba4bfa3fe2fbf413fe140bbccecb",
+      "body_sha256": "6dffcb920b94ce45f4dcebd97b8767308fa8365fd9f4640b77b450ea684f6161",
+      "entry_sha256": "460f0763b4be6055d56c216632ae448e403eef45c28749af63c16dfa04b0dcdd",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:06:15.372Z"
     }
   }
 }
