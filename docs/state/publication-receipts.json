@@ -7282,6 +7282,28 @@
       "entry_sha256": "5d54f61e617a62070dc0930154decc91e3a0563c31d66586ecfc64c4d31fbd75",
       "production_status": 200,
       "verified_at": "2026-10-12T15:45:14.239Z"
+    },
+    "BA-0701": {
+      "article_id": "BA-0701",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/di-nguoc-chieu-hau-qua-cho-nguoi-moi/",
+      "publication_sha": "3e34d2e951e5b9769f65343143f4502e5ba4eec7",
+      "page_sha256": "64fe8a40770c76f2451f3fc98970008ece30a4a1a74563ad584c8a6782a3813e",
+      "body_sha256": "2b116ebfbead558732ba5e0323f7cc36da3531b99c0d8e7d18b86fcc272c7055",
+      "entry_sha256": "ade83ca1bcf50e3da9f5b085b2b053274a4757a3bbb385b19a944ede52edc60c",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:50:24.813Z"
+    },
+    "BA-0702": {
+      "article_id": "BA-0702",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/mekong-delta-ride-hai-ngay-mot-dem/",
+      "publication_sha": "3e34d2e951e5b9769f65343143f4502e5ba4eec7",
+      "page_sha256": "81801de17228d762d12a6816c7122f30db828d2d134a919847f47c8ff10a6cfb",
+      "body_sha256": "63dab68a5492d8e946e434029a673687844cd909377c64720b04c674d7dab0e0",
+      "entry_sha256": "c88d3b1e124b86bb578a1aca743c92ca9e66d05f713ffcf12018aa3a1967497b",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:50:24.883Z"
     }
   }
 }
