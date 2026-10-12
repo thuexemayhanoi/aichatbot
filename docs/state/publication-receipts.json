@@ -7722,6 +7722,28 @@
       "entry_sha256": "22c52440f7a36226e6b47614aecb0b394ec843f71066c08144a0449618836374",
       "production_status": 200,
       "verified_at": "2026-10-12T18:43:05.590Z"
+    },
+    "BA-0743": {
+      "article_id": "BA-0743",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/di-nhom-an-toan-cho-nguoi-moi/",
+      "publication_sha": "00b78489472d476b389203fdb491b23fc1cb9203",
+      "page_sha256": "30e559c22142b8f6b284214b72b097030ffc9289302a082b1abc9e3f1895f648",
+      "body_sha256": "3350ef6dec65198fc568bd4264376784593160b89be9c918fb784f2f84892a1e",
+      "entry_sha256": "7cf0cf51ba9fa4980e8653ec2cd64080ff57de685e9d8338f34ce7f2f5f5e0ca",
+      "production_status": 200,
+      "verified_at": "2026-10-12T18:48:33.339Z"
+    },
+    "BA-0744": {
+      "article_id": "BA-0744",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ho-tay-va-xe-may-cuoi-tuan/",
+      "publication_sha": "00b78489472d476b389203fdb491b23fc1cb9203",
+      "page_sha256": "8ddd611fefd6d598d6cd2453b0e87089c7417d09ad37797ec0f511f77bc314d1",
+      "body_sha256": "9edeff7434c1b6b465c6c876cfd4d625c0e35777e3bdd80442265932a7b68bb4",
+      "entry_sha256": "63426e0e3f79bda5bd22e6918821e00ae1be0a13cd35260a6d4dc00c643c7d3d",
+      "production_status": 200,
+      "verified_at": "2026-10-12T18:48:33.327Z"
     }
   }
 }
