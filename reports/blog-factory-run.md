@@ -2471,3 +2471,10 @@
 - 2026-10-12 QA PASS BA-0701 score=100
 - 2026-10-12 QA PASS BA-0702 score=95
 - 2026-10-12 PUBLISHED 2 (BA-0701, BA-0702) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-12 CLAIM 1: BA-0703
+- 2026-10-12 FINISH BA-0703
+- 2026-10-12 CLAIM 1: BA-0704
+- 2026-10-12 FINISH BA-0704
+- 2026-10-12 QA PASS BA-0703 score=100
+- 2026-10-12 QA PASS BA-0704 score=100
+- 2026-10-12 PUBLISHED 2 (BA-0703, BA-0704) — one grouped build, pages, matrix, indexes, sitemap consistent
