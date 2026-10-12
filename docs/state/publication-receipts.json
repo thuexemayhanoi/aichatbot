@@ -7524,6 +7524,28 @@
       "entry_sha256": "f9e75b4ff8edd9f7c31fa9d8a2ba486ca99fb7c0c19281fd6ae64fa101a4c0b3",
       "production_status": 200,
       "verified_at": "2026-10-12T17:47:24.194Z"
+    },
+    "BA-0725": {
+      "article_id": "BA-0725",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/deo-non-dung-cach-cho-nguoi-moi/",
+      "publication_sha": "7ead750015d31504072bd13d550a903a6f574345",
+      "page_sha256": "d15e5a8fa5ac0869ec3bef9588b0a7b8261747b4af3ebfb3c51aee090b19055b",
+      "body_sha256": "cc9690a0afc615cf07883c590f4c1f10df850b5407be2b0f9617fc0773dd7af3",
+      "entry_sha256": "c99f66a44120c5c9f0ed7783729b56729fb51d0c400a67f30b47603275c09626",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:52:45.333Z"
+    },
+    "BA-0726": {
+      "article_id": "BA-0726",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/thue-xe-may-quanh-long-bien-cuoi-tuan/",
+      "publication_sha": "7ead750015d31504072bd13d550a903a6f574345",
+      "page_sha256": "aad34ae39ef0e72f2fe0e64eb624c107ec9c65f436aac216e20ac55dea6332cd",
+      "body_sha256": "88e1ea8c8a8927ea424675c212152570f1ac59e795acf6c48545110c4f109e38",
+      "entry_sha256": "d22719b496a8fd579e8e554efd24e6c8a9ea21c104b295f00a2550b2cbd6dad9",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:52:45.320Z"
     }
   }
 }
