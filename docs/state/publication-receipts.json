@@ -6754,6 +6754,28 @@
       "entry_sha256": "62553fb980305c9c6eb137092e75e1fa757e90a8c4ea5b618324624474d162b7",
       "production_status": 200,
       "verified_at": "2026-10-12T07:30:22.299Z"
+    },
+    "BA-0653": {
+      "article_id": "BA-0653",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/ky-nang-phanh-gap-cho-nguoi-moi/",
+      "publication_sha": "114b8344c758dd252fe3db01ba5af4d0bad0e141",
+      "page_sha256": "702979319e3292540368090df4597c66a2a797184f5f8fd2b30045a2266f3363",
+      "body_sha256": "c313678861a934c008344089b7bf8fa5d0ec073d3d4df7b0d60adeb76bfe0e3c",
+      "entry_sha256": "d5b9697af4c1add67948247131f9c67c60cecdcd169acfe7e39421d6f97f9b54",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:37:30.071Z"
+    },
+    "BA-0654": {
+      "article_id": "BA-0654",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/bai-dinh-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "114b8344c758dd252fe3db01ba5af4d0bad0e141",
+      "page_sha256": "3d7189bc137da6e4545a7bd760aa12cc470e425408550110b0b592d3a8441403",
+      "body_sha256": "0e61ca4a3280108378473f6d13cd288108c643f49446490103004dbf9c3c6930",
+      "entry_sha256": "9a7d1889b6088213d804db22a6009260a12918b93ba55162a1999308a53a0586",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:37:30.062Z"
     }
   }
 }
