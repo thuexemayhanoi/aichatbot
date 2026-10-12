@@ -7018,6 +7018,28 @@
       "entry_sha256": "b37486f1a251b5cdbffe716b22a77b43e8df407ceef735224d7f3ddebaffd5b6",
       "production_status": 200,
       "verified_at": "2026-10-12T08:46:47.167Z"
+    },
+    "BA-0677": {
+      "article_id": "BA-0677",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/tam-nhin-khi-lai-xe-cho-nguoi-moi/",
+      "publication_sha": "57a73050d989c67c8789ee34592f87099ee054bc",
+      "page_sha256": "765458a3f19672c240df09ac106f8c7ec9f45aeadfb4e776087edaa9553cafcb",
+      "body_sha256": "68b6ef6aaa4effc397037a34a87ce1d8a07aaf913fe205c4a5e73d11a87f2f2b",
+      "entry_sha256": "ce151471374eb395d73f8f0cca6bd838d2a2549134b1931909268b8f882452de",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:49:08.279Z"
+    },
+    "BA-0678": {
+      "article_id": "BA-0678",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/hue-xuyen-viet-hai-ngay-mot-dem/",
+      "publication_sha": "57a73050d989c67c8789ee34592f87099ee054bc",
+      "page_sha256": "5977d4fdff12dd7940deaa0ce109d1de9952b12e72c5b44c0742e0b2bc916f96",
+      "body_sha256": "127bd7ff6664c3cecdf67db2f6035d41b827427563f158fcf1513fe3a526179c",
+      "entry_sha256": "6343ba1de274c9beeeed243c7d84953d9ba13d9dec35c051c19e681af40e3f07",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:49:08.276Z"
     }
   }
 }
