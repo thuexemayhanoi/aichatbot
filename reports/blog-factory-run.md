@@ -2019,3 +2019,10 @@
 - 2026-10-12 QA PASS BA-0597 score=100
 - 2026-10-12 QA PASS BA-0598 score=100
 - 2026-10-12 PUBLISHED 2 (BA-0597, BA-0598) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-12 CLAIM 1: BA-0599
+- 2026-10-12 FINISH BA-0599
+- 2026-10-12 CLAIM 1: BA-0600
+- 2026-10-12 FINISH BA-0600
+- 2026-10-12 QA PASS BA-0599 score=100
+- 2026-10-12 QA PASS BA-0600 score=95
+- 2026-10-12 PUBLISHED 2 (BA-0599, BA-0600) — one grouped build, pages, matrix, indexes, sitemap consistent
