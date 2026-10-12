@@ -10455,6 +10455,36 @@
         "Sinh viên thuê xe máy với một ngân sách tính theo trăm nghìn, nên cụm từ giá rẻ với nhóm khách này không phải là một con số niêm yết thấp mà là tổng chi phí của cả kỳ thuê gói được. Một bạn thuê theo ngày với giá niêm yết thấp nhưng tự trả xăng lượt đầu, đi lấy xe tận cửa hàng xa và trả thêm phí vì về trễ giờ có thể tốn hơn một bạn thuê theo tuần với giá ngày nhỉnh hơn nhưng nhận xe gần ktx. Bài viết này đi qua từng khoản trong bài toán chi phí của sinh viên, những cách hạ tổng chi phí mà không hy sinh an toàn, và phần chuẩn bị giấy tờ để buổi nhận xe không bị trễ vì thiếu thứ.",
         "Bài toán của sinh viên thường có ba khoản chính: tiền thuê theo kỳ, tiền xăng cho quãng đường thật, và các khoản phát sinh nếu trả trễ hay hỏng phụ tùng nhỏ. Giá niêm yết chỉ chạm khoản đầu. Khi so sánh hai lựa chọn, hãy hỏi cả hai chặng xăng: từ nơi ở tới điểm nhận xe và chi phí xăng dự kiến của chuyến đi, rồi mới cộng lại thành con số thật. Với phần thuê, kỳ dài thường có lợi: giá quy ra ngày của gói tuần và gói tháng thường thấp hơn thuê lẻ từng ngày, nên nếu nhu cầu của bạn kéo dài quá nửa tuần, hỏi gói dài luôn là câu đầu tiên. Cách đọc bảng giá từng loại xe được hướng dẫn trong bài cách đọc bảng giá thuê xe , còn cấu trúc các khoản tron"
       ]
+    },
+    {
+      "article_id": "BA-0723",
+      "category": "EV",
+      "slug": "bao-duong-xe-dien-gia-tot",
+      "title": "Bảo Dưỡng xe Điện Giá Tốt",
+      "description": "Nói về bảo dưỡng xe điện giá tốt, nhiều người hình dung tới các gói dịch vụ rẻ hoặc phụ tùng trọn gói, trong khi bản chất của giá tốt ở loại xe này",
+      "published_date": "2026-10-12",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/bao-duong-xe-dien-gia-tot.body.html",
+      "knowledge_chunks": [
+        "Nói về bảo dưỡng xe điện giá tốt, nhiều người hình dung tới các gói dịch vụ rẻ hoặc phụ tùng trọn gói, trong khi bản chất của giá tốt ở loại xe này nằm ở chỗ khác: xe điện có ít bộ phận cơ khí cần thay hơn xe xăng, nên phần lớn chi phí bảo dưỡng dài hạn tập trung vào pin, và cách dùng hằng ngày quyết định hoá đơn nhiều năm sau đó hơn bất kỳ dịch vụ nào. Bài viết này phân tích tiền bảo dưỡng xe điện chảy về đâu, những việc gần như miễn phí mà người dùng tự làm được, và phần người thuê xe cần quan tâm để không biến một kỳ thuê rẻ thành kỳ thuê phát sinh.",
+        "Trên một chiếc xe điện, bộ pin chiếm tỷ trọng giá trị lớn nhất và cũng là bộ phận xuống cấp theo cách riêng: dung lượng suy giảm dần qua từng chu kỳ sạc chứ không chết đột ngột như động cơ xăng. Điều đó nghĩa là khoản bảo dưỡng lớn nhất của xe điện không phải một phụ tùng nào cần thay định kỳ, mà là tuổi thọ pin bị rút ngắn hay kéo dài bởi thói quen sạc và bảo quản. Phần còn lại của xe gồm động cơ điện, phanh và bộ điều khiển, đều là những cụm ít hao mòn cơ khí, bảo dưỡng thưa và rẻ hơn máy xăng. Nói cách khác, giữ pin khỏe là giữ chi phí, và mọi việc còn lại chỉ chiếm phần nhỏ của bài toán. Tổng quan về khác biệt bảo dưỡng giữa hai loại xe n"
+      ]
+    },
+    {
+      "article_id": "BA-0724",
+      "category": "GUIDE",
+      "slug": "ung-dung-ban-do-cho-nguoi-thue-xe-cho-khach-nuoc-ngoai",
+      "title": "Ứng Dụng Bản đồ Cho Người Thuê xe Cho Khách Nước Ngoài",
+      "description": "Khi đón khách quốc tế đi khám phá Hà Nội bằng xe máy thuê, người dẫn đường thường nhận ra một vấn đề quen thuộc: khách của bạn đọc được biển chỉ dẫn",
+      "published_date": "2026-10-12",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ung-dung-ban-do-cho-nguoi-thue-xe-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Khi đón khách quốc tế đi khám phá Hà Nội bằng xe máy thuê, người dẫn đường thường nhận ra một vấn đề quen thuộc: khách của bạn đọc được biển chỉ dẫn tiếng Việt ở mức hạn chế, còn bạn thì không thể vừa lái vừa chỉ đường từng ngã rẽ. Một ứng dụng bản đồ cài sẵn trên điện thoại của khách giải quyết được phần lớn việc đó: khách nhìn màn hình và tự hiểu chặng tiếp theo, bạn tập trung vào đường trước mắt. Bài viết này nói về cách chọn, cài đặt và dùng ứng dụng bản đồ cho khách nước ngoài trong chuyến thuê xe máy, để cả người lái lẫn người ngồi sau đều biết mình đang ở đâu và sắp tới đâu.",
+        "Không thiếu ứng dụng bản đồ cho chuyến đi ở Việt Nam, nhưng cho khách quốc tế ngồi sau xe thuê, bốn tiêu chí dưới đây quyết định ứng dụng nào thực sự dùng được."
+      ]
     }
   ]
 }
