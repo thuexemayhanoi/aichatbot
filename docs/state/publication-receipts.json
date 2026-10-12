@@ -7920,6 +7920,28 @@
       "entry_sha256": "c0a78a225026f4157b75614052d43c05433254f23697ba23864d0bcca722b597",
       "production_status": 200,
       "verified_at": "2026-10-12T19:55:54.194Z"
+    },
+    "BA-0761": {
+      "article_id": "BA-0761",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/trom-xe-va-phong-ngua-cho-nguoi-moi/",
+      "publication_sha": "a2737e20e054bf2b7008a74f547847837f0fd5fa",
+      "page_sha256": "bb45f505052f6546306e44243317c4854e70298735b38a4a19cdb401cf93afc1",
+      "body_sha256": "e11610f357c3c9dfe4a7568d6cde34e3ebed89879b682dcc748e9e3cd004ff3a",
+      "entry_sha256": "5fbc7942c156121a35f4d177fb27f42a4fb5a83c4e16e6a4c9aecd774a0303a1",
+      "production_status": 200,
+      "verified_at": "2026-10-12T20:03:25.847Z"
+    },
+    "BA-0762": {
+      "article_id": "BA-0762",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/dong-da-va-xe-may-cuoi-tuan/",
+      "publication_sha": "a2737e20e054bf2b7008a74f547847837f0fd5fa",
+      "page_sha256": "b8df7157d9b91455aa7587592961f47834f0e3c05a6ee8d3b42c0c5d15e80ba3",
+      "body_sha256": "ab1f23ee06eaa2bcc97ff16e3ba6c36f0c126606369c72bfafc087304a89a46f",
+      "entry_sha256": "1dda1702c0a9e169e46ec3a7bff4602120f3a46a4894ca63c6f36712bc725f3c",
+      "production_status": 200,
+      "verified_at": "2026-10-12T20:03:25.852Z"
     }
   }
 }
