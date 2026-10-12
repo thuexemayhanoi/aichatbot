@@ -7656,6 +7656,28 @@
       "entry_sha256": "d3574e24bfbff356fbac70a9d29696c7fd9a3bbf3b24fc7df2a03041a1437731",
       "production_status": 200,
       "verified_at": "2026-10-12T18:30:31.942Z"
+    },
+    "BA-0737": {
+      "article_id": "BA-0737",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/met-moi-khi-lai-duong-dai-cho-nguoi-moi/",
+      "publication_sha": "7773f1d54273cc35c1c69e8b11ba547ecdff1f68",
+      "page_sha256": "32607fa20d2f13574617a288f19714d3821e88cfc48dad78b0286cb524bf1f4e",
+      "body_sha256": "d07f6b95b407ee5983008872bbbbd2c3217f8c238475885282c6710b4111a469",
+      "entry_sha256": "f593d096dff9c53f1493118d9c4b8c3d18cabd623b0579efa86e264557b6485e",
+      "production_status": 200,
+      "verified_at": "2026-10-12T18:34:53.982Z"
+    },
+    "BA-0738": {
+      "article_id": "BA-0738",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-cuoi-tuan/",
+      "publication_sha": "7773f1d54273cc35c1c69e8b11ba547ecdff1f68",
+      "page_sha256": "646f015097316dd9bd9361986ba56f34f789a8d19eb1600fdbe122cac2aceb42",
+      "body_sha256": "cf7b5e817b5a1d1d28bc4ad86c6549af8a16b4e8d771856846759d29e2c221fc",
+      "entry_sha256": "20aec1af9aec82f9dc5e37db14581f17bf85f8d44dfacb8e4c6603392a991712",
+      "production_status": 200,
+      "verified_at": "2026-10-12T18:34:53.994Z"
     }
   }
 }
