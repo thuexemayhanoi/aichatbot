@@ -7854,6 +7854,17 @@
       "entry_sha256": "ab51003945b3f9eba8a7132f9be3f9287647a706e147116715b6984cfb41653e",
       "production_status": 200,
       "verified_at": "2026-10-12T19:33:38.748Z"
+    },
+    "BA-0756": {
+      "article_id": "BA-0756",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cau-giay-di-xe-may-cuoi-tuan/",
+      "publication_sha": "b3575764d58bb9dfc5b03200d7381250315790a6",
+      "page_sha256": "62bea4c7a8ddd08605f9fbb2b219f7a71f5d45be1747177a262c186670b381e7",
+      "body_sha256": "58a61373c53538f24039f05d45c962e55683641a766cb8c64d8d1695a22c5e76",
+      "entry_sha256": "c19deafd1ec0197a61992b90a96447589b6df740076c71b11303fb0b620d6995",
+      "production_status": 200,
+      "verified_at": "2026-10-12T19:37:54.344Z"
     }
   }
 }
