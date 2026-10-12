@@ -7040,6 +7040,28 @@
       "entry_sha256": "6343ba1de274c9beeeed243c7d84953d9ba13d9dec35c051c19e681af40e3f07",
       "production_status": 200,
       "verified_at": "2026-10-12T08:49:08.276Z"
+    },
+    "BA-0679": {
+      "article_id": "BA-0679",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-nam-2026/",
+      "publication_sha": "d5dbef7830d8f90a5778001ff07ab1e0bfa18a1e",
+      "page_sha256": "b3fd4e221f3b52e0fbae887580f4e7281e42f3ff8e4685b2469483a4bdaff793",
+      "body_sha256": "6fe51b5cb4af5fe59043e1dbddfa1b660c8ed1c29f235d8bcfa4ba92144ced98",
+      "entry_sha256": "63fca8e1e0979c5a213cad36e2045167ffdfa7ac26b0ffbfada073cbcf661785",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:52:50.539Z"
+    },
+    "BA-0680": {
+      "article_id": "BA-0680",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/dongo-kem-theo-xe-thue-ky-nghi-le/",
+      "publication_sha": "d5dbef7830d8f90a5778001ff07ab1e0bfa18a1e",
+      "page_sha256": "224d4b8bc8d2f14cd8522b5a3fd6ee859d67af44afcc406f9303413c791a0085",
+      "body_sha256": "3fa05296f1427900869ced92a9d725411848044a9d03f5374de818ab4d0e7a89",
+      "entry_sha256": "a8d04b23ac1dd093c15b2b7b3b3bb26a0a08f4d8e09a872c07eb0bcd4a77c26d",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:52:50.529Z"
     }
   }
 }
