@@ -2727,3 +2727,5 @@
 - 2026-10-12 QA PASS BA-0773 score=95
 - 2026-10-12 QA FAIL BA-0774 -> REPAIR (attempt 1) score=0
 - 2026-10-12 PUBLISHED 1 (BA-0773) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-12 QA PASS BA-0774 score=100
+- 2026-10-12 PUBLISHED 1 (BA-0774) — one grouped build, pages, matrix, indexes, sitemap consistent
