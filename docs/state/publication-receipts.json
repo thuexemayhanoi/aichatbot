@@ -6886,6 +6886,28 @@
       "entry_sha256": "460f0763b4be6055d56c216632ae448e403eef45c28749af63c16dfa04b0dcdd",
       "production_status": 200,
       "verified_at": "2026-10-12T08:06:15.372Z"
+    },
+    "BA-0665": {
+      "article_id": "BA-0665",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/mua-lon-va-lai-xe-cho-nguoi-moi/",
+      "publication_sha": "7fd9f9e464bad96e1923120699096ae720c42199",
+      "page_sha256": "8b15060288379e5594482b3fa347b14f52505d10ec76539c975a41fbe9dcc68d",
+      "body_sha256": "ee7e90a54b163c62dabc32d972d9dbba99bd87ee40b1fc5dd0dd225011aec32b",
+      "entry_sha256": "4a05eb21fe0cdaef0007bf0c8694f9177e2d4d9f70fd7920288958e1c2bfda13",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:17:45.534Z"
+    },
+    "BA-0666": {
+      "article_id": "BA-0666",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/hanh-trinh-mai-chau-hai-ngay-mot-dem/",
+      "publication_sha": "7fd9f9e464bad96e1923120699096ae720c42199",
+      "page_sha256": "ab52d66f7d0397589b919b66b11f119a63e0ec7170aced322d241c4e3f0ca833",
+      "body_sha256": "9040ff25fc1683d359046b82e2fb9eca5c26241ae24278b02554cb0685b03bfd",
+      "entry_sha256": "4e386024f5188e3cb21044e3a46169a992f0f478128cb209f3d944b604d19a30",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:17:45.540Z"
     }
   }
 }
