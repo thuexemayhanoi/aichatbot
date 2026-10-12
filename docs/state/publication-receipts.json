@@ -7810,6 +7810,28 @@
       "entry_sha256": "73cf637056491c533f7b4ccc5fae0fdf67f131034907b06865c5758bc71221fa",
       "production_status": 200,
       "verified_at": "2026-10-12T19:12:06.220Z"
+    },
+    "BA-0751": {
+      "article_id": "BA-0751",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/cach-tinh-gia-thue-xe-bang-app-tai-ha-noi/",
+      "publication_sha": "93643d9120025d185785e30dc6cf9e3b68280644",
+      "page_sha256": "11805b7be69eb08f973b018db357ce613b499bae673f2631256d4d323772d714",
+      "body_sha256": "0139293db920249e08d035d2e8808aaf67051cfc8ecabfa5cc7d3b42ee170aeb",
+      "entry_sha256": "7c01475d43112606a9bd41a76d33905135d4d2006af6170e97e973e860d1e625",
+      "production_status": 200,
+      "verified_at": "2026-10-12T19:19:17.392Z"
+    },
+    "BA-0752": {
+      "article_id": "BA-0752",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-so-cho-sinh-vien/",
+      "publication_sha": "93643d9120025d185785e30dc6cf9e3b68280644",
+      "page_sha256": "f4342849961c554d2206e4854ea740ee34d17ea3b10c85409a6142bc435993cf",
+      "body_sha256": "f12fa5e067b7d1b038243ae0121ba84ee258238873d1e3a7932bbbf94799f3d1",
+      "entry_sha256": "b3e7991e7a36d29d289ec1a222408f449f5d68be7f4f71e1b1aaabdc3718e86b",
+      "production_status": 200,
+      "verified_at": "2026-10-12T19:19:17.380Z"
     }
   }
 }
