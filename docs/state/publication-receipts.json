@@ -6600,6 +6600,28 @@
       "entry_sha256": "31631d540eba1c5cafe23027c140256ab5e0ec454ee6a8d9356082c7008bbbab",
       "production_status": 200,
       "verified_at": "2026-10-12T06:30:48.021Z"
+    },
+    "BA-0635": {
+      "article_id": "BA-0635",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/goi-canh-sat-khi-tai-nan-cho-nguoi-moi/",
+      "publication_sha": "6becd58a8ace7467fb67b0a6484146dd2161a5b3",
+      "page_sha256": "ca35c3b59d5dd0bcab751b63780c179c81fa8d9b71a70392b9a9c15c49240504",
+      "body_sha256": "8ea018280d80886413824153ef209a6990215a19b24d7792c512d673022a6e81",
+      "entry_sha256": "f879e619f54e43279de068bd107d41a2e1262224874d20e2adb28cac50097349",
+      "production_status": 200,
+      "verified_at": "2026-10-12T06:36:48.631Z"
+    },
+    "BA-0636": {
+      "article_id": "BA-0636",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cua-lo-ven-bien-hai-ngay-mot-dem/",
+      "publication_sha": "6becd58a8ace7467fb67b0a6484146dd2161a5b3",
+      "page_sha256": "9134a2cac379cba13f15faea3a85bd6d0305ddf34153a1d2f4dbdf774301e464",
+      "body_sha256": "4a755f9c1159474ba057e00927991a4784331c4390167c91da213bdd166d2db5",
+      "entry_sha256": "9347dac75a6411403c659fa4b49e7311ce541b208e5a08ef7e5cd3a51cc95f12",
+      "production_status": 200,
+      "verified_at": "2026-10-12T06:36:48.792Z"
     }
   }
 }
