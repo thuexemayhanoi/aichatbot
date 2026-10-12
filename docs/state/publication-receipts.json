@@ -7304,6 +7304,28 @@
       "entry_sha256": "c88d3b1e124b86bb578a1aca743c92ca9e66d05f713ffcf12018aa3a1967497b",
       "production_status": 200,
       "verified_at": "2026-10-12T15:50:24.883Z"
+    },
+    "BA-0703": {
+      "article_id": "BA-0703",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app-nam-2026/",
+      "publication_sha": "2049b38bb84140dc792695a1dd6c7b1121f724cf",
+      "page_sha256": "ab09adc6fc4f67d53912037abe0c4638f6b2b338c4c317c8c77a3c8d281cea98",
+      "body_sha256": "539fec6da914a69eb8aa1004248dc7eeaca6181dc53fe2d3d6ab3a2b67304f4f",
+      "entry_sha256": "b08d889e6d82390b7a53b69ba29a8613e4a76f5831b0525b3e91179bfa18a428",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:54:23.110Z"
+    },
+    "BA-0704": {
+      "article_id": "BA-0704",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-dai-han-cho-nguoi-di-lam-ky-nghi-le/",
+      "publication_sha": "2049b38bb84140dc792695a1dd6c7b1121f724cf",
+      "page_sha256": "a1ebe950ec85790483ee62b230216a0020500ababf8ed285c77cdc8a87b3ca6b",
+      "body_sha256": "c05c18ad290a406789030861a3e4a70594ffa7ca97c04e0c5cad28c5d0faaa62",
+      "entry_sha256": "c3bc369349eceef2ede81ba10a503a9bd466a48ad151547e6d16f8d85c731ddf",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:54:23.155Z"
     }
   }
 }
