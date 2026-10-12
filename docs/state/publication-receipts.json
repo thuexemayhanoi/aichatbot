@@ -7986,6 +7986,28 @@
       "entry_sha256": "f237eff1de786c70ab6c762613ca479edc4c0567e4d42dd5e7ae77786a913b28",
       "production_status": 200,
       "verified_at": "2026-10-12T20:15:00.824Z"
+    },
+    "BA-0767": {
+      "article_id": "BA-0767",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/camera-phat-nguoi-khi-thue-xe-cho-nguoi-moi/",
+      "publication_sha": "a039e7625ff7d4f5df26f9266d7fb72302d149bd",
+      "page_sha256": "77072492311886db0e8fe2348ca0628094da6332fe6a207592df2c46924b27fd",
+      "body_sha256": "e32656af27bab017eb1204f9e539e7c001c0357eeeb3bea31205e0719e2586ce",
+      "entry_sha256": "5e692c5808e61e20b2130db79f3a660fb9e51bb9231c4c7d48e1c3530fbe893f",
+      "production_status": 200,
+      "verified_at": "2026-10-12T20:22:51.022Z"
+    },
+    "BA-0768": {
+      "article_id": "BA-0768",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/thanh-xuan-duong-di-cuoi-tuan/",
+      "publication_sha": "a039e7625ff7d4f5df26f9266d7fb72302d149bd",
+      "page_sha256": "a5b1a1acb311bbc0e9b26da8315c9f37ba45e32427eb00525f30e8e4332b593d",
+      "body_sha256": "04e52910c55c5a5c107a744874af43d8be0e4b2f01fd372c3a9c9bdb1d7a594a",
+      "entry_sha256": "5998c082d2261687fb35f4216f6e1f243f996c2365529ac91254ff87063819f5",
+      "production_status": 200,
+      "verified_at": "2026-10-12T20:22:51.031Z"
     }
   }
 }
