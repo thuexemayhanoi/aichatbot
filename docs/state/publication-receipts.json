@@ -6215,6 +6215,28 @@
       "entry_sha256": "551736baad772632cbced3abb553f8d5d74b1f194b30c51beee19c867aff59e7",
       "production_status": 200,
       "verified_at": "2026-10-12T04:42:17.838Z"
+    },
+    "BA-0623": {
+      "article_id": "BA-0623",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cho-nguoi-moi/",
+      "publication_sha": "d00d53f90ba47b5916d87e8c4e0445b67ef30f5d",
+      "page_sha256": "f5bc8b84b62b0d67e3fed3df0d2d31cc0dcd65dbb59594fffefa5ecc3150b221",
+      "body_sha256": "28409ce9249ccc12f3240c348ddb98d0c56081cea85090c74976169fd6d693ad",
+      "entry_sha256": "8eb27d3669e117ad67bf5efd2f504c2574d8630087b0b9082b8171bf1ce622af",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:46:03.338Z"
+    },
+    "BA-0624": {
+      "article_id": "BA-0624",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ninh-binh-cuoi-tuan-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "d00d53f90ba47b5916d87e8c4e0445b67ef30f5d",
+      "page_sha256": "5daf54216ac0f77791e67839e68e60108b3f757b23ec1f00ae2eb9e645d429c3",
+      "body_sha256": "3435319ddcca3feba3db1a39eca29f518fdb09ec1a1e3fabf65f926c84cab54f",
+      "entry_sha256": "95c0cc6838028ae5cf725c6edab2891831267aa1ebc895ff5ef4c5c94b67acea",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:46:03.351Z"
     }
   }
 }
