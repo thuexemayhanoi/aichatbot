@@ -7436,6 +7436,28 @@
       "entry_sha256": "7ab283c8632b266efebade53c4c7e1a89aeaadcddb5a55073afe74c7208b53f2",
       "production_status": 200,
       "verified_at": "2026-10-12T17:06:31.264Z"
+    },
+    "BA-0717": {
+      "article_id": "BA-0717",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/xe-dien-an-toan-khong-gia-tot/",
+      "publication_sha": "2b6868a517587e1d9271bdcbf0f2e301120f736b",
+      "page_sha256": "2f7f52d963f98e9be7b06966f41bebaa2a2e2c7b73feec012c8f2818625846d5",
+      "body_sha256": "e3ea6885fd028c459b5c2fa0bbdb91feb68ba559136ce8fb14f8685c04794f1c",
+      "entry_sha256": "1a22efebdad95eec8ebe3c5b8898708c8caf62706602f0ec3864b6fb620860cf",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:26:23.011Z"
+    },
+    "BA-0718": {
+      "article_id": "BA-0718",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/ban-do-va-dinh-vi-khi-thue-xe-cho-khach-nuoc-ngoai/",
+      "publication_sha": "2b6868a517587e1d9271bdcbf0f2e301120f736b",
+      "page_sha256": "86531c54c810077ac6bb1e99ab9926aa456d57d5d9593100717a8ca02769f690",
+      "body_sha256": "4b2c1bdc8db51c631b65f1aea34435d50ea8be1851acc68bec507aef309a6583",
+      "entry_sha256": "f545bcd948eba5bdcdc51e0d964fe1e06d13004ccfd6675cafcadac9d7e435b2",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:26:23.013Z"
     }
   }
 }
