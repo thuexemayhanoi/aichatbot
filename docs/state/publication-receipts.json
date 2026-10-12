@@ -7678,6 +7678,28 @@
       "entry_sha256": "20aec1af9aec82f9dc5e37db14581f17bf85f8d44dfacb8e4c6603392a991712",
       "production_status": 200,
       "verified_at": "2026-10-12T18:34:53.994Z"
+    },
+    "BA-0739": {
+      "article_id": "BA-0739",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/cach-dung-ung-dung-thue-xe-may-tai-ha-noi/",
+      "publication_sha": "502eaced7532f5d764564fb6dc8d16666f549662",
+      "page_sha256": "d096665376941238b2424dfbbafe4a2ead897cc5abe7d3f574e29e0184bd579f",
+      "body_sha256": "02dcd7bbe286dc7dfffde305f03ff236e6d7f5d15acd9d2d600c02b6503b2455",
+      "entry_sha256": "b7ad2beb675e05cd61998b719fb5ac3e05dc557916b0bbaca9b036a08de2d5f5",
+      "production_status": 200,
+      "verified_at": "2026-10-12T18:38:55.138Z"
+    },
+    "BA-0740": {
+      "article_id": "BA-0740",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-may-theo-thang-cho-sinh-vien/",
+      "publication_sha": "502eaced7532f5d764564fb6dc8d16666f549662",
+      "page_sha256": "b8514399e93275c47f48b985bd3c73602021c61f6d738194ec6e22c2f2a67c90",
+      "body_sha256": "d66fa8e67fa32738c46b3ba010a38df7078a717a49d04268da8ed02535e88c04",
+      "entry_sha256": "c3070f5c99274f6eb76c7979ddb245828a6f0fa55e6e06059cc74758c39e01fa",
+      "production_status": 200,
+      "verified_at": "2026-10-12T18:38:55.223Z"
     }
   }
 }
