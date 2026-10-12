@@ -6402,6 +6402,28 @@
       "entry_sha256": "b20267326ea8c1b5ee85b8bdb260a875ad0d53671521075a33edf7f31906e865",
       "production_status": 200,
       "verified_at": "2026-10-12T05:23:45.697Z"
+    },
+    "BA-0632": {
+      "article_id": "BA-0632",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-cho-cong-viec-giao-hang-ky-nghi-le/",
+      "publication_sha": "b6a7e9fe98c872ac78ff32c82397f45a5bf520de",
+      "page_sha256": "f4d23a89df8480919b325e28e79be61510507d1dcba052e07c5ffdfa8a506fd9",
+      "body_sha256": "f19502165b1890e24c9d2d215342c2d7ed5f461969b5e6cd5742e923506e9eee",
+      "entry_sha256": "6b0ef14c603d548eab9309dd93f6b8be0d1ea7609310505db2a60ae798647f03",
+      "production_status": 200,
+      "verified_at": "2026-10-12T05:27:59.272Z"
+    },
+    "BA-0633": {
+      "article_id": "BA-0633",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/ung-dung-thue-xe-may-dien-gia-tot/",
+      "publication_sha": "b6a7e9fe98c872ac78ff32c82397f45a5bf520de",
+      "page_sha256": "6715cace6bd99867afe5192482a990263a33096237923bf8b68511a09a3902cd",
+      "body_sha256": "801573633ee8f341b2f68090b496ec642d518dddb593a5350898d0a32c81de1e",
+      "entry_sha256": "35f77df4bad5a575ac8f8b1fb34f7f3f491f6e575fc3b411c225a1519de1f1ac",
+      "production_status": 200,
+      "verified_at": "2026-10-12T05:27:59.290Z"
     }
   }
 }
