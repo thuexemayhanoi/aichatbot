@@ -1,0 +1,63 @@
+name: SEO Audit & Monitoring (read-only)
+
+# Independent of Blog Factory / external Writer. Never publish or modify content.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 2 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: seo-audit-monitor
+  cancel-in-progress: false
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Unit tests for monitor
+        run: node --test tests/unit/seo-live-monitor.test.js
+
+      - name: Offline site/indexability gate
+        run: node tools/site-audit.mjs > seo-offline-audit.txt 2>&1
+
+      - name: Deterministic static SEO score
+        if: always()
+        run: node tools/seo-score.mjs --json > seo-static-score.json
+
+      - name: Live robots/sitemap/canonical/schema smoke
+        if: always()
+        run: node tools/seo-live-monitor.mjs --json > seo-live-monitor.json
+
+      - name: Job summary
+        if: always()
+        run: |
+          echo "## MotoAI SEO Audit & Monitoring" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Static audit: tools/site-audit.mjs and tools/seo-score.mjs" >> "$GITHUB_STEP_SUMMARY"
+          echo "Live audit: tools/seo-live-monitor.mjs" >> "$GITHUB_STEP_SUMMARY"
+          if test -s seo-live-monitor.json; then
+            node -e 'const r=require("./seo-live-monitor.json"); console.log("Checks: "+r.passed+" PASS / "+r.failed+" FAIL; sitemap URLs: "+r.sitemapUrls+"; sampled HTML pages: "+r.sampledPages)' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "HTTP crawlability is not evidence of actual Google/Bing indexing or Core Web Vitals field data." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: motoai-seo-audit
+          path: |
+            seo-offline-audit.txt
+            seo-static-score.json
+            seo-live-monitor.json
+          if-no-files-found: warn
+          retention-days: 14
