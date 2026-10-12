@@ -6688,6 +6688,28 @@
       "entry_sha256": "a53fae7e3ccb2854a31e41c65d869001c2ab39155ad83b4ddaefdb2f30696dd4",
       "production_status": 200,
       "verified_at": "2026-10-12T06:58:28.511Z"
+    },
+    "BA-0647": {
+      "article_id": "BA-0647",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/den-xe-va-an-toan-dem-cho-nguoi-moi/",
+      "publication_sha": "c3f5c8ed8ecddd85bc5cf03f326dfaffdd876f96",
+      "page_sha256": "06f36c112feebeca8f57c502123574c37ec283940fbf2dfde5eca101c786f9af",
+      "body_sha256": "a43b8ae761f8c79189660e734ab187cb972f1f51e05cf872d50ec7ce992efdd1",
+      "entry_sha256": "734daaa02c2f30b5be1eba1273976e07d685e6ec52783f98e1ac954fbc82a117",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:15:33.260Z"
+    },
+    "BA-0648": {
+      "article_id": "BA-0648",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/trang-an-ride-hai-ngay-mot-dem/",
+      "publication_sha": "c3f5c8ed8ecddd85bc5cf03f326dfaffdd876f96",
+      "page_sha256": "0c45d00832994995f3dabae5d117725debdb3d83b175b8d6d14e59ed2f4d3b0e",
+      "body_sha256": "6ba0be182a10cfa84b59c52e4a035d4f10dc4bf745d0ab282d1fef9728ca1369",
+      "entry_sha256": "925badbf92c641fdeeb70e164856f3cf57c62d1f83b672b9fe109066b1922a52",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:15:33.264Z"
     }
   }
 }
