@@ -2464,3 +2464,10 @@
 - 2026-10-12 QA PASS BA-0699 score=100
 - 2026-10-12 QA PASS BA-0700 score=100
 - 2026-10-12 PUBLISHED 2 (BA-0699, BA-0700) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-12 CLAIM 1: BA-0701
+- 2026-10-12 FINISH BA-0701
+- 2026-10-12 CLAIM 1: BA-0702
+- 2026-10-12 FINISH BA-0702
+- 2026-10-12 QA PASS BA-0701 score=100
+- 2026-10-12 QA PASS BA-0702 score=95
+- 2026-10-12 PUBLISHED 2 (BA-0701, BA-0702) — one grouped build, pages, matrix, indexes, sitemap consistent
