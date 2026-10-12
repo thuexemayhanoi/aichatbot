@@ -2576,3 +2576,10 @@
 - 2026-10-12 QA PASS BA-0731 score=100
 - 2026-10-12 QA PASS BA-0732 score=100
 - 2026-10-12 PUBLISHED 2 (BA-0731, BA-0732) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-12 CLAIM 1: BA-0733
+- 2026-10-12 FINISH BA-0733
+- 2026-10-12 CLAIM 1: BA-0734
+- 2026-10-12 FINISH BA-0734
+- 2026-10-12 QA PASS BA-0733 score=100
+- 2026-10-12 QA PASS BA-0734 score=100
+- 2026-10-12 PUBLISHED 2 (BA-0733, BA-0734) — one grouped build, pages, matrix, indexes, sitemap consistent
