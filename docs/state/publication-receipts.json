@@ -7964,6 +7964,28 @@
       "entry_sha256": "3521ec248144ffb33f0c50dbad1b0ad6e6c9fc506c1641b2908d2ee45b1b3887",
       "production_status": 200,
       "verified_at": "2026-10-12T20:10:06.073Z"
+    },
+    "BA-0765": {
+      "article_id": "BA-0765",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/coc-khi-thue-xe-dien-gia-tot/",
+      "publication_sha": "ea21cca3ce21447f1cff7e345c527e33ef5d50aa",
+      "page_sha256": "98e8aed28014867f43df868bd5fb1bad8e0c59cd3004311268e01b332e9130ec",
+      "body_sha256": "4bb48cba1cd3584dd597e27ad156c3e57408e71ebafa66d2c144982870c052a7",
+      "entry_sha256": "0c4ff349e3b68026d226e2d1a54082e01778d16bec0ee966e01bf2a5cedfef6a",
+      "production_status": 200,
+      "verified_at": "2026-10-12T20:15:00.826Z"
+    },
+    "BA-0766": {
+      "article_id": "BA-0766",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/trom-cap-xe-va-xe-thue-cho-khach-nuoc-ngoai/",
+      "publication_sha": "ea21cca3ce21447f1cff7e345c527e33ef5d50aa",
+      "page_sha256": "3a7a995633ad85aa745108541d5209961877fecb41cf81ccf2ceb88309ff6925",
+      "body_sha256": "56c2245c3a88eefc28bc5bee2d8ce4bb78d5fdf5162ce7b2d435ca0fd04793c6",
+      "entry_sha256": "f237eff1de786c70ab6c762613ca479edc4c0567e4d42dd5e7ae77786a913b28",
+      "production_status": 200,
+      "verified_at": "2026-10-12T20:15:00.824Z"
     }
   }
 }
