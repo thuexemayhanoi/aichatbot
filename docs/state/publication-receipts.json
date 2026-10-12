@@ -6380,6 +6380,28 @@
       "entry_sha256": "19e4075fc15db1cd82cf2ec0f2183b48925905a2f86cefff4f29d333a57b395f",
       "production_status": 200,
       "verified_at": "2026-10-12T05:18:22.770Z"
+    },
+    "BA-0630": {
+      "article_id": "BA-0630",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ha-long-duong-quoc-lo-hai-ngay-mot-dem/",
+      "publication_sha": "fbc9dba0530ef438e99f5ec17ec4da915dcb3bfa",
+      "page_sha256": "bc33c2e3e7f496fa124ccc380a34e70e5d49c2d352150634efdc813aa09a643e",
+      "body_sha256": "08a64f5fefebcd64fe3595250615cdc600b882520bf1177dc32addf5bfd80f54",
+      "entry_sha256": "d1e699c9543758f3d1d3e8cd274aa9636673623916d7fcf26bf9b09b2dcf553e",
+      "production_status": 200,
+      "verified_at": "2026-10-12T05:23:45.691Z"
+    },
+    "BA-0631": {
+      "article_id": "BA-0631",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/chinh-sach-du-lieu-cua-ung-dung-thue-xe-nam-2026/",
+      "publication_sha": "fbc9dba0530ef438e99f5ec17ec4da915dcb3bfa",
+      "page_sha256": "fdb801779243af66b39c162efb1a70c3edc5ae0378d864c88e999ebc7c52e49d",
+      "body_sha256": "029799adafd1745ee3eae126b17f8009adc2337c408dc3e9a06b47736514624b",
+      "entry_sha256": "b20267326ea8c1b5ee85b8bdb260a875ad0d53671521075a33edf7f31906e865",
+      "production_status": 200,
+      "verified_at": "2026-10-12T05:23:45.697Z"
     }
   }
 }
