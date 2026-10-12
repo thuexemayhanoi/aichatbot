@@ -6776,6 +6776,28 @@
       "entry_sha256": "9a7d1889b6088213d804db22a6009260a12918b93ba55162a1999308a53a0586",
       "production_status": 200,
       "verified_at": "2026-10-12T07:37:30.062Z"
+    },
+    "BA-0655": {
+      "article_id": "BA-0655",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-va-khach-vang-lai-nam-2026/",
+      "publication_sha": "43c4990f50e85c5a8256b93fcc0f9c45f0f6c35e",
+      "page_sha256": "d7750d2ee6bf85c83551ec682746f10e2c5d9ca58fc19bb81af42d4858503a77",
+      "body_sha256": "469e0a7330f51591f8d87f2832f9b0fa21baa461b788d8b51532abd6dbfb3e83",
+      "entry_sha256": "d88bef6c47265ec35f365122a76ffa6cef6713e1c2e24cdf6427e5ed0c834397",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:43:10.309Z"
+    },
+    "BA-0656": {
+      "article_id": "BA-0656",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xe-nao-tiet-kiem-xang-khi-thue-ky-nghi-le/",
+      "publication_sha": "43c4990f50e85c5a8256b93fcc0f9c45f0f6c35e",
+      "page_sha256": "22398570bb87ecc40b9a6b12bbac68ecef713a08c1e20f8c7a65c2be08a8b00a",
+      "body_sha256": "20158c7a5029cedf029ec14392a7ae93382f06389e879136e9f23dc4d21a135e",
+      "entry_sha256": "93cc3464ee6e2b5bad7a680d165cff6fbb7c3f28c9253ff8f80d48c71575c1b9",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:43:10.324Z"
     }
   }
 }
