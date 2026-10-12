@@ -8052,6 +8052,17 @@
       "entry_sha256": "3bf1629b2d1ab7317be4444d16cfce1dd4c9c65a6906f2d4480ad95141e729c0",
       "production_status": 200,
       "verified_at": "2026-10-12T20:42:07.583Z"
+    },
+    "BA-0773": {
+      "article_id": "BA-0773",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/phat-nguoi-va-xe-thue-cho-nguoi-moi/",
+      "publication_sha": "f1dfaa2db25b39169803003ac740bb9369bc6ccd",
+      "page_sha256": "617a596685f9e3f1946a25ae505dc91e8f13678798e68f584714a306532794f2",
+      "body_sha256": "01227ccf9eb7ec29eaa98589b2570e6b253f7488b42def3564ebb67a3321bd47",
+      "entry_sha256": "8e4fb7f22eb7529a5de7d34ab65d7b5d792ea707b10e9e030bb0beaa48af5a94",
+      "production_status": 200,
+      "verified_at": "2026-10-12T20:51:47.876Z"
     }
   }
 }
