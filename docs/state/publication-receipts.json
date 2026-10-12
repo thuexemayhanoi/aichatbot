@@ -7898,6 +7898,28 @@
       "entry_sha256": "376981c38f1a22e1861957b3c475ea003f8edc351360ea2b9e4ab49e0b50053a",
       "production_status": 200,
       "verified_at": "2026-10-12T19:49:57.118Z"
+    },
+    "BA-0759": {
+      "article_id": "BA-0759",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/dang-ky-thue-xe-dien-gia-tot/",
+      "publication_sha": "2787a4f1febbe4eccf88492bfd32cc40a4048c1a",
+      "page_sha256": "0db5d2ad1860610244b9d54ad190e13b8a62e0f38ef0009485591ca9ba55a6cb",
+      "body_sha256": "f3e1b206a7f56ada34c593b1dc37e4e4caee8fe192b008e2c3abbdd2f1796405",
+      "entry_sha256": "f6f47104a61b0a70926b8d8060d2aa21f576b76220020a97079de455b8c3c858",
+      "production_status": 200,
+      "verified_at": "2026-10-12T19:55:54.204Z"
+    },
+    "BA-0760": {
+      "article_id": "BA-0760",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/luat-do-xe-pho-co-cho-khach-nuoc-ngoai/",
+      "publication_sha": "2787a4f1febbe4eccf88492bfd32cc40a4048c1a",
+      "page_sha256": "62ab4107cb9f5710abca519e778fab912917a6a21de35ed2b53cac88dc97f49f",
+      "body_sha256": "a3ef867e63170cdc29e405a0398955b6ba21d4f592e5c74ed713a38efb76ed36",
+      "entry_sha256": "c0a78a225026f4157b75614052d43c05433254f23697ba23864d0bcca722b597",
+      "production_status": 200,
+      "verified_at": "2026-10-12T19:55:54.194Z"
     }
   }
 }
