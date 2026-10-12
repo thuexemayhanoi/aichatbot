@@ -8673,6 +8673,36 @@
       "pilot": false,
       "body": "data/blog/articles/trach-nhiem-khi-tai-nan-voi-xe-thue-cho-nguoi-moi.body.html",
       "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0625",
+      "category": "APP",
+      "slug": "ai-tra-loi-trong-ung-dung-thue-xe-nam-2026",
+      "title": "ai Trả Lời Trong Ứng Dụng Thuê xe Năm 2026",
+      "description": "Nhắn một câu hỏi giá lúc nửa đêm và nhận trả lời ngay khiến nhiều khách tự hỏi: đầu kia là máy hay người. Năm 2026, câu trả lời vẫn là cả hai, nhưng",
+      "published_date": "2026-10-12",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ai-tra-loi-trong-ung-dung-thue-xe-nam-2026.body.html",
+      "knowledge_chunks": [
+        "Nhắn một câu hỏi giá lúc nửa đêm và nhận trả lời ngay khiến nhiều khách tự hỏi: đầu kia là máy hay người. Năm 2026, câu trả lời vẫn là cả hai, nhưng ranh giới phân công đã rõ và minh bạch hơn hẳn: trợ lý tự động lo nhóm câu hỏi có câu trả lời chuẩn, còn nhân viên thật gánh các tình huống cần quyết. Bài viết này vẽ lại bức tranh phân công ấy theo trải nghiệm năm 2026, để bạn biết câu nào gửi vào khung chat là đủ, câu nào nên gọi trực tiếp. Khái niệm nền về ứng dụng thuê xe nằm trong bài app thuê xe máy là gì năm 2026 , còn bản giải thích thế hệ trước nằm trong bài ai trả lời trong ứng dụng thuê xe .",
+        "Ba thay đổi đáng kể nhất trong năm: kênh hỏi mở rộng từ khung chat trong ứng dụng sang Zalo và tin nhắn điện thoại nên lớp tự động phải hiểu tiếng nói đời thường tốt hơn; trợ lý gắn nhãn minh bạch khi nào là máy và khi nào chuyển người, bạn không phải đoán nữa; và câu trả lời về giá luôn rút từ bảng đã xác nhận của cửa hàng, phần gợi ý mở rộng không được tự bịa mức."
+      ]
+    },
+    {
+      "article_id": "BA-0626",
+      "category": "RENT",
+      "slug": "gia-thue-thay-doi-theo-mua-khong-ky-nghi-le",
+      "title": "Giá Thuê Thay Đổi Theo Mùa Không kỳ Nghĩ lễ",
+      "description": "Khách hỏi giá thường nhận hai con số khác nhau ở hai thời điểm và tưởng mình bị báo tuỳ hứng. Sự thật là giá thuê xe máy ở các cửa hàng lớn có biến",
+      "published_date": "2026-10-12",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/gia-thue-thay-doi-theo-mua-khong-ky-nghi-le.body.html",
+      "knowledge_chunks": [
+        "Khách hỏi giá thường nhận hai con số khác nhau ở hai thời điểm và tưởng mình bị báo tuỳ hứng. Sự thật là giá thuê xe máy ở các cửa hàng lớn có biến động theo mùa, và khung biến động rõ nhất trong năm chính là các dịp nghỉ lễ. Bài viết này trả lời trọn câu hỏi theo góc nhìn kỳ nghỉ lễ: vì sao khung lễ dễ tăng, tăng ở gói nào trước, và cách nào giữ được mức tốt mà vẫn đi đúng kỳ mình muốn. Bản phân tích chu kỳ mùa đầy đủ nằm trong bài giá thuê thay đổi theo mùa không , còn bảng giá tham khảo cho dịp lễ nằm trong bài bảng giá thuê xe tham khảo kỳ nghỉ lễ .",
+        "Cơ chế rất dễ hiểu từ phía cung cầu: dịp nghỉ lễ kéo khách đột biến dồn vào vài ngày, đội xe mỗi cửa hàng là hữu hạn, nên áp lực đặt chỗ đẩy giá gói ngắn lên trước. Ngoài khung lễ, mặt bằng giá của các dòng phổ thông quanh năm thường ổn hơn nhiều khách tưởng."
+      ]
     }
   ]
 }
