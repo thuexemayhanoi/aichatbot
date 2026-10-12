@@ -5995,6 +5995,28 @@
       "entry_sha256": "02f59f8bbf451d694aff5577c8186694a08da52a48d888fd9e16c34fcf8abc53",
       "production_status": 200,
       "verified_at": "2026-10-12T02:45:56.676Z"
+    },
+    "BA-0603": {
+      "article_id": "BA-0603",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/pin-chay-khi-khong-dung-cho-khach-du-lich/",
+      "publication_sha": "e262e866a56d787a410f9c4a0b18a3a96fd447bc",
+      "page_sha256": "8e7d2ea31079607603c58ee7b349e6da0b75ae9cbff707eea1d69ea9cc6db8bc",
+      "body_sha256": "56561578e72838c2cd158506ceb02ff0bdda6ac0745c7ca6f65479161abd2748",
+      "entry_sha256": "ca3b848fbdf8c062b04127a1b419378c66c62cde6ee81e99ff1d82166e5d5819",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:50:14.552Z"
+    },
+    "BA-0604": {
+      "article_id": "BA-0604",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/tra-xe-dung-gio-de-tranh-phi-cho-nguoi-moi/",
+      "publication_sha": "e262e866a56d787a410f9c4a0b18a3a96fd447bc",
+      "page_sha256": "fe20b075d14346018c13de838d9b4ebd07c6fb5a85fb495bfcb5f417bb1a948d",
+      "body_sha256": "707a87983bbd276c480753d1512307258ff416571c5cdb7cd4afaa66a41ffd2b",
+      "entry_sha256": "7f14d1cbeae846b02444177b1cf7049b930c7b2dc06bfc3221997d9c7def5db2",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:50:14.539Z"
     }
   }
 }
