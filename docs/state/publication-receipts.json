@@ -6710,6 +6710,28 @@
       "entry_sha256": "925badbf92c641fdeeb70e164856f3cf57c62d1f83b672b9fe109066b1922a52",
       "production_status": 200,
       "verified_at": "2026-10-12T07:15:33.264Z"
+    },
+    "BA-0649": {
+      "article_id": "BA-0649",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/lo-trinh-tinh-nang-cua-ung-dung-thue-xe-may-nam-2026/",
+      "publication_sha": "dd26177433df7678e4cb461167db447a80814294",
+      "page_sha256": "932a8ea91133ba0e0d179251a3706c84c08cde4dadaa0bb1524355796a2e8fd6",
+      "body_sha256": "ac3606c9017c8bc56a0dcdcd07929dd736cceded72c27c374e19fe0213d0cc00",
+      "entry_sha256": "2da843758273d3fdfac4b54568b035801aeaa57b454f1fe47d823d5cd2a96abb",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:24:43.951Z"
+    },
+    "BA-0650": {
+      "article_id": "BA-0650",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-so-hay-xe-ga-cho-nguoi-moi-ky-nghi-le/",
+      "publication_sha": "dd26177433df7678e4cb461167db447a80814294",
+      "page_sha256": "1849ce777941dd8935a16d9ebb339e2ff668531c1e7be73227278f862cdc3cb2",
+      "body_sha256": "f1ceb7deffbc5521b0a8c0bd7ea60083b79582020d71347db3ba9d984a138c67",
+      "entry_sha256": "88db866c8c6a32ce6ffcd5f6c547631ff53963005dfa4d912f7a27e727e03297",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:24:43.939Z"
     }
   }
 }
