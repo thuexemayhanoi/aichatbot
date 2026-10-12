@@ -2713,3 +2713,10 @@
 - 2026-10-12 PUBLISHED 1 (BA-0769) — one grouped build, pages, matrix, indexes, sitemap consistent
 - 2026-10-12 QA PASS BA-0770 score=95
 - 2026-10-12 PUBLISHED 1 (BA-0770) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-12 CLAIM 1: BA-0771
+- 2026-10-12 FINISH BA-0771
+- 2026-10-12 CLAIM 1: BA-0772
+- 2026-10-12 FINISH BA-0772
+- 2026-10-12 QA PASS BA-0771 score=100
+- 2026-10-12 QA PASS BA-0772 score=100
+- 2026-10-12 PUBLISHED 2 (BA-0771, BA-0772) — one grouped build, pages, matrix, indexes, sitemap consistent
