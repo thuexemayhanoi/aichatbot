@@ -8074,6 +8074,17 @@
       "entry_sha256": "f5b065edfbc12610fd073f675067d9308b8ad881689d09044bce8c3689f5bcb0",
       "production_status": 200,
       "verified_at": "2026-10-12T20:53:34.526Z"
+    },
+    "BA-0775": {
+      "article_id": "BA-0775",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/dat-xe-bang-ung-dung-tai-ha-noi/",
+      "publication_sha": "cdfa44abc6c9bd86169887c1746d52a68b14b1ae",
+      "page_sha256": "63301d48ca3a5dc222adcace15749fb879a5cc41a775aa16e449c40981579b09",
+      "body_sha256": "bd43748e0eb706e2b6af310c538e8c587f388db6be55f6eb4c86e7a431db2e69",
+      "entry_sha256": "ff62413b85a156ea779b32a5978cbd00ff47af7cc937d98f2220fbcf1ed720d1",
+      "production_status": 200,
+      "verified_at": "2026-10-12T21:05:10.550Z"
     }
   }
 }
