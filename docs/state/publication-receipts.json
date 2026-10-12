@@ -7502,6 +7502,28 @@
       "entry_sha256": "2ae27309932e73015e62e9fa3c3f8f98f9e2f054842bb9c15d6d695710defe3f",
       "production_status": 200,
       "verified_at": "2026-10-12T17:40:33.345Z"
+    },
+    "BA-0723": {
+      "article_id": "BA-0723",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/bao-duong-xe-dien-gia-tot/",
+      "publication_sha": "6c6f9760ff2f727e130483f1b7f4ee6e3305809a",
+      "page_sha256": "31acd8ee652ac8748fee66d4404dfa65937cbbf804e853a8cf524c84f2fbaa53",
+      "body_sha256": "f1d34ec6804e9b16ddfc54ab5501d8a7166b5108a529da5f2b16733cb7cd7690",
+      "entry_sha256": "ab426580f2e1ce7b45354d48db4dfe76f230eb536f1b03ab70b843ee623b8694",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:47:24.208Z"
+    },
+    "BA-0724": {
+      "article_id": "BA-0724",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/ung-dung-ban-do-cho-nguoi-thue-xe-cho-khach-nuoc-ngoai/",
+      "publication_sha": "6c6f9760ff2f727e130483f1b7f4ee6e3305809a",
+      "page_sha256": "acfc7617af8e81a4180cd20afb01127ccb31991f1b31a4788d0f457d9beed273",
+      "body_sha256": "22c03246bc01d788536330060a29569f75a2e79ded09f92e0a3054c8d36e3f0b",
+      "entry_sha256": "f9e75b4ff8edd9f7c31fa9d8a2ba486ca99fb7c0c19281fd6ae64fa101a4c0b3",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:47:24.194Z"
     }
   }
 }
