@@ -6908,6 +6908,28 @@
       "entry_sha256": "4e386024f5188e3cb21044e3a46169a992f0f478128cb209f3d944b604d19a30",
       "production_status": 200,
       "verified_at": "2026-10-12T08:17:45.540Z"
+    },
+    "BA-0667": {
+      "article_id": "BA-0667",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/module-goi-y-xe-trong-ung-dung-thue-xe-nam-2026/",
+      "publication_sha": "dd50093edaf78c9a0377c92b1e262910369f9b14",
+      "page_sha256": "d0fab64618ce7bf24536efdc2949e1407ef7e82d5e222c6a287b04f0a6dd97ed",
+      "body_sha256": "ba6793f7e8acbc49e1a6d7db519c699a089788ca5bcf5474585a21685136ee15",
+      "entry_sha256": "4cc2348b782924db75f13b9541362eba8fede8692f75f067d9bb1a5776f8767f",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:25:01.715Z"
+    },
+    "BA-0668": {
+      "article_id": "BA-0668",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-may-cu-hay-moi-ky-nghi-le/",
+      "publication_sha": "dd50093edaf78c9a0377c92b1e262910369f9b14",
+      "page_sha256": "ead04b0901bbde1e17a56b090642db48acdcc68cb3dc3a648925f835fc145372",
+      "body_sha256": "8d1d3159df66cfe2113864663afcf603bc548144f5dc877c14499f113f26aa93",
+      "entry_sha256": "e86ba37c81204423265c312855b60279d6cee2f70094ed417f77767ceaf4673a",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:25:01.705Z"
     }
   }
 }
