@@ -6666,6 +6666,28 @@
       "entry_sha256": "42897ce340444f14d40a4098494e34500ade7b1c3fba606543d43ad8ba017d39",
       "production_status": 200,
       "verified_at": "2026-10-12T06:53:21.787Z"
+    },
+    "BA-0643": {
+      "article_id": "BA-0643",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi-nam-2026/",
+      "publication_sha": "a2a153e1559fef79aa264766c95d4fdc9c2156e0",
+      "page_sha256": "883e2483c0c8160549c245bfc1fbbcb9a1d86ecc03ac588d8bffcd745e1a509b",
+      "body_sha256": "e45935743c914b905efc9713e4bcfc358195c29461481c6a61fe23f155a38c70",
+      "entry_sha256": "685d661c7a11e753db06f0bf0f758c0a4e27191c18eb21a8ebb54bb586793ecb",
+      "production_status": 200,
+      "verified_at": "2026-10-12T06:58:28.515Z"
+    },
+    "BA-0644": {
+      "article_id": "BA-0644",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/chon-xe-theo-muc-dich-su-dung-ky-nghi-le/",
+      "publication_sha": "a2a153e1559fef79aa264766c95d4fdc9c2156e0",
+      "page_sha256": "c479505860caaf93530c7ed8a7d317c668d3948d0db2fb024c8e8c26387c02fc",
+      "body_sha256": "32bb14be37f75a792072617e45669f3cd9a325d5af1a18abee16522dd9321fa3",
+      "entry_sha256": "a53fae7e3ccb2854a31e41c65d869001c2ab39155ad83b4ddaefdb2f30696dd4",
+      "production_status": 200,
+      "verified_at": "2026-10-12T06:58:28.511Z"
     }
   }
 }
