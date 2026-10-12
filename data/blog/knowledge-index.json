@@ -12017,6 +12017,22 @@
       "url": "/blog/dia-phuong/hai-ba-trung-hanh-trinh-cuoi-tuan/",
       "category": "LOCAL",
       "text": "Mùa cao điểm, xe máy cho thuê cuối tuần thường hết sớm hơn ngày thường, nên hãy chốt xe trước: nhắn hoặc gọi {{ business.contact.phone_display }} để giữ xe, hỏi rõ khung nhận và trả, và đặt cọc trong khoảng từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe. Nhận xe sáng thứ Bảy sớm trong giờ mở cửa của cửa hàng cho bạn trọn hai ngày; nếu dự kiến chơi tới tối Chủ Nhật, đọc trước cách gia hạn thời gian thuê để không tính phát ngoài dự kiến. Cửa hàng ở Long Biên, từ đó qua cầu Long Biên hoặc cầu Chương Dương là vào thẳng các trục phía nam, phần chạy chính khoảng mười lăm đến hai mươi phút thon"
+    },
+    {
+      "id": "BA-0775:c1",
+      "article_id": "BA-0775",
+      "title": "Đặt xe Bằng Ứng Dụng Tại Hà Nội",
+      "url": "/blog/app/dat-xe-bang-ung-dung-tai-ha-noi/",
+      "category": "APP",
+      "text": "Đặt xe máy qua ứng dụng hay trợ lý trò chuyện đã là cách quen thuộc với nhiều khách ở Hà Nội, nhưng mỗi thành phố vẫn có những đặc thù riêng: khung giờ cửa hàng, các mùa khan xe, khoảng cách từ chỗ ở tới điểm nhận xe và cách chọn dòng xe cho từng kiểu cung đường nội thành. Bài này gộp các đặc thù của Hà Nội lại thành một cẩm nang đặt xe ngắn, để bạn chốt đơn nhanh mà vẫn khớp với hoàn cảnh của mình."
+    },
+    {
+      "id": "BA-0775:c2",
+      "article_id": "BA-0775",
+      "title": "Đặt xe Bằng Ứng Dụng Tại Hà Nội",
+      "url": "/blog/app/dat-xe-bang-ung-dung-tai-ha-noi/",
+      "category": "APP",
+      "text": "Cửa hàng mở theo khung {{ business.hours.display }} mỗi ngày, và mọi bước nhận xe, giao xe hay tiếp tục hội thoại đều chạy trong khung này. Nghĩa là bạn gửi tin đặt xe được bất kỳ lúc nào trong ngày, nhưng cuộc trò chuyện được trả lời tiếp và xe được bàn giao trong giờ mở cửa. Ai hay quên khung giờ này, hãy lưu sẵn vào lịch điện thoại trước kỳ thuê. Cách cửa hàng trò chuyện với khách qua kênh ứng dụng được mô tả trong bài gọi điện tử từ ứng dụng thuê xe , còn nếu bạn mới dùng lần đầu, trình tự cơ bản nằm ở kịch bản dùng app cho người mới ."
     }
   ]
 }
