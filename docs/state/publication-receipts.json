@@ -7216,6 +7216,28 @@
       "entry_sha256": "b762d146760bd410345370f990a41bda71c81037128b9cf14962d25e5791b0f4",
       "production_status": 200,
       "verified_at": "2026-10-12T15:23:24.822Z"
+    },
+    "BA-0695": {
+      "article_id": "BA-0695",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/den-do-va-camera-phat-nguoi-cho-nguoi-moi/",
+      "publication_sha": "eb5e5add244ccdc2e71d59a1f0d64f87be522aa6",
+      "page_sha256": "da847d59e64d178312e9424066e696c53f9b3ce38ae9350e571cf26ca3831f76",
+      "body_sha256": "35f7e4c11fc93b0e582528662e0e390a9ab6b29fc9f240597911f6b10d6c33c9",
+      "entry_sha256": "7e794628255c17d270cc728784e0a511ae3e39afdade903900f90515084ba158",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:32:25.177Z"
+    },
+    "BA-0696": {
+      "article_id": "BA-0696",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/sai-gon-duong-nam-hai-ngay-mot-dem/",
+      "publication_sha": "eb5e5add244ccdc2e71d59a1f0d64f87be522aa6",
+      "page_sha256": "4b2c6aa508522da56b2cec854e1922bae0c7e974e2ea4afa5acccf2f7b96ad1b",
+      "body_sha256": "c653f41349e9baa51f7148965ae7cd85ee09f556e6c6ebd653fd43d2c0004f7d",
+      "entry_sha256": "243cf7d79a2a876ba81db9946e2f0b39df656e17695e19728a3f3d4b249366c2",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:32:25.182Z"
     }
   }
 }
