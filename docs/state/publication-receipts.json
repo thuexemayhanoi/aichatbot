@@ -7348,6 +7348,28 @@
       "entry_sha256": "cfa1c9da5a86f153b6a20ddf378f59f9a555323a37840a2e1d4dbc0728248459",
       "production_status": 200,
       "verified_at": "2026-10-12T15:59:32.863Z"
+    },
+    "BA-0707": {
+      "article_id": "BA-0707",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/dien-thoai-khi-lai-xe-cho-nguoi-moi/",
+      "publication_sha": "47f0c3902ca97c75311a46d70650fd8c11f40578",
+      "page_sha256": "6a13a45f2824bac151ff6b214c8d336bfbc0dcd80229babb298a0046c4a782b3",
+      "body_sha256": "409c86ca98a27e476e9348ff96e5b22553beba80c53ce5d010b8f74f88facca2",
+      "entry_sha256": "a53257cd8d9c05c570c812f362e5888dfb4e5552d6a684a86dae20277ac15a65",
+      "production_status": 200,
+      "verified_at": "2026-10-12T16:03:08.043Z"
+    },
+    "BA-0708": {
+      "article_id": "BA-0708",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ha-giang-vong-cung-hai-ngay-mot-dem/",
+      "publication_sha": "47f0c3902ca97c75311a46d70650fd8c11f40578",
+      "page_sha256": "8d65b012e1aa1612d89dd383be608fdcb597f83956bbaaaeef3f2a4109bcea33",
+      "body_sha256": "3b508c327b7c37631d5094b2e6c0dbb79b3b38253dc6a134e4068ba4213e96f5",
+      "entry_sha256": "edcd0a3afc049907558d5a7c27689ab744a655e9d5140348321567ce2fe8009d",
+      "production_status": 200,
+      "verified_at": "2026-10-12T16:03:08.063Z"
     }
   }
 }
