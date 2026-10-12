@@ -7260,6 +7260,28 @@
       "entry_sha256": "bbccadf9ed99251c55f1279d290b55ac30b1aeb67f61ffe4cd6375a269e3d092",
       "production_status": 200,
       "verified_at": "2026-10-12T15:37:53.955Z"
+    },
+    "BA-0699": {
+      "article_id": "BA-0699",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/thue-xe-dien-co-re-khong-gia-tot/",
+      "publication_sha": "9c33fe331bc2fcd40518441f3bc0293c51b3824c",
+      "page_sha256": "660a6490d5143b16bdbd4449023649a1a6f554597e07c6a167ee27fb874e62cc",
+      "body_sha256": "b5cceed305d3b565ccb5dcbcdacff44eaad2bf926da2e7f49058aebd57d52bea",
+      "entry_sha256": "1ddaac8e5b2df82bc5774f1141b346fcfc3e181fdccdbdd6f711433379dda926",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:45:14.225Z"
+    },
+    "BA-0700": {
+      "article_id": "BA-0700",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/gia-han-thoi-gian-thue-cho-khach-nuoc-ngoai/",
+      "publication_sha": "9c33fe331bc2fcd40518441f3bc0293c51b3824c",
+      "page_sha256": "e5c8794c3e4c4ab17c9eb6844be87d3dcc0cc10d36f9bcbf7a54d06a68009de1",
+      "body_sha256": "affa46ed2c134d5cb7fee7e033d77187b28dcec818a004c77f6f9d9f13eba840",
+      "entry_sha256": "5d54f61e617a62070dc0930154decc91e3a0563c31d66586ecfc64c4d31fbd75",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:45:14.239Z"
     }
   }
 }
