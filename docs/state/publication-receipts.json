@@ -7172,6 +7172,28 @@
       "entry_sha256": "fa5b6e909e60b392544c1d1214bad34e00c4a33507b5695fcf93b900c5969267",
       "production_status": 200,
       "verified_at": "2026-10-12T12:17:40.833Z"
+    },
+    "BA-0691": {
+      "article_id": "BA-0691",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/canh-giac-voi-app-thue-xe-gia-mao-nam-2026/",
+      "publication_sha": "9323912fe8cc7bd293fa208e5b8e9dfd2fe9737d",
+      "page_sha256": "9bdaa85d6b9e38d8a8d881517347c97ffeb547ad15c175ccb4bcc90313b770fb",
+      "body_sha256": "f7b5c83455747be0d5737c5d32e7993900cfb6fabc699e7ef87655a8bc0f6950",
+      "entry_sha256": "bb500c265c1c71d91b0bdbdac8d4112c3737b6de0f5fa6f448912afc91fe71cb",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:16:49.133Z"
+    },
+    "BA-0692": {
+      "article_id": "BA-0692",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/ao-mua-khi-thue-xe-may-ky-nghi-le/",
+      "publication_sha": "9323912fe8cc7bd293fa208e5b8e9dfd2fe9737d",
+      "page_sha256": "5d6b3e6d664f3b967c91057b3a690f7315902ee4ed835d77ccb7c3b594dc05d7",
+      "body_sha256": "8ad14c3173047c6599252462370aca1ee645408ffc80a8cfde1cdd65f173aacc",
+      "entry_sha256": "6d42db4e7b93659ed148448201dc5dac1ed022712a90f04c74cc44e30a57b015",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:16:49.180Z"
     }
   }
 }
