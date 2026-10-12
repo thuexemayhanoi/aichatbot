@@ -7150,6 +7150,28 @@
       "entry_sha256": "785e9a523fad0b0037f270b0ecaaaa8dcf32ac7f6350ea73aab129bb242be36f",
       "production_status": 200,
       "verified_at": "2026-10-12T12:04:19.250Z"
+    },
+    "BA-0689": {
+      "article_id": "BA-0689",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/lan-duong-va-quy-tac-nhuong-cho-nguoi-moi/",
+      "publication_sha": "f1d652f17b42ebaaf79aa84bb872b2ef16bb32a9",
+      "page_sha256": "8dda0aef8a541f6587f5624a74bf582bd5b685648b00a5b897300ea6d0a8c665",
+      "body_sha256": "29da5deb007cf5cf66b9fbcaf48dd7ff2007438557765af92142ee770be6101c",
+      "entry_sha256": "14936d970246118cf4430e8b1c923e245e40bab9d7ae1f18709a25bb7e0e6851",
+      "production_status": 200,
+      "verified_at": "2026-10-12T12:17:40.841Z"
+    },
+    "BA-0690": {
+      "article_id": "BA-0690",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/hoi-an-cuoi-tuan-hai-ngay-mot-dem/",
+      "publication_sha": "f1d652f17b42ebaaf79aa84bb872b2ef16bb32a9",
+      "page_sha256": "442c5204bc5613a98a69bffc5c40b6ce1d3afe240052a7917ec20841b830315c",
+      "body_sha256": "f08099265b8a859f1a1877296f88bcc52b8df94bbf0aa023a0241badbf8a094b",
+      "entry_sha256": "fa5b6e909e60b392544c1d1214bad34e00c4a33507b5695fcf93b900c5969267",
+      "production_status": 200,
+      "verified_at": "2026-10-12T12:17:40.833Z"
     }
   }
 }
