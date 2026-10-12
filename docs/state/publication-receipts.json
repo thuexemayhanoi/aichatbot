@@ -6820,6 +6820,28 @@
       "entry_sha256": "5ecf27f427ef6297e199d7590307eea005cb6165291a78086b58beabd153e3c9",
       "production_status": 200,
       "verified_at": "2026-10-12T07:48:33.183Z"
+    },
+    "BA-0659": {
+      "article_id": "BA-0659",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/guong-chieu-hau-an-toan-cho-nguoi-moi/",
+      "publication_sha": "d6bccecf404a1670294e5a521071915fb3c2c352",
+      "page_sha256": "f11fd1d5d3d22bb46a8447b3b5abaf6124b8ca4f674f5702c568809efd266593",
+      "body_sha256": "ef25665125b5c7ff401ed59757d04aeae490bc0aa854166d57acebc931809b55",
+      "entry_sha256": "4c395eefeb9f067715418774d252118bf585c55151c3ac8fe8df54744cc2a801",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:54:44.406Z"
+    },
+    "BA-0660": {
+      "article_id": "BA-0660",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cuc-phuong-weekend-hai-ngay-mot-dem/",
+      "publication_sha": "d6bccecf404a1670294e5a521071915fb3c2c352",
+      "page_sha256": "f9e860b85ba2da5ad3d3c903dbd805e02ad9f2d6aff6c1bec314dd58b028beaa",
+      "body_sha256": "109207297aebb5f9d3e2212708a569fa154b2a24ce89aa85b11f8cefd6f9c37f",
+      "entry_sha256": "7cf3d75be41315a5d308a9e532cca56ccc397f0d7e3ce98de49bf3a57a16ff95",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:54:44.404Z"
     }
   }
 }
