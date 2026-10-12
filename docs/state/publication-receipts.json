@@ -6798,6 +6798,28 @@
       "entry_sha256": "93cc3464ee6e2b5bad7a680d165cff6fbb7c3f28c9253ff8f80d48c71575c1b9",
       "production_status": 200,
       "verified_at": "2026-10-12T07:43:10.324Z"
+    },
+    "BA-0657": {
+      "article_id": "BA-0657",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/pin-cua-xe-may-dien-gia-tot/",
+      "publication_sha": "31e885677b8ee624ae04b5f35d2c9c3c932876de",
+      "page_sha256": "66e44b6db2e1a88f266b132680764e5441c5fb3692f87d6327b400c8edccc38c",
+      "body_sha256": "138ef4f3e95a8db91c1599edca9556ac4e19b60216a4e5d6137a71fd3271f5ff",
+      "entry_sha256": "956bd7b2ad8a7160ccae7265b81895537b2b79cc4fde082a1c387522dd7e28b9",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:48:33.263Z"
+    },
+    "BA-0658": {
+      "article_id": "BA-0658",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/dat-coc-the-nao-cho-khach-nuoc-ngoai/",
+      "publication_sha": "31e885677b8ee624ae04b5f35d2c9c3c932876de",
+      "page_sha256": "026fa30b5292d318e556ccfdbd858e1132514590fb7c0946ecfe47d525680cc1",
+      "body_sha256": "4fea2ccef2ae11304591ebf82433418bf2c041937aeb559f470443aa596ed05f",
+      "entry_sha256": "5ecf27f427ef6297e199d7590307eea005cb6165291a78086b58beabd153e3c9",
+      "production_status": 200,
+      "verified_at": "2026-10-12T07:48:33.183Z"
     }
   }
 }
