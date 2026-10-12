@@ -2590,3 +2590,10 @@
 - 2026-10-12 QA PASS BA-0735 score=100
 - 2026-10-12 QA PASS BA-0736 score=100
 - 2026-10-12 PUBLISHED 2 (BA-0735, BA-0736) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-12 CLAIM 1: BA-0737
+- 2026-10-12 FINISH BA-0737
+- 2026-10-12 CLAIM 1: BA-0738
+- 2026-10-12 FINISH BA-0738
+- 2026-10-12 QA PASS BA-0737 score=100
+- 2026-10-12 QA PASS BA-0738 score=100
+- 2026-10-12 PUBLISHED 2 (BA-0737, BA-0738) — one grouped build, pages, matrix, indexes, sitemap consistent
