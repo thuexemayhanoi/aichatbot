@@ -7942,6 +7942,28 @@
       "entry_sha256": "1dda1702c0a9e169e46ec3a7bff4602120f3a46a4894ca63c6f36712bc725f3c",
       "production_status": 200,
       "verified_at": "2026-10-12T20:03:25.852Z"
+    },
+    "BA-0763": {
+      "article_id": "BA-0763",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/thue-xe-online-nhu-the-nao-tai-ha-noi/",
+      "publication_sha": "c8e57e97bb24badcd8d3c2e29f3a959825dc9da1",
+      "page_sha256": "e9119ec51b0c3d693adf8aa5353be5947f3598f62b8e9e536dc7119e0b79244a",
+      "body_sha256": "eeb3af51ce76505e328dc266fe7c4bbc48669a205754eecea23f26458a933d9b",
+      "entry_sha256": "6c8d8aca3e8b435acf079f889893b5dfa469717a9a6931f9a5fcf59801eae08c",
+      "production_status": 200,
+      "verified_at": "2026-10-12T20:10:06.074Z"
+    },
+    "BA-0764": {
+      "article_id": "BA-0764",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-50cc-cho-sinh-vien/",
+      "publication_sha": "c8e57e97bb24badcd8d3c2e29f3a959825dc9da1",
+      "page_sha256": "f316f02dd75493f09d152d189b3c1f1b85f995db90ee648e7e5bd3dc70ae4bdb",
+      "body_sha256": "a554c3e6ad76e82c08d609d61f69e8e2323f0ec6c31c92616efb82473c81ce6c",
+      "entry_sha256": "3521ec248144ffb33f0c50dbad1b0ad6e6c9fc506c1641b2908d2ee45b1b3887",
+      "production_status": 200,
+      "verified_at": "2026-10-12T20:10:06.073Z"
     }
   }
 }
