@@ -7084,6 +7084,28 @@
       "entry_sha256": "bfda47fb13f5127a5f303e17d81bfd3bf562b3463c06c3600e7b686aa725a6ad",
       "production_status": 200,
       "verified_at": "2026-10-12T08:55:43.068Z"
+    },
+    "BA-0683": {
+      "article_id": "BA-0683",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan-cho-nguoi-moi/",
+      "publication_sha": "b5d4b4e9e4b5aceedc749c5387234e5b74eedaf8",
+      "page_sha256": "b6e011fd1169b6cc04e5e0accaa31023af6ec1537ac8a61222fda829f32273f2",
+      "body_sha256": "4be9f14c79e05ae6f5984566c86deafc20e648ae1dab85abc6f6ae8968c620e7",
+      "entry_sha256": "dde0a9d9b3206396c899660207740510ef3bf60f94a78d9581a76bb23decdbb1",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:58:37.260Z"
+    },
+    "BA-0684": {
+      "article_id": "BA-0684",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/da-nang-hanh-trinh-bac-nam-hai-ngay-mot-dem/",
+      "publication_sha": "b5d4b4e9e4b5aceedc749c5387234e5b74eedaf8",
+      "page_sha256": "a4dde341d9a8ad2b55e3d818b890f721c50dc8bb01637c554af44c80339b16f4",
+      "body_sha256": "a9a57304a89fc07c8dabd2b38edf7416e358d7641c5549f52f56ff4ffcb7956c",
+      "entry_sha256": "72fc6200229fe0cd5892e9e0ca16ae02c13887b0abd1cd4a014a0241b8eb8ea4",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:58:37.275Z"
     }
   }
 }
