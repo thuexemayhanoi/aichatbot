@@ -5885,6 +5885,28 @@
       "entry_sha256": "d8656fa4f332bf69edb9059574ae18411eba9ceb90ae749fe41d9cca4bc1e280",
       "production_status": 200,
       "verified_at": "2026-10-12T02:29:16.519Z"
+    },
+    "BA-0595": {
+      "article_id": "BA-0595",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-tren-dien-thoai-cu-nam-2026/",
+      "publication_sha": "89ab6d88afe888c4f69548617311ce432a563dee",
+      "page_sha256": "3cedefc63368bc909d7b5db3501e4665146eb3cdbc490eca6ace89425008c050",
+      "body_sha256": "315903ef19e4ff7944cbfaa5ecce7e896c07146bbf631a2c09e73e2c9bbbc05f",
+      "entry_sha256": "e8d5b66869bb1747be0a9436a23c32aebcc398f30afeb5f338b15a27fdb20560",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:32:57.960Z"
+    },
+    "BA-0596": {
+      "article_id": "BA-0596",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/so-sanh-thue-xe-may-va-taxi-ky-nghi-le/",
+      "publication_sha": "89ab6d88afe888c4f69548617311ce432a563dee",
+      "page_sha256": "570b824442364ddecd8f7df43097b7f0d8343beb96174179acbcc3f114f90ae7",
+      "body_sha256": "f0689b3e4cfe323dba0d596d84ff31dde2254261d9fde45ef2b9d699422f7d59",
+      "entry_sha256": "99116a55bd4d2c234b918151e0648426f542204f62b6e88235032b94a3c7644a",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:32:57.952Z"
     }
   }
 }
