@@ -9642,6 +9642,36 @@
       "pilot": false,
       "body": "data/blog/articles/mua-lon-va-lai-xe-cho-nguoi-moi.body.html",
       "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0667",
+      "category": "APP",
+      "slug": "module-goi-y-xe-trong-ung-dung-thue-xe-nam-2026",
+      "title": "Module Gợi ý xe Trong Ứng Dụng Thuê xe Năm 2026",
+      "description": "Vào năm 2026, mở một ứng dụng thuê xe máy, điều đầu tiên bạn gặp vẫn là bảng xe dài với hàng chục dòng từ xe số nhỏ tới xe ga phổ thông. Càng nhiều",
+      "published_date": "2026-10-12",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/module-goi-y-xe-trong-ung-dung-thue-xe-nam-2026.body.html",
+      "knowledge_chunks": [
+        "Vào năm 2026, mở một ứng dụng thuê xe máy, điều đầu tiên bạn gặp vẫn là bảng xe dài với hàng chục dòng từ xe số nhỏ tới xe ga phổ thông. Càng nhiều lựa chọn, người thuê càng dễ chán nản khi tự so từng dòng, và module gợi ý xe trong ứng dụng thuê xe năm 2026 sinh ra để cắt bớt công đoạn đó: hệ thống nắm vài thông tin then chốt rồi rút ra nhóm xe tương thích với lịch trình của bạn. Bài viết này giải thích cách module vận hành ở bản cập nhật năm nay, những dữ liệu bạn nên khai để gợi ý trúng nhu cầu, và chuỗi việc cần làm sau khi danh sách hiện trên màn hình.",
+        "Nguyên lý nền tảng giữ nguyên: module đứng giữa bảng xe và người dùng, thu hẹp phạm vi lựa chọn dựa trên bốn nhóm tín hiệu là mục đích chuyến đi, số người cùng đi, kinh nghiệm và vóc dáng người lái, cùng ngân sách dự kiến. Phần mới của năm 2026 nằm ở độ tươi của dữ liệu: tình trạng xe còn trống được cập nhật theo thời gian thực, khung giá áp dụng được kéo thẳng từ dữ liệu cửa hàng, nên gợi ý bạn nhận gần như phản ánh đúng những gì đang có trên bãi."
+      ]
+    },
+    {
+      "article_id": "BA-0668",
+      "category": "RENT",
+      "slug": "thue-xe-may-cu-hay-moi-ky-nghi-le",
+      "title": "Thuê xe Máy cũ Hay Mới kỳ Nghĩ lễ",
+      "description": "Kỳ nghỉ lễ luôn là lúc nhu cầu thuê xe máy tăng vọt: các hành trình về quê, dạo phố cổ hay chạy vùng ven Hà Nội dồn lại trong vài ngày, và câu hỏi xe",
+      "published_date": "2026-10-12",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-may-cu-hay-moi-ky-nghi-le.body.html",
+      "knowledge_chunks": [
+        "Kỳ nghỉ lễ luôn là lúc nhu cầu thuê xe máy tăng vọt: các hành trình về quê, dạo phố cổ hay chạy vùng ven Hà Nội dồn lại trong vài ngày, và câu hỏi xe cũ hay xe mới lại được đặt ra thường hơn ngày thường. Lựa chọn này không có đáp án cố định, vì hai nhóm xe phục vụ hai kiểu nhu cầu khác nhau, lại cộng thêm yếu tố mùa vụ: dịp lễ, xe tốt bị chốt nhanh và khung giá dịch chuyển theo cung cầu. Bài viết này so sánh riêng trong bối cảnh nghỉ lễ, chỉ ra khi nào xe cũ đủ dùng và khi nào xe mới đáng phần chênh lệch; bản so sánh cho ngày thường nằm trong bài thuê xe máy cũ hay mới .",
+        "Ngày thường, bạn có cả tuần để chọn, so và đổi xe. Dịp lễ, khung thời gian co lại: mọi người đặt trước, bãi xe đổi liên tục, và quyết định thường phải đưa trong vài giờ. Vì thế, tiêu chí chọn xe cũ hay xe mới dịp lễ không chỉ là tiền thuê từng ngày mà còn là xác suất bạn xin được đúng chiếc mình muốn vào đúng khung giờ định đi."
+      ]
     }
   ]
 }
