@@ -6105,6 +6105,28 @@
       "entry_sha256": "6eec4f177f747badbdcd7875cc101a45a8f5337b8c193a677c8438ee86ba22f1",
       "production_status": 200,
       "verified_at": "2026-10-12T04:17:51.199Z"
+    },
+    "BA-0613": {
+      "article_id": "BA-0613",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-nam-2026/",
+      "publication_sha": "63c1c5ae48a66e3654a2ed5e8d27bf995f15fb34",
+      "page_sha256": "c1287e966e9dad3aed0d23ea7a69fd6058c773c5dbadb13204d3bb6a21e12679",
+      "body_sha256": "16d1261cda79f55473dec318fe2006777271b2134f591b36244a290a847f1b2b",
+      "entry_sha256": "64feee0b9f474c88e53b1c7bc25c7840a319e9c9375df108028c28e750d459f3",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:23:13.052Z"
+    },
+    "BA-0614": {
+      "article_id": "BA-0614",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/bang-gia-thue-xe-tham-khao-ky-nghi-le/",
+      "publication_sha": "63c1c5ae48a66e3654a2ed5e8d27bf995f15fb34",
+      "page_sha256": "befcbc0e69fc09d4cd6ee7d47fa2c6d382aecebacab0c745ddcd148737cec7be",
+      "body_sha256": "a4c2f461cd07233bba887f285b9d13042cbdac9dea2c327f9bfcd6e6e56399bf",
+      "entry_sha256": "f4bc1c66750ced23c930610212ddca1c67fd27288d0f85c3634693e95f48939c",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:23:13.061Z"
     }
   }
 }
