@@ -7238,6 +7238,28 @@
       "entry_sha256": "243cf7d79a2a876ba81db9946e2f0b39df656e17695e19728a3f3d4b249366c2",
       "production_status": 200,
       "verified_at": "2026-10-12T15:32:25.182Z"
+    },
+    "BA-0697": {
+      "article_id": "BA-0697",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu-nam-2026/",
+      "publication_sha": "1c1befcf8231a555865f71cd9994cc436980d80e",
+      "page_sha256": "1814100002d8ea70a29e699924043e81974bee3c5d6c5b7edad90a526edef281",
+      "body_sha256": "48eea93bad5aa103ef08254fde350663b68bc5da4a8646cf8b37475f2c883479",
+      "entry_sha256": "cd9f44cd2f2b8508c209893949d5169f23861c9d5c0d8fbb6624c0ba93d4b331",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:37:53.938Z"
+    },
+    "BA-0698": {
+      "article_id": "BA-0698",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-xe-thang-cho-sinh-vien-ky-nghi-le/",
+      "publication_sha": "1c1befcf8231a555865f71cd9994cc436980d80e",
+      "page_sha256": "70c73e996769476582efebf1c01ae35088b2f75fe55ef266ac1279445460834e",
+      "body_sha256": "945d7bc7c8701b939870ed602d859cba6365856eed3be19aab1eeaf9a166ede2",
+      "entry_sha256": "bbccadf9ed99251c55f1279d290b55ac30b1aeb67f61ffe4cd6375a269e3d092",
+      "production_status": 200,
+      "verified_at": "2026-10-12T15:37:53.955Z"
     }
   }
 }
