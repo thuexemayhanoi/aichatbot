@@ -7414,6 +7414,28 @@
       "entry_sha256": "c8e5cb0123bf3b1efc157dbc763b45a13707a2e01cd532cc7667edead0a73e16",
       "production_status": 200,
       "verified_at": "2026-10-12T17:02:58.343Z"
+    },
+    "BA-0715": {
+      "article_id": "BA-0715",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-ho-tro-thue-xe-theo-thang-nam-2026/",
+      "publication_sha": "ce677ee639356bdb81fe620d548dea4747907af2",
+      "page_sha256": "e7ec7782fe7f41b1d1693af39199123024bac3780e1e58a1ed6a38fbfdc43229",
+      "body_sha256": "f918f912c8a022fffad98f6113b52fc2a4616b74aaed1a8be722625fe6551b1e",
+      "entry_sha256": "b3c8bf75f0baa2f48fdae7cae3e9ce68cd2c0a9fdbb0706a0efb53a89cb037c0",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:06:31.278Z"
+    },
+    "BA-0716": {
+      "article_id": "BA-0716",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-cong-ty-cho-nhan-vien-ky-nghi-le/",
+      "publication_sha": "ce677ee639356bdb81fe620d548dea4747907af2",
+      "page_sha256": "21b4e974c3623b10fccac143c074c870e24e8f7959d36e96566227ed983e3299",
+      "body_sha256": "5098853878a6171752740cd9b9e5954bd5dd7b5c6bc4473b2febb8024020c84b",
+      "entry_sha256": "7ab283c8632b266efebade53c4c7e1a89aeaadcddb5a55073afe74c7208b53f2",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:06:31.264Z"
     }
   }
 }
