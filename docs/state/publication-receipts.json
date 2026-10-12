@@ -6644,6 +6644,28 @@
       "entry_sha256": "ed02cc1b3acf340d053c472a86c41fe129643e0340fcb9c5231e60897283b5c2",
       "production_status": 200,
       "verified_at": "2026-10-12T06:48:22.838Z"
+    },
+    "BA-0641": {
+      "article_id": "BA-0641",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/kham-suc-khoe-lai-xe-cho-nguoi-moi/",
+      "publication_sha": "c4dbc1fb7299c0b9a47abf8816a5d876c9ac0856",
+      "page_sha256": "45b0b239a09b92fb4bd88acf6e6395d443495731ae8128283bc2de1de2bc7c1c",
+      "body_sha256": "a37076b1466f456c76239d24f882d580effe5113b71fbdb3b4fc3ebf6d8152a4",
+      "entry_sha256": "5f653680c3b40e418ec57b2adc7637f4e87cdf22a00452a195b1012711e346c0",
+      "production_status": 200,
+      "verified_at": "2026-10-12T06:53:21.771Z"
+    },
+    "BA-0642": {
+      "article_id": "BA-0642",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/thanh-hoa-va-xe-duong-dai-hai-ngay-mot-dem/",
+      "publication_sha": "c4dbc1fb7299c0b9a47abf8816a5d876c9ac0856",
+      "page_sha256": "73dfe9d873822af046344911d003af20f53594bf62ff1b88ec81f9d908130525",
+      "body_sha256": "a666134a6e0f6085bb2afd8c80bc28b895971a9925b5d62bfc84511341feea78",
+      "entry_sha256": "42897ce340444f14d40a4098494e34500ade7b1c3fba606543d43ad8ba017d39",
+      "production_status": 200,
+      "verified_at": "2026-10-12T06:53:21.787Z"
     }
   }
 }
