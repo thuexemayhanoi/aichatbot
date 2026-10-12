@@ -11889,6 +11889,38 @@
       "url": "/blog/app/thue-xe-online-nhu-the-nao-tai-ha-noi/",
       "category": "APP",
       "text": "Vòng thuê online cơ bản đã được mô tả trọn trong bài thuê xe online như thế nào , còn nhịp quen thuộc gần nhất nằm trong bản thuê xe online năm 2026 : mô tả nhu cầu, nhận báo giá, chốt dòng xe cùng cách nhận, rồi gặp xe với giấy tờ bản gốc. Khi địa điểm là Hà Nội, ba điểm trong vòng đó cần gắn thêm thông tin địa phương. Điểm một là nơi nhận xe: nhận tại cửa hàng hay giao tận nơi, và nếu giao tận nơi thì khu của bạn nằm trong phạm vi thỏa thuận ra sao. Điểm hai là khung giờ: giờ mở cửa của cửa hàng và giờ cao điểm của thành phố chồng lên nhau thế nào. Điểm ba là tuyến đi dự kiến: phố cổ, vành đai hay cung đường về phía ngoại thành, vì dòng xe "
+    },
+    {
+      "id": "BA-0765:c1",
+      "article_id": "BA-0765",
+      "title": "Cọc Khi Thuê xe Điện Giá Tốt",
+      "url": "/blog/xe-dien/coc-khi-thue-xe-dien-gia-tot/",
+      "category": "EV",
+      "text": "Thuê xe điện giá tốt là cụm từ hay bị hiểu nhầm thành tìm mức giá niêm yết thấp nhất, trong khi chi phí thật của một kỳ thuê xe điện gồm ba phần: giá thuê theo ngày, phần điện sạc trong kỳ, và một khoản đặt cọc nằm trong khoảng từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy dòng xe. Khác với hai phần đầu, khoản cọc không phải là chi tiêu: nó quay về tay bạn khi kỳ thuê kết thúc đúng hiện trạng. Nghĩa là cách kéo tổng chi về mức thấp nhất không nằm ở mặc cả, mà nằm ở việc hiểu khoản cọc vận hành ra sao và giữ cho nó được hoàn đủ. Bài này tách từng cánh cổng quyết định khoản cọc về nguyên vẹn, từ "
+    },
+    {
+      "id": "BA-0765:c2",
+      "article_id": "BA-0765",
+      "title": "Cọc Khi Thuê xe Điện Giá Tốt",
+      "url": "/blog/xe-dien/coc-khi-thue-xe-dien-gia-tot/",
+      "category": "EV",
+      "text": "Tưởng tượng một kỳ thuê xe điện ba ngày: tiền thuê nhân theo ngày là khoản thứ nhất, điện sạc thêm dọc đường là khoản thứ hai, và khoản thứ ba chính là phần đặt cọc bạn mang theo khi nhận xe. Khác nhau ở chỗ hai khoản đầu tiêu dần, còn khoản thứ ba chỉ tạm giữ rồi quay về. Với nhiều khách, phần mang theo lớn nhất lại chính là phần tạm giữ ấy, nên chuẩn bị đúng số và giữ đúng điều kiện hoàn là hai việc đáng làm ngay từ lượt hỏi đầu. Cách hỏi giá cùng lúc trong một tin nhắn đã được mô tả trong bài đăng ký thuê xe điện , còn phần điện trong kỳ thuê nằm trong bài chi phí điện khi thuê xe điện ."
+    },
+    {
+      "id": "BA-0766:c1",
+      "article_id": "BA-0766",
+      "title": "Trộm Cắp xe và xe Thuê Cho Khách Nước Ngoài",
+      "url": "/blog/huong-dan/trom-cap-xe-va-xe-thue-cho-khach-nuoc-ngoai/",
+      "category": "GUIDE",
+      "text": "Trộm cắp xe và xe thuê cho khách nước ngoài là chủ đề có thêm một lớp so với người thuê nội địa: bạn đang ở một thành phố lạ, chưa phân biệt được bãi gửi xe nào đáng tin, không đọc được biển chỉ dẫn, và nếu chẳng may xe mất, phần trình báo lại gặp thêm rào cản ngôn ngữ. Nỗi lo ấy không cần quá lớn: phần lớn rủi ro mất xe gỡ được bằng vài thói quen đơn giản dựng ngay trong ngày đầu, và phần xử lý cũng có trình tự rõ ràng. Bài này đi theo đúng hành trình của một vị khách nước ngoài khi thuê xe máy ở Hà Nội: chuẩn bị trước khi nhận, giữ xe qua từng điểm tham quan, và trình tự đối phó nếu chuyện xấu xảy ra."
+    },
+    {
+      "id": "BA-0766:c2",
+      "article_id": "BA-0766",
+      "title": "Trộm Cắp xe và xe Thuê Cho Khách Nước Ngoài",
+      "url": "/blog/huong-dan/trom-cap-xe-va-xe-thue-cho-khach-nuoc-ngoai/",
+      "category": "GUIDE",
+      "text": "Khách nước ngoài không dễ bị trộm hơn vì quốc tịch, mà vì ba điểm yếu rất con người: lịch trình nhiều điểm dừng ngắn, mỗi lần dừng đều là một lần xe đứng không ai canh; chưa quen thói quen gửi xe có người trông và vé, vì ở nhiều nơi người ta chỉ dựng xe ở vỉa hè; và tin vào bản đồ dẫn đến chỗ đỗ tiện xuống xe hơn là chỗ đỗ an toàn. Ba điểm yếu ấy cùng chỉ về một giải pháp: đổi thói quen đỗ xe theo tiêu chí an toàn, không theo tiêu chí tiện. Bản phòng ngừa viết riêng cho du khách đã được tách trong bài trộm xe và phòng ngừa cho du khách , còn bản dành cho người mới thuê nằm trong bài trộm cắp xe và xe thuê cho người mới ."
     }
   ]
 }
