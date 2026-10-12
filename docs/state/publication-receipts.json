@@ -7458,6 +7458,28 @@
       "entry_sha256": "f545bcd948eba5bdcdc51e0d964fe1e06d13004ccfd6675cafcadac9d7e435b2",
       "production_status": 200,
       "verified_at": "2026-10-12T17:26:23.013Z"
+    },
+    "BA-0719": {
+      "article_id": "BA-0719",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/quy-dinh-mu-bao-hiem-tre-em-cho-nguoi-moi/",
+      "publication_sha": "7bb83cf45c51f97da7538f9c7c9b5b8df945dac4",
+      "page_sha256": "468f5a44d7c4b85f11d1f07269d3572b64deddfce957cb64d7081e5572285c74",
+      "body_sha256": "6417fc4bf36a663abfc1451a35f9077829beb89ba6fb1f2efedadbf0625840bf",
+      "entry_sha256": "41d8d19d17621d25047393ad19e8a23ac0a4494c9a26049ae040643c5838f155",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:33:56.598Z"
+    },
+    "BA-0720": {
+      "article_id": "BA-0720",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/meo-vac-dong-cao-hai-ngay-mot-dem/",
+      "publication_sha": "7bb83cf45c51f97da7538f9c7c9b5b8df945dac4",
+      "page_sha256": "a8857098820ae8acc0af5fc4bc3d181f51eb0a3a426cf9f1f95e397a90d34a9e",
+      "body_sha256": "bb733e75e1935963eb873417502c0f2f928254f157b3066e480f33a05de46d9b",
+      "entry_sha256": "dae81f377fc184f44f088624f3383721f96050e5aa753791622cb2ad7c8a7f43",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:33:56.610Z"
     }
   }
 }
