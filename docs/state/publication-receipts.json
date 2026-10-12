@@ -5765,6 +5765,28 @@
       "production_status": 200,
       "verified_at": "2026-10-12T05:18:22.762Z"
     },
+    "BA-0547": {
+      "article_id": "BA-0547",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/dat-coc-va-ung-dung-thue-xe-nam-2026/",
+      "publication_sha": "e29e34ff4d1918e342096bde0654f2e2562fa396",
+      "page_sha256": "9d30a4a2feac95d9a94587c45711c99d628534d32a2178d98ea7a13ff7f25f77",
+      "body_sha256": "c5973f5d8b19ef7c0aed700aeccc08c8930ffafe3b738b3141e01ae4a0193095",
+      "entry_sha256": "b982178d5c05af7cc2a66be40f128992c9ad5a707c52a29ff87e70b613d62d1b",
+      "production_status": 200,
+      "verified_at": "2026-10-12T05:45:10.395Z"
+    },
+    "BA-0548": {
+      "article_id": "BA-0548",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/lien-he-dat-xe-nhanh-ky-nghi-le/",
+      "publication_sha": "e29e34ff4d1918e342096bde0654f2e2562fa396",
+      "page_sha256": "ceee2cf4bd4daff17425febc2fe73541b0c41b62c5cdb03908ca0cb4f246dbe8",
+      "body_sha256": "85aefbb0c2fbc0107a250e54fce8f710da54c95b6fdafd4535e15488eebb1c0d",
+      "entry_sha256": "32bff41782858320700e054be8e4041eaf8d065f50ba723f7c7e822c9ddea849",
+      "production_status": 200,
+      "verified_at": "2026-10-12T05:45:10.396Z"
+    },
     "BA-0556": {
       "article_id": "BA-0556",
       "status": "PUBLISHED",
