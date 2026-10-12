@@ -5951,6 +5951,28 @@
       "entry_sha256": "915c368ef74b58b702d3c35a46fce725a99cc2b43509099529b05bb22f5014f4",
       "production_status": 200,
       "verified_at": "2026-10-12T02:38:12.643Z"
+    },
+    "BA-0599": {
+      "article_id": "BA-0599",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/bang-lai-a1-a2-khac-gi-cho-nguoi-moi/",
+      "publication_sha": "a80299aa228d3544e55395ae88de734355bcb75a",
+      "page_sha256": "7ea846ed15d87b32693f48f186db27f112b174da0241507cda59ff8d56229aba",
+      "body_sha256": "7eaaad863daee14e66aa0b1b42162be08e7ad355d6d39924ca22e86607b51ff8",
+      "entry_sha256": "79ed052aa4539a6eab48ab557a11d5618a47854d554fbc9402432d808b56177f",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:42:32.165Z"
+    },
+    "BA-0600": {
+      "article_id": "BA-0600",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/thach-that-va-son-tay-hai-ngay-mot-dem/",
+      "publication_sha": "a80299aa228d3544e55395ae88de734355bcb75a",
+      "page_sha256": "6524860116a142e70dd9183f8a2686f1a17b99e9ca76b279d57de86fd3f7e3f7",
+      "body_sha256": "4add8deabb8e7266c60d6beb0d7cff89001ef642fd54142b5aa286d1c98fd177",
+      "entry_sha256": "a03c7b5ec39f94685f868a8601741a0474effe1ec564d61306ee358ae8df898f",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:42:32.298Z"
     }
   }
 }
