@@ -6017,6 +6017,28 @@
       "entry_sha256": "7f14d1cbeae846b02444177b1cf7049b930c7b2dc06bfc3221997d9c7def5db2",
       "production_status": 200,
       "verified_at": "2026-10-12T02:50:14.539Z"
+    },
+    "BA-0605": {
+      "article_id": "BA-0605",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-nguoi-moi/",
+      "publication_sha": "c3337ee52821a3781e13f47a3f80ea0c54604930",
+      "page_sha256": "9aa9e163e445e9ae010cc11560692dc7d2db54aa128fc25e6c9a68ca77b3245b",
+      "body_sha256": "e2e7425430350cd99e3fd92aad9fdfa192191d6053094793172784efc4ad4125",
+      "entry_sha256": "9fe515d7178346c3793b6d5a408bd07686701220fad8b4e3321fdec8b9ff5978",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:54:38.854Z"
+    },
+    "BA-0606": {
+      "article_id": "BA-0606",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/hoa-binh-duong-truong-hai-ngay-mot-dem/",
+      "publication_sha": "c3337ee52821a3781e13f47a3f80ea0c54604930",
+      "page_sha256": "f4aa3b7467e0b583e0014b6fd2b0893cc3af558e9c1a2ee0e69fd5210fb0f598",
+      "body_sha256": "a5137ddd8cedc9fc5b04c1c1bb1ce8dac6d5eb283d0fb0493e7da1b23da9976b",
+      "entry_sha256": "ab9b85150e8f25e87a0de649e28f8341504fb59b0ee62d5ed4334d301ca9ed53",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:54:38.859Z"
     }
   }
 }
