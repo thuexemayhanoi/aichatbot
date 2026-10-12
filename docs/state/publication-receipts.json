@@ -7876,6 +7876,28 @@
       "entry_sha256": "c19deafd1ec0197a61992b90a96447589b6df740076c71b11303fb0b620d6995",
       "production_status": 200,
       "verified_at": "2026-10-12T19:37:54.344Z"
+    },
+    "BA-0757": {
+      "article_id": "BA-0757",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/chon-xe-bang-agent-tai-ha-noi/",
+      "publication_sha": "03ddd0a5e88f78c7cf59fb3588ade8b809760a0e",
+      "page_sha256": "dcac99162a86952cfded0d2606dfafd48fa95bb5fab6e636c56f7d55d64538e7",
+      "body_sha256": "791f4ebada16fc2a5d53dab7b6374ec39806fcae95da4416bd7480a6583114d0",
+      "entry_sha256": "3c123013821275a27d38a1133ab8d70385027e6baf0ce715b7d17a23d9cf7846",
+      "production_status": 200,
+      "verified_at": "2026-10-12T19:49:57.109Z"
+    },
+    "BA-0758": {
+      "article_id": "BA-0758",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-ga-cho-sinh-vien/",
+      "publication_sha": "03ddd0a5e88f78c7cf59fb3588ade8b809760a0e",
+      "page_sha256": "12e23eb682752999e75d41cfedf0aad114357496bceebacc1023b9182378c29a",
+      "body_sha256": "1f1247130504f71be7bbb719d9a8981544fda2b193fcf6fccdf15ba6937a8a95",
+      "entry_sha256": "376981c38f1a22e1861957b3c475ea003f8edc351360ea2b9e4ab49e0b50053a",
+      "production_status": 200,
+      "verified_at": "2026-10-12T19:49:57.118Z"
     }
   }
 }
