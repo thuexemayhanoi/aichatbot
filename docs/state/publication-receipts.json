@@ -6127,6 +6127,28 @@
       "entry_sha256": "f4bc1c66750ced23c930610212ddca1c67fd27288d0f85c3634693e95f48939c",
       "production_status": 200,
       "verified_at": "2026-10-12T04:23:13.061Z"
+    },
+    "BA-0615": {
+      "article_id": "BA-0615",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/xe-dien-cho-thanh-pho-nho-cho-khach-du-lich/",
+      "publication_sha": "306634309b55ed2084d216af74e2aa4ac6c7daad",
+      "page_sha256": "1a91cc2413598938bdc89be200455c0090cdee66c3a6c1918e4fcb30602ad872",
+      "body_sha256": "e796e44aefee757a1eb3b3502843716ce2f0c2b04d8d8b10687d8b6c9952ab69",
+      "entry_sha256": "f36376c3ad3e789f3ff3d51d1f6cbf78606337fe12862b2507ad790066b5cc14",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:29:51.744Z"
+    },
+    "BA-0616": {
+      "article_id": "BA-0616",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/thu-tuc-thue-xe-may-cho-khach-nuoc-ngoai/",
+      "publication_sha": "306634309b55ed2084d216af74e2aa4ac6c7daad",
+      "page_sha256": "0a23170baaa7347aba331798c3b99122c7773823c2261fc528f457e33a4efe8a",
+      "body_sha256": "4f9d997fa1b0d9f63cd97488047f81f5498452d907c36af17d0e89f3aa69eae9",
+      "entry_sha256": "6e176a160a1b87ada2991b5ff6b8f0ec79a0fe81c004da6a0b008719176f488f",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:29:51.736Z"
     }
   }
 }
