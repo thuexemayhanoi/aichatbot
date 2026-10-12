@@ -6171,6 +6171,28 @@
       "entry_sha256": "eca9c30fb48a67be9f6a3427b47182244ffc5a748d772ab0dd82672120119ddb",
       "production_status": 200,
       "verified_at": "2026-10-12T04:34:27.217Z"
+    },
+    "BA-0619": {
+      "article_id": "BA-0619",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/tim-hieu-hybrid-search-trong-ung-dung-thue-xe-nam-2026/",
+      "publication_sha": "34fde5070db33005788c064a0e1bfac5cbef10fd",
+      "page_sha256": "69eeb6cfefb72f849c7d55a8d5a208647afc42ae26515c928f0640502b37613b",
+      "body_sha256": "eadb135ce2bfe21fa36f9a978d6fb1fb42c1805f9032324dc9c06502a547c7c0",
+      "entry_sha256": "39ccf15e74b4e6fa70d83103f948c845a3ecf1ba7e5b6e3992a7093f50c05c66",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:38:26.089Z"
+    },
+    "BA-0620": {
+      "article_id": "BA-0620",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/cach-doc-bang-gia-thue-xe-ky-nghi-le/",
+      "publication_sha": "34fde5070db33005788c064a0e1bfac5cbef10fd",
+      "page_sha256": "cbde96608931a5af09d01fd7ec816cf4489b5e39b50169d60e461a7a6f951c6f",
+      "body_sha256": "bf55a7ad0dff3ceb38a602721ca893bfc0344492609ee0ce991d90280da632d2",
+      "entry_sha256": "599e5f01f40f4cc14bc7c4540bbcc6ffc3bdc0486abf172f12951ec4d5cd006f",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:38:26.084Z"
     }
   }
 }
