@@ -39,7 +39,16 @@ Correction must be atomic: update shared facts, rebuild dependent pages, run nod
 
 ## Measurement policy
 
-VibeSEO's currently visible project is for thuexemaynguyentu.com, not this chatbot subdomain. Its AI-visibility results must not be attributed to chatbot.thuexemaynguyentu.com. GSC/Bing search impressions, click-through and actual index status remain unmeasured here without authorized property data.
+VibeSEO's currently visible project is for thuexemaynguyentu.com, not this chatbot subdomain. Its AI-visibility results must not be attributed to chatbot.thuexemaynguyentu.com. Its SEO keyword and AI checks currently lack a usable plan/quota.
+
+Google Search Console for https://chatbot.thuexemaynguyentu.com/ IS connected via the Windsor.ai Search Console integration. Read-only baseline fetched 2026-10-13, query range 2026-09-15 through 2026-10-10, reported daily rows 2026-10-07 to 2026-10-10:
+
+- 2026-10-09: 12 impressions, 0 clicks; 2026-10-10: 118 impressions, 3 clicks. 2026-10-07 and 2026-10-08 reported zero.
+- Total in these returned daily rows: **130 impressions, 3 clicks, 2.31% aggregate CTR**, approximately 10.51 impression-weighted average position. Position is not a rank guarantee and aggregates can vary by grouping.
+- Returned 44 page-level rows. /blog/dia-phuong/ho-tay-va-xe-may/ had 43 impressions/2 clicks/position 7.84; /blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may/ had 31 impressions/1 click/position 5.74.
+- The 9 returned query rows are not exhaustive (Search Console may anonymize query data). Some URLs were shown in Google Search, but these performance rows are NOT an exhaustive index coverage report. Bing connection/index data remain unverified.
+
+Do not mix these metrics with the parent domain, treat missing query rows as zero traffic, or imply that all PUBLISHED article URLs are indexed.
 
 ## Release criteria
 
