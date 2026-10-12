@@ -8862,6 +8862,33 @@
       "pilot": false,
       "body": "data/blog/articles/nghia-vu-cua-ben-cho-thue-cho-du-khach.body.html",
       "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0546",
+      "category": "LOCAL",
+      "slug": "ca-phe-trung-va-xe-may-hai-ngay-mot-dem",
+      "title": "cà Phê Trứng và xe Máy Hai Ngày Một Đêm",
+      "description": "Hai ngày một đêm là quãng thời gian vừa đủ để vừa dạo Hà Nội vừa uống hết các kiểu cà phê trứng, từ quán nhỏ trong nhà cổ tới các phiên bản mới ven",
+      "published_date": "2026-10-12",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ca-phe-trung-va-xe-may-hai-ngay-mot-dem.body.html",
+      "knowledge_chunks": [
+        "Hai ngày một đêm là quãng thời gian vừa đủ để vừa dạo Hà Nội vừa uống hết các kiểu cà phê trứng, từ quán nhỏ trong nhà cổ tới các phiên bản mới ven Hồ Tây. Khác với lịch một ngày hay bị gấp gáp, lịch hai ngày cho bạn nhịp thong thả: mỗi buổi một khu vực, mỗi quán một không gian. Bài viết xếp sẵn lộ trình hai ngày một đêm theo chủ đề cà phê trứng; bản chỉ dẫn cho một buổi dạo quán nằm tại bài cà phê trứng và xe máy .",
+        "Ngày một dành cho khu trung tâm, nơi phần lớn quán lâu đời nằm quanh chợ Đồng Xuân và các tuyến vào phố cổ. Xe máy cho bạn cơ hội đổi quán linh hoạt, nhưng trong ngõ vẫn nên gửi xe ở bãi có người trông rồi đi bộ."
+      ]
+    },
+    {
+      "article_id": "BA-0629",
+      "category": "SAFE",
+      "slug": "thu-tuc-khi-va-cham-nhe-cho-nguoi-moi",
+      "title": "Thủ Tục Khi va Chạm Nhẹ Cho Người Mới",
+      "description": "Cầm xe máy trong vài ngày đầu tiên mà va chạm nhẹ, phần lớn người mới chỉ muốn chuyện đó biến mất thật nhanh: gật đầu xin lỗi, vặn ga đi tiếp và mong",
+      "published_date": "2026-10-12",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thu-tuc-khi-va-cham-nhe-cho-nguoi-moi.body.html",
+      "knowledge_chunks": []
     }
   ]
 }
