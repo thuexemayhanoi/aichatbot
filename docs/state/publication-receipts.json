@@ -6193,6 +6193,28 @@
       "entry_sha256": "599e5f01f40f4cc14bc7c4540bbcc6ffc3bdc0486abf172f12951ec4d5cd006f",
       "production_status": 200,
       "verified_at": "2026-10-12T04:38:26.084Z"
+    },
+    "BA-0621": {
+      "article_id": "BA-0621",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/tuong-lai-xe-dien-cho-thue-cho-khach-du-lich/",
+      "publication_sha": "789ef72e408821fe6b3df769987c78282ca23e26",
+      "page_sha256": "21b0783d298981f82379605a8ada4bf9e232fac102c2f33362b579aabf93235f",
+      "body_sha256": "1f790e0cc467ddb72345ee57577f152c87221d1d28d9e8d340f2a742957af70f",
+      "entry_sha256": "45803a0a00e107472a3fd9fd2cdc2b90cd4df01efd571055b20e37ea1e20a4d5",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:42:17.846Z"
+    },
+    "BA-0622": {
+      "article_id": "BA-0622",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/giay-to-can-khi-thue-xe-cho-khach-nuoc-ngoai/",
+      "publication_sha": "789ef72e408821fe6b3df769987c78282ca23e26",
+      "page_sha256": "513a0efbc0bdc7aa5d3ff7269876f6771d116196fe376f4b12b05f01e6a54c0b",
+      "body_sha256": "b3b7a25badb12b7629dd050177f9ed647054f70f011261554219a44ec317b65a",
+      "entry_sha256": "551736baad772632cbced3abb553f8d5d74b1f194b30c51beee19c867aff59e7",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:42:17.838Z"
     }
   }
 }
