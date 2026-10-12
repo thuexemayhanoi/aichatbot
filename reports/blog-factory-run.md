@@ -2128,3 +2128,10 @@
 - 2026-10-12 FINISH BA-0526
 - 2026-10-12 QA PASS BA-0526 score=100
 - 2026-10-12 PUBLISHED 1 (BA-0526) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-12 CLAIM 1: BA-0525
+- 2026-10-12 FINISH BA-0525
+- 2026-10-12 CLAIM 1: BA-0531
+- 2026-10-12 FINISH BA-0531
+- 2026-10-12 QA PASS BA-0525 score=100
+- 2026-10-12 QA PASS BA-0531 score=100
+- 2026-10-12 PUBLISHED 2 (BA-0525, BA-0531) — one grouped build, pages, matrix, indexes, sitemap consistent
