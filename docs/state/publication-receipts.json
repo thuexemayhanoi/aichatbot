@@ -7480,6 +7480,28 @@
       "entry_sha256": "dae81f377fc184f44f088624f3383721f96050e5aa753791622cb2ad7c8a7f43",
       "production_status": 200,
       "verified_at": "2026-10-12T17:33:56.610Z"
+    },
+    "BA-0721": {
+      "article_id": "BA-0721",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/chon-thoi-diem-thue-xe-bang-ung-dung-nam-2026/",
+      "publication_sha": "da5b31901739a4be55ccfd45c80e7c78d013216e",
+      "page_sha256": "d938f821f55920825e1c3fe84c21e5b8f6133a2d5b514f8c9af280c8481d0bc5",
+      "body_sha256": "2a6e6b94426771f896c45aa6920a5a303fadf0ed0c90cbcb10e1e54c2563bb19",
+      "entry_sha256": "3099dadddb37fedbcaafdd1ec706bb59915418cc8fa6220ae79f663fdf6b9c2d",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:40:33.344Z"
+    },
+    "BA-0722": {
+      "article_id": "BA-0722",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-may-gia-re-cho-sinh-vien/",
+      "publication_sha": "da5b31901739a4be55ccfd45c80e7c78d013216e",
+      "page_sha256": "d22f2a39205dc7cade1b35664d05c78c26716cee09c792844b6baac926d8b5bf",
+      "body_sha256": "23424f2b121ff29170a38d854ae5e58555c29734243bf9f7903659ac3fe34c45",
+      "entry_sha256": "2ae27309932e73015e62e9fa3c3f8f98f9e2f054842bb9c15d6d695710defe3f",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:40:33.345Z"
     }
   }
 }
