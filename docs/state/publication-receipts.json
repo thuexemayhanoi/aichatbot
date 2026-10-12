@@ -6083,6 +6083,28 @@
       "entry_sha256": "e34c3853c1003c7491b22df26f7be6518e78ce6001fa28146eb9849ddfb7a573",
       "production_status": 200,
       "verified_at": "2026-10-12T03:02:27.195Z"
+    },
+    "BA-0611": {
+      "article_id": "BA-0611",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/idp-va-bang-lai-quoc-te-cho-nguoi-moi/",
+      "publication_sha": "0a8b9a8861684c0dab7b835c6fd5081fadd9603e",
+      "page_sha256": "a8064cf953b05309e0811e6a70756d157f22bfad4efff1e808ead64eff0f49d8",
+      "body_sha256": "a0ad44fce20ad361df7402fe483e5ddc26bfb0773f744bc9538f7b8e4051e1b4",
+      "entry_sha256": "34cd166314e1e6115bdcf90ea9b96a7608eba7bb6f937021ffe236ea1b024c99",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:17:51.191Z"
+    },
+    "BA-0612": {
+      "article_id": "BA-0612",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/tam-dao-bang-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "0a8b9a8861684c0dab7b835c6fd5081fadd9603e",
+      "page_sha256": "05bb12849ec69ec00a707af4bd6fb12339263b200133892dd5e9a26f501c8d95",
+      "body_sha256": "a88f1cbb204f9f0b5fb5b278303a7c644b38f75fc8aa56da664b5400122048bd",
+      "entry_sha256": "6eec4f177f747badbdcd7875cc101a45a8f5337b8c193a677c8438ee86ba22f1",
+      "production_status": 200,
+      "verified_at": "2026-10-12T04:17:51.199Z"
     }
   }
 }
