@@ -7744,6 +7744,28 @@
       "entry_sha256": "63426e0e3f79bda5bd22e6918821e00ae1be0a13cd35260a6d4dc00c643c7d3d",
       "production_status": 200,
       "verified_at": "2026-10-12T18:48:33.327Z"
+    },
+    "BA-0745": {
+      "article_id": "BA-0745",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-co-an-toan-khong-tai-ha-noi/",
+      "publication_sha": "8a60253517fad35a30942763e8332701f0d98093",
+      "page_sha256": "186f865cce78315f4d4cae40569c96292269805280dfeff103c39822dd80d09c",
+      "body_sha256": "4e249cab3c6eb2231d09bbc5f3ecf5817b8458f592fc4f852bdd00f3301a8b53",
+      "entry_sha256": "5c8fee0c7625bff5552236524f723d8c146224ba9c1bb11cf1b010cb902cbd52",
+      "production_status": 200,
+      "verified_at": "2026-10-12T18:56:06.776Z"
+    },
+    "BA-0746": {
+      "article_id": "BA-0746",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian-cho-sinh-vien/",
+      "publication_sha": "8a60253517fad35a30942763e8332701f0d98093",
+      "page_sha256": "c0d268eebbe6833da5c083efa9d2dc3c329c2cf364a368e3a4412913a88219e8",
+      "body_sha256": "a6633d703b75a9cc911b081914dbf61426fbbaa26068c0f7f49abe5e9e17848d",
+      "entry_sha256": "69d9a363dba9a5c4907376a2c841f5713f270b98928e1be0b88c077e72829b4a",
+      "production_status": 200,
+      "verified_at": "2026-10-12T18:56:06.783Z"
     }
   }
 }
