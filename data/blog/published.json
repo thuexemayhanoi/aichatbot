@@ -11181,6 +11181,33 @@
         "Khi gọi điện hỏi giá thuê xe điện, khách thường nhận về bảng giá nhiều dòng xếp cạnh nhau và câu hỏi tự nhiên là dòng nào rẻ nhất. So sánh các dòng xe điện cho thuê giá tốt không nên dừng ở con số giá ngày, vì khoản lớn nhất của kỳ thuê vẫn là giá thuê nhưng phần làm đổi khác biệt trải nghiệm lại là tầm pin, nhịp sạc và thời gian thuê. Bài này so các dòng xe điện cho thuê tại {{ business.brand }} theo trục chi phí: dải giá của từng nhóm, giá theo thời gian thuê, tiền điện và phần giữ chỗ, để bạn gọi {{ business.contact.phone_display }} hỏi một lần là chốt được dòng hợp túi tiền với lịch trình của mình.",
         "Nếu bạn chưa quen dòng xe điện nói chung, bản so theo nhu cầu đi lại nằm trong bài so sánh các dòng xe điện cho thuê , còn bản so theo lịch trình du lịch nằm trong bài dành cho du khách so dòng xe điện . Hai bài đó chia xe theo cách dùng; bài này bổ sung tia nhìn giá vào cùng bộ dòng xe."
       ]
+    },
+    {
+      "article_id": "BA-0774",
+      "category": "LOCAL",
+      "slug": "hai-ba-trung-hanh-trinh-cuoi-tuan",
+      "title": "Hai bà Trưng Hành Trình Cuối Tuần",
+      "description": "Cuối tuần là khung giờ nhiều khách chọn để thuê xe máy chạy quanh nội thành Hà Nội, và khu Hai Bà Trưng với các trục Bạch Mai, Minh Khai, Đại Cồ",
+      "published_date": "2026-10-12",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/hai-ba-trung-hanh-trinh-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Cuối tuần là khung giờ nhiều khách chọn để thuê xe máy chạy quanh nội thành Hà Nội, và khu Hai Bà Trưng với các trục Bạch Mai, Minh Khai, Đại Cồ Việt, Phố Huế là lựa chọn gọn: gần, nhiều điểm dừng, và mỗi khung giờ cuối tuần lại có một mặt riêng. Bài này xếp lịch hai ngày cuối tuần cho khu này bằng xe máy thuê, kèm những khác biệt của thứ Bảy, Chủ Nhật so với ngày thường mà chỉ khách đi cuối tuần mới cần biết.",
+        "Mùa cao điểm, xe máy cho thuê cuối tuần thường hết sớm hơn ngày thường, nên hãy chốt xe trước: nhắn hoặc gọi {{ business.contact.phone_display }} để giữ xe, hỏi rõ khung nhận và trả, và đặt cọc trong khoảng từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe. Nhận xe sáng thứ Bảy sớm trong giờ mở cửa của cửa hàng cho bạn trọn hai ngày; nếu dự kiến chơi tới tối Chủ Nhật, đọc trước cách gia hạn thời gian thuê để không tính phát ngoài dự kiến. Cửa hàng ở Long Biên, từ đó qua cầu Long Biên hoặc cầu Chương Dương là vào thẳng các trục phía nam, phần chạy chính khoảng mười lăm đến hai mươi phút thon"
+      ]
+    },
+    {
+      "article_id": "BA-0773",
+      "category": "SAFE",
+      "slug": "phat-nguoi-va-xe-thue-cho-nguoi-moi",
+      "title": "Phạt Nguội và xe Thuê Cho Người Mới",
+      "description": "Thuê xe máy lần đầu ở Hà Nội, bạn thường lo chuyện tai nạn hay hỏng xe, nhưng rủi ro âm thầm hơn lại là phạt nguội: một lỗi được camera ghi lại trong",
+      "published_date": "2026-10-12",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/phat-nguoi-va-xe-thue-cho-nguoi-moi.body.html",
+      "knowledge_chunks": []
     }
   ]
 }
