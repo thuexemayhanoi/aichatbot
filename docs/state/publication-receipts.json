@@ -5545,6 +5545,17 @@
       "production_status": 200,
       "verified_at": "2026-10-11T16:50:04.404Z"
     },
+    "BA-0525": {
+      "article_id": "BA-0525",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/xe-dien-het-han-pin-cho-khach-du-lich/",
+      "publication_sha": "ae9be96f03f4d736e5221038efec65498de869d1",
+      "page_sha256": "62ab8db99ea6f498c162ffe29a99253469eb9eea11bf3fc5549b702edf8d04bb",
+      "body_sha256": "5739f37c352644b42580993566d7f08747fda22b94f422cddeeac0c307e8bebf",
+      "entry_sha256": "8b88d15935f33ef1218c95dca4e5ac8478215528c3fe4c7da653d2f223764dcc",
+      "production_status": 200,
+      "verified_at": "2026-10-12T05:06:17.639Z"
+    },
     "BA-0526": {
       "article_id": "BA-0526",
       "status": "PUBLISHED",
@@ -5577,6 +5588,17 @@
       "entry_sha256": "3f3d68a639c278b9238b059acdbfec8753e6fb50fa6843e31c4281282aa51aba",
       "production_status": 200,
       "verified_at": "2026-10-11T17:08:27.845Z"
+    },
+    "BA-0531": {
+      "article_id": "BA-0531",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/thue-xe-dien-ban-dem-cho-khach-du-lich/",
+      "publication_sha": "ae9be96f03f4d736e5221038efec65498de869d1",
+      "page_sha256": "c4212f6111f6e39e44a08a4d6c3d66394c773d3f412d5d9d04bdf6fad2f6f80b",
+      "body_sha256": "d7099d29dedd35bfcdb233e8045a18c74d6b2665ab194ed9feb14159af0005e0",
+      "entry_sha256": "ba071564183ff8a294153eb3a6700b400b943321bd8593aeaf499c47fb7a5702",
+      "production_status": 200,
+      "verified_at": "2026-10-12T05:06:17.654Z"
     },
     "BA-0535": {
       "article_id": "BA-0535",
