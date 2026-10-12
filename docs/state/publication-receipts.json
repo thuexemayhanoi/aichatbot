@@ -6039,6 +6039,28 @@
       "entry_sha256": "ab9b85150e8f25e87a0de649e28f8341504fb59b0ee62d5ed4334d301ca9ed53",
       "production_status": 200,
       "verified_at": "2026-10-12T02:54:38.859Z"
+    },
+    "BA-0607": {
+      "article_id": "BA-0607",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/tro-ly-ao-tu-van-thue-xe-may-nam-2026/",
+      "publication_sha": "6e21cf7b88b24ff641201257e32f7f4193d78a05",
+      "page_sha256": "5a49065a593d972e5d8195061d383a4e8b7da01444f449774758b302baf5c734",
+      "body_sha256": "07d9f28f3f27ba85c9e256084e639a42cb022bcaa1461ebc634219041e14bd27",
+      "entry_sha256": "54b6abd8f935800aeeb96af3c28cd31d0ddbc6da44cc3e5c5b538ded15001a09",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:58:28.565Z"
+    },
+    "BA-0608": {
+      "article_id": "BA-0608",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/khoang-chi-phi-di-lai-khi-thue-xe-ky-nghi-le/",
+      "publication_sha": "6e21cf7b88b24ff641201257e32f7f4193d78a05",
+      "page_sha256": "85fc37e23ee90bd8e51063e0378d5cf429dd724b131f7177935e248c01330ffa",
+      "body_sha256": "9c5f4921a2fde64bff23ca32ee78330cb21487906c66ff04128dc77e1b8621a0",
+      "entry_sha256": "8b5c6964e222162e32fdad28c9b8d2567c2349fa1fb190cd07a6b3d67a216dce",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:58:28.567Z"
     }
   }
 }
