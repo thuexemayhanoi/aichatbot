@@ -7612,6 +7612,28 @@
       "entry_sha256": "8fd99b8ff0d2e5986c9945d93eb4d5e8a6664f6d1e3512658c4909a3fecce974",
       "production_status": 200,
       "verified_at": "2026-10-12T18:19:18.353Z"
+    },
+    "BA-0733": {
+      "article_id": "BA-0733",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/app-thue-xe-may-la-gi-tai-ha-noi/",
+      "publication_sha": "aaaaf40440c7d3ab6b41bfd920db1629a1af6f3f",
+      "page_sha256": "744e6c04e09376c7c5f3a5d7aa4f0b93019181d3eef008626e16d81d444d5261",
+      "body_sha256": "3a2a5e4ce2a2aa2b368e0ab03e1ac3910ec45f43c269629b0fada9c18f63df9c",
+      "entry_sha256": "e4499c7335716c797b99cc53bc696e11d30233899895dd77f96ec93c2b67049d",
+      "production_status": 200,
+      "verified_at": "2026-10-12T18:23:45.420Z"
+    },
+    "BA-0734": {
+      "article_id": "BA-0734",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-may-theo-tuan-cho-sinh-vien/",
+      "publication_sha": "aaaaf40440c7d3ab6b41bfd920db1629a1af6f3f",
+      "page_sha256": "a2abbf91184b3d35f6e753056cd1ba831e12c477a8f512d8f5d8d21a043b13ac",
+      "body_sha256": "30126f81e089d51dbaf2c0facea337d0cf225c3f553eaddebfe8079d5d4d9c92",
+      "entry_sha256": "e7d23f8d7f0f06569d98bc9bae70801df3d7bced83a5cb61d22f083524c69763",
+      "production_status": 200,
+      "verified_at": "2026-10-12T18:23:45.421Z"
     }
   }
 }
