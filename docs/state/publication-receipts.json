@@ -5863,6 +5863,28 @@
       "entry_sha256": "fbb10599680c947acf8bcecdb8e9c508da27d39093be93ea2ad2ebdd872fe1e0",
       "production_status": 200,
       "verified_at": "2026-10-11T18:30:45.274Z"
+    },
+    "BA-0593": {
+      "article_id": "BA-0593",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/di-xe-khong-giay-phep-cho-nguoi-moi/",
+      "publication_sha": "bf3a191c95a47796b16ba44625cb781157fd4d5b",
+      "page_sha256": "211d9ab2b265553361b543c46d679587dd08448e9161fab446a50a0a12e35768",
+      "body_sha256": "9f2359f4ab5b20e6835b2ed93c0f43ddc9f7f7885a5e2ccf3b7e81c024f3a557",
+      "entry_sha256": "23f36eceb5fb2d17020cbf417e0f62156f5c136131964271e044ca95ea1a4ea4",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:29:16.534Z"
+    },
+    "BA-0594": {
+      "article_id": "BA-0594",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ba-vi-cuoi-tuan-hai-ngay-mot-dem/",
+      "publication_sha": "bf3a191c95a47796b16ba44625cb781157fd4d5b",
+      "page_sha256": "028fb91b36b188ff66c18838307f932a528a4a74aaaaba989a06ebaca1284a9f",
+      "body_sha256": "bd2bd2f33338c834204adee0854169fe453037a0331c6b551e95bb1015218278",
+      "entry_sha256": "d8656fa4f332bf69edb9059574ae18411eba9ceb90ae749fe41d9cca4bc1e280",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:29:16.519Z"
     }
   }
 }
