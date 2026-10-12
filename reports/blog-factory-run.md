@@ -2653,3 +2653,10 @@
 - 2026-10-12 QA PASS BA-0753 score=100
 - 2026-10-12 QA PASS BA-0754 score=100
 - 2026-10-12 PUBLISHED 2 (BA-0753, BA-0754) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-12 CLAIM 1: BA-0755
+- 2026-10-12 FINISH BA-0755
+- 2026-10-12 CLAIM 1: BA-0756
+- 2026-10-12 FINISH BA-0756
+- 2026-10-12 QA FAIL BA-0755 -> REPAIR (attempt 1) score=0
+- 2026-10-12 QA PASS BA-0756 score=100
+- 2026-10-12 PUBLISHED 1 (BA-0756) — one grouped build, pages, matrix, indexes, sitemap consistent
