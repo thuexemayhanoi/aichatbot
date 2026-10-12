@@ -6930,6 +6930,28 @@
       "entry_sha256": "e86ba37c81204423265c312855b60279d6cee2f70094ed417f77767ceaf4673a",
       "production_status": 200,
       "verified_at": "2026-10-12T08:25:01.705Z"
+    },
+    "BA-0669": {
+      "article_id": "BA-0669",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/huong-dan-su-dung-xe-may-dien-gia-tot/",
+      "publication_sha": "0fd9f70c0fbec11786f12926b27dbd94f57ab96d",
+      "page_sha256": "112f4adf7ffa4e5001bc81fcb95c1ecd0a5089abb43023f4f99d50087805c734",
+      "body_sha256": "d4d099d0470f3bee38447cf1d2273b22d41defe4b3fec0e043a22c2475026411",
+      "entry_sha256": "bf235c1c97d32bfa41ea7206516255f9c8520a544981912ff6634426d169dc5b",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:30:59.865Z"
+    },
+    "BA-0670": {
+      "article_id": "BA-0670",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/chup-anh-xe-truoc-khi-nhan-cho-khach-nuoc-ngoai/",
+      "publication_sha": "0fd9f70c0fbec11786f12926b27dbd94f57ab96d",
+      "page_sha256": "02ab05ae29665ad4ade6a4ccccdc8030ba4a4c129bbac4d9e17a8d79613e906c",
+      "body_sha256": "77ead3627dac22db4a2f3e1ebbcb5507652ec844d3e636486a30c8cd5bc3d350",
+      "entry_sha256": "e1a98788c9ba00160d38b17aa3b969ac4332a156547474f094b7c771eb0ad379",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:30:59.810Z"
     }
   }
 }
