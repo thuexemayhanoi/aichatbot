@@ -5973,6 +5973,28 @@
       "entry_sha256": "a03c7b5ec39f94685f868a8601741a0474effe1ec564d61306ee358ae8df898f",
       "production_status": 200,
       "verified_at": "2026-10-12T02:42:32.298Z"
+    },
+    "BA-0601": {
+      "article_id": "BA-0601",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/app-thue-xe-khong-can-tai-khoan-nam-2026/",
+      "publication_sha": "d3e21ed9846139de6399e354a3760bd0aba94540",
+      "page_sha256": "f93fa4f2c681305476ad8bfc65dac1540dbd9bc8397c7f0f6af9d1b16dab23e5",
+      "body_sha256": "cdbbbcbd690fe14b0048494f1d8b43ab211925ef15842134392dcd4d545b0b9b",
+      "entry_sha256": "26c8d7f9178c73a2c0a05db1dd29b1862b475656cfb6d14e55564391be042836",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:45:56.666Z"
+    },
+    "BA-0602": {
+      "article_id": "BA-0602",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-may-hay-di-grab-ky-nghi-le/",
+      "publication_sha": "d3e21ed9846139de6399e354a3760bd0aba94540",
+      "page_sha256": "0b10ffbffc1b10cebe59e5ccca3f60d8e4d4ef8f8a90aae66bd2af8bca3b01db",
+      "body_sha256": "8f3af8b0ef1604d9cfb71e75c157c4eb69fb8a6639490541cb7d4841f7ef74f9",
+      "entry_sha256": "02f59f8bbf451d694aff5577c8186694a08da52a48d888fd9e16c34fcf8abc53",
+      "production_status": 200,
+      "verified_at": "2026-10-12T02:45:56.676Z"
     }
   }
 }
