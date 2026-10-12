@@ -6061,6 +6061,28 @@
       "entry_sha256": "8b5c6964e222162e32fdad28c9b8d2567c2349fa1fb190cd07a6b3d67a216dce",
       "production_status": 200,
       "verified_at": "2026-10-12T02:58:28.567Z"
+    },
+    "BA-0609": {
+      "article_id": "BA-0609",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/bao-quan-xe-dien-mua-mua-cho-khach-du-lich/",
+      "publication_sha": "df886a4ce4f6d30ddedafce93ff37b45238696a2",
+      "page_sha256": "cf93b4ea8b2189abe68530fbf9157f05ed9f7887c5ae3fc9ccf23128b44a3a7c",
+      "body_sha256": "275410878f1008d068866a6b271122147092aa6f0422901094cd65e2b5b6356c",
+      "entry_sha256": "f53e737838e7a370dfb2be0cd8ff961bd87571dca92631ba323266f60aa9b560",
+      "production_status": 200,
+      "verified_at": "2026-10-12T03:02:27.120Z"
+    },
+    "BA-0610": {
+      "article_id": "BA-0610",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/danh-gia-cua-hang-sau-khi-thue-cho-nguoi-moi/",
+      "publication_sha": "df886a4ce4f6d30ddedafce93ff37b45238696a2",
+      "page_sha256": "3a8ec6c3afb3ca532bd6cb874a54d991882271f64fc5f87d27271b967bb7c508",
+      "body_sha256": "cf6781f3566e4ca67504c7ccaaab9694b717a216efa79b747f5e317ec7f427cc",
+      "entry_sha256": "e34c3853c1003c7491b22df26f7be6518e78ce6001fa28146eb9849ddfb7a573",
+      "production_status": 200,
+      "verified_at": "2026-10-12T03:02:27.195Z"
     }
   }
 }
