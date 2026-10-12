@@ -7106,6 +7106,28 @@
       "entry_sha256": "72fc6200229fe0cd5892e9e0ca16ae02c13887b0abd1cd4a014a0241b8eb8ea4",
       "production_status": 200,
       "verified_at": "2026-10-12T08:58:37.275Z"
+    },
+    "BA-0685": {
+      "article_id": "BA-0685",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-va-nguoi-moi-biet-lai-xe-nam-2026/",
+      "publication_sha": "0b012da4fe80a6e7e33d038f0424d79e8b512f33",
+      "page_sha256": "ce55180a87fbe8f7d153a668583a0a451e36130ba1f5afd7eae3306fc06663ac",
+      "body_sha256": "81d0286425817693553c155078c2679737c8cd7626161a9d41a5bb4490f7524b",
+      "entry_sha256": "3c0845a57f120e49fe31fd61ead89b808d3e2837a35416a1ecd35f0e95d7c9b1",
+      "production_status": 200,
+      "verified_at": "2026-10-12T09:04:38.745Z"
+    },
+    "BA-0686": {
+      "article_id": "BA-0686",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/mu-bao-hiem-khi-thue-xe-ky-nghi-le/",
+      "publication_sha": "0b012da4fe80a6e7e33d038f0424d79e8b512f33",
+      "page_sha256": "949898c72f5a8106a613af4770b1587ba7ae813f720cef0bed4d77b1fcc56e9b",
+      "body_sha256": "8f27f274236bf74e0cf05298bf8637112cbf85ba669947737c4a9aa72f83dd95",
+      "entry_sha256": "62d447e50918856b5e408846ed88e76d1454db1e9250a7032a5e6d4ba398ba75",
+      "production_status": 200,
+      "verified_at": "2026-10-12T09:04:38.722Z"
     }
   }
 }
