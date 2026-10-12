@@ -5754,6 +5754,17 @@
       "production_status": 200,
       "verified_at": "2026-10-12T05:14:05.645Z"
     },
+    "BA-0546": {
+      "article_id": "BA-0546",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ca-phe-trung-va-xe-may-hai-ngay-mot-dem/",
+      "publication_sha": "53fc12dad62ca0db27fbbdcd1d0ab2c2dd948f5c",
+      "page_sha256": "b92606b540f4f26d1401d05563fdca6fc57c9dcd1c91804981a4aa1a42519923",
+      "body_sha256": "949bb5a1d5306abb9fd48c3c13d9a08eed42660d98168e15f4e5fe75352e6701",
+      "entry_sha256": "3eae4aee4c55a36feb68b710ed53d9bba4968cc6b6b258ff2662a6f665c171be",
+      "production_status": 200,
+      "verified_at": "2026-10-12T05:18:22.762Z"
+    },
     "BA-0556": {
       "article_id": "BA-0556",
       "status": "PUBLISHED",
@@ -6358,6 +6369,17 @@
       "entry_sha256": "cae5833f02ac3469853d64bcf8885edf7a998d423d982a585ae2dd5ff5ff7913",
       "production_status": 200,
       "verified_at": "2026-10-12T04:55:52.245Z"
+    },
+    "BA-0629": {
+      "article_id": "BA-0629",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/thu-tuc-khi-va-cham-nhe-cho-nguoi-moi/",
+      "publication_sha": "53fc12dad62ca0db27fbbdcd1d0ab2c2dd948f5c",
+      "page_sha256": "d5de4d3590c36abba8f8ab75b25a9e975a56fd7fc5a86ad238844c7b9c0d975f",
+      "body_sha256": "27824d484dbc11d380dee7406ae51805b08bbe8e1111792f679f407fe08e4096",
+      "entry_sha256": "19e4075fc15db1cd82cf2ec0f2183b48925905a2f86cefff4f29d333a57b395f",
+      "production_status": 200,
+      "verified_at": "2026-10-12T05:18:22.770Z"
     }
   }
 }
