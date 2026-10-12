@@ -7392,6 +7392,28 @@
       "entry_sha256": "9503bba4a32af1ba755343aba5080a17509143c6e490435e5d12dd5cebc3c7ad",
       "production_status": 200,
       "verified_at": "2026-10-12T16:57:16.236Z"
+    },
+    "BA-0713": {
+      "article_id": "BA-0713",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/cho-tre-em-tren-xe-may-cho-nguoi-moi/",
+      "publication_sha": "55da702b4d6005213cd56cf473ebd21a9bc640c6",
+      "page_sha256": "449a8449c78e9b77201ebc9638d1b0d43935038720404d239ad9896ca6efee96",
+      "body_sha256": "b832f55a3aed8deded43eeb667425fbdd4754105ebdb6aeb76024b20e0ba033e",
+      "entry_sha256": "1b7afdbf845398913da852577685d6453fabd13bf7dd5aed06ddd3b528777c52",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:02:58.334Z"
+    },
+    "BA-0714": {
+      "article_id": "BA-0714",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cao-nguyen-da-dong-van-hai-ngay-mot-dem/",
+      "publication_sha": "55da702b4d6005213cd56cf473ebd21a9bc640c6",
+      "page_sha256": "edecc5f79690cf7f1b360600be202de823559d1a57ef9825ada514ecf27ed659",
+      "body_sha256": "5241f8b77d219796248d753081049611e6297775ada27bc88e1d3c29affc12ec",
+      "entry_sha256": "c8e5cb0123bf3b1efc157dbc763b45a13707a2e01cd532cc7667edead0a73e16",
+      "production_status": 200,
+      "verified_at": "2026-10-12T17:02:58.343Z"
     }
   }
 }
