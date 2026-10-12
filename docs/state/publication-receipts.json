@@ -7062,6 +7062,28 @@
       "entry_sha256": "a8d04b23ac1dd093c15b2b7b3b3bb26a0a08f4d8e09a872c07eb0bcd4a77c26d",
       "production_status": 200,
       "verified_at": "2026-10-12T08:52:50.529Z"
+    },
+    "BA-0681": {
+      "article_id": "BA-0681",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/sac-pin-xe-dien-o-dau-gia-tot/",
+      "publication_sha": "7c971c3f3e09c1808e1ae1a46839d9002527cbd0",
+      "page_sha256": "f35bed2286b9cefca58e097e1c4836cf64584657f2005f46633bde2b0a4c2fd8",
+      "body_sha256": "56ea76ab87ef1d7e74d746909a1fedfae2ac210489bbc491c1810226d981263d",
+      "entry_sha256": "285305d29044497c7eb0534ec739b43615defcc57f2e459fec45bcbde829ac85",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:55:43.065Z"
+    },
+    "BA-0682": {
+      "article_id": "BA-0682",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/giao-xe-tan-noi-thu-tuc-cho-khach-nuoc-ngoai/",
+      "publication_sha": "7c971c3f3e09c1808e1ae1a46839d9002527cbd0",
+      "page_sha256": "14b3cabae680d7bbebe58c5cf4236e2fe995f0b8c33e5b600b3412bff9af9ea8",
+      "body_sha256": "7b26edc7bcce3ed4a427be482d360eadc97c16e8059677dc76e6f4b05f672dcd",
+      "entry_sha256": "bfda47fb13f5127a5f303e17d81bfd3bf562b3463c06c3600e7b686aa725a6ad",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:55:43.068Z"
     }
   }
 }
