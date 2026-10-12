@@ -6996,6 +6996,28 @@
       "entry_sha256": "ba9df590b4ee36bbb1063ebc19a43de7331e88ba97d81f8a9f4e198d8753f683",
       "production_status": 200,
       "verified_at": "2026-10-12T08:44:38.531Z"
+    },
+    "BA-0675": {
+      "article_id": "BA-0675",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/khac-biet-xe-dien-va-xe-xang-gia-tot/",
+      "publication_sha": "33836e57fd35aa0c8f48f469cc87abd1f4994fc4",
+      "page_sha256": "19b4df2003ef124cbdec0b6b3d60f20e6db3ed1a70821ee3f6208c31b2ff440f",
+      "body_sha256": "9c12e180674c2d85cc5ca444d307a1c18182f17b2b695a9f7222a3e337423a45",
+      "entry_sha256": "81af84d436cb995dfd6554f93fcc55e2ed28f0406275dcbff09d0929e0d9aa2e",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:46:47.184Z"
+    },
+    "BA-0676": {
+      "article_id": "BA-0676",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/nhien-lieu-khi-nhan-tra-xe-cho-khach-nuoc-ngoai/",
+      "publication_sha": "33836e57fd35aa0c8f48f469cc87abd1f4994fc4",
+      "page_sha256": "512db36c9ebb1353c0806bfe6cb15a94d9673cc9fbbf5709618279658a9aad19",
+      "body_sha256": "7d50bcc72a72e72deed47dd8abd98a41fe40747fde4a3ee9fc4404cd87a0d4bc",
+      "entry_sha256": "b37486f1a251b5cdbffe716b22a77b43e8df407ceef735224d7f3ddebaffd5b6",
+      "production_status": 200,
+      "verified_at": "2026-10-12T08:46:47.167Z"
     }
   }
 }
