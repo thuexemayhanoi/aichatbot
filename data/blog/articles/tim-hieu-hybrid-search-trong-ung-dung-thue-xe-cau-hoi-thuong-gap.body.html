@@ -1,0 +1,54 @@
+<p>"Hybrid search" nghe như thuật ngữ dành cho kỹ sư, nhưng nó ảnh hưởng trực tiếp tới trải nghiệm của bạn mỗi lần gõ một câu hỏi vào ứng dụng thuê xe: vì sao gõ thiếu dấu vẫn ra kết quả, vì sao có lúc trợ lý trả lời rất sát ý, có lúc lại xin lỗi vì chưa có thông tin. Bài này trả lời các câu hỏi thường gặp khi tìm hiểu hybrid search trong ứng dụng thuê xe, lấy MotoAI, trợ lý trên website của {{ business.brand }}, làm ví dụ cụ thể, và giải thích bằng ngôn ngữ đời thường thay vì công thức.</p>
+
+<h2>Hybrid search là gì, nói ngắn gọn?</h2>
+<p>Hybrid search là cách kết hợp hai kiểu tìm kiếm trong cùng một lần tra cứu:</p>
+<ul>
+<li><strong>Tìm theo từ khóa:</strong> so khớp các từ trong câu hỏi với các từ trong dữ liệu. Kiểu này nhanh, nhẹ và rất chính xác với tên riêng như "Air Blade" hay "Wave".</li>
+<li><strong>Tìm theo ngữ nghĩa:</strong> biến câu chữ thành dãy số biểu diễn ý nghĩa, nhờ đó "xe chở được hai người" có thể khớp với đoạn nói về "yên dài, chở người ngồi sau" dù không trùng chữ.</li>
+</ul>
+<p>Mỗi kiểu có điểm mạnh riêng, và gộp lại thì bù được điểm yếu cho nhau. Phần giới thiệu khái niệm từ đầu có trong bài <a href="/blog/app/tim-hieu-hybrid-search-trong-ung-dung-thue-xe/">tìm hiểu hybrid search trong ứng dụng thuê xe</a>; bài này tập trung vào những gì thực sự diễn ra trong MotoAI.</p>
+
+<h2>Trong MotoAI, phần nào chạy trước?</h2>
+<p>Thứ tự rất rõ ràng và không thay đổi theo từng câu hỏi:</p>
+<ol>
+<li><strong>Quy tắc kinh doanh:</strong> các câu hỏi về giá, giờ mở cửa, địa chỉ, đặt cọc được xử lý bằng quy tắc và dữ liệu đã xác nhận trước tiên.</li>
+<li><strong>Tìm kiếm trên dữ liệu cửa hàng:</strong> lớp từ khóa theo thuật toán BM25 luôn bật, chạy ngay trong trình duyệt và đủ nhẹ cho cả điện thoại cấu hình thấp.</li>
+<li><strong>Lớp ngữ nghĩa:</strong> chỉ được khởi động sau lượt chat đầu tiên của bạn, không bao giờ lúc vừa tải trang. Khi đã sẵn sàng, điểm của hai lớp được gộp lại, với trọng số mặc định nghiêng về phần từ khóa.</li>
+<li><strong>Kiến thức từ cẩm nang:</strong> các đoạn ngắn trích từ bài blog, chỉ được dùng khi các lớp trên không tìm thấy gì.</li>
+</ol>
+<p>Nghĩa là trong vài giây đầu, hoặc trên máy yếu, bạn đang dùng tìm kiếm từ khóa thuần; điều đó không làm câu trả lời về giá hay địa chỉ kém chính xác, vì những câu ấy đã được quy tắc xử lý từ trước. Bức tranh toàn cảnh về cách trợ lý vận hành có trong bài <a href="/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao/">ứng dụng thuê xe máy hoạt động ra sao</a>.</p>
+
+<h2>Vì sao có lúc trợ lý không tìm ra câu trả lời?</h2>
+<p>Cả hai lớp tìm kiếm đều có ngưỡng điểm tối thiểu. Nếu kết quả tốt nhất vẫn dưới ngưỡng, trợ lý coi như không tìm thấy và trả lời trung thực rằng chưa có thông tin, thay vì đưa ra một đoạn văn chỉ khớp lờ mờ. Một vài lý do thường gặp:</p>
+<ul>
+<li>Câu hỏi quá dài, gộp nhiều ý khác nhau trong một tin.</li>
+<li>Dùng tên xe hoặc dịch vụ không có trong dữ liệu cửa hàng, ví dụ hỏi giá SH hay Lead.</li>
+<li>Hỏi điều cần kiểm tra thực tế, như còn xe vào sáng thứ bảy tới không.</li>
+</ul>
+<p>Cách tự khắc phục đơn giản nhất là tách câu hỏi, dùng từ khóa cụ thể hơn, hoặc gọi cửa hàng với những câu cần xác nhận.</p>
+
+<h2>Câu hỏi về giá có đi qua hybrid search không?</h2>
+<p>Có thể có, nhưng chỉ trên dữ liệu kinh doanh đã kiểm chứng. Câu hỏi giá thường được quy tắc trả lời trước; nếu đi xuống lớp tìm kiếm, kết quả vẫn chỉ lấy từ bảng giá chính thức. Tầng blog luôn khước từ các câu hỏi về giá, cọc, giờ mở cửa, địa chỉ, giao xe hay giấy tờ, kể cả khi có đoạn văn trông rất khớp. Vì thế khi bạn hỏi Honda Vision, câu trả lời sẽ là mức tham khảo khoảng 200.000đ/ngày theo trang <a href="/gia-thue/">giá thuê</a>, chứ không phải một con số trích từ bài viết cũ. Với tiền cọc, trợ lý chỉ nêu khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} theo loại xe, mức cụ thể do cửa hàng xác nhận lúc đặt. Cơ chế hiểu các cách hỏi giá khác nhau được trình bày trong bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/">cách ứng dụng hiểu câu hỏi về giá xe</a>.</p>
+
+<h2>Mẹo gõ truy vấn để tìm nhanh hơn</h2>
+<ul>
+<li><strong>Nêu tên xe nếu bạn biết:</strong> lớp từ khóa xử lý tên riêng rất tốt, "giá Air Blade theo tuần" cho kết quả gọn hơn "xe ga loại khá theo tuần".</li>
+<li><strong>Mô tả nhu cầu nếu chưa biết tên:</strong> "xe nhẹ cho người mới, đi phố" là kiểu câu lớp ngữ nghĩa phát huy tác dụng.</li>
+<li><strong>Một ý mỗi tin:</strong> hỏi giá trước, hỏi giao xe sau, thay vì gộp chung.</li>
+<li><strong>Đừng lo chuyện dấu:</strong> chữ có dấu và không dấu được chuẩn hóa về cùng một dạng trước khi so khớp.</li>
+<li><strong>Dùng từ quen thuộc:</strong> một số cách gọi đồng nghĩa đã được gom nhóm sẵn, nhưng từ phổ biến vẫn cho kết quả ổn định nhất.</li>
+</ul>
+<p>Thêm ví dụ về cách đặt câu hỏi hiệu quả có trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho agent thuê xe</a>.</p>
+
+<h2>Câu hỏi thường gặp về hybrid search trong ứng dụng thuê xe</h2>
+<h3>Gõ "thue xe ga" không dấu có ra kết quả giống có dấu không?</h3>
+<p>Có. Trước khi tìm kiếm, câu chữ được chuyển về chữ thường và bỏ dấu, nên hai cách gõ được so khớp như nhau.</p>
+<h3>Lớp ngữ nghĩa có gửi câu hỏi của tôi lên máy chủ không?</h3>
+<p>Không. Lớp này chạy trong trình duyệt trên thiết bị của bạn; trang chỉ tải về mô hình nhúng câu chữ, còn nội dung bạn gõ được xử lý ngay trên máy.</p>
+<h3>Điện thoại cũ có dùng được hybrid search không?</h3>
+<p>Trên máy cấu hình thấp, lớp ngữ nghĩa có thể tắt và trợ lý dùng tìm kiếm từ khóa thuần. Các câu hỏi cơ bản về giá, giờ, địa chỉ vẫn được trả lời đầy đủ. Kinh nghiệm dùng trên máy đời cũ có trong bài <a href="/blog/app/ung-dung-thue-xe-tren-dien-thoai-cu/">ứng dụng thuê xe trên điện thoại cũ</a>.</p>
+<h3>Hybrid search có thay được việc gọi cho cửa hàng không?</h3>
+<p>Không hoàn toàn. Nó giúp bạn tìm thông tin nhanh, còn giữ xe, xác nhận giá cuối và giao xe vẫn cần nhân viên cửa hàng.</p>
+
+<h2>Kết luận</h2>
+<p>Hybrid search trong MotoAI là sự phối hợp có thứ tự: quy tắc kinh doanh đứng đầu, tìm kiếm từ khóa luôn bật, lớp ngữ nghĩa bổ sung khi thiết bị cho phép, và kiến thức blog chỉ là tầng cuối. Nhờ vậy bạn gõ tự nhiên vẫn được hiểu, mà giá và chính sách không bao giờ bị lẫn với nội dung cũ. Khi cần chốt đơn, bạn gọi {{ business.contact.phone_display }} trong giờ {{ business.hours.display }} hoặc ghé {{ business.address.full }}. Khám phá thêm trong chuyên mục <a href="/blog/app/">ứng dụng</a>, hoặc thử gõ một câu hỏi cho trợ lý tại <a href="/">trang chủ</a>.</p>

@@ -1,0 +1,61 @@
+<p>Bạn gõ "Vision bao nhiêu một ngày?" và nhận câu trả lời trong chưa đầy một giây. Vậy ai đã trả lời: một nhân viên trực máy, một mô hình AI trên đám mây, hay một đoạn mã đơn giản? Đây là thắc mắc rất phổ biến, và hiểu đúng giúp bạn biết nên tin câu trả lời nào, khi nào cần gọi người thật. Bài viết gom các câu hỏi thường gặp về việc ai trả lời trong ứng dụng thuê xe, lấy MotoAI, trợ lý trên website của {{ business.brand }}, làm ví dụ, và giải thích từng lớp trả lời theo đúng thứ tự chúng được dùng.</p>
+
+<h2>Lớp đầu tiên: quy tắc và dữ liệu cửa hàng đã kiểm chứng</h2>
+<p>Phần lớn câu hỏi bạn gửi được trả lời bởi lớp quy tắc và dữ liệu kinh doanh, chạy ngay trong trình duyệt. Lớp này không "sáng tác" câu trả lời mà tra cứu từ bộ dữ liệu cửa hàng đã xác nhận: bảng giá, giờ mở cửa, địa chỉ, chính sách đặt cọc, khu vực giao xe và các câu hỏi thường gặp. Ví dụ những câu thuộc nhóm này:</p>
+<ul>
+<li>Giá tham khảo theo ngày, tuần, tháng của từng dòng xe.</li>
+<li>Giờ mở cửa và địa chỉ nhận xe.</li>
+<li>Mức đặt cọc theo khoảng và giấy tờ cần mang.</li>
+<li>Giao xe có được không, ở những khu vực nào.</li>
+</ul>
+<p>Vì dữ liệu lấy từ một nguồn duy nhất, cùng một câu hỏi luôn ra cùng một con số, hôm nay hay tuần sau cũng vậy. Khi bạn hỏi vòng vo hoặc gõ thiếu dấu, trợ lý vẫn chuẩn hóa câu chữ trước khi tra cứu, như được mô tả trong bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/">cách ứng dụng hiểu câu hỏi về giá xe</a>.</p>
+
+<h2>Bài viết trong cẩm nang có được dùng để trả lời không?</h2>
+<p>Có, nhưng chỉ ở tầng thấp nhất và có giới hạn rõ ràng. Khi lớp quy tắc và dữ liệu kinh doanh không tìm thấy câu trả lời phù hợp, trợ lý mới tìm đến các đoạn kiến thức ngắn trích từ bài blog đã đăng, chẳng hạn mẹo chạy đường dài hay cách kiểm tra xe. Ba nguyên tắc đi kèm:</p>
+<ol>
+<li>Bài viết không bao giờ ghi đè giá, địa chỉ, điện thoại, giờ mở cửa, tiền cọc hay chính sách.</li>
+<li>Những câu hỏi thuộc về dữ liệu kinh doanh luôn bị từ chối ở tầng blog, kể cả khi có đoạn văn trông có vẻ khớp.</li>
+<li>Nếu độ khớp quá thấp, trợ lý không đoán mà chuyển sang câu trả lời trung thực rằng chưa có thông tin.</li>
+</ol>
+<p>Nhờ thứ tự này, một bài blog cũ nhắc tới giá ở thời điểm khác cũng không thể làm sai lệch câu trả lời về giá hiện tại.</p>
+
+<h2>Agent nâng cao trả lời thế nào, và có phải AI trên đám mây không?</h2>
+<p>MotoAI có thêm Agent nâng cao, nhưng đây là tính năng tùy chọn. Khi bạn bật, một mô hình ngôn ngữ nhỏ được tải về và chạy ngay trên thiết bị, không qua dịch vụ AI đám mây nào và không cần khóa truy cập. Agent chỉ được gọi khi các lớp phía trên không xử lý được câu hỏi, và nó bị ràng buộc chặt:</p>
+<ul>
+<li>Chỉ được dùng thông tin đã xác minh được đưa vào ngữ cảnh.</li>
+<li>Mọi con số trong câu trả lời phải có trong dữ liệu đã kiểm chứng; nếu mô hình đưa ra một mức giá lạ, câu trả lời đó bị loại.</li>
+<li>Câu trả lời có tham gia của AI luôn kèm dòng ghi chú để bạn nhận biết.</li>
+</ul>
+<p>Nếu thiết bị không đủ cấu hình, Agent đơn giản là không bật, còn trợ lý cơ bản vẫn trả lời đầy đủ. Phân tích sâu hơn về độ tin cậy của chatbot có trong bài <a href="/blog/app/chatbot-thue-xe-may-co-dang-tin-khong/">chatbot thuê xe máy có đáng tin không</a>.</p>
+
+<h2>Khi trợ lý nói "chưa có thông tin", điều gì đang xảy ra?</h2>
+<p>Đó không phải lỗi, mà là thiết kế có chủ ý. Khi không lớp nào tìm được câu trả lời đủ chắc chắn, trợ lý chọn nói thật rằng chưa có thông tin và gợi ý bạn liên hệ cửa hàng, thay vì bịa ra một câu nghe có vẻ hợp lý. Những tình huống hay dẫn tới câu trả lời này:</p>
+<ul>
+<li>Hỏi về một dòng xe chưa có trong bảng giá, như SH, Lead hay Exciter.</li>
+<li>Hỏi tình trạng còn xe cho một ngày cụ thể.</li>
+<li>Hỏi những chủ đề ngoài thuê xe.</li>
+</ul>
+<p>Lúc đó, hãy diễn đạt lại ngắn gọn hơn hoặc gọi thẳng cho cửa hàng. Cách soạn câu hỏi để trợ lý hiểu ngay lần đầu được hướng dẫn trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho agent thuê xe</a>.</p>
+
+<h2>Những việc chỉ người ở cửa hàng làm được</h2>
+<p>Trợ lý giúp bạn tìm hiểu, nhưng các quyết định ràng buộc luôn thuộc về nhân viên cửa hàng:</p>
+<ul>
+<li>Giữ xe cho ngày giờ bạn cần và xác nhận giá cuối cùng.</li>
+<li>Báo mức đặt cọc cụ thể trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} theo dòng xe.</li>
+<li>Thống nhất thời gian và phí giao xe trong khung {{ business.hours.display }}.</li>
+<li>Xử lý gia hạn, đổi xe hoặc trả xe muộn.</li>
+</ul>
+<p>Muốn chuyển nhanh từ trò chuyện sang gọi điện, bài <a href="/blog/app/goi-dien-tu-ung-dung-thue-xe/">gọi điện từ ứng dụng thuê xe</a> chỉ cách dùng nút gọi ngay trong khung chat.</p>
+
+<h2>Câu hỏi thường gặp về ai trả lời trong ứng dụng thuê xe</h2>
+<h3>Có nhân viên nào ngồi trả lời tin nhắn trong MotoAI không?</h3>
+<p>Không. Trợ lý trên website trả lời tự động bằng dữ liệu đã kiểm chứng. Muốn nói chuyện với người, bạn dùng nút gọi điện hoặc nhắn qua kênh liên hệ của cửa hàng.</p>
+<h3>Câu trả lời của trợ lý có được tính là đã đặt xe không?</h3>
+<p>Không. Đặt xe chỉ hoàn tất khi cửa hàng xác nhận với bạn qua điện thoại hoặc tin nhắn.</p>
+<h3>Nửa đêm hỏi trợ lý thì có ai trả lời không?</h3>
+<p>Trợ lý tự động trả lời bất cứ lúc nào. Còn các việc cần người xử lý sẽ chờ tới giờ cửa hàng mở cửa.</p>
+<h3>Nếu trợ lý và nhân viên nói khác nhau thì tin bên nào?</h3>
+<p>Hãy lấy xác nhận của nhân viên cửa hàng làm chuẩn, vì đó là thông tin gắn với chiếc xe và thời điểm cụ thể của bạn. Những góc nhìn khác về chủ đề này có trong bài <a href="/blog/app/ai-tra-loi-trong-ung-dung-thue-xe/">ai trả lời trong ứng dụng thuê xe</a>.</p>
+
+<h2>Kết luận</h2>
+<p>Người trả lời bạn trong ứng dụng thuê xe là một chuỗi nhiều lớp: quy tắc và dữ liệu cửa hàng ở tuyến đầu, kiến thức từ cẩm nang ở tầng thấp, Agent nâng cao khi bạn chủ động bật, và cuối cùng là câu trả lời trung thực khi chưa có thông tin. Phần chốt đơn, giá cuối và giao xe vẫn do con người ở cửa hàng đảm nhận. Khi cần xác nhận, hãy gọi {{ business.contact.phone_display }} hoặc ghé {{ business.address.full }}. Đọc thêm về trợ lý trong chuyên mục <a href="/blog/app/">ứng dụng</a>, hoặc mở MotoAI tại <a href="/">trang chủ</a> để thử đặt một câu hỏi.</p>
