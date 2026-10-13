@@ -1,0 +1,56 @@
+<p>Khi nghe tới cụm từ trợ lý thuê xe máy, nhiều người hình dung một nhân viên trực tổng đài, số khác lại nghĩ tới một phần mềm phải tải về máy. Thực tế, trợ lý MotoAI của {{ business.brand }} không giống cả hai. Bài viết này gom lại những câu hỏi thường gặp nhất xoay quanh khái niệm trợ lý thuê xe máy là gì: nó được tạo ra để làm gì, biết những gì, khác các kênh liên hệ quen thuộc ở điểm nào, đáng tin đến đâu và bạn nên dùng nó vào lúc nào. Mỗi câu trả lời đều ngắn, đi thẳng vào điều bạn cần biết. Nếu muốn đọc phần giới thiệu dạng bài liền mạch, hãy xem bài <a href="/blog/app/tro-ly-thue-xe-may-la-gi/">trợ lý thuê xe máy là gì</a>.</p>
+
+<h2>Nhóm câu hỏi về khái niệm</h2>
+<h3>Nói ngắn gọn, trợ lý thuê xe máy là gì?</h3>
+<p>Đó là một công cụ hỏi đáp trực tuyến giúp người muốn thuê xe tìm hiểu dòng xe, giá tham khảo, thủ tục và cách nhận trả xe trước khi liên hệ cửa hàng. Bạn gõ câu hỏi bằng ngôn ngữ đời thường, trợ lý trả lời dựa trên thông tin cửa hàng đã công bố.</p>
+<h3>MotoAI nằm ở đâu và cần cài đặt gì không?</h3>
+<p>MotoAI là trợ lý chạy ngay trên website, mở bằng trình duyệt của điện thoại hoặc máy tính. Bạn không cần tải ứng dụng nào về máy, cũng không cần tạo tài khoản để bắt đầu hỏi. Sự khác nhau giữa ứng dụng web và ứng dụng cài đặt được giải thích trong bài <a href="/blog/app/web-app-va-app-native-khac-gi-nhau/">web app và app native khác gì nhau</a>.</p>
+<h3>Người trả lời là nhân viên hay máy?</h3>
+<p>Câu trả lời trong khung hội thoại do công cụ tự động tạo ra, không phải nhân viên gõ tay. Khi bạn cần người thật quyết định, chẳng hạn giữ xe hay đổi lịch, hãy gọi trực tiếp cho cửa hàng.</p>
+
+<h2>Trợ lý biết và không biết những gì</h2>
+<p>Trợ lý được xây quanh dữ liệu của cửa hàng, nên phạm vi kiến thức khá rõ ràng. Những chủ đề nó trả lời tốt:</p>
+<ul>
+<li>Gợi ý dòng xe theo nhu cầu: đi phố, chở người, người mới tập lái, đi dài ngày.</li>
+<li>Giá thuê tham khảo theo ngày, tuần, tháng cho các dòng xe phổ biến.</li>
+<li>Khoảng đặt cọc theo loại xe, từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}.</li>
+<li>Giờ mở cửa, địa chỉ cửa hàng và các khu vực giao nhận trong nội thành.</li>
+<li>Giấy tờ cần chuẩn bị, cách kiểm xe khi nhận và quy trình trả xe.</li>
+</ul>
+<h3>Trợ lý có biết hôm nay còn xe nào không?</h3>
+<p>Không. Tình trạng xe trống thay đổi theo từng giờ và cần cửa hàng kiểm tra thực tế. Trợ lý giúp bạn chuẩn bị đủ thông tin, còn câu trả lời xe còn hay hết đến từ cuộc gọi hoặc tin nhắn với cửa hàng.</p>
+<h3>Hỏi về thông số xe điện thì trợ lý trả lời thế nào?</h3>
+<p>Trợ lý không tự đưa ra con số về pin, quãng đường hay thời gian sạc. Với những câu như vậy, nó hướng dẫn bạn hỏi cửa hàng và kiểm tra trực tiếp trên xe. Xe điện và xe 50cc hiện là giá liên hệ.</p>
+
+<h2>So sánh với các kênh liên hệ khác</h2>
+<h3>Hỏi trợ lý khác gì gọi điện cho cửa hàng?</h3>
+<p>Trợ lý phù hợp để tìm hiểu, so sánh và lên kế hoạch mà không ngại hỏi lại nhiều lần. Gọi điện phù hợp khi bạn đã rõ nhu cầu và muốn chốt xe. Cách hiệu quả nhất là dùng cả hai theo thứ tự: hỏi trợ lý trước, gọi sau. Bài <a href="/blog/app/tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien/">tại sao nên dùng ứng dụng trước khi gọi điện</a> phân tích kỹ hơn.</p>
+<h3>Đã có trang bảng giá rồi, cần trợ lý để làm gì?</h3>
+<p>Bảng giá cho bạn con số, còn trợ lý giúp bạn áp con số đó vào tình huống của mình: thuê mười ngày thì nên tính theo ngày hay theo tuần, hai người đi thì chọn xe nào. Bạn vẫn nên đối chiếu với trang <a href="/gia-thue/">giá thuê</a> trước khi chốt.</p>
+<h3>Trợ lý có giống trợ lý cho thuê ở nơi khác không?</h3>
+<p>Khái niệm chung thì giống nhau, nhưng mỗi trợ lý chỉ đáng tin trong phạm vi dữ liệu của cửa hàng sở hữu nó. MotoAI chỉ nói về xe, giá và thủ tục của {{ business.brand }}. Thuật ngữ tiếng Anh tương đương được giải thích trong bài <a href="/blog/app/rental-assistant-la-gi/">rental assistant là gì</a>.</p>
+
+<h2>Độ tin cậy của câu trả lời</h2>
+<h3>Con số giá trợ lý đưa ra có chính xác không?</h3>
+<p>Đó là giá tham khảo lấy từ bảng giá cửa hàng, ví dụ Honda Wave khoảng 150.000đ/ngày, Honda Vision khoảng 200.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày. Giá chốt luôn do cửa hàng xác nhận theo xe và thời điểm.</p>
+<h3>Trợ lý có hứa những điều cửa hàng không làm không?</h3>
+<p>Trợ lý được thiết kế để nói đúng chính sách: cửa hàng không cung cấp bảo hiểm, không có chương trình khuyến mãi và giao xe chỉ trong giờ mở cửa với thời gian, phí xác nhận trước. Nếu một câu trả lời nghe quá hứa hẹn, hãy hỏi lại cửa hàng. Các tiêu chí đánh giá được bàn trong bài <a href="/blog/app/chatbot-thue-xe-may-co-dang-tin-khong/">chatbot thuê xe máy có đáng tin không</a>.</p>
+
+<h2>Chi phí, tài khoản và quyền riêng tư</h2>
+<h3>Dùng trợ lý có tốn tiền không?</h3>
+<p>Không. Hỏi đáp trên website là miễn phí, bạn chỉ trả tiền thuê khi đã chốt xe với cửa hàng.</p>
+<h3>Có cần đăng ký hay đăng nhập không?</h3>
+<p>Không cần. Bạn mở trang và hỏi ngay. Chi tiết về cách dùng không tài khoản có trong bài <a href="/blog/app/app-thue-xe-khong-can-tai-khoan/">app thuê xe không cần tài khoản</a>.</p>
+<h3>Có nên gửi ảnh giấy tờ vào khung hội thoại không?</h3>
+<p>Không nên. Để hỏi về xe và thủ tục, bạn không cần cung cấp thông tin nhạy cảm. Giấy tờ chỉ cần xuất trình trực tiếp với cửa hàng khi làm thủ tục.</p>
+
+<h2>Câu hỏi thường gặp khác về trợ lý thuê xe</h2>
+<h3>Trợ lý có hiểu câu gõ không dấu không?</h3>
+<p>Có, bạn có thể gõ kiểu viết tắt, không dấu quen thuộc. Nếu câu thiếu thông tin như số ngày thuê, trợ lý sẽ hỏi lại thay vì đoán.</p>
+<h3>Khách nước ngoài có dùng được không?</h3>
+<p>Bạn có thể đặt câu hỏi bằng tiếng Anh đơn giản. Phần này được nói kỹ trong bài <a href="/blog/app/ung-dung-thue-xe-tieng-anh/">ứng dụng thuê xe tiếng Anh</a>.</p>
+<h3>Khi nào nên bỏ qua trợ lý và gọi ngay?</h3>
+<p>Khi xe gặp trục trặc trên đường, khi muốn đổi giờ trả gấp hoặc cần giữ xe trong vài giờ tới. Những việc này cần người thật xử lý.</p>
+
+<h2>Kết luận</h2>
+<p>Trợ lý thuê xe máy là người hướng dẫn đầu tiên: giải thích, so sánh và giúp bạn chuẩn bị, còn việc giữ xe, chốt giá và xử lý tình huống vẫn thuộc về cửa hàng. Hiểu đúng vai trò này, bạn sẽ hỏi nhanh hơn và gọi điện ngắn hơn. Hãy mở MotoAI trên <a href="/">trang chủ {{ business.brand }}</a> để thử vài câu đầu tiên, sau đó liên hệ {{ business.contact.phone_display }} khi cần xác nhận. Cửa hàng ở {{ business.address.full }}, phục vụ trong khung {{ business.hours.display }}. Các bài liên quan nằm trong <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>

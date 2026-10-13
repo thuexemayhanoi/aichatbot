@@ -1,0 +1,58 @@
+<p>Bạn mở trang, gõ một câu hỏi về giá xe và nhận lại câu trả lời kèm con số tham khảo chỉ sau vài giây. Với nhiều người, như vậy là đủ. Nhưng cũng có không ít khách muốn biết rõ hơn: câu hỏi của mình được xử lý thế nào, con số lấy từ đâu, lịch sử trò chuyện lưu ở chỗ nào và vì sao đôi khi ứng dụng hỏi ngược lại. Bài viết này trả lời những câu hỏi thường gặp về cách ứng dụng thuê xe máy MotoAI của {{ business.brand }} hoạt động, xếp theo đúng hành trình của một câu hỏi: từ lúc mở trang, lúc gõ, lúc tính giá cho đến lúc chuyển thành một chiếc xe thật. Phần mô tả liền mạch từng bước có trong bài <a href="/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao/">ứng dụng thuê xe máy hoạt động ra sao</a>.</p>
+
+<h2>Khi bạn mở trang</h2>
+<h3>Ứng dụng có phải tải về máy không?</h3>
+<p>Không. MotoAI là ứng dụng web chạy trong trình duyệt. Khi bạn mở website, phần hỏi đáp được tải cùng trang, nên chỉ cần một trình duyệt quen thuộc trên điện thoại hoặc máy tính là đủ.</p>
+<h3>Máy cũ, mạng yếu có dùng được không?</h3>
+<p>Phần lớn dữ liệu cần cho câu trả lời đã nằm sẵn trong trang sau khi tải xong, nên hỏi đáp vẫn khá mượt khi sóng chập chờn. Nếu điện thoại đời cũ tải chậm, hãy chờ trang mở hoàn toàn rồi mới gõ câu đầu tiên. Mẹo dùng trên máy cũ có trong bài <a href="/blog/app/ung-dung-thue-xe-tren-dien-thoai-cu/">ứng dụng thuê xe trên điện thoại cũ</a>.</p>
+<h3>Có phải đăng nhập trước khi hỏi không?</h3>
+<p>Không cần tài khoản. Bạn hỏi được ngay từ lúc trang hiện lên, không phải cấp quyền danh bạ hay vị trí.</p>
+
+<h2>Khi bạn gõ câu hỏi</h2>
+<h3>Ứng dụng hiểu câu hỏi bằng cách nào?</h3>
+<p>Câu hỏi được tách thành các ý chính mà một nhân viên tư vấn cũng sẽ để ý: dòng xe nào, thuê bao lâu, nhận ở đâu, cần giao hay không. Từ những ý đó, ứng dụng tìm phần thông tin phù hợp trong dữ liệu của cửa hàng để ghép câu trả lời.</p>
+<h3>Gõ không dấu hoặc viết tắt có sao không?</h3>
+<p>Không sao. Những kiểu viết như "thue vision 3 ngay" hay "xe so re nhat" vẫn được nhận ra. Cơ chế nhận diện câu hỏi về giá được giải thích kỹ trong bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/">cách ứng dụng hiểu câu hỏi về giá xe</a>.</p>
+<h3>Vì sao đôi khi ứng dụng hỏi ngược lại tôi?</h3>
+<p>Khi câu hỏi thiếu một ý quan trọng, chẳng hạn chưa nói thuê mấy ngày, ứng dụng sẽ hỏi lại thay vì tự đoán. Cách này giúp bạn không nhận một con số tính sai kỳ thuê.</p>
+
+<h2>Khi ứng dụng tính giá</h2>
+<p>Phần tính giá áp đơn giá tham khảo theo kỳ thuê bạn nêu. Một vài ví dụ dựa trên bảng giá hiện có:</p>
+<ul>
+<li>Honda Wave khoảng 150.000đ/ngày, phù hợp đi phố quãng ngắn.</li>
+<li>Honda Vision khoảng 200.000đ/ngày, tham khảo 800.000đ–1.000.000đ/tuần và 1.800.000đ–2.000.000đ/tháng.</li>
+<li>Honda Air Blade khoảng 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng.</li>
+<li>Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày, 600.000đ–700.000đ/tuần.</li>
+</ul>
+<h3>Thuê bảy ngày thì ứng dụng tính theo ngày hay theo tuần?</h3>
+<p>Ứng dụng có thể đặt hai cách tính cạnh nhau để bạn thấy chênh lệch. Ví dụ với Vision, bảy ngày nhân giá ngày ra khoảng 1.400.000đ, trong khi giá tuần tham khảo thấp hơn đáng kể. Con số cuối cùng vẫn do cửa hàng xác nhận. Cách so sánh các kỳ thuê có trong bài <a href="/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang/">tính chi phí thuê xe theo ngày, tuần, tháng</a>.</p>
+<h3>Với xe điện hay xe 50cc thì sao?</h3>
+<p>Những dòng này là giá liên hệ, nên ứng dụng sẽ nói rõ và hướng bạn hỏi trực tiếp cửa hàng, không đưa ra con số tự ước lượng.</p>
+
+<h2>Dữ liệu nằm ở đâu</h2>
+<h3>Cuộc trò chuyện của tôi có được gửi đi đâu không?</h3>
+<p>Ứng dụng được thiết kế để xử lý ngay trên trang, lịch sử trò chuyện lưu trong bộ nhớ trình duyệt của chính thiết bị bạn đang dùng. Muốn xóa, bạn chỉ cần xóa dữ liệu trang trong cài đặt trình duyệt. Chi tiết về cách xử lý cục bộ có trong bài <a href="/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe/">privacy và xử lý cục bộ trong app thuê xe</a>.</p>
+<h3>Thông tin giá và thủ tục được cập nhật thế nào?</h3>
+<p>Dữ liệu đi kèm trang là thông tin cửa hàng đã kiểm chứng. Khi cửa hàng thay đổi giá hay chính sách, nội dung trang được cập nhật theo. Dù vậy, luôn đối chiếu với trang <a href="/gia-thue/">giá thuê</a> hoặc hỏi cửa hàng trước khi chốt.</p>
+
+<h2>Từ câu trả lời đến chiếc xe thật</h2>
+<p>Ứng dụng không tự giữ xe hay nhận thanh toán. Quy trình chuyển từ hỏi đáp sang thuê thật thường đi theo các bước:</p>
+<ol>
+<li>Chốt nhu cầu với trợ lý: dòng xe, ngày nhận, ngày trả, nhận tại cửa hàng hay giao.</li>
+<li>Liên hệ cửa hàng qua {{ business.contact.phone_display }} để kiểm tra xe trống.</li>
+<li>Nhận xác nhận về giá, giấy tờ và mức cọc theo loại xe.</li>
+<li>Nếu cần giao xe, thống nhất thời gian và phí; việc giao chỉ diễn ra trong giờ mở cửa.</li>
+<li>Mua sẵn bảo hiểm xe máy cho riêng mình trước ngày nhận, bởi phần này cửa hàng không lo thay khách.</li>
+</ol>
+<p>Phần đặt xe được hướng dẫn chi tiết trong bài <a href="/blog/app/dat-xe-bang-ung-dung/">đặt xe bằng ứng dụng</a>.</p>
+
+<h2>Câu hỏi thường gặp khi ứng dụng chưa trả lời được</h2>
+<h3>Hỏi một câu ngoài phạm vi thì chuyện gì xảy ra?</h3>
+<p>Nếu câu hỏi nằm ngoài dữ liệu cửa hàng, ứng dụng sẽ nói thẳng là chưa có thông tin và gợi ý bạn liên hệ trực tiếp, thay vì tự bịa câu trả lời.</p>
+<h3>Câu trả lời có vẻ sai thì tôi nên làm gì?</h3>
+<p>Hãy hỏi lại bằng cách nói rõ hơn, rồi đối chiếu với cửa hàng. Bạn cũng có thể góp ý để nội dung được chỉnh lại.</p>
+<h3>Có thể gọi điện thẳng từ ứng dụng không?</h3>
+<p>Trên điện thoại, bạn có thể bấm vào số liên hệ để gọi nhanh. Xem thêm bài <a href="/blog/app/goi-dien-tu-ung-dung-thue-xe/">gọi điện từ ứng dụng thuê xe</a>.</p>
+
+<h2>Kết luận</h2>
+<p>Ứng dụng thuê xe máy hoạt động theo một vòng khá đơn giản: hiểu ý chính trong câu hỏi, tra dữ liệu cửa hàng có sẵn trong trang, tính giá tham khảo và chuyển bạn sang bước liên hệ khi cần chốt xe. Biết vòng đó, bạn sẽ đặt câu hỏi trúng hơn và tin đúng mức vào từng câu trả lời. Hãy thử MotoAI trên <a href="/">trang chủ</a>, rồi liên hệ {{ business.brand }} qua {{ business.contact.phone_display }} để xác nhận xe. Điểm nhận xe là {{ business.address.full }}, làm việc hằng ngày {{ business.hours.display }}. Đọc thêm trong <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>
