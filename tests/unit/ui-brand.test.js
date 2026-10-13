@@ -141,13 +141,15 @@ test('subtitle and status wrap instead of clipping on small screens', () => {
 
 // --- 7. Location answer consistency ---
 test('verified address is the single source of truth everywhere', () => {
-  assert.equal(business.address.full, '112 Nguyễn Văn Cừ, Long Biên, Hà Nội');
+  assert.equal(business.address.full, '112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội');
+  assert.equal(business.address.ward, 'Bồ Đề');
   assert.equal(business.address.street, '112 Nguyễn Văn Cừ');
   assert.equal(business.address.district, 'Long Biên');
   assert.ok(html.includes(business.address.full), 'header subtitle shows the same address');
-  // No stale full-address variant anywhere in customer UI files.
-  assert.ok(!html.includes('Bồ Đề, Long Biên'));
-  assert.ok(!mainJs.includes('Bồ Đề, Long Biên'));
+  // Preserve verified Bồ Đề locality in the static HTML and business data.
+  assert.ok(html.includes('Bồ Đề, Long Biên'));
+  assert.ok(!html.includes('112 Nguyễn Văn Cừ, Long Biên, Hà Nội'));
+  assert.ok(!mainJs.includes('112 Nguyễn Văn Cừ, Long Biên, Hà Nội'));
 });
 
 const DATA = { business, pricing, faq };
