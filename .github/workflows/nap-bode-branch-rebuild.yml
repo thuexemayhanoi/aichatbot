@@ -1,0 +1,48 @@
+name: NAP branch deterministic rebuild (temporary)
+
+# This branch-only helper commits generated static HTML after source-of-truth NAP
+# changes. The file is deleted from the branch before production merge.
+on:
+  push:
+    branches: ['seo/nap-bode-sync-20261013']
+    paths: ['data/business/business.json']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nap-bode-branch-rebuild
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    if: github.repository == 'thuexemayhanoi/aichatbot'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: seo/nap-bode-sync-20261013
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Regenerate deterministic blog/legal pages from verified business data
+        run: node tools/build-blog.mjs
+      - name: Verify full regression and live-site-independent SEO
+        run: |
+          node --test
+          node tools/site-audit.mjs
+          node tools/seo-score.mjs --json > /tmp/nap-seo-score.json
+          node -e "let v=require('/tmp/nap-seo-score.json'); if(!v.pass) process.exit(1); console.log('SEO static',v.total)"
+      - name: Commit ONLY derived static pages (never matrix, writer or manifests)
+        run: |
+          set -euo pipefail
+          git add -A -- blog privacy terms gioi-thieu chinh-sach lien-he gia-thue data/blog/knowledge-index.json sitemap.xml robots.txt
+          echo 'Staged file count:' $(git diff --cached --name-only | wc -l)
+          if git diff --cached --quiet; then
+            echo "No generated NAP changes"
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "build(nap): regenerate verified Bồ Đề address across static pages [skip ci]"
+          git push origin HEAD:refs/heads/seo/nap-bode-sync-20261013
