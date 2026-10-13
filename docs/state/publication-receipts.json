@@ -10450,6 +10450,116 @@
       "entry_sha256": "3242a2e71779add4542a2044a6b3942527118ae712af5f9cc92a476a3043d623",
       "production_status": 200,
       "verified_at": "2026-10-13T03:39:36.896Z"
+    },
+    "BA-1001": {
+      "article_id": "BA-1001",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/quy-dinh-mu-bao-hiem-tre-em-tom-tat/",
+      "publication_sha": "62e29b86287f75092df589150233a16fb07e6f56",
+      "page_sha256": "3926621c55aa7c7df722acd9c5b3203b964afa6939bdf814cdb64954b7023541",
+      "body_sha256": "65974ed84e46243e9a64bca09761e3c04214e79656a0dabc87d28d45209da95a",
+      "entry_sha256": "5680981ec8a94429fdb23f36cfe2497dc00e8c8d0f3a6c286015b7dd0c3fe5a3",
+      "production_status": 200,
+      "verified_at": "2026-10-13T03:44:30.978Z"
+    },
+    "BA-1002": {
+      "article_id": "BA-1002",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/thanh-hoa-va-xe-duong-dai-cuoi-tuan/",
+      "publication_sha": "62e29b86287f75092df589150233a16fb07e6f56",
+      "page_sha256": "4ee84e796e63e8aec4e5f583882a8a39ec8b4a9835967290041ada7d8c2dcd73",
+      "body_sha256": "9e791b9f91d212bb558a127bb6f668ff648e63de74b63093932532cabc8fdaec",
+      "entry_sha256": "f490238db03cf2eadd1e690043c446f2ce3c92d3e15683204c09dfa8525805be",
+      "production_status": 200,
+      "verified_at": "2026-10-13T03:44:30.981Z"
+    },
+    "BA-1003": {
+      "article_id": "BA-1003",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/cau-hoi-thuong-gap-ve-app-thue-xe-tai-ha-noi/",
+      "publication_sha": "62e29b86287f75092df589150233a16fb07e6f56",
+      "page_sha256": "e491727e3eb8b7d418bd74b0ea3e1de3dcf316621c859310556b271bc81085ae",
+      "body_sha256": "43aa46d9c9396dd03e8cdab8885068063286abeae1e2dd988cf2de3bf47de801",
+      "entry_sha256": "f8133af957e63c37426cfa48d06eb5dbf5b1fa4f29759bd00160ed7ca312e51c",
+      "production_status": 200,
+      "verified_at": "2026-10-13T03:44:30.989Z"
+    },
+    "BA-1004": {
+      "article_id": "BA-1004",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/chon-xe-theo-muc-dich-su-dung-cho-sinh-vien/",
+      "publication_sha": "62e29b86287f75092df589150233a16fb07e6f56",
+      "page_sha256": "2d7a3adf97f33ee56ac789bcd5715534326ff7d7da970b1c68fc36be2b08a516",
+      "body_sha256": "cabfe8a8516502cb8c648a49cab18c197255fcfb5f692076a52d54611b7e1135",
+      "entry_sha256": "39eb731aeeca923a9340dd8a225055b2290a408d84fa80ef7bd88cdb8b168235",
+      "production_status": 200,
+      "verified_at": "2026-10-13T03:44:30.999Z"
+    },
+    "BA-1005": {
+      "article_id": "BA-1005",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/chi-phi-dien-khi-thue-xe-dien-mua-he/",
+      "publication_sha": "62e29b86287f75092df589150233a16fb07e6f56",
+      "page_sha256": "f95fa30bb5e6d61aeb9f3d4bfebb20bcfadfe05389e4a8ecde0651ade174c72a",
+      "body_sha256": "3e88ed8e024fcdef091e44d2f89ebbbe4d920065bb8a33a3fdb54af7cbf4082e",
+      "entry_sha256": "42c20a9e06476b2338337981e28073dc09f459156943e152a993d2e06d2b7e6d",
+      "production_status": 200,
+      "verified_at": "2026-10-13T03:44:31.047Z"
+    },
+    "BA-1006": {
+      "article_id": "BA-1006",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/gia-han-thoi-gian-thue-nhanh-gon/",
+      "publication_sha": "62e29b86287f75092df589150233a16fb07e6f56",
+      "page_sha256": "f81c3cb479d61f9e201525cc389773ac1a409c4a214f849196777c86dcf7b72c",
+      "body_sha256": "d5a8debe3c38116be06b8347b143c349e2a7f2138c6b306fa8eb60a726620824",
+      "entry_sha256": "96632be1270ea284de7d9f85918d507b24e2b53134df52517495440ca6ea027d",
+      "production_status": 200,
+      "verified_at": "2026-10-13T03:44:31.021Z"
+    },
+    "BA-1007": {
+      "article_id": "BA-1007",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/deo-non-dung-cach-tom-tat/",
+      "publication_sha": "62e29b86287f75092df589150233a16fb07e6f56",
+      "page_sha256": "9137e3ddedb12e3728221cc252cb983917142a1166904a445986cfde2d43d3b6",
+      "body_sha256": "2ce7044b2aab863c80b60083882ae82079e2038880346ddf67d39f2ce181d28f",
+      "entry_sha256": "996373522063151ac60324db96b5fb788ee1e492dbb42d6bd8a3b122f2561742",
+      "production_status": 200,
+      "verified_at": "2026-10-13T03:44:31.047Z"
+    },
+    "BA-1008": {
+      "article_id": "BA-1008",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/trang-an-ride-cuoi-tuan/",
+      "publication_sha": "62e29b86287f75092df589150233a16fb07e6f56",
+      "page_sha256": "5bf06d0cb3a404025a352a3fbc94c6fca70c207fa6aca6e2f6a8a261928a3cf9",
+      "body_sha256": "71d7f463f07dae505714406397ad3e25c334f5b443a96aa46895b96686a80ab4",
+      "entry_sha256": "0d665f0e0662a8c40a524d7de2ed486a3c31bae57299d1f8397d09ba2e10b2a4",
+      "production_status": 200,
+      "verified_at": "2026-10-13T03:44:31.048Z"
+    },
+    "BA-1009": {
+      "article_id": "BA-1009",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi-tai-ha-noi/",
+      "publication_sha": "62e29b86287f75092df589150233a16fb07e6f56",
+      "page_sha256": "49258e5be964af3a9ef9b2b3d5b687fc534e4822935af9c4960ea94721a7bd6a",
+      "body_sha256": "82db219ed0514afd1ed7fc764dba55eb50b379e5e0e2f02a098497466a2aad9a",
+      "entry_sha256": "6e1e704a5d5dd0a380c6d1e2e897f6a9b8a738e9affce91070aedbd1163cbccf",
+      "production_status": 200,
+      "verified_at": "2026-10-13T03:44:31.046Z"
+    },
+    "BA-1010": {
+      "article_id": "BA-1010",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-so-hay-xe-ga-cho-nguoi-moi-cho-sinh-vien/",
+      "publication_sha": "62e29b86287f75092df589150233a16fb07e6f56",
+      "page_sha256": "3d8ad2e02fd1112a02515816db986f380b656a9ce5b13d7baf676bab4d6fc045",
+      "body_sha256": "45e59863eb7a0aad75029f543ab8aa1e93ed8ef46fdc48c485f3ca184954f2a4",
+      "entry_sha256": "9efb60b87ca3126f2a5b64e142b6650c4682b2588928f89b7748d719a638da17",
+      "production_status": 200,
+      "verified_at": "2026-10-13T03:44:31.051Z"
     }
   }
 }
