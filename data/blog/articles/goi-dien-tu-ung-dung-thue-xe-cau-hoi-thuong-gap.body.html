@@ -1,0 +1,71 @@
+<p>Trên trang trợ lý MotoAI có một nút gọi điện, và chính nút nhỏ này lại sinh ra khá nhiều thắc mắc: bấm vào thì chuyện gì xảy ra, gọi lúc nào thì có người nghe, gọi từ SIM nước ngoài được không, nói gì để không phải gọi lại lần hai. Bài này gom những câu hỏi thực tế khách đã hỏi cửa hàng về việc gọi điện từ ứng dụng thuê xe, chia theo từng tình huống: trước khi gọi, trong cuộc gọi, ngoài giờ, và sau khi gác máy.</p>
+
+<p>Nếu bạn muốn hiểu vì sao một trợ lý trực tuyến vẫn giữ kênh thoại, bài <a href="/blog/app/goi-dien-tu-ung-dung-thue-xe/">gọi điện từ ứng dụng thuê xe</a> đã phân tích vai trò của nút gọi. Ở đây chúng ta đi thẳng vào các câu hỏi cụ thể.</p>
+
+<h2>Bấm nút gọi thì điều gì xảy ra</h2>
+
+<h3>Nút gọi có phải gọi qua internet không?</h3>
+<p>Không. Khi bấm, điện thoại mở trình quay số có sẵn với số của cửa hàng được điền sẵn, bạn chỉ cần xác nhận để gọi. Cuộc gọi đi bằng kênh thoại thường của nhà mạng, tính cước theo gói của bạn.</p>
+
+<h3>Tôi dùng máy tính bảng không có SIM thì sao?</h3>
+<p>Máy không có chức năng gọi sẽ không quay số được. Khi đó bạn ghi lại số {{ business.contact.phone_display }} hiển thị trên trang và gọi bằng điện thoại khác, hoặc chuyển sang nhắn tin qua kênh chat.</p>
+
+<h2>Khi nào nên gọi thay vì chat</h2>
+
+<p>Kênh chat hợp với tìm hiểu và so sánh; kênh thoại hợp với những việc cần chốt nhanh hoặc có nhiều điều kiện đan xen. Theo kinh nghiệm cửa hàng, bạn nên gọi trong những trường hợp sau:</p>
+
+<ul>
+<li>Cần xe gấp trong ngày và muốn biết ngay còn xe hay không.</li>
+<li>Muốn giao xe tận nơi và cần thống nhất giờ, địa điểm, chi phí giao trước khi đặt.</li>
+<li>Thuê nhiều xe cho nhóm với các dòng xe khác nhau.</li>
+<li>Hỏi về dòng xe không có trong bảng giá tham khảo, như SH hay Exciter.</li>
+<li>Đang trên đường tới nhận xe và bị lạc hoặc đến trễ.</li>
+</ul>
+
+<p>Ngược lại, câu hỏi về giá tham khảo hay giấy tờ cần mang thì hỏi trợ lý trước sẽ nhanh hơn. Lý do nên tìm hiểu bằng ứng dụng trước khi bấm gọi được trình bày trong bài <a href="/blog/app/tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien/">tại sao nên dùng ứng dụng trước khi gọi điện</a>.</p>
+
+<h2>Chuẩn bị gì để một cuộc gọi là đủ</h2>
+
+<p>Cuộc gọi hiệu quả là cuộc gọi bạn không phải gọi lại. Trước khi bấm nút, hãy có sẵn trên giấy hoặc trong ghi chú:</p>
+
+<ol>
+<li>Ngày, giờ muốn nhận xe và ngày giờ dự kiến trả.</li>
+<li>Dòng xe ưu tiên và một dòng thay thế, ví dụ Vision hoặc Air Blade.</li>
+<li>Bạn tự đến {{ business.address.full }} hay cần giao, nếu giao thì địa chỉ cụ thể.</li>
+<li>Số người, số xe, có chở hành lý cồng kềnh hay không.</li>
+<li>Một câu hỏi mở cuối cùng mà trợ lý chưa trả lời được cho bạn.</li>
+</ol>
+
+<p>Với giá, hãy nhớ các mức trên trợ lý là tham khảo, chẳng hạn Honda Wave khoảng 150.000đ/ngày hay Honda Vision khoảng 200.000đ/ngày; trong cuộc gọi, cửa hàng xác nhận con số theo xe còn sẵn.</p>
+
+<h2>Gọi ngoài giờ và gọi từ nước ngoài</h2>
+
+<h3>Gọi sau chín giờ tối có ai nghe không?</h3>
+<p>Cửa hàng hoạt động trong khung {{ business.hours.display }}, nên ngoài giờ này bạn không nên trông vào việc có người nghe máy. Hãy để lại câu hỏi trên kênh chat hoặc nhắn tin, rồi gọi lại sau chín giờ sáng hôm sau. Giao xe cũng chỉ thực hiện trong khung giờ hoạt động.</p>
+
+<h3>Khách du lịch dùng SIM nước ngoài gọi thế nào?</h3>
+<p>Bạn cần thêm mã quốc gia Việt Nam trước số điện thoại khi gọi bằng SIM quốc tế, và cước gọi có thể khá cao. Nhiều khách nước ngoài chọn mua SIM nội địa khi tới nơi, hoặc liên hệ qua WhatsApp; các gợi ý khác dành cho người nước ngoài có trong bài <a href="/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/">app thuê xe cho người nước ngoài</a>.</p>
+
+<h2>Sau khi gác máy nên làm gì</h2>
+
+<p>Lời nói qua điện thoại dễ quên và khó đối chiếu. Sau cuộc gọi chốt xe, hãy xin cửa hàng nhắn lại tóm tắt bằng văn bản: dòng xe, giờ nhận, giờ trả, giá đã thống nhất. Về tiền cọc, mức cụ thể nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được xác nhận khi đặt.</p>
+
+<p>Nếu bạn quen nhắn tin, kênh Zalo được công bố trên trang <a href="/lien-he/">liên hệ</a> là nơi tiện để lưu lại các thỏa thuận này; cách nối Zalo với quá trình đặt xe có trong bài <a href="/blog/app/ket-noi-zalo-voi-ung-dung-thue-xe/">kết nối Zalo với ứng dụng thuê xe</a>. Đừng quên cửa hàng không cung cấp bảo hiểm, nên bạn tự chuẩn bị bảo hiểm xe máy trước ngày nhận.</p>
+
+<h2>Câu hỏi thường gặp khác về gọi điện</h2>
+
+<h3>Gọi không ai bắt máy thì nên làm gì?</h3>
+<p>Có thể nhân viên đang bàn giao xe cho khách khác. Đợi vài phút rồi gọi lại, hoặc nhắn tin ngắn nêu tên và nhu cầu để được gọi lại.</p>
+
+<h3>Đặt xe qua điện thoại có cần làm lại trên trợ lý không?</h3>
+<p>Không cần đặt lại. Điều quan trọng là bạn nhận được tin xác nhận bằng văn bản sau cuộc gọi.</p>
+
+<h3>Có thể gọi để đổi giờ nhận xe không?</h3>
+<p>Được, và nên gọi càng sớm càng tốt. Đổi giờ sát lúc nhận có thể ảnh hưởng tới xe đã xếp cho bạn.</p>
+
+<h3>Đang ở nội thành Hà Nội, gọi xong bao lâu thì có xe?</h3>
+<p>Tùy xe còn sẵn và lịch giao trong ngày. Các lưu ý riêng cho khách trong thành phố có trong bài <a href="/blog/app/goi-dien-tu-ung-dung-thue-xe-tai-ha-noi/">gọi điện đặt xe tại Hà Nội</a>.</p>
+
+<h2>Kết luận</h2>
+
+<p>Nút gọi trên trợ lý thuê xe là đường tắt khi bạn cần chốt nhanh, nhưng nó phát huy tác dụng nhất khi bạn đã tìm hiểu trước bằng chat, chuẩn bị sẵn thông tin và xin xác nhận bằng văn bản sau cuộc gọi. Hãy gọi {{ business.brand }} theo số {{ business.contact.phone_display }} trong khung {{ business.hours.display }}, hoặc qua trực tiếp {{ business.address.full }} nếu bạn ở gần. Xem thêm các hướng dẫn về công cụ trực tuyến tại <a href="/blog/app/">chuyên mục ứng dụng thuê xe</a> và trang <a href="/">trang chủ</a>.</p>
