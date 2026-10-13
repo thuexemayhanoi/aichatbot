@@ -1,0 +1,64 @@
+<p>Khi bạn tới cửa hàng thuê xe, việc chọn xe có một bước an toàn tự nhiên: ngồi thử, dắt thử, nổ máy chạy một đoạn trong sân rồi mới quyết. Khi xe được giao tận nơi, bước đó biến mất. Nhân viên mang tới chiếc xe bạn đã chọn từ xa, và nếu nó quá cao, quá nặng hay lạ tay so với kinh nghiệm của bạn, việc đổi xe sẽ tốn thêm một chuyến đi về. Vì vậy, công cụ chọn xe theo kinh nghiệm lái trên ứng dụng web MotoAI trở nên quan trọng hơn hẳn với người đặt giao xe tận nơi: nó là bước "ngồi thử" bằng câu hỏi, diễn ra trước khi nhân viên lên đường. Bài này hướng dẫn bạn dùng công cụ đó cho đúng, chuẩn bị gì trước giờ giao, và kiểm tra gì trong năm phút đầu để chắc rằng gợi ý từ màn hình khớp với chiếc xe đang đứng trước cửa.</p>
+
+<h2>Vì sao giao tận nơi cần chọn kỹ hơn nhận tại cửa hàng</h2>
+<p>Ở quầy, một người thuê có thể đổi từ Vision sang Click trong hai phút nếu thấy xe nặng. Với giao xe tận nơi, chiếc xe đã đi quãng đường từ {{ business.address.full }} tới chỗ bạn, nhân viên có lịch giao tiếp theo, và chiếc xe thay thế chưa chắc còn sẵn. Nói cách khác, chi phí của một lựa chọn sai tăng lên, trong khi cơ hội sửa sai giảm đi. Ba câu hỏi mà người nhận xe tại cửa hàng không cần nghĩ nhưng người đặt giao tận nơi phải trả lời trước:</p>
+<ul>
+<li>Chiều cao yên và trọng lượng xe có hợp với vóc người của bạn không, khi bạn không thể ngồi thử?</li>
+<li>Bạn có từng dùng dòng xe tương tự, hay sẽ phải làm quen ngay trên đường phố?</li>
+<li>Điểm giao có chỗ để bạn chạy thử vài vòng an toàn không, hay xe được giao giữa ngõ hẹp?</li>
+</ul>
+<p>Cách công cụ xếp loại kinh nghiệm và gợi ý dòng xe nói chung đã được trình bày trong bài <a href="/blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai/">công cụ chọn xe theo kinh nghiệm lái</a>; ở đây chỉ bàn phần dành riêng cho tình huống giao tận nơi.</p>
+
+<h2>Trả lời công cụ như thể đang ngồi thử xe</h2>
+<p>Công cụ chỉ gợi ý đúng khi dữ liệu bạn đưa vào trung thực và cụ thể. Với người đặt giao tận nơi, hãy mô tả thêm những điều mà bình thường nhân viên sẽ nhìn thấy khi bạn đứng ở quầy:</p>
+<ol>
+<li><strong>Vóc dáng:</strong> chiều cao và việc bạn có quen chống chân một bên khi dừng đèn đỏ không. Người thấp nên nói rõ để công cụ ưu tiên dòng yên thấp.</li>
+<li><strong>Kinh nghiệm thật:</strong> số năm lái, dòng xe đã dùng, và lần lái gần nhất cách đây bao lâu. "Có bằng từ năm năm trước nhưng không chạy từ đó" khác hẳn "chạy hằng ngày".</li>
+<li><strong>Loại xe quen tay:</strong> xe số hay xe ga; chuyển từ xe số sang xe ga lần đầu ngay trên phố là tình huống nhiều người đánh giá thấp.</li>
+<li><strong>Đoạn đường ngay sau khi nhận:</strong> bạn sẽ đi đâu trong mười phút đầu: ngõ nhỏ, đường lớn, hay lên cầu? Công cụ dùng thông tin này để tránh gợi ý xe nặng cho người phải quay đầu trong ngõ ngay lập tức.</li>
+<li><strong>Người đi cùng:</strong> chở thêm ai không, vì xe hợp đi một mình chưa chắc hợp chở hai.</li>
+</ol>
+<p>Nếu bạn là người mới biết lái hoặc lâu không cầm lái, bài <a href="/blog/app/ung-dung-thue-xe-va-nguoi-moi-biet-lai-xe-tan-noi/">ứng dụng thuê xe và người mới biết lái xe tận nơi</a> có bộ câu trả lời mẫu để bạn nhập vào công cụ.</p>
+
+<h2>Đọc gợi ý và chốt xe trước khi nhân viên lên đường</h2>
+<p>Công cụ thường trả về một gợi ý chính và một phương án thay thế kèm lý do, ví dụ "Honda Vision vì yên vừa, tay lái nhẹ" hoặc "Honda Click vì nhỏ gọn cho người thấp". Hãy làm ba việc với kết quả đó:</p>
+<ul>
+<li>Hỏi tiếp công cụ về điểm khác biệt giữa gợi ý chính và phương án thay thế, cụ thể là trọng lượng cảm nhận và độ cao yên, để tự so với kinh nghiệm của mình.</li>
+<li>Ghi cả hai dòng vào tin nhắn đặt xe, dòng chính và dòng dự phòng, để nếu dòng chính hết thì nhân viên vẫn mang đúng loại hợp với bạn.</li>
+<li>Xác nhận với nhân viên giờ giao và phí giao, vì giao xe chỉ thực hiện trong khung {{ business.hours.display }} và hai mục này luôn cần chốt trước khi đặt.</li>
+</ul>
+<p>Giá tham khảo các dòng phổ biến như Vision hoặc Air Blade khoảng 200.000đ/ngày, Click hay Mio khoảng 150.000đ/ngày, xem đầy đủ ở trang <a href="/gia-thue/">giá thuê</a> và xác nhận khi đặt. Cách module gợi ý xếp thứ tự các dòng xe được giải thích trong bài <a href="/blog/app/module-goi-y-xe-trong-ung-dung-thue-xe-tan-noi/">module gợi ý xe trong ứng dụng thuê xe tận nơi</a>.</p>
+
+<h2>Năm phút kiểm tra khi xe tới cửa</h2>
+<p>Đây là lúc bạn làm bước "ngồi thử" thật, với nhân viên còn đứng đó. Đừng ký nhận trước khi đi qua danh sách này:</p>
+<ol>
+<li>Ngồi lên xe, hai chân chạm đất ở mức bạn thấy an toàn; nếu phải kiễng nhiều, nói ngay.</li>
+<li>Dựng xe lên khỏi chân chống giữa hoặc nghiêng xe nhẹ để cảm nhận trọng lượng.</li>
+<li>Bóp phanh, bật đèn, xi nhan, còi; hỏi vị trí khóa yên và cách mở cốp.</li>
+<li>Nếu có chỗ an toàn, chạy một vòng ngắn trong sân hoặc đoạn đường vắng với nhân viên đứng chờ.</li>
+<li>Chụp ảnh xe và đồng hồ, gửi vào cuộc trò chuyện, rồi mới hoàn tất giấy tờ và khoản cọc đã thỏa thuận.</li>
+</ol>
+<p>Trình tự bàn giao đầy đủ, gồm cả phần giấy tờ, nằm ở bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>. Nếu ở bước một hoặc hai bạn thấy xe không hợp, hãy nói với nhân viên ngay để sắp xếp dòng dự phòng, thay vì nhận rồi gọi lại sau. Mức cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe đã được xác nhận khi đặt, nên việc đổi dòng cũng cần xác nhận lại khoản này.</p>
+
+<h2>Những sai lầm khi chọn xe từ xa</h2>
+<ul>
+<li>Chọn theo hình ảnh đẹp thay vì theo câu trả lời về vóc dáng và kinh nghiệm.</li>
+<li>Nói "lái tốt" dù đã lâu không chạy, rồi nhận một chiếc xe ga nặng ở đầu ngõ đông.</li>
+<li>Không ghi dòng dự phòng trong đơn, khi hết xe phải chọn vội qua điện thoại.</li>
+<li>Hẹn giao ở nơi không có chỗ chạy thử, phải đi thẳng ra đường lớn với chiếc xe lạ.</li>
+<li>Ký nhận trước khi ngồi thử vì ngại giữ nhân viên lâu.</li>
+</ul>
+<p>Cửa hàng không cung cấp bảo hiểm, bạn cần tự chuẩn bị bảo hiểm xe máy; cũng không hứa dịch vụ cứu hộ, nên chọn xe hợp sức ngay từ đầu là cách tốt nhất để tránh sự cố giữa đường. Người dùng trợ lý lần đầu có thể đọc thêm bài <a href="/blog/app/kinh-nghiem-dung-tro-ly-thue-xe-lan-dau-tan-noi/">kinh nghiệm dùng trợ lý thuê xe lần đầu tận nơi</a> để biết cách đặt câu hỏi.</p>
+
+<h2>Câu hỏi thường gặp về công cụ chọn xe theo kinh nghiệm lái khi giao tận nơi</h2>
+<h3>Công cụ có biết chính xác xe nào đang còn để giao không?</h3>
+<p>Công cụ gợi ý dòng xe phù hợp với bạn; tình trạng xe còn trống tại giờ giao do nhân viên xác nhận khi bạn đặt.</p>
+<h3>Tôi cao dưới một mét sáu, có nên đặt giao tận nơi không?</h3>
+<p>Nên, nhưng hãy khai chiều cao trong công cụ và yêu cầu dòng yên thấp; khi xe tới, ngồi thử trước khi ký nhận.</p>
+<h3>Nếu xe giao tới không hợp thì ai chịu phí giao?</h3>
+<p>Điều này được thống nhất khi đặt, nên hãy hỏi trước. Khai thông tin chính xác và ghi dòng dự phòng là cách tránh tình huống này.</p>
+<h3>Có cần cài gì để dùng công cụ không?</h3>
+<p>Không. Công cụ chạy ngay trên website, mở từ trình duyệt điện thoại hoặc máy tính là dùng được.</p>
+
+<h2>Kết luận</h2>
+<p>Với giao xe tận nơi, công cụ chọn xe theo kinh nghiệm lái chính là bước ngồi thử của bạn, và năm phút kiểm tra khi xe tới cửa là bước xác nhận. Khai đúng, ghi dòng dự phòng, rồi thử xe trước khi ký, bạn sẽ hiếm khi phải đổi xe giữa chừng. Mở trợ lý MotoAI trên <a href="/">trang chủ</a> để bắt đầu, hoặc gọi {{ business.contact.phone_display }} trong giờ {{ business.hours.display }} để {{ business.brand }} chốt lịch giao. Những bài khác về cách dùng trợ lý thuê xe tập hợp ở <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>
