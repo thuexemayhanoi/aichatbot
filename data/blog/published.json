@@ -19647,6 +19647,156 @@
         "Khách nói tiếng Anh khi tìm hiểu thuê xe máy ở Hà Nội thường có cùng một nhóm thắc mắc: gõ tiếng Anh có được không, đọc giá thế nào khi số tiền có dấu chấm, \"deposit\" ở đây nghĩa là gì, và nếu trợ lý trả lời bằng tiếng Việt thì làm sao. Bài tổng hợp ứng dụng thuê xe tiếng Anh câu hỏi thường gặp này gom những câu được hỏi nhiều nhất về trợ lý trên website của {{ business.brand }}, trả lời ngắn gọn, thực tế, để bạn hoặc người bạn nước ngoài của bạn dùng công cụ trực tuyến này mà không bị hiểu lầm.",
         "Tôi có thể gõ câu hỏi bằng tiếng Anh không? Có. Trợ lý trên website nhận diện được câu hỏi tiếng Anh và cố gắng phản hồi theo ngôn ngữ bạn dùng. Câu càng ngắn và rõ ý, kết quả càng chính xác, ví dụ \"price for Honda Vision one week\" hiệu quả hơn một đoạn văn dài kể toàn bộ kế hoạch."
       ]
+    },
+    {
+      "article_id": "BA-1775",
+      "category": "APP",
+      "slug": "cach-tinh-gia-thue-xe-bang-app-cau-hoi-thuong-gap",
+      "title": "Cách Tính Giá Thuê xe Bằng App Câu Hỏi Thường Gặp",
+      "description": "Cách tính giá thuê xe bằng app câu hỏi thường gặp gom lại những thắc mắc về con số mà người thuê hay gặp khi dùng công cụ tính giá trên MotoAI: vì",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cach-tinh-gia-thue-xe-bang-app-cau-hoi-thuong-gap.body.html",
+      "knowledge_chunks": [
+        "Cách tính giá thuê xe bằng app câu hỏi thường gặp gom lại những thắc mắc về con số mà người thuê hay gặp khi dùng công cụ tính giá trên MotoAI: vì sao năm ngày lại gần bằng một tuần, giá tháng có phải chia đều theo ngày không, khoản nào nằm ngoài kết quả ước tính và khi nào con số trên màn hình khác với giá chốt. MotoAI là ứng dụng web của {{ business.brand }}, chạy ngay trên trình duyệt, trả lời dựa trên bảng giá tham khảo đăng trên website. Hiểu cách nó cộng trừ sẽ giúp bạn chọn đúng gói thay vì trả nhiều hơn cần thiết.",
+        "Phần dưới đây đi thẳng vào các câu hỏi về phép tính, kèm ví dụ với giá tham khảo hiện có. Nguyên tắc chung về các thành phần của báo giá đã có trong bài nền cách tính giá thuê xe bằng app ."
+      ]
+    },
+    {
+      "article_id": "BA-1778",
+      "category": "APP",
+      "slug": "chon-xe-bang-agent-cau-hoi-thuong-gap",
+      "title": "Chọn xe Bằng Agent Câu Hỏi Thường Gặp",
+      "description": "Chọn xe bằng Agent câu hỏi thường gặp là tổng hợp những thắc mắc mà người thuê hay gửi trước, trong và sau khi nhờ trợ lý MotoAI gợi ý dòng xe. Agent",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chon-xe-bang-agent-cau-hoi-thuong-gap.body.html",
+      "knowledge_chunks": [
+        "Chọn xe bằng Agent câu hỏi thường gặp là tổng hợp những thắc mắc mà người thuê hay gửi trước, trong và sau khi nhờ trợ lý MotoAI gợi ý dòng xe. Agent ở đây là trợ lý tự động trên website của {{ business.brand }}: bạn mô tả nhu cầu bằng lời, trợ lý đối chiếu với dữ liệu có sẵn trên trang như danh sách dòng xe, giá tham khảo, thủ tục và chính sách, rồi trả lời. Trợ lý không dùng API AI bên ngoài và không thay cửa hàng chốt đơn. Khi hiểu đúng điều đó, bạn sẽ biết nên hỏi gì, tin phần nào và phải xác nhận lại phần nào.",
+        "Các câu hỏi dưới đây được sắp theo từng tình huống chọn xe cụ thể, thay vì giải thích chung chung về công cụ. Nếu bạn muốn hiểu cách Agent suy luận từ nhu cầu sang dòng xe, bài nền chọn xe bằng Agent trình bày kỹ phần đó."
+      ]
+    },
+    {
+      "article_id": "BA-1771",
+      "category": "LOCAL",
+      "slug": "dong-da-va-xe-may-mua-thu",
+      "title": "Đống đa và xe Máy Mùa Thu",
+      "description": "Đống Đa và xe máy mùa thu là một cặp rất hợp nhau. Khu trung tâm phía tây này dày đặc di tích, chùa cổ và những dãy phố ăn uống, nhưng khoảng cách",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dong-da-va-xe-may-mua-thu.body.html",
+      "knowledge_chunks": [
+        "Đống Đa và xe máy mùa thu là một cặp rất hợp nhau. Khu trung tâm phía tây này dày đặc di tích, chùa cổ và những dãy phố ăn uống, nhưng khoảng cách giữa các điểm lại ngắn, đi bộ thì hơi xa mà đi ô tô thì vướng ngõ hẹp. Một chiếc xe máy cho phép bạn ghé Văn Miếu buổi sáng, ngồi ở chùa Láng lúc trưa, dạo gò Đống Đa buổi chiều và về kịp bữa tối mà không phải chờ xe hay tìm chỗ đỗ ô tô. Mùa thu còn thêm một lợi thế: trời mát, ít mưa, những tán cây cổ thụ bắt đầu thay lá.",
+        "Nội dung dưới đây nhìn Đống Đa mùa thu từ góc của người cầm lái: đi đâu, gửi xe ở đâu, xử lý ngõ nhỏ ra sao và giữ chiếc xe thuê luôn trong tình trạng tốt khi thời tiết chuyển mùa."
+      ]
+    },
+    {
+      "article_id": "BA-1780",
+      "category": "LOCAL",
+      "slug": "gia-lam-va-long-bien-mua-thu",
+      "title": "Gia Lâm và Long Biên Mùa Thu",
+      "description": "Gia Lâm và Long Biên mùa thu là lúc bờ bắc sông Hồng dễ chịu nhất để đi xe máy. Từ khoảng giữa tháng Chín đến cuối tháng Mười Một, nắng dịu lại, gió",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/gia-lam-va-long-bien-mua-thu.body.html",
+      "knowledge_chunks": [
+        "Gia Lâm và Long Biên mùa thu là lúc bờ bắc sông Hồng dễ chịu nhất để đi xe máy. Từ khoảng giữa tháng Chín đến cuối tháng Mười Một, nắng dịu lại, gió heo may thổi dọc triền đê, nước sông rút để lộ những bãi bồi xanh rau màu. Những cung đường vốn oi và bụi vào mùa hè, như đê Long Biên đi Bát Tràng hay đường ven sông dưới chân cầu Chương Dương, bỗng trở thành chỗ chạy chậm, dừng chụp ảnh và ngồi uống trà đá mà không ai muốn vội.",
+        "Điểm hay của cặp địa danh này là chúng nằm liền nhau và liền với nơi nhận xe: cửa hàng {{ business.brand }} ở ngay Bồ Đề, Long Biên, nên bạn không phải băng qua nội thành đông đúc trước khi bắt đầu. Phần dưới đây tập trung vào những gì riêng của mùa thu: thời tiết đổi nhanh trong ngày, ngày ngắn hơn, cảnh đồng bãi theo mùa và cách sắp lộ trình cho hợp."
+      ]
+    },
+    {
+      "article_id": "BA-1777",
+      "category": "LOCAL",
+      "slug": "hai-ba-trung-hanh-trinh-mua-thu",
+      "title": "Hai bà Trưng Hành Trình Mùa Thu",
+      "description": "Hai Bà Trưng hành trình mùa thu là cách gọi gọn cho một ngày đi xe máy qua những con phố có mùi hoa sữa, mặt hồ lặng gió và những hàng quà thu bày",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/hai-ba-trung-hanh-trinh-mua-thu.body.html",
+      "knowledge_chunks": [
+        "Hai Bà Trưng hành trình mùa thu là cách gọi gọn cho một ngày đi xe máy qua những con phố có mùi hoa sữa, mặt hồ lặng gió và những hàng quà thu bày trên vỉa hè. Khu này không có một điểm đến duy nhất khiến người ta phải xếp hàng, mà quyến rũ bằng nhịp sống: phố Nguyễn Du ven hồ Thiền Quang, công viên Thống Nhất rộng thoáng, phố Huế buôn bán sầm uất và những ngõ nhỏ quanh Bạch Mai. Mùa thu làm tất cả những thứ đó chậm lại, mát hơn và dễ đi hơn.",
+        "Nội dung dưới đây giả định bạn nhận xe ở phía Long Biên rồi sang khu Hai Bà Trưng, và chỉ bàn những điều mùa thu thay đổi: giờ nào đi, phố nào nên đi chậm, quà gì đáng dừng và cái gì cần tránh khi trời chuyển mùa."
+      ]
+    },
+    {
+      "article_id": "BA-1774",
+      "category": "LOCAL",
+      "slug": "thanh-xuan-duong-di-mua-thu",
+      "title": "Thanh Xuân Đường đi Mùa Thu",
+      "description": "Thanh Xuân đường đi mùa thu là chủ đề dành cho người cần chạy xe máy vào khu tây nam Hà Nội trong những tháng từ tháng Chín đến tháng Mười Một: đi",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thanh-xuan-duong-di-mua-thu.body.html",
+      "knowledge_chunks": [
+        "Thanh Xuân đường đi mùa thu là chủ đề dành cho người cần chạy xe máy vào khu tây nam Hà Nội trong những tháng từ tháng Chín đến tháng Mười Một: đi thăm người thân, nhập học, làm thủ tục ở các trường đại học trên trục Nguyễn Trãi, hay đơn giản là ra công viên Thanh Xuân ngắm hoàng hôn. Khu này không nổi tiếng vì phong cảnh, nhưng lại là nơi mùa thu ảnh hưởng nhiều nhất tới việc đi lại: mùa tựu trường làm đường đông lên, mưa cuối mùa có thể làm vài đoạn trũng đọng nước, còn trời tối sớm khiến chuyến về Long Biên rơi đúng giờ cao điểm.",
+        "Phần dưới đây không liệt kê điểm tham quan, mà tập trung vào chuyện đi đường: chọn cung nào từ phía Long Biên, giờ nào nên tránh, đoạn nào cần chú ý và cách sắp chuyến đi trong ngày cho hợp với thời tiết thu."
+      ]
+    },
+    {
+      "article_id": "BA-1779",
+      "category": "RENT",
+      "slug": "thue-honda-air-blade-cuoi-tuan",
+      "title": "Thuê Honda Air Blade Cuối Tuần",
+      "description": "Thuê Honda Air Blade cuối tuần là lựa chọn của những người muốn hai ngày nghỉ có một chiếc xe ga đầm, cốp rộng, đủ sức chở thêm người và chạy những",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-honda-air-blade-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Thuê Honda Air Blade cuối tuần là lựa chọn của những người muốn hai ngày nghỉ có một chiếc xe ga đầm, cốp rộng, đủ sức chở thêm người và chạy những chặng dài hơn quãng đi làm hằng ngày. Nhưng thuê xe vào thứ Bảy, Chủ nhật có nhịp khác hẳn ngày thường: nhu cầu dồn vào cùng vài khung giờ, ai đặt muộn thường phải đổi sang dòng khác, còn lịch trả xe dễ bị kéo lùi đến sát giờ đóng cửa. Nội dung dưới đây đi theo đúng trình tự một kỳ nghỉ cuối tuần, từ lúc đặt xe đến lúc trả, để chiếc Air Blade phục vụ bạn trọn hai ngày mà không phát sinh rắc rối.",
+        "Những chuyến cuối tuần thường không chỉ loanh quanh vài con phố. Người ta chở bạn đi ăn sáng ở phố cổ, chiều chạy ra Bát Tràng, tối vòng hồ Tây, sáng Chủ nhật lại qua bãi giữa sông Hồng. Air Blade hợp kiểu lịch trình đó ở mấy điểm:"
+      ]
+    },
+    {
+      "article_id": "BA-1776",
+      "category": "RENT",
+      "slug": "thue-honda-vision-cuoi-tuan",
+      "title": "Thuê Honda Vision Cuối Tuần",
+      "description": "Thuê Honda Vision cuối tuần phù hợp nhất với những ai định dành thứ Bảy, Chủ nhật để lang thang trong phố: ăn sáng ở một con ngõ nhỏ, cà phê ven hồ,",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-honda-vision-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Thuê Honda Vision cuối tuần phù hợp nhất với những ai định dành thứ Bảy, Chủ nhật để lang thang trong phố: ăn sáng ở một con ngõ nhỏ, cà phê ven hồ, chiều gửi xe đi bộ, tối dạo quanh khu phố cổ. Vision nhẹ, yên thấp, dễ dắt và dễ quay đầu trong chỗ chật, đúng loại xe mà nội thành Hà Nội cuối tuần cần. Tuy nhiên, hai ngày nghỉ cũng là lúc phố đông, chỗ gửi xe khan và nhiều tuyến phố đổi cách tổ chức giao thông. Phần dưới đây giúp bạn biến chiếc Vision thành lợi thế thay vì gánh nặng trong những ngày ấy.",
+        "Không phải chuyến cuối tuần nào cũng cần xe lớn. Vision là lựa chọn đáng cân nhắc khi:"
+      ]
+    },
+    {
+      "article_id": "BA-1773",
+      "category": "RENT",
+      "slug": "thue-xe-50cc-cuoi-tuan",
+      "title": "Thuê xe 50cc Cuối Tuần",
+      "description": "Thuê xe 50cc cuối tuần là câu hỏi quen thuộc của hai nhóm khách: các bạn trẻ đủ mười sáu, mười bảy tuổi muốn tự đi chơi thứ Bảy, Chủ nhật, và những",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-50cc-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Thuê xe 50cc cuối tuần là câu hỏi quen thuộc của hai nhóm khách: các bạn trẻ đủ mười sáu, mười bảy tuổi muốn tự đi chơi thứ Bảy, Chủ nhật, và những người lớn chưa có giấy phép lái mô tô nhưng muốn chủ động đi lại trong hai ngày nghỉ. Xe 50cc nhẹ, chậm và dễ làm quen, nhưng lại là dòng ít xe nhất ở hầu hết cửa hàng, giá thường để ở dạng liên hệ, và có những giới hạn riêng về tốc độ lẫn cung đường. Nếu không chuẩn bị, bạn rất dễ đến sáng thứ Bảy mới biết không còn xe. Phần dưới đây giúp bạn lên kế hoạch cho một cuối tuần với xe 50cc từ lúc hỏi xe đến lúc trả.",
+        "Ngược lại, nếu lịch cuối tuần có nhiều chặng dài, chở hai người lớn hoặc phải qua các trục đường tốc độ cao, xe 50cc sẽ khá vất vả và bạn nên cân nhắc dòng khác nếu có bằng phù hợp."
+      ]
+    },
+    {
+      "article_id": "BA-1772",
+      "category": "APP",
+      "slug": "ung-dung-thue-xe-co-an-toan-khong-cau-hoi-thuong-gap",
+      "title": "Ứng Dụng Thuê xe có an Toàn Không Câu Hỏi Thường Gặp",
+      "description": "Ứng dụng thuê xe có an toàn không câu hỏi thường gặp là phần trả lời ngắn gọn cho những lo lắng mà người thuê hay nêu trước khi trò chuyện với một",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ung-dung-thue-xe-co-an-toan-khong-cau-hoi-thuong-gap.body.html",
+      "knowledge_chunks": [
+        "Ứng dụng thuê xe có an toàn không câu hỏi thường gặp là phần trả lời ngắn gọn cho những lo lắng mà người thuê hay nêu trước khi trò chuyện với một trợ lý trực tuyến: thông tin mình gõ vào đi đâu, có bị lừa chuyển tiền không, làm sao biết trang mình đang dùng là thật, và nếu có sự cố thì ai chịu trách nhiệm. Với MotoAI, câu trả lời bắt đầu từ một điều đơn giản: đây là ứng dụng web chạy trên website của {{ business.brand }}, trả lời tự động dựa trên dữ liệu có sẵn trên trang, không dùng API AI và không tự thu tiền của bạn.",
+        "Các câu hỏi dưới đây được nhóm theo từng loại rủi ro để bạn tra nhanh. Phân tích đầy đủ từng lớp an toàn có trong bài nền ứng dụng thuê xe có an toàn không ."
+      ]
     }
   ]
 }
