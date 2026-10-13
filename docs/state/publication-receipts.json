@@ -12012,6 +12012,28 @@
       "entry_sha256": "011a002c08df5e9ef25310734bd163e5c68c4c02cf25c7be8585e4819fba6d4a",
       "production_status": 200,
       "verified_at": "2026-10-13T04:46:21.753Z"
+    },
+    "BA-1133": {
+      "article_id": "BA-1133",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/luat-giao-thong-duong-bo-co-ban-vi-du-thuc-te/",
+      "publication_sha": "f7cc0a023bb2941d9fd45aae9596591b0e311b83",
+      "page_sha256": "02e30d701367fc1c7bb2aa044a1d34a978a397eaf40119dacca517e8c5610a87",
+      "body_sha256": "b5d7af3a21567622ebaa32279a195a90546717844740c20093926a7c70af6c41",
+      "entry_sha256": "00b39107bcf340c58f062434b0b8ac2d1a783e7c56655021785159fd03f4ff49",
+      "production_status": 200,
+      "verified_at": "2026-10-13T04:50:28.127Z"
+    },
+    "BA-1134": {
+      "article_id": "BA-1134",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/hai-ba-trung-hanh-trinh-buoi-sang/",
+      "publication_sha": "f7cc0a023bb2941d9fd45aae9596591b0e311b83",
+      "page_sha256": "b888c5b67ecd69793c69207e485eda6455363ae28ba8bdf744c732578d05535a",
+      "body_sha256": "3796f0cc60e2ea585d099a0c4fcb136348f6a8a58d17cc883d23ec6a337dc491",
+      "entry_sha256": "14ece0b42f3dce609e467328811dcfed848598e2ee70635b76952f5ed1155607",
+      "production_status": 200,
+      "verified_at": "2026-10-13T04:50:28.147Z"
     }
   }
 }
