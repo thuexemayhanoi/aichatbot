@@ -5156,3 +5156,10 @@
 - 2026-10-13 QA PASS BA-1191 score=100
 - 2026-10-13 QA PASS BA-1192 score=100
 - 2026-10-13 PUBLISHED 2 (BA-1191, BA-1192) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-13 CLAIM 1: BA-1193
+- 2026-10-13 FINISH BA-1193
+- 2026-10-13 CLAIM 1: BA-1194
+- 2026-10-13 FINISH BA-1194
+- 2026-10-13 QA PASS BA-1193 score=100
+- 2026-10-13 QA PASS BA-1194 score=95
+- 2026-10-13 PUBLISHED 2 (BA-1193, BA-1194) — one grouped build, pages, matrix, indexes, sitemap consistent
