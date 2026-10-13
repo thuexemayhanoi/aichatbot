@@ -12056,6 +12056,28 @@
       "entry_sha256": "6438ef13c49c08aac01070907e77883b662c48173aadb99f7edbbecf9859ed66",
       "production_status": 200,
       "verified_at": "2026-10-13T04:52:59.188Z"
+    },
+    "BA-1137": {
+      "article_id": "BA-1137",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/xe-dien-giam-tieng-on-pho-mua-he/",
+      "publication_sha": "2884ab5e81f8550e7d54755a37303b2428ea27b0",
+      "page_sha256": "8782b076b70b06d4608e2ff26c14a6384937b4252a66440ba146ceca3cbe49b3",
+      "body_sha256": "d4244b3a62bffd6c85abf9358cab4e06d42f03b4adcdc95de2c92917111fcfd3",
+      "entry_sha256": "6beda4475bd8e93bd35f9460aa4c1fafeed0dc5dce46bdad6665d0512dc598c1",
+      "production_status": 200,
+      "verified_at": "2026-10-13T05:04:46.835Z"
+    },
+    "BA-1138": {
+      "article_id": "BA-1138",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/giao-xe-tai-san-bay-noi-bai-nhanh-gon/",
+      "publication_sha": "2884ab5e81f8550e7d54755a37303b2428ea27b0",
+      "page_sha256": "5e2a036b7b147cefa9fee593f1edab081c0061fffb381ccdeedf4d1322661acd",
+      "body_sha256": "6006f962d1ce08457a72ba3dc4bd60596bcfeb29b96c50e8f0c4d7b2f6e376fb",
+      "entry_sha256": "282abbdff5f4f908c78972c8cb05d382ba6003557f443be40ea033fd87b26d3b",
+      "production_status": 200,
+      "verified_at": "2026-10-13T05:04:46.957Z"
     }
   }
 }
