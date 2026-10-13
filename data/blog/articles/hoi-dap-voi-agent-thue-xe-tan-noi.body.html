@@ -1,0 +1,61 @@
+<p>Đặt xe máy giao tận nơi nghe rất tiện, nhưng ai từng làm đều có một loạt câu hỏi nhỏ: xe đến đúng giờ không, nhận ở cổng chung cư hay dưới hầm, ký giấy ở đâu, trả xe thì ai đến lấy, nếu hôm đó mưa thì sao. Agent thuê xe trên website MotoAI được xây dựng để trả lời chính những thắc mắc kiểu này, bất cứ lúc nào, trước khi bạn phải gọi điện. Bài này đi qua toàn bộ hành trình giao nhận tận nơi theo dạng hỏi đáp: bạn hỏi gì, agent trả lời dựa vào đâu, và chỗ nào agent sẽ chuyển bạn sang cửa hàng để xác nhận.</p>
+
+<h2>Agent trả lời dựa trên gì khi bạn hỏi về giao xe</h2>
+<p>Agent là trợ lý hội thoại chạy trên trang web, không phải ứng dụng cài vào máy. Khi bạn hỏi về giao nhận, agent dùng các dữ liệu đã được cửa hàng xác nhận: khu vực phục vụ gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành; khung giờ làm việc {{ business.hours.display }}; quy định rằng thời gian và phí giao phải được chốt trước khi đặt; cùng các bài hướng dẫn đã đăng. Những gì nằm ngoài dữ liệu đó, như xe có rảnh đúng mười giờ sáng mai không, agent sẽ nói thẳng là cần cửa hàng xác nhận.</p>
+<p>Cách agent hoạt động nói chung đã có trong bài <a href="/blog/app/hoi-dap-voi-agent-thue-xe/">hỏi đáp với agent thuê xe</a>. Dưới đây là phần dành riêng cho giao nhận tại địa chỉ của bạn.</p>
+
+<h2>Trước khi đặt: những câu nên hỏi agent</h2>
+<ul>
+<li><strong>"Địa chỉ của tôi ở ngõ nhỏ khu Bồ Đề, có giao được không?"</strong> Agent xác nhận khu vực nằm trong vùng phục vụ và nhắc bạn gửi địa chỉ đầy đủ cho cửa hàng để chốt điểm hẹn, vì ngõ hẹp có thể cần hẹn ở đầu ngõ.</li>
+<li><strong>"Giao sớm nhất lúc mấy giờ?"</strong> Câu trả lời là từ chín giờ sáng, theo giờ mở cửa; muốn có xe sớm hơn, bạn nhận từ chiều hôm trước.</li>
+<li><strong>"Phí giao bao nhiêu?"</strong> Agent không nêu con số; phí và thời gian giao do cửa hàng xác nhận trước khi đặt, tùy địa chỉ.</li>
+<li><strong>"Tôi nên chuẩn bị giấy tờ gì để ký tại chỗ?"</strong> Giấy tờ tùy thân, giấy phép lái xe phù hợp và bảo hiểm xe máy bạn tự mua, vì cửa hàng không cung cấp bảo hiểm.</li>
+</ul>
+<p>Nếu bạn còn muốn hỏi về giá thuê trước khi nói chuyện giao xe, bài <a href="/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot/">cách hỏi giá xe nhanh bằng chatbot</a> có công thức câu hỏi riêng cho phần đó.</p>
+
+<h2>Ba kịch bản giao xe thường gặp và cách hỏi</h2>
+<h3>Khách sạn trong Phố Cổ</h3>
+<p>Hỏi: "Tôi ở khách sạn gần Hồ Gươm, giao xe tối thứ Sáu được không?" Agent sẽ nhắc hai điều: giao chỉ trong giờ mở cửa, và tối cuối tuần khu vực quanh hồ có phố đi bộ cấm xe, nên điểm hẹn có thể phải dời ra rìa khu vực cấm. Bạn nên hỏi tiếp về chỗ gửi xe gần khách sạn. Cách nhận xe tại sảnh khách sạn được mô tả trong bài <a href="/blog/huong-dan/giao-xe-tai-khach-san/">giao xe tại khách sạn</a>.</p>
+<h3>Chung cư ở Long Biên hoặc Gia Lâm</h3>
+<p>Hỏi: "Chung cư tôi có hầm xe, nhân viên giao vào hầm hay tôi xuống sảnh?" Agent gợi ý hẹn ở sảnh hoặc cổng, nơi có ánh sáng để kiểm tra xe và ký giấy, rồi bạn tự dắt xuống hầm. Hỏi thêm về giấy tờ để làm thẻ xe của tòa nhà nếu bạn thuê dài ngày.</p>
+<h3>Văn phòng ở Ba Đình hoặc Hoàn Kiếm giữa giờ làm</h3>
+<p>Hỏi: "Tôi chỉ ra ngoài được mười lăm phút lúc giữa trưa, kịp nhận xe không?" Agent sẽ nhắc bạn hỏi cửa hàng lịch giao trong ngày và chuẩn bị sẵn giấy tờ để lượt kiểm tra xe và ký diễn ra gọn; danh sách kiểm tra rút gọn có trong bài <a href="/blog/huong-dan/kiem-tra-xe-khi-nhan-nhanh-gon/">kiểm tra xe khi nhận nhanh gọn</a>.</p>
+
+<h2>Tại điểm giao: hỏi gì khi xe đã tới</h2>
+<p>Lúc này bạn làm việc với nhân viên, nhưng agent vẫn hữu ích nếu bạn mở sẵn trên điện thoại để tra nhanh:</p>
+<ol>
+<li>"Tôi nên kiểm tra những gì trước khi ký?" Agent liệt kê: biển số khớp hợp đồng, phanh, đèn, lốp, mức xăng hoặc pin, phụ kiện đi kèm, và nhắc quay video.</li>
+<li>"Khoản cọc xác nhận lúc đặt là bao nhiêu?" Agent nhắc mức cọc nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, đúng như cửa hàng đã báo khi đặt.</li>
+<li>"Hợp đồng cần có dòng nào?" Agent trỏ tới bài hướng dẫn hợp đồng để bạn rà nhanh.</li>
+</ol>
+<p>Quy trình nhận xe tận nơi đầy đủ, kể cả cách gửi video cho cửa hàng, nằm trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>.</p>
+
+<h2>Trong thời gian thuê và lúc trả xe</h2>
+<ul>
+<li><strong>"Tôi muốn thuê thêm hai ngày, báo qua đâu?"</strong> Agent hướng dẫn nhắn cửa hàng xác nhận giờ trả mới và cách tính phần gia hạn, càng sớm càng tốt.</li>
+<li><strong>"Trả xe có được lấy tận nơi không?"</strong> Có thể, trong khu vực phục vụ và trong giờ mở cửa, với thời gian và phí thống nhất trước; nếu không, bạn mang xe về {{ business.address.full }}.</li>
+<li><strong>"Hôm trả xe mưa to thì sao?"</strong> Hãy nhắn cửa hàng sớm để dời giờ trong ngày; đừng để quá giờ đóng cửa mới liên lạc.</li>
+<li><strong>"Tôi cần hủy lịch giao ngày mai, làm thế nào?"</strong> Agent chỉ cách báo hủy và nhắc đọc chính sách; chi tiết có trong bài <a href="/blog/app/huy-lich-thue-xe-qua-app-tan-noi/">hủy lịch thuê xe qua app tận nơi</a>.</li>
+</ul>
+
+<h2>Những điều agent không làm thay bạn</h2>
+<ul>
+<li>Không chốt giờ giao và phí giao: hai thứ này luôn do cửa hàng xác nhận.</li>
+<li>Không báo giá cho xe máy điện, xe 50cc, xe đạp điện vì các dòng này áp dụng giá liên hệ.</li>
+<li>Không theo dõi vị trí nhân viên giao xe; khi cần biết xe đang ở đâu, hãy gọi cửa hàng.</li>
+<li>Không yêu cầu bạn gửi ảnh giấy tờ vào khung chat; việc đối chiếu diễn ra tại điểm giao.</li>
+</ul>
+<p>Khi muốn gọi ngay sau khi hỏi, bài <a href="/blog/app/goi-dien-tu-ung-dung-thue-xe-tan-noi/">gọi điện từ ứng dụng thuê xe tận nơi</a> chỉ cách chuyển từ khung chat sang cuộc gọi mà không mất thông tin đã hỏi. Cách soạn câu hỏi để agent hiểu đúng ngay lần đầu được gom trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-tan-noi/">soạn câu hỏi hiệu quả cho agent thuê xe tận nơi</a>.</p>
+
+<h2>Câu hỏi thường gặp khi hỏi đáp với agent về giao xe tận nơi</h2>
+<h3>Agent có biết xe nào còn rảnh để giao sáng mai không?</h3>
+<p>Không. Tình trạng xe sẵn có theo từng ngày do cửa hàng nắm; agent giúp bạn chuẩn bị câu hỏi và thông tin để cửa hàng xác nhận nhanh.</p>
+<h3>Tôi hỏi bằng tiếng Anh được không?</h3>
+<p>Được. Với các chi tiết như điểm hẹn và giờ giao, hãy xác nhận lại với cửa hàng để tránh hiểu nhầm.</p>
+<h3>Nhờ người khác nhận xe hộ có được không?</h3>
+<p>Hãy hỏi cửa hàng trước, vì giấy tờ và chữ ký trên hợp đồng gắn với người thuê. Agent sẽ nhắc bạn điều này thay vì tự trả lời có hoặc không.</p>
+<h3>Hỏi agent có mất phí không?</h3>
+<p>Không. Agent là công cụ trực tuyến miễn phí trên website, không cần tài khoản.</p>
+
+<h2>Kết luận</h2>
+<p>Hỏi đáp với agent trước khi đặt xe giao tận nơi giúp bạn đến bước gọi điện với mọi câu hỏi đã có lời giải, chỉ còn giờ giao và phí giao chờ {{ business.display_name }} xác nhận. Hãy liên hệ {{ business.contact.phone_display }} để chốt lịch, hoặc mở agent ngay trên <a href="/">trang chủ</a> và thử câu hỏi đầu tiên về địa chỉ của bạn. Nhiều kịch bản dùng agent khác đang chờ bạn trong <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>

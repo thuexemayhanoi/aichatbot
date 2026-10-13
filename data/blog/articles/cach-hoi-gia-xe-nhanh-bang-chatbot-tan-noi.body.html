@@ -1,0 +1,65 @@
+<p>Hỏi giá thuê xe là việc đơn giản cho đến khi bạn thêm một yêu cầu: "giao đến tận nơi cho tôi". Lúc này con số không còn là một dòng trong bảng giá, mà là giá thuê cộng với một khoản giao xe phụ thuộc địa chỉ, khung giờ và việc cửa hàng có người đi giao hay không. Chatbot MotoAI trên website có thể trả lời rất nhanh phần giá thuê tham khảo, nhưng phần giao tận nơi thì bạn phải hỏi theo cách khác để không nhận về một câu trả lời nửa vời. Bài này chỉ cách gõ một câu hỏi giá kèm giao xe đủ ý, đọc đúng câu trả lời, và biết chính xác phần nào cửa hàng sẽ xác nhận sau.</p>
+
+<h2>Hai phần của một câu hỏi giá kèm giao xe</h2>
+<p>Khi bạn hỏi "thuê Vision ba ngày giao đến Tây Hồ bao nhiêu", chatbot đang phải xử lý hai câu hỏi khác nhau. Phần một là giá thuê: có trong bảng giá tham khảo, trả lời được ngay. Phần hai là giao xe: không có một mức cố định, vì cửa hàng xác nhận thời gian và phí giao theo từng địa chỉ trước khi bạn đặt. Hiểu được sự tách bạch này, bạn sẽ không thất vọng khi chatbot đưa ra con số cho phần một nhưng chỉ nêu điều kiện cho phần hai.</p>
+<p>Nguyên tắc chung về hỏi giá bằng chatbot nằm trong bài <a href="/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot/">cách hỏi giá xe nhanh bằng chatbot</a>; phần dưới đây tập trung vào tình huống cần xe mang tới cửa.</p>
+
+<h2>Công thức câu hỏi năm thành phần</h2>
+<p>Để nhận được câu trả lời dùng được ngay, hãy gói năm thông tin sau vào một tin nhắn:</p>
+<ol>
+<li><strong>Dòng xe hoặc nhóm xe:</strong> "Vision", "xe ga nhỏ", "xe số".</li>
+<li><strong>Kỳ thuê:</strong> số ngày hoặc ngày bắt đầu và kết thúc.</li>
+<li><strong>Địa chỉ nhận:</strong> tên khu vực cụ thể như Bồ Đề, Phố Cổ, Ba Đình, kèm loại địa điểm là khách sạn, chung cư hay văn phòng.</li>
+<li><strong>Khung giờ muốn nhận:</strong> nằm trong giờ làm việc {{ business.hours.display }}.</li>
+<li><strong>Cách trả xe:</strong> tự mang về cửa hàng hay muốn được lấy tận nơi.</li>
+</ol>
+<p>Mẫu câu hoàn chỉnh: "Thuê Honda Vision từ thứ Sáu đến Chủ nhật, giao đến khách sạn ở Phố Cổ khoảng mười giờ sáng thứ Sáu, trả xe tại cửa hàng chiều Chủ nhật, giá tham khảo và điều kiện giao thế nào?" Một câu như vậy giúp chatbot trả về giá thuê tham khảo, xác nhận khu vực có được phục vụ không và nêu rõ phí giao sẽ do cửa hàng báo. Lý do cách diễn đạt này giúp công cụ hiểu đúng được giải thích trong bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-tan-noi/">cách ứng dụng hiểu câu hỏi về giá xe tận nơi</a>.</p>
+
+<h2>Đọc câu trả lời: ba dòng cần tìm</h2>
+<ul>
+<li><strong>Dòng giá thuê tham khảo:</strong> ví dụ Honda Vision tham khảo 200.000đ/ngày, Honda Click hoặc Yamaha Mio tham khảo 150.000đ/ngày, Honda Wave tham khảo 150.000đ/ngày; với ba ngày, bạn tự nhân lên rồi hỏi thêm có gói nào hợp hơn không. Bảng đầy đủ có ở trang <a href="/gia-thue/">giá thuê</a>.</li>
+<li><strong>Dòng về khu vực:</strong> Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội là các khu vực cửa hàng phục vụ. Nếu địa chỉ của bạn nằm ngoài, câu trả lời sẽ nói rõ cần hỏi trực tiếp.</li>
+<li><strong>Dòng về giao xe:</strong> chỉ trong giờ mở cửa, thời gian và phí xác nhận với cửa hàng trước khi đặt. Chatbot không tự đưa ra một mức phí giao, và đó là điều bình thường.</li>
+</ul>
+<p>Ngoài ba dòng này, câu trả lời có thể nhắc đến khoản cọc trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được xác nhận khi đặt. Đừng cộng cọc vào chi phí thuê, vì đó là khoản hoàn lại khi trả xe đúng hiện trạng; chi tiết nằm trong bài <a href="/blog/app/dat-coc-va-ung-dung-thue-xe-tan-noi/">đặt cọc và ứng dụng thuê xe tận nơi</a>.</p>
+
+<h2>Những câu hỏi tiếp theo nên gõ ngay trong cùng cuộc trò chuyện</h2>
+<p>Chatbot nhớ ngữ cảnh các lượt trước, nên bạn không cần nhắc lại dòng xe hay địa chỉ. Hãy hỏi tiếp:</p>
+<ul>
+<li>"Nếu tôi đổi sang nhận tại cửa hàng thì tiết kiệm được phần nào?" để so sánh phương án tự đến {{ business.address.full }}.</li>
+<li>"Giao xe lúc tám giờ sáng được không?" để được nhắc giờ sớm nhất là chín giờ.</li>
+<li>"Thuê thêm một ngày thì giá đổi thế nào?" để biết có nên chuyển sang gói tuần, ví dụ Vision tham khảo 800.000đ–1.000.000đ/tuần.</li>
+<li>"Cần giấy tờ gì khi nhận xe tại khách sạn?" để chuẩn bị sẵn.</li>
+</ul>
+<p>Danh sách việc cần làm lúc xe được mang tới nằm trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>.</p>
+
+<h2>Từ câu trả lời của chatbot đến xác nhận của cửa hàng</h2>
+<ol>
+<li>Chụp màn hình câu trả lời gồm dòng xe, kỳ thuê, giá tham khảo và khu vực.</li>
+<li>Nhắn hoặc gọi {{ business.contact.phone_display }}, gửi đúng địa chỉ đầy đủ và khung giờ mong muốn.</li>
+<li>Chờ cửa hàng báo thời gian giao và phí giao; chỉ khi hai con số này rõ ràng, bạn mới chốt đặt.</li>
+<li>Lưu tin nhắn xác nhận cùng với ảnh chụp màn hình chatbot.</li>
+</ol>
+<p>Thứ tự này đảm bảo bạn không bao giờ đặt xe với một mức phí giao "để sau mới nói". Những điều cần biết về việc giao xe nói chung, từ điểm hẹn đến người nhận hộ, có trong bài <a href="/blog/thue-xe/thue-xe-giao-tan-noi/">thuê xe giao tận nơi</a>.</p>
+
+<h2>Lỗi thường gặp khi hỏi giá kèm giao xe</h2>
+<ul>
+<li>Chỉ ghi "Hà Nội" mà không nêu khu vực, khiến chatbot không xác định được có trong vùng phục vụ không.</li>
+<li>Hỏi giao xe ngoài giờ, ví dụ mười giờ đêm, rồi thất vọng vì không được đáp ứng.</li>
+<li>Coi giá thuê tham khảo là tổng chi phí, quên phần phí giao do cửa hàng báo.</li>
+<li>Gửi số phòng khách sạn, số giấy tờ tùy thân vào khung chat ngay từ lúc hỏi giá; việc này chỉ cần khi cửa hàng xác nhận đặt, và nên gửi trực tiếp cho cửa hàng.</li>
+<li>Hỏi giá dòng xe thuộc nhóm liên hệ như xe máy điện, xe 50cc rồi tưởng chatbot "không biết"; thực ra nhóm này cần cửa hàng báo giá.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp về hỏi giá xe bằng chatbot khi cần giao tận nơi</h2>
+<h3>Chatbot có báo được phí giao xe không?</h3>
+<p>Không. Chatbot cho bạn biết khu vực có được phục vụ không và nhắc rằng phí cùng thời gian giao do cửa hàng xác nhận trước khi đặt.</p>
+<h3>Hỏi giá lúc nửa đêm để sáng mai giao được không?</h3>
+<p>Hỏi được bất cứ lúc nào, nhưng cửa hàng chỉ xác nhận và giao trong giờ mở cửa, nên hãy liên hệ ngay từ đầu giờ sáng để kịp sắp xếp.</p>
+<h3>Giao xe tới văn phòng ở Ba Đình giờ trưa được không?</h3>
+<p>Ba Đình thuộc khu vực phục vụ và giờ trưa nằm trong giờ làm việc; thời gian cụ thể sẽ do cửa hàng chốt theo lịch giao trong ngày.</p>
+<h3>Có cần tài khoản để hỏi giá không?</h3>
+<p>Không, chatbot là công cụ trực tuyến trên website, bạn mở trình duyệt và hỏi ngay, không cần đăng ký hay cài đặt.</p>
+
+<h2>Kết luận</h2>
+<p>Hỏi giá xe nhanh bằng chatbot khi cần giao tận nơi là chuyện của một câu hỏi năm thành phần và một lần đọc đúng ba dòng trả lời. Giá thuê tham khảo bạn có ngay, còn thời gian và phí giao sẽ được {{ business.brand }} xác nhận khi bạn gọi hoặc nhắn qua {{ business.contact.phone_display }}. Mở chatbot ngay tại <a href="/">trang chủ</a> để thử một câu hỏi, và xem thêm các bài trong <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>
