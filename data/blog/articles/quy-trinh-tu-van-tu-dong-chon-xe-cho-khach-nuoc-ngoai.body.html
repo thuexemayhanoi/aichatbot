@@ -1,0 +1,54 @@
+<p>Một khách nước ngoài mở website của {{ business.brand }} lần đầu thường có cùng một bộ băn khoăn: tôi có được phép lái xe máy ở đây không, tôi chưa từng đi xe số thì chọn gì, phải mang giấy tờ gì, xe có giao tới hostel không. Trợ lý MotoAI, một ứng dụng web chạy ngay trên trình duyệt, được thiết kế để dẫn khách qua các câu hỏi đó theo một thứ tự cố định, gọi là quy trình tư vấn tự động chọn xe. Bài này mô tả quy trình ấy ở phiên bản dành cho khách nước ngoài: các chặng khác gì so với khách Việt, ví dụ hội thoại bằng tiếng Anh, và ranh giới giữa phần trợ lý xử lý với phần nhân viên cửa hàng phải xác nhận. Bản quy trình chung nằm trong bài <a href="/blog/app/quy-trinh-tu-van-tu-dong-chon-xe/">quy trình tư vấn tự động chọn xe</a>.</p>
+
+<h2>Vì sao khách nước ngoài đi qua một luồng riêng</h2>
+<p>Khách Việt thường đã biết mình lái được xe gì và cần giấy tờ gì, nên luồng tư vấn cho họ bắt đầu ngay từ mục đích và ngân sách. Khách nước ngoài lại có hai câu phải trả lời trước khi bàn tới dòng xe: giấy phép lái xe của họ có dùng được ở Việt Nam không, và kinh nghiệm lái thực tế của họ ra sao. Rất nhiều du khách đến từ nơi chỉ lái ô tô, hoặc từng thuê xe ga ở một nước khác nhưng chưa bao giờ đi xe số. Nếu bỏ qua hai câu này, gợi ý xe sẽ sai ngay từ đầu. Vì vậy trợ lý nhận ra ngôn ngữ bạn dùng, chuyển sang trả lời bằng ngôn ngữ đó như mô tả ở bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu/">trợ lý thuê xe xử lý câu hỏi đa ngôn ngữ</a>, rồi mở luồng có thêm hai chặng đầu dành riêng cho người không phải dân địa phương.</p>
+
+<h2>Sáu chặng của luồng tư vấn cho khách nước ngoài</h2>
+<ol>
+<li>Giấy phép lái xe: bạn có bằng nước nào, có giấy phép lái xe quốc tế không, hay đã đổi sang bằng Việt Nam. Trợ lý giải thích nguyên tắc chung và đề nghị bạn đọc bài <a href="/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/">người nước ngoài lái xe ở Việt Nam</a>, nhưng không kết luận thay cửa hàng.</li>
+<li>Kinh nghiệm lái: đã từng đi xe số, xe ga, hay chưa từng lái xe hai bánh. Câu trả lời này khóa luôn danh sách gợi ý: người chưa đi xe số sẽ không được gợi ý Wave.</li>
+<li>Mục đích: khám phá Phố Cổ và các hồ, đi làm hằng ngày, hay chạy ra ngoại thành. Mỗi mục đích ứng với một nhóm xe và một lời nhắc an toàn khác nhau.</li>
+<li>Thời gian: vài ngày, một tuần hay một tháng, để trợ lý nêu mức giá tham khảo đúng gói.</li>
+<li>Nơi ở và cách nhận xe: tên khu vực để biết có giao được không, hay bạn tự tới cửa hàng ở Long Biên.</li>
+<li>Tóm tắt: trợ lý gom toàn bộ thành một đoạn ngắn bạn có thể gửi cho cửa hàng để xác nhận xe trống, giá, cọc và lịch giao.</li>
+</ol>
+
+<h2>Ví dụ hội thoại bằng tiếng Anh</h2>
+<h3>Du khách lần đầu, chỉ đi trong trung tâm</h3>
+<p>Khách gõ: "I'm from Australia, I only have a car licence, never ridden a scooter, staying in the Old Quarter for four days." Trợ lý sẽ nhắc rằng bằng ô tô không thay thế giấy phép lái xe máy, đề nghị khách xem lại điều kiện pháp lý trước khi tính tới việc thuê, và nếu khách vẫn muốn hỏi về xe thì chỉ nói tới nhóm xe ga nhỏ dễ làm quen cùng giá tham khảo, kèm lời khuyên tập ở chỗ vắng trước khi vào phố đông.</p>
+<h3>Người làm việc từ xa ở lại một tháng</h3>
+<p>Khách gõ: "I have a German licence plus IDP, rode scooters in Bali, staying in Tay Ho for five weeks, need something for daily rides to cafes and the occasional trip across the city." Trợ lý ghi nhận kinh nghiệm xe ga, gợi ý Honda Vision với giá tham khảo khoảng 1.800.000đ–2.000.000đ/tháng hoặc Air Blade khoảng 1.400.000đ/tháng, nhắc rằng Tây Hồ nằm trong khu vực giao xe, và tạo đoạn tóm tắt để khách gửi cửa hàng. Cách trợ lý so các gói tháng được mô tả ở bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a>.</p>
+<h3>Cặp đôi muốn đi Bát Tràng và ven đê</h3>
+<p>Khách gõ: "Two of us, I ride manual bikes at home, we want to visit Bat Trang and ride along the river for a day." Trợ lý gợi ý một xe cho hai người với cốp đủ rộng, nhắc mũ bảo hiểm cho cả hai, nói rõ giá tham khảo theo ngày và lưu ý rằng các cung đường ngoài phố cần hỏi cửa hàng về tình trạng lốp trước khi đi.</p>
+
+<h2>Ranh giới: trợ lý làm gì, cửa hàng làm gì</h2>
+<p>Trợ lý làm tốt ba việc: giải thích bằng ngôn ngữ của bạn, thu hẹp danh sách xe theo kinh nghiệm và mục đích, nêu giá tham khảo và chuẩn bị đoạn tóm tắt. Trợ lý không làm bốn việc sau, và khách nước ngoài cần biết để khỏi chờ nhầm:</p>
+<ul>
+<li>Không thẩm định bộ giấy tờ của bạn; nhân viên cửa hàng xem bản gốc khi giao xe và quyết định.</li>
+<li>Không giữ xe hay chốt giá; mức cuối cùng do cửa hàng xác nhận theo xe trống tại thời điểm đặt, bảng tham khảo ở <a href="/gia-thue/">trang bảng giá thuê xe</a>.</li>
+<li>Không hứa giờ giao; thời gian và phí giao được cửa hàng xác nhận trước khi đặt và chỉ trong khung {{ business.hours.display }}.</li>
+<li>Không bán bảo hiểm; cửa hàng không cung cấp bảo hiểm, bạn tự chuẩn bị bảo hiểm xe máy cho thời gian thuê.</li>
+</ul>
+<p>Về tiền cọc, trợ lý chỉ nói khoảng chung từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, mức cụ thể do cửa hàng xác nhận khi bạn đặt. Tổng quan về giới hạn của công cụ có trong bài <a href="/blog/app/tro-ly-thue-xe-may-la-gi-cho-khach-nuoc-ngoai/">trợ lý thuê xe máy là gì cho khách nước ngoài</a>.</p>
+
+<h2>Mẹo trả lời để luồng chạy trơn</h2>
+<ul>
+<li>Trả lời đủ ý ở chặng giấy phép và kinh nghiệm, đừng trả lời "yes" cho câu hỏi gộp hai ý.</li>
+<li>Dùng tên khu vực theo cách người Hà Nội gọi: Old Quarter, Hoan Kiem, Tay Ho, Long Bien, Ba Dinh; trợ lý nhận diện được cả cách viết không dấu.</li>
+<li>Nói rõ chiều cao nếu bạn thấp hoặc rất cao, vì điều đó ảnh hưởng tới gợi ý giữa xe ga nhỏ và xe lớn hơn.</li>
+<li>Khi đã có tóm tắt, sao chép nguyên văn gửi cửa hàng, đừng tự tóm tắt lại bằng vài từ.</li>
+</ul>
+<p>Cách mô tả nhu cầu cho công cụ chọn xe được bàn thêm ở bài <a href="/blog/app/chon-xe-bang-agent-cho-khach-nuoc-ngoai/">chọn xe bằng agent cho khách nước ngoài</a> và bài <a href="/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao-cho-khach-nuoc-ngoai/">ứng dụng thuê xe máy hoạt động ra sao cho khách nước ngoài</a>.</p>
+
+<h2>Câu hỏi thường gặp về quy trình tư vấn tự động cho khách nước ngoài</h2>
+<h3>Tôi có phải tải ứng dụng về điện thoại không?</h3>
+<p>Không. Trợ lý là một trang web, mở bằng trình duyệt trên điện thoại hoặc máy tính, không cần tài khoản để bắt đầu hỏi.</p>
+<h3>Trợ lý có hiểu khi tôi gõ tiếng Anh không chuẩn không?</h3>
+<p>Có, miễn là ý chính rõ. Nếu trợ lý hỏi lại, hãy trả lời ngắn và cụ thể thay vì viết lại cả đoạn dài.</p>
+<h3>Trợ lý nói bằng của tôi có thể không được chấp nhận, tôi nên làm gì?</h3>
+<p>Đọc bài về người nước ngoài lái xe ở Việt Nam mà trợ lý gợi ý, rồi liên hệ cửa hàng mô tả đúng loại bằng bạn có. Quyết định cuối cùng thuộc về cửa hàng sau khi xem bản gốc.</p>
+<h3>Tôi có thể bỏ qua các chặng và hỏi giá ngay không?</h3>
+<p>Có thể, trợ lý sẽ nêu giá tham khảo theo dòng xe, nhưng gợi ý sẽ kém chính xác vì chưa biết bạn lái được loại nào. Đi đủ sáu chặng chỉ mất vài phút.</p>
+
+<h2>Kết luận</h2>
+<p>Với khách nước ngoài, quy trình tư vấn tự động chọn xe thêm hai chặng về giấy phép và kinh nghiệm lái trước khi bàn tới mục đích, thời gian và nơi nhận xe, rồi kết thúc bằng một đoạn tóm tắt để bạn gửi cửa hàng xác nhận. {{ business.display_name }} tại {{ business.address.full }} tiếp nhận xác nhận trong giờ {{ business.hours.display }} qua số {{ business.contact.phone_display }}; bạn có thể bắt đầu luồng tư vấn bằng tiếng Anh ngay trên <a href="/">trang chủ</a>, và đọc thêm về công cụ này trong <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>
