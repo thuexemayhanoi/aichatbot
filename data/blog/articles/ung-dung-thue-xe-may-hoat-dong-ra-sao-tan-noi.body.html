@@ -1,0 +1,62 @@
+<p>Nhiều người nghe nói "ứng dụng thuê xe máy" liền hình dung một màn hình chọn xe, bấm đặt, rồi chiếc xe tự xuất hiện trước cửa. Thực tế với công cụ của MotoAI, luồng hoạt động khác và đơn giản hơn: bạn hỏi trên website, công cụ giúp bạn chuẩn bị, cửa hàng xác nhận và nhân viên mang xe tới. Hiểu đúng từng bước sẽ giúp bạn không chờ đợi một thứ công cụ không làm, và không bỏ qua bước mà chỉ cửa hàng mới làm được. Bài ứng dụng thuê xe máy hoạt động ra sao tận nơi này đi theo đúng hành trình của một yêu cầu giao xe, từ câu hỏi đầu tiên tới lúc bạn ký nhận xe trước cửa nhà.</p>
+
+<h2>Ứng dụng ở đây là gì và không là gì</h2>
+<p>Công cụ của MotoAI là một ứng dụng web: bạn mở trang của {{ business.brand }} trên trình duyệt điện thoại hoặc máy tính, thấy khung hội thoại, gõ câu hỏi. Không có gì để cài, không cần tạo tài khoản, không cần cập nhật phiên bản. Nó trả lời dựa trên thông tin cửa hàng đã công bố: giá tham khảo, khu vực phục vụ, giờ làm việc, giấy tờ, khoảng đặt cọc và nguyên tắc giao xe.</p>
+<p>Nó không phải hệ thống đặt chỗ tự động, không theo dõi vị trí nhân viên giao xe, không thanh toán và không giữ xe cho bạn. Cách vận hành tổng quát, không gắn với giao xe, được giải thích trong bài <a href="/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao/">ứng dụng thuê xe máy hoạt động ra sao</a>; bài này chỉ đi theo nhánh "tận nơi".</p>
+
+<h2>Bước một: bạn mô tả nhu cầu bằng lời thường</h2>
+<p>Luồng bắt đầu bằng một câu gõ tự nhiên, ví dụ "cần Vision ba ngày, giao tới khách sạn ở Hàng Bè sáng mai". Công cụ tách câu đó thành vài phần: loại xe, số ngày, địa điểm, thời điểm. Nếu thiếu phần nào, nó hỏi lại một câu ngắn thay vì đoán. Bạn càng nói rõ khu vực bằng tên phường, tên phố hoặc địa danh quen thuộc, bước này càng nhanh.</p>
+<ul>
+<li>Nêu loại xe hoặc nhu cầu: "xe ga nhẹ", "chở hai người", "đi làm một tháng".</li>
+<li>Nêu số ngày và ngày bắt đầu.</li>
+<li>Nêu nơi muốn nhận xe: tên phố, phường hoặc quận.</li>
+<li>Nêu khung giờ mong muốn nhận.</li>
+</ul>
+
+<h2>Bước hai: công cụ đối chiếu với thông tin cửa hàng</h2>
+<p>Đây là phần việc chính của ứng dụng. Với yêu cầu giao tận nơi, nó kiểm tra ba thứ theo thứ tự:</p>
+<ol>
+<li><strong>Khu vực:</strong> địa điểm bạn nêu có thuộc vùng phục vụ gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và các quận nội thành Hà Nội không.</li>
+<li><strong>Khung giờ:</strong> giờ bạn muốn có nằm trong giờ mở cửa {{ business.hours.display }} không. Nếu bạn ghi "giao lúc 7 giờ sáng", công cụ sẽ nói rõ việc giao chỉ diễn ra trong giờ mở cửa và gợi ý nhận từ hôm trước.</li>
+<li><strong>Xe và giá tham khảo:</strong> với Vision, nó nêu mức khoảng 200.000đ/ngày và 800.000đ–1.000.000đ/tuần; với Click hoặc Mio khoảng 150.000đ/ngày; với xe máy điện, xe 50cc nó trả lời là giá liên hệ. Mọi mức đều là tham khảo, bạn xem thêm tại <a href="/gia-thue/">bảng giá thuê</a>.</li>
+</ol>
+<p>Kèm theo, công cụ nhắc hai điều cố định: thời gian và phí giao phải được cửa hàng xác nhận trước khi chốt, và cửa hàng không cung cấp bảo hiểm nên bạn tự chuẩn bị. Cách công cụ hiểu các câu hỏi về giá được mô tả thêm trong bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-tan-noi/">cách ứng dụng hiểu câu hỏi về giá xe tận nơi</a>.</p>
+
+<h2>Bước ba: bạn nhận một bản tóm tắt để mang đi gọi điện</h2>
+<p>Kết quả của hai bước trên là một đoạn trả lời có đủ: xe gợi ý, giá tham khảo, xác nhận khu vực, nhắc khung giờ, danh sách giấy tờ và khoảng đặt cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe. Bạn có thể chụp màn hình đoạn này. Khi gọi {{ business.contact.phone_display }}, bạn đọc lại đúng nội dung ấy, và cuộc gọi chỉ còn ba việc cần chốt: xe có trống không, giao lúc mấy giờ, phí giao bao nhiêu.</p>
+<p>Lý do nên đi qua công cụ trước thay vì gọi ngay được phân tích trong bài <a href="/blog/app/tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien-tan-noi/">tại sao nên dùng ứng dụng trước khi gọi điện tận nơi</a>. Nếu bạn muốn gọi thẳng từ giao diện, bài <a href="/blog/app/goi-dien-tu-ung-dung-thue-xe-tan-noi/">gọi điện từ ứng dụng thuê xe tận nơi</a> mô tả nút liên hệ hoạt động thế nào.</p>
+
+<h2>Bước bốn: cửa hàng xác nhận, nhân viên mang xe tới</h2>
+<p>Từ đây, mọi việc chuyển sang con người. Cửa hàng kiểm tra lịch xe, báo giờ giao cụ thể và phí giao, bạn đồng ý thì lịch mới có hiệu lực. Đến giờ hẹn, nhân viên mang xe tới địa chỉ bạn nêu, trong khung giờ mở cửa. Tại chỗ, bạn và nhân viên làm đúng các bước như ở cửa hàng:</p>
+<ol>
+<li>Đối chiếu giấy tờ tùy thân và giấy phép lái xe bản gốc.</li>
+<li>Thống nhất lại giờ trả, mức cọc và cách hoàn.</li>
+<li>Kiểm tra xe: phanh, đèn, còi, xi nhan, gương, lốp, mức xăng hoặc pin.</li>
+<li>Chụp ảnh bốn góc xe và vết xước sẵn có ngay trước mặt nhân viên.</li>
+<li>Nhận phụ kiện: mũ, áo mưa, chìa khóa, bộ sạc nếu là xe điện.</li>
+<li>Ký nhận và nộp cọc, giữ biên nhận.</li>
+</ol>
+<p>Phần việc tại cửa khi xe tới được mô tả kỹ hơn trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>, còn thủ tục giao xe nhìn từ phía cửa hàng nằm ở bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">giao xe tận nơi thủ tục</a>.</p>
+
+<h2>Những chỗ luồng này hay bị hiểu sai</h2>
+<ul>
+<li><strong>"Tôi đã đặt xong trên web":</strong> chưa, bạn mới chuẩn bị xong. Lịch chỉ có khi cửa hàng xác nhận.</li>
+<li><strong>"Công cụ nói giao được tức là chắc chắn có xe":</strong> công cụ xác nhận khu vực và khung giờ, không biết xe còn trống hay không.</li>
+<li><strong>"Phí giao chắc rẻ vì công cụ không nhắc":</strong> công cụ không nêu phí giao vì phí phụ thuộc từng lần; hãy hỏi cửa hàng.</li>
+<li><strong>"Gửi ảnh giấy tờ vào khung chat cho nhanh":</strong> không nên; giấy tờ chỉ xuất trình cho nhân viên khi nhận xe.</li>
+<li><strong>"Trả xe tận nơi tự động như lúc giao":</strong> thu xe tại chỗ ở cũng phải thỏa thuận trước và chỉ trong giờ mở cửa.</li>
+</ul>
+<p>Một kịch bản hoàn chỉnh dành cho người chưa từng dùng, từ câu hỏi đầu tới lúc nhận xe, có trong bài <a href="/blog/app/kich-ban-dung-app-thue-xe-cho-nguoi-moi-tan-noi/">kịch bản dùng app thuê xe cho người mới tận nơi</a>.</p>
+
+<h2>Câu hỏi thường gặp về cách ứng dụng vận hành khi giao xe tận nơi</h2>
+<h3>Ứng dụng có biết nhân viên giao xe đang ở đâu không?</h3>
+<p>Không. Việc liên lạc trên đường giao diễn ra qua số điện thoại bạn để lại với cửa hàng, không qua khung hội thoại.</p>
+<h3>Tôi hỏi lúc nửa đêm thì sáng mai có xe không?</h3>
+<p>Công cụ trả lời bất cứ lúc nào trang mở được, nhưng lịch giao chỉ được chốt khi cửa hàng làm việc. Hãy gọi ngay sau 09:00.</p>
+<h3>Có cần tài khoản hay cài gì không?</h3>
+<p>Không. Đây là ứng dụng web chạy trên trình duyệt, không cần tải về và không cần đăng ký.</p>
+<h3>Công cụ có đặt cọc giúp tôi không?</h3>
+<p>Không. Cọc được nộp và xác nhận trực tiếp với cửa hàng, khi đặt và khi nhận xe.</p>
+
+<h2>Kết luận</h2>
+<p>Ứng dụng thuê xe máy hoạt động theo bốn bước khi bạn muốn nhận xe tận nơi: mô tả nhu cầu, đối chiếu với thông tin cửa hàng, nhận bản tóm tắt, rồi cửa hàng xác nhận và nhân viên mang xe tới. Công cụ lo phần chuẩn bị, con người lo phần chốt và giao. Hãy thử ngay trên <a href="/">trang chủ</a>, rồi gọi {{ business.display_name }} qua {{ business.contact.phone_display }} trong giờ {{ business.hours.display }} để chốt lịch; cửa hàng ở {{ business.address.full }} nếu bạn muốn ghé trực tiếp. Các bài liên quan khác nằm trong <a href="/blog/app/">chuyên mục ứng dụng và trợ lý</a>.</p>
