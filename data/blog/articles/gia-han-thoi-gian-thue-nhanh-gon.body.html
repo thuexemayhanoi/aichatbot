@@ -1,0 +1,76 @@
+<p>Gia hạn thời gian thuê nhanh gọn không đòi hỏi thủ tục phức tạp, nhưng đòi hỏi bạn gửi đúng thông tin vào đúng lúc. Nhiều khách mất cả buổi chỉ vì nhắn "cho em thêm vài hôm nhé" rồi phải trả lời thêm năm câu hỏi của nhân viên. Bài viết này đưa ra một mẫu tin nhắn gom đủ ý, một mốc thời gian dễ nhớ và danh sách những gì cần xác nhận lại, để toàn bộ việc gia hạn gói gọn trong vài phút.</p>
+
+<h2>Nguyên tắc "một tin nhắn, đủ năm ý"</h2>
+<p>Lý do gia hạn thường chậm là thông tin đến từng mảnh. Khi bạn gửi một lần đủ năm ý dưới đây, nhân viên có thể kiểm tra lịch xe và trả lời ngay mà không cần hỏi lại.</p>
+<ol>
+<li><strong>Họ tên người thuê</strong> đúng như lúc đặt xe.</li>
+<li><strong>Mẫu xe và biển số</strong> đang giữ, chụp ảnh biển số nếu không nhớ.</li>
+<li><strong>Ngày giờ trả cũ</strong> theo lịch đã thống nhất.</li>
+<li><strong>Ngày giờ trả mới</strong> bạn mong muốn, ghi cụ thể giờ chứ không chỉ ngày.</li>
+<li><strong>Hình thức trả xe</strong>: tự mang về cửa hàng hay cần hẹn nhận xe tại chỗ.</li>
+</ol>
+<p>Một mẫu tham khảo: "Chào shop, em là Lan, đang thuê Honda Vision biển số như ảnh, lịch trả cũ 18:00 thứ Năm. Em muốn gia hạn tới 18:00 thứ Hai tuần sau, vẫn tự mang xe về cửa hàng. Shop kiểm tra giúp em xe còn trống không và tổng tiền thêm ạ." Bạn chỉ cần thay thông tin của mình là gửi được.</p>
+
+<h2>Gửi khi nào thì kịp</h2>
+<p>Mốc dễ nhớ nhất: gửi yêu cầu gia hạn ít nhất một ngày trước giờ trả cũ, và luôn trong khung giờ mở cửa {{ business.hours.display }}. Gửi sớm cho cửa hàng thời gian kiểm tra xem chiếc xe đó đã có ai đặt tiếp hay chưa.</p>
+<ul>
+<li><strong>Gửi từ hôm trước:</strong> gần như luôn được xử lý kịp, kể cả khi phải đổi sang xe khác.</li>
+<li><strong>Gửi sáng ngày trả:</strong> vẫn có thể được, nhưng phụ thuộc vào lịch xe ngày hôm đó.</li>
+<li><strong>Gửi sát giờ trả hoặc sau giờ đóng cửa:</strong> rủi ro bị tính là trả trễ, vì yêu cầu chưa được xác nhận.</li>
+</ul>
+<p>Nếu bạn chưa chắc có cần thêm ngày hay không, vẫn nên nhắn báo trước để cửa hàng lưu ý. Chuyện trả đúng giờ và các khoản phát sinh khi trễ được phân tích trong bài <a href="/blog/huong-dan/tra-xe-dung-gio-de-tranh-phi/">trả xe đúng giờ để tránh phí</a>.</p>
+
+<h2>Bốn điều phải xác nhận trước khi coi như đã gia hạn</h2>
+<p>Một tin nhắn "ok em" chưa phải là xác nhận đầy đủ. Hãy chắc chắn bạn nhận được câu trả lời rõ ràng cho cả bốn điểm sau.</p>
+<ul>
+<li><strong>Thời điểm trả mới:</strong> ngày và giờ cụ thể, được nhân viên nhắc lại.</li>
+<li><strong>Tổng tiền thêm:</strong> tính theo giá tham khảo hiện hành, ví dụ Honda Vision 200.000đ/ngày hoặc Honda Wave 150.000đ/ngày, và cách thanh toán phần thêm.</li>
+<li><strong>Khoản cọc:</strong> giữ nguyên hay điều chỉnh, luôn nằm trong khung {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
+<li><strong>Giấy tờ và tình trạng xe:</strong> có cần mang xe qua kiểm tra giữa kỳ không, nhất là khi gia hạn dài.</li>
+</ul>
+<p>Hãy chụp màn hình đoạn tin xác nhận và lưu lại. Khi trả xe, bạn chỉ cần mở ảnh ra đối chiếu, tránh mọi hiểu lầm về ngày giờ.</p>
+
+<h2>Gia hạn ngắn hay chuyển sang gói dài</h2>
+<p>Nếu bạn gia hạn liên tục từng vài ngày, hãy dừng lại tính thử. Với một số mẫu xe, chuyển sang gói tuần hoặc gói tháng có thể hợp lý hơn so với cộng dồn giá ngày.</p>
+<ul>
+<li>Honda Vision: tham khảo 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng.</li>
+<li>Honda Air Blade: tham khảo 800.000đ/tuần, 1.400.000đ/tháng.</li>
+<li>Honda Click hoặc Yamaha Mio: tham khảo 600.000đ–700.000đ/tuần, 1.000.000đ–1.200.000đ/tháng.</li>
+</ul>
+<p>Khi nhắn gia hạn, bạn có thể hỏi luôn: "Nếu em giữ thêm một tuần thì tính theo gói tuần được không?" Bảng giá đầy đủ nằm ở trang <a href="/gia-thue/">giá thuê</a>, và mọi mức trên đều cần cửa hàng xác nhận lại.</p>
+
+<h2>Khi muốn gia hạn kèm đổi xe</h2>
+<p>Đôi khi lý do gia hạn đi kèm nhu cầu khác: bạn cần xe chở được hai người, hoặc muốn đổi sang xe tiết kiệm hơn cho phần thời gian còn lại. Gộp hai việc trong cùng một yêu cầu giúp cửa hàng sắp xếp một lần.</p>
+<ol>
+<li>Ghi rõ trong tin nhắn bạn muốn gia hạn và đổi xe cùng lúc.</li>
+<li>Hỏi mẫu xe còn trống cho khoảng thời gian mới.</li>
+<li>Hẹn giờ đổi xe trong giờ mở cửa, mang theo giấy tờ đã dùng khi thuê.</li>
+<li>Kiểm tra và chụp ảnh chiếc xe mới như lần nhận đầu tiên.</li>
+</ol>
+<p>Quy trình đổi xe chi tiết được trình bày trong bài <a href="/blog/huong-dan/doi-xe-giua-ky-thue/">đổi xe giữa kỳ thuê</a>.</p>
+
+<h2>Những lỗi khiến việc gia hạn chậm lại</h2>
+<ul>
+<li>Nhắn từ một số điện thoại khác số đã đăng ký mà không giới thiệu mình là ai.</li>
+<li>Chỉ ghi "thêm vài hôm" mà không nêu ngày giờ trả mới.</li>
+<li>Gửi yêu cầu ngoài giờ mở cửa rồi mặc định là đã được đồng ý.</li>
+<li>Quên hỏi lại tổng tiền, đến lúc trả mới bất ngờ với con số.</li>
+</ul>
+<p>Hướng dẫn tổng quát về gia hạn có trong bài <a href="/blog/huong-dan/gia-han-thoi-gian-thue/">gia hạn thời gian thuê</a>; nếu bạn lần đầu làm việc này, bài <a href="/blog/huong-dan/gia-han-thoi-gian-thue-cho-nguoi-moi/">gia hạn thời gian thuê cho người mới</a> giải thích từng bước kỹ hơn.</p>
+
+<h2>Câu hỏi thường gặp về gia hạn nhanh</h2>
+
+<h3>Có gia hạn qua trợ lý MotoAI trên website được không?</h3>
+<p>Bạn có thể dùng trợ lý để hỏi thông tin và soạn yêu cầu, nhưng việc gia hạn chỉ có hiệu lực khi nhân viên cửa hàng xác nhận lại với bạn.</p>
+
+<h3>Đã quá giờ trả mới nhớ ra thì sao?</h3>
+<p>Liên hệ ngay qua {{ business.contact.phone_display }} trong giờ mở cửa, giải thích tình hình và hỏi phương án. Đừng giữ xe im lặng, vì điều đó khiến việc xử lý khó khăn hơn cho cả hai bên.</p>
+
+<h3>Gia hạn có phải ký lại giấy tờ không?</h3>
+<p>Với gia hạn ngắn thường chỉ cần xác nhận qua tin nhắn. Với gia hạn dài hoặc kèm đổi xe, cửa hàng có thể đề nghị cập nhật thông tin; hãy hỏi rõ khi nhắn.</p>
+
+<h3>Bảo hiểm có cần gia hạn theo không?</h3>
+<p>Cửa hàng không cung cấp bảo hiểm, nên bạn tự kiểm tra bảo hiểm xe máy của mình còn hiệu lực trong suốt thời gian thuê thêm.</p>
+
+<h2>Kết luận</h2>
+<p>Gia hạn nhanh gọn chỉ cần ba thứ: một tin nhắn đủ năm ý, gửi trước ít nhất một ngày và giữ lại ảnh xác nhận. Bạn có thể nhắn hoặc gọi {{ business.display_name }} qua {{ business.contact.phone_display }}, hoặc ghé {{ business.address.full }} nếu muốn trao đổi trực tiếp. Xem thêm các bài hướng dẫn khác ở <a href="/blog/huong-dan/">mục hướng dẫn thuê xe</a> hoặc về <a href="/">trang chủ</a> để hỏi trợ lý.</p>
