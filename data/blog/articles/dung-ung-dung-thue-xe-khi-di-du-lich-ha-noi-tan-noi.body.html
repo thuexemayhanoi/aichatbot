@@ -1,0 +1,75 @@
+<p>Đi du lịch Hà Nội mà muốn có xe máy ngay tại nơi lưu trú, bạn không nhất thiết phải tìm đường đến cửa hàng. Với MotoAI, ứng dụng web hỗ trợ thuê xe của {{ business.brand }}, bạn có thể hỏi trước về xe, giá tham khảo và khả năng giao tận nơi, rồi chuyển sang cửa hàng để chốt lịch. Bài này đi theo đúng hành trình của một khách du lịch: từ lúc còn ở nhà lên kế hoạch, đến ngày nhận xe tại khách sạn hay homestay, và ngày cuối trả xe trước khi rời thành phố. Ở mỗi bước, bạn sẽ biết nên hỏi trợ lý điều gì và phần nào phải chờ cửa hàng xác nhận.</p>
+
+<h2>Trước chuyến đi: hỏi trợ lý ba câu then chốt</h2>
+<p>Trước ngày khởi hành vài hôm, mở ứng dụng web trên trình duyệt điện thoại, không cần cài đặt gì, và hỏi ba câu sau:</p>
+<ol>
+<li><strong>"Khu tôi ở có được giao xe tận nơi không?"</strong> Nêu rõ khu vực: Phố Cổ, Hoàn Kiếm, Ba Đình, Tây Hồ, Long Biên hay một khu nội thành khác. Trợ lý cho biết phạm vi phục vụ và nhắc rằng giao xe chỉ trong khung {{ business.hours.display }}.</li>
+<li><strong>"Đi chơi ba ngày, hai người, nên thuê xe gì?"</strong> Trợ lý gợi ý dòng xe theo nhu cầu, kèm giá tham khảo như Honda Vision khoảng 200.000đ/ngày hay Honda Click khoảng 150.000đ/ngày.</li>
+<li><strong>"Cần mang giấy tờ gì?"</strong> Bạn nhận được danh sách giấy tờ cơ bản để chuẩn bị trước khi rời nhà.</li>
+</ol>
+<p>Những câu trả lời này giúp bạn hình dung trước, nhưng giá cuối cùng, phí giao và xe cụ thể luôn cần cửa hàng xác nhận. Cách hỏi trợ lý sao cho nhận được câu trả lời rõ ràng được hướng dẫn trong bài <a href="/blog/app/dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi/">dùng ứng dụng thuê xe khi đi du lịch Hà Nội</a>.</p>
+
+<h2>Chốt lịch giao tận nơi với cửa hàng</h2>
+<p>Khi đã chọn được xe, bạn chuyển sang nhắn hoặc gọi cửa hàng để chốt. Một tin nhắn tốt gồm:</p>
+<ul>
+<li>Tên nơi lưu trú, địa chỉ đầy đủ, tên ngõ hoặc một cột mốc gần đó.</li>
+<li>Ngày và khung giờ bạn chắc chắn có mặt, nằm trong giờ hoạt động.</li>
+<li>Dòng xe đã chọn và một lựa chọn thay thế.</li>
+<li>Số ngày thuê, và mong muốn trả xe tại nơi lưu trú hay tại cửa hàng.</li>
+<li>Câu hỏi về phí giao xe tận nơi và mức đặt cọc cho dòng xe đó.</li>
+</ul>
+<p>Cửa hàng sẽ xác nhận giờ, phí và tiền cọc, thường trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe. Nếu bạn còn phân vân nên chọn ngày nào để nhận xe cho hợp lịch tham quan, bài <a href="/blog/app/chon-thoi-diem-thue-xe-bang-ung-dung-tan-noi/">chọn thời điểm thuê xe bằng ứng dụng tận nơi</a> có những gợi ý cụ thể.</p>
+
+<h2>Ngày đến Hà Nội: sắp giờ nhận xe cho hợp lý</h2>
+<p>Khách du lịch thường đến Hà Nội bằng máy bay, tàu hoặc xe khách, và giờ đến không phải lúc nào cũng khớp với giờ giao xe. Vài tình huống phổ biến:</p>
+<ul>
+<li><strong>Đến trong buổi sáng hoặc chiều:</strong> hẹn giao xe ở nơi lưu trú sau giờ nhận phòng một chút, để bạn kịp cất hành lý.</li>
+<li><strong>Đến vào buổi tối muộn:</strong> giao xe chỉ trong khung giờ hoạt động, nên hãy hẹn sáng hôm sau; tối đầu tiên có thể đi bộ quanh khu ở.</li>
+<li><strong>Muốn nhận xe ngay tại sân bay:</strong> đây là kiểu giao khác, với những bước riêng được mô tả trong bài <a href="/blog/huong-dan/giao-xe-tai-san-bay-noi-bai/">giao xe tại sân bay Nội Bài</a>.</li>
+</ul>
+<p>Nếu kế hoạch thay đổi, chẳng hạn chuyến bay trễ, nhắn ngay cho cửa hàng để dời giờ thay vì để người giao chờ.</p>
+
+<h2>Lúc nhận xe tại nơi lưu trú</h2>
+<p>Khi người giao xe đến, bạn cần làm những việc sau, kể cả khi đang háo hức đi chơi:</p>
+<ul>
+<li>Xuất trình giấy tờ tùy thân và giấy phép lái xe bản gốc.</li>
+<li>Đọc hợp đồng, kiểm tra biển số, ngày giờ nhận và hạn trả.</li>
+<li>Thử phanh, đèn, còi, xi nhan; chụp ảnh xe bốn phía.</li>
+<li>Thử mũ bảo hiểm cho cả hai người nếu đi đôi.</li>
+<li>Hỏi chủ nhà hoặc lễ tân chỗ để xe qua đêm.</li>
+</ul>
+<p>Hãy nhớ rằng cửa hàng không cung cấp bảo hiểm; người đi du lịch nên mua bảo hiểm xe máy cho mình trước ngày nhận. Chi tiết về buổi giao xe ở khách sạn có trong bài <a href="/blog/huong-dan/giao-xe-tai-khach-san/">giao xe tại khách sạn</a>.</p>
+
+<h2>Giữa chuyến: trợ lý vẫn hữu ích</h2>
+<p>Khi đã có xe, bạn vẫn có thể quay lại ứng dụng web để hỏi những câu phát sinh:</p>
+<ul>
+<li>Muốn thuê thêm một ngày thì làm thế nào và cần báo trước bao lâu.</li>
+<li>Muốn đổi sang xe khác vì đi xa hơn dự tính.</li>
+<li>Nên đi đâu quanh Hồ Gươm, Tây Hồ hay Long Biên với chiếc xe thuê.</li>
+<li>Xe có dấu hiệu lạ thì nên liên hệ ai.</li>
+</ul>
+<p>Với những việc cần quyết định như gia hạn, đổi xe hay xử lý sự cố, trợ lý sẽ hướng bạn liên hệ trực tiếp cửa hàng để được xác nhận. Một số trải nghiệm thực tế của khách đã dùng trợ lý theo cách này được kể trong bài <a href="/blog/app/cau-chuyen-nguoi-dung-ung-dung-thue-xe-tan-noi/">câu chuyện người dùng ứng dụng thuê xe tận nơi</a>.</p>
+
+<h2>Ngày cuối: trả xe tại nơi lưu trú</h2>
+<p>Ngày rời Hà Nội thường bận rộn, nên hãy sắp phần trả xe từ hôm trước:</p>
+<ol>
+<li>Nhắn cửa hàng hẹn giờ lấy xe, trong khung hoạt động và trước giờ bạn rời đi một khoảng thoải mái.</li>
+<li>Đổ xăng theo thỏa thuận lúc nhận.</li>
+<li>Gom đủ mũ, áo mưa, chìa khóa đi kèm.</li>
+<li>Cùng người nhận xem lại xe, đối chiếu với ảnh chụp lúc nhận.</li>
+<li>Nhận lại giấy tờ và hoàn tất thanh toán trước khi rời đi.</li>
+</ol>
+<p>Nếu bạn là khách du lịch muốn tìm hiểu rộng hơn về cách các ứng dụng hỗ trợ thuê xe, bài <a href="/blog/app/app-thue-xe-cho-khach-du-lich/">app thuê xe cho khách du lịch</a> là điểm đọc tiếp hợp lý.</p>
+
+<h2>Câu hỏi thường gặp khi dùng ứng dụng thuê xe tận nơi lúc du lịch Hà Nội</h2>
+<h3>Có cần tải ứng dụng về điện thoại không?</h3>
+<p>Không cần. MotoAI là ứng dụng web, bạn mở bằng trình duyệt và hỏi ngay, kể cả khi đang ở sân bay hay trên tàu.</p>
+<h3>Trợ lý có báo phí giao xe chính xác không?</h3>
+<p>Không. Phí giao phụ thuộc thời gian và điều kiện thực tế, nên chỉ cửa hàng mới xác nhận được trước khi đặt.</p>
+<h3>Ở homestay trong ngõ nhỏ có giao xe được không?</h3>
+<p>Thường được, nếu nằm trong khu vực phục vụ. Hãy ghi rõ tên ngõ và một cột mốc gần đó để người giao dễ tìm.</p>
+<h3>Đi du lịch ngắn ngày có nên thuê xe điện không?</h3>
+<p>Có thể, nhưng xe máy điện có giá liên hệ và bạn cần hỏi cửa hàng về cách sạc ở nơi lưu trú. Với lịch trình dày, xe xăng thường đơn giản hơn.</p>
+
+<h2>Kết luận</h2>
+<p>Dùng ứng dụng thuê xe khi đi du lịch Hà Nội theo hình thức tận nơi hiệu quả nhất khi bạn chia việc rõ ràng: trợ lý giúp hỏi trước và chuẩn bị, cửa hàng chốt giờ, phí và xe, còn bạn kiểm tra kỹ lúc nhận và trả. Làm vậy, chiếc xe sẽ chờ sẵn ở nơi lưu trú mà không có bất ngờ nào. Để đặt lịch giao xe cho chuyến đi, liên hệ {{ business.display_name }} qua {{ business.contact.phone_display }}; cửa hàng nằm tại {{ business.address.full }}. Xem thêm các bài trong <a href="/blog/app/">chuyên mục ứng dụng</a>, hoặc bắt đầu hỏi trợ lý ngay trên <a href="/">trang chủ</a>.</p>

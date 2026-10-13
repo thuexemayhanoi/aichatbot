@@ -1,0 +1,74 @@
+<p>Thuê xe điện một hai ngày, bạn chỉ cần biết hôm nay có đủ pin cho lịch trình hay không. Thuê theo tuần hoặc theo tháng thì câu hỏi đổi hẳn: chiếc xe này có gánh được nhịp đi lại đều đặn của bạn suốt nhiều tuần không, bạn sẽ sạc mấy lần mỗi tuần, và điều gì xảy ra khi thời tiết hay tình trạng pin thay đổi giữa kỳ thuê. Một công cụ ước tính quãng đường cho thuê dài hạn vì thế không phải phép tính một lần, mà là một cuốn sổ nhỏ bạn cập nhật dần. Bài này hướng dẫn cách dựng và dùng nó, không đưa con số quãng đường cho mẫu xe nào, vì con số đúng nhất là con số bạn tự đo trên chính chiếc xe mình thuê.</p>
+
+<h2>Vì sao thuê dài hạn cần một cách ước tính riêng</h2>
+<p>Các trình ước tính thông thường trả lời câu hỏi "một lần sạc đi được bao xa". Với kỳ thuê dài, câu hỏi đó chỉ là điểm xuất phát. Điều bạn thực sự cần biết là:</p>
+<ul>
+<li><strong>Quãng đường trung bình mỗi tuần:</strong> gồm cả những ngày đi làm đều đặn lẫn những ngày cuối tuần đi xa hơn.</li>
+<li><strong>Nhịp sạc ổn định:</strong> sạc mỗi tối hay cách ngày, và chỗ sạc đó có dùng được lâu dài không.</li>
+<li><strong>Biên độ an toàn:</strong> phần pin luôn giữ lại cho những chuyến phát sinh, như đi viện, đón người thân hay đổi chỗ làm tạm thời.</li>
+<li><strong>Sự thay đổi theo thời gian:</strong> trời lạnh, mưa nhiều hay tình trạng pin sau nhiều chu kỳ có thể kéo quãng đường thực tế xuống.</li>
+</ul>
+<p>Nếu bạn chưa quen cách các công cụ ước tính hoạt động, hãy đọc trước bài gốc <a href="/blog/xe-dien/cong-cu-uoc-tinh-quang-duong-xe-dien/">công cụ ước tính quãng đường xe điện</a>. Bài này đi tiếp từ đó sang bài toán nhiều tuần.</p>
+
+<h2>Dựng sổ ước tính theo tuần</h2>
+<p>Bạn chỉ cần một bảng tính trên điện thoại hoặc một trang ghi chú với các cột sau:</p>
+<ol>
+<li><strong>Tuyến cố định:</strong> liệt kê những chặng lặp lại mỗi tuần, ví dụ nhà trọ ở Gia Lâm đến chỗ làm ở Hoàn Kiếm, rồi ghi quãng đường đo bằng bản đồ cho cả chiều đi và chiều về.</li>
+<li><strong>Số lần lặp:</strong> chặng đó đi mấy ngày một tuần.</li>
+<li><strong>Chặng phát sinh dự kiến:</strong> đi chợ, thăm bạn bè, một chuyến cuối tuần quanh Long Biên hay Tây Hồ.</li>
+<li><strong>Hệ số đi lòng vòng:</strong> cộng thêm một phần cho việc tìm chỗ đỗ, đi nhầm đường, tránh đoạn ngập; ở nội thành phần này không nhỏ.</li>
+<li><strong>Tổng tuần:</strong> cộng tất cả lại để có quãng đường dự kiến mỗi tuần.</li>
+</ol>
+<p>Con số tổng tuần lúc đầu chỉ là phỏng đoán. Nó trở nên hữu ích khi bạn đặt cạnh số liệu thực đo ở phần tiếp theo.</p>
+
+<h2>Tuần đầu tiên: đo chỉ số riêng của chiếc xe</h2>
+<p>Tuần đầu của kỳ thuê dài hạn là tuần quan trọng nhất để hiệu chỉnh công cụ. Mỗi ngày, ghi lại ba thông tin:</p>
+<ul>
+<li>Phần trăm pin lúc xuất phát và lúc về đến nơi sạc.</li>
+<li>Quãng đường thực đi, đọc trên đồng hồ xe nếu có hoặc lấy từ lịch sử bản đồ.</li>
+<li>Điều kiện trong ngày: có chở thêm người không, trời mưa hay lạnh, có leo cầu nhiều lần không.</li>
+</ul>
+<p>Cuối tuần, lấy tổng quãng đường chia cho tổng phần trăm pin đã dùng, bạn có chỉ số "bao nhiêu cây số cho mỗi phần trăm pin" của riêng chiếc xe này, trong điều kiện đi lại của riêng bạn. Nhân chỉ số đó với phần pin bạn sẵn sàng dùng giữa hai lần sạc, rồi so với tổng tuần ở sổ ước tính. Nếu con số sát nhau, nhịp sạc của bạn đang ổn. Nếu thiếu, bạn cần sạc dày hơn hoặc xem lại tuyến đi.</p>
+
+<h2>Những yếu tố làm ước tính trôi dần trong kỳ thuê dài</h2>
+<p>Thuê vài ngày, bạn ít khi gặp những thay đổi này. Thuê cả tháng, chúng xuất hiện gần như chắc chắn:</p>
+<ul>
+<li><strong>Chuyển mùa:</strong> khi Hà Nội vào lạnh, pin thường kém hiệu quả hơn; bài <a href="/blog/xe-dien/xe-dien-va-thoi-tiet-lanh/">xe điện và thời tiết lạnh</a> giải thích vì sao.</li>
+<li><strong>Thói quen sạc:</strong> sạc cạn rồi mới cắm, hoặc để xe ngoài nắng lâu, đều ảnh hưởng đến pin; cách giữ pin được viết trong bài <a href="/blog/xe-dien/cach-giu-pin-ben-khi-thue-xe-dien/">giữ pin bền khi thuê xe điện</a>.</li>
+<li><strong>Lịch trình đổi:</strong> chuyển chỗ làm, thêm ca tối hay bắt đầu chở con đi học làm tổng tuần thay đổi đáng kể.</li>
+<li><strong>Tải trọng:</strong> thường xuyên chở thêm người hoặc hàng hóa kéo quãng đường xuống.</li>
+</ul>
+<p>Cách xử lý đơn giản: cứ hai tuần một lần, lấy lại chỉ số thực đo của tuần gần nhất và cập nhật vào sổ. Nếu chỉ số giảm rõ rệt mà không giải thích được bằng thời tiết hay tải trọng, hãy báo cửa hàng để kiểm tra xe.</p>
+
+<h2>Dùng kết quả để chọn gói thuê và phương tiện</h2>
+<p>Sổ ước tính không chỉ giúp bạn khỏi cạn pin, mà còn giúp trả lời câu hỏi lớn hơn: thuê dài hạn xe điện có hợp với mình không. Xe máy điện và xe đạp điện tại cửa hàng có giá liên hệ, nên bạn cần hỏi trực tiếp mức thuê theo tuần hoặc theo tháng. Để so sánh, xe xăng có giá tham khảo rõ hơn: Honda Vision khoảng 1.800.000đ đến 2.000.000đ/tháng, Honda Click hoặc Yamaha Mio khoảng 1.000.000đ đến 1.200.000đ/tháng, đều cần cửa hàng xác nhận và có thể xem tại trang <a href="/gia-thue/">bảng giá thuê</a>.</p>
+<ul>
+<li>Nếu tổng tuần nằm thoải mái trong khả năng của xe với nhịp sạc bạn duy trì được, xe điện là lựa chọn hợp lý.</li>
+<li>Nếu tổng tuần sát giới hạn và bạn không có chỗ sạc cố định, xe xăng sẽ đỡ căng thẳng hơn.</li>
+<li>Nếu chỉ vài ngày trong tuần đi xa, có thể giữ xe điện cho ngày thường và tính phương án khác cho chuyến xa.</li>
+</ul>
+<p>Bài <a href="/blog/xe-dien/thue-xe-dien-dai-ngay/">thuê xe điện dài ngày</a> bàn kỹ hơn về thủ tục và những điều cần thống nhất khi thuê lâu, còn bài <a href="/blog/xe-dien/pham-vi-hoat-dong-cua-xe-dien/">phạm vi hoạt động của xe điện</a> giúp bạn hình dung giới hạn thực tế.</p>
+
+<h2>Câu nên hỏi cửa hàng trước khi ký kỳ thuê dài</h2>
+<p>Trước khi nhận xe cho cả tháng, hãy hỏi và ghi lại câu trả lời:</p>
+<ul>
+<li>Pin của xe đã dùng bao lâu, cửa hàng đánh giá tình trạng hiện tại thế nào.</li>
+<li>Bộ sạc đi kèm là loại nào, sạc ở nhà cần lưu ý gì về ổ điện và chỗ đặt xe.</li>
+<li>Nếu quãng đường thực tế giảm rõ giữa kỳ thuê thì quy trình kiểm tra hoặc đổi xe ra sao.</li>
+<li>Mức đặt cọc cho dòng xe này, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}.</li>
+<li>Bảo hiểm: cửa hàng không cung cấp, nên bạn cần tự chuẩn bị bảo hiểm xe máy trước khi chạy.</li>
+</ul>
+<p>Nếu cần tìm thêm điểm sạc dọc tuyến đi làm, bài <a href="/blog/xe-dien/ung-dung-tim-cho-sac-xe/">ứng dụng tìm chỗ sạc xe</a> là bước tiếp theo nên đọc.</p>
+
+<h2>Câu hỏi thường gặp về ước tính quãng đường xe điện dài hạn</h2>
+<h3>Có công cụ nào cho ra con số chính xác ngay từ đầu không?</h3>
+<p>Không có con số nào chính xác ngay từ ngày đầu, vì mỗi chiếc xe và mỗi kiểu đi lại một khác. Con số đáng tin nhất đến từ việc bạn tự đo trong tuần đầu rồi cập nhật đều đặn.</p>
+<h3>Bao lâu nên cập nhật sổ ước tính một lần?</h3>
+<p>Khoảng hai tuần một lần là vừa, và cập nhật ngay khi lịch trình thay đổi lớn hoặc khi trời chuyển lạnh.</p>
+<h3>Trợ lý MotoAI có tính quãng đường giúp tôi không?</h3>
+<p>Trợ lý trên website giúp bạn hỏi giá tham khảo, giấy tờ và cách nhận xe; thông tin cụ thể về pin của từng chiếc xe vẫn cần cửa hàng xác nhận trực tiếp. Phần đo đạc hằng ngày bạn tự làm bằng sổ ước tính sẽ sát thực tế hơn.</p>
+<h3>Giữa kỳ thuê thấy pin yếu dần thì làm gì?</h3>
+<p>So chỉ số thực đo mới với chỉ số tuần đầu. Nếu giảm nhiều mà không do thời tiết hay tải trọng, liên hệ cửa hàng để kiểm tra, đừng cố chạy đến khi cạn pin giữa đường.</p>
+
+<h2>Kết luận</h2>
+<p>Công cụ ước tính quãng đường xe điện cho thuê dài hạn hiệu quả nhất khi bạn coi nó là cuốn sổ sống: dựng tổng tuần từ tuyến cố định, đo chỉ số thực của chiếc xe trong tuần đầu, rồi cập nhật khi mùa hay lịch trình thay đổi. Làm vậy, bạn vừa tránh được những lần cạn pin, vừa biết chắc gói thuê mình chọn có hợp lý không. Để hỏi giá thuê xe điện theo tuần hoặc theo tháng, liên hệ {{ business.display_name }} qua {{ business.contact.phone_display }} trong khung {{ business.hours.display }}, hoặc ghé {{ business.address.full }}. Xem thêm các bài trong <a href="/blog/xe-dien/">chuyên mục xe điện</a> và trò chuyện với trợ lý trên <a href="/">trang chủ</a>.</p>

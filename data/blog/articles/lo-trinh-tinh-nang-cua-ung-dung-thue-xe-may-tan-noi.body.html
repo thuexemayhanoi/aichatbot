@@ -1,0 +1,64 @@
+<p>Giao xe tận nơi là phần khiến người thuê hỏi nhiều nhất, và cũng là phần dễ phát sinh hiểu lầm nhất: địa chỉ ghi chưa rõ, giờ hẹn lệch khung hoạt động, phí giao chưa được xác nhận. Vì vậy, khi xếp thứ tự phát triển cho MotoAI, ứng dụng web hỗ trợ thuê xe của {{ business.brand }}, các tính năng xoay quanh giao xe tận nơi được tách thành một lộ trình riêng. Bài này giải thích lộ trình đó theo từng chặng: cái gì đã dùng được, cái gì đang được hoàn thiện, cái gì được tính tiếp theo, và cả những thứ cố ý không nằm trong kế hoạch. Đây là thứ tự ưu tiên, không phải lịch phát hành có ngày cụ thể.</p>
+
+<h2>Vì sao giao tận nơi cần một lộ trình riêng</h2>
+<p>Lộ trình chung của ứng dụng, được mô tả trong bài <a href="/blog/app/lo-trinh-tinh-nang-cua-ung-dung-thue-xe-may/">lộ trình tính năng của ứng dụng thuê xe máy</a>, đi từ hỏi giá, chọn xe đến đặt lịch. Giao tận nơi thêm vào ba biến số mà các bước khác không có:</p>
+<ul>
+<li><strong>Địa điểm:</strong> một khách sạn trong ngõ Phố Cổ, một căn hộ ở Tây Hồ hay một nhà trọ ở Gia Lâm đều cần cách mô tả khác nhau để người giao tìm được.</li>
+<li><strong>Thời gian:</strong> giao xe chỉ thực hiện trong khung {{ business.hours.display }}, nên giờ hẹn phải nằm gọn trong đó.</li>
+<li><strong>Chi phí:</strong> phí giao phụ thuộc thời gian và điều kiện thực tế, luôn cần cửa hàng xác nhận trước khi đặt.</li>
+</ul>
+<p>Ba biến số này quyết định thứ tự các tính năng bên dưới.</p>
+
+<h2>Chặng đã dùng được: hỏi, gom thông tin và nhắc khung giờ</h2>
+<p>Ở thời điểm hiện tại, khi bạn nhắn cho trợ lý rằng muốn nhận xe tại nơi ở, bạn đã có thể:</p>
+<ul>
+<li>Hỏi khu vực của mình có nằm trong phạm vi phục vụ không, như Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành.</li>
+<li>Được nhắc ngay rằng giao xe chỉ trong giờ hoạt động, để tránh hẹn quá sớm hay quá muộn.</li>
+<li>Xem giá thuê tham khảo của từng dòng xe, ví dụ Honda Vision khoảng 200.000đ/ngày hay Honda Wave khoảng 150.000đ/ngày, kèm lời nhắc rằng cửa hàng sẽ xác nhận.</li>
+<li>Được hướng dẫn chuẩn bị giấy tờ trước khi người giao đến, nhờ tính năng được mô tả trong bài <a href="/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app-tan-noi/">tìm hiểu thủ tục trong app khi giao tận nơi</a>.</li>
+<li>Chuyển sang gọi hoặc nhắn trực tiếp cho cửa hàng khi cần chốt lịch.</li>
+</ul>
+<p>Điểm chung của chặng này là trợ lý chỉ gom và giải thích, còn quyết định cuối cùng về giờ, phí và xe luôn thuộc về cửa hàng.</p>
+
+<h2>Chặng đang hoàn thiện: hiểu địa chỉ và chọn xe theo nơi giao</h2>
+<p>Phần lớn tin nhắn hỏi giao xe gặp vướng ở cách mô tả địa điểm. Vì vậy, chặng đang được làm tập trung vào:</p>
+<ul>
+<li><strong>Gợi ý cách ghi địa chỉ:</strong> nhắc bạn thêm tên khách sạn, số ngõ, một cột mốc gần đó và tầng hoặc sảnh nơi bạn chờ.</li>
+<li><strong>Hỏi lại khi địa chỉ mơ hồ:</strong> thay vì đoán, trợ lý hỏi thêm một câu để bạn bổ sung.</li>
+<li><strong>Gợi ý xe theo nơi giao:</strong> người ở trong phố cổ nhiều ngõ hẹp có thể hợp với xe nhỏ gọn; người ở xa trung tâm, hay qua cầu, có thể cần xe ổn định hơn. Logic gợi ý này nối tiếp phần mô tả trong bài <a href="/blog/app/quy-trinh-tu-van-tu-dong-chon-xe-tan-noi/">quy trình tư vấn tự động chọn xe tận nơi</a>.</li>
+</ul>
+
+<h2>Chặng tiếp theo: tóm tắt đơn giao và nhắc việc trước giờ hẹn</h2>
+<p>Khi phần hiểu địa chỉ đã ổn, các ý tưởng được xếp kế tiếp gồm:</p>
+<ol>
+<li><strong>Bản tóm tắt một màn hình:</strong> gom địa chỉ, giờ hẹn mong muốn, dòng xe và số ngày thuê thành một đoạn ngắn để bạn gửi cho cửa hàng xác nhận, khỏi phải gõ lại.</li>
+<li><strong>Danh sách việc trước giờ giao:</strong> giấy tờ bản gốc, điện thoại bật chuông, khoảng tiền đã thống nhất, và lời nhắc chụp ảnh xe khi nhận.</li>
+<li><strong>Gợi ý lịch trả xe tận nơi:</strong> nhắc bạn hẹn giờ trả trong khung hoạt động, nhất là khi ngày trả trùng ngày ra sân bay hay ra ga.</li>
+</ol>
+<p>Những ý tưởng ở chặng này có thể đổi thứ tự tùy theo phản hồi thực tế từ khách thuê.</p>
+
+<h2>Những gì cố ý không nằm trong lộ trình</h2>
+<p>Có vài thứ được hỏi khá thường xuyên nhưng không được đưa vào kế hoạch, và lý do đều liên quan đến sự chính xác:</p>
+<ul>
+<li><strong>Tự báo phí giao cuối cùng:</strong> phí cần cửa hàng xác nhận theo từng trường hợp, nên trợ lý sẽ không đưa ra con số chốt.</li>
+<li><strong>Nhận lịch giao ngoài giờ hoạt động:</strong> khung {{ business.hours.display }} là giới hạn thực tế của việc giao xe.</li>
+<li><strong>Mở rộng ra ngoài khu vực phục vụ:</strong> lộ trình chỉ xoay quanh Hà Nội, không có kế hoạch phục vụ các tỉnh khác.</li>
+<li><strong>Thay thế bước kiểm tra xe:</strong> dù ứng dụng tiện đến đâu, bạn vẫn cần tự kiểm tra phanh, đèn, lốp và chụp ảnh khi nhận.</li>
+<li><strong>Trở thành ứng dụng cài đặt:</strong> MotoAI vẫn là ứng dụng web, mở bằng trình duyệt là dùng được.</li>
+</ul>
+
+<h2>Bạn giúp lộ trình đi đúng hướng thế nào</h2>
+<p>Thứ tự ở trên được điều chỉnh dựa trên những câu hỏi thực tế. Một phản hồi hữu ích thường có ba phần: bạn đã hỏi gì, trợ lý trả lời ra sao, và bạn mong đợi điều gì. Ví dụ: "hỏi giao xe đến khách sạn trong ngõ ở Hoàn Kiếm, trợ lý không hỏi tên khách sạn". Cách gửi phản hồi được hướng dẫn trong bài <a href="/blog/app/cach-gui-feedback-cho-ung-dung-thue-xe/">cách gửi feedback cho ứng dụng thuê xe</a>. Một vài trải nghiệm thật của người đã nhận xe tại nơi ở được kể lại trong bài <a href="/blog/app/cau-chuyen-nguoi-dung-ung-dung-thue-xe-tan-noi/">câu chuyện người dùng ứng dụng thuê xe tận nơi</a>.</p>
+
+<h2>Câu hỏi thường gặp về lộ trình tính năng giao tận nơi</h2>
+<h3>Trợ lý có đặt lịch giao xe thay tôi không?</h3>
+<p>Trợ lý giúp gom thông tin và chuyển cho bạn cách liên hệ cửa hàng; lịch giao chỉ được chốt khi cửa hàng xác nhận giờ, phí và dòng xe.</p>
+<h3>Khi nào các tính năng ở chặng tiếp theo có mặt?</h3>
+<p>Lộ trình không gắn ngày cụ thể. Tính năng nào giải quyết được nhiều vướng mắc thực tế hơn sẽ được làm trước.</p>
+<h3>Tôi có cần tạo tài khoản để hỏi về giao xe không?</h3>
+<p>Bạn có thể mở ứng dụng web trên trình duyệt và hỏi ngay. Thông tin cá nhân chỉ cần khi bạn chốt lịch với cửa hàng.</p>
+<h3>Giao xe tận nơi có kèm bảo hiểm không?</h3>
+<p>Không. Dù xe được mang đến tận cửa, phần bảo hiểm vẫn do người thuê tự lo; hãy mua bảo hiểm xe máy cho mình trước giờ hẹn giao.</p>
+
+<h2>Kết luận</h2>
+<p>Lộ trình tính năng giao tận nơi của MotoAI đi theo thứ tự rất thực tế: trước hết hỏi đúng và nhắc đúng khung giờ, sau đó hiểu địa chỉ rõ hơn, rồi gom mọi thứ thành một bản tóm tắt dễ xác nhận. Những gì cần độ chính xác tuyệt đối như phí giao hay giờ nhận vẫn luôn do cửa hàng chốt. Nếu muốn đặt giao xe ngay, liên hệ {{ business.display_name }} qua {{ business.contact.phone_display }}; cửa hàng ở {{ business.address.full }}. Đọc thêm về dịch vụ ở bài <a href="/blog/thue-xe/thue-xe-giao-tan-noi/">thuê xe giao tận nơi</a>, các bài khác trong <a href="/blog/app/">chuyên mục ứng dụng</a>, hoặc thử trợ lý ngay trên <a href="/">trang chủ</a>.</p>
