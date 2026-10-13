@@ -16401,6 +16401,33 @@
         "Mùa hè làm mọi mùi trên phố nặng lên: nắng nóng làm nhựa đường dậy mùi, khói xả từ dòng xe cầm chừng bốc quanh người, và sau một ngày đi về, áo mưa hay mũ bảo hiểm còn mang theo hương vị của cả con phố. Trong bối cảnh đó, xe máy điện được nhiều người cân nhắc trở lại, vì một chiếc xe không đốt xăng sẽ không tự tạo mùi quanh người mình. Bài này nhìn chuyện mùi và môi trường đúng góc mùa hè: cái gì thay đổi khi trời nóng, xe điện giữ được phần gì, và những lưu ý riêng của mùa cho dòng xe này; bản phân tích chung nằm trong bài xe điện và mùi môi trường , góc khách du lịch ở bản dành cho khách du lịch , còn góc ngân sách nằm trong bản giá tốt .",
         "Nhiệt độ cao làm xăng dầu bốc hơi mạnh hơn, nên cùng một dòng xe, mùi quanh đèn đỏ mùa hè luôn nồng hơn ngày mát. Động cơ làm việc trong nắng cũng nóng lên nhanh hơn khi xe đứng chờ, và luồng khí thoát ra mang theo mùi đậm thêm. Cộng thêm một lớp nữa, giờ cao điểm mùa hè trùng khung nắng gắt, nhiều người chọn đứng bóng ven đường ngay sát dãy xe, càng ở gần ống xả bao nhiêu thì càng cảm nhận rõ bấy nhiêu."
       ]
+    },
+    {
+      "article_id": "BA-1134",
+      "category": "LOCAL",
+      "slug": "hai-ba-trung-hanh-trinh-buoi-sang",
+      "title": "Hai bà Trưng Hành Trình Buổi Sáng",
+      "description": "Khung trước trưa là lúc khu Hai Bà Trưng hiển đúng chất của mình: chợ Mơ còn nguyên nhịp buổi sáng, đền Hai Bà Trưng thoáng đãng trước khi nắng gắt",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/hai-ba-trung-hanh-trinh-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Khung trước trưa là lúc khu Hai Bà Trưng hiển đúng chất của mình: chợ Mơ còn nguyên nhịp buổi sáng, đền Hai Bà Trưng thoáng đãng trước khi nắng gắt lên, và mặt hồ Ba Mẫu trong veo lúc người quanh khu còn đang tập. Các lịch trình khác của khu này đã có bản trọn một ngày trong bài hành trình Hai Bà Trưng , bản hai ngày cuối tuần trong bài cuối tuần Hai Bà Trưng , và bản nhịp chậm trong bài hai ngày một đêm ; bài này dành cho khách chỉ có nửa buổi, nhận xe lúc cửa hàng mở và về trước giờ trưa, nhưng vẫn đi trọn những điểm đáng giá nhất của buổi sáng.",
+        "Khoảng cách từ cửa hàng ở Long Biên qua cầu Chương Dương hoặc cầu Long Biên vào các trục phía nam chỉ mười lăm đến hai mươi phút chạy thong thả, nên nhận xe ngay giờ mở cửa cho bạn trọn khung sáng. Trước khi lên đường, dành vài phút theo trình tự trong bài kiểm tra xe khi nhận : bóp hai bên phanh, bấm còi, bật đèn, ngắm một vòng vết xước và chụp vài tấm ảnh toàn thân xe. Khi chốt xe, bạn đặt cọc trước theo khung từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy dòng xe, và nên xin luôn số hỗ trợ để gọi kịp nếu giữa buổi cần đổi lịch."
+      ]
+    },
+    {
+      "article_id": "BA-1133",
+      "category": "SAFE",
+      "slug": "luat-giao-thong-duong-bo-co-ban-vi-du-thuc-te",
+      "title": "Luật Giao Thông Đường bộ cơ Bản ví dụ Thực tế",
+      "description": "Học luật giao thông theo kiểu đọc điều khoản thì rất nhanh quên, còn đặt từng quy tắc vào một tình huống cụ thể thì mức phạt tự khắc nằm lại trong",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/luat-giao-thong-duong-bo-co-ban-vi-du-thuc-te.body.html",
+      "knowledge_chunks": []
     }
   ]
 }

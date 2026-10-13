@@ -3846,3 +3846,10 @@
 - 2026-10-13 QA PASS BA-1131 score=100
 - 2026-10-13 QA PASS BA-1132 score=100
 - 2026-10-13 PUBLISHED 2 (BA-1131, BA-1132) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-13 CLAIM 1: BA-1133
+- 2026-10-13 FINISH BA-1133
+- 2026-10-13 CLAIM 1: BA-1134
+- 2026-10-13 FINISH BA-1134
+- 2026-10-13 QA PASS BA-1133 score=100
+- 2026-10-13 QA PASS BA-1134 score=100
+- 2026-10-13 PUBLISHED 2 (BA-1133, BA-1134) — one grouped build, pages, matrix, indexes, sitemap consistent
