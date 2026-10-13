@@ -1,0 +1,89 @@
+<p>Thủ tục thuê xe ở Hà Nội không phức tạp, nhưng mỗi người lại vướng ở một chỗ khác nhau. Người từ tỉnh khác mới lên nhập học lo không biết cần giấy tờ gì; người đi làm ở Long Biên muốn biết có được giao xe tới công ty không; khách đang ở khách sạn Phố Cổ thì cần hiểu quy trình nhận và trả xe để không lỡ lịch tham quan. Tính năng tìm hiểu thủ tục trong ứng dụng web của chúng tôi được thiết kế để trả lời đúng những câu hỏi đó trước khi bạn bước chân tới cửa hàng. Bài viết này đi theo từng tình huống điển hình ở Hà Nội và gợi ý chuỗi câu hỏi phù hợp cho mỗi tình huống.</p>
+
+<h2>Tính năng này làm được gì và không làm gì</h2>
+
+<p>Trợ lý MotoAI chạy ngay trên website, mở bằng trình duyệt là dùng được. Phần tìm hiểu thủ tục trả lời dựa trên dữ liệu đã được cửa hàng xác minh: giấy tờ cần mang, khoảng tiền cọc, giờ mở cửa, khu vực giao xe, quy trình nhận và trả xe. Nó giúp bạn chuẩn bị trước, giảm thời gian chờ khi đến nơi.</p>
+
+<p>Điều tính năng này không làm: nó không thay bạn ký hợp đồng, không giữ chỗ xe tự động và không quyết định thay cửa hàng về những trường hợp đặc biệt. Khi cần xác nhận xe trống hay thống nhất giờ giao, bạn vẫn liên hệ trực tiếp. Khung chung về cách hỏi thủ tục theo từng giai đoạn được trình bày trong bài <a href="/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app/">tính năng tìm hiểu thủ tục trong ứng dụng</a>.</p>
+
+<h2>Tình huống 1: sinh viên hoặc người từ tỉnh khác mới lên Hà Nội</h2>
+
+<p>Bạn chưa quen thành phố, chưa có nhiều giấy tờ đứng tên ở Hà Nội, và cần biết mình có đủ điều kiện thuê không. Hãy hỏi trợ lý theo thứ tự:</p>
+
+<ol>
+<li>"Thuê xe cần mang giấy tờ gì?" để có danh sách bản gốc cần chuẩn bị.</li>
+<li>"Bằng lái hạng nào đi được xe ga?" để đối chiếu với bằng bạn đang có.</li>
+<li>"Tiền cọc dao động thế nào?" để biết khoản cần chuẩn bị ngoài tiền thuê.</li>
+<li>"Cửa hàng ở đâu, đi từ khu mình ở mất bao lâu?" để lên kế hoạch đến nhận xe.</li>
+</ol>
+
+<p>Câu trả lời về cọc sẽ nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được xác nhận khi đặt. Ngoài ra, bạn nên tự chuẩn bị bảo hiểm xe máy vì cửa hàng không cung cấp bảo hiểm. Danh sách giấy tờ đầy đủ có ở bài <a href="/blog/huong-dan/giay-to-can-khi-thue-xe/">giấy tờ cần khi thuê xe</a>.</p>
+
+<h2>Tình huống 2: người đi làm muốn giao xe tới nơi ở hoặc công ty</h2>
+
+<p>Nếu bạn ở hoặc làm việc trong khu Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Ba Đình hay Tây Hồ, câu hỏi chính là giao xe. Những câu nên hỏi:</p>
+
+<ul>
+<li>"Có giao xe tới phường mình không?" kèm tên phố cụ thể.</li>
+<li>"Giao xe trong khung giờ nào?" vì việc giao chỉ thực hiện trong giờ mở cửa {{ business.hours.display }}.</li>
+<li>"Phí giao xe tính thế nào?" để biết cần chốt với cửa hàng trước khi đặt.</li>
+<li>"Khi giao xe tận nơi thì kiểm tra xe và ký giấy tờ ra sao?"</li>
+</ul>
+
+<p>Trợ lý sẽ nói rõ rằng thời gian và phí giao phải được xác nhận trước khi đặt, không có con số cố định áp cho mọi địa chỉ. Quy trình nhận xe tại chỗ được mô tả kỹ trong bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">thủ tục giao xe tận nơi</a>.</p>
+
+<h2>Tình huống 3: khách du lịch đang ở Phố Cổ</h2>
+
+<p>Bạn có vài ngày ở Hà Nội và muốn chủ động đi lại. Điều quan trọng nhất là hiểu quy trình nhận và trả xe để khớp với lịch trình. Gợi ý chuỗi câu hỏi:</p>
+
+<ol>
+<li>"Giá thuê theo ngày các loại xe?" để chọn xe; ví dụ Honda Vision tham khảo 200.000đ/ngày, Honda Wave 150.000đ/ngày, cần xác nhận lại với cửa hàng.</li>
+<li>"Nhận xe lúc mấy giờ, trả xe lúc mấy giờ là tính một ngày?"</li>
+<li>"Nếu trả muộn thì xử lý thế nào?"</li>
+<li>"Khi nhận xe cần kiểm tra những gì?"</li>
+</ol>
+
+<p>Nếu bạn đến từ nước ngoài, hãy hỏi thêm về loại giấy phép lái xe được chấp nhận. Hướng dẫn đặt xe trọn quy trình dành riêng cho Hà Nội có trong bài <a href="/blog/app/dat-xe-bang-ung-dung-tai-ha-noi/">đặt xe bằng ứng dụng tại Hà Nội</a>.</p>
+
+<h2>Biến câu trả lời thành danh sách việc cần làm</h2>
+
+<p>Đọc xong một loạt câu trả lời rồi quên ngay là chuyện phổ biến. Cách hiệu quả hơn là ghi lại thành một danh sách ngắn trên điện thoại:</p>
+
+<ul>
+<li><strong>Mang theo</strong>: căn cước, bằng lái, bảo hiểm xe máy tự chuẩn bị.</li>
+<li><strong>Chuẩn bị tiền</strong>: tiền thuê tham khảo theo xe đã chọn và khoản cọc theo xác nhận của cửa hàng.</li>
+<li><strong>Thời gian</strong>: giờ nhận, giờ trả, khung giờ giao xe nếu có.</li>
+<li><strong>Khi nhận xe</strong>: chụp ảnh xe, kiểm tra phanh, đèn, lốp, mức xăng.</li>
+<li><strong>Khi trả xe</strong>: trả đúng giờ, đối chiếu tình trạng xe, nhận lại cọc theo điều kiện.</li>
+</ul>
+
+<p>Danh sách này giúp buổi nhận xe chỉ mất vài phút thay vì ngồi hỏi lại từng điều. Toàn bộ các bước thủ tục chuẩn được tổng hợp ở bài <a href="/blog/huong-dan/thu-tuc-thue-xe-may/">thủ tục thuê xe máy</a>.</p>
+
+<h2>Mẹo hỏi để câu trả lời sát với Hà Nội hơn</h2>
+
+<ul>
+<li>Nêu tên khu vực cụ thể thay vì "gần trung tâm".</li>
+<li>Nói rõ bạn thuê theo ngày, tuần hay tháng ngay trong câu hỏi.</li>
+<li>Mỗi câu một chủ đề, đừng gộp giấy tờ, giá và giao xe vào cùng một câu.</li>
+<li>Nếu câu trả lời chưa đủ, hỏi tiếp bằng từ khóa ngắn như "cọc xe ga" hay "giờ trả xe".</li>
+</ul>
+
+<p>Muốn hiểu thêm cách trợ lý hỗ trợ từng khâu giấy tờ, bạn xem bài <a href="/blog/app/app-ho-tro-thu-tuc-thue-xe/">ứng dụng hỗ trợ thủ tục thuê xe</a>.</p>
+
+<h2>Câu hỏi thường gặp về tính năng tìm hiểu thủ tục tại Hà Nội</h2>
+
+<h3>Tôi có cần tạo tài khoản để hỏi về thủ tục không?</h3>
+<p>Không. Bạn mở trang chủ và gõ câu hỏi trực tiếp vào trợ lý trên website.</p>
+
+<h3>Thông tin thủ tục có khác nhau giữa các quận không?</h3>
+<p>Giấy tờ và cọc giống nhau; khác biệt chủ yếu ở việc giao xe, vốn phụ thuộc khu vực và giờ mở cửa.</p>
+
+<h3>Trợ lý có cho biết xe nào đang còn trống không?</h3>
+<p>Tình trạng xe trống thay đổi theo ngày, nên bạn cần liên hệ cửa hàng để xác nhận chính xác.</p>
+
+<h3>Tôi hỏi bằng tiếng Anh được không?</h3>
+<p>Được. Hãy giữ câu ngắn và dùng tên xe, tên khu vực rõ ràng để câu trả lời chính xác hơn.</p>
+
+<h2>Kết luận</h2>
+
+<p>Nắm thủ tục trước giúp bạn đến cửa hàng với đủ giấy tờ, đủ tiền và đúng giờ. Khi đã sẵn sàng, ghé {{ business.display_name }} tại {{ business.address.full }} trong giờ {{ business.hours.display }} hoặc gọi {{ business.contact.phone_display }} để chốt lịch. Tìm hiểu thêm trong chuyên mục <a href="/blog/app/">trợ lý và ứng dụng thuê xe</a>, hoặc mở <a href="/">trang chủ</a> để bắt đầu hỏi ngay.</p>
