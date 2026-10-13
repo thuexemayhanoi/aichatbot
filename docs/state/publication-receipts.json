@@ -11990,6 +11990,28 @@
       "entry_sha256": "81059714e90349a455c12fadbc70e3b5d932f94fbb988b63b571169f3954797a",
       "production_status": 200,
       "verified_at": "2026-10-13T04:17:39.449Z"
+    },
+    "BA-1131": {
+      "article_id": "BA-1131",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/xe-dien-va-mui-moi-truong-mua-he/",
+      "publication_sha": "49043412dbea3a7a373100cb7296d6235d636573",
+      "page_sha256": "abba4679b013d276ac15b0953e2ff34a9cff742c426f919beec6f8cc4f1008fe",
+      "body_sha256": "be1aeb242a877e8344c5173c487f4fd348fb1ab48e716e3aa18fbfe808dc1781",
+      "entry_sha256": "1a9e1db418e69fa241467e66f64147a4709fb39846893e681fc666a3bac6e39b",
+      "production_status": 200,
+      "verified_at": "2026-10-13T04:46:21.761Z"
+    },
+    "BA-1132": {
+      "article_id": "BA-1132",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/giao-xe-tai-khach-san-nhanh-gon/",
+      "publication_sha": "49043412dbea3a7a373100cb7296d6235d636573",
+      "page_sha256": "78978070205584f5afa89e23286ffbccbf4087bfff8f5db85300f574410e2da3",
+      "body_sha256": "fda10b7c463cc53016e8043ea3fe7fcd220d91e61f7421a4cef897c68e4ed2d6",
+      "entry_sha256": "011a002c08df5e9ef25310734bd163e5c68c4c02cf25c7be8585e4819fba6d4a",
+      "production_status": 200,
+      "verified_at": "2026-10-13T04:46:21.753Z"
     }
   }
 }
