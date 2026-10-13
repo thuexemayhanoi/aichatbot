@@ -11733,6 +11733,150 @@
         "Ai từng dừng đèn đỏ giữa một dòng xe máy dài ở Hà Nội đều biết cảm giác mùi khói xăng bám vào áo, vào tóc. Vì thế không ít người tìm đến xe điện với hy vọng có những chuyến đi \"sạch mùi\" hơn. Câu hỏi thực tế là: thuê xe điện để giảm mùi có đáng với số tiền bỏ ra không, và làm sao có được trải nghiệm dễ chịu nhất mà vẫn giữ chi phí ở mức tốt?",
         "Bài này nhìn chuyện mùi và môi trường từ góc độ người thuê có ngân sách cụ thể: bạn nhận được gì, không nhận được gì, nên chọn xe nào cho hành trình nào, và những mùi lạ nào trên một chiếc xe điện là dấu hiệu cần báo cửa hàng ngay."
       ]
+    },
+    {
+      "article_id": "BA-0792",
+      "category": "LOCAL",
+      "slug": "cho-long-bien-dem-cuoi-tuan",
+      "title": "Chợ Long Biên Đêm Cuối Tuần",
+      "description": "Chợ Long Biên về đêm là một trong số ít nơi ở Hà Nội mà bạn được nhìn thấy thành phố \"làm việc\" thay vì \"đi chơi\": xe tải hoa quả nối đuôi, người bốc",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cho-long-bien-dem-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Chợ Long Biên về đêm là một trong số ít nơi ở Hà Nội mà bạn được nhìn thấy thành phố \"làm việc\" thay vì \"đi chơi\": xe tải hoa quả nối đuôi, người bốc vác đẩy hàng qua lối hẹp, tiếng mặc cả giữa sạp đầu mối. Đi vào một tối thứ Sáu hay thứ Bảy, khung cảnh ấy hòa thêm với dòng người dạo cầu Long Biên và khu phố đi bộ quanh hồ. Bài viết này giúp bạn lên kế hoạch một đêm cuối tuần quanh chợ bằng xe máy: nên đi giờ nào, kết hợp những điểm gì, chuẩn bị xe ra sao để không bị kẹt giữa giờ giao hàng.",
+        "Chợ Long Biên là chợ đầu mối, nhịp hoạt động chính xoay quanh việc nhập và phân phối hàng, nên guồng chạy về đêm của chợ không nghỉ vào cuối tuần. Điều thay đổi là mọi thứ xung quanh. Tối thứ Sáu, thứ Bảy, Chủ nhật, khu vực quanh Hồ Gươm thường tổ chức phố đi bộ, một số tuyến cấm xe, khiến lượng xe máy dồn sang các trục ven sông và đường dẫn lên cầu. Kết quả là đoạn đường từ phố cổ ra chợ dễ đông hơn hẳn trong khung tối sớm."
+      ]
+    },
+    {
+      "article_id": "BA-0800",
+      "category": "RENT",
+      "slug": "coc-thue-xe-may-bao-nhieu-cho-sinh-vien",
+      "title": "Cọc Thuê xe Máy Bao Nhiêu Cho Sinh Viên",
+      "description": "Với nhiều sinh viên, tiền thuê xe hằng tháng không phải nỗi lo lớn nhất, mà là khoản đặt cọc phải bỏ ra ngay từ đầu. Đúng vào tháng nhập học hay",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/coc-thue-xe-may-bao-nhieu-cho-sinh-vien.body.html",
+      "knowledge_chunks": [
+        "Với nhiều sinh viên, tiền thuê xe hằng tháng không phải nỗi lo lớn nhất, mà là khoản đặt cọc phải bỏ ra ngay từ đầu. Đúng vào tháng nhập học hay chuyển trọ, khi tiền nhà, tiền điện nước và sách vở dồn lại, một khoản giữ xe có thể khiến kế hoạch chi tiêu bị xáo trộn. Bài viết này trả lời câu hỏi cọc thuê xe máy bao nhiêu theo góc nhìn sinh viên: mức cọc thường gặp, cách chuẩn bị tiền mà không phải vay mượn vội vàng, cách chia cọc khi thuê chung với bạn cùng phòng, và những thói quen giúp bạn nhận lại đủ tiền khi trả xe.",
+        "Tại cửa hàng, tiền cọc dao động từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe. Mức cụ thể cho chiếc xe bạn chọn được cửa hàng xác nhận ngay khi đặt xe, nên bạn sẽ biết chính xác trước khi đến nhận. Nguyên tắc chung dễ hiểu: xe có giá trị càng cao thì khoản giữ xe càng gần mức trên, xe phổ thông thường gần mức dưới hơn."
+      ]
+    },
+    {
+      "article_id": "BA-0796",
+      "category": "GUIDE",
+      "slug": "dich-cong-chung-giay-to-thue-xe-cho-khach-nuoc-ngoai",
+      "title": "Dịch Công Chứng Giấy tờ Thuê xe Cho Khách Nước Ngoài",
+      "description": "Bạn là khách nước ngoài, vừa đặt chân tới Hà Nội và được dặn \"nhớ dịch công chứng giấy tờ trước khi thuê xe\". Câu dặn ấy đúng một phần nhưng dễ gây",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dich-cong-chung-giay-to-thue-xe-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Bạn là khách nước ngoài, vừa đặt chân tới Hà Nội và được dặn \"nhớ dịch công chứng giấy tờ trước khi thuê xe\". Câu dặn ấy đúng một phần nhưng dễ gây hoang mang: dịch giấy gì, dịch ở đâu, mất bao lâu, có thực sự cần cho chuyến đi một tuần không? Bài viết này trả lời từ góc nhìn của khách quốc tế: khi nào bản dịch công chứng thật sự cần, cách làm ở Hà Nội khi bạn không nói tiếng Việt, và những lỗi nhỏ như thứ tự họ tên hay định dạng ngày tháng khiến bản dịch phải làm lại.",
+        "Lưu ý: yêu cầu giấy tờ của mỗi cửa hàng và quy định lái xe cho người nước ngoài có thể khác nhau theo từng thời điểm. Hãy hỏi cửa hàng cụ thể trước khi bỏ thời gian và chi phí đi dịch."
+      ]
+    },
+    {
+      "article_id": "BA-0797",
+      "category": "SAFE",
+      "slug": "kiem-dinh-xe-may-cho-nguoi-moi",
+      "title": "Kiểm Định xe Máy Cho Người Mới",
+      "description": "Người mới tập đi xe máy thường nghe lẫn lộn mấy từ: kiểm định, đăng kiểm, bảo dưỡng, kiểm tra xe. Có người lo chiếc xe vừa thuê \"chưa đi kiểm định\",",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/kiem-dinh-xe-may-cho-nguoi-moi.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0791",
+      "category": "SAFE",
+      "slug": "mua-ban-xe-may-giay-to-cho-nguoi-moi",
+      "title": "Mua Bán xe Máy Giấy tờ Cho Người Mới",
+      "description": "Lần đầu tự mua một chiếc xe máy cũ, phần lớn người mới chỉ chăm chăm vào máy có êm không, sơn còn đẹp không, rồi mới nghĩ tới giấy tờ khi đã đưa",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/mua-ban-xe-may-giay-to-cho-nguoi-moi.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0798",
+      "category": "LOCAL",
+      "slug": "pho-co-am-thuc-xe-may-cuoi-tuan",
+      "title": "Phố cổ ẩm Thực xe Máy Cuối Tuần",
+      "description": "Ăn uống ở phố cổ vào cuối tuần là một trải nghiệm khác hẳn ngày thường. Tối thứ Sáu đến Chủ nhật, quanh Hồ Gươm có phố đi bộ, nhiều tuyến trong phố",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/pho-co-am-thuc-xe-may-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Ăn uống ở phố cổ vào cuối tuần là một trải nghiệm khác hẳn ngày thường. Tối thứ Sáu đến Chủ nhật, quanh Hồ Gươm có phố đi bộ, nhiều tuyến trong phố cổ hạn chế xe, hàng quán đông kín từ chạng vạng. Xe máy vẫn là cách tiện nhất để đi từ chỗ ở vào trung tâm và di chuyển giữa các cụm ăn, nhưng chỉ khi bạn biết lúc nào nên chạy, lúc nào nên gửi xe đi bộ. Bài viết này gợi ý cách tổ chức một cuối tuần ăn phố cổ bằng xe máy, từ bữa sáng thứ Bảy tới bữa tối Chủ nhật, kèm mẹo gửi xe và chọn khung giờ để không mất nửa buổi tối vì tìm chỗ đỗ.",
+        "Ngày thường, bạn có thể chạy xe tới gần quán rồi gửi ngay trước cửa. Cuối tuần, đặc biệt các buổi tối, nhiều phố quanh hồ được dành cho người đi bộ, còn lại các phố lân cận thì kín xe gửi. Điều đó dẫn tới ba nguyên tắc:"
+      ]
+    },
+    {
+      "article_id": "BA-0794",
+      "category": "RENT",
+      "slug": "so-sanh-gia-cac-loai-xe-may-cho-thue-cho-sinh-vien",
+      "title": "so Sánh Giá Các Loại xe Máy Cho Thuê Cho Sinh Viên",
+      "description": "Với sinh viên, câu hỏi không phải \"xe nào tốt nhất\" mà là \"xe nào vừa túi tiền tháng này mà vẫn đi học, đi làm thêm ổn định\". Cùng một chiếc xe, chọn",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/so-sanh-gia-cac-loai-xe-may-cho-thue-cho-sinh-vien.body.html",
+      "knowledge_chunks": [
+        "Với sinh viên, câu hỏi không phải \"xe nào tốt nhất\" mà là \"xe nào vừa túi tiền tháng này mà vẫn đi học, đi làm thêm ổn định\". Cùng một chiếc xe, chọn sai kỳ thuê có thể khiến bạn trả gần gấp đôi; chọn đúng kỳ, xe ga cũng có thể rẻ hơn bạn nghĩ. Bài viết này so sánh giá các dòng xe máy cho thuê phổ biến theo góc nhìn ngân sách sinh viên: đặt cạnh nhau giá ngày, tuần, tháng, tính thử vài tình huống quen thuộc và chỉ ra những khoản ngoài tiền thuê mà bạn nên dự trù.",
+        "Tất cả mức giá dưới đây là giá tham khảo theo bảng giá thuê hiện công bố; bạn cần xác nhận lại với cửa hàng trước khi đặt vì tình trạng xe và thời điểm có thể khác nhau."
+      ]
+    },
+    {
+      "article_id": "BA-0795",
+      "category": "EV",
+      "slug": "tram-doi-pin-gia-tot",
+      "title": "Trạm Đổi Pin Giá Tốt",
+      "description": "Trạm đổi pin hấp dẫn vì nhanh: ghé vào, rút pin cạn, lắp pin đầy, đi tiếp trong vài phút. Nhưng nhanh không đồng nghĩa với rẻ. Nhiều người dùng xe",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tram-doi-pin-gia-tot.body.html",
+      "knowledge_chunks": [
+        "Trạm đổi pin hấp dẫn vì nhanh: ghé vào, rút pin cạn, lắp pin đầy, đi tiếp trong vài phút. Nhưng nhanh không đồng nghĩa với rẻ. Nhiều người dùng xe máy điện, kể cả người thuê xe, trả nhiều hơn cần thiết chỉ vì đổi pin theo thói quen, chọn gói không hợp với quãng đường hay trả hai lần cho cùng một nguồn năng lượng. Bài này không liệt kê bảng giá của mạng lưới nào, vì giá mỗi nơi khác nhau và thay đổi theo thời gian. Thay vào đó, bạn sẽ có một cách tư duy để tự đánh giá thế nào là trạm đổi pin giá tốt với chính lịch đi lại của mình.",
+        "Một lần đổi pin rẻ chưa chắc đã là giá tốt. Thứ bạn cần nhìn là tổng chi phí năng lượng cho một tuần hoặc một tháng đi lại, chia cho mức tiện lợi bạn nhận được. Có ba yếu tố quyết định:"
+      ]
+    },
+    {
+      "article_id": "BA-0799",
+      "category": "APP",
+      "slug": "tro-ly-thue-xe-may-la-gi-tai-ha-noi",
+      "title": "Trợ lý Thuê xe Máy là gì Tại Hà Nội",
+      "description": "Hãy hình dung một người tư vấn đứng quầy cửa hàng xe, thuộc bảng giá, biết cửa hàng giao xe tới những khu nào của Hà Nội, nhớ cần mang giấy tờ gì, và",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tro-ly-thue-xe-may-la-gi-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Hãy hình dung một người tư vấn đứng quầy cửa hàng xe, thuộc bảng giá, biết cửa hàng giao xe tới những khu nào của Hà Nội, nhớ cần mang giấy tờ gì, và sẵn sàng trả lời bạn lúc 23 giờ khi bạn đang nằm lên kế hoạch cho ngày mai. Trợ lý thuê xe máy chính là phiên bản trực tuyến của người tư vấn ấy. Bài viết này giải thích trợ lý thuê xe máy là gì trong bối cảnh Hà Nội, ai được lợi nhiều nhất, nó trả lời được gì, không trả lời được gì, và một cuộc hỏi đáp mẫu trông như thế nào.",
+        "Trợ lý thuê xe máy của MotoAI là một khung hội thoại nằm ngay trên trang web. Bạn gõ câu hỏi bằng ngôn ngữ thường ngày, trợ lý trả lời dựa trên thông tin cửa hàng đã công bố: giá tham khảo, khu vực phục vụ, giờ làm việc, giấy tờ, khoảng đặt cọc. Nó không phải ứng dụng phải tải về, không bắt tạo tài khoản, và không thay thế bước xác nhận cuối cùng với cửa hàng. Nếu bạn muốn đọc phần giới thiệu chung không gắn với địa phương, xem bài trợ lý thuê xe máy là gì ."
+      ]
+    },
+    {
+      "article_id": "BA-0793",
+      "category": "APP",
+      "slug": "ung-dung-thue-xe-may-hoat-dong-ra-sao-tai-ha-noi",
+      "title": "Ứng Dụng Thuê xe Máy Hoạt Động ra Sao Tại Hà Nội",
+      "description": "Một ứng dụng thuê xe máy chạy ở Hà Nội phải trả lời những câu mà ở thành phố khác ít ai hỏi: giao xe sang Tây Hồ được không, phố cổ cuối tuần gửi xe",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ung-dung-thue-xe-may-hoat-dong-ra-sao-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Một ứng dụng thuê xe máy chạy ở Hà Nội phải trả lời những câu mà ở thành phố khác ít ai hỏi: giao xe sang Tây Hồ được không, phố cổ cuối tuần gửi xe ở đâu, mùa mưa nên chọn xe nào, ở Gia Lâm thì nhận xe thế nào cho tiện. Bài viết này đi theo một yêu cầu thuê xe thật, từ lúc bạn mở trang trên điện thoại cho tới lúc cầm chìa khóa, để bạn thấy công cụ trực tuyến của MotoAI xử lý từng bước ra sao trong bối cảnh Hà Nội, phần nào nó làm thay bạn và phần nào vẫn cần một cuộc gọi xác nhận với cửa hàng.",
+        "MotoAI là ứng dụng web chạy ngay trong trình duyệt. Bạn đang ở khách sạn phố cổ hay phòng trọ gần trường ở Gia Lâm đều làm giống nhau: mở trang, gõ câu hỏi, không cần tạo tài khoản. Với khách mới tới Hà Nội, điều này giải quyết một vấn đề rất thật: Wi-Fi khách sạn chập chờn, bộ nhớ điện thoại đầy ảnh, chẳng ai muốn cài thêm phần mềm chỉ để hỏi giá thuê vài ngày. Nếu bạn muốn hiểu kỹ sự khác biệt giữa hai kiểu ứng dụng, bài web app và app native khác gì nhau tại Hà Nội phân tích chi tiết."
+      ]
     }
   ]
 }
