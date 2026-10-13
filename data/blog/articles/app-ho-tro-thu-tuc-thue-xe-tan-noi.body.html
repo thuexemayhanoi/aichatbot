@@ -1,0 +1,51 @@
+<p>Khi xe được giao tận nơi, thủ tục thuê không bớt đi mà chỉ đổi chỗ: thay vì diễn ra ở quầy với nhân viên và biên bản, mọi việc gói lại trong vài phút trước cửa khách sạn hoặc nhà bạn, lúc người giao xe còn đứng đó. Đó là lý do nhiều người tìm một app hỗ trợ thủ tục thuê xe tận nơi: để biết trước cần chuẩn bị gì, nói gì, chụp gì, và ký gì trong vài phút ngắn ngủi ấy. MotoAI, trợ lý trực tuyến trên website của {{ business.brand }}, được thiết kế cho đúng việc này. Bài viết đi theo bốn bước từ lúc bạn mở trợ lý tới lúc xe lăn bánh, và thêm phần trả xe tận nơi. Tổng quan về tính năng hỗ trợ thủ tục có trong bài <a href="/blog/app/app-ho-tro-thu-tuc-thue-xe/">app hỗ trợ thủ tục thuê xe</a>, còn bối cảnh thành phố nằm trong bản <a href="/blog/app/app-ho-tro-thu-tuc-thue-xe-tai-ha-noi/">dành cho Hà Nội</a>.</p>
+
+<h2>Thủ tục giao tận nơi khác gì nhận tại cửa hàng</h2>
+<ul>
+<li>Không có quầy để đối chiếu, nên ảnh và tin nhắn thay cho biên bản tại chỗ.</li>
+<li>Khung giờ bị ràng buộc: giao chỉ trong giờ mở cửa {{ business.hours.display }}, không có ngoại lệ ngoài giờ.</li>
+<li>Có thêm một khoản phải chốt trước: thời gian giao và phí giao, xác nhận trước khi đặt.</li>
+<li>Địa chỉ phải chính xác tới số nhà hoặc tên khách sạn, vì người giao xe không có thời gian tìm.</li>
+<li>Giấy tờ được kiểm ngay tại cửa, không có cơ hội quay về lấy nếu thiếu.</li>
+</ul>
+<p>Các bước chung khi được giao xe, không gắn với ứng dụng, được liệt kê trong bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">giao xe tận nơi thủ tục</a>.</p>
+
+<h2>Bước 1: hỏi trợ lý về khu vực và khung giờ giao</h2>
+<p>Mở trợ lý trên website và nói rõ bạn ở đâu, muốn nhận lúc nào. Ví dụ: "Tôi ở khách sạn trong Phố Cổ, muốn nhận Honda Vision lúc mười giờ sáng mai, có giao được không?" Trợ lý sẽ trả lời theo chính sách: khu vực phục vụ gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội; giờ giao trong khung mở cửa; thời gian và phí giao cần được cửa hàng xác nhận trước khi đặt. Điều trợ lý không làm là tự hứa một mức phí hay một giờ giao, vì hai thứ đó phụ thuộc lịch xe trong ngày. Hãy coi câu trả lời là bản nháp để bạn chốt với cửa hàng, không phải xác nhận cuối.</p>
+<p>Nếu bạn đến Hà Nội bằng chuyến bay đêm hoặc tàu sớm, hỏi trợ lý cách sắp giờ nhận trong khung mở cửa để không phải chờ xe ở ngoài giờ. Việc chọn thời điểm hợp lý được bàn thêm trong bài <a href="/blog/app/chon-thoi-diem-thue-xe-bang-ung-dung-tan-noi/">chọn thời điểm thuê xe bằng ứng dụng khi giao tận nơi</a>.</p>
+
+<h2>Bước 2: chốt giấy tờ sẽ xuất trình khi xe đến</h2>
+<p>Hỏi trợ lý: "Khi xe giao tới, tôi cần đưa những giấy tờ gì?" Câu trả lời xoay quanh giấy phép lái xe phù hợp với chiếc xe và giấy tờ tùy thân bản gốc. Với xe mô tô đến 125 cm3, giấy phép hạng A1 là đủ theo quy định hiện hành; dòng xe phổ thông cho thuê thuộc nhóm này, nhưng bạn nên hỏi dung tích cụ thể. Nếu bạn là khách nước ngoài, hỏi trợ lý loại giấy tờ được chấp nhận; với các trường hợp phức tạp về bằng lái nước ngoài, trợ lý sẽ hướng bạn liên hệ trực tiếp cửa hàng để chắc chắn trước khi hẹn giao.</p>
+<p>Một việc nhiều người quên khi nhận xe ở khách sạn: bảo hiểm. Cửa hàng không cung cấp bảo hiểm, bạn tự chuẩn bị bảo hiểm xe máy, và nên có sẵn trước giờ giao chứ không phải sau khi xe đã tới. Cách tra từng mục thủ tục ngay trong trợ lý được mô tả ở bài <a href="/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app-tan-noi/">tính năng tìm hiểu thủ tục trong app khi giao tận nơi</a>.</p>
+
+<h2>Bước 3: cọc, phí giao và cách xác nhận</h2>
+<p>Ba khoản này cần được chốt bằng chữ trước khi xe rời cửa hàng. Khoản cọc nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được cửa hàng xác nhận khi đặt; trợ lý giải thích cách khoản này vận hành nhưng không tự chốt con số thay cửa hàng. Phí giao và thời gian giao là hai thứ phải hỏi thẳng cửa hàng và lưu lại trong cuộc trò chuyện đặt xe. Giá thuê thì bạn có thể xem trước trên trợ lý: Honda Vision tham khảo 200.000đ/ngày, Honda Wave 150.000đ/ngày, bảng đầy đủ ở trang <a href="/gia-thue/">giá thuê</a>, mọi mức đều cần xác nhận. Chi tiết cách đặt cọc khi thuê qua ứng dụng và nhận lại khi trả nằm trong bài <a href="/blog/app/dat-coc-va-ung-dung-thue-xe-tan-noi/">đặt cọc và ứng dụng thuê xe tận nơi</a>.</p>
+
+<h2>Bước 4: lúc xe đến cửa, checklist năm phút</h2>
+<ol>
+<li>Xuất trình giấy phép lái xe và giấy tờ tùy thân để người giao xe kiểm tra.</li>
+<li>Đi một vòng quanh xe cùng nhân viên, chụp ảnh toàn thân hai bên, trước sau, đồng hồ đã bật khóa điện với số công-tơ-mét và mức xăng.</li>
+<li>Chỉ tận nơi từng vết xước có sẵn và đề nghị ghi nhận, gửi bộ ảnh vào cuộc trò chuyện đặt xe ngay lúc đó.</li>
+<li>Nhận mũ bảo hiểm, áo mưa nếu có, thử đèn, còi, phanh và chân chống.</li>
+<li>Xác nhận lại giờ trả, địa điểm trả và cách liên hệ khi cần, rồi mới ký nhận.</li>
+</ol>
+<p>Trình tự nhận xe khi đặt qua ứng dụng, với ảnh minh họa từng bước, có ở bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>. Bạn có thể hỏi trợ lý ngay trước giờ giao: "Tôi cần kiểm tra gì khi xe đến?" để nhận lại danh sách này.</p>
+
+<h2>Trả xe tận nơi và những việc trợ lý nhắc bạn</h2>
+<p>Ngày trả, trợ lý giúp bạn ôn lại ba việc: trả đúng giờ đã hẹn trong khung mở cửa, đưa mức xăng về mức đã thỏa thuận, và chụp lại bộ ảnh đúng góc lúc nhận. Nếu lịch của bạn thay đổi, ví dụ đổi khách sạn hoặc muốn trả sớm, hãy hỏi trợ lý cách báo cửa hàng và nhắn trực tiếp càng sớm càng tốt, vì xe có thể đã được hẹn cho khách khác. Cách hủy hoặc dời lịch khi đặt qua ứng dụng, cùng những điều cần nói với cửa hàng, nằm trong bài <a href="/blog/app/huy-lich-thue-xe-qua-app-tan-noi/">hủy lịch thuê xe qua app tận nơi</a>.</p>
+
+<h2>Giới hạn của ứng dụng web bạn nên biết</h2>
+<p>MotoAI là công cụ trực tuyến chạy trên trình duyệt, không cần cài đặt và không cần tài khoản. Trợ lý trả lời dựa trên chính sách và bảng giá của cửa hàng, giúp bạn chuẩn bị đúng, nhưng việc kiểm tra giấy tờ bản gốc, chốt phí giao, nhận cọc và bàn giao xe vẫn do con người thực hiện. Cửa hàng không có dịch vụ cứu hộ, không có khuyến mãi, và chỉ giao trong khu vực nội thành Hà Nội cùng các khu lân cận đã nêu. Khi trợ lý nói "hãy xác nhận với cửa hàng", đó là bước không thể bỏ qua; bạn có thể dùng trang <a href="/lien-he/">liên hệ</a> để nhắn trực tiếp.</p>
+
+<h2>Câu hỏi thường gặp về app hỗ trợ thủ tục thuê xe tận nơi</h2>
+<h3>Tôi có cần tải app về điện thoại không?</h3>
+<p>Không. Trợ lý chạy ngay trên trình duyệt khi bạn mở website, dùng được trên điện thoại lẫn máy tính và không cần đăng ký.</p>
+<h3>Trợ lý có chốt được giờ giao và phí giao không?</h3>
+<p>Không. Trợ lý cho bạn biết khung giờ và khu vực phục vụ, còn giờ cụ thể và phí giao do cửa hàng xác nhận trước khi đặt, dựa trên lịch xe trong ngày.</p>
+<h3>Giao xe tới sân bay hoặc ga tàu được không?</h3>
+<p>Khu vực phục vụ là nội thành Hà Nội và các khu lân cận như Long Biên, Gia Lâm. Với điểm giao đặc biệt, hãy hỏi cửa hàng trực tiếp để biết có khả thi trong giờ mở cửa hay không.</p>
+<h3>Nếu thiếu giấy tờ lúc xe đến thì sao?</h3>
+<p>Xe sẽ không được bàn giao, vì vậy mới cần bước hai trước giờ giao. Hãy để sẵn giấy tờ trên bàn từ tối hôm trước nếu bạn nhận xe sáng sớm.</p>
+
+<h2>Kết luận</h2>
+<p>Thủ tục giao tận nơi gọn khi bạn làm xong phần chuẩn bị trước giờ xe tới: hỏi khu vực và khung giờ, chốt giấy tờ, chốt cọc và phí giao bằng chữ, rồi kiểm xe năm phút tại cửa. Sau khi trò chuyện với trợ lý, bạn gọi {{ business.contact.phone_display }} hoặc nhắn {{ business.brand }} để xác nhận lịch giao; cửa hàng ở {{ business.address.full }} nếu bạn muốn tự tới nhận. Các bài khác về ứng dụng nằm trong <a href="/blog/app/">chuyên mục app</a>, hoặc mở trợ lý ngay trên <a href="/">trang chủ</a>.</p>
