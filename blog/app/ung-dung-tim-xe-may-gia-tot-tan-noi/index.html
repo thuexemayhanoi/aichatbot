@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v66">
+  <title>Ứng Dụng Tìm xe Máy Giá Tốt Tận Nơi</title>
+  <meta name="description" content="Một ứng dụng tìm xe máy giá tốt tận nơi phải làm được một việc mà bảng giá không làm được: tính đúng tổng chi phí khi bạn muốn xe được mang tới tận">
+  <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-tim-xe-may-gia-tot-tan-noi/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Ứng Dụng Tìm xe Máy Giá Tốt Tận Nơi">
+  <meta property="og:description" content="Một ứng dụng tìm xe máy giá tốt tận nơi phải làm được một việc mà bảng giá không làm được: tính đúng tổng chi phí khi bạn muốn xe được mang tới tận">
+  <meta property="og:url" content="https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-tim-xe-may-gia-tot-tan-noi/">
+  <meta property="og:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ứng Dụng Tìm xe Máy Giá Tốt Tận Nơi">
+  <meta name="twitter:description" content="Một ứng dụng tìm xe máy giá tốt tận nơi phải làm được một việc mà bảng giá không làm được: tính đúng tổng chi phí khi bạn muốn xe được mang tới tận">
+  <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=66">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=66">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/blog/">Cẩm nang</a>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true" aria-current="page">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/app/" aria-current="page">📱 Ứng Dụng</a>
+            <a href="/blog/huong-dan/">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-ung-dung-tim-xe-may-gia-tot-tan-noi">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/">Agent</a> › <a href="/blog/">Cẩm nang</a> › <a href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a> › <a href="/blog/app/">Ứng Dụng</a> › <a href="/blog/app/tim-xe/">Tìm Xe</a> › <span>Ứng Dụng Tìm xe Máy Giá Tốt Tận Nơi</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/blog/app/">Ứng Dụng</a>
+        <a class="blog-chip" href="/blog/app/tim-xe/">Tìm Xe</a>
+        <a class="blog-chip blog-chip-parent" href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+      </p>
+      <p class="blog-screen-label">Ứng Dụng</p>
+      <h1 class="blog-screen-title">Ứng Dụng Tìm xe Máy Giá Tốt Tận Nơi</h1>
+      <p class="blog-screen-lead">Một ứng dụng tìm xe máy giá tốt tận nơi phải làm được một việc mà bảng giá không làm được: tính đúng tổng chi phí khi bạn muốn xe được mang tới tận</p>
+      <p class="byline">MotoAI Editorial · 2026-10-13 · Ứng Dụng · 8 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Một ứng dụng tìm xe máy giá tốt tận nơi phải làm được một việc mà bảng giá không làm được: tính đúng tổng chi phí khi bạn muốn xe được mang tới tận</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#gia-tot-khi-giao-tan-noi-la-mot-phep-tinh-khong-phai-mot-con-so">Giá tốt khi giao tận nơi là một phép tính, không phải một con số</a></li>
+        <li class="toc-l2"><a href="#bang-gia-tham-khao-de-bat-dau">Bảng giá tham khảo để bắt đầu</a></li>
+        <li class="toc-l2"><a href="#hoi-tro-ly-dung-cach-de-so-phuong-an">Hỏi trợ lý đúng cách để so phương án</a></li>
+        <li class="toc-l2"><a href="#ba-khu-vuc-ba-cach-tinh">Ba khu vực, ba cách tính</a></li>
+        <li class="toc-l3"><a href="#long-bien-bo-de-gia-lam">Long Biên, Bồ Đề, Gia Lâm</a></li>
+        <li class="toc-l3"><a href="#hoan-kiem-pho-co">Hoàn Kiếm, Phố Cổ</a></li>
+        <li class="toc-l3"><a href="#tay-ho-ba-dinh">Tây Hồ, Ba Đình</a></li>
+        <li class="toc-l2"><a href="#chon-gio-giao-de-khong-mat-them-ngay">Chọn giờ giao để không mất thêm ngày</a></li>
+        <li class="toc-l2"><a href="#bay-gia-khi-thue-giao-tan-noi">Bẫy giá khi thuê giao tận nơi</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-ve-ung-dung-tim-xe-may-gia-tot-tan-noi">Câu hỏi thường gặp về ứng dụng tìm xe máy giá tốt tận nơi</a></li>
+        <li class="toc-l3"><a href="#tro-ly-co-cho-biet-phi-giao-chinh-xac-khong">Trợ lý có cho biết phí giao chính xác không?</a></li>
+        <li class="toc-l3"><a href="#co-can-cai-ung-dung-hay-tao-tai-khoan-khong">Có cần cài ứng dụng hay tạo tài khoản không?</a></li>
+        <li class="toc-l3"><a href="#thue-hai-ngay-thi-co-nen-chon-giao-tan-noi-khong">Thuê hai ngày thì có nên chọn giao tận nơi không?</a></li>
+        <li class="toc-l3"><a href="#xe-may-dien-giao-tan-noi-co-gia-tot-khong">Xe máy điện giao tận nơi có giá tốt không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#gia-tot-khi-giao-tan-noi-la-mot-phep-tinh-khong-phai-mot-con-so">Giá tốt khi giao tận nơi là một phép tính, không phải một con số</a></li>
+        <li class="toc-l2"><a href="#bang-gia-tham-khao-de-bat-dau">Bảng giá tham khảo để bắt đầu</a></li>
+        <li class="toc-l2"><a href="#hoi-tro-ly-dung-cach-de-so-phuong-an">Hỏi trợ lý đúng cách để so phương án</a></li>
+        <li class="toc-l2"><a href="#ba-khu-vuc-ba-cach-tinh">Ba khu vực, ba cách tính</a></li>
+        <li class="toc-l3"><a href="#long-bien-bo-de-gia-lam">Long Biên, Bồ Đề, Gia Lâm</a></li>
+        <li class="toc-l3"><a href="#hoan-kiem-pho-co">Hoàn Kiếm, Phố Cổ</a></li>
+        <li class="toc-l3"><a href="#tay-ho-ba-dinh">Tây Hồ, Ba Đình</a></li>
+        <li class="toc-l2"><a href="#chon-gio-giao-de-khong-mat-them-ngay">Chọn giờ giao để không mất thêm ngày</a></li>
+        <li class="toc-l2"><a href="#bay-gia-khi-thue-giao-tan-noi">Bẫy giá khi thuê giao tận nơi</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-ve-ung-dung-tim-xe-may-gia-tot-tan-noi">Câu hỏi thường gặp về ứng dụng tìm xe máy giá tốt tận nơi</a></li>
+        <li class="toc-l3"><a href="#tro-ly-co-cho-biet-phi-giao-chinh-xac-khong">Trợ lý có cho biết phí giao chính xác không?</a></li>
+        <li class="toc-l3"><a href="#co-can-cai-ung-dung-hay-tao-tai-khoan-khong">Có cần cài ứng dụng hay tạo tài khoản không?</a></li>
+        <li class="toc-l3"><a href="#thue-hai-ngay-thi-co-nen-chon-giao-tan-noi-khong">Thuê hai ngày thì có nên chọn giao tận nơi không?</a></li>
+        <li class="toc-l3"><a href="#xe-may-dien-giao-tan-noi-co-gia-tot-khong">Xe máy điện giao tận nơi có giá tốt không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Một ứng dụng tìm xe máy giá tốt tận nơi phải làm được một việc mà bảng giá không làm được: tính đúng tổng chi phí khi bạn muốn xe được mang tới tận cửa. Lý do là giao tận nơi thêm vào phép tính hai biến mà đơn giá ngày không chứa: phí giao, và giờ giao nằm trong khung mở cửa. Cùng một chiếc Honda Vision, người ở Bồ Đề tự đi bộ sang cửa hàng và người ở khách sạn Phố Cổ chờ xe tới sẽ trả hai tổng khác nhau. MotoAI, trợ lý trực tuyến trên website của Nguyễn Tú, giúp bạn đặt các phương án cạnh nhau trước khi gọi. Bài này hướng dẫn cách dùng trợ lý cho đúng kịch bản giao tận nơi; góc nhìn chung về giá tốt có trong bài <a href="/blog/app/ung-dung-tim-xe-may-gia-tot/">ứng dụng tìm xe máy giá tốt</a>, còn bối cảnh thành phố ở bản <a href="/blog/app/ung-dung-tim-xe-may-gia-tot-tai-ha-noi/">dành cho Hà Nội</a>.</p>
+  
+  <h2 id="gia-tot-khi-giao-tan-noi-la-mot-phep-tinh-khong-phai-mot-con-so">Giá tốt khi giao tận nơi là một phép tính, không phải một con số</h2>
+  <p>Tổng chi phí của phương án giao tận nơi gồm tiền thuê theo gói, phí giao do cửa hàng xác nhận, phí lấy xe về khi kết thúc nếu bạn cũng muốn trả tận nơi, và chi phí cơ hội của giờ giao: nếu khung giờ bạn cần nằm ngoài giờ mở cửa, bạn hoặc phải chờ, hoặc phải đổi sang tự đến nhận. Phương án tự đến nhận cũng không miễn phí: bạn tốn một chuyến xe công nghệ hoặc xe buýt sang Long Biên và thời gian đi về. Giá tốt là phương án có tổng nhỏ hơn cho đúng hoàn cảnh của bạn, và trợ lý được làm ra để tính phần này thay vì chỉ đọc bảng giá.</p>
+  
+  <h2 id="bang-gia-tham-khao-de-bat-dau">Bảng giá tham khảo để bắt đầu</h2>
+  <p>Đây là các mức tham khảo trợ lý sẽ nêu, bảng đầy đủ ở trang <a href="/gia-thue/">giá thuê</a>, mọi mức cần cửa hàng xác nhận khi đặt:</p>
+  <ul>
+  <li>Honda Wave xe số: 150.000đ/ngày, hợp người chạy nhiều và muốn tiết kiệm xăng.</li>
+  <li>Honda Click, Yamaha Mio: 150.000đ/ngày, tuần 600.000đ–700.000đ, tháng 1.000.000đ–1.200.000đ.</li>
+  <li>Honda Vision: 200.000đ/ngày, tuần 800.000đ–1.000.000đ, tháng 1.800.000đ–2.000.000đ.</li>
+  <li>Honda Air Blade: 200.000đ/ngày, tuần 800.000đ, tháng 1.400.000đ.</li>
+  <li>Nhóm xe 50cc, xe máy điện và xe đạp điện để giá liên hệ, hỏi cửa hàng theo dòng cụ thể.</li>
+  </ul>
+  <p>Phí giao không nằm trong bảng này và không có con số cố định, vì phụ thuộc khoảng cách và lịch xe trong ngày; đó là khoản bạn phải hỏi cửa hàng xác nhận trước khi đặt. Cách phí này được tính và những yếu tố ảnh hưởng được giải thích trong bài <a href="/blog/thue-xe/phi-giao-xe-thue-chay-pho/">phí giao xe thuê khi chạy phố</a>.</p>
+  
+  <h2 id="hoi-tro-ly-dung-cach-de-so-phuong-an">Hỏi trợ lý đúng cách để so phương án</h2>
+  <ol>
+  <li>Nói rõ địa điểm và số ngày: "Tôi ở Tây Hồ, cần xe bảy ngày." Trợ lý sẽ gợi ý so gói tuần với thuê lẻ, vì bảy ngày là chỗ gói tuần thường có lợi.</li>
+  <li>Hỏi hai phương án song song: "So giúp tôi tự đến cửa hàng nhận và giao tận nơi, cần hỏi cửa hàng những gì?" Trợ lý liệt kê các khoản phải xác nhận cho từng phương án.</li>
+  <li>Nêu giờ bạn cần xe. Nếu giờ đó ngoài khung 09:00 - 21:00, trợ lý nhắc bạn dời giờ hoặc chọn tự nhận vào hôm sau, tránh mất thêm một ngày thuê vô ích.</li>
+  <li>Mô tả cách đi: một mình quanh phố hay chở người mỗi ngày, để trợ lý gợi ý dòng xe vừa đủ, không trả thêm cho công suất không dùng.</li>
+  <li>Xin bản tóm tắt rồi nhắn cửa hàng xác nhận giá thuê, phí giao, giờ giao và mức cọc trong cùng một tin.</li>
+  </ol>
+  <p>Cách tìm xe qua ứng dụng nói chung, từ lọc dòng xe tới xem tình trạng sẵn có, nằm trong bài <a href="/blog/app/tim-xe-may-thue-bang-ung-dung/">tìm xe máy thuê bằng ứng dụng</a>.</p>
+  
+  <h2 id="ba-khu-vuc-ba-cach-tinh">Ba khu vực, ba cách tính</h2>
+  <h3 id="long-bien-bo-de-gia-lam">Long Biên, Bồ Đề, Gia Lâm</h3>
+  <p>Bạn ở gần cửa hàng, nên tự đến nhận gần như luôn là phương án rẻ nhất; phí giao chỉ đáng cân nhắc khi bạn không thể rời nhà trong giờ mở cửa. Với Honda Wave thuê ba ngày, tổng tham khảo là 450.000đ và không có khoản nào thêm nếu bạn tự tới.</p>
+  <h3 id="hoan-kiem-pho-co">Hoàn Kiếm, Phố Cổ</h3>
+  <p>Khách ở khách sạn thường không muốn đi xe công nghệ sang Long Biên rồi tự chạy về. Hãy hỏi cửa hàng phí giao tới địa chỉ khách sạn, cộng vào tiền thuê, rồi so với chi phí một chuyến đi sang nhận cộng thời gian của bạn. Với kỳ thuê ngắn hai ba ngày, phí giao chiếm tỷ lệ lớn hơn trong tổng, nên so sánh này quan trọng hơn với kỳ thuê dài.</p>
+  <h3 id="tay-ho-ba-dinh">Tây Hồ, Ba Đình</h3>
+  <p>Người ở lại nhiều tuần thường chọn gói tuần hoặc tháng, khi đó phí giao chia đều cho nhiều ngày và gần như không đáng kể so với tiền thuê. Chẳng hạn gói tháng Honda Air Blade tham khảo 1.400.000đ, phí giao một lần đầu kỳ chỉ là phần nhỏ, và bạn tiết kiệm được cả buổi đi nhận. Những lưu ý riêng khi thuê giao tận nơi để chạy phố hằng ngày được bàn trong bài <a href="/blog/thue-xe/thue-xe-giao-tan-noi-chay-pho/">thuê xe giao tận nơi chạy phố</a>.</p>
+  
+  <h2 id="chon-gio-giao-de-khong-mat-them-ngay">Chọn giờ giao để không mất thêm ngày</h2>
+  <p>Giờ giao ảnh hưởng tới số ngày thuê nhiều hơn người ta tưởng. Nhận xe lúc chín giờ sáng và trả lúc tám giờ tối hôm sau là hai ngày; nhận lúc tám giờ tối và trả lúc tám giờ tối hôm sau có thể chỉ là một ngày tùy cách tính của cửa hàng. Hãy hỏi trợ lý cách tính ngày rồi xác nhận với cửa hàng, và chọn giờ giao gần giờ bạn thật sự bắt đầu dùng xe. Đừng hẹn giao sớm cho yên tâm rồi để xe đứng cả buổi, vì bạn đang trả tiền cho những giờ ấy.</p>
+  
+  <h2 id="bay-gia-khi-thue-giao-tan-noi">Bẫy giá khi thuê giao tận nơi</h2>
+  <ul>
+  <li>So đơn giá ngày của các nơi mà quên hỏi phí giao, rồi bất ngờ khi tổng cao hơn dự kiến.</li>
+  <li>Hẹn giao ngoài giờ mở cửa và phải dời lịch gấp, mất buổi đầu tiên của kỳ thuê.</li>
+  <li>Không chốt phí giao bằng chữ trước khi đặt, lúc xe tới mới biết con số.</li>
+  <li>Quên khoản trả xe tận nơi lúc kết thúc, chỉ tính phí giao chiều đi.</li>
+  <li>Tin vào giá rẻ bất thường từ trang hay tài khoản không rõ nguồn; dấu hiệu nhận biết có trong bài <a href="/blog/app/canh-giac-voi-app-thue-xe-gia-mao-tan-noi/">cảnh giác với app thuê xe giả mạo</a>.</li>
+  <li>Bỏ qua bảo hiểm: cửa hàng không cung cấp bảo hiểm, bạn tự chuẩn bị bảo hiểm xe máy, khoản này thuộc ngân sách chuyến đi.</li>
+  </ul>
+  <p>Về khoản tạm giữ, mức cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe và được xác nhận khi đặt, không phải chi phí mất đi nhưng ảnh hưởng tới dòng tiền của bạn trong kỳ thuê.</p>
+  
+  <h2 id="cau-hoi-thuong-gap-ve-ung-dung-tim-xe-may-gia-tot-tan-noi">Câu hỏi thường gặp về ứng dụng tìm xe máy giá tốt tận nơi</h2>
+  <h3 id="tro-ly-co-cho-biet-phi-giao-chinh-xac-khong">Trợ lý có cho biết phí giao chính xác không?</h3>
+  <p>Không. Phí giao và giờ giao do cửa hàng xác nhận trước khi đặt, dựa trên địa chỉ và lịch xe. Trợ lý giúp bạn biết cần hỏi gì và so các phương án với con số bạn nhận được.</p>
+  <h3 id="co-can-cai-ung-dung-hay-tao-tai-khoan-khong">Có cần cài ứng dụng hay tạo tài khoản không?</h3>
+  <p>Không. MotoAI là ứng dụng web chạy trên trình duyệt, bạn mở website và hỏi ngay, không cần cài đặt từ kho ứng dụng nào.</p>
+  <h3 id="thue-hai-ngay-thi-co-nen-chon-giao-tan-noi-khong">Thuê hai ngày thì có nên chọn giao tận nơi không?</h3>
+  <p>Tùy khoảng cách và phí giao cửa hàng báo. Với kỳ ngắn, phí giao chiếm tỷ lệ lớn, nên hãy so với chi phí một chuyến sang Long Biên tự nhận rồi quyết định.</p>
+  <h3 id="xe-may-dien-giao-tan-noi-co-gia-tot-khong">Xe máy điện giao tận nơi có giá tốt không?</h3>
+  <p>Xe máy điện để giá liên hệ, nên hãy hỏi cửa hàng báo giá kèm phí giao trong cùng một tin để so với dòng xăng tương đương.</p>
+  
+  <h2 id="ket-luan">Kết luận</h2>
+  <p>Giá tốt khi giao tận nơi là kết quả của một phép tính gồm tiền thuê theo gói, phí giao đã xác nhận và giờ giao nằm gọn trong khung mở cửa. Hãy để trợ lý sắp các phương án cạnh nhau, rồi nhắn Nguyễn Tú qua 0942 467 674 để chốt, hoặc ghé 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội nếu bạn ở gần. Thêm nhiều bài về cách dùng trợ lý trong <a href="/blog/app/">chuyên mục app</a>, và bạn có thể bắt đầu hỏi ngay trên <a href="/">trang chủ</a>.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+          <span aria-hidden="true">→</span>
+          <a href="/blog/app/">Ứng Dụng</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/blog/app/app-thue-xe-may-la-gi/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục</h2>
+        <p>Tìm hiểu app thuê xe máy là gì, ứng dụng web MotoAI giúp hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe ngay trên trình duyệt, không cần cài đặt.</p>
+      </a>
+      <a class="blog-card" href="/blog/app/cach-dung-ung-dung-thue-xe-may/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách dùng ứng dụng thuê xe máy: 5 bước từ hỏi giá đến nhận xe</h2>
+        <p>Hướng dẫn dùng ứng dụng trợ lý thuê xe máy trên web: đặt câu hỏi đúng cách, hỏi giá theo khung thời gian, chốt dòng xe, xác nhận thủ tục và lưu tin nhắn chốt.</p>
+      </a>
+      <a class="blog-card" href="/blog/app/ung-dung-thue-xe-co-an-toan-khong/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Ứng dụng thuê xe có an toàn không: cách kiểm tra trước khi đặt xe</h2>
+        <p>Ứng dụng thuê xe an toàn hay không phụ thuộc ba lớp: thông tin cá nhân, giao dịch đặt cọc và dịch vụ đi kèm, kèm checklist kiểm tra công cụ thuê xe trước khi đặt.</p>
+      </a>
+      <a class="blog-card" href="/blog/app/cach-tinh-gia-thue-xe-bang-app/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách tính giá thuê xe bằng app: đọc đúng một báo giá</h2>
+        <p>Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.</p>
+      </a>
+      <a class="blog-card" href="/blog/app/chon-xe-bang-agent/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Chọn xe bằng Agent: nói nhu cầu để nhận đúng dòng xe</h2>
+        <p>Chọn xe bằng Agent: năm thông tin cần mô tả để trợ lý gợi ý dòng xe phù hợp với chuyến đi, cách Agent suy luận từ nhu cầu và các câu hỏi nên hỏi lại trước khi chốt.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Công cụ &amp; Hướng dẫn: <a href="/blog/app/">Ứng Dụng</a> · <a href="/blog/huong-dan/">Hướng Dẫn</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/?ask=%E1%BB%A8ng%20D%E1%BB%A5ng%20T%C3%ACm%20xe%20M%C3%A1y%20Gi%C3%A1%20T%E1%BB%91t%20T%E1%BA%ADn%20N%C6%A1i">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/">Agent</a></li>
+          <li><a href="/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/blog/">Cẩm nang</a></li>
+          <li><a href="/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/privacy/">Bảo Mật</a></li>
+          <li><a href="/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/">⚡ Agent</a></li>
+      <li><a href="/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/cong-cu-huong-dan/" aria-current="page">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/app/" aria-current="page">📱 Ứng Dụng</a></li>
+            <li><a href="/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","url":"https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-tim-xe-may-gia-tot-tan-noi/","headline":"Ứng Dụng Tìm xe Máy Giá Tốt Tận Nơi","description":"Một ứng dụng tìm xe máy giá tốt tận nơi phải làm được một việc mà bảng giá không làm được: tính đúng tổng chi phí khi bạn muốn xe được mang tới tận","datePublished":"2026-10-13","dateModified":"2026-10-13","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://chatbot.thuexemaynguyentu.com/"},"mainEntityOfPage":"https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-tim-xe-may-gia-tot-tan-noi/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://chatbot.thuexemaynguyentu.com/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://chatbot.thuexemaynguyentu.com/blog/"},{"@type":"ListItem","position":3,"name":"Công cụ & Hướng dẫn","item":"https://chatbot.thuexemaynguyentu.com/blog/cong-cu-huong-dan/"},{"@type":"ListItem","position":4,"name":"Ứng Dụng","item":"https://chatbot.thuexemaynguyentu.com/blog/app/"},{"@type":"ListItem","position":5,"name":"Tìm Xe","item":"https://chatbot.thuexemaynguyentu.com/blog/app/tim-xe/"},{"@type":"ListItem","position":6,"name":"Ứng Dụng Tìm xe Máy Giá Tốt Tận Nơi","item":"https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-tim-xe-may-gia-tot-tan-noi/"}]}
+  </script>
+
+  <script type="module" src="/assets/js/app-shell.js?v=66"></script>
+</body>
+</html>
