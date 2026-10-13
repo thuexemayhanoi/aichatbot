@@ -1,0 +1,58 @@
+<p>Nhiều du khách nước ngoài thấy khó hình dung một ứng dụng thuê xe máy hoạt động ra sao khi họ chưa từng thuê xe ở Việt Nam: bấm vào đâu, ai trả lời, khi nào thì đơn được coi là chắc chắn, và tiền được trả vào lúc nào. Bài viết này mở từng lớp của quy trình với MotoAI, trợ lý thuê xe chạy trên website, để bạn biết chính xác phần nào do công cụ trực tuyến xử lý, phần nào do người thật ở cửa hàng đảm nhận, và bạn cần làm gì ở mỗi bước.</p>
+
+<h2>Bức tranh tổng thể: một công cụ trên trình duyệt và một cửa hàng thật</h2>
+<p>Hãy hình dung quy trình có hai nửa. Nửa đầu diễn ra trên màn hình: bạn trò chuyện với trợ lý để chọn xe, xem giá tham khảo và gửi yêu cầu đặt. Nửa sau diễn ra ngoài đời: nhân viên {{ business.brand }} xác nhận, chuẩn bị xe, kiểm tra giấy tờ và bàn giao. Trợ lý không phải là người cho thuê xe; nó là lối vào giúp bạn hỏi nhanh bằng ngôn ngữ của mình thay vì phải gọi điện bằng tiếng Việt.</p>
+<p>Vì chạy trên trình duyệt, bạn không cần tải hay cài đặt gì. Nếu muốn tìm hiểu thêm vì sao mô hình này phù hợp với người ở ngắn ngày, bài <a href="/blog/app/ung-dung-web-thue-xe-may/">ứng dụng web thuê xe máy</a> giải thích chi tiết.</p>
+
+<h2>Bước 1: Mở trợ lý và mô tả nhu cầu</h2>
+<p>Khi bạn mở website và gõ câu hỏi đầu tiên, trợ lý đọc nội dung để nắm ba thông tin cốt lõi: bạn cần xe trong bao lâu, đi ở khu vực nào và có kinh nghiệm lái loại xe nào. Nếu thiếu thông tin, nó sẽ hỏi lại. Bạn trả lời càng cụ thể, các bước sau càng nhanh.</p>
+<ul>
+<li>Nói rõ số ngày: "three days" khác hẳn "about a week" về cách tính giá.</li>
+<li>Nêu khu lưu trú, ví dụ Tây Hồ, Ba Đình hay Hoàn Kiếm.</li>
+<li>Cho biết bạn quen xe tay ga hay xe số.</li>
+</ul>
+
+<h2>Bước 2: Nhận gợi ý xe và giá tham khảo</h2>
+<p>Dựa trên mô tả, trợ lý đề xuất một vài dòng xe phù hợp và hiển thị mức giá tham khảo lấy từ bảng giá của cửa hàng. Ví dụ, người quen tay ga đi trong nội thành thường được gợi ý Honda Vision, tham khảo khoảng 200.000đ/ngày, hoặc Honda Click, tham khảo khoảng 150.000đ/ngày. Người thuê dài hơn có thể được chỉ sang mức theo tuần hay theo tháng, như Air Blade tham khảo 800.000đ/tuần.</p>
+<p>Điểm cần nhớ: các con số này là tham khảo. Trợ lý không tự đặt ra giá, và giá cuối cùng cho ngày bạn thuê luôn do cửa hàng xác nhận. Bạn có thể tự đối chiếu trên trang <a href="/gia-thue/">bảng giá thuê</a>, hoặc xem cách cộng chi phí theo ngày trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a>.</p>
+
+<h2>Bước 3: Gửi yêu cầu đặt và chờ cửa hàng xác nhận</h2>
+<p>Khi đã chọn được xe, bạn để lại thông tin liên lạc và thời gian muốn nhận. Lúc này đơn của bạn mới chỉ là yêu cầu. Nó chỉ trở thành lịch thuê chắc chắn khi nhân viên kiểm tra xe còn sẵn và liên hệ lại với bạn. Đây là bước người thật làm việc, nên phản hồi diễn ra trong khung {{ business.hours.display }}.</p>
+<p>Ở bước này, cửa hàng sẽ chốt với bạn những điều sau:</p>
+<ol>
+<li>Dòng xe cụ thể và thời gian thuê.</li>
+<li>Giá thuê chính xác.</li>
+<li>Mức đặt cọc, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
+<li>Nhận tại cửa hàng hay giao tận nơi, cùng thời gian và phí giao nếu có.</li>
+</ol>
+<p>Nếu bạn gửi yêu cầu lúc khuya, đừng lo khi chưa có phản hồi ngay; sáng hôm sau nhân viên sẽ xử lý. Muốn xem ví dụ một đơn đặt online đi từ đầu đến cuối, bạn có thể đọc bài <a href="/blog/app/thue-xe-online-nhu-the-nao-cho-khach-nuoc-ngoai/">thuê xe online như thế nào cho khách nước ngoài</a>.</p>
+
+<h2>Bước 4: Bàn giao xe ngoài đời thực</h2>
+<p>Đến giờ hẹn, bạn nhận xe tại {{ business.address.full }} hoặc tại điểm giao đã thống nhất trong các khu nội thành như phố cổ, Hoàn Kiếm, Long Biên, Gia Lâm, Ba Đình, Tây Hồ. Nhân viên đối chiếu hộ chiếu và giấy phép lái xe, nhận tiền đặt cọc và đưa xe cho bạn kiểm tra.</p>
+<p>Đây là lúc bạn nên chậm lại vài phút. Đi một vòng quanh xe, chụp ảnh các vết xước có sẵn, thử phanh, đèn, còi và xem mức xăng. Những hình ảnh này giúp lần trả xe nhẹ nhàng hơn. Các lưu ý khi nhận xe sau một đơn đặt online được tổng hợp trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung/">nhận xe khi đặt qua ứng dụng</a>.</p>
+<p>Một lưu ý quan trọng với du khách: cửa hàng không cung cấp bảo hiểm. Bạn cần tự chuẩn bị bảo hiểm xe máy trước khi lên đường.</p>
+
+<h2>Bước 5: Trong thời gian thuê và khi trả xe</h2>
+<p>Trong lúc bạn đang dùng xe, trợ lý trên website vẫn hữu ích cho những câu hỏi nhanh, chẳng hạn cách gia hạn thêm một ngày hay giờ trả xe muộn nhất. Tuy nhiên, mọi thay đổi về lịch thuê đều cần nhân viên xác nhận. Khi trả xe, cửa hàng kiểm tra tình trạng xe so với lúc giao và hoàn lại tiền cọc theo thỏa thuận. Cách khoản cọc được xử lý trong quy trình đặt trực tuyến có trong bài <a href="/blog/app/dat-coc-va-ung-dung-thue-xe/">đặt cọc và ứng dụng thuê xe</a>.</p>
+
+<h2>Dữ liệu của bạn đi đâu</h2>
+<p>Khách nước ngoài thường quan tâm thông tin hộ chiếu có bị lưu trên mạng không. Nguyên tắc an toàn là chỉ cung cấp cho trợ lý những gì cần để tư vấn: thời gian, khu vực, loại xe. Hộ chiếu và giấy phép lái xe được kiểm tra trực tiếp khi bàn giao, bạn không cần gửi ảnh giấy tờ vào khung chat. Chi tiết về cách xử lý dữ liệu có trong bài <a href="/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe/">quyền riêng tư và xử lý cục bộ trong app thuê xe</a>.</p>
+<ul>
+<li>Không gửi số thẻ ngân hàng hay mật khẩu vào cuộc trò chuyện.</li>
+<li>Không cần chụp hộ chiếu gửi trước nếu cửa hàng không yêu cầu.</li>
+<li>Khi có điều gì không chắc, hãy hỏi lại nhân viên qua số điện thoại chính thức.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp về ứng dụng thuê xe máy cho khách nước ngoài</h2>
+<h3>Trợ lý trả lời ngay hay phải chờ?</h3>
+<p>Phần tư vấn, gợi ý xe và giá tham khảo được trả lời ngay trên website. Phần xác nhận đặt xe cần nhân viên kiểm tra, nên diễn ra trong giờ làm việc của cửa hàng.</p>
+<h3>Đơn đặt qua trợ lý đã chắc chắn chưa?</h3>
+<p>Chưa, cho đến khi cửa hàng liên hệ chốt dòng xe, giá, mức cọc và cách nhận xe. Hãy đợi xác nhận trước khi lên kế hoạch dựa vào chiếc xe đó.</p>
+<h3>Nếu tôi không nói được tiếng Việt thì khi nhận xe có khó không?</h3>
+<p>Phần lớn thông tin đã được thống nhất trước qua trợ lý và tin nhắn, nên lúc bàn giao chủ yếu là kiểm tra giấy tờ và xe. Bạn có thể chuẩn bị sẵn danh sách câu hỏi để hỏi nhanh.</p>
+<h3>Tôi có thể đổi giờ nhận xe sau khi đã đặt không?</h3>
+<p>Bạn hãy báo sớm cho cửa hàng. Việc đổi giờ phụ thuộc vào lịch xe và cần được nhân viên xác nhận lại.</p>
+
+<h2>Kết luận</h2>
+<p>Hiểu ứng dụng thuê xe máy hoạt động ra sao giúp du khách bớt lo: trợ lý lo phần hỏi đáp và gợi ý, còn người thật ở cửa hàng lo xác nhận, giấy tờ và chiếc xe bạn sẽ chạy. Muốn trao đổi trực tiếp, bạn gọi {{ business.contact.phone_display }} trong giờ {{ business.hours.display }}.</p>
+<p>Bạn có thể đọc thêm bài gốc về <a href="/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao/">cách ứng dụng thuê xe máy vận hành</a>, khám phá <a href="/blog/app/">các bài viết về trợ lý thuê xe</a>, hoặc quay về <a href="/">trang chủ</a> để thử hỏi trợ lý câu đầu tiên.</p>

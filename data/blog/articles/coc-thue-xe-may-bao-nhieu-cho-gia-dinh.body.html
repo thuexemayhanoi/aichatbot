@@ -1,0 +1,56 @@
+<p>Một người thuê xe thì khoản đặt cọc khá dễ tính. Nhưng khi cả gia đình cùng thuê, hai hoặc ba chiếc xe, nhiều người lái khác nhau, câu hỏi cọc thuê xe máy bao nhiêu cho gia đình trở nên rắc rối hơn hẳn: tiền cọc tính theo xe hay theo đơn, ai đứng tên, ai giữ biên nhận, và nếu một xe trả muộn thì các xe khác có bị giữ tiền không. Bài viết này trả lời từng thắc mắc đó theo góc nhìn của một gia đình đi thuê, để bạn chuẩn bị đủ tiền và nhận lại đủ tiền.</p>
+
+<h2>Mức cọc áp dụng cho mỗi xe</h2>
+<p>Tại cửa hàng, khoản đặt cọc dao động từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe. Mức cụ thể của từng chiếc được báo khi bạn đặt, nên trước ngày nhận xe bạn đã biết chính xác cần chuẩn bị bao nhiêu.</p>
+<p>Với gia đình, điểm cần nhớ đầu tiên: khoản giữ xe được tính cho từng chiếc, không gộp thành một khoản chung cho cả đơn. Thuê hai xe nghĩa là có hai khoản, mỗi khoản theo mức của dòng xe đó. Xe phổ thông thường ở gần mức dưới, xe có giá trị cao hơn thường gần mức trên. Phần lý giải chung về cách cửa hàng xác định mức này nằm trong bài <a href="/blog/thue-xe/coc-thue-xe-may-bao-nhieu/">cọc thuê xe máy bao nhiêu</a>.</p>
+
+<h2>Cách ước lượng tổng tiền cọc của cả nhà</h2>
+<p>Hãy làm một phép tính nháp trước khi gọi đặt xe. Liệt kê từng xe, ghi tên người lái và loại xe dự kiến, rồi để trống một cột cho mức giữ xe mà cửa hàng sẽ báo.</p>
+<ol>
+<li>Ghi số xe cả nhà cần, ví dụ một xe cho bố, một xe cho mẹ.</li>
+<li>Ghi dòng xe dự kiến cho từng người.</li>
+<li>Khi đặt, điền mức cửa hàng xác nhận cho từng xe vào cột trống.</li>
+<li>Cộng lại để biết tổng khoản giữ xe, tách riêng với tiền thuê.</li>
+</ol>
+<p>Cách này giúp tránh tình huống ra cửa hàng mới phát hiện thiếu tiền cho chiếc xe thứ hai. Tiền thuê được tính riêng theo bảng tham khảo trên trang <a href="/gia-thue/">giá thuê</a>, và bạn nên cộng thêm chi phí bảo hiểm tự mua cho mỗi xe vì cửa hàng không cung cấp bảo hiểm.</p>
+
+<h2>Ai trong gia đình nên đứng tên và giữ biên nhận</h2>
+<p>Nhiều gia đình để một người đứng ra đặt tất cả các xe cho tiện. Điều đó hoàn toàn được, nhưng hãy thống nhất rõ vài điều trước:</p>
+<ul>
+<li><strong>Người đặt đơn</strong> là đầu mối liên lạc với cửa hàng, nhận xác nhận và báo khi có thay đổi lịch.</li>
+<li><strong>Mỗi người lái</strong> vẫn cần mang giấy tờ tùy thân và giấy phép lái xe của chính mình khi nhận xe.</li>
+<li><strong>Biên nhận tiền giữ xe</strong> nên được ghi rõ cho từng xe, kèm biển số, để khi trả xe đối chiếu không nhầm lẫn.</li>
+<li><strong>Ảnh chụp tình trạng xe</strong> lúc nhận nên lưu chung vào một album gia đình để ai trả xe cũng có bằng chứng.</li>
+</ul>
+<p>Thủ tục cho gia đình vốn không phức tạp. Bài <a href="/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian-cho-gia-dinh/">cho thuê xe máy thủ tục đơn giản cho gia đình</a> liệt kê giấy tờ cần mang theo từng người.</p>
+
+<h2>Khi các xe trả vào những ngày khác nhau</h2>
+<p>Gia đình thường không trả xe cùng lúc. Bố có thể trả sớm vì về quê trước, mẹ giữ xe thêm vài ngày để đưa con đi học. Khi đặt, hãy nói rõ lịch trả dự kiến của từng xe để cửa hàng ghi nhận. Mỗi khoản giữ xe được xử lý khi chiếc xe tương ứng được trả và kiểm tra.</p>
+<p>Lưu ý thời gian trả xe cũng nằm trong khung {{ business.hours.display }}. Nếu cả nhà ở xa cửa hàng và muốn được nhận lại xe tận nơi, thời gian và phí cần thống nhất trước, giống như khi giao xe.</p>
+
+<h2>Những điều khiến tiền cọc bị trừ và cách phòng tránh</h2>
+<p>Khoản giữ xe được hoàn lại khi xe được trả đúng thỏa thuận. Với gia đình có trẻ nhỏ, có vài rủi ro riêng mà người thuê một mình ít gặp:</p>
+<ul>
+<li><strong>Vết xước do trẻ nghịch:</strong> chìa khóa, đồ chơi cứng có thể làm trầy yên hoặc ốp nhựa. Đừng để bé chơi quanh xe khi dựng.</li>
+<li><strong>Đồ ăn, nước uống đổ trong cốp:</strong> lau sạch trước khi trả để tránh tranh cãi về vệ sinh.</li>
+<li><strong>Mất chìa khóa hoặc giấy tờ xe:</strong> giao cho một người lớn giữ cố định, không để trong túi đồ của trẻ.</li>
+<li><strong>Trả muộn không báo trước:</strong> luôn gọi cho cửa hàng nếu lịch thay đổi.</li>
+</ul>
+<p>Mẹo hữu ích: buổi tối trước ngày trả, cả nhà dành mười phút kiểm tra từng xe, so với ảnh lúc nhận. Các bước trả xe gọn gàng để nhận lại tiền nhanh có trong bài <a href="/blog/huong-dan/nhan-lai-tien-coc-nhanh-gon/">nhận lại tiền cọc nhanh gọn</a>.</p>
+
+<h2>So sánh với các nhóm khách khác</h2>
+<p>Mức giữ xe áp dụng như nhau cho mọi khách, điều khác biệt nằm ở cách chuẩn bị. Sinh viên thường lo gom đủ một khoản trong tháng nhập học, như bài <a href="/blog/thue-xe/coc-thue-xe-may-bao-nhieu-cho-sinh-vien/">cọc thuê xe cho sinh viên</a> phân tích. Khách thuê dịp lễ lại phải đặt sớm vì xe khan hiếm, xem bài <a href="/blog/thue-xe/coc-thue-xe-may-bao-nhieu-ky-nghi-le/">cọc thuê xe máy kỳ nghỉ lễ</a>. Gia đình thì cần tổ chức: nhiều xe, nhiều người lái và nhiều biên nhận cùng lúc.</p>
+
+<h2>Câu hỏi thường gặp về cọc thuê xe máy cho gia đình</h2>
+<h3>Thuê nhiều xe thì có được giảm tiền cọc không?</h3>
+<p>Không. Mỗi xe có khoản giữ xe riêng theo loại xe, trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, và được xác nhận khi đặt.</p>
+<h3>Một người có thể đặt cọc thay cho cả nhà không?</h3>
+<p>Có thể, miễn là các bên thống nhất rõ với cửa hàng. Tuy vậy, mỗi người lái vẫn phải xuất trình giấy tờ của mình khi nhận xe.</p>
+<h3>Trả một xe trước thì có nhận lại tiền của xe đó ngay không?</h3>
+<p>Khoản giữ xe của chiếc nào được xử lý khi chiếc đó được trả và kiểm tra xong theo thỏa thuận. Hãy báo trước lịch trả của từng xe khi đặt.</p>
+<h3>Tiền cọc có bao gồm bảo hiểm không?</h3>
+<p>Không. Cửa hàng không cung cấp bảo hiểm; mỗi xe cần được người thuê tự chuẩn bị bảo hiểm xe máy riêng.</p>
+
+<h2>Kết luận</h2>
+<p>Đối với gia đình, hiểu đúng cọc thuê xe máy bao nhiêu nghĩa là tính theo từng xe, giữ biên nhận theo từng biển số và lên lịch trả rõ ràng. Hãy liên hệ {{ business.brand }} qua {{ business.contact.phone_display }} để nhận mức giữ xe chính xác cho từng chiếc trước khi cả nhà lên đường.</p>
+<p>Tìm hiểu thêm trong <a href="/blog/thue-xe/">chuyên mục thuê xe</a>, xem cách sắp lịch dài hơn ở bài <a href="/blog/thue-xe/thue-xe-may-theo-tuan-cho-gia-dinh/">thuê xe theo tuần cho gia đình</a>, hoặc về <a href="/">trang chủ</a> để trò chuyện với trợ lý.</p>
