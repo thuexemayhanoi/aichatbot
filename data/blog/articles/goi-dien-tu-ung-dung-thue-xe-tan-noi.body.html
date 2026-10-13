@@ -1,0 +1,66 @@
+<p>Giao xe tận nơi là dịch vụ mà một cuộc gọi đúng lúc có thể cứu cả buổi sáng: người giao không tìm thấy cổng chung cư, bạn kẹt trong cuộc họp trễ mười lăm phút, hay đến giờ trả xe thì đổi ý muốn gia hạn. Trợ lý MotoAI trên website có nút gọi điện để bạn kết nối thẳng với cửa hàng mà không phải lục tìm số. Bài này chỉ bàn về việc gọi điện từ ứng dụng thuê xe trong các tình huống giao nhận tận nơi: gọi vào lúc nào, nói gì cho ngắn, và những gì nên chốt lại bằng tin nhắn sau cuộc gọi.</p>
+
+<h2>Nút gọi trên ứng dụng web hoạt động thế nào</h2>
+<p>MotoAI là trợ lý chạy trên trình duyệt, không cần cài đặt. Khi bạn bấm nút gọi trên điện thoại, trình duyệt sẽ mở trình quay số với số {{ business.contact.phone_display }} điền sẵn, bạn chỉ cần xác nhận. Trên máy tính, nút này thường hiển thị số để bạn gọi từ điện thoại. Cuộc gọi đi bằng gói cước di động thông thường của bạn.</p>
+<p>Nếu bạn muốn hiểu chung về vai trò của nút gọi so với kênh chat, bài <a href="/blog/app/goi-dien-tu-ung-dung-thue-xe/">gọi điện từ ứng dụng thuê xe</a> giải thích khá đầy đủ. Phần dưới đây tập trung vào những cuộc gọi gắn với việc giao xe đến địa chỉ của bạn.</p>
+
+<h2>Gọi trước khi đặt: chốt giờ và phí giao</h2>
+<p>Trợ lý có thể cho bạn biết dòng xe, giá tham khảo và khu vực phục vụ, nhưng giờ giao và phí giao luôn cần cửa hàng xác nhận. Đây là cuộc gọi quan trọng nhất trong cả quy trình. Trước khi bấm, hãy chuẩn bị:</p>
+<ul>
+<li>Địa chỉ đầy đủ kèm một mốc dễ nhận ra, ví dụ cổng chính tòa nhà hoặc một cửa hàng quen.</li>
+<li>Hai khung giờ bạn có thể nhận xe, nằm trong giờ {{ business.hours.display }}.</li>
+<li>Dòng xe bạn đã chọn sau khi trao đổi với trợ lý và số ngày thuê.</li>
+<li>Tên và số điện thoại của người trực tiếp nhận xe, nếu không phải bạn.</li>
+</ul>
+<p>Trong cuộc gọi, hỏi rõ ba điều: giờ giao chính xác, phí giao và mức đặt cọc cho loại xe đó. Lý do nên hỏi trợ lý trước rồi mới gọi được phân tích kỹ trong bài <a href="/blog/app/tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien-tan-noi/">vì sao nên dùng trợ lý trước khi gọi điện đặt giao xe</a>.</p>
+
+<h2>Gọi trong ngày giao: khi kế hoạch thay đổi</h2>
+<p>Ngày giao xe hiếm khi diễn ra hoàn hảo. Những tình huống dưới đây nên gọi ngay thay vì nhắn tin rồi chờ:</p>
+<ol>
+<li><strong>Bạn sẽ đến muộn:</strong> gọi sớm nhất có thể, nói rõ bạn trễ bao lâu và đề xuất giờ mới.</li>
+<li><strong>Người giao không tìm thấy địa chỉ:</strong> mô tả mốc xung quanh, ra đầu ngõ hoặc cổng chính đón.</li>
+<li><strong>Địa chỉ nhận thay đổi phút chót:</strong> báo ngay, vì điều này có thể ảnh hưởng thời gian và phí giao.</li>
+<li><strong>Người nhận thay đổi:</strong> cung cấp tên, số điện thoại người nhận mới và nhắc họ mang giấy tờ.</li>
+</ol>
+<p>Mẫu câu ngắn gọn: "Tôi là người đặt xe Vision giao lúc mười giờ ở phố này, tôi sẽ trễ khoảng hai mươi phút, có thể dời sang mười giờ rưỡi được không?". Một câu như vậy đủ để cửa hàng xử lý mà không cần hỏi lại.</p>
+
+<h2>Gọi lúc nhận xe: khi có điểm chưa rõ</h2>
+<p>Khi người giao đã đến, phần lớn việc diễn ra trực tiếp. Tuy nhiên, có lúc bạn cần gọi về cửa hàng để làm rõ:</p>
+<ul>
+<li>Chiếc xe được giao khác dòng xe đã thống nhất.</li>
+<li>Bạn phát hiện vết xước hoặc lỗi nhỏ cần ghi nhận trước khi ký.</li>
+<li>Có điều khoản trong biên bản bạn chưa hiểu, muốn hỏi người có thẩm quyền.</li>
+</ul>
+<p>Thứ tự kiểm tra xe và giấy tờ khi nhận ngoài cửa hàng được trình bày trong bài <a href="/blog/thue-xe/thue-xe-giao-tan-noi/">thuê xe giao tận nơi</a>. Đừng ký khi còn thắc mắc, một cuộc gọi hai phút tốt hơn nhiều so với tranh luận lúc trả xe.</p>
+
+<h2>Gọi trong kỳ thuê và lúc trả xe tận nơi</h2>
+<p>Nếu bạn đã thỏa thuận trả xe tại chỗ, hãy gọi trước ít nhất vài tiếng để hẹn giờ lấy xe, cũng trong khung giờ làm việc. Các trường hợp khác nên gọi:</p>
+<ul>
+<li>Muốn gia hạn thêm ngày: gọi trước giờ trả để cửa hàng sắp xếp.</li>
+<li>Xe có dấu hiệu bất thường như phanh kêu, đèn yếu: gọi để được hướng dẫn trước khi tiếp tục chạy.</li>
+<li>Muốn đổi địa điểm trả xe: hỏi rõ thời gian và phí phát sinh nếu có.</li>
+</ul>
+<p>Cách tính phí giao và lấy xe được giải thích trong bài <a href="/blog/thue-xe/phi-giao-xe-thue/">phí giao xe thuê</a>, đọc trước để cuộc gọi không bất ngờ.</p>
+
+<h2>Sau mỗi cuộc gọi: chốt lại bằng tin nhắn</h2>
+<p>Cuộc gọi không tự lưu lại nội dung. Mỗi khi thống nhất điều gì mới, hãy nhắn một tin tóm tắt: giờ giao mới, địa chỉ mới, phí đã thống nhất, giờ trả xe. Tin nhắn này giúp hai bên có cùng một bản ghi, tránh hiểu lầm khi người giao và người nghe máy không phải cùng một người.</p>
+<p>Thêm vài thói quen nhỏ giúp cuộc gọi luôn thông suốt:</p>
+<ul>
+<li>Lưu số cửa hàng vào danh bạ ngay sau lần gọi đầu tiên.</li>
+<li>Giữ điện thoại đủ pin vào giờ hẹn giao, bật chuông để không lỡ cuộc gọi từ người giao.</li>
+<li>Nếu ở chỗ sóng yếu, ra khu vực thoáng hoặc nhắn tin vị trí kèm mô tả.</li>
+<li>Thông tin liên hệ chính thức luôn có ở trang <a href="/lien-he/">liên hệ</a>, dùng khi nút gọi không hoạt động.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp về gọi điện từ ứng dụng khi thuê xe giao tận nơi</h2>
+<h3>Gọi ngoài giờ mở cửa có ai nghe không?</h3>
+<p>Cửa hàng làm việc trong khung {{ business.hours.display }}, giao nhận cũng chỉ trong khung giờ này. Ngoài giờ, bạn có thể hỏi trợ lý trên website và gọi lại vào giờ làm việc.</p>
+<h3>Có thể chỉ nhắn tin mà không gọi được không?</h3>
+<p>Với câu hỏi chung thì được. Nhưng để chốt giờ, phí giao và xử lý thay đổi trong ngày giao, cuộc gọi nhanh và chắc chắn hơn.</p>
+<h3>Nút gọi có bị tính phí riêng không?</h3>
+<p>Không có phí riêng từ ứng dụng; cuộc gọi tính theo gói cước điện thoại của bạn.</p>
+<h3>Khi gọi cần chuẩn bị tiền đặt cọc bao nhiêu?</h3>
+<p>Mức đặt cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được xác nhận khi đặt; hãy hỏi luôn trong cuộc gọi chốt giao xe.</p>
+
+<h2>Kết luận</h2>
+<p>Với giao xe tận nơi, nút gọi trên ứng dụng web là công cụ chốt việc: chốt giờ và phí trước khi đặt, xử lý thay đổi trong ngày giao, làm rõ điểm chưa thống nhất lúc nhận và hẹn lịch trả. Gọi ngắn, nói đủ, rồi nhắn tin tóm lại là ba bước giúp mọi lần giao nhận diễn ra trơn tru. {{ business.brand }} tại {{ business.address.full }} luôn sẵn sàng nghe máy trong giờ làm việc. Xem thêm các hướng dẫn về trợ lý trong mục <a href="/blog/app/">ứng dụng</a> hoặc quay về <a href="/">trang chủ</a> để bắt đầu.</p>
