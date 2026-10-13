@@ -1,0 +1,91 @@
+<p>Chọn xe tại cửa hàng thì đơn giản: bạn nhìn, ngồi thử, hỏi nhân viên rồi quyết. Khi muốn xe được mang đến tận nơi, bạn mất bước "ngồi thử", nên lựa chọn ban đầu cần chính xác hơn. Agent chọn xe trên website MotoAI được dùng đúng vào khoảng trống đó: bạn mô tả nhu cầu và nơi nhận, agent đối chiếu với danh mục xe và quy định đã xác minh, đưa ra gợi ý kèm lý do, rồi chuyển thông tin để nhân viên chốt lịch giao. Bài này tập trung vào những gì agent cân nhắc riêng cho trường hợp giao tận nơi, ba kịch bản mẫu và cách tránh nhận nhầm chiếc xe không hợp.</p>
+
+<h2>Agent chọn xe khác gì khi xe được giao tận nơi</h2>
+
+<p>Nếu bạn chưa quen khái niệm này, bài <a href="/blog/app/agent-chon-xe-giup-ban/">agent chọn xe giúp bạn</a> giới thiệu cách công cụ hoạt động nói chung. Với giao tận nơi, agent phải xét thêm những yếu tố mà khách đến cửa hàng không cần nghĩ tới:</p>
+
+<ul>
+<li><strong>Khu vực nhận xe:</strong> có nằm trong phạm vi phục vụ gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội hay không.</li>
+<li><strong>Khung giờ:</strong> việc giao chỉ diễn ra trong giờ {{ business.hours.display }}, nên lịch trình của bạn cần khớp với khung này.</li>
+<li><strong>Đặc điểm nơi ở:</strong> ngõ nhỏ, nhà có bậc thềm hay chung cư có hầm gửi xe ảnh hưởng đến việc nên chọn xe nhẹ hay xe cốp rộng.</li>
+<li><strong>Không có bước thử xe:</strong> agent sẽ hỏi kỹ hơn về kinh nghiệm lái để tránh giao một chiếc bạn không tự tin điều khiển.</li>
+</ul>
+
+<p>Các bước tổng thể của một buổi tư vấn tự động có trong bài <a href="/blog/app/quy-trinh-tu-van-tu-dong-chon-xe-tan-noi/">quy trình tư vấn tự động chọn xe tận nơi</a>.</p>
+
+<h2>Thông tin agent cần để chọn đúng xe</h2>
+
+<p>Agent chỉ gợi ý tốt khi bạn cho đủ dữ kiện. Một tin nhắn đầu tiên lý tưởng nên có:</p>
+
+<ol>
+<li>Số người đi và có chở thêm ai không.</li>
+<li>Kinh nghiệm lái: quen xe số, xe ga hay mới tập.</li>
+<li>Mục đích chính: đi làm, tham quan phố cổ, chở đồ hay đi xa ra ngoại thành.</li>
+<li>Nơi nhận xe ở mức khu vực, ví dụ "khách sạn gần Hồ Gươm" hoặc "chung cư ở Long Biên".</li>
+<li>Thời gian thuê dự kiến: vài ngày, một tuần hay một tháng.</li>
+</ol>
+
+<p>Không cần gửi số nhà hay giấy tờ cá nhân cho agent. Những thông tin đó chỉ cung cấp cho nhân viên khi chốt lịch giao. Mẹo viết câu hỏi gọn mà đủ ý được tổng hợp trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-tan-noi/">soạn câu hỏi hiệu quả cho agent thuê xe tận nơi</a>.</p>
+
+<h2>Ba kịch bản giao tận nơi và gợi ý thường gặp</h2>
+
+<h3>Homestay trong ngõ phố cổ, hai bạn trẻ đi chơi ba ngày</h3>
+<p>Ngõ phố cổ hẹp, lối dắt xe vào nhà chật, người lái quen xe ga. Agent thường nghiêng về xe ga nhỏ gọn như Honda Click hoặc Yamaha Mio, giá tham khảo 150.000đ/ngày, hoặc Honda Vision khoảng 200.000đ/ngày nếu muốn cốp rộng hơn. Agent cũng nhắc hẹn giờ giao vào buổi sáng, khi ngõ chưa đông hàng quán.</p>
+
+<h3>Người đi làm thuê một tháng, ở chung cư Long Biên</h3>
+<p>Quãng đường hằng ngày qua cầu sang trung tâm, cần xe ổn định và tiết kiệm. Agent có thể so sánh Honda Air Blade với giá tham khảo 1.400.000đ/tháng và Honda Vision ở mức 1.800.000đ–2.000.000đ/tháng, giải thích khác biệt về cốp, tư thế ngồi và độ êm. Nhân viên sẽ xác nhận xe còn trống cho cả tháng trước khi bạn đặt.</p>
+
+<h3>Khách công tác ở Ba Đình, chưa quen xe ga</h3>
+<p>Nếu bạn quen xe số, agent sẽ gợi ý Honda Wave, giá tham khảo 150.000đ/ngày, vì đổi sang xe ga ngay giữa phố đông không phải ý hay. Với các dòng khác như SH, Lead hay Exciter, agent không tự báo giá mà đề nghị bạn hỏi nhân viên về tình trạng sẵn có.</p>
+
+<h2>Agent làm được gì và không làm được gì</h2>
+
+<p>Hiểu đúng giới hạn giúp bạn không kỳ vọng sai. Agent làm được:</p>
+
+<ul>
+<li>Gợi ý dòng xe phù hợp kèm lý do, dựa trên dữ liệu cửa hàng đã xác minh.</li>
+<li>Báo giá tham khảo các dòng phổ biến và nhắc bạn xác nhận lại trên trang <a href="/gia-thue/">giá thuê</a>.</li>
+<li>Giải thích thủ tục, giấy tờ và khoản đặt cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
+<li>Nhắc rằng cửa hàng không cung cấp bảo hiểm và bạn cần tự chuẩn bị.</li>
+</ul>
+
+<p>Agent không làm thay nhân viên những việc sau:</p>
+
+<ul>
+<li>Chốt thời gian giao và phí giao; hai thông tin này luôn được nhân viên xác nhận trước khi đặt.</li>
+<li>Cam kết giao ngoài khung giờ hoạt động hoặc ngoài khu vực phục vụ.</li>
+<li>Báo thông số kỹ thuật chi tiết của xe điện hay báo giá xe 50cc, xe máy điện, xe đạp điện; các loại này là giá liên hệ.</li>
+</ul>
+
+<p>Cách agent sắp xếp và xếp hạng các gợi ý được mô tả kỹ hơn trong bài <a href="/blog/app/module-goi-y-xe-trong-ung-dung-thue-xe-tan-noi/">module gợi ý xe tận nơi</a>.</p>
+
+<h2>Sau khi nhận gợi ý: chuẩn bị cho buổi giao xe</h2>
+
+<p>Khi đã đồng ý với gợi ý, hãy chuyển sang bước chốt với nhân viên và chuẩn bị cho lúc người giao tới:</p>
+
+<ul>
+<li>Xác nhận lại dòng xe, thời gian thuê, giờ giao và phí giao bằng tin nhắn.</li>
+<li>Chuẩn bị giấy tờ và khoản đặt cọc theo mức đã báo.</li>
+<li>Khi xe tới, ngồi thử ngay tại chỗ, bóp phanh, bật đèn, thử còi và chụp ảnh tình trạng xe.</li>
+<li>Nếu thấy xe không hợp, ví dụ quá nặng so với bạn, hãy nói ngay lúc giao để trao đổi phương án.</li>
+</ul>
+
+<p>Những lưu ý riêng của việc giao nhận tại nhà, khách sạn hay văn phòng có trong bài <a href="/blog/thue-xe/thue-xe-giao-tan-noi/">thuê xe giao tận nơi</a>.</p>
+
+<h2>Câu hỏi thường gặp về agent chọn xe khi giao tận nơi</h2>
+
+<h3>Agent có biết đường vào nhà tôi hẹp hay rộng không?</h3>
+<p>Không, agent chỉ biết những gì bạn mô tả. Hãy nói rõ nếu nơi ở có ngõ nhỏ, bậc thềm hay hầm chung cư để nhận gợi ý xe phù hợp.</p>
+
+<h3>Tôi có thể đổi xe sau khi agent đã gợi ý không?</h3>
+<p>Được. Gợi ý của agent chưa phải đơn đặt; bạn có thể hỏi lại với tiêu chí khác hoặc trao đổi với nhân viên trước khi chốt.</p>
+
+<h3>Agent có hoạt động ngoài giờ mở cửa không?</h3>
+<p>Bạn có thể hỏi agent bất cứ lúc nào trên website, nhưng lịch giao xe chỉ được sắp xếp trong khung giờ hoạt động của cửa hàng.</p>
+
+<h3>Agent có phải phần mềm cần cài trên điện thoại không?</h3>
+<p>Không. Agent là công cụ trực tuyến chạy ngay trên trình duyệt, không cần cài đặt.</p>
+
+<h2>Kết luận</h2>
+
+<p>Khi xe được mang đến tận nơi, bạn không có cơ hội đi một vòng thử trước, nên một agent biết hỏi đúng câu sẽ giúp lựa chọn đầu tiên trúng ngay. Mô tả rõ nơi ở, kinh nghiệm lái và lịch trình, để agent gợi ý, rồi nhờ nhân viên chốt giờ giao và chi phí. Khám phá thêm các công cụ tại <a href="/blog/app/">chuyên mục ứng dụng</a> hoặc mở <a href="/">trang chủ MotoAI</a> để bắt đầu. Nếu muốn nói chuyện với người thật về lịch giao, bạn gọi {{ business.display_name }} qua số {{ business.contact.phone_display }}.</p>
