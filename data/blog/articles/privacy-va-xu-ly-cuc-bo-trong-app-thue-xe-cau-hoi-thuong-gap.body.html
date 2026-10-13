@@ -1,0 +1,58 @@
+<p>Người hỏi về quyền riêng tư khi dùng trợ lý thuê xe thường không bắt đầu bằng thuật ngữ kỹ thuật. Họ hỏi rất đời: "Tôi gõ tên với số điện thoại vào đây thì ai đọc được?", "Mượn máy bạn để hỏi giá có để lại gì không?", "Bật Agent lên thì có bị gửi tin nhắn đi đâu không?". Bài này gom những câu hỏi thật mà khách hay đặt ra quanh chuyện privacy và xử lý cục bộ trong trợ lý MotoAI, chia theo từng tình huống sử dụng, kèm câu trả lời ngắn gọn và cách tự kiểm tra để bạn không phải tin suông.</p>
+<p>Nếu bạn muốn đọc phần giải thích nền tảng theo mạch liền, bài <a href="/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe/">privacy và xử lý cục bộ trong app thuê xe</a> trình bày đầy đủ kiến trúc. Ở đây chúng ta đi thẳng vào thắc mắc.</p>
+
+<h2>Nhóm câu hỏi đầu tiên: "cục bộ" nghĩa là gì với tôi</h2>
+<p><strong>Xử lý cục bộ có phải chỉ là cách nói hoa mỹ?</strong> Không. Với trợ lý cơ bản của MotoAI, câu bạn gõ được đọc bởi mã chạy ngay trong trình duyệt của bạn, rồi câu trả lời được ghép từ dữ liệu cửa hàng đã kiểm chứng nằm sẵn trong trang. Cuộc trò chuyện không được đẩy lên một máy chủ hội thoại nào để chờ xử lý.</p>
+<p><strong>Vậy tôi nhận ra điều đó bằng cách nào?</strong> Có một phép thử đơn giản: sau khi trang đã tải xong, bạn tắt mạng điện thoại rồi hỏi một câu về giá hoặc thủ tục. Những câu hỏi thường ngày thường vẫn có trả lời, vì dữ liệu cần thiết đã ở trên máy. Phép thử này không chứng minh mọi thứ, nhưng cho bạn cảm nhận trực tiếp rằng trình duyệt đang làm việc chính.</p>
+<p><strong>Cục bộ có làm câu trả lời kém đi không?</strong> Trợ lý cơ bản được thiết kế cho đúng phạm vi thuê xe: dòng xe, giá tham khảo, giấy tờ, giờ mở cửa, cách nhận xe. Nó không cố trả lời mọi chủ đề trên đời, và đó là sự đánh đổi có chủ đích để giữ dữ liệu ở lại với bạn.</p>
+
+<h2>Lịch sử trò chuyện nằm ở đâu và tồn tại bao lâu</h2>
+<p>Lịch sử hội thoại cùng các cài đặt được lưu trong bộ nhớ của trình duyệt trên thiết bị, cụ thể là localStorage. Không có tài khoản, không có hồ sơ người dùng trên máy chủ. Từ đó suy ra vài điều thực tế:</p>
+<ul>
+<li><strong>Đổi trình duyệt là mất dấu:</strong> hỏi trên Chrome rồi mở bằng Safari trên cùng máy, bạn sẽ thấy một khung chat trống. Mỗi trình duyệt có ngăn lưu riêng.</li>
+<li><strong>Chế độ ẩn danh không giữ lại:</strong> đóng cửa sổ ẩn danh là phiên trò chuyện đi theo, phù hợp khi bạn chỉ muốn hỏi nhanh một lần.</li>
+<li><strong>Nút "Xóa chat" trong menu:</strong> bấm một lần là toàn bộ hội thoại trên thiết bị đó bị dọn. Không có bản sao nào chờ khôi phục ở đâu khác.</li>
+<li><strong>Xóa dữ liệu trang web hoặc gỡ bản cài PWA:</strong> cũng xóa luôn hội thoại và cài đặt đã lưu.</li>
+</ul>
+<p>Hệ quả ngược lại cũng cần nói rõ: vì không có đồng bộ, nếu bạn cần giữ thông tin dòng xe và khung giờ đã trao đổi, hãy chụp màn hình hoặc chép ra ghi chú trước khi xóa.</p>
+
+<h2>Agent nâng cao có thay đổi bức tranh riêng tư không</h2>
+<p><strong>Agent nâng cao có bật sẵn không?</strong> Không. Đây là tính năng tùy chọn, chỉ hoạt động khi bạn chủ động bật.</p>
+<p><strong>Bật lên thì chuyện gì xảy ra?</strong> Model AI được tải về và chạy ngay trên thiết bị của bạn. Trong lúc trả lời, model không gửi nội dung hội thoại đi đâu. Điểm khác so với trợ lý cơ bản nằm ở lần tải đầu: file model phải được tải từ mạng, tốn dung lượng và băng thông, nên bạn nên bật khi đang dùng Wi-Fi và máy còn đủ chỗ trống.</p>
+<p><strong>Máy yếu thì sao?</strong> Bạn không bắt buộc phải dùng Agent. Mọi câu hỏi thuê xe phổ biến đều có thể hỏi bằng trợ lý cơ bản, vốn nhẹ hơn nhiều.</p>
+
+<h2>Những gì vẫn đi ra ngoài thiết bị, nói thẳng</h2>
+<p>MotoAI không tuyên bố rằng tuyệt đối không có dữ liệu nào rời khỏi máy bạn. Có ba trường hợp bạn nên biết:</p>
+<ol>
+<li><strong>Tải trang:</strong> website được phân phối qua GitHub Pages, nên HTML, CSS, JavaScript và model AI (nếu bật Agent) đều tải về từ mạng. Trình duyệt cũng phát sinh các yêu cầu mạng thông thường như tải trang, phân giải tên miền.</li>
+<li><strong>Bấm sang dịch vụ khác:</strong> nút gọi điện, WhatsApp hay bản đồ mở dịch vụ của bên thứ ba. Từ lúc bạn sang đó, chính sách của dịch vụ ấy áp dụng.</li>
+<li><strong>Bạn chủ động liên hệ cửa hàng:</strong> khi gọi hoặc nhắn để chốt xe, thông tin bạn nói qua kênh đó đương nhiên đến với cửa hàng, giống như mọi giao dịch thuê xe bình thường.</li>
+</ol>
+<p>Ranh giới dễ nhớ: trò chuyện với trợ lý là việc giữa bạn và thiết bị; liên hệ chốt đơn là việc giữa bạn và cửa hàng. Bài <a href="/blog/app/xu-ly-du-lieu-ca-nhan-khi-thue-xe-online-cau-hoi-thuong-gap/">hỏi đáp về xử lý dữ liệu cá nhân khi thuê xe online</a> đi sâu hơn vào phần thông tin bạn cung cấp lúc giao dịch.</p>
+
+<h2>Tình huống dùng chung máy, máy công cộng, máy công ty</h2>
+<p>Đây là nhóm câu hỏi thực tế nhất, vì dữ liệu nằm trên thiết bị nên ai cầm thiết bị cũng có thể thấy.</p>
+<ul>
+<li><strong>Máy tính ở quầy lễ tân khách sạn:</strong> mở cửa sổ ẩn danh để hỏi, xong việc đóng hẳn cửa sổ. Không gõ số giấy tờ tùy thân vào khung chat.</li>
+<li><strong>Điện thoại dùng chung trong gia đình:</strong> sau khi hỏi xong, vào menu bấm "Xóa chat" để người sau mở ra không thấy lịch trình của bạn.</li>
+<li><strong>Laptop công ty có phần mềm quản lý:</strong> cơ chế lưu cục bộ của MotoAI không kiểm soát được những gì phần mềm giám sát của doanh nghiệp ghi lại trên máy đó. Nếu lo ngại, hãy dùng điện thoại cá nhân.</li>
+</ul>
+<p>Thói quen tốt chung cho mọi tình huống: chỉ gõ những gì cần để hỏi. Hỏi giá Vision theo tuần không cần kèm địa chỉ nhà hay số căn cước; giấy tờ được xuất trình trực tiếp khi nhận xe.</p>
+
+<h2>Liên quan đến đặt xe và giấy tờ</h2>
+<p><strong>Tôi có phải gửi ảnh căn cước hay bằng lái qua trợ lý không?</strong> Không cần và không nên. Giấy tờ được kiểm tra trực tiếp lúc nhận xe tại cửa hàng hoặc khi nhân viên giao xe.</p>
+<p><strong>Khoản cọc có được thu qua khung chat không?</strong> Không. Mức cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được xác nhận khi bạn đặt với cửa hàng và đối chiếu lúc nhận xe; trợ lý chỉ giúp bạn biết trước khoảng này.</p>
+<p>Muốn hiểu cách một dịch vụ thuê xe nên trình bày chính sách dữ liệu, bạn có thể đọc thêm <a href="/blog/app/chinh-sach-du-lieu-cua-ung-dung-thue-xe-cau-hoi-thuong-gap/">các câu hỏi về chính sách dữ liệu của ứng dụng thuê xe</a>.</p>
+
+<h2>Câu hỏi thường gặp về privacy và xử lý cục bộ khi thuê xe qua trợ lý</h2>
+<h3>Không có tài khoản thì làm sao trợ lý nhớ cuộc trò chuyện hôm qua?</h3>
+<p>Trợ lý nhớ nhờ bộ nhớ trình duyệt trên chính thiết bị đó. Mở lại cùng trình duyệt, cùng máy là thấy lịch sử; đổi máy thì không. Chi tiết về cách dùng không cần đăng nhập có trong bài <a href="/blog/app/app-thue-xe-khong-can-tai-khoan-cau-hoi-thuong-gap/">hỏi đáp về app thuê xe không cần tài khoản</a>.</p>
+<h3>Cửa hàng có xem được tôi đã hỏi những gì trước khi gọi không?</h3>
+<p>Không. Cửa hàng chỉ biết những gì bạn nói khi gọi hoặc nhắn tin. Vì vậy khi liên hệ, bạn nên nhắc lại dòng xe và ngày giờ đã chọn để hai bên khớp thông tin.</p>
+<h3>Khách nước ngoài dùng trợ lý có khác gì về dữ liệu?</h3>
+<p>Nguyên tắc lưu trữ giống nhau với mọi người dùng. Phần lưu ý riêng cho du khách, như dùng máy khách sạn hay SIM tạm, được viết trong bài <a href="/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe-cho-khach-nuoc-ngoai/">privacy trong app thuê xe cho khách nước ngoài</a>.</p>
+<h3>Cài MotoAI ra màn hình chính có làm dữ liệu kém riêng tư hơn không?</h3>
+<p>Không. Bản cài dạng PWA dùng chung cơ chế lưu của trình duyệt, chỉ thêm bộ nhớ đệm để mở nhanh và chạy offline một phần. Gỡ bản cài là dữ liệu đi theo.</p>
+
+<h2>Kết luận</h2>
+<p>Tóm gọn cả bài trong một ý: phần trò chuyện của bạn với trợ lý nằm trên thiết bị của bạn, nút xóa nằm trong tay bạn, và chỉ những gì bạn chủ động gửi cho cửa hàng mới rời khỏi máy. Khi đã rõ dòng xe cần thuê, bạn liên hệ {{ business.brand }} qua {{ business.contact.phone_display }} trong khung {{ business.hours.display }}, hoặc ghé {{ business.address.full }} để xem xe trực tiếp. Các bài khác về trợ lý và công cụ trực tuyến nằm trong <a href="/blog/app/">chuyên mục ứng dụng</a>; muốn bắt đầu hỏi ngay, quay về <a href="/">trang chủ MotoAI</a>.</p>
