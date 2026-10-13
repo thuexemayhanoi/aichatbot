@@ -1,0 +1,57 @@
+<p>Tính lộ trình thuê xe theo ngày tại Hà Nội khác với tính lộ trình ở một thành phố biển hay vùng núi: khoảng cách giữa các điểm thường ngắn, nhưng thời gian đi lại lại dài vì ùn tắc, cầu qua sông và phố một chiều. Một người mới đến hay rơi vào cảnh đặt ra lịch tám điểm trong ngày rồi chỉ đi được bốn, hoặc ngược lại, thuê xe ba ngày cho một danh sách mà hai ngày là xong. Bài này đưa ra cách tính riêng cho Hà Nội: chia thành phố thành các cụm, gán thời gian thực tế cho từng cụm, cộng thời gian qua cầu và tắc đường, rồi quy ra số ngày thuê.</p>
+<p>Phương pháp chung, gồm liệt kê điểm đến, nhóm cụm và cộng hệ số dư, đã được trình bày trong bài <a href="/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay/">tính lộ trình thuê xe theo ngày</a>; bản rút gọn để điền nhanh nằm ở <a href="/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay-checklist/">checklist tính lộ trình</a>. Bài này áp phương pháp đó vào bản đồ thật của Hà Nội.</p>
+
+<h2>Chia Hà Nội thành các cụm để tính cho đúng</h2>
+<p>Hà Nội với người đi xe máy thuê có thể gom thành sáu cụm, mỗi cụm đi trọn trong một buổi:</p>
+<ul>
+<li>Cụm Hoàn Kiếm và phố cổ: hồ Gươm, Nhà thờ Lớn, các phố nghề, Nhà hát Lớn. Nửa ngày, chủ yếu đi bộ sau khi gửi xe.</li>
+<li>Cụm Ba Đình: lăng, Hoàng thành, Cột cờ, Chùa Một Cột, Văn Miếu ở rìa. Nửa ngày, đường rộng, dễ chạy.</li>
+<li>Cụm Tây Hồ: vòng hồ, phủ Tây Hồ, Quảng An, Thanh Niên. Nửa ngày đến một buổi tối.</li>
+<li>Cụm Long Biên và Gia Lâm: cầu Long Biên, chợ Long Biên, đê sông Hồng, Bát Tràng. Nửa ngày, ít tắc.</li>
+<li>Cụm phía tây và nam: bảo tàng Hà Nội, Cầu Giấy, Thanh Xuân. Nửa ngày, nhiều đường lớn nhưng đông vào giờ cao điểm.</li>
+<li>Cụm ngoại thành xa: Cổ Loa, Sóc Sơn, Ba Vì, Sơn Tây. Mỗi nơi trọn một ngày.</li>
+</ul>
+<p>Nguyên tắc: hai cụm nội thành ghép được vào một ngày nếu chúng liền kề, ví dụ Ba Đình buổi sáng và Tây Hồ buổi chiều; một cụm ngoại thành chiếm cả ngày và không ghép với gì khác. Cách đi gọn một cụm được minh họa trong bài <a href="/blog/dia-phuong/ba-dinh-xe-may-phuong-trong-ngay/">Ba Đình trong ngày</a>.</p>
+
+<h2>Thời gian di chuyển thực tế giữa các cụm</h2>
+<p>Khoảng cách trên bản đồ ở Hà Nội thường gây ảo giác. Dưới đây là thời gian chạy xe máy thực tế mà mình hay dùng để tính, tính từ cửa hàng ở Bồ Đề, Long Biên, ngoài giờ cao điểm:</p>
+<ol>
+<li>Sang Hoàn Kiếm qua cầu Chương Dương: mười đến mười lăm phút; giờ cao điểm có thể gấp đôi vì ùn ở đầu cầu.</li>
+<li>Sang Ba Đình: hai mươi đến hai mươi lăm phút qua trục Trần Quang Khải, Tràng Tiền, Điện Biên Phủ.</li>
+<li>Sang Tây Hồ: hai mươi đến ba mươi phút theo Yên Phụ, Âu Cơ, hoặc qua cầu Nhật Tân nếu đi phía bắc hồ.</li>
+<li>Xuống Bát Tràng theo đê: hai mươi đến hai mươi lăm phút, hầu như không tắc.</li>
+<li>Ra Cổ Loa: khoảng bốn mươi phút; Sơn Tây, Ba Vì: từ một tiếng rưỡi đến hai tiếng mỗi chiều.</li>
+</ol>
+<p>Giờ cao điểm ở Hà Nội rơi vào khoảng bảy đến chín giờ sáng và năm đến bảy giờ chiều. Mọi đoạn đi qua cầu hoặc trục Giải Phóng, Nguyễn Trãi, Phạm Văn Đồng trong hai khung đó nên nhân đôi thời gian. Nếu lịch trình bắt buộc đi vào giờ này, hãy đổi thứ tự cụm để đi ngược chiều dòng người: sáng ra ngoại thành, chiều về nội thành.</p>
+
+<h2>Ba mẫu lộ trình theo ngày cho Hà Nội</h2>
+<p>Một ngày: nhận xe chín giờ, Ba Đình buổi sáng, ăn trưa quanh Trúc Bạch, Tây Hồ đầu giờ chiều, về Hoàn Kiếm gửi xe đi bộ phố cổ lúc chiều muộn, trả xe trước 21 giờ hoặc giữ xe trả sáng hôm sau. Tổng thời gian chạy xe khoảng một tiếng rưỡi, còn lại là tham quan.</p>
+<p>Hai ngày: ngày một như trên; ngày hai dành cho Long Biên, chợ Long Biên lúc sáng sớm, đê sông Hồng và Bát Tràng đến đầu giờ chiều, chiều quay lại Hoàn Kiếm cho những gì còn sót. Lịch này hợp với khách ở lại Long Biên vì mọi đoạn đều ngắn.</p>
+<p>Ba ngày trở lên: thêm một ngày ngoại thành, Cổ Loa và Sóc Sơn hoặc Sơn Tây và Ba Vì; mỗi lựa chọn đều cần xuất phát sớm và quay đầu trước ba giờ chiều. Thuê ba ngày theo giá ngày đã bắt đầu gần với giá tuần, nên khi lịch dài từ bốn ngày, hãy hỏi gói tuần: Honda Vision tham khảo 200.000đ/ngày nhưng 800.000đ–1.000.000đ/tuần, Air Blade 200.000đ/ngày và 800.000đ/tuần, Click hoặc Mio 150.000đ/ngày và 600.000đ–700.000đ/tuần. Bảng đầy đủ ở <a href="/gia-thue/">trang giá thuê</a>, cần xác nhận lại khi đặt.</p>
+
+<h2>Từ lộ trình đến số ngày thuê và loại xe</h2>
+<p>Khi đã có lịch theo cụm, việc quy ra số ngày thuê khá máy móc: cộng số buổi, chia đôi, làm tròn lên, rồi cộng thêm nửa ngày nếu bạn muốn nhận xe từ chiều hôm trước để đi sớm. Lưu ý giờ của cửa hàng, {{ business.hours.display }}: lịch có đoạn xuất phát trước chín giờ sáng, ví dụ đi chợ hoa hay ra ngoại thành, gần như luôn cần nhận xe từ hôm trước.</p>
+<p>Về xe, lộ trình nội thành toàn đường nhựa và cầu thì Honda Vision, Air Blade hay Wave đều ổn; lộ trình có ngày ngoại thành dài, xe ga êm và cốp rộng dễ chịu hơn. Xe máy điện chỉ nên tính cho lịch gói gọn trong nội thành, và bạn phải hỏi cửa hàng quãng đường thực tế của chiếc xe cụ thể trước khi xếp lịch. Đường vành đai và các trục lớn nối giữa các cụm được mô tả trong bài <a href="/blog/huong-dan/duong-vanh-dai-ha-noi-tai-ha-noi/">đường vành đai Hà Nội</a>.</p>
+
+<h2>Công cụ và mẹo tính nhanh</h2>
+<ul>
+<li>Dùng bản đồ số đặt giờ khởi hành đúng khung bạn sẽ đi, không phải giờ hiện tại, để thấy thời gian có tính tắc đường. Cách dùng bản đồ khi thuê xe được hướng dẫn trong bài <a href="/blog/huong-dan/ung-dung-ban-do-cho-nguoi-thue-xe/">ứng dụng bản đồ cho người thuê xe</a>.</li>
+<li>Cộng mười lăm phút cho mỗi lần gửi xe và lấy xe ở khu trung tâm, đặc biệt là phố cổ cuối tuần khi phố đi bộ chắn nhiều lối vào.</li>
+<li>Nếu đi hai người, thêm thời gian cho các điểm dừng chụp ảnh; thực tế mỗi cụm kéo dài thêm khoảng một phần tư.</li>
+<li>Viết lịch ra giấy hoặc ghi chú điện thoại theo từng buổi, kèm giờ quay đầu, để cả nhóm cùng thấy.</li>
+<li>Trợ lý trực tuyến trên trang web cửa hàng có thể giúp bạn ước tính chi phí thuê theo số ngày đã tính xong.</li>
+</ul>
+<p>Bảo hiểm xe máy cho hành trình bạn tự chuẩn bị, cửa hàng không cung cấp bảo hiểm, nên hãy xếp việc này vào danh sách chuẩn bị trước ngày nhận xe.</p>
+
+<h2>Câu hỏi thường gặp về tính lộ trình thuê xe theo ngày tại Hà Nội</h2>
+<h3>Một ngày có đi hết Hoàn Kiếm, Ba Đình và Tây Hồ được không?</h3>
+<p>Được nếu bạn xuất phát từ chín giờ, gửi xe một lần ở mỗi cụm và chấp nhận chỉ ngắm bên ngoài một vài điểm. Thêm bảo tàng hoặc Văn Miếu vào thì nên tách thành ngày rưỡi.</p>
+<h3>Bát Tràng nên ghép với cụm nào?</h3>
+<p>Với Long Biên và đê sông Hồng, vì cùng nằm phía đông sông. Ghép Bát Tràng với Tây Hồ sẽ mất gần một tiếng chỉ để băng qua thành phố.</p>
+<h3>Lộ trình có ngày ngoại thành thì nên thuê xe gì?</h3>
+<p>Xe ga 125 phân khối trở xuống như Vision hoặc Air Blade cho đường bằng, xe số nếu có đoạn dốc như Ba Vì. Hỏi cửa hàng tình trạng lốp và phanh của xe trước ngày đi xa.</p>
+<h3>Tính xong lịch rồi mà muốn đổi giữa chừng thì sao?</h3>
+<p>Báo cửa hàng sớm để gia hạn hoặc rút ngắn thời gian thuê; cách làm được viết trong bài <a href="/blog/huong-dan/gia-han-thoi-gian-thue-cho-nguoi-moi/">gia hạn thời gian thuê</a>.</p>
+
+<h2>Kết luận</h2>
+<p>Ở Hà Nội, tính lộ trình theo cụm và theo giờ cao điểm quan trọng hơn tính theo cây số. Chia thành phố thành sáu cụm, gán mỗi cụm một buổi, cộng thời gian qua cầu và gửi xe, bạn sẽ có số ngày thuê sát thực tế và chọn được gói giá hợp lý. Khi lịch đã xong, nhắn cho {{ business.brand }} qua {{ business.contact.phone_display }} hoặc ghé {{ business.address.full }} để giữ xe đúng ngày. Thêm hướng dẫn thực tế nằm ở mục <a href="/blog/huong-dan/">hướng dẫn</a>, và trợ lý trên <a href="/">trang chủ</a> sẽ tính giúp chi phí theo lịch của bạn.</p>
