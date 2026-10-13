@@ -1,0 +1,85 @@
+<p>Kế hoạch đi chơi kéo dài thêm hai ngày, công việc ở Hà Nội chưa xong, hay đơn giản là bạn thấy chiếc xe đang dùng quá hợp tay nên muốn giữ thêm. Gia hạn thời gian thuê là việc rất thường gặp, nhưng cũng là lúc dễ phát sinh hiểu lầm nhất nếu hai bên chỉ trao đổi miệng vài câu. Bài này gom toàn bộ việc cần làm thành một bộ checklist theo thứ tự: trước khi liên hệ, lúc gửi yêu cầu, khi cửa hàng xác nhận và sau khi đã gia hạn xong. Bạn có thể lưu lại và đánh dấu từng mục khi thực hiện.</p>
+<p>Nếu muốn hiểu trước nguyên tắc chung về gia hạn, hãy đọc bài <a href="/blog/huong-dan/gia-han-thoi-gian-thue/">gia hạn thời gian thuê</a>. Phần dưới đây đi thẳng vào thao tác.</p>
+
+<h2>Mốc thời gian: khi nào nên mở checklist</h2>
+<p>Sai lầm phổ biến nhất là đợi đến sát giờ trả mới hỏi gia hạn. Lúc đó chiếc xe có thể đã được người khác đặt, hoặc cửa hàng sắp đóng cửa và không kịp xác nhận. Hãy dùng các mốc sau:</p>
+<ul>
+<li><strong>Thuê theo ngày:</strong> báo trước ít nhất nửa ngày, lý tưởng là từ tối hôm trước.</li>
+<li><strong>Thuê theo tuần:</strong> báo trước một đến hai ngày để cửa hàng sắp xếp lịch xe.</li>
+<li><strong>Thuê theo tháng:</strong> báo trước khoảng một tuần, nhất là khi kỳ tiếp theo rơi vào dịp lễ.</li>
+</ul>
+<p>Mọi trao đổi nên diễn ra trong giờ mở cửa {{ business.hours.display }}. Tin nhắn gửi lúc nửa đêm vẫn được đọc, nhưng chỉ được xử lý khi cửa hàng làm việc lại, nên đừng coi đó là đã gia hạn.</p>
+
+<h2>Checklist 1: chuẩn bị trước khi liên hệ</h2>
+<p>Năm phút chuẩn bị giúp cuộc trao đổi gọn hơn nhiều. Trước khi nhắn hoặc gọi, hãy đánh dấu:</p>
+<ol>
+<li>Xác định chính xác ngày và giờ bạn muốn trả xe mới, không ghi chung chung kiểu "thêm vài hôm".</li>
+<li>Tìm lại thông tin đơn thuê hiện tại: tên người thuê, loại xe, biển số, giờ trả theo thỏa thuận ban đầu.</li>
+<li>Xem lại giấy tờ thuê hoặc ảnh chụp biên bản giao xe để biết điều kiện đã thống nhất.</li>
+<li>Kiểm tra bảo hiểm xe máy bạn tự mua có còn hiệu lực trong khoảng thời gian kéo dài hay không; cửa hàng không cung cấp bảo hiểm nên phần này bạn tự lo.</li>
+<li>Ước lượng quãng đường sẽ đi thêm, để hỏi về việc bảo dưỡng nếu kỳ thuê kéo dài đáng kể.</li>
+</ol>
+
+<h2>Checklist 2: nội dung yêu cầu gia hạn</h2>
+<p>Một yêu cầu tốt là yêu cầu mà cửa hàng đọc xong có thể trả lời ngay, không phải hỏi lại. Tin nhắn của bạn nên có đủ:</p>
+<ul>
+<li>Họ tên và số điện thoại đã dùng khi đặt xe.</li>
+<li>Loại xe và biển số đang giữ.</li>
+<li>Giờ trả cũ và giờ trả mới mong muốn.</li>
+<li>Câu hỏi rõ về giá cho phần thời gian thêm.</li>
+<li>Hình thức trả xe dự kiến: mang đến cửa hàng hay cần hẹn nhận lại tại chỗ.</li>
+</ul>
+<p>Bạn có thể hỏi trước trợ lý MotoAI trên website để tham khảo bảng giá và quy trình, sau đó liên hệ cửa hàng qua {{ business.contact.phone_display }} để chốt. Trợ lý giúp bạn chuẩn bị câu hỏi, còn quyết định cuối cùng vẫn do cửa hàng xác nhận. Nếu bạn đang vội, bài <a href="/blog/huong-dan/gia-han-thoi-gian-thue-nhanh-gon/">gia hạn thời gian thuê nhanh gọn</a> có mẫu tin nhắn ngắn.</p>
+
+<h2>Checklist 3: những gì phải được xác nhận</h2>
+<p>Chỉ coi là đã gia hạn khi bạn nhận được câu trả lời rõ cho từng mục dưới đây. Hãy chụp màn hình hoặc ghi chú lại.</p>
+<ol>
+<li><strong>Giờ trả mới:</strong> ngày, giờ cụ thể và nơi trả.</li>
+<li><strong>Giá phần kéo dài:</strong> tính theo ngày lẻ hay chuyển sang gói tuần, gói tháng.</li>
+<li><strong>Thời điểm thanh toán:</strong> trả ngay khi gia hạn hay cộng dồn lúc trả xe.</li>
+<li><strong>Khoản cọc:</strong> giữ nguyên như ban đầu hay cần điều chỉnh; mức cọc của cửa hàng nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
+<li><strong>Giấy tờ:</strong> có cần cập nhật biên bản hay chỉ ghi chú vào đơn cũ.</li>
+</ol>
+<p>Nếu bạn muốn trả xe tại chỗ ở thay vì mang đến cửa hàng, khung giờ hẹn phải nằm trong giờ mở cửa và phí, thời gian phải được thống nhất trước. Đừng mặc định rằng điều kiện của lần giao đầu áp dụng nguyên cho lần nhận lại.</p>
+
+<h2>Checklist 4: kéo dài theo ngày hay chuyển gói</h2>
+<p>Khi phần kéo dài đủ dài, chuyển sang gói tuần hoặc tháng thường hợp lý hơn cộng dồn từng ngày. Một số mức tham khảo để bạn tự so sánh trước khi hỏi:</p>
+<ul>
+<li>Honda Vision: 200.000đ/ngày, 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng.</li>
+<li>Honda Air Blade: gia hạn theo ngày tham khảo 200.000đ/ngày, theo tuần 800.000đ/tuần và trọn tháng 1.400.000đ/tháng.</li>
+<li>Honda Click hoặc Yamaha Mio: gia hạn thêm ngày tham khảo 150.000đ/ngày, thêm tuần 600.000đ–700.000đ/tuần, còn thêm trọn tháng là 1.000.000đ–1.200.000đ/tháng.</li>
+<li>Honda Wave: 150.000đ/ngày.</li>
+</ul>
+<p>Ví dụ bạn đã thuê Vision ba ngày và muốn giữ thêm năm ngày nữa: tổng cộng tám ngày, lúc này nên hỏi cửa hàng xem tính theo gói tuần cộng ngày lẻ có lợi hơn không. Các con số trên chỉ là tham khảo; giá thực tế xem ở trang <a href="/gia-thue/">giá thuê</a> và luôn chốt lại với cửa hàng. Với xe 50cc, xe máy điện hay xe đạp điện, giá là liên hệ.</p>
+
+<h2>Checklist 5: tình trạng xe khi giữ lâu hơn</h2>
+<p>Xe chạy thêm nhiều ngày thì cần để ý thêm một chút. Trước khi bước vào thời gian gia hạn, bạn nên tự kiểm tra:</p>
+<ul>
+<li>Lốp còn đủ hơi, không có vết rách hoặc đinh.</li>
+<li>Phanh trước và sau ăn đều, không kêu rít.</li>
+<li>Đèn, còi, xi nhan hoạt động bình thường.</li>
+<li>Với xe điện: bộ sạc đi kèm còn đầy đủ, dây không bị gập gãy.</li>
+<li>Ghi lại số công tơ mét hiện tại để có mốc so sánh khi trả.</li>
+</ul>
+<p>Nếu phát hiện vấn đề, báo ngay cho cửa hàng trước khi tiếp tục đi. Trường hợp muốn đổi sang xe khác cùng lúc với gia hạn, tham khảo bài <a href="/blog/huong-dan/doi-xe-giua-ky-thue/">đổi xe giữa kỳ thuê</a>.</p>
+
+<h2>Những lỗi khiến việc gia hạn rắc rối</h2>
+<ul>
+<li>Chỉ nói miệng với người giao xe mà không xác nhận lại với cửa hàng.</li>
+<li>Gia hạn xong nhưng quên rằng bảo hiểm cá nhân đã hết hạn giữa chừng.</li>
+<li>Không hỏi lại giá, đến lúc trả mới thấy cách tính khác dự đoán.</li>
+<li>Trả xe trễ hơn giờ mới mà không báo; hậu quả của việc trễ giờ được giải thích trong bài <a href="/blog/huong-dan/tra-xe-dung-gio-de-tranh-phi/">trả xe đúng giờ để tránh phí</a>.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp khi gia hạn thời gian thuê</h2>
+<h3>Có thể gia hạn nhiều lần liên tiếp không?</h3>
+<p>Thường là được nếu xe chưa có lịch đặt khác. Mỗi lần gia hạn, bạn nên đi lại checklist 3 để chắc mọi điều kiện vẫn rõ ràng.</p>
+<h3>Gia hạn có bắt buộc mang xe về cửa hàng không?</h3>
+<p>Không nhất thiết. Phần lớn trường hợp chỉ cần xác nhận qua điện thoại hoặc tin nhắn. Tuy nhiên với kỳ thuê dài, cửa hàng có thể đề nghị xem xe để kiểm tra định kỳ.</p>
+<h3>Nếu cửa hàng không còn xe để gia hạn thì sao?</h3>
+<p>Hãy hỏi phương án đổi sang mẫu khác còn trống. Đây là lý do nên báo sớm: càng sớm, càng nhiều lựa chọn.</p>
+<h3>Khi trả xe sau gia hạn cần làm gì?</h3>
+<p>Làm như trả xe thông thường: kiểm tra xe cùng nhân viên, đối chiếu ảnh lúc nhận và thanh toán phần còn lại. Các bước cụ thể có trong bài <a href="/blog/huong-dan/quy-trinh-tra-xe/">quy trình trả xe</a>.</p>
+
+<h2>Kết luận</h2>
+<p>Gia hạn suôn sẻ không nằm ở may mắn mà ở việc làm đủ năm checklist: báo đúng mốc, gửi yêu cầu đủ ý, nhận xác nhận rõ ràng, so sánh gói giá và kiểm tra lại xe. Làm vậy, phần thời gian thêm sẽ thoải mái như những ngày đầu. Cần gia hạn ngay, bạn liên hệ {{ business.brand }} qua {{ business.contact.phone_display }} hoặc đến {{ business.address.full }}. Xem thêm các hướng dẫn thủ tục khác trong <a href="/blog/huong-dan/">chuyên mục hướng dẫn</a>, hoặc bắt đầu từ <a href="/">trang chủ</a> để hỏi trợ lý.</p>
