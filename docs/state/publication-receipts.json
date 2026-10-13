@@ -8118,6 +8118,28 @@
       "entry_sha256": "36ab6df1680827339110987915ac964d05578b377f76a4f407d40996dd2b363a",
       "production_status": 200,
       "verified_at": "2026-10-13T02:00:42.603Z"
+    },
+    "BA-0779": {
+      "article_id": "BA-0779",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/ai-chiu-phat-khi-di-xe-thue-cho-nguoi-moi/",
+      "publication_sha": "e19b45715fb587249e1f994c6bc20883c48b3ca9",
+      "page_sha256": "a85fdce14d41e32704d55dc7a7d4fe19fcc3e7c8865f673788858f324cd907cf",
+      "body_sha256": "99c7f201439d0b488bf4baf55ece98a217a82c6309dff42165c8d5b41d7c201e",
+      "entry_sha256": "df5a9b6d117f4df70b1d35ce7f9a77e228ea86aec4e2a795ad568f300d14223d",
+      "production_status": 200,
+      "verified_at": "2026-10-13T02:07:16.418Z"
+    },
+    "BA-0780": {
+      "article_id": "BA-0780",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/gia-lam-va-long-bien-cuoi-tuan/",
+      "publication_sha": "e19b45715fb587249e1f994c6bc20883c48b3ca9",
+      "page_sha256": "43377c1af5bacfdacddc8f86b0b90bdb5067df8f3e44fa234a276e21e3c482e5",
+      "body_sha256": "f281da12b6734359fa5f4fbf7b0c17cb080bddb80a14c9b21aa10b8f374175ed",
+      "entry_sha256": "33fa6f4f89ba7eb999068650c16578f8c2905120f7d8e9c047fbb1b9229f850e",
+      "production_status": 200,
+      "verified_at": "2026-10-13T02:07:16.420Z"
     }
   }
 }
