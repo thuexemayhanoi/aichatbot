@@ -12078,6 +12078,28 @@
       "entry_sha256": "282abbdff5f4f908c78972c8cb05d382ba6003557f443be40ea033fd87b26d3b",
       "production_status": 200,
       "verified_at": "2026-10-13T05:04:46.957Z"
+    },
+    "BA-1139": {
+      "article_id": "BA-1139",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/nong-do-con-khi-lai-xe-vi-du-thuc-te/",
+      "publication_sha": "9cdc66cb976baa7a92ebd85af40a87865ee9a279",
+      "page_sha256": "51c78ba9901a9e4ae580b9ac2ab3303cc432e37c2debcaea46c2c3179f686d7b",
+      "body_sha256": "67a3b17ba73a8b84dded4f2575b92e1de8ff6a38daad618831c11dd1cc114c6c",
+      "entry_sha256": "3c4167d23ed5332928e28416d672a422be32616f5e6a2356ae1fc1cf4fbe6e05",
+      "production_status": 200,
+      "verified_at": "2026-10-13T06:29:22.285Z"
+    },
+    "BA-1140": {
+      "article_id": "BA-1140",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/gia-lam-va-long-bien-buoi-sang/",
+      "publication_sha": "9cdc66cb976baa7a92ebd85af40a87865ee9a279",
+      "page_sha256": "14f3c8cafc4e912b71ec9b5741d0066240c76fc6603d4412503cc12fcc6a82a7",
+      "body_sha256": "102c5145890d44b893aef10788a8202592b59dda8a7097c11be3466d50b1a750",
+      "entry_sha256": "6d69103c5c17e9f52f50bca139a38bc3522e196dbae08bcf57c156cf4d4997bd",
+      "production_status": 200,
+      "verified_at": "2026-10-13T06:29:22.293Z"
     }
   }
 }
