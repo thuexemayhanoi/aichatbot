@@ -1,0 +1,60 @@
+<p>Không phải ai cũng có cả buổi tối để ngồi nghiên cứu lịch trình. Có người vừa xuống tàu, có người chỉ còn mười phút trước khi đi ngủ, có người được bạn rủ đi chơi ngay sáng mai. Với những trường hợp như vậy, trợ lý thuê xe trên website có thể giúp bạn dựng một kế hoạch đủ dùng trong thời gian ngắn, miễn là bạn hỏi đúng cách. Bài viết này đưa ra một quy trình mười phút: một câu mở đầu có cấu trúc, ba vòng hỏi tiếp, cách biến câu trả lời thành danh sách kiểm tra, và những việc vẫn phải tự làm vì trợ lý không thay được.</p>
+
+<h2>Trợ lý giúp được gì, không giúp được gì</h2>
+<p>Trước khi tối ưu tốc độ, cần đặt kỳ vọng đúng. Trợ lý MotoAI trả lời dựa trên dữ liệu của cửa hàng: dòng xe, giá tham khảo, đặt cọc, giờ mở cửa, thủ tục nhận và trả xe, cùng những gợi ý chọn xe theo kiểu hành trình. Nó giúp bạn hình dung phương án và chi phí, nhưng không dẫn đường theo thời gian thực, không biết tình hình kẹt xe lúc này, và không tự giữ xe cho bạn. Hiểu ranh giới này giúp bạn không mất thời gian hỏi những câu nó không trả lời được.</p>
+<p>Nếu bạn muốn một hướng dẫn lập kế hoạch đầy đủ, chậm rãi hơn, bài <a href="/blog/huong-dan/len-ke-hoach-hanh-trinh-voi-agent/">lên kế hoạch hành trình với agent</a> là phần đọc nền phù hợp. Bài này dành cho lúc bạn cần kết quả ngay.</p>
+
+<h2>Phút thứ nhất: một câu mở đầu đủ dữ kiện</h2>
+<p>Phần lớn thời gian bị lãng phí ở các lượt hỏi đáp qua lại vì câu đầu thiếu thông tin. Hãy gói năm dữ kiện vào một tin nhắn:</p>
+<ul>
+<li>Số ngày và khung giờ: ví dụ hai ngày, xuất phát khoảng tám giờ sáng.</li>
+<li>Số người và ai cầm lái: một người hay hai người, đã quen xe ga hay xe số.</li>
+<li>Kiểu điểm đến: phố cổ, hồ, chợ, cà phê, hay muốn ra vùng ven.</li>
+<li>Nơi ở: khu Long Biên, Hoàn Kiếm, Tây Hồ hay Ba Đình, để tính đường đi và khả năng giao xe.</li>
+<li>Ưu tiên chính: tiết kiệm, nhẹ nhàng, hay đi được nhiều nơi.</li>
+</ul>
+<p>Một câu như "Hai người, hai ngày, ở Long Biên, đều quen xe ga, thích ăn uống và ngắm hồ, muốn tiết kiệm" đã đủ để trợ lý gợi ý dòng xe và mức giá tham khảo ngay lượt đầu. Bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho agent thuê xe</a> có thêm nhiều mẫu câu.</p>
+
+<h2>Phút thứ hai đến thứ sáu: ba vòng hỏi tiếp</h2>
+<p>Sau câu mở đầu, chỉ cần ba vòng hỏi, mỗi vòng một chủ đề:</p>
+<ol>
+<li>Vòng xe và giá: hỏi dòng xe phù hợp và giá theo ngày. Theo bảng tham khảo, Honda Vision khoảng 200.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày, Honda Wave xe số khoảng 150.000đ/ngày; con số cuối do cửa hàng xác nhận.</li>
+<li>Vòng nhận và trả xe: hỏi giờ mở cửa, khả năng giao xe tới nơi ở và những gì cần mang. Lưu ý việc giao xe chỉ trong khung {{ business.hours.display }}, thời gian và phí phải xác nhận trước.</li>
+<li>Vòng lịch theo buổi: nhờ trợ lý gợi ý cách chia mỗi ngày thành sáng và chiều, mỗi buổi một cụm điểm gần nhau.</li>
+</ol>
+<p>Ba vòng này bao phủ gần như mọi thứ cần quyết định. Nếu muốn ước tính quãng đường và số ngày thuê cho khớp, bài <a href="/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay/">tính lộ trình thuê xe theo ngày</a> sẽ hữu ích.</p>
+
+<h2>Phút thứ bảy đến thứ chín: biến câu trả lời thành danh sách kiểm tra</h2>
+<p>Một kế hoạch chỉ có ích khi bạn mang nó theo được. Hãy tự tóm tắt câu trả lời thành một ghi chú ngắn trên điện thoại, gồm:</p>
+<ul>
+<li>Dòng xe đã chọn và giá tham khảo cần xác nhận.</li>
+<li>Giờ và địa điểm nhận xe, giấy tờ cần mang.</li>
+<li>Khoản đặt cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được xác nhận khi đặt.</li>
+<li>Lịch theo buổi, mỗi buổi một phương án trong nhà nếu trời mưa hoặc quá nắng.</li>
+<li>Việc tự chuẩn bị: bảo hiểm xe máy, vì cửa hàng không cung cấp bảo hiểm.</li>
+</ul>
+<p>Vì lịch sử trò chuyện chỉ lưu trong trình duyệt của thiết bị đang dùng, ghi chú riêng hoặc ảnh chụp màn hình là cách chắc nhất để giữ kế hoạch khi bạn đổi máy hoặc xóa dữ liệu trình duyệt.</p>
+
+<h2>Phút thứ mười: chốt với người thật</h2>
+<p>Kế hoạch từ trợ lý là bản nháp; bước cuối cùng là liên hệ cửa hàng để xác nhận xe trống, giá và giờ hẹn. Gửi luôn ghi chú bạn vừa làm, cửa hàng sẽ nắm nhanh nhu cầu mà không phải hỏi lại từ đầu. Quy trình đặt xe gọn nhất được mô tả trong bài <a href="/blog/huong-dan/huong-dan-dat-xe-nhanh-nhanh-gon/">hướng dẫn đặt xe nhanh gọn</a>.</p>
+
+<h2>Những việc trợ lý không làm thay bạn</h2>
+<ul>
+<li>Dẫn đường khi đang chạy: dùng ứng dụng bản đồ quen thuộc, gắn điện thoại chắc chắn và chỉ thao tác khi đã dừng xe. Bài <a href="/blog/huong-dan/ban-do-va-dinh-vi-khi-thue-xe-nhanh-gon/">bản đồ và định vị khi thuê xe nhanh gọn</a> có gợi ý cụ thể.</li>
+<li>Theo dõi thời tiết từng giờ: xem dự báo vào buổi tối trước ngày đi.</li>
+<li>Thay đổi đơn đã chốt: muốn kéo dài thời gian thuê, hãy nhắn cửa hàng; bài <a href="/blog/huong-dan/gia-han-thoi-gian-thue-nhanh-gon/">gia hạn thời gian thuê nhanh gọn</a> giải thích cách làm.</li>
+<li>Cam kết cứu hộ: cửa hàng không có dịch vụ cứu hộ, nên hãy lên kế hoạch các chặng vừa sức và biết điểm sửa xe, đổ xăng trên đường.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp khi lên kế hoạch hành trình với agent nhanh gọn</h2>
+<h3>Mười phút có thật sự đủ để lên kế hoạch không?</h3>
+<p>Đủ cho một chuyến một đến ba ngày trong nội thành và vùng ven, nếu câu mở đầu có đủ dữ kiện. Chuyến dài hơn nên dành thêm thời gian để xem kỹ từng chặng.</p>
+<h3>Tôi có cần tạo tài khoản để lưu kế hoạch không?</h3>
+<p>Không cần tài khoản. Hội thoại lưu trong trình duyệt trên máy bạn, nên hãy chụp màn hình hoặc ghi chú lại nếu muốn mở trên thiết bị khác.</p>
+<h3>Trợ lý có biết quán nào đang mở cửa không?</h3>
+<p>Trợ lý tập trung vào thông tin thuê xe của cửa hàng, không cập nhật giờ mở cửa của quán xá. Hãy kiểm tra trên bản đồ trước khi đi.</p>
+<h3>Có thể hỏi bằng câu ngắn kiểu từ khóa không?</h3>
+<p>Có, nhưng một câu đầy đủ năm dữ kiện thường cho kết quả nhanh hơn vì tránh được các lượt hỏi lại.</p>
+
+<h2>Kết luận</h2>
+<p>Lên kế hoạch hành trình với agent nhanh gọn không đòi hỏi kỹ năng gì đặc biệt: một câu mở đầu đủ dữ kiện, ba vòng hỏi đúng chủ đề, một ghi chú mang theo, và một tin nhắn chốt với cửa hàng. Khi cần xác nhận xe và giờ hẹn, liên hệ {{ business.brand }} qua {{ business.contact.phone_display }} hoặc ghé {{ business.address.full }}. Xem thêm mẹo trong <a href="/blog/huong-dan/">chuyên mục hướng dẫn</a>, hoặc mở ngay <a href="/">trợ lý trên trang chủ</a> để thử quy trình mười phút này.</p>
