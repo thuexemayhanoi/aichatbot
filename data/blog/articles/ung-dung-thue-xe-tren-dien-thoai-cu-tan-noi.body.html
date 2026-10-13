@@ -1,0 +1,66 @@
+<p>Chiếc điện thoại đã dùng năm, sáu năm vẫn gọi điện, nhắn tin tốt, nhưng mở ứng dụng nặng thì giật, định vị chập chờn, pin tụt nhanh mỗi khi bật bản đồ. Nếu bạn muốn đặt một chiếc xe máy giao tận nơi bằng chiếc máy như vậy, đừng lo: trợ lý MotoAI là ứng dụng web chạy trong trình duyệt, không cần cài đặt. Điều cần chú ý nằm ở những khâu mà máy cũ hay "đuối": gửi vị trí giao xe, giữ liên lạc trong lúc chờ người giao, và chụp ảnh tình trạng xe khi nhận. Bài viết này đi qua từng khâu đó với mẹo cụ thể cho máy đời cũ.</p>
+<p>Nếu bạn muốn tìm hiểu chung về việc dùng máy cũ để hỏi và đặt xe, bài <a href="/blog/app/ung-dung-thue-xe-tren-dien-thoai-cu/">ứng dụng thuê xe trên điện thoại cũ</a> là phần nền. Ở đây ta tập trung vào trường hợp xe được mang đến tận nơi.</p>
+<h2>Chuẩn bị máy trước khi mở trợ lý</h2>
+<p>Năm phút chuẩn bị giúp chiếc máy cũ chạy mượt hơn trong suốt quá trình đặt và nhận xe:</p>
+<ul>
+<li>Đóng các ứng dụng chạy nền, đặc biệt là mạng xã hội và trò chơi.</li>
+<li>Dùng trình duyệt có sẵn trên máy, cập nhật nếu còn được hỗ trợ.</li>
+<li>Kết nối wifi ổn định nếu có, vì dữ liệu di động yếu khiến trang tải chậm.</li>
+<li>Sạc pin lên trên một nửa, vì bạn còn cần máy cho cuộc gọi lúc giao xe.</li>
+<li>Giải phóng chút dung lượng để máy còn chỗ lưu ảnh chụp xe.</li>
+</ul>
+<p>Mở trang web của cửa hàng, tìm khung trò chuyện và bắt đầu hỏi. Bạn không phải tải thêm bất kỳ phần mềm nào.</p>
+<h2>Hỏi ngắn, gửi từng ý một</h2>
+<p>Trên máy cũ, gõ một đoạn dài rồi bị treo trình duyệt là chuyện thường gặp. Hãy chia câu hỏi thành từng tin ngắn:</p>
+<ol>
+<li>"Tôi ở khu Tây Hồ, có giao xe tới đây không?" Vùng giao xe gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội.</li>
+<li>"Tôi cần xe ga chạy phố ba ngày." Trợ lý sẽ gợi ý mẫu và giá tham khảo.</li>
+<li>"Giao được trong khung giờ nào?" Giao xe chỉ diễn ra trong giờ {{ business.hours.display }}.</li>
+<li>"Cần chuẩn bị giấy tờ gì?" để biết trước những gì phải đưa ra khi nhận xe.</li>
+</ol>
+<p>Mẹo soạn câu hỏi ngắn mà đủ ý có trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-tan-noi/">soạn câu hỏi cho trợ lý thuê xe</a>. Sau mỗi câu trả lời quan trọng, chụp màn hình ngay, đừng chờ cuối cuộc trò chuyện vì máy có thể tải lại trang.</p>
+<h2>Gửi vị trí giao xe khi định vị trên máy cũ kém</h2>
+<p>Định vị GPS trên máy cũ có thể lệch vài chục mét, đủ để người giao xe đứng nhầm đầu ngõ. Đừng chỉ dựa vào chấm xanh trên bản đồ. Hãy mô tả bằng chữ:</p>
+<ul>
+<li>Số nhà, tên phố, tên tòa nhà hoặc khách sạn.</li>
+<li>Một mốc dễ nhận: hiệu thuốc, cửa hàng tiện lợi, cổng chùa.</li>
+<li>Chỗ bạn sẽ đứng chờ và đặc điểm nhận dạng, ví dụ áo màu gì.</li>
+</ul>
+<p>Mô tả bằng chữ không phụ thuộc vào độ chính xác của máy, nên người giao vẫn tìm được bạn kể cả khi bản đồ chạy sai. Những bước giấy tờ khi giao tận nơi được tổng hợp trong bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">thủ tục giao xe tận nơi</a>.</p>
+<h2>Giữ liên lạc trong lúc chờ xe</h2>
+<p>Khi cửa hàng đã xác nhận giờ giao và phí giao, phần việc còn lại là để máy sẵn sàng nghe cuộc gọi. Với điện thoại cũ:</p>
+<ul>
+<li>Tắt bản đồ và các ứng dụng nặng sau khi gửi vị trí, để dành pin cho cuộc gọi.</li>
+<li>Bật chuông to, tắt chế độ im lặng.</li>
+<li>Lưu sẵn số cửa hàng {{ business.contact.phone_display }} vào danh bạ để nhận ra cuộc gọi đến.</li>
+<li>Nếu máy hay sập nguồn đột ngột, mang theo sạc dự phòng hoặc ngồi gần ổ điện.</li>
+</ul>
+<p>Xác nhận mọi khoản tiền qua số liên hệ chính thức của cửa hàng trước khi chuyển. Cách phân biệt kênh thật và kênh mạo danh được nói kỹ trong bài <a href="/blog/app/canh-giac-voi-app-thue-xe-gia-mao-tan-noi/">cảnh giác app thuê xe giả mạo</a>.</p>
+<h2>Chụp ảnh xe bằng camera đời cũ sao cho rõ</h2>
+<p>Ảnh chụp lúc nhận xe là bằng chứng quan trọng khi trả. Camera máy cũ thường kém trong điều kiện thiếu sáng, nên hãy:</p>
+<ol>
+<li>Đề nghị kiểm tra xe ở chỗ có ánh sáng, tránh góc tối dưới mái hiên.</li>
+<li>Lau ống kính trước khi chụp.</li>
+<li>Chụp cận từng vết xước, giữ tay yên một nhịp sau khi bấm.</li>
+<li>Quay một video ngắn đi vòng quanh xe nếu ảnh bị mờ, video thường dễ nhìn hơn.</li>
+<li>Chụp mặt đồng hồ khi bật khóa điện để ghi lại mức xăng.</li>
+</ol>
+<p>Sau đó vẫn làm các bước giao nhận thường lệ: xuất trình giấy phép lái xe và giấy tờ tùy thân, thử phanh, đèn, còi, xác nhận thời hạn thuê và khoản cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy mẫu. Riêng bảo hiểm xe máy, bạn cần mua trước vì cửa hàng không cung cấp.</p>
+<h2>Khi máy cũ gặp sự cố giữa chừng</h2>
+<ul>
+<li><strong>Trình duyệt đơ:</strong> đóng hẳn rồi mở lại trang. Nhờ đã chụp màn hình, bạn không mất thông tin.</li>
+<li><strong>Máy hết pin trước giờ giao:</strong> mượn máy người bên cạnh nhắn cho cửa hàng thông báo tình hình.</li>
+<li><strong>Không tải được trang:</strong> gọi thẳng số cửa hàng để đặt, trợ lý trên web chỉ là một kênh hỗ trợ.</li>
+</ul>
+<p>Nếu bạn muốn góp ý để trợ lý chạy nhẹ hơn trên máy đời cũ, hãy xem bài <a href="/blog/app/cach-gui-feedback-cho-ung-dung-thue-xe-tan-noi/">cách gửi góp ý cho ứng dụng thuê xe</a>.</p>
+<h2>Câu hỏi thường gặp về đặt xe giao tận nơi bằng điện thoại cũ</h2>
+<h3>Máy không cài thêm được ứng dụng có dùng được không?</h3>
+<p>Được. MotoAI chạy trực tiếp trên trình duyệt, không cần cài đặt hay chiếm thêm dung lượng.</p>
+<h3>Định vị sai thì người giao có tìm được tôi không?</h3>
+<p>Có, nếu bạn mô tả địa điểm bằng chữ kèm mốc dễ nhận. Đừng chỉ gửi vị trí trên bản đồ.</p>
+<h3>Có giao xe vào buổi tối muộn không?</h3>
+<p>Chỉ trong giờ {{ business.hours.display }}. Hãy hẹn sớm để còn thời gian xử lý nếu máy gặp trục trặc.</p>
+<h3>Ảnh chụp mờ có làm bằng chứng được không?</h3>
+<p>Ảnh càng rõ càng tốt. Nếu camera kém, quay thêm video và gửi ngay cho cửa hàng để hai bên cùng lưu.</p>
+<h2>Kết luận</h2>
+<p>Một chiếc điện thoại cũ hoàn toàn đủ để đặt xe giao tận nơi, miễn là bạn chuẩn bị pin, hỏi từng ý ngắn, mô tả điểm giao bằng chữ và chụp ảnh xe ở chỗ đủ sáng. Mở trợ lý trên website để bắt đầu, rồi xác nhận với {{ business.brand }} qua {{ business.contact.phone_display }} hoặc ghé {{ business.address.full }}. Khám phá thêm trong <a href="/blog/app/">chuyên mục ứng dụng</a> hoặc quay về <a href="/">trang chủ</a>.</p>
