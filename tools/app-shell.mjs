@@ -243,7 +243,7 @@ ${links}
     }
   }
   const brand = BUSINESS.brand;             // "Nguyễn Tú" — verified business.json
-  const address = BUSINESS.address.full;     // "112 Nguyễn Văn Cừ, Long Biên, Hà Nội"
+  const address = BUSINESS.address.full;     // "112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội"
   const hours = BUSINESS.hours.display;      // "09:00 - 21:00"
   return `    <footer class="blog-footer">
       <div class="blog-footer-inner">

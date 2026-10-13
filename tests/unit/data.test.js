@@ -2,6 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { business, pricing, faq } from '../helpers/load-data.js';
 
+test('NAP includes the verified Bồ Đề locality', () => {
+  assert.equal(business.address.street, '112 Nguyễn Văn Cừ');
+  assert.equal(business.address.ward, 'Bồ Đề');
+  assert.equal(business.address.district, 'Long Biên');
+  assert.equal(business.address.full, '112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội');
+});
+
 test('business contact facts are present and verified', () => {
   assert.equal(business.contact.phone, '0942467674');
   assert.equal(business.contact.whatsapp, 'https://wa.me/84942467674');

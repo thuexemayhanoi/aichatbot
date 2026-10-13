@@ -28,14 +28,10 @@ The active writing contract is AGENTS.md: one external author writes actual pros
 | Off-page | Editorially relevant mentions from real travel/local sources; no paid link schemes or cross-domain anchor rings. | P2 |
 | Index/maintenance | Configure GSC and Bing at the exact subdomain property; ingest clicks, impressions, CTR, positions, indexing and intent collisions when authorized. | P1 |
 
-## P0 business data discrepancies flagged during audit
+## P0 business data verification (corrected 2026-10-13)
 
-The shared data/business/pricing.json does not fully match the approved Nguyễn Tú price sheet:
-- Honda Vision weekly value in repo: 800,000–1,000,000 VND; reference: 1,000,000 VND/week.
-- Honda Air Blade repo: 800,000 VND/week and 1,400,000 VND/month; reference: 1,000,000 VND/week and 1,500,000 VND/month.
-- Business address omits Bồ Đề; its Maps link is a shortened redirect rather than the approved CID URL.
+Earlier audit drafts incorrectly asserted Vision/Air Blade price bands differed from approved data. First-party site and current chatbot pricing agree on the quoted Vision and Air Blade amounts. Preserve price values and deposit policy; this PR only normalizes the source-of-truth address locality to include Bồ Đề. Full address: 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội. Do not edit prices based on the superseded Issue #7 narrative.
 
-Correction must be atomic: update shared facts, rebuild dependent pages, run node --test plus price/chat golden tests, and inspect deployed pages before merging. Do not make up deposit exemptions or delivery costs. Prices remain illustrative until confirmed with the business.
 
 ## Measurement policy
 
