@@ -76,3 +76,20 @@ test('GSC page data is performance evidence, not an index inspection report', ()
   assert.equal(result.googleSearchPerformance.offSitemap.length, 1);
   assert.equal(canonicalCandidate(SITE + 'blog/app/topic-1/index.html'), SITE + 'blog/app/topic-1/');
 });
+
+
+test('real repository CLI report passes publication coverage with zero manifest drift', async () => {
+  const { execFileSync } = await import('node:child_process');
+  const { fileURLToPath } = await import('node:url');
+  const { dirname, join } = await import('node:path');
+  const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+  const output = execFileSync(process.execPath, [join(root, 'tools/seo-index-coverage.mjs'), '--json'], {
+    encoding: 'utf8', timeout: 120000
+  });
+  const report = JSON.parse(output);
+  assert.equal(report.pass, true, report.errors.join('; '));
+  assert.equal(report.counts.matrix, 2000);
+  assert.equal(report.counts.publishedInSitemap, report.counts.published);
+  assert.equal(report.counts.uniqueSitemap, report.counts.sitemap);
+  assert.equal(report.counts.manifestIds, report.counts.published);
+});
