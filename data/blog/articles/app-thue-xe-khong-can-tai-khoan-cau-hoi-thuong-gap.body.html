@@ -1,0 +1,65 @@
+<p>"Không cần tài khoản thì đặt xe kiểu gì?", "Không đăng nhập thì ai biết tôi đã đặt?", "Vậy thông tin của tôi nằm ở đâu?" là ba câu mà người thuê xe hay hỏi khi lần đầu dùng trợ lý MotoAI trên website của {{ business.brand }}. Hình thức thuê xe không cần tài khoản giúp bạn hỏi giá và tìm hiểu thủ tục ngay mà không qua bước đăng ký, nhưng cũng khiến nhiều người lo về tính chắc chắn của đơn đặt. Bài này trả lời lần lượt những câu hỏi thường gặp, chia theo từng mối lo, để bạn yên tâm dùng đúng cách. Phần giới thiệu tổng quát có trong bài <a href="/blog/app/app-thue-xe-khong-can-tai-khoan/">app thuê xe không cần tài khoản</a>.</p>
+
+<h2>Hiểu đúng: "không cần tài khoản" nghĩa là gì?</h2>
+<h3>Tôi có phải tải ứng dụng về máy không?</h3>
+<p>Không. Dù nhiều người quen gọi là "app", MotoAI thực chất là trợ lý chạy trên website. Bạn chỉ cần trình duyệt trên điện thoại hoặc máy tính, mở trang và bắt đầu gõ câu hỏi.</p>
+<h3>Không tạo tài khoản thì tôi làm được những gì?</h3>
+<ul>
+<li>Hỏi giá tham khảo các dòng xe, ví dụ Honda Click hoặc Yamaha Mio 150.000đ/ngày, Honda Air Blade 200.000đ/ngày.</li>
+<li>Nhờ gợi ý xe theo nhu cầu: đi phố, đi làm, đi hai người.</li>
+<li>Tìm hiểu giấy tờ, quy trình nhận xe và trả xe.</li>
+<li>Xem giờ mở cửa {{ business.hours.display }} và khu vực giao nhận.</li>
+</ul>
+<p>Tất cả những việc này không đòi hỏi email, mật khẩu hay mã xác thực.</p>
+
+<h2>Đặt xe khi không có tài khoản diễn ra thế nào?</h2>
+<p>Thay vì lưu đơn trong một tài khoản, việc đặt xe được xác nhận trực tiếp giữa bạn và cửa hàng. Các bước thường gặp:</p>
+<ol>
+<li>Dùng trợ lý để chọn dòng xe và ước tính số ngày thuê.</li>
+<li>Gọi số {{ business.contact.phone_display }} hoặc nhắn tin cho cửa hàng, nêu dòng xe, ngày giờ nhận và trả.</li>
+<li>Cửa hàng kiểm tra xe trống và xác nhận giá, giấy tờ cần mang, mức cọc.</li>
+<li>Bạn lưu lại tin nhắn hoặc ghi chú cuộc gọi xác nhận, đó chính là "biên nhận" của đơn.</li>
+<li>Đến nhận xe tại {{ business.address.full }} hoặc nhận xe giao tận nơi nếu đã thống nhất thời gian và phí.</li>
+</ol>
+<p>Những thắc mắc chung khác về đặt xe qua công cụ trực tuyến được gom trong bài <a href="/blog/app/cau-hoi-thuong-gap-ve-app-thue-xe/">câu hỏi thường gặp về app thuê xe</a>.</p>
+
+<h2>Lo lắng về sự chắc chắn của đơn đặt</h2>
+<h3>Không có tài khoản thì làm sao tôi tra lại đơn?</h3>
+<p>Hãy giữ tin nhắn xác nhận từ cửa hàng. Một tin nhắn đầy đủ nên có dòng xe, ngày giờ nhận, ngày giờ trả và số tiền thuê đã thống nhất. Khi cần đổi lịch, bạn chỉ việc liên hệ lại và nhắc thông tin trong tin nhắn đó.</p>
+<h3>Hỏi trợ lý xong là xe đã được giữ chưa?</h3>
+<p>Chưa. Trò chuyện với trợ lý chỉ giúp bạn chuẩn bị; xe được giữ khi cửa hàng xác nhận trực tiếp với bạn. Đây là điểm khác biệt quan trọng cần nhớ, nhất là vào cuối tuần và dịp lễ khi xe dễ hết.</p>
+<h3>Tiền cọc có phải chuyển trước qua mạng không?</h3>
+<p>Mức cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được xác nhận khi đặt. Hãy thống nhất cách thanh toán trực tiếp với cửa hàng, không chuyển khoản theo đường link do người lạ gửi.</p>
+
+<h2>Lo lắng về thông tin cá nhân</h2>
+<p>Không tạo tài khoản đồng nghĩa với việc bạn không phải để lại email và mật khẩu chỉ để hỏi giá. Tuy vậy, khi thuê xe thật, bạn vẫn cần cung cấp thông tin cho cửa hàng làm thủ tục. Vài nguyên tắc giữ an toàn:</p>
+<ul>
+<li>Không gửi ảnh giấy tờ tùy thân vào khung chat của trợ lý.</li>
+<li>Chỉ cung cấp giấy tờ khi làm thủ tục trực tiếp với cửa hàng hoặc qua kênh liên hệ chính thức.</li>
+<li>Kiểm tra đúng địa chỉ website trước khi trò chuyện.</li>
+<li>Hỏi rõ cửa hàng giữ giấy tờ nào và trả lại khi nào.</li>
+</ul>
+<p>Danh sách giấy tờ cụ thể được tổng hợp trong bài <a href="/blog/huong-dan/giay-to-can-khi-thue-xe/">giấy tờ cần khi thuê xe</a>.</p>
+
+<h2>Lo lắng về trang giả mạo</h2>
+<p>Vì không có bước đăng nhập, kẻ gian có thể dựng trang giống hệt để dụ khách chuyển tiền. Một số dấu hiệu bạn nên dè chừng:</p>
+<ul>
+<li>Trang yêu cầu tải tệp cài đặt lạ, trong khi trợ lý thật chạy ngay trên web.</li>
+<li>Giá rẻ bất thường kèm lời hứa khuyến mãi; {{ business.brand }} không chạy chương trình giảm giá.</li>
+<li>Đòi chuyển toàn bộ tiền trước khi có bất kỳ xác nhận nào từ số điện thoại chính thức.</li>
+<li>Nhân danh cửa hàng nhưng đưa địa chỉ nhận xe khác với địa chỉ công bố.</li>
+</ul>
+<p>Cách nhận diện chi tiết có trong bài <a href="/blog/app/canh-giac-voi-app-thue-xe-gia-mao/">cảnh giác với app thuê xe giả mạo</a>, và góc nhìn an toàn rộng hơn ở bài <a href="/blog/app/ung-dung-thue-xe-co-an-toan-khong/">ứng dụng thuê xe có an toàn không</a>.</p>
+
+<h2>Câu hỏi thường gặp khác về thuê xe không cần tài khoản</h2>
+<h3>Thuê dài hạn theo tháng có cần tài khoản không?</h3>
+<p>Không. Thuê theo tháng vẫn được xác nhận trực tiếp với cửa hàng. Ví dụ, gói tháng Honda Vision tham khảo 1.800.000đ–2.000.000đ, mức cụ thể do cửa hàng xác nhận khi đặt.</p>
+<h3>Người nước ngoài có dùng được trợ lý mà không cần tài khoản?</h3>
+<p>Có, khách nước ngoài cũng mở website và hỏi như bình thường. Khi làm thủ tục, cửa hàng sẽ cho biết giấy tờ cần mang.</p>
+<h3>Không có tài khoản thì có được nhắc lịch trả xe không?</h3>
+<p>Bạn nên tự đặt lời nhắc trên điện thoại theo giờ trả đã thống nhất. Hãy nhớ cửa hàng chỉ nhận trả xe trong khung {{ business.hours.display }}.</p>
+<h3>Bảo hiểm có được mua kèm khi đặt không?</h3>
+<p>Không. Phần bảo hiểm nằm ngoài đơn thuê; người thuê tự mua bảo hiểm xe máy cho mình trước ngày lấy xe, vì cửa hàng không bán kèm.</p>
+
+<h2>Kết luận</h2>
+<p>Thuê xe không cần tài khoản giúp bạn bỏ qua thủ tục đăng ký rườm rà, nhưng sự chắc chắn của đơn nằm ở tin nhắn xác nhận từ cửa hàng chứ không nằm trong khung chat. Hỏi trợ lý để chuẩn bị, liên hệ cửa hàng để chốt và giữ lại xác nhận là đủ. Cần hỗ trợ, gọi {{ business.contact.phone_display }}. Tham khảo thêm bài viết trong <a href="/blog/app/">chuyên mục ứng dụng thuê xe</a> hoặc vào <a href="/">trang chủ</a> để thử hỏi MotoAI ngay mà không cần đăng nhập.</p>

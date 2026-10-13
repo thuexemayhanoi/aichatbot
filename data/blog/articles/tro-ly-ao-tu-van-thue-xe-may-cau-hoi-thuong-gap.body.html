@@ -1,0 +1,62 @@
+<p>Trợ lý ảo MotoAI xuất hiện ở góc trang web của {{ business.brand }} để trả lời người đang tìm thuê xe máy, nhưng không ít khách vẫn ngần ngại gõ câu đầu tiên vì chưa rõ nó làm được gì, có thay được nhân viên không, và thông tin mình nhập đi đâu. Bài viết này tổng hợp những câu hỏi thường gặp nhất về trợ lý ảo tư vấn thuê xe máy, chia theo từng giai đoạn: trước khi hỏi, trong lúc trò chuyện, khi chuyển sang đặt xe và sau khi đã nhận xe. Phần giới thiệu khái niệm cơ bản nằm trong bài <a href="/blog/app/tro-ly-ao-tu-van-thue-xe-may/">trợ lý ảo tư vấn thuê xe máy</a>.</p>
+
+<h2>Trước khi hỏi: trợ lý ảo là gì và dùng ở đâu?</h2>
+<h3>MotoAI có phải một ứng dụng phải cài trên điện thoại?</h3>
+<p>Không. MotoAI là trợ lý trực tuyến chạy ngay trên website. Bạn mở trang bằng trình duyệt điện thoại hoặc máy tính là có thể trò chuyện, không cần tải gì về máy và không cần tạo tài khoản để bắt đầu hỏi.</p>
+<h3>Ai nên dùng trợ lý ảo thay vì gọi điện?</h3>
+<p>Trợ lý hợp với những người muốn tự tìm hiểu trước khi liên hệ: khách lần đầu thuê, sinh viên so sánh các dòng xe, người nước ngoài ngại gọi điện, hoặc ai đang hỏi vào lúc cửa hàng đã đóng cửa. Khi bạn đã rõ nhu cầu và muốn giữ xe, gọi điện cho cửa hàng vẫn là bước nhanh nhất. Kinh nghiệm cho lần dùng đầu tiên có trong bài <a href="/blog/app/kinh-nghiem-dung-tro-ly-thue-xe-lan-dau/">kinh nghiệm dùng trợ lý thuê xe lần đầu</a>.</p>
+
+<h2>Trong lúc trò chuyện: trợ lý tư vấn được những gì?</h2>
+<p>Trợ lý được xây dựng quanh thông tin của cửa hàng, nên các chủ đề nó trả lời tốt nhất là:</p>
+<ul>
+<li><strong>Gợi ý dòng xe theo nhu cầu:</strong> đi phố, đi làm hằng ngày, chở hai người, người mới tập xe ga.</li>
+<li><strong>Giá thuê tham khảo:</strong> ví dụ Honda Wave 150.000đ/ngày, Honda Vision 200.000đ/ngày, kèm lời nhắc giá cần cửa hàng xác nhận.</li>
+<li><strong>Thủ tục và giấy tờ:</strong> cần chuẩn bị gì khi nhận xe, quy trình kiểm tra và trả xe.</li>
+<li><strong>Giờ mở cửa và địa chỉ:</strong> cửa hàng làm việc {{ business.hours.display }} tại {{ business.address.full }}.</li>
+<li><strong>Khu vực giao nhận:</strong> Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội, trong giờ mở cửa.</li>
+</ul>
+<p>Nếu bạn muốn tìm hiểu thủ tục chi tiết, bài <a href="/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app/">tính năng tìm hiểu thủ tục trong app</a> mô tả cách hỏi theo từng bước.</p>
+
+<h2>Những gì trợ lý ảo không làm thay bạn</h2>
+<p>Biết giới hạn giúp bạn dùng trợ lý đúng cách và không kỳ vọng sai:</p>
+<ul>
+<li><strong>Không tự giữ xe:</strong> lời trả lời của trợ lý chưa phải xác nhận đặt xe. Xe chỉ được giữ khi cửa hàng xác nhận với bạn.</li>
+<li><strong>Không hứa dịch vụ cửa hàng không có:</strong> chẳng hạn cửa hàng không cung cấp bảo hiểm, không có chương trình khuyến mãi; trợ lý sẽ nói rõ như vậy.</li>
+<li><strong>Không đưa thông số kỹ thuật tự suy đoán:</strong> với câu hỏi về dung lượng pin hay quãng đường chạy của xe điện, trợ lý hướng dẫn bạn hỏi cửa hàng và kiểm tra trên xe.</li>
+<li><strong>Không thay lời khuyên pháp lý:</strong> về luật giao thông, trợ lý chỉ nhắc nguyên tắc chung và gợi ý bài viết liên quan.</li>
+</ul>
+
+<h2>Khi chuyển sang đặt xe: từ trò chuyện đến xác nhận</h2>
+<p>Sau khi trợ lý đã giúp bạn chọn xe và ước tính chi phí, quy trình đặt thường đi theo các bước:</p>
+<ol>
+<li>Tóm tắt lại nhu cầu: dòng xe, ngày giờ nhận, ngày giờ trả, có cần giao xe không.</li>
+<li>Liên hệ cửa hàng qua số {{ business.contact.phone_display }} để kiểm tra xe trống.</li>
+<li>Nhận xác nhận về giá, giấy tờ và tiền cọc. Mức cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
+<li>Nếu cần giao xe, thống nhất thời gian và phí trước khi chốt; giao nhận chỉ trong giờ mở cửa.</li>
+<li>Tự chuẩn bị bảo hiểm xe máy trước ngày nhận xe.</li>
+</ol>
+<p>Muốn cuộc trò chuyện ngắn gọn ngay từ đầu, bạn có thể tham khảo cách đặt câu trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho agent</a>.</p>
+
+<h2>Về dữ liệu và độ tin cậy của câu trả lời</h2>
+<h3>Thông tin tôi gõ vào có cần là thông tin cá nhân không?</h3>
+<p>Để hỏi về xe, giá và thủ tục, bạn không cần nhập số giấy tờ hay thông tin nhạy cảm. Những thông tin đó chỉ cần cung cấp trực tiếp với cửa hàng khi làm thủ tục thuê. Lời khuyên đơn giản: đừng gửi ảnh giấy tờ tùy thân vào khung chat.</p>
+<h3>Làm sao biết câu trả lời của trợ lý là đúng?</h3>
+<p>Câu trả lời dựa trên thông tin công bố của cửa hàng, nhưng giá và tình trạng xe luôn có thể thay đổi. Hãy coi đó là bản nháp kế hoạch và đối chiếu với trang <a href="/gia-thue/">giá thuê</a> hoặc xác nhận với cửa hàng trước khi đặt.</p>
+<h3>Làm sao phân biệt trợ lý thật với trang giả mạo?</h3>
+<p>Chỉ dùng trợ lý trên đúng website của cửa hàng và không chuyển tiền theo yêu cầu từ bất kỳ đường link lạ nào. Dấu hiệu nhận biết trang lừa đảo được tổng hợp trong bài <a href="/blog/app/canh-giac-voi-app-thue-xe-gia-mao/">cảnh giác với app thuê xe giả mạo</a>.</p>
+
+<h2>Sau khi nhận xe: trợ lý còn giúp gì?</h2>
+<p>Trong thời gian thuê, bạn vẫn có thể mở trợ lý để tra nhanh những việc như giờ trả xe, cách gia hạn, những gì cần kiểm tra trước khi trả. Riêng các tình huống cần xử lý ngay, chẳng hạn xe gặp trục trặc giữa đường hay bạn muốn đổi giờ trả, hãy gọi trực tiếp cho cửa hàng, vì những việc này cần người thật quyết định.</p>
+
+<h2>Câu hỏi thường gặp nhanh về trợ lý ảo tư vấn thuê xe</h2>
+<h3>Dùng trợ lý ảo có mất phí không?</h3>
+<p>Không. Trò chuyện với MotoAI trên website là miễn phí, bạn chỉ trả tiền thuê xe khi đã đặt với cửa hàng.</p>
+<h3>Trợ lý có trả lời bằng tiếng Anh không?</h3>
+<p>Bạn có thể đặt câu hỏi bằng tiếng Anh đơn giản. Phần chi tiết được bàn trong bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu/">trợ lý xử lý câu hỏi nhiều ngôn ngữ</a>.</p>
+<h3>Trợ lý có biết hôm nay còn xe Vision không?</h3>
+<p>Tình trạng xe trống cần cửa hàng kiểm tra thực tế. Trợ lý sẽ giúp bạn chuẩn bị thông tin, còn câu trả lời cuối cùng về xe còn hay hết đến từ cửa hàng.</p>
+<h3>Trợ lý có tư vấn xe 50cc cho học sinh không?</h3>
+<p>Trợ lý có thể giải thích lựa chọn xe 50cc và nhắc rằng giá là giá liên hệ. Bạn nên hỏi cửa hàng để biết xe có sẵn hay không.</p>
+
+<h2>Kết luận</h2>
+<p>Trợ lý ảo là người hướng dẫn đầu tiên, giúp bạn hiểu dòng xe, giá tham khảo và thủ tục trước khi liên hệ, nhưng quyết định giữ xe, giá chốt và xử lý sự cố vẫn thuộc về cửa hàng. Dùng đúng vai trò đó, bạn sẽ tiết kiệm thời gian cho cả hai bên. Khi đã sẵn sàng, liên hệ {{ business.contact.phone_display }} để được xác nhận. Đọc thêm trong <a href="/blog/app/">chuyên mục ứng dụng</a> hoặc mở <a href="/">trang chủ {{ business.brand }}</a> để bắt đầu trò chuyện với MotoAI.</p>

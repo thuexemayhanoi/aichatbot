@@ -1,0 +1,72 @@
+<p>Khi gõ một câu hỏi về giá vào trợ lý MotoAI trên website của {{ business.brand }}, nhiều người thắc mắc: trợ lý hiểu câu của mình đến đâu, vì sao có lúc trả lời ngay, có lúc lại hỏi ngược lại, và con số nhận được có đáng tin không. Bài này gom những câu hỏi thường gặp nhất về cách ứng dụng hiểu câu hỏi giá xe, trả lời ngắn gọn theo từng nhóm, kèm ví dụ câu hỏi thật để bạn thử ngay. Nếu bạn muốn hiểu cơ chế tổng quát, bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/">cách ứng dụng hiểu câu hỏi về giá xe</a> là điểm bắt đầu tốt.</p>
+
+<h2>Nhóm 1: Trợ lý cần biết gì để trả lời một câu hỏi giá?</h2>
+<h3>Một câu hỏi giá "đủ ý" gồm những gì?</h3>
+<p>Để đưa ra con số tham khảo sát nhất, trợ lý tìm trong câu của bạn ba thông tin chính và một thông tin phụ:</p>
+<ul>
+<li><strong>Dòng xe hoặc loại xe:</strong> Vision, Air Blade, Wave, Click, Mio, hoặc chỉ cần nói "xe số", "xe ga".</li>
+<li><strong>Thời gian thuê:</strong> số ngày, một tuần, một tháng, hoặc khoảng ngày cụ thể.</li>
+<li><strong>Thời điểm nhận:</strong> ngày và giờ dự kiến, để còn đối chiếu với khung giờ {{ business.hours.display }}.</li>
+<li><strong>Nhu cầu đi kèm:</strong> giao xe tận nơi, đi hai người, đi tỉnh.</li>
+</ul>
+<h3>Thiếu một thông tin thì sao?</h3>
+<p>Trợ lý sẽ hỏi lại đúng phần còn thiếu thay vì tự đoán. Ví dụ bạn gõ "thuê xe bao nhiêu", trợ lý thường hỏi bạn cần xe số hay xe ga và thuê mấy ngày. Câu hỏi lại này giúp tránh việc bạn nhận một con số không khớp nhu cầu.</p>
+
+<h2>Nhóm 2: Trợ lý hiểu cách nói đời thường đến đâu?</h2>
+<h3>Viết tắt, không dấu có hiểu không?</h3>
+<p>Phần lớn cách nói quen thuộc như "thuê vision 3 ngày", "xe ga 1 tuần bn tiền", "air blade thang" đều được nhận diện vì chứa tên xe và đơn vị thời gian rõ ràng. Tuy vậy, câu càng mơ hồ thì khả năng phải hỏi lại càng cao. Viết có dấu và tách rõ dòng xe với số ngày vẫn là cách nhanh nhất.</p>
+<h3>Hỏi kiểu so sánh có được không?</h3>
+<p>Được. Bạn có thể hỏi "Vision với Air Blade thuê một tuần chênh nhau bao nhiêu". Trợ lý sẽ đưa mức tham khảo của từng dòng: Vision 800.000đ–1.000.000đ/tuần, Air Blade 800.000đ/tuần, để bạn tự so. Mẹo hỏi gọn và nhanh có trong bài <a href="/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot/">cách hỏi giá xe nhanh bằng chatbot</a>.</p>
+<h3>Hỏi bằng tiếng Anh thì sao?</h3>
+<p>Khách nước ngoài có thể hỏi bằng tiếng Anh với cấu trúc đơn giản. Chi tiết về khả năng xử lý nhiều ngôn ngữ nằm trong bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu/">trợ lý xử lý câu hỏi đa ngôn ngữ</a>.</p>
+
+<h2>Nhóm 3: Con số trợ lý đưa ra lấy từ đâu?</h2>
+<p>Các mức giá trợ lý trả lời là giá tham khảo theo bảng giá công bố của cửa hàng, cũng là những con số bạn thấy ở trang <a href="/gia-thue/">giá thuê</a>. Vài ví dụ trợ lý thường trả lời:</p>
+<ul>
+<li>Honda Wave: tham khảo 150.000đ/ngày.</li>
+<li>Honda Vision: tham khảo 200.000đ/ngày, 1.800.000đ–2.000.000đ/tháng.</li>
+<li>Honda Air Blade: tham khảo 200.000đ/ngày, 1.400.000đ/tháng.</li>
+<li>Honda Click hoặc Yamaha Mio: tham khảo 150.000đ/ngày, 1.000.000đ–1.200.000đ/tháng.</li>
+</ul>
+<p>Với xe 50cc, xe máy điện và xe đạp điện, trợ lý sẽ trả lời là giá liên hệ, vì những dòng này cần cửa hàng kiểm tra trực tiếp. Các dòng không nằm trong bảng như SH, Lead hay Exciter cũng được chuyển sang hướng hỏi cửa hàng về xe trống thay vì đưa ra con số tự đặt.</p>
+
+<h2>Nhóm 4: Vì sao giá trợ lý báo chưa phải giá cuối cùng?</h2>
+<p>Trợ lý giúp bạn ước tính, còn việc chốt đơn luôn do cửa hàng xác nhận. Có ba lý do khiến con số cuối cùng có thể khác ước tính:</p>
+<ol>
+<li><strong>Cách tính ngày theo giờ nhận và trả:</strong> nhận tối hôm trước hay sáng hôm sau có thể đổi số ngày tính tiền.</li>
+<li><strong>Dải giá theo xe cụ thể:</strong> ví dụ gói tuần Vision là một khoảng, mức áp dụng phụ thuộc chiếc xe còn trống.</li>
+<li><strong>Chi phí ngoài tiền thuê:</strong> giao xe tận nơi chỉ trong giờ mở cửa, thời gian và phí phải thống nhất trước khi đặt; trợ lý không tự đưa ra mức phí giao.</li>
+</ol>
+<p>Vì vậy, sau khi có ước tính, bạn nên gọi hoặc nhắn cửa hàng để xác nhận. Cách tự cộng tổng chi phí được trình bày trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app/">cách tính giá thuê xe bằng app</a>.</p>
+
+<h2>Nhóm 5: Những câu hỏi giá mà trợ lý sẽ không trả lời bằng con số</h2>
+<p>Có những câu hỏi mà một con số tự đặt ra sẽ chỉ gây hiểu lầm. Với các câu sau, bạn sẽ nhận lời giải thích và hướng liên hệ thay vì một con số:</p>
+<ul>
+<li>Hỏi về khuyến mãi, mã giảm giá: cửa hàng không có chương trình giảm giá, trợ lý sẽ nói rõ điều đó.</li>
+<li>Hỏi phí bảo hiểm đi kèm: cửa hàng không cung cấp bảo hiểm, người thuê tự chuẩn bị bảo hiểm xe máy.</li>
+<li>Hỏi thông số như quãng đường một lần sạc, tốc độ tối đa: trợ lý hướng dẫn bạn hỏi cửa hàng và kiểm tra trên xe thực tế.</li>
+<li>Hỏi tiền đặt cọc: trợ lý cho biết khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, xác nhận khi đặt.</li>
+</ul>
+
+<h2>Nhóm 6: Mẫu câu hỏi giá nên dùng</h2>
+<p>Nếu không muốn bị hỏi lại, hãy sao chép một trong các mẫu sau và thay thông tin của bạn:</p>
+<ul>
+<li>"Thuê Honda Vision từ sáng thứ Bảy đến tối Chủ nhật, nhận ở cửa hàng, giá tham khảo bao nhiêu?"</li>
+<li>"Thuê xe số một tháng để đi làm ở Long Biên, giá tham khảo thế nào?"</li>
+<li>"So sánh giá thuê một tuần giữa Click và Air Blade."</li>
+<li>"Muốn giao xe đến Hoàn Kiếm lúc 10 giờ sáng, cần làm gì để xác nhận phí?"</li>
+</ul>
+<p>Muốn soạn câu hỏi hiệu quả cho các tình huống phức tạp hơn, đọc bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho agent thuê xe</a>.</p>
+
+<h2>Câu hỏi thường gặp thêm về cách trợ lý hiểu câu hỏi giá</h2>
+<h3>Trợ lý có nhớ câu hỏi giá lần trước của tôi không?</h3>
+<p>Đừng trông chờ trợ lý nhớ lịch sử giữa các lần truy cập. Mỗi khi hỏi lại, nhất là khi chuyển sang dòng xe khác, bạn nên ghi đủ dòng xe và số ngày trong cùng một câu để câu trả lời không bị lệch.</p>
+<h3>Trợ lý có cần cài đặt gì không?</h3>
+<p>Không. MotoAI là trợ lý chạy ngay trên website, bạn mở trình duyệt là dùng được, không phải tải ứng dụng.</p>
+<h3>Nếu trợ lý trả lời sai giá thì tôi làm gì?</h3>
+<p>Hãy đối chiếu với trang giá thuê và hỏi lại cửa hàng. Giá xác nhận trực tiếp từ cửa hàng luôn là căn cứ cuối cùng khi bạn đặt xe.</p>
+<h3>Hỏi giá vào buổi tối muộn có được trả lời không?</h3>
+<p>Trợ lý trên website trả lời được ngoài giờ, nhưng việc xác nhận đơn và giao nhận xe chỉ diễn ra trong giờ mở cửa của cửa hàng.</p>
+
+<h2>Kết luận</h2>
+<p>Trợ lý hiểu câu hỏi giá tốt nhất khi bạn nêu đủ dòng xe, thời gian thuê và thời điểm nhận; con số nhận được là giá tham khảo để bạn lên kế hoạch, còn giá chốt luôn do cửa hàng xác nhận. Khi đã có ước tính, gọi {{ business.contact.phone_display }} hoặc ghé {{ business.address.full }} để giữ xe. Xem thêm các bài hướng dẫn trong <a href="/blog/app/">chuyên mục ứng dụng</a>, hoặc quay lại <a href="/">trang chủ</a> và thử hỏi MotoAI bằng một trong các mẫu câu ở trên.</p>
