@@ -26145,6 +26145,150 @@
       "url": "/blog/xe-dien/xe-dien-het-han-pin-mua-mua/",
       "category": "EV",
       "text": "Bản chất lão hóa pin, dấu hiệu và cách ứng xử chung đã được viết trong bài xe điện hết hạn pin ; cùng chủ đề nhưng trong điều kiện nắng nóng thì xem xe điện hết hạn pin mùa hè . Ở đây mình tập trung vào mưa và độ ẩm."
+    },
+    {
+      "id": "BA-1448:c1",
+      "article_id": "BA-1448",
+      "title": "Giá Thuê xe Máy Theo Ngày Chạy Phố",
+      "url": "/blog/thue-xe/gia-thue-xe-may-theo-ngay-chay-pho/",
+      "category": "RENT",
+      "text": "Thuê xe theo ngày để chạy loanh quanh trong phố là kiểu thuê ngắn và đơn giản nhất, nhưng cũng là kiểu dễ trả thừa tiền nhất nếu bạn chỉ nhìn vào con số giá ngày. Một chiếc xe thuê để đi cà phê, đi chợ, chạy vài việc lặt vặt quanh Hoàn Kiếm, Long Biên hay Ba Đình không đòi hỏi dung tích lớn hay cốp rộng, và quãng đường mỗi ngày thường ngắn tới mức tiền xăng gần như không đáng kể. Bài này giúp bạn đọc giá thuê xe máy theo ngày dưới góc nhìn chạy phố: dòng nào đáng tiền cho mục đích này, một ngày được tính thế nào, khi nào thuê ngày hết lợi và những khoản nhỏ nào cộng lại thành khoản lớn sau vài ngày trong thành phố."
+    },
+    {
+      "id": "BA-1448:c2",
+      "article_id": "BA-1448",
+      "title": "Giá Thuê xe Máy Theo Ngày Chạy Phố",
+      "url": "/blog/thue-xe/gia-thue-xe-may-theo-ngay-chay-pho/",
+      "category": "RENT",
+      "text": "Với mục đích chạy phố, nhóm xe nhỏ gọn luôn được ưu tiên hơn xe to, và tình cờ đó cũng là nhóm có giá ngày thấp. Mức dưới đây là giá tham khảo, bạn xác nhận lại với cửa hàng hoặc xem trang bảng giá thuê xe trước khi đặt:"
+    },
+    {
+      "id": "BA-1444:c1",
+      "article_id": "BA-1444",
+      "title": "Giao xe Tại Sân Bay Nội Bài Tại Hà Nội",
+      "url": "/blog/huong-dan/giao-xe-tai-san-bay-noi-bai-tai-ha-noi/",
+      "category": "GUIDE",
+      "text": "Nội Bài là cửa ngõ hàng không duy nhất của Hà Nội, nằm ở huyện Sóc Sơn phía bắc thành phố, cách trung tâm một quãng đường dài qua cầu Nhật Tân hoặc cầu Thăng Long. Vì xa như vậy, câu hỏi \"có giao xe máy thuê ra tận sân bay được không\" luôn đi kèm câu hỏi thứ hai: có đáng không, hay nên nhận xe ở chỗ khác rồi tự đi. Bài viết này đặt dịch vụ giao xe tại sân bay Nội Bài vào đúng bản đồ Hà Nội: cửa hàng {{ business.brand }} ở Long Biên nằm ở đâu so với sân bay, ba cách nhận xe khi vừa đáp, đường nào từ Nội Bài vào các khu trung tâm cho người chạy xe máy, và những điều phải chốt trước chuyến bay. Phần thủ tục chung của hình thức này đã có trong bà"
+    },
+    {
+      "id": "BA-1444:c2",
+      "article_id": "BA-1444",
+      "title": "Giao xe Tại Sân Bay Nội Bài Tại Hà Nội",
+      "url": "/blog/huong-dan/giao-xe-tai-san-bay-noi-bai-tai-ha-noi/",
+      "category": "GUIDE",
+      "text": "Nhìn trên bản đồ, Nội Bài nằm phía bắc sông Hồng. Cửa hàng tại {{ business.address.full }} cũng nằm bên bờ bắc, ở quận Long Biên, nên đường từ sân bay tới cửa hàng không phải xuyên qua trung tâm thành phố: có thể đi theo hướng Đông Anh rồi qua cầu Đông Trù, hoặc theo đường lớn qua cầu Nhật Tân rồi vòng về phía đông. Trong khi đó, khách ở Phố Cổ, Hoàn Kiếm hay Ba Đình phải qua cầu vào nội thành. Điều này dẫn tới một nhận xét thực dụng: với khách sẽ ở Long Biên hoặc Gia Lâm, ghé cửa hàng nhận xe trên đường từ sân bay về là phương án gọn; với khách ở trung tâm, nhận xe tại khách sạn thường hợp lý hơn nhận ở sân bay rồi tự chạy vào trong lúc còn "
+    },
+    {
+      "id": "BA-1441:c1",
+      "article_id": "BA-1441",
+      "title": "Quy Trình tư Vấn tự Động Chọn xe Cho Khách Nước Ngoài",
+      "url": "/blog/app/quy-trinh-tu-van-tu-dong-chon-xe-cho-khach-nuoc-ngoai/",
+      "category": "APP",
+      "text": "Một khách nước ngoài mở website của {{ business.brand }} lần đầu thường có cùng một bộ băn khoăn: tôi có được phép lái xe máy ở đây không, tôi chưa từng đi xe số thì chọn gì, phải mang giấy tờ gì, xe có giao tới hostel không. Trợ lý MotoAI, một ứng dụng web chạy ngay trên trình duyệt, được thiết kế để dẫn khách qua các câu hỏi đó theo một thứ tự cố định, gọi là quy trình tư vấn tự động chọn xe. Bài này mô tả quy trình ấy ở phiên bản dành cho khách nước ngoài: các chặng khác gì so với khách Việt, ví dụ hội thoại bằng tiếng Anh, và ranh giới giữa phần trợ lý xử lý với phần nhân viên cửa hàng phải xác nhận. Bản quy trình chung nằm trong bài quy "
+    },
+    {
+      "id": "BA-1441:c2",
+      "article_id": "BA-1441",
+      "title": "Quy Trình tư Vấn tự Động Chọn xe Cho Khách Nước Ngoài",
+      "url": "/blog/app/quy-trinh-tu-van-tu-dong-chon-xe-cho-khach-nuoc-ngoai/",
+      "category": "APP",
+      "text": "Khách Việt thường đã biết mình lái được xe gì và cần giấy tờ gì, nên luồng tư vấn cho họ bắt đầu ngay từ mục đích và ngân sách. Khách nước ngoài lại có hai câu phải trả lời trước khi bàn tới dòng xe: giấy phép lái xe của họ có dùng được ở Việt Nam không, và kinh nghiệm lái thực tế của họ ra sao. Rất nhiều du khách đến từ nơi chỉ lái ô tô, hoặc từng thuê xe ga ở một nước khác nhưng chưa bao giờ đi xe số. Nếu bỏ qua hai câu này, gợi ý xe sẽ sai ngay từ đầu. Vì vậy trợ lý nhận ra ngôn ngữ bạn dùng, chuyển sang trả lời bằng ngôn ngữ đó như mô tả ở bài trợ lý thuê xe xử lý câu hỏi đa ngôn ngữ , rồi mở luồng có thêm hai chặng đầu dành riêng cho ngư"
+    },
+    {
+      "id": "BA-1442:c1",
+      "article_id": "BA-1442",
+      "title": "Thuê xe Máy Giá rẻ Chạy Phố",
+      "url": "/blog/thue-xe/thue-xe-may-gia-re-chay-pho/",
+      "category": "RENT",
+      "text": "Người cần một chiếc xe để chạy phố vài ngày, đi làm hồ sơ, gặp bạn, ăn uống quanh trung tâm, thường chỉ muốn một điều: rẻ nhất có thể mà không phải lo xe hỏng giữa đường. Tin tốt là chạy phố là kiểu dùng xe dễ tiết kiệm nhất, vì quãng đường ngắn, tốc độ thấp và không cần xe lớn. Tin xấu là phần lớn người thuê vẫn trả nhiều hơn mức cần vì chọn sai dòng xe, nhận xe sai cách và để các khoản lặt vặt trong phố cộng dồn. Bài này đi qua từng chỗ bạn có thể cắt mà không cắt vào an toàn, kèm một ví dụ ngân sách ba ngày để bạn tự so với cách đi lại khác. Nguyên tắc chung về thuê rẻ nằm trong bài thuê xe máy giá rẻ ; ở đây chỉ bàn phần dành riêng cho ng"
+    },
+    {
+      "id": "BA-1442:c2",
+      "article_id": "BA-1442",
+      "title": "Thuê xe Máy Giá rẻ Chạy Phố",
+      "url": "/blog/thue-xe/thue-xe-may-gia-re-chay-pho/",
+      "category": "RENT",
+      "text": "Với mục đích chạy phố, xe càng gọn càng lợi: dễ luồn ngõ, dễ gửi, ít hao xăng, và giá ngày thấp hơn. Theo mức tham khảo trên trang bảng giá thuê xe , nhóm rẻ nhất gồm:"
+    },
+    {
+      "id": "BA-1446:c1",
+      "article_id": "BA-1446",
+      "title": "Thuê xe Máy Quanh Long Biên Buổi Tối",
+      "url": "/blog/dia-phuong/thue-xe-may-quanh-long-bien-buoi-toi/",
+      "category": "LOCAL",
+      "text": "Long Biên về tối có một nhịp riêng mà ban ngày không có: gió sông Hồng thổi mát dọc đê, cầu Long Biên lên đèn vàng, các quán ăn dọc Nguyễn Văn Cừ và Ngọc Lâm kín bàn, còn bên kia cầu Chương Dương là cả Phố Cổ đang vào giờ ăn khuya. Một chiếc xe máy thuê cho buổi tối ở khu này phải tính khác với thuê ban ngày: giờ nhận phải khớp với giờ đóng cửa của cửa hàng, đèn xe quan trọng hơn cốp xe, chỗ gửi ban đêm phải nghĩ trước, và trả xe thường rơi vào sáng hôm sau. Bài viết này giúp bạn lên lịch thuê xe máy quanh Long Biên cho một buổi tối trọn vẹn, từ lúc lấy xe tại cửa hàng {{ business.brand }} trên trục Nguyễn Văn Cừ tới lúc trả xe; bản dành cho "
+    },
+    {
+      "id": "BA-1446:c2",
+      "article_id": "BA-1446",
+      "title": "Thuê xe Máy Quanh Long Biên Buổi Tối",
+      "url": "/blog/dia-phuong/thue-xe-may-quanh-long-bien-buoi-toi/",
+      "category": "LOCAL",
+      "text": "Cửa hàng mở cửa {{ business.hours.display }}, nên mốc quan trọng nhất với người đi tối là chín giờ. Bạn không thể nhận xe sau giờ đó, và cũng không thể trả xe sau giờ đó. Có hai cách xếp lịch hợp lý:"
+    },
+    {
+      "id": "BA-1450:c1",
+      "article_id": "BA-1450",
+      "title": "Thuê xe và Check-in Khách Sạn Tại Hà Nội",
+      "url": "/blog/huong-dan/thue-xe-va-check-in-khach-san-tai-ha-noi/",
+      "category": "GUIDE",
+      "text": "Khách đến Hà Nội thường rơi vào cùng một tình huống: tàu hoặc máy bay đáp lúc giữa trưa, khách sạn chỉ cho nhận phòng từ đầu giờ chiều, còn chiếc xe máy thuê thì chưa biết hẹn giao lúc nào cho khớp. Bài viết này đặt câu chuyện thuê xe và check-in khách sạn vào đúng bối cảnh Hà Nội: khách sạn tập trung ở khu nào, đường từ sân bay hay ga tàu về mất bao lâu, cửa hàng giao xe được tới đâu và trong khung giờ nào, rồi từ đó giúp bạn xếp lịch sao cho không phải chờ ở sảnh, cũng không để xe nằm không trong bãi gửi của khách sạn."
+    },
+    {
+      "id": "BA-1450:c2",
+      "article_id": "BA-1450",
+      "title": "Thuê xe và Check-in Khách Sạn Tại Hà Nội",
+      "url": "/blog/huong-dan/thue-xe-va-check-in-khach-san-tai-ha-noi/",
+      "category": "GUIDE",
+      "text": "Phần lớn khách du lịch chọn khách sạn trong Phố Cổ hoặc quanh hồ Hoàn Kiếm, nhóm thứ hai chọn Tây Hồ để yên tĩnh hơn, còn khách công tác hay ở Ba Đình và dọc trục Long Biên, Gia Lâm vì gần đường đi các khu công nghiệp. Cả bốn khu này đều nằm trong phạm vi cửa hàng {{ business.brand }} có thể giao xe, nhưng mỗi khu có một kiểu rắc rối riêng khi nhận xe trước cửa khách sạn."
+    },
+    {
+      "id": "BA-1447:c1",
+      "article_id": "BA-1447",
+      "title": "Ứng Dụng hỗ Trợ Thuê xe Theo Tháng Cho Khách Nước Ngoài",
+      "url": "/blog/app/ung-dung-ho-tro-thue-xe-theo-thang-cho-khach-nuoc-ngoai/",
+      "category": "APP",
+      "text": "Khách nước ngoài ở lại Hà Nội một tháng trở lên, dù là dạy học, làm việc từ xa hay đi thực tập, gần như đều cần một chiếc xe máy riêng thay vì gọi xe công nghệ mỗi ngày. Khó khăn của họ không nằm ở giá, mà ở ba thứ: không đọc được bảng giá tiếng Việt, không chắc giấy tờ của mình có được chấp nhận hay không, và không biết hỏi cửa hàng thế nào cho đủ ý. Trợ lý MotoAI là một ứng dụng web chạy trên trình duyệt của website {{ business.brand }}, được thiết kế để gỡ đúng ba nút thắt đó trước khi bạn liên hệ cửa hàng. Bài này hướng dẫn khách nước ngoài dùng trợ lý để chuẩn bị gói thuê theo tháng, từ cách đặt câu hỏi bằng tiếng Anh tới những việc vẫn "
+    },
+    {
+      "id": "BA-1447:c2",
+      "article_id": "BA-1447",
+      "title": "Ứng Dụng hỗ Trợ Thuê xe Theo Tháng Cho Khách Nước Ngoài",
+      "url": "/blog/app/ung-dung-ho-tro-thue-xe-theo-thang-cho-khach-nuoc-ngoai/",
+      "category": "APP",
+      "text": "Khi thuê vài ngày, bạn có thể đến cửa hàng, chỉ tay vào chiếc xe và trả tiền. Thuê một tháng thì khác: bạn cần hiểu giá tháng so với giá ngày, cần biết mình được phép lái loại xe nào, cần xếp lịch giao xe tới chỗ ở và cần hiểu tiền cọc hoạt động ra sao. Hỏi tất cả bằng tin nhắn với người không cùng ngôn ngữ dễ sót ý. Trợ lý trên website trả lời ngay trên trình duyệt, không cần cài gì, bạn gõ câu hỏi bằng ngôn ngữ của mình và nhận lại giải thích có cấu trúc để đọc lại bất cứ lúc nào. Bản tổng quan về gói tháng nằm trong bài ứng dụng hỗ trợ thuê xe theo tháng ; bài hiện tại chỉ bàn phần dành riêng cho người không phải dân địa phương."
+    },
+    {
+      "id": "BA-1449:c1",
+      "article_id": "BA-1449",
+      "title": "xe Điện Giảm Tiếng ồn Phố Mùa Mưa",
+      "url": "/blog/xe-dien/xe-dien-giam-tieng-on-pho-mua-mua/",
+      "category": "EV",
+      "text": "Mùa mưa ở Hà Nội làm con phố ồn theo một cách khác với mùa nắng. Mưa gõ lên mũ bảo hiểm và áo mưa, lốp xe rít trên mặt đường ướt, dòng xe dồn lại ở các điểm ngập và tiếng còi dày lên vì ai cũng muốn thoát khỏi cơn mưa sớm. Trong lớp âm thanh đó, phần tiếng động cơ xe xăng cầm chừng giữa đám tắc là thứ xe máy điện có thể gỡ bỏ cho bạn. Nhưng im lặng dưới mưa cũng kéo theo vài điều phải để ý: người khác khó nghe thấy bạn hơn, chính bạn cũng nghe đường kém hơn khi mưa to. Bài này nói về cả hai mặt, cùng cách chọn và kiểm tra xe điện thuê cho những tuần mưa dài; phần tiếng ồn vào mùa nắng đã có trong bài xe điện giảm tiếng ồn phố mùa hè ."
+    },
+    {
+      "id": "BA-1449:c2",
+      "article_id": "BA-1449",
+      "title": "xe Điện Giảm Tiếng ồn Phố Mùa Mưa",
+      "url": "/blog/xe-dien/xe-dien-giam-tieng-on-pho-mua-mua/",
+      "category": "EV",
+      "text": "Khi trời mưa, âm thanh quanh người lái gồm ba lớp. Lớp gần nhất là tiếng mưa trên mũ và vai áo, lớp giữa là tiếng lốp và nước bắn từ xe hai bên, lớp xa là còi và động cơ của cả dòng xe đang nhích từng mét. Xe máy điện không thay đổi hai lớp đầu, nhưng ở lớp thứ ba nó bỏ được phần của chính bạn: không có tiếng nổ máy lúc chờ, không có độ rung truyền lên tay khi đứng im giữa đám tắc. Sự khác biệt này rõ nhất vào buổi chiều mưa khi dòng xe dừng lâu trước đèn đỏ hoặc trước một đoạn ngập; người đi xe xăng vẫn nghe máy mình chạy, người đi xe điện thì chỉ nghe mưa. So sánh chung giữa hai nhóm xe nằm trong bài khác biệt xe điện và xe xăng ."
+    },
+    {
+      "id": "BA-1443:c1",
+      "article_id": "BA-1443",
+      "title": "xe Điện và Mùi Môi Trường Mùa Mưa",
+      "url": "/blog/xe-dien/xe-dien-va-mui-moi-truong-mua-mua/",
+      "category": "EV",
+      "text": "Nếu mùa hè làm mùi phố bốc lên vì nóng, thì mùa mưa làm mùi phố đọng lại vì ẩm. Không khí nặng nước giữ khói xả lơ lửng lâu hơn ở các điểm tắc, nước mưa cuốn váng dầu trên mặt đường thành từng vệt loang, áo mưa và mũ bảo hiểm ướt hai ngày chưa khô bắt đầu có mùi mốc. Trong khung đó, xe máy điện giúp bạn bớt được phần mùi do chính mình tạo ra, nhưng cũng mang theo vài mùi riêng của mùa ẩm mà người thuê cần biết để phân biệt đâu là bình thường, đâu là dấu hiệu phải dừng xe. Bài này bàn riêng góc mùa mưa; nền tảng chung nằm trong bài xe điện và mùi môi trường , còn phiên bản trời nóng ở bài xe điện và mùi môi trường mùa hè ."
+    },
+    {
+      "id": "BA-1443:c2",
+      "article_id": "BA-1443",
+      "title": "xe Điện và Mùi Môi Trường Mùa Mưa",
+      "url": "/blog/xe-dien/xe-dien-va-mui-moi-truong-mua-mua/",
+      "category": "EV",
+      "text": "Ba thứ đổi khác khi mưa kéo dài. Thứ nhất, độ ẩm cao làm khói xả không tan nhanh như ngày khô; đứng chờ đèn đỏ dưới mưa phùn, bạn ngửi thấy khói của xe phía trước rõ hơn hẳn ngày nắng gió. Thứ hai, nước mưa gom dầu nhớt rơi vãi trên đường thành màng mỏng, nhất là ở ngã tư và chỗ xe hay dừng, sinh ra mùi dầu lẫn mùi nước đọng rất đặc trưng của Hà Nội sau cơn mưa. Thứ ba, đồ dùng của chính bạn trở thành nguồn mùi: áo mưa gập lại khi còn ướt, lót mũ bảo hiểm thấm nước, găng tay không kịp khô. Xe xăng góp thêm vào hai nhóm đầu bằng khói và dầu của nó; xe điện thì không."
     }
   ]
 }
