@@ -12034,6 +12034,28 @@
       "entry_sha256": "14ece0b42f3dce609e467328811dcfed848598e2ee70635b76952f5ed1155607",
       "production_status": 200,
       "verified_at": "2026-10-13T04:50:28.147Z"
+    },
+    "BA-1135": {
+      "article_id": "BA-1135",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/web-app-va-app-native-khac-gi-nhau-cho-khach-nuoc-ngoai/",
+      "publication_sha": "71d4932fac5451bf918785876060102df88a5209",
+      "page_sha256": "af3d40d9f79442a1a9c8d821ebe7323597b77c309af0f37e82aad5657466025b",
+      "body_sha256": "96d54968e20d73cca0a384bfb94ed69e3e6a8b96a1188975bf47b09d2e02ce13",
+      "entry_sha256": "864ba169a9f22f13008249876aecf67625170e19436e2912a4d4d61467a7a832",
+      "production_status": 200,
+      "verified_at": "2026-10-13T04:52:59.200Z"
+    },
+    "BA-1136": {
+      "article_id": "BA-1136",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-honda-air-blade-cho-gia-dinh/",
+      "publication_sha": "71d4932fac5451bf918785876060102df88a5209",
+      "page_sha256": "9a40dda3c0181eff7e77d9025cf97cac245ed375f442686fa303370f5c14eba1",
+      "body_sha256": "8b62751a36e9e9cdd576072f50ae0393e9c387ba5b1681f1ad54109d0c4626ee",
+      "entry_sha256": "6438ef13c49c08aac01070907e77883b662c48173aadb99f7edbbecf9859ed66",
+      "production_status": 200,
+      "verified_at": "2026-10-13T04:52:59.188Z"
     }
   }
 }
