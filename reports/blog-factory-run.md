@@ -5114,3 +5114,10 @@
 - 2026-10-13 QA PASS BA-1919 score=95
 - 2026-10-13 QA PASS BA-1920 score=95
 - 2026-10-13 PUBLISHED 10 (BA-1911, BA-1912, BA-1913, BA-1914, BA-1915, BA-1916, BA-1917, BA-1918, BA-1919, BA-1920) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-13 CLAIM 1: BA-1181
+- 2026-10-13 FINISH BA-1181
+- 2026-10-13 CLAIM 1: BA-1182
+- 2026-10-13 FINISH BA-1182
+- 2026-10-13 QA PASS BA-1181 score=100
+- 2026-10-13 QA PASS BA-1182 score=95
+- 2026-10-13 PUBLISHED 2 (BA-1181, BA-1182) — one grouped build, pages, matrix, indexes, sitemap consistent
