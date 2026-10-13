@@ -1,0 +1,65 @@
+<p>Ở quầy cửa hàng, nếu thiếu một giấy tờ, bạn có thể hỏi ngay nhân viên và tìm cách xử lý tại chỗ. Khi xe được giao đến tận nhà hay khách sạn, buổi bàn giao diễn ra ngắn hơn, người giao còn lịch khác, và mọi thiếu sót đều có thể khiến buổi hẹn phải dời. Vì vậy, tính năng tìm hiểu thủ tục trong app tận nơi, tức phần hỏi đáp về thủ tục của trợ lý trên website, trở nên đặc biệt hữu ích: bạn tra cứu trước những gì cần chuẩn bị, những gì sẽ được kiểm tra và những gì cần ký, để khi người giao đến, mọi việc xong trong một lần.</p>
+
+<h2>Thủ tục khi nhận xe tại chỗ ở khác gì nhận tại cửa hàng</h2>
+<p>Về bản chất, giấy tờ và điều kiện thuê không thay đổi. Điểm khác nằm ở bối cảnh:</p>
+<ul>
+<li><strong>Thời gian bàn giao ngắn hơn:</strong> người giao cần hoàn tất trong khung đã hẹn, nên bạn phải sẵn sàng ngay.</li>
+<li><strong>Không có quầy để xem nhiều xe:</strong> bạn nhận đúng chiếc đã chốt, việc kiểm tra cần kỹ ngay từ đầu.</li>
+<li><strong>Khung giờ bị giới hạn:</strong> việc giao chỉ diễn ra trong giờ mở cửa {{ business.hours.display }}, thời gian và phí giao được xác nhận trước.</li>
+<li><strong>Địa điểm phụ thuộc vào bạn:</strong> sảnh khách sạn, cổng tòa nhà hay đầu ngõ cần đủ chỗ để dừng xe và kiểm tra an toàn.</li>
+</ul>
+<p>Nếu bạn chưa từng dùng tính năng này, bài <a href="/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app/">tính năng tìm hiểu thủ tục trong app</a> giới thiệu cách hoạt động cơ bản và các nhóm câu hỏi chính.</p>
+
+<h2>Những câu nên hỏi trợ lý trước buổi giao</h2>
+<p>Hãy đặt câu hỏi theo trình tự từ lúc chuẩn bị đến lúc trả xe:</p>
+<ol>
+<li>Cần mang những giấy tờ gì khi nhận xe tại địa chỉ của mình?</li>
+<li>Mức đặt cọc cho dòng xe đã chọn là bao nhiêu và giao nhận theo cách nào?</li>
+<li>Khi nhận xe cần kiểm tra những điểm nào và ghi nhận ra sao?</li>
+<li>Giấy tờ thuê có những điều khoản gì về thời hạn, trả muộn và gia hạn?</li>
+<li>Khi kết thúc, trả xe ở cửa hàng hay có thể hẹn nhận lại tại chỗ?</li>
+</ol>
+<p>Trợ lý trả lời theo thông tin đã được cửa hàng xác minh. Với những câu hỏi về tình huống riêng, chẳng hạn bạn chỉ có hộ chiếu hoặc muốn người khác nhận thay, hãy để nhân viên trả lời trực tiếp. Bài <a href="/blog/app/app-ho-tro-thu-tuc-thue-xe/">app hỗ trợ thủ tục thuê xe</a> liệt kê thêm những câu hỏi thường gặp ở từng giai đoạn.</p>
+
+<h2>Chuẩn bị giấy tờ và tiền đặt cọc trước khi người giao đến</h2>
+<p>Dựa trên câu trả lời của trợ lý, hãy để sẵn mọi thứ ở một chỗ:</p>
+<ul>
+<li>Giấy tờ tùy thân bản gốc.</li>
+<li>Giấy phép lái xe đúng hạng cho chiếc xe sắp được giao tới.</li>
+<li>Khoản đặt cọc trong mức {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, tùy loại xe và được xác nhận khi đặt.</li>
+<li>Giấy tờ bảo hiểm xe máy của bạn, vì cửa hàng không cung cấp bảo hiểm cho người thuê.</li>
+<li>Điện thoại đủ pin để chụp ảnh và lưu thông tin liên hệ.</li>
+</ul>
+<p>Danh sách giấy tờ đầy đủ có trong bài <a href="/blog/huong-dan/giay-to-can-khi-thue-xe/">giấy tờ cần khi thuê xe</a>.</p>
+
+<h2>Mười phút bàn giao trước cửa: checklist kiểm tra</h2>
+<p>Khi người giao đến, hãy dắt xe vào chỗ an toàn rồi làm lần lượt:</p>
+<ul>
+<li>Đi một vòng quanh xe, chụp ảnh bốn góc, cận cảnh các vết trầy có sẵn.</li>
+<li>Kiểm tra lốp trước và sau, ấn thử xem có non hơi không.</li>
+<li>Bóp thử phanh trước, phanh sau.</li>
+<li>Bật đèn pha, đèn xi nhan, bấm còi.</li>
+<li>Khởi động máy, để nổ vài giây và nghe tiếng máy.</li>
+<li>Ghi lại mức xăng đang có.</li>
+<li>Mở cốp, kiểm tra khóa cốp và khóa xe.</li>
+<li>Đọc kỹ giấy tờ trước khi ký và giữ lại bản của mình.</li>
+</ul>
+<p>Việc chụp ảnh không phải vì thiếu tin tưởng, mà để cả hai bên có căn cứ rõ ràng khi trả xe. Bài <a href="/blog/huong-dan/kiem-tra-xe-khi-nhan/">kiểm tra xe khi nhận</a> hướng dẫn chi tiết từng điểm. Trình tự giao nhận tại chỗ nằm trong bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">giao xe tận nơi: thủ tục</a>.</p>
+
+<h2>Thủ tục trả xe sau khi đã nhận tận nơi</h2>
+<p>Nhận tận nơi không có nghĩa là trả cũng tận nơi. Bạn có thể mang xe về cửa hàng tại {{ business.address.full }}, hoặc hỏi xem cửa hàng có thể nhận lại xe tại địa chỉ của bạn không. Nếu chọn cách thứ hai, hãy xác nhận trước thời gian và phí như khi giao.</p>
+<p>Khi trả, hai bên đối chiếu tình trạng xe với ảnh lúc nhận, kiểm tra mức xăng theo thỏa thuận, rồi hoàn tất phần hoàn trả tiền đặt cọc. Hãy dùng trợ lý để hỏi lại các bước này một ngày trước khi trả, tránh bỏ sót.</p>
+
+<h2>Giới hạn của tính năng tìm hiểu thủ tục</h2>
+<p>Tính năng này giúp bạn chuẩn bị, nhưng không thay thế xác nhận của cửa hàng. Trợ lý không giữ xe, không tự hẹn giờ giao, không báo phí giao chính thức và không xử lý các trường hợp đặc biệt. Với những việc đó, hãy liên hệ {{ business.contact.phone_display }} trong giờ mở cửa. Trợ lý cũng không phải ứng dụng cài đặt trên điện thoại, mà là công cụ trực tuyến chạy trên website.</p>
+
+<h2>Câu hỏi thường gặp về tính năng tìm hiểu thủ tục trong app tận nơi</h2>
+<h3>Tôi là khách nước ngoài, thủ tục khi nhận xe tại khách sạn có khác không?</h3>
+<p>Hãy hỏi trợ lý về giấy tờ cần thiết, sau đó xác nhận với nhân viên cho trường hợp của bạn. Giấy phép lái xe phải phù hợp với quy định khi điều khiển xe tại Việt Nam.</p>
+<h3>Có thể ký giấy tờ trước qua tin nhắn không?</h3>
+<p>Hãy hỏi cửa hàng về cách làm cụ thể. Dù vậy, việc kiểm tra xe và ghi nhận tình trạng vẫn cần thực hiện trực tiếp khi nhận.</p>
+<h3>Nếu thiếu một giấy tờ khi người giao đến thì sao?</h3>
+<p>Buổi giao có thể phải dời. Đây là lý do nên tra cứu thủ tục qua trợ lý từ hôm trước và chuẩn bị đủ.</p>
+
+<h2>Kết luận</h2>
+<p>Dành mười phút tra cứu thủ tục qua trợ lý trước buổi giao giúp bạn tiết kiệm cả buổi chờ đợi và tránh phải dời hẹn. {{ business.brand }} giao xe trong khu vực Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội, khung {{ business.hours.display }}. Bắt đầu tra cứu ngay trên <a href="/">trang chủ</a>, xem phiên bản dành cho thủ đô tại bài <a href="/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app-tai-ha-noi/">tìm hiểu thủ tục trong app tại Hà Nội</a> và các chủ đề khác trong <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>

@@ -1,0 +1,67 @@
+<p>Tư vấn tự động chọn xe thường được hình dung như một cuộc trò chuyện ngắn: bạn nói nhu cầu, trợ lý gợi ý một dòng xe. Nhưng khi chiếc xe đó sẽ được mang đến tận địa chỉ của bạn, quy trình cần thêm vài mắt xích: khu vực giao có nằm trong phạm vi phục vụ không, khung giờ nào khả thi, ai sẽ nhận xe và cần chuẩn bị gì trước khi người giao đến. Bài này mô tả quy trình tư vấn tự động chọn xe tận nơi theo từng bước, chỉ ra đâu là phần trợ lý làm được, đâu là phần nhân viên cửa hàng phải xác nhận, để bạn đi từ câu hỏi đầu tiên đến lúc cầm chìa khóa mà không bị đứt quãng.</p>
+
+<h2>Tổng quan quy trình năm bước</h2>
+<ol>
+<li><strong>Khai báo nhu cầu và nơi nhận:</strong> mục đích dùng xe, số người, kinh nghiệm lái và khu vực bạn muốn nhận xe.</li>
+<li><strong>Nhận gợi ý dòng xe:</strong> trợ lý đối chiếu nhu cầu với danh mục xe và giá tham khảo đã được cửa hàng xác minh.</li>
+<li><strong>Kiểm tra phạm vi giao:</strong> xác định địa chỉ của bạn có thuộc khu vực phục vụ hay không.</li>
+<li><strong>Chuyển sang nhân viên để chốt:</strong> xác nhận còn xe, giờ giao, phí giao và mức đặt cọc.</li>
+<li><strong>Chuẩn bị nhận xe tại chỗ:</strong> giấy tờ, ảnh chụp tình trạng xe và các câu hỏi cuối.</li>
+</ol>
+<p>Phiên bản cơ bản của quy trình này, khi bạn tự đến cửa hàng, được trình bày trong bài <a href="/blog/app/quy-trinh-tu-van-tu-dong-chon-xe/">quy trình tư vấn tự động chọn xe</a>. Phần dưới đây tập trung vào những điểm khác biệt khi xe được giao đến bạn.</p>
+
+<h2>Bước một: khai báo cho đúng kiểu giao tận nơi</h2>
+<p>So với nhận tại quầy, bạn cần cho trợ lý biết thêm hai thông tin: khu vực nhận và khung giờ có mặt. Một khai báo tốt trông như sau: "Hai người, đi lại trong nội thành, một người mới lái, muốn nhận xe ở khách sạn khu Hoàn Kiếm vào sáng thứ năm." Chỉ một câu nhưng đã đủ để trợ lý loại bỏ những dòng xe không phù hợp và để nhân viên biết bạn cần giao vào đâu, lúc nào.</p>
+<p>Không cần gửi địa chỉ chi tiết ngay từ đầu. Tên phường hoặc khu là đủ cho bước tư vấn, địa chỉ cụ thể chỉ cần khi cửa hàng xác nhận lịch giao.</p>
+
+<h2>Bước hai: gợi ý xe theo nơi ở và quãng đường</h2>
+<p>Trợ lý gợi ý dựa trên nhu cầu bạn mô tả và dữ liệu xe của cửa hàng. Một vài tình huống điển hình:</p>
+<ul>
+<li><strong>Ở phố cổ, chủ yếu đi quanh trung tâm:</strong> xe ga nhỏ gọn như Honda Vision, giá tham khảo 200.000đ/ngày, hoặc Honda Click, Yamaha Mio khoảng 150.000đ/ngày, dễ len phố hẹp và dễ gửi.</li>
+<li><strong>Ở Tây Hồ, hằng ngày qua sông sang Long Biên:</strong> Honda Air Blade, giá tham khảo 200.000đ/ngày, chạy êm trên quãng đường dài hơn.</li>
+<li><strong>Quen xe số, muốn tiết kiệm:</strong> Honda Wave, giá tham khảo 150.000đ/ngày.</li>
+<li><strong>Quan tâm xe điện hoặc xe 50cc:</strong> trợ lý sẽ nói rõ đây là nhóm giá liên hệ, cần hỏi trực tiếp cửa hàng về giá và tình trạng xe.</li>
+</ul>
+<p>Mọi mức giá trợ lý đưa ra đều là tham khảo, được đối chiếu với trang <a href="/gia-thue/">bảng giá</a>. Cách trợ lý chọn ra gợi ý được giải thích ở bài <a href="/blog/app/module-goi-y-xe-trong-ung-dung-thue-xe/">module gợi ý xe trong ứng dụng thuê xe</a>.</p>
+
+<h2>Bước ba và bốn: từ gợi ý sang xác nhận của người thật</h2>
+<p>Trợ lý biết khu vực phục vụ gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội. Nếu địa chỉ của bạn nằm trong danh sách này, bước tiếp theo là chuyển yêu cầu sang nhân viên. Đây là điểm quan trọng nhất của quy trình: trợ lý không giữ xe, không tự hẹn giờ giao và không tự báo phí giao. Những việc đó do cửa hàng xác nhận trực tiếp.</p>
+<p>Khi nhân viên phản hồi, hãy kiểm tra đủ bốn thông tin:</p>
+<ul>
+<li>Dòng xe đã được giữ cho bạn, kèm phương án thay thế nếu cần.</li>
+<li>Khung giờ giao, nằm trong giờ mở cửa {{ business.hours.display }}.</li>
+<li>Phí giao xe cho khu vực của bạn.</li>
+<li>Mức đặt cọc áp dụng cho dòng xe đã chọn.</li>
+</ul>
+<p>Nếu cần trao đổi nhanh hơn, bạn có thể gọi {{ business.contact.phone_display }} trong giờ mở cửa. Bài <a href="/blog/app/goi-dien-tu-ung-dung-thue-xe/">gọi điện từ ứng dụng thuê xe</a> hướng dẫn cách chuyển từ tin nhắn sang cuộc gọi mà không phải kể lại từ đầu.</p>
+
+<h2>Bước năm: chuẩn bị cho lúc xe đến cửa</h2>
+<p>Trước giờ hẹn khoảng mười lăm phút, hãy chuẩn bị:</p>
+<ul>
+<li>Giấy tờ tùy thân và giấy phép lái xe phù hợp với loại xe.</li>
+<li>Khoản đặt cọc theo mức đã thống nhất, trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
+<li>Giấy tờ bảo hiểm xe máy bạn đã tự mua, vì trợ lý và cửa hàng đều không cung cấp bảo hiểm trong quy trình này.</li>
+<li>Điện thoại đủ pin để chụp ảnh, quay video tình trạng xe.</li>
+<li>Một chỗ dừng an toàn trước cửa để kiểm tra xe mà không cản lối đi.</li>
+</ul>
+<p>Trình tự bàn giao tại chỗ, từ kiểm tra đến ký nhận, có trong bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">thủ tục giao xe tận nơi</a>.</p>
+
+<h2>Những lỗi khiến quy trình bị gãy giữa chừng</h2>
+<ul>
+<li>Coi gợi ý của trợ lý là lời xác nhận đặt xe, rồi không chờ nhân viên phản hồi.</li>
+<li>Khai báo khu vực mơ hồ, khiến cửa hàng không thể ước tính thời gian giao.</li>
+<li>Chỉ đưa một khung giờ duy nhất vào lúc đông khách.</li>
+<li>Thay đổi dòng xe sau khi đã chốt mà không báo lại.</li>
+<li>Không có mặt hoặc không nghe máy khi người giao đến.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp về quy trình tư vấn tự động chọn xe tận nơi</h2>
+<h3>Trợ lý có biết chính xác xe nào đang còn không?</h3>
+<p>Trợ lý trả lời theo dữ liệu đã được cửa hàng xác minh. Tình trạng xe theo thời gian thực cần nhân viên xác nhận.</p>
+<h3>Tôi ở ngoài khu vực phục vụ thì sao?</h3>
+<p>Trợ lý sẽ cho biết danh sách khu vực. Nếu bạn ở ngoài, có thể tự đến cửa hàng hoặc hỏi trực tiếp cửa hàng về khả năng hỗ trợ.</p>
+<h3>Có thể để người khác nhận xe thay mình không?</h3>
+<p>Hãy hỏi trước khi chốt lịch. Người nhận vẫn cần mang giấy tờ phù hợp và có mặt đúng giờ hẹn.</p>
+
+<h2>Kết luận</h2>
+<p>Quy trình tư vấn tự động chọn xe tận nơi chạy trơn tru khi mỗi bên làm đúng phần của mình: trợ lý giúp bạn khai báo và chọn xe, nhân viên {{ business.brand }} xác nhận giữ xe, giờ giao và phí giao, còn bạn chuẩn bị giấy tờ trước khi xe đến. Mở trợ lý ngay trên <a href="/">trang chủ</a> để bắt đầu, xem thêm cách <a href="/blog/app/goi-y-chon-xe-may-phu-hop/">gợi ý chọn xe máy phù hợp</a> và các bài khác trong <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>

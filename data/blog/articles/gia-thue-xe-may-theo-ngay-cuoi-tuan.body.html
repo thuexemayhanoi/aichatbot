@@ -1,0 +1,67 @@
+<p>Phần lớn các chuyến thuê xe ngắn rơi vào cuối tuần, và câu hỏi đầu tiên luôn là giá thuê xe máy theo ngày cuối tuần bao nhiêu, tổng cộng hết bao nhiêu cho cả thứ bảy lẫn chủ nhật. Câu trả lời không chỉ nằm ở con số trên bảng giá, mà còn ở cách bạn đếm ngày, giờ nhận xe, giờ trả xe và những khoản đi kèm. Bài này giúp bạn tự ước tính chi phí cho một chuyến cuối tuần điển hình, biết cần hỏi gì để xác nhận giá, và tránh những khoản phát sinh không đáng có.</p>
+
+<h2>Giá thuê theo ngày tham khảo cho từng dòng xe</h2>
+<p>Các mức sau là giá tham khảo, cần xác nhận lại với cửa hàng hoặc xem trang <a href="/gia-thue/">bảng giá thuê xe</a> trước khi đặt:</p>
+<ul>
+<li><strong>Honda Wave (xe số):</strong> khoảng 150.000đ/ngày, hợp với người quen xe số và muốn chi phí thấp.</li>
+<li><strong>Honda Click hoặc Yamaha Mio:</strong> khoảng 150.000đ/ngày, xe ga gọn nhẹ dễ đi trong phố.</li>
+<li><strong>Honda Vision:</strong> khoảng 200.000đ/ngày, xe ga phổ biến, phù hợp cả người mới lái.</li>
+<li><strong>Honda Air Blade:</strong> khoảng 200.000đ/ngày, cốp rộng, chạy êm khi chở hai người.</li>
+<li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> giá liên hệ trực tiếp với cửa hàng.</li>
+</ul>
+<p>Với các dòng khác như SH, Lead hay Exciter, hãy hỏi trực tiếp xem cửa hàng có xe không và giá bao nhiêu, đừng dựa vào mức của dòng tương tự. Bài <a href="/blog/thue-xe/gia-thue-xe-may-theo-ngay/">giá thuê xe máy theo ngày</a> giải thích cách tính một ngày thuê và các yếu tố ảnh hưởng tới giá.</p>
+
+<h2>Đếm bao nhiêu ngày cho một chuyến cuối tuần</h2>
+<p>Đây là chỗ nhiều người tính sai. Một "cuối tuần" có thể là một, hai hoặc ba ngày thuê tùy cách bạn nhận và trả xe:</p>
+<ul>
+<li><strong>Nhận sáng thứ bảy, trả tối chủ nhật:</strong> thường được tính hai ngày. Đây là phương án phổ biến nhất.</li>
+<li><strong>Nhận chiều thứ sáu, trả tối chủ nhật:</strong> có thể bị tính ba ngày, dù thời gian dùng thực tế của ngày thứ sáu chỉ vài tiếng. Hãy hỏi rõ cách tính trước khi chốt.</li>
+<li><strong>Nhận sáng thứ bảy, trả sáng thứ hai:</strong> vượt quá hai ngày, cần hỏi cửa hàng cách tính phần dư.</li>
+<li><strong>Chỉ dùng trong ngày chủ nhật:</strong> một ngày, nhận và trả trong khung {{ business.hours.display }}.</li>
+</ul>
+<p>Mẹo thực tế: hãy chọn giờ nhận và giờ trả sao cho chúng khớp nhau về thời điểm trong ngày. Nhận lúc 9 giờ sáng thứ bảy thì trả trước 9 giờ sáng thứ hai là gọn nhất, nhưng vì cửa hàng chưa mở trước 9 giờ, bạn nên trả từ tối chủ nhật.</p>
+
+<h2>Ước tính tổng chi phí cho hai ngày</h2>
+<p>Lấy ví dụ một chuyến hai ngày, nhận sáng thứ bảy và trả tối chủ nhật:</p>
+<ul>
+<li>Honda Vision hoặc Air Blade: 2 ngày × 200.000đ = 400.000đ tiền thuê tham khảo.</li>
+<li>Honda Click, Yamaha Mio hoặc Honda Wave: 2 ngày × 150.000đ = 300.000đ tiền thuê tham khảo.</li>
+<li>Xăng: phụ thuộc quãng đường. Đi nội thành vài chục cây số mỗi ngày thì chi phí xăng không đáng kể, nhưng nếu ra ngoại thành, hãy dự trù thêm.</li>
+<li>Gửi xe: mỗi lần gửi ở khu trung tâm đều có phí, đi nhiều điểm trong ngày thì cộng lại cũng không nhỏ.</li>
+<li>Phí giao xe nếu bạn muốn nhận tận nơi: được cửa hàng báo trước khi chốt, tùy khu vực.</li>
+</ul>
+<p>Ngoài chi phí, bạn cần chuẩn bị tiền đặt cọc theo loại xe, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}. Khoản này được hoàn lại khi trả xe đúng thỏa thuận. Riêng phần bảo hiểm xe máy, bạn tự lo trước chuyến đi vì cửa hàng không bán kèm khoản này trong giá thuê cuối tuần.</p>
+
+<h2>Khi nào giá ngày không còn là lựa chọn rẻ nhất</h2>
+<p>Nếu chuyến cuối tuần của bạn có khả năng kéo dài thành bốn, năm ngày, hãy hỏi luôn giá tuần. Ví dụ Air Blade có giá tuần tham khảo 800.000đ, bằng đúng bốn ngày lẻ. Honda Vision có giá tuần tham khảo 800.000đ–1.000.000đ. Click hoặc Mio khoảng 600.000đ–700.000đ/tuần. Bài <a href="/blog/thue-xe/gia-thue-xe-may-theo-ngay-gia-tot-nhat/">giá thuê theo ngày giá tốt nhất</a> phân tích thêm cách chọn gói phù hợp với số ngày.</p>
+
+<h2>Xác nhận giá trước khi chốt cho cuối tuần</h2>
+<p>Cuối tuần là thời điểm đông khách, vì vậy hãy xác nhận mọi thứ bằng tin nhắn để có thể xem lại:</p>
+<ol>
+<li>Dòng xe và giá ngày áp dụng cho đúng ngày bạn thuê.</li>
+<li>Cách tính nếu trả muộn hơn giờ đã hẹn.</li>
+<li>Mức đặt cọc cho dòng xe đó.</li>
+<li>Phí giao xe nếu nhận tận nơi, và khung giờ giao.</li>
+<li>Giấy tờ cần mang khi nhận xe.</li>
+</ol>
+<p>Hỏi luôn xem giá có thay đổi theo thời điểm trong năm hay không, đặc biệt nếu cuối tuần đó trùng dịp lễ. Bài <a href="/blog/thue-xe/xac-nhan-gia-truoc-khi-dat-cuoi-tuan/">xác nhận giá trước khi đặt cuối tuần</a> có danh sách câu hỏi đầy đủ, còn bài <a href="/blog/thue-xe/cach-doc-bang-gia-thue-xe-cuoi-tuan/">cách đọc bảng giá thuê xe cuối tuần</a> giúp bạn hiểu từng dòng trên bảng giá.</p>
+
+<h2>Những khoản phát sinh hay gặp vào cuối tuần</h2>
+<ul>
+<li>Trả xe trễ vì kẹt đường chiều chủ nhật, nhất là khi quay về từ ngoại thành.</li>
+<li>Hết xăng giữa đường do quên kiểm tra trước khi đi xa.</li>
+<li>Mất vé gửi xe ở khu đông người.</li>
+<li>Xe trầy xước do dựng sai chỗ hoặc va quẹt trong bãi gửi chật.</li>
+</ul>
+<p>Phần lớn những khoản này tránh được nếu bạn lên lịch trả xe sớm hơn dự kiến khoảng một tiếng và kiểm tra xe kỹ khi nhận.</p>
+
+<h2>Câu hỏi thường gặp về giá thuê xe máy theo ngày cuối tuần</h2>
+<h3>Giá cuối tuần có cao hơn ngày thường không?</h3>
+<p>Bài viết không khẳng định có hay không có chênh lệch. Hãy hỏi cửa hàng giá áp dụng cho đúng ngày bạn thuê và xác nhận bằng tin nhắn.</p>
+<h3>Thuê một ngày chủ nhật thì tính thế nào?</h3>
+<p>Nhận và trả trong cùng ngày, trong giờ mở cửa, thường được tính một ngày theo giá tham khảo của dòng xe.</p>
+<h3>Có nên đặt trước cho chuyến cuối tuần?</h3>
+<p>Nên đặt trước vài ngày, nhất là khi bạn cần một dòng xe cụ thể hoặc cần nhiều xe cho cả nhóm.</p>
+
+<h2>Kết luận</h2>
+<p>Giá ngày chỉ là điểm khởi đầu, tổng chi phí cuối tuần còn phụ thuộc cách đếm ngày, giờ trả xe và các khoản đi kèm. Để có con số chính xác cho thứ bảy và chủ nhật sắp tới, hãy liên hệ {{ business.brand }} tại {{ business.address.full }} trong khung {{ business.hours.display }}: bạn có thể gọi {{ business.contact.phone_display }} hoặc hỏi trợ lý trên <a href="/">trang chủ</a> để nhận báo giá cho đúng ngày mình cần. Các bài khác về giá và gói thuê có trong <a href="/blog/thue-xe/">chuyên mục thuê xe</a>.</p>
