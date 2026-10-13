@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v66">
+  <title>Cách Đọc Bảng Giá Thuê xe Cho Sinh Viên</title>
+  <meta name="description" content="Nhìn vào một bảng giá thuê xe, nhiều sinh viên chỉ để ý cột giá ngày rồi nhân lên theo số ngày cần dùng. Cách đọc đó thường dẫn tới hai kết luận sai:">
+  <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/blog/thue-xe/cach-doc-bang-gia-thue-xe-cho-sinh-vien/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Cách Đọc Bảng Giá Thuê xe Cho Sinh Viên">
+  <meta property="og:description" content="Nhìn vào một bảng giá thuê xe, nhiều sinh viên chỉ để ý cột giá ngày rồi nhân lên theo số ngày cần dùng. Cách đọc đó thường dẫn tới hai kết luận sai:">
+  <meta property="og:url" content="https://chatbot.thuexemaynguyentu.com/blog/thue-xe/cach-doc-bang-gia-thue-xe-cho-sinh-vien/">
+  <meta property="og:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cách Đọc Bảng Giá Thuê xe Cho Sinh Viên">
+  <meta name="twitter:description" content="Nhìn vào một bảng giá thuê xe, nhiều sinh viên chỉ để ý cột giá ngày rồi nhân lên theo số ngày cần dùng. Cách đọc đó thường dẫn tới hai kết luận sai:">
+  <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=66">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=66">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/blog/">Cẩm nang</a>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/app/">📱 Ứng Dụng</a>
+            <a href="/blog/huong-dan/">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true" aria-current="page">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/thue-xe/" aria-current="page">🏍️ Thuê Xe</a>
+            <a href="/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-cach-doc-bang-gia-thue-xe-cho-sinh-vien">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/">Agent</a> › <a href="/blog/">Cẩm nang</a> › <a href="/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a> › <a href="/blog/thue-xe/">Thuê Xe</a> › <a href="/blog/thue-xe/gia-thue/">Giá Thuê</a> › <span>Cách Đọc Bảng Giá Thuê xe Cho Sinh Viên</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/blog/thue-xe/">Thuê Xe</a>
+        <a class="blog-chip" href="/blog/thue-xe/gia-thue/">Giá Thuê</a>
+        <a class="blog-chip blog-chip-parent" href="/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a>
+      </p>
+      <p class="blog-screen-label">Thuê Xe</p>
+      <h1 class="blog-screen-title">Cách Đọc Bảng Giá Thuê xe Cho Sinh Viên</h1>
+      <p class="blog-screen-lead">Nhìn vào một bảng giá thuê xe, nhiều sinh viên chỉ để ý cột giá ngày rồi nhân lên theo số ngày cần dùng. Cách đọc đó thường dẫn tới hai kết luận sai:</p>
+      <p class="byline">MotoAI Editorial · 2026-10-13 · Thuê Xe · 7 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Nhìn vào một bảng giá thuê xe, nhiều sinh viên chỉ để ý cột giá ngày rồi nhân lên theo số ngày cần dùng. Cách đọc đó thường dẫn tới hai kết luận sai:</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#buoc-mot-hieu-bang-gia-co-nhung-cot-gi">Bước một: hiểu bảng giá có những cột gì</a></li>
+        <li class="toc-l2"><a href="#buoc-hai-doc-dai-gia-va-chu-tham-khao-cho-dung">Bước hai: đọc dải giá và chữ "tham khảo" cho đúng</a></li>
+        <li class="toc-l2"><a href="#buoc-ba-tim-diem-hoa-von-giua-gia-ngay-va-gia-tuan">Bước ba: tìm điểm hòa vốn giữa giá ngày và giá tuần</a></li>
+        <li class="toc-l2"><a href="#buoc-bon-khi-nao-nen-chuyen-sang-goi-thang">Bước bốn: khi nào nên chuyển sang gói tháng</a></li>
+        <li class="toc-l2"><a href="#bon-tinh-huong-sinh-vien-va-cach-doc-bang-gia">Bốn tình huống sinh viên và cách đọc bảng giá</a></li>
+        <li class="toc-l2"><a href="#buoc-nam-doc-ca-nhung-gi-khong-co-trong-bang">Bước năm: đọc cả những gì không có trong bảng</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-ve-cach-doc-bang-gia-thue-xe-cho-sinh-vien">Câu hỏi thường gặp về cách đọc bảng giá thuê xe cho sinh viên</a></li>
+        <li class="toc-l3"><a href="#thue-bon-ngay-nen-chon-gia-ngay-hay-gia-tuan">Thuê bốn ngày nên chọn giá ngày hay giá tuần?</a></li>
+        <li class="toc-l3"><a href="#bang-ghi-lien-he-nghia-la-gi">Bảng ghi "liên hệ" nghĩa là gì?</a></li>
+        <li class="toc-l3"><a href="#co-nen-lap-ngan-sach-theo-dau-thap-cua-dai-gia">Có nên lập ngân sách theo đầu thấp của dải giá?</a></li>
+        <li class="toc-l3"><a href="#gia-thang-co-ap-dung-khi-thue-ba-tuan-khong">Giá tháng có áp dụng khi thuê ba tuần không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#buoc-mot-hieu-bang-gia-co-nhung-cot-gi">Bước một: hiểu bảng giá có những cột gì</a></li>
+        <li class="toc-l2"><a href="#buoc-hai-doc-dai-gia-va-chu-tham-khao-cho-dung">Bước hai: đọc dải giá và chữ "tham khảo" cho đúng</a></li>
+        <li class="toc-l2"><a href="#buoc-ba-tim-diem-hoa-von-giua-gia-ngay-va-gia-tuan">Bước ba: tìm điểm hòa vốn giữa giá ngày và giá tuần</a></li>
+        <li class="toc-l2"><a href="#buoc-bon-khi-nao-nen-chuyen-sang-goi-thang">Bước bốn: khi nào nên chuyển sang gói tháng</a></li>
+        <li class="toc-l2"><a href="#bon-tinh-huong-sinh-vien-va-cach-doc-bang-gia">Bốn tình huống sinh viên và cách đọc bảng giá</a></li>
+        <li class="toc-l2"><a href="#buoc-nam-doc-ca-nhung-gi-khong-co-trong-bang">Bước năm: đọc cả những gì không có trong bảng</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-ve-cach-doc-bang-gia-thue-xe-cho-sinh-vien">Câu hỏi thường gặp về cách đọc bảng giá thuê xe cho sinh viên</a></li>
+        <li class="toc-l3"><a href="#thue-bon-ngay-nen-chon-gia-ngay-hay-gia-tuan">Thuê bốn ngày nên chọn giá ngày hay giá tuần?</a></li>
+        <li class="toc-l3"><a href="#bang-ghi-lien-he-nghia-la-gi">Bảng ghi "liên hệ" nghĩa là gì?</a></li>
+        <li class="toc-l3"><a href="#co-nen-lap-ngan-sach-theo-dau-thap-cua-dai-gia">Có nên lập ngân sách theo đầu thấp của dải giá?</a></li>
+        <li class="toc-l3"><a href="#gia-thang-co-ap-dung-khi-thue-ba-tuan-khong">Giá tháng có áp dụng khi thuê ba tuần không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Nhìn vào một bảng giá thuê xe, nhiều sinh viên chỉ để ý cột giá ngày rồi nhân lên theo số ngày cần dùng. Cách đọc đó thường dẫn tới hai kết luận sai: hoặc thấy thuê xe quá đắt, hoặc chọn nhầm gói và trả nhiều hơn cần thiết. Bảng giá thật ra chứa nhiều thông tin hơn thế: các mốc mà gói tuần bắt đầu lợi hơn gói ngày, khi nào nên hỏi gói tháng, và những khoản không nằm trong bảng nhưng vẫn phải trả. Bài này hướng dẫn bạn đọc bảng giá theo từng bước, với ví dụ sát lịch sinh hoạt của sinh viên.</p>
+  <p>Nếu bạn chỉ cần xem các mức giá tham khảo hiện có, bài <a href="/blog/thue-xe/bang-gia-thue-xe-tham-khao/">bảng giá thuê xe tham khảo</a> và trang <a href="/gia-thue/">giá thuê</a> đã liệt kê đầy đủ. Ở đây, trọng tâm là kỹ năng đọc và ra quyết định.</p>
+  <h2 id="buoc-mot-hieu-bang-gia-co-nhung-cot-gi">Bước một: hiểu bảng giá có những cột gì</h2>
+  <p>Một bảng giá thuê xe máy thường có bốn thành phần. Đọc đúng từng thành phần là nền tảng cho mọi phép so sánh sau đó.</p>
+  <ul>
+  <li>Tên dòng xe và loại xe: xe số như Honda Wave, xe ga như Vision, Air Blade, Click, Mio.</li>
+  <li>Giá ngày: mức cho mỗi ngày thuê lẻ.</li>
+  <li>Giá tuần và giá tháng: mức trọn gói cho bảy ngày hoặc một tháng, thường thấp hơn nhiều so với cộng dồn giá ngày.</li>
+  <li>Ghi chú "tham khảo" hoặc "liên hệ": cho biết con số chưa phải giá chốt, hoặc dòng xe đó được báo giá trực tiếp.</li>
+  </ul>
+  <p>Ở bảng tham khảo của Nguyễn Tú, ví dụ Honda Click có giá ngày 150.000đ, giá tuần 600.000đ đến 700.000đ và giá tháng 1.000.000đ đến 1.200.000đ. Các dòng xe 50cc, xe máy điện và xe đạp điện ghi giá liên hệ, nghĩa là bạn cần hỏi cửa hàng.</p>
+  <h2 id="buoc-hai-doc-dai-gia-va-chu-tham-khao-cho-dung">Bước hai: đọc dải giá và chữ "tham khảo" cho đúng</h2>
+  <p>Khi một ô ghi hai con số như "800.000đ đến 1.000.000đ/tuần", đó là dải giá chứ không phải giá cố định. Mức cụ thể cho chiếc xe bạn thuê sẽ được cửa hàng xác nhận khi đặt. Khi lập ngân sách, sinh viên nên tính theo đầu cao của dải để không bị hụt tiền.</p>
+  <p>Chữ "tham khảo" cũng có ý nghĩa tương tự: con số giúp bạn ước lượng, còn giá cuối cùng phải được xác nhận trước khi đặt. Bài <a href="/blog/thue-xe/xac-nhan-gia-truoc-khi-dat/">xác nhận giá trước khi đặt</a> hướng dẫn những câu cần hỏi để giá chốt không khác ước tính.</p>
+  <h2 id="buoc-ba-tim-diem-hoa-von-giua-gia-ngay-va-gia-tuan">Bước ba: tìm điểm hòa vốn giữa giá ngày và giá tuần</h2>
+  <p>Đây là kỹ năng giúp bạn tiết kiệm nhiều nhất. Hãy lấy giá tuần chia cho giá ngày để biết từ ngày thứ mấy thì gói tuần bắt đầu lợi hơn.</p>
+  <ul>
+  <li>Click hoặc Mio: bốn ngày lẻ là 600.000đ, bằng đầu thấp của giá tuần; năm ngày lẻ đã là 750.000đ, cao hơn cả đầu cao 700.000đ. Vậy từ năm ngày trở lên, gói tuần chắc chắn lợi hơn.</li>
+  <li>Air Blade: bốn ngày lẻ là 800.000đ, bằng giá tuần tham khảo. Thuê từ bốn ngày, hãy hỏi gói tuần.</li>
+  <li>Vision: bốn ngày lẻ là 800.000đ, năm ngày lẻ là 1.000.000đ, đúng bằng hai đầu của dải giá tuần. Từ bốn, năm ngày trở lên, gói tuần không thiệt hơn.</li>
+  </ul>
+  <p>Quy tắc rút gọn cho sinh viên: cần xe từ bốn ngày trở lên, luôn hỏi giá tuần trước khi chốt giá ngày. Cách thuê theo tuần được trình bày cụ thể trong bài <a href="/blog/thue-xe/thue-xe-may-theo-tuan-cho-sinh-vien/">thuê xe máy theo tuần cho sinh viên</a>.</p>
+  <h2 id="buoc-bon-khi-nao-nen-chuyen-sang-goi-thang">Bước bốn: khi nào nên chuyển sang gói tháng</h2>
+  <p>Làm phép so sánh tương tự giữa nhiều tuần và một tháng:</p>
+  <ul>
+  <li>Click hoặc Mio: hai tuần là 1.200.000đ đến 1.400.000đ, đã cao hơn giá tháng 1.000.000đ đến 1.200.000đ.</li>
+  <li>Air Blade: hai tuần là 1.600.000đ, cao hơn giá tháng 1.400.000đ.</li>
+  <li>Vision: hai tuần là 1.600.000đ đến 2.000.000đ, gần bằng giá tháng 1.800.000đ đến 2.000.000đ; sang tuần thứ ba thì gói tháng rõ ràng rẻ hơn.</li>
+  </ul>
+  <p>Như vậy, nếu bạn cần xe khoảng hai tuần trở lên, hãy hỏi cửa hàng về gói tháng. Với sinh viên thuê cả kỳ học, gói tháng gần như luôn là cách đọc bảng giá có lợi nhất; bài <a href="/blog/thue-xe/gia-xe-thang-cho-sinh-vien/">giá xe tháng cho sinh viên</a> phân tích chi tiết hơn.</p>
+  <h2 id="bon-tinh-huong-sinh-vien-va-cach-doc-bang-gia">Bốn tình huống sinh viên và cách đọc bảng giá</h2>
+  <ol>
+  <li>Ba ngày đi thi cuối kỳ ở cơ sở xa: thuê lẻ theo ngày. Ví dụ Wave ba ngày khoảng 450.000đ tham khảo, chưa tới ngưỡng gói tuần.</li>
+  <li>Mười ngày thực tập: một tuần cộng ba ngày lẻ thường rẻ hơn mười ngày tính lẻ. Với Air Blade, đó là 800.000đ cộng 600.000đ, tổng tham khảo 1.400.000đ, bằng đúng giá tháng, nên hỏi luôn gói tháng.</li>
+  <li>Sáu tuần làm thêm dịp hè: so một tháng cộng hai tuần với hai tháng; đọc cả hai cột rồi chọn mức thấp hơn.</li>
+  <li>Cả học kỳ: chỉ cần nhìn cột tháng, nhân với số tháng, rồi cộng các khoản ngoài bảng.</li>
+  </ol>
+  <p>Nếu bạn đã quen một dòng xe cụ thể, bài <a href="/blog/thue-xe/thue-honda-vision-cho-sinh-vien/">thuê Honda Vision cho sinh viên</a> áp dụng cách đọc này cho riêng Vision.</p>
+  <h2 id="buoc-nam-doc-ca-nhung-gi-khong-co-trong-bang">Bước năm: đọc cả những gì không có trong bảng</h2>
+  <p>Bảng giá chỉ ghi tiền thuê. Trước khi chốt, hãy tự liệt kê các khoản còn lại:</p>
+  <ul>
+  <li>Khoản đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe, mức chính xác được báo khi đặt.</li>
+  <li>Bảo hiểm xe máy: người thuê tự chuẩn bị, cửa hàng không cung cấp.</li>
+  <li>Phí giao xe, nếu có: chỉ giao trong giờ làm việc, thời gian và chi phí xác nhận trước khi đặt.</li>
+  <li>Xăng và tiền gửi xe hằng ngày.</li>
+  </ul>
+  <p>Thêm một lưu ý: cửa hàng không có chương trình khuyến mãi, nên nếu thấy ai hứa giảm giá riêng cho sinh viên dưới danh nghĩa cửa hàng, hãy hỏi lại trực tiếp. Thủ tục cần chuẩn bị được tóm gọn trong bài <a href="/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian-cho-sinh-vien/">thủ tục thuê xe đơn giản cho sinh viên</a>.</p>
+  <h2 id="cau-hoi-thuong-gap-ve-cach-doc-bang-gia-thue-xe-cho-sinh-vien">Câu hỏi thường gặp về cách đọc bảng giá thuê xe cho sinh viên</h2>
+  <h3 id="thue-bon-ngay-nen-chon-gia-ngay-hay-gia-tuan">Thuê bốn ngày nên chọn giá ngày hay giá tuần?</h3>
+  <p>Với Click, Mio, Air Blade và Vision, bốn ngày lẻ đã bằng hoặc gần bằng giá tuần tham khảo. Hãy hỏi giá tuần, vì bạn có thêm ngày dự phòng mà không tốn thêm.</p>
+  <h3 id="bang-ghi-lien-he-nghia-la-gi">Bảng ghi "liên hệ" nghĩa là gì?</h3>
+  <p>Nghĩa là dòng xe đó không có giá tham khảo công bố sẵn. Bạn cần hỏi cửa hàng để biết giá và tình trạng xe còn trống.</p>
+  <h3 id="co-nen-lap-ngan-sach-theo-dau-thap-cua-dai-gia">Có nên lập ngân sách theo đầu thấp của dải giá?</h3>
+  <p>Không nên. Hãy tính theo đầu cao để ngân sách luôn dư; nếu giá chốt thấp hơn, bạn có thêm khoản dự phòng.</p>
+  <h3 id="gia-thang-co-ap-dung-khi-thue-ba-tuan-khong">Giá tháng có áp dụng khi thuê ba tuần không?</h3>
+  <p>Điều này cần cửa hàng xác nhận. Khi tổng các tuần lẻ vượt giá tháng, hãy hỏi trực tiếp có thể chuyển sang gói tháng hay không.</p>
+  <h2 id="ket-luan">Kết luận</h2>
+  <p>Đọc bảng giá thuê xe đúng cách là đọc theo mốc: từ khoảng bốn ngày, hỏi giá tuần; từ khoảng hai tuần, hỏi giá tháng; luôn tính theo đầu cao của dải và cộng thêm các khoản ngoài bảng. Chỉ vài phép chia đơn giản, bạn đã chọn được gói hợp túi tiền sinh viên.</p>
+  <p>Đã tính xong và muốn chốt xe, bạn gọi 0942 467 674 hoặc đến Thuê Xe Máy Hà Nội Nguyễn Tú tại 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội trong giờ 09:00 - 21:00. Xem thêm các hướng dẫn về giá và gói thuê ở <a href="/blog/thue-xe/">chuyên mục thuê xe</a>, hoặc về <a href="/">trang chủ</a> để hỏi trợ lý.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a>
+          <span aria-hidden="true">→</span>
+          <a href="/blog/thue-xe/">Thuê Xe</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/blog/thue-xe/thue-xe-may-gia-re/">
+        <span class="cat">Thuê Xe</span>
+        <h2>Thuê xe máy giá rẻ: cách tính tổng chi phí và tránh phí phát sinh</h2>
+        <p>Cách tính tổng chi phí thuê xe máy giá rẻ: giá theo ngày, tuần, tháng, xăng, đặt cọc, giao xe và checklist tránh phí phát sinh trước khi đặt xe.</p>
+      </a>
+      <a class="blog-card" href="/blog/thue-xe/gia-thue-xe-may-theo-ngay/">
+        <span class="cat">Thuê Xe</span>
+        <h2>Giá thuê xe máy theo ngày: bảng tham khảo và cách tính</h2>
+        <p>Giá thuê xe máy theo ngày theo từng dòng xe, cách tính 24 giờ, khoản xăng và đặt cọc đi kèm, và lúc nào nên lấy gói tuần thay vì thuê lẻ từng ngày.</p>
+      </a>
+      <a class="blog-card" href="/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian/">
+        <span class="cat">Thuê Xe</span>
+        <h2>Cho thuê xe máy thủ tục đơn giản: ba bước là cầm xe</h2>
+        <p>Cho thuê xe máy thủ tục đơn giản: chốt xe bằng một tin nhắn, giấy tờ gọn gàng với mức đặt cọc rõ ràng, ba bước từ hỏi giá đến nhận xe và các cách rút ngắn thủ tục.</p>
+      </a>
+      <a class="blog-card" href="/blog/thue-xe/so-sanh-gia-cac-loai-xe-may-cho-thue/">
+        <span class="cat">Thuê Xe</span>
+        <h2>So sánh giá các loại xe máy cho thuê: ngày, tuần và tháng</h2>
+        <p>Giá tham khảo theo ngày, tuần, tháng của các dòng xe số, xe ga và xe điện, cùng những khoản ngoài giá niêm yết cần hỏi trước khi chốt thuê.</p>
+      </a>
+      <a class="blog-card" href="/blog/thue-xe/thue-xe-dai-ngay-gia-tot/">
+        <span class="cat">Thuê Xe</span>
+        <h2>Thuê xe Dài Ngày Giá Tốt</h2>
+        <p>Thuê xe máy dài ngày giá tốt: giá theo tuần và tháng rẻ hơn thuê lẻ, cách thương lượng gói trọn, chọn dòng xe bền và kiểm soát phát sinh.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Thuê xe &amp; Phương tiện: <a href="/blog/thue-xe/">Thuê Xe</a> · <a href="/blog/xe-dien/">Xe Điện</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/?ask=C%C3%A1ch%20%C4%90%E1%BB%8Dc%20B%E1%BA%A3ng%20Gi%C3%A1%20Thu%C3%AA%20xe%20Cho%20Sinh%20Vi%C3%AAn">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/">Agent</a></li>
+          <li><a href="/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/blog/">Cẩm nang</a></li>
+          <li><a href="/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/privacy/">Bảo Mật</a></li>
+          <li><a href="/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/">⚡ Agent</a></li>
+      <li><a href="/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/app/">📱 Ứng Dụng</a></li>
+            <li><a href="/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/thue-xe-phuong-tien/" aria-current="page">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/thue-xe/" aria-current="page">🏍️ Thuê Xe</a></li>
+            <li><a href="/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","url":"https://chatbot.thuexemaynguyentu.com/blog/thue-xe/cach-doc-bang-gia-thue-xe-cho-sinh-vien/","headline":"Cách Đọc Bảng Giá Thuê xe Cho Sinh Viên","description":"Nhìn vào một bảng giá thuê xe, nhiều sinh viên chỉ để ý cột giá ngày rồi nhân lên theo số ngày cần dùng. Cách đọc đó thường dẫn tới hai kết luận sai:","datePublished":"2026-10-13","dateModified":"2026-10-13","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://chatbot.thuexemaynguyentu.com/"},"mainEntityOfPage":"https://chatbot.thuexemaynguyentu.com/blog/thue-xe/cach-doc-bang-gia-thue-xe-cho-sinh-vien/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://chatbot.thuexemaynguyentu.com/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://chatbot.thuexemaynguyentu.com/blog/"},{"@type":"ListItem","position":3,"name":"Thuê xe & Phương tiện","item":"https://chatbot.thuexemaynguyentu.com/blog/thue-xe-phuong-tien/"},{"@type":"ListItem","position":4,"name":"Thuê Xe","item":"https://chatbot.thuexemaynguyentu.com/blog/thue-xe/"},{"@type":"ListItem","position":5,"name":"Giá Thuê","item":"https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue/"},{"@type":"ListItem","position":6,"name":"Cách Đọc Bảng Giá Thuê xe Cho Sinh Viên","item":"https://chatbot.thuexemaynguyentu.com/blog/thue-xe/cach-doc-bang-gia-thue-xe-cho-sinh-vien/"}]}
+  </script>
+
+  <script type="module" src="/assets/js/app-shell.js?v=66"></script>
+</body>
+</html>

@@ -14641,6 +14641,134 @@
       "url": "/blog/app/ung-dung-thue-xe-tren-dien-thoai-cu-tai-ha-noi/",
       "category": "APP",
       "text": "Bài này không nhắc lại lý thuyết về bộ nhớ hay trình duyệt, mà đi theo đúng một ngày thực tế: bạn chuẩn bị gì khi còn wifi, hỏi trợ lý MotoAI thế nào cho máy cũ đỡ đơ, lưu thông tin ra sao để không phụ thuộc vào kết nối, và làm gì khi chiếc máy \"đình công\" giữa đường tới cửa hàng ở Long Biên."
+    },
+    {
+      "id": "BA-0974:c1",
+      "article_id": "BA-0974",
+      "title": "Bảng Giá Thuê xe Tham Khảo Cho Sinh Viên",
+      "url": "/blog/thue-xe/bang-gia-thue-xe-tham-khao-cho-sinh-vien/",
+      "category": "RENT",
+      "text": "Với sinh viên, câu hỏi về giá thuê xe hiếm khi chỉ là \"một ngày bao nhiêu\". Bạn cần biết thuê cả tháng tốn bao nhiêu, cả học kỳ hết bao nhiêu, chiếc nào vừa túi tiền mà vẫn đủ bền để đi học, đi làm thêm mỗi ngày. Bài này sắp xếp lại bảng giá thuê xe tham khảo của {{ business.brand }} theo đúng cách sinh viên dùng xe: theo ngày cho việc gấp, theo tuần cho giai đoạn ngắn, và theo tháng cho cả kỳ học. Mọi con số dưới đây là giá tham khảo, cần cửa hàng xác nhận khi đặt."
+    },
+    {
+      "id": "BA-0974:c2",
+      "article_id": "BA-0974",
+      "title": "Bảng Giá Thuê xe Tham Khảo Cho Sinh Viên",
+      "url": "/blog/thue-xe/bang-gia-thue-xe-tham-khao-cho-sinh-vien/",
+      "category": "RENT",
+      "text": "Phiên bản bảng giá dành cho mọi đối tượng nằm ở bài bảng giá thuê xe tham khảo ; còn ở đây, mỗi con số đều được đặt cạnh một nhu cầu cụ thể của sinh viên."
+    },
+    {
+      "id": "BA-0980:c1",
+      "article_id": "BA-0980",
+      "title": "Cách Đọc Bảng Giá Thuê xe Cho Sinh Viên",
+      "url": "/blog/thue-xe/cach-doc-bang-gia-thue-xe-cho-sinh-vien/",
+      "category": "RENT",
+      "text": "Nhìn vào một bảng giá thuê xe, nhiều sinh viên chỉ để ý cột giá ngày rồi nhân lên theo số ngày cần dùng. Cách đọc đó thường dẫn tới hai kết luận sai: hoặc thấy thuê xe quá đắt, hoặc chọn nhầm gói và trả nhiều hơn cần thiết. Bảng giá thật ra chứa nhiều thông tin hơn thế: các mốc mà gói tuần bắt đầu lợi hơn gói ngày, khi nào nên hỏi gói tháng, và những khoản không nằm trong bảng nhưng vẫn phải trả. Bài này hướng dẫn bạn đọc bảng giá theo từng bước, với ví dụ sát lịch sinh hoạt của sinh viên."
+    },
+    {
+      "id": "BA-0980:c2",
+      "article_id": "BA-0980",
+      "title": "Cách Đọc Bảng Giá Thuê xe Cho Sinh Viên",
+      "url": "/blog/thue-xe/cach-doc-bang-gia-thue-xe-cho-sinh-vien/",
+      "category": "RENT",
+      "text": "Nếu bạn chỉ cần xem các mức giá tham khảo hiện có, bài bảng giá thuê xe tham khảo và trang giá thuê đã liệt kê đầy đủ. Ở đây, trọng tâm là kỹ năng đọc và ra quyết định."
+    },
+    {
+      "id": "BA-0979:c1",
+      "article_id": "BA-0979",
+      "title": "Cách Ứng Dụng Hiểu Câu Hỏi về Giá xe Tại Hà Nội",
+      "url": "/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-tai-ha-noi/",
+      "category": "APP",
+      "text": "Người Hà Nội hỏi giá thuê xe theo đủ kiểu: \"con Vision mấy tiền một ngày\", \"xe tay ga thuê tuần bao nhiêu\", \"ship xe ra Phố Cổ thì sao\", có người còn gõ không dấu cho nhanh. Ứng dụng web của {{ business.brand }} phải biến những câu hỏi rất đời thường đó thành một phép tính rõ ràng dựa trên bảng giá đã xác minh. Bài này giải thích từng bước ứng dụng đọc một câu hỏi về giá, những từ ngữ quen thuộc ở Hà Nội mà nó hiểu được, và vì sao có lúc nó hỏi lại bạn thay vì trả lời ngay."
+    },
+    {
+      "id": "BA-0979:c2",
+      "article_id": "BA-0979",
+      "title": "Cách Ứng Dụng Hiểu Câu Hỏi về Giá xe Tại Hà Nội",
+      "url": "/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-tai-ha-noi/",
+      "category": "APP",
+      "text": "Phần nguyên lý chung về cách tách câu hỏi giá đã có trong bài cách ứng dụng hiểu câu hỏi về giá xe . Ở đây chúng ta xem các ví dụ cụ thể của người thuê xe tại Hà Nội."
+    },
+    {
+      "id": "BA-0976:c1",
+      "article_id": "BA-0976",
+      "title": "Chụp Ảnh xe Trước Khi Nhận Nhanh Gọn",
+      "url": "/blog/huong-dan/chup-anh-xe-truoc-khi-nhan-nhanh-gon/",
+      "category": "GUIDE",
+      "text": "Ai cũng biết nên chụp ảnh xe trước khi nhận, nhưng thực tế nhiều người bỏ qua vì ngại mất thời gian, nhất là khi cửa hàng đông khách hay trời sắp tối. Tin tốt là bạn không cần mười lăm phút với hàng chục tấm ảnh. Một quy trình gọn gàng, làm theo thứ tự cố định, chỉ mất khoảng ba phút mà vẫn đủ làm căn cứ đối chiếu khi trả xe. Bài này hướng dẫn đúng quy trình đó: chuẩn bị gì trước khi tới, quay và chụp theo thứ tự nào, và lưu ảnh ra sao để khi cần là tìm thấy ngay."
+    },
+    {
+      "id": "BA-0976:c2",
+      "article_id": "BA-0976",
+      "title": "Chụp Ảnh xe Trước Khi Nhận Nhanh Gọn",
+      "url": "/blog/huong-dan/chup-anh-xe-truoc-khi-nhan-nhanh-gon/",
+      "category": "GUIDE",
+      "text": "Nếu bạn muốn hiểu kỹ vì sao ảnh nhận xe quan trọng và cần chụp những vị trí nào, bài chụp ảnh xe trước khi nhận có phần giải thích đầy đủ. Ở đây, mục tiêu duy nhất là làm nhanh mà không bỏ sót."
+    },
+    {
+      "id": "BA-0978:c1",
+      "article_id": "BA-0978",
+      "title": "Mộc Châu Hành Trình Dài Cuối Tuần",
+      "url": "/blog/dia-phuong/moc-chau-hanh-trinh-dai-cuoi-tuan/",
+      "category": "LOCAL",
+      "text": "Mộc Châu nằm cách Hà Nội gần hai trăm cây số theo quốc lộ 6, tức là mỗi chiều mất trọn một buổi trên yên xe. Nhét một hành trình dài như vậy vào hai ngày cuối tuần là bài toán thời gian thực sự: bạn có khoảng bốn mươi tám tiếng, trong đó gần một nửa thời gian thức sẽ dành cho đường. Làm khéo, bạn vẫn có một buổi chiều và một buổi sáng trọn vẹn trên cao nguyên mà sáng thứ Hai vẫn tỉnh táo đi làm. Bài này đi theo đúng góc nhìn đó: cách chia giờ, chia sức và chia chặng để chuyến Mộc Châu vừa khít một cuối tuần."
+    },
+    {
+      "id": "BA-0978:c2",
+      "article_id": "BA-0978",
+      "title": "Mộc Châu Hành Trình Dài Cuối Tuần",
+      "url": "/blog/dia-phuong/moc-chau-hanh-trinh-dai-cuoi-tuan/",
+      "category": "LOCAL",
+      "text": "Lộ trình tổng quan, các đoạn đèo và điểm dừng trên cao nguyên đã được mô tả trong bài Mộc Châu hành trình dài . Ở đây chúng ta chỉ bàn phần khó nhất: lịch trình cuối tuần."
+    },
+    {
+      "id": "BA-0975:c1",
+      "article_id": "BA-0975",
+      "title": "Phạm vi Hoạt Động Của xe Điện Mùa hè",
+      "url": "/blog/xe-dien/pham-vi-hoat-dong-cua-xe-dien-mua-he/",
+      "category": "EV",
+      "text": "Mùa hè Hà Nội nóng, nắng gắt buổi trưa và hay có mưa giông bất chợt về chiều. Với người thuê xe máy điện, những điều kiện đó ảnh hưởng trực tiếp tới câu hỏi quan trọng nhất: một lần sạc đi được bao xa. Quãng đường bạn đi được vào một ngày tháng Sáu thường không giống con số ghi trong tài liệu của nhà sản xuất, cũng không giống quãng bạn đi được vào một buổi sáng mát trời. Bài này giải thích những yếu tố mùa hè làm phạm vi hoạt động co lại, cách tự ước lượng phạm vi thực tế và cách lên lịch để không bị hết pin giữa trưa nắng."
+    },
+    {
+      "id": "BA-0975:c2",
+      "article_id": "BA-0975",
+      "title": "Phạm vi Hoạt Động Của xe Điện Mùa hè",
+      "url": "/blog/xe-dien/pham-vi-hoat-dong-cua-xe-dien-mua-he/",
+      "category": "EV",
+      "text": "Khái niệm phạm vi hoạt động và cách tính tổng quát được giới thiệu trong bài phạm vi hoạt động của xe điện . Ở đây chúng ta tập trung vào điều kiện riêng của mùa hè."
+    },
+    {
+      "id": "BA-0972:c1",
+      "article_id": "BA-0972",
+      "title": "Tam Đảo Bằng xe Máy Cuối Tuần",
+      "url": "/blog/dia-phuong/tam-dao-bang-xe-may-cuoi-tuan/",
+      "category": "LOCAL",
+      "text": "Tam Đảo là lựa chọn quen thuộc khi bạn chỉ có hai ngày nghỉ và muốn đổi không khí khỏi phố. Cung đường khoảng tám mươi cây số, đủ gần để đi về trong ngày thứ Bảy, nhưng cũng đủ hấp dẫn để ngủ lại một đêm trên núi. Điều khiến chuyến cuối tuần khác chuyến ngày thường là nhịp đông đúc: đường đèo nhiều xe hơn, chỗ nghỉ kín nhanh hơn và dòng xe về Hà Nội chiều Chủ nhật dày đặc. Bài này tập trung vào cách sắp xếp một chuyến Tam Đảo bằng xe máy vào đúng khung cuối tuần, từ lúc nhận xe đến lúc trả xe."
+    },
+    {
+      "id": "BA-0972:c2",
+      "article_id": "BA-0972",
+      "title": "Tam Đảo Bằng xe Máy Cuối Tuần",
+      "url": "/blog/dia-phuong/tam-dao-bang-xe-may-cuoi-tuan/",
+      "category": "LOCAL",
+      "text": "Phần mô tả cung đường, chặng đèo và các điểm tham quan chính đã có trong bài Tam Đảo bằng xe máy . Ở đây, chúng ta bàn về thời gian, đám đông và những quyết định riêng của hai ngày nghỉ."
+    },
+    {
+      "id": "BA-0973:c1",
+      "article_id": "BA-0973",
+      "title": "Trợ lý ảo tư Vấn Thuê xe Máy Tại Hà Nội",
+      "url": "/blog/app/tro-ly-ao-tu-van-thue-xe-may-tai-ha-noi/",
+      "category": "APP",
+      "text": "Thuê xe ở Hà Nội có những câu hỏi rất riêng của thành phố này: ở Phố Cổ thì nên lấy xe số hay xe ga, có giao xe tới Tây Hồ không, từ khách sạn ở Hoàn Kiếm sang cửa hàng ở Long Biên mất bao lâu, mấy giờ còn nhận được xe. Trợ lý ảo trên website của {{ business.brand }} được xây dựng để trả lời nhanh nhóm câu hỏi đó, dựa trên dữ liệu cửa hàng đã xác minh. Bài này giải thích trợ lý giúp được gì trong bối cảnh Hà Nội, cách hỏi để nhận câu trả lời sát nhu cầu, và những việc vẫn cần xác nhận trực tiếp với cửa hàng."
+    },
+    {
+      "id": "BA-0973:c2",
+      "article_id": "BA-0973",
+      "title": "Trợ lý ảo tư Vấn Thuê xe Máy Tại Hà Nội",
+      "url": "/blog/app/tro-ly-ao-tu-van-thue-xe-may-tai-ha-noi/",
+      "category": "APP",
+      "text": "Nếu bạn chưa biết trợ lý ảo trong thuê xe là gì, bài trợ lý ảo tư vấn thuê xe máy giới thiệu phần nền tảng. Ở đây, chúng ta đi thẳng vào các tình huống thực tế tại Hà Nội."
     }
   ]
 }
