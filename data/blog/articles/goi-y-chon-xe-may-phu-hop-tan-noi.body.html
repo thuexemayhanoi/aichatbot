@@ -1,0 +1,70 @@
+<p>Khi bạn tới cửa hàng, việc chọn xe có một lợi thế lớn: ngồi thử, dắt thử, nhìn tận mắt. Khi xe được giao tới tận nơi, lợi thế đó biến mất, và chiếc xe xuất hiện trước cửa nhà là kết quả của những gì bạn mô tả qua tin nhắn hay qua trợ lý. Mô tả đúng thì xe vừa người; mô tả thiếu thì phải đổi xe, mất thêm một lượt giao. Bài này hướng dẫn cách lấy gợi ý chọn xe máy phù hợp tận nơi sao cho chiếc xe đầu tiên đã là chiếc đúng: cung cấp thông tin nào cho trợ lý MotoAI trên website, hiểu cách nó gợi ý, và kiểm tra gì trong năm phút nhân viên còn đứng ở cửa. Cách gợi ý tổng quát không gắn với giao xe đã có trong bài <a href="/blog/app/goi-y-chon-xe-may-phu-hop/">gợi ý chọn xe máy phù hợp</a>, và gợi ý theo từng khu vực nằm trong <a href="/blog/app/goi-y-chon-xe-may-phu-hop-tai-ha-noi/">phiên bản tại Hà Nội</a>.</p>
+
+<h2>Vì sao chọn xe từ xa cần mô tả kỹ hơn</h2>
+<p>Ở cửa hàng, nhân viên nhìn bạn là đoán được tầm vóc, nhìn hành lý là đoán được nhu cầu cốp, nghe bạn kể là biết trình độ lái. Qua mạng, ba thứ đó không tự lộ ra. Vì vậy một yêu cầu "cho tôi xe ga giao tới Tây Hồ" gần như chắc chắn nhận về chiếc xe ga phổ biến nhất, chứ chưa chắc là chiếc hợp với bạn. Trợ lý trực tuyến trên website được thiết kế để hỏi lại những điểm còn thiếu, nhưng bạn chủ động đưa đủ ngay từ đầu thì vòng hỏi đáp ngắn hơn và gợi ý chính xác hơn.</p>
+
+<h2>Sáu thông tin nên có trong một lần hỏi</h2>
+<p>Hãy gửi cho trợ lý một đoạn gồm sáu ý sau, theo thứ tự nào cũng được:</p>
+<ol>
+<li>Địa chỉ nhận xe và giờ mong muốn. Cửa hàng giao trong khu vực phục vụ gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội, chỉ trong giờ {{ business.hours.display }}; thời gian và phí giao được xác nhận trước khi đặt.</li>
+<li>Chiều cao và cân nặng tương đối, cùng việc bạn có quen xe số hay chỉ đi xe ga.</li>
+<li>Số người sẽ ngồi trên xe và có thường chở người thứ hai không.</li>
+<li>Quãng đường điển hình mỗi ngày và nơi hay tới: chỉ trong phố, có qua cầu, hay có ngày đi ngoại thành.</li>
+<li>Đồ mang theo: laptop, máy ảnh, hành lý nhỏ, đồ đi chợ; điều này quyết định cốp và móc treo.</li>
+<li>Số ngày thuê và khả năng kéo dài, để trợ lý đề xuất mốc theo ngày, tuần hay tháng.</li>
+</ol>
+<p>Một ví dụ đủ ý: "Tôi cao khoảng một mét sáu, chỉ quen xe ga, ở chung cư Tây Hồ, mỗi ngày đi làm ở Ba Đình, một mình, mang laptop, thuê hai tuần, nhận lúc 9 giờ sáng thứ Hai tại sảnh tòa nhà." Với đoạn này, trợ lý có đủ dữ kiện để gợi ý một dòng xe cụ thể kèm lý do.</p>
+
+<h2>Trợ lý gợi ý dựa trên gì</h2>
+<p>MotoAI là công cụ trực tuyến trên website, không phải ứng dụng cài vào điện thoại và cũng không thay cửa hàng quyết định. Nó đối chiếu mô tả của bạn với đặc điểm từng dòng xe cửa hàng đang cho thuê, rồi trả về một hai lựa chọn kèm giá tham khảo:</p>
+<ul>
+<li>Người nhỏ, chỉ đi xe ga, đi một mình trong phố: thường là Honda Click hoặc Yamaha Mio, giá tham khảo 150.000đ/ngày.</li>
+<li>Đi hai người, cần cốp rộng, qua cầu hằng ngày: thường là Honda Vision, 200.000đ/ngày tham khảo, hoặc Honda Air Blade cùng mức tham khảo khi bạn muốn xe khỏe hơn.</li>
+<li>Quen xe số, ưu tiên tiết kiệm xăng: Honda Wave, giá tham khảo 150.000đ/ngày.</li>
+<li>Muốn tốc độ thấp hoặc xe điện: trợ lý sẽ nêu nhóm xe 50cc, xe máy điện, xe đạp điện là giá liên hệ và hướng dẫn bạn hỏi cửa hàng.</li>
+</ul>
+<p>Mọi mức ở trên lấy từ trang <a href="/gia-thue/">giá thuê</a> và cần cửa hàng xác nhận theo xe còn sẵn tại thời điểm giao. Nếu bạn muốn biết trợ lý xếp hạng theo kinh nghiệm lái ra sao, bài <a href="/blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai/">công cụ chọn xe theo kinh nghiệm lái</a> mô tả cụ thể.</p>
+
+<h2>Những câu nên hỏi thêm trước khi chốt xe giao tới nhà</h2>
+<p>Sau khi có gợi ý, đừng đặt ngay. Dành thêm hai phút để hỏi trợ lý hoặc cửa hàng:</p>
+<ul>
+<li>Nếu xe tới nơi mà tôi ngồi không vừa, có thể đổi dòng khác không và cách xử lý lượt giao thứ hai ra sao.</li>
+<li>Xe giao kèm mấy mũ bảo hiểm, có áo mưa không.</li>
+<li>Xăng lúc giao ở mức nào, và khi trả cần về mức nào.</li>
+<li>Khoản cọc đưa cho nhân viên giao xe hay chuyển khoản trước; tại {{ business.brand }} khoản này từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, chốt khi đặt.</li>
+<li>Cần xuất trình giấy tờ gì ngay tại cửa, để chuẩn bị sẵn.</li>
+</ul>
+<p>Cách trợ lý nối tiếp bạn tới cửa hàng để chốt những điểm này được mô tả trong bài <a href="/blog/app/agent-chon-xe-giup-ban-tan-noi/">agent chọn xe giúp bạn tận nơi</a>.</p>
+
+<h2>Năm phút kiểm tra khi nhân viên còn ở cửa</h2>
+<p>Đây là lúc thay thế cho buổi thử xe ở cửa hàng. Làm đủ các bước sau trước khi ký nhận:</p>
+<ol>
+<li>Ngồi lên xe, chống hai chân, chắc chắn bàn chân chạm đất thoải mái.</li>
+<li>Dắt xe tiến lùi vài mét trong sân hoặc ngõ, cảm nhận trọng lượng và tay lái.</li>
+<li>Nổ máy, thử ga nhẹ, bóp hai phanh, bật đèn pha, xi nhan, còi.</li>
+<li>Mở cốp, đặt thử laptop hoặc túi bạn hay mang để biết có vừa không.</li>
+<li>Chụp ảnh xe bốn góc, đồng hồ và vạch xăng cùng nhân viên, gửi ngay vào tin nhắn với cửa hàng.</li>
+</ol>
+<p>Nếu bước một hoặc hai không ổn, nói ngay với nhân viên để bàn phương án đổi, thay vì nhận xe rồi khó chịu suốt kỳ thuê. Quy trình nhận xe tại cửa, gồm giấy tờ và ký nhận, được hướng dẫn đầy đủ ở bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>; tổng quan dịch vụ nằm trong bài <a href="/blog/thue-xe/thue-xe-giao-tan-noi/">thuê xe giao tận nơi</a>.</p>
+
+<h2>Lỗi mô tả hay gặp khiến xe giao không hợp</h2>
+<ul>
+<li>Chỉ nói "xe ga" mà không nói tầm vóc, nhận xe cao hơn mong đợi.</li>
+<li>Quên nói sẽ chở thêm người, nhận xe nhỏ thiếu chỗ ngồi sau.</li>
+<li>Không nhắc tới laptop hay máy ảnh, cốp không đủ.</li>
+<li>Ghi địa chỉ thiếu số tòa hoặc cổng, nhân viên mất thời gian tìm.</li>
+<li>Đặt giờ nhận trước 9 giờ sáng hoặc sau 21 giờ, ngoài khung giao của cửa hàng.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp về gợi ý chọn xe khi giao tận nơi</h2>
+<h3>Trợ lý có nhớ mô tả của tôi cho lần thuê sau không?</h3>
+<p>Hãy coi mỗi lần hỏi là một phiên mới và gửi lại đoạn mô tả, mất chưa tới một phút. Giữ sẵn đoạn đó trong ghi chú điện thoại để dùng lại.</p>
+<h3>Tôi không biết mình hợp xe nào, có thể nhờ gợi ý hai dòng để chọn không?</h3>
+<p>Có thể, và nên làm. Nói rõ với cửa hàng bạn phân vân giữa hai dòng để họ tư vấn thêm qua điện thoại {{ business.contact.phone_display }} trước khi giao, hoặc ghé {{ business.address.full }} thử trực tiếp nếu tiện.</p>
+<h3>Giao tận nơi có thể thử xe rồi không nhận không?</h3>
+<p>Hỏi cửa hàng chính sách cụ thể khi đặt. Thông thường nếu xe không vừa người, hai bên bàn phương án đổi; để tránh tình huống này, mô tả đủ sáu thông tin ở trên ngay từ đầu.</p>
+<h3>Trợ lý có gợi ý xe điện không?</h3>
+<p>Có, khi bạn nêu quãng đường ngắn và muốn xe êm. Vì xe điện là giá liên hệ, trợ lý sẽ gợi ý câu hỏi về pin và sạc để bạn hỏi cửa hàng thay vì đưa con số.</p>
+
+<h2>Kết luận</h2>
+<p>Chọn xe giao tận nơi thành công nằm ở đoạn mô tả bạn gửi đi: địa chỉ, tầm vóc, số người, quãng đường, đồ mang theo và số ngày. Với sáu ý đó, trợ lý MotoAI trên <a href="/">trang chủ</a> đưa ra gợi ý sát thực tế, cửa hàng xác nhận xe và phí giao, và năm phút kiểm tra ở cửa thay cho buổi thử xe. {{ business.display_name }} giao xe trong khu vực phục vụ, trong giờ {{ business.hours.display }}; liên hệ {{ business.contact.phone_display }} để chốt dòng xe và giờ nhận. Thêm hướng dẫn về cách dùng trợ lý và quy trình đặt xe ở chuyên mục <a href="/blog/app/">ứng dụng</a>.</p>

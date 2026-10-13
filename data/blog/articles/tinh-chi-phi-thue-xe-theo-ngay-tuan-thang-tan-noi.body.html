@@ -1,0 +1,71 @@
+<p>Khi xe được mang tới tận cửa khách sạn hay chung cư, bài toán chi phí có thêm một biến số mà bảng giá treo ở cửa hàng không thể hiện: phần giao nhận. Một người thuê ba ngày ở Phố Cổ và một người thuê một tháng ở Tây Hồ sẽ thấy phần này chiếm tỷ trọng rất khác nhau trong tổng tiền. Bài này hướng dẫn cách tính chi phí thuê xe theo ngày, tuần, tháng khi nhận xe tận nơi: tách tiền thuê, phần giao nhận và các khoản phát sinh, rồi dùng trợ lý web MotoAI trên website để sắp các con số trước khi gọi cửa hàng. Cách tính cơ bản không gắn với giao xe đã có trong bài <a href="/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang/">tính chi phí thuê xe theo ngày tuần tháng</a>, và ví dụ theo từng khu vực nội thành nằm trong <a href="/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang-tai-ha-noi/">phiên bản tại Hà Nội</a>.</p>
+
+<h2>Ba phần của tổng chi phí khi nhận xe tận nơi</h2>
+<p>Hãy viết tổng tiền thành ba dòng riêng, mỗi dòng có cách xác định khác nhau:</p>
+<ul>
+<li>Tiền thuê: lấy từ bảng giá tham khảo và nhân với mốc thời gian. Đây là phần bạn tự tính được ngay.</li>
+<li>Phần giao nhận: cửa hàng giao xe trong khu vực phục vụ như Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành, chỉ trong giờ {{ business.hours.display }}; thời gian giao và phí giao được xác nhận trước khi đặt, không có số cố định để bạn tự điền.</li>
+<li>Khoản phát sinh: xăng hoặc điện, gửi xe, trả muộn, và chi phí khắc phục nếu xe có hư hỏng mới. Phần này không chắc chắn, nên ước lượng rộng.</li>
+</ul>
+<p>Tiền cọc không nằm trong ba dòng này vì đó là khoản bảo đảm được hoàn lại, dao động từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được chốt khi đặt. Bạn vẫn cần chuẩn bị sẵn khoản đó khi nhận xe, nhưng đừng cộng vào "chi phí thuê".</p>
+
+<h2>Bảng tham khảo để điền dòng tiền thuê</h2>
+<p>Các mức dưới đây là giá tham khảo, cửa hàng xác nhận lại theo xe thực tế còn sẵn; bản cập nhật nằm ở trang <a href="/gia-thue/">giá thuê</a>.</p>
+<ul>
+<li>Vision của Honda, dòng được giao tận nơi nhiều nhất: mức ngày 200.000đ, mức tuần 800.000đ–1.000.000đ, mức tháng 1.800.000đ–2.000.000đ.</li>
+<li>Air Blade của Honda, cho người cần xe khỏe hơn: mức ngày 200.000đ, mức tuần 800.000đ, mức tháng 1.400.000đ.</li>
+<li>Click của Honda hoặc Mio của Yamaha, nhóm xe ga nhỏ: mức ngày 150.000đ, mức tuần 600.000đ–700.000đ, mức tháng 1.000.000đ–1.200.000đ.</li>
+<li>Wave của Honda, xe số tiết kiệm: mức ngày 150.000đ; gói tuần và tháng báo khi liên hệ.</li>
+<li>Nhóm 50cc cùng xe máy điện và xe đạp điện: không có mức niêm yết, cửa hàng báo giá theo xe còn sẵn.</li>
+</ul>
+<p>Quy tắc chọn mốc: nếu số ngày thuê nhân với giá ngày vượt mức tuần, lấy mức tuần; nếu số tuần nhân với mức tuần vượt mức tháng, lấy mức tháng. Khi kỳ thuê rơi vào khoảng giữa, ví dụ mười ngày, hãy hỏi cửa hàng cách tính gói tuần cộng ngày lẻ.</p>
+
+<h2>Vì sao giao tận nơi làm thay đổi mốc nên chọn</h2>
+<p>Phần giao nhận là một khoản cố định cho mỗi lần giao hoặc nhận, không phụ thuộc bạn thuê bao lâu. Hệ quả rất rõ:</p>
+<ul>
+<li>Thuê càng ngắn, phần giao nhận chiếm tỷ trọng càng lớn trong tổng tiền. Với một ngày thuê, đôi khi tự tới cửa hàng ở Bồ Đề nhận xe hợp lý hơn.</li>
+<li>Thuê càng dài, phần giao nhận càng mờ đi, và sự tiện lợi của việc có xe ngay trước cửa gần như luôn xứng đáng.</li>
+<li>Nếu bạn định thuê nhiều đợt ngắn cách quãng, mỗi đợt lại tốn một lần giao và một lần nhận; cộng lại có thể vượt phần chênh giữa gói tháng và các đợt lẻ. Khi đó, một gói dài hơn với một lần giao duy nhất thường rẻ hơn.</li>
+</ul>
+<p>Cách cửa hàng xác định phí giao, và những yếu tố làm phí thay đổi theo địa chỉ, được giải thích trong bài <a href="/blog/thue-xe/phi-giao-xe-thue/">phí giao xe thuê</a>.</p>
+
+<h2>Dùng trợ lý MotoAI để sắp các con số</h2>
+<p>MotoAI là trợ lý trực tuyến trên website, không phải ứng dụng cài vào điện thoại. Nó hữu ích nhất khi bạn đưa đủ dữ kiện trong một lần hỏi. Một câu hỏi tốt chứa bốn thứ: dòng xe hoặc kiểu xe, số ngày, địa chỉ nhận và giờ muốn nhận. Ví dụ: "Tôi cần Honda Vision mười ngày, nhận ở khách sạn phố Hàng Bông lúc 10 giờ sáng thứ Bảy." Trợ lý sẽ:</p>
+<ol>
+<li>Tính dòng tiền thuê theo bảng tham khảo và chỉ ra mốc nên chọn.</li>
+<li>Cho biết địa chỉ của bạn có nằm trong khu vực giao hay không và giờ nhận có trong khung mở cửa không.</li>
+<li>Nhắc rằng phí và thời gian giao phải được cửa hàng xác nhận, kèm cách liên hệ.</li>
+<li>Liệt kê những khoản phát sinh bạn nên dự phòng theo kiểu chuyến đi.</li>
+</ol>
+<p>Trợ lý không chốt giá thay cửa hàng và không hứa giờ giao; nó giúp bạn tới cuộc gọi với con số đã sắp sẵn. Cách nó hiểu các câu hỏi về giá, kể cả câu hỏi mơ hồ, được mô tả trong bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-tan-noi/">cách ứng dụng hiểu câu hỏi về giá xe tận nơi</a>.</p>
+
+<h2>Ba ví dụ tính trọn gói</h2>
+<h3>Ba ngày ở Phố Cổ, nhận tại khách sạn</h3>
+<p>Click hoặc Mio ba ngày theo mức tham khảo là 450.000đ tiền thuê. Cộng phần giao nhận do cửa hàng báo, cộng xăng cho quãng đường ngắn trong phố và tiền gửi xe mỗi lần dừng. Với kỳ ngắn như vậy, hãy hỏi trợ lý so sánh phương án tự tới cửa hàng nếu bạn tiện đường qua cầu.</p>
+<h3>Một tuần ở Gia Lâm, nhận tại nhà người thân</h3>
+<p>Air Blade một tuần theo mức tham khảo là 800.000đ, rẻ hơn bảy ngày lẻ. Gia Lâm gần cửa hàng nên phần giao nhận thường gọn; vẫn hỏi để chắc chắn. Dự phòng xăng cho vài chuyến vào trung tâm.</p>
+<h3>Một tháng ở Tây Hồ, nhận tại chung cư</h3>
+<p>Vision một tháng theo mức tham khảo từ 1.800.000đ đến 2.000.000đ. Phần giao nhận tính một lần đầu và một lần cuối, chia cho ba mươi ngày thì gần như không đáng kể. Khoản cần để ý hơn là tiền gửi xe hằng tháng ở chung cư và xăng, vì chúng cộng dồn theo ngày.</p>
+
+<h2>Lỗi tính chi phí hay gặp khi nhận xe tận nơi</h2>
+<ul>
+<li>Quên rằng việc trả xe cũng có thể cần giao nhận lần hai nếu bạn không tự mang về cửa hàng.</li>
+<li>Đặt giờ nhận ngoài khung mở cửa, ví dụ chuyến bay đáp đêm; cửa hàng chỉ giao trong giờ {{ business.hours.display }}, nên hãy tính phương án nhận sáng hôm sau.</li>
+<li>Cộng tiền cọc vào ngân sách thuê rồi tưởng giá đắt gấp đôi.</li>
+<li>So giá ngày của xe nhỏ với giá tuần của xe lớn, dẫn tới kết luận sai về mốc.</li>
+<li>Không hỏi gói có gồm mũ bảo hiểm thứ hai hay không khi đi hai người.</li>
+</ul>
+<p>Những việc cần làm lúc nhân viên giao xe tới cửa, từ kiểm tra tới ký nhận, được hướng dẫn trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>, còn tổng quan dịch vụ giao xe nằm ở bài <a href="/blog/thue-xe/thue-xe-giao-tan-noi/">thuê xe giao tận nơi</a>.</p>
+
+<h2>Câu hỏi thường gặp về chi phí thuê xe giao tận nơi</h2>
+<h3>Phí giao xe là bao nhiêu?</h3>
+<p>Không có mức cố định công bố sẵn; phí phụ thuộc địa chỉ và thời điểm, và luôn được cửa hàng xác nhận trước khi bạn đặt. Hãy nêu địa chỉ chính xác khi hỏi để nhận câu trả lời đúng.</p>
+<h3>Thuê một ngày có nên nhận tận nơi không?</h3>
+<p>Nếu bạn ở xa cửa hàng và không tiện di chuyển thì có; nếu bạn ở Long Biên hoặc tiện đường qua Bồ Đề, tự tới nhận có thể gọn hơn. Hỏi trợ lý so sánh hai phương án với địa chỉ cụ thể của bạn.</p>
+<h3>Trợ lý có tính được chi phí xe điện không?</h3>
+<p>Xe điện là giá liên hệ nên trợ lý không đưa ra con số; nó sẽ hướng dẫn bạn những gì cần hỏi cửa hàng, gồm giá theo kỳ và chuyện bộ sạc đi kèm.</p>
+<h3>Giá tham khảo và giá thật khác nhau nhiều không?</h3>
+<p>Thường không, nhưng giá thật phụ thuộc xe còn sẵn và thời điểm. Vì vậy mọi con số bạn tính chỉ là bản nháp để trao đổi, cửa hàng mới là nơi chốt.</p>
+
+<h2>Kết luận</h2>
+<p>Tính chi phí thuê xe giao tận nơi đúng cách là tách rõ ba phần: tiền thuê tự tính được, phần giao nhận cần xác nhận, và khoản phát sinh nên dự phòng. Kỳ thuê càng dài thì giao tận nơi càng đáng, kỳ càng ngắn thì càng nên so với việc tự tới nhận. Hãy để trợ lý MotoAI trên <a href="/">trang chủ</a> sắp con số trước, rồi gọi {{ business.display_name }} qua {{ business.contact.phone_display }} để chốt phí giao và giờ nhận trong khung {{ business.hours.display }}. Các hướng dẫn khác về cách dùng trợ lý nằm trong chuyên mục <a href="/blog/app/">ứng dụng</a>.</p>
