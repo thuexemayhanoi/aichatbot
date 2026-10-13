@@ -1,0 +1,73 @@
+<p>Bạn đang ở khách sạn trong Phố Cổ hoặc một căn hộ ở Tây Hồ, điện thoại gần đầy bộ nhớ, và chỉ muốn có một chiếc xe máy mang tới tận cửa mà không phải cài thêm gì. Bài ứng dụng thuê xe không cần tải tận nơi này hướng dẫn bạn dùng trợ lý web của cửa hàng ngay trên trình duyệt để hỏi xe, chốt giờ giao và chuẩn bị cho lúc xe tới nơi. Mọi bước đều diễn ra trong một tab trình duyệt, kết thúc bằng một cuộc gọi hoặc tin nhắn xác nhận với nhân viên.</p>
+
+<h2>Trợ lý web làm được gì khi bạn muốn nhận xe tận nơi</h2>
+<p>Trợ lý thuê xe của {{ business.brand }} là một công cụ trực tuyến chạy trên website, không phải phần mềm phải cài đặt. Bạn mở trang, gõ câu hỏi bằng tiếng Việt như nói chuyện bình thường, và nhận câu trả lời dựa trên dữ liệu mẫu xe, giá tham khảo và chính sách của cửa hàng. Với nhu cầu giao xe tới chỗ ở, trợ lý giúp bạn ba việc cụ thể:</p>
+<ul>
+<li>Kiểm tra khu vực bạn đang ở có thuộc phạm vi giao xe hay không, ví dụ Long Biên, Gia Lâm, Hoàn Kiếm, Ba Đình, Tây Hồ hay các quận nội thành khác.</li>
+<li>Gợi ý mẫu xe phù hợp với mục đích đi lại và cho biết mức giá tham khảo để bạn ước lượng ngân sách.</li>
+<li>Liệt kê giấy tờ, tiền cọc và những gì cần chuẩn bị trước khi nhân viên mang xe tới.</li>
+</ul>
+<p>Điều trợ lý không làm thay bạn là chốt giờ giao và phí giao. Hai thông tin này luôn được nhân viên xác nhận trực tiếp trước khi lịch được coi là đã đặt. Cách thức chung của bản web được mô tả trong bài <a href="/blog/app/ung-dung-thue-xe-khong-can-tai/">ứng dụng thuê xe không cần tải</a>, còn bài này đi sâu vào riêng phần giao xe tận nơi.</p>
+
+<h2>Năm bước từ mở trình duyệt đến xe đứng trước cửa</h2>
+<ol>
+<li><strong>Mở trang web của cửa hàng</strong> trên điện thoại hoặc máy tính, vào phần trợ lý. Không cần tạo tài khoản; cách dùng không tài khoản được giải thích trong bài <a href="/blog/app/app-thue-xe-khong-can-tai-khoan-tan-noi/">app thuê xe không cần tài khoản khi giao tận nơi</a>.</li>
+<li><strong>Nêu địa điểm và thời gian</strong> trong một câu, ví dụ: "Tôi ở gần Nhà hát Lớn, cần Honda Vision từ sáng mai đến thứ Sáu, giao tới khách sạn được không?". Càng đủ ý, câu trả lời càng sát.</li>
+<li><strong>Hỏi mức giá tham khảo</strong> cho mẫu xe được gợi ý, rồi so với bảng giá ở <a href="/gia-thue/">trang giá thuê</a>. Ví dụ Honda Vision khoảng 200.000đ/ngày, Honda Wave khoảng 150.000đ/ngày, đều là mức tham khảo cần xác nhận lại.</li>
+<li><strong>Lưu lại tóm tắt</strong> mà trợ lý đưa ra: mẫu xe, số ngày, địa điểm giao, danh sách giấy tờ. Chụp màn hình để lát nữa đối chiếu với nhân viên.</li>
+<li><strong>Gọi hoặc nhắn tới {{ business.contact.phone_display }}</strong> để nhân viên kiểm tra xe trống, chốt giờ giao trong khung {{ business.hours.display }} và báo phí giao nếu có. Lịch chỉ hoàn tất sau bước này.</li>
+</ol>
+<p>Nếu muốn bấm gọi ngay từ giao diện trợ lý, bài <a href="/blog/app/goi-dien-tu-ung-dung-thue-xe-tan-noi/">gọi điện từ ứng dụng thuê xe khi giao tận nơi</a> chỉ chỗ nút liên hệ và cách nói nhanh gọn.</p>
+
+<h2>Khung giờ giao và những điều trợ lý sẽ nhắc bạn</h2>
+<p>Cửa hàng chỉ giao xe trong giờ mở cửa, từ 09:00 đến 21:00. Nếu chuyến bay của bạn hạ cánh lúc nửa đêm, trợ lý sẽ gợi ý nhận xe vào sáng hôm sau thay vì hứa một khung giờ không thể thực hiện. Vài điểm khác bạn nên hỏi thẳng trong cuộc trò chuyện:</p>
+<ul>
+<li>Phí giao xe tới địa chỉ của bạn là bao nhiêu và có gồm cả lượt lấy xe về khi kết thúc không. Trợ lý sẽ chuyển câu hỏi này cho nhân viên xác nhận, vì mức phí tùy quãng đường.</li>
+<li>Mức cọc áp dụng cho mẫu xe sẽ giao, trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại, cùng cách nộp và cách nhận lại khi trả xe.</li>
+<li>Bảo hiểm xe máy do bạn tự chuẩn bị, vì cửa hàng không bán kèm gói nào.</li>
+<li>Xe giao tới có bao nhiêu nhiên liệu và khi trả cần để lại mức tương đương không.</li>
+</ul>
+<p>Những câu hỏi này đều có trong kho kiến thức của trợ lý, nhưng con số cuối cùng cho đơn của bạn vẫn do nhân viên chốt. Hãy coi trợ lý là bước chuẩn bị, không phải bước thanh toán.</p>
+
+<h2>Chuẩn bị gì ở nơi nhận xe</h2>
+<p>Khi xe tới, bạn sẽ ký giấy tờ và kiểm tra xe ngay tại chỗ, nên hãy sắp xếp trước vài thứ để nhân viên không phải đứng chờ:</p>
+<ul>
+<li>Căn cước hoặc hộ chiếu bản gốc, giấy phép lái xe phù hợp với loại xe, để sẵn trong tay.</li>
+<li>Một chỗ đứng đủ rộng trước cửa khách sạn hoặc sân chung cư để dựng xe, chụp ảnh bốn góc và thử phanh, đèn, còi.</li>
+<li>Bản tóm tắt bạn đã chụp từ trợ lý, để đối chiếu mẫu xe, giá và số ngày.</li>
+<li>Tiền cọc theo đúng mức nhân viên đã báo khi chốt lịch.</li>
+</ul>
+<p>Quy trình kiểm tra lúc xe tới nơi có trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>. Nếu bạn ở khách sạn, nên báo lễ tân trước để họ cho nhân viên vào sân, tránh mất mười phút gọi qua lại.</p>
+
+<h2>Khi nào nên tới cửa hàng thay vì chờ giao</h2>
+<p>Giao tận nơi tiện, nhưng không phải lúc nào cũng là lựa chọn tốt nhất. Bạn nên ghé {{ business.address.full }} nếu rơi vào một trong các tình huống sau:</p>
+<ul>
+<li>Bạn muốn ngồi thử hai ba mẫu rồi mới quyết, điều khó làm khi chỉ một xe được mang tới.</li>
+<li>Chỗ ở của bạn nằm trong khu phố đi bộ hoặc ngõ cấm xe vào khung giờ nhất định, khiến việc giao khó khăn.</li>
+<li>Bạn cần xe ngay trong một giờ tới; chạy tới cửa hàng ở Bồ Đề thường nhanh hơn chờ sắp xếp người giao.</li>
+<li>Bạn đang ở Long Biên hoặc Gia Lâm, cách cửa hàng chỉ vài phút, phí giao không đáng để trả.</li>
+</ul>
+<p>Trợ lý web cũng sẽ hỏi lại bạn vị trí để gợi ý phương án hợp lý hơn thay vì cứ mặc định giao xe.</p>
+
+<h2>Sai lầm thường gặp khi dùng bản web để đặt giao xe</h2>
+<ul>
+<li>Coi câu trả lời của trợ lý là xác nhận đặt xe. Không có cuộc gọi hoặc tin nhắn từ nhân viên nghĩa là chưa có lịch.</li>
+<li>Gõ địa chỉ quá chung như "Hà Nội" rồi hỏi phí giao. Hãy nêu tên đường và quận để câu trả lời có ý nghĩa.</li>
+<li>Đóng tab trình duyệt trước khi lưu tóm tắt, sau đó phải hỏi lại từ đầu.</li>
+<li>Yêu cầu giao xe lúc 22:00 vì nghĩ web hoạt động cả đêm. Trợ lý trả lời mọi giờ, nhưng xe chỉ giao trong giờ mở cửa.</li>
+<li>Đổi lịch bằng cách nhắn vào trợ lý mà không liên hệ nhân viên. Việc hủy hay dời giờ nên làm theo bài <a href="/blog/app/huy-lich-thue-xe-qua-app-tan-noi/">hủy lịch thuê xe qua app khi giao tận nơi</a>.</li>
+</ul>
+<p>Về phía cửa hàng, thủ tục giao xe đến địa chỉ được tóm tắt trong bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">giao xe tận nơi thủ tục</a>, bạn nên đọc một lần trước khi chốt lịch.</p>
+
+<h2>Câu hỏi thường gặp về ứng dụng thuê xe không cần tải tận nơi</h2>
+<h3>Dùng trợ lý web trên máy tính có khác trên điện thoại không?</h3>
+<p>Nội dung và cách hỏi giống nhau. Trên máy tính bạn dễ đọc bảng giá hơn, còn trên điện thoại bạn bấm gọi được ngay sau khi hỏi xong.</p>
+<h3>Trợ lý có biết chính xác hôm nay còn xe nào không?</h3>
+<p>Trợ lý biết các mẫu xe cửa hàng có và giá tham khảo, nhưng xe trống theo giờ do nhân viên kiểm tra khi bạn liên hệ.</p>
+<h3>Tôi ở ngoài nội thành thì có được giao không?</h3>
+<p>Cửa hàng phục vụ nội thành Hà Nội và các khu như Long Biên, Gia Lâm, Hoàn Kiếm, Tây Hồ. Với địa chỉ xa hơn, hãy hỏi nhân viên để biết có sắp xếp được không.</p>
+<h3>Có cần cài gì để trợ lý nhớ lịch sử trò chuyện không?</h3>
+<p>Không. Bạn chỉ cần chụp màn hình phần tóm tắt; trợ lý không yêu cầu đăng nhập hay cài đặt thêm.</p>
+
+<h2>Kết luận</h2>
+<p>Thuê xe giao tận nơi mà không tải ứng dụng là chuyện đơn giản nếu bạn hỏi đúng thông tin trên trợ lý web rồi chốt giờ với nhân viên. Mở trang web, nêu địa chỉ và thời gian, lưu tóm tắt, sau đó liên hệ {{ business.display_name }} qua {{ business.contact.phone_display }} trong giờ {{ business.hours.display }} để xác nhận. Các bài khác về trợ lý thuê xe có ở <a href="/blog/app/">chuyên mục ứng dụng</a>, và thông tin cửa hàng nằm tại <a href="/">trang chủ</a>.</p>
