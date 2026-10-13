@@ -23298,6 +23298,156 @@
         "Đặt xe online rồi nhận ngay tại cửa nhà rất tiện, nhưng chính phần \"tận nơi\" lại kéo theo một lớp dữ liệu cá nhân mà thuê tại cửa hàng không có: địa chỉ chỗ ở, vị trí định vị, khung giờ bạn có mặt ở nhà, và đôi khi cả tên tòa nhà, số phòng. Những thông tin này cần cho nhân viên giao xe tìm đúng cửa, nhưng cũng là thứ bạn không muốn trôi nổi ở nơi không cần thiết. Bài này nói về cách xử lý dữ liệu cá nhân khi thuê xe online tận nơi: dữ liệu nào phát sinh thêm so với thuê tại chỗ, ai cần nó và trong bao lâu, bạn chia sẻ thế nào cho vừa đủ, và làm gì sau khi xe đã giao xong. Phần nền về ba nhóm dữ liệu khi thuê online đã có ở bài xử lý dữ liệu c",
         "Khi bạn tới cửa hàng tại {{ business.address.full }}, cửa hàng chỉ cần giấy tờ để đối chiếu và một số điện thoại để liên hệ. Khi xe tới chỗ bạn, danh sách dài thêm:"
       ]
+    },
+    {
+      "article_id": "BA-1586",
+      "category": "APP",
+      "slug": "chatbot-thue-xe-may-co-dang-tin-khong-tan-noi",
+      "title": "Chatbot Thuê xe Máy có Đáng Tin Không Tận Nơi",
+      "description": "Khi bạn thuê xe và nhận tại cửa hàng, mọi lời chatbot nói ra đều có thể kiểm chứng ngay tại quầy: xe có đúng dòng không, giá có như khung chat báo",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chatbot-thue-xe-may-co-dang-tin-khong-tan-noi.body.html",
+      "knowledge_chunks": [
+        "Khi bạn thuê xe và nhận tại cửa hàng, mọi lời chatbot nói ra đều có thể kiểm chứng ngay tại quầy: xe có đúng dòng không, giá có như khung chat báo không. Giao xe tận nơi thì khác. Bạn ngồi ở nhà hoặc khách sạn, tin vào vài dòng trả lời trên màn hình, chuyển cọc, rồi chờ. Nếu thông tin sai, bạn chỉ biết khi nhân viên không đến, hoặc đến với chiếc xe khác, vào giờ khác. Vì thế câu hỏi chatbot thuê xe máy có đáng tin không trở nên nghiêm túc hơn hẳn khi gắn với giao xe tận nơi. Bài này chỉ ra chatbot đáng tin ở phần nào, không nên tin ở phần nào, và cách bạn tự kiểm tra trước khi chuyển bất kỳ khoản nào.",
+        "Một trợ lý thuê xe trên website như MotoAI của {{ business.brand }} trả lời dựa trên dữ liệu cửa hàng cung cấp sẵn: bảng giá tham khảo, khu vực phục vụ, giờ mở cửa, điều kiện giấy tờ, mức cọc. Những thông tin này gọi là thông tin tĩnh , và chatbot thường trả lời đúng vì chúng ít thay đổi. Loại thứ hai là thông tin theo thời điểm : chiếc Vision cụ thể có còn trống sáng mai không, nhân viên có rảnh để giao tới Tây Hồ lúc chín giờ không, phí giao tới địa chỉ của bạn là bao nhiêu. Những điều này phụ thuộc lịch thực tế của cửa hàng tại đúng thời điểm, và một trợ lý trung thực sẽ nói \"cần xác nhận với cửa hàng\" thay vì bịa ra con số."
+      ]
+    },
+    {
+      "article_id": "BA-1581",
+      "category": "APP",
+      "slug": "cong-cu-chon-xe-theo-kinh-nghiem-lai-tan-noi",
+      "title": "Công cụ Chọn xe Theo Kinh Nghiệm Lái Tận Nơi",
+      "description": "Khi bạn tới cửa hàng thuê xe, việc chọn xe có một bước an toàn tự nhiên: ngồi thử, dắt thử, nổ máy chạy một đoạn trong sân rồi mới quyết. Khi xe được",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cong-cu-chon-xe-theo-kinh-nghiem-lai-tan-noi.body.html",
+      "knowledge_chunks": [
+        "Khi bạn tới cửa hàng thuê xe, việc chọn xe có một bước an toàn tự nhiên: ngồi thử, dắt thử, nổ máy chạy một đoạn trong sân rồi mới quyết. Khi xe được giao tận nơi, bước đó biến mất. Nhân viên mang tới chiếc xe bạn đã chọn từ xa, và nếu nó quá cao, quá nặng hay lạ tay so với kinh nghiệm của bạn, việc đổi xe sẽ tốn thêm một chuyến đi về. Vì vậy, công cụ chọn xe theo kinh nghiệm lái trên ứng dụng web MotoAI trở nên quan trọng hơn hẳn với người đặt giao xe tận nơi: nó là bước \"ngồi thử\" bằng câu hỏi, diễn ra trước khi nhân viên lên đường. Bài này hướng dẫn bạn dùng công cụ đó cho đúng, chuẩn bị gì trước giờ giao, và kiểm tra gì trong năm phút đầu",
+        "Ở quầy, một người thuê có thể đổi từ Vision sang Click trong hai phút nếu thấy xe nặng. Với giao xe tận nơi, chiếc xe đã đi quãng đường từ {{ business.address.full }} tới chỗ bạn, nhân viên có lịch giao tiếp theo, và chiếc xe thay thế chưa chắc còn sẵn. Nói cách khác, chi phí của một lựa chọn sai tăng lên, trong khi cơ hội sửa sai giảm đi. Ba câu hỏi mà người nhận xe tại cửa hàng không cần nghĩ nhưng người đặt giao tận nơi phải trả lời trước:"
+      ]
+    },
+    {
+      "article_id": "BA-1582",
+      "category": "RENT",
+      "slug": "di-pho-co-bang-xe-may-thue-chay-pho",
+      "title": "đi Phố cổ Bằng xe Máy Thuê Chạy Phố",
+      "description": "Có hai kiểu người đi phố cổ bằng xe máy thuê. Kiểu thứ nhất là khách du lịch: một hai buổi dạo quanh ba mươi sáu phố phường, chụp ảnh, ăn uống rồi đi",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/di-pho-co-bang-xe-may-thue-chay-pho.body.html",
+      "knowledge_chunks": [
+        "Có hai kiểu người đi phố cổ bằng xe máy thuê. Kiểu thứ nhất là khách du lịch: một hai buổi dạo quanh ba mươi sáu phố phường, chụp ảnh, ăn uống rồi đi nơi khác. Kiểu thứ hai là người chạy phố mỗi ngày: bạn thuê trọ bên Long Biên hay Gia Lâm, làm việc, học hoặc giao dịch trong khu Hoàn Kiếm, và phố cổ là nơi bạn phải ra vào năm sáu lần một tuần. Kiểu thứ hai ít được viết tới, dù chính họ mới là người cần biết rõ nhất lối nào một chiều, bãi nào nhận xe theo tháng, giờ nào vào được và giờ nào nên đi vòng. Bài này dành cho họ: cách biến phố cổ từ một mê cung thành một lộ trình quen thuộc với chiếc xe thuê.",
+        "Khách du lịch chấp nhận lạc đường như một phần trải nghiệm; người chạy phố thì không có thời gian cho việc đó. Ba đặc điểm của khu này ảnh hưởng tới người đi hằng ngày nhiều hơn cả:"
+      ]
+    },
+    {
+      "article_id": "BA-1584",
+      "category": "GUIDE",
+      "slug": "giao-xe-tan-noi-thu-tuc-checklist",
+      "title": "Giao xe Tận Nơi Thủ Tục Checklist",
+      "description": "Thủ tục giao xe tận nơi không khó, nhưng nó gồm nhiều mục nhỏ rải ở ba thời điểm khác nhau: lúc đặt, lúc chờ và lúc bàn giao. Đọc một bài hướng dẫn",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/giao-xe-tan-noi-thu-tuc-checklist.body.html",
+      "knowledge_chunks": [
+        "Thủ tục giao xe tận nơi không khó, nhưng nó gồm nhiều mục nhỏ rải ở ba thời điểm khác nhau: lúc đặt, lúc chờ và lúc bàn giao. Đọc một bài hướng dẫn dài rồi nhớ hết là chuyện khó, nên bài này làm theo cách khác: toàn bộ thủ tục được chia thành sáu nhóm checklist, mỗi nhóm là một danh sách ngắn để bạn tick. Hãy lưu lại trang này, mở ra khi nhắn cửa hàng, mở lại khi nhân viên sắp đến, và mở lần cuối trước khi trả xe. Phần giải thích vì sao từng bước lại cần thiết nằm ở bài giao xe tận nơi thủ tục ; ở đây chỉ còn việc cần làm.",
+        "Đây là những gì cửa hàng cần có để xếp lịch giao. Thiếu một mục, bạn sẽ phải trả lời thêm ít nhất một tin nhắn."
+      ]
+    },
+    {
+      "article_id": "BA-1590",
+      "category": "LOCAL",
+      "slug": "hoang-hon-ho-tay-buoi-toi",
+      "title": "Hoàng Hôn hồ Tây Buổi Tối",
+      "description": "Nhiều người chạy xe sang Hồ Tây chỉ để chụp đúng khoảnh khắc mặt trời chạm mặt nước, rồi quay đầu về khi trời vừa sẫm. Làm vậy là bỏ lỡ phần hay",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/hoang-hon-ho-tay-buoi-toi.body.html",
+      "knowledge_chunks": [
+        "Nhiều người chạy xe sang Hồ Tây chỉ để chụp đúng khoảnh khắc mặt trời chạm mặt nước, rồi quay đầu về khi trời vừa sẫm. Làm vậy là bỏ lỡ phần hay nhất: khoảng bốn mươi phút sau khi mặt trời khuất, bầu trời chuyển từ cam sang tím rồi xanh thẫm, đèn đường Thanh Niên bật lên, mặt hồ bắt đầu phản chiếu ánh đèn của các quán ven bờ. Bài này viết cho bạn nào muốn ngắm hoàng hôn Hồ Tây buổi tối theo nghĩa đầy đủ: đến trước giờ lặn, ở lại qua giờ xanh, ăn tối quanh hồ và chạy xe về khi thành phố đã lên đèn. Với xe máy thuê, buổi tối như vậy cần vài chuẩn bị khác hẳn một buổi chiều ghé qua chụp ảnh.",
+        "Để sắp xếp thời gian hợp lý, hãy chia buổi tối thành ba giai đoạn ánh sáng, mỗi giai đoạn hợp một kiểu hoạt động:"
+      ]
+    },
+    {
+      "article_id": "BA-1588",
+      "category": "EV",
+      "slug": "huong-dan-su-dung-xe-may-dien-dai-han",
+      "title": "Hướng Dẫn sử Dụng xe Máy Điện Dài Hạn",
+      "description": "Dùng xe máy điện thuê trong một ngày và dùng trong ba tháng là hai việc khác nhau. Ngày đầu, bạn chỉ cần biết bật khóa, vặn ga và sạc đầy trước khi",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/huong-dan-su-dung-xe-may-dien-dai-han.body.html",
+      "knowledge_chunks": [
+        "Dùng xe máy điện thuê trong một ngày và dùng trong ba tháng là hai việc khác nhau. Ngày đầu, bạn chỉ cần biết bật khóa, vặn ga và sạc đầy trước khi đi ngủ. Nhưng khi chiếc xe trở thành phương tiện hằng ngày của bạn suốt nhiều tuần, những thứ nhỏ nhặt bắt đầu quan trọng: nhịp sạc nào giúp pin không xuống dốc nhanh, bao lâu phải bơm lốp một lần, dấu hiệu nào cần báo cửa hàng ngay thay vì để đến cuối kỳ, và làm sao để lúc trả xe không phát sinh tranh cãi. Bài hướng dẫn sử dụng xe máy điện dài hạn này sắp xếp theo thời gian: tuần đầu, mỗi tuần, mỗi tháng và tuần cuối. Thao tác vận hành cơ bản đã được nói ở bài hướng dẫn sử dụng xe máy điện , nên ",
+        "Tuần đầu tiên là lúc bạn ghi nhận \"trạng thái gốc\" của chiếc xe. Mọi so sánh về sau, từ quãng đường đi được mỗi lần sạc đến tiếng kêu lạ, đều dựa vào mốc này."
+      ]
+    },
+    {
+      "article_id": "BA-1589",
+      "category": "GUIDE",
+      "slug": "huy-dat-xe-dung-cach-checklist",
+      "title": "Hủy Đặt xe Đúng Cách Checklist",
+      "description": "Hủy một lịch thuê xe nghe đơn giản, nhưng khi làm thật bạn sẽ thấy có nhiều ô dễ bị bỏ trống: quên nhắc tới khoản cọc đã chuyển, không hủy lịch giao",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/huy-dat-xe-dung-cach-checklist.body.html",
+      "knowledge_chunks": [
+        "Hủy một lịch thuê xe nghe đơn giản, nhưng khi làm thật bạn sẽ thấy có nhiều ô dễ bị bỏ trống: quên nhắc tới khoản cọc đã chuyển, không hủy lịch giao xe đã hẹn, hay nhắn vào một kênh mà cửa hàng không theo dõi. Bài này được viết dưới dạng checklist để bạn tick từng mục theo thứ tự, từ lúc quyết định hủy đến khi chắc chắn mọi thứ đã khép lại. Bạn có thể lưu lại, mở ra đúng lúc cần, làm đến đâu đánh dấu đến đó. Phần giải thích lý do và các tình huống đặc biệt đã có trong bài hủy đặt xe đúng cách ; ở đây chỉ còn lại danh sách việc cần làm.",
+        "Không phải lần đổi kế hoạch nào cũng cần hủy hẳn. Trước khi nhắn, hãy đi qua bốn câu hỏi này:"
+      ]
+    },
+    {
+      "article_id": "BA-1583",
+      "category": "EV",
+      "slug": "pham-vi-hoat-dong-cua-xe-dien-dai-han",
+      "title": "Phạm vi Hoạt Động Của xe Điện Dài Hạn",
+      "description": "Thuê xe điện một ngày, bạn chỉ cần biết hôm nay pin đi được bao xa. Thuê nhiều tháng, câu hỏi về phạm vi hoạt động trở thành một đường cong: con số",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/pham-vi-hoat-dong-cua-xe-dien-dai-han.body.html",
+      "knowledge_chunks": [
+        "Thuê xe điện một ngày, bạn chỉ cần biết hôm nay pin đi được bao xa. Thuê nhiều tháng, câu hỏi về phạm vi hoạt động trở thành một đường cong: con số tuần đầu khác con số tháng thứ ba, mùa hè khác mùa đông, lốp mới bơm khác lốp đã non, và cả cách bạn vặn ga sau khi đã quen xe cũng làm quãng đường mỗi lần sạc thay đổi. Người thuê dài hạn không cần một con số, mà cần một cách theo dõi để biết khi nào phạm vi giảm vì lý do tự nhiên và khi nào vì xe có vấn đề. Bài này hướng dẫn bạn lập \"nhật ký tầm pin\" đơn giản, đọc các yếu tố theo mùa, và quyết định đúng lúc nếu dòng xe không còn hợp với lịch đi của bạn. Khái niệm cơ bản về tầm hoạt động và ngân ",
+        "Khi nhận xe, bạn sẽ được nhân viên cho biết quãng đường tham khảo mỗi lần sạc đầy với điều kiện phố thông thường. Hãy ghi lại con số đó, nhưng coi nó là điểm xuất phát chứ không phải cam kết cho cả kỳ. Trong kỳ thuê dài, bốn thứ kéo phạm vi lên xuống:"
+      ]
+    },
+    {
+      "article_id": "BA-1585",
+      "category": "LOCAL",
+      "slug": "quang-di-long-bien-view-buoi-toi",
+      "title": "Quảng đi Long Biên View Buổi Tối",
+      "description": "Ban ngày, Long Biên cho bạn cầu thép, bãi cỏ và đường chân trời thành phố. Nhưng từ lúc đèn đường bật lên, khu vực này đổi sang một bộ mặt khác: dải",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/quang-di-long-bien-view-buoi-toi.body.html",
+      "knowledge_chunks": [
+        "Ban ngày, Long Biên cho bạn cầu thép, bãi cỏ và đường chân trời thành phố. Nhưng từ lúc đèn đường bật lên, khu vực này đổi sang một bộ mặt khác: dải đèn vàng chạy dọc cầu Chương Dương, ánh đèn từ các tòa nhà bên Hoàn Kiếm hắt xuống mặt sông, và cây cầu Long Biên cũ chỉ còn là một bóng thép sẫm nằm ngang trên nền trời tím. Quãng đi Long Biên ngắm view buổi tối không cần đi xa, không cần xe mạnh, nhưng cần biết đứng ở đâu để nhìn, đi đường nào cho sáng và dừng chỗ nào cho an toàn. Bài này gợi ý một vòng ngắn hai đến ba tiếng bằng xe máy thuê, xuất phát và kết thúc ngay tại khu Bồ Đề.",
+        "Khác với buổi chiều, khi nắng xiên làm nổi bật cấu trúc thép của cầu, buổi tối Long Biên là câu chuyện của ánh đèn phản chiếu. Có ba góc nhìn đáng dành thời gian:"
+      ]
+    },
+    {
+      "article_id": "BA-1587",
+      "category": "RENT",
+      "slug": "thue-xe-dai-ngay-gia-tot-chay-pho",
+      "title": "Thuê xe Dài Ngày Giá Tốt Chạy Phố",
+      "description": "Thuê xe dài ngày để chạy phố là kiểu thuê rất phổ biến ở Hà Nội nhưng ít khi được tính toán kỹ: bạn ở lại thành phố hai ba tuần để làm việc, thực",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-dai-ngay-gia-tot-chay-pho.body.html",
+      "knowledge_chunks": [
+        "Thuê xe dài ngày để chạy phố là kiểu thuê rất phổ biến ở Hà Nội nhưng ít khi được tính toán kỹ: bạn ở lại thành phố hai ba tuần để làm việc, thực tập, chăm người nhà hay đơn giản là sống thử một thời gian, và cần một chiếc xe mỗi ngày đi quanh nội thành chứ không đi đâu xa. Vì quãng đường ngắn, nhiều người nghĩ chọn xe nào cũng như nhau, miễn rẻ. Thực tế, với lịch chạy phố lặp đi lặp lại, chi phí thật nằm ở ba chỗ: giá thuê theo gói, tiền xăng cho kiểu đi dừng liên tục, và tiền gửi xe mỗi ngày. Bài này giúp bạn tối ưu cả ba, để tổng tiền một tháng ở Hà Nội thấp nhất có thể mà vẫn có xe tử tế.",
+        "Khi chạy quanh nội thành, mỗi ngày bạn đi có thể chỉ vài chục km, nhưng toàn những quãng ngắn, dừng đèn đỏ liên tục, nổ máy chờ, rồi lại đi. Kiểu đi này khiến xe tốn xăng tính trên mỗi km cao hơn hẳn chạy đường trường đều ga. Bù lại, bạn không cần xe mạnh, không cần cốp lớn, không cần bình xăng to. Vì vậy công thức giá tốt cho chạy phố nghiêng về xe nhỏ, nhẹ, tiết kiệm xăng, thuê theo tuần hoặc tháng, hơn là xe ga phân khối lớn thuê theo ngày."
+      ]
     }
   ]
 }
