@@ -1,0 +1,63 @@
+<p>Một ứng dụng thuê xe tiếng Anh tại Hà Nội chỉ thực sự hữu ích khi người dùng và cửa hàng hiểu cùng một nghĩa cho cùng một từ. "Deposit" là tiền cọc hay tiền trả trước? "Automatic" có phải xe ga? "Lane 12" là ngõ hay ngách? Phần lớn rắc rối của khách nói tiếng Anh không nằm ở chỗ thiếu bản dịch, mà ở những từ quen thuộc mang nghĩa hơi khác trong bối cảnh thuê xe ở Việt Nam. Bài viết này là bộ công cụ ngôn ngữ thực hành: bảng từ vựng song ngữ, cách viết địa chỉ Hà Nội để người giao tìm được, cách đọc câu trả lời tiếng Việt và cách dùng trợ lý MotoAI trên website sao cho mọi thứ được hiểu đúng ngay từ lần đầu.</p>
+
+<h2>Bảng từ vựng song ngữ cho người thuê xe</h2>
+<p>Lưu bảng nhỏ này vào ghi chú điện thoại. Khi trao đổi với trợ lý hay nhân viên, dùng đúng cặp từ sẽ giảm hẳn số lần phải giải thích lại:</p>
+<ul>
+<li>Xe số (semi-automatic, phải sang số bằng chân), ví dụ Honda Wave.</li>
+<li>Xe ga (automatic scooter, không sang số), ví dụ Honda Vision, Air Blade, Honda Click.</li>
+<li>Xe máy điện (electric scooter), giá liên hệ, cần hỏi riêng.</li>
+<li>Tiền cọc (deposit), khoản giữ lại và hoàn trả theo thỏa thuận khi trả xe.</li>
+<li>Giấy phép lái xe (driving licence), khác với hộ chiếu (passport).</li>
+<li>Giao xe tận nơi (delivery), trả xe (return), phí giao (delivery fee).</li>
+<li>Giá tham khảo (reference price), nghĩa là còn cần cửa hàng xác nhận lại.</li>
+</ul>
+<p>Tiền cọc ở {{ business.brand }} là {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được xác nhận khi đặt. Nếu thấy chữ "deposit" trong câu trả lời, hãy hỏi thêm khoản đó được hoàn lại khi nào và theo điều kiện gì.</p>
+
+<h2>Viết địa chỉ Hà Nội để người giao tìm được ngay</h2>
+<p>Địa chỉ ở Hà Nội có cấu trúc riêng mà bản dịch tiếng Anh hay làm rối. Một địa chỉ đầy đủ thường gồm số nhà, ngõ (lane), ngách (alley nhỏ hơn trong ngõ), tên phố, phường và quận. "Số 5 ngách 12 ngõ 34 phố X" nghĩa là nhà số 5, trong ngách 12, thuộc ngõ 34 của phố X. Viết sai thứ tự hoặc bỏ mất ngách là người giao phải gọi hỏi đường.</p>
+<ul>
+<li>Giữ nguyên tên phố tiếng Việt, có dấu càng tốt; đừng dịch "Hàng Bạc" thành "Silver Street".</li>
+<li>Gửi kèm vị trí ghim trên bản đồ, đặc biệt với khách sạn trong ngõ nhỏ ở Phố Cổ.</li>
+<li>Thêm một mốc dễ nhận như tên khách sạn, cổng chung cư hay cửa hàng tiện lợi gần nhất.</li>
+<li>Ghi số phòng hoặc tầng nếu bạn muốn người giao lên tận nơi, hoặc hẹn gặp ở sảnh.</li>
+</ul>
+<p>Thủ tục giao nhận dành riêng cho khách quốc tế được mô tả trong bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc-cho-khach-nuoc-ngoai/">giao xe tận nơi cho khách nước ngoài</a>. Giao xe chỉ thực hiện trong giờ {{ business.hours.display }}, thời gian và phí giao phải được xác nhận trước khi đặt.</p>
+
+<h2>Đọc câu trả lời tiếng Việt mà không hiểu sai</h2>
+<p>Đôi khi bạn hỏi bằng tiếng Anh nhưng nhận lại một đoạn có xen tiếng Việt, hoặc một tin nhắn từ nhân viên viết tắt. Vài mẹo để không đoán mò:</p>
+<ol>
+<li>Dán đoạn văn vào công cụ dịch, nhưng đối chiếu lại con số và giờ giấc bằng mắt, vì máy dịch đôi khi đổi cách viết số.</li>
+<li>Nhớ rằng người Việt dùng dấu chấm để tách hàng nghìn: 200.000đ là hai trăm nghìn đồng, không phải hai trăm đồng có phần lẻ.</li>
+<li>"Ngày" là day, "tuần" là week, "tháng" là month; "/ngày" sau giá nghĩa là giá theo ngày.</li>
+<li>Giờ thường viết theo dạng 24 giờ, chẳng hạn 21:00 là chín giờ tối.</li>
+<li>Khi chưa chắc, hỏi lại bằng một câu tiếng Anh đơn giản và yêu cầu trả lời "yes" hoặc "no".</li>
+</ol>
+<p>Cách trợ lý xử lý câu hỏi đa ngôn ngữ được giải thích ở bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu/">trợ lý thuê xe và câu hỏi đa ngôn ngữ</a>; còn mẹo viết câu hỏi rõ ý nằm ở bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho trợ lý</a>.</p>
+
+<h2>Dùng trợ lý MotoAI bằng tiếng Anh từng bước</h2>
+<p>MotoAI là trợ lý chạy ngay trên website, mở bằng trình duyệt, không phải cài đặt gì; điểm khác biệt này được phân tích trong bài <a href="/blog/app/ung-dung-thue-xe-khong-can-tai/">ứng dụng thuê xe không cần tải</a>. Quy trình gọn nhất cho người nói tiếng Anh:</p>
+<ol>
+<li>Mô tả nhu cầu trong một câu: số ngày, khu vực ở, có quen xe số hay không.</li>
+<li>Hỏi gợi ý dòng xe; xem thêm tiêu chí ở bài <a href="/blog/app/goi-y-chon-xe-may-phu-hop/">gợi ý chọn xe máy phù hợp</a>.</li>
+<li>Hỏi giá tham khảo theo ngày, tuần hoặc tháng cho dòng xe đã chọn.</li>
+<li>Hỏi giấy tờ cần chuẩn bị và cách giao nhận.</li>
+<li>Chuyển sang liên hệ cửa hàng để xác nhận cuối cùng.</li>
+</ol>
+<p>Để có mốc so sánh, giá tham khảo hiện tại: Honda Wave 150.000đ/ngày; Honda Vision 200.000đ/ngày, 1.800.000đ–2.000.000đ/tháng; Honda Air Blade 200.000đ/ngày, 1.400.000đ/tháng. Bảng đầy đủ ở trang <a href="/gia-thue/">giá thuê</a>, và mọi con số vẫn cần cửa hàng xác nhận.</p>
+
+<h2>Khi người đặt xe là chủ nhà hoặc lễ tân</h2>
+<p>Ở Tây Hồ, Ba Đình hay Phố Cổ, nhiều khách nước ngoài nhờ chủ căn hộ hoặc lễ tân khách sạn đặt xe hộ. Cách này nhanh nhưng dễ thất lạc thông tin. Nếu bạn là người đặt hộ, hãy gửi luôn tên khách, loại giấy phép lái xe khách đang có, giờ khách có mặt để nhận xe, và chuyển lại toàn bộ câu trả lời của cửa hàng cho khách bằng tiếng Anh. Nếu bạn là khách, xin chủ nhà chụp màn hình cuộc trò chuyện để chính mình giữ một bản.</p>
+<p>Dù ai đặt, có hai điều không đổi: cửa hàng không cung cấp bảo hiểm, nên người lái tự chuẩn bị bảo hiểm xe máy; và người nhận xe phải là người sẽ điều khiển xe, mang theo giấy tờ bản gốc.</p>
+
+<h2>Câu hỏi thường gặp về ứng dụng thuê xe tiếng Anh tại Hà Nội</h2>
+<h3>Tôi gõ tiếng Anh không dấu, viết tắt thì trợ lý có hiểu không?</h3>
+<p>Câu càng rõ ràng thì câu trả lời càng chính xác. Hãy viết câu đầy đủ, tránh tiếng lóng, và tách mỗi câu hỏi thành một tin riêng.</p>
+<h3>Tên phố không dấu có được không?</h3>
+<p>Được, nhưng nhiều phố ở Hà Nội có tên gần giống nhau khi bỏ dấu. Gửi kèm vị trí trên bản đồ là cách chắc nhất.</p>
+<h3>Có thể nhận hợp đồng hay biên nhận bằng tiếng Anh không?</h3>
+<p>Hãy hỏi trực tiếp cửa hàng khi đặt. Dù giấy tờ bằng ngôn ngữ nào, bạn nên chụp lại và nhờ dịch phần giá, thời hạn và điều kiện trả xe trước khi ký.</p>
+<h3>Ngoài giờ mở cửa tôi vẫn hỏi trợ lý được chứ?</h3>
+<p>Bạn có thể đặt câu hỏi bất kỳ lúc nào trên website, còn phần xác nhận đặt xe và giao xe diễn ra trong giờ hoạt động của cửa hàng.</p>
+
+<h2>Kết luận</h2>
+<p>Với người nói tiếng Anh, một bảng từ vựng nhỏ, một địa chỉ viết đúng cấu trúc và thói quen xác nhận lại bằng chữ là đủ để thuê xe ở Hà Nội suôn sẻ. Khi đã sẵn sàng, liên hệ {{ business.contact.phone_display }} hoặc ghé {{ business.address.full }} trong khung giờ {{ business.hours.display }}. Bản tổng quát hơn có ở bài <a href="/blog/app/ung-dung-thue-xe-tieng-anh/">ứng dụng thuê xe tiếng Anh</a>, các bài liên quan nằm trong mục <a href="/blog/app/">trợ lý và ứng dụng thuê xe</a>, và bạn có thể mở trợ lý ngay ở <a href="/">trang chủ</a>.</p>
