@@ -1,0 +1,49 @@
+<p>Giao xe tận nơi là dịch vụ duy nhất trong quy trình thuê xe buộc bạn phải nói ra một thứ rất riêng tư: bạn đang ở đâu. Với một công cụ xử lý cục bộ như MotoAI, trợ lý trực tuyến trên website của {{ business.brand }}, phần hỏi đáp, so giá, chọn xe vẫn diễn ra trong trình duyệt của bạn; nhưng địa chỉ giao, giờ giao và số điện thoại thì không thể "cục bộ" được, vì có người thật phải mang xe tới. Bài này vạch rõ ranh giới đó: thứ gì ở lại trên máy, thứ gì bắt buộc rời đi khi bạn chọn giao tận nơi, và cách giữ phần rời đi ở mức tối thiểu. Khái niệm nền tảng về xử lý cục bộ đã có trong bài <a href="/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe/">privacy và xử lý cục bộ trong app thuê xe</a>.</p>
+
+<h2>Nhắc lại ngắn: xử lý cục bộ nghĩa là gì trong trợ lý này</h2>
+<p>Trợ lý cơ bản trả lời dựa trên dữ liệu cửa hàng đã nạp sẵn vào trang web, nên câu hỏi của bạn được xử lý ngay trong trình duyệt. Lịch sử trò chuyện lưu trên thiết bị đang dùng, không đồng bộ sang máy khác, và có nút xóa hội thoại trong menu. Lớp Agent nâng cao chỉ hoạt động khi bạn chủ động bật, khi đó model được tải về và chạy trên máy bạn. Không có tài khoản, không có bước đăng nhập. Những điều này đúng cho mọi lượt dùng, kể cả khi bạn hỏi về giao xe tận nơi; thứ thay đổi là bước sau cùng, khi bạn chốt đơn với cửa hàng.</p>
+
+<h2>Giao tận nơi cần những thông tin nào, và vì sao</h2>
+<ul>
+<li>Địa chỉ giao: để người giao xe tới đúng chỗ. Cần đủ để tìm được, không cần hơn thế.</li>
+<li>Khung giờ giao: để cửa hàng xếp lịch xe; chỉ trong giờ {{ business.hours.display }}.</li>
+<li>Số điện thoại liên lạc: để gọi khi người giao tới nơi hoặc khi lịch thay đổi.</li>
+<li>Tên người nhận: để đối chiếu với giấy tờ lúc giao.</li>
+<li>Giấy phép lái xe và giấy tờ tùy thân: xem bản gốc tại chỗ, không gửi ảnh trước.</li>
+</ul>
+<p>Lưu ý quan trọng: bốn mục đầu đi tới cửa hàng qua kênh bạn chọn để chốt đơn, như điện thoại, tin nhắn hoặc Zalo, chứ không qua trợ lý. Trợ lý không có ô nhập địa chỉ để "gửi đơn", nó chỉ giúp bạn biết khu vực phục vụ gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ, nội thành Hà Nội, và nhắc rằng thời gian cùng phí giao phải được cửa hàng xác nhận trước khi đặt. Toàn bộ dữ liệu cá nhân nào phát sinh ở các bước thuê trực tuyến, và ai giữ chúng, được liệt kê ở bài <a href="/blog/app/xu-ly-du-lieu-ca-nhan-khi-thue-xe-online-tan-noi/">xử lý dữ liệu cá nhân khi thuê xe online tận nơi</a>.</p>
+
+<h2>Giữ phần rời khỏi máy ở mức tối thiểu</h2>
+<ol>
+<li>Hỏi trợ lý bằng khu vực, không bằng địa chỉ: "khách sạn ở Phố Cổ có được giao không" thay vì gõ tên khách sạn và số phòng vào cuộc trò chuyện.</li>
+<li>Khi chốt với cửa hàng, cho tên khách sạn và điểm hẹn ở sảnh; số phòng không cần thiết cho việc giao xe.</li>
+<li>Dùng một số điện thoại bạn sẵn sàng nhận cuộc gọi trong ngày giao, không cần kèm email hay mạng xã hội.</li>
+<li>Không gửi ảnh giấy phép lái xe hay hộ chiếu qua tin nhắn để "kiểm trước"; người giao xe xem bản gốc tại chỗ.</li>
+<li>Sau khi nhận xe, xóa hội thoại nếu thiết bị là máy mượn hoặc máy dùng chung.</li>
+</ol>
+<p>Nguyên tắc chung của việc dùng trợ lý mà không cần đăng ký, và vì sao không có tài khoản lại là một lợi thế về riêng tư, được giải thích ở bài <a href="/blog/app/app-thue-xe-khong-can-tai-khoan-tan-noi/">app thuê xe không cần tài khoản khi giao tận nơi</a>.</p>
+
+<h2>Kênh chốt đơn là dịch vụ của bên thứ ba</h2>
+<p>Khi bạn bấm nút gọi, mở Zalo hoặc mở bản đồ từ trợ lý, bạn rời khỏi trang web và chuyển sang ứng dụng của bên khác; chính sách dữ liệu của họ áp dụng cho nội dung bạn trao đổi ở đó. Điều này không xấu, nó chỉ là một ranh giới cần biết. Cách kết nối Zalo với trợ lý và những gì đi qua kênh đó được mô tả trong bài <a href="/blog/app/ket-noi-zalo-voi-ung-dung-thue-xe-tan-noi/">kết nối Zalo với ứng dụng thuê xe tận nơi</a>. Trên kênh đã chọn, hãy giữ tin nhắn chốt đơn vì đó là bằng chứng về giờ giao, phí giao và dòng xe; chỉ xóa phần trò chuyện trong trợ lý, nơi không có gì ràng buộc.</p>
+
+<h2>Lúc xe tới: dữ liệu được xử lý bằng mắt, không bằng ảnh tải lên</h2>
+<p>Người giao xe xem giấy phép lái xe và giấy tờ tùy thân bản gốc, đối chiếu với tên đã chốt, rồi bàn giao xe. Phần bạn nên chủ động làm là chụp ảnh tình trạng xe và gửi vào cuộc trò chuyện đặt xe với cửa hàng; đó là ảnh xe, không phải ảnh giấy tờ. Nếu ai đó tự xưng là người của cửa hàng và yêu cầu bạn gửi ảnh giấy tờ hoặc chuyển khoản qua một đường dẫn lạ trước khi xe tới, dừng lại và gọi {{ business.contact.phone_display }} để xác minh. Trình tự nhận xe đầy đủ, kể cả cách kiểm tra người giao đúng là của cửa hàng, có trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>.</p>
+
+<h2>Khoản cọc và phí giao: nói bằng chữ, không nói bằng ảnh</h2>
+<p>Khi đặt giao tận nơi với {{ business.brand }}, tiền đặt cọc nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được xác nhận lúc đặt. Phí giao và giờ giao do cửa hàng xác nhận trước khi bạn đồng ý, và cả ba thứ nên nằm trong tin nhắn chốt đơn. Không có lý do gì để một cửa hàng cần ảnh thẻ ngân hàng, mã OTP hay mật khẩu của bạn cho bất kỳ bước nào ở trên. Về bảo hiểm, cửa hàng không cung cấp và bạn tự chuẩn bị bảo hiểm xe máy; giấy tờ đó cũng chỉ cần cho bạn mang theo, không cần gửi cho ai.</p>
+
+<h2>Sau chuyến đi: dọn dấu vết trên thiết bị</h2>
+<p>Khi đã trả xe, trình duyệt của bạn vẫn giữ cuộc trò chuyện với trợ lý nếu bạn chưa xóa, gồm cả những câu hỏi về khu vực và lịch trình. Mở menu trợ lý, xóa hội thoại, và nếu đã bật Agent nâng cao trên máy mượn thì xóa dữ liệu trang web trong cài đặt trình duyệt. Tin nhắn chốt đơn trên Zalo hoặc điện thoại là của bạn và cửa hàng; giữ tới khi nhận lại cọc rồi tự quyết định. Khách sống ở Hà Nội và hay dùng máy chung có thêm các tình huống cụ thể trong bài <a href="/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe-tai-ha-noi/">privacy khi thuê xe tại Hà Nội</a>; khách quốc tế đọc bản <a href="/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe-cho-khach-nuoc-ngoai/">dành cho khách nước ngoài</a>.</p>
+
+<h2>Câu hỏi thường gặp về privacy khi giao xe tận nơi</h2>
+<h3>Địa chỉ giao xe có được lưu trong trợ lý không?</h3>
+<p>Chỉ khi bạn tự gõ vào cuộc trò chuyện, và khi đó nó nằm trong trình duyệt của bạn. Tốt nhất là hỏi theo khu vực trong trợ lý và chỉ đưa địa chỉ khi chốt với cửa hàng.</p>
+<h3>Cửa hàng giữ địa chỉ của tôi bao lâu?</h3>
+<p>Địa chỉ nằm trong tin nhắn chốt đơn giữa bạn và cửa hàng trên kênh bạn chọn. Hỏi cửa hàng trực tiếp nếu bạn muốn biết cách họ lưu và xóa thông tin đặt xe.</p>
+<h3>Tôi có phải gửi ảnh bằng lái để được giao xe không?</h3>
+<p>Không. Giấy tờ được xem bản gốc lúc xe tới. Yêu cầu gửi ảnh trước qua đường dẫn lạ là dấu hiệu cần xác minh ngay.</p>
+<h3>Bật Agent nâng cao có làm thông tin giao xe rời khỏi máy không?</h3>
+<p>Không. Agent nâng cao chạy trên máy bạn sau khi tải về; thông tin giao xe chỉ rời đi khi bạn chủ động gửi cho cửa hàng qua kênh liên lạc.</p>
+
+<h2>Kết luận</h2>
+<p>Giao tận nơi không phá vỡ mô hình xử lý cục bộ; nó chỉ thêm một bước có con người, và ở bước đó bạn kiểm soát được mình đưa gì: tên khách sạn thay vì số phòng, giấy tờ xem tại chỗ thay vì ảnh gửi trước, tin nhắn chốt đơn thay vì ảnh thẻ. Sau khi chuẩn bị với trợ lý, nhắn {{ business.brand }} hoặc gọi {{ business.contact.phone_display }} để chốt giờ và phí giao; cửa hàng ở {{ business.address.full }} nếu bạn muốn tự tới. Các bài khác về cách công cụ hoạt động nằm trong <a href="/blog/app/">chuyên mục app</a>, hoặc mở trợ lý từ <a href="/">trang chủ</a>.</p>
