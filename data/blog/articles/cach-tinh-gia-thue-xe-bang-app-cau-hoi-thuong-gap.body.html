@@ -1,0 +1,56 @@
+<p>Cách tính giá thuê xe bằng app câu hỏi thường gặp gom lại những thắc mắc về con số mà người thuê hay gặp khi dùng công cụ tính giá trên MotoAI: vì sao năm ngày lại gần bằng một tuần, giá tháng có phải chia đều theo ngày không, khoản nào nằm ngoài kết quả ước tính và khi nào con số trên màn hình khác với giá chốt. MotoAI là ứng dụng web của {{ business.brand }}, chạy ngay trên trình duyệt, trả lời dựa trên bảng giá tham khảo đăng trên website. Hiểu cách nó cộng trừ sẽ giúp bạn chọn đúng gói thay vì trả nhiều hơn cần thiết.</p>
+<p>Phần dưới đây đi thẳng vào các câu hỏi về phép tính, kèm ví dụ với giá tham khảo hiện có. Nguyên tắc chung về các thành phần của báo giá đã có trong bài nền <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app/">cách tính giá thuê xe bằng app</a>.</p>
+
+<h2>Công cụ tính giá dựa vào dữ liệu nào?</h2>
+<p>Kết quả ước tính lấy từ bảng giá tham khảo trên trang <a href="/gia-thue/">giá thuê</a>. Các mức hiện có gồm:</p>
+<ul>
+<li><strong>Honda Wave (xe số):</strong> công cụ chỉ có mức ngày, khoảng 150.000đ/ngày, nên thuê dài thì nhân theo số ngày rồi hỏi cửa hàng.</li>
+<li><strong>Honda Vision:</strong> mức ngày 200.000đ/ngày; gói tuần nằm trong khoảng 800.000đ–1.000.000đ/tuần; gói tháng khoảng 1.800.000đ–2.000.000đ/tháng.</li>
+<li><strong>Honda Air Blade:</strong> cùng mức ngày với Vision là 200.000đ/ngày, nhưng gói tuần cố định 800.000đ/tuần và gói tháng 1.400.000đ/tháng.</li>
+<li><strong>Honda Click, Yamaha Mio:</strong> rẻ nhất nhóm xe ga, ngày khoảng 150.000đ/ngày, tuần 600.000đ–700.000đ/tuần, tháng 1.000.000đ–1.200.000đ/tháng.</li>
+<li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> giá liên hệ, công cụ không đưa ra con số.</li>
+</ul>
+<p>Vì đây là giá tham khảo, kết quả trên màn hình là ước tính để lập kế hoạch. Giá thực tế luôn được cửa hàng xác nhận khi bạn đặt xe.</p>
+
+<h2>Vì sao thuê lẻ nhiều ngày đôi khi đắt hơn gói tuần?</h2>
+<p>Bảng giá có ba chu kỳ: ngày, tuần và tháng. Chu kỳ dài hơn có đơn giá mỗi ngày thấp hơn, nên đến một số ngày nhất định, cộng lẻ sẽ vượt giá gói. Vài ví dụ tính theo giá tham khảo:</p>
+<ol>
+<li><strong>Honda Vision năm ngày:</strong> năm lần 200.000đ là 1.000.000đ, bằng mức trên của giá tuần. Hỏi gói tuần là hợp lý, vì bạn có thể giữ xe thêm hai ngày mà chi phí không tăng.</li>
+<li><strong>Honda Air Blade mười ngày:</strong> một tuần 800.000đ cộng ba ngày lẻ 600.000đ thành 1.400.000đ, đúng bằng giá tháng tham khảo. Khi đó nên hỏi giá tháng.</li>
+<li><strong>Honda Click ba tuần:</strong> ba gói tuần tham khảo là 1.800.000đ–2.100.000đ, trong khi giá tháng chỉ 1.000.000đ–1.200.000đ. Gói tháng rẻ hơn rõ rệt.</li>
+</ol>
+<p>Quy tắc rút ra: trước khi chốt, hãy so số tiền cộng lẻ với gói kế tiếp. Nếu bằng hoặc vượt, hỏi cửa hàng về gói dài hơn. Bài <a href="/blog/thue-xe/cach-doc-bang-gia-thue-xe/">cách đọc bảng giá thuê xe</a> giải thích thêm về cách đọc các khoảng giá.</p>
+
+<h2>Giá tuần và giá tháng là một khoảng, công cụ tính thế nào?</h2>
+<p>Với Vision, Click và Mio, giá tuần và tháng được ghi dạng khoảng, ví dụ 800.000đ–1.000.000đ/tuần. Khoảng này phản ánh việc giá cụ thể phụ thuộc vào xe và thời điểm, cửa hàng sẽ chốt mức chính xác khi đặt. Khi ước tính, bạn nên:</p>
+<ul>
+<li>Dùng mức trên của khoảng để lập ngân sách an toàn.</li>
+<li>Ghi rõ ngày nhận, ngày trả khi hỏi để cửa hàng báo đúng mức.</li>
+<li>Không tự chia giá tháng cho ba mươi rồi áp vào số ngày lẻ, vì gói tháng chỉ áp dụng khi bạn thuê đủ chu kỳ theo thỏa thuận.</li>
+</ul>
+
+<h2>Những khoản nào không nằm trong kết quả ước tính?</h2>
+<p>Con số từ công cụ là tiền thuê xe. Khi lập ngân sách, bạn cần tính riêng:</p>
+<ul>
+<li><strong>Xăng:</strong> bạn tự đổ trong suốt thời gian thuê.</li>
+<li><strong>Phí giao nhận:</strong> chỉ có khi bạn cần giao xe, thực hiện trong giờ {{ business.hours.display }}; thời gian và phí phải thống nhất trước khi đặt.</li>
+<li><strong>Bảo hiểm xe máy:</strong> cửa hàng không cung cấp, bạn tự mua trước.</li>
+<li><strong>Gửi xe:</strong> phí trông xe tại các điểm bạn ghé.</li>
+</ul>
+<p>Riêng tiền đặt cọc là khoản giữ lại và hoàn trả theo thỏa thuận, không phải chi phí thuê, mức từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe. Cách ứng dụng xử lý câu hỏi về khoản này có trong bài <a href="/blog/app/dat-coc-va-ung-dung-thue-xe-cau-hoi-thuong-gap/">đặt cọc và ứng dụng thuê xe câu hỏi thường gặp</a>.</p>
+
+<h2>Hỏi giá bằng lời có ra kết quả giống công cụ không?</h2>
+<p>Ngoài công cụ tính giá, bạn có thể gõ câu hỏi tự nhiên như “thuê Air Blade mười ngày hết bao nhiêu”. Trợ lý sẽ dựa trên cùng bảng giá tham khảo để trả lời, nhưng câu hỏi càng rõ dòng xe và số ngày thì câu trả lời càng sát. Nếu bạn chỉ hỏi “xe ga giá bao nhiêu”, trợ lý thường đưa ra khoảng chung cho cả nhóm xe ga. Cơ chế này được giải thích thêm trong bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-cau-hoi-thuong-gap/">cách ứng dụng hiểu câu hỏi về giá xe câu hỏi thường gặp</a>.</p>
+
+<h2>Câu hỏi thường gặp về cách tính giá thuê xe bằng app</h2>
+<h3>Kết quả trên công cụ có phải là giá chốt không?</h3>
+<p>Không. Đó là ước tính theo giá tham khảo; giá chốt do cửa hàng xác nhận khi bạn đặt, dựa trên xe cụ thể và thời gian thuê.</p>
+<h3>Vì sao công cụ không tính được giá xe điện hay xe 50cc?</h3>
+<p>Các dòng này đang để ở dạng giá liên hệ trên website, nên công cụ không có con số để tính. Bạn cần hỏi trực tiếp cửa hàng.</p>
+<h3>Thuê bốn ngày Honda Click nên tính lẻ hay theo tuần?</h3>
+<p>Bốn ngày lẻ tham khảo là 600.000đ, bằng mức thấp của giá tuần. Hãy hỏi cửa hàng mức tuần cụ thể để so sánh rồi chọn phương án có lợi hơn.</p>
+<h3>Tôi ở nước ngoài, có cách tính riêng không?</h3>
+<p>Bảng giá tham khảo là chung. Những lưu ý khi hỏi giá cho khách nước ngoài có trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a>.</p>
+
+<h2>Kết luận</h2>
+<p>Công cụ tính giá giúp bạn nhìn nhanh chi phí và nhận ra lúc nào nên chuyển sang gói tuần hoặc tháng. Hãy so tổng tiền lẻ với gói kế tiếp, cộng thêm xăng, phí giao nhận nếu có và bảo hiểm tự mua, rồi xác nhận giá chốt với cửa hàng trước khi đặt. Liên hệ {{ business.display_name }} qua {{ business.contact.phone_display }} khi cần báo giá cụ thể. Các bài về công cụ khác nằm trong <a href="/blog/app/">mục ứng dụng</a>, và bạn có thể thử tính giá ngay trên <a href="/">trang chủ</a>.</p>

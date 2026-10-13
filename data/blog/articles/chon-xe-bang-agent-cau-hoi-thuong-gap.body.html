@@ -1,0 +1,61 @@
+<p>Chọn xe bằng Agent câu hỏi thường gặp là tổng hợp những thắc mắc mà người thuê hay gửi trước, trong và sau khi nhờ trợ lý MotoAI gợi ý dòng xe. Agent ở đây là trợ lý tự động trên website của {{ business.brand }}: bạn mô tả nhu cầu bằng lời, trợ lý đối chiếu với dữ liệu có sẵn trên trang như danh sách dòng xe, giá tham khảo, thủ tục và chính sách, rồi trả lời. Trợ lý không dùng API AI bên ngoài và không thay cửa hàng chốt đơn. Khi hiểu đúng điều đó, bạn sẽ biết nên hỏi gì, tin phần nào và phải xác nhận lại phần nào.</p>
+<p>Các câu hỏi dưới đây được sắp theo từng tình huống chọn xe cụ thể, thay vì giải thích chung chung về công cụ. Nếu bạn muốn hiểu cách Agent suy luận từ nhu cầu sang dòng xe, bài nền <a href="/blog/app/chon-xe-bang-agent/">chọn xe bằng Agent</a> trình bày kỹ phần đó.</p>
+
+<h2>Trước khi hỏi: cần chuẩn bị những gì?</h2>
+<p>Bạn không phải điền biểu mẫu, nhưng có sẵn vài thông tin sẽ giúp nhận câu trả lời sát hơn ngay từ lượt đầu:</p>
+<ul>
+<li><strong>Số ngày thuê:</strong> một ngày, vài ngày, một tuần hay cả tháng, vì giá tham khảo thay đổi theo chu kỳ.</li>
+<li><strong>Kinh nghiệm lái:</strong> đã quen xe ga, quen xe số hay mới tập.</li>
+<li><strong>Giấy phép lái xe:</strong> đã có bằng A1 chưa, điều này quyết định nhóm xe bạn được phép điều khiển.</li>
+<li><strong>Khu vực đi lại:</strong> chủ yếu trong nội thành hay có những chặng xa hơn.</li>
+<li><strong>Số người và đồ mang theo:</strong> đi một mình, chở thêm người hay mang hành lý.</li>
+</ul>
+<p>Nếu chưa biết diễn đạt thế nào, bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho Agent thuê xe</a> có sẵn các mẫu câu theo từng nhu cầu.</p>
+
+<h2>Agent gợi ý gì cho từng tình huống phổ biến?</h2>
+<p>Dựa trên dữ liệu dòng xe và giá tham khảo đang có trên website, câu trả lời thường xoay quanh những hướng sau:</p>
+<ul>
+<li><strong>Mới lái, đi trong phố:</strong> nhóm xe ga nhẹ như Honda Vision (tham khảo 200.000đ/ngày), Honda Click hoặc Yamaha Mio (tham khảo 150.000đ/ngày).</li>
+<li><strong>Chở hai người, chạy chặng trung bình:</strong> Honda Air Blade, giá tham khảo 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng.</li>
+<li><strong>Quen xe số, muốn tiết kiệm:</strong> Honda Wave, tham khảo 150.000đ/ngày.</li>
+<li><strong>Chưa có bằng mô tô:</strong> trợ lý nhắc tới nhóm xe 50cc, xe đạp điện hoặc xe máy điện công suất nhỏ, đều ở dạng giá liên hệ.</li>
+<li><strong>Thuê theo tháng:</strong> trợ lý so sánh gói tháng của các dòng, ví dụ Honda Click hoặc Yamaha Mio tham khảo 1.000.000đ–1.200.000đ/tháng.</li>
+</ul>
+<p>Mọi mức giá đều mang tính tham khảo và có thể xem đầy đủ ở trang <a href="/gia-thue/">giá thuê</a>. Trợ lý không bịa ra thông số kỹ thuật hay giá của dòng không có trong dữ liệu; với những dòng như SH, Lead hay Exciter, câu trả lời sẽ là liên hệ cửa hàng để kiểm tra.</p>
+
+<h2>Khi nào Agent trả lời “chưa có thông tin chắc chắn”?</h2>
+<p>Đây là câu trả lời nhiều người thấy bất ngờ, nhưng thực ra là dấu hiệu tốt. Trợ lý chỉ dùng dữ liệu có sẵn trên website, nên khi câu hỏi nằm ngoài phạm vi đó, nó sẽ khuyên bạn liên hệ trực tiếp thay vì đoán. Các trường hợp hay gặp:</p>
+<ol>
+<li>Hỏi xe cụ thể có còn trống vào một ngày nhất định không.</li>
+<li>Hỏi thông số như dung lượng pin, quãng đường đi được hay tốc độ tối đa.</li>
+<li>Hỏi giá của dòng xe không có trong bảng tham khảo.</li>
+<li>Hỏi phí giao xe đến một địa chỉ cụ thể.</li>
+</ol>
+<p>Với những câu này, bạn gọi {{ business.contact.phone_display }} hoặc nhắn qua kênh liên hệ trên trang <a href="/lien-he/">liên hệ</a> để được cửa hàng trả lời.</p>
+
+<h2>Sau khi nhận gợi ý: kiểm tra lại điều gì?</h2>
+<p>Gợi ý của Agent là điểm khởi đầu, không phải xác nhận cuối cùng. Trước khi chốt, hãy hỏi cửa hàng ba việc:</p>
+<ul>
+<li>Dòng xe được gợi ý còn xe vào đúng ngày giờ bạn cần không.</li>
+<li>Giá thực tế theo số ngày bạn thuê là bao nhiêu, đã khớp với mức tham khảo chưa.</li>
+<li>Khoản đặt cọc cho dòng đó, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} và được xác nhận khi đặt.</li>
+</ul>
+<p>Nếu trợ lý đưa ra hai dòng ngang nhau, cách cân nhắc giữa chúng được trình bày trong bài <a href="/blog/app/agent-chon-xe-giup-ban-cau-hoi-thuong-gap/">Agent chọn xe giúp bạn câu hỏi thường gặp</a>.</p>
+
+<h2>Agent có thay được việc thử xe tại cửa hàng không?</h2>
+<p>Không. Trợ lý giúp bạn thu hẹp lựa chọn từ cả bảng xe xuống một hai dòng, nhưng cảm giác ngồi, độ cao yên và độ nặng khi dắt chỉ có thể biết khi ngồi lên xe. Khi đến nhận xe tại {{ business.address.full }}, hãy chạy thử một vòng ngắn; nếu thấy không hợp, trao đổi với cửa hàng về dòng khác trước khi ký nhận. Người muốn chọn theo kinh nghiệm lái có thể tham khảo thêm bài <a href="/blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai-cau-hoi-thuong-gap/">công cụ chọn xe theo kinh nghiệm lái câu hỏi thường gặp</a>.</p>
+
+<h2>Câu hỏi thường gặp khi chọn xe bằng Agent</h2>
+<h3>Dùng Agent để chọn xe có mất phí không?</h3>
+<p>Trợ lý là công cụ trực tuyến trên website, bạn mở trình duyệt là dùng được, không cần tải gì về máy. Chi phí bạn trả chỉ phát sinh khi thuê xe thật với cửa hàng.</p>
+<h3>Agent có biết tôi có bằng lái hay chưa không?</h3>
+<p>Không, trừ khi bạn nói. Hãy cho trợ lý biết bạn đã có bằng A1 hay chưa để nhận gợi ý đúng nhóm xe được phép điều khiển.</p>
+<h3>Agent có gợi ý bảo hiểm kèm xe không?</h3>
+<p>Trợ lý sẽ nhắc rằng cửa hàng không cung cấp bảo hiểm, người thuê cần tự chuẩn bị bảo hiểm xe máy trước khi nhận xe.</p>
+<h3>Tôi ở xa cửa hàng, Agent có sắp xếp giao xe được không?</h3>
+<p>Trợ lý cung cấp thông tin rằng việc giao xe chỉ diễn ra trong giờ {{ business.hours.display }}. Thời gian và phí giao phải được cửa hàng xác nhận trực tiếp trước khi đặt.</p>
+<h3>Khách nước ngoài có dùng Agent để chọn xe được không?</h3>
+<p>Được, những lưu ý riêng cho nhóm khách này có trong bài <a href="/blog/app/chon-xe-bang-agent-cho-khach-nuoc-ngoai/">chọn xe bằng Agent cho khách nước ngoài</a>.</p>
+
+<h2>Kết luận</h2>
+<p>Agent giúp bạn đi từ “không biết chọn xe nào” đến một hai dòng phù hợp chỉ sau vài câu trao đổi, miễn là bạn mô tả rõ nhu cầu và hiểu rằng giá, xe trống và đặt cọc luôn cần cửa hàng xác nhận. Hãy dùng trợ lý để thu hẹp lựa chọn, rồi gọi {{ business.contact.phone_display }} để chốt với {{ business.display_name }}. Xem thêm các bài về công cụ trong <a href="/blog/app/">chuyên mục ứng dụng</a>, hoặc mở trợ lý ngay tại <a href="/">trang chủ MotoAI</a>.</p>
