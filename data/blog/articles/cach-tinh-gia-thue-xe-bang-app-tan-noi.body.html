@@ -1,0 +1,72 @@
+<p>Tính giá thuê xe bằng app khi bạn muốn xe được giao tận nơi có một điểm khác hẳn so với khi tự đến cửa hàng: con số cuối cùng không chỉ là giá thuê nhân số ngày. Nó còn gồm phí giao, cách tính ngày khi giờ nhận và giờ trả không trùng nhau, và một khoản cọc tách riêng mà nhiều người cộng nhầm vào chi phí. Bài này đi từng lớp của một báo giá giao tận nơi, chỉ cách hỏi trợ lý trên website để ra con số sát thực tế, và đưa hai ví dụ cụ thể để bạn tự áp vào chuyến của mình.</p>
+
+<h2>Bốn lớp của một báo giá giao xe tận nơi</h2>
+<p>Khi bạn hỏi trợ lý MotoAI "thuê Vision bốn ngày, giao đến khách sạn ở Ba Đình hết bao nhiêu", một câu trả lời đầy đủ phải tách được bốn phần:</p>
+<ol>
+<li><strong>Giá thuê theo khung thời gian:</strong> phần lớn nhất, ví dụ Honda Vision tham khảo 200.000đ/ngày, 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng.</li>
+<li><strong>Phí giao và nhận lại xe:</strong> phụ thuộc địa chỉ và khung giờ, cửa hàng báo riêng cho từng đơn và phải thống nhất trước khi bạn đặt.</li>
+<li><strong>Khoản phát sinh có điều kiện:</strong> trả xe trễ giờ, xăng thấp hơn mốc khi nhận, hoặc đổi địa điểm trả xe so với thỏa thuận.</li>
+<li><strong>Khoản cọc:</strong> được hoàn khi trả xe đúng hiện trạng, nên không tính vào chi phí nhưng cần có sẵn trong ví.</li>
+</ol>
+<p>Nếu bạn mới làm quen với cách đọc báo giá nói chung, bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app/">cách tính giá thuê xe bằng app</a> giải thích nền tảng; phần dưới đây tập trung vào những gì chỉ xuất hiện khi có yếu tố giao xe.</p>
+
+<h2>Phí giao thay đổi theo gì và vì sao app không đưa con số cố định</h2>
+<p>Khách hay thắc mắc tại sao trợ lý không trả lời ngay "phí giao là bao nhiêu". Lý do là phí này gắn với ba biến mà chỉ cửa hàng mới biết lúc bạn đặt:</p>
+<ul>
+<li><strong>Quãng đường từ cửa hàng ở Bồ Đề đến chỗ bạn:</strong> giao sang Long Biên, Gia Lâm khác với vào Hoàn Kiếm, Ba Đình hay lên Tây Hồ.</li>
+<li><strong>Khung giờ:</strong> giao trong giờ mở cửa {{ business.hours.display }}, nhưng giờ cao điểm chiều tối khiến nhân viên đi lâu hơn.</li>
+<li><strong>Lịch nhân viên:</strong> có ngày gộp được nhiều chuyến giao cùng hướng, có ngày không.</li>
+</ul>
+<p>Vì vậy cách dùng app đúng là: hỏi trợ lý giá thuê và các khoản thường có, rồi gửi địa chỉ chính xác để cửa hàng xác nhận phí giao và giờ giao bằng tin nhắn trước khi bạn chốt. Bài <a href="/blog/thue-xe/phi-giao-xe-thue-chay-pho/">phí giao xe thuê</a> mô tả cách khoản này được thỏa thuận trong thực tế.</p>
+
+<h2>Cách tính ngày khi xe được giao lúc nào đó trong ngày</h2>
+<p>Đây là chỗ người thuê hay bị lệch con số nhất. Giả sử xe được giao đến lúc mười bốn giờ thứ hai và bạn trả lúc mười giờ thứ sáu. Số ngày thực tế nằm giữa ba và bốn, và cách làm tròn thuộc về thỏa thuận với cửa hàng. Trước khi đặt, hãy hỏi trợ lý rồi xác nhận với cửa hàng ba điều:</p>
+<ul>
+<li>Một ngày thuê được tính theo mốc hai mươi bốn giờ kể từ lúc giao, hay theo ngày lịch.</li>
+<li>Trễ bao lâu so với giờ trả thì tính thêm, và tính thêm theo giờ hay theo ngày.</li>
+<li>Khi trả xe sớm hơn dự kiến, phần ngày chưa dùng có được hoàn hay không.</li>
+</ul>
+<p>Mẹo nhỏ từ người thuê lâu năm: xếp giờ giao và giờ trả cùng một mốc trong ngày, ví dụ đều là mười giờ sáng, để số ngày tròn và dễ tính. Phần so sánh gói ngày, tuần, tháng khi nhận xe tại nhà được tách riêng trong bài <a href="/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang-tan-noi/">tính chi phí thuê xe theo ngày, tuần, tháng tận nơi</a>.</p>
+
+<h2>Hai ví dụ tính thử bằng giá tham khảo</h2>
+<h3>Ví dụ một: Honda Click ba ngày, giao đến phòng trọ ở Gia Lâm</h3>
+<p>Giá tham khảo của Click là 150.000đ/ngày, nên ba ngày là 450.000đ tiền thuê. Cộng thêm phí giao do cửa hàng báo cho địa chỉ ở Gia Lâm. Bạn chuẩn bị thêm khoản cọc theo mức cửa hàng xác nhận cho dòng xe này, và nhận lại khi trả xe. Nếu bạn ở gần cửa hàng, tự sang nhận sẽ bỏ được khoản phí giao, đổi lại mất thời gian đi lại.</p>
+<h3>Ví dụ hai: Honda Air Blade một tuần, giao đến khách sạn ở Hoàn Kiếm</h3>
+<p>Gói tuần của Air Blade tham khảo 800.000đ, rẻ hơn rõ so với bảy ngày lẻ cộng lại ở mức 200.000đ/ngày. Hỏi trợ lý xem gói tuần có yêu cầu nhận và trả cùng giờ không, rồi gửi tên khách sạn để cửa hàng xác nhận phí giao vào phố cổ. Nhớ hỏi luôn chỗ gửi xe của khách sạn, vì phí gửi qua đêm là khoản ngoài hóa đơn thuê nhưng vẫn là tiền bạn trả.</p>
+<p>Cả hai ví dụ dùng số tham khảo; giá chính thức xem tại trang <a href="/gia-thue/">giá thuê</a> và được cửa hàng xác nhận khi đặt. Dòng xe 50cc, xe máy điện và xe đạp điện không có giá niêm yết sẵn, bạn hỏi trực tiếp.</p>
+
+<h2>Checklist đọc báo giá giao tận nơi trước khi bấm đặt</h2>
+<p>Dù hỏi qua trợ lý hay qua tin nhắn với cửa hàng, hãy chắc chắn bạn có từng dòng sau bằng chữ:</p>
+<ul>
+<li>Dòng xe, biển số hoặc ít nhất là màu xe và năm đời xe sẽ giao.</li>
+<li>Giá thuê theo khung đã chọn và tổng số ngày được tính.</li>
+<li>Phí giao đến địa chỉ của bạn, và phí nhận lại xe nếu trả ở nơi khác cửa hàng.</li>
+<li>Giờ giao cụ thể trong khung 09:00–21:00 và tên người liên hệ.</li>
+<li>Mức xăng lúc giao và cách xử lý khi trả thấp hơn.</li>
+<li>Khoản cọc áp dụng cho dòng xe, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}.</li>
+<li>Giấy tờ bạn phải xuất trình lúc nhận: giấy tờ tùy thân bản gốc và giấy phép lái xe phù hợp.</li>
+</ul>
+<p>Cách gõ câu hỏi để trợ lý trả về đủ các dòng này trong một lượt được hướng dẫn ở bài <a href="/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot-tan-noi/">cách hỏi giá xe nhanh bằng chatbot tận nơi</a>.</p>
+
+<h2>Những nhầm lẫn khiến hóa đơn khác với con số bạn tính</h2>
+<ul>
+<li><strong>Cộng cọc vào chi phí:</strong> khoản cọc được hoàn, nó chỉ cần có sẵn chứ không mất đi.</li>
+<li><strong>So giá tuần của nơi này với giá ngày của nơi khác:</strong> hãy quy tất cả về đơn giá ngày trước khi so.</li>
+<li><strong>Quên phí giao chiều về:</strong> nếu bạn muốn nhân viên đến lấy xe thay vì tự mang trả, hỏi rõ khoản này từ đầu.</li>
+<li><strong>Nghĩ giá đổi theo mùa:</strong> bảng giá tham khảo không thay đổi theo mùa mưa nắng, điều thay đổi là xe còn trống hay không vào dịp đông khách.</li>
+<li><strong>Tin rằng trợ lý đã giữ xe:</strong> số liệu trong đoạn chat là để bạn tính, còn đơn chỉ được giữ khi cửa hàng xác nhận.</li>
+</ul>
+<p>Nếu bạn muốn một công cụ tính nhanh thay vì trò chuyện, bài <a href="/blog/app/cong-cu-tinh-gia-thue-xe-may-online-tan-noi/">công cụ tính giá thuê xe máy online tận nơi</a> hướng dẫn cách nhập khung thời gian và địa điểm để ra ước tính.</p>
+
+<h2>Câu hỏi thường gặp về cách tính giá thuê xe bằng app tận nơi</h2>
+<h3>Trợ lý có báo được tổng chi phí cuối cùng không?</h3>
+<p>Trợ lý tính được phần giá thuê theo khung và nhắc các khoản thường có, nhưng phí giao và mức cọc cụ thể do cửa hàng xác nhận cho từng đơn.</p>
+<h3>Giao xe tận nơi có đắt hơn tự đến lấy nhiều không?</h3>
+<p>Chênh lệch chính là phí giao, phụ thuộc quãng đường và khung giờ. Người ở gần cửa hàng, như khu Long Biên hay Bồ Đề, thường tự sang nhận cho nhanh.</p>
+<h3>Tôi trả xe ở địa điểm khác chỗ nhận thì tính thế nào?</h3>
+<p>Khoản nhận lại xe ở nơi khác là phí riêng, cần hỏi và thống nhất trước; không phải cửa hàng nào cũng nhận trả xe ngoài điểm đã hẹn.</p>
+<h3>Giá tham khảo trên blog có phải giá chốt không?</h3>
+<p>Không. Đó là mức để bạn ước tính; con số chốt nằm trong tin nhắn xác nhận của cửa hàng và trang giá thuê.</p>
+
+<h2>Kết luận</h2>
+<p>Tính giá thuê xe giao tận nơi chỉ cần bốn bước: lấy giá thuê theo khung thời gian, hỏi và xác nhận phí giao cho địa chỉ của bạn, chốt cách tính ngày và các khoản phát sinh, rồi chuẩn bị khoản cọc tách riêng. Làm đủ bốn bước trước khi đặt, hóa đơn lúc trả xe sẽ không có bất ngờ. Để hỏi thử một báo giá cho chuyến sắp tới, bạn mở trợ lý ở <a href="/">trang chủ</a> hoặc nhắn {{ business.display_name }} qua {{ business.contact.phone_display }} trong giờ {{ business.hours.display }}; cửa hàng {{ business.brand }} ở {{ business.address.full }} nếu bạn muốn tự sang nhận xe. Thêm nhiều hướng dẫn về công cụ trực tuyến nằm ở <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>
