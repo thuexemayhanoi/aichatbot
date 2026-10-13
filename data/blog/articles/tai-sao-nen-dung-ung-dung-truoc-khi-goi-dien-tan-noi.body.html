@@ -1,0 +1,63 @@
+<p>Muốn xe được giao đến tận cửa nhà hay khách sạn, phản xạ đầu tiên của nhiều người là bấm số gọi ngay. Nhưng một cuộc gọi đặt giao xe tận nơi cần nhiều thông tin hơn bạn nghĩ: địa chỉ chính xác, mốc dễ tìm, giờ bạn có mặt, dòng xe muốn nhận, giấy tờ đã sẵn chưa. Thiếu một trong số đó, cuộc gọi kéo dài, phải gọi lại, hoặc tệ hơn là người giao xe đến nơi mà bạn chưa chuẩn bị xong. Bài viết này giải thích tại sao nên dùng ứng dụng trước khi gọi điện tận nơi, và cách dùng trợ lý MotoAI trên website để cuộc gọi chốt giao xe chỉ còn vài phút.</p>
+
+<h2>Giao xe tận nơi là một cuộc hẹn, không chỉ là một đơn đặt</h2>
+<p>Khi bạn đến cửa hàng nhận xe, mọi thứ diễn ra tại chỗ: xem xe, hỏi giá, ký giấy tờ. Giao tận nơi thì khác, đó là một cuộc hẹn giữa hai bên ở một địa điểm và giờ giấc cụ thể. Cửa hàng cần biết đủ thông tin để sắp xếp người, xe và thời gian di chuyển. Bạn thì cần chắc chắn mình có mặt đúng giờ với giấy tờ trong tay.</p>
+<p>Chính vì thế, phần lớn câu hỏi trong cuộc gọi giao xe là những câu bạn hoàn toàn có thể tự tra trước. Điều này cũng đúng với cuộc gọi thuê xe nói chung, như đã phân tích trong bài <a href="/blog/app/tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien/">tại sao nên dùng ứng dụng trước khi gọi điện</a>, nhưng với giao tận nơi, lợi ích còn rõ hơn.</p>
+
+<h2>Những gì trợ lý trả lời trước, để cuộc gọi khỏi phải hỏi</h2>
+<p>MotoAI là trợ lý chạy ngay trên trình duyệt, không cần cài đặt. Trước khi gọi, bạn có thể hỏi và ghi lại:</p>
+<ul>
+<li><strong>Khu vực phục vụ:</strong> Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội. Nếu bạn ở ngoài các khu này, biết trước giúp bạn chủ động hỏi phương án khác.</li>
+<li><strong>Khung giờ giao:</strong> giao xe chỉ diễn ra trong giờ mở cửa {{ business.hours.display }}. Bạn sẽ không hẹn nhầm giờ sáng sớm hay tối muộn.</li>
+<li><strong>Giá tham khảo:</strong> ví dụ Honda Wave 150.000đ/ngày, Honda Vision hoặc Air Blade 200.000đ/ngày; đây là mức tham khảo cần cửa hàng xác nhận.</li>
+<li><strong>Giấy tờ cần chuẩn bị</strong> và mức đặt cọc theo loại xe, dao động từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}.</li>
+<li><strong>Gợi ý dòng xe</strong> dựa trên lộ trình, số người đi và kinh nghiệm lái của bạn.</li>
+</ul>
+<p>Chi tiết về phần thủ tục khi nhận xe tại địa chỉ của bạn có trong bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">giao xe tận nơi thủ tục</a>.</p>
+
+<h2>Những điểm chỉ cuộc gọi mới chốt được</h2>
+<p>Trợ lý giúp bạn chuẩn bị, nhưng một số việc vẫn phải được cửa hàng xác nhận trực tiếp:</p>
+<ol>
+<li>Chiếc xe bạn chọn còn sẵn vào đúng ngày và giờ bạn cần.</li>
+<li>Thời gian giao và phí giao đến địa chỉ cụ thể của bạn; hai điều này phải được thống nhất trước khi chốt đặt.</li>
+<li>Mức cọc chính xác cho chiếc xe đó.</li>
+<li>Giá của những dòng không có trong bảng tham khảo như xe 50cc, xe máy điện, xe đạp điện, vốn là giá liên hệ.</li>
+<li>Các yêu cầu riêng như cần hai mũ bảo hiểm hay giao tới sảnh tòa nhà có bãi gửi xe riêng.</li>
+</ol>
+<p>Nếu muốn gọi thẳng từ giao diện trợ lý sau khi đã tra xong, bài <a href="/blog/app/goi-dien-tu-ung-dung-thue-xe/">gọi điện từ ứng dụng thuê xe</a> hướng dẫn từng bước.</p>
+
+<h2>Bảng chuẩn bị năm mục trước khi bấm số</h2>
+<p>Sau khi tra xong với trợ lý, hãy ghi ra năm dòng ngắn để đọc khi gọi:</p>
+<ul>
+<li><strong>Địa chỉ đầy đủ</strong> kèm mốc dễ nhận biết: tên tòa nhà, số ngõ, cửa hàng ở đầu ngõ.</li>
+<li><strong>Khung giờ có mặt</strong>, nằm trong giờ mở cửa và có dư vài phút phòng kẹt xe.</li>
+<li><strong>Dòng xe ưu tiên</strong> và một dòng dự phòng nếu xe đầu tiên đã có người đặt.</li>
+<li><strong>Thời gian thuê</strong>: bao nhiêu ngày, dự kiến trả xe ở đâu và lúc nào.</li>
+<li><strong>Giấy tờ</strong> đã để sẵn một chỗ: giấy phép lái xe, giấy tờ tùy thân và bảo hiểm xe máy bạn tự chuẩn bị, vì cửa hàng không cung cấp bảo hiểm.</li>
+</ul>
+<p>Với năm dòng này, cuộc gọi chỉ còn là xác nhận, thường gọn trong vài phút.</p>
+
+<h2>Lợi ích cụ thể cho từng nhóm khách cần giao tận nơi</h2>
+<p><strong>Khách lưu trú ở khách sạn Phố Cổ:</strong> bạn có thể hỏi trợ lý khi đang ngồi ở sảnh, không cần gọi giữa tiếng ồn ngoài phố, rồi nhờ lễ tân xác nhận lối vào cho người giao xe. <strong>Người mới chuyển đến Hà Nội:</strong> chưa quen địa chỉ, chưa biết đường, việc tra trước giúp bạn mô tả vị trí rõ ràng hơn. <strong>Khách nước ngoài:</strong> đọc thông tin bằng chữ dễ hơn nghe qua điện thoại, và bạn đến cuộc gọi với câu hỏi đã được thu hẹp. Bài <a href="/blog/app/tai-sao-nen-dung-ung-dung-truoc-khi-goi-dien-tai-ha-noi/">dùng ứng dụng trước khi gọi tại Hà Nội</a> có thêm ví dụ theo từng khu vực.</p>
+
+<h2>Những sai lầm thường gặp khi đặt giao xe chỉ qua điện thoại</h2>
+<ul>
+<li>Hẹn giao ngoài giờ mở cửa rồi bất ngờ khi cửa hàng không nhận.</li>
+<li>Đọc địa chỉ thiếu số ngõ, người giao phải gọi lại nhiều lần.</li>
+<li>Quên hỏi phí giao, đến lúc nhận xe mới biết.</li>
+<li>Chưa chuẩn bị giấy tờ, để người giao chờ trong khi bạn đi tìm.</li>
+<li>Không nói trước cần thêm mũ cho người ngồi sau.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp về dùng ứng dụng trước khi gọi giao xe tận nơi</h2>
+<h3>Trợ lý có đặt giao xe thay tôi được không?</h3>
+<p>Trợ lý giúp bạn tra thông tin và chuẩn bị câu hỏi. Việc chốt giờ, phí giao và xe sẵn có vẫn cần xác nhận với cửa hàng.</p>
+<h3>Giá trợ lý đưa ra có phải giá cuối cùng?</h3>
+<p>Không, đó là giá tham khảo. Giá chính thức và phí giao sẽ được cửa hàng báo khi bạn gọi.</p>
+<h3>Có cần tải gì về điện thoại không?</h3>
+<p>Không. MotoAI là ứng dụng web, mở bằng trình duyệt trên điện thoại hay máy tính đều dùng được.</p>
+<h3>Tôi ở ngoài khu vực phục vụ thì sao?</h3>
+<p>Hãy gọi hỏi trực tiếp để biết có phương án nào phù hợp, hoặc cân nhắc đến nhận xe tại cửa hàng.</p>
+
+<h2>Kết luận</h2>
+<p>Tra trước với trợ lý rồi mới gọi giúp cuộc hẹn giao xe tận nơi diễn ra trơn tru: đúng giờ, đúng địa chỉ, đủ giấy tờ. Khi đã sẵn sàng, gọi {{ business.brand }} qua số {{ business.contact.phone_display }}, hoặc ghé {{ business.address.full }} nếu bạn muốn tự đến xem xe. Tìm hiểu thêm các tính năng khác ở <a href="/blog/app/">chuyên mục ứng dụng</a> và bắt đầu tra cứu ngay tại <a href="/">trang chủ</a>.</p>
