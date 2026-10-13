@@ -1,0 +1,63 @@
+<p>Công cụ tính giá thuê xe máy online trên website {{ business.brand }} giúp bạn biết trước tổng tiền thuê chỉ bằng vài lựa chọn: dòng xe và số ngày. Nghe đơn giản, nhưng khi bấm thử, nhiều người lại nảy ra thắc mắc: vì sao thuê sáu ngày lại gợi ý gói tuần, con số đã gồm phí giao xe chưa, khoản cọc có cộng vào không. Bài này trả lời từng câu hỏi thường gặp về cách công cụ tính, kèm ví dụ bằng giá tham khảo để bạn tự kiểm tra lại. Phần giới thiệu và hướng dẫn bấm từng bước có trong bài <a href="/blog/app/cong-cu-tinh-gia-thue-xe-may-online/">công cụ tính giá thuê xe máy online</a>.</p>
+
+<h2>Công cụ tính giá dựa trên bảng giá nào?</h2>
+<h3>Con số trên công cụ lấy từ đâu?</h3>
+<p>Công cụ dùng bảng giá tham khảo đang công bố trên trang <a href="/gia-thue/">giá thuê</a>. Nó không tự tạo ra mức giá mới, cũng không áp mã giảm giá vì cửa hàng không chạy khuyến mãi. Kết quả bạn thấy là ước tính để lên kế hoạch, còn giá chốt do cửa hàng xác nhận khi đặt.</p>
+<h3>Những dòng xe nào tính được ngay?</h3>
+<ul>
+<li>Honda Wave (xe số): 150.000đ/ngày.</li>
+<li>Honda Vision: 200.000đ/ngày; 800.000đ–1.000.000đ/tuần; 1.800.000đ–2.000.000đ/tháng.</li>
+<li>Honda Air Blade: 200.000đ/ngày; 800.000đ/tuần; 1.400.000đ/tháng.</li>
+<li>Honda Click, Yamaha Mio: 150.000đ/ngày; 600.000đ–700.000đ/tuần; 1.000.000đ–1.200.000đ/tháng.</li>
+</ul>
+<p>Xe 50cc, xe máy điện và xe đạp điện hiển thị "liên hệ", vì giá những dòng này được báo trực tiếp theo từng trường hợp.</p>
+
+<h2>Tính theo ngày, tuần hay tháng: công cụ chọn thế nào?</h2>
+<h3>Vì sao thuê năm, sáu ngày lại được gợi ý gói tuần?</h3>
+<p>Vì đến một số ngày nhất định, cộng giá lẻ từng ngày đã vượt giá gói tuần. Lấy Honda Air Blade làm ví dụ: năm ngày theo giá ngày là 1.000.000đ, trong khi gói tuần tham khảo chỉ 800.000đ. Công cụ sẽ hiển thị cả hai cách để bạn thấy chênh lệch, thay vì tự chọn giúp mà không giải thích.</p>
+<h3>Có mốc nào dễ nhớ để tự nhẩm không?</h3>
+<p>Với Click hoặc Mio, bốn ngày lẻ đã là 600.000đ, ngang mức thấp của gói tuần. Với Vision, bốn ngày lẻ là 800.000đ, bằng mức thấp của gói tuần. Nghĩa là từ ngày thứ năm trở đi, bạn nên hỏi gói tuần trước khi chốt. Nếu ở lâu hơn hai tuần, gói tháng thường đáng cân nhắc hơn cộng nhiều gói tuần.</p>
+<h3>Thuê ba tuần thì tính ra sao?</h3>
+<p>Công cụ sẽ so ba gói tuần với một gói tháng. Với Air Blade, ba gói tuần tham khảo là 2.400.000đ, còn gói tháng là 1.400.000đ, nên trường hợp này gói tháng lợi hơn rõ rệt. Hãy đọc thêm bài <a href="/blog/thue-xe/thue-xe-may-theo-thang/">thuê xe máy theo tháng</a> để biết điều kiện của gói dài ngày.</p>
+
+<h2>Những khoản nào công cụ không cộng vào?</h2>
+<p>Tổng tiền công cụ hiển thị chỉ là tiền thuê xe. Các khoản sau cần tính riêng:</p>
+<ol>
+<li><strong>Giao xe tận nơi:</strong> chỉ thực hiện trong khung {{ business.hours.display }}; giờ giao và phí phải được cửa hàng xác nhận trước khi đặt, nên công cụ không ước lượng sẵn.</li>
+<li><strong>Nhiên liệu:</strong> bạn tự đổ xăng hoặc sạc điện trong thời gian thuê.</li>
+<li><strong>Bảo hiểm:</strong> cửa hàng không cung cấp bảo hiểm, bạn tự mua bảo hiểm xe máy cho mình.</li>
+<li><strong>Cọc:</strong> khoản giữ xe này được trả lại khi kết thúc thuê, không phải chi phí, mức từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
+</ol>
+<p>Muốn hình dung tổng chi tiêu đi lại cho cả chuyến, bài <a href="/blog/thue-xe/khoang-chi-phi-di-lai-khi-thue-xe/">khoảng chi phí đi lại khi thuê xe</a> có bảng gợi ý chi tiết hơn.</p>
+
+<h2>Cách dùng công cụ để so sánh nhanh hai dòng xe</h2>
+<p>Nhiều người chỉ nhập một dòng xe rồi chốt, trong khi so hai lựa chọn chỉ mất thêm vài giây. Quy trình gọn nhất:</p>
+<ol>
+<li>Nhập số ngày thuê thực tế, kể cả ngày nhận và ngày trả nếu bạn giữ xe trọn ngày.</li>
+<li>Chọn lần lượt hai dòng xe bạn phân vân, ví dụ Vision và Click.</li>
+<li>Ghi lại tổng tiền và cách tính (ngày lẻ hay gói tuần) của từng xe.</li>
+<li>Cân nhắc thêm yếu tố ngoài giá: đi một hay hai người, cần cốp rộng không, đã quen loại xe nào.</li>
+<li>Gọi cửa hàng để xác nhận xe trống và giá chốt.</li>
+</ol>
+<p>Nếu bạn thích hỏi bằng lời thay vì bấm chọn, trợ lý MotoAI cũng làm được phép tính tương tự, như mô tả trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app/">cách tính giá thuê xe bằng app</a>.</p>
+
+<h2>Sai lầm thường gặp khi đọc kết quả tính giá</h2>
+<ul>
+<li>Nghĩ rằng giá tuần chia bảy là giá mỗi ngày nếu trả xe sớm; cách hoàn tiền khi trả sớm cần hỏi cửa hàng.</li>
+<li>Quên tính ngày trả xe, khiến số ngày nhập vào thiếu một ngày so với thực tế.</li>
+<li>Lấy kết quả tính giá như một đơn đã đặt, trong khi xe chỉ được giữ khi cửa hàng xác nhận.</li>
+<li>Đem kết quả của bài viết cũ so với bảng giá hiện hành; hãy kiểm tra bản <a href="/blog/app/cong-cu-tinh-gia-thue-xe-may-online-nam-2026/">công cụ tính giá năm 2026</a> nếu bạn thấy con số khác.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp nhanh về công cụ tính giá</h2>
+<h3>Công cụ có cần cài đặt không?</h3>
+<p>Không. Đây là công cụ trực tuyến chạy trên website, mở bằng trình duyệt điện thoại hay máy tính đều được.</p>
+<h3>Tôi tính xong có phải đặt ngay không?</h3>
+<p>Không bắt buộc. Bạn có thể tính nhiều phương án, lưu lại kết quả và gọi cửa hàng khi đã sẵn sàng.</p>
+<h3>Thuê nửa ngày có tính được không?</h3>
+<p>Công cụ tính theo đơn vị ngày. Với nhu cầu vài giờ, hãy gọi {{ business.contact.phone_display }} để hỏi trực tiếp cách tính phù hợp.</p>
+<h3>Người ở nội thành có bản hướng dẫn riêng không?</h3>
+<p>Có, bài <a href="/blog/app/cong-cu-tinh-gia-thue-xe-may-online-tai-ha-noi/">công cụ tính giá thuê xe tại Hà Nội</a> gợi ý cách tính kèm khu vực giao nhận.</p>
+
+<h2>Kết luận</h2>
+<p>Công cụ tính giá cho bạn một con số tham khảo đáng tin để so sánh ngày, tuần, tháng và giữa các dòng xe, nhưng không thay cho bước xác nhận với cửa hàng. Khi đã chọn được phương án, liên hệ {{ business.display_name }} tại {{ business.address.full }} để chốt giá và hẹn giờ nhận xe. Tìm thêm hướng dẫn trong <a href="/blog/app/">chuyên mục ứng dụng thuê xe</a> hoặc mở <a href="/">trang chủ</a> để thử tính giá cho chuyến đi sắp tới.</p>

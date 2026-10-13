@@ -1,0 +1,64 @@
+<p>Agent thuê xe là cách gọi ngắn của trợ lý MotoAI trên website {{ business.brand }}: bạn gõ câu hỏi bằng lời thường, Agent trả lời dựa trên thông tin của cửa hàng và các bài hướng dẫn đã đăng. Người lần đầu dùng thường băn khoăn về phạm vi: Agent biết gì, không biết gì, có nhớ cuộc trò chuyện không, có thay được nhân viên không. Bài này gom các câu hỏi thường gặp xoay quanh chính việc hỏi đáp với Agent, chia theo từng giai đoạn từ lúc mở khung chat đến lúc chuyển sang đặt xe với cửa hàng. Nếu bạn muốn đọc phần giới thiệu tổng quát trước, hãy xem bài <a href="/blog/app/hoi-dap-voi-agent-thue-xe/">hỏi đáp với Agent thuê xe</a>.</p>
+
+<h2>Bắt đầu cuộc trò chuyện với Agent</h2>
+<h3>Tôi tìm Agent ở đâu và có phải đăng nhập không?</h3>
+<p>Agent nằm ngay trên website, bạn chỉ cần mở trình duyệt trên điện thoại hoặc máy tính. Đây là công cụ trực tuyến, không phải phần mềm phải cài về máy, và bạn có thể hỏi mà không cần tạo tài khoản.</p>
+<h3>Câu đầu tiên nên gõ là gì?</h3>
+<p>Hãy bắt đầu bằng mục tiêu thay vì lời chào dài. Ví dụ: "Tôi muốn thuê xe ga ba ngày để đi quanh Hoàn Kiếm và Tây Hồ". Từ câu này, Agent đã biết loại xe, thời gian và khu vực để trả lời trọng tâm hơn.</p>
+<h3>Agent có hiểu tiếng Việt không dấu và tiếng Anh không?</h3>
+<p>Có. Bạn có thể gõ không dấu, viết tắt quen thuộc như "xe ga", "thue thang", hoặc hỏi bằng tiếng Anh. Câu trả lời giữ nguyên nội dung, chỉ đổi ngôn ngữ theo cách bạn hỏi.</p>
+
+<h2>Những chủ đề Agent trả lời tốt</h2>
+<p>Agent mạnh nhất ở các câu hỏi có câu trả lời rõ trong thông tin của cửa hàng. Bạn có thể hỏi về:</p>
+<ul>
+<li>Giá tham khảo các dòng xe, ví dụ Honda Wave 150.000đ/ngày hay Honda Air Blade 200.000đ/ngày.</li>
+<li>Giấy tờ cần mang khi nhận xe và các bước làm thủ tục.</li>
+<li>Giờ mở cửa {{ business.hours.display }} và các khu vực giao nhận như Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ.</li>
+<li>Gợi ý chọn xe theo kinh nghiệm lái, số người và lộ trình.</li>
+<li>Những lưu ý khi trả xe, khi trời mưa hay khi đi xa ra ven đô.</li>
+</ul>
+<p>Muốn đặt câu hỏi gọn mà vẫn đủ ý, bạn có thể học theo các mẫu trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho Agent</a>.</p>
+
+<h2>Trong lúc trò chuyện: hỏi tiếp, sửa ý và so sánh</h2>
+<h3>Agent có nhớ câu tôi vừa hỏi không?</h3>
+<p>Trong cùng một phiên trò chuyện, Agent theo được mạch câu hỏi. Bạn có thể hỏi "còn xe số thì sao?" ngay sau câu hỏi về xe ga mà không cần nhắc lại thời gian thuê. Khi bạn đóng trang và mở lại sau, hãy coi như bắt đầu mới và nêu lại thông tin chính.</p>
+<h3>Tôi nói sai thông tin thì sửa thế nào?</h3>
+<p>Chỉ cần gõ lại ý đúng, ví dụ "à không, tôi đi hai người chứ không phải một". Agent sẽ cập nhật câu trả lời theo điều kiện mới. Không cần xóa cuộc trò chuyện hay hỏi lại từ đầu.</p>
+<h3>Có thể nhờ Agent so sánh hai lựa chọn không?</h3>
+<p>Được, đây là kiểu câu hỏi Agent làm khá tốt. Thử hỏi "thuê Vision một tuần hay Click một tuần, chênh nhau thế nào?" để nhận so sánh giá tham khảo và điểm khác về cách chạy.</p>
+
+<h2>Những gì Agent không làm thay bạn</h2>
+<p>Hiểu đúng giới hạn giúp bạn không chờ đợi sai chỗ. Agent không làm những việc sau:</p>
+<ol>
+<li>Giữ xe hoặc xác nhận đơn đặt; việc này chỉ cửa hàng làm.</li>
+<li>Khẳng định chắc chắn xe nào đang trống trong ngày bạn cần.</li>
+<li>Báo giá cho xe 50cc, xe máy điện, xe đạp điện; những dòng này cần liên hệ trực tiếp.</li>
+<li>Đưa thông số kỹ thuật mà nó không có dữ liệu xác thực, như dung lượng pin hay quãng đường một lần sạc.</li>
+<li>Thay bạn mua bảo hiểm; cửa hàng không cung cấp bảo hiểm, người thuê tự chuẩn bị.</li>
+</ol>
+<p>Với câu hỏi về luật giao thông, Agent chỉ nhắc nguyên tắc chung và hướng bạn tới các bài an toàn để đọc kỹ. Băn khoăn về độ tin cậy nói chung được bàn riêng trong bài <a href="/blog/app/chatbot-thue-xe-may-co-dang-tin-khong/">chatbot thuê xe máy có đáng tin không</a>.</p>
+
+<h2>Thông tin cá nhân khi hỏi đáp với Agent</h2>
+<p>Bạn không cần cung cấp họ tên, số giấy tờ hay ảnh chụp bằng lái để hỏi Agent. Vài nguyên tắc nên giữ:</p>
+<ul>
+<li>Chỉ mô tả nhu cầu: loại xe, số ngày, khu vực, số người.</li>
+<li>Không gửi ảnh hộ chiếu, căn cước hay giấy phép lái xe vào khung chat.</li>
+<li>Giấy tờ chỉ đưa cho cửa hàng khi làm thủ tục nhận xe.</li>
+<li>Kiểm tra đúng địa chỉ website trước khi trò chuyện để tránh trang giả mạo.</li>
+</ul>
+
+<h2>Chuyển từ Agent sang đặt xe thật</h2>
+<p>Khi đã rõ loại xe và giá tham khảo, bước tiếp theo là liên hệ cửa hàng qua số {{ business.contact.phone_display }}. Cửa hàng sẽ kiểm tra xe trống, chốt giá, hẹn giờ nhận xe và thống nhất mức cọc. Khoản cọc dao động {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được xác nhận ngay khi đặt. Nếu bạn muốn giao xe tận nơi, hãy hỏi rõ thời gian và phí trước khi chốt, vì việc giao chỉ diễn ra trong giờ mở cửa. Người muốn dùng Agent để lên luôn lộ trình đi chơi có thể tham khảo bài <a href="/blog/huong-dan/len-ke-hoach-hanh-trinh-voi-agent/">lên kế hoạch hành trình với Agent</a>.</p>
+
+<h2>Câu hỏi thường gặp thêm về Agent thuê xe</h2>
+<h3>Hỏi Agent có tốn phí không?</h3>
+<p>Không. Bạn hỏi bao nhiêu câu cũng được, tiền chỉ phát sinh khi bạn thuê xe thật với cửa hàng.</p>
+<h3>Agent trả lời sai thì tôi làm gì?</h3>
+<p>Hãy hỏi lại cửa hàng để đối chiếu, nhất là với giá và giờ giao xe. Thông tin cửa hàng xác nhận trực tiếp luôn là căn cứ cuối cùng.</p>
+<h3>Agent có trả lời câu hỏi cho người ở ngoài Hà Nội không?</h3>
+<p>Agent trả lời được câu hỏi chung, nhưng dịch vụ của cửa hàng chỉ phục vụ khu vực nội thành Hà Nội và các quận lân cận đã nêu, không phục vụ trên phạm vi cả nước.</p>
+<h3>Có bài nào nói riêng về Agent cho người ở nội thành không?</h3>
+<p>Có, bài <a href="/blog/app/hoi-dap-voi-agent-thue-xe-tai-ha-noi/">hỏi đáp với Agent thuê xe tại Hà Nội</a> đi sâu vào câu hỏi theo từng khu phố.</p>
+
+<h2>Kết luận</h2>
+<p>Hỏi đáp với Agent hiệu quả nhất khi bạn nêu mục tiêu ngay câu đầu, hỏi tiếp trong cùng phiên và nhớ rằng mọi xác nhận cuối cùng đến từ cửa hàng. Agent giúp bạn chuẩn bị nhanh; {{ business.display_name }} tại {{ business.address.full }} giúp bạn chốt xe. Khám phá thêm các bài trong <a href="/blog/app/">chuyên mục trợ lý và ứng dụng</a>, hoặc vào <a href="/">trang chủ</a> để mở Agent và đặt câu hỏi đầu tiên.</p>

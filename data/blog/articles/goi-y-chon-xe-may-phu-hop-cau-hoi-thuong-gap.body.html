@@ -1,0 +1,69 @@
+<p>Khi mở khung trò chuyện MotoAI trên website của {{ business.brand }} và gõ "gợi ý giúp tôi một chiếc xe", nhiều người bất ngờ vì trợ lý không trả lời ngay một cái tên mà hỏi ngược lại vài câu. Đó không phải trợ lý chậm, mà là cách để gợi ý chọn xe máy phù hợp với đúng người đang hỏi. Bài này gom những câu hỏi thường gặp nhất quanh tính năng gợi ý xe: trợ lý dựa vào đâu, bạn nên nói gì, khi nào nên tin gợi ý và khi nào cần hỏi lại cửa hàng. Nếu bạn muốn đọc phần nguyên tắc chọn xe nói chung, hãy xem bài <a href="/blog/app/goi-y-chon-xe-may-phu-hop/">gợi ý chọn xe máy phù hợp</a>.</p>
+
+<h2>Trợ lý gợi ý xe dựa trên những thông tin nào?</h2>
+<h3>Vì sao trợ lý hỏi lại thay vì đưa tên xe ngay?</h3>
+<p>Một chiếc Honda Vision có thể là lựa chọn rất hợp cho cô sinh viên đi học ở Long Biên, nhưng lại chưa chắc hợp với hai người cao lớn chở balo đi dọc đê cả ngày. Nếu trợ lý trả lời ngay mà không biết bạn là ai, đi đâu, gợi ý sẽ chỉ là đoán. Vì vậy MotoAI thường hỏi thêm từ một đến ba câu ngắn trước khi đưa ra tên dòng xe.</p>
+<h3>Những yếu tố nào ảnh hưởng nhiều nhất đến gợi ý?</h3>
+<ul>
+<li>Kinh nghiệm lái: đã quen xe ga, quen xe số hay mới tập.</li>
+<li>Số người trên xe và lượng đồ mang theo.</li>
+<li>Lộ trình chính: trong phố, đi làm hằng ngày hay chạy ra ven đô.</li>
+<li>Bạn định giữ xe bao lâu, vì gói ngày và gói tháng dẫn tới gợi ý khác nhau.</li>
+<li>Giấy phép lái xe bạn đang có, vì nó quyết định loại xe được phép điều khiển.</li>
+</ul>
+<p>Cách trợ lý cân các yếu tố này được giải thích kỹ hơn trong bài <a href="/blog/app/module-goi-y-xe-trong-ung-dung-thue-xe/">module gợi ý xe trong ứng dụng thuê xe</a>.</p>
+
+<h2>Bạn nên nói gì để nhận gợi ý trúng ngay lần đầu?</h2>
+<p>Một tin nhắn đủ ý thường chỉ cần một đến hai câu. Thay vì "xe nào tốt?", hãy thử một trong các mẫu sau:</p>
+<ul>
+<li>"Tôi mới lái xe ga được vài tháng, đi một mình trong phố cổ ba ngày, nên thuê xe gì?"</li>
+<li>"Hai người, có một vali nhỏ, muốn đi Bát Tràng và quanh Gia Lâm, thuê một tuần."</li>
+<li>"Tôi quen xe số, cần xe đi làm cả tháng ở Bồ Đề, ưu tiên tiết kiệm."</li>
+</ul>
+<p>Bạn không cần gõ có dấu hay viết đúng chính tả, trợ lý vẫn hiểu. Điều quan trọng là có đủ ba ý: ai lái, đi đâu, bao lâu. Nếu bạn muốn luyện cách đặt câu hỏi cho mọi chủ đề, bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho Agent thuê xe</a> có thêm nhiều mẫu.</p>
+
+<h2>Những gợi ý phổ biến theo từng tình huống</h2>
+<p>Dưới đây là cách trợ lý thường nghiêng về từng nhóm nhu cầu, kèm giá tham khảo theo bảng giá hiện tại. Giá cuối cùng luôn do cửa hàng xác nhận khi bạn đặt.</p>
+<ul>
+<li><strong>Người mới, đi phố:</strong> xe ga nhỏ, nhẹ như Honda Click hoặc Yamaha Mio, tham khảo 150.000đ/ngày, dễ dắt và dễ quay đầu trong ngõ.</li>
+<li><strong>Đi hai người, đồ vừa phải:</strong> Honda Vision hoặc Honda Air Blade, cùng tham khảo 200.000đ/ngày, yên rộng và có cốp để đồ.</li>
+<li><strong>Quen tay côn, ưu tiên tiết kiệm:</strong> Honda Wave (xe số), tham khảo 150.000đ/ngày, bền và dễ sửa ở bất kỳ tiệm nào.</li>
+<li><strong>Thuê cả tháng để đi làm:</strong> trợ lý sẽ so gói tháng, ví dụ Air Blade tham khảo 1.400.000đ/tháng, Click hoặc Mio 1.000.000đ–1.200.000đ/tháng.</li>
+<li><strong>Muốn thử xe máy điện, xe đạp điện hoặc xe 50cc:</strong> trợ lý giới thiệu được đặc điểm chung, còn giá thì cần liên hệ cửa hàng.</li>
+</ul>
+<p>Bảng đầy đủ các mức ngày, tuần, tháng nằm ở trang <a href="/gia-thue/">giá thuê</a>. Nếu bạn muốn chọn xe theo số năm cầm lái, có thể đọc thêm bài <a href="/blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai/">công cụ chọn xe theo kinh nghiệm lái</a>.</p>
+
+<h2>Khi gợi ý chưa đúng ý bạn</h2>
+<h3>Trợ lý gợi ý xe số nhưng tôi không biết đi xe số thì sao?</h3>
+<p>Bạn chỉ cần nói thẳng "tôi không đi được xe số". Trợ lý sẽ loại nhóm xe đó và đưa phương án xe ga thay thế. Gợi ý ban đầu thường dựa trên tiêu chí tiết kiệm, nên khi bạn bổ sung điều kiện, kết quả sẽ đổi theo.</p>
+<h3>Tôi cao trên một mét tám, gợi ý xe nhỏ có ổn không?</h3>
+<p>Chiều cao và cân nặng là chi tiết nhiều người quên nói. Hãy thêm vào câu hỏi, trợ lý sẽ ưu tiên dòng xe có sàn để chân và yên rộng hơn. Tốt nhất vẫn là ngồi thử vài phút khi nhận xe, vì cảm giác thực tế quan trọng hơn mọi mô tả.</p>
+<h3>Vì sao hỏi hai lần lại nhận hai gợi ý khác nhau?</h3>
+<p>Thường là vì hai câu hỏi có chi tiết khác nhau, chẳng hạn lần đầu bạn nói đi một mình, lần sau lại nhắc thêm người đi cùng. Nếu thông tin giống hệt mà gợi ý vẫn lệch, hãy hỏi trợ lý "vì sao chọn xe này" để xem lý do, rồi quyết định theo lý do hợp với mình nhất.</p>
+
+<h2>Gợi ý của trợ lý không thay được những việc gì?</h2>
+<p>Trợ lý giúp bạn thu hẹp lựa chọn, nhưng có những việc vẫn phải làm trực tiếp với cửa hàng:</p>
+<ol>
+<li>Kiểm tra xe còn trống đúng ngày bạn cần, nhất là cuối tuần và dịp lễ.</li>
+<li>Xác nhận giá chốt, thời gian nhận và trả xe.</li>
+<li>Thống nhất mức cọc, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
+<li>Hẹn giờ và phí giao xe nếu bạn muốn nhận tận nơi; dịch vụ này chỉ thực hiện trong giờ mở cửa {{ business.hours.display }}.</li>
+<li>Tự chuẩn bị bảo hiểm xe máy, vì cửa hàng không bán kèm bảo hiểm.</li>
+</ol>
+<p>Trợ lý cũng không đưa thông số kỹ thuật mà nó không chắc chắn, ví dụ quãng đường đi được của một mẫu xe điện cụ thể. Với những câu như vậy, hãy hỏi cửa hàng về chiếc xe bạn sẽ nhận và xem tình trạng thực tế khi giao xe.</p>
+
+<h2>Từ gợi ý đến lúc nhận xe: nên làm gì tiếp?</h2>
+<p>Khi đã có một hoặc hai dòng xe ưng ý, bạn có thể chụp lại đoạn trò chuyện để làm ghi chú, rồi gọi {{ business.contact.phone_display }} để đặt. Khi gọi, chỉ cần đọc lại tên xe, số ngày thuê và khu vực nhận. Nếu bạn muốn trợ lý đi cùng mình từ lúc chọn đến lúc lên lịch trình, bài <a href="/blog/app/agent-chon-xe-giup-ban/">Agent chọn xe giúp bạn</a> mô tả cả quy trình. Với người ở nội thành muốn xem gợi ý theo từng khu phố, bài <a href="/blog/app/goi-y-chon-xe-may-phu-hop-tai-ha-noi/">gợi ý chọn xe máy phù hợp tại Hà Nội</a> là phần đọc tiếp hợp lý.</p>
+
+<h2>Câu hỏi thường gặp nhanh về gợi ý chọn xe</h2>
+<h3>Dùng tính năng gợi ý có mất phí không?</h3>
+<p>Không. Bạn hỏi bao nhiêu lần cũng được, chỉ khi thuê xe thật mới phát sinh tiền thuê theo giá cửa hàng xác nhận.</p>
+<h3>Có cần cài đặt gì trên điện thoại không?</h3>
+<p>Không cần. MotoAI là trợ lý chạy trên web, bạn mở trình duyệt, vào website và gõ câu hỏi là dùng được.</p>
+<h3>Trợ lý có biết hôm nay còn chiếc Air Blade nào không?</h3>
+<p>Trợ lý không giữ xe và không thay cửa hàng xác nhận tình trạng xe trống. Bạn nên gọi trước để chắc chắn còn đúng dòng xe mình muốn.</p>
+<h3>Tôi chưa có bằng lái thì trợ lý gợi ý gì?</h3>
+<p>Trợ lý sẽ nhắc bạn về yêu cầu giấy phép trước khi nói đến xe. Hãy đọc kỹ điều kiện thuê và hỏi cửa hàng về loại xe được phép điều khiển trong trường hợp của bạn.</p>
+
+<h2>Kết luận</h2>
+<p>Gợi ý chọn xe chỉ chính xác khi bạn kể đủ ba điều: ai lái, đi đâu và đi bao lâu. Hãy để trợ lý thu hẹp lựa chọn, sau đó xác nhận giá, xe trống và lịch giao nhận với {{ business.display_name }} tại {{ business.address.full }}. Xem thêm các bài trong <a href="/blog/app/">chuyên mục ứng dụng thuê xe</a> hoặc quay lại <a href="/">trang chủ</a> để thử hỏi MotoAI về chiếc xe hợp với bạn.</p>
