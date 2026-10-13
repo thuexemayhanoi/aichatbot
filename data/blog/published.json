@@ -24498,6 +24498,156 @@
         "Chiều muộn, khi nắng tắt dần sau những bãi ngô ven sông, đường đê sông Hồng phía Long Biên đổi nhịp: xe chở vật liệu thưa đi, gió từ mặt nước thổi lên mát hẳn, và những quán nước nhỏ trên mặt đê bắt đầu bật đèn. Đi đê buổi tối không giống đi đê buổi sáng hay cuối tuần; bạn đổi ánh nắng lấy gió và ánh đèn cầu, nhưng cũng phải chấp nhận những đoạn đường tối không đèn. Bài ven đê sông Hồng buổi tối này dành cho người thuê xe máy ở khu Bồ Đề, Long Biên, muốn một vòng ngắn sau giờ làm: chọn đoạn đê nào, dừng ở đâu, giữ an toàn ra sao và tính giờ trả xe thế nào.",
         "Từ khoảng 17:30 trở đi, mặt sông chuyển sang màu đồng rồi tím sẫm, cầu Long Biên và cầu Chương Dương lần lượt lên đèn. Trên mặt đê, người dân ra đi bộ, chạy bộ, trẻ con thả diều ở những bãi rộng. Bạn nhìn thấy phố xá phía bờ nam sáng dần lên trong khi phía bờ bắc vẫn giữ vẻ làng quê. Đó là lý do nhiều người sống ở Long Biên chọn đê làm nơi hóng mát thay vì hồ Tây đông đúc."
       ]
+    },
+    {
+      "article_id": "BA-1516",
+      "category": "APP",
+      "slug": "app-thue-xe-cho-khach-du-lich-tan-noi",
+      "title": "App Thuê xe Cho Khách du Lịch Tận Nơi",
+      "description": "Khách du lịch tới Hà Nội thường chỉ có vài ngày, và ngày đầu tiên là ngày lãng phí nhất nếu phải tìm đường tới cửa hàng thuê xe. Giao xe tận nơi giải",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/app-thue-xe-cho-khach-du-lich-tan-noi.body.html",
+      "knowledge_chunks": [
+        "Khách du lịch tới Hà Nội thường chỉ có vài ngày, và ngày đầu tiên là ngày lãng phí nhất nếu phải tìm đường tới cửa hàng thuê xe. Giao xe tận nơi giải quyết việc đó, nhưng kéo theo loạt câu hỏi mới: khách sạn của tôi có trong khu vực giao không, giao lúc nào, ai mang xe tới, tôi cần đưa gì cho họ, và ngày bay thì trả xe ra sao. MotoAI, trợ lý trực tuyến trên website của {{ business.brand }}, được dùng để trả lời chính những câu này trước khi bạn hạ cánh. Nếu bạn muốn hiểu cách công cụ hoạt động nói chung, bài app thuê xe cho khách du lịch đã giải thích; bài này đi theo hành trình giao xe tận nơi từ lúc còn ở sân bay tới lúc trả xe trước giờ ba",
+        "Ngược lại, nếu bạn muốn xem nhiều xe rồi chọn, hoặc có thắc mắc về bằng lái cần hỏi trực tiếp, tới cửa hàng vẫn là cách tốt hơn. Trợ lý sẽ nói thẳng điều này khi bạn mô tả tình huống."
+      ]
+    },
+    {
+      "article_id": "BA-1517",
+      "category": "RENT",
+      "slug": "coc-thue-xe-may-bao-nhieu-chay-pho",
+      "title": "Cọc Thuê xe Máy Bao Nhiêu Chạy Phố",
+      "description": "Thuê xe chỉ để chạy phố, tức là đi quanh nội thành, qua cầu sang Phố Cổ ăn tối, lên Tây Hồ uống cà phê rồi về, khác hẳn thuê xe đi xa. Quãng đường",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/coc-thue-xe-may-bao-nhieu-chay-pho.body.html",
+      "knowledge_chunks": [
+        "Thuê xe chỉ để chạy phố, tức là đi quanh nội thành, qua cầu sang Phố Cổ ăn tối, lên Tây Hồ uống cà phê rồi về, khác hẳn thuê xe đi xa. Quãng đường ngắn, xe nhỏ gọn là đủ, nhưng rủi ro cho chiếc xe lại tập trung ở một chỗ: bãi gửi và vỉa hè đông đúc. Vì vậy câu hỏi \"cọc thuê xe máy bao nhiêu\" với người chạy phố không chỉ là con số, mà là làm sao chọn xe cho khoản cọc nhẹ và giữ nguyên khoản đó sau nhiều lần gửi xe trong phố. Nguyên tắc chung về tiền đặt cọc đã có ở bài cọc thuê xe máy bao nhiêu ; bài này chỉ bàn phần dành cho người chạy phố.",
+        "Tại {{ business.brand }}, với người chạy phố, khoản đặt cọc nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được xác nhận khi bạn đặt. Khoản cọc không phụ thuộc vào việc bạn đi gần hay xa, mà phụ thuộc chiếc xe bạn cầm chìa khóa. Dòng xe số và tay ga nhỏ thường nằm ở phía thấp của khoảng cọc, dòng tay ga lớn hơn nằm cao hơn; con số chính xác cho từng xe do cửa hàng chốt trong tin nhắn đặt xe. Với nhu cầu chạy phố, bạn gần như luôn có thể chọn dòng xe ở phía thấp mà không thiệt gì về trải nghiệm."
+      ]
+    },
+    {
+      "article_id": "BA-1513",
+      "category": "EV",
+      "slug": "cua-hang-cho-thue-xe-dien-mua-mua",
+      "title": "Cửa Hàng Cho Thuê xe Điện Mùa Mưa",
+      "description": "Chọn cửa hàng cho thuê xe điện vào mùa khô và vào mùa mưa là hai việc khác nhau. Mùa khô, bạn chủ yếu so pin và giá. Mùa mưa, thứ quyết định trải",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cua-hang-cho-thue-xe-dien-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Chọn cửa hàng cho thuê xe điện vào mùa khô và vào mùa mưa là hai việc khác nhau. Mùa khô, bạn chủ yếu so pin và giá. Mùa mưa, thứ quyết định trải nghiệm là cửa hàng có chuẩn bị xe cho mưa không, xử lý ra sao khi xe dính nước, và có nói thẳng cho bạn biết xe này lội được tới đâu hay không. Bài này là danh sách câu hỏi và dấu hiệu để chọn cửa hàng xe điện trong những tháng mưa ở Hà Nội, cùng cách nhận xe và giữ xe cho đến ngày trả. Tiêu chí chung cho một cửa hàng xe điện tử tế đã có ở bài cửa hàng cho thuê xe điện .",
+        "Xe điện vận hành bình thường dưới mưa rơi, nhưng ba thứ trở nên quan trọng hơn hẳn: nắp che ổ sạc còn kín hay không, phanh còn ăn khi ướt hay không, và chính sách khi xe gặp nước. Một cửa hàng làm việc nghiêm túc sẽ kiểm ba điểm này trước mỗi lượt giao mùa mưa, đưa kèm áo mưa, và nói rõ với bạn những tuyến nên tránh khi mưa to. Cửa hàng chỉ chăm chăm vào giá thường bỏ qua cả ba. Cách xe điện phản ứng với nước và những bộ phận hay hỏng vì ẩm được giải thích trong bài xe điện khi mưa ."
+      ]
+    },
+    {
+      "article_id": "BA-1518",
+      "category": "EV",
+      "slug": "dich-vu-sua-xe-dien-mua-mua",
+      "title": "Dịch vụ Sửa xe Điện Mùa Mưa",
+      "description": "Mùa mưa là lúc các tiệm sửa xe điện ở Hà Nội đông nhất, và phần lớn xe được dắt tới không hỏng vì chạy nhiều mà vì nước: ổ sạc ẩm, phanh ướt kêu ken",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dich-vu-sua-xe-dien-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Mùa mưa là lúc các tiệm sửa xe điện ở Hà Nội đông nhất, và phần lớn xe được dắt tới không hỏng vì chạy nhiều mà vì nước: ổ sạc ẩm, phanh ướt kêu ken két, đèn mờ do hơi nước đọng, xe tự tắt sau khi lội qua một đoạn ngập. Bài này nhìn dịch vụ sửa xe điện dưới góc mùa mưa: hỏng kiểu gì thì tự để khô được, kiểu gì phải mang đi ngay, chọn tiệm ra sao trong những tuần mưa dầm, và nếu xe bạn đang đi là xe thuê thì xử lý thế nào cho đúng. Phần tổng quan về sửa xe điện nói chung đã có ở bài dịch vụ sửa xe điện .",
+        "Xe điện không sợ mưa rơi trên thân xe; thứ nó sợ là nước đọng lâu ở những điểm có tiếp xúc điện. Ba vị trí hay gặp vấn đề nhất trong mùa mưa Hà Nội:"
+      ]
+    },
+    {
+      "article_id": "BA-1514",
+      "category": "GUIDE",
+      "slug": "duong-vanh-dai-ha-noi-tai-ha-noi",
+      "title": "Đường Vành Đai hà Nội Tại Hà Nội",
+      "description": "Người thuê xe máy ở Hà Nội không cần thuộc bản đồ toàn bộ hệ thống vành đai; họ cần biết đúng những đoạn mình sẽ chạm vào trên đường tới điểm đến hôm",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/duong-vanh-dai-ha-noi-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Người thuê xe máy ở Hà Nội không cần thuộc bản đồ toàn bộ hệ thống vành đai; họ cần biết đúng những đoạn mình sẽ chạm vào trên đường tới điểm đến hôm nay, và đoạn nào trong số đó cấm xe máy. Bài đường vành đai Hà Nội đã giải thích từng tuyến là gì; bài này lật ngược góc nhìn: xuất phát từ cửa hàng ở Long Biên, bạn đi đâu thì gặp vành đai nào, nhận biết nhánh cấm ra sao, và lên lộ trình thế nào để cả ngày không phải quay đầu ở chân cầu vượt.",
+        "Cửa hàng tại {{ business.address.full }} nằm sát trục Nguyễn Văn Cừ, nghĩa là bạn ở ngay cạnh các cây cầu nối hai bờ sông Hồng và không xa vành đai 2, vành đai 3 phía đông. Điểm đến phổ biến và tuyến vành đai liên quan:"
+      ]
+    },
+    {
+      "article_id": "BA-1520",
+      "category": "LOCAL",
+      "slug": "ho-guom-ban-dem-buoi-toi",
+      "title": "hồ Gươm Ban Đêm Buổi Tối",
+      "description": "Một buổi tối quanh hồ Gươm là kiểu chuyến đi ngắn mà người thuê xe máy ở Hà Nội hay làm nhất: tan làm hoặc vừa nhận phòng xong, lên xe lúc trời còn",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ho-guom-ban-dem-buoi-toi.body.html",
+      "knowledge_chunks": [
+        "Một buổi tối quanh hồ Gươm là kiểu chuyến đi ngắn mà người thuê xe máy ở Hà Nội hay làm nhất: tan làm hoặc vừa nhận phòng xong, lên xe lúc trời còn chút nắng, về tới chỗ nghỉ trước nửa đêm. Khác với những bài đã bàn về hồ Gươm trong trọn một ngày thuê hay vào ba tối cuối tuần , bài này chỉ gói gọn trong một khung giờ: từ lúc trời sẩm tối đến khi bạn gửi xe lần cuối. Bạn sẽ có lịch trình theo giờ, cách chọn thời điểm qua cầu, chỗ gửi xe sau khi trời tối và vài lỗi nhỏ khiến buổi tối mất vui.",
+        "Người mới hay nghĩ \"tối\" là sau khi ăn cơm, nhưng với hồ Gươm, khoảnh khắc đáng xem nhất lại nằm ở nửa giờ trước khi đèn đường bật: mặt hồ chuyển từ xanh sang xám bạc, cầu Thê Húc đỏ dần nổi lên và dãy đèn quanh bờ sáng lần lượt. Mùa hè, khoảnh khắc này rơi vào tầm sáu rưỡi đến bảy giờ; mùa đông sớm hơn, nhiều hôm chưa tới sáu giờ trời đã tối hẳn. Nếu bạn muốn đi trọn buổi tối, hãy tính giờ xuất phát ngược từ mốc đó: rời khu Long Biên trước khi trời tối khoảng bốn mươi phút là vừa, vì chặng qua cầu vào giờ tan tầm luôn chậm hơn bạn ước."
+      ]
+    },
+    {
+      "article_id": "BA-1515",
+      "category": "LOCAL",
+      "slug": "pho-co-am-thuc-xe-may-buoi-toi",
+      "title": "Phố cổ ẩm Thực xe Máy Buổi Tối",
+      "description": "Phố cổ có hai bộ mặt ẩm thực: ban ngày là bún, phở, xôi của người đi làm; buổi tối là lúc những gánh hàng chỉ bán sau năm giờ chiều dọn ra, các ngõ",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/pho-co-am-thuc-xe-may-buoi-toi.body.html",
+      "knowledge_chunks": [
+        "Phố cổ có hai bộ mặt ẩm thực: ban ngày là bún, phở, xôi của người đi làm; buổi tối là lúc những gánh hàng chỉ bán sau năm giờ chiều dọn ra, các ngõ nhỏ lên đèn và dòng người đổ về từ mọi hướng. Nếu bạn chỉ có một buổi tối với chiếc xe máy thuê, cách xếp thời gian quyết định bạn ăn được ba món hay chỉ loay hoay tìm chỗ gửi xe. Bài này chỉ nói về buổi tối: giờ nào xuất phát, hai lộ trình tùy quỹ thời gian, gửi xe ở đâu sau khi phố đông, và kết thúc buổi tối ra sao cho khớp giờ trả xe. Bức tranh chung về ăn phố cổ bằng xe máy đã có ở bài phố cổ ẩm thực xe máy , còn phiên bản trọn một ngày và cuối tuần nằm ở hai bài riêng.",
+        "Từ khoảng năm rưỡi đến bảy giờ là khung ăn tối của người địa phương: quán bún chả, phở, bánh cuốn còn chỗ, bãi gửi xe còn rộng. Từ bảy đến chín giờ là khung đông nhất, khi khách du lịch và nhóm bạn đổ ra cùng lúc, nhiều quán phải chờ bàn và bãi xe quanh các phố trung tâm kín dần. Sau chín giờ, dòng người giãn ra, một số quán ăn đóng nhưng các gánh ngô nướng, chè, cháo và quán cà phê đêm vẫn tiếp tục tới khuya. Người có xe máy nên tận dụng khung đầu cho món chính và khung cuối cho món phụ; khung giữa dành để đi bộ ngắm phố thay vì cố tìm chỗ ngồi."
+      ]
+    },
+    {
+      "article_id": "BA-1511",
+      "category": "APP",
+      "slug": "privacy-va-xu-ly-cuc-bo-trong-app-thue-xe-tan-noi",
+      "title": "Privacy và xử lý Cục bộ Trong App Thuê xe Tận Nơi",
+      "description": "Giao xe tận nơi là dịch vụ duy nhất trong quy trình thuê xe buộc bạn phải nói ra một thứ rất riêng tư: bạn đang ở đâu. Với một công cụ xử lý cục bộ",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe-tan-noi.body.html",
+      "knowledge_chunks": [
+        "Giao xe tận nơi là dịch vụ duy nhất trong quy trình thuê xe buộc bạn phải nói ra một thứ rất riêng tư: bạn đang ở đâu. Với một công cụ xử lý cục bộ như MotoAI, trợ lý trực tuyến trên website của {{ business.brand }}, phần hỏi đáp, so giá, chọn xe vẫn diễn ra trong trình duyệt của bạn; nhưng địa chỉ giao, giờ giao và số điện thoại thì không thể \"cục bộ\" được, vì có người thật phải mang xe tới. Bài này vạch rõ ranh giới đó: thứ gì ở lại trên máy, thứ gì bắt buộc rời đi khi bạn chọn giao tận nơi, và cách giữ phần rời đi ở mức tối thiểu. Khái niệm nền tảng về xử lý cục bộ đã có trong bài privacy và xử lý cục bộ trong app thuê xe .",
+        "Trợ lý cơ bản trả lời dựa trên dữ liệu cửa hàng đã nạp sẵn vào trang web, nên câu hỏi của bạn được xử lý ngay trong trình duyệt. Lịch sử trò chuyện lưu trên thiết bị đang dùng, không đồng bộ sang máy khác, và có nút xóa hội thoại trong menu. Lớp Agent nâng cao chỉ hoạt động khi bạn chủ động bật, khi đó model được tải về và chạy trên máy bạn. Không có tài khoản, không có bước đăng nhập. Những điều này đúng cho mọi lượt dùng, kể cả khi bạn hỏi về giao xe tận nơi; thứ thay đổi là bước sau cùng, khi bạn chốt đơn với cửa hàng."
+      ]
+    },
+    {
+      "article_id": "BA-1512",
+      "category": "RENT",
+      "slug": "so-sanh-gia-cac-loai-xe-may-cho-thue-chay-pho",
+      "title": "so Sánh Giá Các Loại xe Máy Cho Thuê Chạy Phố",
+      "description": "Khi chỉ chạy phố, nghĩa là đi làm, đi học, qua cầu sang trung tâm ăn uống rồi về, tiêu chí so sánh giá xe thuê đổi khác so với lúc đi xa. Sức mạnh",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/so-sanh-gia-cac-loai-xe-may-cho-thue-chay-pho.body.html",
+      "knowledge_chunks": [
+        "Khi chỉ chạy phố, nghĩa là đi làm, đi học, qua cầu sang trung tâm ăn uống rồi về, tiêu chí so sánh giá xe thuê đổi khác so với lúc đi xa. Sức mạnh động cơ không còn quan trọng; thứ quyết định là xe có gọn để luồn và gửi không, cốp có chứa vừa đồ không, và tổng chi phí mỗi ngày gồm cả xăng, gửi xe là bao nhiêu. Bảng giá chung theo dòng xe đã có ở bài so sánh giá các loại xe máy cho thuê ; bài này tính lại các con số đó cho người chạy phố mỗi ngày trong nội thành Hà Nội. Mọi giá bên dưới là giá tham khảo từ bảng của cửa hàng, cần được xác nhận cho đúng ngày bạn thuê.",
+        "Nhìn theo ngày, thị trường chạy phố chỉ có hai mức: nhóm 150.000đ và nhóm 200.000đ. Nhưng chạy phố ít khi là chuyện một ngày; người thuê để đi làm hoặc đi học thường giữ xe cả tuần hoặc cả tháng, và ở đó thứ tự xếp hạng thay đổi."
+      ]
+    },
+    {
+      "article_id": "BA-1519",
+      "category": "GUIDE",
+      "slug": "tra-xe-dung-gio-de-tranh-phi-tai-ha-noi",
+      "title": "Trả xe Đúng Giờ để Tránh Phí Tại Hà Nội",
+      "description": "Ở Hà Nội, trả xe đúng giờ không chỉ là chuyện xem đồng hồ; nó là chuyện biết thành phố này tắc ở đâu, vào lúc nào, và cây cầu nào sẽ đứng im đúng lúc",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tra-xe-dung-gio-de-tranh-phi-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Ở Hà Nội, trả xe đúng giờ không chỉ là chuyện xem đồng hồ; nó là chuyện biết thành phố này tắc ở đâu, vào lúc nào, và cây cầu nào sẽ đứng im đúng lúc bạn cần qua sông. Nguyên tắc chung về giờ trả và phí trễ đã có trong bài trả xe đúng giờ để tránh phí ; bài này đi vào phần riêng của Hà Nội: thời gian về cửa hàng từ từng khu, các bẫy giao thông theo giờ và theo mùa, và cách xếp buổi trả xe để không phải vừa chạy vừa nhìn giờ.",
+        "Hợp đồng thuê ghi giờ nhận; giờ trả là giờ nhận cộng số ngày thuê, trừ khi bạn và cửa hàng thỏa thuận mốc khác bằng chữ. Với cửa hàng tại {{ business.address.full }}, có thêm một giới hạn cứng: xe chỉ được nhận lại trong khung mở cửa {{ business.hours.display }}. Nếu bạn nhận xe lúc mười giờ sáng thứ Hai và thuê ba ngày, mốc trả là mười giờ sáng thứ Năm, không phải \"trong ngày thứ Năm\". Hãy ghi mốc này vào lịch điện thoại ngay lúc ký, kèm một nhắc nhở sớm hơn hai tiếng. Cách đọc các điều khoản liên quan trong hợp đồng có ở bài hợp đồng thuê xe cần những gì ."
+      ]
     }
   ]
 }
