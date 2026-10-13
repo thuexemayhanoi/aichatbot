@@ -1,0 +1,61 @@
+<p>Tìm một chiếc xe để tự tới lấy và tìm một chiếc xe để được mang tới tận cửa là hai bài toán khác nhau. Ở bài toán thứ hai, ngoài dòng xe và giá, bạn còn phải lọc theo nơi bạn đang ở, khung giờ có thể nhận và việc giờ giao, phí giao có được xác nhận hay không. Bài này hướng dẫn cách tìm xe máy thuê bằng ứng dụng tận nơi, tức là dùng trợ lý trực tuyến trên website để đi từ "tôi đang ở đây, cần xe lúc này" tới một yêu cầu giao xe đủ thông tin để cửa hàng xác nhận ngay. Cách tìm xe nói chung khi bạn có thể tới cửa hàng đã được trình bày trong bài <a href="/blog/app/tim-xe-may-thue-bang-ung-dung/">tìm xe máy thuê bằng ứng dụng</a>.</p>
+
+<h2>Tìm xe tận nơi bắt đầu từ vị trí, không phải từ dòng xe</h2>
+<p>Thói quen của nhiều người là mở trợ lý và hỏi "có Vision không". Với giao tận nơi, câu đầu tiên nên là nơi bạn đang ở và giờ bạn cần. Lý do: phạm vi giao nhận giới hạn trong Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và các quận nội thành Hà Nội, và chỉ thực hiện trong khung {{ business.hours.display }}. Nếu bạn ở ngoài vùng này hoặc cần xe lúc sáu giờ sáng, mọi câu hỏi về dòng xe đều vô nghĩa cho tới khi vị trí và giờ được giải quyết. Trợ lý sẽ kiểm tra hai điều đó trước và đề xuất phương án, chẳng hạn nhận vào tối hôm trước nếu bạn cần đi sớm.</p>
+
+<h2>Một câu hỏi tìm xe tận nơi đủ thông tin</h2>
+<p>Trợ lý gợi ý chính xác khi câu hỏi của bạn chạm tới sáu điểm sau. Không cần viết văn, chỉ cần có đủ:</p>
+<ul>
+<li>Địa chỉ nhận, đủ số nhà, ngõ, ngách, kèm một mốc dễ nhận ra nếu nhà ở sâu trong ngõ.</li>
+<li>Khung giờ có thể nhận, nêu một khoảng thay vì một mốc, ví dụ "từ hai đến bốn giờ chiều".</li>
+<li>Thời gian thuê: theo ngày, tuần hay tháng.</li>
+<li>Kinh nghiệm lái: quen xe số hay chỉ đi xe ga.</li>
+<li>Nhu cầu sử dụng: đi làm trong phố, chở thêm người, hay đi loanh quanh ngắn.</li>
+<li>Ngân sách ước lượng, nếu bạn có.</li>
+</ul>
+<p>Một câu mẫu: "Tôi ở một ngõ trên phố Ngọc Lâm, Long Biên, cần xe ga giao chiều mai trong khoảng hai đến bốn giờ, thuê một tuần để đi làm sang Hoàn Kiếm, chưa quen xe số." Từ câu này, trợ lý có đủ dữ kiện để gợi ý hai ba dòng phù hợp và nhắc bạn các bước xác nhận giao. Cách đặt câu hỏi sao cho trợ lý hiểu đúng được bàn sâu hơn trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-tan-noi/">soạn câu hỏi hiệu quả cho agent thuê xe tận nơi</a>.</p>
+
+<h2>Đọc kết quả gợi ý như thế nào</h2>
+<p>Kết quả thường là vài dòng xe kèm giá tham khảo và lý do gợi ý. Với giao tận nơi, bạn đọc theo thứ tự: dòng xe có sẵn để giao trong khung giờ bạn nêu hay không, giá tham khảo theo kỳ thuê của bạn, rồi mới tới đặc điểm xe. Ví dụ, với yêu cầu một tuần đi làm trong phố, trợ lý có thể gợi ý Honda Vision với giá tham khảo 800.000đ–1.000.000đ/tuần, Honda Air Blade tham khảo 800.000đ/tuần, hoặc Honda Click và Yamaha Mio tham khảo 600.000đ–700.000đ/tuần nếu bạn ưu tiên gọn tiền. Mọi mức này chỉ để tham khảo, giá chính xác do cửa hàng xác nhận và được liệt kê tại trang <a href="/gia-thue/">giá thuê</a>. Cách trợ lý đối chiếu nhu cầu với dòng xe được mô tả trong bài <a href="/blog/app/agent-chon-xe-giup-ban-tan-noi/">agent chọn xe giúp bạn tận nơi</a>.</p>
+<p>Một lưu ý nhỏ: xe 50cc, xe máy điện và xe đạp điện có giá liên hệ, trợ lý sẽ không đưa ra con số mà hướng bạn hỏi cửa hàng trực tiếp. Đừng coi đó là lỗi; đó là cách tránh báo sai giá.</p>
+
+<h2>Từ gợi ý tới yêu cầu giao xe</h2>
+<p>Chọn được dòng xe mới là nửa đường. Phần còn lại là biến lựa chọn thành yêu cầu giao đủ điều kiện. Trình tự nên làm trong phiên:</p>
+<ol>
+<li>Xác nhận lại địa chỉ và khung giờ, để trợ lý tổng hợp thành một yêu cầu rõ ràng.</li>
+<li>Gửi ảnh giấy tờ theo hướng dẫn, gồm căn cước và giấy phép lái xe đúng hạng, để cửa hàng đối chiếu trước khi cử người giao.</li>
+<li>Hỏi và chờ xác nhận bằng chữ về giờ giao và phí giao; chưa có xác nhận này thì việc đặt chưa xong.</li>
+<li>Ghi nhận mức cọc theo dòng xe, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, và cách nộp lúc nhận.</li>
+<li>Chuẩn bị phương án bảo hiểm xe máy cho bản thân, vì cửa hàng không cung cấp bảo hiểm.</li>
+</ol>
+<p>Các bước tại cửa khi người giao tới, từ đối chiếu giấy tờ tới chụp ảnh tình trạng xe, được liệt kê trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>. Nếu bạn ở khách sạn, có vài điểm riêng về lễ tân và chỗ đỗ, được nói trong bài <a href="/blog/huong-dan/giao-xe-tai-khach-san/">giao xe tại khách sạn</a>.</p>
+
+<h2>Ba tình huống hay gặp và cách tìm cho từng tình huống</h2>
+<ul>
+<li>Vừa tới Hà Nội, ở khu Phố Cổ, cần xe trong buổi chiều: nêu tên khách sạn và phố, hỏi khung giờ giao gần nhất còn trống; chọn xe ga nhỏ để dễ gửi trong khu phố hẹp.</li>
+<li>Đi làm dài hạn ở Ba Đình, ở trọ bên Gia Lâm: hỏi thẳng giá tháng, chọn dòng xe tiết kiệm xăng, hẹn giao vào buổi tối trong giờ hoạt động để sáng hôm sau đi làm ngay.</li>
+<li>Cần xe cho người thân tới chơi vài ngày, bạn đặt hộ: lưu ý người lái phải là người đứng tên và có mặt khi nhận với giấy tờ bản gốc; trợ lý sẽ nhắc điều này ngay khi bạn nói đặt cho người khác.</li>
+</ul>
+<p>Người dùng trợ lý lần đầu có thể xem thêm kịch bản từng bước trong bài <a href="/blog/app/kich-ban-dung-app-thue-xe-cho-nguoi-moi-tan-noi/">kịch bản dùng app thuê xe cho người mới tận nơi</a>.</p>
+
+<h2>Những lỗi khiến việc tìm xe tận nơi chậm lại</h2>
+<ul>
+<li>Nêu địa chỉ thiếu số ngõ, hoặc chỉ nói tên quận; người giao sẽ phải gọi hỏi đường và khung giờ bị lệch.</li>
+<li>Hỏi dòng xe trước khi nói vị trí và giờ, rồi phát hiện khung giờ mong muốn nằm ngoài giờ hoạt động.</li>
+<li>Coi gợi ý giá là giá chốt; giá và giờ giao chỉ có hiệu lực khi cửa hàng xác nhận bằng chữ.</li>
+<li>Đổi địa chỉ hoặc giờ sau khi đã chốt mà không báo lại trong phiên.</li>
+<li>Không chuẩn bị bản gốc giấy tờ, tới lúc người giao đến mới đi tìm.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp về tìm xe giao tận nơi bằng ứng dụng</h2>
+<h3>Trợ lý có biết chính xác xe nào đang trống để giao không?</h3>
+<p>Trợ lý gợi ý dựa trên nhu cầu và thông tin dòng xe; việc xe còn trống đúng khung giờ bạn cần được cửa hàng xác nhận trong bước chốt. Hãy coi gợi ý là danh sách rút gọn, còn xác nhận là của cửa hàng.</p>
+<h3>Tôi ở ngoài khu vực giao nhận thì làm thế nào?</h3>
+<p>Trợ lý sẽ báo khu vực không thuộc phạm vi giao và gợi ý bạn tới cửa hàng tại {{ business.address.full }} để nhận, hoặc chọn một điểm nhận trong vùng phục vụ.</p>
+<h3>Có cần tạo tài khoản hay cài đặt gì không?</h3>
+<p>Không. Trợ lý là công cụ trực tuyến trên website, mở bằng trình duyệt trên điện thoại hoặc máy tính là dùng được ngay.</p>
+<h3>Phí giao có hiện ngay trong gợi ý không?</h3>
+<p>Không, vì phí giao phụ thuộc vào địa chỉ và thời điểm và phải được cửa hàng xác nhận trước khi đặt. Trợ lý nhắc bạn hỏi và chờ xác nhận thay vì tự đưa ra con số.</p>
+
+<h2>Kết luận</h2>
+<p>Tìm xe máy thuê bằng ứng dụng để giao tận nơi là đi theo đúng thứ tự: vị trí và giờ trước, nhu cầu và dòng xe sau, rồi khóa lại bằng xác nhận giờ giao, phí giao và mức cọc từ cửa hàng. Làm đúng thứ tự, một phiên vài phút là đủ để sáng mai xe đứng trước cửa. Trợ lý của {{ business.brand }} có sẵn trên <a href="/">trang chủ</a>, hoặc bạn gọi {{ business.contact.phone_display }} trong khung {{ business.hours.display }}. Thêm các hướng dẫn dùng trợ lý trong <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>
