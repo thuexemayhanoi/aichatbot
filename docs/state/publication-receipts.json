@@ -8085,6 +8085,61 @@
       "entry_sha256": "ff62413b85a156ea779b32a5978cbd00ff47af7cc937d98f2220fbcf1ed720d1",
       "production_status": 200,
       "verified_at": "2026-10-12T21:05:10.550Z"
+    },
+    "BA-0776": {
+      "article_id": "BA-0776",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-honda-air-blade-cho-sinh-vien/",
+      "publication_sha": "9e3315f73fc25378ab664d88c6b194c7a04740f6",
+      "page_sha256": "3d3fed141bd7429eb7173894d06fc3d84d9069fb983d68b4f82d0355f4069a4d",
+      "body_sha256": "0eb984344a2ce55f24caf5fd9f313f1b887c3aae6bbf50e25f7d5eba45c9d0e8",
+      "entry_sha256": "402865e59107797dedb4e5e5da8fe6159cf932680d75663324dd09be94f35582",
+      "production_status": 200,
+      "verified_at": "2026-10-13T01:58:44.730Z"
+    },
+    "BA-0777": {
+      "article_id": "BA-0777",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/xe-dien/thue-xe-dien-cho-khach-du-lich-gia-tot/",
+      "publication_sha": "3a38a85f55ce82847e2a31a4f74f7e0712db3aac",
+      "page_sha256": "d20647ed34ccb0a79fcbfa1430567abc28329e6e04389fd8b0a8b2fad19bf928",
+      "body_sha256": "f5cbf76c3f27f174c016983aeea10023e1532ee54660937652d3db5a2b63ba48",
+      "entry_sha256": "fc8332929f6a39609d478acd90a3e1877b8131fc1e4fcac20ddf6e054f42b1cc",
+      "production_status": 200,
+      "verified_at": "2026-10-13T02:05:04.684Z"
+    },
+    "BA-0778": {
+      "article_id": "BA-0778",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/sua-xe-nho-khi-dang-thue-cho-khach-nuoc-ngoai/",
+      "publication_sha": "8d4aec43b0498f3ad96b0215c941591151b304e1",
+      "page_sha256": "1a8d0a077e7542996847daffe361851fbc08b0ed81177d68dd118cefa6352b3f",
+      "body_sha256": "b9a07723afaa6673a3024c455be885522219d5dbd82e20b348b8cb5368455f6c",
+      "entry_sha256": "36ab6df1680827339110987915ac964d05578b377f76a4f407d40996dd2b363a",
+      "production_status": 200,
+      "verified_at": "2026-10-13T02:00:42.603Z"
+    },
+    "BA-0779": {
+      "article_id": "BA-0779",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/ai-chiu-phat-khi-di-xe-thue-cho-nguoi-moi/",
+      "publication_sha": "e19b45715fb587249e1f994c6bc20883c48b3ca9",
+      "page_sha256": "a85fdce14d41e32704d55dc7a7d4fe19fcc3e7c8865f673788858f324cd907cf",
+      "body_sha256": "99c7f201439d0b488bf4baf55ece98a217a82c6309dff42165c8d5b41d7c201e",
+      "entry_sha256": "df5a9b6d117f4df70b1d35ce7f9a77e228ea86aec4e2a795ad568f300d14223d",
+      "production_status": 200,
+      "verified_at": "2026-10-13T02:07:16.418Z"
+    },
+    "BA-0780": {
+      "article_id": "BA-0780",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/gia-lam-va-long-bien-cuoi-tuan/",
+      "publication_sha": "e19b45715fb587249e1f994c6bc20883c48b3ca9",
+      "page_sha256": "43377c1af5bacfdacddc8f86b0b90bdb5067df8f3e44fa234a276e21e3c482e5",
+      "body_sha256": "f281da12b6734359fa5f4fbf7b0c17cb080bddb80a14c9b21aa10b8f374175ed",
+      "entry_sha256": "33fa6f4f89ba7eb999068650c16578f8c2905120f7d8e9c047fbb1b9229f850e",
+      "production_status": 200,
+      "verified_at": "2026-10-13T02:07:16.420Z"
     }
   }
 }
