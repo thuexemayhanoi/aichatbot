@@ -13091,6 +13091,116 @@
       "production_status": 200,
       "verified_at": "2026-10-13T07:16:52.715Z"
     },
+    "BA-1861": {
+      "article_id": "BA-1861",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/duong-5-va-ngoai-o-mua-thu/",
+      "publication_sha": "16475491781a472c2ec17de74733ac6c06572c97",
+      "page_sha256": "4f75487e22b1a511ec263fb8114c07d3d6d3fb7eb8d16f315d9554204e6d44da",
+      "body_sha256": "8262e7425f8bf604ebb819a9fbe9a8f3232f321e62a252ef065bac01cbd5385a",
+      "entry_sha256": "ab2808437fd1ededa7240cfc2ae0387faac4cc984d57f9643730dc35b3482fea",
+      "production_status": 200,
+      "verified_at": "2026-10-13T07:29:42.541Z"
+    },
+    "BA-1862": {
+      "article_id": "BA-1862",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/huy-lich-thue-xe-qua-app-cau-hoi-thuong-gap/",
+      "publication_sha": "16475491781a472c2ec17de74733ac6c06572c97",
+      "page_sha256": "427c5b0c73e42dc6cf16acd7832c75808cea138ab2bbbf53ce6d0b1043e05bb9",
+      "body_sha256": "822b0c9bf72ff55d36a42be00fe8316b40a14cf6dc6bdf898b504092144103d0",
+      "entry_sha256": "a94880141a375471b4112a1fb2820a0f2da75d215e27b62da2b78800f5598d6f",
+      "production_status": 200,
+      "verified_at": "2026-10-13T07:29:42.537Z"
+    },
+    "BA-1863": {
+      "article_id": "BA-1863",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/phi-giao-xe-thue-cuoi-tuan/",
+      "publication_sha": "16475491781a472c2ec17de74733ac6c06572c97",
+      "page_sha256": "13f7bccd54609647fa06be56ea54149aeb34a618e63f7eed7b8e8b9131a8f5fe",
+      "body_sha256": "d164758582fee1e7c72ef7fd4f5d7cd81250713726b20ed26f8bfa5c351a9b39",
+      "entry_sha256": "af35a919c0678013f4c08a42889f188135417d0e7909e4e7bfcb63f6b03dcf45",
+      "production_status": 200,
+      "verified_at": "2026-10-13T07:29:42.532Z"
+    },
+    "BA-1864": {
+      "article_id": "BA-1864",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/soc-son-va-co-loa-mua-thu/",
+      "publication_sha": "16475491781a472c2ec17de74733ac6c06572c97",
+      "page_sha256": "769a5050625a939874e97783ec7014365d3895f776c1f5a31893be604730913c",
+      "body_sha256": "ec409b155d65a0b9d52eaa8ad982b3a66a5d7c7e146e3143b70d057ae0efab6a",
+      "entry_sha256": "f26d52233d08235d725185eeab4ad54a7096695f1b1377f018c072d1ebb72c30",
+      "production_status": 200,
+      "verified_at": "2026-10-13T07:29:42.545Z"
+    },
+    "BA-1865": {
+      "article_id": "BA-1865",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai-cau-hoi-thuong-gap/",
+      "publication_sha": "16475491781a472c2ec17de74733ac6c06572c97",
+      "page_sha256": "c8ee2fac629c0855172119cc725f01531836b26ac42f67defb483b23705397c0",
+      "body_sha256": "6a7512bd0ed7dd2539261329f9e463c81d695c3b994bd640cb48f4c4ca273dcc",
+      "entry_sha256": "691527440cf1bdc78f61ef6fb6ecd884274167b16ec64be46f17a8e47679e5fb",
+      "production_status": 200,
+      "verified_at": "2026-10-13T07:29:42.551Z"
+    },
+    "BA-1866": {
+      "article_id": "BA-1866",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-o-ga-tau-san-bay-cuoi-tuan/",
+      "publication_sha": "16475491781a472c2ec17de74733ac6c06572c97",
+      "page_sha256": "05419af7d948998dbd55c2147261e49475d2aaebafba6c581a498554ee743555",
+      "body_sha256": "6f0269769018d779dadc0d3db7995d81fd8470075704166a7de234c6b7b9adca",
+      "entry_sha256": "c363d569d6e9f2d722e988ff587bb7315f8f7b1e6885665de62553fa648b67f4",
+      "production_status": 200,
+      "verified_at": "2026-10-13T07:29:42.547Z"
+    },
+    "BA-1867": {
+      "article_id": "BA-1867",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ba-vi-cuoi-tuan-mua-thu/",
+      "publication_sha": "16475491781a472c2ec17de74733ac6c06572c97",
+      "page_sha256": "367fe3ff553525f2e225226f1dad07fcff290a2b42aa4eb23f4fef970a25d3fb",
+      "body_sha256": "f6878229908142bc3f051c21be5d2f137342c6c12272407435443f406e1fa667",
+      "entry_sha256": "191466bc3353ff68e167920d3e236091f9cbcf145ce73b2bd7d4be9423fe363c",
+      "production_status": 200,
+      "verified_at": "2026-10-13T07:29:42.556Z"
+    },
+    "BA-1868": {
+      "article_id": "BA-1868",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-tieng-anh-cau-hoi-thuong-gap/",
+      "publication_sha": "16475491781a472c2ec17de74733ac6c06572c97",
+      "page_sha256": "862a0ae4c31a4975e02556bbe976f2d083c193afe322ef736a8c77a3e7821085",
+      "body_sha256": "f1bbf5d6240ff4fff91981a11c6d2578d7b449841313e6a983b5652b1678d564",
+      "entry_sha256": "edb820b9962463a14207073ef5055fe02ee6189054a8e72926558e9f5684a7f5",
+      "production_status": 200,
+      "verified_at": "2026-10-13T07:29:42.564Z"
+    },
+    "BA-1869": {
+      "article_id": "BA-1869",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/so-sanh-thue-xe-may-va-taxi-cuoi-tuan/",
+      "publication_sha": "16475491781a472c2ec17de74733ac6c06572c97",
+      "page_sha256": "29e7bcac35da71e840df268730b791727f7fac54494e5d5bb33c13a50bd8f6d4",
+      "body_sha256": "e0135d9cf191e965674be8ee40df00d7c1aa4f1ef3f4da6161ec61a7187de827",
+      "entry_sha256": "0a80bf43c12ba75069cc13132f17e7d4fc3980c0c6b296bfe4a48bebe42fb064",
+      "production_status": 200,
+      "verified_at": "2026-10-13T07:29:42.555Z"
+    },
+    "BA-1870": {
+      "article_id": "BA-1870",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/thach-that-va-son-tay-mua-thu/",
+      "publication_sha": "16475491781a472c2ec17de74733ac6c06572c97",
+      "page_sha256": "ea94785ceae0503f8e2eb9f66422a35d4701b019422938e02778311b5fde4a28",
+      "body_sha256": "9af82ab8a4b2459c9fde66333c130e52aa88d27bc662b638467f6b640390b311",
+      "entry_sha256": "b04f9dfcc5fc0911e851e31a3d866902b91d15017fe699e11c2f54885a44cbb4",
+      "production_status": 200,
+      "verified_at": "2026-10-13T07:29:42.570Z"
+    },
     "BA-1881": {
       "article_id": "BA-1881",
       "status": "PUBLISHED",
