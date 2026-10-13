@@ -1,0 +1,73 @@
+<p>Mỗi tuần, cửa hàng nhận khá nhiều tin nhắn bắt đầu bằng cùng một ý: "Cái ô chat trên web là người thật hay máy?", "Nó báo giá có đúng không?", "Hỏi nó rồi có phải gọi lại không?". Thay vì giải thích lại từ đầu cho từng người, bài này gom các thắc mắc đó thành một bộ câu hỏi thường gặp về rental assistant là gì, xếp theo đúng trình tự mà người thuê xe thường băn khoăn: trước khi mở trợ lý, trong lúc trò chuyện và sau khi đã có câu trả lời.</p>
+
+<p>Bạn có thể đọc lướt theo tiêu đề, chọn đúng nhóm câu hỏi mình đang cần. Mỗi câu trả lời đều dựa trên cách trợ lý MotoAI của {{ business.brand }} đang vận hành thực tế trên website, không phải mô tả lý thuyết chung chung.</p>
+
+<h2>Nhóm câu hỏi trước khi mở trợ lý</h2>
+
+<p><strong>Rental assistant là gì, nói ngắn gọn?</strong> Đó là trợ lý trực tuyến giúp bạn hỏi đáp về việc thuê xe máy ngay trong trình duyệt. Bạn gõ câu hỏi bằng tiếng Việt đời thường, trợ lý trả lời dựa trên dữ liệu cửa hàng đã cập nhật như bảng giá tham khảo, giờ mở cửa, khu vực phục vụ và chính sách đặt cọc. Nếu cần nền tảng đầy đủ hơn, bài <a href="/blog/app/rental-assistant-la-gi/">giải thích rental assistant từ khái niệm cơ bản</a> là điểm bắt đầu hợp lý.</p>
+
+<p><strong>Có phải cài thêm gì không?</strong> Không. MotoAI là ứng dụng web, mở trên điện thoại hay máy tính đều được, không chiếm bộ nhớ máy và không đòi bạn tải về từ chợ ứng dụng nào.</p>
+
+<p><strong>Trợ lý có phải người thật đang trực không?</strong> Không. Đây là công cụ trả lời tự động. Khi câu hỏi vượt ra ngoài dữ liệu, ví dụ đổi lịch gấp hay một tình huống riêng, trợ lý sẽ hướng bạn sang nhân viên qua số {{ business.contact.phone_display }}.</p>
+
+<h2>Nhóm câu hỏi về việc trợ lý biết gì</h2>
+
+<p>Đây là nhóm câu hỏi quan trọng nhất, vì nó quyết định bạn tin câu trả lời đến đâu. Trợ lý được cấu hình để trả lời chắc chắn những nội dung sau:</p>
+
+<ul>
+<li>Giá tham khảo của các dòng phổ biến: Honda Wave khoảng 150.000đ/ngày, Honda Vision và Honda Air Blade khoảng 200.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày. Bảng đầy đủ theo tuần và tháng nằm ở trang <a href="/gia-thue/">giá thuê tham khảo</a>.</li>
+<li>Khoảng đặt cọc theo loại xe, từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, được chốt cụ thể khi bạn đặt.</li>
+<li>Giờ làm việc {{ business.hours.display }} và việc giao xe chỉ diễn ra trong khung giờ này.</li>
+<li>Những nơi cửa hàng hỗ trợ, gồm bờ Long Biên, Bồ Đề, Gia Lâm, khu Hoàn Kiếm và Phố Cổ, Ba Đình, Tây Hồ cùng phần còn lại của nội thành Hà Nội.</li>
+<li>Thủ tục nhận xe, trả xe và giấy tờ cần chuẩn bị.</li>
+</ul>
+
+<p>Ngược lại, có những thứ trợ lý cố ý không nói bằng con số. Xe 50cc, xe máy điện và xe đạp điện được để ở mức giá liên hệ. Các dòng như SH, Lead hay Exciter cũng không có giá cố định trên trợ lý, bạn cần hỏi cửa hàng xem còn xe hay không. Phí giao xe và giờ giao cũng phải được nhân viên xác nhận trước khi chốt, trợ lý không tự đưa ra mức phí.</p>
+
+<h2>Nhóm câu hỏi về độ chính xác</h2>
+
+<p><strong>Giá trợ lý báo có đúng không?</strong> Con số đến từ dữ liệu cửa hàng nhập, không phải trợ lý tự đoán, nên nó khớp với bảng giá tham khảo. Tuy vậy, chữ "tham khảo" có lý do: tình trạng xe, thời điểm thuê và thời lượng thuê có thể làm mức chốt cuối cùng khác đi. Thói quen đúng là coi câu trả lời của trợ lý như bản nháp, rồi xác nhận lại với nhân viên trước khi đặt.</p>
+
+<p><strong>Nếu trợ lý trả lời sai thì sao?</strong> Hãy chụp màn hình đoạn hội thoại và gửi kèm khi liên hệ cửa hàng. Thông tin được nhân viên xác nhận mới là căn cứ cuối cùng. Bài <a href="/blog/app/chatbot-thue-xe-may-co-dang-tin-khong/">chatbot thuê xe máy có đáng tin không</a> phân tích kỹ hơn cách phân biệt câu trả lời đáng tin và câu trả lời cần kiểm tra.</p>
+
+<p><strong>Trợ lý có hứa những điều cửa hàng không làm không?</strong> Trợ lý được giới hạn trong phạm vi chính sách thật. Ví dụ, nó sẽ không nói cửa hàng có bảo hiểm cho xe thuê, vì thực tế người thuê tự chuẩn bị bảo hiểm xe máy của mình. Nó cũng không hứa cứu hộ hay giảm giá.</p>
+
+<h2>Nhóm câu hỏi khi đang trò chuyện</h2>
+
+<p>Phần lớn rắc rối đến từ cách hỏi chứ không phải từ trợ lý. Vài kinh nghiệm rút ra từ những cuộc hội thoại thực tế:</p>
+
+<ol>
+<li>Mỗi tin nhắn một ý. "Giá Vision theo tuần?" cho câu trả lời rõ hơn một đoạn dài lẫn cả giá, giấy tờ lẫn giờ giao.</li>
+<li>Nói rõ thời lượng thuê. Thuê hai ngày, mười ngày hay một tháng sẽ dẫn tới gợi ý khác nhau.</li>
+<li>Nêu nơi bạn đang ở, ví dụ "khách sạn gần hồ Gươm" hay "nhà ở Bồ Đề", để trợ lý cho biết có nằm trong khu vực phục vụ không.</li>
+<li>Nói kinh nghiệm lái. Người chưa quen xe số nên nói thẳng để được gợi ý xe ga dễ điều khiển.</li>
+<li>Cuối cuộc trò chuyện, yêu cầu trợ lý tóm tắt lại để bạn đối chiếu trước khi gọi chốt.</li>
+</ol>
+
+<p>Muốn thấy cách trợ lý được ứng dụng trong bối cảnh cụ thể của thành phố, bạn có thể đọc bài <a href="/blog/app/rental-assistant-la-gi-tai-ha-noi/">rental assistant khi thuê xe ở Hà Nội</a>.</p>
+
+<h2>Nhóm câu hỏi sau khi có câu trả lời</h2>
+
+<p><strong>Hỏi trợ lý xong đã coi như đặt xe chưa?</strong> Chưa. Trợ lý giúp bạn có đủ thông tin; việc giữ xe chỉ hoàn tất khi cửa hàng xác nhận loại xe, thời gian, hình thức nhận xe và khoản đặt cọc.</p>
+
+<p><strong>Bước tiếp theo nên làm gì?</strong> Gọi hoặc nhắn cho nhân viên, đọc lại bản tóm tắt bạn đã có, hỏi những điểm trợ lý báo cần xác nhận như phí giao xe. Nếu đến tận nơi, cửa hàng ở {{ business.address.full }}.</p>
+
+<p><strong>Rental assistant khác gì một trang hỏi đáp tĩnh?</strong> Trang hỏi đáp chỉ có những câu đã viết sẵn. Trợ lý cho phép bạn hỏi đúng tình huống của mình, dù vẫn dựa trên cùng một nguồn dữ liệu. Nếu thích đọc một danh sách soạn sẵn về công cụ đặt xe nói chung, hãy xem <a href="/blog/app/cau-hoi-thuong-gap-ve-app-thue-xe/">bộ hỏi đáp về app thuê xe</a>; còn khái niệm trợ lý theo góc tiếng Việt được trình bày ở bài <a href="/blog/app/tro-ly-thue-xe-may-la-gi/">trợ lý thuê xe máy là gì</a>.</p>
+
+<h2>Câu hỏi thường gặp về rental assistant</h2>
+
+<h3>Rental assistant có lưu cuộc trò chuyện của tôi không?</h3>
+<p>Bạn nên coi khung chat như một kênh hỏi thông tin chung và không gửi giấy tờ tùy thân, số tài khoản hay mật khẩu vào đó. Giấy tờ chỉ cần xuất trình khi nhận xe trực tiếp với nhân viên.</p>
+
+<h3>Tôi có thể hỏi bằng tiếng Anh không?</h3>
+<p>Có thể thử, nhưng với những điều khoản quan trọng như đặt cọc hay giờ trả xe, bạn nên nhờ nhân viên xác nhận lại để tránh hiểu nhầm do khác biệt ngôn ngữ.</p>
+
+<h3>Ngoài giờ mở cửa trợ lý còn trả lời không?</h3>
+<p>Bạn vẫn có thể đọc thông tin và chuẩn bị câu hỏi bất cứ lúc nào. Tuy nhiên việc xác nhận lịch, giao xe và nhận xe chỉ diễn ra trong khung {{ business.hours.display }}.</p>
+
+<h3>Trợ lý có tư vấn chọn xe cho người mới không?</h3>
+<p>Có. Khi bạn nói rõ mình chưa từng lái xe số hoặc chỉ đi quãng ngắn trong phố, trợ lý sẽ gợi ý dòng xe ga dễ làm quen, sau đó bạn kiểm tra tình trạng xe thực tế với nhân viên.</p>
+
+<h2>Kết luận</h2>
+
+<p>Hiểu rental assistant là gì qua các câu hỏi thường gặp giúp bạn dùng nó đúng vai trò: một trợ lý tra cứu nhanh, chính xác trong phạm vi dữ liệu cửa hàng, còn quyết định cuối cùng vẫn do bạn và nhân viên cùng chốt. Khi đã có bản tóm tắt từ trợ lý, hãy gọi {{ business.contact.phone_display }} trong giờ {{ business.hours.display }} để giữ xe với {{ business.brand }}. Xem thêm các bài về công cụ đặt xe trong chuyên mục <a href="/blog/app/">ứng dụng và trợ lý thuê xe</a> hoặc quay lại <a href="/">trang chủ</a> để bắt đầu trò chuyện với MotoAI.</p>

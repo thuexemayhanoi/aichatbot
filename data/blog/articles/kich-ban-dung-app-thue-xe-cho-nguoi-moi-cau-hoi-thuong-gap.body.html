@@ -1,0 +1,79 @@
+<p>Người lần đầu thuê xe máy qua một công cụ trực tuyến thường không thiếu thông tin, mà thiếu một kịch bản để biết nên gõ gì, hỏi theo thứ tự nào và khi nào thì dừng lại gọi người thật. Bài này trả lời những câu hỏi thường gặp của người mới, và với mỗi câu, bạn sẽ có sẵn một mẫu tin nhắn để chép lại khi trò chuyện với trợ lý MotoAI trên website của {{ business.brand }}.</p>
+
+<p>Cách đọc dễ nhất là đi từ trên xuống: các câu hỏi được sắp theo đúng hành trình của một người mới, từ lúc còn ngại mở khung chat cho tới lúc dắt xe về.</p>
+
+<h2>"Tôi chưa từng thuê xe, bắt đầu từ đâu?"</h2>
+
+<p>Bắt đầu bằng việc nói thật hoàn cảnh của mình. Trợ lý không chấm điểm câu hỏi, và càng nói rõ, gợi ý càng sát. Một tin nhắn mở đầu tốt chỉ cần ba thông tin: bạn ở đâu, cần xe bao lâu, đã lái loại xe nào.</p>
+
+<p><em>Mẫu tin nhắn: "Mình mới thuê xe lần đầu, đang ở Bồ Đề, cần xe năm ngày, chỉ quen đi xe ga."</em></p>
+
+<p>MotoAI là ứng dụng web nên bạn mở ngay trên <a href="/">trang chủ</a>, không phải cài đặt hay tạo tài khoản. Nếu muốn hiểu thêm trợ lý này là gì trước khi bắt đầu, bài <a href="/blog/app/kinh-nghiem-dung-tro-ly-thue-xe-lan-dau/">kinh nghiệm dùng trợ lý thuê xe lần đầu</a> là phần chuẩn bị phù hợp.</p>
+
+<h2>"Tôi sợ hỏi sai, có cần dùng từ chuyên môn không?"</h2>
+
+<p>Không cần. Bạn viết như nhắn tin cho bạn bè. Những lỗi người mới hay mắc lại thường là viết quá dài, gộp nhiều ý vào một tin. Hãy tách ra:</p>
+
+<ul>
+<li>Tin thứ nhất hỏi xe: <em>"Xe ga nào dễ lái cho người mới?"</em></li>
+<li>Tin thứ hai hỏi giá: <em>"Giá Vision thuê năm ngày khoảng bao nhiêu?"</em></li>
+<li>Tin thứ ba hỏi thủ tục: <em>"Nhận xe cần mang giấy tờ gì?"</em></li>
+</ul>
+
+<p>Nếu trợ lý hiểu chưa đúng, bạn chỉ cần gõ lại ngắn hơn hoặc thêm một chi tiết, ví dụ "ý mình là thuê theo ngày, không phải theo tháng".</p>
+
+<h2>"Xe số hay xe ga, tôi nên chọn gì?"</h2>
+
+<p>Nếu bạn chưa quen côn tay hay sang số, hãy nói thẳng điều đó. Trợ lý thường gợi ý xe ga như Honda Vision hoặc Honda Click vì thao tác đơn giản. Người đã quen xe số và muốn tiết kiệm có thể hỏi về Honda Wave.</p>
+
+<p><em>Mẫu tin nhắn: "Mình chưa đi xe số bao giờ, chủ yếu đi trong phố, nên thuê xe nào?"</em></p>
+
+<p>Giá tham khảo để bạn hình dung: Honda Wave khoảng 150.000đ/ngày, Honda Vision khoảng 200.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày. Mọi con số đều được cập nhật tại trang <a href="/gia-thue/">giá thuê tham khảo</a> và cần cửa hàng xác nhận khi đặt. Xe 50cc hay xe máy điện thì trợ lý sẽ báo giá liên hệ.</p>
+
+<h2>"Đặt cọc là gì, tôi phải chuẩn bị bao nhiêu?"</h2>
+
+<p>Đây là câu hỏi người mới hay ngại hỏi nhất, nhưng lại nên hỏi sớm nhất. Đặt cọc là khoản bạn gửi cửa hàng trong thời gian giữ xe và được xử lý khi trả xe theo thỏa thuận.</p>
+
+<p><em>Mẫu tin nhắn: "Thuê Vision thì khoản đặt cọc là bao nhiêu và khi nào được trả lại?"</em></p>
+
+<p>Khoản đặt cọc tại cửa hàng nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, tùy loại xe, và được xác nhận khi bạn đặt. Bài <a href="/blog/app/dat-coc-va-ung-dung-thue-xe/">đặt cọc khi thuê xe qua ứng dụng</a> giải thích kỹ cách hiểu điều khoản này.</p>
+
+<h2>"Hỏi xong rồi, làm sao chốt xe?"</h2>
+
+<p>Trước khi rời khung chat, hãy nhờ trợ lý tóm tắt. Đây là bước người mới hay bỏ qua nhất.</p>
+
+<p><em>Mẫu tin nhắn: "Tóm tắt giúp mình: xe, số ngày, giá tham khảo, đặt cọc, những gì cần xác nhận."</em></p>
+
+<p>Sau đó, bạn gọi {{ business.contact.phone_display }} trong giờ {{ business.hours.display }} và đọc lại bản tóm tắt cho nhân viên. Những điểm trợ lý không tự quyết như phí giao xe, giờ giao hay việc chiếc xe còn trống hay không sẽ được chốt ở bước này. Giao xe chỉ thực hiện trong giờ mở cửa và trong khu vực như Long Biên, Gia Lâm, Hoàn Kiếm, Ba Đình, Tây Hồ.</p>
+
+<h2>"Ngày nhận xe, tôi cần làm gì?"</h2>
+
+<p>Một kịch bản nhận xe gọn cho người mới gồm năm bước:</p>
+
+<ol>
+<li>Mang đủ giấy tờ đã được hướng dẫn khi đặt.</li>
+<li>Đi một vòng quanh xe, chụp ảnh các vết xước có sẵn, nhất là yếm, gương và đuôi xe.</li>
+<li>Bóp thử hai phanh, bật đèn, bấm còi và xi nhan ngay tại chỗ, đừng đợi ra đường mới kiểm tra.</li>
+<li>Hỏi mức xăng hoặc mức pin lúc nhận và mức cần để lại khi trả.</li>
+<li>Hỏi giờ trả xe chính xác và số điện thoại cần gọi nếu có thay đổi.</li>
+</ol>
+
+<p>Lưu ý thêm: cửa hàng không cung cấp bảo hiểm cho xe thuê, nên bạn cần tự chuẩn bị bảo hiểm xe máy trước khi chạy. Bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung/">nhận xe khi đặt qua ứng dụng</a> có danh sách kiểm tra chi tiết hơn. Nếu bạn muốn xem các tình huống theo từng kiểu người thuê, hãy đọc <a href="/blog/app/kich-ban-dung-app-thue-xe-cho-nguoi-moi-tai-ha-noi/">kịch bản cho người mới thuê xe tại Hà Nội</a>.</p>
+
+<h2>Câu hỏi thường gặp của người mới về kịch bản dùng trợ lý</h2>
+
+<h3>Tôi có phải làm đúng từng câu trong mẫu không?</h3>
+<p>Không. Các mẫu tin nhắn chỉ là khung gợi ý. Bạn có thể đổi tên xe, số ngày, nơi ở cho đúng hoàn cảnh, miễn giữ nguyên nguyên tắc mỗi tin một ý.</p>
+
+<h3>Nếu đã đặt mà muốn đổi ngày thì sao?</h3>
+<p>Hãy gọi cửa hàng càng sớm càng tốt trong giờ làm việc. Việc đổi lịch phụ thuộc vào số xe sẵn có, trợ lý không tự thay đổi lịch đã chốt.</p>
+
+<h3>Trợ lý có nhắc giờ trả xe không?</h3>
+<p>Bạn nên tự đặt báo thức trên điện thoại. Trợ lý giúp bạn biết khung giờ nhận và trả xe, còn việc nhớ giờ là phần của người thuê.</p>
+
+<h3>Tôi lái chưa vững, có nên thuê không?</h3>
+<p>Hãy tập ở khu vực vắng trước khi ra đường đông. Nếu chưa tự tin, bạn nên nhờ người quen chạy cùng vài buổi đầu và luôn đội mũ bảo hiểm.</p>
+
+<h2>Kết luận</h2>
+
+<p>Với người mới, một kịch bản dùng app thuê xe rõ ràng giúp bạn bớt lúng túng: nói thật hoàn cảnh, hỏi từng ý, xin bản tóm tắt rồi mới gọi chốt. Khi đã sẵn sàng, liên hệ {{ business.brand }} qua {{ business.contact.phone_display }} hoặc ghé {{ business.address.full }} để nhận xe. Bạn có thể tìm thêm hướng dẫn về trợ lý đặt xe trong chuyên mục <a href="/blog/app/">ứng dụng thuê xe</a>.</p>
