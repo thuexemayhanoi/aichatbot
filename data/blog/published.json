@@ -16227,6 +16227,150 @@
         "Tìm chỗ sạc vào một buổi sáng mát trời là chuyện nhỏ; tìm chỗ sạc lúc một giờ chiều giữa tháng Bảy, khi pin còn ít và mặt đường hầm nóng, lại là chuyện khác hẳn. Bài viết về ứng dụng tìm chỗ sạc xe mùa hè này không liệt kê tên ứng dụng cụ thể, vì danh sách thay đổi liên tục, mà chỉ cho bạn cách dùng các công cụ tìm kiếm và bản đồ sẵn có để lên kế hoạch sạc hợp với cái nóng: sạc ở đâu, sạc khi nào, và chuẩn bị gì nếu điểm sạc trên bản đồ không như kỳ vọng.",
         "Phần giới thiệu tổng quan về các loại công cụ tìm điểm sạc nằm trong bài ứng dụng tìm chỗ sạc xe . Ở đây, chúng ta chỉ bàn những gì khác đi khi trời nóng."
       ]
+    },
+    {
+      "article_id": "BA-1127",
+      "category": "SAFE",
+      "slug": "an-toan-khi-thanh-toan-coc-tom-tat",
+      "title": "an Toàn Khi Thanh Toán Cọc Tóm Tắt",
+      "description": "Đây là bản tóm tắt dành cho người sắp chuyển tiền giữ xe và chỉ muốn biết vài điều cốt lõi: chuyển cho ai, giữ bằng chứng gì, và nếu có trục trặc thì",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/an-toan-khi-thanh-toan-coc-tom-tat.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1121",
+      "category": "SAFE",
+      "slug": "bao-ve-du-lieu-ca-nhan-khi-thue-xe-tom-tat",
+      "title": "Bảo vệ dữ Liệu cá Nhân Khi Thuê xe Tóm Tắt",
+      "description": "Bản tóm tắt này dành cho bạn khi chỉ có năm phút trước lúc ra cửa hàng nhận xe và muốn biết đúng những điều cốt lõi về bảo vệ dữ liệu cá nhân khi",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/bao-ve-du-lieu-ca-nhan-khi-thue-xe-tom-tat.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1123",
+      "category": "APP",
+      "slug": "chon-xe-bang-agent-cho-khach-nuoc-ngoai",
+      "title": "Chọn xe Bằng Agent Cho Khách Nước Ngoài",
+      "description": "Khách nước ngoài thường gặp cùng một bức tường khi thuê xe ở Hà Nội: không biết dòng xe nào là xe số, dòng nào là xe ga, không rõ giấy phép của mình",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chon-xe-bang-agent-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Khách nước ngoài thường gặp cùng một bức tường khi thuê xe ở Hà Nội: không biết dòng xe nào là xe số, dòng nào là xe ga, không rõ giấy phép của mình có dùng được không, và ngại gọi điện vì rào cản ngôn ngữ. Chọn xe bằng Agent giải quyết phần lớn bức tường đó, vì bạn chỉ cần mô tả chuyến đi bằng vài câu đơn giản, trợ lý trên website của {{ business.brand }} sẽ gợi ý nhóm xe phù hợp kèm lý do. Bài này viết cho chính du khách quốc tế, và cả cho người Việt đang đặt xe giúp bạn bè nước ngoài: nên khai thông tin gì, đọc gợi ý ra sao, và những điểm nào vẫn phải xác nhận lại với cửa hàng.",
+        "Người Việt thuê xe thường đã có sẵn kinh nghiệm: biết Wave là xe số, Vision là xe ga, biết đường phố đông cỡ nào. Du khách thì bắt đầu từ con số không, nên việc tự so bảng mẫu xe gần như vô ích. Agent đảo ngược cách làm: thay vì bắt bạn hiểu xe, nó hỏi về bạn. Bạn đã từng lái xe máy chưa, ở khu nào, đi bao nhiêu ngày, có mang hành lý không. Từ đó trợ lý thu hẹp còn hai, ba lựa chọn và giải thích bằng ngôn ngữ đời thường."
+      ]
+    },
+    {
+      "article_id": "BA-1125",
+      "category": "EV",
+      "slug": "cong-cu-uoc-tinh-quang-duong-xe-dien-mua-he",
+      "title": "Công cụ Ước Tính Quãng Đường xe Điện Mùa hè",
+      "description": "Một công cụ ước tính quãng đường xe điện chỉ hữu ích khi nó phản ánh đúng điều kiện bạn sắp chạy. Vào mùa hè Hà Nội, điều kiện đó rất riêng: trưa",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cong-cu-uoc-tinh-quang-duong-xe-dien-mua-he.body.html",
+      "knowledge_chunks": [
+        "Một công cụ ước tính quãng đường xe điện chỉ hữu ích khi nó phản ánh đúng điều kiện bạn sắp chạy. Vào mùa hè Hà Nội, điều kiện đó rất riêng: trưa nắng hầm hập, chiều có thể đổ dông bất chợt, giờ tan tầm kẹt xe kéo dài dưới cái nóng. Những con số chung chung đo trong điều kiện lý tưởng vì thế thường lạc quan hơn thực tế. Bài này hướng dẫn bạn dựng một công cụ ước tính nhỏ của riêng mình cho mùa hè, chỉ cần giấy bút hoặc ghi chú trên điện thoại: đo gì, điều chỉnh ra sao theo thời tiết, và đọc kết quả thế nào để không bao giờ phải dắt bộ xe về giữa trưa.",
+        "Quãng đường một lần sạc phụ thuộc vào từng mẫu xe, tuổi pin, tải trọng và cách lái. Mùa hè thêm vào ba yếu tố khó lường hơn các mùa khác:"
+      ]
+    },
+    {
+      "article_id": "BA-1122",
+      "category": "LOCAL",
+      "slug": "dong-da-va-xe-may-buoi-sang",
+      "title": "Đống đa và xe Máy Buổi Sáng",
+      "description": "Buổi sáng là lúc Đống Đa dễ chịu nhất với người đi xe máy thuê: không khí còn mát, các sân di tích chưa đông, và những hàng phở, hàng xôi trong ngõ",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dong-da-va-xe-may-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Buổi sáng là lúc Đống Đa dễ chịu nhất với người đi xe máy thuê: không khí còn mát, các sân di tích chưa đông, và những hàng phở, hàng xôi trong ngõ đang vào giờ ngon. Nhưng đây cũng là khu dày trường học, bệnh viện và cơ quan, nên chỉ cần lệch nửa tiếng là bạn rơi thẳng vào dòng xe đi làm. Bài này dựng một buổi sáng ở Đống Đa theo đúng nhịp giờ: chuẩn bị xe từ hôm trước, ăn gì, dừng ở đâu, gửi xe thế nào và khi nào nên rút khỏi các trục lớn.",
+        "Cửa hàng mở cửa trong khung {{ business.hours.display }}, nghĩa là nếu muốn có mặt ở Văn Miếu lúc trời còn sương, bạn cần nhận xe từ chiều hoặc tối hôm trước. Cách gọn nhất là đặt thuê theo ngày tính từ buổi chiều, dắt xe về chỗ nghỉ, đổ xăng ngay tối đó để sáng ra chỉ việc nổ máy. Nếu ở khách sạn trong nội thành, bạn có thể hỏi giao xe tận nơi, với điều kiện thời gian giao nằm trong giờ mở cửa và phí được xác nhận trước khi đặt."
+      ]
+    },
+    {
+      "article_id": "BA-1126",
+      "category": "GUIDE",
+      "slug": "nhan-xe-ban-dem-nhanh-gon",
+      "title": "Nhận xe Ban Đêm Nhanh Gọn",
+      "description": "Nhận xe ban đêm nhanh gọn là chuyện của những người đến Hà Nội vào cuối ngày: vừa xuống tàu lúc trời tối, tan ca muộn mới rảnh, hoặc mùa đông mới năm",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/nhan-xe-ban-dem-nhanh-gon.body.html",
+      "knowledge_chunks": [
+        "Nhận xe ban đêm nhanh gọn là chuyện của những người đến Hà Nội vào cuối ngày: vừa xuống tàu lúc trời tối, tan ca muộn mới rảnh, hoặc mùa đông mới năm rưỡi chiều đã lên đèn. Bạn muốn cầm chìa khóa trong vài phút rồi về chỗ nghỉ, không muốn đứng ở quầy nửa tiếng dưới ánh đèn mờ. Bí quyết không nằm ở việc làm vội mà ở chỗ dời gần hết công việc sang ban ngày. Bài này đưa ra một quy trình mười phút, chia theo từng mốc, kèm thứ tự kiểm tra xe hợp với ánh sáng buổi tối.",
+        "Cửa hàng giao nhận xe trong khung {{ business.hours.display }}. Vì vậy \"ban đêm\" ở đây là khoảng từ lúc trời tối đến trước giờ đóng cửa, chứ không phải nửa đêm. Vào mùa đông, trời tối từ khá sớm, nên một buổi nhận xe lúc sáu, bảy giờ tối đã mang đủ đặc điểm của nhận xe đêm: ánh sáng kém, đường đông người tan tầm, và bạn thường đã mệt sau một ngày dài."
+      ]
+    },
+    {
+      "article_id": "BA-1128",
+      "category": "LOCAL",
+      "slug": "thanh-xuan-duong-di-buoi-sang",
+      "title": "Thanh Xuân Đường đi Buổi Sáng",
+      "description": "Thanh Xuân buổi sáng là một bài toán về hướng đi. Đây là khu dân cư đông đúc ở phía tây nam nội thành, nơi hàng chục nghìn người mỗi sáng cùng đổ về",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thanh-xuan-duong-di-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Thanh Xuân buổi sáng là một bài toán về hướng đi. Đây là khu dân cư đông đúc ở phía tây nam nội thành, nơi hàng chục nghìn người mỗi sáng cùng đổ về trung tâm theo các trục Nguyễn Trãi, Khuất Duy Tiến, Trường Chinh. Nếu bạn cầm xe thuê từ phía Long Biên sang đây vào sai giờ, bạn sẽ phải cắt qua đúng những dòng xe đó. Nếu đi đúng giờ và đúng tuyến, buổi sáng ở Thanh Xuân lại khá dễ chịu: đường rộng, quán ăn sáng nhiều, các hồ điều hòa có không gian thoáng để nghỉ chân. Bài này tập trung vào đường đi: chọn tuyến nào, xuất phát lúc nào, và những đoạn cần để ý khi chạy xe máy trong khu này vào buổi sáng.",
+        "Kết luận đơn giản: hoặc qua sông trước bảy giờ, hoặc đợi sau tám rưỡi. Khoảng giữa hai mốc đó, hãy dùng để ăn sáng ở bên này sông thay vì cố chen."
+      ]
+    },
+    {
+      "article_id": "BA-1130",
+      "category": "RENT",
+      "slug": "thue-honda-vision-cho-gia-dinh",
+      "title": "Thuê Honda Vision Cho Gia Đình",
+      "description": "Khi một gia đình hỏi nên thuê xe gì để đi lại vài ngày ở Hà Nội, Honda Vision thường là cái tên được nhắc đầu tiên. Lý do không nằm ở chuyện xe mạnh",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-honda-vision-cho-gia-dinh.body.html",
+      "knowledge_chunks": [
+        "Khi một gia đình hỏi nên thuê xe gì để đi lại vài ngày ở Hà Nội, Honda Vision thường là cái tên được nhắc đầu tiên. Lý do không nằm ở chuyện xe mạnh hay đẹp, mà ở chỗ nó hợp với nhịp sinh hoạt của một nhà: bố hoặc mẹ chở con đi ăn sáng, ghé siêu thị mua đồ, đưa ông bà đi thăm họ hàng, buổi tối cả nhà ra phố đi dạo. Bài viết này nhìn Honda Vision qua đúng lăng kính đó: gia đình nào hợp, chọn gói thuê sao cho kinh tế, chở trẻ em thế nào cho an toàn, và những gì nên hỏi cửa hàng trước khi nhận xe.",
+        "Vision là dòng xe ga phổ thông, dáng gọn, yên không quá cao và thân xe nhẹ. Với gia đình, những đặc điểm này chuyển thành lợi ích rất cụ thể:"
+      ]
+    },
+    {
+      "article_id": "BA-1124",
+      "category": "RENT",
+      "slug": "thue-xe-50cc-cho-gia-dinh",
+      "title": "Thuê xe 50cc Cho Gia Đình",
+      "description": "Thuê xe 50cc cho gia đình thường bắt đầu từ một câu hỏi rất cụ thể của bố mẹ: con mình mười sáu, mười bảy tuổi, cả nhà về Hà Nội chơi vài ngày, có",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-50cc-cho-gia-dinh.body.html",
+      "knowledge_chunks": [
+        "Thuê xe 50cc cho gia đình thường bắt đầu từ một câu hỏi rất cụ thể của bố mẹ: con mình mười sáu, mười bảy tuổi, cả nhà về Hà Nội chơi vài ngày, có cách nào để con tự lái một chiếc xe nhỏ đi cùng mà vẫn đúng luật và yên tâm không? Ngoài ra còn những gia đình có người mẹ dáng nhỏ, ông bà chỉ muốn một chiếc xe nhẹ để đi chợ gần nhà, hoặc cả nhà muốn chia thành hai, ba xe cho tiện. Bài này không nhắc lại toàn bộ kiến thức về nhóm xe nhỏ, mà tập trung vào cách một gia đình lên kế hoạch thuê: ai lái xe nào, ai ký hợp đồng, chở trẻ nhỏ ra sao và cần hỏi cửa hàng những gì.",
+        "Nhóm xe gắn máy dung tích dưới 50 cm³ có vị trí riêng trong một chuyến đi gia đình. Theo luật giao thông hiện hành, đây là nhóm mà người từ đủ mười sáu tuổi được phép điều khiển, trong khi các dòng xe số và xe ga phổ thông thuộc nhóm mô tô, đòi hỏi người lái đủ mười tám tuổi và có giấy phép phù hợp. Phần ranh giới pháp lý được giải thích kỹ trong bài nền thuê xe 50cc ; ở đây chỉ cần nhớ một điều: khi hỏi thuê, hãy nói rõ \"dưới 50 cm³\", vì xe đúng 50 cm³ trở lên đã sang nhóm cần bằng lái."
+      ]
+    },
+    {
+      "article_id": "BA-1129",
+      "category": "APP",
+      "slug": "thue-xe-online-nhu-the-nao-cho-khach-nuoc-ngoai",
+      "title": "Thuê xe Online Như Thế Nào Cho Khách Nước Ngoài",
+      "description": "Thuê xe online như thế nào cho khách nước ngoài là câu hỏi thường được gõ từ trước chuyến bay, khi bạn còn ở nhà và muốn mọi thứ sẵn sàng lúc đặt",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-online-nhu-the-nao-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Thuê xe online như thế nào cho khách nước ngoài là câu hỏi thường được gõ từ trước chuyến bay, khi bạn còn ở nhà và muốn mọi thứ sẵn sàng lúc đặt chân tới Hà Nội. Với du khách, thuê trực tuyến không chỉ tiện mà còn giảm rất nhiều rào cản: bạn có thời gian đọc kỹ, dịch từng câu, so sánh, và giữ lại bằng chứng bằng văn bản thay vì cố hiểu một cuộc gọi bằng ngôn ngữ lạ. Bài này đi qua toàn bộ hành trình thuê xe trực tuyến từ góc nhìn của khách quốc tế, từ lúc chuẩn bị ở nhà cho tới khi trả xe, kèm những điểm dễ vướng mà người địa phương ít khi để ý.",
+        "Những việc này nên xong trước chuyến bay, vì sang tới nơi bạn sẽ bận và mệt hơn nhiều."
+      ]
     }
   ]
 }
