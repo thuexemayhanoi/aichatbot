@@ -24198,6 +24198,156 @@
         "Tìm một chiếc xe để tự tới lấy và tìm một chiếc xe để được mang tới tận cửa là hai bài toán khác nhau. Ở bài toán thứ hai, ngoài dòng xe và giá, bạn còn phải lọc theo nơi bạn đang ở, khung giờ có thể nhận và việc giờ giao, phí giao có được xác nhận hay không. Bài này hướng dẫn cách tìm xe máy thuê bằng ứng dụng tận nơi, tức là dùng trợ lý trực tuyến trên website để đi từ \"tôi đang ở đây, cần xe lúc này\" tới một yêu cầu giao xe đủ thông tin để cửa hàng xác nhận ngay. Cách tìm xe nói chung khi bạn có thể tới cửa hàng đã được trình bày trong bài tìm xe máy thuê bằng ứng dụng .",
         "Thói quen của nhiều người là mở trợ lý và hỏi \"có Vision không\". Với giao tận nơi, câu đầu tiên nên là nơi bạn đang ở và giờ bạn cần. Lý do: phạm vi giao nhận giới hạn trong Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và các quận nội thành Hà Nội, và chỉ thực hiện trong khung {{ business.hours.display }}. Nếu bạn ở ngoài vùng này hoặc cần xe lúc sáu giờ sáng, mọi câu hỏi về dòng xe đều vô nghĩa cho tới khi vị trí và giờ được giải quyết. Trợ lý sẽ kiểm tra hai điều đó trước và đề xuất phương án, chẳng hạn nhận vào tối hôm trước nếu bạn cần đi sớm."
       ]
+    },
+    {
+      "article_id": "BA-1546",
+      "category": "APP",
+      "slug": "cong-cu-tinh-gia-thue-xe-may-online-tan-noi",
+      "title": "Công cụ Tính Giá Thuê xe Máy Online Tận Nơi",
+      "description": "Khi bạn muốn xe được mang tới tận khách sạn, phòng trọ hay cổng cơ quan, câu hỏi về giá bỗng có hai phần: tiền thuê xe và phần phát sinh cho việc",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cong-cu-tinh-gia-thue-xe-may-online-tan-noi.body.html",
+      "knowledge_chunks": [
+        "Khi bạn muốn xe được mang tới tận khách sạn, phòng trọ hay cổng cơ quan, câu hỏi về giá bỗng có hai phần: tiền thuê xe và phần phát sinh cho việc giao nhận. Công cụ tính giá thuê xe máy online trên website MotoAI trả lời tốt phần thứ nhất, còn phần thứ hai phụ thuộc địa điểm và giờ giao nên chỉ cửa hàng mới chốt được. Nhiều người dùng công cụ xong tưởng con số hiện ra là tổng chi phí, rồi bất ngờ khi được báo thêm phí giao. Bài này hướng dẫn cách dùng công cụ cho đúng khi bạn định nhận xe tận nơi: nhập gì, đọc kết quả thế nào, cộng thêm khoản nào, và gửi thông tin gì cho cửa hàng để việc giao diễn ra đúng giờ.",
+        "Công cụ là một trang trên website, mở bằng trình duyệt, không phải ứng dụng cài vào máy. Nó lấy bảng giá tham khảo của cửa hàng và nhân với thời gian thuê bạn chọn. Ví dụ các mốc tham khảo hiện tại: Honda Wave 150.000đ/ngày; Honda Vision 200.000đ/ngày, 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng; Honda Air Blade 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng; Honda Click hoặc Yamaha Mio 150.000đ/ngày, 600.000đ–700.000đ/tuần, 1.000.000đ–1.200.000đ/tháng. Những gì công cụ không tính:"
+      ]
+    },
+    {
+      "article_id": "BA-1542",
+      "category": "RENT",
+      "slug": "dieu-kien-thue-xe-may-o-ha-noi-chay-pho",
+      "title": "Điều Kiện Thuê xe Máy ở hà Nội Chạy Phố",
+      "description": "Người thuê xe để chạy phố ở Hà Nội thường có nhu cầu rất gọn: đi làm, đi học, chạy qua vài quận mỗi ngày, cuối tuần dạo Hồ Tây, không ra khỏi thành",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dieu-kien-thue-xe-may-o-ha-noi-chay-pho.body.html",
+      "knowledge_chunks": [
+        "Người thuê xe để chạy phố ở Hà Nội thường có nhu cầu rất gọn: đi làm, đi học, chạy qua vài quận mỗi ngày, cuối tuần dạo Hồ Tây, không ra khỏi thành phố. Vì nhu cầu gọn nên nhiều người tưởng điều kiện cũng lỏng hơn thuê xe đi xa. Thực tế ngược lại: điều kiện pháp lý và thủ tục giống nhau, còn phần chạy phố lại kéo theo vài yêu cầu riêng về xe, về chỗ gửi, về cách dùng xe hằng ngày mà người đi đường dài không gặp. Bài này liệt kê đầy đủ điều kiện thuê xe máy ở Hà Nội cho người chỉ chạy phố, sắp theo thứ tự bạn sẽ đụng tới: trước khi đặt, lúc nhận, trong thời gian dùng và khi trả.",
+        "Danh sách chi tiết theo từng đối tượng có trong bài giấy tờ cần khi thuê xe . Phần điều kiện chung, không gắn với kiểu sử dụng nào, nằm trong bài điều kiện thuê xe máy ở Hà Nội ."
+      ]
+    },
+    {
+      "article_id": "BA-1550",
+      "category": "LOCAL",
+      "slug": "nha-tho-lon-ha-noi-buoi-toi",
+      "title": "Nhà Thờ Lớn hà Nội Buổi Tối",
+      "description": "Khi đèn đường quanh phố Nhà Thờ bật lên, Nhà Thờ Lớn Hà Nội đổi hẳn gương mặt: hai tháp chuông xám xịt ban ngày chuyển sang màu ấm dưới ánh đèn",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/nha-tho-lon-ha-noi-buoi-toi.body.html",
+      "knowledge_chunks": [
+        "Khi đèn đường quanh phố Nhà Thờ bật lên, Nhà Thờ Lớn Hà Nội đổi hẳn gương mặt: hai tháp chuông xám xịt ban ngày chuyển sang màu ấm dưới ánh đèn chiếu, tiếng chuông chiều tan dần vào tiếng cười của đám đông ngồi trà chanh. Buổi tối ở đây là một trải nghiệm riêng, với nhịp sống, ánh sáng, chỗ gửi xe và cả những rủi ro khác hẳn ban ngày. Bài này dành cho bạn, người sẽ chạy xe máy thuê từ Long Biên hay từ khách sạn trong Phố Cổ sang đây sau giờ làm, muốn biết nên đến lúc mấy giờ, để xe ở đâu, chơi gì trong vài tiếng và quay về bằng đường nào cho an toàn.",
+        "Ban ngày, sân nhà thờ chủ yếu là khách tham quan chụp ảnh mặt tiền; tối đến, khoảng sân và các vỉa hè quanh đó trở thành phòng khách chung của giới trẻ Hà Nội. Vài điểm chỉ xuất hiện khi trời tối:"
+      ]
+    },
+    {
+      "article_id": "BA-1545",
+      "category": "LOCAL",
+      "slug": "pho-sach-ha-noi-buoi-toi",
+      "title": "Phố Sách hà Nội Buổi Tối",
+      "description": "Phố Sách Hà Nội trên phố 19 tháng 12, con phố ngắn nối Hai Bà Trưng với Lý Thường Kiệt, có hai nhịp rất khác nhau trong ngày. Ban ngày nó là nơi mua",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/pho-sach-ha-noi-buoi-toi.body.html",
+      "knowledge_chunks": [
+        "Phố Sách Hà Nội trên phố 19 tháng 12, con phố ngắn nối Hai Bà Trưng với Lý Thường Kiệt, có hai nhịp rất khác nhau trong ngày. Ban ngày nó là nơi mua sách; buổi tối, khi đèn dây treo dọc hàng cây bật sáng và không khí dịu xuống, nó thành một khoảng sân chung để ngồi đọc, uống cà phê, dắt trẻ con đi dạo hoặc nghe một buổi ra mắt sách. Với người thuê xe máy, buổi tối còn là khung dễ chịu nhất để chạy vào trung tâm vì giờ cao điểm đã qua. Bài này gợi ý cách sắp một buổi tối ở phố sách từ lúc nổ máy ở Long Biên tới lúc gửi xe lại cửa hàng, cùng vài điều chỉ người đi tối mới gặp.",
+        "Khác biệt đầu tiên là nhiệt độ: mùa hè, mặt phố lát đá giữ nóng tới chiều, phải tối muộn mới mát để ngồi ngoài trời. Khác biệt thứ hai là người đi: buổi tối ít khách mua vội, nhiều gia đình và sinh viên ngồi lâu, nên quán cà phê sách thường kín bàn. Khác biệt thứ ba là giờ mở: các gian sách đóng cửa không cùng giờ, một số gian khép sớm trong khi khu cà phê và ghế công cộng vẫn sáng đèn. Vì vậy nếu mục đích của bạn là mua sách, hãy đến từ đầu giờ tối; nếu chỉ muốn ngồi đọc và dạo, đến muộn hơn cũng không sao. Người quen đi phố sách ban ngày có thể so với bài phố sách Hà Nội buổi sáng để thấy hai khung giờ hợp với hai kiểu người khác nhau."
+      ]
+    },
+    {
+      "article_id": "BA-1544",
+      "category": "GUIDE",
+      "slug": "quy-trinh-nhan-xe-checklist",
+      "title": "Quy Trình Nhận xe Checklist",
+      "description": "Mười lăm phút nhận xe quyết định toàn bộ kỳ thuê: những gì bạn ghi nhận lúc này là căn cứ duy nhất khi trả xe, và những gì bạn bỏ qua lúc này là thứ",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/quy-trinh-nhan-xe-checklist.body.html",
+      "knowledge_chunks": [
+        "Mười lăm phút nhận xe quyết định toàn bộ kỳ thuê: những gì bạn ghi nhận lúc này là căn cứ duy nhất khi trả xe, và những gì bạn bỏ qua lúc này là thứ bạn phải tự chịu sau đó. Thay vì kể lại quy trình, bài này đưa cho bạn một checklist nhận xe chia thành sáu nhóm: giấy tờ, đối chiếu đơn đặt, kiểm tra bên ngoài, kiểm tra vận hành, chụp ảnh và thống nhất số liệu. Mỗi dòng là một việc cụ thể có thể tích xong trong vài giây. Mở bài này khi đứng cạnh xe và đi lần lượt từ trên xuống.",
+        "Danh sách giấy tờ theo từng đối tượng, gồm cả khách nước ngoài, nằm trong bài giấy tờ cần khi thuê xe ; bạn tích mục này trước khi ra khỏi nhà, không phải tại quầy."
+      ]
+    },
+    {
+      "article_id": "BA-1549",
+      "category": "GUIDE",
+      "slug": "quy-trinh-tra-xe-checklist",
+      "title": "Quy Trình Trả xe Checklist",
+      "description": "Phần lớn rắc rối lúc trả xe không đến từ chuyện lớn mà từ một mục nhỏ bị bỏ sót: quên chìa dự phòng ở khách sạn, chưa xóa ảnh nhận xe nên không đối",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/quy-trinh-tra-xe-checklist.body.html",
+      "knowledge_chunks": [
+        "Phần lớn rắc rối lúc trả xe không đến từ chuyện lớn mà từ một mục nhỏ bị bỏ sót: quên chìa dự phòng ở khách sạn, chưa xóa ảnh nhận xe nên không đối chiếu được, hay đến cửa hàng rồi mới nhớ chưa đổ xăng. Bài này được viết dưới dạng checklist để bạn tích từng mục, chia theo bốn mốc thời gian: tối hôm trước, lúc rời chỗ ở, tại cửa hàng và sau khi rời đi. Hãy mở bài trên điện thoại khi trả xe và đi qua từng dòng; nếu dòng nào chưa tích được, đó chính là việc cần làm trước khi bàn giao.",
+        "Quy trình trả xe về bản chất là một buổi đối chiếu: so hiện trạng xe lúc trả với lúc nhận, so số liệu xăng và thời gian với thỏa thuận, rồi hoàn tất khoản đã đặt. Mỗi phép so cần một bằng chứng, và bằng chứng chỉ có nếu bạn chuẩn bị. Bài nền quy trình trả xe giải thích từng bước theo kiểu kể chuyện; bài này rút toàn bộ thành các mục có thể tích, dành cho người đã hiểu nguyên tắc và chỉ cần một danh sách để không sót."
+      ]
+    },
+    {
+      "article_id": "BA-1547",
+      "category": "RENT",
+      "slug": "thue-xe-khong-bang-lai-duoc-khong-chay-pho",
+      "title": "Thuê xe Không Bằng Lái Được Không Chạy Phố",
+      "description": "\"Em chỉ chạy loanh quanh trong phố thôi, không ra đường lớn, có cần bằng không?\" là câu hỏi cửa hàng nghe gần như mỗi tuần, từ sinh viên mới lên Hà",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-khong-bang-lai-duoc-khong-chay-pho.body.html",
+      "knowledge_chunks": [
+        "\"Em chỉ chạy loanh quanh trong phố thôi, không ra đường lớn, có cần bằng không?\" là câu hỏi cửa hàng nghe gần như mỗi tuần, từ sinh viên mới lên Hà Nội, từ người nước ngoài ở homestay Phố Cổ, từ cả những người đã đi xe nhiều năm nhưng chưa thi bằng. Ý nghĩ phía sau câu hỏi là chạy phố thì chậm, gần, ít bị kiểm tra, nên luật chắc cũng nhẹ tay. Bài này trả lời thẳng cho bối cảnh chạy phố: luật có phân biệt phố với quốc lộ không, vì sao đường phố Hà Nội lại là nơi dễ bị dừng xe nhất, và những cách hợp lệ để bạn vẫn đi lại được quanh Hoàn Kiếm, Ba Đình hay Long Biên khi chưa có bằng.",
+        "Với người định thuê xe để đi quanh phố, điều đầu tiên cần biết là giấy phép lái xe gắn với loại xe, không gắn với nơi bạn chạy. Dù bạn đi Hàng Đào hay quốc lộ, Luật Trật tự, an toàn giao thông đường bộ số 36/2024/QH15, có hiệu lực từ ngày 01/01/2025, vẫn quy định hạng A1 cho mô tô đến 125 cm3 hoặc xe có động cơ điện công suất đến 11 kW, hạng A cho xe lớn hơn, và không có ngoại lệ nào cho quãng đường ngắn hay đường nội thị. Các xe cho thuê phổ biến như Honda Vision, Honda Air Blade, Honda Wave, Honda Click hay Yamaha Mio đều trên 50 cm3, nghĩa là thuộc nhóm phải có bằng."
+      ]
+    },
+    {
+      "article_id": "BA-1548",
+      "category": "EV",
+      "slug": "tuong-lai-xe-dien-cho-thue-mua-mua",
+      "title": "Tương Lai xe Điện Cho Thuê Mùa Mưa",
+      "description": "Mùa mưa là bài kiểm tra khắc nghiệt nhất với xe điện cho thuê: nước ngập ngang bánh ở các phố trũng, ổ sạc ngoài hiên bị tạt, pin phải chạy trong ẩm",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tuong-lai-xe-dien-cho-thue-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Mùa mưa là bài kiểm tra khắc nghiệt nhất với xe điện cho thuê: nước ngập ngang bánh ở các phố trũng, ổ sạc ngoài hiên bị tạt, pin phải chạy trong ẩm cao suốt nhiều tuần, và khách thuê hủy chuyến vì không biết xe có chịu được mưa không. Chính vì thế, muốn đoán xe điện cho thuê sẽ đi về đâu, hãy nhìn vào mùa mưa thay vì nhìn vào các buổi ra mắt sản phẩm. Bài này không dự báo con số hay công nghệ cụ thể, mà chỉ ra những thay đổi đang diễn ra quanh ba vấn đề mùa mưa đặt ra cho người thuê: nước, sạc và niềm tin, rồi gợi ý cách bạn chọn xe điện ngay mùa mưa này mà không phải chờ tương lai.",
+        "Trong mùa khô, hầu hết xe điện cho thuê đều làm tốt việc của chúng. Mùa mưa thì khác, vì ba lý do:"
+      ]
+    },
+    {
+      "article_id": "BA-1541",
+      "category": "APP",
+      "slug": "ung-dung-web-thue-xe-may-tan-noi",
+      "title": "Ứng Dụng Web Thuê xe Máy Tận Nơi",
+      "description": "Nhận xe tận nơi là tình huống mà một ứng dụng web phát huy rõ nhất: bạn đang ở khách sạn, phòng trọ hay cổng công ty, không tiện tới cửa hàng, và cần",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ung-dung-web-thue-xe-may-tan-noi.body.html",
+      "knowledge_chunks": [
+        "Nhận xe tận nơi là tình huống mà một ứng dụng web phát huy rõ nhất: bạn đang ở khách sạn, phòng trọ hay cổng công ty, không tiện tới cửa hàng, và cần biết ngay xe có giao tới chỗ mình được không, giờ nào, cần chuẩn bị gì. MotoAI là trợ lý chạy trên website của {{ business.brand }}, mở bằng trình duyệt, không cài đặt, nên bạn hỏi được từ bất kỳ đâu có mạng. Bài này đi theo đúng hành trình của một người muốn xe mang tới tận nơi: hỏi trợ lý những gì, trợ lý trả lời được tới đâu, bước nào phải chuyển sang cửa hàng, và lúc nhân viên tới trước cửa thì bạn làm gì.",
+        "Trợ lý trên web không điều phối xe, không có bản đồ theo dõi nhân viên giao. Việc nó làm là giúp bạn chuẩn bị một yêu cầu giao xe đầy đủ trước khi gọi, để cuộc gọi chỉ còn là chốt lịch. Cụ thể, trợ lý trả lời được:"
+      ]
+    },
+    {
+      "article_id": "BA-1543",
+      "category": "EV",
+      "slug": "xe-dien-cho-thanh-pho-nho-mua-mua",
+      "title": "xe Điện Cho Thành Phố Nhỏ Mùa Mưa",
+      "description": "Ở một thành phố nhỏ, xe điện gần như là phương tiện lý tưởng: đường ngắn, tốc độ thấp, sạc qua đêm là đủ cho cả ngày. Nhưng mùa mưa làm thay đổi phép",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/xe-dien-cho-thanh-pho-nho-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Ở một thành phố nhỏ, xe điện gần như là phương tiện lý tưởng: đường ngắn, tốc độ thấp, sạc qua đêm là đủ cho cả ngày. Nhưng mùa mưa làm thay đổi phép tính đó theo cách riêng của phố tỉnh: hệ thống thoát nước yếu hơn Hà Nội, vài con phố trũng biến thành ao sau một cơn mưa, nhà nghỉ chỉ có ổ điện ngoài hiên, và quãng đường từ chỗ nghỉ ra điểm sạc công cộng gần nhất có khi xa hơn cả lộ trình trong ngày. Bài này dành cho bạn, người sẽ thuê xe điện để đi lại trong một thành phố nhỏ hoặc thị trấn ven Hà Nội đúng vào mùa mưa, và muốn biết cần đổi gì trong cách chọn xe, cách sạc, cách đi và cách bảo quản.",
+        "Nhiều người quen đi xe điện trong nội thành Hà Nội nghĩ phố nhỏ sẽ dễ hơn. Mùa khô thì đúng, mùa mưa thì không hẳn:"
+      ]
     }
   ]
 }
