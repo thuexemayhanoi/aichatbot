@@ -17997,6 +17997,156 @@
         "Bạn ở Hà Nội năm ngày, một tuần hoặc mười ngày và đang phân vân nên thuê xe từng ngày hay lấy gói tuần? Câu trả lời nằm ở một con số đơn giản: ngưỡng hòa vốn, tức là số ngày thuê lẻ mà tổng tiền bằng giá một tuần. Bài viết về thuê xe máy theo tuần giá tốt nhất này tính sẵn ngưỡng đó cho từng dòng xe phổ biến, chỉ ra khi nào gói tuần có lợi, khi nào nên ghép tuần với ngày lẻ, và những điều cần chốt để bảy ngày dùng xe không phát sinh thêm chi phí.",
         "Lấy giá ngày tham khảo chia cho giá tuần tham khảo, bạn sẽ biết thuê lẻ bao nhiêu ngày thì bằng một tuần trọn gói:"
       ]
+    },
+    {
+      "article_id": "BA-1883",
+      "category": "APP",
+      "slug": "app-thue-xe-khong-can-tai-khoan-cau-hoi-thuong-gap",
+      "title": "App Thuê xe Không Cần Tài Khoản Câu Hỏi Thường Gặp",
+      "description": "\"Không cần tài khoản thì đặt xe kiểu gì?\", \"Không đăng nhập thì ai biết tôi đã đặt?\", \"Vậy thông tin của tôi nằm ở đâu?\" là ba câu mà người thuê xe",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/app-thue-xe-khong-can-tai-khoan-cau-hoi-thuong-gap.body.html",
+      "knowledge_chunks": [
+        "\"Không cần tài khoản thì đặt xe kiểu gì?\", \"Không đăng nhập thì ai biết tôi đã đặt?\", \"Vậy thông tin của tôi nằm ở đâu?\" là ba câu mà người thuê xe hay hỏi khi lần đầu dùng trợ lý MotoAI trên website của {{ business.brand }}. Hình thức thuê xe không cần tài khoản giúp bạn hỏi giá và tìm hiểu thủ tục ngay mà không qua bước đăng ký, nhưng cũng khiến nhiều người lo về tính chắc chắn của đơn đặt. Bài này trả lời lần lượt những câu hỏi thường gặp, chia theo từng mối lo, để bạn yên tâm dùng đúng cách. Phần giới thiệu tổng quát có trong bài app thuê xe không cần tài khoản .",
+        "Không. Dù nhiều người quen gọi là \"app\", MotoAI thực chất là trợ lý chạy trên website. Bạn chỉ cần trình duyệt trên điện thoại hoặc máy tính, mở trang và bắt đầu gõ câu hỏi."
+      ]
+    },
+    {
+      "article_id": "BA-1881",
+      "category": "RENT",
+      "slug": "cach-doc-bang-gia-thue-xe-cuoi-tuan",
+      "title": "Cách Đọc Bảng Giá Thuê xe Cuối Tuần",
+      "description": "Một bảng giá thuê xe máy nhìn qua rất đơn giản: tên xe, giá ngày, giá tuần, giá tháng. Nhưng khi bạn chỉ cần xe cho thứ Bảy và Chủ nhật, cách đọc",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cach-doc-bang-gia-thue-xe-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Một bảng giá thuê xe máy nhìn qua rất đơn giản: tên xe, giá ngày, giá tuần, giá tháng. Nhưng khi bạn chỉ cần xe cho thứ Bảy và Chủ nhật, cách đọc bảng lại cần tỉ mỉ hơn, vì chỉ lệch vài giờ nhận hoặc trả cũng có thể biến hai ngày thành ba ngày tính tiền. Bài này hướng dẫn bạn đọc bảng giá thuê xe theo góc nhìn của người thuê cuối tuần, kèm vài phép tính mẫu để bạn tự kiểm tra trước khi đặt.",
+        "Cột giá ngày trên bảng là giá cho một ngày thuê, nhưng \"một ngày\" có thể hiểu theo hai cách: tròn 24 giờ kể từ lúc nhận xe, hoặc theo ngày lịch. Bảng giá thường không ghi chi tiết này, nên câu đầu tiên bạn cần hỏi cửa hàng là cách tính ngày áp dụng cho đơn của mình."
+      ]
+    },
+    {
+      "article_id": "BA-1889",
+      "category": "APP",
+      "slug": "cach-ung-dung-hieu-cau-hoi-ve-gia-xe-cau-hoi-thuong-gap",
+      "title": "Cách Ứng Dụng Hiểu Câu Hỏi về Giá xe Câu Hỏi Thường Gặp",
+      "description": "Khi gõ một câu hỏi về giá vào trợ lý MotoAI trên website của {{ business.brand }}, nhiều người thắc mắc: trợ lý hiểu câu của mình đến đâu, vì sao có",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-cau-hoi-thuong-gap.body.html",
+      "knowledge_chunks": [
+        "Khi gõ một câu hỏi về giá vào trợ lý MotoAI trên website của {{ business.brand }}, nhiều người thắc mắc: trợ lý hiểu câu của mình đến đâu, vì sao có lúc trả lời ngay, có lúc lại hỏi ngược lại, và con số nhận được có đáng tin không. Bài này gom những câu hỏi thường gặp nhất về cách ứng dụng hiểu câu hỏi giá xe, trả lời ngắn gọn theo từng nhóm, kèm ví dụ câu hỏi thật để bạn thử ngay. Nếu bạn muốn hiểu cơ chế tổng quát, bài cách ứng dụng hiểu câu hỏi về giá xe là điểm bắt đầu tốt.",
+        "Để đưa ra con số tham khảo sát nhất, trợ lý tìm trong câu của bạn ba thông tin chính và một thông tin phụ:"
+      ]
+    },
+    {
+      "article_id": "BA-1888",
+      "category": "LOCAL",
+      "slug": "cua-lo-ven-bien-mua-thu",
+      "title": "Cửa lò Ven Biển Mùa Thu",
+      "description": "Khi Hà Nội bắt đầu vào thu, trời hanh và mát, nhiều người lại nhớ đến biển Cửa Lò: bãi cát dài, hàng phi lao và những quán hải sản ven đường biển. Đi",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cua-lo-ven-bien-mua-thu.body.html",
+      "knowledge_chunks": [
+        "Khi Hà Nội bắt đầu vào thu, trời hanh và mát, nhiều người lại nhớ đến biển Cửa Lò: bãi cát dài, hàng phi lao và những quán hải sản ven đường biển. Đi Cửa Lò mùa thu bằng xe máy có cái thú riêng: bãi biển vắng hơn hẳn mùa hè, chặng đường từ Hà Nội đỡ nắng gắt, và bạn được thấy một Cửa Lò chậm rãi hơn. Nhưng mùa thu cũng là giai đoạn vùng biển Bắc Trung Bộ hay chịu ảnh hưởng mưa bão, nên chuyến đi cần chuẩn bị theo cách khác. Bài này tập trung vào những gì thay đổi khi bạn chọn mùa thu cho hành trình khoảng 300 km này.",
+        "Phần đường đi chi tiết và gợi ý điểm đến đã có trong bài Cửa Lò ven biển ; ở đây chúng ta bàn về thời điểm, thời tiết và cách sắp xếp riêng cho mùa thu."
+      ]
+    },
+    {
+      "article_id": "BA-1884",
+      "category": "RENT",
+      "slug": "gia-thue-thay-doi-theo-mua-khong-cuoi-tuan",
+      "title": "Giá Thuê Thay Đổi Theo Mùa Không Cuối Tuần",
+      "description": "Bạn định thuê xe máy cho một cuối tuần ở Hà Nội và băn khoăn hai điều: giá thứ Bảy, Chủ nhật có khác ngày thường không, và mùa nào trong năm thì cuối",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/gia-thue-thay-doi-theo-mua-khong-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Bạn định thuê xe máy cho một cuối tuần ở Hà Nội và băn khoăn hai điều: giá thứ Bảy, Chủ nhật có khác ngày thường không, và mùa nào trong năm thì cuối tuần khó thuê nhất. Đây là câu hỏi rất thực tế, vì phần lớn người thuê ngắn ngày đều dồn vào hai ngày nghỉ, trùng đúng lúc khách du lịch, sinh viên và người đi chơi xa cùng tìm xe. Bài này giải thích cách nhìn giá thuê cuối tuần theo từng mùa và những việc bạn nên làm để chuyến đi không bị đội chi phí hay hết xe vào phút chót.",
+        "Trên trang bảng giá thuê , giá được ghi theo ngày, theo tuần và theo tháng, chứ không chia riêng cột cuối tuần. Ví dụ mức tham khảo: Honda Wave 150.000đ/ngày, Honda Vision và Honda Air Blade 200.000đ/ngày, Honda Click và Yamaha Mio 150.000đ/ngày. Những con số này là điểm xuất phát để bạn dự tính, còn giá áp dụng cho đúng ngày bạn nhận xe luôn phải được cửa hàng xác nhận khi đặt."
+      ]
+    },
+    {
+      "article_id": "BA-1885",
+      "category": "LOCAL",
+      "slug": "ha-long-duong-quoc-lo-mua-thu",
+      "title": "hạ Long Đường Quốc lộ Mùa Thu",
+      "description": "Mùa thu là lúc nhiều người ở Hà Nội lên kế hoạch chạy xe máy đi Hạ Long theo quốc lộ 18. Nắng không còn gắt như mùa hè, mưa rào thưa dần, trời thường",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ha-long-duong-quoc-lo-mua-thu.body.html",
+      "knowledge_chunks": [
+        "Mùa thu là lúc nhiều người ở Hà Nội lên kế hoạch chạy xe máy đi Hạ Long theo quốc lộ 18. Nắng không còn gắt như mùa hè, mưa rào thưa dần, trời thường trong hơn và những buổi chiều trên vịnh có ánh sáng rất đẹp. Từ cửa hàng ở Long Biên, bạn đã ở sẵn phía đông thành phố, thuận đường ra hướng Bắc Ninh để nhập quốc lộ. Tuy vậy, mùa thu có những đặc điểm riêng mà người chạy đường dài cần tính trước: ngày ngắn lại, sáng sớm có sương và đầu thu vẫn có thể có bão ở vùng ven biển Quảng Ninh.",
+        "Lộ trình quốc lộ 18 chi tiết từng đoạn đã có trong bài Hạ Long đường quốc lộ ; bài này đi vào chuyện chọn thời điểm, sắp giờ chạy và chuẩn bị xe riêng cho mùa thu."
+      ]
+    },
+    {
+      "article_id": "BA-1882",
+      "category": "LOCAL",
+      "slug": "ninh-binh-cuoi-tuan-xe-may-mua-thu",
+      "title": "Ninh Bình Cuối Tuần xe Máy Mùa Thu",
+      "description": "Ninh Bình vốn là lựa chọn cuối tuần quen thuộc của người Hà Nội, nhưng mùa thu mang đến một phiên bản dễ chịu hơn hẳn: trời mát để leo núi, nắng dịu",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ninh-binh-cuoi-tuan-xe-may-mua-thu.body.html",
+      "knowledge_chunks": [
+        "Ninh Bình vốn là lựa chọn cuối tuần quen thuộc của người Hà Nội, nhưng mùa thu mang đến một phiên bản dễ chịu hơn hẳn: trời mát để leo núi, nắng dịu để ngồi thuyền trên sông, và chặng quốc lộ 1A khoảng chín mươi cây số không còn hầm hập như mùa hè. Nếu bạn định thuê xe máy đi Ninh Bình vào một cuối tuần tháng 9, tháng 10 hay tháng 11, bài này giúp bạn tận dụng đúng những gì mùa thu mang lại và tránh vài cái bẫy riêng của mùa này, từ ngày ngắn đến những cơn mưa chuyển mùa.",
+        "Nếu bạn cần lộ trình tổng quát và danh sách điểm đến, bài Ninh Bình cuối tuần bằng xe máy là nơi nên đọc trước."
+      ]
+    },
+    {
+      "article_id": "BA-1890",
+      "category": "RENT",
+      "slug": "thue-xe-chay-dich-vu-cuoi-tuan",
+      "title": "Thuê xe Chạy Dịch vụ Cuối Tuần",
+      "description": "Nhiều người ở Hà Nội chỉ có thứ Bảy và Chủ nhật để làm thêm: thợ sửa điều hòa nhận lịch tận nhà, nhiếp ảnh viên đi chụp tiệc cưới, gia sư dạy kèm hai",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-chay-dich-vu-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Nhiều người ở Hà Nội chỉ có thứ Bảy và Chủ nhật để làm thêm: thợ sửa điều hòa nhận lịch tận nhà, nhiếp ảnh viên đi chụp tiệc cưới, gia sư dạy kèm hai ba nơi, nhóm trang trí sinh nhật hay người bán hàng ở hội chợ cuối tuần. Điểm chung là bạn cần một chiếc xe máy chạy được cả ngày trong hai ngày đó, còn năm ngày còn lại xe gần như không dùng tới. Thuê xe chạy dịch vụ cuối tuần vì vậy là bài toán riêng: trả tiền cho đúng số ngày làm việc, nhận xe đủ sớm để kịp ca đầu và trả xe không làm lỡ buổi tối Chủ nhật.",
+        "Bài này đi thẳng vào cách sắp lịch thuê, chọn gói và chuẩn bị xe cho người chỉ làm dịch vụ vào cuối tuần. Nếu bạn chạy dịch vụ cả tuần, phần tư vấn chung nằm trong bài thuê xe chạy dịch vụ dài ngày ."
+      ]
+    },
+    {
+      "article_id": "BA-1887",
+      "category": "RENT",
+      "slug": "thue-xe-cho-cong-viec-giao-hang-cuoi-tuan",
+      "title": "Thuê xe Cho Công Việc Giao Hàng Cuối Tuần",
+      "description": "Cuối tuần là lúc đơn hàng ở Hà Nội dồn lên rõ rệt: các shop online đẩy hàng sau đợt livestream tối thứ Sáu, quán ăn kín đơn trưa và tối, người dân",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-cho-cong-viec-giao-hang-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Cuối tuần là lúc đơn hàng ở Hà Nội dồn lên rõ rệt: các shop online đẩy hàng sau đợt livestream tối thứ Sáu, quán ăn kín đơn trưa và tối, người dân đặt đồ về nhà nhiều hơn ngày thường. Vì vậy không ít sinh viên, nhân viên văn phòng hay chủ shop nhỏ chọn đi giao hàng hai ngày cuối tuần để kiếm thêm hoặc tự giao đơn của mình. Nếu bạn chưa có xe phù hợp, thuê xe cho công việc giao hàng cuối tuần là cách thử sức mà không phải bỏ ra một khoản lớn để mua xe.",
+        "Bài này tập trung vào phần hàng hóa và ca giao: chở gì, chở bao nhiêu, chạy tuyến nào và chuẩn bị xe ra sao cho hai ngày cường độ cao. Phần so sánh chung cho người giao hàng cả tuần có trong bài thuê xe cho công việc giao hàng ."
+      ]
+    },
+    {
+      "article_id": "BA-1886",
+      "category": "APP",
+      "slug": "tro-ly-ao-tu-van-thue-xe-may-cau-hoi-thuong-gap",
+      "title": "Trợ lý ảo tư Vấn Thuê xe Máy Câu Hỏi Thường Gặp",
+      "description": "Trợ lý ảo MotoAI xuất hiện ở góc trang web của {{ business.brand }} để trả lời người đang tìm thuê xe máy, nhưng không ít khách vẫn ngần ngại gõ câu",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tro-ly-ao-tu-van-thue-xe-may-cau-hoi-thuong-gap.body.html",
+      "knowledge_chunks": [
+        "Trợ lý ảo MotoAI xuất hiện ở góc trang web của {{ business.brand }} để trả lời người đang tìm thuê xe máy, nhưng không ít khách vẫn ngần ngại gõ câu đầu tiên vì chưa rõ nó làm được gì, có thay được nhân viên không, và thông tin mình nhập đi đâu. Bài viết này tổng hợp những câu hỏi thường gặp nhất về trợ lý ảo tư vấn thuê xe máy, chia theo từng giai đoạn: trước khi hỏi, trong lúc trò chuyện, khi chuyển sang đặt xe và sau khi đã nhận xe. Phần giới thiệu khái niệm cơ bản nằm trong bài trợ lý ảo tư vấn thuê xe máy .",
+        "Không. MotoAI là trợ lý trực tuyến chạy ngay trên website. Bạn mở trang bằng trình duyệt điện thoại hoặc máy tính là có thể trò chuyện, không cần tải gì về máy và không cần tạo tài khoản để bắt đầu hỏi."
+      ]
     }
   ]
 }
