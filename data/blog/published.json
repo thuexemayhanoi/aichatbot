@@ -25668,6 +25668,153 @@
         "Một du khách vừa xuống sân bay Nội Bài, mở website của cửa hàng cho thuê xe và gõ câu hỏi đầu tiên bằng tiếng Anh: \"Can I rent a scooter tomorrow morning with my foreign licence?\". Câu hỏi đó chứa ba vấn đề cùng lúc: thời gian, loại xe và giấy tờ. Trợ lý thuê xe xử lý câu hỏi đa ngôn ngữ cho khách nước ngoài được thiết kế để tách từng ý như vậy và trả lời từ dữ liệu của cửa hàng, không phải từ bản dịch máy chung chung. Bài viết này dành cho bạn là người nước ngoài, hoặc đang giúp bạn bè quốc tế thuê xe ở Hà Nội, muốn biết nên hỏi gì, hỏi như thế nào và khi nào nên dừng gõ phím để gọi điện.",
         "Người Việt hỏi \"Vision bao nhiêu một ngày\" là đủ. Khách quốc tế thường kèm theo bối cảnh dài: họ chưa biết dòng xe nào phổ biến, chưa rõ giấy phép lái xe của nước mình có dùng được không, và hay quy đổi tiền sang đô la hoặc euro trong đầu. Câu hỏi vì thế dài hơn, nhiều mệnh đề hơn, đôi khi lẫn cả tên địa danh viết không dấu như \"Hoan Kiem\" hay \"Long Bien\". Trợ lý trên website của {{ business.brand }} được xây dựng để nhận ra các tên địa danh viết không dấu, hiểu tên dòng xe dù bạn gọi là \"scooter\", \"automatic\" hay \"Honda Vision\", và trả về mức giá bằng đồng Việt Nam kèm ghi chú đó là giá tham khảo."
       ]
+    },
+    {
+      "article_id": "BA-1412",
+      "category": "RENT",
+      "slug": "ao-mua-khi-thue-xe-may-cho-gia-dinh",
+      "title": "áo Mưa Khi Thuê xe Máy Cho Gia Đình",
+      "description": "Một gia đình ba người trên chiếc xe máy thuê gặp mưa giữa Phố Cổ là cảnh rất quen vào mùa hè Hà Nội: bố loay hoay với bộ áo mưa người lớn, mẹ cố che",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ao-mua-khi-thue-xe-may-cho-gia-dinh.body.html",
+      "knowledge_chunks": [
+        "Một gia đình ba người trên chiếc xe máy thuê gặp mưa giữa Phố Cổ là cảnh rất quen vào mùa hè Hà Nội: bố loay hoay với bộ áo mưa người lớn, mẹ cố che cho con bằng vạt áo, còn đứa trẻ ngồi giữa thì ướt từ đầu đến chân. Áo mưa cho gia đình khác hẳn áo mưa cho một người đi làm, vì bạn phải che cho người ngồi trước, người ngồi sau và trẻ em ở giữa mà không làm vướng tay lái hay che mất tầm nhìn. Bài viết này giúp gia đình bạn chọn đúng loại áo mưa, biết hỏi cửa hàng gì khi nhận xe, và xử lý thế nào khi cơn mưa bất ngờ đến lúc cả nhà đang trên đường.",
+        "Với một người, áo mưa chỉ cần che kín và không vướng. Với gia đình chở trẻ nhỏ, có thêm ba yêu cầu mà bạn phải cân nhắc cùng lúc."
+      ]
+    },
+    {
+      "article_id": "BA-1418",
+      "category": "RENT",
+      "slug": "gia-xe-thang-cho-sinh-vien-cho-gia-dinh",
+      "title": "Giá xe Tháng Cho Sinh Viên Cho Gia Đình",
+      "description": "Con bạn vừa đỗ đại học ở Hà Nội, cả nhà đang tính chuyện đi lại: mua xe mới thì tốn một khoản lớn và chưa biết con có giữ xe tốt không, gửi xe cũ từ",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/gia-xe-thang-cho-sinh-vien-cho-gia-dinh.body.html",
+      "knowledge_chunks": [
+        "Con bạn vừa đỗ đại học ở Hà Nội, cả nhà đang tính chuyện đi lại: mua xe mới thì tốn một khoản lớn và chưa biết con có giữ xe tốt không, gửi xe cũ từ quê lên thì vướng chuyện đăng ký và vận chuyển. Thuê xe theo tháng cho sinh viên là phương án nhiều gia đình chọn trong năm đầu, vì chi phí rõ ràng từng tháng, không lo bảo dưỡng và có thể dừng bất cứ lúc nào. Bài viết này viết cho phụ huynh: giá xe tháng cho sinh viên hiện tham khảo ở mức nào, gia đình nên ký hợp đồng ra sao, và cách lập ngân sách để một năm học không phát sinh khoản bất ngờ.",
+        "Mức giá dưới đây là giá tham khảo tại {{ business.display_name }}, bạn cần xác nhận lại với cửa hàng khi đặt vì giá phụ thuộc thời điểm và tình trạng xe sẵn có. Bảng đầy đủ nằm ở trang giá thuê ."
+      ]
+    },
+    {
+      "article_id": "BA-1413",
+      "category": "EV",
+      "slug": "het-pin-giua-duong-phai-lam-gi-mua-mua",
+      "title": "Hết Pin Giữa Đường Phải Làm gì Mùa Mưa",
+      "description": "Xe máy điện hết pin giữa đường đã phiền, hết pin giữa một cơn mưa Hà Nội còn phiền gấp đôi: bạn vừa ướt, vừa không dắt được xa, vừa lo nước vào ngăn",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/het-pin-giua-duong-phai-lam-gi-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Xe máy điện hết pin giữa đường đã phiền, hết pin giữa một cơn mưa Hà Nội còn phiền gấp đôi: bạn vừa ướt, vừa không dắt được xa, vừa lo nước vào ngăn pin. Mùa mưa cũng là lúc tình huống này xảy ra nhiều hơn hẳn, vì đường ngập buộc bạn đi vòng, kẹt xe kéo dài khiến đèn và còi bật liên tục, và nhiều người quên sạc đầy vì tối hôm trước trời mưa không muốn ra ngoài. Bài viết này đi qua từng bước xử lý khi xe thuê hết pin dưới mưa, điều gì tuyệt đối không làm, và cách lên kế hoạch để cả mùa mưa không phải dắt xe lần nào.",
+        "Bạn không cần biết thông số pin để hiểu điều này; chỉ cần nhìn cách mình dùng xe trong những ngày mưa."
+      ]
+    },
+    {
+      "article_id": "BA-1415",
+      "category": "SAFE",
+      "slug": "luat-giao-thong-duong-bo-co-ban-cau-hoi-thuong-gap",
+      "title": "Luật Giao Thông Đường bộ cơ Bản Câu Hỏi Thường Gặp",
+      "description": "Khách thuê xe máy ở Hà Nội hỏi về luật giao thông theo một cách rất cụ thể: \"đèn vàng có được đi không\", \"quên mang bằng thì sao\", \"uống một lon bia",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/luat-giao-thong-duong-bo-co-ban-cau-hoi-thuong-gap.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1416",
+      "category": "LOCAL",
+      "slug": "sai-gon-duong-nam-buoi-sang",
+      "title": "Sài Gòn Đường Nam Buổi Sáng",
+      "description": "Buổi sáng là khoảng thời gian dễ chịu nhất để một người quen đường Hà Nội làm quen với Sài Gòn trên yên xe máy: trời chưa nóng, mưa mùa hè chưa kéo",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/sai-gon-duong-nam-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Buổi sáng là khoảng thời gian dễ chịu nhất để một người quen đường Hà Nội làm quen với Sài Gòn trên yên xe máy: trời chưa nóng, mưa mùa hè chưa kéo đến, và dòng xe trước bảy giờ còn thưa đủ để bạn nhìn ngắm thay vì chỉ lo giữ làn. Bài viết này gợi ý cách dùng trọn một buổi sáng ở Sài Gòn cho chuyến đi về Nam: dậy giờ nào, chạy cung nào, ăn sáng ở đâu, và khi nào nên về chỗ ở để tránh cả nắng gắt lẫn giờ cao điểm. Nếu bạn còn đang phân vân chuyện bay hay chạy xe từ Hà Nội vào, bài Sài Gòn đường Nam đã bàn trước phần lộ trình tổng thể.",
+        "Người Hà Nội quen cảnh phố vắng tới sáu rưỡi, bảy giờ mới đông. Sài Gòn thức sớm hơn rõ rệt: năm giờ sáng công viên đã đầy người tập thể dục, quán cà phê vỉa hè bật đèn từ lúc trời còn tối, và xe máy ra đường đều đặn từ khoảng năm rưỡi. Điều đó tạo ra ba khung giờ bạn nên nhớ."
+      ]
+    },
+    {
+      "article_id": "BA-1411",
+      "category": "APP",
+      "slug": "soan-cau-hoi-hieu-qua-cho-agent-thue-xe-cho-khach-nuoc-ngoai",
+      "title": "Soạn Câu Hỏi Hiệu Quả Cho Agent Thuê xe Cho Khách Nước Ngoài",
+      "description": "Một câu hỏi ngắn như \"how much to rent a bike?\" sẽ nhận về một câu trả lời chung chung, còn một câu hỏi có đủ ngữ cảnh sẽ nhận về đúng dòng xe, đúng",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Một câu hỏi ngắn như \"how much to rent a bike?\" sẽ nhận về một câu trả lời chung chung, còn một câu hỏi có đủ ngữ cảnh sẽ nhận về đúng dòng xe, đúng giá tham khảo và danh sách giấy tờ cần mang. Với khách nước ngoài, khoảng cách giữa hai kiểu câu hỏi này càng lớn, vì Agent thuê xe trên website cần biết bạn có loại giấy phép nào, ở đâu trong Hà Nội và định đi bao lâu mới đưa ra gợi ý sát thực tế. Bài viết này hướng dẫn bạn soạn câu hỏi hiệu quả cho Agent theo từng mục đích, kèm ví dụ câu hỏi tốt và câu hỏi dễ gây hiểu nhầm, để bạn tiết kiệm thời gian ngay từ lần trò chuyện đầu tiên.",
+        "Agent là một công cụ trực tuyến chạy trên trang chủ, trả lời dựa trên dữ liệu cửa hàng đã xác minh: dòng xe, giá tham khảo, giấy tờ, giờ mở cửa và khu vực phục vụ. Nó không đọc được suy nghĩ của bạn, nên mỗi câu hỏi nên chứa đủ bốn mảnh thông tin sau."
+      ]
+    },
+    {
+      "article_id": "BA-1420",
+      "category": "GUIDE",
+      "slug": "thue-xe-can-nguoi-bao-lanh-khong-tai-ha-noi",
+      "title": "Thuê xe Cần Người Bảo Lãnh Không Tại Hà Nội",
+      "description": "Nhiều bạn từ tỉnh khác lên Hà Nội học, đi làm hoặc du lịch băn khoăn: thuê xe máy ở đây có cần người bảo lãnh không, và nếu không quen ai ở thủ đô",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-can-nguoi-bao-lanh-khong-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Nhiều bạn từ tỉnh khác lên Hà Nội học, đi làm hoặc du lịch băn khoăn: thuê xe máy ở đây có cần người bảo lãnh không, và nếu không quen ai ở thủ đô thì có thuê được xe hay không. Thực tế tại các điểm thuê quanh Long Biên, Hoàn Kiếm hay Phố Cổ, yêu cầu bảo lãnh nhân thân khá hiếm; phần lớn cửa hàng dùng giấy tờ gốc và một khoản đặt cọc để thay cho người đứng ra bảo lãnh. Bài viết này đi thẳng vào cách thị trường Hà Nội vận hành, bốn nhóm khách hay bị hỏi bảo lãnh, và cách bạn chuẩn bị để nhận xe trong một lần ghé cửa hàng.",
+        "Khi bạn hỏi một cửa hàng ở Bồ Đề hay Gia Lâm về người bảo lãnh, câu trả lời phổ biến là: không cần người bảo lãnh, nhưng cần giấy tờ tùy thân bản gốc và tiền đặt cọc. Lý do rất thực dụng: cửa hàng không có cách nào xác minh người bảo lãnh trong vài phút, trong khi một căn cước công dân gắn chip và một khoản cọc có thể đối chiếu ngay tại quầy. Vì vậy, nếu bạn mang đủ giấy tờ, bạn gần như không bao giờ phải tìm người Hà Nội đứng tên hộ."
+      ]
+    },
+    {
+      "article_id": "BA-1414",
+      "category": "GUIDE",
+      "slug": "thue-xe-cho-nguoi-duoi-18-tuoi-tai-ha-noi",
+      "title": "Thuê xe Cho Người Dưới 18 Tuổi Tại Hà Nội",
+      "description": "Ở Hà Nội, câu hỏi thuê xe cho người dưới 18 tuổi thường đến từ ba hướng: phụ huynh ở Long Biên, Gia Lâm muốn con đi học thêm bằng xe thay vì đưa đón;",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-cho-nguoi-duoi-18-tuoi-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Ở Hà Nội, câu hỏi thuê xe cho người dưới 18 tuổi thường đến từ ba hướng: phụ huynh ở Long Biên, Gia Lâm muốn con đi học thêm bằng xe thay vì đưa đón; gia đình từ tỉnh khác có con học lớp 12 hoặc vừa nhập học năm nhất khi mới 17 tuổi; và các gia đình du lịch có con tuổi thiếu niên muốn tự khám phá Phố Cổ. Cả ba đều gặp cùng một bức tường: người chưa thành niên không tự ký hợp đồng thuê, và không phải loại xe nào cũng được phép lái ở tuổi đó. Bài viết này giải thích cách các cửa hàng ở Hà Nội xử lý từng trường hợp, loại xe nào phù hợp, ai đứng tên và gia đình cần chuẩn bị gì để không mất công đi lại.",
+        "Muốn thuê xe cho con dưới 18 tuổi ở Hà Nội, bạn phải vượt qua hai tầng điều kiện độc lập với nhau. Tầng thứ nhất là pháp luật giao thông: con có được phép điều khiển loại xe đó hay không. Tầng thứ hai là hợp đồng dân sự: ai là người ký thuê và chịu trách nhiệm với tài sản của cửa hàng."
+      ]
+    },
+    {
+      "article_id": "BA-1419",
+      "category": "EV",
+      "slug": "tram-doi-pin-mua-mua",
+      "title": "Trạm Đổi Pin Mùa Mưa",
+      "description": "Mùa mưa Hà Nội làm thay đổi cách bạn dùng trạm đổi pin cho xe máy điện: ngăn pin ướt, tay cầm trơn, trạm đặt ở vỉa hè thấp có thể ngập, và những cơn",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tram-doi-pin-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Mùa mưa Hà Nội làm thay đổi cách bạn dùng trạm đổi pin cho xe máy điện: ngăn pin ướt, tay cầm trơn, trạm đặt ở vỉa hè thấp có thể ngập, và những cơn mưa chiều khiến ai cũng đổ dồn về trạm cùng một lúc. Nếu bạn đang thuê một chiếc xe điện có pin tháo rời và dự định sống nhờ mạng lưới trạm trong những tháng mưa, bài viết này giúp bạn đổi pin an toàn khi trời ướt, lên lịch đổi hợp lý để không bị kẹt, và biết hỏi cửa hàng những gì trước khi nhận xe.",
+        "Vào mùa khô, thao tác đổi pin gần như không có gì phải nghĩ: dừng xe, mở cốp, tháo pin, lắp pin mới. Mùa mưa thì khác, và sự khác biệt nằm ở ba điểm mà người mới dùng hay bỏ qua."
+      ]
+    },
+    {
+      "article_id": "BA-1417",
+      "category": "APP",
+      "slug": "ung-dung-thue-xe-va-nguoi-moi-biet-lai-xe-cho-khach-nuoc-ngoai",
+      "title": "Ứng Dụng Thuê xe và Người Mới Biết Lái xe Cho Khách Nước Ngoài",
+      "description": "Khách nước ngoài đến Hà Nội thường rơi vào một tình huống khá đặc biệt: họ có thể lái ô tô thành thạo ở quê nhà nhưng mới cầm xe máy lần đầu, hoặc",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ung-dung-thue-xe-va-nguoi-moi-biet-lai-xe-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Khách nước ngoài đến Hà Nội thường rơi vào một tình huống khá đặc biệt: họ có thể lái ô tô thành thạo ở quê nhà nhưng mới cầm xe máy lần đầu, hoặc chỉ từng đi xe máy trên đường vắng chứ chưa bao giờ chen vào dòng xe nội thành. Ứng dụng thuê xe trên website của cửa hàng được thiết kế để giúp đúng nhóm này: một trợ lý trực tuyến trả lời bằng ngôn ngữ của bạn, gợi ý xe nhẹ dễ điều khiển, nhắc giấy tờ cần có và giải thích những quy tắc đi đường mà người mới hay vấp. Bài viết này chỉ cho bạn cách dùng trợ lý đó từ lúc còn ở khách sạn đến lúc trả xe, với từng bước cụ thể cho người mới biết lái.",
+        "Trước hết cần nói rõ: đây là một ứng dụng web chạy ngay trên trình duyệt, bạn không phải tải gì về máy. Mở trang chủ, gõ câu hỏi bằng tiếng Anh hoặc ngôn ngữ bạn quen, trợ lý trả lời dựa trên dữ liệu thật của cửa hàng. Với người mới biết lái, nó hữu ích ở bốn việc."
+      ]
     }
   ]
 }
