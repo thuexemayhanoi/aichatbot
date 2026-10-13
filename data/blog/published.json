@@ -24648,6 +24648,156 @@
         "Ở Hà Nội, trả xe đúng giờ không chỉ là chuyện xem đồng hồ; nó là chuyện biết thành phố này tắc ở đâu, vào lúc nào, và cây cầu nào sẽ đứng im đúng lúc bạn cần qua sông. Nguyên tắc chung về giờ trả và phí trễ đã có trong bài trả xe đúng giờ để tránh phí ; bài này đi vào phần riêng của Hà Nội: thời gian về cửa hàng từ từng khu, các bẫy giao thông theo giờ và theo mùa, và cách xếp buổi trả xe để không phải vừa chạy vừa nhìn giờ.",
         "Hợp đồng thuê ghi giờ nhận; giờ trả là giờ nhận cộng số ngày thuê, trừ khi bạn và cửa hàng thỏa thuận mốc khác bằng chữ. Với cửa hàng tại {{ business.address.full }}, có thêm một giới hạn cứng: xe chỉ được nhận lại trong khung mở cửa {{ business.hours.display }}. Nếu bạn nhận xe lúc mười giờ sáng thứ Hai và thuê ba ngày, mốc trả là mười giờ sáng thứ Năm, không phải \"trong ngày thứ Năm\". Hãy ghi mốc này vào lịch điện thoại ngay lúc ký, kèm một nhắc nhở sớm hơn hai tiếng. Cách đọc các điều khoản liên quan trong hợp đồng có ở bài hợp đồng thuê xe cần những gì ."
       ]
+    },
+    {
+      "article_id": "BA-1508",
+      "category": "EV",
+      "slug": "app-mo-khoa-xe-dien-mua-mua",
+      "title": "App mở Khóa xe Điện Mùa Mưa",
+      "description": "Mùa mưa ở Hà Nội thử thách mọi thứ điện tử trên một chiếc xe máy điện cho thuê, và thứ hay bị bỏ quên nhất lại là chiếc điện thoại dùng để mở khóa",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/app-mo-khoa-xe-dien-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Mùa mưa ở Hà Nội thử thách mọi thứ điện tử trên một chiếc xe máy điện cho thuê, và thứ hay bị bỏ quên nhất lại là chiếc điện thoại dùng để mở khóa xe. Khi xe khóa bằng ứng dụng, mỗi cơn mưa rào là một tình huống mới: màn hình ướt không nhận cảm ứng, tay đeo găng mưa bấm trượt, điện thoại nằm trong túi áo mưa mất kết nối, pin tụt nhanh vì trời lạnh. Bài này tập trung vào một việc rất hẹp nhưng quyết định cả chuyến thuê trong mùa mưa: làm sao để app mở khóa xe điện hoạt động ổn định khi trời mưa, cần chuẩn bị gì, hỏi cửa hàng điều gì và xử lý ra sao nếu xe không chịu mở giữa đường ướt.",
+        "Cơ chế khóa bằng ứng dụng đã được giải thích trong bài app mở khóa xe điện : điện thoại gửi lệnh tới bộ điều khiển trên xe qua kết nối không dây, xe nhả khóa và bật nguồn. Mùa mưa chen vào đúng ba mắt xích của chuỗi này."
+      ]
+    },
+    {
+      "article_id": "BA-1503",
+      "category": "EV",
+      "slug": "chia-khoa-xe-dien-thong-minh-mua-mua",
+      "title": "Chìa Khóa xe Điện Thông Minh Mùa Mưa",
+      "description": "Chìa khóa xe điện thông minh là món đồ nhỏ nhất bạn nhận từ cửa hàng, và trong mùa mưa Hà Nội, nó cũng là món dễ hỏng nhất: một chiếc điều khiển từ",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chia-khoa-xe-dien-thong-minh-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Chìa khóa xe điện thông minh là món đồ nhỏ nhất bạn nhận từ cửa hàng, và trong mùa mưa Hà Nội, nó cũng là món dễ hỏng nhất: một chiếc điều khiển từ xa hoặc thẻ cảm ứng nằm trong túi quần ướt sũng suốt buổi chiều mưa, pin cúc áo bên trong bị ẩm, nút bấm liệt dần, rồi một sáng xe không chịu nhận tín hiệu. Khác với bài app mở khóa xe điện nói về điện thoại và ứng dụng, bài này chỉ bàn về chiếc chìa vật lý: nó gồm những gì, mưa làm hỏng nó theo cách nào, bảo quản ra sao khi đi dưới mưa, hỏi cửa hàng điều gì lúc nhận, và xử lý thế nào khi chìa không ăn giữa đường ướt.",
+        "Tùy dòng xe, bộ chìa bạn nhận thường có một hoặc vài món trong số này: điều khiển từ xa có nút khóa, mở, tìm xe; thẻ cảm ứng chạm lên mặt đồng hồ để mở nguồn; một chìa cơ nhỏ để mở yên hoặc cốp khi pin chìa cạn. Tổng quan về cách khóa thông minh vận hành trên xe điện đã được giải thích trong bài chìa khóa xe điện thông minh ; ở đây chỉ cần nhớ hai điểm: thiết bị cầm tay có pin riêng, và xe chỉ phản hồi khi tín hiệu từ thiết bị đủ mạnh."
+      ]
+    },
+    {
+      "article_id": "BA-1510",
+      "category": "LOCAL",
+      "slug": "cho-long-bien-dem-buoi-toi",
+      "title": "Chợ Long Biên Đêm Buổi Tối",
+      "description": "Nhiều người nghĩ muốn xem chợ Long Biên đêm thì phải thức tới hai ba giờ sáng, nhưng thực ra khung giờ buổi tối, từ lúc trời vừa sập tối tới trước",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cho-long-bien-dem-buoi-toi.body.html",
+      "knowledge_chunks": [
+        "Nhiều người nghĩ muốn xem chợ Long Biên đêm thì phải thức tới hai ba giờ sáng, nhưng thực ra khung giờ buổi tối, từ lúc trời vừa sập tối tới trước nửa đêm, lại là lựa chọn hợp lý hơn với phần lớn khách thuê xe máy. Lý do rất thực tế: cửa hàng cho thuê đóng cửa lúc 21:00, phố xá quanh cầu Long Biên vẫn còn đông người đi chơi tối, và bạn có thể nhìn thấy khoảnh khắc khu chợ \"thức dậy\" khi những xe hàng đầu tiên bắt đầu đổ về. Bài này hướng dẫn bạn lên kế hoạch một buổi tối ở chợ Long Biên đêm bằng xe máy thuê: nhận xe lúc nào, đi đường nào từ Bồ Đề, gửi xe ở đâu, xem gì trong vài tiếng đầu tối và quay về sao cho an toàn.",
+        "Khu chợ đầu mối này có hai \"mặt\" rất khác nhau theo giờ. Từ khoảng chín giờ tối trở đi, các sạp trái cây bắt đầu dọn hàng mới, xe tải nhỏ lần lượt vào bãi, người bốc vác xếp sọt chờ mối. Đây là giai đoạn chuẩn bị, nhịp còn thong thả, lối đi chưa bị hàng chất kín, và bạn có thể đi dạo giữa các dãy mà không vướng vào guồng làm hàng dày đặc như sau nửa đêm. Nếu bạn muốn cảm nhận cường độ cao nhất của chợ, bài chợ Long Biên đêm đã tả rất kỹ khung khuya; còn muốn xem lúc chợ tan, hãy đọc bài chợ Long Biên đêm buổi sáng ."
+      ]
+    },
+    {
+      "article_id": "BA-1506",
+      "category": "APP",
+      "slug": "dat-xe-bang-ung-dung-tan-noi",
+      "title": "Đặt xe Bằng Ứng Dụng Tận Nơi",
+      "description": "Đặt xe bằng ứng dụng rồi nhận xe ngay tại cửa nhà, khách sạn hay văn phòng là kịch bản được hỏi nhiều nhất trên trợ lý trực tuyến của cửa hàng, và",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dat-xe-bang-ung-dung-tan-noi.body.html",
+      "knowledge_chunks": [
+        "Đặt xe bằng ứng dụng rồi nhận xe ngay tại cửa nhà, khách sạn hay văn phòng là kịch bản được hỏi nhiều nhất trên trợ lý trực tuyến của cửa hàng, và cũng là kịch bản dễ sai nhất nếu bạn bỏ qua vài chi tiết: giờ giao chỉ nằm trong khung mở cửa, phí giao phải được chốt trước, địa chỉ phải đủ rõ để nhân viên tìm được giữa ngõ Hà Nội. Bài này đi theo đúng thứ tự một đơn đặt xe tận nơi diễn ra trên ứng dụng web: bạn gõ gì, trợ lý hỏi lại gì, cửa hàng xác nhận gì, và lúc xe tới cửa bạn cần làm những việc nào trước khi ký nhận. Nếu bạn chưa từng đặt xe qua công cụ trực tuyến, bài đặt xe bằng ứng dụng trình bày luồng cơ bản; ở đây chỉ nói riêng phần gi",
+        "Trước hết cần hiểu đúng phạm vi để không kỳ vọng sai. Cửa hàng giao xe trong giờ mở cửa {{ business.hours.display }}, tới các khu Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và các điểm khác trong nội thành Hà Nội. Thời gian giao và phí giao được thống nhất với bạn trước khi đơn được chốt, không có mức cố định in sẵn vì phụ thuộc quãng đường và lịch nhân viên. Điều đó có nghĩa là ba thứ sau không nằm trong dịch vụ:"
+      ]
+    },
+    {
+      "article_id": "BA-1509",
+      "category": "GUIDE",
+      "slug": "deo-doc-va-xe-may-thue-tai-ha-noi",
+      "title": "Đèo Dốc và xe Máy Thuê Tại Hà Nội",
+      "description": "Hà Nội là thành phố đồng bằng, nên câu \"đèo dốc và xe máy thuê tại Hà Nội\" nghe có vẻ lạ tai. Nhưng người thuê xe ở đây gặp dốc nhiều hơn họ tưởng:",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/deo-doc-va-xe-may-thue-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Hà Nội là thành phố đồng bằng, nên câu \"đèo dốc và xe máy thuê tại Hà Nội\" nghe có vẻ lạ tai. Nhưng người thuê xe ở đây gặp dốc nhiều hơn họ tưởng: dốc lên các cây cầu lớn vượt sông Hồng, dốc đê ở Long Biên và Gia Lâm, các con dốc ngắn trong phố cũ, rồi xa hơn là Ba Vì ngay trong địa giới thành phố, Tam Đảo và Hòa Bình cách trung tâm vài giờ chạy xe. Bài này nhìn chuyện đèo dốc từ đúng vị trí của người đang cầm một chiếc xe thuê ở Hà Nội: dốc nào bạn sẽ gặp trong nội thành, chọn dòng xe nào ở cửa hàng cho ngày lên núi, cần kiểm tra gì trước khi rời thành phố và quay về sao cho kịp giờ trả xe.",
+        "Trước khi nghĩ tới đèo thật, hãy làm quen với các \"đèo mini\" của thành phố, vì chúng là nơi tập phản xạ phanh và ga rẻ nhất."
+      ]
+    },
+    {
+      "article_id": "BA-1504",
+      "category": "GUIDE",
+      "slug": "di-duong-truong-bang-xe-thue-tai-ha-noi",
+      "title": "đi Đường Trường Bằng xe Thuê Tại Hà Nội",
+      "description": "Đi đường trường bằng xe thuê tại Hà Nội có một đặc điểm mà các bài hướng dẫn chung ít nói tới: ba mươi ki lô mét đầu tiên mới là đoạn khó nhất. Trước",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/di-duong-truong-bang-xe-thue-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Đi đường trường bằng xe thuê tại Hà Nội có một đặc điểm mà các bài hướng dẫn chung ít nói tới: ba mươi ki lô mét đầu tiên mới là đoạn khó nhất. Trước khi được chạy đều trên quốc lộ, bạn phải thoát khỏi thành phố qua các cửa ngõ đông đúc, tránh nhầm vào đường cao tốc cấm xe máy, và căn giờ để không rơi đúng lúc tan tầm. Bài này viết cho người nhận xe ở khu Long Biên rồi đi xa: chọn cửa ngõ nào cho hướng nào, chọn dòng xe nào trong bảng của cửa hàng, nói gì với cửa hàng trước chuyến đi, tiếp xăng ở đâu và về Hà Nội sao cho kịp giờ trả. Kỹ thuật lái trên quốc lộ, quản lý sức khỏe và nghỉ ngơi đã có trong bài đi đường trường bằng xe thuê ; bài nà",
+        "Từ Bồ Đề, cửa hàng nằm ngay phía đông sông Hồng, nên các hướng đi về phía đông và đông bắc rất thuận; các hướng tây và nam cần vượt sông trước."
+      ]
+    },
+    {
+      "article_id": "BA-1505",
+      "category": "LOCAL",
+      "slug": "song-hong-va-cau-long-bien-buoi-toi",
+      "title": "Sông Hồng và Cầu Long Biên Buổi Tối",
+      "description": "Buổi tối là lúc cầu Long Biên hiền hòa nhất: nắng tắt, gió sông thổi mát, dòng xe tan tầm thưa dần, và những nhịp cầu thép trăm tuổi hiện lên dưới",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/song-hong-va-cau-long-bien-buoi-toi.body.html",
+      "knowledge_chunks": [
+        "Buổi tối là lúc cầu Long Biên hiền hòa nhất: nắng tắt, gió sông thổi mát, dòng xe tan tầm thưa dần, và những nhịp cầu thép trăm tuổi hiện lên dưới dải đèn vàng, phía xa là ánh sáng của cầu Chương Dương. Với người thuê xe máy ở khu Bồ Đề, một vòng sông Hồng và cầu Long Biên buổi tối là chuyến đi ngắn nhất mà \"được\" nhiều nhất: chỉ vài ki lô mét, không tốn vé, nhưng cần vài kỹ năng riêng khi chạy xe trên cầu lúc trời tối. Bài này gợi ý khung giờ từ hoàng hôn tới khuya, một lộ trình vòng hai cây cầu, chỗ dừng ngắm sông, cách đi an toàn trên mặt cầu ban đêm và những thứ nên tránh. Phần lịch sử cây cầu và các góc nhìn ban ngày đã nằm trong bài sôn",
+        "Buổi tối trên cầu Long Biên không phải một khối thời gian giống nhau; mỗi đoạn có một kiểu trải nghiệm."
+      ]
+    },
+    {
+      "article_id": "BA-1502",
+      "category": "RENT",
+      "slug": "thue-wave-alpha-chay-pho",
+      "title": "Thuê Wave Alpha Chạy Phố",
+      "description": "Wave Alpha trong phố Hà Nội giống một đôi giày thể thao cũ: không đẹp nhất, không êm nhất, nhưng xỏ vào là đi được ngay và đi được cả ngày. Khách",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-wave-alpha-chay-pho.body.html",
+      "knowledge_chunks": [
+        "Wave Alpha trong phố Hà Nội giống một đôi giày thể thao cũ: không đẹp nhất, không êm nhất, nhưng xỏ vào là đi được ngay và đi được cả ngày. Khách thuê Wave Alpha để chạy phố thường là người quen xe số, muốn giữ chi phí thấp và cần một chiếc xe luồn ngõ, leo dốc đê, dừng đèn đỏ hàng trăm lần mà không mệt. Bài này nói riêng về việc dùng Wave Alpha trong nội thành: ai nên chọn, lái thế nào khi tắc đường và trong ngõ, tốn bao nhiêu mỗi ngày, kiểm tra gì khi nhận và tránh những lỗi nào của người lâu không chạy xe số. Phần giới thiệu dòng xe và so sánh với các dòng khác đã có trong bài thuê Wave Alpha , nên ở đây không nhắc lại.",
+        "Nhiều khách mặc định xe ga mới là xe đi phố, còn xe số để đi xa. Thực tế với Wave Alpha trong Hà Nội, có bốn lợi thế rất phố."
+      ]
+    },
+    {
+      "article_id": "BA-1507",
+      "category": "RENT",
+      "slug": "thue-xe-hang-nhe-chay-pho",
+      "title": "Thuê xe Hạng Nhẹ Chạy Phố",
+      "description": "Chạy phố Hà Nội là bài kiểm tra khắc nghiệt nhất với một chiếc xe máy: dừng đèn đỏ liên tục, luồn ngõ rộng chưa đầy hai mét, dắt xe vào bãi chật, chở",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-hang-nhe-chay-pho.body.html",
+      "knowledge_chunks": [
+        "Chạy phố Hà Nội là bài kiểm tra khắc nghiệt nhất với một chiếc xe máy: dừng đèn đỏ liên tục, luồn ngõ rộng chưa đầy hai mét, dắt xe vào bãi chật, chở thêm một người và một túi đồ, rồi tắc đường vào giờ tan tầm. Trong điều kiện đó, một chiếc xe nhẹ gần như luôn thắng xe lớn. Bài này không giải thích hạng nhẹ là gì, việc đó bài thuê xe hạng nhẹ đã làm, mà trả lời câu hỏi thực dụng hơn: thuê xe hạng nhẹ để chạy phố thì chọn chiếc nào cho kiểu đường nào, tốn bao nhiêu mỗi ngày, lái thế nào trong ngõ và chỗ gửi, và nên tránh những lỗi gì.",
+        "Hãy hình dung một ngày đi lại điển hình: sáng từ Long Biên sang Hoàn Kiếm làm việc, trưa ghé Ba Đình, chiều về qua Gia Lâm mua đồ, tối ra Tây Hồ. Quãng đường tổng cộng không dài, nhưng số lần dừng và khởi hành có thể lên tới hàng trăm. Vì thế, tiêu chí chọn xe chạy phố khác hẳn chọn xe đi xa."
+      ]
+    },
+    {
+      "article_id": "BA-1501",
+      "category": "APP",
+      "slug": "web-app-va-app-native-khac-gi-nhau-tan-noi",
+      "title": "Web App và App Native Khác gì Nhau Tận Nơi",
+      "description": "Bạn đang ngồi ở phòng trọ hay sảnh khách sạn, muốn chiếc xe máy được mang tới tận cửa thay vì tự đi tìm cửa hàng. Lúc này, câu hỏi \"web app và app",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/web-app-va-app-native-khac-gi-nhau-tan-noi.body.html",
+      "knowledge_chunks": [
+        "Bạn đang ngồi ở phòng trọ hay sảnh khách sạn, muốn chiếc xe máy được mang tới tận cửa thay vì tự đi tìm cửa hàng. Lúc này, câu hỏi \"web app và app native khác gì nhau\" không còn là chuyện lý thuyết: nó quyết định bạn mất ba phút hay ba mươi phút để gửi được một đơn giao xe hợp lệ. Bài này không lặp lại phần định nghĩa đã có trong bài web app và app native khác gì nhau , mà soi hai loại công cụ qua đúng một tình huống: đặt xe giao tận nơi, từ lúc nhắn địa chỉ tới lúc xe dừng trước cổng.",
+        "Với {{ business.brand }}, trợ lý MotoAI là một ứng dụng web chạy ngay trong trình duyệt: mở link, hỏi, chốt lịch, rồi nhân viên gọi lại xác nhận giờ giao và phí giao trước khi đơn hoàn tất."
+      ]
     }
   ]
 }
