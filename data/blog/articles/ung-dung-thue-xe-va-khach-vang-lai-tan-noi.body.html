@@ -1,0 +1,65 @@
+<p>Khách vãng lai thường được hình dung là người đi ngang qua cửa hàng rồi ghé vào thuê xe. Nhưng có một nhóm khách vãng lai khác: người đang ở khách sạn, nhà người quen hay văn phòng, bất chợt cần xe trong ngày và muốn xe được mang tới tận nơi thay vì tự tìm đường đến cửa hàng. Họ không có tài khoản, không có lịch đặt trước, chỉ có chiếc điện thoại và một nhu cầu khá gấp. Bài viết này giải thích cách ứng dụng web thuê xe phục vụ đúng nhóm khách này: hỏi nhanh những gì, chuẩn bị gì để giao xe suôn sẻ, và những giới hạn cần biết để không bị hụt kế hoạch.</p>
+
+<h2>Khách vãng lai cần giao tận nơi gặp khó khăn gì</h2>
+<p>So với người lên kế hoạch từ trước, khách vãng lai muốn nhận xe tại chỗ có ba trở ngại chính:</p>
+<ul>
+<li><strong>Không biết bắt đầu từ đâu:</strong> chưa có số điện thoại cửa hàng, chưa rõ giá, chưa biết có giao tới khu mình đang ở không.</li>
+<li><strong>Thời gian eo hẹp:</strong> thường cần xe trong vài giờ tới, nên mỗi lần gọi đi hỏi lại đều tốn thời gian.</li>
+<li><strong>Địa điểm lạ:</strong> nhiều người không thuộc khu vực, khó mô tả chính xác chỗ hẹn giao xe.</li>
+</ul>
+<p>Ứng dụng web giúp giải quyết phần lớn những trở ngại này ngay trên trình duyệt, không cần tải gì về máy. Bạn có thể đọc thêm về nhóm khách này nói chung trong bài <a href="/blog/app/ung-dung-thue-xe-va-khach-vang-lai/">ứng dụng thuê xe và khách vãng lai</a>.</p>
+
+<h2>Bốn câu nên hỏi trợ lý trong năm phút đầu</h2>
+<p>Khi mở trợ lý trên website, đừng hỏi lan man. Bốn câu sau đủ để biết có nên đặt giao hay không:</p>
+<ol>
+<li><strong>Khu vực:</strong> "Tôi đang ở khu Hoàn Kiếm, cửa hàng có giao xe tới đây không?" Khu vực phục vụ gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội.</li>
+<li><strong>Loại xe và giá:</strong> nêu nhu cầu, ví dụ đi trong phố nửa ngày hay cả ngày, để được gợi ý loại xe và giá tham khảo.</li>
+<li><strong>Thời gian:</strong> hỏi khung giờ có thể giao, nhớ rằng giao xe chỉ diễn ra trong giờ hoạt động {{ business.hours.display }}.</li>
+<li><strong>Thủ tục:</strong> hỏi giấy tờ cần chuẩn bị và mức đặt cọc theo loại xe.</li>
+</ol>
+<p>Cách hỏi giá thật nhanh, gọn trong một câu được hướng dẫn trong bài <a href="/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot/">cách hỏi giá xe nhanh bằng chatbot</a>.</p>
+
+<h2>Từ hội thoại đến xác nhận giao xe</h2>
+<p>Trợ lý giúp bạn hình dung và chuẩn bị, còn việc chốt giao xe vẫn cần xác nhận trực tiếp với cửa hàng. Quy trình thường gồm:</p>
+<ol>
+<li>Sau khi có thông tin từ trợ lý, gọi cửa hàng qua {{ business.contact.phone_display }} hoặc xem các kênh trên <a href="/lien-he/">trang liên hệ</a>.</li>
+<li>Nói rõ loại xe, khu vực, giờ muốn nhận và số người đi.</li>
+<li>Nghe cửa hàng báo thời gian giao và phí giao, rồi mới đồng ý đặt.</li>
+<li>Thống nhất điểm hẹn cụ thể và cách liên lạc khi nhân viên tới gần.</li>
+</ol>
+<p>Thời gian và chi phí giao nhận luôn được cửa hàng xác nhận trước khi đặt, nên bạn đừng coi bất kỳ con số nào trong hội thoại là phí chốt. Thủ tục giao nhận tại chỗ được mô tả chi tiết ở bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">thủ tục giao xe tận nơi</a>.</p>
+
+<h2>Chuẩn bị gì trong lúc chờ xe tới</h2>
+<p>Khoảng thời gian chờ là lúc tốt nhất để mọi thứ sẵn sàng, tránh bắt nhân viên đợi:</p>
+<ul>
+<li>Giấy tờ tùy thân và giấy phép lái xe phù hợp loại xe để sẵn trong túi.</li>
+<li>Bảo hiểm xe máy bạn đã tự chuẩn bị, do phía cửa hàng không cung cấp khoản này.</li>
+<li>Khoản đặt cọc theo mức cửa hàng đã báo, trong khoảng {{ business.policies.deposit.min | vnd }} – {{ business.policies.deposit.max | vnd }}.</li>
+<li>Một điểm đứng dễ thấy, như cửa chính khách sạn, có chỗ để dựng xe kiểm tra.</li>
+<li>Điện thoại đủ pin và bật âm lượng để nghe cuộc gọi của người giao.</li>
+</ul>
+<p>Khi xe tới, đừng vội nhận chìa rồi đi ngay. Dành vài phút xem phanh, đèn, còi, lốp và chụp ảnh xe trước khi ký, như khi nhận tại cửa hàng.</p>
+
+<h2>Những giới hạn khách vãng lai nên biết</h2>
+<p>Dịch vụ giao tận nơi linh hoạt, nhưng có những điều bạn nên biết trước để không bị bất ngờ:</p>
+<ul>
+<li>Không giao xe ngoài khung {{ business.hours.display }}; cần xe tối muộn thì nên đặt ngay từ chiều.</li>
+<li>Không phải lúc nào cũng còn đúng mẫu xe bạn muốn; hãy chuẩn bị một lựa chọn thay thế.</li>
+<li>Xe 50cc, xe máy điện và xe đạp điện báo giá theo hình thức liên hệ, không có giá cố định trong hội thoại.</li>
+<li>Cửa hàng không có chương trình khuyến mãi hay giảm giá cho đơn gấp.</li>
+<li>Khu vực ngoài phạm vi phục vụ sẽ không được nhận giao.</li>
+</ul>
+<p>Nếu không gấp, đặt trước một ngày luôn giúp bạn chọn xe dễ hơn. Người thường xuyên quay lại thủ đô có thể đọc bài <a href="/blog/app/ung-dung-thue-xe-va-khach-vang-lai-tai-ha-noi/">ứng dụng thuê xe và khách vãng lai tại Hà Nội</a> để nắm thói quen thuê nhanh hơn ở lần sau.</p>
+
+<h2>Câu hỏi thường gặp về khách vãng lai đặt xe giao tận nơi</h2>
+<h3>Không có tài khoản có đặt giao xe được không?</h3>
+<p>Bạn dùng trợ lý trên website mà không cần tạo tài khoản; việc chốt giao xe được thực hiện khi bạn liên hệ trực tiếp với cửa hàng. Xem thêm bài <a href="/blog/app/app-thue-xe-khong-can-tai-khoan/">app thuê xe không cần tài khoản</a>.</p>
+<h3>Giá thuê khi giao tận nơi có khác giá tại cửa hàng không?</h3>
+<p>Giá thuê xe tham khảo giữ nguyên, ví dụ Honda Wave 150.000đ/ngày, Honda Vision 200.000đ/ngày, Honda Click hoặc Yamaha Mio 150.000đ/ngày; phí giao được báo riêng trước khi đặt. Xem bảng ở trang <a href="/gia-thue/">giá thuê</a>.</p>
+<h3>Cần xe trong một giờ tới thì có kịp không?</h3>
+<p>Điều này phụ thuộc xe còn sẵn và khoảng cách tới chỗ bạn. Hãy gọi cửa hàng để biết chính xác thay vì chờ đợi trong hội thoại.</p>
+<h3>Trả xe có cần quay lại cửa hàng không?</h3>
+<p>Bạn có thể hỏi phương án nhận lại xe tại chỗ khi đặt; thời gian và phí cũng được xác nhận trước như lúc giao.</p>
+
+<h2>Kết luận</h2>
+<p>Với khách vãng lai muốn có xe tận nơi, ứng dụng web giúp rút ngắn phần tìm hiểu: biết ngay khu vực phục vụ, loại xe, giá tham khảo và giấy tờ cần mang. Phần còn lại là một cuộc gọi để chốt thời gian, phí giao và điểm hẹn. Bạn liên hệ {{ business.brand }} qua {{ business.contact.phone_display }} hoặc đến thẳng {{ business.address.full }} nếu ở gần. Thông tin chung về dịch vụ giao xe có trong bài <a href="/blog/thue-xe/thue-xe-giao-tan-noi/">thuê xe giao tận nơi</a>; các bài khác về trợ lý nằm ở <a href="/blog/app/">chuyên mục ứng dụng</a>, và bạn có thể mở trợ lý ngay từ <a href="/">trang chủ</a>.</p>
