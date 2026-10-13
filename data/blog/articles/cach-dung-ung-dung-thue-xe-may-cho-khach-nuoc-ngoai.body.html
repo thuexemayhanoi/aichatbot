@@ -1,0 +1,103 @@
+<p>Với một du khách vừa đặt chân đến Hà Nội, rào cản lớn nhất khi thuê xe máy thường không phải là giá, mà là ngôn ngữ: gọi điện thì ngại nghe không rõ, nhắn tin thì không biết viết sao cho cửa hàng hiểu. Ứng dụng thuê xe máy trên website của {{ business.brand }} giải quyết đúng chỗ đó. Đây là trợ lý trò chuyện chạy ngay trong trình duyệt điện thoại, không cần cài đặt, và nhận diện được câu hỏi tiếng Anh lẫn tiếng Việt. Bài này hướng dẫn cách dùng ứng dụng thuê xe máy cho khách nước ngoài từng bước, kèm mẫu câu tiếng Anh, những lỗi khiến câu trả lời lệch ý và cách chuyển từ trò chuyện sang nhận xe thật.</p>
+
+<p>Nếu bạn là người Việt đang giúp bạn bè quốc tế đặt xe, bài này cũng dùng được: chỉ cần gửi đường dẫn và các mẫu câu bên dưới cho họ.</p>
+
+<h2>Ứng dụng ở đây là gì, và không phải là gì</h2>
+
+<p>Nhiều du khách quen với các ứng dụng gọi xe nên hình dung phải tải về máy rồi đăng ký tài khoản. Ở đây thì khác: ứng dụng là một công cụ trực tuyến nằm trên trang web của cửa hàng. Bạn mở trang, thấy khung trò chuyện, gõ câu hỏi và nhận câu trả lời dựa trên dữ liệu thật của cửa hàng như bảng giá tham khảo, giờ mở cửa, khu vực giao xe và quy định đặt cọc.</p>
+
+<ul>
+<li>Không cần cài đặt, không chiếm bộ nhớ điện thoại.</li>
+<li>Không cần số điện thoại Việt Nam để bắt đầu hỏi.</li>
+<li>Trang web mở được bất cứ lúc nào, kể cả khi bạn vừa hạ cánh lúc nửa đêm.</li>
+<li>Trợ lý không thay cửa hàng chốt đơn: việc xác nhận xe, giá và lịch nhận vẫn do cửa hàng thực hiện trong giờ {{ business.hours.display }}.</li>
+</ul>
+
+<p>Muốn hiểu sâu hơn về sự khác nhau giữa ứng dụng web và ứng dụng cài đặt, bạn xem bài <a href="/blog/app/cach-dung-ung-dung-thue-xe-may/">cách dùng ứng dụng thuê xe máy</a> dành cho mọi người dùng.</p>
+
+<h2>Bước 1: Viết bằng tiếng Anh hoàn chỉnh, đừng trộn dấu tiếng Việt</h2>
+
+<p>Trợ lý tự nhận diện ngôn ngữ của câu hỏi. Một chi tiết nhỏ nhưng quan trọng: nếu câu của bạn có chữ tiếng Việt có dấu, trợ lý sẽ coi đó là câu tiếng Việt và trả lời bằng tiếng Việt. Vì vậy, khi muốn nhận câu trả lời tiếng Anh, hãy viết trọn câu bằng tiếng Anh, kể cả tên xe hay tên phố thì cũng gõ không dấu.</p>
+
+<p>Câu đầy đủ chủ ngữ, động từ giúp trợ lý hiểu đúng hơn những cụm từ rời rạc. So sánh hai cách hỏi:</p>
+
+<ul>
+<li>Kém hiệu quả: "scooter price?"</li>
+<li>Hiệu quả hơn: "How much is it to rent a Honda Vision for 3 days?"</li>
+</ul>
+
+<p>Cách trợ lý xử lý câu hỏi nhiều ngôn ngữ được giải thích kỹ hơn ở bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu/">trợ lý xử lý câu hỏi đa ngôn ngữ</a>.</p>
+
+<h2>Bước 2: Đưa đủ bốn thông tin ngay từ câu đầu</h2>
+
+<p>Du khách thường hỏi từng câu ngắn rồi chờ, mất nhiều lượt qua lại. Hãy gói bốn thông tin vào một tin nhắn:</p>
+
+<ol>
+<li>Số ngày hoặc số tuần bạn cần xe.</li>
+<li>Loại xe mong muốn, hoặc mô tả nhu cầu như đi trong phố, chở thêm một người.</li>
+<li>Khu vực bạn ở, ví dụ Old Quarter hay Tay Ho.</li>
+<li>Ngày và khung giờ muốn nhận xe.</li>
+</ol>
+
+<p>Mẫu câu bạn có thể sao chép: "I need a scooter for 5 days for two people, staying in the Old Quarter, pick up on Friday afternoon. Which model do you suggest and what is the price?" Thêm các gợi ý soạn câu hỏi rõ ràng có trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho trợ lý</a>.</p>
+
+<h2>Bước 3: Đọc giá cho đúng đơn vị</h2>
+
+<p>Giá được hiển thị bằng đồng Việt Nam, ký hiệu đ, với dấu chấm phân cách hàng nghìn. Du khách quen dấu phẩy dễ đọc nhầm, nên hãy chú ý. Một vài mức tham khảo:</p>
+
+<ul>
+<li>Honda Wave, xe số: 150.000đ/ngày.</li>
+<li>Honda Vision: 200.000đ/ngày, 800.000đ–1.000.000đ/tuần.</li>
+<li>Honda Air Blade: 200.000đ/ngày, 800.000đ/tuần.</li>
+<li>Honda Click hoặc Yamaha Mio: 150.000đ/ngày, 600.000đ–700.000đ/tuần.</li>
+<li>Xe máy điện, xe 50cc: giá liên hệ.</li>
+</ul>
+
+<p>Đây đều là giá tham khảo, mức chính xác do cửa hàng xác nhận khi đặt. Bạn có thể xem trang <a href="/gia-thue/">giá thuê</a> và dùng công cụ dịch của trình duyệt nếu muốn đọc toàn bộ bằng tiếng Anh.</p>
+
+<h2>Bước 4: Hỏi về giấy tờ, cọc và bảo hiểm trước khi chốt</h2>
+
+<p>Đây là ba câu hỏi du khách nên hỏi trước, để không bất ngờ lúc nhận xe:</p>
+
+<ul>
+<li>"What documents do I need to bring?" Câu trả lời cho bạn biết cần mang hộ chiếu, giấy phép lái xe loại nào. Danh sách chi tiết có ở bài <a href="/blog/huong-dan/giay-to-nguoi-nuoc-ngoai-thue-xe/">giấy tờ người nước ngoài thuê xe</a>.</li>
+<li>"How much is the deposit?" Khoản cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được xác nhận khi đặt.</li>
+<li>"Is insurance included?" Câu trả lời là không: du khách tự mua bảo hiểm xe máy trước khi chạy.</li>
+</ul>
+
+<p>Lưu ý quyền riêng tư: đừng gõ số hộ chiếu, số thẻ ngân hàng hay ảnh giấy tờ vào khung trò chuyện. Những thông tin đó chỉ cần xuất trình trực tiếp khi nhận xe.</p>
+
+<h2>Bước 5: Chuyển từ trò chuyện sang nhận xe thật</h2>
+
+<p>Khi đã có phương án ưng ý, bạn chụp màn hình phần trao đổi gồm dòng xe, giá tham khảo và lịch nhận. Sau đó liên hệ cửa hàng qua số {{ business.contact.phone_display }} trong giờ hoạt động để chốt, hoặc nhờ lễ tân khách sạn gọi giúp nếu ngại nói chuyện qua điện thoại. Ảnh chụp màn hình giúp hai bên nói cùng một nội dung, tránh hiểu nhầm.</p>
+
+<p>Nếu muốn giao xe đến khách sạn, hãy xác nhận trước thời gian và chi phí giao nhận; việc giao chỉ thực hiện trong khung {{ business.hours.display }} và trong khu vực phục vụ như Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ, Long Biên. Còn nếu tự đến, địa chỉ cửa hàng là {{ business.address.full }}.</p>
+
+<h2>Những lỗi du khách hay gặp</h2>
+
+<ul>
+<li>Gõ lẫn tiếng Anh với tiếng Việt có dấu, nhận câu trả lời bằng tiếng Việt rồi tưởng trợ lý không hiểu.</li>
+<li>Đọc 150.000đ thành 150 đồng, hoặc nhầm sang đô la.</li>
+<li>Hỏi về những dòng xe cửa hàng không có trong bảng giá rồi mặc định có sẵn. Với các dòng ngoài danh sách, hãy hỏi kiểm tra tình trạng xe.</li>
+<li>Không hỏi giờ hoạt động, hẹn nhận xe lúc sáng sớm trong khi cửa hàng chưa mở.</li>
+</ul>
+
+<p>Nếu bạn muốn so sánh thêm các lựa chọn dành riêng cho người nước ngoài, bài <a href="/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/">app thuê xe cho người nước ngoài</a> và bài <a href="/blog/app/ung-dung-thue-xe-tieng-anh/">ứng dụng thuê xe tiếng Anh</a> là hai điểm đọc tiếp hợp lý.</p>
+
+<h2>Câu hỏi thường gặp khi khách nước ngoài dùng ứng dụng thuê xe</h2>
+
+<h3>Tôi có cần tạo tài khoản để hỏi giá không?</h3>
+<p>Không. Bạn chỉ cần mở trang web và gõ câu hỏi vào khung trò chuyện.</p>
+
+<h3>Trợ lý có trả lời bằng tiếng Anh không?</h3>
+<p>Có, khi câu hỏi của bạn viết hoàn toàn bằng tiếng Anh. Nếu câu có chữ tiếng Việt có dấu, câu trả lời sẽ chuyển sang tiếng Việt.</p>
+
+<h3>Đặt xe trên trợ lý đã là chốt đơn chưa?</h3>
+<p>Chưa. Trợ lý giúp bạn tìm hiểu và chuẩn bị; dòng xe, giá, khoản đặt trước và lịch nhận được cửa hàng xác nhận trực tiếp.</p>
+
+<h3>Tôi tải ứng dụng này ở đâu?</h3>
+<p>Không cần tải. Đây là ứng dụng web chạy trong trình duyệt, bạn có thể thêm trang vào màn hình chính điện thoại nếu muốn mở nhanh.</p>
+
+<h2>Kết luận</h2>
+
+<p>Dùng ứng dụng thuê xe máy cho khách nước ngoài hiệu quả nhất khi bạn viết trọn câu tiếng Anh, đưa đủ bốn thông tin ngay từ đầu và chụp lại phương án trước khi gọi chốt. Mọi giá đều là tham khảo và được {{ business.display_name }} xác nhận khi đặt. Xem thêm hướng dẫn trong mục <a href="/blog/app/">ứng dụng thuê xe</a> hoặc mở <a href="/">trang chủ</a> để bắt đầu trò chuyện.</p>
