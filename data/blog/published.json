@@ -14340,6 +14340,150 @@
         "Người thuê xe ở Hà Nội gõ tìm kiếm theo những cách rất \"Hà Nội\": \"xe ga gần Bồ Đề\", \"thue xe pho co toi nay\", \"Vision giá tuần\", hay một câu tiếng Anh pha tiếng Việt của khách du lịch như \"scooter Old Quarter giao khách sạn\". Một ô tìm kiếm chỉ biết khớp chữ sẽ bỏ lỡ một nửa số câu hỏi kiểu này. Hybrid search, tức tìm kiếm lai giữa khớp từ khóa và khớp ý nghĩa, là cách để một ứng dụng thuê xe hiểu được cả tên phố chính xác lẫn nhu cầu nói bằng lời thường. Bài này giải thích hybrid search qua chính những câu hỏi người dùng ở Hà Nội hay gõ, và cách bạn đặt câu để nhận được kết quả sát nhất.",
         "Phần nền tảng về khái niệm, khác biệt giữa hai lớp tìm kiếm và vì sao ứng dụng thuê xe cần cả hai đã có trong bài tìm hiểu hybrid search trong ứng dụng thuê xe . Ở đây chúng ta đi vào bối cảnh địa phương."
       ]
+    },
+    {
+      "article_id": "BA-1003",
+      "category": "APP",
+      "slug": "cau-hoi-thuong-gap-ve-app-thue-xe-tai-ha-noi",
+      "title": "Câu Hỏi Thường Gặp về App Thuê xe Tại Hà Nội",
+      "description": "Bài này gom những câu hỏi thường gặp về app thuê xe tại Hà Nội mà khách nhắn cho chúng tôi nhiều nhất, và trả lời theo đúng bối cảnh thủ đô: xe được",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cau-hoi-thuong-gap-ve-app-thue-xe-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Bài này gom những câu hỏi thường gặp về app thuê xe tại Hà Nội mà khách nhắn cho chúng tôi nhiều nhất, và trả lời theo đúng bối cảnh thủ đô: xe được nhận ở đâu, giao tới những khu nào, giá tham khảo bao nhiêu, cần chuẩn bị gì trước khi ra đường phố đông như Hà Nội. Nếu bạn đang phân vân có nên dùng trợ lý MotoAI trên website thay vì gọi điện ngay, đọc hết bài sẽ giúp bạn biết công cụ này làm được gì và chỗ nào vẫn cần con người xác nhận.",
+        "MotoAI có phải ứng dụng cần tải về máy không? Không. MotoAI là một trợ lý trực tuyến chạy ngay trên website của cửa hàng, bạn mở trình duyệt trên điện thoại hoặc máy tính là dùng được. Không cần cài đặt, không chiếm bộ nhớ, nên điện thoại đời cũ cũng truy cập bình thường."
+      ]
+    },
+    {
+      "article_id": "BA-1005",
+      "category": "EV",
+      "slug": "chi-phi-dien-khi-thue-xe-dien-mua-he",
+      "title": "Chi Phí Điện Khi Thuê xe Điện Mùa hè",
+      "description": "Chi phí điện khi thuê xe điện mùa hè thường không nằm ở con số trên hóa đơn mà ở những thói quen nhỏ quanh việc sạc: cắm sạc lúc pin còn nóng hầm",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chi-phi-dien-khi-thue-xe-dien-mua-he.body.html",
+      "knowledge_chunks": [
+        "Chi phí điện khi thuê xe điện mùa hè thường không nằm ở con số trên hóa đơn mà ở những thói quen nhỏ quanh việc sạc: cắm sạc lúc pin còn nóng hầm hập, để xe phơi nắng cả buổi trưa, hay phải nhờ sạc ở homestay vào đúng mùa nhà nào cũng bật điều hòa. Bài viết này giúp bạn hiểu mùa nóng tác động tới tiền điện và độ bền pin ra sao, đồng thời đưa ra cách tính, cách hỏi và cách sạc để chuyến đi tháng sáu, tháng bảy ở Hà Nội không phát sinh khoản nào bất ngờ.",
+        "Bản thân giá thuê xe điện không đổi chỉ vì trời nóng; xe điện, xe máy điện và xe đạp điện tại cửa hàng đều được báo giá theo hình thức liên hệ. Thứ thay đổi là những khoản xoay quanh việc sạc, và chúng có ba nguồn chính."
+      ]
+    },
+    {
+      "article_id": "BA-1004",
+      "category": "RENT",
+      "slug": "chon-xe-theo-muc-dich-su-dung-cho-sinh-vien",
+      "title": "Chọn xe Theo Mục Đích sử Dụng Cho Sinh Viên",
+      "description": "Chọn xe theo mục đích sử dụng cho sinh viên nghe đơn giản, nhưng thực tế nhiều bạn thuê nhầm: thuê xe ga đắt tiền chỉ để đi học cách phòng trọ hai",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chon-xe-theo-muc-dich-su-dung-cho-sinh-vien.body.html",
+      "knowledge_chunks": [
+        "Chọn xe theo mục đích sử dụng cho sinh viên nghe đơn giản, nhưng thực tế nhiều bạn thuê nhầm: thuê xe ga đắt tiền chỉ để đi học cách phòng trọ hai cây số, hoặc thuê xe số rẻ rồi phải chở bạn và đồ đạc chuyển trọ vất vả. Bài viết này đi theo từng nhu cầu cụ thể của đời sống sinh viên ở Hà Nội, từ lên giảng đường, đi làm thêm, tới về quê hay đi chơi cuối tuần, để bạn ghép đúng chiếc xe với đúng việc và không trả tiền cho thứ mình không dùng.",
+        "Trước khi hỏi giá, hãy lấy giấy bút ghi lại một tuần bình thường của bạn. Thói quen này tốn năm phút nhưng giúp bạn tránh được phần lớn quyết định cảm tính."
+      ]
+    },
+    {
+      "article_id": "BA-1007",
+      "category": "SAFE",
+      "slug": "deo-non-dung-cach-tom-tat",
+      "title": "Đeo Nón Đúng Cách Tóm Tắt",
+      "description": "Đeo nón đúng cách tóm tắt lại chỉ gồm vài động tác, nhưng đa số người đi xe máy ở Hà Nội vẫn bỏ sót ít nhất một bước: vành nón đẩy ngược lên trán,",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/deo-non-dung-cach-tom-tat.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1009",
+      "category": "APP",
+      "slug": "dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi-tai-ha-noi",
+      "title": "Dùng Ứng Dụng Thuê xe Khi đi du Lịch Hà Nội Tại Hà Nội",
+      "description": "Phần lớn hướng dẫn về việc dùng ứng dụng thuê xe khi đi du lịch Hà Nội tại Hà Nội đều nói về khâu đặt trước từ nhà. Bài này đi theo hướng ngược lại:",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Phần lớn hướng dẫn về việc dùng ứng dụng thuê xe khi đi du lịch Hà Nội tại Hà Nội đều nói về khâu đặt trước từ nhà. Bài này đi theo hướng ngược lại: bạn đã đặt chân tới thủ đô, đang ngồi trong phòng khách sạn ở phố cổ hoặc homestay bên Long Biên, và muốn dùng trợ lý MotoAI trên website để xử lý mọi việc phát sinh trong lúc đang ở đây, từ hỏi xe ngay trong ngày, đổi kế hoạch vì trời mưa, tới thêm ngày khi lỡ mê thành phố.",
+        "Bạn không cần tải gì về máy. MotoAI là một trợ lý trực tuyến trên website, mở bằng trình duyệt điện thoại là dùng được, kể cả khi bạn chỉ có Wi-Fi khách sạn hoặc sim du lịch dung lượng nhỏ."
+      ]
+    },
+    {
+      "article_id": "BA-1006",
+      "category": "GUIDE",
+      "slug": "gia-han-thoi-gian-thue-nhanh-gon",
+      "title": "Gia Hạn Thời Gian Thuê Nhanh Gọn",
+      "description": "Gia hạn thời gian thuê nhanh gọn không đòi hỏi thủ tục phức tạp, nhưng đòi hỏi bạn gửi đúng thông tin vào đúng lúc. Nhiều khách mất cả buổi chỉ vì",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/gia-han-thoi-gian-thue-nhanh-gon.body.html",
+      "knowledge_chunks": [
+        "Gia hạn thời gian thuê nhanh gọn không đòi hỏi thủ tục phức tạp, nhưng đòi hỏi bạn gửi đúng thông tin vào đúng lúc. Nhiều khách mất cả buổi chỉ vì nhắn \"cho em thêm vài hôm nhé\" rồi phải trả lời thêm năm câu hỏi của nhân viên. Bài viết này đưa ra một mẫu tin nhắn gom đủ ý, một mốc thời gian dễ nhớ và danh sách những gì cần xác nhận lại, để toàn bộ việc gia hạn gói gọn trong vài phút.",
+        "Lý do gia hạn thường chậm là thông tin đến từng mảnh. Khi bạn gửi một lần đủ năm ý dưới đây, nhân viên có thể kiểm tra lịch xe và trả lời ngay mà không cần hỏi lại."
+      ]
+    },
+    {
+      "article_id": "BA-1001",
+      "category": "SAFE",
+      "slug": "quy-dinh-mu-bao-hiem-tre-em-tom-tat",
+      "title": "Quy Định mũ Bảo Hiểm Trẻ em Tóm Tắt",
+      "description": "Bạn cần nắm nhanh quy định mũ bảo hiểm trẻ em trước khi chở con ra đường mà không có thời gian đọc nguyên văn luật? Bản tóm tắt này gom mọi thứ quan",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/quy-dinh-mu-bao-hiem-tre-em-tom-tat.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1002",
+      "category": "LOCAL",
+      "slug": "thanh-hoa-va-xe-duong-dai-cuoi-tuan",
+      "title": "Thanh Hóa và xe Đường Dài Cuối Tuần",
+      "description": "Thanh Hóa và xe đường dài cuối tuần là bài toán khác hẳn một chuyến đi thong thả giữa tuần: bạn chỉ có thứ Bảy và Chủ nhật, quốc lộ đông xe khách và",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thanh-hoa-va-xe-duong-dai-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Thanh Hóa và xe đường dài cuối tuần là bài toán khác hẳn một chuyến đi thong thả giữa tuần: bạn chỉ có thứ Bảy và Chủ nhật, quốc lộ đông xe khách và xe tải, còn chiều Chủ nhật là lúc cả dòng người cùng đổ về Hà Nội. Bài viết này tập trung vào cách xếp lịch nhận xe, chọn giờ chạy và chia chặng sao cho hai ngày nghỉ vẫn đủ để tắm biển Sầm Sơn hay ghé Thành nhà Hồ mà không phải phóng nhanh lúc về.",
+        "Cửa hàng mở cửa trong khung {{ business.hours.display }}, nên nếu bạn muốn rời Hà Nội lúc trời còn mát, việc nhận xe vào sáng thứ Bảy sẽ làm mất đi khoảng thời gian đẹp nhất để chạy. Cách hợp lý là nhận xe từ chiều hoặc tối thứ Sáu, kiểm tra kỹ và để xe ở chỗ gửi an toàn gần nhà, sáng hôm sau chỉ việc đổ đầy xăng rồi lên đường."
+      ]
+    },
+    {
+      "article_id": "BA-1010",
+      "category": "RENT",
+      "slug": "thue-xe-so-hay-xe-ga-cho-nguoi-moi-cho-sinh-vien",
+      "title": "Thuê xe số Hay xe ga Cho Người Mới Cho Sinh Viên",
+      "description": "Thuê xe số hay xe ga cho người mới cho sinh viên là câu hỏi chúng tôi nhận nhiều nhất vào đầu mỗi năm học, khi các bạn tân sinh viên vừa có bằng A1,",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-so-hay-xe-ga-cho-nguoi-moi-cho-sinh-vien.body.html",
+      "knowledge_chunks": [
+        "Thuê xe số hay xe ga cho người mới cho sinh viên là câu hỏi chúng tôi nhận nhiều nhất vào đầu mỗi năm học, khi các bạn tân sinh viên vừa có bằng A1, chưa từng tự lái giữa phố Hà Nội và phải tự quản lý từng đồng tiền tiêu vặt. Bài viết này không so sánh hai loại xe một cách chung chung, mà đặt chúng vào hoàn cảnh cụ thể của người vừa tập lái và đang sống bằng ngân sách sinh viên, để bạn chọn được chiếc xe vừa an toàn vừa không làm thủng ví.",
+        "\"Người mới\" không phải ai cũng giống nhau. Xác định đúng mình đang ở đâu sẽ quyết định một nửa câu trả lời."
+      ]
+    },
+    {
+      "article_id": "BA-1008",
+      "category": "LOCAL",
+      "slug": "trang-an-ride-cuoi-tuan",
+      "title": "Tràng an Ride Cuối Tuần",
+      "description": "Tràng An ride cuối tuần là lựa chọn quen thuộc của dân văn phòng Hà Nội muốn đổi gió mà không phải xin nghỉ phép: chạy chừng hai tiếng là đã thấy núi",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/trang-an-ride-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Tràng An ride cuối tuần là lựa chọn quen thuộc của dân văn phòng Hà Nội muốn đổi gió mà không phải xin nghỉ phép: chạy chừng hai tiếng là đã thấy núi đá vôi, ruộng lúa và bến thuyền. Nhưng thứ Bảy, Chủ nhật cũng là lúc bến thuyền đông nhất, bãi gửi xe chật nhất và quốc lộ đông xe khách nhất. Bài viết này chỉ tập trung vào chuyện làm sao để một chuyến xe máy cuối tuần đi Tràng An vẫn thong thả, tránh được dòng người và về Hà Nội an toàn.",
+        "Không có quy luật cố định, nhưng kinh nghiệm chung là sáng thứ Bảy thường dễ chịu hơn trưa Chủ nhật, vì nhiều đoàn khách và gia đình chọn đi Chủ nhật rồi về luôn trong ngày. Ngoài ra, các dịp lễ, cuối tuần đầu tháng hay mùa lúa chín thường đông hơn hẳn."
+      ]
     }
   ]
 }
