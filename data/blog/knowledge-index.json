@@ -20321,6 +20321,166 @@
       "url": "/blog/app/ung-dung-thue-xe-co-an-toan-khong-cau-hoi-thuong-gap/",
       "category": "APP",
       "text": "Các câu hỏi dưới đây được nhóm theo từng loại rủi ro để bạn tra nhanh. Phân tích đầy đủ từng lớp an toàn có trong bài nền ứng dụng thuê xe có an toàn không ."
+    },
+    {
+      "id": "BA-1760:c1",
+      "article_id": "BA-1760",
+      "title": "Chọn Thời Điểm Thuê xe Bằng Ứng Dụng Tận Nơi",
+      "url": "/blog/app/chon-thoi-diem-thue-xe-bang-ung-dung-tan-noi/",
+      "category": "APP",
+      "text": "Khi bạn tự đến cửa hàng lấy xe, sai lệch vài chục phút gần như không gây hậu quả gì. Nhưng khi xe được mang tới tận cửa khách sạn, văn phòng hay phòng trọ, thời điểm trở thành một cuộc hẹn hai chiều: người giao phải sắp xếp tuyến đường, còn bạn phải có mặt, mang đủ giấy tờ và sẵn sàng kiểm tra xe. Bài này tập trung đúng vào chuyện chọn thời điểm thuê xe bằng ứng dụng tận nơi, tức là dùng trợ lý trên website để tìm khung giờ giao hợp lý, chốt với cửa hàng đúng lúc và tránh những buổi hẹn bị lỡ chỉ vì tính sai giờ."
+    },
+    {
+      "id": "BA-1760:c2",
+      "article_id": "BA-1760",
+      "title": "Chọn Thời Điểm Thuê xe Bằng Ứng Dụng Tận Nơi",
+      "url": "/blog/app/chon-thoi-diem-thue-xe-bang-ung-dung-tan-noi/",
+      "category": "APP",
+      "text": "Nguyên tắc nền cần nhớ trước tiên: việc giao xe chỉ diễn ra trong giờ mở cửa {{ business.hours.display }}, còn thời gian giao và phí giao luôn phải được cửa hàng xác nhận trước khi bạn chốt đặt. Mọi tính toán bên dưới đều xoay quanh khung giờ đó."
+    },
+    {
+      "id": "BA-1756:c1",
+      "article_id": "BA-1756",
+      "title": "đi Phố cổ Bằng xe Máy Mùa Thu",
+      "url": "/blog/dia-phuong/di-pho-co-bang-xe-may-mua-thu/",
+      "category": "LOCAL",
+      "text": "Phố cổ Hà Nội đổi sắc rõ nhất vào mùa thu. Những gánh hàng rong bắt đầu bày cốm xanh gói lá sen, các cửa hàng trên phố Hàng Mã treo kín đèn lồng khi Trung thu đến gần, và buổi sáng trên các con phố hẹp có thêm chút se lạnh khiến ly trà nóng vỉa hè trở nên hấp dẫn. Đi phố cổ bằng xe máy mùa thu vì thế là một trải nghiệm khác hẳn những tháng hè oi bức, nhưng cũng đòi hỏi bạn tính toán kỹ hơn, vì đây là giai đoạn phố cổ đông nhất trong năm. Bài viết này giúp bạn chọn đường vào, chọn thời điểm, lên lộ trình và gửi xe đúng chỗ."
+    },
+    {
+      "id": "BA-1756:c2",
+      "article_id": "BA-1756",
+      "title": "đi Phố cổ Bằng xe Máy Mùa Thu",
+      "url": "/blog/dia-phuong/di-pho-co-bang-xe-may-mua-thu/",
+      "category": "LOCAL",
+      "text": "Nếu bạn nhận xe ở khu Bồ Đề, Long Biên, quãng đường vào phố cổ chỉ là một lần qua sông Hồng. Có hai lựa chọn chính:"
+    },
+    {
+      "id": "BA-1759:c1",
+      "article_id": "BA-1759",
+      "title": "du Lịch Hoàn Kiếm Bằng xe Máy Mùa Thu",
+      "url": "/blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-mua-thu/",
+      "category": "LOCAL",
+      "text": "Mùa thu là khoảng thời gian dễ chịu nhất để du lịch Hoàn Kiếm bằng xe máy. Cái nóng hầm hập của mùa hè đã dịu, gió heo may bắt đầu thổi qua mặt hồ, hàng cây trên các phố cũ chuyển sang sắc vàng nhạt, và mùi hoa sữa xuất hiện dọc vài tuyến đường vào buổi tối. Chạy xe chậm quanh quận trung tâm lúc này không còn là chuyện chịu nắng, mà là cách ngắm thành phố ở nhịp vừa đủ. Bài viết gợi ý cách chọn giờ, lộ trình, trang phục và chỗ gửi xe để chuyến dạo thu ở Hoàn Kiếm trọn vẹn nhất."
+    },
+    {
+      "id": "BA-1759:c2",
+      "article_id": "BA-1759",
+      "title": "du Lịch Hoàn Kiếm Bằng xe Máy Mùa Thu",
+      "url": "/blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-mua-thu/",
+      "category": "LOCAL",
+      "text": "Thu Hà Nội thường được tính từ khoảng tháng chín đến tháng mười một. Đầu mùa vẫn còn vài cơn mưa rào bất chợt, giữa mùa là quãng trời trong và hanh nhẹ, cuối mùa thì sáng sớm se lạnh. Với người đi xe máy, điều này có nghĩa là:"
+    },
+    {
+      "id": "BA-1755:c1",
+      "article_id": "BA-1755",
+      "title": "Giá Thuê xe Máy Theo Ngày Cuối Tuần",
+      "url": "/blog/thue-xe/gia-thue-xe-may-theo-ngay-cuoi-tuan/",
+      "category": "RENT",
+      "text": "Phần lớn các chuyến thuê xe ngắn rơi vào cuối tuần, và câu hỏi đầu tiên luôn là giá thuê xe máy theo ngày cuối tuần bao nhiêu, tổng cộng hết bao nhiêu cho cả thứ bảy lẫn chủ nhật. Câu trả lời không chỉ nằm ở con số trên bảng giá, mà còn ở cách bạn đếm ngày, giờ nhận xe, giờ trả xe và những khoản đi kèm. Bài này giúp bạn tự ước tính chi phí cho một chuyến cuối tuần điển hình, biết cần hỏi gì để xác nhận giá, và tránh những khoản phát sinh không đáng có."
+    },
+    {
+      "id": "BA-1755:c2",
+      "article_id": "BA-1755",
+      "title": "Giá Thuê xe Máy Theo Ngày Cuối Tuần",
+      "url": "/blog/thue-xe/gia-thue-xe-may-theo-ngay-cuoi-tuan/",
+      "category": "RENT",
+      "text": "Các mức sau là giá tham khảo, cần xác nhận lại với cửa hàng hoặc xem trang bảng giá thuê xe trước khi đặt:"
+    },
+    {
+      "id": "BA-1754:c1",
+      "article_id": "BA-1754",
+      "title": "Quy Trình tư Vấn tự Động Chọn xe Tận Nơi",
+      "url": "/blog/app/quy-trinh-tu-van-tu-dong-chon-xe-tan-noi/",
+      "category": "APP",
+      "text": "Tư vấn tự động chọn xe thường được hình dung như một cuộc trò chuyện ngắn: bạn nói nhu cầu, trợ lý gợi ý một dòng xe. Nhưng khi chiếc xe đó sẽ được mang đến tận địa chỉ của bạn, quy trình cần thêm vài mắt xích: khu vực giao có nằm trong phạm vi phục vụ không, khung giờ nào khả thi, ai sẽ nhận xe và cần chuẩn bị gì trước khi người giao đến. Bài này mô tả quy trình tư vấn tự động chọn xe tận nơi theo từng bước, chỉ ra đâu là phần trợ lý làm được, đâu là phần nhân viên cửa hàng phải xác nhận, để bạn đi từ câu hỏi đầu tiên đến lúc cầm chìa khóa mà không bị đứt quãng."
+    },
+    {
+      "id": "BA-1754:c2",
+      "article_id": "BA-1754",
+      "title": "Quy Trình tư Vấn tự Động Chọn xe Tận Nơi",
+      "url": "/blog/app/quy-trinh-tu-van-tu-dong-chon-xe-tan-noi/",
+      "category": "APP",
+      "text": "Phiên bản cơ bản của quy trình này, khi bạn tự đến cửa hàng, được trình bày trong bài quy trình tư vấn tự động chọn xe . Phần dưới đây tập trung vào những điểm khác biệt khi xe được giao đến bạn."
+    },
+    {
+      "id": "BA-1752:c1",
+      "article_id": "BA-1752",
+      "title": "Thuê xe Máy Giá rẻ Cuối Tuần",
+      "url": "/blog/thue-xe/thue-xe-may-gia-re-cuoi-tuan/",
+      "category": "RENT",
+      "text": "Thuê xe máy giá rẻ cuối tuần không có nghĩa là săn một mức giá đặc biệt hay chọn chiếc xe cũ nhất. Cách tiết kiệm bền vững là chọn đúng dòng xe cho nhu cầu, canh giờ nhận trả để không bị tính thêm ngày, tránh các khoản phát sinh và chỉ trả tiền cho những gì bạn thực sự dùng. Bài này dành cho người muốn giữ tổng chi phí hai ngày cuối tuần ở mức thấp nhất có thể mà vẫn đi lại an toàn, thoải mái."
+    },
+    {
+      "id": "BA-1752:c2",
+      "article_id": "BA-1752",
+      "title": "Thuê xe Máy Giá rẻ Cuối Tuần",
+      "url": "/blog/thue-xe/thue-xe-may-gia-re-cuoi-tuan/",
+      "category": "RENT",
+      "text": "Hai chiếc xe có giá ngày giống nhau vẫn có thể cho ra tổng chi phí rất khác nhau sau một cuối tuần. Tổng chi phí bao gồm:"
+    },
+    {
+      "id": "BA-1753:c1",
+      "article_id": "BA-1753",
+      "title": "Thuê xe Máy Quanh Long Biên Mùa Thu",
+      "url": "/blog/dia-phuong/thue-xe-may-quanh-long-bien-mua-thu/",
+      "category": "LOCAL",
+      "text": "Người Hà Nội hay nói mùa thu đẹp nhất là ở trong phố, nhưng ai từng chạy xe dọc đê sông Hồng phía Long Biên vào một buổi chiều tháng mười sẽ thấy bờ đông của thành phố cũng có một mùa thu rất riêng: trời cao, gió từ mặt sông thổi lên mát rượi, những vườn hoa trên bãi bồi bắt đầu vào vụ và ánh nắng muộn chiếu nghiêng qua cây cầu sắt hơn trăm năm tuổi. Thuê xe máy quanh Long Biên mùa thu là cách gọn nhất để tận hưởng khoảng không gian đó mà không cần đi xa. Bài viết gợi ý cách nhận xe, các cung đường thu, khung giờ nên đi và những sai lầm nên tránh."
+    },
+    {
+      "id": "BA-1753:c2",
+      "article_id": "BA-1753",
+      "title": "Thuê xe Máy Quanh Long Biên Mùa Thu",
+      "url": "/blog/dia-phuong/thue-xe-may-quanh-long-bien-mua-thu/",
+      "category": "LOCAL",
+      "text": "Cửa hàng nằm ở {{ business.address.full }}, ngay trong khu Bồ Đề, nên nếu bạn ở quanh Long Biên, Gia Lâm, việc tự đến lấy xe chỉ mất vài phút. Nếu bạn ở phía bên kia sông như Hoàn Kiếm, Ba Đình hay Tây Hồ, có thể hỏi về việc giao xe đến chỗ ở. Việc giao chỉ thực hiện trong giờ mở cửa {{ business.hours.display }}, thời gian và phí giao được cửa hàng xác nhận trước khi bạn chốt."
+    },
+    {
+      "id": "BA-1758:c1",
+      "article_id": "BA-1758",
+      "title": "Thuê xe Máy Theo Tuần Cuối Tuần",
+      "url": "/blog/thue-xe/thue-xe-may-theo-tuan-cuoi-tuan/",
+      "category": "RENT",
+      "text": "Thuê xe máy theo tuần cuối tuần nghe như hai khái niệm ngược nhau, nhưng thực tế đây là một nhu cầu rất phổ biến: bạn đến Hà Nội vào thứ bảy, ở lại đến thứ bảy hoặc chủ nhật tuần sau, và cần một chiếc xe cho cả quãng đó. Cũng có người chỉ định thuê từ thứ sáu đến hết chủ nhật, rồi phát hiện ra lịch trình kéo dài thêm vài ngày. Bài này giúp bạn quyết định khi nào nên chọn gói tuần với mốc nhận trả rơi vào cuối tuần, cách tính để không trả thừa, và những việc cần làm vào sáng thứ bảy khi nhận xe."
+    },
+    {
+      "id": "BA-1758:c2",
+      "article_id": "BA-1758",
+      "title": "Thuê xe Máy Theo Tuần Cuối Tuần",
+      "url": "/blog/thue-xe/thue-xe-may-theo-tuan-cuoi-tuan/",
+      "category": "RENT",
+      "text": "Nếu bạn chỉ cần xe đúng hai ngày thứ bảy và chủ nhật, giá theo ngày thường hợp lý hơn. Gói tuần bắt đầu có lợi khi số ngày dùng xe vượt qua một ngưỡng nhất định, phần tính toán dưới đây sẽ cho bạn thấy ngưỡng đó."
+    },
+    {
+      "id": "BA-1751:c1",
+      "article_id": "BA-1751",
+      "title": "Tính Năng Tìm Hiểu Thủ Tục Trong App Tận Nơi",
+      "url": "/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app-tan-noi/",
+      "category": "APP",
+      "text": "Ở quầy cửa hàng, nếu thiếu một giấy tờ, bạn có thể hỏi ngay nhân viên và tìm cách xử lý tại chỗ. Khi xe được giao đến tận nhà hay khách sạn, buổi bàn giao diễn ra ngắn hơn, người giao còn lịch khác, và mọi thiếu sót đều có thể khiến buổi hẹn phải dời. Vì vậy, tính năng tìm hiểu thủ tục trong app tận nơi, tức phần hỏi đáp về thủ tục của trợ lý trên website, trở nên đặc biệt hữu ích: bạn tra cứu trước những gì cần chuẩn bị, những gì sẽ được kiểm tra và những gì cần ký, để khi người giao đến, mọi việc xong trong một lần."
+    },
+    {
+      "id": "BA-1751:c2",
+      "article_id": "BA-1751",
+      "title": "Tính Năng Tìm Hiểu Thủ Tục Trong App Tận Nơi",
+      "url": "/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app-tan-noi/",
+      "category": "APP",
+      "text": "Về bản chất, giấy tờ và điều kiện thuê không thay đổi. Điểm khác nằm ở bối cảnh:"
+    },
+    {
+      "id": "BA-1757:c1",
+      "article_id": "BA-1757",
+      "title": "Ứng Dụng hỗ Trợ Thuê xe Theo Tháng Tận Nơi",
+      "url": "/blog/app/ung-dung-ho-tro-thue-xe-theo-thang-tan-noi/",
+      "category": "APP",
+      "text": "Thuê xe cả tháng thường đi kèm một hoàn cảnh cụ thể: bạn vừa chuyển đến Hà Nội làm việc, đang ở nhà thuê chưa ổn định, hoặc có một dự án vài tuần ở nội thành. Trong những hoàn cảnh đó, việc tự băng qua thành phố để lấy xe không phải lúc nào cũng tiện. Ứng dụng hỗ trợ thuê xe theo tháng tận nơi, cụ thể là trợ lý trên website của cửa hàng, giúp bạn chuẩn bị toàn bộ thông tin trước, để buổi giao xe đến địa chỉ của bạn diễn ra gọn trong một lần gặp. Bài viết đi theo trình tự một tháng thuê: trước khi đặt, buổi giao xe, trong tháng và lúc kết thúc."
+    },
+    {
+      "id": "BA-1757:c2",
+      "article_id": "BA-1757",
+      "title": "Ứng Dụng hỗ Trợ Thuê xe Theo Tháng Tận Nơi",
+      "url": "/blog/app/ung-dung-ho-tro-thue-xe-theo-thang-tan-noi/",
+      "category": "APP",
+      "text": "Điểm chung của các nhóm này là địa chỉ nhận xe nằm trong khu vực cửa hàng phục vụ: Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội."
     }
   ]
 }
