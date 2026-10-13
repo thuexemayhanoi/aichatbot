@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v66">
+  <title>Tính lộ Trình Thuê xe Theo Ngày Nhanh Gọn</title>
+  <meta name="description" content="Không phải ai cũng có cả buổi để ngồi vạch lộ trình. Nhiều người chỉ quyết định thuê xe vào tối hôm trước, sáng hôm sau đã muốn lên đường. Bài viết">
+  <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay-nhanh-gon/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Tính lộ Trình Thuê xe Theo Ngày Nhanh Gọn">
+  <meta property="og:description" content="Không phải ai cũng có cả buổi để ngồi vạch lộ trình. Nhiều người chỉ quyết định thuê xe vào tối hôm trước, sáng hôm sau đã muốn lên đường. Bài viết">
+  <meta property="og:url" content="https://chatbot.thuexemaynguyentu.com/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay-nhanh-gon/">
+  <meta property="og:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tính lộ Trình Thuê xe Theo Ngày Nhanh Gọn">
+  <meta name="twitter:description" content="Không phải ai cũng có cả buổi để ngồi vạch lộ trình. Nhiều người chỉ quyết định thuê xe vào tối hôm trước, sáng hôm sau đã muốn lên đường. Bài viết">
+  <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=66">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=66">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/blog/">Cẩm nang</a>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true" aria-current="page">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/app/">📱 Ứng Dụng</a>
+            <a href="/blog/huong-dan/" aria-current="page">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-tinh-lo-trinh-thue-xe-theo-ngay-nhanh-gon">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/">Agent</a> › <a href="/blog/">Cẩm nang</a> › <a href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a> › <a href="/blog/huong-dan/">Hướng Dẫn</a> › <a href="/blog/huong-dan/thu-tuc/">Thủ Tục</a> › <span>Tính lộ Trình Thuê xe Theo Ngày Nhanh Gọn</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/blog/huong-dan/">Hướng Dẫn</a>
+        <a class="blog-chip" href="/blog/huong-dan/thu-tuc/">Thủ Tục</a>
+        <a class="blog-chip blog-chip-parent" href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+      </p>
+      <p class="blog-screen-label">Hướng Dẫn</p>
+      <h1 class="blog-screen-title">Tính lộ Trình Thuê xe Theo Ngày Nhanh Gọn</h1>
+      <p class="blog-screen-lead">Không phải ai cũng có cả buổi để ngồi vạch lộ trình. Nhiều người chỉ quyết định thuê xe vào tối hôm trước, sáng hôm sau đã muốn lên đường. Bài viết</p>
+      <p class="byline">MotoAI Editorial · 2026-10-13 · Hướng Dẫn · 7 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Không phải ai cũng có cả buổi để ngồi vạch lộ trình. Nhiều người chỉ quyết định thuê xe vào tối hôm trước, sáng hôm sau đã muốn lên đường. Bài viết</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#nguyen-tac-15-phut-ba-cau-hoi-truoc-khi-mo-ban-do">Nguyên tắc 15 phút: ba câu hỏi trước khi mở bản đồ</a></li>
+        <li class="toc-l2"><a href="#buoc-1-3-phut-chon-toi-da-ba-cum-diem-den">Bước 1 (3 phút): Chọn tối đa ba cụm điểm đến</a></li>
+        <li class="toc-l2"><a href="#buoc-2-5-phut-uoc-luong-thoi-gian-bang-ban-do-va-cong-he-so-du">Bước 2 (5 phút): Ước lượng thời gian bằng bản đồ và cộng hệ số dư</a></li>
+        <li class="toc-l2"><a href="#buoc-3-2-phut-kiem-tra-moc-gio-tra-xe">Bước 3 (2 phút): Kiểm tra mốc giờ trả xe</a></li>
+        <li class="toc-l2"><a href="#buoc-4-3-phut-chon-xe-va-du-tru-chi-phi">Bước 4 (3 phút): Chọn xe và dự trù chi phí</a></li>
+        <li class="toc-l2"><a href="#mau-lo-trinh-nhanh-gon-co-the-sao-chep">Mẫu lộ trình nhanh gọn có thể sao chép</a></li>
+        <li class="toc-l2"><a href="#nhung-loi-khien-lo-trinh-mot-ngay-do-vo">Những lỗi khiến lộ trình một ngày đổ vỡ</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-ve-tinh-lo-trinh-thue-xe-theo-ngay-nhanh-gon">Câu hỏi thường gặp về tính lộ trình thuê xe theo ngày nhanh gọn</a></li>
+        <li class="toc-l3"><a href="#mot-ngay-nen-di-toi-da-bao-nhieu-diem">Một ngày nên đi tối đa bao nhiêu điểm?</a></li>
+        <li class="toc-l3"><a href="#neu-lo-trinh-du-thoi-gian-thi-co-nen-giu-xe-them-ngay">Nếu lộ trình dư thời gian thì có nên giữ xe thêm ngày?</a></li>
+        <li class="toc-l3"><a href="#co-can-dat-coc-khi-thue-xe-chi-mot-ngay">Có cần đặt cọc khi thuê xe chỉ một ngày?</a></li>
+        <li class="toc-l3"><a href="#co-the-nho-tro-ly-motoai-tinh-lo-trinh-khong">Có thể nhờ trợ lý MotoAI tính lộ trình không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#nguyen-tac-15-phut-ba-cau-hoi-truoc-khi-mo-ban-do">Nguyên tắc 15 phút: ba câu hỏi trước khi mở bản đồ</a></li>
+        <li class="toc-l2"><a href="#buoc-1-3-phut-chon-toi-da-ba-cum-diem-den">Bước 1 (3 phút): Chọn tối đa ba cụm điểm đến</a></li>
+        <li class="toc-l2"><a href="#buoc-2-5-phut-uoc-luong-thoi-gian-bang-ban-do-va-cong-he-so-du">Bước 2 (5 phút): Ước lượng thời gian bằng bản đồ và cộng hệ số dư</a></li>
+        <li class="toc-l2"><a href="#buoc-3-2-phut-kiem-tra-moc-gio-tra-xe">Bước 3 (2 phút): Kiểm tra mốc giờ trả xe</a></li>
+        <li class="toc-l2"><a href="#buoc-4-3-phut-chon-xe-va-du-tru-chi-phi">Bước 4 (3 phút): Chọn xe và dự trù chi phí</a></li>
+        <li class="toc-l2"><a href="#mau-lo-trinh-nhanh-gon-co-the-sao-chep">Mẫu lộ trình nhanh gọn có thể sao chép</a></li>
+        <li class="toc-l2"><a href="#nhung-loi-khien-lo-trinh-mot-ngay-do-vo">Những lỗi khiến lộ trình một ngày đổ vỡ</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-ve-tinh-lo-trinh-thue-xe-theo-ngay-nhanh-gon">Câu hỏi thường gặp về tính lộ trình thuê xe theo ngày nhanh gọn</a></li>
+        <li class="toc-l3"><a href="#mot-ngay-nen-di-toi-da-bao-nhieu-diem">Một ngày nên đi tối đa bao nhiêu điểm?</a></li>
+        <li class="toc-l3"><a href="#neu-lo-trinh-du-thoi-gian-thi-co-nen-giu-xe-them-ngay">Nếu lộ trình dư thời gian thì có nên giữ xe thêm ngày?</a></li>
+        <li class="toc-l3"><a href="#co-can-dat-coc-khi-thue-xe-chi-mot-ngay">Có cần đặt cọc khi thuê xe chỉ một ngày?</a></li>
+        <li class="toc-l3"><a href="#co-the-nho-tro-ly-motoai-tinh-lo-trinh-khong">Có thể nhờ trợ lý MotoAI tính lộ trình không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Không phải ai cũng có cả buổi để ngồi vạch lộ trình. Nhiều người chỉ quyết định thuê xe vào tối hôm trước, sáng hôm sau đã muốn lên đường. Bài viết này đưa ra một cách tính lộ trình thuê xe theo ngày nhanh gọn, gói trong khoảng mười lăm phút, đủ để bạn biết nên thuê xe gì, đi những đâu, mất bao lâu và quan trọng nhất là về kịp trả xe. Không cần bảng tính phức tạp, chỉ cần một tờ giấy hoặc ứng dụng ghi chú và bản đồ trên điện thoại.</p>
+  
+  <h2 id="nguyen-tac-15-phut-ba-cau-hoi-truoc-khi-mo-ban-do">Nguyên tắc 15 phút: ba câu hỏi trước khi mở bản đồ</h2>
+  <p>Trước khi nhìn vào bất kỳ con đường nào, hãy trả lời nhanh ba câu hỏi. Chúng loại bỏ phần lớn những lần lên kế hoạch sai.</p>
+  <ol>
+  <li><strong>Mấy giờ nhận xe, mấy giờ phải trả?</strong> Cửa hàng làm việc trong khung 09:00 - 21:00, nên đây là khung thời gian tối đa của một ngày thuê.</li>
+  <li><strong>Có điểm nào bắt buộc phải đến không?</strong> Ví dụ một cuộc hẹn, một bữa ăn với gia đình. Điểm bắt buộc là "điểm neo" để xếp các điểm khác quanh nó.</li>
+  <li><strong>Đi một mình hay chở người, có hành lý không?</strong> Câu này quyết định loại xe.</li>
+  </ol>
+  <p>Chỉ mất hai phút để viết ra. Nếu bạn lần đầu tự lên kế hoạch, bài <a href="/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay-cho-nguoi-moi/">tính lộ trình thuê xe theo ngày cho người mới</a> giải thích kỹ từng khái niệm.</p>
+  
+  <h2 id="buoc-1-3-phut-chon-toi-da-ba-cum-diem-den">Bước 1 (3 phút): Chọn tối đa ba cụm điểm đến</h2>
+  <p>Sai lầm phổ biến nhất của chuyến đi một ngày là tham quá nhiều điểm. Cách nhanh nhất là chia danh sách thành cụm theo khu vực, rồi chỉ giữ lại tối đa ba cụm. Ví dụ với một ngày ở Hà Nội xuất phát từ Long Biên:</p>
+  <ul>
+  <li><strong>Cụm phố cổ và Hoàn Kiếm:</strong> hồ Gươm, các phố nghề, quán cà phê.</li>
+  <li><strong>Cụm Ba Đình:</strong> khu Lăng Bác, Hoàng thành, Văn Miếu.</li>
+  <li><strong>Cụm Tây Hồ:</strong> đường ven hồ, chùa, quán ăn chiều.</li>
+  </ul>
+  <p>Ba cụm đã là một ngày khá đầy. Nếu bạn muốn thêm một điểm ngoại thành, hãy bỏ bớt một cụm nội thành thay vì cố nhét vào.</p>
+  
+  <h2 id="buoc-2-5-phut-uoc-luong-thoi-gian-bang-ban-do-va-cong-he-so-du">Bước 2 (5 phút): Ước lượng thời gian bằng bản đồ và cộng hệ số dư</h2>
+  <p>Mở bản đồ trên điện thoại, nhập lần lượt từng chặng: từ điểm nhận xe đến cụm thứ nhất, từ cụm này sang cụm kia, rồi chặng cuối về điểm trả xe. Ghi lại thời gian bản đồ ước tính cho mỗi chặng.</p>
+  <p>Sau đó áp dụng quy tắc nhanh: cộng thêm khoảng một nửa thời gian chạy nếu đi vào giờ cao điểm, và khoảng một phần tư nếu đi ngoài giờ cao điểm. Đường nội thành Hà Nội rất dễ ùn tắc vào buổi sáng đi làm và chiều tan tầm, nên hệ số dư này không phải thừa. Cách cài đặt bản đồ, lưu điểm và theo dõi định vị khi lái xe có trong bài <a href="/blog/huong-dan/ban-do-va-dinh-vi-khi-thue-xe-nhanh-gon/">bản đồ và định vị khi thuê xe</a>.</p>
+  <p>Đừng quên tính thời gian dừng: mỗi cụm thường cần ít nhất một đến hai tiếng nếu bạn thực sự muốn tham quan, và thêm thời gian tìm chỗ gửi xe. Kinh nghiệm gửi xe ở các khu đông có trong bài <a href="/blog/huong-dan/do-xe-o-ha-noi-nhanh-gon/">đỗ xe ở Hà Nội</a>.</p>
+  
+  <h2 id="buoc-3-2-phut-kiem-tra-moc-gio-tra-xe">Bước 3 (2 phút): Kiểm tra mốc giờ trả xe</h2>
+  <p>Cộng toàn bộ thời gian chạy đã có hệ số dư với thời gian dừng ở các cụm. Lấy giờ nhận xe cộng tổng này, bạn sẽ có giờ dự kiến về đến điểm trả. Nếu con số đó sát 21:00, hãy cắt bớt một cụm. Một lộ trình tốt nên để dư ít nhất nửa tiếng trước giờ đóng cửa.</p>
+  <p>Lý do rất thực tế: khi trả xe, nhân viên cần thời gian kiểm tra tình trạng xe và hoàn tất thủ tục. Bạn có thể xem những việc cần làm lúc trả trong bài <a href="/blog/huong-dan/quy-trinh-tra-xe-nhanh-gon/">quy trình trả xe nhanh gọn</a>.</p>
+  
+  <h2 id="buoc-4-3-phut-chon-xe-va-du-tru-chi-phi">Bước 4 (3 phút): Chọn xe và dự trù chi phí</h2>
+  <p>Với lộ trình đã có, việc chọn xe trở nên đơn giản. Đi một mình trong nội thành, xe tay ga nhỏ là đủ. Chở thêm người hoặc mang ba lô, nên chọn xe có cốp rộng hơn. Bảng giá tham khảo theo ngày:</p>
+  <ul>
+  <li>Honda Wave (xe số): khoảng 150.000đ/ngày.</li>
+  <li>Honda Click hoặc Yamaha Mio: khoảng 150.000đ/ngày.</li>
+  <li>Honda Vision hoặc Air Blade: khoảng 200.000đ/ngày.</li>
+  </ul>
+  <p>Đây là mức tham khảo trên trang <a href="/gia-thue/">giá thuê xe</a>, giá chính xác cần cửa hàng xác nhận. Nhớ cộng thêm xăng cho cả ngày và hỏi trước về mức nhiên liệu khi nhận, khi trả, như hướng dẫn trong bài <a href="/blog/huong-dan/nhien-lieu-khi-nhan-tra-xe-nhanh-gon/">nhiên liệu khi nhận và trả xe</a>.</p>
+  
+  <h2 id="mau-lo-trinh-nhanh-gon-co-the-sao-chep">Mẫu lộ trình nhanh gọn có thể sao chép</h2>
+  <p>Dưới đây là khung bạn có thể chép vào ghi chú, chỉ cần điền thông tin của mình:</p>
+  <ol>
+  <li>Nhận xe: giờ ..., tại cửa hàng hoặc điểm giao đã thống nhất.</li>
+  <li>Cụm 1: tên ..., thời gian chạy ... phút, dừng ... giờ.</li>
+  <li>Cụm 2: tên ..., thời gian chạy ... phút, dừng ... giờ.</li>
+  <li>Cụm 3: tên ..., thời gian chạy ... phút, dừng ... giờ.</li>
+  <li>Chặng về: ... phút, giờ dự kiến đến điểm trả ...</li>
+  <li>Giờ trả xe chậm nhất: trước 21:00, dư tối thiểu 30 phút.</li>
+  </ol>
+  <p>Chụp màn hình khung này trước khi đi để không phải mở lại ghi chú khi đang ở ngoài đường.</p>
+  
+  <h2 id="nhung-loi-khien-lo-trinh-mot-ngay-do-vo">Những lỗi khiến lộ trình một ngày đổ vỡ</h2>
+  <ul>
+  <li>Xếp điểm theo thứ tự nhớ ra thay vì theo khu vực, dẫn đến chạy đi chạy lại qua cầu.</li>
+  <li>Không tính giờ cao điểm, đến cụm thứ hai đã trễ hơn một tiếng so với dự kiến.</li>
+  <li>Không dự phòng mưa, đặc biệt vào mùa hè khi giông chiều đến bất chợt.</li>
+  <li>Quên rằng giao xe tận nơi cũng chỉ diễn ra trong giờ làm việc, thời gian và phí cần xác nhận trước khi đặt.</li>
+  <li>Không mang bảo hiểm xe máy, trong khi cửa hàng không cung cấp bảo hiểm.</li>
+  </ul>
+  
+  <h2 id="cau-hoi-thuong-gap-ve-tinh-lo-trinh-thue-xe-theo-ngay-nhanh-gon">Câu hỏi thường gặp về tính lộ trình thuê xe theo ngày nhanh gọn</h2>
+  <h3 id="mot-ngay-nen-di-toi-da-bao-nhieu-diem">Một ngày nên đi tối đa bao nhiêu điểm?</h3>
+  <p>Nên giới hạn ở ba cụm điểm đến gần nhau. Nhiều hơn thế, bạn sẽ dành phần lớn thời gian ngồi trên xe thay vì tham quan.</p>
+  <h3 id="neu-lo-trinh-du-thoi-gian-thi-co-nen-giu-xe-them-ngay">Nếu lộ trình dư thời gian thì có nên giữ xe thêm ngày?</h3>
+  <p>Nếu ngày hôm sau vẫn cần đi lại, hãy so giá thuê lẻ từng ngày với gói tuần trên trang giá thuê rồi hỏi cửa hàng để chọn phương án hợp lý.</p>
+  <h3 id="co-can-dat-coc-khi-thue-xe-chi-mot-ngay">Có cần đặt cọc khi thuê xe chỉ một ngày?</h3>
+  <p>Có. Mức đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe và được báo khi đặt.</p>
+  <h3 id="co-the-nho-tro-ly-motoai-tinh-lo-trinh-khong">Có thể nhờ trợ lý MotoAI tính lộ trình không?</h3>
+  <p>Bạn có thể hỏi trợ lý trên website về loại xe phù hợp và giá tham khảo cho lịch trình của mình. Phần thời gian di chuyển cụ thể, bạn nên kiểm tra thêm bằng bản đồ.</p>
+  
+  <h2 id="ket-luan">Kết luận</h2>
+  <p>Chỉ với mười lăm phút, bạn đã có một lộ trình đủ gọn để tận hưởng trọn ngày mà vẫn trả xe đúng giờ. Khi đã chốt được loại xe, hãy liên hệ Nguyễn Tú qua 0942 467 674 để xác nhận giá và giờ nhận. Nếu muốn đọc phiên bản chi tiết hơn của phương pháp này, xem bài <a href="/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay/">tính lộ trình thuê xe theo ngày</a>.</p>
+  <p>Các hướng dẫn khác có trong <a href="/blog/huong-dan/">chuyên mục hướng dẫn thuê xe</a>, hoặc bạn có thể quay về <a href="/">trang chủ</a> để bắt đầu với trợ lý.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+          <span aria-hidden="true">→</span>
+          <a href="/blog/huong-dan/">Hướng Dẫn</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/blog/huong-dan/thu-tuc-thue-xe-may/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Thủ tục thuê xe máy: giấy tờ, đặt cọc, nhận và trả xe</h2>
+        <p>Hướng dẫn thủ tục thuê xe máy: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ, và dịch vụ giao xe tận nơi.</p>
+      </a>
+      <a class="blog-card" href="/blog/huong-dan/giay-to-can-khi-thue-xe/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Giấy tờ cần khi thuê xe máy: từ căn cước đến bằng lái quốc tế</h2>
+        <p>Giấy tờ cần khi thuê xe máy: CCCD hoặc hộ chiếu, bằng lái hạng A1, GPLX điện tử VNeID, IDP Công ước Vienna 1968 cho khách nước ngoài kèm checklist nhận xe.</p>
+      </a>
+      <a class="blog-card" href="/blog/huong-dan/huong-dan-dat-xe-nhanh/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Hướng dẫn đặt xe nhanh: chốt xe máy trong một tin nhắn</h2>
+        <p>Hướng dẫn đặt xe nhanh: bốn thông tin cần chốt trước khi gọi, mẫu tin nhắn đặt xe gửi một lần, mức cọc, giấy tờ và khung giờ nhận xe tại cửa hàng.</p>
+      </a>
+      <a class="blog-card" href="/blog/huong-dan/quy-trinh-nhan-xe/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Quy trình nhận xe máy thuê: năm bước trong mười phút</h2>
+        <p>Quy trình nhận xe máy thuê gồm năm bước: đối chiếu dòng xe và cọc, rà xe theo trình tự, chụp ảnh tình trạng, chạy thử và chốt văn bản để tránh tranh chấp lúc trả.</p>
+      </a>
+      <a class="blog-card" href="/blog/huong-dan/quy-trinh-tra-xe/">
+        <span class="cat">Hướng Dẫn</span>
+        <h2>Quy trình trả xe máy thuê: bốn bước lấy lại cọc trọn vẹn</h2>
+        <p>Quy trình trả xe máy thuê: ghi nhận hiện trạng từ lúc nhận, cân nhiên liệu về mốc ban đầu, bốn bước ở phút trả và cách xử lý trả sớm, trả muộn, gia hạn giữa chừng.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Công cụ &amp; Hướng dẫn: <a href="/blog/app/">Ứng Dụng</a> · <a href="/blog/huong-dan/">Hướng Dẫn</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/?ask=T%C3%ADnh%20l%E1%BB%99%20Tr%C3%ACnh%20Thu%C3%AA%20xe%20Theo%20Ng%C3%A0y%20Nhanh%20G%E1%BB%8Dn">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/">Agent</a></li>
+          <li><a href="/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/blog/">Cẩm nang</a></li>
+          <li><a href="/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/privacy/">Bảo Mật</a></li>
+          <li><a href="/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/">⚡ Agent</a></li>
+      <li><a href="/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/cong-cu-huong-dan/" aria-current="page">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/app/">📱 Ứng Dụng</a></li>
+            <li><a href="/blog/huong-dan/" aria-current="page">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","url":"https://chatbot.thuexemaynguyentu.com/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay-nhanh-gon/","headline":"Tính lộ Trình Thuê xe Theo Ngày Nhanh Gọn","description":"Không phải ai cũng có cả buổi để ngồi vạch lộ trình. Nhiều người chỉ quyết định thuê xe vào tối hôm trước, sáng hôm sau đã muốn lên đường. Bài viết","datePublished":"2026-10-13","dateModified":"2026-10-13","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://chatbot.thuexemaynguyentu.com/"},"mainEntityOfPage":"https://chatbot.thuexemaynguyentu.com/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay-nhanh-gon/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://chatbot.thuexemaynguyentu.com/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://chatbot.thuexemaynguyentu.com/blog/"},{"@type":"ListItem","position":3,"name":"Công cụ & Hướng dẫn","item":"https://chatbot.thuexemaynguyentu.com/blog/cong-cu-huong-dan/"},{"@type":"ListItem","position":4,"name":"Hướng Dẫn","item":"https://chatbot.thuexemaynguyentu.com/blog/huong-dan/"},{"@type":"ListItem","position":5,"name":"Thủ Tục","item":"https://chatbot.thuexemaynguyentu.com/blog/huong-dan/thu-tuc/"},{"@type":"ListItem","position":6,"name":"Tính lộ Trình Thuê xe Theo Ngày Nhanh Gọn","item":"https://chatbot.thuexemaynguyentu.com/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay-nhanh-gon/"}]}
+  </script>
+
+  <script type="module" src="/assets/js/app-shell.js?v=66"></script>
+</body>
+</html>
