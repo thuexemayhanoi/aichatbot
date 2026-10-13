@@ -1,0 +1,71 @@
+<p>"Thuê Vision ba ngày, giao đến khách sạn ở Hoàn Kiếm sáng mai thì hết bao nhiêu?" Câu hỏi này nghe đơn giản, nhưng thực ra gộp ít nhất năm thông tin khác nhau: dòng xe, số ngày, địa điểm giao, giờ giao và tổng chi phí. Khi bạn gõ câu như vậy vào trợ lý trên website của {{ business.brand }}, công cụ không trả lời bằng một con số đoán mò. Nó tách câu hỏi thành từng phần, trả lời phần nào đã có dữ liệu xác minh và chuyển phần còn lại cho nhân viên xác nhận. Hiểu được cách tách này giúp bạn đặt câu hỏi đúng ngay từ đầu, nhận câu trả lời nhanh hơn và không hiểu nhầm giá tham khảo thành giá chốt.</p>
+
+<p>Cách trợ lý đọc một câu hỏi giá thông thường, khi bạn tự đến cửa hàng nhận xe, đã được giải thích trong bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/">cách ứng dụng hiểu câu hỏi về giá xe</a>. Bài này tập trung vào phần khó hơn: câu hỏi giá có kèm yêu cầu giao xe tận nơi.</p>
+
+<h2>Một câu hỏi giá tận nơi gồm những mảnh nào</h2>
+<p>Khi đọc câu hỏi của bạn, trợ lý tìm các mảnh thông tin sau và xếp chúng vào hai nhóm: nhóm có thể trả lời ngay và nhóm cần người xác nhận.</p>
+<ul>
+<li><strong>Dòng xe:</strong> Wave, Vision, Air Blade, Click, Mio, xe điện… hoặc mô tả như "xe ga nhỏ", "xe số".</li>
+<li><strong>Thời lượng:</strong> số ngày, tuần hoặc tháng, hay một khoảng ngày cụ thể.</li>
+<li><strong>Địa điểm giao:</strong> tên khu, phường hoặc tên khách sạn.</li>
+<li><strong>Thời điểm giao:</strong> sáng mai, chiều thứ sáu, một giờ cụ thể.</li>
+<li><strong>Câu hỏi về tổng tiền:</strong> giá thuê, chi phí giao, tiền đặt cọc.</li>
+</ul>
+<p>Dòng xe và thời lượng thuộc nhóm trả lời ngay, vì cửa hàng đã có giá tham khảo được xác minh. Địa điểm, thời điểm và chi phí giao thuộc nhóm cần xác nhận.</p>
+
+<h2>Phần trợ lý trả lời được ngay: giá thuê tham khảo</h2>
+<p>Với dòng xe và thời lượng, trợ lý đối chiếu với bảng giá tham khảo. Ví dụ, nếu bạn hỏi về Honda Vision, câu trả lời sẽ dựa trên mức 200.000đ/ngày, 800.000đ đến 1.000.000đ/tuần hoặc 1.800.000đ đến 2.000.000đ/tháng. Hỏi về Honda Air Blade, mức tham khảo là 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng. Với Honda Click hoặc Yamaha Mio là 150.000đ/ngày, 600.000đ đến 700.000đ/tuần, 1.000.000đ đến 1.200.000đ/tháng, còn Honda Wave là 150.000đ/ngày.</p>
+<p>Với xe 50cc, xe máy điện và xe đạp điện, trợ lý sẽ nói rõ đây là giá liên hệ thay vì đưa ra một con số. Mọi mức giá đều kèm ghi chú "tham khảo" và cần cửa hàng xác nhận khi đặt; bạn có thể đối chiếu trên trang <a href="/gia-thue/">giá thuê</a>.</p>
+
+<h2>Phần cần nhân viên xác nhận: giao xe ở đâu, lúc nào, bao nhiêu</h2>
+<p>Đây là điểm khác biệt lớn nhất của câu hỏi tận nơi. Trợ lý không tự đưa ra chi phí giao xe, vì chi phí này phụ thuộc vào địa chỉ, thời điểm và lịch của cửa hàng trong ngày. Thay vào đó, nó làm ba việc:</p>
+<ol>
+<li><strong>Kiểm tra khu vực:</strong> địa điểm bạn nêu có nằm trong khu vực phục vụ như Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ hay nội thành Hà Nội không.</li>
+<li><strong>Kiểm tra khung giờ:</strong> giờ bạn muốn nhận có nằm trong giờ hoạt động {{ business.hours.display }} không; ngoài khung này cửa hàng không giao xe.</li>
+<li><strong>Chuyển yêu cầu:</strong> ghi nhận thông tin và hướng bạn liên hệ nhân viên để chốt thời gian, chi phí giao trước khi đặt.</li>
+</ol>
+<p>Nếu bạn muốn hiểu toàn bộ hành trình từ lúc hỏi đến lúc nhận xe tại chỗ, bài <a href="/blog/app/quy-trinh-tu-van-tu-dong-chon-xe-tan-noi/">quy trình tư vấn tự động chọn xe tận nơi</a> mô tả từng bước. Phần thủ tục khi người giao tới nơi có trong bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">giao xe tận nơi thủ tục</a>.</p>
+
+<h2>Ví dụ: cùng một nhu cầu, ba cách hỏi</h2>
+<p><strong>Cách hỏi thiếu:</strong> "Giao xe tận nơi bao nhiêu tiền?" Trợ lý sẽ phải hỏi lại bạn cần dòng xe nào, thuê bao lâu, giao ở đâu. Mất thêm vài lượt trò chuyện.</p>
+<p><strong>Cách hỏi tạm đủ:</strong> "Thuê xe ga ba ngày giao ở Tây Hồ." Trợ lý có thể gợi ý các dòng xe ga kèm giá tham khảo, xác nhận Tây Hồ nằm trong khu vực phục vụ, rồi hỏi bạn giờ nhận.</p>
+<p><strong>Cách hỏi tốt:</strong> "Thuê Air Blade từ sáng thứ năm đến sáng chủ nhật, giao ở khách sạn phố Hàng Bạc khoảng mười giờ, đặt cọc bao nhiêu?" Trợ lý trả lời ngay giá tham khảo theo ngày, xác nhận khu vực và khung giờ hợp lệ, cho biết mức cọc nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, và chuyển phần chi phí giao sang nhân viên.</p>
+<p>Mẹo hỏi gọn cho mọi loại câu hỏi giá được tổng hợp trong bài <a href="/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot/">cách hỏi giá xe nhanh bằng chatbot</a>.</p>
+
+<h2>Những gì trợ lý cố ý không nói</h2>
+<p>Một trợ lý đáng tin là trợ lý biết giới hạn của mình. Với câu hỏi giá tận nơi, công cụ trên website sẽ không:</p>
+<ul>
+<li>Tự đặt ra chi phí giao xe hay hứa thời gian giao chính xác khi chưa có nhân viên xác nhận.</li>
+<li>Hứa giao xe ngoài giờ hoạt động hoặc ngoài khu vực phục vụ.</li>
+<li>Giới thiệu chương trình khuyến mãi, vì cửa hàng không có chương trình nào như vậy.</li>
+<li>Gộp bảo hiểm vào giá, vì cửa hàng không cung cấp bảo hiểm; bạn tự chuẩn bị bảo hiểm xe máy.</li>
+<li>Hứa dịch vụ cứu hộ dọc đường.</li>
+</ul>
+<p>Nếu ở đâu đó bạn nhận được báo giá tận nơi có những lời hứa trên, hãy kiểm tra kỹ nguồn tin. Bài <a href="/blog/app/canh-giac-voi-app-thue-xe-gia-mao-tan-noi/">cảnh giác với app thuê xe giả mạo tận nơi</a> giúp bạn nhận diện các kênh không chính thức.</p>
+
+<h2>Mẹo để nhận câu trả lời đúng ngay lần đầu</h2>
+<ul>
+<li>Nêu tên dòng xe nếu bạn đã biết; nếu chưa, mô tả số người và quãng đường.</li>
+<li>Ghi rõ ngày giờ nhận và trả, tránh "mấy hôm" hay "cuối tuần" chung chung.</li>
+<li>Nói tên khu hoặc phường trước; địa chỉ chi tiết chỉ cần khi nhân viên chốt lịch.</li>
+<li>Tách riêng câu hỏi về giấy tờ để câu trả lời về giá không bị loãng.</li>
+<li>Chụp lại phần trả lời và báo giá đã xác nhận để đối chiếu lúc nhận xe.</li>
+</ul>
+<p>Với người ở Hà Nội muốn xem thêm cách trợ lý xử lý câu hỏi theo khu vực, có thể đọc bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-tai-ha-noi/">cách ứng dụng hiểu câu hỏi về giá xe tại Hà Nội</a>.</p>
+
+<h2>Câu hỏi thường gặp về cách ứng dụng hiểu câu hỏi giá xe tận nơi</h2>
+
+<h3>Vì sao trợ lý không báo luôn tổng tiền gồm cả phí giao?</h3>
+<p>Chi phí giao phụ thuộc vào địa chỉ, giờ giao và lịch của cửa hàng nên phải được nhân viên xác nhận trước khi đặt. Trợ lý chỉ báo phần giá thuê tham khảo đã được xác minh.</p>
+
+<h3>Giá trợ lý báo có phải giá chốt không?</h3>
+<p>Không. Đó là giá tham khảo; giá cuối cùng được cửa hàng xác nhận khi bạn đặt xe cho ngày cụ thể.</p>
+
+<h3>Tôi cần tải phần mềm gì để hỏi giá không?</h3>
+<p>Không cần. Trợ lý là công cụ trực tuyến chạy ngay trên website, bạn mở trình duyệt và gõ câu hỏi.</p>
+
+<h3>Hỏi giá giao xe lúc mười giờ tối có được không?</h3>
+<p>Bạn vẫn hỏi được, nhưng trợ lý sẽ cho biết cửa hàng chỉ giao trong giờ {{ business.hours.display }} và gợi ý chọn khung giờ khác.</p>
+
+<h2>Kết luận</h2>
+<p>Trợ lý trên website hiểu câu hỏi giá xe tận nơi bằng cách tách giá thuê tham khảo ra khỏi những phần cần người xác nhận như khu vực, giờ giao và chi phí giao. Hỏi càng đủ ý, bạn càng nhanh có câu trả lời rõ ràng. Khi cần chốt lịch, gọi {{ business.contact.phone_display }} để {{ business.display_name }} xác nhận chi tiết. Tìm hiểu thêm về trợ lý tại <a href="/blog/app/">chuyên mục ứng dụng</a>, hoặc bắt đầu hỏi ngay từ <a href="/">trang chủ</a>.</p>
