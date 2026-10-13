@@ -25815,6 +25815,150 @@
         "Khách nước ngoài đến Hà Nội thường rơi vào một tình huống khá đặc biệt: họ có thể lái ô tô thành thạo ở quê nhà nhưng mới cầm xe máy lần đầu, hoặc chỉ từng đi xe máy trên đường vắng chứ chưa bao giờ chen vào dòng xe nội thành. Ứng dụng thuê xe trên website của cửa hàng được thiết kế để giúp đúng nhóm này: một trợ lý trực tuyến trả lời bằng ngôn ngữ của bạn, gợi ý xe nhẹ dễ điều khiển, nhắc giấy tờ cần có và giải thích những quy tắc đi đường mà người mới hay vấp. Bài viết này chỉ cho bạn cách dùng trợ lý đó từ lúc còn ở khách sạn đến lúc trả xe, với từng bước cụ thể cho người mới biết lái.",
         "Trước hết cần nói rõ: đây là một ứng dụng web chạy ngay trên trình duyệt, bạn không phải tải gì về máy. Mở trang chủ, gõ câu hỏi bằng tiếng Anh hoặc ngôn ngữ bạn quen, trợ lý trả lời dựa trên dữ liệu thật của cửa hàng. Với người mới biết lái, nó hữu ích ở bốn việc."
       ]
+    },
+    {
+      "article_id": "BA-1434",
+      "category": "LOCAL",
+      "slug": "cao-nguyen-da-dong-van-buoi-sang",
+      "title": "Cao Nguyên đá Đồng Văn Buổi Sáng",
+      "description": "Cao nguyên đá Đồng Văn có một nhịp riêng vào buổi sáng mà người chỉ chạy xe qua ban ngày khó nhận ra. Trước bảy giờ, phố cổ Đồng Văn còn ngái ngủ,",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cao-nguyen-da-dong-van-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Cao nguyên đá Đồng Văn có một nhịp riêng vào buổi sáng mà người chỉ chạy xe qua ban ngày khó nhận ra. Trước bảy giờ, phố cổ Đồng Văn còn ngái ngủ, sương từ các khe núi tràn xuống lòng thị trấn, chỉ vài hàng phở và quán cà phê mở sớm. Đến giữa buổi, nắng rọi xuống những mái ngói âm dương, chợ nhộn nhịp và đường ra Lũng Cú hay Sà Phìn sáng rõ. Nếu bạn đi bằng xe máy và chỉ có một hoặc hai buổi sáng ở đây, cách dùng vài giờ đầu ngày sẽ quyết định bạn thấy cao nguyên đá đẹp đến đâu. Bài này đi vào chi tiết buổi sáng: thức dậy lúc nào, xe cần kiểm tra gì sau đêm lạnh, nên đi hướng nào trước và tránh những lỗi nào khi chạy trong sương.",
+        "Ở Hà Nội, sáng sớm là giờ dễ chạy xe nhất vì đường vắng. Ở Đồng Văn, sáng sớm là lúc khó chạy nhất vì sương mù và lạnh, trong khi giữa buổi sáng lại là khung giờ tốt nhất cả ngày. Thị trấn nằm trong lòng chảo, sương đọng lâu hơn trên các sườn núi xung quanh; khi bạn nhìn từ cửa sổ homestay thấy sương dày, có thể trên đèo cách đó vài cây số trời đã quang, nhưng cũng có thể ngược lại. Cách duy nhất để biết là hỏi chủ nhà, họ nhìn trời là đoán được sáng nay sương tan sớm hay muộn."
+      ]
+    },
+    {
+      "article_id": "BA-1437",
+      "category": "EV",
+      "slug": "cong-cu-uoc-tinh-quang-duong-xe-dien-mua-mua",
+      "title": "Công cụ Ước Tính Quãng Đường xe Điện Mùa Mưa",
+      "description": "Mùa mưa ở Hà Nội làm mọi con số về quãng đường của xe điện trở nên kém tin cậy. Cùng một chiếc xe, cùng một mức pin, ngày nắng bạn đi thoải mái từ",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cong-cu-uoc-tinh-quang-duong-xe-dien-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Mùa mưa ở Hà Nội làm mọi con số về quãng đường của xe điện trở nên kém tin cậy. Cùng một chiếc xe, cùng một mức pin, ngày nắng bạn đi thoải mái từ Long Biên sang Hoàn Kiếm rồi vòng lên Tây Hồ, nhưng một chiều mưa dai dẳng bạn thấy vạch pin tụt nhanh hơn hẳn chỉ sau vài phố. Lý do không nằm ở \"pin yếu\" mà ở cách bạn đi trong mưa: chậm hơn, phanh nhiều hơn, bật đèn liên tục, vòng tránh đoạn ngập, và thường chở thêm áo mưa, đồ đạc ướt nặng hơn. Bài này hướng dẫn bạn tự dựng một công cụ ước tính quãng đường riêng cho mùa mưa, chỉ bằng vài lần đo và một ghi chú trên điện thoại, để không bao giờ phải dắt xe hết pin dưới mưa.",
+        "Quãng đường thực tế của xe điện là kết quả của nhiều yếu tố cộng dồn, và mưa chạm vào gần như tất cả. Mặt đường ướt tăng lực cản lăn; gió kèm mưa làm bạn tốn năng lượng giữ tốc độ; đèn bật suốt ngày và dừng đèn đỏ lâu hơn vì dòng xe chậm; đường ngập buộc bạn đi vòng xa hơn kế hoạch. Thêm vào đó, nhiều người thuê xe lần đầu không biết thông số thật của xe, chỉ nghe \"đi được một ngày\", và con số ấy thường đến từ điều kiện lý tưởng. Thay vì tin một con số có sẵn, hãy tự đo con số của chính bạn trong chính mùa mưa."
+      ]
+    },
+    {
+      "article_id": "BA-1439",
+      "category": "SAFE",
+      "slug": "di-xe-khong-giay-phep-cau-hoi-thuong-gap",
+      "title": "đi xe Không Giấy Phép Câu Hỏi Thường Gặp",
+      "description": "Mỗi tuần, cửa hàng cho thuê xe nhận hàng chục câu hỏi xoay quanh cùng một nỗi lo: \"tôi chưa có bằng, có đi xe được không, bị bắt thì sao, có mượn",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/di-xe-khong-giay-phep-cau-hoi-thuong-gap.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1438",
+      "category": "GUIDE",
+      "slug": "giao-xe-tai-khach-san-tai-ha-noi",
+      "title": "Giao xe Tại Khách Sạn Tại Hà Nội",
+      "description": "Giao xe tại khách sạn nghe đơn giản: bạn ở đâu, xe đến đó. Nhưng ở Hà Nội, \"khách sạn\" có thể là một tòa nhà lớn ở Ba Đình với bãi xe riêng, một",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/giao-xe-tai-khach-san-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Giao xe tại khách sạn nghe đơn giản: bạn ở đâu, xe đến đó. Nhưng ở Hà Nội, \"khách sạn\" có thể là một tòa nhà lớn ở Ba Đình với bãi xe riêng, một khách sạn mini trong ngõ Phố Cổ chỉ rộng hơn chiếc xe máy một chút, hay một homestay ven hồ Tây mà người giao phải gọi điện hai lần mới tìm ra cửa. Mỗi kiểu chỗ ở kéo theo một kiểu giao xe khác nhau, cộng thêm đặc thù giao thông của từng khu. Bài này viết riêng cho người đặt giao xe tại khách sạn trong nội thành Hà Nội: chọn giờ giao hợp với khu vực, mô tả chỗ ở sao cho người giao tìm đúng, phối hợp với lễ tân, và kiểm tra xe ngay trên vỉa hè mà không gây tắc đường.",
+        "Hãy xác định chỗ ở của bạn thuộc nhóm nào trước khi nhắn cho cửa hàng, vì câu trả lời quyết định điểm hẹn, giờ hẹn và việc có cần lễ tân hỗ trợ hay không."
+      ]
+    },
+    {
+      "article_id": "BA-1440",
+      "category": "LOCAL",
+      "slug": "meo-vac-dong-cao-buoi-sang",
+      "title": "Mèo Vạc Đồng Cao Buổi Sáng",
+      "description": "Buổi sáng là phần đẹp nhất nhưng cũng dễ bị lãng phí nhất của một chuyến đi Mèo Vạc hay Đồng Cao bằng xe máy. Ở Đồng Cao, bạn thức dậy trong lều giữa",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/meo-vac-dong-cao-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Buổi sáng là phần đẹp nhất nhưng cũng dễ bị lãng phí nhất của một chuyến đi Mèo Vạc hay Đồng Cao bằng xe máy. Ở Đồng Cao, bạn thức dậy trong lều giữa thảm cỏ ướt sương, nhìn mặt trời lên từ dãy đồi phía đông rồi phải thu dọn và xuống dốc trước khi nắng gắt. Ở Mèo Vạc, buổi sáng là lúc sương còn phủ kín thung lũng, chợ phiên bắt đầu đông và cung đèo sang Đồng Văn sáng rõ nhất trong ngày. Bài viết này tập trung vào khoảng thời gian từ lúc trời hửng đến gần trưa ở hai điểm đến, để bạn biết nên dậy lúc mấy giờ, làm gì trước, kiểm tra xe ra sao sau một đêm ngoài trời và khi nào nên rời điểm nghỉ.",
+        "Người đi núi lâu năm thường xếp lịch ngược từ buổi sáng chứ không phải từ giờ xuất phát ở Hà Nội. Lý do rất thực tế: ánh sáng đẹp nhất, đường vắng nhất và đầu óc tỉnh táo nhất đều rơi vào vài giờ đầu ngày. Nếu bạn ngủ muộn, dậy trễ, phần đường khó sẽ bị đẩy vào buổi chiều, khi mưa núi hay sương đổ xuống. Với Đồng Cao, buổi sáng còn là lúc duy nhất bạn thấy rõ toàn bộ thảm cỏ trước khi mây kéo lên. Với Mèo Vạc, một buổi sáng đủng đỉnh ở chợ phiên đáng giá hơn bất kỳ điểm check-in nào trên đường."
+      ]
+    },
+    {
+      "article_id": "BA-1432",
+      "category": "GUIDE",
+      "slug": "nhan-xe-ban-dem-tai-ha-noi",
+      "title": "Nhận xe Ban Đêm Tại Hà Nội",
+      "description": "Ở Hà Nội, rất nhiều người cần xe vào buổi tối: tàu từ Sài Gòn ra ga lúc chập choạng, xe khách từ Hải Phòng về bến Gia Lâm sau giờ tan tầm, chuyến bay",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/nhan-xe-ban-dem-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Ở Hà Nội, rất nhiều người cần xe vào buổi tối: tàu từ Sài Gòn ra ga lúc chập choạng, xe khách từ Hải Phòng về bến Gia Lâm sau giờ tan tầm, chuyến bay hạ cánh Nội Bài lúc tám giờ, hay đơn giản là tan làm xong mới rảnh để đi lấy xe cho chuyến cuối tuần. Câu hỏi là: nhận xe ban đêm tại Hà Nội thực tế vận hành ra sao, khi cửa hàng chỉ mở đến 21 giờ, cầu Long Biên và cầu Chương Dương buổi tối đông, và kiểm tra xe dưới ánh đèn đường không dễ như ban ngày. Bài này đi từng bước: hiểu đúng khung giờ, chọn giữa đến cửa hàng ở Long Biên hay nhận giao tại chỗ, chuẩn bị gì để buổi nhận xe ngắn gọn, và lái về an toàn trong giao thông đêm của thành phố.",
+        "Cửa hàng làm việc theo khung {{ business.hours.display }}, nên \"nhận xe ban đêm\" có nghĩa thực tế là nhận trong khoảng từ sau bữa tối đến trước giờ đóng cửa, không phải lúc nửa đêm. Khoảng hai tiếng cuối ngày này là lúc đường trong phố đã bớt kẹt nhưng vẫn đông người đi chơi, trời đã tối hẳn vào mùa đông và chỉ vừa sập tối vào mùa hè. Hiểu đúng khung giờ giúp bạn không rơi vào cảnh đến nơi khi cửa đã đóng."
+      ]
+    },
+    {
+      "article_id": "BA-1436",
+      "category": "RENT",
+      "slug": "thue-xe-cong-ty-cho-nhan-vien-cho-gia-dinh",
+      "title": "Thuê xe Công ty Cho Nhân Viên Cho Gia Đình",
+      "description": "Có một kiểu thuê xe mà bộ phận hành chính hay gặp nhưng ít bài viết nói tới: công ty thuê xe cho nhân viên, nhưng chiếc xe không chỉ chở một người đi",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-cong-ty-cho-nhan-vien-cho-gia-dinh.body.html",
+      "knowledge_chunks": [
+        "Có một kiểu thuê xe mà bộ phận hành chính hay gặp nhưng ít bài viết nói tới: công ty thuê xe cho nhân viên, nhưng chiếc xe không chỉ chở một người đi làm mà còn phục vụ cả gia đình của họ. Đó là nhân viên chuyển công tác tới Hà Nội cùng vợ chồng con cái trong vài tháng đầu chưa mua xe, chuyên gia nước ngoài sang làm dự án mang theo gia đình, hay ngày hội gia đình của công ty khi hàng chục người thân cùng cần phương tiện đi lại trong một hai ngày. Khi \"người dùng cuối\" là một gia đình, cách chọn xe, phân xe, ký giấy và chia trách nhiệm đều khác với thuê xe cho đội ngũ kinh doanh chạy phố. Bài này dành cho người phụ trách hành chính hoặc chủ do",
+        "Nếu nhu cầu của bạn thuần túy là xe cho nhân viên đi làm, bài thuê xe công ty cho nhân viên là điểm bắt đầu phù hợp hơn; bài này tập trung vào phần \"có gia đình đi cùng\"."
+      ]
+    },
+    {
+      "article_id": "BA-1435",
+      "category": "APP",
+      "slug": "tinh-nang-tim-hieu-thu-tuc-trong-app-cho-khach-nuoc-ngoai",
+      "title": "Tính Năng Tìm Hiểu Thủ Tục Trong App Cho Khách Nước Ngoài",
+      "description": "Với khách nước ngoài, phần khó nhất khi thuê xe máy ở Hà Nội thường không phải là lái xe mà là hiểu thủ tục: giấy tờ nào được chấp nhận, bằng lái của",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tinh-nang-tim-hieu-thu-tuc-trong-app-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Với khách nước ngoài, phần khó nhất khi thuê xe máy ở Hà Nội thường không phải là lái xe mà là hiểu thủ tục: giấy tờ nào được chấp nhận, bằng lái của nước mình có dùng được không, tiền đặt cọc là gì và lấy lại ra sao, ai chịu trách nhiệm nếu xe bị phạt. Những câu này khó hỏi qua rào cản ngôn ngữ ở quầy, và hỏi trong nhóm du lịch thì nhận được mười câu trả lời khác nhau. Tính năng tìm hiểu thủ tục trong ứng dụng web của {{ business.brand }} sinh ra để trả lời đúng những câu ấy, bằng tiếng Anh hoặc tiếng Việt, trước khi bạn đặt chân tới cửa hàng. Bài này hướng dẫn khách quốc tế dùng tính năng đó hiệu quả: nên hỏi gì, hỏi theo thứ tự nào, hiểu c",
+        "Trợ lý thủ tục là một công cụ trực tuyến chạy ngay trên website, không cần tải về từ kho ứng dụng và không yêu cầu tạo tài khoản. Bạn mở trang, gõ câu hỏi, nhận câu trả lời dựa trên quy định của cửa hàng và các bài hướng dẫn công khai. Nó không phải cơ quan cấp phép, không xác nhận bằng lái của bạn có hợp lệ hay không thay cho cơ quan có thẩm quyền, và không thay thế việc nhân viên xem giấy tờ bản gốc khi giao xe. Hiểu ranh giới này giúp bạn không kỳ vọng sai và cũng không bỏ qua một công cụ rất hữu ích."
+      ]
+    },
+    {
+      "article_id": "BA-1433",
+      "category": "SAFE",
+      "slug": "toc-do-cho-phep-trong-pho-cau-hoi-thuong-gap",
+      "title": "Tốc độ Cho Phép Trong Phố Câu Hỏi Thường Gặp",
+      "description": "\"Trong phố được chạy bao nhiêu?\" là câu hỏi ngắn nhưng câu trả lời lại phụ thuộc vào loại đường bạn đang đi, loại xe bạn đang cầm lái và tấm biển gần",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/toc-do-cho-phep-trong-pho-cau-hoi-thuong-gap.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1431",
+      "category": "EV",
+      "slug": "ung-dung-tim-cho-sac-xe-mua-mua",
+      "title": "Ứng Dụng Tìm Chỗ Sạc xe Mùa Mưa",
+      "description": "Tìm chỗ sạc xe điện ở Hà Nội vào ngày nắng là chuyện tiện đâu sạc đó; vào ngày mưa, nó trở thành bài toán có điều kiện: chỗ sạc phải có mái che,",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ung-dung-tim-cho-sac-xe-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Tìm chỗ sạc xe điện ở Hà Nội vào ngày nắng là chuyện tiện đâu sạc đó; vào ngày mưa, nó trở thành bài toán có điều kiện: chỗ sạc phải có mái che, đường tới đó không ngập, ổ cắm không ướt, và bạn phải tới nơi trước khi cơn mưa chiều đổ xuống. Nhiều người thuê xe điện lần đầu mở ứng dụng bản đồ, thấy một điểm sạc gần nhất rồi chạy tới trong mưa, để rồi phát hiện đó là bãi xe lộ thiên hoặc quán đã đóng cửa vì ngập. Bài này hướng dẫn bạn dùng ứng dụng bản đồ và trợ lý trực tuyến của cửa hàng theo cách phù hợp với mùa mưa: lọc đúng loại điểm sạc, kiểm tra tuyến đường, xếp giờ sạc theo dự báo và sạc an toàn khi mọi thứ xung quanh đều ướt.",
+        "Ngày khô, chỗ sạc tốt là chỗ gần và có ổ cắm. Ngày mưa, bạn cần thêm ba điều kiện và thứ tự ưu tiên cũng đổi: mái che trước, đường vào không ngập thứ hai, gần hay xa chỉ xếp thứ ba. Một điểm sạc cách bạn vài phút nhưng nằm trong ngõ trũng có thể tệ hơn một quán cà phê xa hơn nhưng có hầm để xe khô ráo. Ngoài ra, thời gian sạc trong mưa thường kéo dài vì bạn phải chờ xe ráo nước trước khi cắm, nên nên chọn nơi có thể ngồi lâu."
+      ]
     }
   ]
 }
