@@ -14196,6 +14196,150 @@
         "Thuê xe ở Hà Nội có những câu hỏi rất riêng của thành phố này: ở Phố Cổ thì nên lấy xe số hay xe ga, có giao xe tới Tây Hồ không, từ khách sạn ở Hoàn Kiếm sang cửa hàng ở Long Biên mất bao lâu, mấy giờ còn nhận được xe. Trợ lý ảo trên website của {{ business.brand }} được xây dựng để trả lời nhanh nhóm câu hỏi đó, dựa trên dữ liệu cửa hàng đã xác minh. Bài này giải thích trợ lý giúp được gì trong bối cảnh Hà Nội, cách hỏi để nhận câu trả lời sát nhu cầu, và những việc vẫn cần xác nhận trực tiếp với cửa hàng.",
         "Nếu bạn chưa biết trợ lý ảo trong thuê xe là gì, bài trợ lý ảo tư vấn thuê xe máy giới thiệu phần nền tảng. Ở đây, chúng ta đi thẳng vào các tình huống thực tế tại Hà Nội."
       ]
+    },
+    {
+      "article_id": "BA-0983",
+      "category": "SAFE",
+      "slug": "di-nguoc-chieu-hau-qua-tom-tat",
+      "title": "đi Ngược Chiều Hậu Quả Tóm Tắt",
+      "description": "Bạn đang vội, điểm đến chỉ cách vài chục mét nhưng nằm ở phía bên kia một con đường một chiều. Rẽ ngược vào thì nhanh, vòng đúng đường thì mất thêm",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/di-nguoc-chieu-hau-qua-tom-tat.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0989",
+      "category": "SAFE",
+      "slug": "dien-thoai-khi-lai-xe-tom-tat",
+      "title": "Điện Thoại Khi Lái xe Tóm Tắt",
+      "description": "Một tin nhắn vừa đến, bản đồ báo rẽ trái sau hai trăm mét, và chiếc điện thoại nằm ngay trong tầm tay. Cầm lên xem một giây là phản xạ của rất nhiều",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/dien-thoai-khi-lai-xe-tom-tat.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-0986",
+      "category": "RENT",
+      "slug": "gia-thue-thay-doi-theo-mua-khong-cho-sinh-vien",
+      "title": "Giá Thuê Thay Đổi Theo Mùa Không Cho Sinh Viên",
+      "description": "Sinh viên thuê xe máy ở Hà Nội không đi theo mùa du lịch, mà đi theo lịch học: nhập học cuối hè, thi cử, nghỉ Tết, nghỉ hè rồi lại quay về. Vì thế",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/gia-thue-thay-doi-theo-mua-khong-cho-sinh-vien.body.html",
+      "knowledge_chunks": [
+        "Sinh viên thuê xe máy ở Hà Nội không đi theo mùa du lịch, mà đi theo lịch học: nhập học cuối hè, thi cử, nghỉ Tết, nghỉ hè rồi lại quay về. Vì thế câu hỏi \"giá thuê có thay đổi theo mùa không\" với sinh viên cần được trả lời theo một cách khác. Điều ảnh hưởng đến túi tiền của bạn thường không phải là một bảng giá nhảy múa, mà là chuyện lúc cần xe thì còn xe hay không, và bạn có đang trả theo gói phù hợp với kỳ học hay chưa. Bài này đi qua từng giai đoạn trong năm học, chỉ ra lúc nào cần đặt sớm, lúc nào nên đổi gói, và cách giữ chi phí ổn định cả năm.",
+        "Nếu bạn muốn hiểu cơ chế chung về giá theo mùa cho mọi nhóm khách, bài giá thuê thay đổi theo mùa không đã phân tích từ góc độ cung và cầu. Phần dưới đây chỉ dành cho lịch sinh hoạt của sinh viên."
+      ]
+    },
+    {
+      "article_id": "BA-0988",
+      "category": "GUIDE",
+      "slug": "giao-xe-tan-noi-thu-tuc-nhanh-gon",
+      "title": "Giao xe Tận Nơi Thủ Tục Nhanh Gọn",
+      "description": "Giao xe tận nơi lẽ ra phải là cách thuê xe nhanh nhất: bạn ngồi ở nhà hoặc khách sạn, xe đến tận cửa. Thực tế, nhiều buổi giao xe kéo dài nửa tiếng",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/giao-xe-tan-noi-thu-tuc-nhanh-gon.body.html",
+      "knowledge_chunks": [
+        "Giao xe tận nơi lẽ ra phải là cách thuê xe nhanh nhất: bạn ngồi ở nhà hoặc khách sạn, xe đến tận cửa. Thực tế, nhiều buổi giao xe kéo dài nửa tiếng chỉ vì người thuê chưa chuẩn bị giấy tờ, địa chỉ mô tả mơ hồ, hoặc hai bên chưa thống nhất mức xăng và khoản cọc từ trước. Bài này gom toàn bộ thủ tục giao xe tận nơi thành ba chặng gọn gàng: trước khi đặt, trước khi người giao đến và mười phút bàn giao. Làm đúng thứ tự, bạn có thể nhận chìa khóa và lên đường trong thời gian uống xong một ly cà phê.",
+        "Nếu bạn muốn đọc phần giải thích đầy đủ về khung giờ, khu vực và các tình huống phát sinh, bài giao xe tận nơi thủ tục là điểm bắt đầu tốt. Ở đây chúng ta chỉ tập trung vào việc làm sao cho nhanh."
+      ]
+    },
+    {
+      "article_id": "BA-0990",
+      "category": "LOCAL",
+      "slug": "ha-long-duong-quoc-lo-cuoi-tuan",
+      "title": "hạ Long Đường Quốc lộ Cuối Tuần",
+      "description": "Đi Hạ Long bằng xe máy trong một cuối tuần là kiểu chuyến đi mà nhiều nhóm bạn ở Hà Nội nói mãi rồi mới làm. Lý do thường không phải đường xa, mà vì",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ha-long-duong-quoc-lo-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Đi Hạ Long bằng xe máy trong một cuối tuần là kiểu chuyến đi mà nhiều nhóm bạn ở Hà Nội nói mãi rồi mới làm. Lý do thường không phải đường xa, mà vì chỉ có hai ngày: mất gần nửa ngày cho chặng đi, nửa ngày cho chặng về, thời gian còn lại liệu có đủ để ngắm vịnh. Câu trả lời là đủ, nếu bạn tính giờ hợp lý và chọn đúng tuyến quốc lộ cho xe máy. Bài này không viết lại toàn bộ lộ trình từng cây số, mà tập trung vào cách đóng gói chuyến Hạ Long vào đúng khung thứ bảy, chủ nhật, xuất phát từ phía Long Biên.",
+        "Mô tả chi tiết từng chặng quốc lộ 18, các thị xã đi qua và đoạn nào cần chú ý có trong bài Hạ Long đường quốc lộ . Phần dưới đây là kế hoạch thời gian và hậu cần cho riêng hai ngày cuối tuần."
+      ]
+    },
+    {
+      "article_id": "BA-0981",
+      "category": "EV",
+      "slug": "huong-dan-su-dung-xe-may-dien-mua-he",
+      "title": "Hướng Dẫn sử Dụng xe Máy Điện Mùa hè",
+      "description": "Mùa hè Hà Nội có hai kiểu thời tiết khiến người đi xe máy điện phải đổi thói quen: những ngày nắng gắt khi mặt đường hầm hập từ trưa đến chiều, và",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/huong-dan-su-dung-xe-may-dien-mua-he.body.html",
+      "knowledge_chunks": [
+        "Mùa hè Hà Nội có hai kiểu thời tiết khiến người đi xe máy điện phải đổi thói quen: những ngày nắng gắt khi mặt đường hầm hập từ trưa đến chiều, và những cơn giông ập đến chỉ sau mười lăm phút trời tối sầm. Xe điện vẫn chạy tốt trong cả hai hoàn cảnh, nhưng pin, bộ sạc, yên xe và cả người lái đều cần được đối xử khác so với một buổi sáng mát trời tháng ba. Bài hướng dẫn sử dụng xe máy điện mùa hè này đi theo đúng nhịp một ngày thuê xe: từ lúc dắt xe ra khỏi bóng râm, chạy giữa trưa, sạc buổi tối cho tới khi gặp mưa rào bất chợt.",
+        "Nếu bạn mới làm quen với xe điện, phần thao tác cơ bản như bật nguồn, chế độ chạy và cách đọc màn hình đã có trong bài hướng dẫn sử dụng xe máy điện . Ở đây chúng ta chỉ tập trung vào những gì nắng nóng và mưa giông làm thay đổi."
+      ]
+    },
+    {
+      "article_id": "BA-0987",
+      "category": "EV",
+      "slug": "khac-biet-xe-dien-va-xe-xang-mua-he",
+      "title": "Khác Biệt xe Điện và xe Xăng Mùa hè",
+      "description": "Chọn giữa xe máy điện và xe xăng vào tháng sáu, tháng bảy ở Hà Nội khác hẳn so với chọn vào mùa thu mát mẻ. Khi nhiệt độ ngoài trời lên cao, mặt",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/khac-biet-xe-dien-va-xe-xang-mua-he.body.html",
+      "knowledge_chunks": [
+        "Chọn giữa xe máy điện và xe xăng vào tháng sáu, tháng bảy ở Hà Nội khác hẳn so với chọn vào mùa thu mát mẻ. Khi nhiệt độ ngoài trời lên cao, mặt đường hắt nóng và cứ vài hôm lại có một trận giông, những ưu nhược điểm quen thuộc của hai loại xe bỗng nặng nhẹ khác đi. Sự yên tĩnh của xe điện trở nên dễ chịu trong những buổi tối đi hóng gió, còn sự chủ động của xe xăng lại đáng giá khi bạn muốn chạy xa ra ngoại thành mà không phải tính chuyện sạc. Bài này so sánh hai loại xe dưới góc nhìn riêng của mùa hè, để bạn chọn đúng cho lịch trình của mình.",
+        "Phần so sánh tổng quát về cách vận hành, chi phí và bảo dưỡng quanh năm có ở bài khác biệt xe điện và xe xăng . Ở đây chúng ta chỉ xét những gì thời tiết nóng và mưa giông làm thay đổi."
+      ]
+    },
+    {
+      "article_id": "BA-0982",
+      "category": "GUIDE",
+      "slug": "nhien-lieu-khi-nhan-tra-xe-nhanh-gon",
+      "title": "Nhiên Liệu Khi Nhận Trả xe Nhanh Gọn",
+      "description": "Phần lớn tranh luận lúc trả xe máy thuê không xoay quanh vết xước, mà quanh câu hỏi rất đời thường: lúc nhận xe kim xăng ở đâu, bây giờ ở đâu. Câu",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/nhien-lieu-khi-nhan-tra-xe-nhanh-gon.body.html",
+      "knowledge_chunks": [
+        "Phần lớn tranh luận lúc trả xe máy thuê không xoay quanh vết xước, mà quanh câu hỏi rất đời thường: lúc nhận xe kim xăng ở đâu, bây giờ ở đâu. Câu chuyện kéo dài vì không ai ghi lại gì, mỗi người nhớ một kiểu. Tin tốt là bạn có thể chốt chuyện nhiên liệu chỉ trong khoảng hai phút lúc nhận và hai phút lúc trả, nếu làm đúng thứ tự. Bài này gom lại thành một quy trình nhanh gọn, không cần giấy tờ phức tạp, phù hợp cả khi bạn nhận xe tại cửa hàng lẫn khi được giao xe tận nơi.",
+        "Nếu bạn muốn hiểu sâu vì sao mức xăng dễ gây hiểu lầm và các kiểu quy ước thường gặp, bài nhiên liệu khi nhận trả xe đã phân tích kỹ. Ở đây chúng ta chỉ tập trung vào tốc độ và sự rõ ràng."
+      ]
+    },
+    {
+      "article_id": "BA-0984",
+      "category": "LOCAL",
+      "slug": "ninh-binh-cuoi-tuan-xe-may-cuoi-tuan",
+      "title": "Ninh Bình Cuối Tuần xe Máy Cuối Tuần",
+      "description": "Ninh Bình là cái tên hay được nhắc nhất mỗi khi nhóm bạn ở Hà Nội hỏi nhau \"cuối tuần này đi đâu\". Đường đi phẳng, khoảng chín mươi đến một trăm cây",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ninh-binh-cuoi-tuan-xe-may-cuoi-tuan.body.html",
+      "knowledge_chunks": [
+        "Ninh Bình là cái tên hay được nhắc nhất mỗi khi nhóm bạn ở Hà Nội hỏi nhau \"cuối tuần này đi đâu\". Đường đi phẳng, khoảng chín mươi đến một trăm cây số tùy điểm xuất phát, cảnh núi đá và sông nước đủ để hai ngày trôi qua rất nhanh. Nhưng chính vì ai cũng nghĩ đến Ninh Bình vào thứ bảy, chủ nhật, chuyến đi cuối tuần có những bài toán riêng: giờ nhận xe, giờ ra khỏi thành phố, bến thuyền đông khách và dòng xe ùn về cửa ngõ phía nam chiều chủ nhật. Bài này không lặp lại danh sách điểm tham quan, mà tập trung vào cách xếp lịch để hai ngày cuối tuần bằng xe máy thật sự thoải mái.",
+        "Nếu bạn cần lịch trình gợi ý theo từng buổi, bài Ninh Bình cuối tuần xe máy đã có sẵn khung hai ngày. Bài dưới đây bổ sung phần hậu cần: chuẩn bị từ tối thứ sáu, tránh giờ đông và về nhà an toàn."
+      ]
+    },
+    {
+      "article_id": "BA-0985",
+      "category": "APP",
+      "slug": "tim-hieu-hybrid-search-trong-ung-dung-thue-xe-tai-ha-noi",
+      "title": "Tìm Hiểu Hybrid Search Trong Ứng Dụng Thuê xe Tại Hà Nội",
+      "description": "Người thuê xe ở Hà Nội gõ tìm kiếm theo những cách rất \"Hà Nội\": \"xe ga gần Bồ Đề\", \"thue xe pho co toi nay\", \"Vision giá tuần\", hay một câu tiếng",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tim-hieu-hybrid-search-trong-ung-dung-thue-xe-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Người thuê xe ở Hà Nội gõ tìm kiếm theo những cách rất \"Hà Nội\": \"xe ga gần Bồ Đề\", \"thue xe pho co toi nay\", \"Vision giá tuần\", hay một câu tiếng Anh pha tiếng Việt của khách du lịch như \"scooter Old Quarter giao khách sạn\". Một ô tìm kiếm chỉ biết khớp chữ sẽ bỏ lỡ một nửa số câu hỏi kiểu này. Hybrid search, tức tìm kiếm lai giữa khớp từ khóa và khớp ý nghĩa, là cách để một ứng dụng thuê xe hiểu được cả tên phố chính xác lẫn nhu cầu nói bằng lời thường. Bài này giải thích hybrid search qua chính những câu hỏi người dùng ở Hà Nội hay gõ, và cách bạn đặt câu để nhận được kết quả sát nhất.",
+        "Phần nền tảng về khái niệm, khác biệt giữa hai lớp tìm kiếm và vì sao ứng dụng thuê xe cần cả hai đã có trong bài tìm hiểu hybrid search trong ứng dụng thuê xe . Ở đây chúng ta đi vào bối cảnh địa phương."
+      ]
     }
   ]
 }
