@@ -22998,6 +22998,156 @@
         "Chạy phố Hà Nội bằng xe thuê nghĩa là chen giữa giờ tan tầm, len qua ngõ hẹp phố cổ, dừng đỗ liên tục trước quán cà phê và cửa hàng. Va quẹt nhẹ, gương bị gạt, yếm xe bị xước khi dắt ra khỏi hàng xe đông là những chuyện rất thường gặp. Vì vậy câu hỏi \"xe thuê có bảo hiểm không\" với người chạy phố không chỉ là thủ tục, mà quyết định ai trả tiền khi có sự cố nhỏ. Câu trả lời ngắn gọn với {{ business.brand }}: cửa hàng không cung cấp bảo hiểm, người thuê tự chuẩn bị bảo hiểm xe máy của mình. Bài viết này giúp bạn hiểu điều đó có nghĩa gì trong những tình huống chạy phố cụ thể.",
         "Bài tổng quan xe thuê có bảo hiểm không đã giải thích các loại bảo hiểm liên quan đến xe máy. Với người chạy phố, cần nắm ba ý chính:"
       ]
+    },
+    {
+      "article_id": "BA-1980",
+      "category": "LOCAL",
+      "slug": "ca-phe-pho-co-trong-ngay",
+      "title": "cà Phê Phố cổ Trong Ngày",
+      "description": "Bạn chỉ có đúng một ngày ở Hà Nội và muốn dành nó cho cà phê phố cổ? Đây là cách làm hợp lý nhất: nhận xe máy buổi sáng, gửi xe một lần ở rìa khu phố",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ca-phe-pho-co-trong-ngay.body.html",
+      "knowledge_chunks": [
+        "Bạn chỉ có đúng một ngày ở Hà Nội và muốn dành nó cho cà phê phố cổ? Đây là cách làm hợp lý nhất: nhận xe máy buổi sáng, gửi xe một lần ở rìa khu phố cổ, rồi đi bộ qua ba đến bốn quán theo từng khung giờ, mỗi quán một kiểu đồ uống và một kiểu không gian. Bài viết dưới đây là lịch trình cà phê phố cổ trong ngày được chia theo giờ, kèm cách tính thời gian, chỗ gửi xe, ngân sách và những lỗi người mới hay mắc khiến cả ngày bị vội.",
+        "Khác với bài tổng quan về cà phê phố cổ , ở đây chúng ta chỉ tập trung vào một câu hỏi: làm sao để một ngày duy nhất vẫn đủ chậm để thưởng thức, mà không mất nửa ngày cho việc tìm chỗ đỗ xe và đi lạc."
+      ]
+    },
+    {
+      "article_id": "BA-1978",
+      "category": "LOCAL",
+      "slug": "chay-buoi-sang-ho-guom-trong-ngay",
+      "title": "Chạy Buổi Sáng hồ Gươm Trong Ngày",
+      "description": "Chạy xe buổi sáng quanh hồ Gươm là trải nghiệm nhiều người muốn có khi đến Hà Nội: mặt hồ phẳng, cây lộc vừng nghiêng bóng, người tập thể dục kín vỉa",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chay-buoi-sang-ho-guom-trong-ngay.body.html",
+      "knowledge_chunks": [
+        "Chạy xe buổi sáng quanh hồ Gươm là trải nghiệm nhiều người muốn có khi đến Hà Nội: mặt hồ phẳng, cây lộc vừng nghiêng bóng, người tập thể dục kín vỉa hè và tháp Rùa mờ trong hơi nước. Nhưng nếu bạn chỉ thuê xe trong một ngày, có một chi tiết thực tế cần tính trước: cửa hàng mở cửa từ {{ business.hours.display }}, nên \"buổi sáng\" của bạn sẽ khác nhau tùy cách nhận xe. Bài viết này giúp bạn chọn phương án phù hợp, rồi xếp một lịch trình trọn ngày bắt đầu từ vòng hồ buổi sáng.",
+        "Trước khi lên lịch, hãy quyết định bạn muốn ngắm hồ lúc bình minh hay chấp nhận một buổi sáng muộn hơn. Mỗi lựa chọn kéo theo cách thuê xe khác nhau:"
+      ]
+    },
+    {
+      "article_id": "BA-1971",
+      "category": "RENT",
+      "slug": "cho-nguoi-than-tren-xe-thue-gia-tot-nhat",
+      "title": "Chở Người Thân Trên xe Thuê Giá Tốt Nhất",
+      "description": "Bố mẹ lên Hà Nội chơi, em họ đến ở nhờ vài ngày, hay bạn muốn đưa người yêu đi một vòng phố cổ: chở người thân trên xe thuê là nhu cầu rất phổ biến.",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cho-nguoi-than-tren-xe-thue-gia-tot-nhat.body.html",
+      "knowledge_chunks": [
+        "Bố mẹ lên Hà Nội chơi, em họ đến ở nhờ vài ngày, hay bạn muốn đưa người yêu đi một vòng phố cổ: chở người thân trên xe thuê là nhu cầu rất phổ biến. Câu hỏi đặt ra là làm sao vừa an toàn, vừa thoải mái cho người ngồi sau, lại vẫn có giá tốt nhất. Bài viết này so sánh chi phí giữa một xe chở hai người và hai xe riêng, chỉ ra dòng xe đáng tiền nhất khi chở người, những khoản phát sinh dễ gặp và cách chọn gói thuê theo thời gian người thân ở lại.",
+        "Về chi phí, một xe chở hai người gần như luôn rẻ hơn hai xe. Nhưng giá tốt nhất không chỉ là con số thấp nhất, mà là phương án phù hợp với người đi cùng:"
+      ]
+    },
+    {
+      "article_id": "BA-1972",
+      "category": "LOCAL",
+      "slug": "den-nguyen-can-bang-xe-trong-ngay",
+      "title": "Đền Nguyễn Cần Bằng xe Trong Ngày",
+      "description": "Đi đền Nguyễn bằng xe trong ngày là cách nhiều người chọn để tìm hiểu một lớp di tích ít ồn ào của Hà Nội: những ngôi đền, nhà thờ danh nhân gắn với",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/den-nguyen-can-bang-xe-trong-ngay.body.html",
+      "knowledge_chunks": [
+        "Đi đền Nguyễn bằng xe trong ngày là cách nhiều người chọn để tìm hiểu một lớp di tích ít ồn ào của Hà Nội: những ngôi đền, nhà thờ danh nhân gắn với các nhân vật họ Nguyễn, như đền thờ Hoàng đế Quang Trung (Nguyễn Huệ) trong khu Gò Đống Đa hay nhà thờ danh nhân Nguyễn Khả Trạc ở Cầu Giấy. Các điểm này nhỏ, cách xa nhau và phụ thuộc giờ mở cửa của người trông coi, nên một ngày có xe máy là đủ linh hoạt. Bài viết hướng dẫn bạn xếp lịch trọn ngày, từ lúc nhận xe đến lúc trả xe, kèm cách chuẩn bị để không đến nơi mà cửa đóng.",
+        "Nếu bạn mới tìm hiểu chủ đề này, bài đền Nguyễn bằng xe giải thích vì sao tên gọi các di tích loại này hay gây nhầm lẫn. Ở đây chúng ta tập trung vào chuyện lịch trình và hậu cần trong một ngày."
+      ]
+    },
+    {
+      "article_id": "BA-1973",
+      "category": "RENT",
+      "slug": "di-pho-co-bang-xe-may-thue-gia-tot-nhat",
+      "title": "đi Phố cổ Bằng xe Máy Thuê Giá Tốt Nhất",
+      "description": "Đi phố cổ bằng xe máy thuê với giá tốt nhất không chỉ là tìm chiếc xe rẻ nhất. Một ngày ở khu Hoàn Kiếm có thể tốn thêm nhiều khoản nhỏ: gửi xe nhiều",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/di-pho-co-bang-xe-may-thue-gia-tot-nhat.body.html",
+      "knowledge_chunks": [
+        "Đi phố cổ bằng xe máy thuê với giá tốt nhất không chỉ là tìm chiếc xe rẻ nhất. Một ngày ở khu Hoàn Kiếm có thể tốn thêm nhiều khoản nhỏ: gửi xe nhiều lần, đi vòng vì không biết phố một chiều, bị nhắc nhở vì đỗ sai chỗ, hay thuê xe to hơn nhu cầu. Bài viết này giúp bạn tính tổng chi phí một chuyến phố cổ, chọn đúng xe, đúng thời lượng thuê và tránh những khoản phát sinh khiến \"giá tốt\" trên giấy trở thành đắt ngoài đời.",
+        "Câu trả lời phụ thuộc vào chỗ bạn ở và những gì bạn định làm trong ngày. Phố cổ đủ nhỏ để đi bộ, nhưng nếu lịch trình của bạn kéo dài ra Hồ Tây, Ba Đình hay qua sông, xe máy thường tiết kiệm hơn gọi xe nhiều chặng."
+      ]
+    },
+    {
+      "article_id": "BA-1976",
+      "category": "LOCAL",
+      "slug": "hoang-hon-ho-tay-trong-ngay",
+      "title": "Hoàng Hôn hồ Tây Trong Ngày",
+      "description": "Hoàng hôn hồ Tây là khoảnh khắc chỉ kéo dài chừng hai mươi phút, nhưng muốn bắt trọn nó, bạn phải sắp xếp cả ngày xoay quanh. Đến muộn là mặt trời đã",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/hoang-hon-ho-tay-trong-ngay.body.html",
+      "knowledge_chunks": [
+        "Hoàng hôn hồ Tây là khoảnh khắc chỉ kéo dài chừng hai mươi phút, nhưng muốn bắt trọn nó, bạn phải sắp xếp cả ngày xoay quanh. Đến muộn là mặt trời đã chìm sau dãy nhà phía tây, đến quá sớm thì ngồi chờ dưới nắng gắt. Bài viết này gợi ý cách xây một ngày thuê xe máy trong nội thành có điểm kết là hoàng hôn hồ Tây: từ lúc nhận xe buổi sáng, những điểm nên ghé trước, cách chọn bờ ngắm theo hướng mặt trời, đến chuyện về trả xe đúng giờ sau khi trời tối.",
+        "Ở Hà Nội, giờ mặt trời lặn thay đổi khá nhiều theo mùa, từ khoảng 17 giờ 15 vào cuối tháng Mười Một đến gần 18 giờ 45 vào cuối tháng Sáu. Vì vậy, việc đầu tiên khi lên kế hoạch trong ngày là tra giờ lặn của chính ngày bạn đi, rồi tính ngược lại:"
+      ]
+    },
+    {
+      "article_id": "BA-1979",
+      "category": "RENT",
+      "slug": "mua-cao-diem-thue-xe-may-gia-tot-nhat",
+      "title": "Mùa Cao Điểm Thuê xe Máy Giá Tốt Nhất",
+      "description": "Mùa cao điểm là lúc nhiều người cùng lúc cần xe: kỳ nghỉ Tết, dịp 30/4 – 1/5, Quốc khánh 2/9, các tuần hè có đông khách du lịch, hay những dịp cuối",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/mua-cao-diem-thue-xe-may-gia-tot-nhat.body.html",
+      "knowledge_chunks": [
+        "Mùa cao điểm là lúc nhiều người cùng lúc cần xe: kỳ nghỉ Tết, dịp 30/4 – 1/5, Quốc khánh 2/9, các tuần hè có đông khách du lịch, hay những dịp cuối tuần dài. Khi đó, câu hỏi không chỉ là thuê ở đâu mà là làm sao vẫn giữ được mức giá tốt nhất trong khi xe đẹp hết nhanh. Bài viết này đi thẳng vào chuyện tiền: cách chọn dòng xe, chọn gói ngày hay tuần, đặt sớm đến mức nào và những khoản phát sinh bạn tự gây ra cho mình nếu chuẩn bị muộn.",
+        "Nếu bạn cần cái nhìn chung về thời điểm đông khách, hãy đọc bài mùa cao điểm thuê xe máy trước. Ở đây, mọi gợi ý đều xoay quanh một mục tiêu: tổng chi phí thấp nhất cho đúng nhu cầu của bạn."
+      ]
+    },
+    {
+      "article_id": "BA-1974",
+      "category": "LOCAL",
+      "slug": "quang-di-long-bien-view-trong-ngay",
+      "title": "Quảng đi Long Biên View Trong Ngày",
+      "description": "Quãng đi Long Biên săn view trong ngày có một lợi thế ít nơi nào có: điểm xuất phát nằm ngay trong khu vực. Cửa hàng ở {{ business.address.full }},",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/quang-di-long-bien-view-trong-ngay.body.html",
+      "knowledge_chunks": [
+        "Quãng đi Long Biên săn view trong ngày có một lợi thế ít nơi nào có: điểm xuất phát nằm ngay trong khu vực. Cửa hàng ở {{ business.address.full }}, nên bạn nhận xe xong là có thể chạy thẳng ra đê, lên cầu, xuống bãi sông mà không phải mất thời gian băng qua nội thành. Bài viết này chia một ngày thành từng chặng theo ánh sáng, gợi ý các góc ngắm cầu Long Biên và sông Hồng ở mỗi thời điểm, kèm những lưu ý về đường đất, gửi xe và giờ trả xe để bạn có một ngày trọn vẹn.",
+        "Nếu bạn chỉ có một buổi, bài quãng đi Long Biên view có lộ trình rút gọn. Ở đây, chúng ta tận dụng trọn khung giờ từ 09:00 đến 21:00."
+      ]
+    },
+    {
+      "article_id": "BA-1975",
+      "category": "RENT",
+      "slug": "thue-xe-dai-ngay-gia-tot-gia-tot-nhat",
+      "title": "Thuê xe Dài Ngày Giá Tốt Giá Tốt Nhất",
+      "description": "Thuê xe dài ngày là vùng giá dễ khiến người thuê trả thừa nhất. Bạn cần xe tám ngày, mười hai ngày hay gần ba tuần: không đủ ngắn để thuê lẻ cho",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-dai-ngay-gia-tot-gia-tot-nhat.body.html",
+      "knowledge_chunks": [
+        "Thuê xe dài ngày là vùng giá dễ khiến người thuê trả thừa nhất. Bạn cần xe tám ngày, mười hai ngày hay gần ba tuần: không đủ ngắn để thuê lẻ cho tiện, cũng chưa tròn một tháng để nghĩ ngay đến gói tháng. Bài viết này không nói chung chung về \"giá tốt\", mà đưa ra phép tính cụ thể cho từng dòng xe để bạn biết ở mốc bao nhiêu ngày thì nên chuyển từ giá ngày sang giá tuần, và từ giá tuần sang giá tháng, nhằm đạt mức giá tốt nhất cho đúng lịch của mình.",
+        "Tất cả con số dưới đây là giá tham khảo theo trang giá thuê của {{ business.brand }}. Giá cuối cùng luôn được xác nhận khi bạn đặt xe."
+      ]
+    },
+    {
+      "article_id": "BA-1977",
+      "category": "RENT",
+      "slug": "uu-dai-thue-xe-dai-han-gia-tot-nhat",
+      "title": "ưu Đãi Thuê xe Dài Hạn Giá Tốt Nhất",
+      "description": "Khi tìm \"ưu đãi thuê xe dài hạn giá tốt nhất\", nhiều người hình dung ra mã giảm giá, quà tặng hay khuyến mãi theo tháng. Ở {{ business.brand }}, cách",
+      "published_date": "2026-10-13",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/uu-dai-thue-xe-dai-han-gia-tot-nhat.body.html",
+      "knowledge_chunks": [
+        "Khi tìm \"ưu đãi thuê xe dài hạn giá tốt nhất\", nhiều người hình dung ra mã giảm giá, quà tặng hay khuyến mãi theo tháng. Ở {{ business.brand }}, cách làm đơn giản hơn: không có chương trình khuyến mãi, nhưng bảng giá theo tháng đã thấp hơn rất nhiều so với thuê từng ngày. Hiểu đúng cơ chế này giúp bạn biết chính xác mình tiết kiệm được bao nhiêu, nên chọn dòng xe nào và cần xác nhận những gì trước khi nhận xe cho cả một tháng hay nhiều tháng.",
+        "Bài viết dành cho người đi làm, sinh viên, người mới chuyển đến Hà Nội hoặc người nước ngoài ở lại lâu, tức là những ai cần xe liên tục từ một tháng trở lên."
+      ]
     }
   ]
 }
