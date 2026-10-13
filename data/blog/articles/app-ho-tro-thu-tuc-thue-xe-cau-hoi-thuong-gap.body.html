@@ -1,0 +1,53 @@
+<p>Khi nghe nói có một "app" giúp làm thủ tục thuê xe, người dùng thường hỏi lại ngay: nó có thay được việc ra cửa hàng không, có giữ giấy tờ của mình không, có chốt xe giúp mình không. Bài này gom những câu hỏi thực tế nhất mà khách hay gửi về trợ lý MotoAI của {{ business.brand }}, sắp theo đúng thứ tự một lần thuê xe: trước khi đặt, lúc đặt, khi nhận, khi trả và chuyện dữ liệu. Mỗi câu trả lời nói rõ phần nào công cụ làm được, phần nào bạn vẫn phải tự xác nhận với cửa hàng.</p>
+
+<h2>Nhóm câu hỏi về bản chất của công cụ</h2>
+<p><strong>MotoAI có phải ứng dụng cần cài đặt không?</strong> Không. Đây là ứng dụng web chạy trên trình duyệt của điện thoại hoặc máy tính. Bạn mở trang, gõ câu hỏi và nhận câu trả lời, không cần tải về hay tạo tài khoản. Nếu bạn thắc mắc vì sao lại chọn dạng web, bài <a href="/blog/app/app-thue-xe-khong-can-tai-khoan-cau-hoi-thuong-gap/">hỏi đáp về công cụ không cần tài khoản</a> giải thích kỹ hơn.</p>
+<p><strong>Trợ lý lấy thông tin thủ tục từ đâu?</strong> Từ bộ dữ liệu do cửa hàng soạn và cập nhật: giấy tờ cần mang, khung đặt cọc, giờ mở cửa, điều kiện giao xe, các bước nhận và trả. Trợ lý không tự nghĩ ra chính sách mới. Khi một câu hỏi nằm ngoài dữ liệu, cách đúng là nó gợi ý bạn liên hệ trực tiếp.</p>
+<p><strong>Công cụ có thay hoàn toàn nhân viên không?</strong> Không, và cũng không nên. Nó giúp bạn chuẩn bị đầy đủ trước khi gọi điện, để cuộc gọi chỉ còn vài phút chốt xe thay vì nửa tiếng hỏi từng chi tiết. Bức tranh đầy đủ về tính năng này được trình bày ở bài <a href="/blog/app/app-ho-tro-thu-tuc-thue-xe/">app hỗ trợ thủ tục thuê xe</a>.</p>
+
+<h2>Trước khi đặt xe: giấy tờ và điều kiện</h2>
+<p>Đây là nhóm câu hỏi chiếm nhiều lượt nhất. Một số câu bạn có thể gõ thẳng vào trợ lý:</p>
+<ul>
+<li>"Thuê xe ga cần mang giấy gì?" – trợ lý liệt kê giấy tờ tùy thân và giấy phép lái xe phù hợp loại xe.</li>
+<li>"Bằng A1 lái được xe nào?" – câu trả lời dựa trên quy định hiện hành: hạng A1 dành cho mô tô đến 125 cm3 hoặc động cơ điện đến 11 kW, loại lớn hơn cần hạng A.</li>
+<li>"Cửa hàng có bảo hiểm cho xe thuê không?" – trợ lý sẽ nói rõ cửa hàng không cung cấp bảo hiểm, bạn tự chuẩn bị bảo hiểm xe máy.</li>
+<li>"Mấy giờ đến nhận được?" – giờ mở cửa là {{ business.hours.display }} hằng ngày.</li>
+</ul>
+<p>Muốn đối chiếu danh sách giấy tờ một cách đầy đủ trước khi ra khỏi nhà, bạn xem thêm bài <a href="/blog/huong-dan/giay-to-can-khi-thue-xe/">giấy tờ cần khi thuê xe</a>. Mẹo nhỏ: chụp sẵn ảnh giấy tờ để đối chiếu, nhưng vẫn mang bản gốc hoặc bản điện tử hợp lệ khi nhận xe.</p>
+
+<h2>Lúc đặt xe: cọc, giá và xác nhận</h2>
+<p><strong>Đặt cọc bao nhiêu?</strong> Trợ lý trả lời theo khung chung: từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, con số cụ thể được xác nhận khi bạn đặt. Cách cọc được ghi nhận và hoàn lại được bàn riêng ở bài <a href="/blog/app/dat-coc-va-ung-dung-thue-xe/">đặt cọc và ứng dụng thuê xe</a>.</p>
+<p><strong>Giá trợ lý đưa ra đã là giá chốt chưa?</strong> Đó là giá tham khảo. Ví dụ Honda Vision khoảng 200.000đ/ngày, Honda Wave khoảng 150.000đ/ngày. Giá cuối cùng vẫn do cửa hàng xác nhận theo xe còn và thời gian thuê thực tế.</p>
+<p><strong>Trợ lý có giữ xe giúp tôi không?</strong> Không. Công cụ không kiểm tra được xe nào đang trống theo thời gian thực. Sau khi đã rõ thủ tục, bạn gọi {{ business.contact.phone_display }} hoặc ghé cửa hàng để chốt. Hãy ghi lại năm thông tin khi chốt: loại xe, ngày giờ nhận, ngày giờ trả, giá đã thỏa thuận và mức cọc.</p>
+
+<h2>Khi nhận xe: trợ lý giúp kiểm tra những gì</h2>
+<p>Ở bước này, trợ lý đóng vai trò danh sách nhắc việc. Bạn có thể hỏi "nhận xe cần kiểm tra gì" và nhận một checklist để đối chiếu ngay tại quầy:</p>
+<ol>
+<li>Phanh trước, phanh sau ăn đều, không kêu rít.</li>
+<li>Đèn pha, đèn xi nhan, còi, gương chiếu hậu hoạt động.</li>
+<li>Lốp đủ hơi, không phồng, không nứt.</li>
+<li>Vết xước, móp trên thân xe được chụp ảnh và ghi nhận cùng nhân viên.</li>
+<li>Mức xăng khi nhận để biết cách trả.</li>
+</ol>
+<p>Nếu bạn đặt qua công cụ rồi mới ra cửa hàng, quy trình gặp nhân viên được mô tả trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung/">nhận xe khi đặt qua ứng dụng</a>. Với giao xe tận nơi, trợ lý chỉ nhắc điều kiện chung: chỉ giao trong giờ mở cửa, thời gian và phí giao phải xác nhận trước khi đặt.</p>
+
+<h2>Khi trả xe và sau chuyến đi</h2>
+<p>Câu hỏi hay gặp nhất là trả muộn có sao không. Trợ lý sẽ nhắc bạn báo cửa hàng sớm nếu biết mình về trễ, và hỏi trực tiếp cách tính phần thời gian vượt. Câu hỏi thứ hai là khi nào nhận lại cọc: thông thường sau khi hai bên kiểm tra xe và đối chiếu tình trạng lúc nhận. Bạn nên giữ lại ảnh chụp lúc nhận xe để việc đối chiếu nhanh gọn.</p>
+<p>Những tình huống ngoài dữ liệu, như xe gặp sự cố giữa đường hay muốn đổi xe giữa kỳ, trợ lý sẽ chuyển bạn sang liên hệ trực tiếp vì cần nhân viên xử lý theo từng trường hợp.</p>
+
+<h2>Dữ liệu cá nhân khi hỏi thủ tục</h2>
+<p>Bạn không cần nhập số giấy tờ, ảnh chụp hay địa chỉ nhà để hỏi thủ tục. Hãy hỏi bằng thông tin chung như loại xe và số ngày thuê. Chỉ khi chốt với nhân viên, bạn mới xuất trình giấy tờ theo đúng quy trình tại cửa hàng. Đây cũng là cách đơn giản để phân biệt công cụ chính thức với các trang lạ đòi thông tin quá sớm.</p>
+<p>Để tận dụng tối đa công cụ, bạn có thể đọc thêm bài <a href="/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app/">tính năng tìm hiểu thủ tục</a>, trong đó có ví dụ câu hỏi theo từng tình huống.</p>
+
+<h2>Câu hỏi thường gặp nhanh về app hỗ trợ thủ tục thuê xe</h2>
+<h3>Hỏi trợ lý có mất phí không?</h3>
+<p>Không. Bạn dùng trợ lý miễn phí trên trang web, chi phí duy nhất là tiền thuê xe khi bạn quyết định thuê.</p>
+<h3>Gõ tiếng Việt không dấu trợ lý có hiểu không?</h3>
+<p>Thường vẫn hiểu các câu ngắn như "thue vision 3 ngay can gi". Tuy vậy, câu có dấu và đủ ý sẽ cho câu trả lời sát hơn.</p>
+<h3>Người nước ngoài có dùng được không?</h3>
+<p>Có thể hỏi các thông tin thủ tục cơ bản. Riêng điều kiện về giấy phép lái xe của người nước ngoài, bạn nên đọc kỹ hướng dẫn và xác nhận trực tiếp với cửa hàng.</p>
+<h3>Trợ lý trả lời sai thì sao?</h3>
+<p>Mọi thông tin quan trọng như giá, cọc, giờ nhận đều được nhân viên xác nhận lại khi chốt. Nếu thấy câu trả lời chưa khớp, hãy báo cửa hàng để dữ liệu được chỉnh.</p>
+
+<h2>Kết luận</h2>
+<p>Trợ lý thủ tục hữu ích nhất khi bạn coi nó là bước chuẩn bị: hỏi cho rõ giấy tờ, cọc, giờ nhận trả, rồi mới gọi để chốt. Nhờ vậy lần ra cửa hàng chỉ còn là kiểm tra xe và ký nhận. Cửa hàng {{ business.display_name }} ở {{ business.address.full }}, làm việc trong khung {{ business.hours.display }}. Những bài khác về trợ lý trực tuyến nằm trong <a href="/blog/app/">chuyên mục ứng dụng</a>; muốn hỏi ngay thì mở <a href="/">trang chủ</a>.</p>

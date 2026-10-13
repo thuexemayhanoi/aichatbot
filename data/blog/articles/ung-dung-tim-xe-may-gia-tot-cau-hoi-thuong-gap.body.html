@@ -1,0 +1,53 @@
+<p>"Giá tốt" là cụm từ ai cũng gõ khi tìm xe thuê, nhưng mỗi người hiểu một kiểu: có người chỉ nhìn con số mỗi ngày, có người quan tâm tổng tiền cả chuyến, có người muốn biết vì sao cùng một chiếc xe mà thuê tuần lại rẻ hơn thuê lẻ. Bài này tập hợp các câu hỏi khách hay đặt khi dùng trợ lý MotoAI để tìm xe máy giá tốt, kèm câu trả lời thẳng thắn: công cụ tính được gì, không hứa được gì, và làm sao để con số bạn nhìn thấy trên màn hình khớp với con số bạn trả ở quầy.</p>
+
+<h2>Hiểu đúng thế nào là giá tốt</h2>
+<p><strong>Giá tốt có phải là giá thấp nhất mỗi ngày?</strong> Không hẳn. Giá tốt là tổng chi phí thấp nhất cho đúng nhu cầu của bạn. Một chiếc xe rẻ hơn vài chục nghìn mỗi ngày nhưng không hợp quãng đường, khiến bạn mỏi mệt hoặc phải đổi xe giữa chừng, rốt cuộc lại tốn hơn.</p>
+<p><strong>Những khoản nào cấu thành tổng chi phí?</strong> Gồm tiền thuê theo thời gian, xăng hoặc tiền sạc, phí gửi xe, phí giao xe nếu có, và khoản phát sinh nếu trả muộn. Tiền đặt cọc không nằm trong chi phí vì sẽ được hoàn lại khi trả xe đúng tình trạng.</p>
+<p><strong>Trợ lý có so sánh giá giữa các cửa hàng không?</strong> Không. MotoAI là trợ lý trên trang web của {{ business.brand }}, chỉ trả lời theo bảng giá tham khảo của cửa hàng này. Nó giúp bạn chọn gói và loại xe hợp lý nhất trong phạm vi đó. Tổng quan cách hoạt động có trong bài <a href="/blog/app/ung-dung-tim-xe-may-gia-tot/">ứng dụng tìm xe máy giá tốt</a>.</p>
+
+<h2>Hỏi trợ lý thế nào để ra con số sát nhất</h2>
+<p>Trợ lý chỉ chính xác khi câu hỏi đủ ba thông tin: loại xe, thời gian thuê, mục đích sử dụng. So sánh hai cách hỏi:</p>
+<ul>
+<li>Câu hỏi mơ hồ: "xe nào rẻ" – trợ lý chỉ đưa được danh sách chung.</li>
+<li>Câu hỏi đủ ý: "thuê xe ga 10 ngày để đi làm ở Long Biên, gói nào rẻ" – trợ lý có thể gợi ý xe và so sánh thuê ngày với thuê tuần.</li>
+<li>Câu hỏi so sánh: "Vision hay Click rẻ hơn nếu thuê một tháng" – trợ lý đặt hai mức tham khảo cạnh nhau.</li>
+</ul>
+<p>Các mẹo đặt câu hỏi ngắn mà trúng được tổng hợp trong bài <a href="/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot/">cách hỏi giá xe nhanh bằng chatbot</a>, còn cách trợ lý hiểu những câu viết tắt hay không dấu được giải thích ở bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-cau-hoi-thuong-gap/">hỏi đáp về cách ứng dụng hiểu câu hỏi giá</a>.</p>
+
+<h2>Các mức giá tham khảo trợ lý đang dùng</h2>
+<p>Dưới đây là bảng giá tham khảo mà trợ lý dựa vào. Tất cả đều cần cửa hàng xác nhận lại khi đặt:</p>
+<ul>
+<li>Với Honda Wave (xe số), trợ lý báo khoảng 150.000đ cho mỗi ngày thuê.</li>
+<li>Với Honda Vision, mức ngày khoảng 200.000đ, mức tuần 800.000đ–1.000.000đ và mức tháng 1.800.000đ–2.000.000đ.</li>
+<li>Với Honda Air Blade, mức ngày khoảng 200.000đ, mức tuần 800.000đ và mức tháng 1.400.000đ.</li>
+<li>Với Honda Click hoặc Yamaha Mio, mức ngày khoảng 150.000đ, mức tuần 600.000đ–700.000đ và mức tháng 1.000.000đ–1.200.000đ.</li>
+<li>Với xe 50cc, xe máy điện và xe đạp điện, trợ lý sẽ mời bạn liên hệ để hỏi giá.</li>
+</ul>
+<p>Nhìn vào bảng, bạn sẽ thấy với thời gian thuê dài, gói tuần và gói tháng thường có lợi hơn cộng dồn từng ngày. Phiên bản mới nhất của bảng được đăng tại trang <a href="/gia-thue/">giá thuê</a>. Muốn tự nhập số ngày và xem kết quả, bạn có thể dùng <a href="/blog/app/cong-cu-tinh-gia-thue-xe-may-online/">công cụ tính giá thuê xe trực tuyến</a>.</p>
+
+<h2>Vì sao giá trên màn hình đôi khi khác giá ở quầy</h2>
+<p>Đây là câu hỏi khiến nhiều người lo nhất. Có ba nguyên nhân thường gặp. Thứ nhất, bạn hỏi một dòng xe nhưng khi đến nơi xe đó đã có người thuê, bạn được gợi ý dòng khác với mức giá khác. Thứ hai, thời gian thực tế khác với thời gian bạn nói với trợ lý, ví dụ nhận sớm hơn hoặc trả muộn hơn. Thứ ba, bạn thêm dịch vụ như giao xe tận nơi, khoản phí này phải xác nhận riêng trước khi đặt.</p>
+<p>Cách phòng tránh đơn giản là chốt lại bằng lời hoặc tin nhắn với nhân viên trước khi nhận xe: loại xe, số ngày, tổng giá, giờ trả. Quy trình xác nhận này được hướng dẫn kỹ trong bài <a href="/blog/thue-xe/xac-nhan-gia-truoc-khi-dat/">xác nhận giá trước khi đặt</a>.</p>
+
+<h2>Những điều trợ lý sẽ không hứa với bạn</h2>
+<p>Một công cụ đáng tin là công cụ biết nói "không". Trợ lý của cửa hàng sẽ không đưa ra những thông tin sau:</p>
+<ol>
+<li>Mã giảm giá hay chương trình khuyến mãi, vì cửa hàng không chạy khuyến mãi.</li>
+<li>Giá cụ thể cho xe 50cc, xe máy điện, xe đạp điện; các dòng này là giá liên hệ.</li>
+<li>Thông số kỹ thuật như quãng đường pin hay tốc độ tối đa mà dữ liệu cửa hàng không có.</li>
+<li>Cam kết xe còn trống vào một ngày cụ thể; việc này cần gọi để kiểm tra.</li>
+</ol>
+<p>Nếu bạn gặp trang nào hứa "giá rẻ nhất" kèm yêu cầu chuyển khoản trước để giữ ưu đãi, hãy cẩn trọng. Thông tin chính xác luôn được nhân viên xác nhận qua số điện thoại chính thức.</p>
+
+<h2>Câu hỏi thường gặp về ứng dụng tìm xe máy giá tốt</h2>
+<h3>Thuê càng lâu càng rẻ có đúng không?</h3>
+<p>Thường đúng nếu tính theo đơn giá mỗi ngày. Tuy vậy, chỉ nên chọn gói dài khi bạn chắc chắn dùng đủ thời gian; hãy hỏi rõ điều kiện nếu muốn trả sớm.</p>
+<h3>Xe số có luôn rẻ hơn xe ga không?</h3>
+<p>Theo bảng tham khảo, Wave và Click hoặc Mio cùng mức khoảng 150.000đ/ngày. Vì vậy hãy chọn theo kỹ năng lái và quãng đường, đừng chỉ vì nghĩ xe số rẻ hơn.</p>
+<h3>Đặt cọc có làm tăng chi phí không?</h3>
+<p>Không. Khoản cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, xác nhận khi đặt và được hoàn lại khi trả xe.</p>
+<h3>Dùng trợ lý tìm giá có phải đăng ký không?</h3>
+<p>Không cần. Bạn mở trang web và hỏi trực tiếp, không cần tài khoản hay cài đặt gì thêm.</p>
+
+<h2>Kết luận</h2>
+<p>Tìm xe giá tốt là chọn đúng gói cho đúng nhu cầu và chốt rõ tổng tiền trước khi nhận xe. Trợ lý giúp bạn so sánh nhanh các mức tham khảo; phần xác nhận cuối cùng vẫn thuộc về nhân viên cửa hàng. Khi đã chọn được gói ưng ý, bạn gọi {{ business.contact.phone_display }} để chốt với {{ business.display_name }} (cửa hàng làm việc {{ business.hours.display }}), hoặc ghé {{ business.address.full }} để xem xe tận mắt. Xem thêm bài viết tại <a href="/blog/app/">chuyên mục ứng dụng</a> hoặc mở <a href="/">trang chủ</a>.</p>
