@@ -1,0 +1,58 @@
+<p>Khi nghe tới "ứng dụng web thuê xe máy", nhiều người vẫn còn lấn cấn: không tải về thì dùng kiểu gì, điện thoại cũ có chạy được không, thông tin gõ vào có an toàn không, và hỏi xong thì xe đã được giữ hay chưa. Những thắc mắc này hoàn toàn hợp lý, vì ứng dụng web vận hành khác với những ứng dụng quen thuộc trên điện thoại. Bài viết gom các câu hỏi thường gặp nhất về ứng dụng web thuê xe máy của {{ business.brand }}, nơi trợ lý MotoAI chạy ngay trên website, và trả lời ngắn gọn theo từng nhóm: truy cập, thiết bị, đặt xe, dữ liệu và những giới hạn bạn nên biết.</p>
+
+<h2>Nhóm câu hỏi về truy cập và cài đặt</h2>
+<h3>Ứng dụng web khác gì một ứng dụng phải tải về?</h3>
+<p>Ứng dụng web chạy trong trình duyệt. Bạn mở địa chỉ website, giao diện và chức năng hiện ra như một ứng dụng, nhưng không có tệp cài đặt nào lưu vào máy. Mỗi lần mở trang, bạn luôn dùng phiên bản mới nhất mà không phải cập nhật. So sánh chi tiết giữa hai hình thức có trong bài <a href="/blog/app/web-app-va-app-native-khac-gi-nhau/">web app và app native khác gì nhau</a>.</p>
+<h3>Tôi có phải tạo tài khoản trước khi hỏi không?</h3>
+<p>Không cần. Bạn có thể mở trang và hỏi trợ lý ngay về dòng xe, giá tham khảo, giấy tờ hay giờ mở cửa. Thông tin cá nhân chỉ cần cung cấp trực tiếp với cửa hàng khi làm thủ tục thuê. Những băn khoăn quanh việc không dùng tài khoản được giải đáp riêng trong bài <a href="/blog/app/app-thue-xe-khong-can-tai-khoan/">app thuê xe không cần tài khoản</a>.</p>
+<h3>Có cách nào mở lại nhanh mà không phải gõ địa chỉ mỗi lần?</h3>
+<p>Có. Hầu hết trình duyệt trên điện thoại cho phép đánh dấu trang hoặc thêm lối tắt ra màn hình chính. Biểu tượng đó chỉ là đường dẫn đến website, không chiếm bộ nhớ như một ứng dụng cài đặt.</p>
+
+<h2>Nhóm câu hỏi về thiết bị và kết nối</h2>
+<h3>Điện thoại đời cũ, bộ nhớ ít có dùng được không?</h3>
+<p>Được. Vì không cài đặt gì, bộ nhớ máy gần như không bị ảnh hưởng. Chỉ cần trình duyệt còn được cập nhật tương đối mới là trang hiển thị bình thường. Kinh nghiệm dùng trên máy cũ có trong bài <a href="/blog/app/ung-dung-thue-xe-tren-dien-thoai-cu/">ứng dụng thuê xe trên điện thoại cũ</a>.</p>
+<h3>Mạng yếu khi đang ở ngoài đường thì sao?</h3>
+<p>Trang được thiết kế gọn nên tải được trên kết nối chậm, nhưng ứng dụng web vẫn cần mạng để gửi câu hỏi và nhận trả lời. Nếu sóng chập chờn, hãy gõ câu hỏi ngắn và đủ ý, hoặc gọi trực tiếp cho cửa hàng khi cần gấp.</p>
+<h3>Dùng trên máy tính có được không?</h3>
+<p>Được. Bạn mở website bằng trình duyệt trên máy tính như bình thường. Nhiều người chọn lên kế hoạch trên máy tính ở nhà, rồi mở lại trên điện thoại khi đi nhận xe.</p>
+
+<h2>Nhóm câu hỏi về tìm xe và đặt xe</h2>
+<h3>Trợ lý gợi ý xe dựa vào đâu?</h3>
+<p>Dựa vào nhu cầu bạn mô tả: đi phố hay đi xa, chở một hay hai người, quen xe số hay xe ga, thuê theo ngày, tuần hay tháng. Câu hỏi càng rõ, gợi ý càng sát.</p>
+<h3>Giá trợ lý đưa ra có phải giá chốt không?</h3>
+<p>Đó là giá tham khảo. Chẳng hạn Honda Wave 150.000đ/ngày, Honda Vision 200.000đ/ngày, Honda Air Blade 800.000đ/tuần; với xe 50cc, xe máy điện và xe đạp điện thì cần liên hệ để biết giá. Giá chính thức luôn do cửa hàng xác nhận, bạn có thể đối chiếu trên trang <a href="/gia-thue/">giá thuê</a>.</p>
+<h3>Hỏi xong trên ứng dụng web là xe đã được giữ chưa?</h3>
+<p>Chưa. Câu trả lời của trợ lý giúp bạn chuẩn bị, còn việc giữ xe chỉ có hiệu lực khi cửa hàng xác nhận với bạn qua số {{ business.contact.phone_display }}. Quy trình đặt từ đầu đến cuối được mô tả trong bài <a href="/blog/app/dat-xe-bang-ung-dung/">đặt xe bằng ứng dụng</a>.</p>
+<h3>Đặt cọc có thực hiện trên ứng dụng web không?</h3>
+<p>Không cần chuyển khoản qua trang. Mức cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được cửa hàng xác nhận khi đặt, và bạn làm việc trực tiếp với cửa hàng về khoản này.</p>
+
+<h2>Nhóm câu hỏi về dữ liệu và an toàn</h2>
+<h3>Tôi có nên gửi ảnh giấy tờ vào khung trò chuyện không?</h3>
+<p>Không nên. Để hỏi về xe và thủ tục, bạn không cần bất kỳ thông tin nhạy cảm nào. Giấy tờ chỉ cần xuất trình trực tiếp với cửa hàng khi nhận xe.</p>
+<h3>Làm sao biết mình đang dùng đúng trang của cửa hàng?</h3>
+<p>Hãy truy cập website từ đường dẫn chính thức, không mở các đường link lạ gửi qua tin nhắn và không chuyển tiền theo yêu cầu từ trang không rõ nguồn gốc. Những dấu hiệu nhận biết trang giả có trong bài <a href="/blog/app/canh-giac-voi-app-thue-xe-gia-mao/">cảnh giác với app thuê xe giả mạo</a>.</p>
+<h3>Lịch sử trò chuyện có bị lộ cho người khác không?</h3>
+<p>Nội dung bạn trao đổi chỉ xoay quanh nhu cầu thuê xe. Dù vậy, nếu dùng chung máy với người khác, bạn có thể xóa dữ liệu duyệt web sau khi dùng xong để yên tâm hơn.</p>
+
+<h2>Những gì ứng dụng web không làm thay bạn</h2>
+<p>Hiểu đúng giới hạn giúp bạn dùng công cụ hiệu quả hơn:</p>
+<ul>
+<li>Không tự xác nhận xe còn trống theo thời gian thực; cửa hàng mới là bên xác nhận cuối cùng.</li>
+<li>Không bán hoặc cung cấp bảo hiểm; người thuê tự chuẩn bị bảo hiểm xe máy của mình.</li>
+<li>Không hứa khuyến mãi hay giảm giá, vì cửa hàng không áp dụng chương trình nào như vậy.</li>
+<li>Không đưa ra thông số kỹ thuật tự suy đoán như dung lượng pin hay quãng đường của xe điện; với những câu này, bạn hỏi cửa hàng và kiểm tra trên xe.</li>
+<li>Không thay thế lời khuyên pháp lý về luật giao thông.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp khác về ứng dụng web thuê xe máy</h2>
+<h3>Dùng ứng dụng web có mất phí không?</h3>
+<p>Không. Bạn chỉ trả tiền thuê xe theo giá cửa hàng xác nhận, việc mở trang và hỏi trợ lý không phát sinh chi phí.</p>
+<h3>Ngoài giờ mở cửa có hỏi được không?</h3>
+<p>Hỏi được bất cứ lúc nào để lên kế hoạch. Tuy nhiên giao nhận xe chỉ diễn ra trong khung {{ business.hours.display }}, nên việc xác nhận đặt xe sẽ được xử lý trong giờ hoạt động.</p>
+<h3>Người nước ngoài có dùng được không?</h3>
+<p>Bạn có thể thử đặt câu hỏi bằng tiếng Anh; những lưu ý khi dùng ngôn ngữ này có trong bài <a href="/blog/app/ung-dung-thue-xe-tieng-anh/">ứng dụng thuê xe tiếng Anh</a>. Với điều kiện thuê cụ thể, nên xác nhận lại với cửa hàng bằng văn bản.</p>
+<h3>Ứng dụng web có giao xe đến tận nơi không?</h3>
+<p>Cửa hàng có giao xe tại Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội, trong giờ hoạt động. Thời gian và chi phí giao cần được thống nhất trước khi đặt.</p>
+
+<h2>Kết luận</h2>
+<p>Ứng dụng web thuê xe máy giúp bạn tìm hiểu dòng xe, giá tham khảo và thủ tục ngay trên trình duyệt, không cài đặt, không cần tài khoản. Hãy coi câu trả lời của trợ lý là bản nháp kế hoạch, rồi chốt với cửa hàng để giữ xe. Khi đã sẵn sàng, liên hệ {{ business.brand }} qua số {{ business.contact.phone_display }} hoặc ghé {{ business.address.full }} trong giờ {{ business.hours.display }}. Tìm hiểu thêm về cách dùng trợ lý trong chuyên mục <a href="/blog/app/">ứng dụng thuê xe</a>, hoặc mở <a href="/">trang chủ</a> để bắt đầu hỏi MotoAI.</p>
