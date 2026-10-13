@@ -1,0 +1,67 @@
+<p>Đặt xe bằng ứng dụng rồi nhận xe ngay tại cửa nhà, khách sạn hay văn phòng là kịch bản được hỏi nhiều nhất trên trợ lý trực tuyến của cửa hàng, và cũng là kịch bản dễ sai nhất nếu bạn bỏ qua vài chi tiết: giờ giao chỉ nằm trong khung mở cửa, phí giao phải được chốt trước, địa chỉ phải đủ rõ để nhân viên tìm được giữa ngõ Hà Nội. Bài này đi theo đúng thứ tự một đơn đặt xe tận nơi diễn ra trên ứng dụng web: bạn gõ gì, trợ lý hỏi lại gì, cửa hàng xác nhận gì, và lúc xe tới cửa bạn cần làm những việc nào trước khi ký nhận. Nếu bạn chưa từng đặt xe qua công cụ trực tuyến, bài <a href="/blog/app/dat-xe-bang-ung-dung/">đặt xe bằng ứng dụng</a> trình bày luồng cơ bản; ở đây chỉ nói riêng phần giao tận nơi.</p>
+
+<h2>Giao tận nơi nghĩa là gì ở cửa hàng này</h2>
+<p>Trước hết cần hiểu đúng phạm vi để không kỳ vọng sai. Cửa hàng giao xe trong giờ mở cửa {{ business.hours.display }}, tới các khu Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và các điểm khác trong nội thành Hà Nội. Thời gian giao và phí giao được thống nhất với bạn trước khi đơn được chốt, không có mức cố định in sẵn vì phụ thuộc quãng đường và lịch nhân viên. Điều đó có nghĩa là ba thứ sau không nằm trong dịch vụ:</p>
+<ul>
+<li>Giao xe ngoài khung giờ mở cửa, kể cả bạn sẵn sàng trả thêm.</li>
+<li>Giao tới tỉnh khác hoặc khu vực quá xa nội thành.</li>
+<li>Giao ngay lập tức khi bạn vừa nhắn, vì xe cần được kiểm tra và nhân viên cần di chuyển.</li>
+</ul>
+<p>Hiểu ba giới hạn này giúp bạn đặt đúng ngay từ tin nhắn đầu tiên. Phần phí giao được tính thế nào, có gì thay đổi theo khu vực, đã được bàn kỹ trong bài <a href="/blog/thue-xe/phi-giao-xe-thue/">phí giao xe thuê</a>.</p>
+
+<h2>Tin nhắn đặt xe tận nơi nên chứa gì</h2>
+<p>Trợ lý trên website trả lời tốt nhất khi bạn đưa đủ dữ kiện trong một lần. Một tin nhắn đầy đủ thường gồm:</p>
+<ol>
+<li>Dòng xe muốn thuê hoặc nhu cầu nếu chưa biết chọn gì: "xe ga nhẹ cho hai người đi phố".</li>
+<li>Ngày nhận, ngày trả, hoặc số ngày thuê.</li>
+<li>Địa chỉ giao: số nhà, ngõ, tên đường, phường; thêm tên khách sạn hoặc mốc dễ thấy nếu ở phố cổ.</li>
+<li>Khung giờ bạn có mặt để nhận, nằm trong giờ mở cửa.</li>
+<li>Giấy tờ bạn sẽ dùng để làm thủ tục và cách bạn muốn đặt cọc.</li>
+</ol>
+<p>Ví dụ: "Thuê Honda Vision bốn ngày từ thứ Năm, giao tới khách sạn ở phố Hàng Bạc, tôi có mặt từ 14:00 đến 16:00, dùng căn cước công dân." Với một tin như vậy, trợ lý có thể báo ngay xe còn trống, giá tham khảo khoảng 200.000đ/ngày cho Honda Vision, rồi chuyển sang bước xác nhận giờ và phí giao. Cách đặt câu hỏi hiệu quả hơn nữa được gợi ý trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-tan-noi/">soạn câu hỏi hiệu quả cho agent thuê xe tận nơi</a>.</p>
+
+<h2>Những gì cửa hàng sẽ hỏi lại trước khi chốt</h2>
+<p>Đừng ngạc nhiên nếu sau tin nhắn đầu tiên bạn nhận thêm vài câu hỏi. Đó là bước lọc để đơn giao tận nơi không bị lỡ.</p>
+<ul>
+<li>Xác nhận địa chỉ chính xác và số điện thoại liên lạc lúc giao; nhân viên sẽ gọi khi tới cổng.</li>
+<li>Thống nhất một mốc giờ cụ thể thay vì "buổi chiều", vì xe được xếp lịch theo lộ trình giao trong ngày.</li>
+<li>Báo phí giao cho địa chỉ của bạn và hỏi bạn đồng ý hay muốn tự tới cửa hàng nhận.</li>
+<li>Nhắc mức đặt cọc theo dòng xe, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, và được chốt ngay trong bước xác nhận.</li>
+<li>Nhắc bạn tự chuẩn bị bảo hiểm xe máy, vì cửa hàng không cung cấp bảo hiểm.</li>
+</ul>
+<p>Chi tiết hơn về khoản cọc khi đặt qua ứng dụng có trong bài <a href="/blog/app/dat-coc-va-ung-dung-thue-xe-tan-noi/">đặt cọc và ứng dụng thuê xe tận nơi</a>. Khi tất cả các mục trên đã có câu trả lời, đơn mới được coi là chốt; một cuộc trò chuyện chưa đi hết danh sách này chưa phải là một lịch giao.</p>
+
+<h2>Khi xe tới cửa: việc cần làm trong mười phút</h2>
+<p>Nhận xe tại nhà tiện hơn tới cửa hàng, nhưng bạn không có bãi xe và nhân viên kỹ thuật bên cạnh, nên mười phút đầu rất quan trọng.</p>
+<ol>
+<li>Đối chiếu biển số và dòng xe với thông tin trong hội thoại trên ứng dụng.</li>
+<li>Đi một vòng quanh xe, chụp ảnh bốn góc và các vết xước sẵn có; gửi ngay vào cuộc trò chuyện để làm mốc.</li>
+<li>Thử đèn pha, xi nhan, còi, phanh trước và sau khi xe đứng yên; nổ máy nghe tiếng máy.</li>
+<li>Kiểm tra mũ bảo hiểm đi kèm, giấy đăng ký xe và đồ nghề nếu có.</li>
+<li>Ký nhận, hoàn tất cọc theo cách đã thống nhất, lưu lại biên nhận hoặc ảnh chụp.</li>
+</ol>
+<p>Toàn bộ bước bàn giao, kể cả khi giao tận nơi, được mô tả chi tiết trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>. Nếu bạn cần đổi giờ hoặc hủy, hãy nhắn sớm trong giờ mở cửa; cách làm được hướng dẫn trong bài <a href="/blog/app/huy-lich-thue-xe-qua-app-tan-noi/">hủy lịch thuê xe qua app tận nơi</a>.</p>
+
+<h2>Lỗi khiến đơn giao tận nơi bị trễ hoặc hủy</h2>
+<ul>
+<li>Địa chỉ thiếu số ngõ hoặc tên phường, nhân viên phải gọi hỏi lại nhiều lần giữa đường.</li>
+<li>Hẹn giờ sát 21:00 rồi tới muộn, xe không thể bàn giao ngoài giờ.</li>
+<li>Không nghe máy lúc nhân viên tới cổng vì điện thoại để im lặng.</li>
+<li>Đổi dòng xe vào phút chót khiến cửa hàng phải quay về đổi xe khác.</li>
+<li>Chưa chuẩn bị giấy tờ, phải chạy đi tìm trong lúc nhân viên chờ.</li>
+<li>Quên hỏi phí giao từ đầu, tới lúc nhận mới bất ngờ và tranh luận.</li>
+</ul>
+<p>Mỗi lỗi trên đều tránh được bằng một dòng tin nhắn đúng lúc. Khách thuê xe giao tận nơi để đi lại trong phố có thể đọc thêm bài <a href="/blog/thue-xe/thue-xe-giao-tan-noi-chay-pho/">thuê xe giao tận nơi chạy phố</a> để hình dung ngày đầu dùng xe.</p>
+
+<h2>Câu hỏi thường gặp về đặt xe bằng ứng dụng tận nơi</h2>
+<h3>Đặt lúc tối muộn thì sáng mai xe tới được không?</h3>
+<p>Bạn nhắn được bất cứ lúc nào, nhưng cửa hàng xác nhận và xếp lịch trong giờ mở cửa; nếu đơn hoàn chỉnh từ tối hôm trước, lịch giao sáng hôm sau thường khả thi, miễn là xe còn trống.</p>
+<h3>Có cần tải gì về điện thoại để đặt giao tận nơi không?</h3>
+<p>Không. Trợ lý là ứng dụng web chạy ngay trong trình duyệt, bạn mở đường link, nhắn yêu cầu và theo dõi hội thoại ở đó.</p>
+<h3>Phí giao xe tận nơi là bao nhiêu?</h3>
+<p>Không có mức cố định công khai; cửa hàng báo phí theo địa chỉ cụ thể của bạn trước khi chốt đơn, và bạn có quyền chọn tự tới lấy xe nếu muốn.</p>
+<h3>Người khác nhận xe thay tôi được không?</h3>
+<p>Nên là chính người thuê nhận, vì cần đối chiếu giấy tờ và ký nhận. Nếu bắt buộc nhờ người khác, hãy báo rõ trong hội thoại để cửa hàng hướng dẫn.</p>
+
+<h2>Kết luận</h2>
+<p>Đặt xe bằng ứng dụng để nhận tận nơi thành công khi bạn gửi đủ năm dữ kiện trong tin đầu, chốt giờ và phí giao trước, rồi dành mười phút kiểm tra xe lúc nhận. Bạn có thể bắt đầu ngay với trợ lý trên <a href="/">trang chủ</a>, hoặc gọi {{ business.display_name }} qua số {{ business.contact.phone_display }}; cửa hàng đặt tại {{ business.address.full }}, mở cửa {{ business.hours.display }}. Những bài khác về cách dùng công cụ trực tuyến nằm ở <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>
