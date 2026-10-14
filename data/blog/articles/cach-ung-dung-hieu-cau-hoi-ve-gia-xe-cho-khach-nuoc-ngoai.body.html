@@ -1,0 +1,75 @@
+<p>Khách nước ngoài hỏi giá thuê xe theo một kiểu rất khác người Việt. Thay vì “Vision bao nhiêu một ngày”, họ gõ “How much is a scooter for three nights?” hoặc “Is 10 dollars per day possible?”. Mỗi câu như vậy chứa những thứ mà trợ lý trên website phải nhận ra: loại xe, thời lượng, đơn vị tiền và đôi khi là một ngân sách ngầm. Bài viết này giải thích trợ lý của {{ business.brand }} đọc câu hỏi giá của khách quốc tế như thế nào, cách viết nào cho kết quả chính xác, cách viết nào khiến câu trả lời chung chung, và phần nào luôn cần nhân viên xác nhận.</p>
+<p>Nếu bạn muốn biết cơ chế chung khi trợ lý xử lý câu hỏi giá bằng tiếng Việt, hãy đọc bài <a href="/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/">cách ứng dụng hiểu câu hỏi về giá xe</a> trước.</p>
+
+<h2>Trợ lý đọc một câu hỏi giá theo bốn lớp</h2>
+<p>Phần đọc câu hỏi giá hoạt động theo các quy tắc cố định và dữ liệu từ bảng giá tham khảo của cửa hàng, không đoán theo cảm tính. Trong mỗi câu, trợ lý tìm bốn lớp thông tin:</p>
+<ul>
+<li><strong>Mẫu xe hoặc loại xe:</strong> tên mẫu như Vision, Air Blade, Wave, Click hay Mio được nhận ra dù bạn gõ bằng chữ Latin không dấu. Các từ như “scooter” hoặc “automatic” được hiểu là xe tay ga, “manual” là xe số.</li>
+<li><strong>Thời lượng:</strong> một con số đi kèm đơn vị như “3 days”, “2 weeks”, “1 month”.</li>
+<li><strong>Ngân sách:</strong> cách viết quen thuộc ở Việt Nam như “150k” hay “under 200k” được hiểu là mức tiền bằng đồng.</li>
+<li><strong>Ý định so sánh:</strong> những cụm như “which is cheaper” cho biết bạn muốn đặt các mẫu xe cạnh nhau.</li>
+</ul>
+<p>Khi đủ mẫu xe và thời lượng, trợ lý tính ra khoảng giá tham khảo cho đúng số ngày bạn cần. Thiếu một trong hai, câu trả lời thường chỉ là mức giá theo ngày hoặc bảng giá chung.</p>
+
+<h2>Những cách viết khiến trợ lý trả lời chung chung</h2>
+<ul>
+<li><strong>Viết số bằng chữ:</strong> “three days” hay “a week” có thể không được hiểu là thời lượng thuê. Hãy dùng chữ số: “3 days”, “1 week”.</li>
+<li><strong>Đếm theo đêm:</strong> khách quen đặt khách sạn hay viết “3 nights”. Giá thuê xe tính theo ngày, nên hãy chuyển sang số ngày bạn cần xe.</li>
+<li><strong>Hỏi bằng đô la hoặc euro:</strong> trợ lý không quy đổi tiền tệ, mọi mức giá được nêu bằng đồng Việt Nam.</li>
+<li><strong>Dùng từ chung chung:</strong> “moped” hay “bike” không cho biết bạn muốn xe số hay xe ga; nêu thẳng tên mẫu sẽ chính xác hơn.</li>
+<li><strong>Nhầm dung tích với số ngày:</strong> “50cc” là dung tích động cơ, không phải thời lượng; viết thêm “for 4 days” nếu bạn hỏi giá thuê.</li>
+<li><strong>Gom nhiều mẫu xe vào một đoạn dài:</strong> tách thành từng câu ngắn, mỗi câu một mẫu và một thời lượng.</li>
+</ul>
+<p>Một danh sách mẫu câu hiệu quả hơn cho khách quốc tế có trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-cho-khach-nuoc-ngoai/">soạn câu hỏi hiệu quả cho agent thuê xe</a>.</p>
+
+<h2>Ví dụ: từ câu hỏi tiếng Anh đến con số tham khảo</h2>
+<p>Giả sử bạn gõ “Honda Vision 10 days”. Trợ lý nhận ra mẫu xe và thời lượng mười ngày, rồi chọn cách ghép gói rẻ nhất từ bảng giá: một tuần cộng ba ngày lẻ. Với gói tuần tham khảo 800.000đ–1.000.000đ và giá ngày 200.000đ, kết quả là khoảng 1.400.000đ–1.600.000đ cho mười ngày, kèm phần giải thích cách tính.</p>
+<p>Nếu bạn hỏi tiếp “Which is cheaper for 10 days?”, trợ lý đặt các mẫu có giá tham khảo cạnh nhau:</p>
+<ol>
+<li>Honda Click hoặc Yamaha Mio: khoảng 1.050.000đ–1.150.000đ.</li>
+<li>Honda Air Blade: khoảng 1.400.000đ.</li>
+<li>Honda Vision: khoảng 1.400.000đ–1.600.000đ.</li>
+<li>Honda Wave: khoảng 1.500.000đ, vì bảng tham khảo hiện chỉ có giá theo ngày cho mẫu này.</li>
+</ol>
+<p>Chi tiết ví dụ cuối rất đáng chú ý: khi một mẫu chưa có gói tuần trên bảng, trợ lý tính theo ngày chứ không tự nghĩ ra mức giảm. Nếu cần gói tuần cho Honda Wave, bạn hỏi trực tiếp cửa hàng. Cách tự tính trước khi hỏi được hướng dẫn trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a>.</p>
+
+<h2>Vì sao câu trả lời luôn bằng đồng và luôn là giá tham khảo</h2>
+<p>Tỷ giá thay đổi hằng ngày và khác nhau giữa các nơi đổi tiền, nên trợ lý giữ mọi con số bằng đồng Việt Nam để không tạo ra một mức giá sai. Khi đọc kết quả, khách quốc tế nên nhớ hai quy ước:</p>
+<ul>
+<li>Dấu chấm trong “200.000đ” là dấu phân cách hàng nghìn, nghĩa là hai trăm nghìn đồng, không phải số thập phân.</li>
+<li>Chữ “k” trong “150k” nghĩa là nghìn, tức 150.000đ.</li>
+</ul>
+<p>Mọi mức giá đều là tham khảo, con số cuối cùng và tình trạng xe còn trống do cửa hàng xác nhận khi bạn đặt. Bảng đầy đủ luôn có ở trang <a href="/gia-thue/">giá thuê tham khảo</a>.</p>
+
+<h2>Những câu hỏi về giá mà trợ lý chuyển cho nhân viên</h2>
+<ul>
+<li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> đây là giá liên hệ, trợ lý mời bạn gọi hoặc nhắn cửa hàng.</li>
+<li><strong>Mẫu xe không có trong bảng:</strong> các dòng như SH, Lead hay Exciter không có giá tham khảo trên website, nên bạn cần hỏi cửa hàng xem có xe hay không.</li>
+<li><strong>Phí giao xe tới khách sạn:</strong> giao xe chỉ trong giờ mở cửa và trong khu vực phục vụ, thời gian và phí phải được cửa hàng chốt trước khi đặt.</li>
+<li><strong>Khoản đặt trước:</strong> khung chung từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy xe, mức cụ thể do cửa hàng xác nhận khi bạn đặt.</li>
+</ul>
+<p>Cách trợ lý xử lý các câu hỏi ngoài chuyện giá, như giấy tờ hay giờ mở cửa, được mô tả ở bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu-cho-khach-nuoc-ngoai/">trợ lý thuê xe xử lý câu hỏi đa ngôn ngữ cho khách nước ngoài</a>.</p>
+
+<h2>Mẫu câu để gửi cho bạn bè nước ngoài</h2>
+<ol>
+<li>“Honda Vision 5 days price?”</li>
+<li>“Air Blade 2 weeks, how much?”</li>
+<li>“Which is cheaper for 7 days, Click or Vision?”</li>
+<li>“Scooter under 200k per day?”</li>
+<li>“Manual bike 1 month price?”</li>
+</ol>
+<p>Mỗi câu chỉ có một mẫu hoặc một loại xe, một thời lượng bằng chữ số và không có ngoại tệ, đúng kiểu câu mà trợ lý đọc tốt nhất.</p>
+
+<h2>Câu hỏi thường gặp về cách trợ lý hiểu câu hỏi giá của khách nước ngoài</h2>
+<h3>Trợ lý có đổi giá sang đô la cho tôi không?</h3>
+<p>Không. Giá luôn được nêu bằng đồng Việt Nam vì tỷ giá thay đổi liên tục; bạn có thể tự quy đổi bằng công cụ đổi tiền quen dùng.</p>
+<h3>Tôi gõ sai chính tả tên xe thì sao?</h3>
+<p>Hãy dùng cách viết phổ biến như “Air Blade” hoặc “Airblade”, “Vision”, “Wave”. Nếu câu trả lời không nhắc tới mẫu bạn muốn, gõ lại tên mẫu trong một câu ngắn.</p>
+<h3>Có cần cài gì vào điện thoại để hỏi giá không?</h3>
+<p>Không cần. Trợ lý là công cụ trực tuyến chạy ngay trên trình duyệt, bạn mở trang chủ và gõ câu hỏi.</p>
+<h3>Giá trợ lý báo có phải giá chốt không?</h3>
+<p>Đó là giá tham khảo từ bảng của cửa hàng. Giá chốt và tình trạng xe được xác nhận khi bạn đặt qua điện thoại hoặc tại quầy.</p>
+
+<h2>Kết luận</h2>
+<p>Trợ lý hiểu câu hỏi giá của khách nước ngoài tốt nhất khi câu hỏi có tên mẫu xe, thời lượng bằng chữ số và không dùng ngoại tệ. Khi đó bạn nhận được khoảng giá tham khảo cho đúng số ngày, kèm cách ghép gói rẻ nhất, và chỉ cần một bước xác nhận với cửa hàng để chốt.</p>
+<p>Khi đã có con số dự kiến, bạn hoặc bạn bè quốc tế có thể gọi {{ business.contact.phone_display }} trong khung {{ business.hours.display }}, hoặc ghé {{ business.address.full }} để xem xe trực tiếp. Đọc thêm các bài trong <a href="/blog/app/">chuyên mục ứng dụng</a> hoặc thử hỏi giá ngay trên <a href="/">trang chủ</a>.</p>
