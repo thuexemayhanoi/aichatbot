@@ -38,6 +38,12 @@
 - Không reset dữ liệu, không force push, không hạ QA, không thêm cloud AI API key vào repo.
 - Agent bên ngoài dừng khi owner yêu cầu, không có quyền kết nối, hoặc hết giới hạn phiên. GitHub Actions không thể tự viết prose khi agent bên ngoài không hoạt động.
 
+## SEO metadata layer (v70 SEO master — chỉ SEO tiếng Việt)
+
+- Title/H1, meta description và từ khóa chính SEO của bài PUBLISHED nằm ở `data/seo/article-meta.json` (không sửa `published.json`, không ghi đè body). Builder áp dụng qua `tools/seo-meta.mjs`; xóa một entry = rollback bài đó về metadata manifest.
+- Liên kết nội bộ (khối "Cùng chủ đề" theo họ chủ đề + "Bài viết liên quan" cân bằng inbound) do `tools/seo-links.mjs` lập kế hoạch khi build — không chèn link thủ công hàng loạt vào body.
+- Audit toàn site: `node tools/seo-master-audit.mjs` → `docs/seo/seo-master-matrix.{csv,json,md}`, `docs/seo/keyword-cluster-map.md`; tiến độ: `docs/seo/seo-progress-report.md`. Khoảng trống nội dung (FAQ, bảng, nguồn pháp lý) chỉ xử lý qua quy trình review body riêng.
+
 ## Kiểm tra
 
 `node --test` cho thay đổi engine/workflow/test. Content-only: QA scoped trong workflow, rồi production verify. Khi thay workflow, kiểm tra CI + Distribution + Pages đúng SHA và một bài mới chạy thực tế trước khi tuyên bố đã hoàn thành đầu-cuối.

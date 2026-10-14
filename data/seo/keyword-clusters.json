@@ -1,0 +1,577 @@
+{
+  "$schema": "motoai/seo-keyword-clusters@1",
+  "note": "Vietnamese-only topical clusters for the SEO master matrix. Articles are assigned by their topic SEED (data/blog/content-matrix.csv primary_keyword minus the variant modifier), first match wins, case-insensitive with Vietnamese diacritics preserved (diacritic-free matching merged words such as giá/gia, chợ/cho). 'pillar' is the page that should rank for the cluster head; supporting articles link to it through the family/related blocks and hubs. Head terms marked owner=sister-site are NOT targeted by any page of this subdomain (config/seo-ownership.json).",
+  "excluded_languages": [
+    "en"
+  ],
+  "sister_site_head_terms": [
+    {
+      "keyword": "cho thuê xe máy Hà Nội",
+      "owner": "https://thuexemaynguyentu.com/ và repo thuexemayhanoi/shop, thuexemayhanoi/vanchinh",
+      "policy": "không tạo landing/tiêu đề nhắm đúng cụm này; chỉ hỗ trợ bằng nội dung thông tin long-tail"
+    },
+    {
+      "keyword": "thuê xe máy Hà Nội",
+      "owner": "sister site",
+      "policy": "như trên"
+    },
+    {
+      "keyword": "dịch vụ cho thuê xe máy Hà Nội",
+      "owner": "sister site",
+      "policy": "như trên"
+    },
+    {
+      "keyword": "thuê xe máy uy tín Hà Nội",
+      "owner": "sister site",
+      "policy": "như trên; không tự xưng 'uy tín nhất'"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "K01",
+      "name": "Ứng dụng & Agent thuê xe máy",
+      "head": [
+        "app thuê xe máy",
+        "ứng dụng thuê xe máy",
+        "ứng dụng cho thuê xe máy",
+        "đặt thuê xe máy online"
+      ],
+      "intent": "thông tin sản phẩm / điều hướng",
+      "pillar": "/",
+      "support_pillar": "/blog/app/app-thue-xe-may-la-gi/",
+      "match": [
+        "app",
+        "ứng dụng",
+        "agent",
+        "chatbot",
+        "trợ lý",
+        "rental assistant",
+        "công cụ",
+        "đặt xe online",
+        "đặt lịch",
+        "hủy lịch",
+        "tính năng",
+        "hybrid search",
+        "web app"
+      ]
+    },
+    {
+      "id": "K02",
+      "name": "Giá thuê xe máy",
+      "head": [
+        "giá thuê xe máy Hà Nội",
+        "thuê xe máy giá rẻ Hà Nội",
+        "bảng giá thuê xe máy"
+      ],
+      "intent": "thương mại - thông tin",
+      "pillar": "/gia-thue/",
+      "support_pillar": "/blog/thue-xe/thue-xe-may-gia-re/",
+      "match": [
+        "giá thuê",
+        "bảng giá",
+        "chi phí",
+        "giá rẻ",
+        "tiết kiệm",
+        "giá xe",
+        "hỏi giá",
+        "tính giá",
+        "so sánh giá",
+        "giá theo"
+      ]
+    },
+    {
+      "id": "K03",
+      "name": "Thuê theo ngày, tuần, tháng, dài hạn",
+      "head": [
+        "thuê xe máy theo ngày Hà Nội",
+        "thuê xe máy theo tuần Hà Nội",
+        "thuê xe máy tháng Hà Nội",
+        "thuê xe máy dài hạn Hà Nội"
+      ],
+      "intent": "thương mại - thông tin",
+      "pillar": "/blog/thue-xe/",
+      "match": [
+        "theo ngày",
+        "theo tuần",
+        "theo tháng",
+        "dài hạn",
+        "thuê tháng",
+        "thuê tuần",
+        "thuê ngày",
+        "một ngày",
+        "dài ngày",
+        "ngắn hạn",
+        "gia hạn"
+      ]
+    },
+    {
+      "id": "K04",
+      "name": "Thủ tục, giấy tờ, hợp đồng và đặt cọc",
+      "head": [
+        "thủ tục thuê xe máy",
+        "giấy tờ cần khi thuê xe máy",
+        "đặt cọc thuê xe máy"
+      ],
+      "intent": "thông tin - chuyển đổi",
+      "pillar": "/blog/huong-dan/thu-tuc-thue-xe-may/",
+      "match": [
+        "thủ tục",
+        "giấy tờ",
+        "hợp đồng",
+        "cọc",
+        "cccd",
+        "hộ chiếu",
+        "xác nhận",
+        "điều kiện thuê",
+        "bảo lãnh"
+      ]
+    },
+    {
+      "id": "K05",
+      "name": "Nhận xe, trả xe và kiểm tra xe",
+      "head": [
+        "kiểm tra xe khi thuê",
+        "nhận xe thuê cần gì",
+        "trả xe thuê"
+      ],
+      "intent": "thông tin",
+      "pillar": "/blog/huong-dan/kiem-tra-xe-khi-nhan/",
+      "match": [
+        "nhận xe",
+        "trả xe",
+        "kiểm tra xe",
+        "bàn giao",
+        "đổi xe"
+      ]
+    },
+    {
+      "id": "K06",
+      "name": "Giao xe tận nơi, tận khách sạn",
+      "head": [
+        "cho thuê xe máy giao tận nơi",
+        "thuê xe máy giao tận khách sạn"
+      ],
+      "intent": "thương mại",
+      "pillar": "/chinh-sach/",
+      "match": [
+        "giao xe",
+        "tận nơi",
+        "khách sạn",
+        "giao nhận"
+      ]
+    },
+    {
+      "id": "K07",
+      "name": "Chọn loại xe: xe số, xe ga, 50cc",
+      "head": [
+        "thuê xe tay ga Hà Nội",
+        "thuê xe số Hà Nội",
+        "thuê xe máy 50cc Hà Nội",
+        "thuê xe Cub 50cc Hà Nội",
+        "thuê xe ga 50cc",
+        "so sánh các loại xe cho thuê"
+      ],
+      "intent": "thương mại - so sánh",
+      "pillar": "/blog/thue-xe/",
+      "match": [
+        "xe số",
+        "xe ga",
+        "50cc",
+        "tay ga",
+        "cub",
+        "chọn xe",
+        "dung tích",
+        "loại xe",
+        "honda",
+        "yamaha",
+        "vision",
+        "wave",
+        "air blade"
+      ]
+    },
+    {
+      "id": "K08",
+      "name": "Xe máy điện và xe đạp điện",
+      "head": [
+        "thuê xe máy điện Hà Nội",
+        "thuê xe điện VinFast Hà Nội"
+      ],
+      "intent": "thương mại - thông tin",
+      "pillar": "/blog/xe-dien/",
+      "match": [
+        "xe điện",
+        "pin",
+        "sạc",
+        "vinfast",
+        "xe đạp điện"
+      ]
+    },
+    {
+      "id": "K09",
+      "name": "Bằng lái và luật giao thông",
+      "head": [
+        "bằng lái khi thuê xe máy",
+        "luật giao thông cho người thuê xe",
+        "thuê xe máy không cần bằng lái"
+      ],
+      "intent": "thông tin - pháp lý (legal gate)",
+      "pillar": "/blog/an-toan/",
+      "match": [
+        "bằng lái",
+        "giấy phép",
+        "idp",
+        "luật",
+        "phạt",
+        "nồng độ cồn",
+        "tốc độ",
+        "đèn đỏ",
+        "ngược chiều",
+        "camera",
+        "làn đường",
+        "nhường",
+        "kiểm định",
+        "thuế và phí",
+        "cầm đồ",
+        "mua bán",
+        "không giấy"
+      ]
+    },
+    {
+      "id": "K10",
+      "name": "An toàn khi lái xe máy",
+      "head": [
+        "kinh nghiệm lái xe máy an toàn ở Hà Nội",
+        "mũ bảo hiểm chuẩn"
+      ],
+      "intent": "thông tin",
+      "pillar": "/blog/an-toan/",
+      "match": [
+        "an toàn",
+        "mũ bảo hiểm",
+        "nón",
+        "phanh",
+        "mưa lớn",
+        "sương mù",
+        "tầm nhìn",
+        "đèn xe",
+        "gương",
+        "mệt mỏi",
+        "trẻ em",
+        "đi nhóm",
+        "khoảng cách",
+        "điện thoại",
+        "thuốc",
+        "sức khỏe",
+        "bão",
+        "ngập",
+        "nắng"
+      ]
+    },
+    {
+      "id": "K11",
+      "name": "Bảo hiểm, tai nạn, quyền lợi người thuê",
+      "head": [
+        "bảo hiểm khi thuê xe máy",
+        "trách nhiệm khi tai nạn xe thuê"
+      ],
+      "intent": "thông tin - pháp lý (legal gate)",
+      "pillar": "/blog/an-toan/",
+      "match": [
+        "bảo hiểm",
+        "tai nạn",
+        "va chạm",
+        "trách nhiệm",
+        "bồi thường",
+        "quyền",
+        "nghĩa vụ",
+        "khiếu nại",
+        "khiển nại",
+        "lừa đảo",
+        "trộm",
+        "dữ liệu cá nhân",
+        "thanh toán"
+      ]
+    },
+    {
+      "id": "K12",
+      "name": "Phố cổ – Hoàn Kiếm",
+      "head": [
+        "thuê xe máy phố cổ Hà Nội",
+        "thuê xe máy Hoàn Kiếm"
+      ],
+      "intent": "địa phương - thông tin",
+      "pillar": "/blog/dia-phuong/di-pho-co-bang-xe-may/",
+      "match": [
+        "phố cổ",
+        "hoàn kiếm",
+        "hồ gươm",
+        "nhà thờ lớn",
+        "phố sách",
+        "cà phê trứng",
+        "cà phê phố cổ",
+        "bánh cuốn",
+        "phở bò"
+      ]
+    },
+    {
+      "id": "K13",
+      "name": "Ba Đình – Lăng Bác – Hoàng thành",
+      "head": [
+        "thuê xe máy Ba Đình"
+      ],
+      "intent": "địa phương - thông tin",
+      "pillar": "/blog/dia-phuong/",
+      "match": [
+        "ba đình",
+        "lăng chủ",
+        "một cột",
+        "cột cờ",
+        "hoàng thành",
+        "bảo tàng"
+      ]
+    },
+    {
+      "id": "K14",
+      "name": "Tây Hồ – Hồ Tây – Nhật Tân",
+      "head": [
+        "thuê xe máy Tây Hồ"
+      ],
+      "intent": "địa phương - thông tin",
+      "pillar": "/blog/dia-phuong/ho-tay-va-xe-may/",
+      "match": [
+        "hồ tây",
+        "tây hồ",
+        "nhật tân",
+        "chùa và hà nội"
+      ]
+    },
+    {
+      "id": "K15",
+      "name": "Long Biên – Gia Lâm – Bát Tràng (khu vực cửa hàng)",
+      "head": [
+        "thuê xe máy Long Biên",
+        "thuê xe máy gần tôi",
+        "thuê xe máy gần khách sạn"
+      ],
+      "intent": "địa phương - chuyển đổi",
+      "pillar": "/lien-he/",
+      "match": [
+        "long biên",
+        "gia lâm",
+        "bát tràng",
+        "bồ đề",
+        "sông hồng",
+        "ven đê",
+        "văn giang",
+        "đường đồng",
+        "quảng đi",
+        "chợ long biên"
+      ]
+    },
+    {
+      "id": "K16",
+      "name": "Cầu Giấy – Đống Đa – Thanh Xuân – Hai Bà Trưng",
+      "head": [
+        "thuê xe máy Cầu Giấy"
+      ],
+      "intent": "địa phương - thông tin",
+      "pillar": "/blog/dia-phuong/",
+      "match": [
+        "cầu giấy",
+        "đống đa",
+        "thanh xuân",
+        "hai bà trưng",
+        "đền nguyễn",
+        "chợ hoa"
+      ]
+    },
+    {
+      "id": "K17",
+      "name": "Hành trình ngoại thành và tỉnh lân cận",
+      "head": [
+        "kinh nghiệm đi xe máy từ Hà Nội",
+        "thuê xe máy đi Ninh Bình",
+        "thuê xe máy đi Hà Giang"
+      ],
+      "intent": "du lịch - thông tin",
+      "pillar": "/blog/kham-pha-an-toan/",
+      "match": [
+        "ba vì",
+        "tam đảo",
+        "mộc châu",
+        "ninh bình",
+        "hạ long",
+        "cửa lò",
+        "thanh hóa",
+        "tràng an",
+        "bái đính",
+        "cúc phương",
+        "mài châu",
+        "mai châu",
+        "ha giang",
+        "hà giang",
+        "đồng văn",
+        "mèo vạc",
+        "soc son",
+        "sóc sơn",
+        "co loa",
+        "cổ loa",
+        "thạch thất",
+        "sơn tây",
+        "hòa bình",
+        "đường 5",
+        "ngoại ô",
+        "đường trường",
+        "đường dài"
+      ]
+    },
+    {
+      "id": "K18",
+      "name": "Hành trình xa, xuyên Việt",
+      "head": [
+        "đi xe máy xuyên Việt"
+      ],
+      "intent": "du lịch - thông tin",
+      "pillar": "/blog/dia-phuong/",
+      "match": [
+        "đà lạt",
+        "huế",
+        "đà nẵng",
+        "hội an",
+        "sài gòn",
+        "mekong",
+        "xuyên việt",
+        "bắc nam",
+        "cao nguyên"
+      ]
+    },
+    {
+      "id": "K19",
+      "name": "Kinh nghiệm thuê xe cho khách du lịch",
+      "head": [
+        "kinh nghiệm thuê xe máy Hà Nội",
+        "thuê xe máy cho khách du lịch",
+        "thuê xe máy tự lái Hà Nội"
+      ],
+      "intent": "thông tin - thương mại",
+      "pillar": "/blog/thue-xe/",
+      "match": [
+        "du khách",
+        "du lịch",
+        "khách nước ngoài",
+        "người nước ngoài",
+        "kinh nghiệm",
+        "tự lái",
+        "lần đầu",
+        "người mới",
+        "sinh viên",
+        "gia đình"
+      ]
+    },
+    {
+      "id": "K20",
+      "name": "Bảo dưỡng, sự cố và xử lý khi đi đường",
+      "head": [
+        "xe thuê bị hỏng phải làm sao",
+        "đổ xăng xe thuê"
+      ],
+      "intent": "thông tin",
+      "pillar": "/blog/huong-dan/",
+      "match": [
+        "bảo dưỡng",
+        "hỏng",
+        "thủng",
+        "xăng",
+        "sửa",
+        "sự cố",
+        "cứu hộ",
+        "đỗ xe",
+        "gửi xe",
+        "khóa xe",
+        "mất",
+        "bản đồ",
+        "định vị",
+        "chợ"
+      ]
+    }
+  ],
+  "fallback_by_category": {
+    "APP": "K01",
+    "RENT": "K19",
+    "EV": "K08",
+    "GUIDE": "K04",
+    "SAFE": "K10",
+    "LOCAL": "K17"
+  },
+  "volume_evidence": {
+    "source": "Ubersuggest keyword_suggestions (Google Ads data), location Vietnam (locId 2704), language vi",
+    "retrieved": "2026-10-14",
+    "note": "Chỉ ghi số liệu công cụ trả về; không ước đoán. Ô trống = công cụ không trả dữ liệu. Volume là ước tính hằng tháng của bên thứ ba, không phải dữ liệu Search Console.",
+    "rows": [
+      {
+        "keyword": "thuê xe máy hà nội",
+        "volume": 8100,
+        "sd": 12,
+        "owner": "sister-site"
+      },
+      {
+        "keyword": "cho thuê xe máy hà nội",
+        "volume": 1600,
+        "sd": 12,
+        "owner": "sister-site"
+      },
+      {
+        "keyword": "thuê xe máy điện",
+        "volume": 1000,
+        "sd": 9,
+        "cluster": "K08"
+      },
+      {
+        "keyword": "cho thuê xe máy điện",
+        "volume": 480,
+        "sd": 10,
+        "cluster": "K08"
+      },
+      {
+        "keyword": "thuê xe máy điện vinfast",
+        "volume": 390,
+        "sd": 9,
+        "cluster": "K08",
+        "note": "cần kiểm chứng xe VinFast trước khi nhắm"
+      },
+      {
+        "keyword": "thuê xe máy điện hà nội",
+        "volume": 260,
+        "sd": 9,
+        "cluster": "K08"
+      },
+      {
+        "keyword": "thuê xe máy điện vinfast hà nội",
+        "volume": 210,
+        "sd": 7,
+        "cluster": "K08",
+        "note": "cần kiểm chứng xe VinFast trước khi nhắm"
+      },
+      {
+        "keyword": "thuê xe máy điện honda",
+        "volume": 210,
+        "sd": 13,
+        "cluster": "K08",
+        "note": "cần kiểm chứng dòng xe"
+      },
+      {
+        "keyword": "thuê xe máy điện không cần bằng lái",
+        "volume": 0,
+        "sd": 4,
+        "cluster": "K09"
+      },
+      {
+        "keyword": "giá thuê xe máy",
+        "volume": null,
+        "sd": null,
+        "cluster": "K02",
+        "note": "công cụ không trả dữ liệu"
+      }
+    ]
+  }
+}

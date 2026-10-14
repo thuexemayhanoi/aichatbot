@@ -7,6 +7,9 @@ export const BLOG_UI = Object.freeze(JSON.parse(readFileSync(join(ROOT, 'config/
 if (!BLOG_UI.summary?.title || !BLOG_UI.related?.title || !BLOG_UI.cta?.articleLabel || !BLOG_UI.cta?.footerLabel) {
   throw new Error('blog-ui: component labels must be present');
 }
+if (!BLOG_UI.family?.title || !BLOG_UI.family?.pillarLabel || !BLOG_UI.pillars?.title) {
+  throw new Error('blog-ui: family/pillar section labels must be present');
+}
 if (!Number.isInteger(BLOG_UI.related.limit) || BLOG_UI.related.limit < 1 || BLOG_UI.related.limit > 8) {
   throw new Error('blog-ui: related.limit must be from 1 to 8');
 }

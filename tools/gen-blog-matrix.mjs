@@ -190,7 +190,7 @@ const TOPICS = {
 };
 
 /** Variants used to extend seeds to the required count without duplicates. */
-const VARIANTS = {
+export const VARIANTS = {
   APP: ['cho người mới', 'năm 2026', 'tại Hà Nội', 'cho khách nước ngoài', 'tận nơi', 'câu hỏi thường gặp'],
   RENT: ['giá tốt nhất', 'kỳ nghĩ lễ', 'cho sinh viên', 'cho gia đình', 'chạy phố', 'cuối tuần'],
   EV: ['cho người mới', 'cho khách du lịch', 'giá tốt', 'mùa hè', 'mùa mưa', 'dài hạn'],

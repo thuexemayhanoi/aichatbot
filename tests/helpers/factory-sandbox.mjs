@@ -3,6 +3,7 @@ import { mkdtempSync, cpSync, readFileSync, writeFileSync, rmSync } from 'node:f
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { loadSeoMeta } from '../../tools/seo-meta.mjs';
 
 /**
  * Shared sandbox for blog-factory / article-qa tests (v64 micro loop).
@@ -106,12 +107,17 @@ export const writeJson = (dir, p, value) =>
 
 /** Manifest articles whose matrix row is PUBLISHED. In-flight drafts
  *  (QA/PASS/REPAIR rows committed by a writer cycle) are not built yet
- *  and must never be page-audited — only the factory workflow builds them. */
+ *  and must never be page-audited — only the factory workflow builds them.
+ *  v70: title/description are the EFFECTIVE values rendered on the page
+ *  (data/seo/article-meta.json overrides, see tools/seo-meta.mjs). */
 export function publishedManifestArticles(dir) {
   const ids = new Set(readMatrix(dir).slice(1)
     .filter((l) => l.split(',')[3] === 'PUBLISHED')
     .map((l) => l.split(',')[0]));
-  return readJson(dir, 'data/blog/published.json').articles.filter((a) => ids.has(a.article_id));
+  const seo = loadSeoMeta(dir);
+  return readJson(dir, 'data/blog/published.json').articles
+    .filter((a) => ids.has(a.article_id))
+    .map((a) => (seo[a.article_id] ? { ...a, title: seo[a.article_id].title, description: seo[a.article_id].description } : a));
 }
 
 /** Manifest entries whose matrix row is NOT PUBLISHED (in-flight drafts). */

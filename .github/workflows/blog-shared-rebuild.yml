@@ -11,6 +11,9 @@ on:
       - 'data/blog/taxonomy.json'
       - 'data/business/business.json'
       - 'data/business/pricing.json'
+      - 'data/seo/article-meta.json'
+      - 'tools/seo-meta.mjs'
+      - 'tools/seo-links.mjs'
   workflow_dispatch:
 permissions:
   contents: write

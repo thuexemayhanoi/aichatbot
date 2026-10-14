@@ -37,8 +37,15 @@ export { SITE };
  *  iOS Safari can never keep serving a stale v62 asset. */
 export const BUILD_VERSION = 'v66';
 
-/** Escape & for HTML text/attribute contexts (titles, descriptions, names). */
-export const esc = (s) => String(s).replace(/&(?![a-z]+;|#)/gi, '&amp;');
+/** Escape for HTML text AND double-quoted attribute contexts (titles,
+ *  descriptions, names). v70: also escapes `"` — 133 manifest descriptions
+ *  quote a question ("Trong phố được chạy bao nhiêu?"…) and an unescaped
+ *  quote silently broke <meta name="description" content="…">. */
+export const esc = (s) => String(s)
+  .replace(/&(?![a-z]+;|#)/gi, '&amp;')
+  .replace(/"/g, '&quot;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;');
 
 /** Relative asset prefix from a page path back to repo root. */
 export function rel(path) {

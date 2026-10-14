@@ -30,6 +30,8 @@ import {
 import {
   SITE, esc, rel, pageHead, askAgentAction, appShellPage
 } from './app-shell.mjs';
+import { loadSeoMeta, assertSeoMeta, applySeoMeta } from './seo-meta.mjs';
+import { planLinks } from './seo-links.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
@@ -55,7 +57,8 @@ export const HUBS = Object.freeze(['APP', 'RENT', 'EV', 'GUIDE', 'SAFE', 'LOCAL'
   cluster: taxonomy.categories[id].cluster,
   desc: taxonomy.categories[id].desc,
   intro: taxonomy.categories[id].intro,
-  meta: taxonomy.categories[id].meta
+  meta: taxonomy.categories[id].meta,
+  seoTitle: taxonomy.categories[id].seo_title
 })));
 const HUB_BY_ID = Object.fromEntries(HUBS.map((h) => [h.id, h]));
 
@@ -80,11 +83,13 @@ function jsonLd(obj) {
   return JSON.stringify(obj).replace(/</g, '\\u003c');
 }
 
-/** Article card (app-style, used by every list screen). */
-function card(a, hub) {
+/** Article card (app-style, used by every list screen). `level` is the
+ *  card heading level: 2 on list screens, 3 inside an article section so
+ *  card titles never compete with the article's own H2 outline. */
+function card(a, hub, level = 2) {
   return `      <a class="blog-card" href="/blog/${hub.dir}/${a.slug}/">
         <span class="cat">${esc(hub.label)}</span>
-        <h2>${esc(a.title)}</h2>
+        <h${level}>${esc(a.title)}</h${level}>
         <p>${esc(a.description)}</p>
       </a>`;
 }
@@ -225,7 +230,7 @@ ${askAgentAction('thuê xe máy')}`;
 
   const html = appShellPage({
     title: 'Cẩm nang thuê xe máy — ứng dụng, giá, xe điện, thủ tục',
-    description: 'Cẩm nang thuê xe máy và xe điện: cách dùng ứng dụng thuê xe, bảng giá, thủ tục, an toàn và hành trình Hà Nội.',
+    description: 'Cẩm nang thuê xe máy và xe điện: cách dùng ứng dụng thuê xe, bảng giá theo ngày, tuần, tháng, thủ tục, đặt cọc, an toàn và hành trình Hà Nội.',
     path: 'blog/',
     screen: 'blog-index',
     activeHub: null,
@@ -285,7 +290,7 @@ ${links.join('\n')}
 }
 
 /** Category hub screen (real content hub, paginated, subtopic chips). */
-function buildHub(hub, published, subtopicMap) {
+function buildHub(hub, published, subtopicMap, pillars = []) {
   const articles = published.filter((a) => a.category === hub.id);
   const pages = paginate(articles);
   const builtPaths = [];
@@ -295,6 +300,17 @@ function buildHub(hub, published, subtopicMap) {
     .filter((s) => s.count > 0 && s.slug)
     .map((s) => `        <a class="blog-chip" href="/blog/${hub.dir}/${s.slug}/">${esc(s.label)} <span class="blog-chip-count">${s.count}</span></a>`)
     .join('\n');
+
+  // v70 topical architecture: page 1 lists every topic PILLAR of the
+  // category (hub → pillar → supporting articles), so no topic cluster is
+  // buried behind deep pagination.
+  const pillarSection = pillars.length ? `      <section class="blog-pillars" aria-label="${esc(BLOG_UI.pillars.title)}">
+        <h2>${esc(BLOG_UI.pillars.title)}</h2>
+        <ul class="blog-pillar-list">
+${pillars.map((a) => `          <li><a href="/blog/${hub.dir}/${a.slug}/">${esc(a.title)}</a></li>`).join('\n')}
+        </ul>
+      </section>
+` : '';
 
   // Sibling category in the same cluster (related category).
   const cluster = CLUSTER_BY_ID[hub.cluster];
@@ -307,7 +323,9 @@ function buildHub(hub, published, subtopicMap) {
     const cards = pages[p].map((a) => card(a, hub)).join('\n')
       || `        <p class="blog-empty">Chưa có bài đã xuất bản trong danh mục này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>`;
     const nav = paginationNav(hub, pageNo, pages);
-    const title = pages.length > 1 ? `${hub.name} — trang ${pageNo} — Cẩm nang thuê xe máy` : `${hub.name} — Cẩm nang thuê xe máy & xe điện`;
+    // Page 1 is the hub itself (no "trang 1" in its title); deeper pages say their number.
+    // v70: page 1 uses the hub's keyword-led SERP title (taxonomy seo_title).
+    const title = pageNo > 1 ? `${hub.name} — trang ${pageNo} — Cẩm nang thuê xe máy` : (hub.seoTitle ?? `${hub.name} — Cẩm nang thuê xe máy & xe điện`);
 
     const trail = [{ label: hub.label, href: pageNo === 1 ? null : `/blog/${hub.dir}/` },
       ...(pageNo > 1 ? [{ label: `Trang ${pageNo}`, href: null }] : [])];
@@ -320,15 +338,18 @@ function buildHub(hub, published, subtopicMap) {
 ${chips}
       </div>
 ` : '')
+      + (pageNo === 1 ? pillarSection : '')
       + `      <div class="blog-grid">
 ${cards}
       </div>
 ${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
 ` : ''}${hubClusterFooter(cluster)}${askAgentAction(hub.name)}`;
 
+    // Paginated pages keep a unique meta description (no duplicate meta).
+    const description = pageNo === 1 ? hub.meta : `${hub.meta} Trang ${pageNo}.`;
     const html = appShellPage({
       title,
-      description: hub.meta,
+      description,
       path,
       screen: `category-${hub.dir}`,
       activeHub: hub.dir,
@@ -337,8 +358,14 @@ ${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a 
       schemaHtml: `  <script type="application/ld+json">
 ${jsonLd({
         '@context': 'https://schema.org', '@type': 'CollectionPage',
-        name: hub.name, description: hub.meta, url: `${SITE}${path}`,
-        isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE }
+        name: hub.name, description, url: `${SITE}${path}`,
+        inLanguage: 'vi-VN',
+        isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE },
+        mainEntity: {
+          '@type': 'ItemList',
+          name: `${hub.name} — bài viết`,
+          itemListElement: pages[p].map((a, i) => ({ '@type': 'ListItem', position: p * PER_PAGE + i + 1, name: a.title, url: `${SITE}blog/${hub.dir}/${a.slug}/` }))
+        }
       })}
   </script>
   <script type="application/ld+json">
@@ -369,7 +396,9 @@ ${askAgentAction(`${sub.label} — ${hub.name}`)}`;
 
   const html = appShellPage({
     title: `${sub.label} — ${hub.name} — Cẩm nang thuê xe máy`,
-    description: `${sub.label} trong ${hub.name.toLowerCase()}: ${hub.meta}`,
+    // v70: own 120–165 char description (the old "label trong hub: hub.meta"
+    // pattern exceeded the SERP length and repeated the hub description).
+    description: `Tổng hợp ${articles.length} bài về ${sub.label.toLowerCase()} trong chuyên mục ${hub.name.toLowerCase()}: hướng dẫn, kinh nghiệm và lưu ý thực tế khi thuê xe, kèm Agent để hỏi sâu hơn.`,
     path: `blog/${hub.dir}/${sub.slug}/`,
     screen: `subtopic-${sub.slug}`,
     activeHub: hub.dir,
@@ -492,7 +521,7 @@ ${hubClusterFooter(cluster)}${askAgentAction(cluster.name)}`;
     ...clusterArticles.slice(0, 10).map((a, i) => ({ '@type': 'ListItem', position: cats.length + 1 + i, name: a.title, url: `${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/` }))
   ];
   const html = appShellPage({
-    title: `${cluster.name} — Cẩm nang thuê xe máy`,
+    title: cluster.seo_title ?? `${cluster.name} — Cẩm nang thuê xe máy`,
     description: cluster.meta,
     path,
     screen: `cluster-${cluster.dir}`,
@@ -521,7 +550,7 @@ ${jsonLd({
  * Build the article screen. v58 editorial upgrades: quick-answer summary box,
  * deterministic reading time (words/200, ceil), TOC, related articles.
  */
-function buildArticle(a, business, hub, published, row) {
+function buildArticle(a, business, hub, published, row, links, byId) {
   const bodyRaw = read(a.body);
   const linkPages = new Set(published.map((entry) => `blog/${HUB_BY_ID[entry.category].dir}/${entry.slug}/index.html`));
   const body = normalizeInternalAnchors(resolveFacts(bodyRaw, business),
@@ -534,26 +563,28 @@ function buildArticle(a, business, hub, published, row) {
   const sub = deriveSubtopic(a.category, row ?? {});
   const subHubUrl = sub.fallback ? null : `/blog/${hub.dir}/${sub.slug}/`;
 
-  // Related: same subtopic first, then same category, then others. 3-5, never self.
-  const score = (x) => {
-    let s = 0;
-    if (x.category === a.category) s -= 2;
-    const xsub = deriveSubtopic(x.category, published.find((p) => p.article_id === x.article_id) ?? {});
-    if (!sub.fallback && xsub.code === sub.code && x.category === a.category) s -= 3;
-    return s;
-  };
-  const related = published
-    .filter((x) => x.article_id !== a.article_id)
-    .map((x) => ({ x, s: score(x), id: x.article_id }))
-    .sort((p, q) => p.s - q.s || p.id.localeCompare(q.id))
-    .slice(0, BLOG_UI.related.limit)
-    .map(({ x }) => card(x, HUB_BY_ID[x.category]))
-    .join('\n');
+  // v70: related = topically similar articles outside the topic family,
+  // planned corpus-wide by tools/seo-links.mjs (inbound-balanced).
+  const plan = links.get(a.article_id);
+  const cardOf = (id) => { const x = byId.get(id); return card(x, HUB_BY_ID[x.category], 3); };
+  const related = plan.related.map(cardOf).join('\n');
   const relatedSection = related ? `      <section class="blog-related">
         <h2>${esc(BLOG_UI.related.title)}</h2>
         <div class="blog-grid">
 ${related}
         </div>
+      </section>
+` : '';
+  // v70: the topic family (pillar + supporting articles of the same seed).
+  const familySection = plan.family.length ? `      <section class="blog-family" aria-label="${esc(BLOG_UI.family.title)}">
+        <h2>${esc(BLOG_UI.family.title)}</h2>
+        <ul class="blog-family-list">
+${plan.family.map((id) => {
+    const x = byId.get(id);
+    const tag = id === plan.pillar ? ` <span class="blog-family-tag">${esc(BLOG_UI.family.pillarLabel)}</span>` : '';
+    return `          <li><a href="/blog/${HUB_BY_ID[x.category].dir}/${x.slug}/">${esc(x.title)}</a>${tag}</li>`;
+  }).join('\n')}
+        </ul>
       </section>
 ` : '';
 
@@ -597,7 +628,7 @@ ${toc.markup}        <article class="blog-article-body">
   ${bodyWithIds.trim().split('\n').join('\n  ')}
         </article>
       </div>
-${topicContext}${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.title)}`;
+${topicContext}${familySection}${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.title)}`;
 
   const html = appShellPage({
     title: a.title,
@@ -617,8 +648,12 @@ ${jsonLd({
       description: a.description,
       datePublished: a.published_date,
       dateModified: a.published_date,
+      inLanguage: 'vi-VN',
+      articleSection: hub.name,
+      ...(a.seo_keyword ? { keywords: a.seo_keyword } : {}),
+      image: `${SITE}assets/icons/icon-512.png`,
       author: { '@type': 'Organization', name: a.author },
-      publisher: { '@type': 'Organization', name: business.display_name, url: SITE },
+      publisher: publisherSchema(business),
       mainEntityOfPage: `${SITE}${path}`,
       isAccessibleForFree: true
     })}
@@ -634,9 +669,22 @@ ${jsonLd({
   write(`blog/${hub.dir}/${a.slug}/index.html`, html);
 }
 
+/** One publisher entity for every Article (same @id site-wide, linked to
+ *  the business's main website) — consistent entity for search/AI engines. */
+function publisherSchema(business) {
+  return {
+    '@type': 'Organization',
+    '@id': `${SITE}#organization`,
+    name: business.display_name,
+    url: SITE,
+    logo: { '@type': 'ImageObject', url: `${SITE}assets/icons/icon-512.png`, width: 512, height: 512 },
+    sameAs: [business.url]
+  };
+}
+
 /** Legal/static screens (privacy, terms, about, policy, contact, price) —
  *  same shell, same source of truth. */
-function buildLegal({ dir, title, description, bodyPath, screen, business }) {
+function buildLegal({ dir, title, seoTitle, description, bodyPath, screen, business }) {
   const body = resolveFacts(read(bodyPath), business ?? JSON.parse(read('data/business/business.json')));
   const content = breadcrumb([CRUMB_HOME, { label: title, href: null }])
     + screenHead({ label: 'MotoAI', title, lead: description })
@@ -645,7 +693,8 @@ ${body.trim().split('\n').join('\n')}
       </div>
 ${askAgentAction(title)}`;
   const html = appShellPage({
-    title: `${title} — MotoAI`,
+    // v70: a descriptive SERP title (the visible H1/breadcrumb keep `title`).
+    title: seoTitle ?? `${title} — MotoAI`,
     description,
     path: `${dir}/`,
     screen,
@@ -688,17 +737,29 @@ export function build() {
   // indexed or matrix-synced by this build. The factory marks rows
   // PUBLISHED before calling build(), so this changes nothing for the
   // happy path.
+  // v70 SEO master: reviewed title/description/keyword overrides from
+  // data/seo/article-meta.json (validated; published.json stays untouched).
+  const seoMeta = loadSeoMeta(ROOT);
+  assertSeoMeta(seoMeta, manifest.articles);
   const published = manifest.articles
     .filter((a) => matrix[a.article_id]?.status === 'PUBLISHED')
+    .map((a) => applySeoMeta(a, seoMeta))
     // Resolve facts in summaries as well as bodies: article-card excerpts,
     // meta descriptions and search snippets must never expose {{ business.* }}.
     // Keep published.json source untouched; use current verified business data.
     .map((a) => ({ ...a, description: resolveFacts(a.description, business) }));
+  const byId = new Map(published.map((a) => [a.article_id, a]));
+  const links = planLinks(published, matrix, {
+    subtopicOf: deriveSubtopic,
+    clusterOf: (cat) => taxonomy.categories[cat].cluster,
+    limit: BLOG_UI.related.limit
+  });
+  const pillarsOf = (cat) => published.filter((a) => a.category === cat && links.get(a.article_id).pillar === a.article_id);
   const updated = published.reduce((m, a) => a.published_date > m ? a.published_date : m, '2026-09-26');
 
   buildHome(published);
   for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published);
-  const categoryPages = HUBS.flatMap((hub) => buildHub(hub, published, subtopicCounts(published, matrix)));
+  const categoryPages = HUBS.flatMap((hub) => buildHub(hub, published, subtopicCounts(published, matrix), pillarsOf(hub.id)));
   const subtopicPages = [];
   for (const hub of HUBS) {
     const subs = (taxonomy.subtopics[hub.id] ?? []);
@@ -715,19 +776,21 @@ export function build() {
       }
     }
   }
-  for (const a of published) buildArticle(a, business, HUB_BY_ID[a.category], published, matrix[a.article_id]);
+  for (const a of published) buildArticle(a, business, HUB_BY_ID[a.category], published, matrix[a.article_id], links, byId);
 
   // Legal screens — inside the SAME app shell (v57).
   buildLegal({
     dir: 'privacy', screen: 'legal-privacy',
     title: 'Chính sách bảo mật',
-    description: 'Chính sách bảo mật của MotoAI: dữ liệu lưu ở đâu, Agent chạy thế nào, liên kết ngoài và cách liên hệ.',
+    seoTitle: 'Chính sách bảo mật MotoAI — dữ liệu, Agent và quyền riêng tư',
+    description: 'Chính sách bảo mật của MotoAI: dữ liệu hội thoại lưu ở đâu, Agent chạy trên thiết bị ra sao, liên kết bên ngoài và cách liên hệ khi cần hỗ trợ.',
     bodyPath: 'data/legal/privacy.body.html'
   });
   buildLegal({
     dir: 'terms', screen: 'legal-terms',
     title: 'Điều khoản sử dụng',
-    description: 'Điều khoản sử dụng MotoAI: nội dung tham khảo, xác nhận thông tin quan trọng và trách nhiệm khi sử dụng.',
+    seoTitle: 'Điều khoản sử dụng MotoAI — nội dung tham khảo và trách nhiệm',
+    description: 'Điều khoản sử dụng MotoAI: thông tin chỉ mang tính tham khảo, cần xác nhận giá, cọc và tình trạng xe trước khi đặt, cùng trách nhiệm khi sử dụng.',
     bodyPath: 'data/legal/terms.body.html'
   });
 
@@ -735,19 +798,22 @@ export function build() {
   buildLegal({
     dir: 'gioi-thieu', screen: 'about',
     title: 'Giới thiệu',
-    description: 'Giới thiệu MotoAI: thuê xe máy Hà Nội Nguyễn Tú, Agent hỗ trợ, phạm vi phục vụ và cách liên hệ.',
+    seoTitle: 'Giới thiệu MotoAI — trợ lý thuê xe máy của Nguyễn Tú',
+    description: `MotoAI là trợ lý web của ${business.display_name}: hỏi giá, chọn xe, tính chi phí, xem thủ tục, phạm vi phục vụ và cách liên hệ cửa hàng.`,
     bodyPath: 'data/site/gioi-thieu.body.html', business
   });
   buildLegal({
     dir: 'chinh-sach', screen: 'policy',
     title: 'Chính sách dịch vụ & thuê xe',
-    description: 'Chính sách thuê xe: giờ hoạt động, đặt cọc, giao nhận xe, giấy tờ và xác nhận trước khi đặt.',
+    seoTitle: 'Chính sách thuê xe máy: đặt cọc, giấy tờ, giao nhận xe',
+    description: `Chính sách thuê xe máy của Nguyễn Tú: giờ hoạt động ${business.hours.display}, tiền đặt cọc theo loại xe, giấy tờ cần mang, giao nhận xe và điều cần xác nhận trước khi đặt.`,
     bodyPath: 'data/site/chinh-sach.body.html', business
   });
   buildLegal({
     dir: 'lien-he', screen: 'contact',
     title: 'Liên hệ',
-    description: 'Liên hệ Thuê Xe Máy Hà Nội Nguyễn Tú: điện thoại, WhatsApp, bản đồ và Agent hỗ trợ.',
+    seoTitle: 'Liên hệ thuê xe máy Nguyễn Tú — điện thoại, WhatsApp, bản đồ',
+    description: `Liên hệ ${business.display_name} tại ${business.address.street}, ${business.address.district}: số điện thoại, WhatsApp, bản đồ chỉ đường, giờ mở cửa ${business.hours.display}.`,
     bodyPath: 'data/site/lien-he.body.html', business
   });
   buildPrice(business);
@@ -885,8 +951,8 @@ ${rows}
 ${askAgentAction('giá thuê xe')}`;
 
   const html = appShellPage({
-    title: 'Bảng giá thuê xe máy & xe điện — MotoAI',
-    description: 'Bảng giá thuê xe máy và xe điện theo ngày, tuần, tháng. Giá tham khảo, xác nhận trực tiếp trước khi đặt xe.',
+    title: 'Bảng giá thuê xe máy & xe điện theo ngày, tuần, tháng',
+    description: 'Bảng giá thuê xe máy tham khảo theo ngày, tuần, tháng cho xe số, xe tay ga và xe điện. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.',
     path: 'gia-thue/',
     screen: 'price',
     activeHub: 'gia-thue',

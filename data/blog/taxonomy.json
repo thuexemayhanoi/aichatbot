@@ -12,7 +12,8 @@
       ],
       "dir": "cong-cu-huong-dan",
       "intro": "Công cụ và hướng dẫn sử dụng MotoAI: từ ứng dụng web thuê xe và Agent hỗ trợ đến thủ tục nhận xe, giấy tờ cần mang và tiền đặt cọc — mọi bước để thuê xe nhanh và đúng quy trình.",
-      "meta": "Công cụ và hướng dẫn sử dụng MotoAI: ứng dụng web thuê xe, Agent hỗ trợ, thủ tục nhận xe, giấy tờ và đặt cọc.",
+      "meta": "Công cụ và hướng dẫn thuê xe máy: dùng ứng dụng web MotoAI và Agent để hỏi giá, chọn xe, cùng thủ tục nhận xe, giấy tờ và tiền đặt cọc.",
+      "seo_title": "Công cụ và hướng dẫn thuê xe máy: ứng dụng, thủ tục, đặt cọc",
       "icon": "🧰"
     },
     {
@@ -25,7 +26,8 @@
       ],
       "dir": "thue-xe-phuong-tien",
       "intro": "Chọn đúng phương tiện cho chuyến đi: bảng giá thuê xe máy theo ngày, tuần, tháng; xe số hay xe ga; và khi nào xe máy điện là lựa chọn tốt hơn về chi phí, pin và phạm vi hoạt động.",
-      "meta": "Thuê xe máy và xe điện: bảng giá theo ngày tuần tháng, chọn xe số hay xe ga, pin, sạc và chi phí xe điện.",
+      "meta": "Thuê xe máy và xe điện: bảng giá tham khảo theo ngày, tuần, tháng, chọn xe số hay xe tay ga, thuê dài hạn, pin, sạc và chi phí xe điện.",
+      "seo_title": "Thuê xe máy và xe máy điện: bảng giá, chọn xe, pin và sạc",
       "icon": "🏍️"
     },
     {
@@ -38,7 +40,8 @@
       ],
       "dir": "kham-pha-an-toan",
       "intro": "Khám phá Hà Nội và vùng ven bằng xe máy thuê một cách an toàn: kỹ năng lái xe, trang bị bảo hộ, luật giao thông cần biết và gợi ý cung đường, điểm đến theo khu vực.",
-      "meta": "An toàn giao thông và hành trình địa phương Hà Nội: kỹ năng lái xe, luật giao thông, cung đường và điểm tham quan.",
+      "meta": "Khám phá Hà Nội an toàn bằng xe máy thuê: luật giao thông, bằng lái, kỹ năng lái xe, đồ bảo hộ và cung đường tham quan trong phố, ngoại thành.",
+      "seo_title": "Khám phá Hà Nội bằng xe máy thuê: an toàn, luật, cung đường",
       "icon": "🧭"
     }
   ],
@@ -50,7 +53,8 @@
       "name": "Ứng dụng thuê xe máy",
       "desc": "Ứng dụng web, Agent và cách dùng công cụ thuê xe máy trực tuyến.",
       "intro": "Cách dùng ứng dụng thuê xe máy MotoAI: hỏi giá, chọn xe, tính chi phí và xem thủ tục ngay trên trình duyệt — không cần cài đặt, không cần tài khoản.",
-      "meta": "Ứng dụng web, Agent và cách dùng công cụ thuê xe máy MotoAI: hỏi giá, chọn xe, tính chi phí và xem thủ tục ngay trên trình duyệt."
+      "meta": "Ứng dụng thuê xe máy MotoAI dạng web: hỏi giá, chọn xe, tính chi phí theo ngày, tuần, tháng và xem thủ tục ngay trên trình duyệt, không cần cài đặt.",
+      "seo_title": "Hướng dẫn dùng ứng dụng thuê xe máy: hỏi giá, chọn xe, đặt xe"
     },
     "RENT": {
       "dir": "thue-xe",
@@ -59,7 +63,8 @@
       "name": "Thuê xe máy",
       "desc": "Giá thuê, loại xe, kỳ thuê và kinh nghiệm thuê xe máy.",
       "intro": "Giá thuê theo ngày, tuần, tháng; chọn xe số hay xe ga; kỳ thuê và kinh nghiệm thuê xe máy cho từng mục đích chuyến đi.",
-      "meta": "Giá thuê xe máy theo ngày, tuần, tháng; chọn xe số hay xe ga; kỳ thuê và kinh nghiệm thuê xe máy cho từng mục đích chuyến đi."
+      "meta": "Kinh nghiệm thuê xe máy: giá thuê theo ngày, tuần, tháng, chọn xe số hay xe tay ga, đặt cọc, nhận và trả xe cho từng mục đích chuyến đi.",
+      "seo_title": "Kinh nghiệm thuê xe máy: giá theo ngày, tuần, tháng và thủ tục"
     },
     "EV": {
       "dir": "xe-dien",
@@ -68,7 +73,8 @@
       "name": "Xe điện / xe máy điện",
       "desc": "Thuê xe điện: pin, phạm vi, sạc và cách chọn xe điện phù hợp.",
       "intro": "Thuê xe máy điện: tầm hoạt động theo pin, cách sạc, chi phí và cách chọn xe điện phù hợp với hành trình của bạn.",
-      "meta": "Thuê xe điện: tầm hoạt động theo pin, cách sạc, chi phí và cách chọn xe máy điện phù hợp với hành trình của bạn."
+      "meta": "Thuê xe máy điện: tầm hoạt động theo pin, cách sạc và nơi sạc, chi phí thuê và cách chọn xe điện phù hợp với hành trình trong phố hay đường dài.",
+      "seo_title": "Thuê xe máy điện Hà Nội: pin, sạc, chi phí và cách chọn xe"
     },
     "GUIDE": {
       "dir": "huong-dan",
@@ -77,7 +83,8 @@
       "name": "Hướng dẫn / thủ tục",
       "desc": "Thủ tục nhận xe, giấy tờ, đặt cọc và quy trình trả xe.",
       "intro": "Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ.",
-      "meta": "Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ."
+      "meta": "Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, hợp đồng thuê, cách kiểm tra khi nhận xe và trả xe đúng giờ.",
+      "seo_title": "Hướng dẫn thuê xe máy từng bước: giấy tờ, cọc, nhận và trả xe"
     },
     "SAFE": {
       "dir": "an-toan",
@@ -86,7 +93,8 @@
       "name": "An toàn / pháp lý",
       "desc": "Luật giao thông, an toàn lái xe và trách nhiệm khi thuê xe.",
       "intro": "An toàn khi thuê và lái xe máy: trang bị bảo hộ, luật giao thông và trách nhiệm của người thuê.",
-      "meta": "An toàn khi thuê và lái xe máy: trang bị bảo hộ, luật giao thông và trách nhiệm của người thuê."
+      "meta": "An toàn khi thuê và lái xe máy: bằng lái, luật giao thông đường bộ, mũ bảo hiểm, lái xe khi mưa, ban đêm và trách nhiệm của người thuê.",
+      "seo_title": "Luật giao thông và an toàn khi thuê xe máy: bằng lái, mũ, phạt"
     },
     "LOCAL": {
       "dir": "dia-phuong",
@@ -95,7 +103,8 @@
       "name": "Địa phương / du lịch",
       "desc": "Hành trình Hà Nội và vùng ven bằng xe máy thuê, gợi ý điểm đến theo khu vực.",
       "intro": "Hành trình Hà Nội và vùng ven bằng xe máy thuê: gợi ý điểm đến, thời gian và cung đường cho từng khu vực.",
-      "meta": "Hành trình Hà Nội và vùng ven bằng xe máy thuê: gợi ý điểm đến, thời gian và cung đường cho từng khu vực."
+      "meta": "Hành trình Hà Nội và vùng ven bằng xe máy thuê: Phố Cổ, Hồ Tây, Ba Đình, Long Biên và cung ngoại thành, kèm thời gian, chỗ gửi xe, lưu ý.",
+      "seo_title": "Đi xe máy ở Hà Nội: Phố Cổ, Hồ Tây, Ba Đình và ngoại thành"
     }
   },
   "subtopics": {

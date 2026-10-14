@@ -678,6 +678,13 @@ body.content-page .footer-sub a::before { content: "↳ "; color: var(--color-te
 .blog-topic-context p { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.86rem; }
 .blog-topic-context a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
 .blog-topic-context a:hover { text-decoration: underline; }
+.blog-family, .blog-pillars { padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); margin-top: var(--space-4); }
+.blog-family h2, .blog-pillars h2 { margin: 0 0 6px; font-size: 0.9rem; }
+.blog-family-list, .blog-pillar-list { margin: 0; padding-left: 1.1rem; display: grid; gap: 4px; font-size: 0.86rem; }
+.blog-pillar-list { grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); column-gap: var(--space-4); }
+.blog-family-list a, .blog-pillar-list a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
+.blog-family-list a:hover, .blog-pillar-list a:hover { text-decoration: underline; }
+.blog-family-tag { font-size: 0.75rem; color: var(--color-text-muted); font-weight: 400; }
 
 /* Optional site banner slot: enabled from config, uses shared design tokens. */
 body.content-page .blog-global-banner {
