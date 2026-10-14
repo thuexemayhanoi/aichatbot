@@ -363,7 +363,9 @@ export function runEngine(root = ROOT, { health = true, context = null } = {}) {
   const seen = new Map();
   for (const g of groups) { const n = (seen.get(g.id) ?? 0) + 1; seen.set(g.id, n); if (n > 1) g.id = `${g.id}-${n}`; }
 
-  const curated = cs.curated.map((t) => ({ ...t, id: viSlug(t.topic), action: 'NEW_ARTICLE_VERIFY', decision: ctx.decisions[viSlug(t.topic)] ?? null,
+  // A reviewed topic is legal content when it names official texts to check (its own note keeps the reviewer's wording).
+  const curated = cs.curated.map((t) => ({ ...t, note: t.action, legal: t.legal ?? /pháp lý|văn bản|nghị quyết|luật/i.test(`${t.action} ${t.observed}`),
+    id: viSlug(t.topic), action: 'NEW_ARTICLE_VERIFY', decision: ctx.decisions[viSlug(t.topic)] ?? null,
     groups: groups.filter((g) => g.topic === viSlug(t.topic)).map((g) => g.id) }));
   const flagged = (cs.cfg.content_flags ?? []).map((f) => ({ article: f.article, reason: f.reason, resolved: f.resolved ?? null, fix: f.fix ?? null,
     url: byId.get(f.article)?.url ?? '',
@@ -391,20 +393,22 @@ export function runEngine(root = ROOT, { health = true, context = null } = {}) {
   const actionable = groups.filter((g) => ['FIX_FIRST', 'NEW_ARTICLE', 'ADD_SECTION', 'CONSIDER_STANDALONE', 'REVIEW_TARGET'].includes(g.action) && open(g));
   const briefs = actionable.slice(0, 15);
   const proposals = [];
+  const taken = new Set(slugs);
+  const freeSlug = (base) => { let slug = base; for (let i = 2; taken.has(slug); i++) slug = `${base}-${i}`; taken.add(slug); return slug; };
   let n = 0;
   // New pages: measured gaps (≥ 300/month) and sections big enough to stand alone (≥ 1.000/month).
   for (const g of groups.filter((x) => ((x.action === 'NEW_ARTICLE' && x.demand >= 300) || (x.action === 'CONSIDER_STANDALONE' && x.demand >= 1000)) && open(x))) {
     const cat = categoryOfCluster(g.cluster);
-    let slug = viSlug(g.head);
-    if (slugs.has(slug)) slug = `${slug}-moi`;
+    const slug = freeSlug(viSlug(g.head));
     proposals.push({ id: `PROPOSED-${String(++n).padStart(3, '0')}`, category: cat, primary_keyword: g.head,
       secondary_keywords: g.members.slice(1, 8).map((m) => m.keyword).join('; '), slug, cluster: g.cluster, demand: g.demand,
       source: g.action === 'CONSIDER_STANDALONE' ? `engine-06 nhóm ${g.id} (tách từ mục của ${g.target?.id})` : `engine-06 nhóm ${g.id}` });
   }
   for (const t of curated.filter((x) => !['done', 'rejected', 'deferred'].includes(x.decision?.status))) {
     const cat = t.cluster === 'K09' || t.cluster === 'K10' || t.cluster === 'K11' ? 'SAFE' : categoryOfCluster(t.cluster);
-    proposals.push({ id: `PROPOSED-${String(++n).padStart(3, '0')}`, category: cat, primary_keyword: normKw(t.keywords?.[0] ?? t.topic),
-      secondary_keywords: (t.keywords ?? []).slice(1, 8).join('; '), slug: viSlug(t.topic), cluster: t.cluster, demand: t.demand, source: `engine-06 chủ đề: ${t.topic}` });
+    proposals.push({ id: `PROPOSED-${String(++n).padStart(3, '0')}`, category: cat, legal: t.legal, primary_keyword: normKw(t.keywords?.[0] ?? t.topic),
+      // Short slug from the main keyword (the topic sentence is a working title, not a URL).
+      secondary_keywords: (t.keywords ?? []).slice(1, 8).join('; '), slug: freeSlug(t.slug ?? viSlug(t.keywords?.[0] ?? t.topic)), cluster: t.cluster, demand: t.demand, source: `engine-06 chủ đề: ${t.topic}` });
   }
 
   return {
@@ -538,13 +542,15 @@ export function render(e) {
         `- Đối thủ trên SERP: ${competitors.length ? '' : 'chưa chụp SERP — xem research-queue.md'}`);
       for (const c of competitors.slice(0, 5)) L.push(`  - ${c}`);
       if (questions.length) L.push(`- Câu hỏi/tìm kiếm liên quan trên SERP: ${questions.map(mdCell).join('; ')}`);
-      L.push(`- Ràng buộc: tiếng Việt; 800–2.000 từ; dữ kiện kinh doanh chỉ từ \`data/business/business.json\`; không số liệu tự đặt${legal(g.cluster, cat) ? '; **legal gate**: trích văn bản gốc + ngày hiệu lực' : ''}.`, ...extra, '');
+      L.push(`- Ràng buộc: tiếng Việt; 800–2.000 từ; dữ kiện kinh doanh chỉ từ \`data/business/business.json\`; không số liệu tự đặt${g.legal || legal(g.cluster, cat) ? '; **legal gate**: trích văn bản gốc + ngày hiệu lực' : ''}.`, ...extra, '');
     };
     for (const t of e.curated) {
       const vol = (k) => e.keywords.find((x) => x.keyword === normKw(k))?.volume ?? null;
+      const ev = e.serpByQuery.get(normKw(t.evidence_query));
       one(`${t.topic} (chủ đề mới)`, { head: t.keywords?.[0] ?? t.topic, members: (t.keywords ?? []).map((k) => ({ keyword: k, volume: vol(k) })), measured: t.demand ? 1 : 0, demand: t.demand ?? 0,
-        cluster: t.cluster, intent: '—', serp: { queries: [t.evidence_query], ai: false, local: false }, target: null, status: 'GAP', action: 'NEW_ARTICLE_VERIFY', priority: null },
-      [`- Nguồn cần đối chiếu: ${t.sources_to_verify.join(' · ')}`, `- Ghi chú: ${mdCell(t.action)}`]);
+        cluster: t.cluster, intent: ev?.intent ?? '—', serp: { queries: [t.evidence_query], ai: Boolean(ev?.ai), local: Boolean(ev?.local) }, target: null,
+        status: t.status ?? 'GAP', action: 'NEW_ARTICLE_VERIFY', priority: null, legal: t.legal },
+      [`- Hiện trạng quan sát: ${mdCell(t.observed ?? '—')}`, `- Nguồn cần đối chiếu: ${t.sources_to_verify.join(' · ')}`, `- Ghi chú: ${mdCell(t.note ?? '')}`]);
     }
     for (const g of e.briefs) one(mdCell(g.head), g);
     files['content-briefs.md'] = L.join('\n');
@@ -572,7 +578,7 @@ export function render(e) {
     for (const p of e.proposals) {
       const dir = HUB_DIR[p.category];
       lines.push([p.id, 'ENGINE-06', p.category, 'PROPOSED', p.primary_keyword, p.secondary_keywords, intentOf(p.category), '', p.slug,
-        `blog/${dir}/${p.slug}/index.html`, `blog/${dir}/`, p.category === 'SAFE' ? 'yes' : 'no', p.category === 'SAFE' ? 'legal-gate' : 'no-external',
+        `blog/${dir}/${p.slug}/index.html`, `blog/${dir}/`, p.category === 'SAFE' || p.legal ? 'yes' : 'no', p.category === 'SAFE' || p.legal ? 'legal-gate' : 'no-external',
         `${p.source}; nhu cầu ${p.demand ?? 'chưa đo'}/tháng; cần owner duyệt trước khi thêm vào data/blog/content-matrix.csv`].map(csvCell).join(','));
     }
     files['proposed-matrix-rows.csv'] = lines.join('\n') + '\n';
