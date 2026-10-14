@@ -1,0 +1,64 @@
+<p>Quy trình nhận xe tại Hà Nội có vài điểm khác so với ở một thị trấn nhỏ: cửa hàng nằm ở Bồ Đề bên kia sông Hồng, trong khi nhiều người thuê lại ở Phố Cổ, Ba Đình hay Tây Hồ; giờ cao điểm qua cầu có thể kéo một quãng ngắn thành nửa tiếng; và khách sạn phố cổ thường nằm trong ngõ nhỏ khó dừng xe. Bài này đi qua bốn bước nhận xe theo đúng hoàn cảnh Hà Nội, từ cuộc gọi chốt lịch tới mười lăm phút đầu tiên bạn tự cầm lái giữa phố.</p>
+
+<h2>Bước 1: chốt lịch qua điện thoại trước ngày nhận</h2>
+<p>Một cuộc gọi rõ ràng tới {{ business.contact.phone_display }} giúp buổi nhận xe chỉ còn là thủ tục. Trước khi gọi, chuẩn bị sẵn các ý sau:</p>
+<ul>
+<li><strong>Dòng xe và số lượng:</strong> ví dụ một Honda Vision, giá tham khảo 200.000đ/ngày, hoặc Honda Wave 150.000đ/ngày; giá chính xác do cửa hàng xác nhận.</li>
+<li><strong>Ngày giờ nhận:</strong> nằm trong khung giờ mở cửa {{ business.hours.display }}.</li>
+<li><strong>Nơi nhận:</strong> tự đến cửa hàng hay cần giao tới chỗ ở.</li>
+<li><strong>Giấy tờ cần mang:</strong> hỏi đúng loại giấy tờ tùy thân và giấy phép lái xe được yêu cầu.</li>
+<li><strong>Bảo hiểm:</strong> cửa hàng không cung cấp, bạn tự chuẩn bị bảo hiểm xe máy trước ngày nhận.</li>
+</ul>
+<p>Khoản cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được xác nhận ngay khi đặt. Hỏi luôn hình thức nộp và thời điểm hoàn để không bị bất ngờ lúc nhận.</p>
+
+<h2>Bước 2: chọn cách nhận xe hợp với nơi bạn ở</h2>
+<h3>Tự đến cửa hàng ở Bồ Đề</h3>
+<p>Cửa hàng ở {{ business.address.full }}. Nếu bạn ở bờ bên kia sông, cách gọn nhất là đi taxi hoặc xe công nghệ qua cầu Chương Dương, quãng đường không dài khi đường thông thoáng. Hãy tránh khung đi làm buổi sáng và giờ tan tầm buổi chiều, lúc dòng xe qua cầu dày nhất. Đến sớm hơn giờ hẹn vài phút để có thời gian kiểm tra xe dưới ánh sáng tự nhiên.</p>
+<h3>Nhận xe giao tới nơi ở trong nội thành</h3>
+<p>Cửa hàng có giao xe trong giờ hoạt động tới các khu Long Biên, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành. Thời gian và phí giao phải thống nhất trước khi đặt; không có giao xe ngoài khung {{ business.hours.display }}. Với khách sạn trong ngõ phố cổ, hãy hẹn điểm giao ở đầu ngõ hoặc trước sảnh có chỗ dừng xe, và hỏi lễ tân trước nơi gửi xe qua đêm. Kinh nghiệm phối hợp với khách sạn có trong bài <a href="/blog/huong-dan/giao-xe-tai-khach-san-tai-ha-noi/">giao xe tại khách sạn tại Hà Nội</a>.</p>
+
+<h2>Bước 3: thủ tục tại điểm nhận</h2>
+<p>Dù nhận ở quầy hay trước cửa khách sạn, trình tự nên giống nhau để không sót việc:</p>
+<ol>
+<li><strong>Đối chiếu giấy tờ:</strong> xuất trình bản gốc theo yêu cầu đã chốt qua điện thoại.</li>
+<li><strong>Đối chiếu xe:</strong> đúng dòng xe, đúng biển số ghi trong thỏa thuận.</li>
+<li><strong>Đi một vòng quanh xe:</strong> vỏ xe, gương, đèn, yên, cốp; chỉ cho nhân viên những vết xước có sẵn.</li>
+<li><strong>Chụp ảnh và quay video ngắn:</strong> bốn góc xe, đồng hồ báo xăng và số km.</li>
+<li><strong>Thử nhanh:</strong> phanh trước, phanh sau, còi, xi nhan, đèn pha chiếu gần và chiếu xa.</li>
+<li><strong>Nhận mũ bảo hiểm và chốt thỏa thuận:</strong> mũ vừa đầu, quai chắc; giờ trả, nơi trả và mức xăng khi trả được ghi lại.</li>
+</ol>
+<p>Danh sách các điểm cần soi trên xe được viết chi tiết trong bài <a href="/blog/huong-dan/kiem-tra-xe-khi-nhan/">kiểm tra xe khi nhận</a>, còn khung chung không riêng Hà Nội nằm ở bài <a href="/blog/huong-dan/quy-trinh-nhan-xe/">quy trình nhận xe</a>.</p>
+
+<h2>Bước 4: mười lăm phút đầu sau khi nhận xe</h2>
+<p>Đây là khoảng thời gian dễ xảy ra lúng túng nhất, nhất là khi bạn vừa nhận xe ở Bồ Đề và phải hòa ngay vào trục đường đông. Vài việc nên làm:</p>
+<ul>
+<li>Chạy một vòng ngắn ở phố nhỏ quanh điểm nhận để quen tay ga và độ ăn của phanh trước khi ra đường lớn.</li>
+<li>Xem lộ trình qua sông từ trước: cầu Chương Dương nối thẳng với phía Hoàn Kiếm, còn trên cầu Long Biên xe máy đi bên trái, khác mọi tuyến đường khác.</li>
+<li>Để ý hệ thống phố một chiều khi vào khu phố cổ; đi sai chiều là lỗi người mới đến hay gặp.</li>
+<li>Kiểm tra mức xăng, nếu thấp thì ghé cây xăng gần nhất trước khi đi xa.</li>
+<li>Lưu số cửa hàng vào danh bạ để gọi nhanh khi cần.</li>
+</ul>
+<p>Cách dùng bản đồ trên điện thoại sao cho an toàn khi chưa thuộc đường được hướng dẫn trong bài <a href="/blog/huong-dan/ban-do-va-dinh-vi-khi-thue-xe-tai-ha-noi/">bản đồ và định vị khi thuê xe tại Hà Nội</a>.</p>
+
+<h2>Những lỗi hay gặp khi nhận xe ở Hà Nội</h2>
+<ul>
+<li>Hẹn giao xe sau giờ đóng cửa vì nghĩ cửa hàng sẽ linh động; việc giao chỉ diễn ra trong giờ hoạt động.</li>
+<li>Hẹn nhận đúng giờ cao điểm rồi trễ hẹn vì kẹt xe trên cầu.</li>
+<li>Nhận xe lúc trời đã tối, khó nhìn rõ vết xước và tình trạng lốp.</li>
+<li>Quên hỏi khách sạn chỗ gửi xe, đến tối mới loay hoay tìm bãi.</li>
+<li>Ký nhận khi chưa chụp ảnh đồng hồ xăng, lúc trả xe không có gì để đối chiếu.</li>
+</ul>
+<p>Chuyện gửi xe ở các khu đông đúc và cách khóa xe an toàn được tổng hợp trong bài <a href="/blog/huong-dan/do-xe-o-ha-noi-tai-ha-noi/">đỗ xe ở Hà Nội</a>.</p>
+
+<h2>Câu hỏi thường gặp về quy trình nhận xe tại Hà Nội</h2>
+<h3>Tôi muốn nhận xe lúc bảy giờ sáng được không?</h3>
+<p>Cửa hàng mở cửa trong khung {{ business.hours.display }}, nên lịch nhận cần nằm trong khung này. Nếu cần đi sớm, hãy nhận xe từ chiều hôm trước; các phương án được phân tích ở bài <a href="/blog/huong-dan/thoi-gian-nhan-xe-som-tai-ha-noi/">thời gian nhận xe sớm tại Hà Nội</a>.</p>
+<h3>Nhận xe mất khoảng bao lâu?</h3>
+<p>Khi giấy tờ đã chuẩn bị đủ và lịch đã chốt qua điện thoại, phần thủ tục và kiểm tra xe thường gói gọn trong khoảng mười lăm đến hai mươi phút.</p>
+<h3>Có giao xe tới Tây Hồ hoặc Ba Đình không?</h3>
+<p>Có, Tây Hồ và Ba Đình đều nằm trong khu vực phục vụ; bạn chỉ cần báo địa chỉ cụ thể để cửa hàng hẹn giờ và báo phí giao trước khi đặt.</p>
+<h3>Nhận xe xong mới phát hiện lỗi nhỏ thì làm gì?</h3>
+<p>Dừng xe ở nơi an toàn, chụp ảnh lỗi và gọi ngay cho cửa hàng để ghi nhận. Báo càng sớm, việc đối chiếu khi trả xe càng rõ ràng; trình tự trả xe có ở bài <a href="/blog/huong-dan/quy-trinh-tra-xe/">quy trình trả xe</a>.</p>
+
+<h2>Kết luận</h2>
+<p>Nhận xe ở Hà Nội suôn sẻ khi bạn chốt lịch kỹ qua điện thoại, chọn đúng cách nhận theo nơi ở, làm đủ sáu việc tại điểm nhận và dành mười lăm phút đầu để quen xe. Gọi {{ business.contact.phone_display }} để {{ business.brand }} xếp lịch nhận phù hợp, hoặc ghé {{ business.address.full }} trong giờ mở cửa. Các bước liên quan như trả xe, gửi xe hay tìm đường có trong <a href="/blog/huong-dan/">chuyên mục hướng dẫn</a>; muốn hỏi nhanh trước khi gọi, mở trợ lý trên <a href="/">trang chủ</a>.</p>

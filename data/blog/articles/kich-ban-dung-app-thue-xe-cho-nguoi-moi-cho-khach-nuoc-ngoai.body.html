@@ -1,0 +1,56 @@
+<p>Bạn là khách nước ngoài, chưa từng thuê xe máy ở đâu, và sắp tới Hà Nội vài ngày? Bài này là một kịch bản dùng app thuê xe cho người mới cho khách nước ngoài, đi theo đúng trình tự một chuyến đi thật: từ lúc còn ở nhà phân vân có nên lái hay không, tới đêm đầu ở khách sạn, sáng nhận xe, giữa chuyến và lúc trả xe. Mỗi kịch bản có một câu nhắn mẫu bằng tiếng Anh để bạn chép lại, những gì một câu trả lời hữu ích nên có, và việc bạn làm ngay sau đó.</p>
+
+<h2>Trước khi bắt đầu: trợ lý làm được gì, không làm gì</h2>
+<p>MotoAI là trợ lý dạng ứng dụng web nằm trên website của cửa hàng. Bạn mở bằng trình duyệt điện thoại, không cần cài đặt, không cần tạo tài khoản, và có thể nhắn bằng tiếng Anh hoặc tiếng Việt. Trợ lý giúp bạn tra giá tham khảo, hiểu giấy tờ cần chuẩn bị, so sánh vài dòng xe phổ biến và nắm quy trình nhận, trả xe.</p>
+<p>Có ba việc trợ lý không làm thay cửa hàng: xác nhận xe còn trống vào đúng ngày của bạn, chốt giờ và phí giao xe, chốt khoản cọc. Ba việc này luôn do nhân viên xác nhận. Hiểu ranh giới đó từ đầu giúp bạn biết lúc nào nên gõ tiếp và lúc nào nên gọi điện. Bức tranh chung về cách khách quốc tế dùng công cụ này có ở bài <a href="/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/">app thuê xe cho người nước ngoài</a>.</p>
+
+<h2>Kịch bản 1: còn ở nhà, tự hỏi mình có nên lái không</h2>
+<p>Câu nhắn mẫu: <em>"I have never ridden a scooter before. Is it realistic to start riding in Hanoi?"</em></p>
+<p>Một câu trả lời đáng tin sẽ không chiều lòng bạn bằng mọi giá. Nó nên gợi ý dòng xe ga nhẹ, dễ dắt, khuyên bạn tập ở chỗ vắng trước, và thẳng thắn rằng giao thông giờ cao điểm không phải nơi để học lái. Trước khi quyết định, hãy tự trả lời vài câu:</p>
+<ul>
+<li>Bạn đã từng đạp xe trong phố đông chưa, có giữ thăng bằng tốt khi đi chậm không?</li>
+<li>Bạn có giấy phép lái xe phù hợp để điều khiển xe máy tại Việt Nam chưa?</li>
+<li>Bạn có sẵn sàng dành buổi đầu chỉ để làm quen ở đoạn đường vắng không?</li>
+</ul>
+<p>Nếu có câu trả lời là không, đi taxi vài ngày đầu rồi mới thuê xe là lựa chọn khôn ngoan. Cách trợ lý đồng hành với người mới cầm lái được mô tả chi tiết trong bài <a href="/blog/app/ung-dung-thue-xe-va-nguoi-moi-biet-lai-xe-cho-khach-nuoc-ngoai/">ứng dụng thuê xe và người mới biết lái xe cho khách nước ngoài</a>.</p>
+
+<h2>Kịch bản 2: đêm đầu ở khách sạn, hỏi giá và giao xe</h2>
+<p>Câu nhắn mẫu: <em>"I'm staying in the Old Quarter for three nights. How much is an automatic scooter per day, and can you deliver it to my hotel?"</em></p>
+<p>Câu trả lời hữu ích sẽ đưa mức tham khảo, chẳng hạn Honda Vision khoảng 200.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày, kèm lời nhắc rằng giá thực tế cần cửa hàng xác nhận. Về giao xe, bạn sẽ được biết việc giao chỉ diễn ra trong giờ hoạt động {{ business.hours.display }}, còn thời gian và phí giao phải thống nhất trước khi đặt; đừng chờ một con số phí cố định từ trợ lý.</p>
+<p>Việc tiếp theo: chép địa chỉ khách sạn bằng tiếng Việt từ email xác nhận đặt phòng, chọn khung giờ bạn chắc chắn có mặt ở sảnh, rồi gọi {{ business.contact.phone_display }} để chốt. Số phòng chỉ cần đưa khi lịch giao đã được xác nhận.</p>
+
+<h2>Kịch bản 3: hỏi giấy tờ và bảo hiểm trước khi hẹn</h2>
+<p>Câu nhắn mẫu: <em>"What documents should I bring, and is insurance included in the rental?"</em></p>
+<p>Trợ lý sẽ liệt kê những giấy tờ thường được hỏi khi nhận xe và nhắc bạn xác nhận lại với cửa hàng. Điểm quan trọng bạn cần nghe rõ: cửa hàng không cung cấp bảo hiểm, người thuê tự chuẩn bị bảo hiểm xe máy của mình. Với khoản giữ xe, mức cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được xác nhận lúc đặt.</p>
+<p>Chuyện giấy phép lái xe của người nước ngoài có nhiều trường hợp khác nhau, tùy loại giấy bạn đang có. Danh sách giấy tờ cụ thể và cách chuẩn bị nằm trong bài <a href="/blog/huong-dan/giay-to-nguoi-nuoc-ngoai-thue-xe-tai-ha-noi/">giấy tờ người nước ngoài thuê xe tại Hà Nội</a>; hãy đọc trước khi bay thay vì đợi tới quầy mới hỏi.</p>
+
+<h2>Kịch bản 4: sáng nhận xe, dùng trợ lý làm danh sách kiểm tra</h2>
+<p>Câu nhắn mẫu: <em>"What should I check on the scooter when I pick it up?"</em></p>
+<p>Đây là lúc trợ lý biến thành một danh sách kiểm tra bỏ túi. Bạn mở sẵn câu trả lời trên điện thoại và đi một vòng quanh xe cùng nhân viên:</p>
+<ol>
+<li>Phanh trước, phanh sau ăn đều, bóp không bị lún sâu.</li>
+<li>Đèn pha, đèn xi nhan, đèn phanh và còi đều hoạt động.</li>
+<li>Lốp không mòn trơ, không có vết rách bên hông.</li>
+<li>Gương chỉnh được và không lỏng.</li>
+<li>Chụp ảnh các vết xước có sẵn, kể cả mặt dưới yên và hai bên thân xe.</li>
+<li>Mũ bảo hiểm vừa đầu, quai cài chắc chắn.</li>
+</ol>
+<p>Nhờ nhân viên chỉ cách nổ máy, mở cốp, mở nắp bình xăng, rồi chạy thử một vòng ngắn trước cửa hàng. Nếu bạn muốn chuẩn bị thêm những câu nên hỏi trong mười phút đầu, bài <a href="/blog/app/kinh-nghiem-dung-tro-ly-thue-xe-lan-dau-cho-khach-nuoc-ngoai/">kinh nghiệm dùng trợ lý thuê xe lần đầu cho khách nước ngoài</a> có trình tự gợi ý.</p>
+
+<h2>Kịch bản 5: giữa chuyến có trục trặc, và lúc trả xe</h2>
+<p>Câu nhắn mẫu khi gặp sự cố: <em>"My scooter won't start near Hoan Kiem Lake. What should I do?"</em></p>
+<p>Trợ lý không thể cử người tới chỗ bạn. Việc đúng là dắt xe vào lề an toàn, chụp ảnh vị trí, không tự tháo sửa, rồi gọi {{ business.contact.phone_display }} trong giờ hoạt động để thống nhất cách xử lý với cửa hàng.</p>
+<p>Câu nhắn mẫu cho ngày cuối: <em>"I fly out tomorrow afternoon. What time should I return the scooter, and where?"</em> Câu trả lời sẽ nhắc bạn trả theo thỏa thuận đã ghi khi nhận, trong khung giờ mở cửa, tại {{ business.address.full }} hoặc theo lịch thu xe đã hẹn. Hãy hỏi trước mức xăng cần để lại, chụp ảnh xe lúc bàn giao và để dư thời gian ra sân bay.</p>
+
+<h2>Câu hỏi thường gặp về kịch bản dùng trợ lý cho khách nước ngoài mới thuê xe</h2>
+<h3>Tiếng Anh của tôi không giỏi, trợ lý có hiểu không?</h3>
+<p>Câu ngắn, đủ ý là đủ: loại xe, số ngày, khu bạn ở. Viết số ngày bằng chữ số và tên khu vực như Old Quarter hay Tay Ho giúp câu trả lời sát hơn. Mẹo viết câu hỏi rõ ràng có trong bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu-cho-khach-nuoc-ngoai/">trợ lý thuê xe xử lý câu hỏi đa ngôn ngữ</a>.</p>
+<h3>Trợ lý có đặt xe giúp tôi luôn không?</h3>
+<p>Không. Trợ lý giúp bạn chuẩn bị thông tin; việc giữ xe, giờ giao và khoản cọc do nhân viên cửa hàng xác nhận qua điện thoại hoặc tại quầy.</p>
+<h3>Tôi có cần tạo tài khoản hay cài thêm gì không?</h3>
+<p>Không cần. Bạn chỉ mở website trên trình duyệt điện thoại hoặc máy tính là dùng được, không phải tải gì về máy.</p>
+<h3>Những gì tôi gõ có bị lưu lại không?</h3>
+<p>Hội thoại được lưu trong bộ nhớ trình duyệt trên chính thiết bị của bạn, và bạn có thể xóa bằng nút xóa hội thoại ở đầu khung chat. Dù vậy, không cần gõ số hộ chiếu hay thông tin thẻ vào khung chat.</p>
+
+<h2>Kết luận</h2>
+<p>Năm kịch bản trên bao trọn một chuyến thuê xe đầu tiên của khách nước ngoài: tự đánh giá, hỏi giá, chuẩn bị giấy tờ, kiểm tra xe và xử lý những ngày cuối. Hãy để trợ lý lo phần thông tin, còn phần chốt thì gọi {{ business.contact.phone_display }} để {{ business.brand }} xác nhận trong giờ {{ business.hours.display }}. Khung bốn giai đoạn dành cho mọi người mới có ở bài <a href="/blog/app/kich-ban-dung-app-thue-xe-cho-nguoi-moi/">kịch bản dùng app thuê xe cho người mới</a>; xem thêm các bài trong <a href="/blog/app/">chuyên mục ứng dụng</a> hoặc mở trợ lý ngay tại <a href="/">trang chủ</a>.</p>
