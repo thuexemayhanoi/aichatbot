@@ -1,0 +1,65 @@
+<p>Lần đầu nhắn tin với một trợ lý thuê xe ở đất nước khác, du khách thường gặp hai kiểu bối rối. Kiểu thứ nhất là không biết bắt đầu từ đâu, gõ một câu chung chung rồi nhận về câu trả lời cũng chung chung. Kiểu thứ hai khó thấy hơn: nhận được câu trả lời đúng nhưng đọc sai, vì cách viết tiền, giờ và tên loại xe ở Việt Nam khác với quê nhà. Bài này chia sẻ kinh nghiệm cho buổi trò chuyện đầu tiên của khách nước ngoài với trợ lý MotoAI, từ lúc chuẩn bị thông tin tới lúc biết dừng hỏi máy để gọi người thật.</p>
+<p>MotoAI là trợ lý trực tuyến ngay trên website của cửa hàng, mở bằng trình duyệt điện thoại hoặc máy tính, không cần cài đặt. Trợ lý trả lời dựa trên thông tin của cửa hàng về dòng xe, giá tham khảo, khoản cọc, giờ mở cửa và khu vực phục vụ; những việc như xác nhận xe còn trống, chốt giờ giao hay phí giao vẫn do nhân viên thực hiện.</p>
+
+<h2>Chuẩn bị ba thông tin trước khi gõ câu đầu tiên</h2>
+<p>Một câu hỏi đầu tiên tốt giúp cả buổi trò chuyện ngắn đi một nửa. Trước khi mở trang, hãy ghi sẵn ba điều:</p>
+<ul>
+<li><strong>Thời gian:</strong> bạn đến Hà Nội ngày nào, cần xe từ ngày nào tới ngày nào.</li>
+<li><strong>Nơi ở:</strong> tên khu, ví dụ Phố Cổ, Hoàn Kiếm, Ba Đình, Tây Hồ hay Long Biên. Cửa hàng phục vụ các khu này cùng Bồ Đề, Gia Lâm và nội thành Hà Nội.</li>
+<li><strong>Kinh nghiệm lái:</strong> bạn đã từng lái xe tay ga tự động, xe số hay chưa lái bao giờ.</li>
+</ul>
+<p>Ghép ba thông tin này thành một câu ngắn bằng tiếng Anh đơn giản, chẳng hạn: hai người, ở Phố Cổ năm ngày, đã lái xe tay ga tự động, muốn thuê một xe. Trợ lý sẽ có đủ bối cảnh để gợi ý sát nhu cầu ngay từ đầu. Mẹo viết câu hỏi hiệu quả hơn có trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-cho-khach-nuoc-ngoai/">soạn câu hỏi hiệu quả cho trợ lý thuê xe</a>.</p>
+
+<h2>Mười phút đầu với trợ lý: trình tự nên theo</h2>
+<p>Buổi đầu không cần hỏi mọi thứ. Theo trình tự dưới đây, bạn sẽ có đủ thông tin để quyết định mà không bị rối:</p>
+<ol>
+<li>Gửi câu giới thiệu có ba thông tin ở trên.</li>
+<li>Hỏi dòng xe phù hợp với kinh nghiệm lái của bạn.</li>
+<li>Hỏi giá tham khảo theo đúng số ngày, và hỏi luôn gói tuần nếu bạn ở từ năm ngày trở lên.</li>
+<li>Hỏi về khoản cọc, giấy tờ cần mang và chuyện bảo hiểm.</li>
+<li>Hỏi khu bạn ở có được giao xe không, trong khung giờ nào.</li>
+<li>Chụp màn hình những câu trả lời quan trọng, rồi chuyển sang liên hệ cửa hàng để xác nhận.</li>
+</ol>
+<p>Mỗi tin nhắn chỉ nên chứa một câu hỏi. Gộp năm ý vào một đoạn dài dễ khiến câu trả lời bỏ sót một phần. Cách trợ lý xử lý câu hỏi bằng tiếng Anh và các ngôn ngữ khác được mô tả trong bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu-cho-khach-nuoc-ngoai/">trợ lý xử lý câu hỏi đa ngôn ngữ</a>.</p>
+
+<h2>Đọc câu trả lời đúng cách: tiền, giờ và tên xe</h2>
+<p>Đây là phần nhiều khách nước ngoài vấp phải dù câu trả lời hoàn toàn chính xác.</p>
+<h3>Cách viết tiền</h3>
+<p>Ở Việt Nam, dấu chấm dùng để ngăn cách hàng nghìn, và ký hiệu "đ" đứng sau con số. Vì vậy 200.000đ là hai trăm nghìn đồng, không phải hai trăm đồng có phần thập phân. Trong tin nhắn hằng ngày, người Việt còn viết tắt "200k" với cùng ý nghĩa. Ví dụ giá tham khảo: Honda Vision 200.000đ/ngày, Honda Click hoặc Yamaha Mio 150.000đ/ngày. Những con số này là tham khảo và cần cửa hàng xác nhận khi đặt.</p>
+<h3>Cách viết giờ</h3>
+<p>Giờ được viết theo kiểu hai mươi bốn tiếng. Giờ mở cửa {{ business.hours.display }} nghĩa là từ chín giờ sáng tới chín giờ tối theo giờ Hà Nội, tức múi giờ UTC+7. Nếu bạn nhắn từ nước ngoài trước chuyến bay, hãy quy đổi để biết lúc nào nhân viên đang làm việc.</p>
+<h3>Tên loại xe</h3>
+<p>"Xe ga" hay xe tay ga là xe tự động, không phải sang số, như Honda Vision hay Air Blade. "Xe số" là xe phải sang số bằng chân nhưng không có tay côn, như Honda Wave. Xe máy điện chạy bằng pin, giá thuê là giá liên hệ. Người chưa quen sang số nên bắt đầu với xe ga.</p>
+
+<h2>Khi nào dừng hỏi trợ lý và gọi người thật</h2>
+<p>Trợ lý rất hữu ích cho việc tìm hiểu, nhưng có những lúc nói chuyện trực tiếp với nhân viên sẽ nhanh hơn:</p>
+<ul>
+<li>Bạn đã chọn xong và cần chốt xe còn trống cho ngày cụ thể.</li>
+<li>Bạn cần giao xe tới khách sạn vào giờ nhất định; giao xe chỉ trong giờ mở cửa và thời gian, phí phải thống nhất trước.</li>
+<li>Bạn gặp sự cố khi đang dùng xe và cần hướng dẫn ngay.</li>
+<li>Bạn muốn gia hạn hoặc thay đổi giờ trả xe.</li>
+</ul>
+<p>Trong những trường hợp này, hãy gọi {{ business.contact.phone_display }}. Nếu ngại nói chuyện qua điện thoại, bạn có thể nhờ lễ tân khách sạn gọi giúp và đưa họ xem ảnh chụp màn hình cuộc trò chuyện với trợ lý.</p>
+
+<h2>Sai lầm hay gặp của khách nước ngoài lần đầu dùng trợ lý</h2>
+<ul>
+<li><strong>Coi giá tham khảo là giá chốt:</strong> mọi con số trợ lý đưa ra đều cần cửa hàng xác nhận khi đặt.</li>
+<li><strong>Quên hỏi chuyện bảo hiểm:</strong> cửa hàng không cung cấp bảo hiểm, bạn cần tự chuẩn bị bảo hiểm xe máy của mình.</li>
+<li><strong>Không hỏi về giấy phép lái xe:</strong> quy định giấy phép cho người nước ngoài có những điểm riêng, nên tìm hiểu trước trong bài <a href="/blog/an-toan/idp-va-bang-lai-quoc-te-cho-du-khach/">IDP và bằng lái quốc tế cho du khách</a>.</li>
+<li><strong>Đặt giờ giao ngoài khung mở cửa:</strong> chuyến bay đến lúc nửa đêm thì hãy nhận xe vào ngày hôm sau.</li>
+<li><strong>Gửi thông tin cá nhân không cần thiết:</strong> để hỏi giá và thủ tục, bạn không cần gửi ảnh giấy tờ tùy thân vào khung trò chuyện.</li>
+</ul>
+<p>Phần kinh nghiệm chung cho người dùng lần đầu, không riêng khách quốc tế, có trong bài <a href="/blog/app/kinh-nghiem-dung-tro-ly-thue-xe-lan-dau/">kinh nghiệm dùng trợ lý thuê xe lần đầu</a>.</p>
+
+<h2>Câu hỏi thường gặp của du khách khi hỏi trợ lý thuê xe lần đầu</h2>
+<h3>Có thể nhắn trợ lý bằng tiếng Anh không?</h3>
+<p>Có. Hãy dùng câu ngắn, rõ ý, mỗi tin một câu hỏi. Nếu câu trả lời chưa đúng ý, hỏi lại theo cách đơn giản hơn.</p>
+<h3>Nhắn cho trợ lý lúc nửa đêm giờ Hà Nội có được không?</h3>
+<p>Bạn vẫn có thể hỏi trợ lý trên website để tìm hiểu thông tin. Việc xác nhận đặt xe và giờ giao sẽ được nhân viên xử lý trong giờ mở cửa.</p>
+<h3>Trợ lý báo khoản cọc bao nhiêu?</h3>
+<p>Khoản đặt cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, mức cụ thể được xác nhận khi đặt.</p>
+<h3>Đọc "150k" trong tin nhắn nghĩa là gì?</h3>
+<p>Đó là cách viết tắt của 150.000đ, tức một trăm năm mươi nghìn đồng. Chữ "k" thay cho ba số không cuối.</p>
+
+<h2>Kết luận</h2>
+<p>Buổi trò chuyện đầu tiên với trợ lý sẽ hiệu quả khi bạn chuẩn bị sẵn thời gian, nơi ở và kinh nghiệm lái, hỏi từng ý một, đọc đúng cách viết tiền và giờ của Việt Nam, rồi chuyển sang gọi nhân viên khi cần chốt. {{ business.brand }} đón khách tại {{ business.address.full }}. Đọc thêm bài <a href="/blog/app/tro-ly-thue-xe-may-la-gi-cho-khach-nuoc-ngoai/">trợ lý thuê xe máy là gì cho khách nước ngoài</a>, bài <a href="/blog/app/kinh-nghiem-dung-tro-ly-thue-xe-lan-dau-tai-ha-noi/">kinh nghiệm dùng trợ lý lần đầu tại Hà Nội</a>, các bài khác trong <a href="/blog/app/">chuyên mục ứng dụng</a>, hoặc mở <a href="/">trang chủ</a> để gửi câu hỏi đầu tiên cho trợ lý.</p>
