@@ -159,6 +159,7 @@ export function reviewArticle(patch, idx = manifestIndex()) {
   const original = read(a.body);
   const allowed = digitsOf(stripTags(original));
   let html = original;
+  let removedWords = 0; // words of leaked internal notes deleted on purpose
   const P = (s) => problems.push(`${patch.id}: ${s}`);
 
   for (const [i, r] of (patch.replace ?? []).entries()) {
@@ -167,12 +168,14 @@ export function reviewArticle(patch, idx = manifestIndex()) {
     const internalNote = r.to === '' && /pilot|fixture|chuẩn sản xuất|^\s*Hmm\b|typo/i.test(r.from);
     if (!internalNote) for (const p of textProblems(`replace[${i}].to`, r.to, allowed)) P(p);
     const res = replaceText(html, r.from, r.to);
+    if (internalNote) removedWords += res.n * wordCount(r.from);
     if (res.n === 0) P(`replace[${i}]: "${r.from}" not found in any text node`);
     html = res.html;
   }
   if (patch.replace?.length) ops.push(`replace:${patch.replace.length}`);
 
-  const linked = new Set([...html.matchAll(/href="([^"]+)"/g)].map((m) => m[1]));
+  // "/x/y/index.html" and "/x/y/" are the same page (the builder normalises them).
+  const linked = new Set([...html.matchAll(/href="([^"]+)"/g)].map((m) => m[1].replace(/index\.html$/, '')));
   for (const [i, l] of (patch.links ?? []).entries()) {
     if (!idx.urls.has(l.href)) { P(`links[${i}]: ${l.href} is not a published article URL`); continue; }
     if (l.href === selfUrl) { P(`links[${i}]: self link`); continue; }
@@ -241,12 +244,12 @@ export function reviewArticle(patch, idx = manifestIndex()) {
   }
 
   const before = wordCount(original), after = wordCount(html);
-  if (after < before) P(`word count dropped ${before} -> ${after}`);
+  if (after < before - removedWords) P(`word count dropped ${before} -> ${after}`);
   if (before < MIN_WORDS && after < MIN_WORDS && (patch.sections?.length || patch.faq?.length)) P(`thin article still ${after} words (< ${MIN_WORDS})`);
   if (after > MAX_WORDS && after > before && before <= MAX_WORDS) P(`additions push the body to ${after} words (> ${MAX_WORDS})`);
   if (before > MAX_WORDS && (patch.sections?.length || patch.faq?.length || patch.table)) P(`body already ${before} words: only replace/links/intro allowed`);
   if (!ops.length) P('empty patch');
-  return { id: patch.id, html, original, problems, ops, before, after, body: a.body };
+  return { id: patch.id, html, original, problems, ops, before, after, removedWords, body: a.body };
 }
 
 function loadLog() {
@@ -292,7 +295,8 @@ export async function main(argv) {
       reviewed: REVIEW_DATE,
       ops: [...new Set([...(prev?.ops ?? []), ...r.ops])],
       words: [prev?.words?.[0] ?? r.before, r.after],
-      qa: [prev?.qa?.[0] ?? qaBefore.score, qaAfter.score]
+      qa: [prev?.qa?.[0] ?? qaBefore.score, qaAfter.score],
+      ...((prev?.removed ?? 0) + r.removedWords ? { removed: (prev?.removed ?? 0) + r.removedWords } : {})
     };
     applied++;
   }

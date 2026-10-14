@@ -16,44 +16,38 @@ const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 const MANIFEST = JSON.parse(read('data/blog/published.json')).articles;
 const urlOf = (a) => `/blog/${taxonomy.categories[a.category].dir}/${a.slug}/`;
 const strip = (h) => h.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
-// An article without a FAQ section is needed for the FAQ cases.
-const NO_FAQ = MANIFEST.find((a) => !/<h2[^>]*>[^<]*(câu hỏi|hỏi đáp|faq|thắc mắc)/i.test(read(a.body)) && strip(read(a.body)).split(' ').length < 1800);
-const OTHER = MANIFEST.find((a) => a.article_id !== NO_FAQ.article_id && !read(NO_FAQ.body).includes(urlOf(a)));
+// Corpus-independent fixtures: a short article, and a target it does not link yet.
+const SHORT = MANIFEST.find((a) => strip(read(a.body)).split(' ').length < 1800 && /<p>[^<]{60,}<\/p>/.test(read(a.body)));
+const OTHER = MANIFEST.find((a) => a.article_id !== SHORT.article_id && !read(SHORT.body).includes(urlOf(a)));
+const HAS_FAQ = (a) => /<h2[^>]*>[^<]*(câu hỏi|hỏi đáp|faq|thắc mắc)/i.test(read(a.body));
 
-test('review gate rejects new numbers, English, markup, forbidden claims and bad links', () => {
+test('review gate rejects new numbers, English, markup, forbidden claims, bad links and a second FAQ', () => {
   const r = reviewArticle({
-    id: NO_FAQ.article_id,
-    intro: 'Thuê xe giá rẻ nhất chỉ 123456789 đồng cho weekend.',
-    faq: [{ q: 'Có <b>giao xe</b> không?', a: 'Có.' }, { q: 'Hỏi gì', a: 'Đáp.' }, { q: 'Ba?', a: 'Ba.' }],
+    id: SHORT.article_id,
+    intro: 'Thuê xe giá rẻ nhất chỉ 123456789 đồng cho weekend <b>ngay</b>.',
     links: [{ anchor: 'không tồn tại trong bài', href: urlOf(OTHER) }, { anchor: 'hai từ', href: '/blog/app/khong-co-bai-nay/' },
-      { anchor: 'hai từ', href: urlOf(NO_FAQ) }]
+      { anchor: 'hai từ', href: urlOf(SHORT) }],
+    faq: [{ q: 'Một?', a: 'Một.' }, { q: 'Hai?', a: 'Hai.' }, { q: 'Ba', a: 'Ba.' }]
   });
   const all = r.problems.join('\n');
   for (const needle of ['number "123456789"', 'English tokens weekend', 'forbidden claim "rẻ nhất"', 'markup is not allowed',
-    'must be a question', 'not found as plain text', 'not a published article URL', 'self link']) {
+    'not found as plain text', 'not a published article URL', 'self link']) {
     assert.ok(all.includes(needle), `expected rejection: ${needle}\n${all}`);
   }
+  assert.ok(all.includes(HAS_FAQ(SHORT) ? 'already has a FAQ section' : 'must be a question'), all);
 });
 
-test('a valid patch only adds: prose preserved, link wrapped inside a paragraph, FAQ before the conclusion', () => {
-  const body = read(NO_FAQ.body);
-  const para = [...body.matchAll(/<p>([^<]{40,})<\/p>/g)][1] ?? [...body.matchAll(/<p>([^<]{40,})<\/p>/g)][0];
-  const anchor = para[1].split(/\s+/).slice(2, 5).join(' ');
-  const faq = [
-    { q: 'Bài viết này giúp gì cho người thuê xe?', a: 'Bài tóm tắt các bước chuẩn bị và lưu ý chính trước khi thuê xe máy.' },
-    { q: 'Nên hỏi cửa hàng điều gì trước khi đặt?', a: 'Nên hỏi giá tham khảo, mức đặt cọc theo loại xe và giờ nhận xe.' },
-    { q: 'Có thể hỏi Agent trước khi gọi điện không?', a: 'Có, Agent trả lời từ dữ liệu cửa hàng để bạn chuẩn bị câu hỏi rõ ràng hơn.' }
-  ];
-  const r = reviewArticle({ id: NO_FAQ.article_id, links: [{ anchor, href: urlOf(OTHER) }], faq });
+test('a valid patch only adds: prose preserved, link wrapped inside a paragraph, intro first', () => {
+  const body = read(SHORT.body);
+  const plain = [...body.matchAll(/<p>([^<]{60,})<\/p>/g)][0][1];
+  const anchor = plain.split(/\s+/).slice(2, 5).join(' ');
+  const intro = 'Bài viết tóm tắt các bước chuẩn bị và những lưu ý chính trước khi thuê xe máy, kèm cách hỏi cửa hàng cho rõ.';
+  const r = reviewArticle({ id: SHORT.article_id, links: [{ anchor, href: urlOf(OTHER) }], intro });
   assert.deepEqual(r.problems, []);
   assert.ok(r.after > r.before, 'words only grow');
+  assert.ok(r.html.startsWith(`<p>${intro}</p>`), 'direct answer becomes the first paragraph');
   assert.ok(r.html.includes(`<a href="${urlOf(OTHER)}">${anchor}</a>`), 'link wraps the existing phrase');
-  // Every original paragraph survives (with the link wrapped in).
   for (const m of body.matchAll(/<p>([\s\S]*?)<\/p>/g)) assert.ok(strip(r.html).includes(strip(m[1]).trim()), 'original paragraph kept');
-  const faqAt = r.html.indexOf('<h2>Câu hỏi thường gặp</h2>');
-  const end = [...r.html.matchAll(/<h2[^>]*>([^<]*)<\/h2>/g)].find((m) => /kết luận|lời kết|tóm lại|tổng kết/i.test(m[1]));
-  assert.ok(faqAt > 0 && (!end || faqAt < end.index), 'FAQ sits before the conclusion');
-  assert.equal((r.html.match(/<h3>/g) ?? []).length - (body.match(/<h3>/g) ?? []).length, 3);
 });
 
 test('applied reviews are logged and rendered: dateModified + visible update date, no internal notes left', () => {
@@ -63,11 +57,13 @@ test('applied reviews are logged and rendered: dateModified + visible update dat
   for (const [id, rev] of Object.entries(log)) {
     const a = MANIFEST.find((x) => x.article_id === id);
     assert.ok(a, `${id}: logged review belongs to a manifest article`);
-    assert.ok(rev.words[1] >= rev.words[0] && rev.qa[1] >= rev.qa[0] && rev.qa[1] >= 70, `${id}: words/QA never regress`);
+    // `removed` = words of leaked internal notes deleted on purpose.
+    assert.ok(rev.words[1] >= rev.words[0] - (rev.removed ?? 0) && rev.qa[1] >= rev.qa[0] && rev.qa[1] >= 70, `${id}: words/QA never regress`);
     const html = read(`blog/${taxonomy.categories[a.category].dir}/${a.slug}/index.html`);
     const art = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1])).find((o) => o['@type'] === 'Article');
     assert.equal(art.dateModified, rev.reviewed, `${id}: Article dateModified = review date`);
-    assert.ok(html.includes(`cập nhật ${rev.reviewed}`), `${id}: byline shows the update`);
+    // Same-day publish + review shows no separate update date.
+    if (rev.reviewed > a.published_date) assert.ok(html.includes(`cập nhật ${rev.reviewed}`), `${id}: byline shows the update`);
   }
   for (const a of MANIFEST) assert.ok(!/pilot \(fixture\)|chuẩn sản xuất/i.test(read(a.body)), `${a.article_id}: internal production note removed`);
 });

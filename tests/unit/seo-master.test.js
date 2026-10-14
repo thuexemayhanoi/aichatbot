@@ -179,6 +179,9 @@ test('full-site SEO audit: 100% sitemap coverage, zero P0, zero orphans, no titl
   for (const r of rows) {
     const bad = r.issues.filter((i) => NO_REGRESS.includes(i));
     assert.deepEqual(bad, [], `${r.url}: ${bad.join(',')}`);
+    // v70 body review closed every content gap; only deliberately kept long bodies remain.
+    const gaps = r.gaps.filter((g) => g !== 'LONG');
+    assert.deepEqual(gaps, [], `${r.url}: content gaps ${gaps.join(',')}`);
   }
 });
 

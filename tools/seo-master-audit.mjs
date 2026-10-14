@@ -62,7 +62,7 @@ export const ISSUES = {
 };
 export const GAPS = {
   THIN: ['P2', 'dưới 800 từ', 'Bổ sung nội dung hữu ích (review body)'],
-  LONG: ['P2', 'trên 2.000 từ', 'Rà soát cô đọng (review body)'],
+  LONG: ['P2', 'trên 2.000 từ', 'Giữ nguyên có chủ đích (không cắt nội dung có giá trị); chỉ cô đọng qua review biên tập riêng'],
   'NO-FAQ': ['P2', 'thiếu FAQ', 'Thêm FAQ thực sự hữu ích (review body)'],
   'NO-TABLE': ['P2', 'ý định so sánh nhưng thiếu bảng', 'Thêm bảng so sánh (review body)'],
   'NO-SOURCE': ['P1', 'bài pháp lý thiếu nguồn văn bản gốc', 'Trích văn bản gốc + hiệu lực (legal gate)'],
@@ -424,7 +424,9 @@ function finalize(rows, baseline) {
     if (order(r) <= 3) prio = Math.min(prio, 1);
     r.priority = `P${prio}`;
     const remainingTech = r.issues;
-    r.status = remainingTech.length ? 'PLANNED' : (r.gaps.length ? 'TECH-DONE' : 'DONE');
+    // KEEP = reviewed and deliberately unchanged (only "longer than 2,000 words").
+    r.status = remainingTech.length ? 'PLANNED'
+      : (r.gaps.length === 0 ? 'DONE' : (r.gaps.every((g) => g === 'LONG') ? 'KEEP' : 'TECH-DONE'));
     const actions = [...remainingTech.map((code) => ISSUES[code][2]), ...r.gaps.map((code) => GAPS[code][2])];
     r.action = actions.length ? [...new Set(actions)].join('; ') : ACTION_DONE;
     if (r.fixed.length) r.evidence.push(`đã sửa: ${r.fixed.join(',')}`);
@@ -479,7 +481,7 @@ export function summarize(rows) {
     articles: arts.length,
     by_type: Object.fromEntries([...new Set(rows.map((r) => r.type))].map((t) => [t, count((r) => r.type === t)])),
     by_priority: { P0: count((r) => r.priority === 'P0'), P1: count((r) => r.priority === 'P1'), P2: count((r) => r.priority === 'P2') },
-    by_status: { DONE: count((r) => r.status === 'DONE'), 'TECH-DONE': count((r) => r.status === 'TECH-DONE'), PLANNED: count((r) => r.status === 'PLANNED') },
+    by_status: { DONE: count((r) => r.status === 'DONE'), KEEP: count((r) => r.status === 'KEEP'), 'TECH-DONE': count((r) => r.status === 'TECH-DONE'), PLANNED: count((r) => r.status === 'PLANNED') },
     p0_open: count((r) => r.issues.some((i) => ISSUES[i][0] === 'P0')),
     issue_counts: Object.fromEntries(Object.entries(byCode).sort()),
     article_inbound_ctx_cluster: { min: inb[0] ?? 0, median: inb[Math.floor(inb.length / 2)] ?? 0, zero: inb.filter((x) => x === 0).length },
@@ -527,20 +529,21 @@ ${codes.map((c) => line(`${c} — ${label(c)}`, summary.issue_counts[c] ?? 0, b?
 | Status | Ý nghĩa | Số URL |
 |---|---|---:|
 | DONE | Không còn vấn đề kỹ thuật lẫn nội dung | ${summary.by_status.DONE} |
-| TECH-DONE | Title/meta/link/schema đã tối ưu; còn khoảng trống nội dung cần **quy trình review body riêng** (AGENTS.md cấm ghi đè body PUBLISHED) | ${summary.by_status['TECH-DONE']} |
+| KEEP | Đã xem xét, giữ nguyên có chủ đích (bài > 2.000 từ — không cắt nội dung có giá trị) | ${summary.by_status.KEEP} |
+| TECH-DONE | Title/meta/link/schema đã tối ưu; còn khoảng trống nội dung chờ review body (\`tools/seo-body-review.mjs\`) | ${summary.by_status['TECH-DONE']} |
 | PLANNED | Còn vấn đề kỹ thuật chưa xử lý | ${summary.by_status.PLANNED} |
 
 ## Batch (20 URL/batch, thứ tự P0 → P1 → P2, trang chuyển đổi/hub/pillar trước)
 
-Tổng ${batches.length} batch; ${openBatches.length} batch còn hạng mục mở (PLANNED/TECH-DONE).
+Tổng ${batches.length} batch; ${openBatches.length} batch còn hạng mục chưa DONE (PLANNED/TECH-DONE/KEEP).
 
-| Batch | URL | DONE | TECH-DONE | PLANNED | Ví dụ |
-|---|---:|---:|---:|---:|---|
+| Batch | URL | DONE | KEEP | TECH-DONE | PLANNED | Ví dụ |
+|---|---:|---:|---:|---:|---:|---|
 ${batches.slice(0, 15).map((bt) => {
     const rs = rows.filter((r) => r.batch === bt);
-    return `| ${bt} | ${rs.length} | ${rs.filter((r) => r.status === 'DONE').length} | ${rs.filter((r) => r.status === 'TECH-DONE').length} | ${rs.filter((r) => r.status === 'PLANNED').length} | ${rs[0].url} |`;
+    return `| ${bt} | ${rs.length} | ${rs.filter((r) => r.status === 'DONE').length} | ${rs.filter((r) => r.status === 'KEEP').length} | ${rs.filter((r) => r.status === 'TECH-DONE').length} | ${rs.filter((r) => r.status === 'PLANNED').length} | ${rs[0].url} |`;
   }).join('\n')}
-| … | | | | | xem CSV cột Batch |
+| … | | | | | | xem CSV cột Batch |
 
 ## Định nghĩa mã vấn đề
 

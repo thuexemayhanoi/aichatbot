@@ -26,7 +26,7 @@
 |---|---:|---:|
 | URL P0 còn mở | 133 | 0 |
 | Bài có 0 link ngữ cảnh/cụm trỏ vào | 524 | 0 |
-| Trung vị link ngữ cảnh/cụm trỏ vào mỗi bài | 2 | 13 |
+| Trung vị link ngữ cảnh/cụm trỏ vào mỗi bài | 2 | 14 |
 | URL có độ sâu click > 4 | 0 | 0 |
 | Độ sâu click lớn nhất | 3 | 3 |
 | ATTR-BROKEN — thuộc tính meta/og vỡ do dấu " không escape | 133 | 0 |
@@ -35,20 +35,21 @@
 | DESC-CUT — meta description cắt giữa câu | 1612 | 0 |
 | DESC-DUP — meta description trùng | 113 | 0 |
 | DESC-LEN — meta description ngoài 120–165 ký tự | 217 | 0 |
-| EN-BODY — body còn cụm tiếng Anh từ ma trận | 72 | 72 |
-| INTRO-KW — đoạn mở chưa trả lời trực tiếp theo từ khóa | 11 | 14 |
+| EN-BODY — body còn cụm tiếng Anh từ ma trận | 72 | 0 |
+| INTERNAL-NOTE — ghi chú nội bộ (pilot/fixture) hiển thị công khai | 2 | 0 |
+| INTRO-KW — đoạn mở chưa trả lời trực tiếp theo từ khóa | 11 | 0 |
 | KW-EN — từ khóa ma trận lẫn tiếng Anh | 95 | 0 |
 | KW-TYPO — từ khóa ma trận sai chính tả | 104 | 0 |
 | LONG — trên 2.000 từ | 9 | 9 |
 | LOW-INBOUND — dưới 3 link ngữ cảnh/cụm trỏ vào | 1127 | 0 |
-| NO-CTX-LINK — body không có link ngữ cảnh tới bài khác | 242 | 242 |
+| NO-CTX-LINK — body không có link ngữ cảnh tới bài khác | 242 | 0 |
 | NO-DESC — thiếu meta description | 14 | 0 |
-| NO-FAQ — thiếu FAQ | 60 | 60 |
+| NO-FAQ — thiếu FAQ | 60 | 0 |
 | NO-ITEMLIST — CollectionPage thiếu ItemList | 86 | 0 |
-| NO-TABLE — ý định so sánh nhưng thiếu bảng | 69 | 74 |
+| NO-TABLE — ý định so sánh nhưng thiếu bảng | 69 | 0 |
 | ORPHAN — không có link bài/hub trỏ vào (chỉ phân trang sâu) | 141 | 0 |
 | SCHEMA-THIN — Article schema thiếu inLanguage/image/logo | 2000 | 0 |
-| THIN — dưới 800 từ | 13 | 13 |
+| THIN — dưới 800 từ | 13 | 0 |
 | TITLE-AUTO — title sinh máy từ slug | 1856 | 0 |
 | TITLE-CASE — title viết hoa/thường sai (Title Case máy) | 1720 | 0 |
 | TITLE-EN — title lẫn tiếng Anh | 97 | 0 |
@@ -65,32 +66,33 @@
 
 | Status | Ý nghĩa | Số URL |
 |---|---|---:|
-| DONE | Không còn vấn đề kỹ thuật lẫn nội dung | 1678 |
-| TECH-DONE | Title/meta/link/schema đã tối ưu; còn khoảng trống nội dung cần **quy trình review body riêng** (AGENTS.md cấm ghi đè body PUBLISHED) | 451 |
+| DONE | Không còn vấn đề kỹ thuật lẫn nội dung | 2120 |
+| KEEP | Đã xem xét, giữ nguyên có chủ đích (bài > 2.000 từ — không cắt nội dung có giá trị) | 9 |
+| TECH-DONE | Title/meta/link/schema đã tối ưu; còn khoảng trống nội dung chờ review body (`tools/seo-body-review.mjs`) | 0 |
 | PLANNED | Còn vấn đề kỹ thuật chưa xử lý | 0 |
 
 ## Batch (20 URL/batch, thứ tự P0 → P1 → P2, trang chuyển đổi/hub/pillar trước)
 
-Tổng 107 batch; 89 batch còn hạng mục mở (PLANNED/TECH-DONE).
+Tổng 107 batch; 6 batch còn hạng mục chưa DONE (PLANNED/TECH-DONE/KEEP).
 
-| Batch | URL | DONE | TECH-DONE | PLANNED | Ví dụ |
-|---|---:|---:|---:|---:|---|
-| SEO-B001 | 20 | 20 | 0 | 0 | /blog/an-toan/an-toan-khi-thanh-toan-coc-vi-du-thuc-te/ |
-| SEO-B002 | 20 | 17 | 3 | 0 | /blog/app/app-ho-tro-thu-tuc-thue-xe-cau-hoi-thuong-gap/ |
-| SEO-B003 | 20 | 16 | 4 | 0 | /blog/app/tim-hieu-hybrid-search-trong-ung-dung-thue-xe-cau-hoi-thuong-gap/ |
-| SEO-B004 | 20 | 18 | 2 | 0 | /blog/dia-phuong/cho-hoa-quan-tam-buoi-toi/ |
-| SEO-B005 | 20 | 17 | 3 | 0 | /blog/huong-dan/thue-xe-can-nguoi-bao-lanh-khong-checklist/ |
-| SEO-B006 | 20 | 18 | 2 | 0 | /blog/thue-xe/thue-xe-50cc-gia-tot-nhat/ |
-| SEO-B007 | 20 | 20 | 0 | 0 | /blog/xe-dien/cach-giu-pin-ben-khi-thue-xe-dien-dai-han/ |
-| SEO-B008 | 20 | 10 | 10 | 0 | /blog/cong-cu-huong-dan/ |
-| SEO-B009 | 20 | 5 | 15 | 0 | /blog/an-toan/di-nhom-an-toan/ |
-| SEO-B010 | 20 | 5 | 15 | 0 | /blog/an-toan/nong-do-con-khi-lai-xe/ |
-| SEO-B011 | 20 | 11 | 9 | 0 | /blog/app/app-thue-xe-may-la-gi/ |
-| SEO-B012 | 20 | 6 | 14 | 0 | /blog/app/hoi-dap-voi-agent-thue-xe/ |
-| SEO-B013 | 20 | 10 | 10 | 0 | /blog/app/tro-ly-thue-xe-may-la-gi/ |
-| SEO-B014 | 20 | 6 | 14 | 0 | /blog/dia-phuong/ca-phe-trung-va-xe-may/ |
-| SEO-B015 | 20 | 4 | 16 | 0 | /blog/dia-phuong/gia-lam-va-long-bien/ |
-| … | | | | | xem CSV cột Batch |
+| Batch | URL | DONE | KEEP | TECH-DONE | PLANNED | Ví dụ |
+|---|---:|---:|---:|---:|---:|---|
+| SEO-B001 | 20 | 20 | 0 | 0 | 0 | /blog/an-toan/an-toan-khi-thanh-toan-coc-vi-du-thuc-te/ |
+| SEO-B002 | 20 | 20 | 0 | 0 | 0 | /blog/app/app-ho-tro-thu-tuc-thue-xe-cau-hoi-thuong-gap/ |
+| SEO-B003 | 20 | 20 | 0 | 0 | 0 | /blog/app/tim-hieu-hybrid-search-trong-ung-dung-thue-xe-cau-hoi-thuong-gap/ |
+| SEO-B004 | 20 | 20 | 0 | 0 | 0 | /blog/dia-phuong/cho-hoa-quan-tam-buoi-toi/ |
+| SEO-B005 | 20 | 20 | 0 | 0 | 0 | /blog/huong-dan/thue-xe-can-nguoi-bao-lanh-khong-checklist/ |
+| SEO-B006 | 20 | 20 | 0 | 0 | 0 | /blog/thue-xe/thue-xe-50cc-gia-tot-nhat/ |
+| SEO-B007 | 20 | 20 | 0 | 0 | 0 | /blog/xe-dien/cach-giu-pin-ben-khi-thue-xe-dien-dai-han/ |
+| SEO-B008 | 20 | 20 | 0 | 0 | 0 | /blog/cong-cu-huong-dan/ |
+| SEO-B009 | 20 | 17 | 3 | 0 | 0 | /blog/an-toan/di-nhom-an-toan/ |
+| SEO-B010 | 20 | 19 | 1 | 0 | 0 | /blog/an-toan/nong-do-con-khi-lai-xe/ |
+| SEO-B011 | 20 | 20 | 0 | 0 | 0 | /blog/app/app-thue-xe-may-la-gi/ |
+| SEO-B012 | 20 | 20 | 0 | 0 | 0 | /blog/app/hoi-dap-voi-agent-thue-xe/ |
+| SEO-B013 | 20 | 20 | 0 | 0 | 0 | /blog/app/tro-ly-thue-xe-may-la-gi/ |
+| SEO-B014 | 20 | 19 | 1 | 0 | 0 | /blog/dia-phuong/ca-phe-trung-va-xe-may/ |
+| SEO-B015 | 20 | 20 | 0 | 0 | 0 | /blog/dia-phuong/gia-lam-va-long-bien/ |
+| … | | | | | | xem CSV cột Batch |
 
 ## Định nghĩa mã vấn đề
 
@@ -123,10 +125,11 @@ Tổng 107 batch; 89 batch còn hạng mục mở (PLANNED/TECH-DONE).
 | SCHEMA-THIN | P2 | Article schema thiếu inLanguage/image/logo | Bổ sung inLanguage, image, publisher logo |
 | NO-ITEMLIST | P2 | CollectionPage thiếu ItemList | Bổ sung ItemList cho trang danh sách |
 | THIN | P2 | dưới 800 từ | Bổ sung nội dung hữu ích (review body) |
-| LONG | P2 | trên 2.000 từ | Rà soát cô đọng (review body) |
+| LONG | P2 | trên 2.000 từ | Giữ nguyên có chủ đích (không cắt nội dung có giá trị); chỉ cô đọng qua review biên tập riêng |
 | NO-FAQ | P2 | thiếu FAQ | Thêm FAQ thực sự hữu ích (review body) |
 | NO-TABLE | P2 | ý định so sánh nhưng thiếu bảng | Thêm bảng so sánh (review body) |
 | NO-SOURCE | P1 | bài pháp lý thiếu nguồn văn bản gốc | Trích văn bản gốc + hiệu lực (legal gate) |
 | NO-CTX-LINK | P2 | body không có link ngữ cảnh tới bài khác | Thêm 2–3 link ngữ cảnh trong body (review body) |
 | INTRO-KW | P2 | đoạn mở chưa trả lời trực tiếp theo từ khóa | Viết câu trả lời trực tiếp ở đoạn mở (review body) |
 | EN-BODY | P2 | body còn cụm tiếng Anh từ ma trận | Việt hóa cụm tiếng Anh trong body (review body) |
+| INTERNAL-NOTE | P1 | ghi chú nội bộ (pilot/fixture) hiển thị công khai | Xóa ghi chú nội bộ (review body) |
