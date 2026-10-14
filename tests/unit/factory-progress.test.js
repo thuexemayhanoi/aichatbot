@@ -69,11 +69,20 @@ test('default mode writes reports/factory-progress.json and --check verifies fre
   const created = JSON.parse(readFileSync(join(dir, 'reports/factory-progress.json'), 'utf8'));
   // 2. STALE DETECTION: a publish mutation makes the stored report stale.
   const lines = readFileSync(join(dir, 'data/blog/content-matrix.csv'), 'utf8');
-  const flipped = lines.split('\n').map((l, i) =>
-    (i > 0 && l.split(',')[3] === 'PLANNED')
-      ? l.split(',').map((c, j) => (j === 3 ? 'PUBLISHED' : c)).join(',')
-      : l,
-  ).join('\n');
+  // The production matrix can be fully PUBLISHED (2,000/2,000).
+  // Mutate exactly ONE row in this isolated fixture either way: prefer a
+  // PLANNED -> PUBLISHED transition, otherwise flip PUBLISHED -> PLANNED.
+  // A no-op mutation would incorrectly allow a stale report to pass.
+  const rows = lines.split('\n');
+  const plannedIndex = rows.findIndex((l, i) => i > 0 && l.split(',')[3] === 'PLANNED');
+  const publishedIndex = rows.findIndex((l, i) => i > 0 && l.split(',')[3] === 'PUBLISHED');
+  const rowIndex = plannedIndex >= 0 ? plannedIndex : publishedIndex;
+  assert.ok(rowIndex > 0, 'fixture requires at least one PLANNED or PUBLISHED article');
+  const cells = rows[rowIndex].split(',');
+  const originalStatus = cells[3];
+  cells[3] = originalStatus === 'PLANNED' ? 'PUBLISHED' : 'PLANNED';
+  rows[rowIndex] = cells.join(',');
+  const flipped = rows.join('\n');
   writeFileSync(join(dir, 'data/blog/content-matrix.csv'), flipped);
   assert.throws(() =>
     execFileSync('node', ['tools/factory-progress.mjs', '--check'], { cwd: dir }),
@@ -81,7 +90,8 @@ test('default mode writes reports/factory-progress.json and --check verifies fre
   // 3. UPDATE-EXISTING: re-running the tool refreshes the stored report.
   execFileSync('node', ['tools/factory-progress.mjs'], { cwd: dir });
   const updated = JSON.parse(readFileSync(join(dir, 'reports/factory-progress.json'), 'utf8'));
-  assert.ok(updated.matrix.published > created.matrix.published, 'report updated with new truth');
+  assert.equal(updated.matrix.published, created.matrix.published + (originalStatus === 'PLANNED' ? 1 : -1),
+    'report updated to the exact new published count');
   execFileSync('node', ['tools/factory-progress.mjs', '--check'], { cwd: dir }); // fresh again
   // Fixture isolation: the PRODUCTION report was never touched.
   assert.equal(readFileSync(join(REPO, 'reports/factory-progress.json'), 'utf8'), productionReportBefore);
