@@ -1,0 +1,66 @@
+<p>Với khách nước ngoài, chính sách dữ liệu của ứng dụng thuê xe không chỉ là chuyện quyền riêng tư mà còn là chuyện an toàn khi ở xa nhà: hộ chiếu là giấy tờ duy nhất giúp bạn đi lại và rời khỏi Việt Nam, địa chỉ khách sạn là nơi bạn ngủ mỗi đêm, và bạn thường phải dùng Wi-Fi công cộng cùng thiết bị không phải của mình. Bài viết này giải thích chính sách dữ liệu của trợ lý MotoAI và cửa hàng {{ business.brand }} theo đúng những mối lo đó, đồng thời chỉ ra đâu là những yêu cầu dữ liệu bình thường của một cửa hàng cho thuê xe ở Hà Nội và đâu là dấu hiệu bạn nên dừng lại.</p>
+
+<h2>Ba câu hỏi khách nước ngoài hỏi trước tiên</h2>
+<ol>
+<li><strong>"Tôi có phải tải gì hay cấp quyền gì không?"</strong> Không. MotoAI là ứng dụng web chạy trong trình duyệt, không xin quyền truy cập vị trí, danh bạ, ảnh hay micro. Bạn mở trang, gõ câu hỏi, thế thôi.</li>
+<li><strong>"Cuộc trò chuyện của tôi đi đâu?"</strong> Lịch sử trò chuyện với trợ lý được giữ trong bộ nhớ trình duyệt trên chính thiết bị bạn đang dùng, và bạn xóa được bằng nút xóa hội thoại trong menu của trợ lý.</li>
+<li><strong>"Cửa hàng có đọc được những gì tôi hỏi không?"</strong> Cửa hàng chỉ biết những gì bạn chủ động gửi khi gọi điện hoặc nhắn tin để đặt xe. Phần hỏi đáp để tìm hiểu không kèm họ tên hay giấy tờ.</li>
+</ol>
+<p>Nền tảng kỹ thuật của cách xử lý này, vì sao trò chuyện có thể diễn ra ngay trên thiết bị, được trình bày trong bài <a href="/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe-cho-khach-nuoc-ngoai/">privacy và xử lý cục bộ trong app thuê xe cho khách nước ngoài</a>.</p>
+
+<h2>Dữ liệu nào một đơn thuê xe ở Hà Nội thực sự cần</h2>
+<p>Trò chuyện có thể ẩn danh, nhưng khi bạn quyết định thuê, cửa hàng cần một số thông tin vì những lý do cụ thể. Biết trước danh sách này giúp bạn phân biệt yêu cầu hợp lý với yêu cầu đáng ngờ.</p>
+<ul>
+<li><strong>Tên và số liên lạc:</strong> để giữ xe và báo giờ nhận. Số WhatsApp hoặc số điện thoại quốc tế đều được, miễn bạn nhận tin nhắn được ở Hà Nội.</li>
+<li><strong>Hộ chiếu và giấy phép lái xe:</strong> đối chiếu bản gốc trực tiếp khi nhận xe tại {{ business.address.full }} hoặc khi nhân viên giao xe. Giấy tờ nào được chấp nhận và những lưu ý khi giấy tờ không phải tiếng Việt nằm trong bài <a href="/blog/huong-dan/giay-to-nguoi-nuoc-ngoai-thue-xe/">giấy tờ người nước ngoài thuê xe</a>.</li>
+<li><strong>Tên khách sạn và địa chỉ:</strong> chỉ khi bạn chọn giao xe tận nơi trong các khu như Phố Cổ, Hoàn Kiếm, Ba Đình, Tây Hồ, Long Biên, Gia Lâm hay nội thành; việc giao chỉ diễn ra trong giờ {{ business.hours.display }} và thời gian, phí giao được xác nhận trước khi đặt.</li>
+<li><strong>Thông tin về khoản cọc:</strong> mức cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, xác nhận khi đặt; hãy hỏi cách nhận và hoàn cọc, giữ lại tin nhắn xác nhận.</li>
+</ul>
+<p>Mỗi mục trên gắn với một việc cụ thể trong đơn thuê. Nếu một bên đòi mật khẩu email, mã xác thực ngân hàng, ảnh thẻ tín dụng cả hai mặt hay yêu cầu gửi ảnh hộ chiếu qua một đường dẫn lạ, đó không phải chính sách dữ liệu của một cửa hàng cho thuê xe, mà là dấu hiệu lừa đảo. Cách nhận diện trang giả mạo dành cho khách quốc tế được mô tả trong bài <a href="/blog/app/canh-giac-voi-app-thue-xe-gia-mao-cho-khach-nuoc-ngoai/">cảnh giác với app thuê xe giả mạo cho khách nước ngoài</a>.</p>
+
+<h2>Hộ chiếu: câu hỏi nhạy cảm nhất của du khách</h2>
+<p>Nhiều du khách từng nghe chuyện cửa hàng ở nơi khác giữ hộ chiếu làm "bảo đảm". Về phía dữ liệu, bạn nên hỏi thẳng ba điều trước khi nhận xe:</p>
+<ul>
+<li>Cửa hàng đối chiếu bản gốc tại chỗ, hay yêu cầu giữ lại bản gốc, hay chỉ ghi số hộ chiếu vào hợp đồng?</li>
+<li>Nếu có chụp hoặc sao, bản sao được lưu ở đâu, ai xem được và được hủy khi nào?</li>
+<li>Bạn có được nhận lại hoặc yêu cầu xóa bản sao sau khi trả xe không?</li>
+</ul>
+<p>Hãy hỏi những câu này với nhân viên lúc ký giấy, và chụp lại chính hợp đồng của mình để biết thông tin nào đã được ghi. Mang bản gốc đi đối chiếu an toàn hơn gửi ảnh trước qua mạng. Các quyền cơ bản của người thuê đối với dữ liệu cá nhân, dưới góc nhìn pháp lý dành cho du khách, được tổng hợp trong bài <a href="/blog/an-toan/bao-ve-du-lieu-ca-nhan-khi-thue-xe-cho-du-khach/">bảo vệ dữ liệu cá nhân khi thuê xe cho du khách</a>.</p>
+
+<h2>Wi-Fi khách sạn, SIM du lịch và thiết bị mượn</h2>
+<p>Khách nước ngoài thường dùng trợ lý trong những hoàn cảnh ít kiểm soát hơn người bản địa. Vài thói quen đơn giản:</p>
+<ol>
+<li>Dùng trợ lý để hỏi giá và thủ tục trên mạng khách sạn là được, nhưng khâu chốt đơn có tên, số phòng thì nên làm qua dữ liệu di động của SIM du lịch hoặc mạng bạn tin cậy.</li>
+<li>Trên máy tính ở sảnh hay thiết bị mượn của bạn đồng hành, xóa hội thoại và đóng trình duyệt trước khi rời đi, vì lịch sử nằm trong trình duyệt đó.</li>
+<li>Khi chuyển từ trợ lý sang ứng dụng nhắn tin hoặc bản đồ, dữ liệu từ đó do nhà cung cấp dịch vụ kia quản lý theo chính sách riêng của họ; hãy ý thức ranh giới này.</li>
+<li>Chụp màn hình giá tham khảo và mẫu xe trước khi xóa hội thoại, để có bằng chứng khi trao đổi với nhân viên.</li>
+</ol>
+
+<h2>Ngôn ngữ của chính sách và cách tự kiểm tra một dịch vụ bất kỳ</h2>
+<p>Không phải cửa hàng nào ở Hà Nội cũng có chính sách bằng tiếng Anh. Khi gặp một dịch vụ lạ, bạn có thể dùng khung sáu câu để tự đánh giá, dù phải nhờ dịch: thu thập gì, lưu ở đâu, ai xem, giữ bao lâu, xóa được không, dùng vào việc gì. Khung này được giải thích đầy đủ trong bài <a href="/blog/app/chinh-sach-du-lieu-cua-ung-dung-thue-xe/">chính sách dữ liệu của ứng dụng thuê xe</a>. Với MotoAI, câu trả lời ngắn gọn là: thu thập nội dung bạn gõ, lưu trên thiết bị bạn, chỉ bạn xem, giữ tới khi bạn xóa, xóa bằng một nút, dùng để trả lời về xe và thủ tục. Trợ lý đọc được câu hỏi tiếng Anh, nên bạn có thể hỏi thẳng "what data do you keep" để nhận phần giải thích bằng ngôn ngữ của mình.</p>
+
+<h2>Sau chuyến đi: dọn dữ liệu trước khi rời Việt Nam</h2>
+<ul>
+<li>Xóa hội thoại với trợ lý trên mọi thiết bị đã dùng.</li>
+<li>Giữ lại tin nhắn xác nhận hoàn cọc và ảnh hợp đồng trong thư mục riêng, phòng khi cần đối chiếu sau này.</li>
+<li>Nếu đã gửi ảnh giấy tờ cho ai đó trong quá trình thuê, nhắn yêu cầu họ xóa và lưu lại câu trả lời.</li>
+<li>Kiểm tra lại ứng dụng bản đồ và nhắn tin, xóa địa chỉ khách sạn và các vị trí đã lưu nếu không cần nữa.</li>
+</ul>
+<p>Những bước xử lý thông tin cá nhân trong toàn bộ quy trình đặt xe trực tuyến, áp dụng cho mọi khách, nằm trong bài <a href="/blog/app/xu-ly-du-lieu-ca-nhan-khi-thue-xe-online/">xử lý dữ liệu cá nhân khi thuê xe online</a>.</p>
+
+<h2>Câu hỏi thường gặp về chính sách dữ liệu cho khách nước ngoài</h2>
+
+<h3>Tôi có phải tạo tài khoản bằng email nước ngoài không?</h3>
+<p>Không cần tài khoản. Bạn hỏi trực tiếp trên trình duyệt; lý do thiết kế như vậy được giải thích trong bài <a href="/blog/app/app-thue-xe-khong-can-tai-khoan/">app thuê xe không cần tài khoản</a>.</p>
+
+<h3>Dữ liệu của tôi có được chuyển ra ngoài Việt Nam không?</h3>
+<p>Phần trò chuyện nằm trên thiết bị của bạn, nên nó đi theo bạn. Thông tin đặt xe chỉ được chia sẻ với cửa hàng khi bạn chủ động liên hệ, và bạn có thể hỏi nhân viên về cách lưu hợp đồng.</p>
+
+<h3>Tôi có thể yêu cầu cửa hàng xóa thông tin sau khi trả xe không?</h3>
+<p>Có thể đề nghị; hãy hỏi ngay lúc ký hợp đồng để biết cách thức và thời điểm, rồi nhắn lại yêu cầu sau khi hoàn cọc xong.</p>
+
+<h3>Trợ lý có lưu vị trí của tôi để gợi ý giao xe không?</h3>
+<p>Không. Bạn tự gõ khu vực mình ở, ví dụ "Tay Ho", và trợ lý trả lời theo khu vực đó mà không truy cập định vị của thiết bị.</p>
+
+<h2>Kết luận</h2>
+<p>Chính sách dữ liệu của ứng dụng thuê xe cho khách nước ngoài có thể gói lại trong một nguyên tắc: hỏi đáp thì ẩn danh và ở trên thiết bị của bạn, còn thông tin thật chỉ xuất hiện khi bạn đặt xe và luôn gắn với một mục đích rõ ràng. Hãy đối chiếu giấy tờ trực tiếp, hỏi rõ về hộ chiếu và dọn dữ liệu trước khi về nước. {{ business.display_name }} nhận trao đổi qua {{ business.contact.phone_display }} trong giờ {{ business.hours.display }}. Các bài khác về công cụ trực tuyến ở <a href="/blog/app/">chuyên mục ứng dụng</a>, hoặc bạn mở <a href="/">trang chủ</a> và thử hỏi trợ lý bằng tiếng Anh.</p>
