@@ -654,6 +654,13 @@ export function prevNextFor(a, ctx) {
   return { prev: at > 0 ? list[at - 1] : null, next: at >= 0 && at < list.length - 1 ? list[at + 1] : null };
 }
 
+/** v67 CWV: body images/iframes without an explicit loading attribute get
+ *  loading="lazy" (+ decoding="async" for images). No body has media today
+ *  (0 of 1,704) — this keeps future media from blocking first paint. */
+export const lazyMedia = (html) => html
+  .replace(/<img\b(?![^>]*\sloading=)/gi, '<img loading="lazy" decoding="async"')
+  .replace(/<iframe\b(?![^>]*\sloading=)/gi, '<iframe loading="lazy"');
+
 /** ISO date → Vietnamese reading order dd/mm/yyyy (build-time, no Intl). */
 export const viDate = (iso) => String(iso).split('-').reverse().join('/');
 
@@ -665,8 +672,8 @@ export const viDate = (iso) => String(iso).split('-').reverse().join('/');
  */
 function buildArticle(a, business, hub, published, row, ctx = articleContext(published, {})) {
   const bodyRaw = read(a.body);
-  const body = normalizeInternalAnchors(resolveFacts(bodyRaw, business),
-    `blog/${hub.dir}/${a.slug}/index.html`, (path) => ctx.linkPages.has(path));
+  const body = lazyMedia(normalizeInternalAnchors(resolveFacts(bodyRaw, business),
+    `blog/${hub.dir}/${a.slug}/index.html`, (path) => ctx.linkPages.has(path)));
   const { html: bodyWithIds, items } = buildToc(body);
   const toc = tocHtml(items);
   const path = `blog/${hub.dir}/${a.slug}/`;

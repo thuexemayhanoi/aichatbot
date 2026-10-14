@@ -531,6 +531,17 @@ body.content-page .blog-article-body {
   .blog-footer-inner > .blog-footer-nav { flex: 1 1 auto; }
 }
 
+/* v67 CWV: below-the-fold blocks skip rendering until near the viewport
+   (`auto` = remembered size after first render → no repeat jumps); body
+   media never overflow; fixed-width theme toggle so its JS label swap
+   (Auto ↔ ☀️/🌙) cannot shift the header. */
+.blog-footer { content-visibility: auto; contain-intrinsic-size: auto 720px; }
+.blog-related, .blog-hub-section ~ .blog-hub-section, .blog-cluster-child ~ .blog-cluster-child { content-visibility: auto; contain-intrinsic-size: auto 560px; }
+.blog-grid > .blog-card:nth-child(n+7) { content-visibility: auto; contain-intrinsic-size: auto 190px; }
+.blog-article-body :is(img, video) { max-width: 100%; height: auto; }
+.blog-article-body iframe { max-width: 100%; }
+body.content-page .site-actions .blog-theme-toggle { width: 56px; }
+
 /* ---------- Reduced motion: no lifts, no transitions ---------- */
 @media (prefers-reduced-motion: reduce) {
   .blog-card, .blog-cat-card, .blog-cluster-card { transition: none; }

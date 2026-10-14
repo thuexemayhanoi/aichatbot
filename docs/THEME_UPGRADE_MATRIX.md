@@ -92,10 +92,10 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 
 | ID | Area | Problem | Fix | Files | Risk | Status | Evidence |
 |---|---|---|---|---|---|---|---|
-| TH-060 | Rendering | Long pages fully laid out | `content-visibility: auto` + `contain-intrinsic-size` on footer, related, prev/next, hub grids below the first | `blog.css` | L | TODO | |
+| TH-060 | Rendering | Long pages fully laid out | `content-visibility: auto` + `contain-intrinsic-size` on footer, related, prev/next, hub grids below the first | `blog.css` | L | DONE | batch G. `content-visibility: auto` with `contain-intrinsic-size: auto <len>` (remembered size) on the footer (720 px), related section, 2nd+ home hub sections and cluster child sections (560 px), and cards 7+ of every grid (190 px). Nothing above an in-page anchor target is skipped (TOC targets live in the article body). Theme toggle fixed at 56 px so the JS label swap (Auto ↔ ☀️/🌙) cannot shift the header (second CLS source after TH-010) |
 | TH-061 | CLS | Status chip pops in | Covered by TH-010 reserved slot | — | — | DONE | batch B (TH-010) |
 | TH-062 | Fonts | — | System font stack, no `@font-face` → `font-display` not applicable (seo-score forbids webfonts) | — | — | N/A (evidence: `seo-score.mjs` `external webfont / font-face risk` check; `style.css` `font-family: system-ui…`) | |
-| TH-063 | Images | — | 1,704 bodies contain 0 `<img>`; builder adds `loading="lazy" decoding="async"` to any future body image lacking it | `tools/build-blog.mjs` | L | TODO | |
+| TH-063 | Images | — | 1,704 bodies contain 0 `<img>`; builder adds `loading="lazy" decoding="async"` to any future body image lacking it | `tools/build-blog.mjs` | L | DONE | batch G. `lazyMedia()` (img → `loading="lazy" decoding="async"`, iframe → `loading="lazy"`, explicit author values kept); body `img/video` responsive (`max-width:100%; height:auto`). Output unchanged today (0 media); unit-tested |
 | TH-064 | Build time | 78 s, superlinear | Covered by TH-034; re-benchmark | — | — | DONE | batch D: full `node tools/build-blog.mjs` **78 s → 3.0 s** wall (1,704 articles, 1,821 pages). Remaining 40k risk: subtopic hubs render every card on one page (see TH-106) |
 
 ### P1
@@ -145,11 +145,20 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 | C (TH-020) | `6658d70b` | `node --test` 1010/1010 pass | 79 s wall; output regenerated (1,821 pages, footer only) | pass, 225,440 internal URLs, 0 broken | 99.5/100, 623 notes (unchanged) | CSS 62,508 B / 65,536; JS 231,702 B (unchanged) |
 | D (TH-030..035, TH-064, TH-107) | `b76f2fe6` | `node --test` 1013/1013 pass | **3.0 s** wall (was 78 s); second build byte-identical | pass, 227,132 internal URLs, 0 broken | 99.6/100, 453 notes (article-prose scoping, TH-107) | CSS 61,788 B / 65,536 (multi-line comments condensed to headlines: −3.9 KB, key rationale kept); JS 231,819 B / 232,000 (181 B headroom) |
 | E (TH-040..042) | `16de3369` | `node --test` 1015/1015 pass | 3 s; second build byte-identical | pass, 226,636 internal URLs, 0 broken | 99.6/100, 453 notes (unchanged) | CSS 63,081 B / 65,536; JS 231,819 B (unchanged) |
-| F (TH-050..051) | (SHA recorded in the batch-G commit) | `node --test` 1017/1017 pass | 3 s; second build byte-identical | pass, 226,735 internal URLs (404 included), 0 broken | 99.6/100, 453 notes (unchanged) | CSS 63,615 B / 65,536; JS 230,838 B / 232,000 |
+| F (TH-050..051) | `a3da1252` | `node --test` 1017/1017 pass | 3 s; second build byte-identical | pass, 226,735 internal URLs (404 included), 0 broken | 99.6/100, 453 notes (unchanged) | CSS 63,615 B / 65,536; JS 230,838 B / 232,000 |
+| G (TH-060, TH-063) | (this commit — see `git log`) | `node --test` 1019/1019 pass | 3 s; output unchanged (CSS + no-op builder hook) | pass, 226,735 internal URLs, 0 broken | 99.6/100, 453 notes | CSS 64,420 B / 65,536 (1.1 KB headroom); JS 230,838 B / 232,000 |
+
+### Responsive sanity (reasoned from generated HTML/CSS; no browser available in this environment)
+
+- **375 px**: header row 1 = brand (shrinks, subtitle ellipsis) + 56 px theme + Menu; row 2 = reserved 18 px status slot; desktop nav hidden; skip link off-screen until focused. Cards 1 column; pagination wraps to two centred rows; footer link grid 2 columns, brand block above; prev/next stacked; TOC is the `<details>` accordion with 44 px rows. Reading bar at the top edge (safe-area aware). No fixed widths > 343 px were added (mega panel only exists ≥ 900 px).
+- **768 px**: status slot beside the actions (`flex: 0 1 176px`); cards 2 columns; footer link grid 4 columns under the brand block; prev/next side by side; main column capped at 900 px (pre-existing), article prose capped at 72ch.
+- **900–1099 px**: desktop nav appears; hub emoji, Menu label and header search icon hidden to fit (measured ≈ 824/868 px worst case); mega panel centred under the header, `min(720px, 100%)` wide.
+- **1280 px**: full nav with emoji, status slot shrinkable; cards 3 columns (home hub sections 4-up); article layout 230 px TOC rail + 720 px column; related 4-up; footer brand column beside a 4-column grid.
 
 ## Next steps from checkpoint
 
-1. Batches A–F done → next G (TH-060, TH-063). JS headroom is 181 B: batch F must compact `blog.js` before adding behaviour.
-2. After each batch: run the loop, record commit SHA + results in **Batch log**, flip item status with evidence.
-3. If the JS guard or CSS budget blocks a batch, trim first (TH-013 / TH-004), bump only with a documented reason. CSS headroom is now < 2 KB.
-4. Every `BUILD_VERSION` bump = 4 files in lockstep: `tools/app-shell.mjs`, `index.html`, `service-worker.js`, `package.json` (major).
+1. **All P0 batches A–G are done** on `theme/premium-upgrade` (not merged, not deployed). Next: owner review → merge `main` into the branch (TH-900: `main` is 72 commits ahead, all content/output/state files — no theme source overlap), take `main`'s `data/blog/**`, run `node tools/build-blog.mjs` (≈ 3 s now) and commit the regenerated `blog/**`, `sitemap.xml`, `404.html` — never hand-resolve generated files. Re-run `node --test`, `site-audit`, `seo-score` after the merge.
+2. P1 candidates in order of value: TH-108 (shard the search index before ~10k articles), TH-106 (paginate subtopic hubs — new URLs, owner decision), TH-101 (forced-colors), TH-100 (print), TH-102 (breadcrumb rail), TH-103/104/105 (presentational).
+3. Budgets are nearly spent: CSS 64,420 / 65,536 B (headroom 1.1 KB), JS 230,838 / 232,000 B (headroom 1.2 KB). Any P1 must trim first or bump a budget with a documented reason (precedent: v62); the JS guard lives in `.github/workflows/ci.yml` (owner-only file).
+4. Every `BUILD_VERSION` bump = 4 files in lockstep: `tools/app-shell.mjs`, `index.html`, `service-worker.js`, `package.json` (major). v67 already covers batches A–G (branch never deployed).
+5. Real-device check still owed (no browser here): iPhone Safari 375/390 px header + drawer focus, iPad landscape mega menu (touch toggle), Chrome desktop reading bar + TOC scrollspy, Lighthouse CLS on an article and a hub.

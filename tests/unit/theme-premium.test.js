@@ -204,3 +204,22 @@ test('TH-051: search fetches an absolute index, announces counts, has heading + 
   const index = read('blog/search-index.json');
   for (const a of JSON.parse(index).articles) assert.ok(!a.keywords.includes(a.summary), 'keywords never duplicate the summary');
 });
+
+// ---------- Batch G: CWV ----------
+
+import { lazyMedia } from '../../tools/build-blog.mjs';
+
+test('TH-063: body media are lazy unless the author set loading explicitly', () => {
+  assert.equal(lazyMedia('<p><img src="/a.png" alt="a"></p>'), '<p><img loading="lazy" decoding="async" src="/a.png" alt="a"></p>');
+  assert.equal(lazyMedia('<img loading="eager" src="/a.png">'), '<img loading="eager" src="/a.png">');
+  assert.equal(lazyMedia('<iframe src="/v"></iframe>'), '<iframe loading="lazy" src="/v"></iframe>');
+  assert.equal(lazyMedia('<p>no media</p>'), '<p>no media</p>');
+});
+
+test('TH-060/062: content-visibility below the fold, no webfonts, fixed-width theme toggle', () => {
+  const css = read('assets/css/blog.css');
+  assert.match(css, /\.blog-footer\s*\{[^}]*content-visibility:\s*auto;[^}]*contain-intrinsic-size:\s*auto/, 'footer skipped until near');
+  assert.match(css, /\.blog-grid > \.blog-card:nth-child\(n\+7\)\s*\{[^}]*content-visibility:\s*auto/, 'long card lists');
+  assert.match(css, /\.site-actions \.blog-theme-toggle\s*\{\s*width:\s*56px/, 'theme label swap cannot shift the header');
+  for (const f of ['assets/css/style.css', 'assets/css/blog.css']) assert.ok(!/@font-face|fonts\.googleapis/.test(read(f)), `${f}: system fonts only`);
+});
