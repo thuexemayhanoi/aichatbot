@@ -73,6 +73,15 @@ test('body hygiene: no leaked editor notes, foreign-script glitches or English l
     const body = read(a.body);
     assert.ok(!/[\u0400-\u04ff\u4e00-\u9fff\u0e00-\u0e7f]/.test(body), `${a.article_id}: Cyrillic/CJK/Thai characters in a Vietnamese body`);
     assert.ok(!/\bHmm\b|\btypo\b|\blebih\b/.test(body), `${a.article_id}: leaked editor note or foreign word`);
-    assert.ok(!/\b(CLAIM|SUBJECT|CONDITION|PRIMARY SOURCE)\b/.test(body), `${a.article_id}: legal-gate labels must be Vietnamese`);
+    assert.ok(!/\b(CLAIM|SUBJECT|CONDITION|PRIMARY SOURCE)\b/.test(body) && !/\b(claim|subject|condition|primary source):/i.test(body), `${a.article_id}: legal-gate labels must be Vietnamese`);
   }
+});
+
+test('condense only shortens bodies above 2,000 words, with a shorter wording', () => {
+  const plain = [...read(SHORT.body).matchAll(/<p>([^<]{60,})<\/p>/g)][0][1];
+  const from = plain.split(/\s+/).slice(0, 8).join(' ');
+  const r = reviewArticle({ id: SHORT.article_id, condense: [{ from, to: `${from} thêm` }] });
+  const all = r.problems.join('\n');
+  assert.ok(all.includes('only for bodies above 2000 words'), all);
+  assert.ok(all.includes('"to" must be shorter than "from"'), all);
 });

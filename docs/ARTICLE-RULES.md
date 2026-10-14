@@ -15,6 +15,7 @@
 - Schema: `Article` + `BreadcrumbList`; author + date; link về hub danh mục; internal links theo ngữ cảnh.
 - Body viết ở `data/blog/articles/<slug>.body.html` (thẻ h2/h3/p/ul/ol/li/strong/a; bảng so sánh chỉ dạng `<div class="table-wrap"><table class="blog-table">…</table></div>`) — layout, head, schema do `tools/build-blog.mjs` sinh.
 - Sửa body bài PUBLISHED chỉ qua quy trình review `tools/seo-body-review.mjs` (patch có cấu trúc, giữ nguyên prose cũ, QA trước/sau, nhật ký `data/seo/body-reviews.json`).
+- Bài vượt 2.000 từ (đếm sau khi điền dữ kiện) chỉ được cô đọng bằng thao tác `condense` của cùng công cụ: viết gọn câu thừa, mọi con số của đoạn cũ phải còn trong bài, không để trống khối nội dung, kết quả nằm trong 1.800–2.000 từ.
 
 ## Nội dung
 

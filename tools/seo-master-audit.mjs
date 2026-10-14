@@ -371,7 +371,7 @@ export function analyze(c) {
       const cover = kwSyl.filter((s) => intro.includes(s)).length / Math.max(1, kwSyl.length);
       if (cover < 0.6) gaps.push('INTRO-KW');
       if (/pilot|fixture|chuẩn sản xuất/i.test(bodyText)) gaps.push('INTERNAL-NOTE');
-      if (englishTokens(bodyText.replace(/MotoAI|Agent/g, '')).some((w) => ['ride', 'weekend', 'view', 'bike', 'bikes'].includes(w.toLowerCase()))) gaps.push('EN-BODY');
+      if (englishTokens(bodyText.replace(/MotoAI|Agent/g, '')).some((w) => ['ride', 'weekend', 'view', 'bike', 'bikes', 'claim'].includes(w.toLowerCase()))) gaps.push('EN-BODY');
       ev.push(`${wc} từ`, `${ext.length} nguồn ngoài`);
       if (/<table/.test(p.body)) ev.push('có bảng');
     } else {

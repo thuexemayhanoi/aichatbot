@@ -13,14 +13,17 @@
  *   table    : a comparison table summarising what the article already says
  *   faq      : a "Câu hỏi thường gặp" section (only if the body has none)
  *   sections : extra H2 sections for thin articles (< 800 words)
+ *   condense : shorter wording for passages of bodies above 2,000 words
+ *              (rendered); every number the passage held must remain in the
+ *              body, nothing may be emptied, and the body ends at 1,800–2,000
  *
  * Gates (any failure rejects the whole article patch):
  *   - new text is plain Vietnamese: no markup, no English fragments, no
  *     forbidden commercial claims, no digits that the original body does not
  *     already contain ({{ business.* }} placeholders must resolve);
  *   - link targets are published articles, never self, never already linked;
- *   - word count never drops; thin articles reach 800; additions never push a
- *     body past 2,000 words;
+ *   - word count never drops (except by condense or deleted internal notes);
+ *     thin articles reach 800; additions never push a body past 2,000 words;
  *   - (apply) the factory QA (tools/article-qa.mjs scopedQa) still passes with
  *     a score >= the pre-review score.
  *
@@ -36,6 +39,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { englishTokens } from './seo-meta.mjs';
 import { taxonomy } from './taxonomy.mjs';
+import { resolveFacts } from './build-blog.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
@@ -173,6 +177,35 @@ export function reviewArticle(patch, idx = manifestIndex()) {
     html = res.html;
   }
   if (patch.replace?.length) ops.push(`replace:${patch.replace.length}`);
+
+  // condense: only for bodies above the 2,000-word guideline. A passage is
+  // replaced by a shorter wording; every number it held must still appear in
+  // the body afterwards (no fact is lost), and no block may be left empty.
+  if (patch.condense?.length) {
+    // Rendered count (placeholders resolved) = what the reader and the audit see.
+    const rendered = (h) => wordCount(resolveFacts(h, JSON.parse(read('data/business/business.json'))));
+    const origWords = rendered(original);
+    if (origWords <= MAX_WORDS) P(`condense: only for bodies above ${MAX_WORDS} words (this one has ${origWords})`);
+    for (const [i, c] of (patch.condense ?? []).entries()) {
+      if (typeof c.from !== 'string' || wordCount(c.from) < 6) { P(`condense[${i}]: "from" must be a passage of 6+ words`); continue; }
+      if (c.to !== '') for (const p of textProblems(`condense[${i}].to`, c.to, allowed)) P(p);
+      if (wordCount(c.to) >= wordCount(c.from)) P(`condense[${i}]: "to" must be shorter than "from"`);
+      const res = replaceText(html, c.from, c.to);
+      if (res.n !== 1) P(`condense[${i}]: "from" must occur exactly once in a text node (found ${res.n})`);
+      // Measured on the body (punctuation in "to" may merge with the previous word).
+      removedWords += Math.max(0, wordCount(html) - wordCount(res.html));
+      html = res.html;
+    }
+    const kept = digitsOf(stripTags(html));
+    for (const c of patch.condense ?? []) {
+      for (const d of digitsOf(String(c.from ?? ''))) if (!kept.has(d)) P(`condense: number "${d}" would disappear from the article`);
+    }
+    if (/<(p|li|h[23])>\s*<\/\1>/.test(html)) P('condense: an empty paragraph/list item/heading would remain');
+    const left = rendered(html);
+    if (left > MAX_WORDS) P(`condense: still ${left} words (> ${MAX_WORDS})`);
+    if (left < 1800) P(`condense: over-trimmed to ${left} words (keep >= 1800)`);
+    ops.push(`condense:${patch.condense.length}`);
+  }
 
   // "/x/y/index.html" and "/x/y/" are the same page (the builder normalises them).
   const linked = new Set([...html.matchAll(/href="([^"]+)"/g)].map((m) => m[1].replace(/index\.html$/, '')));
