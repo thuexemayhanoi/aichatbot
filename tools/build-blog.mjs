@@ -79,12 +79,14 @@ function jsonLd(obj) {
   return JSON.stringify(obj).replace(/</g, '\\u003c');
 }
 
-/** Article card (app-style, used by every list screen). */
+/** Article card (app-style, used by every list screen). v67: meta line
+ *  with a machine-readable <time>; title/excerpt clamped in CSS. */
 function card(a, hub) {
   return `      <a class="blog-card" href="/blog/${hub.dir}/${a.slug}/">
         <span class="cat">${esc(hub.label)}</span>
         <h2>${esc(a.title)}</h2>
         <p>${esc(a.description)}</p>
+        <span class="meta"><time datetime="${a.published_date}">${viDate(a.published_date)}</time></span>
       </a>`;
 }
 
@@ -267,18 +269,31 @@ export function paginate(list, perPage = PER_PAGE) {
   return pages.length > 0 ? pages : [[]];
 }
 
+/** v67 windowed pagination: first, last, current ±2, gaps as "…" — a
+ *  constant number of links per page however many pages a hub grows to
+ *  (every page stays reachable through the window + prev/next chain). */
+export function pageWindow(page, total, radius = 2) {
+  const out = [];
+  for (let p = 1; p <= total; p++) {
+    if (p === 1 || p === total || Math.abs(p - page) <= radius) out.push(p);
+    else if (out[out.length - 1] !== '…') out.push('…');
+  }
+  return out;
+}
+
 function paginationNav(hub, page, pages) {
   if (pages.length <= 1) return '';
-  const links = [];
-  for (let i = 0; i < pages.length; i++) {
-    const p = i + 1;
-    const href = p === 1 ? `/blog/${hub.dir}/` : `/blog/${hub.dir}/page/${p}/`;
-    links.push(p === page ? `      <span class="blog-page-current" aria-current="page">${p}</span>` : `      <a href="${href}">${p}</a>`);
-  }
-  return `      <nav class="blog-pagination" aria-label="Trang">
-        ${page > 1 ? `<a href="${page === 2 ? `/blog/${hub.dir}/` : `/blog/${hub.dir}/page/${page - 1}/`}">‹ Trước</a>` : ''}
+  const href = (p) => (p === 1 ? `/blog/${hub.dir}/` : `/blog/${hub.dir}/page/${p}/`);
+  const links = pageWindow(page, pages.length).map((p) => {
+    if (p === '…') return '      <span class="blog-page-gap" aria-hidden="true">…</span>';
+    return p === page
+      ? `      <span class="blog-page-current" aria-current="page">${p}</span>`
+      : `      <a href="${href(p)}" aria-label="Trang ${p}">${p}</a>`;
+  });
+  return `      <nav class="blog-pagination" aria-label="Phân trang ${esc(hub.label)}">
+        ${page > 1 ? `<a class="blog-page-step" rel="prev" href="${href(page - 1)}">‹ Trước</a>` : ''}
 ${links.join('\n')}
-        ${page < pages.length ? `<a href="/blog/${hub.dir}/page/${page + 1}/">Sau ›</a>` : ''}
+        ${page < pages.length ? `<a class="blog-page-step" rel="next" href="${href(page + 1)}">Sau ›</a>` : ''}
       </nav>
 `;
 }
@@ -313,7 +328,7 @@ function buildHub(hub, published, subtopicMap) {
     const content = breadcrumb(clusterTrail(cluster, trail))
       + screenHead({ label: 'Danh mục', title: hub.name, lead: hub.desc })
       + hubParentBlock(cluster)
-      + (hub.intro ? `      <p class="blog-screen-lead">${esc(hub.intro)}</p>\n` : '')
+      + (hub.intro ? `      <p class="blog-screen-intro">${esc(hub.intro)}</p>\n` : '')
       + categoryChips({ activeHub: hub.dir })
       + (chips ? `      <div class="blog-chips" aria-label="Chủ đề">
 ${chips}
@@ -475,7 +490,7 @@ ${topCards}
   const path = `blog/${cluster.dir}/`;
   const content = breadcrumb([CRUMB_HOME, CRUMB_BLOG, { label: cluster.name, href: null }])
     + screenHead({ label: 'Nhóm chủ đề', title: cluster.name, lead: cluster.desc })
-    + (cluster.intro ? `      <p class="blog-screen-lead">${esc(cluster.intro)}</p>\n` : '')
+    + (cluster.intro ? `      <p class="blog-screen-intro">${esc(cluster.intro)}</p>\n` : '')
     + `      <div class="blog-cat-grid">
 ${catCards}
       </div>

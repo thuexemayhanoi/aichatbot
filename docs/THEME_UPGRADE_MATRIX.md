@@ -77,9 +77,9 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 
 | ID | Area | Problem | Fix | Files | Risk | Status | Evidence |
 |---|---|---|---|---|---|---|---|
-| TH-040 | Cards | No meta line, no clamping | Card: category tag, title (3-line clamp), excerpt (3-line clamp), `<time>` date; consistent hover/focus; 1/2/3 columns at 375/768/1280 | `tools/build-blog.mjs`, `blog.css` | L | TODO | |
-| TH-041 | Pagination | Every page number rendered | Windowed pagination: first, last, current ±2, ellipses, prev/next; 44 px targets | `tools/build-blog.mjs`, `blog.css` | L (test only checks presence) | TODO | |
-| TH-042 | Hub head | `desc` + `intro` both rendered as leads | `intro` becomes a distinct `.blog-screen-intro` paragraph | `tools/build-blog.mjs`, `blog.css` | L | TODO | |
+| TH-040 | Cards | No meta line, no clamping | Card: category tag, title (3-line clamp), excerpt (3-line clamp), `<time>` date; consistent hover/focus; 1/2/3 columns at 375/768/1280 | `tools/build-blog.mjs`, `blog.css` | L | DONE | batch E. Shared `card()` gains `<span class="meta"><time datetime>dd/mm/yyyy</time></span>` pinned to the card bottom (equal-height rows); title + excerpt 3-line clamp; card focus ring; grid 1 col < 600, 2 cols 600–1023, 3 cols ≥ 1024 (home hub sections 2×2 → 4-up ≥ 1280, related 4-up ≥ 1024, legal grid stays 1 col) |
+| TH-041 | Pagination | Every page number rendered | Windowed pagination: first, last, current ±2, ellipses, prev/next; 44 px targets | `tools/build-blog.mjs`, `blog.css` | L (test only checks presence) | DONE | batch E. `pageWindow()` → ≤ 7 numbers + 2 gaps at any page count (`thue-xe` p8: 1 … 6 7 8 9 10 … 15), `rel="prev/next"`, numbers labelled "Trang N", nav labelled per hub; centred, 44 px targets, tighter padding < 480 px (wraps to 2 rows at 375 px rather than overflowing). Hub order unchanged (oldest-first → a publish only touches the last page) |
+| TH-042 | Hub head | `desc` + `intro` both rendered as leads | `intro` becomes a distinct `.blog-screen-intro` paragraph | `tools/build-blog.mjs`, `blog.css` | L | DONE | batch E. Category + cluster hubs: one muted lead (desc) + an intro paragraph in body colour with an accent rule, capped at `--measure` |
 
 ### P0 — batch F: 404 + search
 
@@ -142,11 +142,12 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 
 | B (TH-010..013, TH-061) | `8aa8d6d4` | `node --test` 1008/1008 pass (incl. new `tests/unit/theme-premium.test.js`) | 78 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; second build = byte-identical (determinism) | pass, 223,620 internal URLs checked (menu adds links), 0 broken | 99.5/100, 623 notes (unchanged), UX 10/10 | CSS 60,906 B / 65,536; JS 231,702 B / 232,000. Also: `tools/__pycache__/*.pyc` untracked + `__pycache__/`, `*.pyc` in `.gitignore`. `origin/main` is 30 commits ahead — not merged (TH-900) |
 | C (TH-020) | `6658d70b` | `node --test` 1010/1010 pass | 79 s wall; output regenerated (1,821 pages, footer only) | pass, 225,440 internal URLs, 0 broken | 99.5/100, 623 notes (unchanged) | CSS 62,508 B / 65,536; JS 231,702 B (unchanged) |
-| D (TH-030..035, TH-064, TH-107) | (SHA recorded in the batch-E commit) | `node --test` 1013/1013 pass | **3.0 s** wall (was 78 s); second build byte-identical | pass, 227,132 internal URLs, 0 broken | 99.6/100, 453 notes (article-prose scoping, TH-107) | CSS 61,788 B / 65,536 (multi-line comments condensed to headlines: −3.9 KB, key rationale kept); JS 231,819 B / 232,000 (181 B headroom) |
+| D (TH-030..035, TH-064, TH-107) | `b76f2fe6` | `node --test` 1013/1013 pass | **3.0 s** wall (was 78 s); second build byte-identical | pass, 227,132 internal URLs, 0 broken | 99.6/100, 453 notes (article-prose scoping, TH-107) | CSS 61,788 B / 65,536 (multi-line comments condensed to headlines: −3.9 KB, key rationale kept); JS 231,819 B / 232,000 (181 B headroom) |
+| E (TH-040..042) | (SHA recorded in the batch-F commit) | `node --test` 1015/1015 pass | 3 s; second build byte-identical | pass, 226,636 internal URLs, 0 broken | 99.6/100, 453 notes (unchanged) | CSS 63,081 B / 65,536; JS 231,819 B (unchanged) |
 
 ## Next steps from checkpoint
 
-1. Batches A–D done → next E (TH-040..042), then F, G in order. JS headroom is 181 B: batch F must compact `blog.js` before adding behaviour.
+1. Batches A–E done → next F (TH-050..051), then G. JS headroom is 181 B: batch F must compact `blog.js` before adding behaviour.
 2. After each batch: run the loop, record commit SHA + results in **Batch log**, flip item status with evidence.
 3. If the JS guard or CSS budget blocks a batch, trim first (TH-013 / TH-004), bump only with a documented reason.
 4. Every `BUILD_VERSION` bump = 4 files in lockstep: `tools/app-shell.mjs`, `index.html`, `service-worker.js`, `package.json` (major).

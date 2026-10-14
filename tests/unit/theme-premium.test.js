@@ -151,3 +151,29 @@ test('TH-030..035: generated article carries meta block, <time>, prev/next, 4 re
   assert.match(css, /\.blog-article-body > :where\([^)]*\)\s*\{\s*max-width:\s*var\(--measure\)/, 'readable measure');
   assert.ok(read('assets/js/app-shell.js').includes("'aria-current', 'location'"), 'TOC scrollspy');
 });
+
+// ---------- Batch E: cards, pagination, hub head ----------
+
+import { pageWindow } from '../../tools/build-blog.mjs';
+
+test('TH-041: windowed pagination — first, last, current ±2, single gaps', () => {
+  assert.deepEqual(pageWindow(1, 15), [1, 2, 3, '…', 15]);
+  assert.deepEqual(pageWindow(8, 15), [1, '…', 6, 7, 8, 9, 10, '…', 15]);
+  assert.deepEqual(pageWindow(15, 15), [1, '…', 13, 14, 15]);
+  assert.deepEqual(pageWindow(2, 3), [1, 2, 3]);
+  assert.ok(pageWindow(500, 1000).length <= 9, 'constant link count at any scale');
+});
+
+test('TH-040..042: cards carry <time>, hubs render windowed nav and a distinct intro', () => {
+  const html = read(`blog/${firstDir}/index.html`);
+  assert.match(html, /class="blog-card"[\s\S]*?<span class="meta"><time datetime="\d{4}-\d{2}-\d{2}">\d{2}\/\d{2}\/\d{4}<\/time><\/span>/, 'card date');
+  const nav = /<nav class="blog-pagination"[\s\S]*?<\/nav>/.exec(html);
+  if (nav) {
+    assert.ok((nav[0].match(/<a /g) ?? []).length <= 9, 'bounded pagination links');
+    assert.ok(nav[0].includes('rel="next"'), 'page 1 links forward with rel=next');
+  }
+  for (const p of [`blog/${firstDir}/index.html`, `blog/${taxonomy.clusters[0].dir}/index.html`]) {
+    const h = read(p);
+    assert.equal((h.match(/class="blog-screen-lead"/g) ?? []).length, 1, `${p}: exactly one lead`);
+  }
+});
