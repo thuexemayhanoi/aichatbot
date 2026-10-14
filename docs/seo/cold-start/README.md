@@ -4,16 +4,16 @@
 
 ## Dữ liệu đầu vào
 
-- SERP: 67 truy vấn tiếng Việt, Google Việt Nam — `data/seo/serp-snapshots/` (2026-10-14.json: 67 truy vấn).
-- Nhu cầu từ khóa: 711 từ khóa có volume (`data/seo/keyword-demand.json`, `data/seo/keyword-clusters.json`).
+- SERP: 72 truy vấn tiếng Việt, Google Việt Nam — `data/seo/serp-snapshots/` (2026-10-14.json: 72 truy vấn).
+- Nhu cầu từ khóa: 723 từ khóa có volume (`data/seo/keyword-demand.json`, `data/seo/keyword-clusters.json`).
 - Kho bài: 2000 bài đã đăng (title/từ khóa SEO, H2/H3), 20 cụm K01–K20.
 - Tín hiệu sớm sẵn có: `docs/INDEX-MONITORING-20261013.md` ghi một ảnh chụp Search Console rời rạc (9–10/10/2026: 130 lượt hiển thị, 3 lượt nhấp; trang Hồ Tây và Hoàn Kiếm có hiển thị). Repo không có tệp xuất nên số này chỉ là bối cảnh, không kích hoạt DATA-DRIVEN.
 
 ## Phát hiện chính
 
-1. **AI Overview ở 57/67 SERP** — câu trả lời trực tiếp, FAQ và nguồn chính thức trong bài là điều kiện để được trích dẫn (GEO).
-2. **Local pack ở 16/67 SERP**, đều là truy vấn giao dịch theo khu vực — Google ưu tiên bản đồ, nhóm Facebook và trang dịch vụ; bài blog khó vào top cho các truy vấn này.
-3. **Website này đã xuất hiện ở 4/67 SERP** (top 10: 1). Cụm ứng dụng (K01): "app thuê xe máy" #7, #9; "app thuê xe máy điện" —; "app thuê xe máy hà nội" —; "đặt thuê xe máy online" —; "ứng dụng thuê xe máy" —.
+1. **AI Overview ở 60/72 SERP** — câu trả lời trực tiếp, FAQ và nguồn chính thức trong bài là điều kiện để được trích dẫn (GEO).
+2. **Local pack ở 18/72 SERP**, đều là truy vấn giao dịch theo khu vực — Google ưu tiên bản đồ, nhóm Facebook và trang dịch vụ; bài blog khó vào top cho các truy vấn này.
+3. **Website này đã xuất hiện ở 4/72 SERP** (top 10: 1). Cụm ứng dụng (K01): "app thuê xe máy" #7, #9; "app thuê xe máy điện" —; "app thuê xe máy hà nội" —; "đặt thuê xe máy online" —; "ứng dụng thuê xe máy" —.
 4. **2 URL dạng /index.html** của website đang hiển thị trên SERP (trùng URL chuẩn) — trang HTML còn link nội bộ dạng này: 0.
 5. **Phạm vi từ khóa**: 183 trong phạm vi; 180 thuộc thành phố khác; 368 ý định khác; 8 do site chị em sở hữu; 8 ý định "gần tôi"; 26 dịch vụ chưa xác minh.
 6. **Độ phủ nội dung**: 93 đã có bài, 23 có mục, 24 phủ một phần, 43 chưa có (chi tiết: [content-gap.md](content-gap.md)).
@@ -29,10 +29,10 @@
 | P1 | Nội dung: "xe máy điện bao nhiêu tuổi được đi" | 1.000/tháng, chưa có | Kiểm tra bài gần nhất; nếu chưa trả lời đúng câu hỏi, bổ sung mục/FAQ (review body) hoặc đề xuất bài mới (gần nhất: /blog/thue-xe/dieu-kien-thue-xe-may-o-ha-noi/) | Đề xuất |
 | P1 | Nội dung: "bao nhiêu tuổi thì được đi xe máy điện" | 480/tháng, chưa có | Kiểm tra bài gần nhất; nếu chưa trả lời đúng câu hỏi, bổ sung mục/FAQ (review body) hoặc đề xuất bài mới (gần nhất: /blog/thue-xe/dieu-kien-thue-xe-may-o-ha-noi/) | Đề xuất |
 | P1 | Nội dung: "lỗi sử dụng điện thoại khi đi xe máy" | 480/tháng, phủ một phần | Bổ sung mục/FAQ trả lời đúng câu hỏi vào bài gần nhất (review body) hoặc đề xuất bài mới (gần nhất: /blog/an-toan/dien-thoai-khi-lai-xe-tom-tat/) | Đề xuất |
+| P1 | Nội dung: "thuê xe máy hà đông" | 110/tháng, chưa có | Đề xuất bài mới — cần owner thêm ID vào ma trận (writer viết, factory đăng) (gần nhất: /blog/thue-xe/bang-lai-a1-va-thue-xe-may/) | Đề xuất |
 | P1 | Nội dung: "đồ đi phượt xe máy" | 70/tháng, chưa có | Kiểm tra bài gần nhất; nếu chưa trả lời đúng câu hỏi, bổ sung mục/FAQ (review body) hoặc đề xuất bài mới (gần nhất: /blog/huong-dan/troi-mua-thue-xe-may-cho-khach-nuoc-ngoai/) | Đề xuất |
 | P1 | Nội dung: "phượt tam đảo bằng xe máy" | 70/tháng, phủ một phần | Bổ sung mục/FAQ trả lời đúng câu hỏi vào bài gần nhất (review body) hoặc đề xuất bài mới (gần nhất: /blog/dia-phuong/tam-dao-bang-xe-may/) | Đề xuất |
 | P1 | Nội dung: "đi phượt bằng xe máy" | 50/tháng, chưa có | Đề xuất bài mới — cần owner thêm ID vào ma trận (writer viết, factory đăng) (gần nhất: /blog/dia-phuong/cua-lo-ven-bien-mua-thu/) | Đề xuất |
-| P1 | Nội dung: "du lịch gần hà nội 1 ngày bằng xe máy" | 50/tháng, phủ một phần | Bổ sung mục/FAQ trả lời đúng câu hỏi vào bài gần nhất (review body) hoặc đề xuất bài mới (gần nhất: /blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-trong-ngay/) | Đề xuất |
 | P2 | Khớp cụm từ: "không bằng lái xe máy phạt bao nhiêu" | 6.600/tháng | Bài /blog/thue-xe/thue-xe-khong-bang-lai-duoc-khong-cuoi-tuan/ đã phủ; cân nhắc đưa cụm từ chính xác vào title/meta | Đề xuất |
 | P2 | Khớp cụm từ: "lỗi không bằng lái xe máy" | 2.900/tháng | Bài /blog/thue-xe/thue-xe-khong-bang-lai-duoc-khong-cuoi-tuan/ đã phủ; cân nhắc đưa cụm từ chính xác vào title/meta | Đề xuất |
 | P2 | Khớp cụm từ: "các loại bằng lái xe máy" | 1.000/tháng | Bài /blog/an-toan/idp-va-bang-lai-quoc-te/ đã phủ; cân nhắc đưa cụm từ chính xác vào title/meta | Đề xuất |

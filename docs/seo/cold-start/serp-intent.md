@@ -1,6 +1,6 @@
 # Ý định tìm kiếm & tính năng SERP theo truy vấn
 
-> 67 truy vấn tiếng Việt, Google Việt Nam (2026-10-14). AI Overview xuất hiện ở **57/67** SERP, local pack ở **16/67**. Vị trí của website chỉ là quan sát một thời điểm, không phải thứ hạng ổn định.
+> 72 truy vấn tiếng Việt, Google Việt Nam (2026-10-14). AI Overview xuất hiện ở **60/72** SERP, local pack ở **18/72**. Vị trí của website chỉ là quan sát một thời điểm, không phải thứ hạng ổn định.
 
 | Cụm | Truy vấn | Ý định chiếm ưu thế | AI Overview | Local pack | PAA | Website này | Website chị em | Bài/trang đích gợi ý | Định dạng phù hợp |
 |---|---|---|:-:|:-:|:-:|---|---|---|---|
@@ -28,6 +28,7 @@
 | K08 | thuê xe đạp điện hà nội | Hỗn hợp (thương mại + thông tin) | ✓ |  |  | — | #5 thuexemaynguyentu.com | — | Bài hướng dẫn có khối giá/CTA rõ và liên kết sang trang chuyển đổi. |
 | K08 | thuê xe máy điện | Giao dịch – địa phương | ✓ | ✓ |  | — | — | /blog/xe-dien/ung-dung-thue-xe-may-dien/ | Trang blog khó vào top: Google ưu tiên trang bán hàng, nhóm Facebook và bản đồ. Đòn bẩy: Google Business Profile, NAP nhất quán, trang /lien-he/ + /gia-thue/. |
 | K08 | thuê xe máy điện hà nội | Giao dịch – địa phương |  | ✓ |  | — | — | /blog/app/so-sanh-ung-dung-thue-xe-may-dien-va-xe-xang-tai-ha-noi/ | Trang blog khó vào top: Google ưu tiên trang bán hàng, nhóm Facebook và bản đồ. Đòn bẩy: Google Business Profile, NAP nhất quán, trang /lien-he/ + /gia-thue/. |
+| K08 | thuê xe máy điện theo tháng | Giao dịch – địa phương | ✓ |  |  | — | — | /blog/xe-dien/chi-phi-dien-khi-thue-xe-dien-dai-han/ | Trang blog khó vào top: Google ưu tiên trang bán hàng, nhóm Facebook và bản đồ. Đòn bẩy: Google Business Profile, NAP nhất quán, trang /lien-he/ + /gia-thue/. |
 | K08 | thuê xe máy điện vinfast | Hỗn hợp (thương mại + thông tin) | ✓ |  |  | — | — | — | Bài hướng dẫn có khối giá/CTA rõ và liên kết sang trang chuyển đổi. |
 | K09 | bằng a1 lái được xe gì | Thông tin | ✓ |  | ✓ | — | — | /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ | Phù hợp bài/pillar thông tin: trả lời trực tiếp ở đoạn đầu, FAQ, nguồn chính thức. |
 | K09 | bằng lái a1 a2 khác gì | Thông tin | ✓ |  | ✓ | — | — | /blog/an-toan/bang-lai-a1-a2-khac-gi/ | Phù hợp bài/pillar thông tin: trả lời trực tiếp ở đoạn đầu, FAQ, nguồn chính thức. |
@@ -57,6 +58,10 @@
 | K15 | thuê xe máy gần đây | Giao dịch – địa phương | ✓ |  | ✓ | — | — | — | Trang blog khó vào top: Google ưu tiên trang bán hàng, nhóm Facebook và bản đồ. Đòn bẩy: Google Business Profile, NAP nhất quán, trang /lien-he/ + /gia-thue/. |
 | K15 | thuê xe máy long biên | Giao dịch – địa phương |  | ✓ |  | — | — | /blog/an-toan/bao-hiem-khi-thue-xe-may-cau-hoi-thuong-gap/ | Trang blog khó vào top: Google ưu tiên trang bán hàng, nhóm Facebook và bản đồ. Đòn bẩy: Google Business Profile, NAP nhất quán, trang /lien-he/ + /gia-thue/. |
 | K16 | thuê xe máy cầu giấy | Giao dịch – địa phương |  | ✓ |  | — | — | /blog/dia-phuong/cau-giay-di-xe-may/ | Trang blog khó vào top: Google ưu tiên trang bán hàng, nhóm Facebook và bản đồ. Đòn bẩy: Google Business Profile, NAP nhất quán, trang /lien-he/ + /gia-thue/. |
+| K16 | thuê xe máy hà đông | Giao dịch – địa phương |  | ✓ |  | — | — | /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ | Trang blog khó vào top: Google ưu tiên trang bán hàng, nhóm Facebook và bản đồ. Đòn bẩy: Google Business Profile, NAP nhất quán, trang /lien-he/ + /gia-thue/. |
+| K16 | thuê xe máy hoàng mai | Giao dịch – địa phương |  | ✓ |  | — | — | /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ | Trang blog khó vào top: Google ưu tiên trang bán hàng, nhóm Facebook và bản đồ. Đòn bẩy: Google Business Profile, NAP nhất quán, trang /lien-he/ + /gia-thue/. |
+| K17 | đi phượt bằng xe máy | Thông tin | ✓ |  |  | — | — | /blog/dia-phuong/cua-lo-ven-bien-mua-thu/ | Phù hợp bài/pillar thông tin: trả lời trực tiếp ở đoạn đầu, FAQ, nguồn chính thức. |
+| K17 | đồ đi phượt xe máy | Hỗn hợp (thương mại + thông tin) | ✓ |  |  | — | — | /blog/huong-dan/troi-mua-thue-xe-may-cho-khach-nuoc-ngoai/ | Bài hướng dẫn có khối giá/CTA rõ và liên kết sang trang chuyển đổi. |
 | K17 | du lịch hà nội 1 ngày bằng xe máy | Hỗn hợp (thương mại + thông tin) | ✓ |  |  | — | — | /blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-trong-ngay/ | Bài hướng dẫn có khối giá/CTA rõ và liên kết sang trang chuyển đổi. |
 | K17 | phượt xe máy gần hà nội | Giao dịch – địa phương | ✓ |  |  | — | — | /blog/huong-dan/deo-doc-va-xe-may-thue-tai-ha-noi/ | Trang blog khó vào top: Google ưu tiên trang bán hàng, nhóm Facebook và bản đồ. Đòn bẩy: Google Business Profile, NAP nhất quán, trang /lien-he/ + /gia-thue/. |
 | K17 | thuê xe máy đi hà giang | Giao dịch – địa phương | ✓ |  |  | — | — | /blog/dia-phuong/ha-giang-vong-cung/ | Trang blog khó vào top: Google ưu tiên trang bán hàng, nhóm Facebook và bản đồ. Đòn bẩy: Google Business Profile, NAP nhất quán, trang /lien-he/ + /gia-thue/. |

@@ -275,7 +275,7 @@ export function assessGroup(members, ctx) {
     .sort((x, y) => y.fit - x.fit || x.a.id.localeCompare(y.a.id)).slice(0, 3)
     .map((c) => ({ id: c.a.id, url: c.a.url, fit: Math.round(c.fit * 100) / 100, focus: Math.round(focusOf(c.a, words, ctx) * 100) / 100 }));
   return {
-    id, head: head.keyword, members: members.map((m) => ({ keyword: m.keyword, volume: m.volume, origin: m.origin })),
+    id, head: head.keyword, members: members.map((m) => ({ keyword: m.keyword, volume: m.volume, origin: m.origin, attempted: Boolean(m.attempted) })),
     demand, measured, cluster, intent: serpIntent ?? (TOOL_INTENT[head.intent] ? `${TOOL_INTENT[head.intent]} (công cụ)` : '—'),
     serp: { queries: serps.map((s) => s.query), ai: serps.some((s) => s.ai), local: serps.some((s) => s.local), paa: serps.some((s) => s.paa) },
     ownBest, sisterBest, target: target ? { id: target.id, url: target.url, title: target.title, category: target.category } : null,
@@ -386,7 +386,10 @@ export function runEngine(root = ROOT, { health = true, context = null } = {}) {
 
   // Research queue: what the next research run should measure.
   const serpQueue = groups.filter((g) => !g.serp.queries.length && g.demand >= 100).sort((a, b) => b.demand - a.demand || a.id.localeCompare(b.id));
-  const volumeQueue = groups.filter((g) => g.measured === 0).sort((a, b) => a.cluster.localeCompare(b.cluster) || a.head.localeCompare(b.head));
+  // Volume queue: groups no keyword tool has been asked about yet (asked-without-number groups are listed apart).
+  const unmeasured = groups.filter((g) => g.measured === 0);
+  const volumeQueue = unmeasured.filter((g) => g.members.some((m) => !m.attempted)).sort((a, b) => a.cluster.localeCompare(b.cluster) || a.head.localeCompare(b.head));
+  const noVolume = unmeasured.filter((g) => !volumeQueue.includes(g)).sort((a, b) => a.cluster.localeCompare(b.cluster) || a.head.localeCompare(b.head));
 
   // Writer briefs + proposed matrix rows (owner approval).
   const open = (g) => !['done', 'rejected', 'deferred'].includes(g.decision?.status);
@@ -413,7 +416,7 @@ export function runEngine(root = ROOT, { health = true, context = null } = {}) {
 
   return {
     mode: cs.mode.mode, snapshots: cs.snaps.files, serps: cs.serps.length, keywords: cs.keywords, scopeCount: Object.fromEntries(Object.keys(SCOPE_LABEL).map((s) => [s, cs.keywords.filter((k) => k.scope === s).length])),
-    groups, edges, curated, flagged, decisions, serpQueue, volumeQueue, briefs, proposals, categoryOfCluster, clusters: clusters.clusters, index: cs.index,
+    groups, edges, curated, flagged, decisions, serpQueue, volumeQueue, noVolume, briefs, proposals, categoryOfCluster, clusters: clusters.clusters, index: cs.index,
     serpByQuery: new Map(cs.serps.map((s) => [normKw(s.query), s])),
     health: health ? repoHealth(root) : null
   };
@@ -564,6 +567,8 @@ export function render(e) {
     for (const g of e.serpQueue) L.push(`| ${mdCell(g.head)} | ${fmt(g.demand)} | ${g.cluster} |`);
     L.push('', `## 2. Đo volume cho nhóm chỉ có trên SERP (${e.volumeQueue.length})`, '', '| Nhóm | Cụm | Nguồn |', '|---|---|---|');
     for (const g of e.volumeQueue) L.push(`| ${mdCell(g.head)} | ${g.cluster} | ${mdCell(g.members[0].origin)} |`);
+    if (!e.volumeQueue.length) L.push('| — | | |');
+    L.push('', `Đã hỏi công cụ nhưng không có số (${e.noVolume.length} nhóm — nhu cầu rất thấp hoặc chưa ghi nhận, không phải 0): ${e.noVolume.map((g) => mdCell(g.head)).join('; ') || '—'}.`);
     L.push('', '## 3. Đối chiếu văn bản gốc trước khi viết', '');
     for (const t of e.curated) L.push(`- ${mdCell(t.topic)}: ${t.sources_to_verify.join(' · ')}`);
     L.push('');
@@ -595,17 +600,17 @@ export function render(e) {
       '', '## Quy trình (tái dùng 5 công cụ, engine chỉ bổ sung phần còn thiếu)', '',
       '| Bước | Công cụ | Kết quả |', '|---|---|---|',
       `| 1. Audit repo | site-audit, seo-score, seo-master-audit, seo-index-coverage, IndexNow | ${h ? `liên kết hỏng ${h.site.broken}; SEO score ${String(h.score.total).replace('.', ',')}; P0 ${h.matrix.p0_open}; sitemap↔ma trận ${ok(h.coverage.pass)}; IndexNow ${h.indexnow ? 'có khóa' : 'chưa có'}` : 'bỏ qua (--no-health)'} |`,
-      `| 2. SEO Matrix | seo-master-audit (URL) + engine (từ khóa) | ${h ? `${h.matrix.urls} URL` : '—'}; ${G.length} nhóm từ khóa → [seo-engine-matrix.csv](seo-engine-matrix.csv) |`,
-      `| 3. Nghiên cứu SERP | seo-cold-start (snapshot) | ${e.serps} SERP (${snapDates}); hàng đợi: ${e.serpQueue.length} nhóm cần chụp SERP, ${e.volumeQueue.length} nhóm cần đo volume → [research-queue.md](research-queue.md) |`,
+      `| 2. SEO Matrix | seo-master-audit (URL) + engine (từ khóa) | ${h ? `${fmt(h.matrix.urls)} URL` : '—'}; ${G.length} nhóm từ khóa → [seo-engine-matrix.csv](seo-engine-matrix.csv) |`,
+      `| 3. Nghiên cứu SERP | seo-cold-start (snapshot) | ${e.serps} SERP (${snapDates}); hàng đợi: ${e.serpQueue.length} nhóm cần chụp SERP, ${e.volumeQueue.length} nhóm cần đo volume (${e.noVolume.length} nhóm đã hỏi, công cụ không trả số) → [research-queue.md](research-queue.md) |`,
       `| 4. Keyword clustering | engine | ${inScope} từ khóa → ${G.length} nhóm (${e.edges.serp.length} cặp trùng SERP) → [keyword-groups.md](keyword-groups.md) |`,
       `| 5. Topical map | engine + seo-master-audit | ${e.clusters.length} cụm K01–K20 → [topical-map.md](topical-map.md) |`,
       `| 6. Content gap | seo-cold-start + engine | ${byAction('NEW_ARTICLE').length} nhóm cần bài mới, ${byAction('ADD_SECTION').length} bổ sung mục, ${byAction('ALIGN_META').length} chỉnh title/meta, ${byAction('FIX_FIRST').length} nhóm chờ sửa nội dung lỗi thời, ${e.curated.length} chủ đề cần đối chiếu (${byAction('NEW_ARTICLE_VERIFY').length} nhóm) → [content-briefs.md](content-briefs.md), [proposed-matrix-rows.csv](proposed-matrix-rows.csv) |`, ''];
     if (h) {
       L.push('## Sức khỏe repo (công cụ hiện có)', '', '| Kiểm tra | Kết quả |', '|---|---|',
-        `| Liên kết nội bộ (site-audit) | ${h.site.checked} URL kiểm tra, ${h.site.broken} hỏng — ${ok(h.site.pass)} |`,
+        `| Liên kết nội bộ (site-audit) | ${fmt(h.site.checked)} liên kết kiểm tra, ${h.site.broken} hỏng — ${ok(h.site.pass)} |`,
         `| SEO score (seo-score) | ${String(h.score.total).replace('.', ',')}/100 — ${ok(h.score.pass)} |`,
-        `| Ma trận URL (seo-master-audit) | ${h.matrix.urls} URL; ${Object.entries(h.matrix.by_status).map(([k, v]) => `${k} ${v}`).join(', ')}; P0 ${h.matrix.p0_open}; tệp đã commit ${h.matrix.committedCurrent ? 'khớp' : 'cần chạy lại'} |`,
-        `| Sitemap ↔ ma trận (seo-index-coverage) | ${ok(h.coverage.pass)} (${h.coverage.counts.published ?? '—'} bài đăng) |`,
+        `| Ma trận URL (seo-master-audit) | ${fmt(h.matrix.urls)} URL; ${Object.entries(h.matrix.by_status).map(([k, v]) => `${k} ${fmt(v)}`).join(', ')}; P0 ${h.matrix.p0_open}; tệp đã commit ${h.matrix.committedCurrent ? 'khớp' : 'cần chạy lại'} |`,
+        `| Sitemap ↔ ma trận (seo-index-coverage) | ${ok(h.coverage.pass)} (${fmt(h.coverage.counts.published ?? null)} bài đăng) |`,
         `| Báo cáo cold-start | ${h.coldStart.stale.length ? `cần chạy lại: ${h.coldStart.stale.join(', ')}` : 'khớp dữ liệu'} |`,
         `| IndexNow | ${h.indexnow ? 'khóa công khai có trên site' : 'chưa cấu hình'} |`, '');
     }
@@ -639,7 +644,7 @@ export function render(e) {
       serp_overlap_pairs: e.edges.serp.length, actions: Object.fromEntries(Object.keys(ACTION_LABEL).map((a) => [a, byAction(a).length])),
       curated_topics: e.curated.length, content_flags: { open: e.flagged.filter((f) => !f.resolved).map((f) => f.article), resolved: e.flagged.filter((f) => f.resolved).map((f) => f.article) },
       decisions: e.decisions.length,
-      research_queue: { serp: e.serpQueue.length, volume: e.volumeQueue.length }, proposals: e.proposals.length, health: e.health };
+      research_queue: { serp: e.serpQueue.length, volume: e.volumeQueue.length, asked_without_number: e.noVolume.length }, proposals: e.proposals.length, health: e.health };
     files['engine.json'] = JSON.stringify(summary, null, 1) + '\n';
   }
   return files;

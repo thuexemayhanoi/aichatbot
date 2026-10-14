@@ -158,6 +158,24 @@
 - Hành động: **Ý định giao dịch – địa phương: trang bán hàng/Google Business Profile, không viết blog** · điểm 0
 - Thành viên: dịch vụ cho thuê xe máy (480); dịch vụ thuê xe máy (210)
 
+<a id="mu-bao-hiem-dat-chuan"></a>
+### mũ bảo hiểm đạt chuẩn
+
+- Nhu cầu: 590/tháng (1/1 từ khóa đo được) · Cụm K10 · Ý định: Hỗn hợp (thương mại + thông tin)
+- Trang đích: /blog/an-toan/mu-bao-hiem-chuan/ · Đã có bài
+- SERP: "mũ bảo hiểm đạt chuẩn"
+- Hành động: **Giữ nguyên** · điểm 0
+- Thành viên: mũ bảo hiểm đạt chuẩn (590)
+
+<a id="pin-xe-may-dien"></a>
+### pin xe máy điện
+
+- Nhu cầu: 590/tháng (1/1 từ khóa đo được) · Cụm K08 · Ý định: Giao dịch – địa phương
+- Trang đích: /blog/xe-dien/pin-cua-xe-may-dien/ · Đã có bài
+- SERP: "pin xe máy điện"
+- Hành động: **Giữ nguyên** · điểm 0
+- Thành viên: pin xe máy điện (590)
+
 <a id="xe-may-di-phuot"></a>
 ### xe máy đi phượt
 
@@ -212,6 +230,24 @@
 - Hành động: **Ý định giao dịch – địa phương: trang bán hàng/Google Business Profile, không viết blog** · điểm 0
 - Thành viên: thuê xe máy tây hồ hà nội (140); thuê xe máy tây hồ
 
+<a id="thue-xe-may-cau-giay"></a>
+### thuê xe máy cầu giấy
+
+- Nhu cầu: 110/tháng (1/1 từ khóa đo được) · Cụm K16 · Ý định: Giao dịch – địa phương
+- Trang đích: /blog/dia-phuong/cau-giay-di-xe-may/ · Đã có bài
+- SERP: "thuê xe máy cầu giấy"
+- Hành động: **Giữ nguyên** · điểm 0
+- Thành viên: thuê xe máy cầu giấy (110)
+
+<a id="thue-xe-may-ha-dong"></a>
+### thuê xe máy hà đông
+
+- Nhu cầu: 110/tháng (1/1 từ khóa đo được) · Cụm K09 · Ý định: Giao dịch – địa phương
+- Trang đích: (trang bán hàng / Google Business Profile) · Chưa có
+- SERP: "thuê xe máy hà đông"
+- Hành động: **Ý định giao dịch – địa phương: trang bán hàng/Google Business Profile, không viết blog** · điểm 0
+- Thành viên: thuê xe máy hà đông (110)
+
 <a id="du-lich-ha-noi-1-ngay-bang-xe-may"></a>
 ### du lịch hà nội 1 ngày bằng xe máy
 
@@ -224,19 +260,19 @@
 <a id="di-phuot-bang-xe-may"></a>
 ### đi phượt bằng xe máy
 
-- Nhu cầu: 80/tháng (3/3 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
+- Nhu cầu: 80/tháng (3/3 từ khóa đo được) · Cụm K17 · Ý định: Thông tin
 - Trang đích: (bài mới) · Chưa có
-- SERP: chưa chụp
-- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 64
+- SERP: "đi phượt bằng xe máy"
+- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 80
 - Thành viên: đi phượt bằng xe máy (50); phượt bằng xe máy (20); đi phượt bằng xe máy gì (10)
 
 <a id="do-di-phuot-xe-may"></a>
 ### đồ đi phượt xe máy
 
-- Nhu cầu: 80/tháng (2/2 từ khóa đo được) · Cụm K04 · Ý định: Giao dịch (công cụ)
+- Nhu cầu: 80/tháng (2/2 từ khóa đo được) · Cụm K04 · Ý định: Hỗn hợp (thương mại + thông tin)
 - Trang đích: (bài mới) · Chưa có · trang gần nhất /blog/huong-dan/troi-mua-thue-xe-may-cho-khach-nuoc-ngoai/ (BA-0874)
-- SERP: chưa chụp
-- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 32
+- SERP: "đồ đi phượt xe máy"
+- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 48
 - Thành viên: đồ đi phượt xe máy (70); đồ phượt xe máy (10)
 
 <a id="phuot-ha-giang-bang-xe-may"></a>
@@ -257,6 +293,15 @@
 - Hành động: **Bổ sung mục/FAQ vào bài đích (review body)** · điểm 39 · quyết định: rejected (2026-10-14)
 - Thành viên: phượt tam đảo bằng xe máy (70)
 
+<a id="thue-xe-may-theo-thang-ha-noi"></a>
+### thuê xe máy theo tháng hà nội
+
+- Nhu cầu: 70/tháng (1/1 từ khóa đo được) · Cụm K03 · Ý định: Giao dịch – địa phương
+- Trang đích: /blog/thue-xe/thue-xe-may-theo-thang/ · Đã có bài
+- SERP: "thuê xe máy theo tháng hà nội"
+- Hành động: **Giữ nguyên** · điểm 0
+- Thành viên: thuê xe máy theo tháng hà nội (70)
+
 <a id="app-thue-xe-dien"></a>
 ### app thuê xe điện
 
@@ -269,11 +314,10 @@
 <a id="thue-xe-may-dien-theo-thang"></a>
 ### thuê xe máy điện theo tháng
 
-- Nhu cầu: 50/tháng (1/1 từ khóa đo được) · Cụm K02 · Ý định: Giao dịch (công cụ)
-- Trang đích: (bài mới) · Phủ một phần · trang gần nhất /blog/xe-dien/chi-phi-dien-khi-thue-xe-dien-dai-han/ (BA-1608)
-- Ứng viên trang đích (khớp từ khóa / mức đúng chủ đề): /blog/thue-xe/thue-xe-may-theo-thang/ (BA-0020; 0,68 / 1); /blog/app/ung-dung-ho-tro-thue-xe-theo-thang/ (BA-0349; 0,68 / 0,33); /blog/thue-xe/thue-xe-may-theo-thang-ky-nghi-le/ (BA-0380; 0,68 / 0,65)
-- SERP: chưa chụp
-- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 20
+- Nhu cầu: 50/tháng (1/1 từ khóa đo được) · Cụm K02 · Ý định: Giao dịch – địa phương
+- Trang đích: (trang bán hàng / Google Business Profile) · Phủ một phần · trang gần nhất /blog/xe-dien/chi-phi-dien-khi-thue-xe-dien-dai-han/ (BA-1608)
+- SERP: "thuê xe máy điện theo tháng"
+- Hành động: **Ý định giao dịch – địa phương: trang bán hàng/Google Business Profile, không viết blog** · điểm 0
 - Thành viên: thuê xe máy điện theo tháng (50)
 
 <a id="app-thue-xe-may-tu-lai"></a>
@@ -294,6 +338,15 @@
 - Hành động: **Giữ nguyên** · điểm 0
 - Thành viên: du lịch hà nội bằng xe máy (10); du lịch bằng xe máy gần hà nội (10); du lịch gần hà nội bằng xe máy (10); du lịch quanh hà nội bằng xe máy (10)
 
+<a id="thue-xe-may-hoang-mai"></a>
+### thuê xe máy hoàng mai
+
+- Nhu cầu: 40/tháng (1/1 từ khóa đo được) · Cụm K09 · Ý định: Giao dịch – địa phương
+- Trang đích: (trang bán hàng / Google Business Profile) · Chưa có
+- SERP: "thuê xe máy hoàng mai"
+- Hành động: **Ý định giao dịch – địa phương: trang bán hàng/Google Business Profile, không viết blog** · điểm 0
+- Thành viên: thuê xe máy hoàng mai (40)
+
 <a id="duong-di-thai-nguyen-tu-ha-noi-bang-xe-may"></a>
 ### đường đi thái nguyên từ hà nội bằng xe máy
 
@@ -302,6 +355,33 @@
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 2
 - Thành viên: đường đi thái nguyên từ hà nội bằng xe máy (30)
+
+<a id="thu-tuc-thue-xe-may"></a>
+### thủ tục thuê xe máy
+
+- Nhu cầu: 30/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin
+- Trang đích: /blog/huong-dan/thu-tuc-thue-xe-may/ · Đã có bài
+- SERP: "thủ tục thuê xe máy" · website #17
+- Hành động: **Giữ nguyên** · điểm 0
+- Thành viên: thủ tục thuê xe máy (30)
+
+<a id="thue-xe-may-can-giay-to-gi"></a>
+### thuê xe máy cần giấy tờ gì
+
+- Nhu cầu: 30/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin
+- Trang đích: /blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/ · Đã có bài
+- SERP: "thuê xe máy cần giấy tờ gì"
+- Hành động: **Giữ nguyên** · điểm 0
+- Thành viên: thuê xe máy cần giấy tờ gì (30)
+
+<a id="ung-dung-thue-xe-may"></a>
+### ứng dụng thuê xe máy
+
+- Nhu cầu: 30/tháng (1/1 từ khóa đo được) · Cụm K01 · Ý định: Giao dịch – địa phương
+- Trang đích: /blog/xe-dien/ung-dung-thue-xe-may-dien/ · Đã có bài
+- SERP: "ứng dụng thuê xe máy"
+- Hành động: **Giữ nguyên** · điểm 0
+- Thành viên: ứng dụng thuê xe máy (30)
 
 <a id="xe-may-di-phuot-gia-re"></a>
 ### xe máy đi phượt giá rẻ
@@ -393,6 +473,15 @@
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 2
 - Thành viên: kinh nghiệm phượt xuyên việt bằng xe máy (10); kinh nghiệm đi phượt xuyên việt bằng xe máy (10)
 
+<a id="nguoi-nuoc-ngoai-lai-xe-may-o-viet-nam"></a>
+### người nước ngoài lái xe máy ở việt nam
+
+- Nhu cầu: 20/tháng (1/1 từ khóa đo được) · Cụm K19 · Ý định: Hỗn hợp (thương mại + thông tin)
+- Trang đích: /blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/ · Đã có bài
+- SERP: "người nước ngoài lái xe máy ở việt nam"
+- Hành động: **Giữ nguyên** · điểm 0
+- Thành viên: người nước ngoài lái xe máy ở việt nam (20)
+
 <a id="phuot-lao-bang-xe-may"></a>
 ### phượt lào bằng xe máy
 
@@ -419,6 +508,15 @@
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 2
 - Thành viên: phượt xuyên việt bằng xe máy (20)
+
+<a id="thue-xe-may-soc-son"></a>
+### thuê xe máy sóc sơn
+
+- Nhu cầu: 20/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Giao dịch (công cụ)
+- Trang đích: /blog/dia-phuong/soc-son-va-co-loa/ · Phủ một phần
+- SERP: chưa chụp
+- Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
+- Thành viên: thuê xe máy sóc sơn (20)
 
 <a id="app-thue-xe-du-lich"></a>
 ### app thuê xe du lịch
@@ -753,6 +851,15 @@
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 0
 - Thành viên: thi lấy bằng xe máy ở hà nội (10)
 
+<a id="thue-xe-may-dai-han"></a>
+### thuê xe máy dài hạn
+
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K03 · Ý định: Giao dịch – địa phương
+- Trang đích: /blog/thue-xe/uu-dai-thue-xe-dai-han/ · Đã có bài
+- SERP: "thuê xe máy dài hạn"
+- Hành động: **Giữ nguyên** · điểm 0
+- Thành viên: thuê xe máy dài hạn (10)
+
 <a id="xe-may-di-phuot-cho-nu"></a>
 ### xe máy đi phượt cho nữ
 
@@ -870,33 +977,6 @@
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 0
 - Thành viên: kinh nghiệm lái xe máy ở hà nội
 
-<a id="mu-bao-hiem-dat-chuan"></a>
-### mũ bảo hiểm đạt chuẩn
-
-- Nhu cầu: chưa đo · Cụm K10 · Ý định: Hỗn hợp (thương mại + thông tin)
-- Trang đích: /blog/an-toan/mu-bao-hiem-chuan/ · Đã có bài
-- SERP: "mũ bảo hiểm đạt chuẩn"
-- Hành động: **Giữ nguyên** · điểm 0
-- Thành viên: mũ bảo hiểm đạt chuẩn
-
-<a id="nguoi-nuoc-ngoai-lai-xe-may-o-viet-nam"></a>
-### người nước ngoài lái xe máy ở việt nam
-
-- Nhu cầu: chưa đo · Cụm K19 · Ý định: Hỗn hợp (thương mại + thông tin)
-- Trang đích: /blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/ · Đã có bài
-- SERP: "người nước ngoài lái xe máy ở việt nam"
-- Hành động: **Giữ nguyên** · điểm 0
-- Thành viên: người nước ngoài lái xe máy ở việt nam
-
-<a id="pin-xe-may-dien"></a>
-### pin xe máy điện
-
-- Nhu cầu: chưa đo · Cụm K08 · Ý định: Giao dịch – địa phương
-- Trang đích: /blog/xe-dien/pin-cua-xe-may-dien/ · Đã có bài
-- SERP: "pin xe máy điện"
-- Hành động: **Giữ nguyên** · điểm 0
-- Thành viên: pin xe máy điện
-
 <a id="tai-nan-khi-di-xe-thue-ai-chiu-trach-nhiem"></a>
 ### tai nạn khi đi xe thuê ai chịu trách nhiệm
 
@@ -905,15 +985,6 @@
 - SERP: "tai nạn khi đi xe thuê ai chịu trách nhiệm"
 - Hành động: **Giữ nguyên** · điểm 0
 - Thành viên: tai nạn khi đi xe thuê ai chịu trách nhiệm
-
-<a id="thu-tuc-thue-xe-may"></a>
-### thủ tục thuê xe máy
-
-- Nhu cầu: chưa đo · Cụm K04 · Ý định: Thông tin
-- Trang đích: /blog/huong-dan/thu-tuc-thue-xe-may/ · Đã có bài
-- SERP: "thủ tục thuê xe máy" · website #17
-- Hành động: **Giữ nguyên** · điểm 0
-- Thành viên: thủ tục thuê xe máy
 
 <a id="thue-xe-may-ba-dinh"></a>
 ### thuê xe máy ba đình
@@ -924,24 +995,6 @@
 - Hành động: **Giữ nguyên** · điểm 0
 - Thành viên: thuê xe máy ba đình
 
-<a id="thue-xe-may-can-giay-to-gi"></a>
-### thuê xe máy cần giấy tờ gì
-
-- Nhu cầu: chưa đo · Cụm K04 · Ý định: Thông tin
-- Trang đích: /blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/ · Đã có bài
-- SERP: "thuê xe máy cần giấy tờ gì"
-- Hành động: **Giữ nguyên** · điểm 0
-- Thành viên: thuê xe máy cần giấy tờ gì
-
-<a id="thue-xe-may-cau-giay"></a>
-### thuê xe máy cầu giấy
-
-- Nhu cầu: chưa đo · Cụm K16 · Ý định: Giao dịch – địa phương
-- Trang đích: /blog/dia-phuong/cau-giay-di-xe-may/ · Đã có bài
-- SERP: "thuê xe máy cầu giấy"
-- Hành động: **Giữ nguyên** · điểm 0
-- Thành viên: thuê xe máy cầu giấy
-
 <a id="thue-xe-may-cho-nguoi-nuoc-ngoai"></a>
 ### thuê xe máy cho người nước ngoài
 
@@ -950,15 +1003,6 @@
 - SERP: "thuê xe máy cho người nước ngoài"
 - Hành động: **Giữ nguyên** · điểm 0
 - Thành viên: thuê xe máy cho người nước ngoài
-
-<a id="thue-xe-may-dai-han"></a>
-### thuê xe máy dài hạn
-
-- Nhu cầu: chưa đo · Cụm K03 · Ý định: Giao dịch – địa phương
-- Trang đích: /blog/thue-xe/uu-dai-thue-xe-dai-han/ · Đã có bài
-- SERP: "thuê xe máy dài hạn"
-- Hành động: **Giữ nguyên** · điểm 0
-- Thành viên: thuê xe máy dài hạn
 
 <a id="thue-xe-may-di-ha-giang"></a>
 ### thuê xe máy đi hà giang
@@ -978,24 +1022,6 @@
 - Hành động: **Ý định giao dịch – địa phương: trang bán hàng/Google Business Profile, không viết blog** · điểm 0
 - Thành viên: thuê xe máy đi ninh bình
 
-<a id="thue-xe-may-ha-dong"></a>
-### thuê xe máy hà đông
-
-- Nhu cầu: chưa đo · Cụm K09 · Ý định: —
-- Trang đích: — · Chưa có
-- SERP: chưa chụp
-- Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 0
-- Thành viên: thuê xe máy hà đông
-
-<a id="thue-xe-may-hoang-mai"></a>
-### thuê xe máy hoàng mai
-
-- Nhu cầu: chưa đo · Cụm K09 · Ý định: —
-- Trang đích: — · Chưa có
-- SERP: chưa chụp
-- Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 0
-- Thành viên: thuê xe máy hoàng mai
-
 <a id="thue-xe-may-long-bien"></a>
 ### thuê xe máy long biên
 
@@ -1013,33 +1039,6 @@
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 0
 - Thành viên: thuê xe máy ở ga hà nội
-
-<a id="thue-xe-may-soc-son"></a>
-### thuê xe máy sóc sơn
-
-- Nhu cầu: chưa đo · Cụm K17 · Ý định: —
-- Trang đích: /blog/dia-phuong/soc-son-va-co-loa/ · Phủ một phần
-- SERP: chưa chụp
-- Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 0
-- Thành viên: thuê xe máy sóc sơn
-
-<a id="thue-xe-may-theo-thang-ha-noi"></a>
-### thuê xe máy theo tháng hà nội
-
-- Nhu cầu: chưa đo · Cụm K03 · Ý định: Giao dịch – địa phương
-- Trang đích: /blog/thue-xe/thue-xe-may-theo-thang/ · Đã có bài
-- SERP: "thuê xe máy theo tháng hà nội"
-- Hành động: **Giữ nguyên** · điểm 0
-- Thành viên: thuê xe máy theo tháng hà nội
-
-<a id="ung-dung-thue-xe-may"></a>
-### ứng dụng thuê xe máy
-
-- Nhu cầu: chưa đo · Cụm K01 · Ý định: Giao dịch – địa phương
-- Trang đích: /blog/xe-dien/ung-dung-thue-xe-may-dien/ · Đã có bài
-- SERP: "ứng dụng thuê xe máy"
-- Hành động: **Giữ nguyên** · điểm 0
-- Thành viên: ứng dụng thuê xe máy
 
 <a id="xe-dien-bo-ho"></a>
 ### xe điện bờ hồ

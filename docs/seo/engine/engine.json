@@ -1,6 +1,6 @@
 {
  "mode": "ZERO-DATA",
- "serps": 67,
+ "serps": 72,
  "snapshots": [
   "2026-10-14"
  ],
@@ -9,13 +9,13 @@
  "serp_overlap_pairs": 14,
  "actions": {
   "FIX_FIRST": 0,
-  "NEW_ARTICLE": 3,
+  "NEW_ARTICLE": 2,
   "ADD_SECTION": 3,
   "CONSIDER_STANDALONE": 1,
   "ALIGN_META": 0,
   "REVIEW_TARGET": 0,
-  "LOCAL_ONLY": 7,
-  "MONITOR": 55,
+  "LOCAL_ONLY": 10,
+  "MONITOR": 53,
   "KEEP": 42,
   "NEW_ARTICLE_VERIFY": 6
  },
@@ -35,10 +35,11 @@
    "BA-0015"
   ]
  },
- "decisions": 6,
+ "decisions": 7,
  "research_queue": {
   "serp": 0,
-  "volume": 33
+  "volume": 0,
+  "asked_without_number": 21
  },
  "proposals": 4,
  "health": {

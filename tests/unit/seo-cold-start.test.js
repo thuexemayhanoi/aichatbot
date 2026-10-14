@@ -42,7 +42,17 @@ test('keyword demand carries only tool-returned numbers with source metadata', (
     assert.ok(!seen.has(k.keyword), `${k.keyword}: unique`);
     seen.add(k.keyword);
   }
-  assert.ok(loadDemand(ROOT).size >= seen.size);
+  // Later measurements are sourced separately and only fill keywords without a number.
+  for (const sup of d.supplements ?? []) {
+    assert.ok(sup.source.tool && sup.source.retrieved && sup.source.location === 'Vietnam', 'supplement has its own source');
+    for (const k of sup.keywords) {
+      assert.ok(Number.isInteger(k.volume) && k.volume >= 0, `${k.keyword}: supplement volume is a returned integer`);
+      assert.ok(!(sup.not_returned ?? []).includes(k.keyword), `${k.keyword}: not both returned and not returned`);
+    }
+  }
+  const demand = loadDemand(ROOT);
+  assert.ok(demand.size >= seen.size);
+  for (const k of d.keywords) if (k.volume != null) assert.equal(demand.get(k.keyword.normalize('NFC').toLowerCase().trim())?.volume ?? k.volume, k.volume, 'main source numbers are never overwritten');
 });
 
 test('scope rules: sister-owned, other markets, other intents, near-me, trip destinations, unverified services', () => {

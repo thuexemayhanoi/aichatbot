@@ -796,4 +796,24 @@
 {"keyword": "thi bằng lái xe máy hà nội 2021", "volume": 0, "intent": "informational", "competition": null, "seed": "hà nội bằng xe máy", "mode": "suggestions"},
 {"keyword": "xe máy cũ giá rẻ dưới 2 triệu tphcm", "volume": null, "intent": "transactional", "competition": null, "seed": "thuê xe máy", "mode": "ideas"},
 {"keyword": "đường đi hà nội thái nguyên bằng xe máy", "volume": 0, "intent": "informational", "competition": null, "seed": "hà nội bằng xe máy", "mode": "suggestions"}
+
+],
+"supplements":[
+{"source":{"tool": "OpenSEO get_keyword_metrics", "source_class": "Google Ads keyword data qua DataForSEO", "location": "Vietnam", "language": "Vietnamese", "retrieved": "2026-10-14", "asked_from": "hàng đợi đo volume của tools/seo-engine.mjs (docs/seo/engine/research-queue.md)", "note": "Chỉ bổ sung từ khóa chưa có trong nguồn chính; công cụ chỉ trả dòng có dữ liệu. not_returned = đã hỏi nhưng công cụ không trả số (nhu cầu rất thấp hoặc chưa ghi nhận), không phải 0."},
+"keywords":[
+{"keyword": "mũ bảo hiểm đạt chuẩn", "volume": 590, "intent": "transactional", "competition": "HIGH"},
+{"keyword": "pin xe máy điện", "volume": 590, "intent": "transactional", "competition": "HIGH"},
+{"keyword": "thuê xe máy cầu giấy", "volume": 110, "intent": "transactional", "competition": "MEDIUM"},
+{"keyword": "thuê xe máy hà đông", "volume": 110, "intent": "transactional", "competition": "MEDIUM"},
+{"keyword": "thuê xe máy theo tháng hà nội", "volume": 70, "intent": "transactional", "competition": "MEDIUM"},
+{"keyword": "thuê xe máy hoàng mai", "volume": 40, "intent": "commercial", "competition": "MEDIUM"},
+{"keyword": "thuê xe máy cần giấy tờ gì", "volume": 30, "intent": "informational", "competition": "LOW"},
+{"keyword": "thủ tục thuê xe máy", "volume": 30, "intent": "transactional", "competition": "LOW"},
+{"keyword": "ứng dụng thuê xe máy", "volume": 30, "intent": "transactional", "competition": "LOW"},
+{"keyword": "người nước ngoài lái xe máy ở việt nam", "volume": 20, "intent": "informational", "competition": "LOW"},
+{"keyword": "thuê xe máy sóc sơn", "volume": 20, "intent": "transactional", "competition": "LOW"},
+{"keyword": "thuê xe máy dài hạn", "volume": 10, "intent": "commercial", "competition": "LOW"}
+],
+"not_returned":["đặt thuê xe máy online", "kinh nghiệm lái xe máy ở hà nội", "thuê xe máy cho người nước ngoài", "đặt cọc thuê xe máy", "kiểm tra xe máy khi thuê", "thuê xe máy ở ga hà nội", "xe điện đi phố cổ", "xe máy bị thủng lốp giữa đường", "bằng lái a1 a2 khác gì", "bảo hiểm xe máy thuê", "tai nạn khi đi xe thuê ai chịu trách nhiệm", "thuê xe máy long biên", "cấm xe máy xăng vành đai 1", "đi phố cổ hà nội bằng xe máy", "xe điện bờ hồ", "thuê xe máy ba đình", "đi hồ tây bằng xe máy", "thuê xe máy đi hà giang", "thuê xe máy đi ninh bình", "đi xe máy xuyên việt", "xe thuê bị hỏng phải làm sao"]
+}
 ]}

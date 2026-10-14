@@ -77,33 +77,32 @@
 
 ## đi phượt bằng xe máy
 
-- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 64
+- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 80
 - Từ khóa chính: đi phượt bằng xe máy (80/tháng cả nhóm)
 - Biến thể: phượt bằng xe máy (20); đi phượt bằng xe máy gì (10)
 - Danh mục/cụm: Địa phương / du lịch (/blog/dia-phuong/) · K17
-- Ý định: Thông tin (công cụ)
+- Ý định: Thông tin · SERP có AI Overview → trả lời trực tiếp ở đoạn đầu
 - Trang đích: (bài mới)
-- Đối thủ trên SERP: chưa chụp SERP — xem research-queue.md
+- Đối thủ trên SERP: 
+  - 1. Đi phượt một mình bằng xe máy mà chư có kinh nghiệm ... — www.facebook.com
+  - 2. Phượt xuyên Việt bằng xe máy: Kinh nghiệm & gợi ý lịch trình — vinwonders.com
+  - 3. Đi phượt bằng xe máy — www.facebook.com
+  - 4. Du lịch gần Hà Nội: Những trải nghiệm xe máy cuối tuần lý ... — motogo.vn
+  - 5. Tất Tần Tật Kinh Nghiệm đi Phượt Bằng Xe Máy Bạn Cần ... — hondathanhbinhan.com
 - Ràng buộc: tiếng Việt; 800–2.000 từ; dữ kiện kinh doanh chỉ từ `data/business/business.json`; không số liệu tự đặt.
 
 ## đồ đi phượt xe máy
 
-- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 32
+- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 48
 - Từ khóa chính: đồ đi phượt xe máy (80/tháng cả nhóm)
 - Biến thể: đồ phượt xe máy (10)
 - Danh mục/cụm: Hướng dẫn / thủ tục (/blog/huong-dan/) · K04
-- Ý định: Giao dịch (công cụ)
+- Ý định: Hỗn hợp (thương mại + thông tin) · SERP có AI Overview → trả lời trực tiếp ở đoạn đầu
 - Trang đích: (bài mới) · trang hiện có gần nhất: /blog/huong-dan/troi-mua-thue-xe-may-cho-khach-nuoc-ngoai/ (Chưa có)
-- Đối thủ trên SERP: chưa chụp SERP — xem research-queue.md
-- Ràng buộc: tiếng Việt; 800–2.000 từ; dữ kiện kinh doanh chỉ từ `data/business/business.json`; không số liệu tự đặt.
-
-## thuê xe máy điện theo tháng
-
-- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 20
-- Từ khóa chính: thuê xe máy điện theo tháng (50/tháng cả nhóm)
-- Biến thể: —
-- Danh mục/cụm: Xe điện / xe máy điện (/blog/xe-dien/) · K02
-- Ý định: Giao dịch (công cụ)
-- Trang đích: (bài mới) · trang hiện có gần nhất: /blog/xe-dien/chi-phi-dien-khi-thue-xe-dien-dai-han/ (Phủ một phần)
-- Đối thủ trên SERP: chưa chụp SERP — xem research-queue.md
+- Đối thủ trên SERP: 
+  - 1. Đồ phượt - Đồ đi phượt, đi xe máy, phụ kiện mô tô — nontaidat.vn
+  - 2. Phượt Store \| Chuyên Đồ bảo hộ moto \| Đồ bảo hộ xe máy — phuotstore.net
+  - 3. Chợ Bảo Hộ - Đồ Phượt & Bảo Hộ Xe Máy Chính Hãng — chobaoho.vn
+  - 4. PHỤ KIỆN PHƯỢT Chính Hãng Gần Đây \| Shop Bảo Hộ ... — bikersaigon.net
+  - 5. Phối đồ đi phượt xe máy đường dài an toàn, vải dày dặn ... — yame.vn
 - Ràng buộc: tiếng Việt; 800–2.000 từ; dữ kiện kinh doanh chỉ từ `data/business/business.json`; không số liệu tự đặt.

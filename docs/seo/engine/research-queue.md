@@ -7,43 +7,13 @@
 | Nhóm | Volume/tháng | Cụm |
 |---|---:|---|
 
-## 2. Đo volume cho nhóm chỉ có trên SERP (33)
+## 2. Đo volume cho nhóm chỉ có trên SERP (0)
 
 | Nhóm | Cụm | Nguồn |
 |---|---|---|
-| đặt thuê xe máy online | K01 | SERP 2026-10-14 |
-| kinh nghiệm lái xe máy ở hà nội | K01 | SERP 2026-10-14 |
-| thuê xe máy cho người nước ngoài | K01 | SERP 2026-10-14 |
-| ứng dụng thuê xe máy | K01 | SERP 2026-10-14 |
-| thuê xe máy dài hạn | K03 | SERP 2026-10-14 |
-| thuê xe máy theo tháng hà nội | K03 | SERP 2026-10-14 |
-| đặt cọc thuê xe máy | K04 | SERP 2026-10-14 |
-| thủ tục thuê xe máy | K04 | SERP 2026-10-14 |
-| thuê xe máy cần giấy tờ gì | K04 | SERP 2026-10-14 |
-| kiểm tra xe máy khi thuê | K05 | SERP 2026-10-14 |
-| thuê xe máy ở ga hà nội | K07 | Tìm kiếm liên quan của "thuê xe số hà nội" |
-| pin xe máy điện | K08 | SERP 2026-10-14 |
-| xe điện đi phố cổ | K08 | Tìm kiếm liên quan của "đi phố cổ hà nội bằng xe máy" |
-| xe máy bị thủng lốp giữa đường | K08 | SERP 2026-10-14 |
-| bằng lái a1 a2 khác gì | K09 | SERP 2026-10-14 |
-| thuê xe máy hà đông | K09 | Tìm kiếm liên quan của "thuê xe máy ba đình" |
-| thuê xe máy hoàng mai | K09 | Tìm kiếm liên quan của "thuê xe máy ba đình" |
-| mũ bảo hiểm đạt chuẩn | K10 | SERP 2026-10-14 |
-| bảo hiểm xe máy thuê | K11 | SERP 2026-10-14 |
-| tai nạn khi đi xe thuê ai chịu trách nhiệm | K11 | SERP 2026-10-14 |
-| thuê xe máy long biên | K11 | Tìm kiếm liên quan của "thuê xe máy ba đình" |
-| cấm xe máy xăng vành đai 1 | K12 | SERP 2026-10-14 |
-| đi phố cổ hà nội bằng xe máy | K12 | SERP 2026-10-14 |
-| xe điện bờ hồ | K12 | Tìm kiếm liên quan của "đi phố cổ hà nội bằng xe máy" |
-| thuê xe máy ba đình | K13 | SERP 2026-10-14 |
-| đi hồ tây bằng xe máy | K14 | SERP 2026-10-14 |
-| thuê xe máy cầu giấy | K16 | SERP 2026-10-14 |
-| thuê xe máy đi hà giang | K17 | SERP 2026-10-14 |
-| thuê xe máy đi ninh bình | K17 | SERP 2026-10-14 |
-| thuê xe máy sóc sơn | K17 | Tìm kiếm liên quan của "thuê xe máy ba đình" |
-| đi xe máy xuyên việt | K18 | SERP 2026-10-14 |
-| người nước ngoài lái xe máy ở việt nam | K19 | SERP 2026-10-14 |
-| xe thuê bị hỏng phải làm sao | K20 | SERP 2026-10-14 |
+| — | | |
+
+Đã hỏi công cụ nhưng không có số (21 nhóm — nhu cầu rất thấp hoặc chưa ghi nhận, không phải 0): đặt thuê xe máy online; kinh nghiệm lái xe máy ở hà nội; thuê xe máy cho người nước ngoài; đặt cọc thuê xe máy; kiểm tra xe máy khi thuê; thuê xe máy ở ga hà nội; xe điện đi phố cổ; xe máy bị thủng lốp giữa đường; bằng lái a1 a2 khác gì; bảo hiểm xe máy thuê; tai nạn khi đi xe thuê ai chịu trách nhiệm; thuê xe máy long biên; cấm xe máy xăng vành đai 1; đi phố cổ hà nội bằng xe máy; xe điện bờ hồ; thuê xe máy ba đình; đi hồ tây bằng xe máy; thuê xe máy đi hà giang; thuê xe máy đi ninh bình; đi xe máy xuyên việt; xe thuê bị hỏng phải làm sao.
 
 ## 3. Đối chiếu văn bản gốc trước khi viết
 

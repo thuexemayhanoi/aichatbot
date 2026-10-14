@@ -117,6 +117,19 @@ export function loadDemand(root = ROOT) {
     for (const k of d.keywords) {
       out.set(normKw(k.keyword), { keyword: normKw(k.keyword), volume: k.volume ?? null, intent: k.intent ?? null, source: `${d.source.tool} ${d.source.retrieved}` });
     }
+    // Later measurements (e.g. the engine's volume queue) only fill keywords the main source has no number for;
+    // "not_returned" keywords were asked but the tool gave no number (very low or unrecorded demand, not 0).
+    for (const sup of d.supplements ?? []) {
+      const src = `${sup.source.tool} ${sup.source.retrieved}`;
+      for (const k of sup.keywords ?? []) {
+        const key = normKw(k.keyword);
+        if (out.get(key)?.volume == null) out.set(key, { keyword: key, volume: k.volume ?? null, intent: k.intent ?? out.get(key)?.intent ?? null, source: src });
+      }
+      for (const kw of sup.not_returned ?? []) {
+        const key = normKw(kw);
+        if (!out.has(key)) out.set(key, { keyword: key, volume: null, intent: null, source: `${src} (không trả số)` });
+      }
+    }
   }
   const kc = JSON.parse(read('data/seo/keyword-clusters.json'));
   const ev = kc.volume_evidence;
@@ -409,7 +422,7 @@ export function analyze(root = ROOT) {
 
   // Candidate keywords: measured demand + SERP related searches + People Also Ask text.
   const cand = new Map();
-  for (const d of demand.values()) cand.set(d.keyword, { keyword: d.keyword, volume: d.volume, intent: d.intent, origin: d.source });
+  for (const d of demand.values()) cand.set(d.keyword, { keyword: d.keyword, volume: d.volume, intent: d.intent, origin: d.source, attempted: true });
   for (const s of serps) {
     const key = normKw(s.query);
     if (!cand.has(key)) cand.set(key, { keyword: key, volume: null, intent: null, origin: `SERP ${s.collected}` });

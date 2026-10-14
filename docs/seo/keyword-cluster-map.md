@@ -229,7 +229,7 @@ Kết luận: cụm **xe máy điện (K08)** là cơ hội thương mại lớn
   - Khám sức khỏe lái xe: điều kiện pháp lý và cách tự kiểm tra — `/blog/an-toan/kham-suc-khoe-lai-xe/` (từ khóa: khám sức khỏe lái xe)
   - Kỹ năng phanh gấp xe máy: bốn bước luyện cú phanh an toàn — `/blog/an-toan/ky-nang-phanh-gap/` (từ khóa: kỹ năng phanh gấp)
   - Mệt mỏi khi lái xe đường dài: quy định và cách nghỉ giữa đường — `/blog/an-toan/met-moi-khi-lai-duong-dai/` (từ khóa: mệt mỏi khi lái xe đường dài)
-  - Mũ bảo hiểm chuẩn: cách nhận biết mũ đạt chuẩn và cài quai — `/blog/an-toan/mu-bao-hiem-chuan/` (từ khóa: mũ bảo hiểm chuẩn)
+  - Mũ bảo hiểm đạt chuẩn: cách nhận biết dấu CR và cài quai đúng — `/blog/an-toan/mu-bao-hiem-chuan/` (từ khóa: mũ bảo hiểm đạt chuẩn)
   - Lái xe máy khi mưa lớn: quy định, chuẩn bị và đường ướt — `/blog/an-toan/mua-lon-va-lai-xe/` (từ khóa: lái xe máy khi mưa lớn)
   - … và 11 pillar khác (xem CSV, cột Topic Cluster)
 

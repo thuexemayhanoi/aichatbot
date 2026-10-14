@@ -1,7 +1,7 @@
 # Baseline hiển thị (quan sát SERP, không phải Search Console)
 
-- Website này xuất hiện trong **4/67** SERP đã quan sát; trong top 10: **1**.
-- Website chị em xuất hiện trong **21/67** SERP.
+- Website này xuất hiện trong **4/72** SERP đã quan sát; trong top 10: **1**.
+- Website chị em xuất hiện trong **21/72** SERP.
 - URL dạng `/index.html` của website này thấy trên SERP: **2**; trang HTML còn link nội bộ dạng `/index.html`: **0**.
 
 | Cụm | Truy vấn | Nguồn (độ sâu) | Vị trí website này | URL | Website chị em |
@@ -30,6 +30,7 @@
 | K08 | thuê xe đạp điện hà nội | openseo (20) | ngoài top 20 | — | #5 thuexemaynguyentu.com |
 | K08 | thuê xe máy điện | openrush (10) | ngoài top 10 | — | — |
 | K08 | thuê xe máy điện hà nội | openrush (10) | ngoài top 10 | — | — |
+| K08 | thuê xe máy điện theo tháng | openseo (20) | ngoài top 20 | — | — |
 | K08 | thuê xe máy điện vinfast | openrush (10) | ngoài top 10 | — | — |
 | K09 | bằng a1 lái được xe gì | openseo (20) | ngoài top 20 | — | — |
 | K09 | bằng lái a1 a2 khác gì | openseo (20) | ngoài top 20 | — | — |
@@ -59,6 +60,10 @@
 | K15 | thuê xe máy gần đây | openseo (20) | ngoài top 20 | — | — |
 | K15 | thuê xe máy long biên | openseo (20) | ngoài top 20 | — | — |
 | K16 | thuê xe máy cầu giấy | openseo (20) | ngoài top 20 | — | — |
+| K16 | thuê xe máy hà đông | openseo (20) | ngoài top 20 | — | — |
+| K16 | thuê xe máy hoàng mai | openseo (20) | ngoài top 20 | — | — |
+| K17 | đi phượt bằng xe máy | openseo (20) | ngoài top 20 | — | — |
+| K17 | đồ đi phượt xe máy | openseo (20) | ngoài top 20 | — | — |
 | K17 | du lịch hà nội 1 ngày bằng xe máy | openseo (20) | ngoài top 20 | — | — |
 | K17 | phượt xe máy gần hà nội | openseo (20) | ngoài top 20 | — | — |
 | K17 | thuê xe máy đi hà giang | openseo (20) | ngoài top 20 | — | — |
