@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v66">
+  <title>Gọi Cảnh Sát Khi Tai Nạn ví dụ Thực tế</title>
+  <meta name="description" content="Gọi cảnh sát khi tai nạn qua ví dụ thực tế giúp bạn trả lời câu hỏi khó nhất ngay sau va chạm: có cần gọi 113 không, và nếu gọi thì nói gì. Nguyên">
+  <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/blog/an-toan/goi-canh-sat-khi-tai-nan-vi-du-thuc-te/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Gọi Cảnh Sát Khi Tai Nạn ví dụ Thực tế">
+  <meta property="og:description" content="Gọi cảnh sát khi tai nạn qua ví dụ thực tế giúp bạn trả lời câu hỏi khó nhất ngay sau va chạm: có cần gọi 113 không, và nếu gọi thì nói gì. Nguyên">
+  <meta property="og:url" content="https://chatbot.thuexemaynguyentu.com/blog/an-toan/goi-canh-sat-khi-tai-nan-vi-du-thuc-te/">
+  <meta property="og:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Gọi Cảnh Sát Khi Tai Nạn ví dụ Thực tế">
+  <meta name="twitter:description" content="Gọi cảnh sát khi tai nạn qua ví dụ thực tế giúp bạn trả lời câu hỏi khó nhất ngay sau va chạm: có cần gọi 113 không, và nếu gọi thì nói gì. Nguyên">
+  <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=66">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=66">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/blog/">Cẩm nang</a>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/app/">📱 Ứng Dụng</a>
+            <a href="/blog/huong-dan/">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true" aria-current="page">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/an-toan/" aria-current="page">🛡️ An Toàn</a>
+            <a href="/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-goi-canh-sat-khi-tai-nan-vi-du-thuc-te">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/">Agent</a> › <a href="/blog/">Cẩm nang</a> › <a href="/blog/kham-pha-an-toan/">Khám phá &amp; An toàn</a> › <a href="/blog/an-toan/">An Toàn</a> › <a href="/blog/an-toan/su-co/">Sự Cố</a> › <span>Gọi Cảnh Sát Khi Tai Nạn ví dụ Thực tế</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/blog/an-toan/">An Toàn</a>
+        <a class="blog-chip" href="/blog/an-toan/su-co/">Sự Cố</a>
+        <a class="blog-chip blog-chip-parent" href="/blog/kham-pha-an-toan/">Khám phá &amp; An toàn</a>
+      </p>
+      <p class="blog-screen-label">An Toàn</p>
+      <h1 class="blog-screen-title">Gọi Cảnh Sát Khi Tai Nạn ví dụ Thực tế</h1>
+      <p class="blog-screen-lead">Gọi cảnh sát khi tai nạn qua ví dụ thực tế giúp bạn trả lời câu hỏi khó nhất ngay sau va chạm: có cần gọi 113 không, và nếu gọi thì nói gì. Nguyên</p>
+      <p class="byline">MotoAI Editorial · 2026-10-14 · An Toàn · 8 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Gọi cảnh sát khi tai nạn qua ví dụ thực tế giúp bạn trả lời câu hỏi khó nhất ngay sau va chạm: có cần gọi 113 không, và nếu gọi thì nói gì. Nguyên</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#khung-phap-ly-can-nam-truoc-khi-doc-vi-du">Khung pháp lý cần nắm trước khi đọc ví dụ</a></li>
+        <li class="toc-l2"><a href="#vi-du-mot-va-quet-nhe-nhung-hai-ben-khong-thong-nhat">Ví dụ một: va quẹt nhẹ nhưng hai bên không thống nhất</a></li>
+        <li class="toc-l2"><a href="#vi-du-hai-nguoi-di-xe-dap-nga-va-chay-mau">Ví dụ hai: người đi xe đạp ngã và chảy máu</a></li>
+        <li class="toc-l2"><a href="#vi-du-ba-bi-va-roi-xe-kia-bo-chay">Ví dụ ba: bị va rồi xe kia bỏ chạy</a></li>
+        <li class="toc-l2"><a href="#vi-du-bon-tu-nga-mot-minh-vi-duong-tron">Ví dụ bốn: tự ngã một mình vì đường trơn</a></li>
+        <li class="toc-l2"><a href="#vi-du-nam-luc-luong-chuc-nang-den-va-kiem-tra-giay-to">Ví dụ năm: lực lượng chức năng đến và kiểm tra giấy tờ</a></li>
+        <li class="toc-l2"><a href="#kich-ban-cuoc-goi-113-trong-ba-muoi-giay">Kịch bản cuộc gọi 113 trong ba mươi giây</a></li>
+        <li class="toc-l2"><a href="#phan-viec-rieng-khi-dang-di-xe-thue">Phần việc riêng khi đang đi xe thuê</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-khi-goi-canh-sat-luc-tai-nan">Câu hỏi thường gặp khi gọi cảnh sát lúc tai nạn</a></li>
+        <li class="toc-l3"><a href="#ben-kia-xin-dung-goi-cong-an-va-tra-tien-ngay-thi-sao">Bên kia xin đừng gọi công an và trả tiền ngay thì sao?</a></li>
+        <li class="toc-l3"><a href="#co-nen-doi-xe-truoc-khi-canh-sat-den">Có nên dời xe trước khi cảnh sát đến?</a></li>
+        <li class="toc-l3"><a href="#da-goi-canh-sat-roi-co-can-bao-cua-hang-nua-khong">Đã gọi cảnh sát rồi có cần báo cửa hàng nữa không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#khung-phap-ly-can-nam-truoc-khi-doc-vi-du">Khung pháp lý cần nắm trước khi đọc ví dụ</a></li>
+        <li class="toc-l2"><a href="#vi-du-mot-va-quet-nhe-nhung-hai-ben-khong-thong-nhat">Ví dụ một: va quẹt nhẹ nhưng hai bên không thống nhất</a></li>
+        <li class="toc-l2"><a href="#vi-du-hai-nguoi-di-xe-dap-nga-va-chay-mau">Ví dụ hai: người đi xe đạp ngã và chảy máu</a></li>
+        <li class="toc-l2"><a href="#vi-du-ba-bi-va-roi-xe-kia-bo-chay">Ví dụ ba: bị va rồi xe kia bỏ chạy</a></li>
+        <li class="toc-l2"><a href="#vi-du-bon-tu-nga-mot-minh-vi-duong-tron">Ví dụ bốn: tự ngã một mình vì đường trơn</a></li>
+        <li class="toc-l2"><a href="#vi-du-nam-luc-luong-chuc-nang-den-va-kiem-tra-giay-to">Ví dụ năm: lực lượng chức năng đến và kiểm tra giấy tờ</a></li>
+        <li class="toc-l2"><a href="#kich-ban-cuoc-goi-113-trong-ba-muoi-giay">Kịch bản cuộc gọi 113 trong ba mươi giây</a></li>
+        <li class="toc-l2"><a href="#phan-viec-rieng-khi-dang-di-xe-thue">Phần việc riêng khi đang đi xe thuê</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-khi-goi-canh-sat-luc-tai-nan">Câu hỏi thường gặp khi gọi cảnh sát lúc tai nạn</a></li>
+        <li class="toc-l3"><a href="#ben-kia-xin-dung-goi-cong-an-va-tra-tien-ngay-thi-sao">Bên kia xin đừng gọi công an và trả tiền ngay thì sao?</a></li>
+        <li class="toc-l3"><a href="#co-nen-doi-xe-truoc-khi-canh-sat-den">Có nên dời xe trước khi cảnh sát đến?</a></li>
+        <li class="toc-l3"><a href="#da-goi-canh-sat-roi-co-can-bao-cua-hang-nua-khong">Đã gọi cảnh sát rồi có cần báo cửa hàng nữa không?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Gọi cảnh sát khi tai nạn qua ví dụ thực tế giúp bạn trả lời câu hỏi khó nhất ngay sau va chạm: có cần gọi 113 không, và nếu gọi thì nói gì. Nguyên tắc chung đã có trong bài <a href="/blog/an-toan/goi-canh-sat-khi-tai-nan/">gọi cảnh sát khi tai nạn</a>; bài này dựng lại năm tình huống người đi xe máy ở Hà Nội hay gặp, kèm quyết định nên làm và câu nói mẫu. Nội dung mang tính thông tin để bạn chuẩn bị trước, không thay thế ý kiến của cơ quan chức năng hay luật sư.</p>
+  
+  <h2 id="khung-phap-ly-can-nam-truoc-khi-doc-vi-du">Khung pháp lý cần nắm trước khi đọc ví dụ</h2>
+  <p>Mỗi điểm dưới đây ghi theo một trình tự: điều cần biết, áp dụng cho ai, điều kiện, quy tắc hoặc mức xử lý, văn bản và ngày hiệu lực, nơi tra cứu. Văn bản gốc có trên <a href="https://vbpl.vn/">Cơ sở dữ liệu quốc gia về văn bản pháp luật</a>, bảng mức phạt tổng hợp có tại <a href="https://bocongan.gov.vn/chinh-sach-phap-luat/bai-viet/muc-xu-phat-vi-pham-hanh-chinh-ve-trat-tu-an-toan-giao-thong-duong-bo-tu-01012025-d1-t1624">trang chính sách pháp luật của Bộ Công an</a>.</p>
+  <ul>
+  <li><strong>Trách nhiệm tại hiện trường:</strong> người lái xe và người liên quan trực tiếp đến vụ tai nạn; khi vừa xảy ra tai nạn giao thông đường bộ; phải dừng phương tiện, giữ nguyên hiện trường, cấp cứu người bị nạn và báo tin cho cơ quan công an; Luật Trật tự, an toàn giao thông đường bộ số 36/2024/QH15, hiệu lực 01/01/2025; nguồn vbpl.vn.</li>
+  <li><strong>Giấy tờ khi bị kiểm tra:</strong> người điều khiển xe mô tô, xe gắn máy; khi lực lượng chức năng kiểm tra; không mang theo giấy phép lái xe bị phạt 200.000đ–300.000đ, không có bảo hiểm trách nhiệm dân sự bắt buộc còn hiệu lực cũng bị phạt 200.000đ–300.000đ; Nghị định 168/2024/NĐ-CP, hiệu lực 01/01/2025; nguồn: bảng mức phạt của Bộ Công an.</li>
+  <li><strong>Nồng độ cồn:</strong> người lái xe mô tô, xe gắn máy; khi kết quả đo có cồn; mức chưa vượt 50 mg/100 ml máu hoặc 0,25 mg/l khí thở bị phạt 2.000.000đ–3.000.000đ, các mức cao hơn tăng dần tới 8.000.000đ–10.000.000đ khi vượt 80 mg/100 ml máu hoặc 0,4 mg/l khí thở; Nghị định 168/2024/NĐ-CP, hiệu lực 01/01/2025; nguồn vbpl.vn.</li>
+  </ul>
+  <p>Hành vi bỏ đi khỏi hiện trường sau khi gây tai nạn bị xử lý nặng hơn nhiều tùy hậu quả; hãy đọc trực tiếp điều khoản trong Nghị định 168/2024/NĐ-CP thay vì tin lời truyền miệng.</p>
+  
+  <h2 id="vi-du-mot-va-quet-nhe-nhung-hai-ben-khong-thong-nhat">Ví dụ một: va quẹt nhẹ nhưng hai bên không thống nhất</h2>
+  <p>Năm giờ chiều trên đường Nguyễn Văn Cừ, một xe máy chuyển làn đột ngột, chạm tay lái chiếc xe ga bạn đang thuê, xe kia đổ nghiêng và vỡ mặt nạ trước. Không ai bị thương, nhưng người lái kia khẳng định bạn sai và đòi một khoản bồi thường bạn thấy vô lý.</p>
+  <p>Quyết định đúng là gọi 113, vì khi hai bên không thống nhất về lỗi hoặc mức bồi thường, càng tranh luận càng căng. Trước khi gọi, chụp vị trí hai xe, vết xước và biển số, rồi dắt xe vào lề. Câu nói mẫu: "Tôi báo một vụ va chạm giữa hai xe máy trên đường Nguyễn Văn Cừ, gần [mốc dễ nhận], không có người bị thương, hai bên chưa thống nhất được, đề nghị hỗ trợ." Khi lực lượng chức năng đến, bạn trình bày đúng diễn biến và đọc kỹ biên bản trước khi ký.</p>
+  
+  <h2 id="vi-du-hai-nguoi-di-xe-dap-nga-va-chay-mau">Ví dụ hai: người đi xe đạp ngã và chảy máu</h2>
+  <p>Buổi sáng ở một ngã tư khu Bồ Đề, bạn rẽ trái và va vào một học sinh đi xe đạp. Em ngã, đầu gối chảy máu, kêu đau cổ tay. Không còn chỗ cho thỏa thuận tại chỗ, thứ tự ưu tiên là:</p>
+  <ol>
+  <li>Nhờ người xung quanh cảnh báo xe phía sau.</li>
+  <li>Gọi 115 nếu vết thương có dấu hiệu nặng; không tự nâng người bị nạn khi nghi chấn thương cổ, lưng.</li>
+  <li>Gọi 113 báo vụ việc có người bị thương, nói rõ vị trí.</li>
+  <li>Giữ nguyên vị trí xe nếu không gây nguy hiểm, chụp toàn cảnh, xin số điện thoại người chứng kiến.</li>
+  </ol>
+  <p>Hai cuộc gọi có hai vai: 115 lo sức khỏe, 113 lập hồ sơ trách nhiệm, bảo vệ cả hai phía nếu vết thương phải điều trị dài ngày.</p>
+  
+  <h2 id="vi-du-ba-bi-va-roi-xe-kia-bo-chay">Ví dụ ba: bị va rồi xe kia bỏ chạy</h2>
+  <p>Tối muộn trên đường đê, một xe máy vượt ẩu quệt vào đuôi xe bạn rồi tăng ga bỏ đi, để lại vết xước dàn áo sau và chiếc đèn hậu gãy. Lặng lẽ về nhà là lựa chọn bất lợi với người đi xe thuê, thay vào đó:</p>
+  <ul>
+  <li>Ghi ngay biển số, màu xe, hướng chạy, kể cả khi chỉ nhớ một phần.</li>
+  <li>Dừng ở chỗ sáng, chụp vết hỏng cùng biển tên đường hoặc số nhà gần đó.</li>
+  <li>Gọi 113 báo vụ việc, hỏi người dân xem có camera hướng ra đường không.</li>
+  <li>Nhắn cửa hàng kèm ảnh và thời điểm đã báo công an.</li>
+  </ul>
+  <p>Cuộc gọi không bảo đảm tìm ra người gây chuyện, nhưng tạo một mốc ghi nhận có ngày giờ cho lúc trả xe.</p>
+  
+  <h2 id="vi-du-bon-tu-nga-mot-minh-vi-duong-tron">Ví dụ bốn: tự ngã một mình vì đường trơn</h2>
+  <p>Sau cơn mưa chiều, bạn phanh gấp trên đoạn có cát và tự trượt ngã, trầy tay, xe thuê xước ốp sườn, không có xe nào khác liên quan. Hãy gọi 113 nếu bạn bị thương phải vào viện, nếu xe đổ vào người đi đường hay tài sản của người khác, hoặc nếu bạn không chắc điều gì vừa xảy ra. Nếu chỉ trầy nhẹ, việc cấp thiết là đưa xe vào lề, kiểm tra phanh, đèn, tay lái, chụp hiện trạng và báo cửa hàng trong ngày.</p>
+  
+  <h2 id="vi-du-nam-luc-luong-chuc-nang-den-va-kiem-tra-giay-to">Ví dụ năm: lực lượng chức năng đến và kiểm tra giấy tờ</h2>
+  <p>Quay lại ví dụ một. Khi cảnh sát giao thông có mặt, họ có thể yêu cầu cả hai người lái xuất trình giấy tờ và kiểm tra nồng độ cồn. Nhiều người thuê xe bất ngờ ở bước này: có lý trong vụ va chạm nhưng vẫn bị phạt riêng. Đối chiếu với khung pháp lý ở đầu bài:</p>
+  <ul>
+  <li>Để quên giấy phép lái xe ở khách sạn: lỗi không mang theo, 200.000đ–300.000đ.</li>
+  <li>Tưởng xe thuê có sẵn bảo hiểm trách nhiệm dân sự: 200.000đ–300.000đ; cửa hàng không cung cấp bảo hiểm, người thuê tự chuẩn bị trước khi nhận xe.</li>
+  <li>Một lon bia buổi trưa, kết quả chưa vượt 0,25 mg/l khí thở: vẫn bị phạt 2.000.000đ–3.000.000đ.</li>
+  </ul>
+  <p>Ngoài tiền phạt, nhiều lỗi còn bị trừ điểm. Với người cầm lái, Luật số 36/2024/QH15 quy định mỗi giấy phép có 12 điểm, được phục hồi đủ nếu không bị trừ hết trong 12 tháng.</p>
+  
+  <h2 id="kich-ban-cuoc-goi-113-trong-ba-muoi-giay">Kịch bản cuộc gọi 113 trong ba mươi giây</h2>
+  <p>Dù rơi vào ví dụ nào, hãy lưu sẵn bộ khung này trong ghi chú điện thoại và nói chậm từng ý:</p>
+  <ol>
+  <li><strong>Loại sự việc:</strong> xe máy với xe máy, với xe đạp, hay bị va rồi bỏ chạy.</li>
+  <li><strong>Vị trí:</strong> tên đường, số nhà gần nhất, mốc như cây xăng, trường học, đầu cầu; chưa rành thì đọc tên đường trên ứng dụng bản đồ.</li>
+  <li><strong>Người bị thương:</strong> có hay không, đã gọi 115 chưa.</li>
+  <li><strong>Người báo:</strong> họ tên, số điện thoại, giữ máy để được gọi lại.</li>
+  </ol>
+  
+  <h2 id="phan-viec-rieng-khi-dang-di-xe-thue">Phần việc riêng khi đang đi xe thuê</h2>
+  <p>Khi đã an toàn, hãy báo cửa hàng kèm ảnh hiện trường, mô tả ngắn và việc đã báo công an hay chưa. Khách của Nguyễn Tú liên hệ 0942 467 674 trong khung 09:00 - 21:00, và đừng tự đưa xe đi sửa lớn trước khi trao đổi. Phần chi phí được phân tích trong bài <a href="/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-vi-du-thuc-te/">ví dụ về trách nhiệm khi tai nạn với xe thuê</a> và <a href="/blog/an-toan/bao-hiem-khi-thue-xe-may-vi-du-thuc-te/">tình huống bảo hiểm khi thuê xe máy</a>, còn va quệt nhỏ có bài <a href="/blog/an-toan/thu-tuc-khi-va-cham-nhe-vi-du-thuc-te/">thủ tục va chạm nhẹ qua ví dụ</a>.</p>
+  
+  <h2 id="cau-hoi-thuong-gap-khi-goi-canh-sat-luc-tai-nan">Câu hỏi thường gặp khi gọi cảnh sát lúc tai nạn</h2>
+  <h3 id="ben-kia-xin-dung-goi-cong-an-va-tra-tien-ngay-thi-sao">Bên kia xin đừng gọi công an và trả tiền ngay thì sao?</h3>
+  <p>Nếu không ai bị thương và hai bên thật sự đồng ý, nhiều vụ va quệt nhỏ được giải quyết bằng giấy viết tay. Nhưng chỉ cần có người bị thương, bên kia có dấu hiệu đã uống rượu bia hoặc bạn thấy bị ép, hãy gọi 113.</p>
+  <h3 id="co-nen-doi-xe-truoc-khi-canh-sat-den">Có nên dời xe trước khi cảnh sát đến?</h3>
+  <p>Chụp ảnh trước rồi mới tính; khi có người bị thương hoặc tranh chấp, giữ nguyên vị trí trừ khi xe gây nguy hiểm.</p>
+  <h3 id="da-goi-canh-sat-roi-co-can-bao-cua-hang-nua-khong">Đã gọi cảnh sát rồi có cần báo cửa hàng nữa không?</h3>
+  <p>Có. Cơ quan chức năng xử lý phần trách nhiệm trên đường, còn cửa hàng cần biết tình trạng xe để cùng bạn thống nhất bước tiếp theo.</p>
+  
+  <h2 id="ket-luan">Kết luận</h2>
+  <p>Quyết định gọi cảnh sát không phụ thuộc vào việc bạn đúng hay sai, mà xoay quanh ba câu hỏi: có ai bị thương không, hai bên có thống nhất không, và có điều gì bạn chưa chắc không. Chỉ cần một câu trả lời khiến bạn lo, hãy gọi 113 và giữ hiện trường. Ôn nhanh với bản <a href="/blog/an-toan/goi-canh-sat-khi-tai-nan-tom-tat/">tóm tắt cách gọi cảnh sát khi tai nạn</a> hoặc bài dành cho <a href="/blog/an-toan/goi-canh-sat-khi-tai-nan-cho-nguoi-moi/">người mới cầm lái</a>. Cửa hàng Thuê Xe Máy Hà Nội Nguyễn Tú tại 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội có thể trao đổi về tình trạng xe thuê qua số 0942 467 674; chủ đề khác nằm trong <a href="/blog/an-toan/">chuyên mục an toàn và pháp lý</a> và trên <a href="/">trang chủ</a>.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/blog/kham-pha-an-toan/">Khám phá &amp; An toàn</a>
+          <span aria-hidden="true">→</span>
+          <a href="/blog/an-toan/">An Toàn</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/blog/an-toan/luat-giao-thong-duong-bo-co-ban/">
+        <span class="cat">An Toàn</span>
+        <h2>Luật giao thông đường bộ cơ bản: 6 nhóm quy tắc cho người thuê xe máy</h2>
+        <p>Tóm lược luật giao thông đường bộ cơ bản 2025: nồng độ cồn, mũ bảo hiểm, đèn đỏ, chở người, trừ điểm GPLX và checklist cho người thuê xe máy.</p>
+      </a>
+      <a class="blog-card" href="/blog/an-toan/nong-do-con-khi-lai-xe/">
+        <span class="cat">An Toàn</span>
+        <h2>Nồng độ cồn khi lái xe máy: mức phạt mới theo Nghị định 168/2024</h2>
+        <p>Nồng độ cồn khi lái xe bị cấm tuyệt đối: ba mức phạt với người đi xe máy là 2–3 triệu, 6–8 triệu và 8–10 triệu đồng, kèm trừ điểm và tước bằng lái 22–24 tháng.</p>
+      </a>
+      <a class="blog-card" href="/blog/an-toan/mu-bao-hiem-chuan/">
+        <span class="cat">An Toàn</span>
+        <h2>Mũ bảo hiểm chuẩn: quy định 2025 và cách nhận biết mũ hợp quy</h2>
+        <p>Mũ bảo hiểm chuẩn theo QCVN 2:2021/BKHCN: quy định đội mũ đạt chuẩn, cài quai đúng, mức phạt hiện hành và cách nhận biết dấu CR khi mua mũ hoặc nhận xe thuê.</p>
+      </a>
+      <a class="blog-card" href="/blog/an-toan/toc-do-cho-phep-trong-pho/">
+        <span class="cat">An Toàn</span>
+        <h2>Tốc độ cho phép trong phố: 60 và 50 km/h cho xe máy</h2>
+        <p>Tốc độ xe máy trong phố theo Thông tư 38/2024/TT-BGTVT: 60 và 50 km/h tùy loại đường, bậc phạt theo Nghị định 168/2024 và cách giữ đúng tốc độ khi thuê xe.</p>
+      </a>
+      <a class="blog-card" href="/blog/an-toan/di-xe-khong-giay-phep/">
+        <span class="cat">An Toàn</span>
+        <h2>Đi xe không giấy phép: luật 2025 và mức phạt mới</h2>
+        <p>Đi xe không giấy phép theo Luật 2024 và Nghị định 168/2024: nhóm xe nào không cần bằng, khung phạt 2 đến 8 triệu đồng, tạm giữ xe và trách nhiệm người giao xe.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Khám phá &amp; An toàn: <a href="/blog/an-toan/">An Toàn</a> · <a href="/blog/dia-phuong/">Địa Phương</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/?ask=G%E1%BB%8Di%20C%E1%BA%A3nh%20S%C3%A1t%20Khi%20Tai%20N%E1%BA%A1n%20v%C3%AD%20d%E1%BB%A5%20Th%E1%BB%B1c%20t%E1%BA%BF">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/">Agent</a></li>
+          <li><a href="/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/blog/">Cẩm nang</a></li>
+          <li><a href="/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/privacy/">Bảo Mật</a></li>
+          <li><a href="/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/">⚡ Agent</a></li>
+      <li><a href="/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/app/">📱 Ứng Dụng</a></li>
+            <li><a href="/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/kham-pha-an-toan/" aria-current="page">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/an-toan/" aria-current="page">🛡️ An Toàn</a></li>
+            <li><a href="/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","url":"https://chatbot.thuexemaynguyentu.com/blog/an-toan/goi-canh-sat-khi-tai-nan-vi-du-thuc-te/","headline":"Gọi Cảnh Sát Khi Tai Nạn ví dụ Thực tế","description":"Gọi cảnh sát khi tai nạn qua ví dụ thực tế giúp bạn trả lời câu hỏi khó nhất ngay sau va chạm: có cần gọi 113 không, và nếu gọi thì nói gì. Nguyên","datePublished":"2026-10-14","dateModified":"2026-10-14","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://chatbot.thuexemaynguyentu.com/"},"mainEntityOfPage":"https://chatbot.thuexemaynguyentu.com/blog/an-toan/goi-canh-sat-khi-tai-nan-vi-du-thuc-te/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://chatbot.thuexemaynguyentu.com/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://chatbot.thuexemaynguyentu.com/blog/"},{"@type":"ListItem","position":3,"name":"Khám phá & An toàn","item":"https://chatbot.thuexemaynguyentu.com/blog/kham-pha-an-toan/"},{"@type":"ListItem","position":4,"name":"An Toàn","item":"https://chatbot.thuexemaynguyentu.com/blog/an-toan/"},{"@type":"ListItem","position":5,"name":"Sự Cố","item":"https://chatbot.thuexemaynguyentu.com/blog/an-toan/su-co/"},{"@type":"ListItem","position":6,"name":"Gọi Cảnh Sát Khi Tai Nạn ví dụ Thực tế","item":"https://chatbot.thuexemaynguyentu.com/blog/an-toan/goi-canh-sat-khi-tai-nan-vi-du-thuc-te/"}]}
+  </script>
+
+  <script type="module" src="/assets/js/app-shell.js?v=66"></script>
+</body>
+</html>
