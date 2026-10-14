@@ -29,6 +29,7 @@ jobs:
       - name: Cold-start SEO research reports (ZERO-DATA until real Search Console data exists)
         if: always()
         run: |
+          set -o pipefail
           node --test tests/unit/seo-cold-start.test.js
           node tools/seo-cold-start.mjs --check 2>&1 | tee seo-cold-start.txt
 

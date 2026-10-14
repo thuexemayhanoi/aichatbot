@@ -40,13 +40,13 @@ test('payloads drop foreign hosts, dedupe and chunk', () => {
   assert.deepEqual(Object.keys(out[0]).sort(), ['host', 'key', 'keyLocation', 'urlList']);
 });
 
-function fakeFetch({ keyBody = cfg.key, post = 202 } = {}) {
+function fakeFetch({ keyBody = cfg.key, post = 202, postBody = 'error' } = {}) {
   const calls = [];
   const fn = async (url, opts = {}) => {
     calls.push({ url, opts });
     if (url.endsWith('/sitemap.xml')) return { ok: true, status: 200, text: async () => sitemap };
     if (url === cfg.keyLocation) return { ok: true, status: 200, text: async () => keyBody };
-    return { ok: post < 300, status: post, text: async () => 'error' };
+    return { ok: post < 300, status: post, text: async () => postBody };
   };
   return { fn, calls };
 }
@@ -69,5 +69,9 @@ test('submits only after the live key file matches; reports failures', async () 
 
     const bad = fakeFetch({ post: 403 });
     assert.equal(await main(['--all'], { root: ROOT, fetchImpl: bad.fn }), 1);
+
+    // Observed on the first real submission: the new key is still being verified.
+    const pending = fakeFetch({ post: 403, postBody: '{"errorCode":"SiteVerificationNotCompleted"}' });
+    assert.equal(await main(['--all'], { root: ROOT, fetchImpl: pending.fn }), 0, 'pending verification is a retry, not a failure');
   } finally { console.log = quiet; console.warn = warn; }
 });

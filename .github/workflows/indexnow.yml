@@ -41,6 +41,7 @@ jobs:
         env:
           MODE: ${{ github.event.inputs.mode || 'recent' }}
         run: |
+          set -o pipefail
           if [ "$MODE" = "all" ]; then
             node tools/indexnow.mjs --all | tee indexnow.log
           else

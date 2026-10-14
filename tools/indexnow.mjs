@@ -89,7 +89,13 @@ export async function main(argv = process.argv.slice(2), { root = ROOT, fetchImp
   for (const body of bodies) {
     const res = await fetchImpl(cfg.endpoint, { method: 'POST', headers: { 'content-type': 'application/json; charset=utf-8' }, body: JSON.stringify(body) });
     const ok = res.status === 200 || res.status === 202;
-    console.log(`IndexNow POST ${body.urlList.length} URL(s): HTTP ${res.status}${ok ? '' : ` ${(await res.text()).slice(0, 300)}`}`);
+    const text = ok ? '' : String(await res.text());
+    console.log(`IndexNow POST ${body.urlList.length} URL(s): HTTP ${res.status}${ok ? '' : ` ${text.slice(0, 300)}`}`);
+    // A new key is verified asynchronously after its first use: not an error, retry on the next run.
+    if (res.status === 403 && /SiteVerificationNotCompleted/i.test(text)) {
+      console.warn('::warning::IndexNow site verification is still pending for this key; nothing was accepted yet — retry later');
+      continue;
+    }
     if (!ok && res.status !== 429) failed++;
   }
   return failed ? 1 : 0;
