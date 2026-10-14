@@ -26682,6 +26682,153 @@
         "Khi một người đi thuê xe, câu hỏi \"xe nào tiết kiệm xăng\" có đáp án khá gọn: chọn xe nhỏ, máy nhẹ. Nhưng khi cả gia đình cùng đi, bài toán khác hẳn. Bạn có thể cần hai xe thay vì một, có người chở con nhỏ, có người chở đồ đi chợ, có ngày chạy quanh phố cổ và có ngày sang bên kia sông thăm họ hàng. Lúc đó, tiết kiệm xăng không nằm ở việc chọn chiếc xe \"uống\" ít nhất, mà ở cách ghép xe cho từng thành viên và cách gom lộ trình của cả nhà. Bài này giúp bạn tính đúng tổng chi phí thuê cộng tiền xăng cho một gia đình ở Hà Nội.",
         "Hai chiếc xe nhỏ chạy song song chưa chắc rẻ hơn một chiếc xe ga cỡ vừa cộng một chiếc xe số. Điều quyết định là bao nhiêu xe thật sự lăn bánh mỗi ngày và mỗi xe chở gì. Trước khi chọn dòng xe, gia đình bạn nên trả lời ba câu:"
       ]
+    },
+    {
+      "article_id": "BA-1357",
+      "category": "APP",
+      "slug": "ai-tra-loi-trong-ung-dung-thue-xe-cho-khach-nuoc-ngoai",
+      "title": "ai Trả Lời Trong Ứng Dụng Thuê xe Cho Khách Nước Ngoài",
+      "description": "Một du khách gõ vào ô trò chuyện trên website cho thuê xe lúc nửa đêm theo giờ Việt Nam, nhận được câu trả lời bằng tiếng Anh trong vài giây, và tự",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ai-tra-loi-trong-ung-dung-thue-xe-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Một du khách gõ vào ô trò chuyện trên website cho thuê xe lúc nửa đêm theo giờ Việt Nam, nhận được câu trả lời bằng tiếng Anh trong vài giây, và tự hỏi: ai vừa trả lời mình, một nhân viên thức khuya hay một chương trình? Với khách nước ngoài, câu hỏi này quan trọng hơn với khách Việt, vì bạn đang quyết định dựa trên thông tin về giấy tờ, giá và địa điểm ở một đất nước lạ. Bài này giải thích ai trả lời trong ứng dụng thuê xe cho khách nước ngoài: phần nào là trợ lý tự động, phần nào là người thật, bạn nên tin đến đâu và nên hỏi thế nào để không mất thời gian. Cơ chế chung, không phân biệt quốc tịch, đã được mô tả trong bài ai trả lời trong ứng",
+        "Trên website của {{ business.brand }}, lớp đầu tiên tiếp nhận câu hỏi là trợ lý trực tuyến MotoAI, một công cụ chạy ngay trong trình duyệt, không phải ứng dụng cài từ kho ứng dụng. Nó đọc câu hỏi của bạn bằng tiếng Anh hoặc tiếng Việt không dấu, tìm phần tương ứng trong dữ liệu đã được cửa hàng xác nhận, rồi trả lời. Lớp thứ hai là nhân viên cửa hàng, làm việc trong giờ {{ business.hours.display }} theo giờ Hà Nội."
+      ]
+    },
+    {
+      "article_id": "BA-1360",
+      "category": "GUIDE",
+      "slug": "chay-xe-dien-lan-dau-tai-ha-noi",
+      "title": "Chạy xe Điện Lần Đầu Tại Hà Nội",
+      "description": "Chạy xe điện lần đầu tại Hà Nội có một điểm khác hẳn với chạy thử ở một thị trấn vắng: bạn không có nhiều thời gian để tập, vì dòng xe ở đây không",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chay-xe-dien-lan-dau-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Chạy xe điện lần đầu tại Hà Nội có một điểm khác hẳn với chạy thử ở một thị trấn vắng: bạn không có nhiều thời gian để tập, vì dòng xe ở đây không chờ ai. Xe buýt tạt vào điểm dừng, ngõ phố cổ chỉ vừa hai xe tránh nhau, cầu qua sông Hồng có gió ngang, và tất cả diễn ra trong lúc chiếc xe dưới yên bạn không phát ra một tiếng động nào. Bài này không dạy lại cách vặn ga hay cách phanh tái sinh hoạt động, những điều đó đã có trong bài chạy xe điện lần đầu . Ở đây là phần dành riêng cho người lần đầu cầm lái xe điện ở thủ đô: chọn nơi tập, chọn giờ, chọn tuyến và xử lý những tình huống chỉ Hà Nội mới có.",
+        "Cửa hàng của {{ business.brand }} mở {{ business.hours.display }}, và với người mới chạy xe điện, khung giờ đẹp nhất để nhận xe là ngay lúc mở cửa hoặc đầu giờ chiều. Hai khung này nằm giữa hai đợt tắc đường quen thuộc của Hà Nội, nên bạn có vài tiếng đường thoáng để làm quen. Nếu bạn chỉ rảnh buổi tối, hãy nhận xe sau bữa tối thay vì lúc tan tầm; đường Nguyễn Văn Cừ và các trục dẫn lên cầu vào khoảng năm đến bảy giờ chiều là nơi khó nhất để một tay lái mới giữ bình tĩnh."
+      ]
+    },
+    {
+      "article_id": "BA-1354",
+      "category": "GUIDE",
+      "slug": "chay-xe-ga-lan-dau-tai-ha-noi",
+      "title": "Chạy xe ga Lần Đầu Tại Hà Nội",
+      "description": "Chạy xe ga lần đầu tại Hà Nội là hai bài học cùng lúc: làm quen một chiếc xe chỉ có ga và phanh trên tay, và làm quen một dòng giao thông có nhịp",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chay-xe-ga-lan-dau-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Chạy xe ga lần đầu tại Hà Nội là hai bài học cùng lúc: làm quen một chiếc xe chỉ có ga và phanh trên tay, và làm quen một dòng giao thông có nhịp riêng. Chỉ vài trăm mét sau khi rời cửa hàng, bạn đã ở giữa dòng xe máy dày đặc, xe từ ngõ lao ra và tiếng còi từ phía sau. Thao tác cơ bản như vặn ga, phối hợp phanh trước sau đã có trong bài chạy xe ga lần đầu . Bài này tập trung vào phần riêng của Hà Nội: đọc nhịp đường, lên lịch tập theo mật độ xe, xử lý kẹt xe, đổ xăng, gửi xe và những đoạn đường cần biết trước.",
+        "Người mới hay dán mắt vào đồng hồ tốc độ, trong khi ở Hà Nội thứ quyết định an toàn là khả năng đoán trước hành vi của người xung quanh. Vài đặc điểm bạn sẽ gặp ngay trong buổi đầu:"
+      ]
+    },
+    {
+      "article_id": "BA-1356",
+      "category": "LOCAL",
+      "slug": "cua-lo-ven-bien-buoi-sang",
+      "title": "Cửa lò Ven Biển Buổi Sáng",
+      "description": "Sau chặng đường dài khoảng 300 km từ Hà Nội, nhiều người tới Cửa Lò vào chiều tối, ăn hải sản, ngủ một giấc rồi lại vội lên đường. Họ bỏ lỡ đúng phần",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cua-lo-ven-bien-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Sau chặng đường dài khoảng 300 km từ Hà Nội, nhiều người tới Cửa Lò vào chiều tối, ăn hải sản, ngủ một giấc rồi lại vội lên đường. Họ bỏ lỡ đúng phần đẹp nhất của chuyến đi: buổi sáng ven biển. Khi trời còn mát, mặt trời nhô lên từ phía biển, bãi cát vắng và thuyền đánh cá cập bờ, Cửa Lò cho bạn một nhịp sống khác hẳn khung cảnh đông đúc buổi trưa. Bài này không bàn lại tuyến đường hay cách chia chặng, những phần đó đã có trong bài Cửa Lò ven biển . Ở đây là cách tận dụng một buổi sáng tại Cửa Lò với chiếc xe máy thuê: dậy lúc nào, chạy dọc biển ra sao, gửi xe ở chợ, chăm xe sau gió biển và xử lý thế nào nếu sáng đó cũng là sáng bạn khởi hành",
+        "Bờ biển Cửa Lò nhìn ra phía đông, nên vào những ngày trời quang, bạn có thể ngắm mặt trời mọc ngay trên mặt nước mà không cần đi đâu xa. Người dân địa phương ra biển từ rất sớm để tắm, đi bộ, tập thể dục, và chỉ sau vài tiếng, khi nắng lên gắt, bãi biển vắng dần. Với người đi xe máy, buổi sáng còn có thêm lợi thế: đường ven biển ít ô tô, nhiệt độ dễ chịu, và bạn có cả ngày phía trước để nghỉ ngơi hoặc lên đường."
+      ]
+    },
+    {
+      "article_id": "BA-1359",
+      "category": "EV",
+      "slug": "di-xe-dien-duong-dai-mua-mua",
+      "title": "đi xe Điện Đường Dài Mùa Mưa",
+      "description": "Đi xe điện đường dài mùa mưa là bài toán có thêm một biến số so với chuyến đi trời nắng: thời tiết quyết định cả tốc độ, chỗ dừng và lượng pin bạn",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/di-xe-dien-duong-dai-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Đi xe điện đường dài mùa mưa là bài toán có thêm một biến số so với chuyến đi trời nắng: thời tiết quyết định cả tốc độ, chỗ dừng và lượng pin bạn còn lại ở cuối chặng. Nhiều người thuê xe điện ở Hà Nội đã chạy quen cung Bắc Ninh, Hưng Yên hay Ninh Bình vào mùa khô, rồi đến tháng mưa mới nhận ra kế hoạch cũ không còn đúng. Bài này không nhắc lại cách chia chặng cơ bản đã có trong bài đi xe điện đường dài , mà tập trung vào ba việc riêng của mùa mưa: quyết định đi hay hoãn, bù trừ pin cho điều kiện ướt, và giữ xe lẫn người khô ráo suốt hành trình.",
+        "Với xe xăng, mưa chủ yếu là chuyện khó chịu; với xe điện, mưa kéo dài còn ảnh hưởng tới nơi sạc và thời gian chờ. Trước ngày khởi hành, hãy xem dự báo cho từng điểm trên tuyến chứ không chỉ cho Hà Nội, vì cơn dông chiều ở đồng bằng thường đi theo vệt và có thể tránh được nếu bạn dịch giờ xuất phát. Ba dấu hiệu nên hoãn chuyến thay vì cố đi:"
+      ]
+    },
+    {
+      "article_id": "BA-1355",
+      "category": "SAFE",
+      "slug": "mua-ban-xe-may-giay-to-vi-du-thuc-te",
+      "title": "Mua Bán xe Máy Giấy tờ ví dụ Thực tế",
+      "description": "Danh sách giấy tờ khi mua bán xe máy thì ai cũng đọc được, nhưng rắc rối nằm ở chỗ áp nó vào một giao dịch cụ thể: người bán là đồng nghiệp thân, xe",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/mua-ban-xe-may-giay-to-vi-du-thuc-te.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1358",
+      "category": "RENT",
+      "slug": "thue-xe-chay-dich-vu-cho-gia-dinh",
+      "title": "Thuê xe Chạy Dịch vụ Cho Gia Đình",
+      "description": "Thuê xe chạy dịch vụ cho gia đình là câu chuyện của những hộ mà chiếc xe máy không chỉ chở người đi chơi, mà là nguồn thu của cả nhà: chồng chạy xe",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-chay-dich-vu-cho-gia-dinh.body.html",
+      "knowledge_chunks": [
+        "Thuê xe chạy dịch vụ cho gia đình là câu chuyện của những hộ mà chiếc xe máy không chỉ chở người đi chơi, mà là nguồn thu của cả nhà: chồng chạy xe ôm công nghệ ban ngày, vợ giao đồ ăn buổi tối, con trai lớn nhận đơn cuối tuần. Một chiếc xe thuê trong trường hợp này phải chia cho hai, ba tay lái, chạy gần như không nghỉ, và mọi khoản chi phí đều phải tính trên thu nhập chung của gia đình. Bài này đi vào phần mà các hướng dẫn chung về thuê xe chạy dịch vụ chưa chạm tới: cách một gia đình tính số xe, chia ca, đứng tên hợp đồng và giữ chi phí thuê xe nằm trong phần thu nhập hợp lý.",
+        "Quyết định đầu tiên không phải chọn dòng xe nào mà là chọn mấy chiếc. Cách tính thực tế: cộng tổng số giờ mỗi người trong nhà định chạy dịch vụ trong một ngày. Nếu tổng dưới khoảng mười hai giờ và các ca không trùng nhau, một xe chia ca là đủ và tiết kiệm nhất. Nếu hai người cùng muốn chạy khung giờ cao điểm trưa và tối, một xe sẽ thành nút thắt, người này đợi người kia về mới ra đường được, và thu nhập mất đi còn lớn hơn tiền thuê chiếc xe thứ hai."
+      ]
+    },
+    {
+      "article_id": "BA-1352",
+      "category": "RENT",
+      "slug": "thue-xe-cho-cong-viec-giao-hang-cho-gia-dinh",
+      "title": "Thuê xe Cho Công Việc Giao Hàng Cho Gia Đình",
+      "description": "Thuê xe cho công việc giao hàng cho gia đình thường bắt đầu từ một tiệm nhỏ ở nhà: mẹ bán đồ ăn sáng qua mạng, bố giao hàng trước giờ đi làm, chiều",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-cho-cong-viec-giao-hang-cho-gia-dinh.body.html",
+      "knowledge_chunks": [
+        "Thuê xe cho công việc giao hàng cho gia đình thường bắt đầu từ một tiệm nhỏ ở nhà: mẹ bán đồ ăn sáng qua mạng, bố giao hàng trước giờ đi làm, chiều chiếc xe ấy lại đón con tan học. Khác với người chạy giao hàng chuyên nghiệp, gia đình cần một chiếc xe làm hai việc cùng lúc, chở hàng buổi sáng và chở người buổi chiều, mà vẫn sạch sẽ, an toàn và không khiến cả nhà lệ thuộc vào một tay lái duy nhất. Phần chọn xe bền và tính chu kỳ thuê cho người giao hàng toàn thời gian đã có trong bài thuê xe cho công việc giao hàng ; bài này nói về cách một gia đình lên lịch, chở hàng và giữ xe khi chiếc xe thuê phải vừa là xe hàng vừa là xe nhà.",
+        "Hãy hình dung lịch một ngày để thấy chiếc xe sẽ phải chịu gì. Sáu giờ sáng, xe rời nhà với hai thùng hàng buộc sau yên, chạy ba điểm giao quanh Long Biên và Gia Lâm rồi về trước tám giờ. Buổi trưa, xe nằm nghỉ hoặc chạy thêm một đợt giao ngắn nếu có đơn. Bốn giờ chiều, thùng hàng tháo ra, xe thành xe đón con, tối thì chở cả nhà đi ăn. Chiếc xe này chạy không nhiều km bằng xe giao hàng chuyên nghiệp, nhưng liên tục đổi vai, và mỗi lần đổi vai là một lần tháo lắp đồ chở hàng, lau yên, kiểm tra lại cốp."
+      ]
+    },
+    {
+      "article_id": "BA-1351",
+      "category": "APP",
+      "slug": "tim-hieu-hybrid-search-trong-ung-dung-thue-xe-cho-khach-nuoc-ngoai",
+      "title": "Tìm Hiểu Hybrid Search Trong Ứng Dụng Thuê xe Cho Khách Nước Ngoài",
+      "description": "Khách nước ngoài tìm xe máy thuê ở Hà Nội thường gõ những câu mà một ô tìm kiếm cũ không thể hiểu: \"automatic scooter near Old Quarter\", \"xe ga 3",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/tim-hieu-hybrid-search-trong-ung-dung-thue-xe-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Khách nước ngoài tìm xe máy thuê ở Hà Nội thường gõ những câu mà một ô tìm kiếm cũ không thể hiểu: \"automatic scooter near Old Quarter\", \"xe ga 3 ngay Long Bien\", hay chỉ một chữ \"Vision\". Tìm hiểu hybrid search trong ứng dụng thuê xe cho khách nước ngoài là hiểu vì sao các câu đó vẫn ra đúng kết quả, và vì sao trong vài trường hợp bạn vẫn nên gõ lại cho rõ. Bản giải thích cơ chế chung của hybrid search đã có trong bài tìm hiểu hybrid search trong ứng dụng thuê xe ; bài này đi vào đúng phần liên quan tới người dùng không nói tiếng Việt: từ vựng chéo ngôn ngữ, địa danh viết không dấu, và ranh giới giữa gợi ý và dữ liệu cửa hàng.",
+        "Người Việt gọi \"xe ga\", \"xe số\", \"xe côn\"; khách quốc tế gọi \"automatic\", \"semi-automatic\", \"manual\", hoặc chỉ nói \"scooter\" cho mọi thứ có sàn để chân. Tìm kiếm thuần từ khóa sẽ thất bại ngay ở đây, vì không có bài viết hay dòng xe nào trên website chứa nguyên văn chữ \"semi-automatic\". Hybrid search giải quyết bằng cách kết hợp hai lớp: lớp từ khóa khớp chính xác tên dòng xe và con số, lớp ngữ nghĩa hiểu rằng \"semi-automatic\" gần với \"xe số\" và \"scooter\" gần với \"xe ga\". Kết quả là câu hỏi tiếng Anh của bạn vẫn dẫn tới đúng nhóm xe, kèm bài hướng dẫn tương ứng."
+      ]
+    },
+    {
+      "article_id": "BA-1353",
+      "category": "EV",
+      "slug": "xe-dien-khi-mua-mua-mua",
+      "title": "xe Điện Khi Mưa Mùa Mưa",
+      "description": "Đi xe điện khi mưa một hôm là chuyện kỹ năng; đi xe điện khi mưa suốt mùa mưa là chuyện thói quen. Từ khoảng tháng Năm tới hết mùa hạ, Hà Nội có",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/xe-dien-khi-mua-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Đi xe điện khi mưa một hôm là chuyện kỹ năng; đi xe điện khi mưa suốt mùa mưa là chuyện thói quen. Từ khoảng tháng Năm tới hết mùa hạ, Hà Nội có những tuần mưa gần như mỗi chiều, có đợt mưa dầm kéo dài vài ngày khi có bão hoặc áp thấp, và có những sáng thức dậy thấy đường trước nhà còn đọng nước từ trận mưa đêm. Nếu bạn thuê xe điện theo tuần hoặc theo tháng trong giai đoạn này, điều giữ cho xe chạy ổn không phải một mẹo đơn lẻ mà là nhịp chăm sóc lặp lại mỗi ngày. Các kỹ năng lái trên đường ướt đã có trong bài xe điện khi mưa ; bài này là kế hoạch sống chung với mưa trọn mùa: chuẩn bị gì trong cốp, làm gì mỗi sáng, mỗi tối, xử lý ra sao khi ",
+        "Không phải trận mưa nào cũng đòi hỏi cùng một cách ứng xử. Phân biệt được ba kiểu dưới đây giúp bạn quyết định nhanh nên đi, nên chờ hay nên để xe ở nhà."
+      ]
     }
   ]
 }
