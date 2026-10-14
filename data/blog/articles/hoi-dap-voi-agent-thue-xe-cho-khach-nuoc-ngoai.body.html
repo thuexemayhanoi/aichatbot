@@ -1,0 +1,66 @@
+<p>Hỏi đáp với Agent thuê xe cho khách nước ngoài là cách để bạn tự tìm hiểu giá, giấy tờ và giờ giao xe bằng tiếng Anh ngay trên điện thoại, trước khi phải nhắn tin hay gọi điện cho ai. Trên website của MotoAI có hai lớp trả lời: trợ lý cơ bản trả lời tức thì những câu quen thuộc, và nút Agent mở thêm một lớp hội thoại linh hoạt hơn chạy ngay trong trình duyệt. Bài này hướng dẫn khách quốc tế, hoặc người Việt đang giúp bạn bè nước ngoài thuê xe, cách bật Agent, đọc thanh gợi ý tiếng Việt, đặt câu hỏi tiếng Anh và biết lúc nào cần chuyển sang người thật.</p>
+
+<h2>Hai lớp trả lời: trợ lý cơ bản và Agent</h2>
+<p>Khi bạn gõ một câu hỏi, trợ lý cơ bản xử lý trước bằng bộ quy tắc và kho dữ liệu đã được cửa hàng kiểm chứng. Những câu ngắn như "Where are you located?" hay "price for 3 days" thường được trả lời ngay ở lớp này, không cần bật gì thêm. Agent chỉ được gọi tới khi câu hỏi nằm ngoài các mẫu quen thuộc, ví dụ bạn mô tả hoàn cảnh dài dòng hoặc hỏi theo cách diễn đạt riêng.</p>
+<p>Điểm quan trọng với khách nước ngoài: Agent trả lời bằng chính ngôn ngữ bạn dùng, tiếng Việt hoặc tiếng Anh, và giữ câu trả lời ngắn gọn. Nội dung chỉ dựa trên dữ liệu của cửa hàng, nên đây là nơi hỏi về dịch vụ thuê xe, không phải hướng dẫn viên du lịch đa năng. Nếu muốn hiểu sâu hơn cách đặt câu hỏi nói chung, bài <a href="/blog/app/hoi-dap-voi-agent-thue-xe/">hỏi đáp với Agent thuê xe</a> là điểm bắt đầu tốt.</p>
+
+<h2>Bật Agent lần đầu trên điện thoại của bạn</h2>
+<p>Agent không tự khởi động khi bạn mở trang. Bạn luôn là người chủ động bật nó trong mỗi lần truy cập:</p>
+<ol>
+<li>Mở website trên trình duyệt điện thoại hoặc máy tính, không cần cài thêm phần mềm.</li>
+<li>Chạm vào nút đầu tiên trên thanh gợi ý, có biểu tượng tia sét và chữ Agent.</li>
+<li>Lần đầu, đọc thông báo và xác nhận đồng ý tải mô hình về trình duyệt. Dung lượng khá lớn, nên hãy dùng Wi-Fi khách sạn thay vì dữ liệu di động chuyển vùng.</li>
+<li>Chờ quá trình tải hoàn tất rồi mới gõ câu hỏi. Những lần sau, trình duyệt giữ lại bản đã tải nên bật nhanh hơn.</li>
+</ol>
+<p>Nếu điện thoại không đủ điều kiện, bạn sẽ thấy dòng thông báo rằng Agent chưa dùng được trên thiết bị này và trợ lý cơ bản vẫn hoạt động bình thường. Khi đó cứ tiếp tục hỏi như thường, phần lớn câu hỏi về giá và thủ tục vẫn được trả lời đầy đủ.</p>
+
+<h2>Giải nghĩa thanh gợi ý tiếng Việt</h2>
+<p>Thanh nút nhanh của khung chat viết bằng tiếng Việt. Khách nước ngoài chỉ cần nhớ nghĩa của từng nút:</p>
+<ul>
+<li><strong>Giá thuê:</strong> rental prices, bảng giá tham khảo theo ngày, tuần, tháng.</li>
+<li><strong>Xe ga / Xe số:</strong> automatic scooter và semi-automatic motorbike, gợi ý dòng xe theo từng loại.</li>
+<li><strong>Theo tháng:</strong> monthly rental, hợp với người ở lại Hà Nội lâu.</li>
+<li><strong>Đặt cọc:</strong> deposit, mức cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
+<li><strong>Thủ tục:</strong> documents, những giấy tờ cần chuẩn bị khi thuê.</li>
+<li><strong>Gọi / Liên hệ:</strong> call hoặc contact, kết nối thẳng với cửa hàng.</li>
+<li><strong>Địa chỉ / Bản đồ:</strong> address và map, chỉ đường tới điểm nhận xe.</li>
+</ul>
+<p>Nhắc thêm một điểm: dấu chấm trong số tiền Việt Nam ngăn cách hàng nghìn, nên 200.000đ nghĩa là 200,000 VND. Cách quy đổi và tự tính tổng chi phí có trong bài <a href="/blog/app/ung-dung-thue-xe-tieng-anh-cho-khach-nuoc-ngoai/">ứng dụng thuê xe tiếng Anh cho khách nước ngoài</a>.</p>
+
+<h2>Mẫu câu hỏi tiếng Anh và câu trả lời nên mong đợi</h2>
+<p>Hỏi từng ý một, câu ngắn, có tên dòng xe và số ngày, bạn sẽ nhận câu trả lời sát hơn. Vài ví dụ thực tế:</p>
+<ul>
+<li><em>"How much is a Honda Vision for one week?"</em> Câu trả lời sẽ dựa trên mức tham khảo 800.000đ–1.000.000đ/tuần và nhắc bạn xác nhận lại với cửa hàng.</li>
+<li><em>"Which scooter is cheapest for a month?"</em> Bạn sẽ được gợi ý nhóm Honda Click hoặc Yamaha Mio, tham khảo 1.000.000đ–1.200.000đ/tháng.</li>
+<li><em>"Is insurance included?"</em> Câu trả lời đúng là không: cửa hàng không cung cấp bảo hiểm, người thuê tự chuẩn bị bảo hiểm xe máy của mình.</li>
+<li><em>"Can you deliver to my hotel in the Old Quarter?"</em> Khu Phố Cổ nằm trong vùng phục vụ, việc giao chỉ diễn ra trong khung {{ business.hours.display }}, thời gian và phí phải được xác nhận trước khi đặt.</li>
+<li><em>"Do you rent electric scooters?"</em> Xe máy điện có giá liên hệ, nên bạn sẽ được mời hỏi trực tiếp cửa hàng.</li>
+</ul>
+<p>Muốn Agent gợi ý dòng xe theo chiều cao, kinh nghiệm lái hay lịch trình, hãy đọc thêm bài <a href="/blog/app/chon-xe-bang-agent-cho-khach-nuoc-ngoai/">chọn xe bằng Agent cho khách nước ngoài</a>; mẹo viết câu hỏi gọn có trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho Agent</a>.</p>
+
+<h2>Dòng ghi chú dưới câu trả lời và chuyện quyền riêng tư</h2>
+<p>Mỗi câu trả lời do Agent tạo ra đều kèm một dòng ghi chú cho biết đây là câu trả lời của Agent ở giai đoạn thử nghiệm, dựa trên dữ liệu của cửa hàng. Thấy dòng này, bạn hiểu nội dung đến từ lớp hội thoại linh hoạt chứ không phải câu trả lời soạn sẵn. Hệ thống còn có bước lọc: con số nào trong câu trả lời không khớp với dữ liệu đã kiểm chứng sẽ bị loại, và trợ lý chuyển sang câu trả lời an toàn hơn.</p>
+<p>Vì mô hình chạy ngay trong trình duyệt của bạn, nội dung hỏi đáp không phải gửi tới một dịch vụ trí tuệ nhân tạo đám mây nào. Chi tiết về cách xử lý cục bộ được giải thích trong bài <a href="/blog/app/privacy-va-xu-ly-cuc-bo-trong-app-thue-xe-cho-khach-nuoc-ngoai/">quyền riêng tư và xử lý cục bộ cho khách nước ngoài</a>.</p>
+
+<h2>Những việc cần chuyển sang người thật</h2>
+<p>Agent giúp bạn tìm hiểu, còn những việc mang tính cam kết vẫn cần cửa hàng xác nhận:</p>
+<ul>
+<li>Còn xe đúng dòng bạn muốn vào đúng ngày hay không.</li>
+<li>Giờ giao cụ thể và phí giao tới địa chỉ khách sạn của bạn.</li>
+<li>Giấy phép lái xe của bạn có phù hợp để điều khiển xe tại Việt Nam hay không; đây là câu hỏi pháp lý nên tra nguồn chính thức.</li>
+<li>Mức cọc chính xác cho chiếc xe bạn chọn, được chốt khi đặt.</li>
+</ul>
+<p>Cách chuẩn bị tiền giữ xe và giấy tờ khi làm việc với cửa hàng có trong bài <a href="/blog/app/dat-coc-va-ung-dung-thue-xe-cho-khach-nuoc-ngoai/">đặt cọc và ứng dụng thuê xe cho khách nước ngoài</a>.</p>
+
+<h2>Câu hỏi thường gặp khi khách nước ngoài dùng Agent</h2>
+<h3>Có cần tải ứng dụng từ kho ứng dụng không?</h3>
+<p>Không. MotoAI là ứng dụng web, mở bằng trình duyệt; Agent cũng chạy trong trình duyệt sau khi bạn đồng ý tải mô hình.</p>
+<h3>Agent có trả lời bằng tiếng Anh không?</h3>
+<p>Có. Bạn hỏi bằng tiếng Anh thì Agent trả lời bằng tiếng Anh, câu ngắn và chỉ dựa trên dữ liệu của cửa hàng.</p>
+<h3>Điện thoại không bật được Agent thì sao?</h3>
+<p>Bạn vẫn dùng trợ lý cơ bản và các nút gợi ý như bình thường; các câu về giá, thủ tục, địa chỉ vẫn có câu trả lời.</p>
+<h3>Câu trả lời của Agent có phải là xác nhận đặt xe không?</h3>
+<p>Không. Mọi thông tin về giá, xe còn trống và giờ giao cần được cửa hàng xác nhận khi bạn đặt.</p>
+
+<h2>Kết luận</h2>
+<p>Với khách nước ngoài, Agent là người phiên dịch kiêm tư vấn đầu tiên: bật một lần trên Wi-Fi, hỏi từng ý bằng tiếng Anh, đọc dòng ghi chú và chuyển những việc cần cam kết sang cửa hàng. Khi đã sẵn sàng đặt xe, bạn liên hệ {{ business.display_name }} qua số {{ business.contact.phone_display }} trong khung {{ business.hours.display }}, hoặc đến {{ business.address.full }}. Khám phá thêm tại <a href="/blog/app/">chuyên mục ứng dụng</a> hoặc mở <a href="/">trang chủ</a> để bắt đầu hỏi.</p>
