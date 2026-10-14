@@ -66,12 +66,12 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 
 | ID | Area | Problem | Fix | Files | Risk | Status | Evidence |
 |---|---|---|---|---|---|---|---|
-| TH-030 | Article typography | H1 small; measure not tokenised | Article H1 `clamp(1.6rem…2.2rem)`, body column `max-width: var(--measure)` (72ch ≈ 65–75ch), heading rhythm, list/blockquote polish | `blog.css` | L | TODO | |
-| TH-031 | TOC | No current-section state; links not 44 px | Scrollspy via `IntersectionObserver` (tiny) sets `aria-current="location"`; 44 px rows; sticky offset below header | `assets/js/app-shell.js`, `blog.css` | L | TODO | |
-| TH-032 | Reading progress | None | 3 px bar under the sticky header driven by scroll (passive listener, rAF-throttled, `prefers-reduced-motion` safe) | `tools/app-shell.mjs`, `app-shell.js`, `blog.css` | L | TODO | |
-| TH-033 | Author/date | Plain byline, ISO date | `.blog-meta` block: avatar initial, author, `<time datetime>` localised `dd/mm/yyyy`, category, reading time | `tools/build-blog.mjs`, `blog.css` | L (H1/title/schema untouched) | TODO | |
-| TH-034 | Related | O(n²)/article; subtopic mismatch | Precompute subtopic per article from matrix rows once; buckets per subtopic/category/cluster; deterministic ring selection (next N after self, cyclic) → 4 cards; O(n) total | `tools/build-blog.mjs` | M (changes related sets on all articles — allowed) | TODO | |
-| TH-035 | Prev/next | None | `<nav class="blog-prevnext">` within the same category by manifest order (older / newer) | `tools/build-blog.mjs`, `blog.css` | L | TODO | |
+| TH-030 | Article typography | H1 small; measure not tokenised | Article H1 `clamp(1.6rem…2.2rem)`, body column `max-width: var(--measure)` (72ch ≈ 65–75ch), heading rhythm, list/blockquote polish | `blog.css` | L | DONE | batch D. Article H1 = `var(--text-2xl)` (clamp 1.6–2.2 rem) scoped by `[data-motoai-screen^="article-"]` (H1 text untouched — test asserts equality); prose children `max-width: var(--measure)` (72ch; tables stay full width); H2 clamp 1.18–1.35 rem, `scroll-margin-top` clears the sticky header; primary list markers |
+| TH-031 | TOC | No current-section state; links not 44 px | Scrollspy via `IntersectionObserver` (tiny) sets `aria-current="location"`; 44 px rows; sticky offset below header | `assets/js/app-shell.js`, `blog.css` | L | DONE | batch D. ~400 B JS (paid for by trimming `app-shell.js` comments): `aria-current="location"` (explicit value — an empty attribute means *false*), left-border + colour state; rows 44 px (32 px only for `pointer: fine` desktop rail); rail sticky at header height + 16 px with own scroll for long TOCs |
+| TH-032 | Reading progress | None | 3 px bar under the sticky header driven by scroll (passive listener, rAF-throttled, `prefers-reduced-motion` safe) | `tools/app-shell.mjs`, `app-shell.js`, `blog.css` | L | DONE | batch D, **zero JS**: CSS scroll-driven animation (`animation-timeline: scroll(root)`) on `main[data-motoai-screen^="article-"]::before`, fixed at the viewport top edge (safe-area aware), inside `@supports` (Chrome/Edge 115+, Safari 26+; others simply show no bar). `:has()` was avoided — `content-scroll.test.js` forbids it in `blog.css` |
+| TH-033 | Author/date | Plain byline, ISO date | `.blog-meta` block: avatar initial, author, `<time datetime>` localised `dd/mm/yyyy`, category, reading time | `tools/build-blog.mjs`, `blog.css` | L (H1/title/schema untouched) | DONE | batch D. `<div class="blog-meta">` avatar (author initial, decorative) + `<p class="byline">` author / `<time datetime="YYYY-MM-DD">DD/MM/YYYY</time>` · category · reading time. Article JSON-LD unchanged |
+| TH-034 | Related | O(n²)/article; subtopic mismatch | Precompute subtopic per article from matrix rows once; buckets per subtopic/category/cluster; deterministic ring selection (next N after self, cyclic) → 4 cards; O(n) total | `tools/build-blog.mjs` | M (changes related sets on all articles — allowed) | DONE | batch D. `articleContext()` (once per build: link-page set, matrix-row subtopic per article, manifest-ordered buckets + positions) + `relatedFor()` (subtopic ring → category ring → cluster ring, starting after self) — subtopic hubs reuse the same buckets. The per-article `linkPages` Set (O(n) each) is gone too. 4 related cards (4-up grid ≥ 1024). Micro-benchmark at **40,000 synthetic articles: context 0.43 s + related/prev-next for all 0.14 s** |
+| TH-035 | Prev/next | None | `<nav class="blog-prevnext">` within the same category by manifest order (older / newer) | `tools/build-blog.mjs`, `blog.css` | L | DONE | batch D. `rel="prev"`/`rel="next"` cards (no new headings); a publish changes only the previous newest article of that category |
 
 ### P0 — batch E: hub/home cards + pagination
 
@@ -96,7 +96,7 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 | TH-061 | CLS | Status chip pops in | Covered by TH-010 reserved slot | — | — | DONE | batch B (TH-010) |
 | TH-062 | Fonts | — | System font stack, no `@font-face` → `font-display` not applicable (seo-score forbids webfonts) | — | — | N/A (evidence: `seo-score.mjs` `external webfont / font-face risk` check; `style.css` `font-family: system-ui…`) | |
 | TH-063 | Images | — | 1,704 bodies contain 0 `<img>`; builder adds `loading="lazy" decoding="async"` to any future body image lacking it | `tools/build-blog.mjs` | L | TODO | |
-| TH-064 | Build time | 78 s, superlinear | Covered by TH-034; re-benchmark | — | — | TODO | |
+| TH-064 | Build time | 78 s, superlinear | Covered by TH-034; re-benchmark | — | — | DONE | batch D: full `node tools/build-blog.mjs` **78 s → 3.0 s** wall (1,704 articles, 1,821 pages). Remaining 40k risk: subtopic hubs render every card on one page (see TH-106) |
 
 ### P1
 
@@ -108,6 +108,8 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 | TH-103 | Hub cards | Category cards show no counts | Add article count per category (deterministic) | `build-blog.mjs` | L | TODO |
 | TH-104 | Home | Hero/search block could be more editorial | Two-column intro (lead + search) on ≥ 1024 | `build-blog.mjs`, `blog.css` | L | TODO |
 | TH-105 | Drawer | Group headers could show counts/icons | Presentational only | `app-shell.mjs` | L | TODO |
+| TH-106 | Scale | Subtopic hubs list ALL their articles on one page (no pagination) — at 10–40k articles a subtopic page could carry thousands of cards | Paginate like category hubs (`/page/N/`) — new URLs + sitemap entries = contract change, owner decision | `build-blog.mjs` | M | TODO |
+| TH-107 | SEO score | `seo-score` per-article prose heuristics (Q&A, deposit figures) now read only `<article class="blog-article-body">` (fallback `<main>`), so theme chrome (mega-menu labels, related/prev-next titles) no longer flips them. Notes 623 → 453; remaining 263 "deposit claim" + 79 "no Q&A" are genuine article-content findings for the content team | — | `tools/seo-score.mjs` | L | DONE (batch D) |
 
 ### P2
 
@@ -139,11 +141,12 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 | A (TH-001..004) | `934faa9b` | `node --test` 1003/1003 pass (238 s) | 75 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; `data/blog/**` unchanged | 174,480 internal URLs, 0 broken, 0 issues | 99.5/100 (623 pre-existing per-page notes, UX 10/10) | CSS 57,808 B / 65,536; JS 231,930 B / 232,000 (unchanged). Found + fixed: `package.json` major must track `BUILD_VERSION` (`pwa.test.js`) |
 
 | B (TH-010..013, TH-061) | `8aa8d6d4` | `node --test` 1008/1008 pass (incl. new `tests/unit/theme-premium.test.js`) | 78 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; second build = byte-identical (determinism) | pass, 223,620 internal URLs checked (menu adds links), 0 broken | 99.5/100, 623 notes (unchanged), UX 10/10 | CSS 60,906 B / 65,536; JS 231,702 B / 232,000. Also: `tools/__pycache__/*.pyc` untracked + `__pycache__/`, `*.pyc` in `.gitignore`. `origin/main` is 30 commits ahead — not merged (TH-900) |
-| C (TH-020) | (SHA recorded in the batch-D commit) | `node --test` 1010/1010 pass | 79 s wall; output regenerated (1,821 pages, footer only) | pass, 225,440 internal URLs, 0 broken | 99.5/100, 623 notes (unchanged) | CSS 62,508 B / 65,536; JS 231,702 B (unchanged) |
+| C (TH-020) | `6658d70b` | `node --test` 1010/1010 pass | 79 s wall; output regenerated (1,821 pages, footer only) | pass, 225,440 internal URLs, 0 broken | 99.5/100, 623 notes (unchanged) | CSS 62,508 B / 65,536; JS 231,702 B (unchanged) |
+| D (TH-030..035, TH-064, TH-107) | (SHA recorded in the batch-E commit) | `node --test` 1013/1013 pass | **3.0 s** wall (was 78 s); second build byte-identical | pass, 227,132 internal URLs, 0 broken | 99.6/100, 453 notes (article-prose scoping, TH-107) | CSS 61,788 B / 65,536 (multi-line comments condensed to headlines: −3.9 KB, key rationale kept); JS 231,819 B / 232,000 (181 B headroom) |
 
 ## Next steps from checkpoint
 
-1. Batches A, B, C done → next D (TH-030..035), then E, F, G in order.
+1. Batches A–D done → next E (TH-040..042), then F, G in order. JS headroom is 181 B: batch F must compact `blog.js` before adding behaviour.
 2. After each batch: run the loop, record commit SHA + results in **Batch log**, flip item status with evidence.
 3. If the JS guard or CSS budget blocks a batch, trim first (TH-013 / TH-004), bump only with a documented reason.
 4. Every `BUILD_VERSION` bump = 4 files in lockstep: `tools/app-shell.mjs`, `index.html`, `service-worker.js`, `package.json` (major).

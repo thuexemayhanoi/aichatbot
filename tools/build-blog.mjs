@@ -516,15 +516,86 @@ ${jsonLd({
   write(`${path}index.html`, html);
 }
 
+/** v67 article context, computed ONCE per build in O(n): the set of
+ *  article pages (internal-link normalisation), each article's subtopic
+ *  from its MATRIX row (the same source the subtopic hubs use — the old
+ *  related scorer derived it from manifest fields), and manifest-ordered
+ *  buckets per subtopic / category / cluster with each article's position,
+ *  so related + prev/next are O(1) per article (was O(n²) per article). */
+export function articleContext(published, matrix) {
+  const linkPages = new Set();
+  const subOf = new Map();
+  const buckets = new Map();
+  const pos = new Map();
+  const push = (key, a) => {
+    if (!buckets.has(key)) buckets.set(key, []);
+    const list = buckets.get(key);
+    pos.set(`${key}|${a.article_id}`, list.length);
+    list.push(a);
+  };
+  for (const a of published) {
+    const hub = HUB_BY_ID[a.category];
+    linkPages.add(`blog/${hub.dir}/${a.slug}/index.html`);
+    const sub = deriveSubtopic(a.category, matrix[a.article_id] ?? {});
+    subOf.set(a.article_id, sub);
+    if (!sub.fallback) push(`s:${a.category}:${sub.code}`, a);
+    push(`c:${a.category}`, a);
+    push(`k:${hub.cluster}`, a);
+  }
+  return { linkPages, subOf, buckets, pos };
+}
+
+export const RELATED_CARDS = 4;
+
+/** Deterministic related set: walk the article's subtopic ring, then its
+ *  category ring, then its cluster ring — each starting right AFTER the
+ *  article (cyclic, manifest order) — skipping self and duplicates. Older
+ *  articles point at newer ones (fresh content gains inbound links) and a
+ *  publish only changes the last few cards of each ring. */
+export function relatedFor(a, ctx, n = RELATED_CARDS) {
+  const sub = ctx.subOf.get(a.article_id);
+  const keys = [
+    ...(sub && !sub.fallback ? [`s:${a.category}:${sub.code}`] : []),
+    `c:${a.category}`,
+    `k:${HUB_BY_ID[a.category].cluster}`
+  ];
+  const out = [];
+  const seen = new Set([a.article_id]);
+  for (const key of keys) {
+    const list = ctx.buckets.get(key) ?? [];
+    const at = ctx.pos.get(`${key}|${a.article_id}`) ?? -1;
+    for (let step = 1; step < list.length && out.length < n; step++) {
+      const x = list[(at + step) % list.length];
+      if (seen.has(x.article_id)) continue;
+      seen.add(x.article_id);
+      out.push(x);
+    }
+    if (out.length >= n) break;
+  }
+  return out;
+}
+
+/** Older / newer neighbour in the same category (manifest order). */
+export function prevNextFor(a, ctx) {
+  const key = `c:${a.category}`;
+  const list = ctx.buckets.get(key) ?? [];
+  const at = ctx.pos.get(`${key}|${a.article_id}`) ?? -1;
+  return { prev: at > 0 ? list[at - 1] : null, next: at >= 0 && at < list.length - 1 ? list[at + 1] : null };
+}
+
+/** ISO date → Vietnamese reading order dd/mm/yyyy (build-time, no Intl). */
+export const viDate = (iso) => String(iso).split('-').reverse().join('/');
+
 /**
  * Build the article screen. v58 editorial upgrades: quick-answer summary box,
  * deterministic reading time (words/200, ceil), TOC, related articles.
+ * v67: author/date meta block, O(1) related (subtopic → category → cluster
+ * rings), prev/next within the category.
  */
-function buildArticle(a, business, hub, published, row) {
+function buildArticle(a, business, hub, published, row, ctx = articleContext(published, {})) {
   const bodyRaw = read(a.body);
-  const linkPages = new Set(published.map((entry) => `blog/${HUB_BY_ID[entry.category].dir}/${entry.slug}/index.html`));
   const body = normalizeInternalAnchors(resolveFacts(bodyRaw, business),
-    `blog/${hub.dir}/${a.slug}/index.html`, (path) => linkPages.has(path));
+    `blog/${hub.dir}/${a.slug}/index.html`, (path) => ctx.linkPages.has(path));
   const { html: bodyWithIds, items } = buildToc(body);
   const toc = tocHtml(items);
   const path = `blog/${hub.dir}/${a.slug}/`;
@@ -533,21 +604,16 @@ function buildArticle(a, business, hub, published, row) {
   const sub = deriveSubtopic(a.category, row ?? {});
   const subHubUrl = sub.fallback ? null : `/blog/${hub.dir}/${sub.slug}/`;
 
-  // Related: same subtopic first, then same category, then others. 3-5, never self.
-  const score = (x) => {
-    let s = 0;
-    if (x.category === a.category) s -= 2;
-    const xsub = deriveSubtopic(x.category, published.find((p) => p.article_id === x.article_id) ?? {});
-    if (!sub.fallback && xsub.code === sub.code && x.category === a.category) s -= 3;
-    return s;
-  };
-  const related = published
-    .filter((x) => x.article_id !== a.article_id)
-    .map((x) => ({ x, s: score(x), id: x.article_id }))
-    .sort((p, q) => p.s - q.s || p.id.localeCompare(q.id))
-    .slice(0, 5)
-    .map(({ x }) => card(x, HUB_BY_ID[x.category]))
+  const related = relatedFor(a, ctx)
+    .map((x) => card(x, HUB_BY_ID[x.category]))
     .join('\n');
+  const { prev, next } = prevNextFor(a, ctx);
+  const pn = (x, rel, label) => x
+    ? `        <a class="blog-prevnext-${rel}" rel="${rel}" href="/blog/${hub.dir}/${x.slug}/"><span class="blog-prevnext-label">${label}</span><span class="blog-prevnext-title">${esc(x.title)}</span></a>\n`
+    : '';
+  const prevNext = prev || next ? `      <nav class="blog-prevnext" aria-label="Bài trước và bài sau trong ${esc(hub.label)}">
+${pn(prev, 'prev', '← Bài trước')}${pn(next, 'next', 'Bài sau →')}      </nav>
+` : '';
   const relatedSection = related ? `      <section class="blog-related">
         <h2>Bài viết liên quan</h2>
         <div class="blog-grid">
@@ -586,7 +652,10 @@ ${related}
         <a class="blog-chip" href="${subHubUrl}">${esc(sub.label)}</a>` : ''}
         <a class="blog-chip blog-chip-parent" href="/blog/${cluster.dir}/">${esc(cluster.name)}</a>
       </p>
-${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline">${esc(a.author)} · ${a.published_date} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
+${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <div class="blog-meta">
+        <span class="blog-meta-avatar" aria-hidden="true">${esc(String(a.author).trim().charAt(0).toUpperCase() || 'M')}</span>
+        <p class="byline"><span class="blog-meta-author">${esc(a.author)}</span> <span class="blog-meta-sub"><time datetime="${a.published_date}">${viDate(a.published_date)}</time> · ${esc(hub.label)} · ${readingTime(body)} phút đọc</span></p>
+      </div>
       <div class="blog-summary" role="note">
         <p class="blog-summary-title">Tóm tắt nhanh</p>
         <p>${esc(a.description)}</p>
@@ -596,7 +665,7 @@ ${toc.markup}        <article class="blog-article-body">
   ${bodyWithIds.trim().split('\n').join('\n  ')}
         </article>
       </div>
-${topicContext}${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.title)}`;
+${prevNext}${topicContext}${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.title)}`;
 
   const html = appShellPage({
     title: a.title,
@@ -698,6 +767,7 @@ export function build() {
   // v67: subtopic counts + the header mega-menu model are computed ONCE per
   // build (O(n)) and shared by every page — never per page.
   const subCounts = subtopicCounts(published, matrix);
+  const articleCtx = articleContext(published, matrix);
   setBuildContext({ menu: menuModel(published, subCounts), year: Number(updated.slice(0, 4)) });
 
   buildHome(published);
@@ -707,11 +777,7 @@ export function build() {
   for (const hub of HUBS) {
     const subs = (taxonomy.subtopics[hub.id] ?? []);
     for (const sub of subs) {
-      const arts = published.filter((a) => {
-        if (a.category !== hub.id) return false;
-        const s = deriveSubtopic(a.category, matrix[a.article_id] ?? {});
-        return !s.fallback && s.code === sub.code;
-      });
+      const arts = articleCtx.buckets.get(`s:${hub.id}:${sub.code}`) ?? [];
       // No empty SEO hubs: a subtopic page exists only with real content.
       if (arts.length > 0) {
         buildSubtopic(hub, sub, arts);
@@ -719,7 +785,7 @@ export function build() {
       }
     }
   }
-  for (const a of published) buildArticle(a, business, HUB_BY_ID[a.category], published, matrix[a.article_id]);
+  for (const a of published) buildArticle(a, business, HUB_BY_ID[a.category], published, matrix[a.article_id], articleCtx);
 
   // Legal screens — inside the SAME app shell (v57).
   buildLegal({

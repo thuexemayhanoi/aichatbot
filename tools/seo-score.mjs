@@ -62,16 +62,19 @@ export const text = (html) => String(html)
 
 export const words = (s) => (s ? s.split(/\s+/).filter(Boolean).length : 0);
 
-/** v67: text of the page's <main> column only (falls back to the whole
- *  page). Prose-claim heuristics must look at the article, not at the
- *  shared chrome — the header mega menu lists subtopic labels ("Đặt Cọc")
- *  and cornerstone-article titles on EVERY page, which would otherwise trigger
- *  or satisfy per-article checks site-wide. Local on purpose: the exported
+/** v67: text of the article's own prose — `<article class="blog-article-body">`
+ *  when present, else the page's <main>, else the whole page. Per-article
+ *  prose-claim heuristics (Q&A section, deposit figures) must not be
+ *  triggered or satisfied by theme chrome: the header mega menu lists
+ *  subtopic labels ("Đặt Cọc") on EVERY page, and related cards / prev-next
+ *  titles change with the corpus. Local on purpose: the exported
  *  `text`/`words` helpers are shared with tools/article-qa.mjs and stay
  *  byte-for-byte unchanged. */
 const mainText = (html) => {
-  const m = /<main\b[^>]*>([\s\S]*?)<\/main>/i.exec(String(html));
-  return text(m ? m[1] : html);
+  const src = String(html);
+  const m = /<article class="blog-article-body"[^>]*>([\s\S]*?)<\/article>/i.exec(src)
+    ?? /<main\b[^>]*>([\s\S]*?)<\/main>/i.exec(src);
+  return text(m ? m[1] : src);
 };
 
 export function tag(html, name) {
@@ -302,7 +305,7 @@ function checkAiGEO(pages, io, ctx) {
   for (const p of pages.filter((x) => x.kind === 'article')) {
     const html = io.read(p.path);
     const t = text(html);
-    const prose = mainText(html); // v67: article column only (see mainText)
+    const prose = mainText(html); // v67: article prose only (see mainText)
     add(/Câu hỏi thường gặp|FAQ|hỏi đáp/i.test(prose), 'no Q&A section', p.path);
     add(html.includes(business.hours.display) || !/mở cửa|giờ/i.test(t) || t.includes(business.hours.display), 'hours claim not backed by verified data', p.path);
     if (/cọc/i.test(prose)) add(prose.includes('2.000.000đ') && prose.includes('5.000.000đ'), 'deposit claim inconsistent with business.json', p.path);

@@ -1,12 +1,6 @@
-/* Content-site pages (v67 premium publishing theme): every generated page
-   consumes the shared MotoAI content shell — sticky site header, main
-   column, real footer. Tokens come ONLY from style.css (:root + dark block);
-   this file consumes them. One rule per surface (no base/glass double
-   layer). Loaded on content pages only — never on the chat homepage. */
+/* Content-site pages (v67 premium publishing theme): every generated page … */
 
-/* ---------- Document scroll (v60 contract) ----------
-   Content pages are NORMAL website pages: the DOCUMENT scrolls.
-   Direct, no :has() dependency, no iOS hacks. */
+/* ---------- Document scroll (v60 contract) */
 html {
   height: auto !important;
   min-height: 100%;
@@ -76,12 +70,7 @@ body.content-page .site-header {
   display: flex; align-items: center; gap: var(--space-2);
   max-width: var(--page-max); margin: 0 auto; min-width: 0;
 }
-/* Mobile header (v63 contract): row 1 = brand LEFT + theme/Menu RIGHT;
-   row 2 = open/closed status under the header (flex child AFTER
-   .site-actions — never inside the action group). v67: the status sits in
-   a RESERVED slot (fixed row height on mobile, fixed width on desktop) so
-   it never shifts the sticky header when it appears — zero CLS. The slot
-   is hidden on 900–1279px where the nav needs the width. */
+/* Mobile header (v63 contract): row 1 = brand LEFT + theme/Menu RIGHT; … */
 .site-status-slot { display: none; align-items: center; min-width: 0; }
 .site-header .motoai-status { margin: 0; min-height: 0; font-size: 0.7rem; line-height: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 @media (max-width: 767.98px) {
@@ -121,12 +110,7 @@ body.content-page .site-header {
   .site-nav a[aria-current="page"] { background: var(--color-primary-soft); color: var(--color-primary); font-weight: 650; }
   .site-brand { flex: 0 0 auto; }
 
-  /* Parent hub (v67) = crawlable link + disclosure toggle + glass MEGA
-     panel: one column per child category (category link, subtopic hubs,
-     cornerstone guides). Opened by hover (fine pointers), :focus-within,
-     the toggle (.open); .closed = dismissed with Escape/toggle. The panel
-     is anchored to the header row (not the item) and centred, so it can
-     never overflow the viewport at 900px; ::before bridges the hover gap. */
+  /* Parent hub (v67) = crawlable link + disclosure toggle + glass MEGA … */
   .site-header-inner { position: relative; }
   .site-nav-item { display: inline-flex; align-items: center; }
   .site-nav-item > .site-nav-parent { padding-right: 6px; }
@@ -168,11 +152,7 @@ body.content-page .site-header {
 @media (min-width: 900px) and (hover: hover) {
   .site-nav-item:hover:not(.closed) .site-nav-drop { display: block; }
 }
-/* Narrow desktops (900–1099px): three Vietnamese hub labels + toggles +
-   brand + actions must fit without overflow (v67: hub emoji, the Menu
-   label and the header search icon — search stays in the drawer — drop
-   here to pay for the disclosure toggles; measured ≈ 824/868px worst case
-   with DejaVu Sans metrics). */
+/* Narrow desktops (900–1099px): three Vietnamese hub labels + toggles + … */
 @media (min-width: 900px) and (max-width: 1099.98px) {
   .site-nav a { padding: 6px 8px; font-size: 0.8rem; }
   .site-nav-ico, .site-actions .motoai-menu-label, .site-actions .site-search-link { display: none; }
@@ -202,8 +182,7 @@ body.content-page .site-header {
 }
 .blog-theme-toggle:hover { border-color: var(--color-primary); color: var(--color-primary); }
 .blog-theme-toggle:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-/* v67 (AA): the Menu pill on content pages uses the fill token so white
-   text keeps >= 4.5:1 in dark mode (chat home keeps its own rule). */
+/* v67 (AA): the Menu pill on content pages uses the fill token so white … */
 body.content-page .motoai-menu { background: var(--color-primary-fill); border-color: transparent; }
 body.content-page .motoai-menu:hover,
 body.content-page .motoai-menu:active { background: var(--color-primary-fill-hover); }
@@ -360,7 +339,23 @@ body.content-page .blog-cluster-card,
 .blog-chip-parent { font-weight: 600; }
 
 /* ---------- Article screen ---------- */
-.byline { margin: 0; font-size: 0.74rem; color: var(--color-text-muted); }
+/* v67 article: larger H1, author/date block, measure, TOC state, reading … */
+[data-motoai-screen^="article-"] .blog-screen-title { font-size: var(--text-2xl); line-height: 1.22; letter-spacing: -0.01em; }
+.blog-meta { display: flex; align-items: center; gap: 10px; margin-top: var(--space-2); }
+.blog-meta-avatar { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary-fill); color: var(--color-on-primary); font-weight: 700; }
+.byline { margin: 0; display: flex; flex-direction: column; font-size: 0.74rem; line-height: 1.4; color: var(--color-text-muted); }
+.blog-meta-author { font-size: 0.84rem; font-weight: 650; color: var(--color-text); }
+@supports (animation-timeline: scroll()) {
+  [data-motoai-screen^="article-"]::before { content: ""; position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: var(--z-header); height: 3px; background: var(--color-primary); transform-origin: 0 50%; pointer-events: none; animation: read-progress linear both; animation-timeline: scroll(root); }
+  @keyframes read-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+.blog-prevnext { display: grid; gap: var(--space-3); margin-top: var(--space-4); }
+.blog-prevnext a { display: flex; flex-direction: column; gap: 4px; padding: var(--space-3) var(--space-4); border: 1px solid var(--glass-border-soft); border-radius: 18px; background: var(--glass-bg); color: var(--color-text); text-decoration: none; }
+.blog-prevnext a:hover { border-color: var(--color-primary); }
+.blog-prevnext-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: var(--color-primary); }
+.blog-prevnext-title { font-size: 0.9rem; font-weight: 600; line-height: 1.4; }
+@media (min-width: 768px) { .blog-prevnext { grid-template-columns: 1fr 1fr; } .blog-prevnext-next { grid-column: 2; text-align: right; } }
+@media (min-width: 1024px) { .blog-related .blog-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .blog-summary { padding: var(--space-3) var(--space-4); border-left: 3px solid var(--color-primary); }
 .blog-summary-title { margin: 0 0 4px; font-weight: 700; font-size: 0.8rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.6px; }
 .blog-summary p { margin: 0; font-size: 0.88rem; line-height: 1.6; color: var(--color-text); }
@@ -372,7 +367,7 @@ body.content-page .blog-cluster-card,
 @media (min-width: 1024px) {
   .blog-article-layout { grid-template-columns: 230px minmax(0, 720px); gap: 40px; align-items: start; }
   .blog-toc-mobile { display: none; }
-  .blog-toc-desktop { display: block; position: sticky; top: 16px; padding: 14px 16px; }
+  .blog-toc-desktop { display: block; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 76px); max-height: calc(100vh - 96px); overflow-y: auto; padding: 14px 16px; }
   .blog-toc-desktop .blog-toc-list { padding: 0; }
 }
 
@@ -386,8 +381,10 @@ body.content-page .blog-cluster-card,
 .blog-toc-mobile summary::after { content: '▾'; margin-left: auto; color: var(--color-text-muted); }
 .blog-toc-mobile[open] summary::after { content: '▴'; }
 .blog-toc-desktop { display: none; }
-.blog-toc-list { margin: 0; padding: 4px 16px 12px; display: flex; flex-direction: column; gap: 6px; }
-.blog-toc-list a { color: var(--color-text-muted); text-decoration: none; font-size: 0.84rem; line-height: 1.4; }
+.blog-toc-list { margin: 0; padding: 4px 16px 12px; display: flex; flex-direction: column; }
+.blog-toc-list a { display: flex; align-items: center; min-height: 44px; padding: 4px 0 4px 10px; border-left: 2px solid transparent; color: var(--color-text-muted); text-decoration: none; font-size: 0.84rem; line-height: 1.4; }
+.blog-toc-list a[aria-current] { color: var(--color-primary); font-weight: 650; border-left-color: var(--color-primary); }
+@media (min-width: 1024px) and (pointer: fine) { .blog-toc-desktop .blog-toc-list a { min-height: 32px; } }
 .blog-toc-list a:hover { color: var(--color-primary); }
 .blog-toc-list .toc-l3 { padding-left: 14px; }
 .blog-toc-title { margin: 0 0 8px; font-weight: 700; font-size: 0.82rem; color: var(--color-text); }
@@ -403,8 +400,11 @@ body.content-page .blog-article-body {
   line-height: 1.78;
 }
 .blog-article-body h1 { font-size: 1.5rem; line-height: 1.3; margin: 0 0 8px; }
-.blog-article-body h2 { font-size: 1.12rem; margin: 1.5em 0 0.55em; }
-.blog-article-body h3 { font-size: 0.98rem; margin: 1.3em 0 0.4em; }
+.blog-article-body h2 { font-size: clamp(1.18rem, 1.08rem + 0.4vw, 1.35rem); line-height: 1.3; margin: 1.6em 0 0.55em; }
+.blog-article-body h3 { font-size: 1.05rem; line-height: 1.35; margin: 1.3em 0 0.4em; }
+.blog-article-body :is(h2, h3) { scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 96px); }
+.blog-article-body > :where(p, ul, ol, blockquote, h2, h3, h4, dl) { max-width: var(--measure); }
+.blog-article-body li::marker { color: var(--color-primary); }
 .blog-article-body p, .blog-article-body li { font-size: inherit; line-height: var(--leading-relaxed); }
 .blog-article-body p { margin: 0 0 0.9em; }
 .blog-article-body ul, .blog-article-body ol { margin: 0 0 0.9em; padding-left: 1.3em; }
@@ -479,8 +479,7 @@ body.content-page .blog-article-body {
 }
 .blog-footer-cta:hover { background: var(--color-primary-soft); }
 .blog-footer-cta:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-/* v67 mega footer: NAP block, 2-col link grid on phones → 4-col ≥768,
-   brand column beside the grid ≥1024, bottom bar with © + back-to-top. */
+/* v67 mega footer: NAP block, 2-col link grid on phones → 4-col ≥768, … */
 .blog-footer-nap { display: flex; flex-direction: column; gap: 2px; margin: 4px 0 0; font-style: normal; font-size: 0.8rem; line-height: 1.5; color: var(--color-text-muted); }
 .blog-footer-nap strong { color: var(--color-text); font-size: 0.85rem; }
 .blog-footer-nap a, .blog-footer-top { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-weight: 650; }

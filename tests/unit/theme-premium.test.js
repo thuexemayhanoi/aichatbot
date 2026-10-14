@@ -108,3 +108,46 @@ test('TH-020: footer year is deterministic — launch year to newest content yea
   const expected = y > 2026 ? `© 2026–${y} MotoAI` : '© 2026 MotoAI';
   for (const p of PAGES) assert.ok(footerOf(read(p)).includes(expected), `${p}: ${expected}`);
 });
+
+// ---------- Batch D: article page ----------
+
+import { articleContext, relatedFor, prevNextFor, viDate, RELATED_CARDS } from '../../tools/build-blog.mjs';
+
+const mk = (id, category, slug) => ({ article_id: id, category, slug, title: slug });
+
+test('TH-034: related = subtopic ring → category ring → cluster ring, deterministic, never self', () => {
+  const pub = [mk('A1', 'APP', 'a1'), mk('A2', 'APP', 'a2'), mk('A3', 'APP', 'a3'), mk('G1', 'GUIDE', 'g1'), mk('G2', 'GUIDE', 'g2'), mk('R1', 'RENT', 'r1')];
+  const ctx = articleContext(pub, {});
+  const ids = (a) => relatedFor(a, ctx).map((x) => x.article_id);
+  assert.deepEqual(ids(pub[0]), ['A2', 'A3', 'G1', 'G2'], 'category ring first, then same cluster (C-APP)');
+  assert.deepEqual(ids(pub[2]), ['A1', 'A2', 'G1', 'G2'], 'ring wraps after the newest article');
+  assert.ok(!ids(pub[5]).includes('R1'), 'never self');
+  assert.deepEqual(ids(pub[0]), ids(pub[0]), 'stable');
+  assert.equal(RELATED_CARDS, 4);
+});
+
+test('TH-035: prev/next stay inside the category in manifest order', () => {
+  const pub = [mk('A1', 'APP', 'a1'), mk('G1', 'GUIDE', 'g1'), mk('A2', 'APP', 'a2'), mk('A3', 'APP', 'a3')];
+  const ctx = articleContext(pub, {});
+  assert.deepEqual(prevNextFor(pub[0], ctx), { prev: null, next: pub[2] });
+  assert.deepEqual(prevNextFor(pub[2], ctx), { prev: pub[0], next: pub[3] });
+  assert.deepEqual(prevNextFor(pub[1], ctx), { prev: null, next: null });
+  assert.equal(viDate('2026-09-26'), '26/09/2026');
+});
+
+test('TH-030..035: generated article carries meta block, <time>, prev/next, 4 related cards', () => {
+  const p = `blog/${firstDir}/${first.slug}/index.html`;
+  const html = read(p);
+  assert.ok(html.includes(`<time datetime="${first.published_date}">${viDate(first.published_date)}</time>`), 'localised <time>');
+  assert.ok(html.includes('class="blog-meta-avatar" aria-hidden="true"'), 'author avatar');
+  assert.match(html, /<nav class="blog-prevnext" aria-label="[^"]+">\s*<a class="blog-prevnext-next" rel="next"/, 'oldest article: next only');
+  const rel = html.slice(html.indexOf('<section class="blog-related">'), html.indexOf('</section>', html.indexOf('<section class="blog-related">')));
+  assert.equal((rel.match(/class="blog-card"/g) ?? []).length, 4, '4 related cards');
+  assert.ok(!rel.includes(`/${first.slug}/"`), 'related never links self');
+  const h1 = /<h1 class="blog-screen-title">([^<]*)<\/h1>/.exec(html)[1];
+  assert.equal(h1, first.title.replace(/&/g, '&amp;'), 'H1 text unchanged');
+  const css = read('assets/css/blog.css');
+  assert.match(css, /animation-timeline:\s*scroll\(root\)/, 'CSS-only reading progress');
+  assert.match(css, /\.blog-article-body > :where\([^)]*\)\s*\{\s*max-width:\s*var\(--measure\)/, 'readable measure');
+  assert.ok(read('assets/js/app-shell.js').includes("'aria-current', 'location'"), 'TOC scrollspy');
+});

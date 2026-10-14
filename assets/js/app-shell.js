@@ -1,13 +1,6 @@
-/**
- * MotoAI content-site runtime (v67). Runs on every generated page except
- * the chat home (assets/js/main.js owns that screen). Vanilla ES module.
- * - Theme (Light / Dark / Auto): same storage + tokens as the Agent app
- * - Menu drawer: focus moves in on open and back on close, Tab wraps,
- *   Escape/backdrop/link close; accordion groups (one open at a time)
- * - Verified open/closed status + contact hrefs from business.json only
- * - Mega menu (APG disclosure nav): parent <a> navigates, toggle button
- *   opens; CSS hover/focus-within also open; Escape + outside click close
- */
+/** MotoAI content-site runtime (v67), every page except the chat home:
+ *  theme, drawer (focus in/out, Tab wrap), verified status + contact hrefs
+ *  (business.json only), mega menu (APG disclosure), TOC scrollspy. */
 import { initTheme } from './theme.js?v=63';
 import { computeStatus, renderStatus } from './business-status.js?v=63';
 
@@ -94,12 +87,9 @@ if (statusEl || contactNodes.length) {
     .catch(() => { /* data unavailable: status + links stay hidden */ });
 }
 
-// --- Mega menu ---
-// Visible = CSS hover (fine pointers) | :focus-within | .open (toggle);
-// .closed = dismissed (Escape/toggle) while hover/focus would still show it,
-// cleared once pointer and focus have both left. aria-expanded always
-// mirrors the computed visibility, so touch (no hover, no button focus on
-// iOS) and mouse/keyboard agree.
+// --- Mega menu --- visible = hover | :focus-within | .open; .closed =
+// dismissed while hover/focus would still show it. aria-expanded mirrors
+// the computed visibility (iOS buttons take no focus).
 const navItems = [...document.querySelectorAll('.site-nav-item')];
 const shown = (it) => getComputedStyle(it.querySelector('.site-nav-drop')).display !== 'none';
 const sync = (it) => it.querySelector('.site-nav-toggle')?.setAttribute('aria-expanded', String(shown(it)));
@@ -128,3 +118,18 @@ for (const item of navItems) {
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.site-nav')) closeDropitems(null);
 });
+
+// --- TOC scrollspy: aria-current="location" on the section in view ---
+const tocLinks = [...document.querySelectorAll('.blog-toc-list a')];
+if (tocLinks.length && 'IntersectionObserver' in window) {
+  const spy = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      for (const a of tocLinks) {
+        if (a.hash === `#${e.target.id}`) a.setAttribute('aria-current', 'location');
+        else a.removeAttribute('aria-current');
+      }
+    }
+  }, { rootMargin: '-90px 0px -70% 0px' });
+  for (const a of tocLinks) { const h = $(a.hash.slice(1)); if (h) spy.observe(h); }
+}

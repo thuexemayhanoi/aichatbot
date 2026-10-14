@@ -1,10 +1,6 @@
-/* MotoAI chat UI — scoped under .motoai-app to avoid host CSS conflicts.
-   Design-token system (v43.1): calm indigo/slate palette, premium-assistant
-   character. Red is RESERVED for real errors only (--color-error). */
+/* MotoAI chat UI — scoped under .motoai-app to avoid host CSS conflicts. */
 
-/* ---------- Design tokens (v67: ONE :root block + ONE dark block) ----------
-   Shared by the chat homepage and every content page. blog.css only consumes
-   these tokens; it never defines colours of its own. */
+/* ---------- Design tokens (v67: ONE :root block + ONE dark block) */
 :root {
   /* surfaces */
   --color-bg: #f4f6f9;
@@ -16,10 +12,8 @@
   --color-primary: #4f46e5;
   --color-primary-hover: #4338ca;
   --color-primary-soft: #eef0fe;
-  /* v67: fill under white text (buttons, active chips, current page).
-     Kept separate from --color-primary so the DARK theme can use a lighter
-     indigo for text/accents (readable on dark surfaces) and a deeper one as
-     a fill (white text stays >= 4.5:1 — WCAG AA). */
+  /* v67: fill under white text (buttons, chips, current page) — separate
+     from --color-primary so dark mode keeps white text >= 4.5:1. */
   --color-primary-fill: #4f46e5;
   --color-primary-fill-hover: #4338ca;
   --color-on-primary: #ffffff;
@@ -139,10 +133,7 @@ html[data-motoai-theme="dark"] {
 /* ---------- Base ---------- */
 * { box-sizing: border-box; }
 
-/* v60: the ROOT document is a normal scrolling document by default.
-   No global html/body height:100% — no global overflow lock. The chat
-   homepage (body.chat-home) locks its own viewport below; content pages
-   never inherit any app lock. */
+/* v60: the ROOT document is a normal scrolling document by default. */
 html {
   margin: 0;
   padding: 0;
@@ -246,8 +237,7 @@ body {
 .motoai-status[data-tone="error"] { color: var(--color-error); }
 .motoai-status[data-tone="success"] { color: var(--color-success); }
 
-/* v58 mobile header contract: status never steals width from the identity.
-   Below 768px it wraps onto its own full-width row (it is hidden when empty). */
+/* v58 mobile header contract: status never steals width from the identity. */
 @media (max-width: 767px) {
   .motoai-status {
     order: 5;               /* after Auto/Menu in row 1 */
@@ -517,8 +507,7 @@ body {
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) / 2);
   border-top: 1px solid var(--color-border);
 }
-/* App bottom-nav look: icon above a small label, flat transparent cells.
-   Deliberately different from quick chips (no pill, no per-item border/bg). */
+/* App bottom-nav look: icon above a small label, flat transparent cells. */
 .motoai-dock-item {
   display: flex;
   flex-direction: column;
@@ -589,9 +578,7 @@ body[data-motoai-embed="1"] .motoai-dock { display: none; }
 }
 .motoai-group-items[hidden] { display: none; }
 
-/* Hub → children hierarchy inside the Cẩm nang drawer group (v61):
-   the parent hub keeps a real crawlable link with a 44px+ touch target,
-   children sit indented underneath — no deep accordion nesting. */
+/* Hub → children hierarchy inside the Cẩm nang drawer group (v61): */
 .motoai-hub { padding-top: 2px; }
 .motoai-hub-link {
   display: flex; align-items: center; min-height: 48px;
@@ -603,9 +590,7 @@ body[data-motoai-embed="1"] .motoai-dock { display: none; }
 }
 .motoai-hub-items li a { display: flex; align-items: center; min-height: 44px; font-size: 0.9rem; }
 
-/* Drawer theme row (v63): shared by the chat homepage AND content pages —
-   one implementation, identical look. Kept in sync by theme.js which
-   preserves the "🌗 Chủ đề: " label on .motoai-drawer-theme toggles. */
+/* Drawer theme row (v63): shared by the chat homepage AND content pages — … */
 .motoai-drawer-theme {
   width: 100%;
   justify-content: flex-start;
@@ -660,8 +645,7 @@ body[data-motoai-embed="1"] .motoai-app {
 .motoai-reset:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
 /* ---------- v47.1: chatbot-first shell + menu drawer ---------- */
-/* The chatbot IS the homepage — no hero above it. Supporting SEO copy
-   (.motoai-seo) renders AFTER the app, unobtrusive and muted. */
+/* The chatbot IS the homepage — no hero above it. Supporting SEO copy … */
 .motoai-shell {
   max-width: 720px;
   margin: 0 auto;
@@ -669,8 +653,7 @@ body[data-motoai-embed="1"] .motoai-app {
   flex-direction: column;
 }
 
-/* The chat app fills the viewport exactly, edge-to-edge — "full màn hình như app".
-   The SEO copy lives below the 100dvh app, so it is never in the first viewport. */
+/* The chat app fills the viewport exactly, edge-to-edge — "full màn hình như app". */
 .motoai-shell .motoai-app { height: 100dvh; min-height: 100dvh; }
 
 /* Unobtrusive SEO copy below the chatbot (hidden in embed mode). */
@@ -816,11 +799,8 @@ body[data-motoai-embed="1"] .motoai-drawer,
 body[data-motoai-embed="1"] .motoai-drawer-backdrop,
 body[data-motoai-embed="1"] .motoai-menu { display: none; }
 body[data-motoai-embed="1"] .motoai-app { max-width: none; height: 100%; min-height: 0; }
-/* ---------- v47.4 / v60: mobile app-lock refinements (iPhone Safari) ----------
-   The document never scroll-panes during chat use: CHAT HOMEPAGE ONLY
-   (body.chat-home) locks the viewport. Per CSS spec, overflow on body with
-   html:visible propagates to the viewport — no html-level lock needed.
-   Content pages never load this lock. Embed mode keeps its own flow. */
+/* ---------- v47.4 / v60: iPhone app-lock — CHAT HOMEPAGE ONLY (body
+   overflow propagates to the viewport); content pages never lock. */
 body.chat-home { overflow: hidden; overscroll-behavior: none; }
 body[data-motoai-embed="1"] { overflow: auto; overscroll-behavior: auto; } /* embed unchanged */
 
@@ -828,14 +808,9 @@ body[data-motoai-embed="1"] { overflow: auto; overscroll-behavior: auto; } /* em
 .motoai-shell .motoai-app { position: fixed; inset: 0; }
 body[data-motoai-embed="1"] .motoai-app { position: static; inset: auto; }
 
-/* ---------- EMBED HEIGHT CHAIN FIX (embed-layout-2) ----------
-   The iframe's own 100% height is canonical in embed mode: the host /shop
-   panel/iframe already follows visualViewport. Previously .motoai-app used
-   height:100% but .motoai-shell had NO definite height, so 100% did not
-   resolve reliably on iOS Safari and the app collapsed to content height,
-   leaving a large blank area below the composer. Definite chain:
-   html -> body -> .motoai-shell -> .motoai-app, all height:100%, min-height:0.
-   No independent 100dvh layout is used in embed mode. */
+/* ---------- EMBED HEIGHT CHAIN FIX (embed-layout-2): definite chain
+   html → body → .motoai-shell → .motoai-app, all 100%/min-height:0 (iOS
+   collapsed the app to content height otherwise); no 100dvh in embed. */
 body[data-motoai-embed="1"] {
   width: 100%;
   height: 100%;
@@ -872,8 +847,7 @@ body[data-motoai-embed="1"] .motoai-app {
 .motoai-header, .motoai-quick, .motoai-composer { flex: 0 0 auto; }
 .motoai-messages { overscroll-behavior-y: contain; } /* chat scroll never chains to body */
 
-/* Pristine state: a lone greeting sits upper-middle instead of hugging the
-   top with dead space below. Applies only while it is the only message. */
+/* Pristine state: a lone greeting sits upper-middle instead of hugging the … */
 .motoai-messages > .motoai-msg:only-child {
   margin-top: auto;
   margin-bottom: auto;
@@ -882,9 +856,7 @@ body[data-motoai-embed="1"] .motoai-app {
 
 
 /* ---------- v49: responsive device classes (mobile-first) ---------- */
-/* Base (<=767px) is the mobile app-lock above: full-screen chat, messages
-   86% wide, drawer min(84vw, 300px). Larger classes below do NOT stretch the
-   phone UI — they re-center a comfortable chat column and relax density. */
+/* Base (<=767px) is the mobile app-lock above: full-screen chat, messages … */
 
 /* Laptop / tablet landscape 768–1199px: centered chat application. */
 @media (min-width: 768px) {
