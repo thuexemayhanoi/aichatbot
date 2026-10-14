@@ -42,10 +42,10 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 
 | ID | Area | Problem | Fix | Files | Risk | Status | Evidence |
 |---|---|---|---|---|---|---|---|
-| TH-001 | Tokens | No typography/spacing/z-index/measure scale; glass tokens split from the main token block | One `:root` block (colour, fill, text scale `--text-*`, leading, `--space-1..8`, radius, shadow, motion, `--z-*`, `--measure`, `--glass-*`) + one dark block in `style.css`; `blog.css` only consumes tokens | `assets/css/style.css`, `assets/css/blog.css` | M (ui-tokens test: dark block must stay the last `html[data-motoai-theme="dark"]` in style.css) | TODO | |
-| TH-002 | A11y contrast | White text on dark-mode primary fill = 3.6:1 | `--color-primary-fill` (light `#4f46e5`, dark `#5a56e0` → 5.5:1 with white); all filled controls on content pages use it; content-page override for `.motoai-menu` | `style.css`, `blog.css` | L | TODO | |
-| TH-003 | Cache | CSS/JS change must bust iOS Safari caches | `BUILD_VERSION` v66→v67, `?v=` templated from it; `index.html` + `service-worker.js` bumped in lockstep | `tools/app-shell.mjs`, `index.html`, `service-worker.js` | L | TODO | |
-| TH-004 | CSS budget | `blog.css` duplicates (base vs glass layer) | Consolidate to one rule per surface; keep regex-pinned contract blocks verbatim; raise `seo-score` CSS budget only if still needed, with reason | `blog.css`, `tools/seo-score.mjs` | M | TODO | |
+| TH-001 | Tokens | No typography/spacing/z-index/measure scale; glass tokens split from the main token block | One `:root` block (colour, fill, text scale `--text-*`, leading, `--space-1..8`, radius, shadow, motion, `--z-*`, `--measure`, `--glass-*`) + one dark block in `style.css`; `blog.css` only consumes tokens | `assets/css/style.css`, `assets/css/blog.css` | M (ui-tokens test: dark block must stay the last `html[data-motoai-theme="dark"]` in style.css) | DONE | batch A. `style.css` `:root` (L8–98) + single dark block (L100); every `var(--*)` in `blog.css` is defined in `style.css` (comm diff = 0 missing); `html[data-motoai-theme="dark"]` occurs once in `style.css`; `.visually-hidden` (used by the price-table caption, never styled before) added |
+| TH-002 | A11y contrast | White text on dark-mode primary fill = 3.6:1 | `--color-primary-fill` (light `#4f46e5`, dark `#5a56e0` → 5.5:1 with white); all filled controls on content pages use it; content-page override for `.motoai-menu` | `style.css`, `blog.css` | L | DONE | batch A. Fill token consumed by `.screen-ask-btn`, `.blog-search button`, `.blog-chip[aria-current]`, `.blog-page-current`, `body.content-page .motoai-menu` (chat home keeps the test-pinned `--color-primary` rule, TH-200) |
+| TH-003 | Cache | CSS/JS change must bust iOS Safari caches | `BUILD_VERSION` v66→v67, `?v=` templated from it; `index.html` + `service-worker.js` bumped in lockstep | `tools/app-shell.mjs`, `index.html`, `service-worker.js`, `package.json` | L | DONE | batch A. `?v=${V}` derived from `BUILD_VERSION`; 1,814 generated pages carry `v67`. Lockstep gap found: `tests/unit/pwa.test.js` derives the SW version from `package.json` major → `package.json` 66.0.0→67.0.0 is part of every bump |
+| TH-004 | CSS budget | `blog.css` duplicates (base vs glass layer) | Consolidate to one rule per surface; keep regex-pinned contract blocks verbatim; raise `seo-score` CSS budget only if still needed, with reason | `blog.css`, `tools/seo-score.mjs` | M | DONE | batch A. `blog.css` 35,882 → 27,053 B; total CSS 64,298 → 57,808 B (budget 65,536 unchanged, headroom 7.7 KB); contract regexes (v60 scroll, v61 glass, v63 header) verified by `node --test` |
 
 ### P0 — batch B: sticky header, accessible mega menu, drawer
 
@@ -135,10 +135,12 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 
 | Batch | Commit | Tests | Build | site-audit | seo-score | Notes |
 |---|---|---|---|---|---|---|
-| matrix | — | — | — | — | — | audit only |
+| matrix | `3b7c0cc6` | — | — | — | — | audit only |
+| A (TH-001..004) | (SHA recorded in the batch-B commit) | `node --test` 1003/1003 pass (238 s) | 75 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; `data/blog/**` unchanged | 174,480 internal URLs, 0 broken, 0 issues | 99.5/100 (623 pre-existing per-page notes, UX 10/10) | CSS 57,808 B / 65,536; JS 231,930 B / 232,000 (unchanged). Found + fixed: `package.json` major must track `BUILD_VERSION` (`pwa.test.js`) |
 
 ## Next steps from checkpoint
 
-1. Batch A (TH-001..004) → then B, C, D, E, F, G in order.
+1. Batch A done → next B (TH-010..013), then C, D, E, F, G in order.
 2. After each batch: run the loop, record commit SHA + results in **Batch log**, flip item status with evidence.
 3. If the JS guard or CSS budget blocks a batch, trim first (TH-013 / TH-004), bump only with a documented reason.
+4. Every `BUILD_VERSION` bump = 4 files in lockstep: `tools/app-shell.mjs`, `index.html`, `service-worker.js`, `package.json` (major).

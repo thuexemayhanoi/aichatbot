@@ -34,7 +34,9 @@ export { SITE };
 
 /** Build/cache version: bumped every release that changes shell CSS/JS so
  *  iOS Safari can never keep serving a stale v62 asset. */
-export const BUILD_VERSION = 'v66';
+export const BUILD_VERSION = 'v67';
+/** Cache-bust suffix for shell assets (derived from BUILD_VERSION). */
+const V = BUILD_VERSION.replace(/^v/, '');
 
 /** Escape & for HTML text/attribute contexts (titles, descriptions, names). */
 export const esc = (s) => String(s).replace(/&(?![a-z]+;|#)/gi, '&amp;');
@@ -75,8 +77,8 @@ export function pageHead({ title, description, path, ogType = 'website' }) {
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${SITE}assets/icons/icon-512.png">
-  <link rel="stylesheet" href="${prefix}assets/css/style.css?v=66">
-  <link rel="stylesheet" href="${prefix}assets/css/blog.css?v=66">
+  <link rel="stylesheet" href="${prefix}assets/css/style.css?v=${V}">
+  <link rel="stylesheet" href="${prefix}assets/css/blog.css?v=${V}">
   ${NO_FLASH_THEME}
 </head>
 <body class="content-page">
@@ -280,8 +282,8 @@ export function askAgentAction(topic) {
 }
 
 function shellScripts({ search }) {
-  return (search ? `  <script src="/assets/js/blog.js?v=66"></script>\n` : '')
-    + `  <script type="module" src="/assets/js/app-shell.js?v=66"></script>\n`;
+  return (search ? `  <script src="/assets/js/blog.js?v=${V}"></script>\n` : '')
+    + `  <script type="module" src="/assets/js/app-shell.js?v=${V}"></script>\n`;
 }
 
 /**

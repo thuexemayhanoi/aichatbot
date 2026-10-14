@@ -2,7 +2,9 @@
    Design-token system (v43.1): calm indigo/slate palette, premium-assistant
    character. Red is RESERVED for real errors only (--color-error). */
 
-/* ---------- Design tokens ---------- */
+/* ---------- Design tokens (v67: ONE :root block + ONE dark block) ----------
+   Shared by the chat homepage and every content page. blog.css only consumes
+   these tokens; it never defines colours of its own. */
 :root {
   /* surfaces */
   --color-bg: #f4f6f9;
@@ -14,6 +16,12 @@
   --color-primary: #4f46e5;
   --color-primary-hover: #4338ca;
   --color-primary-soft: #eef0fe;
+  /* v67: fill under white text (buttons, active chips, current page).
+     Kept separate from --color-primary so the DARK theme can use a lighter
+     indigo for text/accents (readable on dark surfaces) and a deeper one as
+     a fill (white text stays >= 4.5:1 — WCAG AA). */
+  --color-primary-fill: #4f46e5;
+  --color-primary-fill-hover: #4338ca;
   --color-on-primary: #ffffff;
 
   /* text */
@@ -32,6 +40,22 @@
   --color-error: #d2193c; /* the ONLY red: real errors/destructive states */
   --color-error-soft: #fdeaee;
 
+  /* type scale (v67) — system stack, no webfonts (seo-score forbids them) */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --text-xs: 0.72rem;
+  --text-sm: 0.82rem;
+  --text-md: 0.9rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.35rem;
+  --text-2xl: clamp(1.6rem, 1.15rem + 1.6vw, 2.2rem);
+  --text-article: clamp(1.0375rem, 0.55vw + 1.0125rem, 1.125rem); /* 16.6–18px */
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.78;
+  --measure: 72ch; /* readable article column: 65–75ch */
+
   /* layout scale */
   --radius-sm: 10px;
   --radius-md: 14px;
@@ -42,6 +66,11 @@
   --space-3: 12px;
   --space-4: 16px;
   --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+  --page-max: 1160px;
+  --page-gutter: 16px;
 
   /* elevation & motion */
   --shadow-sm: 0 1px 3px rgba(26, 35, 51, 0.08);
@@ -49,6 +78,23 @@
   --duration-fast: 140ms;
   --duration-slow: 280ms;
   --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  /* stacking (v67) */
+  --z-header: 40;
+  --z-drawer: 41;
+  --z-progress: 45;
+  --z-drop: 60;
+
+  /* glass surfaces (v67, consumed by content pages only) */
+  --glass-bg: rgba(255, 255, 255, 0.58);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-bg-soft: rgba(255, 255, 255, 0.38);
+  --glass-border-soft: rgba(15, 23, 42, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.85);
+  --glass-blur: 16px;
+  --glass-shadow: 0 6px 24px rgba(31, 41, 55, 0.08), 0 1px 3px rgba(31, 41, 55, 0.06);
+  --glass-shadow-lift: 0 12px 32px rgba(31, 41, 55, 0.14), 0 2px 6px rgba(31, 41, 55, 0.08);
+  --page-bg: #f7f8fc;
 }
 
 html[data-motoai-theme="dark"] {
@@ -60,6 +106,8 @@ html[data-motoai-theme="dark"] {
   --color-primary: #7c7cf4;
   --color-primary-hover: #9494f7;
   --color-primary-soft: #262a4d;
+  --color-primary-fill: #5a56e0;       /* white on this = 5.5:1 */
+  --color-primary-fill-hover: #4f4bd6;
   --color-on-primary: #ffffff;
 
   --color-text: #e7ecf4;
@@ -77,6 +125,15 @@ html[data-motoai-theme="dark"] {
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.5);
+
+  --glass-bg: rgba(22, 24, 33, 0.6);
+  --glass-bg-strong: rgba(26, 28, 38, 0.86);
+  --glass-bg-soft: rgba(22, 24, 33, 0.4);
+  --glass-border-soft: rgba(255, 255, 255, 0.07);
+  --glass-highlight: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 6px 24px rgba(0, 0, 0, 0.32), 0 1px 3px rgba(0, 0, 0, 0.24);
+  --glass-shadow-lift: 0 12px 32px rgba(0, 0, 0, 0.42), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --page-bg: #0d0e14;
 }
 
 /* ---------- Base ---------- */

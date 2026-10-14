@@ -16,7 +16,7 @@
  */
 'use strict';
 
-const CORE_VERSION = 'v66';
+const CORE_VERSION = 'v67';
 const SHELL_CACHE = 'motoai-shell-' + CORE_VERSION;
 const DATA_CACHE = 'motoai-data-' + CORE_VERSION;
 const KNOWN_CACHES = [SHELL_CACHE, DATA_CACHE];
@@ -26,8 +26,8 @@ const SHELL_ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './assets/css/style.css?v=66',
-  './assets/js/main.js?v=66',
+  './assets/css/style.css?v=67',
+  './assets/js/main.js?v=67',
   './assets/js/ai-settings.js',
   './assets/js/pwa.js',
   './assets/icons/icon.svg'
