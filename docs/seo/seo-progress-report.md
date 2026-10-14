@@ -79,14 +79,32 @@ Không có chỉ số nào ở đây là xếp hạng Google; không cam kết T
 | Ảnh minh họa | Bài chưa có ảnh riêng; không tạo ảnh/số liệu giả. Bổ sung khi có ảnh thật kèm ALT |
 | H1 homepage "Hỗ trợ Agent" | Thiết kế chatbot-first có test bảo vệ; title/schema mang từ khóa chính |
 
-## 7. Vòng tiếp theo (khi có dữ liệu Search Console)
+## 7. Vòng 2 — ZERO-DATA / cold start (14/10/2026)
+
+Website chưa có Search Console/GA4/thứ hạng thật (kiểm tra kết nối: không có). Mọi quyết định vòng này dựa trên dữ liệu công khai đo được, có ghi nguồn và ngày — chi tiết tại [cold-start/README.md](cold-start/README.md).
+
+| Hạng mục | Nội dung | Bằng chứng / kết quả |
+|---|---|---|
+| Nghiên cứu SERP | 55 truy vấn tiếng Việt, Google Việt Nam, top 10–20 (`data/seo/serp-snapshots/2026-10-14.json`) | AI Overview 46/55 SERP; local pack 13/55; website xuất hiện 4/55 (top 10: "app thuê xe máy" #7, #9) |
+| Nhu cầu từ khóa | 713 từ khóa có volume do công cụ trả về (`data/seo/keyword-demand.json`) | 192 trong phạm vi; còn lại là thành phố khác, ý định khác (thi bằng, mua xe, ô tô), từ khóa site chị em, "gần tôi" |
+| Đối thủ & ý định | [competitor-map.md](cold-start/competitor-map.md), [serp-intent.md](cold-start/serp-intent.md) | Nhóm Facebook có mặt ở 53/55 SERP; truy vấn pháp lý do trang hỏi đáp pháp luật nắm; truy vấn quận/khu vực có local pack |
+| Topical map & content gap | [topical-map.md](cold-start/topical-map.md), [content-gap.md](cold-start/content-gap.md) | Đề xuất bài mới (cần owner thêm ID vào ma trận): "Xe máy điện: có cần bằng lái, bao nhiêu tuổi được đi" (6.350 lượt/tháng đo được, chưa có bài riêng); "Vùng phát thải thấp Vành đai 1 và người thuê xe máy xăng" (thí điểm từ 1/7/2026 tại phường Hoàn Kiếm — cần đối chiếu văn bản gốc) |
+| Kỹ thuật: URL trùng | Google hiển thị 2 URL dạng `/…/index.html`; 226 trang có link nội bộ dạng này (từ body) | Builder chuẩn hóa link nội bộ về URL thư mục (`canonicalIndexLinks`), body giữ nguyên → 0 trang còn link `/index.html` |
+| Khám phá URL không cần GSC | IndexNow: khóa công khai `config/indexnow.json` + `/<key>.txt`, workflow `indexnow.yml` (hằng ngày, URL có lastmod 2 ngày gần nhất; chạy tay `all` cho lần đầu) | Bing/Yandex/Seznam/Naver; Google vẫn đọc `sitemap.xml` |
+| Title/meta theo nhu cầu đo được | BA-0029 → "không có bằng lái xe máy phạt bao nhiêu" (5.400; các biến thể "không bằng lái…" 6.600, 1.000, 880…); BA-0011 → "mức phạt nồng độ cồn xe máy" (5.400) | Bài đã trả lời đúng câu hỏi; chỉ đổi lớp `data/seo/article-meta.json` (rollback = xóa entry) |
+| Công tắc DATA-DRIVEN | `data/seo/performance/` trống → ZERO-DATA; đặt tệp xuất Search Console vào đó → công cụ tự sinh `data-driven.md` | Test chặn tệp xuất giả; workflow giám sát SEO kiểm tra báo cáo luôn khớp dữ liệu (`--check`) |
+
+Chưa làm được trong phiên (cần owner, không tự quyết): xác minh Google Search Console/Bing Webmaster Tools; Google Business Profile cho truy vấn local pack; thêm ID bài mới vào ma trận 2.000 bài.
+
+## 8. Vòng tiếp theo (khi có dữ liệu Search Console)
 
 1. Lấy truy vấn/CTR thật theo URL → điều chỉnh title/meta cho trang có hiển thị cao nhưng CTR thấp (qua `data/seo/article-meta.json`).
 2. Ưu tiên cụm K08 (xe máy điện) và K02 (giá thuê) — có volume đo được và chưa thuộc site chị em.
 3. Mọi sửa body tiếp tục qua `tools/seo-body-review.mjs`.
 
-## 8. Rollback
+## 9. Rollback
 
 - Metadata một bài: xóa entry trong `data/seo/article-meta.json` → `node tools/build-blog.mjs`.
 - Body một bài: `git revert` commit `content(seo): body review …` chứa ID bài (mỗi commit ≤ 10 body) rồi build.
-- Toàn bộ: `git revert` các commit v70 (không có thay đổi dữ liệu nào ngoài repo).
+- Toàn bộ: `git revert` các commit v70/v71 (không có thay đổi dữ liệu nào ngoài repo).
+- IndexNow: tắt workflow `indexnow.yml`; xóa `config/indexnow.json` và tệp khóa `<key>.txt` ở gốc.

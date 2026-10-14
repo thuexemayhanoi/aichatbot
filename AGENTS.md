@@ -42,6 +42,7 @@
 
 - Title/H1, meta description và từ khóa chính SEO của bài PUBLISHED nằm ở `data/seo/article-meta.json` (không sửa `published.json`, không ghi đè body). Builder áp dụng qua `tools/seo-meta.mjs`; xóa một entry = rollback bài đó về metadata manifest.
 - Liên kết nội bộ (khối "Cùng chủ đề" theo họ chủ đề + "Bài viết liên quan" cân bằng inbound) do `tools/seo-links.mjs` lập kế hoạch khi build — không chèn link thủ công hàng loạt vào body.
+- Chế độ ZERO-DATA (chưa có Search Console/GA4): `node tools/seo-cold-start.mjs` đọc SERP thật (`data/seo/serp-snapshots/`), nhu cầu từ khóa đo được (`data/seo/keyword-demand.json`) và quy tắc `config/seo-cold-start.json` → `docs/seo/cold-start/` (đối thủ, ý định SERP, topical map, content gap, baseline hiển thị). Đặt tệp xuất Search Console thật vào `data/seo/performance/` để tự chuyển DATA-DRIVEN; không tạo số liệu giả. IndexNow (`tools/indexnow.mjs`, workflow `indexnow.yml`) báo URL mới/cập nhật cho Bing và các máy tìm kiếm IndexNow.
 - Audit toàn site: `node tools/seo-master-audit.mjs` → `docs/seo/seo-master-matrix.{csv,json,md}`, `docs/seo/keyword-cluster-map.md`; tiến độ: `docs/seo/seo-progress-report.md`. Khoảng trống nội dung (FAQ, bảng, nguồn pháp lý) chỉ xử lý qua quy trình review body riêng.
 
 ## Kiểm tra

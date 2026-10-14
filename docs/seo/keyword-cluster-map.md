@@ -205,12 +205,12 @@ Kết luận: cụm **xe máy điện (K08)** là cơ hội thương mại lớn
   - Camera phạt nguội khi thuê xe: mức phạt và trách nhiệm — `/blog/an-toan/camera-phat-nguoi-khi-thue-xe/` (từ khóa: camera phạt nguội khi thuê xe)
   - Vượt đèn đỏ và camera phạt nguội xe máy: quy định, cách tránh — `/blog/an-toan/den-do-va-camera-phat-nguoi/` (từ khóa: vượt đèn đỏ và camera phạt nguội xe máy)
   - Hậu quả đi ngược chiều bằng xe máy: quy định và cách phòng lỗi — `/blog/an-toan/di-nguoc-chieu-hau-qua/` (từ khóa: hậu quả đi ngược chiều bằng xe máy)
-  - Đi xe máy không có giấy phép lái xe: mức phạt và trách nhiệm — `/blog/an-toan/di-xe-khong-giay-phep/` (từ khóa: đi xe máy không có giấy phép lái xe)
+  - Không có bằng lái xe máy phạt bao nhiêu? Mức phạt, trách nhiệm — `/blog/an-toan/di-xe-khong-giay-phep/` (từ khóa: không có bằng lái xe máy phạt bao nhiêu)
   - IDP và bằng lái quốc tế: loại được công nhận và cách dùng — `/blog/an-toan/idp-va-bang-lai-quoc-te/` (từ khóa: idp và bằng lái quốc tế)
   - Kiểm định xe máy: quy định hiện nay và lưu ý cho người thuê — `/blog/an-toan/kiem-dinh-xe-may/` (từ khóa: kiểm định xe máy)
   - Quy tắc làn đường và nhường đường: Điều 13, 14 và mức xử phạt — `/blog/an-toan/lan-duong-va-quy-tac-nhuong/` (từ khóa: quy tắc làn đường và nhường đường)
   - Luật giao thông đường bộ cơ bản: điều người thuê xe cần nắm — `/blog/an-toan/luat-giao-thong-duong-bo-co-ban/` (từ khóa: luật giao thông đường bộ cơ bản)
-  - Nồng độ cồn khi lái xe máy: cấm tuyệt đối và ba mức phạt — `/blog/an-toan/nong-do-con-khi-lai-xe/` (từ khóa: nồng độ cồn khi lái xe máy)
+  - Mức phạt nồng độ cồn xe máy: ba mức, trừ điểm, tước bằng — `/blog/an-toan/nong-do-con-khi-lai-xe/` (từ khóa: mức phạt nồng độ cồn xe máy)
   - … và 6 pillar khác (xem CSV, cột Topic Cluster)
 
 ### K10 — An toàn khi lái xe máy
