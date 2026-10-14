@@ -1,0 +1,56 @@
+name: IndexNow URL submission (read-only for the repo)
+
+# v71 zero-data SEO: without Search Console the site still announces new and
+# updated URLs to IndexNow engines (Bing, Yandex, Seznam, Naver…). Reads the
+# LIVE sitemap, filters by <lastmod>, verifies the public key file first.
+# Never commits, never publishes content, needs no secrets (the IndexNow key
+# is public by protocol: config/indexnow.json + /<key>.txt).
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'recent = lastmod in the last 2 days; all = every sitemap URL'
+        required: true
+        default: recent
+        type: choice
+        options: [recent, all]
+  schedule:
+    - cron: '41 3 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Unit tests for the submitter
+        run: node --test tests/unit/indexnow.test.js
+
+      - name: Submit URLs to IndexNow
+        env:
+          MODE: ${{ github.event.inputs.mode || 'recent' }}
+        run: |
+          if [ "$MODE" = "all" ]; then
+            node tools/indexnow.mjs --all | tee indexnow.log
+          else
+            node tools/indexnow.mjs --days 2 | tee indexnow.log
+          fi
+
+      - name: Job summary
+        if: always()
+        run: |
+          echo "## IndexNow" >> "$GITHUB_STEP_SUMMARY"
+          if test -s indexnow.log; then sed 's/^/    /' indexnow.log >> "$GITHUB_STEP_SUMMARY"; fi
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "IndexNow informs Bing/Yandex/Seznam/Naver; Google relies on sitemap.xml. Submission is not a guarantee of indexing." >> "$GITHUB_STEP_SUMMARY"

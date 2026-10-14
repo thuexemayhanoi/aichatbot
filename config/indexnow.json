@@ -1,0 +1,9 @@
+{
+  "$schema": "motoai/indexnow@1",
+  "note": "IndexNow (https://www.indexnow.org/) báo URL mới/cập nhật cho Bing, Yandex, Seznam, Naver… mà không cần tài khoản hay API trả phí. Khóa là chuỗi công khai theo giao thức, được xác minh bằng tệp <key>.txt ở gốc website. Google không dùng IndexNow — Google đọc sitemap.xml (khai báo trong robots.txt).",
+  "host": "chatbot.thuexemaynguyentu.com",
+  "key": "e8ec49f877012033996c14a478956446",
+  "keyLocation": "https://chatbot.thuexemaynguyentu.com/e8ec49f877012033996c14a478956446.txt",
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "maxUrlsPerRequest": 10000
+}
