@@ -27408,6 +27408,150 @@
         "Mùa mưa ở Hà Nội thường kéo dài từ khoảng tháng năm tới tháng chín, có những tuần mưa rào chiều nào cũng đến và có những trận mưa lớn khiến vài tuyến phố ngập nước. Với người thuê xe máy điện, câu hỏi \"xe chạy được bao xa\" trong mùa này khó trả lời bằng một con số, vì quãng đường thực tế phụ thuộc nhiều vào cách bạn buộc phải chạy khi trời mưa hơn là vào bản thân cơn mưa.",
         "Bài viết không đưa ra con số quãng đường cho từng mẫu xe, vì thông số đó cần hỏi trực tiếp cửa hàng với đúng chiếc xe bạn nhận. Thay vào đó, bạn sẽ có cách hiểu vì sao ngày mưa xe đi ngắn hơn, cách so sánh ngày khô với ngày mưa trên chính chiếc xe của mình, mức pin nên quay đầu, và những điều cần tránh để không biến một cơn mưa thành một lần hết pin giữa đường."
       ]
+    },
+    {
+      "article_id": "BA-1307",
+      "category": "SAFE",
+      "slug": "di-nhom-an-toan-vi-du-thuc-te",
+      "title": "đi Nhóm an Toàn ví dụ Thực tế",
+      "description": "Đi nhóm bằng xe máy vui ở chỗ có bạn đồng hành, nhưng cũng chính vì có bạn mà nhiều người làm những điều họ sẽ không làm khi đi một mình: bám đuôi",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/di-nhom-an-toan-vi-du-thuc-te.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1306",
+      "category": "GUIDE",
+      "slug": "doi-xe-giua-ky-thue-tai-ha-noi",
+      "title": "Đổi xe Giữa kỳ Thuê Tại Hà Nội",
+      "description": "Đổi xe giữa kỳ thuê tại Hà Nội có một đặc thù mà sách hướng dẫn chung ít nhắc tới: cửa hàng nằm ở Long Biên, bên kia sông Hồng, trong khi phần lớn",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/doi-xe-giua-ky-thue-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Đổi xe giữa kỳ thuê tại Hà Nội có một đặc thù mà sách hướng dẫn chung ít nhắc tới: cửa hàng nằm ở Long Biên, bên kia sông Hồng, trong khi phần lớn khách lưu trú ở Phố Cổ, Hoàn Kiếm, Ba Đình hay Tây Hồ. Một lần đổi xe vì thế không chỉ là thủ tục, mà còn là chuyện chọn giờ qua cầu, chọn nơi gặp và tính trước thời tiết. Bài viết này giúp bạn quyết định khi nào nên đổi, đổi sang dòng nào cho hợp đường phố Hà Nội, và sắp xếp buổi đổi xe sao cho mất ít thời gian nhất.",
+        "Ngoài các lý do phổ biến như xe trục trặc hay không hợp tay, khách thuê ở Hà Nội thường đổi xe vì những tình huống gắn với chính thành phố này:"
+      ]
+    },
+    {
+      "article_id": "BA-1302",
+      "category": "LOCAL",
+      "slug": "duong-5-va-ngoai-o-buoi-sang",
+      "title": "Đường 5 và Ngoại ô Buổi Sáng",
+      "description": "Quốc lộ 5 bắt đầu từ phía đông Hà Nội, chỉ cách khu Long Biên một quãng ngắn, nên đây là một trong những lối ra ngoại ô gần nhất cho khách thuê xe",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/duong-5-va-ngoai-o-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Quốc lộ 5 bắt đầu từ phía đông Hà Nội, chỉ cách khu Long Biên một quãng ngắn, nên đây là một trong những lối ra ngoại ô gần nhất cho khách thuê xe máy ở bờ bắc sông Hồng. Đi đường 5 và ngoại ô buổi sáng có cái hay riêng: không khí còn mát, các chợ quê đang họp, cánh đồng hai bên đường còn hơi sương. Nhưng chạy về hướng đông vào buổi sáng cũng có một thử thách ít ai nói trước: mặt trời ở ngay trước mặt. Bài viết này gợi ý cách nhận xe, khung giờ hợp lý, cách xử lý nắng ngược và xe tải, cùng một lịch trình gọn trong buổi sáng.",
+        "Cửa hàng tại {{ business.address.full }} làm việc trong khung {{ business.hours.display }}. Vì vậy, bạn có hai lựa chọn:"
+      ]
+    },
+    {
+      "article_id": "BA-1309",
+      "category": "APP",
+      "slug": "ket-noi-zalo-voi-ung-dung-thue-xe-cho-khach-nuoc-ngoai",
+      "title": "Kết Nối Zalo Với Ứng Dụng Thuê xe Cho Khách Nước Ngoài",
+      "description": "Nhiều khách nước ngoài đến Hà Nội mới biết đến Zalo lần đầu khi chủ khách sạn hay cửa hàng thuê xe đề nghị \"nhắn Zalo cho tiện\". Với người Việt, đây",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ket-noi-zalo-voi-ung-dung-thue-xe-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Nhiều khách nước ngoài đến Hà Nội mới biết đến Zalo lần đầu khi chủ khách sạn hay cửa hàng thuê xe đề nghị \"nhắn Zalo cho tiện\". Với người Việt, đây là ứng dụng nhắn tin quen thuộc; với du khách, nó là một công cụ lạ, giao diện có thể chưa quen và tin trả lời đôi khi bằng tiếng Việt. Bài viết này hướng dẫn cách kết nối Zalo với ứng dụng thuê xe cho khách nước ngoài theo hướng thực dụng: cài đặt lúc nào, dùng trợ lý MotoAI trên website để tra cứu bằng tiếng Anh, rồi dùng Zalo để chốt lịch, gửi vị trí và lưu lại bằng chứng trao đổi.",
+        "Trợ lý MotoAI là một công cụ trực tuyến chạy ngay trên trình duyệt, không cần cài đặt. Bạn có thể gõ câu hỏi bằng tiếng Anh để tìm hiểu dòng xe, giá tham khảo, giờ mở cửa, khoảng tiền đặt cọc hay giấy tờ cần mang. Những gì trợ lý không thể tự quyết, như còn xe vào ngày bạn đến hay giao tới khách sạn lúc mấy giờ, cần một người thật xác nhận, và Zalo là kênh nhắn tin phù hợp cho phần đó."
+      ]
+    },
+    {
+      "article_id": "BA-1301",
+      "category": "SAFE",
+      "slug": "met-moi-khi-lai-duong-dai-vi-du-thuc-te",
+      "title": "Mệt Mỏi Khi Lái Đường Dài ví dụ Thực tế",
+      "description": "Mệt mỏi khi lái đường dài hiếm khi tự nó gây ra biên bản xử phạt, nhưng nó là nguyên nhân phía sau rất nhiều lỗi khác: phóng nhanh cho kịp giờ, nghe",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/met-moi-khi-lai-duong-dai-vi-du-thuc-te.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1304",
+      "category": "RENT",
+      "slug": "phi-giao-xe-thue-cho-gia-dinh",
+      "title": "Phí Giao xe Thuê Cho Gia Đình",
+      "description": "Khi cả nhà cùng thuê xe, phí giao xe thường là dòng nhỏ nhất trên hóa đơn nhưng lại gây nhiều câu hỏi nhất: giao hai xe có tính hai lần không, giao",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/phi-giao-xe-thue-cho-gia-dinh.body.html",
+      "knowledge_chunks": [
+        "Khi cả nhà cùng thuê xe, phí giao xe thường là dòng nhỏ nhất trên hóa đơn nhưng lại gây nhiều câu hỏi nhất: giao hai xe có tính hai lần không, giao tới căn hộ trong ngõ có khác giao ra khách sạn không, ông bà về sớm thì trả một xe trước thế nào. Bài viết về phí giao xe thuê cho gia đình này giúp bạn gom đủ thông tin trong một lần hỏi, so sánh với phương án tự đến cửa hàng, và tránh những hiểu lầm hay gặp khi đơn có nhiều xe, nhiều người.",
+        "Một khách lẻ nhận một xe, ký một lần, trả một lần. Đơn của gia đình thường phức tạp hơn ở ba điểm, và cả ba đều có thể ảnh hưởng đến cách cửa hàng sắp xếp người giao:"
+      ]
+    },
+    {
+      "article_id": "BA-1305",
+      "category": "EV",
+      "slug": "sac-pin-xe-dien-o-dau-mua-mua",
+      "title": "Sạc Pin xe Điện ở Đâu Mùa Mưa",
+      "description": "Ngày nắng, câu hỏi sạc pin xe điện ở đâu thường chỉ xoay quanh chuyện gần hay xa, rẻ hay đắt. Sang mùa mưa ở Hà Nội, câu hỏi đổi hẳn: chỗ sạc có khô",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/sac-pin-xe-dien-o-dau-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Ngày nắng, câu hỏi sạc pin xe điện ở đâu thường chỉ xoay quanh chuyện gần hay xa, rẻ hay đắt. Sang mùa mưa ở Hà Nội, câu hỏi đổi hẳn: chỗ sạc có khô không, có mái che không, ổ điện có an toàn khi trời ẩm không, và tầng hầm có nguy cơ ngập khi mưa lớn kéo dài không. Bài viết này xếp các lựa chọn chỗ sạc theo mức độ an toàn trong mùa mưa, chỉ ra dấu hiệu của một chỗ sạc nên tránh, và gợi ý cách sắp lịch sạc theo dự báo thời tiết khi bạn đang thuê xe máy điện.",
+        "Trước khi xem cụ thể từng nơi, hãy dùng bốn tiêu chí dưới đây để tự chấm điểm bất kỳ chỗ sạc nào bạn định dùng:"
+      ]
+    },
+    {
+      "article_id": "BA-1308",
+      "category": "LOCAL",
+      "slug": "soc-son-va-co-loa-buoi-sang",
+      "title": "Soc Son và co Loa Buổi Sáng",
+      "description": "Cung Sóc Sơn và Cổ Loa thường được gợi ý cho trọn một ngày, nhưng nếu bạn chỉ có một buổi sáng, vẫn có thể đi gọn cả hai điểm và về nội thành trước",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/soc-son-va-co-loa-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Cung Sóc Sơn và Cổ Loa thường được gợi ý cho trọn một ngày, nhưng nếu bạn chỉ có một buổi sáng, vẫn có thể đi gọn cả hai điểm và về nội thành trước khi nắng trưa lên cao. Bí quyết nằm ở giờ xuất phát: đường hướng bắc lúc sáng sớm thoáng hơn hẳn, không khí mát, và các khu di tích vắng người. Bài viết này gợi ý một lịch trình Sóc Sơn và Cổ Loa buổi sáng cho khách thuê xe máy, kèm cách nhận xe sao cho kịp khởi hành sớm, những lưu ý khi chạy lúc rạng sáng và thời điểm nên quay về.",
+        "Nếu bạn muốn đi thong thả, chia hai điểm ra hai ngày thì bài Sóc Sơn và Cổ Loa cuối tuần có gợi ý phù hợp hơn. Bản giới thiệu chung về hai điểm đến nằm trong bài Sóc Sơn và Cổ Loa ."
+      ]
+    },
+    {
+      "article_id": "BA-1310",
+      "category": "RENT",
+      "slug": "thue-xe-o-ga-tau-san-bay-cho-gia-dinh",
+      "title": "Thuê xe ở ga Tàu Sân Bay Cho Gia Đình",
+      "description": "Một gia đình bước xuống tàu hay ra khỏi nhà ga sân bay thường mang theo ba thứ mà khách đi một mình không có: trẻ nhỏ đã mệt sau chuyến đi, vài chiếc",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/thue-xe-o-ga-tau-san-bay-cho-gia-dinh.body.html",
+      "knowledge_chunks": [
+        "Một gia đình bước xuống tàu hay ra khỏi nhà ga sân bay thường mang theo ba thứ mà khách đi một mình không có: trẻ nhỏ đã mệt sau chuyến đi, vài chiếc vali cồng kềnh và một danh sách việc phải làm cùng lúc. Vì vậy, chuyện thuê xe ở ga tàu, sân bay cho gia đình không chỉ là chọn xe nào rẻ, mà là sắp xếp giờ đầu tiên ở Hà Nội sao cho cả nhà về tới chỗ nghỉ an toàn, đủ người lái, đủ mũ và không ai phải ôm hành lý trên yên xe.",
+        "Bài viết này đi theo đúng trình tự một phụ huynh nên nghĩ: đếm người có bằng lái, tách hành lý khỏi xe máy, chọn điểm nhận theo từng nhà ga, khớp giờ đến với khung phục vụ của cửa hàng, rồi mới làm thủ tục nhận nhiều xe một lúc."
+      ]
+    },
+    {
+      "article_id": "BA-1303",
+      "category": "APP",
+      "slug": "ung-dung-thue-xe-tieng-anh-cho-khach-nuoc-ngoai",
+      "title": "Ứng Dụng Thuê xe Tiếng Anh Cho Khách Nước Ngoài",
+      "description": "Với khách nước ngoài, rào cản lớn nhất khi thuê xe máy ở Hà Nội thường không nằm ở tay lái mà ở thông tin: giá ghi theo kiểu Việt Nam, giờ viết theo",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ung-dung-thue-xe-tieng-anh-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Với khách nước ngoài, rào cản lớn nhất khi thuê xe máy ở Hà Nội thường không nằm ở tay lái mà ở thông tin: giá ghi theo kiểu Việt Nam, giờ viết theo dạng 24 giờ, điều kiện thuê nằm rải rác trong tin nhắn tiếng Việt. Một ứng dụng thuê xe tiếng Anh cho khách nước ngoài giúp bạn tự tìm hiểu trước khi phải nói chuyện với ai. Bài viết này đi theo bốn mốc của một chuyến thuê, từ lúc còn ở nhà đến ngày trả xe, và chỉ ra ở mỗi mốc bạn nên hỏi trợ lý MotoAI điều gì, điều gì cần người thật xác nhận.",
+        "MotoAI là trợ lý thuê xe dạng ứng dụng web: bạn mở trên trình duyệt điện thoại hoặc máy tính, không cần tải thêm phần mềm. Bạn gõ câu hỏi bằng tiếng Anh, trợ lý trả lời dựa trên dữ liệu đã được cửa hàng xác minh như giá tham khảo, giờ mở cửa, khu vực giao xe và khoảng tiền đặt cọc."
+      ]
     }
   ]
 }
