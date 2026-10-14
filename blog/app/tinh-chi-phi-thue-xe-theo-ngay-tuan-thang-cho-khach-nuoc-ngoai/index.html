@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="motoai-build" content="v66">
+  <title>Tính Chi Phí Thuê xe Theo Ngày Tuần Tháng Cho Khách Nước Ngoài</title>
+  <meta name="description" content="Một du khách ở Hà Nội sáu ngày, một người làm việc từ xa ở lại năm tuần, một cặp đôi đến rồi đi trong ba ngày: cả ba đều hỏi cùng một câu, nên thuê">
+  <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang-cho-khach-nuoc-ngoai/">
+  <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Tính Chi Phí Thuê xe Theo Ngày Tuần Tháng Cho Khách Nước Ngoài">
+  <meta property="og:description" content="Một du khách ở Hà Nội sáu ngày, một người làm việc từ xa ở lại năm tuần, một cặp đôi đến rồi đi trong ba ngày: cả ba đều hỏi cùng một câu, nên thuê">
+  <meta property="og:url" content="https://chatbot.thuexemaynguyentu.com/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang-cho-khach-nuoc-ngoai/">
+  <meta property="og:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tính Chi Phí Thuê xe Theo Ngày Tuần Tháng Cho Khách Nước Ngoài">
+  <meta name="twitter:description" content="Một du khách ở Hà Nội sáu ngày, một người làm việc từ xa ở lại năm tuần, một cặp đôi đến rồi đi trong ba ngày: cả ba đều hỏi cùng một câu, nên thuê">
+  <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=66">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=66">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
+</head>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/" aria-label="MotoAI — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/blog/">Cẩm nang</a>
+        <div class="site-nav-item" data-active="1">
+          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true" aria-current="page">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/app/" aria-current="page">📱 Ứng Dụng</a>
+            <a href="/blog/huong-dan/">📄 Hướng Dẫn</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/thue-xe/">🏍️ Thuê Xe</a>
+            <a href="/blog/xe-dien/">⚡ Xe Điện</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <div class="site-nav-drop">
+            <a href="/blog/an-toan/">🛡️ An Toàn</a>
+            <a href="/blog/dia-phuong/">📍 Địa Phương</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+      </div>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="article-tinh-chi-phi-thue-xe-theo-ngay-tuan-thang-cho-khach-nuoc-ngoai">
+      <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/">Agent</a> › <a href="/blog/">Cẩm nang</a> › <a href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a> › <a href="/blog/app/">Ứng Dụng</a> › <a href="/blog/app/tinh-gia/">Tính Giá</a> › <span>Tính Chi Phí Thuê xe Theo Ngày Tuần Tháng Cho Khách Nước Ngoài</span></nav>
+      <p class="blog-chips">
+        <a class="blog-chip" href="/blog/app/">Ứng Dụng</a>
+        <a class="blog-chip" href="/blog/app/tinh-gia/">Tính Giá</a>
+        <a class="blog-chip blog-chip-parent" href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+      </p>
+      <p class="blog-screen-label">Ứng Dụng</p>
+      <h1 class="blog-screen-title">Tính Chi Phí Thuê xe Theo Ngày Tuần Tháng Cho Khách Nước Ngoài</h1>
+      <p class="blog-screen-lead">Một du khách ở Hà Nội sáu ngày, một người làm việc từ xa ở lại năm tuần, một cặp đôi đến rồi đi trong ba ngày: cả ba đều hỏi cùng một câu, nên thuê</p>
+      <p class="byline">MotoAI Editorial · 2026-10-14 · Ứng Dụng · 7 phút đọc</p>
+      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p>Một du khách ở Hà Nội sáu ngày, một người làm việc từ xa ở lại năm tuần, một cặp đôi đến rồi đi trong ba ngày: cả ba đều hỏi cùng một câu, nên thuê</p>
+      </div>
+      <div class="blog-article-layout">
+      <nav class="blog-toc" aria-label="Mục lục">
+        <details class="blog-toc-mobile">
+          <summary>Mục lục</summary>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#hai-cau-phai-hoi-truoc-khi-bam-may-tinh">Hai câu phải hỏi trước khi bấm máy tính</a></li>
+        <li class="toc-l2"><a href="#dat-cac-khung-gia-tham-khao-canh-nhau">Đặt các khung giá tham khảo cạnh nhau</a></li>
+        <li class="toc-l2"><a href="#nguong-chuyen-goi-cho-tung-dong-xe">Ngưỡng chuyển gói cho từng dòng xe</a></li>
+        <li class="toc-l2"><a href="#bon-lich-luu-tru-mau">Bốn lịch lưu trú mẫu</a></li>
+        <li class="toc-l2"><a href="#nhung-dong-chi-phi-ngoai-tien-thue">Những dòng chi phí ngoài tiền thuê</a></li>
+        <li class="toc-l2"><a href="#nho-tro-ly-motoai-kiem-tra-phep-tinh">Nhờ trợ lý MotoAI kiểm tra phép tính</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-khi-khach-nuoc-ngoai-tinh-chi-phi-thue-xe">Câu hỏi thường gặp khi khách nước ngoài tính chi phí thuê xe</a></li>
+        <li class="toc-l3"><a href="#toi-thue-goi-tuan-nhung-muon-o-them-vai-ngay-thi-sao">Tôi thuê gói tuần nhưng muốn ở thêm vài ngày thì sao?</a></li>
+        <li class="toc-l3"><a href="#thue-goi-thang-nhung-ve-nuoc-som-co-duoc-hoan-tien-khong">Thuê gói tháng nhưng về nước sớm có được hoàn tiền không?</a></li>
+        <li class="toc-l3"><a href="#co-nen-doi-ra-do-la-de-so-voi-gia-o-nuoc-toi">Có nên đổi ra đô la để so với giá ở nước tôi?</a></li>
+        <li class="toc-l3"><a href="#hai-nguoi-di-hai-xe-thi-tinh-the-nao">Hai người đi hai xe thì tính thế nào?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </details>
+        <div class="blog-toc-desktop">
+          <p class="blog-toc-title">Mục lục</p>
+<ol class="blog-toc-list">
+        <li class="toc-l2"><a href="#hai-cau-phai-hoi-truoc-khi-bam-may-tinh">Hai câu phải hỏi trước khi bấm máy tính</a></li>
+        <li class="toc-l2"><a href="#dat-cac-khung-gia-tham-khao-canh-nhau">Đặt các khung giá tham khảo cạnh nhau</a></li>
+        <li class="toc-l2"><a href="#nguong-chuyen-goi-cho-tung-dong-xe">Ngưỡng chuyển gói cho từng dòng xe</a></li>
+        <li class="toc-l2"><a href="#bon-lich-luu-tru-mau">Bốn lịch lưu trú mẫu</a></li>
+        <li class="toc-l2"><a href="#nhung-dong-chi-phi-ngoai-tien-thue">Những dòng chi phí ngoài tiền thuê</a></li>
+        <li class="toc-l2"><a href="#nho-tro-ly-motoai-kiem-tra-phep-tinh">Nhờ trợ lý MotoAI kiểm tra phép tính</a></li>
+        <li class="toc-l2"><a href="#cau-hoi-thuong-gap-khi-khach-nuoc-ngoai-tinh-chi-phi-thue-xe">Câu hỏi thường gặp khi khách nước ngoài tính chi phí thuê xe</a></li>
+        <li class="toc-l3"><a href="#toi-thue-goi-tuan-nhung-muon-o-them-vai-ngay-thi-sao">Tôi thuê gói tuần nhưng muốn ở thêm vài ngày thì sao?</a></li>
+        <li class="toc-l3"><a href="#thue-goi-thang-nhung-ve-nuoc-som-co-duoc-hoan-tien-khong">Thuê gói tháng nhưng về nước sớm có được hoàn tiền không?</a></li>
+        <li class="toc-l3"><a href="#co-nen-doi-ra-do-la-de-so-voi-gia-o-nuoc-toi">Có nên đổi ra đô la để so với giá ở nước tôi?</a></li>
+        <li class="toc-l3"><a href="#hai-nguoi-di-hai-xe-thi-tinh-the-nao">Hai người đi hai xe thì tính thế nào?</a></li>
+        <li class="toc-l2"><a href="#ket-luan">Kết luận</a></li>
+      </ol>
+        </div>
+      </nav>
+        <article class="blog-article-body">
+  <p>Một du khách ở Hà Nội sáu ngày, một người làm việc từ xa ở lại năm tuần, một cặp đôi đến rồi đi trong ba ngày: cả ba đều hỏi cùng một câu, nên thuê theo ngày, theo tuần hay theo tháng. Câu trả lời không nằm ở đơn giá mà ở ngưỡng chuyển gói, tức số ngày mà từ đó gói lớn hơn bắt đầu rẻ hơn tổng tiền lẻ. Bài viết này giúp khách nước ngoài tính chi phí thuê xe theo ngày, tuần, tháng bằng vài phép cộng đơn giản, rồi dùng trợ lý MotoAI trên website để kiểm tra lại trước khi đặt.</p>
+  <p>Nếu bạn đọc được tiếng Việt và chỉ cần nguyên tắc chung, bài <a href="/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang/">tính chi phí thuê xe theo ngày tuần tháng</a> trình bày phần cơ bản.</p>
+  
+  <h2 id="hai-cau-phai-hoi-truoc-khi-bam-may-tinh">Hai câu phải hỏi trước khi bấm máy tính</h2>
+  <p>Mọi phép tính đều sai nếu bạn hiểu khác cửa hàng về đơn vị thời gian. Vì vậy, trước khi so gói, hãy hỏi rõ:</p>
+  <ul>
+  <li><strong>Một ngày được tính thế nào?</strong> Theo khung hai mươi bốn giờ kể từ lúc nhận, hay theo ngày lịch. Nhận xe lúc ba giờ chiều thì giờ trả của ngày cuối là lúc nào.</li>
+  <li><strong>Một tháng là bao nhiêu ngày?</strong> Thường được hiểu là khoảng ba mươi ngày, nhưng bạn nên nghe cửa hàng xác nhận, cùng với cách tính khi dùng chưa hết gói.</li>
+  </ul>
+  <p>Hai câu này cũng quyết định phần ngày lẻ, ví dụ mười ngày là một tuần cộng ba ngày tính theo giá ngày, hay được tính cách khác.</p>
+  
+  <h2 id="dat-cac-khung-gia-tham-khao-canh-nhau">Đặt các khung giá tham khảo cạnh nhau</h2>
+  <p>Bảng dưới đây là giá tham khảo, cửa hàng xác nhận giá chốt theo thời điểm thuê; bảng cập nhật nằm ở trang <a href="/gia-thue/">giá thuê xe</a>.</p>
+  <ul>
+  <li>Honda Vision, xe ga phổ biến nhất với du khách: 200.000đ/ngày, 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng.</li>
+  <li>Honda Air Blade, xe ga cỡ lớn hơn: 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng.</li>
+  <li>Honda Click và Yamaha Mio, xe ga gọn nhẹ: 150.000đ/ngày, 600.000đ–700.000đ/tuần, 1.000.000đ–1.200.000đ/tháng.</li>
+  <li>Honda Wave, xe số: 150.000đ/ngày; gói tuần và tháng cần hỏi trực tiếp.</li>
+  <li>Nhóm xe 50cc, xe máy điện và xe đạp điện không có giá niêm yết sẵn, bạn cần hỏi trực tiếp.</li>
+  </ul>
+  
+  <h2 id="nguong-chuyen-goi-cho-tung-dong-xe">Ngưỡng chuyển gói cho từng dòng xe</h2>
+  <p>Từ bảng trên, có thể rút ra mốc số ngày mà bạn nên bắt đầu hỏi gói lớn hơn. Các mốc này giả định phần ngày lẻ tính theo giá ngày:</p>
+  <ul>
+  <li><strong>Honda Vision:</strong> bốn ngày lẻ là 800.000đ, năm ngày là 1.000.000đ, đúng bằng khung gói tuần. Từ ngày thứ tư hoặc thứ năm, gói tuần đáng hỏi. Gói tháng ngang chín đến mười ngày lẻ, nên ai ở từ hai tuần trở lên nên so thêm gói tháng.</li>
+  <li><strong>Honda Air Blade:</strong> gói tuần bằng đúng bốn ngày lẻ. Gói tháng 1.400.000đ còn thấp hơn hai gói tuần cộng lại là 1.600.000đ, vì thế lịch từ khoảng mười ngày trở lên đã nên tính gói tháng.</li>
+  <li><strong>Honda Click, Yamaha Mio:</strong> gói tuần tương đương bốn đến năm ngày lẻ. Gói tháng chỉ ngang bảy đến tám ngày lẻ, nên với lịch trên một tuần, gói tháng thường là lựa chọn đáng cân nhắc nhất.</li>
+  </ul>
+  <p>Những ngưỡng này chỉ là công cụ để đặt câu hỏi đúng. Cửa hàng mới là nơi quyết định gói nào áp dụng được cho lịch của bạn.</p>
+  
+  <h2 id="bon-lich-luu-tru-mau">Bốn lịch lưu trú mẫu</h2>
+  <p>Các phép tính dưới đây dùng giá tham khảo để minh họa:</p>
+  <ol>
+  <li><strong>Ba ngày, Honda Click:</strong> 3 × 150.000đ = 450.000đ. Lịch ngắn thì gói ngày là hợp lý, không cần nghĩ tới gói tuần.</li>
+  <li><strong>Sáu ngày, Honda Vision:</strong> tính lẻ là 1.200.000đ, trong khi gói tuần tham khảo 800.000đ–1.000.000đ. Dù chỉ dùng sáu ngày, gói tuần vẫn rẻ hơn.</li>
+  <li><strong>Mười hai ngày, Honda Air Blade:</strong> một tuần cộng năm ngày lẻ là 800.000đ + 1.000.000đ = 1.800.000đ, cao hơn gói tháng 1.400.000đ. Hãy hỏi cửa hàng có áp gói tháng cho lịch này không.</li>
+  <li><strong>Năm tuần, Honda Click:</strong> một tháng cộng một tuần vào khoảng 1.600.000đ–1.900.000đ. Phần dư sau gói tháng nên hỏi tính theo tuần hay theo ngày, vì chênh lệch không nhỏ.</li>
+  </ol>
+  <p>Bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a> có thêm phần đọc đúng con số tiền Việt, rất hữu ích nếu bạn chưa quen dấu chấm ngăn hàng nghìn.</p>
+  
+  <h2 id="nhung-dong-chi-phi-ngoai-tien-thue">Những dòng chi phí ngoài tiền thuê</h2>
+  <p>Một bảng ngân sách đầy đủ cho chuyến đi nên có thêm các dòng sau, kể cả khi bạn chưa biết chính xác con số:</p>
+  <ul>
+  <li>Xăng cho cả kỳ, tùy quãng đường bạn chạy mỗi ngày.</li>
+  <li>Phí gửi xe tại điểm tham quan, quán ăn, chợ.</li>
+  <li>Bảo hiểm xe máy do người thuê tự mua, vì cửa hàng không cung cấp.</li>
+  <li>Phí giao xe tới khách sạn nếu có, chỉ thực hiện trong giờ 09:00 - 21:00 và được báo trước khi đặt.</li>
+  <li>Chi phí khi trả muộn theo thỏa thuận, dễ xảy ra nếu giờ trả sát giờ ra sân bay.</li>
+  </ul>
+  <p>Khoản đặt cọc không phải chi phí nhưng vẫn cần dòng riêng trong bảng tiền mặt: du khách chuẩn bị từ 2.000.000đ đến 5.000.000đ tùy loại xe, xác nhận khi đặt và nhận lại khi trả xe đúng thỏa thuận.</p>
+  
+  <h2 id="nho-tro-ly-motoai-kiem-tra-phep-tinh">Nhờ trợ lý MotoAI kiểm tra phép tính</h2>
+  <p>Trợ lý trên website có thể so các dòng xe theo số ngày bạn đưa ra, miễn là bạn nhập đủ dữ kiện. Một câu hỏi tốt bằng tiếng Anh có thể như sau: "Arriving 3 March, leaving 15 March, one rider, automatic only. Compare daily, weekly and monthly totals for Vision and Air Blade, and tell me how extra days are counted." Câu trả lời là giá tham khảo; hãy chụp màn hình rồi xác nhận lại với cửa hàng.</p>
+  <p>Muốn nhập lộ trình và thời gian để ước lượng nhanh, bạn có thể dùng thêm <a href="/blog/app/cong-cu-tinh-gia-thue-xe-may-online-cho-khach-nuoc-ngoai/">công cụ tính giá thuê xe máy online cho khách nước ngoài</a>.</p>
+  
+  <h2 id="cau-hoi-thuong-gap-khi-khach-nuoc-ngoai-tinh-chi-phi-thue-xe">Câu hỏi thường gặp khi khách nước ngoài tính chi phí thuê xe</h2>
+  <h3 id="toi-thue-goi-tuan-nhung-muon-o-them-vai-ngay-thi-sao">Tôi thuê gói tuần nhưng muốn ở thêm vài ngày thì sao?</h3>
+  <p>Báo cửa hàng trước giờ trả để gia hạn, đừng tự giữ xe quá giờ. Trình tự gia hạn được mô tả trong bài <a href="/blog/huong-dan/gia-han-thoi-gian-thue-cho-khach-nuoc-ngoai/">gia hạn thời gian thuê cho khách nước ngoài</a>.</p>
+  <h3 id="thue-goi-thang-nhung-ve-nuoc-som-co-duoc-hoan-tien-khong">Thuê gói tháng nhưng về nước sớm có được hoàn tiền không?</h3>
+  <p>Điều này tùy thỏa thuận lúc thuê. Hãy hỏi rõ trước khi trả tiền gói tháng, nhất là khi lịch bay của bạn chưa chắc chắn.</p>
+  <h3 id="co-nen-doi-ra-do-la-de-so-voi-gia-o-nuoc-toi">Có nên đổi ra đô la để so với giá ở nước tôi?</h3>
+  <p>Bạn có thể tự quy đổi để hình dung, nhưng hãy tính toán và chốt bằng đồng Việt Nam để tránh nhầm khi tỷ giá thay đổi.</p>
+  <h3 id="hai-nguoi-di-hai-xe-thi-tinh-the-nao">Hai người đi hai xe thì tính thế nào?</h3>
+  <p>Tính riêng từng xe theo đúng lịch dùng của mỗi người, rồi cộng lại. Đừng mặc định cả hai đều cần gói giống nhau.</p>
+  
+  <h2 id="ket-luan">Kết luận</h2>
+  <p>Tính chi phí thuê xe cho chuyến đi ở Việt Nam chỉ cần ba bước: hỏi rõ cách tính ngày và tháng, đặt các khung giá cạnh nhau để tìm ngưỡng chuyển gói, rồi cộng thêm các dòng ngoài tiền thuê. Khi có con số dự kiến, hãy xác nhận với Nguyễn Tú qua 0942 467 674 hoặc tại 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội, giờ mở cửa 09:00 - 21:00. Xem thêm các hướng dẫn khác trong <a href="/blog/app/">chuyên mục ứng dụng</a> hoặc mở <a href="/">trang chủ</a> để hỏi trợ lý ngay.</p>
+        </article>
+      </div>
+      <section class="blog-topic-context">
+        <h2>Bài viết thuộc</h2>
+        <p>
+          <a href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a>
+          <span aria-hidden="true">→</span>
+          <a href="/blog/app/">Ứng Dụng</a>
+        </p>
+      </section>
+      <section class="blog-related">
+        <h2>Bài viết liên quan</h2>
+        <div class="blog-grid">
+      <a class="blog-card" href="/blog/app/app-thue-xe-may-la-gi/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục</h2>
+        <p>Tìm hiểu app thuê xe máy là gì, ứng dụng web MotoAI giúp hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe ngay trên trình duyệt, không cần cài đặt.</p>
+      </a>
+      <a class="blog-card" href="/blog/app/cach-dung-ung-dung-thue-xe-may/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách dùng ứng dụng thuê xe máy: 5 bước từ hỏi giá đến nhận xe</h2>
+        <p>Hướng dẫn dùng ứng dụng trợ lý thuê xe máy trên web: đặt câu hỏi đúng cách, hỏi giá theo khung thời gian, chốt dòng xe, xác nhận thủ tục và lưu tin nhắn chốt.</p>
+      </a>
+      <a class="blog-card" href="/blog/app/ung-dung-thue-xe-co-an-toan-khong/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Ứng dụng thuê xe có an toàn không: cách kiểm tra trước khi đặt xe</h2>
+        <p>Ứng dụng thuê xe an toàn hay không phụ thuộc ba lớp: thông tin cá nhân, giao dịch đặt cọc và dịch vụ đi kèm, kèm checklist kiểm tra công cụ thuê xe trước khi đặt.</p>
+      </a>
+      <a class="blog-card" href="/blog/app/cach-tinh-gia-thue-xe-bang-app/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Cách tính giá thuê xe bằng app: đọc đúng một báo giá</h2>
+        <p>Cách tính giá thuê xe bằng app: giá thuê thuần theo dòng xe và khung ngày, tuần, tháng, các khoản phụ thuộc tình huống, tiền cọc và checklist đọc báo giá.</p>
+      </a>
+      <a class="blog-card" href="/blog/app/chon-xe-bang-agent/">
+        <span class="cat">Ứng Dụng</span>
+        <h2>Chọn xe bằng Agent: nói nhu cầu để nhận đúng dòng xe</h2>
+        <p>Chọn xe bằng Agent: năm thông tin cần mô tả để trợ lý gợi ý dòng xe phù hợp với chuyến đi, cách Agent suy luận từ nhu cầu và các câu hỏi nên hỏi lại trước khi chốt.</p>
+      </a>
+        </div>
+      </section>
+      <p class="blog-hub-cluster">Khám phá thêm trong Công cụ &amp; Hướng dẫn: <a href="/blog/app/">Ứng Dụng</a> · <a href="/blog/huong-dan/">Hướng Dẫn</a></p>
+    <div class="screen-ask">
+      <a class="screen-ask-btn" href="/?ask=T%C3%ADnh%20Chi%20Ph%C3%AD%20Thu%C3%AA%20xe%20Theo%20Ng%C3%A0y%20Tu%E1%BA%A7n%20Th%C3%A1ng%20Cho%20Kh%C3%A1ch%20N%C6%B0%E1%BB%9Bc%20Ngo%C3%A0i">⚡ Hỏi Agent về chủ đề này</a>
+    </div>
+
+  </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/">Agent</a></li>
+          <li><a href="/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/blog/">Cẩm nang</a></li>
+          <li><a href="/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/privacy/">Bảo Mật</a></li>
+          <li><a href="/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
+
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
+    <div class="motoai-drawer-head">
+      <strong>MotoAI</strong>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/">⚡ Agent</a></li>
+      <li><a href="/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/cong-cu-huong-dan/" aria-current="page">🧰 Công cụ &amp; Hướng dẫn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/app/" aria-current="page">📱 Ứng Dụng</a></li>
+            <li><a href="/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+            <li><a href="/blog/xe-dien/">⚡ Xe Điện</a></li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <a class="motoai-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <ul class="motoai-hub-items">
+            <li><a href="/blog/an-toan/">🛡️ An Toàn</a></li>
+            <li><a href="/blog/dia-phuong/">📍 Địa Phương</a></li>
+            </ul>
+          </li>
+          <li><a href="/blog/">🔎 Tìm Bài</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/chinh-sach/">📜 Chính Sách</a></li>
+          <li><a href="/privacy/">🔒 Bảo Mật</a></li>
+          <li><a href="/terms/">📃 Điều Khoản</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","url":"https://chatbot.thuexemaynguyentu.com/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang-cho-khach-nuoc-ngoai/","headline":"Tính Chi Phí Thuê xe Theo Ngày Tuần Tháng Cho Khách Nước Ngoài","description":"Một du khách ở Hà Nội sáu ngày, một người làm việc từ xa ở lại năm tuần, một cặp đôi đến rồi đi trong ba ngày: cả ba đều hỏi cùng một câu, nên thuê","datePublished":"2026-10-14","dateModified":"2026-10-14","author":{"@type":"Organization","name":"MotoAI Editorial"},"publisher":{"@type":"Organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://chatbot.thuexemaynguyentu.com/"},"mainEntityOfPage":"https://chatbot.thuexemaynguyentu.com/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang-cho-khach-nuoc-ngoai/","isAccessibleForFree":true}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://chatbot.thuexemaynguyentu.com/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://chatbot.thuexemaynguyentu.com/blog/"},{"@type":"ListItem","position":3,"name":"Công cụ & Hướng dẫn","item":"https://chatbot.thuexemaynguyentu.com/blog/cong-cu-huong-dan/"},{"@type":"ListItem","position":4,"name":"Ứng Dụng","item":"https://chatbot.thuexemaynguyentu.com/blog/app/"},{"@type":"ListItem","position":5,"name":"Tính Giá","item":"https://chatbot.thuexemaynguyentu.com/blog/app/tinh-gia/"},{"@type":"ListItem","position":6,"name":"Tính Chi Phí Thuê xe Theo Ngày Tuần Tháng Cho Khách Nước Ngoài","item":"https://chatbot.thuexemaynguyentu.com/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang-cho-khach-nuoc-ngoai/"}]}
+  </script>
+
+  <script type="module" src="/assets/js/app-shell.js?v=66"></script>
+</body>
+</html>
