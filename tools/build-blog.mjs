@@ -27,7 +27,7 @@ import {
   taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav
 } from './taxonomy.mjs';
 import {
-  SITE, esc, rel, pageHead, askAgentAction, appShellPage
+  SITE, esc, rel, pageHead, askAgentAction, appShellPage, setBuildContext
 } from './app-shell.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -695,9 +695,14 @@ export function build() {
     .map((a) => ({ ...a, description: resolveFacts(a.description, business) }));
   const updated = published.reduce((m, a) => a.published_date > m ? a.published_date : m, '2026-09-26');
 
+  // v67: subtopic counts + the header mega-menu model are computed ONCE per
+  // build (O(n)) and shared by every page — never per page.
+  const subCounts = subtopicCounts(published, matrix);
+  setBuildContext({ menu: menuModel(published, subCounts) });
+
   buildHome(published);
   for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published);
-  const categoryPages = HUBS.flatMap((hub) => buildHub(hub, published, subtopicCounts(published, matrix)));
+  const categoryPages = HUBS.flatMap((hub) => buildHub(hub, published, subCounts));
   const subtopicPages = [];
   for (const hub of HUBS) {
     const subs = (taxonomy.subtopics[hub.id] ?? []);
@@ -900,6 +905,31 @@ ${jsonLd({
 `
   });
   write('gia-thue/index.html', html);
+}
+
+/** v67 header mega-menu model (deterministic, computed once per build):
+ *  per parent hub → per child category: up to 3 subtopic hubs that hold
+ *  >= 1 published article (taxonomy order) + the category's 2 CORNERSTONE
+ *  guides (first published = foundational pillar articles). Both lists are
+ *  stable as the append-only manifest grows: "newest" articles here would
+ *  rewrite the header of EVERY page on every publish (40k-file diffs). */
+export function menuModel(published, subCounts) {
+  const menu = {};
+  for (const cluster of taxonomy.clusters) {
+    menu[cluster.id] = {
+      columns: cluster.categories.map((id) => {
+        const hub = HUB_BY_ID[id];
+        return {
+          id,
+          subtopics: (subCounts[id] ?? []).filter((s) => s.count > 0 && s.slug).slice(0, 3)
+            .map((s) => ({ label: s.label, url: `/blog/${hub.dir}/${s.slug}/` })),
+          featured: published.filter((a) => a.category === id).slice(0, 2)
+            .map((a) => ({ title: a.title, url: `/blog/${hub.dir}/${a.slug}/` }))
+        };
+      })
+    };
+  }
+  return menu;
 }
 
 /** Subtopic counts per category for hub chips (only real subtopics counted). */

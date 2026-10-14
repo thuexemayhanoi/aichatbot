@@ -51,10 +51,10 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 
 | ID | Area | Problem | Fix | Files | Risk | Status | Evidence |
 |---|---|---|---|---|---|---|---|
-| TH-010 | Header | No skip link; status chip CLS; `aria-haspopup` on a plain link | Skip link → `#site-main` (`tabindex="-1"`); status rendered inside a reserved `.site-status-slot` (no layout shift on mobile or desktop); drop `aria-haspopup` | `tools/app-shell.mjs`, `blog.css` | M (content-scroll regexes on status rules) | TODO | |
-| TH-011 | Mega menu | Dropdown = 2 links, hover-first, touch swallows first tap | APG "disclosure navigation with top-level links": parent `<a>` navigates, sibling `<button aria-expanded aria-controls>` toggles; CSS hover/focus-within still open; Escape closes + refocuses; outside click closes; panel = per child category column (label + up to 4 subtopic hubs with ≥1 article) + "Bài mới" column (3 newest cluster articles); model computed once per build (`setBuildContext`) | `tools/app-shell.mjs`, `tools/build-blog.mjs`, `assets/js/app-shell.js`, `blog.css` | M (blog-hub-nav regexes; no nested `<div>` inside `.site-nav-drop`) | TODO | |
-| TH-012 | Drawer | No focus management | Focus close button on open, return focus to Menu on close, Tab wraps inside the open drawer | `assets/js/app-shell.js` | L | TODO | |
-| TH-013 | JS budget | 70 B headroom | Rewrite `app-shell.js` compactly (drop v60 console diagnostic, terse comments); measure after every batch | `assets/js/app-shell.js` | L | TODO | |
+| TH-010 | Header | No skip link; status chip CLS; `aria-haspopup` on a plain link | Skip link → `#site-main` (`tabindex="-1"`); status rendered inside a reserved `.site-status-slot` (no layout shift on mobile or desktop); drop `aria-haspopup` | `tools/app-shell.mjs`, `blog.css` | M (content-scroll regexes on status rules) | DONE | batch B. Skip link is the first `<body>` child on all 1,821 pages; `<main tabindex="-1">`; status in `.site-status-slot` (mobile: fixed 18 px row; 768–899 + ≥1280: `flex: 0 1 176px` with ellipsis, so the chip's arrival never moves anything); `aria-haspopup` removed. Pinned by `tests/unit/theme-premium.test.js` |
+| TH-011 | Mega menu | Dropdown = 2 links, hover-first, touch swallows first tap | APG "disclosure navigation with top-level links": parent `<a>` navigates, sibling `<button aria-expanded aria-controls>` toggles; CSS hover/focus-within still open; Escape closes + refocuses; outside click closes; panel = per child category column (label + up to 4 subtopic hubs with ≥1 article) + "Bài mới" column (3 newest cluster articles); model computed once per build (`setBuildContext`) | `tools/app-shell.mjs`, `tools/build-blog.mjs`, `assets/js/app-shell.js`, `blog.css` | M (blog-hub-nav regexes; no nested `<div>` inside `.site-nav-drop`) | DONE | batch B. Panel = `<ul class="site-mega">` per cluster, one column per child category: category link, ≤3 subtopic hubs with ≥1 article (same rule that generates subtopic pages → no empty/fake links), 2 **cornerstone** guides (first published per category — chosen over "newest" because newest would rewrite the header of every page on every publish: 1.8k-file diffs today, 40k at target scale). Panel anchored to `.site-header-inner` and centred (`width: min(720px,100%)`) → cannot overflow at 900 px; `::before` bridges the hover gap. `aria-expanded` mirrors computed visibility (correct on iOS where buttons do not take focus). Narrow desktop 900–1099: hub emoji, Menu label and header search icon drop (search stays in the drawer); width measured with DejaVu Sans/Inter metrics ≈ 824/868 px worst case. Model built once per build (`setBuildContext`), panels cached per cluster+active hub. `seo-score` prose heuristics now read `<main>` only (menu labels like "Đặt Cọc" are chrome) — score unchanged 99.5, 623 notes |
+| TH-012 | Drawer | No focus management | Focus close button on open, return focus to Menu on close, Tab wraps inside the open drawer | `assets/js/app-shell.js` | L | DONE | batch B. `setDrawer` moves focus (close ↔ Menu); Tab/Shift+Tab wrap over visible focusables; Escape/backdrop/link close |
+| TH-013 | JS budget | 70 B headroom | Rewrite `app-shell.js` compactly (drop v60 console diagnostic, terse comments); measure after every batch | `assets/js/app-shell.js` | L | DONE | batch B. Base JS 231,930 → 231,702 B (headroom 298 B) despite the new focus trap + mega-menu sync |
 
 ### P0 — batch C: mega footer
 
@@ -93,7 +93,7 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 | ID | Area | Problem | Fix | Files | Risk | Status | Evidence |
 |---|---|---|---|---|---|---|---|
 | TH-060 | Rendering | Long pages fully laid out | `content-visibility: auto` + `contain-intrinsic-size` on footer, related, prev/next, hub grids below the first | `blog.css` | L | TODO | |
-| TH-061 | CLS | Status chip pops in | Covered by TH-010 reserved slot | — | — | TODO | |
+| TH-061 | CLS | Status chip pops in | Covered by TH-010 reserved slot | — | — | DONE | batch B (TH-010) |
 | TH-062 | Fonts | — | System font stack, no `@font-face` → `font-display` not applicable (seo-score forbids webfonts) | — | — | N/A (evidence: `seo-score.mjs` `external webfont / font-face risk` check; `style.css` `font-family: system-ui…`) | |
 | TH-063 | Images | — | 1,704 bodies contain 0 `<img>`; builder adds `loading="lazy" decoding="async"` to any future body image lacking it | `tools/build-blog.mjs` | L | TODO | |
 | TH-064 | Build time | 78 s, superlinear | Covered by TH-034; re-benchmark | — | — | TODO | |
@@ -129,18 +129,20 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 
 | ID | Note |
 |---|---|
-| TH-900 | `origin/main` moved 8 commits ahead while auditing (publisher). Merge guidance: merge `main` into this branch, take `main`'s `data/blog/**`, then re-run `node tools/build-blog.mjs` and commit the regenerated output — never hand-resolve `blog/**` conflicts. |
+| TH-900 | `origin/main` moved ahead while working (8 commits at audit, 30 at batch B; publisher). **Output must be regenerated after merging `main`.** Merge guidance: merge `main` into this branch, take `main`'s `data/blog/**`, then re-run `node tools/build-blog.mjs` and commit the regenerated output — never hand-resolve `blog/**` conflicts. |
 
 ## Batch log
 
 | Batch | Commit | Tests | Build | site-audit | seo-score | Notes |
 |---|---|---|---|---|---|---|
 | matrix | `3b7c0cc6` | — | — | — | — | audit only |
-| A (TH-001..004) | (SHA recorded in the batch-B commit) | `node --test` 1003/1003 pass (238 s) | 75 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; `data/blog/**` unchanged | 174,480 internal URLs, 0 broken, 0 issues | 99.5/100 (623 pre-existing per-page notes, UX 10/10) | CSS 57,808 B / 65,536; JS 231,930 B / 232,000 (unchanged). Found + fixed: `package.json` major must track `BUILD_VERSION` (`pwa.test.js`) |
+| A (TH-001..004) | `934faa9b` | `node --test` 1003/1003 pass (238 s) | 75 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; `data/blog/**` unchanged | 174,480 internal URLs, 0 broken, 0 issues | 99.5/100 (623 pre-existing per-page notes, UX 10/10) | CSS 57,808 B / 65,536; JS 231,930 B / 232,000 (unchanged). Found + fixed: `package.json` major must track `BUILD_VERSION` (`pwa.test.js`) |
+
+| B (TH-010..013, TH-061) | (SHA recorded in the batch-C commit) | `node --test` 1008/1008 pass (incl. new `tests/unit/theme-premium.test.js`) | 78 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; second build = byte-identical (determinism) | pass, 223,620 internal URLs checked (menu adds links), 0 broken | 99.5/100, 623 notes (unchanged), UX 10/10 | CSS 60,906 B / 65,536; JS 231,702 B / 232,000. Also: `tools/__pycache__/*.pyc` untracked + `__pycache__/`, `*.pyc` in `.gitignore`. `origin/main` is 30 commits ahead — not merged (TH-900) |
 
 ## Next steps from checkpoint
 
-1. Batch A done → next B (TH-010..013), then C, D, E, F, G in order.
+1. Batches A, B done → next C (TH-020), then D, E, F, G in order.
 2. After each batch: run the loop, record commit SHA + results in **Batch log**, flip item status with evidence.
 3. If the JS guard or CSS budget blocks a batch, trim first (TH-013 / TH-004), bump only with a documented reason.
 4. Every `BUILD_VERSION` bump = 4 files in lockstep: `tools/app-shell.mjs`, `index.html`, `service-worker.js`, `package.json` (major).

@@ -86,31 +86,61 @@ export function pageHead({ title, description, path, ogType = 'website' }) {
 }
 
 /**
+ * v67 mega-menu model, set ONCE per build by tools/build-blog.mjs:
+ *   { [clusterId]: { columns: [{ id, subtopics: [{ label, url }], featured: [{ title, url }] }] } }
+ * Without a context (unit tests, ad-hoc renders) the panel degrades to the
+ * plain child-category links. Rendered panels are cached per cluster +
+ * active hub so 40k pages cost string concatenation only.
+ */
+let MENU = null;
+const PANEL_CACHE = new Map();
+export function setBuildContext({ menu = null } = {}) { MENU = menu; PANEL_CACHE.clear(); }
+
+/** Mega panel for one parent hub — one column per child category: the
+ *  category link, up to 3 subtopic hubs holding articles, 2 cornerstone
+ *  guides. DIV-FREE on purpose: tests/unit/blog-hub-nav strips
+ *  `<div class="site-nav-drop">…</div>` non-greedily to find the top-level
+ *  links, so nothing but lists/links/paragraphs may live inside. */
+function megaPanel(cluster, hub, activeHub) {
+  const key = `${cluster.id}|${activeHub}`;
+  if (PANEL_CACHE.has(key)) return PANEL_CACHE.get(key);
+  const cols = hub.children.map((ch) => {
+    const col = MENU?.[cluster.id]?.columns.find((c) => c.id === ch.id);
+    const subs = (col?.subtopics ?? []).map((s) => `<li><a href="${s.url}">${esc(s.label)}</a></li>`).join('');
+    const feat = (col?.featured ?? []).map((f) => `<li><a href="${f.url}">${esc(f.title)}</a></li>`).join('');
+    return `<li class="site-mega-col"><a class="site-mega-head" href="/blog/${ch.dir}/"${ch.dir === activeHub ? ' aria-current="page"' : ''}>${ch.icon} ${esc(ch.label)}</a>`
+      + (subs ? `<ul class="site-mega-links">${subs}</ul>` : '')
+      + (feat ? `<p class="site-mega-label">Nổi bật</p><ul class="site-mega-links site-mega-feat">${feat}</ul>` : '')
+      + '</li>';
+  }).join('');
+  const html = `<ul class="site-mega" id="site-mega-${cluster.id.toLowerCase()}">${cols}</ul>`;
+  PANEL_CACHE.set(key, html);
+  return html;
+}
+
+/**
  * Shared content-site header. LEFT: MotoAI / Hỗ trợ Agent identity (link
- * back to the chat homepage). CENTER (>= 900px): Cẩm nang + the six
- * categories. RIGHT: search, theme toggle and Menu — always the LAST
- * element of the .site-actions group (flex margin-left:auto keeps the
- * group right-aligned). The business open/closed status is a SEPARATE
- * flex child of .site-header-inner AFTER .site-actions: on mobile it
- * wraps onto its own full-width row under the header (v63 iPhone fix —
- * it can never squeeze itself between the brand and the Menu button),
- * on desktop it is a small muted line next to the actions.
+ * back to the chat homepage). CENTER (>= 900px): Cẩm nang + the 3 parent
+ * hubs, each an APG "disclosure navigation with top-level links": the
+ * parent <a> navigates, its sibling <button aria-expanded aria-controls>
+ * opens the mega panel (CSS :hover/:focus-within open it too; app-shell.js
+ * handles Escape, outside click and aria sync). RIGHT: search, theme
+ * toggle and Menu — always the LAST element of the .site-actions group.
+ * The business open/closed status is a SEPARATE flex child AFTER
+ * .site-actions inside a RESERVED slot (v67: fixed row/width, so the chip
+ * never shifts layout when it appears — no CLS in the sticky header): on
+ * mobile it is its own full-width row under the controls (v63 iPhone
+ * contract), on desktop a small muted line next to the actions.
  */
 function siteHeader({ activeHub, activeCluster }) {
-  // v61: the desktop menu prioritizes the 3 PARENT SEO HUBS. Each parent
-  // label is a REAL crawlable <a>; its child categories live in a glass
-  // dropdown opened by CSS :hover/:focus-within plus a small touch toggle
-  // (app-shell.js). activeHub = category dir; a child page also highlights
-  // its parent hub (activeCluster or child match).
   const hubItems = taxonomy.clusters.map((c) => {
     const hub = clusterNav(c.id);
     const hubActive = c.dir === activeCluster || hub.children.some((ch) => ch.dir === activeHub);
-    const kids = hub.children.map((ch) =>
-      `            <a href="/blog/${ch.dir}/"${ch.dir === activeHub ? ' aria-current="page"' : ''}>${ch.icon} ${esc(ch.label)}</a>`).join('\n');
     return `        <div class="site-nav-item"${hubActive ? ' data-active="1"' : ''}>
-          <a class="site-nav-parent" href="${hub.url}" aria-haspopup="true"${hubActive ? ' aria-current="page"' : ''}>${hub.icon} ${esc(hub.name)} <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <a class="site-nav-parent" href="${hub.url}"${hubActive ? ' aria-current="page"' : ''}><span class="site-nav-ico" aria-hidden="true">${hub.icon}</span> ${esc(hub.name)}</a>
+          <button type="button" class="site-nav-toggle" aria-expanded="false" aria-controls="site-mega-${c.id.toLowerCase()}" aria-label="Mở danh mục ${esc(c.name)}"><span aria-hidden="true">▾</span></button>
           <div class="site-nav-drop">
-${kids}
+            ${megaPanel(c, hub, activeHub)}
           </div>
         </div>`;
   }).join('\n');
@@ -132,7 +162,7 @@ ${hubItems}
           <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
           <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
         </div>
-        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
+        <div class="site-status-slot"><span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span></div>
       </div>
     </header>
 `;
@@ -298,8 +328,9 @@ function shellScripts({ search }) {
  */
 export function appShellPage({ title, description, path, screen, activeHub = null, activeCluster = null, contentHtml, schemaHtml = '', search = false, ogType = 'website' }) {
   return pageHead({ title, description, path, ogType })
+    + `  <a class="skip-link" href="#site-main">Bỏ qua đến nội dung chính</a>\n`
     + siteHeader({ activeHub, activeCluster })
-    + `  <main class="site-main" id="site-main" data-motoai-screen="${esc(screen)}">
+    + `  <main class="site-main" id="site-main" tabindex="-1" data-motoai-screen="${esc(screen)}">
 ${contentHtml}
   </main>
 ${footerHtml()}

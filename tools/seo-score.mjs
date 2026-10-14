@@ -62,6 +62,18 @@ export const text = (html) => String(html)
 
 export const words = (s) => (s ? s.split(/\s+/).filter(Boolean).length : 0);
 
+/** v67: text of the page's <main> column only (falls back to the whole
+ *  page). Prose-claim heuristics must look at the article, not at the
+ *  shared chrome — the header mega menu lists subtopic labels ("Đặt Cọc")
+ *  and cornerstone-article titles on EVERY page, which would otherwise trigger
+ *  or satisfy per-article checks site-wide. Local on purpose: the exported
+ *  `text`/`words` helpers are shared with tools/article-qa.mjs and stay
+ *  byte-for-byte unchanged. */
+const mainText = (html) => {
+  const m = /<main\b[^>]*>([\s\S]*?)<\/main>/i.exec(String(html));
+  return text(m ? m[1] : html);
+};
+
 export function tag(html, name) {
   const m = String(html).match(new RegExp(`<${name}\\b[^>]*>([\\s\\S]*?)</${name}>`, 'i'));
   return m ? m[1].trim() : '';
@@ -290,9 +302,10 @@ function checkAiGEO(pages, io, ctx) {
   for (const p of pages.filter((x) => x.kind === 'article')) {
     const html = io.read(p.path);
     const t = text(html);
-    add(/Câu hỏi thường gặp|FAQ|hỏi đáp/i.test(t), 'no Q&A section', p.path);
+    const prose = mainText(html); // v67: article column only (see mainText)
+    add(/Câu hỏi thường gặp|FAQ|hỏi đáp/i.test(prose), 'no Q&A section', p.path);
     add(html.includes(business.hours.display) || !/mở cửa|giờ/i.test(t) || t.includes(business.hours.display), 'hours claim not backed by verified data', p.path);
-    if (/cọc/i.test(t)) add(t.includes('2.000.000đ') && t.includes('5.000.000đ'), 'deposit claim inconsistent with business.json', p.path);
+    if (/cọc/i.test(prose)) add(prose.includes('2.000.000đ') && prose.includes('5.000.000đ'), 'deposit claim inconsistent with business.json', p.path);
     add(/MotoAI|Thuê Xe Máy Hà Nội|Nguyễn Tú/i.test(t), 'no clear entity naming', p.path);
   }
   for (const p of pages.filter((x) => x.kind === 'hub' || x.kind === 'blog-home')) {

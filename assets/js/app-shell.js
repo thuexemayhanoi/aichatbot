@@ -1,42 +1,51 @@
 /**
- * MotoAI content-site runtime (v61): the shared companion of the single
- * app shell. Runs on every generated screen EXCEPT the chat home
- * (assets/js/main.js owns the home screen).
- * - Theme (Light / Dark / Auto) — same storage + tokens as the Agent app
- * - Verified open/closed status line (business.json is the only truth)
- * - Menu drawer + accordion groups (same behaviour as the home drawer)
- * - Contact hrefs filled from verified business.json — never hard-coded
- * - v61: parent-hub dropdowns — hover/focus-within (CSS) + a small touch
- *   toggle so tablets are not hover-only; Escape and outside click close
- * Pure vanilla ES module; no framework, no backend.
+ * MotoAI content-site runtime (v67). Runs on every generated page except
+ * the chat home (assets/js/main.js owns that screen). Vanilla ES module.
+ * - Theme (Light / Dark / Auto): same storage + tokens as the Agent app
+ * - Menu drawer: focus moves in on open and back on close, Tab wraps,
+ *   Escape/backdrop/link close; accordion groups (one open at a time)
+ * - Verified open/closed status + contact hrefs from business.json only
+ * - Mega menu (APG disclosure nav): parent <a> navigates, toggle button
+ *   opens; CSS hover/focus-within also open; Escape + outside click close
  */
 import { initTheme } from './theme.js?v=63';
 import { computeStatus, renderStatus } from './business-status.js?v=63';
 
 initTheme({ storage: globalThis.localStorage, matchMedia: globalThis.matchMedia?.bind(globalThis) });
 
-// --- Menu drawer (same open/close + accordion contract as home) ---
-const menuBtn = document.getElementById('motoai-menu-btn');
-const drawer = document.getElementById('motoai-drawer');
-const backdrop = document.getElementById('motoai-drawer-backdrop');
-const drawerClose = document.getElementById('motoai-drawer-close');
+const $ = (id) => document.getElementById(id);
+const FOCUSABLE = 'a[href],button:not([disabled])';
 
+// --- Drawer ---
+const menuBtn = $('motoai-menu-btn');
+const drawer = $('motoai-drawer');
+const backdrop = $('motoai-drawer-backdrop');
+const drawerClose = $('motoai-drawer-close');
 let drawerOpen = false;
 function setDrawer(open) {
   drawerOpen = open;
   drawer.hidden = !open;
   backdrop.hidden = !open;
   menuBtn?.setAttribute('aria-expanded', open ? 'true' : 'false');
+  (open ? drawerClose : menuBtn)?.focus();
 }
 menuBtn?.addEventListener('click', () => setDrawer(!drawerOpen));
 drawerClose?.addEventListener('click', () => setDrawer(false));
 backdrop?.addEventListener('click', () => setDrawer(false));
-drawer?.addEventListener('click', (event) => {
-  if (event.target.closest('.motoai-group-btn')) return; // accordion expands in place
-  if (event.target.closest('a, button')) setDrawer(false);
+drawer?.addEventListener('click', (e) => {
+  if (e.target.closest('.motoai-group-btn')) return; // accordion expands in place
+  if (e.target.closest('a, button')) setDrawer(false);
 });
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && drawerOpen) setDrawer(false);
+drawer?.addEventListener('keydown', (e) => {
+  if (e.key !== 'Tab') return;
+  const f = [...drawer.querySelectorAll(FOCUSABLE)].filter((el) => el.offsetParent !== null);
+  const first = f[0]; const last = f[f.length - 1];
+  if (!first) return;
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && drawerOpen) setDrawer(false);
 });
 
 // One accordion group open at a time (ARIA-backed, like home).
@@ -45,12 +54,12 @@ const closeGroups = (except) => {
   for (const btn of groupButtons) {
     if (btn === except) continue;
     btn.setAttribute('aria-expanded', 'false');
-    document.getElementById(btn.getAttribute('aria-controls'))?.setAttribute('hidden', '');
+    $(btn.getAttribute('aria-controls'))?.setAttribute('hidden', '');
   }
 };
 for (const btn of groupButtons) {
   btn.addEventListener('click', () => {
-    const items = document.getElementById(btn.getAttribute('aria-controls'));
+    const items = $(btn.getAttribute('aria-controls'));
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     closeGroups(btn);
     btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
@@ -62,12 +71,10 @@ for (const btn of groupButtons) {
 }
 
 // --- Verified business data: status line + contact hrefs ---
-const statusEl = document.getElementById('blog-business-status');
+const statusEl = $('blog-business-status');
 const CONTACT_REFS = { call: 'phone_uri', whatsapp: 'whatsapp', map: 'maps' };
 const contactNodes = [...document.querySelectorAll('[data-contact-ref]')];
-const needsData = Boolean(statusEl) || contactNodes.length > 0;
-
-if (needsData) {
+if (statusEl || contactNodes.length) {
   fetch('/data/business/business.json', { cache: 'no-cache' })
     .then((r) => (r.ok ? r.json() : null))
     .then((business) => {
@@ -84,56 +91,40 @@ if (needsData) {
         }
       }
     })
-    .catch(() => { /* data unavailable: status stays hidden, links stay hidden */ });
+    .catch(() => { /* data unavailable: status + links stay hidden */ });
 }
 
-// --- v61 parent-hub dropdowns: touch toggle + Escape + outside close ---
-// CSS opens .site-nav-drop on :hover/:focus-within (mouse + keyboard).
-// This block only adds: touch/tap open on first tap (second tap navigates),
-// Escape to close, and closing when tapping outside the header nav.
+// --- Mega menu ---
+// Visible = CSS hover (fine pointers) | :focus-within | .open (toggle);
+// .closed = dismissed (Escape/toggle) while hover/focus would still show it,
+// cleared once pointer and focus have both left. aria-expanded always
+// mirrors the computed visibility, so touch (no hover, no button focus on
+// iOS) and mouse/keyboard agree.
 const navItems = [...document.querySelectorAll('.site-nav-item')];
-function closeDropitems(except) {
-  for (const item of navItems) {
-    if (item === except) continue;
-    item.classList.remove('open');
-    item.querySelector('.site-nav-parent')?.setAttribute('aria-expanded', 'false');
-  }
-}
+const shown = (it) => getComputedStyle(it.querySelector('.site-nav-drop')).display !== 'none';
+const sync = (it) => it.querySelector('.site-nav-toggle')?.setAttribute('aria-expanded', String(shown(it)));
+const closeDropitems = (except) => { for (const it of navItems) if (it !== except) { it.classList.remove('open'); sync(it); } };
 for (const item of navItems) {
-  const parent = item.querySelector('.site-nav-parent');
-  parent?.addEventListener('click', (event) => {
-    if (!event.pointerType || event.pointerType === 'touch') {
-      // First tap opens the panel; once open, a tap follows the hub link.
-      if (!item.classList.contains('open')) {
-        event.preventDefault();
-        closeDropitems(item);
-        item.classList.add('open');
-        parent.setAttribute('aria-expanded', 'true');
-      }
-    }
+  const toggle = item.querySelector('.site-nav-toggle');
+  const reset = () => setTimeout(() => {
+    if (!item.matches(':hover') && !item.contains(document.activeElement)) item.classList.remove('open', 'closed');
+    sync(item);
   });
-  item.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && item.classList.contains('open')) {
-      closeDropitems(null);
-      parent?.focus();
-    }
+  toggle?.addEventListener('click', () => {
+    const on = !shown(item);
+    closeDropitems(item);
+    item.classList.toggle('open', on);
+    item.classList.toggle('closed', !on);
+    sync(item);
+  });
+  item.addEventListener('focusin', () => sync(item));
+  item.addEventListener('mouseenter', () => sync(item));
+  item.addEventListener('focusout', reset);
+  item.addEventListener('mouseleave', reset);
+  item.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { item.classList.remove('open'); item.classList.add('closed'); sync(item); toggle?.focus(); }
   });
 }
-document.addEventListener('click', (event) => {
-  if (!event.target.closest('.site-nav')) closeDropitems(null);
-});
-
-// --- v60 scroll diagnostic (tiny, dev-friendly) ---
-// On the owner's iPhone: open the page, and the console shows whether the
-// document scrolls past the viewport and the footer is reachable.
-window.addEventListener('load', () => {
-  const doc = document.documentElement;
-  const footer = document.querySelector('.blog-footer');
-  const maxScrollY = Math.max(0, doc.scrollHeight - window.innerHeight);
-  console.info(
-    `[MotoAI] build=${document.querySelector('meta[name="motoai-build"]')?.content}` +
-    ` scrollHeight=${doc.scrollHeight} innerHeight=${window.innerHeight}` +
-    ` maxScrollY=${maxScrollY}` +
-    ` footer=${footer ? 'present, bottom at ' + Math.round(footer.getBoundingClientRect().top + window.scrollY) : 'MISSING'}`
-  );
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.site-nav')) closeDropitems(null);
 });
