@@ -1,0 +1,532 @@
+{
+  "$schema": "motoai/seo-cold-start@1",
+  "note": "Quy tắc cho tools/seo-cold-start.mjs (chế độ ZERO-DATA). Chỉ phân loại dữ liệu quan sát được (SERP thật, volume do công cụ bên thứ ba trả về); không ước đoán. Thứ tự áp dụng: thương hiệu riêng/sister -> thương hiệu khác -> tiếng Anh -> out_of_intent -> other_market -> trip_destination -> local_pack -> unverified_service -> intent_markers -> in-scope.",
+  "site_domain": "chatbot.thuexemaynguyentu.com",
+  "sister_domains": [
+    "thuexemaynguyentu.com",
+    "blog.thuexemaynguyentu.com",
+    "wiki.thuexemaynguyentu.com",
+    "thuexemaynguyentu.webflow.io"
+  ],
+  "home_market": [
+    "hà nội",
+    "ha noi",
+    "hoàn kiếm",
+    "ba đình",
+    "tây hồ",
+    "long biên",
+    "cầu giấy",
+    "đống đa",
+    "hai bà trưng",
+    "thanh xuân",
+    "hoàng mai",
+    "hà đông",
+    "gia lâm",
+    "bồ đề",
+    "phố cổ",
+    "hồ tây",
+    "hồ gươm",
+    "nhật tân",
+    "bát tràng",
+    "vành đai 1",
+    "nội bài"
+  ],
+  "sister_owned": [
+    "thuê xe máy hà nội",
+    "thuê xe máy ở hà nội",
+    "thuê xe máy tại hà nội",
+    "cho thuê xe máy hà nội",
+    "cho thuê xe máy ở hà nội",
+    "cho thuê xe máy tại hà nội",
+    "dịch vụ cho thuê xe máy hà nội",
+    "thuê xe máy uy tín hà nội"
+  ],
+  "trip_destinations": [
+    "ninh bình",
+    "hà giang",
+    "sapa",
+    "sa pa",
+    "mộc châu",
+    "tam đảo",
+    "ba vì",
+    "hạ long",
+    "bãi cháy",
+    "cát bà",
+    "cao bằng",
+    "mai châu",
+    "hòa bình",
+    "thái nguyên",
+    "bắc ninh",
+    "hải phòng",
+    "nam định",
+    "đường lâm",
+    "tây bắc",
+    "đông bắc",
+    "lào cai",
+    "bình liêu",
+    "quảng ninh",
+    "xuyên việt",
+    "lào"
+  ],
+  "other_markets": [
+    "đà nẵng",
+    "nha trang",
+    "đà lạt",
+    "sài gòn",
+    "tphcm",
+    "tp hcm",
+    "hcm",
+    "hồ chí minh",
+    "vũng tàu",
+    "quy nhơn",
+    "huế",
+    "hội an",
+    "phú quốc",
+    "cần thơ",
+    "phan thiết",
+    "mũi né",
+    "quảng ngãi",
+    "gò vấp",
+    "quận 1",
+    "quận 7",
+    "quận 12",
+    "bình thạnh",
+    "thủ đức",
+    "bình dương",
+    "biên hòa",
+    "đồng nai",
+    "tây ninh",
+    "buôn ma thuột",
+    "bmt",
+    "pleiku",
+    "gia lai",
+    "kon tum",
+    "bảo lộc",
+    "phú yên",
+    "tuy hoà",
+    "tuy hòa",
+    "cam ranh",
+    "cà mau",
+    "rạch giá",
+    "hà tiên",
+    "long xuyên",
+    "châu đốc",
+    "bến tre",
+    "mỹ tho",
+    "trà vinh",
+    "vĩnh long",
+    "sa đéc",
+    "cao lãnh",
+    "bạc liêu",
+    "côn đảo",
+    "lagi",
+    "phước hải",
+    "măng đen",
+    "vinh",
+    "thanh hóa",
+    "sầm sơn",
+    "bình thuận",
+    "điện biên",
+    "bến cát",
+    "bình tân",
+    "sơn trà",
+    "liên chiểu",
+    "phú quý",
+    "miền tây",
+    "miền trung",
+    "quảng bình",
+    "bình định",
+    "khánh hòa",
+    "lâm đồng",
+    "saigon",
+    "sai gon",
+    "hồ tràm",
+    "hồ cốc"
+  ],
+  "out_of_intent": [
+    {
+      "re": "thi bằng|học bằng|ôn thi|lý thuyết|mẹo thi|mẹo học|câu hỏi thi|hồ sơ thi|đăng ký thi|trung tâm thi|lịch thi|điểm thi|app thi|máy tính thi|luật thi|đào tạo lái|học lái|thi lái|sát hạch|thi thử",
+      "reason": "Ôn thi/học bằng lái — ý định của người học lái, không phải người thuê xe"
+    },
+    {
+      "re": "đổi bằng|cấp lại|làm lại|mất bằng|tra cứu bằng|đăng ký bằng|mua bằng|làm bằng",
+      "reason": "Thủ tục cấp/đổi bằng lái tại cơ quan nhà nước"
+    },
+    {
+      "re": "giá xe|mua xe|mới nhất|các mẫu|đời mới|xe lướt|xe máy cũ|chợ xe|cửa hàng xe|của hàng xe|đại lý|dat bike|feliz|vf6|hrv|sh mode giá|giá bao nhiêu|giá bao nhiều|honda 20[0-9][0-9]",
+      "reason": "Mua xe / mẫu xe — ý định mua, không phải thuê"
+    },
+    {
+      "re": "phụ tùng|nhớt|sơn xe|dán decal|làm pô|ắc quy|ác quy|định vị|khóa xe|bơm xe|bánh xe|sửa xe|sửa chữa|tân trang|đồ chơi xe|bộ vá|đồ nghề|camera hành trình|túi đi phượt|quần áo|dụng cụ|phụ kiện",
+      "reason": "Sửa chữa, phụ tùng, phụ kiện"
+    },
+    {
+      "re": "đăng ký xe|biển số|biển xe|lệ phí trước bạ|đăng kiểm|giấy đăng ký|tra cứu đăng ký|tên chủ xe|phí ra biển|vay tiền|xe máy chuyên dùng",
+      "reason": "Thủ tục sở hữu xe — không phải người thuê"
+    },
+    {
+      "re": "ô tô|ô to|tài xế|lái xe hộ|lái hộ|xe tải|16 chỗ|bán tải|ba gác|có tài|siêu xe|xe đạp martin|xe điện 3 bánh|xe đẩy|mioto|xe đạp công cộng|thuê xe tự lái(?! máy)|app thuê xe tự lái|cho thuê xe tự lái(?! máy)|xe tự lái (vinfast|uy tín|hà nội|đà nẵng|tphcm|hcm)|xe đạp(?! điện)",
+      "reason": "Ô tô hoặc phương tiện khác — ngoài phạm vi xe máy"
+    },
+    {
+      "re": "thuê pin|đổi pin|chạy xanh sm|chạy grab|chạy taxi|xanh sm|thuê xe sở hữu",
+      "reason": "Thuê pin/thuê xe cho tài xế công nghệ — đối tượng khác"
+    },
+    {
+      "re": "tìm việc|giao hàng|chở hàng|vận chuyển|gửi xe máy",
+      "reason": "Việc làm/vận chuyển"
+    },
+    {
+      "re": "kinh doanh cho thuê|kinh nghiệm cho thuê|thủ tục cho thuê",
+      "reason": "Phía chủ kinh doanh cho thuê xe"
+    },
+    {
+      "re": "ảnh xe máy|hình ảnh|kích thước xe|gg map|tiếng anh là gì",
+      "reason": "Ý định không liên quan việc thuê/đi xe thuê"
+    }
+  ],
+  "local_pack": {
+    "re": "gần đây|gần nhất|gần tôi|quanh đây",
+    "reason": "Ý định 'gần tôi' do Google Maps/Business Profile phục vụ — bài blog khó xếp hạng"
+  },
+  "unverified_service": [
+    {
+      "re": "vinfast",
+      "reason": "Dòng xe VinFast chưa có trong dữ liệu kinh doanh đã xác minh (data/business/business.json)"
+    },
+    {
+      "re": "xe đạp điện",
+      "reason": "Xe đạp điện chưa có trong dữ liệu kinh doanh đã xác minh"
+    },
+    {
+      "re": "50cc|cub 50",
+      "reason": "Xe 50cc chưa có giá/dòng xe xác minh"
+    },
+    {
+      "re": "honda điện|xe máy điện honda",
+      "reason": "Dòng xe điện Honda chưa xác minh"
+    }
+  ],
+  "generic_tokens": [
+    "2024",
+    "2025",
+    "2026",
+    "bao",
+    "cho",
+    "các",
+    "có",
+    "của",
+    "gì",
+    "hà",
+    "khi",
+    "là",
+    "máy",
+    "mới",
+    "nhiêu",
+    "nhất",
+    "những",
+    "nào",
+    "nên",
+    "năm",
+    "nội",
+    "thuê",
+    "thì",
+    "tại",
+    "và",
+    "xe",
+    "đi",
+    "được",
+    "ở"
+  ],
+  "domain_types": [
+    {
+      "re": "(^|\\.)facebook\\.com$",
+      "type": "Mạng xã hội (Facebook/nhóm)",
+      "kind": "social"
+    },
+    {
+      "re": "(^|\\.)(youtube\\.com|tiktok\\.com)$",
+      "type": "Video",
+      "kind": "video"
+    },
+    {
+      "re": "(^|\\.)reddit\\.com$|otosaigon\\.com$|otofun\\.net\\.vn$|tinhte\\.vn$|xetv\\.vn$|voz\\.vn$",
+      "type": "Diễn đàn/cộng đồng",
+      "kind": "forum"
+    },
+    {
+      "re": "\\.gov\\.vn$|(^|\\.)chinhphu\\.vn$|(^|\\.)vbpl\\.vn$|(^|\\.)csgt\\.vn$",
+      "type": "Cơ quan nhà nước",
+      "kind": "gov"
+    },
+    {
+      "re": "(^|\\.)(thuvienphapluat\\.vn|luatvietnam\\.vn|thuviennhadat\\.vn)$|law\\.com$",
+      "type": "Văn bản/hỏi đáp pháp luật",
+      "kind": "legal"
+    },
+    {
+      "re": "(^|\\.)(vnexpress\\.net|tuoitre\\.vn|thanhnien\\.vn|dantri\\.com\\.vn|vietnamnet\\.vn|24h\\.com\\.vn|vtcnews\\.vn|baogiaothong\\.vn|laodong\\.vn|hanoimoi\\.vn|daibieunhandan\\.vn|baomoi\\.com|znews\\.vn|cafef\\.vn|kinhtechungkhoan\\.vn|thethaovanhoa\\.vn|vov\\.vn|nld\\.com\\.vn|tienphong\\.vn|vietnamplus\\.vn|baobacninhtv\\.vn|home\\.vn)$",
+      "type": "Báo chí",
+      "kind": "news"
+    },
+    {
+      "re": "(^|\\.)(tripadvisor\\.com\\.vn|tripadvisor\\.com|traveloka\\.com|klook\\.com|vexere\\.com|tripi\\.vn|ivivu\\.com|mytour\\.vn|vinpearl\\.com|vinwonders\\.com|justfly\\.vn|luhanhvietnam\\.com\\.vn|bazantravel\\.com|vietnamtourism\\.gov\\.vn|dulichfun\\.com|ohdidi\\.vn)$",
+      "type": "Du lịch / OTA / cẩm nang du lịch",
+      "kind": "travel"
+    },
+    {
+      "re": "(^|\\.)(play\\.google\\.com|apps\\.apple\\.com)$",
+      "type": "Kho ứng dụng",
+      "kind": "appstore"
+    },
+    {
+      "re": "(^|\\.)(vinfastauto\\.com|dienmayxanh\\.com|thegioididong\\.com|okxe\\.vn)$",
+      "type": "Hãng xe / bán lẻ",
+      "kind": "retail"
+    }
+  ],
+  "commercial_title_cues": [
+    "cho thuê",
+    "dịch vụ",
+    "bảng giá",
+    "giá rẻ",
+    "giá từ",
+    "giá tốt",
+    "uy tín",
+    "giao xe",
+    "giao tận",
+    "liên hệ",
+    "hotline",
+    "đặt xe",
+    "miễn cọc",
+    "chỉ từ",
+    "địa chỉ",
+    "top ",
+    "cửa hàng"
+  ],
+  "informational_title_cues": [
+    "kinh nghiệm",
+    "hướng dẫn",
+    "là gì",
+    "cách ",
+    "có cần",
+    "bao nhiêu",
+    "?",
+    "lưu ý",
+    "mẹo",
+    "những điều",
+    "cần biết",
+    "quy định",
+    "mức phạt",
+    "luật",
+    "thủ tục",
+    "tại sao",
+    "có nên",
+    "giải đáp",
+    "hỏi đáp",
+    "so sánh"
+  ],
+  "curated_topics": [
+    {
+      "topic": "Vùng phát thải thấp trong Vành đai 1 (Hà Nội) và người thuê xe máy xăng",
+      "cluster": "K12",
+      "status": "GAP",
+      "evidence_query": "cấm xe máy xăng vành đai 1",
+      "observed": "SERP 2026-10-14 toàn tin tức/hỏi đáp pháp luật về lộ trình hạn chế xe máy xăng trong Vành đai 1; kho bài hiện chỉ nhắc Vành đai 1 như tuyến đường, chưa có bài riêng cho người thuê xe.",
+      "sources_to_verify": [
+        "https://daibieunhandan.vn/ha-noi-thi-diem-vung-phat-thai-thap-huong-toi-thoi-quen-su-dung-phuong-tien-xanh-cua-nguoi-dan-10425277.html",
+        "https://hanoimoi.vn/ha-noi-dong-bo-trien-khai-vung-phat-thai-thap-trong-vanh-dai-1-1215488.html",
+        "https://hhtip.hanoi.gov.vn/vi/tin-tuc/hien-thuc-hoa-muc-tieu-cai-thien-moi-truong-thu-do-2897.html"
+      ],
+      "action": "Đề xuất bài mới (cần owner thêm ID vào ma trận); bài pháp lý: đối chiếu nghị quyết HĐND/quyết định UBND và thông báo phân luồng hiện hành trước khi viết. Theo hai báo trên (7–8/2026): thí điểm từ 1/7/2026 tại phường Hoàn Kiếm, giai đoạn này chủ yếu tuyên truyền; khung 19h–24h cuối tuần vẫn hạn chế xe cơ giới như phố đi bộ.",
+      "keywords": [
+        "cấm xe máy xăng vành đai 1"
+      ]
+    },
+    {
+      "topic": "Xe máy điện: có cần bằng lái không và bao nhiêu tuổi được đi",
+      "cluster": "K09",
+      "status": "GAP",
+      "evidence_query": "xe máy điện có cần bằng lái không",
+      "keywords": [
+        "xe máy điện có cần bằng lái không",
+        "bao nhiêu tuổi được đi xe máy điện",
+        "xe máy điện bao nhiêu tuổi được đi",
+        "đi xe máy điện có cần bằng lái không",
+        "bao nhiêu tuổi thì được đi xe máy điện",
+        "xe máy điện cần bằng lái không",
+        "xe máy điện không cần bằng lái"
+      ],
+      "observed": "Nhu cầu đo được lớn nhưng kho bài chỉ có một câu hỏi FAQ trong bài IDP (idp-va-bang-lai-quoc-te-tom-tat) và các bài độ tuổi thuê xe máy nói chung; SERP có AI Overview và PAA.",
+      "sources_to_verify": [
+        "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Luat-trat-tu-an-toan-giao-thong-duong-bo-2024-so-36-2024-QH15-444251.aspx"
+      ],
+      "action": "Đề xuất bài mới (EV hoặc SAFE, cần owner thêm ID vào ma trận); bài pháp lý: đối chiếu Điều 57 (hạng A1/A theo công suất động cơ điện) và Điều 59 (độ tuổi) Luật 36/2024/QH15 trước khi viết."
+    }
+  ],
+  "intent_markers": {
+    "reason": "Không có tín hiệu ý định thuê/đi xe hay thông tin liên quan (thường là tên thương hiệu, cửa hàng, mẫu xe)",
+    "terms": [
+      "thuê",
+      "đi",
+      "lái",
+      "phạt",
+      "luật",
+      "bằng",
+      "giấy",
+      "an toàn",
+      "kinh nghiệm",
+      "cách",
+      "hướng dẫn",
+      "mũ",
+      "pin",
+      "sạc",
+      "có cần",
+      "tuổi",
+      "bảo hiểm",
+      "tai nạn",
+      "hỏng",
+      "thủng",
+      "lốp",
+      "xăng",
+      "du lịch",
+      "phượt",
+      "hành trình",
+      "đường",
+      "gương",
+      "nồng độ",
+      "camera",
+      "quy định",
+      "hợp đồng",
+      "cọc",
+      "thủ tục",
+      "app",
+      "ứng dụng",
+      "cấm",
+      "cứu hộ",
+      "giao thông",
+      "phạt nguội",
+      "chạy",
+      "đổ",
+      "dừng",
+      "đỗ",
+      "gửi xe",
+      "trả xe",
+      "nhận xe",
+      "kiểm tra",
+      "giá thuê",
+      "bảng giá",
+      "chi phí",
+      "khách",
+      "người nước ngoài",
+      "du khách",
+      "tự lái",
+      "hồ",
+      "phố",
+      "chợ đêm",
+      "quận",
+      "phường",
+      "huyện"
+    ]
+  },
+  "rewrite": {
+    "k": "không",
+    "ko": "không",
+    "kg": "không",
+    "hok": "không",
+    "đc": "được",
+    "dc": "được",
+    "giấy phép lái xe": "bằng lái",
+    "giấy phép lái": "bằng lái",
+    "gplx": "bằng lái",
+    "nón bảo hiểm": "mũ bảo hiểm",
+    "xe ga": "xe tay ga",
+    "tp hcm": "tphcm",
+    "sài gòn": "sài gòn",
+    "bao nhiêu tuổi": "độ tuổi",
+    "mấy tuổi": "độ tuổi",
+    "lỗi": "phạt"
+  },
+  "brands": {
+    "reason": "Truy vấn tên thương hiệu/cửa hàng cụ thể (điều hướng) — không nhắm",
+    "own": [
+      "nguyễn tú",
+      "thuexemaynguyentu"
+    ],
+    "terms": [
+      "thành đạt",
+      "tigit",
+      "13535",
+      "hanoi motor tour",
+      "motor tour",
+      "mr cò",
+      "minh long",
+      "bình minh",
+      "gia huy",
+      "văn khoa",
+      "hồ vỹ",
+      "gia khánh",
+      "kim thành",
+      "thảo vy",
+      "go happy",
+      "mr nguyên",
+      "bảo duy",
+      "best motor",
+      "anh cường",
+      "san hô việt",
+      "thanh hải",
+      "sm house",
+      "anh cần",
+      "hương dương",
+      "trà my",
+      "blvck",
+      "bike saigon",
+      "hidden land",
+      "lucky motorbike",
+      "thạnh phát",
+      "minh trí",
+      "a hưng",
+      "anh dũng",
+      "dũng bảo lộc",
+      "phát đạt",
+      "hữu hào",
+      "văn chính",
+      "motogo",
+      "mototrip",
+      "izigo",
+      "thu hà",
+      "nguyễn hà",
+      "tâm chung",
+      "thanh lâm",
+      "trầm hương",
+      "ngày hè vàng",
+      "trần phú",
+      "88 vũng tàu",
+      "139",
+      "lv",
+      "24 24",
+      "hd tuy hoà",
+      "thanh bình",
+      "phú quý"
+    ]
+  },
+  "manual_review": [
+    {
+      "keywords": [
+        "bao nhiêu tuổi được đi xe máy điện",
+        "xe máy điện bao nhiêu tuổi được đi",
+        "bao nhiêu tuổi thì được đi xe máy điện"
+      ],
+      "status": "GAP",
+      "note": "Rà soát thủ công 2026-10-14: bài điều kiện thuê xe (BA-0110) chỉ nói độ tuổi thuê xe máy nói chung, các bài 'người cao tuổi' nói về người lớn tuổi — chưa có bài về độ tuổi được đi xe máy điện."
+    },
+    {
+      "keywords": [
+        "lỗi không gương xe máy"
+      ],
+      "status": "SECTION",
+      "article": "BA-0095",
+      "note": "Rà soát thủ công 2026-10-14: bài gương chiếu hậu có mục 'Nhóm lỗi về gương có thể bị xử phạt'."
+    }
+  ]
+}

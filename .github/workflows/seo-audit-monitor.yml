@@ -26,6 +26,12 @@ jobs:
       - name: Unit tests for monitor
         run: node --test tests/unit/seo-live-monitor.test.js tests/unit/seo-index-coverage.test.js
 
+      - name: Cold-start SEO research reports (ZERO-DATA until real Search Console data exists)
+        if: always()
+        run: |
+          node --test tests/unit/seo-cold-start.test.js
+          node tools/seo-cold-start.mjs --check 2>&1 | tee seo-cold-start.txt
+
       - name: Matrix/sitemap publication coverage
         run: node tools/seo-index-coverage.mjs --json > seo-index-coverage.json
 
@@ -53,6 +59,9 @@ jobs:
           if test -s seo-live-monitor.json; then
             node -e 'const r=require("./seo-live-monitor.json"); console.log("Checks: "+r.passed+" PASS / "+r.failed+" FAIL; sitemap URLs: "+r.sitemapUrls+"; sampled HTML pages: "+r.sampledPages)' >> "$GITHUB_STEP_SUMMARY"
           fi
+          if test -s seo-cold-start.txt; then
+            echo "Cold-start research: $(cat seo-cold-start.txt | tr '\n' ' ')" >> "$GITHUB_STEP_SUMMARY"
+          fi
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "HTTP crawlability is not evidence of actual Google/Bing indexing or Core Web Vitals field data." >> "$GITHUB_STEP_SUMMARY"
 
@@ -66,5 +75,6 @@ jobs:
             seo-static-score.json
             seo-live-monitor.json
             seo-index-coverage.json
+            seo-cold-start.txt
           if-no-files-found: warn
           retention-days: 14
