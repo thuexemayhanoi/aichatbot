@@ -28417,6 +28417,134 @@
       "url": "/blog/thue-xe/thue-xe-giao-tan-noi-cho-gia-dinh/",
       "category": "RENT",
       "text": "Nếu cả nhà ở gần cửa hàng tại {{ business.address.full }} và có người rảnh, tự qua nhận xe vẫn là cách đơn giản. Giao tận nơi đáng cân nhắc hơn trong những trường hợp sau:"
+    },
+    {
+      "id": "BA-1273:c1",
+      "article_id": "BA-1273",
+      "title": "Agent Chọn xe Giúp Bạn Cho Khách Nước Ngoài",
+      "url": "/blog/app/agent-chon-xe-giup-ban-cho-khach-nuoc-ngoai/",
+      "category": "APP",
+      "text": "Với khách nước ngoài, giao việc chọn xe cho một agent trên website nghe rất tiện: bạn kể chuyến đi, trợ lý gợi ý chiếc phù hợp. Nhưng giá trị thật không nằm ở câu trả lời đầu tiên, mà ở cách bạn đọc, chất vấn và kiểm chứng gợi ý đó trước khi cầm chìa khóa. Bài này đi theo một cuộc trò chuyện minh họa từ đầu đến cuối, rồi chỉ ra bốn câu nên hỏi ngược lại agent, những lúc agent chuyển bạn sang cửa hàng, cách thử chiếc xe thật và khi nào nên quay lại hỏi giữa chuyến."
+    },
+    {
+      "id": "BA-1273:c2",
+      "article_id": "BA-1273",
+      "title": "Agent Chọn xe Giúp Bạn Cho Khách Nước Ngoài",
+      "url": "/blog/app/agent-chon-xe-giup-ban-cho-khach-nuoc-ngoai/",
+      "category": "APP",
+      "text": "Hãy hình dung một du khách ở Tây Hồ sáu ngày, đã từng lái scooter tự động ở quê nhà nhưng chưa bao giờ đi xe số. Cuộc trò chuyện với agent trên website của {{ business.brand }} có thể diễn ra theo các bước sau, viết bằng tiếng Anh đơn giản:"
+    },
+    {
+      "id": "BA-1272:c1",
+      "article_id": "BA-1272",
+      "title": "Bánh Cuốn và Hành Trình Buổi Sáng",
+      "url": "/blog/dia-phuong/banh-cuon-va-hanh-trinh-buoi-sang/",
+      "category": "LOCAL",
+      "text": "Không phải buổi sáng nào cũng phải bắt đầu từ lúc trời còn tối. Nếu bạn nhận xe đúng lúc cửa hàng mở cửa, bánh cuốn là món hợp nhất cho bữa sáng đầu tiên với chiếc xe vừa nhận: quán vẫn đang tráng bánh, khách đi làm đã vãn, và đĩa bánh nhẹ bụng không làm bạn uể oải khi lái tiếp. Bài viết này xếp một buổi sáng muộn từ chín giờ tới trưa, đi từ Long Biên qua sông vào phố cổ, rồi men theo những con đường rợp cây ở Ba Đình, kèm cách tận dụng chặng đầu để làm quen với xe."
+    },
+    {
+      "id": "BA-1272:c2",
+      "article_id": "BA-1272",
+      "title": "Bánh Cuốn và Hành Trình Buổi Sáng",
+      "url": "/blog/dia-phuong/banh-cuon-va-hanh-trinh-buoi-sang/",
+      "category": "LOCAL",
+      "text": "Quán bánh cuốn Hà Nội thường có hai đợt khách. Đợt đầu từ lúc mở hàng tới khoảng tám giờ là người đi làm, học sinh, ai cũng vội, chủ quán tráng liên tay. Đợt sau thưa hơn, từ khoảng chín giờ, khách là người đã nghỉ hưu, người làm tự do và du khách. Đây chính là khung bạn sẽ tới nếu nhận xe lúc {{ business.brand }} vừa mở cửa."
+    },
+    {
+      "id": "BA-1279:c1",
+      "article_id": "BA-1279",
+      "title": "Đặt Cọc và Ứng Dụng Thuê xe Cho Khách Nước Ngoài",
+      "url": "/blog/app/dat-coc-va-ung-dung-thue-xe-cho-khach-nuoc-ngoai/",
+      "category": "APP",
+      "text": "Một du khách vừa đặt phòng ở Phố Cổ mở website thuê xe trên điện thoại và thấy chữ \"cọc\" lặp lại nhiều lần. Đó là gì, bao nhiêu, nộp thế nào và khi nào được trả lại, trong khi bạn không đọc được tiếng Việt? Bài viết này dành cho khách nước ngoài, và cho người Việt đang đặt xe giúp bạn bè quốc tế: cách dùng trợ lý MotoAI trên website để hiểu khoản đặt cọc từ trước khi tới Hà Nội cho đến lúc trả xe, kèm vài từ tiếng Việt nên biết và những dấu hiệu lừa đảo cần tránh."
+    },
+    {
+      "id": "BA-1279:c2",
+      "article_id": "BA-1279",
+      "title": "Đặt Cọc và Ứng Dụng Thuê xe Cho Khách Nước Ngoài",
+      "url": "/blog/app/dat-coc-va-ung-dung-thue-xe-cho-khach-nuoc-ngoai/",
+      "category": "APP",
+      "text": "MotoAI là trợ lý chạy ngay trong trình duyệt, không cần tải thêm gì về máy. Bạn mở website, gõ câu hỏi và nhận câu trả lời dựa trên chính sách mà {{ business.brand }} đã công bố. Điểm khác biệt giữa công cụ trên web và một ứng dụng cài đặt được giải thích trong bài web app và app native khác gì nhau cho khách nước ngoài ."
+    },
+    {
+      "id": "BA-1276:c1",
+      "article_id": "BA-1276",
+      "title": "Nhận Lại Tiền Cọc Tại Hà Nội",
+      "url": "/blog/huong-dan/nhan-lai-tien-coc-tai-ha-noi/",
+      "category": "GUIDE",
+      "text": "Điều kiện để nhận lại tiền cọc ở đâu cũng giống nhau: xe về đúng hiện trạng, đủ phụ kiện và đúng giờ. Nhưng ở Hà Nội, những thứ khiến người thuê lỡ một trong ba điều kiện ấy lại rất riêng: cây cầu tắc giờ tan tầm, trận mưa rào làm xe lấm bùn, tấm vé gửi xe bị mất ở bãi phố cổ, hay thông báo phạt nguội đến sau khi bạn đã trả xe. Bài viết này đi vào chính những yếu tố địa phương đó, để ngày trả xe tại cửa hàng ở Long Biên diễn ra gọn và bạn nhận lại đủ khoản bảo đảm."
+    },
+    {
+      "id": "BA-1276:c2",
+      "article_id": "BA-1276",
+      "title": "Nhận Lại Tiền Cọc Tại Hà Nội",
+      "url": "/blog/huong-dan/nhan-lai-tien-coc-tai-ha-noi/",
+      "category": "GUIDE",
+      "text": "Tại {{ business.brand }}, tiền cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được xác nhận khi đặt và hoàn lại theo hình thức hai bên đã thống nhất. Khoản này được trả đủ khi:"
+    },
+    {
+      "id": "BA-1278:c1",
+      "article_id": "BA-1278",
+      "title": "Phở bò và Hành Trình Sáng Buổi Sáng",
+      "url": "/blog/dia-phuong/pho-bo-va-hanh-trinh-sang-buoi-sang/",
+      "category": "LOCAL",
+      "text": "Người Hà Nội hay nói phở ngon nhất là bát đầu tiên của nồi nước mới, lúc trời còn mờ và phố chưa kịp đông. Muốn có được buổi sáng ấy bằng xe máy, bạn cần lùi kế hoạch về tận tối hôm trước, vì khung đẹp nhất rơi vào khoảng năm rưỡi đến tám giờ, trước cả giờ cửa hàng mở cửa. Bài này không chỉ gợi ý chỗ ăn, mà xếp trọn một buổi sáng phở bò: nhận xe từ chiều tối, chuẩn bị đêm trước, ba vòng chạy theo nơi bạn ở, cách gọi phở và cách đọc đường phố lúc bình minh."
+    },
+    {
+      "id": "BA-1278:c2",
+      "article_id": "BA-1278",
+      "title": "Phở bò và Hành Trình Sáng Buổi Sáng",
+      "url": "/blog/dia-phuong/pho-bo-va-hanh-trinh-sang-buoi-sang/",
+      "category": "LOCAL",
+      "text": "{{ business.brand }} mở cửa trong khung {{ business.hours.display }}, nên không thể nhận xe lúc sáu giờ sáng. Cách làm hợp lý là nhận xe vào chiều hoặc tối hôm trước, muộn nhất trước giờ đóng cửa, rồi để xe qua đêm ở nơi bạn lưu trú. Thời điểm nhận sớm hay muộn ảnh hưởng thế nào tới gói thuê được phân tích trong bài thời gian nhận xe sớm ."
+    },
+    {
+      "id": "BA-1275:c1",
+      "article_id": "BA-1275",
+      "title": "Thuê xe Điện Dài Ngày Mùa Mưa",
+      "url": "/blog/xe-dien/thue-xe-dien-dai-ngay-mua-mua/",
+      "category": "EV",
+      "text": "Thuê xe điện vài ngày giữa mùa mưa, bạn có thể né những buổi chiều mưa to bằng cách ở nhà. Thuê dài ngày thì khác: chiếc xe đi cùng bạn qua hàng chục buổi đi làm, và trong mùa mưa Hà Nội, chắc chắn sẽ có những hôm nước dâng ở ngã tư, những tuần trời ẩm không dứt. Bài viết này dành cho người định thuê xe điện theo tuần hoặc theo tháng đúng vào mùa mưa: cách soi tuyến đường trước khi ký gói, những điều nên chốt bằng văn bản, bộ đồ đi mưa cho người dùng xe hằng ngày, nhịp chăm xe theo tuần và cách ra quyết định khi gặp đường ngập."
+    },
+    {
+      "id": "BA-1275:c2",
+      "article_id": "BA-1275",
+      "title": "Thuê xe Điện Dài Ngày Mùa Mưa",
+      "url": "/blog/xe-dien/thue-xe-dien-dai-ngay-mua-mua/",
+      "category": "EV",
+      "text": "Với gói ngắn, bạn chọn được ngày đẹp trời. Với gói dài, thời tiết là thứ bạn phải sống chung. Ba khác biệt đáng tính trước:"
+    },
+    {
+      "id": "BA-1274:c1",
+      "article_id": "BA-1274",
+      "title": "Xác Nhận Giá Trước Khi Đặt Cho Gia Đình",
+      "url": "/blog/thue-xe/xac-nhan-gia-truoc-khi-dat-cho-gia-dinh/",
+      "category": "RENT",
+      "text": "Khi một người đi thuê xe, sai lệch giá thường chỉ là chuyện một con số. Khi cả gia đình thuê hai, ba chiếc trong năm ngày, mỗi chi tiết chưa rõ được nhân lên theo số xe và số ngày: một xe đổi dòng phút chót, một ngày gia hạn không hỏi trước, một chuyến giao xe tới khách sạn chưa chốt giờ. Bài viết này giúp người đứng ra đặt xe cho cả nhà lập một bảng chốt giá rõ ràng, làm hai phép tính mẫu, liệt kê các khoản ngoài tiền thuê và soạn tin nhắn xác nhận để ai trong gia đình đọc cũng hiểu."
+    },
+    {
+      "id": "BA-1274:c2",
+      "article_id": "BA-1274",
+      "title": "Xác Nhận Giá Trước Khi Đặt Cho Gia Đình",
+      "url": "/blog/thue-xe/xac-nhan-gia-truoc-khi-dat-cho-gia-dinh/",
+      "category": "RENT",
+      "text": "Đơn thuê của một nhà khác đơn của một người ở bốn điểm. Thứ nhất, các xe thường khác dòng: bố mẹ chọn tay ga yên rộng, con lớn quen xe số. Thứ hai, lịch hay thay đổi theo người già, trẻ nhỏ, nên ngày nhận, ngày trả dễ xê dịch. Thứ ba, gia đình hay muốn giao xe tới chỗ ở thay vì cả nhà kéo nhau ra cửa hàng. Thứ tư, có nhiều người cùng hỏi giá qua nhiều kênh, mỗi người nhớ một con số khác nhau. Nguyên tắc chung về xác nhận giá cho mọi người thuê có trong bài xác nhận giá trước khi đặt ."
+    },
+    {
+      "id": "BA-1280:c1",
+      "article_id": "BA-1280",
+      "title": "xe Thuê có Bảo Hiểm Không Cho Gia Đình",
+      "url": "/blog/thue-xe/xe-thue-co-bao-hiem-khong-cho-gia-dinh/",
+      "category": "RENT",
+      "text": "Một gia đình bốn người về Hà Nội nghỉ hè, định thuê hai chiếc xe máy để chở các con đi chơi quanh hồ và về thăm họ hàng bên Gia Lâm. Câu đầu tiên người bố hỏi khi gọi điện thường là: xe thuê có bảo hiểm không? Với gia đình, câu hỏi này phức tạp hơn so với khi đi một mình, vì trên xe có trẻ nhỏ, có thể có ông bà ngồi sau, và thường có nhiều hơn một người cầm lái. Bài viết giúp cả nhà hiểu ai cần chuẩn bị loại bảo hiểm nào, tính theo số xe và số người, để chuyến đi yên tâm mà không mua thừa."
+    },
+    {
+      "id": "BA-1280:c2",
+      "article_id": "BA-1280",
+      "title": "xe Thuê có Bảo Hiểm Không Cho Gia Đình",
+      "url": "/blog/thue-xe/xe-thue-co-bao-hiem-khong-cho-gia-dinh/",
+      "category": "RENT",
+      "text": "Cửa hàng {{ business.brand }} không cung cấp bảo hiểm kèm xe thuê. Người thuê tự chuẩn bị bảo hiểm xe máy của mình trước khi nhận xe. Nhờ vậy, giá thuê tham khảo bạn thấy chỉ là tiền thuê xe, không gộp sẵn một gói bảo hiểm mà gia đình không rõ phạm vi. Với một nhà nhiều người, có bốn ý cần nắm ngay:"
     }
   ]
 }
