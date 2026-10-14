@@ -1,0 +1,45 @@
+<p>Với khách nước ngoài, thuê xe máy ở Hà Nội khó không phải vì thủ tục dài, mà vì mỗi bước đều có một câu hỏi nhỏ cần hỏi đúng người, đúng lúc: giấy phép nào được chấp nhận, đặt cọc bao nhiêu, xe có giao tới khách sạn không, trả xe lúc mấy giờ. Gọi điện bằng ngoại ngữ dễ gây hiểu lầm, còn nhắn tin thì phải chờ. MotoAI, trợ lý trực tuyến trên website của {{ business.brand }}, giúp khách quốc tế tự tra từng bước thủ tục bằng câu hỏi ngắn. Bài viết dành cho chính du khách và cả người Việt đang giúp bạn bè nước ngoài thuê xe.</p>
+<h2>Khách nước ngoài thường vướng ở khâu nào</h2>
+<p>Từ kinh nghiệm tư vấn, những điểm làm khách quốc tế chậm lại thường lặp đi lặp lại:</p>
+<ul>
+<li><strong>Giấy phép lái xe:</strong> không chắc bằng của mình có dùng được ở Việt Nam hay không.</li>
+<li><strong>Đặt cọc:</strong> chưa hiểu mức cọc phụ thuộc gì và khi nào được hoàn lại.</li>
+<li><strong>Địa điểm nhận xe:</strong> ở phố cổ nhưng cửa hàng nằm bên kia sông, không biết có được giao tới nơi không.</li>
+<li><strong>Bảo hiểm:</strong> mặc định cửa hàng có bảo hiểm như khi thuê ô tô ở nước họ.</li>
+<li><strong>Giờ giấc:</strong> máy bay hạ cánh muộn, muốn nhận hoặc trả xe ngoài giờ.</li>
+</ul>
+<p>Mỗi điểm trên đều có câu trả lời rõ ràng trong dữ liệu của cửa hàng, và trợ lý được xây dựng để trả lời đúng những câu như vậy.</p>
+<h2>Mở trợ lý ở đâu và hỏi bằng ngôn ngữ nào</h2>
+<p>MotoAI là ứng dụng web chạy ngay trên trình duyệt điện thoại hoặc máy tính, không cần cài đặt hay tạo tài khoản. Bạn chỉ cần mở trang chủ và gõ câu hỏi vào ô trò chuyện. Ngữ cảnh hội thoại được lưu cục bộ trên trình duyệt của bạn.</p>
+<p>Trợ lý nhận diện được câu hỏi tiếng Việt và câu tiếng Anh đơn giản. Để câu trả lời chính xác nhất, hãy hỏi từng ý một, ví dụ "price Vision 3 days" hay "deposit for Air Blade", thay vì gõ một đoạn dài kể toàn bộ kế hoạch. Giá được trả lời bằng đồng Việt Nam, nên bạn tự quy đổi nếu cần. Mẹo đặt câu hỏi bằng tiếng Anh có trong bài <a href="/blog/app/ung-dung-thue-xe-tieng-anh/">ứng dụng thuê xe tiếng Anh</a>.</p>
+<h2>Dùng trợ lý theo từng bước thủ tục</h2>
+<p>Bạn có thể đi theo trình tự dưới đây, mỗi bước chỉ cần một hai câu hỏi:</p>
+<ol>
+<li><strong>Trước chuyến bay:</strong> hỏi giấy tờ cần mang. Trợ lý sẽ nhắc hộ chiếu và giấy phép lái xe hợp lệ; phần quy định chi tiết về bằng lái quốc tế, bạn nên tự đối chiếu trong bài <a href="/blog/huong-dan/thu-tuc-thue-xe-may-cho-khach-nuoc-ngoai/">thủ tục thuê xe máy cho khách nước ngoài</a>.</li>
+<li><strong>Khi đã đặt khách sạn:</strong> hỏi về giao xe. Cửa hàng giao trong khu vực Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành, chỉ trong giờ {{ business.hours.display }}; thời gian và phí phải được xác nhận trước khi đặt.</li>
+<li><strong>Chọn xe và tính giá:</strong> nêu số ngày thuê và dòng xe. Ví dụ giá tham khảo Honda Vision khoảng 200.000đ/ngày, Honda Click khoảng 150.000đ/ngày; hãy xác nhận lại trên <a href="/gia-thue/">trang giá thuê</a>.</li>
+<li><strong>Đặt cọc:</strong> hỏi mức cọc theo loại xe. Khoản đặt cọc nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, con số chính xác được chốt khi đặt.</li>
+<li><strong>Nhận xe:</strong> hỏi những gì cần kiểm tra khi nhận, rồi tự chụp ảnh bốn góc xe và đồng hồ xăng.</li>
+<li><strong>Trả xe:</strong> hỏi lại giờ trả và cách hoàn cọc, để lên lịch ra sân bay cho kịp.</li>
+</ol>
+<p>Tổng quan về chức năng này, không riêng cho khách quốc tế, nằm ở bài <a href="/blog/app/app-ho-tro-thu-tuc-thue-xe/">app hỗ trợ thủ tục thuê xe</a>.</p>
+<h2>Những điều trợ lý không quyết định thay bạn</h2>
+<p>Một trợ lý tốt cần nói rõ giới hạn của mình. Với khách nước ngoài, có bốn điều bạn phải tự xác nhận:</p>
+<ul>
+<li><strong>Tính hợp lệ của giấy phép lái xe:</strong> trợ lý nhắc bạn mang bằng, nhưng việc bằng của bạn có được công nhận tại Việt Nam hay không phụ thuộc quy định pháp luật và loại giấy phép bạn có.</li>
+<li><strong>Bảo hiểm:</strong> cửa hàng không cung cấp bảo hiểm; bạn tự chuẩn bị bảo hiểm xe máy và kiểm tra bảo hiểm du lịch của mình có chi trả khi lái xe máy hay không.</li>
+<li><strong>Lịch giao xe cụ thể:</strong> trợ lý cho biết quy định chung, còn giờ giao và phí giao phải được cửa hàng xác nhận trực tiếp.</li>
+<li><strong>Tình trạng xe còn trống:</strong> vào dịp cao điểm, hãy gọi cửa hàng để chắc chắn còn đúng dòng xe bạn muốn.</li>
+</ul>
+<h2>Mẹo cho người Việt giúp bạn bè nước ngoài</h2>
+<p>Nếu bạn đang thay mặt một người bạn quốc tế, hãy cùng họ mở trợ lý và hỏi bằng tiếng Việt, rồi dịch lại phần quan trọng. Chụp màn hình các câu trả lời về giá, mức cọc và giờ trả để họ giữ làm tài liệu khi nhận xe. Nhắc họ rằng giá trên trợ lý là tham khảo, con số cuối cùng được xác nhận khi đặt. Khi cần trao đổi trực tiếp, bạn có thể gọi cửa hàng trong giờ mở cửa để chốt giúp. Kinh nghiệm cho lần đầu dùng trợ lý được chia sẻ trong bài <a href="/blog/app/kinh-nghiem-dung-tro-ly-thue-xe-lan-dau-cho-khach-nuoc-ngoai/">kinh nghiệm dùng trợ lý lần đầu</a>.</p>
+<h2>Câu hỏi thường gặp về app hỗ trợ thủ tục cho khách nước ngoài</h2>
+<h3>Có cần tải ứng dụng về điện thoại không?</h3>
+<p>Không. MotoAI là ứng dụng web, mở bằng trình duyệt là dùng được, kể cả khi bạn đang dùng sim du lịch hay wifi khách sạn.</p>
+<h3>Trợ lý có hiểu câu hỏi tiếng Anh không?</h3>
+<p>Trợ lý xử lý tốt các câu tiếng Anh ngắn về giá, số ngày thuê và dòng xe. Với câu hỏi phức tạp, hãy tách nhỏ hoặc hỏi lại bằng tiếng Việt đơn giản để tránh hiểu sai.</p>
+<h3>Nhận xe ngoài giờ mở cửa được không?</h3>
+<p>Không. Cửa hàng chỉ giao nhận trong khung {{ business.hours.display }}, nên nếu bay đêm, hãy hẹn nhận xe vào sáng hôm sau. Bài <a href="/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/">app thuê xe cho người nước ngoài</a> có thêm gợi ý sắp lịch.</p>
+<h2>Kết luận</h2>
+<p>Trợ lý trên website không thay thế giấy tờ hay hợp đồng, nhưng giúp khách nước ngoài đi qua từng bước thủ tục mà không phải đoán hay gọi điện bằng ngoại ngữ. Hỏi ngắn, hỏi từng ý, chụp lại câu trả lời và xác nhận với cửa hàng là đủ để buổi nhận xe diễn ra nhanh gọn. Bối cảnh riêng của thành phố được phân tích thêm trong bài <a href="/blog/app/app-ho-tro-thu-tuc-thue-xe-tai-ha-noi/">app hỗ trợ thủ tục thuê xe tại Hà Nội</a>.</p>
+<p>Khi cần chốt xe, bạn liên hệ {{ business.brand }} qua {{ business.contact.phone_display }} hoặc đến {{ business.address.full }}. Xem thêm các bài về ứng dụng trong chuyên mục <a href="/blog/app/">app</a>, hoặc mở <a href="/">trang chủ</a> để bắt đầu hỏi trợ lý ngay.</p>
