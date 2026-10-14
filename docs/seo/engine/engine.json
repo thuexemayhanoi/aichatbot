@@ -1,0 +1,90 @@
+{
+ "mode": "ZERO-DATA",
+ "serps": 67,
+ "snapshots": [
+  "2026-10-14"
+ ],
+ "in_scope_keywords": 183,
+ "groups": 117,
+ "serp_overlap_pairs": 14,
+ "actions": {
+  "FIX_FIRST": 0,
+  "NEW_ARTICLE": 3,
+  "ADD_SECTION": 3,
+  "CONSIDER_STANDALONE": 1,
+  "ALIGN_META": 0,
+  "REVIEW_TARGET": 0,
+  "LOCAL_ONLY": 7,
+  "MONITOR": 55,
+  "KEEP": 42,
+  "NEW_ARTICLE_VERIFY": 6
+ },
+ "curated_topics": 3,
+ "content_flags": {
+  "open": [],
+  "resolved": [
+   "BA-0122",
+   "BA-0317",
+   "BA-0035",
+   "BA-0599",
+   "BA-0190",
+   "BA-0496",
+   "BA-0044",
+   "BA-0764",
+   "BA-0010",
+   "BA-0015"
+  ]
+ },
+ "decisions": 6,
+ "research_queue": {
+  "serp": 0,
+  "volume": 33
+ },
+ "proposals": 4,
+ "health": {
+  "site": {
+   "pass": true,
+   "broken": 0,
+   "checked": 221840,
+   "sitemap": 2129,
+   "published": 2000
+  },
+  "score": {
+   "total": 99.7,
+   "pass": true,
+   "issues": 494
+  },
+  "matrix": {
+   "urls": 2129,
+   "by_status": {
+    "DONE": 2129,
+    "KEEP": 0,
+    "TECH-DONE": 0,
+    "PLANNED": 0
+   },
+   "p0_open": 0,
+   "issues": 0,
+   "committedCurrent": true
+  },
+  "coverage": {
+   "pass": true,
+   "counts": {
+    "matrix": 2000,
+    "statuses": {
+     "PUBLISHED": 2000
+    },
+    "published": 2000,
+    "sitemap": 2129,
+    "uniqueSitemap": 2129,
+    "publishedInSitemap": 2000,
+    "otherSitemapUrls": 129,
+    "manifestIds": 2000,
+    "gscPerformancePageRows": null
+   }
+  },
+  "coldStart": {
+   "stale": []
+  },
+  "indexnow": true
+ }
+}

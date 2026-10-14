@@ -1,6 +1,6 @@
 {
   "$schema": "motoai/seo-cold-start@1",
-  "note": "Quy tắc cho tools/seo-cold-start.mjs (chế độ ZERO-DATA). Chỉ phân loại dữ liệu quan sát được (SERP thật, volume do công cụ bên thứ ba trả về); không ước đoán. Thứ tự áp dụng: thương hiệu riêng/sister -> thương hiệu khác -> tiếng Anh -> out_of_intent -> other_market -> trip_destination -> local_pack -> unverified_service -> intent_markers -> in-scope.",
+  "note": "Quy tắc cho tools/seo-cold-start.mjs (chế độ ZERO-DATA). Chỉ phân loại dữ liệu quan sát được (SERP thật, volume do công cụ bên thứ ba trả về); không ước đoán. Thứ tự áp dụng: thương hiệu riêng/sister (khớp đúng hoặc tiền tố) -> thương hiệu khác -> tiếng Anh -> out_of_intent -> other_market -> trip_destination -> local_pack -> unverified_service -> intent_markers -> in-scope.",
   "site_domain": "chatbot.thuexemaynguyentu.com",
   "sister_domains": [
     "thuexemaynguyentu.com",
@@ -145,6 +145,14 @@
   ],
   "out_of_intent": [
     {
+      "re": "gọi xe|xe ôm|xe công nghệ|grab|be của ai",
+      "reason": "Ứng dụng gọi xe/xe ôm công nghệ — khác ý định thuê xe tự lái"
+    },
+    {
+      "re": "không cọc|miễn cọc|không cần cọc|không đặt cọc",
+      "reason": "Cửa hàng có đặt cọc (data/business/business.json) — không nhắm 'không cọc/miễn cọc'"
+    },
+    {
       "re": "thi bằng|học bằng|ôn thi|lý thuyết|mẹo thi|mẹo học|câu hỏi thi|hồ sơ thi|đăng ký thi|trung tâm thi|lịch thi|điểm thi|app thi|máy tính thi|luật thi|đào tạo lái|học lái|thi lái|sát hạch|thi thử",
       "reason": "Ôn thi/học bằng lái — ý định của người học lái, không phải người thuê xe"
     },
@@ -165,7 +173,7 @@
       "reason": "Thủ tục sở hữu xe — không phải người thuê"
     },
     {
-      "re": "ô tô|ô to|tài xế|lái xe hộ|lái hộ|xe tải|16 chỗ|bán tải|ba gác|có tài|siêu xe|xe đạp martin|xe điện 3 bánh|xe đẩy|mioto|xe đạp công cộng|thuê xe tự lái(?! máy)|app thuê xe tự lái|cho thuê xe tự lái(?! máy)|xe tự lái (vinfast|uy tín|hà nội|đà nẵng|tphcm|hcm)|xe đạp(?! điện)",
+      "re": "ô tô|ô to|tài xế|lái xe hộ|lái hộ|xe tải|16 chỗ|bán tải|ba gác|có tài|siêu xe|xe đạp martin|xe điện 3 bánh|xe đẩy|mioto|xe đạp công cộng|thuê xe tự lái(?! máy)|app thuê xe tự lái|cho thuê xe tự lái(?! máy)|thuê xe điện tự lái|xe điện tự lái|xe tự lái (vinfast|uy tín|hà nội|đà nẵng|tphcm|hcm)|xe đạp(?! điện)",
       "reason": "Ô tô hoặc phương tiện khác — ngoài phạm vi xe máy"
     },
     {
@@ -205,6 +213,10 @@
     {
       "re": "honda điện|xe máy điện honda",
       "reason": "Dòng xe điện Honda chưa xác minh"
+    },
+    {
+      "re": "cbr|exciter|winner|raider|sonic|satria|pcx|nvx|grande|janus|future|sirius|(^| )cub( |$)|dream|sh mode|(^| )sh( |$)|(^| )lead( |$)|vespa|liberty|vario|latte|freego|ktm|kawasaki|ducati|phân khối lớn|pkl|côn tay",
+      "reason": "Dòng xe không có trong data/business/pricing.json (đội xe đã xác minh: Wave, Vision, Air Blade, Click/Mio)"
     }
   ],
   "generic_tokens": [
@@ -212,25 +224,33 @@
     "2025",
     "2026",
     "bao",
+    "bị",
     "cho",
     "các",
     "có",
     "của",
     "gì",
+    "hiện",
     "hà",
     "khi",
     "là",
+    "làm",
     "máy",
     "mới",
+    "nay",
     "nhiêu",
+    "như",
     "nhất",
     "những",
     "nào",
     "nên",
     "năm",
     "nội",
+    "phải",
+    "sao",
     "thuê",
     "thì",
+    "thế",
     "tại",
     "và",
     "xe",
@@ -332,7 +352,7 @@
       "cluster": "K12",
       "status": "GAP",
       "evidence_query": "cấm xe máy xăng vành đai 1",
-      "observed": "SERP 2026-10-14 toàn tin tức/hỏi đáp pháp luật về lộ trình hạn chế xe máy xăng trong Vành đai 1; kho bài hiện chỉ nhắc Vành đai 1 như tuyến đường, chưa có bài riêng cho người thuê xe.",
+      "observed": "SERP 2026-10-14 toàn tin tức/hỏi đáp pháp luật về lộ trình hạn chế xe máy xăng trong Vành đai 1; kho bài hiện chỉ nhắc Vành đai 1 như tuyến đường, chưa có bài riêng cho người thuê xe. SERP \"cấm xe máy\" (1.000/tháng, 2026-10-14): cả 10 kết quả đầu nói về lộ trình hạn chế xe máy xăng trong Vành đai 1, nên nhu cầu của chủ đề được đo qua từ khóa này.",
       "sources_to_verify": [
         "https://daibieunhandan.vn/ha-noi-thi-diem-vung-phat-thai-thap-huong-toi-thoi-quen-su-dung-phuong-tien-xanh-cua-nguoi-dan-10425277.html",
         "https://hanoimoi.vn/ha-noi-dong-bo-trien-khai-vung-phat-thai-thap-trong-vanh-dai-1-1215488.html",
@@ -340,7 +360,8 @@
       ],
       "action": "Đề xuất bài mới (cần owner thêm ID vào ma trận); bài pháp lý: đối chiếu nghị quyết HĐND/quyết định UBND và thông báo phân luồng hiện hành trước khi viết. Theo hai báo trên (7–8/2026): thí điểm từ 1/7/2026 tại phường Hoàn Kiếm, giai đoạn này chủ yếu tuyên truyền; khung 19h–24h cuối tuần vẫn hạn chế xe cơ giới như phố đi bộ.",
       "keywords": [
-        "cấm xe máy xăng vành đai 1"
+        "cấm xe máy xăng vành đai 1",
+        "cấm xe máy"
       ]
     },
     {
@@ -362,6 +383,22 @@
         "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Luat-trat-tu-an-toan-giao-thong-duong-bo-2024-so-36-2024-QH15-444251.aspx"
       ],
       "action": "Đề xuất bài mới (EV hoặc SAFE, cần owner thêm ID vào ma trận); bài pháp lý: đối chiếu Điều 57 (hạng A1/A theo công suất động cơ điện) và Điều 59 (độ tuổi) Luật 36/2024/QH15 trước khi viết."
+    },
+    {
+      "topic": "Các loại bằng lái xe máy theo Luật 36/2024/QH15: hạng A1, A, B1 và bằng A1, A2 cấp trước 2025",
+      "cluster": "K09",
+      "status": "GAP",
+      "evidence_query": "các loại bằng lái xe máy",
+      "observed": "SERP 2026-10-14 cho \"các loại bằng lái xe máy\" và \"bằng lái xe máy là hạng gì\": văn bản pháp luật, báo và trường lái với bài tổng hợp các hạng; top 10 chỉ trùng 1 URL với \"bằng lái a1 a2 khác gì\", nên đây là ý định tổng quan riêng. Kho bài có cặp so sánh A1–A2 (BA-0035 và biến thể) và các bài A1 khi thuê xe, chưa có bài tổng quan các hạng.",
+      "sources_to_verify": [
+        "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Luat-trat-tu-an-toan-giao-thong-duong-bo-2024-so-36-2024-QH15-444251.aspx"
+      ],
+      "action": "Đề xuất bài mới (SAFE, cần owner thêm ID vào ma trận); dùng dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34, 56, 57, 59, 89 Luật 36/2024/QH15), liên kết sang bài A1 A2 khác gì thay vì lặp lại phần so sánh.",
+      "keywords": [
+        "các loại bằng lái xe máy",
+        "bằng lái xe máy là hạng gì",
+        "bằng lái xe máy hạng a"
+      ]
     }
   ],
   "intent_markers": {
@@ -445,7 +482,46 @@
     "sài gòn": "sài gòn",
     "bao nhiêu tuổi": "độ tuổi",
     "mấy tuổi": "độ tuổi",
-    "lỗi": "phạt"
+    "lỗi": "phạt",
+    "hoàng mai": "hoàng_mai",
+    "long biên": "long_biên",
+    "tây hồ": "tây_hồ",
+    "ba đình": "ba_đình",
+    "cầu giấy": "cầu_giấy",
+    "đống đa": "đống_đa",
+    "hai bà trưng": "hai_bà_trưng",
+    "thanh xuân": "thanh_xuân",
+    "hoàn kiếm": "hoàn_kiếm",
+    "hà đông": "hà_đông",
+    "gia lâm": "gia_lâm",
+    "bồ đề": "bồ_đề",
+    "mai châu": "mai_châu",
+    "ninh bình": "ninh_bình",
+    "hà giang": "hà_giang",
+    "tam đảo": "tam_đảo",
+    "hồ tây": "hồ_tây",
+    "phố cổ": "phố_cổ",
+    "bát tràng": "bát_tràng",
+    "nội bài": "nội_bài",
+    "sóc sơn": "sóc_sơn",
+    "ba vì": "ba_vì",
+    "mộc châu": "mộc_châu",
+    "hạ long": "hạ_long",
+    "cát bà": "cát_bà",
+    "cao bằng": "cao_bằng",
+    "sa pa": "sa_pa",
+    "đường lâm": "đường_lâm",
+    "văn giang": "văn_giang",
+    "ecopark": "ecopark",
+    "nhật tân": "nhật_tân",
+    "hồ gươm": "hồ_gươm",
+    "hồ hoàn kiếm": "hồ_hoàn_kiếm",
+    "vành đai": "vành_đai",
+    "tự lái": "tự_lái",
+    "chạy dịch vụ": "chạy_dịch_vụ",
+    "bảo nhiều": "bao nhiêu",
+    "bao nhiều": "bao nhiêu",
+    "sapa": "sa_pa"
   },
   "brands": {
     "reason": "Truy vấn tên thương hiệu/cửa hàng cụ thể (điều hướng) — không nhắm",
@@ -527,6 +603,69 @@
       "status": "SECTION",
       "article": "BA-0095",
       "note": "Rà soát thủ công 2026-10-14: bài gương chiếu hậu có mục 'Nhóm lỗi về gương có thể bị xử phạt'."
+    }
+  ],
+  "sister_prefix": true,
+  "content_flags": [
+    {
+      "article": "BA-0122",
+      "reason": "Mô tả bằng A1 là xe từ 50 đến dưới 175 cm³ và A2 cho xe từ 175 cm³ như quy định hiện hành; từ 01/01/2025 hạng A1 cấp mới chỉ đến 125 cm³ hoặc 11 kW, xe lớn hơn cần hạng A, phạm vi dưới 175 cm³ chỉ còn cho bằng A1 cấp trước (Luật 36/2024/QH15 Điều 57, 89)",
+      "resolved": "2026-10-14",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 57, 88, 89)"
+    },
+    {
+      "article": "BA-0317",
+      "reason": "Ghi bằng A2 cho xe 175–300 cc hoặc từ 150 phân, A1 dưới 150 phân, dẫn một thông tư không tồn tại và mức phạt 1–3 triệu, 10–30 triệu không có căn cứ",
+      "resolved": "2026-10-14",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 56, 57, 59, 88, 89); mức phạt dẫn sang bài đi xe không giấy phép"
+    },
+    {
+      "article": "BA-0035",
+      "reason": "Nói Thông tư 46/2015/TT-BGTVT đã gộp A2 vào hạng A; thực tế hạng A thay A2 từ Luật 36/2024/QH15 (hiệu lực 01/01/2025); gọi xe gắn máy là mô tô",
+      "resolved": "2026-10-14",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34, 57)"
+    },
+    {
+      "article": "BA-0599",
+      "reason": "Cùng lỗi lịch sử Thông tư 46/2015/TT-BGTVT gộp A2 vào hạng A; dẫn Điều 59 cho hệ thống hạng (đúng là Điều 57)",
+      "resolved": "2026-10-14",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34, 57)"
+    },
+    {
+      "article": "BA-0190",
+      "reason": "Viết bằng A1 cấp từ đủ 16 tuổi và người 16 tuổi có bằng A1 lái xe dưới 50 phân khối; luật cho người đủ 16 tuổi lái xe gắn máy không cần bằng, hạng A1 chỉ cấp từ đủ 18 tuổi",
+      "resolved": "2026-10-14",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34, 56, 59)"
+    },
+    {
+      "article": "BA-0496",
+      "reason": "Cùng lỗi bằng A1 cấp từ đủ 16 tuổi; cho rằng người 17 tuổi chưa có bằng không được lái xe gắn máy",
+      "resolved": "2026-10-14",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34, 59)"
+    },
+    {
+      "article": "BA-0044",
+      "reason": "Xếp xe đúng 50 cm³ vào nhóm mô tô; luật định nghĩa xe gắn máy là xe không lớn hơn 50 cm³",
+      "resolved": "2026-10-14",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34)"
+    },
+    {
+      "article": "BA-0764",
+      "reason": "Cùng lỗi ranh giới 50 cm³ (xe đúng 50 cm³ không phải mô tô)",
+      "resolved": "2026-10-14",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34)"
+    },
+    {
+      "article": "BA-0010",
+      "reason": "Gọi xe đạp máy là xe gắn máy (luật xếp xe đạp máy, xe đạp điện vào xe thô sơ) và nêu chính sách cửa hàng cho bằng A1 thuê xe dưới 175 cm³ trái với hạng A1 cấp từ 2025",
+      "resolved": "2026-10-14",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34)"
+    },
+    {
+      "article": "BA-0015",
+      "reason": "Gọi xe đạp điện là xe gắn máy dưới 50 cm³ tương đương; xe gắn máy điện xác định theo công suất không quá 4 kW, xe đạp điện là xe thô sơ",
+      "resolved": "2026-10-14",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34)"
     }
   ]
 }

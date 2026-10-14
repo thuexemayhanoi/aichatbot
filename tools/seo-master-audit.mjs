@@ -28,7 +28,7 @@ import { intentGrams } from './seo-links.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = 'docs/seo';
-const BASELINE = `${OUT_DIR}/baseline-audit.json`;
+export const BASELINE = `${OUT_DIR}/baseline-audit.json`;
 
 // ---------- issue catalogue (code -> priority, Vietnamese label, action) ----------
 
@@ -239,7 +239,7 @@ export function crawl(root = ROOT) {
 
 // ---------- classification ----------
 
-function clusterOf(clusters, category, seed) {
+export function clusterOf(clusters, category, seed) {
   // Diacritics preserved: "gia" (Gia Lâm, gia đình) must never match "giá".
   const n = ` ${String(seed ?? '').toLowerCase().normalize('NFC').replace(/[^0-9a-zà-ỹđ]+/gu, ' ').trim()} `;
   for (const c of clusters.clusters) {
@@ -404,7 +404,7 @@ export function analyze(c) {
 
 const ACTION_DONE = 'Giữ nguyên; theo dõi Search Console (hiển thị, CTR, truy vấn)';
 
-function finalize(rows, baseline) {
+export function finalize(rows, baseline) {
   const order = (r) => {
     const t = r.type;
     if (t.startsWith('Trang chủ')) return 0;

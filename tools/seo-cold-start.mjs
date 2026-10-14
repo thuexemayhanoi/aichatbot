@@ -49,17 +49,17 @@ export const normKw = (s) => String(s ?? '').normalize('NFC').toLowerCase()
   .replace(/[“”"'’‘?!.,:;()[\]{}|/\\–—…•·-]+/g, ' ').replace(/\s+/g, ' ').trim();
 // Matching text: abbreviations/synonyms unified (config "rewrite"), one-letter and year tokens dropped.
 let REWRITE = [];
-const canon = (s) => {
+export const canon = (s) => {
   let t = ` ${normKw(s)} `;
   for (const [from, to] of REWRITE) t = t.split(` ${from} `).join(` ${to} `);
   return t.trim();
 };
-const toks = (s) => canon(s).split(' ').filter((t) => t.length > 1 && !/^(19|20)\d\d$/.test(t));
+export const toks = (s) => canon(s).split(' ').filter((t) => t.length > 1 && !/^(19|20)\d\d$/.test(t));
 const hasPhrase = (kw, term) => ` ${kw} `.includes(` ${normKw(term)} `);
-const fmt = (n) => (n == null ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
-const pct = (a, b) => (b ? `${Math.round((100 * a) / b)}%` : '—');
-const mdCell = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
-const sum = (xs) => xs.reduce((a, b) => a + b, 0);
+export const fmt = (n) => (n == null ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+export const pct = (a, b) => (b ? `${Math.round((100 * a) / b)}%` : '—');
+export const mdCell = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
+export const sum = (xs) => xs.reduce((a, b) => a + b, 0);
 
 // ---------- inputs ----------
 
@@ -161,6 +161,7 @@ export const SCOPE_LABEL = {
 export function classifyScope(keyword, cfg) {
   const kw = normKw(keyword);
   if (cfg.sister_owned.some((t) => kw === normKw(t))) return { scope: 'SISTER', reason: 'Từ khóa thương mại do website chị em sở hữu (config/seo-ownership.json)' };
+  if (cfg.sister_prefix && cfg.sister_owned.some((t) => kw.startsWith(`${normKw(t)} `))) return { scope: 'SISTER', reason: 'Biến thể thương mại của từ khóa website chị em sở hữu' };
   if (cfg.brands?.own.some((t) => hasPhrase(kw, t))) return { scope: 'SISTER', reason: 'Tên thương hiệu của cửa hàng — trang chủ/website chị em phục vụ' };
   if (cfg.brands?.terms.some((t) => hasPhrase(kw, t))) return { scope: 'OUT-INTENT', reason: cfg.brands.reason };
   if (englishTokens(kw).length) return { scope: 'OUT-INTENT', reason: 'Từ khóa tiếng Anh — website chỉ làm SEO tiếng Việt' };
@@ -224,6 +225,21 @@ function idfOf(index) {
   return IDF.get(index);
 }
 
+/** Corpus IDF of a token (rare words weigh more), shared with the SEO engine. */
+export const idfWeights = (index) => idfOf(index);
+
+/** Match score of one article for a keyword, with the corpus-wide IDF. */
+export function scoreAgainst(keyword, article, index, cfg) {
+  const idf = idfOf(index);
+  const all = toks(keyword);
+  const q = all.filter((t) => !cfg.generic.has(t));
+  const qt = [...new Set(q.length ? q : all)];
+  const phrases = [...new Set(bigrams(all).filter((b) => b.split(' ').every((t) => !cfg.generic.has(t))))];
+  const pw = (b) => sum(b.split(' ').map(idf)) / 2;
+  const total = sum(qt.map(idf)) + sum(phrases.map(pw));
+  return (sum(qt.filter((t) => article.all.has(t)).map(idf)) + sum(phrases.filter((b) => ` ${article.phrase} `.includes(` ${b} `)).map(pw))) / total;
+}
+
 /** Best article for a keyword: IDF-weighted containment of its distinctive
  *  words plus its two-word phrases ("điện thoại", "bằng lái", "nồng độ"). */
 export function bestMatch(keyword, index, cfg) {
@@ -236,10 +252,12 @@ export function bestMatch(keyword, index, cfg) {
   const total = sum(qt.map(idf)) + sum(phrases.map(pw));
   const weight = (set, text) => (sum(qt.filter((t) => set.has(t)).map(idf)) + sum(phrases.filter((b) => ` ${text} `.includes(` ${b} `)).map(pw))) / total;
   const bg = bigrams(all);
+  const phrase = canon(keyword);
   let best = null;
   for (const a of index) {
     const score = weight(a.all, a.phrase);
-    const key = [score, bg.filter((b) => a.phrase.includes(b)).length, -a.keyword.length, -a.title.length];
+    // Ties (e.g. a query of generic words only) go to the page whose main keyword carries the exact phrase.
+    const key = [score, Number(` ${canon(a.keyword)} `.includes(` ${phrase} `)), bg.filter((b) => a.phrase.includes(b)).length, -a.keyword.length, -a.title.length];
     let better = !best;
     for (let i = 0; !better && i < key.length; i++) {
       if (key[i] !== best.key[i]) { better = key[i] > best.key[i]; break; }
@@ -275,7 +293,7 @@ export function resultKind(o, cfg) {
   return 'other';
 }
 
-const KIND_LABEL = {
+export const KIND_LABEL = {
   own: 'Website này', sister: 'Website chị em', social: 'Mạng xã hội', video: 'Video', forum: 'Diễn đàn', gov: 'Cơ quan nhà nước',
   legal: 'Pháp luật', news: 'Báo chí', travel: 'Du lịch/OTA', appstore: 'Kho ứng dụng', retail: 'Hãng/bán lẻ',
   business: 'Doanh nghiệp (trang bán hàng)', info: 'Blog/hướng dẫn', other: 'Khác'
@@ -465,7 +483,7 @@ export function analyze(root = ROOT) {
 
 // ---------- rendering ----------
 
-const STATUS_LABEL = { COVERED: 'Đã có bài', SECTION: 'Có mục trong bài', PARTIAL: 'Phủ một phần', GAP: 'Chưa có' };
+export const STATUS_LABEL = { COVERED: 'Đã có bài', SECTION: 'Có mục trong bài', PARTIAL: 'Phủ một phần', GAP: 'Chưa có' };
 
 function gapAction(k) {
   const m = k.match;

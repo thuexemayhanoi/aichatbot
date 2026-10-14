@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { reviewArticle, REVIEW_LOG } from '../../tools/seo-body-review.mjs';
+import { reviewArticle, REVIEW_LOG, loadLegalFacts, legalFactProblems } from '../../tools/seo-body-review.mjs';
 import { taxonomy } from '../../tools/taxonomy.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -84,4 +84,24 @@ test('condense only shortens bodies above 2,000 words, with a shorter wording', 
   const all = r.problems.join('\n');
   assert.ok(all.includes('only for bodies above 2000 words'), all);
   assert.ok(all.includes('"to" must be shorter than "from"'), all);
+});
+
+test('legal corrections: new numbers only from declared, verified legal facts', () => {
+  const facts = loadLegalFacts();
+  const ids = Object.keys(facts);
+  assert.ok(ids.length >= 5, 'verified facts of Luật 36/2024/QH15 are recorded');
+  for (const [id, f] of Object.entries(facts)) assert.deepEqual(legalFactProblems(id, f), [], id);
+  const bad = legalFactProblems('x', { statement: 'Hạng A1 đến 999 cm³.', ref: 'Điều 57', quote: 'đến 125 cm3', source: 'https://example.vn/a', verified: '2026-10-14' });
+  assert.ok(bad.some((p) => p.includes('"999"')), 'a statement number must be backed by the quote or reference');
+  // A body without "125": the number is rejected unless the patch declares the fact that carries it.
+  const art = MANIFEST.find((a) => !/\b125\b/.test(read(a.body)) && /<p>[^<]{60,}<\/p>/.test(read(a.body)) && strip(read(a.body)).split(' ').length < 1900);
+  const plain = [...read(art.body).matchAll(/<p>([^<]{60,})<\/p>/g)][0][1];
+  const from = plain.split(/\s+/).slice(0, 6).join(' ');
+  const to = `${from} (hạng A1 đến 125 cm³ theo luật hiện hành)`;
+  const fid = ids.find((k) => /\b125\b/.test(facts[k].statement) && /A1/.test(facts[k].statement));
+  assert.ok(reviewArticle({ id: art.article_id, replace: [{ from, to }] }).problems.some((p) => p.includes('number "125"')));
+  assert.deepEqual(reviewArticle({ id: art.article_id, facts: [fid], replace: [{ from, to }] }).problems, []);
+  assert.ok(reviewArticle({ id: art.article_id, facts: ['khong-ton-tai'], replace: [{ from, to }] }).problems.some((p) => p.includes('khong-ton-tai')));
+  // Logged legal corrections name facts that exist.
+  for (const [id, rev] of Object.entries(JSON.parse(read(REVIEW_LOG)).reviews)) for (const f of rev.facts ?? []) assert.ok(facts[f], `${id}: fact ${f} recorded`);
 });

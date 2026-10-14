@@ -1,0 +1,10 @@
+{"$schema":"motoai/seo-engine-decisions@1",
+"note":"Quyết định của người/agent cho từng nhóm từ khóa của tools/seo-engine.mjs. Khóa = id nhóm (slug của từ khóa chính) hoặc slug của một từ khóa thành viên. status: done | planned | deferred | rejected; target (tùy chọn): mã bài được chọn làm trang đích sau rà soát. Engine không lặp lại việc đã làm và không đưa việc đã hoãn/từ chối vào hàng đợi.",
+"decisions":{
+"khong-bang-lai-xe-may-phat-bao-nhieu":{"action":"ALIGN_META","status":"done","date":"2026-10-14","target":"BA-0029","note":"Title/meta BA-0029 mang cụm 'không có bằng lái xe máy phạt bao nhiêu' (data/seo/article-meta.json)."},
+"muc-phat-nong-do-con-xe-may":{"action":"ALIGN_META","status":"done","date":"2026-10-14","target":"BA-0011","note":"Title/meta BA-0011 theo cụm 'mức phạt nồng độ cồn xe máy'."},
+"bang-lai-xe-may-a1":{"action":"ALIGN_META","status":"done","date":"2026-10-14","target":"BA-0122","note":"Sau khi sửa nội dung pháp lý của BA-0122 (Điều 57, 89 Luật 36/2024/QH15), title/meta theo 'bằng lái xe máy A1' và 'bằng A1 lái được xe gì'."},
+"phuot-ha-giang-bang-xe-may":{"action":"NEW_ARTICLE","status":"rejected","date":"2026-10-14","target":"BA-0348","note":"BA-0348 (vòng cung Hà Giang bằng xe máy) và các biến thể đã trả lời truy vấn; khác biệt chỉ là chữ 'phượt', viết thêm bài sẽ trùng chủ đề."},
+"phuot-tam-dao-bang-xe-may":{"action":"ADD_SECTION","status":"rejected","date":"2026-10-14","target":"BA-0252","note":"BA-0252 (đi Tam Đảo bằng xe máy: lộ trình, chạy đèo) đã phủ ý định; 'phượt' chỉ là cách gọi khác."},
+"loi-su-dung-dien-thoai-khi-di-xe-may":{"action":"ADD_SECTION","status":"deferred","date":"2026-10-14","target":"BA-0989","note":"BA-0989 đã nêu mức phạt và trừ điểm; khác biệt chỉ là từ đồng nghĩa (sử dụng/dùng, đi/lái). Xem lại khi có dữ liệu Search Console."}
+}}

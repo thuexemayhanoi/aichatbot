@@ -72,7 +72,7 @@ Không có chỉ số nào ở đây là xếp hạng Google; không cam kết T
 
 | Hạng mục | Ghi chú |
 |---|---|
-| BA-0122 (bằng lái A1 và thuê xe máy) | Còn mô tả hệ thống hạng cũ (A1 50 đến dưới 175 cm³, A2) như quy định hiện hành. Sửa cần đưa số mới (125 cm³, 01/01/2025) mà cổng review chặn — cần review pháp lý riêng theo khoản 1 Điều 57 và quy định chuyển tiếp của Luật 36/2024/QH15 |
+| BA-0122 (bằng lái A1 và thuê xe máy) | Đã sửa trong vòng 3 (mục 8): nội dung theo Điều 57 và quy định chuyển tiếp Điều 89 Luật 36/2024/QH15, cùng 9 bài có lỗi pháp lý tương tự |
 | Câu mẫu tiếng Anh trong bài "cho khách nước ngoài" | Giữ lại ở nơi bài dạy khách hỏi bằng tiếng Anh (nội dung có chủ đích, không phải từ khóa SEO) |
 | Volume từ khóa | Gói Ubersuggest miễn phí giới hạn lượt/ngày; nên kết nối Search Console để lấy truy vấn thật cho vòng 2 |
 | Xe VinFast, xe 50cc, xe đạp điện | Chưa có giá/dòng xe xác minh trong `data/business/` — chỉ viết nội dung thông tin |
@@ -96,15 +96,35 @@ Website chưa có Search Console/GA4/thứ hạng thật (kiểm tra kết nối
 
 Chưa làm được trong phiên (cần owner, không tự quyết): xác minh Google Search Console/Bing Webmaster Tools; Google Business Profile cho truy vấn local pack; thêm ID bài mới vào ma trận 2.000 bài.
 
-## 8. Vòng tiếp theo (khi có dữ liệu Search Console)
+## 8. Vòng 3 — SEO Engine 06 (14/10/2026, ZERO-DATA)
+
+`node tools/seo-engine.mjs` chạy cả vòng nghiên cứu → quyết định trên 5 công cụ sẵn có (site-audit, seo-score, seo-master-audit, seo-index-coverage, seo-cold-start + IndexNow) và chỉ bổ sung phần còn thiếu. Kết quả ở [engine/README.md](engine/README.md).
+
+| Hạng mục | Nội dung | Kết quả |
+|---|---|---|
+| Audit repo | Công cụ hiện có, gom vào README của engine | 0 link nội bộ hỏng; SEO score 99,7/100; 2.129 URL DONE, P0 mở = 0; sitemap ↔ ma trận PASS; khóa IndexNow có trên site |
+| Nghiên cứu SERP | Hàng đợi nghiên cứu của engine (nhóm có nhu cầu mà chưa có SERP) | +12 SERP Google Việt Nam (OpenSEO, tín dụng miễn phí) → 67 SERP; hàng đợi SERP còn 0, hàng đợi đo volume 33 nhóm |
+| Keyword clustering | Gộp khi top 10 trùng ≥ 3 URL hoặc cùng bộ từ lõi (chính tả, "k/không", năm) | 183 từ khóa trong phạm vi → 117 nhóm (14 cặp trùng SERP) → [keyword-groups.md](engine/keyword-groups.md) |
+| SEO matrix theo nhóm | Volume đo được, cụm, ý định SERP, trang đích, độ phủ, hành động, điểm ưu tiên (công thức ghi trong báo cáo) | [seo-engine-matrix.csv](engine/seo-engine-matrix.csv); trang chỉ khớp từ ngữ nhưng khác chủ đề không bao giờ được đề xuất đổi title |
+| SERP giao dịch – địa phương | "bằng lái xe máy" (8.100/tháng), "dịch vụ cho thuê xe máy" (690) có local pack trường lái/cửa hàng | Không đuổi bằng bài blog: trang bán hàng/Google Business Profile phục vụ |
+| Content gap → đề xuất bài mới | [proposed-matrix-rows.csv](engine/proposed-matrix-rows.csv) (owner duyệt, ma trận 2.000 bài không bị sửa) | "Xe máy điện: bằng lái và độ tuổi" (6.350/tháng); "Các loại bằng lái xe máy theo Luật 36/2024/QH15" (2.270); "Lỗi không gương xe máy" (2.400, đang là một mục trong bài gương chiếu hậu); "Vùng phát thải thấp Vành đai 1" (thêm "cấm xe máy" 1.000/tháng — cả 10 kết quả đầu nói về lộ trình hạn chế xe máy xăng) |
+| Sửa nội dung pháp lý lỗi thời (ưu tiên trước khi đẩy từ khóa) | Đối chiếu toàn văn Luật 36/2024/QH15 (Điều 34, 56, 57, 59, 88, 89) ngày 14/10/2026 → `data/seo/legal-facts.json`; sửa qua `tools/seo-body-review.mjs` (thao tác `facts` mới: chỉ số của dữ kiện đã đối chiếu được thêm) | 10 bài: BA-0122 (A1 cũ mô tả như hiện hành), BA-0317 (A2 "175–300 cc", thông tư không tồn tại, mức phạt không căn cứ), BA-0035 và BA-0599 (sai lịch sử "Thông tư 46/2015 gộp A2"), BA-0190 và BA-0496 (ghi bằng A1 cấp từ 16 tuổi), BA-0044 và BA-0764 (xe đúng 50 cm³ không phải mô tô), BA-0010 và BA-0015 (xe đạp máy/xe đạp điện là xe thô sơ, không phải xe gắn máy). QA giữ 100 điểm; prose cũ được giữ, chỉ thay câu sai |
+| Title/meta theo nhu cầu đo được | BA-0122 → "Bằng lái xe máy A1 lái được xe gì? Thuê xe máy với bằng A1" sau khi nội dung đã đúng luật | Nhóm "bằng lái xe máy a1" (1.000/tháng) + "bằng a1 lái được xe gì" |
+| Sổ quyết định | `data/seo/engine-decisions.json` | 3 đã làm (BA-0029, BA-0011, BA-0122), 1 hoãn (từ đồng nghĩa "sử dụng/dùng điện thoại"), 2 từ chối (biến thể "phượt" đã có bài Hà Giang, Tam Đảo) |
+| Giám sát | Workflow SEO monitor chạy test engine + `seo-engine.mjs --check` (báo cũ = cảnh báo, không đỏ) | — |
+
+Cần owner: thêm ID cho 4 bài đề xuất vào ma trận (bài pháp lý viết theo dữ kiện đã đối chiếu, kiểm tra lại văn bản sửa đổi nếu có); xác minh Search Console/Bing Webmaster Tools để chuyển DATA-DRIVEN.
+
+## 9. Vòng tiếp theo (khi có dữ liệu Search Console)
 
 1. Lấy truy vấn/CTR thật theo URL → điều chỉnh title/meta cho trang có hiển thị cao nhưng CTR thấp (qua `data/seo/article-meta.json`).
 2. Ưu tiên cụm K08 (xe máy điện) và K02 (giá thuê) — có volume đo được và chưa thuộc site chị em.
 3. Mọi sửa body tiếp tục qua `tools/seo-body-review.mjs`.
 
-## 9. Rollback
+## 10. Rollback
 
 - Metadata một bài: xóa entry trong `data/seo/article-meta.json` → `node tools/build-blog.mjs`.
 - Body một bài: `git revert` commit `content(seo): body review …` chứa ID bài (mỗi commit ≤ 10 body) rồi build.
 - Toàn bộ: `git revert` các commit v70/v71 (không có thay đổi dữ liệu nào ngoài repo).
 - IndexNow: tắt workflow `indexnow.yml`; xóa `config/indexnow.json` và tệp khóa `<key>.txt` ở gốc.
+- Engine 06: báo cáo `docs/seo/engine/` chỉ là đầu ra (xóa được); quyết định ở `data/seo/engine-decisions.json`; bản sửa pháp lý 10 bài: `git revert` commit `content(seo): legal accuracy …` rồi build.

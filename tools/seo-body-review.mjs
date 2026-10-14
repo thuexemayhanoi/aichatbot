@@ -16,11 +16,14 @@
  *   condense : shorter wording for passages of bodies above 2,000 words
  *              (rendered); every number the passage held must remain in the
  *              body, nothing may be emptied, and the body ends at 1,800–2,000
+ *   facts    : ids of verified legal facts (data/seo/legal-facts.json) a legal
+ *              correction relies on; only their numbers may be new in the body
  *
  * Gates (any failure rejects the whole article patch):
  *   - new text is plain Vietnamese: no markup, no English fragments, no
  *     forbidden commercial claims, no digits that the original body does not
- *     already contain ({{ business.* }} placeholders must resolve);
+ *     already contain — except numbers of the declared verified legal facts
+ *     ({{ business.* }} placeholders must resolve);
  *   - link targets are published articles, never self, never already linked;
  *   - word count never drops (except by condense or deleted internal notes);
  *     thin articles reach 800; additions never push a body past 2,000 words;
@@ -44,6 +47,7 @@ import { resolveFacts } from './build-blog.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 export const REVIEW_LOG = 'data/seo/body-reviews.json';
+export const LEGAL_FACTS = 'data/seo/legal-facts.json';
 export const REVIEW_DATE = '2026-10-14';
 const FORBIDDEN = ['app store', 'google play', 'toàn quốc', 'không cần cọc', 'miễn cọc', 'rẻ nhất', 'số 1', 'uy tín nhất',
   'tốt nhất việt nam', 'giao xe miễn phí', 'miễn phí giao', 'cam kết 100%', '24/7'];
@@ -80,6 +84,24 @@ function textProblems(label, s, allowedDigits) {
     const v = m[1].split('.').reduce((o, k) => (o == null ? undefined : o[k]), JSON.parse(read('data/business/business.json')));
     if (v === undefined) out.push(`${label}: unresolved placeholder business.${m[1]}`);
   }
+  return out;
+}
+
+/** Verified legal facts: { id: { statement, ref, quote, source, verified } }. */
+export function loadLegalFacts() {
+  return existsSync(join(ROOT, LEGAL_FACTS)) ? JSON.parse(read(LEGAL_FACTS)).facts ?? {} : {};
+}
+
+/** A fact is usable only when sourced, dated, and every number it states is backed by its quote or reference. */
+export function legalFactProblems(id, f) {
+  const out = [];
+  for (const k of ['statement', 'ref', 'quote', 'source', 'verified']) if (typeof f?.[k] !== 'string' || !f[k].trim()) out.push(`${id}: ${k} missing`);
+  if (out.length) return out;
+  if (!/^https:\/\//.test(f.source)) out.push(`${id}: source must be an https URL of the full text`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(f.verified)) out.push(`${id}: verified must be YYYY-MM-DD`);
+  const backed = digitsOf(`${f.quote} ${f.ref}`);
+  for (const d of digitsOf(f.statement)) if (!backed.has(d)) out.push(`${id}: number "${d}" of the statement is not in its quote or reference`);
+  if (englishTokens(f.statement).length) out.push(`${id}: statement must be Vietnamese`);
   return out;
 }
 
@@ -162,6 +184,18 @@ export function reviewArticle(patch, idx = manifestIndex()) {
   const selfUrl = `/blog/${taxonomy.categories[a.category].dir}/${a.slug}/`;
   const original = read(a.body);
   const allowed = digitsOf(stripTags(original));
+  // A legal correction may bring numbers the body never had, but only those of verified facts.
+  const facts = [];
+  if (patch.facts?.length) {
+    const known = loadLegalFacts();
+    for (const [i, fid] of patch.facts.entries()) {
+      const f = known[fid];
+      const bad = f ? legalFactProblems(fid, f) : [`"${fid}" is not in ${LEGAL_FACTS}`];
+      if (bad.length) { for (const b of bad) problems.push(`${patch.id}: facts[${i}]: ${b}`); continue; }
+      for (const d of digitsOf(f.statement)) allowed.add(d);
+      facts.push(fid);
+    }
+  }
   let html = original;
   let removedWords = 0; // words of leaked internal notes deleted on purpose
   const P = (s) => problems.push(`${patch.id}: ${s}`);
@@ -282,7 +316,7 @@ export function reviewArticle(patch, idx = manifestIndex()) {
   if (after > MAX_WORDS && after > before && before <= MAX_WORDS) P(`additions push the body to ${after} words (> ${MAX_WORDS})`);
   if (before > MAX_WORDS && (patch.sections?.length || patch.faq?.length || patch.table)) P(`body already ${before} words: only replace/links/intro allowed`);
   if (!ops.length) P('empty patch');
-  return { id: patch.id, html, original, problems, ops, before, after, removedWords, body: a.body };
+  return { id: patch.id, html, original, problems, ops, facts, before, after, removedWords, body: a.body };
 }
 
 function loadLog() {
@@ -329,6 +363,7 @@ export async function main(argv) {
       ops: [...new Set([...(prev?.ops ?? []), ...r.ops])],
       words: [prev?.words?.[0] ?? r.before, r.after],
       qa: [prev?.qa?.[0] ?? qaBefore.score, qaAfter.score],
+      ...(r.facts.length || prev?.facts ? { facts: [...new Set([...(prev?.facts ?? []), ...r.facts])] } : {}),
       ...((prev?.removed ?? 0) + r.removedWords ? { removed: (prev?.removed ?? 0) + r.removedWords } : {})
     };
     applied++;
