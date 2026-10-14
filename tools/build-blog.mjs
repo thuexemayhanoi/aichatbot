@@ -73,6 +73,13 @@ export function resolveFacts(html, business) {
   });
 }
 
+/** v71: internal links point at the canonical directory URL, never at its
+ *  /index.html twin — Google had indexed both forms (zero-data SERP study,
+ *  docs/seo/cold-start/visibility-baseline.md). Bodies stay untouched. */
+export function canonicalIndexLinks(html) {
+  return html.replace(/(<a\b[^>]*?\shref\s*=\s*)(["'])(\/[^"'?#]*?\/)index\.html\2/gi, '$1$2$3$2');
+}
+
 /** Deterministic reading time: visible words / 200 per minute, min 1. */
 export function readingTime(bodyHtml) {
   const words = bodyHtml.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
@@ -553,8 +560,8 @@ ${jsonLd({
 function buildArticle(a, business, hub, published, row, links, byId, reviews = {}) {
   const bodyRaw = read(a.body);
   const linkPages = new Set(published.map((entry) => `blog/${HUB_BY_ID[entry.category].dir}/${entry.slug}/index.html`));
-  const body = normalizeInternalAnchors(resolveFacts(bodyRaw, business),
-    `blog/${hub.dir}/${a.slug}/index.html`, (path) => linkPages.has(path));
+  const body = canonicalIndexLinks(normalizeInternalAnchors(resolveFacts(bodyRaw, business),
+    `blog/${hub.dir}/${a.slug}/index.html`, (path) => linkPages.has(path)));
   const { html: bodyWithIds, items } = buildToc(body);
   const toc = tocHtml(items);
   const path = `blog/${hub.dir}/${a.slug}/`;
