@@ -31,7 +31,10 @@ jobs:
         run: |
           set -o pipefail
           node --test tests/unit/seo-cold-start.test.js
-          node tools/seo-cold-start.mjs --check 2>&1 | tee seo-cold-start.txt
+          # Reports depend on the live corpus: stale = warning (regenerate), not a red monitor.
+          if ! node tools/seo-cold-start.mjs --check 2>&1 | tee seo-cold-start.txt; then
+            echo "::warning::docs/seo/cold-start is stale (corpus or research changed) - run node tools/seo-cold-start.mjs and commit"
+          fi
 
       - name: Matrix/sitemap publication coverage
         run: node tools/seo-index-coverage.mjs --json > seo-index-coverage.json
