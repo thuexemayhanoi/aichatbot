@@ -66,7 +66,11 @@ function textProblems(label, s, allowedDigits) {
   const en = englishTokens(s);
   if (en.length) out.push(`${label}: English tokens ${en.join(', ')}`);
   const low = s.toLowerCase();
-  for (const f of FORBIDDEN) if (low.includes(f)) out.push(`${label}: forbidden claim "${f}"`);
+  for (const f of FORBIDDEN) {
+    // "số 1" must not match an emergency number such as "số 113".
+    const hit = f === 'số 1' ? /số 1(?!\d)/.test(low) : low.includes(f);
+    if (hit) out.push(`${label}: forbidden claim "${f}"`);
+  }
   for (const d of digitsOf(s)) if (!allowedDigits.has(d)) out.push(`${label}: number "${d}" does not appear in the original article`);
   for (const m of s.matchAll(/\{\{\s*business\.([a-z0-9_.]+)/gi)) {
     const v = m[1].split('.').reduce((o, k) => (o == null ? undefined : o[k]), JSON.parse(read('data/business/business.json')));
