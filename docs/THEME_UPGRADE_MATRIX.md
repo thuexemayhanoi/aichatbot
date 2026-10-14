@@ -60,7 +60,7 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 
 | ID | Area | Problem | Fix | Files | Risk | Status | Evidence |
 |---|---|---|---|---|---|---|---|
-| TH-020 | Footer | Incomplete NAP, no back-to-top, no year, weak column grid | Brand block + verified NAP (name, address, phone via `data-contact-ref="call"` resolved at runtime, hours) + hub columns + Dịch vụ/Pháp lý + back-to-top + `© <year>` where year = newest `published_date` year (deterministic; `2026–YYYY` when it advances); 2-col mobile / 4-col desktop grid | `tools/app-shell.mjs`, `tools/build-blog.mjs`, `blog.css` | M (footer link set must stay identical on every page and ≤ 22 links; no hard-coded contact hrefs) | TODO | |
+| TH-020 | Footer | Incomplete NAP, no back-to-top, no year, weak column grid | Brand block + verified NAP (name, address, phone via `data-contact-ref="call"` resolved at runtime, hours) + hub columns + Dịch vụ/Pháp lý + back-to-top + `© <year>` where year = newest `published_date` year (deterministic; `2026–YYYY` when it advances); 2-col mobile / 4-col desktop grid | `tools/app-shell.mjs`, `tools/build-blog.mjs`, `blog.css` | M (footer link set must stay identical on every page and ≤ 22 links; no hard-coded contact hrefs) | DONE | batch C. `<address class="blog-footer-nap">`: `display_name`, `address.full`, `hours.display` + "mỗi ngày" (build-time from business.json), phone text `phone_display` with href via `data-contact-ref="call"` (runtime, no `tel:` in HTML). Bottom bar `© 2026 MotoAI · Thuê Xe Máy Hà Nội Nguyễn Tú` — year = `SITE_LAUNCH_YEAR` (2026) → `2026–YYYY` once the newest manifest `published_date` year passes it (never the wall clock); `↑ Lên đầu trang` → `#top` (HTML-spec document top, zero JS). Grid: 2 cols < 768, 4 cols ≥ 768, brand column beside it ≥ 1024; Dịch vụ/Pháp lý as an inline row ≥ 768. Footer built once per build (cached string). Link set 20 → 22 (cap 22, test-pinned), identical on all pages |
 
 ### P0 — batch D: article page
 
@@ -138,11 +138,12 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 | matrix | `3b7c0cc6` | — | — | — | — | audit only |
 | A (TH-001..004) | `934faa9b` | `node --test` 1003/1003 pass (238 s) | 75 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; `data/blog/**` unchanged | 174,480 internal URLs, 0 broken, 0 issues | 99.5/100 (623 pre-existing per-page notes, UX 10/10) | CSS 57,808 B / 65,536; JS 231,930 B / 232,000 (unchanged). Found + fixed: `package.json` major must track `BUILD_VERSION` (`pwa.test.js`) |
 
-| B (TH-010..013, TH-061) | (SHA recorded in the batch-C commit) | `node --test` 1008/1008 pass (incl. new `tests/unit/theme-premium.test.js`) | 78 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; second build = byte-identical (determinism) | pass, 223,620 internal URLs checked (menu adds links), 0 broken | 99.5/100, 623 notes (unchanged), UX 10/10 | CSS 60,906 B / 65,536; JS 231,702 B / 232,000. Also: `tools/__pycache__/*.pyc` untracked + `__pycache__/`, `*.pyc` in `.gitignore`. `origin/main` is 30 commits ahead — not merged (TH-900) |
+| B (TH-010..013, TH-061) | `8aa8d6d4` | `node --test` 1008/1008 pass (incl. new `tests/unit/theme-premium.test.js`) | 78 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; second build = byte-identical (determinism) | pass, 223,620 internal URLs checked (menu adds links), 0 broken | 99.5/100, 623 notes (unchanged), UX 10/10 | CSS 60,906 B / 65,536; JS 231,702 B / 232,000. Also: `tools/__pycache__/*.pyc` untracked + `__pycache__/`, `*.pyc` in `.gitignore`. `origin/main` is 30 commits ahead — not merged (TH-900) |
+| C (TH-020) | (SHA recorded in the batch-D commit) | `node --test` 1010/1010 pass | 79 s wall; output regenerated (1,821 pages, footer only) | pass, 225,440 internal URLs, 0 broken | 99.5/100, 623 notes (unchanged) | CSS 62,508 B / 65,536; JS 231,702 B (unchanged) |
 
 ## Next steps from checkpoint
 
-1. Batches A, B done → next C (TH-020), then D, E, F, G in order.
+1. Batches A, B, C done → next D (TH-030..035), then E, F, G in order.
 2. After each batch: run the loop, record commit SHA + results in **Batch log**, flip item status with evidence.
 3. If the JS guard or CSS budget blocks a batch, trim first (TH-013 / TH-004), bump only with a documented reason.
 4. Every `BUILD_VERSION` bump = 4 files in lockstep: `tools/app-shell.mjs`, `index.html`, `service-worker.js`, `package.json` (major).

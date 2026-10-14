@@ -86,15 +86,23 @@ export function pageHead({ title, description, path, ogType = 'website' }) {
 }
 
 /**
- * v67 mega-menu model, set ONCE per build by tools/build-blog.mjs:
- *   { [clusterId]: { columns: [{ id, subtopics: [{ label, url }], featured: [{ title, url }] }] } }
+ * v67 build context, set ONCE per build by tools/build-blog.mjs:
+ *   menu: { [clusterId]: { columns: [{ id, subtopics: [{ label, url }], featured: [{ title, url }] }] } }
+ *   year: newest manifest published_date year (footer ©; deterministic —
+ *         never the wall clock, so the CI diff gate stays green).
  * Without a context (unit tests, ad-hoc renders) the panel degrades to the
- * plain child-category links. Rendered panels are cached per cluster +
- * active hub so 40k pages cost string concatenation only.
+ * plain child-category links and the year to SITE_LAUNCH_YEAR. Panels and
+ * the footer are cached so 40k pages cost string concatenation only.
  */
+export const SITE_LAUNCH_YEAR = 2026;
 let MENU = null;
+let YEAR = SITE_LAUNCH_YEAR;
 const PANEL_CACHE = new Map();
-export function setBuildContext({ menu = null } = {}) { MENU = menu; PANEL_CACHE.clear(); }
+let FOOTER = null;
+export function setBuildContext({ menu = null, year = SITE_LAUNCH_YEAR } = {}) {
+  MENU = menu; YEAR = Math.max(SITE_LAUNCH_YEAR, Number(year) || SITE_LAUNCH_YEAR);
+  PANEL_CACHE.clear(); FOOTER = null;
+}
 
 /** Mega panel for one parent hub — one column per child category: the
  *  category link, up to 3 subtopic hubs holding articles, 2 cornerstone
@@ -229,15 +237,19 @@ ${listHtml}
 `;
 }
 
-/** Real site footer (v63): brand block (🏍️ MotoAI · Hỗ trợ Agent + short
- *  description + ⚡ Hỏi Agent CTA), link columns from
- *  config/navigation.json (column 1 = MOTOAI, columns 2–4 = each parent
- *  hub + its child categories expanded from taxonomy.json via the "hub"
- *  field, then a compact secondary row for Dịch vụ + Pháp lý) and a
- *  verified business bottom bar (address + hours from
- *  data/business/business.json — never hard-coded, never 24/7).
- *  Every entry is a real crawlable <a>. */
+/** Mega footer (v67). Brand block (🏍️ MotoAI · Hỗ trợ Agent, short
+ *  description, verified NAP in <address>: name/address/hours from
+ *  data/business/business.json at build time, phone href resolved at
+ *  runtime via data-contact-ref="call" — never a hard-coded tel:, never
+ *  24/7 — and the ⚡ Hỏi Agent CTA); link columns from
+ *  config/navigation.json (MOTOAI + each parent hub with its child
+ *  categories from taxonomy.json via the "hub" field; 2 columns on phones,
+ *  4 on desktop); a secondary Dịch vụ + Pháp lý row; and a bottom bar with
+ *  the verified business line, © SITE_LAUNCH_YEAR[–newest content year]
+ *  and back-to-top (#top = document top per the HTML spec, no JS).
+ *  Identical on every page (same link set, ≤ 22 links) and built once. */
 export function footerHtml() {
+  if (FOOTER) return FOOTER;
   const primary = [];
   const secondary = [];
   for (const g of navigation.footer_groups) {
@@ -274,14 +286,21 @@ ${links}
       </div>`);
     }
   }
-  const brand = BUSINESS.brand;             // "Nguyễn Tú" — verified business.json
-  const address = BUSINESS.address.full;     // "112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội"
-  const hours = BUSINESS.hours.display;      // "09:00 - 21:00"
-  return `    <footer class="blog-footer">
+  const brand = BUSINESS.brand;               // "Nguyễn Tú" — verified business.json
+  const address = BUSINESS.address.full;       // "112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội"
+  const hours = BUSINESS.hours.display;        // "09:00 - 21:00"
+  const years = YEAR > SITE_LAUNCH_YEAR ? `${SITE_LAUNCH_YEAR}–${YEAR}` : `${SITE_LAUNCH_YEAR}`;
+  FOOTER = `    <footer class="blog-footer">
       <div class="blog-footer-inner">
         <div class="blog-footer-brand">
           <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
           <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội ${esc(brand)}</p>
+          <address class="blog-footer-nap">
+            <strong>${esc(BUSINESS.display_name)}</strong>
+            <span><span aria-hidden="true">📍</span> ${esc(address)}</span>
+            <span><span aria-hidden="true">🕘</span> ${esc(hours)} mỗi ngày</span>
+            <a data-contact-ref="call" href="/">📞 ${esc(BUSINESS.contact.phone_display)}</a>
+          </address>
           <a class="blog-footer-cta" href="/">⚡ Hỏi Agent</a>
         </div>
         <nav class="blog-footer-nav" aria-label="Chân trang">
@@ -294,11 +313,12 @@ ${secondary.join('\n')}
         </nav>
       </div>
       <div class="blog-footer-bottom">
-        <p>Thuê xe máy ${esc(brand)} · ${esc(address)}</p>
-        <p>${esc(hours)} mỗi ngày</p>
+        <p>© ${years} MotoAI · ${esc(BUSINESS.display_name)}</p>
+        <a class="blog-footer-top" href="#top">↑ Lên đầu trang</a>
       </div>
     </footer>
 `;
+  return FOOTER;
 }
 
 /** Native "Ask Agent" action: returns to the HOME chat screen with the

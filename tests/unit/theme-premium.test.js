@@ -83,3 +83,28 @@ test('TH-011/012/013: app-shell.js wires Escape, outside click, aria sync and dr
   assert.ok(js.includes("e.key !== 'Tab'"), 'Tab wraps inside the open drawer');
   assert.ok(!js.includes('console.info'), 'no console diagnostics shipped');
 });
+
+// ---------- Batch C: mega footer ----------
+
+const footerOf = (html) => html.slice(html.indexOf('<footer class="blog-footer">'), html.indexOf('</footer>'));
+
+test('TH-020: footer carries verified NAP (name, address, hours, runtime phone href)', () => {
+  const business = JSON.parse(read('data/business/business.json'));
+  for (const p of PAGES) {
+    const f = footerOf(read(p));
+    const nap = f.slice(f.indexOf('<address class="blog-footer-nap">'), f.indexOf('</address>'));
+    assert.ok(nap.includes(business.display_name), `${p}: NAP name`);
+    assert.ok(nap.includes(business.address.full), `${p}: NAP address`);
+    assert.ok(nap.includes(`${business.hours.display} mỗi ngày`), `${p}: NAP hours`);
+    assert.ok(nap.includes(`data-contact-ref="call" href="/">📞 ${business.contact.phone_display}<`), `${p}: phone via data-contact-ref`);
+    assert.ok(!f.includes('tel:'), `${p}: no hard-coded tel: in footer`);
+    assert.ok(f.includes('class="blog-footer-top" href="#top"'), `${p}: back-to-top`);
+  }
+});
+
+test('TH-020: footer year is deterministic — launch year to newest content year, never the clock', () => {
+  const newest = manifest.reduce((m, a) => (a.published_date > m ? a.published_date : m), '2026-09-26');
+  const y = Number(newest.slice(0, 4));
+  const expected = y > 2026 ? `© 2026–${y} MotoAI` : '© 2026 MotoAI';
+  for (const p of PAGES) assert.ok(footerOf(read(p)).includes(expected), `${p}: ${expected}`);
+});

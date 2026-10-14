@@ -698,7 +698,7 @@ export function build() {
   // v67: subtopic counts + the header mega-menu model are computed ONCE per
   // build (O(n)) and shared by every page — never per page.
   const subCounts = subtopicCounts(published, matrix);
-  setBuildContext({ menu: menuModel(published, subCounts) });
+  setBuildContext({ menu: menuModel(published, subCounts), year: Number(updated.slice(0, 4)) });
 
   buildHome(published);
   for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published);
