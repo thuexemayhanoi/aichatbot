@@ -347,6 +347,10 @@ body.content-page .blog-footer { position: static; }
 .blog-table thead th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-muted); }
 .blog-table tbody tr:last-child th, .blog-table tbody tr:last-child td { border-bottom: none; }
 .blog-table tbody th { font-weight: 600; }
+/* v70: comparison tables inside article bodies wrap long cells. */
+.blog-article-body .table-wrap { margin: var(--space-3) 0; }
+.blog-article-body .blog-table th, .blog-article-body .blog-table td { white-space: normal; min-width: 120px; vertical-align: top; }
+.blog-article-body .blog-table caption { padding: 10px 14px 0; font-weight: 600; }
 .blog-price-note { display: block; font-size: 0.68rem; font-weight: 400; color: var(--color-text-muted); }
 
 /* Cluster card "see cluster hub" link. */

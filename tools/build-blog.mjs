@@ -19,7 +19,7 @@
  * resolved from data/business/business.json — articles can never go stale
  * relative to the verified source of truth.
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeInternalAnchors } from './site-audit.mjs';
@@ -550,7 +550,7 @@ ${jsonLd({
  * Build the article screen. v58 editorial upgrades: quick-answer summary box,
  * deterministic reading time (words/200, ceil), TOC, related articles.
  */
-function buildArticle(a, business, hub, published, row, links, byId) {
+function buildArticle(a, business, hub, published, row, links, byId, reviews = {}) {
   const bodyRaw = read(a.body);
   const linkPages = new Set(published.map((entry) => `blog/${HUB_BY_ID[entry.category].dir}/${entry.slug}/index.html`));
   const body = normalizeInternalAnchors(resolveFacts(bodyRaw, business),
@@ -558,6 +558,8 @@ function buildArticle(a, business, hub, published, row, links, byId) {
   const { html: bodyWithIds, items } = buildToc(body);
   const toc = tocHtml(items);
   const path = `blog/${hub.dir}/${a.slug}/`;
+  // v70: a reviewed body (tools/seo-body-review.mjs) carries its review date.
+  const modified = reviews[a.article_id]?.reviewed > a.published_date ? reviews[a.article_id].reviewed : null;
 
   // Deterministic subtopic (from the canonical taxonomy model, not prose).
   const sub = deriveSubtopic(a.category, row ?? {});
@@ -618,7 +620,7 @@ ${plan.family.map((id) => {
         <a class="blog-chip" href="${subHubUrl}">${esc(sub.label)}</a>` : ''}
         <a class="blog-chip blog-chip-parent" href="/blog/${cluster.dir}/">${esc(cluster.name)}</a>
       </p>
-${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline">${esc(a.author)} · ${a.published_date} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
+${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline">${esc(a.author)} · ${a.published_date}${modified ? ` · cập nhật ${modified}` : ''} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
       <div class="blog-summary" role="note">
         <p class="blog-summary-title">${esc(BLOG_UI.summary.title)}</p>
         <p>${esc(a.description)}</p>
@@ -647,7 +649,7 @@ ${jsonLd({
       headline: a.title,
       description: a.description,
       datePublished: a.published_date,
-      dateModified: a.published_date,
+      dateModified: modified ?? a.published_date,
       inLanguage: 'vi-VN',
       articleSection: hub.name,
       ...(a.seo_keyword ? { keywords: a.seo_keyword } : {}),
@@ -682,9 +684,31 @@ function publisherSchema(business) {
   };
 }
 
+/** v70 local SEO: the verified shop as one LocalBusiness entity (contact
+ *  page only), built exclusively from data/business/business.json. */
+function localBusinessSchema(business) {
+  const a = business.address;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AutoRental',
+    '@id': `${business.url}#localbusiness`,
+    name: business.display_name,
+    url: business.url,
+    telephone: business.contact.phone_uri.replace(/^tel:/, ''),
+    address: { '@type': 'PostalAddress', streetAddress: a.street, addressLocality: `${a.ward}, ${a.district}`, addressRegion: a.city, addressCountry: 'VN' },
+    openingHoursSpecification: [{
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: business.hours.open, closes: business.hours.close
+    }],
+    areaServed: business.service_areas,
+    hasMap: business.contact.maps
+  };
+}
+
 /** Legal/static screens (privacy, terms, about, policy, contact, price) —
  *  same shell, same source of truth. */
-function buildLegal({ dir, title, seoTitle, description, bodyPath, screen, business }) {
+function buildLegal({ dir, title, seoTitle, description, bodyPath, screen, business, extraSchema = [] }) {
   const body = resolveFacts(read(bodyPath), business ?? JSON.parse(read('data/business/business.json')));
   const content = breadcrumb([CRUMB_HOME, { label: title, href: null }])
     + screenHead({ label: 'MotoAI', title, lead: description })
@@ -707,7 +731,10 @@ ${jsonLd({
       isPartOf: { '@type': 'WebSite', name: 'MotoAI', url: SITE }
     })}
   </script>
-`
+${extraSchema.map((o) => `  <script type="application/ld+json">
+${jsonLd(o)}
+  </script>
+`).join('')}`
   });
   write(`${dir}/index.html`, html);
 }
@@ -776,7 +803,8 @@ export function build() {
       }
     }
   }
-  for (const a of published) buildArticle(a, business, HUB_BY_ID[a.category], published, matrix[a.article_id], links, byId);
+  const reviews = existsSync(join(ROOT, 'data/seo/body-reviews.json')) ? JSON.parse(read('data/seo/body-reviews.json')).reviews : {};
+  for (const a of published) buildArticle(a, business, HUB_BY_ID[a.category], published, matrix[a.article_id], links, byId, reviews);
 
   // Legal screens — inside the SAME app shell (v57).
   buildLegal({
@@ -812,6 +840,7 @@ export function build() {
   buildLegal({
     dir: 'lien-he', screen: 'contact',
     title: 'Liên hệ',
+    extraSchema: [localBusinessSchema(business)],
     seoTitle: 'Liên hệ thuê xe máy Nguyễn Tú — điện thoại, WhatsApp, bản đồ',
     description: `Liên hệ ${business.display_name} tại ${business.address.street}, ${business.address.district}: số điện thoại, WhatsApp, bản đồ chỉ đường, giờ mở cửa ${business.hours.display}.`,
     bodyPath: 'data/site/lien-he.body.html', business
@@ -857,6 +886,11 @@ export function build() {
   }, null, 2) + '\n');
 
   // Sitemap: homepage, blog home, hubs, non-empty subtopic hubs, published articles only.
+  // v70: <lastmod> from real dates only — articles use their publish/review
+  // date, listing pages the newest article/review date; static pages none.
+  const lastmodOf = new Map(published.map((a) => [`${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`,
+    reviews[a.article_id]?.reviewed > a.published_date ? reviews[a.article_id].reviewed : a.published_date]));
+  const listingLastmod = [...lastmodOf.values()].reduce((m, d) => (d > m ? d : m), updated);
   const urls = [SITE, `${SITE}blog/`,
     ...taxonomy.clusters.map((c) => `${SITE}blog/${c.dir}/`),
     ...categoryPages.map((p) => `${SITE}${p}`),
@@ -866,7 +900,10 @@ export function build() {
     `${SITE}gioi-thieu/`, `${SITE}chinh-sach/`, `${SITE}lien-he/`, `${SITE}gia-thue/`];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
+${urls.map((u) => {
+    const lm = lastmodOf.get(u) ?? (u.startsWith(`${SITE}blog/`) ? listingLastmod : null);
+    return lm ? `  <url><loc>${u}</loc><lastmod>${lm}</lastmod></url>` : `  <url><loc>${u}</loc></url>`;
+  }).join('\n')}
 </urlset>
 `);
   write('robots.txt', `User-agent: *

@@ -68,7 +68,8 @@ export const GAPS = {
   'NO-SOURCE': ['P1', 'bài pháp lý thiếu nguồn văn bản gốc', 'Trích văn bản gốc + hiệu lực (legal gate)'],
   'NO-CTX-LINK': ['P2', 'body không có link ngữ cảnh tới bài khác', 'Thêm 2–3 link ngữ cảnh trong body (review body)'],
   'INTRO-KW': ['P2', 'đoạn mở chưa trả lời trực tiếp theo từ khóa', 'Viết câu trả lời trực tiếp ở đoạn mở (review body)'],
-  'EN-BODY': ['P2', 'body còn cụm tiếng Anh từ ma trận', 'Việt hóa cụm tiếng Anh trong body (review body)']
+  'EN-BODY': ['P2', 'body còn cụm tiếng Anh từ ma trận', 'Việt hóa cụm tiếng Anh trong body (review body)'],
+  'INTERNAL-NOTE': ['P1', 'ghi chú nội bộ (pilot/fixture) hiển thị công khai', 'Xóa ghi chú nội bộ (review body)']
 };
 const PRIO = { P0: 0, P1: 1, P2: 2 };
 
@@ -369,6 +370,7 @@ export function analyze(c) {
       const kwSyl = norm(row.keyword).split(/[^a-z0-9]+/).filter((s) => s.length > 1);
       const cover = kwSyl.filter((s) => intro.includes(s)).length / Math.max(1, kwSyl.length);
       if (cover < 0.6) gaps.push('INTRO-KW');
+      if (/pilot|fixture|chuẩn sản xuất/i.test(bodyText)) gaps.push('INTERNAL-NOTE');
       if (englishTokens(bodyText.replace(/MotoAI|Agent/g, '')).some((w) => ['ride', 'weekend', 'view', 'bike', 'bikes'].includes(w.toLowerCase()))) gaps.push('EN-BODY');
       ev.push(`${wc} từ`, `${ext.length} nguồn ngoài`);
       if (/<table/.test(p.body)) ev.push('có bảng');

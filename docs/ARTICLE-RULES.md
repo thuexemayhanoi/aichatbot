@@ -13,7 +13,8 @@
 - Đúng 1 H1 (được sinh tự động từ tiêu đề bài).
 - Tiêu đề duy nhất, meta description duy nhất, self-canonical.
 - Schema: `Article` + `BreadcrumbList`; author + date; link về hub danh mục; internal links theo ngữ cảnh.
-- Body viết ở `data/blog/articles/<slug>.body.html` (chỉ thẻ h2/p/ul/li) — layout, head, schema do `tools/build-blog.mjs` sinh.
+- Body viết ở `data/blog/articles/<slug>.body.html` (thẻ h2/h3/p/ul/ol/li/strong/a; bảng so sánh chỉ dạng `<div class="table-wrap"><table class="blog-table">…</table></div>`) — layout, head, schema do `tools/build-blog.mjs` sinh.
+- Sửa body bài PUBLISHED chỉ qua quy trình review `tools/seo-body-review.mjs` (patch có cấu trúc, giữ nguyên prose cũ, QA trước/sau, nhật ký `data/seo/body-reviews.json`).
 
 ## Nội dung
 
@@ -30,6 +31,8 @@ Một nhận định pháp lý chỉ được publish khi khai báo đủ:
 CLAIM → SUBJECT (đối tượng/loại xe/người) → CONDITION → RULE/VALUE
       → EFFECTIVE VERSION (hiệu lực) → PRIMARY SOURCE (văn bản gốc)
 ```
+
+Trong body hiển thị cho người đọc, nhãn khung này viết bằng tiếng Việt: **Nhận định / Đối tượng / Điều kiện / Quy định / Văn bản và hiệu lực / Nguồn gốc** (chỉ SEO tiếng Việt; test `seo-body-review` chặn nhãn tiếng Anh).
 
 Tên miền chính phủ (gov.vn) KHÔNG tự động làm claim đúng. Lỗi thực tế pháp lý là QA failure nghiêm trọng. Bài SAFE luôn có `source_policy=legal-gate`, `agent_retrieval=no` (prose pháp lý không vào Agent retrieval).
 
