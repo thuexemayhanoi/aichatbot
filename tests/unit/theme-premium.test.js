@@ -177,3 +177,30 @@ test('TH-040..042: cards carry <time>, hubs render windowed nav and a distinct i
     assert.equal((h.match(/class="blog-screen-lead"/g) ?? []).length, 1, `${p}: exactly one lead`);
   }
 });
+
+// ---------- Batch F: 404 + search ----------
+
+test('TH-050: branded 404 — noindex, no canonical/og:url, absolute assets, not in sitemap', () => {
+  const html = read('404.html');
+  assert.ok(html.includes('<meta name="robots" content="noindex">'), 'noindex');
+  assert.ok(!html.includes('rel="canonical"') && !html.includes('og:url'), 'no canonical / og:url');
+  assert.ok(/href="\/assets\/css\/style\.css\?v=/.test(html) && /href="\/assets\/css\/blog\.css\?v=/.test(html), 'root-absolute CSS');
+  assert.ok(!/(?:href|src)="\.\.?\//.test(html), 'no relative URLs (served at any path)');
+  assert.ok(html.includes('<h1 class="blog-screen-title">Không tìm thấy trang</h1>'), 'H1');
+  assert.ok(html.includes('id="blog-search-input"') && html.includes('/assets/js/blog.js'), 'search works on 404');
+  assert.equal((html.match(/class="blog-cat-card"/g) ?? []).length, 6, 'six category cards');
+  assert.ok(!html.includes('aria-current="page"'), 'nothing marked current');
+  assert.ok(!read('sitemap.xml').includes('404'), 'not in sitemap');
+});
+
+test('TH-051: search fetches an absolute index, announces counts, has heading + static empty state', () => {
+  const js = read('assets/js/blog.js');
+  assert.ok(js.includes("fetch('/blog/search-index.json')"), 'absolute index URL');
+  const home = read('blog/index.html');
+  assert.ok(home.includes('<span id="blog-search-count" role="status" aria-live="polite"></span>'), 'live count');
+  assert.ok(home.includes('<h2 id="blog-search-head">Kết quả tìm kiếm</h2>'), 'results heading');
+  const empty = home.slice(home.indexOf('id="blog-search-empty"'), home.indexOf('</section>', home.indexOf('id="blog-search-empty"')));
+  for (const c of taxonomy.clusters) assert.ok(empty.includes(`href="/blog/${c.dir}/"`), `empty state links ${c.dir}`);
+  const index = read('blog/search-index.json');
+  for (const a of JSON.parse(index).articles) assert.ok(!a.keywords.includes(a.summary), 'keywords never duplicate the summary');
+});

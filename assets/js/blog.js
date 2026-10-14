@@ -1,119 +1,74 @@
-/**
- * Blog search (v58) — client-side, index lazy-loaded on demand.
- * Text filter + category filter + clear button + result count + empty state.
- * Index: blog/search-index.json (published articles only, compact fields).
- */
-const input = document.getElementById('blog-search-input');
-const filter = document.getElementById('blog-search-filter');
-const clearBtn = document.getElementById('blog-search-clear');
-const countEl = document.getElementById('blog-search-count');
-const results = document.getElementById('blog-search-results');
+/** Blog search (v67): the index (/blog/search-index.json — absolute, so it
+ *  also works on 404.html) loads lazily on the first query. Text + category
+ *  filter, live count (role=status), results panel with heading, static
+ *  empty state (hub links rendered at build time). */
+const $ = (id) => document.getElementById(id);
+const input = $('blog-search-input');
+const filter = $('blog-search-filter');
+const clearBtn = $('blog-search-clear');
+const countEl = $('blog-search-count');
+const panel = $('blog-search-panel');
+const emptyEl = $('blog-search-empty');
+const results = $('blog-search-results');
 if (input && results) {
-  let index = null;
   let loading = null;
-
-  const loadIndex = () => {
-    if (index) return Promise.resolve(index);
-    if (!loading) {
-      loading = fetch('search-index.json').then((r) => {
-        if (!r.ok) throw new Error(String(r.status));
-        return r.json();
-      }).then((data) => {
-        index = data.articles ?? [];
-        // Category options derive from the index itself — no hard-coding.
-        if (filter) {
-          const seen = new Set();
-          for (const a of index) {
-            if (!a.category_name || seen.has(a.category)) continue;
-            seen.add(a.category);
-            const opt = document.createElement('option');
-            opt.value = a.category;
-            opt.textContent = a.category_name;
-            filter.appendChild(opt);
-          }
-        }
-        return index;
-      });
-      loading.catch(() => { loading = null; });
-    }
-    return loading;
-  };
-
-  const norm = (s) => String(s ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  const setCount = (hits, active) => {
-    if (!countEl) return;
-    if (!active) { countEl.hidden = true; countEl.textContent = ''; return; }
-    countEl.hidden = false;
-    countEl.textContent = `— ${hits.length} kết quả`;
-  };
-
-  const render = (hits, active) => {
-    results.replaceChildren();
-    if (hits.length === 0) {
-      const p = document.createElement('p');
-      p.className = 'blog-empty';
-      p.textContent = 'Không tìm thấy bài viết khớp. Thử từ khóa khác hoặc hỏi Agent.';
-      results.appendChild(p);
-    } else {
-      for (const a of hits) {
-        const card = document.createElement('a');
-        card.className = 'blog-card';
-        card.href = a.url;
-        const cat = document.createElement('span');
-        cat.className = 'cat';
-        cat.textContent = a.category_name ?? a.category ?? '';
-        const h = document.createElement('h3');
-        h.textContent = a.title;
-        const p = document.createElement('p');
-        p.textContent = a.summary ?? '';
-        card.append(cat, h, p);
-        results.appendChild(card);
+  const loadIndex = () => loading ??= fetch('/blog/search-index.json')
+    .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+    .then((data) => {
+      const index = data.articles ?? [];
+      const seen = new Set();
+      // Category options derive from the index itself — no hard-coding.
+      for (const a of index) {
+        if (!filter || !a.category_name || seen.has(a.category)) continue;
+        seen.add(a.category);
+        filter.add(new Option(a.category_name, a.category));
       }
-    }
-    setCount(hits, active);
+      return index;
+    })
+    .catch((e) => { loading = null; throw e; });
+
+  const norm = (s) => String(s ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const el = (tag, cls, text) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    n.textContent = text ?? '';
+    return n;
+  };
+  // state: null = idle, [] = no hits, [..] = hits, 'error' = index failed
+  const show = (state) => {
+    if (panel) panel.hidden = state === null;
+    if (emptyEl) emptyEl.hidden = !(Array.isArray(state) && state.length === 0);
+    if (clearBtn) clearBtn.hidden = state === null;
+    if (countEl) countEl.textContent = Array.isArray(state) ? `— ${state.length} kết quả` : '';
+    if (state === 'error') return results.replaceChildren(el('p', 'blog-empty', 'Không tải được mục lục tìm kiếm. Vui lòng thử lại.'));
+    results.replaceChildren(...(Array.isArray(state) ? state : []).map((a) => {
+      const card = el('a', 'blog-card');
+      card.href = a.url;
+      card.append(el('span', 'cat', a.category_name ?? a.category), el('h3', '', a.title), el('p', '', a.summary));
+      return card;
+    }));
   };
 
   async function run() {
     const q = norm(input.value.trim());
     const cat = filter ? filter.value : '';
-    if (q.length < 2 && !cat) {
-      results.replaceChildren();
-      setCount([], false);
-      if (clearBtn) clearBtn.hidden = true;
-      return;
-    }
-    if (clearBtn) clearBtn.hidden = false;
+    if (q.length < 2 && !cat) return show(null);
     try {
       const list = await loadIndex();
-      const hits = list.filter((a) => {
-        if (cat && a.category !== cat) return false;
-        return q.length < 2
-          || norm(a.title).includes(q)
-          || norm(a.keywords ?? '').includes(q)
-          || norm(a.summary ?? '').includes(q)
-          || norm(a.location ?? '').includes(q);
-      }).slice(0, 24);
-      render(hits, true);
+      show(list.filter((a) => (!cat || a.category === cat) && (q.length < 2
+        || [a.title, a.keywords, a.summary, a.location].some((f) => norm(f).includes(q)))).slice(0, 24));
     } catch {
-      const p = document.createElement('p');
-      p.className = 'blog-empty';
-      p.textContent = 'Không tải được mục lục tìm kiếm. Vui lòng thử lại.';
-      results.replaceChildren(p);
+      show('error');
     }
   }
 
   let timer = null;
-  input.addEventListener('input', () => {
-    clearTimeout(timer);
-    timer = setTimeout(run, 180);
-  });
-  if (filter) filter.addEventListener('change', run);
-  if (clearBtn) clearBtn.addEventListener('click', () => {
+  input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(run, 180); });
+  filter?.addEventListener('change', run);
+  clearBtn?.addEventListener('click', () => {
     input.value = '';
     if (filter) filter.value = '';
-    results.replaceChildren();
-    setCount([], false);
-    clearBtn.hidden = true;
+    show(null);
     input.focus();
   });
   if (location.hash === '#blog-search') input.focus();

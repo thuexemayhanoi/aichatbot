@@ -49,10 +49,12 @@ export function rel(path) {
 
 const NO_FLASH_THEME = `<script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>`;
 
-/** <head> block — same meta contract as the chat homepage. */
-export function pageHead({ title, description, path, ogType = 'website' }) {
+/** <head> block — same meta contract as the chat homepage. v67
+ *  `noindex` (404 only): robots noindex, NO canonical / og:url, and
+ *  root-absolute asset URLs (GitHub Pages serves 404.html at any path). */
+export function pageHead({ title, description, path, ogType = 'website', noindex = false }) {
   const url = SITE + path.replace(/^\//, '');
-  const prefix = rel(path);
+  const prefix = noindex ? '/' : rel(path);
   return `<!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -61,15 +63,14 @@ export function pageHead({ title, description, path, ogType = 'website' }) {
   <meta name="motoai-build" content="${BUILD_VERSION}">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
-  <link rel="canonical" href="${url}">
+  ${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${url}">`}
   <meta name="theme-color" content="#4f46e5">
   <meta property="og:type" content="${ogType}">
   <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
-  <meta property="og:url" content="${url}">
-  <meta property="og:image" content="${SITE}assets/icons/icon-512.png">
+${noindex ? '' : `  <meta property="og:url" content="${url}">\n`}  <meta property="og:image" content="${SITE}assets/icons/icon-512.png">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
@@ -346,8 +347,8 @@ function shellScripts({ search }) {
  * @param {string} o.schemaHtml — JSON-LD scripts (placed before closing body)
  * @param {boolean} o.search — include the blog search runtime (blog home only)
  */
-export function appShellPage({ title, description, path, screen, activeHub = null, activeCluster = null, contentHtml, schemaHtml = '', search = false, ogType = 'website' }) {
-  return pageHead({ title, description, path, ogType })
+export function appShellPage({ title, description, path, screen, activeHub = null, activeCluster = null, contentHtml, schemaHtml = '', search = false, ogType = 'website', noindex = false }) {
+  return pageHead({ title, description, path, ogType, noindex })
     + `  <a class="skip-link" href="#site-main">Bỏ qua đến nội dung chính</a>\n`
     + siteHeader({ activeHub, activeCluster })
     + `  <main class="site-main" id="site-main" tabindex="-1" data-motoai-screen="${esc(screen)}">

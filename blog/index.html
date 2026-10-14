@@ -74,16 +74,28 @@
       <p class="blog-screen-label">Cẩm nang</p>
       <h1 class="blog-screen-title">Thuê xe máy &amp; xe điện</h1>
       <p class="blog-screen-lead">Hướng dẫn, ứng dụng, giá, xe, an toàn và địa phương — viết kèm Agent để bạn hỏi sâu hơn từng chủ đề.</p>
-      <div class="blog-search" id="blog-search">
-        <input id="blog-search-input" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết">
+      <div class="blog-search" id="blog-search" role="search">
+        <input id="blog-search-input" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết" aria-controls="blog-search-panel">
         <select id="blog-search-filter" aria-label="Lọc theo danh mục">
           <option value="">Tất cả danh mục</option>
         </select>
         <button id="blog-search-btn" type="button" onclick="document.getElementById('blog-search-input').dispatchEvent(new Event('input'))">Tìm</button>
         <button id="blog-search-clear" type="button" aria-label="Xóa tìm kiếm" hidden>✕</button>
       </div>
-      <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản. <span id="blog-search-count" hidden></span></p>
-      <div class="blog-grid" id="blog-search-results"></div>
+      <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản. <span id="blog-search-count" role="status" aria-live="polite"></span></p>
+      <section class="blog-search-panel" id="blog-search-panel" aria-labelledby="blog-search-head" hidden>
+        <h2 id="blog-search-head">Kết quả tìm kiếm</h2>
+        <div class="blog-grid" id="blog-search-results"></div>
+        <div class="blog-search-empty" id="blog-search-empty" hidden>
+          <p>Không tìm thấy bài viết khớp. Thử từ khóa ngắn hơn, chọn “Tất cả danh mục”, hoặc xem theo nhóm chủ đề:</p>
+          <div class="blog-cluster-links">
+            <a class="blog-cluster-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a>
+            <a class="blog-cluster-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <a class="blog-cluster-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <a class="blog-cluster-link" href="/">⚡ Hỏi Agent</a>
+          </div>
+        </div>
+      </section>
       <section class="blog-hubs" aria-label="Nhóm chủ đề chính">
       <section class="blog-hub-section" aria-label="Công cụ &amp; Hướng dẫn">
         <h2><a href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></h2>

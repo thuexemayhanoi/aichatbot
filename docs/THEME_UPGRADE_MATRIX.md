@@ -85,8 +85,8 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 
 | ID | Area | Problem | Fix | Files | Risk | Status | Evidence |
 |---|---|---|---|---|---|---|---|
-| TH-050 | 404 | No branded 404 | Build `404.html` (root, absolute asset URLs, `noindex`, no canonical): H1, explanation, search box, 6 category cards, Ask Agent | `tools/build-blog.mjs`, `tools/app-shell.mjs` | L (not audited/sitemapped by design) | TODO | |
-| TH-051 | Search | Relative index fetch; weak results UI | `blog.js` fetches `/blog/search-index.json`; results get a heading + `role="status"` count, richer empty state with hub links | `assets/js/blog.js`, `tools/build-blog.mjs`, `blog.css` | L | TODO | |
+| TH-050 | 404 | No branded 404 | Build `404.html` (root, absolute asset URLs, `noindex`, no canonical): H1, explanation, search box, 6 category cards, Ask Agent | `tools/build-blog.mjs`, `tools/app-shell.mjs` | L (not audited/sitemapped by design) | DONE | batch F. Root `404.html` (GitHub Pages serves it with HTTP 404 at any missing path): `pageHead({ noindex })` → `<meta name="robots" content="noindex">`, no canonical / og:url, root-absolute CSS; full shell (skip link, mega menu, footer, drawer) with nothing marked current; H1 "Không tìm thấy trang", working search, 6 category cards, back to Cẩm nang, Ask Agent. Not in the sitemap. `site-audit` now lists `404.html` in `PUBLIC_ROOTS` so its links/assets are checked (it is not a canonical page) |
+| TH-051 | Search | Relative index fetch; weak results UI | `blog.js` fetches `/blog/search-index.json`; results get a heading + `role="status"` count, richer empty state with hub links | `assets/js/blog.js`, `tools/build-blog.mjs`, `blog.css` | L | DONE | batch F. `blog.js` rewritten compactly (4,127 → 3,146 B, JS headroom 181 → 1,162 B): absolute `fetch('/blog/search-index.json')`, `role="search"`, count in an always-present `role="status"` live region, results panel with "Kết quả tìm kiếm" heading, static empty state (3 parent hubs + Agent, crawlable). Shared `searchBlock()` (blog home + 404). Index slimmed: `keywords` no longer repeats title + summary (blog.js searches those fields directly) and JSON is one article per line → **1,490,297 → 985,393 B (−34%)**, git diffs = one line per publish. Still one file (see TH-108) |
 
 ### P0 — batch G: CWV
 
@@ -109,6 +109,7 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 | TH-104 | Home | Hero/search block could be more editorial | Two-column intro (lead + search) on ≥ 1024 | `build-blog.mjs`, `blog.css` | L | TODO |
 | TH-105 | Drawer | Group headers could show counts/icons | Presentational only | `app-shell.mjs` | L | TODO |
 | TH-106 | Scale | Subtopic hubs list ALL their articles on one page (no pagination) — at 10–40k articles a subtopic page could carry thousands of cards | Paginate like category hubs (`/page/N/`) — new URLs + sitemap entries = contract change, owner decision | `build-blog.mjs` | M | TODO |
+| TH-108 | Scale | `blog/search-index.json` ≈ 580 B/article → ~23 MB at 40k articles; lazy, but the first query would download it all | Shard per category (`search-index/<cat>.json`) loaded by the filter / a 2-char prefix map; build-time only, no new HTML URLs | `build-blog.mjs`, `blog.js` | M | TODO |
 | TH-107 | SEO score | `seo-score` per-article prose heuristics (Q&A, deposit figures) now read only `<article class="blog-article-body">` (fallback `<main>`), so theme chrome (mega-menu labels, related/prev-next titles) no longer flips them. Notes 623 → 453; remaining 263 "deposit claim" + 79 "no Q&A" are genuine article-content findings for the content team | — | `tools/seo-score.mjs` | L | DONE (batch D) |
 
 ### P2
@@ -143,11 +144,12 @@ Legend — Status: `TODO` · `DOING` · `DONE` · `N/A (evidence)` · `DEFERRED`
 | B (TH-010..013, TH-061) | `8aa8d6d4` | `node --test` 1008/1008 pass (incl. new `tests/unit/theme-premium.test.js`) | 78 s wall, 1,704 articles, 32 subtopic hubs, 1,821 sitemap URLs; second build = byte-identical (determinism) | pass, 223,620 internal URLs checked (menu adds links), 0 broken | 99.5/100, 623 notes (unchanged), UX 10/10 | CSS 60,906 B / 65,536; JS 231,702 B / 232,000. Also: `tools/__pycache__/*.pyc` untracked + `__pycache__/`, `*.pyc` in `.gitignore`. `origin/main` is 30 commits ahead — not merged (TH-900) |
 | C (TH-020) | `6658d70b` | `node --test` 1010/1010 pass | 79 s wall; output regenerated (1,821 pages, footer only) | pass, 225,440 internal URLs, 0 broken | 99.5/100, 623 notes (unchanged) | CSS 62,508 B / 65,536; JS 231,702 B (unchanged) |
 | D (TH-030..035, TH-064, TH-107) | `b76f2fe6` | `node --test` 1013/1013 pass | **3.0 s** wall (was 78 s); second build byte-identical | pass, 227,132 internal URLs, 0 broken | 99.6/100, 453 notes (article-prose scoping, TH-107) | CSS 61,788 B / 65,536 (multi-line comments condensed to headlines: −3.9 KB, key rationale kept); JS 231,819 B / 232,000 (181 B headroom) |
-| E (TH-040..042) | (SHA recorded in the batch-F commit) | `node --test` 1015/1015 pass | 3 s; second build byte-identical | pass, 226,636 internal URLs, 0 broken | 99.6/100, 453 notes (unchanged) | CSS 63,081 B / 65,536; JS 231,819 B (unchanged) |
+| E (TH-040..042) | `16de3369` | `node --test` 1015/1015 pass | 3 s; second build byte-identical | pass, 226,636 internal URLs, 0 broken | 99.6/100, 453 notes (unchanged) | CSS 63,081 B / 65,536; JS 231,819 B (unchanged) |
+| F (TH-050..051) | (SHA recorded in the batch-G commit) | `node --test` 1017/1017 pass | 3 s; second build byte-identical | pass, 226,735 internal URLs (404 included), 0 broken | 99.6/100, 453 notes (unchanged) | CSS 63,615 B / 65,536; JS 230,838 B / 232,000 |
 
 ## Next steps from checkpoint
 
-1. Batches A–E done → next F (TH-050..051), then G. JS headroom is 181 B: batch F must compact `blog.js` before adding behaviour.
+1. Batches A–F done → next G (TH-060, TH-063). JS headroom is 181 B: batch F must compact `blog.js` before adding behaviour.
 2. After each batch: run the loop, record commit SHA + results in **Batch log**, flip item status with evidence.
-3. If the JS guard or CSS budget blocks a batch, trim first (TH-013 / TH-004), bump only with a documented reason.
+3. If the JS guard or CSS budget blocks a batch, trim first (TH-013 / TH-004), bump only with a documented reason. CSS headroom is now < 2 KB.
 4. Every `BUILD_VERSION` bump = 4 files in lockstep: `tools/app-shell.mjs`, `index.html`, `service-worker.js`, `package.json` (major).

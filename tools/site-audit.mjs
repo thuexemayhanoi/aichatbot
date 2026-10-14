@@ -6,7 +6,9 @@ import { fileURLToPath } from 'node:url';
 import { SITE } from '../src/config/site.js';
 
 const PUBLIC_DIRS = ['assets', 'src', 'data', 'config', 'blog', 'privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue'];
-const PUBLIC_ROOTS = ['index.html', 'embed.js', 'manifest.webmanifest', 'service-worker.js', 'robots.txt', 'sitemap.xml', 'CNAME'];
+// v67: 404.html is public (GitHub Pages serves it for missing URLs) — its
+// links/assets are checked; it is noindex and deliberately not a sitemap page.
+const PUBLIC_ROOTS = ['index.html', '404.html', 'embed.js', 'manifest.webmanifest', 'service-worker.js', 'robots.txt', 'sitemap.xml', 'CNAME'];
 const LEGACY_PATH = /\/aichatbot(?:\/|[?#]|$)/gi;
 const LEGACY_ORIGIN = /https?:\/\/thuexemayhanoi\.github\.io\/aichatbot(?:\/|[?#]|$)/gi;
 

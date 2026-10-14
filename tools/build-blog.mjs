@@ -152,6 +152,78 @@ function hubClusterFooter(cluster) {
   return `      <p class="blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}: ${links}</p>\n`;
 }
 
+/** The six category cards (blog home + 404). */
+function categoryCardsHtml() {
+  return navigation.categories.map((navItem) => {
+    const cat = taxonomy.categories[navItem.id];
+    return `      <a class="blog-cat-card" href="/blog/${cat.dir}/">
+        <span class="cat-icon" aria-hidden="true">${navItem.icon}</span>
+        <strong>${esc(navItem.label)}</strong>
+        <span>${esc(cat.desc)}</span>
+      </a>`;
+  }).join('\n');
+}
+
+/** v67 search screen block (blog home + 404), driven by assets/js/blog.js:
+ *  role="search" form row, a live result count (role="status"), and a
+ *  results panel with its own heading plus a static empty state that
+ *  offers the three parent hubs and the Agent (crawlable, no JS strings). */
+function searchBlock() {
+  const hubs = taxonomy.clusters.map((c) =>
+    `            <a class="blog-cluster-link" href="/blog/${c.dir}/">${c.icon ?? '📂'} ${esc(c.name)}</a>`).join('\n');
+  return `      <div class="blog-search" id="blog-search" role="search">
+        <input id="blog-search-input" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết" aria-controls="blog-search-panel">
+        <select id="blog-search-filter" aria-label="Lọc theo danh mục">
+          <option value="">Tất cả danh mục</option>
+        </select>
+        <button id="blog-search-btn" type="button" onclick="document.getElementById('blog-search-input').dispatchEvent(new Event('input'))">Tìm</button>
+        <button id="blog-search-clear" type="button" aria-label="Xóa tìm kiếm" hidden>✕</button>
+      </div>
+      <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản. <span id="blog-search-count" role="status" aria-live="polite"></span></p>
+      <section class="blog-search-panel" id="blog-search-panel" aria-labelledby="blog-search-head" hidden>
+        <h2 id="blog-search-head">Kết quả tìm kiếm</h2>
+        <div class="blog-grid" id="blog-search-results"></div>
+        <div class="blog-search-empty" id="blog-search-empty" hidden>
+          <p>Không tìm thấy bài viết khớp. Thử từ khóa ngắn hơn, chọn “Tất cả danh mục”, hoặc xem theo nhóm chủ đề:</p>
+          <div class="blog-cluster-links">
+${hubs}
+            <a class="blog-cluster-link" href="/">⚡ Hỏi Agent</a>
+          </div>
+        </div>
+      </section>
+`;
+}
+
+/** v67 branded 404 (root 404.html — GitHub Pages serves it with HTTP 404
+ *  for any missing URL): noindex, no canonical, absolute asset URLs, not in
+ *  the sitemap. Search + categories + Agent so a dead link is never a dead end. */
+function build404() {
+  const content = screenHead({
+    label: 'Lỗi 404',
+    title: 'Không tìm thấy trang',
+    lead: 'Đường dẫn có thể đã thay đổi hoặc bị gõ nhầm. Tìm bài viết, chọn một danh mục bên dưới hoặc hỏi Agent.'
+  })
+    + searchBlock()
+    + `      <section aria-label="Danh mục">
+        <h2>Danh mục</h2>
+        <div class="blog-cat-grid">
+${categoryCardsHtml()}
+        </div>
+      </section>
+      <p class="blog-404-home"><a class="blog-cluster-more" href="/blog/">← Về trang Cẩm nang</a></p>
+${askAgentAction('tìm bài viết thuê xe máy')}`;
+  write('404.html', appShellPage({
+    title: 'Không tìm thấy trang — MotoAI',
+    description: 'Trang bạn tìm không tồn tại. Tìm bài viết, xem danh mục cẩm nang thuê xe máy hoặc hỏi Agent MotoAI.',
+    path: '404.html',
+    screen: 'not-found',
+    activeHub: 'not-found', // nothing in the nav is the current page
+    contentHtml: content,
+    search: true,
+    noindex: true
+  }));
+}
+
 /** Blog home (v61 hub-first): H1/intro → search → 3 PARENT HUB cards →
  *  Bài mới → the six child category cards. Users and crawlers see the
  *  topical architecture before any single article. */
@@ -178,14 +250,7 @@ ${latestCards}
       </section>`;
   }).join('\n');
 
-  const categoryCards = navigation.categories.map((navItem) => {
-    const cat = taxonomy.categories[navItem.id];
-    return `      <a class="blog-cat-card" href="/blog/${cat.dir}/">
-        <span class="cat-icon" aria-hidden="true">${navItem.icon}</span>
-        <strong>${esc(navItem.label)}</strong>
-        <span>${esc(cat.desc)}</span>
-      </a>`;
-  }).join('\n');
+  const categoryCards = categoryCardsHtml();
 
   // v69.1: cap + newest-first (the section is labelled "Bài mới"); the whole
   // corpus stays discoverable through hub pagination and lazy search.
@@ -197,17 +262,8 @@ ${latestCards}
       title: 'Thuê xe máy & xe điện',
       lead: 'Hướng dẫn, ứng dụng, giá, xe, an toàn và địa phương — viết kèm Agent để bạn hỏi sâu hơn từng chủ đề.'
     })
-    + `      <div class="blog-search" id="blog-search">
-        <input id="blog-search-input" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết">
-        <select id="blog-search-filter" aria-label="Lọc theo danh mục">
-          <option value="">Tất cả danh mục</option>
-        </select>
-        <button id="blog-search-btn" type="button" onclick="document.getElementById('blog-search-input').dispatchEvent(new Event('input'))">Tìm</button>
-        <button id="blog-search-clear" type="button" aria-label="Xóa tìm kiếm" hidden>✕</button>
-      </div>
-      <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản. <span id="blog-search-count" hidden></span></p>
-      <div class="blog-grid" id="blog-search-results"></div>
-      <section class="blog-hubs" aria-label="Nhóm chủ đề chính">
+    + searchBlock()
+    + `      <section class="blog-hubs" aria-label="Nhóm chủ đề chính">
 ${hubSections}
       </section>
       <section>
@@ -836,6 +892,7 @@ export function build() {
     bodyPath: 'data/site/lien-he.body.html', business
   });
   buildPrice(business);
+  build404();
 
   // Search index (compact; only published; cluster/subtopic/location aware).
   write('blog/search-index.json', JSON.stringify({
@@ -847,7 +904,9 @@ export function build() {
       const cluster = CLUSTER_BY_ID[hub.cluster];
       return {
         title: a.title,
-        keywords: [a.title, a.description, sub.fallback ? '' : sub.label, row.local_scope].filter(Boolean).join(' '),
+        // v67: title/summary are searched directly — keywords carry only
+        // the extra terms (no duplicated prose: index −40%, see TH-051).
+        keywords: [sub.fallback ? '' : sub.label, row.primary_keyword, row.local_scope].filter(Boolean).join(' ') || a.title,
         summary: a.description,
         category: a.category,
         category_name: hub.name,
@@ -859,7 +918,7 @@ export function build() {
         url: `/blog/${hub.dir}/${a.slug}/`
       };
     })
-  }, null, 2) + '\n');
+  }).replace(/\},\{"title"/g, '},\n{"title"') + '\n');
 
   // Knowledge index for Agent retrieval (chunks, not full documents).
   write('data/blog/knowledge-index.json', JSON.stringify({
