@@ -120,6 +120,22 @@ function insertionPoint(html, beforeFaq) {
   return target ? target.index : html.trimEnd().length;
 }
 
+/** After the first block under the H2 — but never between a lead-in
+ *  paragraph ending in ":" and the list it introduces. */
+export function tableInsertionPoint(html, from) {
+  const close = /<\/(p|ul|ol)>/g; close.lastIndex = from;
+  const m = close.exec(html);
+  if (!m) return from;
+  let at = m.index + m[0].length;
+  const para = html.slice(from, m.index);
+  if (m[1] === 'p' && /:\s*$/.test(stripTags(para.slice(para.lastIndexOf('<p')))) && /^\s*<(ul|ol)\b/.test(html.slice(at))) {
+    const list = /^\s*<(ul|ol)\b/.exec(html.slice(at))[1];
+    const end = html.indexOf(`</${list}>`, at);
+    if (end > 0) at = end + list.length + 3;
+  }
+  return at;
+}
+
 function tableHtml(t) {
   const head = t.head.map((h) => `<th scope="col">${escText(h)}</th>`).join('');
   const rows = t.rows.map((r) => `<tr><th scope="row">${escText(r[0])}</th>${r.slice(1).map((c) => `<td>${escText(c)}</td>`).join('')}</tr>`).join('\n');
@@ -177,10 +193,7 @@ export function reviewArticle(patch, idx = manifestIndex()) {
       const h2 = [...html.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)].find((m) => stripTags(m[1]).trim() === String(t.after_h2 ?? '').trim());
       if (!h2) P(`table: after_h2 "${t.after_h2}" is not an H2 of this article`);
       else {
-        const from = h2.index + h2[0].length;
-        const close = /<\/(p|ul|ol)>/g; close.lastIndex = from;
-        const m = close.exec(html);
-        const at = m ? m.index + m[0].length : from;
+        const at = tableInsertionPoint(html, h2.index + h2[0].length);
         html = `${html.slice(0, at)}\n${tableHtml(t)}${html.slice(at)}`;
         ops.push('table');
       }
