@@ -1,0 +1,53 @@
+name: Blog Shared Rebuild
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'config/blog-ui.json'
+      - 'tools/blog-components.mjs'
+      - 'tools/build-blog.mjs'
+      - 'tools/app-shell.mjs'
+      - 'config/navigation.json'
+      - 'data/blog/taxonomy.json'
+      - 'data/business/business.json'
+      - 'data/business/pricing.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: blog-shared-rebuild-main
+  cancel-in-progress: false
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Rebuild and verify all shared blog output
+        run: |
+          set -euo pipefail
+          git config user.name "motoai-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            node tools/build-blog.mjs
+            node --test
+            node tools/site-audit.mjs
+            node tools/seo-score.mjs
+            git add -- blog data/blog/knowledge-index.json data/blog/content-matrix.csv \
+              sitemap.xml robots.txt privacy terms gioi-thieu chinh-sach lien-he gia-thue
+            if git diff --cached --quiet; then
+              echo "Shared blog output is already synchronized"
+              exit 0
+            fi
+            git commit -m "build(blog): sync shared presentation [skip ci]"
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Concurrent writer push detected; retry with fresh main"
+          done
+          echo "::error::Could not safely commit after three races"
+          exit 1

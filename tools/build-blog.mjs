@@ -23,6 +23,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeInternalAnchors } from './site-audit.mjs';
+import { BLOG_UI } from './blog-components.mjs';
 import {
   taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav
 } from './taxonomy.mjs';
@@ -545,11 +546,11 @@ function buildArticle(a, business, hub, published, row) {
     .filter((x) => x.article_id !== a.article_id)
     .map((x) => ({ x, s: score(x), id: x.article_id }))
     .sort((p, q) => p.s - q.s || p.id.localeCompare(q.id))
-    .slice(0, 5)
+    .slice(0, BLOG_UI.related.limit)
     .map(({ x }) => card(x, HUB_BY_ID[x.category]))
     .join('\n');
   const relatedSection = related ? `      <section class="blog-related">
-        <h2>Bài viết liên quan</h2>
+        <h2>${esc(BLOG_UI.related.title)}</h2>
         <div class="blog-grid">
 ${related}
         </div>
@@ -588,7 +589,7 @@ ${related}
       </p>
 ${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline">${esc(a.author)} · ${a.published_date} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
       <div class="blog-summary" role="note">
-        <p class="blog-summary-title">Tóm tắt nhanh</p>
+        <p class="blog-summary-title">${esc(BLOG_UI.summary.title)}</p>
         <p>${esc(a.description)}</p>
       </div>
       <div class="blog-article-layout">

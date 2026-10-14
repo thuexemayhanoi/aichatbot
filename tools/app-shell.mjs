@@ -25,6 +25,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { navigation, taxonomy, clusterNav, drawerCore } from './taxonomy.mjs';
+import { BLOG_UI, bannerSlot } from './blog-components.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BUSINESS = JSON.parse(readFileSync(join(ROOT, 'data/business/business.json'), 'utf8'));
@@ -250,7 +251,7 @@ ${links}
         <div class="blog-footer-brand">
           <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
           <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội ${esc(brand)}</p>
-          <a class="blog-footer-cta" href="/">⚡ Hỏi Agent</a>
+          <a class="blog-footer-cta" href="/">${esc(BLOG_UI.cta.footerLabel)}</a>
         </div>
         <nav class="blog-footer-nav" aria-label="Chân trang">
 ${primary.join('\n')}
@@ -274,7 +275,7 @@ ${secondary.join('\n')}
 export function askAgentAction(topic) {
   const q = encodeURIComponent(topic);
   return `    <div class="screen-ask">
-      <a class="screen-ask-btn" href="/?ask=${q}">⚡ Hỏi Agent về chủ đề này</a>
+      <a class="screen-ask-btn" href="/?ask=${q}">${esc(BLOG_UI.cta.articleLabel)}</a>
     </div>
 `;
 }
@@ -297,6 +298,7 @@ function shellScripts({ search }) {
 export function appShellPage({ title, description, path, screen, activeHub = null, activeCluster = null, contentHtml, schemaHtml = '', search = false, ogType = 'website' }) {
   return pageHead({ title, description, path, ogType })
     + siteHeader({ activeHub, activeCluster })
+    + bannerSlot(esc)
     + `  <main class="site-main" id="site-main" data-motoai-screen="${esc(screen)}">
 ${contentHtml}
   </main>

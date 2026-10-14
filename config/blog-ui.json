@@ -1,0 +1,19 @@
+{
+  "$schema": "motoai/blog-ui@1",
+  "summary": {
+    "title": "Tóm tắt nhanh"
+  },
+  "related": {
+    "title": "Bài viết liên quan",
+    "limit": 5
+  },
+  "cta": {
+    "articleLabel": "⚡ Hỏi Agent về chủ đề này",
+    "footerLabel": "⚡ Hỏi Agent"
+  },
+  "banner": {
+    "enabled": false,
+    "text": "",
+    "href": "/"
+  }
+}
