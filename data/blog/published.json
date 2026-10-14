@@ -26973,6 +26973,150 @@
         "Lần đầu chạy xe máy điện đã đủ nhiều điều mới: tay ga phản hồi khác xe xăng, xe gần như không có tiếng máy, và bạn phải để ý mức pin thay vì kim xăng. Nếu lần đầu ấy lại rơi vào mùa mưa Hà Nội, bạn có thêm mặt đường trơn, tầm nhìn kém và những đoạn phố ngập sau cơn mưa lớn. Bài viết dành cho người mới, chưa quen xe điện, đang định thuê xe trong những tháng mưa: tuần đầu nên tập gì, xử lý thế nào khi mưa ập xuống giữa đường, vì sao không thử lội nước, sạc xe sau ngày mưa ra sao và cần hỏi cửa hàng những gì trước khi nhận xe.",
         "Nếu bạn muốn làm quen xe điện trong điều kiện thời tiết bình thường trước, bài xe máy điện cho người mới là phần nền nên đọc."
       ]
+    },
+    {
+      "article_id": "BA-1343",
+      "category": "SAFE",
+      "slug": "ai-chiu-phat-khi-di-xe-thue-vi-du-thuc-te",
+      "title": "ai Chịu Phạt Khi đi xe Thuê ví dụ Thực tế",
+      "description": "Nguyên tắc “ai điều khiển xe thì người đó chịu phạt” nghe đơn giản, nhưng khi áp vào xe thuê lại nảy ra nhiều tình huống khó: thông báo phạt về sau",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ai-chiu-phat-khi-di-xe-thue-vi-du-thuc-te.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1347",
+      "category": "EV",
+      "slug": "bao-duong-xe-dien-mua-mua",
+      "title": "Bảo Dưỡng xe Điện Mùa Mưa",
+      "description": "Mùa mưa ở Hà Nội kéo dài nhiều tháng, và đó là giai đoạn chiếc xe điện bị hao mòn nhanh nhất trong năm. Nước bắn từ mặt đường, bùn bám gầm, độ ẩm cao",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/bao-duong-xe-dien-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Mùa mưa ở Hà Nội kéo dài nhiều tháng, và đó là giai đoạn chiếc xe điện bị hao mòn nhanh nhất trong năm. Nước bắn từ mặt đường, bùn bám gầm, độ ẩm cao kéo dài khiến phanh mòn sớm, giắc nối dễ oxy hóa và các chi tiết kim loại bắt đầu rỉ. Bảo quản xe, tức đỗ ở đâu và che chắn ra sao, chỉ là một nửa câu chuyện. Nửa còn lại là bảo dưỡng: kiểm tra và xử lý theo những mốc cố định để xe đi hết mùa mưa mà không trục trặc. Bài viết này sắp xếp công việc đó thành bốn mốc, kèm phần dành riêng cho người đang thuê xe điện.",
+        "Nếu bạn cần nền tảng chung về chăm sóc xe điện quanh năm, hãy xem bài bảo dưỡng xe điện ; còn chuyện chỗ đỗ và che mưa được bàn riêng ở bài bảo quản xe điện mùa mưa ."
+      ]
+    },
+    {
+      "article_id": "BA-1345",
+      "category": "APP",
+      "slug": "cach-ung-dung-hieu-cau-hoi-ve-gia-xe-cho-khach-nuoc-ngoai",
+      "title": "Cách Ứng Dụng Hiểu Câu Hỏi về Giá xe Cho Khách Nước Ngoài",
+      "description": "Khách nước ngoài hỏi giá thuê xe theo một kiểu rất khác người Việt. Thay vì “Vision bao nhiêu một ngày”, họ gõ “How much is a scooter for three",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cach-ung-dung-hieu-cau-hoi-ve-gia-xe-cho-khach-nuoc-ngoai.body.html",
+      "knowledge_chunks": [
+        "Khách nước ngoài hỏi giá thuê xe theo một kiểu rất khác người Việt. Thay vì “Vision bao nhiêu một ngày”, họ gõ “How much is a scooter for three nights?” hoặc “Is 10 dollars per day possible?”. Mỗi câu như vậy chứa những thứ mà trợ lý trên website phải nhận ra: loại xe, thời lượng, đơn vị tiền và đôi khi là một ngân sách ngầm. Bài viết này giải thích trợ lý của {{ business.brand }} đọc câu hỏi giá của khách quốc tế như thế nào, cách viết nào cho kết quả chính xác, cách viết nào khiến câu trả lời chung chung, và phần nào luôn cần nhân viên xác nhận.",
+        "Nếu bạn muốn biết cơ chế chung khi trợ lý xử lý câu hỏi giá bằng tiếng Việt, hãy đọc bài cách ứng dụng hiểu câu hỏi về giá xe trước."
+      ]
+    },
+    {
+      "article_id": "BA-1349",
+      "category": "SAFE",
+      "slug": "cam-do-xe-may-dung-luat-vi-du-thuc-te",
+      "title": "Cầm đồ xe Máy Đúng Luật ví dụ Thực tế",
+      "description": "Quy định về cầm đồ xe máy đọc trên giấy thì gọn, nhưng khi áp vào một tình huống cụ thể lại phát sinh rất nhiều câu hỏi: xe đứng tên bố mẹ có cầm",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/cam-do-xe-may-dung-luat-vi-du-thuc-te.body.html",
+      "knowledge_chunks": []
+    },
+    {
+      "article_id": "BA-1348",
+      "category": "GUIDE",
+      "slug": "chay-xe-so-cho-nguoi-moi-tai-ha-noi",
+      "title": "Chạy xe số Cho Người Mới Tại Hà Nội",
+      "description": "Học chạy xe số ở một bãi tập rộng khác hẳn với việc đưa chiếc xe đó ra phố Hà Nội. Ở đây bạn vừa phải đổi số liên tục theo nhịp dừng, đi của giờ cao",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/chay-xe-so-cho-nguoi-moi-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Học chạy xe số ở một bãi tập rộng khác hẳn với việc đưa chiếc xe đó ra phố Hà Nội. Ở đây bạn vừa phải đổi số liên tục theo nhịp dừng, đi của giờ cao điểm, vừa gặp dốc cầu, dốc đê, ngõ hẹp và những người đi xe máy luồn lách sát bên. Bài viết này không nhắc lại từng thao tác cơ bản, mà tập trung vào câu hỏi người mới hay đặt ra khi thuê xe số ở Hà Nội: tập ở đâu, chọn số nào cho từng loại đường của thành phố, và những lỗi nào dễ mắc nhất trong tuần đầu.",
+        "Nếu bạn chưa từng ngồi lên xe số, hãy đọc trước bài chạy xe số cho người mới để nắm các bộ phận và trình tự khởi hành."
+      ]
+    },
+    {
+      "article_id": "BA-1346",
+      "category": "RENT",
+      "slug": "gia-thue-thay-doi-theo-mua-khong-cho-gia-dinh",
+      "title": "Giá Thuê Thay Đổi Theo Mùa Không Cho Gia Đình",
+      "description": "Gia đình thường không đi Hà Nội vào lúc nào mình muốn, mà vào lúc cả nhà cùng rảnh: kỳ nghỉ hè của con, mấy ngày lễ dài, hay dịp Tết. Đó cũng là",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/gia-thue-thay-doi-theo-mua-khong-cho-gia-dinh.body.html",
+      "knowledge_chunks": [
+        "Gia đình thường không đi Hà Nội vào lúc nào mình muốn, mà vào lúc cả nhà cùng rảnh: kỳ nghỉ hè của con, mấy ngày lễ dài, hay dịp Tết. Đó cũng là những khoảng thời gian đông khách nhất trong năm, nên câu hỏi giá thuê xe máy có thay đổi theo mùa không luôn đi kèm một nỗi lo cụ thể: thuê hai, ba chiếc cùng lúc thì tổng chi phí có đội lên không. Bài này trả lời câu hỏi đó từ góc nhìn của một gia đình, với các ví dụ tính tiền theo giá tham khảo và những việc giúp chi phí giữ ổn định dù bạn phải đi đúng mùa đông.",
+        "Cơ chế chung về giá theo mùa cho mọi nhóm khách được phân tích trong bài giá thuê thay đổi theo mùa không ."
+      ]
+    },
+    {
+      "article_id": "BA-1350",
+      "category": "LOCAL",
+      "slug": "ha-long-duong-quoc-lo-buoi-sang",
+      "title": "hạ Long Đường Quốc lộ Buổi Sáng",
+      "description": "Ai từng đi Hạ Long bằng xe máy đều nhận ra: giờ rời Hà Nội quyết định gần như toàn bộ cảm giác của chuyến đi. Lăn bánh lúc trời vừa hửng, bạn qua",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ha-long-duong-quoc-lo-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Ai từng đi Hạ Long bằng xe máy đều nhận ra: giờ rời Hà Nội quyết định gần như toàn bộ cảm giác của chuyến đi. Lăn bánh lúc trời vừa hửng, bạn qua quốc lộ 18 khi đường còn mát, tới biển trước bữa trưa và còn nguyên buổi chiều. Đi muộn, bạn chạy chặng cuối dưới nắng gắt và tới nơi khi đã mệt. Bài này chỉ bàn về chuyến đi buổi sáng: lấy xe sao cho kịp, xuất phát lúc mấy giờ, xử lý nắng ngược chiều và sương sớm, dừng ăn sáng ở đâu và dùng buổi sáng thứ hai ở Hạ Long thế nào.",
+        "Mô tả tổng quát từng chặng nằm ở bài Hạ Long đường quốc lộ ; ở đây chúng tôi giả định bạn đã nắm tuyến và chỉ muốn tận dụng khung giờ sáng."
+      ]
+    },
+    {
+      "article_id": "BA-1342",
+      "category": "GUIDE",
+      "slug": "ky-nang-lai-xe-an-toan-co-ban-tai-ha-noi",
+      "title": "kỹ Năng Lái xe an Toàn cơ Bản Tại Hà Nội",
+      "description": "Kỹ năng lái xe an toàn ở đâu cũng xoay quanh vài nguyên tắc: quan sát, giữ khoảng cách, báo hiệu và làm chủ tốc độ. Nhưng mỗi thành phố lại thử thách",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ky-nang-lai-xe-an-toan-co-ban-tai-ha-noi.body.html",
+      "knowledge_chunks": [
+        "Kỹ năng lái xe an toàn ở đâu cũng xoay quanh vài nguyên tắc: quan sát, giữ khoảng cách, báo hiệu và làm chủ tốc độ. Nhưng mỗi thành phố lại thử thách những nguyên tắc đó theo một cách riêng. Ở Hà Nội, đó là dòng xe máy dày đặc chen sát hai bên, ngõ nhỏ có xe đi ra bất ngờ, đường dẫn lên cầu, những tuyến trên cao cấm xe máy và thời tiết đổi tính theo bốn mùa. Bài viết này gắn từng kỹ năng cơ bản với những tình huống cụ thể bạn sẽ gặp khi chạy xe thuê trong thành phố.",
+        "Phần lý thuyết chung về các kỹ năng nền có ở bài kỹ năng lái xe an toàn cơ bản ; ở đây chúng tôi chỉ bàn cách áp dụng vào đường phố Hà Nội."
+      ]
+    },
+    {
+      "article_id": "BA-1344",
+      "category": "LOCAL",
+      "slug": "ninh-binh-cuoi-tuan-xe-may-buoi-sang",
+      "title": "Ninh Bình Cuối Tuần xe Máy Buổi Sáng",
+      "description": "Một cuối tuần Ninh Bình bằng xe máy có hai buổi sáng, và người đi nhiều lần thường dùng chúng cho hai việc khác nhau. Sáng thứ bảy dành cho con",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/ninh-binh-cuoi-tuan-xe-may-buoi-sang.body.html",
+      "knowledge_chunks": [
+        "Một cuối tuần Ninh Bình bằng xe máy có hai buổi sáng, và người đi nhiều lần thường dùng chúng cho hai việc khác nhau. Sáng thứ bảy dành cho con đường: rời Hà Nội trước khi dòng xe cuối tuần đổ ra cửa ngõ phía nam. Sáng chủ nhật dành cho cảnh: chạy chậm giữa núi đá và ruộng lúa khi các bến thuyền, bãi xe còn vắng. Bài này sắp xếp cả hai buổi sáng đó thành một kế hoạch, từ lúc nhận xe tối thứ sáu đến lúc trả xe chiều chủ nhật.",
+        "Nếu bạn mới chỉ cần bức tranh chung về tuyến đường và các điểm đến, bài Ninh Bình cuối tuần xe máy là điểm khởi đầu phù hợp hơn."
+      ]
+    },
+    {
+      "article_id": "BA-1341",
+      "category": "EV",
+      "slug": "xe-dien-an-toan-khong-mua-mua",
+      "title": "xe Điện an Toàn Không Mùa Mưa",
+      "description": "Mỗi khi mùa mưa tới, câu hỏi xe điện có an toàn không lại được nhắc nhiều hơn, thường kèm những nỗi lo như bị giật điện hay pin hỏng khi dính nước.",
+      "published_date": "2026-10-14",
+      "author": "MotoAI Editorial",
+      "pilot": false,
+      "body": "data/blog/articles/xe-dien-an-toan-khong-mua-mua.body.html",
+      "knowledge_chunks": [
+        "Mỗi khi mùa mưa tới, câu hỏi xe điện có an toàn không lại được nhắc nhiều hơn, thường kèm những nỗi lo như bị giật điện hay pin hỏng khi dính nước. Câu trả lời ngắn: xe máy điện đi được trong mưa và đủ an toàn cho việc đi lại hằng ngày, nếu bạn hiểu rủi ro thật nằm ở đâu. Bài viết này tách những nỗi lo có cơ sở khỏi những hiểu lầm, đưa ra một thang quyết định theo từng mức mưa và chỉ ra các tín hiệu cho thấy bạn nên dừng xe ngay.",
+        "Đánh giá tổng quát về độ an toàn của xe điện trong mọi điều kiện có ở bài xe điện an toàn không ; bài này chỉ tập trung vào những tháng mưa."
+      ]
     }
   ]
 }
