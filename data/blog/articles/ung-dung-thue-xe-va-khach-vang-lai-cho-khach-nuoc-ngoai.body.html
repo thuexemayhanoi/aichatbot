@@ -1,0 +1,55 @@
+<p>Một du khách vừa xuống xe buýt sân bay, cất balo ở hostel phố cổ, và hai tiếng sau đã muốn có xe máy để chạy ra hồ Tây ngắm hoàng hôn. Không đặt trước, không nói được tiếng Việt, không biết cửa hàng nào tin được. Đây là chân dung điển hình của khách vãng lai nước ngoài, nhóm khách mà một ứng dụng thuê xe chạy ngay trên trình duyệt điện thoại giúp được nhiều nhất. Bài viết này mô tả cách khách quốc tế ghé qua không hẹn trước có thể dùng trợ lý MotoAI của {{ business.brand }} để biết giá, biết còn xe, biết cần giấy tờ gì trong vài phút, và nhận xe mà không phải đoán mò.</p>
+
+<h2>Khách vãng lai nước ngoài cần gì trong mười phút đầu</h2>
+<p>Khác với khách Việt ghé qua, khách nước ngoài không thể đọc bảng giá tiếng Việt dán ở quầy hay hiểu nhanh câu trả lời của nhân viên. Nhu cầu của họ gói gọn trong bốn câu hỏi, và tất cả cần được trả lời bằng ngôn ngữ của họ:</p>
+<ul>
+<li>Xe này giá bao nhiêu một ngày, tính theo tiền Việt, có phụ phí gì không.</li>
+<li>Cửa hàng còn dòng xe tự động dễ chạy cho người chưa quen phố Hà Nội không.</li>
+<li>Cần hộ chiếu, bằng lái loại gì, và khoản cọc được giữ ra sao.</li>
+<li>Nếu tôi đang ở phố cổ thì xe có được mang tới chỗ tôi không, mất bao lâu.</li>
+</ul>
+<p>Cách khách vãng lai nói chung dùng ứng dụng đã được mô tả trong bài <a href="/blog/app/ung-dung-thue-xe-va-khach-vang-lai/">ứng dụng thuê xe và khách vãng lai</a>; với khách quốc tế, điểm khác là rào cản ngôn ngữ và sự thiếu quen thuộc với thủ tục thuê xe tại Việt Nam.</p>
+
+<h2>Mở trên trình duyệt, không cần cài đặt</h2>
+<p>Trợ lý MotoAI là ứng dụng web: khách chỉ cần mở địa chỉ trang trên trình duyệt điện thoại, không phải tải ứng dụng, không tạo tài khoản, không nhập thẻ. Với người vừa đến Việt Nam, chưa có SIM nội địa và đang dùng wifi của hostel, đây là khác biệt lớn so với việc phải tải một phần mềm nặng. Khách có thể quét mã hoặc gõ địa chỉ trang khi đứng ngay tại {{ business.address.full }}, hoặc mở từ phòng trọ trước khi gọi xe ôm sang Long Biên. Lý do một ứng dụng web phù hợp với khách quốc tế hơn phần mềm cài đặt được bàn trong bài <a href="/blog/app/ung-dung-web-thue-xe-may-cho-khach-nuoc-ngoai/">ứng dụng web thuê xe máy cho khách nước ngoài</a>.</p>
+<p>Trong giao diện, khách gõ câu hỏi bằng tiếng Anh hoặc ngôn ngữ của mình và nhận câu trả lời về giá, dòng xe, giờ mở cửa và giấy tờ. Khả năng hiểu câu hỏi nhiều ngôn ngữ của trợ lý được giải thích trong bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu-cho-khach-nuoc-ngoai/">trợ lý thuê xe xử lý câu hỏi đa ngôn ngữ cho khách nước ngoài</a>.</p>
+
+<h2>Kịch bản thực tế: từ hostel phố cổ đến lúc nhận xe</h2>
+<ol>
+<li>Khách mở trợ lý trên điện thoại, hỏi giá xe ga tự động cho hai ngày. Trợ lý trả lời theo bảng giá tham khảo, ví dụ Honda Vision 200.000đ/ngày, Honda Air Blade 200.000đ/ngày, kèm lưu ý giá chính thức được cửa hàng xác nhận khi đặt.</li>
+<li>Khách hỏi về giấy tờ. Trợ lý liệt kê hộ chiếu và bằng lái phù hợp, đồng thời nhắc rằng cửa hàng không cung cấp bảo hiểm nên khách tự chuẩn bị bảo hiểm cho mình.</li>
+<li>Khách hỏi có giao xe tới phố cổ không. Trợ lý giải thích giao xe chỉ trong giờ mở cửa {{ business.hours.display }} và trong khu vực nội thành, thời gian cùng chi phí giao phải được xác nhận trước khi đặt.</li>
+<li>Khách gọi hoặc nhắn tới {{ business.contact.phone_display }} để chốt dòng xe còn trống, rồi chọn tới cửa hàng hoặc chờ giao.</li>
+<li>Lúc nhận xe, khách ký phiếu, đặt cọc, kiểm tra xe và chụp ảnh hiện trạng như mọi khách khác.</li>
+</ol>
+<p>Toàn bộ quá trình từ lúc mở trang tới lúc chốt xe thường không quá mười lăm phút. Các bước đặt xe từ xa cho khách quốc tế được mô tả kỹ hơn trong bài <a href="/blog/app/thue-xe-online-nhu-the-nao-cho-khach-nuoc-ngoai/">thuê xe online như thế nào cho khách nước ngoài</a>.</p>
+
+<h2>Giấy tờ và cọc: hai điều khách vãng lai hay bị bất ngờ</h2>
+<p>Khách quốc tế ghé qua thường mang theo hộ chiếu nhưng để bằng lái ở khách sạn, hoặc ngược lại. Trợ lý giúp họ biết trước cần mang gì để không phải quay về lấy. Về điều kiện lái xe của người nước ngoài tại Việt Nam, khách nên đọc bài <a href="/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-vi-du-thuc-te/">người nước ngoài lái xe ở Việt Nam ví dụ thực tế</a> để hiểu loại bằng nào được chấp nhận trước khi tới quầy, vì trợ lý chỉ nhắc thủ tục của cửa hàng chứ không thay thế thông tin pháp lý.</p>
+<p>Về tiền cọc, khoản này nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy dòng xe và được xác nhận ngay khi đặt. Khách vãng lai nước ngoài thường chưa đổi đủ tiền mặt, nên biết trước mức cọc giúp họ ghé máy rút tiền hoặc chuẩn bị phương án thanh toán trước khi sang cửa hàng. Trợ lý trả lời câu hỏi về cọc bằng đúng con số của cửa hàng, không đoán, nên khách có thể tin vào thông tin đó khi lên kế hoạch.</p>
+
+<h2>Vì sao khách quốc tế nên hỏi trợ lý thay vì hỏi hostel</h2>
+<p>Lễ tân hostel thường giới thiệu cửa hàng quen, không phải cửa hàng hợp nhất với khách. Thông tin truyền miệng về giá cũng hay sai lệch, và khách không có gì để đối chiếu khi ký hợp đồng. Trợ lý trên trang của cửa hàng đưa ra bảng giá, giờ mở cửa và chính sách cọc thống nhất với những gì khách sẽ thấy tại quầy. Nếu có khác biệt giữa câu trả lời của trợ lý và lời nhân viên, khách hoàn toàn có quyền hỏi lại trước khi đặt cọc. Sự khác nhau giữa thuê kiểu truyền thống và thuê qua ứng dụng với khách quốc tế đã được so sánh trong bài <a href="/blog/app/so-sanh-cach-thue-xe-truyen-thong-va-qua-app-cho-khach-nuoc-ngoai/">so sánh cách thuê xe truyền thống và qua app cho khách nước ngoài</a>.</p>
+<p>Với khách đi theo nhóm hai ba người từ nhiều quốc gia, mỗi người có thể tự hỏi bằng ngôn ngữ của mình rồi cùng chốt một dòng xe. Những tính năng hữu ích cho nhóm khách du lịch được gom trong bài <a href="/blog/app/app-thue-xe-cho-khach-du-lich-cho-khach-nuoc-ngoai/">app thuê xe cho khách du lịch cho khách nước ngoài</a>.</p>
+
+<h2>Mẹo nhỏ để chuyến thuê vãng lai suôn sẻ</h2>
+<ul>
+<li>Chụp màn hình câu trả lời về giá và cọc để đối chiếu khi ký phiếu.</li>
+<li>Hỏi trợ lý về giờ mở cửa trước khi di chuyển sang Long Biên; đến sau 21:00 sẽ không nhận được xe.</li>
+<li>Nói rõ với nhân viên là bạn chưa từng chạy xe ở Hà Nội để được xếp dòng xe nhẹ, dễ điều khiển.</li>
+<li>Lưu số {{ business.contact.phone_display }} vào điện thoại ngay, phòng khi cần hỗ trợ giữa chuyến.</li>
+<li>Kiểm tra giờ trả xe và hỏi cách gia hạn nếu lịch trình du lịch thay đổi.</li>
+</ul>
+
+<h2>Câu hỏi thường gặp về ứng dụng thuê xe cho khách vãng lai nước ngoài</h2>
+<h3>Khách nước ngoài có cần tải ứng dụng từ cửa hàng ứng dụng không?</h3>
+<p>Không. Trợ lý MotoAI chạy trên trình duyệt, mở bằng địa chỉ trang web của cửa hàng, không cần cài đặt hay đăng ký tài khoản.</p>
+<h3>Trợ lý có trả lời bằng tiếng Anh không?</h3>
+<p>Có. Khách có thể hỏi bằng tiếng Anh hoặc nhiều ngôn ngữ khác và nhận câu trả lời về giá, giấy tờ, giờ mở cửa và chính sách cọc của cửa hàng.</p>
+<h3>Không đặt trước thì có chắc còn xe không?</h3>
+<p>Trợ lý cho biết các dòng xe cửa hàng có, nhưng tình trạng trống tại thời điểm cụ thể nên xác nhận bằng cuộc gọi hoặc tin nhắn trước khi di chuyển.</p>
+<h3>Khách vãng lai có được giao xe đến khách sạn không?</h3>
+<p>Có thể, trong khu vực nội thành và trong giờ mở cửa. Thời gian và chi phí giao xe phải được thống nhất trước khi đặt.</p>
+
+<h2>Kết luận</h2>
+<p>Khách vãng lai nước ngoài không cần đặt trước nhiều ngày để thuê xe yên tâm; họ chỉ cần một công cụ trả lời đúng và bằng ngôn ngữ của mình trước khi bước vào cửa hàng. Trợ lý MotoAI của {{ business.display_name }} làm đúng việc đó trên trình duyệt điện thoại, và cửa hàng tại Long Biên đón khách ghé qua suốt giờ mở cửa. Tìm hiểu thêm các tính năng trong chuyên mục <a href="/blog/app/">ứng dụng thuê xe</a>, xem bảng giá tham khảo ở trang <a href="/gia-thue/">giá thuê</a>, hoặc mở <a href="/">trang chủ</a> để hỏi trợ lý ngay bây giờ.</p>
