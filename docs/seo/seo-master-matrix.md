@@ -40,7 +40,7 @@
 | INTRO-KW — đoạn mở chưa trả lời trực tiếp theo từ khóa | 11 | 0 |
 | KW-EN — từ khóa ma trận lẫn tiếng Anh | 95 | 0 |
 | KW-TYPO — từ khóa ma trận sai chính tả | 104 | 0 |
-| LONG — trên 2.000 từ | 9 | 9 |
+| LONG — trên 2.000 từ | 9 | 0 |
 | LOW-INBOUND — dưới 3 link ngữ cảnh/cụm trỏ vào | 1127 | 0 |
 | NO-CTX-LINK — body không có link ngữ cảnh tới bài khác | 242 | 0 |
 | NO-DESC — thiếu meta description | 14 | 0 |
@@ -66,14 +66,14 @@
 
 | Status | Ý nghĩa | Số URL |
 |---|---|---:|
-| DONE | Không còn vấn đề kỹ thuật lẫn nội dung | 2120 |
-| KEEP | Đã xem xét, giữ nguyên có chủ đích (bài > 2.000 từ — không cắt nội dung có giá trị) | 9 |
+| DONE | Không còn vấn đề kỹ thuật lẫn nội dung | 2129 |
+| KEEP | Đã xem xét, giữ nguyên có chủ đích (bài > 2.000 từ — không cắt nội dung có giá trị) | 0 |
 | TECH-DONE | Title/meta/link/schema đã tối ưu; còn khoảng trống nội dung chờ review body (`tools/seo-body-review.mjs`) | 0 |
 | PLANNED | Còn vấn đề kỹ thuật chưa xử lý | 0 |
 
 ## Batch (20 URL/batch, thứ tự P0 → P1 → P2, trang chuyển đổi/hub/pillar trước)
 
-Tổng 107 batch; 6 batch còn hạng mục chưa DONE (PLANNED/TECH-DONE/KEEP).
+Tổng 107 batch; 0 batch còn hạng mục chưa DONE (PLANNED/TECH-DONE/KEEP).
 
 | Batch | URL | DONE | KEEP | TECH-DONE | PLANNED | Ví dụ |
 |---|---:|---:|---:|---:|---:|---|
@@ -85,12 +85,12 @@ Tổng 107 batch; 6 batch còn hạng mục chưa DONE (PLANNED/TECH-DONE/KEEP).
 | SEO-B006 | 20 | 20 | 0 | 0 | 0 | /blog/thue-xe/thue-xe-50cc-gia-tot-nhat/ |
 | SEO-B007 | 20 | 20 | 0 | 0 | 0 | /blog/xe-dien/cach-giu-pin-ben-khi-thue-xe-dien-dai-han/ |
 | SEO-B008 | 20 | 20 | 0 | 0 | 0 | /blog/cong-cu-huong-dan/ |
-| SEO-B009 | 20 | 17 | 3 | 0 | 0 | /blog/an-toan/di-nhom-an-toan/ |
-| SEO-B010 | 20 | 19 | 1 | 0 | 0 | /blog/an-toan/nong-do-con-khi-lai-xe/ |
+| SEO-B009 | 20 | 20 | 0 | 0 | 0 | /blog/an-toan/di-nhom-an-toan/ |
+| SEO-B010 | 20 | 20 | 0 | 0 | 0 | /blog/an-toan/nong-do-con-khi-lai-xe/ |
 | SEO-B011 | 20 | 20 | 0 | 0 | 0 | /blog/app/app-thue-xe-may-la-gi/ |
 | SEO-B012 | 20 | 20 | 0 | 0 | 0 | /blog/app/hoi-dap-voi-agent-thue-xe/ |
 | SEO-B013 | 20 | 20 | 0 | 0 | 0 | /blog/app/tro-ly-thue-xe-may-la-gi/ |
-| SEO-B014 | 20 | 19 | 1 | 0 | 0 | /blog/dia-phuong/ca-phe-trung-va-xe-may/ |
+| SEO-B014 | 20 | 20 | 0 | 0 | 0 | /blog/dia-phuong/ca-phe-trung-va-xe-may/ |
 | SEO-B015 | 20 | 20 | 0 | 0 | 0 | /blog/dia-phuong/gia-lam-va-long-bien/ |
 | … | | | | | | xem CSV cột Batch |
 

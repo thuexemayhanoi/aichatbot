@@ -1,4 +1,4 @@
-# Báo cáo tiến độ SEO — 14/10/2026 (hoàn tất vòng 1)
+# Báo cáo tiến độ SEO — 14/10/2026 (hoàn tất toàn bộ ma trận)
 
 > Phạm vi: **chỉ SEO tiếng Việt** cho `https://chatbot.thuexemaynguyentu.com/` (2.000 bài + homepage, hub, trang chuyển đổi, sitemap).
 > Ma trận đầy đủ từng URL: [seo-master-matrix.csv](seo-master-matrix.csv) · tổng hợp: [seo-master-matrix.md](seo-master-matrix.md) · cụm từ khóa: [keyword-cluster-map.md](keyword-cluster-map.md).
@@ -8,8 +8,8 @@
 
 | Trạng thái | Số URL | Ý nghĩa |
 |---|---:|---|
-| DONE | **2.120** | Không còn vấn đề kỹ thuật lẫn nội dung |
-| KEEP | 9 | Bài > 2.000 từ, giữ nguyên có chủ đích (không cắt nội dung có giá trị) |
+| DONE | **2.129** | Không còn vấn đề kỹ thuật lẫn nội dung |
+| KEEP | 0 | 9 bài > 2.000 từ đã được cô đọng qua review (batch D1) |
 | TECH-DONE | 0 | — |
 | PLANNED | 0 | — |
 
@@ -40,9 +40,11 @@
 | C1 — Cannibalization | 22 cặp | Tách ý định theo dàn ý thực | `CANNIBAL` 22 → 0 |
 | K1 — Từ khóa thật | 10 từ khóa | Volume Ubersuggest (VN/vi): "thuê xe máy điện" 1.000, "thuê xe máy điện hà nội" 260 → hub `/blog/xe-dien/` nhắm "Thuê xe máy điện Hà Nội" | `data/seo/keyword-clusters.json` |
 | B01–B22 + P1 — Review body | 468 bài | 695 link ngữ cảnh; 74 bảng so sánh (chỉ dữ kiện có trong bài); FAQ cho 60 bài (280 câu hỏi); 16 đoạn trả lời trực tiếp đầu bài; 38 mục mới cho 13 bài mỏng (2 pillar BA-0001, BA-0004: 473 → 885, 508 → 861 từ) | `NO-CTX-LINK` 242 → 0, `NO-TABLE` 69 → 0, `NO-FAQ` 60 → 0, `THIN` 13 → 0, `INTRO-KW` 11 → 0 |
+| D1 — Cô đọng bài dài | 9 bài | Thao tác `condense`: viết gọn câu thừa, giữ mọi con số/dữ kiện của đoạn cũ; đồng thời sửa 3 điểm pháp lý lỗi thời đã đối chiếu văn bản gốc: hạng A1 theo khoản 1 Điều 57 Luật 36/2024/QH15 (bằng cấp từ 01/01/2025: đến 125 cm³/11 kW; bằng cấp trước đó vẫn lái xe 50 đến dưới 175 cm³) ở BA-0010; cơ chế phục hồi điểm theo Điều 58 (bị trừ hết điểm: chờ ít nhất 6 tháng rồi kiểm tra kiến thức) ở BA-0005, BA-0011; bỏ "B1" khỏi ví dụ bằng ô tô (B1 mới là hạng mô tô ba bánh) | `LONG` 9 → 0 (2.005–2.491 → 1.952–1.986 từ hiển thị); QA 95 → 100 ở cả 9 bài |
+| H2 — Nhãn pháp lý còn sót | 31 bài SAFE | 60 nhãn "Claim:" → "Nhận định:"; audit `EN-BODY` và test hygiene bắt thêm nhãn tiếng Anh dạng thường | 0 nhãn tiếng Anh |
 | H1 — Vệ sinh nội dung | 41 bài | Xóa ghi chú nội bộ lộ ra (pilot/fixture, "Hmm … typo"); sửa chữ Kirin lẫn trong câu ("rối распис", "sự cố механиch"…), từ Indonesia "lebih", lỗi gõ "cợa"; Việt hóa nhãn khung pháp lý (Nhận định / Đối tượng / Điều kiện / Quy định / Văn bản và hiệu lực / Nguồn gốc) ở 33 bài SAFE | `INTERNAL-NOTE` 2 → 0, `EN-BODY` 72 → 0; test hygiene |
 
-Cổng chất lượng của review body: mỗi patch chỉ thêm/bọc/thay đoạn văn bản (không xóa prose, trừ ghi chú nội bộ); chặn số liệu mới, tiếng Anh, markup, cam kết cấm, link tới URL không tồn tại/tự link/link trùng; không đẩy bài quá 2.000 từ; **QA factory (`tools/article-qa.mjs`) chạy trước và sau từng bài** — 468/468 bài giữ nguyên hoặc tăng điểm (16 bài tăng), chạy lại toàn bộ trong tiến trình mới: 0 suy giảm.
+Cổng chất lượng của review body: mỗi patch chỉ thêm/bọc/thay đoạn văn bản (không xóa prose, trừ ghi chú nội bộ và thao tác `condense` cho bài > 2.000 từ — mọi con số của đoạn cũ phải còn trong bài, kết quả 1.800–2.000 từ); chặn số liệu mới, tiếng Anh, markup, cam kết cấm, link tới URL không tồn tại/tự link/link trùng; không đẩy bài quá 2.000 từ; **QA factory (`tools/article-qa.mjs`) chạy trước và sau từng bài** — 506/506 bài giữ nguyên hoặc tăng điểm (27 bài tăng), 0 suy giảm.
 
 ## 4. Trước / sau (đo trên HTML đã build)
 
@@ -55,10 +57,10 @@ Cổng chất lượng của review body: mỗi patch chỉ thêm/bọc/thay đo
 | Trung vị link ngữ cảnh/cụm trỏ vào mỗi bài | 2 | **14** |
 | Body không có link ngữ cảnh ra bài khác | 242 | **0** |
 | Bài ý định so sánh thiếu bảng / thiếu FAQ | 69 / 60 | **0 / 0** |
-| Bài dưới 800 từ | 13 | **0** |
+| Bài dưới 800 từ / trên 2.000 từ | 13 / 9 | **0 / 0** |
 | Trùng ý định từ khóa | 22 | **0** |
 | Link nội bộ hỏng | 0 | 0 |
-| Tổng số từ 468 bài được review | 586.129 | 617.254 |
+| Tổng số từ 506 bài được review | 647.760 | 677.368 |
 
 Không có chỉ số nào ở đây là xếp hạng Google; không cam kết Top 1 hay xuất hiện trong AI Overviews. Hiệu quả thật cần đo bằng Search Console sau khi Google thu thập lại.
 
@@ -70,7 +72,7 @@ Không có chỉ số nào ở đây là xếp hạng Google; không cam kết T
 
 | Hạng mục | Ghi chú |
 |---|---|
-| 9 bài > 2.000 từ (KEEP) | Giữ nguyên để không cắt nội dung có giá trị; cô đọng chỉ qua review biên tập riêng |
+| BA-0122 (bằng lái A1 và thuê xe máy) | Còn mô tả hệ thống hạng cũ (A1 50 đến dưới 175 cm³, A2) như quy định hiện hành. Sửa cần đưa số mới (125 cm³, 01/01/2025) mà cổng review chặn — cần review pháp lý riêng theo khoản 1 Điều 57 và quy định chuyển tiếp của Luật 36/2024/QH15 |
 | Câu mẫu tiếng Anh trong bài "cho khách nước ngoài" | Giữ lại ở nơi bài dạy khách hỏi bằng tiếng Anh (nội dung có chủ đích, không phải từ khóa SEO) |
 | Volume từ khóa | Gói Ubersuggest miễn phí giới hạn lượt/ngày; nên kết nối Search Console để lấy truy vấn thật cho vòng 2 |
 | Xe VinFast, xe 50cc, xe đạp điện | Chưa có giá/dòng xe xác minh trong `data/business/` — chỉ viết nội dung thông tin |
