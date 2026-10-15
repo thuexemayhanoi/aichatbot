@@ -9,6 +9,6 @@
  * these constants so adding a row is one deliberate change here plus the row.
  */
 export const FOUNDATION_ROWS = 2000;
-/** BA-2001 … : SEO rows appended after the foundation (battle matrix, 15/10/2026). */
-export const SEO_ROWS = 4;
+/** BA-2001 … : SEO rows appended after the foundation (battle matrix, 15/10/2026: 4 SAFE + 2 GUIDE). */
+export const SEO_ROWS = 6;
 export const MATRIX_ROWS = FOUNDATION_ROWS + SEO_ROWS;
