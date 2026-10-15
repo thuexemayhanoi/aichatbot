@@ -6559,3 +6559,10 @@
 - 2026-10-15 QA PASS BA-2003 score=100
 - 2026-10-15 QA PASS BA-2004 score=100
 - 2026-10-15 PUBLISHED 4 (BA-2001, BA-2002, BA-2003, BA-2004) — one grouped build, pages, matrix, indexes, sitemap consistent
+- 2026-10-15 CLAIM 1: BA-2005
+- 2026-10-15 FINISH BA-2005
+- 2026-10-15 CLAIM 1: BA-2006
+- 2026-10-15 FINISH BA-2006
+- 2026-10-15 QA PASS BA-2005 score=100
+- 2026-10-15 QA PASS BA-2006 score=100
+- 2026-10-15 PUBLISHED 2 (BA-2005, BA-2006) — one grouped build, pages, matrix, indexes, sitemap consistent
