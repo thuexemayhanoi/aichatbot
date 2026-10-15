@@ -22000,6 +22000,50 @@
       "entry_sha256": "20fb8fbce478ce7921dd4a14bd21eea3b9187da5c4c948ea7b1660fb1380abe5",
       "production_status": 200,
       "verified_at": "2026-10-13T06:47:42.383Z"
+    },
+    "BA-2001": {
+      "article_id": "BA-2001",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/xe-may-dien-co-can-bang-lai-khong/",
+      "publication_sha": "eb4ef339b1de5d31db28c0d9185802a927680de9",
+      "page_sha256": "92be60486ebe491bc55d3c6a305da0765e5d66e2add84d24c9306019d6c93b83",
+      "body_sha256": "3a94b54245378195da3a43adfb5450d741eaf0195ab0c99330b298dd4ccfcee8",
+      "entry_sha256": "ceb9c5e41d8aec55d948325b8c2aa33d8c76f7f3ea85b94e48b1f72df37db07c",
+      "production_status": 200,
+      "verified_at": "2026-10-15T05:13:52.837Z"
+    },
+    "BA-2002": {
+      "article_id": "BA-2002",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/cac-loai-bang-lai-xe-may/",
+      "publication_sha": "eb4ef339b1de5d31db28c0d9185802a927680de9",
+      "page_sha256": "8d26f781ec105cb9a45fc1d60e01efe9c6079a363fc36249bf00362afe42a401",
+      "body_sha256": "92e178e83ff8193aa4b91c0ea4f3873378e3c28ba173d6d95ebd25e3c7c34a12",
+      "entry_sha256": "2c57495256eeffd4b7af0ff36af6c1f8a818a6a3ca13cab9e920064a381cfa8b",
+      "production_status": 200,
+      "verified_at": "2026-10-15T05:13:52.845Z"
+    },
+    "BA-2003": {
+      "article_id": "BA-2003",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/loi-khong-guong-xe-may/",
+      "publication_sha": "eb4ef339b1de5d31db28c0d9185802a927680de9",
+      "page_sha256": "7467d298db7f5d40014ddbbbfe5723757a5892b2756d9ac0d99646e712569b7e",
+      "body_sha256": "336b1c266e836c03e5e499a73111ffcb220deec30351174c25c1ba6dcb6a2f0c",
+      "entry_sha256": "4741009d9e0f8811d6ca556446d5ee61e39f50c73b376ddc414e88d18506a83e",
+      "production_status": 200,
+      "verified_at": "2026-10-15T05:13:52.821Z"
+    },
+    "BA-2004": {
+      "article_id": "BA-2004",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/an-toan/cam-xe-may-xang-vanh-dai-1/",
+      "publication_sha": "eb4ef339b1de5d31db28c0d9185802a927680de9",
+      "page_sha256": "f0989cdf04e0fcc39bc14c1a38c63c5b3f8a2d3a69554af7b45997d531ab8777",
+      "body_sha256": "fe97b0a1ec42b8cf9b22b8c7808cd35814cdea1e9ba3398270d1b2c79cbf25e3",
+      "entry_sha256": "06b1a7d501150dc596e7f556bcd869a9ce6c343682e17795fe426b20b6ab02f8",
+      "production_status": 200,
+      "verified_at": "2026-10-15T05:13:52.850Z"
     }
   }
 }
