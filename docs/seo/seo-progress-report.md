@@ -134,6 +134,22 @@ Cần owner: thêm ID cho 4 bài đề xuất vào ma trận (bài pháp lý vi�
 
 Nguồn không dùng được trong vòng này: OpenRush hết tín dụng (402) — chỉ dùng dữ liệu đã lấy trước; Ubersuggest MCP chưa được ủy quyền. Không có số liệu traffic/xếp hạng của website (chưa có Search Console) — KPI ghi "chưa có dữ liệu".
 
+### 9.1 Thực thi Master Battle Matrix (15/10/2026)
+
+Mọi việc trong W10 mà repo tự làm được đã làm xong; phần còn lại là việc ngoài trang (off-page) của owner. Ma trận sinh lại sau khi thực thi chỉ còn 6 việc W8 (P0 2, P1 4); 2.006 bài PUBLISHED (2.000 nền + 6 hàng SEO).
+
+| Việc trong W10 | Đã làm | Bằng chứng |
+|---|---|---|
+| W4 P0 — 4 bài pháp lý mới (legal gate) | BA-2001 xe máy điện có cần bằng lái không; BA-2002 các loại bằng lái xe máy; BA-2003 lỗi không gương xe máy; BA-2004 cấm xe máy xăng Vành đai 1 — PUBLISHED qua Blog Factory, QA 100, mọi con số từ `data/seo/legal-facts.json` (Luật 36/2024/QH15, NĐ 168/2024/NĐ-CP, Chỉ thị 20/CT-TTg, NQ 57/2025/NQ-HĐND) | `data/blog/content-matrix.csv` hàng BA-2001…2004; commit `content(seo): BA-2001 BA-2002 BA-2003 BA-2004` |
+| W4 P1/P2 — 2 bài hướng dẫn phượt | BA-2005 đi phượt bằng xe máy, BA-2006 đồ đi phượt xe máy (GUIDE, bảng + FAQ) — PUBLISHED qua Blog Factory (run 38739992809), QA 100/100; link chéo hai bài + 6 link ngữ cảnh từ bài cung đường/chạy phố | hàng BA-2005…2006; `tools/matrix-size.mjs` SEO_ROWS = 6; commit `content(seo): BA-2005 BA-2006` |
+| W6 — gap cấu trúc trang đích | 11 bảng benchmark + 1 đoạn mở đầu trả lời thẳng (kinh nghiệm thuê xe máy Hà Nội) + 1 mục pháp lý trích Luật 36/2024 cho bài app người nước ngoài; gap "ít từ"/"không ảnh" chuyển thành quan sát (không viết dài, site không dùng ảnh) | 13 bài review qua `tools/seo-body-review.mjs`, log `data/seo/body-reviews.json`; W10 không còn việc W6 |
+| W5/W9 — link nội bộ và meta cho bài mới | 17 link ngữ cảnh (9 tới hai bài pháp lý, 8 tới hai bài phượt) → không còn LOW-INBOUND; meta tiếng Việt cho 6 bài mới (hết TITLE-AUTO/DESC-CUT) | `data/seo/article-meta.json` BA-2001…2006; audit toàn site 0 lỗi, 2.136 URL sitemap |
+| W8 P0 — liên kết chéo website chị em (phần trong repo) | Trang `/lien-he/` có mục "Website cửa hàng" liên kết ngữ cảnh tới thuexemaynguyentu.com | `data/site/lien-he.body.html` |
+| Engine 06 — chốt chủ đề | 12 quyết định done trỏ tới BA-2001…2006; 3 chủ đề curated COVERED; nhóm có quyết định done được đánh giá theo bài đã đăng (KEEP); engine không còn NEW_ARTICLE | `data/seo/engine-decisions.json`, `config/seo-cold-start.json` |
+| Công cụ | KPI battle đếm bài SEO đã đăng thật và gap có thể hành động; mục tiêu đăng của factory = số hàng ma trận; 1054/1054 test | `tools/seo-battle-matrix.mjs`, `tools/factory-target.mjs` |
+
+Việc còn lại trong W10 (chỉ owner làm được, không có trong repo): hồ sơ Google Business Profile + danh bạ với NAP đồng nhất trỏ về `/lien-he/` và `/gia-thue/`; đặt liên kết từ thuexemaynguyentu.com (và blog./wiki.) tới các bài hướng dẫn/pháp lý; đề nghị các bài danh sách "địa chỉ thuê xe máy Hà Nội" trên OTA/du lịch bổ sung cửa hàng; trang đối tác tour; PR báo chí chỉ khi có số liệu thật; trả lời diễn đàn đúng chủ đề. Không mua link, không PBN.
+
 ## 10. Vòng tiếp theo (khi có dữ liệu Search Console)
 
 1. Lấy truy vấn/CTR thật theo URL → điều chỉnh title/meta cho trang có hiển thị cao nhưng CTR thấp (qua `data/seo/article-meta.json`).

@@ -31,8 +31,6 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | bao nhiêu tuổi được đi xe máy điện | có |  |  | Ngưỡng tuổi + điều kiện (câu trả lời 1 câu, rồi bảng theo loại xe) | Luật Giao thông đường bộ 2008 (hết hiệu lực) \| Nghị định 100/2019/NĐ-CP (đã thay thế) | Không | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ | có |  |
 | lỗi sử dụng điện thoại khi đi xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) \| Nghị định 168/2024/NĐ-CP \| Nghị định 100/2019/NĐ-CP (đã thay thế) | Không | /blog/an-toan/dien-thoai-khi-lai-xe-tom-tat/ | có |  |
 | bằng lái xe máy là hạng gì | có |  |  | Định nghĩa 1–2 câu + bảng phân loại | Luật Giao thông đường bộ 2008 (hết hiệu lực) \| Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | /blog/an-toan/cac-loai-bang-lai-xe-may/ | có |  |
-| đi phượt bằng xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
-| đồ đi phượt xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
 | phạt nguội xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Nghị định 168/2024/NĐ-CP | Không | /blog/an-toan/den-do-va-camera-phat-nguoi/ | có |  |
 | không có bằng lái xe máy phạt bao nhiêu | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) | Nghị định 168/2024/NĐ-CP | Không | /blog/an-toan/di-xe-khong-giay-phep/ | có |  |
 | bằng lái xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ | có |  |
@@ -49,7 +47,7 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | dịch vụ cho thuê xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | (trang bán hàng / Google Business Profile) |  | Chưa có trang đích rõ |
 | mũ bảo hiểm đạt chuẩn | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Nghị định 168/2024/NĐ-CP | Không | /blog/an-toan/mu-bao-hiem-chuan/ | có |  |
 | pin xe máy điện | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/xe-dien/pin-cua-xe-may-dien/ | có |  |
-| xe máy đi phượt | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/dia-phuong/meo-vac-dong-cao/ | có |  |
+| xe máy đi phượt | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/huong-dan/di-phuot-bang-xe-may/ | có |  |
 | bảng giá thuê xe máy | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) |  | Không | /blog/thue-xe/thue-xe-may-gia-re/ | có |  |
 | kinh nghiệm thuê xe máy hà nội | có |  |  | Các bước đánh số (3–7 bước) + lưu ý |  | Có (Hà Nội / local pack) | /blog/thue-xe/thue-xe-may-gia-re/ | có |  |
 | thuê xe máy phố cổ hà nội | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/thue-xe/thue-xe-may-gia-re/ | có |  |
@@ -59,6 +57,8 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | giá thuê xe máy hà nội | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) |  | Có (Hà Nội / local pack) | /blog/thue-xe/gia-thue-xe-may-theo-ngay/ | có |  |
 | thuê xe máy theo ngày hà nội | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/thue-xe/gia-thue-xe-may-theo-ngay/ | có |  |
 | du lịch hà nội 1 ngày bằng xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-trong-ngay/ | có |  |
+| đi phượt bằng xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/huong-dan/di-phuot-bang-xe-may/ | có |  |
+| đồ đi phượt xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/huong-dan/do-di-phuot-xe-may/ | có |  |
 | thuê xe máy theo tháng hà nội | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/thue-xe/thue-xe-may-theo-thang/ | có |  |
 | app thuê xe máy điện | có | facebook.com tngo.vn facebook.com greenfuture.tech thuexedienuat.ahamove.com |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/xe-dien/app-thue-xe-dien/ | có |  |
 | thuê xe máy điện theo tháng | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | (trang bán hàng / Google Business Profile) |  | Chưa có trang đích rõ |

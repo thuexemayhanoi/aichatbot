@@ -107,7 +107,7 @@ Kết luận: cụm **xe máy điện (K08)** là cơ hội thương mại lớn
 - **Từ khóa đầu cụm:** thủ tục thuê xe máy · giấy tờ cần khi thuê xe máy · đặt cọc thuê xe máy
 - **Ý định:** thông tin - chuyển đổi
 - **Trang trụ cột (pillar):** `/blog/huong-dan/thu-tuc-thue-xe-may/`
-- **Bài trong cụm:** 196 (33 pillar họ chủ đề, 163 bài hỗ trợ)
+- **Bài trong cụm:** 198 (35 pillar họ chủ đề, 163 bài hỗ trợ)
   - Thanh toán cọc thuê xe an toàn: bằng chứng và điều khoản — `/blog/an-toan/an-toan-khi-thanh-toan-coc/` (từ khóa: thanh toán cọc thuê xe an toàn)
   - Mua bán xe máy giấy tờ: cần những gì và sang tên thế nào — `/blog/an-toan/mua-ban-xe-may-giay-to/` (từ khóa: mua bán xe máy giấy tờ)
   - Hợp đồng thuê xe máy hợp pháp: hình thức và dấu hiệu rủi ro — `/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap/` (từ khóa: hợp đồng thuê xe máy hợp pháp)
@@ -118,9 +118,9 @@ Kết luận: cụm **xe máy điện (K08)** là cơ hội thương mại lớn
   - Đặt cọc thuê xe máy thế nào: hình thức thu và hoàn cọc — `/blog/huong-dan/dat-coc-the-nao/` (từ khóa: đặt cọc thuê xe máy thế nào)
   - Đi đèo dốc bằng xe máy thuê: kỹ thuật leo và hạ dốc an toàn — `/blog/huong-dan/deo-doc-va-xe-may-thue/` (từ khóa: đi đèo dốc bằng xe máy thuê)
   - Đi hai người trên xe máy thuê: vai trò, tốc độ và an toàn — `/blog/huong-dan/di-hai-nguoi-tren-xe-thue/` (từ khóa: đi hai người trên xe máy thuê)
+  - Đi phượt bằng xe máy: chọn xe, chia chặng, an toàn cho người mới — `/blog/huong-dan/di-phuot-bang-xe-may/` (từ khóa: đi phượt bằng xe máy)
   - Dịch công chứng giấy tờ thuê xe: giấy nào cần dịch, làm ở đâu — `/blog/huong-dan/dich-cong-chung-giay-to-thue-xe/` (từ khóa: dịch công chứng giấy tờ thuê xe)
-  - Xe máy đi đường vành đai Hà Nội: đoạn được đi và đoạn bị cấm — `/blog/huong-dan/duong-vanh-dai-ha-noi/` (từ khóa: xe máy đi đường vành đai Hà Nội)
-  - … và 21 pillar khác (xem CSV, cột Topic Cluster)
+  - … và 23 pillar khác (xem CSV, cột Topic Cluster)
 
 ### K05 — Nhận xe, trả xe và kiểm tra xe
 

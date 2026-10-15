@@ -9,14 +9,14 @@
  "serp_overlap_pairs": 14,
  "actions": {
   "FIX_FIRST": 0,
-  "NEW_ARTICLE": 2,
+  "NEW_ARTICLE": 0,
   "ADD_SECTION": 4,
   "CONSIDER_STANDALONE": 0,
   "ALIGN_META": 1,
   "REVIEW_TARGET": 0,
   "LOCAL_ONLY": 10,
-  "MONITOR": 53,
-  "KEEP": 47,
+  "MONITOR": 52,
+  "KEEP": 50,
   "NEW_ARTICLE_VERIFY": 0
  },
  "curated_topics": 3,
@@ -35,7 +35,7 @@
    "BA-0015"
   ]
  },
- "decisions": 17,
+ "decisions": 19,
  "research_queue": {
   "serp": 0,
   "volume": 0,
@@ -46,19 +46,19 @@
   "site": {
    "pass": true,
    "broken": 0,
-   "checked": 222238,
-   "sitemap": 2133,
-   "published": 2004
+   "checked": 222526,
+   "sitemap": 2136,
+   "published": 2006
   },
   "score": {
    "total": 99.7,
    "pass": true,
-   "issues": 493
+   "issues": 494
   },
   "matrix": {
-   "urls": 2133,
+   "urls": 2136,
    "by_status": {
-    "DONE": 2133,
+    "DONE": 2136,
     "KEEP": 0,
     "TECH-DONE": 0,
     "PLANNED": 0
@@ -72,15 +72,14 @@
    "counts": {
     "matrix": 2006,
     "statuses": {
-     "PUBLISHED": 2004,
-     "PLANNED": 2
+     "PUBLISHED": 2006
     },
-    "published": 2004,
-    "sitemap": 2133,
-    "uniqueSitemap": 2133,
-    "publishedInSitemap": 2004,
-    "otherSitemapUrls": 129,
-    "manifestIds": 2004,
+    "published": 2006,
+    "sitemap": 2136,
+    "uniqueSitemap": 2136,
+    "publishedInSitemap": 2006,
+    "otherSitemapUrls": 130,
+    "manifestIds": 2006,
     "gscPerformancePageRows": null
    }
   },

@@ -170,7 +170,7 @@ test('W9 architecture keeps every URL (one keyword, intent, position, conversion
 
 test('W10 master matrix: tiers by score, every item carries evidence, confidence, owner, KPI and verification; roadmap covers 30/60/90', () => {
   const { w10 } = bt;
-  assert.ok(w10.items.length >= 8 && w10.tiers.P0 >= 1, 'executed items leave the matrix; the owner off-page items (P0) stay until done');
+  assert.ok(w10.items.length >= 1 && w10.tiers.P0 >= 1, 'executed items leave the matrix; the owner off-page items (P0) stay until done');
   const ids = new Set();
   for (const i of w10.items) {
     assert.ok(!ids.has(i.id)); ids.add(i.id);

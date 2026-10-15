@@ -179,8 +179,8 @@
 <a id="xe-may-di-phuot"></a>
 ### xe máy đi phượt
 
-- Nhu cầu: 540/tháng (6/7 từ khóa đo được) · Cụm K17 · Ý định: Giao dịch – địa phương
-- Trang đích: /blog/dia-phuong/meo-vac-dong-cao/ · Có mục trong bài
+- Nhu cầu: 540/tháng (6/7 từ khóa đo được) · Cụm K04 · Ý định: Giao dịch – địa phương
+- Trang đích: /blog/huong-dan/di-phuot-bang-xe-may/ · Đã có bài · cạnh tranh nội bộ: BA-2006
 - SERP: "xe máy đi phượt"
 - Hành động: **Giữ nguyên** · điểm 0
 - Thành viên: xe máy đi phượt (170); cho thuê xe máy đi phượt (170); phượt xe máy (90); đi phượt xe máy (50); thuê xe máy đi phượt (50); thuê xe máy đi phượt hà nội (10); thuê xe phượt hà nội
@@ -260,19 +260,19 @@
 <a id="di-phuot-bang-xe-may"></a>
 ### đi phượt bằng xe máy
 
-- Nhu cầu: 80/tháng (3/3 từ khóa đo được) · Cụm K17 · Ý định: Thông tin
-- Trang đích: (bài mới) · Chưa có
+- Nhu cầu: 80/tháng (3/3 từ khóa đo được) · Cụm K04 · Ý định: Thông tin
+- Trang đích: /blog/huong-dan/di-phuot-bang-xe-may/ · Đã có bài
 - SERP: "đi phượt bằng xe máy"
-- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 80
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-15)
 - Thành viên: đi phượt bằng xe máy (50); phượt bằng xe máy (20); đi phượt bằng xe máy gì (10)
 
 <a id="do-di-phuot-xe-may"></a>
 ### đồ đi phượt xe máy
 
 - Nhu cầu: 80/tháng (2/2 từ khóa đo được) · Cụm K04 · Ý định: Hỗn hợp (thương mại + thông tin)
-- Trang đích: (bài mới) · Chưa có · trang gần nhất /blog/huong-dan/troi-mua-thue-xe-may-cho-khach-nuoc-ngoai/ (BA-0874)
+- Trang đích: /blog/huong-dan/do-di-phuot-xe-may/ · Đã có bài
 - SERP: "đồ đi phượt xe máy"
-- Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 48
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-15)
 - Thành viên: đồ đi phượt xe máy (70); đồ phượt xe máy (10)
 
 <a id="phuot-ha-giang-bang-xe-may"></a>
@@ -395,8 +395,8 @@
 <a id="xe-may-di-phuot-tot-nhat"></a>
 ### xe máy đi phượt tốt nhất
 
-- Nhu cầu: 30/tháng (1/1 từ khóa đo được) · Cụm K02 · Ý định: Thương mại (công cụ)
-- Trang đích: — · Chưa có
+- Nhu cầu: 30/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thương mại (công cụ)
+- Trang đích: /blog/huong-dan/di-phuot-bang-xe-may/ · Phủ một phần
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 2
 - Thành viên: xe máy đi phượt tốt nhất (30)
@@ -440,8 +440,8 @@
 <a id="hoi-phuot-xe-may"></a>
 ### hội phượt xe máy
 
-- Nhu cầu: 20/tháng (1/1 từ khóa đo được) · Cụm K18 · Ý định: Thông tin (công cụ)
-- Trang đích: — · Chưa có
+- Nhu cầu: 20/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
+- Trang đích: — · Chưa có · trang gần nhất /blog/huong-dan/do-di-phuot-xe-may/ (BA-2006)
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 2
 - Thành viên: hội phượt xe máy (20)
@@ -485,8 +485,8 @@
 <a id="phuot-lao-bang-xe-may"></a>
 ### phượt lào bằng xe máy
 
-- Nhu cầu: 20/tháng (2/2 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
-- Trang đích: — · Chưa có
+- Nhu cầu: 20/tháng (2/2 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
+- Trang đích: — · Chưa có · trang gần nhất /blog/huong-dan/di-phuot-bang-xe-may/ (BA-2005)
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 2
 - Thành viên: phượt lào bằng xe máy (10); đi phượt lào bằng xe máy (10)
@@ -539,8 +539,8 @@
 <a id="chon-xe-may-di-phuot"></a>
 ### chọn xe máy đi phượt
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Giao dịch (công cụ)
-- Trang đích: /blog/dia-phuong/meo-vac-dong-cao/ · Có mục trong bài
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Giao dịch (công cụ)
+- Trang đích: /blog/huong-dan/di-phuot-bang-xe-may/ · Đã có bài
 - SERP: chưa chụp
 - Hành động: **Giữ nguyên** · điểm 0
 - Thành viên: chọn xe máy đi phượt (10)
@@ -548,17 +548,17 @@
 <a id="chuan-bi-di-phuot-bang-xe-may"></a>
 ### chuẩn bị đi phượt bằng xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
-- Trang đích: — · Chưa có · trang gần nhất /blog/dia-phuong/ba-vi-cuoi-tuan/ (BA-0234)
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
+- Trang đích: /blog/huong-dan/di-phuot-bang-xe-may/ · Đã có bài
 - SERP: chưa chụp
-- Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
+- Hành động: **Giữ nguyên** · điểm 0
 - Thành viên: chuẩn bị đi phượt bằng xe máy (10)
 
 <a id="chuan-bi-do-di-phuot-xe-may"></a>
 ### chuẩn bị đồ đi phượt xe máy
 
 - Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
-- Trang đích: /blog/huong-dan/mua-sam-va-cho-do/ · Phủ một phần
+- Trang đích: /blog/huong-dan/do-di-phuot-xe-may/ · Phủ một phần
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
 - Thành viên: chuẩn bị đồ đi phượt xe máy (10)
@@ -566,8 +566,8 @@
 <a id="den-phuot-xe-may"></a>
 ### đèn phượt xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K10 · Ý định: Điều hướng (công cụ)
-- Trang đích: — · Chưa có
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Điều hướng (công cụ)
+- Trang đích: — · Chưa có · trang gần nhất /blog/huong-dan/do-di-phuot-xe-may/ (BA-2006)
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 0
 - Thành viên: đèn phượt xe máy (10)
@@ -603,7 +603,7 @@
 ### đi phượt bằng xe máy gần hà nội
 
 - Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
-- Trang đích: /blog/huong-dan/deo-doc-va-xe-may-thue-tai-ha-noi/ · Phủ một phần
+- Trang đích: /blog/huong-dan/di-phuot-bang-xe-may/ · Phủ một phần
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
 - Thành viên: đi phượt bằng xe máy gần hà nội (10)
@@ -611,8 +611,8 @@
 <a id="di-phuot-bang-xe-may-nen-di-dau"></a>
 ### đi phượt bằng xe máy nên đi đâu
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K16 · Ý định: Thông tin (công cụ)
-- Trang đích: — · Chưa có · trang gần nhất /blog/dia-phuong/dong-da-va-xe-may/ (BA-0042)
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
+- Trang đích: /blog/huong-dan/di-phuot-bang-xe-may/ · Phủ một phần
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
 - Thành viên: đi phượt bằng xe máy nên đi đâu (10)
@@ -620,7 +620,7 @@
 <a id="di-phuot-mien-bac-bang-xe-may"></a>
 ### đi phượt miền bắc bằng xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
 - Trang đích: — · Chưa có
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
@@ -746,7 +746,7 @@
 <a id="phuot-bau-trang-bang-xe-may"></a>
 ### phượt bàu trắng bằng xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
 - Trang đích: — · Chưa có
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
@@ -755,7 +755,7 @@
 <a id="phuot-binh-lieu-bang-xe-may"></a>
 ### phượt bình liêu bằng xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
 - Trang đích: — · Chưa có
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
@@ -764,8 +764,8 @@
 <a id="phuot-cao-bang-bang-xe-may"></a>
 ### phượt cao bằng bằng xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
-- Trang đích: — · Chưa có
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
+- Trang đích: — · Chưa có · trang gần nhất /blog/huong-dan/di-phuot-bang-xe-may/ (BA-2005)
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
 - Thành viên: phượt cao bằng bằng xe máy (10)
@@ -773,8 +773,8 @@
 <a id="phuot-cat-ba-bang-xe-may"></a>
 ### phượt cát bà bằng xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
-- Trang đích: — · Chưa có
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
+- Trang đích: — · Chưa có · trang gần nhất /blog/huong-dan/di-phuot-bang-xe-may/ (BA-2005)
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
 - Thành viên: phượt cát bà bằng xe máy (10)
@@ -800,8 +800,8 @@
 <a id="phuot-quanh-ha-noi-bang-xe-may"></a>
 ### phượt quanh hà nội bằng xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K12 · Ý định: Thông tin (công cụ)
-- Trang đích: — · Chưa có · trang gần nhất /blog/dia-phuong/pho-sach-ha-noi/ (BA-0114)
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
+- Trang đích: /blog/huong-dan/di-phuot-bang-xe-may/ · Phủ một phần
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
 - Thành viên: phượt quanh hà nội bằng xe máy (10)
@@ -809,8 +809,8 @@
 <a id="phuot-sapa-bang-xe-may"></a>
 ### phượt sapa bằng xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
-- Trang đích: — · Chưa có
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
+- Trang đích: — · Chưa có · trang gần nhất /blog/huong-dan/di-phuot-bang-xe-may/ (BA-2005)
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
 - Thành viên: phượt sapa bằng xe máy (10)
@@ -818,7 +818,7 @@
 <a id="phuot-tay-nguyen-bang-xe-may"></a>
 ### phượt tây nguyên bằng xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
 - Trang đích: — · Chưa có
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
@@ -827,7 +827,7 @@
 <a id="phuot-thai-lan-bang-xe-may"></a>
 ### phượt thái lan bằng xe máy
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K17 · Ý định: Thông tin (công cụ)
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin (công cụ)
 - Trang đích: — · Chưa có
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 1
@@ -863,8 +863,8 @@
 <a id="xe-may-di-phuot-cho-nu"></a>
 ### xe máy đi phượt cho nữ
 
-- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K10 · Ý định: Giao dịch (công cụ)
-- Trang đích: — · Chưa có
+- Nhu cầu: 10/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Giao dịch (công cụ)
+- Trang đích: /blog/huong-dan/di-phuot-bang-xe-may/ · Phủ một phần
 - SERP: chưa chụp
 - Hành động: **Theo dõi (nhu cầu thấp/chưa đo)** · điểm 0
 - Thành viên: xe máy đi phượt cho nữ (10)

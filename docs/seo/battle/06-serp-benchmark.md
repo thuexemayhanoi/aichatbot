@@ -2,14 +2,13 @@
 
 _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang đối thủ đã audit: 127 (5 không tải được). Sinh bởi `node tools/seo-battle-matrix.mjs` — không sửa tay._
 
-60 truy vấn có ≥ 1 trang top 10 audit được (180 trang; trung vị 1.969 từ, FAQ 12%, có bảng 33%, ảnh trung vị 13); 49 truy vấn có trang đích của website để so sánh.
+60 truy vấn có ≥ 1 trang top 10 audit được (180 trang; trung vị 1.969 từ, FAQ 12%, có bảng 33%, ảnh trung vị 13); 50 truy vấn có trang đích của website để so sánh.
 
 | Truy vấn | Trang audit | Từ (trung vị) | H2 | Ảnh | Bảng | FAQ % | Schema bài % | Nguồn luật % | Vị trí website | Trang của ta | Từ của ta | H2 của ta | FAQ của ta | Khoảng cách |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | bao nhiêu tuổi được đi xe máy điện | 4 | 1217 | 4 | 3 | 0 | 0 | 25 | 100 | — | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ | 1949 | 8 | có | (quan sát) Không có ảnh — trung vị top 3; site không dùng ảnh minh họa trong bài, không hành động |
 | lỗi sử dụng điện thoại khi đi xe máy | 3 | 1385 | 3 | 40 | 0 | 0 | 67 | 100 | — | /blog/an-toan/dien-thoai-khi-lai-xe-tom-tat/ | 1279 | 8 | có | (quan sát) Không có ảnh — trung vị top 40; site không dùng ảnh minh họa trong bài, không hành động |
 | bằng lái xe máy là hạng gì | 3 | 1414 | 3 | 4 | 0 | 33 | 67 | 67 | — | /blog/an-toan/cac-loai-bang-lai-xe-may/ | 1991 | 7 | có | (quan sát) Không có ảnh — trung vị top 4; site không dùng ảnh minh họa trong bài, không hành động |
-| đi phượt bằng xe máy | 3 | 3050 | 8 | 27 | 0 | 0 | 67 | 0 | — | (bài mới) | — | — |  | Chưa có trang đích (bài mới) |
 | thuê xe máy | 1 | 5318 | 6 | 28 | 1 | 0 | 100 | 0 | — | /blog/thue-xe/thue-xe-may-gia-re/ | 1977 | 12 | có | Ít từ hơn trung vị top (1977 < 5318) — quan sát, không viết dài để bằng đối thủ; (quan sát) Không có ảnh — trung vị top 28; site không dùng ảnh minh họa trong bài, không hành động |
 | phạt nguội xe máy | 2 | 22 | 1 | 0 | 0 | 50 | 100 | 100 | — | /blog/an-toan/den-do-va-camera-phat-nguoi/ | 1581 | 7 | có |  |
 | không có bằng lái xe máy phạt bao nhiêu | 2 | 2206 | 4 | 16 | 0 | 50 | 50 | 100 | — | /blog/an-toan/di-xe-khong-giay-phep/ | 1921 | 7 | có | (quan sát) Không có ảnh — trung vị top 16; site không dùng ảnh minh họa trong bài, không hành động |
@@ -40,6 +39,7 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | thuê xe máy cầu giấy | 2 | 2095 | 8 | 8 | 0 | 0 | 0 | 0 | — | /blog/dia-phuong/cau-giay-di-xe-may/ | 1710 | 8 | có | (quan sát) Không có ảnh — trung vị top 8; site không dùng ảnh minh họa trong bài, không hành động |
 | thuê xe máy hà đông | 1 | 2095 | 11 | 8 | 0 | 0 | 0 | 0 | — | (trang bán hàng / Google Business Profile) | — | — |  | Chưa có trang đích (bài mới) |
 | du lịch hà nội 1 ngày bằng xe máy | 2 | 1114 | 1 | 10 | 0 | 50 | 50 | 0 | — | /blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-trong-ngay/ | 1252 | 8 | có | (quan sát) Không có ảnh — trung vị top 10; site không dùng ảnh minh họa trong bài, không hành động |
+| đi phượt bằng xe máy | 3 | 3050 | 8 | 27 | 0 | 0 | 67 | 0 | — | /blog/huong-dan/di-phuot-bang-xe-may/ | 1530 | 8 | có | Ít từ hơn trung vị top (1530 < 3050) — quan sát, không viết dài để bằng đối thủ; (quan sát) Không có ảnh — trung vị top 27; site không dùng ảnh minh họa trong bài, không hành động |
 | thuê xe máy theo tháng hà nội | 3 | 1047 | 3 | 6 | 0 | 0 | 33 | 0 | — | /blog/thue-xe/thue-xe-may-theo-thang/ | 1649 | 6 | có | (quan sát) Không có ảnh — trung vị top 6; site không dùng ảnh minh họa trong bài, không hành động |
 | app thuê xe máy điện | 2 | 641 | 5 | 1 | 0 | 50 | 50 | 0 | — | /blog/xe-dien/app-thue-xe-dien/ | 1797 | 9 | có |  |
 | thuê xe máy điện theo tháng | 2 | 641 | 5 | 3 | 0 | 0 | 50 | 0 | — | (trang bán hàng / Google Business Profile) | — | — |  | Chưa có trang đích (bài mới) |
@@ -92,13 +92,6 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 - #3 trungtamthanhdat.vn (Khác) — "Phân biệt bằng lái xe A1 và A có gì khác nhau mới nhất 2025 - Trung Tâm Giáo Dục Nghề Nghiệp Lái Xe Thành Đạt"; H1: Phân biệt bằng lái xe A1 và A có gì khác nhau mới nhất 2025; 1.414 từ; H2: Bằng lái xe A1 và bằng lái xe hạng A khác nhau như thế nào? / Nên thi bằng bằng lái xe máy hạng A hay hạng A1 / Câu hỏi thường gặp; FAQ có; bảng 0; ảnh 4; schema BlogPosting; nguồn luật giao thông đường bộ; đăng 2025-09-17
 - **Trang của ta** /blog/an-toan/cac-loai-bang-lai-xe-may/ — "Các loại bằng lái xe máy 2026: hạng A1, A, B1 và bằng A1 A2 cũ"; 1.991 từ; H2: Bằng lái xe máy là hạng gì: ba hạng theo luật mới / Bằng A1 và A2 cấp trước 2025: còn dùng được không / Bằng của tôi lái được chiếc xe thuê nào / Những hiểu lầm hay gặp về bằng lái xe máy / Phần pháp lý: dữ kiện đã đối chiếu văn bản gốc / Câu hỏi thường gặp về các loại bằng lái xe máy; FAQ có; bảng 1; ảnh 0
 - Khoảng cách: (quan sát) Không có ảnh — trung vị top 4; site không dùng ảnh minh họa trong bài, không hành động
-
-### đi phượt bằng xe máy
-
-- #2 vinwonders.com (Du lịch/OTA) — "Phượt xuyên Việt bằng xe máy: Kinh nghiệm & gợi ý lịch trình – VinWonders"; H1: Phượt xuyên Việt bằng xe máy: Kinh nghiệm & gợi ý lịch trình; 4.246 từ; H2: 1. Kinh nghiệm đi phượt xuyên Việt bằng xe máy cần biết / 2. Những địa điểm phải ghé trong hành trình phượt xuyên Việt / 3. Gợi ý lịch trình phượt xuyên Việt bằng xe máy; FAQ không; bảng 2; ảnh 168; schema —; nguồn —; đăng —
-- #4 motogo.vn (Khác) — "Du lịch gần Hà Nội: Những trải nghiệm xe máy cuối tuần lý tưởng nhất - MOTOGO"; H1: Du lịch gần Hà Nội: Những trải nghiệm xe máy cuối tuần lý tưởng nhất; 3.050 từ; H2: Vì sao nên chọn du lịch bụi gần Hà Nội bằng xe máy? / Các điểm đến lý tưởng cho chuyến du lịch bụi gần Hà Nội / Chuẩn bị cho chuyến du lịch bụi gần Hà Nội bằng xe máy / Đại Việt Tourist: Dịch vụ vận tải du lịch chuyên nghiệp, xe đời mới / Phá Tam Giang: Cẩm nang khám phá trọn vẹn vẻ đẹp của Huế / Mù Cang Chải: Kinh nghiệm chinh phục bằng xe máy 2 ngày 1 đêm; FAQ không; bảng 0; ảnh 27; schema Article; nguồn —; đăng 2025-05-21
-- #5 hondathanhbinhan.com (Blog/hướng dẫn) — "Tất Tần Tật Kinh Nghiệm đi Phượt Bằng Xe Máy Bạn Cần Biết"; H1: Tất tần tật kinh nghiệm đi phượt bằng xe máy bạn cần biết; 1.564 từ; H2: Lựa chọn một chiếc xe thoải mái / Xác định lộ trình đi rõ ràng / Bảo dưỡng xe máy trước khi đi phượt / Mang theo phụ tùng sửa xe khi đi phượt bằng xe máy / Chọn trang phục phù hợp / Mang hành lý gọn, nhẹ; FAQ không; bảng 0; ảnh 10; schema Article, BlogPosting; nguồn —; đăng 2023-04-04
-- Trang của ta: (bài mới)
 
 ### thuê xe máy
 
@@ -258,3 +251,11 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 - #3 www.otosaigon.com (Diễn đàn) — "Chia sẻ 8 điểm cho thuê xe máy uy tín Hà Nội | Otosaigon"; H1: Chia sẻ 8 điểm cho thuê xe máy uy tín Hà Nội; 2.759 từ; H2: —; FAQ không; bảng 0; ảnh 6; schema —; nguồn —; đăng —
 - **Trang của ta** /blog/thue-xe/thue-xe-may-gia-re/ — "Thuê xe máy giá rẻ: tính tổng chi phí và tránh phí phát sinh"; 1.977 từ; H2: Giá niêm yết chỉ là một phần của bài toán / Bảng giá tham khảo theo ngày, tuần và tháng / Các khoản tạo nên tổng chi phí của chuyến đi / Cách tính tổng chi phí cho một chuyến ba ngày / Thuê tuần và tháng: khi nào rẻ hơn hẳn / Nhiên liệu là khoản chi dễ bị bỏ quên nhất; FAQ có; bảng 1; ảnh 0
 - Khoảng cách: (quan sát) Không có ảnh — trung vị top 8; site không dùng ảnh minh họa trong bài, không hành động
+
+### thuê xe máy tự lái hà nội
+
+- #1 motogo.vn (Doanh nghiệp (trang bán hàng)) — "Thuê xe máy Hà Nội: Xe mới 100%, giao tận nơi, giá tốt nhất"; H1: Thuê xe máy tại Hà Nội; 3.968 từ; H2: Bảng giá thuê xe máy Hà Nội / Hệ thống cửa hàng tại Hà Nội / Thủ tục thuê xe / VÌ SAO NÊN CHỌN THUÊ XE MÁY CỦA MOTOGO? / Thuê xe máy ở Hà Nội trả xe tại một tỉnh khác / Thuê xe máy tại Hà Nội giao tận nơi; FAQ có; bảng 4; ảnh 85; schema —; nguồn —; đăng —
+- #3 hanoibiker.com (Doanh nghiệp (trang bán hàng)) — "THUÊ XE MÁY HÀ NỘI MIỄN CỌC - GIAO XE TẬN NƠI"; H1: Thuê xe máy Hà Nội; 1.870 từ; H2:  /  / Hanoibiker / Cho thuê xe máy số: wave, sirius, Jupiter / Cho thuê xe tay ga: Airblade, Vision, Lead / Thuê xe máy điện vinfast; FAQ không; bảng 0; ảnh 15; schema —; nguồn luật giao thông đường bộ; đăng 2020-03-01
+- #4 mototrip.vn (Doanh nghiệp (trang bán hàng)) — "MOTOTRIP - Dịch vụ cho thuê xe máy chuyên nghiệp hà nội"; H1: dịch vụ thuê xe máy; 802 từ; H2: THỦ TỤC THUÊ XE / THUÊ XE MÁY, ĐẾN NGAY Mototrip; FAQ không; bảng 0; ảnh 19; schema —; nguồn —; đăng 2024-03-28
+- **Trang của ta** /blog/thue-xe/thue-xe-may-gia-re/ — "Thuê xe máy giá rẻ: tính tổng chi phí và tránh phí phát sinh"; 1.977 từ; H2: Giá niêm yết chỉ là một phần của bài toán / Bảng giá tham khảo theo ngày, tuần và tháng / Các khoản tạo nên tổng chi phí của chuyến đi / Cách tính tổng chi phí cho một chuyến ba ngày / Thuê tuần và tháng: khi nào rẻ hơn hẳn / Nhiên liệu là khoản chi dễ bị bỏ quên nhất; FAQ có; bảng 1; ảnh 0
+- Khoảng cách: (quan sát) Không có ảnh — trung vị top 15; site không dùng ảnh minh họa trong bài, không hành động
