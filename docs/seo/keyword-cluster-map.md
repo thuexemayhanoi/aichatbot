@@ -198,9 +198,10 @@ Kết luận: cụm **xe máy điện (K08)** là cơ hội thương mại lớn
 - **Từ khóa đầu cụm:** bằng lái khi thuê xe máy · luật giao thông cho người thuê xe · thuê xe máy không cần bằng lái
 - **Ý định:** thông tin - pháp lý (legal gate)
 - **Trang trụ cột (pillar):** `/blog/an-toan/`
-- **Bài trong cụm:** 101 (18 pillar họ chủ đề, 83 bài hỗ trợ)
+- **Bài trong cụm:** 103 (20 pillar họ chủ đề, 83 bài hỗ trợ)
   - Ai chịu phạt khi đi xe thuê: người lái, cửa hàng hay hợp đồng — `/blog/an-toan/ai-chiu-phat-khi-di-xe-thue/` (từ khóa: ai chịu phạt khi đi xe thuê)
   - Bằng lái A1 A2 khác gì: hạng hiện hành và điều cần đối chiếu — `/blog/an-toan/bang-lai-a1-a2-khac-gi/` (từ khóa: bằng lái a1 a2 khác gì)
+  - Các loại bằng lái xe máy 2026: hạng A1, A, B1 và bằng A1 A2 cũ — `/blog/an-toan/cac-loai-bang-lai-xe-may/` (từ khóa: các loại bằng lái xe máy)
   - Cầm đồ xe máy đúng luật: điều kiện hợp pháp và lưu ý xe thuê — `/blog/an-toan/cam-do-xe-may-dung-luat/` (từ khóa: cầm đồ xe máy đúng luật)
   - Camera phạt nguội khi thuê xe: mức phạt và trách nhiệm — `/blog/an-toan/camera-phat-nguoi-khi-thue-xe/` (từ khóa: camera phạt nguội khi thuê xe)
   - Vượt đèn đỏ và camera phạt nguội xe máy: quy định, cách tránh — `/blog/an-toan/den-do-va-camera-phat-nguoi/` (từ khóa: vượt đèn đỏ và camera phạt nguội xe máy)
@@ -210,15 +211,14 @@ Kết luận: cụm **xe máy điện (K08)** là cơ hội thương mại lớn
   - Kiểm định xe máy: quy định hiện nay và lưu ý cho người thuê — `/blog/an-toan/kiem-dinh-xe-may/` (từ khóa: kiểm định xe máy)
   - Quy tắc làn đường và nhường đường: Điều 13, 14 và mức xử phạt — `/blog/an-toan/lan-duong-va-quy-tac-nhuong/` (từ khóa: quy tắc làn đường và nhường đường)
   - Luật giao thông đường bộ cơ bản: điều người thuê xe cần nắm — `/blog/an-toan/luat-giao-thong-duong-bo-co-ban/` (từ khóa: luật giao thông đường bộ cơ bản)
-  - Mức phạt nồng độ cồn xe máy: ba mức, trừ điểm, tước bằng — `/blog/an-toan/nong-do-con-khi-lai-xe/` (từ khóa: mức phạt nồng độ cồn xe máy)
-  - … và 6 pillar khác (xem CSV, cột Topic Cluster)
+  - … và 8 pillar khác (xem CSV, cột Topic Cluster)
 
 ### K10 — An toàn khi lái xe máy
 
 - **Từ khóa đầu cụm:** kinh nghiệm lái xe máy an toàn ở Hà Nội · mũ bảo hiểm chuẩn
 - **Ý định:** thông tin
 - **Trang trụ cột (pillar):** `/blog/an-toan/`
-- **Bài trong cụm:** 122 (23 pillar họ chủ đề, 99 bài hỗ trợ)
+- **Bài trong cụm:** 123 (24 pillar họ chủ đề, 99 bài hỗ trợ)
   - Đi xe máy khi có bão: dừng hay tiếp tục, cách đi an toàn — `/blog/an-toan/bao-va-xe-may/` (từ khóa: đi xe máy khi có bão)
   - Chở trẻ em trên xe máy: quy định, điều kiện an toàn, thuê xe — `/blog/an-toan/cho-tre-em-tren-xe-may/` (từ khóa: chở trẻ em trên xe máy)
   - Đèn xe máy và an toàn khi chạy đêm: quy định và kiểm tra — `/blog/an-toan/den-xe-va-an-toan-dem/` (từ khóa: đèn xe máy và an toàn khi chạy đêm)
@@ -228,10 +228,10 @@ Kết luận: cụm **xe máy điện (K08)** là cơ hội thương mại lớn
   - Gương chiếu hậu xe máy an toàn: quy định và cách chỉnh — `/blog/an-toan/guong-chieu-hau-an-toan/` (từ khóa: gương chiếu hậu xe máy an toàn)
   - Khám sức khỏe lái xe: điều kiện pháp lý và cách tự kiểm tra — `/blog/an-toan/kham-suc-khoe-lai-xe/` (từ khóa: khám sức khỏe lái xe)
   - Kỹ năng phanh gấp xe máy: bốn bước luyện cú phanh an toàn — `/blog/an-toan/ky-nang-phanh-gap/` (từ khóa: kỹ năng phanh gấp)
+  - Lỗi không gương xe máy phạt bao nhiêu? Mức phạt Nghị định 168 — `/blog/an-toan/loi-khong-guong-xe-may/` (từ khóa: lỗi không gương xe máy)
   - Mệt mỏi khi lái xe đường dài: quy định và cách nghỉ giữa đường — `/blog/an-toan/met-moi-khi-lai-duong-dai/` (từ khóa: mệt mỏi khi lái xe đường dài)
   - Mũ bảo hiểm đạt chuẩn: cách nhận biết dấu CR và cài quai đúng — `/blog/an-toan/mu-bao-hiem-chuan/` (từ khóa: mũ bảo hiểm đạt chuẩn)
-  - Lái xe máy khi mưa lớn: quy định, chuẩn bị và đường ướt — `/blog/an-toan/mua-lon-va-lai-xe/` (từ khóa: lái xe máy khi mưa lớn)
-  - … và 11 pillar khác (xem CSV, cột Topic Cluster)
+  - … và 12 pillar khác (xem CSV, cột Topic Cluster)
 
 ### K11 — Bảo hiểm, tai nạn, quyền lợi người thuê
 
@@ -380,7 +380,8 @@ Kết luận: cụm **xe máy điện (K08)** là cơ hội thương mại lớn
 - **Từ khóa đầu cụm:** xe thuê bị hỏng phải làm sao · đổ xăng xe thuê
 - **Ý định:** thông tin
 - **Trang trụ cột (pillar):** `/blog/huong-dan/`
-- **Bài trong cụm:** 38 (6 pillar họ chủ đề, 32 bài hỗ trợ)
+- **Bài trong cụm:** 39 (7 pillar họ chủ đề, 32 bài hỗ trợ)
+  - Cấm xe máy xăng Vành đai 1 từ 1/7/2026: lộ trình và chọn xe thuê — `/blog/an-toan/cam-xe-may-xang-vanh-dai-1/` (từ khóa: cấm xe máy xăng vành đai 1)
   - Bản đồ và định vị khi thuê xe máy: dựng tuyến, đánh dấu điểm — `/blog/huong-dan/ban-do-va-dinh-vi-khi-thue-xe/` (từ khóa: bản đồ và định vị khi thuê xe máy)
   - Đi chợ bằng xe máy thuê: chọn giờ, gửi xe và chở hàng an toàn — `/blog/huong-dan/di-cho-bang-xe-thue/` (từ khóa: đi chợ bằng xe máy thuê)
   - Đỗ xe máy thuê ở Hà Nội: chỗ nào được đỗ, chỗ nào không — `/blog/huong-dan/do-xe-o-ha-noi/` (từ khóa: đỗ xe máy thuê ở Hà Nội)

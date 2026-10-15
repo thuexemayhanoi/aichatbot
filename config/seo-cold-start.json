@@ -350,7 +350,7 @@
     {
       "topic": "Vùng phát thải thấp trong Vành đai 1 (Hà Nội) và người thuê xe máy xăng",
       "cluster": "K12",
-      "status": "GAP",
+      "status": "COVERED",
       "evidence_query": "cấm xe máy xăng vành đai 1",
       "observed": "SERP 2026-10-14 toàn tin tức/hỏi đáp pháp luật về lộ trình hạn chế xe máy xăng trong Vành đai 1; kho bài hiện chỉ nhắc Vành đai 1 như tuyến đường, chưa có bài riêng cho người thuê xe. SERP \"cấm xe máy\" (1.000/tháng, 2026-10-14): cả 10 kết quả đầu nói về lộ trình hạn chế xe máy xăng trong Vành đai 1, nên nhu cầu của chủ đề được đo qua từ khóa này.",
       "sources_to_verify": [
@@ -362,12 +362,14 @@
       "keywords": [
         "cấm xe máy xăng vành đai 1",
         "cấm xe máy"
-      ]
+      ],
+      "article": "BA-2004",
+      "published": "2026-10-15"
     },
     {
       "topic": "Xe máy điện: có cần bằng lái không và bao nhiêu tuổi được đi",
       "cluster": "K09",
-      "status": "GAP",
+      "status": "COVERED",
       "evidence_query": "xe máy điện có cần bằng lái không",
       "keywords": [
         "xe máy điện có cần bằng lái không",
@@ -382,12 +384,14 @@
       "sources_to_verify": [
         "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Luat-trat-tu-an-toan-giao-thong-duong-bo-2024-so-36-2024-QH15-444251.aspx"
       ],
-      "action": "Đề xuất bài mới (EV hoặc SAFE, cần owner thêm ID vào ma trận); bài pháp lý: đối chiếu Điều 57 (hạng A1/A theo công suất động cơ điện) và Điều 59 (độ tuổi) Luật 36/2024/QH15 trước khi viết."
+      "action": "Đề xuất bài mới (EV hoặc SAFE, cần owner thêm ID vào ma trận); bài pháp lý: đối chiếu Điều 57 (hạng A1/A theo công suất động cơ điện) và Điều 59 (độ tuổi) Luật 36/2024/QH15 trước khi viết.",
+      "article": "BA-2001",
+      "published": "2026-10-15"
     },
     {
       "topic": "Các loại bằng lái xe máy theo Luật 36/2024/QH15: hạng A1, A, B1 và bằng A1, A2 cấp trước 2025",
       "cluster": "K09",
-      "status": "GAP",
+      "status": "COVERED",
       "evidence_query": "các loại bằng lái xe máy",
       "observed": "SERP 2026-10-14 cho \"các loại bằng lái xe máy\" và \"bằng lái xe máy là hạng gì\": văn bản pháp luật, báo và trường lái với bài tổng hợp các hạng; top 10 chỉ trùng 1 URL với \"bằng lái a1 a2 khác gì\", nên đây là ý định tổng quan riêng. Kho bài có cặp so sánh A1–A2 (BA-0035 và biến thể) và các bài A1 khi thuê xe, chưa có bài tổng quan các hạng.",
       "sources_to_verify": [
@@ -398,7 +402,9 @@
         "các loại bằng lái xe máy",
         "bằng lái xe máy là hạng gì",
         "bằng lái xe máy hạng a"
-      ]
+      ],
+      "article": "BA-2002",
+      "published": "2026-10-15"
     }
   ],
   "intent_markers": {

@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { publicationBudget, readPublicationBudget } from '../../tools/factory-target.mjs';
+import { publicationBudget, readPublicationBudget, PUBLICATION_TARGET } from '../../tools/factory-target.mjs';
+import { FOUNDATION_ROWS, MATRIX_ROWS } from '../../tools/matrix-size.mjs';
+
+const FOUNDATION = FOUNDATION_ROWS; // the synthetic corpora below model the frozen 2.000-row foundation
 
 const corpus = (n) => {
   const rows = Array.from({ length: n }, (_, i) => ({ article_id: `BA-${i}`, slug: `article-${i}`, status: 'PUBLISHED' }));
@@ -9,12 +12,13 @@ const corpus = (n) => {
 
 test('the final reservation cannot overshoot 2000 and completion requires exactly 2000 publications', () => {
   for (const n of [0, 304, 1990, 1998, 1999, 2000]) {
-    const budget = publicationBudget(...corpus(n));
+    const budget = publicationBudget(...corpus(n), FOUNDATION);
     assert.equal(budget.remaining, 2000 - n);
     assert.equal(budget.complete, n === 2000);
     assert.ok(n + Math.min(18, budget.remaining) <= 2000);
   }
-  assert.throws(() => publicationBudget(...corpus(2001)), /target exceeded/);
+  assert.throws(() => publicationBudget(...corpus(2001), FOUNDATION), /target exceeded/);
+  assert.equal(PUBLICATION_TARGET, MATRIX_ROWS, 'the live target follows the matrix size (foundation + SEO rows)');
 });
 
 test('duplicate or missing publication evidence fails closed rather than counting toward completion', () => {
@@ -28,16 +32,16 @@ test('duplicate or missing publication evidence fails closed rather than countin
 test('publisher staging before the factory checkpoint is valid but never counted as PUBLISHED', () => {
   const [rows, entries] = corpus(304);
   const staged = { article_id: 'BA-0305', slug: 'next-article', status: 'PLANNED' };
-  const budget = publicationBudget([...rows, staged], [...entries, { article_id: staged.article_id, slug: staged.slug }]);
+  const budget = publicationBudget([...rows, staged], [...entries, { article_id: staged.article_id, slug: staged.slug }], FOUNDATION);
   assert.equal(budget.published, 304);
   assert.equal(budget.remaining, 1696);
   assert.equal(budget.complete, false);
   const [doneRows, doneEntries] = corpus(2000);
-  assert.throws(() => publicationBudget([...doneRows, staged], [...doneEntries, staged]), /staged manifest/);
+  assert.throws(() => publicationBudget([...doneRows, staged], [...doneEntries, staged], FOUNDATION), /staged manifest/);
 });
 
 test('real repository target inspection is read-only and consistent with publication truth', () => {
   const budget = readPublicationBudget();
-  assert.ok(budget.published >= 304 && budget.published <= 2000);
+  assert.ok(budget.published >= 304 && budget.published <= MATRIX_ROWS);
   assert.equal(budget.remaining + budget.published, budget.target);
 });

@@ -1,6 +1,6 @@
 # Topical map — danh mục → cụm → pillar → nhóm từ khóa
 
-> Cây chủ đề từ 2000 bài đã đăng (cụm theo `docs/seo/seo-master-matrix.json`), pillar theo `data/seo/keyword-clusters.json`, nhóm từ khóa và nhu cầu từ engine. Bảng số liệu theo cụm: [../cold-start/topical-map.md](../cold-start/topical-map.md).
+> Cây chủ đề từ 2004 bài đã đăng (cụm theo `docs/seo/seo-master-matrix.json`), pillar theo `data/seo/keyword-clusters.json`, nhóm từ khóa và nhu cầu từ engine. Bảng số liệu theo cụm: [../cold-start/topical-map.md](../cold-start/topical-map.md).
 
 ## Ứng dụng thuê xe máy (/blog/app/ · 350 bài)
 
@@ -55,24 +55,26 @@
   - [kiểm tra xe máy khi thuê](keyword-groups.md#kiem-tra-xe-may-khi-thue) (—) → /blog/huong-dan/kiem-tra-xe-khi-nhan/ · Đã có bài · Giữ nguyên
 - **K06 Giao xe tận nơi, tận khách sạn** — pillar /chinh-sach/ · 32 bài · 1 nhóm từ khóa · 10/tháng đo được
   - [những địa điểm đi phượt bằng xe máy](keyword-groups.md#nhung-dia-diem-di-phuot-bang-xe-may) (10) → /blog/thue-xe/phi-giao-xe-thue-gia-tot-nhat/ · Phủ một phần · Theo dõi (nhu cầu thấp/chưa đo)
-- **K20 Bảo dưỡng, sự cố và xử lý khi đi đường** — pillar /blog/huong-dan/ · 38 bài · 3 nhóm từ khóa · 20/tháng đo được
+- **K20 Bảo dưỡng, sự cố và xử lý khi đi đường** — pillar /blog/huong-dan/ · 39 bài · 5 nhóm từ khóa · 1.020/tháng đo được
+  - [cấm xe máy](keyword-groups.md#cam-xe-may) (1.000) → /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ · Đã có bài · Giữ nguyên
   - [đi từ hà nội về hải phòng bằng xe máy](keyword-groups.md#di-tu-ha-noi-ve-hai-phong-bang-xe-may) (10) → chưa có trang · Chưa có · Theo dõi (nhu cầu thấp/chưa đo)
   - [đi từ hà nội về thái bình bằng xe máy](keyword-groups.md#di-tu-ha-noi-ve-thai-binh-bang-xe-may) (10) → chưa có trang · Chưa có · Theo dõi (nhu cầu thấp/chưa đo)
+  - [cấm xe máy xăng vành đai 1](keyword-groups.md#cam-xe-may-xang-vanh-dai-1) (—) → /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ · Đã có bài · Giữ nguyên
   - [xe thuê bị hỏng phải làm sao](keyword-groups.md#xe-thue-bi-hong-phai-lam-sao) (—) → /blog/huong-dan/sua-xe-nho-khi-dang-thue-cho-nguoi-moi/ · Đã có bài · Giữ nguyên
 
-## An toàn / pháp lý (/blog/an-toan/ · 250 bài)
+## An toàn / pháp lý (/blog/an-toan/ · 254 bài)
 
-- **K09 Bằng lái và luật giao thông** — pillar /blog/an-toan/ · 101 bài · 14 nhóm từ khóa · 75.550/tháng đo được
+- **K09 Bằng lái và luật giao thông** — pillar /blog/an-toan/ · 103 bài · 14 nhóm từ khóa · 75.550/tháng đo được
   - [phạt nguội xe máy](keyword-groups.md#phat-nguoi-xe-may) (27.100) → /blog/an-toan/den-do-va-camera-phat-nguoi/ · Đã có bài · Giữ nguyên
   - [không bằng lái xe máy phạt bao nhiêu](keyword-groups.md#khong-bang-lai-xe-may-phat-bao-nhieu) (25.130) → /blog/an-toan/di-xe-khong-giay-phep/ · Đã có bài · Giữ nguyên
   - [bằng lái xe máy](keyword-groups.md#bang-lai-xe-may) (8.100) → /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ · Đã có bài · Giữ nguyên
   - [mức phạt nồng độ cồn xe máy](keyword-groups.md#muc-phat-nong-do-con-xe-may) (5.400) → /blog/an-toan/nong-do-con-khi-lai-xe/ · Đã có bài · Giữ nguyên
-  - [xe máy điện có cần bằng lái không](keyword-groups.md#xe-may-dien-co-can-bang-lai-khong) (3.270) → (bài mới) · Chưa có · Bài mới sau khi đối chiếu văn bản gốc
-  - [bao nhiêu tuổi được đi xe máy điện](keyword-groups.md#bao-nhieu-tuoi-duoc-di-xe-may-dien) (3.080) → (bài mới) · Chưa có · Bài mới sau khi đối chiếu văn bản gốc
+  - [xe máy điện có cần bằng lái không](keyword-groups.md#xe-may-dien-co-can-bang-lai-khong) (3.270) → /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ · Đã có bài · Giữ nguyên
+  - [bao nhiêu tuổi được đi xe máy điện](keyword-groups.md#bao-nhieu-tuoi-duoc-di-xe-may-dien) (3.080) → /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ · Phủ một phần · Bổ sung mục/FAQ vào bài đích (review body)
   - Chủ đề mới (cần đối chiếu): Xe máy điện: có cần bằng lái không và bao nhiêu tuổi được đi
   - Chủ đề mới (cần đối chiếu): Các loại bằng lái xe máy theo Luật 36/2024/QH15: hạng A1, A, B1 và bằng A1, A2 cấp trước 2025
-- **K10 An toàn khi lái xe máy** — pillar /blog/an-toan/ · 122 bài · 5 nhóm từ khóa · 3.490/tháng đo được
-  - [lỗi không gương xe máy](keyword-groups.md#loi-khong-guong-xe-may) (2.400) → /blog/an-toan/guong-chieu-hau-an-toan/ · Có mục trong bài · Cân nhắc tách bài riêng
+- **K10 An toàn khi lái xe máy** — pillar /blog/an-toan/ · 123 bài · 5 nhóm từ khóa · 3.490/tháng đo được
+  - [lỗi không gương xe máy](keyword-groups.md#loi-khong-guong-xe-may) (2.400) → /blog/an-toan/loi-khong-guong-xe-may/ · Đã có bài · Giữ nguyên
   - [mũ bảo hiểm đạt chuẩn](keyword-groups.md#mu-bao-hiem-dat-chuan) (590) → /blog/an-toan/mu-bao-hiem-chuan/ · Đã có bài · Giữ nguyên
   - [lỗi sử dụng điện thoại khi đi xe máy](keyword-groups.md#loi-su-dung-dien-thoai-khi-di-xe-may) (480) → /blog/an-toan/dien-thoai-khi-lai-xe-tom-tat/ · Phủ một phần · Bổ sung mục/FAQ vào bài đích (review body)
   - [đèn phượt xe máy](keyword-groups.md#den-phuot-xe-may) (10) → chưa có trang · Chưa có · Theo dõi (nhu cầu thấp/chưa đo)
@@ -85,13 +87,13 @@
 
 ## Địa phương / du lịch (/blog/dia-phuong/ · 400 bài)
 
-- **K12 Phố cổ – Hoàn Kiếm** — pillar /blog/dia-phuong/di-pho-co-bang-xe-may/ · 84 bài · 8 nhóm từ khóa · 1.150/tháng đo được
-  - [cấm xe máy](keyword-groups.md#cam-xe-may) (1.000) → (bài mới) · Chưa có · Bài mới sau khi đối chiếu văn bản gốc
+- **K12 Phố cổ – Hoàn Kiếm** — pillar /blog/dia-phuong/di-pho-co-bang-xe-may/ · 84 bài · 6 nhóm từ khóa · 150/tháng đo được
   - [du lịch hà nội 1 ngày bằng xe máy](keyword-groups.md#du-lich-ha-noi-1-ngay-bang-xe-may) (100) → /blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-trong-ngay/ · Đã có bài · Giữ nguyên
   - [du lịch hà nội bằng xe máy](keyword-groups.md#du-lich-ha-noi-bang-xe-may) (40) → /blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may/ · Đã có bài · Giữ nguyên
   - [phượt quanh hà nội bằng xe máy](keyword-groups.md#phuot-quanh-ha-noi-bang-xe-may) (10) → chưa có trang · Chưa có · Theo dõi (nhu cầu thấp/chưa đo)
-  - [cấm xe máy xăng vành đai 1](keyword-groups.md#cam-xe-may-xang-vanh-dai-1) (—) → (bài mới) · Chưa có · Bài mới sau khi đối chiếu văn bản gốc
   - [đi phố cổ hà nội bằng xe máy](keyword-groups.md#di-pho-co-ha-noi-bang-xe-may) (—) → /blog/dia-phuong/ca-phe-pho-co/ · Phủ một phần · Theo dõi (nhu cầu thấp/chưa đo)
+  - [du lịch biển gần hà nội bằng xe máy](keyword-groups.md#du-lich-bien-gan-ha-noi-bang-xe-may) (0) → chưa có trang · Chưa có · Theo dõi (nhu cầu thấp/chưa đo)
+  - [xe điện bờ hồ](keyword-groups.md#xe-dien-bo-ho) (—) → /blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may/ · Có mục trong bài · Giữ nguyên
   - Chủ đề mới (cần đối chiếu): Vùng phát thải thấp trong Vành đai 1 (Hà Nội) và người thuê xe máy xăng
 - **K13 Ba Đình – Lăng Bác – Hoàng thành** — pillar /blog/dia-phuong/ · 35 bài · 2 nhóm từ khóa · 10/tháng đo được
   - [đi chơi gần hà nội bằng xe máy trong ngày](keyword-groups.md#di-choi-gan-ha-noi-bang-xe-may-trong-ngay) (10) → chưa có trang · Chưa có · Theo dõi (nhu cầu thấp/chưa đo)

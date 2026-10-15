@@ -6,8 +6,8 @@
 
 ## Phủ URL
 
-- Tổng URL trong sitemap đã audit: **2129** (100%) — trong đó **2000** bài viết.
-- Bài viết: 2000
+- Tổng URL trong sitemap đã audit: **2133** (100%) — trong đó **2004** bài viết.
+- Bài viết: 2004
 - Trang chủ (Agent): 1
 - Trang chính sách thuê xe: 1
 - Trang chuyển đổi (giá): 1
@@ -61,12 +61,12 @@
 | Priority | Số URL |
 |---|---:|
 | P0 — chặn crawl/index/truy cập | 133 |
-| P1 — chuyển đổi/SEO tiềm năng cao | 1962 |
+| P1 — chuyển đổi/SEO tiềm năng cao | 1966 |
 | P2 — semantic/topical/chất lượng nội dung | 34 |
 
 | Status | Ý nghĩa | Số URL |
 |---|---|---:|
-| DONE | Không còn vấn đề kỹ thuật lẫn nội dung | 2129 |
+| DONE | Không còn vấn đề kỹ thuật lẫn nội dung | 2133 |
 | KEEP | Đã xem xét, giữ nguyên có chủ đích (bài > 2.000 từ — không cắt nội dung có giá trị) | 0 |
 | TECH-DONE | Title/meta/link/schema đã tối ưu; còn khoảng trống nội dung chờ review body (`tools/seo-body-review.mjs`) | 0 |
 | PLANNED | Còn vấn đề kỹ thuật chưa xử lý | 0 |
@@ -85,13 +85,13 @@ Tổng 107 batch; 0 batch còn hạng mục chưa DONE (PLANNED/TECH-DONE/KEEP).
 | SEO-B006 | 20 | 20 | 0 | 0 | 0 | /blog/thue-xe/thue-xe-50cc-gia-tot-nhat/ |
 | SEO-B007 | 20 | 20 | 0 | 0 | 0 | /blog/xe-dien/cach-giu-pin-ben-khi-thue-xe-dien-dai-han/ |
 | SEO-B008 | 20 | 20 | 0 | 0 | 0 | /blog/cong-cu-huong-dan/ |
-| SEO-B009 | 20 | 20 | 0 | 0 | 0 | /blog/an-toan/di-nhom-an-toan/ |
-| SEO-B010 | 20 | 20 | 0 | 0 | 0 | /blog/an-toan/nong-do-con-khi-lai-xe/ |
-| SEO-B011 | 20 | 20 | 0 | 0 | 0 | /blog/app/app-thue-xe-may-la-gi/ |
-| SEO-B012 | 20 | 20 | 0 | 0 | 0 | /blog/app/hoi-dap-voi-agent-thue-xe/ |
-| SEO-B013 | 20 | 20 | 0 | 0 | 0 | /blog/app/tro-ly-thue-xe-may-la-gi/ |
-| SEO-B014 | 20 | 20 | 0 | 0 | 0 | /blog/dia-phuong/ca-phe-trung-va-xe-may/ |
-| SEO-B015 | 20 | 20 | 0 | 0 | 0 | /blog/dia-phuong/gia-lam-va-long-bien/ |
+| SEO-B009 | 20 | 20 | 0 | 0 | 0 | /blog/an-toan/deo-non-dung-cach/ |
+| SEO-B010 | 20 | 20 | 0 | 0 | 0 | /blog/an-toan/nghia-vu-cua-ben-cho-thue/ |
+| SEO-B011 | 20 | 20 | 0 | 0 | 0 | /blog/app/app-ho-tro-thu-tuc-thue-xe/ |
+| SEO-B012 | 20 | 20 | 0 | 0 | 0 | /blog/app/dat-xe-bang-ung-dung/ |
+| SEO-B013 | 20 | 20 | 0 | 0 | 0 | /blog/app/tim-xe-may-thue-bang-ung-dung/ |
+| SEO-B014 | 20 | 20 | 0 | 0 | 0 | /blog/dia-phuong/banh-cuon-va-hanh-trinh/ |
+| SEO-B015 | 20 | 20 | 0 | 0 | 0 | /blog/dia-phuong/dong-da-va-xe-may/ |
 | … | | | | | | xem CSV cột Batch |
 
 ## Định nghĩa mã vấn đề

@@ -71,11 +71,20 @@ test('matrix actions follow the evidence: local SERPs, reviewed topics, exact ti
   // Transactional-local SERP (driving schools / shops in the local pack): no blog work.
   const licence = groupOf('bằng lái xe máy');
   assert.ok(licence.serp.local && ['LOCAL_ONLY', 'KEEP'].includes(licence.action), licence.action);
-  // Curated (reviewed) topics are new articles after checking the official text, in their own cluster.
+  // Curated (reviewed) topics are new articles after checking the official text, in their own cluster —
+  // until the article exists: a done decision with a published target settles the group on that page.
   const ev = groupOf('xe máy điện có cần bằng lái không');
-  assert.equal(ev.action, 'NEW_ARTICLE_VERIFY');
+  assert.equal(ev.decision?.status, 'done');
+  assert.equal(ev.target.id, 'BA-2001');
+  assert.equal(ev.action, 'KEEP');
   assert.equal(ev.cluster, 'K09');
-  assert.equal(landing(ev), '(bài mới)');
+  assert.equal(landing(ev), ev.target.url);
+  const pending = engine.curated.filter((t) => !['done', 'rejected', 'deferred'].includes(t.decision?.status));
+  for (const t of pending) for (const gid of t.groups) {
+    const g = engine.groups.find((x) => x.id === gid);
+    assert.equal(g.action, 'NEW_ARTICLE_VERIFY', `${gid}: open reviewed topic`);
+    assert.equal(landing(g), '(bài mới)');
+  }
   // A page whose title already carries the phrase is kept.
   const drink = groupOf('mức phạt nồng độ cồn xe máy');
   assert.equal(drink.action, 'KEEP');
@@ -117,7 +126,8 @@ test('proposals are owner-only rows: PROPOSED ids, new slugs, legal gate, matrix
   const mh = matrix[0];
   const slugs = new Set(matrix.slice(1).map((r) => r[mh.indexOf('slug')]));
   const ids = new Set(matrix.slice(1).map((r) => r[mh.indexOf('article_id')]));
-  assert.ok(rows.length > 1, 'at least one proposal');
+  // The queue may be empty once every measured gap has its article (owner added the ids); rows that exist stay owner-only.
+  assert.deepEqual(head.slice(0, 4), ['article_id', 'batch_id', 'category', 'status']);
   for (const r of rows.slice(1)) {
     assert.match(col(r, 'article_id'), /^PROPOSED-\d{3}$/);
     assert.ok(!ids.has(col(r, 'article_id')) && !slugs.has(col(r, 'slug')), `${col(r, 'slug')}: never collides with the real matrix`);

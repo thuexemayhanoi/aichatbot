@@ -47,7 +47,7 @@
 - Nhu cầu: 25.130/tháng (11/11 từ khóa đo được) · Cụm K09 · Ý định: Thông tin
 - Trang đích: /blog/an-toan/di-xe-khong-giay-phep/ · Đã có bài · cạnh tranh nội bộ: BA-1809
 - SERP: "không có bằng lái xe máy phạt bao nhiêu"
-- Hành động: **Giữ nguyên** · điểm 0
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-14)
 - Thành viên: không bằng lái xe máy phạt bao nhiêu (6.600); k có bằng lái xe máy phạt bao nhiêu (5.400); không có bằng lái xe máy phạt bao nhiêu (5.400); lỗi không bằng lái xe máy (2.900); không có bằng lái xe máy phạt bao nhiêu tiền (1.000); lỗi không có bằng lái xe máy (880); không bằng lái xe máy phạt bao nhiêu 2025 (880); mức phạt không bằng lái xe máy (720); mức phạt không có bằng lái xe máy (480); lỗi không bằng lái xe máy phạt bao nhiêu (480); không có bằng lái xe máy phạt bao nhiêu 2025 (390)
 
 <a id="bang-lai-xe-may"></a>
@@ -65,34 +65,34 @@
 - Nhu cầu: 5.400/tháng (1/1 từ khóa đo được) · Cụm K09 · Ý định: Thông tin
 - Trang đích: /blog/an-toan/nong-do-con-khi-lai-xe/ · Đã có bài
 - SERP: "mức phạt nồng độ cồn xe máy"
-- Hành động: **Giữ nguyên** · điểm 0
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-14)
 - Thành viên: mức phạt nồng độ cồn xe máy (5.400)
 
 <a id="xe-may-dien-co-can-bang-lai-khong"></a>
 ### xe máy điện có cần bằng lái không
 
 - Nhu cầu: 3.270/tháng (5/6 từ khóa đo được) · Cụm K09 · Ý định: Hỗn hợp (thương mại + thông tin)
-- Trang đích: (bài mới) · Chưa có · trang gần nhất /blog/an-toan/idp-va-bang-lai-quoc-te-tom-tat/ (BA-0893)
+- Trang đích: /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ · Đã có bài
 - SERP: "xe máy điện có cần bằng lái không", "thuê xe máy không cần bằng lái"
-- Hành động: **Bài mới sau khi đối chiếu văn bản gốc** · điểm 1.962
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-15)
 - Thành viên: xe máy điện có cần bằng lái không (1.900); đi xe máy điện có cần bằng lái không (590); xe máy điện cần bằng lái không (390); xe máy điện không cần bằng lái (390); thuê xe máy điện không cần bằng lái (0); thuê xe máy không cần bằng lái
 
 <a id="bao-nhieu-tuoi-duoc-di-xe-may-dien"></a>
 ### bao nhiêu tuổi được đi xe máy điện
 
 - Nhu cầu: 3.080/tháng (3/3 từ khóa đo được) · Cụm K09 · Ý định: Thông tin
-- Trang đích: (bài mới) · Chưa có · trang gần nhất /blog/thue-xe/dieu-kien-thue-xe-may-o-ha-noi/ (BA-0110)
+- Trang đích: /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ · Phủ một phần
 - SERP: "bao nhiêu tuổi được đi xe máy điện"
-- Hành động: **Bài mới sau khi đối chiếu văn bản gốc** · điểm 3.080
+- Hành động: **Bổ sung mục/FAQ vào bài đích (review body)** · điểm 2.156 · quyết định: done (2026-10-15)
 - Thành viên: bao nhiêu tuổi được đi xe máy điện (1.600); xe máy điện bao nhiêu tuổi được đi (1.000); bao nhiêu tuổi thì được đi xe máy điện (480)
 
 <a id="loi-khong-guong-xe-may"></a>
 ### lỗi không gương xe máy
 
 - Nhu cầu: 2.400/tháng (1/1 từ khóa đo được) · Cụm K10 · Ý định: Thông tin
-- Trang đích: /blog/an-toan/guong-chieu-hau-an-toan/ · Có mục trong bài
+- Trang đích: /blog/an-toan/loi-khong-guong-xe-may/ · Đã có bài
 - SERP: "lỗi không gương xe máy"
-- Hành động: **Cân nhắc tách bài riêng** · điểm 1.200
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-15)
 - Thành viên: lỗi không gương xe máy (2.400)
 
 <a id="thue-xe-may-dien"></a>
@@ -108,9 +108,9 @@
 ### bằng lái xe máy là hạng gì
 
 - Nhu cầu: 1.270/tháng (2/2 từ khóa đo được) · Cụm K09 · Ý định: Hỗn hợp (thương mại + thông tin)
-- Trang đích: (bài mới) · Chưa có · trang gần nhất /blog/thue-xe/bang-lai-a1-va-thue-xe-may-gia-tot-nhat/ (BA-1961)
+- Trang đích: /blog/an-toan/cac-loai-bang-lai-xe-may/ · Đã có bài
 - SERP: "bằng lái xe máy là hạng gì"
-- Hành động: **Bài mới sau khi đối chiếu văn bản gốc** · điểm 762
+- Hành động: **Đưa cụm từ chính vào title/meta (article-meta)** · điểm 229 · quyết định: done (2026-10-15)
 - Thành viên: bằng lái xe máy là hạng gì (880); bằng lái xe máy hạng a (390)
 
 <a id="bang-lai-xe-may-a1"></a>
@@ -119,25 +119,25 @@
 - Nhu cầu: 1.000/tháng (1/2 từ khóa đo được) · Cụm K09 · Ý định: Thông tin
 - Trang đích: /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ · Đã có bài
 - SERP: "bằng a1 lái được xe gì"
-- Hành động: **Giữ nguyên** · điểm 0
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-14)
 - Thành viên: bằng lái xe máy a1 (1.000); bằng a1 lái được xe gì
 
 <a id="cac-loai-bang-lai-xe-may"></a>
 ### các loại bằng lái xe máy
 
 - Nhu cầu: 1.000/tháng (1/1 từ khóa đo được) · Cụm K09 · Ý định: Thông tin
-- Trang đích: (bài mới) · Chưa có · trang gần nhất /blog/an-toan/idp-va-bang-lai-quoc-te/ (BA-0047)
+- Trang đích: /blog/an-toan/cac-loai-bang-lai-xe-may/ · Đã có bài
 - SERP: "các loại bằng lái xe máy"
-- Hành động: **Bài mới sau khi đối chiếu văn bản gốc** · điểm 1.000
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-15)
 - Thành viên: các loại bằng lái xe máy (1.000)
 
 <a id="cam-xe-may"></a>
 ### cấm xe máy
 
-- Nhu cầu: 1.000/tháng (1/1 từ khóa đo được) · Cụm K12 · Ý định: Thông tin
-- Trang đích: (bài mới) · Chưa có · trang gần nhất /blog/huong-dan/duong-vanh-dai-ha-noi/ (BA-0292)
+- Nhu cầu: 1.000/tháng (1/1 từ khóa đo được) · Cụm K20 · Ý định: Thông tin
+- Trang đích: /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ · Đã có bài
 - SERP: "cấm xe máy"
-- Hành động: **Bài mới sau khi đối chiếu văn bản gốc** · điểm 1.000
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-15)
 - Thành viên: cấm xe máy (1.000)
 
 <a id="app-thue-xe"></a>
@@ -164,7 +164,7 @@
 - Nhu cầu: 590/tháng (1/1 từ khóa đo được) · Cụm K10 · Ý định: Hỗn hợp (thương mại + thông tin)
 - Trang đích: /blog/an-toan/mu-bao-hiem-chuan/ · Đã có bài
 - SERP: "mũ bảo hiểm đạt chuẩn"
-- Hành động: **Giữ nguyên** · điểm 0
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-14)
 - Thành viên: mũ bảo hiểm đạt chuẩn (590)
 
 <a id="pin-xe-may-dien"></a>
@@ -890,10 +890,10 @@
 <a id="cam-xe-may-xang-vanh-dai-1"></a>
 ### cấm xe máy xăng vành đai 1
 
-- Nhu cầu: chưa đo · Cụm K12 · Ý định: Thông tin
-- Trang đích: (bài mới) · Chưa có · trang gần nhất /blog/huong-dan/duong-vanh-dai-ha-noi/ (BA-0292)
+- Nhu cầu: chưa đo · Cụm K20 · Ý định: Thông tin
+- Trang đích: /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ · Đã có bài
 - SERP: "cấm xe máy xăng vành đai 1"
-- Hành động: **Bài mới sau khi đối chiếu văn bản gốc** · điểm 0
+- Hành động: **Giữ nguyên** · điểm 0 · quyết định: done (2026-10-15)
 - Thành viên: cấm xe máy xăng vành đai 1
 
 <a id="dat-coc-thue-xe-may"></a>

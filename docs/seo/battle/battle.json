@@ -41,7 +41,7 @@
   "measured": 723,
   "weaknessRows": 189,
   "opportunity": {
-   "P0": 6,
+   "P0": 0,
    "P1": 1,
    "P2": 1
   },
@@ -49,89 +49,17 @@
   "benchmark": 60,
   "ai": 60,
   "listingPages": 88,
-  "urls": 2129,
-  "proposed": 4,
+  "urls": 2133,
+  "proposed": 0,
   "master": {
-   "P0": 8,
-   "P1": 12,
-   "P2": 37
+   "P0": 2,
+   "P1": 5,
+   "P2": 1
   }
  },
  "master": [
   {
-   "id": "BM-001",
-   "tier": "P0",
-   "score": 5852,
-   "weapon": "W4",
-   "action": "Bài mới sau khi đối chiếu văn bản gốc",
-   "keyword": "bao nhiêu tuổi được đi xe máy điện",
-   "target": "(bài mới)",
-   "cluster": "K09",
-   "confidence": "DERIVED",
-   "phase": "0–30 ngày"
-  },
-  {
-   "id": "BM-002",
-   "tier": "P0",
-   "score": 2708,
-   "weapon": "W4",
-   "action": "Bài mới sau khi đối chiếu văn bản gốc",
-   "keyword": "xe máy điện có cần bằng lái không",
-   "target": "(bài mới)",
-   "cluster": "K09",
-   "confidence": "DERIVED",
-   "phase": "0–30 ngày"
-  },
-  {
    "id": "BM-003",
-   "tier": "P0",
-   "score": 1800,
-   "weapon": "W4",
-   "action": "Bài mới sau khi đối chiếu văn bản gốc",
-   "keyword": "các loại bằng lái xe máy",
-   "target": "(bài mới)",
-   "cluster": "K09",
-   "confidence": "DERIVED",
-   "phase": "0–30 ngày"
-  },
-  {
-   "id": "BM-004",
-   "tier": "P0",
-   "score": 1560,
-   "weapon": "W4",
-   "action": "Cân nhắc tách bài riêng",
-   "keyword": "lỗi không gương xe máy",
-   "target": "/blog/an-toan/guong-chieu-hau-an-toan/",
-   "cluster": "K10",
-   "confidence": "DERIVED",
-   "phase": "0–30 ngày"
-  },
-  {
-   "id": "BM-005",
-   "tier": "P0",
-   "score": 1540,
-   "weapon": "W4",
-   "action": "Bài mới sau khi đối chiếu văn bản gốc",
-   "keyword": "cấm xe máy",
-   "target": "(bài mới)",
-   "cluster": "K12",
-   "confidence": "DERIVED",
-   "phase": "0–30 ngày"
-  },
-  {
-   "id": "BM-006",
-   "tier": "P0",
-   "score": 1113,
-   "weapon": "W4",
-   "action": "Bài mới sau khi đối chiếu văn bản gốc",
-   "keyword": "bằng lái xe máy là hạng gì",
-   "target": "(bài mới)",
-   "cluster": "K09",
-   "confidence": "DERIVED",
-   "phase": "0–30 ngày"
-  },
-  {
-   "id": "BM-051",
    "tier": "P0",
    "score": 1000,
    "weapon": "W8",
@@ -143,7 +71,7 @@
    "phase": "0–30 ngày"
   },
   {
-   "id": "BM-052",
+   "id": "BM-004",
    "tier": "P0",
    "score": 1000,
    "weapon": "W8",
@@ -155,79 +83,7 @@
    "phase": "0–30 ngày"
   },
   {
-   "id": "BM-045",
-   "tier": "P1",
-   "score": 500,
-   "weapon": "W5",
-   "action": "Tách ý định: một URL một ý định (chọn trang đích khác cho nhóm lệch)",
-   "keyword": "giá thuê xe máy Hà Nội",
-   "target": "/gia-thue/",
-   "cluster": "K02",
-   "confidence": "OBSERVED",
-   "phase": "31–60 ngày"
-  },
-  {
-   "id": "BM-046",
-   "tier": "P1",
-   "score": 500,
-   "weapon": "W5",
-   "action": "Tách ý định: một URL một ý định (chọn trang đích khác cho nhóm lệch)",
-   "keyword": "thủ tục thuê xe máy",
-   "target": "/blog/huong-dan/thu-tuc-thue-xe-may/",
-   "cluster": "K04",
-   "confidence": "OBSERVED",
-   "phase": "31–60 ngày"
-  },
-  {
-   "id": "BM-047",
-   "tier": "P1",
-   "score": 500,
-   "weapon": "W5",
-   "action": "Tách ý định: một URL một ý định (chọn trang đích khác cho nhóm lệch)",
-   "keyword": "bằng lái khi thuê xe máy",
-   "target": "/blog/an-toan/",
-   "cluster": "K09",
-   "confidence": "OBSERVED",
-   "phase": "31–60 ngày"
-  },
-  {
-   "id": "BM-048",
-   "tier": "P1",
-   "score": 500,
-   "weapon": "W5",
-   "action": "Tách ý định: một URL một ý định (chọn trang đích khác cho nhóm lệch)",
-   "keyword": "thuê xe máy phố cổ Hà Nội",
-   "target": "/blog/dia-phuong/di-pho-co-bang-xe-may/",
-   "cluster": "K12",
-   "confidence": "OBSERVED",
-   "phase": "31–60 ngày"
-  },
-  {
-   "id": "BM-049",
-   "tier": "P1",
-   "score": 500,
-   "weapon": "W5",
-   "action": "Tách ý định: một URL một ý định (chọn trang đích khác cho nhóm lệch)",
-   "keyword": "kinh nghiệm đi xe máy từ Hà Nội",
-   "target": "/blog/kham-pha-an-toan/",
-   "cluster": "K17",
-   "confidence": "OBSERVED",
-   "phase": "31–60 ngày"
-  },
-  {
-   "id": "BM-050",
-   "tier": "P1",
-   "score": 500,
-   "weapon": "W5",
-   "action": "Tách ý định: một URL một ý định (chọn trang đích khác cho nhóm lệch)",
-   "keyword": "đi xe máy xuyên Việt",
-   "target": "/blog/dia-phuong/",
-   "cluster": "K18",
-   "confidence": "OBSERVED",
-   "phase": "31–60 ngày"
-  },
-  {
-   "id": "BM-053",
+   "id": "BM-005",
    "tier": "P1",
    "score": 300,
    "weapon": "W8",
@@ -239,7 +95,7 @@
    "phase": "31–60 ngày"
   },
   {
-   "id": "BM-054",
+   "id": "BM-006",
    "tier": "P1",
    "score": 300,
    "weapon": "W8",
@@ -251,7 +107,7 @@
    "phase": "31–60 ngày"
   },
   {
-   "id": "BM-055",
+   "id": "BM-007",
    "tier": "P1",
    "score": 300,
    "weapon": "W8",
@@ -263,7 +119,7 @@
    "phase": "31–60 ngày"
   },
   {
-   "id": "BM-056",
+   "id": "BM-008",
    "tier": "P1",
    "score": 300,
    "weapon": "W8",
@@ -275,19 +131,7 @@
    "phase": "31–60 ngày"
   },
   {
-   "id": "BM-009",
-   "tier": "P1",
-   "score": 235,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "lỗi sử dụng điện thoại khi đi xe máy",
-   "target": "/blog/an-toan/dien-thoai-khi-lai-xe-tom-tat/",
-   "cluster": "K10",
-   "confidence": "OBSERVED",
-   "phase": "31–60 ngày"
-  },
-  {
-   "id": "BM-007",
+   "id": "BM-001",
    "tier": "P1",
    "score": 107,
    "weapon": "W4",
@@ -299,19 +143,7 @@
    "phase": "31–60 ngày"
   },
   {
-   "id": "BM-057",
-   "tier": "P2",
-   "score": 50,
-   "weapon": "W9",
-   "action": "Rà soát từ khóa chính trùng giữa URL (một từ khóa một URL)",
-   "keyword": "6 từ khóa trùng",
-   "target": "(nhiều URL)",
-   "cluster": "",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-008",
+   "id": "BM-002",
    "tier": "P2",
    "score": 48,
    "weapon": "W4",
@@ -321,477 +153,9 @@
    "cluster": "K04",
    "confidence": "DERIVED",
    "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-010",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy",
-   "target": "/blog/thue-xe/thue-xe-may-gia-re/",
-   "cluster": "LANDSCAPE",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-011",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "không có bằng lái xe máy phạt bao nhiêu",
-   "target": "/blog/an-toan/di-xe-khong-giay-phep/",
-   "cluster": "K09",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-012",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "mức phạt nồng độ cồn xe máy",
-   "target": "/blog/an-toan/nong-do-con-khi-lai-xe/",
-   "cluster": "K10",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-013",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy điện hà nội",
-   "target": "/blog/xe-dien/ung-dung-thue-xe-may-dien/",
-   "cluster": "K08",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-014",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "bằng a1 lái được xe gì",
-   "target": "/blog/thue-xe/bang-lai-a1-va-thue-xe-may/",
-   "cluster": "K09",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-015",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "app thuê xe máy",
-   "target": "/blog/xe-dien/app-thue-xe-dien/",
-   "cluster": "K01",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-016",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "app thuê xe máy hà nội",
-   "target": "/blog/xe-dien/app-thue-xe-dien/",
-   "cluster": "K01",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-017",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "mũ bảo hiểm đạt chuẩn",
-   "target": "/blog/an-toan/mu-bao-hiem-chuan/",
-   "cluster": "K10",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-018",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "pin xe máy điện",
-   "target": "/blog/xe-dien/pin-cua-xe-may-dien/",
-   "cluster": "K08",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-019",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "bảng giá thuê xe máy",
-   "target": "/blog/thue-xe/thue-xe-may-gia-re/",
-   "cluster": "K02",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-020",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "kinh nghiệm thuê xe máy hà nội",
-   "target": "/blog/thue-xe/thue-xe-may-gia-re/",
-   "cluster": "K19",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-021",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy giá rẻ hà nội",
-   "target": "/blog/thue-xe/thue-xe-may-gia-re/",
-   "cluster": "K02",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-022",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy giao tận nơi hà nội",
-   "target": "/blog/thue-xe/thue-xe-may-gia-re/",
-   "cluster": "K06",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-023",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy phố cổ hà nội",
-   "target": "/blog/thue-xe/thue-xe-may-gia-re/",
-   "cluster": "K12",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-024",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy tự lái hà nội",
-   "target": "/blog/thue-xe/thue-xe-may-gia-re/",
-   "cluster": "K19",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-025",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe tay ga hà nội",
-   "target": "/blog/thue-xe/thue-xe-may-gia-re/",
-   "cluster": "K07",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-026",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "hợp đồng thuê xe máy",
-   "target": "/blog/thue-xe/hop-dong-thue-xe-may/",
-   "cluster": "K04",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-027",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "giá thuê xe máy hà nội",
-   "target": "/blog/thue-xe/gia-thue-xe-may-theo-ngay/",
-   "cluster": "K02",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-028",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy theo ngày hà nội",
-   "target": "/blog/thue-xe/gia-thue-xe-may-theo-ngay/",
-   "cluster": "K03",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-029",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe số hà nội",
-   "target": "/blog/thue-xe/gia-thue-xe-may-theo-ngay/",
-   "cluster": "K07",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-030",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy cầu giấy",
-   "target": "/blog/dia-phuong/cau-giay-di-xe-may/",
-   "cluster": "K16",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-031",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "du lịch hà nội 1 ngày bằng xe máy",
-   "target": "/blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-trong-ngay/",
-   "cluster": "K17",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-032",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy theo tháng hà nội",
-   "target": "/blog/thue-xe/thue-xe-may-theo-thang/",
-   "cluster": "K03",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-033",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thủ tục thuê xe máy",
-   "target": "/blog/huong-dan/thu-tuc-thue-xe-may/",
-   "cluster": "K04",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-034",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy cần giấy tờ gì",
-   "target": "/blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/",
-   "cluster": "K04",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-035",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "người nước ngoài lái xe máy ở việt nam",
-   "target": "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/",
-   "cluster": "K09",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-036",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy dài hạn",
-   "target": "/blog/thue-xe/uu-dai-thue-xe-dai-han/",
-   "cluster": "K03",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-037",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "bằng lái a1 a2 khác gì",
-   "target": "/blog/an-toan/bang-lai-a1-a2-khac-gi/",
-   "cluster": "K09",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-038",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "bảo hiểm xe máy thuê",
-   "target": "/blog/an-toan/bao-hiem-khi-thue-xe-may/",
-   "cluster": "K11",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-039",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "đặt cọc thuê xe máy",
-   "target": "/blog/huong-dan/dat-coc-the-nao/",
-   "cluster": "K04",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-040",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "kiểm tra xe máy khi thuê",
-   "target": "/blog/huong-dan/kiem-tra-xe-khi-nhan/",
-   "cluster": "K05",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-041",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "kinh nghiệm lái xe máy ở hà nội",
-   "target": "/blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai/",
-   "cluster": "K10",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-042",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "tai nạn khi đi xe thuê ai chịu trách nhiệm",
-   "target": "/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cho-nguoi-moi/",
-   "cluster": "K11",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-043",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "thuê xe máy cho người nước ngoài",
-   "target": "/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/",
-   "cluster": "K19",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-044",
-   "tier": "P2",
-   "score": 35,
-   "weapon": "W6",
-   "action": "Bổ sung mục/FAQ vào bài đích (review body)",
-   "keyword": "xe thuê bị hỏng phải làm sao",
-   "target": "/blog/huong-dan/sua-xe-nho-khi-dang-thue-cho-nguoi-moi/",
-   "cluster": "K20",
-   "confidence": "OBSERVED",
-   "phase": "61–90 ngày"
   }
  ],
  "opportunities": [
-  {
-   "group": "bao-nhieu-tuoi-duoc-di-xe-may-dien",
-   "keyword": "bao nhiêu tuổi được đi xe máy điện",
-   "tier": "P0",
-   "score": 5852,
-   "demand": 3080,
-   "target": "(bài mới)"
-  },
-  {
-   "group": "xe-may-dien-co-can-bang-lai-khong",
-   "keyword": "xe máy điện có cần bằng lái không",
-   "tier": "P0",
-   "score": 2708,
-   "demand": 3270,
-   "target": "(bài mới)"
-  },
-  {
-   "group": "cac-loai-bang-lai-xe-may",
-   "keyword": "các loại bằng lái xe máy",
-   "tier": "P0",
-   "score": 1800,
-   "demand": 1000,
-   "target": "(bài mới)"
-  },
-  {
-   "group": "loi-khong-guong-xe-may",
-   "keyword": "lỗi không gương xe máy",
-   "tier": "P0",
-   "score": 1560,
-   "demand": 2400,
-   "target": "/blog/an-toan/guong-chieu-hau-an-toan/"
-  },
-  {
-   "group": "cam-xe-may",
-   "keyword": "cấm xe máy",
-   "tier": "P0",
-   "score": 1540,
-   "demand": 1000,
-   "target": "(bài mới)"
-  },
-  {
-   "group": "bang-lai-xe-may-la-hang-gi",
-   "keyword": "bằng lái xe máy là hạng gì",
-   "tier": "P0",
-   "score": 1113,
-   "demand": 1270,
-   "target": "(bài mới)"
-  },
   {
    "group": "di-phuot-bang-xe-may",
    "keyword": "đi phượt bằng xe máy",
@@ -811,10 +175,10 @@
  ],
  "kpis": [
   {
-   "kpi": "Bài P0 đã đăng (PUBLISHED, legal gate PASS)",
-   "baseline": 0,
-   "target30": 8,
-   "how": "data/blog/published.json + data/seo/legal-facts.json"
+   "kpi": "Bài SEO mới đã đăng từ ma trận (BA-2001+, PUBLISHED)",
+   "baseline": 4,
+   "target30": 5,
+   "how": "data/blog/content-matrix.csv (hàng sau nền 2.000) + data/blog/published.json"
   },
   {
    "kpi": "Nhóm từ khóa ưu tiên có trang trong top 20 (SERP chụp)",
@@ -823,15 +187,15 @@
    "how": "data/seo/serp-snapshots/ + tools/seo-cold-start.mjs"
   },
   {
-   "kpi": "Trang đích còn gap cấu trúc theo W6",
-   "baseline": 37,
+   "kpi": "Trang đích còn gap cấu trúc theo W6 (FAQ/bảng/nguồn/H2/mở đầu — không tính quan sát từ/ảnh)",
+   "baseline": 0,
    "target30": 0,
    "how": "node tools/seo-battle-matrix.mjs"
   },
   {
    "kpi": "Trang đích trả lời ngay đoạn đầu (W7 answerFirst)",
-   "baseline": 40,
-   "target30": 41,
+   "baseline": 48,
+   "target30": 48,
    "how": "W7"
   },
   {

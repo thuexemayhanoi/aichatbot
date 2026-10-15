@@ -7,20 +7,20 @@
 | Bước | Công cụ | Kết quả |
 |---|---|---|
 | 1. Audit repo | site-audit, seo-score, seo-master-audit, seo-index-coverage, IndexNow | liên kết hỏng 0; SEO score 99,7; P0 0; sitemap↔ma trận Đạt; IndexNow có khóa |
-| 2. SEO Matrix | seo-master-audit (URL) + engine (từ khóa) | 2.129 URL; 117 nhóm từ khóa → [seo-engine-matrix.csv](seo-engine-matrix.csv) |
+| 2. SEO Matrix | seo-master-audit (URL) + engine (từ khóa) | 2.133 URL; 117 nhóm từ khóa → [seo-engine-matrix.csv](seo-engine-matrix.csv) |
 | 3. Nghiên cứu SERP | seo-cold-start (snapshot) | 72 SERP (2026-10-14); hàng đợi: 0 nhóm cần chụp SERP, 0 nhóm cần đo volume (21 nhóm đã hỏi, công cụ không trả số) → [research-queue.md](research-queue.md) |
 | 4. Keyword clustering | engine | 183 từ khóa → 117 nhóm (14 cặp trùng SERP) → [keyword-groups.md](keyword-groups.md) |
 | 5. Topical map | engine + seo-master-audit | 20 cụm K01–K20 → [topical-map.md](topical-map.md) |
-| 6. Content gap | seo-cold-start + engine | 2 nhóm cần bài mới, 3 bổ sung mục, 0 chỉnh title/meta, 0 nhóm chờ sửa nội dung lỗi thời, 3 chủ đề cần đối chiếu (6 nhóm) → [content-briefs.md](content-briefs.md), [proposed-matrix-rows.csv](proposed-matrix-rows.csv) |
+| 6. Content gap | seo-cold-start + engine | 2 nhóm cần bài mới, 4 bổ sung mục, 1 chỉnh title/meta, 0 nhóm chờ sửa nội dung lỗi thời, 3 chủ đề cần đối chiếu (0 nhóm) → [content-briefs.md](content-briefs.md), [proposed-matrix-rows.csv](proposed-matrix-rows.csv) |
 
 ## Sức khỏe repo (công cụ hiện có)
 
 | Kiểm tra | Kết quả |
 |---|---|
-| Liên kết nội bộ (site-audit) | 221.840 liên kết kiểm tra, 0 hỏng — Đạt |
+| Liên kết nội bộ (site-audit) | 222.238 liên kết kiểm tra, 0 hỏng — Đạt |
 | SEO score (seo-score) | 99,7/100 — Đạt |
-| Ma trận URL (seo-master-audit) | 2.129 URL; DONE 2.129, KEEP 0, TECH-DONE 0, PLANNED 0; P0 0; tệp đã commit khớp |
-| Sitemap ↔ ma trận (seo-index-coverage) | Đạt (2.000 bài đăng) |
+| Ma trận URL (seo-master-audit) | 2.133 URL; DONE 2.133, KEEP 0, TECH-DONE 0, PLANNED 0; P0 0; tệp đã commit khớp |
+| Sitemap ↔ ma trận (seo-index-coverage) | Đạt (2.004 bài đăng) |
 | Báo cáo cold-start | khớp dữ liệu |
 | IndexNow | khóa công khai có trên site |
 
@@ -45,15 +45,8 @@
 
 | # | Nhóm | Volume/tháng | Cụm | Trang đích | Độ phủ | Hành động | Điểm |
 |---:|---|---:|---|---|---|---|---:|
-| 1 | [bao nhiêu tuổi được đi xe máy điện](keyword-groups.md#bao-nhieu-tuoi-duoc-di-xe-may-dien) | 3.080 | K09 | (bài mới) | Chưa có | Bài mới sau khi đối chiếu văn bản gốc | 3.080 |
-| 2 | [xe máy điện có cần bằng lái không](keyword-groups.md#xe-may-dien-co-can-bang-lai-khong) | 3.270 | K09 | (bài mới) | Chưa có | Bài mới sau khi đối chiếu văn bản gốc | 1.962 |
-| 3 | [lỗi không gương xe máy](keyword-groups.md#loi-khong-guong-xe-may) | 2.400 | K10 | /blog/an-toan/guong-chieu-hau-an-toan/ | Có mục trong bài | Cân nhắc tách bài riêng | 1.200 |
-| 4 | [các loại bằng lái xe máy](keyword-groups.md#cac-loai-bang-lai-xe-may) | 1.000 | K09 | (bài mới) | Chưa có | Bài mới sau khi đối chiếu văn bản gốc | 1.000 |
-| 5 | [cấm xe máy](keyword-groups.md#cam-xe-may) | 1.000 | K12 | (bài mới) | Chưa có | Bài mới sau khi đối chiếu văn bản gốc | 1.000 |
-| 6 | [bằng lái xe máy là hạng gì](keyword-groups.md#bang-lai-xe-may-la-hang-gi) | 1.270 | K09 | (bài mới) | Chưa có | Bài mới sau khi đối chiếu văn bản gốc | 762 |
-| 7 | [đi phượt bằng xe máy](keyword-groups.md#di-phuot-bang-xe-may) | 80 | K17 | (bài mới) | Chưa có | Bài mới (owner thêm ID vào ma trận) | 80 |
-| 8 | [đồ đi phượt xe máy](keyword-groups.md#do-di-phuot-xe-may) | 80 | K04 | (bài mới) | Chưa có | Bài mới (owner thêm ID vào ma trận) | 48 |
-| 9 | [cấm xe máy xăng vành đai 1](keyword-groups.md#cam-xe-may-xang-vanh-dai-1) | — | K12 | (bài mới) | Chưa có | Bài mới sau khi đối chiếu văn bản gốc | 0 |
+| 1 | [đi phượt bằng xe máy](keyword-groups.md#di-phuot-bang-xe-may) | 80 | K17 | (bài mới) | Chưa có | Bài mới (owner thêm ID vào ma trận) | 80 |
+| 2 | [đồ đi phượt xe máy](keyword-groups.md#do-di-phuot-xe-may) | 80 | K04 | (bài mới) | Chưa có | Bài mới (owner thêm ID vào ma trận) | 48 |
 
 ## Quyết định đã ghi (data/seo/engine-decisions.json)
 
@@ -66,6 +59,16 @@
 | [mức phạt nồng độ cồn xe máy](keyword-groups.md#muc-phat-nong-do-con-xe-may) | Đưa cụm từ chính vào title/meta (article-meta) | done | 2026-10-14 | Title/meta BA-0011 theo cụm 'mức phạt nồng độ cồn xe máy'. | Giữ nguyên |
 | [phượt hà giang bằng xe máy](keyword-groups.md#phuot-ha-giang-bang-xe-may) | Bài mới (owner thêm ID vào ma trận) | rejected | 2026-10-14 | BA-0348 (vòng cung Hà Giang bằng xe máy) và các biến thể đã trả lời truy vấn; khác biệt chỉ là chữ 'phượt', viết thêm bài sẽ trùng chủ đề. | Bổ sung mục/FAQ vào bài đích (review body) |
 | [phượt tam đảo bằng xe máy](keyword-groups.md#phuot-tam-dao-bang-xe-may) | Bổ sung mục/FAQ vào bài đích (review body) | rejected | 2026-10-14 | BA-0252 (đi Tam Đảo bằng xe máy: lộ trình, chạy đèo) đã phủ ý định; 'phượt' chỉ là cách gọi khác. | Bổ sung mục/FAQ vào bài đích (review body) |
+| [bằng lái xe máy là hạng gì](keyword-groups.md#bang-lai-xe-may-la-hang-gi) | Bài mới sau khi đối chiếu văn bản gốc | done | 2026-10-15 | Cùng bài BA-2002 (mục "bằng lái xe máy là hạng gì"); BM-006. | Đưa cụm từ chính vào title/meta (article-meta) |
+| [bao nhiêu tuổi được đi xe máy điện](keyword-groups.md#bao-nhieu-tuoi-duoc-di-xe-may-dien) | Bài mới sau khi đối chiếu văn bản gốc | done | 2026-10-15 | Cùng bài BA-2001 (mục độ tuổi 16/18); battle matrix BM-001. | Bổ sung mục/FAQ vào bài đích (review body) |
+| [các loại bằng lái xe máy](keyword-groups.md#cac-loai-bang-lai-xe-may) | Bài mới sau khi đối chiếu văn bản gốc | done | 2026-10-15 | Bài BA-2002 (các loại bằng lái xe máy: A1, A, B1 và bằng A1/A2 cũ) đăng 15/10/2026; BM-003. | Giữ nguyên |
+| cac-loai-bang-lai-xe-may-theo-luat-36-2024-qh15-hang-a1-a-b1-va-bang-a1-a2-cap-truoc-2025 | Bài mới sau khi đối chiếu văn bản gốc | done | 2026-10-15 | Chủ đề đã rà soát → BA-2002 đã đăng. | — |
+| [cấm xe máy](keyword-groups.md#cam-xe-may) | Bài mới (owner thêm ID vào ma trận) | done | 2026-10-15 | Bài BA-2004 (cấm xe máy xăng Vành đai 1, Nghị quyết 57/2025/NQ-HĐND, Chỉ thị 20/CT-TTg) đăng 15/10/2026; BM-005. | Giữ nguyên |
+| [cấm xe máy xăng vành đai 1](keyword-groups.md#cam-xe-may-xang-vanh-dai-1) | Bài mới sau khi đối chiếu văn bản gốc | done | 2026-10-15 | Cùng bài BA-2004. | Giữ nguyên |
+| [lỗi không gương xe máy](keyword-groups.md#loi-khong-guong-xe-may) | Cân nhắc tách bài riêng | done | 2026-10-15 | Bài riêng BA-2003 (lỗi không gương xe máy, Điều 14 NĐ 168/2024) đăng 15/10/2026; tách khỏi mục của BA-0095; BM-004. | Giữ nguyên |
+| vung-phat-thai-thap-trong-vanh-dai-1-ha-noi-va-nguoi-thue-xe-may-xang | Bài mới sau khi đối chiếu văn bản gốc | done | 2026-10-15 | Chủ đề đã rà soát → BA-2004 đã đăng. | — |
+| [xe máy điện có cần bằng lái không](keyword-groups.md#xe-may-dien-co-can-bang-lai-khong) | Bài mới sau khi đối chiếu văn bản gốc | done | 2026-10-15 | Bài BA-2001 (xe máy điện có cần bằng lái không, bao nhiêu tuổi) đăng 15/10/2026 theo battle matrix BM-002; dữ kiện Điều 34, 56, 57, 59 Luật 36/2024/QH15. | Giữ nguyên |
+| xe-may-dien-co-can-bang-lai-khong-va-bao-nhieu-tuoi-duoc-di | Bài mới sau khi đối chiếu văn bản gốc | done | 2026-10-15 | Chủ đề đã rà soát → BA-2001 đã đăng. | — |
 
 ## Phạm vi từ khóa
 

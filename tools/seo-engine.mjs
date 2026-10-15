@@ -187,6 +187,9 @@ const pointed = (m) => (m.match?.status === 'SECTION' ? (m.match.section?.a ?? m
  */
 export function assessGroup(members, ctx) {
   const head = members[0];
+  // A reviewed topic stops driving the group once its article exists (decision done with a published target).
+  const settled = decisionFor(members, ctx);
+  const published = settled?.status === 'done' && settled.target && ctx.byId.has(settled.target);
   const demand = sum(members.map((m) => m.volume ?? 0));
   const measured = members.filter((m) => m.volume != null).length;
   const familyOf = (a) => ctx.family.get(a.id);
@@ -198,7 +201,7 @@ export function assessGroup(members, ctx) {
     votes.set(a.id, (votes.get(a.id) ?? 0) + (m.volume ?? 1) * (1 + STATUS_RANK[m.match.status]));
   }
   const winner = [...votes.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0];
-  const override = decisionFor(members, ctx)?.target;
+  const override = settled?.target;
   let target = override && ctx.byId.has(override) ? ctx.byId.get(override) : (winner ? ctx.byId.get(winner) : (head.match?.article ?? null));
   // …then the topic family's pillar (bare seed) when it answers the head keyword as well (±0,1):
   // a qualifier article ("… cho sinh viên") should not take the family's head term.
@@ -241,7 +244,7 @@ export function assessGroup(members, ctx) {
   const ownPositions = serps.flatMap((s) => s.own.map((o) => o.position));
   const ownBest = ownPositions.length ? Math.min(...ownPositions) : null;
   const sisterBest = serps.flatMap((s) => s.sister).sort((a, b) => a.position - b.position)[0] ?? null;
-  const topic = members.map((m) => ctx.curatedOf?.get(normKw(m.keyword))).find(Boolean) ?? null;
+  const topic = published ? null : (members.map((m) => ctx.curatedOf?.get(normKw(m.keyword))).find(Boolean) ?? null);
   // A reviewed topic carries its own cluster; otherwise the target page's, the SERP's, or the keyword rules'.
   const cluster = (topic && ctx.curatedCluster?.get(topic)) || target?.cluster || serps[0]?.cluster
     || clusterOf(ctx.clusters, target?.category ?? 'RENT', head.keyword)?.id || '';
@@ -267,8 +270,8 @@ export function assessGroup(members, ctx) {
   if (topic) status = ctx.curatedStatus?.get(topic) ?? 'GAP';
   else if (!onTopic && status === 'COVERED') status = 'PARTIAL';
   const id = viSlug(head.keyword) || 'nhom';
-  const found = decisionFor(members, ctx);
-  const decision = found && (found.action === action || found.status === 'rejected' || found.status === 'deferred') ? found : null;
+  const found = settled;
+  const decision = found && (found.action === action || found.status === 'rejected' || found.status === 'deferred' || published) ? found : null;
   const candidates = action !== 'REVIEW_TARGET' && action !== 'NEW_ARTICLE' ? [] : (ctx.index ?? [])
     .map((a) => ({ a, fit: scoreAgainst(head.keyword, a, ctx.index, ctx.cfg) }))
     .filter((c) => c.fit >= 0.4 && (!target || c.a.id !== target.id))

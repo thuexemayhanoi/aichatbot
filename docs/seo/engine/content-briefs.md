@@ -59,22 +59,6 @@
 - Nguồn cần đối chiếu: https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Luat-trat-tu-an-toan-giao-thong-duong-bo-2024-so-36-2024-QH15-444251.aspx
 - Ghi chú: Đề xuất bài mới (SAFE, cần owner thêm ID vào ma trận); dùng dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34, 56, 57, 59, 89 Luật 36/2024/QH15), liên kết sang bài A1 A2 khác gì thay vì lặp lại phần so sánh.
 
-## lỗi không gương xe máy
-
-- Hành động: **Cân nhắc tách bài riêng** · điểm 1.200
-- Từ khóa chính: lỗi không gương xe máy (2.400/tháng cả nhóm)
-- Biến thể: —
-- Danh mục/cụm: An toàn / pháp lý (/blog/an-toan/) · K10
-- Ý định: Thông tin · SERP có AI Overview → trả lời trực tiếp ở đoạn đầu
-- Trang đích: /blog/an-toan/guong-chieu-hau-an-toan/
-- Đối thủ trên SERP: 
-  - 1. Lỗi không gương xe máy phạt bao nhiêu 2026 - MoMo — www.momo.vn
-  - 2. Xe không gương phạt bao nhiêu 2026 theo Nghị định 168 ... — thuvienphapluat.vn
-  - 3. Mức phạt lỗi không gương xe máy 2025 — laodong.vn
-  - 4. Mức phạt lỗi không gương xe máy 2025: Bạn đã biết chưa ... — www.facebook.com
-  - 5. Mức phạt lỗi xe không gương chiếu hậu mới nhất năm 2026 — lethanhdecal.com
-- Ràng buộc: tiếng Việt; 800–2.000 từ; dữ kiện kinh doanh chỉ từ `data/business/business.json`; không số liệu tự đặt; **legal gate**: trích văn bản gốc + ngày hiệu lực.
-
 ## đi phượt bằng xe máy
 
 - Hành động: **Bài mới (owner thêm ID vào ma trận)** · điểm 80

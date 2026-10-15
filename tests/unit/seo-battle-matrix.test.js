@@ -86,7 +86,10 @@ test('W3 weakness rules are observable facts, and the better-page plan never cop
 
 test('W4 opportunity tiers rank only measured demand; competitor gap lists flag out-of-scope queries', () => {
   const { w4 } = bt;
-  assert.ok(w4.tiers.P0 >= 1, 'at least one P0 opportunity');
+  assert.equal(w4.tiers.P0 + w4.tiers.P1 + w4.tiers.P2, w4.rows.filter((r) => /^P[012]$/.test(r.tier)).length, 'tier counts match the ranked rows');
+  // Executed opportunities stay visible as closed decisions pointing at the published page.
+  const ev = w4.rows.find((r) => r.keyword === 'xe máy điện có cần bằng lái không');
+  assert.ok(ev && ev.tier === '(done)' && ev.target === '/blog/an-toan/xe-may-dien-co-can-bang-lai-khong/', JSON.stringify(ev));
   for (const r of w4.rows) {
     if (/^P[012]$/.test(r.tier)) assert.ok(r.demand > 0 && r.score > 0, `${r.keyword}: ranked rows have measured demand`);
     if (r.tier === '(chưa đo volume)') assert.equal(r.demand, null, `${r.keyword}: unmeasured groups are labelled, not ranked`);
@@ -94,7 +97,7 @@ test('W4 opportunity tiers rank only measured demand; competitor gap lists flag 
     assert.ok(['Cao', 'Trung bình', 'Thấp', 'Chưa chụp SERP'].includes(r.competition));
   }
   const p0 = w4.rows.filter((r) => r.tier === 'P0');
-  assert.ok(p0.every((r) => r.score >= 1000) && p0.some((r) => r.keyword === 'xe máy điện có cần bằng lái không'));
+  assert.ok(p0.every((r) => r.score >= 1000));
   assert.equal(w4.competitors.length, 10);
   for (const c of w4.competitors) assert.ok(c.queries.length >= c.gaps.length && c.gaps.every((q) => q.own == null));
 });
@@ -108,7 +111,9 @@ test('W5 clusters: every cluster has a pillar that exists; mixed-intent targets 
     assert.ok(r.hubs.every((h) => !/\/page\/\d+\/$/.test(h)), `${r.id}: pagination pages are not hubs`);
     for (const m of r.mixed) assert.match(m, /\(.+\) \/ .+\(.+\)/, `${r.id}: a mixed target names at least two intents`);
   }
-  assert.ok(w5.rows.find((r) => r.id === 'K09').open.some((o) => /đối chiếu văn bản gốc/.test(o.action)), 'legal cluster carries the verified-article work');
+  const k09 = w5.rows.find((r) => r.id === 'K09');
+  assert.ok(k09.groups >= 10 && k09.demand > 10000, 'legal cluster carries the measured licence/fine demand');
+  for (const o of k09.open) assert.ok(o.action && o.head, `${o.id}: open work names its action`);
 });
 
 test('W6 benchmark compares medians of audited top pages with this site\'s own built page', () => {
@@ -165,7 +170,7 @@ test('W9 architecture keeps every URL (one keyword, intent, position, conversion
 
 test('W10 master matrix: tiers by score, every item carries evidence, confidence, owner, KPI and verification; roadmap covers 30/60/90', () => {
   const { w10 } = bt;
-  assert.ok(w10.items.length >= 20 && w10.tiers.P0 >= 1);
+  assert.ok(w10.items.length >= 8 && w10.tiers.P0 >= 1, 'executed items leave the matrix; the owner off-page items (P0) stay until done');
   const ids = new Set();
   for (const i of w10.items) {
     assert.ok(!ids.has(i.id)); ids.add(i.id);

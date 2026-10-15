@@ -17,24 +17,24 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | không có bằng lái xe máy phạt bao nhiêu | K09 | 5400 | 5400 | 0 | Thông tin | AI Overview | — | www.greensm.com | Đã có bài | /blog/an-toan/di-xe-khong-giay-phep/ |  | Đo được (2 công cụ) |
 | mức phạt nồng độ cồn xe máy | K09 | 5400 | 5400 | 0 | Thông tin | AI Overview | — | teracolongbien.com | Đã có bài | /blog/an-toan/nong-do-con-khi-lai-xe/ |  | Đo được (2 công cụ) |
 | lỗi không bằng lái xe máy | K09 | 2900 | 2900 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/di-xe-khong-giay-phep/ |  | Đo được (2 công cụ) |
-| lỗi không gương xe máy | K10 | 2400 | 2400 | 0 | Thông tin | AI Overview | — | www.momo.vn | Có mục trong bài | /blog/an-toan/guong-chieu-hau-an-toan/ | P0 | Đo được (2 công cụ) |
-| xe máy điện có cần bằng lái không | K09 | 1900 | 1900 | 0 | Thông tin | AI Overview, PAA | — | www.greensm.com | Có mục trong bài | (bài mới) | P0 | Đo được (2 công cụ) |
-| bao nhiêu tuổi được đi xe máy điện | K09 | 1600 | 1600 | 0 | Thông tin | AI Overview, PAA | — | vamm.vn | Chưa có | (bài mới) | P0 | Đo được (2 công cụ) |
+| lỗi không gương xe máy | K10 | 2400 | 2400 | 0 | Thông tin | AI Overview | — | www.momo.vn | Có mục trong bài | /blog/an-toan/loi-khong-guong-xe-may/ |  | Đo được (2 công cụ) |
+| xe máy điện có cần bằng lái không | K09 | 1900 | 1900 | 0 | Thông tin | AI Overview, PAA | — | www.greensm.com | Đã có bài | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ |  | Đo được (2 công cụ) |
+| bao nhiêu tuổi được đi xe máy điện | K09 | 1600 | 1600 | 0 | Thông tin | AI Overview, PAA | — | vamm.vn | Chưa có | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ | P0 | Đo được (2 công cụ) |
 | bằng lái xe máy a1 | K09 | 1000 | 1000 | 0 |  |  | — |  | Đã có bài | /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ |  | Đo được (2 công cụ) |
-| các loại bằng lái xe máy | K09 | 1000 | 1000 | 0 | Thông tin | AI Overview | — | thuvienphapluat.vn | Đã có bài | (bài mới) | P0 | Đo được (2 công cụ) |
-| cấm xe máy | K12 | 1000 | 1000 | 0 | Thông tin | AI Overview | — | laodong.vn | Đã có bài | (bài mới) | P0 | Đo được (2 công cụ) |
+| các loại bằng lái xe máy | K09 | 1000 | 1000 | 0 | Thông tin | AI Overview | — | thuvienphapluat.vn | Đã có bài | /blog/an-toan/cac-loai-bang-lai-xe-may/ |  | Đo được (2 công cụ) |
+| cấm xe máy | K20 | 1000 | 1000 | 0 | Thông tin | AI Overview | — | laodong.vn | Đã có bài | /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ |  | Đo được (2 công cụ) |
 | không có bằng lái xe máy phạt bao nhiêu tiền | K09 | 1000 | 1000 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/di-xe-khong-giay-phep/ |  | Đo được (2 công cụ) |
 | thuê xe máy điện | K01 | 1000 | 1000 | 0 | Giao dịch – địa phương | AI Overview, local pack | — | www.facebook.com | Đã có bài | /blog/xe-dien/ung-dung-thue-xe-may-dien/ |  | Đo được (2 công cụ) |
-| xe máy điện bao nhiêu tuổi được đi | K09 | 1000 | 1000 | 0 |  |  | — |  | Chưa có | (bài mới) | P0 | Đo được (2 công cụ) |
-| bằng lái xe máy là hạng gì | K09 | 880 | 880 | 0 | Hỗn hợp (thương mại + thông tin) | AI Overview | — | xemayhuyhoang.com | Đã có bài | (bài mới) | P1 | Đo được (2 công cụ) |
+| xe máy điện bao nhiêu tuổi được đi | K09 | 1000 | 1000 | 0 |  |  | — |  | Chưa có | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ | P0 | Đo được (2 công cụ) |
+| bằng lái xe máy là hạng gì | K09 | 880 | 880 | 0 | Hỗn hợp (thương mại + thông tin) | AI Overview | — | xemayhuyhoang.com | Đã có bài | /blog/an-toan/cac-loai-bang-lai-xe-may/ | P1 | Đo được (2 công cụ) |
 | không bằng lái xe máy phạt bao nhiêu 2025 | K09 | 880 | 880 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/di-xe-khong-giay-phep/ |  | Đo được (2 công cụ) |
 | lỗi không có bằng lái xe máy | K09 | 880 | 880 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/di-xe-khong-giay-phep/ |  | Đo được (2 công cụ) |
 | bằng lái xe máy 2025 | K09 | 720 | 720 | 0 |  |  | — |  | Đã có bài | /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ |  | Đo được (2 công cụ) |
 | mức phạt không bằng lái xe máy | K09 | 720 | 720 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/di-xe-khong-giay-phep/ |  | Đo được (2 công cụ) |
-| đi xe máy điện có cần bằng lái không | K09 | 590 | 590 | 0 |  |  | — |  | Có mục trong bài | (bài mới) | P0 | Đo được (2 công cụ) |
+| đi xe máy điện có cần bằng lái không | K09 | 590 | 590 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ |  | Đo được (2 công cụ) |
 | mũ bảo hiểm đạt chuẩn | K10 | 590 | 590 | 0 | Hỗn hợp (thương mại + thông tin) | AI Overview | — | www.dienmayxanh.com | Đã có bài | /blog/an-toan/mu-bao-hiem-chuan/ |  | Đo được (2 công cụ) |
 | pin xe máy điện | K08 | 590 | 590 | 0 | Giao dịch – địa phương | AI Overview, local pack, video | — | selex.vn | Đã có bài | /blog/xe-dien/pin-cua-xe-may-dien/ |  | Đo được (2 công cụ) |
-| bao nhiêu tuổi thì được đi xe máy điện | K09 | 480 | 480 | 0 |  |  | — |  | Chưa có | (bài mới) | P0 | Đo được (2 công cụ) |
+| bao nhiêu tuổi thì được đi xe máy điện | K09 | 480 | 480 | 0 |  |  | — |  | Chưa có | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ | P0 | Đo được (2 công cụ) |
 | cho thuê xe máy điện | K01 | 480 | 480 | 0 |  |  | — |  | Đã có bài | /blog/xe-dien/ung-dung-thue-xe-may-dien/ |  | Đo được (2 công cụ) |
 | dịch vụ cho thuê xe máy | K11 | 480 | 480 | 0 | Giao dịch – địa phương | AI Overview, local pack | — | www.facebook.com | Đã có bài | (trang bán hàng / Google Business Profile) |  | Đo được (2 công cụ) |
 | lỗi không bằng lái xe máy phạt bao nhiêu | K09 | 480 | 480 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/di-xe-khong-giay-phep/ |  | Đo được (2 công cụ) |
@@ -42,11 +42,11 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | mức phạt không có bằng lái xe máy | K09 | 480 | 480 | 3 |  |  | — |  | Đã có bài | /blog/an-toan/di-xe-khong-giay-phep/ |  | Đo được (2 công cụ) |
 | app thuê xe | K01 | 390 | 390 | 10 |  |  | — |  | Đã có bài | /blog/xe-dien/app-thue-xe-dien/ |  | Đo được (2 công cụ) |
 | bằng lái xe máy a | K09 | 390 | 390 | 0 |  |  | — |  | Đã có bài | /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ |  | Đo được (2 công cụ) |
-| bằng lái xe máy hạng a | K09 | 390 | 390 | 0 |  |  | — |  | Đã có bài | (bài mới) | P1 | Đo được (2 công cụ) |
+| bằng lái xe máy hạng a | K09 | 390 | 390 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/cac-loai-bang-lai-xe-may/ | P1 | Đo được (2 công cụ) |
 | bằng lái xe máy mới | K09 | 390 | 390 | 0 |  |  | — |  | Đã có bài | /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ |  | Đo được (2 công cụ) |
 | không có bằng lái xe máy phạt bao nhiêu 2025 | K09 | 390 | 390 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/di-xe-khong-giay-phep/ |  | Đo được (2 công cụ) |
-| xe máy điện cần bằng lái không | K09 | 390 | 390 | 0 |  |  | — |  | Có mục trong bài | (bài mới) | P0 | Đo được (2 công cụ) |
-| xe máy điện không cần bằng lái | K09 | 390 | 390 | 0 |  |  | — |  | Có mục trong bài | (bài mới) | P0 | Đo được (2 công cụ) |
+| xe máy điện cần bằng lái không | K09 | 390 | 390 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ |  | Đo được (2 công cụ) |
+| xe máy điện không cần bằng lái | K09 | 390 | 390 | 0 |  |  | — |  | Đã có bài | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ |  | Đo được (2 công cụ) |
 | cho thuê xe máy giá rẻ | K02 | 260 | 260 | 17 |  |  | — |  | Đã có bài | /blog/thue-xe/thue-xe-may-gia-re/ |  | Đo được (2 công cụ) |
 | thuê xe máy điện hà nội | K01 | 260 | 260 | 0 | Giao dịch – địa phương | local pack | — | izigo.vn | Đã có bài | /blog/xe-dien/ung-dung-thue-xe-may-dien/ |  | Đo được (2 công cụ) |
 | thuê xe máy tự lái | K02 | 260 | 260 | 13 |  |  | — |  | Đã có bài | /blog/thue-xe/thue-xe-may-gia-re/ |  | Đo được (2 công cụ) |

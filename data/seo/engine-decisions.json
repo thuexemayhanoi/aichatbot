@@ -1,11 +1,125 @@
-{"$schema":"motoai/seo-engine-decisions@1",
-"note":"Quyết định của người/agent cho từng nhóm từ khóa của tools/seo-engine.mjs. Khóa = id nhóm (slug của từ khóa chính) hoặc slug của một từ khóa thành viên. status: done | planned | deferred | rejected; target (tùy chọn): mã bài được chọn làm trang đích sau rà soát. Engine không lặp lại việc đã làm và không đưa việc đã hoãn/từ chối vào hàng đợi.",
-"decisions":{
-"khong-bang-lai-xe-may-phat-bao-nhieu":{"action":"ALIGN_META","status":"done","date":"2026-10-14","target":"BA-0029","note":"Title/meta BA-0029 mang cụm 'không có bằng lái xe máy phạt bao nhiêu' (data/seo/article-meta.json)."},
-"muc-phat-nong-do-con-xe-may":{"action":"ALIGN_META","status":"done","date":"2026-10-14","target":"BA-0011","note":"Title/meta BA-0011 theo cụm 'mức phạt nồng độ cồn xe máy'."},
-"bang-lai-xe-may-a1":{"action":"ALIGN_META","status":"done","date":"2026-10-14","target":"BA-0122","note":"Sau khi sửa nội dung pháp lý của BA-0122 (Điều 57, 89 Luật 36/2024/QH15), title/meta theo 'bằng lái xe máy A1' và 'bằng A1 lái được xe gì'."},
-"mu-bao-hiem-dat-chuan":{"action":"ALIGN_META","status":"done","date":"2026-10-14","target":"BA-0017","note":"Volume đo được 590/tháng (OpenSEO); SERP hỏi 'thế nào là mũ đạt chuẩn, cách nhận biết tem CR' khớp nội dung BA-0017 (QCVN 2:2021/BKHCN, dấu CR, cài quai, mức phạt)."},
-"phuot-ha-giang-bang-xe-may":{"action":"NEW_ARTICLE","status":"rejected","date":"2026-10-14","target":"BA-0348","note":"BA-0348 (vòng cung Hà Giang bằng xe máy) và các biến thể đã trả lời truy vấn; khác biệt chỉ là chữ 'phượt', viết thêm bài sẽ trùng chủ đề."},
-"phuot-tam-dao-bang-xe-may":{"action":"ADD_SECTION","status":"rejected","date":"2026-10-14","target":"BA-0252","note":"BA-0252 (đi Tam Đảo bằng xe máy: lộ trình, chạy đèo) đã phủ ý định; 'phượt' chỉ là cách gọi khác."},
-"loi-su-dung-dien-thoai-khi-di-xe-may":{"action":"ADD_SECTION","status":"deferred","date":"2026-10-14","target":"BA-0989","note":"BA-0989 đã nêu mức phạt và trừ điểm; khác biệt chỉ là từ đồng nghĩa (sử dụng/dùng, đi/lái). Xem lại khi có dữ liệu Search Console."}
-}}
+{
+ "$schema": "motoai/seo-engine-decisions@1",
+ "note": "Quyết định của người/agent cho từng nhóm từ khóa của tools/seo-engine.mjs. Khóa = id nhóm (slug của từ khóa chính) hoặc slug của một từ khóa thành viên. status: done | planned | deferred | rejected; target (tùy chọn): mã bài được chọn làm trang đích sau rà soát. Engine không lặp lại việc đã làm và không đưa việc đã hoãn/từ chối vào hàng đợi.",
+ "decisions": {
+  "khong-bang-lai-xe-may-phat-bao-nhieu": {
+   "action": "ALIGN_META",
+   "status": "done",
+   "date": "2026-10-14",
+   "target": "BA-0029",
+   "note": "Title/meta BA-0029 mang cụm 'không có bằng lái xe máy phạt bao nhiêu' (data/seo/article-meta.json)."
+  },
+  "muc-phat-nong-do-con-xe-may": {
+   "action": "ALIGN_META",
+   "status": "done",
+   "date": "2026-10-14",
+   "target": "BA-0011",
+   "note": "Title/meta BA-0011 theo cụm 'mức phạt nồng độ cồn xe máy'."
+  },
+  "bang-lai-xe-may-a1": {
+   "action": "ALIGN_META",
+   "status": "done",
+   "date": "2026-10-14",
+   "target": "BA-0122",
+   "note": "Sau khi sửa nội dung pháp lý của BA-0122 (Điều 57, 89 Luật 36/2024/QH15), title/meta theo 'bằng lái xe máy A1' và 'bằng A1 lái được xe gì'."
+  },
+  "mu-bao-hiem-dat-chuan": {
+   "action": "ALIGN_META",
+   "status": "done",
+   "date": "2026-10-14",
+   "target": "BA-0017",
+   "note": "Volume đo được 590/tháng (OpenSEO); SERP hỏi 'thế nào là mũ đạt chuẩn, cách nhận biết tem CR' khớp nội dung BA-0017 (QCVN 2:2021/BKHCN, dấu CR, cài quai, mức phạt)."
+  },
+  "phuot-ha-giang-bang-xe-may": {
+   "action": "NEW_ARTICLE",
+   "status": "rejected",
+   "date": "2026-10-14",
+   "target": "BA-0348",
+   "note": "BA-0348 (vòng cung Hà Giang bằng xe máy) và các biến thể đã trả lời truy vấn; khác biệt chỉ là chữ 'phượt', viết thêm bài sẽ trùng chủ đề."
+  },
+  "phuot-tam-dao-bang-xe-may": {
+   "action": "ADD_SECTION",
+   "status": "rejected",
+   "date": "2026-10-14",
+   "target": "BA-0252",
+   "note": "BA-0252 (đi Tam Đảo bằng xe máy: lộ trình, chạy đèo) đã phủ ý định; 'phượt' chỉ là cách gọi khác."
+  },
+  "loi-su-dung-dien-thoai-khi-di-xe-may": {
+   "action": "ADD_SECTION",
+   "status": "deferred",
+   "date": "2026-10-14",
+   "target": "BA-0989",
+   "note": "BA-0989 đã nêu mức phạt và trừ điểm; khác biệt chỉ là từ đồng nghĩa (sử dụng/dùng, đi/lái). Xem lại khi có dữ liệu Search Console."
+  },
+  "xe-may-dien-co-can-bang-lai-khong": {
+   "action": "NEW_ARTICLE_VERIFY",
+   "status": "done",
+   "date": "2026-10-15",
+   "target": "BA-2001",
+   "note": "Bài BA-2001 (xe máy điện có cần bằng lái không, bao nhiêu tuổi) đăng 15/10/2026 theo battle matrix BM-002; dữ kiện Điều 34, 56, 57, 59 Luật 36/2024/QH15."
+  },
+  "bao-nhieu-tuoi-duoc-di-xe-may-dien": {
+   "action": "NEW_ARTICLE_VERIFY",
+   "status": "done",
+   "date": "2026-10-15",
+   "target": "BA-2001",
+   "note": "Cùng bài BA-2001 (mục độ tuổi 16/18); battle matrix BM-001."
+  },
+  "xe-may-dien-co-can-bang-lai-khong-va-bao-nhieu-tuoi-duoc-di": {
+   "action": "NEW_ARTICLE_VERIFY",
+   "status": "done",
+   "date": "2026-10-15",
+   "target": "BA-2001",
+   "note": "Chủ đề đã rà soát → BA-2001 đã đăng."
+  },
+  "cac-loai-bang-lai-xe-may": {
+   "action": "NEW_ARTICLE_VERIFY",
+   "status": "done",
+   "date": "2026-10-15",
+   "target": "BA-2002",
+   "note": "Bài BA-2002 (các loại bằng lái xe máy: A1, A, B1 và bằng A1/A2 cũ) đăng 15/10/2026; BM-003."
+  },
+  "bang-lai-xe-may-la-hang-gi": {
+   "action": "NEW_ARTICLE_VERIFY",
+   "status": "done",
+   "date": "2026-10-15",
+   "target": "BA-2002",
+   "note": "Cùng bài BA-2002 (mục \"bằng lái xe máy là hạng gì\"); BM-006."
+  },
+  "cac-loai-bang-lai-xe-may-theo-luat-36-2024-qh15-hang-a1-a-b1-va-bang-a1-a2-cap-truoc-2025": {
+   "action": "NEW_ARTICLE_VERIFY",
+   "status": "done",
+   "date": "2026-10-15",
+   "target": "BA-2002",
+   "note": "Chủ đề đã rà soát → BA-2002 đã đăng."
+  },
+  "loi-khong-guong-xe-may": {
+   "action": "CONSIDER_STANDALONE",
+   "status": "done",
+   "date": "2026-10-15",
+   "target": "BA-2003",
+   "note": "Bài riêng BA-2003 (lỗi không gương xe máy, Điều 14 NĐ 168/2024) đăng 15/10/2026; tách khỏi mục của BA-0095; BM-004."
+  },
+  "cam-xe-may": {
+   "action": "NEW_ARTICLE",
+   "status": "done",
+   "date": "2026-10-15",
+   "target": "BA-2004",
+   "note": "Bài BA-2004 (cấm xe máy xăng Vành đai 1, Nghị quyết 57/2025/NQ-HĐND, Chỉ thị 20/CT-TTg) đăng 15/10/2026; BM-005."
+  },
+  "cam-xe-may-xang-vanh-dai-1": {
+   "action": "NEW_ARTICLE_VERIFY",
+   "status": "done",
+   "date": "2026-10-15",
+   "target": "BA-2004",
+   "note": "Cùng bài BA-2004."
+  },
+  "vung-phat-thai-thap-trong-vanh-dai-1-ha-noi-va-nguoi-thue-xe-may-xang": {
+   "action": "NEW_ARTICLE_VERIFY",
+   "status": "done",
+   "date": "2026-10-15",
+   "target": "BA-2004",
+   "note": "Chủ đề đã rà soát → BA-2004 đã đăng."
+  }
+ }
+}

@@ -28,35 +28,35 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 
 | Truy vấn | AI Overview | Nguồn AI Overview (quan sát) | PAA | Dạng trả lời | Thực thể/văn bản | Địa phương | Trang đích | Trả lời ngay đoạn đầu | Khoảng trống |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| bao nhiêu tuổi được đi xe máy điện | có |  |  | Ngưỡng tuổi + điều kiện (câu trả lời 1 câu, rồi bảng theo loại xe) | Luật Giao thông đường bộ 2008 (hết hiệu lực) \| Nghị định 100/2019/NĐ-CP (đã thay thế) | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
-| thuê xe máy không cần bằng lái | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Luật Giao thông đường bộ 2008 (hết hiệu lực) \| Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
-| xe máy điện có cần bằng lái không | có |  |  | Có/Không + điều kiện (2–3 câu) + ngoại lệ | Luật Giao thông đường bộ 2008 (hết hiệu lực) \| Nghị định 100/2019/NĐ-CP (đã thay thế) | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
-| lỗi không gương xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Nghị định 100/2019/NĐ-CP (đã thay thế) \| Nghị định 168/2024/NĐ-CP \| Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | /blog/an-toan/guong-chieu-hau-an-toan/ | có |  |
-| các loại bằng lái xe máy | có |  |  | Danh sách có tiêu chí + bảng so sánh | Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
-| cấm xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
-| bằng lái xe máy là hạng gì | có |  |  | Định nghĩa 1–2 câu + bảng phân loại | Luật Giao thông đường bộ 2008 (hết hiệu lực) \| Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
+| bao nhiêu tuổi được đi xe máy điện | có |  |  | Ngưỡng tuổi + điều kiện (câu trả lời 1 câu, rồi bảng theo loại xe) | Luật Giao thông đường bộ 2008 (hết hiệu lực) \| Nghị định 100/2019/NĐ-CP (đã thay thế) | Không | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ | có |  |
 | lỗi sử dụng điện thoại khi đi xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) \| Nghị định 168/2024/NĐ-CP \| Nghị định 100/2019/NĐ-CP (đã thay thế) | Không | /blog/an-toan/dien-thoai-khi-lai-xe-tom-tat/ | có |  |
+| bằng lái xe máy là hạng gì | có |  |  | Định nghĩa 1–2 câu + bảng phân loại | Luật Giao thông đường bộ 2008 (hết hiệu lực) \| Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | /blog/an-toan/cac-loai-bang-lai-xe-may/ | có |  |
 | đi phượt bằng xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
 | đồ đi phượt xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
 | phạt nguội xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Nghị định 168/2024/NĐ-CP | Không | /blog/an-toan/den-do-va-camera-phat-nguoi/ | có |  |
-| không có bằng lái xe máy phạt bao nhiêu | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) | Nghị định 168/2024/NĐ-CP | Không | /blog/an-toan/di-xe-khong-giay-phep/ | có | Chưa có bảng số liệu |
+| không có bằng lái xe máy phạt bao nhiêu | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) | Nghị định 168/2024/NĐ-CP | Không | /blog/an-toan/di-xe-khong-giay-phep/ | có |  |
 | bằng lái xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ | có |  |
-| mức phạt nồng độ cồn xe máy | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) | Nghị định 100/2019/NĐ-CP (đã thay thế) \| Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) \| Nghị định 168/2024/NĐ-CP | Không | /blog/an-toan/nong-do-con-khi-lai-xe/ | có | Chưa có bảng số liệu |
+| mức phạt nồng độ cồn xe máy | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) | Nghị định 100/2019/NĐ-CP (đã thay thế) \| Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) \| Nghị định 168/2024/NĐ-CP | Không | /blog/an-toan/nong-do-con-khi-lai-xe/ | có |  |
+| thuê xe máy không cần bằng lái | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Luật Giao thông đường bộ 2008 (hết hiệu lực) \| Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ | có |  |
+| xe máy điện có cần bằng lái không | có |  |  | Có/Không + điều kiện (2–3 câu) + ngoại lệ | Luật Giao thông đường bộ 2008 (hết hiệu lực) \| Nghị định 100/2019/NĐ-CP (đã thay thế) | Không | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ | có |  |
+| lỗi không gương xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Nghị định 100/2019/NĐ-CP (đã thay thế) \| Nghị định 168/2024/NĐ-CP \| Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | /blog/an-toan/loi-khong-guong-xe-may/ | có |  |
 | thuê xe máy điện | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/xe-dien/ung-dung-thue-xe-may-dien/ | có |  |
 | bằng a1 lái được xe gì | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | /blog/thue-xe/bang-lai-a1-va-thue-xe-may/ | có |  |
+| các loại bằng lái xe máy | có |  |  | Danh sách có tiêu chí + bảng so sánh | Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | /blog/an-toan/cac-loai-bang-lai-xe-may/ | có |  |
+| cấm xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ | có |  |
 | app thuê xe máy | có | vexere.com traveloka.com xevietanh.com cellphones.com.vn giaiphapgiaothong.com e | Ứng dụng xe ôm công nghệ nào rẻ nhất hiện nay? \| Ứng dụng gọi xe BE của ai? \| Giá thuê xe tự lái năm 2026 là bao nhiêu?  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/xe-dien/app-thue-xe-dien/ | có |  |
 | app thuê xe máy hà nội | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/xe-dien/app-thue-xe-dien/ | có |  |
 | dịch vụ cho thuê xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | (trang bán hàng / Google Business Profile) |  | Chưa có trang đích rõ |
 | mũ bảo hiểm đạt chuẩn | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Nghị định 168/2024/NĐ-CP | Không | /blog/an-toan/mu-bao-hiem-chuan/ | có |  |
 | pin xe máy điện | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/xe-dien/pin-cua-xe-may-dien/ | có |  |
 | xe máy đi phượt | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/dia-phuong/meo-vac-dong-cao/ | có |  |
-| bảng giá thuê xe máy | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) |  | Không | /blog/thue-xe/thue-xe-may-gia-re/ | có | Chưa có bảng số liệu |
-| kinh nghiệm thuê xe máy hà nội | có |  |  | Các bước đánh số (3–7 bước) + lưu ý |  | Có (Hà Nội / local pack) | /blog/thue-xe/thue-xe-may-gia-re/ | không | Đoạn mở đầu chưa nêu câu trả lời |
+| bảng giá thuê xe máy | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) |  | Không | /blog/thue-xe/thue-xe-may-gia-re/ | có |  |
+| kinh nghiệm thuê xe máy hà nội | có |  |  | Các bước đánh số (3–7 bước) + lưu ý |  | Có (Hà Nội / local pack) | /blog/thue-xe/thue-xe-may-gia-re/ | có |  |
 | thuê xe máy phố cổ hà nội | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/thue-xe/thue-xe-may-gia-re/ | có |  |
 | thuê xe máy tự lái hà nội | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/thue-xe/thue-xe-may-gia-re/ | có |  |
 | thuê xe tay ga hà nội | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/thue-xe/thue-xe-may-gia-re/ | có |  |
 | hợp đồng thuê xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/thue-xe/hop-dong-thue-xe-may/ | có |  |
-| giá thuê xe máy hà nội | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) |  | Có (Hà Nội / local pack) | /blog/thue-xe/gia-thue-xe-may-theo-ngay/ | có | Chưa có bảng số liệu |
+| giá thuê xe máy hà nội | có |  |  | Con số + bảng (mức, căn cứ, ngày hiệu lực) |  | Có (Hà Nội / local pack) | /blog/thue-xe/gia-thue-xe-may-theo-ngay/ | có |  |
 | thuê xe máy theo ngày hà nội | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/thue-xe/gia-thue-xe-may-theo-ngay/ | có |  |
 | du lịch hà nội 1 ngày bằng xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-trong-ngay/ | có |  |
 | thuê xe máy theo tháng hà nội | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/thue-xe/thue-xe-may-theo-thang/ | có |  |
@@ -70,15 +70,15 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | thuê xe máy dài hạn | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/thue-xe/uu-dai-thue-xe-dai-han/ | có |  |
 | bằng lái a1 a2 khác gì | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) | Không | /blog/an-toan/bang-lai-a1-a2-khac-gi/ | có |  |
 | bảo hiểm xe máy thuê | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/an-toan/bao-hiem-khi-thue-xe-may/ | có |  |
-| cấm xe máy xăng vành đai 1 | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) \| Nghị định 168/2024/NĐ-CP | Không | (bài mới) |  | Chưa có trang trả lời (bài mới đã lên lịch) |
+| cấm xe máy xăng vành đai 1 | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Luật 36/2024/QH15 (Luật Trật tự, an toàn giao thông đường bộ) \| Nghị định 168/2024/NĐ-CP | Không | /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ | có |  |
 | đặt cọc thuê xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Luật Giao thông đường bộ 2008 (hết hiệu lực) | Không | /blog/huong-dan/dat-coc-the-nao/ | có |  |
 | đặt thuê xe máy online | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | (trang bán hàng / Google Business Profile) |  | Chưa có trang đích rõ |
 | đi hồ tây bằng xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/dia-phuong/hoang-hon-ho-tay/ | có |  |
 | đi phố cổ hà nội bằng xe máy | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) | /blog/dia-phuong/ca-phe-pho-co/ | có |  |
 | đi xe máy xuyên việt | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/dia-phuong/hue-xuyen-viet/ | có |  |
 | kiểm tra xe máy khi thuê | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/huong-dan/kiem-tra-xe-khi-nhan/ | có |  |
-| kinh nghiệm lái xe máy ở hà nội | có |  |  | Các bước đánh số (3–7 bước) + lưu ý |  | Có (Hà Nội / local pack) | /blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai/ | có | Chưa dẫn văn bản pháp luật |
-| tai nạn khi đi xe thuê ai chịu trách nhiệm | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cho-nguoi-moi/ | có | Chưa dẫn văn bản pháp luật |
+| kinh nghiệm lái xe máy ở hà nội | có |  |  | Các bước đánh số (3–7 bước) + lưu ý |  | Có (Hà Nội / local pack) | /blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai/ | có |  |
+| tai nạn khi đi xe thuê ai chịu trách nhiệm | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | /blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cho-nguoi-moi/ | có |  |
 | thuê xe đạp điện hà nội | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Có (Hà Nội / local pack) |  |  | Chưa có trang đích rõ |
 | thuê xe máy cho người nước ngoài | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết | Luật Giao thông đường bộ 2008 (hết hiệu lực) | Không | /blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/ | có |  |
 | thuê xe máy đi hà giang | có |  |  | Trả lời ngắn trong đoạn đầu + mục chi tiết |  | Không | (trang bán hàng / Google Business Profile) |  | Chưa có trang đích rõ |

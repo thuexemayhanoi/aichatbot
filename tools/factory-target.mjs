@@ -3,8 +3,10 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { RECEIPTS_PATH, receiptValid } from './factory-verification.mjs';
+import { MATRIX_ROWS } from './matrix-size.mjs';
 
-export const PUBLICATION_TARGET = 2000;
+/** Every matrix row (2.000 foundation rows + the owner-approved SEO rows) is a publication target. */
+export const PUBLICATION_TARGET = MATRIX_ROWS;
 const ROOT = process.env.MOTOAI_FACTORY_ROOT ?? join(dirname(fileURLToPath(import.meta.url)), '..');
 
 export function publicationBudget(rows, entries, target = PUBLICATION_TARGET) {

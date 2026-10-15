@@ -8,7 +8,7 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 
 ### bao nhiêu tuổi được đi xe máy điện
 
-Cụm K09; 4 trang audit; điểm yếu TB 4.5/trang; volume 3.080; hành động: Bài mới sau khi đối chiếu văn bản gốc; trang của ta: (bài mới); vị trí website: —.
+Cụm K09; 4 trang audit; điểm yếu TB 4.5/trang; volume 3.080; hành động: Bổ sung mục/FAQ vào bài đích (review body); trang của ta: /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/; vị trí website: —.
 
 Điểm yếu nhiều nhất:
 - Không có mục câu hỏi thường gặp / FAQPage (4/4)
@@ -22,114 +22,6 @@ Trang tốt hơn (không sao chép, viết từ nguồn gốc):
 - Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
 - Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
 - Ngày cập nhật hiển thị + dateModified trong schema
-- Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
-- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
-
-### xe máy điện có cần bằng lái không
-
-Cụm K09; 4 trang audit; điểm yếu TB 2.5/trang; volume 3.270; hành động: Bài mới sau khi đối chiếu văn bản gốc; trang của ta: (bài mới); vị trí website: —.
-
-Điểm yếu nhiều nhất:
-- Không có ngày đăng/cập nhật trong metadata (3/4)
-- Không có mục câu hỏi thường gặp / FAQPage (3/4)
-- Chủ đề pháp lý nhưng không nêu văn bản pháp luật nào (1/4)
-- Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (1/4)
-
-Trang tốt hơn (không sao chép, viết từ nguồn gốc):
-- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
-- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
-- Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
-- Ngày cập nhật hiển thị + dateModified trong schema
-- Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
-- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
-
-### thuê xe máy không cần bằng lái
-
-Cụm K09; 3 trang audit; điểm yếu TB 1.3/trang; volume 3.270; hành động: Bài mới sau khi đối chiếu văn bản gốc; trang của ta: (bài mới); vị trí website: —.
-
-Điểm yếu nhiều nhất:
-- Không có mục câu hỏi thường gặp / FAQPage (2/3)
-- Chủ đề pháp lý nhưng không nêu văn bản pháp luật nào (1/3)
-- Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (1/3)
-
-Trang tốt hơn (không sao chép, viết từ nguồn gốc):
-- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
-- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
-- Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
-- Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
-- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
-
-### lỗi không gương xe máy
-
-Cụm K10; 4 trang audit; điểm yếu TB 1.5/trang; volume 2.400; hành động: Cân nhắc tách bài riêng; trang của ta: /blog/an-toan/guong-chieu-hau-an-toan/; vị trí website: —.
-
-Điểm yếu nhiều nhất:
-- Không có ngày đăng/cập nhật trong metadata (2/4)
-- Không có mục câu hỏi thường gặp / FAQPage (2/4)
-- Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (1/4)
-- Chỉ dẫn Nghị định 100/2019 (đã bị thay bởi Nghị định 168/2024 từ 01/01/2025) (1/4)
-
-Trang tốt hơn (không sao chép, viết từ nguồn gốc):
-- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
-- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
-- Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
-- Ngày cập nhật hiển thị + dateModified trong schema
-- Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
-- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
-
-### các loại bằng lái xe máy
-
-Cụm K09; 5 trang audit; điểm yếu TB 4/trang; volume 1.000; hành động: Bài mới sau khi đối chiếu văn bản gốc; trang của ta: (bài mới); vị trí website: —.
-
-Điểm yếu nhiều nhất:
-- Không có ngày đăng/cập nhật trong metadata (5/5)
-- Không có mục câu hỏi thường gặp / FAQPage (5/5)
-- Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (4/5)
-- Truy vấn cần bảng số liệu/giá nhưng trang không có bảng (3/5)
-
-Trang tốt hơn (không sao chép, viết từ nguồn gốc):
-- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
-- Bảng tổng hợp (mức phạt/giá/loại xe) có cột nguồn và ngày hiệu lực
-- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
-- Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
-- Ngày cập nhật hiển thị + dateModified trong schema
-- Bài hướng dẫn 1.200–1.800 từ có cấu trúc H2 theo ý định (điều kiện → mức → cách xử lý)
-- Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
-- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
-
-### cấm xe máy
-
-Cụm K09; 3 trang audit; điểm yếu TB 2.7/trang; volume 1.000; hành động: Bài mới sau khi đối chiếu văn bản gốc; trang của ta: (bài mới); vị trí website: —.
-
-Điểm yếu nhiều nhất:
-- Không có mục câu hỏi thường gặp / FAQPage (3/3)
-- Chủ đề pháp lý nhưng không nêu văn bản pháp luật nào (3/3)
-- Bài dài nhưng ít tiêu đề H2 (khó quét) (1/3)
-- Không có ngày đăng/cập nhật trong metadata (1/3)
-
-Trang tốt hơn (không sao chép, viết từ nguồn gốc):
-- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
-- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
-- Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
-- Ngày cập nhật hiển thị + dateModified trong schema
-- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
-
-### bằng lái xe máy là hạng gì
-
-Cụm K09; 3 trang audit; điểm yếu TB 2.3/trang; volume 1.270; hành động: Bài mới sau khi đối chiếu văn bản gốc; trang của ta: (bài mới); vị trí website: —.
-
-Điểm yếu nhiều nhất:
-- Không có ngày đăng/cập nhật trong metadata (2/3)
-- Không có mục câu hỏi thường gặp / FAQPage (2/3)
-- Chủ đề pháp lý nhưng không nêu văn bản pháp luật nào (1/3)
-- Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (1/3)
-
-Trang tốt hơn (không sao chép, viết từ nguồn gốc):
-- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
-- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
-- Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
-- Ngày cập nhật hiển thị + dateModified trong schema
-- Bài hướng dẫn 1.200–1.800 từ có cấu trúc H2 theo ý định (điều kiện → mức → cách xử lý)
 - Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
 - Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
 
@@ -148,6 +40,25 @@ Trang tốt hơn (không sao chép, viết từ nguồn gốc):
 - Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
 - Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
 - Ngày cập nhật hiển thị + dateModified trong schema
+- Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
+- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
+
+### bằng lái xe máy là hạng gì
+
+Cụm K09; 3 trang audit; điểm yếu TB 2.3/trang; volume 1.270; hành động: Đưa cụm từ chính vào title/meta (article-meta); trang của ta: /blog/an-toan/cac-loai-bang-lai-xe-may/; vị trí website: —.
+
+Điểm yếu nhiều nhất:
+- Không có ngày đăng/cập nhật trong metadata (2/3)
+- Không có mục câu hỏi thường gặp / FAQPage (2/3)
+- Chủ đề pháp lý nhưng không nêu văn bản pháp luật nào (1/3)
+- Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (1/3)
+
+Trang tốt hơn (không sao chép, viết từ nguồn gốc):
+- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
+- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
+- Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
+- Ngày cập nhật hiển thị + dateModified trong schema
+- Bài hướng dẫn 1.200–1.800 từ có cấu trúc H2 theo ý định (điều kiện → mức → cách xử lý)
 - Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
 - Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
 
@@ -179,6 +90,26 @@ Cụm K10; 3 trang audit; điểm yếu TB 5.3/trang; volume 0; hành động: T
 
 Trang tốt hơn (không sao chép, viết từ nguồn gốc):
 - Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
+- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
+- Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
+- Ngày cập nhật hiển thị + dateModified trong schema
+- Bài hướng dẫn 1.200–1.800 từ có cấu trúc H2 theo ý định (điều kiện → mức → cách xử lý)
+- Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
+- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
+
+### các loại bằng lái xe máy
+
+Cụm K09; 5 trang audit; điểm yếu TB 4/trang; volume 1.000; hành động: Giữ nguyên; trang của ta: /blog/an-toan/cac-loai-bang-lai-xe-may/; vị trí website: —.
+
+Điểm yếu nhiều nhất:
+- Không có ngày đăng/cập nhật trong metadata (5/5)
+- Không có mục câu hỏi thường gặp / FAQPage (5/5)
+- Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (4/5)
+- Truy vấn cần bảng số liệu/giá nhưng trang không có bảng (3/5)
+
+Trang tốt hơn (không sao chép, viết từ nguồn gốc):
+- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
+- Bảng tổng hợp (mức phạt/giá/loại xe) có cột nguồn và ngày hiệu lực
 - Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
 - Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
 - Ngày cập nhật hiển thị + dateModified trong schema
@@ -491,6 +422,23 @@ Trang tốt hơn (không sao chép, viết từ nguồn gốc):
 - Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
 - Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
 
+### cấm xe máy
+
+Cụm K09; 3 trang audit; điểm yếu TB 2.7/trang; volume 1.000; hành động: Giữ nguyên; trang của ta: /blog/an-toan/cam-xe-may-xang-vanh-dai-1/; vị trí website: —.
+
+Điểm yếu nhiều nhất:
+- Không có mục câu hỏi thường gặp / FAQPage (3/3)
+- Chủ đề pháp lý nhưng không nêu văn bản pháp luật nào (3/3)
+- Bài dài nhưng ít tiêu đề H2 (khó quét) (1/3)
+- Không có ngày đăng/cập nhật trong metadata (1/3)
+
+Trang tốt hơn (không sao chép, viết từ nguồn gốc):
+- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
+- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
+- Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
+- Ngày cập nhật hiển thị + dateModified trong schema
+- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
+
 ### hợp đồng thuê xe máy
 
 Cụm K04; 3 trang audit; điểm yếu TB 2.7/trang; volume 310; hành động: Giữ nguyên; trang của ta: /blog/thue-xe/hop-dong-thue-xe-may/; vị trí website: —.
@@ -592,6 +540,24 @@ Cụm K07; 2 trang audit; điểm yếu TB 2.5/trang; volume —; hành động:
 Trang tốt hơn (không sao chép, viết từ nguồn gốc):
 - Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
 - Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
+- Ngày cập nhật hiển thị + dateModified trong schema
+- Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
+- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
+
+### xe máy điện có cần bằng lái không
+
+Cụm K09; 4 trang audit; điểm yếu TB 2.5/trang; volume 3.270; hành động: Giữ nguyên; trang của ta: /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/; vị trí website: —.
+
+Điểm yếu nhiều nhất:
+- Không có ngày đăng/cập nhật trong metadata (3/4)
+- Không có mục câu hỏi thường gặp / FAQPage (3/4)
+- Chủ đề pháp lý nhưng không nêu văn bản pháp luật nào (1/4)
+- Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (1/4)
+
+Trang tốt hơn (không sao chép, viết từ nguồn gốc):
+- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
+- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
+- Trích điều khoản gốc (Luật 36/2024/QH15, Nghị định 168/2024/NĐ-CP) qua data/seo/legal-facts.json, ghi ngày đối chiếu
 - Ngày cập nhật hiển thị + dateModified trong schema
 - Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
 - Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
@@ -707,6 +673,41 @@ Cụm K07; 7 trang audit; điểm yếu TB 2.3/trang; volume 530; hành động:
 - Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (5/7)
 - Bài dài nhưng ít tiêu đề H2 (khó quét) (2/7)
 - Không có ngày đăng/cập nhật trong metadata (2/7)
+
+Trang tốt hơn (không sao chép, viết từ nguồn gốc):
+- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
+- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
+- Ngày cập nhật hiển thị + dateModified trong schema
+- Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
+- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
+
+### ứng dụng thuê xe máy
+
+Cụm K01; 3 trang audit; điểm yếu TB 2.3/trang; volume 30; hành động: Giữ nguyên; trang của ta: /blog/xe-dien/ung-dung-thue-xe-may-dien/; vị trí website: —.
+
+Điểm yếu nhiều nhất:
+- Không có mục câu hỏi thường gặp / FAQPage (2/3)
+- Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (2/3)
+- Nội dung mỏng (< 600 từ phần chính) (2/3)
+- Không có ngày đăng/cập nhật trong metadata (1/3)
+
+Trang tốt hơn (không sao chép, viết từ nguồn gốc):
+- Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích
+- Mục "Câu hỏi thường gặp" 4–6 câu lấy từ PAA/tìm kiếm liên quan
+- Ngày cập nhật hiển thị + dateModified trong schema
+- Bài hướng dẫn 1.200–1.800 từ có cấu trúc H2 theo ý định (điều kiện → mức → cách xử lý)
+- Schema Article + BreadcrumbList (đã có trong builder) và FAQ bằng H3 dưới mục câu hỏi
+- Liên kết nội bộ tới pillar của cụm và tới trang chuyển đổi (/gia-thue/, /lien-he/) đúng ngữ cảnh
+
+### thuê xe máy hà nội
+
+Cụm LANDSCAPE; 6 trang audit; điểm yếu TB 2.2/trang; volume —; hành động: —; trang của ta: —; vị trí website: —.
+
+Điểm yếu nhiều nhất:
+- Không có mục câu hỏi thường gặp / FAQPage (5/6)
+- Không có schema bài viết (Article/NewsArticle/BlogPosting/FAQPage) (4/6)
+- Bài dài nhưng ít tiêu đề H2 (khó quét) (2/6)
+- Không có ngày đăng/cập nhật trong metadata (2/6)
 
 Trang tốt hơn (không sao chép, viết từ nguồn gốc):
 - Trả lời thẳng trong 2–3 câu đầu (số liệu/điều kiện) rồi mới giải thích

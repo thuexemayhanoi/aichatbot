@@ -2,7 +2,7 @@
   "$schema": "motoai/seo-article-meta@1",
   "note": "Reviewed Vietnamese-only SEO metadata (primary keyword, <title>/H1, meta description) for PUBLISHED articles. Applied by tools/build-blog.mjs via tools/seo-meta.mjs; data/blog/published.json, article bodies, slugs and URLs are untouched. Remove an entry to roll that article back to its manifest metadata.",
   "language": "vi",
-  "reviewed": "2026-10-14",
+  "reviewed": "2026-10-15",
   "articles": {
     "BA-0001": {"keyword": "app thuê xe máy là gì", "title": "App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục", "description": "App thuê xe máy là gì: ứng dụng web hoặc trợ lý trực tuyến giúp hỏi giá, chọn xe, nắm thủ tục; khác app cài đặt ra sao, Agent giúp gì và dữ liệu nằm ở đâu."},
     "BA-0002": {"keyword": "thuê xe máy giá rẻ", "title": "Thuê xe máy giá rẻ: tính tổng chi phí và tránh phí phát sinh", "description": "Thuê xe máy giá rẻ không chỉ là so giá niêm yết. Hướng dẫn tính tổng chi phí chuyến đi, đọc bảng giá tham khảo ngày, tuần, tháng và kiểm tra trước khi đặt."},
@@ -2003,6 +2003,10 @@
     "BA-1997": {"keyword": "thuê xe ở ga tàu sân bay giá tốt", "title": "Thuê xe máy ở ga tàu, sân bay giá tốt: tính tổng chi phí", "description": "Muốn thuê xe máy ở ga tàu, sân bay giá tốt cần nhìn tổng chi phí. Giải thích vì sao nhận xe tại ga thường tốn hơn và so sánh bốn phương án nhận xe."},
     "BA-1998": {"keyword": "đi Ba Vì trong ngày bằng xe máy", "title": "Đi Ba Vì trong ngày bằng xe máy: chọn điểm và giờ quay đầu", "description": "Đi Ba Vì trong ngày bằng xe máy: chọn một cụm điểm thay vì đi hết, đặt giờ quay đầu, giữ an toàn trên đường núi, dự trù ngân sách và phương án khi trời xấu."},
     "BA-1999": {"keyword": "so sánh giá thuê xe máy và taxi", "title": "So sánh giá thuê xe máy và taxi: tính tổng chi phí theo lịch", "description": "So sánh giá thuê xe máy và taxi bằng tổng chi phí cả chuyến: năm bước lấy số liệu thật, bốn kịch bản thường gặp và khi nào taxi mới là phương án hợp lý."},
-    "BA-2000": {"keyword": "đi thạch thất sơn tây trong ngày", "title": "Đi Thạch Thất và Sơn Tây trong ngày: lịch mẫu và giờ trả xe", "description": "Đi Thạch Thất và Sơn Tây trong ngày: hai cách bắt đầu, lịch khi xuất phát sớm hoặc nhận xe lúc cửa hàng mở, tính giờ về để trả xe đúng hẹn và chọn xe."}
+    "BA-2000": {"keyword": "đi thạch thất sơn tây trong ngày", "title": "Đi Thạch Thất và Sơn Tây trong ngày: lịch mẫu và giờ trả xe", "description": "Đi Thạch Thất và Sơn Tây trong ngày: hai cách bắt đầu, lịch khi xuất phát sớm hoặc nhận xe lúc cửa hàng mở, tính giờ về để trả xe đúng hẹn và chọn xe."},
+    "BA-2001": {"keyword": "xe máy điện có cần bằng lái không", "title": "Xe máy điện có cần bằng lái không? Tuổi được đi theo luật 2025", "description": "Xe máy điện có cần bằng lái không tùy công suất: đến 4 kW là xe gắn máy, đủ 16 tuổi được đi, không cần bằng; trên 4 kW cần bằng hạng A1 theo Luật 36/2024/QH15."},
+    "BA-2002": {"keyword": "các loại bằng lái xe máy", "title": "Các loại bằng lái xe máy 2026: hạng A1, A, B1 và bằng A1 A2 cũ", "description": "Các loại bằng lái xe máy theo Luật 36/2024/QH15 gồm hạng A1, A và B1; bằng A1, A2 cấp trước 2025 dùng đến hết hạn. Kèm bảng đối chiếu hạng bằng với xe thuê."},
+    "BA-2003": {"keyword": "lỗi không gương xe máy", "title": "Lỗi không gương xe máy phạt bao nhiêu? Mức phạt Nghị định 168", "description": "Lỗi không gương xe máy bị phạt 400.000–600.000 đồng theo điểm a khoản 1 Điều 14 Nghị định 168/2024/NĐ-CP từ 01/01/2025; cách kiểm tra gương trước khi nhận xe thuê."},
+    "BA-2004": {"keyword": "cấm xe máy xăng vành đai 1", "title": "Cấm xe máy xăng Vành đai 1 từ 1/7/2026: lộ trình và chọn xe thuê", "description": "Cấm xe máy xăng Vành đai 1 Hà Nội theo Chỉ thị 20/CT-TTg và Nghị quyết 57/2025/NQ-HĐND: lộ trình từ 1/7/2026, 9 phường áp dụng và cách chọn xe thuê phù hợp."}
   }
 }

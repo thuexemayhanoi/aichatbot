@@ -10,14 +10,14 @@
  "actions": {
   "FIX_FIRST": 0,
   "NEW_ARTICLE": 2,
-  "ADD_SECTION": 3,
-  "CONSIDER_STANDALONE": 1,
-  "ALIGN_META": 0,
+  "ADD_SECTION": 4,
+  "CONSIDER_STANDALONE": 0,
+  "ALIGN_META": 1,
   "REVIEW_TARGET": 0,
   "LOCAL_ONLY": 10,
   "MONITOR": 53,
-  "KEEP": 42,
-  "NEW_ARTICLE_VERIFY": 6
+  "KEEP": 47,
+  "NEW_ARTICLE_VERIFY": 0
  },
  "curated_topics": 3,
  "content_flags": {
@@ -35,30 +35,30 @@
    "BA-0015"
   ]
  },
- "decisions": 7,
+ "decisions": 17,
  "research_queue": {
   "serp": 0,
   "volume": 0,
   "asked_without_number": 21
  },
- "proposals": 4,
+ "proposals": 0,
  "health": {
   "site": {
    "pass": true,
    "broken": 0,
-   "checked": 221840,
-   "sitemap": 2129,
-   "published": 2000
+   "checked": 222238,
+   "sitemap": 2133,
+   "published": 2004
   },
   "score": {
    "total": 99.7,
    "pass": true,
-   "issues": 494
+   "issues": 493
   },
   "matrix": {
-   "urls": 2129,
+   "urls": 2133,
    "by_status": {
-    "DONE": 2129,
+    "DONE": 2133,
     "KEEP": 0,
     "TECH-DONE": 0,
     "PLANNED": 0
@@ -70,16 +70,17 @@
   "coverage": {
    "pass": true,
    "counts": {
-    "matrix": 2000,
+    "matrix": 2006,
     "statuses": {
-     "PUBLISHED": 2000
+     "PUBLISHED": 2004,
+     "PLANNED": 2
     },
-    "published": 2000,
-    "sitemap": 2129,
-    "uniqueSitemap": 2129,
-    "publishedInSitemap": 2000,
+    "published": 2004,
+    "sitemap": 2133,
+    "uniqueSitemap": 2133,
+    "publishedInSitemap": 2004,
     "otherSitemapUrls": 129,
-    "manifestIds": 2000,
+    "manifestIds": 2004,
     "gscPerformancePageRows": null
    }
   },

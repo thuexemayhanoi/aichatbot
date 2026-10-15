@@ -42,6 +42,7 @@ import { fileURLToPath } from 'node:url';
 import { SITE } from '../src/config/site.js';
 import { taxonomy, viSlug } from './taxonomy.mjs';
 import { parseCsv } from './seo-index-coverage.mjs';
+import { FOUNDATION_ROWS } from './matrix-size.mjs';
 import { engineContext, runEngine, normUrl, landing, ACTION_LABEL } from './seo-engine.mjs';
 import { normKw, toks, canon, fmt, mdCell, sum, resultKind, KIND_LABEL, STATUS_LABEL } from './seo-cold-start.mjs';
 
@@ -54,6 +55,9 @@ export const AUDITS_PATH = `${DATA_DIR}/page-audits.json`;
 export const BACKLINKS_PATH = `${DATA_DIR}/backlink-sources.json`;
 const TOP = 10;
 const LEGAL_CLUSTERS = new Set(['K09', 'K10', 'K11']);
+const LEGAL_Q_RX = /phạt|lỗi|luật|quy định|cấm|bằng lái|giấy phép|nghị định|chuẩn|bảo hiểm|trách nhiệm|tuổi|nồng độ cồn/iu;
+/** K09/K11 queries are legal topics; K10 (riding safety) only when the query asks about a fine, rule or standard. */
+export const legalQuery = (query, cluster) => LEGAL_CLUSTERS.has(cluster) && (cluster !== 'K10' || LEGAL_Q_RX.test(String(query)));
 const SOCIAL = new Set(['social', 'video', 'appstore']);
 
 const read = (root, p) => readFileSync(join(root, p), 'utf8');
@@ -68,7 +72,7 @@ const table = (rows, cols) => [`| ${cols.join(' | ')} |`, `| ${cols.map(() => '-
 const TIER = (score) => (score >= 1000 ? 'P0' : score >= 100 ? 'P1' : 'P2');
 const stripTags = (h) => String(h).replace(/<(script|style|noscript|svg|template)[^>]*>[\s\S]*?<\/\1>/gi, '').replace(/<[^>]+>/g, ' ')
   .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim();
-const LEGAL_RX = /(nghị định\s*\d+\/\d{4}\/NĐ-CP|luật\s+(?:trật tự, an toàn giao thông đường bộ|giao thông đường bộ)[^.;,]{0,20}|thông tư\s*\d+\/\d{4}\/TT-[A-Z]+|quyết định\s*\d+\/\d{4}\/QĐ-[A-Z]+|nghị quyết\s*\d+\/\d{4}\/NQ-[A-ZĐ]+)/giu;
+const LEGAL_RX = /(nghị định\s*\d+\/\d{4}\/NĐ-CP|luật\s+(?:trật tự, an toàn giao thông đường bộ|giao thông đường bộ)[^.;,]{0,20}|thông tư\s*\d+\/\d{4}\/TT-[A-Z]+|quyết định\s*\d+\/\d{4}\/QĐ-[A-Z]+|nghị quyết\s*\d+\/\d{4}\/NQ-[A-ZĐ]+|bộ luật\s+(?:dân sự|hình sự)[^.;,]{0,25}|luật\s+[^.;,]{0,60}?số\s*\d+\/\d{4}\/QH\d+)/giu;
 const ARTICLE_SCHEMA = new Set(['Article', 'NewsArticle', 'BlogPosting', 'FAQPage', 'HowTo', 'QAPage']);
 const CORE_STOP = new Set(['là', 'gì', 'bao', 'nhiêu', 'không', 'có', 'của', 'và', 'cho', 'khi', 'ở', 'tại', 'năm', 'mới', 'nhất', 'được', 'cần', 'nào', 'thế', 'như', 'theo']);
 const coreWords = (q) => toks(q).filter((t) => !CORE_STOP.has(t));
@@ -373,12 +377,15 @@ export function topicClusterMatrix(b) {
     const zeroInbound = articles.filter((r) => { const k = linkCounts(r['Internal Links']); return k.context + k.related + k.hub === 0; }).length;
     // One intent per URL: two groups with different SERP intents landing on one page.
     const byTarget = new Map();
-    for (const g of groups.filter((x) => x.target && !['NEW_ARTICLE', 'NEW_ARTICLE_VERIFY', 'LOCAL_ONLY'].includes(x.action))) {
+    // Only SERP-observed intents of groups the site pursues can collide; tool-only labels and local-pack queries left to the sales page do not.
+    for (const g of groups.filter((x) => x.target && !['NEW_ARTICLE', 'NEW_ARTICLE_VERIFY', 'LOCAL_ONLY'].includes(x.action) && x.serp.queries.length && !/\(công cụ\)|^—$/.test(x.intent) && x.intent !== 'Giao dịch – địa phương')) {
       const t = byTarget.get(g.target.id) ?? { id: g.target.id, url: g.target.url, groups: [] };
       t.groups.push(g);
       byTarget.set(g.target.id, t);
     }
-    const mixed = [...byTarget.values()].filter((t) => new Set(t.groups.map((g) => g.intent)).size > 1);
+    // Groups settled on one page by a done decision (one reviewed topic answering several questions) are merged on purpose.
+    const mixed = [...byTarget.values()].filter((t) => new Set(t.groups.map((g) => g.intent)).size > 1
+      && !t.groups.every((g) => g.decision?.status === 'done' && g.decision.target === t.id));
     const competing = groups.filter((g) => g.competing.length).map((g) => `${g.head}: ${g.competing.join(' ')}`);
     const demand = sum(groups.map((g) => g.demand));
     const open = groups.filter((g) => !['KEEP', 'MONITOR', 'LOCAL_ONLY'].includes(g.action) && !['done', 'rejected', 'deferred'].includes(g.decision?.status));
@@ -405,20 +412,26 @@ const featuresOf = (p) => ({
   year: (p.title_years ?? []).length > 0 || /20\d\d/.test(String(p.title ?? ''))
 });
 
+/** Pages with this many H2 are never flagged for structure, however long the top pages run. */
+export const H2_CAP = 8;
+/** …and only when its sections run long on average (words per H2) — a 7-section, 2.000-word article is scannable. */
+export const WORDS_PER_H2 = 300;
+
 /** What this site's page still lacks against the median of the ranking pages. */
 export function benchmarkGaps(own, bench, { query = '', cluster = '' } = {}) {
   const gaps = [];
   if (!own) return ['Chưa có trang đích (bài mới)'];
-  if (bench.words != null && own.words < 0.8 * bench.words) gaps.push(`Ít từ hơn trung vị top (${own.words} < ${bench.words})`);
+  if (bench.words != null && own.words < 0.8 * bench.words) gaps.push(`Ít từ hơn trung vị top (${own.words} < ${bench.words}) — quan sát, không viết dài để bằng đối thủ`);
   if (bench.faq >= 50 && !own.faq) gaps.push('Thiếu mục câu hỏi thường gặp (≥ 50% top có)');
   if (bench.tables >= 1 && !own.tables) gaps.push('Thiếu bảng (trung vị top có bảng)');
-  if (bench.images >= 2 && own.images < 1) gaps.push(`Không có ảnh (trung vị top ${bench.images})`);
+  if (bench.images >= 2 && own.images < 1) gaps.push(`(quan sát) Không có ảnh — trung vị top ${bench.images}; site không dùng ảnh minh họa trong bài, không hành động`);
   if (bench.legal >= 50 && !own.legal) gaps.push('Thiếu trích dẫn văn bản pháp luật (≥ 50% top có)');
-  if (bench.h2 != null && own.h2 < Math.max(3, bench.h2 - 2)) gaps.push(`Ít H2 hơn top (${own.h2} vs trung vị ${bench.h2})`);
+  const longSections = own.words / Math.max(1, own.h2) > WORDS_PER_H2;
+  if (bench.h2 != null && own.h2 < Math.max(3, Math.min(H2_CAP, bench.h2 - 2)) && (longSections || own.h2 < 3)) gaps.push(`Ít H2 hơn top (${own.h2} vs trung vị ${bench.h2}; mục dài TB ${Math.round(own.words / Math.max(1, own.h2))} từ)`);
   const core = coreWords(query);
   const first = canon(`${own.h1?.[0] ?? ''} ${own.lead ?? ''} ${own.first_paragraph ?? ''}`);
   if (core.length && core.filter((t) => first.includes(t)).length < Math.ceil(core.length * 0.5)) gaps.push('Đoạn mở đầu chưa trả lời thẳng truy vấn (từ khóa chính vắng)');
-  if (LEGAL_CLUSTERS.has(cluster) && !own.legal) gaps.push('Chủ đề pháp lý: cần dữ kiện đã đối chiếu (legal-facts)');
+  if (legalQuery(query, cluster) && !own.legal) gaps.push('Chủ đề pháp lý: cần dữ kiện đã đối chiếu (legal-facts)');
   return gaps;
 }
 
@@ -495,7 +508,7 @@ export function aiSearchMatrix(b) {
     else {
       if (!answerFirst) gaps.push('Đoạn mở đầu chưa nêu câu trả lời');
       if (!own.faq_heading) gaps.push('Chưa có mục câu hỏi thường gặp (H2 + H3 câu hỏi)');
-      if (LEGAL_CLUSTERS.has(s.cluster) && !(own.legal_sources ?? []).length) gaps.push('Chưa dẫn văn bản pháp luật');
+      if (legalQuery(s.query, s.cluster) && !(own.legal_sources ?? []).length) gaps.push('Chưa dẫn văn bản pháp luật');
       if (ANSWER_FORM(s.query).includes('bảng') && !own.tables) gaps.push('Chưa có bảng số liệu');
     }
     rows.push({
@@ -609,7 +622,7 @@ export function urlArchitecture(b) {
     const pillar = /^Pillar/i.test(cannib) || b.clusters.some((c) => c.pillar && c.pillar === path) || pillarIds.has(id);
     const position = r['Page Type'] === 'Bài viết' ? (pillar ? 'Pillar (trang đích của nhóm từ khóa / pillar cụm)' : /^Hỗ trợ pillar/i.test(cannib) ? 'Supporting của pillar họ chủ đề' : 'Supporting') : POSITION_OF(r['Page Type']);
     const kw = normKw(r['Primary Keyword'] ?? '');
-    if (kw) byKeyword.set(kw, [...(byKeyword.get(kw) ?? []), r.URL]);
+    if (kw && r['Page Type'] === 'Bài viết') byKeyword.set(kw, [...(byKeyword.get(kw) ?? []), r.URL]);
     return {
       url: path, type: r['Page Type'], keyword: r['Primary Keyword'] ?? '', intent: r['Search Intent'] ?? '', cluster: String(r['Topic Cluster'] ?? '').split(' ')[0],
       position, goal: GOAL_OF(r['Page Type'], r.Category), groups: groups.map((g) => g.head), serpIntents: [...new Set(groups.map((g) => g.intent))], id, links: r['Internal Links'] ?? '', cannibalization: cannib,
@@ -649,11 +662,12 @@ export function masterMatrix(b, parts) {
       verify: 'tools/seo-cold-start.mjs với snapshot mới (data/seo/serp-snapshots/) + index coverage', plan: weak?.plan ?? [], gaps: bench?.gaps ?? [] });
   }
   // 2. Benchmark gaps of pages that already own a query (W6).
-  for (const r of w6.rows.filter((x) => x.own && x.gaps.length && !items.some((i) => i.target === x.target))) {
+  const actionableGap = (g) => !g.startsWith('(quan sát)') && !/^Ít từ hơn trung vị/.test(g);
+  for (const r of w6.rows.filter((x) => x.own && x.gaps.some(actionableGap) && !items.some((i) => i.target === x.target))) {
     const score = Math.round((r.priority || 50) * 0.7);
     push({ weapon: 'W6', tier: TIER(score), score, action: ACTION_LABEL.ADD_SECTION, pageType: 'Bổ sung cấu trúc cho bài hiện có', keyword: r.query, target: r.target, cluster: r.cluster,
       evidence: `${r.audited} trang top 10 đã audit: trung vị ${fmt(r.bench.words)} từ, FAQ ${r.bench.faq ?? 0}%, bảng ${r.bench.tables ?? 0}, ảnh ${r.bench.images ?? 0}; trang này: ${fmt(r.own.words)} từ, FAQ ${r.own.faq ? 'có' : 'không'}`,
-      confidence: 'OBSERVED', owner: 'AI writer (seo-body-review, không đổi URL)', kpi: 'Trang đạt ≥ trung vị top về từ/FAQ/bảng; vị trí quan sát không giảm', verify: 'node tools/seo-battle-matrix.mjs (W6 gaps = 0 cho truy vấn)', plan: r.gaps, gaps: r.gaps });
+      confidence: 'OBSERVED', owner: 'AI writer (seo-body-review, không đổi URL)', kpi: 'Trang có FAQ/bảng/nguồn như top; vị trí quan sát không giảm', verify: 'node tools/seo-battle-matrix.mjs (W6 gaps = 0 cho truy vấn)', plan: r.gaps.filter(actionableGap), gaps: r.gaps });
   }
   // 3. Answer-first / FAQ for AI search (W7).
   for (const r of w7.rows.filter((x) => x.target && !x.target.startsWith('(') && x.gaps.length && !items.some((i) => i.target === x.target))) {
@@ -684,10 +698,11 @@ export function masterMatrix(b, parts) {
     { phase: '31–60 ngày', items: items.filter((i) => i.tier === 'P1').map((i) => i.id), goals: ['Bổ sung FAQ/bảng/nguồn cho trang đích P1', 'Tách ý định các URL trộn', 'Đề nghị đưa cửa hàng vào các bài danh sách OTA/du lịch'] },
     { phase: '61–90 ngày', items: items.filter((i) => i.tier === 'P2').map((i) => i.id), goals: ['Việc P2 và các nhóm chưa đo volume (hàng đợi nghiên cứu engine 06)', 'Chụp SERP vòng 3; nếu đã có Search Console → chuyển DATA-DRIVEN'] }
   ];
+  const seoPublished = b.cs.index.filter((a) => /^BA-\d+$/.test(a.id) && Number(a.id.slice(3)) > FOUNDATION_ROWS).length; // cs.index = published articles
   const kpis = [
-    { kpi: 'Bài P0 đã đăng (PUBLISHED, legal gate PASS)', baseline: 0, target30: tiers.P0, how: 'data/blog/published.json + data/seo/legal-facts.json' },
+    { kpi: 'Bài SEO mới đã đăng từ ma trận (BA-2001+, PUBLISHED)', baseline: seoPublished, target30: seoPublished + items.filter((i) => i.weapon === 'W4' && ['P0', 'P1'].includes(i.tier)).length, how: 'data/blog/content-matrix.csv (hàng sau nền 2.000) + data/blog/published.json' },
     { kpi: 'Nhóm từ khóa ưu tiên có trang trong top 20 (SERP chụp)', baseline: w4.rows.filter((r) => r.tier && r.ownBest != null && r.ownBest <= 20).length, target30: 'tăng', how: 'data/seo/serp-snapshots/ + tools/seo-cold-start.mjs' },
-    { kpi: 'Trang đích còn gap cấu trúc theo W6', baseline: w6.rows.filter((r) => r.own && r.gaps.length).length, target30: 0, how: 'node tools/seo-battle-matrix.mjs' },
+    { kpi: 'Trang đích còn gap cấu trúc theo W6 (FAQ/bảng/nguồn/H2/mở đầu — không tính quan sát từ/ảnh)', baseline: w6.rows.filter((r) => r.own && r.gaps.some(actionableGap)).length, target30: 0, how: 'node tools/seo-battle-matrix.mjs' },
     { kpi: 'Trang đích trả lời ngay đoạn đầu (W7 answerFirst)', baseline: w7.rows.filter((r) => r.answerFirst).length, target30: w7.rows.filter((r) => r.answerFirst != null).length, how: 'W7' },
     { kpi: 'URL trong sitemap được index (coverage PASS)', baseline: 'PASS', target30: 'PASS', how: 'tools/seo-index-coverage.mjs' },
     { kpi: 'Lượt gửi IndexNow sau mỗi đợt đăng', baseline: '—', target30: 'mỗi đợt', how: '.github/workflows/indexnow.yml' },
@@ -807,7 +822,7 @@ export function render(bt) {
     ...bt.sources.serp.map((s) => `SERP Google Việt Nam: data/seo/serp-snapshots/${s.file} — ${s.queries} truy vấn, chụp ${s.collected}`),
     `Volume A: ${bt.sources.demand}`, ...bt.sources.metrics.map((m) => `Volume B + KD: ${m} (${METRICS_PATH})`), bt.sources.labs ? `Thị phần miền: ${bt.sources.labs} (${LABS_PATH})` : '',
     bt.sources.audits ? `Trang đối thủ: ${bt.sources.audits.pages} trang (${AUDITS_PATH}, ${bt.sources.audits.scraped ?? ''})` : '', ...bt.sources.backlinks.map((x) => `Backlink đối thủ: ${x} (${BACKLINKS_PATH})`),
-    'Engine 06: docs/seo/engine/ (nhóm từ khóa, trang đích, điểm ưu tiên)', 'Ma trận URL: docs/seo/seo-master-matrix.json'].filter(Boolean))}\n\n## Cách chạy\n\n\`node tools/seo-battle-matrix.mjs\` ghi lại thư mục này; \`--check\` báo lệch khi dữ liệu đổi mà báo cáo chưa sinh lại (SEO monitor cảnh báo). Mọi thay đổi trang vẫn đi qua tools/seo-body-review.mjs, data/seo/article-meta.json và quy trình owner thêm ID; rollback = git revert commit tương ứng.\n`;
+    'Engine 06: docs/seo/engine/ (nhóm từ khóa, trang đích, điểm ưu tiên)', 'Ma trận URL: docs/seo/seo-master-matrix.json'].filter(Boolean))}\n\n## Cách chạy\n\n\`node tools/seo-battle-matrix.mjs\` ghi lại thư mục này; \`--check\` báo lệch khi dữ liệu đổi mà báo cáo chưa sinh lại (SEO monitor cảnh báo). Mọi thay đổi trang vẫn đi qua tools/seo-body-review.mjs, data/seo/article-meta.json và quy trình owner thêm ID; rollback = git revert commit tương ứng.\n\nGhi chú đọc W6/W10: khoảng trống "ít từ hơn trung vị top" và "không có ảnh" chỉ là quan sát để đối chiếu — không viết dài hay chèn ảnh cho bằng đối thủ; chỉ FAQ, bảng, nguồn pháp lý, đoạn mở đầu và cấu trúc H2 (khi mục dài hơn 300 từ trung bình, ngưỡng tối đa 8 H2) mới sinh việc trong W10.\n`;
   f['battle.json'] = JSON.stringify({
     mode: bt.mode, snapshots: bt.snapshots, sources: bt.sources, counts: { competitors: w1.rows.length, selected: w1.selected.length, keywords: w2.rows.length, measured: w2.measured, weaknessRows: w3.rows.length, opportunity: w4.tiers, clusters: w5.rows.length, benchmark: w6.rows.length, ai: w7.rows.length, listingPages: w8.listingPages.length, urls: w9.total, proposed: w9.proposed.length, master: w10.tiers },
     master: w10.items.map((i) => ({ id: i.id, tier: i.tier, score: i.score, weapon: i.weapon, action: i.action, keyword: i.keyword, target: i.target, cluster: i.cluster, confidence: i.confidence, phase: i.phase })),

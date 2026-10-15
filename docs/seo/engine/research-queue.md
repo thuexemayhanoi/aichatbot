@@ -13,7 +13,7 @@
 |---|---|---|
 | — | | |
 
-Đã hỏi công cụ nhưng không có số (21 nhóm — nhu cầu rất thấp hoặc chưa ghi nhận, không phải 0): đặt thuê xe máy online; kinh nghiệm lái xe máy ở hà nội; thuê xe máy cho người nước ngoài; đặt cọc thuê xe máy; kiểm tra xe máy khi thuê; thuê xe máy ở ga hà nội; xe điện đi phố cổ; xe máy bị thủng lốp giữa đường; bằng lái a1 a2 khác gì; bảo hiểm xe máy thuê; tai nạn khi đi xe thuê ai chịu trách nhiệm; thuê xe máy long biên; cấm xe máy xăng vành đai 1; đi phố cổ hà nội bằng xe máy; xe điện bờ hồ; thuê xe máy ba đình; đi hồ tây bằng xe máy; thuê xe máy đi hà giang; thuê xe máy đi ninh bình; đi xe máy xuyên việt; xe thuê bị hỏng phải làm sao.
+Đã hỏi công cụ nhưng không có số (21 nhóm — nhu cầu rất thấp hoặc chưa ghi nhận, không phải 0): đặt thuê xe máy online; kinh nghiệm lái xe máy ở hà nội; thuê xe máy cho người nước ngoài; đặt cọc thuê xe máy; kiểm tra xe máy khi thuê; thuê xe máy ở ga hà nội; xe điện đi phố cổ; xe máy bị thủng lốp giữa đường; bằng lái a1 a2 khác gì; bảo hiểm xe máy thuê; tai nạn khi đi xe thuê ai chịu trách nhiệm; thuê xe máy long biên; đi phố cổ hà nội bằng xe máy; xe điện bờ hồ; thuê xe máy ba đình; đi hồ tây bằng xe máy; thuê xe máy đi hà giang; thuê xe máy đi ninh bình; đi xe máy xuyên việt; cấm xe máy xăng vành đai 1; xe thuê bị hỏng phải làm sao.
 
 ## 3. Đối chiếu văn bản gốc trước khi viết
 
