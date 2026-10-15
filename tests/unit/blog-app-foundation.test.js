@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { MATRIX_ROWS, FOUNDATION_ROWS } from '../../tools/matrix-size.mjs';
 const esc = (s) => String(s).replace(/&/g, '&amp;');
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -97,9 +98,9 @@ test('deriveSubtopic is deterministic and falls back to Tổng quan', () => {
   assert.equal(fb.slug, null, 'fallback never gets a hub URL');
 });
 
-test('every matrix row derives a valid cluster + subtopic (2000 rows, no exceptions)', () => {
+test('every matrix row derives a valid cluster + subtopic (all rows, no exceptions)', () => {
   const rows = parseMatrix();
-  assert.equal(rows.length, 2000);
+  assert.equal(rows.length, MATRIX_ROWS);
   for (const r of rows) {
     const cat = taxonomy.categories[r.category];
     assert.ok(cat, `row ${r.article_id} has an unknown category`);
@@ -387,11 +388,12 @@ test('LOCAL quality gate: published articles never claim an unverified locality 
 
 // ---------- Factory safety (unchanged) ----------
 
-test('factory safety: 2000 rows preserved, manifest sync intact, distribution intact', () => {
+test('factory safety: 2000 foundation rows preserved, manifest sync intact, distribution intact', () => {
   const rows = parseMatrix();
-  assert.equal(rows.length, 2000);
+  assert.equal(rows.length, MATRIX_ROWS);
   const dist = {};
-  for (const r of rows) dist[r.category] = (dist[r.category] ?? 0) + 1;
+  // The frozen 2,000-row foundation keeps its split; SEO rows are appended after it (tools/matrix-size.mjs).
+  for (const r of rows.slice(0, FOUNDATION_ROWS)) dist[r.category] = (dist[r.category] ?? 0) + 1;
   assert.deepEqual(dist, { APP: 350, RENT: 400, EV: 300, GUIDE: 300, SAFE: 250, LOCAL: 400 });
   // v64 micro loop: between a writer push and the publish workflow's derived
   // commit, the manifest may hold ONE in-flight draft (matrix row QA/PASS).

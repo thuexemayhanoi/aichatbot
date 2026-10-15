@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, writeFileSync, rmSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { MATRIX_ROWS } from '../../tools/matrix-size.mjs';
 import {
   repoSandbox, factory, selectCli, installFixture, fixtureBody, readJson, readMatrix, matrixRow, setStatus, REPO
 } from '../helpers/factory-sandbox.mjs';
@@ -184,7 +185,7 @@ test('cycle: the real repo is untouched by every sandbox cycle', () => {
   const rows = lines.slice(1).map((l) => l.split(','));
   const by = {};
   for (const c of rows) by[c[3]] = (by[c[3]] ?? 0) + 1;
-  assert.equal(rows.length, 2000, 'matrix size never changes');
+  assert.equal(rows.length, MATRIX_ROWS, 'matrix size changes only through tools/matrix-size.mjs');
   assert.ok((by.PUBLISHED ?? 0) >= 2, 'pilots stay published');
   assert.equal(by.WRITING ?? 0, 0, 'claim is local-only, never committed');
   // v64.2: production advances (PUBLISHED grows, writer drafts sit in QA),

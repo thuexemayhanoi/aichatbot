@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { MATRIX_ROWS, FOUNDATION_ROWS, SEO_ROWS } from '../../tools/matrix-size.mjs';
 
 /** Blog + SEO foundation spec: matrix, ownership, indexes, sitemap. */
 
@@ -23,25 +24,31 @@ function parseMatrix() {
 
 const EXPECTED_DIST = { APP: 350, RENT: 400, EV: 300, GUIDE: 300, SAFE: 250, LOCAL: 400 };
 
-test('content matrix has exactly 2,000 production rows with the required fields', () => {
+test('content matrix has the 2,000 production rows plus the appended SEO rows, with the required fields', () => {
   const rows = parseMatrix();
-  assert.equal(rows.length, 2000);
+  assert.equal(rows.length, MATRIX_ROWS);
+  assert.equal(rows.length, FOUNDATION_ROWS + SEO_ROWS);
+  for (const [i, r] of rows.slice(FOUNDATION_ROWS).entries()) {
+    assert.equal(r.article_id, `BA-${String(FOUNDATION_ROWS + i + 1).padStart(4, '0')}`, 'SEO rows continue the id sequence');
+    assert.ok(['PLANNED', 'WRITING', 'QA', 'PASS', 'REPAIR', 'PUBLISHED'].includes(r.status), `${r.article_id}: factory status`);
+  }
   const columns = Object.keys(rows[0]);
   for (const field of ['article_id', 'batch_id', 'category', 'status', 'primary_keyword', 'search_intent', 'working_title', 'slug', 'output_path', 'parent_hub', 'requires_sources', 'source_policy', 'author', 'repair_attempts']) {
     assert.ok(columns.includes(field), `matrix must carry ${field}`);
   }
 });
 
-test('matrix batches are exactly 40 x 50 and every batch has 50 rows', () => {
-  const rows = parseMatrix();
+test('matrix batches are exactly 40 x 50 and every batch has 50 rows (foundation); SEO rows use later batches', () => {
+  const rows = parseMatrix().slice(0, FOUNDATION_ROWS);
+  for (const r of parseMatrix().slice(FOUNDATION_ROWS)) assert.match(r.batch_id, /^B(4[1-9]|[5-9]\d)$/, `${r.article_id}: SEO batch after B40`);
   const batches = new Map();
   for (const r of rows) batches.set(r.batch_id, (batches.get(r.batch_id) ?? 0) + 1);
   assert.equal(batches.size, 40);
   for (const [id, n] of batches) assert.equal(n, 50, `batch ${id} must hold 50 rows`);
 });
 
-test('category distribution matches the agreed production split', () => {
-  const rows = parseMatrix();
+test('category distribution matches the agreed production split (foundation rows)', () => {
+  const rows = parseMatrix().slice(0, FOUNDATION_ROWS);
   const counts = {};
   for (const r of rows) counts[r.category] = (counts[r.category] ?? 0) + 1;
   assert.deepEqual(counts, EXPECTED_DIST);
@@ -56,7 +63,7 @@ test('article ids, slugs and output paths are unique and well formed', () => {
     assert.ok(r.output_path.startsWith('blog/') && r.output_path.endsWith('/index.html'));
     ids.add(r.article_id); slugs.add(r.slug); paths.add(r.output_path);
   }
-  assert.equal(ids.size, 2000); assert.equal(slugs.size, 2000); assert.equal(paths.size, 2000);
+  assert.equal(ids.size, MATRIX_ROWS); assert.equal(slugs.size, MATRIX_ROWS); assert.equal(paths.size, MATRIX_ROWS);
 });
 
 test('every row belongs to an existing category hub directory', () => {

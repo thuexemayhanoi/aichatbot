@@ -10,7 +10,7 @@
 
 ## Sources of truth
 
-- `data/blog/content-matrix.csv` — đúng 2.000 ID/taxonomy/URL/từ khóa/status. Lấy ID + slug + title từ đây, không tự sáng tác.
+- `data/blog/content-matrix.csv` — 2.000 ID nền (BA-0001…BA-2000, đóng băng) + hàng SEO nối tiếp (BA-2001+, do owner quyết từ đề xuất engine/battle matrix; kích thước khai báo ở `tools/matrix-size.mjs`)/taxonomy/URL/từ khóa/status. Lấy ID + slug + title từ đây, không tự sáng tác.
 - `data/blog/published.json` — 330+ manifest của bài viết; chỉ factory đăng ký metadata mới. Không tạo entry trùng.
 - `data/blog/articles/<slug>.body.html` — prose HTML do AI bên ngoài viết.
 - `data/business/business.json` và `docs/ARTICLE-RULES.md` — facts kinh doanh + rubric QA.

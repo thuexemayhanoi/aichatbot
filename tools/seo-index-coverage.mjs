@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { SITE } from '../src/config/site.js';
+import { MATRIX_ROWS } from './matrix-size.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -42,7 +43,7 @@ export function canonicalCandidate(page) {
   return parsed.href;
 }
 
-export function reconcileIndexCoverage({ matrixCsv, sitemapXml, publishedManifest, gscPages = null, site = SITE, expectedRows = 2000 }) {
+export function reconcileIndexCoverage({ matrixCsv, sitemapXml, publishedManifest, gscPages = null, site = SITE, expectedRows = MATRIX_ROWS }) {
   const data = parseCsv(matrixCsv);
   const head = data.shift() || [];
   const index = Object.fromEntries(head.map((col, i) => [col, i]));

@@ -4,6 +4,7 @@ import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE } from '../src/config/site.js';
+import { MATRIX_ROWS } from './matrix-size.mjs';
 
 const PUBLIC_DIRS = ['assets', 'src', 'data', 'config', 'blog', 'privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue'];
 const PUBLIC_ROOTS = ['index.html', 'embed.js', 'manifest.webmanifest', 'service-worker.js', 'robots.txt', 'sitemap.xml', 'CNAME'];
@@ -147,7 +148,7 @@ export function auditSite(io) {
   const published = JSON.parse(io.read('data/blog/published.json')).articles.filter((a) => statuses.get(a.article_id) === 'PUBLISHED');
   const taxonomy = JSON.parse(io.read('data/blog/taxonomy.json'));
   const publishedUrls = new Set(published.map((a) => `/blog/${taxonomy.categories[a.category].dir}/${a.slug}/`));
-  add(statuses.size === 2000, 'data/blog/content-matrix.csv', 'topic matrix must keep 2000 IDs');
+  add(statuses.size === MATRIX_ROWS, 'data/blog/content-matrix.csv', `topic matrix must keep ${MATRIX_ROWS} IDs`);
   add(search.articles.length === published.length && new Set(search.articles.map((a) => a.url)).size === published.length, 'blog/search-index.json', 'search index must contain each published article once');
   for (const article of search.articles) {
     add(publishedUrls.has(article.url), 'blog/search-index.json', `unpublished or invalid URL ${article.url}`);

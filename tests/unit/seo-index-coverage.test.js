@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parseCsv, sitemapLocs, canonicalCandidate, reconcileIndexCoverage } from '../../tools/seo-index-coverage.mjs';
+import { MATRIX_ROWS } from '../../tools/matrix-size.mjs';
 
 const SITE = 'https://chatbot.thuexemaynguyentu.com/';
 const matrix = [
@@ -88,7 +89,7 @@ test('real repository CLI report passes publication coverage with zero manifest 
   });
   const report = JSON.parse(output);
   assert.equal(report.pass, true, report.errors.join('; '));
-  assert.equal(report.counts.matrix, 2000);
+  assert.equal(report.counts.matrix, MATRIX_ROWS);
   assert.equal(report.counts.publishedInSitemap, report.counts.published);
   assert.equal(report.counts.uniqueSitemap, report.counts.sitemap);
   assert.equal(report.counts.manifestIds, report.counts.published);

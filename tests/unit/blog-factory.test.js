@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { MATRIX_ROWS, FOUNDATION_ROWS } from '../../tools/matrix-size.mjs';
 import {
   repoSandbox, factory, readMatrix, readJson, REPO
 } from '../helpers/factory-sandbox.mjs';
@@ -35,7 +36,7 @@ test('factory: claim defaults to EXACTLY 1 row (1 article / cycle)', () => {
   assert.match(out, /^claimed 1: BA-0002/);
   const writing = readMatrix(dir).filter((l) => l.split(',')[3] === 'WRITING');
   assert.equal(writing.length, 1, 'exactly one row is WRITING');
-  assert.equal(readMatrix(dir).length, 2001, 'matrix size never changes (header + 2000)');
+  assert.equal(readMatrix(dir).length, MATRIX_ROWS + 1, 'matrix size never changes (header + rows)');
 });
 
 test('factory: claim refuses while another article is WRITING (single-flight)', () => {
@@ -106,10 +107,11 @@ test('factory: abandon returns the unfinished row to PLANNED (crash recovery)', 
   const out = factory(dir, ['abandon-chunk']);
   assert.match(out, /returned 1 row/);
   const rows = readMatrix(dir);
-  assert.equal(rows.filter((l) => l.split(',')[3] === 'PLANNED').length, 1998);
+  assert.equal(rows.filter((l) => l.split(',')[3] === 'PLANNED').length, MATRIX_ROWS - 2);
   assert.equal(rows.filter((l) => l.split(',')[3] === 'WRITING').length, 0);
   const dist = {};
-  for (const l of rows.slice(1)) dist[l.split(',')[2]] = (dist[l.split(',')[2]] ?? 0) + 1;
+  // The frozen 2,000-row foundation keeps its split; SEO rows are appended after it (tools/matrix-size.mjs).
+  for (const l of rows.slice(1, FOUNDATION_ROWS + 1)) dist[l.split(',')[2]] = (dist[l.split(',')[2]] ?? 0) + 1;
   assert.deepEqual(dist, { APP: 350, RENT: 400, EV: 300, GUIDE: 300, SAFE: 250, LOCAL: 400 },
     'abandon never breaks the category distribution');
 });
@@ -133,20 +135,20 @@ test('factory: validate still passes on an untouched sandbox (2000 rows, pilots 
     statuses[s] = (statuses[s] ?? 0) + 1;
   }
   assert.equal(statuses.PUBLISHED, 2);
-  assert.equal(statuses.PLANNED, 1998);
+  assert.equal(statuses.PLANNED, MATRIX_ROWS - 2);
 });
 
 test('factory: status reports lock and state in the sandbox', () => {
   const dir = repoSandbox();
   const out = factory(dir, ['status']);
-  assert.match(out, /total: 2000/);
+  assert.match(out, new RegExp(`total: ${MATRIX_ROWS}`));
   assert.match(out, /PUBLISHED: 2/);
   assert.match(out, /lock: free/);
 });
 
 test('factory: the real repo matrix is never mutated by these tests', () => {
   const lines = readFileSync(join(REPO, 'data/blog/content-matrix.csv'), 'utf8').trim().split('\n');
-  assert.equal(lines.length - 1, 2000);
+  assert.equal(lines.length - 1, MATRIX_ROWS);
   const statuses = lines.slice(1).map((l) => l.split(',')[3]);
   const manifest = JSON.parse(readFileSync(join(REPO, 'data/blog/published.json'), 'utf8'));
   // v64: PUBLISHED rows must all be in the manifest; the manifest may hold

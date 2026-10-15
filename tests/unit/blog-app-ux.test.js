@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { MATRIX_ROWS } from '../../tools/matrix-size.mjs';
 
 /**
  * Blog App UX Foundation (v54) spec:
@@ -262,7 +263,7 @@ test('theme styles: shared data-motoai-theme tokens + focus-visible + touch targ
 
 test('NO mass article generation: matrix stays 2,000 rows, manifest stays in sync', () => {
   const lines = read('data/blog/content-matrix.csv').trim().split('\n');
-  assert.equal(lines.length - 1, 2000);
+  assert.equal(lines.length - 1, MATRIX_ROWS);
   const statuses = lines.slice(1).map((l) => l.split(',')[3]);
   const published = statuses.filter((s) => s === 'PUBLISHED').length;
   // v64 micro loop: one article per cycle. The manifest may hold ONE

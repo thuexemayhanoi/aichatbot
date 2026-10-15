@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
+import { MATRIX_ROWS } from '../../tools/matrix-size.mjs';
 import {
   repoSandbox, factory, selectCli, installFixture, fixtureBody, fixtureBodyExact,
   readJson, writeJson, matrixRow, setStatus, REPO
@@ -541,7 +542,7 @@ test('pipeline: single external writer runbook replaces the retired Ollama/multi
 test('pipeline: the real repo is untouched by every sandbox chunk', () => {
   const lines = readFileSync(join(REPO, 'data/blog/content-matrix.csv'), 'utf8').trim().split('\n');
   const rows = lines.slice(1).map((l) => l.split(','));
-  assert.equal(rows.length, 2000, 'matrix size never changes');
+  assert.equal(rows.length, MATRIX_ROWS, 'matrix size changes only through tools/matrix-size.mjs');
   const manifest = JSON.parse(readFileSync(join(REPO, 'data/blog/published.json'), 'utf8'));
   const manifestIds = new Set(manifest.articles.map((a) => a.article_id));
   for (const c of rows) {
