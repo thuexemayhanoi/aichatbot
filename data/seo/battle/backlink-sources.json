@@ -1,0 +1,886 @@
+{
+"$schema": "motoai/backlink-sources@1",
+"note": "Hồ sơ backlink của đối thủ mạnh nhất nhóm cho thuê xe (motogo.vn) do OpenSEO get_backlinks_overview trả về ngày 2026-10-15 (dữ liệu DataForSEO Backlinks, phạm vi domain, không gồm subdomain; trend gồm subdomain theo giới hạn nhà cung cấp). rank = Domain Rank 0–1000 của DataForSEO; spam_score 0–100 (≥ 30 coi là rủi ro). Chỉ 100/361 miền giới thiệu đầu tiên (trang 1) được lưu. Đây là dữ liệu đo được của đối thủ, không phải backlink của website này; dùng để phân loại nguồn liên kết tự nhiên trong ngành (ma trận W8), không dùng để mua/đặt link.",
+"profiles": [
+{
+"target": "motogo.vn",
+"scope": "domain",
+"tool": "OpenSEO get_backlinks_overview",
+"retrieved": "2026-10-15",
+"summary": {
+"rank": 57,
+"backlinks": 62559,
+"referring_pages": 61823,
+"referring_domains": 746,
+"broken_backlinks": 79,
+"backlinks_spam_score": 31,
+"target_spam_score": 1
+},
+"trend": [
+{
+"date": "2025-10-31",
+"backlinks": 64254,
+"referring_domains": 625
+},
+{
+"date": "2025-11-30",
+"backlinks": 64235,
+"referring_domains": 736
+},
+{
+"date": "2025-12-31",
+"backlinks": 64240,
+"referring_domains": 741
+},
+{
+"date": "2026-01-31",
+"backlinks": 64258,
+"referring_domains": 733
+},
+{
+"date": "2026-02-28",
+"backlinks": 63693,
+"referring_domains": 722
+},
+{
+"date": "2026-03-31",
+"backlinks": 62650,
+"referring_domains": 705
+},
+{
+"date": "2026-04-30",
+"backlinks": 62783,
+"referring_domains": 693
+},
+{
+"date": "2026-05-31",
+"backlinks": 63046,
+"referring_domains": 723
+},
+{
+"date": "2026-06-30",
+"backlinks": 63075,
+"referring_domains": 716
+},
+{
+"date": "2026-07-31",
+"backlinks": 62830,
+"referring_domains": 713
+},
+{
+"date": "2026-08-31",
+"backlinks": 62474,
+"referring_domains": 712
+},
+{
+"date": "2026-09-30",
+"backlinks": 62359,
+"referring_domains": 718
+}
+],
+"referring_domains_total": 361,
+"referring_domains": [
+{
+"domain": "vietnamtourism.vn",
+"backlinks": 58067,
+"referring_pages": 58067,
+"rank": 57,
+"spam_score": 31,
+"first_seen": "2025-01-18"
+},
+{
+"domain": "motogovn.gitbook.io",
+"backlinks": 1140,
+"referring_pages": 908,
+"rank": 38,
+"spam_score": 9,
+"first_seen": "2021-11-06"
+},
+{
+"domain": "motogovn.blogspot.com",
+"backlinks": 1030,
+"referring_pages": 723,
+"rank": 31,
+"spam_score": 14,
+"first_seen": "2023-10-31"
+},
+{
+"domain": "motogovn.wixsite.com",
+"backlinks": 149,
+"referring_pages": 113,
+"rank": 22,
+"spam_score": 20,
+"first_seen": "2021-04-11"
+},
+{
+"domain": "motogohostel.com",
+"backlinks": 137,
+"referring_pages": 137,
+"rank": 25,
+"spam_score": 0,
+"first_seen": "2024-09-02"
+},
+{
+"domain": "blogarama.com",
+"backlinks": 102,
+"referring_pages": 102,
+"rank": 12,
+"spam_score": 39,
+"first_seen": "2025-01-12"
+},
+{
+"domain": "hoianit.com",
+"backlinks": 83,
+"referring_pages": 83,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-07-23"
+},
+{
+"domain": "thuexemaychuyennghiep.blogspot.com",
+"backlinks": 45,
+"referring_pages": 38,
+"rank": 18,
+"spam_score": 4,
+"first_seen": "2025-08-12"
+},
+{
+"domain": "video-bookmark.com",
+"backlinks": 45,
+"referring_pages": 36,
+"rank": 0,
+"spam_score": 28,
+"first_seen": "2024-08-15"
+},
+{
+"domain": "motortrip.vn",
+"backlinks": 45,
+"referring_pages": 45,
+"rank": 16,
+"spam_score": 0,
+"first_seen": "2023-01-20"
+},
+{
+"domain": "2trip.vn",
+"backlinks": 45,
+"referring_pages": 44,
+"rank": 16,
+"spam_score": 0,
+"first_seen": "2022-07-25"
+},
+{
+"domain": "bing.com",
+"backlinks": 33,
+"referring_pages": 23,
+"rank": 5,
+"spam_score": 11,
+"first_seen": "2025-06-21"
+},
+{
+"domain": "website2.me",
+"backlinks": 33,
+"referring_pages": 19,
+"rank": 2,
+"spam_score": 14,
+"first_seen": "2024-11-30"
+},
+{
+"domain": "thegioimuaban.com",
+"backlinks": 32,
+"referring_pages": 30,
+"rank": 3,
+"spam_score": 0,
+"first_seen": "2024-04-27"
+},
+{
+"domain": "trangvangvietnam.com",
+"backlinks": 23,
+"referring_pages": 23,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2023-03-24"
+},
+{
+"domain": "lamchame.com",
+"backlinks": 19,
+"referring_pages": 19,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2021-05-05"
+},
+{
+"domain": "yellowpages.vn",
+"backlinks": 17,
+"referring_pages": 9,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2024-01-10"
+},
+{
+"domain": "horizonengconsulting.com",
+"backlinks": 16,
+"referring_pages": 16,
+"rank": 0,
+"spam_score": 20,
+"first_seen": "2026-10-14"
+},
+{
+"domain": "top3.vn",
+"backlinks": 16,
+"referring_pages": 16,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-08-30"
+},
+{
+"domain": "izitour.com",
+"backlinks": 16,
+"referring_pages": 16,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2024-04-20"
+},
+{
+"domain": "ditrandung.web.app",
+"backlinks": 15,
+"referring_pages": 15,
+"rank": 2,
+"spam_score": 14,
+"first_seen": "2025-10-06"
+},
+{
+"domain": "windowssearch-exp.com",
+"backlinks": 14,
+"referring_pages": 14,
+"rank": 0,
+"spam_score": 37,
+"first_seen": "2026-01-23"
+},
+{
+"domain": "dulichocean.vn",
+"backlinks": 14,
+"referring_pages": 1,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2025-09-05"
+},
+{
+"domain": "note8.vn",
+"backlinks": 11,
+"referring_pages": 5,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-05-04"
+},
+{
+"domain": "ttvnol.com",
+"backlinks": 11,
+"referring_pages": 10,
+"rank": 0,
+"spam_score": 3,
+"first_seen": "2022-06-29"
+},
+{
+"domain": "vietnettour.com",
+"backlinks": 10,
+"referring_pages": 10,
+"rank": 10,
+"spam_score": 0,
+"first_seen": "2024-10-20"
+},
+{
+"domain": "vivu5sao.com",
+"backlinks": 10,
+"referring_pages": 6,
+"rank": 11,
+"spam_score": 0,
+"first_seen": "2024-01-23"
+},
+{
+"domain": "actuatemicrolearning.com",
+"backlinks": 7,
+"referring_pages": 6,
+"rank": 0,
+"spam_score": 35,
+"first_seen": "2026-10-13"
+},
+{
+"domain": "bizsitelink.com",
+"backlinks": 7,
+"referring_pages": 6,
+"rank": 3,
+"spam_score": 0,
+"first_seen": "2026-07-22"
+},
+{
+"domain": "chothuexemaythanhhoa.vn",
+"backlinks": 7,
+"referring_pages": 1,
+"rank": 1,
+"spam_score": 0,
+"first_seen": "2026-01-26"
+},
+{
+"domain": "motonest.com",
+"backlinks": 6,
+"referring_pages": 6,
+"rank": 0,
+"spam_score": 12,
+"first_seen": "2026-08-24"
+},
+{
+"domain": "saigonmotorbike.com",
+"backlinks": 6,
+"referring_pages": 6,
+"rank": 5,
+"spam_score": 0,
+"first_seen": "2025-08-15"
+},
+{
+"domain": "bacnamgroup.com",
+"backlinks": 6,
+"referring_pages": 6,
+"rank": 4,
+"spam_score": 0,
+"first_seen": "2025-08-03"
+},
+{
+"domain": "diadiemninhthuan.vn",
+"backlinks": 6,
+"referring_pages": 1,
+"rank": 1,
+"spam_score": 0,
+"first_seen": "2023-03-14"
+},
+{
+"domain": "about.me",
+"backlinks": 6,
+"referring_pages": 6,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2023-01-07"
+},
+{
+"domain": "motordanang.com",
+"backlinks": 5,
+"referring_pages": 5,
+"rank": 2,
+"spam_score": 0,
+"first_seen": "2026-02-18"
+},
+{
+"domain": "siteprice.org",
+"backlinks": 5,
+"referring_pages": 5,
+"rank": 0,
+"spam_score": 13,
+"first_seen": "2025-10-10"
+},
+{
+"domain": "mooncine.vn",
+"backlinks": 5,
+"referring_pages": 5,
+"rank": 1,
+"spam_score": 0,
+"first_seen": "2025-06-21"
+},
+{
+"domain": "aiebp.edu.vn",
+"backlinks": 5,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 10,
+"first_seen": "2024-11-07"
+},
+{
+"domain": "nhaxe.edu.vn",
+"backlinks": 4,
+"referring_pages": 4,
+"rank": 6,
+"spam_score": 0,
+"first_seen": "2026-06-22"
+},
+{
+"domain": "cacanhnhatrang.com",
+"backlinks": 4,
+"referring_pages": 4,
+"rank": 2,
+"spam_score": 0,
+"first_seen": "2025-11-14"
+},
+{
+"domain": "tripi.vn",
+"backlinks": 4,
+"referring_pages": 2,
+"rank": 2,
+"spam_score": 0,
+"first_seen": "2025-07-10"
+},
+{
+"domain": "hanoireview.vn",
+"backlinks": 4,
+"referring_pages": 4,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2025-05-01"
+},
+{
+"domain": "thoidai.com.vn",
+"backlinks": 4,
+"referring_pages": 4,
+"rank": 2,
+"spam_score": 0,
+"first_seen": "2023-12-29"
+},
+{
+"domain": "gotravel365.vn",
+"backlinks": 4,
+"referring_pages": 4,
+"rank": 5,
+"spam_score": 10,
+"first_seen": "2023-10-18"
+},
+{
+"domain": "planetzerbert.blogspot.com",
+"backlinks": 4,
+"referring_pages": 4,
+"rank": 0,
+"spam_score": 30,
+"first_seen": "2023-10-12"
+},
+{
+"domain": "thuexemaycondao.com",
+"backlinks": 4,
+"referring_pages": 4,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2023-10-10"
+},
+{
+"domain": "topaz.vn",
+"backlinks": 4,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2022-04-15"
+},
+{
+"domain": "feedbackplatform.io",
+"backlinks": 3,
+"referring_pages": 1,
+"rank": 0,
+"spam_score": 10,
+"first_seen": "2026-10-14"
+},
+{
+"domain": "sca-if.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 25,
+"first_seen": "2026-09-24"
+},
+{
+"domain": "gemsonicexpress.org",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 15,
+"first_seen": "2026-09-20"
+},
+{
+"domain": "mariebarth.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-09-19"
+},
+{
+"domain": "mangdentours.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-09-11"
+},
+{
+"domain": "richthofen.blog",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 10,
+"first_seen": "2026-09-10"
+},
+{
+"domain": "tinvungtau.com",
+"backlinks": 3,
+"referring_pages": 2,
+"rank": 3,
+"spam_score": 0,
+"first_seen": "2026-09-09"
+},
+{
+"domain": "points3d.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 25,
+"first_seen": "2026-08-31"
+},
+{
+"domain": "longmuirstudios.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 25,
+"first_seen": "2026-08-31"
+},
+{
+"domain": "bluetempus.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 10,
+"first_seen": "2026-08-30"
+},
+{
+"domain": "a1professionals.net",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 5,
+"first_seen": "2026-08-27"
+},
+{
+"domain": "circleacompany.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 5,
+"first_seen": "2026-08-27"
+},
+{
+"domain": "mototrip.vn",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2025-01-23"
+},
+{
+"domain": "aucoeurvietnam.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2024-05-28"
+},
+{
+"domain": "guidefrancophone.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 28,
+"first_seen": "2024-03-29"
+},
+{
+"domain": "thuexemayhoian.net",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 5,
+"spam_score": 0,
+"first_seen": "2023-12-23"
+},
+{
+"domain": "pamietnik-alkoholika.blogspot.com",
+"backlinks": 3,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 5,
+"first_seen": "2023-11-12"
+},
+{
+"domain": "turma47.blogspot.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 35,
+"first_seen": "2023-10-04"
+},
+{
+"domain": "phacangiovungtau.com",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 9,
+"spam_score": 0,
+"first_seen": "2023-03-09"
+},
+{
+"domain": "myspace.com",
+"backlinks": 3,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 15,
+"first_seen": "2022-02-16"
+},
+{
+"domain": "vnexpress.net",
+"backlinks": 3,
+"referring_pages": 3,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2021-10-03"
+},
+{
+"domain": "mastercms.org",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-10-15"
+},
+{
+"domain": "horalife.co",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 5,
+"first_seen": "2026-10-13"
+},
+{
+"domain": "klobyz.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 30,
+"first_seen": "2026-10-11"
+},
+{
+"domain": "apsense.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 13,
+"spam_score": 0,
+"first_seen": "2026-10-09"
+},
+{
+"domain": "transmissao.ind.br",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 5,
+"first_seen": "2026-09-09"
+},
+{
+"domain": "intelsafe.pro",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-09-03"
+},
+{
+"domain": "nghienorder.vn",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 30,
+"first_seen": "2026-09-02"
+},
+{
+"domain": "tanhoaphupccc.vn",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 15,
+"first_seen": "2026-09-01"
+},
+{
+"domain": "xn--42c6apj0ax3gua7a8m.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 30,
+"first_seen": "2026-09-01"
+},
+{
+"domain": "mytherapy.mu",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 40,
+"first_seen": "2026-08-30"
+},
+{
+"domain": "giniasbeauty.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 5,
+"first_seen": "2026-08-30"
+},
+{
+"domain": "idlewoodsltd.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-08-26"
+},
+{
+"domain": "undoingido.co",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 25,
+"first_seen": "2026-08-25"
+},
+{
+"domain": "wanderluststation.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-08-25"
+},
+{
+"domain": "samsonvillaflc.vn",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-08-25"
+},
+{
+"domain": "bp.com.vn",
+"backlinks": 2,
+"referring_pages": 1,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-08-19"
+},
+{
+"domain": "dulichhoanvu.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 6,
+"spam_score": 0,
+"first_seen": "2026-08-12"
+},
+{
+"domain": "oppalerts.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-08-03"
+},
+{
+"domain": "auviettour.vn",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 6,
+"spam_score": 0,
+"first_seen": "2026-05-14"
+},
+{
+"domain": "hanoibiker.com",
+"backlinks": 2,
+"referring_pages": 1,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2026-04-10"
+},
+{
+"domain": "chothuexemaycondao.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2025-11-07"
+},
+{
+"domain": "theguessphotos.blogspot.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 20,
+"first_seen": "2025-11-05"
+},
+{
+"domain": "baliserati.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 15,
+"first_seen": "2025-09-18"
+},
+{
+"domain": "flakydough.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 25,
+"first_seen": "2025-08-15"
+},
+{
+"domain": "xemaychothue.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 12,
+"spam_score": 0,
+"first_seen": "2025-08-05"
+},
+{
+"domain": "datnenbaoloc.vn",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 1,
+"spam_score": 12,
+"first_seen": "2025-08-03"
+},
+{
+"domain": "vietnamtoplist.com.vn",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2025-06-22"
+},
+{
+"domain": "viecoi.vn",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 0,
+"spam_score": 0,
+"first_seen": "2025-05-07"
+},
+{
+"domain": "lotusdanang.com",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 2,
+"spam_score": 0,
+"first_seen": "2025-04-10"
+},
+{
+"domain": "motogo.tours",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 6,
+"spam_score": 0,
+"first_seen": "2024-11-27"
+},
+{
+"domain": "topazmedia.vn",
+"backlinks": 2,
+"referring_pages": 2,
+"rank": 18,
+"spam_score": 0,
+"first_seen": "2024-11-08"
+}
+]
+}
+]
+}

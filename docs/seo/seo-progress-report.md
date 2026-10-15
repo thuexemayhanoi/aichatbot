@@ -115,16 +115,36 @@ Chưa làm được trong phiên (cần owner, không tự quyết): xác minh G
 
 Cần owner: thêm ID cho 4 bài đề xuất vào ma trận (bài pháp lý viết theo dữ kiện đã đối chiếu, kiểm tra lại văn bản sửa đổi nếu có); xác minh Search Console/Bing Webmaster Tools để chuyển DATA-DRIVEN.
 
-## 9. Vòng tiếp theo (khi có dữ liệu Search Console)
+## 9. Vòng 4 — SEO Master Battle Matrix, 10 vũ khí (15/10/2026, ZERO-DATA)
+
+`node tools/seo-battle-matrix.mjs` → [battle/README.md](battle/README.md). Mười ma trận chạy nối tiếp (đầu ra vũ khí trước là đầu vào vũ khí sau), chỉ dùng dữ liệu quan sát/đo được đã cam kết trong `data/seo/battle/`; nhãn độ tin cậy ghi ở từng hàng.
+
+| Vũ khí | Dữ liệu thật đã dùng | Kết quả chính |
+|---|---|---|
+| W1 Tình báo đối thủ | 72 SERP Google Việt Nam đã chụp + DataForSEO Labs (OpenSEO `find_serp_competitors`, 20 từ khóa, 8 có dữ liệu Labs) | 258 miền; 30 đối thủ nội dung được chọn; 10 mạnh nhất: motogo.vn, thuvienphapluat.vn, hanoibiker.com, justfly.vn, otosaigon.com, thuexemayhaiphong.com, vinwonders.com, vexere.com, vinfastauto.com, laodong.vn |
+| W2 Từ khóa tổng | keyword-demand.json (OpenRush) + OpenSEO `get_keyword_metrics` 79 từ khóa (volume, KD, ý định) — hai nguồn giữ riêng | 791 từ khóa, 723 có volume đo được (79 bởi cả hai công cụ), 59 có KD; mỗi hàng có URL tham chiếu top 1 và nhãn độ tin cậy |
+| W3 Điểm yếu đối thủ | Firecrawl audit 127 trang top 10 (122 tải được, 5 chặn/lỗi ghi lý do): từ, H2, FAQ, bảng, schema, văn bản luật, ngày, năm trong tiêu đề | 189 lượt trang chấm theo 15 điểm yếu quan sát được; mỗi truy vấn có "trang tốt hơn cần có" (viết từ nguồn gốc, không sao chép) |
+| W4 Khoảng trống & cơ hội | Nhóm từ khóa engine 06 + điểm yếu W3 + 10 đối thủ mạnh nhất | Điểm cơ hội = điểm engine × (1 + điểm yếu TB/5): P0 6 ("bao nhiêu tuổi được đi xe máy điện", "xe máy điện có cần bằng lái không", "các loại bằng lái xe máy", "lỗi không gương xe máy", "cấm xe máy", "bằng lái xe máy là hạng gì"), P1 1, P2 2; khoảng trống theo từng đối thủ, từ khóa website chị em sở hữu được đánh dấu không nhắm |
+| W5 Cụm chủ đề | 20 cụm K01–K20, ma trận URL, nhóm engine, PAA | Pillar đủ 20/20; 8 trang đang nhận nhóm khác ý định SERP (ghi rõ, không tự gộp); câu hỏi PAA theo cụm làm FAQ |
+| W6 SERP benchmark | Trung vị cấu trúc top 10 đã audit vs. trang đích của website (đọc HTML đã build) | 60 truy vấn; 42 có trang của ta để so; khoảng cách phổ biến: ít ảnh, thiếu bảng số liệu, ít từ hơn trung vị |
+| W7 Tìm kiếm AI | AI Overview + nguồn Google hiển thị lúc chụp, PAA, đoạn mở đầu trang đích | 60 truy vấn dạng câu hỏi (AI Overview xuất hiện ở 60/72 SERP, website chưa được trích); dạng trả lời cần có theo loại câu hỏi; thực thể pháp lý (Luật 36/2024, NĐ 168/2024) |
+| W8 Liên kết & thẩm quyền | OpenSEO `get_backlinks_overview` motogo.vn (746 miền giới thiệu, 100 miền đầu phân loại) + 88 trang danh sách/địa chỉ đang xếp hạng | Nguồn nên theo: website chị em, hồ sơ NAP/danh bạ, bài danh sách OTA/du lịch (xevietanh.com đã nhắc "Thuê xe máy Nguyễn Tú" không kèm liên kết), đối tác tour, báo chí; từ chối mua link/PBN (10/100 miền giới thiệu của đối thủ có spam score ≥ 30) |
+| W9 Kiến trúc URL | 2.129 URL của ma trận tổng + đề xuất engine | Mỗi URL: từ khóa, ý định, vị trí (trang chủ/hub/pillar/supporting/chuyển đổi), mục tiêu chuyển đổi; 4 URL đề xuất mới chờ owner thêm ID |
+| W10 Master Battle Matrix | Gộp W1–W9 | 57 việc: P0 8, P1 12, P2 37; lộ trình 30/60/90 ngày; KPI đo được không cần Search Console (bài P0 đã đăng, nhóm ưu tiên vào top 20 ở lần chụp SERP sau, gap cấu trúc W6 = 0, answerFirst W7, coverage PASS, IndexNow) |
+
+Nguồn không dùng được trong vòng này: OpenRush hết tín dụng (402) — chỉ dùng dữ liệu đã lấy trước; Ubersuggest MCP chưa được ủy quyền. Không có số liệu traffic/xếp hạng của website (chưa có Search Console) — KPI ghi "chưa có dữ liệu".
+
+## 10. Vòng tiếp theo (khi có dữ liệu Search Console)
 
 1. Lấy truy vấn/CTR thật theo URL → điều chỉnh title/meta cho trang có hiển thị cao nhưng CTR thấp (qua `data/seo/article-meta.json`).
 2. Ưu tiên cụm K08 (xe máy điện) và K02 (giá thuê) — có volume đo được và chưa thuộc site chị em.
 3. Mọi sửa body tiếp tục qua `tools/seo-body-review.mjs`.
 
-## 10. Rollback
+## 11. Rollback
 
 - Metadata một bài: xóa entry trong `data/seo/article-meta.json` → `node tools/build-blog.mjs`.
 - Body một bài: `git revert` commit `content(seo): body review …` chứa ID bài (mỗi commit ≤ 10 body) rồi build.
 - Toàn bộ: `git revert` các commit v70/v71 (không có thay đổi dữ liệu nào ngoài repo).
 - IndexNow: tắt workflow `indexnow.yml`; xóa `config/indexnow.json` và tệp khóa `<key>.txt` ở gốc.
 - Engine 06: báo cáo `docs/seo/engine/` chỉ là đầu ra (xóa được); quyết định ở `data/seo/engine-decisions.json`; bản sửa pháp lý 10 bài: `git revert` commit `content(seo): legal accuracy …` rồi build.
+- Battle matrix: `docs/seo/battle/` là đầu ra sinh lại được; dữ liệu nghiên cứu `data/seo/battle/` chỉ là bằng chứng (xóa không ảnh hưởng trang); việc thực thi từ ma trận đi qua các lớp có rollback ở trên.

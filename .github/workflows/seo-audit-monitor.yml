@@ -46,6 +46,15 @@ jobs:
             echo "::warning::docs/seo/engine is stale - run node tools/seo-engine.mjs and commit"
           fi
 
+      - name: SEO Master Battle Matrix (10 weapons, ZERO-DATA)
+        run: |
+          set -o pipefail
+          node --test tests/unit/seo-battle-matrix.test.js
+          # Reports are derived from committed research files; stale output warns, never fails.
+          if ! node tools/seo-battle-matrix.mjs --check 2>&1 | tee seo-battle-matrix.txt; then
+            echo "::warning::docs/seo/battle is stale - run node tools/seo-battle-matrix.mjs and commit"
+          fi
+
       - name: Matrix/sitemap publication coverage
         run: node tools/seo-index-coverage.mjs --json > seo-index-coverage.json
 
@@ -79,6 +88,9 @@ jobs:
           if test -s seo-engine.txt; then
             echo "SEO engine: $(cat seo-engine.txt | tr '\n' ' ')" >> "$GITHUB_STEP_SUMMARY"
           fi
+          if test -s seo-battle-matrix.txt; then
+            echo "Battle matrix: $(cat seo-battle-matrix.txt | tr '\n' ' ')" >> "$GITHUB_STEP_SUMMARY"
+          fi
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "HTTP crawlability is not evidence of actual Google/Bing indexing or Core Web Vitals field data." >> "$GITHUB_STEP_SUMMARY"
 
@@ -94,5 +106,6 @@ jobs:
             seo-index-coverage.json
             seo-cold-start.txt
             seo-engine.txt
+            seo-battle-matrix.txt
           if-no-files-found: warn
           retention-days: 14

@@ -1,0 +1,857 @@
+{
+ "source": {
+  "tool": "OpenSEO find_serp_competitors",
+  "data": "DataForSEO Labs (Google Vietnam, vi), vị trí theo chỉ mục Labs — không phải SERP trực tiếp",
+  "retrieved": "2026-10-15",
+  "keywords_asked": [
+   "thuê xe máy hà nội",
+   "thuê xe máy",
+   "giá thuê xe máy hà nội",
+   "thuê xe máy theo tháng hà nội",
+   "thuê xe máy giá rẻ hà nội",
+   "thuê xe máy điện hà nội",
+   "thủ tục thuê xe máy",
+   "thuê xe máy cần giấy tờ gì",
+   "kinh nghiệm thuê xe máy hà nội",
+   "thuê xe máy không cần bằng lái",
+   "xe máy điện có cần bằng lái không",
+   "không có bằng lái xe máy phạt bao nhiêu",
+   "mức phạt nồng độ cồn xe máy",
+   "lỗi không gương xe máy",
+   "các loại bằng lái xe máy",
+   "bảo hiểm xe máy thuê",
+   "thuê xe máy đi ninh bình",
+   "thuê xe máy cho người nước ngoài",
+   "app thuê xe máy",
+   "cấm xe máy xăng vành đai 1"
+  ],
+  "keywords_with_labs_data": [
+   "xe máy điện có cần bằng lái không",
+   "mức phạt nồng độ cồn xe máy",
+   "lỗi không gương xe máy",
+   "không có bằng lái xe máy phạt bao nhiêu",
+   "các loại bằng lái xe máy",
+   "thuê xe máy điện hà nội",
+   "thuê xe máy hà nội",
+   "thuê xe máy"
+  ],
+  "note": "rating = điểm miền do Labs tính (không phải Domain Authority Moz); etv = traffic ước tính của công cụ cho các từ khóa hỏi; visibility = chỉ số hiển thị của công cụ. Tất cả là số ước tính của bên thứ ba, không phải Search Console.",
+  "excluded": [
+   "chatbot.thuexemaynguyentu.com",
+   "thuexemaynguyentu.com"
+  ]
+ },
+ "competitors": [
+  {
+   "domain": "www.facebook.com",
+   "avg_position": 6.9,
+   "median_position": 3,
+   "rating": 931,
+   "etv": 5883.59,
+   "keywords_count": 8,
+   "visibility": 5.8,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     13
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     5
+    ],
+    "lỗi không gương xe máy": [
+     4
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     24
+    ],
+    "các loại bằng lái xe máy": [
+     12
+    ],
+    "thuê xe máy điện hà nội": [
+     1,
+     2
+    ],
+    "thuê xe máy hà nội": [
+     2,
+     3
+    ],
+    "thuê xe máy": [
+     3
+    ]
+   }
+  },
+  {
+   "domain": "motogo.vn",
+   "avg_position": 3.4,
+   "median_position": 2,
+   "rating": 483,
+   "etv": 13274.94,
+   "keywords_count": 4,
+   "visibility": 3.85,
+   "positions": {
+    "các loại bằng lái xe máy": [
+     11
+    ],
+    "thuê xe máy điện hà nội": [
+     1
+    ],
+    "thuê xe máy hà nội": [
+     1
+    ],
+    "thuê xe máy": [
+     2
+    ]
+   }
+  },
+  {
+   "domain": "thuvienphapluat.vn",
+   "avg_position": 5.6,
+   "median_position": 2,
+   "rating": 472,
+   "etv": 1625.39,
+   "keywords_count": 5,
+   "visibility": 2.9,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     11
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     12
+    ],
+    "lỗi không gương xe máy": [
+     2
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     2
+    ],
+    "các loại bằng lái xe máy": [
+     1
+    ]
+   }
+  },
+  {
+   "domain": "hanoibiker.com",
+   "avg_position": 7.33,
+   "median_position": 4,
+   "rating": 278,
+   "etv": 974.07,
+   "keywords_count": 3,
+   "visibility": 1.55,
+   "positions": {
+    "thuê xe máy điện hà nội": [
+     4
+    ],
+    "thuê xe máy hà nội": [
+     3
+    ],
+    "thuê xe máy": [
+     15
+    ]
+   }
+  },
+  {
+   "domain": "luatvietnam.vn",
+   "avg_position": 15,
+   "median_position": 8,
+   "rating": 425,
+   "etv": 530.37,
+   "keywords_count": 5,
+   "visibility": 1.45,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     37
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     8
+    ],
+    "lỗi không gương xe máy": [
+     7
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     4
+    ],
+    "các loại bằng lái xe máy": [
+     19
+    ]
+   }
+  },
+  {
+   "domain": "dat.bike",
+   "avg_position": 4,
+   "median_position": 1,
+   "rating": 192,
+   "etv": 1690.24,
+   "keywords_count": 2,
+   "visibility": 1.4,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     7
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     1
+    ]
+   }
+  },
+  {
+   "domain": "vexere.com",
+   "avg_position": 5.5,
+   "median_position": 4,
+   "rating": 189,
+   "etv": 2388.65,
+   "keywords_count": 2,
+   "visibility": 1.1,
+   "positions": {
+    "thuê xe máy hà nội": [
+     7
+    ],
+    "thuê xe máy": [
+     4
+    ]
+   }
+  },
+  {
+   "domain": "www.momo.vn",
+   "avg_position": 19,
+   "median_position": 19,
+   "rating": 324,
+   "etv": 757.62,
+   "keywords_count": 4,
+   "visibility": 1.05,
+   "positions": {
+    "mức phạt nồng độ cồn xe máy": [
+     28
+    ],
+    "lỗi không gương xe máy": [
+     1
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     19
+    ],
+    "các loại bằng lái xe máy": [
+     28
+    ]
+   }
+  },
+  {
+   "domain": "chothuexemaytphcm01.com",
+   "avg_position": 9.5,
+   "median_position": 1,
+   "rating": 181,
+   "etv": 10171.63,
+   "keywords_count": 1,
+   "visibility": 1.05,
+   "positions": {
+    "thuê xe máy": [
+     1,
+     18
+    ]
+   }
+  },
+  {
+   "domain": "vinfastauto.com",
+   "avg_position": 25.6,
+   "median_position": 27,
+   "rating": 372,
+   "etv": 607.42,
+   "keywords_count": 5,
+   "visibility": 1,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     1
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     41
+    ],
+    "lỗi không gương xe máy": [
+     36
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     27
+    ],
+    "các loại bằng lái xe máy": [
+     23
+    ]
+   }
+  },
+  {
+   "domain": "thuexemaysaohanoi.com",
+   "avg_position": 11.5,
+   "median_position": 1,
+   "rating": 177,
+   "etv": 2480.22,
+   "keywords_count": 1,
+   "visibility": 1,
+   "positions": {
+    "thuê xe máy hà nội": [
+     1,
+     22
+    ]
+   }
+  },
+  {
+   "domain": "www.tiktok.com",
+   "avg_position": 30.57,
+   "median_position": 23,
+   "rating": 486,
+   "etv": 305.0,
+   "keywords_count": 7,
+   "visibility": 0.9,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     3
+    ],
+    "lỗi không gương xe máy": [
+     12
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     20
+    ],
+    "các loại bằng lái xe máy": [
+     47
+    ],
+    "thuê xe máy điện hà nội": [
+     23
+    ],
+    "thuê xe máy hà nội": [
+     53
+    ],
+    "thuê xe máy": [
+     56
+    ]
+   }
+  },
+  {
+   "domain": "laodong.vn",
+   "avg_position": 17,
+   "median_position": 15,
+   "rating": 415,
+   "etv": 278.76,
+   "keywords_count": 5,
+   "visibility": 0.9,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     29
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     27
+    ],
+    "lỗi không gương xe máy": [
+     3
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     15
+    ],
+    "thuê xe máy điện hà nội": [
+     11
+    ]
+   }
+  },
+  {
+   "domain": "www.youtube.com",
+   "avg_position": 24.5,
+   "median_position": 15,
+   "rating": 604,
+   "etv": 296.87,
+   "keywords_count": 8,
+   "visibility": 0.9,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     20
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     10
+    ],
+    "lỗi không gương xe máy": [
+     15
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     8
+    ],
+    "các loại bằng lái xe máy": [
+     7
+    ],
+    "thuê xe máy điện hà nội": [
+     56
+    ],
+    "thuê xe máy hà nội": [
+     54
+    ],
+    "thuê xe máy": [
+     26
+    ]
+   }
+  },
+  {
+   "domain": "vietnamnet.vn",
+   "avg_position": 19.5,
+   "median_position": 3,
+   "rating": 161,
+   "etv": 108.64,
+   "keywords_count": 2,
+   "visibility": 0.8,
+   "positions": {
+    "mức phạt nồng độ cồn xe máy": [
+     36
+    ],
+    "các loại bằng lái xe máy": [
+     3
+    ]
+   }
+  },
+  {
+   "domain": "izigo.vn",
+   "avg_position": 22,
+   "median_position": 3,
+   "rating": 156,
+   "etv": 29.29,
+   "keywords_count": 2,
+   "visibility": 0.8,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     41
+    ],
+    "thuê xe máy điện hà nội": [
+     3
+    ]
+   }
+  },
+  {
+   "domain": "www.24h.com.vn",
+   "avg_position": 25.5,
+   "median_position": 3,
+   "rating": 149,
+   "etv": 530.46,
+   "keywords_count": 2,
+   "visibility": 0.8,
+   "positions": {
+    "lỗi không gương xe máy": [
+     48
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     3
+    ]
+   }
+  },
+  {
+   "domain": "vinwonders.com",
+   "avg_position": 7,
+   "median_position": 4,
+   "rating": 186,
+   "etv": 907.82,
+   "keywords_count": 2,
+   "visibility": 0.8,
+   "positions": {
+    "thuê xe máy hà nội": [
+     4
+    ],
+    "thuê xe máy": [
+     10
+    ]
+   }
+  },
+  {
+   "domain": "baomoi.com",
+   "avg_position": 31.8,
+   "median_position": 29,
+   "rating": 341,
+   "etv": 155.51,
+   "keywords_count": 5,
+   "visibility": 0.7,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     4
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     63
+    ],
+    "lỗi không gương xe máy": [
+     21
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     29
+    ],
+    "các loại bằng lái xe máy": [
+     42
+    ]
+   }
+  },
+  {
+   "domain": "dibao.com.vn",
+   "avg_position": 15,
+   "median_position": 4,
+   "rating": 170,
+   "etv": 77.24,
+   "keywords_count": 2,
+   "visibility": 0.7,
+   "positions": {
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     26
+    ],
+    "các loại bằng lái xe máy": [
+     4
+    ]
+   }
+  },
+  {
+   "domain": "mototrip.vn",
+   "avg_position": 9,
+   "median_position": 5,
+   "rating": 182,
+   "etv": 575.18,
+   "keywords_count": 2,
+   "visibility": 0.65,
+   "positions": {
+    "thuê xe máy hà nội": [
+     5
+    ],
+    "thuê xe máy": [
+     13
+    ]
+   }
+  },
+  {
+   "domain": "baohatinh.vn",
+   "avg_position": 23,
+   "median_position": 29,
+   "rating": 231,
+   "etv": 150.74,
+   "keywords_count": 3,
+   "visibility": 0.5,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     6
+    ],
+    "thuê xe máy hà nội": [
+     29
+    ],
+    "thuê xe máy": [
+     34
+    ]
+   }
+  },
+  {
+   "domain": "bazantravel.com",
+   "avg_position": 11.5,
+   "median_position": 7,
+   "rating": 177,
+   "etv": 882.19,
+   "keywords_count": 2,
+   "visibility": 0.45,
+   "positions": {
+    "thuê xe máy hà nội": [
+     16
+    ],
+    "thuê xe máy": [
+     7
+    ]
+   }
+  },
+  {
+   "domain": "vinpearl.com",
+   "avg_position": 13,
+   "median_position": 12,
+   "rating": 261,
+   "etv": 408.52,
+   "keywords_count": 3,
+   "visibility": 0.4,
+   "positions": {
+    "thuê xe máy điện hà nội": [
+     19
+    ],
+    "thuê xe máy hà nội": [
+     8
+    ],
+    "thuê xe máy": [
+     12
+    ]
+   }
+  },
+  {
+   "domain": "shop2banh.vn",
+   "avg_position": 14,
+   "median_position": 11,
+   "rating": 344,
+   "etv": 145.59,
+   "keywords_count": 4,
+   "visibility": 0.35,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     19
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     11
+    ],
+    "lỗi không gương xe máy": [
+     17
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     9
+    ]
+   }
+  },
+  {
+   "domain": "osakar.com.vn",
+   "avg_position": 13.33,
+   "median_position": 14,
+   "rating": 260,
+   "etv": 53.41,
+   "keywords_count": 3,
+   "visibility": 0.3,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     17
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     14
+    ],
+    "các loại bằng lái xe máy": [
+     9
+    ]
+   }
+  },
+  {
+   "domain": "vov.vn",
+   "avg_position": 29.33,
+   "median_position": 21,
+   "rating": 212,
+   "etv": 63.69,
+   "keywords_count": 3,
+   "visibility": 0.3,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     59
+    ],
+    "lỗi không gương xe máy": [
+     8
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     21
+    ]
+   }
+  },
+  {
+   "domain": "vnexpress.net",
+   "avg_position": 20,
+   "median_position": 9,
+   "rating": 160,
+   "etv": 47.34,
+   "keywords_count": 2,
+   "visibility": 0.2,
+   "positions": {
+    "lỗi không gương xe máy": [
+     9
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     31
+    ]
+   }
+  },
+  {
+   "domain": "www.bridgestone.com.vn",
+   "avg_position": 17,
+   "median_position": 16,
+   "rating": 249,
+   "etv": 41.24,
+   "keywords_count": 3,
+   "visibility": 0.1,
+   "positions": {
+    "mức phạt nồng độ cồn xe máy": [
+     21
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     16
+    ],
+    "các loại bằng lái xe máy": [
+     14
+    ]
+   }
+  },
+  {
+   "domain": "thanhnien.vn",
+   "avg_position": 21.33,
+   "median_position": 21,
+   "rating": 236,
+   "etv": 32.63,
+   "keywords_count": 3,
+   "visibility": 0.05,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     21
+    ],
+    "lỗi không gương xe máy": [
+     26
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     17
+    ]
+   }
+  },
+  {
+   "domain": "pbgdpl.hanoi.gov.vn",
+   "avg_position": 24.5,
+   "median_position": 18,
+   "rating": 151,
+   "etv": 17.61,
+   "keywords_count": 2,
+   "visibility": 0.05,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     18
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     31
+    ]
+   }
+  },
+  {
+   "domain": "truongdaotaolaixehcm.com",
+   "avg_position": 24.5,
+   "median_position": 18,
+   "rating": 151,
+   "etv": 10.02,
+   "keywords_count": 2,
+   "visibility": 0.05,
+   "positions": {
+    "lỗi không gương xe máy": [
+     18
+    ],
+    "các loại bằng lái xe máy": [
+     31
+    ]
+   }
+  },
+  {
+   "domain": "tripi.vn",
+   "avg_position": 25,
+   "median_position": 19,
+   "rating": 150,
+   "etv": 91.38,
+   "keywords_count": 2,
+   "visibility": 0.05,
+   "positions": {
+    "thuê xe máy hà nội": [
+     19
+    ],
+    "thuê xe máy": [
+     31
+    ]
+   }
+  },
+  {
+   "domain": "fptshop.com.vn",
+   "avg_position": 25.5,
+   "median_position": 20,
+   "rating": 149,
+   "etv": 9.75,
+   "keywords_count": 2,
+   "visibility": 0.05,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     31
+    ],
+    "lỗi không gương xe máy": [
+     20
+    ]
+   }
+  },
+  {
+   "domain": "tuoitre.vn",
+   "avg_position": 31.67,
+   "median_position": 29,
+   "rating": 205,
+   "etv": 18.48,
+   "keywords_count": 3,
+   "visibility": 0,
+   "positions": {
+    "mức phạt nồng độ cồn xe máy": [
+     29
+    ],
+    "lỗi không gương xe máy": [
+     29
+    ],
+    "các loại bằng lái xe máy": [
+     37
+    ]
+   }
+  },
+  {
+   "domain": "chothuexemayhanoi.github.io",
+   "avg_position": 32.67,
+   "median_position": 34,
+   "rating": 202,
+   "etv": 87.07,
+   "keywords_count": 3,
+   "visibility": 0,
+   "positions": {
+    "thuê xe máy điện hà nội": [
+     34
+    ],
+    "thuê xe máy hà nội": [
+     27
+    ],
+    "thuê xe máy": [
+     37
+    ]
+   }
+  },
+  {
+   "domain": "zestech.vn",
+   "avg_position": 47.33,
+   "median_position": 45,
+   "rating": 158,
+   "etv": 18.48,
+   "keywords_count": 3,
+   "visibility": 0,
+   "positions": {
+    "lỗi không gương xe máy": [
+     45
+    ],
+    "không có bằng lái xe máy phạt bao nhiêu": [
+     68
+    ],
+    "các loại bằng lái xe máy": [
+     29
+    ]
+   }
+  },
+  {
+   "domain": "plo.vn",
+   "avg_position": 62.25,
+   "median_position": 56,
+   "rating": 151,
+   "etv": 22.47,
+   "keywords_count": 4,
+   "visibility": 0,
+   "positions": {
+    "xe máy điện có cần bằng lái không": [
+     78
+    ],
+    "mức phạt nồng độ cồn xe máy": [
+     47
+    ],
+    "lỗi không gương xe máy": [
+     56
+    ],
+    "các loại bằng lái xe máy": [
+     68
+    ]
+   }
+  },
+  {
+   "domain": "xevietanh.com",
+   "avg_position": 25.5,
+   "median_position": 24,
+   "rating": 149,
+   "etv": 86.52,
+   "keywords_count": 2,
+   "visibility": 0,
+   "positions": {
+    "thuê xe máy hà nội": [
+     24
+    ],
+    "thuê xe máy": [
+     27
+    ]
+   }
+  }
+ ]
+}
