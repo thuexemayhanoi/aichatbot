@@ -22044,6 +22044,28 @@
       "entry_sha256": "06b1a7d501150dc596e7f556bcd869a9ce6c343682e17795fe426b20b6ab02f8",
       "production_status": 200,
       "verified_at": "2026-10-15T05:13:52.850Z"
+    },
+    "BA-2005": {
+      "article_id": "BA-2005",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/di-phuot-bang-xe-may/",
+      "publication_sha": "07b3fd161d4da8122850a67cbe1e47a053b1c9ba",
+      "page_sha256": "ede080812721c4a79d12272cba6c3db138e58525a43e54a724bb70d454da41ab",
+      "body_sha256": "4565c793c312661010244237cd4b93d8f6b09ee63d252d7ef76dcd4a75be9ce4",
+      "entry_sha256": "96875be9de28e84392c94a91dfe0be3dafa2d8b56b4c7dfeeb9823c98d9b55e9",
+      "production_status": 200,
+      "verified_at": "2026-10-15T13:09:15.954Z"
+    },
+    "BA-2006": {
+      "article_id": "BA-2006",
+      "status": "PUBLISHED",
+      "url": "https://chatbot.thuexemaynguyentu.com/blog/huong-dan/do-di-phuot-xe-may/",
+      "publication_sha": "07b3fd161d4da8122850a67cbe1e47a053b1c9ba",
+      "page_sha256": "2b7211c6e001192236f9cf7ec52ea5b1e26a43c3251aec326a8b8f57826f11c0",
+      "body_sha256": "f7e168024ddc44b40404c1ad185ee7bb5170fbeae41b9287ef29fc2e962ecce3",
+      "entry_sha256": "66b9d9a747a7aec20afc36a4f27ae93eea24b61f162ebcf39a2d4c52879a1f3a",
+      "production_status": 200,
+      "verified_at": "2026-10-15T13:09:15.951Z"
     }
   }
 }
