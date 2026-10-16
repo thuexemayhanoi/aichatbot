@@ -1,0 +1,557 @@
+{
+ "$schema": "motoai/legal-documents@1",
+ "note": "Sổ đăng ký hiệu lực các văn bản pháp luật được bài viết trích dẫn (tools/seo-legal-citations.mjs đối chiếu từng trích dẫn trong body với sổ này). status: in_force | amended | replaced | unverified. evidence: fulltext = đã đối chiếu toàn văn (dữ kiện ở data/seo/legal-facts.json); reported = số hiệu, ngày ban hành, ngày hiệu lực và việc thay thế lấy từ Cổng TTĐT Chính phủ/Công báo, cổng công an hoặc nhà xuất bản luật (tiêu đề và bản tin), chưa đọc toàn văn; unverified = chưa đối chiếu trong vòng rà soát nào, chỉ ghi nhận bài đang dẫn. Mọi con số đưa vào bài vẫn chỉ qua legal-facts.json (đối chiếu toàn văn). cite = khóa trích dẫn dạng 'loại|số/năm' (chữ thường); names = tên văn bản khi bài dẫn không kèm số hiệu; suffix = ký hiệu đúng để phát hiện lỗi gõ.",
+ "checked": "2026-10-16",
+ "documents": [
+  {
+   "id": "luat-36-2024",
+   "cite": [
+    "luật|36/2024"
+   ],
+   "suffix": "QH15",
+   "names": [
+    "luật trật tự, an toàn giao thông đường bộ"
+   ],
+   "title": "Luật Trật tự, an toàn giao thông đường bộ số 36/2024/QH15",
+   "issuer": "Quốc hội",
+   "issued": "2024-06-27",
+   "effective": "2025-01-01",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "facts": [
+    "luat-36-2024-hieu-luc",
+    "luat-36-2024-dieu-34-xe-gan-may",
+    "luat-36-2024-dieu-56-giay-phep",
+    "luat-36-2024-dieu-57-hang-a1-a",
+    "luat-36-2024-dieu-59-do-tuoi",
+    "luat-36-2024-dieu-89-chuyen-tiep"
+   ],
+   "sources": [
+    "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Luat-trat-tu-an-toan-giao-thong-duong-bo-2024-so-36-2024-QH15-444251.aspx"
+   ],
+   "note": "Tìm văn bản sửa đổi ngày 2026-10-16: chưa thấy."
+  },
+  {
+   "id": "luat-23-2008",
+   "cite": [
+    "luật|23/2008"
+   ],
+   "suffix": "QH12",
+   "names": [
+    "luật giao thông đường bộ 2008",
+    "luật giao thông đường bộ năm 2008"
+   ],
+   "title": "Luật Giao thông đường bộ số 23/2008/QH12",
+   "issuer": "Quốc hội",
+   "issued": "2008-11-13",
+   "effective": "2009-07-01",
+   "status": "replaced",
+   "replaced_by": "luat-36-2024",
+   "replaced_from": "2025-01-01",
+   "evidence": "reported",
+   "sources": [
+    "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Luat-trat-tu-an-toan-giao-thong-duong-bo-2024-so-36-2024-QH15-444251.aspx"
+   ],
+   "note": "Hết hiệu lực từ 01/01/2025 khi Luật 36/2024/QH15 và Luật Đường bộ 35/2024/QH15 có hiệu lực; bài chỉ được nhắc như quy định cũ."
+  },
+  {
+   "id": "luat-39-2024",
+   "cite": [
+    "luật|39/2024"
+   ],
+   "suffix": "QH15",
+   "names": [
+    "luật thủ đô"
+   ],
+   "title": "Luật Thủ đô số 39/2024/QH15",
+   "issuer": "Quốc hội",
+   "issued": "2024-06-28",
+   "effective": "2025-01-01",
+   "status": "in_force",
+   "evidence": "unverified",
+   "sources": [],
+   "note": "Bài về vùng phát thải thấp dẫn theo tên; chưa đối chiếu toàn văn."
+  },
+  {
+   "id": "bo-luat-dan-su-91-2015",
+   "cite": [
+    "bộ luật|91/2015",
+    "luật|91/2015"
+   ],
+   "suffix": "QH13",
+   "names": [
+    "bộ luật dân sự 2015",
+    "bộ luật dân sự năm 2015"
+   ],
+   "title": "Bộ luật Dân sự số 91/2015/QH13",
+   "issuer": "Quốc hội",
+   "issued": "2015-11-24",
+   "effective": "2017-01-01",
+   "status": "in_force",
+   "evidence": "unverified",
+   "sources": [],
+   "note": "Dẫn cho hợp đồng thuê tài sản, đặt cọc, bồi thường."
+  },
+  {
+   "id": "luat-08-2022",
+   "cite": [
+    "luật|08/2022",
+    "luật|8/2022"
+   ],
+   "suffix": "QH15",
+   "names": [
+    "luật kinh doanh bảo hiểm 2022",
+    "luật kinh doanh bảo hiểm năm 2022"
+   ],
+   "title": "Luật Kinh doanh bảo hiểm số 08/2022/QH15",
+   "issuer": "Quốc hội",
+   "issued": "2022-06-16",
+   "effective": "2023-01-01",
+   "status": "in_force",
+   "evidence": "unverified",
+   "sources": [],
+   "note": ""
+  },
+  {
+   "id": "luat-91-2025",
+   "cite": [
+    "luật|91/2025"
+   ],
+   "suffix": "QH15",
+   "names": [
+    "luật bảo vệ dữ liệu cá nhân 2025",
+    "luật bảo vệ dữ liệu cá nhân năm 2025"
+   ],
+   "title": "Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15",
+   "issuer": "Quốc hội",
+   "issued": "2025-06-26",
+   "effective": "2026-01-01",
+   "status": "in_force",
+   "evidence": "reported",
+   "sources": [
+    "https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Lenh-cong-bo-Luat-Bao-ve-du-lieu-ca-nhan-2025-666823.aspx"
+   ],
+   "note": "Thay cơ sở pháp lý về dữ liệu cá nhân mà bài đang dẫn (Nghị định 13/2023). Chưa đọc toàn văn."
+  },
+  {
+   "id": "nd-168-2024",
+   "cite": [
+    "nghị định|168/2024"
+   ],
+   "suffix": "NĐ-CP",
+   "title": "Nghị định 168/2024/NĐ-CP quy định xử phạt vi phạm hành chính về trật tự, an toàn giao thông trong lĩnh vực giao thông đường bộ; trừ điểm, phục hồi điểm giấy phép lái xe",
+   "issuer": "Chính phủ",
+   "issued": "2024-12-26",
+   "effective": "2025-01-01",
+   "status": "amended",
+   "amended_by": "nd-238-2026",
+   "amended_from": "2026-08-15",
+   "evidence": "fulltext",
+   "facts": [
+    "nd-168-2024-dieu-14-guong-chieu-hau",
+    "nd-168-2024-dieu-14-dang-ky-xe"
+   ],
+   "sources": [
+    "https://thuvienphapluat.vn/van-ban/Vi-pham-hanh-chinh/Nghi-dinh-168-2024-ND-CP-xu-phat-vi-pham-hanh-chinh-trat-tu-an-toan-giao-thong-duong-bo-619502.aspx"
+   ],
+   "pending": "Đối chiếu toàn văn Nghị định 238/2026/NĐ-CP để xác nhận các khung phạt bài đang dẫn (Điều 7 khoản 2, 4, 6–9; Điều 14 khoản 1; Điều 18 khoản 5, 7; Điều 32 khoản 10) không thuộc điều khoản được sửa, rồi bổ sung câu 'được sửa đổi, bổ sung bởi Nghị định 238/2026/NĐ-CP' vào các bài trang đích pháp lý.",
+   "note": "Toàn văn đã đối chiếu cho Điều 14, Điều 53 (2026-10-15). Theo Cổng TTĐT Chính phủ và các cổng công an tỉnh (chưa đọc toàn văn): Nghị định 238/2026/NĐ-CP sửa các điểm/khoản của Điều 3, 6, 13, 14 (điểm b khoản 3; điểm a khoản 6), 18 (điểm a khoản 4: người từ đủ 16 đến dưới 18 tuổi điều khiển xe mô tô, bỏ ngưỡng 50 cm³/4 kW, mức phạt 400.000–600.000 đồng giữ nguyên), 20; không nguồn nào ghi nhận thay đổi mức phạt điện thoại, đèn tín hiệu, mũ bảo hiểm, nồng độ cồn, không có giấy phép lái xe, giao xe cho người không đủ điều kiện, gương chiếu hậu."
+  },
+  {
+   "id": "nd-238-2026",
+   "cite": [
+    "nghị định|238/2026"
+   ],
+   "suffix": "NĐ-CP",
+   "title": "Nghị định 238/2026/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 168/2024/NĐ-CP",
+   "issuer": "Chính phủ",
+   "issued": "2026-06-26",
+   "effective": "2026-08-15",
+   "status": "in_force",
+   "evidence": "reported",
+   "sources": [
+    "https://vanban.chinhphu.vn/?docid=218613&pageid=27160",
+    "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-238-2026-nd-cp-469913/66580.htm",
+    "https://baochinhphu.vn/tu-15-8-phat-canh-cao-o-to-cho-tre-em-khong-co-thiet-bi-an-toan-phu-hop-102260630121104271.htm",
+    "https://congan.phutho.gov.vn/article/Tu-1582026-Nhung-thay-doi-dang-chu-y-ve-xu-31345-36",
+    "https://thuvienphapluat.vn/van-ban/Vi-pham-hanh-chinh/Nghi-dinh-238-2026-ND-CP-sua-doi-Nghi-dinh-168-2024-ND-CP-xu-phat-hanh-chinh-giao-thong-duong-bo-712521.aspx"
+   ],
+   "pending": "Đọc toàn văn (Cổng TTĐT Chính phủ) trước khi đưa bất kỳ nội dung sửa đổi nào vào bài.",
+   "note": "Số hiệu, ngày ban hành và ngày hiệu lực xác nhận qua tiêu đề văn bản trên vanban.chinhphu.vn và Công báo; nội dung sửa đổi mới biết qua bản tin."
+  },
+  {
+   "id": "nd-100-2019",
+   "cite": [
+    "nghị định|100/2019"
+   ],
+   "suffix": "NĐ-CP",
+   "title": "Nghị định 100/2019/NĐ-CP xử phạt vi phạm hành chính trong lĩnh vực giao thông đường bộ và đường sắt",
+   "issuer": "Chính phủ",
+   "issued": "2019-12-30",
+   "effective": "2020-01-01",
+   "status": "replaced",
+   "replaced_by": "nd-168-2024",
+   "replaced_from": "2025-01-01",
+   "evidence": "reported",
+   "sources": [
+    "https://thuvienphapluat.vn/van-ban/Vi-pham-hanh-chinh/Nghi-dinh-168-2024-ND-CP-xu-phat-vi-pham-hanh-chinh-trat-tu-an-toan-giao-thong-duong-bo-619502.aspx"
+   ],
+   "note": "Phần xử phạt đường bộ do Nghị định 168/2024/NĐ-CP thay thế từ 01/01/2025; bài chỉ được nhắc như quy định cũ."
+  },
+  {
+   "id": "nd-13-2023",
+   "cite": [
+    "nghị định|13/2023"
+   ],
+   "suffix": "NĐ-CP",
+   "title": "Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân",
+   "issuer": "Chính phủ",
+   "issued": "2023-04-17",
+   "effective": "2023-07-01",
+   "status": "replaced",
+   "replaced_by": "nd-356-2025",
+   "replaced_from": "2026-01-01",
+   "evidence": "reported",
+   "sources": [
+    "https://luatvietnam.vn/dan-su/nghi-dinh-356-2025-nd-cp-quy-dinh-chi-tiet-luat-bao-ve-du-lieu-ca-nhan-422896-d1.html",
+    "https://www.ey.com/vi_vn/technical/tax/tax-and-law-updates/nghi-dinh-so-356-2025-nd-cp-quy-dinh-chi-tiet-mot-so-dieu-va-bien-phap-thi-hanh-luat-bao-ve-du-lieu-ca-nhan",
+    "https://www.pwc.com/vn/vn/publications/2026/20260128-new-rules-personal-data-protection.pdf"
+   ],
+   "pending": "Đối chiếu toàn văn Luật Bảo vệ dữ liệu cá nhân 2025 và Nghị định 356/2025/NĐ-CP (điều khoản hiệu lực, thay thế) rồi sửa các bài về dữ liệu cá nhân khi thuê xe.",
+   "note": "Theo LuatVietnam, EY, PwC: Nghị định 356/2025/NĐ-CP (31/12/2025) quy định chi tiết Luật Bảo vệ dữ liệu cá nhân, hiệu lực 01/01/2026, thay thế Nghị định 13/2023/NĐ-CP."
+  },
+  {
+   "id": "nd-356-2025",
+   "cite": [
+    "nghị định|356/2025"
+   ],
+   "suffix": "NĐ-CP",
+   "title": "Nghị định 356/2025/NĐ-CP quy định chi tiết một số điều và biện pháp thi hành Luật Bảo vệ dữ liệu cá nhân",
+   "issuer": "Chính phủ",
+   "issued": "2025-12-31",
+   "effective": "2026-01-01",
+   "status": "in_force",
+   "evidence": "reported",
+   "sources": [
+    "https://luatvietnam.vn/dan-su/nghi-dinh-356-2025-nd-cp-quy-dinh-chi-tiet-luat-bao-ve-du-lieu-ca-nhan-422896-d1.html"
+   ],
+   "pending": "Đọc toàn văn trước khi dẫn trong bài.",
+   "note": ""
+  },
+  {
+   "id": "nd-67-2023",
+   "cite": [
+    "nghị định|67/2023"
+   ],
+   "suffix": "NĐ-CP",
+   "title": "Nghị định 67/2023/NĐ-CP về bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới, bảo hiểm cháy nổ bắt buộc, bảo hiểm bắt buộc trong hoạt động đầu tư xây dựng",
+   "issuer": "Chính phủ",
+   "issued": "2023-09-06",
+   "effective": "2023-09-06",
+   "status": "in_force",
+   "evidence": "unverified",
+   "sources": [],
+   "note": "Chưa đối chiếu toàn văn; chưa tìm văn bản sửa đổi."
+  },
+  {
+   "id": "nd-03-2021",
+   "cite": [
+    "nghị định|03/2021",
+    "nghị định|3/2021"
+   ],
+   "suffix": "NĐ-CP",
+   "title": "Nghị định 03/2021/NĐ-CP về bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới",
+   "issuer": "Chính phủ",
+   "issued": "2021-01-15",
+   "effective": "2021-03-01",
+   "status": "replaced",
+   "replaced_by": "nd-67-2023",
+   "replaced_from": "2023-09-06",
+   "evidence": "unverified",
+   "sources": [],
+   "note": "Bài chỉ được nhắc như văn bản bị thay thế."
+  },
+  {
+   "id": "nd-96-2016",
+   "cite": [
+    "nghị định|96/2016"
+   ],
+   "suffix": "NĐ-CP",
+   "title": "Nghị định 96/2016/NĐ-CP quy định điều kiện về an ninh, trật tự đối với một số ngành, nghề đầu tư kinh doanh có điều kiện",
+   "issuer": "Chính phủ",
+   "issued": "2016-07-01",
+   "effective": "2016-07-01",
+   "status": "in_force",
+   "evidence": "unverified",
+   "sources": [],
+   "note": "Được sửa đổi bởi Nghị định 56/2023/NĐ-CP (chưa đối chiếu); bài cầm đồ xe máy dẫn."
+  },
+  {
+   "id": "nd-10-2022",
+   "cite": [
+    "nghị định|10/2022"
+   ],
+   "suffix": "NĐ-CP",
+   "title": "Nghị định 10/2022/NĐ-CP quy định về lệ phí trước bạ",
+   "issuer": "Chính phủ",
+   "issued": "2022-01-15",
+   "effective": "2022-03-01",
+   "status": "in_force",
+   "evidence": "unverified",
+   "sources": [],
+   "note": ""
+  },
+  {
+   "id": "tt-38-2024-bgtvt",
+   "cite": [
+    "thông tư|38/2024"
+   ],
+   "suffix": "TT-BGTVT",
+   "title": "Thông tư 38/2024/TT-BGTVT quy định về tốc độ và khoảng cách an toàn của xe cơ giới, xe máy chuyên dùng tham gia giao thông đường bộ",
+   "issuer": "Bộ Giao thông vận tải",
+   "issued": "2024-11-15",
+   "effective": "2025-01-01",
+   "status": "in_force",
+   "evidence": "unverified",
+   "sources": [],
+   "pending": "Đối chiếu toàn văn các mức tốc độ tối đa (khu đông dân cư 60/50 km/h theo loại đường; xe gắn máy 40 km/h) mà bài dẫn.",
+   "note": "Một bài gõ sai ký hiệu thành TB-BGTVT và gán mức 40 km/h cho mọi xe trên đường phố (xem báo cáo)."
+  },
+  {
+   "id": "tt-04-2021-bkhcn",
+   "cite": [
+    "thông tư|04/2021",
+    "thông tư|4/2021"
+   ],
+   "suffix": "TT-BKHCN",
+   "title": "Thông tư 04/2021/TT-BKHCN ban hành Quy chuẩn kỹ thuật quốc gia về mũ bảo hiểm cho người đi mô tô, xe máy (QCVN 2:2021/BKHCN)",
+   "issuer": "Bộ Khoa học và Công nghệ",
+   "issued": "2021-06-15",
+   "effective": "2022-01-01",
+   "status": "in_force",
+   "evidence": "unverified",
+   "sources": [],
+   "note": ""
+  },
+  {
+   "id": "tt-60-2023-btc",
+   "cite": [
+    "thông tư|60/2023"
+   ],
+   "suffix": "TT-BTC",
+   "title": "Thông tư 60/2023/TT-BTC quy định mức thu, chế độ thu, nộp, miễn, quản lý lệ phí đăng ký, cấp biển phương tiện giao thông cơ giới đường bộ",
+   "issuer": "Bộ Tài chính",
+   "issued": "2023-09-07",
+   "effective": "2023-10-22",
+   "status": "in_force",
+   "evidence": "unverified",
+   "sources": [],
+   "note": ""
+  },
+  {
+   "id": "tt-29-2015-bgtvt",
+   "cite": [
+    "thông tư|29/2015"
+   ],
+   "suffix": "TT-BGTVT",
+   "title": "Thông tư 29/2015/TT-BGTVT quy định về cấp, sử dụng giấy phép lái xe quốc tế",
+   "issuer": "Bộ Giao thông vận tải",
+   "issued": null,
+   "effective": null,
+   "status": "replaced",
+   "replaced_by": "tt-12-2025-bca",
+   "replaced_from": "2025-01-01",
+   "evidence": "reported",
+   "sources": [
+    "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Thong-tu-35-2024-TT-BGTVT-dao-tao-sat-hach-cap-giay-phep-lai-xe-quoc-te-624356.aspx",
+    "https://lsvn.vn/nhung-diem-moi-ve-dao-tao-sat-hach-va-cap-giay-phep-lai-xe-a154639.html"
+   ],
+   "pending": "Đối chiếu điều khoản hiệu lực của Thông tư 35/2024/TT-BGTVT (01/01/2025) và Thông tư 12/2025/TT-BCA (01/3/2025) về cấp, sử dụng giấy phép lái xe quốc tế, rồi sửa các bài IDP/người nước ngoài lái xe.",
+   "note": "Việc cấp, sử dụng giấy phép lái xe quốc tế từ 01/01/2025 nằm trong Thông tư 35/2024/TT-BGTVT (tiêu đề văn bản), rồi Thông tư 12/2025/TT-BCA thay Thông tư 35/2024 từ 01/3/2025 (bản tin); bài còn dẫn Thông tư 29/2015 như quy định đang áp dụng."
+  },
+  {
+   "id": "tt-35-2024-bgtvt",
+   "cite": [
+    "thông tư|35/2024"
+   ],
+   "suffix": "TT-BGTVT",
+   "title": "Thông tư 35/2024/TT-BGTVT quy định về đào tạo, sát hạch, cấp giấy phép lái xe; cấp, sử dụng giấy phép lái xe quốc tế; đào tạo, kiểm tra, cấp chứng chỉ bồi dưỡng kiến thức pháp luật về giao thông đường bộ",
+   "issuer": "Bộ Giao thông vận tải",
+   "issued": "2024-11-15",
+   "effective": "2025-01-01",
+   "status": "replaced",
+   "replaced_by": "tt-12-2025-bca",
+   "replaced_from": "2025-03-01",
+   "evidence": "reported",
+   "sources": [
+    "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Thong-tu-35-2024-TT-BGTVT-dao-tao-sat-hach-cap-giay-phep-lai-xe-quoc-te-624356.aspx"
+   ],
+   "note": "Phần sát hạch, cấp giấy phép lái xe và giấy phép lái xe quốc tế chuyển sang Bộ Công an (Thông tư 12/2025/TT-BCA)."
+  },
+  {
+   "id": "tt-12-2025-bca",
+   "cite": [
+    "thông tư|12/2025"
+   ],
+   "suffix": "TT-BCA",
+   "title": "Thông tư 12/2025/TT-BCA quy định về sát hạch, cấp giấy phép lái xe; cấp, sử dụng giấy phép lái xe quốc tế",
+   "issuer": "Bộ Công an",
+   "issued": null,
+   "effective": "2025-03-01",
+   "status": "in_force",
+   "evidence": "reported",
+   "sources": [
+    "https://lsvn.vn/nhung-diem-moi-ve-dao-tao-sat-hach-va-cap-giay-phep-lai-xe-a154639.html"
+   ],
+   "pending": "Đọc toàn văn; có dự thảo thông tư sửa đổi (chưa rõ đã ban hành).",
+   "note": ""
+  },
+  {
+   "id": "tt-24-2023-bca",
+   "cite": [
+    "thông tư|24/2023"
+   ],
+   "suffix": "TT-BCA",
+   "title": "Thông tư 24/2023/TT-BCA quy định về cấp, thu hồi đăng ký, biển số xe cơ giới",
+   "issuer": "Bộ Công an",
+   "issued": "2023-07-01",
+   "effective": "2023-08-15",
+   "status": "replaced",
+   "replaced_by": "tt-79-2024-bca",
+   "replaced_from": "2025-01-01",
+   "evidence": "reported",
+   "sources": [
+    "https://plo.vn/thong-tu-792024tt-bca-co-the-dang-ky-xe-ngoai-gio-lam-viec-tu-1-1-2025-post824936.html",
+    "https://luatvietnam.vn/tin-van-ban-moi/tu-01-01-2025-chu-xe-doi-noi-cu-tru-sang-tinh-thanh-khac-khong-phai-doi-dang-ky-xe-186-100219-article.html"
+   ],
+   "pending": "Đối chiếu toàn văn Thông tư 79/2024/TT-BCA (thủ tục sang tên, hồ sơ) rồi sửa bài mua bán xe máy.",
+   "note": "Thông tư 79/2024/TT-BCA (15/11/2024) có hiệu lực 01/01/2025 và bãi bỏ Thông tư 24/2023/TT-BCA (bản tin)."
+  },
+  {
+   "id": "tt-79-2024-bca",
+   "cite": [
+    "thông tư|79/2024"
+   ],
+   "suffix": "TT-BCA",
+   "title": "Thông tư 79/2024/TT-BCA quy định về cấp, thu hồi chứng nhận đăng ký xe, biển số xe cơ giới, xe máy chuyên dùng",
+   "issuer": "Bộ Công an",
+   "issued": "2024-11-15",
+   "effective": "2025-01-01",
+   "status": "in_force",
+   "evidence": "reported",
+   "sources": [
+    "https://plo.vn/thong-tu-792024tt-bca-co-the-dang-ky-xe-ngoai-gio-lam-viec-tu-1-1-2025-post824936.html"
+   ],
+   "note": ""
+  },
+  {
+   "id": "tt-46-2012-bgtvt",
+   "cite": [
+    "thông tư|46/2012"
+   ],
+   "suffix": "TT-BGTVT",
+   "title": "Thông tư 46/2012/TT-BGTVT quy định về đào tạo, sát hạch, cấp giấy phép lái xe cơ giới đường bộ",
+   "issuer": "Bộ Giao thông vận tải",
+   "issued": null,
+   "effective": null,
+   "status": "replaced",
+   "replaced_by": "tt-12-2025-bca",
+   "replaced_from": "2017-06-01",
+   "evidence": "unverified",
+   "sources": [],
+   "note": "Bị thay thế từ Thông tư 12/2017/TT-BGTVT; bài chỉ được nhắc như quy định cũ."
+  },
+  {
+   "id": "qd-13-2026-ttg",
+   "cite": [
+    "quyết định|13/2026"
+   ],
+   "suffix": "QĐ-TTg",
+   "title": "Quyết định 13/2026/QĐ-TTg quy định lộ trình áp dụng quy chuẩn kỹ thuật quốc gia về khí thải đối với xe mô tô, xe gắn máy",
+   "issuer": "Thủ tướng Chính phủ",
+   "issued": null,
+   "effective": "2026-05-16",
+   "status": "in_force",
+   "evidence": "reported",
+   "sources": [
+    "https://luatvietnam.vn/tin-van-ban-moi/tu-01-7-2027-ha-noi-va-tphcm-bat-dau-kiem-dinh-khi-thai-xe-may-186-108232-article.html",
+    "https://vnexpress.net/ha-noi-tp-hcm-se-kiem-dinh-khi-thai-xe-may-tu-ngay-1-7-2027-5059602.html"
+   ],
+   "pending": "Đọc toàn văn trên Cổng TTĐT Chính phủ: các mốc 01/7/2027 (Hà Nội, TP.HCM), 01/7/2028, 01/7/2030 và mức quy chuẩn theo năm sản xuất (bản tin mâu thuẫn nhau).",
+   "note": "Ngày ban hành ghi theo bản tin (hiệu lực 16/5/2026); cần xác nhận lại khi đọc toàn văn."
+  },
+  {
+   "id": "nq-57-2025-hdnd",
+   "cite": [
+    "nghị quyết|57/2025"
+   ],
+   "suffix": "NQ-HĐND",
+   "title": "Nghị quyết 57/2025/NQ-HĐND của HĐND thành phố Hà Nội về vùng phát thải thấp",
+   "issuer": "HĐND thành phố Hà Nội",
+   "issued": "2025-11-26",
+   "effective": "2025-12-06",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "facts": [
+    "nq-57-2025-hdnd-ha-noi-lo-trinh",
+    "nq-57-2025-hdnd-ha-noi-xe-may"
+   ],
+   "sources": [
+    "https://www.hhtp.gov.vn/media/tin-tuc/2026_01/nqpq-57-2025.pdf"
+   ],
+   "note": ""
+  },
+  {
+   "id": "nq-47-2024-hdnd",
+   "cite": [
+    "nghị quyết|47/2024"
+   ],
+   "suffix": "NQ-HĐND",
+   "title": "Nghị quyết 47/2024/NQ-HĐND của HĐND thành phố Hà Nội quy định thực hiện vùng phát thải thấp",
+   "issuer": "HĐND thành phố Hà Nội",
+   "issued": "2024-12-12",
+   "effective": "2025-01-01",
+   "status": "amended",
+   "amended_by": "nq-57-2025-hdnd",
+   "amended_from": "2025-12-06",
+   "evidence": "unverified",
+   "sources": [],
+   "note": "Nghị quyết 57/2025/NQ-HĐND quy định lại vùng phát thải thấp; quan hệ thay thế/sửa đổi chưa đối chiếu."
+  },
+  {
+   "id": "nq-202-2025-qh15",
+   "cite": [
+    "nghị quyết|202/2025"
+   ],
+   "suffix": "QH15",
+   "title": "Nghị quyết 202/2025/QH15 về việc sắp xếp đơn vị hành chính cấp tỉnh",
+   "issuer": "Quốc hội",
+   "issued": "2025-06-12",
+   "effective": "2025-06-12",
+   "status": "in_force",
+   "evidence": "unverified",
+   "sources": [],
+   "note": ""
+  },
+  {
+   "id": "ct-20-2025-ttg",
+   "cite": [
+    "chỉ thị|20/ct-ttg"
+   ],
+   "suffix": "CT-TTg",
+   "title": "Chỉ thị 20/CT-TTg ngày 12/7/2025 của Thủ tướng Chính phủ về một số nhiệm vụ cấp bách, quyết liệt ngăn chặn, giải quyết tình trạng ô nhiễm môi trường",
+   "issuer": "Thủ tướng Chính phủ",
+   "issued": "2025-07-12",
+   "effective": "2025-07-12",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "facts": [
+    "chi-thi-20-2025-vanh-dai-1"
+   ],
+   "sources": [
+    "https://thuvienphapluat.vn/van-ban/Tai-nguyen-Moi-truong/Chi-thi-20-CT-TTg-2025-nhiem-vu-cap-bach-quyet-liet-ngan-chan-tinh-trang-o-nhiem-moi-truong-664771.aspx"
+   ],
+   "note": ""
+  }
+ ]
+}

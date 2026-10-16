@@ -55,6 +55,16 @@ jobs:
             echo "::warning::docs/seo/battle is stale - run node tools/seo-battle-matrix.mjs and commit"
           fi
 
+      - name: Legal citation freshness (registry vs. article citations)
+        if: always()
+        run: |
+          set -o pipefail
+          node --test tests/unit/seo-legal-citations.test.js
+          # The report is derived from the committed registry and bodies; stale output warns, never fails.
+          if ! node tools/seo-legal-citations.mjs --check 2>&1 | tee seo-legal-citations.txt; then
+            echo "::warning::docs/seo/legal-citations.md is stale - run node tools/seo-legal-citations.mjs and commit"
+          fi
+
       - name: Matrix/sitemap publication coverage
         run: node tools/seo-index-coverage.mjs --json > seo-index-coverage.json
 
@@ -91,6 +101,9 @@ jobs:
           if test -s seo-battle-matrix.txt; then
             echo "Battle matrix: $(cat seo-battle-matrix.txt | tr '\n' ' ')" >> "$GITHUB_STEP_SUMMARY"
           fi
+          if test -s seo-legal-citations.txt; then
+            echo "Legal citations: $(cat seo-legal-citations.txt | tr '\n' ' ')" >> "$GITHUB_STEP_SUMMARY"
+          fi
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "HTTP crawlability is not evidence of actual Google/Bing indexing or Core Web Vitals field data." >> "$GITHUB_STEP_SUMMARY"
 
@@ -107,5 +120,6 @@ jobs:
             seo-cold-start.txt
             seo-engine.txt
             seo-battle-matrix.txt
+            seo-legal-citations.txt
           if-no-files-found: warn
           retention-days: 14

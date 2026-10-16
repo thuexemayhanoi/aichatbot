@@ -421,6 +421,8 @@ export function runEngine(root = ROOT, { health = true, context = null } = {}) {
     mode: cs.mode.mode, snapshots: cs.snaps.files, serps: cs.serps.length, keywords: cs.keywords, scopeCount: Object.fromEntries(Object.keys(SCOPE_LABEL).map((s) => [s, cs.keywords.filter((k) => k.scope === s).length])),
     groups, edges, curated, flagged, decisions, serpQueue, volumeQueue, noVolume, briefs, proposals, categoryOfCluster, clusters: clusters.clusters, index: cs.index,
     serpByQuery: new Map(cs.serps.map((s) => [normKw(s.query), s])),
+    // Legal citation freshness (tools/seo-legal-citations.mjs) — the research queue lists its pending full-text checks.
+    legal: existsSync(join(root, 'docs/seo/legal-citations.json')) ? JSON.parse(readFileSync(join(root, 'docs/seo/legal-citations.json'), 'utf8')) : null,
     health: health ? repoHealth(root) : null
   };
 }
@@ -574,6 +576,14 @@ export function render(e) {
     L.push('', `Đã hỏi công cụ nhưng không có số (${e.noVolume.length} nhóm — nhu cầu rất thấp hoặc chưa ghi nhận, không phải 0): ${e.noVolume.map((g) => mdCell(g.head)).join('; ') || '—'}.`);
     L.push('', '## 3. Đối chiếu văn bản gốc trước khi viết', '');
     for (const t of e.curated) L.push(`- ${mdCell(t.topic)}: ${t.sources_to_verify.join(' · ')}`);
+    if (e.legal) {
+      const lc = e.legal;
+      L.push('', '## 4. Hiệu lực văn bản pháp luật bài đang dẫn (tools/seo-legal-citations.mjs)', '',
+        `- Bài dẫn văn bản đã bị thay thế như quy định đang áp dụng: ${lc.counts.needs_fix} (cờ content_flags; sửa qua review body sau khi đối chiếu toàn văn)`,
+        `- Văn bản được sửa đổi sau khi bài đăng, chờ đối chiếu toàn văn: ${lc.amended.length ? lc.amended.map((a) => `${a.doc} ← ${a.amended_by} (${a.articles} bài)`).join('; ') : '—'}`,
+        `- Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn: ${lc.unverified.length ? lc.unverified.map((u) => `${u.doc} (${u.articles})`).join(', ') : '—'}`,
+        '- Chi tiết và nguồn để đối chiếu: docs/seo/legal-citations.md');
+    }
     L.push('');
     files['research-queue.md'] = L.join('\n');
   }
