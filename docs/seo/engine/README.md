@@ -17,7 +17,7 @@
 
 | Kiểm tra | Kết quả |
 |---|---|
-| Liên kết nội bộ (site-audit) | 222.526 liên kết kiểm tra, 0 hỏng — Đạt |
+| Liên kết nội bộ (site-audit) | 226.539 liên kết kiểm tra, 0 hỏng — Đạt |
 | SEO score (seo-score) | 99,7/100 — Đạt |
 | Ma trận URL (seo-master-audit) | 2.136 URL; DONE 2.136, KEEP 0, TECH-DONE 0, PLANNED 0; P0 0; tệp đã commit khớp |
 | Sitemap ↔ ma trận (seo-index-coverage) | Đạt (2.006 bài đăng) |

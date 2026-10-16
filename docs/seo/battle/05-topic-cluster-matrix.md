@@ -20,7 +20,7 @@ Mô hình: pillar → hub danh mục/chủ đề con → bài supporting (liên 
 | K12 | Phố cổ – Hoàn Kiếm | /blog/dia-phuong/di-pho-co-bang-xe-may/ | có | 49/14/3 |  | 84 | 0 | 5 | 140 | 3 | Ổn |
 | K13 | Ba Đình – Lăng Bác – Hoàng thành | /blog/dia-phuong/ | có | 315/0/8 |  | 35 | 0 | 2 | 10 | 1 | Ổn |
 | K14 | Tây Hồ – Hồ Tây – Nhật Tân | /blog/dia-phuong/ho-tay-va-xe-may/ | có | 47/14/2 |  | 28 | 0 | 4 | 170 | 2 | Ổn |
-| K15 | Long Biên – Gia Lâm – Bát Tràng (khu vực cửa hàng) | /lien-he/ | có | 29/0/1 |  | 70 | 0 | 1 | 10 | 2 | Ổn |
+| K15 | Long Biên – Gia Lâm – Bát Tràng (khu vực cửa hàng) | /lien-he/ | có | 29/0/2 |  | 70 | 0 | 1 | 10 | 2 | Ổn |
 | K16 | Cầu Giấy – Đống Đa – Thanh Xuân – Hai Bà Trưng | /blog/dia-phuong/ | có | 315/0/8 |  | 42 | 0 | 1 | 110 | 3 | Ổn |
 | K17 | Hành trình ngoại thành và tỉnh lân cận | /blog/kham-pha-an-toan/ | có | 2/0/9 | /blog/dia-phuong/ /blog/dia-phuong/phuong-xa/ | 117 | 0 | 10 | 210 | 7 | Ổn |
 | K18 | Hành trình xa, xuyên Việt | /blog/dia-phuong/ | có | 315/0/8 |  | 36 | 0 | 10 | 150 | 1 | Ổn |

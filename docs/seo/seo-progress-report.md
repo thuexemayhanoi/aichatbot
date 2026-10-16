@@ -165,6 +165,14 @@ Công cụ mới: `node tools/seo-legal-citations.mjs` → [legal-citations.md](
 
 Việc bị chặn trong phiên này: môi trường chạy không truy cập được các máy chủ văn bản chính thức (congbao.chinhphu.vn, vanban.chinhphu.vn, datafiles.chinhphu.vn, thuvienphapluat.vn, bocongan.gov.vn, vbpl.vn — proxy trả 403), nên chưa đối chiếu toàn văn Nghị định 238/2026, Nghị định 356/2025, Thông tư 12/2025/TT-BCA, Thông tư 79/2024/TT-BCA. Khi mở mạng: (1) đọc toàn văn, ghi dữ kiện vào `data/seo/legal-facts.json`; (2) sửa 11 bài có cờ qua `tools/seo-body-review.mjs` (patch.facts), đóng cờ (`resolved`, `fix`); (3) thêm câu "được sửa đổi, bổ sung bởi Nghị định 238/2026/NĐ-CP" vào các trang đích pháp lý K09/K10 nếu khung phạt không đổi; (4) chạy lại công cụ và engine.
 
+### 9.3 Vòng 6 — Tín hiệu E-E-A-T trong repo (16/10/2026)
+
+Nguồn luật chính thức vẫn bị chặn và không còn nhóm từ khóa đo được nào chưa có trang, nên vòng này làm phần tin cậy (trust) mà repo tự làm được:
+
+- `/gioi-thieu/` viết lại từ 173 lên ~520 từ, chỉ dữ kiện thật: cửa hàng đứng sau (địa chỉ, giờ, phạm vi, website chính), nguồn số liệu, và **quy trình kiểm chứng nội dung pháp lý** đang vận hành (dẫn số hiệu + ngày hiệu lực, chỉ đưa con số sau khi đối chiếu toàn văn với nguồn chính thức, sổ đăng ký hiệu lực văn bản rà định kỳ, bài dẫn văn bản hết hiệu lực bị đánh dấu, ngày "cập nhật" hiển thị), giới hạn (tham khảo, không thay tư vấn pháp lý) và kênh báo lỗi.
+- Mọi bài: byline "MotoAI Editorial" liên kết tới `/gioi-thieu/`; schema Article.author có `url` trỏ tới trang đó (thực thể chịu trách nhiệm nội dung). Publisher/LocalBusiness (AutoRental tại `/lien-he/`) giữ nguyên.
+- Sitemap không đổi (lastmod theo nội dung), audit toàn site 0 lỗi, 1058/1058 test.
+
 ## 10. Vòng tiếp theo (khi có dữ liệu Search Console)
 
 1. Lấy truy vấn/CTR thật theo URL → điều chỉnh title/meta cho trang có hiển thị cao nhưng CTR thấp (qua `data/seo/article-meta.json`).

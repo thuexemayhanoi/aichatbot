@@ -627,7 +627,7 @@ ${plan.family.map((id) => {
         <a class="blog-chip" href="${subHubUrl}">${esc(sub.label)}</a>` : ''}
         <a class="blog-chip blog-chip-parent" href="/blog/${cluster.dir}/">${esc(cluster.name)}</a>
       </p>
-${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline">${esc(a.author)} · ${a.published_date}${modified ? ` · cập nhật ${modified}` : ''} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
+${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline"><a href="/gioi-thieu/" class="byline-author">${esc(a.author)}</a> · ${a.published_date}${modified ? ` · cập nhật ${modified}` : ''} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
       <div class="blog-summary" role="note">
         <p class="blog-summary-title">${esc(BLOG_UI.summary.title)}</p>
         <p>${esc(a.description)}</p>
@@ -661,7 +661,7 @@ ${jsonLd({
       articleSection: hub.name,
       ...(a.seo_keyword ? { keywords: a.seo_keyword } : {}),
       image: `${SITE}assets/icons/icon-512.png`,
-      author: { '@type': 'Organization', name: a.author },
+      author: { '@type': 'Organization', name: a.author, url: `${SITE}gioi-thieu/` },
       publisher: publisherSchema(business),
       mainEntityOfPage: `${SITE}${path}`,
       isAccessibleForFree: true
