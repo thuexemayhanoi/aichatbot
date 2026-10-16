@@ -277,7 +277,8 @@ test('v58: about, policy, contact and price pages exist with verified facts only
     'gioi-thieu': ['Giới thiệu', business.address.full],
     'chinh-sach': ['Chính sách', business.policies.deposit.note],
     'lien-he': ['Liên hệ', business.contact.phone_display],
-    'gia-thue': ['Bảng giá', null]
+    'gia-thue': ['Bảng giá', null],
+    'doi-tac': ['Đối tác', business.policies.insurance.note]
   };
   for (const [dir, [label, fact]] of Object.entries(pages)) {
     const html = read(`${dir}/index.html`);

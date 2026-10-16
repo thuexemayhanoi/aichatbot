@@ -109,7 +109,7 @@ test('renderStatus: open/closed copy and hidden fallback', async () => {
 // ---------- Blog shell contract (v58: chat homepage + normal content site) ----------
 
 const STATIC_PAGES = ['privacy/index.html', 'terms/index.html',
-  'gioi-thieu/index.html', 'chinh-sach/index.html', 'lien-he/index.html', 'gia-thue/index.html'];
+  'gioi-thieu/index.html', 'chinh-sach/index.html', 'lien-he/index.html', 'gia-thue/index.html', 'doi-tac/index.html'];
 const CLUSTER_DIRS = ['cong-cu-huong-dan', 'thue-xe-phuong-tien', 'kham-pha-an-toan'];
 
 function blogPages() {
@@ -239,7 +239,7 @@ test('contact mechanism: data-contact-ref anchors cover whatsapp, call and map (
   const refs = new Set();
   const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
-  for (const p of [...walk('blog'), 'privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue'].filter((p) => p.endsWith('.html'))) {
+  for (const p of [...walk('blog'), 'privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue', 'doi-tac'].filter((p) => p.endsWith('.html'))) {
     for (const m of read(p).matchAll(/data-contact-ref="([a-z]+)"/g)) refs.add(m[1]);
   }
   for (const ref of ['whatsapp', 'call', 'map']) {

@@ -1,0 +1,39 @@
+<section class="blog-legal-card">
+  <h2>Hợp tác với {{ business.display_name }}</h2>
+  <p>Trang này dành cho công ty tour, hướng dẫn viên, khách sạn, homestay và doanh nghiệp có nhân viên từ nơi khác đến Hà Nội cần thuê xe máy hoặc xe máy điện theo nhóm, theo lịch cố định. Cửa hàng tại {{ business.address.full }}, hoạt động {{ business.hours.display }} mỗi ngày; phạm vi phục vụ: {{ business.service_areas | list }}.</p>
+</section>
+<section class="blog-legal-card">
+  <h2>Chúng tôi cung cấp gì</h2>
+  <ul>
+    <li>Xe máy và xe máy điện cho thuê theo ngày, tuần, tháng; dòng xe và số xe có sẵn được xác nhận theo lịch của đoàn.</li>
+    <li>Giao xe tận nơi trong giờ hoạt động ({{ business.hours.display }}); thời gian và chi phí giao nhận được xác nhận trước khi đặt xe.</li>
+    <li>Báo giá theo số lượng xe, số ngày thuê và lịch nhận – trả; giá lẻ tham khảo tại <a href="/gia-thue/">bảng giá</a>.</li>
+    <li>Đặt cọc theo chính sách chung: {{ business.policies.deposit.note }}</li>
+    <li>{{ business.policies.insurance.note }}</li>
+  </ul>
+</section>
+<section class="blog-legal-card">
+  <h2>Cách làm việc</h2>
+  <ol>
+    <li>Gửi lịch đoàn: ngày nhận, ngày trả, số xe, loại xe mong muốn và điểm giao (khách sạn, homestay hoặc nhận tại cửa hàng).</li>
+    <li>Cửa hàng xác nhận xe có sẵn, giá, cọc và giờ giao qua điện thoại hoặc WhatsApp.</li>
+    <li>Mỗi người lái mang giấy tờ theo <a href="/chinh-sach/">chính sách thuê xe</a> và có giấy phép lái xe đúng hạng với xe nhận (xem <a href="/blog/an-toan/cac-loai-bang-lai-xe-may/">các loại bằng lái xe máy</a>).</li>
+    <li>Khi nhận xe, kiểm tra cùng nhân viên theo <a href="/blog/huong-dan/kiem-tra-xe-khi-nhan/">danh mục kiểm tra xe khi nhận</a> và chụp ảnh tình trạng xe; trả xe đúng giờ đã hẹn.</li>
+  </ol>
+</section>
+<section class="blog-legal-card">
+  <h2>Hướng dẫn gửi cho khách của đối tác</h2>
+  <p>Bộ bài ngắn, tiếng Việt, để gửi khách trước ngày nhận xe:</p>
+  <ul>
+    <li><a href="/blog/huong-dan/thu-tuc-thue-xe-may/">Thủ tục thuê xe máy</a>: giấy tờ, đặt cọc, hợp đồng.</li>
+    <li><a href="/blog/an-toan/cac-loai-bang-lai-xe-may/">Các loại bằng lái xe máy</a>: hạng bằng nào lái được xe nào.</li>
+    <li><a href="/blog/an-toan/xe-may-dien-co-can-bang-lai-khong/">Xe máy điện có cần bằng lái không</a>: cho khách chọn xe điện.</li>
+    <li><a href="/blog/an-toan/luat-giao-thong-duong-bo-co-ban-cho-du-khach/">Luật giao thông đường bộ cơ bản cho du khách</a>: quy tắc tối thiểu khi chạy xe ở Hà Nội.</li>
+    <li><a href="/blog/huong-dan/di-phuot-bang-xe-may/">Đi phượt bằng xe máy</a> và <a href="/blog/huong-dan/do-di-phuot-xe-may/">đồ đi phượt xe máy</a>: cho tour đường dài.</li>
+    <li><a href="/blog/huong-dan/sua-xe-nho-khi-dang-thue-cho-nguoi-moi/">Xe gặp sự cố khi đang thuê</a>: báo cửa hàng trước khi sửa, giữ hóa đơn.</li>
+  </ul>
+</section>
+<section class="blog-legal-card">
+  <h2>Liên hệ hợp tác</h2>
+  <p>Gọi <a data-contact-ref="call" href="#">{{ business.contact.phone_display }}</a> hoặc nhắn <a data-contact-ref="whatsapp" href="#">WhatsApp</a> trong giờ {{ business.hours.display }}. Địa chỉ, bản đồ và website chính của cửa hàng ở trang <a href="/lien-he/">liên hệ</a>.</p>
+</section>

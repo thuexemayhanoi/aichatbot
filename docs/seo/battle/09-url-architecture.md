@@ -2,7 +2,7 @@
 
 _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang đối thủ đã audit: 127 (5 không tải được). Sinh bởi `node tools/seo-battle-matrix.mjs` — không sửa tay._
 
-2136 URL hiện có (giữ nguyên 100%, không xóa/gộp/noindex) + 0 URL đề xuất (owner thêm ID vào data/blog/content-matrix.csv). Vị trí: Supporting của pillar họ chủ đề (1670); Trang chủ (pillar thương hiệu / K01) (1); Trang chuyển đổi (chính sách) (1); Trang chuyển đổi (2); Hub cấp 1 (4); Hub danh mục (6); Pillar (trang đích của nhóm từ khóa / pillar cụm) (336); Hub phân trang (không nhắm từ khóa) (80); E-E-A-T (1); Pháp lý (không nhắm từ khóa) (2); Hub chủ đề con (33). Từ khóa chính trùng giữa URL: 0; trang nhận nhóm khác ý định SERP: 11.
+2137 URL hiện có (giữ nguyên 100%, không xóa/gộp/noindex) + 0 URL đề xuất (owner thêm ID vào data/blog/content-matrix.csv). Vị trí: Supporting của pillar họ chủ đề (1670); Trang chủ (pillar thương hiệu / K01) (1); Trang chuyển đổi (chính sách) (1); Trang chuyển đổi (2); Hub cấp 1 (4); Hub danh mục (6); Pillar (trang đích của nhóm từ khóa / pillar cụm) (336); Hub phân trang (không nhắm từ khóa) (80); E-E-A-T (1); Pháp lý (không nhắm từ khóa) (2); Hub chủ đề con (33); Bài viết (supporting) (1). Từ khóa chính trùng giữa URL: 0; trang nhận nhóm khác ý định SERP: 11.
 
 ## URL đề xuất mới
 
@@ -134,4 +134,4 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | /blog/xe-dien/quang-duong/ | Hub chủ đề con | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/xe-dien/sac-pin/ | Hub chủ đề con | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 
-Toàn bộ 2136 URL: `09-url-architecture.csv`.
+Toàn bộ 2137 URL: `09-url-architecture.csv`.

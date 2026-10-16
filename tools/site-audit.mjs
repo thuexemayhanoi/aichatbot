@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { SITE } from '../src/config/site.js';
 import { MATRIX_ROWS } from './matrix-size.mjs';
 
-const PUBLIC_DIRS = ['assets', 'src', 'data', 'config', 'blog', 'privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue'];
+const PUBLIC_DIRS = ['assets', 'src', 'data', 'config', 'blog', 'privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue', 'doi-tac'];
 const PUBLIC_ROOTS = ['index.html', 'embed.js', 'manifest.webmanifest', 'service-worker.js', 'robots.txt', 'sitemap.xml', 'CNAME'];
 const LEGACY_PATH = /\/aichatbot(?:\/|[?#]|$)/gi;
 const LEGACY_ORIGIN = /https?:\/\/thuexemayhanoi\.github\.io\/aichatbot(?:\/|[?#]|$)/gi;

@@ -12,7 +12,7 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | 6 | SERP benchmark | [06](06-serp-benchmark.md) | 60 truy vấn, 50 có trang của ta |
 | 7 | Tìm kiếm AI | [07](07-ai-search-matrix.md) | 60 truy vấn; AI Overview 60; được trích 0 |
 | 8 | Liên kết & thẩm quyền | [08](08-backlink-matrix.md) | 1 hồ sơ đối thủ, 88 trang danh sách |
-| 9 | Kiến trúc URL | [09](09-url-architecture.md) | 2136 URL + 0 đề xuất |
+| 9 | Kiến trúc URL | [09](09-url-architecture.md) | 2137 URL + 0 đề xuất |
 | 10 | Master Battle Matrix | [10](10-master-battle-matrix.md) | 8 việc (P0 2) |
 
 ## Nguồn dữ liệu (chỉ quan sát/đo được)

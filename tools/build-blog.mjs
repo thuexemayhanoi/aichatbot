@@ -845,6 +845,13 @@ export function build() {
     bodyPath: 'data/site/chinh-sach.body.html', business
   });
   buildLegal({
+    dir: 'doi-tac', screen: 'partners',
+    title: 'Đối tác',
+    seoTitle: 'Thuê xe máy theo đoàn cho công ty du lịch, khách sạn — Nguyễn Tú',
+    description: `Thuê xe máy, xe máy điện theo nhóm cho công ty du lịch, hướng dẫn viên, khách sạn: gửi lịch đoàn, giao xe trong giờ ${business.hours.display}, giấy tờ, bài hướng dẫn gửi khách.`,
+    bodyPath: 'data/site/doi-tac.body.html', business
+  });
+  buildLegal({
     dir: 'lien-he', screen: 'contact',
     title: 'Liên hệ',
     extraSchema: [localBusinessSchema(business)],
@@ -904,7 +911,7 @@ export function build() {
     ...subtopicPages.map((p) => `${SITE}${p}`),
     ...published.map((a) => `${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`),
     `${SITE}privacy/`, `${SITE}terms/`,
-    `${SITE}gioi-thieu/`, `${SITE}chinh-sach/`, `${SITE}lien-he/`, `${SITE}gia-thue/`];
+    `${SITE}gioi-thieu/`, `${SITE}chinh-sach/`, `${SITE}lien-he/`, `${SITE}gia-thue/`, `${SITE}doi-tac/`];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => {

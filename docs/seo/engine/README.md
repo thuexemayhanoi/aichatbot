@@ -7,7 +7,7 @@
 | Bước | Công cụ | Kết quả |
 |---|---|---|
 | 1. Audit repo | site-audit, seo-score, seo-master-audit, seo-index-coverage, IndexNow | liên kết hỏng 0; SEO score 99,7; P0 0; sitemap↔ma trận Đạt; IndexNow có khóa |
-| 2. SEO Matrix | seo-master-audit (URL) + engine (từ khóa) | 2.136 URL; 117 nhóm từ khóa → [seo-engine-matrix.csv](seo-engine-matrix.csv) |
+| 2. SEO Matrix | seo-master-audit (URL) + engine (từ khóa) | 2.137 URL; 117 nhóm từ khóa → [seo-engine-matrix.csv](seo-engine-matrix.csv) |
 | 3. Nghiên cứu SERP | seo-cold-start (snapshot) | 72 SERP (2026-10-14); hàng đợi: 0 nhóm cần chụp SERP, 0 nhóm cần đo volume (21 nhóm đã hỏi, công cụ không trả số) → [research-queue.md](research-queue.md) |
 | 4. Keyword clustering | engine | 183 từ khóa → 117 nhóm (14 cặp trùng SERP) → [keyword-groups.md](keyword-groups.md) |
 | 5. Topical map | engine + seo-master-audit | 20 cụm K01–K20 → [topical-map.md](topical-map.md) |
@@ -17,9 +17,9 @@
 
 | Kiểm tra | Kết quả |
 |---|---|
-| Liên kết nội bộ (site-audit) | 226.539 liên kết kiểm tra, 0 hỏng — Đạt |
+| Liên kết nội bộ (site-audit) | 226.614 liên kết kiểm tra, 0 hỏng — Đạt |
 | SEO score (seo-score) | 99,7/100 — Đạt |
-| Ma trận URL (seo-master-audit) | 2.136 URL; DONE 2.136, KEEP 0, TECH-DONE 0, PLANNED 0; P0 0; tệp đã commit khớp |
+| Ma trận URL (seo-master-audit) | 2.137 URL; DONE 2.137, KEEP 0, TECH-DONE 0, PLANNED 0; P0 0; tệp đã commit khớp |
 | Sitemap ↔ ma trận (seo-index-coverage) | Đạt (2.006 bài đăng) |
 | Báo cáo cold-start | khớp dữ liệu |
 | IndexNow | khóa công khai có trên site |

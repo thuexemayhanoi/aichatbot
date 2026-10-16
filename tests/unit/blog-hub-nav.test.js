@@ -20,7 +20,7 @@ const CLUSTER_DIRS = taxonomy.clusters.map((c) => c.dir);
 const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
 const ALL_CONTENT = [...walk('blog').filter((p) => p.endsWith('.html')),
-  ...['privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue'].map((d) => `${d}/index.html`)];
+  ...['privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue', 'doi-tac'].map((d) => `${d}/index.html`)];
 
 // ---------- Desktop menu: parent hubs with dropdowns ----------
 

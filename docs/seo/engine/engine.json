@@ -58,8 +58,8 @@
   "site": {
    "pass": true,
    "broken": 0,
-   "checked": 226539,
-   "sitemap": 2136,
+   "checked": 226614,
+   "sitemap": 2137,
    "published": 2006
   },
   "score": {
@@ -68,9 +68,9 @@
    "issues": 494
   },
   "matrix": {
-   "urls": 2136,
+   "urls": 2137,
    "by_status": {
-    "DONE": 2136,
+    "DONE": 2137,
     "KEEP": 0,
     "TECH-DONE": 0,
     "PLANNED": 0
@@ -87,10 +87,10 @@
      "PUBLISHED": 2006
     },
     "published": 2006,
-    "sitemap": 2136,
-    "uniqueSitemap": 2136,
+    "sitemap": 2137,
+    "uniqueSitemap": 2137,
     "publishedInSitemap": 2006,
-    "otherSitemapUrls": 130,
+    "otherSitemapUrls": 131,
     "manifestIds": 2006,
     "gscPerformancePageRows": null
    }

@@ -173,8 +173,28 @@ Nguồn luật chính thức vẫn bị chặn và không còn nhóm từ khóa 
 - Mọi bài: byline "MotoAI Editorial" liên kết tới `/gioi-thieu/`; schema Article.author có `url` trỏ tới trang đó (thực thể chịu trách nhiệm nội dung). Publisher/LocalBusiness (AutoRental tại `/lien-he/`) giữ nguyên.
 - Sitemap không đổi (lastmod theo nội dung), audit toàn site 0 lỗi, 1058/1058 test.
 
+### 9.4 Vòng 7 — Việc chưa làm được (ghi chú) và phần AI chuẩn bị cho việc của owner (16/10/2026)
+
+**Chưa làm được trong môi trường này — ghi chú để làm tiếp khi mở khóa:**
+
+| Việc | Vì sao chưa làm | Mở khóa bằng |
+|---|---|---|
+| Đối chiếu toàn văn Nghị định 238/2026/NĐ-CP, Nghị định 356/2025/NĐ-CP, Thông tư 12/2025/TT-BCA, Thông tư 79/2024/TT-BCA; sửa 11 bài có cờ; thêm câu "được sửa đổi bởi NĐ 238/2026" vào trang đích pháp lý | Mạng của môi trường chặn mọi máy chủ văn bản chính thức (proxy 403); Firecrawl hết tín dụng; WebFetch không phân giải được tên miền | Thêm congbao.chinhphu.vn, vanban.chinhphu.vn, datafiles.chinhphu.vn, thuvienphapluat.vn, bocongan.gov.vn, vbpl.vn vào Allowed domains của environment (hoặc mức truy cập rộng hơn) |
+| 15 văn bản "chưa đối chiếu toàn văn" trong `docs/seo/legal-citations.md` | Cùng lý do | Cùng cách |
+| Mở rộng từ khóa cho cụm K02/K08 (nghiên cứu từ khóa mới) | OpenSEO còn 27 tín dụng, nghiên cứu từ khóa tốn ~54/seed; OpenRush hết tín dụng | Nạp tín dụng OpenSEO hoặc OpenRush |
+| KPI "nhóm ưu tiên vào top 20" (chụp lại SERP sau khi đăng) | Mới đăng 1–2 ngày, chưa đủ thời gian lập chỉ mục; chụp SERP cần tín dụng | Chụp lại sau 2–4 tuần (OpenSEO get_serp_results ~5 tín dụng/truy vấn) |
+| Chuyển DATA-DRIVEN | Search Console chưa kết nối (OpenSEO báo not_connected) | Xác minh Search Console cho `https://chatbot.thuexemaynguyentu.com/`, đặt tệp xuất vào `data/seo/performance/` hoặc kết nối vào dự án OpenSEO |
+| ADD_SECTION "lỗi sử dụng điện thoại" (480/tháng) | Bài BA-0989 đã nêu mức phạt và trừ điểm; khác biệt chỉ là từ đồng nghĩa (deferred 14/10) | Xem lại khi có dữ liệu Search Console |
+| BM-007 PR báo chí | Chưa có số liệu thật của cửa hàng | Owner thu thập số liệu theo danh sách trong `docs/seo/owner-kit.md` mục 5 |
+
+**Làm tiếp theo ma trận (W10 còn 6 việc W8 của owner + 2 việc P2 chờ luật):**
+
+- `/doi-tac/` — trang đối tác mới (BM-006): cách gửi lịch đoàn, giao xe trong giờ, cọc/bảo hiểm theo `business.json`, bộ bài hướng dẫn gửi khách; liên kết từ `/gioi-thieu/` và `/lien-he/`; trong sitemap.
+- `docs/seo/owner-kit.md` — phần "AI chuẩn bị" cho BM-003…BM-008: khối NAP chuẩn + checklist Google Business Profile + danh bạ (từ hồ sơ đối thủ); kế hoạch liên kết chéo từ site chị em (18 trang đích, anchor gợi ý, chỗ đặt); danh sách trang "địa chỉ thuê xe máy Hà Nội" đang xếp hạng kèm mẫu tin nhắn; mẫu email hợp tác tour; danh sách số liệu cần có trước khi làm PR; 29 chủ đề diễn đàn trong SERP kèm 5 bản nháp trả lời có nguồn.
+
 ## 10. Vòng tiếp theo (khi có dữ liệu Search Console)
 
+0. Mở mạng tới nguồn luật chính thức → hoàn tất vòng 5 (đối chiếu toàn văn, sửa 11 bài có cờ, đóng cờ).
 1. Lấy truy vấn/CTR thật theo URL → điều chỉnh title/meta cho trang có hiển thị cao nhưng CTR thấp (qua `data/seo/article-meta.json`).
 2. Ưu tiên cụm K08 (xe máy điện) và K02 (giá thuê) — có volume đo được và chưa thuộc site chị em.
 3. Mọi sửa body tiếp tục qua `tools/seo-body-review.mjs`.
