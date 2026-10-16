@@ -11,7 +11,7 @@
 | 3. Nghiên cứu SERP | seo-cold-start (snapshot) | 72 SERP (2026-10-14); hàng đợi: 0 nhóm cần chụp SERP, 0 nhóm cần đo volume (21 nhóm đã hỏi, công cụ không trả số) → [research-queue.md](research-queue.md) |
 | 4. Keyword clustering | engine | 183 từ khóa → 117 nhóm (14 cặp trùng SERP) → [keyword-groups.md](keyword-groups.md) |
 | 5. Topical map | engine + seo-master-audit | 20 cụm K01–K20 → [topical-map.md](topical-map.md) |
-| 6. Content gap | seo-cold-start + engine | 0 nhóm cần bài mới, 4 bổ sung mục, 1 chỉnh title/meta, 0 nhóm chờ sửa nội dung lỗi thời, 3 chủ đề cần đối chiếu (0 nhóm) → [content-briefs.md](content-briefs.md), [proposed-matrix-rows.csv](proposed-matrix-rows.csv) |
+| 6. Content gap | seo-cold-start + engine | 0 nhóm cần bài mới, 4 bổ sung mục, 1 chỉnh title/meta, 2 nhóm chờ sửa nội dung lỗi thời, 3 chủ đề cần đối chiếu (0 nhóm) → [content-briefs.md](content-briefs.md), [proposed-matrix-rows.csv](proposed-matrix-rows.csv) |
 
 ## Sức khỏe repo (công cụ hiện có)
 
@@ -38,6 +38,17 @@
 | BA-0764 /blog/thue-xe/thue-xe-50cc-cho-sinh-vien/ | Cùng lỗi ranh giới 50 cm³ (xe đúng 50 cm³ không phải mô tô) | Đã sửa 2026-10-14 (tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34)) | 0 | 0 |
 | BA-0010 /blog/huong-dan/giay-to-can-khi-thue-xe/ | Gọi xe đạp máy là xe gắn máy (luật xếp xe đạp máy, xe đạp điện vào xe thô sơ) và nêu chính sách cửa hàng cho bằng A1 thuê xe dưới 175 cm³ trái với hạng A1 cấp từ 2025 | Đã sửa 2026-10-14 (tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34)) | 0 | 0 |
 | BA-0015 /blog/xe-dien/chon-xe-dien-phu-hop/ | Gọi xe đạp điện là xe gắn máy dưới 50 cm³ tương đương; xe gắn máy điện xác định theo công suất không quá 4 kW, xe đạp điện là xe thô sơ | Đã sửa 2026-10-14 (tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34)) | 0 | 0 |
+| BA-0041 /blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/ | Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt) | Cần sửa trước | 1 | 20 |
+| BA-0047 /blog/an-toan/idp-va-bang-lai-quoc-te/ | Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt) | Cần sửa trước | 0 | 0 |
+| BA-0605 /blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-nguoi-moi/ | Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt) | Cần sửa trước | 0 | 0 |
+| BA-0611 /blog/an-toan/idp-va-bang-lai-quoc-te-cho-nguoi-moi/ | Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt) | Cần sửa trước | 0 | 0 |
+| BA-0227 /blog/an-toan/mua-ban-xe-may-giay-to/ | Dẫn Thông tư 24/2023/TT-BCA như thủ tục đăng ký, sang tên xe đang áp dụng; Thông tư 79/2024/TT-BCA có hiệu lực 01/01/2025 và bãi bỏ Thông tư 24/2023/TT-BCA theo bản tin pháp luật — chưa đối chiếu toàn văn (tt-24-2023-bca) | Cần sửa trước | 0 | 0 |
+| BA-0509 /blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/ | Dẫn Thông tư 24/2023/TT-BCA như thủ tục đăng ký, sang tên xe đang áp dụng; Thông tư 79/2024/TT-BCA có hiệu lực 01/01/2025 và bãi bỏ Thông tư 24/2023/TT-BCA theo bản tin pháp luật — chưa đối chiếu toàn văn (tt-24-2023-bca) | Cần sửa trước | 1 | 30 |
+| BA-0275 /blog/an-toan/bao-ve-du-lieu-ca-nhan-khi-thue-xe/ | Dẫn Nghị định 13/2023/NĐ-CP như khung pháp lý hiện hành về dữ liệu cá nhân; từ 01/01/2026 Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP thay thế (LuatVietnam, EY, PwC) — chưa đối chiếu toàn văn (nd-13-2023) | Cần sửa trước | 0 | 0 |
+| BA-0557 /blog/an-toan/bao-ve-du-lieu-ca-nhan-khi-thue-xe-cho-du-khach/ | Dẫn Nghị định 13/2023/NĐ-CP như khung pháp lý hiện hành về dữ liệu cá nhân; từ 01/01/2026 Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP thay thế (LuatVietnam, EY, PwC) — chưa đối chiếu toàn văn (nd-13-2023) | Cần sửa trước | 0 | 0 |
+| BA-1121 /blog/an-toan/bao-ve-du-lieu-ca-nhan-khi-thue-xe-tom-tat/ | Dẫn Nghị định 13/2023/NĐ-CP như khung pháp lý hiện hành về dữ liệu cá nhân; từ 01/01/2026 Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP thay thế (LuatVietnam, EY, PwC) — chưa đối chiếu toàn văn (nd-13-2023) | Cần sửa trước | 0 | 0 |
+| BA-1373 /blog/an-toan/tranh-app-thue-xe-lua-dao-vi-du-thuc-te/ | Dẫn Nghị định 13/2023/NĐ-CP như khung pháp lý hiện hành về dữ liệu cá nhân; từ 01/01/2026 Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP thay thế (LuatVietnam, EY, PwC) — chưa đối chiếu toàn văn (nd-13-2023) | Cần sửa trước | 0 | 0 |
+| BA-0323 /blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach/ | Gõ sai ký hiệu "Thông tư 38/2024/TB-BGTVT" (đúng: TT-BGTVT) và gán mức tốc độ tối đa 40 km/h cho mọi xe trên đường phố, trong khi các bài khác của kho bài dẫn Thông tư 38/2024/TT-BGTVT với mức 60/50 km/h cho xe mô tô trong khu đông dân cư theo loại đường (40 km/h là mức của xe gắn máy) — cần đối chiếu toàn văn trước khi sửa (tt-38-2024-bgtvt) | Cần sửa trước | 0 | 0 |
 
 ## Hàng đợi hành động (top 25 theo điểm ưu tiên)
 
@@ -45,6 +56,8 @@
 
 | # | Nhóm | Volume/tháng | Cụm | Trang đích | Độ phủ | Hành động | Điểm |
 |---:|---|---:|---|---|---|---|---:|
+| 1 | [thuê xe máy cần giấy tờ gì](keyword-groups.md#thue-xe-may-can-giay-to-gi) | 30 | K04 | /blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/ | Đã có bài | Sửa nội dung lỗi thời trước (review body có nguồn) | 30 |
+| 2 | [người nước ngoài lái xe máy ở việt nam](keyword-groups.md#nguoi-nuoc-ngoai-lai-xe-may-o-viet-nam) | 20 | K19 | /blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/ | Đã có bài | Sửa nội dung lỗi thời trước (review body có nguồn) | 12 |
 
 ## Quyết định đã ghi (data/seo/engine-decisions.json)
 

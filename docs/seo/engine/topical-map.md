@@ -30,7 +30,7 @@
   - [kinh nghiệm phượt mai châu bằng xe máy](keyword-groups.md#kinh-nghiem-phuot-mai-chau-bang-xe-may) (10) → chưa có trang · Chưa có · Theo dõi (nhu cầu thấp/chưa đo)
   - [thuê xe máy ở ga hà nội](keyword-groups.md#thue-xe-may-o-ga-ha-noi) (—) → /blog/thue-xe/thue-xe-ga/ · Phủ một phần · Theo dõi (nhu cầu thấp/chưa đo)
 - **K19 Kinh nghiệm thuê xe cho khách du lịch** — pillar /blog/thue-xe/ · 149 bài · 2 nhóm từ khóa · 30/tháng đo được
-  - [người nước ngoài lái xe máy ở việt nam](keyword-groups.md#nguoi-nuoc-ngoai-lai-xe-may-o-viet-nam) (20) → /blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/ · Đã có bài · Giữ nguyên
+  - [người nước ngoài lái xe máy ở việt nam](keyword-groups.md#nguoi-nuoc-ngoai-lai-xe-may-o-viet-nam) (20) → /blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/ · Đã có bài · Sửa nội dung lỗi thời trước (review body có nguồn)
   - [cầm bằng lái xe máy ở hà nội](keyword-groups.md#cam-bang-lai-xe-may-o-ha-noi) (10) → /blog/thue-xe/xe-nao-de-dieu-khien/ · Có mục trong bài · Giữ nguyên
 
 ## Xe điện / xe máy điện (/blog/xe-dien/ · 300 bài)
@@ -48,7 +48,7 @@
   - [đi phượt bằng xe máy](keyword-groups.md#di-phuot-bang-xe-may) (80) → /blog/huong-dan/di-phuot-bang-xe-may/ · Đã có bài · Giữ nguyên
   - [đồ đi phượt xe máy](keyword-groups.md#do-di-phuot-xe-may) (80) → /blog/huong-dan/do-di-phuot-xe-may/ · Đã có bài · Giữ nguyên
   - [thủ tục thuê xe máy](keyword-groups.md#thu-tuc-thue-xe-may) (30) → /blog/huong-dan/thu-tuc-thue-xe-may/ · Đã có bài · Giữ nguyên
-  - [thuê xe máy cần giấy tờ gì](keyword-groups.md#thue-xe-may-can-giay-to-gi) (30) → /blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/ · Đã có bài · Giữ nguyên
+  - [thuê xe máy cần giấy tờ gì](keyword-groups.md#thue-xe-may-can-giay-to-gi) (30) → /blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/ · Đã có bài · Sửa nội dung lỗi thời trước (review body có nguồn)
 - **K05 Nhận xe, trả xe và kiểm tra xe** — pillar /blog/huong-dan/kiem-tra-xe-khi-nhan/ · 78 bài · 1 nhóm từ khóa · 0/tháng đo được
   - [kiểm tra xe máy khi thuê](keyword-groups.md#kiem-tra-xe-may-khi-thue) (—) → /blog/huong-dan/kiem-tra-xe-khi-nhan/ · Đã có bài · Giữ nguyên
 - **K06 Giao xe tận nơi, tận khách sạn** — pillar /chinh-sach/ · 32 bài · 1 nhóm từ khóa · 10/tháng đo được

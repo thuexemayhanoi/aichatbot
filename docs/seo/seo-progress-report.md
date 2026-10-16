@@ -150,6 +150,21 @@ Mọi việc trong W10 mà repo tự làm được đã làm xong; phần còn l
 
 Việc còn lại trong W10 (chỉ owner làm được, không có trong repo): hồ sơ Google Business Profile + danh bạ với NAP đồng nhất trỏ về `/lien-he/` và `/gia-thue/`; đặt liên kết từ thuexemaynguyentu.com (và blog./wiki.) tới các bài hướng dẫn/pháp lý; đề nghị các bài danh sách "địa chỉ thuê xe máy Hà Nội" trên OTA/du lịch bổ sung cửa hàng; trang đối tác tour; PR báo chí chỉ khi có số liệu thật; trả lời diễn đàn đúng chủ đề. Không mua link, không PBN.
 
+### 9.2 Vòng 5 — Rà soát hiệu lực văn bản pháp luật (16/10/2026)
+
+Lý do: Nghị định 168/2024/NĐ-CP (507 lượt dẫn trong 227 bài) đã được sửa đổi, bổ sung bởi **Nghị định 238/2026/NĐ-CP** (ban hành 26/6/2026, hiệu lực 15/8/2026 — số hiệu và ngày xác nhận qua tiêu đề văn bản trên Cổng TTĐT Chính phủ và Công báo). Mở rộng ra toàn bộ văn bản bài dẫn.
+
+Công cụ mới: `node tools/seo-legal-citations.mjs` → [legal-citations.md](legal-citations.md). Sổ đăng ký `data/seo/legal-documents.json` (29 văn bản, mỗi văn bản ghi trạng thái, mức bằng chứng, nguồn, việc chờ đối chiếu); công cụ quét 317 bài có trích dẫn, phân loại từng trích dẫn theo câu ("đang áp dụng" / "nhắc quy định cũ"), chạy trong SEO monitor; test fail khi bài dẫn văn bản ngoài sổ.
+
+| Phát hiện | Số | Xử lý trong vòng này |
+|---|---:|---|
+| Bài dẫn văn bản đã bị thay thế như quy định đang áp dụng | 10 | Cờ `content_flags` (engine 06 → FIX_FIRST, ngừng đẩy từ khóa): Thông tư 29/2015/TT-BGTVT về giấy phép lái xe quốc tế (BA-0041, BA-0047, BA-0605, BA-0611 → nay Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA); Thông tư 24/2023/TT-BCA về đăng ký xe (BA-0227, BA-0509 → Thông tư 79/2024/TT-BCA từ 01/01/2025); Nghị định 13/2023/NĐ-CP về dữ liệu cá nhân (BA-0275, BA-0557, BA-1121, BA-1373 → Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 + Nghị định 356/2025/NĐ-CP từ 01/01/2026). 4 bài khác về dữ liệu cá nhân đã viết đúng mốc 01/01/2026. |
+| Trích dẫn sai ký hiệu | 1 | BA-0323 ghi "Thông tư 38/2024/TB-BGTVT" và gán 40 km/h cho mọi xe trên đường phố → cờ, sửa sau khi đối chiếu toàn văn Thông tư 38/2024/TT-BGTVT. |
+| Văn bản được sửa đổi sau khi bài đăng | 1 | Nghị định 168/2024 ← Nghị định 238/2026: theo các cổng công an tỉnh và bản tin pháp luật, các điều khoản được sửa (Điều 3, 6, 13, 14 khoản 3 điểm b và khoản 6 điểm a, Điều 18 khoản 4 điểm a — người 16–18 tuổi đi xe mô tô, Điều 20) không trùng các khung phạt bài đang dẫn (điện thoại, đèn tín hiệu, mũ bảo hiểm, nồng độ cồn, không giấy phép, giao xe, gương). Không sửa bài khi chưa đọc toàn văn; không gắn cờ vì chưa có mâu thuẫn. |
+| Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn | 15 | Hàng đợi đối chiếu trong báo cáo (Bộ luật Dân sự, Nghị định 67/2023, Thông tư 38/2024, Quyết định 13/2026/QĐ-TTg về lộ trình khí thải, …). |
+
+Việc bị chặn trong phiên này: môi trường chạy không truy cập được các máy chủ văn bản chính thức (congbao.chinhphu.vn, vanban.chinhphu.vn, datafiles.chinhphu.vn, thuvienphapluat.vn, bocongan.gov.vn, vbpl.vn — proxy trả 403), nên chưa đối chiếu toàn văn Nghị định 238/2026, Nghị định 356/2025, Thông tư 12/2025/TT-BCA, Thông tư 79/2024/TT-BCA. Khi mở mạng: (1) đọc toàn văn, ghi dữ kiện vào `data/seo/legal-facts.json`; (2) sửa 11 bài có cờ qua `tools/seo-body-review.mjs` (patch.facts), đóng cờ (`resolved`, `fix`); (3) thêm câu "được sửa đổi, bổ sung bởi Nghị định 238/2026/NĐ-CP" vào các trang đích pháp lý K09/K10 nếu khung phạt không đổi; (4) chạy lại công cụ và engine.
+
 ## 10. Vòng tiếp theo (khi có dữ liệu Search Console)
 
 1. Lấy truy vấn/CTR thật theo URL → điều chỉnh title/meta cho trang có hiển thị cao nhưng CTR thấp (qua `data/seo/article-meta.json`).

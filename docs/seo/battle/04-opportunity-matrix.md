@@ -2,7 +2,7 @@
 
 _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang đối thủ đã audit: 127 (5 không tải được). Sinh bởi `node tools/seo-battle-matrix.mjs` — không sửa tay._
 
-điểm cơ hội = điểm ưu tiên engine 06 (volume đo được × cơ hội × khả thi theo SERP × hiển thị) × (1 + điểm yếu trung bình của các trang top 10 đã audit ÷ 5); P0 ≥ 1.000, P1 ≥ 100, P2 còn lại; nhóm chưa đo volume không xếp hạng. Kết quả: P0 0, P1 0, P2 0 (trong 117 nhóm từ khóa của engine 06; nhóm đã có quyết định done/rejected/deferred ghi trong ngoặc).
+điểm cơ hội = điểm ưu tiên engine 06 (volume đo được × cơ hội × khả thi theo SERP × hiển thị) × (1 + điểm yếu trung bình của các trang top 10 đã audit ÷ 5); P0 ≥ 1.000, P1 ≥ 100, P2 còn lại; nhóm chưa đo volume không xếp hạng. Kết quả: P0 0, P1 0, P2 2 (trong 117 nhóm từ khóa của engine 06; nhóm đã có quyết định done/rejected/deferred ghi trong ngoặc).
 
 ## Cơ hội xếp hạng
 
@@ -13,6 +13,8 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | (done) | 334 | bằng lái xe máy là hạng gì | 1270 | K09 | Hỗn hợp (thương mại + thông tin) | — | Đã có bài | Trung bình | vinfastauto.com thuvienphapluat.vn | 2.3 | Title/meta của bài hiện có | Đưa cụm từ chính vào title/meta (article-meta) | /blog/an-toan/cac-loai-bang-lai-xe-may/ |
 | (rejected) | 39 | phượt hà giang bằng xe máy | 70 | K17 | Thông tin (công cụ) | — | Phủ một phần | Chưa chụp SERP |  | — | Mục/FAQ trong bài hiện có | Bổ sung mục/FAQ vào bài đích (review body) | /blog/dia-phuong/ha-giang-vong-cung/ |
 | (rejected) | 39 | phượt tam đảo bằng xe máy | 70 | K17 | Thông tin (công cụ) | — | Phủ một phần | Chưa chụp SERP |  | — | Mục/FAQ trong bài hiện có | Bổ sung mục/FAQ vào bài đích (review body) | /blog/dia-phuong/tam-dao-bang-xe-may/ |
+| P2 | 38 | thuê xe máy cần giấy tờ gì | 30 | K04 | Thông tin | — | Đã có bài | Thấp |  | 1.3 | Sửa bài hiện có (review body có nguồn) | Sửa nội dung lỗi thời trước (review body có nguồn) | /blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/ |
+| P2 | 18 | người nước ngoài lái xe máy ở việt nam | 20 | K19 | Hỗn hợp (thương mại + thông tin) | — | Đã có bài | Trung bình | thuvienphapluat.vn | 2.3 | Sửa bài hiện có (review body có nguồn) | Sửa nội dung lỗi thời trước (review body có nguồn) | /blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/ |
 | (done) | 0 | không bằng lái xe máy phạt bao nhiêu | 25130 | K09 | Thông tin | — | Đã có bài | Cao | thuvienphapluat.vn | 1.7 | Giữ trang hiện có | Giữ nguyên | /blog/an-toan/di-xe-khong-giay-phep/ |
 | (done) | 0 | mức phạt nồng độ cồn xe máy | 5400 | K09 | Thông tin | — | Đã có bài | Cao | thuvienphapluat.vn | 2.3 | Giữ trang hiện có | Giữ nguyên | /blog/an-toan/nong-do-con-khi-lai-xe/ |
 | (done) | 0 | xe máy điện có cần bằng lái không | 3270 | K09 | Hỗn hợp (thương mại + thông tin) | — | Đã có bài | Trung bình | vinfastauto.com thuvienphapluat.vn motogo.vn | 1.9 | Giữ trang hiện có | Giữ nguyên | /blog/an-toan/xe-may-dien-co-can-bang-lai-khong/ |

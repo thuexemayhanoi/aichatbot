@@ -8,7 +8,7 @@
  "groups": 117,
  "serp_overlap_pairs": 14,
  "actions": {
-  "FIX_FIRST": 0,
+  "FIX_FIRST": 2,
   "NEW_ARTICLE": 0,
   "ADD_SECTION": 4,
   "CONSIDER_STANDALONE": 0,
@@ -16,12 +16,24 @@
   "REVIEW_TARGET": 0,
   "LOCAL_ONLY": 10,
   "MONITOR": 52,
-  "KEEP": 50,
+  "KEEP": 48,
   "NEW_ARTICLE_VERIFY": 0
  },
  "curated_topics": 3,
  "content_flags": {
-  "open": [],
+  "open": [
+   "BA-0041",
+   "BA-0047",
+   "BA-0605",
+   "BA-0611",
+   "BA-0227",
+   "BA-0509",
+   "BA-0275",
+   "BA-0557",
+   "BA-1121",
+   "BA-1373",
+   "BA-0323"
+  ],
   "resolved": [
    "BA-0122",
    "BA-0317",

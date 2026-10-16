@@ -672,6 +672,72 @@
       "reason": "Gọi xe đạp điện là xe gắn máy dưới 50 cm³ tương đương; xe gắn máy điện xác định theo công suất không quá 4 kW, xe đạp điện là xe thô sơ",
       "resolved": "2026-10-14",
       "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu trong data/seo/legal-facts.json (Điều 34)"
+    },
+    {
+      "article": "BA-0041",
+      "reason": "Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-0047",
+      "reason": "Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-0605",
+      "reason": "Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-0611",
+      "reason": "Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-0227",
+      "reason": "Dẫn Thông tư 24/2023/TT-BCA như thủ tục đăng ký, sang tên xe đang áp dụng; Thông tư 79/2024/TT-BCA có hiệu lực 01/01/2025 và bãi bỏ Thông tư 24/2023/TT-BCA theo bản tin pháp luật — chưa đối chiếu toàn văn (tt-24-2023-bca)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-0509",
+      "reason": "Dẫn Thông tư 24/2023/TT-BCA như thủ tục đăng ký, sang tên xe đang áp dụng; Thông tư 79/2024/TT-BCA có hiệu lực 01/01/2025 và bãi bỏ Thông tư 24/2023/TT-BCA theo bản tin pháp luật — chưa đối chiếu toàn văn (tt-24-2023-bca)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-0275",
+      "reason": "Dẫn Nghị định 13/2023/NĐ-CP như khung pháp lý hiện hành về dữ liệu cá nhân; từ 01/01/2026 Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP thay thế (LuatVietnam, EY, PwC) — chưa đối chiếu toàn văn (nd-13-2023)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-0557",
+      "reason": "Dẫn Nghị định 13/2023/NĐ-CP như khung pháp lý hiện hành về dữ liệu cá nhân; từ 01/01/2026 Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP thay thế (LuatVietnam, EY, PwC) — chưa đối chiếu toàn văn (nd-13-2023)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-1121",
+      "reason": "Dẫn Nghị định 13/2023/NĐ-CP như khung pháp lý hiện hành về dữ liệu cá nhân; từ 01/01/2026 Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP thay thế (LuatVietnam, EY, PwC) — chưa đối chiếu toàn văn (nd-13-2023)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-1373",
+      "reason": "Dẫn Nghị định 13/2023/NĐ-CP như khung pháp lý hiện hành về dữ liệu cá nhân; từ 01/01/2026 Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP thay thế (LuatVietnam, EY, PwC) — chưa đối chiếu toàn văn (nd-13-2023)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-0323",
+      "reason": "Gõ sai ký hiệu \"Thông tư 38/2024/TB-BGTVT\" (đúng: TT-BGTVT) và gán mức tốc độ tối đa 40 km/h cho mọi xe trên đường phố, trong khi các bài khác của kho bài dẫn Thông tư 38/2024/TT-BGTVT với mức 60/50 km/h cho xe mô tô trong khu đông dân cư theo loại đường (40 km/h là mức của xe gắn máy) — cần đối chiếu toàn văn trước khi sửa (tt-38-2024-bgtvt)",
+      "flagged": "2026-10-16",
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
     }
   ]
 }

@@ -9,7 +9,7 @@ Mô hình: pillar → hub danh mục/chủ đề con → bài supporting (liên 
 | K01 | Ứng dụng & Agent thuê xe máy | / | có | 1450/0/49 | /blog/app/ /blog/app/cai-app/ /blog/app/dat-xe/ /blog/app/huong-dan/ /blog/app/so-sanh/ /blog/app/tim-xe/ /blog/app/tinh-gia/ /blog/app/tro-ly/ /blog/app/web-app/ | 379 | 0 | 10 | 2710 | 5 | Ổn |
 | K02 | Giá thuê xe máy | /gia-thue/ | có | 736/0/3 |  | 69 | 0 | 5 | 42160 | 3 | Ổn |
 | K03 | Thuê theo ngày, tuần, tháng, dài hạn | /blog/thue-xe/ | có | 304/0/16 |  | 58 | 0 | 2 | 80 | 3 | Ổn |
-| K04 | Thủ tục, giấy tờ, hợp đồng và đặt cọc | /blog/huong-dan/thu-tuc-thue-xe-may/ | có | 27/13/4 | /blog/huong-dan/ /blog/huong-dan/chuan-bi/ /blog/huong-dan/dat-xe/ /blog/huong-dan/thu-tuc/ | 198 | 0 | 29 | 1330 | 4 | Ổn |
+| K04 | Thủ tục, giấy tờ, hợp đồng và đặt cọc | /blog/huong-dan/thu-tuc-thue-xe-may/ | có | 27/13/4 | /blog/huong-dan/ /blog/huong-dan/chuan-bi/ /blog/huong-dan/dat-xe/ /blog/huong-dan/thu-tuc/ | 198 | 0 | 29 | 1330 | 4 | Còn việc |
 | K05 | Nhận xe, trả xe và kiểm tra xe | /blog/huong-dan/kiem-tra-xe-khi-nhan/ | có | 134/13/2 |  | 78 | 0 | 1 | 0 | 1 | Ổn |
 | K06 | Giao xe tận nơi, tận khách sạn | /chinh-sach/ | có | 4/0/3 |  | 32 | 0 | 1 | 10 | 1 | Ổn |
 | K07 | Chọn loại xe: xe số, xe ga, 50cc | /blog/thue-xe/ | có | 304/0/16 |  | 83 | 0 | 5 | 60 | 3 | Ổn |
@@ -24,7 +24,7 @@ Mô hình: pillar → hub danh mục/chủ đề con → bài supporting (liên 
 | K16 | Cầu Giấy – Đống Đa – Thanh Xuân – Hai Bà Trưng | /blog/dia-phuong/ | có | 315/0/8 |  | 42 | 0 | 1 | 110 | 3 | Ổn |
 | K17 | Hành trình ngoại thành và tỉnh lân cận | /blog/kham-pha-an-toan/ | có | 2/0/9 | /blog/dia-phuong/ /blog/dia-phuong/phuong-xa/ | 117 | 0 | 10 | 210 | 7 | Ổn |
 | K18 | Hành trình xa, xuyên Việt | /blog/dia-phuong/ | có | 315/0/8 |  | 36 | 0 | 10 | 150 | 1 | Ổn |
-| K19 | Kinh nghiệm thuê xe cho khách du lịch | /blog/thue-xe/ | có | 304/0/16 | /blog/thue-xe/ /blog/thue-xe/chon-xe/ /blog/thue-xe/dat-coc/ /blog/thue-xe/du-khach/ /blog/thue-xe/gia-thue/ /blog/thue-xe/nhan-xe/ /blog/thue-xe/thue-thang/ /blog/thue-xe/thue-tuan/ /blog/thue-xe/tra-xe/ | 149 | 0 | 2 | 30 | 3 | Ổn |
+| K19 | Kinh nghiệm thuê xe cho khách du lịch | /blog/thue-xe/ | có | 304/0/16 | /blog/thue-xe/ /blog/thue-xe/chon-xe/ /blog/thue-xe/dat-coc/ /blog/thue-xe/du-khach/ /blog/thue-xe/gia-thue/ /blog/thue-xe/nhan-xe/ /blog/thue-xe/thue-thang/ /blog/thue-xe/thue-tuan/ /blog/thue-xe/tra-xe/ | 149 | 0 | 2 | 30 | 3 | Còn việc |
 | K20 | Bảo dưỡng, sự cố và xử lý khi đi đường | /blog/huong-dan/ | có | 205/0/10 |  | 39 | 0 | 5 | 1020 | 2 | Ổn |
 
 ## Câu hỏi FAQ quan sát được (People Also Ask) và việc mở theo cụm
@@ -39,3 +39,19 @@ FAQ:
 
 Việc mở:
 - —
+
+### K04 Thủ tục, giấy tờ, hợp đồng và đặt cọc
+
+FAQ:
+- —
+
+Việc mở:
+- thuê xe máy cần giấy tờ gì → Sửa nội dung lỗi thời trước (review body có nguồn) (/blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/, điểm 30)
+
+### K19 Kinh nghiệm thuê xe cho khách du lịch
+
+FAQ:
+- —
+
+Việc mở:
+- người nước ngoài lái xe máy ở việt nam → Sửa nội dung lỗi thời trước (review body có nguồn) (/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/, điểm 12)

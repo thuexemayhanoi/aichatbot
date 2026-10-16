@@ -371,7 +371,7 @@
 - Nhu cầu: 30/tháng (1/1 từ khóa đo được) · Cụm K04 · Ý định: Thông tin
 - Trang đích: /blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/ · Đã có bài
 - SERP: "thuê xe máy cần giấy tờ gì"
-- Hành động: **Giữ nguyên** · điểm 0
+- Hành động: **Sửa nội dung lỗi thời trước (review body có nguồn)** · điểm 30
 - Thành viên: thuê xe máy cần giấy tờ gì (30)
 
 <a id="ung-dung-thue-xe-may"></a>
@@ -479,7 +479,7 @@
 - Nhu cầu: 20/tháng (1/1 từ khóa đo được) · Cụm K19 · Ý định: Hỗn hợp (thương mại + thông tin)
 - Trang đích: /blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/ · Đã có bài
 - SERP: "người nước ngoài lái xe máy ở việt nam"
-- Hành động: **Giữ nguyên** · điểm 0
+- Hành động: **Sửa nội dung lỗi thời trước (review body có nguồn)** · điểm 12
 - Thành viên: người nước ngoài lái xe máy ở việt nam (20)
 
 <a id="phuot-lao-bang-xe-may"></a>
