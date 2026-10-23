@@ -23,7 +23,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeInternalAnchors } from './site-audit.mjs';
-import { BLOG_UI, feature, icon, renderSlot, resolveFacts } from './blog-components.mjs';
+import { BLOG_UI, feature, icon, renderSlot, resolveFacts, t } from './blog-components.mjs';
 import {
   taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav
 } from './taxonomy.mjs';
@@ -32,6 +32,7 @@ import {
 } from './app-shell.mjs';
 import { loadSeoMeta, assertSeoMeta, applySeoMeta } from './seo-meta.mjs';
 import { buildCss } from './css-build.mjs';
+import { BLOG_HOME, SITE_PAGES } from './site-pages.mjs';
 import { planLinks } from './seo-links.mjs';
 
 export { resolveFacts };
@@ -104,12 +105,19 @@ const MINUTES = new Map();
  *  never compete with the article's own H2 outline. Meta row = real
  *  publish date + reading time; `lead` marks the featured story. */
 function card(a, hub, level = 2, { lead = false } = {}) {
-  const minutes = MINUTES.get(a.article_id);
-  return `      <a class="blog-card${lead ? ' card-lead' : ''}" href="/blog/${hub.dir}/${a.slug}/">
-        <span class="cat">${esc(hub.label)}</span>
-        <h${level}>${esc(a.title)}</h${level}>
-        <p>${esc(a.description)}</p>
-        <span class="blog-card-meta"><time datetime="${a.published_date}">${a.published_date}</time>${minutes ? ` · ${minutes} phút đọc` : ''}${icon('arrow', 'i card-arrow')}</span>
+  return cardHtml({
+    href: `/blog/${hub.dir}/${a.slug}/`, cat: hub.label, title: a.title, desc: a.description,
+    date: a.published_date, minutes: MINUTES.get(a.article_id)
+  }, level, lead);
+}
+/** The card markup itself — also emitted as <template id="blog-card-tpl">
+ *  on the blog home, so client-side search results are the SAME component. */
+function cardHtml({ href, cat, title, desc, date, minutes }, level = 2, lead = false) {
+  return `      <a class="blog-card${lead ? ' card-lead' : ''}" href="${href}">
+        <span class="cat">${esc(cat)}</span>
+        <h${level}>${esc(title)}</h${level}>
+        <p>${esc(desc)}</p>
+        <span class="blog-card-meta"><time datetime="${date}">${date}</time>${minutes != null ? ` · ${esc(t('readingTime', { n: minutes }))}` : ''}${icon('arrow', 'i card-arrow')}</span>
       </a>`;
 }
 
@@ -122,10 +130,10 @@ function screenHead({ label, title, lead }) {
 
 /** Compact breadcrumb (inside the screen, not another site's chrome). */
 function breadcrumb(trail) {
-  const items = trail.map((t, i) =>
+  const items = trail.map((c, i) =>
     i === trail.length - 1
-      ? `<span>${esc(t.label)}</span>`
-      : `<a href="${t.href}">${esc(t.label)}</a>`)
+      ? `<span>${esc(c.label)}</span>`
+      : `<a href="${c.href}">${esc(c.label)}</a>`)
     .join(' › ');
   return `      <nav class="blog-breadcrumb" aria-label="Đường dẫn">${items}</nav>
 `;
@@ -143,8 +151,8 @@ ${items}
 `;
 }
 
-const CRUMB_HOME = { label: 'Agent', href: '/' };
-const CRUMB_BLOG = { label: 'Cẩm nang', href: '/blog/' };
+const CRUMB_HOME = { label: t('crumbHome'), href: '/' };
+const CRUMB_BLOG = { label: t('crumbBlog'), href: '/blog/' };
 /** Cluster crumb entry (v61: blog home → PARENT HUB → category → article). */
 const crumbCluster = (cluster) => ({ label: cluster.name, href: `/blog/${cluster.dir}/` });
 /** Visible + JSON-LD breadcrumb trail for any cluster/category/subtopic/article page. */
@@ -154,8 +162,8 @@ function clusterTrail(cluster, extra = []) {
 /** Schema trail entries (absolute item URLs) matching clusterTrail exactly. */
 function clusterTrailSchema(cluster, extra = []) {
   const entries = [
-    { name: 'Agent', item: SITE },
-    { name: 'Cẩm nang', item: `${SITE}blog/` },
+    { name: CRUMB_HOME.label, item: SITE },
+    { name: CRUMB_BLOG.label, item: `${SITE}blog/` },
     { name: cluster.name, item: `${SITE}blog/${cluster.dir}/` }
   ];
   for (const e of extra) entries.push({ name: e.label, item: e.href ? `${SITE}${e.href.replace('/', '')}` : `${SITE}${e.itemPath}` });
@@ -163,7 +171,7 @@ function clusterTrailSchema(cluster, extra = []) {
 }
 /** Hub parent block: prominent link UP to the parent SEO hub (v61 §8). */
 function hubParentBlock(cluster) {
-  return `      <p class="blog-hub-parent">Nhóm chủ đề: <a href="/blog/${cluster.dir}/">${esc(cluster.name)}</a></p>\n`;
+  return `      <p class="blog-hub-parent">${esc(t('hubParent'))} <a href="/blog/${cluster.dir}/">${esc(cluster.name)}</a></p>\n`;
 }
 /** Bottom contextual block: explore the whole parent cluster (v61 §8). */
 function hubClusterFooter(cluster) {
@@ -171,7 +179,7 @@ function hubClusterFooter(cluster) {
     const c = taxonomy.categories[id];
     return `<a href="/blog/${c.dir}/">${esc(c.label)}</a>`;
   }).join(' · ');
-  return `      <p class="blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}: ${links}</p>\n`;
+  return `      <p class="blog-hub-cluster">${esc(t('clusterExplore', { name: cluster.name }))} ${links}</p>\n`;
 }
 
 /** Two-digit index numeral ("01") — the editorial wayfinding mark used by
@@ -188,15 +196,17 @@ function buildHome(published, business) {
   const catCount = (id) => published.filter((a) => a.category === id).length;
   const clusterCount = (c) => published.filter((a) => c.categories.includes(a.category)).length;
 
+  const bai = (n) => esc(t('articleCount', { n: count(n) }));
+
   // Route board: the three parent hubs as destinations with real counts.
-  const routes = taxonomy.clusters.map((c, i) => `          <li><a href="/blog/${c.dir}/"><span class="route-idx">${idx(i)}</span><span class="route-name">${esc(c.name)}</span><span class="route-count">${count(clusterCount(c))} bài</span>${icon('arrow', 'i route-arrow')}</a></li>`).join('\n');
+  const routes = taxonomy.clusters.map((c, i) => `          <li><a href="/blog/${c.dir}/"><span class="route-idx">${idx(i)}</span><span class="route-name">${esc(c.name)}</span><span class="route-count">${bai(clusterCount(c))}</span>${icon('arrow', 'i route-arrow')}</a></li>`).join('\n');
 
   // Verified facts only: counts come from the manifest, hours/address from
   // data/business/business.json.
   const facts = [
-    [count(published.length), 'bài hướng dẫn đã xuất bản'],
-    [String(navigation.categories.length), 'chuyên mục'],
-    [business.hours.display.replace(' - ', '–'), 'mở cửa mỗi ngày'],
+    [count(published.length), t('factPublished')],
+    [String(navigation.categories.length), t('factCategories')],
+    [business.hours.display.replace(' - ', '–'), t('factHours')],
     [business.address.district, business.address.street]
   ].map(([v, l]) => `          <li><strong>${esc(v)}</strong><span>${esc(l)}</span></li>`).join('\n');
 
@@ -217,7 +227,7 @@ function buildHome(published, business) {
           <div class="blog-cluster-links">
 ${pills}
           </div>
-          <a class="blog-cluster-more" href="/blog/${c.dir}/">Xem toàn bộ ${esc(c.name)} →</a>
+          <a class="blog-cluster-more" href="/blog/${c.dir}/">${esc(t('hubAll', { name: c.name }))}</a>
         </div>
 ${latestCards ? `        <div class="blog-grid blog-rail">
 ${latestCards}
@@ -230,7 +240,7 @@ ${latestCards}
     return `      <a class="blog-cat-card" href="/blog/${cat.dir}/">
         <span class="cat-icon" aria-hidden="true">${idx(i)}</span>
         <strong>${esc(navItem.label)}</strong>
-        <span class="cat-count">${count(catCount(navItem.id))} bài</span>
+        <span class="cat-count">${bai(catCount(navItem.id))}</span>
         <span>${esc(cat.desc)}</span>
       </a>`;
   }).join('\n');
@@ -238,20 +248,19 @@ ${latestCards}
   // v69.1: cap + newest-first (the section is labelled "Bài mới"); the whole
   // corpus stays discoverable through hub pagination and lazy search.
   const cards = newestFirst(published, HOME_LATEST_CARDS).map((a, i) => card(a, HUB_BY_ID[a.category], 2, { lead: i === 0 })).join('\n');
+  // Client search renders results from this template (same card component);
+  // its copy (count, empty, error) travels as data attributes from labels.
+  const cardTemplate = cardHtml({ href: '#', cat: '', title: '', desc: '', date: '', minutes: 0 }, 3).trim();
 
-  const content = breadcrumb([CRUMB_HOME, { label: 'Cẩm nang', href: null }])
+  const content = breadcrumb([CRUMB_HOME, { label: CRUMB_BLOG.label, href: null }])
     + `      <section class="home-hero" aria-label="Cẩm nang thuê xe máy">
         <div class="home-hero-copy">
-${screenHead({
-      label: BLOG_UI.site.kicker,
-      title: 'Thuê xe máy & xe điện',
-      lead: 'Hướng dẫn, ứng dụng, giá, xe, an toàn và địa phương — viết kèm Agent để bạn hỏi sâu hơn từng chủ đề.'
-    })}          <ul class="home-facts" aria-label="Thông tin nhanh">
+${screenHead({ label: BLOG_UI.site.kicker, title: BLOG_HOME.h1, lead: BLOG_HOME.lead })}          <ul class="home-facts" aria-label="Thông tin nhanh">
 ${facts}
           </ul>
         </div>
         <nav class="route-board" aria-label="Ba nhóm chủ đề">
-          <p class="route-board-title">Bạn đang tìm gì?</p>
+          <p class="route-board-title">${esc(t('routeTitle'))}</p>
           <ol>
 ${routes}
           </ol>
@@ -260,23 +269,24 @@ ${routes}
       <section class="search-band" aria-label="Tìm bài viết">
         <div class="blog-search" id="blog-search">
           ${icon('search', 'i search-glyph')}
-          <input id="blog-search-input" type="search" placeholder="Tìm bài: giá thuê, đặt cọc, xe điện, phố cổ…" aria-label="Tìm bài viết">
+          <input id="blog-search-input" type="search" placeholder="${esc(t('searchPlaceholder'))}" aria-label="Tìm bài viết">
           <select id="blog-search-filter" aria-label="Lọc theo danh mục">
             <option value="">Tất cả danh mục</option>
           </select>
           <button id="blog-search-btn" type="button" onclick="document.getElementById('blog-search-input').dispatchEvent(new Event('input'))">Tìm</button>
           <button id="blog-search-clear" type="button" aria-label="Xóa tìm kiếm" hidden>✕</button>
         </div>
-        <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản. <span id="blog-search-count" hidden></span></p>
-        <div class="blog-grid" id="blog-search-results"></div>
+        <p class="blog-search-note">${esc(t('searchNote'))} <span id="blog-search-count" hidden></span></p>
+        <div class="blog-grid" id="blog-search-results" data-count="${esc(t('searchCount'))}" data-empty="${esc(t('searchEmpty'))}" data-error="${esc(t('searchError'))}"></div>
+        <template id="blog-card-tpl">${cardTemplate}</template>
       </section>
       <section class="blog-hubs" aria-label="Nhóm chủ đề chính">
 ${hubSections}
       </section>
       <section class="home-latest">
         <div class="lane-head">
-          <h2>Bài mới</h2>
-          <p>${Math.min(HOME_LATEST_CARDS, published.length)} bài vừa xuất bản, mới nhất trước.</p>
+          <h2>${esc(t('latestTitle'))}</h2>
+          <p>${esc(t('latestNote', { n: Math.min(HOME_LATEST_CARDS, published.length) }))}</p>
         </div>
         <div class="blog-grid">
 ${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản. Hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>'}
@@ -284,18 +294,18 @@ ${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản. H�
       </section>
       <section class="home-index" aria-label="Danh mục">
         <div class="lane-head">
-          <h2>Danh mục</h2>
-          <p>Sáu chuyên mục, ${count(published.length)} bài — đi thẳng tới phần bạn cần.</p>
+          <h2>${esc(t('indexTitle'))}</h2>
+          <p>${esc(t('indexNote', { cats: navigation.categories.length, n: count(published.length) }))}</p>
         </div>
         <div class="blog-cat-grid">
 ${categoryCards}
         </div>
       </section>
-${askAgentAction('thuê xe máy')}`;
+${askAgentAction(BLOG_HOME.askTopic)}`;
 
   const html = appShellPage({
-    title: 'Cẩm nang thuê xe máy — ứng dụng, giá, xe điện, thủ tục',
-    description: 'Cẩm nang thuê xe máy và xe điện: cách dùng ứng dụng thuê xe, bảng giá theo ngày, tuần, tháng, thủ tục, đặt cọc, an toàn và hành trình Hà Nội.',
+    title: BLOG_HOME.title,
+    description: BLOG_HOME.description,
     path: 'blog/',
     screen: 'blog-index',
     activeHub: null,
@@ -303,8 +313,8 @@ ${askAgentAction('thuê xe máy')}`;
     search: true,
     schemaHtml: ldScript({
       '@context': 'https://schema.org', '@type': 'CollectionPage',
-      name: 'Cẩm nang thuê xe máy & xe điện',
-      description: 'Cẩm nang thuê xe máy và xe điện: ứng dụng, giá, thủ tục, an toàn và hành trình Hà Nội.',
+      name: BLOG_HOME.schemaName,
+      description: BLOG_HOME.schemaDescription,
       url: `${SITE}blog/`,
       isPartOf: websiteRef(),
       mainEntity: {
@@ -314,7 +324,7 @@ ${askAgentAction('thuê xe máy')}`;
           '@type': 'ListItem', position: i + 1, name: c.name, url: `${SITE}blog/${c.dir}/`
         }))
       }
-    }) + ldScript(breadcrumbLd([{ name: 'Agent', item: SITE }, { name: 'Cẩm nang', item: `${SITE}blog/` }]))
+    }) + ldScript(breadcrumbLd([{ name: CRUMB_HOME.label, item: SITE }, { name: CRUMB_BLOG.label, item: `${SITE}blog/` }]))
   });
   write('blog/index.html', html);
 }
@@ -335,9 +345,9 @@ function paginationNav(hub, page, pages) {
     links.push(p === page ? `      <span class="blog-page-current" aria-current="page">${p}</span>` : `      <a href="${href}">${p}</a>`);
   }
   return `      <nav class="blog-pagination" aria-label="Trang">
-        ${page > 1 ? `<a href="${page === 2 ? `/blog/${hub.dir}/` : `/blog/${hub.dir}/page/${page - 1}/`}">‹ Trước</a>` : ''}
+        ${page > 1 ? `<a href="${page === 2 ? `/blog/${hub.dir}/` : `/blog/${hub.dir}/page/${page - 1}/`}">${esc(t('pagePrev'))}</a>` : ''}
 ${links.join('\n')}
-        ${page < pages.length ? `<a href="/blog/${hub.dir}/page/${page + 1}/">Sau ›</a>` : ''}
+        ${page < pages.length ? `<a href="/blog/${hub.dir}/page/${page + 1}/">${esc(t('pageNext'))}</a>` : ''}
       </nav>
 `;
 }
@@ -381,10 +391,10 @@ ${pillars.map((a) => `          <li><a href="/blog/${hub.dir}/${a.slug}/">${esc(
     const title = pageNo > 1 ? `${hub.name} — trang ${pageNo} — Cẩm nang thuê xe máy` : (hub.seoTitle ?? `${hub.name} — Cẩm nang thuê xe máy & xe điện`);
 
     const trail = [{ label: hub.label, href: pageNo === 1 ? null : `/blog/${hub.dir}/` },
-      ...(pageNo > 1 ? [{ label: `Trang ${pageNo}`, href: null }] : [])];
+      ...(pageNo > 1 ? [{ label: t('crumbPage', { n: pageNo }), href: null }] : [])];
     const content = breadcrumb(clusterTrail(cluster, trail))
-      + screenHead({ label: 'Danh mục', title: hub.name, lead: hub.desc })
-      + `      <p class="hub-stats">${count(articles.length)} bài${pages.length > 1 ? ` · trang ${pageNo}/${pages.length}` : ''}</p>\n`
+      + screenHead({ label: t('kickerHub'), title: hub.name, lead: hub.desc })
+      + `      <p class="hub-stats">${esc(t('articleCount', { n: count(articles.length) }))}${pages.length > 1 ? ` · ${esc(t('pageOf', { page: pageNo, pages: pages.length }))}` : ''}</p>\n`
       + hubParentBlock(cluster)
       + (hub.intro ? `      <p class="blog-screen-lead">${esc(hub.intro)}</p>\n` : '')
       + categoryChips({ activeHub: hub.dir })
@@ -396,7 +406,7 @@ ${chips}
       + `      <div class="blog-grid">
 ${cards}
       </div>
-${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
+${nav}${sibling ? `      <p class="blog-hub-sibling">${esc(t('hubSibling'))} <a href="/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
 ` : ''}${hubClusterFooter(cluster)}${askAgentAction(hub.name, hub.id)}`;
 
     // Paginated pages keep a unique meta description (no duplicate meta).
@@ -420,7 +430,7 @@ ${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a 
           itemListElement: pages[p].map((a, i) => ({ '@type': 'ListItem', position: p * PER_PAGE + i + 1, name: a.title, url: `${SITE}blog/${hub.dir}/${a.slug}/` }))
         }
       }) + ldScript(breadcrumbLd(clusterTrailSchema(cluster, [{ label: hub.label, itemPath: `blog/${hub.dir}/` },
-        ...(pageNo > 1 ? [{ label: `Trang ${pageNo}`, itemPath: path }] : [])])))
+        ...(pageNo > 1 ? [{ label: t('crumbPage', { n: pageNo }), itemPath: path }] : [])])))
     });
     if (pageNo === 1) write(`blog/${hub.dir}/index.html`, html);
     else write(`blog/${hub.dir}/page/${pageNo}/index.html`, html);
@@ -434,7 +444,7 @@ function buildSubtopic(hub, sub, articles) {
   const cluster = CLUSTER_BY_ID[hub.cluster];
   const content = breadcrumb(clusterTrail(cluster, [{ label: hub.label, href: `/blog/${hub.dir}/` }, { label: sub.label, href: null }]))
     + screenHead({ label: hub.label, title: sub.label, lead: hub.desc })
-    + `      <p class="hub-stats">${count(articles.length)} bài</p>
+    + `      <p class="hub-stats">${esc(t('articleCount', { n: count(articles.length) }))}</p>
       <div class="blog-grid">
 ${cards}
       </div>
@@ -497,13 +507,13 @@ function tocHtml(items) {
 ${items.map((it) => `        <li class="toc-l${it.level}"><a href="#${it.id}">${esc(it.text)}</a></li>`).join('\n')}
       </ol>`;
   return {
-    markup: `      <nav class="blog-toc" aria-label="Mục lục">
+    markup: `      <nav class="blog-toc" aria-label="${esc(t('tocTitle'))}">
         <details class="blog-toc-mobile">
-          <summary>Mục lục</summary>
+          <summary>${esc(t('tocTitle'))}</summary>
 ${list('blog-toc-list')}
         </details>
         <div class="blog-toc-desktop">
-          <p class="blog-toc-title">Mục lục</p>
+          <p class="blog-toc-title">${esc(t('tocTitle'))}</p>
 ${list('blog-toc-list')}
         </div>
       </nav>
@@ -542,13 +552,13 @@ ${topCards}
   const latestCards = clusterArticles.slice(0, 6).map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
   const path = `blog/${cluster.dir}/`;
   const content = breadcrumb([CRUMB_HOME, CRUMB_BLOG, { label: cluster.name, href: null }])
-    + screenHead({ label: 'Nhóm chủ đề', title: cluster.name, lead: cluster.desc })
+    + screenHead({ label: t('kickerCluster'), title: cluster.name, lead: cluster.desc })
     + (cluster.intro ? `      <p class="blog-screen-lead">${esc(cluster.intro)}</p>\n` : '')
     + `      <div class="blog-cat-grid">
 ${catCards}
       </div>
       <section>
-        <h2>Bài mới trong ${esc(cluster.name)}</h2>
+        <h2>${esc(t('clusterLatest', { name: cluster.name }))}</h2>
         <div class="blog-grid">
 ${latestCards || '          <p class="blog-empty">Chưa có bài đã xuất bản trong nhóm này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>'}
         </div>
@@ -633,7 +643,7 @@ ${plan.family.map((id) => {
   // v61 §8: topic context near the article end — the article states BOTH its
   // parent hub and its child hub as crawlable links.
   const topicContext = feature('topicContext') ? `      <section class="blog-topic-context">
-        <h2>Bài viết thuộc</h2>
+        <h2>${esc(t('topicContext'))}</h2>
         <p>
           <a href="/blog/${cluster.dir}/">${esc(cluster.name)}</a>
           <span aria-hidden="true">→</span>
@@ -660,7 +670,7 @@ ${plan.family.map((id) => {
         <a class="blog-chip" href="${subHubUrl}">${esc(sub.label)}</a>` : ''}
         <a class="blog-chip blog-chip-parent" href="/blog/${cluster.dir}/">${esc(cluster.name)}</a>
       </p>
-${screenHead({ label: null, title: a.title, lead: feature('summary') ? null : a.description })}      <p class="byline"><a href="/gioi-thieu/" class="byline-author">${esc(a.author)}</a> · ${a.published_date}${modified ? ` · cập nhật ${modified}` : ''} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
+${screenHead({ label: null, title: a.title, lead: feature('summary') ? null : a.description })}      <p class="byline"><a href="/gioi-thieu/" class="byline-author">${esc(a.author)}</a> · ${a.published_date}${modified ? ` · ${esc(t('updated', { date: modified }))}` : ''} · ${esc(hub.label)} · ${esc(t('readingTime', { n: readingTime(body) }))}</p>
       </div>
 ${summary}${renderSlot('article.afterSummary', slotCtx)}      </div>
       <div class="blog-article-layout">
@@ -735,19 +745,24 @@ function localBusinessSchema(business) {
   };
 }
 
-/** Legal/static screens (privacy, terms, about, policy, contact, price) —
- *  same shell, same source of truth. */
-function buildLegal({ dir, title, seoTitle, description, bodyPath, screen, business, extraSchema = [] }) {
-  const body = resolveFacts(read(bodyPath), business ?? JSON.parse(read('data/business/business.json')));
+/** Static screens (privacy, terms, about, policy, contact, partners) — one
+ *  entry each in config/site-pages.json, rendered in the same shell. Text
+ *  fields resolve {{ business.* }} from verified business.json. */
+function buildLegal(page, business) {
+  const fact = (s) => resolveFacts(s, business);
+  const { dir, screen } = page;
+  const [title, seoTitle, description] = [fact(page.title), fact(page.seoTitle), fact(page.description)];
+  const extraSchema = (page.schema ?? []).map((kind) => ({ localBusiness: localBusinessSchema })[kind](business));
+  const body = fact(read(page.body));
   const content = breadcrumb([CRUMB_HOME, { label: title, href: null }])
-    + screenHead({ label: 'MotoAI', title, lead: description })
+    + screenHead({ label: t('kickerStatic'), title, lead: description })
     + `      <div class="blog-grid blog-legal-grid">
 ${body.trim().split('\n').join('\n')}
       </div>
 ${askAgentAction(title)}`;
   const html = appShellPage({
     // v70: a descriptive SERP title (the visible H1/breadcrumb keep `title`).
-    title: seoTitle ?? `${title} — MotoAI`,
+    title: seoTitle,
     description,
     path: `${dir}/`,
     screen,
@@ -837,53 +852,12 @@ export function build() {
   const reviews = existsSync(join(ROOT, 'data/seo/body-reviews.json')) ? JSON.parse(read('data/seo/body-reviews.json')).reviews : {};
   for (const a of published) buildArticle(a, business, HUB_BY_ID[a.category], published, matrix[a.article_id], links, byId, reviews, linkPages, pricing);
 
-  // Legal screens — inside the SAME app shell (v57).
-  buildLegal({
-    dir: 'privacy', screen: 'legal-privacy',
-    title: 'Chính sách bảo mật',
-    seoTitle: 'Chính sách bảo mật MotoAI — dữ liệu, Agent và quyền riêng tư',
-    description: 'Chính sách bảo mật của MotoAI: dữ liệu hội thoại lưu ở đâu, Agent chạy trên thiết bị ra sao, liên kết bên ngoài và cách liên hệ khi cần hỗ trợ.',
-    bodyPath: 'data/legal/privacy.body.html'
-  });
-  buildLegal({
-    dir: 'terms', screen: 'legal-terms',
-    title: 'Điều khoản sử dụng',
-    seoTitle: 'Điều khoản sử dụng MotoAI — nội dung tham khảo và trách nhiệm',
-    description: 'Điều khoản sử dụng MotoAI: thông tin chỉ mang tính tham khảo, cần xác nhận giá, cọc và tình trạng xe trước khi đặt, cùng trách nhiệm khi sử dụng.',
-    bodyPath: 'data/legal/terms.body.html'
-  });
-
-  // Static screens — same shell, verified facts only (v58).
-  buildLegal({
-    dir: 'gioi-thieu', screen: 'about',
-    title: 'Giới thiệu',
-    seoTitle: 'Giới thiệu MotoAI — trợ lý thuê xe máy của Nguyễn Tú',
-    description: `MotoAI là trợ lý web của ${business.display_name}: hỏi giá, chọn xe, tính chi phí, xem thủ tục, phạm vi phục vụ và cách liên hệ cửa hàng.`,
-    bodyPath: 'data/site/gioi-thieu.body.html', business
-  });
-  buildLegal({
-    dir: 'chinh-sach', screen: 'policy',
-    title: 'Chính sách dịch vụ & thuê xe',
-    seoTitle: 'Chính sách thuê xe máy: đặt cọc, giấy tờ, giao nhận xe',
-    description: `Chính sách thuê xe máy của Nguyễn Tú: giờ hoạt động ${business.hours.display}, tiền đặt cọc theo loại xe, giấy tờ cần mang, giao nhận xe và điều cần xác nhận trước khi đặt.`,
-    bodyPath: 'data/site/chinh-sach.body.html', business
-  });
-  buildLegal({
-    dir: 'doi-tac', screen: 'partners',
-    title: 'Đối tác',
-    seoTitle: 'Thuê xe máy theo đoàn cho công ty du lịch, khách sạn — Nguyễn Tú',
-    description: `Thuê xe máy, xe máy điện theo nhóm cho công ty du lịch, hướng dẫn viên, khách sạn: gửi lịch đoàn, giao xe trong giờ ${business.hours.display}, giấy tờ, bài hướng dẫn gửi khách.`,
-    bodyPath: 'data/site/doi-tac.body.html', business
-  });
-  buildLegal({
-    dir: 'lien-he', screen: 'contact',
-    title: 'Liên hệ',
-    extraSchema: [localBusinessSchema(business)],
-    seoTitle: 'Liên hệ thuê xe máy Nguyễn Tú — điện thoại, WhatsApp, bản đồ',
-    description: `Liên hệ ${business.display_name} tại ${business.address.street}, ${business.address.district}: số điện thoại, WhatsApp, bản đồ chỉ đường, giờ mở cửa ${business.hours.display}.`,
-    bodyPath: 'data/site/lien-he.body.html', business
-  });
-  buildPrice(business);
+  // Static screens — one registry (config/site-pages.json), same shell,
+  // verified facts only.
+  for (const page of SITE_PAGES) {
+    if (page.kind === 'price') buildPrice(page, business);
+    else buildLegal(page, business);
+  }
 
   // Search index (compact; only published; cluster/subtopic/location aware).
   write('blog/search-index.json', JSON.stringify({
@@ -904,7 +878,11 @@ export function build() {
         subtopic: sub.fallback ? '' : sub.code,
         subtopic_name: sub.fallback ? '' : sub.label,
         location: row.local_scope ?? '',
-        url: `/blog/${hub.dir}/${a.slug}/`
+        url: `/blog/${hub.dir}/${a.slug}/`,
+        // Card fields: client results render the same card as the server.
+        category_label: hub.label,
+        date: a.published_date,
+        minutes: MINUTES.get(a.article_id)
       };
     })
   }, null, 2) + '\n');
@@ -934,8 +912,7 @@ export function build() {
     ...categoryPages.map((p) => `${SITE}${p}`),
     ...subtopicPages.map((p) => `${SITE}${p}`),
     ...published.map((a) => `${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`),
-    `${SITE}privacy/`, `${SITE}terms/`,
-    `${SITE}gioi-thieu/`, `${SITE}chinh-sach/`, `${SITE}lien-he/`, `${SITE}gia-thue/`, `${SITE}doi-tac/`];
+    ...SITE_PAGES.map((p) => `${SITE}${p.dir}/`)];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => {
@@ -970,7 +947,7 @@ Sitemap: ${SITE}sitemap.xml
 }
 
 /**
- * Giá thuê screen (/gia-thue/): renders ONLY verified pricing.json data.
+ * Price screen (registry entry kind "price", /gia-thue/): renders ONLY verified pricing.json data.
  * No invented prices, no fabricated deposit — unverified cells show the
  * "confirm with the owner" note instead of a number.
  */
@@ -982,7 +959,8 @@ const rate = (r) => {
   return `${v.toLocaleString('vi-VN')}đ`;
 };
 
-function buildPrice(business) {
+function buildPrice(page, business) {
+  const fact = (s) => resolveFacts(s, business);
   const pricing = JSON.parse(read('data/business/pricing.json'));
   const rows = pricing.vehicles
     .slice()
@@ -999,12 +977,8 @@ ${cells}
         </tr>`;
     }).join('\n');
   const head = pricing.rental_types.map((rt) => `              <th scope="col">${esc(rt.name)}</th>`).join('\n');
-  const content = breadcrumb([CRUMB_HOME, { label: 'Giá thuê', href: null }])
-    + screenHead({
-      label: 'Dịch vụ',
-      title: 'Bảng giá thuê xe',
-      lead: 'Giá tham khảo theo loại xe và thời gian thuê. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.'
-    })
+  const content = breadcrumb([CRUMB_HOME, { label: fact(page.crumb ?? page.title), href: null }])
+    + screenHead({ label: fact(page.kicker), title: fact(page.title), lead: fact(page.lead) })
     + `      <div class="table-wrap price-wrap">
         <table class="blog-table price-table">
           <caption class="visually-hidden">Bảng giá thuê xe theo ngày, tuần và tháng</caption>
@@ -1024,22 +998,22 @@ ${rows}
         <p>${esc(pricing.disclaimer)}</p>
         <p>${esc(business.policies.deposit.note)}</p>
       </div>
-${askAgentAction('giá thuê xe')}`;
+${askAgentAction(page.askTopic)}`;
 
   const html = appShellPage({
-    title: 'Bảng giá thuê xe máy & xe điện theo ngày, tuần, tháng',
-    description: 'Bảng giá thuê xe máy tham khảo theo ngày, tuần, tháng cho xe số, xe tay ga và xe điện. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.',
-    path: 'gia-thue/',
-    screen: 'price',
-    activeHub: 'gia-thue',
+    title: fact(page.seoTitle),
+    description: fact(page.description),
+    path: `${page.dir}/`,
+    screen: page.screen,
+    activeHub: page.dir,
     contentHtml: content,
     schemaHtml: ldScript({
       '@context': 'https://schema.org', '@type': 'WebPage',
-      name: 'Bảng giá thuê xe', description: pricing.disclaimer, url: `${SITE}gia-thue/`,
+      name: fact(page.title), description: pricing.disclaimer, url: `${SITE}${page.dir}/`,
       isPartOf: websiteRef()
     })
   });
-  write('gia-thue/index.html', html);
+  write(`${page.dir}/index.html`, html);
 }
 
 /** Subtopic counts per category for hub chips (only real subtopics counted). */

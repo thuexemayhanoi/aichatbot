@@ -1,0 +1,76 @@
+{
+  "$schema": "motoai/site-pages@1",
+  "note": "Single registry of the non-article pages. tools/build-blog.mjs renders them, sitemap.xml lists them (in this order), tools/site-audit.mjs and tools/seo-score.mjs audit them and the workflows commit/verify them via `node tools/site-pages.mjs --dirs`. Adding a page = one entry here + its body file. Text may use {{ business.* }} placeholders (data/business/business.json).",
+  "blogHome": {
+    "title": "Cẩm nang thuê xe máy — ứng dụng, giá, xe điện, thủ tục",
+    "description": "Cẩm nang thuê xe máy và xe điện: cách dùng ứng dụng thuê xe, bảng giá theo ngày, tuần, tháng, thủ tục, đặt cọc, an toàn và hành trình Hà Nội.",
+    "h1": "Thuê xe máy & xe điện",
+    "lead": "Hướng dẫn, ứng dụng, giá, xe, an toàn và địa phương — viết kèm Agent để bạn hỏi sâu hơn từng chủ đề.",
+    "schemaName": "Cẩm nang thuê xe máy & xe điện",
+    "schemaDescription": "Cẩm nang thuê xe máy và xe điện: ứng dụng, giá, thủ tục, an toàn và hành trình Hà Nội.",
+    "askTopic": "thuê xe máy"
+  },
+  "pages": [
+    {
+      "dir": "privacy",
+      "screen": "legal-privacy",
+      "title": "Chính sách bảo mật",
+      "seoTitle": "Chính sách bảo mật MotoAI — dữ liệu, Agent và quyền riêng tư",
+      "description": "Chính sách bảo mật của MotoAI: dữ liệu hội thoại lưu ở đâu, Agent chạy trên thiết bị ra sao, liên kết bên ngoài và cách liên hệ khi cần hỗ trợ.",
+      "body": "data/legal/privacy.body.html"
+    },
+    {
+      "dir": "terms",
+      "screen": "legal-terms",
+      "title": "Điều khoản sử dụng",
+      "seoTitle": "Điều khoản sử dụng MotoAI — nội dung tham khảo và trách nhiệm",
+      "description": "Điều khoản sử dụng MotoAI: thông tin chỉ mang tính tham khảo, cần xác nhận giá, cọc và tình trạng xe trước khi đặt, cùng trách nhiệm khi sử dụng.",
+      "body": "data/legal/terms.body.html"
+    },
+    {
+      "dir": "gioi-thieu",
+      "screen": "about",
+      "title": "Giới thiệu",
+      "seoTitle": "Giới thiệu MotoAI — trợ lý thuê xe máy của {{ business.brand }}",
+      "description": "MotoAI là trợ lý web của {{ business.display_name }}: hỏi giá, chọn xe, tính chi phí, xem thủ tục, phạm vi phục vụ và cách liên hệ cửa hàng.",
+      "body": "data/site/gioi-thieu.body.html"
+    },
+    {
+      "dir": "chinh-sach",
+      "screen": "policy",
+      "title": "Chính sách dịch vụ & thuê xe",
+      "seoTitle": "Chính sách thuê xe máy: đặt cọc, giấy tờ, giao nhận xe",
+      "description": "Chính sách thuê xe máy của {{ business.brand }}: giờ hoạt động {{ business.hours.display }}, tiền đặt cọc theo loại xe, giấy tờ cần mang, giao nhận xe và điều cần xác nhận trước khi đặt.",
+      "body": "data/site/chinh-sach.body.html"
+    },
+    {
+      "dir": "lien-he",
+      "screen": "contact",
+      "title": "Liên hệ",
+      "seoTitle": "Liên hệ thuê xe máy {{ business.brand }} — điện thoại, WhatsApp, bản đồ",
+      "description": "Liên hệ {{ business.display_name }} tại {{ business.address.street }}, {{ business.address.district }}: số điện thoại, WhatsApp, bản đồ chỉ đường, giờ mở cửa {{ business.hours.display }}.",
+      "body": "data/site/lien-he.body.html",
+      "schema": ["localBusiness"]
+    },
+    {
+      "dir": "gia-thue",
+      "screen": "price",
+      "kind": "price",
+      "crumb": "Giá thuê",
+      "kicker": "Dịch vụ",
+      "title": "Bảng giá thuê xe",
+      "seoTitle": "Bảng giá thuê xe máy & xe điện theo ngày, tuần, tháng",
+      "description": "Bảng giá thuê xe máy tham khảo theo ngày, tuần, tháng cho xe số, xe tay ga và xe điện. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.",
+      "lead": "Giá tham khảo theo loại xe và thời gian thuê. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.",
+      "askTopic": "giá thuê xe"
+    },
+    {
+      "dir": "doi-tac",
+      "screen": "partners",
+      "title": "Đối tác",
+      "seoTitle": "Thuê xe máy theo đoàn cho công ty du lịch, khách sạn — {{ business.brand }}",
+      "description": "Thuê xe máy, xe máy điện theo nhóm cho công ty du lịch, hướng dẫn viên, khách sạn: gửi lịch đoàn, giao xe trong giờ {{ business.hours.display }}, giấy tờ, bài hướng dẫn gửi khách.",
+      "body": "data/site/doi-tac.body.html"
+    }
+  ]
+}

@@ -26,6 +26,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE } from '../src/config/site.js';
 import { auditSite, createSiteIo, resolveInternal } from './site-audit.mjs';
+import { STATIC_DIRS } from './site-pages.mjs';
 
 export { SITE };
 export const HUBS = ['app', 'thue-xe', 'xe-dien', 'huong-dan', 'an-toan', 'dia-phuong'];
@@ -38,12 +39,8 @@ export function pageSet(published) {
     ...CLUSTER_DIRS.map((c) => ({ path: `blog/${c}/index.html`, kind: 'hub', hub: c })),
     ...HUBS.map((h) => ({ path: `blog/${h}/index.html`, kind: 'hub', hub: h })),
     ...published.map((a) => ({ path: `blog/${a.dir}/${a.slug}/index.html`, kind: 'article', slug: a.slug, dir: a.dir, title: a.title })),
-    { path: 'privacy/index.html', kind: 'legal' },
-    { path: 'terms/index.html', kind: 'legal' },
-    { path: 'gioi-thieu/index.html', kind: 'legal' },
-    { path: 'chinh-sach/index.html', kind: 'legal' },
-    { path: 'lien-he/index.html', kind: 'legal' },
-    { path: 'gia-thue/index.html', kind: 'legal' }
+    // Static pages from the one registry (config/site-pages.json).
+    ...STATIC_DIRS.map((dir) => ({ path: `${dir}/index.html`, kind: 'legal' }))
   ];
   return pages;
 }

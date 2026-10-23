@@ -5,8 +5,10 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE } from '../src/config/site.js';
 import { MATRIX_ROWS } from './matrix-size.mjs';
+import { STATIC_DIRS } from './site-pages.mjs';
 
-const PUBLIC_DIRS = ['assets', 'src', 'data', 'config', 'blog', 'privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue', 'doi-tac'];
+// Static page dirs come from the one registry (config/site-pages.json).
+const PUBLIC_DIRS = ['assets', 'src', 'data', 'config', 'blog', ...STATIC_DIRS];
 const PUBLIC_ROOTS = ['index.html', 'embed.js', 'manifest.webmanifest', 'service-worker.js', 'robots.txt', 'sitemap.xml', 'CNAME'];
 const LEGACY_PATH = /\/aichatbot(?:\/|[?#]|$)/gi;
 const LEGACY_ORIGIN = /https?:\/\/thuexemayhanoi\.github\.io\/aichatbot(?:\/|[?#]|$)/gi;

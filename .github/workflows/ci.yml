@@ -32,7 +32,7 @@ jobs:
       - name: Regenerate blog and verify deterministic custom-domain output
         run: |
           node tools/build-blog.mjs
-          git diff --exit-code -- blog data/blog/knowledge-index.json sitemap.xml robots.txt privacy terms gioi-thieu chinh-sach lien-he gia-thue doi-tac assets/css/blog.css data/blog/content-matrix.csv
+          git diff --exit-code -- blog data/blog/knowledge-index.json sitemap.xml robots.txt assets/css/blog.css data/blog/content-matrix.csv $(node tools/site-pages.mjs --dirs)
       - name: Custom-domain migration and internal URL gate
         run: node tools/site-audit.mjs
       - name: SEO score against canonical custom domain

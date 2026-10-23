@@ -53,6 +53,15 @@ for (const [name, items] of Object.entries(BLOG_UI.slots ?? {})) {
   }
 }
 
+const LABEL_KEYS = ['crumbHome', 'crumbBlog', 'crumbPage', 'kickerHub', 'kickerCluster', 'kickerStatic', 'hubParent',
+  'hubSibling', 'clusterExplore', 'hubAll', 'clusterLatest', 'topicContext', 'tocTitle', 'readingTime', 'updated',
+  'articleCount', 'pageOf', 'pagePrev', 'pageNext', 'routeTitle', 'factPublished', 'factCategories', 'factHours',
+  'searchPlaceholder', 'searchNote', 'searchCount', 'searchEmpty', 'searchError', 'latestTitle', 'latestNote',
+  'indexTitle', 'indexNote', 'footerDesc', 'footerNap', 'footerHours'];
+for (const key of LABEL_KEYS) {
+  if (typeof BLOG_UI.labels?.[key] !== 'string' || !BLOG_UI.labels[key].trim()) throw new Error(`blog-ui: labels.${key} must be a non-empty string`);
+}
+
 /** Feature flag lookup: a missing flag means ON (defaults never hide UI). */
 export const feature = (name) => BLOG_UI.features?.[name] !== false;
 
@@ -75,6 +84,16 @@ export function resolveFacts(html, business) {
     if (filter === 'list' && Array.isArray(value)) return value.join(', ');
     return typeof value === 'number' ? value.toLocaleString('vi-VN') + 'đ' : String(value);
   });
+}
+
+/** UI copy deck (config/blog-ui.json → labels). t('hubAll', { name })
+ *  fills {placeholders}; with `business`, {{ business.* }} facts resolve
+ *  too. Returns raw text — callers escape at the HTML boundary. */
+export function t(key, vars = {}, business = null) {
+  const text = BLOG_UI.labels[key];
+  if (text === undefined) throw new Error(`blog-ui: unknown label ${key}`);
+  const filled = text.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m));
+  return business ? resolveFacts(filled, business) : filled;
 }
 
 /** Inline SVG icon set — one place for every glyph the shell draws.

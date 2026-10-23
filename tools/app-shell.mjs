@@ -27,7 +27,7 @@ import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { navigation, taxonomy, clusterNav, drawerCore } from './taxonomy.mjs';
-import { BLOG_UI, bannerSlot, esc, feature, icon, brandMark, contactBand, renderSlot } from './blog-components.mjs';
+import { BLOG_UI, bannerSlot, esc, feature, icon, brandMark, contactBand, renderSlot, t } from './blog-components.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BUSINESS = JSON.parse(readFileSync(join(ROOT, 'data/business/business.json'), 'utf8'));
@@ -253,14 +253,12 @@ ${links}
     }
   }
   const site = BLOG_UI.site;
-  const brand = BUSINESS.brand;             // "Nguyễn Tú" — verified business.json
-  const address = BUSINESS.address.full;     // verified address
-  const hours = BUSINESS.hours.display;      // "09:00 - 21:00"
+  // Copy from config labels; NAP and hours resolve from verified business.json.
   return `    <footer class="blog-footer">
       <div class="blog-footer-inner">
         <div class="blog-footer-brand">
           <p class="blog-footer-brand-name"><span class="blog-footer-mark" aria-hidden="true">${brandMark()}</span> <strong>${esc(site.shortName)}</strong> <span class="blog-footer-agent">· ${esc(site.tagline)}</span></p>
-          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội ${esc(brand)}</p>
+          <p class="blog-footer-desc">${esc(t('footerDesc', {}, BUSINESS))}</p>
           <a class="blog-footer-cta" href="/">${esc(BLOG_UI.cta.footerLabel)}</a>
         </div>
         <nav class="blog-footer-nav" aria-label="Chân trang">
@@ -273,8 +271,8 @@ ${secondary.join('\n')}
         </nav>
       </div>
       <div class="blog-footer-bottom">
-        <p>Thuê xe máy ${esc(brand)} · ${esc(address)}</p>
-        <p>${esc(hours)} mỗi ngày</p>
+        <p>${esc(t('footerNap', {}, BUSINESS))}</p>
+        <p>${esc(t('footerHours', {}, BUSINESS))}</p>
       </div>
     </footer>
 `;

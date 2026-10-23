@@ -2,13 +2,17 @@
  * Blog search (v58) — client-side, index lazy-loaded on demand.
  * Text filter + category filter + clear button + result count + empty state.
  * Index: blog/search-index.json (published articles only, compact fields).
+ * v72.1: results clone #blog-card-tpl (the builder's card); messages come
+ * from data-* on #blog-search-results (config/blog-ui.json labels).
  */
 const input = document.getElementById('blog-search-input');
 const filter = document.getElementById('blog-search-filter');
 const clearBtn = document.getElementById('blog-search-clear');
 const countEl = document.getElementById('blog-search-count');
 const results = document.getElementById('blog-search-results');
-if (input && results) {
+const tpl = document.getElementById('blog-card-tpl');
+const copy = results?.dataset ?? {};
+if (input && results && tpl) {
   let index = null;
   let loading = null;
 
@@ -44,32 +48,31 @@ if (input && results) {
     if (!countEl) return;
     if (!active) { countEl.hidden = true; countEl.textContent = ''; return; }
     countEl.hidden = false;
-    countEl.textContent = `— ${hits.length} kết quả`;
+    countEl.textContent = copy.count.replace('{n}', hits.length);
+  };
+
+  const message = (text) => {
+    const p = document.createElement('p');
+    p.className = 'blog-empty';
+    p.textContent = text;
+    return p;
+  };
+
+  const cardOf = (a) => {
+    const card = tpl.content.firstElementChild.cloneNode(true);
+    card.href = a.url;
+    card.querySelector('.cat').textContent = a.category_label;
+    card.querySelector('h3').textContent = a.title;
+    card.querySelector('p').textContent = a.summary ?? '';
+    const time = card.querySelector('time');
+    time.dateTime = time.textContent = a.date;
+    const read = time.nextSibling; // " · 0 phút đọc": only the number is data
+    read.textContent = read.textContent.replace(/\d+/, a.minutes);
+    return card;
   };
 
   const render = (hits, active) => {
-    results.replaceChildren();
-    if (hits.length === 0) {
-      const p = document.createElement('p');
-      p.className = 'blog-empty';
-      p.textContent = 'Không tìm thấy bài viết khớp. Thử từ khóa khác hoặc hỏi Agent.';
-      results.appendChild(p);
-    } else {
-      for (const a of hits) {
-        const card = document.createElement('a');
-        card.className = 'blog-card';
-        card.href = a.url;
-        const cat = document.createElement('span');
-        cat.className = 'cat';
-        cat.textContent = a.category_name ?? a.category ?? '';
-        const h = document.createElement('h3');
-        h.textContent = a.title;
-        const p = document.createElement('p');
-        p.textContent = a.summary ?? '';
-        card.append(cat, h, p);
-        results.appendChild(card);
-      }
-    }
+    results.replaceChildren(...(hits.length ? hits.map(cardOf) : [message(copy.empty)]));
     setCount(hits, active);
   };
 
@@ -95,10 +98,7 @@ if (input && results) {
       }).slice(0, 24);
       render(hits, true);
     } catch {
-      const p = document.createElement('p');
-      p.className = 'blog-empty';
-      p.textContent = 'Không tải được mục lục tìm kiếm. Vui lòng thử lại.';
-      results.replaceChildren(p);
+      results.replaceChildren(message(copy.error));
     }
   }
 

@@ -5,8 +5,10 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { minifyCss, assertMinifiable, CSS_SOURCE, CSS_OUTPUT } from '../../tools/css-build.mjs';
 import { taxonomy } from '../../tools/taxonomy.mjs';
+import { STATIC_DIRS, SITE_PAGES } from '../../tools/site-pages.mjs';
+import { pageSet } from '../../tools/seo-score.mjs';
 import { assetVersion } from '../../tools/app-shell.mjs';
-import { BLOG_UI, feature, contactBand, renderSlot, categoryAction, icon } from '../../tools/blog-components.mjs';
+import { BLOG_UI, feature, contactBand, renderSlot, categoryAction, icon, t, resolveFacts } from '../../tools/blog-components.mjs';
 import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
 
 /**
@@ -136,15 +138,55 @@ test('icons are one inline SVG set (no emoji glyphs in the shell chrome)', () =>
   assert.ok(!/\p{Extended_Pictographic}/u.test(header.replace(/<button[^>]*blog-theme-toggle[\s\S]*?<\/button>/, '')), 'header chrome uses SVG icons, not emoji');
 });
 
-test('shared rebuild + CI gates cover every generated surface', () => {
+test('shared rebuild + CI gates cover every generated surface (static dirs from the registry)', () => {
   const rebuild = read('.github/workflows/blog-shared-rebuild.yml');
   const ci = read('.github/workflows/ci.yml');
-  for (const path of ['assets/css/src/**', 'tools/css-build.mjs', 'data/site/**']) {
+  for (const path of ['assets/css/src/**', 'tools/css-build.mjs', 'data/site/**', 'config/site-pages.json']) {
     assert.ok(rebuild.includes(`'${path}'`), `shared rebuild triggers on ${path}`);
   }
-  for (const dir of ['doi-tac', 'assets/css/blog.css']) {
-    assert.ok(new RegExp(`git add[\\s\\S]*${dir.replace(/[./]/g, (c) => `\\${c}`)}`).test(rebuild), `rebuild commits ${dir}`);
-    assert.ok(new RegExp(`git diff --exit-code[^\\n]*${dir.replace(/[./]/g, (c) => `\\${c}`)}`).test(ci), `CI determinism gate covers ${dir}`);
+  assert.match(rebuild, /git add[^\n]*\\\n[^\n]*assets\/css\/blog\.css \$\(node tools\/site-pages\.mjs --dirs\)/, 'rebuild commits served CSS + every registry dir');
+  assert.match(ci, /git diff --exit-code[^\n]*assets\/css\/blog\.css[^\n]*\$\(node tools\/site-pages\.mjs --dirs\)/, 'CI determinism gate covers served CSS + every registry dir');
+  for (const dir of STATIC_DIRS) assert.ok(readdirSync(join(ROOT, dir)).includes('index.html'), `${dir} generated`);
+});
+
+test('static page registry is the one list: build, sitemap, site-audit and seo-score agree', () => {
+  assert.ok(STATIC_DIRS.includes('doi-tac') && STATIC_DIRS.includes('gia-thue'), 'registry holds every static page');
+  const locs = [...read('sitemap.xml').matchAll(/<loc>https:\/\/[^/]+\/([^<]*)<\/loc>/g)].map((m) => m[1]);
+  assert.deepEqual(locs.slice(-STATIC_DIRS.length), STATIC_DIRS.map((d) => `${d}/`), 'sitemap lists the registry, in order');
+  const scored = pageSet([]).filter((p) => p.kind === 'legal').map((p) => p.path);
+  assert.deepEqual(scored, STATIC_DIRS.map((d) => `${d}/index.html`), 'seo-score audits every registry page');
+  const business = JSON.parse(read('data/business/business.json'));
+  for (const page of SITE_PAGES) {
+    const html = read(`${page.dir}/index.html`);
+    assert.ok(html.includes(`<title>${resolveFacts(page.seoTitle, business).replace(/&/g, '&amp;')}</title>`), `${page.dir}: SERP title from registry`);
+    assert.ok(!html.includes('{{'), `${page.dir}: business facts resolved`);
   }
-  assert.ok(readdirSync(join(ROOT, 'doi-tac')).includes('index.html'));
+  for (const builder of ['tools/build-blog.mjs', 'tools/site-audit.mjs', 'tools/seo-score.mjs']) {
+    assert.ok(!/'doi-tac'|'chinh-sach\/index\.html'/.test(read(builder)), `${builder}: no private copy of the static page list`);
+  }
+});
+
+test('UI copy lives in config labels: builder carries no visible strings, t() fills placeholders', () => {
+  assert.equal(t('hubAll', { name: 'A & B' }), 'Xem toàn bộ A & B →');
+  assert.equal(t('footerHours', {}, JSON.parse(read('data/business/business.json'))), `${JSON.parse(read('data/business/business.json')).hours.display} mỗi ngày`);
+  assert.throws(() => t('no-such-label'), /unknown label/);
+  const builder = read('tools/build-blog.mjs') + read('tools/app-shell.mjs');
+  for (const copy of ['Khám phá thêm trong', 'phút đọc', 'Bạn đang tìm gì', 'Chủ đề liên quan', 'Bài viết thuộc', 'mỗi ngày</p>']) {
+    assert.ok(!builder.includes(copy), `"${copy}" comes from config/blog-ui.json labels, not the builder`);
+  }
+});
+
+test('search results reuse the builder card (template) and config copy — no second card implementation', () => {
+  const home = read('blog/index.html');
+  const tpl = /<template id="blog-card-tpl">([\s\S]*?)<\/template>/.exec(home)?.[1] ?? '';
+  assert.match(tpl, /^<a class="blog-card" href="#">[\s\S]*<span class="blog-card-meta"><time datetime=""><\/time> · 0 phút đọc<svg/, 'template = card component');
+  for (const key of ['count', 'empty', 'error']) assert.match(home, new RegExp(`id="blog-search-results"[^>]*data-${key}="[^"]+"`), `copy data-${key}`);
+  const js = read('assets/js/blog.js');
+  assert.ok(js.includes("getElementById('blog-card-tpl')") && js.includes('cloneNode(true)'), 'blog.js clones the template');
+  assert.ok(!/createElement\('(?:a|h3|span)'\)/.test(js), 'blog.js builds no card markup of its own');
+  assert.ok(!/[ăâđêôơư]/i.test(js.replace(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g, '')), 'no Vietnamese UI copy hard-coded in blog.js');
+  const index = JSON.parse(read('blog/search-index.json'));
+  for (const a of index.articles.slice(0, 50)) {
+    assert.ok(a.category_label && /^\d{4}-\d{2}-\d{2}$/.test(a.date) && Number.isInteger(a.minutes) && a.minutes >= 1, `${a.url}: card fields`);
+  }
 });

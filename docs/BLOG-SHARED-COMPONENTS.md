@@ -14,12 +14,15 @@ Static blog: 2,000+ bodies in `data/blog/articles` + `data/blog/published.json`,
 | Banner toàn site | `config/blog-ui.json` → `banner` | Chỉ link nội bộ |
 | Cắm khối mới vào vị trí cố định | `config/blog-ui.json` → `slots` (`article.afterSummary`, `article.afterBody`, `page.beforeContactBand`) | Kiểu: `notice` (text + link nội bộ), `price-glance` (giá thấp nhất ĐÃ XÁC MINH trong `pricing.json` + disclaimer); lọc theo `categories` |
 | Tiêu đề khối Tóm tắt / Liên quan / Cùng chủ đề, số bài liên quan | `config/blog-ui.json` → `summary`, `related`, `family`, `pillars` | |
+| Mọi chữ giao diện: breadcrumb, nhãn hub/cluster, "Bài mới", "phút đọc", câu tìm kiếm, phân trang, mô tả footer | `config/blog-ui.json` → `labels` | `{n}`, `{name}`… là biến; `{{ business.* }}` lấy từ business.json. Builder và blog.js không còn chuỗi giao diện riêng |
+| Thêm/sửa trang tĩnh (bảo mật, điều khoản, giới thiệu, chính sách, liên hệ, bảng giá, đối tác) + tiêu đề/mô tả trang chủ blog | `config/site-pages.json` | Một danh sách duy nhất: builder, sitemap, site-audit, seo-score và workflow (`node tools/site-pages.mjs --dirs`) cùng đọc |
 | NAP, giờ mở cửa, điện thoại, WhatsApp, bản đồ, chính sách cọc | `data/business/business.json` | Bài viết dùng `{{ business.* }}`; link liên hệ gắn lúc chạy qua `data-contact-ref` |
 | Bảng giá | `data/business/pricing.json` | Ô chưa xác minh hiển thị "Xác nhận trực tiếp" |
 | Menu header/drawer/footer | `config/navigation.json` + `data/blog/taxonomy.json` | |
 | Title/H1/meta SEO của bài đã đăng | `data/seo/article-meta.json` | Không sửa `published.json` |
 | Bài liên quan / cùng chủ đề | Tự sinh bởi `tools/seo-links.mjs` | Không chèn link thủ công hàng loạt |
 | Icon (mũi tên, tìm kiếm, điện thoại, bản đồ…) và logo | `tools/blog-components.mjs` → `icon()`, `brandMark()` | SVG inline, không emoji ở chrome |
+| Card bài viết (danh sách, liên quan, kết quả tìm kiếm) | `tools/build-blog.mjs` → `cardHtml()` | Trang chủ blog phát `<template id="blog-card-tpl">`; `assets/js/blog.js` chỉ clone template, không tự dựng card |
 | Header, footer, `<head>`, drawer | `tools/app-shell.mjs` | |
 | Schema (CollectionPage, Article, BreadcrumbList, WebPage, AutoRental) | `tools/build-blog.mjs` qua `ldScript()`, `websiteRef()`, `breadcrumbLd()` | Một thực thể WebSite cho mọi trang |
 
@@ -37,7 +40,7 @@ Fonts: Be Vietnam Pro (designed for Vietnamese diacritics), self-hosted Latin + 
 
 - `.github/workflows/blog-shared-rebuild.yml` rebuilds on any change to the sources above (config, tools, CSS source, scripts, business data, static page bodies), runs `node --test`, `site-audit` and `seo-score`, then commits the generated output (blog, static pages incl. `doi-tac`, served CSS).
 - `.github/workflows/ci.yml` rebuilds and fails on any diff (`git diff --exit-code`), so a forgotten rebuild cannot ship.
-- `tests/unit/blog-design-system.test.js` locks the single-source contract: no raw colors outside tokens, served CSS = fresh build, content-hash URLs, font + fallback, sticky-safe overflow, motion flags, CTA per category, slots, no duplicate dek, SVG-only chrome icons, workflow coverage.
+- `tests/unit/blog-design-system.test.js` locks the single-source contract: no raw colors outside tokens, served CSS = fresh build, content-hash URLs, font + fallback, sticky-safe overflow, motion flags, CTA per category, slots, no duplicate dek, SVG-only chrome icons, workflow coverage, one static-page registry (build = sitemap = site-audit = seo-score), no UI copy in the builder or blog.js, search results = the builder's card.
 - Budgets: total CSS (`style.css` + served `blog.css`) < 64 KB raw (`tools/seo-score.mjs`), base JS < 232 KB (CI).
 
 Local QA: `node tools/build-blog.mjs && node --test && node tools/site-audit.mjs && node tools/seo-score.mjs`.
