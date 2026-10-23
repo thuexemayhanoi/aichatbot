@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-motion="on">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="motoai-build" content="v66">
+  <meta name="motoai-build" content="v72">
   <title>Hướng dẫn thuê xe máy từng bước: giấy tờ, cọc, nhận và trả xe</title>
   <meta name="description" content="Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, hợp đồng thuê, cách kiểm tra khi nhận xe và trả xe đúng giờ.">
   <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/blog/huong-dan/">
-  <meta name="theme-color" content="#4f46e5">
+  <meta name="theme-color" content="#f3f0e9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0f11" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy &amp; xe điện">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:title" content="Hướng dẫn thuê xe máy từng bước: giấy tờ, cọc, nhận và trả xe">
   <meta property="og:description" content="Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, hợp đồng thuê, cách kiểm tra khi nhận xe và trả xe đúng giờ.">
@@ -22,15 +24,15 @@
   <meta name="twitter:title" content="Hướng dẫn thuê xe máy từng bước: giấy tờ, cọc, nhận và trả xe">
   <meta name="twitter:description" content="Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, hợp đồng thuê, cách kiểm tra khi nhận xe và trả xe đúng giờ.">
   <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
-  <link rel="stylesheet" href="../../assets/css/style.css?v=66">
-  <link rel="stylesheet" href="../../assets/css/blog.css?v=66">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=4136185246">
+  <link rel="stylesheet" href="../../assets/css/blog.css?v=1347333943">
   <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
 </head>
 <body class="content-page">
     <header class="site-header">
       <div class="site-header-inner">
         <a class="site-brand" href="/" aria-label="MotoAI — về màn hình Agent">
-          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-mark" aria-hidden="true"><svg class="brand-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><rect class="brand-mark-tile" width="32" height="32" rx="9"/><path class="brand-mark-road" d="M7.5 26.5 14 5.5M24.5 26.5 18 5.5"/><path class="brand-mark-lane" d="M16 25.5v-3.6M16 18.6v-2.8M16 12.9V11"/></svg></span>
           <span class="site-brand-text">
             <strong>MotoAI</strong>
             <span>Hỗ trợ Agent</span>
@@ -39,31 +41,31 @@
         <nav class="site-nav" aria-label="Chuyên mục">
           <a href="/blog/">Cẩm nang</a>
         <div class="site-nav-item" data-active="1">
-          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true" aria-current="page">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true" aria-current="page">Công cụ &amp; Hướng dẫn<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
           <div class="site-nav-drop">
-            <a href="/blog/app/">📱 Ứng Dụng</a>
-            <a href="/blog/huong-dan/" aria-current="page">📄 Hướng Dẫn</a>
+            <a href="/blog/app/"><span class="drop-idx">01</span><span class="drop-label">Ứng Dụng</span></a>
+            <a href="/blog/huong-dan/" aria-current="page"><span class="drop-idx">02</span><span class="drop-label">Hướng Dẫn</span></a>
           </div>
         </div>
         <div class="site-nav-item">
-          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true">Thuê xe &amp; Phương tiện<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
           <div class="site-nav-drop">
-            <a href="/blog/thue-xe/">🏍️ Thuê Xe</a>
-            <a href="/blog/xe-dien/">⚡ Xe Điện</a>
+            <a href="/blog/thue-xe/"><span class="drop-idx">01</span><span class="drop-label">Thuê Xe</span></a>
+            <a href="/blog/xe-dien/"><span class="drop-idx">02</span><span class="drop-label">Xe Điện</span></a>
           </div>
         </div>
         <div class="site-nav-item">
-          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true">Khám phá &amp; An toàn<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
           <div class="site-nav-drop">
-            <a href="/blog/an-toan/">🛡️ An Toàn</a>
-            <a href="/blog/dia-phuong/">📍 Địa Phương</a>
+            <a href="/blog/an-toan/"><span class="drop-idx">01</span><span class="drop-label">An Toàn</span></a>
+            <a href="/blog/dia-phuong/"><span class="drop-idx">02</span><span class="drop-label">Địa Phương</span></a>
           </div>
         </div>
         </nav>
         <div class="site-actions">
-          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài"><svg class="i i-search" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
           <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
-          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer"><span class="menu-lines" aria-hidden="true"></span> <span class="motoai-menu-label">Menu</span></button>
         </div>
         <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
       </div>
@@ -73,6 +75,7 @@
       <p class="blog-screen-label">Danh mục</p>
       <h1 class="blog-screen-title">Hướng dẫn / thủ tục</h1>
       <p class="blog-screen-lead">Thủ tục nhận xe, giấy tờ, đặt cọc và quy trình trả xe.</p>
+      <p class="hub-stats">302 bài · trang 1/13</p>
       <p class="blog-hub-parent">Nhóm chủ đề: <a href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a></p>
       <p class="blog-screen-lead">Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ.</p>
       <div class="blog-chips" aria-label="Danh mục">
@@ -150,121 +153,145 @@
         <span class="cat">Hướng Dẫn</span>
         <h2>Thủ tục thuê xe máy: giấy tờ, đặt cọc, nhận và trả xe</h2>
         <p>Thủ tục thuê xe máy ở Hà Nội cần chuẩn bị giấy tờ tùy thân, bằng lái phù hợp dung tích xe và tiền đặt cọc; cách nhận xe, trả xe và nhờ Agent hỗ trợ chuẩn bị.</p>
+        <span class="blog-card-meta"><time datetime="2026-09-26">2026-09-26</time> · 5 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/giay-to-can-khi-thue-xe/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Giấy tờ cần khi thuê xe máy: CCCD, bằng lái, trường hợp riêng</h2>
         <p>Giấy tờ cần khi thuê xe máy: căn cước công dân, bằng lái đúng hạng, giấy phép lái xe điện tử trên VNeID, hộ chiếu cho khách nước ngoài và người dưới 18 tuổi.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-01">2026-10-01</time> · 10 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/huong-dan-dat-xe-nhanh/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Hướng dẫn đặt xe máy thuê nhanh: gói đủ thông tin một lần</h2>
         <p>Hướng dẫn đặt xe máy thuê nhanh: ba cách đặt, bốn thông tin cần chốt, mẫu tin nhắn gửi một lần, việc về cọc và giấy tờ, đặt trước bao lâu và bước xác nhận.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-01">2026-10-01</time> · 10 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/quy-trinh-nhan-xe/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Quy trình nhận xe máy thuê: năm bước trong mười phút</h2>
         <p>Quy trình nhận xe máy thuê gồm năm bước: đối chiếu dòng xe và số liệu đã chốt, đi vòng quanh xe, chụp ảnh, chạy thử và chốt lại bằng văn bản.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-01">2026-10-01</time> · 8 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/quy-trinh-tra-xe/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Quy trình trả xe máy thuê: bốn bước để nhận lại tiền cọc</h2>
         <p>Quy trình trả xe máy thuê gồm bốn bước ở phút trả xe, cách cân nhiên liệu hoặc pin về mốc ban đầu và việc cần chuẩn bị để nhận lại tiền cọc suôn sẻ.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-01">2026-10-01</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/kiem-tra-xe-khi-nhan/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Kiểm tra xe máy khi nhận xe thuê: từng bộ phận và ảnh gốc</h2>
         <p>Kiểm tra xe máy khi nhận xe thuê: nguyên tắc rà xe, vết xước và sơn gốc, bánh và phanh, đèn còi gương, động cơ xăng hoặc pin điện, ghế, khóa, cốp và phụ kiện.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-01">2026-10-01</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/hop-dong-thue-xe-can-nhung-gi/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Hợp đồng thuê xe máy cần những gì: năm nhóm nội dung cần rà</h2>
         <p>Hợp đồng thuê xe máy cần những gì: thông tin hai bên và xe, giá và thời gian, đặt cọc và hoàn cọc, hiện trạng xe lúc giao, trách nhiệm và giá trị tin nhắn.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-01">2026-10-01</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/dat-coc-the-nao/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Đặt cọc thuê xe máy thế nào: hình thức thu và hoàn cọc</h2>
         <p>Đặt cọc thuê xe máy thế nào: cọc là gì và vì sao cửa hàng thu, hình thức thu lúc nhận xe, cách hoàn cọc khi trả xe và ba câu nên hỏi ngay lúc đặt xe.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-01">2026-10-01</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/nhan-lai-tien-coc/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Nhận lại tiền cọc khi trả xe máy thuê: điều kiện, lỗi bị trừ</h2>
         <p>Nhận lại tiền cọc khi trả xe máy thuê: tiền cọc hoạt động thế nào, trả xe đúng giờ, danh sách kiểm tra trước khi trả, cửa hàng kiểm tra gì và khi nào bị trừ.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-02">2026-10-02</time> · 8 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/chup-anh-xe-truoc-khi-nhan/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Chụp ảnh xe máy trước khi nhận xe thuê: vị trí và cách chụp</h2>
         <p>Chụp ảnh xe máy trước khi nhận xe thuê giúp tránh tranh chấp vết trầy: những vị trí bắt buộc, cách chụp để ảnh có giá trị đối chiếu và cách so ảnh khi trả xe.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-03">2026-10-03</time> · 10 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/nhien-lieu-khi-nhan-tra-xe/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Mức xăng khi nhận và trả xe máy thuê: ghi lại tránh tranh cãi</h2>
         <p>Mức xăng khi nhận và trả xe máy thuê: vì sao dễ hiểu lầm, các quy ước phổ biến, cách ghi lại mức xăng để khỏi tranh cãi và khi trả thiếu hoặc thừa xăng.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-03">2026-10-03</time> · 10 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Thủ tục giao xe tận nơi: khung giờ, khu vực và bước bàn giao</h2>
         <p>Thủ tục giao xe tận nơi từ lúc đặt đến lúc trả: khung giờ và khu vực giao, điều cần chốt với cửa hàng, các bước bàn giao tại chỗ và ba tình huống hay gặp.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-04">2026-10-04</time> · 8 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/huy-dat-xe-dung-cach/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Hủy đặt xe máy thuê đúng cách: hủy sớm, đúng kênh, có ghi nhận</h2>
         <p>Hủy đặt xe máy thuê đúng cách: ba nguyên tắc hủy gọn, trình tự hủy một đơn qua trợ lý, điều nên hỏi trước khi đặt, tình huống hay gặp, ba điều nên tránh.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-04">2026-10-04</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/doi-xe-giua-ky-thue/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Đổi xe máy giữa kỳ thuê: trình tự, điều kiện và xử lý tiền cọc</h2>
         <p>Đổi xe máy giữa kỳ thuê: ba tình huống thường gặp, trình tự đổi xe qua MotoAI, điều kiện nên hỏi trước, xử lý tiền cọc và kiểm tra xe mới khi nhận.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-04">2026-10-04</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/gia-han-thoi-gian-thue/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Gia hạn thời gian thuê xe máy: khi nào nên, làm thế nào</h2>
         <p>Gia hạn thời gian thuê xe máy qua trợ lý: khi nào gia hạn tốt hơn trả xe rồi đặt lại, trình tự trong giờ hoạt động, điều cần hỏi ngay, gia hạn ngắn và dài.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-04">2026-10-04</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/cho-hanh-ly-khi-thue-xe/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Chở hành lý khi thuê xe máy: xếp đồ, buộc chằng, chọn xe</h2>
         <p>Chở hành lý khi thuê xe máy: cách chọn xe theo lượng đồ, buộc chằng an toàn, chở người ngồi kèm hành lý, đi sân bay hoặc ga tàu và những lỗi nên tránh.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-04">2026-10-04</time> · 8 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/di-hai-nguoi-tren-xe-thue/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Đi hai người trên xe máy thuê: vai trò, tốc độ và an toàn</h2>
         <p>Đi hai người trên xe máy thuê: kiểm tra xe trước khi đi, phân công vai trò người lái và người ngồi sau, tốc độ, khoảng cách an toàn, trẻ nhỏ đi cùng và hành lý.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-04">2026-10-04</time> · 8 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/ban-do-va-dinh-vi-khi-thue-xe/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Bản đồ và định vị khi thuê xe máy: dựng tuyến, đánh dấu điểm</h2>
         <p>Dùng bản đồ và định vị khi thuê xe máy ở Hà Nội: chuẩn bị trước khi nhận xe, đánh dấu điểm nhận và trả, chọn tuyến cho xe máy và ghi nhớ bãi gửi xe.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-05">2026-10-05</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/ung-dung-ban-do-cho-nguoi-thue-xe/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Ứng dụng bản đồ cho người thuê xe: thiết lập và dùng khi chạy</h2>
         <p>Ứng dụng bản đồ cho người thuê xe: vì sao nên dùng, cách thiết lập điểm đến và lộ trình an toàn, mẹo dùng khi đang lưu thông và kết hợp với kế hoạch thuê xe.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-05">2026-10-05</time> · 6 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/ky-nang-lai-xe-an-toan-co-ban/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Kỹ năng lái xe máy an toàn cơ bản: phanh, quan sát, báo hiệu</h2>
         <p>Kỹ năng lái xe máy an toàn cơ bản cho người thuê xe: quan sát xa, giữ khoảng cách, phanh đúng cách, báo hiệu khi rẽ hoặc dừng và xử lý tình huống thường gặp.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-05">2026-10-05</time> · 6 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/chay-xe-so-cho-nguoi-moi/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Chạy xe số cho người mới: khởi hành, lên số và phanh đúng cách</h2>
         <p>Chạy xe số cho người mới không khó nếu nắm đúng nguyên lý: làm quen bộ phận, khởi hành từng bước, lên và xuống số đúng nhịp, phanh an toàn và sửa lỗi hay gặp.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-06">2026-10-06</time> · 8 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/chay-xe-ga-lan-dau/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Chạy xe ga lần đầu: thao tác ga phanh và luyện cho người mới</h2>
         <p>Chạy xe ga lần đầu khác xe số thế nào: quy tắc ga và phanh không bóp cùng lúc, cách phanh trước phanh sau, chạy thử trong phố và kiểm tra xe ga thuê khi nhận.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-06">2026-10-06</time> · 8 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/chay-xe-dien-lan-dau/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Chạy xe điện lần đầu: khác xe xăng thế nào, ba nguyên tắc</h2>
         <p>Chạy xe điện lần đầu: vì sao xe yên tĩnh khiến bạn đi nhanh hơn mình tưởng, mười phút làm quen trước khi ra đường, ba nguyên tắc ngày đầu và lỗi thường gặp.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-06">2026-10-06</time> · 6 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/huong-dan/do-xe-o-ha-noi/">
         <span class="cat">Hướng Dẫn</span>
         <h2>Đỗ xe máy thuê ở Hà Nội: chỗ nào được đỗ, chỗ nào không</h2>
         <p>Đỗ xe máy thuê ở Hà Nội: luật và thực tế, chỗ nào được đỗ chỗ nào không, cách đỗ ở từng loại điểm đến và việc cần làm khi gửi xe thuê để tránh rủi ro.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-06">2026-10-06</time> · 6 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       </div>
       <nav class="blog-pagination" aria-label="Trang">
@@ -286,15 +313,23 @@
       </nav>
       <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/blog/app/">Ứng Dụng</a></p>
       <p class="blog-hub-cluster">Khám phá thêm trong Công cụ &amp; Hướng dẫn: <a href="/blog/app/">Ứng Dụng</a> · <a href="/blog/huong-dan/">Hướng Dẫn</a></p>
-    <div class="screen-ask">
-      <a class="screen-ask-btn" href="/?ask=H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20%2F%20th%E1%BB%A7%20t%E1%BB%A5c">⚡ Hỏi Agent về chủ đề này</a>
-    </div>
+    <section class="contact-band screen-ask" aria-label="Hỗ trợ">
+      <div class="contact-band-copy">
+        <p class="contact-band-title">Còn điều gì chưa rõ?</p>
+        <p class="contact-band-text">Hỏi Agent ngay trên web, hoặc gọi cửa hàng trong giờ 09:00 - 21:00 mỗi ngày.</p>
+      </div>
+      <div class="contact-band-actions">
+        <a class="screen-ask-btn" href="/?ask=H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20%2F%20th%E1%BB%A7%20t%E1%BB%A5c">⚡ Hỏi Agent về chủ đề này</a>
+        <a class="band-action" data-contact-ref="call" href="/lien-he/"><svg class="i i-phone" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6.6 3.5h3l1.5 4.2-2.2 1.4a11 11 0 0 0 6 6l1.4-2.2 4.2 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Gọi 0942 467 674</span></a>
+        <a class="band-action" href="/chinh-sach/"><svg class="i i-doc" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12.5h5M10 16h5"/></svg><span>Chính sách thuê xe</span></a>
+      </div>
+    </section>
 
   </main>
     <footer class="blog-footer">
       <div class="blog-footer-inner">
         <div class="blog-footer-brand">
-          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-brand-name"><span class="blog-footer-mark" aria-hidden="true"><svg class="brand-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><rect class="brand-mark-tile" width="32" height="32" rx="9"/><path class="brand-mark-road" d="M7.5 26.5 14 5.5M24.5 26.5 18 5.5"/><path class="brand-mark-lane" d="M16 25.5v-3.6M16 18.6v-2.8M16 12.9V11"/></svg></span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
           <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
           <a class="blog-footer-cta" href="/">⚡ Hỏi Agent</a>
         </div>
@@ -308,26 +343,26 @@
           <li><a href="/blog/">Tìm Bài</a></li>
         </ul>
       </div>
-      <div class="blog-footer-col">
+      <div class="blog-footer-col is-hub">
         <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
         <ul>
-          <li><a class="footer-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+          <li><a class="footer-hub-link" href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a></li>
             <li class="footer-sub"><a href="/blog/app/">Ứng Dụng</a></li>
             <li class="footer-sub"><a href="/blog/huong-dan/">Hướng Dẫn</a></li>
         </ul>
       </div>
-      <div class="blog-footer-col">
+      <div class="blog-footer-col is-hub">
         <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
         <ul>
-          <li><a class="footer-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+          <li><a class="footer-hub-link" href="/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a></li>
             <li class="footer-sub"><a href="/blog/thue-xe/">Thuê Xe</a></li>
             <li class="footer-sub"><a href="/blog/xe-dien/">Xe Điện</a></li>
         </ul>
       </div>
-      <div class="blog-footer-col">
+      <div class="blog-footer-col is-hub">
         <p class="blog-footer-title">Khám phá &amp; An toàn</p>
         <ul>
-          <li><a class="footer-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+          <li><a class="footer-hub-link" href="/blog/kham-pha-an-toan/">Khám phá &amp; An toàn</a></li>
             <li class="footer-sub"><a href="/blog/an-toan/">An Toàn</a></li>
             <li class="footer-sub"><a href="/blog/dia-phuong/">Địa Phương</a></li>
         </ul>
@@ -426,6 +461,6 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://chatbot.thuexemaynguyentu.com/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://chatbot.thuexemaynguyentu.com/blog/"},{"@type":"ListItem","position":3,"name":"Công cụ & Hướng dẫn","item":"https://chatbot.thuexemaynguyentu.com/blog/cong-cu-huong-dan/"},{"@type":"ListItem","position":4,"name":"Hướng Dẫn","item":"https://chatbot.thuexemaynguyentu.com/blog/huong-dan/"}]}
   </script>
 
-  <script type="module" src="/assets/js/app-shell.js?v=66"></script>
+  <script type="module" src="/assets/js/app-shell.js?v=3210754172"></script>
 </body>
 </html>

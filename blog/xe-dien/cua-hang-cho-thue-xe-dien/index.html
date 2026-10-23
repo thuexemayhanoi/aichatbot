@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-motion="on">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="motoai-build" content="v66">
+  <meta name="motoai-build" content="v72">
   <title>Cửa hàng cho thuê xe điện: dấu hiệu đáng tin và câu nên hỏi</title>
   <meta name="description" content="Cửa hàng cho thuê xe điện đáng tin thường có ba dấu hiệu: công khai tình trạng pin, bảng giá rõ theo dòng xe và đội xe đủ để đổi giữa kỳ. Kèm câu hỏi nên đặt.">
   <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/blog/xe-dien/cua-hang-cho-thue-xe-dien/">
-  <meta name="theme-color" content="#4f46e5">
+  <meta name="theme-color" content="#f3f0e9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0f11" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy &amp; xe điện">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:title" content="Cửa hàng cho thuê xe điện: dấu hiệu đáng tin và câu nên hỏi">
   <meta property="og:description" content="Cửa hàng cho thuê xe điện đáng tin thường có ba dấu hiệu: công khai tình trạng pin, bảng giá rõ theo dòng xe và đội xe đủ để đổi giữa kỳ. Kèm câu hỏi nên đặt.">
@@ -22,15 +24,15 @@
   <meta name="twitter:title" content="Cửa hàng cho thuê xe điện: dấu hiệu đáng tin và câu nên hỏi">
   <meta name="twitter:description" content="Cửa hàng cho thuê xe điện đáng tin thường có ba dấu hiệu: công khai tình trạng pin, bảng giá rõ theo dòng xe và đội xe đủ để đổi giữa kỳ. Kèm câu hỏi nên đặt.">
   <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
-  <link rel="stylesheet" href="../../../assets/css/style.css?v=66">
-  <link rel="stylesheet" href="../../../assets/css/blog.css?v=66">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=4136185246">
+  <link rel="stylesheet" href="../../../assets/css/blog.css?v=1347333943">
   <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
 </head>
 <body class="content-page">
     <header class="site-header">
       <div class="site-header-inner">
         <a class="site-brand" href="/" aria-label="MotoAI — về màn hình Agent">
-          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+          <span class="site-brand-mark" aria-hidden="true"><svg class="brand-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><rect class="brand-mark-tile" width="32" height="32" rx="9"/><path class="brand-mark-road" d="M7.5 26.5 14 5.5M24.5 26.5 18 5.5"/><path class="brand-mark-lane" d="M16 25.5v-3.6M16 18.6v-2.8M16 12.9V11"/></svg></span>
           <span class="site-brand-text">
             <strong>MotoAI</strong>
             <span>Hỗ trợ Agent</span>
@@ -39,48 +41,52 @@
         <nav class="site-nav" aria-label="Chuyên mục">
           <a href="/blog/">Cẩm nang</a>
         <div class="site-nav-item">
-          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true">🧰 Công cụ &amp; Hướng dẫn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true">Công cụ &amp; Hướng dẫn<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
           <div class="site-nav-drop">
-            <a href="/blog/app/">📱 Ứng Dụng</a>
-            <a href="/blog/huong-dan/">📄 Hướng Dẫn</a>
+            <a href="/blog/app/"><span class="drop-idx">01</span><span class="drop-label">Ứng Dụng</span></a>
+            <a href="/blog/huong-dan/"><span class="drop-idx">02</span><span class="drop-label">Hướng Dẫn</span></a>
           </div>
         </div>
         <div class="site-nav-item" data-active="1">
-          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true" aria-current="page">🏍️ Thuê xe &amp; Phương tiện <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true" aria-current="page">Thuê xe &amp; Phương tiện<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
           <div class="site-nav-drop">
-            <a href="/blog/thue-xe/">🏍️ Thuê Xe</a>
-            <a href="/blog/xe-dien/" aria-current="page">⚡ Xe Điện</a>
+            <a href="/blog/thue-xe/"><span class="drop-idx">01</span><span class="drop-label">Thuê Xe</span></a>
+            <a href="/blog/xe-dien/" aria-current="page"><span class="drop-idx">02</span><span class="drop-label">Xe Điện</span></a>
           </div>
         </div>
         <div class="site-nav-item">
-          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true">🧭 Khám phá &amp; An toàn <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true">Khám phá &amp; An toàn<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
           <div class="site-nav-drop">
-            <a href="/blog/an-toan/">🛡️ An Toàn</a>
-            <a href="/blog/dia-phuong/">📍 Địa Phương</a>
+            <a href="/blog/an-toan/"><span class="drop-idx">01</span><span class="drop-label">An Toàn</span></a>
+            <a href="/blog/dia-phuong/"><span class="drop-idx">02</span><span class="drop-label">Địa Phương</span></a>
           </div>
         </div>
         </nav>
         <div class="site-actions">
-          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài"><svg class="i i-search" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
           <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
-          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer"><span class="menu-lines" aria-hidden="true"></span> <span class="motoai-menu-label">Menu</span></button>
         </div>
         <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
       </div>
+      <span class="read-progress" aria-hidden="true"></span>
     </header>
   <main class="site-main" id="site-main" data-motoai-screen="article-cua-hang-cho-thue-xe-dien">
       <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/">Agent</a> › <a href="/blog/">Cẩm nang</a> › <a href="/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a> › <a href="/blog/xe-dien/">Xe Điện</a> › <span>Cửa hàng cho thuê xe điện: dấu hiệu đáng tin và câu nên hỏi</span></nav>
+      <div class="article-intro">
+      <div class="article-head">
       <p class="blog-chips">
         <a class="blog-chip" href="/blog/xe-dien/">Xe Điện</a>
         <a class="blog-chip blog-chip-parent" href="/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a>
       </p>
-      <p class="blog-screen-label">Xe Điện</p>
       <h1 class="blog-screen-title">Cửa hàng cho thuê xe điện: dấu hiệu đáng tin và câu nên hỏi</h1>
-      <p class="blog-screen-lead">Cửa hàng cho thuê xe điện đáng tin thường có ba dấu hiệu: công khai tình trạng pin, bảng giá rõ theo dòng xe và đội xe đủ để đổi giữa kỳ. Kèm câu hỏi nên đặt.</p>
+      
       <p class="byline"><a href="/gioi-thieu/" class="byline-author">MotoAI Editorial</a> · 2026-10-06 · cập nhật 2026-10-14 · Xe Điện · 6 phút đọc</p>
+      </div>
       <div class="blog-summary" role="note">
         <p class="blog-summary-title">Tóm tắt nhanh</p>
         <p>Cửa hàng cho thuê xe điện đáng tin thường có ba dấu hiệu: công khai tình trạng pin, bảng giá rõ theo dòng xe và đội xe đủ để đổi giữa kỳ. Kèm câu hỏi nên đặt.</p>
+      </div>
       </div>
       <div class="blog-article-layout">
       <nav class="blog-toc" aria-label="Mục lục">
@@ -175,39 +181,52 @@
         <span class="cat">Xe Điện</span>
         <h3>Thuê xe điện theo ngày: kế hoạch pin và kiểm tra khi nhận xe</h3>
         <p>Thuê xe điện theo ngày cần thêm một kế hoạch: pin. Bài nói về khi nào nên thuê, chi phí một ngày, đi xe khi trời mưa và danh sách kiểm tra lúc nhận xe.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-01">2026-10-01</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/xe-dien/xe-dien-khi-mua/">
         <span class="cat">Xe Điện</span>
         <h3>Đi xe điện khi mưa: cách lái, sạc và bảo vệ pin an toàn</h3>
         <p>Đi xe điện khi mưa có chạy được không? Bài nêu cách chuẩn bị xe, kỹ năng lái trên đường ướt, điều cần để ý với cụm pin và cách tránh đoạn ngập khi trời mưa.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-05">2026-10-05</time> · 8 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/xe-dien/lop-xe-dien/">
         <span class="cat">Xe Điện</span>
         <h3>Lốp xe điện: khác lốp xe xăng ra sao và kiểm tra khi nhận xe</h3>
         <p>Lốp xe điện chịu tải và lực xoắn khác xe xăng: các loại lốp thường gặp, dấu hiệu cần thay, cách kiểm tra khi nhận xe thuê, xử lý khi lốp gặp sự cố.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-06">2026-10-06</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/thue-xe/tinh-trang-xe-tai-cua-hang/">
         <span class="cat">Thuê Xe</span>
         <h3>Kiểm tra tình trạng xe thuê tại cửa hàng: nhận xe, đối chiếu</h3>
         <p>Làm sao biết tình trạng xe khi nhận tại cửa hàng? Hướng dẫn đối chiếu lúc nhận, giải thích tình trạng xe ảnh hưởng việc chọn xe và đối chiếu khi trả.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-09">2026-10-09</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blog-card" href="/blog/xe-dien/dang-ky-thue-xe-dien/">
         <span class="cat">Xe Điện</span>
         <h3>Đăng ký thuê xe điện: các bước làm và thông tin cần điền</h3>
         <p>Đăng ký thuê xe điện gồm những bước nào: thông tin cần điền, điểm khác so với xe xăng khi phải tính kế hoạch sạc pin và sai lầm thường gặp lúc đăng ký.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-06">2026-10-06</time> · 6 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
         </div>
       </section>
       <p class="blog-hub-cluster">Khám phá thêm trong Thuê xe &amp; Phương tiện: <a href="/blog/thue-xe/">Thuê Xe</a> · <a href="/blog/xe-dien/">Xe Điện</a></p>
-    <div class="screen-ask">
-      <a class="screen-ask-btn" href="/?ask=C%E1%BB%ADa%20h%C3%A0ng%20cho%20thu%C3%AA%20xe%20%C4%91i%E1%BB%87n%3A%20d%E1%BA%A5u%20hi%E1%BB%87u%20%C4%91%C3%A1ng%20tin%20v%C3%A0%20c%C3%A2u%20n%C3%AAn%20h%E1%BB%8Fi">⚡ Hỏi Agent về chủ đề này</a>
-    </div>
+    <section class="contact-band screen-ask" aria-label="Hỗ trợ">
+      <div class="contact-band-copy">
+        <p class="contact-band-title">Còn điều gì chưa rõ?</p>
+        <p class="contact-band-text">Hỏi Agent ngay trên web, hoặc gọi cửa hàng trong giờ 09:00 - 21:00 mỗi ngày.</p>
+      </div>
+      <div class="contact-band-actions">
+        <a class="screen-ask-btn" href="/?ask=C%E1%BB%ADa%20h%C3%A0ng%20cho%20thu%C3%AA%20xe%20%C4%91i%E1%BB%87n%3A%20d%E1%BA%A5u%20hi%E1%BB%87u%20%C4%91%C3%A1ng%20tin%20v%C3%A0%20c%C3%A2u%20n%C3%AAn%20h%E1%BB%8Fi">⚡ Hỏi Agent về chủ đề này</a>
+        <a class="band-action" data-contact-ref="call" href="/lien-he/"><svg class="i i-phone" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6.6 3.5h3l1.5 4.2-2.2 1.4a11 11 0 0 0 6 6l1.4-2.2 4.2 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Gọi 0942 467 674</span></a>
+        <a class="band-action" href="/gia-thue/"><svg class="i i-doc" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12.5h5M10 16h5"/></svg><span>Xem bảng giá</span></a>
+      </div>
+    </section>
 
   </main>
     <footer class="blog-footer">
       <div class="blog-footer-inner">
         <div class="blog-footer-brand">
-          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-brand-name"><span class="blog-footer-mark" aria-hidden="true"><svg class="brand-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><rect class="brand-mark-tile" width="32" height="32" rx="9"/><path class="brand-mark-road" d="M7.5 26.5 14 5.5M24.5 26.5 18 5.5"/><path class="brand-mark-lane" d="M16 25.5v-3.6M16 18.6v-2.8M16 12.9V11"/></svg></span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
           <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
           <a class="blog-footer-cta" href="/">⚡ Hỏi Agent</a>
         </div>
@@ -221,26 +240,26 @@
           <li><a href="/blog/">Tìm Bài</a></li>
         </ul>
       </div>
-      <div class="blog-footer-col">
+      <div class="blog-footer-col is-hub">
         <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
         <ul>
-          <li><a class="footer-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a></li>
+          <li><a class="footer-hub-link" href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a></li>
             <li class="footer-sub"><a href="/blog/app/">Ứng Dụng</a></li>
             <li class="footer-sub"><a href="/blog/huong-dan/">Hướng Dẫn</a></li>
         </ul>
       </div>
-      <div class="blog-footer-col">
+      <div class="blog-footer-col is-hub">
         <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
         <ul>
-          <li><a class="footer-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a></li>
+          <li><a class="footer-hub-link" href="/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a></li>
             <li class="footer-sub"><a href="/blog/thue-xe/">Thuê Xe</a></li>
             <li class="footer-sub"><a href="/blog/xe-dien/">Xe Điện</a></li>
         </ul>
       </div>
-      <div class="blog-footer-col">
+      <div class="blog-footer-col is-hub">
         <p class="blog-footer-title">Khám phá &amp; An toàn</p>
         <ul>
-          <li><a class="footer-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a></li>
+          <li><a class="footer-hub-link" href="/blog/kham-pha-an-toan/">Khám phá &amp; An toàn</a></li>
             <li class="footer-sub"><a href="/blog/an-toan/">An Toàn</a></li>
             <li class="footer-sub"><a href="/blog/dia-phuong/">Địa Phương</a></li>
         </ul>
@@ -339,6 +358,6 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://chatbot.thuexemaynguyentu.com/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://chatbot.thuexemaynguyentu.com/blog/"},{"@type":"ListItem","position":3,"name":"Thuê xe & Phương tiện","item":"https://chatbot.thuexemaynguyentu.com/blog/thue-xe-phuong-tien/"},{"@type":"ListItem","position":4,"name":"Xe Điện","item":"https://chatbot.thuexemaynguyentu.com/blog/xe-dien/"},{"@type":"ListItem","position":5,"name":"Cửa hàng cho thuê xe điện: dấu hiệu đáng tin và câu nên hỏi","item":"https://chatbot.thuexemaynguyentu.com/blog/xe-dien/cua-hang-cho-thue-xe-dien/"}]}
   </script>
 
-  <script type="module" src="/assets/js/app-shell.js?v=66"></script>
+  <script type="module" src="/assets/js/app-shell.js?v=3210754172"></script>
 </body>
 </html>
