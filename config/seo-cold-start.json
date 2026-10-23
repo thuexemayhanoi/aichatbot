@@ -737,61 +737,81 @@
       "article": "BA-0323",
       "reason": "Gõ sai ký hiệu \"Thông tư 38/2024/TB-BGTVT\" (đúng: TT-BGTVT) và gán mức tốc độ tối đa 40 km/h cho mọi xe trên đường phố, trong khi các bài khác của kho bài dẫn Thông tư 38/2024/TT-BGTVT với mức 60/50 km/h cho xe mô tô trong khu đông dân cư theo loại đường (40 km/h là mức của xe gắn máy) — cần đối chiếu toàn văn trước khi sửa (tt-38-2024-bgtvt) | Ghi mức phạt quá tốc độ 100.000–300.000 đồng, gán 40 km/h cho mọi xe trong phố và gõ sai ký hiệu Thông tư 38/2024/TB-BGTVT (đúng: Điều 7 Nghị định 168/2024/NĐ-CP; Điều 6, 7 Thông tư 38/2024/TT-BGTVT)",
       "flagged": "2026-10-16",
-      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+      "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)",
+      "resolved": "2026-10-23",
+      "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo trong data/seo/legal-facts.json (Nghị định 168/2024/NĐ-CP Điều 7, 18; Thông tư 38/2024/TT-BGTVT; Nghị định 238/2026/NĐ-CP)"
     },
     {
       "article": "BA-0005",
       "reason": "Ghi mức phạt nồng độ cồn mức 1 của xe mô tô là 2.000.000–4.000.000 đồng; đúng là 2.000.000–3.000.000 đồng (điểm a khoản 6 Điều 7 Nghị định 168/2024/NĐ-CP); nêu hành vi \"đi lùi lên dốc\" không có trong điều khoản",
       "flagged": "2026-10-23",
-      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)",
+      "resolved": "2026-10-23",
+      "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo trong data/seo/legal-facts.json (Nghị định 168/2024/NĐ-CP Điều 7, 18; Thông tư 38/2024/TT-BGTVT; Nghị định 238/2026/NĐ-CP)"
     },
     {
       "article": "BA-0125",
       "reason": "Ghi mức phạt chuyển làn của xe mô tô, xe gắn máy là 600.000–800.000 đồng; đúng là 200.000–400.000 đồng (điểm e khoản 1 Điều 7 Nghị định 168/2024/NĐ-CP)",
       "flagged": "2026-10-23",
-      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)",
+      "resolved": "2026-10-23",
+      "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo trong data/seo/legal-facts.json (Nghị định 168/2024/NĐ-CP Điều 7, 18; Thông tư 38/2024/TT-BGTVT; Nghị định 238/2026/NĐ-CP)"
     },
     {
       "article": "BA-0971",
       "reason": "Ghi mức phạt chuyển làn của xe mô tô, xe gắn máy là 600.000–800.000 đồng; đúng là 200.000–400.000 đồng (điểm e khoản 1 Điều 7 Nghị định 168/2024/NĐ-CP)",
       "flagged": "2026-10-23",
-      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)",
+      "resolved": "2026-10-23",
+      "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo trong data/seo/legal-facts.json (Nghị định 168/2024/NĐ-CP Điều 7, 18; Thông tư 38/2024/TT-BGTVT; Nghị định 238/2026/NĐ-CP)"
     },
     {
       "article": "BA-0143",
       "reason": "Ghi mức phạt dùng điện thoại khi lái xe mô tô là 400.000–600.000 đồng; đúng là 800.000–1.000.000 đồng và trừ 04 điểm (điểm đ khoản 4, điểm b khoản 13 Điều 7 Nghị định 168/2024/NĐ-CP)",
       "flagged": "2026-10-23",
-      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)",
+      "resolved": "2026-10-23",
+      "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo trong data/seo/legal-facts.json (Nghị định 168/2024/NĐ-CP Điều 7, 18; Thông tư 38/2024/TT-BGTVT; Nghị định 238/2026/NĐ-CP)"
     },
     {
       "article": "BA-0148",
       "reason": "Ghi mức phạt dùng điện thoại khi lái xe mô tô là 400.000–600.000 đồng; đúng là 800.000–1.000.000 đồng và trừ 04 điểm (điểm đ khoản 4, điểm b khoản 13 Điều 7 Nghị định 168/2024/NĐ-CP)",
       "flagged": "2026-10-23",
-      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)",
+      "resolved": "2026-10-23",
+      "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo trong data/seo/legal-facts.json (Nghị định 168/2024/NĐ-CP Điều 7, 18; Thông tư 38/2024/TT-BGTVT; Nghị định 238/2026/NĐ-CP)"
     },
     {
       "article": "BA-0425",
       "reason": "Ghi mức phạt dùng điện thoại khi lái xe mô tô là 400.000–600.000 đồng; đúng là 800.000–1.000.000 đồng và trừ 04 điểm (điểm đ khoản 4, điểm b khoản 13 Điều 7 Nghị định 168/2024/NĐ-CP)",
       "flagged": "2026-10-23",
-      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)",
+      "resolved": "2026-10-23",
+      "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo trong data/seo/legal-facts.json (Nghị định 168/2024/NĐ-CP Điều 7, 18; Thông tư 38/2024/TT-BGTVT; Nghị định 238/2026/NĐ-CP)"
     },
     {
       "article": "BA-0329",
       "reason": "Gán yêu cầu giấy phép lái xe quốc tế cho Thông tư 38/2024/TT-BGTVT (văn bản về tốc độ); căn cứ đúng là Điều 18 Nghị định 168/2024/NĐ-CP",
       "flagged": "2026-10-23",
-      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)",
+      "resolved": "2026-10-23",
+      "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo trong data/seo/legal-facts.json (Nghị định 168/2024/NĐ-CP Điều 7, 18; Thông tư 38/2024/TT-BGTVT; Nghị định 238/2026/NĐ-CP)"
     },
     {
       "article": "BA-0305",
       "reason": "Cho rằng mức tốc độ của Thông tư 38/2024/TT-BGTVT chỉ áp dụng khi có biển báo; Điều 4 khoản 2 quy định ngược lại",
       "flagged": "2026-10-23",
-      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)",
+      "resolved": "2026-10-23",
+      "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo trong data/seo/legal-facts.json (Nghị định 168/2024/NĐ-CP Điều 7, 18; Thông tư 38/2024/TT-BGTVT; Nghị định 238/2026/NĐ-CP)"
     },
     {
       "article": "BA-0311",
       "reason": "Ghi mức phạt không có giấy phép lái xe 10–30 triệu đồng theo \"Thông tư của Bộ Công an\"; đúng là 2.000.000–4.000.000 hoặc 6.000.000–8.000.000 đồng (Điều 18 Nghị định 168/2024/NĐ-CP)",
       "flagged": "2026-10-23",
-      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)",
+      "resolved": "2026-10-23",
+      "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo trong data/seo/legal-facts.json (Nghị định 168/2024/NĐ-CP Điều 7, 18; Thông tư 38/2024/TT-BGTVT; Nghị định 238/2026/NĐ-CP)"
     },
     {
       "article": "BA-0893",

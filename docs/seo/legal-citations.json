@@ -1,10 +1,10 @@
 {
  "$schema": "motoai/legal-citations@1",
  "registry_checked": "2026-10-23",
- "articles_scanned": 317,
+ "articles_scanned": 318,
  "counts": {
   "needs_fix": 15,
-  "wrong_suffix": 1,
+  "wrong_suffix": 0,
   "amended": 0,
   "unverified": 10,
   "unknown": 0,
@@ -163,16 +163,7 @@
    "sample": "Người cư trú dài hạn nên tìm hiểu thủ tục đổi sang giấy phép lái xe Việt Nam tại cơ quan có thẩm quyền; kể từ năm 2025, việc cấp và đổi giấy phép lái xe, bao gồm giấy phép quốc tế…"
   }
  ],
- "wrong_suffix": [
-  {
-   "article_id": "BA-0323",
-   "slug": "nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach",
-   "cited": "Thông tư 38/2024/TB-BGTVT",
-   "expected": "Thông tư 38/2024/TT-BGTVT",
-   "doc": "tt-38-2024-bgtvt",
-   "sentence": "Cụ thể, theo Thông tư 38/2024/TB-BGTVT , tốc độ trên đường phố không được vượt quá 40 km/h, và phải giảm tốc độ trong khu vực đông dân cư hoặc nguy hiểm."
-  }
- ],
+ "wrong_suffix": [],
  "amended": [],
  "unverified": [
   {
@@ -992,6 +983,9 @@
     "BA-0292",
     "BA-0293",
     "BA-0299",
+    "BA-0311",
+    "BA-0323",
+    "BA-0329",
     "BA-0335",
     "BA-0347",
     "BA-0365",
@@ -1199,7 +1193,7 @@
     "BA-1649"
    ],
    "by_name": [],
-   "mentions": 524
+   "mentions": 527
   },
   {
    "id": "nd-238-2026",
@@ -1211,11 +1205,12 @@
    "amended_by": null,
    "amendment_checked": null,
    "articles_current": [
+    "BA-0125",
     "BA-1193"
    ],
    "articles_historical": [],
    "by_name": [],
-   "mentions": 1
+   "mentions": 2
   },
   {
    "id": "nd-100-2019",
@@ -1385,7 +1380,7 @@
    ],
    "articles_historical": [],
    "by_name": [],
-   "mentions": 34
+   "mentions": 33
   },
   {
    "id": "tt-04-2021-bkhcn",

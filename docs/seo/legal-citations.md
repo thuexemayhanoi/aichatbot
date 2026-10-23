@@ -1,11 +1,11 @@
 # Hiệu lực văn bản pháp luật mà bài viết trích dẫn
 
-_Sinh bởi `node tools/seo-legal-citations.mjs` từ sổ đăng ký `data/seo/legal-documents.json` (rà ngày 23/10/2026) và 317 bài đã đăng có trích dẫn văn bản. Không sửa tay. Phân loại "đang áp dụng"/"nhắc quy định cũ" là theo từ ngữ trong câu; mỗi dòng in kèm câu để người rà soát quyết định._
+_Sinh bởi `node tools/seo-legal-citations.mjs` từ sổ đăng ký `data/seo/legal-documents.json` (rà ngày 23/10/2026) và 318 bài đã đăng có trích dẫn văn bản. Không sửa tay. Phân loại "đang áp dụng"/"nhắc quy định cũ" là theo từ ngữ trong câu; mỗi dòng in kèm câu để người rà soát quyết định._
 
 | Mục | Số |
 |---|---:|
 | Bài dẫn văn bản đã hết hiệu lực như quy định đang áp dụng (cần sửa qua review body sau khi đối chiếu toàn văn) | 15 |
-| Trích dẫn sai ký hiệu | 1 |
+| Trích dẫn sai ký hiệu | 0 |
 | Văn bản được sửa đổi sau khi bài đăng — chờ đối chiếu | 0 |
 | Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn | 10 |
 | Trích dẫn ngoài sổ đăng ký | 0 |
@@ -36,7 +36,7 @@ Mỗi bài dưới đây phải có cờ trong `config/seo-cold-start.json` → 
 
 | Bài | Trong bài | Đúng là | Câu |
 |---|---|---|---|
-| BA-0323 `nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach` | Thông tư 38/2024/TB-BGTVT | Thông tư 38/2024/TT-BGTVT | Cụ thể, theo Thông tư 38/2024/TB-BGTVT , tốc độ trên đường phố không được vượt quá 40 km/h, và phải giảm tốc độ trong khu vực đông dân cư hoặc nguy hiểm. |
+| — | | | |
 
 ## 3. Văn bản được sửa đổi sau khi bài đăng — chờ đối chiếu toàn văn
 
@@ -44,7 +44,7 @@ Mỗi bài dưới đây phải có cờ trong `config/seo-cold-start.json` → 
 |---|---|---|---:|---|
 | — | | | | |
 
-Đã đối chiếu toàn văn văn bản sửa đổi: nd-168-2024 ← nd-238-2026 (rà ngày 23/10/2026, 227 bài dẫn; ghi chú trong sổ đăng ký).
+Đã đối chiếu toàn văn văn bản sửa đổi: nd-168-2024 ← nd-238-2026 (rà ngày 23/10/2026, 230 bài dẫn; ghi chú trong sổ đăng ký).
 
 ## 4. Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn
 
@@ -73,8 +73,8 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 | bo-luat-dan-su-91-2015 | Bộ luật Dân sự số 91/2015/QH13 | in_force | unverified | 01/01/2017 | — | 34 | 1 | 34 |
 | luat-08-2022 | Luật Kinh doanh bảo hiểm số 08/2022/QH15 | in_force | unverified | 01/01/2023 | — | 1 | 0 | 0 |
 | luat-91-2025 | Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 | in_force | fulltext | 01/01/2026 | — | 2 | 0 | 2 |
-| nd-168-2024 | Nghị định 168/2024/NĐ-CP quy định xử phạt vi phạm hành chính về trật tự, an toàn giao thông trong lĩnh vực giao thông đường bộ; trừ điểm, phục hồi điểm giấy phép lái xe | amended | fulltext | 01/01/2025 | nd-238-2026 | 227 | 11 | 0 |
-| nd-238-2026 | Nghị định 238/2026/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 168/2024/NĐ-CP | in_force | fulltext | 15/08/2026 | — | 1 | 0 | 0 |
+| nd-168-2024 | Nghị định 168/2024/NĐ-CP quy định xử phạt vi phạm hành chính về trật tự, an toàn giao thông trong lĩnh vực giao thông đường bộ; trừ điểm, phục hồi điểm giấy phép lái xe | amended | fulltext | 01/01/2025 | nd-238-2026 | 230 | 11 | 0 |
+| nd-238-2026 | Nghị định 238/2026/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 168/2024/NĐ-CP | in_force | fulltext | 15/08/2026 | — | 2 | 0 | 0 |
 | nd-100-2019 | Nghị định 100/2019/NĐ-CP xử phạt vi phạm hành chính trong lĩnh vực giao thông đường bộ và đường sắt | replaced | reported | 01/01/2020 | nd-168-2024 | 0 | 3 | 0 |
 | nd-13-2023 | Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân | replaced | fulltext | 01/07/2023 | nd-356-2025 | 4 | 4 | 0 |
 | nd-356-2025 | Nghị định 356/2025/NĐ-CP quy định chi tiết một số điều và biện pháp thi hành Luật Bảo vệ dữ liệu cá nhân | in_force | fulltext | 01/01/2026 | — | 0 | 0 | 0 |
