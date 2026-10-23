@@ -54,11 +54,13 @@ test('progress report exposes the FIFO next chunk of the active writer batch', (
   }
 });
 
-test('default mode writes reports/factory-progress.json and --check verifies freshness', () => {
+test('default mode writes reports/factory-progress.json and --check verifies freshness', (t) => {
   const productionReportBefore = readFileSync(join(REPO, 'reports/factory-progress.json'), 'utf8');
   // Dedicated throwaway fixture: a sandbox copy would drag the PRODUCTION
   // report along, so the "report does not exist yet" case needs a clean tree.
   const dir = mkdtempSync(join(tmpdir(), 'motoai-progress-fx-'));
+  // A full repo copy (~135 MB): remove it, or repeated runs fill the disk.
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
   cpSync(REPO, dir, { recursive: true, filter: (src) => !src.includes('/.git') });
   rmSync(join(dir, 'reports/factory-progress.json'), { force: true }); // fixture: never built before
   // 1. CREATE-NEW: the report does not exist; the tool writes it.

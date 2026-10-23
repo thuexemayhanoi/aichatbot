@@ -25,8 +25,14 @@ import { loadSeoMeta } from '../../tools/seo-meta.mjs';
 
 export const REPO = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
+// Each sandbox is a full repo copy; remove them when the test process ends,
+// or repeated local runs fill the temp disk.
+const SANDBOXES = [];
+process.once('exit', () => { for (const d of SANDBOXES) rmSync(d, { recursive: true, force: true }); });
+
 export function repoSandbox() {
   const dir = mkdtempSync(join(tmpdir(), 'motoai-factory-'));
+  SANDBOXES.push(dir);
   cpSync(REPO, dir, { recursive: true, filter: (src) => !src.includes('/.git') });
   baselineSandbox(dir);
   return dir;

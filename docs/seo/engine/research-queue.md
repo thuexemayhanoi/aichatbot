@@ -23,7 +23,7 @@
 
 ## 4. Hiệu lực văn bản pháp luật bài đang dẫn (tools/seo-legal-citations.mjs)
 
-- Bài dẫn văn bản đã bị thay thế như quy định đang áp dụng: 10 (cờ content_flags; sửa qua review body sau khi đối chiếu toàn văn)
-- Văn bản được sửa đổi sau khi bài đăng, chờ đối chiếu toàn văn: nd-168-2024 ← nd-238-2026 (227 bài)
-- Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn: luat-39-2024 (1), bo-luat-dan-su-91-2015 (34), luat-08-2022 (1), luat-91-2025 (2), nd-238-2026 (1), nd-67-2023 (11), nd-96-2016 (5), nd-10-2022 (1), tt-38-2024-bgtvt (21), tt-04-2021-bkhcn (4), tt-60-2023-btc (5), tt-12-2025-bca (5), tt-79-2024-bca (2), qd-13-2026-ttg (7), nq-202-2025-qh15 (3)
+- Bài dẫn văn bản đã bị thay thế như quy định đang áp dụng: 0 (cờ content_flags; sửa qua review body sau khi đối chiếu toàn văn)
+- Văn bản được sửa đổi sau khi bài đăng, chờ đối chiếu toàn văn: —
+- Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn: luat-39-2024 (1), bo-luat-dan-su-91-2015 (34), luat-08-2022 (1), nd-67-2023 (11), nd-96-2016 (5), nd-10-2022 (1), tt-04-2021-bkhcn (4), tt-60-2023-btc (5), qd-13-2026-ttg (7), nq-202-2025-qh15 (3)
 - Chi tiết và nguồn để đối chiếu: docs/seo/legal-citations.md

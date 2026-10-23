@@ -72,6 +72,17 @@
 | TECH-DONE | Title/meta/link/schema đã tối ưu; còn khoảng trống nội dung chờ review body (`tools/seo-body-review.mjs`) | 0 |
 | PLANNED | Còn vấn đề kỹ thuật chưa xử lý | 0 |
 
+## Phân loại nội dung bài viết (KEEP / FIX / REVIEW / BLOCKED)
+
+Độc lập với trạng thái kỹ thuật ở trên: đánh giá độ chính xác nội dung của 2006 bài, mỗi nhãn khác KEEP kèm bằng chứng ở cột `Content Review Note`.
+
+| Nhãn | Ý nghĩa | Số bài |
+|---|---|---:|
+| KEEP | Không còn lỗi có bằng chứng; giữ nguyên, theo dõi Search Console | 1684 |
+| FIX | Có lỗi nội dung đã xác minh, chờ sửa qua `tools/seo-body-review.mjs` (cờ `content_flags` còn mở) | 0 |
+| REVIEW | Dẫn văn bản pháp luật chưa đối chiếu toàn văn, hoặc còn dữ kiện chưa có nguồn gốc (`data/seo/content-review.json`) | 56 |
+| BLOCKED | Chờ dữ liệu hoặc quyết định của chủ cửa hàng (`data/seo/content-review.json`) | 266 |
+
 ## Batch (20 URL/batch, thứ tự P0 → P1 → P2, trang chuyển đổi/hub/pillar trước)
 
 Tổng 107 batch; 0 batch còn hạng mục chưa DONE (PLANNED/TECH-DONE/KEEP).

@@ -194,7 +194,7 @@ Nguồn luật chính thức vẫn bị chặn và không còn nhóm từ khóa 
 
 ## 10. Vòng tiếp theo (khi có dữ liệu Search Console)
 
-0. Mở mạng tới nguồn luật chính thức → hoàn tất vòng 5 (đối chiếu toàn văn, sửa 11 bài có cờ, đóng cờ).
+0. ~~Hoàn tất vòng 5 (đối chiếu toàn văn, sửa bài có cờ, đóng cờ)~~ — xong 23/10/2026, xem mục 12; còn 10 văn bản chưa đọc toàn văn (56 bài REVIEW).
 1. Lấy truy vấn/CTR thật theo URL → điều chỉnh title/meta cho trang có hiển thị cao nhưng CTR thấp (qua `data/seo/article-meta.json`).
 2. Ưu tiên cụm K08 (xe máy điện) và K02 (giá thuê) — có volume đo được và chưa thuộc site chị em.
 3. Mọi sửa body tiếp tục qua `tools/seo-body-review.mjs`.
@@ -207,3 +207,43 @@ Nguồn luật chính thức vẫn bị chặn và không còn nhóm từ khóa 
 - IndexNow: tắt workflow `indexnow.yml`; xóa `config/indexnow.json` và tệp khóa `<key>.txt` ở gốc.
 - Engine 06: báo cáo `docs/seo/engine/` chỉ là đầu ra (xóa được); quyết định ở `data/seo/engine-decisions.json`; bản sửa pháp lý 10 bài: `git revert` commit `content(seo): legal accuracy …` rồi build.
 - Battle matrix: `docs/seo/battle/` là đầu ra sinh lại được; dữ liệu nghiên cứu `data/seo/battle/` chỉ là bằng chứng (xóa không ảnh hưởng trang); việc thực thi từ ma trận đi qua các lớp có rollback ở trên.
+
+## 12. Vòng 5 — MASTER WORK A–Z: đối chiếu toàn văn pháp luật, sửa có chọn lọc, phân loại nội dung (23/10/2026)
+
+**Phương pháp.** Audit thật trên 2.006 bài PUBLISHED (matrix = manifest = sitemap: 2.006 bài, 2.137 URL), đối chiếu từng con số/điều khoản với **toàn văn chính thức** (Công báo, Cổng TTĐT Chính phủ — bản có lớp chữ, hoặc PDF ký số đọc từng trang), không dùng bản tin. Chỉ sửa câu sai có bằng chứng, qua `tools/seo-body-review.mjs` (cổng: không số mới ngoài dữ kiện đã xác minh, không giảm số từ, QA nhà máy không giảm điểm). Không đổi URL/slug/canonical/title/H1.
+
+**Văn bản đã đọc toàn văn** (dữ kiện trích nguyên văn trong `data/seo/legal-facts.json`, sổ `data/seo/legal-documents.json`): Nghị định 168/2024/NĐ-CP (Điều 7, 14, 18, 32, 53), Nghị định 238/2026/NĐ-CP (hiệu lực 15/8/2026), Thông tư 38/2024/TT-BGTVT, Thông tư 79/2024/TT-BCA, Thông tư 12/2025/TT-BCA và **Thông tư 108/2026/TT-BCA (thay Thông tư 12/2025 từ 01/7/2026)**, Luật 91/2025/QH15, Nghị định 356/2025/NĐ-CP.
+
+| Nhóm lỗi đã xác minh | Bài | Sửa |
+|---|---:|---|
+| Mức phạt sai so với toàn văn (chuyển làn 600–800k → 200–400k; điện thoại 400–600k → 800k–1tr + trừ 4 điểm; cồn mức 1 2–4tr → 2–3tr; tốc độ 100–300k; không bằng lái 10–30tr; 40 km/h cho mọi xe; TT 38 gán cho IDP; "chỉ áp dụng khi có biển") | 10 | lô `legal-1` |
+| "Quên mang bằng lái/bảo hiểm bị phạt 200–300k" áp cho mọi người lái — điểm a, c, d khoản 2 Điều 18 chỉ áp với xe **kinh doanh vận tải**; người dùng IDP thiếu bằng quốc gia là điểm b khoản 5 (2–4tr) | 54 | lô `gplx-1…6` |
+| Phạt kiểm định khí thải gán cho người lái — điểm b khoản 1 Điều 32 phạt **chủ xe**, hiệu lực theo lộ trình (Điều 53) | 3 | lô `gplx` |
+| Dẫn văn bản hết hiệu lực như hiện hành (TT 29/2015, TT 12/2025 → TT 108/2026; TT 24/2023 → TT 79/2024; NĐ 13/2023 → Luật 91/2025 + NĐ 356/2025), kể cả thủ tục cấp IDP đã đổi (bỏ điều kiện PET, bỏ mốc 5 ngày), IDP do Việt Nam cấp không dùng trong nước, thời hạn xóa dữ liệu 72 giờ → 02 ngày làm việc/20 ngày | 13 | lô `legal-2`, `legal-3` |
+| Nghị định 238/2026 chưa phản ánh (gương: buộc thay thế/khôi phục từ 15/8/2026) | 1 | BA-2003 |
+| Giá xe máy điện bịa "90.000–300.000đ/ngày theo bảng giá" (bảng giá: giá liên hệ) | 4 | BA-0777 BA-0780 BA-1131 BA-1137 |
+| Anchor "Ứng dụng thuê xe không cần tài sản đảm bảo" trỏ bài "không cần tải app", quảng cáo không cọc | 2 | BA-0181 BA-0196 |
+
+Không lỗi: trùng lặp nội dung (shingle 8 từ, cặp chứa nhau lớn nhất 0,17 < 0,2), tiền cọc ghi số (chỉ qua `{{ business.* }}`), các khung phạt còn lại (mũ, đèn đỏ, ngược chiều, cồn mức 2–3, không bằng lái 2–4tr/6–8tr, gương) khớp toàn văn; Nghị định 238/2026 không đổi mức tiền nào bài đang dẫn.
+
+**Kết quả.** 83 bài đã sửa (77 pháp lý + 6 chính xác thương mại), mỗi bài qua cổng review và QA nhà máy không giảm điểm; 83 bài này có `dateModified` 23/10/2026. Báo cáo hiệu lực văn bản (`docs/seo/legal-citations.md`): bài dẫn văn bản hết hiệu lực như hiện hành **15 → 0**, sai ký hiệu **1 → 0**, văn bản sửa đổi chờ đối chiếu **1 → 0** (NĐ 168 ↔ NĐ 238 đã đối chiếu), chưa đối chiếu toàn văn **15 → 10 văn bản**. Cờ `content_flags`: 66 cờ mới mở rồi đóng hết theo từng lô (còn mở: 0).
+
+**Phân loại nội dung 2.006 bài** — cột `Content Review` trong [seo-master-matrix.csv](seo-master-matrix.csv), luật trong `tools/seo-master-audit.mjs → contentReview()`:
+
+| Nhãn | Số bài | Căn cứ |
+|---|---:|---|
+| KEEP | 1.684 | Không còn lỗi có bằng chứng |
+| FIX | 0 | = cờ `content_flags` còn mở (đã đóng hết) |
+| REVIEW | 56 | Dẫn 10 văn bản chưa đọc toàn văn (Bộ luật Dân sự 2015, NĐ 67/2023, QĐ 13/2026/QĐ-TTg, TT 60/2023, NĐ 96/2016, TT 04/2021, NQ 202/2025, Luật 39/2024, Luật 08/2022, NĐ 10/2022) + BA-0047 (lệ phí IDP chưa đối chiếu thông tư lệ phí) |
+| BLOCKED | 266 | Ghi cứng giá tuần/tháng theo `data/business/pricing.json` (Vision tuần 800.000đ; Air Blade tuần 800.000đ, tháng 1.400.000đ; Click/Mio tuần 600.000đ, tháng từ 1.000.000đ) khác bảng giá chuẩn chủ cửa hàng gửi 23/10/2026 — chờ chủ cửa hàng chốt bảng hiện hành (`data/seo/content-review.json`) |
+
+Kỹ thuật: 2.137/2.137 URL DONE, 0 P0, 0 link nội bộ hỏng, SEO score 99.7/100 (không đổi), 1.075/1.075 test.
+
+**Cần chủ cửa hàng quyết định / cung cấp:**
+1. Bảng giá hiện hành: `pricing.json` (đang dùng cho chatbot + 266 bài) hay bảng giá chuẩn gửi 23/10/2026 (khác ở Wave tuần/tháng, Vision tuần, Air Blade tuần/tháng, Click/Mio tuần/tháng, xe 50cc theo ngày). Sau khi chốt: cập nhật `pricing.json` một nơi, thay số cứng trong bài bằng dữ liệu dùng chung, mở khóa BLOCKED.
+2. Tên thương hiệu trong `business.json` ("Nguyễn Tú") so với chuẩn NAP "Cho Thuê Xe Máy Nguyễn Tú" / GBP "Thuê xe máy ở Hà Nội - Nguyễn Tú".
+3. Search Console cho `https://chatbot.thuexemaynguyentu.com/` — vẫn **NO DATA** (không khẳng định index/thứ hạng).
+
+**Ghi chú quy trình.** Commit `9000bcd` chứa 19 body (lô 4 + 5) do một bài lô 4 bị QA hoàn tác làm script dừng giữa chừng; đã đẩy lên, không viết lại lịch sử. Bộ test rò thư mục tạm (~135 MB mỗi lần) đã được vá (`tests/unit/factory-progress.test.js`, `tests/helpers/factory-sandbox.mjs`).
+
+**Rollback vòng 5.** Mỗi lô là cặp commit `content(seo)` + `build(blog)`: `545f11f/157d2ec`, `8c150df/cdc8a83`, `568c5f9/4038334`, `042d5cc/f9a8099`, `92a5251/2f57d16`, `69fa0bb/9e3f45d`, `b25076c/471dbb5`, `9000bcd/9f2a846` — `git revert` cặp tương ứng (hoặc chỉ commit content rồi `node tools/build-blog.mjs`). Dữ kiện pháp lý và sổ đăng ký là dữ liệu, revert không ảnh hưởng trang.

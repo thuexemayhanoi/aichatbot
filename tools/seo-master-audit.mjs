@@ -401,6 +401,39 @@ export function analyze(c) {
   return rows;
 }
 
+// ---------- content review: KEEP / FIX / REVIEW / BLOCKED ----------
+
+export const REVIEW_FILE = 'data/seo/content-review.json';
+export const REVIEW_STATES = ['KEEP', 'REVIEW', 'BLOCKED', 'FIX'];
+
+/**
+ * Content verdict per article, strongest first: FIX (open content flag in
+ * config/seo-cold-start.json, or a superseded legal document cited as the
+ * rule in force) > BLOCKED (waits on the owner's data or decision, listed in
+ * data/seo/content-review.json) > REVIEW (cites a legal document whose full
+ * text is not verified yet, or listed with a reason) > KEEP. Every verdict
+ * other than KEEP carries its evidence.
+ */
+export function contentReview(root = ROOT) {
+  const readJ = (p) => (existsSync(join(root, p)) ? JSON.parse(readFileSync(join(root, p), 'utf8')) : null);
+  const out = new Map();
+  const put = (id, status, note) => {
+    const cur = out.get(id) ?? { status: 'KEEP', notes: [] };
+    if (REVIEW_STATES.indexOf(status) > REVIEW_STATES.indexOf(cur.status)) cur.status = status;
+    cur.notes.push(`${status}: ${note}`);
+    out.set(id, cur);
+  };
+  for (const f of readJ('config/seo-cold-start.json')?.content_flags ?? []) if (!f.resolved) put(f.article, 'FIX', f.reason);
+  const legal = readJ('docs/seo/legal-citations.json');
+  for (const f of legal?.needs_fix ?? []) put(f.article_id, 'FIX', `dẫn ${f.doc} (đã được thay bởi ${f.replaced_by}) như quy định đang áp dụng`);
+  for (const d of legal?.documents ?? []) {
+    if (d.status === 'replaced' || d.evidence === 'fulltext') continue;
+    for (const id of d.articles_current ?? []) put(id, 'REVIEW', `dẫn ${d.id} — văn bản chưa đối chiếu toàn văn (sổ đăng ký: ${d.evidence})`);
+  }
+  for (const [id, a] of Object.entries(readJ(REVIEW_FILE)?.articles ?? {})) put(id, a.status, a.reason);
+  return out;
+}
+
 // ---------- matrix assembly ----------
 
 const ACTION_DONE = 'Giữ nguyên; theo dõi Search Console (hiển thị, CTR, truy vấn)';
@@ -440,7 +473,7 @@ export function finalize(rows, baseline) {
 
 const COLUMNS = ['URL', 'Page Type', 'Current Title', 'Primary Keyword', 'Secondary Keywords', 'Search Intent', 'Topic Cluster',
   'Content Gap', 'Internal Links', 'Cannibalization', 'Technical Issues', 'Priority', 'Proposed Action', 'Status', 'Evidence',
-  'Article ID', 'Category', 'Original Title', 'Word Count', 'Batch'];
+  'Article ID', 'Category', 'Original Title', 'Word Count', 'Batch', 'Content Review', 'Content Review Note'];
 
 function toRecord(r) {
   const L = r.links;
@@ -464,7 +497,9 @@ function toRecord(r) {
     'Category': r.category,
     'Original Title': r.original_title && r.original_title !== r.title ? r.original_title : '',
     'Word Count': r.words,
-    'Batch': r.batch
+    'Batch': r.batch,
+    'Content Review': r.review.status,
+    'Content Review Note': r.review.notes.join(' | ')
   };
 }
 
@@ -483,6 +518,7 @@ export function summarize(rows) {
     by_type: Object.fromEntries([...new Set(rows.map((r) => r.type))].map((t) => [t, count((r) => r.type === t)])),
     by_priority: { P0: count((r) => r.priority === 'P0'), P1: count((r) => r.priority === 'P1'), P2: count((r) => r.priority === 'P2') },
     by_status: { DONE: count((r) => r.status === 'DONE'), KEEP: count((r) => r.status === 'KEEP'), 'TECH-DONE': count((r) => r.status === 'TECH-DONE'), PLANNED: count((r) => r.status === 'PLANNED') },
+    by_review: Object.fromEntries(REVIEW_STATES.map((st) => [st, count((r) => r.type === 'Bài viết' && r.review.status === st)])),
     p0_open: count((r) => r.issues.some((i) => ISSUES[i][0] === 'P0')),
     issue_counts: Object.fromEntries(Object.entries(byCode).sort()),
     article_inbound_ctx_cluster: { min: inb[0] ?? 0, median: inb[Math.floor(inb.length / 2)] ?? 0, zero: inb.filter((x) => x === 0).length },
@@ -533,6 +569,17 @@ ${codes.map((c) => line(`${c} — ${label(c)}`, summary.issue_counts[c] ?? 0, b?
 | KEEP | Đã xem xét, giữ nguyên có chủ đích (bài > 2.000 từ — không cắt nội dung có giá trị) | ${summary.by_status.KEEP} |
 | TECH-DONE | Title/meta/link/schema đã tối ưu; còn khoảng trống nội dung chờ review body (\`tools/seo-body-review.mjs\`) | ${summary.by_status['TECH-DONE']} |
 | PLANNED | Còn vấn đề kỹ thuật chưa xử lý | ${summary.by_status.PLANNED} |
+
+## Phân loại nội dung bài viết (KEEP / FIX / REVIEW / BLOCKED)
+
+Độc lập với trạng thái kỹ thuật ở trên: đánh giá độ chính xác nội dung của ${summary.articles} bài, mỗi nhãn khác KEEP kèm bằng chứng ở cột \`Content Review Note\`.
+
+| Nhãn | Ý nghĩa | Số bài |
+|---|---|---:|
+| KEEP | Không còn lỗi có bằng chứng; giữ nguyên, theo dõi Search Console | ${summary.by_review.KEEP} |
+| FIX | Có lỗi nội dung đã xác minh, chờ sửa qua \`tools/seo-body-review.mjs\` (cờ \`content_flags\` còn mở) | ${summary.by_review.FIX} |
+| REVIEW | Dẫn văn bản pháp luật chưa đối chiếu toàn văn, hoặc còn dữ kiện chưa có nguồn gốc (\`${REVIEW_FILE}\`) | ${summary.by_review.REVIEW} |
+| BLOCKED | Chờ dữ liệu hoặc quyết định của chủ cửa hàng (\`${REVIEW_FILE}\`) | ${summary.by_review.BLOCKED} |
 
 ## Batch (20 URL/batch, thứ tự P0 → P1 → P2, trang chuyển đổi/hub/pillar trước)
 
@@ -614,7 +661,10 @@ ${sections}
 
 export function runAudit(root = ROOT) {
   const c = crawl(root);
-  return { rows: analyze(c), clusters: c.clusters };
+  const rows = analyze(c);
+  const review = contentReview(root);
+  for (const r of rows) r.review = review.get(r.article_id) ?? { status: 'KEEP', notes: [] };
+  return { rows, clusters: c.clusters };
 }
 
 if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) {

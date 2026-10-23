@@ -13,7 +13,7 @@ import { BLOG_UI } from '../../tools/blog-components.mjs';
 import { esc } from '../../tools/app-shell.mjs';
 import { loadSeoMeta, assertSeoMeta, applySeoMeta, seoEntryProblems, englishTokens, seedTypos, topicFamily } from '../../tools/seo-meta.mjs';
 import { planLinks, grams } from '../../tools/seo-links.mjs';
-import { runAudit, titleCaseBroken } from '../../tools/seo-master-audit.mjs';
+import { runAudit, titleCaseBroken, REVIEW_FILE, REVIEW_STATES } from '../../tools/seo-master-audit.mjs';
 import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -214,4 +214,24 @@ test('hub SERP titles: keyword-led, unique and never the protected sister-site h
   const ev = read('blog/xe-dien/index.html');
   assert.match(ev, /<title>Thuê xe máy điện Hà Nội/, 'EV hub targets the measured EV rental query');
   assert.match(ev, /<h1 class="blog-screen-title">Xe điện \/ xe máy điện<\/h1>/, 'visible H1/menu naming unchanged');
+});
+
+test('content review: every article is KEEP / FIX / REVIEW / BLOCKED with evidence, FIX = open content flags', () => {
+  const { rows } = runAudit(ROOT);
+  const ids = new Set(JSON.parse(read('data/blog/published.json')).articles.map((a) => a.article_id));
+  const open = new Set((JSON.parse(read('config/seo-cold-start.json')).content_flags ?? []).filter((f) => !f.resolved).map((f) => f.article));
+  for (const r of rows.filter((x) => x.type === 'Bài viết')) {
+    assert.ok(REVIEW_STATES.includes(r.review.status), `${r.url}: review status`);
+    if (r.review.status !== 'KEEP') assert.ok(r.review.notes.length, `${r.url}: ${r.review.status} needs evidence`);
+    assert.equal(r.review.status === 'FIX', open.has(r.article_id), `${r.url}: FIX exactly when a content flag is open`);
+  }
+  const listed = JSON.parse(read(REVIEW_FILE));
+  assert.equal(listed.$schema, 'motoai/content-review@1');
+  for (const [id, a] of Object.entries(listed.articles)) {
+    assert.ok(ids.has(id), `${id}: published article`);
+    assert.ok(['REVIEW', 'BLOCKED'].includes(a.status), `${id}: only REVIEW/BLOCKED are listed by hand (FIX comes from content flags)`);
+    assert.ok(a.reason?.length > 20 && /^\d{4}-\d{2}-\d{2}$/.test(a.since), `${id}: reason + since`);
+  }
+  const matrix = JSON.parse(read('docs/seo/seo-master-matrix.json'));
+  assert.ok(matrix.columns.includes('Content Review') && matrix.summary.by_review, 'matrix carries the content review');
 });
