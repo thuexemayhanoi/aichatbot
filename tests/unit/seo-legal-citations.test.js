@@ -31,6 +31,7 @@ test('registry: unique ids, well-formed cite keys, known status/evidence, replac
     assert.ok((d.cite?.length || d.names?.length), `${d.id}: needs cite keys or names`);
     if (d.status === 'replaced') { assert.ok(byId.has(d.replaced_by), `${d.id}: replaced_by`); assert.notEqual(byId.get(d.replaced_by).status, 'replaced' === d.id, 'chain'); }
     if (d.status === 'amended') assert.ok(byId.has(d.amended_by) && d.amended_from, `${d.id}: amended_by + amended_from`);
+    if (d.amendment_checked) { assert.match(d.amendment_checked, /^\d{4}-\d{2}-\d{2}$/, `${d.id}: amendment_checked date`); assert.ok(d.evidence === 'fulltext' && byId.get(d.amended_by)?.evidence === 'fulltext', `${d.id}: amendment checked only against both full texts`); }
     if (d.evidence === 'fulltext') { assert.ok(d.facts?.length, `${d.id}: fulltext evidence names its verified facts`); for (const f of d.facts) assert.ok(facts[f], `${d.id}: fact ${f} in legal-facts.json`); }
     if (d.evidence === 'reported') assert.ok(d.sources?.length, `${d.id}: reported evidence names its sources`);
     for (const s of d.sources ?? []) assert.match(s, /^https:\/\//, `${d.id}: source url`);
@@ -85,7 +86,7 @@ test('repository: every cited document is in the registry, flagged articles matc
   const flagged = new Set(flags.map((f) => f.article));
   for (const f of r.needs_fix) assert.ok(flagged.has(f.article_id), `${f.article_id} cites ${f.doc} as the rule in force: add a content flag`);
   for (const w of r.wrong_suffix) assert.ok(flagged.has(w.article_id), `${w.article_id} cites ${w.cited}: add a content flag`);
-  const amended = r.documents.filter((d) => d.status === 'amended' && d.articles_current.length);
+  const amended = r.documents.filter((d) => d.status === 'amended' && d.articles_current.length && !d.amendment_checked);
   for (const d of amended) assert.ok(r.amended.some((a) => a.doc === d.id), `${d.id} amended after publication must be listed as pending`);
   const files = build(ROOT);
   for (const name of [OUT_MD, OUT_JSON]) {

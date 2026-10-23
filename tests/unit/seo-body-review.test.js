@@ -102,6 +102,13 @@ test('legal corrections: new numbers only from declared, verified legal facts', 
   assert.ok(reviewArticle({ id: art.article_id, replace: [{ from, to }] }).problems.some((p) => p.includes('number "125"')));
   assert.deepEqual(reviewArticle({ id: art.article_id, facts: [fid], replace: [{ from, to }] }).problems, []);
   assert.ok(reviewArticle({ id: art.article_id, facts: ['khong-ton-tai'], replace: [{ from, to }] }).problems.some((p) => p.includes('khong-ton-tai')));
+  // nth: only that occurrence of a repeated text changes; a missing occurrence is rejected.
+  const twice = MANIFEST.find((a) => read(a.body).split('Nghị định 168/2024/NĐ-CP').length >= 3);
+  const one = reviewArticle({ id: twice.article_id, replace: [{ from: 'Nghị định 168/2024/NĐ-CP', to: 'Nghị định này', nth: 2 }] });
+  assert.deepEqual(one.problems, []);
+  assert.equal(one.html.split('Nghị định này').length - 1, 1);
+  assert.equal(one.html.split('Nghị định 168/2024/NĐ-CP').length, one.original.split('Nghị định 168/2024/NĐ-CP').length - 1);
+  assert.ok(reviewArticle({ id: twice.article_id, replace: [{ from: 'Nghị định 168/2024/NĐ-CP', to: 'Nghị định này', nth: 999 }] }).problems.some((p) => p.includes('occurrence 999')));
   // Logged legal corrections name facts that exist.
   for (const [id, rev] of Object.entries(JSON.parse(read(REVIEW_LOG)).reviews)) for (const f of rev.facts ?? []) assert.ok(facts[f], `${id}: fact ${f} recorded`);
 });

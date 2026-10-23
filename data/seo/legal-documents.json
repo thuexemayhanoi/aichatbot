@@ -1,7 +1,7 @@
 {
  "$schema": "motoai/legal-documents@1",
  "note": "Sổ đăng ký hiệu lực các văn bản pháp luật được bài viết trích dẫn (tools/seo-legal-citations.mjs đối chiếu từng trích dẫn trong body với sổ này). status: in_force | amended | replaced | unverified. evidence: fulltext = đã đối chiếu toàn văn (dữ kiện ở data/seo/legal-facts.json); reported = số hiệu, ngày ban hành, ngày hiệu lực và việc thay thế lấy từ Cổng TTĐT Chính phủ/Công báo, cổng công an hoặc nhà xuất bản luật (tiêu đề và bản tin), chưa đọc toàn văn; unverified = chưa đối chiếu trong vòng rà soát nào, chỉ ghi nhận bài đang dẫn. Mọi con số đưa vào bài vẫn chỉ qua legal-facts.json (đối chiếu toàn văn). cite = khóa trích dẫn dạng 'loại|số/năm' (chữ thường); names = tên văn bản khi bài dẫn không kèm số hiệu; suffix = ký hiệu đúng để phát hiện lỗi gõ.",
- "checked": "2026-10-16",
+ "checked": "2026-10-23",
  "documents": [
   {
    "id": "luat-36-2024",
@@ -127,11 +127,16 @@
    "issued": "2025-06-26",
    "effective": "2026-01-01",
    "status": "in_force",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "sources": [
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2025/6/45578/57730-1-2025971-97291-2025-qh15.pdf",
+    "https://vanban.chinhphu.vn/?pageid=27160&docid=214590",
     "https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Lenh-cong-bo-Luat-Bao-ve-du-lieu-ca-nhan-2025-666823.aspx"
    ],
-   "note": "Thay cơ sở pháp lý về dữ liệu cá nhân mà bài đang dẫn (Nghị định 13/2023). Chưa đọc toàn văn."
+   "note": "Công báo số 971+972 (24/7/2025); thông qua 26/6/2025, hiệu lực 01/01/2026 (Điều 38). Đối chiếu toàn văn 2026-10-23.",
+   "facts": [
+    "luat-91-2025-dong-y"
+   ]
   },
   {
    "id": "nd-168-2024",
@@ -149,13 +154,21 @@
    "evidence": "fulltext",
    "facts": [
     "nd-168-2024-dieu-14-guong-chieu-hau",
-    "nd-168-2024-dieu-14-dang-ky-xe"
+    "nd-168-2024-dieu-14-dang-ky-xe",
+    "nd-168-2024-dieu-7-chuyen-lan",
+    "nd-168-2024-dieu-7-dien-thoai",
+    "nd-168-2024-dieu-7-nong-do-con",
+    "nd-168-2024-dieu-7-toc-do",
+    "nd-168-2024-dieu-18-mang-theo-giay-to",
+    "nd-168-2024-dieu-18-khong-co-gplx",
+    "nd-168-2024-dieu-32-khi-thai"
    ],
    "sources": [
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2024/12/43733/54010-1-202575-76168-2024-nd-cp.pdf",
     "https://thuvienphapluat.vn/van-ban/Vi-pham-hanh-chinh/Nghi-dinh-168-2024-ND-CP-xu-phat-vi-pham-hanh-chinh-trat-tu-an-toan-giao-thong-duong-bo-619502.aspx"
    ],
-   "pending": "Đối chiếu toàn văn Nghị định 238/2026/NĐ-CP để xác nhận các khung phạt bài đang dẫn (Điều 7 khoản 2, 4, 6–9; Điều 14 khoản 1; Điều 18 khoản 5, 7; Điều 32 khoản 10) không thuộc điều khoản được sửa, rồi bổ sung câu 'được sửa đổi, bổ sung bởi Nghị định 238/2026/NĐ-CP' vào các bài trang đích pháp lý.",
-   "note": "Toàn văn đã đối chiếu cho Điều 14, Điều 53 (2026-10-15). Theo Cổng TTĐT Chính phủ và các cổng công an tỉnh (chưa đọc toàn văn): Nghị định 238/2026/NĐ-CP sửa các điểm/khoản của Điều 3, 6, 13, 14 (điểm b khoản 3; điểm a khoản 6), 18 (điểm a khoản 4: người từ đủ 16 đến dưới 18 tuổi điều khiển xe mô tô, bỏ ngưỡng 50 cm³/4 kW, mức phạt 400.000–600.000 đồng giữ nguyên), 20; không nguồn nào ghi nhận thay đổi mức phạt điện thoại, đèn tín hiệu, mũ bảo hiểm, nồng độ cồn, không có giấy phép lái xe, giao xe cho người không đủ điều kiện, gương chiếu hậu."
+   "note": "Toàn văn Công báo số 75+76 (16/01/2025) đã đối chiếu cho Điều 7, 14, 18, 32, 53 (2026-10-23). So với toàn văn Nghị định 238/2026/NĐ-CP (bản ký số, đọc từng trang): các khung phạt bài đang dẫn (Điều 7 khoản 1–10; Điều 14 khoản 1–3; Điều 18 khoản 2, 4, 5, 7; Điều 32 khoản 1, 10) giữ nguyên mức tiền; Nghị định 238 chỉ bổ sung cụm từ ở điểm e khoản 1 (chuyển làn không bảo đảm khoảng cách an toàn) và điểm b khoản 6 Điều 7 (khu vực cấm theo quy định của cấp có thẩm quyền), thêm biện pháp buộc thay thế/khôi phục thiết bị cho khoản 1 và điểm d khoản 2 Điều 14, sửa điểm b khoản 3 Điều 14 (biển số), sửa điểm a khoản 4 Điều 18 (người từ đủ 16 đến dưới 18 tuổi điều khiển xe mô tô, bỏ ngưỡng 50 cm³/4 kW), bãi bỏ điểm d, đ, e, g khoản 17 Điều 32; hành vi kết thúc trước 15/8/2026 xử theo văn bản có hiệu lực lúc vi phạm (Điều 21). Đối chiếu toàn văn phát hiện bài ghi sai mức phạt (chuyển làn, điện thoại, nồng độ cồn mức 1, tốc độ) và áp mức 200.000–300.000 đồng của lỗi không mang theo giấy tờ (chỉ dành cho xe kinh doanh vận tải) cho mọi người lái — đã sửa qua tools/seo-body-review.mjs.",
+   "amendment_checked": "2026-10-23"
   },
   {
    "id": "nd-238-2026",
@@ -168,16 +181,19 @@
    "issued": "2026-06-26",
    "effective": "2026-08-15",
    "status": "in_force",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "sources": [
+    "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/238-ndcp.signed.pdf",
     "https://vanban.chinhphu.vn/?docid=218613&pageid=27160",
     "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-238-2026-nd-cp-469913/66580.htm",
     "https://baochinhphu.vn/tu-15-8-phat-canh-cao-o-to-cho-tre-em-khong-co-thiet-bi-an-toan-phu-hop-102260630121104271.htm",
     "https://congan.phutho.gov.vn/article/Tu-1582026-Nhung-thay-doi-dang-chu-y-ve-xu-31345-36",
     "https://thuvienphapluat.vn/van-ban/Vi-pham-hanh-chinh/Nghi-dinh-238-2026-ND-CP-sua-doi-Nghi-dinh-168-2024-ND-CP-xu-phat-hanh-chinh-giao-thong-duong-bo-712521.aspx"
    ],
-   "pending": "Đọc toàn văn (Cổng TTĐT Chính phủ) trước khi đưa bất kỳ nội dung sửa đổi nào vào bài.",
-   "note": "Số hiệu, ngày ban hành và ngày hiệu lực xác nhận qua tiêu đề văn bản trên vanban.chinhphu.vn và Công báo; nội dung sửa đổi mới biết qua bản tin."
+   "note": "Toàn văn bản ký số trên Cổng TTĐT Chính phủ (PDF quét, đọc từng trang, 2026-10-23). Hiệu lực 15/8/2026 (Điều 20); Điều 21 chuyển tiếp.",
+   "facts": [
+    "nd-238-2026-sua-nd-168"
+   ]
   },
   {
    "id": "nd-100-2019",
@@ -211,14 +227,16 @@
    "status": "replaced",
    "replaced_by": "nd-356-2025",
    "replaced_from": "2026-01-01",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "sources": [
     "https://luatvietnam.vn/dan-su/nghi-dinh-356-2025-nd-cp-quy-dinh-chi-tiet-luat-bao-ve-du-lieu-ca-nhan-422896-d1.html",
     "https://www.ey.com/vi_vn/technical/tax/tax-and-law-updates/nghi-dinh-so-356-2025-nd-cp-quy-dinh-chi-tiet-mot-so-dieu-va-bien-phap-thi-hanh-luat-bao-ve-du-lieu-ca-nhan",
     "https://www.pwc.com/vn/vn/publications/2026/20260128-new-rules-personal-data-protection.pdf"
    ],
-   "pending": "Đối chiếu toàn văn Luật Bảo vệ dữ liệu cá nhân 2025 và Nghị định 356/2025/NĐ-CP (điều khoản hiệu lực, thay thế) rồi sửa các bài về dữ liệu cá nhân khi thuê xe.",
-   "note": "Theo LuatVietnam, EY, PwC: Nghị định 356/2025/NĐ-CP (31/12/2025) quy định chi tiết Luật Bảo vệ dữ liệu cá nhân, hiệu lực 01/01/2026, thay thế Nghị định 13/2023/NĐ-CP."
+   "note": "Hết hiệu lực từ 01/01/2026 theo khoản 2 Điều 42 Nghị định 356/2025/NĐ-CP (toàn văn Công báo, đối chiếu 2026-10-23); hoạt động xử lý đã được đồng ý theo Nghị định 13 trước đó tiếp tục mà không phải xin lại (khoản 1 Điều 39 Luật 91/2025/QH15).",
+   "facts": [
+    "nd-356-2025-thay-nd-13"
+   ]
   },
   {
    "id": "nd-356-2025",
@@ -231,12 +249,17 @@
    "issued": "2025-12-31",
    "effective": "2026-01-01",
    "status": "in_force",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "sources": [
+    "https://congbaocdn.chinhphu.vn/180507251028987904/2026/1/17/356signed-1768638052103952849513.pdf",
+    "https://vanban.chinhphu.vn/?pageid=27160&docid=216387",
     "https://luatvietnam.vn/dan-su/nghi-dinh-356-2025-nd-cp-quy-dinh-chi-tiet-luat-bao-ve-du-lieu-ca-nhan-422896-d1.html"
    ],
-   "pending": "Đọc toàn văn trước khi dẫn trong bài.",
-   "note": ""
+   "note": "Công báo số 18 (18/01/2026); Điều 42 khoản 2: Nghị định 13/2023/NĐ-CP hết hiệu lực từ 01/01/2026. Đối chiếu toàn văn 2026-10-23.",
+   "facts": [
+    "nd-356-2025-thay-nd-13",
+    "nd-356-2025-quyen-xoa-nhay-cam"
+   ]
   },
   {
    "id": "nd-67-2023",
@@ -312,10 +335,15 @@
    "issued": "2024-11-15",
    "effective": "2025-01-01",
    "status": "in_force",
-   "evidence": "unverified",
-   "sources": [],
-   "pending": "Đối chiếu toàn văn các mức tốc độ tối đa (khu đông dân cư 60/50 km/h theo loại đường; xe gắn máy 40 km/h) mà bài dẫn.",
-   "note": "Một bài gõ sai ký hiệu thành TB-BGTVT và gán mức 40 km/h cho mọi xe trên đường phố (xem báo cáo)."
+   "evidence": "fulltext",
+   "sources": [
+    "https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/11/38-bgtvt.pdf",
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2024/11/43378/53130-1-20241355-135638-2024-tt-bgtvt.pdf"
+   ],
+   "note": "Toàn văn đối chiếu 2026-10-23. Chỉ được sửa bởi Thông tư 09/2025/TT-BXD (Điều 26, sửa khoản 3 Điều 10 về đặt biển tốc độ; các mức tốc độ không đổi — văn bản hợp nhất 25/VBHN-BXD, 74/VBHN-BXD của Bộ Xây dựng).",
+   "facts": [
+    "tt-38-2024-toc-do"
+   ]
   },
   {
    "id": "tt-04-2021-bkhcn",
@@ -359,7 +387,7 @@
    "issued": null,
    "effective": null,
    "status": "replaced",
-   "replaced_by": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
    "replaced_from": "2025-01-01",
    "evidence": "reported",
    "sources": [
@@ -367,7 +395,7 @@
     "https://lsvn.vn/nhung-diem-moi-ve-dao-tao-sat-hach-va-cap-giay-phep-lai-xe-a154639.html"
    ],
    "pending": "Đối chiếu điều khoản hiệu lực của Thông tư 35/2024/TT-BGTVT (01/01/2025) và Thông tư 12/2025/TT-BCA (01/3/2025) về cấp, sử dụng giấy phép lái xe quốc tế, rồi sửa các bài IDP/người nước ngoài lái xe.",
-   "note": "Việc cấp, sử dụng giấy phép lái xe quốc tế từ 01/01/2025 nằm trong Thông tư 35/2024/TT-BGTVT (tiêu đề văn bản), rồi Thông tư 12/2025/TT-BCA thay Thông tư 35/2024 từ 01/3/2025 (bản tin); bài còn dẫn Thông tư 29/2015 như quy định đang áp dụng."
+   "note": "Việc cấp, sử dụng giấy phép lái xe quốc tế từ 01/01/2025 nằm trong Thông tư 35/2024/TT-BGTVT (tiêu đề văn bản), rồi Thông tư 12/2025/TT-BCA thay Thông tư 35/2024 từ 01/3/2025 (bản tin); bài còn dẫn Thông tư 29/2015 như quy định đang áp dụng. Thông tư 12/2025/TT-BCA nay đã được thay bằng Thông tư 108/2026/TT-BCA từ 01/7/2026; Thông tư 12/2025 và 108/2026 không có điều khoản nhắc lại yêu cầu mang kèm bằng quốc gia — căn cứ hiện hành của yêu cầu này là mức phạt tại điểm b khoản 5, điểm c khoản 7 Điều 18 Nghị định 168/2024/NĐ-CP."
   },
   {
    "id": "tt-35-2024-bgtvt",
@@ -396,15 +424,44 @@
    "suffix": "TT-BCA",
    "title": "Thông tư 12/2025/TT-BCA quy định về sát hạch, cấp giấy phép lái xe; cấp, sử dụng giấy phép lái xe quốc tế",
    "issuer": "Bộ Công an",
-   "issued": null,
+   "issued": "2025-02-28",
    "effective": "2025-03-01",
-   "status": "in_force",
-   "evidence": "reported",
+   "status": "replaced",
+   "evidence": "fulltext",
    "sources": [
-    "https://lsvn.vn/nhung-diem-moi-ve-dao-tao-sat-hach-va-cap-giay-phep-lai-xe-a154639.html"
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2025/2/44366/55281-1-2025471-47212-2025-tt-bca.pdf",
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2025/2/44366/55284-1-2025473-47412-2025-tt-bca.pdf",
+    "https://vanban.chinhphu.vn/?pageid=27160&docid=213022"
    ],
-   "pending": "Đọc toàn văn; có dự thảo thông tư sửa đổi (chưa rõ đã ban hành).",
-   "note": ""
+   "note": "Hiệu lực 01/3/2025 (Điều 38). Hết hiệu lực từ 01/7/2026 theo khoản 6 Điều 41 Thông tư 108/2026/TT-BCA (một số mẫu, phụ lục còn áp dụng đến hết 28/02/2027). Quy định sử dụng IDP (Điều 29) được giữ nguyên ở Điều 30 Thông tư 108/2026; thủ tục cấp IDP đổi (bỏ mốc 05 ngày làm việc, cấp trong 2,5 ngày làm việc với giấy phép nước ngoài).",
+   "replaced_by": "tt-108-2026-bca",
+   "replaced_from": "2026-07-01",
+   "facts": [
+    "tt-108-2026-idp",
+    "tt-12-2025-cap-idp-pet"
+   ]
+  },
+  {
+   "id": "tt-108-2026-bca",
+   "cite": [
+    "thông tư|108/2026"
+   ],
+   "suffix": "TT-BCA",
+   "title": "Thông tư 108/2026/TT-BCA quy định về sát hạch, cấp giấy phép lái xe; cấp, sử dụng giấy phép lái xe quốc tế",
+   "issuer": "Bộ Công an",
+   "issued": "2026-06-29",
+   "effective": "2026-07-01",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "facts": [
+    "tt-108-2026-idp",
+    "tt-108-2026-cap-idp",
+    "tt-108-2026-cap-idp-giay-phep-viet-nam"
+   ],
+   "sources": [
+    "https://congbaocdn.chinhphu.vn/180507251028987904/2026/7/23/470055-1784712374_v1_1784768048_signed.pdf"
+   ],
+   "note": "Công báo số 429; thay Thông tư 12/2025/TT-BCA từ 01/7/2026 (Điều 41 khoản 6). Đối chiếu toàn văn 2026-10-23."
   },
   {
    "id": "tt-24-2023-bca",
@@ -419,13 +476,15 @@
    "status": "replaced",
    "replaced_by": "tt-79-2024-bca",
    "replaced_from": "2025-01-01",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "sources": [
     "https://plo.vn/thong-tu-792024tt-bca-co-the-dang-ky-xe-ngoai-gio-lam-viec-tu-1-1-2025-post824936.html",
     "https://luatvietnam.vn/tin-van-ban-moi/tu-01-01-2025-chu-xe-doi-noi-cu-tru-sang-tinh-thanh-khac-khong-phai-doi-dang-ky-xe-186-100219-article.html"
    ],
-   "pending": "Đối chiếu toàn văn Thông tư 79/2024/TT-BCA (thủ tục sang tên, hồ sơ) rồi sửa bài mua bán xe máy.",
-   "note": "Thông tư 79/2024/TT-BCA (15/11/2024) có hiệu lực 01/01/2025 và bãi bỏ Thông tư 24/2023/TT-BCA (bản tin)."
+   "note": "Thông tư 79/2024/TT-BCA (Điều 38 khoản 2 điểm a) bãi bỏ Thông tư 24/2023/TT-BCA từ 01/01/2025 — đối chiếu toàn văn 2026-10-23.",
+   "facts": [
+    "tt-79-2024-sang-ten"
+   ]
   },
   {
    "id": "tt-79-2024-bca",
@@ -438,11 +497,16 @@
    "issued": "2024-11-15",
    "effective": "2025-01-01",
    "status": "in_force",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "sources": [
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2024/11/43337/53043-1-20241339-134079-2024-tt-bca.pdf",
+    "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2024/11/43337/53056-1-20241341-134279-2024-tt-bca.pdf",
     "https://plo.vn/thong-tu-792024tt-bca-co-the-dang-ky-xe-ngoai-gio-lam-viec-tu-1-1-2025-post824936.html"
    ],
-   "note": ""
+   "note": "Toàn văn Công báo đối chiếu 2026-10-23. Được sửa bởi Thông tư 13/2025, 51/2025, 37/2026 (hồ sơ sang tên điện tử), 62/2026 (thời hạn giải quyết; hồ sơ thu hồi) — các điều khoản bài dẫn (Điều 6 khoản 5, Điều 17 khoản 2 điểm a, Điều 38) không đổi.",
+   "facts": [
+    "tt-79-2024-sang-ten"
+   ]
   },
   {
    "id": "tt-46-2012-bgtvt",

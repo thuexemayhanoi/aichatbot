@@ -8,7 +8,8 @@
  * preserved; only these operations exist:
  *
  *   intro    : one direct-answer paragraph prepended (AEO / AI answers)
- *   replace  : exact text-node replacements (Vietnamese for English fragments)
+ *   replace  : exact text-node replacements (Vietnamese for English fragments;
+ *              optional nth = only that occurrence of a repeated text)
  *   links    : wrap an existing phrase in a contextual link to a published article
  *   table    : a comparison table summarising what the article already says
  *   faq      : a "Câu hỏi thường gặp" section (only if the body has none)
@@ -48,7 +49,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 export const REVIEW_LOG = 'data/seo/body-reviews.json';
 export const LEGAL_FACTS = 'data/seo/legal-facts.json';
-export const REVIEW_DATE = '2026-10-15';
+export const REVIEW_DATE = '2026-10-23';
 const FORBIDDEN = ['app store', 'google play', 'toàn quốc', 'không cần cọc', 'miễn cọc', 'rẻ nhất', 'số 1', 'uy tín nhất',
   'tốt nhất việt nam', 'giao xe miễn phí', 'miễn phí giao', 'cam kết 100%', '24/7'];
 const MAX_WORDS = 2000, MIN_WORDS = 800;
@@ -108,16 +109,18 @@ export function legalFactProblems(id, f) {
 /** Split html into [isTag, chunk] segments. */
 const segments = (html) => html.split(/(<[^>]+>)/g).filter((x) => x !== '').map((x) => [x.startsWith('<'), x]);
 
-/** Apply text replacements to text nodes only (never attributes/hrefs). */
-function replaceText(html, from, to) {
+/** Apply text replacements to text nodes only (never attributes/hrefs).
+ *  With `nth` (1-based) only that occurrence changes — for identical anchor
+ *  texts of which only one points at the wrong source. */
+function replaceText(html, from, to, nth = 0) {
   let n = 0;
   const out = segments(html).map(([tag, x]) => {
     if (tag) return x;
     const parts = x.split(from);
-    n += parts.length - 1;
-    return parts.join(escText(to));
+    if (!nth) { n += parts.length - 1; return parts.join(escText(to)); }
+    return parts.reduce((acc, p, i) => (i === 0 ? p : `${acc}${++n === nth ? escText(to) : from}${p}`), '');
   }).join('');
-  return { html: out, n };
+  return { html: out, n: nth ? (n >= nth ? 1 : 0) : n };
 }
 
 /** Wrap the first occurrence of `anchor` that sits in a <p>/<li> text node,
@@ -205,9 +208,10 @@ export function reviewArticle(patch, idx = manifestIndex()) {
     // Deleting text is only allowed for leaked internal production notes.
     const internalNote = r.to === '' && /pilot|fixture|chuẩn sản xuất|^\s*Hmm\b|typo/i.test(r.from);
     if (!internalNote) for (const p of textProblems(`replace[${i}].to`, r.to, allowed)) P(p);
-    const res = replaceText(html, r.from, r.to);
+    if (r.nth !== undefined && !(Number.isInteger(r.nth) && r.nth > 0)) { P(`replace[${i}]: "nth" must be a positive integer`); continue; }
+    const res = replaceText(html, r.from, r.to, r.nth);
     if (internalNote) removedWords += res.n * wordCount(r.from);
-    if (res.n === 0) P(`replace[${i}]: "${r.from}" not found in any text node`);
+    if (res.n === 0) P(`replace[${i}]: "${r.from}" not found in any text node${r.nth ? ` (occurrence ${r.nth})` : ''}`);
     html = res.html;
   }
   if (patch.replace?.length) ops.push(`replace:${patch.replace.length}`);

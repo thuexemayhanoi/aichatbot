@@ -168,12 +168,13 @@ export function analyse(root = ROOT) {
   for (const d of reg.documents) {
     const p = perDoc.get(d.id);
     const current = [...p.current].sort();
-    if (d.status === 'amended' && current.length) amended.push({ doc: d.id, amended_by: d.amended_by, amended_from: d.amended_from ?? null, articles: current.length, pending: d.pending ?? '', sample: current.slice(0, 12) });
+    // amendment_checked: both texts read in full and the cited provisions compared — no longer pending.
+    if (d.status === 'amended' && current.length && !d.amendment_checked) amended.push({ doc: d.id, amended_by: d.amended_by, amended_from: d.amended_from ?? null, articles: current.length, pending: d.pending ?? '', sample: current.slice(0, 12) });
     if (d.status !== 'replaced' && d.evidence !== 'fulltext' && current.length) unverified.push({ doc: d.id, evidence: d.evidence, status: d.status, articles: current.length, pending: d.pending ?? '', sources: d.sources ?? [], sample: current.slice(0, 8) });
   }
   const documents = reg.documents.map((d) => {
     const p = perDoc.get(d.id);
-    return { id: d.id, title: d.title, status: d.status, evidence: d.evidence, effective: d.effective ?? null, replaced_by: d.replaced_by ?? null, amended_by: d.amended_by ?? null,
+    return { id: d.id, title: d.title, status: d.status, evidence: d.evidence, effective: d.effective ?? null, replaced_by: d.replaced_by ?? null, amended_by: d.amended_by ?? null, amendment_checked: d.amendment_checked ?? null,
       articles_current: [...p.current].sort(), articles_historical: [...p.historical].sort(), by_name: [...p.byName].sort(), mentions: p.mentions };
   });
   needsFix.sort((x, y) => x.article_id.localeCompare(y.article_id) || x.doc.localeCompare(y.doc));
@@ -209,6 +210,8 @@ export function render(r) {
   L.push('', '## 3. Văn bản được sửa đổi sau khi bài đăng — chờ đối chiếu toàn văn', '', '| Văn bản | Sửa bởi | Từ ngày | Bài đang dẫn | Việc chờ |', '|---|---|---|---:|---|');
   for (const a of r.amended) L.push(`| ${a.doc} | ${a.amended_by} | ${fmtDate(a.amended_from)} | ${a.articles} | ${mdCell(a.pending)} |`);
   if (!r.amended.length) L.push('| — | | | | |');
+  const checked = r.documents.filter((d) => d.amendment_checked && d.articles_current.length);
+  if (checked.length) L.push('', ...checked.map((d) => `Đã đối chiếu toàn văn văn bản sửa đổi: ${d.id} ← ${d.amended_by} (rà ngày ${fmtDate(d.amendment_checked)}, ${d.articles_current.length} bài dẫn; ghi chú trong sổ đăng ký).`));
   L.push('', '## 4. Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn', '', 'Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐT Chính phủ, Công báo, cơ sở dữ liệu văn bản pháp luật).', '',
     '| Văn bản | Trạng thái | Bằng chứng | Bài đang dẫn | Việc chờ | Nguồn để đối chiếu |', '|---|---|---|---:|---|---|');
   for (const u of r.unverified) L.push(`| ${u.doc} | ${u.status} | ${u.evidence} | ${u.articles} | ${mdCell(u.pending || '—')} | ${u.sources.length ? u.sources.map((s) => `<${s}>`).join(' ') : '—'} |`);

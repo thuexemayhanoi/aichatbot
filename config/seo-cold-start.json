@@ -681,7 +681,7 @@
     },
     {
       "article": "BA-0047",
-      "reason": "Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt)",
+      "reason": "Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt) | Dẫn Thông tư 12/2025/TT-BCA như văn bản đang áp dụng; từ 01/7/2026 thay bằng Thông tư 108/2026/TT-BCA (Điều 41 khoản 6) với thủ tục cấp IDP thay đổi",
       "flagged": "2026-10-16",
       "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
     },
@@ -693,7 +693,7 @@
     },
     {
       "article": "BA-0611",
-      "reason": "Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt)",
+      "reason": "Dẫn Thông tư 29/2015/TT-BGTVT như quy định đang áp dụng về sử dụng giấy phép lái xe quốc tế; từ 01/01/2025 nội dung này thuộc Thông tư 35/2024/TT-BGTVT rồi Thông tư 12/2025/TT-BCA (hiệu lực 01/3/2025) theo tiêu đề văn bản và bản tin pháp luật — chưa đối chiếu toàn văn (data/seo/legal-documents.json: tt-29-2015-bgtvt) | Dẫn Thông tư 12/2025/TT-BCA như văn bản đang áp dụng; từ 01/7/2026 thay bằng Thông tư 108/2026/TT-BCA (Điều 41 khoản 6) với thủ tục cấp IDP thay đổi",
       "flagged": "2026-10-16",
       "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
     },
@@ -735,9 +735,405 @@
     },
     {
       "article": "BA-0323",
-      "reason": "Gõ sai ký hiệu \"Thông tư 38/2024/TB-BGTVT\" (đúng: TT-BGTVT) và gán mức tốc độ tối đa 40 km/h cho mọi xe trên đường phố, trong khi các bài khác của kho bài dẫn Thông tư 38/2024/TT-BGTVT với mức 60/50 km/h cho xe mô tô trong khu đông dân cư theo loại đường (40 km/h là mức của xe gắn máy) — cần đối chiếu toàn văn trước khi sửa (tt-38-2024-bgtvt)",
+      "reason": "Gõ sai ký hiệu \"Thông tư 38/2024/TB-BGTVT\" (đúng: TT-BGTVT) và gán mức tốc độ tối đa 40 km/h cho mọi xe trên đường phố, trong khi các bài khác của kho bài dẫn Thông tư 38/2024/TT-BGTVT với mức 60/50 km/h cho xe mô tô trong khu đông dân cư theo loại đường (40 km/h là mức của xe gắn máy) — cần đối chiếu toàn văn trước khi sửa (tt-38-2024-bgtvt) | Ghi mức phạt quá tốc độ 100.000–300.000 đồng, gán 40 km/h cho mọi xe trong phố và gõ sai ký hiệu Thông tư 38/2024/TB-BGTVT (đúng: Điều 7 Nghị định 168/2024/NĐ-CP; Điều 6, 7 Thông tư 38/2024/TT-BGTVT)",
       "flagged": "2026-10-16",
       "source": "tools/seo-legal-citations.mjs (docs/seo/legal-citations.md, rà ngày 2026-10-16)"
+    },
+    {
+      "article": "BA-0005",
+      "reason": "Ghi mức phạt nồng độ cồn mức 1 của xe mô tô là 2.000.000–4.000.000 đồng; đúng là 2.000.000–3.000.000 đồng (điểm a khoản 6 Điều 7 Nghị định 168/2024/NĐ-CP); nêu hành vi \"đi lùi lên dốc\" không có trong điều khoản",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0125",
+      "reason": "Ghi mức phạt chuyển làn của xe mô tô, xe gắn máy là 600.000–800.000 đồng; đúng là 200.000–400.000 đồng (điểm e khoản 1 Điều 7 Nghị định 168/2024/NĐ-CP)",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0971",
+      "reason": "Ghi mức phạt chuyển làn của xe mô tô, xe gắn máy là 600.000–800.000 đồng; đúng là 200.000–400.000 đồng (điểm e khoản 1 Điều 7 Nghị định 168/2024/NĐ-CP)",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0143",
+      "reason": "Ghi mức phạt dùng điện thoại khi lái xe mô tô là 400.000–600.000 đồng; đúng là 800.000–1.000.000 đồng và trừ 04 điểm (điểm đ khoản 4, điểm b khoản 13 Điều 7 Nghị định 168/2024/NĐ-CP)",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0148",
+      "reason": "Ghi mức phạt dùng điện thoại khi lái xe mô tô là 400.000–600.000 đồng; đúng là 800.000–1.000.000 đồng và trừ 04 điểm (điểm đ khoản 4, điểm b khoản 13 Điều 7 Nghị định 168/2024/NĐ-CP)",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0425",
+      "reason": "Ghi mức phạt dùng điện thoại khi lái xe mô tô là 400.000–600.000 đồng; đúng là 800.000–1.000.000 đồng và trừ 04 điểm (điểm đ khoản 4, điểm b khoản 13 Điều 7 Nghị định 168/2024/NĐ-CP)",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0329",
+      "reason": "Gán yêu cầu giấy phép lái xe quốc tế cho Thông tư 38/2024/TT-BGTVT (văn bản về tốc độ); căn cứ đúng là Điều 18 Nghị định 168/2024/NĐ-CP",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0305",
+      "reason": "Cho rằng mức tốc độ của Thông tư 38/2024/TT-BGTVT chỉ áp dụng khi có biển báo; Điều 4 khoản 2 quy định ngược lại",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0311",
+      "reason": "Ghi mức phạt không có giấy phép lái xe 10–30 triệu đồng theo \"Thông tư của Bộ Công an\"; đúng là 2.000.000–4.000.000 hoặc 6.000.000–8.000.000 đồng (Điều 18 Nghị định 168/2024/NĐ-CP)",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0893",
+      "reason": "Dẫn Thông tư 12/2025/TT-BCA như văn bản đang áp dụng; từ 01/7/2026 thay bằng Thông tư 108/2026/TT-BCA (Điều 41 khoản 6) với thủ tục cấp IDP thay đổi | Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1175",
+      "reason": "Dẫn Thông tư 12/2025/TT-BCA như văn bản đang áp dụng; từ 01/7/2026 thay bằng Thông tư 108/2026/TT-BCA (Điều 41 khoản 6) với thủ tục cấp IDP thay đổi | Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1457",
+      "reason": "Dẫn Thông tư 12/2025/TT-BCA như văn bản đang áp dụng; từ 01/7/2026 thay bằng Thông tư 108/2026/TT-BCA (Điều 41 khoản 6) với thủ tục cấp IDP thay đổi | Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-2003",
+      "reason": "Chưa phản ánh Nghị định 238/2026/NĐ-CP (từ 15/8/2026 buộc thay thế hoặc khôi phục gương) và gộp lỗi không mang theo đăng ký xe với không có đăng ký xe",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0335",
+      "reason": "Gộp lỗi không mang theo giấy chứng nhận bảo hiểm bắt buộc với lỗi không có bảo hiểm; điểm a khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ phạt lỗi không mang theo với xe kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0617",
+      "reason": "Gộp lỗi không mang theo giấy chứng nhận bảo hiểm bắt buộc với lỗi không có bảo hiểm; điểm a khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ phạt lỗi không mang theo với xe kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0790",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0791",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0797",
+      "reason": "Gán mức phạt thiếu kiểm định khí thải cho người điều khiển; điểm b khoản 1 Điều 32 Nghị định 168/2024/NĐ-CP phạt chủ xe (hiệu lực theo pháp luật bảo vệ môi trường, Điều 53 khoản 2)",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0803",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0815",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0836",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0851",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0875",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0881",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0887",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0911",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-0917",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1025",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1031",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1037",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1043",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1061",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1073",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1079",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1085",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1157",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1163",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1169",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1181",
+      "reason": "Gộp lỗi không mang theo giấy chứng nhận bảo hiểm bắt buộc với lỗi không có bảo hiểm; điểm a khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ phạt lỗi không mang theo với xe kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1199",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1205",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1234",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1265",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1307",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1319",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1325",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1343",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1355",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1361",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải | Gán mức phạt thiếu kiểm định khí thải cho người điều khiển; điểm b khoản 1 Điều 32 Nghị định 168/2024/NĐ-CP phạt chủ xe (hiệu lực theo pháp luật bảo vệ môi trường, Điều 53 khoản 2)",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1367",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải | Gán mức phạt thiếu kiểm định khí thải cho người điều khiển; điểm b khoản 1 Điều 32 Nghị định 168/2024/NĐ-CP phạt chủ xe (hiệu lực theo pháp luật bảo vệ môi trường, Điều 53 khoản 2)",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1385",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1396",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1402",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1415",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải | Gộp lỗi không mang theo giấy chứng nhận bảo hiểm bắt buộc với lỗi không có bảo hiểm; điểm a khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ phạt lỗi không mang theo với xe kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1445",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1451",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1463",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1475",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải | Gộp lỗi không mang theo giấy chứng nhận bảo hiểm bắt buộc với lỗi không có bảo hiểm; điểm a khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ phạt lỗi không mang theo với xe kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1493",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1547",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1552",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1669",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1809",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1812",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1959",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
+    },
+    {
+      "article": "BA-1961",
+      "reason": "Áp mức 200.000–300.000 đồng của lỗi không mang theo giấy phép lái xe cho mọi người lái; điểm d khoản 2 Điều 18 Nghị định 168/2024/NĐ-CP chỉ áp dụng mức này với xe mô tô kinh doanh vận tải",
+      "flagged": "2026-10-23",
+      "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)"
     }
   ]
 }

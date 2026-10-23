@@ -1,14 +1,14 @@
 {
  "$schema": "motoai/legal-citations@1",
- "registry_checked": "2026-10-16",
+ "registry_checked": "2026-10-23",
  "articles_scanned": 317,
  "counts": {
-  "needs_fix": 10,
+  "needs_fix": 15,
   "wrong_suffix": 1,
-  "amended": 1,
-  "unverified": 15,
+  "amended": 0,
+  "unverified": 10,
   "unknown": 0,
-  "documents": 29,
+  "documents": 30,
   "cited_documents": 27
  },
  "needs_fix": [
@@ -16,7 +16,7 @@
    "article_id": "BA-0041",
    "slug": "nguoi-nuoc-ngoai-lai-xe-o-viet-nam",
    "doc": "tt-29-2015-bgtvt",
-   "replaced_by": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
    "replaced_from": "2025-01-01",
    "evidence": "reported",
    "mentions": 3,
@@ -25,8 +25,18 @@
   {
    "article_id": "BA-0047",
    "slug": "idp-va-bang-lai-quoc-te",
+   "doc": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
+   "replaced_from": "2026-07-01",
+   "evidence": "fulltext",
+   "mentions": 5,
+   "sample": "Một điểm mới đáng lưu ý: từ ngày 01/3/2025, Thông tư 12/2025/TT-BCA của Bộ Công an quy định về sát hạch, cấp giấy phép lái xe và cấp, sử dụng giấy phép lái xe quốc tế cho phép cả …"
+  },
+  {
+   "article_id": "BA-0047",
+   "slug": "idp-va-bang-lai-quoc-te",
    "doc": "tt-29-2015-bgtvt",
-   "replaced_by": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
    "replaced_from": "2025-01-01",
    "evidence": "reported",
    "mentions": 2,
@@ -38,7 +48,7 @@
    "doc": "tt-24-2023-bca",
    "replaced_by": "tt-79-2024-bca",
    "replaced_from": "2025-01-01",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "mentions": 1,
    "sample": "Theo Thông tư 24/2023/TT-BCA của Bộ Công an, ban hành năm 2023 và áp dụng từ giữa tháng Tám, người mua kê khai giấy khai đăng ký xe, đưa xe đến cơ quan công an quản lý hồ sơ để ki…"
   },
@@ -48,7 +58,7 @@
    "doc": "nd-13-2023",
    "replaced_by": "nd-356-2025",
    "replaced_from": "2026-01-01",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "mentions": 6,
    "sample": "Quy định: Nghị định 13/2023/NĐ-CP của Chính phủ quy định chi tiết về bảo vệ dữ liệu cá nhân."
   },
@@ -58,7 +68,7 @@
    "doc": "tt-24-2023-bca",
    "replaced_by": "tt-79-2024-bca",
    "replaced_from": "2025-01-01",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "mentions": 1,
    "sample": "Theo Thông tư 24/2023 của Bộ Công an về cấp đăng ký xe, người mua kê khai giấy khai, đưa xe đến cơ quan công an quản lý hồ sơ để kiểm tra và nộp hồ sơ sang tên đúng thủ tục."
   },
@@ -68,7 +78,7 @@
    "doc": "nd-13-2023",
    "replaced_by": "nd-356-2025",
    "replaced_from": "2026-01-01",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "mentions": 2,
    "sample": "Quy định nền là Nghị định 13/2023/NĐ-CP của Chính phủ quy định chi tiết về bảo vệ dữ liệu cá nhân: dữ liệu chỉ được thu thập khi chủ thể biết rõ và đồng ý trước, trừ trường hợp ph…"
   },
@@ -76,7 +86,7 @@
    "article_id": "BA-0605",
    "slug": "nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-nguoi-moi",
    "doc": "tt-29-2015-bgtvt",
-   "replaced_by": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
    "replaced_from": "2025-01-01",
    "evidence": "reported",
    "mentions": 1,
@@ -85,12 +95,32 @@
   {
    "article_id": "BA-0611",
    "slug": "idp-va-bang-lai-quoc-te-cho-nguoi-moi",
+   "doc": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
+   "replaced_from": "2026-07-01",
+   "evidence": "fulltext",
+   "mentions": 1,
+   "sample": "Một điểm mới đáng chú ý: từ ngày 01/3/2025, theo Thông tư 12/2025/TT-BCA của Bộ Công an, cả người nước ngoài đang cư trú tại Việt Nam cũng được nộp hồ sơ đề nghị cấp IDP, với điều…"
+  },
+  {
+   "article_id": "BA-0611",
+   "slug": "idp-va-bang-lai-quoc-te-cho-nguoi-moi",
    "doc": "tt-29-2015-bgtvt",
-   "replaced_by": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
    "replaced_from": "2025-01-01",
    "evidence": "reported",
    "mentions": 1,
    "sample": "Văn bản và hiệu lực: điều khoản về sử dụng giấy phép lái xe quốc tế được quy định tại Thông tư 29/2015/TT-BGTVT do Bộ Giao thông vận tải ban hành, áp dụng từ cuối năm 2015."
+  },
+  {
+   "article_id": "BA-0893",
+   "slug": "idp-va-bang-lai-quoc-te-tom-tat",
+   "doc": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
+   "replaced_from": "2026-07-01",
+   "evidence": "fulltext",
+   "mentions": 1,
+   "sample": "Văn bản và hiệu lực: với người cần làm IDP từ năm 2025, Thông tư 12/2025/TT-BCA của Bộ Công an là văn bản điều chỉnh, có hiệu lực từ ngày 01/3/2025."
   },
   {
    "article_id": "BA-1121",
@@ -98,9 +128,19 @@
    "doc": "nd-13-2023",
    "replaced_by": "nd-356-2025",
    "replaced_from": "2026-01-01",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "mentions": 2,
    "sample": "Hiệu lực: Nghị định 13/2023/NĐ-CP, có hiệu lực từ ngày 01/7/2023."
+  },
+  {
+   "article_id": "BA-1175",
+   "slug": "idp-va-bang-lai-quoc-te-vi-du-thuc-te",
+   "doc": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
+   "replaced_from": "2026-07-01",
+   "evidence": "fulltext",
+   "mentions": 1,
+   "sample": "Văn bản và hiệu lực: với nhóm cư trú, thủ tục nằm trong Thông tư 12/2025/TT-BCA của Bộ Công an, áp dụng từ 01/3/2025."
   },
   {
    "article_id": "BA-1373",
@@ -108,9 +148,19 @@
    "doc": "nd-13-2023",
    "replaced_by": "nd-356-2025",
    "replaced_from": "2026-01-01",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "mentions": 1,
    "sample": "Pháp lý liên quan: việc thu thập, xử lý dữ liệu cá nhân phải có sự đồng ý của chủ thể và gắn với mục đích đã thông báo; đối tượng là bên thu thập và xử lý; quy định nằm trong Nghị…"
+  },
+  {
+   "article_id": "BA-1457",
+   "slug": "idp-va-bang-lai-quoc-te-cau-hoi-thuong-gap",
+   "doc": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
+   "replaced_from": "2026-07-01",
+   "evidence": "fulltext",
+   "mentions": 1,
+   "sample": "Người cư trú dài hạn nên tìm hiểu thủ tục đổi sang giấy phép lái xe Việt Nam tại cơ quan có thẩm quyền; kể từ năm 2025, việc cấp và đổi giấy phép lái xe, bao gồm giấy phép quốc tế…"
   }
  ],
  "wrong_suffix": [
@@ -123,29 +173,7 @@
    "sentence": "Cụ thể, theo Thông tư 38/2024/TB-BGTVT , tốc độ trên đường phố không được vượt quá 40 km/h, và phải giảm tốc độ trong khu vực đông dân cư hoặc nguy hiểm."
   }
  ],
- "amended": [
-  {
-   "doc": "nd-168-2024",
-   "amended_by": "nd-238-2026",
-   "amended_from": "2026-08-15",
-   "articles": 227,
-   "pending": "Đối chiếu toàn văn Nghị định 238/2026/NĐ-CP để xác nhận các khung phạt bài đang dẫn (Điều 7 khoản 2, 4, 6–9; Điều 14 khoản 1; Điều 18 khoản 5, 7; Điều 32 khoản 10) không thuộc điều khoản được sửa, rồi bổ sung câu 'được sửa đổi, bổ sung bởi Nghị định 238/2026/NĐ-CP' vào các bài trang đích pháp lý.",
-   "sample": [
-    "BA-0005",
-    "BA-0010",
-    "BA-0011",
-    "BA-0017",
-    "BA-0023",
-    "BA-0029",
-    "BA-0035",
-    "BA-0041",
-    "BA-0059",
-    "BA-0065",
-    "BA-0071",
-    "BA-0083"
-   ]
-  }
- ],
+ "amended": [],
  "unverified": [
   {
    "doc": "luat-39-2024",
@@ -185,37 +213,6 @@
    "sources": [],
    "sample": [
     "BA-0053"
-   ]
-  },
-  {
-   "doc": "luat-91-2025",
-   "evidence": "reported",
-   "status": "in_force",
-   "articles": 2,
-   "pending": "",
-   "sources": [
-    "https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Lenh-cong-bo-Luat-Bao-ve-du-lieu-ca-nhan-2025-666823.aspx"
-   ],
-   "sample": [
-    "BA-0245",
-    "BA-0527"
-   ]
-  },
-  {
-   "doc": "nd-238-2026",
-   "evidence": "reported",
-   "status": "in_force",
-   "articles": 1,
-   "pending": "Đọc toàn văn (Cổng TTĐT Chính phủ) trước khi đưa bất kỳ nội dung sửa đổi nào vào bài.",
-   "sources": [
-    "https://vanban.chinhphu.vn/?docid=218613&pageid=27160",
-    "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-238-2026-nd-cp-469913/66580.htm",
-    "https://baochinhphu.vn/tu-15-8-phat-canh-cao-o-to-cho-tre-em-khong-co-thiet-bi-an-toan-phu-hop-102260630121104271.htm",
-    "https://congan.phutho.gov.vn/article/Tu-1582026-Nhung-thay-doi-dang-chu-y-ve-xu-31345-36",
-    "https://thuvienphapluat.vn/van-ban/Vi-pham-hanh-chinh/Nghi-dinh-238-2026-ND-CP-sua-doi-Nghi-dinh-168-2024-ND-CP-xu-phat-hanh-chinh-giao-thong-duong-bo-712521.aspx"
-   ],
-   "sample": [
-    "BA-1193"
    ]
   },
   {
@@ -263,24 +260,6 @@
    ]
   },
   {
-   "doc": "tt-38-2024-bgtvt",
-   "evidence": "unverified",
-   "status": "in_force",
-   "articles": 21,
-   "pending": "Đối chiếu toàn văn các mức tốc độ tối đa (khu đông dân cư 60/50 km/h theo loại đường; xe gắn máy 40 km/h) mà bài dẫn.",
-   "sources": [],
-   "sample": [
-    "BA-0023",
-    "BA-0089",
-    "BA-0305",
-    "BA-0323",
-    "BA-0329",
-    "BA-0371",
-    "BA-0389",
-    "BA-0395"
-   ]
-  },
-  {
    "doc": "tt-04-2021-bkhcn",
    "evidence": "unverified",
    "status": "in_force",
@@ -307,37 +286,6 @@
     "BA-0803",
     "BA-1085",
     "BA-1367"
-   ]
-  },
-  {
-   "doc": "tt-12-2025-bca",
-   "evidence": "reported",
-   "status": "in_force",
-   "articles": 5,
-   "pending": "Đọc toàn văn; có dự thảo thông tư sửa đổi (chưa rõ đã ban hành).",
-   "sources": [
-    "https://lsvn.vn/nhung-diem-moi-ve-dao-tao-sat-hach-va-cap-giay-phep-lai-xe-a154639.html"
-   ],
-   "sample": [
-    "BA-0047",
-    "BA-0611",
-    "BA-0893",
-    "BA-1175",
-    "BA-1457"
-   ]
-  },
-  {
-   "doc": "tt-79-2024-bca",
-   "evidence": "reported",
-   "status": "in_force",
-   "articles": 2,
-   "pending": "",
-   "sources": [
-    "https://plo.vn/thong-tu-792024tt-bca-co-the-dang-ky-xe-ngoai-gio-lam-viec-tu-1-1-2025-post824936.html"
-   ],
-   "sample": [
-    "BA-1073",
-    "BA-1355"
    ]
   },
   {
@@ -383,6 +331,7 @@
    "effective": "2025-01-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0005",
     "BA-0010",
@@ -844,6 +793,7 @@
    "effective": "2009-07-01",
    "replaced_by": "luat-36-2024",
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [],
    "articles_historical": [
     "BA-0005",
@@ -865,6 +815,7 @@
    "effective": "2025-01-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0239"
    ],
@@ -882,6 +833,7 @@
    "effective": "2017-01-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0059",
     "BA-0083",
@@ -967,6 +919,7 @@
    "effective": "2023-01-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0053"
    ],
@@ -978,10 +931,11 @@
    "id": "luat-91-2025",
    "title": "Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15",
    "status": "in_force",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "effective": "2026-01-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0245",
     "BA-0527"
@@ -1001,6 +955,7 @@
    "effective": "2025-01-01",
    "replaced_by": null,
    "amended_by": "nd-238-2026",
+   "amendment_checked": "2026-10-23",
    "articles_current": [
     "BA-0005",
     "BA-0010",
@@ -1250,10 +1205,11 @@
    "id": "nd-238-2026",
    "title": "Nghị định 238/2026/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 168/2024/NĐ-CP",
    "status": "in_force",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "effective": "2026-08-15",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-1193"
    ],
@@ -1269,6 +1225,7 @@
    "effective": "2020-01-01",
    "replaced_by": "nd-168-2024",
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [],
    "articles_historical": [
     "BA-0005",
@@ -1282,10 +1239,11 @@
    "id": "nd-13-2023",
    "title": "Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân",
    "status": "replaced",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "effective": "2023-07-01",
    "replaced_by": "nd-356-2025",
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0275",
     "BA-0557",
@@ -1305,10 +1263,11 @@
    "id": "nd-356-2025",
    "title": "Nghị định 356/2025/NĐ-CP quy định chi tiết một số điều và biện pháp thi hành Luật Bảo vệ dữ liệu cá nhân",
    "status": "in_force",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "effective": "2026-01-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [],
    "articles_historical": [],
    "by_name": [],
@@ -1322,6 +1281,7 @@
    "effective": "2023-09-06",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0053",
     "BA-0239",
@@ -1347,6 +1307,7 @@
    "effective": "2021-03-01",
    "replaced_by": "nd-67-2023",
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [],
    "articles_historical": [
     "BA-0335"
@@ -1362,6 +1323,7 @@
    "effective": "2016-07-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0221",
     "BA-0503",
@@ -1381,6 +1343,7 @@
    "effective": "2022-03-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-1085"
    ],
@@ -1392,10 +1355,11 @@
    "id": "tt-38-2024-bgtvt",
    "title": "Thông tư 38/2024/TT-BGTVT quy định về tốc độ và khoảng cách an toàn của xe cơ giới, xe máy chuyên dùng tham gia giao thông đường bộ",
    "status": "in_force",
-   "evidence": "unverified",
+   "evidence": "fulltext",
    "effective": "2025-01-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0023",
     "BA-0089",
@@ -1431,6 +1395,7 @@
    "effective": "2022-01-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0017",
     "BA-0299",
@@ -1451,6 +1416,7 @@
    "effective": "2023-10-22",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0239",
     "BA-0521",
@@ -1468,8 +1434,9 @@
    "status": "replaced",
    "evidence": "reported",
    "effective": null,
-   "replaced_by": "tt-12-2025-bca",
+   "replaced_by": "tt-108-2026-bca",
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0041",
     "BA-0047",
@@ -1488,6 +1455,7 @@
    "effective": "2025-01-01",
    "replaced_by": "tt-12-2025-bca",
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [],
    "articles_historical": [],
    "by_name": [],
@@ -1496,11 +1464,12 @@
   {
    "id": "tt-12-2025-bca",
    "title": "Thông tư 12/2025/TT-BCA quy định về sát hạch, cấp giấy phép lái xe; cấp, sử dụng giấy phép lái xe quốc tế",
-   "status": "in_force",
-   "evidence": "reported",
+   "status": "replaced",
+   "evidence": "fulltext",
    "effective": "2025-03-01",
-   "replaced_by": null,
+   "replaced_by": "tt-108-2026-bca",
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0047",
     "BA-0611",
@@ -1513,13 +1482,28 @@
    "mentions": 9
   },
   {
+   "id": "tt-108-2026-bca",
+   "title": "Thông tư 108/2026/TT-BCA quy định về sát hạch, cấp giấy phép lái xe; cấp, sử dụng giấy phép lái xe quốc tế",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "effective": "2026-07-01",
+   "replaced_by": null,
+   "amended_by": null,
+   "amendment_checked": null,
+   "articles_current": [],
+   "articles_historical": [],
+   "by_name": [],
+   "mentions": 0
+  },
+  {
    "id": "tt-24-2023-bca",
    "title": "Thông tư 24/2023/TT-BCA quy định về cấp, thu hồi đăng ký, biển số xe cơ giới",
    "status": "replaced",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "effective": "2023-08-15",
    "replaced_by": "tt-79-2024-bca",
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0227",
     "BA-0509"
@@ -1532,10 +1516,11 @@
    "id": "tt-79-2024-bca",
    "title": "Thông tư 79/2024/TT-BCA quy định về cấp, thu hồi chứng nhận đăng ký xe, biển số xe cơ giới, xe máy chuyên dùng",
    "status": "in_force",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "effective": "2025-01-01",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-1073",
     "BA-1355"
@@ -1552,6 +1537,7 @@
    "effective": null,
    "replaced_by": "tt-12-2025-bca",
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [],
    "articles_historical": [
     "BA-0035",
@@ -1568,6 +1554,7 @@
    "effective": "2026-05-16",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0233",
     "BA-0239",
@@ -1589,6 +1576,7 @@
    "effective": "2025-12-06",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-2004"
    ],
@@ -1604,6 +1592,7 @@
    "effective": "2025-01-01",
    "replaced_by": null,
    "amended_by": "nq-57-2025-hdnd",
+   "amendment_checked": null,
    "articles_current": [],
    "articles_historical": [
     "BA-2004"
@@ -1619,6 +1608,7 @@
    "effective": "2025-06-12",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-0246",
     "BA-0606",
@@ -1636,6 +1626,7 @@
    "effective": "2025-07-12",
    "replaced_by": null,
    "amended_by": null,
+   "amendment_checked": null,
    "articles_current": [
     "BA-2004"
    ],
