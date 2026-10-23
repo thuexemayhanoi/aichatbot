@@ -3,56 +3,15 @@
  "registry_checked": "2026-10-23",
  "articles_scanned": 318,
  "counts": {
-  "needs_fix": 4,
+  "needs_fix": 0,
   "wrong_suffix": 0,
   "amended": 0,
   "unverified": 10,
   "unknown": 0,
   "documents": 30,
-  "cited_documents": 28
+  "cited_documents": 29
  },
- "needs_fix": [
-  {
-   "article_id": "BA-0275",
-   "slug": "bao-ve-du-lieu-ca-nhan-khi-thue-xe",
-   "doc": "nd-13-2023",
-   "replaced_by": "nd-356-2025",
-   "replaced_from": "2026-01-01",
-   "evidence": "fulltext",
-   "mentions": 6,
-   "sample": "Quy định: Nghị định 13/2023/NĐ-CP của Chính phủ quy định chi tiết về bảo vệ dữ liệu cá nhân."
-  },
-  {
-   "article_id": "BA-0557",
-   "slug": "bao-ve-du-lieu-ca-nhan-khi-thue-xe-cho-du-khach",
-   "doc": "nd-13-2023",
-   "replaced_by": "nd-356-2025",
-   "replaced_from": "2026-01-01",
-   "evidence": "fulltext",
-   "mentions": 2,
-   "sample": "Quy định nền là Nghị định 13/2023/NĐ-CP của Chính phủ quy định chi tiết về bảo vệ dữ liệu cá nhân: dữ liệu chỉ được thu thập khi chủ thể biết rõ và đồng ý trước, trừ trường hợp ph…"
-  },
-  {
-   "article_id": "BA-1121",
-   "slug": "bao-ve-du-lieu-ca-nhan-khi-thue-xe-tom-tat",
-   "doc": "nd-13-2023",
-   "replaced_by": "nd-356-2025",
-   "replaced_from": "2026-01-01",
-   "evidence": "fulltext",
-   "mentions": 2,
-   "sample": "Hiệu lực: Nghị định 13/2023/NĐ-CP, có hiệu lực từ ngày 01/7/2023."
-  },
-  {
-   "article_id": "BA-1373",
-   "slug": "tranh-app-thue-xe-lua-dao-vi-du-thuc-te",
-   "doc": "nd-13-2023",
-   "replaced_by": "nd-356-2025",
-   "replaced_from": "2026-01-01",
-   "evidence": "fulltext",
-   "mentions": 1,
-   "sample": "Pháp lý liên quan: việc thu thập, xử lý dữ liệu cá nhân phải có sự đồng ý của chủ thể và gắn với mục đích đã thông báo; đối tượng là bên thu thập và xử lý; quy định nằm trong Nghị…"
-  }
- ],
+ "needs_fix": [],
  "wrong_suffix": [],
  "amended": [],
  "unverified": [
@@ -1098,11 +1057,12 @@
    "amendment_checked": null,
    "articles_current": [
     "BA-0125",
-    "BA-1193"
+    "BA-1193",
+    "BA-2003"
    ],
    "articles_historical": [],
    "by_name": [],
-   "mentions": 2
+   "mentions": 4
   },
   {
    "id": "nd-100-2019",
@@ -1131,20 +1091,19 @@
    "replaced_by": "nd-356-2025",
    "amended_by": null,
    "amendment_checked": null,
-   "articles_current": [
+   "articles_current": [],
+   "articles_historical": [
     "BA-0275",
     "BA-0557",
-    "BA-1121",
-    "BA-1373"
-   ],
-   "articles_historical": [
     "BA-0839",
     "BA-1091",
+    "BA-1121",
     "BA-1243",
+    "BA-1373",
     "BA-1403"
    ],
    "by_name": [],
-   "mentions": 15
+   "mentions": 8
   },
   {
    "id": "nd-356-2025",
@@ -1155,10 +1114,17 @@
    "replaced_by": null,
    "amended_by": null,
    "amendment_checked": null,
-   "articles_current": [],
-   "articles_historical": [],
+   "articles_current": [
+    "BA-0275",
+    "BA-0557",
+    "BA-1121",
+    "BA-1373"
+   ],
+   "articles_historical": [
+    "BA-0557"
+   ],
    "by_name": [],
-   "mentions": 0
+   "mentions": 8
   },
   {
    "id": "nd-67-2023",

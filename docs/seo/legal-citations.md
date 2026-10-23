@@ -4,7 +4,7 @@ _Sinh bởi `node tools/seo-legal-citations.mjs` từ sổ đăng ký `data/seo/
 
 | Mục | Số |
 |---|---:|
-| Bài dẫn văn bản đã hết hiệu lực như quy định đang áp dụng (cần sửa qua review body sau khi đối chiếu toàn văn) | 4 |
+| Bài dẫn văn bản đã hết hiệu lực như quy định đang áp dụng (cần sửa qua review body sau khi đối chiếu toàn văn) | 0 |
 | Trích dẫn sai ký hiệu | 0 |
 | Văn bản được sửa đổi sau khi bài đăng — chờ đối chiếu | 0 |
 | Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn | 10 |
@@ -16,10 +16,7 @@ Mỗi bài dưới đây phải có cờ trong `config/seo-cold-start.json` → 
 
 | Bài | Văn bản đang dẫn | Thay bởi | Từ ngày | Bằng chứng | Lượt | Câu trong bài |
 |---|---|---|---|---|---:|---|
-| BA-0275 `bao-ve-du-lieu-ca-nhan-khi-thue-xe` | nd-13-2023 | nd-356-2025 | 01/01/2026 | fulltext | 6 | Quy định: Nghị định 13/2023/NĐ-CP của Chính phủ quy định chi tiết về bảo vệ dữ liệu cá nhân. |
-| BA-0557 `bao-ve-du-lieu-ca-nhan-khi-thue-xe-cho-du-khach` | nd-13-2023 | nd-356-2025 | 01/01/2026 | fulltext | 2 | Quy định nền là Nghị định 13/2023/NĐ-CP của Chính phủ quy định chi tiết về bảo vệ dữ liệu cá nhân: dữ liệu chỉ được thu thập khi chủ thể biết rõ và đồng ý trước, trừ trường hợp ph… |
-| BA-1121 `bao-ve-du-lieu-ca-nhan-khi-thue-xe-tom-tat` | nd-13-2023 | nd-356-2025 | 01/01/2026 | fulltext | 2 | Hiệu lực: Nghị định 13/2023/NĐ-CP, có hiệu lực từ ngày 01/7/2023. |
-| BA-1373 `tranh-app-thue-xe-lua-dao-vi-du-thuc-te` | nd-13-2023 | nd-356-2025 | 01/01/2026 | fulltext | 1 | Pháp lý liên quan: việc thu thập, xử lý dữ liệu cá nhân phải có sự đồng ý của chủ thể và gắn với mục đích đã thông báo; đối tượng là bên thu thập và xử lý; quy định nằm trong Nghị… |
+| — | | | | | | |
 
 ## 2. Trích dẫn sai ký hiệu
 
@@ -63,10 +60,10 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 | luat-08-2022 | Luật Kinh doanh bảo hiểm số 08/2022/QH15 | in_force | unverified | 01/01/2023 | — | 1 | 0 | 0 |
 | luat-91-2025 | Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 | in_force | fulltext | 01/01/2026 | — | 2 | 0 | 2 |
 | nd-168-2024 | Nghị định 168/2024/NĐ-CP quy định xử phạt vi phạm hành chính về trật tự, an toàn giao thông trong lĩnh vực giao thông đường bộ; trừ điểm, phục hồi điểm giấy phép lái xe | amended | fulltext | 01/01/2025 | nd-238-2026 | 232 | 11 | 0 |
-| nd-238-2026 | Nghị định 238/2026/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 168/2024/NĐ-CP | in_force | fulltext | 15/08/2026 | — | 2 | 0 | 0 |
+| nd-238-2026 | Nghị định 238/2026/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 168/2024/NĐ-CP | in_force | fulltext | 15/08/2026 | — | 3 | 0 | 0 |
 | nd-100-2019 | Nghị định 100/2019/NĐ-CP xử phạt vi phạm hành chính trong lĩnh vực giao thông đường bộ và đường sắt | replaced | reported | 01/01/2020 | nd-168-2024 | 0 | 3 | 0 |
-| nd-13-2023 | Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân | replaced | fulltext | 01/07/2023 | nd-356-2025 | 4 | 4 | 0 |
-| nd-356-2025 | Nghị định 356/2025/NĐ-CP quy định chi tiết một số điều và biện pháp thi hành Luật Bảo vệ dữ liệu cá nhân | in_force | fulltext | 01/01/2026 | — | 0 | 0 | 0 |
+| nd-13-2023 | Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân | replaced | fulltext | 01/07/2023 | nd-356-2025 | 0 | 8 | 0 |
+| nd-356-2025 | Nghị định 356/2025/NĐ-CP quy định chi tiết một số điều và biện pháp thi hành Luật Bảo vệ dữ liệu cá nhân | in_force | fulltext | 01/01/2026 | — | 4 | 1 | 0 |
 | nd-67-2023 | Nghị định 67/2023/NĐ-CP về bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới, bảo hiểm cháy nổ bắt buộc, bảo hiểm bắt buộc trong hoạt động đầu tư xây dựng | in_force | unverified | 06/09/2023 | — | 11 | 0 | 0 |
 | nd-03-2021 | Nghị định 03/2021/NĐ-CP về bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới | replaced | unverified | 01/03/2021 | nd-67-2023 | 0 | 1 | 0 |
 | nd-96-2016 | Nghị định 96/2016/NĐ-CP quy định điều kiện về an ninh, trật tự đối với một số ngành, nghề đầu tư kinh doanh có điều kiện | in_force | unverified | 01/07/2016 | — | 5 | 0 | 0 |
