@@ -104,7 +104,13 @@
           <button id="blog-search-clear" type="button" aria-label="Xóa tìm kiếm" hidden>✕</button>
         </div>
         <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản. <span id="blog-search-count" hidden></span></p>
-        <div class="blog-grid" id="blog-search-results"></div>
+        <div class="blog-grid" id="blog-search-results" data-count="— {n} kết quả" data-empty="Không tìm thấy bài viết khớp. Thử từ khóa khác hoặc hỏi Agent." data-error="Không tải được mục lục tìm kiếm. Vui lòng thử lại."></div>
+        <template id="blog-card-tpl"><a class="blog-card" href="#">
+        <span class="cat"></span>
+        <h3></h3>
+        <p></p>
+        <span class="blog-card-meta"><time datetime=""></time> · 0 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a></template>
       </section>
       <section class="blog-hubs" aria-label="Nhóm chủ đề chính">
       <section class="blog-hub-section" aria-label="Công cụ &amp; Hướng dẫn">
@@ -377,7 +383,7 @@
       <section class="home-index" aria-label="Danh mục">
         <div class="lane-head">
           <h2>Danh mục</h2>
-          <p>Sáu chuyên mục, 2.006 bài — đi thẳng tới phần bạn cần.</p>
+          <p>6 chuyên mục, 2.006 bài — đi thẳng tới phần bạn cần.</p>
         </div>
         <div class="blog-cat-grid">
       <a class="blog-cat-card" href="/blog/app/">
@@ -566,7 +572,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Agent","item":"https://chatbot.thuexemaynguyentu.com/"},{"@type":"ListItem","position":2,"name":"Cẩm nang","item":"https://chatbot.thuexemaynguyentu.com/blog/"}]}
   </script>
 
-  <script src="/assets/js/blog.js?v=701010342"></script>
+  <script src="/assets/js/blog.js?v=3118481993"></script>
   <script type="module" src="/assets/js/app-shell.js?v=3210754172"></script>
 </body>
 </html>
