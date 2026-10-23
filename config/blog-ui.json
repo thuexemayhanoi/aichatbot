@@ -1,5 +1,32 @@
 {
-  "$schema": "motoai/blog-ui@1",
+  "$schema": "motoai/blog-ui@2",
+  "note": "One edit here updates every generated content page (blog home, hubs, subtopics, 2,000+ articles, static pages) on the next build. Colors/type/motion live in the token block at the top of assets/css/blog.css; business facts live in data/business/*.json. Validated by tools/blog-components.mjs.",
+  "site": {
+    "name": "MotoAI — Cẩm nang thuê xe máy & xe điện",
+    "shortName": "MotoAI",
+    "tagline": "Hỗ trợ Agent",
+    "kicker": "Cẩm nang · Hà Nội",
+    "themeColor": {
+      "light": "#f3f0e9",
+      "dark": "#0e0f11"
+    },
+    "ogImage": {
+      "path": "assets/icons/icon-512.png",
+      "width": 512,
+      "height": 512,
+      "alt": "MotoAI — Trợ lý thuê xe máy"
+    }
+  },
+  "features": {
+    "summary": true,
+    "toc": true,
+    "topicContext": true,
+    "family": true,
+    "related": true,
+    "contactBand": true,
+    "readingProgress": true,
+    "motion": true
+  },
   "summary": {
     "title": "Tóm tắt nhanh"
   },
@@ -9,12 +36,31 @@
   },
   "cta": {
     "articleLabel": "⚡ Hỏi Agent về chủ đề này",
-    "footerLabel": "⚡ Hỏi Agent"
+    "footerLabel": "⚡ Hỏi Agent",
+    "band": {
+      "title": "Còn điều gì chưa rõ?",
+      "text": "Hỏi Agent ngay trên web, hoặc gọi cửa hàng trong giờ {{ business.hours.display }} mỗi ngày.",
+      "callLabel": "Gọi {{ business.contact.phone_display }}"
+    },
+    "byCategory": {
+      "APP": { "label": "Xem bảng giá", "href": "/gia-thue/" },
+      "GUIDE": { "label": "Chính sách thuê xe", "href": "/chinh-sach/" },
+      "RENT": { "label": "Xem bảng giá", "href": "/gia-thue/" },
+      "EV": { "label": "Xem bảng giá", "href": "/gia-thue/" },
+      "SAFE": { "label": "Chính sách thuê xe", "href": "/chinh-sach/" },
+      "LOCAL": { "label": "Chỉ đường tới cửa hàng", "contactRef": "map" }
+    },
+    "default": { "label": "Chỉ đường tới cửa hàng", "contactRef": "map" }
   },
   "banner": {
     "enabled": false,
     "text": "",
     "href": "/"
+  },
+  "slots": {
+    "article.afterSummary": [],
+    "article.afterBody": [],
+    "page.beforeContactBand": []
   },
   "family": {
     "title": "Cùng chủ đề",

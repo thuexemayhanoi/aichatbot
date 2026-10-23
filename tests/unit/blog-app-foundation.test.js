@@ -210,7 +210,7 @@ test('the chatbot homepage keeps NO full footer inside the chat viewport', () =>
 test('blog home: cluster cards + category cards + search + latest, compact hero', () => {
   const home = read('blog/index.html');
   for (const c of taxonomy.clusters) {
-    assert.ok(home.includes(`<h2><a href="/blog/${c.dir}/">${c.icon} ${esc(c.name)}</a></h2>`), `hub section ${c.name}`);
+    assert.ok(home.includes(`<h2><a href="/blog/${c.dir}/">${esc(c.name)}</a></h2>`), `hub section ${c.name}`);
     assert.ok(home.includes(`Xem toàn bộ ${esc(c.name)} →`), `hub CTA ${c.name}`);
   }
   assert.ok(home.includes('blog-hub-section'), 'super-hub section markup');

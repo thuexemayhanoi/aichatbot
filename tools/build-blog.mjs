@@ -23,7 +23,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeInternalAnchors } from './site-audit.mjs';
-import { BLOG_UI } from './blog-components.mjs';
+import { BLOG_UI, feature, icon, renderSlot, resolveFacts } from './blog-components.mjs';
 import {
   taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav
 } from './taxonomy.mjs';
@@ -31,7 +31,10 @@ import {
   SITE, esc, rel, pageHead, askAgentAction, appShellPage
 } from './app-shell.mjs';
 import { loadSeoMeta, assertSeoMeta, applySeoMeta } from './seo-meta.mjs';
+import { buildCss } from './css-build.mjs';
 import { planLinks } from './seo-links.mjs';
+
+export { resolveFacts };
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
@@ -62,17 +65,6 @@ export const HUBS = Object.freeze(['APP', 'RENT', 'EV', 'GUIDE', 'SAFE', 'LOCAL'
 })));
 const HUB_BY_ID = Object.fromEntries(HUBS.map((h) => [h.id, h]));
 
-/** Resolve {{ business.x.y }} / {{ business.x.y | vnd }} placeholders.
- *  {{ business.array | list }} joins arrays with ", " (for inline lists). */
-export function resolveFacts(html, business) {
-  return html.replace(/\{\{\s*business\.([a-z0-9_.]+)(?:\s*\|\s*(\w+))?\s*\}\}/gi, (_, path, filter) => {
-    const value = path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), business);
-    if (value === undefined) throw new Error(`unresolved business fact: business.${path}`);
-    if (filter === 'list' && Array.isArray(value)) return value.join(', ');
-    return typeof value === 'number' ? value.toLocaleString('vi-VN') + 'đ' : String(value);
-  });
-}
-
 /** v71: internal links point at the canonical directory URL, never at its
  *  /index.html twin — Google had indexed both forms (zero-data SERP study,
  *  docs/seo/cold-start/visibility-baseline.md). Bodies stay untouched. */
@@ -90,21 +82,40 @@ function jsonLd(obj) {
   return JSON.stringify(obj).replace(/</g, '\\u003c');
 }
 
-/** Article card (app-style, used by every list screen). `level` is the
- *  card heading level: 2 on list screens, 3 inside an article section so
- *  card titles never compete with the article's own H2 outline. */
-function card(a, hub, level = 2) {
-  return `      <a class="blog-card" href="/blog/${hub.dir}/${a.slug}/">
+/** One JSON-LD <script> block — every schema on every page goes through here. */
+const ldScript = (obj) => `  <script type="application/ld+json">
+${jsonLd(obj)}
+  </script>
+`;
+/** The site entity every CollectionPage/WebPage belongs to (config site.name). */
+const websiteRef = () => ({ '@type': 'WebSite', name: BLOG_UI.site.name, url: SITE });
+/** BreadcrumbList from [{ name, item }] entries (absolute URLs). */
+const breadcrumbLd = (entries) => ({
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: entries.map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
+});
+
+/** Reading minutes per article id, filled once per build (cards + byline
+ *  share the same number). */
+const MINUTES = new Map();
+
+/** Article card (used by every list screen). `level` is the card heading
+ *  level: 2 on list screens, 3 inside an article section so card titles
+ *  never compete with the article's own H2 outline. Meta row = real
+ *  publish date + reading time; `lead` marks the featured story. */
+function card(a, hub, level = 2, { lead = false } = {}) {
+  const minutes = MINUTES.get(a.article_id);
+  return `      <a class="blog-card${lead ? ' card-lead' : ''}" href="/blog/${hub.dir}/${a.slug}/">
         <span class="cat">${esc(hub.label)}</span>
         <h${level}>${esc(a.title)}</h${level}>
         <p>${esc(a.description)}</p>
+        <span class="blog-card-meta"><time datetime="${a.published_date}">${a.published_date}</time>${minutes ? ` · ${minutes} phút đọc` : ''}${icon('arrow', 'i card-arrow')}</span>
       </a>`;
 }
 
 /** Compact screen head: small label + H1 + lead — never a giant hero. */
 function screenHead({ label, title, lead }) {
-  return `      <p class="blog-screen-label">${esc(label)}</p>
-      <h1 class="blog-screen-title">${esc(title)}</h1>
+  return `${label ? `      <p class="blog-screen-label">${esc(label)}</p>\n` : ''}      <h1 class="blog-screen-title">${esc(title)}</h1>
       ${lead ? `<p class="blog-screen-lead">${esc(lead)}</p>` : ''}
 `;
 }
@@ -163,72 +174,119 @@ function hubClusterFooter(cluster) {
   return `      <p class="blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}: ${links}</p>\n`;
 }
 
-/** Blog home (v61 hub-first): H1/intro → search → 3 PARENT HUB cards →
- *  Bài mới → the six child category cards. Users and crawlers see the
- *  topical architecture before any single article. */
-function buildHome(published) {
-  // v61 SUPER HUB: three primary parent-hub sections — semantic <section>
-  // with a LINKED H2 (crawlable parent), short description, child-hub
-  // pills, the 2–4 latest articles of the parent, and a CTA to the hub.
-  const hubSections = taxonomy.clusters.map((c) => {
+/** Two-digit index numeral ("01") — the editorial wayfinding mark used by
+ *  the route board, hub stages, category index and dropdowns. */
+const idx = (i) => String(i + 1).padStart(2, '0');
+/** Vietnamese thousands grouping for visible counts ("2.006"). */
+const count = (n) => n.toLocaleString('vi-VN');
+
+/** Blog home (hub-first): hero (H1, lead, verified facts, route board to
+ *  the 3 parent hubs) → search → 3 PARENT HUB stages → Bài mới → the six
+ *  child categories → contact band. Users and crawlers see the topical
+ *  architecture before any single article. */
+function buildHome(published, business) {
+  const catCount = (id) => published.filter((a) => a.category === id).length;
+  const clusterCount = (c) => published.filter((a) => c.categories.includes(a.category)).length;
+
+  // Route board: the three parent hubs as destinations with real counts.
+  const routes = taxonomy.clusters.map((c, i) => `          <li><a href="/blog/${c.dir}/"><span class="route-idx">${idx(i)}</span><span class="route-name">${esc(c.name)}</span><span class="route-count">${count(clusterCount(c))} bài</span>${icon('arrow', 'i route-arrow')}</a></li>`).join('\n');
+
+  // Verified facts only: counts come from the manifest, hours/address from
+  // data/business/business.json.
+  const facts = [
+    [count(published.length), 'bài hướng dẫn đã xuất bản'],
+    [String(navigation.categories.length), 'chuyên mục'],
+    [business.hours.display.replace(' - ', '–'), 'mở cửa mỗi ngày'],
+    [business.address.district, business.address.street]
+  ].map(([v, l]) => `          <li><strong>${esc(v)}</strong><span>${esc(l)}</span></li>`).join('\n');
+
+  // SUPER HUB stages: semantic <section> with a LINKED H2 (crawlable
+  // parent), short description, child-hub pills with counts, the 4 latest
+  // articles of the parent (a swipe rail on phones) and a CTA to the hub.
+  const hubSections = taxonomy.clusters.map((c, i) => {
     const hub = clusterNav(c.id);
     const pills = hub.children.map((ch) =>
-      `        <a class="blog-cluster-link" href="/blog/${ch.dir}/">${ch.icon} ${esc(ch.label)}</a>`).join('\n');
+      `            <a class="blog-cluster-link" href="/blog/${ch.dir}/">${esc(ch.label)} <span class="pill-count">${count(catCount(ch.id))}</span></a>`).join('\n');
     const latest = newestFirst(published.filter((a) => c.categories.includes(a.category)), 4);
     const latestCards = latest.map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
     return `      <section class="blog-hub-section" aria-label="${esc(c.name)}">
-        <h2><a href="/blog/${c.dir}/">${hub.icon} ${esc(c.name)}</a></h2>
-        <p>${esc(c.desc)}</p>
-        <div class="blog-cluster-links">
+        <div class="hub-stage-head">
+          <p class="hub-stage-idx" aria-hidden="true">${idx(i)}</p>
+          <h2><a href="/blog/${c.dir}/">${esc(c.name)}</a></h2>
+          <p>${esc(c.desc)}</p>
+          <div class="blog-cluster-links">
 ${pills}
+          </div>
+          <a class="blog-cluster-more" href="/blog/${c.dir}/">Xem toàn bộ ${esc(c.name)} →</a>
         </div>
-${latestCards ? `        <div class="blog-grid">
+${latestCards ? `        <div class="blog-grid blog-rail">
 ${latestCards}
         </div>
-` : ''}        <a class="blog-cluster-more" href="/blog/${c.dir}/">Xem toàn bộ ${esc(c.name)} →</a>
-      </section>`;
+` : ''}      </section>`;
   }).join('\n');
 
-  const categoryCards = navigation.categories.map((navItem) => {
+  const categoryCards = navigation.categories.map((navItem, i) => {
     const cat = taxonomy.categories[navItem.id];
     return `      <a class="blog-cat-card" href="/blog/${cat.dir}/">
-        <span class="cat-icon" aria-hidden="true">${navItem.icon}</span>
+        <span class="cat-icon" aria-hidden="true">${idx(i)}</span>
         <strong>${esc(navItem.label)}</strong>
+        <span class="cat-count">${count(catCount(navItem.id))} bài</span>
         <span>${esc(cat.desc)}</span>
       </a>`;
   }).join('\n');
 
   // v69.1: cap + newest-first (the section is labelled "Bài mới"); the whole
   // corpus stays discoverable through hub pagination and lazy search.
-  const cards = newestFirst(published, HOME_LATEST_CARDS).map((a) => card(a, HUB_BY_ID[a.category])).join('\n');
+  const cards = newestFirst(published, HOME_LATEST_CARDS).map((a, i) => card(a, HUB_BY_ID[a.category], 2, { lead: i === 0 })).join('\n');
 
   const content = breadcrumb([CRUMB_HOME, { label: 'Cẩm nang', href: null }])
-    + screenHead({
-      label: 'Cẩm nang',
+    + `      <section class="home-hero" aria-label="Cẩm nang thuê xe máy">
+        <div class="home-hero-copy">
+${screenHead({
+      label: BLOG_UI.site.kicker,
       title: 'Thuê xe máy & xe điện',
       lead: 'Hướng dẫn, ứng dụng, giá, xe, an toàn và địa phương — viết kèm Agent để bạn hỏi sâu hơn từng chủ đề.'
-    })
-    + `      <div class="blog-search" id="blog-search">
-        <input id="blog-search-input" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết">
-        <select id="blog-search-filter" aria-label="Lọc theo danh mục">
-          <option value="">Tất cả danh mục</option>
-        </select>
-        <button id="blog-search-btn" type="button" onclick="document.getElementById('blog-search-input').dispatchEvent(new Event('input'))">Tìm</button>
-        <button id="blog-search-clear" type="button" aria-label="Xóa tìm kiếm" hidden>✕</button>
-      </div>
-      <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản. <span id="blog-search-count" hidden></span></p>
-      <div class="blog-grid" id="blog-search-results"></div>
+    })}          <ul class="home-facts" aria-label="Thông tin nhanh">
+${facts}
+          </ul>
+        </div>
+        <nav class="route-board" aria-label="Ba nhóm chủ đề">
+          <p class="route-board-title">Bạn đang tìm gì?</p>
+          <ol>
+${routes}
+          </ol>
+        </nav>
+      </section>
+      <section class="search-band" aria-label="Tìm bài viết">
+        <div class="blog-search" id="blog-search">
+          ${icon('search', 'i search-glyph')}
+          <input id="blog-search-input" type="search" placeholder="Tìm bài: giá thuê, đặt cọc, xe điện, phố cổ…" aria-label="Tìm bài viết">
+          <select id="blog-search-filter" aria-label="Lọc theo danh mục">
+            <option value="">Tất cả danh mục</option>
+          </select>
+          <button id="blog-search-btn" type="button" onclick="document.getElementById('blog-search-input').dispatchEvent(new Event('input'))">Tìm</button>
+          <button id="blog-search-clear" type="button" aria-label="Xóa tìm kiếm" hidden>✕</button>
+        </div>
+        <p class="blog-search-note">Tìm theo tiêu đề, danh mục, chủ đề và địa phương của các bài đã xuất bản. <span id="blog-search-count" hidden></span></p>
+        <div class="blog-grid" id="blog-search-results"></div>
+      </section>
       <section class="blog-hubs" aria-label="Nhóm chủ đề chính">
 ${hubSections}
       </section>
-      <section>
-        <h2>Bài mới</h2>
+      <section class="home-latest">
+        <div class="lane-head">
+          <h2>Bài mới</h2>
+          <p>${Math.min(HOME_LATEST_CARDS, published.length)} bài vừa xuất bản, mới nhất trước.</p>
+        </div>
         <div class="blog-grid">
 ${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản. Hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>'}
         </div>
       </section>
-      <section aria-label="Danh mục">
-        <h2>Danh mục</h2>
+      <section class="home-index" aria-label="Danh mục">
+        <div class="lane-head">
+          <h2>Danh mục</h2>
+          <p>Sáu chuyên mục, ${count(published.length)} bài — đi thẳng tới phần bạn cần.</p>
+        </div>
         <div class="blog-cat-grid">
 ${categoryCards}
         </div>
@@ -243,13 +301,12 @@ ${askAgentAction('thuê xe máy')}`;
     activeHub: null,
     contentHtml: content,
     search: true,
-    schemaHtml: `  <script type="application/ld+json">
-${jsonLd({
+    schemaHtml: ldScript({
       '@context': 'https://schema.org', '@type': 'CollectionPage',
       name: 'Cẩm nang thuê xe máy & xe điện',
       description: 'Cẩm nang thuê xe máy và xe điện: ứng dụng, giá, thủ tục, an toàn và hành trình Hà Nội.',
       url: `${SITE}blog/`,
-      isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE },
+      isPartOf: websiteRef(),
       mainEntity: {
         '@type': 'ItemList',
         name: 'Nhóm chủ đề chính',
@@ -257,18 +314,7 @@ ${jsonLd({
           '@type': 'ListItem', position: i + 1, name: c.name, url: `${SITE}blog/${c.dir}/`
         }))
       }
-    })}
-  </script>
-  <script type="application/ld+json">
-${jsonLd({
-      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Agent', item: SITE },
-        { '@type': 'ListItem', position: 2, name: 'Cẩm nang', item: `${SITE}blog/` }
-      ]
-    })}
-  </script>
-`
+    }) + ldScript(breadcrumbLd([{ name: 'Agent', item: SITE }, { name: 'Cẩm nang', item: `${SITE}blog/` }]))
   });
   write('blog/index.html', html);
 }
@@ -338,6 +384,7 @@ ${pillars.map((a) => `          <li><a href="/blog/${hub.dir}/${a.slug}/">${esc(
       ...(pageNo > 1 ? [{ label: `Trang ${pageNo}`, href: null }] : [])];
     const content = breadcrumb(clusterTrail(cluster, trail))
       + screenHead({ label: 'Danh mục', title: hub.name, lead: hub.desc })
+      + `      <p class="hub-stats">${count(articles.length)} bài${pages.length > 1 ? ` · trang ${pageNo}/${pages.length}` : ''}</p>\n`
       + hubParentBlock(cluster)
       + (hub.intro ? `      <p class="blog-screen-lead">${esc(hub.intro)}</p>\n` : '')
       + categoryChips({ activeHub: hub.dir })
@@ -350,7 +397,7 @@ ${chips}
 ${cards}
       </div>
 ${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a href="/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
-` : ''}${hubClusterFooter(cluster)}${askAgentAction(hub.name)}`;
+` : ''}${hubClusterFooter(cluster)}${askAgentAction(hub.name, hub.id)}`;
 
     // Paginated pages keep a unique meta description (no duplicate meta).
     const description = pageNo === 1 ? hub.meta : `${hub.meta} Trang ${pageNo}.`;
@@ -362,27 +409,18 @@ ${nav}${sibling ? `      <p class="blog-hub-sibling">Chủ đề liên quan: <a 
       activeHub: hub.dir,
       activeCluster: cluster.dir,
       contentHtml: content,
-      schemaHtml: `  <script type="application/ld+json">
-${jsonLd({
+      schemaHtml: ldScript({
         '@context': 'https://schema.org', '@type': 'CollectionPage',
         name: hub.name, description, url: `${SITE}${path}`,
         inLanguage: 'vi-VN',
-        isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE },
+        isPartOf: websiteRef(),
         mainEntity: {
           '@type': 'ItemList',
           name: `${hub.name} — bài viết`,
           itemListElement: pages[p].map((a, i) => ({ '@type': 'ListItem', position: p * PER_PAGE + i + 1, name: a.title, url: `${SITE}blog/${hub.dir}/${a.slug}/` }))
         }
-      })}
-  </script>
-  <script type="application/ld+json">
-${jsonLd({
-        '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-        itemListElement: clusterTrailSchema(cluster, [{ label: hub.label, itemPath: `blog/${hub.dir}/` },
-          ...(pageNo > 1 ? [{ label: `Trang ${pageNo}`, itemPath: path }] : [])]).map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
-      })}
-  </script>
-`
+      }) + ldScript(breadcrumbLd(clusterTrailSchema(cluster, [{ label: hub.label, itemPath: `blog/${hub.dir}/` },
+        ...(pageNo > 1 ? [{ label: `Trang ${pageNo}`, itemPath: path }] : [])])))
     });
     if (pageNo === 1) write(`blog/${hub.dir}/index.html`, html);
     else write(`blog/${hub.dir}/page/${pageNo}/index.html`, html);
@@ -396,10 +434,11 @@ function buildSubtopic(hub, sub, articles) {
   const cluster = CLUSTER_BY_ID[hub.cluster];
   const content = breadcrumb(clusterTrail(cluster, [{ label: hub.label, href: `/blog/${hub.dir}/` }, { label: sub.label, href: null }]))
     + screenHead({ label: hub.label, title: sub.label, lead: hub.desc })
-    + `      <div class="blog-grid">
+    + `      <p class="hub-stats">${count(articles.length)} bài</p>
+      <div class="blog-grid">
 ${cards}
       </div>
-${askAgentAction(`${sub.label} — ${hub.name}`)}`;
+${askAgentAction(`${sub.label} — ${hub.name}`, hub.id)}`;
 
   const html = appShellPage({
     title: `${sub.label} — ${hub.name} — Cẩm nang thuê xe máy`,
@@ -414,28 +453,19 @@ ${askAgentAction(`${sub.label} — ${hub.name}`)}`;
     // + BreadcrumbList whose trail EXACTLY matches the visible breadcrumb
     // (Agent › Cẩm nang › parent hub › silo › subtopic), derived from the
     // same clusterTrailSchema helper as hubs/articles — no self-conflict.
-    schemaHtml: `  <script type="application/ld+json">
-${jsonLd({
+    schemaHtml: ldScript({
       '@context': 'https://schema.org', '@type': 'CollectionPage',
       name: sub.label, description: `${sub.label} trong ${hub.name.toLowerCase()}`, url: `${SITE}blog/${hub.dir}/${sub.slug}/`,
-      isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE },
+      isPartOf: websiteRef(),
       mainEntity: {
         '@type': 'ItemList',
         name: `${sub.label} — bài viết`,
         itemListElement: articles.map((a, i) => ({ '@type': 'ListItem', position: i + 1, name: a.title, url: `${SITE}blog/${hub.dir}/${a.slug}/` }))
       }
-    })}
-  </script>
-  <script type="application/ld+json">
-${jsonLd({
-      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-      itemListElement: clusterTrailSchema(cluster, [
-        { label: hub.label, itemPath: `blog/${hub.dir}/` },
-        { label: sub.label, itemPath: `blog/${hub.dir}/${sub.slug}/` }
-      ]).map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
-    })}
-  </script>
-`
+    }) + ldScript(breadcrumbLd(clusterTrailSchema(cluster, [
+      { label: hub.label, itemPath: `blog/${hub.dir}/` },
+      { label: sub.label, itemPath: `blog/${hub.dir}/${sub.slug}/` }
+    ])))
   });
   write(`blog/${hub.dir}/${sub.slug}/index.html`, html);
 }
@@ -491,14 +521,15 @@ function buildClusterHub(cluster, published) {
   const cats = cluster.categories.map((id) => HUB_BY_ID[id]);
   const clusterArticles = published.filter((a) => cluster.categories.includes(a.category));
 
-  const catCards = cats.map((hub) => {
-    const navItem = navigation.categories.find((n) => n.id === hub.id);
+  const catCards = cats.map((hub, i) => {
+    const total = published.filter((a) => a.category === hub.id).length;
     const top = published.filter((a) => a.category === hub.id).slice(0, 3);
     const topCards = top.map((a) => card(a, hub)).join('\n');
     return `      <section class="blog-cluster-child">
         <a class="blog-cat-card" href="/blog/${hub.dir}/">
-          <span class="cat-icon" aria-hidden="true">${navItem.icon}</span>
+          <span class="cat-icon" aria-hidden="true">${idx(i)}</span>
           <strong>${esc(hub.label)}</strong>
+          <span class="cat-count">${count(total)} bài</span>
           <span>${esc(hub.desc)}</span>
         </a>
 ${topCards ? `        <div class="blog-grid">
@@ -522,7 +553,7 @@ ${catCards}
 ${latestCards || '          <p class="blog-empty">Chưa có bài đã xuất bản trong nhóm này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>'}
         </div>
       </section>
-${hubClusterFooter(cluster)}${askAgentAction(cluster.name)}`;
+${hubClusterFooter(cluster)}${askAgentAction(cluster.name, cluster.categories[0])}`;
   const itemList = [
     ...cats.map((hub) => ({ '@type': 'ListItem', position: cats.indexOf(hub) + 1, name: hub.name, url: `${SITE}blog/${hub.dir}/` })),
     ...clusterArticles.slice(0, 10).map((a, i) => ({ '@type': 'ListItem', position: cats.length + 1 + i, name: a.title, url: `${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/` }))
@@ -534,21 +565,12 @@ ${hubClusterFooter(cluster)}${askAgentAction(cluster.name)}`;
     screen: `cluster-${cluster.dir}`,
     activeCluster: cluster.dir,
     contentHtml: content,
-    schemaHtml: `  <script type="application/ld+json">
-${jsonLd({
+    schemaHtml: ldScript({
       '@context': 'https://schema.org', '@type': 'CollectionPage',
       name: cluster.name, description: cluster.meta, url: `${SITE}${path}`,
-      isPartOf: { '@type': 'WebSite', name: 'MotoAI — Cẩm nang thuê xe máy & xe điện', url: SITE },
+      isPartOf: websiteRef(),
       mainEntity: { '@type': 'ItemList', name: `${cluster.name} — danh mục và bài viết`, itemListElement: itemList }
-    })}
-  </script>
-  <script type="application/ld+json">
-${jsonLd({
-      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-      itemListElement: clusterTrailSchema(cluster).map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
-    })}
-  </script>
-`
+    }) + ldScript(breadcrumbLd(clusterTrailSchema(cluster)))
   });
   write(`${path}index.html`, html);
 }
@@ -557,13 +579,12 @@ ${jsonLd({
  * Build the article screen. v58 editorial upgrades: quick-answer summary box,
  * deterministic reading time (words/200, ceil), TOC, related articles.
  */
-function buildArticle(a, business, hub, published, row, links, byId, reviews = {}) {
+function buildArticle(a, business, hub, published, row, links, byId, reviews = {}, linkPages, pricing) {
   const bodyRaw = read(a.body);
-  const linkPages = new Set(published.map((entry) => `blog/${HUB_BY_ID[entry.category].dir}/${entry.slug}/index.html`));
   const body = canonicalIndexLinks(normalizeInternalAnchors(resolveFacts(bodyRaw, business),
     `blog/${hub.dir}/${a.slug}/index.html`, (path) => linkPages.has(path)));
   const { html: bodyWithIds, items } = buildToc(body);
-  const toc = tocHtml(items);
+  const toc = feature('toc') ? tocHtml(items) : { markup: '' };
   const path = `blog/${hub.dir}/${a.slug}/`;
   // v70: a reviewed body (tools/seo-body-review.mjs) carries its review date.
   const modified = reviews[a.article_id]?.reviewed > a.published_date ? reviews[a.article_id].reviewed : null;
@@ -576,7 +597,7 @@ function buildArticle(a, business, hub, published, row, links, byId, reviews = {
   // planned corpus-wide by tools/seo-links.mjs (inbound-balanced).
   const plan = links.get(a.article_id);
   const cardOf = (id) => { const x = byId.get(id); return card(x, HUB_BY_ID[x.category], 3); };
-  const related = plan.related.map(cardOf).join('\n');
+  const related = feature('related') ? plan.related.map(cardOf).join('\n') : '';
   const relatedSection = related ? `      <section class="blog-related">
         <h2>${esc(BLOG_UI.related.title)}</h2>
         <div class="blog-grid">
@@ -585,7 +606,7 @@ ${related}
       </section>
 ` : '';
   // v70: the topic family (pillar + supporting articles of the same seed).
-  const familySection = plan.family.length ? `      <section class="blog-family" aria-label="${esc(BLOG_UI.family.title)}">
+  const familySection = plan.family.length && feature('family') ? `      <section class="blog-family" aria-label="${esc(BLOG_UI.family.title)}">
         <h2>${esc(BLOG_UI.family.title)}</h2>
         <ul class="blog-family-list">
 ${plan.family.map((id) => {
@@ -611,7 +632,7 @@ ${plan.family.map((id) => {
 
   // v61 §8: topic context near the article end — the article states BOTH its
   // parent hub and its child hub as crawlable links.
-  const topicContext = `      <section class="blog-topic-context">
+  const topicContext = feature('topicContext') ? `      <section class="blog-topic-context">
         <h2>Bài viết thuộc</h2>
         <p>
           <a href="/blog/${cluster.dir}/">${esc(cluster.name)}</a>
@@ -619,25 +640,35 @@ ${plan.family.map((id) => {
           <a href="/blog/${hub.dir}/">${esc(hub.label)}</a>
         </p>
       </section>
-`;
+` : '';
+  // The description is shown ONCE — as the standfirst summary card (it used
+  // to repeat verbatim as the dek above it).
+  const summary = feature('summary') ? `      <div class="blog-summary" role="note">
+        <p class="blog-summary-title">${esc(BLOG_UI.summary.title)}</p>
+        <p>${esc(a.description)}</p>
+      </div>
+` : '';
+  const slotCtx = { category: a.category, pricing };
 
+  // .article-intro groups head + standfirst + slot so the desktop grid can
+  // run the TOC rail from the breadcrumb down beside a fixed set of rows.
   const content = breadcrumb(crumbTrail)
-    + `      <p class="blog-chips">
+    + `      <div class="article-intro">
+      <div class="article-head">
+      <p class="blog-chips">
         <a class="blog-chip" href="/blog/${hub.dir}/">${esc(hub.label)}</a>${subHubUrl ? `
         <a class="blog-chip" href="${subHubUrl}">${esc(sub.label)}</a>` : ''}
         <a class="blog-chip blog-chip-parent" href="/blog/${cluster.dir}/">${esc(cluster.name)}</a>
       </p>
-${screenHead({ label: hub.label, title: a.title, lead: a.description })}      <p class="byline"><a href="/gioi-thieu/" class="byline-author">${esc(a.author)}</a> · ${a.published_date}${modified ? ` · cập nhật ${modified}` : ''} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
-      <div class="blog-summary" role="note">
-        <p class="blog-summary-title">${esc(BLOG_UI.summary.title)}</p>
-        <p>${esc(a.description)}</p>
+${screenHead({ label: null, title: a.title, lead: feature('summary') ? null : a.description })}      <p class="byline"><a href="/gioi-thieu/" class="byline-author">${esc(a.author)}</a> · ${a.published_date}${modified ? ` · cập nhật ${modified}` : ''} · ${esc(hub.label)} · ${readingTime(body)} phút đọc</p>
       </div>
+${summary}${renderSlot('article.afterSummary', slotCtx)}      </div>
       <div class="blog-article-layout">
 ${toc.markup}        <article class="blog-article-body">
   ${bodyWithIds.trim().split('\n').join('\n  ')}
         </article>
       </div>
-${topicContext}${familySection}${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.title)}`;
+${renderSlot('article.afterBody', slotCtx)}${topicContext}${familySection}${relatedSection}${hubClusterFooter(cluster)}${askAgentAction(a.title, a.category)}`;
 
   const html = appShellPage({
     title: a.title,
@@ -648,8 +679,7 @@ ${topicContext}${familySection}${relatedSection}${hubClusterFooter(cluster)}${as
     activeHub: hub.dir,
     activeCluster: cluster.dir,
     contentHtml: content,
-    schemaHtml: `  <script type="application/ld+json">
-${jsonLd({
+    schemaHtml: ldScript({
       '@context': 'https://schema.org',
       '@type': 'Article',
       url: `${SITE}${path}`,
@@ -660,20 +690,12 @@ ${jsonLd({
       inLanguage: 'vi-VN',
       articleSection: hub.name,
       ...(a.seo_keyword ? { keywords: a.seo_keyword } : {}),
-      image: `${SITE}assets/icons/icon-512.png`,
+      image: `${SITE}${BLOG_UI.site.ogImage.path}`,
       author: { '@type': 'Organization', name: a.author, url: `${SITE}gioi-thieu/` },
       publisher: publisherSchema(business),
       mainEntityOfPage: `${SITE}${path}`,
       isAccessibleForFree: true
-    })}
-  </script>
-  <script type="application/ld+json">
-${jsonLd({
-      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-      itemListElement: breadcrumbSchema.map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
-    })}
-  </script>
-`
+    }) + ldScript(breadcrumbLd(breadcrumbSchema))
   });
   write(`blog/${hub.dir}/${a.slug}/index.html`, html);
 }
@@ -686,7 +708,7 @@ function publisherSchema(business) {
     '@id': `${SITE}#organization`,
     name: business.display_name,
     url: SITE,
-    logo: { '@type': 'ImageObject', url: `${SITE}assets/icons/icon-512.png`, width: 512, height: 512 },
+    logo: { '@type': 'ImageObject', url: `${SITE}${BLOG_UI.site.ogImage.path}`, width: BLOG_UI.site.ogImage.width, height: BLOG_UI.site.ogImage.height },
     sameAs: [business.url]
   };
 }
@@ -731,17 +753,11 @@ ${askAgentAction(title)}`;
     screen,
     activeHub: dir,
     contentHtml: content,
-    schemaHtml: `  <script type="application/ld+json">
-${jsonLd({
+    schemaHtml: ldScript({
       '@context': 'https://schema.org', '@type': 'WebPage',
       name: title, description, url: `${SITE}${dir}/`,
-      isPartOf: { '@type': 'WebSite', name: 'MotoAI', url: SITE }
-    })}
-  </script>
-${extraSchema.map((o) => `  <script type="application/ld+json">
-${jsonLd(o)}
-  </script>
-`).join('')}`
+      isPartOf: websiteRef()
+    }) + extraSchema.map(ldScript).join('')
   });
   write(`${dir}/index.html`, html);
 }
@@ -762,6 +778,8 @@ function matrixRows() {
 }
 
 export function build() {
+  // Served stylesheet first: every page below links it by content hash.
+  buildCss(ROOT);
   const business = JSON.parse(read('data/business/business.json'));
   const manifest = JSON.parse(read('data/blog/published.json'));
   const matrix = matrixRows();
@@ -791,7 +809,13 @@ export function build() {
   const pillarsOf = (cat) => published.filter((a) => a.category === cat && links.get(a.article_id).pillar === a.article_id);
   const updated = published.reduce((m, a) => a.published_date > m ? a.published_date : m, '2026-09-26');
 
-  buildHome(published);
+  // Reading time once per article (cards and byline share the number).
+  MINUTES.clear();
+  for (const a of published) MINUTES.set(a.article_id, readingTime(resolveFacts(read(a.body), business)));
+  const linkPages = new Set(published.map((entry) => `blog/${HUB_BY_ID[entry.category].dir}/${entry.slug}/index.html`));
+  const pricing = JSON.parse(read('data/business/pricing.json'));
+
+  buildHome(published, business);
   for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published);
   const categoryPages = HUBS.flatMap((hub) => buildHub(hub, published, subtopicCounts(published, matrix), pillarsOf(hub.id)));
   const subtopicPages = [];
@@ -811,7 +835,7 @@ export function build() {
     }
   }
   const reviews = existsSync(join(ROOT, 'data/seo/body-reviews.json')) ? JSON.parse(read('data/seo/body-reviews.json')).reviews : {};
-  for (const a of published) buildArticle(a, business, HUB_BY_ID[a.category], published, matrix[a.article_id], links, byId, reviews);
+  for (const a of published) buildArticle(a, business, HUB_BY_ID[a.category], published, matrix[a.article_id], links, byId, reviews, linkPages, pricing);
 
   // Legal screens — inside the SAME app shell (v57).
   buildLegal({
@@ -964,9 +988,10 @@ function buildPrice(business) {
     .slice()
     .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
     .map((v) => {
+      // data-label powers the phone layout (each row becomes a spec card).
       const cells = pricing.rental_types.map((rt) => {
         const r = rate(v.rates[rt.id]);
-        return `<td>${r ?? 'Xác nhận trực tiếp'}</td>`;
+        return `<td data-label="${esc(rt.name)}"${r ? '' : ' class="is-confirm"'}>${r ?? 'Xác nhận trực tiếp'}</td>`;
       }).join('');
       return `        <tr>
           <th scope="row">${esc(v.name)}<span class="blog-price-note">${esc(v.category)}</span></th>
@@ -980,8 +1005,8 @@ ${cells}
       title: 'Bảng giá thuê xe',
       lead: 'Giá tham khảo theo loại xe và thời gian thuê. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.'
     })
-    + `      <div class="table-wrap">
-        <table class="blog-table">
+    + `      <div class="table-wrap price-wrap">
+        <table class="blog-table price-table">
           <caption class="visually-hidden">Bảng giá thuê xe theo ngày, tuần và tháng</caption>
           <thead>
             <tr>
@@ -1008,14 +1033,11 @@ ${askAgentAction('giá thuê xe')}`;
     screen: 'price',
     activeHub: 'gia-thue',
     contentHtml: content,
-    schemaHtml: `  <script type="application/ld+json">
-${jsonLd({
+    schemaHtml: ldScript({
       '@context': 'https://schema.org', '@type': 'WebPage',
       name: 'Bảng giá thuê xe', description: pricing.disclaimer, url: `${SITE}gia-thue/`,
-      isPartOf: { '@type': 'WebSite', name: 'MotoAI', url: SITE }
-    })}
-  </script>
-`
+      isPartOf: websiteRef()
+    })
   });
   write('gia-thue/index.html', html);
 }

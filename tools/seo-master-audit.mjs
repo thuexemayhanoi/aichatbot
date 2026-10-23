@@ -196,9 +196,10 @@ export function crawl(root = ROOT) {
       desc: decode(first(/<meta name="description" content="([^"]*)"/, html)),
       canonical: first(/<link rel="canonical" href="([^"]+)"/, html),
       noindex: /<meta[^>]+name="(?:robots|googlebot)"[^>]+noindex/i.test(html),
-      // Every head meta must be exactly <meta name|property="x" content="...">.
+      // Every head meta must be exactly <meta name|property="x" content="...">
+      // (v72: theme-color may add a media="(prefers-color-scheme: …)" query).
       attrBroken: [...html.slice(0, html.indexOf('</head>')).matchAll(/<meta [^\n]*/g)]
-        .some((m) => /content="/.test(m[0]) && !/^<meta (?:name|property)="[^"]+" content="[^"]*"\s*\/?>$/.test(m[0].trim())),
+        .some((m) => /content="/.test(m[0]) && !/^<meta (?:name|property)="[^"]+" content="[^"]*"(?: media="[^"]*")?\s*\/?>$/.test(m[0].trim())),
       h1: [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => textOf(m[1])),
       schemas,
       types: schemas.map((s) => s['@type']),

@@ -93,7 +93,7 @@ test('every generated page has well-formed head meta attributes (escaped quotes,
     const head = read(p).split('</head>')[0];
     for (const m of head.matchAll(/<meta [^\n]*/g)) {
       if (!/content="/.test(m[0])) continue;
-      assert.match(m[0].trim(), /^<meta (?:name|property)="[^"]+" content="[^"]*"\s*\/?>$/, `${p}: malformed ${m[0]}`);
+      assert.match(m[0].trim(), /^<meta (?:name|property)="[^"]+" content="[^"]*"(?: media="[^"]*")?\s*\/?>$/, `${p}: malformed ${m[0]}`);
     }
   }
 });

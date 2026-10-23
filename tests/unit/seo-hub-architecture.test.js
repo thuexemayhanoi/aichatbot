@@ -136,7 +136,7 @@ test('blog home: THREE primary hub sections with linked H2 + child pills + lates
   const home = read('blog/index.html');
   for (const c of taxonomy.clusters) {
     assert.ok(home.includes(`<section class="blog-hub-section" aria-label="`), 'semantic <section>');
-    assert.ok(unesc(home).includes(`<h2><a href="/blog/${c.dir}/">${c.icon} ${c.name}</a></h2>`), `linked H2 ${c.name}`);
+    assert.ok(unesc(home).includes(`<h2><a href="/blog/${c.dir}/">${c.name}</a></h2>`), `linked H2 ${c.name}`);
     assert.ok(unesc(home).includes(`Xem toàn bộ ${c.name} →`), `CTA ${c.name}`);
     for (const id of c.categories) {
       assert.ok(home.includes(`href="/blog/${taxonomy.categories[id].dir}/"`), `child pill ${id}`);

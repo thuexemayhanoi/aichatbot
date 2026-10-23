@@ -123,17 +123,15 @@ document.addEventListener('click', (event) => {
   if (!event.target.closest('.site-nav')) closeDropitems(null);
 });
 
-// --- v60 scroll diagnostic (tiny, dev-friendly) ---
-// On the owner's iPhone: open the page, and the console shows whether the
-// document scrolls past the viewport and the footer is reachable.
-window.addEventListener('load', () => {
-  const doc = document.documentElement;
-  const footer = document.querySelector('.blog-footer');
-  const maxScrollY = Math.max(0, doc.scrollHeight - window.innerHeight);
-  console.info(
-    `[MotoAI] build=${document.querySelector('meta[name="motoai-build"]')?.content}` +
-    ` scrollHeight=${doc.scrollHeight} innerHeight=${window.innerHeight}` +
-    ` maxScrollY=${maxScrollY}` +
-    ` footer=${footer ? 'present, bottom at ' + Math.round(footer.getBoundingClientRect().top + window.scrollY) : 'MISSING'}`
-  );
-});
+// --- v72 TOC wayfinding: mark the section being read in the desktop rail ---
+const tocLinks = [...document.querySelectorAll('.blog-toc-desktop a[href^="#"]')];
+if (tocLinks.length && 'IntersectionObserver' in window) {
+  const byId = new Map(tocLinks.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
+  const spy = new IntersectionObserver((entries) => {
+    const hit = entries.find((e) => e.isIntersecting);
+    if (!hit) return;
+    for (const a of tocLinks) a.removeAttribute('aria-current');
+    byId.get(hit.target.id)?.setAttribute('aria-current', 'true');
+  }, { rootMargin: '0px 0px -70% 0px' });
+  for (const id of byId.keys()) { const h = document.getElementById(id); if (h) spy.observe(h); }
+}

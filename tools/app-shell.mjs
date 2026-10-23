@@ -1,51 +1,54 @@
 #!/usr/bin/env node
 /**
- * MotoAI CONTENT SITE SHELL (v63) — the ONE source of truth for every
- * generated content page (blog home, parent cluster hubs, category hubs,
- * subtopic hubs, articles, search, static pages, privacy, terms).
+ * MotoAI CONTENT SITE SHELL — the ONE source of truth for every generated
+ * content page (blog home, parent cluster hubs, category hubs, subtopic
+ * hubs, articles, search, static pages, privacy, terms).
  *
- * Product model (final):
- *   /        = CHAT HOMEPAGE — the app screen (own shell in
+ * Product model:
+ *   /                  = CHAT HOMEPAGE — the app screen (own shell in
  *                        index.html, no footer, Menu on the right).
- *   every other page   = NORMAL professional content website page that
- *                        consumes THIS shell: compact site header
- *                        (identity left, category nav center on desktop,
- *                        search/theme/Menu RIGHT), main content column and
- *                        a real footer generated from config/navigation.json.
- * Same brand, colors, typography, theme tokens — different page purpose.
- * No chat dock, no chat-window look on content pages.
+ *   every other page   = content website page that consumes THIS shell:
+ *                        sticky site header (identity left, hub nav center
+ *                        on desktop, search/theme/Menu RIGHT), main content
+ *                        column, page-ending contact band and a real footer
+ *                        generated from config/navigation.json.
  *
- * Navigation/footer vocabulary comes from config/navigation.json via
- * tools/taxonomy.mjs — labels are never copy/pasted per page.
- * v63: the drawer is rendered from taxonomy.drawerCore() (the SAME core
- * menu the chat homepage must match) and the footer gains a brand block +
- * verified business bottom bar (data/business/business.json).
+ * Single sources (change one, every page follows on the next build):
+ *   config/blog-ui.json        site identity, feature flags, CTA, slots
+ *   config/navigation.json     header, drawer and footer vocabulary
+ *   data/business/*.json       NAP, hours, contact, pricing
+ *   assets/css/blog.css        design tokens (color, type, space, motion)
+ *   tools/blog-components.mjs  icons, brand mark, contact band, slots
+ * Asset URLs carry a content hash (?v=<digits>), so editing a stylesheet or
+ * script busts browser + service-worker caches on every page automatically.
  */
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { navigation, taxonomy, clusterNav, drawerCore } from './taxonomy.mjs';
-import { BLOG_UI, bannerSlot } from './blog-components.mjs';
+import { BLOG_UI, bannerSlot, esc, feature, icon, brandMark, contactBand, renderSlot } from './blog-components.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BUSINESS = JSON.parse(readFileSync(join(ROOT, 'data/business/business.json'), 'utf8'));
 
 import { SITE } from '../src/config/site.js';
-export { SITE };
+export { SITE, esc };
 
-/** Build/cache version: bumped every release that changes shell CSS/JS so
- *  iOS Safari can never keep serving a stale v62 asset. */
-export const BUILD_VERSION = 'v66';
+/** Build marker (page diagnostics). Cache busting no longer depends on it:
+ *  every asset URL carries its own content hash (assetVersion). */
+export const BUILD_VERSION = 'v72';
 
-/** Escape for HTML text AND double-quoted attribute contexts (titles,
- *  descriptions, names). v70: also escapes `"` — 133 manifest descriptions
- *  quote a question ("Trong phố được chạy bao nhiêu?"…) and an unescaped
- *  quote silently broke <meta name="description" content="…">. */
-export const esc = (s) => String(s)
-  .replace(/&(?![a-z]+;|#)/gi, '&amp;')
-  .replace(/"/g, '&quot;')
-  .replace(/</g, '&lt;')
-  .replace(/>/g, '&gt;');
+const versions = new Map();
+/** Deterministic numeric content hash of a repo file (digits only, so the
+ *  `?v=\d+` cache contract holds). Same bytes → same URL → CI-stable. */
+export function assetVersion(file) {
+  if (!versions.has(file)) {
+    const hex = createHash('sha256').update(readFileSync(join(ROOT, file))).digest('hex');
+    versions.set(file, String(parseInt(hex.slice(0, 8), 16)));
+  }
+  return versions.get(file);
+}
 
 /** Relative asset prefix from a page path back to repo root. */
 export function rel(path) {
@@ -59,8 +62,11 @@ const NO_FLASH_THEME = `<script>/* apply saved theme before first paint (no flas
 export function pageHead({ title, description, path, ogType = 'website' }) {
   const url = SITE + path.replace(/^\//, '');
   const prefix = rel(path);
+  const site = BLOG_UI.site;
+  const og = site.ogImage;
+  const css = (file) => `  <link rel="stylesheet" href="${prefix}${file}?v=${assetVersion(file)}">`;
   return `<!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-motion="${feature('motion') ? 'on' : 'off'}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -68,65 +74,64 @@ export function pageHead({ title, description, path, ogType = 'website' }) {
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
   <link rel="canonical" href="${url}">
-  <meta name="theme-color" content="#4f46e5">
+  <meta name="theme-color" content="${site.themeColor.light}" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="${site.themeColor.dark}" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
   <meta property="og:type" content="${ogType}">
-  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy & xe điện">
+  <meta property="og:site_name" content="${esc(site.name)}">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:url" content="${url}">
-  <meta property="og:image" content="${SITE}assets/icons/icon-512.png">
-  <meta property="og:image:width" content="512">
-  <meta property="og:image:height" content="512">
-  <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
+  <meta property="og:image" content="${SITE}${og.path}">
+  <meta property="og:image:width" content="${og.width}">
+  <meta property="og:image:height" content="${og.height}">
+  <meta property="og:image:alt" content="${esc(og.alt)}">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
-  <meta name="twitter:image" content="${SITE}assets/icons/icon-512.png">
-  <link rel="stylesheet" href="${prefix}assets/css/style.css?v=66">
-  <link rel="stylesheet" href="${prefix}assets/css/blog.css?v=66">
+  <meta name="twitter:image" content="${SITE}${og.path}">
+${css('assets/css/style.css')}
+${css('assets/css/blog.css')}
   ${NO_FLASH_THEME}
 </head>
 <body class="content-page">
 `;
 }
 
+/** Desktop dropdown entry: index numeral + label. Category descriptions
+ *  stay on the hub pages — repeating them in the chrome of every page would
+ *  only add boilerplate text (and unqualified "đặt cọc" claims) site-wide. */
+function dropItem(ch, i, activeHub) {
+  return `            <a href="/blog/${ch.dir}/"${ch.dir === activeHub ? ' aria-current="page"' : ''}><span class="drop-idx">${String(i + 1).padStart(2, '0')}</span><span class="drop-label">${esc(ch.label)}</span></a>`;
+}
+
 /**
- * Shared content-site header. LEFT: MotoAI / Hỗ trợ Agent identity (link
- * back to the chat homepage). CENTER (>= 900px): Cẩm nang + the six
- * categories. RIGHT: search, theme toggle and Menu — always the LAST
- * element of the .site-actions group (flex margin-left:auto keeps the
- * group right-aligned). The business open/closed status is a SEPARATE
- * flex child of .site-header-inner AFTER .site-actions: on mobile it
- * wraps onto its own full-width row under the header (v63 iPhone fix —
- * it can never squeeze itself between the brand and the Menu button),
- * on desktop it is a small muted line next to the actions.
+ * Shared content-site header. LEFT: brand mark + MotoAI / Hỗ trợ Agent
+ * (link back to the chat homepage). CENTER (>= 900px): Cẩm nang + the three
+ * parent hubs with category dropdowns. RIGHT: search, theme toggle and
+ * Menu — always the LAST element of .site-actions. The open/closed status
+ * is a SEPARATE flex child after .site-actions (own row on mobile).
  */
-function siteHeader({ activeHub, activeCluster }) {
-  // v61: the desktop menu prioritizes the 3 PARENT SEO HUBS. Each parent
-  // label is a REAL crawlable <a>; its child categories live in a glass
-  // dropdown opened by CSS :hover/:focus-within plus a small touch toggle
-  // (app-shell.js). activeHub = category dir; a child page also highlights
-  // its parent hub (activeCluster or child match).
+function siteHeader({ activeHub, activeCluster, progress }) {
   const hubItems = taxonomy.clusters.map((c) => {
     const hub = clusterNav(c.id);
     const hubActive = c.dir === activeCluster || hub.children.some((ch) => ch.dir === activeHub);
-    const kids = hub.children.map((ch) =>
-      `            <a href="/blog/${ch.dir}/"${ch.dir === activeHub ? ' aria-current="page"' : ''}>${ch.icon} ${esc(ch.label)}</a>`).join('\n');
     return `        <div class="site-nav-item"${hubActive ? ' data-active="1"' : ''}>
-          <a class="site-nav-parent" href="${hub.url}" aria-haspopup="true"${hubActive ? ' aria-current="page"' : ''}>${hub.icon} ${esc(hub.name)} <span class="site-nav-caret" aria-hidden="true">▾</span></a>
+          <a class="site-nav-parent" href="${hub.url}" aria-haspopup="true"${hubActive ? ' aria-current="page"' : ''}>${esc(hub.name)}${icon('caret', 'site-nav-caret')}</a>
           <div class="site-nav-drop">
-${kids}
+${hub.children.map((ch, i) => dropItem(ch, i, activeHub)).join('\n')}
           </div>
         </div>`;
   }).join('\n');
+  const site = BLOG_UI.site;
   return `    <header class="site-header">
       <div class="site-header-inner">
-        <a class="site-brand" href="/" aria-label="MotoAI — về màn hình Agent">
-          <span class="site-brand-mark" aria-hidden="true">🏍️</span>
+        <a class="site-brand" href="/" aria-label="${esc(site.shortName)} — về màn hình Agent">
+          <span class="site-brand-mark" aria-hidden="true">${brandMark()}</span>
           <span class="site-brand-text">
-            <strong>MotoAI</strong>
-            <span>Hỗ trợ Agent</span>
+            <strong>${esc(site.shortName)}</strong>
+            <span>${esc(site.tagline)}</span>
           </span>
         </a>
         <nav class="site-nav" aria-label="Chuyên mục">
@@ -134,13 +139,13 @@ ${kids}
 ${hubItems}
         </nav>
         <div class="site-actions">
-          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">🔎</a>
+          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">${icon('search')}</a>
           <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
-          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer">☰ <span class="motoai-menu-label">Menu</span></button>
+          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer"><span class="menu-lines" aria-hidden="true"></span> <span class="motoai-menu-label">Menu</span></button>
         </div>
         <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
       </div>
-    </header>
+${progress && feature('readingProgress') ? '      <span class="read-progress" aria-hidden="true"></span>\n' : ''}    </header>
 `;
 }
 
@@ -148,8 +153,7 @@ ${hubItems}
  * Menu drawer — rendered from config/navigation.json via taxonomy.drawerCore()
  * (v63): the SAME order/labels/icons/links/accordion structure as the chat
  * homepage drawer. Chat-only extras (divider + Xóa chat) are intentionally
- * NOT rendered here. Actions link to real pages or open the Agent flow;
- * contact refs are resolved at runtime from verified business.json.
+ * NOT rendered here. Contact refs are resolved at runtime from business.json.
  */
 function siteDrawer({ activeHub, activeCluster }) {
   const isActiveLink = (url) => {
@@ -195,7 +199,7 @@ ${entry.children.map((child) => renderItem(child)).join('\n')}
   return `  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
   <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
     <div class="motoai-drawer-head">
-      <strong>MotoAI</strong>
+      <strong>${esc(BLOG_UI.site.shortName)}</strong>
       <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
     </div>
     <ul class="motoai-drawer-list">
@@ -205,14 +209,12 @@ ${listHtml}
 `;
 }
 
-/** Real site footer (v63): brand block (🏍️ MotoAI · Hỗ trợ Agent + short
- *  description + ⚡ Hỏi Agent CTA), link columns from
- *  config/navigation.json (column 1 = MOTOAI, columns 2–4 = each parent
- *  hub + its child categories expanded from taxonomy.json via the "hub"
- *  field, then a compact secondary row for Dịch vụ + Pháp lý) and a
- *  verified business bottom bar (address + hours from
- *  data/business/business.json — never hard-coded, never 24/7).
- *  Every entry is a real crawlable <a>. */
+/** Real site footer: brand block (mark + MotoAI · Hỗ trợ Agent + short
+ *  description + ⚡ Hỏi Agent CTA), link columns from config/navigation.json
+ *  (column 1 = MOTOAI, columns 2–4 = each parent hub + its child categories
+ *  expanded from taxonomy.json via the "hub" field, then a secondary row for
+ *  Dịch vụ + Pháp lý) and a verified business bottom bar (address + hours
+ *  from data/business/business.json — never hard-coded, never 24/7). */
 export function footerHtml() {
   const primary = [];
   const secondary = [];
@@ -221,10 +223,10 @@ export function footerHtml() {
       const hub = clusterNav(g.hub);
       const kids = hub.children.map((ch) =>
         `            <li class="footer-sub"><a href="/blog/${ch.dir}/">${esc(ch.label)}</a></li>`).join('\n');
-      primary.push(`      <div class="blog-footer-col">
+      primary.push(`      <div class="blog-footer-col is-hub">
         <p class="blog-footer-title">${esc(hub.name)}</p>
         <ul>
-          <li><a class="footer-hub-link" href="${hub.url}">${hub.icon} ${esc(hub.name)}</a></li>
+          <li><a class="footer-hub-link" href="${hub.url}">${esc(hub.name)}</a></li>
 ${kids}
         </ul>
       </div>`);
@@ -250,13 +252,14 @@ ${links}
       </div>`);
     }
   }
+  const site = BLOG_UI.site;
   const brand = BUSINESS.brand;             // "Nguyễn Tú" — verified business.json
-  const address = BUSINESS.address.full;     // "112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội"
+  const address = BUSINESS.address.full;     // verified address
   const hours = BUSINESS.hours.display;      // "09:00 - 21:00"
   return `    <footer class="blog-footer">
       <div class="blog-footer-inner">
         <div class="blog-footer-brand">
-          <p class="blog-footer-brand-name"><span aria-hidden="true">🏍️</span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-brand-name"><span class="blog-footer-mark" aria-hidden="true">${brandMark()}</span> <strong>${esc(site.shortName)}</strong> <span class="blog-footer-agent">· ${esc(site.tagline)}</span></p>
           <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội ${esc(brand)}</p>
           <a class="blog-footer-cta" href="/">${esc(BLOG_UI.cta.footerLabel)}</a>
         </div>
@@ -277,19 +280,17 @@ ${secondary.join('\n')}
 `;
 }
 
-/** Native "Ask Agent" action: returns to the HOME chat screen with the
- *  topic prefilled. Never a giant multi-button marketing CTA box. */
-export function askAgentAction(topic) {
-  const q = encodeURIComponent(topic);
-  return `    <div class="screen-ask">
-      <a class="screen-ask-btn" href="/?ask=${q}">${esc(BLOG_UI.cta.articleLabel)}</a>
-    </div>
-`;
+/** Page-ending action: returns to the HOME chat screen with the topic
+ *  prefilled, plus verified call + one contextual action for the category
+ *  (config/blog-ui.json cta). Slot `page.beforeContactBand` renders first. */
+export function askAgentAction(topic, category = null) {
+  return renderSlot('page.beforeContactBand', { category })
+    + contactBand({ topic, category, business: BUSINESS });
 }
 
 function shellScripts({ search }) {
-  return (search ? `  <script src="/assets/js/blog.js?v=66"></script>\n` : '')
-    + `  <script type="module" src="/assets/js/app-shell.js?v=66"></script>\n`;
+  const js = (file, module = false) => `  <script${module ? ' type="module"' : ''} src="/${file}?v=${assetVersion(file)}"></script>\n`;
+  return (search ? js('assets/js/blog.js') : '') + js('assets/js/app-shell.js', true);
 }
 
 /**
@@ -304,7 +305,7 @@ function shellScripts({ search }) {
  */
 export function appShellPage({ title, description, path, screen, activeHub = null, activeCluster = null, contentHtml, schemaHtml = '', search = false, ogType = 'website' }) {
   return pageHead({ title, description, path, ogType })
-    + siteHeader({ activeHub, activeCluster })
+    + siteHeader({ activeHub, activeCluster, progress: ogType === 'article' })
     + bannerSlot(esc)
     + `  <main class="site-main" id="site-main" data-motoai-screen="${esc(screen)}">
 ${contentHtml}

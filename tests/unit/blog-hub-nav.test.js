@@ -164,20 +164,20 @@ test('v61 URL safety: every hub, child and article URL is unchanged and canonica
   }
 });
 
-// ---------- Liquid Glass CSS contract ----------
+// ---------- Content-site CSS contract (v72 editorial system; supersedes v61 Liquid Glass) ----------
 
-test('v61 Liquid Glass: translucent surfaces + blur + fallback + reduced motion, scoped to content pages', () => {
+test('v72 content CSS: translucent header + fallback, solid dropdown, reduced motion, dark tokens, scoped to content pages', () => {
   const css = read('assets/css/blog.css');
   // Scoped: nothing leaks into the chat homepage shell.
-  assert.ok(!/body\.chat-home\s*\{/.test(css), 'glass CSS never targets the chat homepage');
-  assert.match(css, /body\.content-page \.site-header\s*\{[^}]*backdrop-filter/, 'glass header');
-  assert.match(css, /\.site-nav-drop\s*\{[^}]*backdrop-filter:\s*blur\(18px\)/, 'glass dropdown 18px blur');
-  assert.match(css, /body\.content-page \.blog-card,/, 'glass article cards');
+  assert.ok(!/body\.chat-home\s*\{/.test(css), 'content CSS never targets the chat homepage');
+  assert.match(css, /body\.content-page \.site-header\s*\{[^}]*backdrop-filter/, 'translucent sticky header');
+  assert.match(css, /\.site-nav-drop\s*\{[^}]*backdrop-filter:\s*blur\(18px\)/, 'dropdown panel blur');
+  assert.match(css, /body\.content-page \.blog-card,/, 'shared card surface rule');
   assert.match(css, /@supports not \(\(backdrop-filter: blur\(1px\)\)/, 'solid fallback when backdrop-filter is missing');
   assert.match(css, /prefers-reduced-motion: reduce/, 'reduced-motion respected');
-  assert.match(css, /html\[data-motoai-theme="dark"\] body\.content-page/, 'dark-mode glass tokens');
-  // Article readability: near-opaque reading surface + comfortable type.
-  assert.match(css, /body\.content-page \.blog-article-body\s*\{[^}]*--glass-bg-strong|body\.content-page \.blog-article-body\s*\{[^}]*background:\s*var\(--glass-bg-strong\)/, 'high-opacity reading surface');
+  assert.match(css, /html\[data-motoai-theme="dark"\]\s*\{[^}]*--paper:/, 'dark-mode design tokens');
+  // Article readability: opaque reading surface + comfortable Vietnamese leading.
+  assert.match(css, /body\.content-page \.blog-article-body\s*\{[^}]*background:\s*var\(--reading-bg\)/, 'opaque reading surface');
   assert.match(css, /blog-article-body\s*\{[^}]*line-height:\s*1\.78/, 'line-height ~1.78');
   // No heavy dependencies: pure CSS, no external imports.
   assert.ok(!/@import|url\(https?:/.test(css), 'no external CSS/images');
