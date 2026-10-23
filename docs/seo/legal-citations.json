@@ -3,55 +3,15 @@
  "registry_checked": "2026-10-23",
  "articles_scanned": 318,
  "counts": {
-  "needs_fix": 15,
+  "needs_fix": 4,
   "wrong_suffix": 0,
   "amended": 0,
   "unverified": 10,
   "unknown": 0,
   "documents": 30,
-  "cited_documents": 27
+  "cited_documents": 28
  },
  "needs_fix": [
-  {
-   "article_id": "BA-0041",
-   "slug": "nguoi-nuoc-ngoai-lai-xe-o-viet-nam",
-   "doc": "tt-29-2015-bgtvt",
-   "replaced_by": "tt-108-2026-bca",
-   "replaced_from": "2025-01-01",
-   "evidence": "reported",
-   "mentions": 3,
-   "sample": "Theo Điều 11 Thông tư 29/2015/TT-BGTVT của Bộ Giao thông vận tải, quy định về sử dụng giấy phép lái xe quốc tế, người có IDP do nước tham gia Công ước Viên cấp khi điều khiển xe t…"
-  },
-  {
-   "article_id": "BA-0047",
-   "slug": "idp-va-bang-lai-quoc-te",
-   "doc": "tt-12-2025-bca",
-   "replaced_by": "tt-108-2026-bca",
-   "replaced_from": "2026-07-01",
-   "evidence": "fulltext",
-   "mentions": 5,
-   "sample": "Một điểm mới đáng lưu ý: từ ngày 01/3/2025, Thông tư 12/2025/TT-BCA của Bộ Công an quy định về sát hạch, cấp giấy phép lái xe và cấp, sử dụng giấy phép lái xe quốc tế cho phép cả …"
-  },
-  {
-   "article_id": "BA-0047",
-   "slug": "idp-va-bang-lai-quoc-te",
-   "doc": "tt-29-2015-bgtvt",
-   "replaced_by": "tt-108-2026-bca",
-   "replaced_from": "2025-01-01",
-   "evidence": "reported",
-   "mentions": 2,
-   "sample": "Việt Nam công nhận loại IDP nào, từ khi nào Việt Nam gia nhập Công ước Vienna 1968 về giao thông đường bộ và Công ước về biển báo, tín hiệu đường bộ vào năm 2014, và liên quan trự…"
-  },
-  {
-   "article_id": "BA-0227",
-   "slug": "mua-ban-xe-may-giay-to",
-   "doc": "tt-24-2023-bca",
-   "replaced_by": "tt-79-2024-bca",
-   "replaced_from": "2025-01-01",
-   "evidence": "fulltext",
-   "mentions": 1,
-   "sample": "Theo Thông tư 24/2023/TT-BCA của Bộ Công an, ban hành năm 2023 và áp dụng từ giữa tháng Tám, người mua kê khai giấy khai đăng ký xe, đưa xe đến cơ quan công an quản lý hồ sơ để ki…"
-  },
   {
    "article_id": "BA-0275",
    "slug": "bao-ve-du-lieu-ca-nhan-khi-thue-xe",
@@ -61,16 +21,6 @@
    "evidence": "fulltext",
    "mentions": 6,
    "sample": "Quy định: Nghị định 13/2023/NĐ-CP của Chính phủ quy định chi tiết về bảo vệ dữ liệu cá nhân."
-  },
-  {
-   "article_id": "BA-0509",
-   "slug": "mua-ban-xe-may-giay-to-cho-du-khach",
-   "doc": "tt-24-2023-bca",
-   "replaced_by": "tt-79-2024-bca",
-   "replaced_from": "2025-01-01",
-   "evidence": "fulltext",
-   "mentions": 1,
-   "sample": "Theo Thông tư 24/2023 của Bộ Công an về cấp đăng ký xe, người mua kê khai giấy khai, đưa xe đến cơ quan công an quản lý hồ sơ để kiểm tra và nộp hồ sơ sang tên đúng thủ tục."
   },
   {
    "article_id": "BA-0557",
@@ -83,46 +33,6 @@
    "sample": "Quy định nền là Nghị định 13/2023/NĐ-CP của Chính phủ quy định chi tiết về bảo vệ dữ liệu cá nhân: dữ liệu chỉ được thu thập khi chủ thể biết rõ và đồng ý trước, trừ trường hợp ph…"
   },
   {
-   "article_id": "BA-0605",
-   "slug": "nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-nguoi-moi",
-   "doc": "tt-29-2015-bgtvt",
-   "replaced_by": "tt-108-2026-bca",
-   "replaced_from": "2025-01-01",
-   "evidence": "reported",
-   "mentions": 1,
-   "sample": "Văn bản và hiệu lực: Điều 11 Thông tư 29/2015/TT-BGTVT của Bộ Giao thông vận tải về quy định sử dụng giấy phép lái xe quốc tế."
-  },
-  {
-   "article_id": "BA-0611",
-   "slug": "idp-va-bang-lai-quoc-te-cho-nguoi-moi",
-   "doc": "tt-12-2025-bca",
-   "replaced_by": "tt-108-2026-bca",
-   "replaced_from": "2026-07-01",
-   "evidence": "fulltext",
-   "mentions": 1,
-   "sample": "Một điểm mới đáng chú ý: từ ngày 01/3/2025, theo Thông tư 12/2025/TT-BCA của Bộ Công an, cả người nước ngoài đang cư trú tại Việt Nam cũng được nộp hồ sơ đề nghị cấp IDP, với điều…"
-  },
-  {
-   "article_id": "BA-0611",
-   "slug": "idp-va-bang-lai-quoc-te-cho-nguoi-moi",
-   "doc": "tt-29-2015-bgtvt",
-   "replaced_by": "tt-108-2026-bca",
-   "replaced_from": "2025-01-01",
-   "evidence": "reported",
-   "mentions": 1,
-   "sample": "Văn bản và hiệu lực: điều khoản về sử dụng giấy phép lái xe quốc tế được quy định tại Thông tư 29/2015/TT-BGTVT do Bộ Giao thông vận tải ban hành, áp dụng từ cuối năm 2015."
-  },
-  {
-   "article_id": "BA-0893",
-   "slug": "idp-va-bang-lai-quoc-te-tom-tat",
-   "doc": "tt-12-2025-bca",
-   "replaced_by": "tt-108-2026-bca",
-   "replaced_from": "2026-07-01",
-   "evidence": "fulltext",
-   "mentions": 1,
-   "sample": "Văn bản và hiệu lực: với người cần làm IDP từ năm 2025, Thông tư 12/2025/TT-BCA của Bộ Công an là văn bản điều chỉnh, có hiệu lực từ ngày 01/3/2025."
-  },
-  {
    "article_id": "BA-1121",
    "slug": "bao-ve-du-lieu-ca-nhan-khi-thue-xe-tom-tat",
    "doc": "nd-13-2023",
@@ -133,16 +43,6 @@
    "sample": "Hiệu lực: Nghị định 13/2023/NĐ-CP, có hiệu lực từ ngày 01/7/2023."
   },
   {
-   "article_id": "BA-1175",
-   "slug": "idp-va-bang-lai-quoc-te-vi-du-thuc-te",
-   "doc": "tt-12-2025-bca",
-   "replaced_by": "tt-108-2026-bca",
-   "replaced_from": "2026-07-01",
-   "evidence": "fulltext",
-   "mentions": 1,
-   "sample": "Văn bản và hiệu lực: với nhóm cư trú, thủ tục nằm trong Thông tư 12/2025/TT-BCA của Bộ Công an, áp dụng từ 01/3/2025."
-  },
-  {
    "article_id": "BA-1373",
    "slug": "tranh-app-thue-xe-lua-dao-vi-du-thuc-te",
    "doc": "nd-13-2023",
@@ -151,16 +51,6 @@
    "evidence": "fulltext",
    "mentions": 1,
    "sample": "Pháp lý liên quan: việc thu thập, xử lý dữ liệu cá nhân phải có sự đồng ý của chủ thể và gắn với mục đích đã thông báo; đối tượng là bên thu thập và xử lý; quy định nằm trong Nghị…"
-  },
-  {
-   "article_id": "BA-1457",
-   "slug": "idp-va-bang-lai-quoc-te-cau-hoi-thuong-gap",
-   "doc": "tt-12-2025-bca",
-   "replaced_by": "tt-108-2026-bca",
-   "replaced_from": "2026-07-01",
-   "evidence": "fulltext",
-   "mentions": 1,
-   "sample": "Người cư trú dài hạn nên tìm hiểu thủ tục đổi sang giấy phép lái xe Việt Nam tại cơ quan có thẩm quyền; kể từ năm 2025, việc cấp và đổi giấy phép lái xe, bao gồm giấy phép quốc tế…"
   }
  ],
  "wrong_suffix": [],
@@ -956,6 +846,7 @@
     "BA-0029",
     "BA-0035",
     "BA-0041",
+    "BA-0047",
     "BA-0059",
     "BA-0065",
     "BA-0071",
@@ -1015,6 +906,7 @@
     "BA-0593",
     "BA-0599",
     "BA-0605",
+    "BA-0611",
     "BA-0617",
     "BA-0629",
     "BA-0635",
@@ -1193,7 +1085,7 @@
     "BA-1649"
    ],
    "by_name": [],
-   "mentions": 527
+   "mentions": 533
   },
   {
    "id": "nd-238-2026",
@@ -1432,15 +1324,12 @@
    "replaced_by": "tt-108-2026-bca",
    "amended_by": null,
    "amendment_checked": null,
-   "articles_current": [
-    "BA-0041",
-    "BA-0047",
-    "BA-0605",
-    "BA-0611"
+   "articles_current": [],
+   "articles_historical": [
+    "BA-0047"
    ],
-   "articles_historical": [],
    "by_name": [],
-   "mentions": 7
+   "mentions": 1
   },
   {
    "id": "tt-35-2024-bgtvt",
@@ -1465,14 +1354,14 @@
    "replaced_by": "tt-108-2026-bca",
    "amended_by": null,
    "amendment_checked": null,
-   "articles_current": [
+   "articles_current": [],
+   "articles_historical": [
     "BA-0047",
     "BA-0611",
     "BA-0893",
     "BA-1175",
     "BA-1457"
    ],
-   "articles_historical": [],
    "by_name": [],
    "mentions": 9
   },
@@ -1485,10 +1374,20 @@
    "replaced_by": null,
    "amended_by": null,
    "amendment_checked": null,
-   "articles_current": [],
-   "articles_historical": [],
+   "articles_current": [
+    "BA-0041",
+    "BA-0047",
+    "BA-0605",
+    "BA-0611",
+    "BA-0893",
+    "BA-1175",
+    "BA-1457"
+   ],
+   "articles_historical": [
+    "BA-0047"
+   ],
    "by_name": [],
-   "mentions": 0
+   "mentions": 13
   },
   {
    "id": "tt-24-2023-bca",
@@ -1499,11 +1398,11 @@
    "replaced_by": "tt-79-2024-bca",
    "amended_by": null,
    "amendment_checked": null,
-   "articles_current": [
+   "articles_current": [],
+   "articles_historical": [
     "BA-0227",
     "BA-0509"
    ],
-   "articles_historical": [],
    "by_name": [],
    "mentions": 2
   },
@@ -1517,12 +1416,14 @@
    "amended_by": null,
    "amendment_checked": null,
    "articles_current": [
+    "BA-0227",
+    "BA-0509",
     "BA-1073",
     "BA-1355"
    ],
    "articles_historical": [],
    "by_name": [],
-   "mentions": 3
+   "mentions": 5
   },
   {
    "id": "tt-46-2012-bgtvt",
