@@ -216,24 +216,26 @@ test('blog home loads search lazily and never lists all matrix rows', () => {
 
 // ---------- SEO ownership ----------
 
-test('homepage owns the national APP intent; no generic rental landing title', () => {
-  const html = read('index.html');
+test('Agent app (/agent/) owns the national APP intent; no generic rental landing title', () => {
+  const html = read('agent/index.html');
   assert.match(html, /<title>[^<]*Ứng dụng thuê xe máy/i);
-  // v47.1: chatbot-first homepage — no hero above the app; the owned app-intent
-  // keywords live in the unobtrusive SEO section AFTER the chatbot.
+  // v47.1: chatbot-first app page — no hero above the app; the owned app-intent
+  // keywords live in the unobtrusive SEO section AFTER the chatbot (v76: at /agent/).
   assert.ok(!html.includes('motoai-hero'), 'no hero section above the chatbot');
   assert.match(html, /class="motoai-seo"/);
   assert.ok(html.indexOf('id="motoai-app"') < html.indexOf('class="motoai-seo"'), 'chatbot renders before the SEO copy');
   const ownership = JSON.parse(read('config/seo-ownership.json'));
   for (const kw of ownership.owned_keywords.slice(0, 4)) {
-    assert.ok(html.toLowerCase().includes(kw.split(' ').slice(-4).join(' ').toLowerCase()) || kw.includes('digital'), `homepage should reference the owned intent (${kw})`);
+    assert.ok(html.toLowerCase().includes(kw.split(' ').slice(-4).join(' ').toLowerCase()) || kw.includes('digital'), `Agent app should reference the owned intent (${kw})`);
   }
-  // Protected commercial intent must not be the homepage title.
-  assert.ok(!/<title>[^<]*thuê xe máy hà nội/i.test(html), 'homepage title must not cannibalize the generic local rental intent');
+  // Protected commercial intent must not be the app or homepage title.
+  for (const page of ['agent/index.html', 'index.html']) {
+    assert.ok(!/<title>[^<]*thuê xe máy hà nội/i.test(read(page)), `${page}: title must not cannibalize the generic local rental intent`);
+  }
 });
 
-test('homepage schema is WebApplication (never a native app) with verified org facts', () => {
-  const html = read('index.html');
+test('Agent app schema is WebApplication (never a native app) with verified org facts', () => {
+  const html = read('agent/index.html');
   assert.ok(html.includes('"@type": "WebApplication"'));
   assert.ok(!html.includes('SoftwareApplication'), 'not needed and risks native-app implications');
   assert.ok(!/app store|google play/i.test(html), 'never claimed as a store-listed native app');

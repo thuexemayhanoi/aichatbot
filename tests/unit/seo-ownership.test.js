@@ -10,8 +10,10 @@ import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
  * v63.1 SEO OWNERSHIP GATE — enforces config/seo-ownership.json:
  *   - cross-repository protected commercial intents never become an exact
  *     <title>/<h1> of any page in THIS repository (anti-cannibalization);
- *   - the homepage keeps the APP / WEB APPLICATION / DIGITAL RENTAL ASSISTANT
- *     identity (owned keywords, WebApplication schema, no native-app claims);
+ *   - the Agent app (/agent/, v76) keeps the APP / WEB APPLICATION / DIGITAL
+ *     RENTAL ASSISTANT identity (owned keywords, WebApplication schema, no
+ *     native-app claims); the homepage targets the owned "trợ lý / ứng dụng
+ *     thuê xe máy" intent and references that WebApplication by @id;
  *   - LOCAL articles must keep a distinct informational/Agent angle instead
  *     of competing with the commercial landing pages of other repositories.
  * Legitimate factual usage (business address, verified contact pages, footer
@@ -23,7 +25,7 @@ const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
 const SITE_PAGES = [
-  'index.html',
+  'index.html', 'agent/index.html',
   'gioi-thieu/index.html', 'gia-thue/index.html', 'lien-he/index.html',
   'chinh-sach/index.html', 'privacy/index.html', 'terms/index.html',
   ...walk('blog').filter((p) => p.endsWith('index.html'))
@@ -50,15 +52,37 @@ test('anti-cannibalization: protected commercial keywords are never an exact tit
   }
 });
 
-test('homepage identity: owned APP keywords + WebApplication schema, no native-app claims', () => {
-  const html = read('index.html');
+const jsonLd = (html) => [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
+  .flatMap((m) => { const o = JSON.parse(m[1]); return o['@graph'] ?? [o]; });
+
+test('Agent app identity (/agent/): owned APP keywords + WebApplication schema, no native-app claims', () => {
+  const html = read('agent/index.html');
   assert.match(html, /<title>[^<]*Ứng dụng thuê xe máy/i);
   assert.ok(html.includes('"@type": "WebApplication"'), 'WebApplication schema');
   const lower = html.toLowerCase();
   for (const kw of ownership.owned_keywords.slice(0, 4)) {
     assert.ok(lower.includes(kw.toLowerCase()) || kw.includes('digital'),
-      `homepage references the owned intent: ${kw}`);
+      `Agent app references the owned intent: ${kw}`);
   }
+  assert.ok(!/app store|google play/i.test(html), 'never claimed as a store-listed native app');
+});
+
+test('v76 homepage identity: owned assistant/app intent in title + H1, one WebApplication referenced by @id', () => {
+  const html = read('index.html');
+  const lower = html.toLowerCase();
+  const title = /<title>([^<]*)<\/title>/.exec(html)[1].toLowerCase();
+  const h1 = /<h1[^>]*>([^<]*)<\/h1>/.exec(html)[1].toLowerCase();
+  assert.ok(title.includes('ứng dụng thuê xe máy') || title.includes('trợ lý'), 'title targets the owned app/assistant intent');
+  assert.ok(h1.includes('trợ lý thuê xe máy'), 'H1 targets the owned "trợ lý thuê xe máy" intent');
+  for (const kw of ['trợ lý thuê xe máy', 'ứng dụng thuê xe máy', 'app thuê xe máy', 'app thuê xe điện']) {
+    assert.ok(lower.includes(kw), `homepage references the owned intent: ${kw}`);
+  }
+  // The WebApplication is declared ONCE (on /agent/); the homepage points at it.
+  const home = jsonLd(html);
+  const app = jsonLd(read('agent/index.html')).find((o) => o['@type'] === 'WebApplication');
+  assert.ok(!home.some((o) => o['@type'] === 'WebApplication'), 'no duplicate WebApplication on /');
+  const page = home.find((o) => o['@type'] === 'WebPage');
+  assert.equal(page.mainEntity['@id'], app['@id'], 'homepage WebPage.mainEntity references the Agent WebApplication');
   assert.ok(!/app store|google play/i.test(html), 'never claimed as a store-listed native app');
 });
 

@@ -18,7 +18,8 @@ const allLinks = nav.flatMap((v) => v.kind === 'group'
 
 test('complete navigation: every static Page + blog root is crawlable', () => {
   const hrefs = new Set(allLinks.map((x) => x.url));
-  assert.ok(hrefs.has('/'), 'home chat reachable');
+  assert.ok(hrefs.has('/'), 'website homepage reachable');
+  assert.ok(hrefs.has('/agent/'), 'Agent chat app reachable (v76: /agent/)');
   assert.ok(hrefs.has('/blog/'), 'blog home reachable');
   for (const page of SITE_PAGES) assert.ok(hrefs.has('/' + page.dir + '/'), 'missing Page ' + page.dir);
 });
@@ -66,14 +67,15 @@ test('compact navigation: all readable link labels are 2–3 Vietnamese words', 
   }
 });
 
-test('root and content renderers use identical canonical category/topic URLs', () => {
+test('Agent app and content renderers use identical canonical category/topic URLs', () => {
   const chat = renderDrawer({ mode: 'chat' });
   const content = renderDrawer({ mode: 'content' });
-  const rootHtml = read('index.html');
-  assert.ok(rootHtml.includes(chat), 'chat root generated from shared renderer');
+  assert.ok(read('agent/index.html').includes(chat), 'Agent app drawer generated from shared renderer');
+  assert.ok(read('index.html').includes(content), 'homepage drawer generated from the shared content renderer');
   for (const link of allLinks) {
-    assert.ok(chat.includes('href="' + link.url + '"') || link.url === '/',
-      'root missing ' + link.url);
+    // Inside the Agent app the Agent entry is a <button> that closes the drawer (it IS the current page).
+    assert.ok(chat.includes('href="' + link.url + '"') || link.url === '/agent/',
+      'Agent app missing ' + link.url);
     assert.ok(content.includes('href="' + link.url + '"'), 'content missing ' + link.url);
   }
   assert.ok(content.includes('motoai-subtopic'), 'three-level topic hierarchy styled in content');

@@ -35,12 +35,12 @@ test('service worker uses versioned caches and never precaches models', () => {
 test('pwa.js never registers the service worker in embed mode', () => {
   const pwa = read('assets/js/pwa.js');
   assert.match(pwa, /if \(config\?\.embed\) return;?/);
-  assert.match(pwa, /navigator\.serviceWorker\.register\('\.\/service-worker\.js'\)/);
+  assert.match(pwa, /navigator\.serviceWorker\.register\('\/service-worker\.js'\)/);
 });
 
-test('index.html wires the manifest, theme color and install pill', () => {
-  const html = read('index.html');
-  assert.match(html, /rel="manifest" href="manifest\.webmanifest"/);
+test('agent/index.html wires the manifest, theme color and install pill', () => {
+  const html = read('agent/index.html');
+  assert.match(html, /rel="manifest" href="\/manifest\.webmanifest"/);
   assert.match(html, /name="theme-color"/);
   assert.match(html, /id="motoai-install"/);
 });

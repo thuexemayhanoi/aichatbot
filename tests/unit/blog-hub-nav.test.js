@@ -103,10 +103,10 @@ test('v61 parent hub pages are topical hubs: H1, intro, child cards, ItemList', 
     assert.equal(col.name, c.name, `${c.dir}: schema name = display name`);
     assert.ok(col.mainEntity?.['@type'] === 'ItemList', `${c.dir}: ItemList of children + articles`);
     const crumbs = lds.find((o) => o['@type'] === 'BreadcrumbList');
-    assert.deepEqual(crumbs.itemListElement.map((i) => i.name), ['Agent', 'Cẩm nang', c.name], `${c.dir}: breadcrumb = Agent › Cẩm nang › hub`);
+    assert.deepEqual(crumbs.itemListElement.map((i) => i.name), ['Trang chủ', 'Cẩm nang', c.name], `${c.dir}: breadcrumb = Trang chủ › Cẩm nang › hub`);
     const visibleTrail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1];
     const visible = [...visibleTrail.matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map((m) => m[1]).filter((t) => t !== ' › ').map((t) => t.replace(/&amp;/g, '&'));
-    assert.deepEqual(visible, ['Agent', 'Cẩm nang', c.name], `${c.dir}: visible breadcrumb agrees with schema`);
+    assert.deepEqual(visible, ['Trang chủ', 'Cẩm nang', c.name], `${c.dir}: visible breadcrumb agrees with schema`);
   }
 });
 
@@ -120,10 +120,10 @@ test('v61 category hubs link UP to their parent hub (visible + schema + bottom b
     assert.ok(html.includes(`blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}`), `${cat.dir}: bottom cluster block`);
     const lds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
     const crumbs = lds.find((o) => o['@type'] === 'BreadcrumbList');
-    assert.deepEqual(crumbs.itemListElement.map((i) => i.name), ['Agent', 'Cẩm nang', cluster.name, cat.label], `${cat.dir}: breadcrumb hierarchy`);
+    assert.deepEqual(crumbs.itemListElement.map((i) => i.name), ['Trang chủ', 'Cẩm nang', cluster.name, cat.label], `${cat.dir}: breadcrumb hierarchy`);
     const visibleTrail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1];
     const visible = [...visibleTrail.matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map((m) => m[1]).filter((t) => t !== ' › ').map((t) => t.replace(/&amp;/g, '&'));
-    assert.deepEqual(visible, ['Agent', 'Cẩm nang', cluster.name, cat.label], `${cat.dir}: visible breadcrumb agrees with schema`);
+    assert.deepEqual(visible, ['Trang chủ', 'Cẩm nang', cluster.name, cat.label], `${cat.dir}: visible breadcrumb agrees with schema`);
   }
 });
 
@@ -142,7 +142,7 @@ test('v61 articles link to their child hub AND parent hub (chip + breadcrumb + c
     assert.ok(html.includes(`blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}`), `${a.slug}: parent cluster block`);
     const lds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
     const crumbs = lds.find((o) => o['@type'] === 'BreadcrumbList').itemListElement.map((i) => i.name);
-    assert.ok(crumbs[0] === 'Agent' && crumbs[1] === 'Cẩm nang' && crumbs[2] === cluster.name && crumbs[3] === cat.label && crumbs[crumbs.length - 1] === a.title, `${a.slug}: breadcrumb = Agent › Cẩm nang › hub › category (› subtopic) › title`);
+    assert.ok(crumbs[0] === 'Trang chủ' && crumbs[1] === 'Cẩm nang' && crumbs[2] === cluster.name && crumbs[3] === cat.label && crumbs[crumbs.length - 1] === a.title, `${a.slug}: breadcrumb = Trang chủ › Cẩm nang › hub › category (› subtopic) › title`);
     const visibleTrail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1];
     const visible = [...visibleTrail.matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map((m) => m[1]).filter((t) => t !== ' › ').map((t) => t.replace(/&amp;/g, '&'));
     assert.deepEqual(visible, crumbs, `${a.slug}: visible breadcrumb agrees with schema`);

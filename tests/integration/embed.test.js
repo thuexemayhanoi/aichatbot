@@ -92,8 +92,10 @@ test('embed: iframe URL carries lang/theme/source and embed flag', () => {
   });
   assert.equal(
     url,
-    'https://chatbot.thuexemaynguyentu.com/index.html?embed=1&lang=en&theme=auto&source=partner'
+    'https://chatbot.thuexemaynguyentu.com/agent/?embed=1&lang=en&theme=auto&source=partner'
   );
+  // v76: the chat app lives at /agent/ — also under a sub-path install and a cache-busted loader URL.
+  assert.equal(api.buildFrameUrl('https://example.com/motoai/embed.js?v=3', { lang: 'vi', theme: 'auto' }), 'https://example.com/motoai/agent/?embed=1&lang=vi&theme=auto');
   assert.throws(() => api.buildFrameUrl(''), Error);
 });
 
@@ -102,7 +104,7 @@ test('embed: mount creates launcher + iframe and marks the document', () => {
   const result = api.mount(doc);
   assert.equal(result.already, false);
   const instance = result.instance;
-  assert.ok(instance.frameUrl.includes('index.html?embed=1'));
+  assert.ok(instance.frameUrl.includes('/agent/?embed=1'));
   assert.equal(typeof instance.open, 'function');
   assert.equal(typeof instance.close, 'function');
   assert.equal(doc.body.children.length, 1, 'one container appended');

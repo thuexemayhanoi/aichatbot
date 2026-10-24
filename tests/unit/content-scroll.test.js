@@ -25,6 +25,7 @@ function contentPages() {
   const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
   return [
+    'index.html', // v76: / is the website homepage on the shared content shell
     'blog/index.html',
     ...CLUSTER_DIRS.map((c) => `blog/${c}/index.html`),
     ...walk('blog/app').filter((p) => p.endsWith('index.html')),
@@ -49,11 +50,11 @@ test('v59: every content page has EXACTLY ONE footer, after </main>, never insid
   }
 });
 
-test('v59: chat homepage has ZERO footers and is NOT a content-page', () => {
-  const html = read('index.html');
-  assert.equal((html.match(/<footer/g) ?? []).length, 0, 'homepage: no site footer at all');
-  assert.ok(!html.includes('class="content-page"'), 'homepage keeps the app body, not the content-page body');
-  assert.ok(html.includes('class="motoai-app"'), 'homepage keeps the chat app shell');
+test('v59/v76: the Agent app (/agent/) has ZERO footers and is NOT a content-page', () => {
+  const html = read('agent/index.html');
+  assert.equal((html.match(/<footer/g) ?? []).length, 0, 'Agent app: no site footer at all');
+  assert.ok(!html.includes('class="content-page"'), 'Agent app keeps the app body, not the content-page body');
+  assert.ok(html.includes('class="motoai-app"'), 'Agent app keeps the chat app shell');
 });
 
 test('v59: content pages use the normal document — no chat viewport, dock or composer', () => {
@@ -77,7 +78,8 @@ test('v60: CSS contract — content pages scroll as documents, chat lock stays c
   assert.ok(!/html(\s*,\s*body)?\s*\{[^}]*[;{\s]overscroll-behavior:\s*none/.test(style), 'no root overscroll-behavior:none');
   // The chat lock is scoped to body.chat-home ONLY.
   assert.match(style, /body\.chat-home\s*\{[^}]*overflow:\s*hidden/, 'chat lock scoped to body.chat-home');
-  assert.match(read('index.html'), /<body class="chat-home">/, 'chat homepage carries the chat-home class');
+  assert.match(read('agent/index.html'), /<body class="chat-home">/, 'the Agent app carries the chat-home class');
+  assert.ok(!read('index.html').includes('chat-home'), 'the homepage never takes the chat lock');
   // v60 content reset: direct, no :has() dependency.
   assert.ok(!/[.:#\[][\w-]*:has\(/.test(css), 'no :has() scroll dependency');
   assert.match(css, /html\s*\{[^}]*height:\s*auto\s*!important/, 'html height auto');
@@ -107,10 +109,10 @@ test('v60: asset cache-bust + build marker so iOS Safari cannot serve stale v58/
     assert.match(html, /blog\.css\?v=\d+/, `${p}: versioned blog.css`);
     assert.match(html, /app-shell\.js\?v=\d+/, `${p}: versioned app-shell.js`);
   }
-  const home = read('index.html');
-  assert.match(home, /<meta name="motoai-build" content="v\d+">/, 'homepage build marker');
-  assert.match(home, /style\.css\?v=\d+/, 'homepage versioned style.css');
-  assert.match(home, /main\.js\?v=\d+/, 'homepage versioned main.js');
+  const agent = read('agent/index.html');
+  assert.match(agent, /<meta name="motoai-build" content="v\d+">/, 'Agent app build marker');
+  assert.match(agent, /style\.css\?v=\d+/, 'Agent app versioned style.css');
+  assert.match(agent, /main\.js\?v=\d+/, 'Agent app versioned main.js');
   const sw = read('service-worker.js');
   assert.match(sw, /const CORE_VERSION = 'v\d+'/, 'SW version constant');
   assert.ok(sw.includes('style.css?v='), 'SW precaches the versioned CSS');

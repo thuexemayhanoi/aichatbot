@@ -175,7 +175,7 @@ test('schema: CollectionPage + ItemList on home/parents/children; Article + Brea
 
 // ---------- Breadcrumb hierarchy (task §9) ----------
 
-test('breadcrumbs: Agent › Cẩm nang › Parent › Child › Article, visible == JSON-LD', () => {
+test('breadcrumbs: Trang chủ › Cẩm nang › Parent › Child › Article, visible == JSON-LD', () => {
   for (const a of ARTICLES) {
     const cat = taxonomy.categories[a.category];
     const cluster = taxonomy.clusters.find((c) => c.id === cat.cluster);
@@ -185,7 +185,7 @@ test('breadcrumbs: Agent › Cẩm nang › Parent › Child › Article, visibl
     const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
       .map((m) => JSON.parse(m[1])).find((o) => o['@type'] === 'BreadcrumbList');
     assert.deepEqual(ld.itemListElement.map((i) => i.name), visible, `${a.slug}: visible == schema`);
-    assert.equal(visible[0], 'Agent');
+    assert.equal(visible[0], 'Trang chủ');
     assert.equal(visible[1], 'Cẩm nang');
     assert.equal(visible[2], cluster.name, `${a.slug}: parent level`);
     assert.equal(visible[3], cat.label, `${a.slug}: child level`);
@@ -270,7 +270,7 @@ test('audit: subtopic schema = CollectionPage + ItemList + BreadcrumbList; visib
     const visible = visibleTrailOf(html);
     assert.deepEqual(visible, crumbs, `${p}: visible breadcrumb == JSON-LD`);
     assert.equal(crumbs.length, 5, `${p}: full 5-level trail`);
-    assert.deepEqual([crumbs[0], crumbs[1], crumbs[2], crumbs[3]], ['Agent', 'Cẩm nang', cluster.name, cat.label], `${p}: Agent › Cẩm nang › hub › silo`);
+    assert.deepEqual([crumbs[0], crumbs[1], crumbs[2], crumbs[3]], ['Trang chủ', 'Cẩm nang', cluster.name, cat.label], `${p}: Trang chủ › Cẩm nang › hub › silo`);
     assert.equal(crumbs[4], sub.label, `${p}: subtopic level`);
   }
 });

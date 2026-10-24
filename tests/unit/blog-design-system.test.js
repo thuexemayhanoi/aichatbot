@@ -99,8 +99,9 @@ test('blog-ui config: identity, boolean flags and a CTA action for every categor
 test('contact band: one Ask Agent action, verified call, contextual action — no hard-coded contact URLs', () => {
   const business = JSON.parse(read('data/business/business.json'));
   const band = contactBand({ topic: 'Giá & cọc', category: 'RENT', business });
-  assert.equal((band.match(/href="\/\?ask=/g) ?? []).length, 1, 'exactly one Ask Agent action');
-  assert.ok(band.includes(`/?ask=${encodeURIComponent('Giá & cọc')}`), 'topic is URL-encoded');
+  assert.equal((band.match(/href="\/agent\/\?ask=/g) ?? []).length, 1, 'exactly one Ask Agent action (v76: the Agent app at /agent/)');
+  assert.ok(!/href="\/\?ask=/.test(band), 'never deep-links the chat to / (the homepage is not the chat)');
+  assert.ok(band.includes(`/agent/?ask=${encodeURIComponent('Giá & cọc')}`), 'topic is URL-encoded');
   assert.ok(band.includes('data-contact-ref="call"'), 'call resolved at runtime from business.json');
   assert.ok(band.includes(business.contact.phone_display), 'call label shows the verified number');
   assert.ok(band.includes('href="/gia-thue/"'), 'RENT → price page');
