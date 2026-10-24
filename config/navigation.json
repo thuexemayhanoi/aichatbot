@@ -1,8 +1,8 @@
 {
   "$schema": "motoai/navigation@1",
-  "note": "Single source of truth for the global menu (Agent drawer) and the shared blog footer. Hub columns (\"hub\": cluster id) are expanded from data/blog/taxonomy.json at build time — parent hub link + child category links. Labels are short (1-2 words); long SEO keywords live in page content, never in navigation.",
+  "note": "Single menu contract for chat homepage and all generated blog pages. Every published parent hub, category, available subtopic and static Page is linked with 2–3 word navigation labels; SEO titles and URL slugs never change.",
   "agent": {
-    "label": "Agent",
+    "label": "Trợ Lý",
     "icon": "⚡",
     "url": "/"
   },
@@ -66,12 +66,12 @@
       "action": "contact"
     },
     {
-      "label": "Gọi",
+      "label": "Gọi Ngay",
       "icon": "📞",
       "ref": "call"
     },
     {
-      "label": "WhatsApp",
+      "label": "Nhắn WhatsApp",
       "icon": "🟢",
       "ref": "whatsapp"
     },
@@ -170,35 +170,86 @@
     "url": "/gioi-thieu/"
   },
   "drawer": {
-    "note": "Canonical order/labels/icons of the CORE drawer shared by the chat homepage (index.html) and every content page (tools/app-shell.mjs). tools/taxonomy.mjs drawerCore() resolves this into a normalized list; the generator renders it and tests/global-menu asserts index.html matches it.",
-    "theme": { "icon": "🌗", "label": "Chủ đề" },
+    "note": "Trang Web pulls non-legal static pages from config/site-pages.json; Pháp Lý holds the legal pages; Cẩm Nang resolves hubs > canonical categories > non-empty subtopics from data/blog/taxonomy.json; Dịch Vụ has verified contact actions. Agent chat keeps its reset control.",
+    "theme": {
+      "icon": "🌗",
+      "label": "Chủ đề"
+    },
     "groups": [
       {
+        "id": "pages",
+        "label": "Trang Web",
+        "icon": "🗂️",
+        "children": [
+          {
+            "set": "pages"
+          }
+        ]
+      },
+      {
         "id": "cm",
-        "label": "Cẩm nang",
+        "label": "Cẩm Nang",
         "icon": "📚",
         "children": [
-          { "set": "hubs" },
-          { "ref": "search" }
+          {
+            "set": "hubs"
+          },
+          {
+            "ref": "search"
+          }
         ]
       },
       {
         "id": "dv",
-        "label": "Dịch vụ",
+        "label": "Dịch Vụ",
         "icon": "🛵",
-        "children": [{ "set": "services" }]
+        "children": [
+          {
+            "set": "contact-actions"
+          }
+        ]
       },
       {
         "id": "pl",
-        "label": "Pháp lý",
+        "label": "Pháp Lý",
         "icon": "🔒",
-        "children": [{ "set": "legal" }]
+        "children": [
+          {
+            "set": "legal"
+          }
+        ]
       }
     ]
   },
   "chat_extras": {
     "note": "Chat-homepage-only utility appended AFTER the core drawer: a divider + the reset action. Never rendered on content pages.",
     "divider": true,
-    "reset": { "label": "Xóa chat", "icon": "🧹" }
+    "reset": {
+      "label": "Xóa chat",
+      "icon": "🧹"
+    }
+  },
+  "hub_labels": {
+    "C-APP": "Công Cụ",
+    "C-RENT": "Phương Tiện",
+    "C-EXPLORE": "Khám Phá"
+  },
+  "page_labels": {
+    "gioi-thieu": "Giới Thiệu",
+    "gia-thue": "Bảng Giá",
+    "lien-he": "Liên Hệ",
+    "doi-tac": "Đối Tác",
+    "chinh-sach": "Chính Sách",
+    "privacy": "Bảo Mật",
+    "terms": "Điều Khoản"
+  },
+  "page_icons": {
+    "gioi-thieu": "🏢",
+    "gia-thue": "💰",
+    "lien-he": "☎️",
+    "doi-tac": "🤝",
+    "chinh-sach": "📜",
+    "privacy": "🔒",
+    "terms": "📃"
   }
 }
