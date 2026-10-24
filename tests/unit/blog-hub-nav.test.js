@@ -31,7 +31,7 @@ test('v61 desktop menu prioritizes the 3 parent hubs, each as a REAL crawlable <
     for (const c of taxonomy.clusters) {
       // Parent label is a link to its hub — never a JS-only button.
       assert.ok(nav.includes(`class="site-nav-parent" href="/blog/${c.dir}/"`), `${page}: parent hub link ${c.dir}`);
-      assert.ok(nav.includes(esc(c.name)), `${page}: parent label ${c.name}`);
+      assert.ok(nav.includes(esc(navigation.hub_labels?.[c.id] ?? c.name)), `${page}: compact parent label ${c.id}`);
       for (const id of c.categories) {
         const dir = taxonomy.categories[id].dir;
         assert.ok(nav.includes(`href="/blog/${dir}/"`), `${page}: dropdown child ${dir}`);
