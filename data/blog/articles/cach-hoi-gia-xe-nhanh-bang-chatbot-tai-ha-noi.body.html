@@ -25,7 +25,7 @@
 <p>Khi nhận được câu trả lời, đừng chỉ nhìn con số đầu tiên. Hãy kiểm tra ba điều:</p>
 <ol>
 <li><strong>Đó là giá tham khảo hay đã xác nhận.</strong> Giá chatbot đưa ra là giá tham khảo theo bảng giá hiện hành, cần cửa hàng xác nhận lại trước khi bạn đặt.</li>
-<li><strong>Giá theo đơn vị nào.</strong> Ví dụ Honda Wave tham khảo khoảng 150.000đ/ngày, Honda Vision khoảng 200.000đ/ngày hoặc 800.000đ–1.000.000đ/tuần, Honda Air Blade khoảng 1.400.000đ/tháng. Nhầm giữa giá ngày và giá tuần là lỗi thường gặp.</li>
+<li><strong>Giá theo đơn vị nào.</strong> Ví dụ Honda Wave tham khảo khoảng {{ price.honda-wave.day.min }}/ngày, Honda Vision khoảng {{ price.honda-vision.day.min }}/ngày hoặc {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, Honda Air Blade khoảng {{ price.honda-airblade.month.min }}/tháng. Nhầm giữa giá ngày và giá tuần là lỗi thường gặp.</li>
 <li><strong>Những gì chưa bao gồm.</strong> Phí giao xe, khoản cọc và bảo hiểm thường không nằm trong con số giá thuê.</li>
 </ol>
 <p>Muốn tự tính lại tổng chi phí cho nhiều ngày, bạn có thể đối chiếu với bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-tai-ha-noi/">cách tính giá thuê xe bằng app tại Hà Nội</a> hoặc xem trực tiếp <a href="/gia-thue/">trang giá thuê</a>.</p>
@@ -67,7 +67,7 @@
 <h3>Hỏi giá ngoài giờ mở cửa có được không?</h3>
 <p>Bạn có thể hỏi thông tin bất cứ lúc nào trên website, nhưng việc xác nhận đặt xe và giao xe diễn ra trong giờ mở cửa.</p>
 <h3>Có nên hỏi giá thuê theo tháng qua chatbot?</h3>
-<p>Có. Ví dụ Honda Click hoặc Yamaha Mio có giá tham khảo khoảng 1.000.000đ–1.200.000đ/tháng; nêu rõ kỳ thuê để nhận đúng mức giá.</p>
+<p>Có. Ví dụ Honda Click hoặc Yamaha Mio có giá tham khảo khoảng {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng; nêu rõ kỳ thuê để nhận đúng mức giá.</p>
 
 <h2>Kết luận</h2>
 <p>Hỏi giá thuê xe nhanh bằng chatbot tại Hà Nội hiệu quả nhất khi bạn nói rõ loại xe, số ngày, khu vực và cách nhận xe. Hãy đọc kỹ đơn vị giá, phân biệt giá tham khảo với giá đã xác nhận, rồi chốt các chi tiết còn lại với người thật. Bạn có thể bắt đầu ngay trên <a href="/">trang chủ {{ business.display_name }}</a>, hoặc gọi {{ business.contact.phone_display }}, ghé {{ business.address.full }} để được hỗ trợ. Các bài hướng dẫn khác về công cụ trực tuyến có tại <a href="/blog/app/">chuyên mục ứng dụng</a>.</p>

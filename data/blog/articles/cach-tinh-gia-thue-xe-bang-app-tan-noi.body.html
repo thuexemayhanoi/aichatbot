@@ -3,7 +3,7 @@
 <h2>Bốn lớp của một báo giá giao xe tận nơi</h2>
 <p>Khi bạn hỏi trợ lý MotoAI "thuê Vision bốn ngày, giao đến khách sạn ở Ba Đình hết bao nhiêu", một câu trả lời đầy đủ phải tách được bốn phần:</p>
 <ol>
-<li><strong>Giá thuê theo khung thời gian:</strong> phần lớn nhất, ví dụ Honda Vision tham khảo 200.000đ/ngày, 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng.</li>
+<li><strong>Giá thuê theo khung thời gian:</strong> phần lớn nhất, ví dụ Honda Vision tham khảo {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng.</li>
 <li><strong>Phí giao và nhận lại xe:</strong> phụ thuộc địa chỉ và khung giờ, cửa hàng báo riêng cho từng đơn và phải thống nhất trước khi bạn đặt.</li>
 <li><strong>Khoản phát sinh có điều kiện:</strong> trả xe trễ giờ, xăng thấp hơn mốc khi nhận, hoặc đổi địa điểm trả xe so với thỏa thuận.</li>
 <li><strong>Khoản cọc:</strong> được hoàn khi trả xe đúng hiện trạng, nên không tính vào chi phí nhưng cần có sẵn trong ví.</li>
@@ -30,9 +30,9 @@
 
 <h2>Hai ví dụ tính thử bằng giá tham khảo</h2>
 <h3>Ví dụ một: Honda Click ba ngày, giao đến phòng trọ ở Gia Lâm</h3>
-<p>Giá tham khảo của Click là 150.000đ/ngày, nên ba ngày là 450.000đ tiền thuê. Cộng thêm phí giao do cửa hàng báo cho địa chỉ ở Gia Lâm. Bạn chuẩn bị thêm khoản cọc theo mức cửa hàng xác nhận cho dòng xe này, và nhận lại khi trả xe. Nếu bạn ở gần cửa hàng, tự sang nhận sẽ bỏ được khoản phí giao, đổi lại mất thời gian đi lại.</p>
+<p>Giá tham khảo của Click là {{ price.honda-click.day.min }}/ngày, nên ba ngày là 450.000đ tiền thuê. Cộng thêm phí giao do cửa hàng báo cho địa chỉ ở Gia Lâm. Bạn chuẩn bị thêm khoản cọc theo mức cửa hàng xác nhận cho dòng xe này, và nhận lại khi trả xe. Nếu bạn ở gần cửa hàng, tự sang nhận sẽ bỏ được khoản phí giao, đổi lại mất thời gian đi lại.</p>
 <h3>Ví dụ hai: Honda Air Blade một tuần, giao đến khách sạn ở Hoàn Kiếm</h3>
-<p>Gói tuần của Air Blade tham khảo 800.000đ, rẻ hơn rõ so với bảy ngày lẻ cộng lại ở mức 200.000đ/ngày. Hỏi trợ lý xem gói tuần có yêu cầu nhận và trả cùng giờ không, rồi gửi tên khách sạn để cửa hàng xác nhận phí giao vào phố cổ. Nhớ hỏi luôn chỗ gửi xe của khách sạn, vì phí gửi qua đêm là khoản ngoài hóa đơn thuê nhưng vẫn là tiền bạn trả.</p>
+<p>Gói tuần của Air Blade tham khảo 800.000đ, rẻ hơn rõ so với bảy ngày lẻ cộng lại ở mức {{ price.honda-airblade.day.min }}/ngày. Hỏi trợ lý xem gói tuần có yêu cầu nhận và trả cùng giờ không, rồi gửi tên khách sạn để cửa hàng xác nhận phí giao vào phố cổ. Nhớ hỏi luôn chỗ gửi xe của khách sạn, vì phí gửi qua đêm là khoản ngoài hóa đơn thuê nhưng vẫn là tiền bạn trả.</p>
 <p>Cả hai ví dụ dùng số tham khảo; giá chính thức xem tại trang <a href="/gia-thue/">giá thuê</a> và được cửa hàng xác nhận khi đặt. Dòng xe 50cc, xe máy điện và xe đạp điện không có giá niêm yết sẵn, bạn hỏi trực tiếp.</p>
 
 <h2>Checklist đọc báo giá giao tận nơi trước khi bấm đặt</h2>
@@ -41,7 +41,7 @@
 <li>Dòng xe, biển số hoặc ít nhất là màu xe và năm đời xe sẽ giao.</li>
 <li>Giá thuê theo khung đã chọn và tổng số ngày được tính.</li>
 <li>Phí giao đến địa chỉ của bạn, và phí nhận lại xe nếu trả ở nơi khác cửa hàng.</li>
-<li>Giờ giao cụ thể trong khung 09:00–21:00 và tên người liên hệ.</li>
+<li>Giờ giao cụ thể trong khung {{ business.hours.open }}–{{ business.hours.close }} và tên người liên hệ.</li>
 <li>Mức xăng lúc giao và cách xử lý khi trả thấp hơn.</li>
 <li>Khoản cọc áp dụng cho dòng xe, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}.</li>
 <li>Giấy tờ bạn phải xuất trình lúc nhận: giấy tờ tùy thân bản gốc và giấy phép lái xe phù hợp.</li>

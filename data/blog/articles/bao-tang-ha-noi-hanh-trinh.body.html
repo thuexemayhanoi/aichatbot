@@ -3,7 +3,7 @@
 <p>Điểm khác biệt của lịch trình bảo tàng so với các hành trình phố cổ hay hồ là nhịp đi chậm: bạn đi xe một đoạn, đỗ xe, vào trong xem một tới hai tiếng, rồi lại ra đường. Bài viết này dựng một hành trình thực tế cho người thuê xe từ phía Long Biên, kèm khung giờ, chỗ để xe và cách xếp các điểm hợp lý theo địa lý.</p>
 
 <h2>Lịch trình gợi ý: một ngày, ba bảo tàng</h2>
-<p>Nguyên tắc xếp điểm là đi theo trục từ gần ra xa rồi vòng về, tránh chạy qua lại. Từ cửa hàng ở 112 Nguyễn Văn Cừ, lộ trình mẫu cho một ngày:</p>
+<p>Nguyên tắc xếp điểm là đi theo trục từ gần ra xa rồi vòng về, tránh chạy qua lại. Từ cửa hàng ở {{ business.address.street }}, lộ trình mẫu cho một ngày:</p>
 <ul>
 <li>Buổi sáng: Bảo tàng Dân tộc học Việt Nam hoặc Văn Miếu khu vực, tùy hứng thú văn hóa hay lịch sử.</li>
 <li>Trưa: ghé ăn gần phố cổ, để xe ở bãi có người trông giữ.</li>
@@ -42,4 +42,4 @@
 <p><strong>Ngày cuối tuần bảo tàng có mở cửa không?</strong> Nhiều bảo tàng Hà Nội nghỉ thứ hai, cuối tuần thường vẫn mở, nên kiểm tra giờ mở trước chuyến đi.</p>
 
 <h2>Chốt lại</h2>
-<p>Một ngày bảo tàng bằng xe máy thuê là cách xem Hà Nội chậm mà đủ: xếp điểm theo trục gần xa, ghép hai đến ba bảo tàng, đỗ xe ở bãi có người trông và để dư thời gian cho các đoạn qua cầu. Cửa hàng Nguyễn Tú ở 112 Nguyễn Văn Cừ, Long Biên, Hà Nội, mở cửa 09:00 tới 21:00 mỗi ngày, giao xe trong giờ hoạt động cho khách khu Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội. Gọi 0942467674 để được tư vấn loại xe hợp lịch trình bảo tàng của bạn. Tham khảo thêm lịch trình <a href="/blog/dia-phuong/di-pho-co-bang-xe-may/">đi phố cổ bằng xe máy</a> hoặc quay về <a href="/">trang chủ</a> để đặt xe trước ngày đi.</p>
+<p>Một ngày bảo tàng bằng xe máy thuê là cách xem Hà Nội chậm mà đủ: xếp điểm theo trục gần xa, ghép hai đến ba bảo tàng, đỗ xe ở bãi có người trông và để dư thời gian cho các đoạn qua cầu. Cửa hàng Nguyễn Tú ở {{ business.address.street }}, Long Biên, Hà Nội, mở cửa {{ business.hours.open }} tới {{ business.hours.close }} mỗi ngày, giao xe trong giờ hoạt động cho khách khu Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội. Gọi {{ business.contact.phone }} để được tư vấn loại xe hợp lịch trình bảo tàng của bạn. Tham khảo thêm lịch trình <a href="/blog/dia-phuong/di-pho-co-bang-xe-may/">đi phố cổ bằng xe máy</a> hoặc quay về <a href="/">trang chủ</a> để đặt xe trước ngày đi.</p>

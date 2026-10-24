@@ -16,17 +16,17 @@
 <h3>Viết tắt, không dấu có hiểu không?</h3>
 <p>Phần lớn cách nói quen thuộc như "thuê vision 3 ngày", "xe ga 1 tuần bn tiền", "air blade thang" đều được nhận diện vì chứa tên xe và đơn vị thời gian rõ ràng. Tuy vậy, câu càng mơ hồ thì khả năng phải hỏi lại càng cao. Viết có dấu và tách rõ dòng xe với số ngày vẫn là cách nhanh nhất.</p>
 <h3>Hỏi kiểu so sánh có được không?</h3>
-<p>Được. Bạn có thể hỏi "Vision với Air Blade thuê một tuần chênh nhau bao nhiêu". Trợ lý sẽ đưa mức tham khảo của từng dòng: Vision 800.000đ–1.000.000đ/tuần, Air Blade 800.000đ/tuần, để bạn tự so. Mẹo hỏi gọn và nhanh có trong bài <a href="/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot/">cách hỏi giá xe nhanh bằng chatbot</a>.</p>
+<p>Được. Bạn có thể hỏi "Vision với Air Blade thuê một tuần chênh nhau bao nhiêu". Trợ lý sẽ đưa mức tham khảo của từng dòng: Vision {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, Air Blade {{ price.honda-airblade.week.min }}/tuần, để bạn tự so. Mẹo hỏi gọn và nhanh có trong bài <a href="/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot/">cách hỏi giá xe nhanh bằng chatbot</a>.</p>
 <h3>Hỏi bằng tiếng Anh thì sao?</h3>
 <p>Khách nước ngoài có thể hỏi bằng tiếng Anh với cấu trúc đơn giản. Chi tiết về khả năng xử lý nhiều ngôn ngữ nằm trong bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu/">trợ lý xử lý câu hỏi đa ngôn ngữ</a>.</p>
 
 <h2>Nhóm 3: Con số trợ lý đưa ra lấy từ đâu?</h2>
 <p>Các mức giá trợ lý trả lời là giá tham khảo theo bảng giá công bố của cửa hàng, cũng là những con số bạn thấy ở trang <a href="/gia-thue/">giá thuê</a>. Vài ví dụ trợ lý thường trả lời:</p>
 <ul>
-<li>Honda Wave: tham khảo 150.000đ/ngày.</li>
-<li>Honda Vision: tham khảo 200.000đ/ngày, 1.800.000đ–2.000.000đ/tháng.</li>
-<li>Honda Air Blade: tham khảo 200.000đ/ngày, 1.400.000đ/tháng.</li>
-<li>Honda Click hoặc Yamaha Mio: tham khảo 150.000đ/ngày, 1.000.000đ–1.200.000đ/tháng.</li>
+<li>Honda Wave: tham khảo {{ price.honda-wave.day.min }}/ngày.</li>
+<li>Honda Vision: tham khảo {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng.</li>
+<li>Honda Air Blade: tham khảo {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.month.min }}/tháng.</li>
+<li>Honda Click hoặc Yamaha Mio: tham khảo {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng.</li>
 </ul>
 <p>Với xe 50cc, xe máy điện và xe đạp điện, trợ lý sẽ trả lời là giá liên hệ, vì những dòng này cần cửa hàng kiểm tra trực tiếp. Các dòng không nằm trong bảng như SH, Lead hay Exciter cũng được chuyển sang hướng hỏi cửa hàng về xe trống thay vì đưa ra con số tự đặt.</p>
 

@@ -5,8 +5,8 @@
 <p>Kết quả ước tính lấy từ bảng giá tham khảo trên trang <a href="/gia-thue/">giá thuê</a>. Các mức hiện có gồm:</p>
 <ul>
 <li><strong>Honda Wave (xe số):</strong> công cụ chỉ có mức ngày, khoảng 150.000đ/ngày, nên thuê dài thì nhân theo số ngày rồi hỏi cửa hàng.</li>
-<li><strong>Honda Vision:</strong> mức ngày 200.000đ/ngày; gói tuần nằm trong khoảng 800.000đ–1.000.000đ/tuần; gói tháng khoảng 1.800.000đ–2.000.000đ/tháng.</li>
-<li><strong>Honda Air Blade:</strong> cùng mức ngày với Vision là 200.000đ/ngày, nhưng gói tuần cố định 800.000đ/tuần và gói tháng 1.400.000đ/tháng.</li>
+<li><strong>Honda Vision:</strong> mức ngày {{ price.honda-vision.day.min }}/ngày; gói tuần nằm trong khoảng {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần; gói tháng khoảng {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng.</li>
+<li><strong>Honda Air Blade:</strong> cùng mức ngày với Vision là {{ price.honda-vision.day.min }}/ngày, nhưng gói tuần cố định {{ price.honda-vision.week.min }}/tuần và gói tháng 1.400.000đ/tháng.</li>
 <li><strong>Honda Click, Yamaha Mio:</strong> rẻ nhất nhóm xe ga, ngày khoảng 150.000đ/ngày, tuần 600.000đ–700.000đ/tuần, tháng 1.000.000đ–1.200.000đ/tháng.</li>
 <li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> giá liên hệ, công cụ không đưa ra con số.</li>
 </ul>

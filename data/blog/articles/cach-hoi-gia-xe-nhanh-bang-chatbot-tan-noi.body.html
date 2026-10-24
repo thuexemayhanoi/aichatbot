@@ -17,7 +17,7 @@
 
 <h2>Đọc câu trả lời: ba dòng cần tìm</h2>
 <ul>
-<li><strong>Dòng giá thuê tham khảo:</strong> ví dụ Honda Vision tham khảo 200.000đ/ngày, Honda Click hoặc Yamaha Mio tham khảo 150.000đ/ngày, Honda Wave tham khảo 150.000đ/ngày; với ba ngày, bạn tự nhân lên rồi hỏi thêm có gói nào hợp hơn không. Bảng đầy đủ có ở trang <a href="/gia-thue/">giá thuê</a>.</li>
+<li><strong>Dòng giá thuê tham khảo:</strong> ví dụ Honda Vision tham khảo {{ price.honda-vision.day.min }}/ngày, Honda Click hoặc Yamaha Mio tham khảo {{ price.honda-click.day.min }}/ngày, Honda Wave tham khảo {{ price.honda-wave.day.min }}/ngày; với ba ngày, bạn tự nhân lên rồi hỏi thêm có gói nào hợp hơn không. Bảng đầy đủ có ở trang <a href="/gia-thue/">giá thuê</a>.</li>
 <li><strong>Dòng về khu vực:</strong> Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và nội thành Hà Nội là các khu vực cửa hàng phục vụ. Nếu địa chỉ của bạn nằm ngoài, câu trả lời sẽ nói rõ cần hỏi trực tiếp.</li>
 <li><strong>Dòng về giao xe:</strong> chỉ trong giờ mở cửa, thời gian và phí xác nhận với cửa hàng trước khi đặt. Chatbot không tự đưa ra một mức phí giao, và đó là điều bình thường.</li>
 </ul>
@@ -28,7 +28,7 @@
 <ul>
 <li>"Nếu tôi đổi sang nhận tại cửa hàng thì tiết kiệm được phần nào?" để so sánh phương án tự đến {{ business.address.full }}.</li>
 <li>"Giao xe lúc tám giờ sáng được không?" để được nhắc giờ sớm nhất là chín giờ.</li>
-<li>"Thuê thêm một ngày thì giá đổi thế nào?" để biết có nên chuyển sang gói tuần, ví dụ Vision tham khảo 800.000đ–1.000.000đ/tuần.</li>
+<li>"Thuê thêm một ngày thì giá đổi thế nào?" để biết có nên chuyển sang gói tuần, ví dụ Vision tham khảo {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần.</li>
 <li>"Cần giấy tờ gì khi nhận xe tại khách sạn?" để chuẩn bị sẵn.</li>
 </ul>
 <p>Danh sách việc cần làm lúc xe được mang tới nằm trong bài <a href="/blog/app/nhan-xe-khi-dat-qua-ung-dung-tan-noi/">nhận xe khi đặt qua ứng dụng tận nơi</a>.</p>

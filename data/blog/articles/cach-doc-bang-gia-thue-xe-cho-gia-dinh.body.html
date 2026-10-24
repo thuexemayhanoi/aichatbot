@@ -13,14 +13,14 @@
 <h2>Mỗi cột trong bảng trả lời một câu hỏi của gia đình</h2>
 <p>Một dòng trong bảng giá tham khảo thường gồm tên xe, giá ngày, giá tuần và giá tháng. Với gia đình, mỗi cột phục vụ một nhu cầu khác nhau:</p>
 <ul>
-<li>Giá ngày cho biết chi phí của chiếc xe phụ chỉ cần một, hai hôm, ví dụ Honda Wave tham khảo 150.000đ/ngày.</li>
-<li>Giá tuần quyết định chiếc xe chính khi cả nhà ở từ bốn, năm ngày trở lên, ví dụ Air Blade tham khảo 800.000đ/tuần.</li>
-<li>Giá tháng dành cho người thân ở lại lâu, ví dụ Click hoặc Mio tham khảo 1.000.000đ đến 1.200.000đ/tháng.</li>
+<li>Giá ngày cho biết chi phí của chiếc xe phụ chỉ cần một, hai hôm, ví dụ Honda Wave tham khảo {{ price.honda-wave.day.min }}/ngày.</li>
+<li>Giá tuần quyết định chiếc xe chính khi cả nhà ở từ bốn, năm ngày trở lên, ví dụ Air Blade tham khảo {{ price.honda-airblade.week.min }}/tuần.</li>
+<li>Giá tháng dành cho người thân ở lại lâu, ví dụ Click hoặc Mio tham khảo {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }}/tháng.</li>
 <li>Ô ghi "liên hệ" áp dụng cho xe 50cc, xe máy điện và xe đạp điện: bảng không công bố con số, bạn phải hỏi cửa hàng.</li>
 </ul>
 <p>Với các dòng không có trong bảng như Lead hay SH, đừng tự suy ra giá từ một dòng trông giống; hãy hỏi cửa hàng xem còn xe và mức áp dụng là bao nhiêu.</p>
 <h2>Dải giá cộng dồn khi nhà bạn thuê nhiều chiếc</h2>
-<p>Khi một ô ghi hai đầu, chẳng hạn Vision 800.000đ đến 1.000.000đ/tuần, độ chênh của một xe chỉ là 200.000đ. Nhưng khi cộng hai, ba chiếc cùng có dải giá, khoảng chênh dồn lại và tổng thực tế có thể lệch khá xa so với ước tính ban đầu. Quy tắc an toàn cho ngân sách gia đình là cộng theo đầu cao của mọi dải, rồi coi phần chênh xuống là khoản dư dự phòng cho xăng hoặc gửi xe.</p>
+<p>Khi một ô ghi hai đầu, chẳng hạn Vision {{ price.honda-vision.week.min }} đến {{ price.honda-vision.week.max }}/tuần, độ chênh của một xe chỉ là 200.000đ. Nhưng khi cộng hai, ba chiếc cùng có dải giá, khoảng chênh dồn lại và tổng thực tế có thể lệch khá xa so với ước tính ban đầu. Quy tắc an toàn cho ngân sách gia đình là cộng theo đầu cao của mọi dải, rồi coi phần chênh xuống là khoản dư dự phòng cho xăng hoặc gửi xe.</p>
 <p>Khi đặt nhiều xe một lúc, hãy đề nghị cửa hàng xác nhận giá cho từng chiếc thay vì một con số tổng chung chung, để lúc nhận và trả xe dễ đối chiếu.</p>
 <h2>Tìm mốc chuyển gói riêng cho từng xe</h2>
 <p>Đây là phần gia đình hay bỏ qua nhất: mỗi xe trong nhà có lịch dùng riêng, nên mốc chuyển từ giá ngày sang giá tuần cũng phải tính riêng cho từng chiếc.</p>
