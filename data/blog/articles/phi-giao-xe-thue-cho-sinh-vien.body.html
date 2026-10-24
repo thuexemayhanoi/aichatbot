@@ -1,7 +1,7 @@
 <p>Với sinh viên, mỗi khoản chi nhỏ đều được cân nhắc, và phí giao xe là khoản dễ bị bỏ quên khi so giá thuê. Bạn thấy giá thuê theo ngày hay theo tháng rất hợp túi tiền, nhưng chưa tính đến chuyện chiếc xe đi từ cửa hàng đến ký túc xá hay phòng trọ bằng cách nào. Bài viết này giúp bạn quyết định khi nào nên nhờ giao xe, khi nào tự đến lấy là hợp lý hơn, và cách hỏi phí giao sao cho rõ ràng ngay từ tin nhắn đầu tiên.</p>
 
 <h2>Phí giao xe là khoản riêng, không nằm trong giá thuê</h2>
-<p>Giá thuê tham khảo được tính cho chiếc xe theo thời gian bạn sử dụng: Honda Wave khoảng 150.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày và 1.000.000đ–1.200.000đ/tháng, Honda Vision khoảng 1.800.000đ–2.000.000đ/tháng. Phí giao là phần dịch vụ đưa xe tới địa chỉ của bạn và tùy vào quãng đường, khung giờ. Cửa hàng không công bố một con số cố định cho mọi trường hợp; thời gian và phí giao sẽ được báo cụ thể trước khi bạn chốt đơn.</p>
+<p>Giá thuê tham khảo được tính cho chiếc xe theo thời gian bạn sử dụng: Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày, Honda Click hoặc Yamaha Mio khoảng {{ price.honda-click.day.min }}/ngày và {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng, Honda Vision khoảng {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng. Phí giao là phần dịch vụ đưa xe tới địa chỉ của bạn và tùy vào quãng đường, khung giờ. Cửa hàng không công bố một con số cố định cho mọi trường hợp; thời gian và phí giao sẽ được báo cụ thể trước khi bạn chốt đơn.</p>
 <p>Vì vậy, khi so sánh chi phí, hãy cộng cả hai phần: giá thuê theo bảng tham khảo trên trang <a href="/gia-thue/">giá thuê</a> và phí giao được báo riêng. Kiến thức nền về loại phí này có trong bài <a href="/blog/thue-xe/phi-giao-xe-thue/">phí giao xe thuê</a>.</p>
 
 <h2>Khi nào sinh viên nên nhờ giao xe</h2>
@@ -27,7 +27,7 @@
 <p>Để nhận được báo giá rõ ràng, tin nhắn hoặc cuộc gọi của bạn nên trả lời trước những câu cửa hàng sẽ hỏi. Một mẫu ngắn gọn:</p>
 <ol>
 <li>Địa chỉ nhận: tên ký túc xá hoặc số nhà, ngõ, phường, kèm định vị bản đồ.</li>
-<li>Thời gian: ngày và khung giờ bạn có mặt, nhớ rằng giao xe chỉ thực hiện từ 09:00 đến 21:00.</li>
+<li>Thời gian: ngày và khung giờ bạn có mặt, nhớ rằng giao xe chỉ thực hiện từ {{ business.hours.open }} đến {{ business.hours.close }}.</li>
 <li>Thời hạn thuê: theo ngày, tuần hay tháng, vì điều này ảnh hưởng tới cách tính tổng chi phí.</li>
 <li>Số xe: một chiếc hay nhiều chiếc cho cả nhóm.</li>
 <li>Câu hỏi về trả xe: khi hết hạn, bạn tự mang xe về hay cần cửa hàng đến nhận lại.</li>

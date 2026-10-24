@@ -20,7 +20,7 @@
 <li>Nếu tôi không kịp trả trước 21:00 Chủ nhật, phương án sáng thứ Hai được xử lý thế nào?</li>
 </ol>
 <p>Câu hỏi số một quan trọng hơn nhiều người nghĩ. Khách nhận xe lúc 10:00 thứ Bảy thường mặc định mình được giữ xe đến hết tối Chủ nhật, trong khi một kỳ hai ngày tính theo 24 giờ lại kết thúc vào 10:00 thứ Hai. Ngược lại, kỳ thuê một ngày rưỡi có thể kết thúc ngay chiều Chủ nhật. Hiểu nhầm mốc kết thúc là nguồn gốc của rất nhiều khoản trễ không đáng có.</p>
-<p>Để hình dung độ lớn của một ngày thuê thêm, bạn có thể xem giá tham khảo trên trang <a href="/gia-thue/">bảng giá thuê</a>: Honda Wave khoảng 150.000đ/ngày, Honda Vision và Air Blade khoảng 200.000đ/ngày. Đây chỉ là mức tham khảo, cửa hàng sẽ xác nhận theo xe và thời điểm cụ thể.</p>
+<p>Để hình dung độ lớn của một ngày thuê thêm, bạn có thể xem giá tham khảo trên trang <a href="/gia-thue/">bảng giá thuê</a>: Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày, Honda Vision và Air Blade khoảng {{ price.honda-airblade.day.min }}/ngày. Đây chỉ là mức tham khảo, cửa hàng sẽ xác nhận theo xe và thời điểm cụ thể.</p>
 
 <h2>Ba tình huống trễ cuối tuần và cách xử lý</h2>
 <h3>Đi chơi ngoại thành và về muộn</h3>
@@ -63,7 +63,7 @@
 <h3>Phí trễ dịp cuối tuần có khác dịp lễ không?</h3>
 <p>Nguyên tắc giống nhau, nhưng dịp lễ lịch xe còn kín hơn và đường còn đông hơn. Bạn có thể so sánh trong bài <a href="/blog/thue-xe/phi-tre-han-khi-thue-xe-ky-nghi-le/">phí trễ hạn dịp nghỉ lễ</a>.</p>
 <h3>Có thể nhờ cửa hàng thu xe tận nơi để khỏi trễ không?</h3>
-<p>Giao nhận tận nơi chỉ thực hiện trong giờ 09:00 đến 21:00, thời gian và phí phải xác nhận trước. Phương án này nên đặt từ trước, không nên dùng như cách chữa cháy phút cuối.</p>
+<p>Giao nhận tận nơi chỉ thực hiện trong giờ {{ business.hours.open }} đến {{ business.hours.close }}, thời gian và phí phải xác nhận trước. Phương án này nên đặt từ trước, không nên dùng như cách chữa cháy phút cuối.</p>
 
 <h2>Kết luận</h2>
 <p>Phí trễ hạn cuối tuần gần như luôn bắt nguồn từ ba thứ: hiểu nhầm mốc kết thúc, lịch Chủ nhật quá dày và im lặng quá lâu. Hỏi rõ cách tính khi chốt xe, quyết định gia hạn từ tối thứ Bảy và nhắn báo ngay khi lịch có dấu hiệu lệch là đủ để khoản này không xuất hiện. Trước kỳ thuê tới, bạn có thể hỏi trợ lý MotoAI của {{ business.brand }} về mốc trả xe, hoặc gọi {{ business.contact.phone_display }} để được xác nhận. Cửa hàng ở {{ business.address.full }}, mở {{ business.hours.display }}. Xem thêm các bài trong <a href="/blog/thue-xe/">chuyên mục thuê xe</a> hoặc quay về <a href="/">trang chủ</a>.</p>

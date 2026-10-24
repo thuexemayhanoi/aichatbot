@@ -17,7 +17,7 @@
 <h2>Những câu hỏi trợ lý trả lời tốt</h2>
 <p>Qua thực tế tư vấn, nhóm câu hỏi người thuê ở Hà Nội gửi nhiều nhất xoay quanh giá, giấy tờ, giờ nhận xe và giao xe. Trợ lý xử lý tốt các nội dung sau:</p>
 <ul>
-<li>Giá tham khảo theo ngày, tuần, tháng: ví dụ Honda Wave khoảng 150.000đ/ngày, Honda Vision khoảng 200.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày. Mọi con số đều là tham khảo và được đối chiếu trên trang <a href="/gia-thue/">bảng giá thuê</a>.</li>
+<li>Giá tham khảo theo ngày, tuần, tháng: ví dụ Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày, Honda Vision khoảng {{ price.honda-vision.day.min }}/ngày, Honda Click hoặc Yamaha Mio khoảng {{ price.honda-click.day.min }}/ngày. Mọi con số đều là tham khảo và được đối chiếu trên trang <a href="/gia-thue/">bảng giá thuê</a>.</li>
 <li>Mức đặt cọc theo loại xe, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, được xác nhận khi đặt.</li>
 <li>Giờ hoạt động {{ business.hours.display }} và việc giao xe chỉ diễn ra trong khung giờ này.</li>
 <li>Giấy tờ cần chuẩn bị và các bước nhận xe, trả xe.</li>
@@ -29,7 +29,7 @@
 <h3>Khách du lịch ở khách sạn phố cổ</h3>
 <p>Bạn có ba ngày và muốn chạy quanh hồ, sang Tây Hồ buổi chiều. Hãy gõ rõ: "ở khách sạn phố cổ, thuê ba ngày, một người, chưa quen xe số". Trợ lý sẽ nghiêng về xe ga dễ lái, nhắc bạn về giờ giao xe trong ngày và lưu ý rằng chi phí, thời gian giao phải được cửa hàng xác nhận trước khi chốt. Bài <a href="/blog/app/dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi/">dùng ứng dụng thuê xe khi đi du lịch Hà Nội</a> có thêm gợi ý cho nhóm khách này.</p>
 <h3>Sinh viên hoặc người đi làm ở Gia Lâm, Long Biên</h3>
-<p>Ở gần cửa hàng, bạn thường chỉ cần biết giá tháng và có xe nào sẵn không. Trợ lý trả lời ngay khung tham khảo, chẳng hạn Honda Vision khoảng 1.800.000đ–2.000.000đ/tháng, rồi khuyên bạn ghé trực tiếp để xem xe trước khi nhận.</p>
+<p>Ở gần cửa hàng, bạn thường chỉ cần biết giá tháng và có xe nào sẵn không. Trợ lý trả lời ngay khung tham khảo, chẳng hạn Honda Vision khoảng {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng, rồi khuyên bạn ghé trực tiếp để xem xe trước khi nhận.</p>
 <h3>Người nước ngoài thuê dài ngày ở Tây Hồ</h3>
 <p>Câu hỏi thường là về giấy phép lái xe và bảo hiểm. Trợ lý sẽ nói thẳng một điểm quan trọng: cửa hàng không cung cấp bảo hiểm, người thuê tự chuẩn bị bảo hiểm xe máy của mình. Phần giấy phép thì trợ lý chỉ giải thích chung và khuyên bạn tự kiểm tra quy định, vì đây là trách nhiệm của người lái.</p>
 
