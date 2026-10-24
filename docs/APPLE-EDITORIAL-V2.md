@@ -1,6 +1,6 @@
 # Apple-inspired Blog V2 — Design contract
 
-Scope: **content/blog experience only** at `/blog/`, its hubs, topic clusters, articles, search results and other generated content screens. The separate Agent/chat home at `/` and the conversation engine are not redesigned in this change.
+Scope: **content/blog experience only** at `/blog/`, its hubs, topic clusters, articles, search results and other generated content screens. The conversation engine is not redesigned in this change. (v76: the chat app moved to `/agent/`; `/` is the V3 homepage — see `docs/HOMEPAGE-V3.md`.)
 
 ## Intent
 
@@ -19,9 +19,9 @@ Build a clean, premium, Apple-inspired editorial reading experience without copy
 
 `assets/css/src/blog.css` is the editable source. `tools/css-build.mjs` generates `assets/css/blog.css` deterministically. Tokens are in `:root` and dark-mode token block; the V2 layer remains at the end to override legacy visual presentation while keeping behavioral layout contracts. `config/blog-ui.json` supplies theme colors and shared copy. `tools/app-shell.mjs` and `tools/build-blog.mjs` remain the canonical content renderers.
 
-### Chat homepage `/` (v74)
+### Agent app `/agent/` (v74; moved from `/` in v76)
 
-The homepage loads only `assets/css/style.css`, so the build copies the V2 tokens it needs from the TOKENS of `assets/css/src/blog.css` into the marked `@generated chat-tokens` block (`syncChatTokens` in `tools/css-build.mjs`, list `CHAT_TOKENS`). `tools/home-page.mjs` generates `index.html` from `data/site/home.html.tpl` and writes the drawer (`renderDrawer` in `tools/menu-drawer.mjs`), the brand mark, the dock/send icons (`icon()` set in `tools/blog-components.mjs`), the light/dark `theme-color` from `config/blog-ui.json` and the service-worker precache URL into `index.html`. Edit those sources, never the generated block or markup; `tests/unit/home-design-v2.test.js` fails on drift. The drawer, Menu button, brand mark and two-line menu glyph are one implementation in `style.css`, shared by the homepage and every content page. Hover styles live only under `(hover: hover) and (pointer: fine)` so a tapped control never stays highlighted on iPhone.
+The Agent app page loads only `assets/css/style.css`, so the build copies the V2 tokens it needs from the TOKENS of `assets/css/src/blog.css` into the marked `@generated chat-tokens` block (`syncChatTokens` in `tools/css-build.mjs`, list `CHAT_TOKENS`). `tools/agent-page.mjs` generates `agent/index.html` from `data/site/agent.html.tpl` and writes the drawer (`renderDrawer` in `tools/menu-drawer.mjs`), the brand mark, the dock/send icons (`icon()` set in `tools/blog-components.mjs`), the light/dark `theme-color` from `config/blog-ui.json`, the build marker and the service-worker precache URLs into `agent/index.html`. Edit those sources, never the generated block or markup; `tests/unit/home-design-v2.test.js` fails on drift. The drawer, Menu button, brand mark and two-line menu glyph are one implementation in `style.css`, shared by the Agent app and every content page. Hover styles live only under `(hover: hover) and (pointer: fine)` so a tapped control never stays highlighted on iPhone.
 
 ## Non-negotiable preservation
 
