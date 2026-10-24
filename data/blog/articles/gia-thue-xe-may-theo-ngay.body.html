@@ -17,7 +17,7 @@
 <p>Giá niêm yết theo ngày thường chưa gồm tất cả. Các khoản bạn cần hỏi rõ ngay lúc đặt xe:</p>
 <ul>
 <li>Xăng: xe nhận ở mức nào và trả xe ở mức nào — phổ biến là nhận đủ bình hoặc gần đủ và trả tương tự; đổ thừa phần xăng không được hoàn lại.</li>
-<li>Đặt cọc: dao động 2.000.000đ đến 5.000.000đ tùy dòng xe, hoàn đủ khi bạn trả xe đúng hiện trạng.</li>
+<li>Đặt cọc: dao động {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy dòng xe, hoàn đủ khi bạn trả xe đúng hiện trạng.</li>
 <li>Giao xe tận nơi: có tính thêm không và cần đặt trước bao lâu — nếu ở gần cửa hàng thì tự đến nhận thường chủ động hơn.</li>
 <li>Thiệt hại trong giờ thuê: quy định bồi thường vết xước, thủng lốp, hỏng gương ra sao để bạn biết mình chịu phần nào.</li>
 </ul>
@@ -44,9 +44,9 @@
 
 <p>Bảng tóm tắt giá ngày tham khảo:</p>
 <ul>
-<li>Xe số phổ thông (Honda Wave): khoảng 150.000đ/ngày.</li>
-<li>Xe ga phổ biến (Honda Vision, Air Blade): khoảng 200.000đ/ngày.</li>
-<li>Xe ga nhỏ gọn (Honda Click, Yamaha Mio): khoảng 150.000đ/ngày.</li>
+<li>Xe số phổ thông (Honda Wave): khoảng {{ price.honda-wave.day.min }}/ngày.</li>
+<li>Xe ga phổ biến (Honda Vision, Air Blade): khoảng {{ price.honda-airblade.day.min }}/ngày.</li>
+<li>Xe ga nhỏ gọn (Honda Click, Yamaha Mio): khoảng {{ price.honda-click.day.min }}/ngày.</li>
 <li>Nhóm xe dưới 50cc: xác nhận trực tiếp với cửa hàng theo từng thời điểm.</li>
 </ul>
 <p>Mọi mức trên đều cần xác nhận lại theo thực tế tại thời điểm đặt — cách nhanh nhất là hỏi trợ lý trên trang chủ kèm dòng xe và số ngày cụ thể.</p>

@@ -3,7 +3,7 @@
 <h2>Vì sao nên đi "xa trước, gần sau" ở bờ bắc</h2>
 <p>Điểm nhận xe nằm trên trục Nguyễn Văn Cừ, ngay cửa ngõ Long Biên. Nếu bạn ngắm cầu Long Biên đầu tiên rồi mới chạy dần ra Gia Lâm, cuối ngày sẽ là chặng về dài nhất đúng lúc đường đông giờ tan tầm. Đảo thứ tự lại, bạn đi các điểm xa của Gia Lâm vào buổi sáng, ăn trưa ở làng gốm, chiều men đê quay về, rồi kết thúc ở cầu và quanh Bồ Đề, chỉ cách chỗ trả xe vài phút chạy. Vòng này giúp phần đầu óc lo giờ giấc nhẹ hẳn khi trời tối.</p>
 
-<h2>Lịch trình gợi ý từ 09:00 đến 21:00</h2>
+<h2>Lịch trình gợi ý từ {{ business.hours.open }} đến {{ business.hours.close }}</h2>
 <ol>
 <li><strong>09:00 – 09:30:</strong> nhận xe, kiểm tra phanh, đèn, còi, lốp và đồng hồ xăng; đổ đầy bình ở cây xăng gần nhất.</li>
 <li><strong>09:30 – 11:00:</strong> chạy về phía đông bắc tới khu Phù Đổng, thăm đền thờ Thánh Gióng, nơi diễn ra hội Gióng vào mồng 9 tháng 4 âm lịch hằng năm. Ngày thường khu đền vắng, đi dạo thong thả.</li>
@@ -27,7 +27,7 @@
 <p>Nếu bạn định làm gốm và muốn nhận sản phẩm nung xong, hỏi xưởng trước về cách gửi hoặc hẹn ngày lấy, vì việc này thường không xong trong cùng một buổi. Bài <a href="/blog/dia-phuong/lang-gom-bat-trang/">làng gốm Bát Tràng</a> có thêm thông tin về các hoạt động ở làng.</p>
 
 <h2>Chọn xe và chuẩn bị cho một ngày ở bờ bắc</h2>
-<p>Đường bờ bắc chủ yếu bằng phẳng, xen đoạn đê và đường làng hẹp. Một chiếc xe ga phổ thông hay xe số đều đi tốt. Giá tham khảo: Honda Wave 150.000đ/ngày, Honda Click hoặc Yamaha Mio 150.000đ/ngày, Honda Vision hay Air Blade 200.000đ/ngày; mức cụ thể cửa hàng xác nhận khi đặt. Nếu bạn định mua gốm nhiều, xe có cốp rộng hoặc giá để đồ phía sau sẽ đỡ vất vả.</p>
+<p>Đường bờ bắc chủ yếu bằng phẳng, xen đoạn đê và đường làng hẹp. Một chiếc xe ga phổ thông hay xe số đều đi tốt. Giá tham khảo: Honda Wave {{ price.honda-wave.day.min }}/ngày, Honda Click hoặc Yamaha Mio {{ price.honda-click.day.min }}/ngày, Honda Vision hay Air Blade {{ price.honda-airblade.day.min }}/ngày; mức cụ thể cửa hàng xác nhận khi đặt. Nếu bạn định mua gốm nhiều, xe có cốp rộng hoặc giá để đồ phía sau sẽ đỡ vất vả.</p>
 <p>Với khoản đặt cọc, cửa hàng áp dụng từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe. Gói thuê không bao gồm bảo hiểm, nên bạn tự chuẩn bị bảo hiểm xe máy trước khi lên đường. Mang theo nước, kem chống nắng, áo mưa mỏng và sạc dự phòng cho điện thoại dùng bản đồ.</p>
 
 <h2>Phương án khi trời mưa hoặc nắng gắt</h2>
@@ -59,4 +59,4 @@
 <p>Nên nhắn trước ít nhất một ngày để chốt dòng xe, giờ nhận và mức cọc, nhất là vào dịp lễ.</p>
 
 <h2>Kết luận</h2>
-<p>Đi Gia Lâm và Long Biên trong ngày dễ chịu nhất khi bạn tôn trọng khung 09:00–21:00: chạy xa trước, gần sau, nghỉ trưa ở làng gốm và kết thúc bên cầu. {{ business.brand }} tại {{ business.address.full }} mở {{ business.hours.display }}, bạn có thể gọi {{ business.contact.phone_display }} để giữ xe cho ngày đi. Các lịch trình khác của bờ bắc nằm trong bài tổng quan <a href="/blog/dia-phuong/gia-lam-va-long-bien/">Gia Lâm và Long Biên</a> và <a href="/blog/dia-phuong/">chuyên mục địa phương</a>; trợ lý luôn sẵn sàng trên <a href="/">trang chủ</a>.</p>
+<p>Đi Gia Lâm và Long Biên trong ngày dễ chịu nhất khi bạn tôn trọng khung {{ business.hours.open }}–{{ business.hours.close }}: chạy xa trước, gần sau, nghỉ trưa ở làng gốm và kết thúc bên cầu. {{ business.brand }} tại {{ business.address.full }} mở {{ business.hours.display }}, bạn có thể gọi {{ business.contact.phone_display }} để giữ xe cho ngày đi. Các lịch trình khác của bờ bắc nằm trong bài tổng quan <a href="/blog/dia-phuong/gia-lam-va-long-bien/">Gia Lâm và Long Biên</a> và <a href="/blog/dia-phuong/">chuyên mục địa phương</a>; trợ lý luôn sẵn sàng trên <a href="/">trang chủ</a>.</p>

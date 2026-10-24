@@ -24,7 +24,7 @@
 <p>Một tin nhắn "ok em" chưa phải là xác nhận đầy đủ. Hãy chắc chắn bạn nhận được câu trả lời rõ ràng cho cả bốn điểm sau.</p>
 <ul>
 <li><strong>Thời điểm trả mới:</strong> ngày và giờ cụ thể, được nhân viên nhắc lại.</li>
-<li><strong>Tổng tiền thêm:</strong> tính theo giá tham khảo hiện hành, ví dụ Honda Vision 200.000đ/ngày hoặc Honda Wave 150.000đ/ngày, và cách thanh toán phần thêm.</li>
+<li><strong>Tổng tiền thêm:</strong> tính theo giá tham khảo hiện hành, ví dụ Honda Vision {{ price.honda-vision.day.min }}/ngày hoặc Honda Wave {{ price.honda-wave.day.min }}/ngày, và cách thanh toán phần thêm.</li>
 <li><strong>Khoản cọc:</strong> giữ nguyên hay điều chỉnh, luôn nằm trong khung {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
 <li><strong>Giấy tờ và tình trạng xe:</strong> có cần mang xe qua kiểm tra giữa kỳ không, nhất là khi gia hạn dài.</li>
 </ul>
@@ -33,9 +33,9 @@
 <h2>Gia hạn ngắn hay chuyển sang gói dài</h2>
 <p>Nếu bạn gia hạn liên tục từng vài ngày, hãy dừng lại tính thử. Với một số mẫu xe, chuyển sang gói tuần hoặc gói tháng có thể hợp lý hơn so với cộng dồn giá ngày.</p>
 <ul>
-<li>Honda Vision: tham khảo 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng.</li>
-<li>Honda Air Blade: tham khảo 800.000đ/tuần, 1.400.000đ/tháng.</li>
-<li>Honda Click hoặc Yamaha Mio: tham khảo 600.000đ–700.000đ/tuần, 1.000.000đ–1.200.000đ/tháng.</li>
+<li>Honda Vision: tham khảo {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng.</li>
+<li>Honda Air Blade: tham khảo {{ price.honda-airblade.week.min }}/tuần, {{ price.honda-airblade.month.min }}/tháng.</li>
+<li>Honda Click hoặc Yamaha Mio: tham khảo {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng.</li>
 </ul>
 <p>Khi nhắn gia hạn, bạn có thể hỏi luôn: "Nếu em giữ thêm một tuần thì tính theo gói tuần được không?" Bảng giá đầy đủ nằm ở trang <a href="/gia-thue/">giá thuê</a>, và mọi mức trên đều cần cửa hàng xác nhận lại.</p>
 
