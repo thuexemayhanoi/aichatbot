@@ -99,8 +99,30 @@ export function syncChatTokens(root = ROOT) {
   return out;
 }
 
+/* The embed launcher (embed.js, loaded by partner sites and the WordPress
+   plugin) takes its fill and glyph colors from the same light TOKENS. */
+export const EMBED_JS = 'embed.js';
+const EMBED_MARK = /background: '#[0-9a-f]{3,8}', color: '#[0-9a-f]{3,8}', \/\* @tokens (--[\w-]+) (--[\w-]+)([^*]*)\*\//i;
+
+export function syncEmbedTokens(root = ROOT) {
+  const path = join(root, EMBED_JS);
+  const js = readFileSync(path, 'utf8');
+  const m = EMBED_MARK.exec(js);
+  if (!m) throw new Error(`css-build: @tokens marker missing in ${EMBED_JS}`);
+  const light = /:root\s*\{([^}]*)\}/.exec(readFileSync(join(root, CSS_SOURCE), 'utf8'))?.[1] ?? '';
+  const value = (name) => {
+    const v = declarations(light).find(([n]) => n === name)?.[1];
+    if (!/^#[0-9a-f]{3,8}$/i.test(v ?? '')) throw new Error(`css-build: ${name} must be a hex color in ${CSS_SOURCE}`);
+    return v;
+  };
+  const out = js.replace(EMBED_MARK, `background: '${value(m[1])}', color: '${value(m[2])}', /* @tokens ${m[1]} ${m[2]}${m[3]}*/`);
+  if (out !== js) writeFileSync(path, out, 'utf8');
+  return out;
+}
+
 if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) {
   const out = buildCss();
   syncChatTokens();
+  syncEmbedTokens();
   console.log(`${CSS_OUTPUT}: ${out.length} bytes; ${CHAT_CSS}: chat tokens synchronized`);
 }

@@ -10,7 +10,7 @@ The chat homepage and every generated blog/content page now share the same menu 
 
 ## Runtime
 - `tools/taxonomy.mjs` resolves the normalized menu tree
-- `tools/menu-drawer.mjs` renders the identical chat and content drawers and synchronizes just the chat root drawer on rebuild
+- `tools/menu-drawer.mjs` renders the identical chat and content drawers; `tools/home-page.mjs` writes the chat drawer into `index.html` (generated from `data/site/home.html.tpl`) on rebuild
 - `tools/app-shell.mjs` renders content drawer plus scrollable desktop dropdowns
 - `tools/build-blog.mjs` rebuilds menu across all pages deterministically, with asset-hash cache busting
 - `assets/css/style.css` and `assets/css/src/blog.css` support nested links, mobile safe area and light/dark

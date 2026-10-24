@@ -57,7 +57,8 @@ const LABEL_KEYS = ['crumbHome', 'crumbBlog', 'crumbPage', 'kickerHub', 'kickerC
   'hubSibling', 'clusterExplore', 'hubAll', 'clusterLatest', 'topicContext', 'tocTitle', 'readingTime', 'updated',
   'articleCount', 'pageOf', 'pagePrev', 'pageNext', 'routeTitle', 'factPublished', 'factCategories', 'factHours',
   'searchPlaceholder', 'searchNote', 'searchCount', 'searchEmpty', 'searchError', 'latestTitle', 'latestNote',
-  'indexTitle', 'indexNote', 'footerDesc', 'footerNap', 'footerHours'];
+  'indexTitle', 'indexNote', 'footerDesc', 'footerNap', 'footerHours', 'hubsTitle', 'priceConfirm',
+  'emptyBlog', 'emptyHub', 'emptyScopeHub', 'emptyScopeCluster'];
 for (const key of LABEL_KEYS) {
   if (typeof BLOG_UI.labels?.[key] !== 'string' || !BLOG_UI.labels[key].trim()) throw new Error(`blog-ui: labels.${key} must be a non-empty string`);
 }
@@ -74,15 +75,47 @@ export const esc = (s) => String(s)
   .replace(/</g, '&lt;')
   .replace(/>/g, '&gt;');
 
-/** Resolve {{ business.x.y }} / {{ business.x.y | vnd }} placeholders from
- *  verified data/business/business.json. {{ business.array | list }} joins
- *  arrays with ", ". Unknown paths throw — copy can never go stale. */
-export function resolveFacts(html, business) {
-  return html.replace(/\{\{\s*business\.([a-z0-9_.]+)(?:\s*\|\s*(\w+))?\s*\}\}/gi, (_, path, filter) => {
-    const value = path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), business);
-    if (value === undefined) throw new Error(`unresolved business fact: business.${path}`);
-    if (filter === 'list' && Array.isArray(value)) return value.join(', ');
-    return typeof value === 'number' ? value.toLocaleString('vi-VN') + 'đ' : String(value);
+/** Verified rental prices (data/business/pricing.json): the ONE price source
+ *  for the price page, the price-glance slot, article bodies and the homepage. */
+export const PRICING = Object.freeze(JSON.parse(readFileSync(join(ROOT, 'data/business/pricing.json'), 'utf8')));
+export const PRICE_UNITS = ['day', 'week', 'month'];
+
+/** price.<vehicle-id>.<day|week|month>.<min|max>, or price.from.<unit> =
+ *  the lowest verified rate of that unit. A vehicle without a published
+ *  rate (null) is unresolved: a price is never invented. */
+export function priceFact(pricing, path) {
+  const [id, unit, bound, extra] = path.split('.');
+  if (!PRICE_UNITS.includes(unit) || extra !== undefined) return undefined;
+  if (id === 'from') {
+    if (bound !== undefined) return undefined;
+    const rates = pricing.vehicles.map((v) => v.rates?.[unit]?.min).filter(Number.isFinite);
+    return rates.length ? Math.min(...rates) : undefined;
+  }
+  if (bound !== 'min' && bound !== 'max') return undefined;
+  const value = pricing.vehicles.find((v) => v.id === id)?.rates?.[unit]?.[bound];
+  return Number.isFinite(value) ? value : undefined;
+}
+
+const FACT_FILTERS = {
+  vnd: (v) => (typeof v === 'number' ? v.toLocaleString('vi-VN') + 'đ' : String(v)),
+  list: (v) => (Array.isArray(v) ? v.join(', ') : String(v)),
+  raw: (v) => String(v),                                   // JSON-LD numbers: 150000
+  tel: (v) => String(v).replace(/^tel:/, ''),              // tel:+8494… -> +8494…
+  intl: (v) => String(v).replace(/^0/, '+84 ')             // 0942 467 674 -> +84 942 467 674
+};
+
+/** Resolve {{ business.x.y }} facts (data/business/business.json) and
+ *  {{ price.<id>.<unit>.<min|max> }} rates (pricing.json); numbers render as
+ *  vi-VN đồng ("2.000.000đ"). Filters: | vnd | list | raw | tel | intl.
+ *  Unknown paths or filters throw — copy can never go stale. */
+export function resolveFacts(html, business, pricing = PRICING) {
+  return html.replace(/\{\{\s*(business|price)\.([a-z0-9_.-]+)(?:\s*\|\s*(\w+))?\s*\}\}/gi, (_, ns, path, filter) => {
+    const value = ns === 'price' ? priceFact(pricing, path)
+      : path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), business);
+    if (value === undefined || value === null) throw new Error(`unresolved ${ns} fact: ${ns}.${path}`);
+    const format = FACT_FILTERS[filter ?? 'vnd'];
+    if (!format) throw new Error(`unknown fact filter: ${filter}`);
+    return format(value);
   });
 }
 
@@ -94,6 +127,11 @@ export function t(key, vars = {}, business = null) {
   if (text === undefined) throw new Error(`blog-ui: unknown label ${key}`);
   const filled = text.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m));
   return business ? resolveFacts(filled, business) : filled;
+}
+
+/** Empty-listing note (config labels), with the Ask-Agent link. */
+export function emptyNote(key, vars = {}) {
+  return `<p class="blog-empty">${esc(t(key, vars)).replace('{agent}', '<a href="/">Agent</a>')}</p>`;
 }
 
 /** Inline SVG icon set — one place for every glyph the shell draws.

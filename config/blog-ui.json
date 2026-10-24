@@ -118,7 +118,13 @@
     "indexNote": "{cats} chuyên mục, {n} bài — đi thẳng tới phần bạn cần.",
     "footerDesc": "Cẩm nang thuê xe máy & xe điện — Thuê xe máy Hà Nội {{ business.brand }}",
     "footerNap": "Thuê xe máy {{ business.brand }} · {{ business.address.full }}",
-    "footerHours": "{{ business.hours.display }} mỗi ngày"
+    "footerHours": "{{ business.hours.display }} mỗi ngày",
+    "hubsTitle": "Nhóm chủ đề chính",
+    "priceConfirm": "Xác nhận trực tiếp",
+    "emptyBlog": "Chưa có bài đã xuất bản. Hỏi {agent} nếu cần thông tin ngay.",
+    "emptyHub": "Chưa có bài đã xuất bản trong {scope}. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi {agent} nếu cần thông tin ngay.",
+    "emptyScopeHub": "danh mục này",
+    "emptyScopeCluster": "nhóm này"
   },
   "family": {
     "title": "Cùng chủ đề",

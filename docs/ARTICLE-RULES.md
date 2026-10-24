@@ -22,7 +22,8 @@
 
 - Không filler, không đoạn lặp, không spun content, không bịa số liệu.
 - Không bịa thông số kỹ thuật xe (pin, tốc độ, phạm vi…). Nếu không chắc: viết hướng dẫn kiểm tra/cách hỏi, không viết con số.
-- Scope dịch vụ: không tuyên bố cho thuê toàn quốc. Thông tin cửa hàng chỉ từ `data/business/business.json` qua placeholder `{{ business.* }}`.
+- Scope dịch vụ: không tuyên bố cho thuê toàn quốc. Thông tin cửa hàng chỉ từ `data/business/business.json` qua placeholder `{{ business.* }}` (ví dụ `{{ business.contact.phone_display }}`, `{{ business.address.full }}`, `{{ business.hours.display }}`, `{{ business.policies.deposit.min | vnd }}`).
+- Giá thuê theo xe chỉ từ `data/business/pricing.json` qua `{{ price.<id-xe>.<day|week|month>.<min|max> }}` (ví dụ `{{ price.honda-vision.day.min }}/ngày`; giá thấp nhất: `{{ price.from.day }}`). Xe chưa có giá công bố (50cc, xe điện) không có placeholder giá: viết "liên hệ để biết giá". Viết số trực tiếp vẫn được publish nhưng bị cảnh báo `facts-as-placeholders` (−5) vì sẽ cũ khi dữ liệu đổi; `node tools/fact-bind.mjs apply` tự đổi số trùng dữ liệu hiện hành thành placeholder mà không đổi chữ hiển thị.
 - Bài LOCAL: góc độ riêng từng hành trình/chủ đề; cấm “app thuê xe máy quận X” nhân bản hàng loạt.
 
 ## Legal gate (bài SAFE bắt buộc)

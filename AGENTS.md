@@ -13,7 +13,7 @@
 - `data/blog/content-matrix.csv` — 2.000 ID nền (BA-0001…BA-2000, đóng băng) + hàng SEO nối tiếp (BA-2001+, do owner quyết từ đề xuất engine/battle matrix; kích thước khai báo ở `tools/matrix-size.mjs`)/taxonomy/URL/từ khóa/status. Lấy ID + slug + title từ đây, không tự sáng tác.
 - `data/blog/published.json` — 330+ manifest của bài viết; chỉ factory đăng ký metadata mới. Không tạo entry trùng.
 - `data/blog/articles/<slug>.body.html` — prose HTML do AI bên ngoài viết.
-- `data/business/business.json` và `docs/ARTICLE-RULES.md` — facts kinh doanh + rubric QA.
+- `data/business/business.json`, `data/business/pricing.json` và `docs/ARTICLE-RULES.md` — facts kinh doanh, giá thuê + rubric QA. Body chỉ viết dữ kiện/giá qua placeholder `{{ business.* }}` / `{{ price.* }}` để đổi một chỗ là toàn blog cập nhật; bản đồ "đổi gì → sửa ở đâu": `docs/SINGLE-SOURCE.md`.
 - `docs/state/blog-factory.transaction.json` — marker phục hồi nếu run đứt giữa publish. Không chạm tay.
 - `docs/state/writer-assignments.json` — di sản multi-writer, KHÔNG dùng để chọn ID sau migration.
 

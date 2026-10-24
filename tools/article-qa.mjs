@@ -27,7 +27,9 @@
  *   no-duplicate-paragraphs / no-duplicate-sentences /
  *   no-cross-article-duplicate / no-cannibalization / title-meta-valid /
  *   seo-ownership / local-angle / safe-legal-gate / no-external-links /
- *   retrieval-consistency
+ *   retrieval-consistency / facts-as-placeholders (shop facts and verified
+ *   prices written literally instead of {{ business.* }} / {{ price.* }} —
+ *   they would go stale when business.json / pricing.json change)
  *
  * Usage:
  *   node tools/article-qa.mjs <BA-id>            # human report, exit 0/1
@@ -42,6 +44,7 @@ import { resolveInternal } from './site-audit.mjs';
 import { resolveFacts, HUBS } from './build-blog.mjs';
 import { parseMatrix, MATRIX, MANIFEST } from './blog-factory.mjs';
 import { CONTENT_MIN_WORDS, CONTENT_MAX_WORDS } from './writer-content-policy.mjs';
+import { bindFacts } from './fact-bind.mjs';
 
 export const ROOT = process.env.MOTOAI_FACTORY_ROOT
   ?? join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -296,6 +299,12 @@ export function scopedQa(id) {
   }
   if (row.source_policy === 'no-external') {
     warn('no-external-links', externalLinks.length === 0, `source_policy=no-external but body has ${externalLinks.length} external link(s): ${externalLinks[0] ?? ''}`);
+  }
+
+  if (bodyRaw) {
+    const literal = bindFacts(bodyRaw, business).bound;
+    warn('facts-as-placeholders', literal === 0,
+      `${literal} shop fact(s)/verified price(s) written literally — use {{ business.* }} / {{ price.* }} (node tools/fact-bind.mjs apply)`);
   }
 
   const chunks = entry.knowledge_chunks ?? [];

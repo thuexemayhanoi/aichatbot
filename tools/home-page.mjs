@@ -1,0 +1,78 @@
+#!/usr/bin/env node
+/**
+ * Chat homepage `/` + llms.txt generator (v75). Edit the TEMPLATES, never
+ * the outputs (CI rebuilds and fails on any diff):
+ *
+ *   data/site/home.html.tpl  ->  index.html
+ *   data/site/llms.txt.tpl   ->  llms.txt
+ *
+ * Shop facts resolve from data/business/business.json and rental rates from
+ * pricing.json ({{ business.* }} / {{ price.* }}, tools/blog-components.mjs
+ * resolveFacts) — the same sources every content page uses. The homepage
+ * also receives, from the content-site sources: the shared drawer
+ * (renderDrawer), brand mark, dock/send icons, light/dark theme-color
+ * (config/blog-ui.json), the content-hashed stylesheet URL, and the service
+ * worker precaches that exact URL.
+ */
+import { readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
+import { BLOG_UI, brandMark, icon, resolveFacts } from './blog-components.mjs';
+import { renderDrawer } from './menu-drawer.mjs';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+export const HOME_TEMPLATE = 'data/site/home.html.tpl';
+export const LLMS_TEMPLATE = 'data/site/llms.txt.tpl';
+const DRAWER_MARKER = /^ *<!-- @generated drawer:[^\n]*-->$/m;
+
+/** Content hash of a served file — the ?v= that busts Safari's cache. */
+export function fileVersion(root, path) {
+  const hash = createHash('sha256').update(readFileSync(join(root, path))).digest('hex');
+  return String(parseInt(hash.slice(0, 8), 16));
+}
+
+export function renderHome(root = ROOT) {
+  const read = (p) => readFileSync(join(root, p), 'utf8');
+  const business = JSON.parse(read('data/business/business.json'));
+  const template = read(HOME_TEMPLATE);
+  if (!DRAWER_MARKER.test(template)) throw new Error(`${HOME_TEMPLATE}: drawer marker missing`);
+  const { light, dark } = BLOG_UI.site.themeColor;
+  return resolveFacts(template, business)
+    .replace(DRAWER_MARKER, () => renderDrawer({ mode: 'chat' }))
+    .replace(/(<div class="motoai-brand-mark" aria-hidden="true">)[\s\S]*?(<\/div>)/, (m, open, close) => open + brandMark() + close)
+    .replace(/(<span class="motoai-dock-icon" aria-hidden="true" data-icon="([a-z]+)">)[\s\S]*?(<\/span>)/g,
+      (m, open, name, close) => open + icon(name, 'motoai-icon') + close)
+    .replace(/(<button class="motoai-send"[^>]*>)[\s\S]*?(<\/button>)/, (m, open, close) => open + icon('send', 'motoai-icon') + close)
+    .replace(/ *<meta name="theme-color"[^\n]*\n/,
+      `  <meta name="theme-color" content="${light}" media="(prefers-color-scheme: light)">\n` +
+      `  <meta name="theme-color" content="${dark}" media="(prefers-color-scheme: dark)">\n`)
+    .replace(/assets\/css\/style\.css\?v=\d+/, 'assets/css/style.css?v=' + fileVersion(root, 'assets/css/style.css'));
+}
+
+export function renderLlms(root = ROOT) {
+  const read = (p) => readFileSync(join(root, p), 'utf8');
+  return resolveFacts(read(LLMS_TEMPLATE), JSON.parse(read('data/business/business.json')));
+}
+
+/** Writes index.html, llms.txt and the service-worker precache URL. */
+export function buildHome(root = ROOT) {
+  const writeIfChanged = (p, text) => {
+    let prev = null;
+    try { prev = readFileSync(join(root, p), 'utf8'); } catch { /* first build */ }
+    if (prev !== text) writeFileSync(join(root, p), text, 'utf8');
+  };
+  const html = renderHome(root);
+  writeIfChanged('index.html', html);
+  writeIfChanged('llms.txt', renderLlms(root));
+  // The offline shell precaches the SAME stylesheet URL the page links.
+  const href = /assets\/css\/style\.css\?v=\d+/.exec(html)[0];
+  const sw = readFileSync(join(root, 'service-worker.js'), 'utf8');
+  writeIfChanged('service-worker.js', sw.replace(/\.\/assets\/css\/style\.css\?v=\d+/, './' + href));
+  return html;
+}
+
+if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) {
+  buildHome();
+  console.log('index.html + llms.txt generated from data/site templates');
+}

@@ -23,7 +23,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeInternalAnchors } from './site-audit.mjs';
-import { BLOG_UI, feature, icon, renderSlot, resolveFacts, t } from './blog-components.mjs';
+import { BLOG_UI, PRICING, emptyNote, feature, icon, renderSlot, resolveFacts, t } from './blog-components.mjs';
 import {
   taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav, setMenuSubtopicUrls
 } from './taxonomy.mjs';
@@ -31,8 +31,8 @@ import {
   SITE, esc, rel, pageHead, askAgentAction, appShellPage
 } from './app-shell.mjs';
 import { loadSeoMeta, assertSeoMeta, applySeoMeta } from './seo-meta.mjs';
-import { buildCss, syncChatTokens } from './css-build.mjs';
-import { syncChatRootMenu } from './menu-drawer.mjs';
+import { buildCss, syncChatTokens, syncEmbedTokens } from './css-build.mjs';
+import { buildHome as buildChatHome } from './home-page.mjs';
 import { BLOG_HOME, SITE_PAGES } from './site-pages.mjs';
 import { planLinks } from './seo-links.mjs';
 
@@ -281,7 +281,7 @@ ${routes}
         <div class="blog-grid" id="blog-search-results" data-count="${esc(t('searchCount'))}" data-empty="${esc(t('searchEmpty'))}" data-error="${esc(t('searchError'))}"></div>
         <template id="blog-card-tpl">${cardTemplate}</template>
       </section>
-      <section class="blog-hubs" aria-label="Nhóm chủ đề chính">
+      <section class="blog-hubs" aria-label="${esc(t('hubsTitle'))}">
 ${hubSections}
       </section>
       <section class="home-latest">
@@ -290,7 +290,7 @@ ${hubSections}
           <p>${esc(t('latestNote', { n: Math.min(HOME_LATEST_CARDS, published.length) }))}</p>
         </div>
         <div class="blog-grid">
-${cards || '          <p class="blog-empty">Chưa có bài đã xuất bản. Hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>'}
+${cards || `          ${emptyNote('emptyBlog')}`}
         </div>
       </section>
       <section class="home-index" aria-label="Danh mục">
@@ -320,7 +320,7 @@ ${askAgentAction(BLOG_HOME.askTopic)}`;
       isPartOf: websiteRef(),
       mainEntity: {
         '@type': 'ItemList',
-        name: 'Nhóm chủ đề chính',
+        name: t('hubsTitle'),
         itemListElement: taxonomy.clusters.map((c, i) => ({
           '@type': 'ListItem', position: i + 1, name: c.name, url: `${SITE}blog/${c.dir}/`
         }))
@@ -385,7 +385,7 @@ ${pillars.map((a) => `          <li><a href="/blog/${hub.dir}/${a.slug}/">${esc(
     const path = pageNo === 1 ? `blog/${hub.dir}/` : `blog/${hub.dir}/page/${pageNo}/`;
     builtPaths.push(path);
     const cards = pages[p].map((a) => card(a, hub)).join('\n')
-      || `        <p class="blog-empty">Chưa có bài đã xuất bản trong danh mục này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>`;
+      || `        ${emptyNote('emptyHub', { scope: t('emptyScopeHub') })}`;
     const nav = paginationNav(hub, pageNo, pages);
     // Page 1 is the hub itself (no "trang 1" in its title); deeper pages say their number.
     // v70: page 1 uses the hub's keyword-led SERP title (taxonomy seo_title).
@@ -561,7 +561,7 @@ ${catCards}
       <section>
         <h2>${esc(t('clusterLatest', { name: cluster.name }))}</h2>
         <div class="blog-grid">
-${latestCards || '          <p class="blog-empty">Chưa có bài đã xuất bản trong nhóm này. Danh mục sẽ được bổ sung theo kế hoạch sản xuất nội dung — hỏi <a href="/">Agent</a> nếu cần thông tin ngay.</p>'}
+${latestCards || `          ${emptyNote('emptyHub', { scope: t('emptyScopeCluster') })}`}
         </div>
       </section>
 ${hubClusterFooter(cluster)}${askAgentAction(cluster.name, cluster.categories[0])}`;
@@ -797,6 +797,7 @@ export function build() {
   // Served stylesheets first: every page below links them by content hash.
   buildCss(ROOT);
   syncChatTokens(ROOT);
+  syncEmbedTokens(ROOT);
   const business = JSON.parse(read('data/business/business.json'));
   const manifest = JSON.parse(read('data/blog/published.json'));
   const matrix = matrixRows();
@@ -840,7 +841,7 @@ export function build() {
   MINUTES.clear();
   for (const a of published) MINUTES.set(a.article_id, readingTime(resolveFacts(read(a.body), business)));
   const linkPages = new Set(published.map((entry) => `blog/${HUB_BY_ID[entry.category].dir}/${entry.slug}/index.html`));
-  const pricing = JSON.parse(read('data/business/pricing.json'));
+  const pricing = PRICING;
 
   buildHome(published, business);
   for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published);
@@ -899,17 +900,19 @@ export function build() {
     })
   }, null, 2) + '\n');
 
-  // Knowledge index for Agent retrieval (chunks, not full documents).
+  // Knowledge index for Agent retrieval (chunks, not full documents). The
+  // chat shows a chunk verbatim, so facts resolve HERE from business.json /
+  // pricing.json (a raw {{ business.* }} must never reach a customer).
   write('data/blog/knowledge-index.json', JSON.stringify({
     $schema: 'motoai/blog-knowledge@1',
     updated,
     chunks: published.flatMap((a) => a.knowledge_chunks.map((text, i) => ({
       id: `${a.article_id}:c${i + 1}`,
       article_id: a.article_id,
-      title: a.title,
+      title: resolveFacts(a.title, business),
       url: `/blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`,
       category: a.category,
-      text
+      text: resolveFacts(text, business)
     })))
   }, null, 2) + '\n');
 
@@ -955,7 +958,7 @@ Sitemap: ${SITE}sitemap.xml
     }
   }
   write('data/blog/content-matrix.csv', csv.join('\n'));
-  syncChatRootMenu(ROOT);
+  buildChatHome(ROOT);
   console.log(`blog built: ${published.length} published articles, ${subtopicPages.length} subtopic hubs, ${urls.length} sitemap urls`);
 }
 
@@ -974,7 +977,7 @@ const rate = (r) => {
 
 function buildPrice(page, business) {
   const fact = (s) => resolveFacts(s, business);
-  const pricing = JSON.parse(read('data/business/pricing.json'));
+  const pricing = PRICING;
   const rows = pricing.vehicles
     .slice()
     .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
@@ -982,7 +985,7 @@ function buildPrice(page, business) {
       // data-label powers the phone layout (each row becomes a spec card).
       const cells = pricing.rental_types.map((rt) => {
         const r = rate(v.rates[rt.id]);
-        return `<td data-label="${esc(rt.name)}"${r ? '' : ' class="is-confirm"'}>${r ?? 'Xác nhận trực tiếp'}</td>`;
+        return `<td data-label="${esc(rt.name)}"${r ? '' : ' class="is-confirm"'}>${r ?? esc(t('priceConfirm'))}</td>`;
       }).join('');
       return `        <tr>
           <th scope="row">${esc(v.name)}<span class="blog-price-note">${esc(v.category)}</span></th>
