@@ -1,14 +1,14 @@
 {
   "$schema": "motoai/blog-ui@2",
-  "note": "One edit here updates every generated content page (blog home, hubs, subtopics, 2,000+ articles, static pages) on the next build. Colors/type/motion live in the token block at the top of assets/css/blog.css; business facts live in data/business/*.json. Validated by tools/blog-components.mjs.",
+  "note": "Shared blog presentation and content configuration. V2 uses an Apple-inspired calm editorial design in assets/css/src/blog.css; verified business data and existing article SEO metadata remain unchanged.",
   "site": {
     "name": "MotoAI — Cẩm nang thuê xe máy & xe điện",
     "shortName": "MotoAI",
     "tagline": "Hỗ trợ Agent",
     "kicker": "Cẩm nang · Hà Nội",
     "themeColor": {
-      "light": "#f3f0e9",
-      "dark": "#0e0f11"
+      "light": "#f5f5f7",
+      "dark": "#08080a"
     },
     "ogImage": {
       "path": "assets/icons/icon-512.png",
@@ -43,14 +43,35 @@
       "callLabel": "Gọi {{ business.contact.phone_display }}"
     },
     "byCategory": {
-      "APP": { "label": "Xem bảng giá", "href": "/gia-thue/" },
-      "GUIDE": { "label": "Chính sách thuê xe", "href": "/chinh-sach/" },
-      "RENT": { "label": "Xem bảng giá", "href": "/gia-thue/" },
-      "EV": { "label": "Xem bảng giá", "href": "/gia-thue/" },
-      "SAFE": { "label": "Chính sách thuê xe", "href": "/chinh-sach/" },
-      "LOCAL": { "label": "Chỉ đường tới cửa hàng", "contactRef": "map" }
+      "APP": {
+        "label": "Xem bảng giá",
+        "href": "/gia-thue/"
+      },
+      "GUIDE": {
+        "label": "Chính sách thuê xe",
+        "href": "/chinh-sach/"
+      },
+      "RENT": {
+        "label": "Xem bảng giá",
+        "href": "/gia-thue/"
+      },
+      "EV": {
+        "label": "Xem bảng giá",
+        "href": "/gia-thue/"
+      },
+      "SAFE": {
+        "label": "Chính sách thuê xe",
+        "href": "/chinh-sach/"
+      },
+      "LOCAL": {
+        "label": "Chỉ đường tới cửa hàng",
+        "contactRef": "map"
+      }
     },
-    "default": { "label": "Chỉ đường tới cửa hàng", "contactRef": "map" }
+    "default": {
+      "label": "Chỉ đường tới cửa hàng",
+      "contactRef": "map"
+    }
   },
   "banner": {
     "enabled": false,
