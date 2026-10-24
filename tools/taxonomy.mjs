@@ -8,9 +8,10 @@
  * deterministically from the matrix row here, so article #37, #500 and #2000
  * all land in the right place automatically when the factory publishes them.
  */
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SITE_PAGES } from './site-pages.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const taxonomy = JSON.parse(readFileSync(join(ROOT, 'data/blog/taxonomy.json'), 'utf8'));
@@ -18,6 +19,23 @@ export const navigation = JSON.parse(readFileSync(join(ROOT, 'config/navigation.
 
 export const CLUSTER_BY_ID = Object.fromEntries(taxonomy.clusters.map((c) => [c.id, c]));
 export const CATEGORY_IDS = Object.freeze(Object.keys(taxonomy.categories));
+
+/* Active topic URLs come from PUBLISHED rows during a build and from the
+ * generated sitemap when tests/readers import the taxonomy separately.
+ * Never link to an empty or ungenerated SEO topic hub. */
+let menuSubtopicOverride = null;
+export function setMenuSubtopicUrls(urls) {
+  if (!(urls instanceof Set)) throw new TypeError('menu subtopics must be a Set');
+  menuSubtopicOverride = new Set(urls);
+}
+function menuSubtopicUrls() {
+  if (menuSubtopicOverride) return menuSubtopicOverride;
+  const sitemap = join(ROOT, 'sitemap.xml');
+  if (!existsSync(sitemap)) return new Set();
+  const xml = readFileSync(sitemap, 'utf8');
+  return new Set([...xml.matchAll(/<loc>https?:\/\/[^/]+\/(blog\/[^<]+)<\/loc>/g)]
+    .map((m) => '/' + m[1]));
+}
 
 /** Vietnamese-safe slug: strip diacritics, keep [a-z0-9-]. */
 export function viSlug(text) {
@@ -82,6 +100,7 @@ export function clusterNav(clusterId) {
   return {
     id: c.id,
     name: c.name,
+    label: navigation.hub_labels?.[c.id] ?? c.name,
     icon: c.icon ?? '📂',
     url: `/blog/${c.dir}/`,
     children: c.categories.map((id) => categoryNav(id))
@@ -106,27 +125,53 @@ export function categoryNav(categoryId) {
  * compare them against this list, so the two can never drift again.
  */
 export function drawerCore() {
-  const link = (item) => ({ kind: 'link', icon: item.icon, label: item.label, url: item.url });
-  const core = [link(navigation.agent), link(navigation.about)];
+  const link = (item) => ({
+    kind: 'link', icon: item.icon ?? '', label: item.label, url: item.url,
+    ...(item.level ? { level: item.level, parent: item.parent } : {})
+  });
+  const core = [link(navigation.agent)];
   if (navigation.drawer?.theme) {
     core.push({ kind: 'theme', icon: navigation.drawer.theme.icon, label: navigation.drawer.theme.label });
   }
+  const realTopicUrls = menuSubtopicUrls();
+  const contacts = (services) => services.map((s) =>
+    s.url ? link(s)
+      : s.action ? { kind: 'action', icon: s.icon, label: s.label, action: s.action }
+        : { kind: 'contact', icon: s.icon, label: s.label, ref: s.ref });
   const resolveChild = (child) => {
     if (child.set === 'hubs') {
       return taxonomy.clusters.map((c) => {
         const hub = clusterNav(c.id);
         return {
-          kind: 'hub', icon: hub.icon, label: hub.name, url: hub.url,
-          children: hub.children.map((ch) => link({ ...ch, url: `/blog/${ch.dir}/` }))
+          kind: 'hub', icon: hub.icon, label: hub.label, url: hub.url,
+          children: hub.children.flatMap((cat) => {
+            const items = [link({ ...cat, url: `/blog/${cat.dir}/`, level: 'category' })];
+            for (const topic of taxonomy.subtopics[cat.id] ?? []) {
+              const url = `/blog/${cat.dir}/${topic.slug}/`;
+              if (realTopicUrls.has(url)) {
+                items.push(link({
+                  icon: '·', label: topic.label.replace(/\s*\/\s*/g, ' ').trim(),
+                  url, level: 'subtopic', parent: cat.label
+                }));
+              }
+            }
+            return items;
+          })
         };
       });
     }
-    if (child.set === 'services') {
-      return navigation.services.map((s) =>
-        s.url ? link(s)
-          : s.action ? { kind: 'action', icon: s.icon, label: s.label, action: s.action }
-            : { kind: 'contact', icon: s.icon, label: s.label, ref: s.ref });
+    if (child.set === 'pages') {
+      const legalUrls = new Set(navigation.legal.map((p) => p.url));
+      return SITE_PAGES
+        .filter((p) => !legalUrls.has(`/${p.dir}/`))
+        .map((p) => link({
+          icon: navigation.page_icons?.[p.dir] ?? '📄',
+          label: navigation.page_labels?.[p.dir] ?? p.title,
+          url: `/${p.dir}/`
+        }));
     }
+    if (child.set === 'contact-actions') return contacts(navigation.services.filter((s) => !s.url));
+    if (child.set === 'services') return contacts(navigation.services);
     if (child.set === 'legal') return navigation.legal.map(link);
     if (child.ref === 'search') return [link(navigation.search)];
     throw new Error(`unknown drawer child in navigation.json: ${JSON.stringify(child)}`);
