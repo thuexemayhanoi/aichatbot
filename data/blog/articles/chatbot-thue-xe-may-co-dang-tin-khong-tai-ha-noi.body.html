@@ -9,14 +9,14 @@
 <ul>
 <li>"Cửa hàng mở và đóng cửa lúc mấy giờ?" Câu trả lời đúng phải khớp với khung {{ business.hours.display }} hiển thị trên website.</li>
 <li>"Tôi ở phố Hàng Bạc, có giao xe tới khách sạn lúc tám giờ tối được không?" Trợ lý đáng tin sẽ nói giao xe chỉ trong giờ mở cửa và thời gian, phí giao phải xác nhận trước khi đặt, chứ không tự báo một con số phí.</li>
-<li>"Thuê Honda Vision một ngày giá bao nhiêu?" Con số tham khảo đúng là khoảng 200.000đ/ngày, kèm lời nhắc xác nhận với cửa hàng.</li>
+<li>"Thuê Honda Vision một ngày giá bao nhiêu?" Con số tham khảo đúng là khoảng {{ price.honda-vision.day.min }}/ngày, kèm lời nhắc xác nhận với cửa hàng.</li>
 <li>"Xe máy điện thuê giá bao nhiêu?" Câu trả lời đúng là giá liên hệ, vì nhóm xe này chưa có giá niêm yết cố định.</li>
 <li>"Thuê xe có kèm bảo hiểm không?" Trợ lý trung thực sẽ nói cửa hàng không cung cấp bảo hiểm và bạn cần tự chuẩn bị bảo hiểm xe máy.</li>
 </ul>
 <p>Nếu cả năm câu đều khớp với những gì website và cửa hàng công bố, bạn có cơ sở để tin phần còn lại. Nếu có câu lệch, đặc biệt là câu về phí giao xe hay khuyến mãi, hãy dừng lại và gọi {{ business.contact.phone_display }} để hỏi trực tiếp. Mẹo diễn đạt câu hỏi giá gọn và rõ được trình bày thêm trong bài <a href="/blog/app/cach-hoi-gia-xe-nhanh-bang-chatbot/">hỏi giá xe nhanh bằng chatbot</a>.</p>
 
 <h2>Con số nào tin được, việc gì phải chốt với người</h2>
-<p>Hãy chia thông tin chatbot đưa ra thành hai nhóm. Nhóm thứ nhất là dữ liệu cố định mà cửa hàng tự cập nhật: bảng giá tham khảo, khoảng cọc, giờ mở cửa, địa chỉ, chính sách giao xe. Ví dụ giá tham khảo Honda Wave khoảng 150.000đ/ngày, Honda Air Blade khoảng 200.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày; bảng đầy đủ nằm ở trang <a href="/gia-thue/">giá thuê</a>. Mức cọc dao động từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được xác nhận khi đặt. Nhóm này chatbot đọc lại từ cấu hình nên độ tin cậy cao.</p>
+<p>Hãy chia thông tin chatbot đưa ra thành hai nhóm. Nhóm thứ nhất là dữ liệu cố định mà cửa hàng tự cập nhật: bảng giá tham khảo, khoảng cọc, giờ mở cửa, địa chỉ, chính sách giao xe. Ví dụ giá tham khảo Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày, Honda Air Blade khoảng {{ price.honda-airblade.day.min }}/ngày, Honda Click hoặc Yamaha Mio khoảng {{ price.honda-click.day.min }}/ngày; bảng đầy đủ nằm ở trang <a href="/gia-thue/">giá thuê</a>. Mức cọc dao động từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được xác nhận khi đặt. Nhóm này chatbot đọc lại từ cấu hình nên độ tin cậy cao.</p>
 <p>Nhóm thứ hai là những thứ thay đổi theo ngày và theo người: xe nào còn trong bãi chiều nay, có giao được tới Tây Hồ đúng giờ bạn muốn không, phí giao cho quãng đường cụ thể là bao nhiêu. Không trợ lý nào nhìn thấy bãi xe thay bạn, nên nhóm này luôn cần một cuộc gọi hoặc tin nhắn xác nhận từ cửa hàng. Một chatbot biết nói "phần này bạn cần xác nhận với cửa hàng" đáng tin hơn một chatbot trả lời trơn tru mọi câu.</p>
 
 <h2>Phân biệt trợ lý thật với trang giả mạo trên mạng</h2>
