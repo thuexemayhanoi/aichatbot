@@ -2,7 +2,7 @@
   "$schema": "motoai/navigation@1",
   "note": "Single menu contract for chat homepage and all generated blog pages. Every published parent hub, category, available subtopic and static Page is linked with 2–3 word navigation labels; SEO titles and URL slugs never change.",
   "agent": {
-    "label": "Trợ Lý",
+    "label": "Agent Hỗ Trợ",
     "icon": "⚡",
     "url": "/"
   },
