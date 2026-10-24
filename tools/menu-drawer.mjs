@@ -17,8 +17,12 @@ export function renderDrawer({ mode = 'content', activeHub = null, activeCluster
   if (mode !== 'chat' && mode !== 'content') throw new Error('unknown menu mode');
   const chat = mode === 'chat';
   const currentAttr = (url) => {
-    const dir = url.replace(/^\/(?:blog\/)?/, '').replace(/\/$/, '').split('/')[0];
-    return dir && (dir === activeHub || dir === activeCluster) ? ' aria-current="page"' : '';
+    const target = (url || '').replace(/\/$/, '');
+    const hub = activeHub ? '/blog/' + activeHub : '';
+    const cluster = activeCluster ? '/blog/' + activeCluster : '';
+    const staticPage = activeHub ? '/' + activeHub : '';
+    return target && (target === hub || target === cluster || target === staticPage)
+      ? ' aria-current="page"' : '';
   };
   const renderItem = (item, indent = '      ') => {
     const text = [item.icon, item.label].filter(Boolean).map(esc).join(' ');
