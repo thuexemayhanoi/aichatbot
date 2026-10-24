@@ -119,7 +119,7 @@ test('menu: chat homepage drawer mirrors the hub → child hierarchy (mobile men
   const drawer = html.slice(html.indexOf('id="motoai-drawer"'), html.indexOf('</nav>', html.indexOf('id="motoai-drawer"')));
   for (const c of taxonomy.clusters) {
     assert.ok(drawer.includes(`href="/blog/${c.dir}/"`), `home drawer: parent link ${c.dir}`);
-    assert.ok(unesc(drawer).includes(c.name), `home drawer: parent label ${c.name}`);
+    assert.ok(unesc(drawer).includes(navigation.hub_labels?.[c.id] ?? c.name), `home drawer: compact parent label ${c.id}`);
     for (const id of c.categories) {
       assert.ok(drawer.includes(`href="/blog/${taxonomy.categories[id].dir}/"`), `home drawer: child ${id}`);
     }
