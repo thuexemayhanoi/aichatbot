@@ -53,7 +53,7 @@
 
   /* Shared app tokens (drawer, status, legacy components) follow the brand. */
   --color-bg: var(--paper); --color-surface: var(--surface); --color-surface-elevated: var(--surface); --color-surface-soft: var(--paper-2);
-  --color-primary: var(--signal-ink); --color-primary-hover: var(--ink); --color-primary-soft: var(--signal-soft); --color-on-primary: var(--on-panel);
+  --color-primary: var(--signal-ink); --color-primary-hover: var(--ink); --color-primary-soft: var(--signal-soft); --color-on-primary: var(--on-signal);
   --color-text: var(--ink); --color-text-muted: var(--ink-2); --color-border: var(--line); --color-border-strong: var(--line-strong);
   --color-success: var(--ok);
   --reading-bg: var(--paper);
@@ -143,9 +143,6 @@ body.content-page .site-header { background: var(--scrim); -webkit-backdrop-filt
 .site-brand { display: inline-flex; align-items: center; gap: 10px; flex: 1 1 auto; min-width: 0; text-decoration: none; color: var(--ink); }
 .site-brand-mark, .blog-footer-mark { display: inline-flex; flex: none; }
 .brand-mark { width: 34px; height: 34px; }
-.brand-mark-tile { fill: var(--solid); }
-.brand-mark-road { fill: none; stroke: var(--on-solid); stroke-width: 2.2; stroke-linecap: round; }
-.brand-mark-lane { fill: none; stroke: var(--signal); stroke-width: 2.4; stroke-linecap: round; }
 .site-brand-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.15; }
 .site-brand-text strong { font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; white-space: nowrap; }
 .site-brand-text span { font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -193,7 +190,6 @@ body.content-page .site-header { background: var(--scrim); -webkit-backdrop-filt
 }
 .site-search-link:hover, .blog-theme-toggle:hover { border-color: var(--ink); }
 body.content-page .site-actions .motoai-menu { gap: 10px; padding: 0 16px 0 14px; border: 0; background: var(--solid); color: var(--on-solid); font-size: var(--fs-sm); animation: none; }
-.menu-lines { width: 16px; height: 10px; border-block: 2px solid currentColor; }
 .site-header .motoai-status { font-size: var(--fs-xs); color: var(--ink-3); }
 .site-header .motoai-status[data-state="open"] { color: var(--ok); }
 @media (max-width: 767.98px) {
@@ -577,11 +573,7 @@ body.content-page .blog-article-body {
   .blog-footer-nav { flex: 1; }
 }
 
-/* Drawer on content pages: same structure as the chat home, brand surface. */
-body.content-page .motoai-drawer { background: var(--surface); border-left: 1px solid var(--line); box-shadow: var(--shadow-2); animation: drawer-in var(--t3) var(--ease); }
-body.content-page .motoai-drawer-backdrop { background: var(--scrim); backdrop-filter: blur(4px); }
-body.content-page .motoai-drawer-close { border-color: var(--line); color: var(--ink); }
-.motoai-drawer .blog-theme-toggle { width: 100%; justify-content: flex-start; padding: 10px 12px; border: 0; border-radius: var(--r-md); font-size: 0.95rem; font-weight: 550; }
+/* Drawer: one implementation shared with the chat home (assets/css/style.css). */
 
 /* ==================== Motion language ====================
    One vocabulary, three verbs — every motion answers "where am I going":
@@ -596,7 +588,6 @@ body.content-page .motoai-drawer-close { border-color: var(--line); color: var(-
 @keyframes lane { from { transform: scaleX(0); } }
 @keyframes progress { to { transform: scaleX(1); } }
 @keyframes drop-in { from { opacity: 0; transform: translateY(-6px); } }
-@keyframes drawer-in { from { opacity: 0; transform: translateX(24px); } }
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     [data-motion="on"] :is(.blog-grid > *, .blog-cat-card, .hub-stage-head, .blog-family, .blog-pillars, .contact-band, .blog-legal-card) {
@@ -792,18 +783,6 @@ body.content-page .card-lead {
 /* v73 All-pages/all-taxonomy navigation — applied to blog-only surfaces.
    Every submenu remains a real crawlable link, 44px touch target and
    one scrollable surface. Desktop flyouts scroll without growing offscreen. */
-body.content-page .motoai-drawer {
-  width: min(90vw, 380px); overscroll-behavior-y: contain;
-}
-body.content-page .motoai-hub-items .motoai-category a {
-  border-top-color: var(--line); font-weight: 650; color: var(--ink);
-}
-body.content-page .motoai-hub-items .motoai-subtopic a {
-  color: var(--ink-2); font-weight: 450;
-}
-body.content-page .motoai-hub-items .motoai-subtopic a:is(:hover, :focus-visible) {
-  color: var(--signal-ink); background: var(--paper-2);
-}
 body.content-page .motoai-drawer-list a[aria-current="page"] {
   color: var(--signal-ink); font-weight: 650;
 }

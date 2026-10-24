@@ -146,6 +146,11 @@ test('shared rebuild + CI gates cover every generated surface (static dirs from 
   }
   assert.match(rebuild, /git add[^\n]*\\\n[^\n]*assets\/css\/blog\.css \$\(node tools\/site-pages\.mjs --dirs\)/, 'rebuild commits served CSS + every registry dir');
   assert.match(ci, /git diff --exit-code[^\n]*assets\/css\/blog\.css[^\n]*\$\(node tools\/site-pages\.mjs --dirs\)/, 'CI determinism gate covers served CSS + every registry dir');
+  // v74: the chat homepage's generated tokens and its offline precache URL too.
+  for (const file of ['assets/css/style.css', 'service-worker.js']) {
+    assert.match(rebuild, new RegExp(`git add[^\\n]*\\\\\\n[^\\n]*${file.replace(/[./]/g, '\\$&')}`), `rebuild commits ${file}`);
+    assert.match(ci, new RegExp(`git diff --exit-code[^\\n]*${file.replace(/[./]/g, '\\$&')}`), `CI determinism gate covers ${file}`);
+  }
   for (const dir of STATIC_DIRS) assert.ok(readdirSync(join(ROOT, dir)).includes('index.html'), `${dir} generated`);
 });
 

@@ -31,7 +31,7 @@ import {
   SITE, esc, rel, pageHead, askAgentAction, appShellPage
 } from './app-shell.mjs';
 import { loadSeoMeta, assertSeoMeta, applySeoMeta } from './seo-meta.mjs';
-import { buildCss } from './css-build.mjs';
+import { buildCss, syncChatTokens } from './css-build.mjs';
 import { syncChatRootMenu } from './menu-drawer.mjs';
 import { BLOG_HOME, SITE_PAGES } from './site-pages.mjs';
 import { planLinks } from './seo-links.mjs';
@@ -794,8 +794,9 @@ function matrixRows() {
 }
 
 export function build() {
-  // Served stylesheet first: every page below links it by content hash.
+  // Served stylesheets first: every page below links them by content hash.
   buildCss(ROOT);
+  syncChatTokens(ROOT);
   const business = JSON.parse(read('data/business/business.json'));
   const manifest = JSON.parse(read('data/blog/published.json'));
   const matrix = matrixRows();

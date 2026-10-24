@@ -48,7 +48,59 @@ export function buildCss(root = ROOT) {
   return out;
 }
 
+/* Chat homepage tokens (v74). The homepage loads only assets/css/style.css
+   (hand-written, readable), so it receives the V2 design tokens as a marked
+   block COPIED from the TOKENS of CSS_SOURCE: one place re-skins blog AND
+   chat. Only the tokens the chat UI uses are copied (keeps style.css small). */
+export const CHAT_CSS = 'assets/css/style.css';
+export const CHAT_TOKENS = [
+  'paper', 'paper-2', 'surface', 'ink', 'ink-2', 'ink-3', 'line', 'line-strong',
+  'signal', 'signal-ink', 'signal-soft', 'on-signal', 'solid', 'on-solid', 'ok', 'scrim', 'shadow-color',
+  'font', 'r-md', 'r-lg', 'r-pill', 'shadow-2', 'ease', 't1', 't2', 't3',
+  'color-bg', 'color-surface', 'color-surface-elevated', 'color-surface-soft',
+  'color-primary', 'color-primary-hover', 'color-primary-soft', 'color-on-primary',
+  'color-text', 'color-text-muted', 'color-border', 'color-border-strong', 'color-success'
+];
+const TOKENS_START = `/* @generated chat-tokens: copied from the TOKENS of ${CSS_SOURCE} by tools/css-build.mjs — edit there, then node tools/build-blog.mjs */`;
+const TOKENS_END = '/* @end chat-tokens */';
+
+function declarations(block) {
+  return block.replace(/\/\*[\s\S]*?\*\//g, '').split(';').map((d) => d.trim()).filter(Boolean)
+    .map((d) => [d.slice(0, d.indexOf(':')).trim(), d.slice(d.indexOf(':') + 1).trim()]);
+}
+
+export function chatTokenBlock(source) {
+  const light = /:root\s*\{([^}]*)\}/.exec(source)?.[1];
+  const dark = /html\[data-motoai-theme="dark"\]\s*\{([^}]*)\}/.exec(source)?.[1];
+  if (!light || !dark) throw new Error('css-build: TOKENS :root / dark blocks missing in ' + CSS_SOURCE);
+  const pick = (block, extra = []) => declarations(block)
+    .filter(([name]) => CHAT_TOKENS.includes(name.replace(/^--/, '')) || extra.includes(name))
+    .map(([name, value]) => `  ${name}: ${value};`).join('\n');
+  const root = pick(light);
+  for (const name of CHAT_TOKENS) {
+    if (!root.includes(`--${name}:`)) throw new Error(`css-build: chat token --${name} missing in ${CSS_SOURCE}`);
+  }
+  // A copied token may only reference copied tokens (no dangling var()).
+  for (const [, ref] of root.matchAll(/var\(--([\w-]+)/g)) {
+    if (!CHAT_TOKENS.includes(ref)) throw new Error(`css-build: chat token references --${ref}; add it to CHAT_TOKENS`);
+  }
+  return `${TOKENS_START}\n:root {\n${root}\n}\nhtml[data-motoai-theme="dark"] {\n${pick(dark, ['color-scheme'])}\n}\n${TOKENS_END}`;
+}
+
+/** Rewrites the marked token block inside style.css; returns the new CSS. */
+export function syncChatTokens(root = ROOT) {
+  const path = join(root, CHAT_CSS);
+  const css = readFileSync(path, 'utf8');
+  const start = css.indexOf('/* @generated chat-tokens');
+  const end = css.indexOf(TOKENS_END);
+  if (start === -1 || end === -1 || end < start) throw new Error(`css-build: chat-tokens markers missing in ${CHAT_CSS}`);
+  const out = css.slice(0, start) + chatTokenBlock(readFileSync(join(root, CSS_SOURCE), 'utf8')) + css.slice(end + TOKENS_END.length);
+  if (out !== css) writeFileSync(path, out, 'utf8');
+  return out;
+}
+
 if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) {
   const out = buildCss();
-  console.log(`${CSS_OUTPUT}: ${out.length} bytes`);
+  syncChatTokens();
+  console.log(`${CSS_OUTPUT}: ${out.length} bytes; ${CHAT_CSS}: chat tokens synchronized`);
 }

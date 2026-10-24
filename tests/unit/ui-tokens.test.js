@@ -33,17 +33,23 @@ test('primary action never uses error-red as the brand color', () => {
   // The old aggressive red must not appear anywhere as a primary/background.
   assert.ok(!css.includes('#c8102e'), 'old harsh red #c8102e must be gone from the chat UI');
   assert.ok(!embedJs.includes('#c8102e'), 'old harsh red must be gone from the embed launcher');
-  // Primary is a calm indigo, clearly distinct from the error red.
-  assert.match(css, /--color-primary:\s*#4f46e5/);
+  // v74: primary is the V2 blue wayfinding token, clearly distinct from the error red.
+  assert.match(css, /--color-primary:\s*var\(--signal-ink\)/);
+  assert.match(css, /--signal-ink:\s*#0066cc/);
   assert.match(css, /--color-error:\s*#d2193c/);
 });
 
 test('dark mode token override exists', () => {
   assert.match(css, /html\[data-motoai-theme="dark"\]/);
-  // Dark mode must re-map the core tokens, not just the background.
-  const darkBlock = css.split('html[data-motoai-theme="dark"]').pop();
-  for (const token of ['--color-primary', '--color-text', '--color-error']) {
-    assert.ok(darkBlock.includes(token), `dark theme missing ${token}`);
+  // Dark mode must re-map the core tokens, not just the background. v74: the
+  // semantic --color-* names resolve through the V2 primitives (var()), so the
+  // dark blocks re-map the primitives plus the chat-only error red.
+  const darkBlocks = css.split('html[data-motoai-theme="dark"]').slice(1).map((b) => b.slice(0, b.indexOf('}'))).join('\n');
+  for (const token of ['--paper', '--surface', '--ink', '--signal', '--signal-ink', '--line', '--color-error']) {
+    assert.ok(darkBlocks.includes(token + ':'), `dark theme missing ${token}`);
+  }
+  for (const [semantic, primitive] of [['--color-primary', '--signal-ink'], ['--color-text', '--ink'], ['--color-bg', '--paper']]) {
+    assert.match(css, new RegExp(`${semantic}:\\s*var\\(${primitive}\\)`), `${semantic} follows ${primitive} in both themes`);
   }
 });
 
