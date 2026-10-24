@@ -51,7 +51,7 @@
 <h3>Giao xe tận khách sạn ở phố cổ thì nộp cọc ra sao?</h3>
 <p>Hình thức và thời điểm nộp được thống nhất khi bạn đặt lịch giao. Hãy hỏi rõ trước để chuẩn bị đủ tiền mặt hoặc chuyển khoản ngay khi nhân viên tới.</p>
 <h3>Trả xe sau 21:00 có lấy lại cọc ngay được không?</h3>
-<p>Cửa hàng hoạt động từ 09:00 đến 21:00 và không giao nhận ngoài khung này. Nếu dự kiến về muộn, hãy báo trước để hẹn lại giờ trả trong ngày hôm sau.</p>
+<p>Cửa hàng hoạt động từ {{ business.hours.open }} đến {{ business.hours.close }} và không giao nhận ngoài khung này. Nếu dự kiến về muộn, hãy báo trước để hẹn lại giờ trả trong ngày hôm sau.</p>
 <h3>Mức cọc có khác nhau giữa các loại xe không?</h3>
 <p>Có. Khoản cọc dao động từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được báo chính xác khi đặt.</p>
 
