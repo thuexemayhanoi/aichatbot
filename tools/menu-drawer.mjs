@@ -3,7 +3,7 @@
  * One deterministic drawer renderer for chat home and all content pages.
  * Sources: navigation config, Page registry and live taxonomy. No new client JS.
  */
-import { drawerCore } from './taxonomy.mjs';
+import { drawerCore, navigation } from './taxonomy.mjs';
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const ACTION_IDS = { address: 'motoai-menu-address', contact: 'motoai-menu-contact' };
@@ -41,7 +41,7 @@ export function renderDrawer({ mode = 'content', activeHub = null, activeCluster
     if (item.kind === 'action') {
       return chat
         ? indent + '<li><button type="button" id="' + (ACTION_IDS[item.action] ?? '') + '">' + text + '</button></li>'
-        : indent + '<li><a href="/?action=' + esc(item.action) + '">' + text + '</a></li>';
+        : indent + '<li><a href="' + navigation.agent.url + '?action=' + esc(item.action) + '">' + text + '</a></li>';
     }
     if (item.kind === 'contact') {
       const attrs = chat
@@ -49,7 +49,8 @@ export function renderDrawer({ mode = 'content', activeHub = null, activeCluster
         : ' data-contact-ref="' + esc(item.ref) + '"';
       return indent + '<li><a' + attrs + ' href="#" rel="noopener noreferrer" target="_blank">' + text + '</a></li>';
     }
-    if (chat && item.url === '/') {
+    // In the Agent app the Agent entry is the in-app Agent toggle (main.js aiToggle).
+    if (chat && item.url === navigation.agent.url) {
       return indent + '<li><button type="button" id="motoai-menu-agent">' + text + '</button></li>';
     }
     return indent + '<li><a' + (chat && item.url === '/gia-thue/' ? ' id="motoai-menu-price"' : '') +

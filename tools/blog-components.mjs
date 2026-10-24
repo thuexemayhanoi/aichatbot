@@ -9,6 +9,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const BLOG_UI = Object.freeze(JSON.parse(readFileSync(join(ROOT, 'config/blog-ui.json'), 'utf8')));
+/** The Agent app URL (v76: /agent/) — one source, config/navigation.json. */
+const AGENT_HREF = JSON.parse(readFileSync(join(ROOT, 'config/navigation.json'), 'utf8')).agent.url;
 
 const CATEGORY_IDS = ['APP', 'RENT', 'EV', 'GUIDE', 'SAFE', 'LOCAL'];
 const CONTACT_REFS = ['call', 'whatsapp', 'map'];
@@ -58,7 +60,7 @@ const LABEL_KEYS = ['crumbHome', 'crumbBlog', 'crumbPage', 'kickerHub', 'kickerC
   'articleCount', 'pageOf', 'pagePrev', 'pageNext', 'routeTitle', 'factPublished', 'factCategories', 'factHours',
   'searchPlaceholder', 'searchNote', 'searchCount', 'searchEmpty', 'searchError', 'latestTitle', 'latestNote',
   'indexTitle', 'indexNote', 'footerDesc', 'footerNap', 'footerHours', 'hubsTitle', 'priceConfirm',
-  'emptyBlog', 'emptyHub', 'emptyScopeHub', 'emptyScopeCluster'];
+  'emptyBlog', 'emptyHub', 'emptyScopeHub', 'emptyScopeCluster', 'headerAgent'];
 for (const key of LABEL_KEYS) {
   if (typeof BLOG_UI.labels?.[key] !== 'string' || !BLOG_UI.labels[key].trim()) throw new Error(`blog-ui: labels.${key} must be a non-empty string`);
 }
@@ -131,7 +133,7 @@ export function t(key, vars = {}, business = null) {
 
 /** Empty-listing note (config labels), with the Ask-Agent link. */
 export function emptyNote(key, vars = {}) {
-  return `<p class="blog-empty">${esc(t(key, vars)).replace('{agent}', '<a href="/">Agent</a>')}</p>`;
+  return `<p class="blog-empty">${esc(t(key, vars)).replace('{agent}', `<a href="${AGENT_HREF}">Agent</a>`)}</p>`;
 }
 
 /** Inline SVG icon set — one place for every glyph the shell draws.
@@ -147,7 +149,12 @@ const ICON_PATHS = {
   scooter: '<circle cx="5.5" cy="17" r="3"/><circle cx="18.5" cy="17" r="3"/><path d="M8.5 17h6.5l2.2-9-1.8-3.5h-2.4M2.8 14.5c.8-2.2 2.6-3.5 4.8-3.5h3.6l2.4 6"/>',
   tag: '<path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1.4 1.4 0 0 1 0 2l-6.2 6.2a1.4 1.4 0 0 1-2 0Z"/><circle cx="8" cy="8" r="1.5"/>',
   map: '<path d="M9 4.5 3.5 6.5v13l5.5-2 6 2 5.5-2v-13l-5.5 2-6-2Z"/><path d="M9 4.5v13M15 6.5v13"/>',
-  send: '<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>'
+  send: '<path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/>',
+  // Site homepage (v76): service cards, Agent block, header CTA.
+  calendar: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  bolt: '<path d="M13 3 5 13.5h6L10 21l8-10.5h-6L13 3Z"/>',
+  check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+  chat: '<path d="M4.5 5.5h15a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H10l-4.5 3.5V17h-1a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/>'
 };
 export function icon(name, cls = 'i') {
   const paths = ICON_PATHS[name];
@@ -190,12 +197,12 @@ function actionLink(action, cls) {
 
 /**
  * Page-ending contact band (replaces the slim Ask-Agent row): ONE Ask Agent
- * action back to the chat home (/?ask=topic), the verified call action and
+ * action to the Agent app (/agent/?ask=topic), the verified call action and
  * one contextual action chosen by category from config. Business facts in
  * the copy come from business.json via resolveFacts.
  */
 export function contactBand({ topic, category = null, business }) {
-  const ask = `<a class="screen-ask-btn" href="/?ask=${encodeURIComponent(topic)}">${esc(BLOG_UI.cta.articleLabel)}</a>`;
+  const ask = `<a class="screen-ask-btn" href="${AGENT_HREF}?ask=${encodeURIComponent(topic)}">${esc(BLOG_UI.cta.articleLabel)}</a>`;
   if (!feature('contactBand')) {
     return `    <div class="screen-ask">
       ${ask}

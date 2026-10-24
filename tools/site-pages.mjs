@@ -35,6 +35,20 @@ for (const p of REGISTRY.pages ?? []) {
 }
 
 export const BLOG_HOME = Object.freeze(home);
+
+/* Site homepage `/` (v76): its copy lives here too; facts, categories and
+   articles come from business.json, taxonomy and the published manifest. */
+const site = REGISTRY.siteHome ?? {};
+for (const key of ['title', 'description', 'kicker', 'h1', 'lead', 'ctaAgent', 'ctaGuide']) {
+  if (typeof site[key] !== 'string' || !site[key]) throw new Error(`site-pages: siteHome.${key} must be a non-empty string`);
+}
+for (const s of site.services?.items ?? []) {
+  if (!s.label || !s.icon || !s.desc || !/^\/(?!\/)/.test(s.href ?? '')) throw new Error(`site-pages: siteHome service ${s.label} needs label, icon, desc and an internal href`);
+}
+if (!(site.services?.items?.length >= 3)) throw new Error('site-pages: siteHome.services.items needs at least 3 services');
+if (!(site.agent?.can?.length >= 3) || !site.agent?.cta) throw new Error('site-pages: siteHome.agent needs can[] and cta');
+if (!(site.latest?.count >= 6 && site.latest.count <= 12)) throw new Error('site-pages: siteHome.latest.count must be 6–12');
+export const SITE_HOME = Object.freeze(site);
 export const SITE_PAGES = Object.freeze(REGISTRY.pages.map((p) => Object.freeze({ ...p })));
 /** Generated directories, in sitemap order. */
 export const STATIC_DIRS = Object.freeze(SITE_PAGES.map((p) => p.dir));

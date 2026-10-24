@@ -129,7 +129,8 @@ export function drawerCore() {
     kind: 'link', icon: item.icon ?? '', label: item.label, url: item.url,
     ...(item.level ? { level: item.level, parent: item.parent } : {})
   });
-  const core = [link(navigation.agent)];
+  // v76: Trang Chủ (site homepage) first, then the Agent app (/agent/).
+  const core = [link(navigation.home), link(navigation.agent)];
   if (navigation.drawer?.theme) {
     core.push({ kind: 'theme', icon: navigation.drawer.theme.icon, label: navigation.drawer.theme.label });
   }

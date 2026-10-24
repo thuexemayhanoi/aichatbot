@@ -25,15 +25,15 @@ import { fileURLToPath } from 'node:url';
 import { normalizeInternalAnchors } from './site-audit.mjs';
 import { BLOG_UI, PRICING, emptyNote, feature, icon, renderSlot, resolveFacts, t } from './blog-components.mjs';
 import {
-  taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav, setMenuSubtopicUrls
+  taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav, setMenuSubtopicUrls, drawerCore
 } from './taxonomy.mjs';
 import {
-  SITE, esc, rel, pageHead, askAgentAction, appShellPage
+  SITE, esc, rel, pageHead, askAgentAction, appShellPage, AGENT_URL
 } from './app-shell.mjs';
 import { loadSeoMeta, assertSeoMeta, applySeoMeta } from './seo-meta.mjs';
 import { buildCss, syncChatTokens, syncEmbedTokens } from './css-build.mjs';
-import { buildHome as buildChatHome } from './home-page.mjs';
-import { BLOG_HOME, SITE_PAGES } from './site-pages.mjs';
+import { buildAgent } from './agent-page.mjs';
+import { BLOG_HOME, SITE_HOME, SITE_PAGES } from './site-pages.mjs';
 import { planLinks } from './seo-links.mjs';
 
 export { resolveFacts };
@@ -72,6 +72,16 @@ const HUB_BY_ID = Object.fromEntries(HUBS.map((h) => [h.id, h]));
  *  docs/seo/cold-start/visibility-baseline.md). Bodies stay untouched. */
 export function canonicalIndexLinks(html) {
   return html.replace(/(<a\b[^>]*?\shref\s*=\s*)(["'])(\/[^"'?#]*?\/)index\.html\2/gi, '$1$2$3$2');
+}
+
+/** v76: the chat app moved to /agent/. A body link to "/" whose anchor names
+ *  the assistant or the app ("trợ lý MotoAI", "Agent", "ứng dụng web") opens
+ *  the Agent; "trang chủ" links keep pointing at the site homepage. Render-time
+ *  only — article bodies are never rewritten. */
+const AGENT_ANCHOR = /trợ lý|\bagent\b|chatbot|^\s*motoai\s*$|^\s*ứng dụng/i;
+export function agentLinks(html) {
+  return html.replace(/<a\b([^>]*?)\shref=(["'])\/\2([^>]*)>([\s\S]*?)<\/a>/gi, (m, pre, q, post, text) =>
+    (AGENT_ANCHOR.test(text.replace(/<[^>]+>/g, '')) ? `<a${pre} href=${q}${AGENT_URL}${q}${post}>${text}</a>` : m));
 }
 
 /** Deterministic reading time: visible words / 200 per minute, min 1. */
@@ -328,6 +338,164 @@ ${askAgentAction(BLOG_HOME.askTopic)}`;
     }) + ldScript(breadcrumbLd([{ name: CRUMB_HOME.label, item: SITE }, { name: CRUMB_BLOG.label, item: `${SITE}blog/` }]))
   });
   write('blog/index.html', html);
+}
+
+/** Legacy chat links (/?ask= /?action= /?embed= /?source= /?lang=, the old
+ *  embed iframe and installed PWAs) keep working: the homepage forwards them
+ *  to the Agent app before first paint. Plain visits are never redirected. */
+const LEGACY_CHAT_REDIRECT = `  <script>/* v76: the chat app moved to ${AGENT_URL} — forward legacy chat parameters */(function(){var q=location.search;if(/[?&](ask|action|embed|source|lang)=/.test(q))location.replace('${AGENT_URL}'+q+location.hash);})();</script>\n`;
+
+/**
+ * Site homepage `/` (v76 Apple V3): a real website front page in the shared
+ * content shell — hero, services, Agent, guide taxonomy, featured pillars,
+ * latest articles and verified shop info. Copy: config/site-pages.json
+ * siteHome; facts: business.json; categories: taxonomy + live subtopics;
+ * articles: the published manifest (pillars from the link plan, newest
+ * first) — nothing is listed by hand, so new articles appear on every build.
+ */
+function buildSiteHome(published, business, links) {
+  const H = SITE_HOME;
+  const fact = (s) => resolveFacts(s, business);
+  const hubs = (drawerCore().find((e) => e.kind === 'group' && e.id === 'cm')?.children ?? []).filter((x) => x.kind === 'hub');
+  const topicCount = hubs.reduce((n, h) => n + h.children.filter((c) => c.level === 'subtopic').length, 0);
+  const pageExists = (href) => existsSync(join(ROOT, href.replace(/^\//, ''), 'index.html'));
+  const btn = (href, label, { primary = false, glyph = null, after = null, attrs = '' } = {}) =>
+    `<a class="v3-btn${primary ? ' v3-btn-primary' : ''}" href="${href}"${attrs}>${glyph ? icon(glyph) : ''}<span>${esc(label)}</span>${after ? icon(after) : ''}</a>`;
+
+  const facts = [
+    [count(published.length), t('factPublished')],
+    [String(navigation.categories.length), t('factCategories')],
+    [business.hours.display.replace(' - ', '–'), t('factHours')],
+    [business.address.district, business.address.street]
+  ].map(([v, l]) => `          <li><strong>${esc(v)}</strong><span>${esc(l)}</span></li>`).join('\n');
+
+  const services = H.services.items.map((s) => {
+    if (!pageExists(s.href)) throw new Error(`siteHome service "${s.label}": ${s.href} has no page`);
+    return `          <a class="v3-card v3-service" href="${s.href}">
+            <span class="v3-icon" aria-hidden="true">${icon(s.icon)}</span>
+            <strong>${esc(s.label)}</strong>
+            <span>${esc(fact(s.desc))}</span>
+          </a>`;
+  }).join('\n');
+
+  const can = H.agent.can.map((c) => `          <li>${icon('check')}<span>${esc(c)}</span></li>`).join('\n');
+
+  const guide = taxonomy.clusters.map((c, i) => {
+    const hub = hubs.find((h) => h.url === `/blog/${c.dir}/`);
+    if (!hub) throw new Error(`siteHome: navigation missing hub ${c.id}`);
+    const cats = hub.children.filter((ch) => ch.level === 'category').map((cat) => {
+      const subs = hub.children.filter((ch) => ch.level === 'subtopic' && ch.url.startsWith(cat.url));
+      const topics = subs.length
+        ? `\n              <ul class="v3-topics">${subs.map((sub) => `<li><a href="${sub.url}">${esc(sub.label)}</a></li>`).join('')}</ul>`
+        : '';
+      return `            <li><a class="v3-cat" href="${cat.url}">${esc(cat.label)}</a>${topics}</li>`;
+    }).join('\n');
+    return `        <article class="v3-card v3-guide">
+          <p class="hub-stage-idx" aria-hidden="true">${idx(i)}</p>
+          <h3><a href="/blog/${c.dir}/">${esc(c.name)}</a></h3>
+          <p>${esc(c.desc)}</p>
+          <ul class="v3-cats">
+${cats}
+          </ul>
+        </article>`;
+  }).join('\n');
+
+  // Featured: the pillar with the largest topic family in each category.
+  const featuredList = HUBS.map((hub) => published
+    .filter((a) => a.category === hub.id && links.get(a.article_id)?.pillar === a.article_id)
+    .sort((x, y) => links.get(y.article_id).family.length - links.get(x.article_id).family.length || x.article_id.localeCompare(y.article_id))[0])
+    .filter(Boolean);
+  const featuredIds = new Set(featuredList.map((a) => a.article_id));
+  const featured = featuredList.map((a) => card(a, HUB_BY_ID[a.category], 3)).join('\n');
+  const latestList = newestFirst(published.filter((a) => !featuredIds.has(a.article_id)), H.latest.count);
+  const latest = latestList.map((a) => card(a, HUB_BY_ID[a.category], 3)).join('\n');
+
+  const c = business.contact;
+  const lane = (title, lead) => `        <div class="lane-head">
+          <h2>${esc(title)}</h2>
+          <p>${esc(lead)}</p>
+        </div>`;
+  const content = `      <section class="v3-hero" aria-label="${esc(H.kicker)}">
+${screenHead({ label: H.kicker, title: H.h1, lead: fact(H.lead) })}        <div class="v3-actions">
+          ${btn(AGENT_URL, H.ctaAgent, { primary: true, glyph: 'chat' })}
+          ${btn('/blog/', H.ctaGuide, { after: 'arrow' })}
+        </div>
+        <ul class="home-facts" aria-label="Thông tin nhanh">
+${facts}
+        </ul>
+      </section>
+      <section class="v3-section" aria-label="${esc(H.services.title)}">
+${lane(H.services.title, fact(H.services.lead))}
+        <div class="v3-service-grid">
+${services}
+        </div>
+      </section>
+      <section class="v3-agent" aria-label="${esc(H.agent.title)}">
+        <div class="v3-agent-copy">
+          <p class="blog-screen-label">${esc(H.agent.kicker)}</p>
+          <h2>${esc(H.agent.title)}</h2>
+          <p>${esc(fact(H.agent.lead))}</p>
+          ${btn(AGENT_URL, H.agent.cta, { primary: true, glyph: 'chat' })}
+          <p class="v3-note">${esc(fact(H.agent.note))}</p>
+        </div>
+        <ul class="v3-agent-list">
+${can}
+        </ul>
+      </section>
+      <section class="v3-section" aria-label="${esc(H.guide.title)}">
+${lane(H.guide.title, H.guide.lead.replace('{clusters}', taxonomy.clusters.length).replace('{cats}', navigation.categories.length).replace('{topics}', topicCount))}
+        <div class="v3-guide-grid">
+${guide}
+        </div>
+      </section>
+${featured ? `      <section class="v3-section" aria-label="${esc(H.featured.title)}">
+${lane(H.featured.title, H.featured.lead)}
+        <div class="blog-grid">
+${featured}
+        </div>
+      </section>
+` : ''}      <section class="v3-section" aria-label="${esc(H.latest.title)}">
+${lane(H.latest.title, H.latest.lead.replace('{n}', latestList.length))}
+        <div class="blog-grid">
+${latest || `          ${emptyNote('emptyBlog')}`}
+        </div>
+        <p class="v3-more">${btn('/blog/', H.latest.more, { after: 'arrow' })}</p>
+      </section>
+      <section class="v3-shop" aria-label="${esc(H.shop.title)}">
+        <div class="v3-shop-head">
+          <h2>${esc(H.shop.title)}</h2>
+          <p class="v3-shop-name">${esc(business.display_name)}</p>
+          <p>${esc(H.shop.lead)}</p>
+        </div>
+        <dl class="v3-shop-facts">
+          <div><dt>${icon('pin')}${esc(H.shop.address)}</dt><dd>${esc(business.address.full)}, ${esc(business.address.country)}</dd></div>
+          <div><dt>${icon('calendar')}${esc(H.shop.hours)}</dt><dd>${esc(business.hours.display)} ${esc(H.shop.daily)}</dd></div>
+          <div><dt>${icon('phone')}${esc(H.shop.phone)}</dt><dd><a data-contact-ref="call" href="/lien-he/">${esc(c.phone_display)}</a></dd></div>
+        </dl>
+        <div class="v3-actions">
+          ${btn('/lien-he/', H.shop.call, { primary: true, glyph: 'phone', attrs: ' data-contact-ref="call"' })}
+          ${btn('/lien-he/', H.shop.whatsapp, { glyph: 'chat', attrs: ' data-contact-ref="whatsapp"' })}
+          ${btn('/lien-he/', H.shop.map, { glyph: 'map', attrs: ' data-contact-ref="map"' })}
+          ${btn('/lien-he/', H.shop.contact, { after: 'arrow' })}
+        </div>
+      </section>`;
+
+  const title = fact(H.title);
+  const description = fact(H.description);
+  const schemaHtml = ldScript({
+    '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE}#website`,
+    name: BLOG_UI.site.name, url: SITE, inLanguage: 'vi', publisher: { '@id': `${SITE}#organization` }
+  }) + ldScript({ '@context': 'https://schema.org', ...publisherSchema(business) })
+    + ldScript({
+      '@context': 'https://schema.org', '@type': 'WebPage', '@id': `${SITE}#webpage`,
+      url: SITE, name: title, description, inLanguage: 'vi',
+      isPartOf: { '@id': `${SITE}#website` }, about: { '@id': `${SITE}#organization` },
+      // The Agent app is declared once, on its own page (agent/index.html).
+      mainEntity: { '@id': `${SITE}${AGENT_URL.replace(/^\//, '')}#app` }
+    });
+  write('index.html', appShellPage({
+    title, description, path: '', screen: 'home', contentHtml: content, schemaHtml, headHtml: LEGACY_CHAT_REDIRECT
+  }));
 }
 
 /** Crawlable pagination slice. */
@@ -592,8 +760,8 @@ ${hubClusterFooter(cluster)}${askAgentAction(cluster.name, cluster.categories[0]
  */
 function buildArticle(a, business, hub, published, row, links, byId, reviews = {}, linkPages, pricing) {
   const bodyRaw = read(a.body);
-  const body = canonicalIndexLinks(normalizeInternalAnchors(resolveFacts(bodyRaw, business),
-    `blog/${hub.dir}/${a.slug}/index.html`, (path) => linkPages.has(path)));
+  const body = agentLinks(canonicalIndexLinks(normalizeInternalAnchors(resolveFacts(bodyRaw, business),
+    `blog/${hub.dir}/${a.slug}/index.html`, (path) => linkPages.has(path))));
   const { html: bodyWithIds, items } = buildToc(body);
   const toc = feature('toc') ? tocHtml(items) : { markup: '' };
   const path = `blog/${hub.dir}/${a.slug}/`;
@@ -922,7 +1090,8 @@ export function build() {
   const lastmodOf = new Map(published.map((a) => [`${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`,
     reviews[a.article_id]?.reviewed > a.published_date ? reviews[a.article_id].reviewed : a.published_date]));
   const listingLastmod = [...lastmodOf.values()].reduce((m, d) => (d > m ? d : m), updated);
-  const urls = [SITE, `${SITE}blog/`,
+  buildSiteHome(published, business, links);
+  const urls = [SITE, `${SITE}${AGENT_URL.replace(/^\//, '')}`, `${SITE}blog/`,
     ...taxonomy.clusters.map((c) => `${SITE}blog/${c.dir}/`),
     ...categoryPages.map((p) => `${SITE}${p}`),
     ...subtopicPages.map((p) => `${SITE}${p}`),
@@ -958,7 +1127,7 @@ Sitemap: ${SITE}sitemap.xml
     }
   }
   write('data/blog/content-matrix.csv', csv.join('\n'));
-  buildChatHome(ROOT);
+  buildAgent(ROOT);
   console.log(`blog built: ${published.length} published articles, ${subtopicPages.length} subtopic hubs, ${urls.length} sitemap urls`);
 }
 
