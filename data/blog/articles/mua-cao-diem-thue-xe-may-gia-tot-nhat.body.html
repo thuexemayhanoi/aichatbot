@@ -14,9 +14,9 @@
 
 <ul>
 <li><strong>Honda Wave (xe số):</strong> 150.000đ/ngày, phù hợp người quen côn tay, đi nội thành và đường ven đê.</li>
-<li><strong>Honda Click, Yamaha Mio:</strong> 150.000đ/ngày, theo tuần 600.000đ–700.000đ, gọn nhẹ cho một người.</li>
-<li><strong>Honda Vision:</strong> 200.000đ/ngày, theo tuần 800.000đ–1.000.000đ, dễ lái cho người mới.</li>
-<li><strong>Honda Air Blade:</strong> 200.000đ/ngày, theo tuần 800.000đ, cốp rộng hơn, chở hai người thoải mái.</li>
+<li><strong>Honda Click, Yamaha Mio:</strong> {{ price.honda-click.day.min }}/ngày, theo tuần 600.000đ–700.000đ, gọn nhẹ cho một người.</li>
+<li><strong>Honda Vision:</strong> {{ price.honda-vision.day.min }}/ngày, theo tuần 800.000đ–1.000.000đ, dễ lái cho người mới.</li>
+<li><strong>Honda Air Blade:</strong> {{ price.honda-airblade.day.min }}/ngày, theo tuần 800.000đ, cốp rộng hơn, chở hai người thoải mái.</li>
 <li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> giá liên hệ, mùa lễ càng nên hỏi sớm vì những dòng này không nhiều.</li>
 </ul>
 
@@ -51,7 +51,7 @@
 <p>Giá thuê rẻ đến đâu cũng có thể bị đội lên nếu bạn không để ý những chi tiết dưới đây:</p>
 
 <ul>
-<li><strong>Trả xe muộn:</strong> cửa hàng mở từ 09:00 đến 21:00, nếu kẹt xe chiều cuối kỳ nghỉ, bạn có thể lỡ giờ và phải tính thêm ngày.</li>
+<li><strong>Trả xe muộn:</strong> cửa hàng mở từ {{ business.hours.open }} đến {{ business.hours.close }}, nếu kẹt xe chiều cuối kỳ nghỉ, bạn có thể lỡ giờ và phải tính thêm ngày.</li>
 <li><strong>Giao xe tận nơi:</strong> chỉ thực hiện trong giờ mở cửa, thời gian và phí phải được xác nhận trước khi đặt, mùa đông khách lịch giao kín nhanh.</li>
 <li><strong>Xăng:</strong> hỏi rõ mức xăng khi nhận để trả lại tương đương, tránh tranh luận lúc vội.</li>
 <li><strong>Bảo hiểm:</strong> cửa hàng không cung cấp bảo hiểm, bạn cần tự mua bảo hiểm xe máy, đừng để đến phút cuối mới tìm.</li>
@@ -75,7 +75,7 @@
 <p>Cửa hàng không áp dụng khuyến mãi hay mã giảm giá. Cách tiết kiệm thực tế là chọn dòng xe vừa đủ nhu cầu và dùng gói tuần khi thuê từ bốn ngày trở lên.</p>
 
 <h3>Nếu hết dòng xe mình muốn thì nên làm gì?</h3>
-<p>Hãy cân nhắc dòng có cùng mức giá. Ví dụ Wave, Click và Mio cùng mức tham khảo 150.000đ/ngày, nên đổi qua lại giữa ba dòng này không làm tăng chi phí.</p>
+<p>Hãy cân nhắc dòng có cùng mức giá. Ví dụ Wave, Click và Mio cùng mức tham khảo {{ price.honda-click.day.min }}/ngày, nên đổi qua lại giữa ba dòng này không làm tăng chi phí.</p>
 
 <h3>Có nên thuê xe máy điện vào dịp lễ không?</h3>
 <p>Có thể, nếu bạn chủ yếu đi nội thành. Giá xe máy điện cần liên hệ trực tiếp, và bạn nên hỏi kỹ cách sạc cũng như quãng đường phù hợp trước khi chốt.</p>
