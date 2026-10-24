@@ -891,4 +891,3 @@ body[data-motoai-embed="1"] .motoai-app {
 .motoai-hub-items .motoai-subtopic a:focus-visible {
   color: var(--color-primary); background: var(--color-primary-soft);
 }
-.motoai-drawer-list a[aria-current="page"] { color: var(--color-primary); font-weight: 650; }
