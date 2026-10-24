@@ -98,7 +98,10 @@ test('service worker registration only in direct/PWA mode (embed never registers
 
 test('direct app links the manifest + theme-color, embed users unaffected', () => {
   assert.match(indexHtml, /<link rel="manifest" href="manifest\.webmanifest">/);
-  assert.match(indexHtml, /<meta name="theme-color" content="#4f46e5">/);
+  // v74: light/dark theme-color from the same config as every content page.
+  const { themeColor } = JSON.parse(readFileSync(join(ROOT, 'config/blog-ui.json'), 'utf8')).site;
+  assert.ok(indexHtml.includes(`<meta name="theme-color" content="${themeColor.light}" media="(prefers-color-scheme: light)">`));
+  assert.ok(indexHtml.includes(`<meta name="theme-color" content="${themeColor.dark}" media="(prefers-color-scheme: dark)">`));
   // Embed iframe loads the same index.html — the SW registration guard keeps it inert.
   assert.match(pwaJs, /config\?\.embed/);
 });

@@ -8,6 +8,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { drawerCore } from './taxonomy.mjs';
+import { BLOG_UI, brandMark, icon } from './blog-components.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -80,7 +81,9 @@ export function renderDrawer({ mode = 'content', activeHub = null, activeCluster
     '    </ul>\n  </nav>';
 }
 
-/** The root app shell is hand-maintained; only its drawer is generated. */
+/** The root app shell is hand-maintained; its drawer and the identity it
+ *  shares with the content site (brand mark, icons, theme-color) are generated
+ *  from the same sources as every content page. */
 export function syncChatRootMenu(root = ROOT) {
   const path = join(root, 'index.html');
   const html = readFileSync(path, 'utf8');
@@ -89,6 +92,15 @@ export function syncChatRootMenu(root = ROOT) {
   const end = html.indexOf('</nav>', start);
   if (end === -1) throw new Error('chat root: drawer ending missing');
   let output = html.slice(0, start) + renderDrawer({ mode: 'chat' }) + html.slice(end + '</nav>'.length);
+  const { light, dark } = BLOG_UI.site.themeColor;
+  output = output
+    .replace(/(<div class="motoai-brand-mark" aria-hidden="true">)[\s\S]*?(<\/div>)/, (m, open, close) => open + brandMark() + close)
+    .replace(/(<span class="motoai-dock-icon" aria-hidden="true" data-icon="([a-z]+)">)[\s\S]*?(<\/span>)/g,
+      (m, open, name, close) => open + icon(name, 'motoai-icon') + close)
+    .replace(/(<button class="motoai-send"[^>]*>)[\s\S]*?(<\/button>)/, (m, open, close) => open + icon('send', 'motoai-icon') + close)
+    .replace(/  <meta name="theme-color"[^\n]*\n(?:  <meta name="theme-color"[^\n]*\n)*/,
+      `  <meta name="theme-color" content="${light}" media="(prefers-color-scheme: light)">\n` +
+      `  <meta name="theme-color" content="${dark}" media="(prefers-color-scheme: dark)">\n`);
   // Root chat previously pinned ?v=66, which could keep the old menu CSS
   // in Safari after deployment. Match content-site hash-based cache busting.
   const css = readFileSync(join(root, 'assets/css/style.css'));
@@ -96,6 +108,11 @@ export function syncChatRootMenu(root = ROOT) {
   const version = String(parseInt(hash.slice(0, 8), 16));
   output = output.replace(/assets\/css\/style\.css\?v=\d+/, 'assets/css/style.css?v=' + version);
   if (output !== html) writeFileSync(path, output, 'utf8');
+  // The offline shell precaches the SAME stylesheet URL the page links.
+  const swPath = join(root, 'service-worker.js');
+  const sw = readFileSync(swPath, 'utf8');
+  const swOut = sw.replace(/\.\/assets\/css\/style\.css\?v=\d+/, './assets/css/style.css?v=' + version);
+  if (swOut !== sw) writeFileSync(swPath, swOut, 'utf8');
   return output;
 }
 

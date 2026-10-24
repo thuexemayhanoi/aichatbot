@@ -55,7 +55,7 @@ jobs:
             node tools/seo-score.mjs
             # Static page dirs come from the registry (config/site-pages.json).
             git add -- blog data/blog/knowledge-index.json data/blog/content-matrix.csv \
-              sitemap.xml robots.txt index.html assets/css/blog.css $(node tools/site-pages.mjs --dirs)
+              sitemap.xml robots.txt index.html assets/css/style.css service-worker.js assets/css/blog.css $(node tools/site-pages.mjs --dirs)
             if git diff --cached --quiet; then
               echo "Shared blog output is already synchronized"
               exit 0

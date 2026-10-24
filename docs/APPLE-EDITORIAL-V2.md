@@ -19,6 +19,10 @@ Build a clean, premium, Apple-inspired editorial reading experience without copy
 
 `assets/css/src/blog.css` is the editable source. `tools/css-build.mjs` generates `assets/css/blog.css` deterministically. Tokens are in `:root` and dark-mode token block; the V2 layer remains at the end to override legacy visual presentation while keeping behavioral layout contracts. `config/blog-ui.json` supplies theme colors and shared copy. `tools/app-shell.mjs` and `tools/build-blog.mjs` remain the canonical content renderers.
 
+### Chat homepage `/` (v74)
+
+The homepage loads only `assets/css/style.css`, so the build copies the V2 tokens it needs from the TOKENS of `assets/css/src/blog.css` into the marked `@generated chat-tokens` block (`syncChatTokens` in `tools/css-build.mjs`, list `CHAT_TOKENS`). `tools/menu-drawer.mjs` also writes the drawer, the brand mark, the dock/send icons (`icon()` set in `tools/blog-components.mjs`), the light/dark `theme-color` from `config/blog-ui.json` and the service-worker precache URL into `index.html`. Edit those sources, never the generated block or markup; `tests/unit/home-design-v2.test.js` fails on drift. The drawer, Menu button, brand mark and two-line menu glyph are one implementation in `style.css`, shared by the homepage and every content page. Hover styles live only under `(hover: hover) and (pointer: fine)` so a tapped control never stays highlighted on iPhone.
+
 ## Non-negotiable preservation
 
 Do **not** change or reset:

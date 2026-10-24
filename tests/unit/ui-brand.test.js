@@ -343,19 +343,19 @@ test('responsive: mobile base stays app-locked, laptop/desktop center a capped c
   const laptop = css.slice(css.indexOf('@media (min-width: 768px)'), css.indexOf('@media (min-width: 1200px)'));
   assert.match(laptop, /\.motoai-shell \.motoai-app\s*\{[^}]*max-width:\s*820px;/);
   assert.match(laptop, /\.motoai-msg\s*\{[^}]*max-width:\s*80%;/);
-  assert.match(laptop, /\.motoai-drawer\s*\{[^}]*width:\s*320px;/);
   assert.match(laptop, /body\[data-motoai-embed="1"\] \.motoai-app\s*\{[^}]*max-width:\s*none;/, 'embed stays unconstrained');
   // Desktop (1200): 940px column, messages 74%, drawer 340px, premium composer.
   const desk = css.slice(css.indexOf('@media (min-width: 1200px)'), css.indexOf('@media (min-width: 1600px)'));
   assert.match(desk, /\.motoai-shell \.motoai-app\s*\{[^}]*max-width:\s*940px;/);
-  assert.match(desk, /\.motoai-msg\s*\{[^}]*max-width:\s*74%;[^}]*font-size:\s*0\.95rem;/s);
-  assert.match(desk, /\.motoai-drawer\s*\{[^}]*width:\s*340px;/);
+  assert.match(desk, /\.motoai-msg\s*\{[^}]*max-width:\s*74%;[^}]*font-size:\s*1rem;/s);
   assert.match(desk, /\.motoai-input\s*\{[^}]*padding:\s*13px 18px;/);
   // Large desktop (1600): capped at 1000px — chat never spans the monitor.
   const xl = css.slice(css.indexOf('@media (min-width: 1600px)'));
   assert.match(xl, /\.motoai-shell \.motoai-app\s*\{[^}]*max-width:\s*1000px;/);
   assert.match(xl, /\.motoai-msg\s*\{[^}]*max-width:\s*72%;/);
-  assert.match(xl, /\.motoai-drawer\s*\{[^}]*width:\s*360px;/);
+  // v73/v74: ONE drawer width at every size (the full menu needs the room).
+  assert.match(css, /\.motoai-drawer\s*\{[^}]*width:\s*min\(90vw, 380px\);/s);
+  for (const block of [laptop, desk, xl]) assert.ok(!/\.motoai-drawer\s*\{/.test(block), 'no per-breakpoint drawer width');
 });
 
 test('responsive: safe-area insets survive at every breakpoint', () => {
@@ -488,26 +488,42 @@ test('privacy and terms routes exist, are real pages, and are in the sitemap', (
   assert.ok(sitemap.includes('/terms/'), 'sitemap lists terms');
 });
 
-// --- 5j. Color contract (v50): light/white text on true purple primary surfaces ---
-test('on-primary text is light in BOTH themes — no dark text on purple', () => {
-  const onPrimary = [...css.matchAll(/--color-on-primary:\s*([^;]+);/g)].map((m) => m[1].trim());
-  assert.ok(onPrimary.length >= 2, 'on-primary defined in both themes');
-  for (const value of onPrimary) {
-    assert.match(value, /^#(fff|ffffff|f8fafc|f1f5f9)$/i, `on-primary must be light/white, got ${value}`);
+// --- 5j. Color contract (v74): text on filled primary surfaces is readable in BOTH themes ---
+test('on-primary text keeps WCAG AA contrast on the primary fill in both themes', () => {
+  const blocks = [css.match(/:root\s*\{[^}]*\}/)[0], css.match(/html\[data-motoai-theme="dark"\]\s*\{[^}]*\}/)[0]];
+  const lum = (hex) => {
+    const c = hex.replace('#', '').match(/../g).map((h) => parseInt(h, 16) / 255)
+      .map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  };
+  const light = blocks[0];
+  const resolve = (block, token) => {
+    let value = (block.match(new RegExp(`${token}:\\s*([^;]+);`)) ?? light.match(new RegExp(`${token}:\\s*([^;]+);`)))[1].trim();
+    const ref = /^var\((--[\w-]+)\)$/.exec(value);
+    return ref ? resolve(block, ref[1]) : value;
+  };
+  for (const block of blocks) {
+    const fill = resolve(block, '--color-primary');
+    const text = resolve(block, '--color-on-primary');
+    const [a, b] = [lum(fill), lum(text)].sort((x, y) => y - x);
+    const ratio = (a + 0.05) / (b + 0.05);
+    assert.ok(ratio >= 4.5, `on-primary ${text} on ${fill}: contrast ${ratio.toFixed(2)} < 4.5`);
   }
 });
 
-// --- 5k. Menu discoverability (v51): "☰ Menu" pill with finite attention cue ---
+// --- 5k. Menu discoverability (v51 → v74): "Menu" pill, same control as the content-site header ---
 test('menu button: icon + visible "Menu" text, pill style, ARIA intact, finite pulse', () => {
-  // 1. Icon + text label, not icon-only.
+  // 1. Icon + text label, not icon-only — identical markup to every content page.
   const btn = /<button[^>]*class="motoai-menu"[^>]*>([\s\S]*?)<\/button>/.exec(html)?.[1] ?? '';
-  assert.ok(btn.includes('☰'), 'hamburger icon kept');
+  assert.match(btn, /<span class="menu-lines" aria-hidden="true"><\/span>/, 'two-line menu glyph (content-site header)');
   assert.match(btn, /<span class="motoai-menu-label">Menu<\/span>/, 'visible "Menu" text label');
+  const blogBtn = /<button[^>]*class="motoai-menu"[^>]*>([\s\S]*?)<\/button>/.exec(readFileSync(join(ROOT, 'blog/index.html'), 'utf8'))?.[1];
+  assert.equal(btn, blogBtn, 'homepage Menu button = content-site Menu button');
   // 2. ARIA behavior unchanged.
   assert.match(html, /id="motoai-menu-btn"[^>]*aria-label="Mở menu"[^>]*aria-expanded="false"[^>]*aria-controls="motoai-drawer"/);
-  // 3. Pill: purple primary with light text, border, 44px target.
-  assert.match(css, /\.motoai-menu\s*\{[^}]*min-height:\s*44px;[^}]*border-radius:\s*var\(--radius-full\);[^}]*background:\s*var\(--color-primary\);[^}]*color:\s*var\(--color-on-primary\);/s);
-  assert.match(css, /\.motoai-menu:hover\s*\{\s*background:\s*var\(--color-primary-hover\);/);
+  // 3. Pill: V2 ink fill with paper text (contrast in both themes), 44px target.
+  assert.match(css, /\.motoai-menu\s*\{[^}]*min-height:\s*44px;[^}]*border-radius:\s*var\(--radius-full\);[^}]*background:\s*var\(--ink\);[^}]*color:\s*var\(--paper\);/s);
+  assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)\s*\{[^@]*\.motoai-menu:hover\s*\{\s*background:\s*var\(--signal\);\s*color:\s*var\(--on-signal\);/, 'pointer-only hover, never sticky after a tap');
   assert.match(css, /\.motoai-menu:active[^{]*\{[^}]*transform:\s*scale\(0\.97\);/s, 'obvious tap state');
   // 4. Attention cue is FINITE: 3 iterations, no infinite.
   const anim = css.match(/\.motoai-menu\s*\{[^}]*animation:\s*([^;}]+);/s)?.[1] ?? '';
