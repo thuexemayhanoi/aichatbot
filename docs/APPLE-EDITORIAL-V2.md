@@ -40,3 +40,7 @@ Do **not** change or reset:
 ## Rollback
 
 The original blog remains intact on `main`. Revert the design PR or restore the pre-merge commit if visual QA or SEO checks regress; do not delete articles, reset matrices or redirect paths.
+
+### CI sequencing note — 24 October 2026
+
+The first PR CI run checked out the branch before the isolated branch-only generator committed refreshed HTML asset hashes and theme-color metadata. Its two initial failures were stale generated HTML assertions. The V2 branch generation job subsequently completed successfully and committed refreshed content pages. A new PR synchronization run must pass on the refreshed branch before merge; do not bypass these assertions or weaken QA.
