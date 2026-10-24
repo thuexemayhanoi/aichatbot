@@ -31,11 +31,11 @@
 
 <h2>Chú ý lệch múi giờ và giờ mở cửa</h2>
 
-<p>Cửa hàng làm việc từ 09:00 đến 21:00 theo giờ Việt Nam. Nếu bạn gửi tin từ châu Âu hoặc châu Mỹ lúc giữa đêm giờ địa phương, tin nhắn có thể chỉ được đọc vào sáng hôm sau giờ Hà Nội, khi ngày nhận xe đã tới gần. Vì vậy khi hủy sát ngày, hãy gửi tin vào khung giờ Việt Nam còn trong giờ mở cửa để tin được đọc sớm nhất. Cách liên hệ nhanh, kèm số điện thoại và kênh nhắn tin của cửa hàng, được ghi rõ trong trang <a href="/lien-he/">liên hệ</a>.</p>
+<p>Cửa hàng làm việc từ {{ business.hours.open }} đến {{ business.hours.close }} theo giờ Việt Nam. Nếu bạn gửi tin từ châu Âu hoặc châu Mỹ lúc giữa đêm giờ địa phương, tin nhắn có thể chỉ được đọc vào sáng hôm sau giờ Hà Nội, khi ngày nhận xe đã tới gần. Vì vậy khi hủy sát ngày, hãy gửi tin vào khung giờ Việt Nam còn trong giờ mở cửa để tin được đọc sớm nhất. Cách liên hệ nhanh, kèm số điện thoại và kênh nhắn tin của cửa hàng, được ghi rõ trong trang <a href="/lien-he/">liên hệ</a>.</p>
 
 <h2>Hỏi rõ về khoản đặt cọc trước khi hủy</h2>
 
-<p>Câu hỏi lớn nhất của hầu hết khách quốc tế khi hủy là khoản đặt cọc. Mức đặt cọc của cửa hàng dao động từ 2.000.000đ đến 5.000.000đ tùy loại xe, và mức chính xác cho đơn của bạn được xác nhận khi đặt. Khi nhắn hủy, bạn nên hỏi bốn điểm cụ thể sau:</p>
+<p>Câu hỏi lớn nhất của hầu hết khách quốc tế khi hủy là khoản đặt cọc. Mức đặt cọc của cửa hàng dao động từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, và mức chính xác cho đơn của bạn được xác nhận khi đặt. Khi nhắn hủy, bạn nên hỏi bốn điểm cụ thể sau:</p>
 
 <ul>
 <li>Khoản cọc của đơn được xử lý ra sao theo thời điểm hủy mà bạn thông báo.</li>
