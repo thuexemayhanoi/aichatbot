@@ -47,17 +47,17 @@
 
 <h2>Giá: một bên có số, một bên cần hỏi</h2>
 
-<p>Khi hỏi trợ lý bằng tiếng Anh đơn giản, bạn sẽ thấy các dòng xe xăng có giá tham khảo rõ ràng: Honda Wave 150.000đ/ngày, Honda Vision và Honda Air Blade 200.000đ/ngày, Honda Click và Yamaha Mio 150.000đ/ngày. Xe máy điện thì được báo giá theo từng trường hợp, nên trợ lý sẽ hướng bạn liên hệ cửa hàng. Đừng hiểu điều đó là xe điện đắt hơn hay rẻ hơn; nó chỉ có nghĩa là bạn cần một câu hỏi thêm.</p>
+<p>Khi hỏi trợ lý bằng tiếng Anh đơn giản, bạn sẽ thấy các dòng xe xăng có giá tham khảo rõ ràng: Honda Wave {{ price.honda-wave.day.min }}/ngày, Honda Vision và Honda Air Blade {{ price.honda-airblade.day.min }}/ngày, Honda Click và Yamaha Mio {{ price.honda-click.day.min }}/ngày. Xe máy điện thì được báo giá theo từng trường hợp, nên trợ lý sẽ hướng bạn liên hệ cửa hàng. Đừng hiểu điều đó là xe điện đắt hơn hay rẻ hơn; nó chỉ có nghĩa là bạn cần một câu hỏi thêm.</p>
 
 <p>Dù chọn loại nào, tiền cọc nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được xác nhận khi đặt. Bạn tự quy đổi sang tiền nước mình nếu cần, vì trợ lý trả lời bằng đồng Việt Nam. Cách đọc và cộng các khoản chi phí được hướng dẫn riêng ở bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a>.</p>
 
 <h2>Ba kiểu du khách, ba lựa chọn</h2>
 
 <h3>Ba ngày ở phố cổ, đi loanh quanh Hoàn Kiếm</h3>
-<p>Quãng đường mỗi ngày ngắn, nhưng khách sạn trong ngõ thường không có chỗ sạc. Một chiếc Honda Vision với giá tham khảo 200.000đ/ngày là lựa chọn ít rủi ro: đổ xăng một lần là đủ cho cả chuyến.</p>
+<p>Quãng đường mỗi ngày ngắn, nhưng khách sạn trong ngõ thường không có chỗ sạc. Một chiếc Honda Vision với giá tham khảo {{ price.honda-vision.day.min }}/ngày là lựa chọn ít rủi ro: đổ xăng một lần là đủ cho cả chuyến.</p>
 
 <h3>Một tháng làm việc từ xa ở Tây Hồ</h3>
-<p>Căn hộ có chỗ để xe, lịch trình lặp lại giữa nhà, quán cà phê và siêu thị. Xe điện đáng để hỏi báo giá theo tháng; để so sánh, xe xăng như Vision có giá tháng tham khảo 1.800.000đ–2.000.000đ, Air Blade 1.400.000đ/tháng.</p>
+<p>Căn hộ có chỗ để xe, lịch trình lặp lại giữa nhà, quán cà phê và siêu thị. Xe điện đáng để hỏi báo giá theo tháng; để so sánh, xe xăng như Vision có giá tháng tham khảo 1.800.000đ–2.000.000đ, Air Blade {{ price.honda-airblade.month.min }}/tháng.</p>
 
 <h3>Đi tỉnh vài ngày</h3>
 <p>Nếu kế hoạch có những chặng dài ngoài Hà Nội, xe xăng thường hợp hơn vì tiếp nhiên liệu dọc đường dễ dàng. Hãy nói rõ lộ trình với cửa hàng để được tư vấn dòng xe, và chuẩn bị bảo hiểm xe máy của riêng bạn vì cửa hàng không cung cấp bảo hiểm.</p>

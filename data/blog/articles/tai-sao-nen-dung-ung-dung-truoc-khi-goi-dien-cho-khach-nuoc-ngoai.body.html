@@ -13,7 +13,7 @@
 <h2>Những gì nên tra trên trợ lý web trước khi bấm số</h2>
 <p>Trợ lý MotoAI là một công cụ trực tuyến trên website, mở bằng trình duyệt điện thoại, không cần cài đặt. Nếu bạn đọc tiếng Việt chưa quen, tính năng dịch trang của trình duyệt giúp bạn hiểu câu trả lời theo nhịp của mình. Những câu nên hỏi trợ lý trước:</p>
 <ol>
-<li><strong>Giá tham khảo:</strong> Honda Vision 200.000đ/ngày, 800.000đ–1.000.000đ/tuần; Honda Wave 150.000đ/ngày; Honda Click hoặc Yamaha Mio 150.000đ/ngày. Các mức này cần xác nhận lại trên trang <a href="/gia-thue/">bảng giá</a>.</li>
+<li><strong>Giá tham khảo:</strong> Honda Vision {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần; Honda Wave {{ price.honda-wave.day.min }}/ngày; Honda Click hoặc Yamaha Mio {{ price.honda-click.day.min }}/ngày. Các mức này cần xác nhận lại trên trang <a href="/gia-thue/">bảng giá</a>.</li>
 <li><strong>Giờ làm việc và địa chỉ:</strong> cửa hàng mở {{ business.hours.display }} tại {{ business.address.full }}; bạn sao chép địa chỉ này dán thẳng vào bản đồ, không cần nghe ai đánh vần.</li>
 <li><strong>Khoản đặt trước:</strong> mức cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, chốt khi đặt.</li>
 <li><strong>Giao xe:</strong> chỉ trong giờ hoạt động, thời gian và phí phải xác nhận trước khi đặt.</li>

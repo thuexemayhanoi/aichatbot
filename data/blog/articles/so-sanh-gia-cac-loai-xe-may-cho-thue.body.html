@@ -40,7 +40,7 @@
 <h2>Ngoài giá niêm yết: những khoản tạo khác biệt thật sự</h2>
 <p>Giá xe chỉ là dòng đầu trong bảng chi phí. Bốn khoản sau thường quyết định tổng tiền bạn thực trả nhiều hơn con giá niêm yết:</p>
 <ul>
-<li>Mức đặt cọc: cửa hàng thu từ 2.000.000đ đến 5.000.000đ tùy dòng xe, khoản này hoàn trả khi trả xe đúng điều kiện chứ không phải chi phí tiêu hao.</li>
+<li>Mức đặt cọc: cửa hàng thu từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy dòng xe, khoản này hoàn trả khi trả xe đúng điều kiện chứ không phải chi phí tiêu hao.</li>
 <li>Xăng: hai dòng cùng giá ngày có mức ăn xăng khác nhau, chạy nhiều thì khoản này khác rõ sau một tuần.</li>
 <li>Giao nhận: nhận tại cửa hàng trong giờ hoạt động là gọn nhất; cần giao tận nơi thì hỏi trước chi phí và khung giờ.</li>
 <li>Thời gian: tính theo ngày, tuần hay tháng, mỗi cách có cách tính riêng, nên hỏi giá gộp thay vì tự nhân giá ngày.</li>
@@ -63,13 +63,13 @@
 <p>Sau khi đã chốt được hai ba dòng trong tầm giá, ba câu hỏi cuối cùng giúp bạn tránh mọi bất ngờ: dòng xe này còn trong khung thời gian mình thuê không, mức cọc của dòng này cụ thể là bao nhiêu, và quy ước xăng lúc nhận trả thế nào. Ba câu nhanh gọn, nhưng trả lời được cả ba thì hợp đồng thuê của bạn đã gần như không còn chỗ cho hiểu lầm. Đến lúc đó, mọi so sánh giá ban đầu của bạn mới thực sự có giá trị sử dụng trọn vẹn.</p>
 
 <h2>So sánh và chốt xe cùng MotoAI</h2>
-<p>MotoAI là trợ lý thuê xe máy đặt tại 112 Nguyễn Văn Cừ, quận Long Biên, mở cửa 09:00 đến 21:00 hằng ngày, giao xe tận nơi trong giờ hoạt động cho khu vực Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ cùng các phường lân cận. Bạn nêu ngân sách và kiểu chuyến đi, trợ lý sẽ so các dòng theo đúng bảng giá tham khảo và điều kiện thực tế rồi trả về vài gợi ý kèm lý do; mọi chủ đề về dòng xe và giá thuê được tổng hợp trong <a href="/blog/thue-xe/">chuyên mục thuê xe</a>, và bạn có thể bắt đầu hỏi ngay từ <a href="/">trang chủ</a>.</p><h2>Câu hỏi thường gặp</h2>
+<p>MotoAI là trợ lý thuê xe máy đặt tại {{ business.address.street }}, quận Long Biên, mở cửa {{ business.hours.open }} đến {{ business.hours.close }} hằng ngày, giao xe tận nơi trong giờ hoạt động cho khu vực Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ cùng các phường lân cận. Bạn nêu ngân sách và kiểu chuyến đi, trợ lý sẽ so các dòng theo đúng bảng giá tham khảo và điều kiện thực tế rồi trả về vài gợi ý kèm lý do; mọi chủ đề về dòng xe và giá thuê được tổng hợp trong <a href="/blog/thue-xe/">chuyên mục thuê xe</a>, và bạn có thể bắt đầu hỏi ngay từ <a href="/">trang chủ</a>.</p><h2>Câu hỏi thường gặp</h2>
 <h3>Giá thuê theo ngày của các dòng xe phổ biến chênh nhau bao nhiêu?</h3>
 <p>Theo bảng tham khảo trong bài, Honda Wave, Honda Click và Yamaha Mio có giá khoảng 150.000đ mỗi ngày, còn Honda Vision và Air Blade khoảng 200.000đ. Với chuyến ba ngày, hai nhóm cách nhau 150.000đ, bằng giá thêm một ngày thuê dòng rẻ hơn.</p>
 <h3>Thuê theo tuần hay theo tháng thì dòng xe nào hợp hơn?</h3>
 <p>Khi thuê dài ngày, nhóm Click hoặc Mio có giá thấp nhất, còn Vision hợp người cần cốp rộng và xe êm cả tháng. Air Blade càng thuê dài càng chênh rõ so với Vision, nên đáng cân nhắc cho hợp đồng tháng nếu bạn thích xe cỡ lớn.</p>
 <h3>Ngoài giá niêm yết, tôi cần hỏi thêm những khoản nào?</h3>
-<p>Bốn khoản hay làm tổng chi khác đi là mức đặt cọc, tiền xăng, giao nhận và cách tính theo thời gian thuê. Cọc của cửa hàng từ 2.000.000đ đến 5.000.000đ tùy dòng xe và được hoàn khi bạn trả xe đúng điều kiện.</p>
+<p>Bốn khoản hay làm tổng chi khác đi là mức đặt cọc, tiền xăng, giao nhận và cách tính theo thời gian thuê. Cọc của cửa hàng từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy dòng xe và được hoàn khi bạn trả xe đúng điều kiện.</p>
 <h3>Vì sao nên hỏi giá trọn chuyến thay vì tự nhân giá ngày?</h3>
 <p>Cách tính nhiều ngày ở mỗi nơi có thể khác việc nhân đơn giản giá ngày, nên số tự cộng chỉ là ước lượng ban đầu. Hỏi một mức giá cho cả chuyến giúp bạn đặt các dòng xe lên cùng một mặt bằng để so sánh.</p>
 <h3>Xe máy điện có giá thuê cố định không?</h3>

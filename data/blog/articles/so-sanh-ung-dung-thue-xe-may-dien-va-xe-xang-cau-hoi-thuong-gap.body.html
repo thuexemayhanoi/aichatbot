@@ -4,16 +4,16 @@
 
 <h2>Câu hỏi về giá: vì sao một bên có số, một bên ghi liên hệ</h2>
 
-<p><strong>Trợ lý báo giá xe xăng thế nào?</strong> Với các dòng xe xăng phổ biến, trợ lý đưa ra giá tham khảo ngay: Honda Wave khoảng 150.000đ/ngày; Honda Vision khoảng 200.000đ/ngày, 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng; Honda Air Blade khoảng 200.000đ/ngày, 800.000đ/tuần; Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày, 600.000đ–700.000đ/tuần.</p>
+<p><strong>Trợ lý báo giá xe xăng thế nào?</strong> Với các dòng xe xăng phổ biến, trợ lý đưa ra giá tham khảo ngay: Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày; Honda Vision khoảng {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng; Honda Air Blade khoảng {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }}/tuần; Honda Click hoặc Yamaha Mio khoảng {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần.</p>
 <div class="table-wrap">
 <table class="blog-table">
 <caption>Giá tham khảo của xe xăng và cách báo giá xe điện</caption>
 <thead><tr><th scope="col">Loại xe</th><th scope="col">Giá tham khảo</th><th scope="col">Cách báo giá</th></tr></thead>
 <tbody>
-<tr><th scope="row">Honda Wave</th><td>Khoảng 150.000đ/ngày</td><td>Có giá tham khảo</td></tr>
-<tr><th scope="row">Honda Vision</th><td>Khoảng 200.000đ/ngày, 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng</td><td>Có giá tham khảo</td></tr>
-<tr><th scope="row">Honda Air Blade</th><td>Khoảng 200.000đ/ngày, 800.000đ/tuần</td><td>Có giá tham khảo</td></tr>
-<tr><th scope="row">Honda Click hoặc Yamaha Mio</th><td>Khoảng 150.000đ/ngày, 600.000đ–700.000đ/tuần</td><td>Có giá tham khảo</td></tr>
+<tr><th scope="row">Honda Wave</th><td>Khoảng {{ price.honda-wave.day.min }}/ngày</td><td>Có giá tham khảo</td></tr>
+<tr><th scope="row">Honda Vision</th><td>Khoảng {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng</td><td>Có giá tham khảo</td></tr>
+<tr><th scope="row">Honda Air Blade</th><td>Khoảng {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }}/tuần</td><td>Có giá tham khảo</td></tr>
+<tr><th scope="row">Honda Click hoặc Yamaha Mio</th><td>Khoảng {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần</td><td>Có giá tham khảo</td></tr>
 <tr><th scope="row">Xe máy điện, xe đạp điện, xe 50cc</th><td>Giá liên hệ</td><td>Cửa hàng báo giá trực tiếp</td></tr>
 </tbody>
 </table>

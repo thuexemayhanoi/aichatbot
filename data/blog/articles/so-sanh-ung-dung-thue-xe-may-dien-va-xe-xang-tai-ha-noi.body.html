@@ -3,7 +3,7 @@
 <h2>Trợ lý trả lời được gì cho mỗi loại xe</h2>
 <p>MotoAI là trợ lý dạng ứng dụng web trên trang của cửa hàng, mở bằng trình duyệt, không cần cài đặt. Khác biệt đầu tiên giữa hai loại xe nằm ở độ sẵn có của thông tin giá.</p>
 <ul>
-<li><strong>Xe xăng:</strong> trợ lý đưa được giá tham khảo ngay. Ví dụ Honda Wave khoảng 150.000đ/ngày, Honda Vision và Honda Air Blade khoảng 200.000đ/ngày, Honda Click và Yamaha Mio khoảng 150.000đ/ngày, kèm mức tuần và tháng cho từng dòng.</li>
+<li><strong>Xe xăng:</strong> trợ lý đưa được giá tham khảo ngay. Ví dụ Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày, Honda Vision và Honda Air Blade khoảng {{ price.honda-airblade.day.min }}/ngày, Honda Click và Yamaha Mio khoảng {{ price.honda-click.day.min }}/ngày, kèm mức tuần và tháng cho từng dòng.</li>
 <li><strong>Xe máy điện, xe đạp điện:</strong> giá là giá liên hệ, nên trợ lý sẽ hướng bạn gọi cửa hàng để có con số đúng với dòng xe và thời gian thuê.</li>
 </ul>
 <p>Điều đó không có nghĩa xe điện đắt hơn hay rẻ hơn; chỉ là quy trình hỏi giá có thêm một bước. Cách trợ lý hiểu và trả lời câu hỏi về giá ở Hà Nội được mô tả trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-tai-ha-noi/">cách tính giá thuê xe bằng app tại Hà Nội</a>. Còn so sánh chung về trải nghiệm đặt hai loại xe, không gắn với một thành phố cụ thể, có trong bài <a href="/blog/app/so-sanh-ung-dung-thue-xe-may-dien-va-xe-xang/">so sánh ứng dụng thuê xe máy điện và xe xăng</a>.</p>
