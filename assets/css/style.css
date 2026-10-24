@@ -874,3 +874,20 @@ body[data-motoai-embed="1"] .motoai-app {
   .motoai-msg { max-width: 72%; }
   .motoai-drawer { width: 360px; }
 }
+
+/* v73 Complete navigation: gentle 3-level hierarchy, large iPhone targets. */
+.motoai-drawer { width: min(90vw, 380px); overscroll-behavior-y: contain; }
+.motoai-hub-items { padding-left: 8px; }
+.motoai-hub-items .motoai-category { padding-top: 5px; }
+.motoai-hub-items .motoai-category a {
+  font-size: 0.9rem; font-weight: 650; min-height: 46px;
+  border-top: 1px solid var(--color-border);
+}
+.motoai-hub-items .motoai-subtopic a {
+  padding-left: 24px; min-height: 44px; font-size: 0.84rem;
+  font-weight: 450; color: var(--color-text-muted);
+}
+.motoai-hub-items .motoai-subtopic a:hover,
+.motoai-hub-items .motoai-subtopic a:focus-visible {
+  color: var(--color-primary); background: var(--color-primary-soft);
+}

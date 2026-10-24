@@ -27,6 +27,7 @@ import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { navigation, taxonomy, clusterNav, drawerCore } from './taxonomy.mjs';
+import { renderDrawer } from './menu-drawer.mjs';
 import { BLOG_UI, bannerSlot, esc, feature, icon, brandMark, contactBand, renderSlot, t } from './blog-components.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -114,15 +115,23 @@ function dropItem(ch, i, activeHub) {
  * is a SEPARATE flex child after .site-actions (own row on mobile).
  */
 function siteHeader({ activeHub, activeCluster, progress }) {
+  const hubNav = drawerCore().find((e) => e.kind === 'group' && e.id === 'cm')?.children ?? [];
   const hubItems = taxonomy.clusters.map((c) => {
-    const hub = clusterNav(c.id);
-    const hubActive = c.dir === activeCluster || hub.children.some((ch) => ch.dir === activeHub);
-    return `        <div class="site-nav-item"${hubActive ? ' data-active="1"' : ''}>
-          <a class="site-nav-parent" href="${hub.url}" aria-haspopup="true"${hubActive ? ' aria-current="page"' : ''}>${esc(hub.name)}${icon('caret', 'site-nav-caret')}</a>
-          <div class="site-nav-drop">
-${hub.children.map((ch, i) => dropItem(ch, i, activeHub)).join('\n')}
-          </div>
-        </div>`;
+    const hub = hubNav.find((item) => item.kind === 'hub' && item.url === '/blog/' + c.dir + '/');
+    if (!hub) throw new Error('navigation missing parent hub ' + c.id);
+    const hubActive = c.dir === activeCluster ||
+      hub.children.some((ch) => ch.url === '/blog/' + activeHub + '/');
+    const dropItems = hub.children.map((ch) => {
+      const sub = ch.level === 'subtopic';
+      return '            <a class="' + (sub ? 'site-nav-subtopic' : 'site-nav-category') +
+        '" href="' + ch.url + '"' + (ch.url === '/blog/' + activeHub + '/' ? ' aria-current="page"' : '') +
+        '>' + esc(ch.label) + '</a>';
+    }).join('\n');
+    return '        <div class="site-nav-item"' + (hubActive ? ' data-active="1"' : '') + '>\n' +
+      '          <a class="site-nav-parent" href="' + hub.url + '" aria-haspopup="true"' +
+      (hubActive ? ' aria-current="page"' : '') + '>' + esc(hub.label) +
+      icon('caret', 'site-nav-caret') + '</a>\n' +
+      '          <div class="site-nav-drop">\n' + dropItems + '\n          </div>\n        </div>';
   }).join('\n');
   const site = BLOG_UI.site;
   return `    <header class="site-header">
@@ -156,57 +165,7 @@ ${progress && feature('readingProgress') ? '      <span class="read-progress" ar
  * NOT rendered here. Contact refs are resolved at runtime from business.json.
  */
 function siteDrawer({ activeHub, activeCluster }) {
-  const isActiveLink = (url) => {
-    const dir = url.replace(/^\/(?:blog\/)?/, '').replace(/\/$/, '');
-    return dir === activeHub || dir === activeCluster;
-  };
-  const renderItem = (item, indent = '          ') => {
-    const current = item.kind === 'link' && isActiveLink(item.url) ? ' aria-current="page"' : '';
-    if (item.kind === 'theme') {
-      return `${indent}<li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">${item.icon} ${esc(item.label)}: Auto</button></li>`;
-    }
-    if (item.kind === 'hub') {
-      const hubActive = item.url.replace(/^\/blog\//, '').replace(/\/$/, '') === activeCluster
-        || item.children.some((ch) => ch.url.replace(/^\/blog\//, '').replace(/\/$/, '') === activeHub);
-      const kids = item.children.map((ch) =>
-        `            <li><a href="${ch.url}"${ch.url.replace(/^\/blog\//, '').replace(/\/$/, '') === activeHub ? ' aria-current="page"' : ''}>${ch.icon} ${esc(ch.label)}</a></li>`).join('\n');
-      return `${indent}<li class="motoai-hub">
-${indent}  <a class="motoai-hub-link" href="${item.url}"${hubActive ? ' aria-current="page"' : ''}>${item.icon} ${esc(item.label)}</a>
-${indent}  <ul class="motoai-hub-items">
-${kids}
-${indent}  </ul>
-${indent}</li>`;
-    }
-    if (item.kind === 'action') {
-      return `${indent}<li><a href="/?action=${esc(item.action)}">${item.icon} ${esc(item.label)}</a></li>`;
-    }
-    if (item.kind === 'contact') {
-      return `${indent}<li><a data-contact-ref="${esc(item.ref)}" href="#" rel="noopener noreferrer" target="_blank">${item.icon} ${esc(item.label)}</a></li>`;
-    }
-    return `${indent}<li><a href="${item.url}"${current}>${item.icon} ${esc(item.label)}</a></li>`;
-  };
-  const listHtml = drawerCore().map((entry) => {
-    if (entry.kind === 'group') {
-      return `      <li class="motoai-group">
-        <button type="button" class="motoai-group-btn" aria-expanded="false" aria-controls="motoai-group-${entry.id}">${entry.icon} ${esc(entry.label)} <span class="motoai-caret" aria-hidden="true">▾</span></button>
-        <ul class="motoai-group-items" id="motoai-group-${entry.id}" hidden>
-${entry.children.map((child) => renderItem(child)).join('\n')}
-        </ul>
-      </li>`;
-    }
-    return renderItem(entry, '      ');
-  }).join('\n');
-  return `  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
-  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
-    <div class="motoai-drawer-head">
-      <strong>${esc(BLOG_UI.site.shortName)}</strong>
-      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
-    </div>
-    <ul class="motoai-drawer-list">
-${listHtml}
-    </ul>
-  </nav>
-`;
+  return renderDrawer({ mode: 'content', activeHub, activeCluster }) + '\n';
 }
 
 /** Real site footer: brand block (mark + MotoAI · Hỗ trợ Agent + short

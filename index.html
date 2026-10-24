@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#4f46e5">
-  <link rel="stylesheet" href="assets/css/style.css?v=66">
+  <link rel="stylesheet" href="assets/css/style.css?v=1762287946">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MotoAI — Thuê Xe Máy Hà Nội Nguyễn Tú">
   <meta property="og:title" content="MotoAI — Ứng dụng thuê xe máy & xe điện">
@@ -127,50 +127,90 @@
       <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
     </div>
     <ul class="motoai-drawer-list">
-      <li><button type="button" id="motoai-menu-agent">⚡ Agent</button></li>
-      <li><a href="/gioi-thieu/">🏢 Giới Thiệu</a></li>
+      <li><button type="button" id="motoai-menu-agent">⚡ Agent Hỗ Trợ</button></li>
       <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
       <li class="motoai-group">
+        <button type="button" class="motoai-group-btn" id="motoai-group-pages-btn" aria-expanded="false" aria-controls="motoai-group-pages">🗂️ Trang Web <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pages" hidden>
+          <li><a href="/gioi-thieu/">🏢 Giới Thiệu</a></li>
+          <li><a href="/lien-he/">☎️ Liên Hệ</a></li>
+          <li><a id="motoai-menu-price" href="/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/doi-tac/">🤝 Đối Tác</a></li>
+        </ul>
+      </li>
+      <li class="motoai-group">
         <button type="button" class="motoai-group-btn" id="motoai-group-cm-btn" aria-expanded="false" aria-controls="motoai-group-cm">📚 Cẩm nang <span class="motoai-caret" aria-hidden="true">▾</span></button>
-        <ul class="motoai-group-items" id="motoai-group-cm">
+        <ul class="motoai-group-items" id="motoai-group-cm" hidden>
           <li class="motoai-hub">
-            <a class="motoai-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công cụ &amp; Hướng dẫn</a>
+            <a class="motoai-hub-link" href="/blog/cong-cu-huong-dan/">🧰 Công Cụ</a>
             <ul class="motoai-hub-items">
-              <li><a href="/blog/app/">📱 Ứng Dụng</a></li>
-              <li><a href="/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+              <li class="motoai-category"><a href="/blog/app/">📱 Ứng Dụng</a></li>
+              <li class="motoai-subtopic"><a href="/blog/app/web-app/" aria-label="Ứng Dụng: Web App">· Web App</a></li>
+              <li class="motoai-subtopic"><a href="/blog/app/tim-xe/" aria-label="Ứng Dụng: Tìm Xe">· Tìm Xe</a></li>
+              <li class="motoai-subtopic"><a href="/blog/app/tinh-gia/" aria-label="Ứng Dụng: Tính Giá">· Tính Giá</a></li>
+              <li class="motoai-subtopic"><a href="/blog/app/dat-xe/" aria-label="Ứng Dụng: Đặt Xe">· Đặt Xe</a></li>
+              <li class="motoai-subtopic"><a href="/blog/app/tro-ly/" aria-label="Ứng Dụng: Trợ Lý">· Trợ Lý</a></li>
+              <li class="motoai-subtopic"><a href="/blog/app/cai-app/" aria-label="Ứng Dụng: Cài App">· Cài App</a></li>
+              <li class="motoai-subtopic"><a href="/blog/app/so-sanh/" aria-label="Ứng Dụng: So Sánh">· So Sánh</a></li>
+              <li class="motoai-subtopic"><a href="/blog/app/huong-dan/" aria-label="Ứng Dụng: Hướng Dẫn">· Hướng Dẫn</a></li>
+              <li class="motoai-category"><a href="/blog/huong-dan/">📄 Hướng Dẫn</a></li>
+              <li class="motoai-subtopic"><a href="/blog/huong-dan/dat-xe/" aria-label="Hướng Dẫn: Đặt Xe">· Đặt Xe</a></li>
+              <li class="motoai-subtopic"><a href="/blog/huong-dan/thu-tuc/" aria-label="Hướng Dẫn: Thủ Tục">· Thủ Tục</a></li>
+              <li class="motoai-subtopic"><a href="/blog/huong-dan/chuan-bi/" aria-label="Hướng Dẫn: Chuẩn Bị">· Chuẩn Bị</a></li>
             </ul>
           </li>
           <li class="motoai-hub">
-            <a class="motoai-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Thuê xe &amp; Phương tiện</a>
+            <a class="motoai-hub-link" href="/blog/thue-xe-phuong-tien/">🏍️ Phương Tiện</a>
             <ul class="motoai-hub-items">
-              <li><a href="/blog/thue-xe/">🏍️ Thuê Xe</a></li>
-              <li><a href="/blog/xe-dien/">⚡ Xe Điện</a></li>
+              <li class="motoai-category"><a href="/blog/thue-xe/">🏍️ Thuê Xe</a></li>
+              <li class="motoai-subtopic"><a href="/blog/thue-xe/gia-thue/" aria-label="Thuê Xe: Giá Thuê">· Giá Thuê</a></li>
+              <li class="motoai-subtopic"><a href="/blog/thue-xe/dat-coc/" aria-label="Thuê Xe: Đặt Cọc">· Đặt Cọc</a></li>
+              <li class="motoai-subtopic"><a href="/blog/thue-xe/nhan-xe/" aria-label="Thuê Xe: Nhận Xe">· Nhận Xe</a></li>
+              <li class="motoai-subtopic"><a href="/blog/thue-xe/tra-xe/" aria-label="Thuê Xe: Trả Xe">· Trả Xe</a></li>
+              <li class="motoai-subtopic"><a href="/blog/thue-xe/thue-tuan/" aria-label="Thuê Xe: Thuê Tuần">· Thuê Tuần</a></li>
+              <li class="motoai-subtopic"><a href="/blog/thue-xe/thue-thang/" aria-label="Thuê Xe: Thuê Tháng">· Thuê Tháng</a></li>
+              <li class="motoai-subtopic"><a href="/blog/thue-xe/chon-xe/" aria-label="Thuê Xe: Chọn Xe">· Chọn Xe</a></li>
+              <li class="motoai-subtopic"><a href="/blog/thue-xe/du-khach/" aria-label="Thuê Xe: Du Khách">· Du Khách</a></li>
+              <li class="motoai-category"><a href="/blog/xe-dien/">⚡ Xe Điện</a></li>
+              <li class="motoai-subtopic"><a href="/blog/xe-dien/pin-xe/" aria-label="Xe Điện: Pin Xe">· Pin Xe</a></li>
+              <li class="motoai-subtopic"><a href="/blog/xe-dien/sac-pin/" aria-label="Xe Điện: Sạc Pin">· Sạc Pin</a></li>
+              <li class="motoai-subtopic"><a href="/blog/xe-dien/quang-duong/" aria-label="Xe Điện: Quãng Đường">· Quãng Đường</a></li>
+              <li class="motoai-subtopic"><a href="/blog/xe-dien/chon-xe/" aria-label="Xe Điện: Chọn Xe">· Chọn Xe</a></li>
+              <li class="motoai-subtopic"><a href="/blog/xe-dien/chi-phi/" aria-label="Xe Điện: Chi Phí">· Chi Phí</a></li>
+              <li class="motoai-subtopic"><a href="/blog/xe-dien/an-toan/" aria-label="Xe Điện: An Toàn">· An Toàn</a></li>
+              <li class="motoai-subtopic"><a href="/blog/xe-dien/so-sanh/" aria-label="Xe Điện: So Sánh">· So Sánh</a></li>
+              <li class="motoai-subtopic"><a href="/blog/xe-dien/thue-ngay/" aria-label="Xe Điện: Thuê Ngày">· Thuê Ngày</a></li>
             </ul>
           </li>
           <li class="motoai-hub">
-            <a class="motoai-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám phá &amp; An toàn</a>
+            <a class="motoai-hub-link" href="/blog/kham-pha-an-toan/">🧭 Khám Phá</a>
             <ul class="motoai-hub-items">
-              <li><a href="/blog/an-toan/">🛡️ An Toàn</a></li>
-              <li><a href="/blog/dia-phuong/">📍 Địa Phương</a></li>
+              <li class="motoai-category"><a href="/blog/an-toan/">🛡️ An Toàn</a></li>
+              <li class="motoai-subtopic"><a href="/blog/an-toan/lai-xe/" aria-label="An Toàn: Lái Xe">· Lái Xe</a></li>
+              <li class="motoai-subtopic"><a href="/blog/an-toan/mu-bao-hiem/" aria-label="An Toàn: Mũ Bảo Hiểm">· Mũ Bảo Hiểm</a></li>
+              <li class="motoai-subtopic"><a href="/blog/an-toan/thoi-tiet/" aria-label="An Toàn: Thời Tiết">· Thời Tiết</a></li>
+              <li class="motoai-subtopic"><a href="/blog/an-toan/su-co/" aria-label="An Toàn: Sự Cố">· Sự Cố</a></li>
+              <li class="motoai-subtopic"><a href="/blog/an-toan/phap-luat/" aria-label="An Toàn: Pháp Luật">· Pháp Luật</a></li>
+              <li class="motoai-category"><a href="/blog/dia-phuong/">📍 Địa Phương</a></li>
+              <li class="motoai-subtopic"><a href="/blog/dia-phuong/phuong-xa/" aria-label="Địa Phương: Phường Xã">· Phường Xã</a></li>
             </ul>
           </li>
           <li><a href="/blog/">🔎 Tìm Bài</a></li>
         </ul>
       </li>
       <li class="motoai-group">
-        <button type="button" class="motoai-group-btn" id="motoai-group-dv-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
-        <ul class="motoai-group-items" id="motoai-group-dv">
-          <li><a id="motoai-menu-price" href="/gia-thue/">💰 Giá Thuê</a></li>
+        <button type="button" class="motoai-group-btn" id="motoai-group-dv-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch Vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
           <li><button type="button" id="motoai-menu-address">📍 Địa Chỉ</button></li>
           <li><button type="button" id="motoai-menu-contact">☎️ Liên Hệ</button></li>
-          <li><a id="motoai-menu-call" href="#">📞 Gọi</a></li>
-          <li><a id="motoai-menu-whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 WhatsApp</a></li>
+          <li><a id="motoai-menu-call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi Ngay</a></li>
+          <li><a id="motoai-menu-whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 Nhắn WhatsApp</a></li>
           <li><a id="motoai-menu-map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
         </ul>
       </li>
       <li class="motoai-group">
-        <button type="button" class="motoai-group-btn" id="motoai-group-pl-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
-        <ul class="motoai-group-items" id="motoai-group-pl">
+        <button type="button" class="motoai-group-btn" id="motoai-group-pl-btn" aria-expanded="false" aria-controls="motoai-group-pl">🔒 Pháp Lý <span class="motoai-caret" aria-hidden="true">▾</span></button>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
           <li><a href="/chinh-sach/">📜 Chính Sách</a></li>
           <li><a href="/privacy/">🔒 Bảo Mật</a></li>
           <li><a href="/terms/">📃 Điều Khoản</a></li>

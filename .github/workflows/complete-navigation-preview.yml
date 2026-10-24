@@ -1,0 +1,57 @@
+name: Complete Navigation QA
+
+on:
+  push:
+    branches: [feat/complete-compact-navigation]
+    paths:
+      - 'config/navigation.json'
+      - 'tools/taxonomy.mjs'
+      - 'tools/menu-drawer.mjs'
+      - 'tools/app-shell.mjs'
+      - 'tools/build-blog.mjs'
+      - 'tests/unit/menu-completeness.test.js'
+      - 'assets/css/src/blog.css'
+      - 'assets/css/style.css'
+      - '.github/workflows/complete-navigation-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: complete-navigation-branch
+  cancel-in-progress: false
+
+jobs:
+  rebuild-and-test:
+    if: github.ref == 'refs/heads/feat/complete-compact-navigation'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build all pages and chat homepage shared navigation
+        run: node tools/build-blog.mjs
+      - name: Test all menu, SEO, CI and existing regression contracts
+        run: node --test
+      - name: Verify URLs, canonicals and SEO
+        run: |
+          node tools/site-audit.mjs
+          node tools/seo-score.mjs
+      - name: Commit generated HTML to feature branch only
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "feat/complete-compact-navigation"
+          git config user.name "motoai-menu-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git add -- blog index.html assets/css/blog.css data/blog/knowledge-index.json \
+            sitemap.xml robots.txt $(node tools/site-pages.mjs --dirs)
+          if git diff --cached --quiet; then
+            echo "Menu preview is synchronized"
+            exit 0
+          fi
+          git commit -m "build(nav): synchronize complete menu to every page [skip ci]"
+          git push origin HEAD:feat/complete-compact-navigation

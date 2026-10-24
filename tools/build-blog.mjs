@@ -25,13 +25,14 @@ import { fileURLToPath } from 'node:url';
 import { normalizeInternalAnchors } from './site-audit.mjs';
 import { BLOG_UI, feature, icon, renderSlot, resolveFacts, t } from './blog-components.mjs';
 import {
-  taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav
+  taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav, setMenuSubtopicUrls
 } from './taxonomy.mjs';
 import {
   SITE, esc, rel, pageHead, askAgentAction, appShellPage
 } from './app-shell.mjs';
 import { loadSeoMeta, assertSeoMeta, applySeoMeta } from './seo-meta.mjs';
 import { buildCss } from './css-build.mjs';
+import { syncChatRootMenu } from './menu-drawer.mjs';
 import { BLOG_HOME, SITE_PAGES } from './site-pages.mjs';
 import { planLinks } from './seo-links.mjs';
 
@@ -815,6 +816,16 @@ export function build() {
     // meta descriptions and search snippets must never expose {{ business.* }}.
     // Keep published.json source untouched; use current verified business data.
     .map((a) => ({ ...a, description: resolveFacts(a.description, business) }));
+  // Build menu from *actual PUBLISHED* article topics; no links to empty
+  // subtopic hubs. Share it between the root chat and all content pages.
+  const liveMenuTopics = new Set();
+  for (const article of published) {
+    const topic = deriveSubtopic(article.category, matrix[article.article_id] ?? {});
+    if (!topic.fallback) {
+      liveMenuTopics.add('/blog/' + taxonomy.categories[article.category].dir + '/' + topic.slug + '/');
+    }
+  }
+  setMenuSubtopicUrls(liveMenuTopics);
   const byId = new Map(published.map((a) => [a.article_id, a]));
   const links = planLinks(published, matrix, {
     subtopicOf: deriveSubtopic,
@@ -943,6 +954,7 @@ Sitemap: ${SITE}sitemap.xml
     }
   }
   write('data/blog/content-matrix.csv', csv.join('\n'));
+  syncChatRootMenu(ROOT);
   console.log(`blog built: ${published.length} published articles, ${subtopicPages.length} subtopic hubs, ${urls.length} sitemap urls`);
 }
 
