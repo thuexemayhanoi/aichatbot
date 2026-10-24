@@ -15,7 +15,7 @@
 <p>Nền móng hiện tại phục vụ đúng ba việc mà khách ở Hà Nội làm nhiều nhất trước khi thuê:</p>
 <ol>
 <li><strong>Hỏi đáp bằng ngôn ngữ đời thường.</strong> Bạn gõ "thuê Vision một tuần bao nhiêu" hay "cần giấy tờ gì" và nhận câu trả lời dựa trên thông tin cửa hàng đã xác nhận.</li>
-<li><strong>Xem giá tham khảo.</strong> Trợ lý dẫn bạn tới trang <a href="/gia-thue/">giá thuê</a>, ví dụ Honda Wave khoảng 150.000đ/ngày, Honda Vision khoảng 200.000đ/ngày, và luôn nhắc rằng giá cần được cửa hàng xác nhận.</li>
+<li><strong>Xem giá tham khảo.</strong> Trợ lý dẫn bạn tới trang <a href="/gia-thue/">giá thuê</a>, ví dụ Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày, Honda Vision khoảng {{ price.honda-vision.day.min }}/ngày, và luôn nhắc rằng giá cần được cửa hàng xác nhận.</li>
 <li><strong>Chuyển sang liên hệ trực tiếp.</strong> Khi đã chọn được xe, bạn chuyển sang gọi điện hoặc nhắn tin để chốt lịch, thay vì phải kể lại từ đầu.</li>
 </ol>
 <p>Cách dùng từng bước của giai đoạn này được hướng dẫn trong bài <a href="/blog/app/cach-dung-ung-dung-thue-xe-may-tai-ha-noi/">cách dùng ứng dụng thuê xe máy tại Hà Nội</a>, còn luồng đặt xe cụ thể có trong bài <a href="/blog/app/dat-xe-bang-ung-dung-tai-ha-noi/">đặt xe bằng ứng dụng tại Hà Nội</a>.</p>
@@ -31,7 +31,7 @@
 <p>Các hướng này đều bám vào nguyên tắc cũ: chỉ trả lời bằng dữ liệu cửa hàng đã xác nhận, không tự đưa ra mức giá hay chính sách mới.</p>
 
 <h2>Giai đoạn tiếp theo: tiện cho khách nước ngoài và khách thuê dài</h2>
-<p>Hai nhóm khách có nhu cầu khác hẳn nhau nhưng đều đông ở Hà Nội. Với khách nước ngoài quanh Hoàn Kiếm và Phố Cổ, ưu tiên là trả lời mạch lạc bằng tiếng Anh, giải thích rõ chuyện giấy phép lái xe và việc người thuê tự chuẩn bị bảo hiểm, vì cửa hàng không cung cấp bảo hiểm. Với sinh viên và người đi làm thuê theo tháng, ưu tiên là giúp so gói: Honda Air Blade tham khảo 1.400.000đ/tháng, Honda Click hoặc Yamaha Mio tham khảo 1.000.000đ–1.200.000đ/tháng, để họ tự cân đối ngân sách trước khi gọi.</p>
+<p>Hai nhóm khách có nhu cầu khác hẳn nhau nhưng đều đông ở Hà Nội. Với khách nước ngoài quanh Hoàn Kiếm và Phố Cổ, ưu tiên là trả lời mạch lạc bằng tiếng Anh, giải thích rõ chuyện giấy phép lái xe và việc người thuê tự chuẩn bị bảo hiểm, vì cửa hàng không cung cấp bảo hiểm. Với sinh viên và người đi làm thuê theo tháng, ưu tiên là giúp so gói: Honda Air Blade tham khảo {{ price.honda-airblade.month.min }}/tháng, Honda Click hoặc Yamaha Mio tham khảo {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng, để họ tự cân đối ngân sách trước khi gọi.</p>
 <p>Một điểm luôn được giữ nguyên ở mọi giai đoạn là cách nói về tiền đặt cọc: trợ lý chỉ nêu khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và nhắc rằng mức cụ thể được xác nhận khi đặt.</p>
 
 <h2>Điều không nằm trong lộ trình và lý do</h2>

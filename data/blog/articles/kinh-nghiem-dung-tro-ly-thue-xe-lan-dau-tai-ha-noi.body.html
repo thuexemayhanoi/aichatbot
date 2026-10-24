@@ -17,7 +17,7 @@
 
 <h2>Những câu hỏi đáng hỏi trong buổi đầu tiên</h2>
 <ol>
-<li><strong>Giá tham khảo theo thời gian thuê.</strong> Ví dụ: "Vision thuê một tuần khoảng bao nhiêu?". Trợ lý sẽ đưa mức tham khảo, như Honda Vision 800.000đ–1.000.000đ/tuần, và nhắc bạn xác nhận lại với cửa hàng.</li>
+<li><strong>Giá tham khảo theo thời gian thuê.</strong> Ví dụ: "Vision thuê một tuần khoảng bao nhiêu?". Trợ lý sẽ đưa mức tham khảo, như Honda Vision {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, và nhắc bạn xác nhận lại với cửa hàng.</li>
 <li><strong>Khoản đặt cọc.</strong> Trợ lý cho biết khoản cọc dao động trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
 <li><strong>Giao xe về chỗ ở.</strong> Hỏi khu bạn ở có được giao không và nhớ rằng giao xe chỉ trong khung {{ business.hours.display }}, thời gian và phí phải chốt trước khi đặt.</li>
 <li><strong>Giấy tờ cần chuẩn bị.</strong> Đặc biệt quan trọng nếu bạn là khách nước ngoài hoặc mới có giấy phép lái xe.</li>
@@ -27,7 +27,7 @@
 
 <h2>Ba tình huống thường gặp ở Hà Nội</h2>
 <p><strong>Khách du lịch ở Phố Cổ:</strong> đường hẹp, nhiều phố một chiều, chỗ gửi xe hạn chế. Hãy hỏi trợ lý mẫu xe nhỏ gọn dễ dắt, và hỏi thêm về việc giao xe tới khách sạn trong giờ mở cửa. Bài <a href="/blog/app/dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi/">dùng ứng dụng thuê xe khi du lịch Hà Nội</a> có thêm gợi ý cho trường hợp này.</p>
-<p><strong>Sinh viên hoặc người đi làm ở Long Biên, Gia Lâm:</strong> bạn ở gần cửa hàng nên có thể tự đến nhận. Hỏi trợ lý so sánh giá thuê tuần và tháng của các mẫu tiết kiệm như Honda Click hay Yamaha Mio, giá tham khảo 1.000.000đ–1.200.000đ/tháng.</p>
+<p><strong>Sinh viên hoặc người đi làm ở Long Biên, Gia Lâm:</strong> bạn ở gần cửa hàng nên có thể tự đến nhận. Hỏi trợ lý so sánh giá thuê tuần và tháng của các mẫu tiết kiệm như Honda Click hay Yamaha Mio, giá tham khảo {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng.</p>
 <p><strong>Người ở Tây Hồ, Ba Đình cần xe vài ngày:</strong> quãng đường qua sông khá xa nếu tự đến cửa hàng, nên hãy hỏi khả năng giao xe và chuẩn bị sẵn thời điểm bạn có mặt để nhận.</p>
 
 <h2>Sai lầm của người dùng lần đầu tại Hà Nội</h2>
