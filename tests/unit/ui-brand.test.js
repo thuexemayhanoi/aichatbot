@@ -458,7 +458,7 @@ test('grouped menu: parent/child accordion with ARIA + one-open + Escape', () =>
     assert.ok(!html.includes(old), `long label "${old}" must be simplified`);
   }
   assert.ok(html.includes('🧹 Xóa chat'), 'reset label is "Xóa chat"');
-  for (const label of ['🗂️ Trang Web', '📚 Cẩm Nang', '🛵 Dịch Vụ', '🔒 Pháp Lý']) {
+  for (const label of ['🗂️ Trang Web', '📚 Cẩm nang', '🛵 Dịch Vụ', '🔒 Pháp Lý']) {
     assert.ok(html.includes(label), 'compact group present: ' + label);
   }
   // One-open accordion + Escape/backdrop close are wired in JS.
