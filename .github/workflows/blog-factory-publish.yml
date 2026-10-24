@@ -265,7 +265,7 @@ jobs:
           git config user.name "motoai-bot"
           git config user.email "nguyentuantu2482@users.noreply.github.com"
           git add data/blog/content-matrix.csv data/blog/knowledge-index.json \
-            data/blog/published.json blog index.html sitemap.xml robots.txt reports/blog-factory-run.md
+            data/blog/published.json blog sitemap.xml robots.txt index.html reports/blog-factory-run.md
           if [ -f docs/state/blog-factory.checkpoint.json ]; then
             git add docs/state/blog-factory.checkpoint.json
           fi
