@@ -6,7 +6,7 @@
 <li><strong>Khách mở lời:</strong> "Tôi ở Tây Hồ sáu ngày. Ở quê nhà tôi chỉ lái xe tay ga tự động, chưa bao giờ lái xe số. Thỉnh thoảng bạn đồng hành cũng đi chung xe với tôi."</li>
 <li><strong>Agent hỏi thêm:</strong> bạn định chỉ đi trong nội thành hay đi xa, có mang hành lý lớn không, và giấy phép lái xe hiện có là loại gì.</li>
 <li><strong>Khách trả lời:</strong> chủ yếu quanh hồ và phố cổ, một hôm muốn đi xa hơn, chỉ có ba lô.</li>
-<li><strong>Agent gợi ý:</strong> một xe tay ga phổ thông như Honda Vision, giá tham khảo 200.000đ/ngày hoặc 800.000đ–1.000.000đ/tuần, kèm lý do: không cần sang số, yên đủ cho hai người, dễ xoay trong phố hẹp.</li>
+<li><strong>Agent gợi ý:</strong> một xe tay ga phổ thông như Honda Vision, giá tham khảo {{ price.honda-vision.day.min }}/ngày hoặc {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, kèm lý do: không cần sang số, yên đủ cho hai người, dễ xoay trong phố hẹp.</li>
 <li><strong>Agent nhắc:</strong> giá, xe sẵn có và các yêu cầu giấy tờ cần được cửa hàng xác nhận trước khi đặt.</li>
 </ol>
 <p>Điều đáng chú ý là agent hỏi lại trước khi gợi ý. Nếu câu đầu của bạn đã đủ năm thông tin cơ bản, bước hỏi thêm sẽ ngắn hơn; danh sách thông tin nên khai có trong bài <a href="/blog/app/chon-xe-bang-agent-cho-khach-nuoc-ngoai/">chọn xe bằng agent cho khách nước ngoài</a>, còn mẫu câu sẵn dùng nằm ở bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-cho-khach-nuoc-ngoai/">soạn câu hỏi hiệu quả cho agent thuê xe cho khách nước ngoài</a>.</p>
@@ -14,7 +14,7 @@
 <h2>Bốn câu nên hỏi ngược lại agent</h2>
 <p>Một gợi ý tốt phải đứng vững khi bạn đặt câu hỏi phản biện. Bốn câu sau giúp bạn hiểu vì sao agent chọn chiếc xe đó:</p>
 <ul>
-<li><strong>"Vì sao chọn xe này mà không chọn xe rẻ hơn?"</strong> Agent sẽ so với lựa chọn tiết kiệm hơn, chẳng hạn Honda Click hoặc Yamaha Mio tham khảo 150.000đ/ngày, và nói rõ bạn được, mất gì.</li>
+<li><strong>"Vì sao chọn xe này mà không chọn xe rẻ hơn?"</strong> Agent sẽ so với lựa chọn tiết kiệm hơn, chẳng hạn Honda Click hoặc Yamaha Mio tham khảo {{ price.honda-click.day.min }}/ngày, và nói rõ bạn được, mất gì.</li>
 <li><strong>"Nếu ngày nào tôi cũng chở thêm một người thì có gì thay đổi?"</strong> Câu này kiểm tra xem gợi ý có tính tới yên xe, sức kéo và cảm giác lái khi chở hai người không.</li>
 <li><strong>"Nếu trời mưa nhiều thì sao?"</strong> Bạn sẽ nhận lời khuyên về áo mưa, chỗ cất đồ và cách đi đường trơn.</li>
 <li><strong>"Tôi cần xác nhận điều gì với cửa hàng?"</strong> Câu trả lời cho bạn một danh sách để mang sang bước liên hệ trực tiếp.</li>
@@ -58,7 +58,7 @@
 <h3>Tôi có thể nhờ agent đặt xe luôn không?</h3>
 <p>Agent giúp bạn chọn và chuẩn bị câu hỏi. Việc đặt xe được chốt trực tiếp với cửa hàng qua tin nhắn hoặc điện thoại, sau khi có xác nhận về xe, giá và thời gian.</p>
 <h3>Agent có hay gợi ý xe đắt hơn nhu cầu không?</h3>
-<p>Gợi ý dựa trên những gì bạn mô tả. Nếu ngân sách là ưu tiên, hãy nói ngay từ đầu, agent sẽ đưa các lựa chọn như Honda Wave tham khảo 150.000đ/ngày nếu bạn đi được xe số, kèm lời nhắc xác nhận giá trên trang <a href="/gia-thue/">giá thuê</a>.</p>
+<p>Gợi ý dựa trên những gì bạn mô tả. Nếu ngân sách là ưu tiên, hãy nói ngay từ đầu, agent sẽ đưa các lựa chọn như Honda Wave tham khảo {{ price.honda-wave.day.min }}/ngày nếu bạn đi được xe số, kèm lời nhắc xác nhận giá trên trang <a href="/gia-thue/">giá thuê</a>.</p>
 
 <h2>Kết luận</h2>
 <p>Agent chọn xe giúp khách nước ngoài tiết kiệm nhiều thời gian, nhưng quyết định tốt đến từ ba bước bạn tự làm: hỏi ngược lại để hiểu lý do, mang danh sách cần xác nhận sang cửa hàng, và thử chiếc xe thật trước khi lên đường. Lúc muốn chốt chiếc xe agent đã gợi ý, bạn nhắn hoặc gọi {{ business.display_name }} qua {{ business.contact.phone_display }}, hay ghé thẳng {{ business.address.full }}. Bài gốc <a href="/blog/app/agent-chon-xe-giup-ban/">agent chọn xe giúp bạn</a> giải thích cơ chế chung, chuyên mục <a href="/blog/app/">ứng dụng thuê xe</a> có thêm nhiều hướng dẫn, và bạn có thể bắt đầu trò chuyện với agent ngay tại <a href="/">trang chủ</a>.</p>

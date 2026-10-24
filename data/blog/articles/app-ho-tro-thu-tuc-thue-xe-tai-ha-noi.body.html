@@ -20,7 +20,7 @@
 <p>Cửa hàng đặt tại {{ business.address.full }}. Nếu bạn ở Long Biên, Bồ Đề hay Gia Lâm, tự đến nhận xe thường nhanh và tiết kiệm. Nếu bạn ở Hoàn Kiếm, khu phố cổ, Ba Đình hay Tây Hồ, có thể yêu cầu giao xe trong khung {{ business.hours.display }}. Thời gian và chi phí giao phải được xác nhận trước khi đặt, cửa hàng không giao ngoài giờ hoạt động. Hãy hỏi trợ lý: "Tôi ở Tây Hồ, muốn nhận xe lúc 10 giờ sáng thì cần làm gì?" để biết các bước tiếp theo.</p>
 
 <h3>Giờ giấc ảnh hưởng đến thủ tục</h3>
-<p>Khách đến Hà Nội bằng tàu đêm hay chuyến bay muộn thường muốn nhận xe ngay. Vì cửa hàng chỉ làm việc từ 09:00 đến 21:00, bạn cần sắp xếp nhận xe trong khung này. Trợ lý sẽ nhắc bạn tính giờ đến và giờ trả cho hợp lý, tránh trường hợp đến nơi sau giờ đóng cửa.</p>
+<p>Khách đến Hà Nội bằng tàu đêm hay chuyến bay muộn thường muốn nhận xe ngay. Vì cửa hàng chỉ làm việc từ {{ business.hours.open }} đến {{ business.hours.close }}, bạn cần sắp xếp nhận xe trong khung này. Trợ lý sẽ nhắc bạn tính giờ đến và giờ trả cho hợp lý, tránh trường hợp đến nơi sau giờ đóng cửa.</p>
 
 <h3>Bảo hiểm do người thuê tự lo</h3>
 <p>Một điểm nhiều người bỏ sót: {{ business.brand }} không cung cấp bảo hiểm cho xe thuê. Bạn cần tự chuẩn bị bảo hiểm xe máy của mình trước khi nhận xe. Hỏi trợ lý "Thuê xe có bảo hiểm không?" để nhận câu trả lời rõ ràng ngay từ đầu.</p>
@@ -28,10 +28,10 @@
 <h2>Dùng trợ lý theo từng tình huống thực tế</h2>
 
 <h3>Khách du lịch ở phố cổ thuê 3 ngày</h3>
-<p>Câu hỏi gợi ý: "Tôi ở phố cổ, thuê Honda Vision 3 ngày, cần những giấy tờ gì và có giao xe tới khách sạn không?" Trợ lý sẽ liệt kê giấy tờ, giá tham khảo 200.000đ/ngày cho Vision và nhắc bạn xác nhận phí giao với cửa hàng.</p>
+<p>Câu hỏi gợi ý: "Tôi ở phố cổ, thuê Honda Vision 3 ngày, cần những giấy tờ gì và có giao xe tới khách sạn không?" Trợ lý sẽ liệt kê giấy tờ, giá tham khảo {{ price.honda-vision.day.min }}/ngày cho Vision và nhắc bạn xác nhận phí giao với cửa hàng.</p>
 
 <h3>Sinh viên ở Gia Lâm thuê theo tháng</h3>
-<p>Câu hỏi gợi ý: "Tôi là sinh viên ở Gia Lâm, muốn thuê xe ga rẻ theo tháng thì thủ tục ra sao?" Trợ lý sẽ gợi ý Honda Click hoặc Yamaha Mio với giá tham khảo 1.000.000đ–1.200.000đ/tháng. Bạn cũng sẽ được giải thích rằng khoản đặt cọc do cửa hàng xác nhận khi đặt, cùng cách tự đến cửa hàng nhận xe. Chi tiết về gói dài ngày có trong bài <a href="/blog/app/ung-dung-ho-tro-thue-xe-theo-thang/">ứng dụng hỗ trợ thuê xe theo tháng</a>.</p>
+<p>Câu hỏi gợi ý: "Tôi là sinh viên ở Gia Lâm, muốn thuê xe ga rẻ theo tháng thì thủ tục ra sao?" Trợ lý sẽ gợi ý Honda Click hoặc Yamaha Mio với giá tham khảo {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng. Bạn cũng sẽ được giải thích rằng khoản đặt cọc do cửa hàng xác nhận khi đặt, cùng cách tự đến cửa hàng nhận xe. Chi tiết về gói dài ngày có trong bài <a href="/blog/app/ung-dung-ho-tro-thue-xe-theo-thang/">ứng dụng hỗ trợ thuê xe theo tháng</a>.</p>
 
 <h3>Khách nước ngoài muốn biết điều kiện giấy phép</h3>
 <p>Trợ lý có thể giải thích những giấy tờ cần mang và nhắc rằng việc điều khiển xe máy ở Việt Nam cần giấy phép lái xe hợp lệ. Với các câu hỏi phức tạp về loại bằng nước ngoài, trợ lý sẽ hướng bạn liên hệ trực tiếp cửa hàng.</p>

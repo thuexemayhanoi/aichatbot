@@ -17,7 +17,7 @@
 <p>Khi đã nhận phòng, bạn có thể đi từ câu hỏi đến chiếc xe trong vài bước:</p>
 <ol>
 <li>Mở trợ lý, cho biết bạn ở khu nào, ví dụ Phố Cổ, Tây Hồ hay Long Biên, và muốn nhận xe khi nào.</li>
-<li>Hỏi giá tham khảo cho dòng xe bạn chọn. Ví dụ Honda Vision 200.000đ/ngày, Honda Wave 150.000đ/ngày, Honda Click hoặc Yamaha Mio 150.000đ/ngày; giá chính thức luôn được cửa hàng xác nhận.</li>
+<li>Hỏi giá tham khảo cho dòng xe bạn chọn. Ví dụ Honda Vision {{ price.honda-vision.day.min }}/ngày, Honda Wave {{ price.honda-wave.day.min }}/ngày, Honda Click hoặc Yamaha Mio {{ price.honda-click.day.min }}/ngày; giá chính thức luôn được cửa hàng xác nhận.</li>
 <li>Hỏi về hình thức nhận xe: tự đến cửa hàng ở {{ business.address.full }} hay giao tới khách sạn. Giao xe chỉ diễn ra trong giờ {{ business.hours.display }}, thời gian và phí giao được chốt trước khi đặt.</li>
 <li>Liên hệ cửa hàng qua {{ business.contact.phone_display }} để giữ xe. Nếu bạn chưa có SIM Việt Nam, nhờ lễ tân khách sạn gọi giúp là cách nhanh nhất.</li>
 <li>Khi nhận xe, kiểm tra phanh, đèn, lốp và chụp ảnh quanh xe trước khi ký.</li>
@@ -28,7 +28,7 @@
 <p>Nhiều khách chỉ dùng trợ lý lúc đặt rồi quên mất nó. Thực ra giữa kỳ thuê, trợ lý vẫn hữu ích cho những việc như:</p>
 <ul>
 <li>Hỏi lại giờ mở cửa trước khi định ghé cửa hàng gia hạn hoặc đổi xe.</li>
-<li>Tính lại chi phí nếu bạn muốn ở thêm vài ngày, so giữa giá ngày và giá tuần. Honda Vision tham khảo 800.000đ–1.000.000đ/tuần, Honda Air Blade 800.000đ/tuần.</li>
+<li>Tính lại chi phí nếu bạn muốn ở thêm vài ngày, so giữa giá ngày và giá tuần. Honda Vision tham khảo {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, Honda Air Blade {{ price.honda-airblade.week.min }}/tuần.</li>
 <li>Soạn sẵn một tin nhắn tiếng Việt ngắn gửi cửa hàng khi bạn cần gia hạn hoặc báo đổi lịch.</li>
 <li>Tra cứu nhanh các lưu ý khi trời mưa, khi đỗ xe ở Phố Cổ hay khi đi xa hơn dự định.</li>
 </ul>

@@ -13,7 +13,7 @@
 <h2>Bạn có thể hỏi trợ lý những gì</h2>
 <p>Không đăng nhập không có nghĩa là thông tin bị hạn chế. Bạn có thể hỏi:</p>
 <ul>
-<li>Giá thuê tham khảo theo ngày, tuần, tháng. Ví dụ Honda Vision khoảng 200.000đ/ngày, 800.000đ–1.000.000đ/tuần; Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày. Con số chính xác luôn cần cửa hàng xác nhận, bạn cũng có thể xem trang <a href="/gia-thue/">bảng giá</a>.</li>
+<li>Giá thuê tham khảo theo ngày, tuần, tháng. Ví dụ Honda Vision khoảng {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần; Honda Click hoặc Yamaha Mio khoảng {{ price.honda-click.day.min }}/ngày. Con số chính xác luôn cần cửa hàng xác nhận, bạn cũng có thể xem trang <a href="/gia-thue/">bảng giá</a>.</li>
 <li>Mức đặt cọc theo dòng xe, nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}.</li>
 <li>Giấy tờ cần mang khi nhận xe và các bước thủ tục.</li>
 <li>Khả năng giao xe đến khách sạn hoặc nhà ở các khu như Hoàn Kiếm, Phố Cổ, Tây Hồ, Ba Đình, Long Biên, Gia Lâm.</li>
