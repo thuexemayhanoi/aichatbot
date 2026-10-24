@@ -53,13 +53,13 @@ test('root app contract: body opens directly into the chat app in spec order', (
   // v56: short 1-2 word labels; all six canonical categories sit inside the
   // Cẩm nang group; contact actions sit inside the Dịch vụ group.
   const routes = {
-    '🧰 Công cụ &amp; Hướng dẫn': '/blog/cong-cu-huong-dan/',
+    '🧰 Công Cụ': '/blog/cong-cu-huong-dan/',
     '📱 Ứng Dụng': '/blog/app/',
     '📄 Hướng Dẫn': '/blog/huong-dan/',
-    '🏍️ Thuê xe &amp; Phương tiện': '/blog/thue-xe-phuong-tien/',
+    '🏍️ Phương Tiện': '/blog/thue-xe-phuong-tien/',
     '🏍️ Thuê Xe': '/blog/thue-xe/',
     '⚡ Xe Điện': '/blog/xe-dien/',
-    '🧭 Khám phá &amp; An toàn': '/blog/kham-pha-an-toan/',
+    '🧭 Khám Phá': '/blog/kham-pha-an-toan/',
     '🛡️ An Toàn': '/blog/an-toan/',
     '📍 Địa Phương': '/blog/dia-phuong/',
     '🔎 Tìm Bài': '/blog/',
@@ -448,7 +448,7 @@ test('quick bar: 12 primary tags fixed — never swapped by contextual chips', (
 // --- 5h. Grouped menu accordion (v50) ---
 test('grouped menu: parent/child accordion with ARIA + one-open + Escape', () => {
   const groups = [...html.matchAll(/<li class="motoai-group">/g)].length;
-  assert.equal(groups, 3, 'v56: exactly 3 parent groups: Cẩm nang (6 categories + Tìm Bài), Dịch vụ, Pháp lý');
+  assert.equal(groups, 4, 'v73: exactly 4 groups: Trang Web, Cẩm Nang, Dịch Vụ, Pháp Lý');
   // Every group button is ARIA-backed and controls an items list.
   for (const btn of html.matchAll(/class="motoai-group-btn"[^>]*aria-expanded="false" aria-controls="([^"]+)"/g)) {
     assert.ok(html.includes(`id="${btn[1]}"`), `group items list ${btn[1]} exists`);
@@ -458,6 +458,9 @@ test('grouped menu: parent/child accordion with ARIA + one-open + Escape', () =>
     assert.ok(!html.includes(old), `long label "${old}" must be simplified`);
   }
   assert.ok(html.includes('🧹 Xóa chat'), 'reset label is "Xóa chat"');
+  for (const label of ['🗂️ Trang Web', '📚 Cẩm Nang', '🛵 Dịch Vụ', '🔒 Pháp Lý']) {
+    assert.ok(html.includes(label), 'compact group present: ' + label);
+  }
   // One-open accordion + Escape/backdrop close are wired in JS.
   assert.match(mainJs, /closeGroups\(btn\)/, 'opening a group closes the others');
   assert.match(mainJs, /setAttribute\('aria-expanded'/);
