@@ -803,3 +803,104 @@ body.content-page .motoai-drawer-list a[aria-current="page"] {
     color: var(--ink);
   }
 }
+
+/* ==================== v76 Site homepage (Apple V3) ====================
+   `/` is a content page of the shared shell: same tokens, header, cards and
+   footer as the blog — only these section layouts are new. The header
+   "Hỏi Agent" pill opens the Agent app (/agent/) from every page. */
+.site-agent-cta, .v3-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px;
+  border-radius: var(--r-pill); font-weight: 600; text-decoration: none; white-space: nowrap;
+  transition: background var(--t1) var(--ease), border-color var(--t1) var(--ease), transform var(--t1) var(--ease);
+}
+.site-agent-cta { padding: 0 14px 0 12px; background: var(--signal); color: var(--on-signal); font-size: var(--fs-sm); }
+button.site-nav-parent { border: 0; background: transparent; font-family: inherit; cursor: pointer; }
+.site-agent-cta .i, .v3-btn .i { width: 18px; height: 18px; }
+.v3-btn { min-height: 48px; padding: 0 20px; border: 1px solid var(--line-strong); color: var(--ink); font-size: 0.95rem; }
+.v3-btn-primary { border-color: transparent; background: var(--signal); color: var(--on-signal); }
+.site-agent-cta:active, .v3-btn:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .site-agent-cta:hover, .site-main .v3-btn-primary:hover { background: var(--signal-ink); color: var(--on-signal); }
+  .site-main .v3-btn:not(.v3-btn-primary):hover { background: var(--paper-2); color: var(--ink); }
+  .site-main a.v3-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); border-color: var(--line-strong); color: var(--ink); }
+}
+@media (max-width: 479px), (min-width: 900px) and (max-width: 1179.98px) {
+  .site-agent-cta { width: 44px; padding: 0; }
+  .site-agent-cta span { display: none; }
+}
+@media (min-width: 900px) and (max-width: 1179.98px) {
+  .site-actions .site-search-link { display: none; }
+}
+
+.v3-hero { display: flex; flex-direction: column; gap: var(--s4); padding: var(--s3) 0 var(--s2); }
+.v3-hero .blog-screen-title { max-width: 13ch; font-size: var(--fs-hero); line-height: 1.02; letter-spacing: -0.045em; }
+.v3-hero .blog-screen-lead { max-width: 54ch; margin: 0; }
+.v3-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3); }
+.v3-section, .v3-agent, .v3-shop { margin-top: var(--section); }
+.v3-section { display: flex; flex-direction: column; gap: var(--s5); }
+.v3-more { margin: 0; }
+@media (max-width: 599px) {
+  .v3-actions .v3-btn { flex: 1 1 auto; }
+}
+
+.v3-card {
+  position: relative; display: flex; flex-direction: column; gap: var(--s2); padding: var(--s5);
+  border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); color: var(--ink); text-decoration: none;
+  transition: transform var(--t2) var(--ease), box-shadow var(--t2) var(--ease), border-color var(--t2) var(--ease);
+}
+a.v3-card:active { transform: scale(0.985); }
+.v3-service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: var(--s4); }
+.v3-service strong { font-size: 1.08rem; letter-spacing: -0.015em; }
+.v3-service > span:last-child { font-size: var(--fs-sm); line-height: 1.55; color: var(--ink-2); }
+.v3-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; margin-bottom: var(--s2); border-radius: 14px; background: var(--signal-soft); color: var(--signal-ink); }
+.v3-icon .i { width: 22px; height: 22px; }
+
+.v3-agent { display: grid; gap: var(--s6); padding: var(--s6) var(--s5); border-radius: var(--r-lg); background: var(--panel); color: var(--on-panel); box-shadow: var(--shadow-2); }
+.v3-agent-copy { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s4); }
+.v3-agent h2 { margin: 0; font-size: var(--fs-h2); line-height: 1.12; letter-spacing: var(--track-tight); color: var(--on-panel); }
+.v3-agent-copy > p { margin: 0; max-width: 56ch; color: var(--on-panel-2); line-height: 1.65; }
+.v3-agent .blog-screen-label { color: var(--on-panel-2); }
+.v3-agent .v3-note { font-size: var(--fs-xs); }
+.v3-agent-list { list-style: none; margin: 0; padding: 0; display: grid; align-content: start; }
+.v3-agent-list li { display: flex; align-items: flex-start; gap: var(--s3); padding: var(--s3) 0; border-top: 1px solid var(--panel-line); line-height: 1.5; }
+.v3-agent-list .i { flex: none; width: 20px; height: 20px; margin-top: 2px; color: var(--signal); }
+
+.v3-guide-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: var(--s4); }
+.v3-guide { gap: var(--s3); }
+.v3-guide .hub-stage-idx { font-size: clamp(2.2rem, 1.6rem + 2vw, 3rem); }
+.v3-guide h3 { margin: 0; font-size: var(--fs-h3); letter-spacing: -0.015em; }
+.v3-guide h3 a, .v3-cat { color: var(--ink); text-decoration: none; }
+.v3-guide > p { margin: 0; font-size: var(--fs-sm); line-height: 1.55; color: var(--ink-2); }
+.v3-cats, .v3-topics { list-style: none; margin: 0; padding: 0; }
+.v3-cats { display: flex; flex-direction: column; gap: var(--s2); margin-top: var(--s2); }
+.v3-cats > li { padding-top: var(--s2); border-top: 1px solid var(--line); }
+.v3-cat { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
+.v3-topics { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: var(--s2); }
+.v3-topics a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--r-pill); font-size: var(--fs-sm); color: var(--ink-2); text-decoration: none; }
+
+.v3-shop { display: grid; gap: var(--s5); padding: var(--s6) var(--s5); border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); }
+.v3-shop-head h2 { margin: 0; font-size: var(--fs-h2); letter-spacing: var(--track-tight); }
+.v3-shop-name { margin: var(--s2) 0 0; font-size: var(--fs-lg); font-weight: 700; }
+.v3-shop-head > p:last-child { margin: 4px 0 0; font-size: var(--fs-sm); color: var(--ink-3); }
+.v3-shop-facts { display: grid; gap: var(--s4); margin: 0; }
+.v3-shop-facts > div { padding-top: var(--s3); border-top: 1px solid var(--line); }
+.v3-shop-facts dt { display: flex; align-items: center; gap: 8px; font-size: var(--fs-xs); font-weight: 600; letter-spacing: var(--track-label); text-transform: uppercase; color: var(--ink-3); }
+.v3-shop-facts dt .i { width: 16px; height: 16px; }
+.v3-shop-facts dd { margin: 6px 0 0; font-size: var(--fs-md); font-weight: 600; }
+.v3-shop-facts dd a { color: var(--ink); }
+
+@media (min-width: 900px) {
+  .v3-hero { padding-top: var(--s6); }
+  .v3-hero .home-facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .v3-service-grid, .v3-guide-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .v3-agent { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); column-gap: var(--s8); padding: var(--s7); }
+  .v3-shop { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); column-gap: var(--s8); padding: var(--s7); }
+  .v3-shop .v3-actions { grid-column: 1 / -1; }
+  .v3-shop-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  a.v3-card:active, .site-agent-cta:active, .v3-btn:active { transform: none; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .site-main a.v3-card:hover { transform: none; }
+}

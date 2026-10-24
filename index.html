@@ -1,128 +1,426 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-motion="on">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="motoai-build" content="v66">
-  <title>MotoAI — Ứng dụng thuê xe máy &amp; xe điện: hỏi giá, tính chi phí</title>
-  <meta name="description" content="Ứng dụng web thuê xe máy và xe điện: Agent trả lời giá thuê, chọn xe, tính chi phí theo ngày/tuần/tháng, thủ tục nhận xe và địa chỉ của Thuê Xe Máy Hà Nội Nguyễn Tú.">
-  <meta name="google-site-verification" content="V7GztRa9fpvjtJRAfsu4tQXPrV3VzlMdDJuSsILbkx0" />
+  <script>/* v76: the chat app moved to /agent/ — forward legacy chat parameters */(function(){var q=location.search;if(/[?&](ask|action|embed|source|lang)=/.test(q))location.replace('/agent/'+q+location.hash);})();</script>
+  <meta name="motoai-build" content="v76">
+  <title>MotoAI — Trợ lý &amp; ứng dụng thuê xe máy, xe điện tại Hà Nội</title>
+  <meta name="description" content="MotoAI là ứng dụng web về thuê xe máy ở Hà Nội: hỏi Agent về giá thuê tham khảo, thủ tục và cách chọn xe; đọc cẩm nang theo chủ đề, xem thông tin cửa hàng.">
   <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/">
-  <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#08080a" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="assets/css/style.css?v=2840661708">
+  <meta name="color-scheme" content="light dark">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="MotoAI — Thuê Xe Máy Hà Nội Nguyễn Tú">
-  <meta property="og:title" content="MotoAI — Ứng dụng thuê xe máy & xe điện">
-  <meta property="og:description" content="Hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe máy bằng Agent — chạy ngay trên trình duyệt.">
+  <meta property="og:site_name" content="MotoAI — Cẩm nang thuê xe máy &amp; xe điện">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="MotoAI — Trợ lý &amp; ứng dụng thuê xe máy, xe điện tại Hà Nội">
+  <meta property="og:description" content="MotoAI là ứng dụng web về thuê xe máy ở Hà Nội: hỏi Agent về giá thuê tham khảo, thủ tục và cách chọn xe; đọc cẩm nang theo chủ đề, xem thông tin cửa hàng.">
   <meta property="og:url" content="https://chatbot.thuexemaynguyentu.com/">
   <meta property="og:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
-  <meta property="og:locale" content="vi_VN">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="MotoAI — Ứng dụng thuê xe máy & xe điện">
-  <meta name="twitter:description" content="Hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe máy bằng Agent — chạy ngay trên trình duyệt.">
+  <meta name="twitter:title" content="MotoAI — Trợ lý &amp; ứng dụng thuê xe máy, xe điện tại Hà Nội">
+  <meta name="twitter:description" content="MotoAI là ứng dụng web về thuê xe máy ở Hà Nội: hỏi Agent về giá thuê tham khảo, thủ tục và cách chọn xe; đọc cẩm nang theo chủ đề, xem thông tin cửa hàng.">
   <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
-  <script>
-    // Apply theme before first paint to avoid a flash.
-    (function () {
-      try {
-        var params = new URLSearchParams(location.search);
-        var theme = (params.get('theme') || 'auto').toLowerCase();
-        var dark = theme === 'dark' || (theme === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.dataset.motoaiTheme = dark ? 'dark' : 'light';
-      } catch (e) { /* default to light */ }
-    })();
-  </script>
+  <link rel="stylesheet" href="assets/css/style.css?v=2840661708">
+  <link rel="stylesheet" href="assets/css/blog.css?v=2306088076">
+  <script>/* apply saved theme before first paint (no flash) */(function(){try{var t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-motoai-theme','dark');}}catch(e){}})();</script>
 </head>
-<body class="chat-home">
-  <main class="motoai-shell">
-    <!-- The chatbot IS the homepage: it opens directly, no landing hero above it. -->
-    <section class="motoai-app" id="motoai-app">
-      <header class="motoai-header">
-        <div class="motoai-header-text">
-          <div class="motoai-brand-mark" aria-hidden="true"><svg class="brand-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><rect class="brand-mark-tile" width="32" height="32" rx="9"/><path class="brand-mark-road" d="M7.5 26.5 14 5.5M24.5 26.5 18 5.5"/><path class="brand-mark-lane" d="M16 25.5v-3.6M16 18.6v-2.8M16 12.9V11"/></svg></div>
-          <div>
-            <h1 class="motoai-title">Hỗ trợ Agent</h1>
-            <p class="motoai-subtitle" id="motoai-subtitle">Địa chỉ: 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội, Việt Nam</p>
+<body class="content-page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/" aria-label="MotoAI — trang chủ">
+          <span class="site-brand-mark" aria-hidden="true"><svg class="brand-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><rect class="brand-mark-tile" width="32" height="32" rx="9"/><path class="brand-mark-road" d="M7.5 26.5 14 5.5M24.5 26.5 18 5.5"/><path class="brand-mark-lane" d="M16 25.5v-3.6M16 18.6v-2.8M16 12.9V11"/></svg></span>
+          <span class="site-brand-text">
+            <strong>MotoAI</strong>
+            <span>Hỗ trợ Agent</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/blog/">Cẩm nang</a>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true">Công Cụ<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
+          <div class="site-nav-drop">
+            <a class="site-nav-category" href="/blog/app/">Ứng Dụng</a>
+            <a class="site-nav-subtopic" href="/blog/app/web-app/">Web App</a>
+            <a class="site-nav-subtopic" href="/blog/app/tim-xe/">Tìm Xe</a>
+            <a class="site-nav-subtopic" href="/blog/app/tinh-gia/">Tính Giá</a>
+            <a class="site-nav-subtopic" href="/blog/app/dat-xe/">Đặt Xe</a>
+            <a class="site-nav-subtopic" href="/blog/app/tro-ly/">Trợ Lý</a>
+            <a class="site-nav-subtopic" href="/blog/app/cai-app/">Cài App</a>
+            <a class="site-nav-subtopic" href="/blog/app/so-sanh/">So Sánh</a>
+            <a class="site-nav-subtopic" href="/blog/app/huong-dan/">Hướng Dẫn</a>
+            <a class="site-nav-category" href="/blog/huong-dan/">Hướng Dẫn</a>
+            <a class="site-nav-subtopic" href="/blog/huong-dan/dat-xe/">Đặt Xe</a>
+            <a class="site-nav-subtopic" href="/blog/huong-dan/thu-tuc/">Thủ Tục</a>
+            <a class="site-nav-subtopic" href="/blog/huong-dan/chuan-bi/">Chuẩn Bị</a>
           </div>
         </div>
-        <span class="motoai-status" id="motoai-status" role="status" aria-live="polite"></span>
-        <div class="motoai-header-actions">
-          <button type="button" class="motoai-theme blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
-          <button type="button" class="motoai-install" id="motoai-install" hidden title="Cài MotoAI như một ứng dụng" aria-label="Cài Agent">Cài Agent</button>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true">Phương Tiện<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
+          <div class="site-nav-drop">
+            <a class="site-nav-category" href="/blog/thue-xe/">Thuê Xe</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/gia-thue/">Giá Thuê</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/dat-coc/">Đặt Cọc</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/nhan-xe/">Nhận Xe</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/tra-xe/">Trả Xe</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/thue-tuan/">Thuê Tuần</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/thue-thang/">Thuê Tháng</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/chon-xe/">Chọn Xe</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/du-khach/">Du Khách</a>
+            <a class="site-nav-category" href="/blog/xe-dien/">Xe Điện</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/pin-xe/">Pin Xe</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/sac-pin/">Sạc Pin</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/quang-duong/">Quãng Đường</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/chon-xe/">Chọn Xe</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/chi-phi/">Chi Phí</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/an-toan/">An Toàn</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/so-sanh/">So Sánh</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/thue-ngay/">Thuê Ngày</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true">Khám Phá<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
+          <div class="site-nav-drop">
+            <a class="site-nav-category" href="/blog/an-toan/">An Toàn</a>
+            <a class="site-nav-subtopic" href="/blog/an-toan/lai-xe/">Lái Xe</a>
+            <a class="site-nav-subtopic" href="/blog/an-toan/mu-bao-hiem/">Mũ Bảo Hiểm</a>
+            <a class="site-nav-subtopic" href="/blog/an-toan/thoi-tiet/">Thời Tiết</a>
+            <a class="site-nav-subtopic" href="/blog/an-toan/su-co/">Sự Cố</a>
+            <a class="site-nav-subtopic" href="/blog/an-toan/phap-luat/">Pháp Luật</a>
+            <a class="site-nav-category" href="/blog/dia-phuong/">Địa Phương</a>
+            <a class="site-nav-subtopic" href="/blog/dia-phuong/phuong-xa/">Phường Xã</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <button type="button" class="site-nav-parent" aria-haspopup="true" aria-expanded="false">Trang Web<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></button>
+          <div class="site-nav-drop">
+            <a class="site-nav-category" href="/gioi-thieu/">Giới Thiệu</a>
+            <a class="site-nav-category" href="/lien-he/">Liên Hệ</a>
+            <a class="site-nav-category" href="/gia-thue/">Giá Thuê</a>
+            <a class="site-nav-category" href="/doi-tac/">Đối Tác</a>
+          </div>
+        </div>
+        </nav>
+        <div class="site-actions">
+          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài"><svg class="i i-search" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+          <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
+          <a class="site-agent-cta" href="/agent/" aria-label="Hỏi Agent"><svg class="i i-chat" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4.5 5.5h15a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H10l-4.5 3.5V17h-1a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/></svg><span aria-hidden="true">Hỏi Agent</span></a>
           <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer"><span class="menu-lines" aria-hidden="true"></span> <span class="motoai-menu-label">Menu</span></button>
         </div>
-      </header>
-
-      <section class="motoai-messages" id="motoai-messages" aria-live="polite" aria-label="Tin nhắn"></section>
-
-      <div class="motoai-quick" id="motoai-quick" role="group" aria-label="Câu hỏi nhanh"></div>
-
-      <div class="motoai-ai-panel" id="motoai-ai-panel">
-        <div class="motoai-ai-explain" id="motoai-ai-explain" hidden>
-          <strong>Agent (tùy chọn, nâng cao)</strong>
-          <ul>
-            <li>Agent chạy trên thiết bị của bạn và không cần API key — không gửi hội thoại đi đâu.</li>
-            <li>Model AI chỉ tải sau khi bạn bấm xác nhận bên dưới và có thể nặng vài trăm MB.</li>
-            <li>Dùng bộ nhớ và dung lượng của thiết bị; cần trình duyệt hỗ trợ WebGPU.</li>
-            <li>Luôn tắt được; trợ lý cơ bản hoạt động bình thường mà không cần nó.</li>
-          </ul>
-          <button type="button" class="motoai-ai-confirm" id="motoai-ai-confirm">Tải model và bật Agent</button>
-          <button type="button" class="motoai-ai-cancel" id="motoai-ai-cancel">Để sau</button>
-        </div>
-        <div class="motoai-ai-status" id="motoai-ai-status" hidden>
-          <div class="motoai-ai-progress"><div class="motoai-ai-progress-bar" id="motoai-ai-progress-bar"></div></div>
-          <span id="motoai-ai-status-text"></span>
-          <button type="button" class="motoai-ai-off" id="motoai-ai-off" hidden>Tắt</button>
-        </div>
+        <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
       </div>
-
-      <form class="motoai-composer" id="motoai-composer">
-        <textarea class="motoai-input" id="motoai-input" name="message" rows="1"
-               placeholder="Nhập câu hỏi của bạn..." autocomplete="off"
-               enterkeyhint="send" maxlength="2000" aria-label="Câu hỏi"></textarea>
-        <button class="motoai-send" type="submit" id="motoai-send" aria-label="Gửi câu hỏi"><svg class="motoai-icon i-send" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></button>
-      </form>
-
-      <!-- Bottom dock (v50): 4-item customer navigation, below the composer. -->
-      <nav class="motoai-dock" id="motoai-dock" aria-label="Điều hướng nhanh">
-        <a class="motoai-dock-item" href="/blog/thue-xe/"><span class="motoai-dock-icon" aria-hidden="true" data-icon="scooter"><svg class="motoai-icon i-scooter" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="5.5" cy="17" r="3"/><circle cx="18.5" cy="17" r="3"/><path d="M8.5 17h6.5l2.2-9-1.8-3.5h-2.4M2.8 14.5c.8-2.2 2.6-3.5 4.8-3.5h3.6l2.4 6"/></svg></span><span>Dịch vụ</span></a>
-        <button type="button" class="motoai-dock-item" id="motoai-dock-contact"><span class="motoai-dock-icon" aria-hidden="true" data-icon="phone"><svg class="motoai-icon i-phone" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6.6 3.5h3l1.5 4.2-2.2 1.4a11 11 0 0 0 6 6l1.4-2.2 4.2 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg></span><span>Liên hệ</span></button>
-        <button type="button" class="motoai-dock-item" id="motoai-dock-price"><span class="motoai-dock-icon" aria-hidden="true" data-icon="tag"><svg class="motoai-icon i-tag" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1.4 1.4 0 0 1 0 2l-6.2 6.2a1.4 1.4 0 0 1-2 0Z"/><circle cx="8" cy="8" r="1.5"/></svg></span><span>Giá thuê</span></button>
-        <a class="motoai-dock-item" id="motoai-dock-map" href="#" target="_blank" rel="noopener noreferrer"><span class="motoai-dock-icon" aria-hidden="true" data-icon="map"><svg class="motoai-icon i-map" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M9 4.5 3.5 6.5v13l5.5-2 6 2 5.5-2v-13l-5.5 2-6-2Z"/><path d="M9 4.5v13M15 6.5v13"/></svg></span><span>Bản đồ</span></a>
-      </nav>
-    </section>
-
-    <!-- Supporting SEO copy (v47.1): AFTER the chatbot, unobtrusive. Hidden in embed mode. -->
-    <section class="motoai-seo" id="motoai-seo" aria-label="Giới thiệu MotoAI">
-      <p class="motoai-seo-copy">
-        MotoAI là app thuê xe máy, app thuê xe điện và ứng dụng thuê xe máy điện dạng web:
-        hỏi giá thuê, chọn loại xe phù hợp, tính chi phí theo ngày – tuần – tháng, xem thủ tục
-        nhận xe và tìm địa chỉ của Thuê Xe Máy Hà Nội Nguyễn Tú — trả lời ngay trên trình duyệt,
-        không cần cài đặt. Đọc thêm <a href="/blog/">cẩm nang thuê xe máy &amp; xe điện</a>:
-        <a href="/blog/app/app-thue-xe-may-la-gi/">app thuê xe máy là gì</a>
-        và <a href="/blog/huong-dan/thu-tuc-thue-xe-may/">thủ tục thuê xe máy</a>.
-      </p>
-      <details>
-        <summary>Ứng dụng thuê xe máy MotoAI là gì?</summary>
-        <p>MotoAI là ứng dụng web hỏi đáp thuê xe máy và xe điện: hỏi giá theo loại xe và thời gian, được gợi ý chọn xe, tính chi phí thuê, xem thủ tục nhận xe và tìm địa chỉ — chạy ngay trên trình duyệt, không cần cài đặt, không cần tài khoản.</p>
-      </details>
-      <details>
-        <summary>Thuê xe máy cần thủ tục gì?</summary>
-        <p>Bạn cần giấy tờ tùy thân (CCCD hoặc hộ chiếu), bằng lái phù hợp với dung tích xe và tiền đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe. Mức cọc chính xác được xác nhận khi đặt xe. Xem <a href="/chinh-sach/">chính sách thuê xe</a>.</p>
-      </details>
-      <details>
-        <summary>Cửa hàng mở cửa lúc mấy giờ?</summary>
-        <p>Cửa hàng ở 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội, hoạt động 09:00 - 21:00 hằng ngày. Xem <a href="/lien-he/">thông tin liên hệ</a> hoặc <a href="/gia-thue/">bảng giá thuê xe</a>.</p>
-      </details>
-    </section>
+    </header>
+  <main class="site-main" id="site-main" data-motoai-screen="home">
+      <section class="v3-hero" aria-label="MotoAI · Hà Nội">
+      <p class="blog-screen-label">MotoAI · Hà Nội</p>
+      <h1 class="blog-screen-title">Trợ lý thuê xe máy Hà Nội</h1>
+      <p class="blog-screen-lead">MotoAI là ứng dụng thuê xe máy dạng web: giúp bạn tìm hiểu xe máy, giá thuê tham khảo, thủ tục, phương tiện và kinh nghiệm di chuyển ở Hà Nội — hỏi Agent hoặc đọc cẩm nang trước khi liên hệ cửa hàng.</p>
+        <div class="v3-actions">
+          <a class="v3-btn v3-btn-primary" href="/agent/"><svg class="i i-chat" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4.5 5.5h15a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H10l-4.5 3.5V17h-1a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/></svg><span>Hỏi Agent</span></a>
+          <a class="v3-btn" href="/blog/"><span>Khám phá cẩm nang</span><svg class="i i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <ul class="home-facts" aria-label="Thông tin nhanh">
+          <li><strong>2.006</strong><span>bài hướng dẫn đã xuất bản</span></li>
+          <li><strong>6</strong><span>chuyên mục</span></li>
+          <li><strong>09:00–21:00</strong><span>mở cửa mỗi ngày</span></li>
+          <li><strong>Long Biên</strong><span>112 Nguyễn Văn Cừ</span></li>
+        </ul>
+      </section>
+      <section class="v3-section" aria-label="Dịch vụ">
+        <div class="lane-head">
+          <h2>Dịch vụ</h2>
+          <p>Những việc thường cần khi thuê xe — mỗi mục dẫn tới trang có nội dung thật.</p>
+        </div>
+        <div class="v3-service-grid">
+          <a class="v3-card v3-service" href="/blog/thue-xe/">
+            <span class="v3-icon" aria-hidden="true"><svg class="i i-scooter" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="5.5" cy="17" r="3"/><circle cx="18.5" cy="17" r="3"/><path d="M8.5 17h6.5l2.2-9-1.8-3.5h-2.4M2.8 14.5c.8-2.2 2.6-3.5 4.8-3.5h3.6l2.4 6"/></svg></span>
+            <strong>Thuê xe máy</strong>
+            <span>Chọn xe số hay xe ga theo lịch trình, cách nhận và trả xe.</span>
+          </a>
+          <a class="v3-card v3-service" href="/blog/thue-xe/thue-thang/">
+            <span class="v3-icon" aria-hidden="true"><svg class="i i-calendar" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span>
+            <strong>Thuê xe tháng</strong>
+            <span>Thuê dài ngày cho sinh viên, người đi làm: những điều cần lưu ý.</span>
+          </a>
+          <a class="v3-card v3-service" href="/blog/xe-dien/">
+            <span class="v3-icon" aria-hidden="true"><svg class="i i-bolt" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6L13 3Z"/></svg></span>
+            <strong>Xe điện</strong>
+            <span>Xe máy điện, xe đạp điện: pin, sạc, quãng đường; giá liên hệ cửa hàng.</span>
+          </a>
+          <a class="v3-card v3-service" href="/gia-thue/">
+            <span class="v3-icon" aria-hidden="true"><svg class="i i-tag" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1.4 1.4 0 0 1 0 2l-6.2 6.2a1.4 1.4 0 0 1-2 0Z"/><circle cx="8" cy="8" r="1.5"/></svg></span>
+            <strong>Bảng giá</strong>
+            <span>Giá tham khảo theo ngày, tuần, tháng; xác nhận trước khi đặt xe.</span>
+          </a>
+          <a class="v3-card v3-service" href="/blog/huong-dan/thu-tuc/">
+            <span class="v3-icon" aria-hidden="true"><svg class="i i-doc" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12.5h5M10 16h5"/></svg></span>
+            <strong>Thủ tục thuê</strong>
+            <span>Giấy tờ cần mang, đặt cọc và các bước nhận xe.</span>
+          </a>
+          <a class="v3-card v3-service" href="/lien-he/">
+            <span class="v3-icon" aria-hidden="true"><svg class="i i-phone" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6.6 3.5h3l1.5 4.2-2.2 1.4a11 11 0 0 0 6 6l1.4-2.2 4.2 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg></span>
+            <strong>Liên hệ</strong>
+            <span>Điện thoại, WhatsApp, bản đồ và giờ hoạt động của cửa hàng.</span>
+          </a>
+        </div>
+      </section>
+      <section class="v3-agent" aria-label="Hỏi Agent trước khi thuê xe">
+        <div class="v3-agent-copy">
+          <p class="blog-screen-label">Agent</p>
+          <h2>Hỏi Agent trước khi thuê xe</h2>
+          <p>Agent là trợ lý thuê xe máy của MotoAI — app thuê xe máy và app thuê xe điện dạng web, chạy ngay trên trình duyệt. Câu trả lời đến từ dữ liệu cửa hàng đã xác minh; không cần cài đặt hay tạo tài khoản.</p>
+          <a class="v3-btn v3-btn-primary" href="/agent/"><svg class="i i-chat" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4.5 5.5h15a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H10l-4.5 3.5V17h-1a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/></svg><span>Mở Agent</span></a>
+          <p class="v3-note">Giá, tiền cọc và tình trạng xe luôn được xác nhận trực tiếp với cửa hàng trước khi đặt.</p>
+        </div>
+        <ul class="v3-agent-list">
+          <li><svg class="i i-check" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Tìm hiểu giá thuê tham khảo theo loại xe và thời gian</span></li>
+          <li><svg class="i i-check" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Tư vấn chọn xe số, xe ga hay xe điện</span></li>
+          <li><svg class="i i-check" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Hướng dẫn giấy tờ cần mang khi nhận xe</span></li>
+          <li><svg class="i i-check" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Giải đáp chính sách đặt cọc, giao nhận và giờ mở cửa</span></li>
+          <li><svg class="i i-check" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Gợi ý bài cẩm nang liên quan</span></li>
+        </ul>
+      </section>
+      <section class="v3-section" aria-label="Cẩm nang theo chủ đề">
+        <div class="lane-head">
+          <h2>Cẩm nang theo chủ đề</h2>
+          <p>3 nhóm, 6 danh mục và 33 chủ đề con có bài viết.</p>
+        </div>
+        <div class="v3-guide-grid">
+        <article class="v3-card v3-guide">
+          <p class="hub-stage-idx" aria-hidden="true">01</p>
+          <h3><a href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a></h3>
+          <p>Công cụ và hướng dẫn sử dụng MotoAI: ứng dụng thuê xe, thủ tục nhận xe, giấy tờ và đặt cọc.</p>
+          <ul class="v3-cats">
+            <li><a class="v3-cat" href="/blog/app/">Ứng Dụng</a>
+              <ul class="v3-topics"><li><a href="/blog/app/web-app/">Web App</a></li><li><a href="/blog/app/tim-xe/">Tìm Xe</a></li><li><a href="/blog/app/tinh-gia/">Tính Giá</a></li><li><a href="/blog/app/dat-xe/">Đặt Xe</a></li><li><a href="/blog/app/tro-ly/">Trợ Lý</a></li><li><a href="/blog/app/cai-app/">Cài App</a></li><li><a href="/blog/app/so-sanh/">So Sánh</a></li><li><a href="/blog/app/huong-dan/">Hướng Dẫn</a></li></ul></li>
+            <li><a class="v3-cat" href="/blog/huong-dan/">Hướng Dẫn</a>
+              <ul class="v3-topics"><li><a href="/blog/huong-dan/dat-xe/">Đặt Xe</a></li><li><a href="/blog/huong-dan/thu-tuc/">Thủ Tục</a></li><li><a href="/blog/huong-dan/chuan-bi/">Chuẩn Bị</a></li></ul></li>
+          </ul>
+        </article>
+        <article class="v3-card v3-guide">
+          <p class="hub-stage-idx" aria-hidden="true">02</p>
+          <h3><a href="/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a></h3>
+          <p>Thuê xe máy và xe điện: bảng giá theo ngày tuần tháng, chọn xe số hay xe ga, pin và sạc cho xe điện.</p>
+          <ul class="v3-cats">
+            <li><a class="v3-cat" href="/blog/thue-xe/">Thuê Xe</a>
+              <ul class="v3-topics"><li><a href="/blog/thue-xe/gia-thue/">Giá Thuê</a></li><li><a href="/blog/thue-xe/dat-coc/">Đặt Cọc</a></li><li><a href="/blog/thue-xe/nhan-xe/">Nhận Xe</a></li><li><a href="/blog/thue-xe/tra-xe/">Trả Xe</a></li><li><a href="/blog/thue-xe/thue-tuan/">Thuê Tuần</a></li><li><a href="/blog/thue-xe/thue-thang/">Thuê Tháng</a></li><li><a href="/blog/thue-xe/chon-xe/">Chọn Xe</a></li><li><a href="/blog/thue-xe/du-khach/">Du Khách</a></li></ul></li>
+            <li><a class="v3-cat" href="/blog/xe-dien/">Xe Điện</a>
+              <ul class="v3-topics"><li><a href="/blog/xe-dien/pin-xe/">Pin Xe</a></li><li><a href="/blog/xe-dien/sac-pin/">Sạc Pin</a></li><li><a href="/blog/xe-dien/quang-duong/">Quãng Đường</a></li><li><a href="/blog/xe-dien/chon-xe/">Chọn Xe</a></li><li><a href="/blog/xe-dien/chi-phi/">Chi Phí</a></li><li><a href="/blog/xe-dien/an-toan/">An Toàn</a></li><li><a href="/blog/xe-dien/so-sanh/">So Sánh</a></li><li><a href="/blog/xe-dien/thue-ngay/">Thuê Ngày</a></li></ul></li>
+          </ul>
+        </article>
+        <article class="v3-card v3-guide">
+          <p class="hub-stage-idx" aria-hidden="true">03</p>
+          <h3><a href="/blog/kham-pha-an-toan/">Khám phá &amp; An toàn</a></h3>
+          <p>An toàn giao thông và hành trình địa phương Hà Nội: kỹ năng lái xe, luật giao thông và cung đường tham quan.</p>
+          <ul class="v3-cats">
+            <li><a class="v3-cat" href="/blog/an-toan/">An Toàn</a>
+              <ul class="v3-topics"><li><a href="/blog/an-toan/lai-xe/">Lái Xe</a></li><li><a href="/blog/an-toan/mu-bao-hiem/">Mũ Bảo Hiểm</a></li><li><a href="/blog/an-toan/thoi-tiet/">Thời Tiết</a></li><li><a href="/blog/an-toan/su-co/">Sự Cố</a></li><li><a href="/blog/an-toan/phap-luat/">Pháp Luật</a></li></ul></li>
+            <li><a class="v3-cat" href="/blog/dia-phuong/">Địa Phương</a>
+              <ul class="v3-topics"><li><a href="/blog/dia-phuong/phuong-xa/">Phường Xã</a></li></ul></li>
+          </ul>
+        </article>
+        </div>
+      </section>
+      <section class="v3-section" aria-label="Bài nổi bật">
+        <div class="lane-head">
+          <h2>Bài nổi bật</h2>
+          <p>Bài trụ cột của từng danh mục — điểm bắt đầu tốt nhất cho mỗi chủ đề.</p>
+        </div>
+        <div class="blog-grid">
+      <a class="blog-card" href="/blog/app/app-thue-xe-may-la-gi/">
+        <span class="cat">Ứng Dụng</span>
+        <h3>App thuê xe máy là gì? Ứng dụng web hỏi giá, chọn xe, thủ tục</h3>
+        <p>App thuê xe máy là gì: ứng dụng web hoặc trợ lý trực tuyến giúp hỏi giá, chọn xe, nắm thủ tục; khác app cài đặt ra sao, Agent giúp gì và dữ liệu nằm ở đâu.</p>
+        <span class="blog-card-meta"><time datetime="2026-09-26">2026-09-26</time> · 5 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/thue-xe/thue-xe-may-gia-re/">
+        <span class="cat">Thuê Xe</span>
+        <h3>Thuê xe máy giá rẻ: tính tổng chi phí và tránh phí phát sinh</h3>
+        <p>Thuê xe máy giá rẻ không chỉ là so giá niêm yết. Hướng dẫn tính tổng chi phí chuyến đi, đọc bảng giá tham khảo ngày, tuần, tháng và kiểm tra trước khi đặt.</p>
+        <span class="blog-card-meta"><time datetime="2026-09-30">2026-09-30</time> · 10 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/xe-dien/app-thue-xe-dien/">
+        <span class="cat">Xe Điện</span>
+        <h3>App thuê xe điện là gì: dùng MotoAI để hỏi giá và đặt xe</h3>
+        <p>App thuê xe điện là gì, trợ lý MotoAI hỗ trợ được gì khi thuê xe máy điện: hỏi giá, so dòng xe, xe điện khác xe xăng, thủ tục, giấy tờ và tiền cọc.</p>
+        <span class="blog-card-meta"><time datetime="2026-09-30">2026-09-30</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/huong-dan/thu-tuc-thue-xe-may/">
+        <span class="cat">Hướng Dẫn</span>
+        <h3>Thủ tục thuê xe máy: giấy tờ, đặt cọc, nhận và trả xe</h3>
+        <p>Thủ tục thuê xe máy ở Hà Nội cần chuẩn bị giấy tờ tùy thân, bằng lái phù hợp dung tích xe và tiền đặt cọc; cách nhận xe, trả xe và nhờ Agent hỗ trợ chuẩn bị.</p>
+        <span class="blog-card-meta"><time datetime="2026-09-26">2026-09-26</time> · 5 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/an-toan/luat-giao-thong-duong-bo-co-ban/">
+        <span class="cat">An Toàn</span>
+        <h3>Luật giao thông đường bộ cơ bản: điều người thuê xe cần nắm</h3>
+        <p>Luật giao thông đường bộ cơ bản cho người thuê xe: khung pháp lý hiện hành, cồn bằng không, mũ bảo hiểm, đèn tín hiệu, chở người, tốc độ và việc cần chuẩn bị.</p>
+        <span class="blog-card-meta"><time datetime="2026-09-30">2026-09-30</time> · 10 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/dia-phuong/thue-xe-may-quanh-long-bien/">
+        <span class="cat">Địa Phương</span>
+        <h3>Thuê xe máy quanh Long Biên: câu hỏi cần hỏi và tuyến dạo</h3>
+        <p>Thuê xe máy quanh Long Biên cần biết gì: câu hỏi nên đặt trước khi chốt, giá tham khảo theo ngày, thủ tục nhận xe và các tuyến dạo quanh khu đông Hà Nội.</p>
+        <span class="blog-card-meta"><time datetime="2026-09-30">2026-09-30</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+        </div>
+      </section>
+      <section class="v3-section" aria-label="Bài mới">
+        <div class="lane-head">
+          <h2>Bài mới</h2>
+          <p>9 bài mới nhất, tự cập nhật mỗi khi cẩm nang có bài mới.</p>
+        </div>
+        <div class="blog-grid">
+      <a class="blog-card" href="/blog/huong-dan/do-di-phuot-xe-may/">
+        <span class="cat">Hướng Dẫn</span>
+        <h3>Đồ đi phượt xe máy: danh sách kiểm tra ba nhóm trước giờ đi</h3>
+        <p>Đồ đi phượt xe máy gồm ba nhóm: bảo hộ, đồ cho xe và đồ cá nhân; danh sách kiểm tra trước giờ đi, cách chằng đồ gọn và những món cửa hàng cho thuê thường giao kèm.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-15">2026-10-15</time> · 7 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/huong-dan/di-phuot-bang-xe-may/">
+        <span class="cat">Hướng Dẫn</span>
+        <h3>Đi phượt bằng xe máy: chọn xe, chia chặng, an toàn cho người mới</h3>
+        <p>Đi phượt bằng xe máy lần đầu: chọn xe theo cung đường, chia chặng hợp sức, bảo hộ tối thiểu, giấy tờ và cách thuê xe; kèm bảng so sánh và câu hỏi thường gặp.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-15">2026-10-15</time> · 8 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/an-toan/xe-may-dien-co-can-bang-lai-khong/">
+        <span class="cat">An Toàn</span>
+        <h3>Xe máy điện có cần bằng lái không? Tuổi được đi theo luật 2025</h3>
+        <p>Xe máy điện có cần bằng lái không tùy công suất: đến 4 kW là xe gắn máy, đủ 16 tuổi được đi, không cần bằng; trên 4 kW cần bằng hạng A1 theo Luật 36/2024/QH15.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-15">2026-10-15</time> · 10 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/an-toan/loi-khong-guong-xe-may/">
+        <span class="cat">An Toàn</span>
+        <h3>Lỗi không gương xe máy phạt bao nhiêu? Mức phạt Nghị định 168</h3>
+        <p>Lỗi không gương xe máy bị phạt 400.000–600.000 đồng theo điểm a khoản 1 Điều 14 Nghị định 168/2024/NĐ-CP từ 01/01/2025; cách kiểm tra gương trước khi nhận xe thuê.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-15">2026-10-15</time> · 9 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/an-toan/cam-xe-may-xang-vanh-dai-1/">
+        <span class="cat">An Toàn</span>
+        <h3>Cấm xe máy xăng Vành đai 1 từ 1/7/2026: lộ trình và chọn xe thuê</h3>
+        <p>Cấm xe máy xăng Vành đai 1 Hà Nội theo Chỉ thị 20/CT-TTg và Nghị quyết 57/2025/NQ-HĐND: lộ trình từ 1/7/2026, 9 phường áp dụng và cách chọn xe thuê phù hợp.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-15">2026-10-15</time> · 10 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/an-toan/cac-loai-bang-lai-xe-may/">
+        <span class="cat">An Toàn</span>
+        <h3>Các loại bằng lái xe máy 2026: hạng A1, A, B1 và bằng A1 A2 cũ</h3>
+        <p>Các loại bằng lái xe máy theo Luật 36/2024/QH15 gồm hạng A1, A và B1; bằng A1, A2 cấp trước 2025 dùng đến hết hạn. Kèm bảng đối chiếu hạng bằng với xe thuê.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-15">2026-10-15</time> · 10 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/xe-dien/thoi-gian-sac-xe-may-dien-mua-mua/">
+        <span class="cat">Xe Điện</span>
+        <h3>Thời gian sạc xe máy điện mùa mưa: những việc làm sạc lâu hơn</h3>
+        <p>Thời gian sạc xe máy điện mùa mưa thường dài hơn dự tính vì những việc quanh bộ sạc. Bài nêu cách xếp lịch sạc, dấu hiệu bất thường và câu nên hỏi cửa hàng.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-14">2026-10-14</time> · 7 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/dia-phuong/thach-that-va-son-tay-buoi-sang/">
+        <span class="cat">Địa Phương</span>
+        <h3>Đi Thạch Thất và Sơn Tây buổi sáng: lịch sớm, về trước nắng</h3>
+        <p>Đi Thạch Thất và Sơn Tây buổi sáng: nhận xe từ tối hôm trước, lịch mẫu rời phố lúc tờ mờ, ăn sáng kiểu xứ Đoài, lưu ý chạy xe sớm và về trước nắng trưa.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-14">2026-10-14</time> · 8 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blog-card" href="/blog/thue-xe/so-sanh-thue-xe-may-va-taxi-cho-gia-dinh/">
+        <span class="cat">Thuê Xe</span>
+        <h3>So sánh thuê xe máy và taxi cho gia đình: chỗ ngồi, an toàn</h3>
+        <p>So sánh thuê xe máy và taxi cho gia đình khi đến Hà Nội: đếm chỗ ngồi và số chuyến trước khi tính tiền, lưu ý an toàn cho trẻ nhỏ và cách kết hợp cả hai.</p>
+        <span class="blog-card-meta"><time datetime="2026-10-14">2026-10-14</time> · 7 phút đọc<svg class="i card-arrow i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+        </div>
+        <p class="v3-more"><a class="v3-btn" href="/blog/"><span>Xem toàn bộ cẩm nang</span><svg class="i i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      </section>
+      <section class="v3-shop" aria-label="Thông tin cửa hàng">
+        <div class="v3-shop-head">
+          <h2>Thông tin cửa hàng</h2>
+          <p class="v3-shop-name">Thuê Xe Máy Hà Nội Nguyễn Tú</p>
+          <p>Dữ liệu từ thông tin kinh doanh đã xác minh.</p>
+        </div>
+        <dl class="v3-shop-facts">
+          <div><dt><svg class="i i-pin" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>Địa chỉ</dt><dd>112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội, Việt Nam</dd></div>
+          <div><dt><svg class="i i-calendar" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Giờ hoạt động</dt><dd>09:00 - 21:00 mỗi ngày</dd></div>
+          <div><dt><svg class="i i-phone" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6.6 3.5h3l1.5 4.2-2.2 1.4a11 11 0 0 0 6 6l1.4-2.2 4.2 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>Điện thoại</dt><dd><a data-contact-ref="call" href="/lien-he/">0942 467 674</a></dd></div>
+        </dl>
+        <div class="v3-actions">
+          <a class="v3-btn v3-btn-primary" href="/lien-he/" data-contact-ref="call"><svg class="i i-phone" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6.6 3.5h3l1.5 4.2-2.2 1.4a11 11 0 0 0 6 6l1.4-2.2 4.2 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Gọi điện</span></a>
+          <a class="v3-btn" href="/lien-he/" data-contact-ref="whatsapp"><svg class="i i-chat" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4.5 5.5h15a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H10l-4.5 3.5V17h-1a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/></svg><span>Nhắn WhatsApp</span></a>
+          <a class="v3-btn" href="/lien-he/" data-contact-ref="map"><svg class="i i-map" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M9 4.5 3.5 6.5v13l5.5-2 6 2 5.5-2v-13l-5.5 2-6-2Z"/><path d="M9 4.5v13M15 6.5v13"/></svg><span>Xem bản đồ</span></a>
+          <a class="v3-btn" href="/lien-he/"><span>Trang liên hệ</span><svg class="i i-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </section>
   </main>
+    <footer class="blog-footer">
+      <div class="blog-footer-inner">
+        <div class="blog-footer-brand">
+          <p class="blog-footer-brand-name"><span class="blog-footer-mark" aria-hidden="true"><svg class="brand-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><rect class="brand-mark-tile" width="32" height="32" rx="9"/><path class="brand-mark-road" d="M7.5 26.5 14 5.5M24.5 26.5 18 5.5"/><path class="brand-mark-lane" d="M16 25.5v-3.6M16 18.6v-2.8M16 12.9V11"/></svg></span> <strong>MotoAI</strong> <span class="blog-footer-agent">· Hỗ trợ Agent</span></p>
+          <p class="blog-footer-desc">Cẩm nang thuê xe máy &amp; xe điện — Thuê xe máy Hà Nội Nguyễn Tú</p>
+          <a class="blog-footer-cta" href="/agent/">⚡ Hỏi Agent</a>
+        </div>
+        <nav class="blog-footer-nav" aria-label="Chân trang">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">MOTOAI</p>
+        <ul>
+          <li><a href="/">Trang Chủ</a></li>
+          <li><a href="/agent/">Agent</a></li>
+          <li><a href="/gioi-thieu/">Giới Thiệu</a></li>
+          <li><a href="/blog/">Cẩm nang</a></li>
+          <li><a href="/blog/">Tìm Bài</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col is-hub">
+        <p class="blog-footer-title">Công cụ &amp; Hướng dẫn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/cong-cu-huong-dan/">Công cụ &amp; Hướng dẫn</a></li>
+            <li class="footer-sub"><a href="/blog/app/">Ứng Dụng</a></li>
+            <li class="footer-sub"><a href="/blog/huong-dan/">Hướng Dẫn</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col is-hub">
+        <p class="blog-footer-title">Thuê xe &amp; Phương tiện</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/thue-xe-phuong-tien/">Thuê xe &amp; Phương tiện</a></li>
+            <li class="footer-sub"><a href="/blog/thue-xe/">Thuê Xe</a></li>
+            <li class="footer-sub"><a href="/blog/xe-dien/">Xe Điện</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col is-hub">
+        <p class="blog-footer-title">Khám phá &amp; An toàn</p>
+        <ul>
+          <li><a class="footer-hub-link" href="/blog/kham-pha-an-toan/">Khám phá &amp; An toàn</a></li>
+            <li class="footer-sub"><a href="/blog/an-toan/">An Toàn</a></li>
+            <li class="footer-sub"><a href="/blog/dia-phuong/">Địa Phương</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-secondary">
+        <nav class="blog-footer-nav" aria-label="Dịch vụ và pháp lý">
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">DỊCH VỤ</p>
+        <ul>
+          <li><a href="/gia-thue/">Giá Thuê</a></li>
+          <li><a href="/lien-he/">Liên Hệ</a></li>
+          <li><a data-contact-ref="map" href="/">Bản Đồ</a></li>
+        </ul>
+      </div>
+      <div class="blog-footer-col">
+        <p class="blog-footer-title">PHÁP LÝ</p>
+        <ul>
+          <li><a href="/chinh-sach/">Chính Sách</a></li>
+          <li><a href="/privacy/">Bảo Mật</a></li>
+          <li><a href="/terms/">Điều Khoản</a></li>
+        </ul>
+      </div>
+        </nav>
+      </div>
+      <div class="blog-footer-bottom">
+        <p>Thuê xe máy Nguyễn Tú · 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội</p>
+        <p>09:00 - 21:00 mỗi ngày</p>
+      </div>
+    </footer>
 
-  <!-- Menu drawer (hidden in embed mode): navigation + contact + clear action. -->
   <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop" hidden></div>
   <nav class="motoai-drawer" id="motoai-drawer" aria-label="Menu" hidden>
     <div class="motoai-drawer-head">
@@ -130,14 +428,15 @@
       <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng menu">✕</button>
     </div>
     <ul class="motoai-drawer-list">
-      <li><button type="button" id="motoai-menu-agent">⚡ Agent Hỗ Trợ</button></li>
+      <li><a href="/">🏠 Trang Chủ</a></li>
+      <li><a href="/agent/">⚡ Agent Hỗ Trợ</a></li>
       <li><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
       <li class="motoai-group">
         <button type="button" class="motoai-group-btn" id="motoai-group-pages-btn" aria-expanded="false" aria-controls="motoai-group-pages">🗂️ Trang Web <span class="motoai-caret" aria-hidden="true">▾</span></button>
         <ul class="motoai-group-items" id="motoai-group-pages" hidden>
           <li><a href="/gioi-thieu/">🏢 Giới Thiệu</a></li>
           <li><a href="/lien-he/">☎️ Liên Hệ</a></li>
-          <li><a id="motoai-menu-price" href="/gia-thue/">💰 Giá Thuê</a></li>
+          <li><a href="/gia-thue/">💰 Giá Thuê</a></li>
           <li><a href="/doi-tac/">🤝 Đối Tác</a></li>
         </ul>
       </li>
@@ -204,11 +503,11 @@
       <li class="motoai-group">
         <button type="button" class="motoai-group-btn" id="motoai-group-dv-btn" aria-expanded="false" aria-controls="motoai-group-dv">🛵 Dịch Vụ <span class="motoai-caret" aria-hidden="true">▾</span></button>
         <ul class="motoai-group-items" id="motoai-group-dv" hidden>
-          <li><button type="button" id="motoai-menu-address">📍 Địa Chỉ</button></li>
-          <li><button type="button" id="motoai-menu-contact">☎️ Liên Hệ</button></li>
-          <li><a id="motoai-menu-call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi Ngay</a></li>
-          <li><a id="motoai-menu-whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 Nhắn WhatsApp</a></li>
-          <li><a id="motoai-menu-map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
+          <li><a href="/agent/?action=address">📍 Địa Chỉ</a></li>
+          <li><a href="/agent/?action=contact">☎️ Liên Hệ</a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank">📞 Gọi Ngay</a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank">🟢 Nhắn WhatsApp</a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank">🗺️ Bản Đồ</a></li>
         </ul>
       </li>
       <li class="motoai-group">
@@ -219,64 +518,19 @@
           <li><a href="/terms/">📃 Điều Khoản</a></li>
         </ul>
       </li>
-      <li class="motoai-drawer-divider" role="separator"></li>
-      <li><button type="button" id="motoai-reset">🧹 Xóa chat</button></li>
     </ul>
   </nav>
 
-  <noscript>MotoAI cần JavaScript để hoạt động. Vui lòng gọi 0942 467 674 để được hỗ trợ.</noscript>
-
-  <script type="application/ld+json" id="motoai-schema">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "MotoAI — Ứng dụng thuê xe máy & xe điện",
-    "url": "https://chatbot.thuexemaynguyentu.com/",
-    "applicationCategory": "TravelApplication",
-    "operatingSystem": "Web browser",
-    "inLanguage": "vi",
-    "description": "Ứng dụng web hỏi đáp thuê xe máy và xe điện: giá thuê, chọn xe, tính chi phí, thủ tục và địa chỉ của Thuê Xe Máy Hà Nội Nguyễn Tú.",
-    "offers": { "@type": "Offer", "price": "150000", "priceCurrency": "VND", "description": "Giá thuê xe máy tham khảo theo ngày, bắt đầu từ 150.000đ." },
-    "author": {
-      "@type": "Organization",
-      "@id": "https://chatbot.thuexemaynguyentu.com/#organization",
-      "name": "Thuê Xe Máy Hà Nội Nguyễn Tú",
-      "url": "https://chatbot.thuexemaynguyentu.com/",
-      "sameAs": ["https://thuexemaynguyentu.com/"],
-      "telephone": "+84942467674",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "112 Nguyễn Văn Cừ",
-        "addressLocality": "Bồ Đề, Long Biên, Hà Nội",
-        "addressCountry": "VN"
-      }
-    }
-  }
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","@id":"https://chatbot.thuexemaynguyentu.com/#website","name":"MotoAI — Cẩm nang thuê xe máy & xe điện","url":"https://chatbot.thuexemaynguyentu.com/","inLanguage":"vi","publisher":{"@id":"https://chatbot.thuexemaynguyentu.com/#organization"}}
   </script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Ứng dụng thuê xe máy MotoAI là gì?",
-        "acceptedAnswer": { "@type": "Answer", "text": "MotoAI là ứng dụng web hỏi đáp thuê xe máy và xe điện: hỏi giá theo loại xe và thời gian, được gợi ý chọn xe, tính chi phí thuê, xem thủ tục nhận xe và tìm địa chỉ — chạy ngay trên trình duyệt, không cần cài đặt, không cần tài khoản." }
-      },
-      {
-        "@type": "Question",
-        "name": "Thuê xe máy cần thủ tục gì?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Bạn cần giấy tờ tùy thân (CCCD hoặc hộ chiếu), bằng lái phù hợp với dung tích xe và tiền đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe. Mức cọc chính xác được xác nhận khi đặt xe." }
-      },
-      {
-        "@type": "Question",
-        "name": "Cửa hàng mở cửa lúc mấy giờ?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Cửa hàng ở 112 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội, hoạt động 09:00 - 21:00 hằng ngày." }
-      }
-    ]
-  }
+{"@context":"https://schema.org","@type":"Organization","@id":"https://chatbot.thuexemaynguyentu.com/#organization","name":"Thuê Xe Máy Hà Nội Nguyễn Tú","url":"https://chatbot.thuexemaynguyentu.com/","logo":{"@type":"ImageObject","url":"https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png","width":512,"height":512},"sameAs":["https://thuexemaynguyentu.com/"]}
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://chatbot.thuexemaynguyentu.com/#webpage","url":"https://chatbot.thuexemaynguyentu.com/","name":"MotoAI — Trợ lý & ứng dụng thuê xe máy, xe điện tại Hà Nội","description":"MotoAI là ứng dụng web về thuê xe máy ở Hà Nội: hỏi Agent về giá thuê tham khảo, thủ tục và cách chọn xe; đọc cẩm nang theo chủ đề, xem thông tin cửa hàng.","inLanguage":"vi","isPartOf":{"@id":"https://chatbot.thuexemaynguyentu.com/#website"},"about":{"@id":"https://chatbot.thuexemaynguyentu.com/#organization"},"mainEntity":{"@id":"https://chatbot.thuexemaynguyentu.com/agent/#app"}}
   </script>
 
-  <script type="module" src="assets/js/main.js?v=66"></script>
+  <script type="module" src="/assets/js/app-shell.js?v=3210754172"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const css = readFileSync(join(ROOT, 'assets/css/style.css'), 'utf8');
-const html = readFileSync(join(ROOT, 'index.html'), 'utf8');
+const html = readFileSync(join(ROOT, 'agent/index.html'), 'utf8'); // v76: the chat app lives at /agent/
 const embedJs = readFileSync(join(ROOT, 'embed.js'), 'utf8');
 
 /** Design-token regression: the calm palette must stay in place. */
@@ -82,7 +82,7 @@ test('safe-area handling present for iPhone', () => {
   assert.match(css, /env\(safe-area-inset-bottom/);
 });
 
-test('index.html keeps aria labels and the two-step Local AI consent flow', () => {
+test('agent/index.html keeps aria labels and the two-step Local AI consent flow', () => {
   assert.match(html, /role="status"/);
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /id="motoai-ai-explain"/, 'Local AI must explain before download');

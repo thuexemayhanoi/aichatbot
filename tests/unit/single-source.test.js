@@ -5,14 +5,14 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PRICING, BLOG_UI, priceFact, resolveFacts, emptyNote, t } from '../../tools/blog-components.mjs';
 import { bindFacts } from '../../tools/fact-bind.mjs';
-import { renderHome, renderLlms, HOME_TEMPLATE, LLMS_TEMPLATE } from '../../tools/home-page.mjs';
+import { renderAgent, renderLlms, AGENT_TEMPLATE, AGENT_PAGE, LLMS_TEMPLATE } from '../../tools/agent-page.mjs';
 import { EMBED_TOKENS } from '../../tools/css-build.mjs';
 
 /**
  * v75 "sửa 1 chỗ → toàn site đồng bộ": shop facts live in business.json,
  * rental rates in pricing.json, colors in the blog TOKENS, UI copy in
- * config/blog-ui.json — articles, homepage, llms.txt, the Agent's blog
- * answers and the embed launcher all read them at build time.
+ * config/blog-ui.json — articles, homepage, the Agent app page, llms.txt,
+ * the Agent's blog answers and the embed launcher all read them at build time.
  */
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -66,21 +66,21 @@ test('fact binding never guesses a price: other vehicles, totals and new sentenc
   assert.equal(bindFacts(cases[1], business).mismatches.length, 1, 'attributed mismatch is reported for the owner');
 });
 
-test('homepage and llms.txt are generated from their templates (no drift, no literal facts)', () => {
-  assert.equal(read('index.html'), renderHome(ROOT), `index.html is stale: edit ${HOME_TEMPLATE}, run node tools/build-blog.mjs`);
+test('Agent app page and llms.txt are generated from their templates (no drift, no literal facts)', () => {
+  assert.equal(read(AGENT_PAGE), renderAgent(ROOT), `${AGENT_PAGE} is stale: edit ${AGENT_TEMPLATE}, run node tools/build-blog.mjs`);
   assert.equal(read('llms.txt'), renderLlms(ROOT), `llms.txt is stale: edit ${LLMS_TEMPLATE}, run node tools/build-blog.mjs`);
-  for (const file of [HOME_TEMPLATE, LLMS_TEMPLATE]) {
+  for (const file of [AGENT_TEMPLATE, LLMS_TEMPLATE, 'config/site-pages.json']) {
     const src = read(file);
     assert.equal(bindFacts(src, business).bound, 0, `${file}: shop facts must be placeholders`);
     for (const literal of [business.contact.phone, business.contact.phone_display, business.address.street, business.hours.display]) {
       assert.ok(!src.includes(literal), `${file} hard-codes "${literal}"`);
     }
   }
-  assert.ok(!/\{\{/.test(read('index.html')) && !/\{\{/.test(read('llms.txt')), 'every placeholder resolved');
+  for (const out of [AGENT_PAGE, 'index.html', 'llms.txt']) assert.ok(!/\{\{/.test(read(out)), `${out}: every placeholder resolved`);
 });
 
-test('homepage FAQPage schema says exactly what the visible FAQ says', () => {
-  const html = read('index.html');
+test('Agent app FAQPage schema says exactly what the visible FAQ says', () => {
+  const html = read(AGENT_PAGE);
   const visible = [...html.matchAll(/<summary>([^<]+)<\/summary>\s*<p>([\s\S]*?)<\/p>/g)]
     .map(([, q, a]) => [q.trim(), a.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()]);
   const ld = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
@@ -113,6 +113,6 @@ test('generator UI copy comes from config/blog-ui.json labels', () => {
   for (const key of ['hubsTitle', 'priceConfirm', 'emptyBlog', 'emptyHub']) {
     assert.ok(!src.includes(BLOG_UI.labels[key].replace(/\{\w+\}.*/, '')), `build-blog.mjs hard-codes the "${key}" label`);
   }
-  assert.match(emptyNote('emptyHub', { scope: t('emptyScopeHub') }), /^<p class="blog-empty">[^<]+<a href="\/">Agent<\/a>[^<]+<\/p>$/);
+  assert.match(emptyNote('emptyHub', { scope: t('emptyScopeHub') }), /^<p class="blog-empty">[^<]+<a href="\/agent\/">Agent<\/a>[^<]+<\/p>$/);
   assert.ok(read('blog/index.html').includes(`aria-label="${BLOG_UI.labels.hubsTitle}"`));
 });

@@ -164,7 +164,11 @@ node tools/blog-factory.mjs resume         # phục hồi transaction đứt qu�
 
 Writer production (continuous, 2 bài/chunk, SIMPLE PRODUCTION MODE v67): viết 2 bodies + 2 manifest draft entries → local scoped QA từng bài → push; `blog-factory-publish.yml` select đúng exact ids (NEW/REPAIR/BACKLOG tách rời, không trộn scope), auto-claim, scoped QA đúng 2 bài, grouped publish (1 build/chunk), light matrix smoke và MỘT derived commit; không lock, không chờ Pages. Chi tiết: `docs/CONTINUOUS-WRITER.md`. Article-only push không chạy full chatbot CI (`ci.yml`/`distribution.yml` bỏ qua qua `paths-ignore`); engine/tool/workflow changes vẫn chạy full suite.
 
-## Homepage (v47.1 — chatbot-first)
+## Homepage (v76 — Apple V3 website + Agent tại `/agent/`)
+
+- `/` là trang chủ website (hero, dịch vụ, giới thiệu Agent, cẩm nang theo chủ đề, bài nổi bật, bài mới, thông tin cửa hàng, footer) sinh từ config/taxonomy/manifest/business. Khung chat toàn màn hình chuyển sang `/agent/`; link cũ `/?ask=…`, `/?action=…`, `/?embed=…` tự chuyển sang `/agent/`. Chi tiết: `docs/HOMEPAGE-V3.md`.
+
+## Homepage (v47.1 — chatbot-first, nay là trang `/agent/`)
 
 - Chatbot LÀ homepage: mở URL là vào ngay Agent (header "Hỗ trợ Agent", địa chỉ đã xác minh, ☰ menu, messages, quick bar, composer) — KHÔNG hero phía trên, KHÔNG cần cuộn.
 - H1 của trang là "Hỗ trợ Agent"; intent app quốc gia giữ qua title/meta/schema và đoạn SEO hỗ trợ nhỏ đặt SAU chatbot (`.motoai-seo`, ẩn trong embed mode).

@@ -200,9 +200,12 @@ test('footer labels come from the footer_groups source of truth', () => {
   }
 });
 
-test('the chatbot homepage keeps NO full footer inside the chat viewport', () => {
-  const html = read('index.html');
-  assert.ok(!html.includes('blog-footer'), 'root stays a full-screen app (dock + drawer only)');
+test('v76: the Agent app keeps NO footer inside the chat viewport; / is a full website page with the shared footer', () => {
+  const agent = read('agent/index.html');
+  assert.ok(!agent.includes('blog-footer'), '/agent/ stays a full-screen app (dock + drawer only)');
+  const home = read('index.html');
+  assert.match(home, /<footer class="blog-footer">/, '/ carries the shared site footer');
+  assert.ok(!home.includes('<nav class="motoai-dock"') && !home.includes('id="motoai-input"'), '/ never embeds the full-screen chat');
 });
 
 // ---------- Blog home: app content home ----------
@@ -316,7 +319,8 @@ test('article breadcrumbs: visible trail matches BreadcrumbList schema exactly',
       .find((o) => o['@type'] === 'BreadcrumbList');
     const schema = ldRaw.itemListElement.map((i) => i.name);
     assert.deepEqual(schema, visible, `${r.article_id}: BreadcrumbList equals the visible breadcrumb`);
-    assert.equal(visible[0], 'Agent');
+    assert.equal(visible[0], 'Trang chủ');
+    assert.ok(trail.includes('<a href="/">Trang chủ</a>'), `${r.article_id}: first crumb links the homepage`);
     const h1 = /<h1 class="blog-screen-title">([^<]+)<\/h1>/.exec(html)[1].replace(/&amp;/g, '&');
     assert.equal(visible[visible.length - 1], h1, 'article title is the last crumb');
   }

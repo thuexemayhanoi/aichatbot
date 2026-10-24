@@ -16,7 +16,7 @@
  */
 'use strict';
 
-const CORE_VERSION = 'v66';
+const CORE_VERSION = 'v67';
 const SHELL_CACHE = 'motoai-shell-' + CORE_VERSION;
 const DATA_CACHE = 'motoai-data-' + CORE_VERSION;
 const KNOWN_CACHES = [SHELL_CACHE, DATA_CACHE];
@@ -24,10 +24,10 @@ const KNOWN_CACHES = [SHELL_CACHE, DATA_CACHE];
 // Shell assets precached on install (small, app-critical, same-origin).
 const SHELL_ASSETS = [
   './',
-  './index.html',
+  './agent/',
   './manifest.webmanifest',
   './assets/css/style.css?v=2840661708',
-  './assets/js/main.js?v=66',
+  './assets/js/main.js?v=604135948',
   './assets/js/ai-settings.js',
   './assets/js/pwa.js',
   './assets/icons/icon.svg'
@@ -81,15 +81,15 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Navigations: network-first. Each URL is cached under ITS OWN key so a
-  // content page (e.g. /chinh-sach/) can NEVER overwrite the cached
-  // chat homepage. Offline fallback:
-  //   - the chat home URL falls back to the precached './index.html' shell;
-  //   - any other URL falls back to its own cached copy (if visited before),
-  //     never to the homepage.
+  // content page (e.g. /chinh-sach/) can NEVER overwrite a cached shell.
+  // Offline fallback (v67: the chat app lives at /agent/, / is the homepage):
+  //   - the Agent URL falls back to the precached './agent/' app shell;
+  //   - the homepage falls back to the precached './' page;
+  //   - any other URL falls back to its own cached copy (if visited before).
   if (request.mode === 'navigate') {
-    const isHomeRequest = url.pathname === new URL(self.registration.scope).pathname
-      || url.pathname === new URL('./', self.registration.scope).pathname
-      || url.pathname === new URL('index.html', self.registration.scope).pathname;
+    const scope = new URL(self.registration.scope).pathname;
+    const isAgentRequest = url.pathname === scope + 'agent/' || url.pathname === scope + 'agent/index.html';
+    const isHomeRequest = url.pathname === scope || url.pathname === scope + 'index.html';
     event.respondWith(
       fetch(request)
         .then((response) => {
@@ -102,8 +102,9 @@ self.addEventListener('fetch', (event) => {
         .catch(() =>
           caches.match(request).then((cached) =>
             cached
-              || (isHomeRequest ? caches.match('./index.html') : null)
-              || new Response('<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Offline — MotoAI</title><style>body{font-family:system-ui;padding:32px;text-align:center;color:#333}a{color:#4f46e5}</style></head><body><h1>Không có kết nối</h1><p>Trang này chưa được lưu để xem offline.</p><p><a href="/">Về màn hình Agent</a></p></body></html>', { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } })
+              || (isAgentRequest ? caches.match('./agent/') : null)
+              || (isHomeRequest ? caches.match('./') : null)
+              || new Response('<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Offline — MotoAI</title><style>body{font-family:system-ui;padding:32px;text-align:center;color:#333}a{color:#0066cc}</style></head><body><h1>Không có kết nối</h1><p>Trang này chưa được lưu để xem offline.</p><p><a href="/agent/">Mở Agent</a> · <a href="/">Trang chủ</a></p></body></html>', { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } })
           ))
     );
     return;

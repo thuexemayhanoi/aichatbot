@@ -1,22 +1,24 @@
 # Single source — đổi gì, sửa ở đâu
 
-Nguyên tắc: **sửa 1 chỗ → chạy build → toàn site đồng bộ**. Không sửa tay từng bài, không sửa file sinh ra (`blog/`, các trang tĩnh, `index.html`, `llms.txt`, `assets/css/blog.css`, khối token trong `assets/css/style.css`, màu launcher trong `embed.js`). CI build lại và báo lỗi nếu file sinh ra lệch nguồn.
+Nguyên tắc: **sửa 1 chỗ → chạy build → toàn site đồng bộ**. Không sửa tay từng bài, không sửa file sinh ra (`blog/`, các trang tĩnh, `index.html`, `agent/index.html`, `llms.txt`, `assets/css/blog.css`, khối token trong `assets/css/style.css`, màu launcher trong `embed.js`). CI build lại và báo lỗi nếu file sinh ra lệch nguồn.
 
 Sau khi sửa nguồn: `node tools/build-blog.mjs`. Cách khác: push lên `main`, workflow **Blog Shared Rebuild** sẽ tự build, test và commit phần sinh ra.
 
 | Muốn đổi | Sửa ở (nguồn duy nhất) | Tự cập nhật |
 |---|---|---|
-| Số điện thoại, WhatsApp, link bản đồ, email | `data/business/business.json` → `contact` | Bài viết, trang tĩnh, trang chủ (chữ + JSON-LD), `llms.txt`, footer, contact band, schema AutoRental, câu trả lời blog của Agent |
+| Số điện thoại, WhatsApp, link bản đồ, email | `data/business/business.json` → `contact` | Bài viết, trang tĩnh, trang chủ (khối Thông tin cửa hàng + JSON-LD), trang Agent `/agent/`, `llms.txt`, footer, contact band, schema AutoRental, câu trả lời blog của Agent |
 | Địa chỉ, giờ mở cửa, khu vực phục vụ, chính sách cọc/giao xe/bảo hiểm | `data/business/business.json` | Như trên |
-| Giá thuê theo xe | `data/business/pricing.json` | Bảng `/gia-thue/`, slot `price-glance`, giá trong bài (placeholder `{{ price.* }}`), "giá từ …" và Offer schema trên trang chủ |
-| Màu, chữ, khoảng cách, bo góc, bóng, chuyển động | `assets/css/src/blog.css` → khối TOKENS | `blog.css`, token của trang chủ (`style.css`), màu nút launcher `embed.js` |
+| Giá thuê theo xe | `data/business/pricing.json` | Bảng `/gia-thue/`, slot `price-glance`, giá trong bài (placeholder `{{ price.* }}`), "giá từ …" và Offer schema trên trang Agent `/agent/` |
+| Màu, chữ, khoảng cách, bo góc, bóng, chuyển động | `assets/css/src/blog.css` → khối TOKENS | `blog.css` (gồm trang chủ V3), token của trang Agent (`style.css`), màu nút launcher `embed.js` |
 | Tên site, tagline, theme-color, ảnh OG | `config/blog-ui.json` → `site` | Mọi trang, trang chủ, manifest theme-color qua test |
 | CTA trong bài (theo danh mục), contact band, banner, slot nội dung | `config/blog-ui.json` → `cta`, `banner`, `slots` | Mọi bài/hub theo danh mục |
 | Bật/tắt tóm tắt, mục lục, bài liên quan, contact band, motion… | `config/blog-ui.json` → `features` | Mọi trang |
 | Số bài liên quan, tiêu đề khối, nhãn giao diện | `config/blog-ui.json` → `related`, `labels` | Mọi trang |
 | Menu, drawer, footer | `config/navigation.json`, `data/blog/taxonomy.json` | Mọi trang + trang chủ |
 | Trang tĩnh (giới thiệu, chính sách, liên hệ, đối tác, bảo mật, điều khoản, giá thuê) | `config/site-pages.json` + `data/site/*.body.html`, `data/legal/*.body.html` | Trang tương ứng, sitemap, menu |
-| Trang chủ `/` (khung, SEO copy, FAQ, JSON-LD) | `data/site/home.html.tpl` | `index.html` |
+| Trang chủ `/` (chữ hero, dịch vụ, khối Agent, tiêu đề các phần, số bài mới) | `config/site-pages.json` → `siteHome` | `index.html` (danh mục từ taxonomy, bài nổi bật/bài mới từ manifest, cửa hàng từ `business.json`) |
+| Trang Agent `/agent/` (khung chat, SEO copy, FAQ, JSON-LD WebApplication) | `data/site/agent.html.tpl` | `agent/index.html` |
+| Đường dẫn Agent (nút "Hỏi Agent", contact band, menu, embed) | `config/navigation.json` → `agent.url` | Mọi trang |
 | `llms.txt` | `data/site/llms.txt.tpl` | `llms.txt` |
 | Title / meta / H1 SEO của bài đã đăng | `data/seo/article-meta.json` | Bài tương ứng |
 | Liên kết nội bộ, bài liên quan | Tự sinh (`tools/seo-links.mjs`) | Không chèn tay |
@@ -34,12 +36,13 @@ Sau khi sửa nguồn: `node tools/build-blog.mjs`. Cách khác: push lên `main
 - `tests/unit/single-source.test.js`:
   - placeholder giá;
   - binding không đoán giá;
-  - trang chủ/`llms.txt` không lệch template và không chứa dữ kiện ghi cứng;
-  - FAQ schema khớp FAQ hiển thị;
+  - trang Agent/`llms.txt` không lệch template và không chứa dữ kiện ghi cứng;
+  - FAQ schema (trang Agent) khớp FAQ hiển thị;
   - tri thức Agent không lộ placeholder;
   - màu launcher theo token;
   - nhãn UI lấy từ config.
-- `tests/unit/home-design-v2.test.js`: token, logo, icon, theme-color và precache của trang chủ.
+- `tests/unit/home-design-v2.test.js`: token, logo, icon, theme-color và precache của trang Agent.
+- `tests/unit/site-home-v3.test.js`: trang chủ V3 — thứ tự phần, nguồn dữ liệu từng phần, link thật, không giá/cọc tự đặt, schema, chuyển hướng `/?ask=` cũ sang `/agent/`.
 - `tests/unit/blog-design-system.test.js`: màu chỉ nằm trong TOKENS; CI gate bao phủ mọi file sinh ra.
 - CI (`ci.yml`): build lại + `git diff --exit-code`, chạy `site-audit` và `seo-score`.
 

@@ -30,6 +30,7 @@ const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flat
 
 function contentPages() {
   return [
+    'index.html', // v76: / is the website homepage on the shared content shell
     'blog/index.html',
     ...CLUSTER_DIRS.map((c) => `blog/${c}/index.html`),
     ...walk('blog').filter((p) => p.endsWith('index.html') && /^blog[\\/](app|thue-xe|xe-dien|huong-dan|an-toan|dia-phuong)[\\/]/.test(p)),
@@ -81,7 +82,7 @@ function parseChildLi({ attrs, inner }) {
   const id = firstControlAttr(inner, 'id');
   const href = firstControlAttr(inner, 'href');
   const contactRef = firstControlAttr(inner, 'data-contact-ref');
-  const actionMatch = href && /^\/\?action=([a-z]+)$/.exec(href);
+  const actionMatch = href && /^\/agent\/\?action=([a-z]+)$/.exec(href);
   if (contactRef) return { kind: 'contact', text, ref: contactRef };
   if (actionMatch) return { kind: 'action', text, action: actionMatch[1] };
   if (id && CHAT_ACTION_IDS[id]) return { kind: 'action', text, action: CHAT_ACTION_IDS[id] };
@@ -119,9 +120,9 @@ function parseDrawer(html) {
       parsed.push({ kind: 'group', text: decode(btn?.[1] ?? ''), children });
       continue;
     }
-    // Plain top-level item: Agent (button on chat home, <a> on content pages).
+    // Plain top-level item: Agent (button inside the Agent app, <a> on content pages).
     if (/id="motoai-menu-agent"/.test(li.inner)) {
-      parsed.push({ kind: 'link', text: firstControlText(li.inner), url: '/' });
+      parsed.push({ kind: 'link', text: firstControlText(li.inner), url: '/agent/' });
       continue;
     }
     parsed.push(parseChildLi(li));
@@ -156,12 +157,12 @@ function expectedCore() {
   });
 }
 
-// ---------- 1. Core menu: chat homepage == config/navigation.json ----------
+// ---------- 1. Core menu: Agent app (/agent/) == config/navigation.json ----------
 
-test('v63 core menu: index.html drawer matches drawerCore() exactly (order/labels/icons/links/accordion)', () => {
-  const html = read('index.html');
+test('v63 core menu: agent/index.html drawer matches drawerCore() exactly (order/labels/icons/links/accordion)', () => {
+  const html = read('agent/index.html');
   const { parsed, chatExtras } = parseDrawer(html);
-  assert.deepEqual(parsed, expectedCore(), 'index.html core drawer == config/navigation.json');
+  assert.deepEqual(parsed, expectedCore(), 'agent/index.html core drawer == config/navigation.json');
   // Chat-only extras are the divider + Xóa chat, at the very END.
   assert.deepEqual(chatExtras, ['divider', '🧹 Xóa chat'], 'chat-only utility = divider + Xóa chat, last');
 });
@@ -187,12 +188,15 @@ test('v63: "Xóa chat" and the chat divider never appear on content pages', () =
 
 // ---------- 2. Body classes + footer presence contract ----------
 
-test('v63: / stays the ChatGPT-style chat homepage — body.chat-home, NO footer', () => {
-  const html = read('index.html');
+test('v76: /agent/ is the ChatGPT-style chat app — body.chat-home, NO footer; / is a content page', () => {
+  const html = read('agent/index.html');
   assert.match(html, /<body class="chat-home">/);
-  assert.equal((html.match(/<footer/g) ?? []).length, 0, 'chat homepage never gains a footer');
-  assert.ok(!html.includes('class="site-header"'), 'chat homepage keeps its own app header');
-  assert.ok(html.includes('class="motoai-app"'), 'chat homepage keeps the app shell');
+  assert.equal((html.match(/<footer/g) ?? []).length, 0, 'the Agent app never gains a footer');
+  assert.ok(!html.includes('class="site-header"'), 'the Agent app keeps its own app header');
+  assert.ok(html.includes('class="motoai-app"'), 'the Agent app keeps the app shell');
+  const home = read('index.html');
+  assert.match(home, /<body class="content-page">/, '/ is a normal website page');
+  assert.ok(!home.includes('class="motoai-app"') && !home.includes('chat-home'), '/ is never the full-screen chat');
 });
 
 test('v63: every content page is body.content-page with exactly ONE site-header and ONE blog-footer', () => {
@@ -232,8 +236,8 @@ test('v63 footer: MOTOAI + 3 parent hubs + DỊCH VỤ + PHÁP LÝ, no "24/7", v
 
 // ---------- 4. No duplicate IDs anywhere ----------
 
-test('v63: no duplicate id attributes on any page (chat home + content pages)', () => {
-  for (const p of ['index.html', ...contentPages()]) {
+test('v63: no duplicate id attributes on any page (Agent app + content pages)', () => {
+  for (const p of ['agent/index.html', ...contentPages()]) {
     const html = read(p);
     const seen = new Set();
     for (const m of html.matchAll(/\bid="([^"]+)"/g)) {
@@ -252,7 +256,7 @@ function urlToFile(url) {
 }
 
 test('v63: every internal header/drawer/footer link resolves to a real page (no broken links, no orphans)', () => {
-  for (const p of ['index.html', ...contentPages()]) {
+  for (const p of ['agent/index.html', ...contentPages()]) {
     const html = read(p);
     const chrome = [
       html.slice(html.indexOf('<header'), html.indexOf('</header>') + 1),
@@ -270,7 +274,7 @@ test('v63: every internal header/drawer/footer link resolves to a real page (no 
 
 test('v63: canonical URL of every page is unchanged (SITE + own path, trailing slash)', () => {
   const SITE = 'https://chatbot.thuexemaynguyentu.com/';
-  const all = ['index.html', ...contentPages()];
+  const all = ['agent/index.html', ...contentPages()];
   for (const p of all) {
     const html = read(p);
     const canonical = /rel="canonical" href="([^"]+)"/.exec(html)?.[1];

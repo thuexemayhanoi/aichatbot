@@ -130,9 +130,9 @@ test('v58 content site: every generated page uses the shared site header + foote
     assert.ok(html.includes('id="motoai-menu-btn"'), `${page}: Menu button`);
     assert.ok(html.includes('id="blog-theme-toggle"'), `${page}: theme control`);
     assert.ok(html.includes('id="motoai-drawer"'), `${page}: shared menu drawer`);
-    // Menu stays RIGHT: it is the last interactive element after the theme toggle.
-    const m = html.match(/id="blog-theme-toggle"[\s\S]{0,400}?id="motoai-menu-btn"/);
-    assert.ok(m, `${page}: theme toggle before Menu (Menu right-aligned)`);
+    // Menu stays RIGHT: theme toggle → "Hỏi Agent" (/agent/) → Menu, the last interactive element.
+    const m = html.match(/id="blog-theme-toggle"[\s\S]{0,400}?<a class="site-agent-cta" href="\/agent\/"[\s\S]{0,1200}?id="motoai-menu-btn"/);
+    assert.ok(m, `${page}: theme toggle, then Hỏi Agent, then Menu (Menu right-aligned)`);
     // Real footer on every content page — generated from navigation config.
     assert.match(html, /<footer class="blog-footer">/, `${page}: site footer`);
     assert.ok(html.includes('blog-footer-nav'), `${page}: footer nav groups`);
@@ -146,16 +146,17 @@ test('v58 content site: every generated page uses the shared site header + foote
     for (const legacy of ['class="blog-back"', 'class="blog-header"', 'class="blog-hero"', 'class="blog-cta"', 'class="blog-contact"', 'id="motoai-menu-zalo"']) {
       assert.ok(!html.includes(legacy), `${page}: legacy chrome "${legacy}" removed`);
     }
-    // Ask Agent is a native action that returns to the HOME chat screen.
-    assert.ok(html.includes('/?ask='), `${page}: Ask Agent action`);
+    // Ask Agent is a native action that opens the Agent app (v76: /agent/, no longer /).
+    assert.ok(html.includes('/agent/?ask='), `${page}: Ask Agent action`);
+    assert.ok(!/href="\/\?(ask|action)=/.test(html), `${page}: no chat deep link to / (chat lives at /agent/)`);
   }
 });
 
-test('chat homepage keeps the app shell: dock present, NO site footer, Menu on the right', () => {
-  const html = read('index.html');
-  assert.ok(html.includes('<nav class="motoai-dock"'), 'chat homepage keeps the bottom service dock');
-  assert.ok(!html.includes('class="blog-footer"'), 'chat homepage has NO traditional footer');
-  assert.ok(!html.includes('class="site-header"'), 'chat homepage keeps its own app header');
+test('Agent app (/agent/) keeps the app shell: dock present, NO site footer, Menu on the right', () => {
+  const html = read('agent/index.html');
+  assert.ok(html.includes('<nav class="motoai-dock"'), 'Agent app keeps the bottom service dock');
+  assert.ok(!html.includes('class="blog-footer"'), 'Agent app has NO traditional footer');
+  assert.ok(!html.includes('class="site-header"'), 'Agent app keeps its own app header');
   assert.ok(html.includes('id="motoai-menu-btn"'), 'Menu button present');
   // Menu is the LAST control of the header row (right-aligned on mobile + desktop).
   const header = html.slice(0, html.indexOf('</header>'));

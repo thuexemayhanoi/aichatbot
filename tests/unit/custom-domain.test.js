@@ -30,7 +30,7 @@ test('root and same-origin absolute links resolve; external hosts and fragments 
   assert.equal(resolveInternal('index.html', '#section'), null);
 });
 
-for (const path of ['index.html', 'assets/js/app-shell.js', 'blog/search-index.json', 'data/blog/knowledge-index.json', 'manifest.webmanifest', 'service-worker.js']) {
+for (const path of ['index.html', 'agent/index.html', 'assets/js/app-shell.js', 'blog/search-index.json', 'data/blog/knowledge-index.json', 'manifest.webmanifest', 'service-worker.js']) {
   test(`migration fails closed on legacy project path in ${path}`, () => {
     const r = auditSite(changed(path, (s) => /\.(json|webmanifest)$/.test(path)
       ? JSON.stringify({ ...JSON.parse(s), audit_fixture: '/aichatbot/obsolete' })
@@ -63,5 +63,8 @@ test('broken root links, same-origin absolute links and assets cannot bypass the
 test('wrong sitemap origin and mismatched OG/schema are critical migration failures', () => {
   assert.equal(auditSite(changed('sitemap.xml', (s) => s.replace(SITE, 'https://example.com/'))).pass, false);
   assert.equal(auditSite(changed('index.html', (s) => s.replace(`property="og:url" content="${SITE}"`, 'property="og:url" content="https://example.com/"'))).pass, false);
-  assert.equal(auditSite(changed('index.html', (s) => s.replace(`"url": "${SITE}"`, '"url": "https://example.com/"'))).pass, false);
+  // v76: / is built by the content shell (compact JSON-LD); the Agent app keeps its template formatting.
+  assert.equal(auditSite(changed('index.html', (s) => s.replaceAll(`"url":"${SITE}"`, '"url":"https://example.com/"'))).pass, false);
+  assert.equal(auditSite(changed('agent/index.html', (s) => s.replace(`property="og:url" content="${SITE}agent/"`, 'property="og:url" content="https://example.com/agent/"'))).pass, false);
+  assert.equal(auditSite(changed('agent/index.html', (s) => s.replace(`"url": "${SITE}agent/"`, '"url": "https://example.com/agent/"'))).pass, false);
 });

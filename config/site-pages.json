@@ -1,6 +1,97 @@
 {
   "$schema": "motoai/site-pages@1",
   "note": "Single registry of the non-article pages. tools/build-blog.mjs renders them, sitemap.xml lists them (in this order), tools/site-audit.mjs and tools/seo-score.mjs audit them and the workflows commit/verify them via `node tools/site-pages.mjs --dirs`. Adding a page = one entry here + its body file. Text may use {{ business.* }} placeholders (data/business/business.json).",
+  "siteHome": {
+    "title": "MotoAI — Trợ lý & ứng dụng thuê xe máy, xe điện tại Hà Nội",
+    "description": "MotoAI là ứng dụng web về thuê xe máy ở Hà Nội: hỏi Agent về giá thuê tham khảo, thủ tục và cách chọn xe; đọc cẩm nang theo chủ đề, xem thông tin cửa hàng.",
+    "kicker": "MotoAI · Hà Nội",
+    "h1": "Trợ lý thuê xe máy Hà Nội",
+    "lead": "MotoAI là ứng dụng thuê xe máy dạng web: giúp bạn tìm hiểu xe máy, giá thuê tham khảo, thủ tục, phương tiện và kinh nghiệm di chuyển ở Hà Nội — hỏi Agent hoặc đọc cẩm nang trước khi liên hệ cửa hàng.",
+    "ctaAgent": "Hỏi Agent",
+    "ctaGuide": "Khám phá cẩm nang",
+    "services": {
+      "title": "Dịch vụ",
+      "lead": "Những việc thường cần khi thuê xe — mỗi mục dẫn tới trang có nội dung thật.",
+      "items": [
+        {
+          "label": "Thuê xe máy",
+          "icon": "scooter",
+          "href": "/blog/thue-xe/",
+          "desc": "Chọn xe số hay xe ga theo lịch trình, cách nhận và trả xe."
+        },
+        {
+          "label": "Thuê xe tháng",
+          "icon": "calendar",
+          "href": "/blog/thue-xe/thue-thang/",
+          "desc": "Thuê dài ngày cho sinh viên, người đi làm: những điều cần lưu ý."
+        },
+        {
+          "label": "Xe điện",
+          "icon": "bolt",
+          "href": "/blog/xe-dien/",
+          "desc": "Xe máy điện, xe đạp điện: pin, sạc, quãng đường; giá liên hệ cửa hàng."
+        },
+        {
+          "label": "Bảng giá",
+          "icon": "tag",
+          "href": "/gia-thue/",
+          "desc": "Giá tham khảo theo ngày, tuần, tháng; xác nhận trước khi đặt xe."
+        },
+        {
+          "label": "Thủ tục thuê",
+          "icon": "doc",
+          "href": "/blog/huong-dan/thu-tuc/",
+          "desc": "Giấy tờ cần mang, đặt cọc và các bước nhận xe."
+        },
+        {
+          "label": "Liên hệ",
+          "icon": "phone",
+          "href": "/lien-he/",
+          "desc": "Điện thoại, WhatsApp, bản đồ và giờ hoạt động của cửa hàng."
+        }
+      ]
+    },
+    "agent": {
+      "kicker": "Agent",
+      "title": "Hỏi Agent trước khi thuê xe",
+      "lead": "Agent là trợ lý thuê xe máy của MotoAI — app thuê xe máy và app thuê xe điện dạng web, chạy ngay trên trình duyệt. Câu trả lời đến từ dữ liệu cửa hàng đã xác minh; không cần cài đặt hay tạo tài khoản.",
+      "can": [
+        "Tìm hiểu giá thuê tham khảo theo loại xe và thời gian",
+        "Tư vấn chọn xe số, xe ga hay xe điện",
+        "Hướng dẫn giấy tờ cần mang khi nhận xe",
+        "Giải đáp chính sách đặt cọc, giao nhận và giờ mở cửa",
+        "Gợi ý bài cẩm nang liên quan"
+      ],
+      "cta": "Mở Agent",
+      "note": "Giá, tiền cọc và tình trạng xe luôn được xác nhận trực tiếp với cửa hàng trước khi đặt."
+    },
+    "guide": {
+      "title": "Cẩm nang theo chủ đề",
+      "lead": "{clusters} nhóm, {cats} danh mục và {topics} chủ đề con có bài viết."
+    },
+    "featured": {
+      "title": "Bài nổi bật",
+      "lead": "Bài trụ cột của từng danh mục — điểm bắt đầu tốt nhất cho mỗi chủ đề."
+    },
+    "latest": {
+      "title": "Bài mới",
+      "lead": "{n} bài mới nhất, tự cập nhật mỗi khi cẩm nang có bài mới.",
+      "more": "Xem toàn bộ cẩm nang",
+      "count": 9
+    },
+    "shop": {
+      "title": "Thông tin cửa hàng",
+      "lead": "Dữ liệu từ thông tin kinh doanh đã xác minh.",
+      "address": "Địa chỉ",
+      "hours": "Giờ hoạt động",
+      "phone": "Điện thoại",
+      "call": "Gọi điện",
+      "whatsapp": "Nhắn WhatsApp",
+      "map": "Xem bản đồ",
+      "contact": "Trang liên hệ",
+      "daily": "mỗi ngày"
+    }
+  },
   "blogHome": {
     "title": "Cẩm nang thuê xe máy — ứng dụng, giá, xe điện, thủ tục",
     "description": "Cẩm nang thuê xe máy và xe điện: cách dùng ứng dụng thuê xe, bảng giá theo ngày, tuần, tháng, thủ tục, đặt cọc, an toàn và hành trình Hà Nội.",
@@ -50,7 +141,9 @@
       "seoTitle": "Liên hệ thuê xe máy {{ business.brand }} — điện thoại, WhatsApp, bản đồ",
       "description": "Liên hệ {{ business.display_name }} tại {{ business.address.street }}, {{ business.address.district }}: số điện thoại, WhatsApp, bản đồ chỉ đường, giờ mở cửa {{ business.hours.display }}.",
       "body": "data/site/lien-he.body.html",
-      "schema": ["localBusiness"]
+      "schema": [
+        "localBusiness"
+      ]
     },
     {
       "dir": "gia-thue",

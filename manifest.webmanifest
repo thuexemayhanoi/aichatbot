@@ -3,7 +3,7 @@
   "short_name": "MotoAI",
   "description": "Trợ lý tự động trả lời giá thuê xe máy, đặt cọc, giao xe, giờ mở cửa. Chạy hoàn toàn trên thiết bị của bạn.",
   "id": "/",
-  "start_url": "/?source=pwa",
+  "start_url": "/agent/?source=pwa",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",

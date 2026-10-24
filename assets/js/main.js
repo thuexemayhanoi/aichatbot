@@ -14,9 +14,9 @@ import { initPwa } from './pwa.js';
 import { initTheme } from './theme.js?v=63';
 
 const DATA_FILES = [
-  ['business', 'data/business/business.json'],
-  ['pricing', 'data/business/pricing.json'],
-  ['faq', 'data/business/faq.json']
+  ['business', '/data/business/business.json'],
+  ['pricing', '/data/business/pricing.json'],
+  ['faq', '/data/business/faq.json']
 ];
 
 async function loadBusinessData() {
@@ -289,6 +289,7 @@ async function init() {
   // Content screens (blog category/article, legal) deep-link back into the
   // home chat screen: ?ask=<topic> prefills the composer; ?action=<id> runs
   // the same deterministic flows the drawer/dock buttons trigger.
+  let busy = false;
   const entry = new URLSearchParams(location.search);
   const askTopic = entry.get('ask');
   const action = entry.get('action');
@@ -316,13 +317,12 @@ async function init() {
   function warmBlogKnowledge() {
     if (blogWarmed || config.embed) return;
     blogWarmed = true;
-    fetch('data/blog/knowledge-index.json', { cache: 'no-cache' })
+    fetch('/data/blog/knowledge-index.json', { cache: 'no-cache' })
       .then((response) => (response.ok ? response.json() : null))
       .then((index) => { if (index?.chunks?.length) app.attachBlogIndex(index.chunks); })
       .catch(() => { /* blog retrieval is optional; silent on failure */ });
   }
 
-  let busy = false;
   function setBusy(value) {
     busy = value;
     elements.send.disabled = value;

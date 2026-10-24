@@ -1,6 +1,6 @@
 # MotoAI complete navigation — maintenance contract
 
-The chat homepage and every generated blog/content page now share the same menu tree.
+The Agent app (`/agent/`), the homepage `/` and every generated blog/content page share the same menu tree (v76: the full-screen chat moved from `/` to `/agent/`; `/` is a content page).
 
 ## Single sources
 - `config/navigation.json`: short 2–3-word customer labels, four drawer groups, icon vocabulary and contact intents
@@ -10,14 +10,14 @@ The chat homepage and every generated blog/content page now share the same menu 
 
 ## Runtime
 - `tools/taxonomy.mjs` resolves the normalized menu tree
-- `tools/menu-drawer.mjs` renders the identical chat and content drawers; `tools/home-page.mjs` writes the chat drawer into `index.html` (generated from `data/site/home.html.tpl`) on rebuild
+- `tools/menu-drawer.mjs` renders the identical chat and content drawers; `tools/agent-page.mjs` writes the chat drawer into `agent/index.html` (generated from `data/site/agent.html.tpl`) on rebuild; the homepage `index.html` uses the content drawer like every content page
 - `tools/app-shell.mjs` renders content drawer plus scrollable desktop dropdowns
 - `tools/build-blog.mjs` rebuilds menu across all pages deterministically, with asset-hash cache busting
 - `assets/css/style.css` and `assets/css/src/blog.css` support nested links, mobile safe area and light/dark
 
 ## QA / publisher
 - `node tools/build-blog.mjs`, `node --test`, `node tools/site-audit.mjs`, `node tools/seo-score.mjs`
-- The shared build and article publisher stage only the generated `index.html` change in addition to their established generated surfaces
+- The shared build stages the generated `index.html` and `agent/` in addition to its established generated surfaces; the article publisher stages `index.html` (latest/featured articles) — `agent/` does not depend on articles
 - `tests/unit/menu-completeness.test.js` rejects missing Page/category/topic URLs, empty-topic destinations, long labels and app/blog divergence
 - Preserve canonical, schema, article body, writer matrix and chatbot engine. Rollback by reverting the feature PR.
 

@@ -16,7 +16,9 @@ const repoRoot = join(here, '..', '..');
 const www = join(here, 'www');
 
 const TARGETS = [
-  ['index.html', ['index.html']],
+  // v76: the app entry is the Agent page (/agent/); its URLs are root-absolute.
+  ['index.html', ['agent/index.html']],
+  ['agent', ['agent']],
   ['manifest.webmanifest', ['manifest.webmanifest']],
   ['service-worker.js', ['service-worker.js']],
   ['embed.js', ['embed.js']],

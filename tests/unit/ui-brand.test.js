@@ -19,13 +19,13 @@ import {
  */
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const html = readFileSync(join(ROOT, 'index.html'), 'utf8');
+const html = readFileSync(join(ROOT, 'agent/index.html'), 'utf8');
 const mainJs = readFileSync(join(ROOT, 'assets/js/main.js'), 'utf8');
 const css = readFileSync(join(ROOT, 'assets/css/style.css'), 'utf8');
 const embedJs = readFileSync(join(ROOT, 'embed.js'), 'utf8');
 
-// --- 5d. ROOT URL = THE CHAT APPLICATION (explicit acceptance contract) ---
-test('root app contract: body opens directly into the chat app in spec order', () => {
+// --- 5d. /agent/ = THE CHAT APPLICATION (explicit acceptance contract; v76 moved it off /) ---
+test('Agent app contract: /agent/ body opens directly into the chat app in spec order', () => {
   const body = html.slice(html.indexOf('<body'));
   // 1. No landing structure may precede the app.
   const appTag = '<section class="motoai-app"';
@@ -293,9 +293,9 @@ test('every chip query is answered by the deterministic engine (no fallback)', a
   }
 });
 
-test('index.html links the stylesheet (root app must never render unstyled)', () => {
-  const html = readFileSync(join(ROOT, 'index.html'), 'utf8');
-  assert.match(html, /<link rel="stylesheet" href="assets\/css\/style\.css\?v=[\w.-]+">/);
+test('agent/index.html links the stylesheet by absolute path (the Agent app must never render unstyled)', () => {
+  const html = readFileSync(join(ROOT, 'agent/index.html'), 'utf8');
+  assert.match(html, /<link rel="stylesheet" href="\/assets\/css\/style\.css\?v=[\w.-]+">/);
   // must appear after canonical/manifest, before runtime scripts
   const linkPos = html.indexOf('<link rel="stylesheet"');
   const canonicalPos = html.indexOf('rel="canonical"');

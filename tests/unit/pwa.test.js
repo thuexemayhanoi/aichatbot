@@ -9,6 +9,7 @@ const manifest = JSON.parse(readFileSync(join(ROOT, 'manifest.webmanifest'), 'ut
 const sw = readFileSync(join(ROOT, 'service-worker.js'), 'utf8');
 const pwaJs = readFileSync(join(ROOT, 'assets/js/pwa.js'), 'utf8');
 const indexHtml = readFileSync(join(ROOT, 'index.html'), 'utf8');
+const agentHtml = readFileSync(join(ROOT, 'agent/index.html'), 'utf8');
 const mainJs = readFileSync(join(ROOT, 'assets/js/main.js'), 'utf8');
 
 /** Manifest validity (spec §9). */
@@ -20,7 +21,8 @@ test('manifest.webmanifest is valid JSON with all required fields', () => {
 
 test('manifest base path works under / (absolute paths)', () => {
   assert.equal(manifest.scope, '/');
-  assert.equal(manifest.start_url, '/?source=pwa');
+  // v76: the installed app opens the Agent chat app at /agent/ (still inside scope /).
+  assert.equal(manifest.start_url, '/agent/?source=pwa');
   assert.ok(manifest.id === '/');
   for (const icon of manifest.icons) {
     assert.ok(icon.src.startsWith('/'), `icon src must be absolute under /: ${icon.src}`);
@@ -89,7 +91,8 @@ test('service worker cache strategy: data network-first, shell cache-first + rev
 test('service worker registration only in direct/PWA mode (embed never registers)', () => {
   assert.match(pwaJs, /if \(config\?\.embed\) return/);
   assert.match(pwaJs, /serviceWorker' in navigator/);
-  assert.match(pwaJs, /navigator\.serviceWorker\.register\('\.\/service-worker\.js'\)/);
+  // v76: root-absolute URL — registered from /agent/, the worker's default scope is still / (whole site).
+  assert.match(pwaJs, /navigator\.serviceWorker\.register\('\/service-worker\.js'\)/);
   assert.match(pwaJs, /window\.addEventListener\('load', \(\) => \{/);
   // main.js wires initPwa with the parsed config.
   assert.match(mainJs, /import \{ initPwa \} from '\.\/pwa\.js'/);
@@ -97,12 +100,14 @@ test('service worker registration only in direct/PWA mode (embed never registers
 });
 
 test('direct app links the manifest + theme-color, embed users unaffected', () => {
-  assert.match(indexHtml, /<link rel="manifest" href="manifest\.webmanifest">/);
+  assert.match(agentHtml, /<link rel="manifest" href="\/manifest\.webmanifest">/);
   // v74: light/dark theme-color from the same config as every content page.
   const { themeColor } = JSON.parse(readFileSync(join(ROOT, 'config/blog-ui.json'), 'utf8')).site;
-  assert.ok(indexHtml.includes(`<meta name="theme-color" content="${themeColor.light}" media="(prefers-color-scheme: light)">`));
-  assert.ok(indexHtml.includes(`<meta name="theme-color" content="${themeColor.dark}" media="(prefers-color-scheme: dark)">`));
-  // Embed iframe loads the same index.html — the SW registration guard keeps it inert.
+  for (const html of [agentHtml, indexHtml]) {
+    assert.ok(html.includes(`<meta name="theme-color" content="${themeColor.light}" media="(prefers-color-scheme: light)">`));
+    assert.ok(html.includes(`<meta name="theme-color" content="${themeColor.dark}" media="(prefers-color-scheme: dark)">`));
+  }
+  // Embed iframe loads the same agent/index.html — the SW registration guard keeps it inert.
   assert.match(pwaJs, /config\?\.embed/);
 });
 
@@ -111,7 +116,7 @@ test('install UI: subtle, beforeinstallprompt-gated, never nagging', () => {
   assert.match(pwaJs, /beforeinstallprompt/);
   assert.match(pwaJs, /event\.preventDefault\(\)/);
   assert.match(pwaJs, /button\.hidden = (true|false)/);
-  assert.match(indexHtml, /id="motoai-install"[^>]*hidden/);
+  assert.match(agentHtml, /id="motoai-install"[^>]*hidden/);
   assert.match(pwaJs, /appinstalled/);
   assert.match(pwaJs, /deferredPrompt = null;\s*\n\s*button\.hidden = true;/);
 });

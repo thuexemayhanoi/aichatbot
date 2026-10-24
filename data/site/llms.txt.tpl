@@ -4,7 +4,8 @@
 
 ## Các trang chính
 
-- [MotoAI và công cụ hỏi đáp](https://chatbot.thuexemaynguyentu.com/)
+- [MotoAI — trang chủ](https://chatbot.thuexemaynguyentu.com/)
+- [Hỏi Agent: công cụ hỏi đáp thuê xe](https://chatbot.thuexemaynguyentu.com/agent/)
 - [Cẩm nang thuê xe máy, ứng dụng và xe điện](https://chatbot.thuexemaynguyentu.com/blog/)
 - [Bảng giá thuê xe tham khảo](https://chatbot.thuexemaynguyentu.com/gia-thue/)
 - [Chính sách thuê và đặt cọc](https://chatbot.thuexemaynguyentu.com/chinh-sach/)

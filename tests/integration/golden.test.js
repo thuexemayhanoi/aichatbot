@@ -172,9 +172,9 @@ test('query config: embed iframe URL generation', () => {
   const url = buildEmbedUrl('https://chatbot.thuexemaynguyentu.com/embed.js', {
     lang: 'en', theme: 'dark', source: 'blog'
   });
-  assert.equal(url, 'https://chatbot.thuexemaynguyentu.com/index.html?lang=en&theme=dark&source=blog&embed=1');
+  assert.equal(url, 'https://chatbot.thuexemaynguyentu.com/agent/?lang=en&theme=dark&source=blog&embed=1');
   const minimal = buildEmbedUrl('https://chatbot.thuexemaynguyentu.com/embed.js', {});
   assert.ok(minimal.includes('embed=1'));
-  assert.ok(minimal.includes('index.html'));
+  assert.ok(minimal.startsWith('https://chatbot.thuexemaynguyentu.com/agent/?'), 'embed opens the Agent app at /agent/');
   assert.throws(() => buildEmbedUrl(''), TypeError);
 });
