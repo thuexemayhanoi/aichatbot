@@ -10,7 +10,9 @@ The Agent app (`/agent/`), the homepage `/` and every generated blog/content pag
 
 ## Runtime
 - `tools/taxonomy.mjs` resolves the normalized menu tree
-- `tools/menu-drawer.mjs` renders the identical chat and content drawers; `tools/agent-page.mjs` writes the chat drawer into `agent/index.html` (generated from `data/site/agent.html.tpl`) on rebuild; the homepage `index.html` uses the content drawer like every content page
+- `tools/app-shell.mjs` `siteNav()` is the ONE desktop menu (Cẩm nang + parent hubs › categories › live subtopics + Trang Web Pages): the website header renders it on every content page and `tools/agent-page.mjs` renders it in the Agent header (plus Trang Chủ, shown ≥ 900px, hidden in embed). Its CSS is one block in `assets/css/style.css`, shared by both shells
+- `footerHtml()` resolves `config/navigation.json` `footer_groups`, which only REFERENCE drawer entries (home, agent, drawer groups) — the footer can no longer drift from the menu; breadcrumbs start at `navigation.home` and the "Cẩm nang" group
+- `tools/menu-drawer.mjs` renders the identical chat and content drawers (`contentLink()` is shared with the footer); `tools/agent-page.mjs` writes the chat drawer into `agent/index.html` (generated from `data/site/agent.html.tpl`) on rebuild; the homepage `index.html` uses the content drawer like every content page
 - `tools/app-shell.mjs` renders content drawer plus scrollable desktop dropdowns
 - `tools/build-blog.mjs` rebuilds menu across all pages deterministically, with asset-hash cache busting
 - `assets/css/style.css` and `assets/css/src/blog.css` support nested links, mobile safe area and light/dark
@@ -18,6 +20,7 @@ The Agent app (`/agent/`), the homepage `/` and every generated blog/content pag
 ## QA / publisher
 - `node tools/build-blog.mjs`, `node --test`, `node tools/site-audit.mjs`, `node tools/seo-score.mjs`
 - The shared build stages the generated `index.html` and `agent/` in addition to its established generated surfaces; the article publisher stages `index.html` (latest/featured articles) — `agent/` does not depend on articles
+- `tests/unit/nav-sync-v3.test.js` compares the desktop menu, drawer groups, footer and breadcrumb root across every page group (homepage, blog, hubs, subtopics, articles, Pages, Agent) and checks the current CSS hash in pages + service worker
 - `tests/unit/menu-completeness.test.js` rejects missing Page/category/topic URLs, empty-topic destinations, long labels and app/blog divergence
 - Preserve canonical, schema, article body, writer matrix and chatbot engine. Rollback by reverting the feature PR.
 
