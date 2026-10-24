@@ -171,8 +171,11 @@ test('site header CSS contract: sticky header, actions pinned right, no tiny ide
   assert.match(css, /\.site-actions\s*\{[^}]*margin-left:\s*auto/, 'actions (Menu) pinned to the right');
   assert.match(css, /\.site-brand\s*\{[^}]*min-width:\s*0/, 'identity block can shrink safely');
   assert.match(css, /\.site-main\s*\{[^}]*min-width:\s*0/, 'main column never forces page overflow');
-  assert.match(css, /\.site-nav\s*\{[^}]*display:\s*none/, 'desktop nav hidden on mobile');
-  assert.match(css, /min-width:\s*900px[\s\S]{0,200}\.site-nav\s*\{[^}]*display:\s*flex/, 'desktop nav appears >= 900px');
+  // v77: the desktop menu is shared with the Agent app, so its CSS lives in style.css.
+  const shared = read('assets/css/style.css');
+  assert.match(shared, /\.site-nav\s*\{[^}]*display:\s*none/, 'desktop nav hidden on mobile');
+  assert.match(shared, /min-width:\s*900px[\s\S]{0,200}\.site-nav\s*\{[^}]*display:\s*flex/, 'desktop nav appears >= 900px');
+  assert.ok(!/\.site-nav\b/.test(css), 'no second copy of the menu CSS in blog.css');
 });
 
 test('hub screens mark their own category with aria-current and keep a breadcrumb', () => {

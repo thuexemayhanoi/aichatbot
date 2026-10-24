@@ -6,8 +6,9 @@ const esc = (s) => String(s).replace(/&/g, '&amp;');
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
-  taxonomy, navigation, CLUSTER_BY_ID, CATEGORY_IDS, viSlug, deriveSubtopic
+  taxonomy, navigation, CLUSTER_BY_ID, CATEGORY_IDS, viSlug, deriveSubtopic, drawerCore
 } from '../../tools/taxonomy.mjs';
+import { BLOG_UI } from '../../tools/blog-components.mjs';
 import { paginate, buildToc, PER_PAGE } from '../../tools/build-blog.mjs';
 
 /**
@@ -127,30 +128,31 @@ test('navigation.json: short labels, canonical routes, no duplicate label for th
   assert.equal(new Set(urls).size, urls.length);
 });
 
-test('menu ↔ footer vocabulary: footer destinations match the drawer with identical labels', () => {
-  const html = read('index.html');
-  const drawerStart = html.indexOf('<nav class="motoai-drawer"');
-  const drawer = html.slice(drawerStart, html.indexOf('</nav>', drawerStart));
-  // v61: hub columns expand from taxonomy (parent + children); other groups keep flat items.
-  const footerItems = navigation.footer_groups.flatMap((g) => g.items ?? []);
-  for (const item of footerItems) {
-    if (item.ref) {
-      // Contact-backed destinations use data-contact-ref in BOTH surfaces.
-      assert.ok(drawer.includes(`data-contact-ref="${item.ref}"`) || /ref="[^"]*"/.test(drawer), `${item.label} contact ref in menu`);
-      continue;
-    }
-    if (item.label === 'Agent' || item.label === 'Liên Hệ') {
-      assert.ok(drawer.includes(item.label), `${item.label} present in menu`);
-      continue;
-    }
-    assert.ok(drawer.includes(`href="${item.url}">`), `menu links footer destination ${item.url}`);
-    assert.ok(drawer.includes(item.label), `menu uses the footer label "${item.label}" for ${item.url}`);
+// v77: the footer REFERENCES drawer entries (config/navigation.json footer_groups),
+// so every footer link is a drawer link with the very same label and target.
+const navGroup = (id) => drawerCore().find((e) => e.kind === 'group' && e.id === id);
+const linkKey = (attrs) => /data-contact-ref="([^"]+)"/.exec(attrs)?.[1] ? 'ref:' + /data-contact-ref="([^"]+)"/.exec(attrs)[1] : /href="([^"]+)"/.exec(attrs)[1];
+const linkSet = (fragment) => [...fragment.matchAll(/<a([^>]*)>([^<]+)<\/a>/g)]
+  .map((m) => [linkKey(m[1]), m[2].replace(/&amp;/g, '&').replace(/^\S+\s(?=\S)/u, (w) => (/[\p{L}\d]/u.test(w) ? w : ''))]);
+
+test('menu ↔ footer vocabulary: footer links are drawer links with identical labels, and vice versa', () => {
+  const html = read('blog/index.html');
+  const drawerAt = html.indexOf('<nav class="motoai-drawer"');
+  const drawer = linkSet(html.slice(drawerAt, html.indexOf('</nav>', drawerAt))).map(([k, l]) => `${k}|${l}`);
+  const header = linkSet(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1]).map(([k, l]) => `${k}|${l}`);
+  const footerHtml = html.slice(html.indexOf('<footer class="blog-footer">'), html.indexOf('</footer>'));
+  // Hub columns use the full parent-hub names (taxonomy) — checked by the v61 test below.
+  const flat = footerHtml.replace(/<div class="blog-footer-col is-hub">[\s\S]*?<\/div>/g, '').replace(/<a class="blog-footer-cta"[^>]*>[^<]*<\/a>/, '');
+  const footer = linkSet(flat).map(([k, l]) => `${k}|${l}`);
+  assert.ok(footer.length >= 10, 'footer navigation present');
+  for (const entry of footer) {
+    assert.ok(drawer.includes(entry) || header.includes(entry), `footer link "${entry}" is a drawer/header link with the same label`);
   }
-  // And the inverse: every category/search/legal drawer link appears in the footer.
-  const footerText = blogPages().length ? read('blog/index.html') : '';
-  for (const item of [...navigation.categories, navigation.search, ...navigation.legal]) {
-    assert.ok(footerText.includes(`>${item.label}<`), `footer carries drawer label "${item.label}"`);
-  }
+  // Inverse: Trang Chủ, Agent and every Trang Web / Dịch Vụ / Pháp Lý entry of the drawer is in the footer.
+  const expected = [navigation.home, navigation.agent, ...['pages', 'dv', 'pl'].flatMap((id) => navGroup(id).children)]
+    .map((e) => `${e.kind === 'action' ? `${navigation.agent.url}?action=${e.action}` : e.kind === 'contact' ? `ref:${e.ref}` : e.url}|${e.label}`);
+  for (const entry of expected) assert.ok(footer.includes(entry), `drawer entry "${entry}" is in the footer`);
+  assert.ok(footer.includes(`${navigation.search.url}|${navGroup('cm').label}`), 'the blog home, labelled like the header');
 });
 
 // v61: footer hub silo — every hub column carries its parent hub link and both children.
@@ -186,17 +188,24 @@ test('every content screen renders the shared footer with an identical link set'
   for (const p of pages) {
     assert.deepEqual(footerLinks(read(p)), first, `${p}: footer matches the shared footer`);
   }
-  // Footer never dumps subtopics/wards — stable destinations only.
-  assert.ok(first.length <= 22, 'footer stays compact (v61 hub silo: 4 primary cols + parent links)');
+  // Footer never dumps subtopics/wards — stable destinations only — and it
+  // holds exactly what config/navigation.json footer_groups reference.
+  assert.ok(!first.some((l) => /href="\/blog\/[^/"]+\/[^/"]+\//.test(l)), 'no subtopic links in the footer');
+  const expectedCount = 1 /* Hỏi Agent CTA */ + 2 /* Trang Chủ, Agent */ + 1 /* Cẩm nang */ +
+    navGroup('pages').children.length + navGroup('dv').children.length + navGroup('pl').children.length +
+    taxonomy.clusters.reduce((n, c) => n + 1 + c.categories.length, 0);
+  assert.equal(first.length, expectedCount, 'footer = exactly the referenced drawer entries + hub silo + CTA');
 });
 
-test('footer labels come from the footer_groups source of truth', () => {
+test('footer column titles come from the same sources as the menu (brand, hubs, drawer groups)', () => {
   const html = read('blog/index.html');
+  const titles = [...html.slice(html.indexOf('<footer')).matchAll(/blog-footer-title">([^<]+)</g)].map((m) => m[1].replace(/&amp;/g, '&'));
+  const expected = navigation.footer_groups.flatMap((g) => g.hubs ? taxonomy.clusters.map((c) => c.name)
+    : g.brand ? [BLOG_UI.site.shortName] : [navGroup(g.group).label]);
+  assert.deepEqual(titles, expected, 'footer titles, in config order');
+  // footer_groups only reference: no copied labels or URLs to drift.
   for (const g of navigation.footer_groups) {
-    // v61: { hub } columns take their title from taxonomy.clusters at build time.
-    const title = g.hub ? taxonomy.clusters.find((c) => c.id === g.hub).name : g.title;
-    const escTitle = String(title).replace(/&/g, '&amp;');
-    assert.ok(html.includes(`blog-footer-title">${escTitle}<`), `footer group ${title}`);
+    for (const item of g.items ?? []) assert.ok(!('label' in item) && !('url' in item), `footer item ${JSON.stringify(item)} only references`);
   }
 });
 
@@ -319,8 +328,8 @@ test('article breadcrumbs: visible trail matches BreadcrumbList schema exactly',
       .find((o) => o['@type'] === 'BreadcrumbList');
     const schema = ldRaw.itemListElement.map((i) => i.name);
     assert.deepEqual(schema, visible, `${r.article_id}: BreadcrumbList equals the visible breadcrumb`);
-    assert.equal(visible[0], 'Trang chủ');
-    assert.ok(trail.includes('<a href="/">Trang chủ</a>'), `${r.article_id}: first crumb links the homepage`);
+    assert.equal(visible[0], navigation.home.label, 'breadcrumb root = the navigation home entry');
+    assert.ok(trail.includes(`<a href="${navigation.home.url}">${navigation.home.label}</a>`), `${r.article_id}: first crumb links the homepage`);
     const h1 = /<h1 class="blog-screen-title">([^<]+)<\/h1>/.exec(html)[1].replace(/&amp;/g, '&');
     assert.equal(visible[visible.length - 1], h1, 'article title is the last crumb');
   }

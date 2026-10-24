@@ -407,7 +407,9 @@ test('bottom dock: exactly 4 items, flat nav look, verified actions, one row', (
   assert.match(css, /\.motoai-dock-item:active\s*\{\s*color:\s*var\(--color-primary\);\s*\}/, 'tap feedback');
   assert.match(css, /-webkit-tap-highlight-color:\s*transparent/, 'no sticky grey flash on iOS');
   // No persistent selected state — dock items are actions, not tabs.
-  assert.ok(!/\.motoai-dock-item\.motoai-active|aria-current/.test(css + dock), 'no sticky selected state');
+  // No sticky selected state on the dock (the shared desktop-menu CSS may style
+  // aria-current on .site-nav links; no rule may target a dock item that way).
+  assert.ok(!/\.motoai-dock-item[^{,]*(\.motoai-active|aria-current)/.test(css) && !/aria-current/.test(dock), 'no sticky selected state');
   assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-dock\s*\{\s*display:\s*none;/, 'embed hides the dock');
   // Dark/light contrast: dock never renders dark text on a purple surface.
   assert.ok(!/background:\s*var\(--color-primary\)/.test(item), 'dock cells are never purple');

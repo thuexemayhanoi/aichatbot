@@ -87,9 +87,10 @@ test('Agent app and content renderers use identical canonical category/topic URL
 
 test('iPhone drawer scrolls in-place and desktop nested menu remains keyboard reachable', () => {
   const rootCss = read('assets/css/style.css');
-  const blogCss = read('assets/css/src/blog.css');
   assert.match(rootCss, /\.motoai-drawer\s*\{[^}]*overflow-y:\s*auto/, 'scrollable drawer');
   assert.match(rootCss, /motoai-subtopic/, 'subtopic indent');
-  assert.match(blogCss, /site-nav-subtopic/, 'desktop nested dropdown links');
-  assert.match(blogCss, /max-height:\s*min\(72dvh,\s*610px\)/, 'dropdown bounded to viewport');
+  // v77: desktop menu CSS is one shared block in style.css (website + Agent app).
+  assert.match(rootCss, /site-nav-subtopic/, 'desktop nested dropdown links');
+  assert.match(rootCss, /max-height:\s*min\(72dvh,\s*610px\)/, 'dropdown bounded to viewport');
+  assert.ok(!/site-nav/.test(read('assets/css/src/blog.css')), 'the menu CSS has exactly one source');
 });

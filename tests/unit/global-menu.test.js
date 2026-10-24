@@ -4,6 +4,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { drawerCore, taxonomy } from '../../tools/taxonomy.mjs';
+import { BLOG_UI } from '../../tools/blog-components.mjs';
 
 /**
  * v63 GLOBAL MENU + FOOTER REGRESSION SPEC.
@@ -210,17 +211,19 @@ test('v63: every content page is body.content-page with exactly ONE site-header 
 
 // ---------- 3. Footer content: groups from config + verified business bottom bar ----------
 
-test('v63 footer: MOTOAI + 3 parent hubs + DỊCH VỤ + PHÁP LÝ, no "24/7", verified bottom bar', () => {
+test('v63 footer: MotoAI + 3 parent hubs + Dịch Vụ + Pháp Lý (shown uppercase), no "24/7", verified bottom bar', () => {
+  const groupLabel = (id) => drawerCore().find((e) => e.kind === 'group' && e.id === id).label;
   const business = JSON.parse(read('data/business/business.json'));
   for (const p of contentPages()) {
     const html = read(p);
     const footer = html.slice(html.indexOf('<footer class="blog-footer">'), html.indexOf('</footer>'));
-    assert.ok(footer.includes('blog-footer-title">MOTOAI<'), `${p}: MOTOAI column`);
+    // v77: titles come from the brand + drawer groups; CSS renders them uppercase.
+    assert.ok(footer.includes(`blog-footer-title">${esc(BLOG_UI.site.shortName)}<`), `${p}: MotoAI column`);
     for (const c of taxonomy.clusters) {
       assert.ok(footer.includes(`blog-footer-title">${esc(c.name)}<`), `${p}: hub column ${c.name}`);
     }
-    assert.ok(footer.includes('blog-footer-title">DỊCH VỤ<'), `${p}: DỊCH VỤ column`);
-    assert.ok(footer.includes('blog-footer-title">PHÁP LÝ<'), `${p}: PHÁP LÝ column`);
+    assert.ok(footer.includes(`blog-footer-title">${esc(groupLabel('dv'))}<`), `${p}: Dịch Vụ column`);
+    assert.ok(footer.includes(`blog-footer-title">${esc(groupLabel('pl'))}<`), `${p}: Pháp Lý column`);
     assert.ok(footer.includes('⚡ Hỏi Agent'), `${p}: Ask Agent CTA`);
     assert.ok(footer.includes('Hỗ trợ Agent'), `${p}: brand block subtitle`);
     // Never claim 24/7 support — hours are verified business.json facts.

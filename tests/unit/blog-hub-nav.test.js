@@ -46,7 +46,8 @@ test('v61 desktop menu prioritizes the 3 parent hubs, each as a REAL crawlable <
 });
 
 test('v61 dropdowns are keyboard/touch accessible, not hover-only', () => {
-  const css = read('assets/css/blog.css');
+  // v77: the desktop menu CSS is shared by the website and the Agent app (style.css).
+  const css = read('assets/css/style.css');
   const js = read('assets/js/app-shell.js');
   assert.match(css, /\.site-nav-item:focus-within \.site-nav-drop[\s\S]{0,80}display:\s*block/, 'focus-within opens the dropdown (keyboard)');
   assert.match(css, /\.site-nav-item\.open \.site-nav-drop[\s\S]{0,60}display:\s*block/, 'open class opens the dropdown (touch)');
@@ -103,10 +104,10 @@ test('v61 parent hub pages are topical hubs: H1, intro, child cards, ItemList', 
     assert.equal(col.name, c.name, `${c.dir}: schema name = display name`);
     assert.ok(col.mainEntity?.['@type'] === 'ItemList', `${c.dir}: ItemList of children + articles`);
     const crumbs = lds.find((o) => o['@type'] === 'BreadcrumbList');
-    assert.deepEqual(crumbs.itemListElement.map((i) => i.name), ['Trang chủ', 'Cẩm nang', c.name], `${c.dir}: breadcrumb = Trang chủ › Cẩm nang › hub`);
+    assert.deepEqual(crumbs.itemListElement.map((i) => i.name), [navigation.home.label, 'Cẩm nang', c.name], `${c.dir}: breadcrumb = Trang chủ › Cẩm nang › hub`);
     const visibleTrail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1];
     const visible = [...visibleTrail.matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map((m) => m[1]).filter((t) => t !== ' › ').map((t) => t.replace(/&amp;/g, '&'));
-    assert.deepEqual(visible, ['Trang chủ', 'Cẩm nang', c.name], `${c.dir}: visible breadcrumb agrees with schema`);
+    assert.deepEqual(visible, [navigation.home.label, 'Cẩm nang', c.name], `${c.dir}: visible breadcrumb agrees with schema`);
   }
 });
 
@@ -120,10 +121,10 @@ test('v61 category hubs link UP to their parent hub (visible + schema + bottom b
     assert.ok(html.includes(`blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}`), `${cat.dir}: bottom cluster block`);
     const lds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
     const crumbs = lds.find((o) => o['@type'] === 'BreadcrumbList');
-    assert.deepEqual(crumbs.itemListElement.map((i) => i.name), ['Trang chủ', 'Cẩm nang', cluster.name, cat.label], `${cat.dir}: breadcrumb hierarchy`);
+    assert.deepEqual(crumbs.itemListElement.map((i) => i.name), [navigation.home.label, 'Cẩm nang', cluster.name, cat.label], `${cat.dir}: breadcrumb hierarchy`);
     const visibleTrail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1];
     const visible = [...visibleTrail.matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map((m) => m[1]).filter((t) => t !== ' › ').map((t) => t.replace(/&amp;/g, '&'));
-    assert.deepEqual(visible, ['Trang chủ', 'Cẩm nang', cluster.name, cat.label], `${cat.dir}: visible breadcrumb agrees with schema`);
+    assert.deepEqual(visible, [navigation.home.label, 'Cẩm nang', cluster.name, cat.label], `${cat.dir}: visible breadcrumb agrees with schema`);
   }
 });
 
@@ -142,7 +143,7 @@ test('v61 articles link to their child hub AND parent hub (chip + breadcrumb + c
     assert.ok(html.includes(`blog-hub-cluster">Khám phá thêm trong ${esc(cluster.name)}`), `${a.slug}: parent cluster block`);
     const lds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
     const crumbs = lds.find((o) => o['@type'] === 'BreadcrumbList').itemListElement.map((i) => i.name);
-    assert.ok(crumbs[0] === 'Trang chủ' && crumbs[1] === 'Cẩm nang' && crumbs[2] === cluster.name && crumbs[3] === cat.label && crumbs[crumbs.length - 1] === a.title, `${a.slug}: breadcrumb = Trang chủ › Cẩm nang › hub › category (› subtopic) › title`);
+    assert.ok(crumbs[0] === navigation.home.label && crumbs[1] === 'Cẩm nang' && crumbs[2] === cluster.name && crumbs[3] === cat.label && crumbs[crumbs.length - 1] === a.title, `${a.slug}: breadcrumb = Trang chủ › Cẩm nang › hub › category (› subtopic) › title`);
     const visibleTrail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1];
     const visible = [...visibleTrail.matchAll(/>([^<>]+)<\/(?:a|span)>/g)].map((m) => m[1]).filter((t) => t !== ' › ').map((t) => t.replace(/&amp;/g, '&'));
     assert.deepEqual(visible, crumbs, `${a.slug}: visible breadcrumb agrees with schema`);
@@ -171,7 +172,7 @@ test('v72 content CSS: translucent header + fallback, solid dropdown, reduced mo
   // Scoped: nothing leaks into the chat homepage shell.
   assert.ok(!/body\.chat-home\s*\{/.test(css), 'content CSS never targets the chat homepage');
   assert.match(css, /body\.content-page \.site-header\s*\{[^}]*backdrop-filter/, 'translucent sticky header');
-  assert.match(css, /\.site-nav-drop\s*\{[^}]*backdrop-filter:\s*blur\(18px\)/, 'dropdown panel blur');
+  assert.match(read('assets/css/style.css'), /\.site-nav-drop\s*\{[^}]*backdrop-filter:\s*blur\(18px\)/, 'dropdown panel blur (shared menu CSS)');
   assert.match(css, /body\.content-page \.blog-card,/, 'shared card surface rule');
   assert.match(css, /@supports not \(\(backdrop-filter: blur\(1px\)\)/, 'solid fallback when backdrop-filter is missing');
   assert.match(css, /prefers-reduced-motion: reduce/, 'reduced-motion respected');
