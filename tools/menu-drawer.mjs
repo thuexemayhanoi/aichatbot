@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { drawerCore } from './taxonomy.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -87,7 +88,13 @@ export function syncChatRootMenu(root = ROOT) {
   if (start === -1) throw new Error('chat root: backdrop marker missing');
   const end = html.indexOf('</nav>', start);
   if (end === -1) throw new Error('chat root: drawer ending missing');
-  const output = html.slice(0, start) + renderDrawer({ mode: 'chat' }) + html.slice(end + '</nav>'.length);
+  let output = html.slice(0, start) + renderDrawer({ mode: 'chat' }) + html.slice(end + '</nav>'.length);
+  // Root chat previously pinned ?v=66, which could keep the old menu CSS
+  // in Safari after deployment. Match content-site hash-based cache busting.
+  const css = readFileSync(join(root, 'assets/css/style.css'));
+  const hash = createHash('sha256').update(css).digest('hex');
+  const version = String(parseInt(hash.slice(0, 8), 16));
+  output = output.replace(/assets\/css\/style\.css\?v=\d+/, 'assets/css/style.css?v=' + version);
   if (output !== html) writeFileSync(path, output, 'utf8');
   return output;
 }
