@@ -11,7 +11,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#08080a" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="/assets/css/style.css?v=2840661708">
+  <link rel="stylesheet" href="/assets/css/style.css?v=2848591111">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MotoAI — Thuê Xe Máy Hà Nội Nguyễn Tú">
   <meta property="og:title" content="Hỏi Agent MotoAI — Ứng dụng thuê xe máy & xe điện">
@@ -40,7 +40,7 @@
 </head>
 <body class="chat-home">
   <main class="motoai-shell">
-    <!-- The chatbot IS the homepage: it opens directly, no landing hero above it. -->
+    <!-- The Agent app opens directly into the chat: no landing hero above it. -->
     <section class="motoai-app" id="motoai-app">
       <header class="motoai-header">
         <div class="motoai-header-text">
@@ -51,6 +51,73 @@
           </div>
         </div>
         <span class="motoai-status" id="motoai-status" role="status" aria-live="polite"></span>
+        <nav class="site-nav" aria-label="Chuyên mục">
+          <a href="/">Trang Chủ</a>
+          <a href="/blog/">Cẩm nang</a>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/cong-cu-huong-dan/" aria-haspopup="true">Công Cụ<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
+          <div class="site-nav-drop">
+            <a class="site-nav-category" href="/blog/app/">Ứng Dụng</a>
+            <a class="site-nav-subtopic" href="/blog/app/web-app/">Web App</a>
+            <a class="site-nav-subtopic" href="/blog/app/tim-xe/">Tìm Xe</a>
+            <a class="site-nav-subtopic" href="/blog/app/tinh-gia/">Tính Giá</a>
+            <a class="site-nav-subtopic" href="/blog/app/dat-xe/">Đặt Xe</a>
+            <a class="site-nav-subtopic" href="/blog/app/tro-ly/">Trợ Lý</a>
+            <a class="site-nav-subtopic" href="/blog/app/cai-app/">Cài App</a>
+            <a class="site-nav-subtopic" href="/blog/app/so-sanh/">So Sánh</a>
+            <a class="site-nav-subtopic" href="/blog/app/huong-dan/">Hướng Dẫn</a>
+            <a class="site-nav-category" href="/blog/huong-dan/">Hướng Dẫn</a>
+            <a class="site-nav-subtopic" href="/blog/huong-dan/dat-xe/">Đặt Xe</a>
+            <a class="site-nav-subtopic" href="/blog/huong-dan/thu-tuc/">Thủ Tục</a>
+            <a class="site-nav-subtopic" href="/blog/huong-dan/chuan-bi/">Chuẩn Bị</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/thue-xe-phuong-tien/" aria-haspopup="true">Phương Tiện<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
+          <div class="site-nav-drop">
+            <a class="site-nav-category" href="/blog/thue-xe/">Thuê Xe</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/gia-thue/">Giá Thuê</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/dat-coc/">Đặt Cọc</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/nhan-xe/">Nhận Xe</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/tra-xe/">Trả Xe</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/thue-tuan/">Thuê Tuần</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/thue-thang/">Thuê Tháng</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/chon-xe/">Chọn Xe</a>
+            <a class="site-nav-subtopic" href="/blog/thue-xe/du-khach/">Du Khách</a>
+            <a class="site-nav-category" href="/blog/xe-dien/">Xe Điện</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/pin-xe/">Pin Xe</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/sac-pin/">Sạc Pin</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/quang-duong/">Quãng Đường</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/chon-xe/">Chọn Xe</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/chi-phi/">Chi Phí</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/an-toan/">An Toàn</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/so-sanh/">So Sánh</a>
+            <a class="site-nav-subtopic" href="/blog/xe-dien/thue-ngay/">Thuê Ngày</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a class="site-nav-parent" href="/blog/kham-pha-an-toan/" aria-haspopup="true">Khám Phá<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></a>
+          <div class="site-nav-drop">
+            <a class="site-nav-category" href="/blog/an-toan/">An Toàn</a>
+            <a class="site-nav-subtopic" href="/blog/an-toan/lai-xe/">Lái Xe</a>
+            <a class="site-nav-subtopic" href="/blog/an-toan/mu-bao-hiem/">Mũ Bảo Hiểm</a>
+            <a class="site-nav-subtopic" href="/blog/an-toan/thoi-tiet/">Thời Tiết</a>
+            <a class="site-nav-subtopic" href="/blog/an-toan/su-co/">Sự Cố</a>
+            <a class="site-nav-subtopic" href="/blog/an-toan/phap-luat/">Pháp Luật</a>
+            <a class="site-nav-category" href="/blog/dia-phuong/">Địa Phương</a>
+            <a class="site-nav-subtopic" href="/blog/dia-phuong/phuong-xa/">Phường Xã</a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <button type="button" class="site-nav-parent" aria-haspopup="true" aria-expanded="false">Trang Web<svg class="site-nav-caret i-caret" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></button>
+          <div class="site-nav-drop">
+            <a class="site-nav-category" href="/gioi-thieu/">Giới Thiệu</a>
+            <a class="site-nav-category" href="/lien-he/">Liên Hệ</a>
+            <a class="site-nav-category" href="/gia-thue/">Giá Thuê</a>
+            <a class="site-nav-category" href="/doi-tac/">Đối Tác</a>
+          </div>
+        </div>
+        </nav>
         <div class="motoai-header-actions">
           <button type="button" class="motoai-theme blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
           <button type="button" class="motoai-install" id="motoai-install" hidden title="Cài MotoAI như một ứng dụng" aria-label="Cài Agent">Cài Agent</button>
