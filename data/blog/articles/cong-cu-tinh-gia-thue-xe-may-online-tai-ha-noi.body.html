@@ -18,10 +18,10 @@
 <h2>Ba mốc thời gian quyết định con số cuối cùng</h2>
 <p>Giá thuê xe máy ở Hà Nội thay đổi rõ nhất theo độ dài kỳ thuê. Theo bảng tham khảo hiện tại:</p>
 <ul>
-<li>Honda Wave: 150.000đ/ngày.</li>
-<li>Honda Vision: 200.000đ/ngày, 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng.</li>
-<li>Honda Air Blade: 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng.</li>
-<li>Honda Click và Yamaha Mio: 150.000đ/ngày, 600.000đ–700.000đ/tuần, 1.000.000đ–1.200.000đ/tháng.</li>
+<li>Honda Wave: {{ price.honda-wave.day.min }}/ngày.</li>
+<li>Honda Vision: {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng.</li>
+<li>Honda Air Blade: {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }}/tuần, {{ price.honda-airblade.month.min }}/tháng.</li>
+<li>Honda Click và Yamaha Mio: {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng.</li>
 </ul>
 <p>Mọi con số đều là tham khảo, bạn xác nhận lại khi đặt và đối chiếu với trang <a href="/gia-thue/">giá thuê</a>. Điểm đáng chú ý là có những ngưỡng mà thuê gói dài hơn lại tốn ít hơn thuê lẻ.</p>
 

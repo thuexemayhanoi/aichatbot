@@ -16,10 +16,10 @@
 <h2>Giá thuê tham khảo để tính tổng chi phí</h2>
 <p>Để biết số tiền thực sự bỏ ra, hãy nhìn vào bảng giá thuê. Dưới đây là mức tham khảo, giá chính xác luôn cần xác nhận lại với cửa hàng:</p>
 <ul>
-<li>Xe số Honda Wave ở mức khoảng 150.000đ/ngày.</li>
-<li>Vision tính khoảng 200.000đ/ngày, gói tuần khoảng 800.000đ–1.000.000đ và gói tháng khoảng 1.800.000đ–2.000.000đ.</li>
-<li>Air Blade khoảng 200.000đ/ngày, theo tuần khoảng 800.000đ, theo tháng khoảng 1.400.000đ.</li>
-<li>Hai mẫu xe ga nhỏ Click và Mio khoảng 150.000đ/ngày, theo tuần khoảng 600.000đ–700.000đ, theo tháng khoảng 1.000.000đ–1.200.000đ.</li>
+<li>Xe số Honda Wave ở mức khoảng {{ price.honda-wave.day.min }}/ngày.</li>
+<li>Vision tính khoảng {{ price.honda-vision.day.min }}/ngày, gói tuần khoảng 800.000đ–1.000.000đ và gói tháng khoảng 1.800.000đ–2.000.000đ.</li>
+<li>Air Blade khoảng {{ price.honda-airblade.day.min }}/ngày, theo tuần khoảng 800.000đ, theo tháng khoảng 1.400.000đ.</li>
+<li>Hai mẫu xe ga nhỏ Click và Mio khoảng {{ price.honda-click.day.min }}/ngày, theo tuần khoảng 600.000đ–700.000đ, theo tháng khoảng 1.000.000đ–1.200.000đ.</li>
 <li>Xe 50cc, xe máy điện và xe đạp điện được báo giá khi liên hệ.</li>
 </ul>
 <p>Bảng cập nhật nằm ở trang <a href="/gia-thue/">giá thuê</a>. Nếu bạn thuê lâu, hãy so sánh đơn giá mỗi ngày giữa các gói, vì gói tuần và gói tháng thường kinh tế hơn hẳn thuê lẻ.</p>
@@ -52,7 +52,7 @@
 <h3>Cửa hàng nào có mức cọc thấp nhất thì có phải rẻ nhất?</h3>
 <p>Không hẳn. Khoản đặt cọc được trả lại, nên nó không quyết định bạn tốn bao nhiêu. Hãy so sánh giá thuê theo đúng chu kỳ bạn dùng và các khoản phát sinh có thể có.</p>
 <h3>Thuê xe đắt hơn có phải đặt cọc nhiều hơn không?</h3>
-<p>Thường là có, vì mức đảm bảo phụ thuộc vào loại xe. Ở đây, khoản này dao động từ 2.000.000đ đến 5.000.000đ và được báo cụ thể khi bạn đặt.</p>
+<p>Thường là có, vì mức đảm bảo phụ thuộc vào loại xe. Ở đây, khoản này dao động từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} và được báo cụ thể khi bạn đặt.</p>
 <h3>Có được thương lượng giảm giá thuê không?</h3>
 <p>Cửa hàng niêm yết giá rõ ràng và không chạy khuyến mãi. Cách hợp lý để tối ưu là chọn gói tuần hoặc gói tháng nếu bạn dùng lâu.</p>
 <h3>Sinh viên thuê xe có điều gì cần lưu ý thêm?</h3>

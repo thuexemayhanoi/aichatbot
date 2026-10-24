@@ -14,7 +14,7 @@
 <p>Vài lưu ý nhỏ giúp lượt trả lời đầu chính xác hơn:</p>
 <ul>
 <li>Nói tên khu vực trước, tên đường sau; trợ lý cần biết bạn ở Hoàn Kiếm, Ba Đình, Long Biên hay Gia Lâm để kiểm tra phạm vi giao.</li>
-<li>Nêu giờ muốn nhận theo đồng hồ, không nói "sáng sớm" hay "tối muộn", vì khung giao là từ 09:00 đến 21:00 và hai cách nói kia dễ rơi ra ngoài khung.</li>
+<li>Nêu giờ muốn nhận theo đồng hồ, không nói "sáng sớm" hay "tối muộn", vì khung giao là từ {{ business.hours.open }} đến {{ business.hours.close }} và hai cách nói kia dễ rơi ra ngoài khung.</li>
 <li>Hỏi thẳng chiếc xe gợi ý còn trống đúng ngày đó không, vì gợi ý dòng xe và tình trạng sẵn có là hai việc khác nhau.</li>
 </ul>
 <p>Cách soạn câu hỏi gọn mà đủ cho mọi tình huống được phân tích kỹ trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe/">soạn câu hỏi hiệu quả cho Agent thuê xe</a>, còn các mẫu đối thoại đầy đủ cho kịch bản giao tận nơi có ở bài <a href="/blog/app/hoi-dap-voi-agent-thue-xe-tan-noi/">hỏi đáp với Agent thuê xe tận nơi</a>.</p>
@@ -22,7 +22,7 @@
 <h2>Những gì Agent có thể chốt và những gì phải chờ cửa hàng xác nhận</h2>
 <p>Hiểu đúng giới hạn của trợ lý giúp bạn không chờ đợi sai chỗ. Trên website, trợ lý MotoAI là công cụ trực tuyến giúp bạn thu hẹp lựa chọn và chuẩn bị yêu cầu; nó không thay nhân viên ký nhận hay lái xe đến cho bạn.</p>
 <ol>
-<li><strong>Agent làm được:</strong> gợi ý dòng xe theo cung đường và kinh nghiệm, nêu giá tham khảo như Honda Vision 200.000đ/ngày hay Honda Wave 150.000đ/ngày, nhắc bạn các giấy tờ cần có, liệt kê khu vực giao xe thường phục vụ gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và các quận nội thành.</li>
+<li><strong>Agent làm được:</strong> gợi ý dòng xe theo cung đường và kinh nghiệm, nêu giá tham khảo như Honda Vision {{ price.honda-vision.day.min }}/ngày hay Honda Wave {{ price.honda-wave.day.min }}/ngày, nhắc bạn các giấy tờ cần có, liệt kê khu vực giao xe thường phục vụ gồm Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và các quận nội thành.</li>
 <li><strong>Cửa hàng xác nhận:</strong> xe cụ thể còn trống, giờ giao chính xác, phí giao cho địa chỉ của bạn, và mức đặt cọc áp dụng cho dòng xe đã chọn.</li>
 <li><strong>Bạn tự chuẩn bị:</strong> giấy tờ tùy thân bản gốc, giấy phép lái xe phù hợp và bảo hiểm xe máy, vì cửa hàng không cung cấp bảo hiểm.</li>
 </ol>
@@ -32,7 +32,7 @@
 <h3>Khách sạn trong phố cổ, nhận xe sáng hôm sau</h3>
 <p>Phố cổ nhiều đoạn một chiều và có lịch hạn chế xe cuối tuần, nên hãy nói tên khách sạn kèm tên phố để nhân viên chọn điểm dừng hợp lý. Xe gọn như Vision hoặc Honda Click thường được gợi ý vì dễ dựng trước cửa hẹp. Hỏi thêm chỗ gửi xe qua đêm của khách sạn trước khi chốt.</p>
 <h3>Phòng trọ ở Gia Lâm, thuê cả tháng để đi làm</h3>
-<p>Kể rõ tuyến đi làm hằng ngày và quãng đường mỗi chiều. Agent sẽ nghiêng về gói tháng, ví dụ Vision tham khảo 1.800.000đ–2.000.000đ/tháng hoặc Honda Click 1.000.000đ–1.200.000đ/tháng, và nhắc bạn hỏi cách gia hạn. Vì gần cửa hàng, bạn có thể cân nhắc tự sang nhận để chạy thử một đoạn có nhân viên bên cạnh.</p>
+<p>Kể rõ tuyến đi làm hằng ngày và quãng đường mỗi chiều. Agent sẽ nghiêng về gói tháng, ví dụ Vision tham khảo {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng hoặc Honda Click {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng, và nhắc bạn hỏi cách gia hạn. Vì gần cửa hàng, bạn có thể cân nhắc tự sang nhận để chạy thử một đoạn có nhân viên bên cạnh.</p>
 <p>Nếu cung đường của bạn trải qua nhiều kiểu phố trong cùng một ngày, bài <a href="/blog/app/chon-xe-bang-agent-tai-ha-noi/">chọn xe bằng Agent tại Hà Nội</a> hướng dẫn mô tả từng loại đường để gợi ý sát hơn.</p>
 
 <h2>Nhận xe tại cửa: danh sách năm phút</h2>
@@ -58,7 +58,7 @@
 <h3>Agent có biết nhà tôi có nằm trong khu vực giao xe không?</h3>
 <p>Trợ lý nêu được các khu vực thường phục vụ trong nội thành Hà Nội, nhưng xác nhận cuối cùng cho địa chỉ cụ thể thuộc về cửa hàng, vì còn phụ thuộc lịch nhân viên và khung giờ.</p>
 <h3>Tôi có thể yêu cầu giao xe lúc bảy giờ sáng không?</h3>
-<p>Không, khung giao nằm trong giờ mở cửa từ 09:00 đến 21:00. Nếu cần xe sớm, hãy hẹn nhận từ chiều hoặc tối hôm trước.</p>
+<p>Không, khung giao nằm trong giờ mở cửa từ {{ business.hours.open }} đến {{ business.hours.close }}. Nếu cần xe sớm, hãy hẹn nhận từ chiều hoặc tối hôm trước.</p>
 <h3>Nếu xe giao tới không như mô tả thì sao?</h3>
 <p>Đối chiếu ngay tại cửa trước khi ký, báo nhân viên và cửa hàng để đổi hoặc ghi nhận. Đừng nhận xe rồi mới phản ánh sau.</p>
 
