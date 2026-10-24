@@ -1,0 +1,55 @@
+name: Apple Editorial V2 Branch QA
+
+on:
+  push:
+    branches: [design/apple-inspired-blog-v2]
+    paths:
+      - 'assets/css/src/blog.css'
+      - 'assets/css/blog.css'
+      - 'config/blog-ui.json'
+      - 'tools/app-shell.mjs'
+      - 'tools/build-blog.mjs'
+      - 'docs/APPLE-EDITORIAL-V2.md'
+      - '.github/workflows/apple-editorial-v2-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apple-editorial-v2-branch-build
+  cancel-in-progress: false
+
+jobs:
+  rebuild-preview:
+    if: github.ref == 'refs/heads/design/apple-inspired-blog-v2'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate the design branch pages
+        run: node tools/build-blog.mjs
+      - name: Validate all unit and integration contracts
+        run: node --test
+      - name: SEO and site audits
+        run: |
+          node tools/site-audit.mjs
+          node tools/seo-score.mjs
+      - name: Commit compiled pages only to the feature branch
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "design/apple-inspired-blog-v2"
+          git config user.name "motoai-design-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git add -- blog assets/css/blog.css data/blog/knowledge-index.json \
+            sitemap.xml robots.txt $(node tools/site-pages.mjs --dirs)
+          if git diff --cached --quiet; then
+            echo "The branch already has current generated pages."
+            exit 0
+          fi
+          git commit -m "build(blog): synchronize Apple-inspired V2 preview pages [skip ci]"
+          git push origin "HEAD:design/apple-inspired-blog-v2"
