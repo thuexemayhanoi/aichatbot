@@ -13,7 +13,7 @@
 </ul>
 
 <h2>Bước 2: Nhận gợi ý xe và giá tham khảo</h2>
-<p>Dựa trên mô tả, trợ lý đề xuất một vài dòng xe phù hợp và hiển thị mức giá tham khảo lấy từ bảng giá của cửa hàng. Ví dụ, người quen tay ga đi trong nội thành thường được gợi ý Honda Vision, tham khảo khoảng 200.000đ/ngày, hoặc Honda Click, tham khảo khoảng 150.000đ/ngày. Người thuê dài hơn có thể được chỉ sang mức theo tuần hay theo tháng, như Air Blade tham khảo 800.000đ/tuần.</p>
+<p>Dựa trên mô tả, trợ lý đề xuất một vài dòng xe phù hợp và hiển thị mức giá tham khảo lấy từ bảng giá của cửa hàng. Ví dụ, người quen tay ga đi trong nội thành thường được gợi ý Honda Vision, tham khảo khoảng {{ price.honda-vision.day.min }}/ngày, hoặc Honda Click, tham khảo khoảng {{ price.honda-click.day.min }}/ngày. Người thuê dài hơn có thể được chỉ sang mức theo tuần hay theo tháng, như Air Blade tham khảo {{ price.honda-airblade.week.min }}/tuần.</p>
 <p>Điểm cần nhớ: các con số này là tham khảo. Trợ lý không tự đặt ra giá, và giá cuối cùng cho ngày bạn thuê luôn do cửa hàng xác nhận. Bạn có thể tự đối chiếu trên trang <a href="/gia-thue/">bảng giá thuê</a>, hoặc xem cách cộng chi phí theo ngày trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a>.</p>
 
 <h2>Bước 3: Gửi yêu cầu đặt và chờ cửa hàng xác nhận</h2>

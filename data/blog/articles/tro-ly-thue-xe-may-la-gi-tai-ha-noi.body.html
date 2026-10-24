@@ -34,7 +34,7 @@
 
 <ul>
 <li>Danh sách khu vực phục vụ: Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và các quận nội thành.</li>
-<li>Giá tham khảo từng dòng, ví dụ Honda Air Blade khoảng 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng; Honda Wave khoảng 150.000đ/ngày.</li>
+<li>Giá tham khảo từng dòng, ví dụ Honda Air Blade khoảng {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }}/tuần, {{ price.honda-airblade.month.min }}/tháng; Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày.</li>
 <li>Khoảng đặt cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
 <li>Chính sách giao xe trong giờ làm việc, phí và thời gian phải xác nhận trước.</li>
 <li>Lưu ý rằng cửa hàng không cung cấp bảo hiểm, khách tự chuẩn bị.</li>
@@ -48,7 +48,7 @@
 
 <ol>
 <li><strong>Minh:</strong> "thue xe ga 1 thang re nhat". Trợ lý hỏi lại khu vực nhận xe.</li>
-<li><strong>Minh:</strong> "Gia Lam". Trợ lý xác nhận Gia Lâm thuộc khu vực phục vụ, gợi ý Honda Click hoặc Yamaha Mio với giá tháng tham khảo khoảng 1.000.000đ–1.200.000đ, kèm Air Blade khoảng 1.400.000đ/tháng nếu cần cốp rộng.</li>
+<li><strong>Minh:</strong> "Gia Lam". Trợ lý xác nhận Gia Lâm thuộc khu vực phục vụ, gợi ý Honda Click hoặc Yamaha Mio với giá tháng tham khảo khoảng 1.000.000đ–1.200.000đ, kèm Air Blade khoảng {{ price.honda-airblade.month.min }}/tháng nếu cần cốp rộng.</li>
 <li><strong>Minh:</strong> "can giay to gi". Trợ lý liệt kê giấy tờ tùy thân, giấy phép lái xe phù hợp, nhắc khoảng giữ xe theo loại xe và việc tự chuẩn bị bảo hiểm.</li>
 <li>Sáng hôm sau, Minh gọi {{ business.contact.phone_display }}, đọc lại nhu cầu, cửa hàng xác nhận xe và giờ giao.</li>
 </ol>

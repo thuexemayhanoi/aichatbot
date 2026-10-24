@@ -7,7 +7,7 @@
 <h2>Trợ lý đồng hành theo từng chặng của chuyến đi</h2>
 <p>Thay vì chỉ hỏi một lần, bạn sẽ thấy trợ lý hữu ích nhất khi được dùng ở bốn thời điểm khác nhau.</p>
 <h3>Trước khi bay</h3>
-<p>Đây là lúc nên hỏi những câu mang tính quyết định: dòng xe nào hợp người chưa từng lái xe số, giá tham khảo theo ngày và theo tuần, cửa hàng có giao xe đến khu mình ở không. Ví dụ, Honda Vision đang ở mức tham khảo 200.000đ/ngày và 800.000đ–1.000.000đ/tuần, còn Honda Click hoặc Yamaha Mio là 150.000đ/ngày. Biết trước những con số này giúp bạn lập ngân sách, dù giá cuối cùng vẫn cần cửa hàng xác nhận.</p>
+<p>Đây là lúc nên hỏi những câu mang tính quyết định: dòng xe nào hợp người chưa từng lái xe số, giá tham khảo theo ngày và theo tuần, cửa hàng có giao xe đến khu mình ở không. Ví dụ, Honda Vision đang ở mức tham khảo {{ price.honda-vision.day.min }}/ngày và {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, còn Honda Click hoặc Yamaha Mio là {{ price.honda-click.day.min }}/ngày. Biết trước những con số này giúp bạn lập ngân sách, dù giá cuối cùng vẫn cần cửa hàng xác nhận.</p>
 <h3>Khi vừa nhận phòng khách sạn</h3>
 <p>Bạn đã biết địa chỉ cụ thể, nên có thể hỏi về giao xe tận nơi. Dịch vụ giao chỉ thực hiện trong giờ {{ business.hours.display }}, thời gian và phí cần thống nhất trước khi đặt. Nếu khách sạn ở Hoàn Kiếm, Phố Cổ, Ba Đình hay Tây Hồ, bạn đang nằm trong khu vực phục vụ.</p>
 <h3>Trong thời gian thuê</h3>

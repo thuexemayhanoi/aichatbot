@@ -33,7 +33,7 @@
 <h2>Lưu thông tin quan trọng theo cách không cần mạng</h2>
 <p>Máy cũ dễ treo đúng lúc cần, nên đừng để mọi thông tin chỉ nằm trong một cuộc trò chuyện trên trình duyệt. Hãy chụp màn hình và lưu vào một album riêng những thứ sau:</p>
 <ul>
-<li>Giá tham khảo của xe bạn chọn, ví dụ Honda Vision 200.000đ/ngày hoặc Honda Click 150.000đ/ngày, kèm ghi chú rằng giá cần cửa hàng xác nhận.</li>
+<li>Giá tham khảo của xe bạn chọn, ví dụ Honda Vision {{ price.honda-vision.day.min }}/ngày hoặc Honda Click {{ price.honda-click.day.min }}/ngày, kèm ghi chú rằng giá cần cửa hàng xác nhận.</li>
 <li>Mức cọc cửa hàng nêu: từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, chốt chính xác khi đặt.</li>
 <li>Địa chỉ cửa hàng {{ business.address.full }} và giờ mở cửa {{ business.hours.display }}.</li>
 <li>Số điện thoại cửa hàng {{ business.contact.phone_display }}, lưu thêm vào danh bạ.</li>

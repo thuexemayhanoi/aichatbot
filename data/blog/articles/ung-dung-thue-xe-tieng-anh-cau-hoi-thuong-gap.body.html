@@ -14,7 +14,7 @@
 <li><strong>"/ngày", "/tuần", "/tháng"</strong> nghĩa là per day, per week, per month.</li>
 <li><strong>"Tham khảo"</strong> nghĩa là reference price: giá để bạn ước lượng, cửa hàng sẽ xác nhận con số cuối cùng.</li>
 </ul>
-<p>Ví dụ, Honda Vision có giá tham khảo 200.000đ/ngày, 800.000đ đến 1.000.000đ/tuần và 1.800.000đ đến 2.000.000đ/tháng; Honda Air Blade tham khảo 200.000đ/ngày; Honda Wave tham khảo 150.000đ/ngày. Xe máy điện và xe 50cc là giá liên hệ, nghĩa là bạn cần hỏi trực tiếp. Bảng đầy đủ nằm ở trang <a href="/gia-thue/">giá thuê</a>.</p>
+<p>Ví dụ, Honda Vision có giá tham khảo {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }} đến {{ price.honda-vision.week.max }}/tuần và {{ price.honda-vision.month.min }} đến {{ price.honda-vision.month.max }}/tháng; Honda Air Blade tham khảo {{ price.honda-airblade.day.min }}/ngày; Honda Wave tham khảo {{ price.honda-wave.day.min }}/ngày. Xe máy điện và xe 50cc là giá liên hệ, nghĩa là bạn cần hỏi trực tiếp. Bảng đầy đủ nằm ở trang <a href="/gia-thue/">giá thuê</a>.</p>
 
 <h2>Nhóm câu hỏi về thuật ngữ thuê xe</h2>
 <p><strong>"Deposit" ở đây có nghĩa là gì?</strong> Đó là tiền cọc, khoản bạn để lại khi nhận xe và được hoàn trả theo thỏa thuận khi trả xe. Tại cửa hàng, mức cọc phụ thuộc loại xe, trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, và được xác nhận lúc đặt.</p>

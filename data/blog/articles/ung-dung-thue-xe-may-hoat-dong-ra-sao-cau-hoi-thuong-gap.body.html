@@ -19,10 +19,10 @@
 <h2>Khi ứng dụng tính giá</h2>
 <p>Phần tính giá áp đơn giá tham khảo theo kỳ thuê bạn nêu. Một vài ví dụ dựa trên bảng giá hiện có:</p>
 <ul>
-<li>Honda Wave khoảng 150.000đ/ngày, phù hợp đi phố quãng ngắn.</li>
-<li>Honda Vision khoảng 200.000đ/ngày, tham khảo 800.000đ–1.000.000đ/tuần và 1.800.000đ–2.000.000đ/tháng.</li>
-<li>Honda Air Blade khoảng 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng.</li>
-<li>Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày, 600.000đ–700.000đ/tuần.</li>
+<li>Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày, phù hợp đi phố quãng ngắn.</li>
+<li>Honda Vision khoảng {{ price.honda-vision.day.min }}/ngày, tham khảo {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần và {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng.</li>
+<li>Honda Air Blade khoảng {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }}/tuần, {{ price.honda-airblade.month.min }}/tháng.</li>
+<li>Honda Click hoặc Yamaha Mio khoảng {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần.</li>
 </ul>
 <h3>Thuê bảy ngày thì ứng dụng tính theo ngày hay theo tuần?</h3>
 <p>Ứng dụng có thể đặt hai cách tính cạnh nhau để bạn thấy chênh lệch. Ví dụ với Vision, bảy ngày nhân giá ngày ra khoảng 1.400.000đ, trong khi giá tuần tham khảo thấp hơn đáng kể. Con số cuối cùng vẫn do cửa hàng xác nhận. Cách so sánh các kỳ thuê có trong bài <a href="/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang/">tính chi phí thuê xe theo ngày, tuần, tháng</a>.</p>

@@ -7,11 +7,11 @@
 <h2>Trợ lý biết gì về việc giao xe tận nơi</h2>
 <ul>
 <li><strong>Danh sách khu vực phục vụ:</strong> Long Biên, Bồ Đề, Gia Lâm, Hoàn Kiếm, Phố Cổ, Ba Đình, Tây Hồ và các quận nội thành Hà Nội. Bạn nêu tên phường hoặc địa danh, trợ lý đối chiếu với danh sách này.</li>
-<li><strong>Khung giờ giao:</strong> chỉ trong giờ mở cửa 09:00 đến 21:00; ngoài khung đó, trợ lý sẽ gợi ý bạn chọn giờ khác hoặc nhận xe từ hôm trước.</li>
+<li><strong>Khung giờ giao:</strong> chỉ trong giờ mở cửa {{ business.hours.open }} đến {{ business.hours.close }}; ngoài khung đó, trợ lý sẽ gợi ý bạn chọn giờ khác hoặc nhận xe từ hôm trước.</li>
 <li><strong>Nguyên tắc về phí và thời gian:</strong> cả hai phải được xác nhận với cửa hàng trước khi đặt. Trợ lý không tự đưa ra con số phí giao.</li>
 <li><strong>Giấy tờ và cọc:</strong> giấy tờ tùy thân, giấy phép lái xe phù hợp, và khoản đặt cọc trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe.</li>
 <li><strong>Bảo hiểm:</strong> cửa hàng không cung cấp bảo hiểm, người thuê tự chuẩn bị bảo hiểm xe máy của mình; trợ lý sẽ nhắc điều này khi bạn hỏi.</li>
-<li><strong>Giá tham khảo từng dòng:</strong> ví dụ Honda Vision khoảng 200.000đ/ngày, Honda Air Blade khoảng 200.000đ/ngày và 800.000đ/tuần, Honda Wave khoảng 150.000đ/ngày; giá chính thức xem tại <a href="/gia-thue/">bảng giá thuê</a>.</li>
+<li><strong>Giá tham khảo từng dòng:</strong> ví dụ Honda Vision khoảng {{ price.honda-vision.day.min }}/ngày, Honda Air Blade khoảng {{ price.honda-airblade.day.min }}/ngày và {{ price.honda-airblade.week.min }}/tuần, Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày; giá chính thức xem tại <a href="/gia-thue/">bảng giá thuê</a>.</li>
 </ul>
 
 <h2>Trợ lý không làm được gì, và ai làm thay</h2>

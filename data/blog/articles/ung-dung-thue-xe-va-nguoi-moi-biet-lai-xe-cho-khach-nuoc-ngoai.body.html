@@ -7,7 +7,7 @@
 <ul>
 <li><strong>Gợi ý dòng xe theo kinh nghiệm:</strong> bạn nói rõ mình chưa quen xe máy, trợ lý sẽ hướng về xe tay ga nhẹ, yên thấp thay vì xe số hoặc xe côn tay.</li>
 <li><strong>Nhắc giấy tờ:</strong> hộ chiếu, giấy phép lái xe hợp lệ tại Việt Nam và tiền cọc là ba thứ bạn cần, trợ lý liệt kê trước để bạn không đến cửa hàng rồi mới thiếu.</li>
-<li><strong>Giải thích giá tham khảo:</strong> ví dụ Honda Vision khoảng 200.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày, kèm lời nhắc xác nhận lại với cửa hàng.</li>
+<li><strong>Giải thích giá tham khảo:</strong> ví dụ Honda Vision khoảng {{ price.honda-vision.day.min }}/ngày, Honda Click hoặc Yamaha Mio khoảng {{ price.honda-click.day.min }}/ngày, kèm lời nhắc xác nhận lại với cửa hàng.</li>
 <li><strong>Trả lời câu hỏi đi đường cơ bản:</strong> đội mũ bảo hiểm, không dùng điện thoại khi lái, đi làn phải, những điều người nước ngoài hay hỏi nhất.</li>
 </ul>
 
@@ -70,7 +70,7 @@
 <p>Bạn cần giấy phép lái xe được công nhận tại Việt Nam cho loại xe mình thuê. Trợ lý sẽ liệt kê giấy tờ cần mang, và cửa hàng kiểm tra bản gốc khi giao xe.</p>
 
 <h3>Cửa hàng có giao xe đến khách sạn ở Phố Cổ không?</h3>
-<p>Có hỗ trợ giao trong nội thành, trong giờ làm việc từ 09:00 đến 21:00; thời gian và phí giao được xác nhận trước khi bạn đặt.</p>
+<p>Có hỗ trợ giao trong nội thành, trong giờ làm việc từ {{ business.hours.open }} đến {{ business.hours.close }}; thời gian và phí giao được xác nhận trước khi bạn đặt.</p>
 
 <h3>Xe thuê có bảo hiểm cho tôi không?</h3>
 <p>Không, cửa hàng không cung cấp bảo hiểm. Bạn tự chuẩn bị bảo hiểm xe máy và bảo hiểm du lịch nếu cần.</p>

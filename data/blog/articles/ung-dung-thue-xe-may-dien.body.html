@@ -17,7 +17,7 @@
 <h2>Hỏi giá và các khoản đi kèm khi thuê xe điện</h2>
 <p>Giá thuê xe máy điện được tính theo khung ngày, tuần, tháng giống xe xăng — và cũng giống xe xăng, khung nào rẻ hơn phụ thuộc tổng số ngày bạn dùng. Ngoài giá thuê, các khoản cần hỏi rõ:</p>
 <ul>
-<li>Tiền đặt cọc: dao động 2.000.000đ đến 5.000.000đ tùy dòng xe, hoàn lại khi trả xe đúng hiện trạng.</li>
+<li>Tiền đặt cọc: dao động {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy dòng xe, hoàn lại khi trả xe đúng hiện trạng.</li>
 <li>Sạc pin: xe giao kèm sạc không, sạc tại nhà được không, mất bao lâu cho một lần đầy.</li>
 <li>Giao nhận xe: có giao tận nơi trong giờ mở cửa {{ business.hours.display }} không, cần đặt trước bao lâu.</li>
 <li>Quy định trả xe: trả xe cần pin ở mức nào, ví dụ mức nhận ban đầu.</li>
