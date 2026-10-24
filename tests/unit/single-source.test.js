@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { PRICING, BLOG_UI, priceFact, resolveFacts, emptyNote, t } from '../../tools/blog-components.mjs';
 import { bindFacts } from '../../tools/fact-bind.mjs';
 import { renderHome, renderLlms, HOME_TEMPLATE, LLMS_TEMPLATE } from '../../tools/home-page.mjs';
+import { EMBED_TOKENS } from '../../tools/css-build.mjs';
 
 /**
  * v75 "sửa 1 chỗ → toàn site đồng bộ": shop facts live in business.json,
@@ -103,7 +104,8 @@ test('the Agent never shows a raw placeholder: blog knowledge chunks are resolve
 test('embed launcher colors come from the design tokens', () => {
   const light = /:root\s*\{([^}]*)\}/.exec(read('assets/css/src/blog.css'))[1];
   const token = (n) => new RegExp(`${n}:\\s*(#[0-9a-f]+)`, 'i').exec(light)[1];
-  assert.ok(read('embed.js').includes(`background: '${token('--signal-ink')}', color: '${token('--on-signal')}', /* @tokens --signal-ink --on-signal`));
+  assert.deepEqual(EMBED_TOKENS, ['--signal-ink', '--on-signal']);
+  assert.ok(read('embed.js').includes(`background: '${token('--signal-ink')}', color: '${token('--on-signal')}', /*@tokens*/`));
 });
 
 test('generator UI copy comes from config/blog-ui.json labels', () => {

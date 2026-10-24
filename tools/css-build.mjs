@@ -100,22 +100,24 @@ export function syncChatTokens(root = ROOT) {
 }
 
 /* The embed launcher (embed.js, loaded by partner sites and the WordPress
-   plugin) takes its fill and glyph colors from the same light TOKENS. */
+   plugin) takes its fill and glyph colors from the same light TOKENS. The
+   marker in embed.js is a bare comment: that file counts against CI's
+   base-JS byte budget. */
 export const EMBED_JS = 'embed.js';
-const EMBED_MARK = /background: '#[0-9a-f]{3,8}', color: '#[0-9a-f]{3,8}', \/\* @tokens (--[\w-]+) (--[\w-]+)([^*]*)\*\//i;
+export const EMBED_TOKENS = ['--signal-ink', '--on-signal'];
+const EMBED_MARK = /background: '#[0-9a-f]{3,8}', color: '#[0-9a-f]{3,8}', \/\*@tokens\*\//i;
 
 export function syncEmbedTokens(root = ROOT) {
   const path = join(root, EMBED_JS);
   const js = readFileSync(path, 'utf8');
-  const m = EMBED_MARK.exec(js);
-  if (!m) throw new Error(`css-build: @tokens marker missing in ${EMBED_JS}`);
+  if (!EMBED_MARK.test(js)) throw new Error(`css-build: /*@tokens*/ marker missing in ${EMBED_JS}`);
   const light = /:root\s*\{([^}]*)\}/.exec(readFileSync(join(root, CSS_SOURCE), 'utf8'))?.[1] ?? '';
-  const value = (name) => {
+  const [fill, glyph] = EMBED_TOKENS.map((name) => {
     const v = declarations(light).find(([n]) => n === name)?.[1];
     if (!/^#[0-9a-f]{3,8}$/i.test(v ?? '')) throw new Error(`css-build: ${name} must be a hex color in ${CSS_SOURCE}`);
     return v;
-  };
-  const out = js.replace(EMBED_MARK, `background: '${value(m[1])}', color: '${value(m[2])}', /* @tokens ${m[1]} ${m[2]}${m[3]}*/`);
+  });
+  const out = js.replace(EMBED_MARK, `background: '${fill}', color: '${glyph}', /*@tokens*/`);
   if (out !== js) writeFileSync(path, out, 'utf8');
   return out;
 }

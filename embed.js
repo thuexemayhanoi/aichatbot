@@ -111,8 +111,7 @@
     launcher.setAttribute('aria-expanded', 'false');
     setStyle(launcher, {
       width: '56px', height: '56px', borderRadius: '50%',
-      background: '#0066cc', color: '#ffffff', /* @tokens --signal-ink --on-signal: tools/css-build.mjs */
-      border: 'none', cursor: 'pointer',
+      background: '#0066cc', color: '#ffffff', /*@tokens*/ border: 'none', cursor: 'pointer',
       fontSize: '24px', lineHeight: '56px', textAlign: 'center',
       boxShadow: '0 4px 14px rgba(0,0,0,.22)'
     });
