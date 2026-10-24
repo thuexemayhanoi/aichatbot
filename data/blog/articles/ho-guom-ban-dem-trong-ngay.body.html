@@ -5,7 +5,7 @@
 <p>Những gì diễn ra quanh hồ sau khi trời tối đã được tả kỹ trong bài <a href="/blog/dia-phuong/ho-guom-ban-dem/">hồ Gươm ban đêm</a>. Ở đây, trọng tâm là cách sắp xếp cả ngày xoay quanh khung tối ấy.</p>
 
 <h2>Phương án một: trả xe ngay trong tối</h2>
-<p>Đây là lựa chọn gọn cho người ở gần cửa hàng hoặc chỉ cần xe một ngày. Cửa hàng ở Long Biên mở từ 09:00 đến 21:00, nên bạn đi theo khung sau:</p>
+<p>Đây là lựa chọn gọn cho người ở gần cửa hàng hoặc chỉ cần xe một ngày. Cửa hàng ở Long Biên mở từ {{ business.hours.open }} đến {{ business.hours.close }}, nên bạn đi theo khung sau:</p>
 <ol>
 <li>09:00–10:00: nhận xe, chạy qua cầu sang phía Hoàn Kiếm, ăn sáng muộn.</li>
 <li>10:00–12:00: thăm một hai điểm trong bán kính ngắn như Nhà Thờ Lớn hoặc Phố Sách.</li>
@@ -50,7 +50,7 @@
 <h3>Đi một mình buổi tối có cần lưu ý gì thêm?</h3>
 <p>Chọn chỗ gửi xe sáng đèn và đông người, giữ túi đồ phía trước khi đi bộ, và báo cho người quen biết lộ trình về. Chạy chậm khi về khuya vì nhiều đoạn phố vắng có xe phóng nhanh.</p>
 <h3>Nên thuê dòng xe nào cho ngày này?</h3>
-<p>Đi nội thành, xe ga nhỏ như Vision là lựa chọn dễ chịu, khoảng 200.000đ/ngày theo giá tham khảo. Nếu bạn quen xe số và muốn tiết kiệm hơn, Honda Wave khoảng 150.000đ/ngày, giá cuối cùng xác nhận với cửa hàng.</p>
+<p>Đi nội thành, xe ga nhỏ như Vision là lựa chọn dễ chịu, khoảng {{ price.honda-vision.day.min }}/ngày theo giá tham khảo. Nếu bạn quen xe số và muốn tiết kiệm hơn, Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày, giá cuối cùng xác nhận với cửa hàng.</p>
 
 <h2>Kết luận</h2>
 <p>Hồ Gươm đẹp nhất sau khi lên đèn, và một ngày thuê xe hợp lý là ngày dành sức cho chính khoảnh khắc ấy. Bạn chọn trả xe ngay trong tối hay giữ qua đêm đều được, miễn là thống nhất từ đầu. Để đặt xe, hãy liên hệ {{ business.brand }} qua số {{ business.contact.phone_display }}, ghé {{ business.address.full }} trong giờ {{ business.hours.display }}, hoặc nhắn trợ lý MotoAI trên website; mức đặt cọc từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy xe. Xem thêm các hành trình quanh Hà Nội tại <a href="/blog/dia-phuong/">chuyên mục địa phương</a> hoặc về <a href="/">trang chủ</a>.</p>
