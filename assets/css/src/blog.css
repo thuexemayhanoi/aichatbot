@@ -9,11 +9,10 @@
    Shared visual traits (labels, underlined links, pills, numerals) are
    defined ONCE in the TRAITS block. Re-skin the site = edit those two.
 
-   Art direction: warm paper by day, graphite by night, one signal color
-   (the amber of a turn signal) for wayfinding. Dashed "lane" rules open
-   chapters; two-digit numerals (01, 02…) index hubs, categories and article
-   sections like a route sheet. Typeface: Be Vietnam Pro — drawn for
-   Vietnamese diacritics — self-hosted Latin + Vietnamese subset (OFL). */
+   Art direction (v2): Apple-inspired calm editorial design with airy spacing,
+   rich system typography, soft white/graphite surfaces and blue wayfinding.
+   Brand identity stays MotoAI; this does not copy Apple's assets or UI.
+   Self-hosted Vietnamese subset remains available as a fallback. */
 
 @font-face { font-family: "Be Vietnam Pro"; src: url(/assets/fonts/bvp-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Be Vietnam Pro"; src: url(/assets/fonts/bvp-600.woff2) format("woff2"); font-weight: 600; font-display: swap; }
@@ -24,30 +23,30 @@
 
 /* ==================== TOKENS ==================== */
 :root {
-  --paper: #f3f0e9; --paper-2: #e9e5da; --surface: #fbfaf6;
-  --ink: #141518; --ink-2: #474950; --ink-3: #5f6168;
-  --line: #d8d3c6; --line-strong: #aaa496;
-  --signal: #f05a1a; --signal-ink: #ad3a0b; --signal-soft: #f7dccd; --on-signal: #141518;
-  --panel: #141518; --panel-2: #23252a; --on-panel: #f3f0e9; --on-panel-2: #b9b6ad; --panel-line: #393b41;
+  --paper: #f5f5f7; --paper-2: #ebebef; --surface: #ffffff;
+  --ink: #1d1d1f; --ink-2: #515154; --ink-3: #6e6e73;
+  --line: #e1e1e6; --line-strong: #b6b6be;
+  --signal: #0071e3; --signal-ink: #0066cc; --signal-soft: #eaf3ff; --on-signal: #ffffff;
+  --panel: #151518; --panel-2: #28282d; --on-panel: #f5f5f7; --on-panel-2: #c0c0c8; --panel-line: #45454c;
   --solid: var(--ink); --on-solid: var(--paper);
-  --ok: #157a52; --scrim: #f3f0e9d9; --shadow-color: 20 21 24;
+  --ok: #24845b; --scrim: #f5f5f7dc; --shadow-color: 29 29 31;
 
-  --font: "Be Vietnam Pro", "BVP Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Be Vietnam Pro", "BVP Fallback", Roboto, sans-serif;
   --fs-xs: 0.75rem; --fs-sm: 0.875rem; --fs-md: 1.0625rem;
   --fs-lg: clamp(1.1rem, 1rem + 0.45vw, 1.3rem);
   --fs-h3: clamp(1.15rem, 1.05rem + 0.4vw, 1.32rem);
   --fs-h2: clamp(1.5rem, 1.18rem + 1.25vw, 2.1rem);
-  --fs-h1: clamp(2.05rem, 1.35rem + 2.9vw, 3.55rem);
-  --fs-hero: clamp(2.9rem, 1.3rem + 6.7vw, 6.4rem);
-  --track-tight: -0.032em; --track-label: 0.14em;
+  --fs-h1: clamp(2.3rem, 1.5rem + 3vw, 3.9rem);
+  --fs-hero: clamp(3rem, 1.4rem + 6.5vw, 6.2rem);
+  --track-tight: -0.045em; --track-label: 0.095em;
 
   --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px;
-  --gutter: clamp(16px, 4.2vw, 48px);
-  --section: clamp(56px, 8vw, 112px);
-  --wrap: 1240px; --read: 720px; --toc-w: 236px; --art-gap: clamp(32px, 5vw, 72px); --header-h: 64px;
+  --gutter: clamp(18px, 5vw, 64px);
+  --section: clamp(64px, 9vw, 116px);
+  --wrap: 1200px; --read: 700px; --toc-w: 220px; --art-gap: clamp(28px, 5vw, 76px); --header-h: 64px;
 
-  --r-md: 14px; --r-lg: 22px; --r-pill: 999px;
-  --shadow-2: 0 2px 6px rgb(var(--shadow-color) / 0.06), 0 26px 50px -24px rgb(var(--shadow-color) / 0.38);
+  --r-md: 18px; --r-lg: 28px; --r-pill: 999px;
+  --shadow-2: 0 2px 14px rgb(var(--shadow-color) / 0.035), 0 24px 50px -24px rgb(var(--shadow-color) / 0.16);
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --t1: 140ms; --t2: 280ms; --t3: 640ms;
@@ -60,12 +59,12 @@
   --reading-bg: var(--paper);
 }
 html[data-motoai-theme="dark"] {
-  --paper: #0e0f11; --paper-2: #16181b; --surface: #17191c;
-  --ink: #eeeae1; --ink-2: #b3b0a7; --ink-3: #96938b;
-  --line: #2a2c31; --line-strong: #4a4c53;
-  --signal: #ff6a2b; --signal-ink: #ff8f5c; --signal-soft: #3a1f12;
-  --panel: #1b1d21; --panel-2: #24272c; --on-panel: #eeeae1; --on-panel-2: #a8a59d; --panel-line: #33363c;
-  --ok: #3ccf91; --scrim: #0e0f11d9; --shadow-color: 0 0 0;
+  --paper: #08080a; --paper-2: #151518; --surface: #1c1c1e;
+  --ink: #f5f5f7; --ink-2: #bdbdc3; --ink-3: #96969e;
+  --line: #343439; --line-strong: #53535b;
+  --signal: #2997ff; --signal-ink: #64b5ff; --signal-soft: #132d48; --on-signal: #08080a;
+  --panel: #242428; --panel-2: #323238; --on-panel: #f5f5f7; --on-panel-2: #c6c6ce; --panel-line: #45454d;
+  --ok: #3ddc98; --scrim: #08080ae0; --shadow-color: 0 0 0;
   color-scheme: dark;
 }
 
@@ -621,4 +620,171 @@ body.content-page .motoai-drawer-close { border-color: var(--line); color: var(-
 @media print {
   .site-header, .blog-footer, .contact-band, .blog-toc, .motoai-drawer, .blog-chips { display: none !important; }
   body.content-page, .site-main { background: none; }
+}
+
+/* ==================== V2 EDITORIAL EXPERIENCE ====================
+   Content pages only. One design language for home, hub, category,
+   articles, static screens and search; content + engine remain untouched. */
+
+/* The glass navigation stays quiet: hierarchy comes from type and space. */
+body.content-page .site-header {
+  background: var(--scrim);
+  border-bottom: 1px solid var(--line);
+  box-shadow: none;
+  -webkit-backdrop-filter: saturate(1.8) blur(24px);
+  backdrop-filter: saturate(1.8) blur(24px);
+}
+.site-header-inner { min-height: 60px; gap: var(--s3); }
+.site-brand-text strong { font-size: 0.96rem; font-weight: 700; letter-spacing: -0.025em; }
+.site-brand-text span { font-size: 0.69rem; letter-spacing: 0; }
+.brand-mark { width: 32px; height: 32px; }
+.site-nav > a, .site-nav-parent { border-radius: var(--r-pill); font-weight: 550; }
+.site-nav > a:hover, .site-nav-parent:hover { background: var(--paper-2); }
+.site-nav-drop { border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-2); }
+.site-nav-drop a { border-radius: var(--r-md); }
+.site-search-link, .blog-theme-toggle { background: transparent; border-color: transparent; border-radius: var(--r-pill); }
+.site-search-link:hover, .blog-theme-toggle:hover { background: var(--paper-2); border-color: transparent; }
+body.content-page .site-actions .motoai-menu {
+  background: var(--ink); color: var(--paper);
+  border-radius: var(--r-pill); font-weight: 600;
+}
+body.content-page .site-actions .motoai-menu:hover { background: var(--signal); color: var(--on-signal); }
+.read-progress { background: var(--signal); height: 2px; }
+
+/* Intro sections are editorial rather than dashboard-like. */
+body.content-page .site-main { padding-top: clamp(36px, 6vw, 86px); }
+body.content-page :is(h1, h2, h3) { font-weight: 700; letter-spacing: var(--track-tight); }
+.blog-screen-label { color: var(--signal-ink); font-weight: 650; letter-spacing: 0.08em; }
+.blog-screen-label::before { width: 9px; height: 9px; border-radius: 50%; background: var(--signal); }
+.blog-screen-title { font-weight: 720; letter-spacing: -0.055em; text-wrap: balance; }
+.blog-screen-lead { color: var(--ink-2); font-weight: 400; line-height: 1.65; }
+.blog-breadcrumb { margin-bottom: var(--s5); letter-spacing: 0; }
+.hub-stats { font-weight: 500; }
+.blog-chips { gap: var(--s2); scrollbar-width: none; }
+.blog-cluster-link, .blog-chip { border: 1px solid var(--line); background: var(--surface); border-radius: var(--r-pill); padding-inline: 18px; font-weight: 550; }
+.blog-cluster-link:hover, .blog-chip:hover { background: var(--paper-2); border-color: var(--line-strong); }
+.blog-chip[aria-current="page"] { background: var(--ink); color: var(--paper); }
+
+/* Spacious, mobile-first hero. The content is the hero, not decoration. */
+.home-hero { gap: clamp(26px, 4vw, 64px); padding-top: clamp(12px, 3vw, 34px); }
+.home-hero-copy { gap: var(--s5); }
+.home-hero .blog-screen-title { max-width: 13ch; font-weight: 730; line-height: 1.015; }
+.home-hero .blog-screen-lead { font-size: clamp(1.1rem, 1rem + 0.8vw, 1.5rem); max-width: 39ch; }
+.home-facts { gap: 12px; margin-top: var(--s4); }
+.home-facts li {
+  min-height: 94px; padding: var(--s4); border: 1px solid var(--line);
+  border-radius: var(--r-md); background: var(--surface);
+}
+.home-facts strong { font-weight: 700; font-size: clamp(1.15rem, 0.95rem + 0.9vw, 1.55rem); }
+.home-facts span { line-height: 1.4; }
+.route-board {
+  align-self: stretch; padding: clamp(22px, 3.5vw, 38px);
+  border-radius: calc(var(--r-lg) + 4px);
+  background: var(--panel); box-shadow: var(--shadow-2);
+}
+.route-board-title { text-transform: none; letter-spacing: -0.01em; font-weight: 600; }
+.route-board li + li { border-top-color: var(--panel-line); }
+.route-board a { min-height: 72px; }
+.route-idx { color: var(--signal); }
+
+/* Replace the orange route-sheet visual vocabulary with calm separators. */
+.lane-head::before, .blog-hub-section::before, .blog-related::before, .blog-pillars::before {
+  height: 1px; background: var(--line); border: 0; transform: none;
+}
+.hub-stage-idx { color: var(--ink-3); font-weight: 500; opacity: 0.55; font-size: clamp(2.2rem, 1.4rem + 3.2vw, 4rem); }
+.hub-stage-head h2, .lane-head h2 { letter-spacing: -0.045em; }
+.blog-hubs { gap: var(--section); }
+.blog-card, .blog-cat-card {
+  border: 1px solid var(--line); border-radius: var(--r-lg);
+  background: var(--surface); box-shadow: none;
+  transition: transform var(--t2) var(--ease), box-shadow var(--t2) var(--ease), border-color var(--t2) var(--ease);
+}
+.blog-card { padding: clamp(22px, 2.5vw, 34px); gap: 14px; min-height: 220px; }
+.blog-card::before { display: none; }
+.blog-card .cat { text-transform: none; letter-spacing: 0.015em; font-size: 0.77rem; color: var(--signal-ink); }
+.blog-card :is(h2, h3) { font-size: clamp(1.16rem, 1.02rem + 0.55vw, 1.46rem); font-weight: 700; line-height: 1.25; }
+.blog-card p { color: var(--ink-2); font-size: 0.9rem; }
+.blog-card-meta { color: var(--ink-3); border-top: 1px solid var(--line); padding-top: var(--s3); }
+body.content-page :is(.blog-card, .blog-cat-card):hover {
+  border-color: var(--line-strong); transform: translateY(-3px); box-shadow: var(--shadow-2);
+}
+body.content-page .card-lead {
+  background: linear-gradient(150deg, var(--panel), var(--panel-2));
+  color: var(--on-panel); border-color: var(--panel-line); min-height: 340px;
+}
+.card-lead .cat { color: var(--signal); }
+.card-lead :is(h2, h3) { font-size: clamp(1.85rem, 1.35rem + 2vw, 3.2rem); line-height: 1.12; }
+.card-lead .blog-card-meta { border-top-color: var(--panel-line); }
+.blog-cat-card { padding: clamp(22px, 2.5vw, 32px); align-items: start; }
+.blog-cat-card strong { font-weight: 700; letter-spacing: -0.035em; }
+.blog-cat-card .cat-icon { color: var(--signal-ink); font-weight: 650; }
+.blog-cat-card span:last-child { line-height: 1.65; }
+
+/* Reading is intentionally distraction-free. */
+.article-intro { gap: clamp(22px, 3vw, 36px); }
+.article-head { gap: var(--s4); }
+.article-head .blog-screen-title { max-width: 26ch; font-weight: 730; }
+.byline { padding: 13px 0; border-block-color: var(--line); font-weight: 450; }
+.article-intro .blog-summary p:last-child { font-size: clamp(1.1rem, 1rem + 0.4vw, 1.28rem); line-height: 1.75; }
+.blog-article-body { letter-spacing: -0.003em; }
+.blog-article-body :is(p, li) { line-height: 1.82; }
+.blog-article-body h2 { font-weight: 700; line-height: 1.17; margin-top: 2.45em; }
+.blog-article-body h2::before { display: none; }
+.blog-article-body h3 { font-weight: 650; }
+.blog-article-body blockquote { border-left-width: 2px; padding-left: 20px; }
+.blog-article-body ul > li::before { width: 5px; height: 5px; border-radius: 50%; top: 0.75em; }
+.blog-toc-mobile, .table-wrap, .blog-family, .blog-legal-card, .slot-price { border-radius: var(--r-lg); }
+.blog-toc-mobile summary { font-weight: 600; }
+.blog-summary { border-radius: var(--r-lg); }
+.blog-family { background: var(--surface); border: 1px solid var(--line); }
+.blog-family-tag { background: var(--paper-2); color: var(--ink); border-radius: var(--r-pill); }
+.table-wrap { box-shadow: none; }
+.blog-table thead th { background: var(--paper-2); }
+
+/* Small, confident calls to action; a calm information-rich footer. */
+.contact-band {
+  border-radius: calc(var(--r-lg) + 6px); padding: clamp(30px, 5.5vw, 66px);
+  background: linear-gradient(135deg, var(--panel), var(--panel-2));
+}
+.contact-band-title { font-size: clamp(1.7rem, 1.35rem + 2vw, 2.9rem); font-weight: 700; }
+.screen-ask-btn { background: var(--signal); color: var(--on-signal); border-radius: var(--r-pill); }
+.band-action { border-radius: var(--r-pill); }
+.slot-notice { border-radius: var(--r-md); font-weight: 500; }
+.blog-footer { background: var(--paper-2); color: var(--ink); --on-panel: var(--ink); --on-panel-2: var(--ink-2); --panel-line: var(--line); }
+.blog-footer::before { display: none; }
+.blog-footer-brand-name strong { font-weight: 700; letter-spacing: -0.03em; }
+.blog-footer .brand-mark-tile { fill: var(--ink); }
+.blog-footer .brand-mark-road { stroke: var(--paper); }
+.blog-footer-col a { font-size: 0.82rem; font-weight: 450; }
+.blog-footer-title { letter-spacing: 0.04em; }
+.blog-footer-cta { border: 1px solid var(--line-strong); border-radius: var(--r-pill); background: transparent; }
+.blog-footer-cta:hover, .blog-footer-col a:hover { color: var(--signal-ink); border-color: var(--signal); }
+
+/* Horizontal space is a luxury; mobile never trades usability for aesthetics. */
+@media (min-width: 950px) {
+  .home-hero { grid-template-columns: minmax(0, 1.22fr) minmax(300px, 0.78fr); align-items: center; }
+  .home-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  .home-latest .blog-grid { gap: 20px; }
+  .home-latest .card-lead { min-height: 410px; }
+  .blog-article-body { font-size: 1.05rem; }
+}
+@media (max-width: 700px) {
+  .site-brand-text span { display: none; }
+  .home-hero .blog-screen-title { max-width: 11ch; font-size: clamp(2.8rem, 13vw, 4.4rem); }
+  .blog-card { min-height: 180px; }
+  .blog-cat-grid, .blog-grid { grid-template-columns: minmax(0, 1fr); }
+  .home-latest .card-lead { min-height: 300px; }
+  .home-facts li { min-height: 80px; }
+  .blog-footer { padding-top: var(--s7); }
+}
+@media (max-width: 380px) {
+  body.content-page .site-actions .motoai-menu { padding: 0 12px; }
+  .site-brand-text strong { font-size: 0.89rem; }
+  .home-facts { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  body.content-page { background: var(--surface); color: var(--ink); }
+  .blog-card, .blog-cat-card { box-shadow: none; }
 }
