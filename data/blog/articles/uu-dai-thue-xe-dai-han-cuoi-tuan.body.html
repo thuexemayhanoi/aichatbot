@@ -13,9 +13,9 @@
 <h2>Phép tính: bốn cuối tuần thuê lẻ hay một tháng trọn gói</h2>
 <p>Giả sử bạn cần xe cho thứ Bảy và Chủ nhật trong bốn tuần liên tiếp, tức tám ngày thuê lẻ. So sánh theo từng dòng xe:</p>
 <ul>
-<li><strong>Honda Vision:</strong> tám ngày lẻ với giá 200.000đ/ngày là 1.600.000đ, trong khi giá tháng tham khảo là 1.800.000đ–2.000.000đ. Thuê lẻ rẻ hơn một chút nếu bạn chỉ đi đúng hai ngày.</li>
+<li><strong>Honda Vision:</strong> tám ngày lẻ với giá {{ price.honda-vision.day.min }}/ngày là 1.600.000đ, trong khi giá tháng tham khảo là 1.800.000đ–2.000.000đ. Thuê lẻ rẻ hơn một chút nếu bạn chỉ đi đúng hai ngày.</li>
 <li><strong>Honda Air Blade:</strong> tám ngày lẻ cũng là 1.600.000đ, còn giá tháng tham khảo chỉ 1.400.000đ. Thuê tháng vừa rẻ hơn vừa có xe dùng cả ngày thường.</li>
-<li><strong>Honda Click hoặc Yamaha Mio:</strong> tám ngày lẻ với 150.000đ/ngày là 1.200.000đ, ngang hoặc cao hơn giá tháng tham khảo 1.000.000đ–1.200.000đ.</li>
+<li><strong>Honda Click hoặc Yamaha Mio:</strong> tám ngày lẻ với {{ price.honda-click.day.min }}/ngày là 1.200.000đ, ngang hoặc cao hơn giá tháng tham khảo 1.000.000đ–1.200.000đ.</li>
 <li><strong>Honda Wave:</strong> tám ngày lẻ khoảng 1.200.000đ; bảng giá chưa đăng giá tháng cho dòng này, nên hãy hỏi trực tiếp.</li>
 </ul>
 <p>Nếu "cuối tuần" của bạn kéo dài từ chiều thứ Sáu, tức ba ngày mỗi tuần, thì mười hai ngày lẻ của Vision đã lên tới 2.400.000đ, vượt hẳn giá tháng. Lúc đó gói tháng gần như chắc chắn có lợi.</p>
@@ -32,7 +32,7 @@
 
 <h2>Khi nào gói tháng hoặc gói tuần đáng chọn</h2>
 <p>Ngược lại, hãy nghiêng về gói dài hạn nếu bạn đi đều đặn mọi cuối tuần, có chỗ để xe trong nhà, và thỉnh thoảng cũng muốn dùng xe vào buổi tối ngày thường. Người chọn Air Blade hoặc Click, Mio là nhóm hưởng lợi rõ nhất theo phép tính ở trên.</p>
-<p>Còn nếu bạn chỉ ở Hà Nội khoảng hai tuần, hãy so sánh giá tuần: Vision tham khảo 800.000đ–1.000.000đ/tuần, Air Blade 800.000đ/tuần, Click hoặc Mio 600.000đ–700.000đ/tuần. Chi tiết cách tính có ở bài <a href="/blog/thue-xe/thue-xe-may-theo-tuan-gia-tot-nhat/">thuê xe máy theo tuần giá tốt nhất</a> và <a href="/blog/thue-xe/thue-xe-may-theo-thang-gia-tot-nhat/">thuê xe máy theo tháng giá tốt nhất</a>.</p>
+<p>Còn nếu bạn chỉ ở Hà Nội khoảng hai tuần, hãy so sánh giá tuần: Vision tham khảo {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, Air Blade {{ price.honda-airblade.week.min }}/tuần, Click hoặc Mio {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần. Chi tiết cách tính có ở bài <a href="/blog/thue-xe/thue-xe-may-theo-tuan-gia-tot-nhat/">thuê xe máy theo tuần giá tốt nhất</a> và <a href="/blog/thue-xe/thue-xe-may-theo-thang-gia-tot-nhat/">thuê xe máy theo tháng giá tốt nhất</a>.</p>
 
 <h2>Những điều cần thống nhất trước khi chốt gói</h2>
 <p>Gói dài hạn kéo dài nhiều tuần, nên mọi chi tiết cần rõ từ đầu để không phát sinh hiểu lầm:</p>
