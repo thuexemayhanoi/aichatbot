@@ -28,7 +28,7 @@ import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { navigation, taxonomy, clusterNav, drawerCore } from './taxonomy.mjs';
-import { renderDrawer } from './menu-drawer.mjs';
+import { renderDrawer, contentLink } from './menu-drawer.mjs';
 import { BLOG_UI, bannerSlot, esc, feature, icon, brandMark, contactBand, renderSlot, t } from './blog-components.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -103,65 +103,67 @@ ${css('assets/css/blog.css')}
 `;
 }
 
-/** Desktop dropdown entry: index numeral + label. Category descriptions
- *  stay on the hub pages — repeating them in the chrome of every page would
- *  only add boilerplate text (and unqualified "đặt cọc" claims) site-wide. */
-function dropItem(ch, i, activeHub) {
-  return `            <a href="/blog/${ch.dir}/"${ch.dir === activeHub ? ' aria-current="page"' : ''}><span class="drop-idx">${String(i + 1).padStart(2, '0')}</span><span class="drop-label">${esc(ch.label)}</span></a>`;
+/**
+ * Desktop horizontal menu (>= 900px) — ONE component for every page shell:
+ * the content-site header renders it and so does the Agent app header
+ * (tools/agent-page.mjs), so the two can never diverge. Every entry comes
+ * from the drawer groups of config/navigation.json (drawerCore): the blog
+ * home ("Cẩm nang"), the three parent hubs with their categories and live
+ * subtopics, and the static Pages. `home` prepends Trang Chủ for a shell
+ * whose brand mark is not a home link (the Agent app).
+ */
+export function siteNav({ activeHub = null, activeCluster = null, path = '', home = false } = {}) {
+  const core = drawerCore();
+  const group = (id) => core.find((e) => e.kind === 'group' && e.id === id);
+  const cm = group('cm');
+  const pages = group('pages');
+  const blog = cm.children.find((c) => c.kind === 'link');
+  const current = (url) => (url === '/' + path ? ' aria-current="page"' : '');
+  const dropdown = (parent, active, items) => '        <div class="site-nav-item"' + (active ? ' data-active="1"' : '') + '>\n' +
+    '          ' + parent + '\n          <div class="site-nav-drop">\n' + items.join('\n') + '\n          </div>\n        </div>';
+  const hubItems = taxonomy.clusters.map((c) => {
+    const hub = cm.children.find((item) => item.kind === 'hub' && item.url === '/blog/' + c.dir + '/');
+    if (!hub) throw new Error('navigation missing parent hub ' + c.id);
+    const hubActive = c.dir === activeCluster ||
+      hub.children.some((ch) => ch.url === '/blog/' + activeHub + '/');
+    return dropdown('<a class="site-nav-parent" href="' + hub.url + '" aria-haspopup="true"' +
+      (hubActive ? ' aria-current="page"' : '') + '>' + esc(hub.label) + icon('caret', 'site-nav-caret') + '</a>',
+    hubActive, hub.children.map((ch) => '            <a class="' + (ch.level === 'subtopic' ? 'site-nav-subtopic' : 'site-nav-category') +
+      '" href="' + ch.url + '"' + (ch.url === '/blog/' + activeHub + '/' ? ' aria-current="page"' : '') + '>' + esc(ch.label) + '</a>'));
+  });
+  const pagesItem = dropdown('<button type="button" class="site-nav-parent" aria-haspopup="true" aria-expanded="false">' +
+    esc(pages.label) + icon('caret', 'site-nav-caret') + '</button>',
+  pages.children.some((ch) => ch.url === '/' + path),
+  pages.children.map((ch) => '            <a class="site-nav-category" href="' + ch.url + '"' + current(ch.url) + '>' + esc(ch.label) + '</a>'));
+  const homeItem = home ? `          <a href="${navigation.home.url}"${current(navigation.home.url)}>${esc(navigation.home.label)}</a>\n` : '';
+  return `        <nav class="site-nav" aria-label="Chuyên mục">
+${homeItem}          <a href="${blog.url}"${path.startsWith('blog/') && activeCluster === null && activeHub === null ? ' aria-current="page"' : ''}>${esc(cm.label)}</a>
+${hubItems.join('\n')}
+${pagesItem}
+        </nav>`;
 }
 
 /**
  * Shared content-site header. LEFT: brand mark + MotoAI / Hỗ trợ Agent
- * (link to the homepage). CENTER (>= 900px): Cẩm nang + the three parent
- * hubs with category dropdowns + the static Pages dropdown (the drawer's
- * "pages" group — same labels and links). RIGHT: search, theme toggle,
- * Hỏi Agent and Menu — always the LAST element of .site-actions. The open/closed status
- * is a SEPARATE flex child after .site-actions (own row on mobile).
+ * (link to the homepage). CENTER (>= 900px): siteNav(). RIGHT: search,
+ * theme toggle, Hỏi Agent and Menu — always the LAST element of
+ * .site-actions. The open/closed status is a SEPARATE flex child after
+ * .site-actions (own row on mobile).
  */
 function siteHeader({ activeHub, activeCluster, progress, path = '' }) {
-  const hubNav = drawerCore().find((e) => e.kind === 'group' && e.id === 'cm')?.children ?? [];
-  const hubItems = taxonomy.clusters.map((c) => {
-    const hub = hubNav.find((item) => item.kind === 'hub' && item.url === '/blog/' + c.dir + '/');
-    if (!hub) throw new Error('navigation missing parent hub ' + c.id);
-    const hubActive = c.dir === activeCluster ||
-      hub.children.some((ch) => ch.url === '/blog/' + activeHub + '/');
-    const dropItems = hub.children.map((ch) => {
-      const sub = ch.level === 'subtopic';
-      return '            <a class="' + (sub ? 'site-nav-subtopic' : 'site-nav-category') +
-        '" href="' + ch.url + '"' + (ch.url === '/blog/' + activeHub + '/' ? ' aria-current="page"' : '') +
-        '>' + esc(ch.label) + '</a>';
-    }).join('\n');
-    return '        <div class="site-nav-item"' + (hubActive ? ' data-active="1"' : '') + '>\n' +
-      '          <a class="site-nav-parent" href="' + hub.url + '" aria-haspopup="true"' +
-      (hubActive ? ' aria-current="page"' : '') + '>' + esc(hub.label) +
-      icon('caret', 'site-nav-caret') + '</a>\n' +
-      '          <div class="site-nav-drop">\n' + dropItems + '\n          </div>\n        </div>';
-  }).join('\n');
-  const pages = drawerCore().find((e) => e.kind === 'group' && e.id === 'pages');
-  const pagesActive = pages.children.some((ch) => ch.url === '/' + path);
-  const pagesItem = '        <div class="site-nav-item"' + (pagesActive ? ' data-active="1"' : '') + '>\n' +
-    '          <button type="button" class="site-nav-parent" aria-haspopup="true" aria-expanded="false">' + esc(pages.label) +
-    icon('caret', 'site-nav-caret') + '</button>\n          <div class="site-nav-drop">\n' +
-    pages.children.map((ch) => '            <a class="site-nav-category" href="' + ch.url + '"' +
-      (ch.url === '/' + path ? ' aria-current="page"' : '') + '>' + esc(ch.label) + '</a>').join('\n') +
-    '\n          </div>\n        </div>';
   const site = BLOG_UI.site;
   return `    <header class="site-header">
       <div class="site-header-inner">
-        <a class="site-brand" href="/" aria-label="${esc(site.shortName)} — trang chủ">
+        <a class="site-brand" href="${navigation.home.url}" aria-label="${esc(site.shortName)} — trang chủ">
           <span class="site-brand-mark" aria-hidden="true">${brandMark()}</span>
           <span class="site-brand-text">
             <strong>${esc(site.shortName)}</strong>
             <span>${esc(site.tagline)}</span>
           </span>
         </a>
-        <nav class="site-nav" aria-label="Chuyên mục">
-          <a href="/blog/"${path.startsWith('blog/') && activeCluster === null && activeHub === null ? ' aria-current="page"' : ''}>Cẩm nang</a>
-${hubItems}
-${pagesItem}
-        </nav>
+${siteNav({ activeHub, activeCluster, path })}
         <div class="site-actions">
-          <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">${icon('search')}</a>
+          <a class="site-search-link" href="${navigation.search.url}#blog-search" aria-label="Tìm bài" title="Tìm bài">${icon('search')}</a>
           <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
           <a class="site-agent-cta" href="${AGENT_URL}" aria-label="${esc(t('headerAgent'))}">${icon('chat')}<span aria-hidden="true">${esc(t('headerAgent'))}</span></a>
           <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer"><span class="menu-lines" aria-hidden="true"></span> <span class="motoai-menu-label">Menu</span></button>
@@ -189,40 +191,50 @@ function siteDrawer({ activeHub, activeCluster }) {
  *  Dịch vụ + Pháp lý) and a verified business bottom bar (address + hours
  *  from data/business/business.json — never hard-coded, never 24/7). */
 export function footerHtml() {
+  // Columns REFERENCE drawerCore() entries (config/navigation.json
+  // footer_groups): same labels, URLs and link semantics as the drawer and
+  // the header, so adding a Page or hub updates every surface at once.
+  const core = drawerCore();
+  const group = (id) => {
+    const g = core.find((e) => e.kind === 'group' && e.id === id);
+    if (!g) throw new Error(`footer_groups: unknown drawer group "${id}"`);
+    return g;
+  };
+  const top = { home: navigation.home.url, agent: navigation.agent.url };
+  const resolve = (spec) => {
+    if (spec.ref) return [core.find((e) => e.kind === 'link' && e.url === top[spec.ref])];
+    const g = group(spec.group);
+    // A group named inside a column contributes its own landing link (the
+    // blog home for "Cẩm nang", labelled like the header) or its links.
+    if (spec.group === 'cm') return [{ kind: 'link', label: g.label, url: g.children.find((c) => c.kind === 'link').url }];
+    return g.children;
+  };
+  const column = (title, items, cls = '') => `      <div class="blog-footer-col${cls}">
+        <p class="blog-footer-title">${esc(title)}</p>
+        <ul>
+${items.map((item) => `          <li>${contentLink(item, esc(item.label))}</li>`).join('\n')}
+        </ul>
+      </div>`;
   const primary = [];
   const secondary = [];
   for (const g of navigation.footer_groups) {
-    if (g.hub) {
-      const hub = clusterNav(g.hub);
-      const kids = hub.children.map((ch) =>
-        `            <li class="footer-sub"><a href="/blog/${ch.dir}/">${esc(ch.label)}</a></li>`).join('\n');
-      primary.push(`      <div class="blog-footer-col is-hub">
+    if (g.hubs) {
+      for (const c of taxonomy.clusters) {
+        const hub = clusterNav(c.id);
+        const kids = hub.children.map((ch) =>
+          `            <li class="footer-sub"><a href="/blog/${ch.dir}/">${esc(ch.label)}</a></li>`).join('\n');
+        primary.push(`      <div class="blog-footer-col is-hub">
         <p class="blog-footer-title">${esc(hub.name)}</p>
         <ul>
           <li><a class="footer-hub-link" href="${hub.url}">${esc(hub.name)}</a></li>
 ${kids}
         </ul>
       </div>`);
-    } else if (g.title === 'DỊCH VỤ' || g.title === 'PHÁP LÝ') {
-      const links = g.items.map((item) => {
-        if (item.ref) return `          <li><a data-contact-ref="${esc(item.ref)}" href="/">${esc(item.label)}</a></li>`;
-        return `          <li><a href="${item.url}">${esc(item.label)}</a></li>`;
-      }).join('\n');
-      secondary.push(`      <div class="blog-footer-col">
-        <p class="blog-footer-title">${esc(g.title)}</p>
-        <ul>
-${links}
-        </ul>
-      </div>`);
+      }
+    } else if (g.items) {
+      primary.push(column(g.brand ? BLOG_UI.site.shortName : g.title, g.items.flatMap(resolve)));
     } else {
-      const links = g.items.map((item) =>
-        `          <li><a href="${item.url}">${esc(item.label)}</a></li>`).join('\n');
-      primary.push(`      <div class="blog-footer-col">
-        <p class="blog-footer-title">${esc(g.title)}</p>
-        <ul>
-${links}
-        </ul>
-      </div>`);
+      (g.row === 'secondary' ? secondary : primary).push(column(group(g.group).label, group(g.group).children));
     }
   }
   const site = BLOG_UI.site;

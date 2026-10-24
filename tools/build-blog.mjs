@@ -162,8 +162,11 @@ ${items}
 `;
 }
 
-const CRUMB_HOME = { label: t('crumbHome'), href: '/' };
-const CRUMB_BLOG = { label: t('crumbBlog'), href: '/blog/' };
+// Breadcrumb roots come from the navigation source (same labels/URLs as the
+// header, drawer and footer): Trang Chủ, then the "Cẩm nang" group's blog home.
+const NAV_CM = drawerCore().find((e) => e.kind === 'group' && e.id === 'cm');
+const CRUMB_HOME = { label: navigation.home.label, href: navigation.home.url };
+const CRUMB_BLOG = { label: NAV_CM.label, href: NAV_CM.children.find((c) => c.kind === 'link').url };
 /** Cluster crumb entry (v61: blog home → PARENT HUB → category → article). */
 const crumbCluster = (cluster) => ({ label: cluster.name, href: `/blog/${cluster.dir}/` });
 /** Visible + JSON-LD breadcrumb trail for any cluster/category/subtopic/article page. */

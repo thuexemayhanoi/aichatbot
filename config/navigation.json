@@ -1,6 +1,6 @@
 {
   "$schema": "motoai/navigation@1",
-  "note": "Single menu contract for chat homepage and all generated blog pages. Every published parent hub, category, available subtopic and static Page is linked with 2–3 word navigation labels; SEO titles and URL slugs never change.",
+  "note": "Single menu contract for the homepage, the Agent app and all generated pages. footer_groups only REFERENCE the drawer entries (home, agent, drawer groups), so header, drawer and footer share one vocabulary. Every published parent hub, category, available subtopic and static Page is linked with 2–3 word navigation labels; SEO titles and URL slugs never change.",
   "home": {
     "label": "Trang Chủ",
     "icon": "🏠",
@@ -105,73 +105,17 @@
   ],
   "footer_groups": [
     {
-      "title": "MOTOAI",
+      "brand": true,
       "items": [
-        {
-          "label": "Trang Chủ",
-          "url": "/"
-        },
-        {
-          "label": "Agent",
-          "url": "/agent/"
-        },
-        {
-          "label": "Giới Thiệu",
-          "url": "/gioi-thieu/"
-        },
-        {
-          "label": "Cẩm nang",
-          "url": "/blog/"
-        },
-        {
-          "label": "Tìm Bài",
-          "url": "/blog/"
-        }
+        { "ref": "home" },
+        { "ref": "agent" },
+        { "group": "cm" },
+        { "group": "pages" }
       ]
     },
-    {
-      "hub": "C-APP"
-    },
-    {
-      "hub": "C-RENT"
-    },
-    {
-      "hub": "C-EXPLORE"
-    },
-    {
-      "title": "DỊCH VỤ",
-      "items": [
-        {
-          "label": "Giá Thuê",
-          "url": "/gia-thue/"
-        },
-        {
-          "label": "Liên Hệ",
-          "url": "/lien-he/"
-        },
-        {
-          "label": "Bản Đồ",
-          "ref": "map"
-        }
-      ]
-    },
-    {
-      "title": "PHÁP LÝ",
-      "items": [
-        {
-          "label": "Chính Sách",
-          "url": "/chinh-sach/"
-        },
-        {
-          "label": "Bảo Mật",
-          "url": "/privacy/"
-        },
-        {
-          "label": "Điều Khoản",
-          "url": "/terms/"
-        }
-      ]
-    }
+    { "group": "cm", "hubs": true },
+    { "group": "dv", "row": "secondary" },
+    { "group": "pl", "row": "secondary" }
   ],
   "about": {
     "label": "Giới Thiệu",

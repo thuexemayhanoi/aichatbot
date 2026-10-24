@@ -55,7 +55,7 @@ for (const [name, items] of Object.entries(BLOG_UI.slots ?? {})) {
   }
 }
 
-const LABEL_KEYS = ['crumbHome', 'crumbBlog', 'crumbPage', 'kickerHub', 'kickerCluster', 'kickerStatic', 'hubParent',
+const LABEL_KEYS = ['crumbPage', 'kickerHub', 'kickerCluster', 'kickerStatic', 'hubParent',
   'hubSibling', 'clusterExplore', 'hubAll', 'clusterLatest', 'topicContext', 'tocTitle', 'readingTime', 'updated',
   'articleCount', 'pageOf', 'pagePrev', 'pageNext', 'routeTitle', 'factPublished', 'factCategories', 'factHours',
   'searchPlaceholder', 'searchNote', 'searchCount', 'searchEmpty', 'searchError', 'latestTitle', 'latestNote',

@@ -9,6 +9,17 @@ const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;'
 const ACTION_IDS = { address: 'motoai-menu-address', contact: 'motoai-menu-contact' };
 const CONTACT_IDS = { call: 'motoai-menu-call', whatsapp: 'motoai-menu-whatsapp', map: 'motoai-menu-map' };
 
+/** Content-page link for one drawerCore entry — the drawer and the footer
+ *  share it: actions open the Agent app, contacts resolve at runtime from
+ *  business.json (app-shell.js), everything else is a plain page link. */
+export function contentLink(item, inner, extra = '') {
+  if (item.kind === 'action') return '<a href="' + navigation.agent.url + '?action=' + esc(item.action) + '">' + inner + '</a>';
+  if (item.kind === 'contact') {
+    return '<a data-contact-ref="' + esc(item.ref) + '" href="#" rel="noopener noreferrer" target="_blank">' + inner + '</a>';
+  }
+  return '<a href="' + esc(item.url) + '"' + extra + '>' + inner + '</a>';
+}
+
 export function renderDrawer({ mode = 'content', activeHub = null, activeCluster = null } = {}) {
   if (mode !== 'chat' && mode !== 'content') throw new Error('unknown menu mode');
   const chat = mode === 'chat';
@@ -41,13 +52,12 @@ export function renderDrawer({ mode = 'content', activeHub = null, activeCluster
     if (item.kind === 'action') {
       return chat
         ? indent + '<li><button type="button" id="' + (ACTION_IDS[item.action] ?? '') + '">' + text + '</button></li>'
-        : indent + '<li><a href="' + navigation.agent.url + '?action=' + esc(item.action) + '">' + text + '</a></li>';
+        : indent + '<li>' + contentLink(item, text) + '</li>';
     }
     if (item.kind === 'contact') {
-      const attrs = chat
-        ? ' id="' + (CONTACT_IDS[item.ref] ?? '') + '"'
-        : ' data-contact-ref="' + esc(item.ref) + '"';
-      return indent + '<li><a' + attrs + ' href="#" rel="noopener noreferrer" target="_blank">' + text + '</a></li>';
+      return chat
+        ? indent + '<li><a id="' + (CONTACT_IDS[item.ref] ?? '') + '" href="#" rel="noopener noreferrer" target="_blank">' + text + '</a></li>'
+        : indent + '<li>' + contentLink(item, text) + '</li>';
     }
     // In the Agent app the Agent entry is the in-app Agent toggle (main.js aiToggle).
     if (chat && item.url === navigation.agent.url) {
