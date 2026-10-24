@@ -31,7 +31,7 @@ export function parseQueryConfig(input) {
 export function buildEmbedUrl(baseUrl, config = {}) {
   if (!baseUrl) throw new TypeError('buildEmbedUrl requires a baseUrl');
   const url = new URL(String(baseUrl), typeof location !== 'undefined' ? location.href : undefined);
-  url.pathname = url.pathname.replace(/\/embed\.js$/, '') + '/index.html';
+  url.pathname = url.pathname.replace(/\/embed\.js$/, '') + '/agent/';
   url.search = '';
   const { lang, theme, source } = config;
   if (lang && SUPPORTED_LANGS.has(lang)) url.searchParams.set('lang', lang);

@@ -13,7 +13,7 @@ export function initPwa(config) {
 
   // Register after load so it never competes with first paint / first chat.
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js').catch(() => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {
       // Registration failure must never break the chatbot.
     });
   });

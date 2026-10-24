@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="motoai-build" content="v66">
-  <title>MotoAI — Ứng dụng thuê xe máy &amp; xe điện: hỏi giá, tính chi phí</title>
+  <meta name="motoai-build" content="v76">
+  <title>Hỏi Agent MotoAI — Ứng dụng thuê xe máy &amp; xe điện: hỏi giá</title>
   <meta name="description" content="Ứng dụng web thuê xe máy và xe điện: Agent trả lời giá thuê, chọn xe, tính chi phí theo ngày/tuần/tháng, thủ tục nhận xe và địa chỉ của {{ business.display_name }}.">
   <meta name="google-site-verification" content="V7GztRa9fpvjtJRAfsu4tQXPrV3VzlMdDJuSsILbkx0" />
-  <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/">
-  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/agent/">
+  <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color">
-  <link rel="stylesheet" href="assets/css/style.css?v=0">
+  <link rel="stylesheet" href="/assets/css/style.css?v=0">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MotoAI — {{ business.display_name }}">
-  <meta property="og:title" content="MotoAI — Ứng dụng thuê xe máy & xe điện">
+  <meta property="og:title" content="Hỏi Agent MotoAI — Ứng dụng thuê xe máy & xe điện">
   <meta property="og:description" content="Hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe máy bằng Agent — chạy ngay trên trình duyệt.">
-  <meta property="og:url" content="https://chatbot.thuexemaynguyentu.com/">
+  <meta property="og:url" content="https://chatbot.thuexemaynguyentu.com/agent/">
   <meta property="og:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
   <meta property="og:locale" content="vi_VN">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="MotoAI — Ứng dụng thuê xe máy & xe điện">
+  <meta name="twitter:title" content="Hỏi Agent MotoAI — Ứng dụng thuê xe máy & xe điện">
   <meta name="twitter:description" content="Hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe máy bằng Agent — chạy ngay trên trình duyệt.">
   <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
   <script>
@@ -130,8 +130,9 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
+    "@id": "https://chatbot.thuexemaynguyentu.com/agent/#app",
     "name": "MotoAI — Ứng dụng thuê xe máy & xe điện",
-    "url": "https://chatbot.thuexemaynguyentu.com/",
+    "url": "https://chatbot.thuexemaynguyentu.com/agent/",
     "applicationCategory": "TravelApplication",
     "operatingSystem": "Web browser",
     "inLanguage": "vi",
@@ -177,6 +178,6 @@
   }
   </script>
 
-  <script type="module" src="assets/js/main.js?v=66"></script>
+  <script type="module" src="/assets/js/main.js?v=0"></script>
 </body>
 </html>

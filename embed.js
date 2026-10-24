@@ -60,7 +60,7 @@
   /** Iframe URL for the widget (same core as the direct link). */
   function buildFrameUrl(baseUrl, config) {
     if (!baseUrl) throw new Error('embed requires a script src');
-    var url = baseUrl.replace(/\/embed\.js(\?.*)?$/, '/index.html');
+    var url = baseUrl.replace(/\/embed\.js(\?.*)?$/, '/agent/');
     var sep = url.indexOf('?') === -1 ? '?' : '&';
     url += sep + 'embed=1&lang=' + encodeURIComponent(config.lang) +
       '&theme=' + encodeURIComponent(config.theme);

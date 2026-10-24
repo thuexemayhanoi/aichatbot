@@ -8,7 +8,8 @@ import { MATRIX_ROWS } from './matrix-size.mjs';
 import { STATIC_DIRS } from './site-pages.mjs';
 
 // Static page dirs come from the one registry (config/site-pages.json).
-const PUBLIC_DIRS = ['assets', 'src', 'data', 'config', 'blog', ...STATIC_DIRS];
+// v76: agent/ = the Agent chat app (full-screen chat moved off /).
+const PUBLIC_DIRS = ['assets', 'src', 'data', 'config', 'blog', 'agent', ...STATIC_DIRS];
 const PUBLIC_ROOTS = ['index.html', 'embed.js', 'manifest.webmanifest', 'service-worker.js', 'robots.txt', 'sitemap.xml', 'CNAME'];
 const LEGACY_PATH = /\/aichatbot(?:\/|[?#]|$)/gi;
 const LEGACY_ORIGIN = /https?:\/\/thuexemayhanoi\.github\.io\/aichatbot(?:\/|[?#]|$)/gi;
@@ -139,7 +140,9 @@ export function auditSite(io) {
     add(schemaCount > 0, p, 'missing structured data');
   }
   const manifest = JSON.parse(io.read('manifest.webmanifest'));
-  add(manifest.id === '/' && manifest.scope === '/' && manifest.start_url === '/?source=pwa', 'manifest.webmanifest', 'PWA id/scope/start_url must use root');
+  // v76: the installed app opens the Agent chat app (/agent/) inside the root scope.
+  add(manifest.id === '/' && manifest.scope === '/' && manifest.start_url === '/agent/?source=pwa' && io.exists('agent/index.html'),
+    'manifest.webmanifest', 'PWA id/scope must be root and start_url the Agent app (/agent/?source=pwa)');
   for (const icon of manifest.icons ?? []) checkLink('manifest.webmanifest', icon.src);
   const sw = io.read('service-worker.js');
   const shell = /const SHELL_ASSETS = \[([\s\S]*?)\]/.exec(sw)?.[1] ?? '';
