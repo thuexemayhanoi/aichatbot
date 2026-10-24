@@ -2,7 +2,7 @@
 /**
  * MotoAI local SEO score — deterministic, offline, no API keys.
  *
- * Audits the STATIC pages of this repository (index.html, blog home,
+ * Audits the STATIC pages of this repository (index.html, agent/index.html, blog home,
  * six category hubs, published article pages, privacy/terms) plus
  * robots.txt / sitemap.xml, and produces a weighted 0–100 score:
  *
@@ -35,6 +35,8 @@ export const CLUSTER_DIRS = ['cong-cu-huong-dan', 'thue-xe-phuong-tien', 'kham-p
 export function pageSet(published) {
   const pages = [
     { path: 'index.html', kind: 'home' },
+    // v76: the full-screen chat (WebApplication + FAQ) lives at /agent/.
+    { path: 'agent/index.html', kind: 'agent' },
     { path: 'blog/index.html', kind: 'blog-home' },
     ...CLUSTER_DIRS.map((c) => ({ path: `blog/${c}/index.html`, kind: 'hub', hub: c })),
     ...HUBS.map((h) => ({ path: `blog/${h}/index.html`, kind: 'hub', hub: h })),
@@ -137,9 +139,11 @@ function checkContent(pages, io, ctx) {
   const issues = [];
   let pass = 0, total = 0;
   const add = (ok, label, page) => { total++; if (ok) pass++; else issues.push(`${page || 'site'}: ${label}`); };
-  const home = io.read('index.html');
   const owned = ctx.ownership.owned_keywords.map((k) => k.toLowerCase());
-  add(owned.filter((k) => home.toLowerCase().includes(k)).length >= 4, 'homepage covers <4 owned keywords');
+  for (const [path, label] of [['index.html', 'homepage'], ['agent/index.html', 'Agent page']]) {
+    const html = io.read(path).toLowerCase();
+    add(owned.filter((k) => html.includes(k)).length >= 4, `${label} covers <4 owned keywords`);
+  }
   for (const p of pages.filter((x) => x.kind === 'article')) {
     const html = io.read(p.path);
     const t = text(html);
@@ -174,9 +178,14 @@ function checkStructuredData(pages, io) {
     const blocks = jsonLdBlocks(html);
     const types = blocks.flatMap((b) => (Array.isArray(b) ? b : [b]).map((x) => x['@type']));
     if (p.kind === 'home') {
-      add(types.includes('WebApplication'), 'missing WebApplication schema');
-      add(types.includes('FAQPage'), 'missing FAQPage schema');
-      add(types.some((t) => t === 'Organization') || /"@type":\s*"Organization"/.test(html), 'missing Organization schema');
+      add(types.includes('WebSite') && types.includes('WebPage'), 'missing WebSite/WebPage schema', p.path);
+      add(types.some((t) => t === 'Organization') || /"@type":\s*"Organization"/.test(html), 'missing Organization schema', p.path);
+      add(!types.includes('WebApplication'), 'WebApplication must be declared once (on /agent/), not on /', p.path);
+    }
+    if (p.kind === 'agent') {
+      add(types.includes('WebApplication'), 'missing WebApplication schema', p.path);
+      add(types.includes('FAQPage'), 'missing FAQPage schema', p.path);
+      add(types.some((t) => t === 'Organization') || /"@type":\s*"Organization"/.test(html), 'missing Organization schema', p.path);
     }
     if (p.kind === 'article') {
       add(types.includes('Article') || types.includes('BlogPosting'), 'missing Article schema');
@@ -201,7 +210,8 @@ function checkInternalLinks(pages, io, ctx) {
     const links = [...String(html).matchAll(/href="([^"]+)"/g)].map((m) => resolveHref(p.path, m[1])).filter(Boolean);
     add(links.some((l) => l === `blog/${p.dir}/index.html`), 'article does not link its parent hub', p.path);
     add(links.includes('blog/index.html'), 'article does not link the blog home', p.path);
-    add(links.includes('index.html'), 'article does not link the Agent', p.path);
+    add(links.includes('agent/index.html'), 'article does not link the Agent', p.path);
+    add(links.includes('index.html'), 'article does not link the homepage', p.path);
     const related = articlePaths.filter((l) => l !== p.path);
     add(related.some((r) => links.includes(r)), 'no related-article link', p.path);
   }
@@ -262,7 +272,7 @@ function checkUxPerformance(pages, io) {
     add(!/fonts\.googleapis|\.woff2?|@font-face/.test(html), 'external webfont / font-face risk', p.path);
     add(!/<script[^>]+src=[^>]*><\/script>/.test(headHtml), 'render-blocking external script in head', p.path);
     add(/viewport-fit=cover/.test(html), 'missing viewport-fit=cover', p.path);
-    add(/motoai-theme/.test(html) || p.kind === 'home' || p.kind === 'legal', 'missing no-flash theme script', p.path);
+    add(/motoai-theme/.test(html) || p.kind === 'legal', 'missing no-flash theme script', p.path);
     if (p.kind === 'hub' || p.kind === 'blog-home') {
       add(/id="blog-business-status"[^>]*hidden/.test(html), 'status chip not hidden by default', p.path);
     }
@@ -282,8 +292,10 @@ function checkAiGEO(pages, io, ctx) {
   const add = (ok, label, page) => { total++; if (ok) pass++; else issues.push(`${page || 'site'}: ${label}`); };
   const business = ctx.business;
   const home = io.read('index.html');
+  const agent = io.read('agent/index.html');
   add(home.includes(business.contact.phone_display) || home.includes(business.hours.display), 'homepage missing verified business facts for AI extraction');
-  add(/"@type":\s*"FAQPage"/.test(home), 'no Q&A surface on homepage (FAQPage)');
+  add(home.includes(business.address.full), 'homepage missing the verified address');
+  add(/"@type":\s*"FAQPage"/.test(agent), 'no Q&A surface on the Agent page (FAQPage)');
   for (const p of pages.filter((x) => x.kind === 'article')) {
     const html = io.read(p.path);
     const t = text(html);

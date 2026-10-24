@@ -32,19 +32,19 @@ jobs:
       - name: Regenerate blog and verify deterministic custom-domain output
         run: |
           node tools/build-blog.mjs
-          git diff --exit-code -- blog index.html data/blog/knowledge-index.json sitemap.xml robots.txt assets/css/blog.css assets/css/style.css service-worker.js llms.txt embed.js data/blog/content-matrix.csv $(node tools/site-pages.mjs --dirs)
+          git diff --exit-code -- blog index.html agent data/blog/knowledge-index.json sitemap.xml robots.txt assets/css/blog.css assets/css/style.css service-worker.js llms.txt embed.js data/blog/content-matrix.csv $(node tools/site-pages.mjs --dirs)
       - name: Custom-domain migration and internal URL gate
         run: node tools/site-audit.mjs
       - name: SEO score against canonical custom domain
         run: node tools/seo-score.mjs
       - name: Secret scan (no keys, no tokens)
         run: |
-          if grep -rInE "(api[_-]?key|secret|token)[\"' ]*[:=][\"' ]*[A-Za-z0-9+/]{16,}" src assets embed.js index.html data blog config tools docs service-worker.js manifest.webmanifest integrations; then
+          if grep -rInE "(api[_-]?key|secret|token)[\"' ]*[:=][\"' ]*[A-Za-z0-9+/]{16,}" src assets embed.js index.html agent data blog config tools docs service-worker.js manifest.webmanifest integrations; then
             echo "::error::Possible secret found"; exit 1
           fi
       - name: Inference endpoint scan (v45+ distribution surface)
         run: |
-          if grep -rInE "api\.(openai|anthropic|mistral)\.com|generativelanguage\.googleapis\.com|api\.(groq|deepseek|together)\.(com|xyz)" src assets integrations service-worker.js manifest.webmanifest tools embed.js index.html; then
+          if grep -rInE "api\.(openai|anthropic|mistral)\.com|generativelanguage\.googleapis\.com|api\.(groq|deepseek|together)\.(com|xyz)" src assets integrations service-worker.js manifest.webmanifest tools embed.js index.html agent; then
             echo "::error::Remote inference endpoint found"; exit 1
           fi
       - name: Bundle regression guard (fail if base JS grows past 232KB)

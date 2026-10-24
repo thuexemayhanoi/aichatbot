@@ -8,7 +8,7 @@ on:
       - 'tools/build-blog.mjs'
       - 'tools/app-shell.mjs'
       - 'tools/menu-drawer.mjs'
-      - 'tools/home-page.mjs'
+      - 'tools/agent-page.mjs'
       - 'config/navigation.json'
       - 'data/blog/taxonomy.json'
       - 'data/business/business.json'
@@ -23,6 +23,7 @@ on:
       - 'assets/css/src/**'
       - 'assets/css/style.css'
       - 'assets/js/app-shell.js'
+      - 'assets/js/main.js'
       - 'assets/js/blog.js'
       - 'data/site/**'
       - 'data/legal/**'
@@ -56,7 +57,7 @@ jobs:
             node tools/seo-score.mjs
             # Static page dirs come from the registry (config/site-pages.json).
             git add -- blog data/blog/knowledge-index.json data/blog/content-matrix.csv \
-              sitemap.xml robots.txt index.html llms.txt embed.js assets/css/style.css service-worker.js assets/css/blog.css $(node tools/site-pages.mjs --dirs)
+              sitemap.xml robots.txt index.html agent llms.txt embed.js assets/css/style.css service-worker.js assets/css/blog.css $(node tools/site-pages.mjs --dirs)
             if git diff --cached --quiet; then
               echo "Shared blog output is already synchronized"
               exit 0
