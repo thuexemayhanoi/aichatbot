@@ -1,7 +1,7 @@
 <p>Xe số từ lâu được xem là lựa chọn "ăn chắc mặc bền" khi thuê xe: máy quen thuộc, dễ sửa, giá ngày thuộc nhóm thấp nhất. Nhưng tìm "thuê xe số giá tốt nhất" không chỉ là tìm con số nhỏ. Bạn còn cần biết gói tuần và gói tháng của xe số được báo ra sao, khi nào xe số thật sự rẻ hơn xe ga cùng mức giá, và khi nào việc chọn xe số chỉ vì rẻ lại khiến chuyến đi tốn kém hơn. Bài viết này đi theo đúng ba câu hỏi đó, dựa trên bảng giá tham khảo của cửa hàng.</p>
 
 <h2>Giá tham khảo của xe số và những gì còn phải hỏi</h2>
-<p>Đại diện cho nhóm xe số trong bảng tham khảo là Honda Wave, ở mức 150.000đ/ngày. Wave Alpha thuộc cùng họ Wave, nên khi hỏi bạn có thể nêu cụ thể dòng mình muốn để cửa hàng kiểm tra xe trống. Bảng đầy đủ nằm trên trang <a href="/gia-thue/">giá thuê</a>.</p>
+<p>Đại diện cho nhóm xe số trong bảng tham khảo là Honda Wave, ở mức {{ price.honda-wave.day.min }}/ngày. Wave Alpha thuộc cùng họ Wave, nên khi hỏi bạn có thể nêu cụ thể dòng mình muốn để cửa hàng kiểm tra xe trống. Bảng đầy đủ nằm trên trang <a href="/gia-thue/">giá thuê</a>.</p>
 <p>Điểm cần lưu ý: bảng tham khảo hiện chỉ ghi giá ngày cho Wave, chưa có mức tuần hay tháng. Vì vậy nếu bạn cần xe số dài ngày, đừng nhân 150.000đ với số ngày rồi coi đó là ngân sách. Hãy hỏi thẳng cửa hàng có gói tuần, gói tháng cho xe số hay không và mức cụ thể bao nhiêu. Với các dòng có niêm yết gói, giá quy ra từng ngày luôn thấp hơn hẳn thuê lẻ, nên câu hỏi này đáng giá.</p>
 
 <h2>Xe số so với xe ga cùng mức giá ngày</h2>
@@ -41,14 +41,14 @@
 <li>Chỉ hỏi giá một ngày rồi thuê lẻ cả tháng mà không hỏi gói.</li>
 <li>Bỏ qua bước kiểm tra xích, côn và phanh vì nghĩ xe số "lúc nào cũng khỏe".</li>
 <li>Không thống nhất mức xăng nên khi trả phải đổ thêm một khoản không tính trước.</li>
-<li>Hẹn giao xe ngoài khung 09:00–21:00 rồi phải đổi lịch phút chót.</li>
+<li>Hẹn giao xe ngoài khung {{ business.hours.open }}–{{ business.hours.close }} rồi phải đổi lịch phút chót.</li>
 </ul>
 
 <h2>Câu hỏi thường gặp về thuê xe số giá tốt nhất</h2>
 <h3>Giá thuê Honda Wave tham khảo bao nhiêu?</h3>
 <p>Bảng tham khảo ghi 150.000đ/ngày. Mức theo tuần hoặc theo tháng cần hỏi trực tiếp vì bảng hiện chưa niêm yết.</p>
 <h3>Xe số có rẻ hơn xe ga không?</h3>
-<p>Ở giá ngày, Wave ngang Click và Mio, và rẻ hơn Vision hay Air Blade ở 200.000đ/ngày. Với kỳ thuê dài, phải so mức gói cụ thể mới biết.</p>
+<p>Ở giá ngày, Wave ngang Click và Mio, và rẻ hơn Vision hay Air Blade ở {{ price.honda-airblade.day.min }}/ngày. Với kỳ thuê dài, phải so mức gói cụ thể mới biết.</p>
 <h3>Có thuê được các dòng xe số khác như Exciter hay Winner không?</h3>
 <p>Các dòng này không có trong bảng tham khảo. Hãy liên hệ để kiểm tra xe sẵn có và giá, đừng tự áp mức của Wave.</p>
 <h3>Đi xe số cần bằng lái gì?</h3>
