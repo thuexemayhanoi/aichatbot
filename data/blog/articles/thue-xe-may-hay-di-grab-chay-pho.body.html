@@ -5,7 +5,7 @@
 <p>Phần so sánh tổng quát giữa hai lựa chọn, kể cả khi đi xa, đã có trong bài <a href="/blog/thue-xe/thue-xe-may-hay-di-grab/">thuê xe máy hay đi Grab</a>. Ở đây mình chỉ phân tích những gì xảy ra khi bạn ở lại trong phố.</p>
 
 <h2>So sánh chi phí theo số chặng mỗi ngày</h2>
-<p>Với xe thuê, chi phí phần lớn là cố định: tiền thuê theo ngày, tuần hoặc tháng, cộng xăng và tiền gửi xe. Theo bảng tham khảo, Honda Wave hoặc Click, Mio khoảng 150.000đ/ngày, Honda Vision hoặc Air Blade khoảng 200.000đ/ngày; gói tuần và tháng rẻ hơn đáng kể khi tính bình quân. Giá cụ thể cần xác nhận lại với cửa hàng hoặc xem trang <a href="/gia-thue/">giá thuê</a>.</p>
+<p>Với xe thuê, chi phí phần lớn là cố định: tiền thuê theo ngày, tuần hoặc tháng, cộng xăng và tiền gửi xe. Theo bảng tham khảo, Honda Wave hoặc Click, Mio khoảng {{ price.honda-click.day.min }}/ngày, Honda Vision hoặc Air Blade khoảng {{ price.honda-airblade.day.min }}/ngày; gói tuần và tháng rẻ hơn đáng kể khi tính bình quân. Giá cụ thể cần xác nhận lại với cửa hàng hoặc xem trang <a href="/gia-thue/">giá thuê</a>.</p>
 <p>Với Grab, chi phí tăng theo từng chặng và thay đổi theo giờ, thời tiết, nhu cầu. Cách so sánh đơn giản nhất:</p>
 <ol>
 <li>Liệt kê các chặng bạn định đi trong một ngày điển hình.</li>
@@ -29,7 +29,7 @@
 <ul>
 <li><strong>Khách du lịch ở một hai ngày, chủ yếu quanh Phố Cổ:</strong> đi bộ kết hợp Grab thường là đủ.</li>
 <li><strong>Khách ở ba ngày trở lên, muốn dạo Tây Hồ, Ba Đình, Long Biên:</strong> thuê xe giúp chủ động và thường tiết kiệm hơn.</li>
-<li><strong>Người mới chuyển đến, đi làm hằng ngày:</strong> thuê xe theo tháng, ví dụ Air Blade tham khảo 1.400.000đ/tháng.</li>
+<li><strong>Người mới chuyển đến, đi làm hằng ngày:</strong> thuê xe theo tháng, ví dụ Air Blade tham khảo {{ price.honda-airblade.month.min }}/tháng.</li>
 <li><strong>Sinh viên:</strong> cân nhắc gói tháng với xe tiết kiệm, tham khảo thêm bài <a href="/blog/thue-xe/thue-xe-may-hay-di-grab-cho-sinh-vien/">thuê xe máy hay Grab cho sinh viên</a>.</li>
 <li><strong>Người chưa quen lái trong phố đông:</strong> nên bắt đầu với Grab, rồi thuê xe khi đã tự tin hơn.</li>
 </ul>
@@ -40,7 +40,7 @@
 <tbody>
 <tr><th scope="row">Khách du lịch ở một hai ngày, quanh Phố Cổ</th><td>Đi bộ kết hợp Grab</td><td>Thường là đủ</td></tr>
 <tr><th scope="row">Khách ở ba ngày trở lên, muốn dạo Tây Hồ, Ba Đình, Long Biên</th><td>Thuê xe</td><td>Chủ động hơn và thường tiết kiệm hơn</td></tr>
-<tr><th scope="row">Người mới chuyển đến, đi làm hằng ngày</th><td>Thuê xe theo tháng</td><td>Ví dụ Air Blade tham khảo 1.400.000đ/tháng</td></tr>
+<tr><th scope="row">Người mới chuyển đến, đi làm hằng ngày</th><td>Thuê xe theo tháng</td><td>Ví dụ Air Blade tham khảo {{ price.honda-airblade.month.min }}/tháng</td></tr>
 <tr><th scope="row">Sinh viên</th><td>Gói tháng với xe tiết kiệm</td><td>Cân nhắc theo ngân sách của mình</td></tr>
 <tr><th scope="row">Người chưa quen lái trong phố đông</th><td>Bắt đầu với Grab</td><td>Thuê xe khi đã tự tin hơn</td></tr>
 </tbody>
@@ -63,7 +63,7 @@
 <h3>Người nước ngoài nên thuê xe hay đi Grab trong phố?</h3>
 <p>Nếu có giấy phép lái xe hợp lệ tại Việt Nam và tự tin với giao thông đông, thuê xe giúp chủ động hơn. Nếu chưa, Grab là lựa chọn an toàn hơn.</p>
 <h3>Có nên thuê xe theo tuần nếu chỉ chạy phố vài ngày?</h3>
-<p>Nếu cần xe từ bốn năm ngày trở lên, hãy hỏi giá gói tuần vì thường có lợi hơn thuê lẻ, ví dụ Vision tham khảo 800.000đ–1.000.000đ/tuần.</p>
+<p>Nếu cần xe từ bốn năm ngày trở lên, hãy hỏi giá gói tuần vì thường có lợi hơn thuê lẻ, ví dụ Vision tham khảo {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần.</p>
 
 <h2>Kết luận</h2>
 <p>Thuê xe máy hay đi Grab khi chạy phố phụ thuộc vào số chặng mỗi ngày, độ khó gửi xe ở các điểm đến và việc bạn có tự tin lái trong phố đông hay không. Ngày ít chặng thì gọi xe, ở lâu và đi nhiều thì thuê xe, còn kết hợp cả hai thường là phương án linh hoạt nhất. Nếu muốn thử thuê xe cho tuần tới, liên hệ {{ business.brand }} qua {{ business.contact.phone_display }}, cửa hàng ở {{ business.address.full }}. Tìm thêm kinh nghiệm trong mục <a href="/blog/thue-xe/">thuê xe</a> hoặc về <a href="/">trang chủ</a>.</p>
