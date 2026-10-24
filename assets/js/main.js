@@ -289,6 +289,7 @@ async function init() {
   // Content screens (blog category/article, legal) deep-link back into the
   // home chat screen: ?ask=<topic> prefills the composer; ?action=<id> runs
   // the same deterministic flows the drawer/dock buttons trigger.
+  let busy = false;
   const entry = new URLSearchParams(location.search);
   const askTopic = entry.get('ask');
   const action = entry.get('action');
@@ -322,7 +323,6 @@ async function init() {
       .catch(() => { /* blog retrieval is optional; silent on failure */ });
   }
 
-  let busy = false;
   function setBusy(value) {
     busy = value;
     elements.send.disabled = value;
