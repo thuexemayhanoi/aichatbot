@@ -80,7 +80,7 @@ html[data-motoai-theme="dark"] {
 }
 :is(.blog-article-body, .blog-topic-context, .blog-family-list, .blog-pillar-list, .blog-hub-parent, .blog-hub-cluster,
   .blog-hub-sibling, .blog-legal-card, .site-main, .slot-price) a:hover, .byline-author:hover, .blog-breadcrumb a:hover { color: var(--signal-ink); }
-.hub-stats, .byline, .blog-card-meta, .home-facts strong, .route-idx, .route-count, .drop-idx, .cat-count, .pill-count,
+.hub-stats, .byline, .blog-card-meta, .home-facts strong, .route-idx, .route-count, .cat-count, .pill-count,
 .blog-chip-count, .cat-icon, .hub-stage-idx, .blog-pagination, .blog-table, .slot-price-figure, .blog-toc-list, .blog-article-body h2::before {
   font-variant-numeric: tabular-nums;
 }
@@ -147,36 +147,7 @@ body.content-page .site-header { background: var(--scrim); -webkit-backdrop-filt
 .site-brand-text strong { font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; white-space: nowrap; }
 .site-brand-text span { font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* Desktop hub nav (phones use the drawer). */
-.site-nav { display: none; }
 @media (min-width: 900px) {
-  .site-nav { display: flex; align-items: center; gap: 2px; flex: none; margin: 0 auto; }
-  .site-nav > a, .site-nav-parent {
-    position: relative; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 6px 12px;
-    color: var(--ink); text-decoration: none; font-size: var(--fs-sm); font-weight: 600; white-space: nowrap;
-  }
-  .site-nav > a::after, .site-nav-parent::after {
-    content: ""; position: absolute; left: 12px; right: 12px; bottom: 6px; height: 2px; background: var(--signal);
-    transform: scaleX(0); transform-origin: left; transition: transform var(--t2) var(--ease);
-  }
-  .site-nav > a:hover::after, .site-nav-parent:hover::after, .site-nav > a[aria-current="page"]::after,
-  .site-nav-item[data-active="1"] > .site-nav-parent::after { transform: scaleX(1); }
-  .site-nav-caret { width: 14px; height: 14px; opacity: 0.6; transition: transform var(--t2) var(--ease); }
-  .site-nav-item { position: relative; }
-  .site-nav-item:is(:hover, .open) .site-nav-caret { transform: rotate(180deg); }
-  .site-nav-drop {
-    display: none; position: absolute; top: calc(100% + 8px); left: -8px; z-index: 60; min-width: 240px; padding: 8px;
-    border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface);
-    backdrop-filter: blur(18px); box-shadow: var(--shadow-2);
-  }
-  .site-nav-drop::before { content: ""; position: absolute; inset: -10px 0 auto; height: 10px; }
-  .site-nav-drop a { display: flex; align-items: center; gap: 14px; min-height: 44px; padding: 12px 14px; border-radius: var(--r-md); color: var(--ink); text-decoration: none; }
-  .site-nav-drop a:is(:hover, [aria-current="page"]) { background: var(--paper-2); }
-  .drop-idx { font-size: var(--fs-xs); font-weight: 800; color: var(--signal-ink); }
-  .drop-label { font-size: 0.95rem; font-weight: 800; }
-  .site-nav-item:hover .site-nav-drop,
-  .site-nav-item:focus-within .site-nav-drop,
-  .site-nav-item.open .site-nav-drop { display: block; animation: drop-in var(--t2) var(--ease); }
   .site-brand { flex: 0 0 auto; }
 }
 
@@ -202,7 +173,6 @@ body.content-page .site-actions .motoai-menu { gap: 10px; padding: 0 16px 0 14px
   .site-header .motoai-status { flex: 0 1 auto; min-width: 0; max-width: 220px; margin-left: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
 @media (min-width: 900px) and (max-width: 1179.98px) {
-  .site-nav > a, .site-nav-parent { padding: 6px 8px; font-size: 0.8rem; }
   .site-brand-text span, .site-header .motoai-status { display: none; }
 }
 
@@ -587,7 +557,6 @@ body.content-page .blog-article-body {
 @keyframes arrive { from { opacity: 0; transform: translateY(18px); } }
 @keyframes lane { from { transform: scaleX(0); } }
 @keyframes progress { to { transform: scaleX(1); } }
-@keyframes drop-in { from { opacity: 0; transform: translateY(-6px); } }
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     [data-motion="on"] :is(.blog-grid > *, .blog-cat-card, .hub-stage-head, .blog-family, .blog-pillars, .contact-band, .blog-legal-card) {
@@ -629,10 +598,6 @@ body.content-page .site-header {
 .site-brand-text strong { font-size: 0.96rem; font-weight: 700; letter-spacing: -0.025em; }
 .site-brand-text span { font-size: 0.69rem; letter-spacing: 0; }
 .brand-mark { width: 32px; height: 32px; }
-.site-nav > a, .site-nav-parent { border-radius: var(--r-pill); font-weight: 550; }
-.site-nav > a:hover, .site-nav-parent:hover { background: var(--paper-2); }
-.site-nav-drop { border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-2); }
-.site-nav-drop a { border-radius: var(--r-md); }
 .site-search-link, .blog-theme-toggle { background: transparent; border-color: transparent; border-radius: var(--r-pill); }
 .site-search-link:hover, .blog-theme-toggle:hover { background: var(--paper-2); border-color: transparent; }
 body.content-page .site-actions .motoai-menu {
@@ -780,28 +745,10 @@ body.content-page .card-lead {
   .blog-card, .blog-cat-card { box-shadow: none; }
 }
 
-/* v73 All-pages/all-taxonomy navigation — applied to blog-only surfaces.
-   Every submenu remains a real crawlable link, 44px touch target and
-   one scrollable surface. Desktop flyouts scroll without growing offscreen. */
+/* v73 All-pages/all-taxonomy navigation — drawer current-page state on
+   content pages (the desktop menu lives in style.css, shared with /agent/). */
 body.content-page .motoai-drawer-list a[aria-current="page"] {
   color: var(--signal-ink); font-weight: 650;
-}
-@media (min-width: 900px) {
-  .site-nav-drop {
-    top: 100%; min-width: 254px; max-height: min(72dvh, 610px);
-    overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: thin;
-  }
-  .site-nav-drop a.site-nav-category {
-    min-height: 48px; padding: 12px 14px; font-size: 0.92rem;
-    font-weight: 700; border-top: 1px solid var(--line);
-  }
-  .site-nav-drop a.site-nav-subtopic {
-    min-height: 38px; padding: 9px 16px 9px 30px;
-    font-size: 0.82rem; font-weight: 450; color: var(--ink-2);
-  }
-  .site-nav-drop a.site-nav-subtopic:is(:hover, :focus-visible) {
-    color: var(--ink);
-  }
 }
 
 /* ==================== v76 Site homepage (Apple V3) ====================
@@ -814,7 +761,6 @@ body.content-page .motoai-drawer-list a[aria-current="page"] {
   transition: background var(--t1) var(--ease), border-color var(--t1) var(--ease), transform var(--t1) var(--ease);
 }
 .site-agent-cta { padding: 0 14px 0 12px; background: var(--signal); color: var(--on-signal); font-size: var(--fs-sm); }
-button.site-nav-parent { border: 0; background: transparent; font-family: inherit; cursor: pointer; }
 .site-agent-cta .i, .v3-btn .i { width: 18px; height: 18px; }
 .v3-btn { min-height: 48px; padding: 0 20px; border: 1px solid var(--line-strong); color: var(--ink); font-size: 0.95rem; }
 .v3-btn-primary { border-color: transparent; background: var(--signal); color: var(--on-signal); }

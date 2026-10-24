@@ -23,6 +23,8 @@
   --scrim: #f5f5f7dc;
   --shadow-color: 29 29 31;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Be Vietnam Pro", "BVP Fallback", Roboto, sans-serif;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
   --r-md: 18px;
   --r-lg: 28px;
   --r-pill: 999px;
@@ -127,6 +129,64 @@ body {
 .brand-mark-lane { fill: none; stroke: var(--signal); stroke-width: 2.4; stroke-linecap: round; }
 .menu-lines { width: 16px; height: 10px; border-block: 2px solid currentColor; }
 .motoai-icon { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Desktop menu (siteNav) — ONE implementation ----------
+   tools/app-shell.mjs siteNav() renders the same markup in the website
+   header (every content page) and in the Agent app header, so this block is
+   shared by both. Phones and tablets use the drawer. Hover lives only under
+   (hover: hover) and (pointer: fine); touch opens a dropdown with focus /
+   .open (app-shell.js on content pages), keyboard with :focus-within. */
+.site-nav { display: none; }
+button.site-nav-parent { border: 0; background: transparent; font-family: inherit; cursor: pointer; }
+@keyframes drop-in { from { opacity: 0; transform: translateY(-6px); } }
+@media (min-width: 900px) {
+  .site-nav { display: flex; align-items: center; gap: 2px; flex: none; margin: 0 auto; }
+  .site-nav > a, .site-nav-parent {
+    position: relative; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 6px 12px;
+    border-radius: var(--r-pill); color: var(--ink); text-decoration: none; font-size: var(--fs-sm); font-weight: 550; white-space: nowrap;
+  }
+  .site-nav > a::after, .site-nav-parent::after {
+    content: ""; position: absolute; left: 12px; right: 12px; bottom: 6px; height: 2px; background: var(--signal);
+    transform: scaleX(0); transform-origin: left; transition: transform var(--t2) var(--ease);
+  }
+  .site-nav > a[aria-current="page"]::after,
+  .site-nav-item[data-active="1"] > .site-nav-parent::after { transform: scaleX(1); }
+  /* Filled with the text color: an unset SVG fill is black and vanished in dark mode. */
+  .site-nav-caret { width: 14px; height: 14px; fill: currentColor; opacity: 0.6; transition: transform var(--t2) var(--ease); }
+  .site-nav-item { position: relative; }
+  .site-nav-item.open .site-nav-caret { transform: rotate(180deg); }
+  .site-nav-drop {
+    display: none; position: absolute; top: 100%; left: -8px; z-index: 60; min-width: 254px; padding: 8px;
+    border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface);
+    backdrop-filter: blur(18px); box-shadow: var(--shadow-2);
+    max-height: min(72dvh, 610px); overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: thin;
+  }
+  .site-nav-drop::before { content: ""; position: absolute; inset: -10px 0 auto; height: 10px; }
+  .site-nav-drop a { display: flex; align-items: center; gap: 14px; min-height: 44px; padding: 12px 14px; border-radius: var(--r-md); color: var(--ink); text-decoration: none; }
+  .site-nav-drop a[aria-current="page"] { background: var(--paper-2); }
+  .site-nav-item:focus-within .site-nav-drop,
+  .site-nav-item.open .site-nav-drop { display: block; animation: drop-in var(--t2) var(--ease); }
+  .site-nav-drop a.site-nav-category {
+    min-height: 48px; padding: 12px 14px; font-size: 0.92rem;
+    font-weight: 700; border-top: 1px solid var(--line);
+  }
+  .site-nav-drop a.site-nav-subtopic {
+    min-height: 38px; padding: 9px 16px 9px 30px;
+    font-size: 0.82rem; font-weight: 450; color: var(--ink-2);
+  }
+  .site-nav-drop a.site-nav-subtopic:focus-visible { color: var(--ink); }
+}
+@media (min-width: 900px) and (max-width: 1179.98px) {
+  .site-nav > a, .site-nav-parent { padding: 6px 8px; font-size: 0.8rem; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .site-nav > a:hover, .site-nav-parent:hover { background: var(--paper-2); }
+  .site-nav > a:hover::after, .site-nav-parent:hover::after { transform: scaleX(1); }
+  .site-nav-item:hover .site-nav-caret { transform: rotate(180deg); }
+  .site-nav-item:hover .site-nav-drop { display: block; animation: drop-in var(--t2) var(--ease); }
+  .site-nav-drop a:hover { background: var(--paper-2); }
+  .site-nav-drop a.site-nav-subtopic:hover { color: var(--ink); }
+}
 
 /* ---------- App shell ---------- */
 .motoai-app {
@@ -890,3 +950,12 @@ body[data-motoai-embed="1"] .motoai-app {
   .motoai-shell .motoai-app { max-width: 1000px; }
   .motoai-msg { max-width: 72%; }
 }
+
+/* Agent app on desktop (>= 900px): the website menu (siteNav) gets its own
+   row above the title, inside the existing header — the chat keeps the full
+   viewport below it. Never in the embed widget. */
+@media (min-width: 900px) {
+  .motoai-header { grid-template-areas: "nav nav nav nav" "mark title status actions" "mark sub status actions"; }
+  .motoai-header .site-nav { grid-area: nav; justify-self: start; margin: 0 0 var(--space-2) -12px; }
+}
+body[data-motoai-embed="1"] .motoai-header .site-nav { display: none; }

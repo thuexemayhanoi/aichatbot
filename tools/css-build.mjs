@@ -56,7 +56,7 @@ export const CHAT_CSS = 'assets/css/style.css';
 export const CHAT_TOKENS = [
   'paper', 'paper-2', 'surface', 'ink', 'ink-2', 'ink-3', 'line', 'line-strong',
   'signal', 'signal-ink', 'signal-soft', 'on-signal', 'solid', 'on-solid', 'ok', 'scrim', 'shadow-color',
-  'font', 'r-md', 'r-lg', 'r-pill', 'shadow-2', 'ease', 't1', 't2', 't3',
+  'font', 'fs-xs', 'fs-sm', 'r-md', 'r-lg', 'r-pill', 'shadow-2', 'ease', 't1', 't2', 't3',
   'color-bg', 'color-surface', 'color-surface-elevated', 'color-surface-soft',
   'color-primary', 'color-primary-hover', 'color-primary-soft', 'color-on-primary',
   'color-text', 'color-text-muted', 'color-border', 'color-border-strong', 'color-success'

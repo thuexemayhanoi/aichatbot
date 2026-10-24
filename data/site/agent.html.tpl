@@ -39,7 +39,7 @@
 </head>
 <body class="chat-home">
   <main class="motoai-shell">
-    <!-- The chatbot IS the homepage: it opens directly, no landing hero above it. -->
+    <!-- The Agent app opens directly into the chat: no landing hero above it. -->
     <section class="motoai-app" id="motoai-app">
       <header class="motoai-header">
         <div class="motoai-header-text">
@@ -50,6 +50,7 @@
           </div>
         </div>
         <span class="motoai-status" id="motoai-status" role="status" aria-live="polite"></span>
+        <!-- @generated site-nav: siteNav({ home: true }) in tools/app-shell.mjs (desktop >= 900px, hidden in embed) -->
         <div class="motoai-header-actions">
           <button type="button" class="motoai-theme blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
           <button type="button" class="motoai-install" id="motoai-install" hidden title="Cài MotoAI như một ứng dụng" aria-label="Cài Agent">Cài Agent</button>
