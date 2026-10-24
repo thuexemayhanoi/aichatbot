@@ -7,7 +7,7 @@
 <li>Số ngày thuê và ngày giờ nhận, ngày giờ trả dự kiến.</li>
 <li>Loại xe ưu tiên: xe số, xe ga, hay xe điện; có người ngồi sau thường xuyên không.</li>
 <li>Bạn tự tới cửa hàng hay cần giao xe tới chỗ ở; nếu giao, địa chỉ có nằm trong khu vực phục vụ như Long Biên, Gia Lâm, Hoàn Kiếm, Ba Đình, Tây Hồ hay các quận nội thành khác không.</li>
-<li>Ngân sách dự kiến, đối chiếu với giá tham khảo: Honda Wave khoảng 150.000đ/ngày, Honda Vision khoảng 200.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày. Giá chính thức xem tại <a href="/gia-thue/">bảng giá thuê</a> và xác nhận với cửa hàng.</li>
+<li>Ngân sách dự kiến, đối chiếu với giá tham khảo: Honda Wave khoảng {{ price.honda-wave.day.min }}/ngày, Honda Vision khoảng {{ price.honda-vision.day.min }}/ngày, Honda Click hoặc Yamaha Mio khoảng {{ price.honda-click.day.min }}/ngày. Giá chính thức xem tại <a href="/gia-thue/">bảng giá thuê</a> và xác nhận với cửa hàng.</li>
 </ul>
 <p>Nếu muốn hiểu bức tranh chung trước khi đi vào từng mục, bài <a href="/blog/huong-dan/thu-tuc-thue-xe-may/">thủ tục thuê xe máy</a> trình bày quy trình theo dạng mô tả, còn bài này là dạng tích ô để làm theo.</p>
 
@@ -30,7 +30,7 @@
 <li>Giá cho đúng số ngày bạn thuê, đã tính theo ngày, tuần hay tháng.</li>
 <li>Mức cọc áp dụng cho chiếc xe đó, hình thức nộp và hình thức hoàn.</li>
 <li>Giờ nhận, giờ trả và cách tính nếu trả muộn hơn dự kiến.</li>
-<li>Nếu giao tận nơi: thời điểm giao và phí giao, chỉ trong khung 09:00 đến 21:00, phải được xác nhận trước khi chốt đặt.</li>
+<li>Nếu giao tận nơi: thời điểm giao và phí giao, chỉ trong khung {{ business.hours.open }} đến {{ business.hours.close }}, phải được xác nhận trước khi chốt đặt.</li>
 <li>Người liên hệ khi xe gặp trục trặc trong kỳ thuê.</li>
 </ul>
 <p>Với người cần giao xe tới khách sạn hoặc phòng trọ, bài <a href="/blog/huong-dan/giao-xe-tan-noi-thu-tuc-checklist/">giao xe tận nơi thủ tục checklist</a> có danh sách riêng cho tình huống đó.</p>

@@ -1,7 +1,7 @@
 <p>Honda Vision là chiếc xe ga nhiều người chọn khi lần đầu thuê xe ở Hà Nội: dáng nhỏ gọn, dễ dắt trong ngõ, dễ gửi ở bãi chật. Nhưng khi tìm "thuê Honda Vision giá tốt nhất", bạn sẽ gặp một điểm khác so với nhiều dòng xe: bảng giá tham khảo của Vision ghi theo khoảng chứ không phải một con số cố định ở gói tuần và gói tháng. Bài viết này giải thích cách đọc các khoảng giá đó, chỉ ra lúc nào Vision là lựa chọn kinh tế và lúc nào một dòng khác cho bạn giá tốt hơn, kèm ba tình huống thuê cụ thể để bạn tự áp vào lịch của mình.</p>
 
 <h2>Đọc đúng bảng giá tham khảo của Vision</h2>
-<p>Các mức tham khảo cho Honda Vision hiện là 200.000đ/ngày, 800.000đ–1.000.000đ/tuần và 1.800.000đ–2.000.000đ/tháng. Toàn bộ bảng được cập nhật trên trang <a href="/gia-thue/">giá thuê</a>, và mức áp dụng cho bạn luôn được cửa hàng xác nhận khi đặt xe.</p>
+<p>Các mức tham khảo cho Honda Vision hiện là {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần và {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng. Toàn bộ bảng được cập nhật trên trang <a href="/gia-thue/">giá thuê</a>, và mức áp dụng cho bạn luôn được cửa hàng xác nhận khi đặt xe.</p>
 <p>Với gói tuần và gói tháng, khoảng giá có nghĩa là bạn chưa nên tính ngân sách theo đầu thấp. Cách an toàn là lập kế hoạch theo đầu cao của khoảng, rồi để phần chênh lệch (nếu có) thành tiền dư. Muốn biết chính xác mức nào áp dụng cho kỳ thuê của mình, bạn cần nêu ngày nhận, ngày trả và dòng xe khi hỏi; đừng dựa vào con số đẹp nhất trong khoảng để so với nơi khác. Bài <a href="/blog/thue-xe/cach-doc-bang-gia-thue-xe/">cách đọc bảng giá thuê xe</a> giải thích thêm về những chữ nhỏ thường đi kèm bảng giá.</p>
 
 <h2>Quy đổi ra từng ngày để thấy gói nào lợi</h2>
@@ -15,9 +15,9 @@
 <h2>Khi nào Vision không phải lựa chọn rẻ nhất</h2>
 <p>Muốn giá tốt nhất, đôi khi câu trả lời thật thà là chọn dòng khác. Trong cùng bảng tham khảo:</p>
 <ul>
-<li><strong>Cần xe ga nhẹ, đi một mình trong phố:</strong> Honda Click hoặc Yamaha Mio ở mức 150.000đ/ngày, 600.000đ–700.000đ/tuần, 1.000.000đ–1.200.000đ/tháng. Nếu bạn không đặt nặng chuyện phải là Vision, nhóm này rẻ hơn ở mọi gói.</li>
-<li><strong>Thuê trọn tháng và cần xe đầm hơn:</strong> Honda Air Blade tham khảo 1.400.000đ/tháng, thấp hơn khoảng giá tháng của Vision dù giá ngày bằng nhau.</li>
-<li><strong>Quen xe số, ưu tiên chi phí ngày:</strong> Honda Wave ở mức 150.000đ/ngày.</li>
+<li><strong>Cần xe ga nhẹ, đi một mình trong phố:</strong> Honda Click hoặc Yamaha Mio ở mức {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng. Nếu bạn không đặt nặng chuyện phải là Vision, nhóm này rẻ hơn ở mọi gói.</li>
+<li><strong>Thuê trọn tháng và cần xe đầm hơn:</strong> Honda Air Blade tham khảo {{ price.honda-airblade.month.min }}/tháng, thấp hơn khoảng giá tháng của Vision dù giá ngày bằng nhau.</li>
+<li><strong>Quen xe số, ưu tiên chi phí ngày:</strong> Honda Wave ở mức {{ price.honda-wave.day.min }}/ngày.</li>
 </ul>
 <p>Vision vẫn đáng tiền khi bạn ưu tiên sự nhẹ nhàng, dễ dắt, dễ làm quen, nhất là với người ít đi xe ga hoặc cần chở người thân đi những quãng ngắn. Bài <a href="/blog/thue-xe/thue-honda-vision/">thuê Honda Vision</a> mô tả kỹ hơn ai hợp với dòng xe này.</p>
 
@@ -33,7 +33,7 @@
 <p>Một mức giá thuê tốt chỉ có nghĩa khi tổng chi phí cũng tốt. Trước khi chốt Vision, hãy liệt kê:</p>
 <ol>
 <li>Xăng: mức xăng khi nhận, mức khi trả và cách tính nếu chênh lệch.</li>
-<li>Giao nhận: chỉ thực hiện trong khung 09:00–21:00, thời gian và phí phải xác nhận trước khi đặt.</li>
+<li>Giao nhận: chỉ thực hiện trong khung {{ business.hours.open }}–{{ business.hours.close }}, thời gian và phí phải xác nhận trước khi đặt.</li>
 <li>Trả muộn: hỏi cách tính nếu bạn về trễ hơn giờ hẹn.</li>
 <li>Bảo hiểm: cửa hàng không bán kèm, bạn tự mua bảo hiểm xe máy cho mình.</li>
 <li>Gửi xe: ở khu trung tâm, phí trông xe mỗi ngày cộng lại không nhỏ với kỳ thuê dài.</li>

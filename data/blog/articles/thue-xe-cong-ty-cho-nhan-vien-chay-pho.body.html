@@ -22,10 +22,10 @@
 <h2>Bài toán chi phí tham khảo cho đội xe</h2>
 <p>Với nhu cầu chạy phố liên tục, gói tháng thường hợp lý hơn thuê theo ngày. Bảng dưới đây là mức tham khảo, cần xác nhận lại với cửa hàng khi đặt và xem chi tiết tại <a href="/gia-thue/">trang giá thuê</a>.</p>
 <ul>
-<li>Honda Vision: tham khảo 1.800.000đ–2.000.000đ/tháng, hoặc 800.000đ–1.000.000đ/tuần.</li>
-<li>Honda Air Blade: tham khảo 1.400.000đ/tháng, 800.000đ/tuần.</li>
-<li>Honda Click, Yamaha Mio: tham khảo 1.000.000đ–1.200.000đ/tháng, 600.000đ–700.000đ/tuần.</li>
-<li>Honda Wave: tham khảo 150.000đ/ngày, hỏi thêm nếu thuê dài.</li>
+<li>Honda Vision: tham khảo {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng, hoặc {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần.</li>
+<li>Honda Air Blade: tham khảo {{ price.honda-airblade.month.min }}/tháng, {{ price.honda-airblade.week.min }}/tuần.</li>
+<li>Honda Click, Yamaha Mio: tham khảo {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng, {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần.</li>
+<li>Honda Wave: tham khảo {{ price.honda-wave.day.min }}/ngày, hỏi thêm nếu thuê dài.</li>
 </ul>
 <p>Ví dụ, một nhóm ba nhân viên kinh doanh dùng Vision trong một tháng sẽ có chi phí tham khảo khoảng ba lần mức tháng của dòng xe này. Ngoài tiền thuê, hãy dự trù xăng, phí gửi xe hằng ngày và thời gian nhân viên đi nhận, trả xe.</p>
 <p>Mỗi xe có khoản đặt cọc riêng trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy dòng. Kế toán nên tách mục này khỏi chi phí thuê khi lập kế hoạch dòng tiền.</p>
