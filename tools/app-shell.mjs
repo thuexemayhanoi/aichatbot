@@ -112,9 +112,10 @@ function dropItem(ch, i, activeHub) {
 
 /**
  * Shared content-site header. LEFT: brand mark + MotoAI / Hỗ trợ Agent
- * (link back to the chat homepage). CENTER (>= 900px): Cẩm nang + the three
- * parent hubs with category dropdowns. RIGHT: search, theme toggle and
- * Menu — always the LAST element of .site-actions. The open/closed status
+ * (link to the homepage). CENTER (>= 900px): Cẩm nang + the three parent
+ * hubs with category dropdowns + the static Pages dropdown (the drawer's
+ * "pages" group — same labels and links). RIGHT: search, theme toggle,
+ * Hỏi Agent and Menu — always the LAST element of .site-actions. The open/closed status
  * is a SEPARATE flex child after .site-actions (own row on mobile).
  */
 function siteHeader({ activeHub, activeCluster, progress, path = '' }) {
@@ -136,6 +137,14 @@ function siteHeader({ activeHub, activeCluster, progress, path = '' }) {
       icon('caret', 'site-nav-caret') + '</a>\n' +
       '          <div class="site-nav-drop">\n' + dropItems + '\n          </div>\n        </div>';
   }).join('\n');
+  const pages = drawerCore().find((e) => e.kind === 'group' && e.id === 'pages');
+  const pagesActive = pages.children.some((ch) => ch.url === '/' + path);
+  const pagesItem = '        <div class="site-nav-item"' + (pagesActive ? ' data-active="1"' : '') + '>\n' +
+    '          <button type="button" class="site-nav-parent" aria-haspopup="true" aria-expanded="false">' + esc(pages.label) +
+    icon('caret', 'site-nav-caret') + '</button>\n          <div class="site-nav-drop">\n' +
+    pages.children.map((ch) => '            <a class="site-nav-category" href="' + ch.url + '"' +
+      (ch.url === '/' + path ? ' aria-current="page"' : '') + '>' + esc(ch.label) + '</a>').join('\n') +
+    '\n          </div>\n        </div>';
   const site = BLOG_UI.site;
   return `    <header class="site-header">
       <div class="site-header-inner">
@@ -149,6 +158,7 @@ function siteHeader({ activeHub, activeCluster, progress, path = '' }) {
         <nav class="site-nav" aria-label="Chuyên mục">
           <a href="/blog/"${path.startsWith('blog/') && activeCluster === null && activeHub === null ? ' aria-current="page"' : ''}>Cẩm nang</a>
 ${hubItems}
+${pagesItem}
         </nav>
         <div class="site-actions">
           <a class="site-search-link" href="/blog/#blog-search" aria-label="Tìm bài" title="Tìm bài">${icon('search')}</a>

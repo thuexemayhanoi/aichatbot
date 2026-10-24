@@ -200,3 +200,26 @@ test('Agent deep links: ?action= runs once state exists (no TDZ crash), ?ask= on
   const askBranch = /if \(askTopic\) \{([\s\S]*?)\} else if/.exec(main)[1];
   assert.ok(!/submit\(/.test(askBranch), '?ask= prefills, the customer decides to send');
 });
+
+test('header menu = Pages + parent hubs + categories/subtopics, from the same config as the drawer', () => {
+  const pages = drawerCore().find((e) => e.kind === 'group' && e.id === 'pages');
+  const hubs = drawerCore().find((e) => e.id === 'cm').children.filter((x) => x.kind === 'hub');
+  for (const p of ['index.html', 'blog/index.html', 'gioi-thieu/index.html', 'blog/thue-xe/index.html']) {
+    const nav = /<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/.exec(read(p))[1];
+    // Pages dropdown: labels + links exactly as config/navigation.json + site-pages registry.
+    const drop = nav.slice(nav.indexOf(`>${pages.label}<`));
+    assert.ok(nav.includes(`<button type="button" class="site-nav-parent" aria-haspopup="true" aria-expanded="false">${pages.label}`), `${p}: Pages dropdown`);
+    assert.deepEqual([...drop.matchAll(/<a class="site-nav-category" href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map((m) => [m[1], m[2]]),
+      pages.children.map((c) => [c.url, c.label]), `${p}: Pages == drawer "pages" group`);
+    for (const h of hubs) {
+      assert.ok(nav.includes(`href="${h.url}" aria-haspopup="true"`), `${p}: parent hub ${h.label}`);
+      for (const ch of h.children) assert.ok(nav.includes(`href="${ch.url}"`), `${p}: ${ch.label} in the ${h.label} dropdown`);
+    }
+    for (const label of [pages.label, ...pages.children.map((c) => c.label), ...hubs.map((h) => h.label)]) {
+      const words = label.trim().split(/\s+/).length;
+      assert.ok(words >= 2 && words <= 3, `${label}: nav labels are 2–3 words`);
+    }
+  }
+  assert.match(read('gioi-thieu/index.html'), /<div class="site-nav-item" data-active="1">\s*<button[^>]*>Trang Web/, 'current Page marks its dropdown active');
+  assert.ok(!/<div class="site-nav-item" data-active="1">\s*<button/.test(read('index.html')), 'no Page dropdown active on /');
+});

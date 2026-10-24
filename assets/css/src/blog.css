@@ -814,6 +814,7 @@ body.content-page .motoai-drawer-list a[aria-current="page"] {
   transition: background var(--t1) var(--ease), border-color var(--t1) var(--ease), transform var(--t1) var(--ease);
 }
 .site-agent-cta { padding: 0 14px 0 12px; background: var(--signal); color: var(--on-signal); font-size: var(--fs-sm); }
+button.site-nav-parent { border: 0; background: transparent; font-family: inherit; cursor: pointer; }
 .site-agent-cta .i, .v3-btn .i { width: 18px; height: 18px; }
 .v3-btn { min-height: 48px; padding: 0 20px; border: 1px solid var(--line-strong); color: var(--ink); font-size: 0.95rem; }
 .v3-btn-primary { border-color: transparent; background: var(--signal); color: var(--on-signal); }
@@ -823,9 +824,12 @@ body.content-page .motoai-drawer-list a[aria-current="page"] {
   .site-main .v3-btn:not(.v3-btn-primary):hover { background: var(--paper-2); color: var(--ink); }
   .site-main a.v3-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); border-color: var(--line-strong); color: var(--ink); }
 }
-@media (max-width: 479px) {
+@media (max-width: 479px), (min-width: 900px) and (max-width: 1179.98px) {
   .site-agent-cta { width: 44px; padding: 0; }
   .site-agent-cta span { display: none; }
+}
+@media (min-width: 900px) and (max-width: 1179.98px) {
+  .site-actions .site-search-link { display: none; }
 }
 
 .v3-hero { display: flex; flex-direction: column; gap: var(--s4); padding: var(--s3) 0 var(--s2); }
