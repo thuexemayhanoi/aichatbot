@@ -951,11 +951,15 @@ body[data-motoai-embed="1"] .motoai-app {
   .motoai-msg { max-width: 72%; }
 }
 
-/* Agent app on desktop (>= 900px): the website menu (siteNav) gets its own
-   row above the title, inside the existing header — the chat keeps the full
-   viewport below it. Never in the embed widget. */
-@media (min-width: 900px) {
+/* Agent app on a desktop (wide, tall, real pointer): the website menu
+   (siteNav) gets its own row above the title, inside the existing header —
+   the chat keeps the viewport below it. Touch screens and landscape phones
+   keep the drawer (same links, finger-sized): the Agent page loads no
+   dropdown script, and a short screen needs every pixel for the messages.
+   Never in the embed widget. */
+.motoai-header .site-nav { display: none; }
+@media (min-width: 900px) and (min-height: 600px) and (hover: hover) and (pointer: fine) {
   .motoai-header { grid-template-areas: "nav nav nav nav" "mark title status actions" "mark sub status actions"; }
-  .motoai-header .site-nav { grid-area: nav; justify-self: start; margin: 0 0 var(--space-2) -12px; }
+  .motoai-header .site-nav { display: flex; grid-area: nav; justify-self: start; margin: 0 0 var(--space-2) -12px; }
 }
 body[data-motoai-embed="1"] .motoai-header .site-nav { display: none; }

@@ -14,39 +14,27 @@
   "categories": [
     {
       "id": "APP",
-      "label": "Ứng Dụng",
-      "icon": "📱",
-      "url": "/blog/app/"
+      "icon": "📱"
     },
     {
       "id": "GUIDE",
-      "label": "Hướng Dẫn",
-      "icon": "📄",
-      "url": "/blog/huong-dan/"
+      "icon": "📄"
     },
     {
       "id": "RENT",
-      "label": "Thuê Xe",
-      "icon": "🏍️",
-      "url": "/blog/thue-xe/"
+      "icon": "🏍️"
     },
     {
       "id": "EV",
-      "label": "Xe Điện",
-      "icon": "⚡",
-      "url": "/blog/xe-dien/"
+      "icon": "⚡"
     },
     {
       "id": "SAFE",
-      "label": "An Toàn",
-      "icon": "🛡️",
-      "url": "/blog/an-toan/"
+      "icon": "🛡️"
     },
     {
       "id": "LOCAL",
-      "label": "Địa Phương",
-      "icon": "📍",
-      "url": "/blog/dia-phuong/"
+      "icon": "📍"
     }
   ],
   "search": {
@@ -55,11 +43,6 @@
     "url": "/blog/"
   },
   "services": [
-    {
-      "label": "Giá Thuê",
-      "icon": "💰",
-      "url": "/gia-thue/"
-    },
     {
       "label": "Địa Chỉ",
       "icon": "📍",
@@ -86,44 +69,39 @@
       "ref": "map"
     }
   ],
-  "legal": [
-    {
-      "label": "Chính Sách",
-      "icon": "📜",
-      "url": "/chinh-sach/"
-    },
-    {
-      "label": "Bảo Mật",
-      "icon": "🔒",
-      "url": "/privacy/"
-    },
-    {
-      "label": "Điều Khoản",
-      "icon": "📃",
-      "url": "/terms/"
-    }
-  ],
   "footer_groups": [
     {
       "brand": true,
       "items": [
-        { "ref": "home" },
-        { "ref": "agent" },
-        { "group": "cm" },
-        { "group": "pages" }
+        {
+          "ref": "home"
+        },
+        {
+          "ref": "agent"
+        },
+        {
+          "group": "cm"
+        },
+        {
+          "group": "pages"
+        }
       ]
     },
-    { "group": "cm", "hubs": true },
-    { "group": "dv", "row": "secondary" },
-    { "group": "pl", "row": "secondary" }
+    {
+      "group": "cm",
+      "hubs": true
+    },
+    {
+      "group": "dv",
+      "row": "secondary"
+    },
+    {
+      "group": "pl",
+      "row": "secondary"
+    }
   ],
-  "about": {
-    "label": "Giới Thiệu",
-    "icon": "🏢",
-    "url": "/gioi-thieu/"
-  },
   "drawer": {
-    "note": "Trang Web pulls non-legal static pages from config/site-pages.json; Pháp Lý holds the legal pages; Cẩm Nang resolves hubs > canonical categories > non-empty subtopics from data/blog/taxonomy.json; Dịch Vụ has verified contact actions. Agent chat keeps its reset control.",
+    "note": "Trang Web lists the config/site-pages.json pages without a group; Pháp Lý lists the pages with \"group\": \"legal\" (same registry, same order); Cẩm Nang resolves hubs > canonical categories > non-empty subtopics from data/blog/taxonomy.json and its url is the blog home; Dịch Vụ has verified contact actions. Agent chat keeps its reset control.",
     "theme": {
       "icon": "🌗",
       "label": "Chủ đề"
@@ -142,6 +120,7 @@
       {
         "id": "cm",
         "label": "Cẩm nang",
+        "url": "/blog/",
         "icon": "📚",
         "children": [
           {

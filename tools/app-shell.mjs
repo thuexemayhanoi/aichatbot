@@ -27,7 +27,7 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { navigation, taxonomy, clusterNav, drawerCore } from './taxonomy.mjs';
+import { navigation, taxonomy, clusterNav, drawerCore, blogHome } from './taxonomy.mjs';
 import { renderDrawer, contentLink } from './menu-drawer.mjs';
 import { BLOG_UI, bannerSlot, esc, feature, icon, brandMark, contactBand, renderSlot, t } from './blog-components.mjs';
 
@@ -117,7 +117,7 @@ export function siteNav({ activeHub = null, activeCluster = null, path = '', hom
   const group = (id) => core.find((e) => e.kind === 'group' && e.id === id);
   const cm = group('cm');
   const pages = group('pages');
-  const blog = cm.children.find((c) => c.kind === 'link');
+  const blog = blogHome();
   const current = (url) => (url === '/' + path ? ' aria-current="page"' : '');
   const dropdown = (parent, active, items) => '        <div class="site-nav-item"' + (active ? ' data-active="1"' : '') + '>\n' +
     '          ' + parent + '\n          <div class="site-nav-drop">\n' + items.join('\n') + '\n          </div>\n        </div>';
@@ -137,7 +137,7 @@ export function siteNav({ activeHub = null, activeCluster = null, path = '', hom
   pages.children.map((ch) => '            <a class="site-nav-category" href="' + ch.url + '"' + current(ch.url) + '>' + esc(ch.label) + '</a>'));
   const homeItem = home ? `          <a href="${navigation.home.url}"${current(navigation.home.url)}>${esc(navigation.home.label)}</a>\n` : '';
   return `        <nav class="site-nav" aria-label="Chuyên mục">
-${homeItem}          <a href="${blog.url}"${path.startsWith('blog/') && activeCluster === null && activeHub === null ? ' aria-current="page"' : ''}>${esc(cm.label)}</a>
+${homeItem}          <a href="${blog.url}"${path.startsWith('blog/') && activeCluster === null && activeHub === null ? ' aria-current="page"' : ''}>${esc(blog.label)}</a>
 ${hubItems.join('\n')}
 ${pagesItem}
         </nav>`;
@@ -163,7 +163,7 @@ function siteHeader({ activeHub, activeCluster, progress, path = '' }) {
         </a>
 ${siteNav({ activeHub, activeCluster, path })}
         <div class="site-actions">
-          <a class="site-search-link" href="${navigation.search.url}#blog-search" aria-label="Tìm bài" title="Tìm bài">${icon('search')}</a>
+          <a class="site-search-link" href="${blogHome().url}#blog-search" aria-label="Tìm bài" title="Tìm bài">${icon('search')}</a>
           <button type="button" class="blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
           <a class="site-agent-cta" href="${AGENT_URL}" aria-label="${esc(t('headerAgent'))}">${icon('chat')}<span aria-hidden="true">${esc(t('headerAgent'))}</span></a>
           <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer"><span class="menu-lines" aria-hidden="true"></span> <span class="motoai-menu-label">Menu</span></button>
@@ -206,7 +206,7 @@ export function footerHtml() {
     const g = group(spec.group);
     // A group named inside a column contributes its own landing link (the
     // blog home for "Cẩm nang", labelled like the header) or its links.
-    if (spec.group === 'cm') return [{ kind: 'link', label: g.label, url: g.children.find((c) => c.kind === 'link').url }];
+    if (spec.group === 'cm') return [{ kind: 'link', ...blogHome() }];
     return g.children;
   };
   const column = (title, items, cls = '') => `      <div class="blog-footer-col${cls}">

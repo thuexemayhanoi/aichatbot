@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { normalizeInternalAnchors } from './site-audit.mjs';
 import { BLOG_UI, PRICING, emptyNote, feature, icon, renderSlot, resolveFacts, t } from './blog-components.mjs';
 import {
-  taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav, setMenuSubtopicUrls, drawerCore
+  taxonomy, navigation, CLUSTER_BY_ID, viSlug, deriveSubtopic, clusterNav, categoryNav, blogHome, setMenuSubtopicUrls, drawerCore
 } from './taxonomy.mjs';
 import {
   SITE, esc, rel, pageHead, askAgentAction, appShellPage, AGENT_URL
@@ -153,8 +153,8 @@ function breadcrumb(trail) {
 /** Category chips row (inside the screen, under the title). */
 function categoryChips({ activeHub }) {
   const items = navigation.categories.map((c) => {
-    const dir = taxonomy.categories[c.id].dir;
-    return `        <a class="blog-chip" href="/blog/${dir}/"${dir === activeHub ? ' aria-current="page"' : ''}>${esc(c.label)}</a>`;
+    const { dir, label } = categoryNav(c.id);
+    return `        <a class="blog-chip" href="/blog/${dir}/"${dir === activeHub ? ' aria-current="page"' : ''}>${esc(label)}</a>`;
   }).join('\n');
   return `      <div class="blog-chips" aria-label="Danh mục">
 ${items}
@@ -163,10 +163,11 @@ ${items}
 }
 
 // Breadcrumb roots come from the navigation source (same labels/URLs as the
-// header, drawer and footer): Trang Chủ, then the "Cẩm nang" group's blog home.
-const NAV_CM = drawerCore().find((e) => e.kind === 'group' && e.id === 'cm');
+// header, drawer and footer): Trang Chủ, then the "Cẩm nang" blog home.
 const CRUMB_HOME = { label: navigation.home.label, href: navigation.home.url };
-const CRUMB_BLOG = { label: NAV_CM.label, href: NAV_CM.children.find((c) => c.kind === 'link').url };
+const CRUMB_BLOG = { label: blogHome().label, href: blogHome().url };
+/** Absolute schema URL of a root-relative site link (visible trail == JSON-LD). */
+const ldUrl = (href) => SITE + href.replace(/^\//, '');
 /** Cluster crumb entry (v61: blog home → PARENT HUB → category → article). */
 const crumbCluster = (cluster) => ({ label: cluster.name, href: `/blog/${cluster.dir}/` });
 /** Visible + JSON-LD breadcrumb trail for any cluster/category/subtopic/article page. */
@@ -176,8 +177,8 @@ function clusterTrail(cluster, extra = []) {
 /** Schema trail entries (absolute item URLs) matching clusterTrail exactly. */
 function clusterTrailSchema(cluster, extra = []) {
   const entries = [
-    { name: CRUMB_HOME.label, item: SITE },
-    { name: CRUMB_BLOG.label, item: `${SITE}blog/` },
+    { name: CRUMB_HOME.label, item: ldUrl(CRUMB_HOME.href) },
+    { name: CRUMB_BLOG.label, item: ldUrl(CRUMB_BLOG.href) },
     { name: cluster.name, item: `${SITE}blog/${cluster.dir}/` }
   ];
   for (const e of extra) entries.push({ name: e.label, item: e.href ? `${SITE}${e.href.replace('/', '')}` : `${SITE}${e.itemPath}` });
@@ -249,8 +250,9 @@ ${latestCards}
 ` : ''}      </section>`;
   }).join('\n');
 
-  const categoryCards = navigation.categories.map((navItem, i) => {
-    const cat = taxonomy.categories[navItem.id];
+  const categoryCards = navigation.categories.map((c, i) => {
+    const navItem = categoryNav(c.id);
+    const cat = taxonomy.categories[c.id];
     return `      <a class="blog-cat-card" href="/blog/${cat.dir}/">
         <span class="cat-icon" aria-hidden="true">${idx(i)}</span>
         <strong>${esc(navItem.label)}</strong>
@@ -338,7 +340,7 @@ ${askAgentAction(BLOG_HOME.askTopic)}`;
           '@type': 'ListItem', position: i + 1, name: c.name, url: `${SITE}blog/${c.dir}/`
         }))
       }
-    }) + ldScript(breadcrumbLd([{ name: CRUMB_HOME.label, item: SITE }, { name: CRUMB_BLOG.label, item: `${SITE}blog/` }]))
+    }) + ldScript(breadcrumbLd([{ name: CRUMB_HOME.label, item: ldUrl(CRUMB_HOME.href) }, { name: CRUMB_BLOG.label, item: ldUrl(CRUMB_BLOG.href) }]))
   });
   write('blog/index.html', html);
 }

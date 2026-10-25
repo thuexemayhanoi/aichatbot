@@ -107,12 +107,21 @@ export function clusterNav(clusterId) {
   };
 }
 
-/** Category navigation card (short label + canonical URL). */
+/** The blog home ("Cẩm nang" → /blog/): the landing page of the Cẩm nang
+ *  drawer group. Header, footer and breadcrumbs all link it from here. */
+export function blogHome() {
+  const g = navigation.drawer?.groups?.find((x) => x.id === 'cm');
+  if (!g?.url) throw new Error('navigation.json: drawer group "cm" needs its landing url');
+  return { label: g.label, url: g.url };
+}
+
+/** Category menu entry: icon from navigation.json, label + URL from the
+ *  taxonomy (data/blog/taxonomy.json) — the one place a category is named. */
 export function categoryNav(categoryId) {
   const item = navigation.categories.find((c) => c.id === categoryId);
   if (!item) throw new Error(`unknown category in navigation.json: ${categoryId}`);
   const cat = taxonomy.categories[categoryId];
-  return { ...item, dir: cat.dir, cluster: cat.cluster };
+  return { ...item, label: cat.label, url: `/blog/${cat.dir}/`, dir: cat.dir, cluster: cat.cluster };
 }
 
 /**
@@ -161,19 +170,16 @@ export function drawerCore() {
         };
       });
     }
-    if (child.set === 'pages') {
-      const legalUrls = new Set(navigation.legal.map((p) => p.url));
-      return SITE_PAGES
-        .filter((p) => !legalUrls.has(`/${p.dir}/`))
-        .map((p) => link({
-          icon: navigation.page_icons?.[p.dir] ?? '📄',
-          label: navigation.page_labels?.[p.dir] ?? p.title,
-          url: `/${p.dir}/`
-        }));
-    }
-    if (child.set === 'contact-actions') return contacts(navigation.services.filter((s) => !s.url));
-    if (child.set === 'services') return contacts(navigation.services);
-    if (child.set === 'legal') return navigation.legal.map(link);
+    // Trang Web and Pháp Lý both come from the page registry (config/site-pages.json):
+    // "group": "legal" places a page under Pháp Lý, in registry order.
+    const pageLink = (p) => link({
+      icon: navigation.page_icons?.[p.dir] ?? '📄',
+      label: navigation.page_labels?.[p.dir] ?? p.title,
+      url: `/${p.dir}/`
+    });
+    if (child.set === 'pages') return SITE_PAGES.filter((p) => p.group !== 'legal').map(pageLink);
+    if (child.set === 'legal') return SITE_PAGES.filter((p) => p.group === 'legal').map(pageLink);
+    if (child.set === 'contact-actions') return contacts(navigation.services);
     if (child.ref === 'search') return [link(navigation.search)];
     throw new Error(`unknown drawer child in navigation.json: ${JSON.stringify(child)}`);
   };

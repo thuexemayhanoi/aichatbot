@@ -103,22 +103,6 @@
   },
   "pages": [
     {
-      "dir": "privacy",
-      "screen": "legal-privacy",
-      "title": "Chính sách bảo mật",
-      "seoTitle": "Chính sách bảo mật MotoAI — dữ liệu, Agent và quyền riêng tư",
-      "description": "Chính sách bảo mật của MotoAI: dữ liệu hội thoại lưu ở đâu, Agent chạy trên thiết bị ra sao, liên kết bên ngoài và cách liên hệ khi cần hỗ trợ.",
-      "body": "data/legal/privacy.body.html"
-    },
-    {
-      "dir": "terms",
-      "screen": "legal-terms",
-      "title": "Điều khoản sử dụng",
-      "seoTitle": "Điều khoản sử dụng MotoAI — nội dung tham khảo và trách nhiệm",
-      "description": "Điều khoản sử dụng MotoAI: thông tin chỉ mang tính tham khảo, cần xác nhận giá, cọc và tình trạng xe trước khi đặt, cùng trách nhiệm khi sử dụng.",
-      "body": "data/legal/terms.body.html"
-    },
-    {
       "dir": "gioi-thieu",
       "screen": "about",
       "title": "Giới thiệu",
@@ -128,11 +112,30 @@
     },
     {
       "dir": "chinh-sach",
+      "group": "legal",
       "screen": "policy",
       "title": "Chính sách dịch vụ & thuê xe",
       "seoTitle": "Chính sách thuê xe máy: đặt cọc, giấy tờ, giao nhận xe",
       "description": "Chính sách thuê xe máy của {{ business.brand }}: giờ hoạt động {{ business.hours.display }}, tiền đặt cọc theo loại xe, giấy tờ cần mang, giao nhận xe và điều cần xác nhận trước khi đặt.",
       "body": "data/site/chinh-sach.body.html"
+    },
+    {
+      "dir": "privacy",
+      "group": "legal",
+      "screen": "legal-privacy",
+      "title": "Chính sách bảo mật",
+      "seoTitle": "Chính sách bảo mật MotoAI — dữ liệu, Agent và quyền riêng tư",
+      "description": "Chính sách bảo mật của MotoAI: dữ liệu hội thoại lưu ở đâu, Agent chạy trên thiết bị ra sao, liên kết bên ngoài và cách liên hệ khi cần hỗ trợ.",
+      "body": "data/legal/privacy.body.html"
+    },
+    {
+      "dir": "terms",
+      "group": "legal",
+      "screen": "legal-terms",
+      "title": "Điều khoản sử dụng",
+      "seoTitle": "Điều khoản sử dụng MotoAI — nội dung tham khảo và trách nhiệm",
+      "description": "Điều khoản sử dụng MotoAI: thông tin chỉ mang tính tham khảo, cần xác nhận giá, cọc và tình trạng xe trước khi đặt, cùng trách nhiệm khi sử dụng.",
+      "body": "data/legal/terms.body.html"
     },
     {
       "dir": "lien-he",

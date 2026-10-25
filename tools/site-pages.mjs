@@ -32,6 +32,8 @@ for (const p of REGISTRY.pages ?? []) {
     throw new Error(`site-pages: ${p.dir} body file ${p.body} is missing`);
   }
   for (const s of p.schema ?? []) if (!SCHEMAS.includes(s)) throw new Error(`site-pages: ${p.dir} unknown schema ${s}`);
+  // group "legal" puts a page under Pháp Lý (drawer, footer); every other page is a Trang Web page.
+  if (p.group !== undefined && p.group !== 'legal') throw new Error(`site-pages: ${p.dir} unknown group ${p.group}`);
 }
 
 export const BLOG_HOME = Object.freeze(home);
