@@ -59,7 +59,7 @@ const LABEL_KEYS = ['crumbPage', 'kickerHub', 'kickerCluster', 'kickerStatic', '
   'hubSibling', 'clusterExplore', 'hubAll', 'clusterLatest', 'topicContext', 'tocTitle', 'readingTime', 'updated',
   'articleCount', 'pageOf', 'pagePrev', 'pageNext', 'routeTitle', 'factPublished', 'factCategories', 'factHours',
   'searchPlaceholder', 'searchNote', 'searchCount', 'searchEmpty', 'searchError', 'latestTitle', 'latestNote',
-  'indexTitle', 'indexNote', 'footerDesc', 'footerNap', 'footerHours', 'hubsTitle', 'priceConfirm',
+  'indexTitle', 'indexNote', 'footerDesc', 'footerNap', 'footerHours', 'hubsTitle', 'priceConfirm', 'priceDeposit', 'depositConfirm',
   'emptyBlog', 'emptyHub', 'emptyScopeHub', 'emptyScopeCluster', 'headerAgent'];
 for (const key of LABEL_KEYS) {
   if (typeof BLOG_UI.labels?.[key] !== 'string' || !BLOG_UI.labels[key].trim()) throw new Error(`blog-ui: labels.${key} must be a non-empty string`);
@@ -110,7 +110,15 @@ const FACT_FILTERS = {
  *  {{ price.<id>.<unit>.<min|max> }} rates (pricing.json); numbers render as
  *  vi-VN đồng ("2.000.000đ"). Filters: | vnd | list | raw | tel | intl.
  *  Unknown paths or filters throw — copy can never go stale. */
+// "{{ price.x.week.min }}–{{ price.x.week.max }}" (or "từ … đến …") of a
+// rate whose min equals max reads as that one price, never "A–A".
+const PRICE_RANGE = /(từ\s+)?\{\{\s*price\.([a-z0-9-]+)\.(day|week|month)\.min\s*\}\}(\s*(?:–|—|-|đến)\s*)\{\{\s*price\.\2\.\3\.max\s*\}\}/gi;
+
 export function resolveFacts(html, business, pricing = PRICING) {
+  html = html.replace(PRICE_RANGE, (m, from, id, unit) => {
+    const r = pricing.vehicles.find((v) => v.id === id)?.rates?.[unit];
+    return r && Number.isFinite(r.min) && r.min === r.max ? `{{ price.${id}.${unit}.min }}` : m;
+  });
   return html.replace(/\{\{\s*(business|price)\.([a-z0-9_.-]+)(?:\s*\|\s*(\w+))?\s*\}\}/gi, (_, ns, path, filter) => {
     const value = ns === 'price' ? priceFact(pricing, path)
       : path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), business);
@@ -154,7 +162,14 @@ const ICON_PATHS = {
   calendar: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
   bolt: '<path d="M13 3 5 13.5h6L10 21l8-10.5h-6L13 3Z"/>',
   check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
-  chat: '<path d="M4.5 5.5h15a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H10l-4.5 3.5V17h-1a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/>'
+  chat: '<path d="M4.5 5.5h15a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H10l-4.5 3.5V17h-1a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/>',
+  // v78 app-style navigation (bottom tab bar + desktop menu): Lucide-style strokes.
+  home: '<path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/>',
+  book: '<path d="M12 7v13.5"/><path d="M3.5 5h5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1 3.5-3.5h5v13h-5a3.5 3.5 0 0 0-3.5 2.5 3.5 3.5 0 0 0-3.5-2.5h-5Z"/>',
+  grid: '<rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/>',
+  menu: '<path d="M4 6.5h16M4 12h16M4 17.5h16"/>',
+  tool: '<path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5Z"/><path d="M14.5 6.5 17 4l3 3-2.5 2.5"/>',
+  compass: '<circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2 5-5 2 2-5Z"/>'
 };
 export function icon(name, cls = 'i') {
   const paths = ICON_PATHS[name];

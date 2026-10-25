@@ -10,7 +10,7 @@
   ],
   "category_aliases": {
     "Xe tay ga": ["xe ga"],
-    "Xe 50cc": ["50cc"],
+    "Xe tay ga 50cc": ["xe ga 50cc", "tay ga 50cc", "50cc"],
     "Xe máy điện": ["xe điện"]
   },
   "vehicles": [
@@ -22,11 +22,11 @@
       "description": "Xe côn truyền thống, dễ điều khiển",
       "rates": {
         "day": { "min": 150000, "max": 150000 },
-        "week": { "min": null, "max": null },
-        "month": { "min": null, "max": null }
+        "week": { "min": 700000, "max": 700000 },
+        "month": { "min": 900000, "max": 1200000 }
       },
-      "deposit": { "min": null, "max": null },
-      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "deposit": { "min": 2000000, "max": 3000000 },
+      "deposit_note": "Tiền đặt cọc là khoản riêng, không tính vào giá thuê; mức cọc được xác nhận khi đặt xe.",
       "popular": true,
       "order": 1
     },
@@ -38,11 +38,11 @@
       "description": "Xe ga hiện đại, thoải mái",
       "rates": {
         "day": { "min": 200000, "max": 200000 },
-        "week": { "min": 800000, "max": 1000000 },
+        "week": { "min": 1000000, "max": 1000000 },
         "month": { "min": 1800000, "max": 2000000 }
       },
-      "deposit": { "min": null, "max": null },
-      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "deposit": { "min": 4000000, "max": 5000000 },
+      "deposit_note": "Tiền đặt cọc là khoản riêng, không tính vào giá thuê; mức cọc được xác nhận khi đặt xe.",
       "popular": true,
       "order": 2
     },
@@ -54,11 +54,11 @@
       "description": "Xe ga hiện đại, mạnh mẽ",
       "rates": {
         "day": { "min": 200000, "max": 200000 },
-        "week": { "min": 800000, "max": 800000 },
-        "month": { "min": 1400000, "max": 1400000 }
+        "week": { "min": 1000000, "max": 1000000 },
+        "month": { "min": 1500000, "max": 1500000 }
       },
-      "deposit": { "min": null, "max": null },
-      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "deposit": { "min": 3000000, "max": 3000000 },
+      "deposit_note": "Tiền đặt cọc là khoản riêng, không tính vào giá thuê; mức cọc được xác nhận khi đặt xe.",
       "popular": true,
       "order": 3
     },
@@ -70,31 +70,31 @@
       "description": "Xe ga giá rẻ, tiết kiệm",
       "rates": {
         "day": { "min": 150000, "max": 150000 },
-        "week": { "min": 600000, "max": 700000 },
-        "month": { "min": 1000000, "max": 1200000 }
+        "week": { "min": 700000, "max": 700000 },
+        "month": { "min": 900000, "max": 1200000 }
       },
-      "deposit": { "min": null, "max": null },
-      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "deposit": { "min": 2000000, "max": 2000000 },
+      "deposit_note": "Tiền đặt cọc là khoản riêng, không tính vào giá thuê; mức cọc được xác nhận khi đặt xe.",
       "popular": true,
       "order": 4
     },
     {
       "id": "xe-50cc",
-      "name": "Xe 50cc",
-      "category": "Xe 50cc",
-      "aliases": ["Xe 50cc", "50cc"],
+      "name": "Xe tay ga 50cc",
+      "category": "Xe tay ga 50cc",
+      "aliases": ["Xe tay ga 50cc", "Xe ga 50cc", "Tay ga 50cc", "Xe 50cc", "50cc"],
       "matches_as_category": true,
-      "description": "Xe 50cc nhẹ, dễ điều khiển, phù hợp quãng đường ngắn trong nội thành.",
+      "description": "Xe tay ga 50cc nhẹ, dễ điều khiển, phù hợp quãng đường ngắn trong nội thành.",
       "rates": {
-        "day": { "min": null, "max": null },
+        "day": { "min": 200000, "max": 200000 },
         "week": { "min": null, "max": null },
         "month": { "min": null, "max": null }
       },
-      "deposit": { "min": null, "max": null },
-      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "deposit": { "min": 4000000, "max": 4000000 },
+      "deposit_note": "Tiền đặt cọc là khoản riêng, không tính vào giá thuê; mức cọc được xác nhận khi đặt xe.",
       "popular": false,
       "order": 5,
-      "note": "Liên hệ Nguyễn Tú để kiểm tra giá hiện tại"
+      "note": "Giá theo tuần và theo tháng: liên hệ Nguyễn Tú để được báo giá."
     },
     {
       "id": "electric-bike",
@@ -108,7 +108,7 @@
         "month": { "min": null, "max": null }
       },
       "deposit": { "min": null, "max": null },
-      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "deposit_note": "Tiền đặt cọc là khoản riêng, xác nhận theo mẫu xe khi đặt.",
       "popular": true,
       "order": 6,
       "note": "Liên hệ Nguyễn Tú để kiểm tra giá hiện tại"
@@ -125,7 +125,7 @@
         "month": { "min": null, "max": null }
       },
       "deposit": { "min": null, "max": null },
-      "deposit_note": "Tiền đặt cọc cần được xác nhận trực tiếp.",
+      "deposit_note": "Tiền đặt cọc là khoản riêng, xác nhận theo mẫu xe khi đặt.",
       "popular": false,
       "order": 7,
       "note": "Liên hệ Nguyễn Tú để kiểm tra giá hiện tại"

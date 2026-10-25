@@ -5,9 +5,13 @@
  * month/week/day tiers. It never invents rates: a tier with null bounds is
  * simply unavailable for packaging, and a vehicle without any usable tier
  * yields null (meaning "contact for price"), never 0 VND.
+ * A shorter tier never stands in for a longer one (<= 6 days, <= 4 weeks):
+ * no published weekly rate = "contact" for 7+ days, never 7 × the day rate.
  */
 
 const TIER_DAYS = { month: 30, week: 7, day: 1 };
+const MAX_DAYS = TIER_DAYS.week - 1;
+const MAX_WEEKS = Math.floor(TIER_DAYS.month / TIER_DAYS.week);
 
 /** True when at least one rate tier carries a usable bound. */
 export function hasAnyRate(rates) {
@@ -26,12 +30,12 @@ function tierBound(tier, bound) {
  */
 function feasiblePackages(days) {
   const packages = [];
-  const maxMonths = Math.ceil(days / 30);
+  const maxMonths = Math.ceil(days / TIER_DAYS.month);
   for (let months = 0; months <= maxMonths; months++) {
-    const maxWeeks = Math.ceil((days - months * 30) / 7);
+    const maxWeeks = Math.min(MAX_WEEKS, Math.ceil((days - months * TIER_DAYS.month) / TIER_DAYS.week));
     for (let weeks = 0; weeks <= maxWeeks; weeks++) {
-      const rest = days - months * 30 - weeks * 7;
-      if (rest < 0) continue;
+      const rest = days - months * TIER_DAYS.month - weeks * TIER_DAYS.week;
+      if (rest < 0 || rest > MAX_DAYS) continue;
       packages.push({ months, weeks, days: rest });
     }
   }

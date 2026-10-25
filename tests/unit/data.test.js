@@ -58,20 +58,22 @@ test('all rates are positive numbers or null', () => {
 });
 
 test('unconfirmed prices stay null (no invented zeros)', () => {
-  for (const id of ['xe-50cc', 'electric-bike', 'electric-scooter']) {
+  // Owner table: electric vehicles are "Liên hệ" for every unit, the 50cc scooter for week/month.
+  const unpriced = { 'electric-bike': ['day', 'week', 'month'], 'electric-scooter': ['day', 'week', 'month'], 'xe-50cc': ['week', 'month'] };
+  for (const [id, types] of Object.entries(unpriced)) {
     const v = pricing.vehicles.find((x) => x.id === id);
-    for (const type of ['day', 'week', 'month']) {
+    for (const type of types) {
       assert.equal(v.rates[type].min, null, `${id}.${type}.min`);
       assert.equal(v.rates[type].max, null, `${id}.${type}.max`);
     }
   }
 });
 
-test('known regression pricing values are preserved', () => {
+test('known pricing values match the owner table (full table: tests/unit/pricing-owner-table.test.js)', () => {
   const find = (id) => pricing.vehicles.find((v) => v.id === id);
-  assert.deepEqual(find('honda-vision').rates.week, { min: 800000, max: 1000000 });
-  assert.deepEqual(find('honda-airblade').rates.month, { min: 1400000, max: 1400000 });
-  assert.deepEqual(find('honda-click').rates.month, { min: 1000000, max: 1200000 });
+  assert.deepEqual(find('honda-vision').rates.week, { min: 1000000, max: 1000000 });
+  assert.deepEqual(find('honda-airblade').rates.month, { min: 1500000, max: 1500000 });
+  assert.deepEqual(find('honda-click').rates.month, { min: 900000, max: 1200000 });
   assert.deepEqual(find('honda-wave').rates.day, { min: 150000, max: 150000 });
 });
 

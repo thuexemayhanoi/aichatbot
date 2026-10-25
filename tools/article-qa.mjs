@@ -19,7 +19,7 @@
  *   fact-resolution       {{ business.* }} placeholders all resolve
  *   html-render-safe      no embedded script/style, balanced core tags
  *   verified-phones-only  no phone-like number outside business.json
- *   verified-deposits-only deposit sentences use verified amounts only
+ *   verified-deposits-only deposit sentences use verified amounts only (business.json policy + pricing.json per vehicle)
  *   internal-links-resolve every internal href exists on disk
  *
  * Warnings (never block publish, -5 each, score never goes below 0):
@@ -85,10 +85,12 @@ function verifiedPhones(business) {
   return set;
 }
 
-/** Deposit amounts verified in business.json, formatted vi-VN ("2.000.000"). */
-function verifiedDeposits(business) {
+/** Deposit amounts verified in business.json (policy range) and pricing.json
+ *  (per-vehicle deposits), formatted vi-VN ("2.000.000"). */
+function verifiedDeposits(business, pricing) {
   const out = new Set();
-  for (const v of [business.policies?.deposit?.min, business.policies?.deposit?.max]) {
+  const perVehicle = (pricing?.vehicles ?? []).flatMap((v) => [v.deposit?.min, v.deposit?.max]);
+  for (const v of [business.policies?.deposit?.min, business.policies?.deposit?.max, ...perVehicle]) {
     if (Number.isFinite(v)) out.add(v.toLocaleString('vi-VN'));
   }
   return out;
@@ -214,7 +216,7 @@ export function scopedQa(id) {
   const badPhone = rawNumbers.find((d) => !phones.has(d));
   crit('verified-phones-only', badPhone === undefined, `unverified phone-like number in body: ${badPhone ?? ''}`);
 
-  const deposits = verifiedDeposits(business);
+  const deposits = verifiedDeposits(business, existsSync(join(ROOT, 'data/business/pricing.json')) ? JSON.parse(read('data/business/pricing.json')) : null);
   const amountRe = /(\d[\d.,]*)\s?đ/g;
   let badDeposit = null;
   // Split on sentence enders followed by whitespace so vi-VN thousand
@@ -226,7 +228,7 @@ export function scopedQa(id) {
     }
     if (badDeposit) break;
   }
-  crit('verified-deposits-only', badDeposit === null, `deposit amount not backed by business.json: ${badDeposit ?? ''}`);
+  crit('verified-deposits-only', badDeposit === null, `deposit amount not backed by business.json / pricing.json: ${badDeposit ?? ''}`);
 
   const pagePath = row.output_path;
   const badLinks = [];
