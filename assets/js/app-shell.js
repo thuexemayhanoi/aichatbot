@@ -4,7 +4,7 @@
  * (assets/js/main.js owns the home screen).
  * - Theme (Light / Dark / Auto) — same storage + tokens as the Agent app
  * - Verified open/closed status line (business.json is the only truth)
- * - Menu drawer + accordion groups (same behaviour as the home drawer)
+ * - Menu drawer + tab bar (shared assets/js/drawer.js)
  * - Contact hrefs filled from verified business.json — never hard-coded
  * - v61: parent-hub dropdowns — hover/focus-within (CSS) + a small touch
  *   toggle so tablets are not hover-only; Escape and outside click close
@@ -12,54 +12,15 @@
  */
 import { initTheme } from './theme.js?v=63';
 import { computeStatus, renderStatus } from './business-status.js?v=63';
+import { createDrawer } from './drawer.js?v=78';
 
 initTheme({ storage: globalThis.localStorage, matchMedia: globalThis.matchMedia?.bind(globalThis) });
 
-// --- Menu drawer (same open/close + accordion contract as home) ---
-const menuBtn = document.getElementById('motoai-menu-btn');
-const drawer = document.getElementById('motoai-drawer');
-const backdrop = document.getElementById('motoai-drawer-backdrop');
-const drawerClose = document.getElementById('motoai-drawer-close');
-
-let drawerOpen = false;
-function setDrawer(open) {
-  drawerOpen = open;
-  drawer.hidden = !open;
-  backdrop.hidden = !open;
-  menuBtn?.setAttribute('aria-expanded', open ? 'true' : 'false');
-}
-menuBtn?.addEventListener('click', () => setDrawer(!drawerOpen));
-drawerClose?.addEventListener('click', () => setDrawer(false));
-backdrop?.addEventListener('click', () => setDrawer(false));
-drawer?.addEventListener('click', (event) => {
-  if (event.target.closest('.motoai-group-btn')) return; // accordion expands in place
-  if (event.target.closest('a, button')) setDrawer(false);
-});
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && drawerOpen) setDrawer(false);
-});
-
-// One accordion group open at a time (ARIA-backed, like home).
-const groupButtons = [...document.querySelectorAll('.motoai-group-btn')];
-const closeGroups = (except) => {
-  for (const btn of groupButtons) {
-    if (btn === except) continue;
-    btn.setAttribute('aria-expanded', 'false');
-    document.getElementById(btn.getAttribute('aria-controls'))?.setAttribute('hidden', '');
-  }
-};
-for (const btn of groupButtons) {
-  btn.addEventListener('click', () => {
-    const items = document.getElementById(btn.getAttribute('aria-controls'));
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    closeGroups(btn);
-    btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-    if (items) {
-      if (expanded) items.setAttribute('hidden', '');
-      else items.removeAttribute('hidden');
-    }
-  });
-}
+// --- Menu drawer + bottom tab bar: the shared controller (drawer.js) ---
+createDrawer();
+// While a field has focus the keyboard owns the bottom edge: the tab bar steps aside.
+document.addEventListener('focusin', (e) => document.body.classList.toggle('is-typing', e.target.matches('input, textarea, select')));
+document.addEventListener('focusout', () => document.body.classList.remove('is-typing'));
 
 // --- Verified business data: status line + contact hrefs ---
 const statusEl = document.getElementById('blog-business-status');

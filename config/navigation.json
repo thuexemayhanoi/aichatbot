@@ -182,5 +182,45 @@
     "chinh-sach": "📜",
     "privacy": "🔒",
     "terms": "📃"
+  },
+  "svg_icons": {
+    "note": "Inline SVG icon names (tools/blog-components.mjs ICON_PATHS) for the app-style menus: desktop top level (>= 1180px) and the bottom tab bar.",
+    "home": "home",
+    "blog": "book",
+    "pages": "grid",
+    "hubs": {
+      "C-APP": "tool",
+      "C-RENT": "scooter",
+      "C-EXPLORE": "compass"
+    }
+  },
+  "tab_bar": {
+    "note": "App-style bottom tab bar (max 5 tabs) on phones and tablets (< 900px) of every content page, and in the Agent app wherever its desktop menu is hidden (replaces the v50 dock). Every tab REFERENCES an existing entry: home = navigation.home, blog = the Cẩm nang drawer group url, agent = navigation.agent; drawer tabs open the one shared drawer (a group id expands that group). No new URL, no second menu.",
+    "aria_label": "Điều hướng chính",
+    "tabs": [
+      {
+        "ref": "home",
+        "icon": "home"
+      },
+      {
+        "ref": "blog",
+        "icon": "book"
+      },
+      {
+        "drawer": "cm",
+        "label": "Danh Mục",
+        "icon": "grid"
+      },
+      {
+        "ref": "agent",
+        "label": "Agent",
+        "icon": "chat"
+      },
+      {
+        "drawer": "all",
+        "label": "Menu",
+        "icon": "menu"
+      }
+    ]
   }
 }

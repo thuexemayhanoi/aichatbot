@@ -152,9 +152,9 @@ test('v58 content site: every generated page uses the shared site header + foote
   }
 });
 
-test('Agent app (/agent/) keeps the app shell: dock present, NO site footer, Menu on the right', () => {
+test('Agent app (/agent/) keeps the app shell: shared tab bar, NO site footer, Menu on the right', () => {
   const html = read('agent/index.html');
-  assert.ok(html.includes('<nav class="motoai-dock"'), 'Agent app keeps the bottom service dock');
+  assert.ok(html.includes('<nav class="app-tabbar"') && !html.includes('motoai-dock'), 'Agent app carries the shared bottom tab bar (v78, replaces the dock)');
   assert.ok(!html.includes('class="blog-footer"'), 'Agent app has NO traditional footer');
   assert.ok(!html.includes('class="site-header"'), 'Agent app keeps its own app header');
   assert.ok(html.includes('id="motoai-menu-btn"'), 'Menu button present');

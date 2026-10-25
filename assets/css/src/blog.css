@@ -129,6 +129,30 @@ body.content-page p { text-wrap: pretty; }
 #motoai-drawer-backdrop,
 #motoai-drawer:not([hidden]) { pointer-events: auto; }
 
+/* ==================== App tab bar (v78, phones + tablets < 900px) ====================
+   The shared tabBar() (look: assets/css/style.css) pinned to the bottom edge
+   above the iPhone home indicator. The page reserves its height, so the bar
+   never covers the footer or a button; while a field has focus the keyboard
+   owns the bottom edge and the bar steps aside. It is the only fixed bottom
+   bar; the header Menu button hides here (the bar carries Menu). */
+body.content-page .app-tabbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 35;
+  padding: 2px calc(env(safe-area-inset-right, 0px) + 6px) calc(env(safe-area-inset-bottom, 0px) + 2px) calc(env(safe-area-inset-left, 0px) + 6px);
+  border-top: 1px solid var(--line); background: var(--scrim);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  body.content-page .app-tabbar { background: var(--paper); }
+}
+@media (max-width: 899.98px) {
+  body.content-page { padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px)); }
+  body.content-page .site-actions .motoai-menu { display: none; }
+  body.content-page.is-typing .app-tabbar { display: none; } /* app-shell.js: a field has focus */
+}
+@media (min-width: 900px) {
+  body.content-page .app-tabbar { display: none; }
+}
+
 /* ==================== Header ==================== */
 .site-header {
   position: sticky; top: 0; z-index: 40;
@@ -578,7 +602,7 @@ body.content-page .blog-article-body {
 }
 
 @media print {
-  .site-header, .blog-footer, .contact-band, .blog-toc, .motoai-drawer, .blog-chips { display: none !important; }
+  .site-header, .blog-footer, .contact-band, .blog-toc, .motoai-drawer, .blog-chips, .app-tabbar { display: none !important; }
   body.content-page, .site-main { background: none; }
 }
 
@@ -715,6 +739,21 @@ body.content-page .card-lead {
 .blog-footer-title { letter-spacing: 0.04em; }
 .blog-footer-cta { border: 1px solid var(--line-strong); border-radius: var(--r-pill); background: transparent; }
 .blog-footer-cta:hover, .blog-footer-col a:hover { color: var(--signal-ink); border-color: var(--signal); }
+/* v78 app-style footer on phones/tablets: every link stays, grouped in
+   rounded cards two by two (like an app's menu shortcuts) instead of one
+   long list; the bottom tab bar is the primary navigation there.
+   Desktop keeps the full columns above. */
+@media (max-width: 899.98px) {
+  .blog-footer { padding-top: var(--s6); }
+  .blog-footer-inner { gap: var(--s5); }
+  .blog-footer-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: var(--s3); }
+  .blog-footer-col { min-width: 0; padding: 10px 14px 4px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
+  .blog-footer-col a { min-height: 42px; overflow-wrap: anywhere; }
+  .blog-footer-col li + li { border-top: 1px solid var(--line); }
+  .footer-sub a { padding-left: 0; color: var(--ink-2); }
+  .blog-footer-secondary { margin-top: var(--s3); padding-top: 0; border-top: 0; }
+  .blog-footer-bottom { margin-top: var(--s4); }
+}
 
 /* Horizontal space is a luxury; mobile never trades usability for aesthetics. */
 @media (min-width: 950px) {

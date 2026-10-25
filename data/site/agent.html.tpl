@@ -88,13 +88,7 @@
         <button class="motoai-send" type="submit" id="motoai-send" aria-label="Gửi câu hỏi"></button>
       </form>
 
-      <!-- Bottom dock (v50): 4-item customer navigation, below the composer. -->
-      <nav class="motoai-dock" id="motoai-dock" aria-label="Điều hướng nhanh">
-        <a class="motoai-dock-item" href="/blog/thue-xe/"><span class="motoai-dock-icon" aria-hidden="true" data-icon="scooter"></span><span>Dịch vụ</span></a>
-        <button type="button" class="motoai-dock-item" id="motoai-dock-contact"><span class="motoai-dock-icon" aria-hidden="true" data-icon="phone"></span><span>Liên hệ</span></button>
-        <button type="button" class="motoai-dock-item" id="motoai-dock-price"><span class="motoai-dock-icon" aria-hidden="true" data-icon="tag"></span><span>Giá thuê</span></button>
-        <a class="motoai-dock-item" id="motoai-dock-map" href="#" target="_blank" rel="noopener noreferrer"><span class="motoai-dock-icon" aria-hidden="true" data-icon="map"></span><span>Bản đồ</span></a>
-      </nav>
+      <!-- @generated tab-bar: tabBar({ path: 'agent/' }) in tools/app-shell.mjs (the website's bottom tab bar, below the composer; hidden in embed and where the desktop menu shows) -->
     </section>
 
     <!-- Supporting SEO copy (v47.1): AFTER the chatbot, unobtrusive. Hidden in embed mode. -->

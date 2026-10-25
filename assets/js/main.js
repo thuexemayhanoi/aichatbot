@@ -12,6 +12,7 @@ import { DEFAULT_CHIPS, resolveChipHref } from '../../src/app/suggestions.js';
 import { ENABLE_STORAGE_KEY } from './ai-settings.js';
 import { initPwa } from './pwa.js';
 import { initTheme } from './theme.js?v=63';
+import { createDrawer } from './drawer.js?v=78';
 
 const DATA_FILES = [
   ['business', '/data/business/business.json'],
@@ -66,10 +67,6 @@ async function init() {
     send: document.getElementById('motoai-send'),
     status: document.getElementById('motoai-status'),
     aiToggle: document.getElementById('motoai-menu-agent'),
-    menuBtn: document.getElementById('motoai-menu-btn'),
-    drawer: document.getElementById('motoai-drawer'),
-    drawerBackdrop: document.getElementById('motoai-drawer-backdrop'),
-    drawerClose: document.getElementById('motoai-drawer-close'),
     menuAddress: document.getElementById('motoai-menu-address'),
     menuContact: document.getElementById('motoai-menu-contact'),
     menuCall: document.getElementById('motoai-menu-call'),
@@ -82,31 +79,13 @@ async function init() {
     aiStatusText: document.getElementById('motoai-ai-status-text'),
     aiOff: document.getElementById('motoai-ai-off'),
     reset: document.getElementById('motoai-reset'),
-    dockPrice: document.getElementById('motoai-dock-price'),
-    dockContact: document.getElementById('motoai-dock-contact'),
-    dockMap: document.getElementById('motoai-dock-map'),
     menuWhatsapp: document.getElementById('motoai-menu-whatsapp')
   };
   const DEBUG = new URLSearchParams(location.search).get('debug') === '1';
 
-  // Menu drawer: contact hrefs are resolved from verified business.json
-  // once it finishes loading (fillMenuLinks below).
-  let drawerOpen = false;
-  function setDrawer(open) {
-    drawerOpen = open;
-    elements.drawer.hidden = !open;
-    elements.drawerBackdrop.hidden = !open;
-    elements.menuBtn?.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
+  // Drawer + tab bar: shared drawer.js; contact hrefs fill from business.json (fillMenuLinks).
   function wireMenu() {
-    elements.menuBtn?.addEventListener('click', () => setDrawer(!drawerOpen));
-    elements.drawerClose?.addEventListener('click', () => setDrawer(false));
-    elements.drawerBackdrop?.addEventListener('click', () => setDrawer(false));
-    elements.drawer?.addEventListener('click', (event) => {
-      // Any action closes — except accordion group toggles, which expand in place.
-      if (event.target.closest('.motoai-group-btn')) return;
-      if (event.target.closest('a, button')) setDrawer(false);
-    });
+    createDrawer();
     elements.menuAddress?.addEventListener('click', () => {
       elements.input.value = 'Địa chỉ ở đâu?';
       autoGrow();
@@ -119,42 +98,6 @@ async function init() {
       autoGrow();
       submit(null, { fresh: true });
     });
-    // Dock "Giá thuê": run the verified Agent price flow — never hard-coded prices.
-    elements.dockPrice?.addEventListener('click', () => {
-      elements.input.value = 'Giá thuê xe bao nhiêu?';
-      autoGrow();
-      submit(null, { fresh: true });
-    });
-    // Dock "Liên hệ": open the drawer straight into the verified contact group
-    // (Gọi / WhatsApp / Địa chỉ / Bản đồ from business.json) — no
-    // hard-coded external contact URL on the dock itself.
-    elements.dockContact?.addEventListener('click', () => {
-      setDrawer(true);
-      // v56: contact actions live in the Dịch vụ group.
-      const groupBtn = document.getElementById('motoai-group-dv-btn');
-      if (groupBtn && groupBtn.getAttribute('aria-expanded') !== 'true') groupBtn.click();
-    });
-    // Grouped menu accordion (v50): one group open at a time, ARIA-backed.
-    const groupButtons = [...document.querySelectorAll('.motoai-group-btn')];
-    const closeGroups = (except) => {
-      for (const btn of groupButtons) {
-        if (btn === except) continue;
-        btn.setAttribute('aria-expanded', 'false');
-        document.getElementById(btn.getAttribute('aria-controls'))?.setAttribute('hidden', '');
-      }
-    };
-    for (const btn of groupButtons) {
-      btn.addEventListener('click', () => {
-        const items = document.getElementById(btn.getAttribute('aria-controls'));
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        closeGroups(btn);
-        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        if (items) {
-          if (expanded) items.setAttribute('hidden', '');
-          else items.removeAttribute('hidden');
-        }
-      });
-    }
   }
   // Direct mode only, and only now that `elements` + wireMenu are fully
   // defined — this is the single place menu wiring happens.
@@ -168,8 +111,6 @@ async function init() {
     setHref(elements.menuWhatsapp, resolveChipHref({ ref: 'whatsapp' }, businessData));
     setHref(elements.menuCall, resolveChipHref({ ref: 'phone_uri' }, businessData));
     setHref(elements.menuMap, resolveChipHref({ ref: 'maps' }, businessData));
-    // Dock "Bản đồ": same verified maps URL — the canonical link lives in business.json.
-    setHref(elements.dockMap, resolveChipHref({ ref: 'maps' }, businessData));
   }
 
   // True when the reader is already near the bottom; only then auto-scroll,
@@ -402,12 +343,8 @@ async function init() {
     setStatus(elements.status, 'Đã xoá hội thoại và ngữ cảnh.', 'success');
   });
 
-  // Inside an embed iframe, Escape must close the widget on the host page.
+  // Embed: Escape closes the widget on the host page (direct mode: drawer.js).
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !config.embed && !elements.drawer.hidden) {
-      setDrawer(false);
-      return;
-    }
     if (config.embed && event.key === 'Escape' && window.parent !== window) {
       window.parent.postMessage('motoai:close', '*');
     }

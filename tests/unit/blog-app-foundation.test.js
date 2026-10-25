@@ -139,8 +139,9 @@ test('navigation.json: short labels, canonical routes, no duplicate label for th
 // so every footer link is a drawer link with the very same label and target.
 const navGroup = (id) => drawerCore().find((e) => e.kind === 'group' && e.id === id);
 const linkKey = (attrs) => /data-contact-ref="([^"]+)"/.exec(attrs)?.[1] ? 'ref:' + /data-contact-ref="([^"]+)"/.exec(attrs)[1] : /href="([^"]+)"/.exec(attrs)[1];
-const linkSet = (fragment) => [...fragment.matchAll(/<a([^>]*)>([^<]+)<\/a>/g)]
-  .map((m) => [linkKey(m[1]), m[2].replace(/&amp;/g, '&').replace(/^\S+\s(?=\S)/u, (w) => (/[\p{L}\d]/u.test(w) ? w : ''))]);
+// Labels are the anchor text; an app-style inline SVG icon (v78 desktop menu) is not part of it.
+const linkSet = (fragment) => [...fragment.matchAll(/<a([^>]*)>((?:<svg[\s\S]*?<\/svg>)?[^<]+)<\/a>/g)]
+  .map((m) => [linkKey(m[1]), m[2].replace(/<svg[\s\S]*?<\/svg>/, '').replace(/&amp;/g, '&').replace(/^\S+\s(?=\S)/u, (w) => (/[\p{L}\d]/u.test(w) ? w : ''))]);
 
 test('menu ↔ footer vocabulary: footer links are drawer links with identical labels, and vice versa', () => {
   const html = read('blog/index.html');
