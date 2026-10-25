@@ -6,7 +6,7 @@ The Agent app (`/agent/`), the homepage `/` and every generated blog/content pag
 - `config/navigation.json`: short 2–3-word customer labels, four drawer groups, icon vocabulary and contact intents
 - `config/site-pages.json`: every real static Page; pages without `group` are **Trang Web**, pages with `"group": "legal"` are **Pháp Lý** (same registry, same order — there is no second legal list)
 - `data/blog/taxonomy.json`: parent cluster -> canonical category -> subtopic hierarchy, and the category labels/URLs (`categoryNav()`; `navigation.json` `categories` only holds order + icon); do not change IDs, slugs or URLs merely to shorten menu labels
-- The blog home ("Cẩm nang", `/blog/`) is the `cm` drawer group (`label` + `url`), read through `blogHome()` by the header, footer, search link and breadcrumb (visible + JSON-LD)
+- The blog home ("Cẩm nang", `/blog/`) is the `cm` drawer group (`label` + `url`), read through `blogHome()` by the header, the search icon, the drawer's Tìm Bài link, the footer and the breadcrumb (visible + JSON-LD); it is the only key for that URL (`search` has none) and the builder writes that page at `blog/index.html`
 - `data/blog/published.json` and the matrix: during a build only subtopic hubs with actually published articles become links; empty topics are not linked
 
 ## Runtime

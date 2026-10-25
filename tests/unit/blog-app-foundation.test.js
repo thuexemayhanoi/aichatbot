@@ -119,7 +119,10 @@ test('navigation.json: short labels, canonical routes, no duplicate label for th
   // site-pages.json) through categoryNav()/drawerCore() — navigation.json keeps none.
   for (const c of navigation.categories) assert.deepEqual(Object.keys(c).sort(), ['icon', 'id'], `category ${c.id}: icon only`);
   assert.equal(navigation.legal, undefined, 'no second legal list: Pháp Lý = site-pages.json group "legal"');
-  const all = [navigation.agent, navigation.search,
+  const search = drawerCore().find((e) => e.id === 'cm').children.find((c) => c.kind === 'link');
+  assert.equal(navigation.search.url, undefined, 'Tìm Bài has no URL of its own: it links the blog home');
+  assert.equal(search.url, blogHome().url, 'Tìm Bài → the blog home');
+  const all = [navigation.agent, search,
     ...navigation.categories.map((c) => categoryNav(c.id)), ...drawerCore().find((e) => e.id === 'pl').children];
   for (const item of all) {
     assert.ok(item.label.length > 0 && item.label.length <= 12, `short label: ${item.label}`);
@@ -180,9 +183,12 @@ function footerLinks(html) {
   const start = html.indexOf('<footer class="blog-footer">');
   assert.ok(start >= 0, 'footer present');
   const end = html.indexOf('</footer>', start);
-  return [...html.slice(start, end).matchAll(/<a([^>]*)>([^<]+)<\/a>/g)]
-    .map((m) => `${m[1].trim()}>${m[2]}`)
-    .sort();
+  const footer = html.slice(start, end);
+  const links = [...footer.matchAll(/<a([^>]*)>([^<]+)<\/a>/g)];
+  // Every anchor is a plain text link, so the counts below see ALL of them
+  // (an icon-only or nested-markup link cannot slip past the cap).
+  assert.equal((footer.match(/<a\b/g) ?? []).length, links.length, 'every footer anchor is a counted text link');
+  return links.map((m) => `${m[1].trim()}>${m[2]}`).sort();
 }
 
 test('every content screen renders the shared footer with an identical link set', () => {

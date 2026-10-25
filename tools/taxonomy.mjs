@@ -125,13 +125,16 @@ export function categoryNav(categoryId) {
 }
 
 /**
- * Normalized CORE drawer (v63) — the single menu contract shared by the
- * chat homepage (index.html) and every content page (tools/app-shell.mjs).
- * Order: Agent → Giới Thiệu → Chủ đề (theme) → Cẩm nang (hubs + Tìm Bài)
- * → Dịch vụ → Pháp lý. Chat-only extras (divider + Xóa chat) are NOT part
- * of the core; they are listed in navigation.chat_extras and only rendered
- * on the chat homepage. The regression tests parse both surfaces and
- * compare them against this list, so the two can never drift again.
+ * Normalized CORE drawer (v63, v77) — the single menu contract shared by the
+ * Agent app (/agent/, tools/agent-page.mjs) and every content page including
+ * the homepage (tools/app-shell.mjs); header, footer and breadcrumbs read the
+ * same entries. Order: Trang Chủ → Agent → Chủ đề (theme) → Trang Web
+ * (site-pages.json pages without group) → Cẩm nang (hubs + Tìm Bài) →
+ * Dịch Vụ (navigation.json services) → Pháp Lý (site-pages.json pages with
+ * "group": "legal"). Chat-only extras (divider + Xóa chat) are NOT part of
+ * the core; they are listed in navigation.chat_extras and only rendered in
+ * the Agent app. The regression tests parse both surfaces and compare them
+ * against this list, so the two can never drift again.
  */
 export function drawerCore() {
   const link = (item) => ({
@@ -144,6 +147,7 @@ export function drawerCore() {
     core.push({ kind: 'theme', icon: navigation.drawer.theme.icon, label: navigation.drawer.theme.label });
   }
   const realTopicUrls = menuSubtopicUrls();
+  // A service with a url (a real page) renders as a plain link under Dịch Vụ.
   const contacts = (services) => services.map((s) =>
     s.url ? link(s)
       : s.action ? { kind: 'action', icon: s.icon, label: s.label, action: s.action }
@@ -155,7 +159,7 @@ export function drawerCore() {
         return {
           kind: 'hub', icon: hub.icon, label: hub.label, url: hub.url,
           children: hub.children.flatMap((cat) => {
-            const items = [link({ ...cat, url: `/blog/${cat.dir}/`, level: 'category' })];
+            const items = [link({ ...cat, level: 'category' })];
             for (const topic of taxonomy.subtopics[cat.id] ?? []) {
               const url = `/blog/${cat.dir}/${topic.slug}/`;
               if (realTopicUrls.has(url)) {
@@ -180,7 +184,7 @@ export function drawerCore() {
     if (child.set === 'pages') return SITE_PAGES.filter((p) => p.group !== 'legal').map(pageLink);
     if (child.set === 'legal') return SITE_PAGES.filter((p) => p.group === 'legal').map(pageLink);
     if (child.set === 'contact-actions') return contacts(navigation.services);
-    if (child.ref === 'search') return [link(navigation.search)];
+    if (child.ref === 'search') return [link({ ...navigation.search, url: blogHome().url })];
     throw new Error(`unknown drawer child in navigation.json: ${JSON.stringify(child)}`);
   };
   for (const g of navigation.drawer?.groups ?? []) {

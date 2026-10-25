@@ -39,8 +39,7 @@
   ],
   "search": {
     "label": "Tìm Bài",
-    "icon": "🔎",
-    "url": "/blog/"
+    "icon": "🔎"
   },
   "services": [
     {
@@ -101,7 +100,7 @@
     }
   ],
   "drawer": {
-    "note": "Trang Web lists the config/site-pages.json pages without a group; Pháp Lý lists the pages with \"group\": \"legal\" (same registry, same order); Cẩm Nang resolves hubs > canonical categories > non-empty subtopics from data/blog/taxonomy.json and its url is the blog home; Dịch Vụ has verified contact actions. Agent chat keeps its reset control.",
+    "note": "Trang Web lists the config/site-pages.json pages without a group; Pháp Lý lists the pages with \"group\": \"legal\" (same registry, same order); Cẩm Nang resolves hubs > canonical categories > non-empty subtopics from data/blog/taxonomy.json and its url is the blog home (the one key for that URL: header, Tìm Bài, footer and breadcrumbs read it; the builder writes that page at blog/index.html); Dịch Vụ has verified contact actions. Agent chat keeps its reset control.",
     "theme": {
       "icon": "🌗",
       "label": "Chủ đề"

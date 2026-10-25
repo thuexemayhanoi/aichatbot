@@ -27,6 +27,23 @@ const AGENT = 'agent/index.html';
 const normalize = (html) => html.replace(/ aria-current="page"| data-active="1"/g, '').replace(/\s+/g, ' ').trim();
 const desktopNav = (html) => /<nav class="site-nav" aria-label="Chuyên mục">[\s\S]*?<\/nav>/.exec(html)?.[0];
 const footer = (html) => html.slice(html.indexOf('<footer class="blog-footer">'), html.indexOf('</footer>'));
+/** Style rules of a stylesheet with the @media prelude(s) they sit in (comments stripped). */
+function cssRules(css) {
+  const out = [];
+  const stack = [];
+  let start = 0;
+  const src = css.replace(/\/\*[\s\S]*?\*\//g, '');
+  for (let k = 0; k < src.length; k++) {
+    if (src[k] === '{') { stack.push(src.slice(start, k).split(';').pop().trim()); start = k + 1; }
+    else if (src[k] === '}') {
+      const head = stack.pop();
+      if (head && !head.startsWith('@')) out.push({ media: stack.filter((h) => h.startsWith('@media')).join(' and '), selectors: head.split(',').map((s) => s.trim()), body: src.slice(start, k) });
+      start = k + 1;
+    }
+  }
+  return out;
+}
+const AGENT_NAV_MEDIA = '@media (min-width: 900px) and (min-height: 600px) and (hover: hover) and (pointer: fine)';
 
 test('every page group renders the SAME desktop menu (homepage, blog, hubs, subtopics, articles, Pages)', () => {
   assert.ok(CONTENT_PAGES.length > 2000, 'all generated content pages are checked');
@@ -51,9 +68,25 @@ test('the Agent app shows the same desktop menu (+ Trang Chủ, since its brand 
   // so touch screens and landscape phones keep the finger-sized drawer with the
   // same links), hidden in the embed widget.
   const css = read('assets/css/style.css');
-  assert.match(css, /\.motoai-header \.site-nav \{ display: none; \}\s*@media \(min-width: 900px\) and \(min-height: 600px\) and \(hover: hover\) and \(pointer: fine\) \{\s*\.motoai-header \{ grid-template-areas: "nav nav nav nav"[^}]*\}\s*\.motoai-header \.site-nav \{ display: flex;/,
+  assert.match(css, /\.motoai-header \.site-nav \{ display: none; \}\s*@media \(min-width: 900px\) and \(min-height: 600px\) and \(hover: hover\) and \(pointer: fine\) \{\s*body:not\(\[data-motoai-embed="1"\]\) \.motoai-header \{ grid-template-areas: "nav nav nav nav"[^}]*\}\s*\.motoai-header \.site-nav \{ display: flex;/,
     'hidden by default; own row above the title only on pointer desktops');
-  assert.equal((css.match(/\.motoai-header \.site-nav \{ display: flex;/g) ?? []).length, 1, 'shown in exactly one place');
+  // Every rule that can show the nav element (a selector ending in .site-nav with a
+  // non-none display) is either the generic content-page rule — which the more
+  // specific .motoai-header rule above hides on the Agent page — or the ONE
+  // Agent rule inside the pointer-desktop query. No !important anywhere.
+  const shows = cssRules(css).filter((r) => /display:\s*(?!none)[\w-]/.test(r.body) && r.selectors.some((s) => /\.site-nav$/.test(s)));
+  assert.ok(shows.length > 0, 'parsed the desktop menu rules');
+  for (const r of shows) {
+    assert.ok(!/!important/.test(r.body), `no !important on a menu display rule: ${r.selectors.join(', ')}`);
+    for (const s of r.selectors.filter((sel) => /\.site-nav$/.test(sel))) {
+      const ok = (s === '.site-nav' && r.media === '@media (min-width: 900px)') || (s === '.motoai-header .site-nav' && r.media === AGENT_NAV_MEDIA);
+      assert.ok(ok, `unexpected rule shows the menu: "${s}" in "${r.media || 'no media'}"`);
+    }
+  }
+  assert.equal(shows.filter((r) => r.selectors.includes('.motoai-header .site-nav')).length, 1, 'the Agent menu is shown in exactly one place');
+  const agentGrid = cssRules(css).filter((r) => /grid-template-areas:\s*"nav/.test(r.body));
+  assert.deepEqual(agentGrid.map((r) => [r.selectors.join(', '), r.media]), [['body:not([data-motoai-embed="1"]) .motoai-header', AGENT_NAV_MEDIA]],
+    'the menu row exists only where the menu shows (never an empty row in the embed widget)');
   assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-header \.site-nav \{ display: none; \}/, 'never inside the embed widget');
 });
 
@@ -98,6 +131,7 @@ test('footer: identical on every content page and built only from referenced dra
 test('breadcrumbs start at the navigation home entry on every page that has one', () => {
   let checked = 0;
   let withSchema = 0;
+  let nonBlogSchema = 0;
   const SITE = 'https://chatbot.thuexemaynguyentu.com';
   const unesc = (s) => s.replace(/&amp;/g, '&');
   for (const p of CONTENT_PAGES) {
@@ -110,12 +144,16 @@ test('breadcrumbs start at the navigation home entry on every page that has one'
     const ld = /"@type":"BreadcrumbList","itemListElement":(\[[\s\S]*?\])\}/.exec(html)?.[1];
     if (!ld) continue;
     withSchema++;
-    const visible = [...trail.matchAll(/<a href="([^"]+)">([^<]+)<\/a>/g)].map((m) => [SITE + m[1], unesc(m[2])]);
+    if (!p.startsWith('blog/')) nonBlogSchema++;
+    const canonical = /<link rel="canonical" href="([^"]+)"/.exec(html)[1];
+    const current = /<span>([^<]*)<\/span>\s*$/.exec(trail)?.[1];
+    assert.ok(current, `${p}: the trail ends with the current page`);
+    const visible = [...[...trail.matchAll(/<a href="([^"]+)">([^<]+)<\/a>/g)].map((m) => [SITE + m[1], unesc(m[2])]), [canonical, unesc(current)]];
     const schema = JSON.parse(ld).map((i) => [i.item, i.name]);
-    assert.deepEqual(schema.slice(0, visible.length), visible, `${p}: BreadcrumbList = visible breadcrumb`);
+    assert.deepEqual(schema, visible, `${p}: BreadcrumbList = visible breadcrumb (every crumb, last = this page)`);
   }
   assert.ok(checked > 2000, 'articles, hubs and Pages carry the breadcrumb');
-  assert.ok(withSchema > 2000, 'articles and hubs carry the BreadcrumbList schema');
+  assert.equal(withSchema - nonBlogSchema, CONTENT_PAGES.filter((p) => p.startsWith('blog/')).length, 'the blog home and every hub, category, subtopic and article page carry the BreadcrumbList schema');
 });
 
 test('one source per label: blog home, categories and Pháp Lý come from their registries', () => {
@@ -132,6 +170,10 @@ test('one source per label: blog home, categories and Pháp Lý come from their 
     assert.equal(nav.label, taxonomy.categories[c.id].label, `${c.id}: label from taxonomy.json`);
     assert.equal(nav.url, `/blog/${taxonomy.categories[c.id].dir}/`, `${c.id}: url from taxonomy.json`);
   }
+  // The blog home URL is a generated page whose canonical is that URL.
+  assert.match(read(`${blog.url.replace(/^\//, '')}index.html`), new RegExp(`<link rel="canonical" href="https://chatbot\\.thuexemaynguyentu\\.com${blog.url}"`), 'the blog home URL is the page the builder writes');
+  const search = drawerCore().find((e) => e.id === 'cm').children.find((c) => c.kind === 'link');
+  assert.equal(search.url, blog.url, 'Tìm Bài links the same blog home (no second URL key)');
   const legal = SITE_PAGES.filter((p) => p.group === 'legal').map((p) => `/${p.dir}/`);
   assert.deepEqual(drawerCore().find((e) => e.id === 'pl').children.map((c) => c.url), legal, 'Pháp Lý = registry pages with group "legal", same order');
   const web = SITE_PAGES.filter((p) => p.group !== 'legal').map((p) => `/${p.dir}/`);
@@ -149,5 +191,8 @@ test('no stale UI: every page and the service worker reference the current conte
   }
   const sw = read('service-worker.js');
   assert.ok(sw.includes(`'./assets/css/style.css?v=${v}'`), 'offline shell precaches the current style.css');
+  const precached = [...sw.matchAll(/(assets\/(?:css|js)\/[\w.-]+\.(?:css|js))\?v=(\d+)/g)];
+  assert.ok(precached.length >= 2, 'style.css and main.js are precached with a version');
+  for (const [, file, ver] of precached) assert.equal(ver, assetVersion(file), `service worker: ${file} carries its current content hash`);
   assert.match(sw, /request\.mode === 'navigate'[\s\S]{0,500}event\.respondWith\(\s*fetch\(request\)/, 'pages are network-first, so a deploy is never hidden behind an old cache');
 });
