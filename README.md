@@ -168,6 +168,19 @@ Writer production (continuous, 2 bài/chunk, SIMPLE PRODUCTION MODE v67): viết
 
 - `/` là trang chủ website (hero, dịch vụ, giới thiệu Agent, cẩm nang theo chủ đề, bài nổi bật, bài mới, thông tin cửa hàng, footer) sinh từ config/taxonomy/manifest/business. Khung chat toàn màn hình chuyển sang `/agent/`; link cũ `/?ask=…`, `/?action=…`, `/?embed=…` tự chuyển sang `/agent/`. Chi tiết: `docs/HOMEPAGE-V3.md`.
 
+## Điều hướng kiểu app + đồng bộ dữ liệu kinh doanh (v78)
+
+- **Thanh tab dưới màn hình:** gồm Trang Chủ, Cẩm nang, Danh Mục, Agent và Menu. Dùng một component (`tabBar()`) cho mọi trang trên mobile/tablet và cho trang Agent, thay dock cũ. Cấu hình ở `config/navigation.json` → `tab_bar`, chỉ tham chiếu URL đã có. Danh Mục và Menu mở drawer chung (`assets/js/drawer.js`). Thanh tab có safe-area iOS, tự ẩn khi đang gõ, ẩn trong embed và nhường chỗ cho menu desktop.
+- **Menu desktop:** có biểu tượng SVG theo `svg_icons`, hiện từ 1360px.
+- **Footer:** trên mobile chuyển sang thẻ bo góc, hai thẻ mỗi hàng, giữ đủ 25 link.
+- **Bảng giá và tiền cọc chuẩn của chủ:** nằm ở `data/business/pricing.json`, được khóa bằng `tests/unit/pricing-owner-table.test.js`.
+  - Trang `/gia-thue/` có cột Tiền cọc riêng và OfferCatalog schema.
+  - Chatbot trả lời tiền cọc theo xe.
+  - Máy tính tiền thuê không suy ra giá tuần/tháng từ giá ngày.
+  - Giá chưa công bố hiển thị "Liên hệ".
+- **NAP chuẩn:** nằm ở `data/business/business.json` (`display_name`, `gbp_name`, link bản đồ cid).
+- **Giá ghi cứng trong bài:** đã sửa qua quy trình review body, xem `docs/seo/price-review-2026-10-25.md`.
+
 ## Homepage (v47.1 — chatbot-first, nay là trang `/agent/`)
 
 - Chatbot LÀ homepage: mở URL là vào ngay Agent (header "Hỗ trợ Agent", địa chỉ đã xác minh, ☰ menu, messages, quick bar, composer) — KHÔNG hero phía trên, KHÔNG cần cuộn.
