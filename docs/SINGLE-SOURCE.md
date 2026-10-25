@@ -14,8 +14,9 @@ Sau khi sửa nguồn: `node tools/build-blog.mjs`. Cách khác: push lên `main
 | CTA trong bài (theo danh mục), contact band, banner, slot nội dung | `config/blog-ui.json` → `cta`, `banner`, `slots` | Mọi bài/hub theo danh mục |
 | Bật/tắt tóm tắt, mục lục, bài liên quan, contact band, motion… | `config/blog-ui.json` → `features` | Mọi trang |
 | Số bài liên quan, tiêu đề khối, nhãn giao diện | `config/blog-ui.json` → `related`, `labels` | Mọi trang |
-| Menu ngang desktop, drawer, footer, gốc breadcrumb | `config/navigation.json` (+ `config/site-pages.json`, `data/blog/taxonomy.json`); footer chỉ tham chiếu mục của drawer | Mọi trang, trang chủ và trang Agent `/agent/` (menu ngang ≥ 900px) |
-| Trang tĩnh (giới thiệu, chính sách, liên hệ, đối tác, bảo mật, điều khoản, giá thuê) | `config/site-pages.json` + `data/site/*.body.html`, `data/legal/*.body.html` | Trang tương ứng, sitemap, menu |
+| Menu ngang desktop, drawer, footer, gốc breadcrumb | `config/navigation.json` (+ `config/site-pages.json`, `data/blog/taxonomy.json`); footer chỉ tham chiếu mục của drawer | Mọi trang, trang chủ và trang Agent `/agent/` (menu ngang ≥ 900px; riêng Agent chỉ trên máy có chuột/trackpad, màn hình cao ≥ 600px — máy cảm ứng dùng drawer) |
+| Trang tĩnh (giới thiệu, chính sách, liên hệ, đối tác, bảo mật, điều khoản, giá thuê) | `config/site-pages.json` + `data/site/*.body.html`, `data/legal/*.body.html`; `"group": "legal"` xếp trang vào nhóm Pháp Lý | Trang tương ứng, sitemap, menu Trang Web / Pháp Lý, footer |
+| Tên + URL danh mục trong menu, footer, chip, breadcrumb | `data/blog/taxonomy.json` (`categories.*.label`, `dir`) | Mọi trang |
 | Trang chủ `/` (chữ hero, dịch vụ, khối Agent, tiêu đề các phần, số bài mới) | `config/site-pages.json` → `siteHome` | `index.html` (danh mục từ taxonomy, bài nổi bật/bài mới từ manifest, cửa hàng từ `business.json`) |
 | Trang Agent `/agent/` (khung chat, SEO copy, FAQ, JSON-LD WebApplication) | `data/site/agent.html.tpl` | `agent/index.html` |
 | Đường dẫn Agent (nút "Hỏi Agent", contact band, menu, embed) | `config/navigation.json` → `agent.url` | Mọi trang |

@@ -6,7 +6,7 @@ const esc = (s) => String(s).replace(/&/g, '&amp;');
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
-  taxonomy, navigation, CLUSTER_BY_ID, CATEGORY_IDS, viSlug, deriveSubtopic, drawerCore
+  taxonomy, navigation, CLUSTER_BY_ID, CATEGORY_IDS, viSlug, deriveSubtopic, drawerCore, categoryNav, blogHome
 } from '../../tools/taxonomy.mjs';
 import { BLOG_UI } from '../../tools/blog-components.mjs';
 import { paginate, buildToc, PER_PAGE } from '../../tools/build-blog.mjs';
@@ -115,8 +115,12 @@ test('every matrix row derives a valid cluster + subtopic (all rows, no exceptio
 
 test('navigation.json: short labels, canonical routes, no duplicate label for the same URL', () => {
   const byUrl = new Map();
+  // Category and legal labels/URLs come from their own registries (taxonomy.json,
+  // site-pages.json) through categoryNav()/drawerCore() — navigation.json keeps none.
+  for (const c of navigation.categories) assert.deepEqual(Object.keys(c).sort(), ['icon', 'id'], `category ${c.id}: icon only`);
+  assert.equal(navigation.legal, undefined, 'no second legal list: Pháp Lý = site-pages.json group "legal"');
   const all = [navigation.agent, navigation.search,
-    ...navigation.categories, ...navigation.legal];
+    ...navigation.categories.map((c) => categoryNav(c.id)), ...drawerCore().find((e) => e.id === 'pl').children];
   for (const item of all) {
     assert.ok(item.label.length > 0 && item.label.length <= 12, `short label: ${item.label}`);
     if (byUrl.has(item.url)) {
@@ -152,7 +156,7 @@ test('menu ↔ footer vocabulary: footer links are drawer links with identical l
   const expected = [navigation.home, navigation.agent, ...['pages', 'dv', 'pl'].flatMap((id) => navGroup(id).children)]
     .map((e) => `${e.kind === 'action' ? `${navigation.agent.url}?action=${e.action}` : e.kind === 'contact' ? `ref:${e.ref}` : e.url}|${e.label}`);
   for (const entry of expected) assert.ok(footer.includes(entry), `drawer entry "${entry}" is in the footer`);
-  assert.ok(footer.includes(`${navigation.search.url}|${navGroup('cm').label}`), 'the blog home, labelled like the header');
+  assert.ok(footer.includes(`${blogHome().url}|${blogHome().label}`), 'the blog home, labelled like the header');
 });
 
 // v61: footer hub silo — every hub column carries its parent hub link and both children.
@@ -164,8 +168,8 @@ test('footer hub columns express the parent → child hierarchy (v61)', () => {
     assert.ok(footer.includes(`blog-footer-title">${escName}<`), `footer column ${c.name}`);
     assert.ok(footer.includes(`class="footer-hub-link" href="/blog/${c.dir}/"`), `footer parent link ${c.name}`);
     for (const id of c.categories) {
-      const nav = navigation.categories.find((n) => n.id === id);
-      assert.ok(footer.includes(`class="footer-sub"><a href="/blog/${taxonomy.categories[id].dir}/">${nav.label}<`), `footer child ${nav.label} under ${c.name}`);
+      const label = esc(taxonomy.categories[id].label);
+      assert.ok(footer.includes(`class="footer-sub"><a href="/blog/${taxonomy.categories[id].dir}/">${label}<`), `footer child ${label} under ${c.name}`);
     }
   }
 });
@@ -195,6 +199,9 @@ test('every content screen renders the shared footer with an identical link set'
     navGroup('pages').children.length + navGroup('dv').children.length + navGroup('pl').children.length +
     taxonomy.clusters.reduce((n, c) => n + 1 + c.categories.length, 0);
   assert.equal(first.length, expectedCount, 'footer = exactly the referenced drawer entries + hub silo + CTA');
+  // Absolute cap so a new registry entry or footer_groups ref cannot silently bloat it:
+  // 1 CTA + 2 Trang Chủ/Agent + 1 Cẩm nang + 4 Trang Web + 9 hub silo + 5 Dịch Vụ + 3 Pháp Lý.
+  assert.ok(first.length <= 25, `footer stays compact (${first.length} links)`);
 });
 
 test('footer column titles come from the same sources as the menu (brand, hubs, drawer groups)', () => {

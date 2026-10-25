@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { taxonomy, navigation, deriveSubtopic } from '../../tools/taxonomy.mjs';
 import { parseMatrix } from '../../tools/blog-factory.mjs';
+import { SITE_PAGES } from '../../tools/site-pages.mjs';
 
 const ROWS = Object.fromEntries(parseMatrix().map((r) => [r.article_id, r]));
 
@@ -201,12 +202,11 @@ test('footer: parent-hub columns with indented children + compact secondary row'
     assert.ok(footer.includes(`class="footer-hub-link" href="/blog/${c.dir}/"`), `footer parent ${c.name}`);
     for (const id of c.categories) {
       const cat = taxonomy.categories[id];
-      const navItem = navigation.categories.find((n) => n.id === id);
-      assert.ok(footer.includes(`href="/blog/${cat.dir}/">${navItem.label}<`), `footer child ${navItem.label}`);
+      assert.ok(footer.includes(`href="/blog/${cat.dir}/">${cat.label}<`), `footer child ${cat.label}`);
     }
   }
   assert.ok(footer.includes('blog-footer-secondary'), 'secondary service/legal row');
-  for (const l of navigation.legal) {
+  for (const l of SITE_PAGES.filter((pg) => pg.group === 'legal').map((pg) => ({ url: `/${pg.dir}/` }))) {
     assert.ok(footer.includes(`href="${l.url}"`), `secondary row links ${l.url}`);
   }
 });

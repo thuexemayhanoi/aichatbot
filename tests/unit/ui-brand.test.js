@@ -409,7 +409,12 @@ test('bottom dock: exactly 4 items, flat nav look, verified actions, one row', (
   // No persistent selected state — dock items are actions, not tabs.
   // No sticky selected state on the dock (the shared desktop-menu CSS may style
   // aria-current on .site-nav links; no rule may target a dock item that way).
-  assert.ok(!/\.motoai-dock-item[^{,]*(\.motoai-active|aria-current)/.test(css) && !/aria-current/.test(dock), 'no sticky selected state');
+  const selectors = css.replace(/\/\*[\s\S]*?\*\//g, '').match(/[^{}]+(?=\{)/g).flatMap((s) => s.split(',')).map((s) => s.trim());
+  for (const s of selectors.filter((sel) => sel.includes('aria-current'))) {
+    assert.ok(s.startsWith('.site-nav'), `aria-current is only styled on the desktop menu, never the dock: ${s}`);
+  }
+  assert.ok(!/\.motoai-active/.test(css) && !/\.motoai-dock[^{]*aria-current/.test(css), 'no selected-state class or aria-current rule for the dock');
+  assert.ok(!/aria-current/.test(dock), 'no sticky selected state in the dock markup');
   assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-dock\s*\{\s*display:\s*none;/, 'embed hides the dock');
   // Dark/light contrast: dock never renders dark text on a purple surface.
   assert.ok(!/background:\s*var\(--color-primary\)/.test(item), 'dock cells are never purple');

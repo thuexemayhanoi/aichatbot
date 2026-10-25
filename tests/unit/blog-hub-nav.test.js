@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { taxonomy, navigation } from '../../tools/taxonomy.mjs';
+import { SITE_PAGES } from '../../tools/site-pages.mjs';
 import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
 
 /**
@@ -19,6 +20,8 @@ const esc = (s) => String(s).replace(/&/g, '&amp;');
 const CLUSTER_DIRS = taxonomy.clusters.map((c) => c.dir);
 const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
+// Pháp Lý = the site-pages.json registry entries marked "group": "legal".
+const LEGAL = SITE_PAGES.filter((p) => p.group === 'legal').map((p) => ({ url: `/${p.dir}/` }));
 const ALL_CONTENT = [...walk('blog').filter((p) => p.endsWith('.html')),
   ...['privacy', 'terms', 'gioi-thieu', 'chinh-sach', 'lien-he', 'gia-thue', 'doi-tac'].map((d) => `${d}/index.html`)];
 
@@ -81,7 +84,7 @@ test('v61 footer renders the hub silo columns and a secondary Dịch vụ/Pháp 
   for (const page of ALL_CONTENT) {
     const html = read(page);
     assert.ok(html.includes('blog-footer-secondary'), `${page}: secondary footer row`);
-    for (const l of navigation.legal) {
+    for (const l of LEGAL) {
       assert.ok(html.includes(`href="${l.url}"`), `${page}: legal link ${l.url}`);
     }
   }

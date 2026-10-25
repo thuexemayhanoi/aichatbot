@@ -4,13 +4,14 @@ The Agent app (`/agent/`), the homepage `/` and every generated blog/content pag
 
 ## Single sources
 - `config/navigation.json`: short 2–3-word customer labels, four drawer groups, icon vocabulary and contact intents
-- `config/site-pages.json`: every real static Page; the renderer automatically includes non-legal pages in **Trang Web** and legal pages stay in **Pháp Lý**
-- `data/blog/taxonomy.json`: parent cluster -> canonical category -> subtopic hierarchy; do not change IDs, slugs or URLs merely to shorten menu labels
+- `config/site-pages.json`: every real static Page; pages without `group` are **Trang Web**, pages with `"group": "legal"` are **Pháp Lý** (same registry, same order — there is no second legal list)
+- `data/blog/taxonomy.json`: parent cluster -> canonical category -> subtopic hierarchy, and the category labels/URLs (`categoryNav()`; `navigation.json` `categories` only holds order + icon); do not change IDs, slugs or URLs merely to shorten menu labels
+- The blog home ("Cẩm nang", `/blog/`) is the `cm` drawer group (`label` + `url`), read through `blogHome()` by the header, footer, search link and breadcrumb (visible + JSON-LD)
 - `data/blog/published.json` and the matrix: during a build only subtopic hubs with actually published articles become links; empty topics are not linked
 
 ## Runtime
 - `tools/taxonomy.mjs` resolves the normalized menu tree
-- `tools/app-shell.mjs` `siteNav()` is the ONE desktop menu (Cẩm nang + parent hubs › categories › live subtopics + Trang Web Pages): the website header renders it on every content page and `tools/agent-page.mjs` renders it in the Agent header (plus Trang Chủ, shown ≥ 900px, hidden in embed). Its CSS is one block in `assets/css/style.css`, shared by both shells
+- `tools/app-shell.mjs` `siteNav()` is the ONE desktop menu (Cẩm nang + parent hubs › categories › live subtopics + Trang Web Pages): the website header renders it on every content page and `tools/agent-page.mjs` renders it in the Agent header (plus Trang Chủ). On the Agent page it shows only on a real desktop — `(min-width: 900px) and (min-height: 600px) and (hover: hover) and (pointer: fine)` — because that page loads no dropdown script: tablets, touch laptops and landscape phones keep the finger-sized drawer with the same links, and the chat keeps its height; hidden in embed. Its CSS is one block in `assets/css/style.css`, shared by both shells
 - `footerHtml()` resolves `config/navigation.json` `footer_groups`, which only REFERENCE drawer entries (home, agent, drawer groups) — the footer can no longer drift from the menu; breadcrumbs start at `navigation.home` and the "Cẩm nang" group
 - `tools/menu-drawer.mjs` renders the identical chat and content drawers (`contentLink()` is shared with the footer); `tools/agent-page.mjs` writes the chat drawer into `agent/index.html` (generated from `data/site/agent.html.tpl`) on rebuild; the homepage `index.html` uses the content drawer like every content page
 - `tools/app-shell.mjs` renders content drawer plus scrollable desktop dropdowns

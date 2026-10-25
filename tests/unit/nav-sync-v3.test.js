@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { drawerCore, navigation, taxonomy } from '../../tools/taxonomy.mjs';
+import { drawerCore, navigation, taxonomy, blogHome, categoryNav } from '../../tools/taxonomy.mjs';
 import { siteNav, assetVersion } from '../../tools/app-shell.mjs';
-import { STATIC_DIRS } from '../../tools/site-pages.mjs';
+import { STATIC_DIRS, SITE_PAGES } from '../../tools/site-pages.mjs';
 
 /**
  * v77 GLOBAL NAVIGATION SYNC: one source (config/navigation.json +
@@ -46,9 +46,14 @@ test('the Agent app shows the same desktop menu (+ Trang Chủ, since its brand 
   assert.equal(normalize(nav), normalize(siteNav({ home: true })));
   assert.equal(normalize(nav), normalize(siteNav()).replace('<nav class="site-nav" aria-label="Chuyên mục"> ',
     `<nav class="site-nav" aria-label="Chuyên mục"> <a href="${navigation.home.url}">${navigation.home.label}</a> `), 'only difference: the Trang Chủ entry');
-  // Layout-only differences, all in the shared stylesheet: desktop row, hidden in the embed widget.
+  // Layout-only differences, all in the shared stylesheet: its own row on a real
+  // desktop (wide, tall, mouse/trackpad — the Agent page loads no dropdown script,
+  // so touch screens and landscape phones keep the finger-sized drawer with the
+  // same links), hidden in the embed widget.
   const css = read('assets/css/style.css');
-  assert.match(css, /@media \(min-width: 900px\) \{\s*\.motoai-header \{ grid-template-areas: "nav nav nav nav"/, 'own row above the title on desktop');
+  assert.match(css, /\.motoai-header \.site-nav \{ display: none; \}\s*@media \(min-width: 900px\) and \(min-height: 600px\) and \(hover: hover\) and \(pointer: fine\) \{\s*\.motoai-header \{ grid-template-areas: "nav nav nav nav"[^}]*\}\s*\.motoai-header \.site-nav \{ display: flex;/,
+    'hidden by default; own row above the title only on pointer desktops');
+  assert.equal((css.match(/\.motoai-header \.site-nav \{ display: flex;/g) ?? []).length, 1, 'shown in exactly one place');
   assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-header \.site-nav \{ display: none; \}/, 'never inside the embed widget');
 });
 
@@ -92,19 +97,55 @@ test('footer: identical on every content page and built only from referenced dra
 
 test('breadcrumbs start at the navigation home entry on every page that has one', () => {
   let checked = 0;
+  let withSchema = 0;
+  const SITE = 'https://chatbot.thuexemaynguyentu.com';
+  const unesc = (s) => s.replace(/&amp;/g, '&');
   for (const p of CONTENT_PAGES) {
-    const trail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(read(p))?.[1];
+    const html = read(p);
+    const trail = /<nav class="blog-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/.exec(html)?.[1];
     if (!trail) continue;
     checked++;
     assert.ok(trail.startsWith(`<a href="${navigation.home.url}">${navigation.home.label}</a>`), `${p}: breadcrumb root`);
+    // The BreadcrumbList schema is built from the same crumbs: same names, same targets.
+    const ld = /"@type":"BreadcrumbList","itemListElement":(\[[\s\S]*?\])\}/.exec(html)?.[1];
+    if (!ld) continue;
+    withSchema++;
+    const visible = [...trail.matchAll(/<a href="([^"]+)">([^<]+)<\/a>/g)].map((m) => [SITE + m[1], unesc(m[2])]);
+    const schema = JSON.parse(ld).map((i) => [i.item, i.name]);
+    assert.deepEqual(schema.slice(0, visible.length), visible, `${p}: BreadcrumbList = visible breadcrumb`);
   }
   assert.ok(checked > 2000, 'articles, hubs and Pages carry the breadcrumb');
+  assert.ok(withSchema > 2000, 'articles and hubs carry the BreadcrumbList schema');
 });
 
-test('no stale UI: every page and the service worker reference the current content-hashed stylesheet', () => {
+test('one source per label: blog home, categories and Pháp Lý come from their registries', () => {
+  const blog = blogHome();
+  const group = navigation.drawer.groups.find((g) => g.id === 'cm');
+  assert.deepEqual(blog, { label: group.label, url: group.url }, 'Cẩm nang = the drawer group, with its url');
+  assert.equal(drawerCore().find((e) => e.id === 'cm').label, blog.label, 'drawer shows the same label');
+  const html = read('blog/thue-xe/thue-xe-may-gia-re/index.html');
+  assert.ok(desktopNav(html).includes(`href="${blog.url}">${blog.label}</a>`), 'header links the blog home with the same label');
+  assert.ok(footer(html).includes(`href="${blog.url}">${blog.label}</a>`), 'footer links the blog home with the same label');
+  assert.ok(html.includes(`<a href="${blog.url}">${blog.label}</a> ›`), 'breadcrumb uses the same label');
+  for (const c of navigation.categories) {
+    const nav = categoryNav(c.id);
+    assert.equal(nav.label, taxonomy.categories[c.id].label, `${c.id}: label from taxonomy.json`);
+    assert.equal(nav.url, `/blog/${taxonomy.categories[c.id].dir}/`, `${c.id}: url from taxonomy.json`);
+  }
+  const legal = SITE_PAGES.filter((p) => p.group === 'legal').map((p) => `/${p.dir}/`);
+  assert.deepEqual(drawerCore().find((e) => e.id === 'pl').children.map((c) => c.url), legal, 'Pháp Lý = registry pages with group "legal", same order');
+  const web = SITE_PAGES.filter((p) => p.group !== 'legal').map((p) => `/${p.dir}/`);
+  assert.deepEqual(drawerCore().find((e) => e.id === 'pages').children.map((c) => c.url), web, 'Trang Web = the other registry pages');
+});
+
+test('no stale UI: every page and the service worker reference the current content-hashed assets', () => {
   const v = assetVersion('assets/css/style.css');
-  for (const p of ['index.html', 'blog/index.html', 'gia-thue/index.html', AGENT, 'blog/thue-xe/thue-xe-may-gia-re/index.html']) {
-    assert.ok(read(p).includes(`assets/css/style.css?v=${v}"`), `${p}: links the current style.css`);
+  for (const p of [...CONTENT_PAGES, AGENT]) {
+    const html = read(p);
+    assert.ok(html.includes(`assets/css/style.css?v=${v}"`), `${p}: links the current style.css`);
+    for (const [, file, ver] of html.matchAll(/(assets\/(?:css|js)\/[\w.-]+\.(?:css|js))\?v=(\d+)/g)) {
+      assert.equal(ver, assetVersion(file), `${p}: ${file} carries its current content hash`);
+    }
   }
   const sw = read('service-worker.js');
   assert.ok(sw.includes(`'./assets/css/style.css?v=${v}'`), 'offline shell precaches the current style.css');

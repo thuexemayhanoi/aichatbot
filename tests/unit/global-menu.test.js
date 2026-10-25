@@ -235,6 +235,9 @@ test('v63 footer: MotoAI + 3 parent hubs + Dịch Vụ + Pháp Lý (shown upperc
     assert.ok(footer.includes('mỗi ngày'), `${p}: daily hours phrasing`);
     assert.ok(footer.includes('blog-footer-bottom'), `${p}: bottom bar present`);
   }
+  // Labels keep their source casing (Dịch Vụ, Pháp Lý); the shared label trait shows them uppercase.
+  const traits = /([^{}]*\.blog-footer-title[^{}]*)\{([^}]*)\}/.exec(read('assets/css/src/blog.css'));
+  assert.ok(traits && /text-transform:\s*uppercase/.test(traits[2]), 'footer titles render uppercase');
 });
 
 // ---------- 4. No duplicate IDs anywhere ----------
