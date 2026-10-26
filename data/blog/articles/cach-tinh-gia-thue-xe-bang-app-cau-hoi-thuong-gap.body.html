@@ -4,25 +4,25 @@
 <h2>Công cụ tính giá dựa vào dữ liệu nào?</h2>
 <p>Kết quả ước tính lấy từ bảng giá tham khảo trên trang <a href="/gia-thue/">giá thuê</a>. Các mức hiện có gồm:</p>
 <ul>
-<li><strong>Honda Wave (xe số):</strong> công cụ chỉ có mức ngày, khoảng 150.000đ/ngày, nên thuê dài thì nhân theo số ngày rồi hỏi cửa hàng.</li>
-<li><strong>Honda Vision:</strong> mức ngày {{ price.honda-vision.day.min }}/ngày; gói tuần nằm trong khoảng {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần; gói tháng khoảng {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng.</li>
-<li><strong>Honda Air Blade:</strong> cùng mức ngày với Vision là {{ price.honda-vision.day.min }}/ngày, nhưng gói tuần cố định {{ price.honda-vision.week.min }}/tuần và gói tháng 1.400.000đ/tháng.</li>
-<li><strong>Honda Click, Yamaha Mio:</strong> rẻ nhất nhóm xe ga, ngày khoảng 150.000đ/ngày, tuần 600.000đ–700.000đ/tuần, tháng 1.000.000đ–1.200.000đ/tháng.</li>
-<li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> giá liên hệ, công cụ không đưa ra con số.</li>
+<li><strong>Honda Wave (xe số):</strong> mức ngày khoảng 150.000đ/ngày, gói tuần {{ price.honda-wave.week.min }}/tuần, gói tháng khoảng {{ price.honda-wave.month.min }}–{{ price.honda-wave.month.max }}/tháng.</li>
+<li><strong>Honda Vision:</strong> mức ngày {{ price.honda-vision.day.min }}/ngày; gói tuần {{ price.honda-vision.week.min }}/tuần; gói tháng khoảng {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng.</li>
+<li><strong>Honda Air Blade:</strong> cùng mức ngày với Vision là {{ price.honda-vision.day.min }}/ngày, gói tuần cũng {{ price.honda-airblade.week.min }}/tuần, còn gói tháng {{ price.honda-airblade.month.min }}/tháng.</li>
+<li><strong>Honda Click, Yamaha Mio:</strong> rẻ nhất nhóm xe ga, ngày khoảng 150.000đ/ngày, tuần {{ price.honda-click.week.min }}/tuần, tháng {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng.</li>
+<li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> giá liên hệ, công cụ không đưa ra con số, trừ giá ngày xe 50cc là {{ price.xe-50cc.day.min }}.</li>
 </ul>
 <p>Vì đây là giá tham khảo, kết quả trên màn hình là ước tính để lập kế hoạch. Giá thực tế luôn được cửa hàng xác nhận khi bạn đặt xe.</p>
 
 <h2>Vì sao thuê lẻ nhiều ngày đôi khi đắt hơn gói tuần?</h2>
 <p>Bảng giá có ba chu kỳ: ngày, tuần và tháng. Chu kỳ dài hơn có đơn giá mỗi ngày thấp hơn, nên đến một số ngày nhất định, cộng lẻ sẽ vượt giá gói. Vài ví dụ tính theo giá tham khảo:</p>
 <ol>
-<li><strong>Honda Vision năm ngày:</strong> năm lần 200.000đ là 1.000.000đ, bằng mức trên của giá tuần. Hỏi gói tuần là hợp lý, vì bạn có thể giữ xe thêm hai ngày mà chi phí không tăng.</li>
-<li><strong>Honda Air Blade mười ngày:</strong> một tuần 800.000đ cộng ba ngày lẻ 600.000đ thành 1.400.000đ, đúng bằng giá tháng tham khảo. Khi đó nên hỏi giá tháng.</li>
-<li><strong>Honda Click ba tuần:</strong> ba gói tuần tham khảo là 1.800.000đ–2.100.000đ, trong khi giá tháng chỉ 1.000.000đ–1.200.000đ. Gói tháng rẻ hơn rõ rệt.</li>
+<li><strong>Honda Vision năm ngày:</strong> năm lần 200.000đ là 1.000.000đ, bằng giá tuần. Hỏi gói tuần là hợp lý, vì bạn có thể giữ xe thêm hai ngày mà chi phí không tăng.</li>
+<li><strong>Honda Air Blade mười ngày:</strong> một tuần {{ price.honda-airblade.week.min }} cộng ba ngày lẻ 600.000đ thành 1.600.000đ, đã cao hơn giá tháng tham khảo {{ price.honda-airblade.month.min }}. Khi đó nên hỏi giá tháng.</li>
+<li><strong>Honda Click ba tuần:</strong> ba gói tuần tham khảo là 2.100.000đ, trong khi giá tháng chỉ {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}. Gói tháng rẻ hơn rõ rệt.</li>
 </ol>
 <p>Quy tắc rút ra: trước khi chốt, hãy so số tiền cộng lẻ với gói kế tiếp. Nếu bằng hoặc vượt, hỏi cửa hàng về gói dài hơn. Bài <a href="/blog/thue-xe/cach-doc-bang-gia-thue-xe/">cách đọc bảng giá thuê xe</a> giải thích thêm về cách đọc các khoảng giá.</p>
 
-<h2>Giá tuần và giá tháng là một khoảng, công cụ tính thế nào?</h2>
-<p>Với Vision, Click và Mio, giá tuần và tháng được ghi dạng khoảng, ví dụ 800.000đ–1.000.000đ/tuần. Khoảng này phản ánh việc giá cụ thể phụ thuộc vào xe và thời điểm, cửa hàng sẽ chốt mức chính xác khi đặt. Khi ước tính, bạn nên:</p>
+<h2>Giá tháng là một khoảng, công cụ tính thế nào?</h2>
+<p>Với Vision, Click và Mio, giá tháng được ghi dạng khoảng, ví dụ {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng. Khoảng này phản ánh việc giá cụ thể phụ thuộc vào xe và thời điểm, cửa hàng sẽ chốt mức chính xác khi đặt. Khi ước tính, bạn nên:</p>
 <ul>
 <li>Dùng mức trên của khoảng để lập ngân sách an toàn.</li>
 <li>Ghi rõ ngày nhận, ngày trả khi hỏi để cửa hàng báo đúng mức.</li>
@@ -45,10 +45,10 @@
 <h2>Câu hỏi thường gặp về cách tính giá thuê xe bằng app</h2>
 <h3>Kết quả trên công cụ có phải là giá chốt không?</h3>
 <p>Không. Đó là ước tính theo giá tham khảo; giá chốt do cửa hàng xác nhận khi bạn đặt, dựa trên xe cụ thể và thời gian thuê.</p>
-<h3>Vì sao công cụ không tính được giá xe điện hay xe 50cc?</h3>
-<p>Các dòng này đang để ở dạng giá liên hệ trên website, nên công cụ không có con số để tính. Bạn cần hỏi trực tiếp cửa hàng.</p>
+<h3>Vì sao công cụ không tính được giá xe điện hay giá tuần, tháng của xe 50cc?</h3>
+<p>Xe điện và giá tuần, tháng của xe 50cc đang để ở dạng giá liên hệ trên website, nên công cụ không có con số để tính; riêng giá ngày xe 50cc là {{ price.xe-50cc.day.min }}. Bạn cần hỏi trực tiếp cửa hàng.</p>
 <h3>Thuê bốn ngày Honda Click nên tính lẻ hay theo tuần?</h3>
-<p>Bốn ngày lẻ tham khảo là 600.000đ, bằng mức thấp của giá tuần. Hãy hỏi cửa hàng mức tuần cụ thể để so sánh rồi chọn phương án có lợi hơn.</p>
+<p>Bốn ngày lẻ tham khảo là 600.000đ, thấp hơn giá tuần {{ price.honda-click.week.min }}. Hãy hỏi cửa hàng mức tuần cụ thể để so sánh rồi chọn phương án có lợi hơn.</p>
 <h3>Tôi ở nước ngoài, có cách tính riêng không?</h3>
 <p>Bảng giá tham khảo là chung. Những lưu ý khi hỏi giá cho khách nước ngoài có trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a>.</p>
 

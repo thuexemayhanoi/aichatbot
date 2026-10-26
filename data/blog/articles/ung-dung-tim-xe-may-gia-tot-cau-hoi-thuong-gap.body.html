@@ -18,10 +18,10 @@
 <p>Dưới đây là bảng giá tham khảo mà trợ lý dựa vào. Tất cả đều cần cửa hàng xác nhận lại khi đặt:</p>
 <ul>
 <li>Với Honda Wave (xe số), trợ lý báo khoảng 150.000đ cho mỗi ngày thuê.</li>
-<li>Với Honda Vision, mức ngày khoảng 200.000đ, mức tuần 800.000đ–1.000.000đ và mức tháng 1.800.000đ–2.000.000đ.</li>
-<li>Với Honda Air Blade, mức ngày khoảng 200.000đ, mức tuần 800.000đ và mức tháng 1.400.000đ.</li>
-<li>Với Honda Click hoặc Yamaha Mio, mức ngày khoảng 150.000đ, mức tuần 600.000đ–700.000đ và mức tháng 1.000.000đ–1.200.000đ.</li>
-<li>Với xe 50cc, xe máy điện và xe đạp điện, trợ lý sẽ mời bạn liên hệ để hỏi giá.</li>
+<li>Với Honda Vision, mức ngày khoảng 200.000đ, mức tuần {{ price.honda-vision.week.min }} và mức tháng 1.800.000đ–2.000.000đ.</li>
+<li>Với Honda Air Blade, mức ngày khoảng 200.000đ, mức tuần {{ price.honda-airblade.week.min }} và mức tháng {{ price.honda-airblade.month.min }}.</li>
+<li>Với Honda Click hoặc Yamaha Mio, mức ngày khoảng 150.000đ, mức tuần {{ price.honda-click.week.min }} và mức tháng {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}.</li>
+<li>Với xe 50cc, mức ngày khoảng {{ price.xe-50cc.day.min }}; với gói tuần, tháng của xe 50cc cùng xe máy điện và xe đạp điện, trợ lý sẽ mời bạn liên hệ để hỏi giá.</li>
 </ul>
 <p>Nhìn vào bảng, bạn sẽ thấy với thời gian thuê dài, gói tuần và gói tháng thường có lợi hơn cộng dồn từng ngày. Phiên bản mới nhất của bảng được đăng tại trang <a href="/gia-thue/">giá thuê</a>. Muốn tự nhập số ngày và xem kết quả, bạn có thể dùng <a href="/blog/app/cong-cu-tinh-gia-thue-xe-may-online/">công cụ tính giá thuê xe trực tuyến</a>.</p>
 
@@ -33,7 +33,7 @@
 <p>Một công cụ đáng tin là công cụ biết nói "không". Trợ lý của cửa hàng sẽ không đưa ra những thông tin sau:</p>
 <ol>
 <li>Mã giảm giá hay chương trình khuyến mãi, vì cửa hàng không chạy khuyến mãi.</li>
-<li>Giá cụ thể cho xe 50cc, xe máy điện, xe đạp điện; các dòng này là giá liên hệ.</li>
+<li>Giá cụ thể cho gói tuần, tháng của xe 50cc và cho xe máy điện, xe đạp điện; các dòng này là giá liên hệ.</li>
 <li>Thông số kỹ thuật như quãng đường pin hay tốc độ tối đa mà dữ liệu cửa hàng không có.</li>
 <li>Cam kết xe còn trống vào một ngày cụ thể; việc này cần gọi để kiểm tra.</li>
 </ol>

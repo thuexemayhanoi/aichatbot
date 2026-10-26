@@ -10,15 +10,15 @@
 <li>Honda Air Blade: {{ price.honda-airblade.day.min }}/ngày; {{ price.honda-airblade.week.min }}/tuần; {{ price.honda-airblade.month.min }}/tháng.</li>
 <li>Honda Click, Yamaha Mio: {{ price.honda-click.day.min }}/ngày; {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần; {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng.</li>
 </ul>
-<p>Xe 50cc, xe máy điện và xe đạp điện hiển thị "liên hệ", vì giá những dòng này được báo trực tiếp theo từng trường hợp.</p>
+<p>Xe 50cc chỉ có giá ngày {{ price.xe-50cc.day.min }}; giá tuần, tháng của xe 50cc cùng xe máy điện và xe đạp điện hiển thị "liên hệ", vì giá những dòng này được báo trực tiếp theo từng trường hợp.</p>
 
 <h2>Tính theo ngày, tuần hay tháng: công cụ chọn thế nào?</h2>
 <h3>Vì sao thuê năm, sáu ngày lại được gợi ý gói tuần?</h3>
-<p>Vì đến một số ngày nhất định, cộng giá lẻ từng ngày đã vượt giá gói tuần. Lấy Honda Air Blade làm ví dụ: năm ngày theo giá ngày là 1.000.000đ, trong khi gói tuần tham khảo chỉ 800.000đ. Công cụ sẽ hiển thị cả hai cách để bạn thấy chênh lệch, thay vì tự chọn giúp mà không giải thích.</p>
+<p>Vì đến một số ngày nhất định, cộng giá lẻ từng ngày đã vượt giá gói tuần. Lấy Honda Air Blade làm ví dụ: năm ngày theo giá ngày đã là 1.000.000đ, bằng gói tuần tham khảo {{ price.honda-airblade.week.min }}, sang ngày thứ sáu thì thuê lẻ đắt hơn. Công cụ sẽ hiển thị cả hai cách để bạn thấy chênh lệch, thay vì tự chọn giúp mà không giải thích.</p>
 <h3>Có mốc nào dễ nhớ để tự nhẩm không?</h3>
-<p>Với Click hoặc Mio, bốn ngày lẻ đã là 600.000đ, ngang mức thấp của gói tuần. Với Vision, bốn ngày lẻ là 800.000đ, bằng mức thấp của gói tuần. Nghĩa là từ ngày thứ năm trở đi, bạn nên hỏi gói tuần trước khi chốt. Nếu ở lâu hơn hai tuần, gói tháng thường đáng cân nhắc hơn cộng nhiều gói tuần.</p>
+<p>Với Click hoặc Mio, bốn ngày lẻ đã là 600.000đ, gần bằng gói tuần {{ price.honda-click.week.min }}. Với Vision, năm ngày lẻ là 1.000.000đ, bằng giá gói tuần. Nghĩa là từ ngày thứ năm trở đi, bạn nên hỏi gói tuần trước khi chốt. Nếu ở lâu hơn hai tuần, gói tháng thường đáng cân nhắc hơn cộng nhiều gói tuần.</p>
 <h3>Thuê ba tuần thì tính ra sao?</h3>
-<p>Công cụ sẽ so ba gói tuần với một gói tháng. Với Air Blade, ba gói tuần tham khảo là 2.400.000đ, còn gói tháng là 1.400.000đ, nên trường hợp này gói tháng lợi hơn rõ rệt. Hãy đọc thêm bài <a href="/blog/thue-xe/thue-xe-may-theo-thang/">thuê xe máy theo tháng</a> để biết điều kiện của gói dài ngày.</p>
+<p>Công cụ sẽ so ba gói tuần với một gói tháng. Với Air Blade, ba gói tuần tham khảo cộng lại cao hơn hẳn gói tháng {{ price.honda-airblade.month.min }}, nên trường hợp này gói tháng lợi hơn rõ rệt. Hãy đọc thêm bài <a href="/blog/thue-xe/thue-xe-may-theo-thang/">thuê xe máy theo tháng</a> để biết điều kiện của gói dài ngày.</p>
 
 <h2>Những khoản nào công cụ không cộng vào?</h2>
 <p>Tổng tiền công cụ hiển thị chỉ là tiền thuê xe. Các khoản sau cần tính riêng:</p>

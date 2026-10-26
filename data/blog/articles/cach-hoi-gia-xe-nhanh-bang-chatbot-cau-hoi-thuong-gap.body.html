@@ -19,12 +19,12 @@
 <h3>Chatbot thường báo những mức giá nào?</h3>
 <ul>
 <li>Honda Wave (xe số): tham khảo 150.000đ/ngày.</li>
-<li>Honda Vision: {{ price.honda-vision.day.min }}/ngày, gói tuần 800.000đ–1.000.000đ, gói tháng 1.800.000đ–2.000.000đ.</li>
-<li>Honda Air Blade: chatbot thường trả lời {{ price.honda-airblade.day.min }}/ngày, gói tuần 800.000đ và gói tháng 1.400.000đ.</li>
-<li>Honda Click hoặc Yamaha Mio: mức ngày 150.000đ, mức tuần 600.000đ–700.000đ, mức tháng 1.000.000đ–1.200.000đ.</li>
+<li>Honda Vision: {{ price.honda-vision.day.min }}/ngày, gói tuần {{ price.honda-vision.week.min }}, gói tháng 1.800.000đ–2.000.000đ.</li>
+<li>Honda Air Blade: chatbot thường trả lời {{ price.honda-airblade.day.min }}/ngày, gói tuần {{ price.honda-airblade.week.min }} và gói tháng {{ price.honda-airblade.month.min }}.</li>
+<li>Honda Click hoặc Yamaha Mio: mức ngày 150.000đ, mức tuần {{ price.honda-click.week.min }}, mức tháng {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}.</li>
 </ul>
 <h3>Vì sao có xe chatbot không đưa con số?</h3>
-<p>Với xe 50cc, xe máy điện và xe đạp điện, bảng giá ghi "liên hệ", nên trợ lý sẽ hướng bạn gọi cửa hàng thay vì tự đưa một con số. Tương tự, với những dòng xe không có trong bảng như SH, Lead hay Exciter, trợ lý chỉ có thể gợi ý bạn hỏi tình trạng xe trống trực tiếp.</p>
+<p>Với giá tuần, tháng của xe 50cc và với xe máy điện, xe đạp điện, bảng giá ghi "liên hệ", nên trợ lý sẽ hướng bạn gọi cửa hàng thay vì tự đưa một con số. Tương tự, với những dòng xe không có trong bảng như SH, Lead hay Exciter, trợ lý chỉ có thể gợi ý bạn hỏi tình trạng xe trống trực tiếp.</p>
 
 <h2>Những phần chi phí nào không nằm trong câu trả lời giá?</h2>
 <p>Giá thuê xe chỉ là một phần trong tổng chi phí. Khi hỏi nhanh, bạn nên nhớ những khoản sau thường không được tính sẵn:</p>
