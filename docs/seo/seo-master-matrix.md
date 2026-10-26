@@ -6,9 +6,9 @@
 
 ## Phủ URL
 
-- Tổng URL trong sitemap đã audit: **2137** (100%) — trong đó **2006** bài viết.
+- Tổng URL trong sitemap đã audit: **2138** (100%) — trong đó **2006** bài viết.
 - Bài viết: 2006
-- Trang chủ (Agent): 1
+- Trang chủ (website): 1
 - Trang chính sách thuê xe: 1
 - Trang chuyển đổi (giá): 1
 - Trang chuyển đổi (liên hệ): 1
@@ -19,6 +19,7 @@
 - Trang giới thiệu (E-E-A-T): 1
 - Pháp lý: 2
 - Hub chủ đề con: 33
+- Ứng dụng Agent (chat): 1
 - Khác: 1
 
 ## Trước / sau
@@ -63,11 +64,11 @@
 |---|---:|
 | P0 — chặn crawl/index/truy cập | 133 |
 | P1 — chuyển đổi/SEO tiềm năng cao | 1968 |
-| P2 — semantic/topical/chất lượng nội dung | 36 |
+| P2 — semantic/topical/chất lượng nội dung | 37 |
 
 | Status | Ý nghĩa | Số URL |
 |---|---|---:|
-| DONE | Không còn vấn đề kỹ thuật lẫn nội dung | 2137 |
+| DONE | Không còn vấn đề kỹ thuật lẫn nội dung | 2138 |
 | KEEP | Đã xem xét, giữ nguyên có chủ đích (bài > 2.000 từ — không cắt nội dung có giá trị) | 0 |
 | TECH-DONE | Title/meta/link/schema đã tối ưu; còn khoảng trống nội dung chờ review body (`tools/seo-body-review.mjs`) | 0 |
 | PLANNED | Còn vấn đề kỹ thuật chưa xử lý | 0 |
@@ -78,10 +79,10 @@
 
 | Nhãn | Ý nghĩa | Số bài |
 |---|---|---:|
-| KEEP | Không còn lỗi có bằng chứng; giữ nguyên, theo dõi Search Console | 1684 |
+| KEEP | Không còn lỗi có bằng chứng; giữ nguyên, theo dõi Search Console | 1948 |
 | FIX | Có lỗi nội dung đã xác minh, chờ sửa qua `tools/seo-body-review.mjs` (cờ `content_flags` còn mở) | 0 |
-| REVIEW | Dẫn văn bản pháp luật chưa đối chiếu toàn văn, hoặc còn dữ kiện chưa có nguồn gốc (`data/seo/content-review.json`) | 56 |
-| BLOCKED | Chờ dữ liệu hoặc quyết định của chủ cửa hàng (`data/seo/content-review.json`) | 266 |
+| REVIEW | Dẫn văn bản pháp luật chưa đối chiếu toàn văn, hoặc còn dữ kiện chưa có nguồn gốc (`data/seo/content-review.json`) | 58 |
+| BLOCKED | Chờ dữ liệu hoặc quyết định của chủ cửa hàng (`data/seo/content-review.json`) | 0 |
 
 ## Batch (20 URL/batch, thứ tự P0 → P1 → P2, trang chuyển đổi/hub/pillar trước)
 

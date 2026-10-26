@@ -23,6 +23,7 @@
 | Tổng | | **285 bài** (4 bài có mặt ở cả hai lượt) | **862** |
 
 - `apply` đã chạy cổng QA của nhà máy (`tools/article-qa.mjs`) trước và sau từng bài: 289/289 lượt áp dụng thành công, 0 bài bị trả lại, không bài nào tụt điểm.
+- Sau khi gộp đủ hai lượt, phép kiểm trùng đoạn giữa các bài báo 4 câu mới bị trùng (BA-1465, BA-1889, BA-1931, BA-1935 trùng với BA-0967, BA-0847, BA-1213). Cả 4 câu đã được viết lại cho khác nhau qua một lượt review riêng. QA đo lại trên đủ 285 bài: không bài nào giảm điểm. Mục log của BA-1213 ghi điểm đo lại.
 - Mọi giá thuê thay mới đều là placeholder trỏ tới `pricing.json`, nên lần đổi giá sau chỉ cần sửa một chỗ.
 - Các con số tổng gõ tay chỉ được dùng khi cổng cho phép (mọi nhóm chữ số đã có sẵn trong bài). Cả 47 phép tính đã được kiểm lại, ví dụ:
   - Air Blade 2 tuần = 2.000.000đ, cao hơn giá tháng 1.500.000đ.
@@ -48,5 +49,6 @@ Cổng review không cho thêm con số mới mà bài chưa có. Vì vậy các
 - Nhiều danh sách chỉ ghi giá ngày của Wave mà không nhắc giá tuần/tháng. Danh sách không sai, chỉ thiếu thông tin, nên giữ nguyên.
 - Một số lời khuyên như "từ bốn ngày hãy hỏi gói tuần" vẫn giữ, vì chỉ là gợi ý hỏi, không phải khẳng định giá.
 - `knowledge_chunks` (đoạn tri thức chatbot trong `data/blog/published.json`) được rà riêng cùng đợt này.
+- Phân loại SEO Master Matrix: 266 mục BLOCKED "giá khác bảng giá chuẩn" trong `data/seo/content-review.json` đã được gỡ, vì bảng giá chuẩn nay là `pricing.json` (xem [seo-progress-report.md](seo-progress-report.md) mục 13).
 
-Hoàn tác: `git revert` các commit nội dung "content(price): …". Body là file thường; log review nằm ở `data/seo/body-reviews.json`.
+Hoàn tác: `git revert` các commit nội dung "content(price): …" (danh sách ở mục 13 của báo cáo tiến độ). Body là file thường; log review nằm ở `data/seo/body-reviews.json`.

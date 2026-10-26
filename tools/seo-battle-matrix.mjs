@@ -585,7 +585,8 @@ export function backlinkMatrix(b, { w1 }) {
 // ---------- W9 URL architecture ----------
 
 const POSITION_OF = (type) => {
-  if (type === 'Trang chủ (Agent)') return 'Trang chủ (pillar thương hiệu / K01)';
+  if (type === 'Trang chủ (website)') return 'Trang chủ (pillar thương hiệu / K01)';
+  if (type === 'Ứng dụng Agent (chat)') return 'Ứng dụng Agent (công cụ / K01)';
   if (type.startsWith('Trang chuyển đổi')) return 'Trang chuyển đổi';
   if (type === 'Trang chính sách thuê xe') return 'Trang chuyển đổi (chính sách)';
   if (type === 'Trang giới thiệu (E-E-A-T)') return 'E-E-A-T';
@@ -598,7 +599,8 @@ const POSITION_OF = (type) => {
 };
 const GOAL_OF = (type, category) => {
   if (type.startsWith('Trang chuyển đổi') || type === 'Trang chính sách thuê xe') return 'Liên hệ / đặt xe (Zalo, điện thoại)';
-  if (type === 'Trang chủ (Agent)') return 'Dùng Agent → trang giá / liên hệ';
+  if (type === 'Trang chủ (website)') return 'Điều hướng tới Agent, cẩm nang, trang giá / liên hệ';
+  if (type === 'Ứng dụng Agent (chat)') return 'Dùng Agent → trang giá / liên hệ';
   if (type.startsWith('Hub') || type === 'Blog home') return 'Điều hướng tới pillar và bài phù hợp';
   if (type === 'Pháp lý' || type === 'Trang giới thiệu (E-E-A-T)') return 'Niềm tin (E-E-A-T)';
   if (category === 'SAFE') return 'Đọc xong → bài thuê xe / trang chính sách (an toàn, giấy tờ)';

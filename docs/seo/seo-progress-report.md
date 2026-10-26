@@ -247,3 +247,32 @@ Kỹ thuật: 2.137/2.137 URL DONE, 0 P0, 0 link nội bộ hỏng, SEO score 99
 **Ghi chú quy trình.** Commit `9000bcd` chứa 19 body (lô 4 + 5) do một bài lô 4 bị QA hoàn tác làm script dừng giữa chừng; đã đẩy lên, không viết lại lịch sử. Bộ test rò thư mục tạm (~135 MB mỗi lần) đã được vá (`tests/unit/factory-progress.test.js`, `tests/helpers/factory-sandbox.mjs`).
 
 **Rollback vòng 5.** Mỗi lô là cặp commit `content(seo)` + `build(blog)`: `545f11f/157d2ec`, `8c150df/cdc8a83`, `568c5f9/4038334`, `042d5cc/f9a8099`, `92a5251/2f57d16`, `69fa0bb/9e3f45d`, `b25076c/471dbb5`, `9000bcd/9f2a846` — `git revert` cặp tương ứng (hoặc chỉ commit content rồi `node tools/build-blog.mjs`). Dữ kiện pháp lý và sổ đăng ký là dữ liệu, revert không ảnh hưởng trang.
+
+## 13. Vòng 6 — bảng giá chuẩn chủ cửa hàng + điều hướng kiểu app (25–26/10/2026)
+
+**Đã xử lý hai việc chờ chủ cửa hàng ở mục 12.**
+
+1. Bảng giá và tiền cọc chuẩn của chủ cửa hàng nay nằm ở `data/business/pricing.json`. Giá chưa công bố để `null` và hiển thị "Liên hệ". PR #17 gộp vào main ở commit `1fc973c`.
+2. Tên thương hiệu đổi thành "Cho Thuê Xe Máy Nguyễn Tú". Tên Google Business Profile "Thuê xe máy ở Hà Nội - Nguyễn Tú" được dùng làm `alternateName` của schema AutoRental.
+
+**Sửa nội dung bài viết** (qua `tools/seo-body-review.mjs`; chi tiết ở [price-review-2026-10-25.md](price-review-2026-10-25.md)):
+- 285 bài được sửa từng dữ kiện. Số tiền gõ tay cũ được thay bằng placeholder `{{ price.* }}`.
+- 26 đoạn tri thức của chatbot được sửa theo cùng cách.
+- 4 câu từng trùng giữa hai bài đã được viết lại cho khác nhau.
+- QA nhà máy đo lại trên đủ 285 bài: không bài nào giảm điểm.
+
+**Phân loại nội dung** (`data/seo/content-review.json`): đã gỡ 266 mục BLOCKED về giá vì không còn chờ dữ liệu.
+- 264 bài chuyển thành KEEP. Gồm 170 bài đã sửa trong các lô và 96 bài vốn đã dùng placeholder, nên tự cập nhật theo `pricing.json`.
+- 2 bài chuyển thành REVIEW, vì dẫn văn bản pháp luật chưa đối chiếu toàn văn. Trước đây nhãn BLOCKED che nhãn này.
+- Kết quả hiện tại: KEEP 1.948, FIX 0, REVIEW 58, BLOCKED 0.
+
+**Rollback.** Mỗi lô gồm một commit `content(price)` và một commit `build(blog)`. Để hoàn tác một lô, `git revert` cả hai commit của lô đó, hoặc chỉ revert commit content rồi chạy `node tools/build-blog.mjs`.
+
+| Lô | Commit content / build |
+|---|---|
+| 1 (kèm 26 đoạn tri thức) | `5497745` / `c9ebcfd` |
+| 2 | `49ea484` / `8f46705` |
+| 3 | `60a2a64` / `c5c4b98` |
+| 4 | `4a0cfb9` / `29b78a8` |
+| 5 | `11da2a2` / `e71d744` |
+| 6 | `2e8517d` / `b22fef9` |
