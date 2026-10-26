@@ -12,19 +12,19 @@
 <h2>Đặt các khung giá tham khảo cạnh nhau</h2>
 <p>Bảng dưới đây là giá tham khảo, cửa hàng xác nhận giá chốt theo thời điểm thuê; bảng cập nhật nằm ở trang <a href="/gia-thue/">giá thuê xe</a>.</p>
 <ul>
-<li>Honda Vision, xe ga phổ biến nhất với du khách: 200.000đ/ngày, 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng.</li>
-<li>Honda Air Blade, xe ga cỡ lớn hơn: 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng.</li>
-<li>Honda Click và Yamaha Mio, xe ga gọn nhẹ: 150.000đ/ngày, 600.000đ–700.000đ/tuần, 1.000.000đ–1.200.000đ/tháng.</li>
-<li>Honda Wave, xe số: 150.000đ/ngày; gói tuần và tháng cần hỏi trực tiếp.</li>
-<li>Nhóm xe 50cc, xe máy điện và xe đạp điện không có giá niêm yết sẵn, bạn cần hỏi trực tiếp.</li>
+<li>Honda Vision, xe ga phổ biến nhất với du khách: 200.000đ/ngày, {{ price.honda-vision.week.min }}/tuần, 1.800.000đ–2.000.000đ/tháng.</li>
+<li>Honda Air Blade, xe ga cỡ lớn hơn: 200.000đ/ngày, {{ price.honda-airblade.week.min }}/tuần, {{ price.honda-airblade.month.min }}/tháng.</li>
+<li>Honda Click và Yamaha Mio, xe ga gọn nhẹ: 150.000đ/ngày, {{ price.honda-click.week.min }}/tuần, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng.</li>
+<li>Honda Wave, xe số: 150.000đ/ngày, {{ price.honda-wave.week.min }}/tuần, {{ price.honda-wave.month.min }}–{{ price.honda-wave.month.max }}/tháng.</li>
+<li>Xe 50cc có giá ngày {{ price.xe-50cc.day.min }}, còn gói tuần, tháng của xe 50cc cùng xe máy điện và xe đạp điện không có giá niêm yết sẵn, bạn cần hỏi trực tiếp.</li>
 </ul>
 
 <h2>Ngưỡng chuyển gói cho từng dòng xe</h2>
 <p>Từ bảng trên, có thể rút ra mốc số ngày mà bạn nên bắt đầu hỏi gói lớn hơn. Các mốc này giả định phần ngày lẻ tính theo giá ngày:</p>
 <ul>
-<li><strong>Honda Vision:</strong> bốn ngày lẻ là 800.000đ, năm ngày là 1.000.000đ, đúng bằng khung gói tuần. Từ ngày thứ tư hoặc thứ năm, gói tuần đáng hỏi. Gói tháng ngang chín đến mười ngày lẻ, nên ai ở từ hai tuần trở lên nên so thêm gói tháng.</li>
-<li><strong>Honda Air Blade:</strong> gói tuần bằng đúng bốn ngày lẻ. Gói tháng 1.400.000đ còn thấp hơn hai gói tuần cộng lại là 1.600.000đ, vì thế lịch từ khoảng mười ngày trở lên đã nên tính gói tháng.</li>
-<li><strong>Honda Click, Yamaha Mio:</strong> gói tuần tương đương bốn đến năm ngày lẻ. Gói tháng chỉ ngang bảy đến tám ngày lẻ, nên với lịch trên một tuần, gói tháng thường là lựa chọn đáng cân nhắc nhất.</li>
+<li><strong>Honda Vision:</strong> bốn ngày lẻ là 800.000đ, năm ngày là 1.000.000đ, đúng bằng giá gói tuần. Vì vậy từ ngày thứ năm trở đi, gói tuần đáng hỏi. Gói tháng ngang chín đến mười ngày lẻ, nên ai ở từ hai tuần trở lên nên so thêm gói tháng.</li>
+<li><strong>Honda Air Blade:</strong> gói tuần bằng đúng năm ngày lẻ. Gói tháng {{ price.honda-airblade.month.min }} còn thấp hơn hai gói tuần cộng lại là 2.000.000đ, vì thế lịch từ khoảng mười ngày trở lên đã nên tính gói tháng.</li>
+<li><strong>Honda Click, Yamaha Mio:</strong> gói tuần tương đương bốn đến năm ngày lẻ. Gói tháng chỉ ngang sáu đến tám ngày lẻ, nên với lịch trên một tuần, gói tháng thường là lựa chọn đáng cân nhắc nhất.</li>
 </ul>
 <p>Những ngưỡng này chỉ là công cụ để đặt câu hỏi đúng. Cửa hàng mới là nơi quyết định gói nào áp dụng được cho lịch của bạn.</p>
 
@@ -32,8 +32,8 @@
 <p>Các phép tính dưới đây dùng giá tham khảo để minh họa:</p>
 <ol>
 <li><strong>Ba ngày, Honda Click:</strong> 3 × 150.000đ = 450.000đ. Lịch ngắn thì gói ngày là hợp lý, không cần nghĩ tới gói tuần.</li>
-<li><strong>Sáu ngày, Honda Vision:</strong> tính lẻ là 1.200.000đ, trong khi gói tuần tham khảo 800.000đ–1.000.000đ. Dù chỉ dùng sáu ngày, gói tuần vẫn rẻ hơn.</li>
-<li><strong>Mười hai ngày, Honda Air Blade:</strong> một tuần cộng năm ngày lẻ là 800.000đ + 1.000.000đ = 1.800.000đ, cao hơn gói tháng 1.400.000đ. Hãy hỏi cửa hàng có áp gói tháng cho lịch này không.</li>
+<li><strong>Sáu ngày, Honda Vision:</strong> tính lẻ là 1.200.000đ, trong khi gói tuần tham khảo {{ price.honda-vision.week.min }}. Dù chỉ dùng sáu ngày, gói tuần vẫn rẻ hơn.</li>
+<li><strong>Mười hai ngày, Honda Air Blade:</strong> một tuần cộng năm ngày lẻ là {{ price.honda-airblade.week.min }} + 1.000.000đ = 2.000.000đ, cao hơn gói tháng {{ price.honda-airblade.month.min }}. Hãy hỏi cửa hàng có áp gói tháng cho lịch này không.</li>
 <li><strong>Năm tuần, Honda Click:</strong> một tháng cộng một tuần vào khoảng 1.600.000đ–1.900.000đ. Phần dư sau gói tháng nên hỏi tính theo tuần hay theo ngày, vì chênh lệch không nhỏ.</li>
 </ol>
 <p>Bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a> có thêm phần đọc đúng con số tiền Việt, rất hữu ích nếu bạn chưa quen dấu chấm ngăn hàng nghìn.</p>

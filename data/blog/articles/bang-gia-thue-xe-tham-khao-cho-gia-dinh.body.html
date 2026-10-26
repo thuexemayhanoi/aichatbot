@@ -2,11 +2,11 @@
 <p>Bảng giá chung cho mọi đối tượng nằm ở bài <a href="/blog/thue-xe/bang-gia-thue-xe-tham-khao/">bảng giá thuê xe tham khảo</a> và trang <a href="/gia-thue/">giá thuê</a>. Ở đây, chúng ta đi thẳng vào phần cộng gộp cho cả nhà.</p>
 <h2>Giá từng dòng xe, xếp theo vai trò trong gia đình</h2>
 <ul>
-<li>Honda Wave (xe số): 150.000đ/ngày, giá tuần và tháng hỏi trực tiếp; thường được chọn làm xe thứ hai cho người lớn đã quen xe số.</li>
-<li>Honda Click và Yamaha Mio (xe ga): 150.000đ/ngày, 600.000đ đến 700.000đ/tuần, 1.000.000đ đến 1.200.000đ/tháng; hợp với thành viên cần xe ga mà muốn giữ chi phí thấp.</li>
-<li>Honda Air Blade (xe ga): 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng; hay đóng vai chiếc xe chính chạy nhiều nhất trong nhà.</li>
+<li>Honda Wave (xe số): 150.000đ/ngày, {{ price.honda-wave.week.min }}/tuần, {{ price.honda-wave.month.min }} đến {{ price.honda-wave.month.max }}/tháng; thường được chọn làm xe thứ hai cho người lớn đã quen xe số.</li>
+<li>Honda Click và Yamaha Mio (xe ga): 150.000đ/ngày, {{ price.honda-click.week.min }}/tuần, {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }}/tháng; hợp với thành viên cần xe ga mà muốn giữ chi phí thấp.</li>
+<li>Honda Air Blade (xe ga): 200.000đ/ngày, {{ price.honda-airblade.week.min }}/tuần, {{ price.honda-airblade.month.min }}/tháng; hay đóng vai chiếc xe chính chạy nhiều nhất trong nhà.</li>
 <li>Chiếc xe ga nhiều nhà dùng để chở con đi học hoặc đi chợ là Honda Vision: {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }} đến {{ price.honda-vision.week.max }}/tuần, {{ price.honda-vision.month.min }} đến {{ price.honda-vision.month.max }}/tháng.</li>
-<li>Xe 50cc, xe máy điện và xe đạp điện: giá liên hệ, bảng không ghi con số.</li>
+<li>Xe 50cc: {{ price.xe-50cc.day.min }}/ngày, giá tuần và tháng liên hệ; xe máy điện và xe đạp điện: giá liên hệ, bảng không ghi con số.</li>
 </ul>
 <p>Wave Alpha thuộc họ Wave; còn Lead, SH hay các dòng khác chưa có giá tham khảo trong bảng, nên nếu cả nhà muốn một mẫu cụ thể, hãy hỏi cửa hàng còn xe hay không trước khi lên kế hoạch.</p>
 <h2>Giá ghép sẵn cho năm kiểu gia đình</h2>
@@ -14,25 +14,25 @@
 <h3>Một xe chính cho cả kỳ</h3>
 <p>Nhà chỉ cần một người lái, ví dụ hai vợ chồng đi chung. Vision: {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }} đến {{ price.honda-vision.week.max }}/tuần, {{ price.honda-vision.month.min }} đến {{ price.honda-vision.month.max }}/tháng. Air Blade: {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }}/tuần, {{ price.honda-airblade.month.min }}/tháng. Click hoặc Mio: {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.week.min }} đến {{ price.honda-click.week.max }}/tuần, {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }}/tháng. Ba dòng gần nhau ở giá ngày, khác biệt rõ nhất nằm ở cột tháng.</p>
 <h3>Hai xe: Air Blade cộng Click</h3>
-<p>Kiểu ghép phổ biến cho nhà bốn người lớn. Theo ngày là 350.000đ. Theo tuần là 1.400.000đ đến 1.500.000đ. Theo tháng là 2.400.000đ đến 2.600.000đ.</p>
+<p>Kiểu ghép phổ biến cho nhà bốn người lớn. Theo ngày là 350.000đ. Theo tuần là 1.700.000đ. Theo tháng là 2.400.000đ đến 2.700.000đ.</p>
 <h3>Hai xe Vision</h3>
-<p>Dành cho nhà muốn hai chiếc giống nhau để ai cũng lái quen tay. Theo ngày là 400.000đ, theo tuần 1.600.000đ đến 2.000.000đ, theo tháng 3.600.000đ đến 4.000.000đ.</p>
+<p>Dành cho nhà muốn hai chiếc giống nhau để ai cũng lái quen tay. Theo ngày là 400.000đ, theo tuần 2.000.000đ, theo tháng 3.600.000đ đến 4.000.000đ.</p>
 <h3>Ba xe cho đại gia đình</h3>
-<p>Ghép Vision, Air Blade và Click khi có ông bà hoặc họ hàng đi cùng. Theo ngày là 550.000đ, theo tuần 2.200.000đ đến 2.500.000đ, theo tháng 4.200.000đ đến 4.600.000đ.</p>
+<p>Ghép Vision, Air Blade và Click khi có ông bà hoặc họ hàng đi cùng. Theo ngày là 550.000đ, theo tuần 2.700.000đ, theo tháng 4.200.000đ đến 4.700.000đ.</p>
 <h3>Hai xe tiết kiệm: Wave cộng Click</h3>
-<p>Theo ngày chỉ 300.000đ, mức thấp nhất trong các cách ghép hai xe. Với gói tuần hoặc tháng, phần của Click đã có trong bảng, còn phần của Wave bạn cần hỏi cửa hàng rồi mới cộng được tổng.</p>
+<p>Theo ngày chỉ 300.000đ, mức thấp nhất trong các cách ghép hai xe. Với gói tuần hoặc tháng, Wave và Click cùng mức trong bảng, nên tổng theo tuần là 1.400.000đ, theo tháng 1.800.000đ đến 2.400.000đ.</p>
 <h2>Quy về chi phí mỗi ngày cho cả nhà</h2>
 <p>Chia tổng gói cho số ngày giúp bạn thấy rõ gói dài lợi đến đâu so với thuê lẻ:</p>
 <ul>
-<li>Air Blade cộng Click theo tuần: khoảng 200.000đ đến 214.000đ mỗi ngày cho cả hai xe, gần bằng giá ngày của chỉ một chiếc Air Blade.</li>
-<li>Cùng cặp xe ấy theo tháng: khoảng 80.000đ đến 87.000đ mỗi ngày cho cả hai.</li>
-<li>Ba xe theo tháng: khoảng 140.000đ đến 153.000đ mỗi ngày, thấp hơn giá ngày lẻ của một chiếc Vision.</li>
+<li>Air Blade cộng Click theo tuần: mỗi ngày cho cả hai xe chỉ cao hơn một chút so với giá ngày của riêng một chiếc Air Blade.</li>
+<li>Cùng cặp xe ấy theo tháng: từ khoảng 80.000đ mỗi ngày cho cả hai.</li>
+<li>Ba xe theo tháng: khoảng 140.000đ đến hơn 150.000đ mỗi ngày, thấp hơn giá ngày lẻ của một chiếc Vision.</li>
 </ul>
 <p>Những con số này giải thích vì sao gia đình ở lại từ một tuần trở lên gần như luôn nên hỏi gói dài. Phân tích theo ngày cho từng kiểu gia đình có trong bài <a href="/blog/thue-xe/gia-thue-xe-may-theo-ngay-cho-gia-dinh/">giá thuê xe máy theo ngày cho gia đình</a>, còn gói dài hạn được bàn ở bài <a href="/blog/thue-xe/thue-xe-may-theo-thang-cho-gia-dinh/">thuê xe máy theo tháng cho gia đình</a>.</p>
 <h2>Chọn cột giá theo thời gian cả nhà ở lại</h2>
 <ol>
-<li>Từ một đến ba ngày: dùng cột giá ngày cho mọi xe.</li>
-<li>Từ bốn đến khoảng mười ngày: xe chính lấy gói tuần, phần dư tính theo ngày lẻ; xe phụ chỉ dùng vài hôm thì giữ giá ngày.</li>
+<li>Từ một đến bốn ngày: dùng cột giá ngày cho mọi xe.</li>
+<li>Từ năm đến khoảng mười ngày: xe chính lấy gói tuần, phần dư tính theo ngày lẻ; xe phụ chỉ dùng vài hôm thì giữ giá ngày.</li>
 <li>Từ khoảng hai tuần trở lên: so tổng các tuần với cột tháng, thường cột tháng thấp hơn.</li>
 <li>Có người ở lại lâu hơn cả nhà: tách riêng chiếc xe của người đó sang gói tháng, các xe còn lại trả đúng hạn.</li>
 </ol>

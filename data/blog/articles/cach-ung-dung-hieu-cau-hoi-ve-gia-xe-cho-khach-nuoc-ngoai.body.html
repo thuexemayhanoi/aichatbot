@@ -25,15 +25,15 @@
 <p>Một danh sách mẫu câu hiệu quả hơn cho khách quốc tế có trong bài <a href="/blog/app/soan-cau-hoi-hieu-qua-cho-agent-thue-xe-cho-khach-nuoc-ngoai/">soạn câu hỏi hiệu quả cho agent thuê xe</a>.</p>
 
 <h2>Ví dụ: từ câu hỏi tiếng Anh đến con số tham khảo</h2>
-<p>Giả sử bạn gõ “Honda Vision 10 days”. Trợ lý nhận ra mẫu xe và thời lượng mười ngày, rồi chọn cách ghép gói rẻ nhất từ bảng giá: một tuần cộng ba ngày lẻ. Với gói tuần tham khảo 800.000đ–1.000.000đ và giá ngày 200.000đ, kết quả là khoảng 1.400.000đ–1.600.000đ cho mười ngày, kèm phần giải thích cách tính.</p>
+<p>Giả sử bạn gõ “Honda Vision 10 days”. Trợ lý nhận ra mẫu xe và thời lượng mười ngày, rồi chọn cách ghép gói rẻ nhất từ bảng giá: một tuần cộng ba ngày lẻ. Với gói tuần tham khảo {{ price.honda-vision.week.min }} và giá ngày 200.000đ, kết quả là khoảng 1.600.000đ cho mười ngày, kèm phần giải thích cách tính.</p>
 <p>Nếu bạn hỏi tiếp “Which is cheaper for 10 days?”, trợ lý đặt các mẫu có giá tham khảo cạnh nhau:</p>
 <ol>
-<li>Honda Click hoặc Yamaha Mio: khoảng 1.050.000đ–1.150.000đ.</li>
-<li>Honda Air Blade: khoảng 1.400.000đ.</li>
-<li>Honda Vision: khoảng 1.400.000đ–1.600.000đ.</li>
-<li>Honda Wave: khoảng 1.500.000đ, vì bảng tham khảo hiện chỉ có giá theo ngày cho mẫu này.</li>
+<li>Honda Click hoặc Yamaha Mio: khoảng 1.150.000đ.</li>
+<li>Honda Air Blade: khoảng 1.600.000đ.</li>
+<li>Honda Vision: khoảng 1.600.000đ.</li>
+<li>Honda Wave: khoảng 1.150.000đ, ngang Click và Mio vì cùng mức giá ngày và giá tuần.</li>
 </ol>
-<p>Chi tiết ví dụ cuối rất đáng chú ý: khi một mẫu chưa có gói tuần trên bảng, trợ lý tính theo ngày chứ không tự nghĩ ra mức giảm. Nếu cần gói tuần cho Honda Wave, bạn hỏi trực tiếp cửa hàng. Cách tự tính trước khi hỏi được hướng dẫn trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a>.</p>
+<p>Một chi tiết đáng chú ý: khi một mẫu chưa có gói tuần trên bảng, như xe 50cc, trợ lý tính theo ngày chứ không tự nghĩ ra mức giảm. Nếu cần gói tuần cho xe 50cc, bạn hỏi trực tiếp cửa hàng. Cách tự tính trước khi hỏi được hướng dẫn trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng app cho khách nước ngoài</a>.</p>
 
 <h2>Vì sao câu trả lời luôn bằng đồng và luôn là giá tham khảo</h2>
 <p>Tỷ giá thay đổi hằng ngày và khác nhau giữa các nơi đổi tiền, nên trợ lý giữ mọi con số bằng đồng Việt Nam để không tạo ra một mức giá sai. Khi đọc kết quả, khách quốc tế nên nhớ hai quy ước:</p>
@@ -45,7 +45,7 @@
 
 <h2>Những câu hỏi về giá mà trợ lý chuyển cho nhân viên</h2>
 <ul>
-<li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> đây là giá liên hệ, trợ lý mời bạn gọi hoặc nhắn cửa hàng.</li>
+<li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> đây là giá liên hệ, trừ giá ngày xe 50cc là {{ price.xe-50cc.day.min }}; trợ lý mời bạn gọi hoặc nhắn cửa hàng.</li>
 <li><strong>Mẫu xe không có trong bảng:</strong> các dòng như SH, Lead hay Exciter không có giá tham khảo trên website, nên bạn cần hỏi cửa hàng xem có xe hay không.</li>
 <li><strong>Phí giao xe tới khách sạn:</strong> giao xe chỉ trong giờ mở cửa và trong khu vực phục vụ, thời gian và phí phải được cửa hàng chốt trước khi đặt.</li>
 <li><strong>Khoản đặt trước:</strong> khung chung từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy xe, mức cụ thể do cửa hàng xác nhận khi bạn đặt.</li>

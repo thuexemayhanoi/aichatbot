@@ -16,13 +16,13 @@
 <p>Đây cũng là nền tảng để trợ lý trò chuyện hiểu câu hỏi dài của bạn; cách nó tách một câu tiếng Anh nhiều mệnh đề thành từng ý được mô tả trong bài <a href="/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu-cho-khach-nuoc-ngoai/">trợ lý thuê xe xử lý câu hỏi đa ngôn ngữ cho khách nước ngoài</a>.</p>
 
 <h2>Những thứ lớp từ khóa giữ nguyên để bảo vệ bạn</h2>
-<p>Người mới tìm hiểu hybrid search hay nghĩ phần ngữ nghĩa càng mạnh càng tốt. Với khách thuê xe, điều ngược lại mới đúng ở một số chỗ. Có những giá trị không được phép "hiểu gần đúng": số ngày thuê, tên dòng xe cụ thể, con số giá, giờ mở cửa. Khi bạn gõ "Vision 5 days", hệ thống gắn nhãn "Vision" là dòng xe và "5 days" là thời hạn trước khi chấm điểm, nên không có chuyện gợi ý sang xe khác hoặc đổi số ngày. Khi bạn gõ "50cc", nó được hiểu là nhóm xe dung tích nhỏ, không phải năm mươi gì khác, và giá nhóm này là liên hệ chứ không phải một con số được suy ra từ xe tương tự.</p>
+<p>Người mới tìm hiểu hybrid search hay nghĩ phần ngữ nghĩa càng mạnh càng tốt. Với khách thuê xe, điều ngược lại mới đúng ở một số chỗ. Có những giá trị không được phép "hiểu gần đúng": số ngày thuê, tên dòng xe cụ thể, con số giá, giờ mở cửa. Khi bạn gõ "Vision 5 days", hệ thống gắn nhãn "Vision" là dòng xe và "5 days" là thời hạn trước khi chấm điểm, nên không có chuyện gợi ý sang xe khác hoặc đổi số ngày. Khi bạn gõ "50cc", nó được hiểu là nhóm xe dung tích nhỏ, không phải năm mươi gì khác, và giá nhóm này lấy đúng bảng của xe 50cc, {{ price.xe-50cc.day.min }}/ngày, chứ không phải một con số được suy ra từ xe tương tự.</p>
 <p>Nguyên tắc chung: ý mơ hồ thì mở rộng, dữ liệu kinh doanh thì khớp từng ký tự. Vì vậy nếu bạn thấy một kết quả có giá, đó là giá tham khảo của cửa hàng, không phải giá máy ước tính. Việc bạn cần làm chỉ là xác nhận lại với nhân viên trong giờ {{ business.hours.display }} trước khi đặt.</p>
 
 <h2>Thử tìm theo ba kịch bản của khách nước ngoài</h2>
 <ol>
 <li><strong>Vừa xuống sân bay, chưa biết gì:</strong> gõ "easy scooter for beginner Hanoi". Lớp ngữ nghĩa trả về nhóm xe ga nhẹ cùng bài hướng dẫn cho người mới, lớp từ khóa ghim bài về giấy tờ cho người nước ngoài lên đầu vì chữ "Hanoi" và ngữ cảnh du khách.</li>
-<li><strong>Đã biết mình muốn gì:</strong> gõ "Air Blade weekly price". Lớp từ khóa khớp chính xác dòng xe, kết quả là mức tuần tham khảo 800.000đ kèm liên kết trang giá.</li>
+<li><strong>Đã biết mình muốn gì:</strong> gõ "Air Blade weekly price". Lớp từ khóa khớp chính xác dòng xe, kết quả là mức tuần tham khảo {{ price.honda-airblade.week.min }} kèm liên kết trang giá.</li>
 <li><strong>Hỏi theo địa điểm:</strong> gõ "delivery to hotel Hoan Kiem". Kết quả gồm bài về giao xe tại khách sạn, kèm lưu ý giao xe chỉ trong giờ mở cửa và chi phí xác nhận trước khi đặt.</li>
 </ol>
 <p>Ở cả ba kịch bản, bước tiếp theo đều giống nhau: mở bài được gợi ý, rồi hỏi trợ lý hoặc gọi nhân viên để chốt. Cách lọc kết quả theo giá và theo dòng được hướng dẫn trong bài <a href="/blog/app/tim-xe-may-thue-bang-ung-dung-cho-khach-nuoc-ngoai/">tìm xe máy thuê bằng ứng dụng cho khách nước ngoài</a>.</p>
@@ -35,7 +35,7 @@
 <h3>Tôi gõ tiếng Anh thì có ra kết quả tiếng Việt không?</h3>
 <p>Có. Lớp ngữ nghĩa nối từ tiếng Anh với nhóm xe và bài viết tiếng Việt tương ứng, còn trợ lý trò chuyện có thể tóm tắt lại bằng tiếng Anh.</p>
 <h3>"Scooter" có bị hiểu nhầm thành xe 50cc không?</h3>
-<p>Không. "Scooter" được xếp vào nhóm xe ga nói chung; nhóm 50cc chỉ hiện khi bạn gõ rõ "50cc" và giá nhóm này là liên hệ.</p>
+<p>Không. "Scooter" được xếp vào nhóm xe ga nói chung; nhóm 50cc chỉ hiện khi bạn gõ rõ "50cc" và giá ngày của nhóm này là {{ price.xe-50cc.day.min }}, gói dài hơn là liên hệ.</p>
 <h3>Giá hiện trong kết quả có đáng tin không?</h3>
 <p>Giá được trả về nguyên văn từ dữ liệu cửa hàng và là mức tham khảo. Mức cuối cùng xác nhận với nhân viên khi đặt xe.</p>
 <h3>Tìm kiếm có cần mạng mạnh không?</h3>

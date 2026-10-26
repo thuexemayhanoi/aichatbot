@@ -27,11 +27,11 @@
 <h2>Hiểu câu trả lời: giá tham khảo và những khoản cần hỏi thêm</h2>
 <p>Giá trợ lý đưa ra là giá tham khảo; mức cuối cùng do cửa hàng xác nhận khi bạn đặt. Để bạn có điểm đối chiếu, bảng tham khảo hiện tại như sau:</p>
 <ul>
-<li>Vision, xe ga gọn nhẹ hợp người mới: tham khảo 200.000đ một ngày, 800.000đ–1.000.000đ một tuần, 1.800.000đ–2.000.000đ một tháng.</li>
-<li>Air Blade, xe ga yên rộng cho người cao hoặc đi hai người: tham khảo 200.000đ một ngày, 800.000đ một tuần, 1.400.000đ một tháng.</li>
-<li>Click hoặc Mio, xe ga cỡ nhỏ cho người đi một mình: tham khảo 150.000đ một ngày, 600.000đ–700.000đ một tuần, 1.000.000đ–1.200.000đ một tháng.</li>
+<li>Vision, xe ga gọn nhẹ hợp người mới: tham khảo 200.000đ một ngày, {{ price.honda-vision.week.min }} một tuần, 1.800.000đ–2.000.000đ một tháng.</li>
+<li>Air Blade, xe ga yên rộng cho người cao hoặc đi hai người: tham khảo 200.000đ một ngày, {{ price.honda-airblade.week.min }} một tuần, {{ price.honda-airblade.month.min }} một tháng.</li>
+<li>Click hoặc Mio, xe ga cỡ nhỏ cho người đi một mình: tham khảo 150.000đ một ngày, {{ price.honda-click.week.min }} một tuần, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }} một tháng.</li>
 <li>Wave, mẫu xe số dành cho người đã quen côn và số: tham khảo 150.000đ một ngày.</li>
-<li>Nhóm xe 50cc, xe máy điện và xe đạp điện được báo giá khi bạn liên hệ trực tiếp.</li>
+<li>Xe 50cc tham khảo {{ price.xe-50cc.day.min }} một ngày; nhóm xe máy điện và xe đạp điện được báo giá khi bạn liên hệ trực tiếp.</li>
 </ul>
 <p>Ngoài giá thuê, có ba điều nên hỏi thêm trong cùng phiên. Thứ nhất là tiền cọc: mức từ {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe, được xác nhận khi đặt; chi tiết cho khách quốc tế có ở bài <a href="/blog/app/dat-coc-va-ung-dung-thue-xe-cho-khach-nuoc-ngoai/">đặt cọc và ứng dụng thuê xe</a>. Thứ hai là giao xe: có giao trong giờ {{ business.hours.display }}, còn thời gian và phí giao phải thống nhất trước khi đặt. Thứ ba là bảo hiểm: cửa hàng không cung cấp, bạn tự chuẩn bị bảo hiểm xe máy cho mình.</p>
 

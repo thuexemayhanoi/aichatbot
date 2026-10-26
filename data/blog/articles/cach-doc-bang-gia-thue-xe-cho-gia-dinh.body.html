@@ -16,28 +16,28 @@
 <li>Giá ngày cho biết chi phí của chiếc xe phụ chỉ cần một, hai hôm, ví dụ Honda Wave tham khảo {{ price.honda-wave.day.min }}/ngày.</li>
 <li>Giá tuần quyết định chiếc xe chính khi cả nhà ở từ bốn, năm ngày trở lên, ví dụ Air Blade tham khảo {{ price.honda-airblade.week.min }}/tuần.</li>
 <li>Giá tháng dành cho người thân ở lại lâu, ví dụ Click hoặc Mio tham khảo {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }}/tháng.</li>
-<li>Ô ghi "liên hệ" áp dụng cho xe 50cc, xe máy điện và xe đạp điện: bảng không công bố con số, bạn phải hỏi cửa hàng.</li>
+<li>Ô ghi "liên hệ" áp dụng cho giá tuần, tháng của xe 50cc và cho xe máy điện, xe đạp điện: bảng không công bố con số, bạn phải hỏi cửa hàng.</li>
 </ul>
 <p>Với các dòng không có trong bảng như Lead hay SH, đừng tự suy ra giá từ một dòng trông giống; hãy hỏi cửa hàng xem còn xe và mức áp dụng là bao nhiêu.</p>
 <h2>Dải giá cộng dồn khi nhà bạn thuê nhiều chiếc</h2>
-<p>Khi một ô ghi hai đầu, chẳng hạn Vision {{ price.honda-vision.week.min }} đến {{ price.honda-vision.week.max }}/tuần, độ chênh của một xe chỉ là 200.000đ. Nhưng khi cộng hai, ba chiếc cùng có dải giá, khoảng chênh dồn lại và tổng thực tế có thể lệch khá xa so với ước tính ban đầu. Quy tắc an toàn cho ngân sách gia đình là cộng theo đầu cao của mọi dải, rồi coi phần chênh xuống là khoản dư dự phòng cho xăng hoặc gửi xe.</p>
+<p>Khi một ô ghi hai đầu, chẳng hạn Vision {{ price.honda-vision.month.min }} đến {{ price.honda-vision.month.max }}/tháng, độ chênh của một xe chỉ là 200.000đ. Nhưng khi cộng hai, ba chiếc cùng có dải giá, khoảng chênh dồn lại và tổng thực tế có thể lệch khá xa so với ước tính ban đầu. Quy tắc an toàn cho ngân sách gia đình là cộng theo đầu cao của mọi dải, rồi coi phần chênh xuống là khoản dư dự phòng cho xăng hoặc gửi xe.</p>
 <p>Khi đặt nhiều xe một lúc, hãy đề nghị cửa hàng xác nhận giá cho từng chiếc thay vì một con số tổng chung chung, để lúc nhận và trả xe dễ đối chiếu.</p>
 <h2>Tìm mốc chuyển gói riêng cho từng xe</h2>
 <p>Đây là phần gia đình hay bỏ qua nhất: mỗi xe trong nhà có lịch dùng riêng, nên mốc chuyển từ giá ngày sang giá tuần cũng phải tính riêng cho từng chiếc.</p>
 <ol>
-<li>Lấy giá tuần chia cho giá ngày của dòng xe đó. Với Air Blade, 800.000đ chia 200.000đ được bốn, nghĩa là từ ngày thứ tư gói tuần đã không thiệt hơn.</li>
-<li>Với Click hoặc Mio, năm ngày lẻ đã là 750.000đ, vượt đầu cao của gói tuần, nên chiếc xe chạy từ năm ngày trở lên nên hỏi gói tuần.</li>
+<li>Lấy giá tuần chia cho giá ngày của dòng xe đó. Với Air Blade, {{ price.honda-airblade.week.min }} chia 200.000đ được năm, nghĩa là từ ngày thứ năm gói tuần đã không thiệt hơn.</li>
+<li>Với Click hoặc Mio, năm ngày lẻ đã là 750.000đ, vượt giá gói tuần {{ price.honda-click.week.min }}, nên chiếc xe chạy từ năm ngày trở lên nên hỏi gói tuần.</li>
 <li>Với chiếc xe phụ chỉ dùng hai, ba ngày, giữ giá ngày là hợp lý nhất, không cần ép vào gói.</li>
-<li>Khi một xe dùng quá hai tuần, so tiếp với cột tháng: Air Blade hai tuần là 1.600.000đ, đã cao hơn giá tháng tham khảo 1.400.000đ.</li>
+<li>Khi một xe dùng quá hai tuần, so tiếp với cột tháng: Air Blade hai tuần là 2.000.000đ, đã cao hơn giá tháng tham khảo {{ price.honda-airblade.month.min }}.</li>
 </ol>
 <p>Cách ghép gói tuần cho cả nhà được trình bày kỹ hơn trong bài <a href="/blog/thue-xe/thue-xe-may-theo-tuan-cho-gia-dinh/">thuê xe máy theo tuần cho gia đình</a>.</p>
 <h2>Ba lịch gia đình và cách đọc bảng cho từng lịch</h2>
 <h3>Cả nhà về chơi ba ngày</h3>
 <p>Hai vợ chồng và hai con, mỗi người lớn chở một bé: một Vision để chở thêm đồ, một Wave cho người còn lại. Đọc cột ngày: 200.000đ cộng 150.000đ là 350.000đ mỗi ngày, ba ngày khoảng 1.050.000đ tham khảo. Chưa xe nào chạm mốc gói tuần, nên giữ giá ngày là đúng.</p>
 <h3>Ở năm ngày, xe thứ hai chỉ cần dịp cuối tuần</h3>
-<p>Xe chính là Click dùng đủ năm ngày; năm ngày lẻ thành 750.000đ, trong khi gói tuần tham khảo chỉ 600.000đ đến 700.000đ, nên chọn gói tuần. Xe thứ hai là Wave thuê lẻ hai ngày cuối tuần, thêm 300.000đ. Tổng tham khảo khoảng 900.000đ đến 1.000.000đ, thấp hơn hẳn việc giữ cả hai xe suốt năm ngày.</p>
+<p>Xe chính là Click dùng đủ năm ngày; năm ngày lẻ thành 750.000đ, trong khi gói tuần tham khảo chỉ {{ price.honda-click.week.min }}, nên chọn gói tuần. Xe thứ hai là Wave thuê lẻ hai ngày cuối tuần, thêm 300.000đ. Tổng tham khảo khoảng 1.000.000đ, thấp hơn hẳn việc giữ cả hai xe suốt năm ngày.</p>
 <h3>Ông bà ở lại mười ngày</h3>
-<p>Ông bà dùng một Vision trong mười ngày. Một tuần cộng ba ngày lẻ là 800.000đ đến 1.000.000đ cộng thêm 600.000đ, tức 1.400.000đ đến 1.600.000đ. Giá tháng tham khảo của Vision là 1.800.000đ đến 2.000.000đ, cao hơn, nên tuần cộng ngày lẻ là cách đọc có lợi. Dù vậy, hãy hỏi trước cách gia hạn nếu ông bà quyết định ở lâu hơn dự kiến.</p>
+<p>Ông bà dùng một Vision trong mười ngày. Một tuần cộng ba ngày lẻ là {{ price.honda-vision.week.min }} cộng thêm 600.000đ, tức 1.600.000đ. Giá tháng tham khảo của Vision là 1.800.000đ đến 2.000.000đ, cao hơn, nên tuần cộng ngày lẻ là cách đọc có lợi. Dù vậy, hãy hỏi trước cách gia hạn nếu ông bà quyết định ở lâu hơn dự kiến.</p>
 <h2>Những khoản ngoài bảng phải nhân theo số xe</h2>
 <p>Bảng giá chỉ ghi tiền thuê. Với gia đình, các khoản sau cần nhân theo số chiếc trước khi kết luận tổng chi phí:</p>
 <ul>
@@ -53,7 +53,7 @@
 <h3>Nhà tôi ở sáu ngày, nên lấy giá ngày hay giá tuần cho cả hai xe?</h3>
 <p>Hãy tính riêng từng xe. Chiếc dùng đủ sáu ngày gần như chắc chắn nên lấy gói tuần, còn chiếc chỉ chạy vài hôm thì giữ giá ngày. Gộp cả hai vào gói tuần chỉ hợp lý khi cả hai cùng được dùng gần hết kỳ.</p>
 <h3>Ô "liên hệ" trong bảng có nghĩa là đắt hơn không?</h3>
-<p>Không nhất thiết. "Liên hệ" chỉ có nghĩa là dòng xe đó chưa có giá tham khảo công bố sẵn, như xe 50cc, xe máy điện hay xe đạp điện. Bạn hỏi cửa hàng để biết mức giá và xe còn trống.</p>
+<p>Không nhất thiết. "Liên hệ" chỉ có nghĩa là dòng xe đó chưa có giá tham khảo công bố sẵn, như xe máy điện, xe đạp điện hay giá tuần, tháng của xe 50cc. Bạn hỏi cửa hàng để biết mức giá và xe còn trống.</p>
 <h3>Một ngày thuê được tính từ lúc nào?</h3>
 <p>Cách tính mốc ngày, giờ nhận và giờ trả do cửa hàng xác nhận khi đặt. Nhà nhận nhiều xe nên nhận và trả cùng một giờ để dễ đối chiếu; xem thêm bài <a href="/blog/thue-xe/tra-xe-thue-dung-gio-cho-gia-dinh/">trả xe thuê đúng giờ cho gia đình</a>.</p>
 <h2>Kết luận</h2>
