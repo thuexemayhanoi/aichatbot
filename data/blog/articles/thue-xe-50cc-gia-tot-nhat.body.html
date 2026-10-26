@@ -1,14 +1,14 @@
-<p>Tìm "thuê xe 50cc giá tốt nhất", bạn sẽ thấy một điều hơi khác thường: ở bảng giá tham khảo của cửa hàng, nhóm xe 50cc không có con số niêm yết mà ghi là giá liên hệ. Điều đó không có nghĩa xe 50cc đắt hay rẻ bất thường, mà là giá được báo theo từng thời điểm, từng xe sẵn có. Vì vậy muốn có mức tốt nhất, bạn cần biết cách hỏi, biết lấy mốc nào để so sánh và biết những khoản nào làm tổng chi phí đội lên. Bài viết này là hướng dẫn hỏi giá từng bước dành riêng cho nhóm xe 50cc.</p>
+<p>Tìm "thuê xe 50cc giá tốt nhất", bạn sẽ thấy một điều hơi khác thường: ở bảng giá tham khảo của cửa hàng, nhóm xe 50cc chỉ niêm yết giá ngày {{ price.xe-50cc.day.min }}, còn gói tuần và gói tháng ghi là giá liên hệ. Điều đó không có nghĩa xe 50cc đắt hay rẻ bất thường, mà là giá được báo theo từng thời điểm, từng xe sẵn có. Vì vậy muốn có mức tốt nhất, bạn cần biết cách hỏi, biết lấy mốc nào để so sánh và biết những khoản nào làm tổng chi phí đội lên. Bài viết này là hướng dẫn hỏi giá từng bước dành riêng cho nhóm xe 50cc.</p>
 
-<h2>Vì sao xe 50cc được ghi "giá liên hệ"</h2>
-<p>Trên trang <a href="/gia-thue/">giá thuê</a>, các dòng phổ thông như Honda Wave, Vision, Air Blade, Click hay Mio đều có mức tham khảo theo ngày. Xe 50cc, xe máy điện và xe đạp điện thì được để ở dạng liên hệ. Lý do thực tế là nhóm này có số lượng và đời xe thay đổi nhiều hơn, nên cửa hàng báo giá khi biết rõ bạn cần xe ngày nào, bao lâu.</p>
+<h2>Vì sao gói tuần, tháng của xe 50cc được ghi "giá liên hệ"</h2>
+<p>Trên trang <a href="/gia-thue/">giá thuê</a>, các dòng phổ thông như Honda Wave, Vision, Air Blade, Click hay Mio đều có mức tham khảo theo ngày. Riêng xe tay ga 50cc chỉ niêm yết giá ngày {{ price.xe-50cc.day.min }}; gói tuần, tháng của dòng này cùng xe máy điện và xe đạp điện thì được để ở dạng liên hệ. Lý do thực tế là nhóm này có số lượng và đời xe thay đổi nhiều hơn, nên cửa hàng báo giá khi biết rõ bạn cần xe ngày nào, bao lâu.</p>
 <p>Với người thuê, điều quan trọng là đừng tự suy ra một con số từ nơi khác rồi mặc định áp vào. Bạn hãy coi việc hỏi giá là bước bắt buộc, giống như hỏi lịch xe trống, chứ không phải thủ tục phụ.</p>
 
 <h2>Lấy mốc nào để biết báo giá có hợp lý không</h2>
-<p>Khi chưa có con số cho xe 50cc, bạn vẫn có thể dùng các dòng khác trong cùng bảng tham khảo làm mốc đối chiếu:</p>
+<p>Khi chưa có con số gói tuần, tháng cho xe 50cc, bạn vẫn có thể dùng các dòng khác trong cùng bảng tham khảo làm mốc đối chiếu:</p>
 <ul>
 <li>Xe số Honda Wave: thuê ngày 150.000đ.</li>
-<li>Nhóm xe ga nhỏ Click, Mio: thuê ngày 150.000đ, gói tuần 600.000đ–700.000đ, gói tháng 1.000.000đ–1.200.000đ.</li>
+<li>Nhóm xe ga nhỏ Click, Mio: thuê ngày 150.000đ, gói tuần {{ price.honda-click.week.min }}, gói tháng {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}.</li>
 <li>Vision và Air Blade: cùng mức thuê ngày 200.000đ.</li>
 </ul>
 <p>Các mốc này giúp bạn đặt câu hỏi có cơ sở: nếu một chiếc 50cc được báo giá, bạn có thể so trực tiếp với một chiếc Wave hay Click cùng kỳ thuê để xem dòng nào hợp túi tiền và nhu cầu hơn. Mốc chỉ để so sánh, không phải giá của xe 50cc. Bài <a href="/blog/thue-xe/bang-gia-thue-xe-tham-khao/">bảng giá thuê xe tham khảo</a> tổng hợp đầy đủ các mức hiện có.</p>
@@ -35,7 +35,7 @@
 <p>Gửi một tin nhắn gom đủ bảy ý trên sẽ nhanh hơn nhiều so với hỏi từng câu, và bạn có ngay một bản xác nhận để đối chiếu khi nhận xe. Về đặt cọc, mức áp dụng nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy loại xe và được chốt khi đặt.</p>
 
 <h2>Thời gian thuê ảnh hưởng tới giá ra sao</h2>
-<p>Ở các dòng có giá niêm yết, gói tuần và gói tháng luôn rẻ hơn thuê lẻ khi quy ra từng ngày. Ví dụ với Click hoặc Mio, gói tháng tham khảo chia ra chỉ còn khoảng 33.000đ–40.000đ/ngày, thấp hơn rất nhiều so với 150.000đ thuê lẻ. Đó là lý do khi hỏi giá 50cc, bạn nên nói rõ tổng số ngày cần xe và hỏi cả phương án theo tuần, theo tháng thay vì chỉ hỏi giá một ngày.</p>
+<p>Ở các dòng có giá niêm yết, gói tuần và gói tháng luôn rẻ hơn thuê lẻ khi quy ra từng ngày. Ví dụ với Click hoặc Mio, gói tháng tham khảo chia ra chỉ còn không quá 40.000đ/ngày, thấp hơn rất nhiều so với 150.000đ thuê lẻ. Đó là lý do khi hỏi giá 50cc, bạn nên nói rõ tổng số ngày cần xe và hỏi cả phương án theo tuần, theo tháng thay vì chỉ hỏi giá một ngày.</p>
 <p>Sinh viên thuê cả học kỳ đặc biệt nên làm vậy. Bài <a href="/blog/thue-xe/thue-xe-50cc-cho-sinh-vien/">thuê xe 50cc cho sinh viên</a> có thêm gợi ý về lịch gia hạn và chỗ gửi xe gần trường.</p>
 
 <h2>Những khoản dễ quên khi so giá xe 50cc</h2>
@@ -43,13 +43,13 @@
 <li><strong>Bảo hiểm:</strong> cửa hàng không kèm bảo hiểm, nên phần tự mua bảo hiểm xe máy là chi phí của người thuê.</li>
 <li><strong>Phí gửi xe:</strong> ở khu đông, tiền trông xe hằng ngày cộng dồn đáng kể trong kỳ thuê dài.</li>
 <li><strong>Giao nhận:</strong> chỉ trong giờ mở cửa {{ business.hours.open }}–{{ business.hours.close }}, phải xác nhận thời gian và phí trước.</li>
-<li><strong>Xe không hợp quãng đường:</strong> xe 50cc hợp quãng ngắn trong phố; nếu lịch có nhiều chặng xa, một dòng mạnh hơn có thể tiết kiệm thời gian và công sức hơn dù giá ngày cao hơn.</li>
+<li><strong>Xe không hợp quãng đường:</strong> xe 50cc hợp quãng ngắn trong phố; nếu lịch có nhiều chặng xa, một dòng mạnh hơn có thể tiết kiệm thời gian và công sức hơn với giá ngày không cao hơn.</li>
 </ul>
 <p>Thông số cụ thể của từng chiếc như tốc độ hay mức hao xăng không nên đoán; hãy hỏi trực tiếp và chạy thử một vòng ngắn khi nhận. Bài <a href="/blog/thue-xe/thue-xe-50cc/">thuê xe 50cc</a> có danh sách kiểm tra xe chi tiết.</p>
 
 <h2>Câu hỏi thường gặp về thuê xe 50cc giá tốt nhất</h2>
 <h3>Xe 50cc có rẻ hơn Honda Wave không?</h3>
-<p>Không thể khẳng định khi xe 50cc đang ở dạng giá liên hệ. Cách đúng là hỏi giá 50cc cho kỳ thuê của bạn rồi đặt cạnh mức 150.000đ/ngày tham khảo của Wave.</p>
+<p>Theo giá ngày thì không, xe 50cc tham khảo {{ price.xe-50cc.day.min }}/ngày; gói tuần, tháng vẫn là giá liên hệ. Cách đúng là hỏi giá 50cc cho kỳ thuê của bạn rồi đặt cạnh mức 150.000đ/ngày tham khảo của Wave.</p>
 <h3>Có nên đặt xe 50cc trước nhiều ngày?</h3>
 <p>Nên, vì số lượng xe 50cc thường ít hơn các dòng phổ thông. Đặt sớm giúp bạn có thời gian so sánh báo giá và đổi phương án nếu không còn xe.</p>
 <h3>Báo giá qua tin nhắn có được giữ nguyên khi nhận xe?</h3>

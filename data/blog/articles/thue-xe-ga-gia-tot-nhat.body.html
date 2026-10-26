@@ -3,18 +3,18 @@
 <h2>Bảng giá tham khảo các dòng xe ga</h2>
 <p>Các mức dưới đây lấy từ bảng tham khảo trên trang <a href="/gia-thue/">giá thuê</a>; mức áp dụng thực tế luôn được cửa hàng xác nhận khi đặt:</p>
 <ul>
-<li><strong>Nhóm Click và Mio</strong> là mức thấp nhất của xe ga: thuê ngày 150.000đ, gói tuần từ 600.000đ đến 700.000đ, gói tháng từ 1.000.000đ đến 1.200.000đ.</li>
-<li><strong>Vision</strong> có giá ngày 200.000đ, gói tuần từ 800.000đ đến 1.000.000đ, gói tháng từ 1.800.000đ đến 2.000.000đ.</li>
-<li><strong>Air Blade</strong> cũng 200.000đ một ngày, gói tuần 800.000đ, gói tháng 1.400.000đ.</li>
+<li><strong>Nhóm Click và Mio</strong> là mức thấp nhất của xe ga: thuê ngày 150.000đ, gói tuần ở mức {{ price.honda-click.week.min }}, gói tháng từ {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }}.</li>
+<li><strong>Vision</strong> có giá ngày 200.000đ, gói tuần ở mức {{ price.honda-vision.week.min }}, gói tháng từ 1.800.000đ đến 2.000.000đ.</li>
+<li><strong>Air Blade</strong> cũng 200.000đ một ngày, gói tuần {{ price.honda-airblade.week.min }}, gói tháng {{ price.honda-airblade.month.min }}.</li>
 </ul>
 <div class="table-wrap">
 <table class="blog-table">
 <caption>Giá tham khảo các dòng xe ga theo ngày, tuần, tháng</caption>
 <thead><tr><th scope="col">Dòng xe</th><th scope="col">Theo ngày</th><th scope="col">Theo tuần</th><th scope="col">Theo tháng</th></tr></thead>
 <tbody>
-<tr><th scope="row">Honda Click, Yamaha Mio</th><td>150.000đ</td><td>600.000đ–700.000đ</td><td>1.000.000đ–1.200.000đ</td></tr>
-<tr><th scope="row">Honda Vision</th><td>200.000đ</td><td>800.000đ–1.000.000đ</td><td>1.800.000đ–2.000.000đ</td></tr>
-<tr><th scope="row">Honda Air Blade</th><td>200.000đ</td><td>800.000đ</td><td>1.400.000đ</td></tr>
+<tr><th scope="row">Honda Click, Yamaha Mio</th><td>150.000đ</td><td>{{ price.honda-click.week.min }}</td><td>{{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}</td></tr>
+<tr><th scope="row">Honda Vision</th><td>200.000đ</td><td>{{ price.honda-vision.week.min }}</td><td>1.800.000đ–2.000.000đ</td></tr>
+<tr><th scope="row">Honda Air Blade</th><td>200.000đ</td><td>{{ price.honda-airblade.week.min }}</td><td>{{ price.honda-airblade.month.min }}</td></tr>
 </tbody>
 </table>
 </div>
@@ -25,11 +25,11 @@
 <h3>Một đến ba ngày</h3>
 <p>Click và Mio dẫn đầu: ba ngày lẻ là 450.000đ, so với 600.000đ của Vision hay Air Blade. Với chuyến ngắn trong phố, đây là cách tiết kiệm rõ ràng nhất.</p>
 <h3>Bốn đến bảy ngày</h3>
-<p>Từ ngày thứ năm, gói tuần của cả ba nhóm đều có lợi hơn thuê lẻ. Click và Mio vẫn thấp nhất ở 600.000đ–700.000đ, Air Blade ở 800.000đ, Vision ở 800.000đ–1.000.000đ.</p>
+<p>Từ ngày thứ năm, gói tuần của cả ba nhóm đều có lợi hơn thuê lẻ. Click và Mio vẫn thấp nhất ở {{ price.honda-click.week.min }}, Air Blade ở {{ price.honda-airblade.week.min }}, Vision ở {{ price.honda-vision.week.min }}.</p>
 <h3>Hai tuần</h3>
-<p>Đây là kỳ thuê dễ trả thừa nhất. Với Click và Mio, hai gói tuần đã ngang hoặc vượt gói tháng, nên hỏi gói tháng. Với Air Blade, hai tuần là 1.600.000đ trong khi gói tháng chỉ 1.400.000đ. Riêng Vision, hai gói tuần và gói tháng nằm trong vùng giá gần nhau, cần hỏi cụ thể.</p>
+<p>Đây là kỳ thuê dễ trả thừa nhất. Với Click và Mio, hai gói tuần đã ngang hoặc vượt gói tháng, nên hỏi gói tháng. Với Air Blade, hai tuần là 2.000.000đ trong khi gói tháng chỉ {{ price.honda-airblade.month.min }}. Riêng Vision, hai gói tuần và gói tháng nằm trong vùng giá gần nhau, cần hỏi cụ thể.</p>
 <h3>Trọn một tháng</h3>
-<p>Thứ tự là Click và Mio (1.000.000đ–1.200.000đ), rồi Air Blade (1.400.000đ), sau cùng là Vision (1.800.000đ–2.000.000đ). Điều nhiều người bất ngờ là Air Blade, dòng to và đầm hơn, lại có gói tháng thấp hơn Vision trong bảng tham khảo.</p>
+<p>Thứ tự là Click và Mio ({{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}), rồi Air Blade ({{ price.honda-airblade.month.min }}), sau cùng là Vision (1.800.000đ–2.000.000đ). Điều nhiều người bất ngờ là Air Blade, dòng to và đầm hơn, lại có gói tháng thấp hơn Vision trong bảng tham khảo.</p>
 
 <h2>Bốn câu hỏi để chọn đúng xe ga thay vì xe rẻ nhất</h2>
 <p>Giá tốt nhất là giá của chiếc xe đáp ứng đủ nhu cầu với chi phí thấp nhất, không phải chiếc rẻ nhất trên bảng. Trước khi chốt, tự trả lời:</p>

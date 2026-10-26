@@ -14,7 +14,7 @@
 <p>Không phải điều kiện nào cũng chỉ là thủ tục. Có ba điểm ảnh hưởng thẳng tới số tiền bạn trả:</p>
 <ul>
 <li><strong>Hạng bằng lái quyết định nhóm xe bạn được chọn.</strong> Xe số Honda Wave có giá tham khảo {{ price.honda-wave.day.min }}/ngày, thường là mức thấp nhất trong các dòng phổ biến. Nếu bạn quen xe số và có bằng A1, đây là lựa chọn kinh tế.</li>
-<li><strong>Thời hạn thuê thay đổi đơn giá trung bình.</strong> Honda Vision tham khảo {{ price.honda-vision.day.min }}/ngày nhưng gói tuần 800.000đ–1.000.000đ và gói tháng 1.800.000đ–2.000.000đ, nghĩa là ở càng lâu, mỗi ngày càng rẻ.</li>
+<li><strong>Thời hạn thuê thay đổi đơn giá trung bình.</strong> Honda Vision tham khảo {{ price.honda-vision.day.min }}/ngày nhưng gói tuần {{ price.honda-vision.week.min }} và gói tháng 1.800.000đ–2.000.000đ, nghĩa là ở càng lâu, mỗi ngày càng rẻ.</li>
 <li><strong>Hình thức nhận xe.</strong> Nhận tại cửa hàng không phát sinh thêm khoản nào; giao tận nơi chỉ thực hiện trong giờ {{ business.hours.display }}, thời gian và chi phí giao phải xác nhận trước khi đặt. Thông tin chi tiết ở bài <a href="/blog/thue-xe/phi-giao-xe-thue/">phí giao xe thuê</a>.</li>
 </ul>
 
@@ -22,10 +22,10 @@
 <p>Các mức dưới đây là giá tham khảo, luôn cần xác nhận lại với cửa hàng trước khi chốt:</p>
 <ul>
 <li>Xe số Honda Wave: mức tham khảo 150.000đ mỗi ngày.</li>
-<li>Tay ga nhỏ Honda Click hoặc Yamaha Mio: 150.000đ mỗi ngày, gói bảy ngày từ 600.000đ đến 700.000đ, gói ba mươi ngày từ 1.000.000đ đến 1.200.000đ.</li>
-<li>Tay ga Honda Vision: 200.000đ mỗi ngày, gói bảy ngày từ 800.000đ đến 1.000.000đ, gói ba mươi ngày từ 1.800.000đ đến 2.000.000đ.</li>
-<li>Tay ga Honda Air Blade: 200.000đ mỗi ngày, 800.000đ cho gói bảy ngày, 1.400.000đ cho gói ba mươi ngày.</li>
-<li>Xe 50cc, xe máy điện và xe đạp điện: báo giá khi liên hệ.</li>
+<li>Tay ga nhỏ Honda Click hoặc Yamaha Mio: 150.000đ mỗi ngày, gói bảy ngày {{ price.honda-click.week.min }}, gói ba mươi ngày từ {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }}.</li>
+<li>Tay ga Honda Vision: 200.000đ mỗi ngày, gói bảy ngày {{ price.honda-vision.week.min }}, gói ba mươi ngày từ 1.800.000đ đến 2.000.000đ.</li>
+<li>Tay ga Honda Air Blade: 200.000đ mỗi ngày, {{ price.honda-airblade.week.min }} cho gói bảy ngày, {{ price.honda-airblade.month.min }} cho gói ba mươi ngày.</li>
+<li>Xe 50cc: {{ price.xe-50cc.day.min }} mỗi ngày, gói dài ngày báo giá khi liên hệ; xe máy điện và xe đạp điện: báo giá khi liên hệ.</li>
 </ul>
 <p>Một ví dụ: bạn ở Hà Nội mười ngày và đi tay ga. Thuê Click hoặc Mio theo tuần rồi cộng thêm ba ngày lẻ thường hợp lý hơn trả mười ngày theo giá ngày. Còn nếu ở trọn một tháng, Air Blade theo gói tháng lại có lợi so với cộng các tuần. Bảng đầy đủ bạn xem tại <a href="/gia-thue/">trang giá thuê</a>, còn trường hợp ở dài có bài <a href="/blog/thue-xe/thue-xe-may-theo-thang/">thuê xe máy theo tháng</a>.</p>
 
@@ -57,7 +57,7 @@
 <h3>Có thể đặt xe trước khi đến Hà Nội không?</h3>
 <p>Có thể. Bạn liên hệ trước để giữ xe và thống nhất giá, mức cọc được xác nhận khi đặt, phần thủ tục còn lại hoàn tất lúc nhận xe.</p>
 <h3>Thiếu giấy phép lái xe thì có cách nào thuê không?</h3>
-<p>Bạn nên cân nhắc các dòng xe có quy định riêng như xe đạp điện hoặc xe 50cc, giá liên hệ, hoặc đi cùng người có bằng. Đừng điều khiển xe mô tô khi chưa đủ giấy phép.</p>
+<p>Bạn nên cân nhắc các dòng xe có quy định riêng như xe đạp điện hoặc xe 50cc, hỏi giá khi đặt, hoặc đi cùng người có bằng. Đừng điều khiển xe mô tô khi chưa đủ giấy phép.</p>
 
 <h2>Kết luận</h2>
 <p>Điều kiện thuê xe không chỉ để qua thủ tục mà còn là chìa khóa để có giá tốt: đúng hạng bằng giúp bạn chọn xe kinh tế, lịch rõ ràng giúp chốt gói dài, nhận xe tại cửa hàng giúp bạn khỏi phát sinh thêm. Chuẩn bị xong giấy tờ, bạn gọi {{ business.brand }} qua {{ business.contact.phone_display }} hoặc ghé {{ business.address.full }} để giữ xe. Tham khảo thêm tại <a href="/blog/thue-xe/">chuyên mục thuê xe</a> hoặc quay về <a href="/">trang chủ</a>.</p>

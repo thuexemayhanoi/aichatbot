@@ -13,12 +13,12 @@
 <h2>So sánh các dòng xe theo giá tham khảo</h2>
 <p>Các mức giá dưới đây chỉ để tham khảo, bạn xem trang <a href="/gia-thue/">giá thuê xe máy</a> và xác nhận với cửa hàng trước khi đặt:</p>
 <ul>
-<li><strong>Lựa chọn đầu tiên cho người lớn tuổi là Honda Vision:</strong> khoảng 200.000đ theo ngày, 800.000đ–1.000.000đ theo tuần, 1.800.000đ–2.000.000đ theo tháng; yên thấp, thân gọn, dễ chống chân.</li>
-<li><strong>Người dáng nhỏ, đi quanh nhà hợp Honda Click hoặc Yamaha Mio:</strong> khoảng 150.000đ theo ngày, 600.000đ–700.000đ theo tuần, 1.000.000đ–1.200.000đ theo tháng; xe nhẹ, dễ dắt.</li>
-<li><strong>Người còn khỏe, quen xe ga có thể chọn Honda Air Blade:</strong> khoảng 200.000đ theo ngày, 800.000đ theo tuần, 1.400.000đ theo tháng; thân xe lớn hơn, chở thêm người ổn định.</li>
+<li><strong>Lựa chọn đầu tiên cho người lớn tuổi là Honda Vision:</strong> khoảng 200.000đ theo ngày, {{ price.honda-vision.week.min }} theo tuần, 1.800.000đ–2.000.000đ theo tháng; yên thấp, thân gọn, dễ chống chân.</li>
+<li><strong>Người dáng nhỏ, đi quanh nhà hợp Honda Click hoặc Yamaha Mio:</strong> khoảng 150.000đ theo ngày, {{ price.honda-click.week.min }} theo tuần, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }} theo tháng; xe nhẹ, dễ dắt.</li>
+<li><strong>Người còn khỏe, quen xe ga có thể chọn Honda Air Blade:</strong> khoảng 200.000đ theo ngày, {{ price.honda-airblade.week.min }} theo tuần, {{ price.honda-airblade.month.min }} theo tháng; thân xe lớn hơn, chở thêm người ổn định.</li>
 <li><strong>Người đã đi xe số nhiều năm có thể giữ thói quen với Honda Wave:</strong> khoảng 150.000đ theo ngày, rẻ nhưng chỉ nên chọn khi thật sự thoải mái.</li>
 </ul>
-<p>Xe đạp điện, xe máy điện và xe 50cc là giá liên hệ. Với người chỉ đi chợ, đi lễ quanh khu phố, bạn có thể hỏi cửa hàng về các dòng này, kèm tình trạng pin và cách sạc.</p>
+<p>Xe đạp điện, xe máy điện là giá liên hệ; xe 50cc tham khảo {{ price.xe-50cc.day.min }} theo ngày. Với người chỉ đi chợ, đi lễ quanh khu phố, bạn có thể hỏi cửa hàng về các dòng này, kèm tình trạng pin và cách sạc.</p>
 
 <h2>Ba tình huống và phương án giá tốt tương ứng</h2>
 <p><strong>Bố mẹ từ quê lên thăm con vài ngày.</strong> Nhu cầu là đi lại quanh khu ở, thỉnh thoảng đi lễ chùa hay thăm họ hàng. Thuê theo ngày một chiếc Click hoặc Mio thường đủ, nếu ở gần một tuần thì so ngay với gói tuần, vì gói tuần thường thấp hơn cộng dồn bảy ngày lẻ.</p>

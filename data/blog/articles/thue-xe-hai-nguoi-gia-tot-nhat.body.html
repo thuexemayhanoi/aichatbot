@@ -5,16 +5,16 @@
 <p>Các con số dưới đây là giá tham khảo, có thể thay đổi theo thời điểm và tình trạng xe; bạn kiểm tra lại trên trang <a href="/gia-thue/">bảng giá thuê xe</a> và xác nhận với cửa hàng trước khi đặt:</p>
 <ul>
 <li><strong>Wave xe số, dùng khi mỗi người một xe:</strong> khoảng 150.000đ cho một xe mỗi ngày.</li>
-<li><strong>Click hoặc Mio, xe ga nhỏ cho từng người:</strong> khoảng 150.000đ cho một xe mỗi ngày, gói tuần 600.000đ–700.000đ, gói tháng 1.000.000đ–1.200.000đ.</li>
-<li><strong>Vision, xe ga chở hai người dáng nhỏ:</strong> khoảng 200.000đ cho một xe mỗi ngày, gói tuần 800.000đ–1.000.000đ, gói tháng 1.800.000đ–2.000.000đ.</li>
-<li><strong>Air Blade, xe ga yên dài cho hai người:</strong> khoảng 200.000đ cho một xe mỗi ngày, gói tuần 800.000đ, gói tháng 1.400.000đ.</li>
+<li><strong>Click hoặc Mio, xe ga nhỏ cho từng người:</strong> khoảng 150.000đ cho một xe mỗi ngày, gói tuần {{ price.honda-click.week.min }}, gói tháng {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}.</li>
+<li><strong>Vision, xe ga chở hai người dáng nhỏ:</strong> khoảng 200.000đ cho một xe mỗi ngày, gói tuần {{ price.honda-vision.week.min }}, gói tháng 1.800.000đ–2.000.000đ.</li>
+<li><strong>Air Blade, xe ga yên dài cho hai người:</strong> khoảng 200.000đ cho một xe mỗi ngày, gói tuần {{ price.honda-airblade.week.min }}, gói tháng {{ price.honda-airblade.month.min }}.</li>
 </ul>
-<p>Xe 50cc, xe máy điện và xe đạp điện là giá liên hệ, nên không đưa vào phép tính dưới đây.</p>
+<p>Xe máy điện và xe đạp điện là giá liên hệ, xe 50cc chỉ có giá ngày {{ price.xe-50cc.day.min }}, nên không đưa vào phép tính dưới đây.</p>
 
 <h2>Một xe hay hai xe: phép tính theo thời gian thuê</h2>
 <p><strong>Thuê một ngày.</strong> Một chiếc Vision chở hai người tham khảo khoảng 200.000đ. Hai chiếc Wave hoặc hai chiếc Click cộng lại khoảng 300.000đ. Chênh lệch khoảng 100.000đ trong một ngày, chưa tính xăng của xe thứ hai.</p>
-<p><strong>Thuê một tuần.</strong> Một chiếc Air Blade theo tuần tham khảo khoảng 800.000đ, Vision trong khoảng 800.000đ–1.000.000đ. Hai chiếc Click theo tuần cộng lại khoảng 1.200.000đ–1.400.000đ. Lúc này chênh lệch đã lên vài trăm nghìn đồng.</p>
-<p><strong>Thuê một tháng.</strong> Air Blade theo tháng tham khảo khoảng 1.400.000đ, rẻ hơn Vision theo tháng. Hai chiếc Click cộng lại khoảng 2.000.000đ–2.400.000đ. Với hai người ở cùng nhau và đi chung lịch, một chiếc Air Blade là cấu hình có tổng chi phí thấp nhất trong bảng.</p>
+<p><strong>Thuê một tuần.</strong> Một chiếc Air Blade theo tuần tham khảo khoảng {{ price.honda-airblade.week.min }}, Vision cũng khoảng {{ price.honda-vision.week.min }}. Hai chiếc Click theo tuần cộng lại khoảng 1.400.000đ. Lúc này chênh lệch đã lên vài trăm nghìn đồng.</p>
+<p><strong>Thuê một tháng.</strong> Air Blade theo tháng tham khảo khoảng {{ price.honda-airblade.month.min }}, rẻ hơn Vision theo tháng. Hai chiếc Click cộng lại khoảng 1.800.000đ–2.400.000đ. Với hai người ở cùng nhau và đi chung lịch, một chiếc Air Blade là cấu hình có tổng chi phí thấp nhất trong bảng.</p>
 <p>Từ ba phép tính trên có thể rút ra quy luật: thuê càng dài, khoản tiết kiệm của phương án một xe càng lớn, và gói tuần, gói tháng thường có lợi hơn cộng dồn giá ngày. Cách đọc các gói này được giải thích trong bài <a href="/blog/thue-xe/thue-xe-may-theo-tuan/">thuê xe máy theo tuần</a>.</p>
 
 <h2>Khi nào hai xe mới là lựa chọn giá tốt</h2>
