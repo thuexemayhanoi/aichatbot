@@ -11,21 +11,21 @@
 <li>Nhóm Honda Click hoặc Yamaha Mio kiểu ga nhỏ: 150.000đ mỗi ngày, ngang ngửa giá xe số.</li>
 <li>Honda Vision: 200.000đ mỗi ngày, cốp rộng và đi phố rất êm.</li>
 <li>Honda Air Blade: 200.000đ mỗi ngày, ga cỡ lớn hơn, hợp người thích xe chắc và khỏe.</li>
-<li>Nhóm xe 50cc và xe máy điện: giá theo thời điểm, cần hỏi trực tiếp cửa hàng để lấy giá hiện tại.</li>
+<li>Xe 50cc: {{ price.xe-50cc.day.min }} mỗi ngày; xe máy điện: giá theo thời điểm, cần hỏi trực tiếp cửa hàng để lấy giá hiện tại.</li>
 </ul>
 <p>Khoảng cách 150.000đ và 200.000đ một ngày nghe có vẻ nhỏ, nhưng chọn đúng nhóm xe trong đúng nhu cầu quan trọng hơn con số chênh lệch đó. Chi tiết về từng dòng đã có bài riêng: giá và kinh nghiệm chọn khi <a href="/blog/thue-xe/thue-honda-vision/">thuê Honda Vision</a>, giá tham khảo khi <a href="/blog/thue-xe/thue-honda-air-blade/">thuê Honda Air Blade</a>, và lý do dòng số nhỏ vẫn được hỏi nhiều khi <a href="/blog/thue-xe/thue-wave-alpha/">thuê Wave Alpha</a>.</p>
 
 <h2>Thuê tuần và thuê tháng: nơi thứ tự thay đổi</h2>
-<p>So sánh theo giá ngày thì các dòng gần như không cách nhau nhiều; sang kiểu thuê tuần và tháng, thứ tự đáng tiền đổi hẳn. Theo bảng tham khảo, nhóm Click hoặc Mio ở mức 600.000đ đến 700.000đ một tuần và 1.000.000đ đến 1.200.000đ một tháng, là nhóm rẻ nhất khi thuê dài ngày. Vision ở mức 800.000đ đến 1.000.000đ tuần và 1.800.000đ đến 2.000.000đ tháng, phù hợp ai cần cốp rộng và xe êm suốt cả tháng. Air Blade có giá tuần tham khảo 800.000đ và tháng 1.400.000đ, thú vị ở chỗ thuê càng dài chênh với Vision càng rõ, khiến nó thành lựa chọn đáng cân nhắc cho hợp đồng tháng nếu bạn thích xe cỡ lớn.</p>
+<p>So sánh theo giá ngày thì các dòng gần như không cách nhau nhiều; sang kiểu thuê tuần và tháng, thứ tự đáng tiền đổi hẳn. Theo bảng tham khảo, nhóm Click hoặc Mio ở mức {{ price.honda-click.week.min }} một tuần và {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }} một tháng, là nhóm rẻ nhất khi thuê dài ngày. Vision ở mức {{ price.honda-vision.week.min }} tuần và 1.800.000đ đến 2.000.000đ tháng, phù hợp ai cần cốp rộng và xe êm suốt cả tháng. Air Blade có giá tuần tham khảo {{ price.honda-airblade.week.min }} và tháng {{ price.honda-airblade.month.min }}, thú vị ở chỗ thuê càng dài chênh với Vision càng rõ, khiến nó thành lựa chọn đáng cân nhắc cho hợp đồng tháng nếu bạn thích xe cỡ lớn.</p>
 <div class="table-wrap">
 <table class="blog-table">
 <caption>Giá tham khảo theo ngày, tuần và tháng của các dòng xe</caption>
 <thead><tr><th scope="col">Dòng xe</th><th scope="col">Giá ngày</th><th scope="col">Giá tuần</th><th scope="col">Giá tháng</th></tr></thead>
 <tbody>
-<tr><th scope="row">Honda Click hoặc Yamaha Mio</th><td>150.000đ</td><td>600.000đ đến 700.000đ</td><td>1.000.000đ đến 1.200.000đ</td></tr>
-<tr><th scope="row">Honda Vision</th><td>200.000đ</td><td>800.000đ đến 1.000.000đ</td><td>1.800.000đ đến 2.000.000đ</td></tr>
-<tr><th scope="row">Honda Air Blade</th><td>200.000đ</td><td>800.000đ</td><td>1.400.000đ</td></tr>
-<tr><th scope="row">Honda Wave</th><td>150.000đ</td><td>Hỏi cửa hàng</td><td>Hỏi cửa hàng</td></tr>
+<tr><th scope="row">Honda Click hoặc Yamaha Mio</th><td>150.000đ</td><td>{{ price.honda-click.week.min }}</td><td>{{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }}</td></tr>
+<tr><th scope="row">Honda Vision</th><td>200.000đ</td><td>{{ price.honda-vision.week.min }}</td><td>1.800.000đ đến 2.000.000đ</td></tr>
+<tr><th scope="row">Honda Air Blade</th><td>200.000đ</td><td>{{ price.honda-airblade.week.min }}</td><td>{{ price.honda-airblade.month.min }}</td></tr>
+<tr><th scope="row">Honda Wave</th><td>150.000đ</td><td>{{ price.honda-wave.week.min }}</td><td>{{ price.honda-wave.month.min }} đến {{ price.honda-wave.month.max }}</td></tr>
 <tr><th scope="row">Xe máy điện</th><td>Giá theo thời điểm</td><td>Hỏi cửa hàng</td><td>Hỏi cửa hàng</td></tr>
 </tbody>
 </table>

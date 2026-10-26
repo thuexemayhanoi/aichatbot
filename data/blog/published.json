@@ -42,7 +42,7 @@
       "body": "data/blog/articles/thue-xe-may-gia-re.body.html",
       "knowledge_chunks": [
         "Thuê xe máy giá rẻ cần tính tổng chi phí thay vì chỉ so giá niêm yết: giá theo ngày tuần tháng, nhiên liệu cả chuyến, chi phí đi nhận xe, tiền đặt cọc và các khoản phát sinh như trả xe trễ giờ, hư hỏng hay thất lạc mũ bảo hiểm.",
-        "Bảng giá tham khảo của Thuê xe máy Hà Nội Nguyễn Tú: Honda Wave và Honda Click khoảng 150.000đ một ngày, Honda Vision và Air Blade khoảng 200.000đ một ngày; giá tuần từ 600.000đ đến 1.000.000đ và giá tháng từ 1.000.000đ đến 2.000.000đ tùy dòng xe, rẻ hơn rõ khi so với giá ngày."
+        "Bảng giá tham khảo của Thuê xe máy Hà Nội Nguyễn Tú: Honda Wave và Honda Click khoảng 150.000đ một ngày, Honda Vision và Air Blade khoảng 200.000đ một ngày; giá tuần từ {{ price.honda-click.week.min }} đến {{ price.honda-vision.week.min }} và giá tháng từ {{ price.honda-click.month.min }} đến {{ price.honda-vision.month.max }} tùy dòng xe, rẻ hơn rõ khi so với giá ngày."
       ]
     },
     {
@@ -80,7 +80,7 @@
       "author": "MotoAI Editorial",
       "body": "data/blog/articles/thue-xe-may-quanh-long-bien.body.html",
       "knowledge_chunks": [
-        "Thuê xe máy quanh Long Biên tiện cho cả đi làm và dạo chơi: giá tham khảo Honda Wave khoảng 150.000đ một ngày, xe ga như Vision hay Air Blade khoảng 200.000đ một ngày, thuê tuần từ 600.000đ đến 1.000.000đ; đặt cọc 2.000.000đ đến 5.000.000đ tùy dòng xe và được hoàn khi trả xe đúng hiện trạng.",
+        "Thuê xe máy quanh Long Biên tiện cho cả đi làm và dạo chơi: giá tham khảo Honda Wave khoảng 150.000đ một ngày, xe ga như Vision hay Air Blade khoảng 200.000đ một ngày, thuê tuần từ {{ price.honda-click.week.min }} đến {{ price.honda-vision.week.min }}; đặt cọc 2.000.000đ đến 5.000.000đ tùy dòng xe và được hoàn khi trả xe đúng hiện trạng.",
         "Khi thuê xe tại Long Biên nên hỏi rõ giá theo khung thời gian, chụp ảnh hiện trạng xe trước khi nhận, xác nhận mức xăng và khung giờ giao nhận; cửa hàng giao xe tận nơi trong vùng lân cận như Bồ Đề, Gia Lâm trong giờ mở cửa 09:00 - 21:00."
       ]
     },
@@ -108,8 +108,8 @@
       "author": "MotoAI Editorial",
       "body": "data/blog/articles/gia-thue-xe-may-theo-ngay.body.html",
       "knowledge_chunks": [
-        "Giá thuê xe máy theo ngày tham khảo: Honda Wave và nhóm xe ga nhỏ như Click, Mio khoảng 150.000đ một ngày; Honda Vision, Air Blade khoảng 200.000đ một ngày; nhóm dưới 50cc cần xác nhận trực tiếp. Một ngày thường tính theo 24 giờ kể từ lúc nhận xe hoặc đến giờ đóng cửa 09:00 - 21:00.",
-        "Từ 5 đến 6 ngày trở lên, gói tuần hầu như luôn rẻ hơn thuê lẻ theo ngày: gói tuần nhóm xe ga nhỏ 600.000đ đến 700.000đ, Vision 800.000đ đến 1.000.000đ, gói tháng Vision 1.800.000đ đến 2.000.000đ. Khoản đặt cọc 2.000.000đ đến 5.000.000đ hoàn lại khi trả xe đúng hiện trạng."
+        "Giá thuê xe máy theo ngày tham khảo: Honda Wave và nhóm xe ga nhỏ như Click, Mio khoảng 150.000đ một ngày; Honda Vision, Air Blade khoảng 200.000đ một ngày; nhóm dưới 50cc khoảng {{ price.xe-50cc.day.min }} một ngày, gói tuần và tháng cần xác nhận trực tiếp. Một ngày thường tính theo 24 giờ kể từ lúc nhận xe hoặc đến giờ đóng cửa 09:00 - 21:00.",
+        "Từ 5 đến 6 ngày trở lên, gói tuần hầu như luôn rẻ hơn thuê lẻ theo ngày: gói tuần nhóm xe ga nhỏ {{ price.honda-click.week.min }}, Vision {{ price.honda-vision.week.min }}, gói tháng Vision 1.800.000đ đến 2.000.000đ. Khoản đặt cọc 2.000.000đ đến 5.000.000đ hoàn lại khi trả xe đúng hiện trạng."
       ]
     },
     {
@@ -717,7 +717,7 @@
       "body": "data/blog/articles/thue-honda-vision.body.html",
       "knowledge_chunks": [
         "Honda Vision là dòng xe tay ga 110 phân khối được thuê nhiều tại cửa hàng: động cơ eSP làm mát bằng không khí, phun xăng điện tử, idling stop tự ngắt máy khi dừng quá ba giây, bánh trước 16 inch, khối lượng khoảng 93 đến 97 kilôgam. Xe nhẹ, yên vừa phải, cốp vừa mũ bảo hiểm, mức tiêu hao khoảng 1,8 đến 2 lít mỗi trăm kilômét, một bình đầy chạy hơn hai trăm cây số.",
-        "Giá thuê Honda Vision theo bảng giá cửa hàng: 200.000đ một ngày, gói tuần 800.000đ đến 1.000.000đ, gói tháng 1.800.000đ đến 2.000.000đ, tiền cọc xác nhận trực tiếp. Vì Vision 110 phân khối thuộc nhóm mô tô, người lái cần giấy phép lái xe hạng A1 và đủ mười tám tuổi. Khi nhận xe nên thử đề, hai bên phanh, đèn còi xi-nhan, kim xăng trên đồng hồ LCD, cốp và giấy tờ kèm xe."
+        "Giá thuê Honda Vision theo bảng giá cửa hàng: 200.000đ một ngày, gói tuần {{ price.honda-vision.week.min }}, gói tháng 1.800.000đ đến 2.000.000đ, tiền cọc xác nhận trực tiếp. Vì Vision 110 phân khối thuộc nhóm mô tô, người lái cần giấy phép lái xe hạng A1 và đủ mười tám tuổi. Khi nhận xe nên thử đề, hai bên phanh, đèn còi xi-nhan, kim xăng trên đồng hồ LCD, cốp và giấy tờ kèm xe."
       ]
     },
     {
@@ -801,8 +801,8 @@
       "author": "MotoAI Editorial",
       "body": "data/blog/articles/thue-honda-air-blade.body.html",
       "knowledge_chunks": [
-        "Honda Air Blade là dòng xe tay ga của Honda với hai dung tích động cơ 110 phân khối và 125 phân khối tùy phiên bản, phun xăng điện tử, cốp rộng. Tại Thuê xe máy Hà Nội Nguyễn Tú, giá tham khảo: 200.000đ mỗi ngày, 800.000đ mỗi tuần, 1.400.000đ mỗi tháng; giá thực tế cần xác nhận trước khi đặt.",
-        "So sánh các dòng cùng cửa hàng theo bảng giá tham khảo: Honda Vision 200.000đ mỗi ngày và 800.000đ đến 1.000.000đ mỗi tuần; Honda Click hoặc Yamaha Mio 150.000đ mỗi ngày; Honda Wave 150.000đ mỗi ngày. Air Blade phù hợp khách thích xe ga đầm, dáng thể thao và cốp rộng.",
+        "Honda Air Blade là dòng xe tay ga của Honda với hai dung tích động cơ 110 phân khối và 125 phân khối tùy phiên bản, phun xăng điện tử, cốp rộng. Tại Thuê xe máy Hà Nội Nguyễn Tú, giá tham khảo: 200.000đ mỗi ngày, {{ price.honda-airblade.week.min }} mỗi tuần, {{ price.honda-airblade.month.min }} mỗi tháng; giá thực tế cần xác nhận trước khi đặt.",
+        "So sánh các dòng cùng cửa hàng theo bảng giá tham khảo: Honda Vision 200.000đ mỗi ngày và {{ price.honda-vision.week.min }} mỗi tuần; Honda Click hoặc Yamaha Mio 150.000đ mỗi ngày; Honda Wave 150.000đ mỗi ngày. Air Blade phù hợp khách thích xe ga đầm, dáng thể thao và cốp rộng.",
         "Cửa hàng ở 112 Nguyễn Văn Cừ, Long Biên, Hà Nội, mở cửa từ 09:00 đến 21:00, đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe. Khi nhận xe khách nên kiểm tra phanh, đèn, còi, mức nhiên liệu và chụp ảnh hiện trạng để đối chiếu khi trả."
       ]
     },
@@ -873,7 +873,7 @@
       "body": "data/blog/articles/ung-dung-thue-xe-may-hoat-dong-ra-sao.body.html",
       "knowledge_chunks": [
         "Ứng dụng thuê xe máy MotoAI đọc câu hỏi tiếng Việt, tách ý chính gồm dòng xe, thời gian thuê và khu vực nhận xe. Cụm \"xe 50cc\" luôn được hiểu là dòng xe số nhỏ, không bao giờ bị nhầm thành số ngày thuê. Câu thiếu dấu hay sai trật tự vẫn xử lý được nhờ bộ từ đồng nghĩa soạn sẵn; nếu thiếu kỳ thuê, ứng dụng hỏi lại trước khi báo giá.",
-        "Phần tính giá áp theo kỳ: Air Blade khoảng 200.000đ một ngày, 800.000đ một tuần, 1.400.000đ một tháng; Vision khoảng 200.000đ một ngày; Click, Mio và Wave khoảng 150.000đ một ngày. Tiền cọc dao động 2.000.000đ đến 5.000.000đ tùy dòng xe, được hoàn khi trả xe đúng nguyên trạng.",
+        "Phần tính giá áp theo kỳ: Air Blade khoảng 200.000đ một ngày, {{ price.honda-airblade.week.min }} một tuần, {{ price.honda-airblade.month.min }} một tháng; Vision khoảng 200.000đ một ngày; Click, Mio và Wave khoảng 150.000đ một ngày. Tiền cọc dao động 2.000.000đ đến 5.000.000đ tùy dòng xe, được hoàn khi trả xe đúng nguyên trạng.",
         "Ứng dụng chạy tĩnh trên GitHub Pages và xử lý cục bộ trong trình duyệt: không cần tài khoản, không thu thập hội thoại trên máy chủ, xoá dữ liệu trang là xoá sạch dấu vết. Bước chốt cuối cùng luôn xác nhận lại với cửa hàng tại 112 Nguyễn Văn Cừ, Long Biên, mở cửa 09:00-21:00, hoặc giao xe tận nơi trong khu vực phục vụ."
       ]
     },
@@ -1059,8 +1059,8 @@
       "author": "MotoAI Editorial",
       "body": "data/blog/articles/so-sanh-gia-cac-loai-xe-may-cho-thue.body.html",
       "knowledge_chunks": [
-        "Giá tham khảo theo ngày: dòng số nhỏ kiểu Wave và nhóm ga nhỏ kiểu Click, Mio ở mức 150.000đ mỗi ngày; Honda Vision và Honda Air Blade ở mức 200.000đ mỗi ngày; nhóm xe 50cc và xe máy điện không niêm yết giá cố định, cần hỏi trực tiếp cửa hàng để lấy giá hiện tại.",
-        "Giá tham khảo theo tuần và tháng: nhóm Click, Mio 600.000đ đến 700.000đ tuần và 1.000.000đ đến 1.200.000đ tháng, rẻ nhất khi thuê dài ngày; Vision 800.000đ đến 1.000.000đ tuần và 1.800.000đ đến 2.000.000đ tháng; Air Blade 800.000đ tuần và 1.400.000đ tháng.",
+        "Giá tham khảo theo ngày: dòng số nhỏ kiểu Wave và nhóm ga nhỏ kiểu Click, Mio ở mức 150.000đ mỗi ngày; Honda Vision và Honda Air Blade ở mức 200.000đ mỗi ngày; nhóm xe 50cc ở mức {{ price.xe-50cc.day.min }} mỗi ngày; xe máy điện không niêm yết giá cố định, cần hỏi trực tiếp cửa hàng để lấy giá hiện tại.",
+        "Giá tham khảo theo tuần và tháng: nhóm Click, Mio {{ price.honda-click.week.min }} tuần và {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }} tháng, rẻ nhất khi thuê dài ngày; Vision {{ price.honda-vision.week.min }} tuần và 1.800.000đ đến 2.000.000đ tháng; Air Blade {{ price.honda-airblade.week.min }} tuần và {{ price.honda-airblade.month.min }} tháng.",
         "Ngoài giá niêm yết cần tính: mức đặt cọc từ 2.000.000đ đến 5.000.000đ tùy dòng xe và được hoàn trả khi trả xe đúng điều kiện, mức xăng tiêu thụ khác nhau giữa các dòng, chi phí và khung giờ giao nhận, cùng cách tính giá gộp nhiều ngày; mọi con số chỉ mang tính tham khảo và cần xác nhận trực tiếp với cửa hàng trước khi đặt."
       ]
     },
@@ -1304,7 +1304,7 @@
       "knowledge_chunks": [
         "Công cụ tính giá trong ứng dụng MotoAI cho mức giá tham khảo theo dòng xe, thời gian thuê theo ngày tuần hoặc tháng và khu vực giao xe. Cách dùng: mở ứng dụng, vào mục tính giá, chọn dòng xe, nhập thời gian thuê, đọc mức giá hiển thị và có thể đổi dòng xe hoặc thời gian để so sánh nhiều phương án trong dưới một phút.",
         "Giá thuê phụ thuộc dòng xe, thời gian thuê và tình trạng xe cũng như thời điểm thuê. Thuê theo tuần hoặc theo tháng thường có đơn giá ưu đãi hơn thuê lẻ theo ngày, nên nếu dự kiến thuê dài quá ba ngày thì nên tính gói tuần hoặc tháng. Mức giá tham khảo cần xác nhận lại khi nhận xe vì xe sẵn có thay đổi liên tục.",
-        "Ngoài giá thuê cần chuẩn bị tiền đặt cọc dao động từ 2.000.000đ đến 5.000.000đ tùy dòng xe, hoàn lại khi trả xe đúng điều kiện. Công cụ tính giá chưa bao gồm khoản cọc này. Với xe điện, xe đạp điện và xe 50cc cần liên hệ để được báo giá cụ thể theo tình trạng xe hiện có."
+        "Ngoài giá thuê cần chuẩn bị tiền đặt cọc dao động từ 2.000.000đ đến 5.000.000đ tùy dòng xe, hoàn lại khi trả xe đúng điều kiện. Công cụ tính giá chưa bao gồm khoản cọc này. Với xe điện, xe đạp điện và gói tuần, tháng của xe 50cc (giá ngày tham khảo {{ price.xe-50cc.day.min }}) cần liên hệ để được báo giá cụ thể theo tình trạng xe hiện có."
       ]
     },
     {
@@ -12889,7 +12889,7 @@
       "body": "data/blog/articles/uu-dai-thue-xe-dai-han-cho-sinh-vien.body.html",
       "knowledge_chunks": [
         "Gõ tìm \"ưu đãi thuê xe dài hạn cho sinh viên\", bạn sẽ gặp đủ kiểu lời mời: giảm giá cho thẻ sinh viên, tặng thêm ngày, miễn cọc. Nghe hấp dẫn, nhưng không ít bạn mất tiền hoặc rắc rối vì tin vào những lời hứa không có trên giấy. Bài này không hứa mã giảm giá hay chương trình khuyến mãi nào. Thay vào đó, bạn sẽ hiểu lợi ích thực sự của việc thuê dài hạn nằm ở đâu, cách kiểm tra một lời chào có thật sự có lợi không, và những điều kiện cần xác nhận trước khi cam kết cả tháng.",
-        "Lợi ích lớn nhất khi thuê dài hạn không đến từ một chương trình đặc biệt nào, mà từ chính bảng giá theo tuần và theo tháng. Lấy Honda Air Blade làm ví dụ, theo mức tham khảo: thuê lẻ 200.000đ/ngày thì bảy ngày cộng lại là 1.400.000đ, còn gói tuần khoảng 800.000đ. Tiếp tục kéo dài, bốn gói tuần cộng lại là 3.200.000đ, trong khi gói tháng tham khảo chỉ khoảng 1.400.000đ, bằng đúng tiền bảy ngày thuê lẻ."
+        "Lợi ích lớn nhất khi thuê dài hạn không đến từ một chương trình đặc biệt nào, mà từ chính bảng giá theo tuần và theo tháng. Lấy Honda Air Blade làm ví dụ, theo mức tham khảo: thuê lẻ 200.000đ/ngày thì bảy ngày cộng lại là 1.400.000đ, còn gói tuần khoảng {{ price.honda-airblade.week.min }}. Tiếp tục kéo dài, bốn gói tuần cộng lại là bốn lần {{ price.honda-airblade.week.min }}, trong khi gói tháng tham khảo chỉ khoảng {{ price.honda-airblade.month.min }}, gần bằng tiền bảy ngày thuê lẻ."
       ]
     },
     {
@@ -13699,7 +13699,7 @@
       "body": "data/blog/articles/phi-giao-xe-thue-cho-sinh-vien.body.html",
       "knowledge_chunks": [
         "Với sinh viên, mỗi khoản chi nhỏ đều được cân nhắc, và phí giao xe là khoản dễ bị bỏ quên khi so giá thuê. Bạn thấy giá thuê theo ngày hay theo tháng rất hợp túi tiền, nhưng chưa tính đến chuyện chiếc xe đi từ cửa hàng đến ký túc xá hay phòng trọ bằng cách nào. Bài viết này giúp bạn quyết định khi nào nên nhờ giao xe, khi nào tự đến lấy là hợp lý hơn, và cách hỏi phí giao sao cho rõ ràng ngay từ tin nhắn đầu tiên.",
-        "Giá thuê tham khảo được tính cho chiếc xe theo thời gian bạn sử dụng: Honda Wave khoảng 150.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày và 1.000.000đ–1.200.000đ/tháng, Honda Vision khoảng 1.800.000đ–2.000.000đ/tháng. Phí giao là phần dịch vụ đưa xe tới địa chỉ của bạn và tùy vào quãng đường, khung giờ. Cửa hàng không công bố một con số cố định cho mọi trường hợp; thời gian và phí giao sẽ được báo cụ thể trước khi bạn chốt đơn."
+        "Giá thuê tham khảo được tính cho chiếc xe theo thời gian bạn sử dụng: Honda Wave khoảng 150.000đ/ngày, Honda Click hoặc Yamaha Mio khoảng 150.000đ/ngày và {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng, Honda Vision khoảng 1.800.000đ–2.000.000đ/tháng. Phí giao là phần dịch vụ đưa xe tới địa chỉ của bạn và tùy vào quãng đường, khung giờ. Cửa hàng không công bố một con số cố định cho mọi trường hợp; thời gian và phí giao sẽ được báo cụ thể trước khi bạn chốt đơn."
       ]
     },
     {
@@ -16630,7 +16630,7 @@
       "body": "data/blog/articles/thue-xe-hang-nhe-cho-gia-dinh.body.html",
       "knowledge_chunks": [
         "Khi cả nhà cùng thuê xe, câu hỏi không còn là \"thuê xe gì\" mà là \"mỗi người hợp với xe gì\". Ông bà cần chiếc xe thấp yên, dễ chống chân; mẹ cần chỗ để túi đồ và áo mưa của con; anh chị lớn muốn xe gọn để luồn ngõ; còn cậu em tuổi teen thì háo hức được tự cầm lái. Nhóm xe hạng nhẹ, gồm các dòng xe ga nhỏ và xe số phổ thông, thường là lời giải hợp lý cho gia đình vì dễ điều khiển và chi phí mềm. Bài viết này giúp bạn ghép xe theo từng thành viên, ước tính ngân sách cả đoàn theo giá tham khảo, và sắp xếp thủ tục để không ai phải chờ ai.",
-        "Trong đội xe cho thuê, nhóm hạng nhẹ thường gồm Honda Vision, Honda Click, Yamaha Mio ở phía xe ga, và Honda Wave ở phía xe số. Bên cạnh đó là các lựa chọn đặc biệt như xe 50cc, xe máy điện và xe đạp điện, có giá liên hệ tùy thời điểm. Điểm chung của nhóm này là thân xe gọn, trọng lượng vừa phải và thao tác nhẹ tay. Nếu bạn chưa rõ khái niệm hạng nhẹ, bài thuê xe hạng nhẹ có phần giải thích cơ bản; bài này đi tiếp vào câu chuyện phân xe cho từng người trong nhà."
+        "Trong đội xe cho thuê, nhóm hạng nhẹ thường gồm Honda Vision, Honda Click, Yamaha Mio ở phía xe ga, và Honda Wave ở phía xe số. Bên cạnh đó là các lựa chọn đặc biệt như xe 50cc thuê ngày khoảng {{ price.xe-50cc.day.min }}, xe máy điện và xe đạp điện có giá liên hệ tùy thời điểm. Điểm chung của nhóm này là thân xe gọn, trọng lượng vừa phải và thao tác nhẹ tay. Nếu bạn chưa rõ khái niệm hạng nhẹ, bài thuê xe hạng nhẹ có phần giải thích cơ bản; bài này đi tiếp vào câu chuyện phân xe cho từng người trong nhà."
       ]
     },
     {
@@ -17635,7 +17635,7 @@
       "body": "data/blog/articles/thue-honda-air-blade-gia-tot-nhat.body.html",
       "knowledge_chunks": [
         "Nhiều người gõ cụm \"thuê Honda Air Blade giá tốt nhất\" với hy vọng tìm ra một con số thấp bất ngờ. Thực tế, với một dòng xe ga phổ biến như Air Blade, mức giá tốt nhất hiếm khi nằm ở chỗ mặc cả mà nằm ở cách bạn chọn gói thuê: thuê lẻ từng ngày, gói tuần hay gói tháng, và có tính đủ các khoản đi kèm hay không. Bài này đi thẳng vào phép tính, chỉ ra các mốc số ngày nên đổi gói, những chi phí ẩn hay làm giá \"rẻ\" thành giá đắt, và cách chốt giá rõ ràng trước khi nhận xe.",
-        "Theo bảng giá tham khảo tại cửa hàng, Honda Air Blade có ba mức: 200.000đ cho một ngày, 800.000đ cho một tuần và 1.400.000đ cho một tháng. Đây là giá để bạn lên kế hoạch, mức cuối cùng luôn được cửa hàng xác nhận khi đặt xe. Bạn có thể đối chiếu lại toàn bộ bảng trên trang giá thuê xe ."
+        "Theo bảng giá tham khảo tại cửa hàng, Honda Air Blade có ba mức: 200.000đ cho một ngày, {{ price.honda-airblade.week.min }} cho một tuần và {{ price.honda-airblade.month.min }} cho một tháng. Đây là giá để bạn lên kế hoạch, mức cuối cùng luôn được cửa hàng xác nhận khi đặt xe. Bạn có thể đối chiếu lại toàn bộ bảng trên trang giá thuê xe ."
       ]
     },
     {
@@ -17650,7 +17650,7 @@
       "body": "data/blog/articles/thue-honda-vision-gia-tot-nhat.body.html",
       "knowledge_chunks": [
         "Honda Vision là chiếc xe ga nhiều người chọn khi lần đầu thuê xe ở Hà Nội: dáng nhỏ gọn, dễ dắt trong ngõ, dễ gửi ở bãi chật. Nhưng khi tìm \"thuê Honda Vision giá tốt nhất\", bạn sẽ gặp một điểm khác so với nhiều dòng xe: bảng giá tham khảo của Vision ghi theo khoảng chứ không phải một con số cố định ở gói tuần và gói tháng. Bài viết này giải thích cách đọc các khoảng giá đó, chỉ ra lúc nào Vision là lựa chọn kinh tế và lúc nào một dòng khác cho bạn giá tốt hơn, kèm ba tình huống thuê cụ thể để bạn tự áp vào lịch của mình.",
-        "Các mức tham khảo cho Honda Vision hiện là 200.000đ/ngày, 800.000đ–1.000.000đ/tuần và 1.800.000đ–2.000.000đ/tháng. Toàn bộ bảng được cập nhật trên trang giá thuê , và mức áp dụng cho bạn luôn được cửa hàng xác nhận khi đặt xe."
+        "Các mức tham khảo cho Honda Vision hiện là 200.000đ/ngày, {{ price.honda-vision.week.min }}/tuần và 1.800.000đ–2.000.000đ/tháng. Toàn bộ bảng được cập nhật trên trang giá thuê , và mức áp dụng cho bạn luôn được cửa hàng xác nhận khi đặt xe."
       ]
     },
     {
@@ -17664,8 +17664,8 @@
       "pilot": false,
       "body": "data/blog/articles/thue-xe-50cc-gia-tot-nhat.body.html",
       "knowledge_chunks": [
-        "Tìm \"thuê xe 50cc giá tốt nhất\", bạn sẽ thấy một điều hơi khác thường: ở bảng giá tham khảo của cửa hàng, nhóm xe 50cc không có con số niêm yết mà ghi là giá liên hệ. Điều đó không có nghĩa xe 50cc đắt hay rẻ bất thường, mà là giá được báo theo từng thời điểm, từng xe sẵn có. Vì vậy muốn có mức tốt nhất, bạn cần biết cách hỏi, biết lấy mốc nào để so sánh và biết những khoản nào làm tổng chi phí đội lên. Bài viết này là hướng dẫn hỏi giá từng bước dành riêng cho nhóm xe 50cc.",
-        "Trên trang giá thuê , các dòng phổ thông như Honda Wave, Vision, Air Blade, Click hay Mio đều có mức tham khảo theo ngày. Xe 50cc, xe máy điện và xe đạp điện thì được để ở dạng liên hệ. Lý do thực tế là nhóm này có số lượng và đời xe thay đổi nhiều hơn, nên cửa hàng báo giá khi biết rõ bạn cần xe ngày nào, bao lâu."
+        "Tìm \"thuê xe 50cc giá tốt nhất\", bạn sẽ thấy một điều hơi khác thường: ở bảng giá tham khảo của cửa hàng, nhóm xe 50cc chỉ niêm yết giá ngày {{ price.xe-50cc.day.min }}, còn gói tuần và gói tháng ghi là giá liên hệ. Điều đó không có nghĩa xe 50cc đắt hay rẻ bất thường, mà là giá được báo theo từng thời điểm, từng xe sẵn có. Vì vậy muốn có mức tốt nhất, bạn cần biết cách hỏi, biết lấy mốc nào để so sánh và biết những khoản nào làm tổng chi phí đội lên. Bài viết này là hướng dẫn hỏi giá từng bước dành riêng cho nhóm xe 50cc.",
+        "Trên trang giá thuê , các dòng phổ thông như Honda Wave, Vision, Air Blade, Click hay Mio đều có mức tham khảo theo ngày. Xe 50cc có giá ngày {{ price.xe-50cc.day.min }}, còn gói tuần, tháng của xe 50cc cùng xe máy điện và xe đạp điện thì được để ở dạng liên hệ. Lý do thực tế là nhóm này có số lượng và đời xe thay đổi nhiều hơn, nên cửa hàng báo giá khi biết rõ bạn cần xe ngày nào, bao lâu."
       ]
     },
     {
@@ -17815,7 +17815,7 @@
       "body": "data/blog/articles/thue-wave-alpha-gia-tot-nhat.body.html",
       "knowledge_chunks": [
         "Thuê Wave Alpha với giá tốt nhất là mục tiêu của rất nhiều người cần một chiếc xe số đơn giản, bền và ít tốn kém. Wave Alpha thuộc dòng Honda Wave, nằm ở mức giá thấp nhất trong bảng tham khảo của {{ business.brand }}, nhưng \"giá tốt nhất\" còn phụ thuộc vào cách bạn chọn gói, cách bạn dùng xe và những khoản nhỏ quanh việc thuê. Bài viết này đi thẳng vào phần tiền: mức giá hiện tại, so sánh với các dòng cùng tầm, và những việc cụ thể giúp tổng chi phí cho chiếc Wave Alpha của bạn thấp nhất có thể.",
-        "Theo bảng tham khảo, dòng Honda Wave có giá khoảng 150.000đ/ngày. Đây là mức thuê lẻ, áp dụng cho một hai ngày. Với thuê theo tuần hoặc theo tháng, cửa hàng báo giá trực tiếp theo thời gian bạn dùng, nên bạn hãy nhắn trước số ngày dự kiến để nhận con số chính xác. Bảng giá cập nhật luôn có ở trang giá thuê , và mọi mức trong bài chỉ là tham khảo cần xác nhận lại."
+        "Theo bảng tham khảo, dòng Honda Wave có giá khoảng 150.000đ/ngày. Đây là mức thuê lẻ, áp dụng cho một hai ngày. Gói tuần tham khảo {{ price.honda-wave.week.min }}, gói tháng {{ price.honda-wave.month.min }}–{{ price.honda-wave.month.max }}, nên bạn hãy nhắn trước số ngày dự kiến để nhận con số chính xác. Bảng giá cập nhật luôn có ở trang giá thuê , và mọi mức trong bài chỉ là tham khảo cần xác nhận lại."
       ]
     },
     {
@@ -17980,7 +17980,7 @@
       "body": "data/blog/articles/thue-xe-may-theo-thang-gia-tot-nhat.body.html",
       "knowledge_chunks": [
         "Thuê xe máy theo tháng giá tốt nhất không nằm ở việc tìm con số thấp nhất trên bảng giá, mà ở việc chọn đúng dòng xe cho ba mươi ngày sử dụng, tính đủ chi phí chạy hằng tháng và chốt các điều kiện để không bị phát sinh giữa chừng. Người đi làm, sinh viên, người chuyển công tác ngắn hạn hay khách ở dài ngày đều có thể tiết kiệm đáng kể khi chuyển từ thuê lẻ sang gói tháng. Bài này giúp bạn so sánh chi phí giữa các dòng xe, tính tổng tiền thực tế một tháng, biết những điều cần chốt trước khi ký và cách gia hạn sao cho vẫn giữ được mức giá hợp lý.",
-        "Cách nhanh nhất để thấy lợi ích của gói tháng là nhân giá ngày lên ba mươi rồi đặt cạnh giá tháng tham khảo. Với Honda Click hoặc Yamaha Mio, giá ngày khoảng 150.000đ, ba mươi ngày cộng lại thành 4.500.000đ, trong khi gói tháng tham khảo chỉ từ 1.000.000đ đến 1.200.000đ. Honda Air Blade có giá ngày khoảng 200.000đ, ba mươi ngày là 6.000.000đ, còn gói tháng tham khảo khoảng 1.400.000đ. Honda Vision ở mức ngày khoảng 200.000đ, gói tháng tham khảo từ 1.800.000đ đến 2.000.000đ."
+        "Cách nhanh nhất để thấy lợi ích của gói tháng là nhân giá ngày lên ba mươi rồi đặt cạnh giá tháng tham khảo. Với Honda Click hoặc Yamaha Mio, giá ngày khoảng 150.000đ, ba mươi ngày cộng lại thành 4.500.000đ, trong khi gói tháng tham khảo chỉ từ {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }}. Honda Air Blade có giá ngày khoảng 200.000đ, ba mươi ngày là 6.000.000đ, còn gói tháng tham khảo khoảng {{ price.honda-airblade.month.min }}. Honda Vision ở mức ngày khoảng 200.000đ, gói tháng tham khảo từ 1.800.000đ đến 2.000.000đ."
       ]
     },
     {
@@ -19300,7 +19300,7 @@
       "body": "data/blog/articles/so-sanh-cach-thue-xe-truyen-thong-va-qua-app-cau-hoi-thuong-gap.body.html",
       "knowledge_chunks": [
         "Đến tận cửa hàng hỏi xe, gọi điện đặt trước, hay mở trợ lý trên website để tìm hiểu rồi mới chốt: ba cách này cùng dẫn đến một chiếc xe thuê, nhưng trải nghiệm trên đường đi lại khác nhau khá nhiều. Khi so sánh cách thuê xe truyền thống và qua app, khách thường hỏi đi hỏi lại vài điều: giá có khác không, giấy tờ có bớt đi không, cách nào nhanh hơn, cách nào an toàn hơn. Bài viết này gom các câu hỏi thường gặp đó và trả lời dựa trên cách {{ business.brand }} đang vận hành, trong đó \"app\" ở đây là trợ lý MotoAI chạy ngay trên website, không phải một ứng dụng phải tải về.",
-        "Không. Cả hai cách dùng chung một bảng giá tham khảo và giá chính thức đều do cửa hàng xác nhận. Ví dụ Honda Wave 150.000đ/ngày, Honda Air Blade 200.000đ/ngày hoặc 1.400.000đ/tháng, áp dụng như nhau dù bạn hỏi qua trợ lý hay hỏi trực tiếp. Bạn có thể đối chiếu trên trang giá thuê tham khảo ."
+        "Không. Cả hai cách dùng chung một bảng giá tham khảo và giá chính thức đều do cửa hàng xác nhận. Ví dụ Honda Wave 150.000đ/ngày, Honda Air Blade 200.000đ/ngày hoặc {{ price.honda-airblade.month.min }}/tháng, áp dụng như nhau dù bạn hỏi qua trợ lý hay hỏi trực tiếp. Bạn có thể đối chiếu trên trang giá thuê tham khảo ."
       ]
     },
     {
@@ -20365,7 +20365,7 @@
       "body": "data/blog/articles/thue-xe-dien-ban-dem-dai-han.body.html",
       "knowledge_chunks": [
         "Có những người cần xe vào đúng lúc thành phố đã ngủ: nhân viên làm ca đêm ở bệnh viện, nhà máy, khách sạn, người phục vụ quán ăn đóng cửa muộn, hay sinh viên làm thêm đến khuya. Với họ, thuê xe điện dài hạn là lựa chọn đáng cân nhắc vì xe chạy êm, không cần ghé cây xăng lúc nửa đêm và có thể sạc ở chỗ ở. Nhưng chạy xe điện chủ yếu về đêm trong nhiều tuần đòi hỏi một nhịp sinh hoạt riêng: sạc lúc nào khi giờ ngủ đảo ngược, đỗ xe ở đâu cho an toàn, giữ bao nhiêu pin dự phòng và làm sao để không lái khi đã kiệt sức sau ca làm. Bài viết này đi vào từng điểm đó.",
-        "Nếu tuyến đường dài, hay đổi ca thất thường hoặc không có chỗ sạc, xe xăng như Honda Air Blade, giá tham khảo 1.400.000đ/tháng, có thể đơn giản hơn. Những nguyên tắc chung về thuê xe điện chạy đêm được trình bày ở bài nền thuê xe điện ban đêm ; bài này dành cho người dùng xe như vậy liên tục nhiều tuần."
+        "Nếu tuyến đường dài, hay đổi ca thất thường hoặc không có chỗ sạc, xe xăng như Honda Air Blade, giá tham khảo {{ price.honda-airblade.month.min }}/tháng, có thể đơn giản hơn. Những nguyên tắc chung về thuê xe điện chạy đêm được trình bày ở bài nền thuê xe điện ban đêm ; bài này dành cho người dùng xe như vậy liên tục nhiều tuần."
       ]
     },
     {
@@ -21505,7 +21505,7 @@
       "body": "data/blog/articles/coc-khi-thue-xe-dien-dai-han.body.html",
       "knowledge_chunks": [
         "Thuê xe điện vài ngày, khoản đặt cọc chỉ là chuyện đưa và nhận lại trong một tuần. Thuê dài hạn thì khác: tiền cọc nằm ở cửa hàng nhiều tuần, thậm chí nhiều tháng, trong khi chiếc xe đi qua hàng trăm lần sạc, vài trận mưa lớn và có thể một lần đổi xe giữa kỳ. Người thuê dài hạn thường chỉ hỏi \"cọc bao nhiêu\", mà quên hỏi những câu quan trọng hơn: cọc gắn với điều kiện nào, kết thúc hợp đồng sớm thì sao, pin và bộ sạc được đánh giá thế nào khi trả. Bài viết này đi qua toàn bộ vòng đời của khoản cọc trong một hợp đồng thuê xe điện kéo dài.",
-        "Tại {{ business.brand }}, tiền đặt cọc nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, tùy loại xe, và được xác nhận cụ thể khi bạn đặt. Xe điện, xe đạp điện và xe 50cc đều áp dụng giá thuê liên hệ, nên bạn nên hỏi cùng lúc cả giá thuê theo tháng lẫn mức cọc cho đúng mẫu xe mình chọn."
+        "Tại {{ business.brand }}, tiền đặt cọc nằm trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }}, tùy loại xe, và được xác nhận cụ thể khi bạn đặt. Xe điện, xe đạp điện và gói tuần, tháng của xe 50cc đều áp dụng giá thuê liên hệ, nên bạn nên hỏi cùng lúc cả giá thuê theo tháng lẫn mức cọc cho đúng mẫu xe mình chọn."
       ]
     },
     {
@@ -23281,7 +23281,7 @@
       "body": "data/blog/articles/uu-dai-thue-xe-dai-han-chay-pho.body.html",
       "knowledge_chunks": [
         "Nhiều người đi tìm \"ưu đãi thuê xe dài hạn\" với hình dung về mã giảm giá hay chương trình khuyến mãi theo mùa. Với người chỉ chạy trong phố mỗi ngày, ưu đãi thật sự lại nằm ở chỗ khác: cách bảng giá được cấu trúc theo tháng thay vì theo ngày, những gì gói tháng mang lại cho người đi làm, và những khoản bạn tự tiết kiệm được nhờ chọn đúng dòng xe cho đường phố. {{ business.brand }} không chạy chương trình khuyến mãi, nên bài này không hứa giảm giá; thay vào đó, bài chỉ ra ưu đãi thuê xe dài hạn chạy phố đến từ đâu bằng con số tham khảo thật, để bạn tự tính cho lịch của mình. Góc nhìn chung cho mọi kiểu người thuê đã có ở bài ưu đãi thuê xe dài",
-        "Đặt hai cột cạnh nhau là thấy ngay. Theo bảng tham khảo ở trang giá thuê , Honda Vision thuê lẻ là 200.000đ/ngày, nhưng thuê trọn tháng là 1.800.000đ–2.000.000đ/tháng. Nếu bạn thuê lẻ ba mươi ngày liên tục, bạn trả gấp khoảng ba lần so với gói tháng cho cùng chiếc xe đó. Honda Air Blade cũng 200.000đ/ngày nhưng gói tháng là 1.400.000đ/tháng. Honda Click hay Yamaha Mio 150.000đ/ngày, còn theo tháng là 1.000.000đ–1.200.000đ/tháng. Mọi con số này là tham khảo và cửa hàng xác nhận lại khi đặt, nhưng tỷ lệ giữa ngày và tháng thì ổn định: cứ cần xe quá hai tuần là gói tháng rẻ hơn thuê lẻ rất xa."
+        "Đặt hai cột cạnh nhau là thấy ngay. Theo bảng tham khảo ở trang giá thuê , Honda Vision thuê lẻ là 200.000đ/ngày, nhưng thuê trọn tháng là 1.800.000đ–2.000.000đ/tháng. Nếu bạn thuê lẻ ba mươi ngày liên tục, bạn trả gấp khoảng ba lần so với gói tháng cho cùng chiếc xe đó. Honda Air Blade cũng 200.000đ/ngày nhưng gói tháng là {{ price.honda-airblade.month.min }}/tháng. Honda Click hay Yamaha Mio 150.000đ/ngày, còn theo tháng là {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng. Mọi con số này là tham khảo và cửa hàng xác nhận lại khi đặt, nhưng tỷ lệ giữa ngày và tháng thì ổn định: cứ cần xe quá hai tuần là gói tháng rẻ hơn thuê lẻ rất xa."
       ]
     },
     {
@@ -24211,7 +24211,7 @@
       "body": "data/blog/articles/cong-cu-tinh-gia-thue-xe-may-online-tan-noi.body.html",
       "knowledge_chunks": [
         "Khi bạn muốn xe được mang tới tận khách sạn, phòng trọ hay cổng cơ quan, câu hỏi về giá bỗng có hai phần: tiền thuê xe và phần phát sinh cho việc giao nhận. Công cụ tính giá thuê xe máy online trên website MotoAI trả lời tốt phần thứ nhất, còn phần thứ hai phụ thuộc địa điểm và giờ giao nên chỉ cửa hàng mới chốt được. Nhiều người dùng công cụ xong tưởng con số hiện ra là tổng chi phí, rồi bất ngờ khi được báo thêm phí giao. Bài này hướng dẫn cách dùng công cụ cho đúng khi bạn định nhận xe tận nơi: nhập gì, đọc kết quả thế nào, cộng thêm khoản nào, và gửi thông tin gì cho cửa hàng để việc giao diễn ra đúng giờ.",
-        "Công cụ là một trang trên website, mở bằng trình duyệt, không phải ứng dụng cài vào máy. Nó lấy bảng giá tham khảo của cửa hàng và nhân với thời gian thuê bạn chọn. Ví dụ các mốc tham khảo hiện tại: Honda Wave 150.000đ/ngày; Honda Vision 200.000đ/ngày, 800.000đ–1.000.000đ/tuần, 1.800.000đ–2.000.000đ/tháng; Honda Air Blade 200.000đ/ngày, 800.000đ/tuần, 1.400.000đ/tháng; Honda Click hoặc Yamaha Mio 150.000đ/ngày, 600.000đ–700.000đ/tuần, 1.000.000đ–1.200.000đ/tháng. Những gì công cụ không tính:"
+        "Công cụ là một trang trên website, mở bằng trình duyệt, không phải ứng dụng cài vào máy. Nó lấy bảng giá tham khảo của cửa hàng và nhân với thời gian thuê bạn chọn. Ví dụ các mốc tham khảo hiện tại: Honda Wave 150.000đ/ngày; Honda Vision 200.000đ/ngày, {{ price.honda-vision.week.min }}/tuần, 1.800.000đ–2.000.000đ/tháng; Honda Air Blade 200.000đ/ngày, {{ price.honda-airblade.week.min }}/tuần, {{ price.honda-airblade.month.min }}/tháng; Honda Click hoặc Yamaha Mio 150.000đ/ngày, {{ price.honda-click.week.min }}/tuần, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng. Những gì công cụ không tính:"
       ]
     },
     {
@@ -28366,7 +28366,7 @@
       "body": "data/blog/articles/thue-xe-dai-ngay-gia-tot-cho-gia-dinh.body.html",
       "knowledge_chunks": [
         "Thuê xe dài ngày giá tốt cho gia đình không bắt đầu từ việc mặc cả, mà từ việc đếm đúng số ngày cần xe và đặt mốc nhận, trả cho khéo. Cùng một kỳ nghỉ mười ngày, có nhà trả gần gấp đôi nhà khác chỉ vì chọn sai kiểu gói hoặc nhận xe sớm hơn lúc thật sự cần. Bài này đi qua hai mốc hòa vốn quan trọng nhất, ba kịch bản gia đình hay gặp ở Hà Nội và những thói quen nhỏ giữ tổng chi thấp suốt cả chuyến.",
-        "Theo bảng giá tham khảo, Honda Vision và Honda Air Blade cùng ở mức 200.000đ/ngày, trong khi gói tuần của Air Blade khoảng 800.000đ và của Vision khoảng 800.000đ–1.000.000đ. Chỉ cần thuê bốn ngày, tiền ngày cộng dồn đã chạm mức gói tuần thấp nhất. Với Honda Click hay Yamaha Mio, giá ngày 150.000đ nhân bốn là 600.000đ, đúng bằng mức thấp của gói tuần 600.000đ–700.000đ."
+        "Theo bảng giá tham khảo, Honda Vision và Honda Air Blade cùng ở mức 200.000đ/ngày, trong khi gói tuần của cả Air Blade và Vision đều khoảng {{ price.honda-airblade.week.min }}. Chỉ cần thuê năm ngày, tiền ngày cộng dồn đã chạm đúng mức gói tuần này. Với Honda Click hay Yamaha Mio, giá ngày 150.000đ nhân bốn là 600.000đ, chỉ thấp hơn gói tuần {{ price.honda-click.week.min }} một chút."
       ]
     },
     {

@@ -2,7 +2,7 @@
 
 <h2>Giá thuê theo ngày tham khảo theo từng dòng xe</h2>
 <p>Trên thị trường nội thành Hà Nội, giá ngày phụ thuộc chính vào phân khúc xe. Với nhóm xe số phổ thông — Honda Wave hoặc các dòng xe côn tay nhỏ tương đương — mức tham khảo khoảng 150.000đ một ngày. Nhóm xe ga phổ biến như Honda Vision, Honda Air Blade dao động khoảng 200.000đ một ngày; nhóm xe ga nhỏ gọn như Honda Click, Yamaha Mio về cùng mức khoảng 150.000đ với xe số. Những con số này là mức tham khảo cho ngày thường; ngày lễ, mùa cao điểm du lịch hoặc dòng xe đặc biệt có thể chênh lên, vì thế bạn luôn nên hỏi lại đúng dòng xe và ngày mình định nhận.</p>
-<p>Nhìn nhanh để hình dung sự chênh lệch: một tuần thuê Vision tính theo giá ngày sẽ vào khoảng 1.400.000đ, trong khi gói tuần của dòng này chỉ khoảng 800.000đ đến 1.000.000đ — tức mỗi ngày gói tuần rẻ hơn gần một nửa. Đây là lý do bạn nên xem bảng giá trọn gói tại trang <a href="/gia-thue/">bảng giá thuê xe máy tham khảo</a> trước khi quyết định khung thời gian.</p>
+<p>Nhìn nhanh để hình dung sự chênh lệch: một tuần thuê Vision tính theo giá ngày sẽ vào khoảng 1.400.000đ, trong khi gói tuần của dòng này chỉ khoảng {{ price.honda-vision.week.min }} — tức gói tuần tiết kiệm được khoảng tiền thuê hai ngày lẻ. Đây là lý do bạn nên xem bảng giá trọn gói tại trang <a href="/gia-thue/">bảng giá thuê xe máy tham khảo</a> trước khi quyết định khung thời gian.</p>
 
 <h2>Một ngày được tính như thế nào</h2>
 <p>Nhiều hiểu lầm về tiền thuê phát sinh từ chính câu hỏi này. Thông lệ của phần lớn cửa hàng: một ngày thuê tính theo 24 giờ kể từ lúc nhận xe, hoặc đến cuối giờ mở cửa cùng ngày nếu bạn trả trong ngày. Nghĩa là nhận xe lúc 8 giờ sáng và trả trước 9 giờ tối hôm sau vẫn là một ngày; nhưng trả sau 8 giờ sáng hôm sau đã lấn sang ngày thứ hai và thường bị tính thêm nửa hoặc một ngày tùy quy định. Giờ mở cửa của cửa hàng là {{ business.hours.display }}, nên mọi khung giao nhận đều nằm trong dải này — hỏi trước nếu bạn cần trả xe sớm hơn giờ mở cửa.</p>
@@ -25,19 +25,19 @@
 
 <h2>Khi nào thuê theo ngày là hợp lý</h2>
 <p>Thuê theo ngày hợp lý trong ba tình huống. Một, bạn chỉ cần xe cho 1–3 ngày: dịp cuối tuần về quê, khách du lịch cần xe chạy phố hai ngày, hoặc người đi công tác ngắn hạn. Hai, bạn muốn thử dòng xe trước khi thuê dài hạn — mất vài trăm nghìn để biết Vision có phù hợp với dáng người và quãng đường của mình hơn là đặt hẳn gói tháng. Ba, lịch của bạn không cố định: khi không chắc tuần nào rảnh mấy ngày, thuê lẻ từng ngày còn linh hoạt hơn cam kết gói dài.</p>
-<p>Ngược lại, từ khoảng 5–6 ngày trở lên, gói tuần hầu như luôn tốt hơn: như đã thấy ở phần trên, gói tuần của nhóm xe ga nhỏ chỉ 600.000đ đến 700.000đ với dòng Click, Mio — bỏ ra thêm chút ít so với năm ngày lẻ mà được trọn bảy ngày. Với nhu cầu đi làm cả tháng, gói tháng từ khoảng 1.000.000đ cho nhóm xe ga nhỏ hoặc 1.800.000đ đến 2.000.000đ cho nhóm Vision là điểm so sánh hợp lý. Cách tính trọn gói chi tiết — kèm xăng, cọc, chi phí đi nhận xe — đã được phân tích trong bài <a href="/blog/thue-xe/thue-xe-may-gia-re/">thuê xe máy giá rẻ và tổng chi phí</a>.</p>
+<p>Ngược lại, từ khoảng 5–6 ngày trở lên, gói tuần hầu như luôn tốt hơn: như đã thấy ở phần trên, gói tuần của nhóm xe ga nhỏ chỉ {{ price.honda-click.week.min }} với dòng Click, Mio — còn thấp hơn năm ngày lẻ mà được trọn bảy ngày. Với nhu cầu đi làm cả tháng, gói tháng từ khoảng {{ price.honda-click.month.min }} cho nhóm xe ga nhỏ hoặc 1.800.000đ đến 2.000.000đ cho nhóm Vision là điểm so sánh hợp lý. Cách tính trọn gói chi tiết — kèm xăng, cọc, chi phí đi nhận xe — đã được phân tích trong bài <a href="/blog/thue-xe/thue-xe-may-gia-re/">thuê xe máy giá rẻ và tổng chi phí</a>.</p>
 
 <h2>So sánh nhanh giữa các nhóm xe khi thuê theo ngày</h2>
-<p>Chọn nhóm xe nào quyết định cả trải nghiệm lẫn túi tiền của bạn. Nếu chỉ chạy phố, quãng ngắn, một mình: xe số như Wave gọn nhẹ, bền, giá ngày rẻ nhất nhóm. Nếu hay chở người sau, đi đón ai đó hoặc cần cốp để mũ bảo hiểm, túi xách: xe ga Vision hay Air Blade tiện hơn hẳn dù giá ngày nhỉnh hơn 50.000đ. Nếu ưu tiên xe nhỏ gọn dễ luồn lách: nhóm Click, Mio cân bằng giữa giá và sự cơ động. Với nhóm xe dưới 50cc, giá thuê cần xác nhận trực tiếp với cửa hàng vì mức này không cố định như các dòng phổ thông.</p>
+<p>Chọn nhóm xe nào quyết định cả trải nghiệm lẫn túi tiền của bạn. Nếu chỉ chạy phố, quãng ngắn, một mình: xe số như Wave gọn nhẹ, bền, giá ngày rẻ nhất nhóm. Nếu hay chở người sau, đi đón ai đó hoặc cần cốp để mũ bảo hiểm, túi xách: xe ga Vision hay Air Blade tiện hơn hẳn dù giá ngày nhỉnh hơn 50.000đ. Nếu ưu tiên xe nhỏ gọn dễ luồn lách: nhóm Click, Mio cân bằng giữa giá và sự cơ động. Với nhóm xe dưới 50cc, giá ngày tham khảo khoảng {{ price.xe-50cc.day.min }}, còn giá tuần và tháng cần xác nhận trực tiếp với cửa hàng.</p>
 <div class="table-wrap">
 <table class="blog-table">
 <caption>Giá ngày và gói tuần tham khảo</caption>
 <thead><tr><th scope="col">Nhóm xe</th><th scope="col">Giá ngày</th><th scope="col">Gói tuần</th></tr></thead>
 <tbody>
-<tr><th scope="row">Xe số phổ thông (Honda Wave)</th><td>khoảng 150.000đ</td><td>hỏi trực tiếp</td></tr>
-<tr><th scope="row">Xe ga phổ biến (Honda Vision, Air Blade)</th><td>khoảng 200.000đ</td><td>800.000đ đến 1.000.000đ</td></tr>
-<tr><th scope="row">Xe ga nhỏ gọn (Honda Click, Yamaha Mio)</th><td>khoảng 150.000đ</td><td>600.000đ đến 700.000đ</td></tr>
-<tr><th scope="row">Xe dưới 50cc</th><td>xác nhận theo thời điểm</td><td>xác nhận theo thời điểm</td></tr>
+<tr><th scope="row">Xe số phổ thông (Honda Wave)</th><td>khoảng 150.000đ</td><td>{{ price.honda-wave.week.min }}</td></tr>
+<tr><th scope="row">Xe ga phổ biến (Honda Vision, Air Blade)</th><td>khoảng 200.000đ</td><td>{{ price.honda-vision.week.min }}</td></tr>
+<tr><th scope="row">Xe ga nhỏ gọn (Honda Click, Yamaha Mio)</th><td>khoảng 150.000đ</td><td>{{ price.honda-click.week.min }}</td></tr>
+<tr><th scope="row">Xe dưới 50cc</th><td>khoảng {{ price.xe-50cc.day.min }}</td><td>xác nhận theo thời điểm</td></tr>
 </tbody>
 </table>
 </div>
@@ -47,7 +47,7 @@
 <li>Xe số phổ thông (Honda Wave): khoảng {{ price.honda-wave.day.min }}/ngày.</li>
 <li>Xe ga phổ biến (Honda Vision, Air Blade): khoảng {{ price.honda-airblade.day.min }}/ngày.</li>
 <li>Xe ga nhỏ gọn (Honda Click, Yamaha Mio): khoảng {{ price.honda-click.day.min }}/ngày.</li>
-<li>Nhóm xe dưới 50cc: xác nhận trực tiếp với cửa hàng theo từng thời điểm.</li>
+<li>Nhóm xe dưới 50cc: khoảng {{ price.xe-50cc.day.min }}/ngày, gói dài ngày xác nhận trực tiếp với cửa hàng theo từng thời điểm.</li>
 </ul>
 <p>Mọi mức trên đều cần xác nhận lại theo thực tế tại thời điểm đặt — cách nhanh nhất là hỏi trợ lý trên trang chủ kèm dòng xe và số ngày cụ thể.</p>
 

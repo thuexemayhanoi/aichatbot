@@ -12,15 +12,15 @@
 <h2>Chọn dòng xe chở hai người</h2>
 <p>Chở đôi hằng ngày cần xe có yên đủ dài, giảm xóc ổn và máy kéo được hai người qua dốc cầu. Dưới đây là các lựa chọn phổ biến cùng giá tham khảo, bạn nên xác nhận lại với cửa hàng trên trang <a href="/gia-thue/">giá thuê</a>:</p>
 <ul>
-<li><strong>Honda Vision:</strong> tham khảo 200.000đ mỗi ngày, gói tuần 800.000đ–1.000.000đ, gói tháng 1.800.000đ–2.000.000đ. Xe nhẹ, dễ dắt, hợp với bạn nữ hoặc người mới; chở hai người trong phố ổn. Chi tiết có trong bài <a href="/blog/thue-xe/thue-honda-vision-cho-sinh-vien/">thuê Honda Vision cho sinh viên</a>.</li>
-<li><strong>Honda Air Blade:</strong> tham khảo 200.000đ mỗi ngày, gói tuần 800.000đ, gói tháng 1.400.000đ. Yên dài, máy khỏe hơn, hợp quãng đường xa hoặc hay qua cầu. Xem bài <a href="/blog/thue-xe/thue-honda-air-blade-cho-sinh-vien/">thuê Honda Air Blade cho sinh viên</a>.</li>
-<li><strong>Honda Click hoặc Yamaha Mio:</strong> tham khảo 150.000đ mỗi ngày, gói tuần 600.000đ–700.000đ, gói tháng 1.000.000đ–1.200.000đ. Chi phí thấp, đủ dùng cho tuyến ngắn trong phố.</li>
+<li><strong>Honda Vision:</strong> tham khảo 200.000đ mỗi ngày, gói tuần {{ price.honda-vision.week.min }}, gói tháng 1.800.000đ–2.000.000đ. Xe nhẹ, dễ dắt, hợp với bạn nữ hoặc người mới; chở hai người trong phố ổn. Chi tiết có trong bài <a href="/blog/thue-xe/thue-honda-vision-cho-sinh-vien/">thuê Honda Vision cho sinh viên</a>.</li>
+<li><strong>Honda Air Blade:</strong> tham khảo 200.000đ mỗi ngày, gói tuần {{ price.honda-airblade.week.min }}, gói tháng {{ price.honda-airblade.month.min }}. Yên dài, máy khỏe hơn, hợp quãng đường xa hoặc hay qua cầu. Xem bài <a href="/blog/thue-xe/thue-honda-air-blade-cho-sinh-vien/">thuê Honda Air Blade cho sinh viên</a>.</li>
+<li><strong>Honda Click hoặc Yamaha Mio:</strong> tham khảo 150.000đ mỗi ngày, gói tuần {{ price.honda-click.week.min }}, gói tháng {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}. Chi phí thấp, đủ dùng cho tuyến ngắn trong phố.</li>
 <li><strong>Honda Wave:</strong> tham khảo 150.000đ mỗi ngày. Tiết kiệm xăng, bền, nhưng yên hẹp hơn và người lái cần quen xe số.</li>
 </ul>
-<p>Xe 50cc và xe máy điện cũng được nhiều sinh viên hỏi tới; hai nhóm này là giá liên hệ, còn điều kiện giấy tờ để lái và khả năng chở hai người qua dốc cầu cần được hỏi kỹ cửa hàng theo từng xe cụ thể.</p>
+<p>Xe 50cc và xe máy điện cũng được nhiều sinh viên hỏi tới; xe 50cc tham khảo {{ price.xe-50cc.day.min }}/ngày, xe máy điện là giá liên hệ, còn điều kiện giấy tờ để lái và khả năng chở hai người qua dốc cầu cần được hỏi kỹ cửa hàng theo từng xe cụ thể.</p>
 
 <h2>Bài toán chia đôi chi phí</h2>
-<p>Thuê theo tháng là cách tiết kiệm nhất nếu hai người dùng xe đều đặn. Ví dụ với Honda Air Blade giá tham khảo {{ price.honda-airblade.month.min }}/tháng, mỗi người góp 700.000đ. Với Honda Click hoặc Yamaha Mio ở mức {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng, mỗi người chỉ góp 500.000đ–600.000đ. Đó là chưa kể xăng, gửi xe và các khoản phát sinh.</p>
+<p>Thuê theo tháng là cách tiết kiệm nhất nếu hai người dùng xe đều đặn. Ví dụ với Honda Air Blade giá tham khảo {{ price.honda-airblade.month.min }}/tháng, mỗi người góp một nửa. Với Honda Click hoặc Yamaha Mio ở mức {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng, mỗi người chỉ góp không quá 600.000đ. Đó là chưa kể xăng, gửi xe và các khoản phát sinh.</p>
 <p>Để chia công bằng, nhiều cặp bạn chọn một trong các cách sau:</p>
 <ol>
 <li><strong>Chia đều tuyệt đối:</strong> tiền thuê, xăng, gửi xe chia đôi; hợp khi hai người dùng xe gần như ngang nhau.</li>
@@ -51,7 +51,7 @@
 <h3>Hai người có thể cùng đứng tên một hợp đồng thuê không?</h3>
 <p>Thông thường hợp đồng đứng tên một người. Hãy hỏi cửa hàng khi đặt xe và thống nhất trước giữa hai bạn ai là người chịu trách nhiệm chính.</p>
 <h3>Thuê tuần có lợi hơn thuê ngày không?</h3>
-<p>Nếu dùng từ bốn, năm ngày trở lên, gói tuần thường lợi hơn. Ví dụ Honda Vision giá tham khảo {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần so với {{ price.honda-vision.day.min }}/ngày.</p>
+<p>Nếu dùng liên tục từ năm ngày trở lên, gói tuần thường lợi hơn. Ví dụ Honda Vision giá tham khảo {{ price.honda-vision.week.min }} cho cả tuần so với {{ price.honda-vision.day.min }}/ngày.</p>
 <h3>Có giao xe đến phòng trọ không?</h3>
 <p>Có thể giao xe trong giờ mở cửa {{ business.hours.display }}, trong khu vực phục vụ; thời gian và phí giao cần xác nhận trước khi đặt.</p>
 <h3>Một người chưa có bằng lái thì sao?</h3>
