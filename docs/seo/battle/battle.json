@@ -43,23 +43,23 @@
   "opportunity": {
    "P0": 0,
    "P1": 0,
-   "P2": 2
+   "P2": 0
   },
   "clusters": 20,
   "benchmark": 60,
   "ai": 60,
   "listingPages": 88,
-  "urls": 2137,
+  "urls": 2138,
   "proposed": 0,
   "master": {
    "P0": 2,
    "P1": 4,
-   "P2": 2
+   "P2": 0
   }
  },
  "master": [
   {
-   "id": "BM-003",
+   "id": "BM-001",
    "tier": "P0",
    "score": 1000,
    "weapon": "W8",
@@ -71,7 +71,7 @@
    "phase": "0–30 ngày"
   },
   {
-   "id": "BM-004",
+   "id": "BM-002",
    "tier": "P0",
    "score": 1000,
    "weapon": "W8",
@@ -83,7 +83,7 @@
    "phase": "0–30 ngày"
   },
   {
-   "id": "BM-005",
+   "id": "BM-003",
    "tier": "P1",
    "score": 300,
    "weapon": "W8",
@@ -95,7 +95,7 @@
    "phase": "31–60 ngày"
   },
   {
-   "id": "BM-006",
+   "id": "BM-004",
    "tier": "P1",
    "score": 300,
    "weapon": "W8",
@@ -107,7 +107,7 @@
    "phase": "31–60 ngày"
   },
   {
-   "id": "BM-007",
+   "id": "BM-005",
    "tier": "P1",
    "score": 300,
    "weapon": "W8",
@@ -119,7 +119,7 @@
    "phase": "31–60 ngày"
   },
   {
-   "id": "BM-008",
+   "id": "BM-006",
    "tier": "P1",
    "score": 300,
    "weapon": "W8",
@@ -129,50 +129,9 @@
    "cluster": "K15",
    "confidence": "OBSERVED",
    "phase": "31–60 ngày"
-  },
-  {
-   "id": "BM-001",
-   "tier": "P2",
-   "score": 38,
-   "weapon": "W4",
-   "action": "Sửa nội dung lỗi thời trước (review body có nguồn)",
-   "keyword": "thuê xe máy cần giấy tờ gì",
-   "target": "/blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/",
-   "cluster": "K04",
-   "confidence": "DERIVED",
-   "phase": "61–90 ngày"
-  },
-  {
-   "id": "BM-002",
-   "tier": "P2",
-   "score": 18,
-   "weapon": "W4",
-   "action": "Sửa nội dung lỗi thời trước (review body có nguồn)",
-   "keyword": "người nước ngoài lái xe máy ở việt nam",
-   "target": "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/",
-   "cluster": "K19",
-   "confidence": "DERIVED",
-   "phase": "61–90 ngày"
   }
  ],
- "opportunities": [
-  {
-   "group": "thue-xe-may-can-giay-to-gi",
-   "keyword": "thuê xe máy cần giấy tờ gì",
-   "tier": "P2",
-   "score": 38,
-   "demand": 30,
-   "target": "/blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/"
-  },
-  {
-   "group": "nguoi-nuoc-ngoai-lai-xe-may-o-viet-nam",
-   "keyword": "người nước ngoài lái xe máy ở việt nam",
-   "tier": "P2",
-   "score": 18,
-   "demand": 20,
-   "target": "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/"
-  }
- ],
+ "opportunities": [],
  "kpis": [
   {
    "kpi": "Bài SEO mới đã đăng từ ma trận (BA-2001+, PUBLISHED)",

@@ -7,13 +7,13 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | 1 | Tình báo đối thủ | [01](01-competitor-intelligence.md) | 30 đối thủ nội dung / 258 miền |
 | 2 | Từ khóa tổng | [02](02-keyword-master-matrix.md) | 791 từ khóa, 723 có volume, 59 có KD |
 | 3 | Điểm yếu đối thủ | [03](03-weakness-matrix.md) | 189 trang chấm, 60 truy vấn |
-| 4 | Khoảng trống & cơ hội | [04](04-opportunity-matrix.md) | P0 0 / P1 0 / P2 2 |
+| 4 | Khoảng trống & cơ hội | [04](04-opportunity-matrix.md) | P0 0 / P1 0 / P2 0 |
 | 5 | Cụm chủ đề | [05](05-topic-cluster-matrix.md) | 20 cụm; pillar thiếu 0; trộn ý định 0 |
 | 6 | SERP benchmark | [06](06-serp-benchmark.md) | 60 truy vấn, 50 có trang của ta |
 | 7 | Tìm kiếm AI | [07](07-ai-search-matrix.md) | 60 truy vấn; AI Overview 60; được trích 0 |
 | 8 | Liên kết & thẩm quyền | [08](08-backlink-matrix.md) | 1 hồ sơ đối thủ, 88 trang danh sách |
-| 9 | Kiến trúc URL | [09](09-url-architecture.md) | 2137 URL + 0 đề xuất |
-| 10 | Master Battle Matrix | [10](10-master-battle-matrix.md) | 8 việc (P0 2) |
+| 9 | Kiến trúc URL | [09](09-url-architecture.md) | 2138 URL + 0 đề xuất |
+| 10 | Master Battle Matrix | [10](10-master-battle-matrix.md) | 6 việc (P0 2) |
 
 ## Nguồn dữ liệu (chỉ quan sát/đo được)
 

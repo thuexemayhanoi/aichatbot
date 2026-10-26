@@ -2,7 +2,7 @@
 
 _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang đối thủ đã audit: 127 (5 không tải được). Sinh bởi `node tools/seo-battle-matrix.mjs` — không sửa tay._
 
-2137 URL hiện có (giữ nguyên 100%, không xóa/gộp/noindex) + 0 URL đề xuất (owner thêm ID vào data/blog/content-matrix.csv). Vị trí: Supporting của pillar họ chủ đề (1670); Trang chủ (pillar thương hiệu / K01) (1); Trang chuyển đổi (chính sách) (1); Trang chuyển đổi (2); Hub cấp 1 (4); Hub danh mục (6); Pillar (trang đích của nhóm từ khóa / pillar cụm) (336); Hub phân trang (không nhắm từ khóa) (80); E-E-A-T (1); Pháp lý (không nhắm từ khóa) (2); Hub chủ đề con (33); Bài viết (supporting) (1). Từ khóa chính trùng giữa URL: 0; trang nhận nhóm khác ý định SERP: 11.
+2138 URL hiện có (giữ nguyên 100%, không xóa/gộp/noindex) + 0 URL đề xuất (owner thêm ID vào data/blog/content-matrix.csv). Vị trí: Supporting của pillar họ chủ đề (1670); Trang chủ (pillar thương hiệu / K01) (1); Trang chuyển đổi (chính sách) (1); Trang chuyển đổi (2); Hub cấp 1 (4); Hub danh mục (6); Pillar (trang đích của nhóm từ khóa / pillar cụm) (336); Hub phân trang (không nhắm từ khóa) (80); E-E-A-T (1); Pháp lý (không nhắm từ khóa) (2); Hub chủ đề con (33); Ứng dụng Agent (công cụ / K01) (1); Bài viết (supporting) (1). Từ khóa chính trùng giữa URL: 0; trang nhận nhóm khác ý định SERP: 11.
 
 ## URL đề xuất mới
 
@@ -14,7 +14,7 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | URL | Loại trang | Từ khóa chính | Ý định | Cụm | Vị trí trong kiến trúc | Mục tiêu chuyển đổi | Nhóm từ khóa engine | Ý định SERP của nhóm |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | /blog/huong-dan/deo-doc-va-xe-may-thue-tai-ha-noi/ | Bài viết | đi đèo dốc gần Hà Nội bằng xe máy thuê | Thông tin / hướng dẫn | K04 | Supporting của pillar họ chủ đề | Đọc xong → trang giá / liên hệ | đi chơi gần hà nội bằng xe máy \| phượt xe máy gần hà nội | Thương mại (công cụ) \| Giao dịch – địa phương |
-| / | Trang chủ (Agent) | ứng dụng thuê xe máy | Điều hướng / thông tin sản phẩm | K01 | Trang chủ (pillar thương hiệu / K01) | Dùng Agent → trang giá / liên hệ |  |  |
+| / | Trang chủ (website) | trợ lý thuê xe máy | Điều hướng / thông tin sản phẩm | K01 | Trang chủ (pillar thương hiệu / K01) | Điều hướng tới Agent, cẩm nang, trang giá / liên hệ |  |  |
 | /chinh-sach/ | Trang chính sách thuê xe | chính sách thuê xe máy | Thông tin - chuyển đổi | K04 | Trang chuyển đổi (chính sách) | Liên hệ / đặt xe (Zalo, điện thoại) |  |  |
 | /gia-thue/ | Trang chuyển đổi (giá) | bảng giá thuê xe máy | Thương mại / chuyển đổi | K02 | Trang chuyển đổi | Liên hệ / đặt xe (Zalo, điện thoại) |  |  |
 | /lien-he/ | Trang chuyển đổi (liên hệ) | liên hệ thuê xe máy Nguyễn Tú | Điều hướng / chuyển đổi | K15 | Trang chuyển đổi | Liên hệ / đặt xe (Zalo, điện thoại) |  |  |
@@ -134,4 +134,4 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | /blog/xe-dien/quang-duong/ | Hub chủ đề con | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/xe-dien/sac-pin/ | Hub chủ đề con | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 
-Toàn bộ 2137 URL: `09-url-architecture.csv`.
+Toàn bộ 2138 URL: `09-url-architecture.csv`.

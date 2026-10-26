@@ -80,7 +80,7 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | thuê xe máy hoàng mai | K09 | 40 | 40 | — | Giao dịch – địa phương | local pack | — | motogo.vn | Chưa có | (trang bán hàng / Google Business Profile) |  | Đo được (2 công cụ) |
 | đường đi thái nguyên từ hà nội bằng xe máy | K18 | 30 | 30 | — |  |  | — |  | Chưa có |  |  | Đo được (2 công cụ) |
 | thủ tục thuê xe máy | K04 | 30 | 30 | 50 | Thông tin | AI Overview, video | 17 | chothuexenambinh.com | Đã có bài | /blog/huong-dan/thu-tuc-thue-xe-may/ |  | Đo được (2 công cụ) |
-| thuê xe máy cần giấy tờ gì | K04 | 30 | 30 | — | Thông tin | AI Overview, PAA | — | chothuexenambinh.com | Đã có bài | /blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/ | P2 | Đo được (2 công cụ) |
+| thuê xe máy cần giấy tờ gì | K04 | 30 | 30 | — | Thông tin | AI Overview, PAA | — | chothuexenambinh.com | Đã có bài | /blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/ |  | Đo được (2 công cụ) |
 | ứng dụng thuê xe máy | K01 | 30 | 30 | — | Giao dịch – địa phương | AI Overview | — | play.google.com | Đã có bài | /blog/xe-dien/ung-dung-thue-xe-may-dien/ |  | Đo được (2 công cụ) |
 | xe máy đi phượt giá rẻ | K02 | 30 | 30 | — |  |  | — |  | Phủ một phần | /blog/thue-xe/thue-xe-may-gia-re/ |  | Đo được (2 công cụ) |
 | xe máy đi phượt tốt nhất | K04 | 30 | 30 | — |  |  | — |  | Phủ một phần | /blog/huong-dan/di-phuot-bang-xe-may/ |  | Đo được (2 công cụ) |
