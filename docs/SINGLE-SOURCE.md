@@ -8,7 +8,8 @@ Sau khi sửa nguồn: `node tools/build-blog.mjs`. Cách khác: push lên `main
 |---|---|---|
 | Số điện thoại, WhatsApp, link bản đồ, email | `data/business/business.json` → `contact` | Bài viết, trang tĩnh, trang chủ (khối Thông tin cửa hàng + JSON-LD), trang Agent `/agent/`, `llms.txt`, footer, contact band, schema AutoRental, câu trả lời blog của Agent |
 | Địa chỉ, giờ mở cửa, khu vực phục vụ, chính sách cọc/giao xe/bảo hiểm | `data/business/business.json` | Như trên |
-| Giá thuê theo xe | `data/business/pricing.json` | Bảng `/gia-thue/`, slot `price-glance`, giá trong bài (placeholder `{{ price.* }}`), "giá từ …" và Offer schema trên trang Agent `/agent/` |
+| Giá thuê và tiền cọc theo xe | `data/business/pricing.json`. Giá chưa công bố để `null`, hiển thị "Liên hệ" | Bảng `/gia-thue/` (cột Tiền cọc riêng, OfferCatalog schema), chatbot (giá, máy tính tiền thuê, câu hỏi cọc), slot `price-glance`, giá trong bài (placeholder `{{ price.* }}`; khoảng min = max tự gộp thành một giá), "giá từ …" và Offer schema trên trang Agent `/agent/` |
+| Thanh tab dưới màn hình (mobile/tablet + Agent) | `config/navigation.json` → `tab_bar` (+ `svg_icons` cho menu desktop) | Mọi trang và trang Agent (`tabBar()`). Drawer: `assets/js/drawer.js` |
 | Màu, chữ, khoảng cách, bo góc, bóng, chuyển động | `assets/css/src/blog.css` → khối TOKENS | `blog.css` (gồm trang chủ V3), token của trang Agent (`style.css`), màu nút launcher `embed.js` |
 | Tên site, tagline, theme-color, ảnh OG | `config/blog-ui.json` → `site` | Mọi trang, trang chủ, manifest theme-color qua test |
 | CTA trong bài (theo danh mục), contact band, banner, slot nội dung | `config/blog-ui.json` → `cta`, `banner`, `slots` | Mọi bài/hub theo danh mục |
@@ -63,7 +64,7 @@ Sau khi sửa nguồn: `node tools/build-blog.mjs`. Cách khác: push lên `main
 Còn lại, cần chủ cửa hàng hoặc review quyết định:
 
 - **228 giá kèm đơn vị vẫn ghi số:** câu không nêu tên xe, hoặc là tổng tính toán (ví dụ "hai chiếc Vision… 400.000đ/ngày"). Các số này sẽ không tự đổi khi giá đổi. `node tools/fact-bind.mjs check` liệt kê 12 chỗ nêu rõ xe nhưng số khác `pricing.json`, phần lớn là tổng tính toán.
-- **`pricing.json` khác bảng giá chuẩn của chủ** (đã ghi nhận ở vòng SEO trước). Ví dụ Air Blade tháng 1.400.000đ ↔ 1.500.000đ; Wave/Click tuần, tháng. Khi chủ chốt, chỉ sửa `pricing.json`.
+- ~~`pricing.json` khác bảng giá chuẩn của chủ~~ — đã xử lý 2026-10-25 (v78): `pricing.json` = bảng giá + tiền cọc chuẩn (test `tests/unit/pricing-owner-table.test.js`). Giá ghi cứng trong 285 bài đã sửa qua quy trình review body (`docs/seo/price-review-2026-10-25.md`).
 - **Địa chỉ dạng rút gọn:** 25 chỗ (24 bài) viết "{số nhà + đường}, Long Biên" thiếu "Bồ Đề". Phần số nhà/đường đã theo dữ liệu, còn phần quận viết chữ. Muốn NAP đầy đủ thì sửa qua quy trình review body.
 - **`knowledge_chunks` trong `data/blog/published.json`:** do factory sở hữu, có thể chứa dữ kiện ghi chữ. Agent hiển thị bản đã resolve placeholder, nhưng chữ số ghi cứng không tự đổi.
-- **Tên thương hiệu** ("Nguyễn Tú" / "Cho Thuê Xe Máy Nguyễn Tú") vẫn chờ chủ quyết. Khi quyết, chỉ sửa `business.json`.
+- ~~Tên thương hiệu~~ — đã chốt 2026-10-25: `display_name` = "Cho Thuê Xe Máy Nguyễn Tú", `gbp_name` = "Thuê xe máy ở Hà Nội - Nguyễn Tú" (alternateName trong schema), `brand` = "Nguyễn Tú" (tên ngắn trong câu); bản đồ = `https://maps.google.com/maps?cid=7448790013669858019`.

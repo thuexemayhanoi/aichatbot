@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { SITE_HOME } from '../../tools/site-pages.mjs';
 import { drawerCore, taxonomy, navigation } from '../../tools/taxonomy.mjs';
-import { resolveFacts } from '../../tools/blog-components.mjs';
+import { resolveFacts, icon } from '../../tools/blog-components.mjs';
 import { newestFirst } from '../../tools/build-blog.mjs';
 import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
 
@@ -208,7 +208,7 @@ test('header menu = Pages + parent hubs + categories/subtopics, from the same co
     const nav = /<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/.exec(read(p))[1];
     // Pages dropdown: labels + links exactly as config/navigation.json + site-pages registry.
     const drop = nav.slice(nav.indexOf(`>${pages.label}<`));
-    assert.ok(nav.includes(`<button type="button" class="site-nav-parent" aria-haspopup="true" aria-expanded="false">${pages.label}`), `${p}: Pages dropdown`);
+    assert.ok(nav.includes(`<button type="button" class="site-nav-parent" aria-haspopup="true" aria-expanded="false">${icon(navigation.svg_icons.pages, 'site-nav-icon')}${pages.label}`), `${p}: Pages dropdown`);
     assert.deepEqual([...drop.matchAll(/<a class="site-nav-category" href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map((m) => [m[1], m[2]]),
       pages.children.map((c) => [c.url, c.label]), `${p}: Pages == drawer "pages" group`);
     for (const h of hubs) {
@@ -220,6 +220,6 @@ test('header menu = Pages + parent hubs + categories/subtopics, from the same co
       assert.ok(words >= 2 && words <= 3, `${label}: nav labels are 2–3 words`);
     }
   }
-  assert.match(read('gioi-thieu/index.html'), /<div class="site-nav-item" data-active="1">\s*<button[^>]*>Trang Web/, 'current Page marks its dropdown active');
+  assert.match(read('gioi-thieu/index.html'), /<div class="site-nav-item" data-active="1">\s*<button[^>]*>(?:<svg[\s\S]*?<\/svg>)?Trang Web/, 'current Page marks its dropdown active');
   assert.ok(!/<div class="site-nav-item" data-active="1">\s*<button/.test(read('index.html')), 'no Page dropdown active on /');
 });

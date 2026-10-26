@@ -63,8 +63,9 @@ test('C: "Wave 12 ngày" returns a transparent breakdown', async () => {
   const [r] = await converse(app, ['Wave thuê 12 ngày']);
   const wave = pricing.vehicles.find((v) => v.id === 'honda-wave');
   assert.equal(r.source, 'pricing-data');
-  assert.ok(r.reply.text.includes((12 * wave.rates.day.min).toLocaleString('vi-VN')));
-  assert.match(r.reply.text, /Gói tối thiểu .*: 12 ngày × /);
+  // 12 days = 1 week + 5 days (the week tier, never 12 × the day rate).
+  assert.ok(r.reply.text.includes((wave.rates.week.min + 5 * wave.rates.day.min).toLocaleString('vi-VN')));
+  assert.match(r.reply.text, /Gói tối thiểu .*: 1 tuần × [\d.]+đ\/tuần \+ 5 ngày × /);
   assert.ok(r.reply.text.includes('12 ngày'));
 });
 

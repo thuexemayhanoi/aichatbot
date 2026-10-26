@@ -65,22 +65,21 @@ export function estimateForVehicleRef(pricing, vehicleRef, days) {
 
 /**
  * Rate-tier lines for one vehicle, e.g. "- Theo ngày: 150.000đ".
- * Tiers with null rates are omitted: no invented weekly/monthly prices.
+ * A tier with null rates reads "Liên hệ": no invented weekly/monthly
+ * prices. Returns [] when the vehicle has no published rate at all.
  */
 export function formatTierLines(vehicle) {
-  const lines = [];
   const tiers = [
     ['day', 'Theo ngày'],
     ['week', 'Theo tuần'],
     ['month', 'Theo tháng']
   ];
-  for (const [tier, label] of tiers) {
+  const lines = tiers.map(([tier, label]) => {
     const range = vehicle?.rates?.[tier];
-    if (!range || (range.min === null && range.max === null)) continue;
-    const formatted = formatVndRange(range.min, range.max);
-    if (formatted) lines.push(`- ${label}: ${formatted}`);
-  }
-  return lines;
+    return { label, formatted: range ? formatVndRange(range.min, range.max) : null };
+  });
+  if (!lines.some((l) => l.formatted)) return [];
+  return lines.map((l) => `- ${l.label}: ${l.formatted ?? 'Liên hệ'}`);
 }
 
 /** Day-rate label for a vehicle, e.g. "150.000đ/ngày", or null. */

@@ -170,14 +170,15 @@ test('v59: service worker caches navigations per-URL — homepage cache can neve
 });
 
 test('v59: menu drawer never locks body scroll (no freeze possible)', () => {
-  for (const f of ['assets/js/app-shell.js', 'assets/js/main.js']) {
+  for (const f of ['assets/js/app-shell.js', 'assets/js/main.js', 'assets/js/drawer.js']) {
     const js = read(f);
     assert.ok(!/document\.body\.style\.overflow/.test(js), `${f}: no body scroll lock`);
-    assert.ok(!/body\.classList\.(add|remove)\('[^']*(lock|no-scroll|fixed)/.test(js), `${f}: no scroll-lock class`);
+    assert.ok(!/body\.classList\.(add|remove|toggle)\('[^']*(lock|no-scroll|fixed)/.test(js), `${f}: no scroll-lock class`);
   }
-  const shell = read('assets/js/app-shell.js');
-  // Every close path exists: backdrop, Escape, link/button click.
+  // One drawer controller for both shells (v78): every close path exists there.
+  const shell = read('assets/js/drawer.js');
+  for (const f of ['assets/js/app-shell.js', 'assets/js/main.js']) assert.match(read(f), /import \{ createDrawer \} from '\.\/drawer\.js\?v=\d+';/, `${f}: shared drawer controller`);
   assert.ok(shell.includes("key === 'Escape'"), 'Escape closes the drawer');
-  assert.ok(shell.includes("backdrop?.addEventListener"), 'backdrop click closes');
-  assert.ok(shell.includes('setDrawer(false)'), 'drawer close restores state');
+  assert.ok(shell.includes("backdrop.addEventListener('click', () => setDrawer(false))"), 'backdrop click closes');
+  assert.ok(shell.includes("closest('a, button')) setDrawer(false)"), 'following a link closes');
 });

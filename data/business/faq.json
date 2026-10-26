@@ -36,7 +36,7 @@
     {
       "id": "deposit",
       "question": "Đặt cọc",
-      "answer": "Tiền đặt cọc từ 2.000.000đ đến 5.000.000đ tùy loại xe. Mức cọc chính xác được xác nhận khi đặt xe."
+      "answer": "{{ business.policies.deposit.note }}"
     },
     {
       "id": "insurance",

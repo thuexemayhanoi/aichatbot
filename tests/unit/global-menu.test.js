@@ -300,13 +300,16 @@ test('v63: canonical URL of every page is unchanged (SITE + own path, trailing s
 test('v63: drawer runtime stays scroll-safe — no body scroll lock, single JS contract per surface', () => {
   const shell = read('assets/js/app-shell.js');
   const main = read('assets/js/main.js');
-  for (const js of [shell, main]) {
+  const drawer = read('assets/js/drawer.js');
+  for (const js of [shell, main, drawer]) {
     assert.ok(!/document\.body\.style\.overflow/.test(js), 'no body scroll lock');
-    assert.ok(!/classList\.(add|remove)\('(lock|no-scroll)/.test(js), 'no scroll-lock class');
+    assert.ok(!/classList\.(add|remove|toggle)\('(lock|no-scroll)/.test(js), 'no scroll-lock class');
   }
-  // One accordion contract: both surfaces close other groups + honor Escape.
+  // One accordion contract, ONE implementation (v78): both surfaces import drawer.js.
   for (const js of [shell, main]) {
-    assert.ok(js.includes('closeGroups'), 'one-open accordion');
-    assert.ok(js.includes("key === 'Escape'"), 'Escape closes the drawer');
+    assert.match(js, /import \{ createDrawer \} from '\.\/drawer\.js\?v=\d+';/, 'shared drawer controller');
+    assert.ok(!js.includes('closeGroups'), 'no second copy of the accordion');
   }
+  assert.ok(drawer.includes('closeGroups'), 'one-open accordion');
+  assert.ok(drawer.includes("key === 'Escape'"), 'Escape closes the drawer');
 });

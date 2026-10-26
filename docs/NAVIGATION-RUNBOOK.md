@@ -15,6 +15,13 @@ The Agent app (`/agent/`), the homepage `/` and every generated blog/content pag
 - `footerHtml()` resolves `config/navigation.json` `footer_groups`, which only REFERENCE drawer entries (home, agent, drawer groups) — the footer can no longer drift from the menu; breadcrumbs start at `navigation.home` and the "Cẩm nang" group
 - `tools/menu-drawer.mjs` renders the identical chat and content drawers (`contentLink()` is shared with the footer); `tools/agent-page.mjs` writes the chat drawer into `agent/index.html` (generated from `data/site/agent.html.tpl`) on rebuild; the homepage `index.html` uses the content drawer like every content page
 - `tools/app-shell.mjs` renders content drawer plus scrollable desktop dropdowns
+- v78 app-style navigation:
+  - `tabBar()` in `tools/app-shell.mjs` is the ONE bottom tab bar, built from `config/navigation.json` `tab_bar`: Trang Chủ, Cẩm nang, Danh Mục, Agent and Menu, five tabs at most. Every tab references an existing entry (`navigation.home`, `blogHome()`, `navigation.agent`) or opens the shared drawer (`"drawer": "cm"` expands the Cẩm nang group, `"all"` opens it closed). There are no new URLs.
+  - Content pages render it fixed to the bottom below 900px, above the iOS home indicator. The page reserves its height, the header Menu button hides there, and the bar steps aside while a field has focus (`body.is-typing`, set by `app-shell.js`).
+  - The Agent app renders the same component under the composer, in place of the old dock. It is hidden in embed and wherever the Agent desktop menu shows.
+  - `assets/js/drawer.js` is the ONE drawer controller for both shells (`app-shell.js` and `main.js`). It handles the Menu button, the drawer tabs, the accordion, Escape (returning focus to the opener), the backdrop and link clicks.
+  - The desktop menu shows app-style SVG icons on the top level from `navigation.json` `svg_icons`, from 1360px up, where the header row has room.
+  - The footer keeps every link. Below 900px its groups become rounded cards, two per row.
 - `tools/build-blog.mjs` rebuilds menu across all pages deterministically, with asset-hash cache busting
 - `assets/css/style.css` and `assets/css/src/blog.css` support nested links, mobile safe area and light/dark
 
@@ -23,6 +30,7 @@ The Agent app (`/agent/`), the homepage `/` and every generated blog/content pag
 - The shared build stages the generated `index.html` and `agent/` in addition to its established generated surfaces; the article publisher stages `index.html` (latest/featured articles) — `agent/` does not depend on articles
 - `tests/unit/nav-sync-v3.test.js` compares the desktop menu, drawer groups, footer and breadcrumb root across every page group (homepage, blog, hubs, subtopics, articles, Pages, Agent) and checks the current CSS hash in pages + service worker
 - `tests/unit/menu-completeness.test.js` rejects missing Page/category/topic URLs, empty-topic destinations, long labels and app/blog divergence
+- `tests/unit/app-nav-v4.test.js` checks the tab bar. It must be identical on 2.000+ pages and the Agent app, carry the right active tab per page group, open the drawer, use only existing URLs, behave correctly at each breakpoint and in embed, and keep the footer cards
 - Preserve canonical, schema, article body, writer matrix and chatbot engine. Rollback by reverting the feature PR.
 
 ## Menu hierarchy

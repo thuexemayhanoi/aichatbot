@@ -47,7 +47,10 @@ export function createVehicleMatcher(pricing) {
           matches.push({ type: entry.type, id: entry.id, name: entry.name, matchedPhrase: hit.phrase });
         }
       }
-      return matches;
+      // The most specific phrase wins: "xe tay ga 50cc" is the 50cc scooter,
+      // not also the broader "xe tay ga" class it contains.
+      const words = (m) => ` ${normalize(m.matchedPhrase)} `;
+      return matches.filter((m) => !matches.some((o) => o !== m && words(o).length > words(m).length && words(o).includes(words(m))));
     }
   };
 }

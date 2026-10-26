@@ -12,6 +12,7 @@ import {
   nextSuggestions,
   resolveChipHref
 } from '../../src/app/suggestions.js';
+import { tabBar } from '../../tools/app-shell.mjs';
 
 /**
  * v45 FOCUSED UI/UX POLISH — customer-facing brand spec.
@@ -326,7 +327,7 @@ test('mobile app-lock: CHAT HOMEPAGE ONLY body lock, app pinned, messages scroll
   // Disclosure paragraph is GONE (v50): replaced by the bottom dock, no empty gap.
   assert.ok(!html.includes('motoai-disclosure'), 'no disclosure text in main UI');
   assert.ok(!html.includes('Trợ lý trả lời tự động dựa trên dữ liệu'), 'old disclosure copy removed');
-  assert.match(css, /\.motoai-dock\s*\{/);
+  assert.match(css, /\.app-tabbar\s*\{/);
   // Composer sits directly above the safe area (app padding keeps env inset).
   assert.match(css, /\.motoai-app\s*\{[^}]*calc\(env\(safe-area-inset-bottom/s);
 });
@@ -368,56 +369,37 @@ test('responsive: safe-area insets survive at every breakpoint', () => {
   }
 });
 
-// --- 5g. Bottom dock (v53): flat bottom navigation, NOT tag-like ---
-test('bottom dock: exactly 4 items, flat nav look, verified actions, one row', () => {
-  const dockStart = html.indexOf('class="motoai-dock"');
-  const dock = html.slice(dockStart, html.indexOf('</nav>', dockStart));
-  assert.ok(dock, 'dock present');
-  assert.equal((dock.match(/class="motoai-dock-item"/g) || []).length, 4, 'dock has exactly 4 items');
-  for (const label of ['Dịch vụ', 'Liên hệ', 'Giá thuê', 'Bản đồ']) {
-    assert.ok(dock.includes(`>${label}<`), `dock must contain "${label}"`);
-  }
-  // Icon-above-label markup (app bottom-nav, not a chip row).
-  assert.match(dock, /motoai-dock-icon/);
-  // Dịch vụ routes to the existing service hub — no invented page.
-  assert.match(dock, /href="\/blog\/thue-xe\/"/);
-  // Liên hệ: NO hard-coded contact URL — it opens the drawer contact group.
-  assert.ok(!html.includes('share.google'), 'no hard-coded share.google URL anywhere');
-  assert.match(dock, /id="motoai-dock-contact"/);
-  assert.match(mainJs, /dockContact\?\.addEventListener\('click', \(\) => \{[\s\S]*?setDrawer\(true\);[\s\S]*?motoai-group-dv-btn[\s\S]*?groupBtn\.click\(\)/);
-  // Giá thuê is an Agent action — no hard-coded price values in the dock.
-  assert.match(dock, /id="motoai-dock-price"/);
-  assert.ok(!/\d{3}[.,]?\d{3}\s*(đ|vnd|VND)/.test(dock), 'dock must not hard-code prices');
-  assert.match(mainJs, /dockPrice\?\.addEventListener[\s\S]*?'Giá thuê xe bao nhiêu\?'/);
-  // Bản đồ resolves from verified business.json (never hard-coded in markup).
-  assert.match(dock, /id="motoai-dock-map" href="#"/);
-  assert.match(mainJs, /setHref\(elements\.dockMap, resolveChipHref\(\{ ref: 'maps' \}, businessData\)\)/);
-  // Dock sits below the composer in DOM order and is one row.
-  assert.ok(html.indexOf('id="motoai-composer"') < dockStart, 'dock after composer');
-  assert.match(css, /\.motoai-dock\s*\{[^}]*grid-template-columns:\s*repeat\(4, 1fr\);/s);
-  assert.match(css, /\.motoai-dock-item\s*\{[^}]*min-height:\s*44px;/s);
-  // Flat nav contract: transparent cells, no pill, no per-item border.
-  const item = css.match(/\.motoai-dock-item\s*\{[\s\S]*?\}/)[0];
-  assert.match(item, /background:\s*transparent/, 'dock cells are transparent');
-  assert.match(item, /border:\s*none/, 'no per-item border');
-  assert.match(item, /border-radius:\s*0/, 'no pill radius');
-  assert.match(item, /color:\s*var\(--color-text-muted\)/, 'muted default text');
-  // Hover ONLY under fine-pointer media query — never sticky on touch.
-  assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)\s*\{[\s\S]*?\.motoai-dock-item:hover\s*\{[^}]*color:\s*var\(--color-primary\);/);
-  assert.match(css, /\.motoai-dock-item:active\s*\{\s*color:\s*var\(--color-primary\);\s*\}/, 'tap feedback');
-  assert.match(css, /-webkit-tap-highlight-color:\s*transparent/, 'no sticky grey flash on iOS');
-  // No persistent selected state — dock items are actions, not tabs.
-  // No sticky selected state on the dock (the shared desktop-menu CSS may style
-  // aria-current on .site-nav links; no rule may target a dock item that way).
+// --- 5g. Bottom tab bar (v78): the website's shared tab bar replaces the v53 dock ---
+test('bottom tab bar: the shared 5-tab bar under the composer, flat app look, no second menu', () => {
+  assert.ok(!html.includes('motoai-dock'), 'the hand-written dock is gone (one menu system)');
+  const barStart = html.indexOf('<nav class="app-tabbar"');
+  assert.ok(barStart > 0, 'tab bar present');
+  const bar = html.slice(barStart, html.indexOf('</nav>', barStart));
+  const flat = (s) => s.replace(/\s+/g, ' ').trim();
+  assert.equal(flat(`${bar}</nav>`), flat(tabBar({ path: 'agent/' })), 'same component as every website page');
+  assert.equal((bar.match(/class="app-tab"/g) || []).length, 5, 'five tabs');
+  assert.match(bar, /<a class="app-tab" href="\/agent\/" aria-current="page">/, 'the Agent tab is the open page');
+  assert.equal((bar.match(/aria-current/g) || []).length, 1, 'exactly one active tab');
+  assert.match(bar, /data-drawer-open="cm" aria-controls="motoai-drawer" aria-expanded="false"/, 'Danh Mục opens the drawer at Cẩm nang');
+  assert.match(bar, /data-drawer-open="" aria-controls="motoai-drawer" aria-expanded="false"/, 'Menu opens the drawer');
+  assert.ok(!/\d{3}[.,]?\d{3}\s*(đ|vnd|VND)/.test(bar), 'tab bar never hard-codes prices');
+  assert.ok(html.indexOf('id="motoai-composer"') < barStart && barStart < html.indexOf('</section>', barStart), 'below the composer, inside the app column');
+  assert.match(css, /\.app-tabbar\s*\{[^}]*grid-template-columns:\s*repeat\(5, minmax\(0, 1fr\)\);/s, 'one row of five');
+  const item = css.match(/\.app-tab\s*\{[\s\S]*?\}/)[0];
+  assert.match(item, /min-height:\s*50px/, 'touch target');
+  assert.match(item, /background:\s*transparent/, 'flat cells');
+  assert.match(item, /-webkit-tap-highlight-color:\s*transparent/, 'no sticky grey flash on iOS');
+  assert.ok(!/background:\s*var\(--color-primary\)/.test(item), 'never a filled accent cell');
+  assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)\s*\{[\s\S]*?\.app-tab:hover\s*\{/, 'hover only on real pointers');
+  // aria-current is styled only on the two navigation components (desktop menu, tab bar).
   const selectors = css.replace(/\/\*[\s\S]*?\*\//g, '').match(/[^{}]+(?=\{)/g).flatMap((s) => s.split(',')).map((s) => s.trim());
   for (const s of selectors.filter((sel) => sel.includes('aria-current'))) {
-    assert.ok(s.startsWith('.site-nav'), `aria-current is only styled on the desktop menu, never the dock: ${s}`);
+    assert.ok(s.startsWith('.site-nav') || s.startsWith('.app-tab'), `aria-current only on navigation components: ${s}`);
   }
-  assert.ok(!/\.motoai-active/.test(css) && !/\.motoai-dock[^{]*aria-current/.test(css), 'no selected-state class or aria-current rule for the dock');
-  assert.ok(!/aria-current/.test(dock), 'no sticky selected state in the dock markup');
-  assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-dock\s*\{\s*display:\s*none;/, 'embed hides the dock');
-  // Dark/light contrast: dock never renders dark text on a purple surface.
-  assert.ok(!/background:\s*var\(--color-primary\)/.test(item), 'dock cells are never purple');
+  assert.ok(!/\.motoai-active/.test(css), 'no selected-state class');
+  assert.match(css, /body\[data-motoai-embed="1"\] \.app-tabbar\s*\{\s*display:\s*none;/, 'embed hides the tab bar');
+  assert.match(css, /\.motoai-app \.app-tabbar\s*\{[^}]*border-top:\s*1px solid var\(--line\)/s, 'in the app column, not fixed over the chat');
+  assert.ok(!/\.motoai-app \.app-tabbar\s*\{[^}]*position:\s*fixed/s.test(css), 'never fixed over the messages/composer');
 });
 
 // --- 5g2. Contact group (v53): WhatsApp from business.json, no hard-coded contacts ---
@@ -468,11 +450,13 @@ test('grouped menu: parent/child accordion with ARIA + one-open + Escape', () =>
   for (const label of ['🗂️ Trang Web', '📚 Cẩm nang', '🛵 Dịch Vụ', '🔒 Pháp Lý']) {
     assert.ok(html.includes(label), 'compact group present: ' + label);
   }
-  // One-open accordion + Escape/backdrop close are wired in JS.
-  assert.match(mainJs, /closeGroups\(btn\)/, 'opening a group closes the others');
-  assert.match(mainJs, /setAttribute\('aria-expanded'/);
-  assert.match(mainJs, /closest\('\.motoai-group-btn'\)\) return;/, 'group toggle does not close the drawer');
-  assert.match(mainJs, /event\.key === 'Escape'/, 'Escape still closes the drawer');
+  // One-open accordion + Escape/backdrop close: the shared drawer controller (assets/js/drawer.js).
+  const drawerJs = readFileSync(join(ROOT, 'assets/js/drawer.js'), 'utf8');
+  assert.match(mainJs, /import \{ createDrawer \} from '\.\/drawer\.js\?v=\d+';/, 'the Agent app uses the shared controller');
+  assert.match(drawerJs, /closeGroups\(btn\)/, 'opening a group closes the others');
+  assert.match(drawerJs, /setAttribute\('aria-expanded'/);
+  assert.match(drawerJs, /closest\('\.motoai-group-btn'\)\) return;/, 'group toggle does not close the drawer');
+  assert.match(drawerJs, /event\.key === 'Escape'/, 'Escape still closes the drawer');
   // Children are visually indented.
   assert.match(css, /\.motoai-group-items\s*\{[^}]*padding:[^;]*var\(--space-4\);/s);
   assert.match(css, /\.motoai-group-items\[hidden\]\s*\{\s*display:\s*none;\s*\}/);

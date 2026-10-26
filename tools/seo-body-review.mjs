@@ -24,7 +24,8 @@
  *   - new text is plain Vietnamese: no markup, no English fragments, no
  *     forbidden commercial claims, no digits that the original body does not
  *     already contain — except numbers of the declared verified legal facts
- *     ({{ business.* }} placeholders must resolve);
+ *     ({{ business.* }} placeholders must resolve; a rental price changes only
+ *     through a {{ price.* }} placeholder of a published pricing.json rate);
  *   - link targets are published articles, never self, never already linked;
  *   - word count never drops (except by condense or deleted internal notes);
  *     thin articles reach 800; additions never push a body past 2,000 words;
@@ -44,12 +45,13 @@ import { fileURLToPath } from 'node:url';
 import { englishTokens } from './seo-meta.mjs';
 import { taxonomy } from './taxonomy.mjs';
 import { resolveFacts } from './build-blog.mjs';
+import { PRICING, priceFact } from './blog-components.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 export const REVIEW_LOG = 'data/seo/body-reviews.json';
 export const LEGAL_FACTS = 'data/seo/legal-facts.json';
-export const REVIEW_DATE = '2026-10-23';
+export const REVIEW_DATE = '2026-10-25';
 const FORBIDDEN = ['app store', 'google play', 'toàn quốc', 'không cần cọc', 'miễn cọc', 'rẻ nhất', 'số 1', 'uy tín nhất',
   'tốt nhất việt nam', 'giao xe miễn phí', 'miễn phí giao', 'cam kết 100%', '24/7'];
 const MAX_WORDS = 2000, MIN_WORDS = 800;
@@ -72,7 +74,9 @@ function textProblems(label, s, allowedDigits) {
   const out = [];
   if (typeof s !== 'string' || !s.trim()) return [`${label}: empty`];
   if (/[<>]/.test(s)) out.push(`${label}: markup is not allowed (plain text only)`);
-  const en = englishTokens(s);
+  // Fact placeholders are data references, not prose: skip them in the language checks.
+  const prose = s.replace(/\{\{\s*(business|price)\.[^}]*\}\}/gi, ' ');
+  const en = englishTokens(prose);
   if (en.length) out.push(`${label}: English tokens ${en.join(', ')}`);
   const low = s.toLowerCase();
   for (const f of FORBIDDEN) {
@@ -84,6 +88,11 @@ function textProblems(label, s, allowedDigits) {
   for (const m of s.matchAll(/\{\{\s*business\.([a-z0-9_.]+)/gi)) {
     const v = m[1].split('.').reduce((o, k) => (o == null ? undefined : o[k]), JSON.parse(read('data/business/business.json')));
     if (v === undefined) out.push(`${label}: unresolved placeholder business.${m[1]}`);
+  }
+  // A rental price may change only through a {{ price.* }} placeholder that
+  // resolves to a published rate of data/business/pricing.json (never a typed number).
+  for (const m of s.matchAll(/\{\{\s*price\.([a-z0-9_.-]+)\s*\}\}/gi)) {
+    if (priceFact(PRICING, m[1]) === undefined) out.push(`${label}: unresolved or unpublished price placeholder price.${m[1]}`);
   }
   return out;
 }

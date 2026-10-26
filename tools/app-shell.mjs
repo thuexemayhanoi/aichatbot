@@ -118,6 +118,8 @@ export function siteNav({ activeHub = null, activeCluster = null, path = '', hom
   const cm = group('cm');
   const pages = group('pages');
   const blog = blogHome();
+  const svg = navigation.svg_icons;
+  const navIcon = (name) => icon(name, 'site-nav-icon');
   const current = (url) => (url === '/' + path ? ' aria-current="page"' : '');
   const dropdown = (parent, active, items) => '        <div class="site-nav-item"' + (active ? ' data-active="1"' : '') + '>\n' +
     '          ' + parent + '\n          <div class="site-nav-drop">\n' + items.join('\n') + '\n          </div>\n        </div>';
@@ -127,20 +129,48 @@ export function siteNav({ activeHub = null, activeCluster = null, path = '', hom
     const hubActive = c.dir === activeCluster ||
       hub.children.some((ch) => ch.url === '/blog/' + activeHub + '/');
     return dropdown('<a class="site-nav-parent" href="' + hub.url + '" aria-haspopup="true"' +
-      (hubActive ? ' aria-current="page"' : '') + '>' + esc(hub.label) + icon('caret', 'site-nav-caret') + '</a>',
+      (hubActive ? ' aria-current="page"' : '') + '>' + navIcon(svg.hubs[c.id]) + esc(hub.label) + icon('caret', 'site-nav-caret') + '</a>',
     hubActive, hub.children.map((ch) => '            <a class="' + (ch.level === 'subtopic' ? 'site-nav-subtopic' : 'site-nav-category') +
       '" href="' + ch.url + '"' + (ch.url === '/blog/' + activeHub + '/' ? ' aria-current="page"' : '') + '>' + esc(ch.label) + '</a>'));
   });
   const pagesItem = dropdown('<button type="button" class="site-nav-parent" aria-haspopup="true" aria-expanded="false">' +
-    esc(pages.label) + icon('caret', 'site-nav-caret') + '</button>',
+    navIcon(svg.pages) + esc(pages.label) + icon('caret', 'site-nav-caret') + '</button>',
   pages.children.some((ch) => ch.url === '/' + path),
   pages.children.map((ch) => '            <a class="site-nav-category" href="' + ch.url + '"' + current(ch.url) + '>' + esc(ch.label) + '</a>'));
-  const homeItem = home ? `          <a href="${navigation.home.url}"${current(navigation.home.url)}>${esc(navigation.home.label)}</a>\n` : '';
+  const homeItem = home ? `          <a href="${navigation.home.url}"${current(navigation.home.url)}>${navIcon(svg.home)}${esc(navigation.home.label)}</a>\n` : '';
   return `        <nav class="site-nav" aria-label="Chuyên mục">
-${homeItem}          <a href="${blog.url}"${path.startsWith('blog/') && activeCluster === null && activeHub === null ? ' aria-current="page"' : ''}>${esc(blog.label)}</a>
+${homeItem}          <a href="${blog.url}"${path.startsWith('blog/') && activeCluster === null && activeHub === null ? ' aria-current="page"' : ''}>${navIcon(svg.blog)}${esc(blog.label)}</a>
 ${hubItems.join('\n')}
 ${pagesItem}
         </nav>`;
+}
+
+/**
+ * App-style bottom tab bar (v78) — ONE component for every shell, like
+ * siteNav: content pages render it (fixed, phones/tablets < 900px) and the
+ * Agent app renders it in place of the old dock (tools/agent-page.mjs).
+ * Tabs come from config/navigation.json tab_bar and only REFERENCE existing
+ * entries: Trang Chủ, the blog home, the Agent app (links) and the shared
+ * drawer (buttons; a group id expands that drawer group). No new URL.
+ */
+export function tabBar({ path = '' } = {}) {
+  const bar = navigation.tab_bar;
+  if (!bar?.tabs?.length || bar.tabs.length > 5) throw new Error('navigation.json: tab_bar needs 1-5 tabs');
+  const groups = new Set(drawerCore().filter((e) => e.kind === 'group').map((e) => e.id));
+  const refs = { home: navigation.home, blog: blogHome(), agent: navigation.agent };
+  const tabs = bar.tabs.map((tab) => {
+    const glyph = icon(tab.icon, 'app-tab-icon');
+    if (tab.drawer) {
+      if (tab.drawer !== 'all' && !groups.has(tab.drawer)) throw new Error(`tab_bar: unknown drawer group ${tab.drawer}`);
+      return `    <button type="button" class="app-tab" data-drawer-open="${tab.drawer === 'all' ? '' : tab.drawer}" aria-controls="motoai-drawer" aria-expanded="false">${glyph}<span>${esc(tab.label)}</span></button>`;
+    }
+    const target = refs[tab.ref];
+    if (!target?.url) throw new Error(`tab_bar: unknown ref ${tab.ref}`);
+    // "page" on the exact page; "true" inside the section (an article under the blog home).
+    const state = target.url === '/' + path ? 'page' : tab.ref === 'blog' && path.startsWith('blog/') ? 'true' : null;
+    return `    <a class="app-tab" href="${target.url}"${state ? ` aria-current="${state}"` : ''}>${glyph}<span>${esc(tab.label ?? target.label)}</span></a>`;
+  });
+  return `  <nav class="app-tabbar" aria-label="${esc(bar.aria_label)}">\n${tabs.join('\n')}\n  </nav>`;
 }
 
 /**
@@ -294,6 +324,7 @@ export function appShellPage({ title, description, path, screen, activeHub = nul
 ${contentHtml}
   </main>
 ${footerHtml()}
+${tabBar({ path })}
 ${siteDrawer({ activeHub, activeCluster })}
 ${schemaHtml}
 ${shellScripts({ search })}</body>

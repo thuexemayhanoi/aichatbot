@@ -28,7 +28,7 @@ async function converse(turns, options = {}) {
 test('Vision follow-up: "Thế 1 tuần?" still refers to Vision', async () => {
   const { replies } = await converse(['Vision bao nhiêu?', 'Thế 1 tuần?']);
   assert.ok(replies[0].reply.text.includes('Honda Vision'));
-  assert.ok(replies[1].reply.text.includes('800.000đ - 1.000.000đ'));
+  assert.ok(replies[1].reply.text.includes('Giá thuê Honda Vision 1 tuần: 1.000.000đ'));
   assert.equal(replies[1].slots.vehicle.id, 'honda-vision');
   assert.equal(replies[1].slots.durationDays, 7);
   assert.equal(replies[1].source, 'pricing-data');
@@ -37,13 +37,14 @@ test('Vision follow-up: "Thế 1 tuần?" still refers to Vision', async () => {
 test('classic estimates stay deterministic', async () => {
   const { replies } = await converse(['Vision 3 ngày', 'Air Blade 1 tuần', 'thuê Honda Click 1 tháng']);
   assert.ok(replies[0].reply.text.includes('600.000đ'));
-  assert.ok(replies[1].reply.text.includes('800.000đ'));
-  assert.ok(replies[2].reply.text.includes('1.000.000đ - 1.200.000đ'));
+  assert.ok(replies[1].reply.text.includes('1.000.000đ'));
+  assert.ok(replies[2].reply.text.includes('900.000đ - 1.200.000đ'));
 });
 
 test('category estimate spans the models of the category', async () => {
   const { replies } = await converse(['xe ga 1 tuần giá bao nhiêu']);
-  assert.ok(replies[0].reply.text.includes('600.000đ - 1.000.000đ'));
+  // Xe tay ga = Vision 1.000.000đ, Air Blade 1.000.000đ, Click/Mio 700.000đ per week (50cc is its own class).
+  assert.ok(replies[0].reply.text.includes('700.000đ - 1.000.000đ'));
 });
 
 test('clarify flow: duration without vehicle asks only for the vehicle', async () => {
@@ -91,7 +92,8 @@ test('documents question gets an honest unknown, no invented requirements', asyn
 });
 
 test('unconfirmed price means contact, never 0đ', async () => {
-  const { replies } = await converse(['thuê xe 50cc', 'xe đạp điện giá bao nhiêu']);
+  const { replies } = await converse(['xe máy điện giá bao nhiêu', 'xe đạp điện giá bao nhiêu', 'xe tay ga 50cc 1 tuần']);
+  assert.match(replies[2].reply.text, /chưa có giá niêm yết cho 1 tuần/, '50cc: day rate only, a week is never 7 × day');
   for (const reply of replies) {
     assert.ok(reply.reply.text.includes('liên hệ'));
     assert.ok(!reply.reply.text.includes('0đ'));
@@ -180,7 +182,7 @@ test('slots persist across engine instances sharing a store', async () => {
   await first.engine.sendMessage('Vision bao nhiêu');
   const second = createTestEngine({ store, scope: 'persist' });
   const result = await second.engine.sendMessage('Thế 1 tuần');
-  assert.ok(result.reply.text.includes('800.000đ - 1.000.000đ'));
+  assert.ok(result.reply.text.includes('Giá thuê Honda Vision 1 tuần: 1.000.000đ'));
 });
 
 test('stale session state is discarded and recreated (TTL)', async () => {

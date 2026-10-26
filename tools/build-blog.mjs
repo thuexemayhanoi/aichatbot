@@ -906,6 +906,7 @@ function localBusinessSchema(business) {
     '@type': 'AutoRental',
     '@id': `${business.url}#localbusiness`,
     name: business.display_name,
+    ...(business.gbp_name ? { alternateName: business.gbp_name } : {}),
     url: business.url,
     telephone: business.contact.phone_uri.replace(/^tel:/, ''),
     address: { '@type': 'PostalAddress', streetAddress: a.street, addressLocality: `${a.ward}, ${a.district}`, addressRegion: a.city, addressCountry: 'VN' },
@@ -1149,6 +1150,32 @@ const rate = (r) => {
   return `${v.toLocaleString('vi-VN')}đ`;
 };
 
+/** Rent catalog for /gia-thue/: one Offer per vehicle with its PUBLISHED
+ *  unit prices only (null = not published = no price in the schema). The
+ *  deposit is never a price here — it is a separate amount. */
+const UNIT_CODES = { day: 'DAY', week: 'WEE', month: 'MON' };
+function priceCatalogSchema(pricing, business) {
+  return {
+    '@type': 'OfferCatalog',
+    name: 'Bảng giá thuê xe máy tham khảo',
+    // Only vehicles with a published rate: an Offer without a price would be invalid.
+    itemListElement: pricing.vehicles.slice().sort((a, b) => (a.order ?? 99) - (b.order ?? 99)).filter((v) => pricing.rental_types.some((rt) => hasRate(v.rates[rt.id]))).map((v) => {
+      const specs = pricing.rental_types.filter((rt) => hasRate(v.rates[rt.id])).map((rt) => {
+        const { min, max } = v.rates[rt.id];
+        return {
+          '@type': 'UnitPriceSpecification', priceCurrency: pricing.currency, unitCode: UNIT_CODES[rt.id], unitText: rt.name,
+          ...(min != null && max != null && min !== max ? { minPrice: min, maxPrice: max } : { price: min ?? max })
+        };
+      });
+      return {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: `Thuê ${v.name}`, category: v.category, provider: { '@id': `${business.url}#localbusiness` } },
+        priceSpecification: specs
+      };
+    })
+  };
+}
+
 function buildPrice(page, business) {
   const fact = (s) => resolveFacts(s, business);
   const pricing = PRICING;
@@ -1160,18 +1187,22 @@ function buildPrice(page, business) {
       const cells = pricing.rental_types.map((rt) => {
         const r = rate(v.rates[rt.id]);
         return `<td data-label="${esc(rt.name)}"${r ? '' : ' class="is-confirm"'}>${r ?? esc(t('priceConfirm'))}</td>`;
-      }).join('');
+      }).join('') + (() => {
+        // The deposit is its own column: a separate amount, never part of the rent.
+        const d = rate(v.deposit);
+        return `<td data-label="${esc(t('priceDeposit'))}"${d ? '' : ' class="is-confirm"'}>${d ?? esc(t('depositConfirm'))}</td>`;
+      })();
       return `        <tr>
           <th scope="row">${esc(v.name)}<span class="blog-price-note">${esc(v.category)}</span></th>
 ${cells}
         </tr>`;
     }).join('\n');
-  const head = pricing.rental_types.map((rt) => `              <th scope="col">${esc(rt.name)}</th>`).join('\n');
+  const head = [...pricing.rental_types.map((rt) => rt.name), t('priceDeposit')].map((name) => `              <th scope="col">${esc(name)}</th>`).join('\n');
   const content = breadcrumb([CRUMB_HOME, { label: fact(page.crumb ?? page.title), href: null }])
     + screenHead({ label: fact(page.kicker), title: fact(page.title), lead: fact(page.lead) })
     + `      <div class="table-wrap price-wrap">
         <table class="blog-table price-table">
-          <caption class="visually-hidden">Bảng giá thuê xe theo ngày, tuần và tháng</caption>
+          <caption class="visually-hidden">Bảng giá thuê xe theo ngày, tuần, tháng và tiền đặt cọc</caption>
           <thead>
             <tr>
               <th scope="col">Xe</th>
@@ -1200,7 +1231,8 @@ ${askAgentAction(page.askTopic)}`;
     schemaHtml: ldScript({
       '@context': 'https://schema.org', '@type': 'WebPage',
       name: fact(page.title), description: pricing.disclaimer, url: `${SITE}${page.dir}/`,
-      isPartOf: websiteRef()
+      isPartOf: websiteRef(),
+      mainEntity: priceCatalogSchema(pricing, business)
     })
   });
   write(`${page.dir}/index.html`, html);

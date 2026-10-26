@@ -5,6 +5,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chatTokenBlock, CSS_SOURCE, CHAT_CSS } from '../../tools/css-build.mjs';
 import { BLOG_UI, brandMark, icon } from '../../tools/blog-components.mjs';
+import { navigation } from '../../tools/taxonomy.mjs';
 
 /**
  * v74 Apple-inspired editorial V2 on the chat app — ONE design source.
@@ -34,8 +35,8 @@ test('chat token block fails loudly instead of emitting a missing token', () => 
 
 test('Agent app identity comes from the content-site sources: brand mark, icons, theme-color', () => {
   assert.ok(html.includes(`<div class="motoai-brand-mark" aria-hidden="true">${brandMark()}</div>`), 'same brand mark as every content page');
-  for (const name of ['scooter', 'phone', 'tag', 'map']) {
-    assert.ok(html.includes(`data-icon="${name}">${icon(name, 'motoai-icon')}</span>`), `dock icon ${name} from the shared icon set`);
+  for (const tab of navigation.tab_bar.tabs) {
+    assert.ok(html.includes(icon(tab.icon, 'app-tab-icon')), `tab icon ${tab.icon} from the shared icon set`);
   }
   assert.ok(html.includes(`aria-label="Gửi câu hỏi">${icon('send', 'motoai-icon')}</button>`), 'send icon keeps its accessible name');
   const { light, dark } = BLOG_UI.site.themeColor;

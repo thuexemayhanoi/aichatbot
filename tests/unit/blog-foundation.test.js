@@ -301,7 +301,7 @@ test('v58: about, policy, contact and price pages exist with verified facts only
   assert.ok(priceHtml.includes(business.policies.deposit.note), 'deposit note from business.json');
   // No invented numbers: every "đ" figure in the table must exist in pricing.json.
   const all = new Set();
-  for (const v of pricing.vehicles) for (const rt of Object.values(v.rates)) {
+  for (const v of pricing.vehicles) for (const rt of [...Object.values(v.rates), v.deposit]) {
     if (rt?.min != null) all.add(rt.min.toLocaleString('vi-VN') + 'đ');
     if (rt?.max != null) all.add(rt.max.toLocaleString('vi-VN') + 'đ');
   }

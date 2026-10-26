@@ -6,6 +6,7 @@ import {
   dayRateLabel
 } from './shared.js';
 import { calculateRental, compareVehiclesForDays } from '../calc/rental-calculator.js';
+import { depositLabel } from './deposit-rule.js';
 import { formatDateVi } from '../nlu/entities/dates.js';
 
 /**
@@ -98,9 +99,13 @@ export function createPricingRule({ business, pricing } = {}) {
             structured: { type: 'calculator', vehicle: vehicleRef, days, dateRange, rows: estimates.map((e) => ({ id: e.entry.id, name: e.entry.name, min: e.calc.min, max: e.calc.max })) }
           };
         }
+        // Some rates published (e.g. day only) but none for this length: say so, never multiply.
+        const partly = entries.some((entry) => formatTierLines(entry).length > 0);
         return {
           handled: true,
-          answer: `${vehicleRef.name} hiện chưa có giá niêm yết. Vui lòng liên hệ ${business.brand} (${business.contact.phone_display}) để kiểm tra giá hiện tại.`,
+          answer: partly
+            ? `${vehicleRef.name} chưa có giá niêm yết cho ${describeDays(days)}. Vui lòng liên hệ ${business.brand} (${business.contact.phone_display}) để được báo giá.`
+            : `${vehicleRef.name} hiện chưa có giá niêm yết. Vui lòng liên hệ ${business.brand} (${business.contact.phone_display}) để kiểm tra giá hiện tại.`,
           confidence: 0.5,
           source: 'pricing-data'
         };
@@ -113,7 +118,7 @@ export function createPricingRule({ business, pricing } = {}) {
         if (tiers.length > 0) {
           return {
             handled: true,
-            answer: `Giá thuê ${vehicleRef.name}:\n${tiers.join('\n')}\n${disclaimer}`,
+            answer: `Giá thuê ${vehicleRef.name}:\n${tiers.join('\n')}\n- Tiền cọc (khoản riêng, không tính vào giá thuê): ${depositLabel(entries[0])}\n${disclaimer}`,
             confidence: 0.9,
             source: 'pricing-data'
           };

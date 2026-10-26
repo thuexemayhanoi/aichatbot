@@ -15,22 +15,23 @@ test('1 day equals the day rate with a transparent breakdown', () => {
 });
 test('7 days use the week tier', () => {
   const r = calculateRental(byId('honda-vision'), 7);
-  assert.equal(r.min, 800000);
+  assert.equal(r.min, 1000000);
   assert.equal(r.max, 1000000);
-  assert.match(r.breakdown[0], /1 tuần × 800\.000đ/);
+  assert.match(r.breakdown[0], /1 tuần × 1\.000\.000đ/);
 });
 test('12 days combine week + days transparently', () => {
   const r = calculateRental(byId('honda-vision'), 12);
-  assert.equal(r.min, 800000 + 5 * 200000); // 1 week + 5 days
-  assert.match(r.breakdown[0], /1 tuần × 800\.000đ\/tuần \+ 5 ngày × 200\.000đ\/ngày/);
+  assert.equal(r.min, 1000000 + 5 * 200000); // 1 week + 5 days
+  assert.match(r.breakdown[0], /1 tuần × 1\.000\.000đ\/tuần \+ 5 ngày × 200\.000đ\/ngày/);
 });
 test('30 days use the month tier', () => {
   const r = calculateRental(byId('honda-airblade'), 30);
-  assert.equal(r.min, 1400000);
-  assert.equal(r.max, 1400000);
+  assert.equal(r.min, 1500000);
+  assert.equal(r.max, 1500000);
 });
 test('unpriced vehicles yield null, never 0đ', () => {
-  assert.equal(calculateRental(byId('xe-50cc'), 7), null);
+  assert.equal(calculateRental(byId('xe-50cc'), 7), null, 'no weekly rate: never 7 × the day rate');
+  assert.equal(calculateRental(byId('xe-50cc'), 3).min, 600000, 'short rentals use its published day rate');
   assert.equal(calculateRental(byId('electric-bike'), 30), null);
 });
 test('35-day comparison sorts cheapest-first and includes only priced models', () => {
@@ -40,9 +41,10 @@ test('35-day comparison sorts cheapest-first and includes only priced models', (
     assert.ok(rows[i - 1].min <= rows[i].min, 'sorted by min ascending');
   }
   assert.ok(!rows.some((r) => r.id === 'xe-50cc'));
-  // Wave has day rates only: 35 x 150k = 5.250.000đ.
+  // Wave: 1 month + 5 days = 900.000 + 5 × 150.000 (max: 1.200.000 + 5 × 150.000).
   const wave = rows.find((r) => r.id === 'honda-wave');
-  assert.equal(wave.min, 35 * 150000);
+  assert.equal(wave.min, 900000 + 5 * 150000);
+  assert.equal(wave.max, 1200000 + 5 * 150000);
 });
 test('comparison is deterministic', () => {
   assert.deepEqual(compareVehiclesForDays(pricing, 12), compareVehiclesForDays(pricing, 12));

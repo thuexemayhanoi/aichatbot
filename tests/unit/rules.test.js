@@ -163,7 +163,7 @@ test('bike-type-rule answers a known displacement and honestly rejects unknown o
     analysis('bike_type_query', { entities: { displacements: [{ cc: 50, raw: '50cc' }] } }),
     EMPTY_SLOTS
   );
-  assert.ok(known.answer.includes('Xe 50cc'));
+  assert.ok(known.answer.includes('Xe tay ga 50cc'));
   const unknown = rule.respond(
     analysis('bike_type_query', { entities: { displacements: [{ cc: 125, raw: '125cc' }] } }),
     EMPTY_SLOTS

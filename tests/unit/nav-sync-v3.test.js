@@ -5,6 +5,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { drawerCore, navigation, taxonomy, blogHome, categoryNav } from '../../tools/taxonomy.mjs';
 import { siteNav, assetVersion } from '../../tools/app-shell.mjs';
+import { icon } from '../../tools/blog-components.mjs';
 import { STATIC_DIRS, SITE_PAGES } from '../../tools/site-pages.mjs';
 
 /**
@@ -62,7 +63,7 @@ test('the Agent app shows the same desktop menu (+ Trang Chủ, since its brand 
   assert.ok(nav, 'desktop menu inside the Agent header (not before the chat app)');
   assert.equal(normalize(nav), normalize(siteNav({ home: true })));
   assert.equal(normalize(nav), normalize(siteNav()).replace('<nav class="site-nav" aria-label="Chuyên mục"> ',
-    `<nav class="site-nav" aria-label="Chuyên mục"> <a href="${navigation.home.url}">${navigation.home.label}</a> `), 'only difference: the Trang Chủ entry');
+    `<nav class="site-nav" aria-label="Chuyên mục"> <a href="${navigation.home.url}">${icon(navigation.svg_icons.home, 'site-nav-icon')}${navigation.home.label}</a> `), 'only difference: the Trang Chủ entry');
   // Layout-only differences, all in the shared stylesheet: its own row on a real
   // desktop (wide, tall, mouse/trackpad — the Agent page loads no dropdown script,
   // so touch screens and landscape phones keep the finger-sized drawer with the
@@ -162,7 +163,7 @@ test('one source per label: blog home, categories and Pháp Lý come from their 
   assert.deepEqual(blog, { label: group.label, url: group.url }, 'Cẩm nang = the drawer group, with its url');
   assert.equal(drawerCore().find((e) => e.id === 'cm').label, blog.label, 'drawer shows the same label');
   const html = read('blog/thue-xe/thue-xe-may-gia-re/index.html');
-  assert.ok(desktopNav(html).includes(`href="${blog.url}">${blog.label}</a>`), 'header links the blog home with the same label');
+  assert.ok(desktopNav(html).includes(`href="${blog.url}">${icon(navigation.svg_icons.blog, 'site-nav-icon')}${blog.label}</a>`), 'header links the blog home with the same label');
   assert.ok(footer(html).includes(`href="${blog.url}">${blog.label}</a>`), 'footer links the blog home with the same label');
   assert.ok(html.includes(`<a href="${blog.url}">${blog.label}</a> ›`), 'breadcrumb uses the same label');
   for (const c of navigation.categories) {

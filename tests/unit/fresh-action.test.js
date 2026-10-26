@@ -48,7 +48,10 @@ test('Xe ga -> fresh "Giá thuê xe bao nhiêu?" returns the general price answe
   assert.equal(fresh.slots.vehicle, null, 'fresh action clears the stale vehicle');
   assert.notEqual(fresh.reply.text, withMemory.reply.text,
     'fresh action must not repeat the scooter-locked answer');
-  assert.ok(!/xe tay ga/i.test(fresh.reply.text), 'fresh price answer must not mention "xe tay ga"');
+  // The general overview (every class), not the scooter-scoped category answer.
+  assert.match(fresh.reply.text, /^Bảng giá tham khảo/, 'general price overview');
+  assert.ok(!/^Xe tay ga gồm/i.test(fresh.reply.text), 'not the "xe tay ga" category answer');
+  assert.ok(fresh.reply.text.includes('Honda Wave'), 'lists non-scooter classes too');
   assert.ok(fresh.reply.text.length > 0);
 });
 
