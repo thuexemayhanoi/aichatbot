@@ -11,18 +11,18 @@
 <h2>Bước 2: hiểu đơn vị và dải giá trên từng dòng xe</h2>
 <p>Giá tham khảo hiện tại của các dòng xe phổ biến trên trang <a href="/gia-thue/">giá thuê</a> như sau, và luôn cần xác nhận lại khi đặt:</p>
 <ul>
-<li>Xe số Honda Wave: chỉ ghi giá ngày, {{ price.honda-wave.day.min }}/ngày.</li>
+<li>Xe số Honda Wave có đủ ba cột: {{ price.honda-wave.day.min }}/ngày, {{ price.honda-wave.week.min }}/tuần, {{ price.honda-wave.month.min }}–{{ price.honda-wave.month.max }}/tháng.</li>
 <li>Dòng Honda Vision có đủ ba cột: {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng.</li>
 <li>Dòng Honda Air Blade cũng đủ ba cột: {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }}/tuần, {{ price.honda-airblade.month.min }}/tháng.</li>
 <li>Hai mẫu Honda Click và Yamaha Mio chung mức: {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng.</li>
-<li>Nhóm xe 50cc, xe máy điện và xe đạp điện: ô giá ghi "liên hệ".</li>
+<li>Xe 50cc: {{ price.xe-50cc.day.min }}/ngày, ô tuần và tháng ghi "liên hệ"; xe máy điện và xe đạp điện: ô giá ghi "liên hệ".</li>
 </ul>
 <p>Khi một ô ghi dải giá, đó là khoảng tham khảo; con số cụ thể phụ thuộc thời điểm và tình trạng xe còn trống. Ô ghi "liên hệ" không có nghĩa là đắt hơn, chỉ là cần hỏi trực tiếp. Dòng xe không có trên bảng, như các mẫu xe cao cấp hơn, cũng cần hỏi để kiểm tra xe có sẵn hay không.</p>
 <h2>Bước 3: tự tính ba kịch bản chạy phố</h2>
 <p>Đọc bảng giá hiệu quả nhất là cầm máy tính và nhân thử. Ba ví dụ dưới đây dùng giá tham khảo:</p>
 <ol>
 <li><strong>Ba ngày dạo trung tâm bằng Honda Vision</strong>: 3 × 200.000đ = 600.000đ. Thấp hơn giá tuần, nên lấy giá ngày là hợp lý.</li>
-<li><strong>Năm ngày công tác bằng Honda Vision</strong>: 5 × 200.000đ = 1.000.000đ, bằng hoặc cao hơn mức tuần 800.000đ–1.000.000đ. Lúc này hỏi gói tuần thường có lợi hơn.</li>
+<li><strong>Năm ngày công tác bằng Honda Vision</strong>: 5 × 200.000đ = 1.000.000đ, bằng mức tuần {{ price.honda-vision.week.min }}. Lúc này hỏi gói tuần thường có lợi hơn.</li>
 <li><strong>Một tháng đi làm</strong>: Honda Click khoảng {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng, Honda Air Blade khoảng {{ price.honda-airblade.month.min }}/tháng. Nếu chỉ chạy quãng ngắn trong nội đô, xe nhỏ gọn hơn đã đủ dùng.</li>
 </ol>
 <p>Điểm hòa vốn giữa giá ngày và giá tuần thường rơi vào khoảng bốn đến năm ngày. Cách tính tương tự cho thuê cuối tuần có trong bài <a href="/blog/thue-xe/cach-doc-bang-gia-thue-xe-cuoi-tuan/">đọc bảng giá thuê xe cuối tuần</a>.</p>

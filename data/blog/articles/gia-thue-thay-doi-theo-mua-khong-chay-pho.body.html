@@ -6,10 +6,10 @@
 <p>Thay vì đoán mùa nào đắt mùa nào rẻ, hãy bắt đầu từ bảng giá tham khảo mà {{ business.brand }} công bố:</p>
 <ul>
 <li>Xe số Honda Wave: tham khảo 150.000đ mỗi ngày.</li>
-<li>Cặp xe ga nhỏ Honda Click và Yamaha Mio: 150.000đ mỗi ngày, gói tuần 600.000đ đến 700.000đ, gói tháng 1.000.000đ đến 1.200.000đ.</li>
-<li>Honda Vision, dòng xe ga được hỏi nhiều nhất: 200.000đ mỗi ngày, gói tuần 800.000đ đến 1.000.000đ, gói tháng 1.800.000đ đến 2.000.000đ.</li>
-<li>Honda Air Blade cho người cần cốp rộng: 200.000đ mỗi ngày, gói tuần 800.000đ, gói tháng 1.400.000đ.</li>
-<li>Các dòng 50cc, xe máy điện và xe đạp điện: chưa niêm yết số, bạn liên hệ để được báo giá.</li>
+<li>Cặp xe ga nhỏ Honda Click và Yamaha Mio: 150.000đ mỗi ngày, gói tuần {{ price.honda-click.week.min }}, gói tháng {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }}.</li>
+<li>Honda Vision, dòng xe ga được hỏi nhiều nhất: 200.000đ mỗi ngày, gói tuần {{ price.honda-vision.week.min }}, gói tháng 1.800.000đ đến 2.000.000đ.</li>
+<li>Honda Air Blade cho người cần cốp rộng: 200.000đ mỗi ngày, gói tuần {{ price.honda-airblade.week.min }}, gói tháng {{ price.honda-airblade.month.min }}.</li>
+<li>Dòng 50cc: {{ price.xe-50cc.day.min }} mỗi ngày, gói tuần và tháng chưa niêm yết; xe máy điện và xe đạp điện: chưa niêm yết số, bạn liên hệ để được báo giá.</li>
 </ul>
 <p>Đây là mức tham khảo, giá cuối cùng được cửa hàng xác nhận khi bạn đặt xe cho ngày cụ thể. Bạn có thể xem lại trên trang <a href="/gia-thue/">giá thuê</a> và đọc cách hiểu từng cột giá trong bài <a href="/blog/thue-xe/bang-gia-thue-xe-tham-khao/">bảng giá thuê xe tham khảo</a>.</p>
 
@@ -35,7 +35,7 @@
 
 <h2>Chọn gói thuê theo nhịp chạy phố của từng mùa</h2>
 <p>Người chạy phố có lợi thế là quãng đường đều và dễ đoán, nên việc chọn đúng gói quan trọng hơn chuyện mùa vụ. Vài kịch bản điển hình:</p>
-<p><strong>Mùa hè, ở Hà Nội ba tuần:</strong> thay vì thuê từng ngày, hãy đặt gói tuần và gói tháng cạnh nhau. Với Honda Click, gói tuần tham khảo là 600.000đ đến 700.000đ, còn gói tháng tham khảo là 1.000.000đ đến 1.200.000đ; khi thời gian ở gần một tháng, hãy hỏi cửa hàng phương án nào hợp lý hơn cho đúng số ngày của bạn.</p>
+<p><strong>Mùa hè, ở Hà Nội ba tuần:</strong> thay vì thuê từng ngày, hãy đặt gói tuần và gói tháng cạnh nhau. Với Honda Click, gói tuần tham khảo là {{ price.honda-click.week.min }}, còn gói tháng tham khảo là {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }}; khi thời gian ở gần một tháng, hãy hỏi cửa hàng phương án nào hợp lý hơn cho đúng số ngày của bạn.</p>
 <p><strong>Mùa thu, sinh viên vào năm học:</strong> gói tháng giúp chi phí cố định, dễ quản lý; bài <a href="/blog/thue-xe/gia-thue-thay-doi-theo-mua-khong-cho-sinh-vien/">giá thuê thay đổi theo mùa cho sinh viên</a> có thêm gợi ý riêng.</p>
 <p><strong>Mùa đông, chỉ cần xe cuối tuần:</strong> thuê theo ngày cho thứ bảy, chủ nhật; cách sắp xếp được bàn trong bài <a href="/blog/thue-xe/gia-thue-thay-doi-theo-mua-khong-cuoi-tuan/">giá thuê thay đổi theo mùa dịp cuối tuần</a>.</p>
 <p><strong>Dịp lễ, cần xe đi lại trong phố:</strong> đặt sớm để giữ đúng dòng xe, và chốt giờ nhận trả rõ ràng.</p>

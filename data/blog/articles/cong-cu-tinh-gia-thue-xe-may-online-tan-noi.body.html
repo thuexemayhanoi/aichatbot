@@ -4,7 +4,7 @@
 <p>Công cụ là một trang trên website, mở bằng trình duyệt, không phải ứng dụng cài vào máy. Nó lấy bảng giá tham khảo của cửa hàng và nhân với thời gian thuê bạn chọn. Ví dụ các mốc tham khảo hiện tại: Honda Wave {{ price.honda-wave.day.min }}/ngày; Honda Vision {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng; Honda Air Blade {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }}/tuần, {{ price.honda-airblade.month.min }}/tháng; Honda Click hoặc Yamaha Mio {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng. Những gì công cụ không tính:</p>
 <ul>
 <li>Phí giao và nhận xe tại địa chỉ của bạn, vì phụ thuộc quãng đường và giờ giao.</li>
-<li>Xe 50cc, xe máy điện và xe đạp điện, hiện là giá liên hệ.</li>
+<li>Giá tuần, tháng của xe 50cc cùng xe máy điện và xe đạp điện, hiện là giá liên hệ.</li>
 <li>Xăng, phí gửi xe và khoản đặt cọc.</li>
 </ul>
 <p>Bản tổng quan về cách công cụ hoạt động, không gắn với giao nhận, nằm trong bài <a href="/blog/app/cong-cu-tinh-gia-thue-xe-may-online/">công cụ tính giá thuê xe máy online</a>; cách đọc kết quả theo đặc thù từng khu vực Hà Nội có trong bài <a href="/blog/app/cong-cu-tinh-gia-thue-xe-may-online-tai-ha-noi/">công cụ tính giá thuê xe máy online tại Hà Nội</a>.</p>
@@ -29,9 +29,9 @@
 <p>Cách phí giao được hình thành và những câu nên hỏi được bàn kỹ trong bài <a href="/blog/thue-xe/phi-giao-xe-thue/">phí giao xe thuê</a>; toàn bộ quy trình giao xe tận nơi, từ đặt tới bàn giao, nằm trong bài <a href="/blog/thue-xe/thue-xe-giao-tan-noi/">thuê xe giao tận nơi</a>.</p>
 
 <h2>Ba ví dụ tính giá cho người nhận xe tận nơi</h2>
-<p><strong>Khách ở khách sạn Hoàn Kiếm, thuê Vision bốn ngày.</strong> Công cụ cho 800.000đ theo giá tham khảo, trùng mức thấp của gói tuần. Hỏi cửa hàng áp gói tuần để có thêm ngày dự phòng, rồi hỏi phí giao tới khách sạn vào đầu giờ chiều ngày nhận. Việc nhận xe ở sảnh khách sạn có vài lưu ý riêng trong bài <a href="/blog/huong-dan/giao-xe-tai-khach-san/">giao xe tại khách sạn</a>.</p>
-<p><strong>Người đi làm ở Tây Hồ, thuê Air Blade một tháng.</strong> Công cụ cho 1.400.000đ tham khảo cho cả tháng. Một lần giao đầu tháng và một lần nhận lại cuối tháng là toàn bộ phần phát sinh, nên gói tháng tận nơi thường có tổng chi phí hợp lý hơn thuê tuần rồi giao lại nhiều lần.</p>
-<p><strong>Sinh viên ở Gia Lâm, thuê Click hai tuần.</strong> Công cụ cho khoảng 1.200.000đ–1.400.000đ theo gói tuần tham khảo. Gia Lâm gần cửa hàng, bạn có thể so phí giao với việc tự tới {{ business.address.full }} nhận xe, nhiều khi tự tới là lựa chọn gọn hơn.</p>
+<p><strong>Khách ở khách sạn Hoàn Kiếm, thuê Vision bốn ngày.</strong> Công cụ cho 800.000đ theo giá tham khảo, chỉ kém gói tuần {{ price.honda-vision.week.min }} đúng một ngày thuê. Hỏi cửa hàng áp gói tuần để có thêm ngày dự phòng, rồi hỏi phí giao tới khách sạn vào đầu giờ chiều ngày nhận. Việc nhận xe ở sảnh khách sạn có vài lưu ý riêng trong bài <a href="/blog/huong-dan/giao-xe-tai-khach-san/">giao xe tại khách sạn</a>.</p>
+<p><strong>Người đi làm ở Tây Hồ, thuê Air Blade một tháng.</strong> Công cụ cho {{ price.honda-airblade.month.min }} tham khảo cho cả tháng. Một lần giao đầu tháng và một lần nhận lại cuối tháng là toàn bộ phần phát sinh, nên gói tháng tận nơi thường có tổng chi phí hợp lý hơn thuê tuần rồi giao lại nhiều lần.</p>
+<p><strong>Sinh viên ở Gia Lâm, thuê Click hai tuần.</strong> Công cụ cho khoảng 1.400.000đ theo gói tuần tham khảo. Gia Lâm gần cửa hàng, bạn có thể so phí giao với việc tự tới {{ business.address.full }} nhận xe, nhiều khi tự tới là lựa chọn gọn hơn.</p>
 <p>Những khoản nằm ngoài kết quả, kể cả tiền đặt cọc, vẫn áp dụng như thuê tại cửa hàng. Mức cọc trong khoảng {{ business.policies.deposit.min | vnd }} đến {{ business.policies.deposit.max | vnd }} tùy xe được xác nhận khi đặt và thu lúc bàn giao tận nơi; cách khoản này vận hành khi đặt qua ứng dụng web nằm ở bài <a href="/blog/app/dat-coc-va-ung-dung-thue-xe-tan-noi/">đặt cọc và ứng dụng thuê xe tận nơi</a>.</p>
 
 <h2>Gửi gì cho cửa hàng sau khi có con số</h2>

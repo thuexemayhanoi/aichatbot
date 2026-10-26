@@ -18,10 +18,10 @@
 <p>Trong phố, xe nhỏ gọn, dễ dắt và dễ gửi thường có lợi hơn xe lớn. Bảng giá dưới đây là mức tham khảo, cần xác nhận lại với cửa hàng khi đặt:</p>
 <ul>
 <li>Xe số Honda Wave cho người chạy phố tiết kiệm: khoảng {{ price.honda-wave.day.min }}/ngày, hợp người đã quen sang số.</li>
-<li>Click hoặc Mio cho người cần xe ga nhẹ, dễ dắt vào ngõ: khoảng 150.000đ/ngày, gói tuần 600.000đ–700.000đ, gói tháng 1.000.000đ–1.200.000đ.</li>
-<li>Vision cho người đi làm cần cốp rộng: khoảng {{ price.honda-vision.day.min }}/ngày, gói tuần 800.000đ–1.000.000đ, gói tháng 1.800.000đ–2.000.000đ.</li>
-<li>Air Blade cho người chạy phố nhiều cầu, nhiều dốc: khoảng {{ price.honda-airblade.day.min }}/ngày, gói tuần 800.000đ, gói tháng 1.400.000đ.</li>
-<li>Xe 50cc, xe máy điện và xe đạp điện cho chạy phố: giá liên hệ cửa hàng.</li>
+<li>Click hoặc Mio cho người cần xe ga nhẹ, dễ dắt vào ngõ: khoảng 150.000đ/ngày, gói tuần {{ price.honda-click.week.min }}, gói tháng {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}.</li>
+<li>Vision cho người đi làm cần cốp rộng: khoảng {{ price.honda-vision.day.min }}/ngày, gói tuần {{ price.honda-vision.week.min }}, gói tháng 1.800.000đ–2.000.000đ.</li>
+<li>Air Blade cho người chạy phố nhiều cầu, nhiều dốc: khoảng {{ price.honda-airblade.day.min }}/ngày, gói tuần {{ price.honda-airblade.week.min }}, gói tháng {{ price.honda-airblade.month.min }}.</li>
+<li>Xe 50cc cho chạy phố: khoảng {{ price.xe-50cc.day.min }}/ngày; xe máy điện và xe đạp điện: giá liên hệ cửa hàng.</li>
 </ul>
 <p>Danh sách dòng xe cùng mức giá mới nhất được cập nhật tại trang <a href="/gia-thue/">giá thuê xe</a>. Nhìn vào các con số, bạn sẽ thấy gói tuần và gói tháng rẻ hơn đáng kể so với thuê lẻ từng ngày nếu bạn chạy phố liên tục.</p>
 
@@ -58,7 +58,7 @@
 <h3>Chạy phố một ngày tốn tổng cộng khoảng bao nhiêu?</h3>
 <p>Phần cố định là tiền thuê, từ 150.000đ đến 200.000đ mỗi ngày tùy xe theo bảng tham khảo. Cộng thêm tiền xăng cho quãng ngắn và các lần gửi xe; hai khoản này phụ thuộc số điểm bạn dừng trong ngày.</p>
 <h3>Gói tuần có đáng hơn thuê lẻ không?</h3>
-<p>Nếu bạn cần xe từ bốn ngày trở lên, gói tuần thường có lợi hơn. Ví dụ Click hoặc Mio thuê lẻ bảy ngày sẽ cao hơn mức tham khảo 600.000đ–700.000đ cho cả tuần.</p>
+<p>Nếu bạn cần xe từ năm ngày trở lên, gói tuần thường có lợi hơn. Ví dụ Click hoặc Mio thuê lẻ bảy ngày sẽ cao hơn mức tham khảo {{ price.honda-click.week.min }} cho cả tuần.</p>
 <h3>Có nên chọn giao xe tận nơi khi chỉ chạy phố?</h3>
 <p>Nên cân nhắc nếu bạn ở xa cửa hàng hoặc không tiện di chuyển. Giao nhận chỉ trong giờ {{ business.hours.display }}, thời gian và phí cần xác nhận trước khi đặt.</p>
 <h3>Xe máy điện có rẻ hơn khi chạy phố không?</h3>

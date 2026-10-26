@@ -12,11 +12,11 @@
 <h2>Bảng tham khảo để điền dòng tiền thuê</h2>
 <p>Các mức dưới đây là giá tham khảo, cửa hàng xác nhận lại theo xe thực tế còn sẵn; bản cập nhật nằm ở trang <a href="/gia-thue/">giá thuê</a>.</p>
 <ul>
-<li>Vision của Honda, dòng được giao tận nơi nhiều nhất: mức ngày 200.000đ, mức tuần 800.000đ–1.000.000đ, mức tháng 1.800.000đ–2.000.000đ.</li>
-<li>Air Blade của Honda, cho người cần xe khỏe hơn: mức ngày 200.000đ, mức tuần 800.000đ, mức tháng 1.400.000đ.</li>
-<li>Click của Honda hoặc Mio của Yamaha, nhóm xe ga nhỏ: mức ngày 150.000đ, mức tuần 600.000đ–700.000đ, mức tháng 1.000.000đ–1.200.000đ.</li>
-<li>Wave của Honda, xe số tiết kiệm: mức ngày 150.000đ; gói tuần và tháng báo khi liên hệ.</li>
-<li>Nhóm 50cc cùng xe máy điện và xe đạp điện: không có mức niêm yết, cửa hàng báo giá theo xe còn sẵn.</li>
+<li>Vision của Honda, dòng được giao tận nơi nhiều nhất: mức ngày 200.000đ, mức tuần {{ price.honda-vision.week.min }}, mức tháng 1.800.000đ–2.000.000đ.</li>
+<li>Air Blade của Honda, cho người cần xe khỏe hơn: mức ngày 200.000đ, mức tuần {{ price.honda-airblade.week.min }}, mức tháng {{ price.honda-airblade.month.min }}.</li>
+<li>Click của Honda hoặc Mio của Yamaha, nhóm xe ga nhỏ: mức ngày 150.000đ, mức tuần {{ price.honda-click.week.min }}, mức tháng {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}.</li>
+<li>Wave của Honda, xe số tiết kiệm: mức ngày 150.000đ; mức tuần {{ price.honda-wave.week.min }}, mức tháng {{ price.honda-wave.month.min }}–{{ price.honda-wave.month.max }}.</li>
+<li>Nhóm 50cc có mức ngày {{ price.xe-50cc.day.min }}, gói tuần và tháng báo khi liên hệ; xe máy điện và xe đạp điện: không có mức niêm yết, cửa hàng báo giá theo xe còn sẵn.</li>
 </ul>
 <p>Quy tắc chọn mốc: nếu số ngày thuê nhân với giá ngày vượt mức tuần, lấy mức tuần; nếu số tuần nhân với mức tuần vượt mức tháng, lấy mức tháng. Khi kỳ thuê rơi vào khoảng giữa, ví dụ mười ngày, hãy hỏi cửa hàng cách tính gói tuần cộng ngày lẻ.</p>
 
@@ -43,7 +43,7 @@
 <h3>Ba ngày ở Phố Cổ, nhận tại khách sạn</h3>
 <p>Click hoặc Mio ba ngày theo mức tham khảo là 450.000đ tiền thuê. Cộng phần giao nhận do cửa hàng báo, cộng xăng cho quãng đường ngắn trong phố và tiền gửi xe mỗi lần dừng. Với kỳ ngắn như vậy, hãy hỏi trợ lý so sánh phương án tự tới cửa hàng nếu bạn tiện đường qua cầu.</p>
 <h3>Một tuần ở Gia Lâm, nhận tại nhà người thân</h3>
-<p>Air Blade một tuần theo mức tham khảo là 800.000đ, rẻ hơn bảy ngày lẻ. Gia Lâm gần cửa hàng nên phần giao nhận thường gọn; vẫn hỏi để chắc chắn. Dự phòng xăng cho vài chuyến vào trung tâm.</p>
+<p>Air Blade một tuần theo mức tham khảo là {{ price.honda-airblade.week.min }}, rẻ hơn bảy ngày lẻ. Gia Lâm gần cửa hàng nên phần giao nhận thường gọn; vẫn hỏi để chắc chắn. Dự phòng xăng cho vài chuyến vào trung tâm.</p>
 <h3>Một tháng ở Tây Hồ, nhận tại chung cư</h3>
 <p>Vision một tháng theo mức tham khảo từ 1.800.000đ đến 2.000.000đ. Phần giao nhận tính một lần đầu và một lần cuối, chia cho ba mươi ngày thì gần như không đáng kể. Khoản cần để ý hơn là tiền gửi xe hằng tháng ở chung cư và xăng, vì chúng cộng dồn theo ngày.</p>
 
