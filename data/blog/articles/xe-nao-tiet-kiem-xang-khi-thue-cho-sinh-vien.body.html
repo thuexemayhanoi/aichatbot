@@ -7,10 +7,10 @@
 <h2>Nhóm xe phổ biến và mức giá thuê tham khảo</h2>
 <p>Dưới đây là các mẫu sinh viên hay hỏi nhất, kèm giá tham khảo trên trang <a href="/gia-thue/">giá thuê</a>. Giá luôn cần cửa hàng xác nhận lại trước khi đặt.</p>
 <ul>
-<li><strong>Honda Wave (xe số):</strong> khoảng 150.000đ/ngày. Gói tuần và gói tháng bạn liên hệ để được báo cụ thể.</li>
-<li><strong>Honda Click, Yamaha Mio:</strong> khoảng {{ price.honda-click.day.min }}/ngày, 600.000đ–700.000đ cho gói tuần, 1.000.000đ–1.200.000đ cho gói tháng.</li>
-<li><strong>Honda Air Blade:</strong> khoảng {{ price.honda-airblade.day.min }}/ngày, 800.000đ cho gói tuần, 1.400.000đ cho gói tháng.</li>
-<li><strong>Honda Vision:</strong> khoảng {{ price.honda-vision.day.min }}/ngày, gói tuần 800.000đ–1.000.000đ, gói tháng 1.800.000đ–2.000.000đ.</li>
+<li><strong>Honda Wave (xe số):</strong> khoảng 150.000đ/ngày. Gói tuần khoảng {{ price.honda-wave.week.min }}, gói tháng {{ price.honda-wave.month.min }}–{{ price.honda-wave.month.max }}.</li>
+<li><strong>Honda Click, Yamaha Mio:</strong> khoảng {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.week.min }} cho gói tuần, {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }} cho gói tháng.</li>
+<li><strong>Honda Air Blade:</strong> khoảng {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }} cho gói tuần, {{ price.honda-airblade.month.min }} cho gói tháng.</li>
+<li><strong>Honda Vision:</strong> khoảng {{ price.honda-vision.day.min }}/ngày, gói tuần {{ price.honda-vision.week.min }}, gói tháng 1.800.000đ–2.000.000đ.</li>
 </ul>
 <p>Một điều nhiều bạn bất ngờ: theo bảng tham khảo, gói tháng của Air Blade thấp hơn gói tháng của Vision. Vì vậy, nếu thuê cả tháng, đừng mặc định Vision là lựa chọn kinh tế chỉ vì nó phổ biến.</p>
 
@@ -46,7 +46,7 @@
 
 <h2>Câu hỏi thường gặp khi sinh viên chọn xe tiết kiệm xăng</h2>
 <h3>Wave Alpha có phải lựa chọn rẻ nhất cho sinh viên không?</h3>
-<p>Wave Alpha thuộc dòng Honda Wave, giá thuê tham khảo khoảng {{ price.honda-wave.day.min }}/ngày và thường đỡ hao xăng. Tuy vậy, gói tháng cần hỏi cửa hàng để so với Click hay Mio. Bạn có thể đọc thêm bài <a href="/blog/thue-xe/thue-wave-alpha-cho-sinh-vien/">thuê Wave Alpha cho sinh viên</a>.</p>
+<p>Wave Alpha thuộc dòng Honda Wave, giá thuê tham khảo khoảng {{ price.honda-wave.day.min }}/ngày và thường đỡ hao xăng. Gói tháng tham khảo {{ price.honda-wave.month.min }}–{{ price.honda-wave.month.max }}, ngang Click hay Mio. Bạn có thể đọc thêm bài <a href="/blog/thue-xe/thue-wave-alpha-cho-sinh-vien/">thuê Wave Alpha cho sinh viên</a>.</p>
 <h3>Xe máy điện có tiết kiệm hơn xe xăng không?</h3>
 <p>Chi phí sạc thường thấp, nhưng giá thuê xe máy điện là giá liên hệ và bạn cần có chỗ sạc ổn định ở phòng trọ. Hãy hỏi cửa hàng giá hiện hành rồi so tổng chi phí như với xe xăng.</p>
 <h3>Thuê xe theo tháng cần đặt cọc bao nhiêu?</h3>

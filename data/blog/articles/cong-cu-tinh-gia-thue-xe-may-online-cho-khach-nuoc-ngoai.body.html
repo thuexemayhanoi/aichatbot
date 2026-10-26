@@ -10,16 +10,16 @@
 <p>Nếu bạn chưa chắc dòng xe nào hợp với lộ trình của mình, hãy đọc trước bài <a href="/blog/app/cong-cu-tinh-gia-thue-xe-may-online/">giới thiệu công cụ tính giá thuê xe máy online</a> để hiểu cách hệ thống gợi ý, hoặc xem tổng quan dành riêng cho du khách quốc tế trong bài <a href="/blog/thue-xe/nguoi-nuoc-ngoai-thue-xe-may-viet-nam/">người nước ngoài thuê xe máy tại Việt Nam</a>.</p>
 
 <h2>Nhập kỳ thuê thế nào để công cụ đưa ra giá tuần và tháng</h2>
-<p>Điểm nhiều du khách bỏ qua là giá thuê xe máy không tính theo một mặt bằng duy nhất. Du lịch ngắn hai ba ngày thường tính giá ngày; từ độ bốn ngày trở lên, khung giá tuần thường có lợi hơn so với việc nhân đơn giá ngày; và nếu bạn ở cả tháng vì công việc hay học tập, khung giá tháng là mức nên so sánh. Khi nhập công cụ, hãy thử cả hai cách: nhập theo từng ngày rồi nhập lại theo tuần để so sánh chênh lệch. Cách đọc ba khung thời gian này được phân tích kỹ trong bài <a href="/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang/">tính chi phí thuê xe theo ngày, tuần, tháng</a>, còn phần hướng dẫn thao tác từng bước bằng ứng dụng dành cho du khách quốc tế nằm trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng ứng dụng cho khách nước ngoài</a>.</p>
+<p>Điểm nhiều du khách bỏ qua là giá thuê xe máy không tính theo một mặt bằng duy nhất. Du lịch ngắn hai ba ngày thường tính giá ngày; từ độ năm ngày trở lên, khung giá tuần thường có lợi hơn so với việc nhân đơn giá ngày; và nếu bạn ở cả tháng vì công việc hay học tập, khung giá tháng là mức nên so sánh. Khi nhập công cụ, hãy thử cả hai cách: nhập theo từng ngày rồi nhập lại theo tuần để so sánh chênh lệch. Cách đọc ba khung thời gian này được phân tích kỹ trong bài <a href="/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang/">tính chi phí thuê xe theo ngày, tuần, tháng</a>, còn phần hướng dẫn thao tác từng bước bằng ứng dụng dành cho du khách quốc tế nằm trong bài <a href="/blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/">cách tính giá thuê xe bằng ứng dụng cho khách nước ngoài</a>.</p>
 
 <h2>Đối chiếu kết quả công cụ với bảng giá tham khảo</h2>
 <p>Sau khi công cụ trả về con số, bạn nên đối chiếu một lượt với bảng giá niêm yết để chắc chắn mình đang so sánh đúng dòng xe. Mức tham khảo đang áp dụng như sau, và bản cập nhật luôn nằm ở trang <a href="/gia-thue/">giá thuê xe máy</a>:</p>
 <ul>
 <li>Honda Wave, dòng xe số: 150.000đ/ngày.</li>
-<li>Honda Vision, dòng xe tay ga nhỏ: 200.000đ/ngày, khoảng 800.000đ đến 1.000.000đ theo tuần, và 1.800.000đ đến 2.000.000đ theo tháng.</li>
-<li>Honda Air Blade: {{ price.honda-airblade.day.min }}/ngày, 800.000đ theo tuần, 1.400.000đ theo tháng.</li>
-<li>Honda Click hoặc Yamaha Mio: {{ price.honda-click.day.min }}/ngày, khoảng 600.000đ đến 700.000đ theo tuần, và 1.000.000đ đến 1.200.000đ theo tháng.</li>
-<li>Xe 50cc, xe máy điện và xe đạp điện: mức giá niêm yết dạng liên hệ, cần hỏi trực tiếp cửa hàng vì phụ thuộc xe đang có sẵn.</li>
+<li>Honda Vision, dòng xe tay ga nhỏ: 200.000đ/ngày, khoảng {{ price.honda-vision.week.min }} theo tuần, và 1.800.000đ đến 2.000.000đ theo tháng.</li>
+<li>Honda Air Blade: {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }} theo tuần, {{ price.honda-airblade.month.min }} theo tháng.</li>
+<li>Honda Click hoặc Yamaha Mio: {{ price.honda-click.day.min }}/ngày, khoảng {{ price.honda-click.week.min }} theo tuần, và {{ price.honda-click.month.min }} đến {{ price.honda-click.month.max }} theo tháng.</li>
+<li>Xe 50cc: {{ price.xe-50cc.day.min }}/ngày, giá tuần và tháng liên hệ; xe máy điện và xe đạp điện: mức giá niêm yết dạng liên hệ, cần hỏi trực tiếp cửa hàng vì phụ thuộc xe đang có sẵn.</li>
 </ul>
 <p>Năm mức trên chỉ mang tính tham khảo tại thời điểm bạn tra cứu. Công cụ tính giá và bảng giá đều không thay thế việc xác nhận cuối cùng, vì tình trạng xe sẵn có vào từng ngày là thứ chỉ cửa hàng mới trả lời chính xác.</p>
 
@@ -30,8 +30,8 @@
 <p>Ba tình huống dưới đây minh họa cách đọc kết quả công cụ theo ba kiểu chuyến đi phổ biến:</p>
 <ul>
 <li><strong>Hai ngày một mình trong phố cổ:</strong> chọn Honda Vision theo giá ngày, hai ngày tương ứng 400.000đ tiền thuê, phù hợp lịch thăm phố cổ và hồ Gươm gọn trong một cuối tuần.</li>
-<li><strong>Sáu ngày cho hai bạn cùng đi:</strong> mỗi người một Honda Click theo khung tuần, mỗi xe khoảng 600.000đ đến 700.000đ cho cả kỳ, tổng tham khảo cho hai xe từ 1.200.000đ đến 1.400.000đ.</li>
-<li><strong>Ở Hà Nội trọn một tháng vì công tác:</strong> Honda Air Blade theo giá tháng 1.400.000đ, rẻ hơn hẳn cách tính mười ba lần giá ngày cộng dồn.</li>
+<li><strong>Sáu ngày cho hai bạn cùng đi:</strong> mỗi người một Honda Click theo khung tuần, mỗi xe khoảng {{ price.honda-click.week.min }} cho cả kỳ, tổng tham khảo cho hai xe 1.400.000đ.</li>
+<li><strong>Ở Hà Nội trọn một tháng vì công tác:</strong> Honda Air Blade theo giá tháng {{ price.honda-airblade.month.min }}, rẻ hơn hẳn cách tính mười ba lần giá ngày cộng dồn.</li>
 </ul>
 <p>Ba ví dụ trên chưa gồm khoản hoàn lại khi trả xe và chưa gồm phí giao nhận; hãy lấy kết quả của chính công cụ cho dòng xe bạn chọn làm chuẩn, vì đây chỉ là cách đọc để bạn hình dung trật tự các con số.</p>
 

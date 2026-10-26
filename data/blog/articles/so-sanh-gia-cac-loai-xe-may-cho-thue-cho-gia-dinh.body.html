@@ -7,11 +7,11 @@
 <caption>Giá tham khảo theo ngày, tuần, tháng, cần xác nhận khi đặt</caption>
 <thead><tr><th scope="col">Dòng xe</th><th scope="col">Theo ngày</th><th scope="col">Theo tuần</th><th scope="col">Theo tháng</th></tr></thead>
 <tbody>
-<tr><th scope="row">Honda Wave (xe số)</th><td>Khoảng 150.000đ</td><td>Hỏi trực tiếp cửa hàng</td><td>Hỏi trực tiếp cửa hàng</td></tr>
-<tr><th scope="row">Honda Click, Yamaha Mio</th><td>Khoảng 150.000đ</td><td>600.000đ–700.000đ</td><td>1.000.000đ–1.200.000đ</td></tr>
-<tr><th scope="row">Honda Air Blade</th><td>Khoảng 200.000đ</td><td>800.000đ</td><td>1.400.000đ</td></tr>
-<tr><th scope="row">Honda Vision</th><td>Khoảng 200.000đ</td><td>800.000đ–1.000.000đ</td><td>1.800.000đ–2.000.000đ</td></tr>
-<tr><th scope="row">Xe 50cc, xe máy điện, xe đạp điện</th><td>Gọi hỏi trực tiếp</td><td>Gọi hỏi trực tiếp</td><td>Gọi hỏi trực tiếp</td></tr>
+<tr><th scope="row">Honda Wave (xe số)</th><td>Khoảng 150.000đ</td><td>{{ price.honda-wave.week.min }}</td><td>{{ price.honda-wave.month.min }}–{{ price.honda-wave.month.max }}</td></tr>
+<tr><th scope="row">Honda Click, Yamaha Mio</th><td>Khoảng 150.000đ</td><td>{{ price.honda-click.week.min }}</td><td>{{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}</td></tr>
+<tr><th scope="row">Honda Air Blade</th><td>Khoảng 200.000đ</td><td>{{ price.honda-airblade.week.min }}</td><td>{{ price.honda-airblade.month.min }}</td></tr>
+<tr><th scope="row">Honda Vision</th><td>Khoảng 200.000đ</td><td>{{ price.honda-vision.week.min }}</td><td>1.800.000đ–2.000.000đ</td></tr>
+<tr><th scope="row">Xe 50cc, xe máy điện, xe đạp điện</th><td>Xe 50cc {{ price.xe-50cc.day.min }}; xe điện gọi hỏi trực tiếp</td><td>Gọi hỏi trực tiếp</td><td>Gọi hỏi trực tiếp</td></tr>
 </tbody>
 </table>
 </div>
@@ -21,7 +21,7 @@
 <li><strong>Honda Click, Yamaha Mio:</strong> nhóm tay ga nhỏ, khoảng {{ price.honda-click.day.min }}/ngày, {{ price.honda-click.week.min }}–{{ price.honda-click.week.max }}/tuần hoặc {{ price.honda-click.month.min }}–{{ price.honda-click.month.max }}/tháng theo bảng tham khảo.</li>
 <li><strong>Honda Air Blade:</strong> tay ga cỡ lớn hơn, khoảng {{ price.honda-airblade.day.min }}/ngày, {{ price.honda-airblade.week.min }}/tuần hoặc {{ price.honda-airblade.month.min }}/tháng, đều là giá tham khảo.</li>
 <li><strong>Honda Vision:</strong> tay ga yên thấp, dễ lái cho cả nhà, khoảng {{ price.honda-vision.day.min }}/ngày, {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần hoặc {{ price.honda-vision.month.min }}–{{ price.honda-vision.month.max }}/tháng (tham khảo).</li>
-<li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> chưa có giá niêm yết, gia đình cần gọi hỏi trực tiếp.</li>
+<li><strong>Xe 50cc, xe máy điện, xe đạp điện:</strong> xe 50cc có giá ngày {{ price.xe-50cc.day.min }}, các mức còn lại chưa niêm yết, gia đình cần gọi hỏi trực tiếp.</li>
 </ul>
 <p>Nhìn nhanh có thể thấy: theo ngày, nhóm Wave, Click và Mio thấp hơn nhóm Vision và Air Blade. Nhưng khi thuê theo tháng, khoảng cách thay đổi đáng kể. Air Blade theo tháng lại thấp hơn Vision theo tháng, dù giá ngày ngang nhau. Đây là chi tiết nhiều gia đình bỏ qua.</p>
 
@@ -42,9 +42,9 @@
 <h2>Phương án 2: Hai xe cho cả nhà trong một tuần</h2>
 <p>Bố đi làm, mẹ đưa đón con, mỗi người cần một xe trong một tuần. Có ba cách ghép phổ biến:</p>
 <ul>
-<li><strong>Hai Vision:</strong> mỗi xe tham khảo {{ price.honda-vision.week.min }}–{{ price.honda-vision.week.max }}/tuần, tổng khoảng 1.600.000đ–2.000.000đ.</li>
-<li><strong>Một Air Blade và một Click:</strong> tham khảo 800.000đ cộng 600.000đ–700.000đ, tổng khoảng 1.400.000đ–1.500.000đ.</li>
-<li><strong>Hai Click hoặc Mio:</strong> tham khảo tổng khoảng 1.200.000đ–1.400.000đ.</li>
+<li><strong>Hai Vision:</strong> mỗi xe tham khảo {{ price.honda-vision.week.min }}/tuần, tổng khoảng 2.000.000đ.</li>
+<li><strong>Một Air Blade và một Click:</strong> tham khảo {{ price.honda-airblade.week.min }} cộng {{ price.honda-click.week.min }}, tổng khoảng 1.700.000đ.</li>
+<li><strong>Hai Click hoặc Mio:</strong> tham khảo tổng khoảng 1.400.000đ.</li>
 </ul>
 <p>Cách ghép thứ hai thường cân bằng: xe lớn hơn cho người chở con và đồ đạc, xe nhẹ hơn cho người đi làm một mình. Với thuê theo tuần, bạn nên so luôn với giá ngày; thuê bảy ngày lẻ theo giá ngày gần như luôn cao hơn giá gói tuần. Bài <a href="/blog/thue-xe/thue-xe-may-theo-tuan-cho-gia-dinh/">thuê xe máy theo tuần cho gia đình</a> nói thêm về cách sắp lịch nhận trả cho hai xe.</p>
 
