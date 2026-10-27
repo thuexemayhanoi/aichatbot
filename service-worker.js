@@ -26,8 +26,8 @@ const SHELL_ASSETS = [
   './',
   './agent/',
   './manifest.webmanifest',
-  './assets/css/style.css?v=3339487454',
-  './assets/js/main.js?v=867060755',
+  './assets/css/style.css?v=3729342083',
+  './assets/js/main.js?v=3266457500',
   './assets/js/ai-settings.js',
   './assets/js/pwa.js',
   './assets/icons/icon.svg'

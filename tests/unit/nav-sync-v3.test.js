@@ -44,7 +44,9 @@ function cssRules(css) {
   }
   return out;
 }
-const AGENT_NAV_MEDIA = '@media (min-width: 900px) and (min-height: 600px) and (hover: hover) and (pointer: fine)';
+// v79: the horizontal menu starts at 1200px, where the desktop sidebar column does.
+const NAV_MEDIA = '@media (min-width: 1200px)';
+const AGENT_NAV_MEDIA = `${NAV_MEDIA} and (min-height: 600px) and (hover: hover) and (pointer: fine)`;
 
 test('every page group renders the SAME desktop menu (homepage, blog, hubs, subtopics, articles, Pages)', () => {
   assert.ok(CONTENT_PAGES.length > 2000, 'all generated content pages are checked');
@@ -64,26 +66,36 @@ test('the Agent app shows the same desktop menu (+ Trang Chủ, since its brand 
   assert.equal(normalize(nav), normalize(siteNav({ home: true })));
   assert.equal(normalize(nav), normalize(siteNav()).replace('<nav class="site-nav" aria-label="Chuyên mục"> ',
     `<nav class="site-nav" aria-label="Chuyên mục"> <a href="${navigation.home.url}">${icon(navigation.svg_icons.home, 'site-nav-icon')}${navigation.home.label}</a> `), 'only difference: the Trang Chủ entry');
+  // v79 header order: ☰ Danh mục first, then mark + title, status, the desktop menu, the actions.
+  const order = ['<button type="button" class="motoai-menu" id="motoai-menu-btn"', '<div class="motoai-header-text">',
+    '<span class="motoai-status"', '<nav class="site-nav" aria-label="Chuyên mục">', '<div class="motoai-header-actions">'].map((s) => header.indexOf(s));
+  assert.ok(order.every((at, k) => at > -1 && (k === 0 || at > order[k - 1])), 'Agent header: ☰ Danh mục, title, status, desktop menu, actions');
+  assert.match(header, /^<header class="motoai-header">\s*<button type="button" class="motoai-menu" id="motoai-menu-btn"/, '☰ Danh mục opens the Agent header');
   // Layout-only differences, all in the shared stylesheet: its own row on a real
-  // desktop (wide, tall, mouse/trackpad — the Agent page loads no dropdown script,
-  // so touch screens and landscape phones keep the finger-sized drawer with the
-  // same links), hidden in the embed widget.
+  // desktop (>= 1200px like the content-page menu, tall, mouse/trackpad — the Agent
+  // page loads no dropdown script, so touch screens and landscape phones keep the
+  // finger-sized sidebar with the same links), hidden in the embed widget.
   const css = read('assets/css/style.css');
-  assert.match(css, /\.motoai-header \.site-nav \{ display: none; \}\s*@media \(min-width: 900px\) and \(min-height: 600px\) and \(hover: hover\) and \(pointer: fine\) \{\s*body:not\(\[data-motoai-embed="1"\]\) \.motoai-header \{ grid-template-areas: "nav nav nav nav"[^}]*\}\s*\.motoai-header \.site-nav \{ display: flex;/,
-    'hidden by default; own row above the title only on pointer desktops');
+  assert.match(css, /\.motoai-header \.site-nav \{ display: none; \}\s*@media \(min-width: 1200px\) and \(min-height: 600px\) and \(hover: hover\) and \(pointer: fine\) \{\s*body:not\(\[data-motoai-embed="1"\]\) \.motoai-header \{ grid-template-areas: "nav nav nav nav nav" "menu mark title status actions" "menu mark sub status actions"; \}\s*\.motoai-header \.site-nav \{ display: flex; grid-area: nav;/,
+    'hidden by default; own full-width row above the ☰ / title row only on pointer desktops');
   // Every rule that can show the nav element (a selector ending in .site-nav with a
   // non-none display) is either the generic content-page rule — which the more
   // specific .motoai-header rule above hides on the Agent page — or the ONE
-  // Agent rule inside the pointer-desktop query. No !important anywhere.
-  const shows = cssRules(css).filter((r) => /display:\s*(?!none)[\w-]/.test(r.body) && r.selectors.some((s) => /\.site-nav$/.test(s)));
+  // Agent rule inside the pointer-desktop query. No !important anywhere. The
+  // content-page desktop layout (assets/css/src/blog.css) never shows it either.
+  const sheets = { 'assets/css/style.css': css, 'assets/css/src/blog.css': read('assets/css/src/blog.css') };
+  const shows = Object.entries(sheets).flatMap(([file, src]) => cssRules(src).map((r) => ({ ...r, file })))
+    .filter((r) => /display:\s*(?!none)[\w-]/.test(r.body) && r.selectors.some((s) => /\.site-nav$/.test(s)));
   assert.ok(shows.length > 0, 'parsed the desktop menu rules');
   for (const r of shows) {
     assert.ok(!/!important/.test(r.body), `no !important on a menu display rule: ${r.selectors.join(', ')}`);
     for (const s of r.selectors.filter((sel) => /\.site-nav$/.test(sel))) {
-      const ok = (s === '.site-nav' && r.media === '@media (min-width: 900px)') || (s === '.motoai-header .site-nav' && r.media === AGENT_NAV_MEDIA);
-      assert.ok(ok, `unexpected rule shows the menu: "${s}" in "${r.media || 'no media'}"`);
+      const ok = r.file === 'assets/css/style.css' &&
+        ((s === '.site-nav' && r.media === NAV_MEDIA) || (s === '.motoai-header .site-nav' && r.media === AGENT_NAV_MEDIA));
+      assert.ok(ok, `unexpected rule shows the menu: "${s}" in "${r.media || 'no media'}" (${r.file})`);
     }
   }
+  assert.equal(shows.filter((r) => r.selectors.includes('.site-nav')).length, 1, 'the content-page menu is shown in exactly one place');
   assert.equal(shows.filter((r) => r.selectors.includes('.motoai-header .site-nav')).length, 1, 'the Agent menu is shown in exactly one place');
   const agentGrid = cssRules(css).filter((r) => /grid-template-areas:\s*"nav/.test(r.body));
   assert.deepEqual(agentGrid.map((r) => [r.selectors.join(', '), r.media]), [['body:not([data-motoai-embed="1"]) .motoai-header', AGENT_NAV_MEDIA]],
@@ -105,17 +117,41 @@ test('desktop menu covers the Pages, every parent hub, category and live subtopi
 });
 
 test('drawer: all six groups on every page group, including the Agent app', () => {
-  const groups = drawerCore();
-  const top = groups.filter((e) => e.kind === 'link').map((e) => e.label);
-  assert.deepEqual(top, [navigation.home.label, navigation.agent.label], 'Trang Chủ + Agent Hỗ Trợ first');
-  const ids = groups.filter((e) => e.kind === 'group').map((e) => e.label);
-  assert.deepEqual(ids, ['Trang Web', 'Cẩm nang', 'Dịch Vụ', 'Pháp Lý']);
+  const core = drawerCore();
+  const top = core.filter((e) => e.kind === 'link').map((e) => e.label);
+  assert.deepEqual(top, [navigation.home.label, navigation.agent.label], 'Trang Chủ + Hỏi Agent first');
+  const groups = core.filter((e) => e.kind === 'group');
+  const ids = groups.map((e) => e.label);
+  assert.deepEqual(ids, ['Cẩm nang', 'Trang Web', 'Pháp Lý', 'Dịch Vụ']);
+  // v79 rows: an inline SVG glyph from the shared set + the label in its own
+  // <span>; the config emoji are no longer drawn in the sidebar.
+  const svg = navigation.svg_icons;
+  const glyph = (name) => icon(name, 'motoai-nav-icon');
   for (const p of ['index.html', 'blog/index.html', 'blog/thue-xe/index.html', 'gia-thue/index.html', AGENT,
     'blog/thue-xe/thue-xe-may-gia-re/index.html']) {
     const html = read(p);
-    const drawer = html.slice(html.indexOf('<nav class="motoai-drawer"'), html.indexOf('</nav>', html.indexOf('<nav class="motoai-drawer"')));
-    for (const label of [navigation.home.label, navigation.agent.label, ...ids]) {
-      assert.ok(drawer.includes(` ${label}`), `${p}: drawer has "${label}"`);
+    const start = html.indexOf('<nav class="motoai-drawer"');
+    assert.ok(start > -1, `${p}: sidebar present`);
+    const drawer = normalize(html.slice(start, html.indexOf('</nav>', start)));
+    const agentInner = `${glyph(svg.agent)}<span>${navigation.agent.label}</span>`;
+    const rows = [
+      [navigation.home.label, `<li><a href="${navigation.home.url}">${glyph(svg.home)}<span>${navigation.home.label}</span></a></li>`],
+      // In the Agent app the Agent row is the in-app toggle; elsewhere a link to /agent/.
+      [navigation.agent.label, p === AGENT ? `<li><button type="button" id="motoai-menu-agent">${agentInner}</button></li>`
+        : `<li><a href="${navigation.agent.url}">${agentInner}</a></li>`],
+      ...groups.map((g) => [g.label, `<li class="motoai-group" data-group="${g.id}"> <div class="motoai-row motoai-group-head">` +
+        (g.url ? `<a class="motoai-group-link" href="${g.url}">` : '<span class="motoai-group-title">') +
+        `${glyph(svg.groups[g.id])}<span>${g.label}</span>${g.url ? '</a>' : '</span>'}` +
+        `<button type="button" class="motoai-toggle motoai-group-btn" id="motoai-group-${g.id}-btn"`])
+    ];
+    const at = rows.map(([label, markup]) => {
+      const i = drawer.indexOf(markup);
+      assert.ok(i > -1, `${p}: drawer has "${label}"`);
+      return i;
+    });
+    assert.deepEqual([...at].sort((a, b) => a - b), at, `${p}: Trang Chủ, Hỏi Agent, then the groups in config order`);
+    for (const e of [navigation.home, navigation.agent, ...groups]) {
+      assert.ok(!drawer.includes(e.icon), `${p}: "${e.label}" uses its SVG glyph, not the emoji ${e.icon}`);
     }
   }
 });

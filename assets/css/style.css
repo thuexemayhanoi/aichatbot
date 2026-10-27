@@ -133,13 +133,13 @@ body {
 /* ---------- Desktop menu (siteNav) — ONE implementation ----------
    tools/app-shell.mjs siteNav() renders the same markup in the website
    header (every content page) and in the Agent app header, so this block is
-   shared by both. Phones and tablets use the drawer. Hover lives only under
-   (hover: hover) and (pointer: fine); touch opens a dropdown with focus /
-   .open (app-shell.js on content pages), keyboard with :focus-within. */
+   shared by both. Phones and tablets (< 1200px) use the sidebar. Hover lives
+   only under (hover: hover) and (pointer: fine); touch opens a dropdown with
+   focus / .open (app-shell.js on content pages), keyboard with :focus-within. */
 .site-nav { display: none; }
 button.site-nav-parent { border: 0; background: transparent; font-family: inherit; cursor: pointer; }
 @keyframes drop-in { from { opacity: 0; transform: translateY(-6px); } }
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   .site-nav { display: flex; align-items: center; gap: 2px; flex: none; margin: 0 auto; }
   .site-nav > a, .site-nav-parent {
     position: relative; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 6px 12px;
@@ -176,8 +176,8 @@ button.site-nav-parent { border: 0; background: transparent; font-family: inheri
   }
   .site-nav-drop a.site-nav-subtopic:focus-visible { color: var(--ink); }
 }
-@media (min-width: 900px) and (max-width: 1179.98px) {
-  .site-nav > a, .site-nav-parent { padding: 6px 8px; font-size: 0.8rem; }
+@media (min-width: 1200px) and (max-width: 1359.98px) {
+  .site-nav > a, .site-nav-parent { padding: 6px 9px; font-size: 0.84rem; }
 }
 /* App-style icon + text on the top level, where the row has room (>= 1360px). */
 .site-nav-icon { display: none; }
@@ -213,12 +213,12 @@ button.site-nav-parent { border: 0; background: transparent; font-family: inheri
 }
 
 /* ---------- Header (same language as the content-site header) ----------
-   Row 1: brand mark · title · Auto + Menu.  Row 2: the full address (never
-   squeezed beside the buttons).  Row 3: status, only when it has text. */
+   Row 1: ☰ Danh mục · brand mark · title · Auto.  Row 2: the full address
+   (never squeezed beside the buttons).  Row 3: status, only when it has text. */
 .motoai-header {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  grid-template-areas: "mark title actions" "sub sub sub" "status status status";
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  grid-template-areas: "menu mark title actions" "sub sub sub sub" "status status status status";
   align-items: center;
   column-gap: 10px;
   margin-inline: calc(-1 * var(--space-4)); /* hairline runs edge to edge */
@@ -531,32 +531,6 @@ button.site-nav-parent { border: 0; background: transparent; font-family: inheri
 
 .motoai-send[data-error="true"] { background: var(--color-error); }
 
-/* ---------- App tab bar (v78): ONE bottom navigation for every shell ----------
-   tools/app-shell.mjs tabBar() renders the same five tabs on content pages
-   (fixed to the bottom on phones/tablets, assets/css/src/blog.css) and in the
-   Agent app below the composer (replacing the v53 dock). Icon above a short
-   label, flat cells; the open page / section / drawer is the accent colour
-   with a small indicator — like a social app's tab bar, in the V2 palette. */
-.app-tabbar { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; }
-.app-tab {
-  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
-  min-width: 0; min-height: 50px; padding: 6px 2px 4px; border: 0; border-radius: var(--radius-sm);
-  background: transparent; color: var(--ink-2); font: inherit; font-size: 0.68rem; font-weight: 550; line-height: 1.15;
-  text-decoration: none; white-space: nowrap; cursor: pointer;
-  -webkit-tap-highlight-color: transparent; transition: color var(--t1) var(--ease), background var(--t1) var(--ease);
-}
-.app-tab > span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
-.app-tab-icon { width: 24px; height: 24px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.app-tab:active { background: var(--paper-2); }
-.app-tab:focus-visible { outline: 2px solid var(--signal); outline-offset: -2px; }
-.app-tab[aria-current], .app-tab[aria-expanded="true"] { color: var(--signal-ink); }
-.app-tab[aria-current] .app-tab-icon { stroke-width: 2.2; }
-.app-tab[aria-current]::before { content: ""; position: absolute; top: 0; left: 32%; right: 32%; height: 3px; border-radius: 0 0 3px 3px; background: var(--signal); }
-/* Agent app: in the flex column under the composer, never over the chat. */
-.motoai-app .app-tabbar { margin-inline: calc(-1 * var(--space-4)); padding: 2px var(--space-4) 0; border-top: 1px solid var(--line); }
-.motoai-header .motoai-menu { display: none; } /* the tab bar carries Menu */
-body[data-motoai-embed="1"] .app-tabbar { display: none; } /* the embed widget stays minimal */
-
 /* ---------- Header controls: theme toggle + Menu (shared with content pages) ---------- */
 /* v58: homepage theme control (Auto → Sáng → Tối), sits before Menu (right side). */
 .motoai-theme {
@@ -597,10 +571,12 @@ body[data-motoai-embed="1"] .app-tabbar { display: none; } /* the embed widget s
 .motoai-ios-hint { color: var(--color-text-muted); }
 body[data-motoai-embed="1"] .motoai-install { display: none; }
 
-/* Menu button: ink pill with the two-line glyph + visible "Menu" label —
-   the same control as the content-site header. */
+/* ☰ Danh mục (v79): ink pill with the two-line glyph + visible label — the
+   ONE menu control (tools/app-shell.mjs menuButton) in the Agent app header
+   and the content-site header, on every device. */
 .motoai-menu {
   flex: none;
+  grid-area: menu;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -626,67 +602,95 @@ body[data-motoai-embed="1"] .motoai-install { display: none; }
   0%, 100% { box-shadow: 0 0 0 0 var(--signal-soft); }
   50% { box-shadow: 0 0 0 6px var(--signal-soft); }
 }
+@media (min-width: 360px) and (max-width: 379.98px) {
+  .motoai-header { column-gap: 8px; }
+  .motoai-menu { padding: 0 12px; }
+}
 @media (max-width: 359px) {
   .motoai-subtitle { font-size: 0.72rem; } /* compact but complete */
   .motoai-menu-label { display: none; }    /* icon-only Menu: identity keeps its width */
   .motoai-menu { padding: 0 14px; min-width: 44px; }
 }
 
-/* ---------- Drawer (shared by the chat homepage AND content pages) ---------- */
+/* ---------- Sidebar (v79, shared by the Agent app AND content pages) ----------
+   tools/menu-drawer.mjs renders ONE panel without a `hidden` attribute; the
+   open state is a class (assets/js/drawer.js). Here: the off-canvas LEFT panel
+   of phones, tablets and the Agent app — 85vw up to 340px, 320–380px on
+   tablets. Desktop content pages turn the same element into an in-flow
+   column (assets/css/src/blog.css). Closed = translated off screen AND
+   visibility:hidden, so it leaves the tab order and the accessibility tree. */
 .motoai-drawer-backdrop {
   position: fixed;
   inset: 0;
+  z-index: 40;
   background: var(--scrim);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  z-index: 40;
-  animation: motoai-fade-in var(--t2) var(--ease);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--t2) var(--ease), visibility 0s linear var(--t2);
 }
+.motoai-drawer-backdrop.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
 .motoai-drawer {
   position: fixed;
   top: 0;
-  right: 0;
-  height: 100dvh;
-  width: min(90vw, 380px);
-  background: var(--surface);
-  border-left: 1px solid var(--line);
-  box-shadow: var(--shadow-2);
+  bottom: 0;
+  left: 0;
   z-index: 41;
-  padding: calc(env(safe-area-inset-top, 0px) + var(--space-3)) var(--space-3) calc(env(safe-area-inset-bottom, 0px) + var(--space-4));
-  overflow-y: auto;                      /* long menus scroll INSIDE the drawer */
-  overscroll-behavior-y: contain;
+  width: min(85vw, 340px);
+  height: 100dvh;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  box-shadow: var(--shadow-2);
+  padding: calc(env(safe-area-inset-top, 0px) + var(--space-3)) var(--space-3) calc(env(safe-area-inset-bottom, 0px) + var(--space-4)) calc(env(safe-area-inset-left, 0px) + var(--space-3));
+  overflow-y: auto;                      /* long menus scroll INSIDE the panel */
+  overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
-  animation: drawer-in var(--t3) var(--ease);
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform var(--t3) var(--ease), visibility 0s linear var(--t3);
 }
-@keyframes drawer-in { from { opacity: 0; transform: translateX(24px); } }
-@keyframes motoai-fade-in { from { opacity: 0; } }
+.motoai-drawer.is-open { transform: none; visibility: visible; transition-delay: 0s; }
+@media (min-width: 768px) {
+  .motoai-drawer { width: clamp(320px, 42vw, 380px); }
+}
 .motoai-drawer-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   margin: 0 0 var(--space-2);
-  padding: 0 4px 0 12px;
+  padding: 0 0 var(--space-2) 8px;
+  border-bottom: 1px solid var(--line);
 }
-.motoai-drawer-head strong { font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.015em; }
+.motoai-drawer-brand {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px;
+  color: var(--ink); text-decoration: none; font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.015em;
+}
+.motoai-drawer-brand .brand-mark { width: 28px; height: 28px; }
 .motoai-drawer-close {
   display: inline-grid;
   place-items: center;
   min-width: 44px;
   min-height: 44px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 50%;
   background: transparent;
   color: var(--ink);
   font: inherit;
-  font-size: 0.9rem;
   cursor: pointer;
+  transition: background var(--t1) var(--ease);
 }
+.motoai-drawer-close .motoai-icon { width: 20px; height: 20px; }
 .motoai-drawer-close:active { background: var(--paper-2); }
 .motoai-drawer-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.motoai-drawer-list ul { list-style: none; margin: 0; padding: 0; }
+.motoai-drawer [hidden] { display: none !important; }
 .motoai-drawer-list a,
 .motoai-drawer-list button {
   display: flex;
   align-items: center;
+  gap: 12px;
   width: 100%;
   min-height: 46px;
   padding: 10px 12px;
@@ -696,6 +700,7 @@ body[data-motoai-embed="1"] .motoai-install { display: none; }
   color: var(--ink);
   font: inherit;
   font-size: 0.95rem;
+  font-weight: 550;
   line-height: 1.3;
   text-align: left;
   text-decoration: none;
@@ -703,81 +708,75 @@ body[data-motoai-embed="1"] .motoai-install { display: none; }
   -webkit-tap-highlight-color: transparent;
   transition: background var(--t1) var(--ease), color var(--t1) var(--ease);
 }
+.motoai-drawer-list a > span, .motoai-drawer-list button > span { min-width: 0; overflow-wrap: anywhere; }
 .motoai-drawer-list a:active,
 .motoai-drawer-list button:active { background: var(--paper-2); }
-.motoai-drawer-list a[hidden], .motoai-drawer-list button[hidden] { display: none; }
+.motoai-drawer-list a[aria-current="page"] { color: var(--signal-ink); font-weight: 650; }
+.motoai-nav-icon { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; }
+.motoai-drawer-list a[aria-current="page"] .motoai-nav-icon { opacity: 1; }
 
-/* ---------- Grouped menu (v50): accordion parent/child ---------- */
-.motoai-group { padding: 0; }
-.motoai-drawer-list .motoai-group-btn {
-  justify-content: space-between;
-  font-weight: 650;
+/* A row = one link (or title) plus its own expand/collapse control. The
+   chevron is pure CSS, so 2.000+ pages carry no glyph markup per row. */
+.motoai-row { display: flex; align-items: center; gap: 2px; }
+.motoai-row > a, .motoai-row > .motoai-group-title { flex: 1 1 auto; min-width: 0; }
+.motoai-drawer-list .motoai-toggle {
+  flex: none; display: inline-grid; place-items: center; width: 44px; min-width: 44px; min-height: 44px; padding: 0;
+  color: var(--ink-3);
 }
-.motoai-group-btn[aria-expanded="true"] { color: var(--color-primary); }
-.motoai-caret { color: var(--ink-3); transition: transform var(--duration-fast) var(--ease); }
-.motoai-group-btn[aria-expanded="true"] .motoai-caret { color: inherit; transform: rotate(180deg); }
-.motoai-group-items {
-  list-style: none;
-  margin: 2px 0 var(--space-2) var(--space-3);
-  padding: 0 0 0 var(--space-4); /* children clearly indented */
-  border-left: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.motoai-toggle::before {
+  content: ""; width: 8px; height: 8px; margin-left: -3px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(-45deg); transition: transform var(--t1) var(--ease);
 }
-.motoai-group-items[hidden] { display: none; }
+.motoai-toggle[aria-expanded="true"]::before { transform: rotate(45deg) translate(-2px, -2px); }
+.motoai-toggle[aria-expanded="true"] { color: var(--ink); }
 
-/* Hub → children hierarchy inside the Cẩm nang drawer group (v61/v73):
-   the parent hub keeps a real crawlable link with a 44px+ touch target,
-   children sit indented underneath — no deep accordion nesting. */
+/* Groups (Cẩm nang, Trang Web, Pháp Lý, Dịch Vụ): a heading row — a link when
+   the group has a landing page — and its indented items. */
+.motoai-group { padding-top: 6px; }
+.motoai-group-title { display: flex; align-items: center; gap: 12px; min-height: 46px; padding: 10px 12px; font-size: 0.95rem; font-weight: 650; color: var(--ink); }
+.motoai-drawer-list .motoai-group-link { font-weight: 650; }
+.motoai-drawer-list .motoai-group-items { display: flex; flex-direction: column; gap: 2px; margin: 0 0 var(--space-1); padding-left: 6px; }
+
+/* Hub › categories › subtopics (nested accordions, every level a link). */
 .motoai-hub { padding-top: 2px; }
-.motoai-hub-link {
-  display: flex; align-items: center; min-height: 48px;
-  font-weight: 700; font-size: 0.95rem;
-}
-.motoai-hub-items { list-style: none; margin: 0; padding: 0 0 6px 8px; }
-.motoai-hub-items li a { display: flex; align-items: center; min-height: 44px; font-size: 0.9rem; }
-.motoai-hub-items .motoai-category { padding-top: 5px; }
-.motoai-hub-items .motoai-category a {
-  font-size: 0.9rem; font-weight: 650; min-height: 46px;
-  border-top: 1px solid var(--line);
-  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-}
-.motoai-hub-items .motoai-subtopic a {
-  padding-left: 24px; min-height: 44px; font-size: 0.86rem;
-  font-weight: 450; color: var(--ink-2);
-}
-.motoai-hub-items .motoai-subtopic a:focus-visible { color: var(--signal-ink); background: var(--paper-2); }
+.motoai-drawer-list .motoai-hub-link { font-weight: 600; font-size: 0.92rem; }
+.motoai-drawer-list .motoai-hub-items { padding: 0 0 4px 26px; }
+.motoai-hub-items .motoai-category > a, .motoai-hub-items .motoai-category .motoai-row > a { min-height: 44px; font-size: 0.9rem; font-weight: 550; }
+.motoai-drawer-list .motoai-topic-items { margin: 0 0 4px 12px; padding-left: 8px; border-left: 1px solid var(--line); }
+.motoai-topic-items .motoai-subtopic a { min-height: 44px; padding-block: 8px; font-size: 0.86rem; font-weight: 450; color: var(--ink-2); }
+.motoai-topic-items .motoai-subtopic a:focus-visible { color: var(--signal-ink); background: var(--paper-2); }
 
-/* Drawer theme row (v63): one implementation for the chat homepage AND
-   content pages. theme.js keeps the "🌗 Chủ đề: " label on these toggles. */
+/* Utility rows: the theme toggle (theme.js keeps its "🌗 Chủ đề: " text) and
+   the chat-only Xóa chat action behind a separator. */
+.motoai-drawer-util { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); }
 .motoai-drawer-list .motoai-drawer-theme {
   justify-content: flex-start;
-  min-height: 48px;
+  min-height: 46px;
   padding: 10px 12px;
   border: 0;
   border-radius: var(--radius-sm);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 550;
 }
-/* Chat-only utility separator before the Xóa chat action (chat homepage). */
 .motoai-drawer-divider {
   list-style: none;
   border-top: 1px solid var(--line);
-  margin: 8px 12px;
+  margin: 8px 12px 2px;
 }
+.motoai-drawer-divider + .motoai-drawer-util { margin-top: 0; padding-top: 0; border-top: 0; }
 
 /* Hover ONLY on real pointers — never sticky/persistent on touch devices
    (a tapped control on iPhone keeps :hover until the next tap). */
 @media (hover: hover) and (pointer: fine) {
-  .app-tab:hover { color: var(--signal-ink); background: var(--paper-2); }
   .motoai-chip:hover { background: var(--paper-2); border-color: var(--line-strong); }
   .motoai-msg-actions a:hover { background: var(--color-primary); color: var(--color-on-primary); }
   .motoai-ai-confirm:hover, .motoai-send:hover { background: var(--color-primary-hover); }
   .motoai-theme:hover, .motoai-install:hover, .motoai-ai-cancel:hover, .motoai-drawer-close:hover,
   .motoai-drawer-list a:hover, .motoai-drawer-list button:hover { background: var(--paper-2); }
+  .motoai-drawer-list .motoai-toggle:hover { color: var(--ink); }
   .motoai-menu:hover { background: var(--signal); color: var(--on-signal); }
-  .motoai-hub-items .motoai-subtopic a:hover { color: var(--signal-ink); background: var(--paper-2); }
+  .motoai-topic-items .motoai-subtopic a:hover { color: var(--signal-ink); background: var(--paper-2); }
 }
 
 /* ---------- Accessibility ---------- */
@@ -794,7 +793,7 @@ body[data-motoai-embed="1"] .motoai-install { display: none; }
   }
   /* No attention pulse, no slide-in: every control stays fully usable. */
   .motoai-menu { animation: none; }
-  .motoai-drawer, .motoai-drawer-backdrop { animation: none; }
+  .motoai-drawer, .motoai-drawer-backdrop { transition: none; }
 }
 
 /* ---------- v47.1: chatbot-first shell ---------- */
@@ -826,6 +825,7 @@ body[data-motoai-embed="1"] .motoai-seo,
 body[data-motoai-embed="1"] .motoai-drawer,
 body[data-motoai-embed="1"] .motoai-drawer-backdrop,
 body[data-motoai-embed="1"] .motoai-menu { display: none; }
+body[data-motoai-embed="1"] .motoai-header { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "mark title actions" "sub sub sub" "status status status"; }
 
 /* ---------- v47.4 / v60: mobile app-lock (iPhone Safari) ----------
    CHAT HOMEPAGE ONLY: body overflow propagates to the viewport, so the
@@ -900,21 +900,20 @@ body[data-motoai-embed="1"] .motoai-app {
       calc(env(safe-area-inset-left, 0px) + var(--space-5));
     gap: var(--space-3);
   }
-  /* One row: mark · title over address · status · actions. */
+  /* One row: ☰ · mark · title over address · status · actions. */
   .motoai-header {
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
-    grid-template-areas: "mark title status actions" "mark sub status actions";
+    grid-template-columns: auto auto minmax(0, 1fr) auto auto;
+    grid-template-areas: "menu mark title status actions" "menu mark sub status actions";
     column-gap: var(--space-3);
     margin-inline: 0;
     padding: var(--space-1) var(--space-1) var(--space-4);
   }
+  body[data-motoai-embed="1"] .motoai-header { grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "mark title status actions" "mark sub status actions"; }
   .motoai-brand-mark .brand-mark { width: 36px; height: 36px; }
   .motoai-title { align-self: end; font-size: 1.125rem; }
   .motoai-subtitle { align-self: start; -webkit-line-clamp: 1; }
   .motoai-status { margin: 0; max-width: 260px; text-align: right; }
   .motoai-quick { margin-inline: 0; padding-inline: 0; scroll-padding-inline: 0; }
-  .motoai-app .app-tabbar { max-width: 560px; width: 100%; margin: 0 auto; padding-inline: 0; border-top: 0; }
-  .app-tab { font-size: 0.74rem; }
   .motoai-msg { max-width: 80%; }               /* readable line length */
   .motoai-input { padding: 12px 16px; }
 }
@@ -945,15 +944,15 @@ body[data-motoai-embed="1"] .motoai-app {
 
 /* Agent app on a desktop (wide, tall, real pointer): the website menu
    (siteNav) gets its own row above the title, inside the existing header —
-   the chat keeps the viewport below it. Touch screens and landscape phones
-   keep the drawer (same links, finger-sized): the Agent page loads no
-   dropdown script, and a short screen needs every pixel for the messages.
-   Never in the embed widget (nor its empty row: the brand mark would drop into it). */
+   the chat keeps the viewport below it, and the sidebar stays an overlay
+   (☰ Danh mục) so the chat column keeps its width. Touch screens and
+   landscape phones keep the sidebar only (same links, finger-sized): the
+   Agent page loads no dropdown script, and a short screen needs every pixel
+   for the messages. Never in the embed widget (nor its empty row: the brand
+   mark would drop into it). */
 .motoai-header .site-nav { display: none; }
-@media (min-width: 900px) and (min-height: 600px) and (hover: hover) and (pointer: fine) {
-  body:not([data-motoai-embed="1"]) .motoai-header { grid-template-areas: "nav nav nav nav" "mark title status actions" "mark sub status actions"; }
+@media (min-width: 1200px) and (min-height: 600px) and (hover: hover) and (pointer: fine) {
+  body:not([data-motoai-embed="1"]) .motoai-header { grid-template-areas: "nav nav nav nav nav" "menu mark title status actions" "menu mark sub status actions"; }
   .motoai-header .site-nav { display: flex; grid-area: nav; justify-self: start; margin: 0 0 var(--space-2) -12px; }
-  .motoai-app .app-tabbar { display: none; } /* one primary navigation per screen */
-  .motoai-header .motoai-menu { display: inline-flex; }
 }
 body[data-motoai-embed="1"] .motoai-header .site-nav { display: none; }

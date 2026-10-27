@@ -139,14 +139,34 @@ test('navigation.json: short labels, canonical routes, no duplicate label for th
 // so every footer link is a drawer link with the very same label and target.
 const navGroup = (id) => drawerCore().find((e) => e.kind === 'group' && e.id === id);
 const linkKey = (attrs) => /data-contact-ref="([^"]+)"/.exec(attrs)?.[1] ? 'ref:' + /data-contact-ref="([^"]+)"/.exec(attrs)[1] : /href="([^"]+)"/.exec(attrs)[1];
-// Labels are the anchor text; an app-style inline SVG icon (v78 desktop menu) is not part of it.
-const linkSet = (fragment) => [...fragment.matchAll(/<a([^>]*)>((?:<svg[\s\S]*?<\/svg>)?[^<]+)<\/a>/g)]
-  .map((m) => [linkKey(m[1]), m[2].replace(/<svg[\s\S]*?<\/svg>/, '').replace(/&amp;/g, '&').replace(/^\S+\s(?=\S)/u, (w) => (/[\p{L}\d]/u.test(w) ? w : ''))]);
+// Labels are the anchor text: a plain text node (footer, desktop menu) or — v79 sidebar —
+// exactly one <span>. A leading inline SVG glyph (desktop menu, sidebar) is decoration,
+// never part of the label; the SVG token is tempered so one match cannot run across two
+// glyphs (and therefore across anchors). No emoji stripping: v79 renders no emoji labels.
+const SVG_GLYPH = '<svg\\b[^>]*>(?:(?!<\\/svg>)[\\s\\S])*<\\/svg>';
+const LINK_RE = new RegExp(`<a\\b([^>]*)>(?:${SVG_GLYPH})?(?:<span>([^<]+)<\\/span>|([^<]+))<\\/a>`, 'g');
+const linkSet = (fragment) => [...fragment.matchAll(LINK_RE)]
+  .map((m) => [linkKey(m[1]), (m[2] ?? m[3]).replace(/&amp;/g, '&')]);
+// v79 sidebar row anchor: optional <svg class="motoai-nav-icon i-…"> glyph, then the label in one <span>.
+const SIDEBAR_ROW = new RegExp(`^(?:<svg class="motoai-nav-icon i-[a-z0-9-]+"[^>]*>(?:(?!<\\/svg>)[\\s\\S])*<\\/svg>)?<span>[^<]+<\\/span>$`);
 
 test('menu ↔ footer vocabulary: footer links are drawer links with identical labels, and vice versa', () => {
   const html = read('blog/index.html');
   const drawerAt = html.indexOf('<nav class="motoai-drawer"');
-  const drawer = linkSet(html.slice(drawerAt, html.indexOf('</nav>', drawerAt))).map(([k, l]) => `${k}|${l}`);
+  assert.ok(drawerAt >= 0, 'sidebar present');
+  const drawerHtml = html.slice(drawerAt, html.indexOf('</nav>', drawerAt));
+  // Rows only: the head (brand mark + ✕) is not a navigation entry.
+  const listAt = drawerHtml.indexOf('<ul class="motoai-drawer-list">');
+  assert.ok(listAt > 0, 'sidebar list present');
+  const drawerList = drawerHtml.slice(listAt);
+  const drawerLinks = linkSet(drawerList);
+  // Every sidebar anchor is parsed, so no row (icon-only, nested markup) slips past the vocabulary check.
+  assert.equal((drawerList.match(/<a\b/g) ?? []).length, drawerLinks.length, 'every sidebar anchor is a parsed text link');
+  for (const m of drawerList.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/g)) {
+    assert.match(m[1], SIDEBAR_ROW, `sidebar row: optional SVG glyph + label in one <span> (${m[0].slice(0, 80)})`);
+  }
+  for (const [, l] of drawerLinks) assert.ok(!/\p{Extended_Pictographic}/u.test(l), `sidebar label "${l}" carries no emoji icon`);
+  const drawer = drawerLinks.map(([k, l]) => `${k}|${l}`);
   const header = linkSet(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/.exec(html)[1]).map(([k, l]) => `${k}|${l}`);
   const footerHtml = html.slice(html.indexOf('<footer class="blog-footer">'), html.indexOf('</footer>'));
   // Hub columns use the full parent-hub names (taxonomy) — checked by the v61 test below.
@@ -159,8 +179,17 @@ test('menu ↔ footer vocabulary: footer links are drawer links with identical l
   // Inverse: Trang Chủ, Agent and every Trang Web / Dịch Vụ / Pháp Lý entry of the drawer is in the footer.
   const expected = [navigation.home, navigation.agent, ...['pages', 'dv', 'pl'].flatMap((id) => navGroup(id).children)]
     .map((e) => `${e.kind === 'action' ? `${navigation.agent.url}?action=${e.action}` : e.kind === 'contact' ? `ref:${e.ref}` : e.url}|${e.label}`);
-  for (const entry of expected) assert.ok(footer.includes(entry), `drawer entry "${entry}" is in the footer`);
+  for (const entry of expected) {
+    assert.ok(footer.includes(entry), `drawer entry "${entry}" is in the footer`);
+    assert.ok(drawer.includes(entry), `drawer entry "${entry}" is rendered in the sidebar with the same label`);
+  }
   assert.ok(footer.includes(`${blogHome().url}|${blogHome().label}`), 'the blog home, labelled like the header');
+  assert.ok(drawer.includes(`${blogHome().url}|${blogHome().label}`), 'the blog home, labelled like the header, in the sidebar');
+  // v79: ONE Agent label — sidebar row, footer link and header CTA all read labels.headerAgent.
+  assert.equal(navigation.agent.label, BLOG_UI.labels.headerAgent, 'navigation.agent.label = labels.headerAgent');
+  const agentEntry = `${navigation.agent.url}|${BLOG_UI.labels.headerAgent}`;
+  assert.ok(drawer.includes(agentEntry) && footer.includes(agentEntry), `"${agentEntry}" in sidebar and footer`);
+  assert.match(html, new RegExp(`<a class="site-agent-cta" href="${navigation.agent.url}" aria-label="${BLOG_UI.labels.headerAgent}">`), 'header CTA uses the same Agent label');
 });
 
 // v61: footer hub silo — every hub column carries its parent hub link and both children.
@@ -225,10 +254,21 @@ test('footer column titles come from the same sources as the menu (brand, hubs, 
 
 test('v76: the Agent app keeps NO footer inside the chat viewport; / is a full website page with the shared footer', () => {
   const agent = read('agent/index.html');
-  assert.ok(!agent.includes('blog-footer'), '/agent/ stays a full-screen app (dock + drawer only)');
+  assert.ok(!agent.includes('blog-footer'), '/agent/ stays a full-screen app (header + chat + sidebar only)');
+  // v79: no tab bar/dock anywhere; the Agent app carries the chat-mode sidebar instead.
+  assert.match(agent, /<body class="chat-home">/, '/agent/ is the chat-home app');
+  assert.ok(agent.includes('<nav class="motoai-drawer"') && agent.includes('id="motoai-reset"') && agent.includes('id="motoai-menu-agent"'),
+    '/agent/ renders the chat-mode sidebar (Hỏi Agent button + 🧹 Xóa chat)');
   const home = read('index.html');
   assert.match(home, /<footer class="blog-footer">/, '/ carries the shared site footer');
-  assert.ok(!home.includes('<nav class="motoai-dock"') && !home.includes('id="motoai-input"'), '/ never embeds the full-screen chat');
+  assert.match(home, /<body class="content-page">/, '/ is a content page');
+  assert.ok(home.includes('<nav class="motoai-drawer"'), '/ renders the shared sidebar');
+  for (const chatOnly of ['id="motoai-input"', 'id="motoai-messages"', 'id="motoai-composer"', 'id="motoai-reset"', 'id="motoai-menu-agent"']) {
+    assert.ok(!home.includes(chatOnly), `/ never embeds the full-screen chat or its chat-mode sidebar (${chatOnly})`);
+  }
+  for (const page of [agent, home]) {
+    assert.ok(!/motoai-dock|app-tabbar|class="app-tab\b|data-drawer-open/.test(page), 'no bottom tab bar/dock markup (v79)');
+  }
 });
 
 // ---------- Blog home: app content home ----------

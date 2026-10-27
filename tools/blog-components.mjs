@@ -60,7 +60,8 @@ const LABEL_KEYS = ['crumbPage', 'kickerHub', 'kickerCluster', 'kickerStatic', '
   'articleCount', 'pageOf', 'pagePrev', 'pageNext', 'routeTitle', 'factPublished', 'factCategories', 'factHours',
   'searchPlaceholder', 'searchNote', 'searchCount', 'searchEmpty', 'searchError', 'latestTitle', 'latestNote',
   'indexTitle', 'indexNote', 'footerDesc', 'footerNap', 'footerHours', 'hubsTitle', 'priceConfirm', 'priceDeposit', 'depositConfirm',
-  'emptyBlog', 'emptyHub', 'emptyScopeHub', 'emptyScopeCluster', 'headerAgent'];
+  'emptyBlog', 'emptyHub', 'emptyScopeHub', 'emptyScopeCluster', 'headerAgent',
+  'menuLabel', 'menuOpen', 'menuClose', 'menuCollapseSidebar', 'menuExpand', 'menuCollapse', 'menuTheme', 'skipToContent'];
 for (const key of LABEL_KEYS) {
   if (typeof BLOG_UI.labels?.[key] !== 'string' || !BLOG_UI.labels[key].trim()) throw new Error(`blog-ui: labels.${key} must be a non-empty string`);
 }
@@ -163,13 +164,18 @@ const ICON_PATHS = {
   bolt: '<path d="M13 3 5 13.5h6L10 21l8-10.5h-6L13 3Z"/>',
   check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
   chat: '<path d="M4.5 5.5h15a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H10l-4.5 3.5V17h-1a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/>',
-  // v78 app-style navigation (bottom tab bar + desktop menu): Lucide-style strokes.
+  // v78/v79 app-style navigation (sidebar + desktop menu): Lucide-style strokes.
   home: '<path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/>',
   book: '<path d="M12 7v13.5"/><path d="M3.5 5h5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1 3.5-3.5h5v13h-5a3.5 3.5 0 0 0-3.5 2.5 3.5 3.5 0 0 0-3.5-2.5h-5Z"/>',
   grid: '<rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/>',
   menu: '<path d="M4 6.5h16M4 12h16M4 17.5h16"/>',
   tool: '<path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5Z"/><path d="M14.5 6.5 17 4l3 3-2.5 2.5"/>',
-  compass: '<circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2 5-5 2 2-5Z"/>'
+  compass: '<circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2 5-5 2 2-5Z"/>',
+  // v79 sidebar: group glyphs, the close cross, the theme half-disc, the collapse chevron.
+  lock: '<rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/>',
+  close: '<path d="M6 6l12 12M18 6 6 18"/>',
+  theme: '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17Z" fill="currentColor" stroke="none"/>',
+  chevron: '<path d="m9 6 6 6-6 6"/>'
 };
 export function icon(name, cls = 'i') {
   const paths = ICON_PATHS[name];

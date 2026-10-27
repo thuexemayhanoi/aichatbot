@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { taxonomy, navigation } from '../../tools/taxonomy.mjs';
+import { taxonomy, navigation, drawerCore } from '../../tools/taxonomy.mjs';
 import { SITE_PAGES } from '../../tools/site-pages.mjs';
 import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
 
@@ -62,20 +62,57 @@ test('v61 dropdowns are keyboard/touch accessible, not hover-only', () => {
 // ---------- Mobile drawer: hub → children hierarchy ----------
 
 test('v61 drawer Cẩm nang group mirrors the hub → category hierarchy with real links', () => {
+  // v79: nested accordions (group › hub › category › subtopics). Every level is
+  // a real crawlable <a>; expand/collapse is a SEPARATE button beside it. The
+  // check is scoped to the sidebar markup, so a link that only exists in the
+  // desktop menu or the footer can no longer satisfy it.
+  const subtopicUrls = (dir) => drawerCore().find((e) => e.kind === 'group' && e.id === 'cm').children
+    .filter((e) => e.kind === 'hub').flatMap((h) => h.children)
+    .filter((e) => e.level === 'subtopic' && e.url.startsWith(`/blog/${dir}/`)).map((e) => e.url);
   for (const page of ALL_CONTENT) {
     const html = read(page);
-    for (const c of taxonomy.clusters) {
-      assert.ok(html.includes(`class="motoai-hub-link" href="/blog/${c.dir}/"`), `${page}: drawer hub link ${c.dir}`);
-      for (const id of c.categories) {
-        assert.ok(html.includes(`href="/blog/${taxonomy.categories[id].dir}/"`), `${page}: drawer child ${id}`);
-      }
-    }
+    const start = html.indexOf('<nav class="motoai-drawer" id="motoai-drawer"');
+    assert.ok(start >= 0, `${page}: sidebar rendered`);
+    const drawer = html.slice(start, html.indexOf('</nav>', start));
+    const cmAt = drawer.indexOf('<li class="motoai-group" data-group="cm">');
+    assert.ok(cmAt >= 0, `${page}: drawer Cẩm nang group`);
+    const cm = drawer.slice(cmAt, drawer.indexOf('<li class="motoai-group" data-group=', cmAt + 1));
+    assert.ok(cm.includes('<div class="motoai-row motoai-group-head"><a class="motoai-group-link" href="/blog/"'), `${page}: Cẩm nang heads its group as a real link`);
+    const hubs = cm.split('<li class="motoai-hub">').slice(1);
+    assert.equal(hubs.length, taxonomy.clusters.length, `${page}: one drawer hub per parent hub`);
+    taxonomy.clusters.forEach((c, i) => {
+      const hub = hubs[i];
+      assert.ok(hub.includes(`<div class="motoai-row"><a class="motoai-hub-link" href="/blog/${c.dir}/"`), `${page}: drawer hub link ${c.dir}`);
+      assert.ok(hub.includes(`<button type="button" class="motoai-toggle" id="motoai-hub-${c.id}-btn" aria-expanded="true" aria-controls="motoai-hub-${c.id}"`), `${page}: ${c.dir} has its own expand/collapse control`);
+      const itemsAt = hub.indexOf(`<ul class="motoai-hub-items" id="motoai-hub-${c.id}">`);
+      assert.ok(itemsAt > hub.indexOf('motoai-hub-link'), `${page}: ${c.dir} children nested under the hub link`);
+      const cats = hub.slice(itemsAt).split('<li class="motoai-category">').slice(1);
+      assert.deepEqual(cats.map((x) => /<a href="\/blog\/([a-z0-9-]+)\/"/.exec(x)?.[1]),
+        c.categories.map((id) => taxonomy.categories[id].dir), `${page}: drawer children of ${c.dir} (taxonomy order)`);
+      c.categories.forEach((id, j) => {
+        const dir = taxonomy.categories[id].dir;
+        const topics = [...cats[j].matchAll(/<li class="motoai-subtopic"><a href="([^"]+)"/g)].map((m) => m[1]);
+        assert.deepEqual(topics, subtopicUrls(dir), `${page}: ${dir} subtopics nested under their category`);
+        if (topics.length) {
+          assert.match(cats[j], new RegExp(`^\\s*<div class="motoai-row"><a href="/blog/${dir}/"[^>]*><span>[^<]+</span></a><button type="button" class="motoai-toggle" id="motoai-cat-${id}-btn" aria-expanded="(?:true|false)" aria-controls="motoai-cat-${id}"`), `${page}: ${dir} link + its own toggle`);
+          assert.match(cats[j], new RegExp(`<ul class="motoai-topic-items" id="motoai-cat-${id}"(?: hidden)?>`), `${page}: ${dir} topic list controlled by its toggle`);
+        }
+      });
+    });
   }
-  // v63: drawer visual rules live ONCE in style.css (loaded by BOTH the chat
-  // homepage and content pages) — single source, identical look.
-  const css = read('assets/css/style.css');
-  assert.match(css, /\.motoai-hub-link\s*\{[^}]*min-height:\s*48px/, 'drawer hub links >= 44px');
-  assert.match(css, /\.motoai-hub-items li a\s*\{[^}]*min-height:\s*44px/, 'drawer child links >= 44px');
+  // v63: drawer visual rules live ONCE in style.css (loaded by BOTH the Agent
+  // app and content pages) — single source, identical look. v79 row heights:
+  // hub links inherit the shared 46px sidebar row (no hub-specific override),
+  // category and subtopic links are at least 44px, each category row pairs its
+  // link with a 44×44 expand/collapse control.
+  const css = read('assets/css/style.css').replace(/\/\*[\s\S]*?\*\//g, '');
+  assert.match(css, /\.motoai-drawer-list a,\s*\.motoai-drawer-list button\s*\{[^}]*min-height:\s*46px/, 'drawer hub links >= 44px (shared 46px row)');
+  assert.match(css, /\.motoai-drawer-list \.motoai-hub-link\s*\{[^}]*\}/, 'hub link rule present');
+  assert.ok(!/\.motoai-hub-link[^{}]*\{[^}]*min-height/.test(css), 'no rule lowers the hub link below the shared 46px row');
+  assert.match(css, /\.motoai-hub-items \.motoai-category > a,\s*\.motoai-hub-items \.motoai-category \.motoai-row > a\s*\{[^}]*min-height:\s*(?:4[4-9]|[5-9]\d)px/, 'drawer child (category) links >= 44px');
+  assert.match(css, /\.motoai-topic-items \.motoai-subtopic a\s*\{[^}]*min-height:\s*(?:4[4-9]|[5-9]\d)px/, 'drawer subtopic links >= 44px');
+  assert.match(css, /\.motoai-drawer-list \.motoai-toggle\s*\{[^}]*width:\s*44px;\s*min-width:\s*44px;\s*min-height:\s*44px/, 'expand/collapse controls >= 44px');
+  assert.ok(!/\.motoai-hub-items li a\s*\{/.test(css), 'the v61 flat child-link rule is gone (nested rows replace it)');
 });
 
 // ---------- Footer: hub silo columns + secondary services/legal row ----------

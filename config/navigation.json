@@ -1,13 +1,13 @@
 {
   "$schema": "motoai/navigation@1",
-  "note": "Single menu contract for the homepage, the Agent app and all generated pages. footer_groups only REFERENCE the drawer entries (home, agent, drawer groups), so header, drawer and footer share one vocabulary. Every published parent hub, category, available subtopic and static Page is linked with 2–3 word navigation labels; SEO titles and URL slugs never change.",
+  "note": "Single menu contract for the homepage, the Agent app and all generated pages. footer_groups only REFERENCE the drawer entries (home, agent, drawer groups), so header, sidebar and footer share one vocabulary. Every published parent hub, category, available subtopic and static Page is linked with 2–3 word navigation labels; SEO titles and URL slugs never change.",
   "home": {
     "label": "Trang Chủ",
     "icon": "🏠",
     "url": "/"
   },
   "agent": {
-    "label": "Agent Hỗ Trợ",
+    "label": "Hỏi Agent",
     "icon": "⚡",
     "url": "/agent/"
   },
@@ -100,22 +100,12 @@
     }
   ],
   "drawer": {
-    "note": "Trang Web lists the config/site-pages.json pages without a group; Pháp Lý lists the pages with \"group\": \"legal\" (same registry, same order); Cẩm Nang resolves hubs > canonical categories > non-empty subtopics from data/blog/taxonomy.json and its url is the blog home (the one key for that URL: header, Tìm Bài, footer and breadcrumbs read it; the builder writes that page at blog/index.html); Dịch Vụ has verified contact actions. Agent chat keeps its reset control.",
+    "note": "The ONE sidebar (v79): a left off-canvas panel on phones/tablets, an in-flow collapsible left column on desktop content pages, an overlay in the Agent app. Order: Trang Chủ, Hỏi Agent, then the groups below, then the theme row. Cẩm Nang resolves hubs > canonical categories > non-empty subtopics from data/blog/taxonomy.json (nested accordions, every level a real link) and its url is the blog home (the one key for that URL: header, Tìm Bài, footer and breadcrumbs read it; the builder writes that page at blog/index.html); Trang Web lists the config/site-pages.json pages without a group; Pháp Lý lists the pages with \"group\": \"legal\" (same registry, same order); Dịch Vụ has verified contact actions. \"collapsed\": true renders a group closed until the reader opens it (the group of the current page always opens). Agent chat keeps its reset control.",
     "theme": {
       "icon": "🌗",
       "label": "Chủ đề"
     },
     "groups": [
-      {
-        "id": "pages",
-        "label": "Trang Web",
-        "icon": "🗂️",
-        "children": [
-          {
-            "set": "pages"
-          }
-        ]
-      },
       {
         "id": "cm",
         "label": "Cẩm nang",
@@ -131,12 +121,12 @@
         ]
       },
       {
-        "id": "dv",
-        "label": "Dịch Vụ",
-        "icon": "🛵",
+        "id": "pages",
+        "label": "Trang Web",
+        "icon": "🗂️",
         "children": [
           {
-            "set": "contact-actions"
+            "set": "pages"
           }
         ]
       },
@@ -148,7 +138,19 @@
           {
             "set": "legal"
           }
-        ]
+        ],
+        "collapsed": true
+      },
+      {
+        "id": "dv",
+        "label": "Dịch Vụ",
+        "icon": "🛵",
+        "children": [
+          {
+            "set": "contact-actions"
+          }
+        ],
+        "collapsed": true
       }
     ]
   },
@@ -184,43 +186,23 @@
     "terms": "📃"
   },
   "svg_icons": {
-    "note": "Inline SVG icon names (tools/blog-components.mjs ICON_PATHS) for the app-style menus: desktop top level (>= 1180px) and the bottom tab bar.",
+    "note": "Inline SVG icon names (tools/blog-components.mjs ICON_PATHS) for the menus: the desktop top level (>= 1360px) and the sidebar's top level, groups and hubs. Categories and subtopics are text only.",
     "home": "home",
+    "agent": "chat",
     "blog": "book",
     "pages": "grid",
+    "search": "search",
+    "theme": "theme",
+    "groups": {
+      "cm": "book",
+      "pages": "grid",
+      "pl": "lock",
+      "dv": "phone"
+    },
     "hubs": {
       "C-APP": "tool",
       "C-RENT": "scooter",
       "C-EXPLORE": "compass"
     }
-  },
-  "tab_bar": {
-    "note": "App-style bottom tab bar (max 5 tabs) on phones and tablets (< 900px) of every content page, and in the Agent app wherever its desktop menu is hidden (replaces the v50 dock). Every tab REFERENCES an existing entry: home = navigation.home, blog = the Cẩm nang drawer group url, agent = navigation.agent; drawer tabs open the one shared drawer (a group id expands that group). No new URL, no second menu.",
-    "aria_label": "Điều hướng chính",
-    "tabs": [
-      {
-        "ref": "home",
-        "icon": "home"
-      },
-      {
-        "ref": "blog",
-        "icon": "book"
-      },
-      {
-        "drawer": "cm",
-        "label": "Danh Mục",
-        "icon": "grid"
-      },
-      {
-        "ref": "agent",
-        "label": "Agent",
-        "icon": "chat"
-      },
-      {
-        "drawer": "all",
-        "label": "Menu",
-        "icon": "menu"
-      }
-    ]
   }
 }

@@ -43,7 +43,7 @@
   --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px;
   --gutter: clamp(18px, 5vw, 64px);
   --section: clamp(64px, 9vw, 116px);
-  --wrap: 1200px; --read: 700px; --toc-w: 220px; --art-gap: clamp(28px, 5vw, 76px); --header-h: 64px;
+  --wrap: 1200px; --read: 700px; --toc-w: 220px; --art-gap: clamp(28px, 5vw, 76px); --header-h: 64px; --sidebar-w: 280px;
 
   --r-md: 18px; --r-lg: 28px; --r-pill: 999px;
   --shadow-2: 0 2px 14px rgb(var(--shadow-color) / 0.035), 0 24px 50px -24px rgb(var(--shadow-color) / 0.16);
@@ -122,38 +122,29 @@ body.content-page :is(h1, h2, h3) { font-weight: 800; letter-spacing: -0.02em; t
 body.content-page p { text-wrap: pretty; }
 .i { width: 1.15em; height: 1.15em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-/* Closed drawer/backdrop never intercept touch gestures. */
+/* Skip link: first Tab stop, visible only on focus. */
+.skip-link {
+  position: absolute; left: calc(env(safe-area-inset-left, 0px) + 12px); top: -200px; z-index: 60;
+  padding: 10px 16px; border-radius: var(--r-pill); background: var(--ink); color: var(--paper) !important;
+  font-weight: 600; text-decoration: none;
+}
+.skip-link:focus { top: calc(env(safe-area-inset-top, 0px) + 8px); }
+
+/* Collapsed accordion lists (and any hidden control) take no space. */
 [hidden] { display: none !important; }
-#motoai-drawer-backdrop[hidden],
-#motoai-drawer[hidden] { display: none !important; pointer-events: none; }
-#motoai-drawer-backdrop,
-#motoai-drawer:not([hidden]) { pointer-events: auto; }
 
-/* ==================== App tab bar (v78, phones + tablets < 900px) ====================
-   The shared tabBar() (look: assets/css/style.css) pinned to the bottom edge
-   above the iPhone home indicator. The page reserves its height, so the bar
-   never covers the footer or a button; while a field has focus the keyboard
-   owns the bottom edge and the bar steps aside. It is the only fixed bottom
-   bar; the header Menu button hides here (the bar carries Menu). */
-body.content-page .app-tabbar {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 35;
-  padding: 2px calc(env(safe-area-inset-right, 0px) + 6px) calc(env(safe-area-inset-bottom, 0px) + 2px) calc(env(safe-area-inset-left, 0px) + 6px);
-  border-top: 1px solid var(--line); background: var(--scrim);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4);
-}
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  body.content-page .app-tabbar { background: var(--paper); }
-}
-@media (max-width: 899.98px) {
-  body.content-page { padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px)); }
-  body.content-page .site-actions .motoai-menu { display: none; }
-  body.content-page.is-typing .app-tabbar { display: none; } /* app-shell.js: a field has focus */
-}
-@media (min-width: 900px) {
-  body.content-page .app-tabbar { display: none; }
-}
+/* ==================== Sidebar on content pages (v79) ====================
+   Below 1200px the shared left panel of assets/css/style.css opens over the
+   page; while it is open drawer.js pins the document where it was
+   (html.drawer-lock + an inline top offset), so iPhone Safari never scrolls
+   the page underneath. From 1200px the same element is an in-flow column:
+   see "Desktop layout" further down. */
+html.drawer-lock body.content-page { position: fixed; left: 0; right: 0; width: 100%; }
+/* (no overflow here: a scroll container would carry the sticky header away with the offset) */
 
-/* ==================== Header ==================== */
+/* ==================== Header ====================
+   ☰ Danh mục (menuButton) · brand · siteNav (>= 1200px) · search · theme ·
+   Hỏi Agent · status (own row on phones). */
 .site-header {
   position: sticky; top: 0; z-index: 40;
   border-bottom: 1px solid var(--line); background: var(--paper);
@@ -171,7 +162,7 @@ body.content-page .site-header { background: var(--scrim); -webkit-backdrop-filt
 .site-brand-text strong { font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; white-space: nowrap; }
 .site-brand-text span { font-size: var(--fs-xs); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   .site-brand { flex: 0 0 auto; }
 }
 
@@ -184,7 +175,7 @@ body.content-page .site-header { background: var(--scrim); -webkit-backdrop-filt
   background: transparent; color: var(--ink); font-size: 0.8rem; font-weight: 600; line-height: 1; cursor: pointer;
 }
 .site-search-link:hover, .blog-theme-toggle:hover { border-color: var(--ink); }
-body.content-page .site-actions .motoai-menu { gap: 10px; padding: 0 16px 0 14px; border: 0; background: var(--solid); color: var(--on-solid); font-size: var(--fs-sm); animation: none; }
+body.content-page .motoai-menu { gap: 10px; padding: 0 16px 0 14px; border: 0; background: var(--solid); color: var(--on-solid); font-size: var(--fs-sm); animation: none; }
 .site-header .motoai-status { font-size: var(--fs-xs); color: var(--ink-3); }
 .site-header .motoai-status[data-state="open"] { color: var(--ok); }
 @media (max-width: 767.98px) {
@@ -196,8 +187,8 @@ body.content-page .site-actions .motoai-menu { gap: 10px; padding: 0 16px 0 14px
 @media (min-width: 768px) {
   .site-header .motoai-status { flex: 0 1 auto; min-width: 0; max-width: 220px; margin-left: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
-@media (min-width: 900px) and (max-width: 1179.98px) {
-  .site-brand-text span, .site-header .motoai-status { display: none; }
+@media (min-width: 1200px) and (max-width: 1439.98px) {
+  .site-brand-text span, .site-header .motoai-status { display: none; } /* the menu row has no room for them yet */
 }
 
 /* Reading progress (articles): a signal line on the header's lower edge,
@@ -268,7 +259,7 @@ body.content-page .blog-cat-card {
 .card-arrow { margin-left: auto; color: var(--ink); transition: transform var(--t2) var(--ease); }
 /* Hover only on real pointers — never a sticky tint after a tap. */
 @media (hover: hover) {
-  body.content-page .site-actions .motoai-menu:hover, .blog-search button:hover { background: var(--signal); color: var(--on-signal); }
+  .blog-search button:hover { background: var(--signal); color: var(--on-signal); }
   body.content-page :is(.blog-card, .blog-cat-card):hover { transform: translateY(-3px); box-shadow: var(--shadow-2); border-color: var(--line-strong); }
   .blog-card:hover::before { transform: scaleX(1); }
   .blog-card:hover .card-arrow, .blog-cat-card:hover .cat-icon, .route-board a:hover .route-arrow { transform: translateX(4px); }
@@ -602,7 +593,7 @@ body.content-page .blog-article-body {
 }
 
 @media print {
-  .site-header, .blog-footer, .contact-band, .blog-toc, .motoai-drawer, .blog-chips, .app-tabbar { display: none !important; }
+  .site-header, .blog-footer, .contact-band, .blog-toc, .motoai-drawer, .motoai-drawer-backdrop, .blog-chips { display: none !important; }
   body.content-page, .site-main { background: none; }
 }
 
@@ -624,11 +615,11 @@ body.content-page .site-header {
 .brand-mark { width: 32px; height: 32px; }
 .site-search-link, .blog-theme-toggle { background: transparent; border-color: transparent; border-radius: var(--r-pill); }
 .site-search-link:hover, .blog-theme-toggle:hover { background: var(--paper-2); border-color: transparent; }
-body.content-page .site-actions .motoai-menu {
+body.content-page .motoai-menu {
   background: var(--ink); color: var(--paper);
   border-radius: var(--r-pill); font-weight: 600;
 }
-body.content-page .site-actions .motoai-menu:hover { background: var(--signal); color: var(--on-signal); }
+body.content-page .motoai-menu:hover { background: var(--signal); color: var(--on-signal); }
 .read-progress { background: var(--signal); height: 2px; }
 
 /* Intro sections are editorial rather than dashboard-like. */
@@ -741,7 +732,7 @@ body.content-page .card-lead {
 .blog-footer-cta:hover, .blog-footer-col a:hover { color: var(--signal-ink); border-color: var(--signal); }
 /* v78 app-style footer on phones/tablets: every link stays, grouped in
    rounded cards two by two (like an app's menu shortcuts) instead of one
-   long list; the bottom tab bar is the primary navigation there.
+   long list; the sidebar is the primary navigation there.
    Desktop keeps the full columns above. */
 @media (max-width: 899.98px) {
   .blog-footer { padding-top: var(--s6); }
@@ -775,7 +766,8 @@ body.content-page .card-lead {
   .blog-footer { padding-top: var(--s7); }
 }
 @media (max-width: 380px) {
-  body.content-page .site-actions .motoai-menu { padding: 0 12px; }
+  body.content-page .motoai-menu { padding: 0 12px; }
+  .site-header .site-brand-text { display: none; } /* one header row: ☰ Danh mục · mark · actions */
   .site-brand-text strong { font-size: 0.89rem; }
   .home-facts { grid-template-columns: minmax(0, 1fr); }
 }
@@ -784,10 +776,43 @@ body.content-page .card-lead {
   .blog-card, .blog-cat-card { box-shadow: none; }
 }
 
-/* v73 All-pages/all-taxonomy navigation — drawer current-page state on
-   content pages (the desktop menu lives in style.css, shared with /agent/). */
-body.content-page .motoai-drawer-list a[aria-current="page"] {
-  color: var(--signal-ink); font-weight: 650;
+/* ==================== Desktop layout (v79, >= 1200px) ====================
+   The page becomes a grid: header / [sidebar | main] / footer. The sidebar is
+   the SAME element as the phone panel, now an in-flow sticky column that
+   scrolls on its own; ☰ Danh mục and ✕ collapse it (html[data-motoai-sidebar
+   ="closed"], restored before first paint from localStorage) and the main
+   column takes the full width. Articles keep their TOC rail only where the
+   reading column still has room beside an open sidebar (>= 1400px). */
+@media (min-width: 1200px) {
+  body.content-page {
+    display: grid; grid-template-columns: var(--sidebar-w) minmax(0, 1fr); grid-template-rows: auto auto 1fr auto;
+    grid-template-areas: "header header" "banner banner" "sidebar main" "sidebar footer"; align-items: start;
+  }
+  body.content-page > .site-header { grid-area: header; }
+  body.content-page > .blog-global-banner { grid-area: banner; }
+  body.content-page > .site-main { grid-area: main; }
+  body.content-page > .blog-footer { grid-area: footer; }
+  body.content-page > .motoai-drawer-backdrop { display: none; }
+  body.content-page > .motoai-drawer {
+    grid-area: sidebar; position: sticky; top: calc(var(--header-h) + 16px); z-index: 1;
+    width: auto; height: calc(100dvh - var(--header-h) - 16px);
+    padding: var(--s4) var(--s3) var(--s6) calc(env(safe-area-inset-left, 0px) + var(--s3));
+    background: var(--paper); box-shadow: none; border-right: 1px solid var(--line);
+    transform: none; visibility: visible; transition: none;
+  }
+  body.content-page > .motoai-drawer .motoai-drawer-head { padding-left: 4px; }
+  html[data-motoai-sidebar="closed"] body.content-page { grid-template-columns: 0 minmax(0, 1fr); }
+  html[data-motoai-sidebar="closed"] body.content-page > .motoai-drawer { display: none; }
+  .site-header-inner { max-width: none; }
+}
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  html:not([data-motoai-sidebar="closed"]) .site-main[data-motoai-screen^="article-"] { display: flex; }
+  html:not([data-motoai-sidebar="closed"]) .site-main[data-motoai-screen^="article-"] > * { grid-column: auto; max-width: var(--read); margin-inline: auto; }
+  html:not([data-motoai-sidebar="closed"]) .site-main[data-motoai-screen^="article-"] > :is(.blog-related, .contact-band, .screen-ask) { max-width: calc(var(--toc-w) + var(--art-gap) + var(--read)); }
+  html:not([data-motoai-sidebar="closed"]) .site-main[data-motoai-screen^="article-"] .blog-article-layout { display: block; }
+  html:not([data-motoai-sidebar="closed"]) .site-main[data-motoai-screen^="article-"] .blog-toc { margin: 0 0 var(--s5); }
+  html:not([data-motoai-sidebar="closed"]) .site-main[data-motoai-screen^="article-"] .blog-toc-mobile { display: block; }
+  html:not([data-motoai-sidebar="closed"]) .site-main[data-motoai-screen^="article-"] .blog-toc-desktop { display: none; }
 }
 
 /* ==================== v76 Site homepage (Apple V3) ====================
@@ -809,12 +834,9 @@ body.content-page .motoai-drawer-list a[aria-current="page"] {
   .site-main .v3-btn:not(.v3-btn-primary):hover { background: var(--paper-2); color: var(--ink); }
   .site-main a.v3-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); border-color: var(--line-strong); color: var(--ink); }
 }
-@media (max-width: 479px), (min-width: 900px) and (max-width: 1179.98px) {
+@media (max-width: 479px) {
   .site-agent-cta { width: 44px; padding: 0; }
   .site-agent-cta span { display: none; }
-}
-@media (min-width: 900px) and (max-width: 1179.98px) {
-  .site-actions .site-search-link { display: none; }
 }
 
 .v3-hero { display: flex; flex-direction: column; gap: var(--s4); padding: var(--s3) 0 var(--s2); }

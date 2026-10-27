@@ -42,6 +42,7 @@
     <!-- The Agent app opens directly into the chat: no landing hero above it. -->
     <section class="motoai-app" id="motoai-app">
       <header class="motoai-header">
+        <!-- @generated menu-button: menuButton() in tools/app-shell.mjs (☰ Danh mục, the same control as the website header; hidden in embed) -->
         <div class="motoai-header-text">
           <div class="motoai-brand-mark" aria-hidden="true"></div>
           <div>
@@ -54,7 +55,6 @@
         <div class="motoai-header-actions">
           <button type="button" class="motoai-theme blog-theme-toggle" id="blog-theme-toggle" aria-label="Chủ đề: tự động" title="Chủ đề: Auto → Sáng → Tối">Auto</button>
           <button type="button" class="motoai-install" id="motoai-install" hidden title="Cài MotoAI như một ứng dụng" aria-label="Cài Agent">Cài Agent</button>
-          <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở menu" aria-label="Mở menu" aria-expanded="false" aria-controls="motoai-drawer"><span class="menu-lines" aria-hidden="true"></span> <span class="motoai-menu-label">Menu</span></button>
         </div>
       </header>
 
@@ -87,8 +87,6 @@
                enterkeyhint="send" maxlength="2000" aria-label="Câu hỏi"></textarea>
         <button class="motoai-send" type="submit" id="motoai-send" aria-label="Gửi câu hỏi"></button>
       </form>
-
-      <!-- @generated tab-bar: tabBar({ path: 'agent/' }) in tools/app-shell.mjs (the website's bottom tab bar, below the composer; hidden in embed and where the desktop menu shows) -->
     </section>
 
     <!-- Supporting SEO copy (v47.1): AFTER the chatbot, unobtrusive. Hidden in embed mode. -->
@@ -116,7 +114,7 @@
     </section>
   </main>
 
-  <!-- Menu drawer (hidden in embed mode): navigation + contact + clear action. -->
+  <!-- Sidebar (hidden in embed mode): navigation + contact + clear action. -->
   <!-- @generated drawer: renderDrawer({ mode: "chat" }) in tools/menu-drawer.mjs -->
 
   <noscript>MotoAI cần JavaScript để hoạt động. Vui lòng gọi {{ business.contact.phone_display }} để được hỗ trợ.</noscript>

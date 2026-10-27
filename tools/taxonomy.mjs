@@ -125,27 +125,29 @@ export function categoryNav(categoryId) {
 }
 
 /**
- * Normalized CORE drawer (v63, v77) — the single menu contract shared by the
- * Agent app (/agent/, tools/agent-page.mjs) and every content page including
- * the homepage (tools/app-shell.mjs); header, footer and breadcrumbs read the
- * same entries. Order: Trang Chủ → Agent → Chủ đề (theme) → Trang Web
- * (site-pages.json pages without group) → Cẩm nang (hubs + Tìm Bài) →
- * Dịch Vụ (navigation.json services) → Pháp Lý (site-pages.json pages with
- * "group": "legal"). Chat-only extras (divider + Xóa chat) are NOT part of
- * the core; they are listed in navigation.chat_extras and only rendered in
- * the Agent app. The regression tests parse both surfaces and compare them
+ * Normalized CORE sidebar (v63, v77, v79) — the single menu contract shared
+ * by the Agent app (/agent/, tools/agent-page.mjs) and every content page
+ * including the homepage (tools/app-shell.mjs); header, footer and
+ * breadcrumbs read the same entries. Order: Trang Chủ → Hỏi Agent → the
+ * groups of config/navigation.json in their order — Cẩm nang (hubs ›
+ * categories › live subtopics + Tìm Bài), Trang Web (site-pages.json pages
+ * without group), Pháp Lý (pages with "group": "legal"), Dịch Vụ
+ * (navigation.json services) — then Chủ đề (theme). A group carries its
+ * landing `url` (Cẩm nang) and `collapsed` (closed until opened); hubs and
+ * categories carry their taxonomy `id` so the nested accordions get stable
+ * element ids. Chat-only extras (divider + Xóa chat) are NOT part of the
+ * core; they are listed in navigation.chat_extras and only rendered in the
+ * Agent app. The regression tests parse both surfaces and compare them
  * against this list, so the two can never drift again.
  */
 export function drawerCore() {
   const link = (item) => ({
     kind: 'link', icon: item.icon ?? '', label: item.label, url: item.url,
-    ...(item.level ? { level: item.level, parent: item.parent } : {})
+    ...(item.level ? { level: item.level, parent: item.parent } : {}),
+    ...(item.level === 'category' ? { id: item.id } : {})
   });
   // v76: Trang Chủ (site homepage) first, then the Agent app (/agent/).
   const core = [link(navigation.home), link(navigation.agent)];
-  if (navigation.drawer?.theme) {
-    core.push({ kind: 'theme', icon: navigation.drawer.theme.icon, label: navigation.drawer.theme.label });
-  }
   const realTopicUrls = menuSubtopicUrls();
   // A service with a url (a real page) renders as a plain link under Dịch Vụ.
   const contacts = (services) => services.map((s) =>
@@ -157,7 +159,7 @@ export function drawerCore() {
       return taxonomy.clusters.map((c) => {
         const hub = clusterNav(c.id);
         return {
-          kind: 'hub', icon: hub.icon, label: hub.label, url: hub.url,
+          kind: 'hub', id: hub.id, icon: hub.icon, label: hub.label, url: hub.url,
           children: hub.children.flatMap((cat) => {
             const items = [link({ ...cat, level: 'category' })];
             for (const topic of taxonomy.subtopics[cat.id] ?? []) {
@@ -184,14 +186,20 @@ export function drawerCore() {
     if (child.set === 'pages') return SITE_PAGES.filter((p) => p.group !== 'legal').map(pageLink);
     if (child.set === 'legal') return SITE_PAGES.filter((p) => p.group === 'legal').map(pageLink);
     if (child.set === 'contact-actions') return contacts(navigation.services);
-    if (child.ref === 'search') return [link({ ...navigation.search, url: blogHome().url })];
+    if (child.ref === 'search') return [{ ...link({ ...navigation.search, url: blogHome().url }), ref: 'search' }];
     throw new Error(`unknown drawer child in navigation.json: ${JSON.stringify(child)}`);
   };
   for (const g of navigation.drawer?.groups ?? []) {
     core.push({
       kind: 'group', id: g.id, icon: g.icon, label: g.label,
+      ...(g.url ? { url: g.url } : {}),
+      ...(g.collapsed ? { collapsed: true } : {}),
       children: (g.children ?? []).flatMap(resolveChild)
     });
+  }
+  // The theme row closes the list: a utility, not a destination.
+  if (navigation.drawer?.theme) {
+    core.push({ kind: 'theme', icon: navigation.drawer.theme.icon, label: navigation.drawer.theme.label });
   }
   return core;
 }
