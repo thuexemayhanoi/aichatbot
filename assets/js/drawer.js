@@ -1,8 +1,9 @@
 /** Sidebar controller (v79), ONE for app-shell.js + main.js. Overlay mode (< 1200px, and
  *  always in the Agent app): ☰ opens the left panel; ✕ / backdrop / Escape / a link close it;
- *  the page scroll is locked and Tab stays inside. Sidebar mode (desktop content pages): the
- *  panel is an in-flow column, ☰ / ✕ collapse it and the choice persists (localStorage; the
- *  head script applies it before paint). Accordions are independent (aria-expanded + hidden). */
+ *  the page scroll is locked, the rest of the page is inert and Tab cycles inside. Sidebar
+ *  mode (desktop content pages): the panel is an in-flow column, ☰ / ✕ collapse it, the
+ *  reading position is kept and the choice persists (localStorage; the head script applies
+ *  it before paint). Accordions are independent (aria-expanded + hidden). */
 const SIDEBAR_MQ = '(min-width: 1200px)';
 const KEY = 'motoai-sidebar';
 
@@ -38,7 +39,8 @@ export function createDrawer(doc = document) {
   const setMenu = (expanded) => {
     if (!menu) return;
     menu.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    const text = expanded ? menu.dataset.close : menu.dataset.open;
+    // In the desktop column ☰ collapses rather than closes: it says so, like ✕ there.
+    const text = expanded ? (sidebarMode() ? close?.dataset.collapse : null) ?? menu.dataset.close : menu.dataset.open;
     if (text) { menu.setAttribute('aria-label', text); menu.title = text; }
   };
   const setClose = (sidebar) => {
@@ -59,22 +61,37 @@ export function createDrawer(doc = document) {
       globalThis.scrollTo(0, scrollY);
     }
   };
+  // Overlay = modal: no Tab, VoiceOver swipe or pointer reaches the page behind it.
+  const inertRest = (on) => {
+    for (const el of body.children) if (el !== drawer && el !== backdrop && el.tagName !== 'SCRIPT') el.inert = on;
+  };
   function setOverlay(state, focus = true) {
     if (state === open) return;
     open = state;
+    // Focus left in a panel that is about to disappear goes back to ☰.
+    const rescue = !state && drawer.contains(doc.activeElement) && !(sidebarMode() && sidebarVisible());
     drawer.classList.toggle('is-open', state);
     backdrop.classList.toggle('is-open', state);
     body.classList.toggle('drawer-open', state);
+    inertRest(state);
     lock(state);
     setMenu(state);
-    // Focus returns without scrolling: the sticky ☰ is already in view and a
+    // Focus moves without scrolling: the sticky ☰ is already in view and a
     // plain focus() would drag the page back to the header's static slot.
-    if (focus) (state ? close ?? drawer.querySelector('a, button') : menu)?.focus({ preventScroll: true });
+    if (focus || rescue) (state ? close ?? drawer.querySelector('a, button') : menu)?.focus({ preventScroll: true });
   }
 
+  // Collapsing / expanding the column reflows the text: keep the line under the header in place.
   function setSidebar(visible) {
+    const main = doc.getElementById('site-main');
+    const line = (doc.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 0) + 8;
+    const box = main?.getBoundingClientRect();
+    let anchor = box && globalThis.scrollY > 0 ? doc.elementFromPoint?.(box.left + box.width / 2, line) : null;
+    if (anchor && !main.contains(anchor)) anchor = null;
+    const before = anchor?.getBoundingClientRect().top;
     if (visible) root.removeAttribute('data-motoai-sidebar');
     else root.setAttribute('data-motoai-sidebar', 'closed');
+    if (anchor) globalThis.scrollBy(0, anchor.getBoundingClientRect().top - before);
     try { localStorage.setItem(KEY, visible ? 'open' : 'closed'); } catch { /* private mode */ }
     setMenu(visible);
   }
@@ -95,11 +112,13 @@ export function createDrawer(doc = document) {
   close?.addEventListener('click', () => {
     if (sidebarMode()) { setSidebar(false); menu?.focus({ preventScroll: true }); } else setOverlay(false);
   });
-  backdrop.addEventListener('click', () => setOverlay(false, false));
+  backdrop.addEventListener('click', () => setOverlay(false));
+  // Capture: the overlay closes (page un-inerted, focus rescued) BEFORE an item's own
+  // handler runs, so a chat-mode action can still move focus into the app.
   drawer.addEventListener('click', (event) => {
     if (event.target.closest('.motoai-toggle, .motoai-drawer-theme')) return; // stays open
     if (event.target.closest('a, button') && !sidebarMode()) setOverlay(false, false);
-  });
+  }, true);
   const focusable = () => [...drawer.querySelectorAll('a[href], button:not([disabled])')].filter((el) => el.offsetParent !== null);
   doc.addEventListener('keydown', (event) => {
     if (!open) return;
@@ -107,11 +126,10 @@ export function createDrawer(doc = document) {
     if (event.key !== 'Tab') return;
     const items = focusable();
     if (!items.length) return;
-    const first = items[0];
-    const last = items[items.length - 1];
-    if (!drawer.contains(doc.activeElement)) { event.preventDefault(); first.focus(); }
-    else if (event.shiftKey && doc.activeElement === first) { event.preventDefault(); last.focus(); }
-    else if (!event.shiftKey && doc.activeElement === last) { event.preventDefault(); first.focus(); }
+    // Step through the panel ourselves: Safari's default Tab skips links and buttons.
+    event.preventDefault();
+    const i = items.indexOf(doc.activeElement);
+    items[event.shiftKey ? (i <= 0 ? items.length : i) - 1 : (i + 1) % items.length].focus();
   });
   if (mq) (mq.addEventListener ? mq.addEventListener('change', sync) : mq.addListener(sync));
   sync();

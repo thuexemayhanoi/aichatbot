@@ -216,9 +216,14 @@ test('Agent app (/agent/) keeps the app shell: shared sidebar (chat variant), NO
   assert.match(shared, /\.motoai-header \{[^}]*grid-template-areas: "menu mark title actions" "sub sub sub sub" "status status status status";/, 'phones: menu first, actions last');
   assert.match(shared, /grid-template-areas: "menu mark title status actions" "menu mark sub status actions";/, '>= 768px: menu first, actions last');
   assert.match(shared, /\.motoai-header \{ grid-template-areas: "nav nav nav nav nav" "menu mark title status actions" "menu mark sub status actions"; \}/, 'desktop: the menu row above, menu still first');
-  for (const m of shared.matchAll(/grid-template-areas:([^;]*);/g)) {
-    if (m[1].includes('mark')) assert.match(m[1], /"menu mark /, `every Agent header layout starts with ☰ Danh mục: ${m[1].trim()}`);
+  for (const m of shared.matchAll(/([^{}]*)\{[^{}]*grid-template-areas:([^;]*);/g)) {
+    if (!m[2].includes('mark')) continue;
+    // The embed widget has no ☰ (display:none), so its templates drop the "menu" column and its gap.
+    if (m[1].trim().startsWith('body[data-motoai-embed="1"]')) assert.ok(!m[2].includes('menu'), `embed header has no empty menu column: ${m[2].trim()}`);
+    else assert.match(m[2], /"menu mark /, `every Agent header layout starts with ☰ Danh mục: ${m[2].trim()}`);
   }
+  assert.match(shared, /body\[data-motoai-embed="1"\] \.motoai-header \{ grid-template-columns: auto minmax\(0, 1fr\) auto; grid-template-areas: "mark title actions" "sub sub sub" "status status status"; \}/, 'embed phones: mark first, no menu column');
+  assert.match(shared, /body\[data-motoai-embed="1"\] \.motoai-header \{ grid-template-columns: auto minmax\(0, 1fr\) auto auto; grid-template-areas: "mark title status actions" "mark sub status actions"; \}/, 'embed >= 768px: mark first, no menu column');
   assert.ok(!/\.motoai-header \.motoai-menu \{[^}]*display: none/.test(shared), 'never hidden in the Agent app (only the embed widget hides it)');
 });
 
@@ -235,9 +240,9 @@ test('site header CSS contract: sticky header, ☰ Danh mục left, actions pinn
   for (const m of pills) assert.ok(!/(^|;)\s*(order:|margin-left:\s*auto|display:\s*none)/.test(m[1]), `☰ Danh mục stays first and visible: ${m[1]}`);
   assert.ok(!css.includes('.site-actions .motoai-menu'), 'the menu is no longer one of the right-hand actions');
   assert.ok(!/(^|[},])\.motoai-menu\s*\{[^}]*display:\s*none/.test(css), 'no content-page rule hides the menu');
-  // Desktop (>= 1200px): the header spans the sidebar grid; 1200–1359px is compact.
+  // Desktop (>= 1200px): the header spans the sidebar grid; 1200–1439px is compact (the status fits from 1440).
   assert.match(css, /@media \(min-width: 1200px\)\{[^@]*\.site-header-inner\{max-width:none\}\}/, 'the header row spans sidebar + main at >= 1200px');
-  assert.match(css, /@media \(min-width: 1200px\) and \(max-width: 1359\.98px\)\{\.site-brand-text span,\.site-header \.motoai-status\{display:none\}\}/, 'compact 1200–1359px header');
+  assert.match(css, /@media \(min-width: 1200px\) and \(max-width: 1439\.98px\)\{\.site-brand-text span,\.site-header \.motoai-status\{display:none\}\}/, 'compact 1200–1439px header');
   assert.match(css, /@media \(max-width: 479px\)\{\.site-agent-cta\{width:44px;padding:0\}\.site-agent-cta span\{display:none\}\}/, 'Hỏi Agent icon-only below 480px only');
   assert.equal((css.match(/\.site-agent-cta span\{display:none\}/g) ?? []).length, 1, 'Hỏi Agent keeps its text from 480px up');
   // v77: the desktop menu is shared with the Agent app, so its CSS lives in style.css.

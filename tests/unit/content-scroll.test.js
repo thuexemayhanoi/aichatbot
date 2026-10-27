@@ -118,7 +118,7 @@ test('v60: CSS contract — content pages scroll as documents, chat lock stays c
   // (html.drawer-lock on a content page); the chat stylesheet never fixes html/body.
   const fixedRules = (src) => [...src.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{[^}]*position:\s*fixed/g)].map((m) => m[1].trim());
   assert.deepEqual(fixedRules(css), ['html.drawer-lock body.content-page'], 'the overlay lock is the only fixed rule of the content stylesheet');
-  assert.match(css, /html\.drawer-lock body\.content-page\s*\{\s*position:\s*fixed;\s*left:\s*0;\s*right:\s*0;\s*width:\s*100%;\s*overflow-y:\s*hidden\s*\}/, 'the lock pins the document in place, nothing more');
+  assert.match(css, /html\.drawer-lock body\.content-page\s*\{\s*position:\s*fixed;\s*left:\s*0;\s*right:\s*0;\s*width:\s*100%;?\s*\}/, 'the lock pins the document in place, nothing more (no overflow: a scroll container would carry the sticky header away)');
   for (const sel of fixedRules(style)) assert.ok(!/(^|[\s,>+~])(html|body)\b/.test(sel), `style.css never fixes html/body (${sel})`);
   assert.ok(!style.includes('drawer-lock'), 'the chat shell never takes the overlay lock');
 });
@@ -206,7 +206,7 @@ test('v59: service worker caches navigations per-URL — homepage cache can neve
 
 // Minimal DOM double for assets/js/drawer.js: only the members createDrawer touches.
 function fakeDrawerDom(bodyClass) {
-  const doc = { activeElement: null, getElementById: (id) => byId[id] ?? null };
+  const doc = { activeElement: null, getElementById: (id) => byId[id] ?? null, querySelector: () => null };
   const keydown = [];
   doc.addEventListener = (type, fn) => { if (type === 'keydown') keydown.push(fn); };
   doc.key = (key) => { for (const fn of keydown) fn({ key, shiftKey: false, preventDefault() {} }); };
@@ -248,8 +248,12 @@ function fakeDrawerDom(bodyClass) {
   const inside = new Set([close, link, toggle]);
   drawer.contains = (el) => el === drawer || inside.has(el);
   const byId = { 'motoai-drawer': drawer, 'motoai-drawer-backdrop': backdrop, 'motoai-menu-btn': menu, 'motoai-drawer-close': close };
+  // The page around the panel: inert while the overlay is open (scripts are left alone).
+  const page = node('site-main');
+  const script = { tagName: 'SCRIPT' };
+  body.children = [page, backdrop, drawer, script];
   Object.assign(doc, { documentElement: root, body });
-  return { doc, root, body, drawer, backdrop, menu, close, link, toggle };
+  return { doc, root, body, drawer, backdrop, menu, close, link, toggle, page, script };
 }
 
 test('v79: the sidebar scroll lock is SCOPED to the open overlay and ALWAYS released (no freeze possible)', async () => {
@@ -271,8 +275,8 @@ test('v79: the sidebar scroll lock is SCOPED to the open overlay and ALWAYS rele
   assert.match(shell, /lock\(state\);/, 'lock follows setOverlay(state)');
   assert.match(shell, /if \(state === open\) return;/, 'opening twice never overwrites the saved scroll position');
   assert.ok(shell.includes("key === 'Escape'"), 'Escape closes the drawer');
-  assert.ok(shell.includes("backdrop.addEventListener('click', () => setOverlay(false, false))"), 'backdrop click closes');
-  assert.ok(shell.includes("closest('a, button') && !sidebarMode()) setOverlay(false, false)"), 'following a link closes');
+  assert.ok(shell.includes("backdrop.addEventListener('click', () => setOverlay(false))"), 'backdrop click closes and returns focus to ☰');
+  assert.ok(shell.includes("closest('a, button') && !sidebarMode()) setOverlay(false, false);\n  }, true);"), 'following a link closes (capture: before the item handler runs)');
 
   // Behaviour: run the real controller against a DOM double.
   const { createDrawer } = await import(join(ROOT, 'assets/js/drawer.js'));
@@ -296,6 +300,7 @@ test('v79: the sidebar scroll lock is SCOPED to the open overlay and ALWAYS rele
       assert.ok(d.drawer.classList.contains('is-open') && d.backdrop.classList.contains('is-open') && d.body.classList.contains('drawer-open'), 'open: panel + backdrop + body state');
       assert.equal(d.menu.getAttribute('aria-expanded'), 'true');
       assert.equal(d.doc.activeElement, d.close, 'open: focus moves to ✕');
+      assert.ok(d.page.inert === true && !d.drawer.inert && !d.backdrop.inert && d.script.inert === undefined, 'open: the page behind the panel is inert, the panel is not');
       globalThis.scrollY = 0; // a fixed body reports no scroll while pinned
     };
     const released = (how, menuExpanded = 'false') => {
@@ -304,15 +309,18 @@ test('v79: the sidebar scroll lock is SCOPED to the open overlay and ALWAYS rele
       assert.deepEqual(scrolls.at(-1), [0, 1234], `${how}: reading position restored`);
       assert.ok(!d.drawer.classList.contains('is-open') && !d.backdrop.classList.contains('is-open') && !d.body.classList.contains('drawer-open'), `${how}: overlay closed`);
       assert.equal(d.menu.getAttribute('aria-expanded'), menuExpanded, `${how}: ☰ reports the panel state`);
+      assert.equal(d.page.inert, false, `${how}: the page is interactive again`);
     };
     assert.ok(!locked() && d.body.style.top === undefined, 'no lock before the panel is opened');
     open(); d.backdrop.fire('click'); released('backdrop');
+    assert.equal(d.doc.activeElement, d.menu, 'backdrop: focus returns to ☰');
     open(); d.doc.key('Escape'); released('Escape');
     assert.equal(d.doc.activeElement, d.menu, 'Escape: focus returns to ☰');
     open(); d.close.fire('click'); released('✕');
     open(); d.drawer.fire('click', { target: d.toggle });
     assert.ok(locked() && d.drawer.classList.contains('is-open'), 'an accordion toggle keeps the panel (and its lock) open');
     d.drawer.fire('click', { target: d.link }); released('link');
+    assert.equal(d.doc.activeElement, d.menu, 'link: focus left in the closed panel is rescued to ☰');
     open(); d.menu.fire('click'); released('☰ again');
     // Resizing into the desktop column releases the overlay lock; ☰ then reports the visible column.
     open(); mq.matches = true; for (const fn of mq.change) fn(); released('resize into the desktop column', 'true');

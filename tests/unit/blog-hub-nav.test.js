@@ -103,14 +103,14 @@ test('v61 drawer Cẩm nang group mirrors the hub → category hierarchy with re
   // v63: drawer visual rules live ONCE in style.css (loaded by BOTH the Agent
   // app and content pages) — single source, identical look. v79 row heights:
   // hub links inherit the shared 46px sidebar row (no hub-specific override),
-  // category links are 42px and subtopics 40px, each category row pairs its
+  // category and subtopic links are at least 44px, each category row pairs its
   // link with a 44×44 expand/collapse control.
   const css = read('assets/css/style.css').replace(/\/\*[\s\S]*?\*\//g, '');
   assert.match(css, /\.motoai-drawer-list a,\s*\.motoai-drawer-list button\s*\{[^}]*min-height:\s*46px/, 'drawer hub links >= 44px (shared 46px row)');
   assert.match(css, /\.motoai-drawer-list \.motoai-hub-link\s*\{[^}]*\}/, 'hub link rule present');
   assert.ok(!/\.motoai-hub-link[^{}]*\{[^}]*min-height/.test(css), 'no rule lowers the hub link below the shared 46px row');
-  assert.match(css, /\.motoai-hub-items \.motoai-category > a,\s*\.motoai-hub-items \.motoai-category \.motoai-row > a\s*\{[^}]*min-height:\s*42px/, 'drawer child (category) links: 42px rows');
-  assert.match(css, /\.motoai-topic-items \.motoai-subtopic a\s*\{[^}]*min-height:\s*40px/, 'drawer subtopic links: 40px rows');
+  assert.match(css, /\.motoai-hub-items \.motoai-category > a,\s*\.motoai-hub-items \.motoai-category \.motoai-row > a\s*\{[^}]*min-height:\s*(?:4[4-9]|[5-9]\d)px/, 'drawer child (category) links >= 44px');
+  assert.match(css, /\.motoai-topic-items \.motoai-subtopic a\s*\{[^}]*min-height:\s*(?:4[4-9]|[5-9]\d)px/, 'drawer subtopic links >= 44px');
   assert.match(css, /\.motoai-drawer-list \.motoai-toggle\s*\{[^}]*width:\s*44px;\s*min-width:\s*44px;\s*min-height:\s*44px/, 'expand/collapse controls >= 44px');
   assert.ok(!/\.motoai-hub-items li a\s*\{/.test(css), 'the v61 flat child-link rule is gone (nested rows replace it)');
 });

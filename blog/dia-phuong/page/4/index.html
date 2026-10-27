@@ -24,11 +24,12 @@
   <meta name="twitter:title" content="Địa phương / du lịch — trang 4 — Cẩm nang thuê xe máy">
   <meta name="twitter:description" content="Hành trình Hà Nội và vùng ven bằng xe máy thuê: Phố Cổ, Hồ Tây, Ba Đình, Long Biên và cung ngoại thành, kèm thời gian, chỗ gửi xe, lưu ý. Trang 4.">
   <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
-  <link rel="stylesheet" href="../../../../assets/css/style.css?v=56835662">
-  <link rel="stylesheet" href="../../../../assets/css/blog.css?v=1016803875">
+  <link rel="stylesheet" href="../../../../assets/css/style.css?v=3729342083">
+  <link rel="stylesheet" href="../../../../assets/css/blog.css?v=1985773201">
   <script>/* apply saved theme + sidebar state before first paint (no flash) */(function(){try{var d=document.documentElement,t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){d.setAttribute('data-motoai-theme','dark');}if(localStorage.getItem('motoai-sidebar')==='closed'){d.setAttribute('data-motoai-sidebar','closed');}}catch(e){}})();</script>
 </head>
 <body class="content-page">
+  <a class="skip-link" href="#site-main">Bỏ qua đến nội dung chính</a>
     <header class="site-header">
       <div class="site-header-inner">
         <button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở danh mục" aria-label="Mở danh mục" aria-expanded="false" aria-controls="motoai-drawer" data-open="Mở danh mục" data-close="Đóng danh mục"><span class="menu-lines" aria-hidden="true"></span> <span class="motoai-menu-label">Danh mục</span></button>
@@ -113,6 +114,129 @@
         <span class="motoai-status" id="blog-business-status" role="status" aria-live="polite" hidden></span>
       </div>
     </header>
+  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop"></div>
+  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Danh mục" data-expand="Mở rộng {name}" data-collapse="Thu gọn {name}">
+    <div class="motoai-drawer-head">
+      <a class="motoai-drawer-brand" href="/" aria-label="MotoAI — trang chủ"><svg class="brand-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><rect class="brand-mark-tile" width="32" height="32" rx="9"/><path class="brand-mark-road" d="M7.5 26.5 14 5.5M24.5 26.5 18 5.5"/><path class="brand-mark-lane" d="M16 25.5v-3.6M16 18.6v-2.8M16 12.9V11"/></svg><strong>MotoAI</strong></a>
+      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng danh mục" data-close="Đóng danh mục" data-collapse="Thu gọn danh mục"><svg class="motoai-icon i-close" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <ul class="motoai-drawer-list">
+      <li><a href="/"><svg class="motoai-nav-icon i-home" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/></svg><span>Trang Chủ</span></a></li>
+      <li><a href="/agent/"><svg class="motoai-nav-icon i-chat" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4.5 5.5h15a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H10l-4.5 3.5V17h-1a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/></svg><span>Hỏi Agent</span></a></li>
+      <li class="motoai-group" data-group="cm">
+        <div class="motoai-row motoai-group-head"><a class="motoai-group-link" href="/blog/"><svg class="motoai-nav-icon i-book" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M12 7v13.5"/><path d="M3.5 5h5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1 3.5-3.5h5v13h-5a3.5 3.5 0 0 0-3.5 2.5 3.5 3.5 0 0 0-3.5-2.5h-5Z"/></svg><span>Cẩm nang</span></a><button type="button" class="motoai-toggle motoai-group-btn" id="motoai-group-cm-btn" aria-expanded="true" aria-controls="motoai-group-cm" aria-label="Thu gọn Cẩm nang" data-name="Cẩm nang"></button></div>
+        <ul class="motoai-group-items" id="motoai-group-cm">
+          <li class="motoai-hub">
+            <div class="motoai-row"><a class="motoai-hub-link" href="/blog/cong-cu-huong-dan/"><svg class="motoai-nav-icon i-tool" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5Z"/><path d="M14.5 6.5 17 4l3 3-2.5 2.5"/></svg><span>Công Cụ</span></a><button type="button" class="motoai-toggle" id="motoai-hub-C-APP-btn" aria-expanded="true" aria-controls="motoai-hub-C-APP" aria-label="Thu gọn Công Cụ" data-name="Công Cụ"></button></div>
+            <ul class="motoai-hub-items" id="motoai-hub-C-APP">
+              <li class="motoai-category">
+                <div class="motoai-row"><a href="/blog/app/"><span>Ứng Dụng</span></a><button type="button" class="motoai-toggle" id="motoai-cat-APP-btn" aria-expanded="false" aria-controls="motoai-cat-APP" aria-label="Mở rộng Ứng Dụng" data-name="Ứng Dụng"></button></div>
+                <ul class="motoai-topic-items" id="motoai-cat-APP" hidden>
+                  <li class="motoai-subtopic"><a href="/blog/app/web-app/" aria-label="Ứng Dụng: Web App"><span>Web App</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/app/tim-xe/" aria-label="Ứng Dụng: Tìm Xe"><span>Tìm Xe</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/app/tinh-gia/" aria-label="Ứng Dụng: Tính Giá"><span>Tính Giá</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/app/dat-xe/" aria-label="Ứng Dụng: Đặt Xe"><span>Đặt Xe</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/app/tro-ly/" aria-label="Ứng Dụng: Trợ Lý"><span>Trợ Lý</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/app/cai-app/" aria-label="Ứng Dụng: Cài App"><span>Cài App</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/app/so-sanh/" aria-label="Ứng Dụng: So Sánh"><span>So Sánh</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/app/huong-dan/" aria-label="Ứng Dụng: Hướng Dẫn"><span>Hướng Dẫn</span></a></li>
+                </ul>
+              </li>
+              <li class="motoai-category">
+                <div class="motoai-row"><a href="/blog/huong-dan/"><span>Hướng Dẫn</span></a><button type="button" class="motoai-toggle" id="motoai-cat-GUIDE-btn" aria-expanded="false" aria-controls="motoai-cat-GUIDE" aria-label="Mở rộng Hướng Dẫn" data-name="Hướng Dẫn"></button></div>
+                <ul class="motoai-topic-items" id="motoai-cat-GUIDE" hidden>
+                  <li class="motoai-subtopic"><a href="/blog/huong-dan/dat-xe/" aria-label="Hướng Dẫn: Đặt Xe"><span>Đặt Xe</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/huong-dan/thu-tuc/" aria-label="Hướng Dẫn: Thủ Tục"><span>Thủ Tục</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/huong-dan/chuan-bi/" aria-label="Hướng Dẫn: Chuẩn Bị"><span>Chuẩn Bị</span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <div class="motoai-row"><a class="motoai-hub-link" href="/blog/thue-xe-phuong-tien/"><svg class="motoai-nav-icon i-scooter" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="5.5" cy="17" r="3"/><circle cx="18.5" cy="17" r="3"/><path d="M8.5 17h6.5l2.2-9-1.8-3.5h-2.4M2.8 14.5c.8-2.2 2.6-3.5 4.8-3.5h3.6l2.4 6"/></svg><span>Phương Tiện</span></a><button type="button" class="motoai-toggle" id="motoai-hub-C-RENT-btn" aria-expanded="true" aria-controls="motoai-hub-C-RENT" aria-label="Thu gọn Phương Tiện" data-name="Phương Tiện"></button></div>
+            <ul class="motoai-hub-items" id="motoai-hub-C-RENT">
+              <li class="motoai-category">
+                <div class="motoai-row"><a href="/blog/thue-xe/"><span>Thuê Xe</span></a><button type="button" class="motoai-toggle" id="motoai-cat-RENT-btn" aria-expanded="false" aria-controls="motoai-cat-RENT" aria-label="Mở rộng Thuê Xe" data-name="Thuê Xe"></button></div>
+                <ul class="motoai-topic-items" id="motoai-cat-RENT" hidden>
+                  <li class="motoai-subtopic"><a href="/blog/thue-xe/gia-thue/" aria-label="Thuê Xe: Giá Thuê"><span>Giá Thuê</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/thue-xe/dat-coc/" aria-label="Thuê Xe: Đặt Cọc"><span>Đặt Cọc</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/thue-xe/nhan-xe/" aria-label="Thuê Xe: Nhận Xe"><span>Nhận Xe</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/thue-xe/tra-xe/" aria-label="Thuê Xe: Trả Xe"><span>Trả Xe</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/thue-xe/thue-tuan/" aria-label="Thuê Xe: Thuê Tuần"><span>Thuê Tuần</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/thue-xe/thue-thang/" aria-label="Thuê Xe: Thuê Tháng"><span>Thuê Tháng</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/thue-xe/chon-xe/" aria-label="Thuê Xe: Chọn Xe"><span>Chọn Xe</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/thue-xe/du-khach/" aria-label="Thuê Xe: Du Khách"><span>Du Khách</span></a></li>
+                </ul>
+              </li>
+              <li class="motoai-category">
+                <div class="motoai-row"><a href="/blog/xe-dien/"><span>Xe Điện</span></a><button type="button" class="motoai-toggle" id="motoai-cat-EV-btn" aria-expanded="false" aria-controls="motoai-cat-EV" aria-label="Mở rộng Xe Điện" data-name="Xe Điện"></button></div>
+                <ul class="motoai-topic-items" id="motoai-cat-EV" hidden>
+                  <li class="motoai-subtopic"><a href="/blog/xe-dien/pin-xe/" aria-label="Xe Điện: Pin Xe"><span>Pin Xe</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/xe-dien/sac-pin/" aria-label="Xe Điện: Sạc Pin"><span>Sạc Pin</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/xe-dien/quang-duong/" aria-label="Xe Điện: Quãng Đường"><span>Quãng Đường</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/xe-dien/chon-xe/" aria-label="Xe Điện: Chọn Xe"><span>Chọn Xe</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/xe-dien/chi-phi/" aria-label="Xe Điện: Chi Phí"><span>Chi Phí</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/xe-dien/an-toan/" aria-label="Xe Điện: An Toàn"><span>An Toàn</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/xe-dien/so-sanh/" aria-label="Xe Điện: So Sánh"><span>So Sánh</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/xe-dien/thue-ngay/" aria-label="Xe Điện: Thuê Ngày"><span>Thuê Ngày</span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="motoai-hub">
+            <div class="motoai-row"><a class="motoai-hub-link" href="/blog/kham-pha-an-toan/" aria-current="page"><svg class="motoai-nav-icon i-compass" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2 5-5 2 2-5Z"/></svg><span>Khám Phá</span></a><button type="button" class="motoai-toggle" id="motoai-hub-C-EXPLORE-btn" aria-expanded="true" aria-controls="motoai-hub-C-EXPLORE" aria-label="Thu gọn Khám Phá" data-name="Khám Phá"></button></div>
+            <ul class="motoai-hub-items" id="motoai-hub-C-EXPLORE">
+              <li class="motoai-category">
+                <div class="motoai-row"><a href="/blog/an-toan/"><span>An Toàn</span></a><button type="button" class="motoai-toggle" id="motoai-cat-SAFE-btn" aria-expanded="false" aria-controls="motoai-cat-SAFE" aria-label="Mở rộng An Toàn" data-name="An Toàn"></button></div>
+                <ul class="motoai-topic-items" id="motoai-cat-SAFE" hidden>
+                  <li class="motoai-subtopic"><a href="/blog/an-toan/lai-xe/" aria-label="An Toàn: Lái Xe"><span>Lái Xe</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/an-toan/mu-bao-hiem/" aria-label="An Toàn: Mũ Bảo Hiểm"><span>Mũ Bảo Hiểm</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/an-toan/thoi-tiet/" aria-label="An Toàn: Thời Tiết"><span>Thời Tiết</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/an-toan/su-co/" aria-label="An Toàn: Sự Cố"><span>Sự Cố</span></a></li>
+                  <li class="motoai-subtopic"><a href="/blog/an-toan/phap-luat/" aria-label="An Toàn: Pháp Luật"><span>Pháp Luật</span></a></li>
+                </ul>
+              </li>
+              <li class="motoai-category">
+                <div class="motoai-row"><a href="/blog/dia-phuong/" aria-current="page"><span>Địa Phương</span></a><button type="button" class="motoai-toggle" id="motoai-cat-LOCAL-btn" aria-expanded="true" aria-controls="motoai-cat-LOCAL" aria-label="Thu gọn Địa Phương" data-name="Địa Phương"></button></div>
+                <ul class="motoai-topic-items" id="motoai-cat-LOCAL">
+                  <li class="motoai-subtopic"><a href="/blog/dia-phuong/phuong-xa/" aria-label="Địa Phương: Phường Xã"><span>Phường Xã</span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="/blog/"><svg class="motoai-nav-icon i-search" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>Tìm Bài</span></a></li>
+        </ul>
+      </li>
+      <li class="motoai-group" data-group="pages">
+        <div class="motoai-row motoai-group-head"><span class="motoai-group-title"><svg class="motoai-nav-icon i-grid" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/></svg><span>Trang Web</span></span><button type="button" class="motoai-toggle motoai-group-btn" id="motoai-group-pages-btn" aria-expanded="true" aria-controls="motoai-group-pages" aria-label="Thu gọn Trang Web" data-name="Trang Web"></button></div>
+        <ul class="motoai-group-items" id="motoai-group-pages">
+          <li><a href="/gioi-thieu/"><span>Giới Thiệu</span></a></li>
+          <li><a href="/lien-he/"><span>Liên Hệ</span></a></li>
+          <li><a href="/gia-thue/"><span>Giá Thuê</span></a></li>
+          <li><a href="/doi-tac/"><span>Đối Tác</span></a></li>
+        </ul>
+      </li>
+      <li class="motoai-group" data-group="pl">
+        <div class="motoai-row motoai-group-head"><span class="motoai-group-title"><svg class="motoai-nav-icon i-lock" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></svg><span>Pháp Lý</span></span><button type="button" class="motoai-toggle motoai-group-btn" id="motoai-group-pl-btn" aria-expanded="false" aria-controls="motoai-group-pl" aria-label="Mở rộng Pháp Lý" data-name="Pháp Lý"></button></div>
+        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
+          <li><a href="/chinh-sach/"><span>Chính Sách</span></a></li>
+          <li><a href="/privacy/"><span>Bảo Mật</span></a></li>
+          <li><a href="/terms/"><span>Điều Khoản</span></a></li>
+        </ul>
+      </li>
+      <li class="motoai-group" data-group="dv">
+        <div class="motoai-row motoai-group-head"><span class="motoai-group-title"><svg class="motoai-nav-icon i-phone" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6.6 3.5h3l1.5 4.2-2.2 1.4a11 11 0 0 0 6 6l1.4-2.2 4.2 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Dịch Vụ</span></span><button type="button" class="motoai-toggle motoai-group-btn" id="motoai-group-dv-btn" aria-expanded="false" aria-controls="motoai-group-dv" aria-label="Mở rộng Dịch Vụ" data-name="Dịch Vụ"></button></div>
+        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
+          <li><a href="/agent/?action=address"><span>Địa Chỉ</span></a></li>
+          <li><a href="/agent/?action=contact"><span>Liên Hệ</span></a></li>
+          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank"><span>Gọi Ngay</span></a></li>
+          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank"><span>Nhắn WhatsApp</span></a></li>
+          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank"><span>Bản Đồ</span></a></li>
+        </ul>
+      </li>
+      <li class="motoai-drawer-util"><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
+    </ul>
+  </nav>
   <main class="site-main" id="site-main" data-motoai-screen="category-dia-phuong">
       <nav class="blog-breadcrumb" aria-label="Đường dẫn"><a href="/">Trang Chủ</a> › <a href="/blog/">Cẩm nang</a> › <a href="/blog/kham-pha-an-toan/">Khám phá &amp; An toàn</a> › <a href="/blog/dia-phuong/">Địa Phương</a> › <span>Trang 4</span></nav>
       <p class="blog-screen-label">Danh mục</p>
@@ -387,130 +511,6 @@
         <p>09:00 - 21:00 mỗi ngày</p>
       </div>
     </footer>
-
-  <div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop"></div>
-  <nav class="motoai-drawer" id="motoai-drawer" aria-label="Danh mục" data-expand="Mở rộng {name}" data-collapse="Thu gọn {name}">
-    <div class="motoai-drawer-head">
-      <a class="motoai-drawer-brand" href="/" aria-label="MotoAI — trang chủ"><svg class="brand-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><rect class="brand-mark-tile" width="32" height="32" rx="9"/><path class="brand-mark-road" d="M7.5 26.5 14 5.5M24.5 26.5 18 5.5"/><path class="brand-mark-lane" d="M16 25.5v-3.6M16 18.6v-2.8M16 12.9V11"/></svg><strong>MotoAI</strong></a>
-      <button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng danh mục" data-close="Đóng danh mục" data-collapse="Thu gọn danh mục"><svg class="motoai-icon i-close" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-    </div>
-    <ul class="motoai-drawer-list">
-      <li><a href="/"><svg class="motoai-nav-icon i-home" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/></svg><span>Trang Chủ</span></a></li>
-      <li><a href="/agent/"><svg class="motoai-nav-icon i-chat" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4.5 5.5h15a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H10l-4.5 3.5V17h-1a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"/></svg><span>Hỏi Agent</span></a></li>
-      <li class="motoai-group" data-group="cm">
-        <div class="motoai-row motoai-group-head"><a class="motoai-group-link" href="/blog/"><svg class="motoai-nav-icon i-book" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M12 7v13.5"/><path d="M3.5 5h5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1 3.5-3.5h5v13h-5a3.5 3.5 0 0 0-3.5 2.5 3.5 3.5 0 0 0-3.5-2.5h-5Z"/></svg><span>Cẩm nang</span></a><button type="button" class="motoai-toggle motoai-group-btn" id="motoai-group-cm-btn" aria-expanded="true" aria-controls="motoai-group-cm" aria-label="Thu gọn Cẩm nang" data-name="Cẩm nang"></button></div>
-        <ul class="motoai-group-items" id="motoai-group-cm">
-          <li class="motoai-hub">
-            <div class="motoai-row"><a class="motoai-hub-link" href="/blog/cong-cu-huong-dan/"><svg class="motoai-nav-icon i-tool" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5Z"/><path d="M14.5 6.5 17 4l3 3-2.5 2.5"/></svg><span>Công Cụ</span></a><button type="button" class="motoai-toggle" id="motoai-hub-C-APP-btn" aria-expanded="true" aria-controls="motoai-hub-C-APP" aria-label="Thu gọn Công Cụ" data-name="Công Cụ"></button></div>
-            <ul class="motoai-hub-items" id="motoai-hub-C-APP">
-              <li class="motoai-category">
-                <div class="motoai-row"><a href="/blog/app/"><span>Ứng Dụng</span></a><button type="button" class="motoai-toggle" id="motoai-cat-APP-btn" aria-expanded="false" aria-controls="motoai-cat-APP" aria-label="Mở rộng Ứng Dụng" data-name="Ứng Dụng"></button></div>
-                <ul class="motoai-topic-items" id="motoai-cat-APP" hidden>
-                  <li class="motoai-subtopic"><a href="/blog/app/web-app/" aria-label="Ứng Dụng: Web App"><span>Web App</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/app/tim-xe/" aria-label="Ứng Dụng: Tìm Xe"><span>Tìm Xe</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/app/tinh-gia/" aria-label="Ứng Dụng: Tính Giá"><span>Tính Giá</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/app/dat-xe/" aria-label="Ứng Dụng: Đặt Xe"><span>Đặt Xe</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/app/tro-ly/" aria-label="Ứng Dụng: Trợ Lý"><span>Trợ Lý</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/app/cai-app/" aria-label="Ứng Dụng: Cài App"><span>Cài App</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/app/so-sanh/" aria-label="Ứng Dụng: So Sánh"><span>So Sánh</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/app/huong-dan/" aria-label="Ứng Dụng: Hướng Dẫn"><span>Hướng Dẫn</span></a></li>
-                </ul>
-              </li>
-              <li class="motoai-category">
-                <div class="motoai-row"><a href="/blog/huong-dan/"><span>Hướng Dẫn</span></a><button type="button" class="motoai-toggle" id="motoai-cat-GUIDE-btn" aria-expanded="false" aria-controls="motoai-cat-GUIDE" aria-label="Mở rộng Hướng Dẫn" data-name="Hướng Dẫn"></button></div>
-                <ul class="motoai-topic-items" id="motoai-cat-GUIDE" hidden>
-                  <li class="motoai-subtopic"><a href="/blog/huong-dan/dat-xe/" aria-label="Hướng Dẫn: Đặt Xe"><span>Đặt Xe</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/huong-dan/thu-tuc/" aria-label="Hướng Dẫn: Thủ Tục"><span>Thủ Tục</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/huong-dan/chuan-bi/" aria-label="Hướng Dẫn: Chuẩn Bị"><span>Chuẩn Bị</span></a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="motoai-hub">
-            <div class="motoai-row"><a class="motoai-hub-link" href="/blog/thue-xe-phuong-tien/"><svg class="motoai-nav-icon i-scooter" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="5.5" cy="17" r="3"/><circle cx="18.5" cy="17" r="3"/><path d="M8.5 17h6.5l2.2-9-1.8-3.5h-2.4M2.8 14.5c.8-2.2 2.6-3.5 4.8-3.5h3.6l2.4 6"/></svg><span>Phương Tiện</span></a><button type="button" class="motoai-toggle" id="motoai-hub-C-RENT-btn" aria-expanded="true" aria-controls="motoai-hub-C-RENT" aria-label="Thu gọn Phương Tiện" data-name="Phương Tiện"></button></div>
-            <ul class="motoai-hub-items" id="motoai-hub-C-RENT">
-              <li class="motoai-category">
-                <div class="motoai-row"><a href="/blog/thue-xe/"><span>Thuê Xe</span></a><button type="button" class="motoai-toggle" id="motoai-cat-RENT-btn" aria-expanded="false" aria-controls="motoai-cat-RENT" aria-label="Mở rộng Thuê Xe" data-name="Thuê Xe"></button></div>
-                <ul class="motoai-topic-items" id="motoai-cat-RENT" hidden>
-                  <li class="motoai-subtopic"><a href="/blog/thue-xe/gia-thue/" aria-label="Thuê Xe: Giá Thuê"><span>Giá Thuê</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/thue-xe/dat-coc/" aria-label="Thuê Xe: Đặt Cọc"><span>Đặt Cọc</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/thue-xe/nhan-xe/" aria-label="Thuê Xe: Nhận Xe"><span>Nhận Xe</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/thue-xe/tra-xe/" aria-label="Thuê Xe: Trả Xe"><span>Trả Xe</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/thue-xe/thue-tuan/" aria-label="Thuê Xe: Thuê Tuần"><span>Thuê Tuần</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/thue-xe/thue-thang/" aria-label="Thuê Xe: Thuê Tháng"><span>Thuê Tháng</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/thue-xe/chon-xe/" aria-label="Thuê Xe: Chọn Xe"><span>Chọn Xe</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/thue-xe/du-khach/" aria-label="Thuê Xe: Du Khách"><span>Du Khách</span></a></li>
-                </ul>
-              </li>
-              <li class="motoai-category">
-                <div class="motoai-row"><a href="/blog/xe-dien/"><span>Xe Điện</span></a><button type="button" class="motoai-toggle" id="motoai-cat-EV-btn" aria-expanded="false" aria-controls="motoai-cat-EV" aria-label="Mở rộng Xe Điện" data-name="Xe Điện"></button></div>
-                <ul class="motoai-topic-items" id="motoai-cat-EV" hidden>
-                  <li class="motoai-subtopic"><a href="/blog/xe-dien/pin-xe/" aria-label="Xe Điện: Pin Xe"><span>Pin Xe</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/xe-dien/sac-pin/" aria-label="Xe Điện: Sạc Pin"><span>Sạc Pin</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/xe-dien/quang-duong/" aria-label="Xe Điện: Quãng Đường"><span>Quãng Đường</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/xe-dien/chon-xe/" aria-label="Xe Điện: Chọn Xe"><span>Chọn Xe</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/xe-dien/chi-phi/" aria-label="Xe Điện: Chi Phí"><span>Chi Phí</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/xe-dien/an-toan/" aria-label="Xe Điện: An Toàn"><span>An Toàn</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/xe-dien/so-sanh/" aria-label="Xe Điện: So Sánh"><span>So Sánh</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/xe-dien/thue-ngay/" aria-label="Xe Điện: Thuê Ngày"><span>Thuê Ngày</span></a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="motoai-hub">
-            <div class="motoai-row"><a class="motoai-hub-link" href="/blog/kham-pha-an-toan/" aria-current="page"><svg class="motoai-nav-icon i-compass" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2 5-5 2 2-5Z"/></svg><span>Khám Phá</span></a><button type="button" class="motoai-toggle" id="motoai-hub-C-EXPLORE-btn" aria-expanded="true" aria-controls="motoai-hub-C-EXPLORE" aria-label="Thu gọn Khám Phá" data-name="Khám Phá"></button></div>
-            <ul class="motoai-hub-items" id="motoai-hub-C-EXPLORE">
-              <li class="motoai-category">
-                <div class="motoai-row"><a href="/blog/an-toan/"><span>An Toàn</span></a><button type="button" class="motoai-toggle" id="motoai-cat-SAFE-btn" aria-expanded="false" aria-controls="motoai-cat-SAFE" aria-label="Mở rộng An Toàn" data-name="An Toàn"></button></div>
-                <ul class="motoai-topic-items" id="motoai-cat-SAFE" hidden>
-                  <li class="motoai-subtopic"><a href="/blog/an-toan/lai-xe/" aria-label="An Toàn: Lái Xe"><span>Lái Xe</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/an-toan/mu-bao-hiem/" aria-label="An Toàn: Mũ Bảo Hiểm"><span>Mũ Bảo Hiểm</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/an-toan/thoi-tiet/" aria-label="An Toàn: Thời Tiết"><span>Thời Tiết</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/an-toan/su-co/" aria-label="An Toàn: Sự Cố"><span>Sự Cố</span></a></li>
-                  <li class="motoai-subtopic"><a href="/blog/an-toan/phap-luat/" aria-label="An Toàn: Pháp Luật"><span>Pháp Luật</span></a></li>
-                </ul>
-              </li>
-              <li class="motoai-category">
-                <div class="motoai-row"><a href="/blog/dia-phuong/" aria-current="page"><span>Địa Phương</span></a><button type="button" class="motoai-toggle" id="motoai-cat-LOCAL-btn" aria-expanded="true" aria-controls="motoai-cat-LOCAL" aria-label="Thu gọn Địa Phương" data-name="Địa Phương"></button></div>
-                <ul class="motoai-topic-items" id="motoai-cat-LOCAL">
-                  <li class="motoai-subtopic"><a href="/blog/dia-phuong/phuong-xa/" aria-label="Địa Phương: Phường Xã"><span>Phường Xã</span></a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="/blog/"><svg class="motoai-nav-icon i-search" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>Tìm Bài</span></a></li>
-        </ul>
-      </li>
-      <li class="motoai-group" data-group="pages">
-        <div class="motoai-row motoai-group-head"><span class="motoai-group-title"><svg class="motoai-nav-icon i-grid" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/></svg><span>Trang Web</span></span><button type="button" class="motoai-toggle motoai-group-btn" id="motoai-group-pages-btn" aria-expanded="true" aria-controls="motoai-group-pages" aria-label="Thu gọn Trang Web" data-name="Trang Web"></button></div>
-        <ul class="motoai-group-items" id="motoai-group-pages">
-          <li><a href="/gioi-thieu/"><span>Giới Thiệu</span></a></li>
-          <li><a href="/lien-he/"><span>Liên Hệ</span></a></li>
-          <li><a href="/gia-thue/"><span>Giá Thuê</span></a></li>
-          <li><a href="/doi-tac/"><span>Đối Tác</span></a></li>
-        </ul>
-      </li>
-      <li class="motoai-group" data-group="pl">
-        <div class="motoai-row motoai-group-head"><span class="motoai-group-title"><svg class="motoai-nav-icon i-lock" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></svg><span>Pháp Lý</span></span><button type="button" class="motoai-toggle motoai-group-btn" id="motoai-group-pl-btn" aria-expanded="false" aria-controls="motoai-group-pl" aria-label="Mở rộng Pháp Lý" data-name="Pháp Lý"></button></div>
-        <ul class="motoai-group-items" id="motoai-group-pl" hidden>
-          <li><a href="/chinh-sach/"><span>Chính Sách</span></a></li>
-          <li><a href="/privacy/"><span>Bảo Mật</span></a></li>
-          <li><a href="/terms/"><span>Điều Khoản</span></a></li>
-        </ul>
-      </li>
-      <li class="motoai-group" data-group="dv">
-        <div class="motoai-row motoai-group-head"><span class="motoai-group-title"><svg class="motoai-nav-icon i-phone" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6.6 3.5h3l1.5 4.2-2.2 1.4a11 11 0 0 0 6 6l1.4-2.2 4.2 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Dịch Vụ</span></span><button type="button" class="motoai-toggle motoai-group-btn" id="motoai-group-dv-btn" aria-expanded="false" aria-controls="motoai-group-dv" aria-label="Mở rộng Dịch Vụ" data-name="Dịch Vụ"></button></div>
-        <ul class="motoai-group-items" id="motoai-group-dv" hidden>
-          <li><a href="/agent/?action=address"><span>Địa Chỉ</span></a></li>
-          <li><a href="/agent/?action=contact"><span>Liên Hệ</span></a></li>
-          <li><a data-contact-ref="call" href="#" rel="noopener noreferrer" target="_blank"><span>Gọi Ngay</span></a></li>
-          <li><a data-contact-ref="whatsapp" href="#" rel="noopener noreferrer" target="_blank"><span>Nhắn WhatsApp</span></a></li>
-          <li><a data-contact-ref="map" href="#" rel="noopener noreferrer" target="_blank"><span>Bản Đồ</span></a></li>
-        </ul>
-      </li>
-      <li class="motoai-drawer-util"><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>
-    </ul>
-  </nav>
 
   <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CollectionPage","name":"Địa phương / du lịch","description":"Hành trình Hà Nội và vùng ven bằng xe máy thuê: Phố Cổ, Hồ Tây, Ba Đình, Long Biên và cung ngoại thành, kèm thời gian, chỗ gửi xe, lưu ý. Trang 4.","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/page/4/","inLanguage":"vi-VN","isPartOf":{"@type":"WebSite","name":"MotoAI — Cẩm nang thuê xe máy & xe điện","url":"https://chatbot.thuexemaynguyentu.com/"},"mainEntity":{"@type":"ItemList","name":"Địa phương / du lịch — bài viết","itemListElement":[{"@type":"ListItem","position":73,"name":"Hồ Gươm ban đêm hai ngày một đêm: nhận xe, vòng hồ, trả xe","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ho-guom-ban-dem-hai-ngay-mot-dem/"},{"@type":"ListItem","position":74,"name":"Lăng Chủ tịch hai ngày một đêm: lịch trình quanh khu Ba Đình","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/lang-chu-tich-qua-pho-hai-ngay-mot-dem/"},{"@type":"ListItem","position":75,"name":"Lịch ăn uống phố cổ hai ngày một đêm bằng xe máy","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/pho-co-am-thuc-xe-may-hai-ngay-mot-dem/"},{"@type":"ListItem","position":76,"name":"Đi ven đê sông Hồng hai ngày một đêm: lịch chiều, đêm, sáng","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ven-de-song-hong-hai-ngay-mot-dem/"},{"@type":"ListItem","position":77,"name":"Cột cờ Hoàng Thành hai ngày một đêm: lịch trình quanh Ba Đình","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cot-co-hoang-thanh-hai-ngay-mot-dem/"},{"@type":"ListItem","position":78,"name":"Hành trình bảo tàng Hà Nội hai ngày một đêm: chia hai cụm","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/bao-tang-ha-noi-hanh-trinh-hai-ngay-mot-dem/"},{"@type":"ListItem","position":79,"name":"Phố Sách Hà Nội hai ngày một đêm: lịch trình và chỗ gửi xe","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/pho-sach-ha-noi-hai-ngay-mot-dem/"},{"@type":"ListItem","position":80,"name":"Nhà Thờ Lớn Hà Nội hai ngày một đêm: lịch trình quanh phố cổ","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/nha-tho-lon-ha-noi-hai-ngay-mot-dem/"},{"@type":"ListItem","position":81,"name":"Làng gốm Bát Tràng hai ngày một đêm: chợ gốm, đêm bên sông","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/lang-gom-bat-trang-hai-ngay-mot-dem/"},{"@type":"ListItem","position":82,"name":"Xóm lò Bát Tràng và đê sông: hai ngày một đêm bằng xe máy","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/bat-trang-gom-xe-may-hai-ngay-mot-dem/"},{"@type":"ListItem","position":83,"name":"Đường Đồng hai ngày một đêm bằng xe máy: Hồ Tây, bảo tàng, đê","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/duong-dong-by-bike-hai-ngay-mot-dem/"},{"@type":"ListItem","position":84,"name":"Đi Văn Giang hai ngày một đêm bằng xe điện: sạc pin, gửi xe","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/van-giang-ev-and-bikes-hai-ngay-mot-dem/"},{"@type":"ListItem","position":85,"name":"Đi chùa ở Hà Nội hai ngày một đêm: chùa trung tâm và ngoại ô","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/chua-va-ha-noi-hai-ngay-mot-dem/"},{"@type":"ListItem","position":86,"name":"Thăm đền danh nhân họ Nguyễn hai ngày một đêm bằng xe máy","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/den-nguyen-can-bang-xe-hai-ngay-mot-dem/"},{"@type":"ListItem","position":87,"name":"Ngắm cảnh Long Biên hai ngày một đêm: lịch chụp ảnh và gửi xe","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/quang-di-long-bien-view-hai-ngay-mot-dem/"},{"@type":"ListItem","position":88,"name":"Hoàng hôn Hồ Tây hai ngày một đêm: vòng hồ và Nhật Tân","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/hoang-hon-ho-tay-hai-ngay-mot-dem/"},{"@type":"ListItem","position":89,"name":"Cà phê phố cổ Hà Nội hai ngày một đêm: lịch quán trong ngõ","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ca-phe-pho-co-hai-ngay-mot-dem/"},{"@type":"ListItem","position":90,"name":"Đi chùa Một Cột hai ngày một đêm: chuyến Ba Đình và Hồ Tây","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/chua-mot-cot-ha-noi-hai-ngay-mot-dem/"},{"@type":"ListItem","position":91,"name":"Hoàng hôn cầu Nhật Tân hai ngày một đêm: lịch quanh cầu","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/cau-nhat-tan-hoang-hon-hai-ngay-mot-dem/"},{"@type":"ListItem","position":92,"name":"Quốc lộ 5 ngoại ô Hà Nội hai ngày một đêm: chặng và nhánh nhỏ","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/duong-5-va-ngoai-o-hai-ngay-mot-dem/"},{"@type":"ListItem","position":93,"name":"Sóc Sơn và Cổ Loa hai ngày một đêm: lịch trình bằng xe máy","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/soc-son-va-co-loa-hai-ngay-mot-dem/"},{"@type":"ListItem","position":94,"name":"Đi Ba Vì hai ngày một đêm bằng xe máy: chia nhịp từng buổi","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ba-vi-cuoi-tuan-hai-ngay-mot-dem/"},{"@type":"ListItem","position":95,"name":"Đi Thạch Thất và Sơn Tây hai ngày một đêm: chùa, làng cổ","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/thach-that-va-son-tay-hai-ngay-mot-dem/"},{"@type":"ListItem","position":96,"name":"Đi Hòa Bình đường trường hai ngày một đêm: Mai Châu, Thung Nai","url":"https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/hoa-binh-duong-truong-hai-ngay-mot-dem/"}]}}

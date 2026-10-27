@@ -61,7 +61,7 @@ const LABEL_KEYS = ['crumbPage', 'kickerHub', 'kickerCluster', 'kickerStatic', '
   'searchPlaceholder', 'searchNote', 'searchCount', 'searchEmpty', 'searchError', 'latestTitle', 'latestNote',
   'indexTitle', 'indexNote', 'footerDesc', 'footerNap', 'footerHours', 'hubsTitle', 'priceConfirm', 'priceDeposit', 'depositConfirm',
   'emptyBlog', 'emptyHub', 'emptyScopeHub', 'emptyScopeCluster', 'headerAgent',
-  'menuLabel', 'menuOpen', 'menuClose', 'menuCollapseSidebar', 'menuExpand', 'menuCollapse', 'menuTheme'];
+  'menuLabel', 'menuOpen', 'menuClose', 'menuCollapseSidebar', 'menuExpand', 'menuCollapse', 'menuTheme', 'skipToContent'];
 for (const key of LABEL_KEYS) {
   if (typeof BLOG_UI.labels?.[key] !== 'string' || !BLOG_UI.labels[key].trim()) throw new Error(`blog-ui: labels.${key} must be a non-empty string`);
 }

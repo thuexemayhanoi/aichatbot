@@ -172,20 +172,20 @@ test('phones + tablets + Agent app: a LEFT off-canvas panel (85vw ≤ 340px; 320
   assert.ok(!/\.app-tab|motoai-dock|drawer-in/.test(css) && !/app-tab|is-typing|padding-bottom: calc\(56px/.test(blogCss));
   assert.match(css, /\.motoai-drawer-list \.motoai-toggle \{[^}]*min-width: 44px; min-height: 44px;/s, 'expand/collapse targets');
   assert.match(css, /\.motoai-drawer-list a,\s*\.motoai-drawer-list button \{[^}]*min-height: 46px;/s);
-  assert.match(blogCss, /html\.drawer-lock body\.content-page \{ position: fixed; left: 0; right: 0; width: 100%; overflow-y: hidden; \}/, 'the page stays put under the open panel');
+  assert.match(blogCss, /^html\.drawer-lock body\.content-page \{ position: fixed; left: 0; right: 0; width: 100%; \}$/m, 'the page stays put under the open panel (no overflow: the sticky header stays in view)');
 });
 
 test('desktop content pages (>= 1200px): header / [sidebar | main] / footer grid, sticky collapsible column, horizontal menu; the Agent app keeps the overlay', () => {
   const desk = blogCss.slice(blogCss.indexOf('/* ==================== Desktop layout (v79'));
   assert.match(desk, /@media \(min-width: 1200px\) \{\s*body\.content-page \{\s*display: grid; grid-template-columns: var\(--sidebar-w\) minmax\(0, 1fr\);/);
-  assert.match(desk, /grid-template-areas: "header header" "banner banner" "sidebar main" "footer footer";/);
+  assert.match(desk, /grid-template-areas: "header header" "banner banner" "sidebar main" "sidebar footer";/, 'the column runs down beside the footer: the sticky panel never covers it');
   assert.match(desk, /body\.content-page > \.motoai-drawer \{\s*grid-area: sidebar; position: sticky;/);
   assert.match(desk, /transform: none; visibility: visible; transition: none;/);
   assert.match(desk, /html\[data-motoai-sidebar="closed"\] body\.content-page \{ grid-template-columns: 0 minmax\(0, 1fr\); \}/);
   assert.match(desk, /html\[data-motoai-sidebar="closed"\] body\.content-page > \.motoai-drawer \{ display: none; \}/);
   assert.match(desk, /@media \(min-width: 1200px\) and \(max-width: 1399\.98px\) \{\s*html:not\(\[data-motoai-sidebar="closed"\]\) \.site-main\[data-motoai-screen\^="article-"\] \{ display: flex; \}/, 'articles keep one column beside the open sidebar until the rail fits');
   assert.match(blogCss, /--sidebar-w: 280px;/);
-  assert.ok(builtBlogCss.includes('grid-template-areas:"header header" "banner banner" "sidebar main" "footer footer"'), 'the served stylesheet carries the grid');
+  assert.ok(builtBlogCss.includes('grid-template-areas:"header header" "banner banner" "sidebar main" "sidebar footer"'), 'the served stylesheet carries the grid');
   assert.match(css, /@media \(min-width: 1200px\) \{\s*\.site-nav \{ display: flex;/, 'the horizontal menu starts where the sidebar column does');
   assert.match(css, /@media \(min-width: 1200px\) and \(min-height: 600px\) and \(hover: hover\) and \(pointer: fine\) \{\s*body:not\(\[data-motoai-embed="1"\]\) \.motoai-header \{ grid-template-areas: "nav nav nav nav nav" "menu mark title status actions" "menu mark sub status actions"; \}/);
   assert.ok(!/body\.chat-home[^{]*\.motoai-drawer \{[^}]*position: sticky/.test(css), 'the Agent app never turns the panel into a column');
@@ -203,6 +203,45 @@ test('drawer.js: one controller for both shells — overlay, scroll lock, focus,
   assert.match(read('assets/js/app-shell.js'), /import \{ createDrawer \} from '\.\/drawer\.js\?v=79';/);
   assert.match(read('assets/js/main.js'), /import \{ createDrawer \} from '\.\/drawer\.js\?v=79';/);
   assert.ok(!read('assets/js/app-shell.js').includes('is-typing'));
+});
+
+test('overlay is modal and focus never gets lost: inert page, rescue on every close path, Tab cycles inside, items close before their own handler', () => {
+  const js = read('assets/js/drawer.js');
+  // The rest of the page is inert while the overlay is open (Tab, VoiceOver swipe, pointer).
+  assert.match(js, /const inertRest = \(on\) => \{\s*for \(const el of body\.children\) if \(el !== drawer && el !== backdrop && el\.tagName !== 'SCRIPT'\) el\.inert = on;\s*\};/);
+  assert.match(js, /body\.classList\.toggle\('drawer-open', state\);\s*inertRest\(state\);\s*lock\(state\);/, 'inert follows the overlay state');
+  // Closing rescues focus left in a panel that disappears (backdrop, item, resize into a collapsed column).
+  assert.match(js, /const rescue = !state && drawer\.contains\(doc\.activeElement\) && !\(sidebarMode\(\) && sidebarVisible\(\)\);/);
+  assert.match(js, /if \(focus \|\| rescue\) \(state \? close \?\? drawer\.querySelector\('a, button'\) : menu\)\?\.focus\(\{ preventScroll: true \}\);/);
+  assert.ok(js.includes("backdrop.addEventListener('click', () => setOverlay(false));"), 'backdrop close returns focus to ☰');
+  // Items close the overlay in the capture phase, before a chat-mode action moves focus into the app.
+  assert.match(js, /drawer\.addEventListener\('click', \(event\) => \{[\s\S]*?setOverlay\(false, false\);\s*\}, true\);/);
+  // Tab is stepped through the visible panel items (Safari's default Tab skips links and buttons).
+  assert.match(js, /event\.preventDefault\(\);\s*const i = items\.indexOf\(doc\.activeElement\);\s*items\[event\.shiftKey \? \(i <= 0 \? items\.length : i\) - 1 : \(i \+ 1\) % items\.length\]\.focus\(\);/);
+  // In the desktop column ☰ collapses, and says so.
+  assert.match(js, /expanded \? \(sidebarMode\(\) \? close\?\.dataset\.collapse : null\) \?\? menu\.dataset\.close : menu\.dataset\.open/);
+  // Collapsing / expanding the column keeps the line under the header in place.
+  assert.match(js, /anchor = .*doc\.elementFromPoint\?\.\(box\.left \+ box\.width \/ 2, line\)/);
+  assert.match(js, /if \(anchor\) globalThis\.scrollBy\(0, anchor\.getBoundingClientRect\(\)\.top - before\);/);
+});
+
+test('reading order: skip link, header, sidebar, banner, main, footer on every content page; header stays one row on 360–380px phones', () => {
+  const skip = `<a class="skip-link" href="#site-main">${labels.skipToContent}</a>`;
+  for (const p of ['index.html', 'blog/index.html', 'blog/xe-dien/index.html', 'blog/thue-xe/thue-xe-may-gia-re/index.html', ...STATIC_DIRS.map((d) => `${d}/index.html`)]) {
+    const html = read(p);
+    assert.ok(html.includes(`<body class="content-page">\n  ${skip}\n    <header class="site-header">`), `${p}: the skip link is the first Tab stop`);
+    const at = (needle) => html.indexOf(needle);
+    const order = [at('<header class="site-header">'), at('</header>'), at('<div class="motoai-drawer-backdrop"'), at('<nav class="motoai-drawer"'), at('<main class="site-main" id="site-main"'), at('<footer class="blog-footer">')];
+    assert.ok(order.every((v, i) => v > 0 && (i === 0 || v > order[i - 1])), `${p}: DOM order follows the visual order ${order}`);
+    assert.equal(html.match(/class="skip-link"/g).length, 1, `${p}: one skip link`);
+  }
+  assert.match(blogCss, /\.skip-link \{[^}]*position: absolute;[^}]*top: -200px;/, 'off screen until focused');
+  assert.match(blogCss, /\.skip-link:focus \{ top: calc\(env\(safe-area-inset-top, 0px\) \+ 8px\); \}/);
+  // 360–380px: ☰ keeps "Danh mục", the wordmark gives way (the brand link keeps its aria-label).
+  assert.match(blogCss, /@media \(max-width: 380px\) \{\s*body\.content-page \.motoai-menu \{ padding: 0 12px; \}\s*\.site-header \.site-brand-text \{ display: none; \}/);
+  assert.match(read('index.html'), /<a class="site-brand" href="\/" aria-label="[^"]+">/);
+  assert.match(css, /@media \(min-width: 360px\) and \(max-width: 379\.98px\) \{\s*\.motoai-header \{ column-gap: 8px; \}\s*\.motoai-menu \{ padding: 0 12px; \}\s*\}/, 'Agent title fits beside ☰ Danh mục');
+  assert.match(css, /@media \(max-width: 359px\) \{\s*\.motoai-subtitle \{[^}]*\}[^\n]*\n\s*\.motoai-menu-label \{ display: none; \}/, 'only below 360px is ☰ icon-only');
 });
 
 test('footer and desktop menu are untouched: every link kept, hub dropdowns intact', () => {

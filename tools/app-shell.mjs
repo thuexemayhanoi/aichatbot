@@ -305,14 +305,18 @@ function shellScripts({ search }) {
  * @param {boolean} o.search — include the blog search runtime (blog home only)
  */
 export function appShellPage({ title, description, path, screen, activeHub = null, activeCluster = null, contentHtml, schemaHtml = '', search = false, ogType = 'website', headHtml = '' }) {
+  // DOM order = reading order: skip link, header, sidebar (the desktop
+  // column sits left of <main>; below 1200px it is an off-canvas panel that
+  // takes no part in the flow), banner, main, footer.
   return pageHead({ title, description, path, ogType, headHtml })
+    + `  <a class="skip-link" href="#site-main">${esc(t('skipToContent'))}</a>\n`
     + siteHeader({ activeHub, activeCluster, progress: ogType === 'article', path })
+    + siteDrawer({ activeHub, activeCluster, path })
     + bannerSlot(esc)
     + `  <main class="site-main" id="site-main" data-motoai-screen="${esc(screen)}">
 ${contentHtml}
   </main>
 ${footerHtml()}
-${siteDrawer({ activeHub, activeCluster, path })}
 ${schemaHtml}
 ${shellScripts({ search })}</body>
 </html>

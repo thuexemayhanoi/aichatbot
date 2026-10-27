@@ -220,10 +220,10 @@ test('menu: chat homepage drawer mirrors the hub → child hierarchy (mobile men
   assert.match(cssRule(css, '.motoai-row') ?? '', /display: flex;/, 'a row lays its link and control side by side');
   const catLink = pxOf(cssRule(css, '.motoai-hub-items .motoai-category > a, .motoai-hub-items .motoai-category .motoai-row > a'), 'min-height') ?? base;
   assert.ok(Math.max(catLink, pxOf(toggle, 'min-height')) >= 44, `drawer child rows >= 44px (link ${catLink}px + 44px control)`);
-  assert.ok(catLink >= 42, `drawer child links keep their ${catLink}px box (floor 42px)`);
+  assert.ok(catLink >= 44, `drawer child links are ${catLink}px (>= 44px)`);
   if (bareCategories) assert.ok(catLink >= 44, 'a child row without its own control needs a 44px link');
   const topicLink = pxOf(cssRule(css, '.motoai-topic-items .motoai-subtopic a'), 'min-height') ?? base;
-  assert.ok(topicLink >= 40, `drawer subtopic links keep their ${topicLink}px box (floor 40px)`);
+  assert.ok(topicLink >= 44, `drawer subtopic links are ${topicLink}px (>= 44px)`);
 });
 
 // ---------- Blog home = super hub (task §5) ----------

@@ -122,6 +122,14 @@ body.content-page :is(h1, h2, h3) { font-weight: 800; letter-spacing: -0.02em; t
 body.content-page p { text-wrap: pretty; }
 .i { width: 1.15em; height: 1.15em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
+/* Skip link: first Tab stop, visible only on focus. */
+.skip-link {
+  position: absolute; left: calc(env(safe-area-inset-left, 0px) + 12px); top: -200px; z-index: 60;
+  padding: 10px 16px; border-radius: var(--r-pill); background: var(--ink); color: var(--paper) !important;
+  font-weight: 600; text-decoration: none;
+}
+.skip-link:focus { top: calc(env(safe-area-inset-top, 0px) + 8px); }
+
 /* Collapsed accordion lists (and any hidden control) take no space. */
 [hidden] { display: none !important; }
 
@@ -131,7 +139,8 @@ body.content-page p { text-wrap: pretty; }
    (html.drawer-lock + an inline top offset), so iPhone Safari never scrolls
    the page underneath. From 1200px the same element is an in-flow column:
    see "Desktop layout" further down. */
-html.drawer-lock body.content-page { position: fixed; left: 0; right: 0; width: 100%; overflow-y: hidden; }
+html.drawer-lock body.content-page { position: fixed; left: 0; right: 0; width: 100%; }
+/* (no overflow here: a scroll container would carry the sticky header away with the offset) */
 
 /* ==================== Header ====================
    ☰ Danh mục (menuButton) · brand · siteNav (>= 1200px) · search · theme ·
@@ -178,7 +187,7 @@ body.content-page .motoai-menu { gap: 10px; padding: 0 16px 0 14px; border: 0; b
 @media (min-width: 768px) {
   .site-header .motoai-status { flex: 0 1 auto; min-width: 0; max-width: 220px; margin-left: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
-@media (min-width: 1200px) and (max-width: 1359.98px) {
+@media (min-width: 1200px) and (max-width: 1439.98px) {
   .site-brand-text span, .site-header .motoai-status { display: none; } /* the menu row has no room for them yet */
 }
 
@@ -758,6 +767,7 @@ body.content-page .card-lead {
 }
 @media (max-width: 380px) {
   body.content-page .motoai-menu { padding: 0 12px; }
+  .site-header .site-brand-text { display: none; } /* one header row: ☰ Danh mục · mark · actions */
   .site-brand-text strong { font-size: 0.89rem; }
   .home-facts { grid-template-columns: minmax(0, 1fr); }
 }
@@ -776,7 +786,7 @@ body.content-page .card-lead {
 @media (min-width: 1200px) {
   body.content-page {
     display: grid; grid-template-columns: var(--sidebar-w) minmax(0, 1fr); grid-template-rows: auto auto 1fr auto;
-    grid-template-areas: "header header" "banner banner" "sidebar main" "footer footer"; align-items: start;
+    grid-template-areas: "header header" "banner banner" "sidebar main" "sidebar footer"; align-items: start;
   }
   body.content-page > .site-header { grid-area: header; }
   body.content-page > .blog-global-banner { grid-area: banner; }

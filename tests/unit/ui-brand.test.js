@@ -362,10 +362,10 @@ test('mobile app-lock: CHAT HOMEPAGE ONLY body lock, app pinned, messages scroll
   assert.match(drawerJs, /const lock = \(on\) => \{\s*if \(body\.classList\.contains\('chat-home'\)\) return;/, 'never locks the chat app twice');
   assert.match(drawerJs, /scrollY = globalThis\.scrollY \|\| 0;\s*body\.style\.top = `-\$\{scrollY\}px`;\s*root\.classList\.add\('drawer-lock'\);/, 'lock = class + saved offset, on open only');
   assert.match(drawerJs, /root\.classList\.remove\('drawer-lock'\);\s*body\.style\.top = '';\s*globalThis\.scrollTo\(0, scrollY\);/, 'close releases the lock and restores the scroll position');
-  assert.match(drawerJs, /body\.classList\.toggle\('drawer-open', state\);\s*lock\(state\);/, 'the lock follows the overlay state exactly');
+  assert.match(drawerJs, /body\.classList\.toggle\('drawer-open', state\);\s*inertRest\(state\);\s*lock\(state\);/, 'the lock (and the inert page) follow the overlay state exactly');
   assert.ok(!/drawer-lock/.test(css), 'style.css never locks the document — the scoped rule lives with the content-page shell');
   const blogCss = readFileSync(join(ROOT, 'assets/css/src/blog.css'), 'utf8');
-  assert.match(blogCss, /^html\.drawer-lock body\.content-page \{ position: fixed; left: 0; right: 0; width: 100%; overflow-y: hidden; \}$/m);
+  assert.match(blogCss, /^html\.drawer-lock body\.content-page \{ position: fixed; left: 0; right: 0; width: 100%; \}$/m);
   assert.equal((blogCss.match(/position:\s*fixed/g) || []).length, 1, 'the scoped lock is the ONLY fixed-body rule of the content shell');
   assert.match(blogCss, /^body\.content-page \{[^}]*overflow-y: visible;\s*position: static;/m, 'content pages scroll as a document');
   // Composer sits directly above the safe area (app padding keeps env inset).

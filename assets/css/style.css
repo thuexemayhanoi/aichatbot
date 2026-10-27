@@ -602,6 +602,10 @@ body[data-motoai-embed="1"] .motoai-install { display: none; }
   0%, 100% { box-shadow: 0 0 0 0 var(--signal-soft); }
   50% { box-shadow: 0 0 0 6px var(--signal-soft); }
 }
+@media (min-width: 360px) and (max-width: 379.98px) {
+  .motoai-header { column-gap: 8px; }
+  .motoai-menu { padding: 0 12px; }
+}
 @media (max-width: 359px) {
   .motoai-subtitle { font-size: 0.72rem; } /* compact but complete */
   .motoai-menu-label { display: none; }    /* icon-only Menu: identity keeps its width */
@@ -738,9 +742,9 @@ body[data-motoai-embed="1"] .motoai-install { display: none; }
 .motoai-hub { padding-top: 2px; }
 .motoai-drawer-list .motoai-hub-link { font-weight: 600; font-size: 0.92rem; }
 .motoai-drawer-list .motoai-hub-items { padding: 0 0 4px 26px; }
-.motoai-hub-items .motoai-category > a, .motoai-hub-items .motoai-category .motoai-row > a { min-height: 42px; font-size: 0.9rem; font-weight: 550; }
+.motoai-hub-items .motoai-category > a, .motoai-hub-items .motoai-category .motoai-row > a { min-height: 44px; font-size: 0.9rem; font-weight: 550; }
 .motoai-drawer-list .motoai-topic-items { margin: 0 0 4px 12px; padding-left: 8px; border-left: 1px solid var(--line); }
-.motoai-topic-items .motoai-subtopic a { min-height: 40px; padding-block: 8px; font-size: 0.86rem; font-weight: 450; color: var(--ink-2); }
+.motoai-topic-items .motoai-subtopic a { min-height: 44px; padding-block: 8px; font-size: 0.86rem; font-weight: 450; color: var(--ink-2); }
 .motoai-topic-items .motoai-subtopic a:focus-visible { color: var(--signal-ink); background: var(--paper-2); }
 
 /* Utility rows: the theme toggle (theme.js keeps its "🌗 Chủ đề: " text) and
@@ -821,6 +825,7 @@ body[data-motoai-embed="1"] .motoai-seo,
 body[data-motoai-embed="1"] .motoai-drawer,
 body[data-motoai-embed="1"] .motoai-drawer-backdrop,
 body[data-motoai-embed="1"] .motoai-menu { display: none; }
+body[data-motoai-embed="1"] .motoai-header { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "mark title actions" "sub sub sub" "status status status"; }
 
 /* ---------- v47.4 / v60: mobile app-lock (iPhone Safari) ----------
    CHAT HOMEPAGE ONLY: body overflow propagates to the viewport, so the
@@ -903,6 +908,7 @@ body[data-motoai-embed="1"] .motoai-app {
     margin-inline: 0;
     padding: var(--space-1) var(--space-1) var(--space-4);
   }
+  body[data-motoai-embed="1"] .motoai-header { grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "mark title status actions" "mark sub status actions"; }
   .motoai-brand-mark .brand-mark { width: 36px; height: 36px; }
   .motoai-title { align-self: end; font-size: 1.125rem; }
   .motoai-subtitle { align-self: start; -webkit-line-clamp: 1; }

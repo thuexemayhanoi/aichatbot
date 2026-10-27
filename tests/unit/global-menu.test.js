@@ -487,11 +487,11 @@ test('v79: drawer runtime — the scroll lock is SCOPED (html.drawer-lock only w
   assert.match(lockFn, /else \{\s*root\.classList\.remove\('drawer-lock'\);\s*body\.style\.top = '';\s*globalThis\.scrollTo\(0, scrollY\);\s*\}/, 'close: unpin, clear the offset, restore the exact scroll position');
   assert.equal((drawer.match(/drawer-lock/g) ?? []).length, 2, 'the class is added in one place and removed in one place');
   assert.equal((drawer.match(/\block\(/g) ?? []).length, 1, 'lock() is called from exactly one place');
-  assert.match(drawer, /function setOverlay\(state, focus = true\) \{\s*if \(state === open\) return;\s*open = state;\s*drawer\.classList\.toggle\('is-open', state\);\s*backdrop\.classList\.toggle\('is-open', state\);\s*body\.classList\.toggle\('drawer-open', state\);\s*lock\(state\);/, 'the lock follows the overlay state and nothing else');
+  assert.match(drawer, /function setOverlay\(state, focus = true\) \{\s*if \(state === open\) return;\s*open = state;\s*(?:\/\/[^\n]*\n\s*)?const rescue = [^;\n]*;\s*drawer\.classList\.toggle\('is-open', state\);\s*backdrop\.classList\.toggle\('is-open', state\);\s*body\.classList\.toggle\('drawer-open', state\);\s*inertRest\(state\);\s*lock\(state\);/, 'the lock (and the inert page) follow the overlay state and nothing else');
   assert.match(drawer, /if \(sidebarMode\(\)\) \{\s*setOverlay\(false, false\);/, 'growing into the desktop column closes the overlay (and releases the lock)');
   assert.ok(drawer.includes("globalThis.matchMedia?.(SIDEBAR_MQ)") && drawer.includes("const SIDEBAR_MQ = '(min-width: 1200px)';"), 'desktop column from 1200px');
   // CSS: the pin exists ONLY under html.drawer-lock; the document itself scrolls as a document.
-  assert.match(blogCss, /^html\.drawer-lock body\.content-page \{ position: fixed; left: 0; right: 0; width: 100%; overflow-y: hidden; \}$/m, 'the page stays put under the open panel');
+  assert.match(blogCss, /^html\.drawer-lock body\.content-page \{ position: fixed; left: 0; right: 0; width: 100%; \}$/m, 'the page stays put under the open panel');
   assert.deepEqual(fixedBodyRules(blogCss), ['html.drawer-lock body.content-page'], 'the scoped lock is the ONLY rule that pins <body>');
   assert.deepEqual(fixedBodyRules(css), [], 'style.css never pins <body> (the Agent app is fixed through .motoai-app)');
   assert.ok(!css.includes('drawer-lock'), 'the lock rule lives with the content pages only');
@@ -501,7 +501,7 @@ test('v79: drawer runtime — the scroll lock is SCOPED (html.drawer-lock only w
   assert.match(blogCss, /^\[hidden\] \{ display: none !important; \}$/m, 'collapsed accordion lists take no space');
   // Focus, keyboard and the independent accordions (one implementation).
   // Focus moves without scrolling (preventScroll): the sticky ☰ is already in view.
-  assert.ok(drawer.includes("if (focus) (state ? close ?? drawer.querySelector('a, button') : menu)?.focus({ preventScroll: true });"), 'focus moves to ✕ on open and back to ☰ on close');
+  assert.ok(drawer.includes("if (focus || rescue) (state ? close ?? drawer.querySelector('a, button') : menu)?.focus({ preventScroll: true });"), 'focus moves to ✕ on open and back to ☰ on close (also when it was left in a panel that disappears)');
   assert.ok(drawer.includes("if (sidebarMode()) { setSidebar(false); menu?.focus({ preventScroll: true }); } else setOverlay(false);"), 'collapsing the desktop column with ✕ hands focus back to ☰');
   assert.ok(drawer.includes("if (event.key === 'Escape') { event.preventDefault(); setOverlay(false); return; }"), 'Escape closes the drawer');
   assert.ok(drawer.includes("if (event.key !== 'Tab') return;") && drawer.includes('drawer.contains(doc.activeElement)'), 'Tab is trapped inside the open panel');
