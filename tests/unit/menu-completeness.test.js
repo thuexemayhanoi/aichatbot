@@ -71,7 +71,11 @@ test('Agent app and content renderers use identical canonical category/topic URL
   const chat = renderDrawer({ mode: 'chat' });
   const content = renderDrawer({ mode: 'content' });
   assert.ok(read('agent/index.html').includes(chat), 'Agent app drawer generated from shared renderer');
-  assert.ok(read('index.html').includes(content), 'homepage drawer generated from the shared content renderer');
+  // v79: each page passes its own path, so the homepage sidebar marks Trang chủ as the current page.
+  const home = renderDrawer({ mode: 'content', path: '' });
+  assert.ok(read('index.html').includes(home), 'homepage drawer generated from the shared content renderer');
+  assert.match(home, /<a href="\/" aria-current="page">/, 'homepage sidebar marks Trang chủ as the current page');
+  assert.equal(home.replace(' aria-current="page"', ''), content, 'the homepage state differs from the stateless sidebar only by that one mark');
   for (const link of allLinks) {
     // Inside the Agent app the Agent entry is a <button> that closes the drawer (it IS the current page).
     assert.ok(chat.includes('href="' + link.url + '"') || link.url === '/agent/',

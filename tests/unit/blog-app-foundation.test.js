@@ -254,10 +254,21 @@ test('footer column titles come from the same sources as the menu (brand, hubs, 
 
 test('v76: the Agent app keeps NO footer inside the chat viewport; / is a full website page with the shared footer', () => {
   const agent = read('agent/index.html');
-  assert.ok(!agent.includes('blog-footer'), '/agent/ stays a full-screen app (dock + drawer only)');
+  assert.ok(!agent.includes('blog-footer'), '/agent/ stays a full-screen app (header + chat + sidebar only)');
+  // v79: no tab bar/dock anywhere; the Agent app carries the chat-mode sidebar instead.
+  assert.match(agent, /<body class="chat-home">/, '/agent/ is the chat-home app');
+  assert.ok(agent.includes('<nav class="motoai-drawer"') && agent.includes('id="motoai-reset"') && agent.includes('id="motoai-menu-agent"'),
+    '/agent/ renders the chat-mode sidebar (Hỏi Agent button + 🧹 Xóa chat)');
   const home = read('index.html');
   assert.match(home, /<footer class="blog-footer">/, '/ carries the shared site footer');
-  assert.ok(!home.includes('<nav class="motoai-dock"') && !home.includes('id="motoai-input"'), '/ never embeds the full-screen chat');
+  assert.match(home, /<body class="content-page">/, '/ is a content page');
+  assert.ok(home.includes('<nav class="motoai-drawer"'), '/ renders the shared sidebar');
+  for (const chatOnly of ['id="motoai-input"', 'id="motoai-messages"', 'id="motoai-composer"', 'id="motoai-reset"', 'id="motoai-menu-agent"']) {
+    assert.ok(!home.includes(chatOnly), `/ never embeds the full-screen chat or its chat-mode sidebar (${chatOnly})`);
+  }
+  for (const page of [agent, home]) {
+    assert.ok(!/motoai-dock|app-tabbar|class="app-tab\b|data-drawer-open/.test(page), 'no bottom tab bar/dock markup (v79)');
+  }
 });
 
 // ---------- Blog home: app content home ----------

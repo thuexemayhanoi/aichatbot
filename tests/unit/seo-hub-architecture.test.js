@@ -6,6 +6,7 @@ import { dirname, join } from 'node:path';
 import { taxonomy, navigation, deriveSubtopic } from '../../tools/taxonomy.mjs';
 import { parseMatrix } from '../../tools/blog-factory.mjs';
 import { SITE_PAGES } from '../../tools/site-pages.mjs';
+import { BLOG_UI } from '../../tools/blog-components.mjs';
 
 const ROWS = Object.fromEntries(parseMatrix().map((r) => [r.article_id, r]));
 
@@ -115,6 +116,33 @@ test('menu: desktop header exposes the 3 parent hubs as crawlable anchors', () =
   }
 });
 
+// v79 sidebar: nested accordions (Cẩm nang › hub › category › subtopic).
+// `listBody` returns ONE list, balanced over its nested <ul>s, so a child is
+// proven to sit in its OWN parent's list — not merely somewhere in the panel.
+const tight = (s) => String(s).replace(/>\s+</g, '><');
+const reEsc = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const listBody = (html, openTag) => {
+  const start = html.indexOf(openTag);
+  if (start < 0) return null;
+  const re = /<ul\b|<\/ul>/g;
+  re.lastIndex = start;
+  let depth = 0;
+  for (let m = re.exec(html); m; m = re.exec(html)) {
+    depth += m[0] === '</ul>' ? -1 : 1;
+    if (depth === 0) return html.slice(start + openTag.length, m.index);
+  }
+  return null;
+};
+// Declarations of the stylesheet rule whose selector list is exactly `selector`.
+const cssRule = (css, selector) => {
+  const sel = reEsc(selector).replace(/,\s*/g, ',\\s*').replace(/ /g, '\\s+');
+  return new RegExp(`(?:^|[}\\n])\\s*${sel}\\s*\\{([^}]*)\\}`).exec(css)?.[1];
+};
+const pxOf = (decls, prop) => {
+  const m = new RegExp(`(?:^|[;\\s])${prop}:\\s*(\\d+(?:\\.\\d+)?)px`).exec(decls ?? '');
+  return m ? Number(m[1]) : undefined;
+};
+
 test('menu: chat homepage drawer mirrors the hub → child hierarchy (mobile menu)', () => {
   const html = read('index.html');
   const drawer = html.slice(html.indexOf('id="motoai-drawer"'), html.indexOf('</nav>', html.indexOf('id="motoai-drawer"')));
@@ -125,10 +153,77 @@ test('menu: chat homepage drawer mirrors the hub → child hierarchy (mobile men
       assert.ok(drawer.includes(`href="/blog/${taxonomy.categories[id].dir}/"`), `home drawer: child ${id}`);
     }
   }
-  // Parent links keep 44px+ touch targets on the home shell too.
+
+  // The hierarchy itself (v79 nested accordions): every hub sits in the
+  // Cẩm nang group as its own row (crawlable link + its own control) followed
+  // by its OWN list holding exactly its categories in taxonomy order; each
+  // category lists exactly its live subtopic hubs behind its own control.
+  const L = BLOG_UI.labels;
+  const cm = listBody(tight(drawer), '<ul class="motoai-group-items" id="motoai-group-cm">');
+  assert.ok(cm, 'home drawer: the Cẩm nang group holds the hubs');
+  const liveUrls = new Set([...read('sitemap.xml').matchAll(/<loc>https?:\/\/[^/]+(\/blog\/[^<]+)<\/loc>/g)].map((m) => m[1]));
+  const ICON = '<svg class="motoai-nav-icon[^"]*"[^>]*>[\\s\\S]*?<\\/svg>';
+  let bareCategories = 0;
+  let lastHub = -1;
+  for (const c of taxonomy.clusters) {
+    const label = navigation.hub_labels?.[c.id] ?? c.name;
+    const row = new RegExp(`<li class="motoai-hub"><div class="motoai-row"><a class="motoai-hub-link" href="/blog/${reEsc(c.dir)}/">${ICON}<span>${reEsc(label)}</span></a>`
+      + `<button type="button" class="motoai-toggle" id="motoai-hub-${reEsc(c.id)}-btn" aria-expanded="true" aria-controls="motoai-hub-${reEsc(c.id)}" `
+      + `aria-label="${reEsc(L.menuCollapse.replace('{name}', label))}" data-name="${reEsc(label)}"></button></div>`
+      + `<ul class="motoai-hub-items" id="motoai-hub-${reEsc(c.id)}">`).exec(cm);
+    assert.ok(row, `home drawer: hub ${c.id} = link + own control + own open list, inside Cẩm nang`);
+    assert.ok(row.index > lastHub, `home drawer: hub ${c.id} in taxonomy order`);
+    lastHub = row.index;
+    assert.equal((drawer.match(new RegExp(`href="/blog/${reEsc(c.dir)}/"`, 'g')) ?? []).length, 1, `home drawer: hub ${c.id} linked once`);
+
+    const items = listBody(cm, `<ul class="motoai-hub-items" id="motoai-hub-${c.id}">`);
+    assert.ok(items, `home drawer: hub ${c.id} list closes`);
+    assert.equal((items.match(/<li class="motoai-category">/g) ?? []).length, c.categories.length, `home drawer: hub ${c.id} holds exactly its categories`);
+    let lastCat = -1;
+    for (const id of c.categories) {
+      const cat = taxonomy.categories[id];
+      const link = `<a href="/blog/${cat.dir}/"><span>${cat.label}</span></a>`;
+      const topics = (taxonomy.subtopics[id] ?? [])
+        .map((t) => ({ url: `/blog/${cat.dir}/${t.slug}/`, label: t.label.replace(/\s*\/\s*/g, ' ').trim() }))
+        .filter((t) => liveUrls.has(t.url));
+      const head = topics.length
+        ? `<li class="motoai-category"><div class="motoai-row">${link}<button type="button" class="motoai-toggle" id="motoai-cat-${id}-btn" aria-expanded="false" aria-controls="motoai-cat-${id}" aria-label="${L.menuExpand.replace('{name}', cat.label)}" data-name="${cat.label}"></button></div><ul class="motoai-topic-items" id="motoai-cat-${id}" hidden>`
+        : `<li class="motoai-category">${link}</li>`;
+      const at = unesc(items).indexOf(head);
+      assert.ok(at > lastCat, `home drawer: child ${id} nested under hub ${c.id}, in order${topics.length ? ', with its own closed topic list' : ''}`);
+      lastCat = at;
+      assert.equal((drawer.match(new RegExp(`href="/blog/${reEsc(cat.dir)}/"`, 'g')) ?? []).length, 1, `home drawer: child ${id} linked once`);
+      if (!topics.length) { bareCategories += 1; continue; }
+      const topicList = listBody(items, `<ul class="motoai-topic-items" id="motoai-cat-${id}" hidden>`);
+      assert.equal(unesc(topicList), topics.map((t) =>
+        `<li class="motoai-subtopic"><a href="${t.url}" aria-label="${cat.label}: ${t.label}"><span>${t.label}</span></a></li>`).join(''),
+      `home drawer: ${id} lists exactly its live subtopic hubs`);
+    }
+  }
+
+  // Touch targets on the home shell (v79 rows). Parent (hub) links keep a
+  // 44px+ box; every hub/category row pairs its link with a 44×44 control in
+  // a flex row, so each row of the hierarchy stays >= 44px tall. Pinned
+  // floors catch any further shrink of the category/subtopic link boxes.
   const css = read('assets/css/style.css');
-  assert.match(css, /\.motoai-hub-link\s*\{[^}]*min-height:\s*48px/, 'drawer hub links >= 44px');
-  assert.match(css, /\.motoai-hub-items li a\s*\{[^}]*min-height:\s*44px/, 'drawer child links >= 44px');
+  const base = pxOf(cssRule(css, '.motoai-drawer-list a, .motoai-drawer-list button'), 'min-height');
+  const hubRule = cssRule(css, '.motoai-drawer-list .motoai-hub-link');
+  assert.ok(hubRule !== undefined, 'drawer hub link rule present');
+  const hubLink = pxOf(hubRule, 'min-height') ?? base;
+  assert.ok(hubLink >= 44, `drawer hub links >= 44px (got ${hubLink}px)`);
+  for (const m of css.matchAll(/([^{}]*\.motoai-hub-link[^{}]*)\{([^}]*)\}/g)) {
+    const v = pxOf(m[2], 'min-height');
+    assert.ok(v === undefined || v >= 44, `no rule shrinks the hub link below 44px: ${m[1].trim()}`);
+  }
+  const toggle = cssRule(css, '.motoai-drawer-list .motoai-toggle');
+  assert.ok(pxOf(toggle, 'min-width') >= 44 && pxOf(toggle, 'min-height') >= 44, 'drawer expand/collapse controls >= 44×44px');
+  assert.match(cssRule(css, '.motoai-row') ?? '', /display: flex;/, 'a row lays its link and control side by side');
+  const catLink = pxOf(cssRule(css, '.motoai-hub-items .motoai-category > a, .motoai-hub-items .motoai-category .motoai-row > a'), 'min-height') ?? base;
+  assert.ok(Math.max(catLink, pxOf(toggle, 'min-height')) >= 44, `drawer child rows >= 44px (link ${catLink}px + 44px control)`);
+  assert.ok(catLink >= 42, `drawer child links keep their ${catLink}px box (floor 42px)`);
+  if (bareCategories) assert.ok(catLink >= 44, 'a child row without its own control needs a 44px link');
+  const topicLink = pxOf(cssRule(css, '.motoai-topic-items .motoai-subtopic a'), 'min-height') ?? base;
+  assert.ok(topicLink >= 40, `drawer subtopic links keep their ${topicLink}px box (floor 40px)`);
 });
 
 // ---------- Blog home = super hub (task §5) ----------

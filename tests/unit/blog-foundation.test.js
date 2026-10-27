@@ -322,10 +322,37 @@ test('v58: no public Zalo contact mechanics across the generated surface', () =>
   }
 });
 
-test('v58: homepage header keeps Menu as the last control (right-aligned)', () => {
+test('v79: homepage header opens with ☰ Danh mục (left) and keeps the theme toggle in the right-side actions', () => {
+  // v58 put Menu last (right-aligned); v79 moves the ONE ☰ Danh mục button to
+  // the FIRST slot of the header row on purpose (owner spec: clearly visible
+  // on every device). The theme toggle stays on the right in .site-actions.
   const html = read('index.html');
-  const header = html.slice(0, html.indexOf('</header>'));
-  const idxs = ['blog-theme-toggle', 'motoai-menu-btn'].map((id) => header.indexOf(`id="${id}"`));
-  assert.ok(idxs[0] !== -1 && idxs[1] !== -1, 'theme toggle and Menu both in the header');
-  assert.ok(idxs[1] > idxs[0], 'Menu after theme toggle = right side');
+  const header = html.slice(html.indexOf('<header class="site-header">'), html.indexOf('</header>'));
+  assert.ok(header.length > 0, 'homepage has the shared site header');
+  const count = (s) => header.split(s).length - 1;
+  assert.equal(count('id="blog-theme-toggle"'), 1, 'exactly one theme toggle in the header');
+  assert.equal(count('id="motoai-menu-btn"'), 1, 'exactly one Menu button in the header');
+  // The button markup and its labels come from config/blog-ui.json.
+  const labels = JSON.parse(read('config/blog-ui.json')).labels;
+  const button = `<button type="button" class="motoai-menu" id="motoai-menu-btn" title="${labels.menuOpen}" aria-label="${labels.menuOpen}" aria-expanded="false" aria-controls="motoai-drawer" data-open="${labels.menuOpen}" data-close="${labels.menuClose}"><span class="menu-lines" aria-hidden="true"></span> <span class="motoai-menu-label">${labels.menuLabel}</span></button>`;
+  assert.equal(labels.menuLabel, 'Danh mục');
+  assert.ok(header.includes(button), 'Menu button rendered with the configured labels');
+  assert.ok(html.includes('<nav class="motoai-drawer" id="motoai-drawer"'), 'aria-controls target exists on the page');
+  // First child of .site-header-inner: only whitespace between the row and the button.
+  const innerOpen = '<div class="site-header-inner">';
+  const inner = header.slice(header.indexOf(innerOpen) + innerOpen.length);
+  assert.ok(header.includes(innerOpen), 'header row present');
+  assert.ok(inner.trimStart().startsWith(button), 'Menu is the first control of the header row (left side)');
+  // Row order: ☰ Danh mục → brand → desktop nav → actions → status.
+  const order = ['id="motoai-menu-btn"', '<a class="site-brand"', '<nav class="site-nav"', '<div class="site-actions">', '<span class="motoai-status"']
+    .map((s) => header.indexOf(s));
+  assert.ok(order.every((i) => i !== -1), 'menu, brand, nav, actions and status all in the header');
+  assert.deepEqual([...order].sort((a, b) => a - b), order, 'header row order: menu, brand, nav, actions, status');
+  // Right side: search → theme toggle → Hỏi Agent; no second Menu copy there.
+  const actions = header.slice(header.indexOf('<div class="site-actions">'), header.indexOf('<span class="motoai-status"'));
+  const right = ['class="site-search-link"', 'id="blog-theme-toggle"', 'class="site-agent-cta"'].map((s) => actions.indexOf(s));
+  assert.ok(right.every((i) => i !== -1), 'search, theme toggle and Hỏi Agent all in the right-side actions');
+  assert.deepEqual([...right].sort((a, b) => a - b), right, 'actions order: search, theme toggle, Hỏi Agent');
+  assert.ok(!actions.includes('motoai-menu'), 'Menu is no longer in the right-side actions');
+  assert.ok(order[0] < header.indexOf('id="blog-theme-toggle"'), 'Menu before theme toggle = Menu left, theme right');
 });
