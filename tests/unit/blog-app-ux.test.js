@@ -153,7 +153,7 @@ test('v58 content site: every generated page uses the shared site header + foote
       `\\s*<a class="site-agent-cta" href="/agent/" aria-label="${rx(L.headerAgent)}">[\\s\\S]*?</a>` +
       '\\s*</div>' +
       '\\s*<span class="motoai-status" id="blog-business-status"[^>]*></span>' +
-      '\\s*</div>\\s*</header>');
+      '\\s*</div>(?:\\s*<span class="read-progress" aria-hidden="true"></span>)?\\s*</header>');
     assert.match(html, row, `${page}: ☰ Danh mục, brand, menu, then search → theme → Hỏi Agent, then status`);
     const actions = html.slice(html.indexOf('<div class="site-actions">'), html.indexOf('</header>'));
     assert.ok(!actions.includes('motoai-menu'), `${page}: no second Menu control in the right-hand actions`);
@@ -222,16 +222,38 @@ test('Agent app (/agent/) keeps the app shell: shared sidebar (chat variant), NO
   assert.ok(!/\.motoai-header \.motoai-menu \{[^}]*display: none/.test(shared), 'never hidden in the Agent app (only the embed widget hides it)');
 });
 
-test('site header CSS contract: sticky header, actions pinned right, no tiny identity column', () => {
+test('site header CSS contract: sticky header, ☰ Danh mục left, actions pinned right, no tiny identity column', () => {
   const css = read('assets/css/blog.css');
   assert.match(css, /\.site-header\s*\{[^}]*position:\s*sticky/, 'sticky site header');
-  assert.match(css, /\.site-actions\s*\{[^}]*margin-left:\s*auto/, 'actions (Menu) pinned to the right');
+  assert.match(css, /\.site-actions\s*\{[^}]*margin-left:\s*auto/, 'actions (search, theme, Hỏi Agent) pinned to the right');
   assert.match(css, /\.site-brand\s*\{[^}]*min-width:\s*0/, 'identity block can shrink safely');
   assert.match(css, /\.site-main\s*\{[^}]*min-width:\s*0/, 'main column never forces page overflow');
+  // v79: ☰ Danh mục is the first flex child of the header row, styled as a pill on
+  // content pages and never reordered, pushed right or hidden there.
+  const pills = [...css.matchAll(/body\.content-page \.motoai-menu\s*\{([^}]*)\}/g)];
+  assert.ok(pills.length >= 1, 'content pages style the ☰ Danh mục pill');
+  for (const m of pills) assert.ok(!/(^|;)\s*(order:|margin-left:\s*auto|display:\s*none)/.test(m[1]), `☰ Danh mục stays first and visible: ${m[1]}`);
+  assert.ok(!css.includes('.site-actions .motoai-menu'), 'the menu is no longer one of the right-hand actions');
+  assert.ok(!/(^|[},])\.motoai-menu\s*\{[^}]*display:\s*none/.test(css), 'no content-page rule hides the menu');
+  // Desktop (>= 1200px): the header spans the sidebar grid; 1200–1359px is compact.
+  assert.match(css, /@media \(min-width: 1200px\)\{[^@]*\.site-header-inner\{max-width:none\}\}/, 'the header row spans sidebar + main at >= 1200px');
+  assert.match(css, /@media \(min-width: 1200px\) and \(max-width: 1359\.98px\)\{\.site-brand-text span,\.site-header \.motoai-status\{display:none\}\}/, 'compact 1200–1359px header');
+  assert.match(css, /@media \(max-width: 479px\)\{\.site-agent-cta\{width:44px;padding:0\}\.site-agent-cta span\{display:none\}\}/, 'Hỏi Agent icon-only below 480px only');
+  assert.equal((css.match(/\.site-agent-cta span\{display:none\}/g) ?? []).length, 1, 'Hỏi Agent keeps its text from 480px up');
   // v77: the desktop menu is shared with the Agent app, so its CSS lives in style.css.
   const shared = read('assets/css/style.css');
-  assert.match(shared, /\.site-nav\s*\{[^}]*display:\s*none/, 'desktop nav hidden on mobile');
-  assert.match(shared, /min-width:\s*900px[\s\S]{0,200}\.site-nav\s*\{[^}]*display:\s*flex/, 'desktop nav appears >= 900px');
+  assert.match(shared, /\.site-nav\s*\{[^}]*display:\s*none/, 'desktop nav hidden on phones + tablets (the sidebar serves them)');
+  assert.match(shared, /@media \(min-width: 1200px\) \{\s*\.site-nav\s*\{[^}]*display:\s*flex/, 'desktop nav appears >= 1200px (v79, was 900px)');
+  const shows = [...shared.matchAll(/\.site-nav\s*\{[^}]*display:\s*flex/g)];
+  assert.ok(shows.length >= 1);
+  for (const m of shows) {
+    const before = shared.slice(0, m.index);
+    const depth = (before.match(/\{/g) ?? []).length - (before.match(/\}/g) ?? []).length;
+    assert.ok(depth > 0, 'the desktop nav is never shown by a top-level rule');
+    assert.match(before.slice(before.lastIndexOf('@media')), /^@media \(min-width: 1200px\)/, 'the desktop nav is never shown below 1200px');
+  }
+  assert.match(shared, /@media \(min-width: 1200px\) and \(max-width: 1359\.98px\) \{\s*\.site-nav > a, \.site-nav-parent \{ padding: 6px 9px;/, 'compact desktop nav 1200–1359px');
+  assert.match(shared, /\.site-nav-icon \{ display: none; \}\s*@media \(min-width: 1360px\) \{\s*\.site-nav-icon \{ display: block;/, 'nav icons from 1360px');
   assert.ok(!/\.site-nav\b/.test(css), 'no second copy of the menu CSS in blog.css');
 });
 
