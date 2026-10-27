@@ -47,7 +47,7 @@ jobs:
           if grep -rInE "api\.(openai|anthropic|mistral)\.com|generativelanguage\.googleapis\.com|api\.(groq|deepseek|together)\.(com|xyz)" src assets integrations service-worker.js manifest.webmanifest tools embed.js index.html agent; then
             echo "::error::Remote inference endpoint found"; exit 1
           fi
-      - name: Bundle regression guard (fail if base JS grows past 232KB)
+      - name: Bundle regression guard (fail if base JS grows past 236KB)
         run: |
           size=$(find src assets -name '*.js' -print0 | xargs -0 cat | wc -c)
           size2=$(wc -c < embed.js)
@@ -66,4 +66,8 @@ jobs:
           # agent-session.js adds the pure startup policy, moto-app.js gates
           # semantic warm-up, main.js adds single-flight start + background
           # GPU release. Tests are NOT counted in this guard.
-          test "$total" -lt 232000
+          # v79 bumps 232KB -> 236KB: drawer.js becomes the responsive sidebar
+          # controller — scoped scroll lock with scroll restore, focus return,
+          # Tab trap, independent accordions with live labels, desktop
+          # collapse persistence and the overlay/column mode switch.
+          test "$total" -lt 236000

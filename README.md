@@ -168,11 +168,17 @@ Writer production (continuous, 2 bài/chunk, SIMPLE PRODUCTION MODE v67): viết
 
 - `/` là trang chủ website (hero, dịch vụ, giới thiệu Agent, cẩm nang theo chủ đề, bài nổi bật, bài mới, thông tin cửa hàng, footer) sinh từ config/taxonomy/manifest/business. Khung chat toàn màn hình chuyển sang `/agent/`; link cũ `/?ask=…`, `/?action=…`, `/?embed=…` tự chuyển sang `/agent/`. Chi tiết: `docs/HOMEPAGE-V3.md`.
 
-## Điều hướng kiểu app + đồng bộ dữ liệu kinh doanh (v78)
+## Điều hướng responsive V2 — sidebar danh mục (v79)
 
-- **Thanh tab dưới màn hình:** gồm Trang Chủ, Cẩm nang, Danh Mục, Agent và Menu. Dùng một component (`tabBar()`) cho mọi trang trên mobile/tablet và cho trang Agent, thay dock cũ. Cấu hình ở `config/navigation.json` → `tab_bar`, chỉ tham chiếu URL đã có. Danh Mục và Menu mở drawer chung (`assets/js/drawer.js`). Thanh tab có safe-area iOS, tự ẩn khi đang gõ, ẩn trong embed và nhường chỗ cho menu desktop.
-- **Menu desktop:** có biểu tượng SVG theo `svg_icons`, hiện từ 1360px.
-- **Footer:** trên mobile chuyển sang thẻ bo góc, hai thẻ mỗi hàng, giữ đủ 25 link.
+- **Nút ☰ Danh mục** (`menuButton()` trong `tools/app-shell.mjs`) đứng đầu header của mọi trang và của trang Agent, hiện trên mọi thiết bị. Không còn thanh tab dưới màn hình.
+- **Một sidebar duy nhất** (`tools/menu-drawer.mjs`, dữ liệu từ `config/navigation.json` + `data/blog/taxonomy.json` + `config/site-pages.json`): Trang Chủ, Hỏi Agent, Cẩm nang (nhóm › danh mục › chủ đề con, mỗi cấp là link thật và có nút mở rộng/thu gọn riêng), Trang Web, Pháp Lý, Dịch Vụ, Chủ đề. Nhãn ở `config/blog-ui.json` → `labels`; biểu tượng SVG ở `svg_icons`.
+- **Mobile (< 768px):** sidebar trượt từ bên trái, rộng 85% màn hình, tối đa 340px. **Tablet (768–1199px):** 320–380px. Khi mở: khóa cuộn trang, giữ focus bên trong, Escape/✕/nền mờ/link đóng lại.
+- **Desktop (≥ 1200px):** sidebar là cột trái cố định trong lưới `header / sidebar + nội dung / footer`, thu gọn được bằng ☰ hoặc ✕ và nhớ trạng thái; header có menu ngang (`siteNav()`), biểu tượng từ 1360px. Trang `/agent/` giữ khung chat đủ rộng: sidebar luôn mở dạng overlay.
+- **Hành vi:** `assets/js/drawer.js` (một bộ điều khiển cho `app-shell.js` và `main.js`). Giao diện: `assets/css/style.css` (panel, dòng, accordion) + `assets/css/src/blog.css` (lưới desktop, khóa cuộn, header). Kiểm thử: `tests/unit/nav-responsive-v2.test.js`.
+- **Footer:** trên mobile giữ dạng thẻ bo góc, hai thẻ mỗi hàng, đủ 25 link.
+
+## Đồng bộ dữ liệu kinh doanh (v78)
+
 - **Bảng giá và tiền cọc chuẩn của chủ:** nằm ở `data/business/pricing.json`, được khóa bằng `tests/unit/pricing-owner-table.test.js`.
   - Trang `/gia-thue/` có cột Tiền cọc riêng và OfferCatalog schema.
   - Chatbot trả lời tiền cọc theo xe.

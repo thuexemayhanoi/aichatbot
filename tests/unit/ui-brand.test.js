@@ -12,18 +12,32 @@ import {
   nextSuggestions,
   resolveChipHref
 } from '../../src/app/suggestions.js';
-import { tabBar } from '../../tools/app-shell.mjs';
+import { menuButton } from '../../tools/app-shell.mjs';
+import { renderDrawer } from '../../tools/menu-drawer.mjs';
+import { navigation } from '../../tools/taxonomy.mjs';
 
 /**
  * v45 FOCUSED UI/UX POLISH — customer-facing brand spec.
  * Header, address consistency, Agent label, readiness status, quick chips.
+ * v79: ONE ☰ Danh mục button + ONE left sidebar replace the bottom tab bar.
  */
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const html = readFileSync(join(ROOT, 'agent/index.html'), 'utf8');
 const mainJs = readFileSync(join(ROOT, 'assets/js/main.js'), 'utf8');
+const drawerJs = readFileSync(join(ROOT, 'assets/js/drawer.js'), 'utf8');
 const css = readFileSync(join(ROOT, 'assets/css/style.css'), 'utf8');
 const embedJs = readFileSync(join(ROOT, 'embed.js'), 'utf8');
+
+/** The whole sidebar <nav> (nested <ul> groups included), closing tag inclusive. */
+const drawerOf = (source) => {
+  const start = source.indexOf('<nav class="motoai-drawer"');
+  return start < 0 ? '' : source.slice(start, source.indexOf('</nav>', start) + '</nav>'.length);
+};
+const flat = (s) => s.replace(/\s+/g, ' ').trim();
+const rx = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+/** An inline SVG glyph of the shared icon set, as rendered in the sidebar. */
+const GLYPH = (name) => `<svg class="motoai-nav-icon i-${name}"[^>]*>(?:<(?:path|circle|rect)[^>]*/>)+</svg>`;
 
 // --- 5d. /agent/ = THE CHAT APPLICATION (explicit acceptance contract; v76 moved it off /) ---
 test('Agent app contract: /agent/ body opens directly into the chat app in spec order', () => {
@@ -50,27 +64,34 @@ test('Agent app contract: /agent/ body opens directly into the chat app in spec 
   assert.match(css, /\.motoai-quick\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*overflow-x:\s*auto;[^}]*overflow-y:\s*hidden/s);
   // 5. Only ONE h1 — the visible app header; no giant SEO H1.
   assert.equal((html.match(/<h1/g) || []).length, 1);
-  // 6. Grouped drawer (v50): every hub route is reachable with short labels.
-  // v56: short 1-2 word labels; all six canonical categories sit inside the
-  // Cẩm nang group; contact actions sit inside the Dịch vụ group.
+  // 6. The sidebar (v79): every hub route is reachable with short 1-2 word
+  //    labels, each in its own <span>; hubs and the Tìm Bài link carry an
+  //    inline SVG glyph of the shared set (emoji icons stay config data —
+  //    drawerCore() — and are NEVER sidebar text). All six canonical
+  //    categories sit inside the Cẩm nang group; contact actions sit inside
+  //    the Dịch Vụ group.
   const routes = {
-    '🧰 Công Cụ': '/blog/cong-cu-huong-dan/',
-    '📱 Ứng Dụng': '/blog/app/',
-    '📄 Hướng Dẫn': '/blog/huong-dan/',
-    '🏍️ Phương Tiện': '/blog/thue-xe-phuong-tien/',
-    '🏍️ Thuê Xe': '/blog/thue-xe/',
-    '⚡ Xe Điện': '/blog/xe-dien/',
-    '🧭 Khám Phá': '/blog/kham-pha-an-toan/',
-    '🛡️ An Toàn': '/blog/an-toan/',
-    '📍 Địa Phương': '/blog/dia-phuong/',
-    '🔎 Tìm Bài': '/blog/',
-    '🔒 Bảo Mật': '/privacy/',
-    '📃 Điều Khoản': '/terms/'
+    'Công Cụ': ['/blog/cong-cu-huong-dan/', 'tool'],
+    'Ứng Dụng': ['/blog/app/'],
+    'Hướng Dẫn': ['/blog/huong-dan/'],
+    'Phương Tiện': ['/blog/thue-xe-phuong-tien/', 'scooter'],
+    'Thuê Xe': ['/blog/thue-xe/'],
+    'Xe Điện': ['/blog/xe-dien/'],
+    'Khám Phá': ['/blog/kham-pha-an-toan/', 'compass'],
+    'An Toàn': ['/blog/an-toan/'],
+    'Địa Phương': ['/blog/dia-phuong/'],
+    'Tìm Bài': ['/blog/', 'search'],
+    'Bảo Mật': ['/privacy/'],
+    'Điều Khoản': ['/terms/']
   };
-  for (const [label, href] of Object.entries(routes)) {
-    const entry = html.match(new RegExp(`href="${href.replace(/\//g, '\\/')}"[^>]*>${label}</a>`));
-    assert.ok(entry, `menu entry "${label}" must link ${href}`);
+  const drawer = drawerOf(html);
+  assert.ok(drawer, 'sidebar present');
+  for (const [label, [href, glyph]] of Object.entries(routes)) {
+    const entry = new RegExp(`<a[^>]*href="${rx(href)}"[^>]*>${glyph ? GLYPH(glyph) : ''}<span>${rx(label)}</span></a>`).exec(drawer);
+    assert.ok(entry, `menu entry "${label}" must link ${href}${glyph ? ` with the ${glyph} glyph` : ''}`);
   }
+  const rows = drawer.replace(/<li class="motoai-drawer-util">[\s\S]*?<\/li>/g, '');
+  assert.ok(!/\p{Extended_Pictographic}/u.test(rows), 'sidebar rows use SVG glyphs — no emoji text (only the utility rows keep theirs)');
   // 7. Embed mode never gains blog/SEO UI.
   assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-seo,\s*[\s\S]*?\.motoai-menu\s*\{\s*display:\s*none/s);
   // 8. SEO surface survives without a hero: title/meta/schema keep the owned intent.
@@ -109,15 +130,15 @@ test('chat app fills the viewport exactly — no hero, no scroll to reach the ch
 // --- 5c. Menu drawer = navigation to the blog ecosystem + contact actions ---
 test('☰ menu is a grouped accordion navigating the blog ecosystem + contact actions', () => {
   // Capture the whole drawer (nested <ul> groups), not just the first list.
-  const drawerStart = html.indexOf('<nav class="motoai-drawer"');
-  const drawer = html.slice(drawerStart, html.indexOf('</nav>', drawerStart));
+  const drawer = drawerOf(html);
   assert.ok(drawer, 'drawer present');
   // Every blog hub route is reachable from the menu.
   for (const hub of ['blog/', 'blog/app/', 'blog/thue-xe/', 'blog/xe-dien/', 'blog/huong-dan/', 'blog/an-toan/', 'blog/dia-phuong/']) {
     assert.ok(drawer.includes(`/${hub}`), `menu must link /${hub}`);
   }
   // ChatGPT-style condensed entry: Liên hệ asks the Agent (no hard-coded contacts).
-  assert.match(drawer, /id="motoai-menu-contact">☎️ Liên Hệ</);
+  // v79: the label sits in its own <span>, no emoji prefix.
+  assert.match(drawer, /<li><button type="button" id="motoai-menu-contact"><span>Liên Hệ<\/span><\/button><\/li>/);
   assert.match(mainJs, /menuContact/);
   assert.match(mainJs, /elements\.input\.value = 'Liên hệ';/);
   // Contact hrefs still resolve only from verified business.json.
@@ -181,7 +202,11 @@ test('normal UI uses "Agent", never the old "AI tại chỗ" label', () => {
   for (const [name, source] of [['index.html', html], ['main.js', mainJs]]) {
     assert.ok(!source.includes('AI tại chỗ'), `${name} must not show "AI tại chỗ"`);
   }
-  assert.match(html, /⚡ Agent/);
+  // v79: the sidebar's Agent row is the in-app Agent toggle, named "Hỏi Agent"
+  // exactly like the header CTA and the footer (one label in navigation.json).
+  assert.equal(navigation.agent.label, 'Hỏi Agent');
+  assert.match(html, new RegExp(`<li><button type="button" id="motoai-menu-agent">${GLYPH('chat')}<span>Hỏi Agent</span></button></li>`));
+  assert.ok(!html.includes('Agent Hỗ Trợ'), 'the old "⚡ Agent Hỗ Trợ" row is gone');
   assert.match(html, /Agent \(tùy chọn, nâng cao\)/);
 });
 
@@ -324,10 +349,25 @@ test('mobile app-lock: CHAT HOMEPAGE ONLY body lock, app pinned, messages scroll
   assert.match(css, /\.motoai-messages\s*\{[^}]*overscroll-behavior-y:\s*contain;/s);
   // Pristine state: lone greeting centers upper-middle (no top-hugging dead space).
   assert.match(css, /\.motoai-messages > \.motoai-msg:only-child\s*\{[^}]*margin-top:\s*auto;[^}]*margin-bottom:\s*auto;/s);
-  // Disclosure paragraph is GONE (v50): replaced by the bottom dock, no empty gap.
+  // Disclosure paragraph is GONE (v50) and so is the v78 bottom tab bar (v79):
+  // the ONE sidebar (a fixed left panel) is the only menu system, no empty gap.
   assert.ok(!html.includes('motoai-disclosure'), 'no disclosure text in main UI');
   assert.ok(!html.includes('Trợ lý trả lời tự động dựa trên dữ liệu'), 'old disclosure copy removed');
-  assert.match(css, /\.app-tabbar\s*\{/);
+  assert.ok(!/\.app-tabbar|\.app-tab\b|motoai-dock/.test(css), 'no tab bar / dock CSS');
+  assert.match(css, /\.motoai-drawer\s*\{[^}]*position:\s*fixed;/s, 'the sidebar overlays the pinned app');
+  // v79 scroll safety: the sidebar's page lock is SCOPED — drawer.js applies
+  // html.drawer-lock (+ the saved offset) only while the overlay is open,
+  // always releases it and restores the scroll position on close, and skips
+  // it on body.chat-home, whose always-on lock above stays the only one.
+  assert.match(drawerJs, /const lock = \(on\) => \{\s*if \(body\.classList\.contains\('chat-home'\)\) return;/, 'never locks the chat app twice');
+  assert.match(drawerJs, /scrollY = globalThis\.scrollY \|\| 0;\s*body\.style\.top = `-\$\{scrollY\}px`;\s*root\.classList\.add\('drawer-lock'\);/, 'lock = class + saved offset, on open only');
+  assert.match(drawerJs, /root\.classList\.remove\('drawer-lock'\);\s*body\.style\.top = '';\s*globalThis\.scrollTo\(0, scrollY\);/, 'close releases the lock and restores the scroll position');
+  assert.match(drawerJs, /body\.classList\.toggle\('drawer-open', state\);\s*lock\(state\);/, 'the lock follows the overlay state exactly');
+  assert.ok(!/drawer-lock/.test(css), 'style.css never locks the document — the scoped rule lives with the content-page shell');
+  const blogCss = readFileSync(join(ROOT, 'assets/css/src/blog.css'), 'utf8');
+  assert.match(blogCss, /^html\.drawer-lock body\.content-page \{ position: fixed; left: 0; right: 0; width: 100%; overflow-y: hidden; \}$/m);
+  assert.equal((blogCss.match(/position:\s*fixed/g) || []).length, 1, 'the scoped lock is the ONLY fixed-body rule of the content shell');
+  assert.match(blogCss, /^body\.content-page \{[^}]*overflow-y: visible;\s*position: static;/m, 'content pages scroll as a document');
   // Composer sits directly above the safe area (app padding keeps env inset).
   assert.match(css, /\.motoai-app\s*\{[^}]*calc\(env\(safe-area-inset-bottom/s);
 });
@@ -340,23 +380,33 @@ test('responsive: mobile base stays app-locked, laptop/desktop center a capped c
   assert.match(css, /@media \(min-width: 768px\)/, 'laptop/tablet breakpoint');
   assert.match(css, /@media \(min-width: 1200px\)/, 'desktop breakpoint');
   assert.match(css, /@media \(min-width: 1600px\)/, 'large-desktop breakpoint');
-  // Laptop (768): centered 820px column, messages 80%, drawer 320px.
-  const laptop = css.slice(css.indexOf('@media (min-width: 768px)'), css.indexOf('@media (min-width: 1200px)'));
+  // The chat column breakpoints live in the v49 section (the shared desktop
+  // menu and the sidebar own earlier 768px / 1200px queries of their own).
+  const chat = css.slice(css.indexOf('/* ---------- v49: responsive device classes'));
+  assert.ok(chat.length > 0 && chat.length < css.length, 'v49 responsive section present');
+  // Laptop (768): centered 820px column, messages 80%.
+  const laptop = chat.slice(chat.indexOf('@media (min-width: 768px)'), chat.indexOf('@media (min-width: 1200px)'));
   assert.match(laptop, /\.motoai-shell \.motoai-app\s*\{[^}]*max-width:\s*820px;/);
   assert.match(laptop, /\.motoai-msg\s*\{[^}]*max-width:\s*80%;/);
   assert.match(laptop, /body\[data-motoai-embed="1"\] \.motoai-app\s*\{[^}]*max-width:\s*none;/, 'embed stays unconstrained');
-  // Desktop (1200): 940px column, messages 74%, drawer 340px, premium composer.
-  const desk = css.slice(css.indexOf('@media (min-width: 1200px)'), css.indexOf('@media (min-width: 1600px)'));
+  // Desktop (1200): 940px column, messages 74%, premium composer.
+  const desk = chat.slice(chat.indexOf('@media (min-width: 1200px)'), chat.indexOf('@media (min-width: 1600px)'));
   assert.match(desk, /\.motoai-shell \.motoai-app\s*\{[^}]*max-width:\s*940px;/);
   assert.match(desk, /\.motoai-msg\s*\{[^}]*max-width:\s*74%;[^}]*font-size:\s*1rem;/s);
   assert.match(desk, /\.motoai-input\s*\{[^}]*padding:\s*13px 18px;/);
   // Large desktop (1600): capped at 1000px — chat never spans the monitor.
-  const xl = css.slice(css.indexOf('@media (min-width: 1600px)'));
+  const xl = chat.slice(chat.indexOf('@media (min-width: 1600px)'));
   assert.match(xl, /\.motoai-shell \.motoai-app\s*\{[^}]*max-width:\s*1000px;/);
   assert.match(xl, /\.motoai-msg\s*\{[^}]*max-width:\s*72%;/);
-  // v73/v74: ONE drawer width at every size (the full menu needs the room).
-  assert.match(css, /\.motoai-drawer\s*\{[^}]*width:\s*min\(90vw, 380px\);/s);
-  for (const block of [laptop, desk, xl]) assert.ok(!/\.motoai-drawer\s*\{/.test(block), 'no per-breakpoint drawer width');
+  // v79: the sidebar is a LEFT off-canvas sheet — 85vw up to 340px on phones,
+  // 320–380px on tablets (ONE override, at 768px). The chat column
+  // breakpoints never resize it, and the Agent app keeps the overlay at every
+  // width (the in-flow column exists only for body.content-page, blog.css).
+  assert.match(css, /\.motoai-drawer\s*\{[^}]*left:\s*0;[^}]*width:\s*min\(85vw, 340px\);/s);
+  assert.match(css, /@media \(min-width: 768px\)\s*\{\s*\.motoai-drawer\s*\{\s*width:\s*clamp\(320px, 42vw, 380px\);\s*\}\s*\}/);
+  assert.equal((css.match(/(?<![\w-])\.motoai-drawer\s*\{/g) || []).length, 2, 'base panel + the one tablet width override');
+  for (const block of [laptop, desk, xl]) assert.ok(!/\.motoai-drawer\s*\{/.test(block), 'no per-breakpoint drawer width in the chat column rules');
+  assert.ok(!/body\.chat-home[^{]*\.motoai-drawer\s*\{/.test(css), 'the Agent app never turns the panel into a column');
 });
 
 test('responsive: safe-area insets survive at every breakpoint', () => {
@@ -369,43 +419,83 @@ test('responsive: safe-area insets survive at every breakpoint', () => {
   }
 });
 
-// --- 5g. Bottom tab bar (v78): the website's shared tab bar replaces the v53 dock ---
-test('bottom tab bar: the shared 5-tab bar under the composer, flat app look, no second menu', () => {
+// --- 5g. Sidebar (v79): the ONE shared left panel replaces the v78 tab bar and the v53 dock ---
+test('sidebar: the shared left panel behind ☰ Danh mục, flat app look, no second menu', () => {
   assert.ok(!html.includes('motoai-dock'), 'the hand-written dock is gone (one menu system)');
-  const barStart = html.indexOf('<nav class="app-tabbar"');
-  assert.ok(barStart > 0, 'tab bar present');
-  const bar = html.slice(barStart, html.indexOf('</nav>', barStart));
-  const flat = (s) => s.replace(/\s+/g, ' ').trim();
-  assert.equal(flat(`${bar}</nav>`), flat(tabBar({ path: 'agent/' })), 'same component as every website page');
-  assert.equal((bar.match(/class="app-tab"/g) || []).length, 5, 'five tabs');
-  assert.match(bar, /<a class="app-tab" href="\/agent\/" aria-current="page">/, 'the Agent tab is the open page');
-  assert.equal((bar.match(/aria-current/g) || []).length, 1, 'exactly one active tab');
-  assert.match(bar, /data-drawer-open="cm" aria-controls="motoai-drawer" aria-expanded="false"/, 'Danh Mục opens the drawer at Cẩm nang');
-  assert.match(bar, /data-drawer-open="" aria-controls="motoai-drawer" aria-expanded="false"/, 'Menu opens the drawer');
-  assert.ok(!/\d{3}[.,]?\d{3}\s*(đ|vnd|VND)/.test(bar), 'tab bar never hard-codes prices');
-  assert.ok(html.indexOf('id="motoai-composer"') < barStart && barStart < html.indexOf('</section>', barStart), 'below the composer, inside the app column');
-  assert.match(css, /\.app-tabbar\s*\{[^}]*grid-template-columns:\s*repeat\(5, minmax\(0, 1fr\)\);/s, 'one row of five');
-  const item = css.match(/\.app-tab\s*\{[\s\S]*?\}/)[0];
-  assert.match(item, /min-height:\s*50px/, 'touch target');
+  assert.ok(!/app-tabbar|class="app-tab"|data-drawer-open|is-typing/.test(html), 'the bottom tab bar is gone (one menu system)');
+  const backdropTag = '<div class="motoai-drawer-backdrop" id="motoai-drawer-backdrop"></div>';
+  const backdropStart = html.indexOf(backdropTag);
+  assert.ok(backdropStart > 0, 'backdrop present');
+  const drawer = drawerOf(html);
+  assert.ok(drawer, 'sidebar present');
+  assert.equal(flat(html.slice(backdropStart, html.indexOf('</nav>', backdropStart) + '</nav>'.length)), flat(renderDrawer({ mode: 'chat' })), 'same component as every website page (its chat variant)');
+  // Panel: no `hidden` attribute (CSS owns the open state); relabel templates on
+  // the <nav>; head = brand link home + ✕ with the close/collapse labels.
+  assert.ok(drawer.startsWith('<nav class="motoai-drawer" id="motoai-drawer" aria-label="Danh mục" data-expand="Mở rộng {name}" data-collapse="Thu gọn {name}">'), 'nav opening tag');
+  assert.ok(!/<nav class="motoai-drawer"[^>]*\shidden[\s>]/.test(drawer), 'never a hidden attribute');
+  assert.match(drawer, /<div class="motoai-drawer-head">\s*<a class="motoai-drawer-brand" href="\/" aria-label="MotoAI — trang chủ"><svg class="brand-mark"[^>]*>[\s\S]*?<\/svg><strong>MotoAI<\/strong><\/a>\s*<button type="button" class="motoai-drawer-close" id="motoai-drawer-close" aria-label="Đóng danh mục" data-close="Đóng danh mục" data-collapse="Thu gọn danh mục"><svg class="motoai-icon i-close"[^>]*><path[^>]*\/><\/svg><\/button>\s*<\/div>/);
+  // Top-level order: Trang Chủ, Hỏi Agent (the in-app toggle), the four groups
+  // cm › pages › pl › dv, the theme row, then the chat-only divider + Xóa chat.
+  const list = drawer.slice(drawer.indexOf('<ul class="motoai-drawer-list">'));
+  const order = [
+    '<li><a href="/"><svg class="motoai-nav-icon i-home"',
+    '<li><button type="button" id="motoai-menu-agent"><svg class="motoai-nav-icon i-chat"',
+    '<li class="motoai-group" data-group="cm">',
+    '<li class="motoai-group" data-group="pages">',
+    '<li class="motoai-group" data-group="pl">',
+    '<li class="motoai-group" data-group="dv">',
+    '<li class="motoai-drawer-util"><button type="button" class="blog-theme-toggle motoai-drawer-theme" aria-label="Chủ đề: tự động">🌗 Chủ đề: Auto</button></li>',
+    '<li class="motoai-drawer-divider" role="separator"></li>',
+    '<li class="motoai-drawer-util"><button type="button" id="motoai-reset">🧹 Xóa chat</button></li>'
+  ];
+  const idx = order.map((s) => list.indexOf(s));
+  for (let i = 0; i < order.length; i++) assert.ok(idx[i] >= 0, `row present: ${order[i]}`);
+  for (let i = 1; i < idx.length; i++) assert.ok(idx[i] > idx[i - 1], `${order[i]} after ${order[i - 1]}`);
+  assert.equal((drawer.match(/<li class="motoai-group" /g) || []).length, 4, 'four groups');
+  assert.equal((drawer.match(/aria-current/g) || []).length, 0, 'the Agent app marks no page (its Agent row is the in-app toggle, not a link)');
+  // ☰ opens the panel; Cẩm nang starts open, Pháp Lý / Dịch Vụ start closed.
+  assert.match(html, /<button type="button" class="motoai-menu" id="motoai-menu-btn" title="Mở danh mục" aria-label="Mở danh mục" aria-expanded="false" aria-controls="motoai-drawer" data-open="Mở danh mục" data-close="Đóng danh mục">/, '☰ Danh mục opens the sidebar');
+  assert.match(drawer, /id="motoai-group-cm-btn" aria-expanded="true" aria-controls="motoai-group-cm" aria-label="Thu gọn Cẩm nang" data-name="Cẩm nang"><\/button><\/div>\s*<ul class="motoai-group-items" id="motoai-group-cm">/, 'Cẩm nang open by default');
+  for (const [g, name] of [['pl', 'Pháp Lý'], ['dv', 'Dịch Vụ']]) {
+    assert.match(drawer, new RegExp(`id="motoai-group-${g}-btn" aria-expanded="false" aria-controls="motoai-group-${g}" aria-label="Mở rộng ${name}" data-name="${name}"></button></div>\\s*<ul class="motoai-group-items" id="motoai-group-${g}" hidden>`), `${name} collapsed by default`);
+  }
+  assert.ok(!/\d{3}[.,]?\d{3}\s*(đ|vnd|VND)/.test(drawer), 'sidebar never hard-codes prices');
+  // Backdrop then panel, after the app shell (an overlay over the pinned chat,
+  // never inside the app column).
+  assert.ok(html.indexOf('</main>') < backdropStart && backdropStart < html.indexOf('<nav class="motoai-drawer"'), 'after </main>: backdrop, then the panel');
+  assert.ok(html.indexOf('id="motoai-composer"') < backdropStart, 'below the composer');
+  // CSS: a LEFT off-canvas sheet above the app; closed = off screen AND out of
+  // the tab order / a11y tree; open = the .is-open class only (no keyframes).
+  const panel = css.match(/\.motoai-drawer\s*\{[^}]*\}/s)[0];
+  for (const rule of [/position:\s*fixed;/, /left:\s*0;/, /z-index:\s*41;/, /width:\s*min\(85vw, 340px\);/, /overflow-y:\s*auto;/, /overscroll-behavior:\s*contain;/, /transform:\s*translateX\(-100%\);/, /visibility:\s*hidden;/]) {
+    assert.match(panel, rule);
+  }
+  assert.match(css, /\.motoai-drawer\.is-open\s*\{\s*transform:\s*none;\s*visibility:\s*visible;/);
+  assert.match(css, /\.motoai-drawer-backdrop\s*\{[^}]*position:\s*fixed;[^}]*inset:\s*0;[^}]*z-index:\s*40;[^}]*visibility:\s*hidden;/s);
+  assert.match(css, /\.motoai-drawer-backdrop\.is-open\s*\{\s*opacity:\s*1;\s*visibility:\s*visible;/);
+  assert.ok(!/@keyframes drawer-in/.test(css), 'no slide-in keyframes (transition only)');
+  // Flat rows: 46px targets, transparent cells, no sticky grey flash on iOS,
+  // never a filled accent cell; 44px expand/collapse controls.
+  const item = css.match(/\.motoai-drawer-list a,\s*\.motoai-drawer-list button\s*\{[\s\S]*?\}/)[0];
+  assert.match(item, /min-height:\s*46px/, 'touch target');
   assert.match(item, /background:\s*transparent/, 'flat cells');
   assert.match(item, /-webkit-tap-highlight-color:\s*transparent/, 'no sticky grey flash on iOS');
   assert.ok(!/background:\s*var\(--color-primary\)/.test(item), 'never a filled accent cell');
-  assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)\s*\{[\s\S]*?\.app-tab:hover\s*\{/, 'hover only on real pointers');
-  // aria-current is styled only on the two navigation components (desktop menu, tab bar).
+  assert.match(css, /\.motoai-drawer-list \.motoai-toggle\s*\{[^}]*width:\s*44px;\s*min-width:\s*44px;\s*min-height:\s*44px;/s, 'expand/collapse targets');
+  assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)\s*\{[^@]*\.motoai-drawer-list a:hover,\s*\.motoai-drawer-list button:hover\s*\{\s*background:\s*var\(--paper-2\);/, 'hover only on real pointers');
+  // aria-current is styled only on the two navigation components (desktop menu, sidebar).
   const selectors = css.replace(/\/\*[\s\S]*?\*\//g, '').match(/[^{}]+(?=\{)/g).flatMap((s) => s.split(',')).map((s) => s.trim());
   for (const s of selectors.filter((sel) => sel.includes('aria-current'))) {
-    assert.ok(s.startsWith('.site-nav') || s.startsWith('.app-tab'), `aria-current only on navigation components: ${s}`);
+    assert.ok(s.startsWith('.site-nav') || s.startsWith('.motoai-drawer-list'), `aria-current only on navigation components: ${s}`);
   }
   assert.ok(!/\.motoai-active/.test(css), 'no selected-state class');
-  assert.match(css, /body\[data-motoai-embed="1"\] \.app-tabbar\s*\{\s*display:\s*none;/, 'embed hides the tab bar');
-  assert.match(css, /\.motoai-app \.app-tabbar\s*\{[^}]*border-top:\s*1px solid var\(--line\)/s, 'in the app column, not fixed over the chat');
-  assert.ok(!/\.motoai-app \.app-tabbar\s*\{[^}]*position:\s*fixed/s.test(css), 'never fixed over the messages/composer');
+  assert.match(css, /body\[data-motoai-embed="1"\] \.motoai-drawer,\s*body\[data-motoai-embed="1"\] \.motoai-drawer-backdrop,\s*body\[data-motoai-embed="1"\] \.motoai-menu\s*\{\s*display:\s*none;/, 'embed hides the panel, its backdrop and ☰');
+  assert.ok(!/body\.chat-home[^{]*\.motoai-drawer\s*\{[^}]*position:\s*sticky/s.test(css), 'the Agent app never turns the panel into an in-flow column');
 });
 
 // --- 5g2. Contact group (v53): WhatsApp from business.json, no hard-coded contacts ---
 test('contact group: WhatsApp + Gọi + Bản đồ all resolve from verified business.json', () => {
-  const drawerStart = html.indexOf('<nav class="motoai-drawer"');
-  const drawer = html.slice(drawerStart, html.indexOf('</nav>', drawerStart));
+  const drawer = drawerOf(html);
   assert.match(drawer, /id="motoai-menu-whatsapp"/, 'WhatsApp menu item exists');
   assert.match(mainJs, /setHref\(elements\.menuWhatsapp, resolveChipHref\(\{ ref: 'whatsapp' \}, businessData\)\)/);
   // resolveChipHref resolves the whatsapp ref exactly from business.json.
@@ -434,32 +524,56 @@ test('quick bar: 12 primary tags fixed — never swapped by contextual chips', (
   assert.match(mainJs, /elements\.quick\.scrollLeft = 0;/);
 });
 
-// --- 5h. Grouped menu accordion (v50) ---
-test('grouped menu: parent/child accordion with ARIA + one-open + Escape', () => {
-  const groups = [...html.matchAll(/<li class="motoai-group">/g)].length;
-  assert.equal(groups, 4, 'v73: exactly 4 groups: Trang Web, Cẩm Nang, Dịch Vụ, Pháp Lý');
-  // Every group button is ARIA-backed and controls an items list.
-  for (const btn of html.matchAll(/class="motoai-group-btn"[^>]*aria-expanded="false" aria-controls="([^"]+)"/g)) {
-    assert.ok(html.includes(`id="${btn[1]}"`), `group items list ${btn[1]} exists`);
+// --- 5h. Grouped menu accordion (v50 → v79: nested, independent toggles) ---
+test('grouped menu: parent/child accordion with ARIA + independent toggles + Escape', () => {
+  const groups = [...html.matchAll(/<li class="motoai-group" data-group="([^"]+)">/g)].map((m) => m[1]);
+  assert.deepEqual(groups, ['cm', 'pages', 'pl', 'dv'], 'v79: exactly 4 groups in order: Cẩm nang, Trang Web, Pháp Lý, Dịch Vụ');
+  // Every expand/collapse control is ARIA-backed, controls an existing list
+  // (hidden ⇔ collapsed) and names its action + target for relabelling.
+  const toggles = [...html.matchAll(/<button type="button" class="motoai-toggle( motoai-group-btn)?" id="([^"]+)-btn" aria-expanded="(true|false)" aria-controls="([^"]+)" aria-label="([^"]+)" data-name="([^"]+)"><\/button>/g)];
+  const topicLists = (html.match(/<ul class="motoai-topic-items"/g) || []).length;
+  assert.ok(topicLists >= 1, 'at least one category carries subtopics');
+  assert.equal(toggles.length, 4 + 3 + topicLists, 'one control per group, per hub and per category with topics');
+  assert.equal(toggles.filter((t) => t[1]).length, 4, 'exactly one .motoai-group-btn per group');
+  for (const [, , id, expanded, controls, label, name] of toggles) {
+    assert.equal(controls, id, `${id}: aria-controls matches the control id`);
+    assert.ok(html.includes(`id="${controls}"${expanded === 'true' ? '>' : ' hidden>'}`), `${controls}: list exists and is hidden exactly when collapsed`);
+    assert.equal(label, `${expanded === 'true' ? 'Thu gọn' : 'Mở rộng'} ${name}`, `${id}: label names the action`);
   }
   // Short customer labels only — old long labels are gone.
   for (const old of ['Blog / Cẩm nang', 'App &amp; Ứng dụng', 'Thuê xe máy</a>', 'Hướng dẫn / Thủ tục', 'An toàn / Pháp lý', 'Địa phương / Du lịch', 'Xóa hội thoại', 'Chính sách bảo mật</a>', 'Điều khoản sử dụng</a>']) {
     assert.ok(!html.includes(old), `long label "${old}" must be simplified`);
   }
   assert.ok(html.includes('🧹 Xóa chat'), 'reset label is "Xóa chat"');
-  for (const label of ['🗂️ Trang Web', '📚 Cẩm nang', '🛵 Dịch Vụ', '🔒 Pháp Lý']) {
-    assert.ok(html.includes(label), 'compact group present: ' + label);
+  // Compact group heads: an SVG glyph + the label in a <span>; Cẩm nang is a
+  // link to the blog home, the other groups a plain title (no emoji text).
+  const heads = {
+    cm: ['<a class="motoai-group-link" href="/blog/">', 'book', 'Cẩm nang', 'a'],
+    pages: ['<span class="motoai-group-title">', 'grid', 'Trang Web', 'span'],
+    pl: ['<span class="motoai-group-title">', 'lock', 'Pháp Lý', 'span'],
+    dv: ['<span class="motoai-group-title">', 'phone', 'Dịch Vụ', 'span']
+  };
+  for (const [id, [open, glyph, label, tag]] of Object.entries(heads)) {
+    const re = new RegExp(`<li class="motoai-group" data-group="${id}">\\s*<div class="motoai-row motoai-group-head">${rx(open)}${GLYPH(glyph)}<span>${rx(label)}</span></${tag}><button type="button" class="motoai-toggle motoai-group-btn" id="motoai-group-${id}-btn"`);
+    assert.match(html, re, 'compact group present: ' + label);
   }
-  // One-open accordion + Escape/backdrop close: the shared drawer controller (assets/js/drawer.js).
-  const drawerJs = readFileSync(join(ROOT, 'assets/js/drawer.js'), 'utf8');
-  assert.match(mainJs, /import \{ createDrawer \} from '\.\/drawer\.js\?v=\d+';/, 'the Agent app uses the shared controller');
-  assert.match(drawerJs, /closeGroups\(btn\)/, 'opening a group closes the others');
-  assert.match(drawerJs, /setAttribute\('aria-expanded'/);
-  assert.match(drawerJs, /closest\('\.motoai-group-btn'\)\) return;/, 'group toggle does not close the drawer');
+  // Independent accordions (v79: a toggle owns ONLY its own list — opening a
+  // hub never collapses the others) + Escape/backdrop close: the shared
+  // drawer controller (assets/js/drawer.js), imported by the Agent app.
+  assert.match(mainJs, /import \{ createDrawer \} from '\.\/drawer\.js\?v=79';/, 'the Agent app uses the shared controller');
+  assert.match(drawerJs, /for \(const btn of drawer\.querySelectorAll\('\.motoai-toggle'\)\)/, 'every control is wired');
+  assert.ok(!/closeGroups/.test(drawerJs), 'no one-open auto-collapse');
+  assert.match(drawerJs, /btn\.setAttribute\('aria-expanded', expanded \? 'true' : 'false'\);/);
+  assert.match(drawerJs, /if \(list\) list\.hidden = !expanded;/, 'the hidden attribute follows aria-expanded');
+  assert.match(drawerJs, /drawer\.dataset\[expanded \? 'collapse' : 'expand'\]/, 'labels rebuilt from the nav templates');
+  assert.match(drawerJs, /tpl\.replace\('\{name\}', btn\.dataset\.name\)/);
+  assert.match(drawerJs, /closest\('\.motoai-toggle, \.motoai-drawer-theme'\)\) return; \/\/ stays open/, 'a toggle (or the theme row) never closes the drawer');
   assert.match(drawerJs, /event\.key === 'Escape'/, 'Escape still closes the drawer');
-  // Children are visually indented.
-  assert.match(css, /\.motoai-group-items\s*\{[^}]*padding:[^;]*var\(--space-4\);/s);
-  assert.match(css, /\.motoai-group-items\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
+  // Children are visually indented per level; hidden lists take no space.
+  assert.match(css, /\.motoai-drawer-list \.motoai-group-items\s*\{[^}]*padding-left:\s*6px;/s);
+  assert.match(css, /\.motoai-drawer-list \.motoai-hub-items\s*\{\s*padding:\s*0 0 4px 26px;/);
+  assert.match(css, /\.motoai-drawer-list \.motoai-topic-items\s*\{[^}]*margin:\s*0 0 4px 12px;[^}]*padding-left:\s*8px;[^}]*border-left:/s);
+  assert.match(css, /\.motoai-drawer \[hidden\]\s*\{\s*display:\s*none !important;\s*\}/);
 });
 
 // --- 5i. Privacy + Terms pages (v50) ---
@@ -502,26 +616,48 @@ test('on-primary text keeps WCAG AA contrast on the primary fill in both themes'
   }
 });
 
-// --- 5k. Menu discoverability (v51 → v74): "Menu" pill, same control as the content-site header ---
-test('menu button: icon + visible "Menu" text, pill style, ARIA intact, finite pulse', () => {
-  // 1. Icon + text label, not icon-only — identical markup to every content page.
-  const btn = /<button[^>]*class="motoai-menu"[^>]*>([\s\S]*?)<\/button>/.exec(html)?.[1] ?? '';
+// --- 5k. Menu discoverability (v51 → v79): "☰ Danh mục" pill, the FIRST control of every header ---
+test('menu button: icon + visible "Danh mục" text, first in both headers, pill style, ARIA intact, finite pulse', () => {
+  // 1. Icon + text label, not icon-only — identical markup to every content
+  //    page: the ONE menuButton() of tools/app-shell.mjs, rendered once.
+  const btnRe = /<button[^>]*class="motoai-menu"[^>]*>([\s\S]*?)<\/button>/;
+  const btn = btnRe.exec(html)?.[1] ?? '';
   assert.match(btn, /<span class="menu-lines" aria-hidden="true"><\/span>/, 'two-line menu glyph (content-site header)');
-  assert.match(btn, /<span class="motoai-menu-label">Menu<\/span>/, 'visible "Menu" text label');
-  const blogBtn = /<button[^>]*class="motoai-menu"[^>]*>([\s\S]*?)<\/button>/.exec(readFileSync(join(ROOT, 'blog/index.html'), 'utf8'))?.[1];
-  assert.equal(btn, blogBtn, 'homepage Menu button = content-site Menu button');
-  // 2. ARIA behavior unchanged.
-  assert.match(html, /id="motoai-menu-btn"[^>]*aria-label="Mở menu"[^>]*aria-expanded="false"[^>]*aria-controls="motoai-drawer"/);
-  // 3. Pill: V2 ink fill with paper text (contrast in both themes), 44px target.
+  assert.match(btn, /<span class="motoai-menu-label">Danh mục<\/span>/, 'visible "Danh mục" text label');
+  const blogHtml = readFileSync(join(ROOT, 'blog/index.html'), 'utf8');
+  assert.equal(btn, btnRe.exec(blogHtml)?.[1], 'Agent app Menu button = content-site Menu button');
+  assert.equal(btnRe.exec(html)[0], menuButton(), 'rendered by menuButton()');
+  assert.equal(btnRe.exec(blogHtml)[0], menuButton(), 'content pages render the same menuButton()');
+  assert.equal((html.match(/id="motoai-menu-btn"/g) || []).length, 1, 'exactly ONE ☰ in the Agent app');
+  assert.equal((blogHtml.match(/id="motoai-menu-btn"/g) || []).length, 1, 'exactly ONE ☰ on a content page');
+  // 2. ARIA + relabel data (config/blog-ui.json labels): open/close wording, the panel it controls.
+  assert.match(html, /id="motoai-menu-btn" title="Mở danh mục" aria-label="Mở danh mục" aria-expanded="false" aria-controls="motoai-drawer" data-open="Mở danh mục" data-close="Đóng danh mục">/);
+  assert.ok(!html.includes('aria-label="Mở menu"') && !html.includes('>Menu</span>'), 'the old "Menu" wording is gone');
+  // 3. Placement (v79 owner spec): a clearly visible ☰ Danh mục FIRST on the
+  //    header of every device — first child of header.motoai-header (Agent
+  //    app) and of .site-header-inner (content pages); .site-actions keeps
+  //    search + theme + Hỏi Agent only (no second copy on the right).
+  assert.match(html, /<header class="motoai-header">\s*<button type="button" class="motoai-menu" id="motoai-menu-btn"/, 'Agent header: ☰ first');
+  assert.match(blogHtml, /<div class="site-header-inner">\s*<button type="button" class="motoai-menu" id="motoai-menu-btn"[^>]*>[\s\S]*?<\/button>\s*<a class="site-brand"/, 'content header: ☰ first, then the brand');
+  const actions = blogHtml.slice(blogHtml.indexOf('<div class="site-actions">'), blogHtml.indexOf('<span class="motoai-status"'));
+  assert.ok(actions.length > 0 && !actions.includes('motoai-menu'), 'no second ☰ inside .site-actions');
+  assert.match(actions, /<a class="site-search-link"[\s\S]*<button type="button" class="blog-theme-toggle"[\s\S]*<a class="site-agent-cta" href="\/agent\/"/, 'actions = search, theme, Hỏi Agent');
+  // Never hidden by the Agent header rules (only the embed widget hides it);
+  // it owns the "menu" header grid area on every breakpoint.
+  assert.ok(!/\.motoai-header \.motoai-menu\s*\{[^}]*display:\s*none/s.test(css), 'visible in the Agent header on every device');
+  assert.match(css, /\.motoai-menu\s*\{[^}]*grid-area:\s*menu;/s);
+  assert.match(css, /\.motoai-header\s*\{[^}]*grid-template-areas:\s*"menu mark title actions" "sub sub sub sub" "status status status status";/s);
+  assert.match(css, /@media \(min-width: 768px\)\s*\{[^@]*\.motoai-header\s*\{[^}]*grid-template-areas:\s*"menu mark title status actions" "menu mark sub status actions";/s);
+  // 4. Pill: V2 ink fill with paper text (contrast in both themes), 44px target.
   assert.match(css, /\.motoai-menu\s*\{[^}]*min-height:\s*44px;[^}]*border-radius:\s*var\(--radius-full\);[^}]*background:\s*var\(--ink\);[^}]*color:\s*var\(--paper\);/s);
   assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)\s*\{[^@]*\.motoai-menu:hover\s*\{\s*background:\s*var\(--signal\);\s*color:\s*var\(--on-signal\);/, 'pointer-only hover, never sticky after a tap');
   assert.match(css, /\.motoai-menu:active[^{]*\{[^}]*transform:\s*scale\(0\.97\);/s, 'obvious tap state');
-  // 4. Attention cue is FINITE: 3 iterations, no infinite.
+  // 5. Attention cue is FINITE: 3 iterations, no infinite.
   const anim = css.match(/\.motoai-menu\s*\{[^}]*animation:\s*([^;}]+);/s)?.[1] ?? '';
   assert.ok(anim.includes('motoai-menu-glow'), 'glow animation defined');
   assert.ok(/\b3\b/.test(anim), 'pulse runs a finite number of cycles (3)');
   assert.ok(!/infinite/.test(anim), 'menu pulse is never infinite (typing-dots indicator exempt)');
-  // 5. Reduced motion disables the pulse entirely.
+  // 6. Reduced motion disables the pulse entirely.
   const rm = css.slice(css.lastIndexOf('@media (prefers-reduced-motion: reduce)'));
   assert.match(rm, /\.motoai-menu\s*\{\s*animation:\s*none;\s*\}/, 'reduced-motion kills the pulse');
 });

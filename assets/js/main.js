@@ -12,7 +12,7 @@ import { DEFAULT_CHIPS, resolveChipHref } from '../../src/app/suggestions.js';
 import { ENABLE_STORAGE_KEY } from './ai-settings.js';
 import { initPwa } from './pwa.js';
 import { initTheme } from './theme.js?v=63';
-import { createDrawer } from './drawer.js?v=78';
+import { createDrawer } from './drawer.js?v=79';
 
 const DATA_FILES = [
   ['business', '/data/business/business.json'],
@@ -83,7 +83,7 @@ async function init() {
   };
   const DEBUG = new URLSearchParams(location.search).get('debug') === '1';
 
-  // Drawer + tab bar: shared drawer.js; contact hrefs fill from business.json (fillMenuLinks).
+  // Sidebar: shared drawer.js; contact hrefs fill from business.json (fillMenuLinks).
   function wireMenu() {
     createDrawer();
     elements.menuAddress?.addEventListener('click', () => {

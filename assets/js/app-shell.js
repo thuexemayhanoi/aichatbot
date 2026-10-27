@@ -4,7 +4,7 @@
  * (assets/js/main.js owns the home screen).
  * - Theme (Light / Dark / Auto) — same storage + tokens as the Agent app
  * - Verified open/closed status line (business.json is the only truth)
- * - Menu drawer + tab bar (shared assets/js/drawer.js)
+ * - Sidebar (shared assets/js/drawer.js: left panel / desktop column)
  * - Contact hrefs filled from verified business.json — never hard-coded
  * - v61: parent-hub dropdowns — hover/focus-within (CSS) + a small touch
  *   toggle so tablets are not hover-only; Escape and outside click close
@@ -12,15 +12,12 @@
  */
 import { initTheme } from './theme.js?v=63';
 import { computeStatus, renderStatus } from './business-status.js?v=63';
-import { createDrawer } from './drawer.js?v=78';
+import { createDrawer } from './drawer.js?v=79';
 
 initTheme({ storage: globalThis.localStorage, matchMedia: globalThis.matchMedia?.bind(globalThis) });
 
-// --- Menu drawer + bottom tab bar: the shared controller (drawer.js) ---
+// --- Sidebar: the shared controller (drawer.js) ---
 createDrawer();
-// While a field has focus the keyboard owns the bottom edge: the tab bar steps aside.
-document.addEventListener('focusin', (e) => document.body.classList.toggle('is-typing', e.target.matches('input, textarea, select')));
-document.addEventListener('focusout', () => document.body.classList.remove('is-typing'));
 
 // --- Verified business data: status line + contact hrefs ---
 const statusEl = document.getElementById('blog-business-status');
