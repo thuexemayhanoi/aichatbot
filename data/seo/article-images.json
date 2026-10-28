@@ -700,7 +700,7 @@
       "live_evidence": "TinyFish fetch_content ttl=0 sau merge 621c60ba (PR #25): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0024": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/ho-tay-va-xe-may-ba-0024.webp",
       "source": "ai",
       "generator": {
@@ -723,10 +723,13 @@
       "dhash": "b9bd8db9b48953d3",
       "dhash_of": "01438cf22fd7053242f50e0f69546b8107e73bcae069afe07a9ba67d097f9b26",
       "alt": "Hàng xe máy đỗ thẳng lối trên vỉa hè ven Hồ Tây dưới hàng liễu, mặt hồ xanh trải rộng bên trái",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "bc04b8c1",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge bc04b8c1 (PR #26): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0025": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/chon-xe-bang-agent-ba-0025.webp",
       "source": "ai",
       "generator": {
@@ -749,10 +752,13 @@
       "dhash": "83871d085e86360b",
       "dhash_of": "1624ad6dfba88f1a8fae032b23a6fdd795cd57fe76ddfce4d9e5ba46a1feaeb8",
       "alt": "Tay cầm điện thoại mở khung trò chuyện bên cửa sổ, ngoài kia là xe tay ga bạc đỗ ven đường phố Hà Nội",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "bc04b8c1",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge bc04b8c1 (PR #26): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0026": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/cho-thue-xe-may-thu-tuc-don-gian-ba-0026.webp",
       "source": "ai",
       "generator": {
@@ -775,6 +781,139 @@
       "dhash": "3d1c1c58190d0c4d",
       "dhash_of": "202ce7c65545ec709c7f1bd126ac65ba522cb08246dc57eafb9b321e20e6db5b",
       "alt": "Khách đứng trước quầy hỏi nhân viên, trên quầy có tờ biểu mẫu trống, bút và chìa khóa xe",
+      "alt_reviewed": true,
+      "commit": "bc04b8c1",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge bc04b8c1 (PR #26): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+    },
+    "BA-0027": {
+      "status": "QA_PASSED",
+      "file": "assets/images/blog/thue-xe-dien-dai-ngay-ba-0027.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 16,
+        "source_url": "canva://media/MAHZTIl6GJc",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "d990f2a128514b9649e7ca516350d55f0981fff16dfb99a9bfe517a80a114c33"
+      },
+      "alt_plan": "Xe máy điện đang cắm sạc trên phố yên tĩnh ở Hà Nội",
+      "width": 1200,
+      "height": 800,
+      "bytes": 134802,
+      "quality": 90,
+      "sha256": "f86d8feeeeac8b372537e9e39a9961913c0e7915e4d72d2b1f11a64db9f7c603",
+      "dhash": "2cac2c2474509486",
+      "dhash_of": "f86d8feeeeac8b372537e9e39a9961913c0e7915e4d72d2b1f11a64db9f7c603",
+      "alt": "Xe máy điện trắng yên nâu cắm sạc từ ổ điện trên tường bên vỉa hè, tay cầm điện thoại xem bản đồ",
+      "alt_reviewed": true
+    },
+    "BA-0028": {
+      "status": "QA_PASSED",
+      "file": "assets/images/blog/quy-trinh-tra-xe-ba-0028.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 14,
+        "source_url": "canva://media/MAHZTKZvuBk",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "840fcb00bd6fb3d5b24703de235b84688b060ce3158dece9fff001a59629aece"
+      },
+      "alt_plan": "Giao tiền đặt cọc và chìa khóa xe tại quầy",
+      "width": 1200,
+      "height": 800,
+      "bytes": 97232,
+      "quality": 90,
+      "sha256": "2bd1c250b29aebc197b49eb9ef58a2104ab4106b94327893749a22376ddf380b",
+      "dhash": "dd5d0d6fcfcfd9b6",
+      "dhash_of": "2bd1c250b29aebc197b49eb9ef58a2104ab4106b94327893749a22376ddf380b",
+      "alt": "Hai bàn tay trao phong bì trơn và chìa khóa xe qua quầy, ngoài cửa là hàng xe tay ga và phố Hà Nội",
+      "alt_reviewed": true
+    },
+    "BA-0029": {
+      "status": "QA_PASSED",
+      "file": "assets/images/blog/di-xe-khong-giay-phep-ba-0029.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 15,
+        "source_url": "canva://media/MAHZTMdksSY",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "5147456b2ab05f9c968e4814f5e861c3ed5ffbf37f64ecb3eff956909d8b108f"
+      },
+      "alt_plan": "Thẻ giấy phép lái xe cạnh chìa khóa xe máy",
+      "width": 1200,
+      "height": 800,
+      "bytes": 67250,
+      "quality": 90,
+      "sha256": "20c61c24af3b8347dc57bca1582f4b7e770192eb0b3d47780e51ee77bea36cac",
+      "dhash": "7b6b7776df91191d",
+      "dhash_of": "20c61c24af3b8347dc57bca1582f4b7e770192eb0b3d47780e51ee77bea36cac",
+      "alt": "Tay cầm tấm thẻ trắng trơn cạnh chìa khóa xe bên quầy có sổ ghi chép, phía sau là xe máy đang đỗ",
+      "alt_reviewed": true
+    },
+    "BA-0030": {
+      "status": "QA_PASSED",
+      "file": "assets/images/blog/ba-dinh-xe-may-phuong-ba-0030.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 17,
+        "source_url": "canva://media/MAHZTCysOEc",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "39d1840c49d7f9dfc2de0f6ecd90964c268f3d2d539748bb6994dadda3bbaa1d"
+      },
+      "alt_plan": "Hàng xe máy đỗ ngay ngắn ở bãi gửi xe trên đại lộ rợp cây ở Ba Đình",
+      "width": 1200,
+      "height": 800,
+      "bytes": 175550,
+      "quality": 90,
+      "sha256": "a68c4a40d0984b04c40c6a25e0daed00d51521d00ffecd46158d393822cb11f8",
+      "dhash": "9999cbc1898000c0",
+      "dhash_of": "a68c4a40d0984b04c40c6a25e0daed00d51521d00ffecd46158d393822cb11f8",
+      "alt": "Hàng xe máy đỗ dọc vỉa hè lát gạch trên đại lộ rợp cây ở Ba Đình, cạnh tòa nhà kiểu Pháp màu vàng",
+      "alt_reviewed": true
+    },
+    "BA-0031": {
+      "status": "QA_PASSED",
+      "file": "assets/images/blog/thue-xe-online-nhu-the-nao-ba-0031.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 18,
+        "source_url": "canva://media/MAHZTCqPmj8",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "f8b8af32a0a7e8298d2797cdf0555fc91bd5cb63afc486a68f00ee8d238a17f3"
+      },
+      "alt_plan": "Điện thoại hiển thị giao diện trò chuyện, phía sau là xe tay ga tại sảnh khách sạn",
+      "width": 1200,
+      "height": 800,
+      "bytes": 79826,
+      "quality": 90,
+      "sha256": "7be445d1b102ddf4d4e0863ce4ba2629a3f963802c48cb07a937e8438b85fe1a",
+      "dhash": "19594b139989c27b",
+      "dhash_of": "7be445d1b102ddf4d4e0863ce4ba2629a3f963802c48cb07a937e8438b85fe1a",
+      "alt": "Khách ngồi sofa ở sảnh khách sạn cầm điện thoại mở khung trò chuyện, xe tay ga trắng đỗ gần cửa",
       "alt_reviewed": true
     },
     "BA-0050": {
