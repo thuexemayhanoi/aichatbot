@@ -755,7 +755,7 @@
       "description": "Cung cấp nhiều kích thước (400/800/1200w) qua srcset/sizes, luôn giữ src dự phòng.",
       "google_alignment": "aligned — Google image SEO: dùng <picture>/srcset, 'always specify a fallback URL using the src attribute'.",
       "google_source": "https://developers.google.com/search/docs/appearance/google-images",
-      "applicability": "Mọi ảnh hero là một file 1200×800 WebP (≤200 KB) gửi cho cả điện thoại 390 px.",
+      "applicability": "Mọi ảnh hero là một file 1200×800 WebP (≤300 KB theo chuẩn V2) gửi cho cả điện thoại 390 px.",
       "risk": "low",
       "decision": "ADAPT",
       "reason": "Giảm byte trên mobile cho ảnh có thể là LCP; cần sửa image-factory và heroFigure.",

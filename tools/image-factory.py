@@ -18,9 +18,9 @@ raw image came from. No API key, endpoint or model call lives in the repo.
            screenshot (Figma MCP get_screenshot, enableBase64Response) of
            frames laid out left→right into DIR/ID.png, checking every gap is
            plain canvas so a frame can never be cut from the wrong place
-  optimize ID RAW [--max-kb 200]       centre-crop 3:2 → 1200×800 → WebP
-           (quality search q82→q60 until ≤ max KB; a lighter file that already
-           fits is kept; AI images carry IPTC DigitalSourceType
+  optimize ID RAW [--max-kb 300]       centre-crop 3:2 → 1200×800 → WebP
+           (Image SEO V2: highest quality q90→q60 whose file is ≤ 220 KB, else
+           ≤ 300 KB hard cap; a lighter file is kept as it is, never padded; AI images carry IPTC DigitalSourceType
            trainedAlgorithmicMedia as XMP) → sha256 + 64-bit dHash → IMAGE_OPTIMIZED
   attach   ID --alt "..."              ALT written after LOOKING at the image
            → IMAGE_ATTACHED (alt_reviewed: true)
@@ -52,6 +52,8 @@ REGISTRY = os.path.join(ROOT, 'data/seo/article-images.json')
 PLAN = os.path.join(ROOT, 'data/seo/image-plan.csv')
 IMG_DIR = 'assets/images/blog/'
 WIDTH, HEIGHT = 1200, 800
+# Image SEO standard V2: 100–300 KB, 120–220 KB preferred, 300 KB hard cap.
+PREFERRED_MAX_KB = 220
 STATUSES = ['IMAGE_GENERATED', 'IMAGE_OPTIMIZED', 'IMAGE_ATTACHED', 'QA_PASSED', 'DEPLOYED', 'LIVE_VERIFIED']
 SITE = 'https://chatbot.thuexemaynguyentu.com/'
 # IPTC digital source type for AI-generated images (XMP in the WebP file):
@@ -181,16 +183,23 @@ def cmd_optimize(a):
     if img.size[0] < WIDTH * 0.95:
         sys.exit(f'{a.id}: source too small ({img.size}) — upscaling would blur; regenerate larger')
     img = img.resize((WIDTH, HEIGHT), Image.LANCZOS)
+    # Image SEO V2: the highest quality whose file fits the preferred band
+    # (≤ 220 KB); only a very detailed image may use the 300 KB hard cap. A
+    # light file is kept as it is — size is never padded up.
     limit = a.max_kb * 1024
-    data = None
-    for q in range(82, 59, -4):
+    preferred = min(PREFERRED_MAX_KB * 1024, limit)
+    extra = {'xmp': AI_XMP} if e.get('source') == 'ai' else {}
+    tries = []
+    for q in range(90, 59, -4):
         buf = io.BytesIO()
-        img.save(buf, 'WEBP', quality=q, method=6, **({'xmp': AI_XMP} if e.get('source') == 'ai' else {}))
-        data = buf.getvalue()
-        if len(data) <= limit:
+        img.save(buf, 'WEBP', quality=q, method=6, **extra)
+        tries.append((q, buf.getvalue()))
+        if len(tries[-1][1]) <= preferred:
             break
-    if len(data) > limit:
-        sys.exit(f'{a.id}: {len(data) // 1024} KB at q60 — image too detailed, review manually')
+    fits = [t for t in tries if len(t[1]) <= preferred] or [t for t in tries if len(t[1]) <= limit]
+    if not fits:
+        sys.exit(f'{a.id}: {len(tries[-1][1]) // 1024} KB at q{tries[-1][0]} — image too detailed, review manually')
+    q, data = fits[0]
     path = os.path.join(ROOT, e['file'])
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, 'wb') as f:
@@ -312,7 +321,7 @@ def main():
     p = sub.add_parser('split'); p.add_argument('page'); p.add_argument('ids', nargs='+')
     p.add_argument('--raw-dir', default='/tmp/motoai-image-raw'); p.add_argument('--frame', type=int, default=1264)
     p.add_argument('--gap', type=int, default=40)
-    p = sub.add_parser('optimize'); p.add_argument('id'); p.add_argument('raw'); p.add_argument('--max-kb', type=int, default=200)
+    p = sub.add_parser('optimize'); p.add_argument('id'); p.add_argument('raw'); p.add_argument('--max-kb', type=int, default=300)
     p = sub.add_parser('attach'); p.add_argument('id'); p.add_argument('--alt', required=True); p.add_argument('--caption')
     sub.add_parser('qa')
     p = sub.add_parser('deployed'); p.add_argument('sha'); p.add_argument('--ids', nargs='*')

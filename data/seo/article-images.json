@@ -1,9 +1,9 @@
 {
   "$schema": "motoai/article-images@1",
-  "note": "Image Registry — article id → featured image. Builder renders only status QA_PASSED/DEPLOYED/LIVE_VERIFIED. Write via tools/image-factory.py; QA gate: node tools/article-images.mjs --check. Spec: WebP 1200×800 ≤ 200 KB in assets/images/blog/, ALT written after viewing the image.",
+  "note": "Image Registry — article id → featured image. Builder renders only status QA_PASSED/DEPLOYED/LIVE_VERIFIED. Write via tools/image-factory.py; QA gate: node tools/article-images.mjs --check. Spec (Image SEO V2): WebP 1200×800, 100–300 KB (120–220 KB preferred, ≤ 300 KB hard cap) in assets/images/blog/, ALT written after viewing the image.",
   "images": {
     "BA-0001": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/app-thue-xe-may-la-gi-ba-0001.webp",
       "source": "ai",
       "generator": {
@@ -27,12 +27,14 @@
       "sha256": "fd3228c7218184a6accf6b4ab6d4ca5de345e9e6db73c03f317c60c1afcc65df",
       "dhash": "07070fac76664a36",
       "dhash_of": "fd3228c7218184a6accf6b4ab6d4ca5de345e9e6db73c03f317c60c1afcc65df",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Tay cầm điện thoại hiển thị giao diện trò chuyện bên bàn cà phê, phía sau là xe tay ga đỗ trên phố Hà Nội",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0002": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thue-xe-may-gia-re-ba-0002.webp",
       "source": "ai",
       "generator": {
@@ -56,12 +58,14 @@
       "sha256": "400b35518af06005c7fb746164a0163bf969268ed83879fc8e3117995d766806",
       "dhash": "41054b5a5c660745",
       "dhash_of": "400b35518af06005c7fb746164a0163bf969268ed83879fc8e3117995d766806",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Sổ ghi chi phí, máy tính, chìa khóa và tờ hợp đồng trên bàn gỗ ven đường, phía sau là một chiếc xe số",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0003": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/app-thue-xe-dien-ba-0003.webp",
       "source": "ai",
       "generator": {
@@ -85,12 +89,14 @@
       "sha256": "632432aebbc3b849372f2e03334df1e5b27093abecce5faab0f4d81db49237b5",
       "dhash": "42264204560e0c58",
       "dhash_of": "632432aebbc3b849372f2e03334df1e5b27093abecce5faab0f4d81db49237b5",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Người ngồi ghế công viên dùng điện thoại hỏi đáp, phía sau là xe máy điện màu trắng đỗ bên đường",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0004": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thu-tuc-thue-xe-may-ba-0004.webp",
       "source": "ai",
       "generator": {
@@ -114,12 +120,14 @@
       "sha256": "877dde2870a83ed5a8715ce36f4d9a6cea25dd66135357d7d742a956f2db7cf5",
       "dhash": "cfc68a9707071193",
       "dhash_of": "877dde2870a83ed5a8715ce36f4d9a6cea25dd66135357d7d742a956f2db7cf5",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Người phụ nữ điền giấy tờ thuê xe tại quầy gỗ nhìn ra phố, cạnh chìa khóa xe và phong bì",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0005": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/luat-giao-thong-duong-bo-co-ban-ba-0005.webp",
       "source": "ai",
       "generator": {
@@ -143,12 +151,14 @@
       "sha256": "0c4fb3ac2301f15f62872e7bf8e02e8b0ae6631c2f947362b3598406ca0643d5",
       "dhash": "0d471713d371b131",
       "dhash_of": "0c4fb3ac2301f15f62872e7bf8e02e8b0ae6631c2f947362b3598406ca0643d5",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Người đi xe máy đội mũ bảo hiểm dừng chờ đèn đỏ tại một nút giao ở Hà Nội",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0006": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thue-xe-may-quanh-long-bien-ba-0006.webp",
       "source": "ai",
       "generator": {
@@ -172,12 +182,14 @@
       "sha256": "7b739b678c7f5a8ff25186fc5f3ac386e4fbb8cf60afb76f1e81b403814a17c4",
       "dhash": "1c162e3c2676129e",
       "dhash_of": "7b739b678c7f5a8ff25186fc5f3ac386e4fbb8cf60afb76f1e81b403814a17c4",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Người phụ nữ ở quầy chỉ vào xe tay ga cho khách đeo ba lô trên con phố rợp cây",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0007": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/cach-dung-ung-dung-thue-xe-may-ba-0007.webp",
       "source": "ai",
       "generator": {
@@ -201,12 +213,14 @@
       "sha256": "f5d9257bce021ab050a7860894bd558984025da93224b47924e6c6a00b675588",
       "dhash": "7c4f366662ee4e09",
       "dhash_of": "f5d9257bce021ab050a7860894bd558984025da93224b47924e6c6a00b675588",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Người dùng điện thoại hỏi đáp tại khu chờ bến xe, cạnh cuốn sổ ghi chép và xe tay ga",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0008": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/gia-thue-xe-may-theo-ngay-ba-0008.webp",
       "source": "ai",
       "generator": {
@@ -230,12 +244,14 @@
       "sha256": "14690305c4f67417023957cce9379b46da694843fa58c5d9750fd1bc7e17dad9",
       "dhash": "57c7c357e1293f83",
       "dhash_of": "14690305c4f67417023957cce9379b46da694843fa58c5d9750fd1bc7e17dad9",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Bàn gỗ có sổ ghi chép, máy tính và chìa khóa trong ngõ nhỏ, phía sau là xe số và hai người trò chuyện",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0009": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/ung-dung-thue-xe-may-dien-ba-0009.webp",
       "source": "ai",
       "generator": {
@@ -259,12 +275,14 @@
       "sha256": "2852497d76a9b59a10894ae5771ecdddc9df449c71b12a08e85d2a1750fa7fd1",
       "dhash": "0715379919080f04",
       "dhash_of": "2852497d76a9b59a10894ae5771ecdddc9df449c71b12a08e85d2a1750fa7fd1",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Người cầm điện thoại xem khung trò chuyện ở bãi xe chung cư, bên cạnh là cuốn sổ ghi giá",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0010": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/giay-to-can-khi-thue-xe-ba-0010.webp",
       "source": "ai",
       "generator": {
@@ -288,12 +306,14 @@
       "sha256": "90f82072d83b5034cb13b3ad0bc52b71aff4f592ad7f3a0e39069b038c130547",
       "dhash": "590b8e8d090f1f0b",
       "dhash_of": "90f82072d83b5034cb13b3ad0bc52b71aff4f592ad7f3a0e39069b038c130547",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Hai bàn tay trao thẻ giấy tờ trắng và chìa khóa xe qua quầy gỗ, trên quầy có tờ giấy và bút",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0011": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/nong-do-con-khi-lai-xe-ba-0011.webp",
       "source": "ai",
       "generator": {
@@ -317,12 +337,14 @@
       "sha256": "4c264123e453c78c89e4b0a4a9790f215e7679afd6cd2e5965f118f37d09ad28",
       "dhash": "06062b1666470dad",
       "dhash_of": "4c264123e453c78c89e4b0a4a9790f215e7679afd6cd2e5965f118f37d09ad28",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Mũ bảo hiểm, chìa khóa xe, ly nước lọc và chai bia trên bàn quán phở vỉa hè ở Hà Nội",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0012": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/di-pho-co-bang-xe-may-ba-0012.webp",
       "source": "ai",
       "generator": {
@@ -346,12 +368,14 @@
       "sha256": "8c25743a067ba3e6a3904f1ef69004cb355e61d0874414a543b4632bc076d29a",
       "dhash": "4647c7c743313171",
       "dhash_of": "8c25743a067ba3e6a3904f1ef69004cb355e61d0874414a543b4632bc076d29a",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Hàng xe máy đỗ ngay ngắn trên vỉa hè một con phố cổ treo đèn lồng ở Hà Nội",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0015": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/chon-xe-dien-phu-hop-ba-0015.webp",
       "source": "ai",
       "generator": {
@@ -376,10 +400,13 @@
       "dhash": "4f0d041c4d4d4bdb",
       "dhash_of": "5c2ee28e213449c0575abb592596669e6057ca511cfeae264ce1d6d27cb2b355",
       "alt": "Người phụ nữ ở quầy chỉ đường cho khách đội mũ tai bèo, bên cạnh là xe máy điện màu xám và mũ bảo hiểm",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0017": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/mu-bao-hiem-chuan-ba-0017.webp",
       "source": "ai",
       "generator": {
@@ -403,12 +430,14 @@
       "sha256": "c5232c17301a39ea39ca397360b0da41566e1a415966b90020cbfb288fb60233",
       "dhash": "3939b8193cb1f1b3",
       "dhash_of": "c5232c17301a39ea39ca397360b0da41566e1a415966b90020cbfb288fb60233",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Người cài quai mũ bảo hiểm nửa đầu màu đen bên con đường ven sông",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0020": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thue-xe-may-theo-thang-ba-0020.webp",
       "source": "ai",
       "generator": {
@@ -432,12 +461,14 @@
       "sha256": "76bbd5be9f559bc5f55849469dfec4bf9d0048295f3308889f3c56b0b9babb65",
       "dhash": "2fa60f4f4e970730",
       "dhash_of": "76bbd5be9f559bc5f55849469dfec4bf9d0048295f3308889f3c56b0b9babb65",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Người phụ nữ ký hợp đồng thuê xe tại quầy nhìn ra phố, bên cạnh là chìa khóa và điện thoại",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0050": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thue-honda-vision-ba-0050.webp",
       "source": "ai",
       "generator": {
@@ -461,12 +492,14 @@
       "sha256": "85ad0f2909ab6a99c66dd9782a1dff6bfb73e4b0dbe10f24c3043c84c8de00c6",
       "dhash": "ccce9aae0a585859",
       "dhash_of": "85ad0f2909ab6a99c66dd9782a1dff6bfb73e4b0dbe10f24c3043c84c8de00c6",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Xe tay ga Honda Vision màu xanh đậm đỗ trong ngõ nhỏ ở Hà Nội, trên yên có sổ ghi chi phí và máy tính",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0057": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/sac-pin-xe-dien-o-dau-ba-0057.webp",
       "source": "ai",
       "generator": {
@@ -490,12 +523,14 @@
       "sha256": "0ba071e6d30d256b4db8318b16a52157ffb790086e827cde14dbe6cd7fb55674",
       "dhash": "1d1f1c2c343e3625",
       "dhash_of": "0ba071e6d30d256b4db8318b16a52157ffb790086e827cde14dbe6cd7fb55674",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Tủ đổi pin trên vỉa hè cạnh xe máy điện đang cắm sạc trên một con phố Hà Nội",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0062": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thue-wave-alpha-ba-0062.webp",
       "source": "ai",
       "generator": {
@@ -519,12 +554,14 @@
       "sha256": "a7120b03dbc1628af451ad0d7b5d85d84dc552eb3a58a710ae914f46c1e0eca1",
       "dhash": "0e4e6aec4df9dcdc",
       "dhash_of": "a7120b03dbc1628af451ad0d7b5d85d84dc552eb3a58a710ae914f46c1e0eca1",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Xe số Honda Wave Alpha màu đỏ đen đỗ trên phố nhà ống Hà Nội, trên yên đặt tờ hợp đồng",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0063": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thoi-gian-sac-xe-may-dien-ba-0063.webp",
       "source": "ai",
       "generator": {
@@ -548,12 +585,14 @@
       "sha256": "686280e1d0350713e5a3a1fa718771d310363c492750f5e0b9597b39bcfd736c",
       "dhash": "0d49425671302c24",
       "dhash_of": "686280e1d0350713e5a3a1fa718771d310363c492750f5e0b9597b39bcfd736c",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Xe máy điện màu xám cắm sạc từ bộ sạc gắn tường ở bãi xe chung cư, ba lô đặt trên yên",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0066": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/song-hong-va-cau-long-bien-ba-0066.webp",
       "source": "ai",
       "generator": {
@@ -577,12 +616,14 @@
       "sha256": "1868a32c469f42c37992f6521dd2f64decf1bc860968b256cf50037b2abafc2f",
       "dhash": "89dd5f776173313b",
       "dhash_of": "1868a32c469f42c37992f6521dd2f64decf1bc860968b256cf50037b2abafc2f",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Người đội mũ bảo hiểm lái xe tay ga màu bạc trên cầu Long Biên, bên trái là sông Hồng",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     },
     "BA-0074": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/so-sanh-gia-cac-loai-xe-may-cho-thue-ba-0074.webp",
       "source": "ai",
       "generator": {
@@ -606,9 +647,11 @@
       "sha256": "abef9fe9041c60c1b9cc991f5093ac117e5a6de9401797b382d516064554ef64",
       "dhash": "438393cae4a4345c",
       "dhash_of": "abef9fe9041c60c1b9cc991f5093ac117e5a6de9401797b382d516064554ef64",
-      "live_evidence": "Pages run 2827 success @48567bdc; TinyFish fetch (ttl 0): trang 200, figure.article-hero + og:image + twitter summary_large_image; file WebP trả nội dung (URL thiếu trả 404)",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
       "alt": "Xe tay ga màu xanh đậm và xe số màu đỏ đỗ cạnh nhau trên vỉa hè phố cổ Hà Nội",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "10fc20d0",
+      "live_verified": "2026-10-28"
     }
   }
 }
