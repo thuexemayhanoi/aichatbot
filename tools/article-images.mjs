@@ -160,6 +160,8 @@ export function auditRegistry(registry, { plan = [], articles = null, root = ROO
       const sha = createHash('sha256').update(buf).digest('hex');
       if (e.sha256 !== sha) err('sha256 differs from the file (re-run tools/image-factory.py optimize)');
       if (bySha.has(sha)) err(`identical bytes to ${bySha.get(sha)}`);
+      // Honest labelling: an AI image carries IPTC DigitalSourceType in its XMP.
+      if (e.source === 'ai' && !buf.includes('digitalsourcetype/trainedAlgorithmicMedia')) err('AI image without IPTC trainedAlgorithmicMedia XMP');
       bySha.set(sha, id);
       if (!/^[0-9a-f]{16}$/.test(e.dhash ?? '')) err('dhash (64-bit hex) missing');
       else if (e.dhash_of !== sha) err('dhash was computed for another file version');

@@ -171,8 +171,8 @@ const AT_LIGHTS = new Set(['traffic-rules', 'camera']);
 const PROPS = {
   swap: 'a battery-swap cabinet nearby', charge: 'a charging cable plugged in', battery: 'a removable battery pack',
   range: 'a small backpack strapped on', helmet: 'a certified half-face helmet', raincoat: 'a folded rain poncho',
-  licence: 'a plain licence card', insurance: 'a plain insurance certificate', contract: 'a rental agreement and pen',
-  deposit: 'a deposit envelope', compare: 'a second, different bike beside it', price: 'a notebook with handwritten sums',
+  licence: 'a plain blank card', insurance: 'a plain blank certificate', contract: 'a blank form and pen',
+  deposit: 'a plain unmarked envelope', compare: 'a second, different bike beside it', price: 'a notebook with handwritten sums',
   inspect: 'a customer checking the tyre', delivery: 'a staff member handing over the key', fuel: 'a fuel pump nozzle',
   tyre: 'a tyre pressure gauge', brake: 'a gloved hand on the brake lever', mirror: 'an adjusted rear-view mirror',
   lights: 'the headlight switched on', repair: 'a small toolkit', lock: 'a disc lock on the wheel',
@@ -196,10 +196,10 @@ export const THEMES = [
   { id: 'range', re: /pham vi|bao xa|quang duong|duong dai/, en: '{v} cruising on an open road, a small backpack strapped on', vi: '{vv} chạy trên đường dài' },
   { id: 'helmet', re: /mu bao hiem/, rv: /nón/, en: 'close-up of hands fastening the chin strap of a certified half-face helmet', vi: 'Cài quai mũ bảo hiểm đạt chuẩn' },
   { id: 'raincoat', re: /ao mua/, en: 'a rider pulling on a bright rain poncho beside {v}', vi: 'Mặc áo mưa trước khi lái {vv}' },
-  { id: 'licence', re: /bang lai|giay phep|\bidp\b|hang a1|a1 a2/, en: 'a plain driving-licence card held next to a scooter key, all details unreadable', vi: 'Thẻ giấy phép lái xe cạnh chìa khóa xe máy', paper: true, prop: 'a plain licence card and the key held in the foreground' },
+  { id: 'licence', re: /bang lai|giay phep|\bidp\b|hang a1|a1 a2/, en: 'a plain blank card the size of a driving licence held next to a scooter key, no printing on it', vi: 'Thẻ giấy phép lái xe cạnh chìa khóa xe máy', paper: true, prop: 'a plain licence card and the key held in the foreground' },
   { id: 'insurance', rv: /(?<!mũ )bảo hiểm/, en: 'a plain insurance certificate in a document wallet beside {v}, text unreadable', vi: 'Giấy chứng nhận bảo hiểm đặt cạnh {vv}', prop: 'an insurance certificate in a document wallet resting on the seat' },
-  { id: 'contract', re: /hop dong|giay to|thu tuc|dieu kien|cong chung|bao lanh|duoi 18/, en: 'a rental agreement on a counter being reviewed with a pen and a scooter key, text unreadable', vi: 'Hợp đồng thuê xe, bút và chìa khóa trên quầy', paper: true, prop: 'a rental agreement and a pen resting on the seat' },
-  { id: 'deposit', rv: /cọc|thanh toán/, en: 'a deposit envelope and a scooter key being handed across a rental counter', vi: 'Giao tiền đặt cọc và chìa khóa xe tại quầy', paper: true, prop: 'the key being handed over to a customer' },
+  { id: 'contract', re: /hop dong|giay to|thu tuc|dieu kien|cong chung|bao lanh|duoi 18/, en: 'a blank rental form with only faint illegible lines (no letters, no stamps or seals) on a counter with a pen and a scooter key', vi: 'Hợp đồng thuê xe, bút và chìa khóa trên quầy', paper: true, prop: 'a blank form and a pen resting on the seat' },
+  { id: 'deposit', rv: /cọc|thanh toán/, en: 'a plain unmarked brown envelope and a scooter key being handed across a rental counter', vi: 'Giao tiền đặt cọc và chìa khóa xe tại quầy', paper: true, prop: 'the key being handed over to a customer' },
   { id: 'children', re: /tre em|cho tre/, en: 'a parent and a child both wearing helmets standing beside {v}', vi: 'Phụ huynh và trẻ em đội mũ bảo hiểm bên {vv}' },
   { id: 'two-up', re: /hai nguoi|nguoi than|cho nguoi/, en: 'two people wearing helmets on {v}, parked and ready to ride', vi: 'Hai người đội mũ bảo hiểm trên {vv}' },
   { id: 'compare', re: /so sanh|khac gi|hay di|hay xe|xe so hay/, en: 'an automatic scooter and a manual underbone motorbike ("xe so") parked side by side for comparison', vi: 'Xe tay ga và xe số đỗ cạnh nhau để so sánh' },
@@ -269,7 +269,7 @@ export const FRAMINGS = [
   { id: 'flatlay', en: 'Top-down flat-lay composition' }
 ];
 
-export const STYLE = 'Photorealistic editorial photograph, natural light, 3:2 landscape, sharp focus, realistic Vietnamese setting. No text, no captions, no watermark, no logos or brand badges, no shop signage, licence plates not readable, documents and screens unreadable, faces not the main subject.';
+export const STYLE = 'Photorealistic editorial photograph, natural light, 3:2 landscape, sharp focus, realistic Vietnamese setting. No text, no captions, no watermark, no logos or brand badges, no shop signage, licence plates not readable, documents and screens unreadable, faces not the main subject; motorbikes without visible brand names or decals; paper and envelopes plain with no letters; background people naturally out of focus, never pixelated or censored.';
 
 // ---------- data ----------
 

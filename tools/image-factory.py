@@ -20,14 +20,17 @@ raw image came from. No API key, endpoint or model call lives in the repo.
            plain canvas so a frame can never be cut from the wrong place
   optimize ID RAW [--max-kb 200]       centre-crop 3:2 → 1200×800 → WebP
            (quality search q82→q60 until ≤ max KB; a lighter file that already
-           fits is kept) → sha256 + 64-bit dHash → IMAGE_OPTIMIZED
+           fits is kept; AI images carry IPTC DigitalSourceType
+           trainedAlgorithmicMedia as XMP) → sha256 + 64-bit dHash → IMAGE_OPTIMIZED
   attach   ID --alt "..."              ALT written after LOOKING at the image
            → IMAGE_ATTACHED (alt_reviewed: true)
   qa                                   run the registry gate; on PASS promote
            every IMAGE_ATTACHED → QA_PASSED (the builder renders these)
-  deployed SHA                         QA_PASSED → DEPLOYED (commit on main)
+  deployed SHA [--ids ID ...]          QA_PASSED → DEPLOYED (commit on main; default: all QA_PASSED)
   live     [--site URL]                DEPLOYED → LIVE_VERIFIED when the live
            page references the image and the image URL answers 200 image/webp
+  live-mark ID [ID ...] --evidence TXT DEPLOYED → LIVE_VERIFIED from a check made outside the
+           container (when the proxy blocks the production host); the evidence is stored
   status                               counts per status + next pending ids
 
 Requires Pillow (WebP support). Run from the repository root.
@@ -51,6 +54,13 @@ IMG_DIR = 'assets/images/blog/'
 WIDTH, HEIGHT = 1200, 800
 STATUSES = ['IMAGE_GENERATED', 'IMAGE_OPTIMIZED', 'IMAGE_ATTACHED', 'QA_PASSED', 'DEPLOYED', 'LIVE_VERIFIED']
 SITE = 'https://chatbot.thuexemaynguyentu.com/'
+# IPTC digital source type for AI-generated images (XMP in the WebP file):
+# Google Images and other readers can show the image is AI-made.
+AI_XMP = ('<?xpacket begin="" id="W5M0MpCehiHzreSzNTczkc9d"?><x:xmpmeta xmlns:x="adobe:ns:meta/">'
+          '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description rdf:about="" '
+          'xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/"><Iptc4xmpExt:DigitalSourceType>'
+          'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia</Iptc4xmpExt:DigitalSourceType>'
+          '</rdf:Description></rdf:RDF></x:xmpmeta><?xpacket end="w"?>').encode('utf-8')
 
 
 def rank(status):
@@ -175,7 +185,7 @@ def cmd_optimize(a):
     data = None
     for q in range(82, 59, -4):
         buf = io.BytesIO()
-        img.save(buf, 'WEBP', quality=q, method=6)
+        img.save(buf, 'WEBP', quality=q, method=6, **({'xmp': AI_XMP} if e.get('source') == 'ai' else {}))
         data = buf.getvalue()
         if len(data) <= limit:
             break
@@ -229,8 +239,8 @@ def cmd_qa(_a):
 def cmd_deployed(a):
     reg = load_registry()
     n = 0
-    for e in reg['images'].values():
-        if e['status'] == 'QA_PASSED':
+    for art_id, e in reg['images'].items():
+        if e['status'] == 'QA_PASSED' and (not a.ids or art_id in a.ids):
             e['status'] = 'DEPLOYED'
             e['commit'] = a.sha
             n += 1
@@ -268,6 +278,17 @@ def cmd_live(a):
     print(f'{n} LIVE_VERIFIED, {bad} not yet')
 
 
+def cmd_live_mark(a):
+    reg = load_registry()
+    for art_id in a.ids:
+        e = entry(reg, art_id, 'DEPLOYED')
+        e['status'] = 'LIVE_VERIFIED'
+        e['live_verified'] = a.date
+        e['live_evidence'] = a.evidence
+    save_registry(reg)
+    print(f'{len(a.ids)} LIVE_VERIFIED ({a.date})')
+
+
 def cmd_status(_a):
     reg = load_registry()
     plan = load_plan()
@@ -294,12 +315,15 @@ def main():
     p = sub.add_parser('optimize'); p.add_argument('id'); p.add_argument('raw'); p.add_argument('--max-kb', type=int, default=200)
     p = sub.add_parser('attach'); p.add_argument('id'); p.add_argument('--alt', required=True); p.add_argument('--caption')
     sub.add_parser('qa')
-    p = sub.add_parser('deployed'); p.add_argument('sha')
+    p = sub.add_parser('deployed'); p.add_argument('sha'); p.add_argument('--ids', nargs='*')
+    p = sub.add_parser('live-mark'); p.add_argument('ids', nargs='+'); p.add_argument('--evidence', required=True)
+    p.add_argument('--date', default=date.today().isoformat())
     p = sub.add_parser('live'); p.add_argument('--site', default=SITE)
     sub.add_parser('status')
     a = ap.parse_args()
     {'record': cmd_record, 'download': cmd_download, 'split': cmd_split, 'optimize': cmd_optimize, 'attach': cmd_attach,
-     'qa': cmd_qa, 'deployed': cmd_deployed, 'live': cmd_live, 'status': cmd_status}[a.cmd](a)
+     'qa': cmd_qa, 'deployed': cmd_deployed, 'live': cmd_live, 'live-mark': cmd_live_mark,
+     'status': cmd_status}[a.cmd](a)
 
 
 if __name__ == '__main__':

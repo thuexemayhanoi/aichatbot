@@ -61,8 +61,8 @@ function tempRegistry(entries) {
 const gen = { tool: 'figma-mcp generate_image', generated_at: '2026-10-28' };
 
 test('a QA_PASSED entry with a valid 1200×800 WebP, hashes and reviewed ALT passes the gate', () => {
-  const root = tempRegistry({ files: { 'a-ba-0001.webp': 'lossy-1200x800.webp' } });
-  const buf = fixture('lossy-1200x800.webp');
+  const root = tempRegistry({ files: { 'a-ba-0001.webp': 'ai-1200x800.webp' } });
+  const buf = fixture('ai-1200x800.webp');
   const reg = { images: { 'BA-0001': {
     status: 'QA_PASSED', file: `${SPEC.dir}a-ba-0001.webp`, source: 'ai', generator: gen,
     width: 1200, height: 800, bytes: buf.length, sha256: sha(buf), dhash: '0f0f0f0f0f0f0f0f', dhash_of: sha(buf),
@@ -97,6 +97,20 @@ test('the gate rejects wrong size, stale hashes, unreviewed ALT, shared files an
   } }, { root }).errors.join('\n');
   assert.match(dup, /identical bytes to BA-0006/);
   assert.match(dup, /near-duplicate \(dHash distance 1/);
+});
+
+test('an AI image must carry the IPTC trainedAlgorithmicMedia XMP label; a real photo need not', () => {
+  const root = tempRegistry({ files: { 'x-ba-0020.webp': 'lossy-1200x800.webp', 'y-ba-0021.webp': 'ai-1200x800.webp' } });
+  assert.deepEqual(webpInfo(fixture('ai-1200x800.webp')), { chunk: 'VP8X', width: 1200, height: 800 });
+  const plain = fixture('lossy-1200x800.webp');
+  const base = { status: 'IMAGE_OPTIMIZED', generator: gen, width: 1200, height: 800, bytes: plain.length, sha256: sha(plain), dhash_of: sha(plain) };
+  const reg = { images: {
+    'BA-0020': { ...base, file: `${SPEC.dir}x-ba-0020.webp`, source: 'ai', dhash: '00000000ffffffff' },
+    'BA-0021': { ...base, file: `${SPEC.dir}x-ba-0020.webp`.replace('x-ba-0020', 'y-ba-0021'), source: 'photo', dhash: 'ffffffff00000000',
+      bytes: fixture('ai-1200x800.webp').length, sha256: sha(fixture('ai-1200x800.webp')), dhash_of: sha(fixture('ai-1200x800.webp')) }
+  } };
+  const errors = auditRegistry(reg, { root }).errors;
+  assert.deepEqual(errors, ['BA-0020: AI image without IPTC trainedAlgorithmicMedia XMP']);
 });
 
 test('only QA_PASSED or later entries whose file exists are rendered', () => {

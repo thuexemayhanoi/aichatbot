@@ -26,7 +26,8 @@ khác repo: repo thắng, xuất lại workbook.
    tạo ảnh bằng công cụ AI đã kết nối (Figma MCP `generate_image`, 1536×1024) →
    `python3 tools/image-factory.py record BA-xxxx --url <image.url> --tool "figma-mcp generate_image" --model <model> --node <nodeId> --figma-file <fileKey> --expires <YYYY-MM-DD> --width W --height H`.
 4. `python3 tools/image-factory.py download BA-xxxx` → `optimize BA-xxxx <raw>`
-   (crop 3:2 → 1200×800 → WebP ≤ 200 KB, sha256 + dHash).
+   (crop 3:2 → 1200×800 → WebP ≤ 200 KB, sha256 + dHash; ảnh AI được gắn XMP IPTC
+   `DigitalSourceType = trainedAlgorithmicMedia` — gate bắt buộc).
    Khi `www.figma.com` bị chính sách mạng chặn: tạo ≤ 8 ảnh trong một file Figma riêng cho lô
    (`create_new_file`, các khung tự xếp hàng ngang cách 40 px) → **một** lượt
    `get_screenshot` node `0:1`, `maxDimension 65536`, `enableBase64Response: true` (ảnh PNG gốc được
@@ -39,7 +40,8 @@ khác repo: repo thắng, xuất lại workbook.
 7. `node tools/build-blog.mjs` → `node --test` → `node tools/site-audit.mjs` → `node tools/seo-score.mjs`.
 8. Commit + push → PR → CI xanh → merge → `python3 tools/image-factory.py deployed <sha>` →
    sau khi Pages build: `python3 tools/image-factory.py live` (hoặc kiểm tra bằng fetch bên ngoài nếu
-   container bị chặn tới domain production) → LIVE_VERIFIED.
+   container bị chặn tới domain production rồi `live-mark ID … --evidence "…"`) → LIVE_VERIFIED.
+   Nghiên cứu phương pháp SEO áp dụng: `docs/seo/github-seo-skills.md`.
 9. Cập nhật `backlog.csv`, `execution-log.csv`, `errors.csv` → `python3 tools/seo-master-workbook.py` → commit.
 
 Không bao giờ: tạo lại ảnh đã QA_PASSED (trừ khi sửa lỗi có ghi lỗi), dùng một ảnh cho nhiều bài,
