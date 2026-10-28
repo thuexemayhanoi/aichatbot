@@ -269,7 +269,7 @@ export const FRAMINGS = [
   { id: 'flatlay', en: 'Top-down flat-lay composition' }
 ];
 
-export const STYLE = 'Photorealistic editorial photograph, natural light, 3:2 landscape, sharp focus, realistic Vietnamese setting. No text, no captions, no watermark, no logos or brand badges, no shop signage, licence plates not readable, documents and screens unreadable, faces not the main subject; motorbikes without visible brand names or decals; paper and envelopes plain with no letters; background people naturally out of focus, never pixelated or censored.';
+export const STYLE = 'Photorealistic editorial photograph, natural light, 3:2 landscape, sharp focus, realistic Vietnamese setting. No text, no captions, no watermark, no logos or brand badges, no shop signage, licence plates not readable, documents and screens unreadable, faces not the main subject; motorbikes without visible brand names or decals; paper and envelopes plain with no letters; anyone riding a motorbike, even far in the background, wears a helmet; background people naturally out of focus, never pixelated or censored.';
 
 // ---------- data ----------
 
