@@ -1106,7 +1106,7 @@
       "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404"
     },
     "BA-0038": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thue-xe-ga-ba-0038.webp",
       "source": "ai",
       "generator": {
@@ -1129,10 +1129,13 @@
       "dhash": "4b4a363636260f09",
       "dhash_of": "bff59c8f6a9a963756616f4361cdfbfe8311c82a57911620e4bea46a1263eadd",
       "alt": "Người ngồi ghi chép bên bàn có máy tính bỏ túi và chìa khóa xe, khách đứng hỏi, phía sau là xe tay ga đậu trên đường ven sông",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "4b2cfdb9",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404"
     },
     "BA-0039": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/pham-vi-hoat-dong-cua-xe-dien-ba-0039.webp",
       "source": "ai",
       "generator": {
@@ -1155,10 +1158,13 @@
       "dhash": "68f46fa6a4106161",
       "dhash_of": "08f54e897ddc7cdd742771eb196b19b7113f6cc14ad4dc60348f852871492bcc",
       "alt": "Người đội mũ bảo hiểm, đeo ba lô chạy xe máy điện màu trắng trên con đường ven công viên lúc chiều muộn",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "4b2cfdb9",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404"
     },
     "BA-0040": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/hop-dong-thue-xe-can-nhung-gi-ba-0040.webp",
       "source": "ai",
       "generator": {
@@ -1181,10 +1187,13 @@
       "dhash": "cb8b43430b9b2d0f",
       "dhash_of": "61bf5680f1ae44ce9a9f5c86a9d75ed09bc0d8bcea471769be0a40f76821ebf7",
       "alt": "Tờ đơn trắng, cây bút, chìa khóa xe và phong bì giấy nâu trên quầy nhìn ra phố, bên cạnh hàng xe tay ga",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "4b2cfdb9",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404"
     },
     "BA-0043": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/dat-xe-bang-ung-dung-ba-0043.webp",
       "source": "ai",
       "generator": {
@@ -1207,7 +1216,10 @@
       "dhash": "e42119143c1c3050",
       "dhash_of": "138989a19364e13a82c817255338ac0e0ed427cf52bb36d9f81bd4444aa21864",
       "alt": "Người chờ ở nhà chờ bến xe buýt nhắn tin trên điện thoại, cạnh chiếc xe tay ga màu bạc dựng chân chống",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "4b2cfdb9",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404"
     },
     "BA-0050": {
       "status": "LIVE_VERIFIED",
