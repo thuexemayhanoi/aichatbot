@@ -374,6 +374,40 @@
       "commit": "10fc20d0",
       "live_verified": "2026-10-28"
     },
+    "BA-0013": {
+      "status": "IMAGE_GENERATED",
+      "file": "assets/images/blog/ung-dung-thue-xe-co-an-toan-khong-ba-0013.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 2,
+        "source_url": "canva://media/MAHZRQF72XU",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "17a0681cb298950c0b4fab33bff120504fb4363ca4930b72d12f83342afc0f24"
+      },
+      "alt_plan": "Điện thoại hiển thị giao diện trò chuyện, phía sau là xe tay ga bên bàn làm việc cạnh cửa sổ"
+    },
+    "BA-0014": {
+      "status": "IMAGE_GENERATED",
+      "file": "assets/images/blog/thue-xe-may-theo-tuan-ba-0014.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 3,
+        "source_url": "canva://media/MAHZRV6_YbY",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "30093c2af2d2e9c3f1e3d58fd09341cf82ef76f1e3e7fe675ec7ee9a7ad2df7f"
+      },
+      "alt_plan": "Hợp đồng thuê xe, bút và chìa khóa trên quầy"
+    },
     "BA-0015": {
       "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/chon-xe-dien-phu-hop-ba-0015.webp",
@@ -405,6 +439,23 @@
       "live_verified": "2026-10-28",
       "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
+    "BA-0016": {
+      "status": "IMAGE_GENERATED",
+      "file": "assets/images/blog/huong-dan-dat-xe-nhanh-ba-0016.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 4,
+        "source_url": "canva://media/MAHZRehhLjQ",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "1332811c2f74bd6c4d14870082e7bb295452cc2a322c5357128d1649e9a09ef8"
+      },
+      "alt_plan": "Hợp đồng thuê xe, bút và chìa khóa trên quầy"
+    },
     "BA-0017": {
       "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/mu-bao-hiem-chuan-ba-0017.webp",
@@ -435,6 +486,40 @@
       "alt_reviewed": true,
       "commit": "10fc20d0",
       "live_verified": "2026-10-28"
+    },
+    "BA-0018": {
+      "status": "IMAGE_GENERATED",
+      "file": "assets/images/blog/du-lich-hoan-kiem-bang-xe-may-ba-0018.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 5,
+        "source_url": "canva://media/MAHZRdbuQ-Y",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "715cae4f10a51e0215656ebfa4ba4535f0527912810819feb348f8be8fa60acb"
+      },
+      "alt_plan": "Hàng xe máy đỗ ngay ngắn ở bãi gửi xe trên phố cổ Hà Nội"
+    },
+    "BA-0019": {
+      "status": "IMAGE_GENERATED",
+      "file": "assets/images/blog/cach-tinh-gia-thue-xe-bang-app-ba-0019.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 6,
+        "source_url": "canva://media/MAHZRbmPWBs",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "fe08d2b05ea9d9b5f109e0a9aa30d7af8276fdde134a64802cc32bd672b3e2fa"
+      },
+      "alt_plan": "Điện thoại hiển thị giao diện trò chuyện, phía sau là xe số bên bàn làm việc cạnh cửa sổ"
     },
     "BA-0020": {
       "status": "LIVE_VERIFIED",
