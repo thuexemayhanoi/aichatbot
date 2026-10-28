@@ -4,7 +4,9 @@
  *
  *   data/seo/article-images.json   article id → image file, size, hashes, ALT,
  *                                  generator provenance and production status
- *   assets/images/blog/*.webp      the optimized files (1200 × 800, ≤ 200 KB)
+ *   assets/images/blog/*.webp      the optimized files (1200 × 800, ≤ 300 KB — Image SEO
+ *                                  standard V2: 100–300 KB, 120–220 KB preferred, a sharp
+ *                                  file under 100 KB is fine)
  *   data/seo/image-plan.csv        per-article brief + planned filename/ALT
  *                                  (tools/image-briefs.mjs)
  *
@@ -15,7 +17,7 @@
  *
  * Status ladder (each step keeps every field of the previous one):
  *   IMAGE_GENERATED  generator provenance recorded (file may not exist yet)
- *   IMAGE_OPTIMIZED  WebP 1200×800 ≤ 200 KB in assets/images/blog/, sha256 + dHash
+ *   IMAGE_OPTIMIZED  WebP 1200×800 ≤ 300 KB in assets/images/blog/, sha256 + dHash
  *   IMAGE_ATTACHED   ALT written after looking at the image
  *   QA_PASSED        this gate passed → the builder renders it
  *   DEPLOYED         merged on main (commit recorded)
@@ -37,7 +39,10 @@ export const SPEC = Object.freeze({
   dir: 'assets/images/blog/',
   width: 1200,
   height: 800,
-  maxBytes: 200 * 1024,
+  /** Image SEO standard V2 (owner, 2026-10-28): hard cap 300 KB. */
+  maxBytes: 300 * 1024,
+  /** Preferred band when quality allows — informational, never padded up to. */
+  preferredBytes: Object.freeze([120 * 1024, 220 * 1024]),
   /** Minimum dHash Hamming distance between two different articles' images. */
   minDistance: 10,
   altMin: 15,
@@ -155,7 +160,7 @@ export function auditRegistry(registry, { plan = [], articles = null, root = ROO
       try { info = webpInfo(buf); } catch (x) { err(`invalid WebP: ${x.message}`); continue; }
       if (info.width !== SPEC.width || info.height !== SPEC.height) err(`size ${info.width}×${info.height}, expected ${SPEC.width}×${SPEC.height}`);
       if (e.width !== info.width || e.height !== info.height) err('registry width/height differ from the file');
-      if (buf.length > SPEC.maxBytes) err(`${Math.round(buf.length / 1024)} KB > ${SPEC.maxBytes / 1024} KB`);
+      if (buf.length > SPEC.maxBytes) err(`${buf.length} bytes exceeds the ${SPEC.maxBytes / 1024} KB cap`);
       if (e.bytes !== statSync(path).size) err('registry bytes differ from the file');
       const sha = createHash('sha256').update(buf).digest('hex');
       if (e.sha256 !== sha) err('sha256 differs from the file (re-run tools/image-factory.py optimize)');

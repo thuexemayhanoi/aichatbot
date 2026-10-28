@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, mkdtempSync, mkdirSync, copyFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, copyFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
@@ -111,6 +111,39 @@ test('an AI image must carry the IPTC trainedAlgorithmicMedia XMP label; a real 
   } };
   const errors = auditRegistry(reg, { root }).errors;
   assert.deepEqual(errors, ['BA-0020: AI image without IPTC trainedAlgorithmicMedia XMP']);
+});
+
+// A copy of `buf` grown to exactly `total` bytes with an extra RIFF chunk —
+// still a valid WebP to the parser, so only the byte size changes.
+function padded(buf, total) {
+  const pad = total - buf.length - 8;
+  const out = Buffer.concat([buf, Buffer.from('PAD '), Buffer.alloc(4), Buffer.alloc(pad)]);
+  out.writeUInt32LE(pad, buf.length + 4);
+  out.writeUInt32LE(out.length - 8, 4);
+  return out;
+}
+
+test('Image SEO V2: files up to 300 KB pass, heavier ones fail, light sharp files are not rejected', () => {
+  assert.equal(SPEC.maxBytes, 300 * 1024);
+  assert.deepEqual(SPEC.preferredBytes, [120 * 1024, 220 * 1024]);
+  const root = mkdtempSync(join(tmpdir(), 'motoai-img-'));
+  mkdirSync(join(root, SPEC.dir), { recursive: true });
+  const ai = fixture('ai-1200x800.webp');
+  const sizes = { 'BA-0031': ai.length, 'BA-0032': 250 * 1024, 'BA-0033': 300 * 1024, 'BA-0034': 300 * 1024 + 2, 'BA-0035': 310 * 1024 };
+  const dhashes = ['0000000000000000', 'ffffffffffffffff', '00000000ffffffff', 'ffffffff00000000', '0f0f0f0f0f0f0f0f'];
+  const images = {};
+  Object.entries(sizes).forEach(([id, total], i) => {
+    const buf = total === ai.length ? ai : padded(ai, total);
+    const file = `${SPEC.dir}v2-${id.toLowerCase()}.webp`;
+    writeFileSync(join(root, file), buf);
+    images[id] = { status: 'IMAGE_OPTIMIZED', file, source: 'ai', generator: gen, width: 1200, height: 800,
+      bytes: buf.length, sha256: sha(buf), dhash: dhashes[i], dhash_of: sha(buf) };
+  });
+  assert.ok(ai.length < 100 * 1024, 'the fixture stands in for a sharp file under 100 KB');
+  assert.deepEqual(auditRegistry({ images }, { root }).errors, [
+    `BA-0034: ${300 * 1024 + 2} bytes exceeds the 300 KB cap`,
+    `BA-0035: ${310 * 1024} bytes exceeds the 300 KB cap`
+  ]);
 });
 
 test('only QA_PASSED or later entries whose file exists are rendered', () => {

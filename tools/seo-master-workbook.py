@@ -204,6 +204,12 @@ def build(date):
     tech_open = sum(1 for r in tech if r.get('Repair Status') == 'OPEN')
     blocked = [r for r in backlog if r['status'] == 'BLOCKED']
     next_batch = (blocked[0]['next_required_step'] if blocked else '') or ', '.join(pending_ids[:10])
+    # The size standard is read from the QA gate itself so the sheet can never drift from it.
+    gate = open(p('tools/article-images.mjs'), encoding='utf-8').read()
+    max_kb = int(re.search(r'maxBytes: (\d+) \* 1024', gate).group(1))
+    pref = re.search(r'preferredBytes: Object\.freeze\(\[(\d+) \* 1024, (\d+) \* 1024\]\)', gate)
+    kb = sorted(e['bytes'] / 1024 for e in registry.values() if e.get('bytes') and rank(e['status']) >= rank('QA_PASSED'))
+    in_pref = sum(1 for v in kb if int(pref.group(1)) <= v <= int(pref.group(2)))
 
     dashboard = [
         ('Ngày cập nhật', date),
@@ -218,6 +224,11 @@ def build(date):
         ('Ảnh đã deploy (≥ DEPLOYED)', at_least('DEPLOYED')),
         ('Ảnh đã live verify (LIVE_VERIFIED)', st.get('LIVE_VERIFIED', 0)),
         ('Bài mục tiêu chưa có ảnh', len(pending_ids)),
+        ('Tiêu chuẩn ảnh (Image SEO V2)',
+         f'WebP 1200×800; 100–{max_kb} KB, ưu tiên {pref.group(1)}–{pref.group(2)} KB; tối đa {max_kb} KB; '
+         'dưới 100 KB vẫn hợp lệ nếu sắc nét (không độn dung lượng)'),
+        ('Dung lượng ảnh QA_PASSED (min / trung bình / max KB)',
+         f'{kb[0]:.0f} / {sum(kb) / len(kb):.0f} / {kb[-1]:.0f} — {in_pref}/{len(kb)} trong dải ưu tiên' if kb else 'chưa có'),
         ('URL đã audit SEO (seo-master-audit)', len(seo)),
         ('URL trạng thái DONE trong SEO master (tối ưu v70–v79)', sum(1 for r in seo if r.get('Status') == 'DONE')),
         ('Bài cần review nội dung (Content Review = REVIEW)', reviews_needed),
