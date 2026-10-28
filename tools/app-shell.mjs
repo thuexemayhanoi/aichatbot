@@ -67,12 +67,15 @@ export function rel(path) {
  *  (no flash, no layout shift); drawer.js keeps both keys up to date. */
 const NO_FLASH_THEME = `<script>/* apply saved theme + sidebar state before first paint (no flash) */(function(){try{var d=document.documentElement,t=localStorage.getItem('motoai-theme');if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches)){d.setAttribute('data-motoai-theme','dark');}if(localStorage.getItem('motoai-sidebar')==='closed'){d.setAttribute('data-motoai-sidebar','closed');}}catch(e){}})();</script>`;
 
-/** <head> block — same meta contract as the chat homepage. */
-export function pageHead({ title, description, path, ogType = 'website', headHtml = '' }) {
+/** <head> block — same meta contract as the chat homepage. `image` (an
+ *  article featured image from the image registry: { url, width, height,
+ *  alt }) replaces the site icon as og/twitter image and upgrades the card. */
+export function pageHead({ title, description, path, ogType = 'website', headHtml = '', image = null }) {
   const url = SITE + path.replace(/^\//, '');
   const prefix = rel(path);
   const site = BLOG_UI.site;
-  const og = site.ogImage;
+  const og = image ? { ...image, path: null } : site.ogImage;
+  const ogUrl = image ? image.url : `${SITE}${og.path}`;
   const css = (file) => `  <link rel="stylesheet" href="${prefix}${file}?v=${assetVersion(file)}">`;
   return `<!DOCTYPE html>
 <html lang="vi" data-motion="${feature('motion') ? 'on' : 'off'}">
@@ -92,14 +95,14 @@ ${headHtml}  <meta name="motoai-build" content="${BUILD_VERSION}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:url" content="${url}">
-  <meta property="og:image" content="${SITE}${og.path}">
+  <meta property="og:image" content="${ogUrl}">
   <meta property="og:image:width" content="${og.width}">
   <meta property="og:image:height" content="${og.height}">
   <meta property="og:image:alt" content="${esc(og.alt)}">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
-  <meta name="twitter:image" content="${SITE}${og.path}">
+  <meta name="twitter:image" content="${ogUrl}">
 ${css('assets/css/style.css')}
 ${css('assets/css/blog.css')}
   ${NO_FLASH_THEME}
@@ -304,11 +307,11 @@ function shellScripts({ search }) {
  * @param {string} o.schemaHtml — JSON-LD scripts (placed before closing body)
  * @param {boolean} o.search — include the blog search runtime (blog home only)
  */
-export function appShellPage({ title, description, path, screen, activeHub = null, activeCluster = null, contentHtml, schemaHtml = '', search = false, ogType = 'website', headHtml = '' }) {
+export function appShellPage({ title, description, path, screen, activeHub = null, activeCluster = null, contentHtml, schemaHtml = '', search = false, ogType = 'website', headHtml = '', image = null }) {
   // DOM order = reading order: skip link, header, sidebar (the desktop
   // column sits left of <main>; below 1200px it is an off-canvas panel that
   // takes no part in the flow), banner, main, footer.
-  return pageHead({ title, description, path, ogType, headHtml })
+  return pageHead({ title, description, path, ogType, headHtml, image })
     + `  <a class="skip-link" href="#site-main">${esc(t('skipToContent'))}</a>\n`
     + siteHeader({ activeHub, activeCluster, progress: ogType === 'article', path })
     + siteDrawer({ activeHub, activeCluster, path })

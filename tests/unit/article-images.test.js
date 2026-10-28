@@ -1,0 +1,196 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync, mkdtempSync, mkdirSync, copyFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { tmpdir } from 'node:os';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import {
+  webpInfo, hamming, altProblems, featuredImage, auditRegistry, loadRegistry, SPEC, STATUSES, atLeast
+} from '../../tools/article-images.mjs';
+import { buildPlan, loadPlan, sceneFor, imageFilename, PLAN_CSV, PLAN_COLUMNS, toCsv } from '../../tools/image-briefs.mjs';
+import { pageHead } from '../../tools/app-shell.mjs';
+import { heroFigure } from '../../tools/build-blog.mjs';
+import { SITE } from '../../src/config/site.js';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+const FIX = join(ROOT, 'tests/fixtures/images');
+const fixture = (name) => readFileSync(join(FIX, name));
+const sha = (buf) => createHash('sha256').update(buf).digest('hex');
+const published = JSON.parse(readFileSync(join(ROOT, 'data/blog/published.json'), 'utf8')).articles;
+
+// ---------- WebP header parser ----------
+
+test('webpInfo reads VP8 (lossy), VP8L (lossless) and VP8X (extended) dimensions', () => {
+  assert.deepEqual(webpInfo(fixture('lossy-1200x800.webp')), { chunk: 'VP8 ', width: 1200, height: 800 });
+  assert.deepEqual(webpInfo(fixture('lossless-3x2.webp')), { chunk: 'VP8L', width: 3, height: 2 });
+  assert.deepEqual(webpInfo(fixture('alpha-640x480.webp')), { chunk: 'VP8X', width: 640, height: 480 });
+});
+
+test('webpInfo rejects non-WebP and truncated files', () => {
+  assert.throws(() => webpInfo(Buffer.from('not an image at all, just text bytes')), /RIFF\/WEBP/);
+  const buf = fixture('lossy-1200x800.webp');
+  assert.throws(() => webpInfo(buf.subarray(0, buf.length - 10)), /truncated/);
+});
+
+test('hamming counts differing bits of 64-bit dHash values', () => {
+  assert.equal(hamming('0000000000000000', '0000000000000000'), 0);
+  assert.equal(hamming('0000000000000000', 'ffffffffffffffff'), 64);
+  assert.equal(hamming('00000000000000ff', '0000000000000000'), 8);
+});
+
+// ---------- ALT rules ----------
+
+test('ALT must describe the scene in natural Vietnamese, without stuffing', () => {
+  assert.deepEqual(altProblems('Xe tay ga Honda Vision màu trắng đỗ trên đường phố Hà Nội'), []);
+  assert.ok(altProblems('thuê xe máy Hà Nội giá rẻ thuê xe máy gần đây tốt nhất').length >= 2);
+  assert.ok(altProblems('Scooter parked in Hanoi old quarter street').some((p) => /Vietnamese/.test(p)));
+  assert.ok(altProblems('Hình ảnh xe máy điện đang sạc ở bãi xe').some((p) => /ảnh\/hình/.test(p)));
+  assert.ok(altProblems('Xe').length > 0);
+  assert.ok(altProblems('xe máy, giá thuê, thủ tục, đặt cọc, giao xe, Hà Nội').some((p) => /keyword list/.test(p)));
+});
+
+// ---------- registry gate ----------
+
+function tempRegistry(entries) {
+  const root = mkdtempSync(join(tmpdir(), 'motoai-img-'));
+  mkdirSync(join(root, SPEC.dir), { recursive: true });
+  for (const [name, src] of Object.entries(entries.files ?? {})) copyFileSync(join(FIX, src), join(root, SPEC.dir, name));
+  return root;
+}
+const gen = { tool: 'figma-mcp generate_image', generated_at: '2026-10-28' };
+
+test('a QA_PASSED entry with a valid 1200×800 WebP, hashes and reviewed ALT passes the gate', () => {
+  const root = tempRegistry({ files: { 'a-ba-0001.webp': 'lossy-1200x800.webp' } });
+  const buf = fixture('lossy-1200x800.webp');
+  const reg = { images: { 'BA-0001': {
+    status: 'QA_PASSED', file: `${SPEC.dir}a-ba-0001.webp`, source: 'ai', generator: gen,
+    width: 1200, height: 800, bytes: buf.length, sha256: sha(buf), dhash: '0f0f0f0f0f0f0f0f', dhash_of: sha(buf),
+    alt: 'Xe tay ga đỗ trong ngõ nhỏ có chậu cây ở Hà Nội', alt_reviewed: true
+  } } };
+  const r = auditRegistry(reg, { root, articles: new Set(['BA-0001']) });
+  assert.deepEqual(r.errors, []);
+  assert.equal(r.counts.QA_PASSED, 1);
+});
+
+test('the gate rejects wrong size, stale hashes, unreviewed ALT, shared files and near-duplicates', () => {
+  const root = tempRegistry({ files: { 'b-ba-0002.webp': 'alpha-640x480.webp', 'c-ba-0003.webp': 'lossy-1200x800.webp', 'd-ba-0004.webp': 'lossy-1200x800.webp' } });
+  const small = fixture('alpha-640x480.webp');
+  const ok = fixture('lossy-1200x800.webp');
+  const base = { source: 'ai', generator: gen, width: 1200, height: 800 };
+  const reg = { images: {
+    'BA-0002': { ...base, status: 'IMAGE_OPTIMIZED', file: `${SPEC.dir}b-ba-0002.webp`, bytes: small.length, sha256: sha(small), dhash: 'ffffffffffffffff', dhash_of: sha(small) },
+    'BA-0003': { ...base, status: 'IMAGE_ATTACHED', file: `${SPEC.dir}c-ba-0003.webp`, bytes: ok.length, sha256: 'deadbeef', dhash: '0000000000000000', dhash_of: 'deadbeef', alt: 'Người đi xe máy dừng chờ đèn đỏ tại nút giao ở Hà Nội' },
+    'BA-0004': { ...base, status: 'IMAGE_OPTIMIZED', file: `${SPEC.dir}d-ba-0004.webp`, bytes: ok.length, sha256: sha(ok), dhash: '0000000000000001', dhash_of: sha(ok) },
+    'BA-0005': { ...base, status: 'IMAGE_GENERATED', file: `${SPEC.dir}d-ba-0004.webp` }
+  } };
+  const msg = auditRegistry(reg, { root }).errors.join('\n');
+  assert.match(msg, /BA-0002: size 640×480/);
+  assert.match(msg, /BA-0003: sha256 differs/);
+  assert.match(msg, /BA-0003: ALT not marked as written from the actual image/);
+  assert.match(msg, /BA-0005: file shared with BA-0004/);
+  // BA-0003 is excluded from the dHash comparison (stale hash), so plant a
+  // near-duplicate pair explicitly.
+  const dup = auditRegistry({ images: {
+    'BA-0006': { ...reg.images['BA-0004'], file: `${SPEC.dir}d-ba-0004.webp` },
+    'BA-0007': { ...reg.images['BA-0004'], file: `${SPEC.dir}c-ba-0003.webp`, dhash: '0000000000000003' }
+  } }, { root }).errors.join('\n');
+  assert.match(dup, /identical bytes to BA-0006/);
+  assert.match(dup, /near-duplicate \(dHash distance 1/);
+});
+
+test('only QA_PASSED or later entries whose file exists are rendered', () => {
+  const reg = { images: {
+    'BA-0010': { status: 'IMAGE_ATTACHED', file: 'assets/images/blog/x-ba-0010.webp', width: 1200, height: 800, alt: 'Xe máy điện cắm sạc', source: 'ai' },
+    'BA-0011': { status: 'QA_PASSED', file: 'assets/images/blog/x-ba-0011.webp', width: 1200, height: 800, alt: 'Xe máy điện cắm sạc ở bãi xe', source: 'ai' },
+    'BA-0012': { status: 'LIVE_VERIFIED', file: 'assets/images/blog/missing.webp', width: 1200, height: 800, alt: 'Xe số đỗ', source: 'ai' }
+  } };
+  const exists = (p) => p !== 'assets/images/blog/missing.webp';
+  assert.equal(featuredImage('BA-0010', reg, { exists }), null);
+  assert.equal(featuredImage('BA-0012', reg, { exists }), null);
+  assert.equal(featuredImage('BA-9999', reg, { exists }), null);
+  assert.deepEqual(featuredImage('BA-0011', reg, { exists }), {
+    src: '/assets/images/blog/x-ba-0011.webp', url: `${SITE}assets/images/blog/x-ba-0011.webp`,
+    width: 1200, height: 800, alt: 'Xe máy điện cắm sạc ở bãi xe', caption: 'Ảnh minh họa tạo bằng AI'
+  });
+  assert.ok(atLeast('LIVE_VERIFIED', 'QA_PASSED') && !atLeast('IMAGE_ATTACHED', 'QA_PASSED'));
+  assert.equal(STATUSES.length, 6);
+});
+
+test('the committed registry passes the image QA gate against the plan and the manifest', () => {
+  const reg = loadRegistry();
+  const r = auditRegistry(reg, { plan: loadPlan(), articles: new Set(published.map((a) => a.article_id)) });
+  assert.deepEqual(r.errors, []);
+});
+
+// ---------- briefs / plan ----------
+
+test('image-plan.csv is generated from the current sources (node tools/image-briefs.mjs)', () => {
+  const plan = buildPlan();
+  assert.equal(readFileSync(join(ROOT, PLAN_CSV), 'utf8'), toCsv(PLAN_COLUMNS, plan));
+});
+
+test('the plan gives every published article one unique brief, filename and prompt', () => {
+  const plan = loadPlan();
+  assert.equal(plan.length, published.length);
+  assert.equal(plan.filter((r) => r.scope === 'TARGET').length, 2000);
+  for (const key of ['article_id', 'filename', 'prompt_en']) {
+    assert.equal(new Set(plan.map((r) => r[key])).size, plan.length, `${key} must be unique`);
+  }
+  for (const r of plan) {
+    assert.match(r.filename, /^[a-z0-9-]+-ba-\d{4}\.webp$/, r.article_id);
+    assert.ok(r.filename.length <= 80, r.filename);
+    assert.match(r.prompt_en, /No text, no captions, no watermark, no logos/);
+    assert.ok(r.alt_plan.length <= 140, `${r.article_id} planned ALT too long`);
+  }
+});
+
+test('Vietnamese words that fold to the same ASCII are not confused', () => {
+  // "cho thuê" (for rent) is not "chợ" (market); "gia đình" is not "giá".
+  const rent = sceneFor({ category: 'RENT', title: 'So sánh giá các loại xe máy cho thuê', keyword: 'so sánh giá xe máy cho thuê', slug: 'so-sanh-gia-cac-loai-xe-may-cho-thue' });
+  assert.notEqual(rent.place.id, 'market');
+  assert.equal(rent.theme.id, 'compare');
+  const family = sceneFor({ category: 'RENT', title: 'Thuê Honda Vision cho gia đình: chở trẻ an toàn', keyword: 'thuê honda vision cho gia đình', slug: 'thue-honda-vision-cho-gia-dinh' });
+  assert.equal(family.vehicle.id, 'vision');
+  assert.notEqual(family.theme?.id, 'price');
+  assert.equal(family.people.id, 'family');
+});
+
+test('a named model stays the hero of its own article image', () => {
+  const s = sceneFor({ category: 'RENT', title: 'Thuê Wave Alpha: xe số tiết kiệm, giá và thủ tục nhận xe', keyword: 'thuê wave alpha', slug: 'thue-wave-alpha' });
+  assert.equal(s.vehicle.id, 'wave');
+  assert.ok(s.hero, 'paperwork theme becomes a prop next to the model');
+  assert.equal(imageFilename('a'.repeat(70).replace(/a{10}/g, 'abcdefghi-'), 'BA-0007').endsWith('-ba-0007.webp'), true);
+});
+
+// ---------- rendering ----------
+
+test('the featured figure reserves its box and loads eagerly as the LCP candidate', () => {
+  const html = heroFigure({ src: '/assets/images/blog/x.webp', width: 1200, height: 800, alt: 'Xe số "Wave" đỗ', caption: 'Ảnh minh họa tạo bằng AI' });
+  assert.match(html, /<img src="\/assets\/images\/blog\/x\.webp" width="1200" height="800" alt="Xe số &quot;Wave&quot; đỗ" fetchpriority="high" decoding="async">/);
+  assert.doesNotMatch(html, /loading="lazy"/);
+  assert.match(html, /<figcaption>Ảnh minh họa tạo bằng AI<\/figcaption>/);
+});
+
+test('an article image replaces the site icon in og/twitter tags; pages without one keep the default', () => {
+  const img = { url: `${SITE}assets/images/blog/x.webp`, width: 1200, height: 800, alt: 'Xe máy điện cắm sạc' };
+  const withImg = pageHead({ title: 'T', description: 'D', path: 'blog/xe-dien/x/', ogType: 'article', image: img });
+  assert.match(withImg, new RegExp(`<meta property="og:image" content="${SITE}assets/images/blog/x\\.webp">`));
+  assert.match(withImg, /<meta property="og:image:width" content="1200">/);
+  assert.match(withImg, /<meta property="og:image:alt" content="Xe máy điện cắm sạc">/);
+  assert.match(withImg, /<meta name="twitter:card" content="summary_large_image">/);
+  const plain = pageHead({ title: 'T', description: 'D', path: 'blog/' });
+  assert.match(plain, /<meta name="twitter:card" content="summary">/);
+  assert.match(plain, /og:image" content="[^"]*icon-512\.png"/);
+});
+
+test('built articles without a QA_PASSED image carry no featured figure; the service worker skips article images', () => {
+  const reg = loadRegistry();
+  const shown = new Set(Object.entries(reg.images).filter(([, e]) => atLeast(e.status, 'QA_PASSED')).map(([id]) => id));
+  const a = published.find((x) => !shown.has(x.article_id));
+  const dir = { APP: 'app', RENT: 'thue-xe', EV: 'xe-dien', GUIDE: 'huong-dan', SAFE: 'an-toan', LOCAL: 'dia-phuong' }[a.category];
+  const html = readFileSync(join(ROOT, `blog/${dir}/${a.slug}/index.html`), 'utf8');
+  assert.doesNotMatch(html, /class="article-hero"/);
+  const sw = readFileSync(join(ROOT, 'service-worker.js'), 'utf8');
+  assert.match(sw, /startsWith\(new URL\('assets\/images\/', self\.location\.href\)\.pathname\)\) return;/);
+});

@@ -286,6 +286,21 @@ function checkUxPerformance(pages, io) {
   return { score: total ? pass / total : 0, issues };
 }
 
+/** Money amounts stated in the same sentence right after "cọc" (VND):
+ *  "2.000.000đ", "3 triệu", "2,5 triệu", "500 nghìn", "500k". */
+export function depositAmounts(t) {
+  const unit = { 'đ': 1, 'đồng': 1, 'vnd': 1, 'triệu': 1e6, 'tr': 1e6, 'nghìn': 1e3, 'ngàn': 1e3, 'k': 1e3 };
+  const out = [];
+  // A dot between digits is a thousands separator, not the end of the sentence.
+  for (const m of String(t).matchAll(/cọc((?:[^.!?;]|\.(?=\d)){0,120})/gi)) {
+    for (const n of m[1].matchAll(/(\d{1,3}(?:\.\d{3})+|\d+(?:,\d+)?)\s*(đồng|đ|vnd|triệu|tr|nghìn|ngàn|k)(?![\p{L}])/giu)) {
+      const num = n[1].includes('.') ? Number(n[1].replace(/\./g, '')) : Number(n[1].replace(',', '.'));
+      out.push(num * unit[n[2].toLowerCase()]);
+    }
+  }
+  return out;
+}
+
 function checkAiGEO(pages, io, ctx) {
   const issues = [];
   let pass = 0, total = 0;
@@ -301,7 +316,13 @@ function checkAiGEO(pages, io, ctx) {
     const t = text(html);
     add(/Câu hỏi thường gặp|FAQ|hỏi đáp/i.test(t), 'no Q&A section', p.path);
     add(html.includes(business.hours.display) || !/mở cửa|giờ/i.test(t) || t.includes(business.hours.display), 'hours claim not backed by verified data', p.path);
-    if (/cọc/i.test(t)) add(t.includes('2.000.000đ') && t.includes('5.000.000đ'), 'deposit claim inconsistent with business.json', p.path);
+    // v80: only a stated deposit AMOUNT can contradict business.json; a page
+    // that mentions deposits without a number defers to the booking step.
+    const deposits = depositAmounts(t);
+    if (deposits.length) {
+      const { min, max } = business.policies.deposit;
+      add(deposits.every((v) => v >= min && v <= max), 'deposit amount outside the verified business.json range', p.path);
+    }
     add(/MotoAI|Thuê Xe Máy Hà Nội|Nguyễn Tú/i.test(t), 'no clear entity naming', p.path);
   }
   for (const p of pages.filter((x) => x.kind === 'hub' || x.kind === 'blog-home')) {

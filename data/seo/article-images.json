@@ -1,0 +1,82 @@
+{
+  "$schema": "motoai/article-images@1",
+  "note": "Image Registry — article id → featured image. Builder renders only status QA_PASSED/DEPLOYED/LIVE_VERIFIED. Write via tools/image-factory.py; QA gate: node tools/article-images.mjs --check. Spec: WebP 1200×800 ≤ 200 KB in assets/images/blog/, ALT written after viewing the image.",
+  "images": {
+    "BA-0005": {
+      "status": "IMAGE_GENERATED",
+      "file": "assets/images/blog/luat-giao-thong-duong-bo-co-ban-ba-0005.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "figma-mcp generate_image",
+        "model": "gemini-3.1-flash-lite-image",
+        "figma_file": "1M7sUYPxNKQTSx5DbNGVWh",
+        "figma_node": "4:2",
+        "source_url": "https://www.figma.com/api/mcp/asset/7581c301-067e-44a4-b786-4652ea713953.jpg",
+        "source_expires": "2026-11-04",
+        "source_width": 1264,
+        "source_height": 848,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "e5623636f01c8d2f378b851acc17705913ee83653a938ad85e8709446357727d"
+      },
+      "alt_plan": "Người đi xe máy đội mũ bảo hiểm dừng đúng làn khi đèn đỏ tại nút giao ở Hà Nội",
+      "notes": "Bản gốc chưa tải: www.figma.com bị chính sách mạng của môi trường chặn (BLOCKED_DOWNLOAD)."
+    },
+    "BA-0050": {
+      "status": "IMAGE_GENERATED",
+      "file": "assets/images/blog/thue-honda-vision-ba-0050.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "figma-mcp generate_image",
+        "model": "gemini-3.1-flash-lite-image",
+        "figma_file": "1M7sUYPxNKQTSx5DbNGVWh",
+        "figma_node": "1:2",
+        "source_url": "https://www.figma.com/api/mcp/asset/7b92868b-d33d-4f7f-8230-00857f2370da.jpg",
+        "source_expires": "2026-11-04",
+        "source_width": 1264,
+        "source_height": 848,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "b4becd1a374cded4452d5d25b085197958f84da0bd97a6a8983fd1f8bd5090a7"
+      },
+      "alt_plan": "Xe tay ga Honda Vision trong ngõ nhỏ ở Hà Nội",
+      "notes": "Bản gốc chưa tải: www.figma.com bị chính sách mạng của môi trường chặn (BLOCKED_DOWNLOAD)."
+    },
+    "BA-0063": {
+      "status": "IMAGE_GENERATED",
+      "file": "assets/images/blog/thoi-gian-sac-xe-may-dien-ba-0063.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "figma-mcp generate_image",
+        "model": "gemini-3.1-flash-lite-image",
+        "figma_file": "1M7sUYPxNKQTSx5DbNGVWh",
+        "figma_node": "2:2",
+        "source_url": "https://www.figma.com/api/mcp/asset/abc6dd52-c2bd-432f-88f5-4a7ecf3eb9ee.jpg",
+        "source_expires": "2026-11-04",
+        "source_width": 1264,
+        "source_height": 848,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "57269426a80f2a7280bfcc5348c40cb25dcf0262b709e122ef8f73b0c2e99175"
+      },
+      "alt_plan": "Xe máy điện đang cắm sạc tại bãi xe chung cư",
+      "notes": "Bản gốc chưa tải: www.figma.com bị chính sách mạng của môi trường chặn (BLOCKED_DOWNLOAD)."
+    },
+    "BA-0066": {
+      "status": "IMAGE_GENERATED",
+      "file": "assets/images/blog/song-hong-va-cau-long-bien-ba-0066.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "figma-mcp generate_image",
+        "model": "gemini-3.1-flash-lite-image",
+        "figma_file": "1M7sUYPxNKQTSx5DbNGVWh",
+        "figma_node": "3:2",
+        "source_url": "https://www.figma.com/api/mcp/asset/98b4c086-8850-4d00-8d2c-5faa3d74c4e3.jpg",
+        "source_expires": "2026-11-04",
+        "source_width": 1264,
+        "source_height": 848,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "dd99826b2908ef247332795ba75459f7311b04180fdf82d7bbf35c27d55ec4ed"
+      },
+      "alt_plan": "Người lái xe tay ga khám phá trên cầu Long Biên bắc qua sông Hồng",
+      "notes": "Bản gốc chưa tải: www.figma.com bị chính sách mạng của môi trường chặn (BLOCKED_DOWNLOAD)."
+    }
+  }
+}

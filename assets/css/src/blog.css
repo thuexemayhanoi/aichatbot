@@ -384,6 +384,12 @@ body.content-page .card-lead { justify-content: flex-end; padding: var(--s6); ba
 .article-intro .blog-summary::before { display: none; }
 .article-intro .blog-summary p:last-child { font-size: var(--fs-lg); color: var(--ink-2); }
 
+/* Featured image (v80 image registry): 3:2 box reserved by width/height, so
+   no layout shift; caption marks illustrations honestly. */
+.article-hero { margin: 0; }
+.article-hero img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--r-md); background: var(--paper-2); }
+.article-hero figcaption { margin-top: 8px; font-size: var(--fs-xs); color: var(--ink-3); }
+
 /* Table of contents: phone accordion; desktop sticky rail with section numerals. */
 .blog-toc { margin: 0 0 var(--s5); }
 .blog-toc-mobile { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
