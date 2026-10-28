@@ -23,8 +23,13 @@ khác repo: repo thắng, xuất lại workbook.
 1. `git fetch origin main` → làm trên nhánh mới từ `origin/main`; ghi baseline SHA.
 2. `python3 tools/image-factory.py status` → lấy ID chưa có trong registry (bỏ ID đã có).
 3. Với từng ID: lấy `prompt_en` (`node tools/image-briefs.mjs --show BA-xxxx`) →
-   tạo ảnh bằng công cụ AI đã kết nối (Figma MCP `generate_image`, 1536×1024) →
+   tạo ảnh bằng công cụ AI đã kết nối (Figma MCP `generate_image`, 1264×848) →
    `python3 tools/image-factory.py record BA-xxxx --url <image.url> --tool "figma-mcp generate_image" --model <model> --node <nodeId> --figma-file <fileKey> --expires <YYYY-MM-DD> --width W --height H`.
+   **Canva** (`generate-image`, `aspectRatio: LANDSCAPE_3_2` → 1536×1024; hạn mức riêng, ERR-010): đặt ảnh
+   full-bleed lên một trang 1536×1024 của thiết kế xuất (`edit-design` add_page + insert_fill, commit) →
+   `export-design` PNG lossless các trang đó → URL export đưa vào Image Ingest;
+   `record BA-xxxx --url canva://media/<mediaId> --tool "canva-mcp generate-image" --model "Canva AI image (model không công bố)" --width 1536 --height 1024`
+   rồi ghi `canva_design`/`canva_page` vào `generator`.
 4. `python3 tools/image-factory.py download BA-xxxx` → `optimize BA-xxxx <raw>`
    (crop 3:2 → 1200×800 → WebP ≤ 300 KB theo Image SEO V2: 100–300 KB, ưu tiên 120–220 KB, không độn dung lượng; sha256 + dHash; ảnh AI được gắn XMP IPTC
    `DigitalSourceType = trainedAlgorithmicMedia` — gate bắt buộc).
@@ -37,7 +42,7 @@ khác repo: repo thắng, xuất lại workbook.
    ô `items` = mỗi dòng `BA-xxxx <URL ảnh gốc>` — URL asset Figma MCP hoặc URL export Canva, tối đa 20)
    → runner GitHub tải ảnh gốc từ host trong danh sách cho phép và đặt lên nhánh tạm
    `image-ingest/run-<run_id>` → `python3 tools/image-ingest.py pull image-ingest/run-<run_id> --raw-dir DIR`
-   (kiểm sha256 theo manifest, rồi xóa nhánh tạm) → `optimize ID DIR/ID.jpg`. Runner chỉ tải file, không chạy AI.
+   (kiểm sha256 theo manifest; workflow tự xóa nhánh tạm cũ hơn 2 giờ ở lần chạy sau — proxy của phiên không xóa được nhánh) → `optimize ID DIR/ID.jpg`. Runner chỉ tải file, không chạy AI.
 5. **Xem ảnh** (đúng chủ đề? xe đúng mẫu? không chữ/logo/biển số đọc được? an toàn: mọi người đều đội mũ?)
    → ảnh sai thì tạo lại; ảnh đạt thì `attach BA-xxxx --alt "<mô tả đúng cái nhìn thấy>"`.
 6. `python3 tools/image-factory.py qa` (gate `node tools/article-images.mjs --check`: WebP, kích thước,
