@@ -891,8 +891,8 @@ ${renderSlot('article.afterBody', slotCtx)}${topicContext}${familySection}${rela
       inLanguage: 'vi-VN',
       articleSection: hub.name,
       ...(a.seo_keyword ? { keywords: a.seo_keyword } : {}),
-      image: image ? { '@type': 'ImageObject', url: image.url, width: image.width, height: image.height, ...(image.caption ? { caption: image.caption } : {}) }
-        : `${SITE}${BLOG_UI.site.ogImage.path}`,
+      // The featured image when the registry has one (a URL, same contract as before).
+      image: image ? image.url : `${SITE}${BLOG_UI.site.ogImage.path}`,
       author: { '@type': 'Organization', name: a.author, url: `${SITE}gioi-thieu/` },
       publisher: publisherSchema(business),
       mainEntityOfPage: `${SITE}${path}`,

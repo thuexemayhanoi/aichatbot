@@ -115,8 +115,10 @@ export const PLACES = [
 const COUNTER = { id: 'counter', en: 'a small rental counter open to a Hanoi street, no signage', vi: '' };
 /** Named models stay the hero of the frame (model pages must show the model). */
 const MODELS = new Set(['vision', 'airblade', 'wave', 'clickmio', '50cc', 'ebike']);
-/** APP articles lead with the assistant, not with paperwork. */
+/** APP articles — and any article whose title is about an app/assistant —
+ *  lead with the assistant, not with paperwork or parts. */
 const PREFER = { APP: ['scam', 'privacy', 'chat'] };
+const APP_TITLE = /\bapp\b|ung dung|tro ly|\bagent\b|chatbot/;
 /** Neutral settings when the article names no place (rotated per article). */
 const DEFAULT_PLACE = {
   SAFE: [
@@ -200,7 +202,7 @@ export const THEMES = [
   { id: 'deposit', rv: /cọc|thanh toán/, en: 'a deposit envelope and a scooter key being handed across a rental counter', vi: 'Giao tiền đặt cọc và chìa khóa xe tại quầy', paper: true, prop: 'the key being handed over to a customer' },
   { id: 'children', re: /tre em|cho tre/, en: 'a parent and a child both wearing helmets standing beside {v}', vi: 'Phụ huynh và trẻ em đội mũ bảo hiểm bên {vv}' },
   { id: 'two-up', re: /hai nguoi|nguoi than|cho nguoi/, en: 'two people wearing helmets on {v}, parked and ready to ride', vi: 'Hai người đội mũ bảo hiểm trên {vv}' },
-  { id: 'compare', re: /so sanh|khac gi|hay di|hay xe|xe so hay/, en: 'two different motorbikes parked side by side for comparison', vi: 'Hai mẫu xe đỗ cạnh nhau để so sánh' },
+  { id: 'compare', re: /so sanh|khac gi|hay di|hay xe|xe so hay/, en: 'an automatic scooter and a manual underbone motorbike ("xe so") parked side by side for comparison', vi: 'Xe tay ga và xe số đỗ cạnh nhau để so sánh' },
   { id: 'price', rv: /giá|chi phí|tiết kiệm|ưu đãi|rẻ|bao nhiêu|ngân sách/, en: 'a notebook with simple handwritten sums, a calculator and a scooter key on a table, {v} parked in soft focus behind', vi: 'Sổ tính chi phí, máy tính và chìa khóa, phía sau là {vv}', prop: 'a notebook with handwritten sums and a calculator resting on the seat' },
   { id: 'inspect', re: /kiem tra|chup anh|nhan xe|tra xe|ban giao|tinh trang/, en: 'a customer inspecting the tyres and mirrors of {v} before handover', vi: 'Khách kiểm tra lốp và gương {vv} trước khi nhận', prop: 'a customer crouching to check its front tyre' },
   { id: 'delivery', re: /giao xe|tan noi/, en: '{v} being delivered and handed over at a front door', vi: 'Giao {vv} tận cửa' },
@@ -213,7 +215,7 @@ export const THEMES = [
   { id: 'lock', re: /trom/, rv: /khóa|cầm đồ/, en: 'a sturdy disc lock fitted on the front wheel of {v}', vi: 'Khóa đĩa gắn ở bánh trước {vv}' },
   { id: 'parking', re: /gui xe|bai do/, rv: /đỗ xe|cấm đỗ/, en: 'a neat row of motorbikes in an organised sidewalk parking area', vi: 'Hàng xe máy đỗ ngay ngắn ở bãi gửi xe' },
   { id: 'camera', re: /camera|phat nguoi|den do/, en: 'a traffic camera on a pole above an intersection with traffic lights', vi: 'Camera giao thông phía trên nút giao có đèn tín hiệu' },
-  { id: 'alcohol', rv: /nồng độ cồn|rượu|bia/, en: 'a glass of water chosen over beer on a table next to a helmet and scooter key', vi: 'Ly nước lọc cạnh mũ bảo hiểm và chìa khóa xe', paper: true },
+  { id: 'alcohol', rv: /nồng độ cồn|rượu|bia/, en: 'a glass of water chosen over beer on a table next to a helmet and scooter key', vi: 'Ly nước lọc cạnh mũ bảo hiểm và chìa khóa xe', placeId: 'streetfood' },
   { id: 'phone-ride', re: /dien thoai khi lai/, en: 'a smartphone locked in a handlebar mount with the screen off', vi: 'Điện thoại đặt cố định trên giá đỡ ghi đông' },
   { id: 'firstaid', re: /tai nan|va cham|canh sat|cong an|khieu nai/, en: 'a first-aid kit and a warning triangle beside {v} parked safely at the roadside', vi: 'Hộp sơ cứu và biển cảnh báo cạnh {vv} đỗ bên lề' },
   { id: 'fatigue', re: /met moi|thuoc|suc khoe/, en: 'a rider resting with a bottle of water at a roadside stop beside {v}', vi: 'Người lái nghỉ chân uống nước bên {vv}' },
@@ -316,11 +318,13 @@ export function sceneFor({ category, title, keyword, slug, h2 = [], localScope =
   const rot = (list, salt) => list[hashInt(`${slug}:${salt}`) % list.length];
   const vehicle = pick(VEHICLES, head, headVi) ?? rot(category === 'EV' ? DEFAULT_VEHICLE.EV : DEFAULT_VEHICLE.any, 'v');
   const named = pick(PLACES, head, headVi) ?? (category === 'LOCAL' ? pick(PLACES, outline, outlineVi) : null);
-  const preferred = (PREFER[category] ?? []).map((id) => THEMES.find((t) => t.id === id));
+  const preferIds = PREFER[category] ?? (APP_TITLE.test(fold(title)) ? PREFER.APP : []);
+  const preferred = preferIds.map((id) => THEMES.find((t) => t.id === id));
   const theme = pick(preferred, head, headVi, category) ?? pick(THEMES, head, headVi, category)
     ?? (category === 'LOCAL' ? null : pick(THEMES, outline, outlineVi, category));
   const hero = MODELS.has(vehicle.id) && theme && (theme.paper || theme.prop) ? theme : null;
-  const place = named ?? (theme?.paper && !hero ? COUNTER : AT_LIGHTS.has(theme?.id) ? DEFAULT_PLACE.SAFE[0]
+  const place = named ?? (theme?.placeId ? PLACES.find((x) => x.id === theme.placeId) : null)
+    ?? (theme?.paper && !hero ? COUNTER : AT_LIGHTS.has(theme?.id) ? DEFAULT_PLACE.SAFE[0]
     : rot(DEFAULT_PLACE[category] ?? DEFAULT_PLACE.any, 'p'));
   const people = pick(PEOPLE, head, headVi);
   const time = pick(TIMES, head, headVi) ?? rot(DEFAULT_TIMES, 't');

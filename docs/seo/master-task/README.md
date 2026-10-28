@@ -27,6 +27,11 @@ khác repo: repo thắng, xuất lại workbook.
    `python3 tools/image-factory.py record BA-xxxx --url <image.url> --tool "figma-mcp generate_image" --model <model> --node <nodeId> --figma-file <fileKey> --expires <YYYY-MM-DD> --width W --height H`.
 4. `python3 tools/image-factory.py download BA-xxxx` → `optimize BA-xxxx <raw>`
    (crop 3:2 → 1200×800 → WebP ≤ 200 KB, sha256 + dHash).
+   Khi `www.figma.com` bị chính sách mạng chặn: tạo ≤ 8 ảnh trong một file Figma riêng cho lô
+   (`create_new_file`, các khung tự xếp hàng ngang cách 40 px) → **một** lượt
+   `get_screenshot` node `0:1`, `maxDimension 65536`, `enableBase64Response: true` (ảnh PNG gốc được
+   lưu vào thư mục tool-results) → `python3 tools/image-factory.py split <page.png> ID1 … ID8 --raw-dir DIR`
+   → `optimize ID DIR/ID.png`. Mỗi lượt get_screenshot tính vào hạn mức đọc Figma MCP (RR-10).
 5. **Xem ảnh** (đúng chủ đề? xe đúng mẫu? không chữ/logo/biển số đọc được? an toàn: mọi người đều đội mũ?)
    → ảnh sai thì tạo lại; ảnh đạt thì `attach BA-xxxx --alt "<mô tả đúng cái nhìn thấy>"`.
 6. `python3 tools/image-factory.py qa` (gate `node tools/article-images.mjs --check`: WebP, kích thước,

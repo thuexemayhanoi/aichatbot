@@ -194,3 +194,23 @@ test('built articles without a QA_PASSED image carry no featured figure; the ser
   const sw = readFileSync(join(ROOT, 'service-worker.js'), 'utf8');
   assert.match(sw, /startsWith\(new URL\('assets\/images\/', self\.location\.href\)\.pathname\)\) return;/);
 });
+
+test('every QA_PASSED image is rendered on its article: figure, og:image, Article.image and image sitemap', () => {
+  const reg = loadRegistry();
+  const shown = Object.entries(reg.images).filter(([, e]) => atLeast(e.status, 'QA_PASSED'));
+  const dirs = { APP: 'app', RENT: 'thue-xe', EV: 'xe-dien', GUIDE: 'huong-dan', SAFE: 'an-toan', LOCAL: 'dia-phuong' };
+  const sitemap = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  for (const [id, e] of shown) {
+    const a = published.find((x) => x.article_id === id);
+    const page = `blog/${dirs[a.category]}/${a.slug}/`;
+    const html = readFileSync(join(ROOT, page, 'index.html'), 'utf8');
+    const url = `${SITE}${e.file}`;
+    assert.ok(html.includes(`<img src="/${e.file}" width="1200" height="800" alt="${esc(e.alt)}" fetchpriority="high"`), `${id}: featured figure`);
+    assert.ok(html.includes(`<meta property="og:image" content="${url}">`), `${id}: og:image`);
+    assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image">'), `${id}: twitter card`);
+    const art = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1])).find((o) => o['@type'] === 'Article');
+    assert.equal(art.image, url, `${id}: Article.image`);
+    assert.ok(sitemap.includes(`<loc>${SITE}${page}</loc>`) && sitemap.includes(`<image:loc>${url}</image:loc>`), `${id}: image sitemap`);
+  }
+});

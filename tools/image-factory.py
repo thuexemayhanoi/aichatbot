@@ -13,6 +13,11 @@ raw image came from. No API key, endpoint or model call lives in the repo.
   record   ID --url URL --tool T --model M [--node N] [--width W --height H]
            → IMAGE_GENERATED (provenance + prompt sha256 from image-plan.csv)
   download ID [--raw-dir DIR]          fetch generator.source_url → DIR/ID.<ext>
+  split    PAGE.png ID [ID ...] [--raw-dir DIR] [--frame 1264 --gap 40]
+           when the source host is unreachable: cut a full-resolution page
+           screenshot (Figma MCP get_screenshot, enableBase64Response) of
+           frames laid out left→right into DIR/ID.png, checking every gap is
+           plain canvas so a frame can never be cut from the wrong place
   optimize ID RAW [--max-kb 200]       centre-crop 3:2 → 1200×800 → WebP
            (quality search q82→q60 until ≤ max KB; a lighter file that already
            fits is kept) → sha256 + 64-bit dHash → IMAGE_OPTIMIZED
@@ -127,6 +132,25 @@ def cmd_download(a):
     with urllib.request.urlopen(req, timeout=60) as r, open(out, 'wb') as f:
         f.write(r.read())
     print(out)
+
+
+def cmd_split(a):
+    from PIL import Image
+    img = Image.open(a.page).convert('RGB')
+    w, h = img.size
+    step = a.frame + a.gap
+    need = len(a.ids) * a.frame + (len(a.ids) - 1) * a.gap
+    if w != need:
+        sys.exit(f'page is {w}px wide, {len(a.ids)} frames of {a.frame}px + {a.gap}px gaps need {need}px')
+    for i in range(1, len(a.ids)):
+        lo, hi = img.crop((i * step - a.gap, 0, i * step, h)).convert('L').getextrema()
+        if hi - lo > 2:
+            sys.exit(f'gap before frame {i + 1} is not plain canvas — layout differs, crop by hand')
+    os.makedirs(a.raw_dir, exist_ok=True)
+    for i, art_id in enumerate(a.ids):
+        out = os.path.join(a.raw_dir, art_id + '.png')
+        img.crop((i * step, 0, i * step + a.frame, h)).save(out)
+        print(out)
 
 
 def cmd_optimize(a):
@@ -264,6 +288,9 @@ def main():
     p.add_argument('--expires'); p.add_argument('--width', type=int); p.add_argument('--height', type=int)
     p.add_argument('--force', action='store_true')
     p = sub.add_parser('download'); p.add_argument('id'); p.add_argument('--raw-dir', default='/tmp/motoai-image-raw')
+    p = sub.add_parser('split'); p.add_argument('page'); p.add_argument('ids', nargs='+')
+    p.add_argument('--raw-dir', default='/tmp/motoai-image-raw'); p.add_argument('--frame', type=int, default=1264)
+    p.add_argument('--gap', type=int, default=40)
     p = sub.add_parser('optimize'); p.add_argument('id'); p.add_argument('raw'); p.add_argument('--max-kb', type=int, default=200)
     p = sub.add_parser('attach'); p.add_argument('id'); p.add_argument('--alt', required=True); p.add_argument('--caption')
     sub.add_parser('qa')
@@ -271,7 +298,7 @@ def main():
     p = sub.add_parser('live'); p.add_argument('--site', default=SITE)
     sub.add_parser('status')
     a = ap.parse_args()
-    {'record': cmd_record, 'download': cmd_download, 'optimize': cmd_optimize, 'attach': cmd_attach,
+    {'record': cmd_record, 'download': cmd_download, 'split': cmd_split, 'optimize': cmd_optimize, 'attach': cmd_attach,
      'qa': cmd_qa, 'deployed': cmd_deployed, 'live': cmd_live, 'status': cmd_status}[a.cmd](a)
 
 
