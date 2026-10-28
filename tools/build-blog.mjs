@@ -35,6 +35,7 @@ import { buildCss, syncChatTokens, syncEmbedTokens } from './css-build.mjs';
 import { buildAgent } from './agent-page.mjs';
 import { BLOG_HOME, SITE_HOME, SITE_PAGES } from './site-pages.mjs';
 import { planLinks } from './seo-links.mjs';
+import { loadRegistry, featuredImage } from './article-images.mjs';
 
 export { resolveFacts };
 
@@ -106,6 +107,20 @@ const breadcrumbLd = (entries) => ({
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: entries.map((b, i) => ({ '@type': 'ListItem', position: i + 1, name: b.name, item: b.item }))
 });
+
+/** v80 image registry (data/seo/article-images.json): only QA_PASSED+
+ *  entries render. Loaded once per build. */
+const IMAGES = loadRegistry(ROOT);
+
+/** Featured image figure — explicit width/height (no layout shift), eager
+ *  + high fetch priority (it is the article's LCP candidate), honest caption. */
+export function heroFigure(img) {
+  return `      <figure class="article-hero">
+        <img src="${esc(img.src)}" width="${img.width}" height="${img.height}" alt="${esc(img.alt)}" fetchpriority="high" decoding="async">
+${img.caption ? `        <figcaption>${esc(img.caption)}</figcaption>
+` : ''}      </figure>
+`;
+}
 
 /** Reading minutes per article id, filled once per build (cards + byline
  *  share the same number). */
@@ -833,6 +848,7 @@ ${plan.family.map((id) => {
       </div>
 ` : '';
   const slotCtx = { category: a.category, pricing };
+  const image = featuredImage(a.article_id, IMAGES);
 
   // .article-intro groups head + standfirst + slot so the desktop grid can
   // run the TOC rail from the breadcrumb down beside a fixed set of rows.
@@ -846,7 +862,7 @@ ${plan.family.map((id) => {
       </p>
 ${screenHead({ label: null, title: a.title, lead: feature('summary') ? null : a.description })}      <p class="byline"><a href="/gioi-thieu/" class="byline-author">${esc(a.author)}</a> · ${a.published_date}${modified ? ` · ${esc(t('updated', { date: modified }))}` : ''} · ${esc(hub.label)} · ${esc(t('readingTime', { n: readingTime(body) }))}</p>
       </div>
-${summary}${renderSlot('article.afterSummary', slotCtx)}      </div>
+${summary}${image ? heroFigure(image) : ''}${renderSlot('article.afterSummary', slotCtx)}      </div>
       <div class="blog-article-layout">
 ${toc.markup}        <article class="blog-article-body">
   ${bodyWithIds.trim().split('\n').join('\n  ')}
@@ -863,6 +879,7 @@ ${renderSlot('article.afterBody', slotCtx)}${topicContext}${familySection}${rela
     activeHub: hub.dir,
     activeCluster: cluster.dir,
     contentHtml: content,
+    image,
     schemaHtml: ldScript({
       '@context': 'https://schema.org',
       '@type': 'Article',
@@ -874,7 +891,8 @@ ${renderSlot('article.afterBody', slotCtx)}${topicContext}${familySection}${rela
       inLanguage: 'vi-VN',
       articleSection: hub.name,
       ...(a.seo_keyword ? { keywords: a.seo_keyword } : {}),
-      image: `${SITE}${BLOG_UI.site.ogImage.path}`,
+      image: image ? { '@type': 'ImageObject', url: image.url, width: image.width, height: image.height, ...(image.caption ? { caption: image.caption } : {}) }
+        : `${SITE}${BLOG_UI.site.ogImage.path}`,
       author: { '@type': 'Organization', name: a.author, url: `${SITE}gioi-thieu/` },
       publisher: publisherSchema(business),
       mainEntityOfPage: `${SITE}${path}`,
@@ -1103,11 +1121,17 @@ export function build() {
     ...subtopicPages.map((p) => `${SITE}${p}`),
     ...published.map((a) => `${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`),
     ...SITE_PAGES.map((p) => `${SITE}${p.dir}/`)];
+  // v80: image sitemap extension for articles with a rendered featured image
+  // (the namespace appears only once a first image exists).
+  const imageOf = new Map(published.map((a) => [`${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`, featuredImage(a.article_id, IMAGES)])
+    .filter(([, img]) => img));
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"${imageOf.size ? ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"' : ''}>
 ${urls.map((u) => {
     const lm = lastmodOf.get(u) ?? (u.startsWith(`${SITE}blog/`) ? listingLastmod : null);
-    return lm ? `  <url><loc>${u}</loc><lastmod>${lm}</lastmod></url>` : `  <url><loc>${u}</loc></url>`;
+    const img = imageOf.get(u);
+    const imgXml = img ? `<image:image><image:loc>${img.url}</image:loc></image:image>` : '';
+    return lm ? `  <url><loc>${u}</loc><lastmod>${lm}</lastmod>${imgXml}</url>` : `  <url><loc>${u}</loc>${imgXml}</url>`;
   }).join('\n')}
 </urlset>
 `);

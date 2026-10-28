@@ -110,6 +110,11 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Article featured images (v80, assets/images/): browser HTTP cache only —
+  // a reader of many articles must not grow the shell cache by one large
+  // image per page.
+  if (url.pathname.startsWith(new URL('assets/images/', self.location.href).pathname)) return;
+
   // Same-origin static assets: cache-first + background revalidate.
   event.respondWith(
     caches.match(request).then((cached) => {

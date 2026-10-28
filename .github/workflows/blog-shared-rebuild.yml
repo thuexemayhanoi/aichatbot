@@ -14,6 +14,8 @@ on:
       - 'data/business/business.json'
       - 'data/business/pricing.json'
       - 'data/seo/article-meta.json'
+      - 'data/seo/article-images.json'
+      - 'tools/article-images.mjs'
       - 'tools/seo-meta.mjs'
       - 'tools/seo-links.mjs'
       - 'tools/css-build.mjs'

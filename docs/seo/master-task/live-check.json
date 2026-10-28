@@ -1,0 +1,56 @@
+{
+  "$schema": "motoai/live-check@1",
+  "note": "External HTTP checks of production URLs (the cloud container proxy blocks the production host). status 200 = fetched without redirect; 404 probe confirms missing URLs return 404.",
+  "checks": {
+    "https://chatbot.thuexemaynguyentu.com/": {
+      "status": 200,
+      "checked": "2026-10-28",
+      "method": "TinyFish fetch_content (ttl 0): final_url = url, canonical self, H1 present"
+    },
+    "https://chatbot.thuexemaynguyentu.com/agent/": {
+      "status": 200,
+      "checked": "2026-10-28",
+      "method": "TinyFish fetch_content (ttl 0): final_url = url, canonical self, H1 present"
+    },
+    "https://chatbot.thuexemaynguyentu.com/blog/": {
+      "status": 200,
+      "checked": "2026-10-28",
+      "method": "TinyFish fetch_content (ttl 0): final_url = url, canonical self, H1 present"
+    },
+    "https://chatbot.thuexemaynguyentu.com/gia-thue/": {
+      "status": 200,
+      "checked": "2026-10-28",
+      "method": "TinyFish fetch_content (ttl 0): final_url = url, canonical self, H1 present"
+    },
+    "https://chatbot.thuexemaynguyentu.com/lien-he/": {
+      "status": 200,
+      "checked": "2026-10-28",
+      "method": "TinyFish fetch_content (ttl 0): final_url = url, canonical self, H1 present"
+    },
+    "https://chatbot.thuexemaynguyentu.com/gioi-thieu/": {
+      "status": 200,
+      "checked": "2026-10-28",
+      "method": "TinyFish fetch_content (ttl 0): final_url = url, canonical self, H1 present"
+    },
+    "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-honda-vision/": {
+      "status": 200,
+      "checked": "2026-10-28",
+      "method": "TinyFish fetch_content (ttl 0): final_url = url, canonical self, H1 present"
+    },
+    "https://chatbot.thuexemaynguyentu.com/blog/thue-xe/": {
+      "status": 200,
+      "checked": "2026-10-28",
+      "method": "TinyFish fetch_content (ttl 0): final_url = url, canonical self, H1 present"
+    },
+    "https://chatbot.thuexemaynguyentu.com/chinh-sach/": {
+      "status": 200,
+      "checked": "2026-10-28",
+      "method": "TinyFish fetch_content (ttl 0): final_url = url, canonical self, H1 present"
+    }
+  },
+  "probe_404": {
+    "url": "https://chatbot.thuexemaynguyentu.com/khong-ton-tai-404-check/",
+    "status": 404,
+    "checked": "2026-10-28"
+  }
+}
