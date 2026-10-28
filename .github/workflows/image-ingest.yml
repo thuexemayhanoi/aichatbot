@@ -6,13 +6,16 @@ name: Image Ingest
 # key — and parks the files on a transient branch image-ingest/run-<run_id>
 # (a root commit holding only the images + manifest, never main). The session
 # then runs `python3 tools/image-ingest.py pull <branch>` and the normal
-# image-factory.py optimize → attach → qa → PR flow; pull deletes the branch.
+# image-factory.py optimize → attach → qa → PR flow. The session's git proxy
+# cannot delete branches, so every run first removes image-ingest/run-*
+# branches older than 2 hours (dispatch with empty items to only clean up).
 on:
   workflow_dispatch:
     inputs:
       items:
-        description: 'One "BA-XXXX https://…" pair per line (max 20)'
-        required: true
+        description: 'One "BA-XXXX https://…" pair per line (max 20); empty = clean up only'
+        required: false
+        default: ''
         type: string
 
 permissions:
@@ -27,15 +30,31 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Remove transient branches older than 2 hours
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cutoff=$(date -u -d '2 hours ago' +%s)
+          gh api "repos/$GITHUB_REPOSITORY/git/matching-refs/heads/image-ingest/run-" --jq '.[] | "\(.ref) \(.object.sha)"' |
+          while read -r ref sha; do
+            case "$ref" in refs/heads/image-ingest/run-*) ;; *) continue ;; esac
+            when=$(gh api "repos/$GITHUB_REPOSITORY/git/commits/$sha" --jq '.committer.date')
+            if [ "$(date -u -d "$when" +%s)" -lt "$cutoff" ]; then
+              gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/$ref" && echo "deleted $ref"
+            fi
+          done
       - uses: actions/checkout@v4
+        if: inputs.items != ''
         with:
           sparse-checkout: tools/image-ingest.py
           sparse-checkout-cone-mode: false
       - name: Download allow-listed source images
+        if: inputs.items != ''
         env:
           ITEMS: ${{ inputs.items }}
         run: printf '%s\n' "$ITEMS" | python3 tools/image-ingest.py fetch --out "$RUNNER_TEMP/ingest"
       - name: Park them on a transient branch
+        if: inputs.items != ''
         env:
           BRANCH: image-ingest/run-${{ github.run_id }}
           TOKEN: ${{ github.token }}

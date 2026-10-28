@@ -41,4 +41,9 @@ test('the ingest workflow is manual-only, passes inputs through env and never to
   assert.match(wf, /BRANCH: image-ingest\/run-\$\{\{ github\.run_id \}\}/);
   assert.match(wf, /git init -q -b "\$BRANCH"/);
   assert.doesNotMatch(wf, /refs\/heads\/main|--force|\bpush\b[^\n]*-f\b/);
+  // Cleanup deletes only transient image-ingest/run-* branches, and only stale ones.
+  assert.match(wf, /matching-refs\/heads\/image-ingest\/run-/);
+  assert.match(wf, /case "\$ref" in refs\/heads\/image-ingest\/run-\*\) ;; \*\) continue ;; esac/);
+  assert.match(wf, /date -u -d '2 hours ago'/);
+  assert.equal((wf.match(/-X DELETE/g) ?? []).length, 1);
 });

@@ -13,9 +13,11 @@ unreachable from the session container, but not from a GitHub Actions runner:
           so no signature is ever committed). Used by
           .github/workflows/image-ingest.yml, which parks OUT on a transient
           branch image-ingest/run-<run_id> (a root commit with only these files).
-  pull    (container)  BRANCH [--raw-dir DIR] [--keep]  fetch that branch,
-          verify every file against the manifest, write DIR/BA-XXXX.<ext>
-          for `image-factory.py optimize`, then delete the transient branch.
+  pull    (container)  BRANCH [--raw-dir DIR]  fetch that branch, verify
+          every file against the manifest and write DIR/BA-XXXX.<ext> for
+          `image-factory.py optimize`. The session's git proxy cannot delete
+          branches; the workflow removes transient branches older than 2 h
+          at the start of each run.
 
 No API key, token or model call lives here; the runner only downloads.
 """
@@ -128,9 +130,6 @@ def cmd_pull(a):
         print(f'{out}  ({m["bytes"]} bytes from {m["source"]})')
     for line in manifest.get('failed', []):
         print(f'not downloaded: {line}', file=sys.stderr)
-    if not a.keep:
-        git('push', 'origin', '--delete', a.branch)
-        print(f'deleted transient branch {a.branch}')
 
 
 def main():
@@ -138,7 +137,7 @@ def main():
     sub = ap.add_subparsers(dest='cmd', required=True)
     p = sub.add_parser('fetch'); p.add_argument('--out', required=True)
     p = sub.add_parser('pull'); p.add_argument('branch')
-    p.add_argument('--raw-dir', default='/tmp/motoai-image-raw'); p.add_argument('--keep', action='store_true')
+    p.add_argument('--raw-dir', default='/tmp/motoai-image-raw')
     a = ap.parse_args()
     {'fetch': cmd_fetch, 'pull': cmd_pull}[a.cmd](a)
 
