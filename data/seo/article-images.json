@@ -375,7 +375,7 @@
       "live_verified": "2026-10-28"
     },
     "BA-0013": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/ung-dung-thue-xe-co-an-toan-khong-ba-0013.webp",
       "source": "ai",
       "generator": {
@@ -398,10 +398,13 @@
       "dhash": "6d470d933d870367",
       "dhash_of": "d56c85b75bd4151d50e6c964d0b915cf61053e35475ddd705be9e31fe427188b",
       "alt": "Tay cầm điện thoại mở khung trò chuyện bên bàn cạnh cửa sổ, ngoài đường là xe tay ga trắng và dòng xe máy",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "4c832908",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0014": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thue-xe-may-theo-tuan-ba-0014.webp",
       "source": "ai",
       "generator": {
@@ -424,7 +427,10 @@
       "dhash": "51254fed0d3f4f0f",
       "dhash_of": "c427df2c8e46e34c5403c6f8206fdae33464f0e24471e7b785a4f20fc61113aa",
       "alt": "Tờ biểu mẫu trống, bút và chìa khóa xe trên quầy, phía sau là hàng xe tay ga đỗ sát vỉa hè Hà Nội",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "4c832908",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0015": {
       "status": "LIVE_VERIFIED",
@@ -458,7 +464,7 @@
       "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0016": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/huong-dan-dat-xe-nhanh-ba-0016.webp",
       "source": "ai",
       "generator": {
@@ -481,7 +487,10 @@
       "dhash": "a46dcfdd5d2c8df8",
       "dhash_of": "5df730bb3cda9f91ef71c4c609cd27102e6bb8cb47dd6032617602ff57d12665",
       "alt": "Biểu mẫu trống, bút, chìa khóa và phong bì trơn trên quầy, bên ngoài là xe tay ga và người đi xe máy ven mặt nước",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "4c832908",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0017": {
       "status": "LIVE_VERIFIED",
@@ -515,7 +524,7 @@
       "live_verified": "2026-10-28"
     },
     "BA-0018": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/du-lich-hoan-kiem-bang-xe-may-ba-0018.webp",
       "source": "ai",
       "generator": {
@@ -538,10 +547,13 @@
       "dhash": "3c34bf3576767c72",
       "dhash_of": "cefd82e83eab1b0d6803065b59ce31fb42573da0317df64bd4d99bc324e5fa99",
       "alt": "Hàng xe máy đỗ ngay ngắn trên vỉa hè phố cổ Hà Nội dưới những chiếc đèn lồng đỏ lúc chiều muộn",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "4c832908",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0019": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/cach-tinh-gia-thue-xe-bang-app-ba-0019.webp",
       "source": "ai",
       "generator": {
@@ -564,7 +576,10 @@
       "dhash": "0c0c14b0188e0ec6",
       "dhash_of": "4c52990edf0f2ae4dce80d93f6cace38e1c3a1296968981bf916e31960a4b3cc",
       "alt": "Tay cầm điện thoại mở khung trò chuyện, sổ ghi chép và bút trên bàn, ngoài cửa là xe số màu trắng đỗ ven đường",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "4c832908",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0020": {
       "status": "LIVE_VERIFIED",
