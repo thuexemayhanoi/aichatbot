@@ -613,7 +613,7 @@
       "live_verified": "2026-10-28"
     },
     "BA-0021": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thue-xe-dien-theo-ngay-ba-0021.webp",
       "source": "ai",
       "generator": {
@@ -636,10 +636,13 @@
       "dhash": "327332f139b9a1b0",
       "dhash_of": "44d12ce3d7ae2addd0b303a2597757ac2bcb57ad8df951d6c89ab287896a5089",
       "alt": "Người thuê nhấc khối pin ra khỏi cốp dưới yên xe máy điện trên con phố rợp bóng cây ở Hà Nội",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "621c60ba",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 621c60ba (PR #25): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0022": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/quy-trinh-nhan-xe-ba-0022.webp",
       "source": "ai",
       "generator": {
@@ -662,10 +665,13 @@
       "dhash": "adbc9e979abc8dc5",
       "dhash_of": "0b8b62438d921ae13fde69ab718423dd0056074861c359433d66b8641c479e8f",
       "alt": "Người đàn ông ngồi kiểm tra lốp trước của xe tay ga trắng trong ngõ nhỏ có chậu cây ở Hà Nội",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "621c60ba",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 621c60ba (PR #25): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
     },
     "BA-0023": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/toc-do-cho-phep-trong-pho-ba-0023.webp",
       "source": "ai",
       "generator": {
@@ -688,6 +694,87 @@
       "dhash": "26327acc54352481",
       "dhash_of": "a6e4098e8a5e394b96e238be3d7e14c1c6af077eac95998053ad9b7787fdb4fc",
       "alt": "Người đi xe máy đội mũ bảo hiểm dừng chờ đèn đỏ tại một nút giao giữa phố Hà Nội",
+      "alt_reviewed": true,
+      "commit": "621c60ba",
+      "live_verified": "2026-10-28",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 621c60ba (PR #25): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+    },
+    "BA-0024": {
+      "status": "QA_PASSED",
+      "file": "assets/images/blog/ho-tay-va-xe-may-ba-0024.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 10,
+        "source_url": "canva://media/MAHZTGvAOro",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "055c8d5825806d84ffb3c35f62859b53fd79aa8da1904c499dda64b7bed14141"
+      },
+      "alt_plan": "Hàng xe máy đỗ ngay ngắn ở bãi gửi xe ven Hồ Tây",
+      "width": 1200,
+      "height": 800,
+      "bytes": 161388,
+      "quality": 90,
+      "sha256": "01438cf22fd7053242f50e0f69546b8107e73bcae069afe07a9ba67d097f9b26",
+      "dhash": "b9bd8db9b48953d3",
+      "dhash_of": "01438cf22fd7053242f50e0f69546b8107e73bcae069afe07a9ba67d097f9b26",
+      "alt": "Hàng xe máy đỗ thẳng lối trên vỉa hè ven Hồ Tây dưới hàng liễu, mặt hồ xanh trải rộng bên trái",
+      "alt_reviewed": true
+    },
+    "BA-0025": {
+      "status": "QA_PASSED",
+      "file": "assets/images/blog/chon-xe-bang-agent-ba-0025.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 11,
+        "source_url": "canva://media/MAHZTMoCnX4",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "f0aae565ef142b78df988cd25049e706f81b9a85b47b321d818e7c9d0ceee6c2"
+      },
+      "alt_plan": "Điện thoại hiển thị giao diện trò chuyện, phía sau là xe tay ga bên bàn làm việc cạnh cửa sổ",
+      "width": 1200,
+      "height": 800,
+      "bytes": 82534,
+      "quality": 90,
+      "sha256": "1624ad6dfba88f1a8fae032b23a6fdd795cd57fe76ddfce4d9e5ba46a1feaeb8",
+      "dhash": "83871d085e86360b",
+      "dhash_of": "1624ad6dfba88f1a8fae032b23a6fdd795cd57fe76ddfce4d9e5ba46a1feaeb8",
+      "alt": "Tay cầm điện thoại mở khung trò chuyện bên cửa sổ, ngoài kia là xe tay ga bạc đỗ ven đường phố Hà Nội",
+      "alt_reviewed": true
+    },
+    "BA-0026": {
+      "status": "QA_PASSED",
+      "file": "assets/images/blog/cho-thue-xe-may-thu-tuc-don-gian-ba-0026.webp",
+      "source": "ai",
+      "generator": {
+        "tool": "canva-mcp generate-image",
+        "model": "Canva AI image (model không công bố)",
+        "canva_design": "DAHZRUyZQMo",
+        "canva_page": 12,
+        "source_url": "canva://media/MAHZTOBZUf0",
+        "source_width": 1536,
+        "source_height": 1024,
+        "generated_at": "2026-10-28",
+        "prompt_sha256": "817df0093a81d4f742f4b4159127f263e7ee3282344966d5535b30e436d9d08b"
+      },
+      "alt_plan": "Hợp đồng thuê xe, bút và chìa khóa trên quầy",
+      "width": 1200,
+      "height": 800,
+      "bytes": 78298,
+      "quality": 90,
+      "sha256": "202ce7c65545ec709c7f1bd126ac65ba522cb08246dc57eafb9b321e20e6db5b",
+      "dhash": "3d1c1c58190d0c4d",
+      "dhash_of": "202ce7c65545ec709c7f1bd126ac65ba522cb08246dc57eafb9b321e20e6db5b",
+      "alt": "Khách đứng trước quầy hỏi nhân viên, trên quầy có tờ biểu mẫu trống, bút và chìa khóa xe",
       "alt_reviewed": true
     },
     "BA-0050": {
