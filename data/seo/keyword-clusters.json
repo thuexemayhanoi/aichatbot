@@ -1,31 +1,10 @@
 {
   "$schema": "motoai/seo-keyword-clusters@1",
-  "note": "Vietnamese-only topical clusters for the SEO master matrix. Articles are assigned by their topic SEED (data/blog/content-matrix.csv primary_keyword minus the variant modifier), first match wins, case-insensitive with Vietnamese diacritics preserved (diacritic-free matching merged words such as giá/gia, chợ/cho). 'pillar' is the page that should rank for the cluster head; supporting articles link to it through the family/related blocks and hubs. Head terms marked owner=sister-site are NOT targeted by any page of this subdomain (config/seo-ownership.json).",
+  "note": "Keyword clusters based on published topical seeds. Owner-approved 2026-10-29: MotoAI MAY independently target all relevant Hanoi commercial keywords, with unique intent owner within its own domain. The former sister-site commercial exclusion is rescinded. Do not reinterpret historic keyword-volume source as live GSC ranking.",
   "excluded_languages": [
     "en"
   ],
-  "sister_site_head_terms": [
-    {
-      "keyword": "cho thuê xe máy Hà Nội",
-      "owner": "https://thuexemaynguyentu.com/ và repo thuexemayhanoi/shop, thuexemayhanoi/vanchinh",
-      "policy": "không tạo landing/tiêu đề nhắm đúng cụm này; chỉ hỗ trợ bằng nội dung thông tin long-tail"
-    },
-    {
-      "keyword": "thuê xe máy Hà Nội",
-      "owner": "sister site",
-      "policy": "như trên"
-    },
-    {
-      "keyword": "dịch vụ cho thuê xe máy Hà Nội",
-      "owner": "sister site",
-      "policy": "như trên"
-    },
-    {
-      "keyword": "thuê xe máy uy tín Hà Nội",
-      "owner": "sister site",
-      "policy": "như trên; không tự xưng 'uy tín nhất'"
-    }
-  ],
+  "sister_site_head_terms": [],
   "clusters": [
     {
       "id": "K01",
@@ -512,13 +491,13 @@
         "keyword": "thuê xe máy hà nội",
         "volume": 8100,
         "sd": 12,
-        "owner": "sister-site"
+        "owner": "MotoAI-eligible (owner approved 2026-10-29)"
       },
       {
         "keyword": "cho thuê xe máy hà nội",
         "volume": 1600,
         "sd": 12,
-        "owner": "sister-site"
+        "owner": "MotoAI-eligible (owner approved 2026-10-29)"
       },
       {
         "keyword": "thuê xe máy điện",

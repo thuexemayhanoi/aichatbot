@@ -1,0 +1,117 @@
+name: Commercial SEO Matrix 2006
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/seo-commercial-matrix.mjs'
+      - 'tools/seo-master-workbook.py'
+      - 'tools/seo-master-audit.mjs'
+      - 'data/seo/keyword-clusters.json'
+      - 'config/seo-ownership.json'
+      - 'docs/seo/commercial/README.md'
+      - 'docs/seo/commercial/CLAUDE-SEO-AGENT.md'
+      - '.github/workflows/commercial-seo-matrix.yml'
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/seo-commercial-matrix.mjs'
+      - 'tools/seo-master-workbook.py'
+      - 'config/seo-ownership.json'
+      - 'docs/seo/commercial/**'
+      - '.github/workflows/commercial-seo-matrix.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: commercial-seo-matrix
+  cancel-in-progress: false
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate exact published article keyword matrix
+        run: |
+          node tools/seo-commercial-matrix.mjs
+          node tools/seo-commercial-matrix.mjs --check
+
+      - name: Refresh URL audit and formerly excluded keyword cluster report
+        run: node tools/seo-master-audit.mjs
+
+      - name: Existing workbook dependency
+        run: python3 -m pip install --disable-pip-version-check --quiet openpyxl
+
+      - name: Generate 13-sheet Excel including four new commercial tabs
+        run: python3 tools/seo-master-workbook.py --date 2026-10-29
+
+      - name: Count and integrity checks
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+          p=Path('docs/seo/commercial/SEO-COMMERCIAL-2006.csv')
+          t=Path('docs/seo/commercial/SEO-COMMERCIAL-TARGETS.csv')
+          rows=list(csv.DictReader(p.open(encoding='utf-8')))
+          targets=list(csv.DictReader(t.open(encoding='utf-8')))
+          assert len(rows)>=2000, len(rows)
+          assert len({x['id'] for x in rows})==len(rows)
+          assert len({x['url'] for x in rows})==len(rows)
+          assert len(targets)==22, len(targets)
+          assert all(x['url'].startswith('https://chatbot.thuexemaynguyentu.com/') for x in rows)
+          x=Path('docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx')
+          assert x.is_file() and x.stat().st_size>100000
+          print('PASS:',len(rows),'unique published URLs,',len(targets),'head clusters')
+          PY
+
+      - name: Upload Excel and CSV as workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: motoai-commercial-seo-2006
+          path: |
+            docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx
+            docs/seo/commercial/SEO-COMMERCIAL-2006.csv
+            docs/seo/commercial/SEO-COMMERCIAL-TARGETS.csv
+            docs/seo/commercial/SEO-COMMERCIAL-ARCHITECTURE.csv
+            docs/seo/commercial/SEO-COMMERCIAL-DASHBOARD.csv
+            docs/seo/commercial/SEO-COMMERCIAL-SUMMARY.json
+          if-no-files-found: error
+
+      - name: Commit generated files on main only
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "motoai-seo-bot"
+          git config user.email "nguyentuantu2482@users.noreply.github.com"
+          git add docs/seo/commercial/SEO-COMMERCIAL-2006.csv
+          git add docs/seo/commercial/SEO-COMMERCIAL-TARGETS.csv
+          git add docs/seo/commercial/SEO-COMMERCIAL-ARCHITECTURE.csv
+          git add docs/seo/commercial/SEO-COMMERCIAL-DASHBOARD.csv
+          git add docs/seo/commercial/SEO-COMMERCIAL-SUMMARY.json
+          git add docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx
+          git add docs/seo/master-task/technical-audit.csv docs/seo/master-task/checkpoint.json
+          git add docs/seo/keyword-cluster-map.md
+          git add docs/seo/seo-master-matrix.csv docs/seo/seo-master-matrix.json docs/seo/seo-master-matrix.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(seo): publish 2006-URL commercial Excel matrix [skip ci]"
+            git push origin HEAD:main
+          else
+            echo "Commercial SEO Matrix already current"
+          fi
