@@ -351,6 +351,11 @@
       "status": 200,
       "checked": "2026-10-29",
       "method": "TinyFish ttl 0: thue-xe-ga-ba-0038-600w/900w, thoi-gian-sac-xe-may-dien-ba-0063-600w/900w được phục vụ (nội dung nhị phân); URL đối chứng khong-ton-tai-ba-9999-600w.webp trả 404"
+    },
+    "https://chatbot.thuexemaynguyentu.com/favicon.ico": {
+      "status": 200,
+      "checked": "2026-10-29",
+      "method": "TinyFish fetch_content (ttl 0) sau deploy b05308f0 (PR #37): tệp được phục vụ (nhị phân); page_metadata.favicon = /favicon.ico trên trang chủ, /agent/, /blog/thue-xe/thue-xe-ga/"
     }
   },
   "probe_404": {

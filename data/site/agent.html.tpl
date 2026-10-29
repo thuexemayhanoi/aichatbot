@@ -18,15 +18,15 @@
   <meta property="og:title" content="Hỏi Agent MotoAI — Ứng dụng thuê xe máy & xe điện">
   <meta property="og:description" content="Hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe máy bằng Agent — chạy ngay trên trình duyệt.">
   <meta property="og:url" content="https://chatbot.thuexemaynguyentu.com/agent/">
-  <meta property="og:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
-  <meta property="og:image:width" content="512">
-  <meta property="og:image:height" content="512">
-  <meta property="og:image:alt" content="MotoAI — Trợ lý thuê xe máy">
+  <meta property="og:image" content="https://chatbot.thuexemaynguyentu.com/assets/images/og/motoai-share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MotoAI — trợ lý và cẩm nang thuê xe máy, xe điện tại Hà Nội">
   <meta property="og:locale" content="vi_VN">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hỏi Agent MotoAI — Ứng dụng thuê xe máy & xe điện">
   <meta name="twitter:description" content="Hỏi giá, chọn xe, tính chi phí và xem thủ tục thuê xe máy bằng Agent — chạy ngay trên trình duyệt.">
-  <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/icons/icon-512.png">
+  <meta name="twitter:image" content="https://chatbot.thuexemaynguyentu.com/assets/images/og/motoai-share.png">
   <script>
     // Apply theme before first paint to avoid a flash.
     (function () {

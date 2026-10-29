@@ -184,7 +184,11 @@ function checkStructuredData(pages, io) {
     }
     if (p.kind === 'agent') {
       add(types.includes('WebApplication'), 'missing WebApplication schema', p.path);
-      add(types.includes('FAQPage'), 'missing FAQPage schema', p.path);
+      // Google stopped showing FAQ rich results on 2026-05-07: FAQPage is not a
+      // rich-result target any more, only a mirror of the visible Q&A.
+      const faq = blocks.find((b) => b['@type'] === 'FAQPage');
+      const visible = text(html);
+      add(!faq || (faq.mainEntity ?? []).every((q) => visible.includes(q.name)), 'FAQPage questions not visible on the page', p.path);
       add(types.some((t) => t === 'Organization') || /"@type":\s*"Organization"/.test(html), 'missing Organization schema', p.path);
     }
     if (p.kind === 'article') {
@@ -310,7 +314,7 @@ function checkAiGEO(pages, io, ctx) {
   const agent = io.read('agent/index.html');
   add(home.includes(business.contact.phone_display) || home.includes(business.hours.display), 'homepage missing verified business facts for AI extraction');
   add(home.includes(business.address.full), 'homepage missing the verified address');
-  add(/"@type":\s*"FAQPage"/.test(agent), 'no Q&A surface on the Agent page (FAQPage)');
+  add(/<summary>[^<]*\?<\/summary>/.test(agent), 'no visible Q&A on the Agent page');
   for (const p of pages.filter((x) => x.kind === 'article')) {
     const html = io.read(p.path);
     const t = text(html);
