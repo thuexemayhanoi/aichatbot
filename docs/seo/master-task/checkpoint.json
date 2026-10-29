@@ -2,7 +2,7 @@
   "$schema": "motoai/master-task-checkpoint@1",
   "task": "MOTOAI IMAGE FACTORY 2000 + GITHUB EXPERT SEO SKILLS + FULL WEBSITE SEO",
   "updated": "2026-10-29",
-  "head_at_export": "3668d5acf",
+  "head_at_export": "c835055b3",
   "workbook": "docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx",
   "dashboard": {
     "Ngày cập nhật": "2026-10-29",
@@ -26,10 +26,10 @@
     "URL trạng thái DONE trong SEO master (tối ưu v70–v79)": 2138,
     "Bài cần review nội dung (Content Review = REVIEW)": 58,
     "URL có lỗi kỹ thuật mở (technical-audit)": 0,
-    "Việc cần chủ sở hữu xác minh (REVIEW REQUIRED mở)": 6,
-    "Commit cuối (HEAD khi xuất)": "3668d5acf",
+    "Việc cần chủ sở hữu xác minh (REVIEW REQUIRED mở)": 8,
+    "Commit cuối (HEAD khi xuất)": "c835055b3",
     "Checkpoint cuối": "docs/seo/master-task/checkpoint.json @ 2026-10-29",
-    "Next batch": "BA-0049, BA-0056, BA-0059, BA-0060, BA-0061, BA-0064, BA-0065, BA-0067, BA-0068, BA-0069"
+    "Next batch": "Chờ chủ sở hữu quyết (RR-12) vì đổi hợp đồng critical gate của Blog Factory"
   },
   "image_status_counts": {
     "IMAGE_GENERATED": 0,
@@ -39,7 +39,7 @@
     "DEPLOYED": 0,
     "LIVE_VERIFIED": 60
   },
-  "next_batch": "BA-0049, BA-0056, BA-0059, BA-0060, BA-0061, BA-0064, BA-0065, BA-0067, BA-0068, BA-0069",
+  "next_batch": "Chờ chủ sở hữu quyết (RR-12) vì đổi hợp đồng critical gate của Blog Factory",
   "articles": 2006,
   "without_image": 1946,
   "next_ids": [
@@ -93,14 +93,21 @@
       "BA-0058"
     ]
   },
-  "blocked": [],
+  "blocked": [
+    {
+      "task": "MT-P4-06",
+      "issue": "Quyết định quy trình xuất bản thuộc chủ sở hữu"
+    }
+  ],
   "open_review_required": [
     "RR-02",
     "RR-03",
     "RR-04",
     "RR-07",
     "RR-08",
-    "RR-09"
+    "RR-09",
+    "RR-11",
+    "RR-12"
   ],
   "resume": "docs/seo/master-task/README.md"
 }
