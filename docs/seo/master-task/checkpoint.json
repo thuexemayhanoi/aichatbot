@@ -2,7 +2,7 @@
   "$schema": "motoai/master-task-checkpoint@1",
   "task": "MOTOAI IMAGE FACTORY 2000 + GITHUB EXPERT SEO SKILLS + FULL WEBSITE SEO",
   "updated": "2026-10-29",
-  "head_at_export": "380cccc24",
+  "head_at_export": "298ad6fab",
   "workbook": "docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx",
   "dashboard": {
     "Ngày cập nhật": "2026-10-29",
@@ -27,9 +27,9 @@
     "Bài cần review nội dung (Content Review = REVIEW)": 58,
     "URL có lỗi kỹ thuật mở (technical-audit)": 0,
     "Việc cần chủ sở hữu xác minh (REVIEW REQUIRED mở)": 8,
-    "Commit cuối (HEAD khi xuất)": "380cccc24",
+    "Commit cuối (HEAD khi xuất)": "298ad6fab",
     "Checkpoint cuối": "docs/seo/master-task/checkpoint.json @ 2026-10-29",
-    "Next batch": "Chờ chủ sở hữu quyết (RR-12) vì đổi hợp đồng critical gate của Blog Factory"
+    "Next batch": "Chờ chủ sở hữu mở lại xưởng ảnh. Khi mở: bật lại lịch \"Image factory 2.006\" (trig_01CvqnnDpmqzsMMNC13SMwMP) rồi chạy tiếp từ checkpoint.json → next_ids (BA-0049, BA-0056 tạo lại trước, rồi BA-0059…)"
   },
   "image_status_counts": {
     "IMAGE_GENERATED": 0,
@@ -39,7 +39,7 @@
     "DEPLOYED": 0,
     "LIVE_VERIFIED": 60
   },
-  "next_batch": "Chờ chủ sở hữu quyết (RR-12) vì đổi hợp đồng critical gate của Blog Factory",
+  "next_batch": "Chờ chủ sở hữu mở lại xưởng ảnh. Khi mở: bật lại lịch \"Image factory 2.006\" (trig_01CvqnnDpmqzsMMNC13SMwMP) rồi chạy tiếp từ checkpoint.json → next_ids (BA-0049, BA-0056 tạo lại trước, rồi BA-0059…)",
   "articles": 2006,
   "without_image": 1946,
   "next_ids": [
@@ -94,6 +94,10 @@
     ]
   },
   "blocked": [
+    {
+      "task": "MT-P1-01",
+      "issue": "TẠM DỪNG theo AGENTS.md + docs/seo/commercial/CLAUDE-SEO-AGENT.md (PR #39, chủ sở hữu 2026-10-29): \"The image factory is paused for this mission\" — ưu tiên kế hoạch SEO thương mại 2.006 URL; lịch chạy ảnh 00:15Z đã tắt 2026-10-29T16:31Z. Trước đó: Figma hết tín dụng tới 2026-10-30T00:00Z, Canva cần xác thực lại"
+    },
     {
       "task": "MT-P4-06",
       "issue": "Quyết định quy trình xuất bản thuộc chủ sở hữu"
