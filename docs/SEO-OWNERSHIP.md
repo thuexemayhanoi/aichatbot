@@ -9,7 +9,7 @@ Chủ website đã cho phép **MotoAI cạnh tranh toàn bộ nhóm từ khóa t
 - `/`: intent chính **cho thuê xe máy ở Hà Nội** và biến thể cùng ý định “cho thuê xe máy Hà Nội”, “thuê xe máy Hà Nội”; chỉ chỉnh homepage sau khi duyệt nội dung thực sự phục vụ nhu cầu thương mại và test an toàn.
 - `/gia-thue/`: giá thuê, bảng giá ngày/tuần/tháng, cọc tách riêng.
 - `/lien-he/`: thông tin liên hệ, địa chỉ và giờ làm việc được xác minh.
-- `/agent/`: **APP / WEB APPLICATION / DIGITAL RENTAL ASSISTANT**, vẫn là công cụ thông tin (không giả làm App Store/Google Play hoặc hệ thống đặt xe tự động).
+- `/agent/`: **APP / WEB APPLICATION / DIGITAL RENTAL ASSISTANT (app thuê xe máy, ứng dụng web MotoAI)**, vẫn là công cụ thông tin (không giả làm App Store/Google Play hoặc hệ thống đặt xe tự động).
 - Các category hub và bài riêng: tháng, Vision, 50cc, xe điện, Long Biên, Hoàn Kiếm, Phố Cổ, Tây Hồ, Ba Đình, thủ tục, luật, du lịch... mỗi URL chủ lực một search intent duy nhất.
 
 `data/blog/content-matrix.csv` và `data/blog/published.json` là nguồn sự thật 2.006 URL; kết quả SEO lập kế hoạch từ `tools/seo-commercial-matrix.mjs`. **Không nhồi exact head keyword vào 2.006 H1/title.**
