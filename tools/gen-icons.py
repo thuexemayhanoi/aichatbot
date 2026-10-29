@@ -9,6 +9,9 @@ glyph) to PNG without any third-party dependency (no PIL, no cairo):
   assets/icons/icon-512.png          (any)
   assets/icons/icon-maskable-512.png (maskable: full-bleed tile, content
                                       scaled to the 80% safe zone)
+  favicon.ico                        (16/32/48 PNG entries: the site
+                                      favicon — Google Search shows it next
+                                      to results and wants a multiple of 48px)
 
 Pure integer/float math + zlib PNG encoder → byte-stable output: running
 this twice produces identical bytes (CI relies on this for the
@@ -35,6 +38,7 @@ STROKES = [
     ([(216.0, 168.0), (312.0, 168.0)], 20.0),
 ]
 SS = 3  # supersampling factor per axis (3x3 → smooth, still fast)
+FAVICON_SIZES = (16, 32, 48)
 
 
 def dist_seg(px, py, ax, ay, bx, by):
@@ -118,7 +122,7 @@ def _tile(x, y, radius512):
     return (x - rx) ** 2 + (y - ry) ** 2 <= radius512 * radius512
 
 
-def write_png(path, size, pixels):
+def encode_png(size, pixels):
     """Minimal deterministic PNG encoder (RGBA, filter 0, zlib)."""
     raw = bytearray()
     stride = size * 4
@@ -129,12 +133,30 @@ def write_png(path, size, pixels):
         return (struct.pack('>I', len(data)) + tag + data +
                 struct.pack('>I', zlib.crc32(tag + data) & 0xffffffff))
     ihdr = struct.pack('>IIBBBBB', size, size, 8, 6, 0, 0, 0)
-    png = (b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', ihdr) +
-           chunk(b'IDAT', zlib.compress(bytes(raw), 9)) + chunk(b'IEND', b''))
+    return (b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', ihdr) +
+            chunk(b'IDAT', zlib.compress(bytes(raw), 9)) + chunk(b'IEND', b''))
+
+
+def write_png(path, size, pixels):
+    png = encode_png(size, pixels)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, 'wb') as fh:
         fh.write(png)
     return len(png)
+
+
+def write_ico(path, sizes):
+    """ICO container with one PNG-compressed entry per size (rounded tile)."""
+    images = [encode_png(size, render(size, False)) for size in sizes]
+    out = struct.pack('<HHH', 0, 1, len(images))
+    offset = 6 + 16 * len(images)
+    for size, png in zip(sizes, images):
+        out += struct.pack('<BBBBHHII', size % 256, size % 256, 0, 0, 1, 32, len(png), offset)
+        offset += len(png)
+    out += b''.join(images)
+    with open(path, 'wb') as fh:
+        fh.write(out)
+    return len(out)
 
 
 def main():
@@ -149,6 +171,8 @@ def main():
         pixels = render(size, maskable)
         n = write_png(os.path.join(out_dir, name), size, pixels)
         print(f'{name}: {size}x{size}{" maskable" if maskable else ""} -> {n} bytes')
+    n = write_ico(os.path.join(here, 'favicon.ico'), FAVICON_SIZES)
+    print(f'favicon.ico: {"/".join(map(str, FAVICON_SIZES))} -> {n} bytes')
 
 
 if __name__ == '__main__':
