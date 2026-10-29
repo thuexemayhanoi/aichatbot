@@ -341,6 +341,11 @@
       "status": 200,
       "checked": "2026-10-29",
       "method": "TinyFish fetch_content (ttl 0) sau merge 55e274fd: figure.article-hero + ảnh assets/images/blog/chup-anh-xe-truoc-khi-nhan-ba-0058.webp (file được phục vụ), og:image/alt + twitter large"
+    },
+    "https://chatbot.thuexemaynguyentu.com/404.html": {
+      "status": 200,
+      "checked": "2026-10-29",
+      "method": "TinyFish fetch_content (ttl 0) sau merge 6c78ea5e: trang 404 tùy biến, robots noindex, không canonical, 5 link (/, /agent/, /blog/, /gia-thue/, /lien-he/); URL thiếu /khong/ton/tai/trang-404-kiem-tra/ trả 404"
     }
   },
   "probe_404": {

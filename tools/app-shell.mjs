@@ -74,7 +74,8 @@ export function pageHead({ title, description, path, ogType = 'website', headHtm
   const url = SITE + path.replace(/^\//, '');
   const prefix = rel(path);
   const site = BLOG_UI.site;
-  const og = image ? { ...image, path: null } : site.ogImage;
+  // Pages without their own image share the 1200×630 brand card (ogImage is the square logo).
+  const og = image ? { ...image, path: null } : (site.shareImage ?? site.ogImage);
   const ogUrl = image ? image.url : `${SITE}${og.path}`;
   const css = (file) => `  <link rel="stylesheet" href="${prefix}${file}?v=${assetVersion(file)}">`;
   return `<!DOCTYPE html>
@@ -99,7 +100,7 @@ ${headHtml}  <meta name="motoai-build" content="${BUILD_VERSION}">
   <meta property="og:image:width" content="${og.width}">
   <meta property="og:image:height" content="${og.height}">
   <meta property="og:image:alt" content="${esc(og.alt)}">
-  <meta name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}">
+  <meta name="twitter:card" content="${og.width >= 1200 ? 'summary_large_image' : 'summary'}">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${ogUrl}">
