@@ -21,7 +21,10 @@ raw image came from. No API key, endpoint or model call lives in the repo.
   optimize ID RAW [--max-kb 300]       centre-crop 3:2 → 1200×800 → WebP
            (Image SEO V2: highest quality q90→q60 whose file is ≤ 220 KB, else
            ≤ 300 KB hard cap; a lighter file is kept as it is, never padded; AI images carry IPTC DigitalSourceType
-           trainedAlgorithmicMedia as XMP) → sha256 + 64-bit dHash → IMAGE_OPTIMIZED
+           trainedAlgorithmicMedia as XMP) → sha256 + 64-bit dHash → IMAGE_OPTIMIZED;
+           also writes the 600w/900w responsive copies (<name>-<w>w.webp)
+  variants [ID ...]                    (re)write the responsive copies from the
+           1200 px master for images that lack them (status unchanged)
   attach   ID --alt "..."              ALT written after LOOKING at the image
            → IMAGE_ATTACHED (alt_reviewed: true)
   qa                                   run the registry gate; on PASS promote
@@ -54,6 +57,9 @@ IMG_DIR = 'assets/images/blog/'
 WIDTH, HEIGHT = 1200, 800
 # Image SEO standard V2: 100–300 KB, 120–220 KB preferred, 300 KB hard cap.
 PREFERRED_MAX_KB = 220
+# Responsive copies next to each master (tools/article-images.mjs SPEC.variants).
+VARIANTS = (600, 900)
+VARIANT_QUALITY = 82
 STATUSES = ['IMAGE_GENERATED', 'IMAGE_OPTIMIZED', 'IMAGE_ATTACHED', 'QA_PASSED', 'DEPLOYED', 'LIVE_VERIFIED']
 SITE = 'https://chatbot.thuexemaynguyentu.com/'
 # IPTC digital source type for AI-generated images (XMP in the WebP file):
@@ -211,11 +217,47 @@ def cmd_optimize(a):
         'width': WIDTH, 'height': HEIGHT, 'bytes': len(data), 'quality': q,
         'sha256': sha, 'dhash': dhash(check), 'dhash_of': sha,
     })
+    e['variants'] = write_variants(img, e, extra)
     # A new file invalidates a previous ALT review and later steps.
     for k in ('alt', 'alt_reviewed', 'commit', 'live_verified', 'notes'):
         e.pop(k, None)
     save_registry(reg)
     print(f'{a.id}: IMAGE_OPTIMIZED {len(data) // 1024} KB q{q} {e["file"]}')
+
+
+def variant_file(file, w):
+    return file[:-len('.webp')] + f'-{w}w.webp'
+
+
+def write_variants(img, e, extra):
+    """Write the 600w/900w copies of a 1200×800 RGB master; returns the registry block."""
+    from PIL import Image
+    out = {}
+    for w in VARIANTS:
+        buf = io.BytesIO()
+        img.resize((w, w * HEIGHT // WIDTH), Image.LANCZOS).save(buf, 'WEBP', quality=VARIANT_QUALITY, method=6, **extra)
+        data = buf.getvalue()
+        with open(os.path.join(ROOT, variant_file(e['file'], w)), 'wb') as f:
+            f.write(data)
+        out[str(w)] = {'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest(), 'of': e['sha256']}
+    return out
+
+
+def cmd_variants(a):
+    from PIL import Image
+    reg = load_registry()
+    ids = a.ids or [i for i, e in reg['images'].items()
+                    if rank(e['status']) >= rank('IMAGE_OPTIMIZED') and set(e.get('variants', {})) != {str(w) for w in VARIANTS}]
+    for art_id in ids:
+        e = entry(reg, art_id, 'IMAGE_OPTIMIZED')
+        with open(os.path.join(ROOT, e['file']), 'rb') as f:
+            data = f.read()
+        if hashlib.sha256(data).hexdigest() != e['sha256']:
+            sys.exit(f'{art_id}: master differs from the registry sha256')
+        img = Image.open(io.BytesIO(data)).convert('RGB')
+        e['variants'] = write_variants(img, e, {'xmp': AI_XMP} if e.get('source') == 'ai' else {})
+        print(f'{art_id}: ' + ', '.join(f'{w}w {v["bytes"] // 1024} KB' for w, v in e['variants'].items()))
+    save_registry(reg)
 
 
 def cmd_attach(a):
@@ -329,6 +371,7 @@ def main():
     p = sub.add_parser('optimize'); p.add_argument('id'); p.add_argument('raw'); p.add_argument('--max-kb', type=int, default=300)
     p = sub.add_parser('attach'); p.add_argument('id'); p.add_argument('--alt', required=True); p.add_argument('--caption')
     sub.add_parser('qa')
+    p = sub.add_parser('variants'); p.add_argument('ids', nargs='*')
     p = sub.add_parser('deployed'); p.add_argument('sha'); p.add_argument('--ids', nargs='*')
     p = sub.add_parser('live-mark'); p.add_argument('ids', nargs='+'); p.add_argument('--evidence', required=True)
     p.add_argument('--date', default=date.today().isoformat())
@@ -336,7 +379,7 @@ def main():
     sub.add_parser('status')
     a = ap.parse_args()
     {'record': cmd_record, 'download': cmd_download, 'split': cmd_split, 'optimize': cmd_optimize, 'attach': cmd_attach,
-     'qa': cmd_qa, 'deployed': cmd_deployed, 'live': cmd_live, 'live-mark': cmd_live_mark,
+     'qa': cmd_qa, 'variants': cmd_variants, 'deployed': cmd_deployed, 'live': cmd_live, 'live-mark': cmd_live_mark,
      'status': cmd_status}[a.cmd](a)
 
 

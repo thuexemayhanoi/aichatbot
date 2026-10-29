@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  webpInfo, hamming, altProblems, featuredImage, auditRegistry, loadRegistry, SPEC, STATUSES, atLeast
+  webpInfo, hamming, altProblems, featuredImage, auditRegistry, loadRegistry, SPEC, STATUSES, atLeast, variantFile
 } from '../../tools/article-images.mjs';
 import { buildPlan, loadPlan, sceneFor, imageFilename, PLAN_CSV, PLAN_COLUMNS, toCsv } from '../../tools/image-briefs.mjs';
 import { pageHead } from '../../tools/app-shell.mjs';
@@ -60,14 +60,26 @@ function tempRegistry(entries) {
 }
 const gen = { tool: 'figma-mcp generate_image', generated_at: '2026-10-28' };
 
+// Gives an optimized entry its 600w/900w responsive copies (AI-labelled
+// fixtures) and the matching registry block, as image-factory.py writes them.
+function withVariants(root, e) {
+  const variants = {};
+  for (const w of SPEC.variants) {
+    const src = `ai-${w}x${(w * 2) / 3}.webp`;
+    copyFileSync(join(FIX, src), join(root, variantFile(e.file, w)));
+    variants[w] = { bytes: fixture(src).length, sha256: sha(fixture(src)), of: e.sha256 };
+  }
+  return { ...e, variants };
+}
+
 test('a QA_PASSED entry with a valid 1200×800 WebP, hashes and reviewed ALT passes the gate', () => {
   const root = tempRegistry({ files: { 'a-ba-0001.webp': 'ai-1200x800.webp' } });
   const buf = fixture('ai-1200x800.webp');
-  const reg = { images: { 'BA-0001': {
+  const reg = { images: { 'BA-0001': withVariants(root, {
     status: 'QA_PASSED', file: `${SPEC.dir}a-ba-0001.webp`, source: 'ai', generator: gen,
     width: 1200, height: 800, bytes: buf.length, sha256: sha(buf), dhash: '0f0f0f0f0f0f0f0f', dhash_of: sha(buf),
     alt: 'Xe tay ga đỗ trong ngõ nhỏ có chậu cây ở Hà Nội', alt_reviewed: true
-  } } };
+  }) } };
   const r = auditRegistry(reg, { root, articles: new Set(['BA-0001']) });
   assert.deepEqual(r.errors, []);
   assert.equal(r.counts.QA_PASSED, 1);
@@ -105,9 +117,9 @@ test('an AI image must carry the IPTC trainedAlgorithmicMedia XMP label; a real 
   const plain = fixture('lossy-1200x800.webp');
   const base = { status: 'IMAGE_OPTIMIZED', generator: gen, width: 1200, height: 800, bytes: plain.length, sha256: sha(plain), dhash_of: sha(plain) };
   const reg = { images: {
-    'BA-0020': { ...base, file: `${SPEC.dir}x-ba-0020.webp`, source: 'ai', dhash: '00000000ffffffff' },
-    'BA-0021': { ...base, file: `${SPEC.dir}x-ba-0020.webp`.replace('x-ba-0020', 'y-ba-0021'), source: 'photo', dhash: 'ffffffff00000000',
-      bytes: fixture('ai-1200x800.webp').length, sha256: sha(fixture('ai-1200x800.webp')), dhash_of: sha(fixture('ai-1200x800.webp')) }
+    'BA-0020': withVariants(root, { ...base, file: `${SPEC.dir}x-ba-0020.webp`, source: 'ai', dhash: '00000000ffffffff' }),
+    'BA-0021': withVariants(root, { ...base, file: `${SPEC.dir}x-ba-0020.webp`.replace('x-ba-0020', 'y-ba-0021'), source: 'photo', dhash: 'ffffffff00000000',
+      bytes: fixture('ai-1200x800.webp').length, sha256: sha(fixture('ai-1200x800.webp')), dhash_of: sha(fixture('ai-1200x800.webp')) })
   } };
   const errors = auditRegistry(reg, { root }).errors;
   assert.deepEqual(errors, ['BA-0020: AI image without IPTC trainedAlgorithmicMedia XMP']);
@@ -136,14 +148,42 @@ test('Image SEO V2: files up to 300 KB pass, heavier ones fail, light sharp file
     const buf = total === ai.length ? ai : padded(ai, total);
     const file = `${SPEC.dir}v2-${id.toLowerCase()}.webp`;
     writeFileSync(join(root, file), buf);
-    images[id] = { status: 'IMAGE_OPTIMIZED', file, source: 'ai', generator: gen, width: 1200, height: 800,
-      bytes: buf.length, sha256: sha(buf), dhash: dhashes[i], dhash_of: sha(buf) };
+    images[id] = withVariants(root, { status: 'IMAGE_OPTIMIZED', file, source: 'ai', generator: gen, width: 1200, height: 800,
+      bytes: buf.length, sha256: sha(buf), dhash: dhashes[i], dhash_of: sha(buf) });
   });
   assert.ok(ai.length < 100 * 1024, 'the fixture stands in for a sharp file under 100 KB');
   assert.deepEqual(auditRegistry({ images }, { root }).errors, [
     `BA-0034: ${300 * 1024 + 2} bytes exceeds the 300 KB cap`,
     `BA-0035: ${310 * 1024} bytes exceeds the 300 KB cap`
   ]);
+});
+
+test('responsive 600w/900w copies must be registered, 3:2, current with the master and AI-labelled', () => {
+  const root = tempRegistry({ files: { 'r-ba-0040.webp': 'ai-1200x800.webp' } });
+  const ai = fixture('ai-1200x800.webp');
+  const e = withVariants(root, { status: 'IMAGE_OPTIMIZED', file: `${SPEC.dir}r-ba-0040.webp`, source: 'ai', generator: gen,
+    width: 1200, height: 800, bytes: ai.length, sha256: sha(ai), dhash: '0f0f0f0f0f0f0f0f', dhash_of: sha(ai) });
+  assert.deepEqual(auditRegistry({ images: { 'BA-0040': e } }, { root }).errors, []);
+  const audit = (variants) => auditRegistry({ images: { 'BA-0040': { ...e, variants } } }, { root }).errors.join('\n');
+  assert.match(audit({ 600: e.variants[600] }), /BA-0040: 900w responsive copy not in the registry/);
+  assert.match(audit({ ...e.variants, 900: { ...e.variants[900], of: 'deadbeef' } }), /r-ba-0040-900w\.webp: made from another version of the master/);
+  assert.match(audit({ ...e.variants, 600: { ...e.variants[600], sha256: 'deadbeef' } }), /r-ba-0040-600w\.webp: registry bytes\/sha256 differ/);
+  // A copy at the wrong size (here the 1200w master itself) is rejected.
+  copyFileSync(join(FIX, 'ai-1200x800.webp'), join(root, variantFile(e.file, 600)));
+  assert.match(audit({ ...e.variants, 600: { bytes: ai.length, sha256: sha(ai), of: sha(ai) } }), /600w\.webp: size 1200×800, expected 600×400/);
+});
+
+test('a rendered image lists its responsive copies in srcset only when they all exist', () => {
+  const e = { status: 'QA_PASSED', file: 'assets/images/blog/s-ba-0041.webp', width: 1200, height: 800, alt: 'Xe tay ga đỗ cạnh hồ', source: 'ai',
+    variants: { 600: {}, 900: {} } };
+  const all = featuredImage('BA-0041', { images: { 'BA-0041': e } }, { exists: () => true });
+  assert.equal(all.srcset, '/assets/images/blog/s-ba-0041-600w.webp 600w, /assets/images/blog/s-ba-0041-900w.webp 900w, /assets/images/blog/s-ba-0041.webp 1200w');
+  assert.equal(all.sizes, SPEC.sizes);
+  const html = heroFigure(all);
+  assert.match(html, / srcset="[^"]+-600w\.webp 600w, [^"]+-900w\.webp 900w, [^"]+\.webp 1200w" sizes="\(max-width: 780px\) 90vw, 700px"/);
+  const partial = featuredImage('BA-0041', { images: { 'BA-0041': e } }, { exists: (p) => !p.endsWith('-900w.webp') });
+  assert.equal(partial.srcset, undefined);
+  assert.doesNotMatch(heroFigure(partial), /srcset/);
 });
 
 test('only QA_PASSED or later entries whose file exists are rendered', () => {

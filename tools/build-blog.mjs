@@ -116,7 +116,7 @@ const IMAGES = loadRegistry(ROOT);
  *  + high fetch priority (it is the article's LCP candidate), honest caption. */
 export function heroFigure(img) {
   return `      <figure class="article-hero">
-        <img src="${esc(img.src)}" width="${img.width}" height="${img.height}" alt="${esc(img.alt)}" fetchpriority="high" decoding="async">
+        <img src="${esc(img.src)}" width="${img.width}" height="${img.height}" alt="${esc(img.alt)}" fetchpriority="high" decoding="async"${img.srcset ? ` srcset="${esc(img.srcset)}" sizes="${esc(img.sizes)}"` : ''}>
 ${img.caption ? `        <figcaption>${esc(img.caption)}</figcaption>
 ` : ''}      </figure>
 `;
