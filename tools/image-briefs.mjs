@@ -74,9 +74,9 @@ export const PLACES = [
   { id: 'nhattan', re: /nhat tan/, en: 'the Nhat Tan cable-stayed bridge over the Red River', vi: 'trên cầu Nhật Tân' },
   { id: 'badinh', re: /ba dinh|lang chu tich|cot co|hoang thanh|chua mot cot|van mieu/, en: 'a wide tree-lined boulevard in Ba Dinh near historic yellow colonial buildings', vi: 'trên đại lộ rợp cây ở Ba Đình' },
   { id: 'caugiay', re: /cau giay/, en: 'a modern busy avenue in Cau Giay district, Hanoi', vi: 'trên phố ở Cầu Giấy, Hà Nội' },
-  { id: 'dongda', re: /dong da/, en: 'a lively street in Dong Da district, Hanoi', vi: 'trên phố ở Đống Đa, Hà Nội' },
+  { id: 'dongda', re: /dong da/, en: 'a lively street in Dong Da district, Hanoi, shopfronts with no readable signs', vi: 'trên phố ở Đống Đa, Hà Nội' },
   { id: 'thanhxuan', re: /thanh xuan/, en: 'a wide arterial road in Thanh Xuan district, Hanoi', vi: 'trên đường ở Thanh Xuân, Hà Nội' },
-  { id: 'haibatrung', re: /hai ba trung/, en: 'a busy street in Hai Ba Trung district, Hanoi', vi: 'trên phố ở Hai Bà Trưng, Hà Nội' },
+  { id: 'haibatrung', re: /hai ba trung/, en: 'a busy street in Hai Ba Trung district, Hanoi, shopfronts with no readable signs', vi: 'trên phố ở Hai Bà Trưng, Hà Nội' },
   { id: 'battrang', re: /bat trang|lang gom/, en: 'the pottery village of Bat Trang with stacks of glazed ceramics', vi: 'tại làng gốm Bát Tràng' },
   { id: 'flowermarket', re: /cho hoa|quang ba|quang an/, en: 'an early-morning flower market with buckets of fresh flowers', vi: 'tại chợ hoa' },
   { id: 'pagoda', rv: /chùa|đền /, en: 'the gate of an old pagoda in Hanoi with curved tiled roofs', vi: 'trước cổng một ngôi chùa cổ ở Hà Nội' },
@@ -115,6 +115,7 @@ export const PLACES = [
 const COUNTER = { id: 'counter', en: 'a small rental counter open to a Hanoi street, no signage', vi: '' };
 /** Named models stay the hero of the frame (model pages must show the model). */
 const MODELS = new Set(['vision', 'airblade', 'wave', 'clickmio', '50cc', 'ebike']);
+const ELECTRIC = new Set(['ev', 'ebike']);
 /** APP articles — and any article whose title is about an app/assistant —
  *  lead with the assistant, not with paperwork or parts. */
 const PREFER = { APP: ['scam', 'privacy', 'chat'] };
@@ -171,8 +172,8 @@ const AT_LIGHTS = new Set(['traffic-rules', 'camera']);
 const PROPS = {
   swap: 'a battery-swap cabinet nearby', charge: 'a charging cable plugged in', battery: 'a removable battery pack',
   range: 'a small backpack strapped on', helmet: 'a certified half-face helmet', raincoat: 'a folded rain poncho',
-  licence: 'a plain blank card', insurance: 'a plain blank certificate', contract: 'a blank form and pen',
-  deposit: 'a plain unmarked envelope', compare: 'a second, different bike beside it', price: 'a notebook with handwritten sums',
+  licence: 'a plain blank card', insurance: 'a plain blank certificate (no emblems, stamps or seals)', contract: 'a blank form and pen',
+  deposit: 'a plain unmarked envelope', compare: 'a second, different bike beside it', price: 'a closed notebook and a calculator',
   inspect: 'a customer checking the tyre', delivery: 'a staff member handing over the key', fuel: 'a fuel pump nozzle',
   tyre: 'a tyre pressure gauge', brake: 'a gloved hand on the brake lever', mirror: 'an adjusted rear-view mirror',
   lights: 'the headlight switched on', repair: 'a small toolkit', lock: 'a disc lock on the wheel',
@@ -181,7 +182,7 @@ const PROPS = {
   fatigue: 'a bottle of water', flood: 'wet pavement', 'traffic-rules': 'a traffic light',
   scam: 'a phone showing a warning icon', privacy: 'a phone showing a padlock icon', map: 'a phone showing a route map',
   luggage: 'a small duffel bag strapped on', 'two-up': 'two helmets', work: 'a work bag', taxi: 'a taxi in the background',
-  time: 'a wristwatch', chat: 'a smartphone showing a generic chat screen', faq: 'a customer asking a question',
+  time: 'a wristwatch', chat: 'a smartphone showing a generic chat interface with blank message bubbles', faq: 'a customer asking a question',
   eco: 'green trees'
 };
 
@@ -197,13 +198,13 @@ export const THEMES = [
   { id: 'helmet', re: /mu bao hiem/, rv: /nón/, en: 'close-up of hands fastening the chin strap of a certified half-face helmet', vi: 'Cài quai mũ bảo hiểm đạt chuẩn' },
   { id: 'raincoat', re: /ao mua/, en: 'a rider pulling on a bright rain poncho beside {v}', vi: 'Mặc áo mưa trước khi lái {vv}' },
   { id: 'licence', re: /bang lai|giay phep|\bidp\b|hang a1|a1 a2/, en: 'a plain blank card the size of a driving licence held next to a scooter key, no printing on it', vi: 'Thẻ giấy phép lái xe cạnh chìa khóa xe máy', paper: true, prop: 'a plain licence card and the key held in the foreground' },
-  { id: 'insurance', rv: /(?<!mũ )bảo hiểm/, en: 'a plain insurance certificate in a document wallet beside {v}, text unreadable', vi: 'Giấy chứng nhận bảo hiểm đặt cạnh {vv}', prop: 'an insurance certificate in a document wallet resting on the seat' },
+  { id: 'insurance', rv: /(?<!mũ )bảo hiểm/, en: 'a plain insurance certificate with only faint illegible lines (no emblems, stamps or seals) in a document wallet beside {v}', vi: 'Giấy chứng nhận bảo hiểm đặt cạnh {vv}', prop: 'a plain insurance certificate (no emblems, stamps or seals) in a document wallet resting on the seat' },
   { id: 'contract', re: /hop dong|giay to|thu tuc|dieu kien|cong chung|bao lanh|duoi 18/, en: 'a blank rental form with only faint illegible lines (no letters, no stamps or seals) on a counter with a pen and a scooter key', vi: 'Hợp đồng thuê xe, bút và chìa khóa trên quầy', paper: true, prop: 'a blank form and a pen resting on the seat' },
   { id: 'deposit', rv: /cọc|thanh toán/, en: 'a plain unmarked brown envelope and a scooter key being handed across a rental counter', vi: 'Giao tiền đặt cọc và chìa khóa xe tại quầy', paper: true, prop: 'the key being handed over to a customer' },
   { id: 'children', re: /tre em|cho tre/, en: 'a parent and a child both wearing helmets standing beside {v}', vi: 'Phụ huynh và trẻ em đội mũ bảo hiểm bên {vv}' },
   { id: 'two-up', re: /hai nguoi|nguoi than|cho nguoi/, en: 'two people wearing helmets on {v}, parked and ready to ride', vi: 'Hai người đội mũ bảo hiểm trên {vv}' },
   { id: 'compare', re: /so sanh|khac gi|hay di|hay xe|xe so hay/, en: 'an automatic scooter and a manual underbone motorbike ("xe so") parked side by side for comparison', vi: 'Xe tay ga và xe số đỗ cạnh nhau để so sánh' },
-  { id: 'price', rv: /giá|chi phí|tiết kiệm|ưu đãi|rẻ|bao nhiêu|ngân sách/, en: 'a notebook with simple handwritten sums, a calculator and a scooter key on a table, {v} parked in soft focus behind', vi: 'Sổ tính chi phí, máy tính và chìa khóa, phía sau là {vv}', prop: 'a notebook with handwritten sums and a calculator resting on the seat' },
+  { id: 'price', rv: /giá|chi phí|tiết kiệm|ưu đãi|rẻ|bao nhiêu|ngân sách/, en: 'a closed notebook, a calculator with a blank display and a scooter key on a table, {v} parked in soft focus behind', vi: 'Sổ tính chi phí, máy tính và chìa khóa, phía sau là {vv}', prop: 'a closed notebook and a calculator resting on the seat' },
   { id: 'inspect', re: /kiem tra|chup anh|nhan xe|tra xe|ban giao|tinh trang/, en: 'a customer inspecting the tyres and mirrors of {v} before handover', vi: 'Khách kiểm tra lốp và gương {vv} trước khi nhận', prop: 'a customer crouching to check its front tyre' },
   { id: 'delivery', re: /giao xe|tan noi/, en: '{v} being delivered and handed over at a front door', vi: 'Giao {vv} tận cửa' },
   { id: 'fuel', re: /xang|nhien lieu/, en: '{v} being refuelled at a petrol station pump', vi: 'Đổ xăng cho {vv} tại cây xăng' },
@@ -319,9 +320,11 @@ export function sceneFor({ category, title, keyword, slug, h2 = [], localScope =
   const vehicle = pick(VEHICLES, head, headVi) ?? rot(category === 'EV' ? DEFAULT_VEHICLE.EV : DEFAULT_VEHICLE.any, 'v');
   const named = pick(PLACES, head, headVi) ?? (category === 'LOCAL' ? pick(PLACES, outline, outlineVi) : null);
   const preferIds = PREFER[category] ?? (APP_TITLE.test(fold(title)) ? PREFER.APP : []);
-  const preferred = preferIds.map((id) => THEMES.find((t) => t.id === id));
-  const theme = pick(preferred, head, headVi, category) ?? pick(THEMES, head, headVi, category)
-    ?? (category === 'LOCAL' ? null : pick(THEMES, outline, outlineVi, category));
+  // An electric vehicle is never shown at a petrol pump.
+  const themes = ELECTRIC.has(vehicle.id) ? THEMES.filter((t) => t.id !== 'fuel') : THEMES;
+  const preferred = preferIds.map((id) => themes.find((t) => t.id === id)).filter(Boolean);
+  const theme = pick(preferred, head, headVi, category) ?? pick(themes, head, headVi, category)
+    ?? (category === 'LOCAL' ? null : pick(themes, outline, outlineVi, category));
   const hero = MODELS.has(vehicle.id) && theme && (theme.paper || theme.prop) ? theme : null;
   const place = named ?? (theme?.placeId ? PLACES.find((x) => x.id === theme.placeId) : null)
     ?? (theme?.paper && !hero ? COUNTER : AT_LIGHTS.has(theme?.id) ? DEFAULT_PLACE.SAFE[0]
