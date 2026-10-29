@@ -1,8 +1,13 @@
 {
-  "$schema": "motoai/seo-ownership@1",
+  "$schema": "motoai/seo-ownership@2",
   "repository": "thuexemayhanoi/aichatbot",
-  "primary_identity": "APP / WEB APPLICATION / DIGITAL RENTAL ASSISTANT",
+  "primary_identity": "COMMERCIAL MOTORBIKE RENTAL HANOI + APP / WEB RENTAL ASSISTANT",
   "owned_keywords": [
+    "cho thuê xe máy ở Hà Nội",
+    "cho thuê xe máy Hà Nội",
+    "thuê xe máy Hà Nội",
+    "giá thuê xe máy Hà Nội",
+    "thuê xe máy theo tháng Hà Nội",
     "app thuê xe máy",
     "ứng dụng thuê xe máy",
     "app thuê xe điện",
@@ -19,19 +24,23 @@
     "thuê xe máy online",
     "thuê xe điện online"
   ],
-  "protected_commercial_intents": [
-    {
-      "keyword": "thuê xe máy Hà Nội",
-      "owner": "other-repository (thuexemayhanoi/shop, thuexemayhanoi/vanchinh)",
-      "rule": "this repository must NOT create a generic homepage or landing page targeting this exact commercial keyword; local articles must add a distinct Agent/app/informational angle",
-      "enforced_by": "tests/unit/seo-ownership.test.js"
-    },
-    {
-      "keyword": "cho thuê xe máy Hà Nội",
-      "owner": "other-repository",
-      "rule": "same as above"
-    }
-  ],
+  "protected_commercial_intents": [],
   "national_scope_note": "National SEO scope = national informational/product search intent ONLY. Business rental availability stays grounded in verified business data (data/business/business.json). Never claim nationwide rental inventory or service.",
-  "pwa_wording_rule": "Never present the web application as an App Store/Google Play native app. Use 'ứng dụng web', 'Agent', 'công cụ trực tuyến'."
+  "pwa_wording_rule": "Never present the web application as an App Store/Google Play native app. Use 'ứng dụng web', 'Agent', 'công cụ trực tuyến'.",
+  "commercial_owner_policy": {
+    "effective": "2026-10-29",
+    "decision": "OWNER_APPROVED_FULL_COMMERCIAL_SEO",
+    "site": "https://chatbot.thuexemaynguyentu.com/",
+    "target_head": "cho thuê xe máy ở Hà Nội",
+    "head_variants": [
+      "cho thuê xe máy Hà Nội",
+      "thuê xe máy Hà Nội",
+      "thuê xe máy ở Hà Nội"
+    ],
+    "canonical_head_owner": "/",
+    "pricing_owner": "/gia-thue/",
+    "contact_owner": "/lien-he/",
+    "app_product_owner": "/agent/",
+    "note": "No keyword concession to sister sites. Each URL still owns a distinct search intent. The existing homepage remains unchanged until separately QA-reviewed and deployed; this config permits future intentional commercial retargeting. Do not clone/synonym-spin other domains, fabricate service areas, or promise ranking."
+  }
 }
