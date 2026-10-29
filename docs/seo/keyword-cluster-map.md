@@ -6,20 +6,21 @@
 ## Kiến trúc
 
 ```
-Trang chủ (Agent, chuyển đổi) ─┬─ /gia-thue/ · /lien-he/ · /chinh-sach/   (trang chuyển đổi)
+Trang chủ (thương mại + Agent, chuyển đổi) ─┬─ /gia-thue/ · /lien-he/ · /chinh-sach/   (trang chuyển đổi)
                                └─ /blog/ → 3 hub cụm → 6 hub danh mục → pillar họ chủ đề → bài hỗ trợ
 Bài hỗ trợ ↔ pillar ↔ các bài cùng họ  (khối "Cùng chủ đề")
 Bài ↔ bài gần nghĩa ngoài họ            (khối "Bài viết liên quan", cân bằng inbound)
 ```
 
-## Cụm từ khóa thương mại do website chị em sở hữu (không nhắm trực tiếp)
+## Chiến lược cạnh tranh thương mại được chủ sở hữu cho phép
 
-- **cho thuê xe máy Hà Nội** — https://thuexemaynguyentu.com/ và repo thuexemayhanoi/shop, thuexemayhanoi/vanchinh. Chính sách: không tạo landing/tiêu đề nhắm đúng cụm này; chỉ hỗ trợ bằng nội dung thông tin long-tail.
-- **thuê xe máy Hà Nội** — sister site. Chính sách: như trên.
-- **dịch vụ cho thuê xe máy Hà Nội** — sister site. Chính sách: như trên.
-- **thuê xe máy uy tín Hà Nội** — sister site. Chính sách: như trên; không tự xưng 'uy tín nhất'.
+- **cho thuê xe máy ở Hà Nội** — trang chủ / (URL sở hữu intent chính).
+- **cho thuê xe máy Hà Nội / thuê xe máy Hà Nội** — biến thể cùng intent, không lập thêm landing giống nhau.
+- **giá thuê xe máy Hà Nội** — /gia-thue/.
+- **ứng dụng thuê xe máy** — /agent/ và bài app liên quan.
+- Các cụm dài hạn, xe 50cc, điện và địa phương: xem docs/seo/commercial/SEO-COMMERCIAL-TARGETS.csv.
 
-Lý do: `config/seo-ownership.json` + `tests/unit/seo-ownership.test.js` bảo vệ chống cannibalization giữa các domain của cùng doanh nghiệp. Subdomain này hỗ trợ các cụm đó bằng nội dung thông tin long-tail và trang chuyển đổi (/gia-thue/, /lien-he/), không tạo landing trùng.
+Quyết định 29/10/2026: chủ sở hữu **không dành riêng từ khóa thương mại cho các domain khác**. MotoAI có quyền cạnh tranh, song vẫn cần tránh cannibalization **bên trong** repo (một search intent có một URL chủ lực). Ma trận cụ thể: docs/seo/commercial/README.md.
 
 ## Dữ liệu volume thật (không ước đoán)
 
@@ -27,8 +28,8 @@ Nguồn: Ubersuggest keyword_suggestions (Google Ads data), location Vietnam (lo
 
 | Từ khóa | Volume/tháng | SD | Cụm / chủ sở hữu | Ghi chú |
 |---|---:|---:|---|---|
-| thuê xe máy hà nội | 8100 | 12 | site chị em |  |
-| cho thuê xe máy hà nội | 1600 | 12 | site chị em |  |
+| thuê xe máy hà nội | 8100 | 12 | undefined |  |
+| cho thuê xe máy hà nội | 1600 | 12 | undefined |  |
 | thuê xe máy điện | 1000 | 9 | K08 |  |
 | cho thuê xe máy điện | 480 | 10 | K08 |  |
 | thuê xe máy điện vinfast | 390 | 9 | K08 | cần kiểm chứng xe VinFast trước khi nhắm |
@@ -38,7 +39,7 @@ Nguồn: Ubersuggest keyword_suggestions (Google Ads data), location Vietnam (lo
 | thuê xe máy điện không cần bằng lái | 0 | 4 | K09 |  |
 | giá thuê xe máy | — | — | K02 | công cụ không trả dữ liệu |
 
-Kết luận: cụm **xe máy điện (K08)** là cơ hội thương mại lớn nhất subdomain này được phép nhắm → hub `/blog/xe-dien/` nhận title "Thuê xe máy điện Hà Nội: …". Hai cụm đầu (8.100 và 1.600) thuộc site chị em nên không tạo landing trùng. Cần chạy thêm khi có quota/Search Console để phủ các cụm còn lại.
+Kết luận: từ khóa thương mại Hà Nội (bao gồm head, giá, xe điện, xe dài hạn) đều đủ điều kiện triển khai trên MotoAI. Volume lịch sử từ bên thứ ba chỉ dùng để ưu tiên nghiên cứu, không chứng minh vị trí hiện tại. Xem ma trận thương mại 2.006 URL và xác minh bằng Google Search Console khi có kết nối.
 
 ## Dịch vụ cần kiểm chứng trước khi tối ưu thương mại
 
