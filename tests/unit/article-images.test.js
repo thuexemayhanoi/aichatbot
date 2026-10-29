@@ -203,7 +203,7 @@ test('Vietnamese words that fold to the same ASCII are not confused', () => {
   assert.equal(family.people.id, 'family');
 });
 
-test('briefs never ask for scenes that fail image QA: EVs at a petrol pump, readable sums or chat text', () => {
+test('briefs never ask for scenes that fail image QA: EVs at a petrol pump, readable sums, chat text, badges or key logos', () => {
   const ev = sceneFor({ category: 'EV', title: 'Khác biệt xe điện và xe xăng', keyword: 'khác biệt xe điện và xe xăng', slug: 'khac-biet-xe-dien-va-xe-xang' });
   assert.equal(ev.vehicle.id, 'ev');
   assert.notEqual(ev.theme?.id, 'fuel');
@@ -211,6 +211,7 @@ test('briefs never ask for scenes that fail image QA: EVs at a petrol pump, read
     assert.ok(!(/electric/.test(r.prompt_en) && /refuel/.test(r.prompt_en)), `${r.article_id}: electric vehicle at a petrol pump`);
     assert.doesNotMatch(r.prompt_en, /handwritten|generic chat screen/, r.article_id);
     if (/certificate/.test(r.prompt_en)) assert.match(r.prompt_en, /no emblems, stamps or seals/, r.article_id);
+    assert.match(r.prompt_en, /badges, lettering or decals; keys plain with logo-free fobs/, r.article_id);
   }
 });
 

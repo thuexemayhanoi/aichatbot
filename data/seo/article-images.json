@@ -1193,7 +1193,7 @@
       "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404"
     },
     "BA-0041": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-ba-0041.webp",
       "source": "ai",
       "generator": {
@@ -1217,10 +1217,13 @@
       "dhash": "0d0d0d4fc30b2134",
       "dhash_of": "cc15adc309ee7b3705981cf031925f0336659a528bc7f2765968af8ea5352350",
       "alt": "Du khách ngồi bên bàn gỗ có chìa khóa xe, tấm thẻ trắng và tờ đơn kèm bút, nhìn ra con phố đông xe máy",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0042": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/dong-da-va-xe-may-ba-0042.webp",
       "source": "ai",
       "generator": {
@@ -1244,7 +1247,10 @@
       "dhash": "2e3d3f163d351713",
       "dhash_of": "8d830b6e091adc23e57c91482b10baf5457686e19a2b7b98f349d4fffdfbe4dc",
       "alt": "Người đội mũ bảo hiểm, đeo khẩu trang chạy xe tay ga xanh giữa dòng xe máy trên con phố nhiều mái hiên",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0043": {
       "status": "LIVE_VERIFIED",
@@ -1276,7 +1282,7 @@
       "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404"
     },
     "BA-0044": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thue-xe-50cc-ba-0044.webp",
       "source": "ai",
       "generator": {
@@ -1300,10 +1306,13 @@
       "dhash": "0f3f37a7ac686ccc",
       "dhash_of": "205ae0ed6024de2f137e46e242c2e232b7b861b9ede1189184640a8f2c7430f9",
       "alt": "Chiếc xe máy nhỏ kiểu xe cub màu xanh đậu ven đường bờ sông, trên yên có tờ đơn trắng và cây bút, lúc chiều muộn",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0045": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/huong-dan-su-dung-xe-may-dien-ba-0045.webp",
       "source": "ai",
       "generator": {
@@ -1327,10 +1336,13 @@
       "dhash": "1c8c543938306448",
       "dhash_of": "933d81545f1aa869b39ac26841ca2f0cda659fa98991a411c3eef00323be1a07",
       "alt": "Hai người đội mũ bảo hiểm ngồi trên xe máy điện đang cắm sạc bên vỉa hè cạnh công viên",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0046": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/dat-coc-the-nao-ba-0046.webp",
       "source": "ai",
       "generator": {
@@ -1354,10 +1366,13 @@
       "dhash": "1d1d4c1c0c1d1e1e",
       "dhash_of": "16d81b61116e575de7e6b7fdbb23afdddaec0918649a6be184951f06717c3506",
       "alt": "Phong bì giấy nâu và chìa khóa xe được trao qua quầy cho thuê, trên quầy có tờ đơn và bút, kệ phía sau xếp mũ bảo hiểm",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0047": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/idp-va-bang-lai-quoc-te-ba-0047.webp",
       "source": "ai",
       "generator": {
@@ -1381,10 +1396,13 @@
       "dhash": "4f0f1bcc0c469b63",
       "dhash_of": "fe1ea9d59824fdf248dc878cdffbeeff11a8c0d4832f13d20bcd02e25651a3a1",
       "alt": "Tay cầm tấm thẻ trắng bên quầy gỗ có chìa khóa xe, cuốn sổ đóng và máy tính bỏ túi, ngoài phố là dòng xe máy",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0048": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/thanh-xuan-duong-di-ba-0048.webp",
       "source": "ai",
       "generator": {
@@ -1408,7 +1426,10 @@
       "dhash": "2b63e5cc3533b313",
       "dhash_of": "a4235afeb49b4c88607995f5c470f90cd0de0dac59e3b48283ca01226cf58314",
       "alt": "Người đội mũ bảo hiểm xanh chạy xe tay ga trên đại lộ rộng giữa dòng xe máy, trời nhiều mây",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0050": {
       "status": "LIVE_VERIFIED",
@@ -1442,7 +1463,7 @@
       "live_verified": "2026-10-28"
     },
     "BA-0051": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/khac-biet-xe-dien-va-xe-xang-ba-0051.webp",
       "source": "ai",
       "generator": {
@@ -1466,10 +1487,13 @@
       "dhash": "0b0f2d2939397973",
       "dhash_of": "ea605d1566c6a2905769c6f1dd6fc49432f2120a4d59e055697ccb4c5c0712d6",
       "alt": "Tay nhấc khối pin đen khỏi cốp dưới yên xe máy điện đậu trên vỉa hè phố mới, lúc chiều muộn",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0052": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/nhan-lai-tien-coc-ba-0052.webp",
       "source": "ai",
       "generator": {
@@ -1493,10 +1517,13 @@
       "dhash": "0f066e4ed69f098f",
       "dhash_of": "7383ac22de873d4e906ef020b05bcd4c0c808880813e5d2df70737d19464f038",
       "alt": "Tờ đơn trắng, bút, chìa khóa xe và phong bì giấy nâu trên bàn gỗ của quầy cho thuê nhìn ra con phố đông xe máy",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0053": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/bao-hiem-khi-thue-xe-may-ba-0053.webp",
       "source": "ai",
       "generator": {
@@ -1520,10 +1547,13 @@
       "dhash": "0727960725e4e7eb",
       "dhash_of": "5cb5deb40c443d0bdb96185dd14a96456898355b6880dbe93eb131c76e688ad5",
       "alt": "Người phụ nữ đeo khẩu trang giải thích bên bàn có tấm giấy chứng nhận trong túi nhựa, cạnh chiếc xe số đậu trong ngõ",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0054": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/hai-ba-trung-hanh-trinh-ba-0054.webp",
       "source": "ai",
       "generator": {
@@ -1547,10 +1577,13 @@
       "dhash": "dacfe7f2953031b9",
       "dhash_of": "b54213adf76579472cdaae692e28bcb6b842a7e65808c540106af380d881bbd9",
       "alt": "Người đội mũ bảo hiểm cả đầu chạy xe tay ga đen trên con phố đông xe máy, hai bên là nhà ống có mái hiên",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0055": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/app-thue-xe-cho-khach-du-lich-ba-0055.webp",
       "source": "ai",
       "generator": {
@@ -1574,7 +1607,10 @@
       "dhash": "58c8da9f999d8f93",
       "dhash_of": "0426a20d13eb45ceef3ad0d5711d2c760839f66be06f329bac7102a0d8c08a0a",
       "alt": "Du khách ngồi ở bến xe nhắn tin trên điện thoại, cạnh bàn có cuốn sổ và máy tính bỏ túi, phía sau là xe tay ga đậu",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0057": {
       "status": "LIVE_VERIFIED",
@@ -1608,7 +1644,7 @@
       "live_verified": "2026-10-28"
     },
     "BA-0058": {
-      "status": "QA_PASSED",
+      "status": "LIVE_VERIFIED",
       "file": "assets/images/blog/chup-anh-xe-truoc-khi-nhan-ba-0058.webp",
       "source": "ai",
       "generator": {
@@ -1632,7 +1668,10 @@
       "dhash": "8e4e9e8aba333d37",
       "dhash_of": "9e982f5a674bef6194767277bd54a82a3e208705b00be4fe9fa370eef6196209",
       "alt": "Người thuê ngồi xem bánh và gầm chiếc xe số xanh trong ngõ nhỏ có chậu cây, người đội mũ bảo hiểm đứng bên cạnh",
-      "alt_reviewed": true
+      "alt_reviewed": true,
+      "commit": "55e274fd",
+      "live_verified": "2026-10-29",
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
     },
     "BA-0062": {
       "status": "LIVE_VERIFIED",
