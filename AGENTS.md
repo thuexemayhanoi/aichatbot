@@ -54,3 +54,16 @@
 `node --test` cho thay đổi engine/workflow/test. Content-only: QA scoped trong workflow, rồi production verify. Khi thay workflow, kiểm tra CI + Distribution + Pages đúng SHA và một bài mới chạy thực tế trước khi tuyên bố đã hoàn thành đầu-cuối.
 
 Xem thêm: `docs/CONTINUOUS-WRITER.md`, `docs/EXTERNAL-WRITER.md`, `docs/BLOG-FACTORY.md`.
+
+
+## Owner commercial SEO strategy — 2026-10-29 (OVERRIDES old sister-site exclusion)
+
+**New goal: rank this domain for “cho thuê xe máy ở Hà Nội” and other relevant Hanoi commercial keywords, aiming for positions 2–10 as a goal only, not a guarantee.** This repo is no longer prohibited from competing for commercial terms targeted by sister sites; config/seo-ownership.json v2 is authoritative. Distinct canonical intents remain protected within this domain: / for the rental head, /gia-thue/ for pricing, /lien-he/ for real local contact, /agent/ for WebApplication, plus focused hubs and articles.
+
+**Mandatory agent read order for SEO work:**
+1. docs/seo/commercial/README.md
+2. docs/seo/commercial/CLAUDE-SEO-AGENT.md
+3. docs/seo/commercial/SEO-COMMERCIAL-2006.csv and SEO-COMMERCIAL-TARGETS.csv (generated from actual published rows)
+4. docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx (13 tabs once the generator runs)
+
+**Execution:** SEO commercial work is a separate plan from the paused image factory. Keep all 2.006 published slugs, bodies, canonicals, app functions and sitemap intact until each approved per-URL SEO batch is QA-tested. No bulk title stuffing, duplicate location doorways, invented GSC traffic/ranks, fake prices or reviews. Existing single-writer, source-of-truth, protected body and legal gates are still binding. Run node tools/seo-commercial-matrix.mjs to update the CSV and python3 tools/seo-master-workbook.py for the owner Excel. On “Tiếp tục,” resume the last verified batch of up to 30 URLs, not an unbounded mass rewrite.
