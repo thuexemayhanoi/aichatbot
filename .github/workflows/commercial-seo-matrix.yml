@@ -6,6 +6,8 @@ on:
     paths:
       - 'tools/seo-commercial-matrix.mjs'
       - 'tools/seo-master-workbook.py'
+      - 'tools/seo-master-audit.mjs'
+      - 'data/seo/keyword-clusters.json'
       - 'config/seo-ownership.json'
       - 'docs/seo/commercial/README.md'
       - 'docs/seo/commercial/CLAUDE-SEO-AGENT.md'
@@ -51,6 +53,9 @@ jobs:
         run: |
           node tools/seo-commercial-matrix.mjs
           node tools/seo-commercial-matrix.mjs --check
+
+      - name: Refresh URL audit and formerly excluded keyword cluster report
+        run: node tools/seo-master-audit.mjs
 
       - name: Existing workbook dependency
         run: python3 -m pip install --disable-pip-version-check --quiet openpyxl
@@ -102,6 +107,8 @@ jobs:
           git add docs/seo/commercial/SEO-COMMERCIAL-SUMMARY.json
           git add docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx
           git add docs/seo/master-task/technical-audit.csv docs/seo/master-task/checkpoint.json
+          git add docs/seo/keyword-cluster-map.md
+          git add docs/seo/seo-master-matrix.csv docs/seo/seo-master-matrix.json docs/seo/seo-master-matrix.md
           if ! git diff --cached --quiet; then
             git commit -m "chore(seo): publish 2006-URL commercial Excel matrix [skip ci]"
             git push origin HEAD:main
