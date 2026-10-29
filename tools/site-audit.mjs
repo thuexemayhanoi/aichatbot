@@ -10,7 +10,7 @@ import { STATIC_DIRS } from './site-pages.mjs';
 // Static page dirs come from the one registry (config/site-pages.json).
 // v76: agent/ = the Agent chat app (full-screen chat moved off /).
 const PUBLIC_DIRS = ['assets', 'src', 'data', 'config', 'blog', 'agent', ...STATIC_DIRS];
-const PUBLIC_ROOTS = ['index.html', 'embed.js', 'manifest.webmanifest', 'service-worker.js', 'robots.txt', 'sitemap.xml', 'CNAME'];
+const PUBLIC_ROOTS = ['index.html', '404.html', 'embed.js', 'manifest.webmanifest', 'service-worker.js', 'robots.txt', 'sitemap.xml', 'CNAME'];
 const LEGACY_PATH = /\/aichatbot(?:\/|[?#]|$)/gi;
 const LEGACY_ORIGIN = /https?:\/\/thuexemayhanoi\.github\.io\/aichatbot(?:\/|[?#]|$)/gi;
 

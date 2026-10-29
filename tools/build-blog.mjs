@@ -504,7 +504,9 @@ ${latest || `          ${emptyNote('emptyBlog')}`}
   const description = fact(H.description);
   const schemaHtml = ldScript({
     '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE}#website`,
-    name: BLOG_UI.site.name, url: SITE, inLanguage: 'vi', publisher: { '@id': `${SITE}#organization` }
+    // Google site name: the concise brand as `name`, the descriptive title as `alternateName`.
+    name: BLOG_UI.site.shortName, alternateName: BLOG_UI.site.name,
+    url: SITE, inLanguage: 'vi', publisher: { '@id': `${SITE}#organization` }
   }) + ldScript({ '@context': 'https://schema.org', ...publisherSchema(business) })
     + ldScript({
       '@context': 'https://schema.org', '@type': 'WebPage', '@id': `${SITE}#webpage`,
@@ -970,6 +972,34 @@ ${askAgentAction(title)}`;
   write(`${dir}/index.html`, html);
 }
 
+/** 404.html — GitHub Pages serves it, with status 404, for every missing
+ *  URL at any depth: asset links are made root-absolute (the shell writes
+ *  them relative to the page), and there is no canonical/og:url (not a page
+ *  to index; robots noindex). Same shell, so header, menu and sidebar stay. */
+function buildNotFound(business) {
+  const title = 'Không tìm thấy trang';
+  const description = 'Đường dẫn này không còn hoặc chưa từng tồn tại trên MotoAI. Quay lại trang chủ, mở cẩm nang hoặc hỏi Agent để tìm đúng thông tin.';
+  const body = resolveFacts(read('data/site/not-found.body.html'), business);
+  const content = breadcrumb([CRUMB_HOME, { label: title, href: null }])
+    + screenHead({ label: t('kickerStatic'), title, lead: description })
+    + `      <div class="blog-grid blog-legal-grid">
+${body.trim().split('\n').join('\n')}
+      </div>
+`;
+  const html = appShellPage({
+    title: `${title} — MotoAI`,
+    description,
+    path: '',
+    screen: 'not-found',
+    contentHtml: content,
+    headHtml: '  <meta name="robots" content="noindex">\n'
+  })
+    .replace(/  <link rel="canonical"[^\n]*\n/, '')
+    .replace(/  <meta property="og:url"[^\n]*\n/, '')
+    .replace(/\b(href|src)="(?![a-z][a-z0-9+.-]*:|\/|#)/gi, '$1="/');
+  write('404.html', html);
+}
+
 /** Parse the matrix CSV into { article_id -> row } (schema untouched). */
 function matrixRows() {
   const lines = read('data/blog/content-matrix.csv').split('\n');
@@ -1063,6 +1093,7 @@ export function build() {
     if (page.kind === 'price') buildPrice(page, business);
     else buildLegal(page, business);
   }
+  buildNotFound(business);
 
   // Search index (compact; only published; cluster/subtopic/location aware).
   write('blog/search-index.json', JSON.stringify({

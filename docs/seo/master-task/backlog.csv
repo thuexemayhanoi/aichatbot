@@ -20,4 +20,4 @@ MT-P4-04,P4 SEO Optimization,—,P2,MT-P2-01,PENDING,—,seo-score/battle matrix
 MT-P4-05,P4 SEO Optimization,—,P2,MT-P2-01,PENDING,—,"Lighthouse CI (staticDistDir, upload filesystem, 6 URL mẫu) — đo CWV trong CI",,,2026-10-28
 MT-P4-06,P4 SEO Optimization,—,P2,MT-P2-01,PENDING,—,Cổng gần-trùng nội dung (shingle) trong article-qa.mjs — phòng scaled content abuse,,,2026-10-28
 MT-P4-07,P4 SEO Optimization,—,P2,MT-P1-01,PENDING,—,Ảnh responsive (srcset 600/900/1200) + ảnh 16:9/4:3/1:1 cho Article.image khi đủ ảnh,,,2026-10-28
-MT-P4-08,P4 SEO Optimization,—,P2,MT-P2-01,PENDING,—,"Trang 404.html; WebSite name/alternateName; kiểm link ngoài định kỳ (lychee, không chặn publish)",,,2026-10-28
+MT-P4-08,P4 SEO Optimization,—,P2,MT-P2-01,IN_PROGRESS,"404.html cùng shell (link/asset tuyệt đối từ gốc, noindex, không canonical; kiểm ở độ sâu bất kỳ desktop + mobile, 0 request lỗi) + WebSite name ""MotoAI"" / alternateName tên mô tả trên trang chủ; test not-found + site-home-v3","Kiểm link ngoài định kỳ (lychee, không chặn publish)",,,2026-10-29

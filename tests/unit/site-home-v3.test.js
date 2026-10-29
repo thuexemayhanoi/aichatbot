@@ -143,6 +143,9 @@ test('shop facts come only from business.json — no price, deposit or policy in
 test('schema: WebSite + Organization + WebPage; the WebApplication is declared once, on /agent/', () => {
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
   assert.deepEqual(ld.map((o) => o['@type']).sort(), ['Organization', 'WebPage', 'WebSite'].sort());
+  const site = ld.find((o) => o['@type'] === 'WebSite');
+  assert.equal(site.name, 'MotoAI', 'Google site name: the concise brand');
+  assert.equal(site.alternateName, 'MotoAI — Cẩm nang thuê xe máy & xe điện');
   const page = ld.find((o) => o['@type'] === 'WebPage');
   assert.equal(page.url, SITE);
   assert.equal(page.mainEntity['@id'], `${SITE}agent/#app`);
