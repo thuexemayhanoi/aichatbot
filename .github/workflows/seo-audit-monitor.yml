@@ -65,6 +65,15 @@ jobs:
             echo "::warning::docs/seo/legal-citations.md is stale - run node tools/seo-legal-citations.mjs and commit"
           fi
 
+      - name: External link check (bodies; warns, never fails)
+        if: always()
+        run: |
+          node --test tests/unit/external-links.test.js
+          node tools/external-links.mjs --json > external-links.json || true
+          if test -s external-links.json; then
+            node -e 'const r=require("./external-links.json"); for (const x of r.results) { if (x.verdict==="BROKEN") console.log("::warning::External link "+x.status+": "+x.url+" in "+x.sources.join(", ")); else if (x.verdict==="MOVED") console.log("::warning::External link now redirects to "+x.final+" (cited document gone): "+x.url+" in "+x.sources.join(", ")); else if (x.verdict==="UNREACHABLE") console.log("::notice::External link not reachable from the runner ("+(x.status??x.error)+"): "+x.url); }'
+          fi
+
       - name: Matrix/sitemap publication coverage
         run: node tools/seo-index-coverage.mjs --json > seo-index-coverage.json
 
@@ -104,6 +113,9 @@ jobs:
           if test -s seo-legal-citations.txt; then
             echo "Legal citations: $(cat seo-legal-citations.txt | tr '\n' ' ')" >> "$GITHUB_STEP_SUMMARY"
           fi
+          if test -s external-links.json; then
+            node -e 'const r=require("./external-links.json"); console.log("External links: "+r.checked+" checked, "+r.ok+" OK, "+r.broken+" BROKEN (404/410), "+r.moved+" MOVED (redirect to home/listing), "+r.unreachable+" not reachable from the runner")' >> "$GITHUB_STEP_SUMMARY"
+          fi
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "HTTP crawlability is not evidence of actual Google/Bing indexing or Core Web Vitals field data." >> "$GITHUB_STEP_SUMMARY"
 
@@ -121,5 +133,6 @@ jobs:
             seo-engine.txt
             seo-battle-matrix.txt
             seo-legal-citations.txt
+            external-links.json
           if-no-files-found: warn
           retention-days: 14
