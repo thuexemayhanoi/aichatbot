@@ -225,13 +225,13 @@ test('Agent app (/agent/) owns the national APP intent; no generic rental landin
   assert.match(html, /class="motoai-seo"/);
   assert.ok(html.indexOf('id="motoai-app"') < html.indexOf('class="motoai-seo"'), 'chatbot renders before the SEO copy');
   const ownership = JSON.parse(read('config/seo-ownership.json'));
-  for (const kw of ownership.owned_keywords.slice(0, 4)) {
+  for (const kw of ['app thuê xe máy', 'ứng dụng thuê xe máy', 'app thuê xe điện', 'ứng dụng thuê xe máy điện']) {
     assert.ok(html.toLowerCase().includes(kw.split(' ').slice(-4).join(' ').toLowerCase()) || kw.includes('digital'), `Agent app should reference the owned intent (${kw})`);
   }
-  // Protected commercial intent must not be the app or homepage title.
-  for (const page of ['agent/index.html', 'index.html']) {
-    assert.ok(!/<title>[^<]*thuê xe máy hà nội/i.test(read(page)), `${page}: title must not cannibalize the generic local rental intent`);
-  }
+  // The Agent owns APP/WEB APPLICATION intent; the homepage may separately
+  // own the commercial Hanoi rental head under the 2026-10-29 policy.
+  assert.ok(!/<title>[^<]*thuê xe máy hà nội/i.test(read('agent/index.html')),
+    'Agent remains an app page instead of a duplicate generic rental homepage');
 });
 
 test('Agent app schema is WebApplication (never a native app) with verified org facts', () => {
@@ -245,9 +245,11 @@ test('Agent app schema is WebApplication (never a native app) with verified org 
   assert.ok(html.includes(business.hours.display), 'schema/FAQ matches verified hours');
 });
 
-test('cross-repository protected keywords are declared and enforced', () => {
+test('owner-approved full commercial strategy preserves the app identity and docs', () => {
   const ownership = JSON.parse(read('config/seo-ownership.json'));
-  assert.ok(ownership.protected_commercial_intents.length >= 2);
+  assert.equal(ownership.protected_commercial_intents.length, 0);
+  assert.equal(ownership.commercial_owner_policy.target_head, 'cho thuê xe máy ở Hà Nội');
+  assert.equal(ownership.commercial_owner_policy.canonical_head_owner, '/');
   assert.ok(existsSync(join(ROOT, 'docs/SEO-OWNERSHIP.md')));
   const doc = read('docs/SEO-OWNERSHIP.md');
   assert.ok(doc.includes('aichatbot'));

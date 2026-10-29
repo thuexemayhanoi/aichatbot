@@ -7,9 +7,9 @@ import { taxonomy } from '../../tools/taxonomy.mjs';
 import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
 
 /**
- * v63.1 SEO OWNERSHIP GATE — enforces config/seo-ownership.json:
- *   - cross-repository protected commercial intents never become an exact
- *     <title>/<h1> of any page in THIS repository (anti-cannibalization);
+ * v81 OWNER COMMERCIAL STRATEGY — enforces config/seo-ownership.json:
+ *   - the owner has lifted cross-repository commercial keyword exclusion;
+ *     intent ownership within THIS repository still avoids duplication;
  *   - the Agent app (/agent/, v76) keeps the APP / WEB APPLICATION / DIGITAL
  *     RENTAL ASSISTANT identity (owned keywords, WebApplication schema, no
  *     native-app claims); the homepage targets the owned "trợ lý / ứng dụng
@@ -33,13 +33,16 @@ const SITE_PAGES = [
 const ownership = JSON.parse(read('config/seo-ownership.json'));
 const PROTECTED = ownership.protected_commercial_intents.map((k) => k.keyword.toLowerCase());
 
-test('seo-ownership config: protected intents + owned APP identity are declared', () => {
-  assert.ok(ownership.primary_identity.includes('APP'), 'primary identity stays APP/WEB APPLICATION');
-  assert.ok(PROTECTED.length >= 2, 'both cross-repo commercial intents are protected');
-  assert.ok(ownership.owned_keywords.length >= 4, 'owned keyword family declared');
+test('owner-approved commercial strategy is declared without removing Agent identity', () => {
+  assert.ok(ownership.primary_identity.includes('APP'), 'Agent remains a supporting product');
+  assert.equal(PROTECTED.length, 0, 'commercial head queries no longer ceded to sister sites');
+  assert.equal(ownership.commercial_owner_policy.target_head, 'cho thuê xe máy ở Hà Nội');
+  assert.equal(ownership.commercial_owner_policy.canonical_head_owner, '/');
+  assert.equal(ownership.commercial_owner_policy.pricing_owner, '/gia-thue/');
+  assert.equal(ownership.commercial_owner_policy.app_product_owner, '/agent/');
 });
 
-test('anti-cannibalization: protected commercial keywords are never an exact title or H1', () => {
+test('old excluded commercial keywords are not globally protected; keep unique article titles', () => {
   for (const p of SITE_PAGES) {
     const html = read(p);
     const title = (/<title>([^<]*)<\/title>/.exec(html)?.[1] ?? '').toLowerCase().trim();
@@ -60,7 +63,7 @@ test('Agent app identity (/agent/): owned APP keywords + WebApplication schema, 
   assert.match(html, /<title>[^<]*Ứng dụng thuê xe máy/i);
   assert.ok(html.includes('"@type": "WebApplication"'), 'WebApplication schema');
   const lower = html.toLowerCase();
-  for (const kw of ownership.owned_keywords.slice(0, 4)) {
+  for (const kw of ['app thuê xe máy', 'ứng dụng thuê xe máy', 'app thuê xe điện', 'ứng dụng thuê xe máy điện']) {
     assert.ok(lower.includes(kw.toLowerCase()) || kw.includes('digital'),
       `Agent app references the owned intent: ${kw}`);
   }
@@ -72,8 +75,10 @@ test('v76 homepage identity: owned assistant/app intent in title + H1, one WebAp
   const lower = html.toLowerCase();
   const title = /<title>([^<]*)<\/title>/.exec(html)[1].toLowerCase();
   const h1 = /<h1[^>]*>([^<]*)<\/h1>/.exec(html)[1].toLowerCase();
-  assert.ok(title.includes('ứng dụng thuê xe máy') || title.includes('trợ lý'), 'title targets the owned app/assistant intent');
-  assert.ok(h1.includes('trợ lý thuê xe máy'), 'H1 targets the owned "trợ lý thuê xe máy" intent');
+  assert.ok(title.includes('ứng dụng thuê xe máy') || title.includes('trợ lý') || title.includes('cho thuê xe máy'),
+    'homepage may target old Agent intent or owner-approved commercial query');
+  assert.ok(h1.includes('trợ lý thuê xe máy') || h1.includes('cho thuê xe máy'),
+    'homepage has helpful rental/assistant H1');
   for (const kw of ['trợ lý thuê xe máy', 'ứng dụng thuê xe máy', 'app thuê xe máy', 'app thuê xe điện']) {
     assert.ok(lower.includes(kw), `homepage references the owned intent: ${kw}`);
   }

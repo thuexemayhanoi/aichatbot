@@ -17,7 +17,7 @@ Reads ONLY committed sources of truth (never edits them):
 Writes:
   docs/seo/master-task/technical-audit.csv     per-URL technical audit
   docs/seo/master-task/checkpoint.json         dashboard + next batch (resume)
-  docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx    9 sheets for the owner
+  docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx    13 sheets for the owner
 
 Deterministic: workbook timestamps come from the checkpoint date, so the same
 inputs give the same workbook content.
@@ -390,6 +390,26 @@ def build(date):
           [[r[k] for k in ['run_id', 'start', 'end', 'baseline_sha', 'batch_ids', 'files_changed', 'image_count', 'seo_count',
                             'qa_result', 'commit_sha', 'deploy_result', 'remaining_work', 'next_checkpoint']] for r in log],
           {'Files Changed': 40, 'QA Result': 40, 'Remaining Work': 40, 'Batch IDs': 30})
+    # Commercial search strategy is a separate planning layer. It does not
+    # modify published page metadata or override editorial/legal review gates.
+    commercial = read_csv('docs/seo/commercial/SEO-COMMERCIAL-2006.csv')
+    commercial_targets = read_csv('docs/seo/commercial/SEO-COMMERCIAL-TARGETS.csv')
+    commercial_arch = read_csv('docs/seo/commercial/SEO-COMMERCIAL-ARCHITECTURE.csv')
+    commercial_dashboard = read_csv('docs/seo/commercial/SEO-COMMERCIAL-DASHBOARD.csv')
+    if len(commercial) != len(published):
+        raise ValueError('Commercial matrix not generated or mismatched published manifest; run node tools/seo-commercial-matrix.mjs')
+    def commercial_sheet(name, records, preferred=None):
+        if not records:
+            raise ValueError('Empty commercial matrix: ' + name)
+        fields = list(records[0].keys())
+        sheet(name, fields, [[r.get(k, '') for k in fields] for r in records],
+              preferred or {'url': 55, 'owner_url': 55, 'proposed_title': 55,
+                             'proposed_primary': 38, 'secondary_keywords': 55,
+                             'next_action': 60, 'notes': 50})
+    commercial_sheet('COMMERCIAL SEO 2006', commercial)
+    commercial_sheet('COMMERCIAL TARGETS', commercial_targets)
+    commercial_sheet('COMMERCIAL ARCH', commercial_arch)
+    commercial_sheet('COMMERCIAL DASH', commercial_dashboard)
     wb.save(p(XLSX))
     normalize_zip(p(XLSX), fixed)
 
