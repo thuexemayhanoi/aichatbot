@@ -57,6 +57,8 @@ khác repo: repo thắng, xuất lại workbook.
    → ảnh sai thì tạo lại; ảnh đạt thì `attach BA-xxxx --alt "<mô tả đúng cái nhìn thấy>"`.
 6. `python3 tools/image-factory.py qa` (gate `node tools/article-images.mjs --check`: WebP, kích thước,
    dung lượng, sha256, dHash cận trùng, ALT, bản responsive 600w/900w) → QA_PASSED.
+   Gate in dự báo dung lượng ảnh khi đủ mọi bài (trung bình bộ ảnh × số bài) và cảnh báo khi vượt
+   ngân sách 650 MB (`SPEC.storageBudget`; site GitHub Pages giới hạn 1 GB, phần ngoài ảnh ≈ 175 MB).
 7. `node tools/build-blog.mjs` → `node --test` → `node tools/site-audit.mjs` → `node tools/seo-score.mjs`.
 8. Commit + push → PR → CI xanh → merge → `python3 tools/image-factory.py deployed <sha>` →
    sau khi Pages build: `python3 tools/image-factory.py live` (hoặc kiểm tra bằng fetch bên ngoài nếu

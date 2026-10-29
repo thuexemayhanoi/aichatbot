@@ -47,6 +47,10 @@ export const SPEC = Object.freeze({
    *  hero renders at ~90vw on phones and 700 px from 780 px up. */
   variants: Object.freeze([600, 900]),
   sizes: '(max-width: 780px) 90vw, 700px',
+  /** Projected bytes of every article's image set (master + copies) at full
+   *  coverage. GitHub Pages sites are limited to 1 GB and the rest of the site
+   *  is ~175 MB, so 650 MB keeps the deploy artifact well clear of it. */
+  storageBudget: 650 * 1024 * 1024,
   /** Minimum dHash Hamming distance between two different articles' images. */
   minDistance: 10,
   altMin: 15,
@@ -217,7 +221,15 @@ export function auditRegistry(registry, { plan = [], articles = null, root = ROO
       if (d < SPEC.minDistance) errors.push(`${hashes[i][0]} ~ ${hashes[j][0]}: near-duplicate (dHash distance ${d} < ${SPEC.minDistance})`);
     }
   }
-  return { errors, warnings: warn, counts, total: Object.keys(registry.images ?? {}).length };
+  // Storage budget: average image-set size so far, projected over every article.
+  const sets = Object.values(registry.images ?? {}).filter((e) => atLeast(e.status, 'IMAGE_OPTIMIZED') && e.bytes);
+  const projectedBytes = articles && sets.length
+    ? Math.round(sets.reduce((n, e) => n + e.bytes + Object.values(e.variants ?? {}).reduce((m, v) => m + (v.bytes ?? 0), 0), 0) / sets.length * articles.size)
+    : null;
+  if (projectedBytes > SPEC.storageBudget) {
+    warn.push(`projected ${Math.round(projectedBytes / 2 ** 20)} MB of article images for ${articles.size} articles exceeds the ${SPEC.storageBudget / 2 ** 20} MB budget (GitHub Pages sites are limited to 1 GB): lower the WebP quality target`);
+  }
+  return { errors, warnings: warn, counts, total: Object.keys(registry.images ?? {}).length, projectedBytes };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
@@ -230,5 +242,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     for (const e of result.errors) console.error(`FAIL ${e}`);
     process.exit(1);
   }
-  if (process.argv.includes('--check')) console.log(`image registry OK: ${result.total} entries ${JSON.stringify(result.counts)}`);
+  if (process.argv.includes('--check')) {
+    console.log(`image registry OK: ${result.total} entries ${JSON.stringify(result.counts)}`);
+    if (result.projectedBytes) console.log(`projected article images at full coverage: ${Math.round(result.projectedBytes / 2 ** 20)} MB (budget ${SPEC.storageBudget / 2 ** 20} MB)`);
+  }
 }

@@ -173,6 +173,16 @@ test('responsive 600w/900w copies must be registered, 3:2, current with the mast
   assert.match(audit({ ...e.variants, 600: { bytes: ai.length, sha256: sha(ai), of: sha(ai) } }), /600w\.webp: size 1200×800, expected 600×400/);
 });
 
+test('the gate warns when the average image set, projected over every article, outgrows the storage budget', () => {
+  const set = (bytes, copy) => ({ status: 'IMAGE_OPTIMIZED', file: 'assets/images/blog/missing.webp', bytes, variants: { 600: { bytes: copy }, 900: { bytes: copy } } });
+  const articles = new Set(Array.from({ length: 2000 }, (_, i) => `BA-${String(i + 1).padStart(4, '0')}`));
+  const light = auditRegistry({ images: { 'BA-0001': set(114 * 1024, 48 * 1024) } }, { articles });
+  assert.equal(light.projectedBytes, 2000 * 210 * 1024);
+  assert.ok(!light.warnings.some((w) => /budget/.test(w)));
+  const heavy = auditRegistry({ images: { 'BA-0001': set(290 * 1024, 30 * 1024), 'BA-0002': set(280 * 1024, 30 * 1024) } }, { articles });
+  assert.match(heavy.warnings.join('\n'), /projected 674 MB of article images for 2000 articles exceeds the 650 MB budget/);
+});
+
 test('a rendered image lists its responsive copies in srcset only when they all exist', () => {
   const e = { status: 'QA_PASSED', file: 'assets/images/blog/s-ba-0041.webp', width: 1200, height: 800, alt: 'Xe tay ga đỗ cạnh hồ', source: 'ai',
     variants: { 600: {}, 900: {} } };
@@ -287,6 +297,12 @@ test('an article image replaces the site icon in og/twitter tags; pages without 
   const card = readFileSync(join(ROOT, 'assets/images/og/motoai-share.png'));
   assert.equal(card.readUInt32BE(16), 1200);
   assert.equal(card.readUInt32BE(20), 630);
+  // The Agent page (own template) shares the same card.
+  const agent = readFileSync(join(ROOT, 'agent/index.html'), 'utf8');
+  assert.match(agent, new RegExp(`<meta property="og:image" content="${SITE}assets/images/og/motoai-share\\.png">`));
+  assert.match(agent, /<meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">/);
+  assert.match(agent, /<meta name="twitter:card" content="summary_large_image">/);
+  assert.match(agent, new RegExp(`<meta name="twitter:image" content="${SITE}assets/images/og/motoai-share\\.png">`));
 });
 
 test('built articles without a QA_PASSED image carry no featured figure; the service worker skips article images', () => {

@@ -44,3 +44,17 @@ test('every audited page exists and every issue names a page or site', () => {
   for (const issue of result.issues) {
     assert.match(issue, /^(index\.html|blog\/[\w./-]*|privacy\/index\.html|terms\/index\.html|gioi-thieu\/index\.html|chinh-sach\/index\.html|lien-he\/index\.html|gia-thue\/index\.html|site): /, `unattributed issue: ${issue}`);
   }});
+
+test('FAQ is scored as visible Q&A: FAQPage is optional but may only mirror questions on the page', async () => {
+  // Google stopped showing FAQ rich results on 2026-05-07 (Search Central updates).
+  const { scoreRepo } = await import('../../tools/seo-score.mjs');
+  const { createSiteIo } = await import('../../tools/site-audit.mjs');
+  const io = createSiteIo(ROOT);
+  const changed = (path, transform) => ({ ...io, read: (p) => p === path ? transform(io.read(p)) : io.read(p) });
+  const issues = (r) => r.issues.filter((i) => /FAQPage|Q&A on the Agent/.test(i));
+  assert.deepEqual(issues(scoreRepo(io)), []);
+  const hidden = scoreRepo(changed('agent/index.html', (s) => s.replace(/("@type":\s*"Question",\s*"name":\s*")[^"]+/, '$1Câu hỏi không có trên trang?')));
+  assert.deepEqual(issues(hidden), ['agent/index.html: FAQPage questions not visible on the page']);
+  const noVisible = scoreRepo(changed('agent/index.html', (s) => s.replace(/<summary>[^<]*\?<\/summary>/g, '<summary>Xem thêm</summary>')));
+  assert.ok(issues(noVisible).includes('site: no visible Q&A on the Agent page'));
+});
