@@ -15,6 +15,13 @@
       "width": 512,
       "height": 512,
       "alt": "MotoAI — Trợ lý thuê xe máy"
+    },
+    "shareImage": {
+      "note": "Default og:image / twitter image for pages without an article image (1200×630, tools/og-share-card.mjs). ogImage stays the square logo (Organization.logo, Article.image fallback).",
+      "path": "assets/images/og/motoai-share.png",
+      "width": 1200,
+      "height": 630,
+      "alt": "MotoAI — trợ lý và cẩm nang thuê xe máy, xe điện tại Hà Nội"
     }
   },
   "features": {

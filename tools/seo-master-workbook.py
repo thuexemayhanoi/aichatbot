@@ -37,6 +37,9 @@ from datetime import datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MT = 'docs/seo/master-task'
+# Homepage images are tracked apart from article images (owner 2026-10-29).
+HOME_IMAGES = ('0 ảnh cần cho bố cục: homepage Apple V3 không có ô ảnh (0 <img>, 0 background-image, '
+               'kiểm 2026-10-29); ảnh chia sẻ og:image hiện là icon 512×512 — xem MT-P1-02')
 XLSX = 'docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx'
 SITE = 'https://chatbot.thuexemaynguyentu.com/'
 STATUSES = ['IMAGE_GENERATED', 'IMAGE_OPTIMIZED', 'IMAGE_ATTACHED', 'QA_PASSED', 'DEPLOYED', 'LIVE_VERIFIED']
@@ -197,13 +200,15 @@ def build(date):
     at_least = lambda s: sum(1 for e in registry.values() if rank(e['status']) >= rank(s))
     target = [r for r in plan if r['scope'] == 'TARGET']
     pending_ids = [r['article_id'] for r in target if r['article_id'] not in registry]
+    # Owner 2026-10-29: all 2.006 published articles get an image (EXTRA after the base 2.000).
+    pending_all = pending_ids + [r['article_id'] for r in plan if r['scope'] != 'TARGET' and r['article_id'] not in registry]
     pub_matrix = sum(1 for r in matrix.values() if r['status'] == 'PUBLISHED')
     review_open = sum(1 for r in review if r.get('status') == 'OPEN')
     reviews_needed = sum(1 for r in seo if r.get('Content Review') == 'REVIEW')
     head = git('rev-parse', '--short', 'HEAD')
     tech_open = sum(1 for r in tech if r.get('Repair Status') == 'OPEN')
     blocked = [r for r in backlog if r['status'] == 'BLOCKED']
-    next_batch = (blocked[0]['next_required_step'] if blocked else '') or ', '.join(pending_ids[:10])
+    next_batch = (blocked[0]['next_required_step'] if blocked else '') or ', '.join(pending_all[:10])
     # The size standard is read from the QA gate itself so the sheet can never drift from it.
     gate = open(p('tools/article-images.mjs'), encoding='utf-8').read()
     max_kb = int(re.search(r'maxBytes: (\d+) \* 1024', gate).group(1))
@@ -216,7 +221,8 @@ def build(date):
         ('Tổng bài thực tế (manifest published.json)', len(published)),
         ('Tổng hàng PUBLISHED trong content-matrix.csv', pub_matrix),
         ('Tổng bài mục tiêu ảnh (BA-0001…BA-2000)', len(target)),
-        ('Bài ngoài mục tiêu (BA-2001+, scope EXTRA)', len(plan) - len(target)),
+        ('Bài bổ sung (BA-2001+, scope EXTRA)', len(plan) - len(target)),
+        ('Tổng ảnh bài viết cần tạo (2.000 nền + bổ sung; chủ sở hữu 2026-10-29)', len(plan)),
         ('Ảnh đã tạo (≥ IMAGE_GENERATED)', at_least('IMAGE_GENERATED')),
         ('Ảnh đã nén WebP (≥ IMAGE_OPTIMIZED)', at_least('IMAGE_OPTIMIZED')),
         ('Ảnh đã gắn ALT (≥ IMAGE_ATTACHED)', at_least('IMAGE_ATTACHED')),
@@ -224,6 +230,8 @@ def build(date):
         ('Ảnh đã deploy (≥ DEPLOYED)', at_least('DEPLOYED')),
         ('Ảnh đã live verify (LIVE_VERIFIED)', st.get('LIVE_VERIFIED', 0)),
         ('Bài mục tiêu chưa có ảnh', len(pending_ids)),
+        ('Bài chưa có ảnh (toàn bộ bài đã đăng)', len(pending_all)),
+        ('Ảnh trang chủ (ghi riêng, không tính vào ảnh bài viết)', HOME_IMAGES),
         ('Tiêu chuẩn ảnh (Image SEO V2)',
          f'WebP 1200×800; 100–{max_kb} KB, ưu tiên {pref.group(1)}–{pref.group(2)} KB; tối đa {max_kb} KB; '
          'dưới 100 KB vẫn hợp lệ nếu sắc nét (không độn dung lượng)'),
@@ -256,7 +264,7 @@ def build(date):
             'DEPLOYED' if rank(s) >= rank('DEPLOYED') else 'PENDING',
             'LIVE_VERIFIED' if s == 'LIVE_VERIFIED' else 'PENDING',
             e.get('commit', ''), e.get('generator', {}).get('generated_at', '') if e else '',
-            e.get('notes', '') or ('ngoài 2.000 mục tiêu' if r['scope'] == 'EXTRA' else ''),
+            e.get('notes', '') or ('bài bổ sung (BA-2001+), trong phạm vi ảnh từ 2026-10-29' if r['scope'] == 'EXTRA' else ''),
         ])
 
     # ---- SEO URL master ----
@@ -385,6 +393,12 @@ def build(date):
     wb.save(p(XLSX))
     normalize_zip(p(XLSX), fixed)
 
+    # Latest live verification: the deploy commit that sits furthest down main's history.
+    live = {e['commit']: e for e in registry.values() if e.get('live_evidence') and e.get('commit')}
+    depth = lambda sha: int(git('rev-list', '--count', sha) or 0)
+    last = max(live, key=depth, default=None)
+    last_deploy = {'commit': last, 'live_verified': live[last]['live_verified'], 'evidence': live[last]['live_evidence'],
+                   'ids': sorted(i for i, e in registry.items() if e.get('commit') == last)} if last else None
     checkpoint = {
         '$schema': 'motoai/master-task-checkpoint@1',
         'task': 'MOTOAI IMAGE FACTORY 2000 + GITHUB EXPERT SEO SKILLS + FULL WEBSITE SEO',
@@ -394,6 +408,13 @@ def build(date):
         'dashboard': {k: v for k, v in dashboard},
         'image_status_counts': {s: st.get(s, 0) for s in STATUSES},
         'next_batch': next_batch,
+        'articles': len(plan),
+        'without_image': len(pending_all),
+        'next_ids': pending_all[:25],
+        # IDs rejected at visual QA (named in errors.csv) that still have no image.
+        'rejected_pending_regeneration': sorted({i for row in errors for i in re.findall(r'BA-\d{4}', ' '.join(row.values()))
+                                                 if i in {r['article_id'] for r in plan} and i not in registry}),
+        'last_deploy': last_deploy,
         'blocked': [{'task': r['task_id'], 'issue': r['blocking_issue']} for r in blocked],
         'open_review_required': [r['review_id'] for r in review if r.get('status') == 'OPEN'],
         'resume': 'docs/seo/master-task/README.md',

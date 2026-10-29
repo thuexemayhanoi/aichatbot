@@ -238,9 +238,15 @@ test('an article image replaces the site icon in og/twitter tags; pages without 
   assert.match(withImg, /<meta property="og:image:width" content="1200">/);
   assert.match(withImg, /<meta property="og:image:alt" content="Xe máy điện cắm sạc">/);
   assert.match(withImg, /<meta name="twitter:card" content="summary_large_image">/);
+  // Pages without their own image share the 1200×630 brand card, not the square logo.
   const plain = pageHead({ title: 'T', description: 'D', path: 'blog/' });
-  assert.match(plain, /<meta name="twitter:card" content="summary">/);
-  assert.match(plain, /og:image" content="[^"]*icon-512\.png"/);
+  assert.match(plain, /<meta name="twitter:card" content="summary_large_image">/);
+  assert.match(plain, new RegExp(`og:image" content="${SITE}assets/images/og/motoai-share\\.png"`));
+  assert.match(plain, /<meta property="og:image:width" content="1200">/);
+  assert.match(plain, /<meta property="og:image:height" content="630">/);
+  const card = readFileSync(join(ROOT, 'assets/images/og/motoai-share.png'));
+  assert.equal(card.readUInt32BE(16), 1200);
+  assert.equal(card.readUInt32BE(20), 630);
 });
 
 test('built articles without a QA_PASSED image carry no featured figure; the service worker skips article images', () => {

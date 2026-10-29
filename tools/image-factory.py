@@ -304,9 +304,14 @@ def cmd_status(_a):
     counts = {s: 0 for s in STATUSES}
     for e in reg['images'].values():
         counts[e['status']] = counts.get(e['status'], 0) + 1
+    # Owner 2026-10-29: every published article gets an image — the 2.000 base
+    # IDs first, then the EXTRA rows (BA-2001+), each in plan order.
     pending = [i for i, r in plan.items() if r['scope'] == 'TARGET' and i not in reg['images']]
-    print(json.dumps({'registry': len(reg['images']), 'counts': counts,
-                      'target_without_image': len(pending), 'next': pending[:10]}, ensure_ascii=False, indent=2))
+    extra = [i for i, r in plan.items() if r['scope'] != 'TARGET' and i not in reg['images']]
+    print(json.dumps({'registry': len(reg['images']), 'counts': counts, 'articles': len(plan),
+                      'target_without_image': len(pending), 'extra_without_image': len(extra),
+                      'without_image': len(pending) + len(extra), 'next': (pending + extra)[:10]},
+                     ensure_ascii=False, indent=2))
 
 
 def main():

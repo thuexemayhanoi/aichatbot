@@ -3,6 +3,13 @@
 Hồ sơ phục hồi nhiệm vụ qua nhiều phiên. Khi chủ sở hữu gửi **"Tiếp tục"** =
 *RESUME MASTER TASK FROM THE LATEST VERIFIED GITHUB CHECKPOINT*.
 
+**Phạm vi (MASTER COMMAND 2026-10-29):** ảnh riêng cho **cả 2.006 bài đã đăng** — 2.000 bài nền
+(BA-0001…BA-2000) trước, rồi 6 bài bổ sung (BA-2001+). Chạy lô liên tục, không hỏi lại giữa các lô;
+khi công cụ tạo ảnh hết hạn mức thì làm tiếp phần QA/deploy/xác minh còn làm được, ghi checkpoint
+(`checkpoint.json → next_ids`, `rejected_pending_regeneration`, `last_deploy`) rồi dừng. Không tự phát
+sinh chi phí (Weave của Figma tính tín dụng theo từng lượt cần chủ sở hữu duyệt — không dùng tự động).
+Ảnh trang chủ ghi riêng (MT-P1-02), không tính vào ảnh bài viết.
+
 ## Nguồn sự thật (đọc theo thứ tự)
 
 | Tệp | Vai trò |
