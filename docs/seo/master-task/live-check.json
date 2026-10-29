@@ -4,8 +4,8 @@
   "checks": {
     "https://chatbot.thuexemaynguyentu.com/": {
       "status": 200,
-      "checked": "2026-10-28",
-      "method": "TinyFish fetch_content (ttl 0): final_url = url, canonical self, H1 present"
+      "checked": "2026-10-29",
+      "method": "TinyFish fetch_content (ttl 0) sau deploy 23513dd5: canonical self, H1, og:image assets/images/og/motoai-share.png 1200×630 + alt, twitter summary_large_image; tệp ảnh được phục vụ, URL đối chứng og/khong-ton-tai.png trả 404"
     },
     "https://chatbot.thuexemaynguyentu.com/agent/": {
       "status": 200,
