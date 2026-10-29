@@ -42,7 +42,7 @@ test('owner-approved commercial strategy is declared without removing Agent iden
   assert.equal(ownership.commercial_owner_policy.app_product_owner, '/agent/');
 });
 
-test('anti-cannibalization: protected commercial keywords are never an exact title or H1', () => {
+test('old excluded commercial keywords are not globally protected; keep unique article titles', () => {
   for (const p of SITE_PAGES) {
     const html = read(p);
     const title = (/<title>([^<]*)<\/title>/.exec(html)?.[1] ?? '').toLowerCase().trim();
@@ -63,7 +63,7 @@ test('Agent app identity (/agent/): owned APP keywords + WebApplication schema, 
   assert.match(html, /<title>[^<]*Ứng dụng thuê xe máy/i);
   assert.ok(html.includes('"@type": "WebApplication"'), 'WebApplication schema');
   const lower = html.toLowerCase();
-  for (const kw of ownership.owned_keywords.slice(0, 4)) {
+  for (const kw of ['app thuê xe máy', 'ứng dụng thuê xe máy', 'app thuê xe điện', 'ứng dụng thuê xe máy điện']) {
     assert.ok(lower.includes(kw.toLowerCase()) || kw.includes('digital'),
       `Agent app references the owned intent: ${kw}`);
   }
