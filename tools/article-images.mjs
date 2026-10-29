@@ -43,6 +43,10 @@ export const SPEC = Object.freeze({
   maxBytes: 300 * 1024,
   /** Preferred band when quality allows — informational, never padded up to. */
   preferredBytes: Object.freeze([120 * 1024, 220 * 1024]),
+  /** Responsive copies next to each 1200 px master (<name>-<w>w.webp, 3:2): the
+   *  hero renders at ~90vw on phones and 700 px from 780 px up. */
+  variants: Object.freeze([600, 900]),
+  sizes: '(max-width: 780px) 90vw, 700px',
   /** Minimum dHash Hamming distance between two different articles' images. */
   minDistance: 10,
   altMin: 15,
@@ -112,17 +116,25 @@ export function altProblems(alt) {
   return out;
 }
 
+/** Path of the `w`-pixel responsive copy of a master image. */
+export const variantFile = (file, w) => file.replace(/\.webp$/, `-${w}w.webp`);
+
 /** Featured image view model for the builder, or null when not renderable. */
 export function featuredImage(id, registry, { exists = (p) => existsSync(join(ROOT, p)) } = {}) {
   const e = registry.images?.[id];
   if (!e || !atLeast(e.status, 'QA_PASSED') || !exists(e.file)) return null;
+  const variants = SPEC.variants.every((w) => e.variants?.[w] && exists(variantFile(e.file, w)));
   return {
     src: `/${e.file}`,
     url: `${SITE}${e.file}`,
     width: e.width,
     height: e.height,
     alt: e.alt,
-    caption: e.caption ?? CAPTIONS[e.source] ?? null
+    caption: e.caption ?? CAPTIONS[e.source] ?? null,
+    ...(variants ? {
+      srcset: [...SPEC.variants.map((w) => `/${variantFile(e.file, w)} ${w}w`), `/${e.file} ${e.width}w`].join(', '),
+      sizes: SPEC.sizes
+    } : {})
   };
 }
 
@@ -171,6 +183,21 @@ export function auditRegistry(registry, { plan = [], articles = null, root = ROO
       if (!/^[0-9a-f]{16}$/.test(e.dhash ?? '')) err('dhash (64-bit hex) missing');
       else if (e.dhash_of !== sha) err('dhash was computed for another file version');
       else hashes.push([id, e.dhash]);
+      // Responsive copies: same picture, 3:2, ≤ cap, AI label kept.
+      for (const w of SPEC.variants) {
+        const v = e.variants?.[w];
+        const vfile = variantFile(e.file, w);
+        if (!v) { err(`${w}w responsive copy not in the registry (tools/image-factory.py variants)`); continue; }
+        if (!existsSync(join(root, vfile))) { err(`${vfile} missing`); continue; }
+        const vbuf = readFileSync(join(root, vfile));
+        let vinfo;
+        try { vinfo = webpInfo(vbuf); } catch (x) { err(`${vfile}: invalid WebP: ${x.message}`); continue; }
+        if (vinfo.width !== w || vinfo.height !== (w * SPEC.height) / SPEC.width) err(`${vfile}: size ${vinfo.width}×${vinfo.height}, expected ${w}×${(w * SPEC.height) / SPEC.width}`);
+        if (vbuf.length > SPEC.maxBytes) err(`${vfile}: exceeds the ${SPEC.maxBytes / 1024} KB cap`);
+        if (v.sha256 !== createHash('sha256').update(vbuf).digest('hex') || v.bytes !== vbuf.length) err(`${vfile}: registry bytes/sha256 differ from the file`);
+        if (v.of !== sha) err(`${vfile}: made from another version of the master`);
+        if (e.source === 'ai' && !vbuf.includes('digitalsourcetype/trainedAlgorithmicMedia')) err(`${vfile}: AI image without IPTC trainedAlgorithmicMedia XMP`);
+      }
     }
     if (atLeast(e.status, 'IMAGE_ATTACHED')) {
       for (const p of altProblems(e.alt)) err(p);

@@ -31,7 +31,19 @@
       "alt": "Tay cầm điện thoại hiển thị giao diện trò chuyện bên bàn cà phê, phía sau là xe tay ga đỗ trên phố Hà Nội",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 26850,
+          "sha256": "3884317a5ebab86580eb98781a74d86adf7f6fbe34bfce3b56972f5f19aeffaa",
+          "of": "fd3228c7218184a6accf6b4ab6d4ca5de345e9e6db73c03f317c60c1afcc65df"
+        },
+        "900": {
+          "bytes": 42208,
+          "sha256": "ce4a702d11c1644f998ee57d8bdee2003d1d1d58f48e7a2ecd8e3bde6a6e4e26",
+          "of": "fd3228c7218184a6accf6b4ab6d4ca5de345e9e6db73c03f317c60c1afcc65df"
+        }
+      }
     },
     "BA-0002": {
       "status": "LIVE_VERIFIED",
@@ -62,7 +74,19 @@
       "alt": "Sổ ghi chi phí, máy tính, chìa khóa và tờ hợp đồng trên bàn gỗ ven đường, phía sau là một chiếc xe số",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 31722,
+          "sha256": "e891c4afbcb0c8b59b3abb34dc0094f1f124740239076fe0e9028baa8d716381",
+          "of": "400b35518af06005c7fb746164a0163bf969268ed83879fc8e3117995d766806"
+        },
+        "900": {
+          "bytes": 50074,
+          "sha256": "3bef228103c63671e16da205aa0c5048aa33d081315455c188a5a8884955d7a9",
+          "of": "400b35518af06005c7fb746164a0163bf969268ed83879fc8e3117995d766806"
+        }
+      }
     },
     "BA-0003": {
       "status": "LIVE_VERIFIED",
@@ -93,7 +117,19 @@
       "alt": "Người ngồi ghế công viên dùng điện thoại hỏi đáp, phía sau là xe máy điện màu trắng đỗ bên đường",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 31154,
+          "sha256": "36ba60fc944aefa282ac0804a4d2650ec5aeb683506a7d987d69f73086b88b19",
+          "of": "632432aebbc3b849372f2e03334df1e5b27093abecce5faab0f4d81db49237b5"
+        },
+        "900": {
+          "bytes": 49702,
+          "sha256": "758488cc5874982aa102f2ca10f8d6a65c8a06a082dd4c082aa439992643973f",
+          "of": "632432aebbc3b849372f2e03334df1e5b27093abecce5faab0f4d81db49237b5"
+        }
+      }
     },
     "BA-0004": {
       "status": "LIVE_VERIFIED",
@@ -124,7 +160,19 @@
       "alt": "Người phụ nữ điền giấy tờ thuê xe tại quầy gỗ nhìn ra phố, cạnh chìa khóa xe và phong bì",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 25246,
+          "sha256": "6618d4ca02e9c9a7b753667ed326a51ae281ed150ea2c5cf8eeb82647ce84e9b",
+          "of": "877dde2870a83ed5a8715ce36f4d9a6cea25dd66135357d7d742a956f2db7cf5"
+        },
+        "900": {
+          "bytes": 40426,
+          "sha256": "f492a8a8324ec740ab5e348c0c14e7892c3f7a340c2cc7cd2f1aeb135cafbd81",
+          "of": "877dde2870a83ed5a8715ce36f4d9a6cea25dd66135357d7d742a956f2db7cf5"
+        }
+      }
     },
     "BA-0005": {
       "status": "LIVE_VERIFIED",
@@ -155,7 +203,19 @@
       "alt": "Người đi xe máy đội mũ bảo hiểm dừng chờ đèn đỏ tại một nút giao ở Hà Nội",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 56940,
+          "sha256": "fd8df23729d9e4f434495e6a978050fe7c2502146ff2bdaf5399fcea339f2a9e",
+          "of": "0c4fb3ac2301f15f62872e7bf8e02e8b0ae6631c2f947362b3598406ca0643d5"
+        },
+        "900": {
+          "bytes": 100510,
+          "sha256": "f1f867b83f4e0c96f426378d479cb3cf7a2afc453a284c0980181700e7a9f114",
+          "of": "0c4fb3ac2301f15f62872e7bf8e02e8b0ae6631c2f947362b3598406ca0643d5"
+        }
+      }
     },
     "BA-0006": {
       "status": "LIVE_VERIFIED",
@@ -186,7 +246,19 @@
       "alt": "Người phụ nữ ở quầy chỉ vào xe tay ga cho khách đeo ba lô trên con phố rợp cây",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 52150,
+          "sha256": "acb2daefac866b1c13e65739bec6eac5e325027dd848933367a00bc69c72513e",
+          "of": "7b739b678c7f5a8ff25186fc5f3ac386e4fbb8cf60afb76f1e81b403814a17c4"
+        },
+        "900": {
+          "bytes": 90292,
+          "sha256": "cdc441a6d240d64468d8c1183b4382e347707bd077f14c3e355adf2b7ee7e95f",
+          "of": "7b739b678c7f5a8ff25186fc5f3ac386e4fbb8cf60afb76f1e81b403814a17c4"
+        }
+      }
     },
     "BA-0007": {
       "status": "LIVE_VERIFIED",
@@ -217,7 +289,19 @@
       "alt": "Người dùng điện thoại hỏi đáp tại khu chờ bến xe, cạnh cuốn sổ ghi chép và xe tay ga",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 29746,
+          "sha256": "590f759e00fa000e0b5c005040630f81a7b5258ec13d0025517b84a50a9d7485",
+          "of": "f5d9257bce021ab050a7860894bd558984025da93224b47924e6c6a00b675588"
+        },
+        "900": {
+          "bytes": 46738,
+          "sha256": "ab603557bcb92ce2e14115a13315f8f7d5096923b8fcd8894b0e832de10031fd",
+          "of": "f5d9257bce021ab050a7860894bd558984025da93224b47924e6c6a00b675588"
+        }
+      }
     },
     "BA-0008": {
       "status": "LIVE_VERIFIED",
@@ -248,7 +332,19 @@
       "alt": "Bàn gỗ có sổ ghi chép, máy tính và chìa khóa trong ngõ nhỏ, phía sau là xe số và hai người trò chuyện",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 39510,
+          "sha256": "a4193377891cee802eeda8b3621189deba350c07c87bab0572f60fb7a3ed2b01",
+          "of": "14690305c4f67417023957cce9379b46da694843fa58c5d9750fd1bc7e17dad9"
+        },
+        "900": {
+          "bytes": 65834,
+          "sha256": "558a1c4689c9d8f0af7b2d75b16e7bc46713d905a2342ed7a5ee57e90961f72e",
+          "of": "14690305c4f67417023957cce9379b46da694843fa58c5d9750fd1bc7e17dad9"
+        }
+      }
     },
     "BA-0009": {
       "status": "LIVE_VERIFIED",
@@ -279,7 +375,19 @@
       "alt": "Người cầm điện thoại xem khung trò chuyện ở bãi xe chung cư, bên cạnh là cuốn sổ ghi giá",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 26370,
+          "sha256": "dfadf157c7d1d8a1e7f9d4a768ea9a16ba00888cfda130b17cbb1e55a4ce57d0",
+          "of": "2852497d76a9b59a10894ae5771ecdddc9df449c71b12a08e85d2a1750fa7fd1"
+        },
+        "900": {
+          "bytes": 43368,
+          "sha256": "b4814c5286821f8d6397cfed01d1017133267a0d7d12a08f44e28ae43026fbe9",
+          "of": "2852497d76a9b59a10894ae5771ecdddc9df449c71b12a08e85d2a1750fa7fd1"
+        }
+      }
     },
     "BA-0010": {
       "status": "LIVE_VERIFIED",
@@ -310,7 +418,19 @@
       "alt": "Hai bàn tay trao thẻ giấy tờ trắng và chìa khóa xe qua quầy gỗ, trên quầy có tờ giấy và bút",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 34402,
+          "sha256": "91932934d482f782c6978b25727b133d2b67b5eeafcd9e242ee443fc976ba9a7",
+          "of": "90f82072d83b5034cb13b3ad0bc52b71aff4f592ad7f3a0e39069b038c130547"
+        },
+        "900": {
+          "bytes": 55870,
+          "sha256": "81a316c9ece55b7f10137d85e1972bf4a2d100d998eb2a6928e02423fc0de10a",
+          "of": "90f82072d83b5034cb13b3ad0bc52b71aff4f592ad7f3a0e39069b038c130547"
+        }
+      }
     },
     "BA-0011": {
       "status": "LIVE_VERIFIED",
@@ -341,7 +461,19 @@
       "alt": "Mũ bảo hiểm, chìa khóa xe, ly nước lọc và chai bia trên bàn quán phở vỉa hè ở Hà Nội",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 42336,
+          "sha256": "44742415991a273f990dc4d6de463095d6790e1f4a79b09563601b9066779d94",
+          "of": "4c264123e453c78c89e4b0a4a9790f215e7679afd6cd2e5965f118f37d09ad28"
+        },
+        "900": {
+          "bytes": 68590,
+          "sha256": "c0f0c14901cee1f507923ef588e4d7a851b2313cb81189b07407fe72033a3059",
+          "of": "4c264123e453c78c89e4b0a4a9790f215e7679afd6cd2e5965f118f37d09ad28"
+        }
+      }
     },
     "BA-0012": {
       "status": "LIVE_VERIFIED",
@@ -372,7 +504,19 @@
       "alt": "Hàng xe máy đỗ ngay ngắn trên vỉa hè một con phố cổ treo đèn lồng ở Hà Nội",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 68032,
+          "sha256": "288e3b7dcfe208c85c3e103cf1bce6dcc3e7c76d14e53bc5622d76e7885287d7",
+          "of": "8c25743a067ba3e6a3904f1ef69004cb355e61d0874414a543b4632bc076d29a"
+        },
+        "900": {
+          "bytes": 133964,
+          "sha256": "ce7a63581e8ac0e940b961576af0cb22dec714b1df97e775a338329d94ce1bc1",
+          "of": "8c25743a067ba3e6a3904f1ef69004cb355e61d0874414a543b4632bc076d29a"
+        }
+      }
     },
     "BA-0013": {
       "status": "LIVE_VERIFIED",
@@ -401,7 +545,19 @@
       "alt_reviewed": true,
       "commit": "4c832908",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 28564,
+          "sha256": "1dca6a7ec97306ff97119c24eb2c77ad4c7511d916cfe87c0bba317ec555898a",
+          "of": "d56c85b75bd4151d50e6c964d0b915cf61053e35475ddd705be9e31fe427188b"
+        },
+        "900": {
+          "bytes": 45152,
+          "sha256": "2482b804f236f5ffc3fe6add0f7273ad3deafc6a09c22bf7775bbfe70ace2e77",
+          "of": "d56c85b75bd4151d50e6c964d0b915cf61053e35475ddd705be9e31fe427188b"
+        }
+      }
     },
     "BA-0014": {
       "status": "LIVE_VERIFIED",
@@ -430,7 +586,19 @@
       "alt_reviewed": true,
       "commit": "4c832908",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 25132,
+          "sha256": "089b5255b9d88f3f88ca6d454d6c36aab5f40cda3fa8086921ab84fa6f6a04c3",
+          "of": "c427df2c8e46e34c5403c6f8206fdae33464f0e24471e7b785a4f20fc61113aa"
+        },
+        "900": {
+          "bytes": 40352,
+          "sha256": "d21a5f9b191cc8e1d6f9fa02b6751888a2a70f6cf7a2f73cb7ba95da7d0ccfb2",
+          "of": "c427df2c8e46e34c5403c6f8206fdae33464f0e24471e7b785a4f20fc61113aa"
+        }
+      }
     },
     "BA-0015": {
       "status": "LIVE_VERIFIED",
@@ -461,7 +629,19 @@
       "alt_reviewed": true,
       "commit": "10fc20d0",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2828 (main 10fc20d0): 21/21 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + twitter summary_large_image (BA-0074); 21/21 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 40446,
+          "sha256": "e0fa36cd15b7fca60e0d439637f1e992ebc6a31ad26cb9564788ce62d7f64b2a",
+          "of": "5c2ee28e213449c0575abb592596669e6057ca511cfeae264ce1d6d27cb2b355"
+        },
+        "900": {
+          "bytes": 64606,
+          "sha256": "c6e2bc59410e084819f1586c05471ddff4925ddfda95e6cb7860a94345fb0d53",
+          "of": "5c2ee28e213449c0575abb592596669e6057ca511cfeae264ce1d6d27cb2b355"
+        }
+      }
     },
     "BA-0016": {
       "status": "LIVE_VERIFIED",
@@ -490,7 +670,19 @@
       "alt_reviewed": true,
       "commit": "4c832908",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 22180,
+          "sha256": "17855c176004f560aac8d051c4e09ce46540941675d4f0c443b9e831967d3877",
+          "of": "5df730bb3cda9f91ef71c4c609cd27102e6bb8cb47dd6032617602ff57d12665"
+        },
+        "900": {
+          "bytes": 35812,
+          "sha256": "731b921c4a0293a317d3a13d7c80b31ea9871b1a6ba796ef6836ae1d279747d6",
+          "of": "5df730bb3cda9f91ef71c4c609cd27102e6bb8cb47dd6032617602ff57d12665"
+        }
+      }
     },
     "BA-0017": {
       "status": "LIVE_VERIFIED",
@@ -521,7 +713,19 @@
       "alt": "Người cài quai mũ bảo hiểm nửa đầu màu đen bên con đường ven sông",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 29282,
+          "sha256": "38c6f964d02a9eac4880e8db37f82ede78a5a54ebfa4f91de0dadb5c5c8203f5",
+          "of": "c5232c17301a39ea39ca397360b0da41566e1a415966b90020cbfb288fb60233"
+        },
+        "900": {
+          "bytes": 50518,
+          "sha256": "890279f98065406b6c402996fea6897b1861ef44d3012d150461e1d398fdac33",
+          "of": "c5232c17301a39ea39ca397360b0da41566e1a415966b90020cbfb288fb60233"
+        }
+      }
     },
     "BA-0018": {
       "status": "LIVE_VERIFIED",
@@ -550,7 +754,19 @@
       "alt_reviewed": true,
       "commit": "4c832908",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 50270,
+          "sha256": "1d6efd579610f2b843250aa83ef5f3675eff083624895c5460848c1feafaebeb",
+          "of": "cefd82e83eab1b0d6803065b59ce31fb42573da0317df64bd4d99bc324e5fa99"
+        },
+        "900": {
+          "bytes": 85070,
+          "sha256": "ae0caa6c753f4be028c1d4031ef2d7c1141ba6a7f7eb23463903876c3e4c840e",
+          "of": "cefd82e83eab1b0d6803065b59ce31fb42573da0317df64bd4d99bc324e5fa99"
+        }
+      }
     },
     "BA-0019": {
       "status": "LIVE_VERIFIED",
@@ -579,7 +795,19 @@
       "alt_reviewed": true,
       "commit": "4c832908",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau Pages run 2830 (main 4c832908): 5/5 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 5/5 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 25696,
+          "sha256": "60d1049d3e1b3b21c090e67da73bba812c62687f161ccb063e83091e7874db4a",
+          "of": "4c52990edf0f2ae4dce80d93f6cace38e1c3a1296968981bf916e31960a4b3cc"
+        },
+        "900": {
+          "bytes": 41724,
+          "sha256": "5d9a9effdad88acf0a026ca69bda038671876ae926e2cbf49d2e666b3713b9f3",
+          "of": "4c52990edf0f2ae4dce80d93f6cace38e1c3a1296968981bf916e31960a4b3cc"
+        }
+      }
     },
     "BA-0020": {
       "status": "LIVE_VERIFIED",
@@ -610,7 +838,19 @@
       "alt": "Người phụ nữ ký hợp đồng thuê xe tại quầy nhìn ra phố, bên cạnh là chìa khóa và điện thoại",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 34984,
+          "sha256": "fa10579550cb3a58e3d9ae357ce7720761c4d6e0d086e43242942facc11d465a",
+          "of": "76bbd5be9f559bc5f55849469dfec4bf9d0048295f3308889f3c56b0b9babb65"
+        },
+        "900": {
+          "bytes": 56400,
+          "sha256": "b31173abc6a38e3eca3bfd842b8770f740fe1669e8c54c0c717c3789a1a817ac",
+          "of": "76bbd5be9f559bc5f55849469dfec4bf9d0048295f3308889f3c56b0b9babb65"
+        }
+      }
     },
     "BA-0021": {
       "status": "LIVE_VERIFIED",
@@ -639,7 +879,19 @@
       "alt_reviewed": true,
       "commit": "621c60ba",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 621c60ba (PR #25): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 621c60ba (PR #25): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 24372,
+          "sha256": "ca2a17fc0a11d77ea44c37649e94653795b6b3ca2a70afabe2228ffdb5653d13",
+          "of": "44d12ce3d7ae2addd0b303a2597757ac2bcb57ad8df951d6c89ab287896a5089"
+        },
+        "900": {
+          "bytes": 39234,
+          "sha256": "d5caaefa9f51f5830e11cf7e3db65c6f8fc836d6b549bf9c28529b030244f5d5",
+          "of": "44d12ce3d7ae2addd0b303a2597757ac2bcb57ad8df951d6c89ab287896a5089"
+        }
+      }
     },
     "BA-0022": {
       "status": "LIVE_VERIFIED",
@@ -668,7 +920,19 @@
       "alt_reviewed": true,
       "commit": "621c60ba",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 621c60ba (PR #25): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 621c60ba (PR #25): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 51166,
+          "sha256": "2136bca3537cf59a8738c0efdf312e3db2385e2c2d9e853aefc0eebfe3d8f31d",
+          "of": "0b8b62438d921ae13fde69ab718423dd0056074861c359433d66b8641c479e8f"
+        },
+        "900": {
+          "bytes": 85412,
+          "sha256": "d62ebd8a3aba9aa6f24e84a43da46ad660262489fdf924f03b03f498331dc0da",
+          "of": "0b8b62438d921ae13fde69ab718423dd0056074861c359433d66b8641c479e8f"
+        }
+      }
     },
     "BA-0023": {
       "status": "LIVE_VERIFIED",
@@ -697,7 +961,19 @@
       "alt_reviewed": true,
       "commit": "621c60ba",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 621c60ba (PR #25): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 621c60ba (PR #25): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 35810,
+          "sha256": "62a916dab08b4214b03309ecafe2e69b79fe7570144b56ad8614abea60ce4489",
+          "of": "a6e4098e8a5e394b96e238be3d7e14c1c6af077eac95998053ad9b7787fdb4fc"
+        },
+        "900": {
+          "bytes": 57270,
+          "sha256": "4d2dd3bba06b9a9d879af5e29b69a1daa385d93a0d4c8ee1c6700aa78f332304",
+          "of": "a6e4098e8a5e394b96e238be3d7e14c1c6af077eac95998053ad9b7787fdb4fc"
+        }
+      }
     },
     "BA-0024": {
       "status": "LIVE_VERIFIED",
@@ -726,7 +1002,19 @@
       "alt_reviewed": true,
       "commit": "bc04b8c1",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge bc04b8c1 (PR #26): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge bc04b8c1 (PR #26): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 46436,
+          "sha256": "d5ed290e16900ba0dd7cb88c9919aa9d49fd5c66ed78d9d8116dd9191e6a6a95",
+          "of": "01438cf22fd7053242f50e0f69546b8107e73bcae069afe07a9ba67d097f9b26"
+        },
+        "900": {
+          "bytes": 76070,
+          "sha256": "962776c6603a58f662d3ac168437bae485e28e75d09639b08b76884420fe8562",
+          "of": "01438cf22fd7053242f50e0f69546b8107e73bcae069afe07a9ba67d097f9b26"
+        }
+      }
     },
     "BA-0025": {
       "status": "LIVE_VERIFIED",
@@ -755,7 +1043,19 @@
       "alt_reviewed": true,
       "commit": "bc04b8c1",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge bc04b8c1 (PR #26): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge bc04b8c1 (PR #26): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 24078,
+          "sha256": "8a7cee9266c1ea7f8f2b7112998c870524d54ee477d32065d329a85f1878785a",
+          "of": "1624ad6dfba88f1a8fae032b23a6fdd795cd57fe76ddfce4d9e5ba46a1feaeb8"
+        },
+        "900": {
+          "bytes": 38540,
+          "sha256": "547695574c4b9ab5dc60c54c1cf01839ae127417b0f40a328ae5c99d53d3698c",
+          "of": "1624ad6dfba88f1a8fae032b23a6fdd795cd57fe76ddfce4d9e5ba46a1feaeb8"
+        }
+      }
     },
     "BA-0026": {
       "status": "LIVE_VERIFIED",
@@ -784,7 +1084,19 @@
       "alt_reviewed": true,
       "commit": "bc04b8c1",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge bc04b8c1 (PR #26): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge bc04b8c1 (PR #26): 3/3 trang 200 có figure.article-hero + 'Ảnh minh họa tạo bằng AI' trỏ đúng file; og:image 1200×800 + og:image:alt = ALT + twitter summary_large_image; 3/3 file ảnh được phục vụ (nhị phân), URL ảnh không tồn tại trả 404",
+      "variants": {
+        "600": {
+          "bytes": 23404,
+          "sha256": "02b4b019281edf75c70277a57f3daae75e62b819aeff1e2e9e501a9a0983ea2f",
+          "of": "202ce7c65545ec709c7f1bd126ac65ba522cb08246dc57eafb9b321e20e6db5b"
+        },
+        "900": {
+          "bytes": 36746,
+          "sha256": "4c7c3b473a1bd94178dc0512c987019164c8accf39459f05274f4f52aa86fb8f",
+          "of": "202ce7c65545ec709c7f1bd126ac65ba522cb08246dc57eafb9b321e20e6db5b"
+        }
+      }
     },
     "BA-0027": {
       "status": "LIVE_VERIFIED",
@@ -813,7 +1125,19 @@
       "alt_reviewed": true,
       "commit": "d24f97ae",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge d24f97ae (PR #27): 5/5 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 5/5 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9995.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge d24f97ae (PR #27): 5/5 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 5/5 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9995.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 36472,
+          "sha256": "e3f2880900a9374a05dbca8b81c1f5c1f6643db59f1120da14d6a14dd744b644",
+          "of": "f86d8feeeeac8b372537e9e39a9961913c0e7915e4d72d2b1f11a64db9f7c603"
+        },
+        "900": {
+          "bytes": 61024,
+          "sha256": "a9015f0d5448f1f3a2917b05459e99e7f72dde0c4e6b903e4f06a132495ad857",
+          "of": "f86d8feeeeac8b372537e9e39a9961913c0e7915e4d72d2b1f11a64db9f7c603"
+        }
+      }
     },
     "BA-0028": {
       "status": "LIVE_VERIFIED",
@@ -842,7 +1166,19 @@
       "alt_reviewed": true,
       "commit": "d24f97ae",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge d24f97ae (PR #27): 5/5 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 5/5 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9995.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge d24f97ae (PR #27): 5/5 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 5/5 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9995.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 28096,
+          "sha256": "b6d96bcffc81831beb1beebde144adb09f56cbbe0591df26e641c48d66da93ae",
+          "of": "2bd1c250b29aebc197b49eb9ef58a2104ab4106b94327893749a22376ddf380b"
+        },
+        "900": {
+          "bytes": 44226,
+          "sha256": "b172bed06369392664882007f848bf2211f9097c3fcc0a0271dffdf9e3a9e965",
+          "of": "2bd1c250b29aebc197b49eb9ef58a2104ab4106b94327893749a22376ddf380b"
+        }
+      }
     },
     "BA-0029": {
       "status": "LIVE_VERIFIED",
@@ -871,7 +1207,19 @@
       "alt_reviewed": true,
       "commit": "d24f97ae",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge d24f97ae (PR #27): 5/5 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 5/5 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9995.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge d24f97ae (PR #27): 5/5 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 5/5 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9995.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 20078,
+          "sha256": "d3c2aa79bd026dff0ba18c5a86675477ac02650635f8cd9da6c0c8f14b41e9f6",
+          "of": "20c61c24af3b8347dc57bca1582f4b7e770192eb0b3d47780e51ee77bea36cac"
+        },
+        "900": {
+          "bytes": 32126,
+          "sha256": "5cdd8e38dc989c4d41ed57333beb9f6f1df48cb0c00d9663e919b7b4947150fb",
+          "of": "20c61c24af3b8347dc57bca1582f4b7e770192eb0b3d47780e51ee77bea36cac"
+        }
+      }
     },
     "BA-0030": {
       "status": "LIVE_VERIFIED",
@@ -900,7 +1248,19 @@
       "alt_reviewed": true,
       "commit": "d24f97ae",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge d24f97ae (PR #27): 5/5 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 5/5 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9995.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge d24f97ae (PR #27): 5/5 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 5/5 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9995.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 49182,
+          "sha256": "a008913e6d4440eadeccdf34f750ea41837500d10a7caaa714bf0874e6de3d3a",
+          "of": "a68c4a40d0984b04c40c6a25e0daed00d51521d00ffecd46158d393822cb11f8"
+        },
+        "900": {
+          "bytes": 83610,
+          "sha256": "01bd4e9972370e4e8dbb73847a25ab1690fdf913a70aff9eb45b1641c00f9db2",
+          "of": "a68c4a40d0984b04c40c6a25e0daed00d51521d00ffecd46158d393822cb11f8"
+        }
+      }
     },
     "BA-0031": {
       "status": "LIVE_VERIFIED",
@@ -929,7 +1289,19 @@
       "alt_reviewed": true,
       "commit": "d24f97ae",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge d24f97ae (PR #27): 5/5 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 5/5 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9995.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge d24f97ae (PR #27): 5/5 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 5/5 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9995.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 24324,
+          "sha256": "e4590b5be8b1ef9322a9ae411cde21cb600ae8d516b189e1c68586d0b0c3f9d9",
+          "of": "7be445d1b102ddf4d4e0863ce4ba2629a3f963802c48cb07a937e8438b85fe1a"
+        },
+        "900": {
+          "bytes": 37912,
+          "sha256": "e7398af58e06d3163e207743512f341594f9b73be3a7550e6e7a1b97bcaecf79",
+          "of": "7be445d1b102ddf4d4e0863ce4ba2629a3f963802c48cb07a937e8438b85fe1a"
+        }
+      }
     },
     "BA-0032": {
       "status": "LIVE_VERIFIED",
@@ -958,7 +1330,19 @@
       "alt_reviewed": true,
       "commit": "745a37b5",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 26058,
+          "sha256": "8583085d9b4ca20e41c074fecb1ff0fdd6e0d9707014de3a50c656a67191ea5d",
+          "of": "b4f806a4aeace4f1b5d87ba9c2bfe5e3fca9de189619ab7001977bd845df0825"
+        },
+        "900": {
+          "bytes": 41654,
+          "sha256": "338f2c442a240fbf7ada87b528303c0af5695d2f09dad98951342ff7d221d888",
+          "of": "b4f806a4aeace4f1b5d87ba9c2bfe5e3fca9de189619ab7001977bd845df0825"
+        }
+      }
     },
     "BA-0033": {
       "status": "LIVE_VERIFIED",
@@ -987,7 +1371,19 @@
       "alt_reviewed": true,
       "commit": "745a37b5",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 23214,
+          "sha256": "7dd36f0deb08d40639eb79eda589d51869d264eb35923480c754f69306943ad1",
+          "of": "0142940d6c575f2c87f7f4bf659a6336093358297bfe256760d0cee5d797b06e"
+        },
+        "900": {
+          "bytes": 36626,
+          "sha256": "f0c0014aa5118bec2f46e39e90675bff9a06e58f4265940e6003c31218c311c3",
+          "of": "0142940d6c575f2c87f7f4bf659a6336093358297bfe256760d0cee5d797b06e"
+        }
+      }
     },
     "BA-0034": {
       "status": "LIVE_VERIFIED",
@@ -1016,7 +1412,19 @@
       "alt_reviewed": true,
       "commit": "745a37b5",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 33356,
+          "sha256": "72a0d1743e765629c8e5e83c2e43b640713012828bd6b80d04803a3638dee083",
+          "of": "caf8d98d3234b54199e36e964d77ae178cafd3d064b63fa247d212d7d0be5691"
+        },
+        "900": {
+          "bytes": 54036,
+          "sha256": "f6ece79969f2f79e993c1ab66bca839fd2dacabc52372499431cbf28a35f777c",
+          "of": "caf8d98d3234b54199e36e964d77ae178cafd3d064b63fa247d212d7d0be5691"
+        }
+      }
     },
     "BA-0035": {
       "status": "LIVE_VERIFIED",
@@ -1045,7 +1453,19 @@
       "alt_reviewed": true,
       "commit": "745a37b5",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 31288,
+          "sha256": "f2f064b6caaf674ca4787532bad1363244da0b9385e44b701b276afcea81f427",
+          "of": "856051ccd6f8a1d980b3e9a8644f798b3bc3571a4cb5ae40783a2fe65b91bc3a"
+        },
+        "900": {
+          "bytes": 48636,
+          "sha256": "61107a27c46068127e7eb3aa65d2ae8a62c2ac24fc01ceb6157cf74fa3dc9287",
+          "of": "856051ccd6f8a1d980b3e9a8644f798b3bc3571a4cb5ae40783a2fe65b91bc3a"
+        }
+      }
     },
     "BA-0036": {
       "status": "LIVE_VERIFIED",
@@ -1074,7 +1494,19 @@
       "alt_reviewed": true,
       "commit": "745a37b5",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 53882,
+          "sha256": "31b083d7854039d88cfb07f1abc4d22436bf1d22d2c59fddabb3d45806bc7d3f",
+          "of": "72a12a651a85ebb5711b60cda4779108c7f3a6cd27086259b196b5b5a660ca0a"
+        },
+        "900": {
+          "bytes": 93594,
+          "sha256": "06e1adb4ac20c8e2072657b6d62863a5aa8b8164aa037a751ed27ccabd09c24b",
+          "of": "72a12a651a85ebb5711b60cda4779108c7f3a6cd27086259b196b5b5a660ca0a"
+        }
+      }
     },
     "BA-0037": {
       "status": "LIVE_VERIFIED",
@@ -1103,7 +1535,19 @@
       "alt_reviewed": true,
       "commit": "745a37b5",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 745a37b5 (PR #28): 6/6 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 6/6 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9994.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 23710,
+          "sha256": "30543cd34597814b3ab0a2e6aa6bec9f6448079f13e030c1a10aea05f993b604",
+          "of": "16a1133f33a302f8144a69e5bcc57f962a2b3d6c09e8898d95d62a495937d79d"
+        },
+        "900": {
+          "bytes": 36294,
+          "sha256": "7ff2365e811717b7a77f64e4080ddae1a47ea39c6aea9ef9169cfd80953e4622",
+          "of": "16a1133f33a302f8144a69e5bcc57f962a2b3d6c09e8898d95d62a495937d79d"
+        }
+      }
     },
     "BA-0038": {
       "status": "LIVE_VERIFIED",
@@ -1132,7 +1576,19 @@
       "alt_reviewed": true,
       "commit": "4b2cfdb9",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 27180,
+          "sha256": "c391d07c81f6790433f2764b297cb2c703976fc93690ecf73affa9b3558718a1",
+          "of": "bff59c8f6a9a963756616f4361cdfbfe8311c82a57911620e4bea46a1263eadd"
+        },
+        "900": {
+          "bytes": 41796,
+          "sha256": "2fe3ee22db4129c5bf03abe4f82fb42f686752436847449cf53099b6e71e3b51",
+          "of": "bff59c8f6a9a963756616f4361cdfbfe8311c82a57911620e4bea46a1263eadd"
+        }
+      }
     },
     "BA-0039": {
       "status": "LIVE_VERIFIED",
@@ -1161,7 +1617,19 @@
       "alt_reviewed": true,
       "commit": "4b2cfdb9",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 38400,
+          "sha256": "25d1620b822397ae5047126b6d007510a8d1e0f63a65d6d302128788e1751ae9",
+          "of": "08f54e897ddc7cdd742771eb196b19b7113f6cc14ad4dc60348f852871492bcc"
+        },
+        "900": {
+          "bytes": 62646,
+          "sha256": "f13f92b29acdd997feb2e9c119dcf098ff755919679e8eeba5bc928db4f76b9c",
+          "of": "08f54e897ddc7cdd742771eb196b19b7113f6cc14ad4dc60348f852871492bcc"
+        }
+      }
     },
     "BA-0040": {
       "status": "LIVE_VERIFIED",
@@ -1190,7 +1658,19 @@
       "alt_reviewed": true,
       "commit": "4b2cfdb9",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 21268,
+          "sha256": "fea01042bff07721f75229b05b63455e995f7474911a71e48c42eeee405df9cc",
+          "of": "61bf5680f1ae44ce9a9f5c86a9d75ed09bc0d8bcea471769be0a40f76821ebf7"
+        },
+        "900": {
+          "bytes": 33956,
+          "sha256": "4f6d70a38d98b3ea529b1357393414682d2f1d9db7b792fe5e550ff755f0ad33",
+          "of": "61bf5680f1ae44ce9a9f5c86a9d75ed09bc0d8bcea471769be0a40f76821ebf7"
+        }
+      }
     },
     "BA-0041": {
       "status": "LIVE_VERIFIED",
@@ -1220,7 +1700,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 30308,
+          "sha256": "a40c753e9abea06b239ad610765e6a2987fecf563178167b05bee86d3c0b2d7b",
+          "of": "cc15adc309ee7b3705981cf031925f0336659a528bc7f2765968af8ea5352350"
+        },
+        "900": {
+          "bytes": 50544,
+          "sha256": "821d2080d48b99ba22747a7c36b43e6935144ed91b6556d887a8fac8f652c210",
+          "of": "cc15adc309ee7b3705981cf031925f0336659a528bc7f2765968af8ea5352350"
+        }
+      }
     },
     "BA-0042": {
       "status": "LIVE_VERIFIED",
@@ -1250,7 +1742,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 54142,
+          "sha256": "54651547c4dbcc0c4302074bd4a791ba54f7b3bce10d2b0f0ad2afcc57b8500c",
+          "of": "8d830b6e091adc23e57c91482b10baf5457686e19a2b7b98f349d4fffdfbe4dc"
+        },
+        "900": {
+          "bytes": 92214,
+          "sha256": "c169d816d100c3fdc9d6fc80b51aaf8eb475a7170905da2013deb0412505089f",
+          "of": "8d830b6e091adc23e57c91482b10baf5457686e19a2b7b98f349d4fffdfbe4dc"
+        }
+      }
     },
     "BA-0043": {
       "status": "LIVE_VERIFIED",
@@ -1279,7 +1783,19 @@
       "alt_reviewed": true,
       "commit": "4b2cfdb9",
       "live_verified": "2026-10-28",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 4b2cfdb9 (PR #29): 4/4 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 4/4 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9993.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 22556,
+          "sha256": "fcdca37793ee133a10baafff0cb87b6a9fc26b883ef181d9fc16a977159eab51",
+          "of": "138989a19364e13a82c817255338ac0e0ed427cf52bb36d9f81bd4444aa21864"
+        },
+        "900": {
+          "bytes": 35106,
+          "sha256": "ed2e3712f1b3584ac719d82472f2b072047e16ef56a67b494b9be41ed4bb7413",
+          "of": "138989a19364e13a82c817255338ac0e0ed427cf52bb36d9f81bd4444aa21864"
+        }
+      }
     },
     "BA-0044": {
       "status": "LIVE_VERIFIED",
@@ -1309,7 +1825,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 44446,
+          "sha256": "99c94d4fad93d53c587e78a0ee9465a362a300bc214204137594212878d83f97",
+          "of": "205ae0ed6024de2f137e46e242c2e232b7b861b9ede1189184640a8f2c7430f9"
+        },
+        "900": {
+          "bytes": 80888,
+          "sha256": "646cccc3d6a07fa0f0f59e0027fcd00776d3df644360e37d11b42a64ece8b718",
+          "of": "205ae0ed6024de2f137e46e242c2e232b7b861b9ede1189184640a8f2c7430f9"
+        }
+      }
     },
     "BA-0045": {
       "status": "LIVE_VERIFIED",
@@ -1339,7 +1867,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 62062,
+          "sha256": "bbe803b5de2bd5e85a979f211c7658a55d1fcd7210a3e521e9312eb03c84bfdf",
+          "of": "933d81545f1aa869b39ac26841ca2f0cda659fa98991a411c3eef00323be1a07"
+        },
+        "900": {
+          "bytes": 110490,
+          "sha256": "245e4ac11cff6dafb6284d86c9652eb52650264135dc50e6e5f079db0f15a7ae",
+          "of": "933d81545f1aa869b39ac26841ca2f0cda659fa98991a411c3eef00323be1a07"
+        }
+      }
     },
     "BA-0046": {
       "status": "LIVE_VERIFIED",
@@ -1369,7 +1909,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 29270,
+          "sha256": "6fd28ea9fd425999a051e7845a004d351e88409ea7088a5e485b217644735c53",
+          "of": "16d81b61116e575de7e6b7fdbb23afdddaec0918649a6be184951f06717c3506"
+        },
+        "900": {
+          "bytes": 48514,
+          "sha256": "7fb254fcd81a46e98ccb0d36bc7c138f53e028c6e2fa36062a84860de7272555",
+          "of": "16d81b61116e575de7e6b7fdbb23afdddaec0918649a6be184951f06717c3506"
+        }
+      }
     },
     "BA-0047": {
       "status": "LIVE_VERIFIED",
@@ -1399,7 +1951,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 25260,
+          "sha256": "7e80cea199eab807c913a67b4fdad47d95100c70d3d8ff894b6e13384ed17a8a",
+          "of": "fe1ea9d59824fdf248dc878cdffbeeff11a8c0d4832f13d20bcd02e25651a3a1"
+        },
+        "900": {
+          "bytes": 41604,
+          "sha256": "3b4d555d982214e47c92803158500d3ec7a2a2d2636114a1bd1fb0982c42cbbe",
+          "of": "fe1ea9d59824fdf248dc878cdffbeeff11a8c0d4832f13d20bcd02e25651a3a1"
+        }
+      }
     },
     "BA-0048": {
       "status": "LIVE_VERIFIED",
@@ -1429,7 +1993,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 39524,
+          "sha256": "91015976e6d1b16b85d34c76860c57b156e05cd6a2c4ba4dc0b0825d2068fec0",
+          "of": "a4235afeb49b4c88607995f5c470f90cd0de0dac59e3b48283ca01226cf58314"
+        },
+        "900": {
+          "bytes": 69396,
+          "sha256": "5cf48d5975a0cb8290cab75863b954cf9190feffde7c0f301c70fafaca9e46f3",
+          "of": "a4235afeb49b4c88607995f5c470f90cd0de0dac59e3b48283ca01226cf58314"
+        }
+      }
     },
     "BA-0050": {
       "status": "LIVE_VERIFIED",
@@ -1460,7 +2036,19 @@
       "alt": "Xe tay ga Honda Vision màu xanh đậm đỗ trong ngõ nhỏ ở Hà Nội, trên yên có sổ ghi chi phí và máy tính",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 58476,
+          "sha256": "716eaf582ab9aa79d4e933aa35e0ee76606c84c3c889199fabd386155bededf3",
+          "of": "85ad0f2909ab6a99c66dd9782a1dff6bfb73e4b0dbe10f24c3043c84c8de00c6"
+        },
+        "900": {
+          "bytes": 99238,
+          "sha256": "9be876f38790f8774305f986f9909d1e39c494705b649ca23c7fb92b3fddb633",
+          "of": "85ad0f2909ab6a99c66dd9782a1dff6bfb73e4b0dbe10f24c3043c84c8de00c6"
+        }
+      }
     },
     "BA-0051": {
       "status": "LIVE_VERIFIED",
@@ -1490,7 +2078,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 30178,
+          "sha256": "777964561b70ecf6c567efabffbf7551b6605febc78bfc674f1366515ea27438",
+          "of": "ea605d1566c6a2905769c6f1dd6fc49432f2120a4d59e055697ccb4c5c0712d6"
+        },
+        "900": {
+          "bytes": 48598,
+          "sha256": "3b2101f630ea6dae1dc47bca0cfc8b30f0d51caae70b814537fba9e9162a9bf9",
+          "of": "ea605d1566c6a2905769c6f1dd6fc49432f2120a4d59e055697ccb4c5c0712d6"
+        }
+      }
     },
     "BA-0052": {
       "status": "LIVE_VERIFIED",
@@ -1520,7 +2120,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 30226,
+          "sha256": "7cc03c9d35ef401fc8d585ae8ee29180f0218852e103e15622689cc564caf971",
+          "of": "7383ac22de873d4e906ef020b05bcd4c0c808880813e5d2df70737d19464f038"
+        },
+        "900": {
+          "bytes": 48168,
+          "sha256": "a4023815b0299b227751cc424def25ddf1174c8eab2d727f825da56528a05644",
+          "of": "7383ac22de873d4e906ef020b05bcd4c0c808880813e5d2df70737d19464f038"
+        }
+      }
     },
     "BA-0053": {
       "status": "LIVE_VERIFIED",
@@ -1550,7 +2162,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 47180,
+          "sha256": "3a2154472b53790ce6e99d8c9027a4126ebc0a395c49c2ab472b47168f26c8d4",
+          "of": "5cb5deb40c443d0bdb96185dd14a96456898355b6880dbe93eb131c76e688ad5"
+        },
+        "900": {
+          "bytes": 79620,
+          "sha256": "c12f62d3a9acc2a108d9fc15ae1effaab2d2669ea5b4573bab6235c663bc6d6e",
+          "of": "5cb5deb40c443d0bdb96185dd14a96456898355b6880dbe93eb131c76e688ad5"
+        }
+      }
     },
     "BA-0054": {
       "status": "LIVE_VERIFIED",
@@ -1580,7 +2204,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 44934,
+          "sha256": "c20ff02e07dfd23c05c53eed27e98107bbc550626de02f4217bfab5d26db5942",
+          "of": "b54213adf76579472cdaae692e28bcb6b842a7e65808c540106af380d881bbd9"
+        },
+        "900": {
+          "bytes": 73792,
+          "sha256": "1d3a24413d6644c72a83d30641bae96548c1fb61dac4220e812f0804e8a3f2b7",
+          "of": "b54213adf76579472cdaae692e28bcb6b842a7e65808c540106af380d881bbd9"
+        }
+      }
     },
     "BA-0055": {
       "status": "LIVE_VERIFIED",
@@ -1610,7 +2246,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 33470,
+          "sha256": "bb4bf8e01d8887a41ec6617734ceafeb4c4604c604e0afa0766390ba4c0f0483",
+          "of": "0426a20d13eb45ceef3ad0d5711d2c760839f66be06f329bac7102a0d8c08a0a"
+        },
+        "900": {
+          "bytes": 54660,
+          "sha256": "b2d827f893e55c13318b338eb2a881e24f41af6e0061187338908afb66bf29d8",
+          "of": "0426a20d13eb45ceef3ad0d5711d2c760839f66be06f329bac7102a0d8c08a0a"
+        }
+      }
     },
     "BA-0057": {
       "status": "LIVE_VERIFIED",
@@ -1641,7 +2289,19 @@
       "alt": "Tủ đổi pin trên vỉa hè cạnh xe máy điện đang cắm sạc trên một con phố Hà Nội",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 56232,
+          "sha256": "12704a61079eee15b0d8a99639108364b8d378a5df25c1174f4939345a7ce755",
+          "of": "0ba071e6d30d256b4db8318b16a52157ffb790086e827cde14dbe6cd7fb55674"
+        },
+        "900": {
+          "bytes": 97554,
+          "sha256": "c3460285377ab5bbe38cdd3e1398ff06299569e2e12838a1b7f6a2503472e017",
+          "of": "0ba071e6d30d256b4db8318b16a52157ffb790086e827cde14dbe6cd7fb55674"
+        }
+      }
     },
     "BA-0058": {
       "status": "LIVE_VERIFIED",
@@ -1671,7 +2331,19 @@
       "alt_reviewed": true,
       "commit": "55e274fd",
       "live_verified": "2026-10-29",
-      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404"
+      "live_evidence": "TinyFish fetch_content ttl=0 sau merge 55e274fd (PR #30): 13/13 trang render figure.article-hero đúng ảnh, og:image 1200×800 + og:image:alt đúng, twitter summary_large_image; 13/13 URL ảnh trả tệp nhị phân, URL đối chứng khong-ton-tai-ba-9992.webp trả 404",
+      "variants": {
+        "600": {
+          "bytes": 61968,
+          "sha256": "fef1d821f8ce465c13491e0eb2cbed61bd8f70bfbad477581258197c3d678df4",
+          "of": "9e982f5a674bef6194767277bd54a82a3e208705b00be4fe9fa370eef6196209"
+        },
+        "900": {
+          "bytes": 108830,
+          "sha256": "9b5c629985a56797ff9ed7314f0a1916b864121038a75e52d90a5871872a4695",
+          "of": "9e982f5a674bef6194767277bd54a82a3e208705b00be4fe9fa370eef6196209"
+        }
+      }
     },
     "BA-0062": {
       "status": "LIVE_VERIFIED",
@@ -1702,7 +2374,19 @@
       "alt": "Xe số Honda Wave Alpha màu đỏ đen đỗ trên phố nhà ống Hà Nội, trên yên đặt tờ hợp đồng",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 51136,
+          "sha256": "7d752268da0d99fb171307a9b1d1d54d2067835c7384c95044d4730a44d511da",
+          "of": "a7120b03dbc1628af451ad0d7b5d85d84dc552eb3a58a710ae914f46c1e0eca1"
+        },
+        "900": {
+          "bytes": 86576,
+          "sha256": "841069e6667c2cc525894553788bf23eab77904680bb98117db61bf40797057b",
+          "of": "a7120b03dbc1628af451ad0d7b5d85d84dc552eb3a58a710ae914f46c1e0eca1"
+        }
+      }
     },
     "BA-0063": {
       "status": "LIVE_VERIFIED",
@@ -1733,7 +2417,19 @@
       "alt": "Xe máy điện màu xám cắm sạc từ bộ sạc gắn tường ở bãi xe chung cư, ba lô đặt trên yên",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 32256,
+          "sha256": "7ab2f773e817d24210d7a753d7cf465b3265bd5692e1b423bcd31d34d59a52e2",
+          "of": "686280e1d0350713e5a3a1fa718771d310363c492750f5e0b9597b39bcfd736c"
+        },
+        "900": {
+          "bytes": 52876,
+          "sha256": "a96d335270f3257529a4676bcfcd26e2ae9de987662d8879521634d67732381c",
+          "of": "686280e1d0350713e5a3a1fa718771d310363c492750f5e0b9597b39bcfd736c"
+        }
+      }
     },
     "BA-0066": {
       "status": "LIVE_VERIFIED",
@@ -1764,7 +2460,19 @@
       "alt": "Người đội mũ bảo hiểm lái xe tay ga màu bạc trên cầu Long Biên, bên trái là sông Hồng",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 51140,
+          "sha256": "30f04af837a9815c9b433a9bfeaec02029bf4a8926c3436b1c799e2cbc8022a0",
+          "of": "1868a32c469f42c37992f6521dd2f64decf1bc860968b256cf50037b2abafc2f"
+        },
+        "900": {
+          "bytes": 96584,
+          "sha256": "cabed9e31297f156d36e22f450d374b945489675300ba7b48ad4cd19a9f8a90c",
+          "of": "1868a32c469f42c37992f6521dd2f64decf1bc860968b256cf50037b2abafc2f"
+        }
+      }
     },
     "BA-0074": {
       "status": "LIVE_VERIFIED",
@@ -1795,7 +2503,19 @@
       "alt": "Xe tay ga màu xanh đậm và xe số màu đỏ đỗ cạnh nhau trên vỉa hè phố cổ Hà Nội",
       "alt_reviewed": true,
       "commit": "10fc20d0",
-      "live_verified": "2026-10-28"
+      "live_verified": "2026-10-28",
+      "variants": {
+        "600": {
+          "bytes": 49950,
+          "sha256": "2762d17056037f24fc731b2b1cf716bc07474f6ffd2250ced2f57566eed3e2ba",
+          "of": "abef9fe9041c60c1b9cc991f5093ac117e5a6de9401797b382d516064554ef64"
+        },
+        "900": {
+          "bytes": 86450,
+          "sha256": "1d32e43d44b33e14a583b255859603d077a8d04038c24c7f7172720d29068ab7",
+          "of": "abef9fe9041c60c1b9cc991f5093ac117e5a6de9401797b382d516064554ef64"
+        }
+      }
     }
   }
 }

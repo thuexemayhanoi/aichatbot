@@ -39,7 +39,10 @@ khác repo: repo thắng, xuất lại workbook.
    rồi ghi `canva_design`/`canva_page` vào `generator`.
 4. `python3 tools/image-factory.py download BA-xxxx` → `optimize BA-xxxx <raw>`
    (crop 3:2 → 1200×800 → WebP ≤ 300 KB theo Image SEO V2: 100–300 KB, ưu tiên 120–220 KB, không độn dung lượng; sha256 + dHash; ảnh AI được gắn XMP IPTC
-   `DigitalSourceType = trainedAlgorithmicMedia` — gate bắt buộc).
+   `DigitalSourceType = trainedAlgorithmicMedia` — gate bắt buộc). Cùng lượt `optimize` ghi bản responsive
+   `<tên>-600w.webp` (600×400) và `<tên>-900w.webp` (900×600) cùng nhãn XMP + khối `variants` trong registry
+   (gate kiểm kích thước, sha256, `of` = sha256 của ảnh gốc); builder render `srcset` 600w/900w/1200w +
+   `sizes="(max-width: 780px) 90vw, 700px"`. Ảnh cũ thiếu bản responsive: `python3 tools/image-factory.py variants`.
    Khi `www.figma.com` bị chính sách mạng chặn: tạo ≤ 8 ảnh trong một file Figma riêng cho lô
    (`create_new_file`, các khung tự xếp hàng ngang cách 40 px) → **một** lượt
    `get_screenshot` node `0:1`, `maxDimension 65536`, `enableBase64Response: true` (ảnh PNG gốc được
@@ -53,7 +56,7 @@ khác repo: repo thắng, xuất lại workbook.
 5. **Xem ảnh** (đúng chủ đề? xe đúng mẫu? không chữ/logo/biển số đọc được? an toàn: mọi người đều đội mũ?)
    → ảnh sai thì tạo lại; ảnh đạt thì `attach BA-xxxx --alt "<mô tả đúng cái nhìn thấy>"`.
 6. `python3 tools/image-factory.py qa` (gate `node tools/article-images.mjs --check`: WebP, kích thước,
-   dung lượng, sha256, dHash cận trùng, ALT) → QA_PASSED.
+   dung lượng, sha256, dHash cận trùng, ALT, bản responsive 600w/900w) → QA_PASSED.
 7. `node tools/build-blog.mjs` → `node --test` → `node tools/site-audit.mjs` → `node tools/seo-score.mjs`.
 8. Commit + push → PR → CI xanh → merge → `python3 tools/image-factory.py deployed <sha>` →
    sau khi Pages build: `python3 tools/image-factory.py live` (hoặc kiểm tra bằng fetch bên ngoài nếu
