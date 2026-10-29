@@ -301,12 +301,12 @@ test('qa: WARN title-meta-valid — a too-short description never blocks', () =>
   assert.match(out, new RegExp(`QA PASS ${id} score=95 warnings=1`));
 });
 
-test('qa: WARN seo-ownership — protected commercial keyword as the exact title', () => {
+test('qa: owner-approved commercial head term is permitted without auto-publishing a duplicate page', () => {
   const dir = repoSandbox();
   const id = install(dir, { title: 'Thuê xe máy Hà Nội' });
   const out = qaCli(dir, [id]);
-  assert.match(out, /WARN\s+seo-ownership/);
-  assert.match(out, new RegExp(`QA PASS ${id} score=95 warnings=1`));
+  assert.match(out, /PASS\s+seo-ownership/);
+  assert.match(out, new RegExp(`QA PASS ${id} score=100 warnings=0`));
 });
 
 test('qa: WARN local-angle — a LOCAL row without local_scope never blocks', () => {
