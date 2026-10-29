@@ -1,51 +1,31 @@
-# SEO Ownership — repo `thuexemayhanoi/aichatbot`
+# SEO Ownership — `thuexemayhanoi/aichatbot`
 
-Bản quyền SEO của repo này là **APP / WEB APPLICATION / DIGITAL RENTAL ASSISTANT** (trợ lý thuê xe số). Cấu hình máy đọc được: `config/seo-ownership.json` (kiểm thử: `tests/unit/seo-ownership.test.js` + `tests/unit/blog-foundation.test.js`).
+**Owner decision updated: 29/10/2026.** Máy đọc: `config/seo-ownership.json` (v2). Chiến dịch: `docs/seo/commercial/README.md` và `docs/seo/commercial/CLAUDE-SEO-AGENT.md`.
 
-## 1. Từ khóa quốc gia repo này SỞ HỮU
+## 1. Mục tiêu thương mại mới
 
-Primary (must-win):
+Chủ website đã cho phép **MotoAI cạnh tranh toàn bộ nhóm từ khóa thương mại về cho thuê xe máy Hà Nội**, không còn nhường độc quyền cho các domain khác (kể cả website cùng chủ sở hữu). Mục tiêu tham vọng: Google vị trí 2–10 cho từ khóa chính **“cho thuê xe máy ở Hà Nội”** và nhóm phù hợp. Đây là KPI, không phải thứ hạng được đảm bảo.
 
-- app thuê xe máy
-- ứng dụng thuê xe máy
-- app thuê xe điện
-- ứng dụng thuê xe máy điện
+- `/`: intent chính **cho thuê xe máy ở Hà Nội** và biến thể cùng ý định “cho thuê xe máy Hà Nội”, “thuê xe máy Hà Nội”; chỉ chỉnh homepage sau khi duyệt nội dung thực sự phục vụ nhu cầu thương mại và test an toàn.
+- `/gia-thue/`: giá thuê, bảng giá ngày/tuần/tháng, cọc tách riêng.
+- `/lien-he/`: thông tin liên hệ, địa chỉ và giờ làm việc được xác minh.
+- `/agent/`: **APP / WEB APPLICATION / DIGITAL RENTAL ASSISTANT**, vẫn là công cụ thông tin (không giả làm App Store/Google Play hoặc hệ thống đặt xe tự động).
+- Các category hub và bài riêng: tháng, Vision, 50cc, xe điện, Long Biên, Hoàn Kiếm, Phố Cổ, Tây Hồ, Ba Đình, thủ tục, luật, du lịch... mỗi URL chủ lực một search intent duy nhất.
 
-Secondary (hỗ trợ ngữ nghĩa):
+`data/blog/content-matrix.csv` và `data/blog/published.json` là nguồn sự thật 2.006 URL; kết quả SEO lập kế hoạch từ `tools/seo-commercial-matrix.mjs`. **Không nhồi exact head keyword vào 2.006 H1/title.**
 
-- ứng dụng thuê xe
-- app tìm xe máy thuê
-- công cụ tính giá thuê xe máy
-- trợ lý thuê xe máy
-- chọn xe máy phù hợp
-- ứng dụng tìm xe máy
-- thuê xe máy online
-- thuê xe điện online
+## 2. Phạm vi quốc gia và địa phương
 
-Homepage (`/`) là landing page cho cụm này: H1 “Ứng dụng thuê xe máy & xe điện”, schema `WebApplication` + `Organization` + `FAQPage`.
+Được xuất bản nội dung hữu ích trên toàn quốc nhưng KHÔNG khẳng định có đội xe hoặc chi nhánh phục vụ toàn quốc. Không tự tạo dịch vụ, khẳng định còn xe, giá, hỗ trợ kỹ thuật, giấy phép hay giờ mở cửa ngoài `data/business/business.json` và `data/business/pricing.json`. Mỗi trang địa phương cần nội dung thực sự riêng, không tạo doorway pages hàng loạt.
 
-## 2. Phạm vi quốc gia = INTENT, không phải tồn kho
+## 3. Anti-cannibalization trong MotoAI
 
-“National SEO” ở đây nghĩa là nội dung informational/product mang tầm quốc gia (cách dùng app, chọn xe điện, an toàn, thủ tục). KHÔNG tuyên bố cung cấp dịch vụ cho thuê toàn quốc. Mọi thông tin về tình trạng còn xe, vùng phục vụ, giá, cọc, giờ mở cửa phải lấy từ `data/business/business.json` — dữ liệu đã xác minh.
+Loại bỏ `protected_commercial_intents` cũ chỉ ngăn cạnh tranh với website chị em. Thay bằng quy tắc **một intent có một URL owner trong chính repo này**, dựa trên nội dung thực và SERP. Trang chủ không tranh từ khóa giá thuê của `/gia-thue/`; Agent không tự nhận là doanh nghiệp cho thuê độc lập. Các domain cùng chủ đều có thể cạnh tranh nếu trang của mỗi domain thực sự hữu ích/khác biệt, không sao chép nội dung.
 
-## 3. An toàn cross-repository (chống cannibalization)
+Kiểm thử: `tests/unit/seo-ownership.test.js`, `tests/unit/blog-foundation.test.js`, `tests/unit/article-qa.test.js` theo chính sách mới. Bài đã PUBLISHED được bảo vệ: không tự ghi đè body, slug, canonical, sitemap, URL.
 
-Repo khác trong tổ chức có thể sở hữu intent thương mại địa phương:
+## 4. KPI và nguồn
 
-- `thuexemayhanoi/shop`, `thuexemayhanoi/vanchinh` → sở hữu intent “thuê xe máy Hà Nội” / “cho thuê xe máy Hà Nội” (commercial landing trực tiếp).
+Top 2–10 **chỉ là mục tiêu**. Không có GSC/GA4 thì ghi `NOT_MEASURED`, không bịa traffic/rank/CTR/volume. Theo dõi trên Google Search Console khi có dữ liệu, tối ưu theo từng lô 30 URL có checkpoint và QA.
 
-Quy tắc bảo vệ (cấu hình trong `config/seo-ownership.json` → `protected_commercial_intents`):
-
-- Repo này KHÔNG tạo homepage/landing riêng nhắm đúng từ khóa thương mại generic đó.
-- Homepage title KHÔNG chứa “thuê xe máy Hà Nội” (test chặn).
-- Bài LOCAL trong blog được phép nhắm chủ đề Hà Nội (Phố Cổ, Long Biên, Hồ Tây…) nhưng phải có góc độ riêng: hành trình cụ thể, kết hợp Agent/app, tips informational. KHÔNG sản xuất hàng loạt “app thuê xe máy quận X” chỉ đổi tên quận (test doorway guard).
-- Mỗi bài chỉ thuộc đúng MỘT danh mục; không đăng hai bài cùng primary intent trùng lặp (QA duplicate-intent gate trước khi publish).
-
-## 4. Nguyên tắc năng lực sản phẩm
-
-Không bao giờ giới thiệu sản phẩm này là app native trên App Store / Google Play. Chữ dùng đúng: “ứng dụng web”, “Agent”, “công cụ trực tuyến”. (Test: homepage không chứa “app store”/“google play”.)
-
-## 5. Kiểm thử liên quan
-
-- `tests/unit/blog-foundation.test.js` — ownership, homepage intent, schema, sitemap, indexes.
-- `tests/unit/seo-ownership.test.js` — dedicated gate (v63.1): protected commercial keywords không bao giờ là title/H1 landing chính xác; homepage giữ identity APP/WebApplication; bài LOCAL bắt buộc angle Agent/app/informational.
+Tham khảo: https://developers.google.com/search/docs/essentials/spam-policies
