@@ -9,6 +9,8 @@
   <meta name="google-site-verification" content="V7GztRa9fpvjtJRAfsu4tQXPrV3VzlMdDJuSsILbkx0" />
   <link rel="canonical" href="https://chatbot.thuexemaynguyentu.com/agent/">
   <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
   <meta name="theme-color">
   <link rel="stylesheet" href="/assets/css/style.css?v=0">
   <meta property="og:type" content="website">

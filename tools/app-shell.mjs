@@ -87,6 +87,8 @@ ${headHtml}  <meta name="motoai-build" content="${BUILD_VERSION}">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
   <link rel="canonical" href="${url}">
+  <link rel="icon" href="${prefix}favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="${prefix}assets/icons/icon.svg" type="image/svg+xml">
   <meta name="theme-color" content="${site.themeColor.light}" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="${site.themeColor.dark}" media="(prefers-color-scheme: dark)">
   <meta name="color-scheme" content="light dark">
