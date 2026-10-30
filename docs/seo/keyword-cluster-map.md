@@ -97,7 +97,7 @@ Kết luận: từ khóa thương mại Hà Nội (bao gồm head, giá, xe đi�
   - Tính lộ trình khi thuê xe máy theo ngày: bốn bước chốt lịch — `/blog/huong-dan/tinh-lo-trinh-thue-xe-theo-ngay/` (từ khóa: tính lộ trình khi thuê xe máy theo ngày)
   - Thuê xe dài hạn cho người đi làm: tiêu chí chọn xe và chi phí — `/blog/thue-xe/thue-xe-dai-han-cho-nguoi-di-lam/` (từ khóa: thuê xe dài hạn cho người đi làm)
   - Thuê xe dài ngày giá tốt: mốc thuê, thương lượng, chi phí — `/blog/thue-xe/thue-xe-dai-ngay-gia-tot/` (từ khóa: thuê xe dài ngày giá tốt)
-  - Thuê xe máy theo tháng: khi nào đáng lấy và hợp đồng cần gì — `/blog/thue-xe/thue-xe-may-theo-thang/` (từ khóa: thuê xe máy theo tháng)
+  - Thuê xe máy theo tháng ở Hà Nội: khi nào lợi, hợp đồng cần gì — `/blog/thue-xe/thue-xe-may-theo-thang/` (từ khóa: thuê xe máy theo tháng)
   - Thuê xe máy theo tuần: khi nào đáng lấy và cần hỏi gì trước — `/blog/thue-xe/thue-xe-may-theo-tuan/` (từ khóa: thuê xe máy theo tuần)
   - Ưu đãi thuê xe máy dài hạn: các dạng ưu đãi và cách hỏi gói — `/blog/thue-xe/uu-dai-thue-xe-dai-han/` (từ khóa: ưu đãi thuê xe máy dài hạn)
   - Thuê xe điện dài ngày: nhịp sạc, chi phí và điều kiện cần chốt — `/blog/xe-dien/thue-xe-dien-dai-ngay/` (từ khóa: thuê xe điện dài ngày)

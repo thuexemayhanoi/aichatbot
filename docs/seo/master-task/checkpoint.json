@@ -1,11 +1,11 @@
 {
   "$schema": "motoai/master-task-checkpoint@1",
   "task": "MOTOAI IMAGE FACTORY 2000 + GITHUB EXPERT SEO SKILLS + FULL WEBSITE SEO",
-  "updated": "2026-10-29",
-  "head_at_export": "257817f37",
+  "updated": "2026-10-30",
+  "head_at_export": "54b0bf29d",
   "workbook": "docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx",
   "dashboard": {
-    "Ngày cập nhật": "2026-10-29",
+    "Ngày cập nhật": "2026-10-30",
     "Tổng bài thực tế (manifest published.json)": 2006,
     "Tổng hàng PUBLISHED trong content-matrix.csv": 2006,
     "Tổng bài mục tiêu ảnh (BA-0001…BA-2000)": 2000,
@@ -27,8 +27,8 @@
     "Bài cần review nội dung (Content Review = REVIEW)": 58,
     "URL có lỗi kỹ thuật mở (technical-audit)": 0,
     "Việc cần chủ sở hữu xác minh (REVIEW REQUIRED mở)": 8,
-    "Commit cuối (HEAD khi xuất)": "257817f37",
-    "Checkpoint cuối": "docs/seo/master-task/checkpoint.json @ 2026-10-29",
+    "Commit cuối (HEAD khi xuất)": "54b0bf29d",
+    "Checkpoint cuối": "docs/seo/master-task/checkpoint.json @ 2026-10-30",
     "Next batch": "Chờ chủ sở hữu mở lại xưởng ảnh. Khi mở: bật lại lịch \"Image factory 2.006\" (trig_01CvqnnDpmqzsMMNC13SMwMP) rồi chạy tiếp từ checkpoint.json → next_ids (BA-0049, BA-0056 tạo lại trước, rồi BA-0059…)"
   },
   "image_status_counts": {
