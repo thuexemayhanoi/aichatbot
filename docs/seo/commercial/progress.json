@@ -273,7 +273,16 @@
         "reason": "Câu dẫn khớp toàn văn: BA-0299, 0581 (QCVN 2:2021), 0515 (mốc 01/07/2027), 0335, 0617, 0899, 1181, 1463 (Nghị định 67/2023), 0785, 1067, 1349 (Nghị định 96/2016 ngày 01/07/2016 và văn bản sửa đổi)"
       },
       "qa": "node --test 1178/1178; site-audit PASS 2138 trang, 0 liên kết hỏng; seo-score 99,6 PASS; seo-legal-citations: cần sửa 0, chưa đối chiếu 1 (Bộ luật Dân sự 2015, 34 bài → lô C04), ngoài sổ 0",
-      "live_verified": null
+      "live_verified": {
+        "date": "2026-10-30T16:31Z",
+        "method": "TinyFish fetch_content ttl 0 + page_metadata",
+        "evidence": "BA-0239 /blog/an-toan/thue-va-phi-xe-may-ca-nhan/: \"Thông tư 155/2025/TT-BTC ... thay thế Thông tư 60/2023/TT-BTC\", phí 55.000/60.000/290.000 đồng theo Phụ lục I, câu hỏi thường gặp có thời hạn 18 tháng; BA-0221 /blog/an-toan/cam-do-xe-may-dung-luat/: \"từ ngày 15/8/2023, Nghị định 56/2023/NĐ-CP sửa đổi Điều 9 đã bỏ yêu cầu ... hộ khẩu thường trú\"; BA-0053 /blog/an-toan/bao-hiem-khi-thue-xe-may/: \"Luật Kinh doanh bảo hiểm số 08/2022/QH15 (có hiệu lực từ ngày 01/01/2023)\"; cả ba \"cập nhật 2026-10-30\", canonical self, build v76"
+      },
+      "merged": "6bd05fe4 (PR #46; Codex không review được — hết hạn mức tài khoản Codex, không phát sinh chi phí)",
+      "follow_up": [
+        "BA-0053: câu \"bảo hiểm ... thường được mua kèm khi xe đến hạn đăng kiểm\" và \"xe cũng không được cấp kiểm định khi đến hạn\" không khớp với việc xe máy cá nhân chưa có kiểm định kỹ thuật định kỳ (BA-0239 nói đúng điều này) — không thuộc văn bản đã đối chiếu, cần review body ở lô sau",
+        "Nghị quyết 57/2025/NQ-HĐND (vùng phát thải thấp): đối chiếu Điều 36 Luật Thủ đô 02/2026/QH16 về hiệu lực tiếp tục"
+      ]
     }
   ],
   "rules": [
@@ -283,8 +292,8 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "C03-LEGAL (chờ live)",
-  "last_verified_commit": "fb34b81b",
+  "last_completed_batch": "C03-LEGAL",
+  "last_verified_commit": "6bd05fe4",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 30,
   "next_article_ids_note": "Lô C04: Bộ luật Dân sự 2015 (bo-luat-dan-su-91-2015) — 34 bài dẫn như hiện hành, chưa đối chiếu toàn văn; 30 bài đầu ở đây, 4 bài còn lại (BA-1397, BA-1403, BA-1409, BA-1469) cùng RR-11 (nguồn pháp lý chết BA-0047, BA-0323, BA-0329, BA-0689) ở lô kế tiếp. Khi có GSC, ưu tiên theo dữ liệu GSC.",
@@ -299,5 +308,28 @@
   "articles_metadata_changed_and_live_verified": [
     "BA-0020"
   ],
-  "legal_documents_unverified": 1
+  "legal_documents_unverified": 1,
+  "articles_body_corrected_and_live_verified": [
+    "BA-0053",
+    "BA-0221",
+    "BA-0239"
+  ],
+  "articles_body_corrected_deployed": [
+    "BA-0017",
+    "BA-0053",
+    "BA-0221",
+    "BA-0233",
+    "BA-0239",
+    "BA-0246",
+    "BA-0503",
+    "BA-0521",
+    "BA-0606",
+    "BA-0612",
+    "BA-0797",
+    "BA-0803",
+    "BA-0863",
+    "BA-1085",
+    "BA-1361",
+    "BA-1367"
+  ]
 }
