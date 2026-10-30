@@ -181,7 +181,12 @@
         "EBIKE: SERP \"thuê xe đạp điện hà nội\" do xe đạp công cộng TNGo chiếm; cửa hàng có xe đạp điện (pricing.json, giá \"Liên hệ\"); chưa có bài sở hữu."
       ],
       "qa": "node --test 1178/1178; site-audit PASS 0 liên kết hỏng; seo-score 99,6 PASS; seo-commercial-matrix tạo lại + --check sạch; image-plan.csv tạo lại (chỉ cột title của BA-0020 đổi)",
-      "live_verified": null
+      "live_verified": {
+        "date": "2026-10-30T09:24Z",
+        "method": "TinyFish fetch_content ttl 0 + page_metadata",
+        "evidence": "/blog/thue-xe/thue-xe-may-theo-thang/: title và H1 \"Thuê xe máy theo tháng ở Hà Nội: khi nào lợi, hợp đồng cần gì\", description \"Thuê xe máy theo tháng ở Hà Nội hợp với ai? …\", canonical self, og/twitter khớp, ảnh BA-0020 giữ nguyên"
+      },
+      "merged": "fb34b81b (PR #44; Codex review: không có phát hiện)"
     }
   ],
   "rules": [
@@ -191,8 +196,8 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "C02-CLUSTERS (chờ live)",
-  "last_verified_commit": "257817f3",
+  "last_completed_batch": "C02-CLUSTERS",
+  "last_verified_commit": "fb34b81b",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 30,
   "next_article_ids_note": "Thứ tự ưu tiên tiếp theo nên theo dữ liệu GSC khi có; khi chưa có: các hàng legal_review MANDATORY.",
@@ -203,5 +208,8 @@
   ],
   "p0_unchanged_by_design": {
     "/agent/": "giữ ý định trợ lý / WebApplication (đúng chức năng thực)"
-  }
+  },
+  "articles_metadata_changed_and_live_verified": [
+    "BA-0020"
+  ]
 }
