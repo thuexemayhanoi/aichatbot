@@ -1288,6 +1288,134 @@
       "source": "Đối chiếu toàn văn Công báo/Cổng TTĐT Chính phủ 2026-10-23 (data/seo/legal-facts.json)",
       "resolved": "2026-10-23",
       "fix": "tools/seo-body-review.mjs với dữ kiện toàn văn Công báo (Luật 91/2025/QH15; Nghị định 356/2025/NĐ-CP Điều 4, 5, 42; Nghị định 168/2024/NĐ-CP Điều 18; Nghị định 238/2026/NĐ-CP Điều 19)"
+    },
+    {
+      "article": "BA-0017",
+      "reason": "Ghi mũ đạt quy chuẩn cũ được lưu thông đến hết 31/12/2024 như quy định còn áp dụng, thiếu điều kiện hợp quy QCVN 02:2008/BKHCN và lưu thông trước 01/01/2024; giai đoạn chuyển tiếp đã kết thúc (Thông tư 04/2021/TT-BKHCN Điều 4)",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (tt-04-2021-bkhcn-qcvn-2-2021)"
+    },
+    {
+      "article": "BA-0053",
+      "reason": "Ghi \"Luật Bảo hiểm năm 2022 (Luật số 08/2022/QH15, có hiệu lực từ ngày 01/01/2025)\"; đúng là Luật Kinh doanh bảo hiểm, hiệu lực 01/01/2023 (Điều 156 khoản 1)",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (luat-08-2022-hieu-luc)"
+    },
+    {
+      "article": "BA-0221",
+      "reason": "Ghi người chịu trách nhiệm an ninh, trật tự của cơ sở cầm đồ phải có hộ khẩu thường trú; Nghị định 56/2023/NĐ-CP sửa Điều 9 Nghị định 96/2016/NĐ-CP đã bỏ yêu cầu này từ 15/8/2023",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (nd-96-2016-cam-do-giay-chung-nhan, nd-56-2023-cam-do)"
+    },
+    {
+      "article": "BA-0233",
+      "reason": "Ghi Chính phủ ban hành Quyết định 13/2026/QĐ-TTg; cơ quan ban hành là Thủ tướng Chính phủ",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (qd-13-2026-lo-trinh-kiem-dinh)"
+    },
+    {
+      "article": "BA-0239",
+      "reason": "Dẫn Thông tư 60/2023/TT-BTC (đã bị Thông tư 155/2025/TT-BTC thay thế từ 01/01/2026) như quy định đang áp dụng | Phí bảo hiểm trách nhiệm dân sự \"55.000–290.000 đồng tùy dung tích xe\": mức 290.000 đồng chỉ dành cho mô tô ba bánh và xe gắn máy còn lại (Phụ lục I Nghị định 67/2023/NĐ-CP) | Ghi kiểm định khí thải \"bắt buộc từ 01/7/2027\", thiếu thời hạn 18 tháng trước khi xử lý vi phạm (Quyết định 13/2026/QĐ-TTg Điều 6 khoản 2)",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (nd-67-2023-phi-xe-may, tt-155-2025-btc-thay-the, qd-13-2026-lo-trinh-kiem-dinh)"
+    },
+    {
+      "article": "BA-0246",
+      "reason": "Ghi Hòa Bình, Vĩnh Phúc \"sáp nhập vào tỉnh Phú Thọ\" từ 01/7/2025; Nghị quyết 202/2025/QH15 sắp xếp ba tỉnh thành tỉnh mới tên Phú Thọ, hiệu lực 12/6/2025, chính quyền mới hoạt động từ 01/7/2025",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (nq-202-2025-qh15-phu-tho)"
+    },
+    {
+      "article": "BA-0503",
+      "reason": "Ghi người chịu trách nhiệm an ninh, trật tự của cơ sở cầm đồ phải có hộ khẩu thường trú; Nghị định 56/2023/NĐ-CP sửa Điều 9 Nghị định 96/2016/NĐ-CP đã bỏ yêu cầu này từ 15/8/2023",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (nd-96-2016-cam-do-giay-chung-nhan, nd-56-2023-cam-do)"
+    },
+    {
+      "article": "BA-0521",
+      "reason": "Dẫn Thông tư 60/2023/TT-BTC (đã bị Thông tư 155/2025/TT-BTC thay thế từ 01/01/2026) như quy định đang áp dụng | Phí bảo hiểm trách nhiệm dân sự \"55.000–290.000 đồng tùy dung tích xe\" (Phụ lục I Nghị định 67/2023/NĐ-CP) | Ghi kiểm định khí thải \"bắt buộc\" từ mốc bắt đầu, thiếu thời hạn 18 tháng (Quyết định 13/2026/QĐ-TTg Điều 6 khoản 2)",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (nd-67-2023-phi-xe-may, tt-155-2025-btc-thay-the, tt-155-2025-btc-xe-mo-to, qd-13-2026-lo-trinh-kiem-dinh)"
+    },
+    {
+      "article": "BA-0606",
+      "reason": "Ghi Hòa Bình \"sáp nhập vào tỉnh Phú Thọ\" từ 01/7/2025; Nghị quyết 202/2025/QH15 sắp xếp ba tỉnh thành tỉnh mới tên Phú Thọ, hiệu lực 12/6/2025, chính quyền mới hoạt động từ 01/7/2025",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (nq-202-2025-qh15-phu-tho)"
+    },
+    {
+      "article": "BA-0612",
+      "reason": "Ghi Vĩnh Phúc \"sáp nhập vào tỉnh Phú Thọ\" từ 01/7/2025; Nghị quyết 202/2025/QH15 sắp xếp ba tỉnh thành tỉnh mới tên Phú Thọ, hiệu lực 12/6/2025, chính quyền mới hoạt động từ 01/7/2025",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (nq-202-2025-qh15-phu-tho)"
+    },
+    {
+      "article": "BA-0797",
+      "reason": "Ghi mốc kiểm định khí thải Hà Nội là \"dự kiến\", thiếu thời hạn 18 tháng trước khi xử lý vi phạm (Quyết định 13/2026/QĐ-TTg Điều 4 khoản 1, Điều 6 khoản 2)",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (qd-13-2026-lo-trinh-kiem-dinh)"
+    },
+    {
+      "article": "BA-0803",
+      "reason": "Dẫn Thông tư 60/2023/TT-BTC (đã bị Thông tư 155/2025/TT-BTC thay thế từ 01/01/2026) như quy định đang áp dụng",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (tt-155-2025-btc-thay-the)"
+    },
+    {
+      "article": "BA-0863",
+      "reason": "Mục \"Hiệu lực\" ghi ngày ban hành 15/6/2021; Thông tư 04/2021/TT-BKHCN có hiệu lực 01/8/2021, bắt buộc với mũ sản xuất, nhập khẩu từ 01/01/2024",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (tt-04-2021-bkhcn-qcvn-2-2021)"
+    },
+    {
+      "article": "BA-1085",
+      "reason": "Dẫn Thông tư 60/2023/TT-BTC (đã bị Thông tư 155/2025/TT-BTC thay thế từ 01/01/2026) như quy định đang áp dụng",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (tt-155-2025-btc-thay-the)"
+    },
+    {
+      "article": "BA-1361",
+      "reason": "Suy diễn \"trước mốc 01/7/2027 chưa có giấy chứng nhận khí thải không bị xử phạt\" không có trong Quyết định 13/2026/QĐ-TTg; văn bản đặt thời hạn 18 tháng sau mốc bắt đầu rồi mới kiểm tra, xử lý vi phạm (Điều 6 khoản 2)",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (qd-13-2026-lo-trinh-kiem-dinh)"
+    },
+    {
+      "article": "BA-1367",
+      "reason": "Dẫn Thông tư 60/2023/TT-BTC (đã bị Thông tư 155/2025/TT-BTC thay thế từ 01/01/2026) như quy định đang áp dụng, kể cả lệ phí sang tên | Ghi đối tượng mua bảo hiểm bắt buộc gồm cả người điều khiển; khoản 1 Điều 2 Nghị định 67/2023/NĐ-CP áp dụng cho chủ xe cơ giới | Ghi kiểm định khí thải \"dự kiến\", thiếu thời hạn 18 tháng (Quyết định 13/2026/QĐ-TTg)",
+      "flagged": "2026-10-30",
+      "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
+      "resolved": "2026-10-30",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (tt-155-2025-btc-thay-the, tt-155-2025-btc-xe-mo-to, nd-67-2023-chu-xe, qd-13-2026-lo-trinh-kiem-dinh)"
     }
   ]
 }

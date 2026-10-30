@@ -14,10 +14,10 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | URL | Loại trang | Từ khóa chính | Ý định | Cụm | Vị trí trong kiến trúc | Mục tiêu chuyển đổi | Nhóm từ khóa engine | Ý định SERP của nhóm |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | /blog/huong-dan/deo-doc-va-xe-may-thue-tai-ha-noi/ | Bài viết | đi đèo dốc gần Hà Nội bằng xe máy thuê | Thông tin / hướng dẫn | K04 | Supporting của pillar họ chủ đề | Đọc xong → trang giá / liên hệ | đi chơi gần hà nội bằng xe máy \| phượt xe máy gần hà nội | Thương mại (công cụ) \| Giao dịch – địa phương |
-| / | Trang chủ (website) | trợ lý thuê xe máy | Điều hướng / thông tin sản phẩm | K01 | Trang chủ (pillar thương hiệu / K01) | Điều hướng tới Agent, cẩm nang, trang giá / liên hệ |  |  |
+| / | Trang chủ (website) | cho thuê xe máy ở Hà Nội | Thương mại / dịch vụ cho thuê | K02 | Trang chủ (pillar thương hiệu / K01) | Điều hướng tới Agent, cẩm nang, trang giá / liên hệ |  |  |
 | /chinh-sach/ | Trang chính sách thuê xe | chính sách thuê xe máy | Thông tin - chuyển đổi | K04 | Trang chuyển đổi (chính sách) | Liên hệ / đặt xe (Zalo, điện thoại) |  |  |
-| /gia-thue/ | Trang chuyển đổi (giá) | bảng giá thuê xe máy | Thương mại / chuyển đổi | K02 | Trang chuyển đổi | Liên hệ / đặt xe (Zalo, điện thoại) |  |  |
-| /lien-he/ | Trang chuyển đổi (liên hệ) | liên hệ thuê xe máy Nguyễn Tú | Điều hướng / chuyển đổi | K15 | Trang chuyển đổi | Liên hệ / đặt xe (Zalo, điện thoại) |  |  |
+| /gia-thue/ | Trang chuyển đổi (giá) | giá thuê xe máy Hà Nội | Thương mại / chuyển đổi | K02 | Trang chuyển đổi | Liên hệ / đặt xe (Zalo, điện thoại) |  |  |
+| /lien-he/ | Trang chuyển đổi (liên hệ) | địa chỉ thuê xe máy Nguyễn Tú | Điều hướng / chuyển đổi | K15 | Trang chuyển đổi | Liên hệ / đặt xe (Zalo, điện thoại) |  |  |
 | /blog/ | Blog home | cẩm nang thuê xe máy | Thông tin / điều hướng | Tất | Hub cấp 1 | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/an-toan/ | Hub danh mục | luật giao thông và an toàn khi thuê xe máy | Điều hướng / danh sách | K10 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/app/ | Hub danh mục | hướng dẫn dùng ứng dụng thuê xe máy | Điều hướng / danh sách | K01 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |

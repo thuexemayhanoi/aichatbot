@@ -109,7 +109,23 @@
    "BA-1809",
    "BA-1812",
    "BA-1959",
-   "BA-1961"
+   "BA-1961",
+   "BA-0017",
+   "BA-0053",
+   "BA-0221",
+   "BA-0233",
+   "BA-0239",
+   "BA-0246",
+   "BA-0503",
+   "BA-0521",
+   "BA-0606",
+   "BA-0612",
+   "BA-0797",
+   "BA-0803",
+   "BA-0863",
+   "BA-1085",
+   "BA-1361",
+   "BA-1367"
   ]
  },
  "decisions": 19,
@@ -123,19 +139,19 @@
   "site": {
    "pass": true,
    "broken": 0,
-   "checked": 230895,
-   "sitemap": 2137,
+   "checked": 402449,
+   "sitemap": 2138,
    "published": 2006
   },
   "score": {
-   "total": 99.7,
+   "total": 99.6,
    "pass": true,
-   "issues": 493
+   "issues": 586
   },
   "matrix": {
-   "urls": 2137,
+   "urls": 2138,
    "by_status": {
-    "DONE": 2137,
+    "DONE": 2138,
     "KEEP": 0,
     "TECH-DONE": 0,
     "PLANNED": 0
@@ -152,10 +168,10 @@
      "PUBLISHED": 2006
     },
     "published": 2006,
-    "sitemap": 2137,
-    "uniqueSitemap": 2137,
+    "sitemap": 2138,
+    "uniqueSitemap": 2138,
     "publishedInSitemap": 2006,
-    "otherSitemapUrls": 131,
+    "otherSitemapUrls": 132,
     "manifestIds": 2006,
     "gscPerformancePageRows": null
    }
