@@ -437,8 +437,8 @@ ${cats}
         </div>`;
   const content = `      <section class="v3-hero" aria-label="${esc(H.kicker)}">
 ${screenHead({ label: H.kicker, title: H.h1, lead: fact(H.lead) })}        <div class="v3-actions">
-          ${btn(AGENT_URL, H.ctaAgent, { primary: true, glyph: 'chat' })}
-          ${btn('/blog/', H.ctaGuide, { after: 'arrow' })}
+          ${btn('/gia-thue/', H.ctaPrice, { primary: true, glyph: 'tag' })}
+          ${btn(AGENT_URL, H.ctaAgent, { glyph: 'chat' })}
         </div>
         <ul class="home-facts" aria-label="Thông tin nhanh">
 ${facts}

@@ -2,14 +2,14 @@
   "schema": "motoai/commercial-seo-progress@1",
   "scope": "thuexemayhanoi/aichatbot",
   "strategy_date": "2026-10-29",
-  "status": "PLAN_CREATED_NOT_APPLIED",
+  "status": "P0_APPLIED_PENDING_LIVE_VERIFY",
   "goal": "Google 2-10 target for cho thuê xe máy ở Hà Nội; not guaranteed",
   "ranking_baseline": "NOT_MEASURED_GSC_NOT_CONNECTED",
   "articles_total": 2006,
   "articles_commercial_optimized_and_live_verified": 0,
   "remaining_articles": 2006,
   "batch_size": 30,
-  "phase": "P0_COMMERCIAL_URL_AUDIT",
+  "phase": "P1_COMMERCIAL_P0_URLS",
   "p0_urls": [
     "https://chatbot.thuexemaynguyentu.com/",
     "https://chatbot.thuexemaynguyentu.com/gia-thue/",
@@ -48,7 +48,47 @@
     "BA-0057",
     "BA-0060"
   ],
-  "batches": [],
+  "batches": [
+    {
+      "batch_id": "C00-P0",
+      "started": "2026-10-30",
+      "branch": "claude/motoai-image-factory-seo-1uf2q3",
+      "baseline": {
+        "main": "8f9efd9f",
+        "tests": "1177/1177",
+        "site_audit": "PASS, 2138 pages = 2138 sitemap URLs, 0 broken links",
+        "seo_score": "99.6/100, migration gate PASS",
+        "gsc": "NOT_MEASURED_GSC_NOT_CONNECTED"
+      },
+      "serp_evidence": "data/seo/serp-snapshots/2026-10-14.json (Google Việt Nam): \"thuê xe máy hà nội\" = trang chủ dịch vụ cho thuê (motogo, hanoibiker, mototrip), trang Facebook cửa hàng, bài danh sách địa chỉ, local pack; \"giá thuê xe máy hà nội\" = trang bảng giá + danh sách",
+      "urls": {
+        "/": {
+          "old_title": "MotoAI — Trợ lý & ứng dụng thuê xe máy, xe điện tại Hà Nội",
+          "old_h1": "Trợ lý thuê xe máy Hà Nội",
+          "new_title": "Cho thuê xe máy ở Hà Nội: xe số, xe ga, xe điện | MotoAI",
+          "new_h1": "Cho thuê xe máy ở Hà Nội",
+          "changes": "title, H1, meta description, lead (cửa hàng thật, loại xe trong pricing.json, giao xe trong giờ mở cửa khi hẹn trước — business.json; không giá, không \"miễn cọc\"); CTA chính \"Xem bảng giá thuê\" → /gia-thue/, Agent là CTA phụ; schema và bố cục Apple V3 giữ nguyên"
+        },
+        "/gia-thue/": {
+          "old_title": "Bảng giá thuê xe máy & xe điện theo ngày, tuần, tháng",
+          "old_h1": "Bảng giá thuê xe",
+          "new_title": "Giá thuê xe máy Hà Nội theo ngày, tuần, tháng | Bảng giá",
+          "new_h1": "Bảng giá thuê xe máy Hà Nội",
+          "changes": "title, H1, meta description, lead (vị trí cửa hàng); bảng giá từ pricing.json giữ nguyên"
+        },
+        "/lien-he/": {
+          "old_title": "Liên hệ thuê xe máy Nguyễn Tú — điện thoại, WhatsApp, bản đồ",
+          "new_title": "Địa chỉ thuê xe máy Nguyễn Tú, Long Biên — điện thoại, bản đồ",
+          "changes": "title only (H1 \"Liên hệ\" giữ)"
+        },
+        "/agent/": {
+          "changes": "không đổi — giữ ý định trợ lý/WebApplication (đã đúng chức năng thực, MT-P4-01)"
+        }
+      },
+      "qa": "node --test 1178/1178; site-audit PASS 0 broken links; seo-score 99.6 PASS; seo-commercial-matrix --check clean; Playwright desktop 1440 + mobile 390: no overflow, 1 H1, 2 hero CTA",
+      "live_verified": null
+    }
+  ],
   "rules": [
     "Do not claim pages optimized merely because the SEO matrix was generated",
     "Confirm real live deployment and QA per URL before incrementing completed count",
