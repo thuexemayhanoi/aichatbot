@@ -2,14 +2,14 @@
   "schema": "motoai/commercial-seo-progress@1",
   "scope": "thuexemayhanoi/aichatbot",
   "strategy_date": "2026-10-29",
-  "status": "PLAN_CREATED_NOT_APPLIED",
+  "status": "P0_APPLIED_PENDING_LIVE_VERIFY",
   "goal": "Google 2-10 target for cho thuê xe máy ở Hà Nội; not guaranteed",
   "ranking_baseline": "NOT_MEASURED_GSC_NOT_CONNECTED",
   "articles_total": 2006,
   "articles_commercial_optimized_and_live_verified": 0,
   "remaining_articles": 2006,
   "batch_size": 30,
-  "phase": "P0_COMMERCIAL_URL_AUDIT",
+  "phase": "P1_COMMERCIAL_P0_URLS",
   "p0_urls": [
     "https://chatbot.thuexemaynguyentu.com/",
     "https://chatbot.thuexemaynguyentu.com/gia-thue/",
@@ -48,7 +48,86 @@
     "BA-0057",
     "BA-0060"
   ],
-  "batches": [],
+  "batches": [
+    {
+      "batch_id": "C00-P0",
+      "started": "2026-10-30",
+      "branch": "claude/motoai-image-factory-seo-1uf2q3",
+      "baseline": {
+        "main": "8f9efd9f",
+        "tests": "1177/1177",
+        "site_audit": "PASS, 2138 pages = 2138 sitemap URLs, 0 broken links",
+        "seo_score": "99.6/100, migration gate PASS",
+        "gsc": "NOT_MEASURED_GSC_NOT_CONNECTED"
+      },
+      "serp_evidence": "data/seo/serp-snapshots/2026-10-14.json (Google Việt Nam): \"thuê xe máy hà nội\" = trang chủ dịch vụ cho thuê (motogo, hanoibiker, mototrip), trang Facebook cửa hàng, bài danh sách địa chỉ, local pack; \"giá thuê xe máy hà nội\" = trang bảng giá + danh sách",
+      "urls": {
+        "/": {
+          "old_title": "MotoAI — Trợ lý & ứng dụng thuê xe máy, xe điện tại Hà Nội",
+          "old_h1": "Trợ lý thuê xe máy Hà Nội",
+          "new_title": "Cho thuê xe máy ở Hà Nội: xe số, xe ga, xe điện | MotoAI",
+          "new_h1": "Cho thuê xe máy ở Hà Nội",
+          "changes": "title, H1, meta description, lead (cửa hàng thật, loại xe trong pricing.json, giao xe trong giờ mở cửa khi hẹn trước — business.json; không giá, không \"miễn cọc\"); CTA chính \"Xem bảng giá thuê\" → /gia-thue/, Agent là CTA phụ; schema và bố cục Apple V3 giữ nguyên"
+        },
+        "/gia-thue/": {
+          "old_title": "Bảng giá thuê xe máy & xe điện theo ngày, tuần, tháng",
+          "old_h1": "Bảng giá thuê xe",
+          "new_title": "Giá thuê xe máy Hà Nội theo ngày, tuần, tháng | Bảng giá",
+          "new_h1": "Bảng giá thuê xe máy Hà Nội",
+          "changes": "title, H1, meta description, lead (vị trí cửa hàng); bảng giá từ pricing.json giữ nguyên"
+        },
+        "/lien-he/": {
+          "old_title": "Liên hệ thuê xe máy Nguyễn Tú — điện thoại, WhatsApp, bản đồ",
+          "new_title": "Địa chỉ thuê xe máy Nguyễn Tú, Long Biên — điện thoại, bản đồ",
+          "changes": "title only (H1 \"Liên hệ\" giữ)"
+        },
+        "/agent/": {
+          "changes": "không đổi — giữ ý định trợ lý/WebApplication (đã đúng chức năng thực, MT-P4-01)"
+        }
+      },
+      "qa": "node --test 1178/1178; site-audit PASS 0 broken links; seo-score 99.6 PASS; seo-commercial-matrix --check clean; Playwright desktop 1440 + mobile 390: no overflow, 1 H1, 2 hero CTA",
+      "live_verified": null
+    },
+    {
+      "batch_id": "C01",
+      "reviewed": "2026-10-30",
+      "article_ids": [
+        "BA-0002",
+        "BA-0003",
+        "BA-0006",
+        "BA-0008",
+        "BA-0009",
+        "BA-0012",
+        "BA-0014",
+        "BA-0015",
+        "BA-0018",
+        "BA-0020",
+        "BA-0021",
+        "BA-0024",
+        "BA-0026",
+        "BA-0027",
+        "BA-0030",
+        "BA-0032",
+        "BA-0033",
+        "BA-0036",
+        "BA-0038",
+        "BA-0039",
+        "BA-0042",
+        "BA-0044",
+        "BA-0045",
+        "BA-0048",
+        "BA-0050",
+        "BA-0051",
+        "BA-0054",
+        "BA-0056",
+        "BA-0057",
+        "BA-0060"
+      ],
+      "outcome": "REVIEWED_NO_CHANGE",
+      "evidence": "30/30 tiêu đề đề xuất trong SEO-COMMERCIAL-2006.csv trùng tiêu đề đã duyệt đang live (data/seo/article-meta.json); title 49–62 ký tự, description 142–158, 1.573–1.997 từ, 6–12 H2, có mục câu hỏi thường gặp; mọi bài có CTA tới /gia-thue/ và /lien-he/; không bài nào lấy ý định của trang chủ/giá/liên hệ (test seo-ownership); 14/30 đã qua review body (data/seo/body-reviews.json); ảnh: 28/30 LIVE_VERIFIED, BA-0056 và BA-0060 chờ xưởng ảnh (đang tạm dừng)",
+      "reason_no_change": "Không đổi tiêu đề/thân bài chỉ để có thay đổi: metadata đã tối ưu, ý định đã riêng biệt; chưa có dữ liệu GSC để biết truy vấn yếu."
+    }
+  ],
   "rules": [
     "Do not claim pages optimized merely because the SEO matrix was generated",
     "Confirm real live deployment and QA per URL before incrementing completed count",
@@ -57,5 +136,8 @@
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
   "last_completed_batch": null,
-  "last_verified_commit": null
+  "last_verified_commit": null,
+  "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
+  "articles_reviewed_no_change": 30,
+  "next_article_ids_note": "Thứ tự ưu tiên tiếp theo nên theo dữ liệu GSC khi có; khi chưa có: các hàng legal_review MANDATORY."
 }

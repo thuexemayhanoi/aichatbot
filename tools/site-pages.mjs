@@ -41,7 +41,7 @@ export const BLOG_HOME = Object.freeze(home);
 /* Site homepage `/` (v76): its copy lives here too; facts, categories and
    articles come from business.json, taxonomy and the published manifest. */
 const site = REGISTRY.siteHome ?? {};
-for (const key of ['title', 'description', 'kicker', 'h1', 'lead', 'ctaAgent', 'ctaGuide']) {
+for (const key of ['title', 'description', 'kicker', 'h1', 'lead', 'ctaPrice', 'ctaAgent']) {
   if (typeof site[key] !== 'string' || !site[key]) throw new Error(`site-pages: siteHome.${key} must be a non-empty string`);
 }
 for (const s of site.services?.items ?? []) {

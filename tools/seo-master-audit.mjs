@@ -137,11 +137,12 @@ function readMatrix(read) {
 
 const STATIC = {
   // v76: / is the website homepage; the full-screen chat (WebApplication) moved to /agent/.
-  '/': { type: 'Trang chủ (website)', keyword: 'trợ lý thuê xe máy', secondary: 'ứng dụng thuê xe máy; app thuê xe máy; cẩm nang thuê xe máy', intent: 'Điều hướng / thông tin sản phẩm', cluster: 'K01' },
+  // Owner commercial strategy 2026-10-29 (config/seo-ownership.json v2): / owns the rental head.
+  '/': { type: 'Trang chủ (website)', keyword: 'cho thuê xe máy ở Hà Nội', secondary: 'cho thuê xe máy Hà Nội; thuê xe máy Hà Nội; thuê xe máy ở Hà Nội; trợ lý thuê xe máy', intent: 'Thương mại / dịch vụ cho thuê', cluster: 'K02' },
   '/agent/': { type: 'Ứng dụng Agent (chat)', keyword: 'ứng dụng thuê xe máy', secondary: 'app thuê xe máy; app thuê xe điện; ứng dụng thuê xe máy điện; công cụ tính giá thuê xe máy', intent: 'Thông tin sản phẩm / công cụ', cluster: 'K01' },
   '/blog/': { type: 'Blog home', keyword: 'cẩm nang thuê xe máy', secondary: 'kinh nghiệm thuê xe máy; thủ tục thuê xe máy; giá thuê xe máy', intent: 'Thông tin / điều hướng', cluster: '' },
-  '/gia-thue/': { type: 'Trang chuyển đổi (giá)', keyword: 'bảng giá thuê xe máy', secondary: 'giá thuê xe máy theo ngày; giá thuê xe máy theo tháng; giá thuê xe tay ga', intent: 'Thương mại / chuyển đổi', cluster: 'K02' },
-  '/lien-he/': { type: 'Trang chuyển đổi (liên hệ)', keyword: 'liên hệ thuê xe máy Nguyễn Tú', secondary: 'số điện thoại thuê xe máy; địa chỉ thuê xe máy Long Biên', intent: 'Điều hướng / chuyển đổi', cluster: 'K15' },
+  '/gia-thue/': { type: 'Trang chuyển đổi (giá)', keyword: 'giá thuê xe máy Hà Nội', secondary: 'bảng giá thuê xe máy; giá thuê xe máy theo ngày; giá thuê xe máy theo tháng; giá thuê xe tay ga', intent: 'Thương mại / chuyển đổi', cluster: 'K02' },
+  '/lien-he/': { type: 'Trang chuyển đổi (liên hệ)', keyword: 'địa chỉ thuê xe máy Nguyễn Tú', secondary: 'liên hệ thuê xe máy Nguyễn Tú; số điện thoại thuê xe máy; địa chỉ thuê xe máy Long Biên', intent: 'Điều hướng / chuyển đổi', cluster: 'K15' },
   '/chinh-sach/': { type: 'Trang chính sách thuê xe', keyword: 'chính sách thuê xe máy', secondary: 'đặt cọc thuê xe máy; giao xe tận nơi; giấy tờ thuê xe', intent: 'Thông tin - chuyển đổi', cluster: 'K04' },
   '/gioi-thieu/': { type: 'Trang giới thiệu (E-E-A-T)', keyword: 'giới thiệu thuê xe máy Nguyễn Tú', secondary: 'MotoAI; trợ lý thuê xe máy', intent: 'Điều hướng / thương hiệu', cluster: 'K01' },
   '/privacy/': { type: 'Pháp lý', keyword: 'chính sách bảo mật MotoAI', secondary: '', intent: 'Điều hướng', cluster: '' },

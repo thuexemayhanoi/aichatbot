@@ -108,3 +108,28 @@ test('published article titles are unique (no duplicate landing intent)', () => 
   const titles = ARTICLES.map((a) => a.title.toLowerCase());
   assert.equal(new Set(titles).size, titles.length, 'no two published articles share a title');
 });
+
+test('owner commercial strategy 2026-10-29: each commercial intent has exactly one owner URL', () => {
+  const policy = JSON.parse(read('config/seo-ownership.json')).commercial_owner_policy;
+  const head = (p) => {
+    const html = read(p);
+    return {
+      title: /<title>([^<]*)<\/title>/.exec(html)[1].toLowerCase(),
+      h1: /<h1[^>]*>([^<]*)<\/h1>/.exec(html)[1].toLowerCase()
+    };
+  };
+  const home = head('index.html');
+  assert.equal(policy.canonical_head_owner, '/');
+  assert.ok(home.title.includes(policy.target_head.toLowerCase()) && home.h1.includes(policy.target_head.toLowerCase()),
+    `/ owns "${policy.target_head}" in title and H1`);
+  const price = head('gia-thue/index.html');
+  assert.ok(price.title.includes('giá thuê xe máy hà nội') && price.h1.includes('hà nội'), '/gia-thue/ owns the Hanoi price intent');
+  assert.ok(head('lien-he/index.html').title.includes('địa chỉ thuê xe máy'), '/lien-he/ owns the address/contact intent');
+  // No article title competes with the homepage head or the price owner.
+  const meta = JSON.parse(read('data/seo/article-meta.json'));
+  const reviewed = meta.articles ?? meta;
+  for (const a of JSON.parse(read('data/blog/published.json')).articles) {
+    const t = (reviewed[a.article_id]?.title ?? a.title).toLowerCase();
+    assert.ok(!/cho thuê xe máy (ở )?hà nội|giá thuê xe máy (ở )?hà nội/.test(t), `${a.article_id}: title takes a commercial owner intent (${t})`);
+  }
+});

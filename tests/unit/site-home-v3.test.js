@@ -59,13 +59,16 @@ test('sections render in the agreed order: hero, services, Agent, guide, feature
   assert.ok(order.at(-1) < html.indexOf('<footer class="blog-footer">'), 'footer closes the page');
 });
 
-test('hero: two CTAs — Hỏi Agent opens /agent/, Khám phá cẩm nang opens /blog/', () => {
+test('hero: commercial intent first — Xem bảng giá thuê opens /gia-thue/, Hỏi Agent opens /agent/', () => {
+  // Owner commercial SEO strategy 2026-10-29: / owns "cho thuê xe máy ở Hà Nội";
+  // the price page is the primary conversion, the Agent the supporting tool.
   const hero = main.slice(main.indexOf('class="v3-hero"'), main.indexOf('</section>'));
   const ctas = [...hero.matchAll(/<a class="(v3-btn[^"]*)" href="([^"]+)"[^>]*>[\s\S]*?<span>([^<]+)<\/span>/g)].map((m) => [m[1], m[2], unesc(m[3])]);
   assert.deepEqual(ctas, [
-    ['v3-btn v3-btn-primary', navigation.agent.url, SITE_HOME.ctaAgent],
-    ['v3-btn', '/blog/', SITE_HOME.ctaGuide]
+    ['v3-btn v3-btn-primary', '/gia-thue/', SITE_HOME.ctaPrice],
+    ['v3-btn', navigation.agent.url, SITE_HOME.ctaAgent]
   ]);
+  assert.ok(existsSync(pageFile('/gia-thue/')), 'the price page exists');
   assert.equal(navigation.agent.url, '/agent/');
 });
 

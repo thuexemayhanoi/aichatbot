@@ -2,13 +2,13 @@
   "$schema": "motoai/site-pages@1",
   "note": "Single registry of the non-article pages. tools/build-blog.mjs renders them, sitemap.xml lists them (in this order), tools/site-audit.mjs and tools/seo-score.mjs audit them and the workflows commit/verify them via `node tools/site-pages.mjs --dirs`. Adding a page = one entry here + its body file. Text may use {{ business.* }} placeholders (data/business/business.json).",
   "siteHome": {
-    "title": "MotoAI — Trợ lý & ứng dụng thuê xe máy, xe điện tại Hà Nội",
-    "description": "MotoAI là ứng dụng web về thuê xe máy ở Hà Nội: hỏi Agent về giá thuê tham khảo, thủ tục và cách chọn xe; đọc cẩm nang theo chủ đề, xem thông tin cửa hàng.",
+    "title": "Cho thuê xe máy ở Hà Nội: xe số, xe ga, xe điện | MotoAI",
+    "description": "Cho thuê xe máy ở Hà Nội tại {{ business.address.street }}, {{ business.address.district }}: xe số, xe tay ga, 50cc, xe điện theo ngày, tuần, tháng. Xem giá tham khảo, hỏi Agent, gọi cửa hàng.",
     "kicker": "MotoAI · Hà Nội",
-    "h1": "Trợ lý thuê xe máy Hà Nội",
-    "lead": "MotoAI là ứng dụng thuê xe máy dạng web: giúp bạn tìm hiểu xe máy, giá thuê tham khảo, thủ tục, phương tiện và kinh nghiệm di chuyển ở Hà Nội — hỏi Agent hoặc đọc cẩm nang trước khi liên hệ cửa hàng.",
+    "h1": "Cho thuê xe máy ở Hà Nội",
+    "lead": "Cửa hàng {{ business.brand }} ở {{ business.address.street }}, {{ business.address.district }} cho thuê xe số, xe ga, 50cc và xe điện theo ngày, tuần, tháng, có giao xe trong giờ mở cửa khi hẹn trước. Xem bảng giá tham khảo hoặc hỏi Agent MotoAI — ứng dụng thuê xe máy dạng web — rồi gọi cửa hàng để giữ xe.",
     "ctaAgent": "Hỏi Agent",
-    "ctaGuide": "Khám phá cẩm nang",
+    "ctaPrice": "Xem bảng giá thuê",
     "services": {
       "title": "Dịch vụ",
       "lead": "Những việc thường cần khi thuê xe — mỗi mục dẫn tới trang có nội dung thật.",
@@ -141,7 +141,7 @@
       "dir": "lien-he",
       "screen": "contact",
       "title": "Liên hệ",
-      "seoTitle": "Liên hệ thuê xe máy {{ business.brand }} — điện thoại, WhatsApp, bản đồ",
+      "seoTitle": "Địa chỉ thuê xe máy {{ business.brand }}, {{ business.address.district }} — điện thoại, bản đồ",
       "description": "Liên hệ {{ business.display_name }} tại {{ business.address.street }}, {{ business.address.district }}: số điện thoại, WhatsApp, bản đồ chỉ đường, giờ mở cửa {{ business.hours.display }}.",
       "body": "data/site/lien-he.body.html",
       "schema": [
@@ -154,10 +154,10 @@
       "kind": "price",
       "crumb": "Giá thuê",
       "kicker": "Dịch vụ",
-      "title": "Bảng giá thuê xe",
-      "seoTitle": "Bảng giá thuê xe máy & xe điện theo ngày, tuần, tháng",
-      "description": "Bảng giá thuê xe máy tham khảo theo ngày, tuần, tháng cho xe số, xe tay ga và xe điện. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.",
-      "lead": "Giá tham khảo theo loại xe và thời gian thuê. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.",
+      "title": "Bảng giá thuê xe máy Hà Nội",
+      "seoTitle": "Giá thuê xe máy Hà Nội theo ngày, tuần, tháng | Bảng giá",
+      "description": "Giá thuê xe máy ở Hà Nội theo ngày, tuần, tháng: xe số, xe tay ga, 50cc, xe điện, kèm tiền cọc tách riêng. Giá thực tế được xác nhận trước khi đặt xe.",
+      "lead": "Giá tham khảo tại cửa hàng {{ business.brand }} ({{ business.address.street }}, {{ business.address.district }}, Hà Nội) theo loại xe và thời gian thuê. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.",
       "askTopic": "giá thuê xe"
     },
     {
