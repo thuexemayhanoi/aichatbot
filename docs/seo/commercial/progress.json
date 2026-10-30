@@ -131,6 +131,57 @@
       "outcome": "REVIEWED_NO_CHANGE",
       "evidence": "30/30 tiêu đề đề xuất trong SEO-COMMERCIAL-2006.csv trùng tiêu đề đã duyệt đang live (data/seo/article-meta.json); title 49–62 ký tự, description 142–158, 1.573–1.997 từ, 6–12 H2, có mục câu hỏi thường gặp; mọi bài có CTA tới /gia-thue/ và /lien-he/; không bài nào lấy ý định của trang chủ/giá/liên hệ (test seo-ownership); 14/30 đã qua review body (data/seo/body-reviews.json); ảnh: 28/30 LIVE_VERIFIED, BA-0056 và BA-0060 chờ xưởng ảnh (đang tạm dừng)",
       "reason_no_change": "Không đổi tiêu đề/thân bài chỉ để có thay đổi: metadata đã tối ưu, ý định đã riêng biệt; chưa có dữ liệu GSC để biết truy vấn yếu."
+    },
+    {
+      "batch_id": "C02-CLUSTERS",
+      "reviewed": "2026-10-30",
+      "scope": "22 cụm thương mại trong SEO-COMMERCIAL-TARGETS.csv — xác nhận URL chủ thật (hub chỉ là ứng viên ban đầu)",
+      "evidence_sources": [
+        "data/seo/serp-snapshots/2026-10-14.json (Google VN, top 10 + local pack)",
+        "data/seo/keyword-demand.json (OpenRush research_keywords, Google Ads volume VN, 2026-10-14)"
+      ],
+      "owners": {
+        "CORE": "/",
+        "PRICE": "/gia-thue/",
+        "CONTACT": "/lien-he/",
+        "LONGBIEN": "/lien-he/ (cửa hàng ở Long Biên; title \"Địa chỉ thuê xe máy Nguyễn Tú, Long Biên\")",
+        "AGENT": "/agent/",
+        "EV": "/blog/xe-dien/ (hub, title đã \"Thuê xe máy điện Hà Nội: …\")",
+        "MONTH": "BA-0020 /blog/thue-xe/thue-xe-may-theo-thang/",
+        "DAY": "BA-0008",
+        "WEEK": "BA-0014",
+        "VISION": "BA-0050",
+        "WAVE": "BA-0032 / BA-0062",
+        "AIRBLADE": "BA-0056",
+        "50CC": "BA-0044",
+        "DELIVERY": "BA-0070 (thủ tục giao xe) + /lien-he/",
+        "DEPOSIT": "BA-0046 (cách đặt cọc) / BA-0080 (mức cọc) — hai ý định khác nhau",
+        "DOCUMENT": "BA-0004",
+        "FOREIGN": "BA-0128 (thuê xe) / BA-0178 (giấy tờ)",
+        "GIALAM": "BA-0060 (lịch trình) — chưa có dữ liệu nhu cầu",
+        "TAYHO": "CHƯA CÓ URL CHỦ",
+        "BADINH": "CHƯA CÓ URL CHỦ",
+        "HOANKIEM": "CHƯA CÓ URL CHỦ",
+        "EBIKE": "CHƯA CÓ URL CHỦ"
+      },
+      "changes": [
+        {
+          "article_id": "BA-0020",
+          "layer": "data/seo/article-meta.json",
+          "old_title": "Thuê xe máy theo tháng: khi nào đáng lấy và hợp đồng cần gì",
+          "new_title": "Thuê xe máy theo tháng ở Hà Nội: khi nào lợi, hợp đồng cần gì",
+          "why": "nhu cầu đo được \"thuê xe máy theo tháng hà nội\" 70/tháng (keyword-demand.json); bài dùng giá của cửa hàng ở Hà Nội; không chứa cụm đầu của trang chủ; description cập nhật theo"
+        }
+      ],
+      "no_change_reasons": "DAY/WEEK/VISION/WAVE/AIRBLADE/50CC: không có số đo nhu cầu kèm \"Hà Nội\"; SERP các truy vấn này là trang cửa hàng/danh sách địa chỉ, còn bài của site là hướng dẫn — đổi tiêu đề không khớp nội dung; giá theo ngày/tuần/tháng đã do /gia-thue/ sở hữu.",
+      "owner_decisions_needed": [
+        "TAYHO: \"thuê xe máy tây hồ hà nội\" 140/tháng (đo được); SERP 2026-10-14 = bài danh sách địa chỉ, trang cửa hàng, local pack; cửa hàng có giao xe tới Tây Hồ (business.json service_areas). Không có bài nào sở hữu ý định thuê xe ở Tây Hồ — BA-0024 là bài du lịch, đổi tiêu đề sẽ lệch nội dung.",
+        "BADINH / HOANKIEM (Phố Cổ): SERP giao dịch tương tự, nằm trong khu vực giao xe; không có số đo nhu cầu.",
+        "Đề xuất: MỘT trang \"khu vực giao xe\" có chi tiết thật (khu vực, giờ giao, cách hẹn) thay vì nhiều trang quận giống nhau (tránh doorway) — chủ sở hữu thêm ID vào content-matrix.csv để writer viết.",
+        "EBIKE: SERP \"thuê xe đạp điện hà nội\" do xe đạp công cộng TNGo chiếm; cửa hàng có xe đạp điện (pricing.json, giá \"Liên hệ\"); chưa có bài sở hữu."
+      ],
+      "qa": "node --test 1178/1178; site-audit PASS 0 liên kết hỏng; seo-score 99,6 PASS; seo-commercial-matrix tạo lại + --check sạch; image-plan.csv tạo lại (chỉ cột title của BA-0020 đổi)",
+      "live_verified": null
     }
   ],
   "rules": [
@@ -140,7 +191,7 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "C00-P0",
+  "last_completed_batch": "C02-CLUSTERS (chờ live)",
   "last_verified_commit": "257817f3",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 30,
