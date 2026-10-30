@@ -87,7 +87,7 @@
 | phượt xe máy | 90 | OpenRush research_keywords 2026-10-14 | Đã có bài | /blog/huong-dan/do-di-phuot-xe-may/ | Giữ nguyên — bài đã nhắm đúng cụm từ |
 | đồ đi phượt xe máy | 70 | OpenRush research_keywords 2026-10-14 | Đã có bài | /blog/huong-dan/do-di-phuot-xe-may/ | Giữ nguyên — bài đã nhắm đúng cụm từ |
 | phượt tam đảo bằng xe máy | 70 | OpenRush research_keywords 2026-10-14 | Phủ một phần | /blog/dia-phuong/tam-dao-bang-xe-may/ | Bổ sung mục/FAQ trả lời đúng câu hỏi vào bài gần nhất (review body) hoặc đề xuất bài mới |
-| thuê xe máy theo tháng hà nội | 70 | OpenSEO get_keyword_metrics 2026-10-14 | Đã có bài | /blog/thue-xe/thue-xe-may-theo-thang/ | Đã có bài phù hợp; nếu đây là trang đích chính, đưa cụm từ chính xác vào title/meta (data/seo/article-meta.json) |
+| thuê xe máy theo tháng hà nội | 70 | OpenSEO get_keyword_metrics 2026-10-14 | Đã có bài | /blog/thue-xe/thue-xe-may-theo-thang/ | Giữ nguyên — bài đã nhắm đúng cụm từ |
 | app cho thuê xe máy | 50 | OpenRush research_keywords 2026-10-14 | Đã có bài | /blog/app/cach-tinh-gia-thue-xe-bang-app-cho-khach-nuoc-ngoai/ | Đã có bài phù hợp; nếu đây là trang đích chính, đưa cụm từ chính xác vào title/meta (data/seo/article-meta.json) |
 | app thuê xe điện | 50 | OpenRush research_keywords 2026-10-14 | Đã có bài | /blog/xe-dien/app-thue-xe-dien/ | Giữ nguyên — bài đã nhắm đúng cụm từ |
 | đi phượt bằng xe máy | 50 | OpenRush research_keywords 2026-10-14 | Đã có bài | /blog/huong-dan/di-phuot-bang-xe-may/ | Giữ nguyên — bài đã nhắm đúng cụm từ |

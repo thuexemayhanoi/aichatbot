@@ -1,31 +1,20 @@
 {
  "$schema": "motoai/legal-citations@1",
- "registry_checked": "2026-10-23",
+ "registry_checked": "2026-10-30",
  "articles_scanned": 318,
  "counts": {
   "needs_fix": 0,
   "wrong_suffix": 0,
   "amended": 0,
-  "unverified": 10,
+  "unverified": 1,
   "unknown": 0,
-  "documents": 30,
-  "cited_documents": 29
+  "documents": 33,
+  "cited_documents": 30
  },
  "needs_fix": [],
  "wrong_suffix": [],
  "amended": [],
  "unverified": [
-  {
-   "doc": "luat-39-2024",
-   "evidence": "unverified",
-   "status": "in_force",
-   "articles": 1,
-   "pending": "",
-   "sources": [],
-   "sample": [
-    "BA-0239"
-   ]
-  },
   {
    "doc": "bo-luat-dan-su-91-2015",
    "evidence": "unverified",
@@ -42,123 +31,6 @@
     "BA-0257",
     "BA-0263",
     "BA-0269"
-   ]
-  },
-  {
-   "doc": "luat-08-2022",
-   "evidence": "unverified",
-   "status": "in_force",
-   "articles": 1,
-   "pending": "",
-   "sources": [],
-   "sample": [
-    "BA-0053"
-   ]
-  },
-  {
-   "doc": "nd-67-2023",
-   "evidence": "unverified",
-   "status": "in_force",
-   "articles": 11,
-   "pending": "",
-   "sources": [],
-   "sample": [
-    "BA-0053",
-    "BA-0239",
-    "BA-0335",
-    "BA-0521",
-    "BA-0617",
-    "BA-0803",
-    "BA-0899",
-    "BA-1085"
-   ]
-  },
-  {
-   "doc": "nd-96-2016",
-   "evidence": "unverified",
-   "status": "in_force",
-   "articles": 5,
-   "pending": "",
-   "sources": [],
-   "sample": [
-    "BA-0221",
-    "BA-0503",
-    "BA-0785",
-    "BA-1067",
-    "BA-1349"
-   ]
-  },
-  {
-   "doc": "nd-10-2022",
-   "evidence": "unverified",
-   "status": "in_force",
-   "articles": 1,
-   "pending": "",
-   "sources": [],
-   "sample": [
-    "BA-1085"
-   ]
-  },
-  {
-   "doc": "tt-04-2021-bkhcn",
-   "evidence": "unverified",
-   "status": "in_force",
-   "articles": 4,
-   "pending": "",
-   "sources": [],
-   "sample": [
-    "BA-0017",
-    "BA-0299",
-    "BA-0581",
-    "BA-0863"
-   ]
-  },
-  {
-   "doc": "tt-60-2023-btc",
-   "evidence": "unverified",
-   "status": "in_force",
-   "articles": 5,
-   "pending": "",
-   "sources": [],
-   "sample": [
-    "BA-0239",
-    "BA-0521",
-    "BA-0803",
-    "BA-1085",
-    "BA-1367"
-   ]
-  },
-  {
-   "doc": "qd-13-2026-ttg",
-   "evidence": "reported",
-   "status": "in_force",
-   "articles": 7,
-   "pending": "Đọc toàn văn trên Cổng TTĐT Chính phủ: các mốc 01/7/2027 (Hà Nội, TP.HCM), 01/7/2028, 01/7/2030 và mức quy chuẩn theo năm sản xuất (bản tin mâu thuẫn nhau).",
-   "sources": [
-    "https://luatvietnam.vn/tin-van-ban-moi/tu-01-7-2027-ha-noi-va-tphcm-bat-dau-kiem-dinh-khi-thai-xe-may-186-108232-article.html",
-    "https://vnexpress.net/ha-noi-tp-hcm-se-kiem-dinh-khi-thai-xe-may-tu-ngay-1-7-2027-5059602.html"
-   ],
-   "sample": [
-    "BA-0233",
-    "BA-0239",
-    "BA-0515",
-    "BA-0521",
-    "BA-0797",
-    "BA-1361",
-    "BA-1367"
-   ]
-  },
-  {
-   "doc": "nq-202-2025-qh15",
-   "evidence": "unverified",
-   "status": "in_force",
-   "articles": 3,
-   "pending": "",
-   "sources": [],
-   "sample": [
-    "BA-0246",
-    "BA-0606",
-    "BA-0612"
    ]
   }
  ],
@@ -650,9 +522,23 @@
   {
    "id": "luat-39-2024",
    "title": "Luật Thủ đô số 39/2024/QH15",
-   "status": "in_force",
-   "evidence": "unverified",
+   "status": "replaced",
+   "evidence": "fulltext",
    "effective": "2025-01-01",
+   "replaced_by": "luat-02-2026-qh16",
+   "amended_by": null,
+   "amendment_checked": null,
+   "articles_current": [],
+   "articles_historical": [],
+   "by_name": [],
+   "mentions": 0
+  },
+  {
+   "id": "luat-02-2026-qh16",
+   "title": "Luật Thủ đô số 02/2026/QH16",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "effective": "2026-07-01",
    "replaced_by": null,
    "amended_by": null,
    "amendment_checked": null,
@@ -755,17 +641,15 @@
    "id": "luat-08-2022",
    "title": "Luật Kinh doanh bảo hiểm số 08/2022/QH15",
    "status": "in_force",
-   "evidence": "unverified",
+   "evidence": "fulltext",
    "effective": "2023-01-01",
    "replaced_by": null,
    "amended_by": null,
    "amendment_checked": null,
-   "articles_current": [
-    "BA-0053"
-   ],
+   "articles_current": [],
    "articles_historical": [],
    "by_name": [],
-   "mentions": 1
+   "mentions": 0
   },
   {
    "id": "luat-91-2025",
@@ -1130,7 +1014,7 @@
    "id": "nd-67-2023",
    "title": "Nghị định 67/2023/NĐ-CP về bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới, bảo hiểm cháy nổ bắt buộc, bảo hiểm bắt buộc trong hoạt động đầu tư xây dựng",
    "status": "in_force",
-   "evidence": "unverified",
+   "evidence": "fulltext",
    "effective": "2023-09-06",
    "replaced_by": null,
    "amended_by": null,
@@ -1150,7 +1034,7 @@
    ],
    "articles_historical": [],
    "by_name": [],
-   "mentions": 16
+   "mentions": 17
   },
   {
    "id": "nd-03-2021",
@@ -1172,7 +1056,7 @@
    "id": "nd-96-2016",
    "title": "Nghị định 96/2016/NĐ-CP quy định điều kiện về an ninh, trật tự đối với một số ngành, nghề đầu tư kinh doanh có điều kiện",
    "status": "in_force",
-   "evidence": "unverified",
+   "evidence": "fulltext",
    "effective": "2016-07-01",
    "replaced_by": null,
    "amended_by": null,
@@ -1189,10 +1073,27 @@
    "mentions": 6
   },
   {
+   "id": "nd-56-2023",
+   "title": "Nghị định 56/2023/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 96/2016/NĐ-CP, Nghị định 99/2016/NĐ-CP, Nghị định 137/2020/NĐ-CP",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "effective": "2023-08-15",
+   "replaced_by": null,
+   "amended_by": null,
+   "amendment_checked": null,
+   "articles_current": [
+    "BA-0221",
+    "BA-0503"
+   ],
+   "articles_historical": [],
+   "by_name": [],
+   "mentions": 2
+  },
+  {
    "id": "nd-10-2022",
    "title": "Nghị định 10/2022/NĐ-CP quy định về lệ phí trước bạ",
    "status": "in_force",
-   "evidence": "unverified",
+   "evidence": "fulltext",
    "effective": "2022-03-01",
    "replaced_by": null,
    "amended_by": null,
@@ -1244,8 +1145,8 @@
    "id": "tt-04-2021-bkhcn",
    "title": "Thông tư 04/2021/TT-BKHCN ban hành Quy chuẩn kỹ thuật quốc gia về mũ bảo hiểm cho người đi mô tô, xe máy (QCVN 2:2021/BKHCN)",
    "status": "in_force",
-   "evidence": "unverified",
-   "effective": "2022-01-01",
+   "evidence": "fulltext",
+   "effective": "2021-08-01",
    "replaced_by": null,
    "amended_by": null,
    "amendment_checked": null,
@@ -1255,18 +1156,36 @@
     "BA-0581",
     "BA-0863"
    ],
-   "articles_historical": [
-    "BA-0017"
-   ],
+   "articles_historical": [],
    "by_name": [],
    "mentions": 6
   },
   {
    "id": "tt-60-2023-btc",
    "title": "Thông tư 60/2023/TT-BTC quy định mức thu, chế độ thu, nộp, miễn, quản lý lệ phí đăng ký, cấp biển phương tiện giao thông cơ giới đường bộ",
-   "status": "in_force",
-   "evidence": "unverified",
+   "status": "replaced",
+   "evidence": "fulltext",
    "effective": "2023-10-22",
+   "replaced_by": "tt-155-2025-btc",
+   "amended_by": null,
+   "amendment_checked": null,
+   "articles_current": [],
+   "articles_historical": [
+    "BA-0239",
+    "BA-0521",
+    "BA-0803",
+    "BA-1085",
+    "BA-1367"
+   ],
+   "by_name": [],
+   "mentions": 5
+  },
+  {
+   "id": "tt-155-2025-btc",
+   "title": "Thông tư 155/2025/TT-BTC quy định mức thu, chế độ thu, nộp, miễn, quản lý lệ phí đăng ký, cấp biển phương tiện giao thông cơ giới đường bộ",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "effective": "2026-01-01",
    "replaced_by": null,
    "amended_by": null,
    "amendment_checked": null,
@@ -1412,7 +1331,7 @@
    "id": "qd-13-2026-ttg",
    "title": "Quyết định 13/2026/QĐ-TTg quy định lộ trình áp dụng quy chuẩn kỹ thuật quốc gia về khí thải đối với xe mô tô, xe gắn máy",
    "status": "in_force",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "effective": "2026-05-16",
    "replaced_by": null,
    "amended_by": null,
@@ -1466,7 +1385,7 @@
    "id": "nq-202-2025-qh15",
    "title": "Nghị quyết 202/2025/QH15 về việc sắp xếp đơn vị hành chính cấp tỉnh",
    "status": "in_force",
-   "evidence": "unverified",
+   "evidence": "fulltext",
    "effective": "2025-06-12",
    "replaced_by": null,
    "amended_by": null,

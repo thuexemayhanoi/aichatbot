@@ -1,7 +1,7 @@
 {
  "$schema": "motoai/legal-documents@1",
  "note": "Sổ đăng ký hiệu lực các văn bản pháp luật được bài viết trích dẫn (tools/seo-legal-citations.mjs đối chiếu từng trích dẫn trong body với sổ này). status: in_force | amended | replaced | unverified. evidence: fulltext = đã đối chiếu toàn văn (dữ kiện ở data/seo/legal-facts.json); reported = số hiệu, ngày ban hành, ngày hiệu lực và việc thay thế lấy từ Cổng TTĐT Chính phủ/Công báo, cổng công an hoặc nhà xuất bản luật (tiêu đề và bản tin), chưa đọc toàn văn; unverified = chưa đối chiếu trong vòng rà soát nào, chỉ ghi nhận bài đang dẫn. Mọi con số đưa vào bài vẫn chỉ qua legal-facts.json (đối chiếu toàn văn). cite = khóa trích dẫn dạng 'loại|số/năm' (chữ thường); names = tên văn bản khi bài dẫn không kèm số hiệu; suffix = ký hiệu đúng để phát hiện lỗi gõ.",
- "checked": "2026-10-23",
+ "checked": "2026-10-30",
  "documents": [
   {
    "id": "luat-36-2024",
@@ -60,17 +60,47 @@
     "luật|39/2024"
    ],
    "suffix": "QH15",
-   "names": [
-    "luật thủ đô"
-   ],
    "title": "Luật Thủ đô số 39/2024/QH15",
    "issuer": "Quốc hội",
    "issued": "2024-06-28",
    "effective": "2025-01-01",
+   "status": "replaced",
+   "evidence": "fulltext",
+   "sources": [
+    "https://chinhphu.vn/?classid=1&docid=211197&orggroupid=1&pageid=27160",
+    "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Luat-Thu-do-2024-575158.aspx"
+   ],
+   "note": "Đối chiếu 2026-10-30: hết hiệu lực từ 01/7/2026, thay bởi Luật Thủ đô số 02/2026/QH16 (Điều 35 khoản 3). Tên \"Luật Thủ đô\" trong bài nay trỏ tới luật mới. Trước đó, điểm a khoản 2 Điều 28 giao Hội đồng nhân dân Thành phố quyết định vùng phát thải thấp (căn cứ Nghị quyết 57/2025/NQ-HĐND).",
+   "replaced_by": "luat-02-2026-qh16",
+   "replaced_from": "2026-07-01",
+   "facts": [
+    "luat-02-2026-qh16-vung-phat-thai-thap"
+   ]
+  },
+  {
+   "id": "luat-02-2026-qh16",
+   "cite": [
+    "luật|02/2026",
+    "luật|2/2026"
+   ],
+   "suffix": "QH16",
+   "names": [
+    "luật thủ đô"
+   ],
+   "title": "Luật Thủ đô số 02/2026/QH16",
+   "issuer": "Quốc hội",
+   "issued": "2026-04-23",
+   "effective": "2026-07-01",
    "status": "in_force",
-   "evidence": "unverified",
-   "sources": [],
-   "note": "Bài về vùng phát thải thấp dẫn theo tên; chưa đối chiếu toàn văn."
+   "evidence": "fulltext",
+   "facts": [
+    "luat-02-2026-qh16-vung-phat-thai-thap"
+   ],
+   "sources": [
+    "https://congbao.chinhphu.vn/van-ban/luat-so-02-2026-qh16-469529.htm",
+    "https://luatvietnam.vn/hanh-chinh/luat-thu-do-2026-so-02-2026-qh16-434057-d1.html"
+   ],
+   "note": "Đối chiếu 2026-10-30: thông qua 23/4/2026, hiệu lực 01/7/2026 (khoản 4 Điều 8, khoản 6 Điều 36 hiệu lực từ ngày thông qua); thay thế Luật Thủ đô số 39/2024/QH15. Điểm e khoản 1 Điều 13: Hội đồng nhân dân Thành phố quy định phạm vi vùng phát thải thấp. Việc chờ: đối chiếu Điều 36 (chuyển tiếp) với hiệu lực tiếp tục của Nghị quyết 57/2025/NQ-HĐND."
   },
   {
    "id": "bo-luat-dan-su-91-2015",
@@ -108,9 +138,15 @@
    "issued": "2022-06-16",
    "effective": "2023-01-01",
    "status": "in_force",
-   "evidence": "unverified",
-   "sources": [],
-   "note": ""
+   "evidence": "fulltext",
+   "sources": [
+    "https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/07/08-2-2022-qh15.pdf",
+    "https://vbpl.vn/en/van-ban/chi-tiet/van-ban-hop-nhat-so-31-vbhn-vpqh-hop-nhat-luat-kinh-doanh-bao-hiem-so-08-2022-qh15--cafd0ed0-8fe9-11f1-8f01-05b5b18fadb4"
+   ],
+   "note": "Toàn văn Công báo 577+578 và văn bản hợp nhất 31/VBHN-VPQH đối chiếu 2026-10-30: thông qua 16/6/2022, hiệu lực 01/01/2023 (Điều 156 khoản 1). Được sửa đổi bởi Luật 139/2025/QH15 (hiệu lực 01/01/2026) — khoản 1 Điều 156 không đổi. Bài ghi \"Luật Bảo hiểm năm 2022 ... hiệu lực 01/01/2025\" đã sửa qua tools/seo-body-review.mjs.",
+   "facts": [
+    "luat-08-2022-hieu-luc"
+   ]
   },
   {
    "id": "luat-91-2025",
@@ -272,9 +308,18 @@
    "issued": "2023-09-06",
    "effective": "2023-09-06",
    "status": "in_force",
-   "evidence": "unverified",
-   "sources": [],
-   "note": "Chưa đối chiếu toàn văn; chưa tìm văn bản sửa đổi."
+   "evidence": "fulltext",
+   "sources": [
+    "https://vanban.chinhphu.vn/?pageid=27160&docid=208599",
+    "https://thuvienphapluat.vn/van-ban/Bao-hiem/Nghi-dinh-67-2023-ND-CP-bao-hiem-bat-buoc-trach-nhiem-dan-su-cua-chu-xe-co-gioi-578283.aspx",
+    "https://qlda.gxd.vn/van-ban/bao-hiem/nghi-dinh-67-2023.html"
+   ],
+   "note": "Đối chiếu 2026-10-30 (PDF trên vanban.chinhphu.vn là ảnh quét; câu chữ đọc từ toàn văn thuvienphapluat, qlda.gxd.vn, vcci.com.vn). Ban hành và hiệu lực 06/9/2023, thay thế Nghị định 03/2021/NĐ-CP (Điều 77). Được sửa đổi bởi Nghị định 220/2026/NĐ-CP (hiệu lực 01/7/2026): đổi \"người thứ ba\" thành \"bên thứ ba\", sửa các điều về bảo hiểm xây dựng; Điều 8, 9, 77 và Phụ lục I (phí xe mô tô, xe máy) giữ nguyên. Bài ghi phí \"55.000–290.000 đồng tùy dung tích xe\" đã sửa: 290.000 đồng chỉ dành cho mô tô ba bánh và xe gắn máy còn lại.",
+   "facts": [
+    "nd-67-2023-hieu-luc",
+    "nd-67-2023-phi-xe-may",
+    "nd-67-2023-chu-xe"
+   ]
   },
   {
    "id": "nd-03-2021",
@@ -305,9 +350,38 @@
    "issued": "2016-07-01",
    "effective": "2016-07-01",
    "status": "in_force",
-   "evidence": "unverified",
-   "sources": [],
-   "note": "Được sửa đổi bởi Nghị định 56/2023/NĐ-CP (chưa đối chiếu); bài cầm đồ xe máy dẫn."
+   "evidence": "fulltext",
+   "sources": [
+    "https://vanban.chinhphu.vn/?pageid=27160&docid=185935",
+    "https://luatvietnam.vn/dau-tu/nghi-dinh-96-2016-nd-cp-chinh-phu-107490-d1.html",
+    "https://luatvietnam.vn/dau-tu/nghi-dinh-56-2023-nd-cp-sua-nghi-dinh-96-2016-nd-cp-99-2016-nd-cp-137-2020-nd-cp-261145-d1.html"
+   ],
+   "note": "Đối chiếu 2026-10-30 (bản PDF ký số trên vanban.chinhphu.vn là ảnh quét; câu chữ đọc từ toàn văn luatvietnam, ngày tháng từ vanban.chinhphu.vn, congbao.chinhphu.vn). Được sửa đổi bởi Nghị định 56/2023/NĐ-CP (Điều 9 cầm đồ, từ 15/8/2023: bỏ yêu cầu hộ khẩu thường trú của người chịu trách nhiệm an ninh, trật tự), Nghị định 58/2026/NĐ-CP (từ 15/3/2026) và Nghị định 392/2026/NĐ-CP (từ 15/11/2026) — hai văn bản sau không sửa Điều 9. Bài ghi điều kiện hộ khẩu thường trú như đang áp dụng đã sửa qua tools/seo-body-review.mjs.",
+   "facts": [
+    "nd-96-2016-cam-do-giay-chung-nhan",
+    "nd-56-2023-cam-do"
+   ]
+  },
+  {
+   "id": "nd-56-2023",
+   "cite": [
+    "nghị định|56/2023"
+   ],
+   "suffix": "NĐ-CP",
+   "title": "Nghị định 56/2023/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 96/2016/NĐ-CP, Nghị định 99/2016/NĐ-CP, Nghị định 137/2020/NĐ-CP",
+   "issuer": "Chính phủ",
+   "issued": "2023-07-24",
+   "effective": "2023-08-15",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "facts": [
+    "nd-56-2023-cam-do"
+   ],
+   "sources": [
+    "https://vanban.chinhphu.vn/?pageid=27160&docid=208341&classid=1&typegroupid=4",
+    "https://luatvietnam.vn/dau-tu/nghi-dinh-56-2023-nd-cp-sua-nghi-dinh-96-2016-nd-cp-99-2016-nd-cp-137-2020-nd-cp-261145-d1.html"
+   ],
+   "note": "Đối chiếu 2026-10-30: Điều 1 khoản 1 thay toàn bộ Điều 9 Nghị định 96/2016/NĐ-CP (cầm đồ)."
   },
   {
    "id": "nd-10-2022",
@@ -320,9 +394,15 @@
    "issued": "2022-01-15",
    "effective": "2022-03-01",
    "status": "in_force",
-   "evidence": "unverified",
-   "sources": [],
-   "note": ""
+   "evidence": "fulltext",
+   "sources": [
+    "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-10-2022-nd-cp-36658.htm",
+    "https://vbpl.vn/van-ban/chi-tiet/nghi-dinh-so-175-2025-nd-cp-sua-doi-bo-sung-mot-so-dieu-cua-nghi-dinh-so-10-2022-nd-cp-ngay-15-thang-01-nam-2022-cua-chinh-phu-quy-dinh-ve-le-phi-truoc-ba--179092"
+   ],
+   "note": "Đối chiếu 2026-10-30: khoản 4 Điều 8 (xe máy) được Nghị định 175/2025/NĐ-CP sửa từ 01/7/2025 — 2% lần đầu, 1% từ lần thứ 2, bỏ mức 5% ở thành phố; bài đang dẫn đúng nội dung này. Nghị định 202/2026/NĐ-CP (hiệu lực 01/3/2027) chỉ sửa mức ô tô điện; Thông tư 117/2026/TT-BTC miễn tạm thời một số khoản từ lần thứ 2 cho công dân có định danh điện tử mức 2 (15/8/2026–28/02/2027).",
+   "facts": [
+    "nd-10-2022-xe-may"
+   ]
   },
   {
    "id": "tt-38-2024-bgtvt",
@@ -355,11 +435,17 @@
    "title": "Thông tư 04/2021/TT-BKHCN ban hành Quy chuẩn kỹ thuật quốc gia về mũ bảo hiểm cho người đi mô tô, xe máy (QCVN 2:2021/BKHCN)",
    "issuer": "Bộ Khoa học và Công nghệ",
    "issued": "2021-06-15",
-   "effective": "2022-01-01",
+   "effective": "2021-08-01",
    "status": "in_force",
-   "evidence": "unverified",
-   "sources": [],
-   "note": ""
+   "evidence": "fulltext",
+   "sources": [
+    "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Thong-tu-04-2021-TT-BKHCN-Quy-chuan-ky-thuat-quoc-gia-ve-mu-bao-hiem-cho-nguoi-di-mo-to-484025.aspx",
+    "https://g7.cdnchinhphu.vn/api/download/stream?Url=tm-8mq6BhNw0NbrKRhTDAQWsKg3tuqaY0aWypnY78U6M2BY68Ekp0Gvvr483flbRaXwHglb5IMwXo8gTgQBODueQapvauAz5bfXhVrY1tywgtXX0WX4ZNKlycMKy1yQFLBhsmd87cL2MTajEb5tgPg~~&file_name=2021_685+%2b+686_04-2021-TT-BKHCN.pdf"
+   ],
+   "note": "Toàn văn Công báo số 685+686 (31/7/2021) đối chiếu 2026-10-30: hiệu lực 01/8/2021 (Điều 3 khoản 1; sổ trước ghi nhầm 01/01/2022); bắt buộc với mũ nhập khẩu, sản xuất trong nước từ 01/01/2024 (Điều 2 khoản 1); mũ theo QCVN 02:2008/BKHCN lưu thông trước 01/01/2024 được lưu thông đến hết 31/12/2024 (Điều 4, đã hết). Chưa thấy văn bản sửa đổi, thay thế.",
+   "facts": [
+    "tt-04-2021-bkhcn-qcvn-2-2021"
+   ]
   },
   {
    "id": "tt-60-2023-btc",
@@ -371,10 +457,40 @@
    "issuer": "Bộ Tài chính",
    "issued": "2023-09-07",
    "effective": "2023-10-22",
+   "status": "replaced",
+   "evidence": "fulltext",
+   "sources": [
+    "https://vanban.chinhphu.vn/?pageid=27160&docid=208690&classid=1&orggroupid=4",
+    "https://thuvienphapluat.vn/van-ban/Thue-Phi-Le-Phi/Thong-tu-60-2023-TT-BTC-muc-thu-le-phi-dang-ky-cap-bien-phuong-tien-giao-thong-co-gioi-duong-bo-555012.aspx"
+   ],
+   "note": "Đối chiếu 2026-10-30: được Thông tư 71/2025/TT-BTC sửa từ 01/7/2025 (gộp còn hai khu vực) và bị Thông tư 155/2025/TT-BTC thay thế từ 01/01/2026 (Điều 8 khoản 2). Năm bài dẫn như quy định đang áp dụng đã sửa qua tools/seo-body-review.mjs.",
+   "replaced_by": "tt-155-2025-btc",
+   "replaced_from": "2026-01-01",
+   "facts": [
+    "tt-155-2025-btc-thay-the"
+   ]
+  },
+  {
+   "id": "tt-155-2025-btc",
+   "cite": [
+    "thông tư|155/2025"
+   ],
+   "suffix": "TT-BTC",
+   "title": "Thông tư 155/2025/TT-BTC quy định mức thu, chế độ thu, nộp, miễn, quản lý lệ phí đăng ký, cấp biển phương tiện giao thông cơ giới đường bộ",
+   "issuer": "Bộ Tài chính",
+   "issued": "2025-12-31",
+   "effective": "2026-01-01",
    "status": "in_force",
-   "evidence": "unverified",
-   "sources": [],
-   "note": ""
+   "evidence": "fulltext",
+   "facts": [
+    "tt-155-2025-btc-thay-the",
+    "tt-155-2025-btc-xe-mo-to"
+   ],
+   "sources": [
+    "https://vanban.chinhphu.vn/?pageid=27160&docid=216546",
+    "https://thuvienphapluat.vn/van-ban/Thue-Phi-Le-Phi/Thong-tu-155-2025-TT-BTC-muc-thu-mien-le-phi-dang-ky-cap-bien-phuong-tien-giao-thong-687602.aspx"
+   ],
+   "note": "Đối chiếu 2026-10-30 (PDF trên vanban.chinhphu.vn là ảnh quét; biểu thu đọc từ toàn văn thuvienphapluat). Thông tư 117/2026/TT-BTC miễn tạm thời lệ phí mục II, III cho công dân có định danh điện tử mức 2 từ 15/8/2026 đến 28/02/2027."
   },
   {
    "id": "tt-29-2015-bgtvt",
@@ -533,16 +649,19 @@
    "suffix": "QĐ-TTg",
    "title": "Quyết định 13/2026/QĐ-TTg quy định lộ trình áp dụng quy chuẩn kỹ thuật quốc gia về khí thải đối với xe mô tô, xe gắn máy",
    "issuer": "Thủ tướng Chính phủ",
-   "issued": null,
+   "issued": "2026-04-02",
    "effective": "2026-05-16",
    "status": "in_force",
-   "evidence": "reported",
+   "evidence": "fulltext",
    "sources": [
-    "https://luatvietnam.vn/tin-van-ban-moi/tu-01-7-2027-ha-noi-va-tphcm-bat-dau-kiem-dinh-khi-thai-xe-may-186-108232-article.html",
-    "https://vnexpress.net/ha-noi-tp-hcm-se-kiem-dinh-khi-thai-xe-may-tu-ngay-1-7-2027-5059602.html"
+    "https://congbao.chinhphu.vn/van-ban/quyet-dinh-so-13-2026-qd-ttg-469332/64206.htm",
+    "https://vanban.chinhphu.vn/?classid=1&docid=217560&orggroupid=3&pageid=27160",
+    "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Quyet-dinh-13-2026-QD-TTg-lo-trinh-ap-dung-Quy-chuan-khi-thai-xe-mo-to-giao-thong-duong-bo-700475.aspx"
    ],
-   "pending": "Đọc toàn văn trên Cổng TTĐT Chính phủ: các mốc 01/7/2027 (Hà Nội, TP.HCM), 01/7/2028, 01/7/2030 và mức quy chuẩn theo năm sản xuất (bản tin mâu thuẫn nhau).",
-   "note": "Ngày ban hành ghi theo bản tin (hiệu lực 16/5/2026); cần xác nhận lại khi đọc toàn văn."
+   "note": "Toàn văn Công báo số 238 (21/04/2026) đối chiếu 2026-10-30: ban hành 02/4/2026, hiệu lực 16/5/2026; kiểm định khí thải bắt đầu 01/7/2027 (Hà Nội, TP.HCM), 01/7/2028 (thành phố trực thuộc trung ương còn lại), 01/7/2030 (tỉnh còn lại); 18 tháng sau mốc bắt đầu mới kiểm tra, xử lý vi phạm (Điều 6 khoản 2); từ 01/01/2028 xe ở Hà Nội, TP.HCM phải đạt Mức 2 trở lên (Điều 4 khoản 9); Quyết định không quy định mức phạt. Lược đồ Công báo chưa có văn bản sửa đổi. Bài ghi \"bắt buộc từ 01/7/2027\" hoặc \"trước mốc đó không bị xử phạt\" đã sửa qua tools/seo-body-review.mjs.",
+   "facts": [
+    "qd-13-2026-lo-trinh-kiem-dinh"
+   ]
   },
   {
    "id": "nq-57-2025-hdnd",
@@ -593,9 +712,15 @@
    "issued": "2025-06-12",
    "effective": "2025-06-12",
    "status": "in_force",
-   "evidence": "unverified",
-   "sources": [],
-   "note": ""
+   "evidence": "fulltext",
+   "sources": [
+    "https://congbao.chinhphu.vn/van-ban/nghi-quyet-so-202-2025-qh15-45050.htm",
+    "https://luatvietnam.vn/hanh-chinh/nghi-quyet-202-2025-qh15-cua-quoc-hoi-ve-viec-sap-xep-don-vi-hanh-chinh-cap-tinh-402728-d1.html"
+   ],
+   "note": "Đối chiếu 2026-10-30: hiệu lực từ ngày thông qua 12/6/2025 (Điều 2 khoản 1); chính quyền tỉnh mới hoạt động từ 01/7/2025 (Điều 2 khoản 2); Vĩnh Phúc, Hòa Bình, Phú Thọ hợp thành tỉnh Phú Thọ mới (Điều 1 khoản 4). Lược đồ Công báo chưa có văn bản sửa đổi.",
+   "facts": [
+    "nq-202-2025-qh15-phu-tho"
+   ]
   },
   {
    "id": "ct-20-2025-ttg",
