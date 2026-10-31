@@ -1,0 +1,16 @@
+id,priority,area,scope,issue,evidence,action,owner,batch,status,verify
+B01,P0,Technical,/,Trang chủ mất thẻ xác minh Search Console từ v76 (271e48e8),T22; support.google.com/webmasters/answer/9008080,Khôi phục thẻ từ một nguồn + test hồi quy,agent,C07b,DONE — live 2026-10-31 (6569a471),Thẻ có trong <head> của / trên live
+B02,P0,Data,site,Search Console chưa kết nối — không có dữ liệu index/CTR/truy vấn,GSC PERFORMANCE,"Owner kết nối GSC, xuất dữ liệu vào data/seo/performance/",owner,—,OPEN,Tệp xuất có trong repo; engine chuyển DATA-DRIVEN
+B03,P1,Homepage/Pillar,/gia-thue/,"Trang giá (cụm K02, volume nhóm 42.160) chỉ 274 từ nội dung chính; SERP benchmark trung vị 1.380–1.666 từ",HOMEPAGE & PILLAR; docs/seo/battle/06,"Mở rộng bằng dữ liệu thật pricing.json/business.json (placeholder), không bịa giá",agent,M2,OPEN,QA proxy ≥ 85; build + site-audit PASS; live
+B04,P1,Hub/Silo,33 hub chủ đề con + 6 danh mục,Hub chủ yếu là danh sách thẻ; đoạn dẫn ngắn,SILO & CATEGORY MATRIX,Bổ sung đoạn dẫn có giá trị theo lô ≤ 20 hub,agent,M3,OPEN,"Từ nội dung chính tăng, không trùng lặp"
+B05,P1,Existing content,0 bài,Bài dưới 800 từ (mục tiêu 800–2.000),PAGE & POST OPTIMIZATION (EXPAND),"Review body có nguồn, không độn chữ",agent,C08+,DONE,QA nhà máy không giảm
+B06,P2,Existing content,162 bài,Đoạn văn trùng với bài khác (QA nhà máy no-cross-article-duplicate),article-qa.json,Viết lại đoạn trùng qua tools/seo-body-review.mjs,agent,C08+,OPEN,Cảnh báo về 0
+B07,P3,Data,286 bài LOCAL,local_scope trống trong content-matrix (QA local-angle),article-qa.json,Owner điền local_scope (matrix do owner quản lý),owner,—,OPEN,Cảnh báo về 0
+B08,P2,Image,1946 bài,IMAGE PENDING — chưa có ảnh đại diện,IMAGE SEO,Bật lại nhà máy ảnh (owner) — không dùng ảnh giả/ảnh đối thủ,owner,—,PAUSED,Ảnh QA_PASSED + live
+B09,P2,Internal links,site,Kế hoạch liên kết do tools/seo-links.mjs quản lý; không chèn hàng loạt,INTERNAL LINK MATRIX,Chỉ sửa trang mồ côi nếu có,agent,—,DONE,T07 = 0
+B10,P3,Structured data,/agent/,FAQPage không còn rich result; WebApplication thiếu rating (không bịa),STRUCTURED DATA,Giữ nguyên (vô hại); không thêm FAQPage mới,agent,—,ACCEPTED,—
+B11,P3,Technical,1 URL,Google từng hiển thị URL /index.html (SERP 2026-10-14),T23,Kiểm tra canonical Google chọn khi có GSC,owner,—,WATCH,URL Inspection
+B12,P2,Local,GBP,Chưa đo GBP/local pack,LOCAL SEO & CONVERSION,Owner đăng nhập lại công cụ Local SEO / cập nhật GBP,owner,—,OPEN,—
+B13,P2,New content,27 nhóm,Khoảng trống từ khóa chưa có trang,KEYWORD GAP,Đề xuất hàng matrix cho owner; không tạo hàng loạt khi hub chưa chuẩn hóa,owner,—,OPEN,Owner duyệt ID
+B14,P3,Performance,site,CSS mỗi trang 85.6 KB chưa nén (cảnh báo nội bộ ≥ 64 KB),T21,Theo dõi; chỉ tối ưu nếu LCP lab/field xấu đi,agent,—,WATCH,LCP lab ≤ 2.500 ms
+B15,P2,Performance,/blog/thue-xe/gia-thue/,"Chỉ số CWV lab chưa đạt: Tương tác chạm menu lab (ms, proxy INP) — Hub chủ đề con = 248 — trang hub liệt kê toàn bộ bài (DOM lớn, xem T20)",cwv-lab.json; T20,"Phân trang hub chủ đề con (URL /page/N/ mới, giữ URL cũ) để giảm DOM; đo lại",agent,M3,OPEN,Lab ≤ ngưỡng ở 3 lần đo

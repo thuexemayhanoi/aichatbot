@@ -1,0 +1,252 @@
+{
+  "checked": 36,
+  "errors": [],
+  "engine": "LibreOffice headless recalculation",
+  "results": [
+    {
+      "kpi": "Tổng URL kiểm kê",
+      "formula": "=COUNTA('URL INVENTORY'!A:A)-1",
+      "value": 2138,
+      "ok": true
+    },
+    {
+      "kpi": "URL trong sitemap",
+      "formula": "=COUNTIF('URL INVENTORY'!E:E,\"Có\")",
+      "value": 2138,
+      "ok": true
+    },
+    {
+      "kpi": "URL có file build",
+      "formula": "=COUNTIF('URL INVENTORY'!F:F,\"Có\")",
+      "value": 2138,
+      "ok": true
+    },
+    {
+      "kpi": "URL có ≥ 1 trang liên kết vào",
+      "formula": "=COUNTIF('URL INVENTORY'!G:G,\">0\")",
+      "value": 2138,
+      "ok": true
+    },
+    {
+      "kpi": "URL đối soát OK (≥ 3 nguồn)",
+      "formula": "=COUNTIF('URL INVENTORY'!K:K,\"OK\")",
+      "value": 2138,
+      "ok": true
+    },
+    {
+      "kpi": "URL đã kiểm tra HTTP live = 200",
+      "formula": "=COUNTIF('URL INVENTORY'!I:I,\"200*\")",
+      "value": 68,
+      "ok": true
+    },
+    {
+      "kpi": "Bài viết",
+      "formula": "=COUNTIF('URL INVENTORY'!C:C,\"Bài viết\")",
+      "value": 2006,
+      "ok": true
+    },
+    {
+      "kpi": "Phân loại KEEP",
+      "formula": "=COUNTIF('URL INVENTORY'!L:L,\"KEEP\")",
+      "value": 1951,
+      "ok": true
+    },
+    {
+      "kpi": "Phân loại IMPROVE",
+      "formula": "=COUNTIF('URL INVENTORY'!L:L,\"IMPROVE\")",
+      "value": 186,
+      "ok": true
+    },
+    {
+      "kpi": "Phân loại EXPAND",
+      "formula": "=COUNTIF('URL INVENTORY'!L:L,\"EXPAND\")",
+      "value": 1,
+      "ok": true
+    },
+    {
+      "kpi": "Phân loại CONSOLIDATE-CANDIDATE",
+      "formula": "=COUNTIF('URL INVENTORY'!L:L,\"CONSOLIDATE-CANDIDATE\")",
+      "value": 0,
+      "ok": true
+    },
+    {
+      "kpi": "Phân loại REDIRECT-CANDIDATE",
+      "formula": "=COUNTIF('URL INVENTORY'!L:L,\"REDIRECT-CANDIDATE\")",
+      "value": 0,
+      "ok": true
+    },
+    {
+      "kpi": "Phân loại NOINDEX-CANDIDATE",
+      "formula": "=COUNTIF('URL INVENTORY'!L:L,\"NOINDEX-CANDIDATE\")",
+      "value": 0,
+      "ok": true
+    },
+    {
+      "kpi": "Nhóm từ khóa NEW CONTENT (đề xuất)",
+      "formula": "=COUNTIF('KEYWORD GAP'!N:N,\"NEW CONTENT*\")",
+      "value": 27,
+      "ok": true
+    },
+    {
+      "kpi": "QA proxy trung bình (/100)",
+      "formula": "=ROUND(AVERAGE('QA RESULTS'!K:K),1)",
+      "value": 94.4,
+      "ok": true
+    },
+    {
+      "kpi": "Tỉ lệ URL đạt QA proxy ≥ 85",
+      "formula": "=ROUND(COUNTIF('QA RESULTS'!K:K,\">=85\")/COUNT('QA RESULTS'!K:K),3)",
+      "value": 0.998,
+      "ok": true
+    },
+    {
+      "kpi": "QA nhà máy trung bình (bài)",
+      "formula": "=ROUND(AVERAGE('QA RESULTS'!M:M),1)",
+      "value": 98.8,
+      "ok": true
+    },
+    {
+      "kpi": "Từ khóa trong Keyword Master",
+      "formula": "=COUNTA('KEYWORD MASTER'!A:A)-2",
+      "value": 791,
+      "ok": true
+    },
+    {
+      "kpi": "Từ khóa có volume đo được",
+      "formula": "=COUNT('KEYWORD MASTER'!E:E)",
+      "value": 723,
+      "ok": true
+    },
+    {
+      "kpi": "Truy vấn SERP đã chụp (có vị trí #1)",
+      "formula": "=COUNTIF('COMPETITOR SERP'!C:C,1)",
+      "value": 72,
+      "ok": true
+    },
+    {
+      "kpi": "Lượt website này xuất hiện trong SERP chụp",
+      "formula": "=COUNTIF('COMPETITOR SERP'!G:G,\"website này\")",
+      "value": 6,
+      "ok": true
+    },
+    {
+      "kpi": "Kiểm tra kỹ thuật FAIL",
+      "formula": "=COUNTIF('TECHNICAL SEO AUDIT'!H:H,\"FAIL\")",
+      "value": 1,
+      "ok": true
+    },
+    {
+      "kpi": "Kiểm tra kỹ thuật WARN",
+      "formula": "=COUNTIF('TECHNICAL SEO AUDIT'!H:H,\"WARN\")",
+      "value": 3,
+      "ok": true
+    },
+    {
+      "kpi": "LCP lab tệ nhất (ms)",
+      "formula": "=_xlfn.MAXIFS('TECHNICAL SEO AUDIT'!F:F,'TECHNICAL SEO AUDIT'!B:B,\"Core Web Vitals (LAB)\",'TECHNICAL SEO AUDIT'!C:C,\"LCP*\")",
+      "value": 856,
+      "ok": true
+    },
+    {
+      "kpi": "Trang lỗi structured data",
+      "formula": "=COUNTIF('STRUCTURED DATA'!H:H,\"LỖI\")",
+      "value": 0,
+      "ok": true
+    },
+    {
+      "kpi": "Bài có ảnh đại diện LIVE",
+      "formula": "=COUNTIF('IMAGE SEO'!C:C,\"LIVE_VERIFIED\")",
+      "value": 60,
+      "ok": true
+    },
+    {
+      "kpi": "Bài IMAGE PENDING",
+      "formula": "=COUNTIF('IMAGE SEO'!C:C,\"IMAGE PENDING\")",
+      "value": 1946,
+      "ok": true
+    },
+    {
+      "kpi": "Trang mồ côi nội dung",
+      "formula": "=COUNTIF('INTERNAL LINK MATRIX'!M:M,\"Có\")",
+      "value": 0,
+      "ok": true
+    },
+    {
+      "kpi": "Vào ngữ cảnh TB / bài",
+      "formula": "=ROUND(AVERAGEIF('INTERNAL LINK MATRIX'!B:B,\"Bài viết\",'INTERNAL LINK MATRIX'!E:E),1)",
+      "value": 6.3,
+      "ok": true
+    },
+    {
+      "kpi": "Nhóm CONSOLIDATE-CANDIDATE (cannibalization)",
+      "formula": "=COUNTIF('CANNIBALIZATION'!G:G,\"CONSOLIDATE-CANDIDATE\")",
+      "value": 0,
+      "ok": true
+    },
+    {
+      "kpi": "Backlog P0",
+      "formula": "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P0\")",
+      "value": 2,
+      "ok": true
+    },
+    {
+      "kpi": "Backlog P1",
+      "formula": "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P1\")",
+      "value": 3,
+      "ok": true
+    },
+    {
+      "kpi": "Backlog P2",
+      "formula": "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P2\")",
+      "value": 6,
+      "ok": true
+    },
+    {
+      "kpi": "Backlog P3",
+      "formula": "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P3\")",
+      "value": 4,
+      "ok": true
+    },
+    {
+      "kpi": "Search Console",
+      "formula": "='GSC PERFORMANCE'!B2",
+      "value": "NOT CONNECTED",
+      "ok": true
+    },
+    {
+      "kpi": "Hreflang",
+      "formula": "='HREFLANG MATRIX'!E2",
+      "value": "KHÔNG CẦN",
+      "ok": true
+    }
+  ],
+  "sheets": [
+    "EXECUTIVE DASHBOARD",
+    "URL INVENTORY",
+    "KEYWORD MASTER",
+    "KEYWORD GAP",
+    "COMPETITOR SERP",
+    "URL–KEYWORD MAPPING",
+    "CANNIBALIZATION",
+    "HOMEPAGE & PILLAR",
+    "SEO HUB MATRIX",
+    "SILO & CATEGORY MATRIX",
+    "CONTENT CLUSTERS",
+    "PAGE & POST OPTIMIZATION",
+    "TECHNICAL SEO AUDIT",
+    "INDEX & SITEMAP",
+    "HREFLANG MATRIX",
+    "IMAGE SEO",
+    "INTERNAL LINK MATRIX",
+    "STRUCTURED DATA",
+    "LOCAL SEO & CONVERSION",
+    "GSC PERFORMANCE",
+    "PRIORITY BACKLOG",
+    "QA RESULTS",
+    "CHANGELOG & CHECKPOINT",
+    "X-COMPETITOR DOMAINS",
+    "X-SERP BENCHMARK",
+    "X-OFF-PAGE BACKLINKS",
+    "X-DATA SOURCES"
+  ]
+}

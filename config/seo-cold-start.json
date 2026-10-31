@@ -1592,6 +1592,14 @@
       "source": "Kiểm tra live sau deploy lô C07 (trang https://chatbot.thuexemaynguyentu.com/blog/an-toan/cam-xe-may-xang-vanh-dai-1/ ngày 2026-10-31); đối chiếu dữ kiện de-an-vdd1-giai-doan-1 trong data/seo/legal-facts.json",
       "resolved": "2026-10-31",
       "fix": "Lô C07b: tools/seo-body-review.mjs (replace:6) — chỉ nêu khung giờ chính thức duy nhất và ngoại lệ tối cuối tuần ở Khu vực 1 cho xe điện; không thêm số mới ngoài dữ kiện đã có trong bài"
+    },
+    {
+      "article": "BA-2004",
+      "reason": "FAQ \"Thuê xe máy xăng đi phố cổ năm 2026 còn được không?\" ghi xe phải đáp ứng quy chuẩn khí thải \"khi lộ trình đó được ban hành\" — lỗi thời: Quyết định 13/2026/QĐ-TTg (hiệu lực 16/5/2026) đã ban hành lộ trình, kiểm định khí thải xe máy ở Hà Nội từ 01/7/2027",
+      "flagged": "2026-10-31",
+      "source": "Đọc lại toàn bài live sau deploy lô C07b (6569a471) ngày 2026-10-31; đối chiếu dữ kiện qd-13-2026-lo-trinh-kiem-dinh trong data/seo/legal-facts.json",
+      "resolved": "2026-10-31",
+      "fix": "Lô C07c: tools/seo-body-review.mjs (replace:1) — \"theo lộ trình mà Quyết định 13/2026/QĐ-TTg đã ban hành\"; không thêm số mới"
     }
   ]
 }

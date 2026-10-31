@@ -1,0 +1,87 @@
+{
+  "$schema": "motoai/master-seo-2026-checkpoint@1",
+  "date": "2026-10-31",
+  "last_completed_batch": "M1-MASTER-2026",
+  "last_verified_commit": "6569a471",
+  "next": "Lô M2: /gia-thue/ (backlog B03 trong docs/seo/master-2026/backlog.csv) — mở rộng bằng bảng giá pricing.json qua placeholder, tiền cọc, điều kiện, câu hỏi thường gặp (không FAQPage schema), giữ trang chủ Apple V3. Sau đó M3: phân trang hub chủ đề con > 100 KB (T20) và đoạn dẫn hub (B04). Song song C08: rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv. Chờ chủ sở hữu: Search Console (B02), GBP, local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cập nhật BA-2004 đầu năm 2027).",
+  "open_backlog": [
+    {
+      "id": "B02",
+      "priority": "P0",
+      "issue": "Search Console chưa kết nối — không có dữ liệu index/CTR/truy vấn",
+      "owner": "owner",
+      "batch": "—"
+    },
+    {
+      "id": "B03",
+      "priority": "P1",
+      "issue": "Trang giá (cụm K02, volume nhóm 42.160) chỉ 274 từ nội dung chính; SERP benchmark trung vị 1.380–1.666 từ",
+      "owner": "agent",
+      "batch": "M2"
+    },
+    {
+      "id": "B04",
+      "priority": "P1",
+      "issue": "Hub chủ yếu là danh sách thẻ; đoạn dẫn ngắn",
+      "owner": "agent",
+      "batch": "M3"
+    },
+    {
+      "id": "B06",
+      "priority": "P2",
+      "issue": "Đoạn văn trùng với bài khác (QA nhà máy no-cross-article-duplicate)",
+      "owner": "agent",
+      "batch": "C08+"
+    },
+    {
+      "id": "B07",
+      "priority": "P3",
+      "issue": "local_scope trống trong content-matrix (QA local-angle)",
+      "owner": "owner",
+      "batch": "—"
+    },
+    {
+      "id": "B08",
+      "priority": "P2",
+      "issue": "IMAGE PENDING — chưa có ảnh đại diện",
+      "owner": "owner",
+      "batch": "—"
+    },
+    {
+      "id": "B11",
+      "priority": "P3",
+      "issue": "Google từng hiển thị URL /index.html (SERP 2026-10-14)",
+      "owner": "owner",
+      "batch": "—"
+    },
+    {
+      "id": "B12",
+      "priority": "P2",
+      "issue": "Chưa đo GBP/local pack",
+      "owner": "owner",
+      "batch": "—"
+    },
+    {
+      "id": "B13",
+      "priority": "P2",
+      "issue": "Khoảng trống từ khóa chưa có trang",
+      "owner": "owner",
+      "batch": "—"
+    },
+    {
+      "id": "B14",
+      "priority": "P3",
+      "issue": "CSS mỗi trang 85.6 KB chưa nén (cảnh báo nội bộ ≥ 64 KB)",
+      "owner": "agent",
+      "batch": "—"
+    },
+    {
+      "id": "B15",
+      "priority": "P2",
+      "issue": "Chỉ số CWV lab chưa đạt: Tương tác chạm menu lab (ms, proxy INP) — Hub chủ đề con = 248 — trang hub liệt kê toàn bộ bài (DOM lớn, xem T20)",
+      "owner": "agent",
+      "batch": "M3"
+    }
+  ],
+  "resume_rule": "Khi nhận \"Tiếp tục\": fetch origin/main, đọc file này + docs/seo/commercial/progress.json, chạy lại python3 tools/seo-master-2026.py --verify, rồi làm lô kế tiếp (tối đa 5–20 URL/lô, ≤ 30 theo AGENTS.md)."
+}

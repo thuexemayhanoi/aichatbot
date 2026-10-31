@@ -1,0 +1,436 @@
+{
+  "$schema": "motoai/cwv-lab@1",
+  "generated": "2026-10-31T17:18:08.225Z",
+  "kind": "LAB",
+  "method": {
+    "tool": "tools/seo-cwv-lab.mjs (Playwright Chromium headless)",
+    "server": "local static server mirroring GitHub Pages (gzip, index.html, 404.html)",
+    "device": "mobile 412×823 @1.75x, touch",
+    "throttling": {
+      "rtt_ms": 150,
+      "down_kbps": 1638,
+      "up_kbps": 750,
+      "cpu_slowdown": 4
+    },
+    "runs_per_url": 3,
+    "cache": "disabled (cold load)",
+    "inp_proxy": "longest Event Timing entry for one tap on #motoai-menu-btn; < 16 ms is not recorded by the browser"
+  },
+  "thresholds": {
+    "lcp_ms": 2500,
+    "inp_ms": 200,
+    "cls": 0.1,
+    "note": "Core Web Vitals \"good\" thresholds (web.dev/articles/vitals, 75th percentile of field data)"
+  },
+  "field": {
+    "status": "N/A",
+    "missing_source": "Chrome UX Report / Search Console Core Web Vitals report — Search Console not connected, PageSpeed Insights API without key answered 429"
+  },
+  "pages": [
+    {
+      "url": "/",
+      "template": "Trang chủ",
+      "status": 200,
+      "median": {
+        "ttfb_ms": 5,
+        "fcp_ms": 760,
+        "lcp_ms": 760,
+        "cls": 0,
+        "tbt_ms": 6,
+        "interaction_ms": 96,
+        "load_ms": 961,
+        "transfer_kb": 68,
+        "requests": 10,
+        "dom_nodes": 889
+      },
+      "lcp_element": "p.blog-screen-lead",
+      "tap_target": "#motoai-menu-btn",
+      "runs": [
+        {
+          "lcp_ms": 760,
+          "cls": 0,
+          "tbt_ms": 6,
+          "interaction_ms": 88
+        },
+        {
+          "lcp_ms": 760,
+          "cls": 0.016,
+          "tbt_ms": 7,
+          "interaction_ms": 96
+        },
+        {
+          "lcp_ms": 728,
+          "cls": 0,
+          "tbt_ms": 2,
+          "interaction_ms": 120
+        }
+      ],
+      "lab_rating": {
+        "lcp": "GOOD",
+        "cls": "GOOD",
+        "tbt": "GOOD",
+        "interaction": "GOOD"
+      }
+    },
+    {
+      "url": "/gia-thue/",
+      "template": "Trang giá (chuyển đổi)",
+      "status": 200,
+      "median": {
+        "ttfb_ms": 4,
+        "fcp_ms": 664,
+        "lcp_ms": 664,
+        "cls": 0,
+        "tbt_ms": 2,
+        "interaction_ms": 80,
+        "load_ms": 893,
+        "transfer_kb": 65,
+        "requests": 10,
+        "dom_nodes": 582
+      },
+      "lcp_element": "p.blog-screen-lead",
+      "tap_target": "#motoai-menu-btn",
+      "runs": [
+        {
+          "lcp_ms": 664,
+          "cls": 0,
+          "tbt_ms": 3,
+          "interaction_ms": 80
+        },
+        {
+          "lcp_ms": 596,
+          "cls": 0,
+          "tbt_ms": 0,
+          "interaction_ms": 80
+        },
+        {
+          "lcp_ms": 700,
+          "cls": 0,
+          "tbt_ms": 2,
+          "interaction_ms": 72
+        }
+      ],
+      "lab_rating": {
+        "lcp": "GOOD",
+        "cls": "GOOD",
+        "tbt": "GOOD",
+        "interaction": "GOOD"
+      }
+    },
+    {
+      "url": "/lien-he/",
+      "template": "Trang liên hệ (chuyển đổi)",
+      "status": 200,
+      "median": {
+        "ttfb_ms": 3,
+        "fcp_ms": 728,
+        "lcp_ms": 728,
+        "cls": 0,
+        "tbt_ms": 0,
+        "interaction_ms": 80,
+        "load_ms": 919,
+        "transfer_kb": 65,
+        "requests": 10,
+        "dom_nodes": 546
+      },
+      "lcp_element": "p.blog-screen-lead",
+      "tap_target": "#motoai-menu-btn",
+      "runs": [
+        {
+          "lcp_ms": 676,
+          "cls": 0,
+          "tbt_ms": 0,
+          "interaction_ms": 56
+        },
+        {
+          "lcp_ms": 728,
+          "cls": 0,
+          "tbt_ms": 0,
+          "interaction_ms": 80
+        },
+        {
+          "lcp_ms": 760,
+          "cls": 0,
+          "tbt_ms": 10,
+          "interaction_ms": 80
+        }
+      ],
+      "lab_rating": {
+        "lcp": "GOOD",
+        "cls": "GOOD",
+        "tbt": "GOOD",
+        "interaction": "GOOD"
+      }
+    },
+    {
+      "url": "/agent/",
+      "template": "Ứng dụng Agent",
+      "status": 200,
+      "median": {
+        "ttfb_ms": 4,
+        "fcp_ms": 560,
+        "lcp_ms": 560,
+        "cls": 0.037,
+        "tbt_ms": 71,
+        "interaction_ms": 64,
+        "load_ms": 2571,
+        "transfer_kb": 126,
+        "requests": 72,
+        "dom_nodes": 465
+      },
+      "lcp_element": "p.motoai-seo-copy",
+      "tap_target": "#motoai-menu-btn",
+      "runs": [
+        {
+          "lcp_ms": 564,
+          "cls": 0.037,
+          "tbt_ms": 71,
+          "interaction_ms": 80
+        },
+        {
+          "lcp_ms": 552,
+          "cls": 0.037,
+          "tbt_ms": 67,
+          "interaction_ms": 48
+        },
+        {
+          "lcp_ms": 560,
+          "cls": 0.037,
+          "tbt_ms": 91,
+          "interaction_ms": 64
+        }
+      ],
+      "lab_rating": {
+        "lcp": "GOOD",
+        "cls": "GOOD",
+        "tbt": "GOOD",
+        "interaction": "GOOD"
+      }
+    },
+    {
+      "url": "/blog/",
+      "template": "Blog home",
+      "status": 200,
+      "median": {
+        "ttfb_ms": 4,
+        "fcp_ms": 824,
+        "lcp_ms": 824,
+        "cls": 0.016,
+        "tbt_ms": 0,
+        "interaction_ms": 120,
+        "load_ms": 1044,
+        "transfer_kb": 71,
+        "requests": 11,
+        "dom_nodes": 941
+      },
+      "lcp_element": "h1.blog-screen-title",
+      "tap_target": "#motoai-menu-btn",
+      "runs": [
+        {
+          "lcp_ms": 848,
+          "cls": 0.016,
+          "tbt_ms": 10,
+          "interaction_ms": 120
+        },
+        {
+          "lcp_ms": 800,
+          "cls": 0,
+          "tbt_ms": 0,
+          "interaction_ms": 112
+        },
+        {
+          "lcp_ms": 824,
+          "cls": 0.016,
+          "tbt_ms": 0,
+          "interaction_ms": 128
+        }
+      ],
+      "lab_rating": {
+        "lcp": "GOOD",
+        "cls": "GOOD",
+        "tbt": "GOOD",
+        "interaction": "GOOD"
+      }
+    },
+    {
+      "url": "/blog/thue-xe/",
+      "template": "Hub danh mục",
+      "status": 200,
+      "median": {
+        "ttfb_ms": 3,
+        "fcp_ms": 740,
+        "lcp_ms": 740,
+        "cls": 0,
+        "tbt_ms": 5,
+        "interaction_ms": 120,
+        "load_ms": 943,
+        "transfer_kb": 69,
+        "requests": 10,
+        "dom_nodes": 887
+      },
+      "lcp_element": "p.blog-screen-lead",
+      "tap_target": "#motoai-menu-btn",
+      "runs": [
+        {
+          "lcp_ms": 740,
+          "cls": 0,
+          "tbt_ms": 0,
+          "interaction_ms": 128
+        },
+        {
+          "lcp_ms": 744,
+          "cls": 0,
+          "tbt_ms": 5,
+          "interaction_ms": 120
+        },
+        {
+          "lcp_ms": 736,
+          "cls": 0.016,
+          "tbt_ms": 13,
+          "interaction_ms": 80
+        }
+      ],
+      "lab_rating": {
+        "lcp": "GOOD",
+        "cls": "GOOD",
+        "tbt": "GOOD",
+        "interaction": "GOOD"
+      }
+    },
+    {
+      "url": "/blog/thue-xe/gia-thue/",
+      "template": "Hub chủ đề con",
+      "status": 200,
+      "median": {
+        "ttfb_ms": 5,
+        "fcp_ms": 696,
+        "lcp_ms": 744,
+        "cls": 0.017,
+        "tbt_ms": 13,
+        "interaction_ms": 248,
+        "load_ms": 1235,
+        "transfer_kb": 84,
+        "requests": 10,
+        "dom_nodes": 1884
+      },
+      "lcp_element": "p",
+      "tap_target": "#motoai-menu-btn",
+      "runs": [
+        {
+          "lcp_ms": 696,
+          "cls": 0.017,
+          "tbt_ms": 13,
+          "interaction_ms": 248
+        },
+        {
+          "lcp_ms": 744,
+          "cls": 0.017,
+          "tbt_ms": 0,
+          "interaction_ms": 248
+        },
+        {
+          "lcp_ms": 1040,
+          "cls": 0.017,
+          "tbt_ms": 13,
+          "interaction_ms": 232
+        }
+      ],
+      "lab_rating": {
+        "lcp": "GOOD",
+        "cls": "GOOD",
+        "tbt": "GOOD",
+        "interaction": "NEEDS IMPROVEMENT"
+      }
+    },
+    {
+      "url": "/blog/an-toan/cam-xe-may-xang-vanh-dai-1/",
+      "template": "Bài viết (không ảnh)",
+      "status": 200,
+      "median": {
+        "ttfb_ms": 3,
+        "fcp_ms": 712,
+        "lcp_ms": 712,
+        "cls": 0,
+        "tbt_ms": 3,
+        "interaction_ms": 80,
+        "load_ms": 949,
+        "transfer_kb": 69,
+        "requests": 10,
+        "dom_nodes": 713
+      },
+      "lcp_element": "h1.blog-screen-title",
+      "tap_target": "#motoai-menu-btn",
+      "runs": [
+        {
+          "lcp_ms": 748,
+          "cls": 0,
+          "tbt_ms": 0,
+          "interaction_ms": 72
+        },
+        {
+          "lcp_ms": 644,
+          "cls": 0.016,
+          "tbt_ms": 4,
+          "interaction_ms": 80
+        },
+        {
+          "lcp_ms": 712,
+          "cls": 0,
+          "tbt_ms": 3,
+          "interaction_ms": 88
+        }
+      ],
+      "lab_rating": {
+        "lcp": "GOOD",
+        "cls": "GOOD",
+        "tbt": "GOOD",
+        "interaction": "GOOD"
+      }
+    },
+    {
+      "url": "/blog/app/app-thue-xe-may-la-gi/",
+      "template": "Bài viết (có ảnh đại diện)",
+      "status": 200,
+      "median": {
+        "ttfb_ms": 3,
+        "fcp_ms": 732,
+        "lcp_ms": 856,
+        "cls": 0.016,
+        "tbt_ms": 4,
+        "interaction_ms": 88,
+        "load_ms": 1047,
+        "transfer_kb": 110,
+        "requests": 11,
+        "dom_nodes": 684
+      },
+      "lcp_element": "img",
+      "tap_target": "#motoai-menu-btn",
+      "runs": [
+        {
+          "lcp_ms": 832,
+          "cls": 0,
+          "tbt_ms": 4,
+          "interaction_ms": 88
+        },
+        {
+          "lcp_ms": 860,
+          "cls": 0.016,
+          "tbt_ms": 0,
+          "interaction_ms": 96
+        },
+        {
+          "lcp_ms": 856,
+          "cls": 0.016,
+          "tbt_ms": 6,
+          "interaction_ms": 72
+        }
+      ],
+      "lab_rating": {
+        "lcp": "GOOD",
+        "cls": "GOOD",
+        "tbt": "GOOD",
+        "interaction": "GOOD"
+      }
+    }
+  ]
+}
