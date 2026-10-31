@@ -434,6 +434,17 @@
         "qd-3273-2026-ubnd": "Văn bản mới trong sổ: Quyết định 3273/QĐ-UBND 29/6/2026 phê duyệt Đề án \"Vùng phát thải thấp trong vành đai 1\" (HĐND thông qua tại Nghị quyết 34/NQ-HĐND 15/6/2026); đối chiếu Quyết định, Báo cáo Đề án và Phụ lục 1–3 trên sonnmt.hanoi.gov.vn. Giai đoạn 1 (01/7–31/12/2026) Khu vực 1, 2 phường Hoàn Kiếm; Khu vực 1 (12 tuyến phố quanh Hồ Gươm) cấm mọi xe cơ giới 19h00–24h00 tối thứ Sáu, Bảy, Chủ nhật; xe máy xăng cá nhân chỉ khuyến khích hạn chế; xe ôm công nghệ xăng cấm từ 01/01/2027; từ 01/01/2028 toàn Vành đai 1, xe mô tô, xe gắn máy phải đạt khí thải mức 3. Tin VTV 29/9 và Lao Động 09/10/2026: 32 chốt, hơn 100 biển báo, chưa có chế tài xử phạt riêng."
       },
       "changes": "BA-2004 sửa qua tools/seo-body-review.mjs (1/1 qua QA nhà máy, 1996 → 1996 từ): bỏ \"chưa có đề án, chưa có khung giờ\", nêu Đề án 29/6/2026, phạm vi Khu vực 1, 2 phường Hoàn Kiếm, khung giờ cấm 19–24 giờ tối cuối tuần cho mọi xe cơ giới kể cả xe điện, xe ôm công nghệ năm 2026 chỉ khuyến khích hạn chế, mức 3 khí thải từ 01/01/2028; 4 dữ kiện mới; 1 cờ content_flags đã giải quyết. BA-0239: câu về Luật Thủ đô và mức khí thải 2 từ 01/01/2028 (Điều 4 khoản 9 Quyết định 13/2026/QĐ-TTg) khớp, không sửa.",
+      "live_verified": "2026-10-31: deploy 0fbe5261 có trên trang live (Đề án 3273, khung 19–24 giờ tối cuối tuần), nhưng kiểm tra live phát hiện 3 câu cũ còn sót mâu thuẫn với Đề án (\"khung giờ cụ thể chưa được ban hành\", xe máy điện \"không bị ảnh hưởng bởi khung giờ cấm\", FAQ xe điện \"được lưu thông\" không nêu ngoại lệ Khu vực 1) — sửa ở lô C07b"
+    },
+    {
+      "batch_id": "C07b-LEGAL-LEZ-FIX",
+      "reviewed": "2026-10-31",
+      "scope": "Sửa lỗi do lô C07 để sót trong BA-2004 (phát hiện khi kiểm tra live) + khôi phục thẻ xác minh Search Console trên trang chủ /",
+      "article_ids": [
+        "BA-2004"
+      ],
+      "changes": "BA-2004 qua tools/seo-body-review.mjs (replace:6, QA nhà máy 100 → 100, số từ QA 2000 → 2000): bỏ \"khung giờ cụ thể chưa được ban hành\"; nêu khung giờ chính thức duy nhất 19–24 giờ tối thứ Sáu, Bảy, Chủ nhật ở Khu vực 1; xe máy điện ít bị ảnh hưởng nhất nhưng tối cuối tuần vẫn không vào Khu vực 1 (thân bài, mẹo và FAQ). Mô tả meta (data/seo/article-meta.json) bỏ Chỉ thị 20/CT-TTg + \"9 phường\" (lỗi thời), thay bằng Đề án thí điểm từ 1/7/2026 ở phường Hoàn Kiếm (151 ký tự). 1 cờ content_flags đã giải quyết.",
+      "technical_fix": "Trang chủ / (dựng lại ở v76, 271e48e8) mất thẻ meta google-site-verification — thẻ chỉ còn ở /agent/. Search Console kiểm tra định kỳ thẻ trên trang chủ và thu hồi quyền sở hữu sau thời gian ân hạn nếu không xác nhận được (support.google.com/webmasters/answer/9008080, đọc 2026-10-31). tools/build-blog.mjs đọc đúng thẻ từ data/site/agent.html.tpl (một nguồn) và chèn vào <head> của /; test tests/unit/search-console-verification.test.js khóa hồi quy.",
       "live_verified": "chờ deploy"
     }
   ],
@@ -444,11 +455,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "C07-LEGAL-LEZ",
+  "last_completed_batch": "C07b-LEGAL-LEZ-FIX",
   "last_verified_commit": "77c2b84f",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Lô C08: kiểm tra live BA-2004 sau deploy; rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv theo cụm (ưu tiên bài dẫn Nghị định 168/2024 và Luật 36/2024 đã đối chiếu văn bản hợp nhất). Chờ chủ sở hữu: Search Console (ưu tiên theo dữ liệu khi có), trang khu vực giao xe, bật lại nhà máy ảnh, Canva, RR-12, MT-P4-10. Lưu ý theo dõi: Nghị quyết 03/2026/NQ-HĐTP (đặt cọc) đã khớp; Luật 118/2025/QH15 đã đối chiếu; vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cần cập nhật BA-2004 đầu năm 2027).",
+  "next_article_ids_note": "Lô C08: kiểm tra live BA-2004 và thẻ xác minh trên / sau deploy C07b; lô M1 (Master SEO Matrix 2026, docs/seo/master-2026/) chạy song song; rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv theo cụm (ưu tiên bài dẫn Nghị định 168/2024 và Luật 36/2024 đã đối chiếu văn bản hợp nhất). Chờ chủ sở hữu: Search Console (ưu tiên theo dữ liệu khi có), trang khu vực giao xe, bật lại nhà máy ảnh, Canva, RR-12, MT-P4-10. Lưu ý theo dõi: Nghị quyết 03/2026/NQ-HĐTP (đặt cọc) đã khớp; Luật 118/2025/QH15 đã đối chiếu; vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cần cập nhật BA-2004 đầu năm 2027).",
   "p0_live_verified": [
     "/",
     "/gia-thue/",

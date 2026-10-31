@@ -360,6 +360,16 @@ ${askAgentAction(BLOG_HOME.askTopic)}`;
   write('blog/index.html', html);
 }
 
+/** Search Console ownership (HTML-tag method): the tag lives in the Agent
+ *  template (the pre-v76 homepage). Google periodically re-checks the tag on the
+ *  site's home page, so `/` carries the very same tag — read from that one
+ *  source, never typed twice. */
+export const SEARCH_CONSOLE_META = (() => {
+  const m = readFileSync(join(ROOT, 'data/site/agent.html.tpl'), 'utf8')
+    .match(/<meta name="google-site-verification" content="[^"<>]+" \/>/);
+  return m ? `  ${m[0]}\n` : '';
+})();
+
 /** Legacy chat links (/?ask= /?action= /?embed= /?source= /?lang=, the old
  *  embed iframe and installed PWAs) keep working: the homepage forwards them
  *  to the Agent app before first paint. Plain visits are never redirected. */
@@ -516,7 +526,7 @@ ${latest || `          ${emptyNote('emptyBlog')}`}
       mainEntity: { '@id': `${SITE}${AGENT_URL.replace(/^\//, '')}#app` }
     });
   write('index.html', appShellPage({
-    title, description, path: '', screen: 'home', contentHtml: content, schemaHtml, headHtml: LEGACY_CHAT_REDIRECT
+    title, description, path: '', screen: 'home', contentHtml: content, schemaHtml, headHtml: SEARCH_CONSOLE_META + LEGACY_CHAT_REDIRECT
   }));
 }
 

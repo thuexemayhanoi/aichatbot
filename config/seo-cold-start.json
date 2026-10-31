@@ -1584,6 +1584,14 @@
       "source": "Hàng đợi lô C07 (progress.json next_article_ids_note): đối chiếu Quyết định 3273/QĐ-UBND, Báo cáo Đề án và Phụ lục 2 trên sonnmt.hanoi.gov.vn; tin VTV 29/9/2026, Lao Động 09/10/2026 về 3 tháng thí điểm",
       "resolved": "2026-10-31",
       "fix": "tools/seo-body-review.mjs với dữ kiện qd-3273-2026-ubnd-de-an, de-an-vdd1-giai-doan-1, de-an-vdd1-giai-doan-2-3"
+    },
+    {
+      "article": "BA-2004",
+      "reason": "Sau lô C07 bài vẫn còn câu cũ mâu thuẫn với Đề án: \"Khung giờ cụ thể chưa được ban hành\", \"xe máy điện là lựa chọn không bị ảnh hưởng bởi khung giờ cấm\", FAQ \"Không. Xe ... năng lượng sạch được lưu thông trong vùng phát thải thấp\" — trong khi Khu vực 1 cấm mọi xe cơ giới kể cả xe điện 19h00–24h00 tối thứ Sáu, Bảy, Chủ nhật",
+      "flagged": "2026-10-31",
+      "source": "Kiểm tra live sau deploy lô C07 (trang https://chatbot.thuexemaynguyentu.com/blog/an-toan/cam-xe-may-xang-vanh-dai-1/ ngày 2026-10-31); đối chiếu dữ kiện de-an-vdd1-giai-doan-1 trong data/seo/legal-facts.json",
+      "resolved": "2026-10-31",
+      "fix": "Lô C07b: tools/seo-body-review.mjs (replace:6) — chỉ nêu khung giờ chính thức duy nhất và ngoại lệ tối cuối tuần ở Khu vực 1 cho xe điện; không thêm số mới ngoài dữ kiện đã có trong bài"
     }
   ]
 }
