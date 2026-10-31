@@ -78,9 +78,10 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 | tt-24-2023-bca | Thông tư 24/2023/TT-BCA quy định về cấp, thu hồi đăng ký, biển số xe cơ giới | replaced | fulltext | 15/08/2023 | tt-79-2024-bca | 0 | 2 | 0 |
 | tt-79-2024-bca | Thông tư 79/2024/TT-BCA quy định về cấp, thu hồi chứng nhận đăng ký xe, biển số xe cơ giới, xe máy chuyên dùng | in_force | fulltext | 01/01/2025 | — | 4 | 0 | 0 |
 | tt-46-2012-bgtvt | Thông tư 46/2012/TT-BGTVT quy định về đào tạo, sát hạch, cấp giấy phép lái xe cơ giới đường bộ | replaced | unverified | — | tt-12-2025-bca | 0 | 2 | 0 |
-| qd-13-2026-ttg | Quyết định 13/2026/QĐ-TTg quy định lộ trình áp dụng quy chuẩn kỹ thuật quốc gia về khí thải đối với xe mô tô, xe gắn máy | in_force | fulltext | 16/05/2026 | — | 7 | 0 | 0 |
-| nq-57-2025-hdnd | Nghị quyết 57/2025/NQ-HĐND của HĐND thành phố Hà Nội về vùng phát thải thấp | in_force | fulltext | 06/12/2025 | — | 1 | 0 | 0 |
-| nq-47-2024-hdnd | Nghị quyết 47/2024/NQ-HĐND của HĐND thành phố Hà Nội quy định thực hiện vùng phát thải thấp | amended | unverified | 01/01/2025 | nq-57-2025-hdnd | 0 | 1 | 0 |
+| qd-13-2026-ttg | Quyết định 13/2026/QĐ-TTg quy định lộ trình áp dụng quy chuẩn kỹ thuật quốc gia về khí thải đối với xe mô tô, xe gắn máy | in_force | fulltext | 16/05/2026 | — | 8 | 0 | 0 |
+| nq-57-2025-hdnd | Nghị quyết 57/2025/NQ-HĐND của HĐND thành phố Hà Nội về vùng phát thải thấp | in_force | fulltext | 10/12/2025 | — | 1 | 0 | 0 |
+| qd-3273-2026-ubnd | Quyết định 3273/QĐ-UBND ngày 29/6/2026 của UBND thành phố Hà Nội phê duyệt Đề án "Vùng phát thải thấp trong vành đai 1, thành phố Hà Nội" | in_force | fulltext | 29/06/2026 | — | 1 | 0 | 1 |
+| nq-47-2024-hdnd | Nghị quyết 47/2024/NQ-HĐND của HĐND thành phố Hà Nội quy định thực hiện vùng phát thải thấp | replaced | fulltext | 01/01/2025 | nq-57-2025-hdnd | 0 | 1 | 0 |
 | nq-202-2025-qh15 | Nghị quyết 202/2025/QH15 về việc sắp xếp đơn vị hành chính cấp tỉnh | in_force | fulltext | 12/06/2025 | — | 3 | 0 | 0 |
 | ct-20-2025-ttg | Chỉ thị 20/CT-TTg ngày 12/7/2025 của Thủ tướng Chính phủ về một số nhiệm vụ cấp bách, quyết liệt ngăn chặn, giải quyết tình trạng ô nhiễm môi trường | in_force | fulltext | 12/07/2025 | — | 1 | 0 | 0 |
 

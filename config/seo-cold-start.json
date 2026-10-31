@@ -1576,6 +1576,14 @@
       "source": "Hàng đợi lô C06 (progress.json next_article_ids); đối chiếu Luật 36/2024/QH15 (văn bản hợp nhất 55/VBHN-VPQH) và Quyết định 13/2026/QĐ-TTg",
       "resolved": "2026-10-31",
       "fix": "tools/seo-body-review.mjs với dữ kiện qd-13-2026-lo-trinh-kiem-dinh, luat-36-2024-dieu-56-mang-theo"
+    },
+    {
+      "article": "BA-2004",
+      "reason": "Ghi \"Chưa có đề án, chưa có khung giờ chính thức\" và \"chưa ban hành khung giờ cấm cụ thể; xe máy điện được đi\" — lỗi thời: Đề án vùng phát thải thấp trong Vành đai 1 được HĐND thông qua 15/6/2026 (Nghị quyết 34/NQ-HĐND), UBND phê duyệt 29/6/2026 (Quyết định 3273/QĐ-UBND), thí điểm từ 01/7/2026 tại Khu vực 1, 2 phường Hoàn Kiếm; Khu vực 1 cấm mọi xe cơ giới kể cả xe điện 19h00–24h00 tối thứ Sáu, Bảy, Chủ nhật; xe ôm công nghệ xăng năm 2026 chỉ khuyến khích hạn chế (cấm từ 01/01/2027), bài ghi \"cấm\"",
+      "flagged": "2026-10-31",
+      "source": "Hàng đợi lô C07 (progress.json next_article_ids_note): đối chiếu Quyết định 3273/QĐ-UBND, Báo cáo Đề án và Phụ lục 2 trên sonnmt.hanoi.gov.vn; tin VTV 29/9/2026, Lao Động 09/10/2026 về 3 tháng thí điểm",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs với dữ kiện qd-3273-2026-ubnd-de-an, de-an-vdd1-giai-doan-1, de-an-vdd1-giai-doan-2-3"
     }
   ]
 }
