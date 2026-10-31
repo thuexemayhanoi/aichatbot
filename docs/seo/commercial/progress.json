@@ -17,36 +17,11 @@
     "https://chatbot.thuexemaynguyentu.com/agent/"
   ],
   "next_article_ids": [
-    "BA-0059",
-    "BA-0083",
-    "BA-0089",
-    "BA-0221",
-    "BA-0251",
-    "BA-0257",
-    "BA-0263",
-    "BA-0269",
-    "BA-0275",
-    "BA-0281",
-    "BA-0341",
-    "BA-0503",
-    "BA-0533",
-    "BA-0539",
-    "BA-0545",
-    "BA-0551",
-    "BA-0557",
-    "BA-0563",
-    "BA-0785",
-    "BA-0815",
-    "BA-0821",
-    "BA-0827",
-    "BA-0905",
-    "BA-1043",
-    "BA-1067",
-    "BA-1097",
-    "BA-1103",
-    "BA-1109",
-    "BA-1379",
-    "BA-1385"
+    "BA-0047",
+    "BA-0323",
+    "BA-0329",
+    "BA-0689",
+    "BA-0053"
   ],
   "batches": [
     {
@@ -283,6 +258,103 @@
         "BA-0053: câu \"bảo hiểm ... thường được mua kèm khi xe đến hạn đăng kiểm\" và \"xe cũng không được cấp kiểm định khi đến hạn\" không khớp với việc xe máy cá nhân chưa có kiểm định kỹ thuật định kỳ (BA-0239 nói đúng điều này) — không thuộc văn bản đã đối chiếu, cần review body ở lô sau",
         "Nghị quyết 57/2025/NQ-HĐND (vùng phát thải thấp): đối chiếu Điều 36 Luật Thủ đô 02/2026/QH16 về hiệu lực tiếp tục"
       ]
+    },
+    {
+      "batch_id": "C04-LEGAL",
+      "reviewed": "2026-10-31",
+      "scope": "30 bài dẫn Bộ luật Dân sự 2015 như quy định hiện hành (63 câu trích dẫn); thêm 4 bài còn lại cùng văn bản (BA-1397, 1403, 1409, 1469 — 5 câu) chỉ để rà, không sửa, nhằm đóng việc đối chiếu toàn văn của văn bản này",
+      "rule": "Thứ tự P2 khi chưa có GSC: các hàng legal_review MANDATORY; văn bản cuối cùng còn chưa đối chiếu trong sổ",
+      "article_ids": [
+        "BA-0059",
+        "BA-0083",
+        "BA-0089",
+        "BA-0221",
+        "BA-0251",
+        "BA-0257",
+        "BA-0263",
+        "BA-0269",
+        "BA-0275",
+        "BA-0281",
+        "BA-0341",
+        "BA-0503",
+        "BA-0533",
+        "BA-0539",
+        "BA-0545",
+        "BA-0551",
+        "BA-0557",
+        "BA-0563",
+        "BA-0785",
+        "BA-0815",
+        "BA-0821",
+        "BA-0827",
+        "BA-0905",
+        "BA-1043",
+        "BA-1067",
+        "BA-1097",
+        "BA-1103",
+        "BA-1109",
+        "BA-1379",
+        "BA-1385"
+      ],
+      "extra_reviewed_no_change": [
+        "BA-1397",
+        "BA-1403",
+        "BA-1409",
+        "BA-1469"
+      ],
+      "document_verified": {
+        "bo-luat-dan-su-91-2015": "Còn hiệu lực từ 01/01/2017 (Điều 689), chưa có luật sửa đổi; đối chiếu Điều 11, 20, 38, 119, 309, 328, 401, 468, 472–482, 584, 585, 588, 589, 590, 599, 601 với toàn văn (vanban.chinhphu.vn docid 183188 cho ngày tháng; câu chữ thuvienphapluat)"
+      },
+      "changes": {
+        "articles": [
+          "BA-0059",
+          "BA-0263",
+          "BA-0269",
+          "BA-0281",
+          "BA-0545",
+          "BA-0563",
+          "BA-1097",
+          "BA-1385"
+        ],
+        "layer": "tools/seo-body-review.mjs (replace + facts), 8/8 qua QA nhà máy; 5 dữ kiện mới (blds-2015-*) trong data/seo/legal-facts.json; 8 cờ content_flags đã giải quyết 2026-10-31",
+        "summary": "Điều 479 bị gán cho nghĩa vụ bên cho thuê (thực ra là nghĩa vụ bảo quản của bên thuê) → Điều 476–478 (BA-0263, 0269, 0545); câu \"bên cho thuê không được tăng giá thuê trong thời hạn thuê\" không có trong Bộ luật → Điều 473 + khoản 2 Điều 401 (BA-0263, 0545); Điều 599 → Điều 590 cho bồi thường sức khỏe, lỗi một phần của bên bị hại → khoản 4 Điều 585 (BA-0059); quy tắc trả/mất cọc ở khoản 2 Điều 328, không phải \"theo thỏa thuận\" hay khoản 1 (BA-0281, 0563, 1097); tranh chấp về quyền sở hữu, không phải \"của bên thứ ba\" (BA-1385)"
+      },
+      "reviewed_no_change": {
+        "articles": [
+          "BA-0083",
+          "BA-0089",
+          "BA-0221",
+          "BA-0251",
+          "BA-0257",
+          "BA-0275",
+          "BA-0341",
+          "BA-0503",
+          "BA-0533",
+          "BA-0539",
+          "BA-0551",
+          "BA-0557",
+          "BA-0785",
+          "BA-0815",
+          "BA-0821",
+          "BA-0827",
+          "BA-0905",
+          "BA-1043",
+          "BA-1067",
+          "BA-1103",
+          "BA-1109",
+          "BA-1379",
+          "BA-1397",
+          "BA-1403",
+          "BA-1409",
+          "BA-1469"
+        ],
+        "reason": "Câu dẫn khớp toàn văn: Điều 11, 20, 38, 119, 309, 328, 468, 472, 477, 584, 588, 589, 601 và ngày hiệu lực 01/01/2017"
+      },
+      "follow_up": [
+        "Nghị quyết 03/2026/NQ-HĐTP hướng dẫn đặt cọc: đối chiếu câu \"hợp đồng không thực hiện được vì trở ngại khách quan thì không phạt cọc\" ở BA-0281 (đã ghi việc chờ trong sổ)"
+      ],
+      "qa": "node --test 1178/1178; site-audit PASS 2138 trang, 0 liên kết hỏng; seo-score 99,6 PASS; seo-legal-citations: cần sửa 0, chưa đối chiếu 0, ngoài sổ 0 (mọi văn bản bài dẫn đã đối chiếu toàn văn)",
+      "live_verified": null
     }
   ],
   "rules": [
@@ -292,11 +364,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "C03-LEGAL",
+  "last_completed_batch": "C04-LEGAL (chờ live)",
   "last_verified_commit": "6bd05fe4",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 30,
-  "next_article_ids_note": "Lô C04: Bộ luật Dân sự 2015 (bo-luat-dan-su-91-2015) — 34 bài dẫn như hiện hành, chưa đối chiếu toàn văn; 30 bài đầu ở đây, 4 bài còn lại (BA-1397, BA-1403, BA-1409, BA-1469) cùng RR-11 (nguồn pháp lý chết BA-0047, BA-0323, BA-0329, BA-0689) ở lô kế tiếp. Khi có GSC, ưu tiên theo dữ liệu GSC.",
+  "next_article_ids_note": "Lô C05: RR-11 (nguồn pháp lý chết ở BA-0047, BA-0323, BA-0329, BA-0689 — thay bằng nguồn chính thức còn sống) + BA-0053 (câu \"đăng kiểm\" xe máy) + Nghị quyết 03/2026/NQ-HĐTP (đặt cọc, BA-0281) + Nghị quyết 57/2025/NQ-HĐND sau Luật Thủ đô 02/2026. Sổ đăng ký văn bản đã đối chiếu toàn văn hết; sau C05, khi chưa có GSC, chuyển sang rà các bài legal_review MANDATORY chưa qua review body. Khi có GSC, ưu tiên theo dữ liệu GSC.",
   "p0_live_verified": [
     "/",
     "/gia-thue/",
@@ -308,7 +380,7 @@
   "articles_metadata_changed_and_live_verified": [
     "BA-0020"
   ],
-  "legal_documents_unverified": 1,
+  "legal_documents_unverified": 0,
   "articles_body_corrected_and_live_verified": [
     "BA-0053",
     "BA-0221",

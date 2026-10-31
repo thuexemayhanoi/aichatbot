@@ -25,5 +25,5 @@
 
 - Bài dẫn văn bản đã bị thay thế như quy định đang áp dụng: 0 (cờ content_flags; sửa qua review body sau khi đối chiếu toàn văn)
 - Văn bản được sửa đổi sau khi bài đăng, chờ đối chiếu toàn văn: —
-- Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn: bo-luat-dan-su-91-2015 (34)
+- Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn: —
 - Chi tiết và nguồn để đối chiếu: docs/seo/legal-citations.md

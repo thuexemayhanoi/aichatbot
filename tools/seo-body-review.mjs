@@ -51,7 +51,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 export const REVIEW_LOG = 'data/seo/body-reviews.json';
 export const LEGAL_FACTS = 'data/seo/legal-facts.json';
-export const REVIEW_DATE = '2026-10-30';
+export const REVIEW_DATE = '2026-10-31';
 const FORBIDDEN = ['app store', 'google play', 'toàn quốc', 'không cần cọc', 'miễn cọc', 'rẻ nhất', 'số 1', 'uy tín nhất',
   'tốt nhất việt nam', 'giao xe miễn phí', 'miễn phí giao', 'cam kết 100%', '24/7'];
 const MAX_WORDS = 2000, MIN_WORDS = 800;

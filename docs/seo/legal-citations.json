@@ -1,12 +1,12 @@
 {
  "$schema": "motoai/legal-citations@1",
- "registry_checked": "2026-10-30",
+ "registry_checked": "2026-10-31",
  "articles_scanned": 318,
  "counts": {
   "needs_fix": 0,
   "wrong_suffix": 0,
   "amended": 0,
-  "unverified": 1,
+  "unverified": 0,
   "unknown": 0,
   "documents": 33,
   "cited_documents": 30
@@ -14,26 +14,7 @@
  "needs_fix": [],
  "wrong_suffix": [],
  "amended": [],
- "unverified": [
-  {
-   "doc": "bo-luat-dan-su-91-2015",
-   "evidence": "unverified",
-   "status": "in_force",
-   "articles": 34,
-   "pending": "",
-   "sources": [],
-   "sample": [
-    "BA-0059",
-    "BA-0083",
-    "BA-0089",
-    "BA-0221",
-    "BA-0251",
-    "BA-0257",
-    "BA-0263",
-    "BA-0269"
-   ]
-  }
- ],
+ "unverified": [],
  "documents": [
   {
    "id": "luat-36-2024",
@@ -555,7 +536,7 @@
    "id": "bo-luat-dan-su-91-2015",
    "title": "Bộ luật Dân sự số 91/2015/QH13",
    "status": "in_force",
-   "evidence": "unverified",
+   "evidence": "fulltext",
    "effective": "2017-01-01",
    "replaced_by": null,
    "amended_by": null,
@@ -635,7 +616,7 @@
     "BA-1409",
     "BA-1469"
    ],
-   "mentions": 68
+   "mentions": 69
   },
   {
    "id": "luat-08-2022",
