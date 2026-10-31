@@ -354,6 +354,28 @@
         "Nghị quyết 03/2026/NQ-HĐTP hướng dẫn đặt cọc: đối chiếu câu \"hợp đồng không thực hiện được vì trở ngại khách quan thì không phạt cọc\" ở BA-0281 (đã ghi việc chờ trong sổ)"
       ],
       "qa": "node --test 1178/1178; site-audit PASS 2138 trang, 0 liên kết hỏng; seo-score 99,6 PASS; seo-legal-citations: cần sửa 0, chưa đối chiếu 0, ngoài sổ 0 (mọi văn bản bài dẫn đã đối chiếu toàn văn)",
+      "live_verified": {
+        "date": "2026-10-31T07:48Z",
+        "method": "TinyFish fetch_content ttl 0 + page_metadata",
+        "evidence": "BA-0263 /blog/an-toan/nghia-vu-cua-ben-cho-thue/: \"Các nghĩa vụ này nằm tại Điều 476, Điều 477 và Điều 478\", câu hỏi thường gặp \"theo khoản 2 Điều 401\"; BA-0059 /blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue/: \"Điều 590 Bộ luật Dân sự 2015 liệt kê\", \"theo khoản 4 Điều 585\"; cả hai \"cập nhật 2026-10-31\", canonical self, build v76"
+      },
+      "merged": "ede6b65c (PR #48; Codex không review được — hết hạn mức tài khoản Codex)",
+      "live_check_findings": "Đọc toàn trang live phát hiện câu không có ký hiệu văn bản nên bộ quét bỏ sót: \"91/2015/QH15\" ở 5 bài, \"Điều 601 ... không quá mười lần mức lương cơ sở\" (đúng: khoản 2 Điều 590, năm mươi lần) ở BA-0059, \"toàn bộ, trực tiếp và kịp thời\" ở 2 bài, \"không được tăng giá thuê\"/\"coi như đồng ý chấm dứt hợp đồng\" ở BA-0263, BA-0545 — đã sửa ở lô C04b"
+    },
+    {
+      "batch_id": "C04b-LEGAL-FOLLOWUP",
+      "reviewed": "2026-10-31",
+      "scope": "Lỗi còn sót phát hiện khi kiểm tra live lô C04 (câu không có ký hiệu văn bản)",
+      "article_ids": [
+        "BA-0059",
+        "BA-0623",
+        "BA-0905",
+        "BA-1187",
+        "BA-1469",
+        "BA-0263",
+        "BA-0545"
+      ],
+      "changes": "tools/seo-body-review.mjs 7/7 qua QA nhà máy; dữ kiện mới blds-2015-muc-boi-thuong (khoản 1 Điều 585, khoản 2 Điều 590); 7 cờ content_flags đã giải quyết 2026-10-31",
       "live_verified": null
     }
   ],
@@ -364,11 +386,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "C04-LEGAL (chờ live)",
-  "last_verified_commit": "6bd05fe4",
+  "last_completed_batch": "C04-LEGAL (C04b chờ live)",
+  "last_verified_commit": "ede6b65c",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 30,
-  "next_article_ids_note": "Lô C05: RR-11 (nguồn pháp lý chết ở BA-0047, BA-0323, BA-0329, BA-0689 — thay bằng nguồn chính thức còn sống) + BA-0053 (câu \"đăng kiểm\" xe máy) + Nghị quyết 03/2026/NQ-HĐTP (đặt cọc, BA-0281) + Nghị quyết 57/2025/NQ-HĐND sau Luật Thủ đô 02/2026. Sổ đăng ký văn bản đã đối chiếu toàn văn hết; sau C05, khi chưa có GSC, chuyển sang rà các bài legal_review MANDATORY chưa qua review body. Khi có GSC, ưu tiên theo dữ liệu GSC.",
+  "next_article_ids_note": "Lô C05: (1) mở rộng bộ quét trích dẫn trong tools/seo-legal-citations.mjs để bắt dạng \"Luật Tên văn bản số N/YYYY\" — thử nghiệm phát hiện 3 văn bản ngoài sổ: Luật Bảo vệ quyền lợi người tiêu dùng 19/2023/QH15 (13 bài), Bộ luật Hình sự 100/2015/QH13 (1 bài), Luật Giao dịch điện tử 20/2023/QH15 (1 bài) — đối chiếu toàn văn và sửa câu sai; (2) RR-11 nguồn pháp lý chết BA-0047, BA-0323, BA-0329, BA-0689; (3) BA-0053 câu \"đăng kiểm\" xe máy; (4) Nghị quyết 03/2026/NQ-HĐTP (đặt cọc, BA-0281); (5) Nghị quyết 57/2025/NQ-HĐND sau Luật Thủ đô 02/2026. Khi có GSC, ưu tiên theo dữ liệu GSC.",
   "p0_live_verified": [
     "/",
     "/gia-thue/",
