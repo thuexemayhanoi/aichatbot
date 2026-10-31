@@ -94,3 +94,20 @@ test('repository: every cited document is in the registry, flagged articles matc
     assert.equal(read(`${OUT_DIR}/${name}`), files[name], `${name} is stale — run node tools/seo-legal-citations.mjs`);
   }
 });
+
+test('a document named between its type and number is cited by number, without borrowing a later number', () => {
+  const root = mkdtempSync(join(tmpdir(), 'motoai-legal-name-'));
+  mkdirSync(join(root, 'data/blog/articles'), { recursive: true });
+  mkdirSync(join(root, 'data/seo'), { recursive: true });
+  writeFileSync(join(root, REGISTRY), read(REGISTRY));
+  writeFileSync(join(root, 'data/blog/articles/a.body.html'), '<p>Theo Bộ luật Dân sự số 91/2015/QH15, bên thuê phải bảo quản tài sản. '
+    + 'Luật Trật tự, an toàn giao thông đường bộ năm 2024 và Nghị định 168/2024/NĐ-CP quy định mức phạt. '
+    + 'Luật Nhập cảnh giả định số 99/2099/QH99 không có trong sổ.</p>');
+  writeFileSync(join(root, 'data/blog/published.json'), JSON.stringify({ articles: [{ article_id: 'BA-0001', category: 'SAFE', slug: 'a', body: 'data/blog/articles/a.body.html' }] }));
+  const r = analyse(root);
+  assert.deepEqual(r.wrong_suffix.map((w) => [w.cited, w.expected]), [['Bộ luật Dân sự số 91/2015/QH15', 'Bộ luật Dân sự số 91/2015/QH13']]);
+  assert.deepEqual(r.unknown.map((u) => u.key), ['luật|99/2099']);
+  const keys = scan(root)[0].cites.map((c) => c.key);
+  assert.ok(keys.includes('nghị định|168/2024'), 'the decree is still cited');
+  assert.ok(!keys.includes('luật|168/2024'), 'the law named before the decree does not borrow its number');
+});

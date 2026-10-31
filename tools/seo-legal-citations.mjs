@@ -38,7 +38,11 @@ export const STATUSES = ['in_force', 'amended', 'replaced', 'unverified'];
 export const EVIDENCE = ['fulltext', 'reported', 'unverified'];
 
 const read = (root, p) => readFileSync(join(root, p), 'utf8');
-const CITE_RE = /(Bộ luật|Luật|Nghị định|Thông tư|Quyết định|Nghị quyết|Chỉ thị)\s+(?:số\s+)?(\d{1,4})\/(\d{4}|CT-TTg)(?:\/([A-ZĐ][A-ZĐa-z0-9]*(?:-[A-ZĐa-z0-9]+)*))?/g;
+// The document name may sit between the type and the number ("Bộ luật Dân sự số 91/2015/QH13",
+// "Luật Bảo vệ quyền lợi người tiêu dùng số 19/2023/QH15"): one capitalised word, then up to
+// ten lower-case words. Digits stop the name, so "Luật … năm 2024 và Nghị định 168/2024" never
+// borrows the decree's number.
+const CITE_RE = /(Bộ luật|Luật|Nghị định|Thông tư|Quyết định|Nghị quyết|Chỉ thị)(?:\s+\p{Lu}\p{L}*,?(?:\s+\p{Ll}+,?){0,10}?)?\s+(?:số\s+)?(\d{1,4})\/(\d{4}|CT-TTg)(?:\/([A-ZĐ][A-ZĐa-z0-9]*(?:-[A-ZĐa-z0-9]+)*))?/gu;
 
 /** Citation key as the registry writes it: 'loại|số/năm' in lower case. */
 export const citeKey = (type, num, year) => `${type.toLowerCase()}|${num}/${year.toLowerCase()}`;
