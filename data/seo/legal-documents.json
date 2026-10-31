@@ -127,13 +127,14 @@
    "status": "in_force",
    "evidence": "fulltext",
    "facts": [
-    "luat-02-2026-qh16-vung-phat-thai-thap"
+    "luat-02-2026-qh16-vung-phat-thai-thap",
+    "luat-02-2026-qh16-chuyen-tiep"
    ],
    "sources": [
     "https://congbao.chinhphu.vn/van-ban/luat-so-02-2026-qh16-469529.htm",
     "https://luatvietnam.vn/hanh-chinh/luat-thu-do-2026-so-02-2026-qh16-434057-d1.html"
    ],
-   "note": "Đối chiếu 2026-10-30: thông qua 23/4/2026, hiệu lực 01/7/2026 (khoản 4 Điều 8, khoản 6 Điều 36 hiệu lực từ ngày thông qua); thay thế Luật Thủ đô số 39/2024/QH15. Điểm e khoản 1 Điều 13: Hội đồng nhân dân Thành phố quy định phạm vi vùng phát thải thấp. Việc chờ: đối chiếu Điều 36 (chuyển tiếp) với hiệu lực tiếp tục của Nghị quyết 57/2025/NQ-HĐND."
+   "note": "Đối chiếu 2026-10-30: thông qua 23/4/2026, hiệu lực 01/7/2026 (khoản 4 Điều 8, khoản 6 Điều 36 hiệu lực từ ngày thông qua); thay thế Luật Thủ đô số 39/2024/QH15. Điểm e khoản 1 Điều 13: Hội đồng nhân dân Thành phố quy định phạm vi vùng phát thải thấp. Đối chiếu 2026-10-31 (toàn văn Điều 36): khoản 1, 2 cho tiếp tục các đề án, cơ chế thí điểm đã phê duyệt trước 01/7/2026 — Nghị quyết 57/2025/NQ-HĐND và Đề án vùng phát thải thấp (Quyết định 3273/QĐ-UBND 29/6/2026) tiếp tục được áp dụng; Quyết định 3273 còn căn cứ Nghị quyết 68/2026/NQ-HĐND ban hành theo điểm g khoản 1 Điều 13 luật mới."
   },
   {
    "id": "bo-luat-dan-su-91-2015",
@@ -813,7 +814,7 @@
    "title": "Nghị quyết 57/2025/NQ-HĐND của HĐND thành phố Hà Nội về vùng phát thải thấp",
    "issuer": "HĐND thành phố Hà Nội",
    "issued": "2025-11-26",
-   "effective": "2025-12-06",
+   "effective": "2025-12-10",
    "status": "in_force",
    "evidence": "fulltext",
    "facts": [
@@ -821,9 +822,37 @@
     "nq-57-2025-hdnd-ha-noi-xe-may"
    ],
    "sources": [
-    "https://www.hhtp.gov.vn/media/tin-tuc/2026_01/nqpq-57-2025.pdf"
+    "https://www.hhtp.gov.vn/media/tin-tuc/2026_01/nqpq-57-2025.pdf",
+    "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Nghi-quyet-57-2025-NQ-HDND-thuc-hien-vung-phat-thai-thap-Ha-Noi-682866.aspx",
+    "https://sonnmt.hanoi.gov.vn/index.php/tin-t-c/moi-tru-ng/21856-ha-n-i-c%C3%B4ng-b-d-an-v%C3%B9ng-ph%C3%A1t-th-i-th-p-trong-vanh-%C4%91ai-1-th%C3%A0nh-ph-ha-n-i-th-di-m-t-ng%C3%A0y-01-7-2027"
    ],
-   "note": ""
+   "note": "Hiệu lực 10/12/2025 (Điều 13 khoản 1; sổ trước ghi nhầm 06/12). Ban hành theo điểm a khoản 2 Điều 28 Luật Thủ đô 39/2024/QH15; Luật Thủ đô 02/2026/QH16 (hiệu lực 01/7/2026) giao cùng thẩm quyền cho Hội đồng nhân dân tại điểm e khoản 1 Điều 13 và cho tiếp tục các đề án, cơ chế thí điểm đã phê duyệt (Điều 36 khoản 1, 2). Đề án \"Vùng phát thải thấp trong vành đai 1\" căn cứ nghị quyết này: Nghị quyết 34/NQ-HĐND 15/6/2026 thông qua, Quyết định 3273/QĐ-UBND 29/6/2026 phê duyệt, thí điểm từ 01/7/2026 tại Khu vực 1, 2 phường Hoàn Kiếm (Sở Nông nghiệp và Môi trường công bố 30/6/2026; Ban Quản lý Khu công nghệ cao 08/7/2026; VTV 29/9/2026 và Lao Động 09/10/2026 ghi nhận 3 tháng thí điểm, chưa có chế tài xử phạt riêng). Đối chiếu 2026-10-31: chưa thấy nghị quyết thay thế hoặc sửa đổi."
+  },
+  {
+   "id": "qd-3273-2026-ubnd",
+   "cite": [],
+   "suffix": "QĐ-UBND",
+   "names": [
+    "đề án vùng phát thải thấp trong vành đai 1"
+   ],
+   "title": "Quyết định 3273/QĐ-UBND ngày 29/6/2026 của UBND thành phố Hà Nội phê duyệt Đề án \"Vùng phát thải thấp trong vành đai 1, thành phố Hà Nội\"",
+   "issuer": "Ủy ban nhân dân thành phố Hà Nội",
+   "issued": "2026-06-29",
+   "effective": "2026-06-29",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "facts": [
+    "qd-3273-2026-ubnd-de-an",
+    "de-an-vdd1-giai-doan-1",
+    "de-an-vdd1-giai-doan-2-3"
+   ],
+   "sources": [
+    "https://sonnmt.hanoi.gov.vn/images/Q%203273%20ngy%2029.6.2026-%20%20n%20vng%20pht%20thi%20thp.pdf",
+    "https://sonnmt.hanoi.gov.vn/images/BC%20%20n.pdf",
+    "https://sonnmt.hanoi.gov.vn/images/Ph%20lc%203237.pdf",
+    "https://sonnmt.hanoi.gov.vn/index.php/tin-t-c/moi-tru-ng/21856-ha-n-i-c%C3%B4ng-b-d-an-v%C3%B9ng-ph%C3%A1t-th-i-th-p-trong-vanh-%C4%91ai-1-th%C3%A0nh-ph-ha-n-i-th-di-m-t-ng%C3%A0y-01-7-2027"
+   ],
+   "note": "Văn bản cá biệt (không có năm trong số hiệu nên bộ quét chỉ bắt theo tên \"Đề án vùng phát thải thấp trong Vành đai 1\"). Căn cứ Nghị quyết 57/2025/NQ-HĐND, Nghị quyết 34/NQ-HĐND 15/6/2026 (thông qua Đề án) và Nghị quyết 68/2026/NQ-HĐND (hỗ trợ chuyển đổi phương tiện). Đối chiếu toàn văn Quyết định, Báo cáo Đề án và Phụ lục 1–3 trên sonnmt.hanoi.gov.vn ngày 2026-10-31. Giai đoạn 1 (01/7–31/12/2026): Khu vực 1, 2 phường Hoàn Kiếm; cấm mọi xe cơ giới 19h00–24h00 tối thứ Sáu, Bảy, Chủ nhật trong Khu vực 1; xe máy xăng cá nhân chỉ ở mức khuyến khích hạn chế (xe mô tô trước 2008, xe gắn máy trước 2016); xe ôm công nghệ xăng khuyến khích hạn chế, cấm từ 01/01/2027; từ 01/01/2028 toàn Vành đai 1 và yêu cầu khí thải mức 3 với xe mô tô, xe gắn máy."
   },
   {
    "id": "nq-47-2024-hdnd",
@@ -835,12 +864,18 @@
    "issuer": "HĐND thành phố Hà Nội",
    "issued": "2024-12-12",
    "effective": "2025-01-01",
-   "status": "amended",
-   "amended_by": "nq-57-2025-hdnd",
-   "amended_from": "2025-12-06",
-   "evidence": "unverified",
-   "sources": [],
-   "note": "Nghị quyết 57/2025/NQ-HĐND quy định lại vùng phát thải thấp; quan hệ thay thế/sửa đổi chưa đối chiếu."
+   "status": "replaced",
+   "evidence": "fulltext",
+   "sources": [
+    "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Nghi-quyet-57-2025-NQ-HDND-thuc-hien-vung-phat-thai-thap-Ha-Noi-682866.aspx",
+    "https://www.hhtp.gov.vn/media/tin-tuc/2026_01/nqpq-57-2025.pdf"
+   ],
+   "note": "Hết hiệu lực từ 10/12/2025 theo Điều 13 khoản 2 Nghị quyết 57/2025/NQ-HĐND (toàn văn đối chiếu 2026-10-31). Bài chỉ dẫn như văn bản cũ.",
+   "replaced_by": "nq-57-2025-hdnd",
+   "replaced_from": "2025-12-10",
+   "facts": [
+    "nq-57-2025-hdnd-ha-noi-lo-trinh"
+   ]
   },
   {
    "id": "nq-202-2025-qh15",
