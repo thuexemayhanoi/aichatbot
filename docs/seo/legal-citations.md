@@ -30,6 +30,7 @@ Mỗi bài dưới đây phải có cờ trong `config/seo-cold-start.json` → 
 |---|---|---|---:|---|
 | — | | | | |
 
+Đã đối chiếu toàn văn văn bản sửa đổi: luat-36-2024 ← luat-118-2025 (rà ngày 31/10/2026, 225 bài dẫn; ghi chú trong sổ đăng ký).
 Đã đối chiếu toàn văn văn bản sửa đổi: nd-168-2024 ← nd-238-2026 (rà ngày 23/10/2026, 232 bài dẫn; ghi chú trong sổ đăng ký).
 
 ## 4. Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn
@@ -44,7 +45,8 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 
 | Văn bản | Tên | Trạng thái | Bằng chứng | Hiệu lực | Thay/sửa bởi | Bài dẫn như hiện hành | Bài nhắc quy định cũ | Dẫn theo tên |
 |---|---|---|---|---|---|---:|---:|---:|
-| luat-36-2024 | Luật Trật tự, an toàn giao thông đường bộ số 36/2024/QH15 | in_force | fulltext | 01/01/2025 | — | 223 | 2 | 62 |
+| luat-36-2024 | Luật Trật tự, an toàn giao thông đường bộ số 36/2024/QH15 | amended | fulltext | 01/01/2025 | luat-118-2025 | 225 | 2 | 64 |
+| luat-118-2025 | Luật số 118/2025/QH15 sửa đổi, bổ sung một số điều của 10 luật có liên quan đến an ninh, trật tự | in_force | fulltext | 01/07/2026 | — | 0 | 0 | 0 |
 | luat-23-2008 | Luật Giao thông đường bộ số 23/2008/QH12 | replaced | reported | 01/07/2009 | luat-36-2024 | 0 | 3 | 3 |
 | luat-39-2024 | Luật Thủ đô số 39/2024/QH15 | replaced | fulltext | 01/01/2025 | luat-02-2026-qh16 | 0 | 0 | 0 |
 | luat-02-2026-qh16 | Luật Thủ đô số 02/2026/QH16 | in_force | fulltext | 01/07/2026 | — | 1 | 0 | 1 |
@@ -67,6 +69,7 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 | tt-38-2024-bgtvt | Thông tư 38/2024/TT-BGTVT quy định về tốc độ và khoảng cách an toàn của xe cơ giới, xe máy chuyên dùng tham gia giao thông đường bộ | in_force | fulltext | 01/01/2025 | — | 21 | 0 | 0 |
 | tt-04-2021-bkhcn | Thông tư 04/2021/TT-BKHCN ban hành Quy chuẩn kỹ thuật quốc gia về mũ bảo hiểm cho người đi mô tô, xe máy (QCVN 2:2021/BKHCN) | in_force | fulltext | 01/08/2021 | — | 4 | 0 | 0 |
 | tt-60-2023-btc | Thông tư 60/2023/TT-BTC quy định mức thu, chế độ thu, nộp, miễn, quản lý lệ phí đăng ký, cấp biển phương tiện giao thông cơ giới đường bộ | replaced | fulltext | 22/10/2023 | tt-155-2025-btc | 0 | 5 | 0 |
+| tt-154-2025-btc | Thông tư 154/2025/TT-BTC quy định mức thu, chế độ thu, nộp phí sát hạch lái xe, lệ phí cấp bằng, chứng chỉ được hoạt động trên các loại phương tiện và lệ phí đăng ký, cấp biển xe máy chuyên dùng | in_force | fulltext | 01/01/2026 | — | 1 | 0 | 0 |
 | tt-155-2025-btc | Thông tư 155/2025/TT-BTC quy định mức thu, chế độ thu, nộp, miễn, quản lý lệ phí đăng ký, cấp biển phương tiện giao thông cơ giới đường bộ | in_force | fulltext | 01/01/2026 | — | 5 | 0 | 0 |
 | tt-29-2015-bgtvt | Thông tư 29/2015/TT-BGTVT quy định về cấp, sử dụng giấy phép lái xe quốc tế | replaced | reported | — | tt-108-2026-bca | 0 | 1 | 0 |
 | tt-35-2024-bgtvt | Thông tư 35/2024/TT-BGTVT quy định về đào tạo, sát hạch, cấp giấy phép lái xe; cấp, sử dụng giấy phép lái xe quốc tế; đào tạo, kiểm tra, cấp chứng chỉ bồi dưỡng kiến thức pháp luật về giao thông đường bộ | replaced | reported | 01/01/2025 | tt-12-2025-bca | 0 | 0 | 0 |

@@ -8,8 +8,8 @@
   "amended": 0,
   "unverified": 0,
   "unknown": 0,
-  "documents": 36,
-  "cited_documents": 34
+  "documents": 38,
+  "cited_documents": 35
  },
  "needs_fix": [],
  "wrong_suffix": [],
@@ -19,12 +19,12 @@
   {
    "id": "luat-36-2024",
    "title": "Luật Trật tự, an toàn giao thông đường bộ số 36/2024/QH15",
-   "status": "in_force",
+   "status": "amended",
    "evidence": "fulltext",
    "effective": "2025-01-01",
    "replaced_by": null,
-   "amended_by": null,
-   "amendment_checked": null,
+   "amended_by": "luat-118-2025",
+   "amendment_checked": "2026-10-31",
    "articles_current": [
     "BA-0005",
     "BA-0010",
@@ -69,6 +69,8 @@
     "BA-0293",
     "BA-0299",
     "BA-0317",
+    "BA-0323",
+    "BA-0329",
     "BA-0335",
     "BA-0341",
     "BA-0347",
@@ -284,6 +286,8 @@
     "BA-0197",
     "BA-0287",
     "BA-0293",
+    "BA-0323",
+    "BA-0329",
     "BA-0335",
     "BA-0341",
     "BA-0347",
@@ -318,7 +322,21 @@
     "BA-1133",
     "BA-1232"
    ],
-   "mentions": 364
+   "mentions": 368
+  },
+  {
+   "id": "luat-118-2025",
+   "title": "Luật số 118/2025/QH15 sửa đổi, bổ sung một số điều của 10 luật có liên quan đến an ninh, trật tự",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "effective": "2026-07-01",
+   "replaced_by": null,
+   "amended_by": null,
+   "amendment_checked": null,
+   "articles_current": [],
+   "articles_historical": [],
+   "by_name": [],
+   "mentions": 0
   },
   {
    "id": "luat-23-2008",
@@ -865,7 +883,7 @@
     "BA-1649"
    ],
    "by_name": [],
-   "mentions": 533
+   "mentions": 534
   },
   {
    "id": "nd-238-2026",
@@ -1116,6 +1134,22 @@
    ],
    "by_name": [],
    "mentions": 5
+  },
+  {
+   "id": "tt-154-2025-btc",
+   "title": "Thông tư 154/2025/TT-BTC quy định mức thu, chế độ thu, nộp phí sát hạch lái xe, lệ phí cấp bằng, chứng chỉ được hoạt động trên các loại phương tiện và lệ phí đăng ký, cấp biển xe máy chuyên dùng",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "effective": "2026-01-01",
+   "replaced_by": null,
+   "amended_by": null,
+   "amendment_checked": null,
+   "articles_current": [
+    "BA-0047"
+   ],
+   "articles_historical": [],
+   "by_name": [],
+   "mentions": 1
   },
   {
    "id": "tt-155-2025-btc",

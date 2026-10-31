@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { reviewArticle, REVIEW_LOG, loadLegalFacts, legalFactProblems } from '../../tools/seo-body-review.mjs';
+import { reviewArticle, REVIEW_LOG, loadLegalFacts, legalFactProblems, registeredSources } from '../../tools/seo-body-review.mjs';
 import { taxonomy } from '../../tools/taxonomy.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -111,4 +111,22 @@ test('legal corrections: new numbers only from declared, verified legal facts', 
   assert.ok(reviewArticle({ id: twice.article_id, replace: [{ from: 'Nghị định 168/2024/NĐ-CP', to: 'Nghị định này', nth: 999 }] }).problems.some((p) => p.includes('occurrence 999')));
   // Logged legal corrections name facts that exist.
   for (const [id, rev] of Object.entries(JSON.parse(read(REVIEW_LOG)).reviews)) for (const f of rev.facts ?? []) assert.ok(facts[f], `${id}: fact ${f} recorded`);
+});
+
+test('sources: an external link moves only to an official source the legal register records, prose untouched', () => {
+  const official = [...registeredSources()];
+  assert.ok(official.length >= 10, 'register and facts record full-text sources');
+  // Corpus-independent: any article with an external link it does not already point at a registered source.
+  const hrefs = (h) => [...h.matchAll(/<a\b[^>]*\bhref=(["'])(https?:\/\/.*?)\1/gi)].map((m) => m[2].replace(/&amp;/g, '&'));
+  const art = MANIFEST.find((a) => hrefs(read(a.body)).some((u) => !official.includes(u)));
+  const from = hrefs(read(art.body)).find((u) => !official.includes(u));
+  const to = official.find((u) => !read(art.body).includes(u));
+  const ok = reviewArticle({ id: art.article_id, sources: [{ from, to }] });
+  assert.deepEqual(ok.problems, []);
+  assert.ok(ok.html.includes(`href="${to.replace(/&/g, '&amp;')}"`), 'the link points at the registered source');
+  assert.ok(!hrefs(ok.html).includes(from), 'every link to the old source moved');
+  assert.equal(strip(ok.html), strip(ok.original), 'only the href changes, never the prose');
+  const bad = reviewArticle({ id: art.article_id, sources: [{ from, to: 'https://example.com/khong-phai-nguon-chinh-thuc' }, { from: '/blog/an-toan/', to }, { from: 'https://khong-co-trong-bai.vn/x', to }, { from, to, nth: 99 }] });
+  const all = bad.problems.join('\n');
+  for (const needle of ['"to" is not a source recorded', '"from" must be an external', 'no link to https://khong-co-trong-bai.vn/x', '(occurrence 99)']) assert.ok(all.includes(needle), `expected rejection: ${needle}\n${all}`);
 });

@@ -10,6 +10,10 @@
  *   intro    : one direct-answer paragraph prepended (AEO / AI answers)
  *   replace  : exact text-node replacements (Vietnamese for English fragments;
  *              optional nth = only that occurrence of a repeated text)
+ *   sources  : point an existing external link (dead or wrong source) at an
+ *              official source the legal register already records (a document's
+ *              sources or a verified fact's source); only the href changes —
+ *              anchor text changes go through replace
  *   links    : wrap an existing phrase in a contextual link to a published article
  *   table    : a comparison table summarising what the article already says
  *   faq      : a "Câu hỏi thường gặp" section (only if the body has none)
@@ -115,8 +119,39 @@ export function legalFactProblems(id, f) {
   return out;
 }
 
+/** Official sources a body may cite: the full-text sources of the legal
+ *  register (data/seo/legal-documents.json) and of the verified legal facts. */
+export const LEGAL_REGISTER = 'data/seo/legal-documents.json';
+export function registeredSources() {
+  const out = new Set();
+  if (existsSync(join(ROOT, LEGAL_REGISTER))) {
+    for (const d of JSON.parse(read(LEGAL_REGISTER)).documents ?? []) for (const s of d.sources ?? []) if (typeof s === 'string') out.add(s);
+  }
+  for (const f of Object.values(loadLegalFacts())) if (typeof f?.source === 'string') out.add(f.source);
+  return out;
+}
+
 /** Split html into [isTag, chunk] segments. */
 const segments = (html) => html.split(/(<[^>]+>)/g).filter((x) => x !== '').map((x) => [x.startsWith('<'), x]);
+
+/** Point the external links whose href is `from` (all of them, or only the
+ *  nth, 1-based) at `to`. Only the href attribute of <a> tags changes. */
+function replaceHref(html, from, to, nth = 0) {
+  let n = 0;
+  let hit = 0;
+  const escAttr = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  const out = segments(html).map(([tag, x]) => {
+    if (!tag || !/^<a\b/i.test(x)) return x;
+    return x.replace(/\bhref=(["'])(.*?)\1/i, (m, q, v) => {
+      if (v.replace(/&amp;/g, '&') !== from) return m;
+      n++;
+      if (nth && n !== nth) return m;
+      hit++;
+      return `href="${escAttr(to)}"`;
+    });
+  }).join('');
+  return { html: out, n: hit };
+}
 
 /** Apply text replacements to text nodes only (never attributes/hrefs).
  *  With `nth` (1-based) only that occurrence changes — for identical anchor
@@ -224,6 +259,22 @@ export function reviewArticle(patch, idx = manifestIndex()) {
     html = res.html;
   }
   if (patch.replace?.length) ops.push(`replace:${patch.replace.length}`);
+
+  // sources: a dead or wrong external source may point to another official
+  // source, but only one the legal register already records (never a free URL).
+  if (patch.sources?.length) {
+    const official = registeredSources();
+    for (const [i, s] of patch.sources.entries()) {
+      if (typeof s.from !== 'string' || !/^https?:\/\//.test(s.from)) { P(`sources[${i}]: "from" must be an external http(s) URL`); continue; }
+      if (typeof s.to !== 'string' || !official.has(s.to)) { P(`sources[${i}]: "to" is not a source recorded in ${LEGAL_REGISTER} or ${LEGAL_FACTS}`); continue; }
+      if (s.from === s.to) { P(`sources[${i}]: "to" equals "from"`); continue; }
+      if (s.nth !== undefined && !(Number.isInteger(s.nth) && s.nth > 0)) { P(`sources[${i}]: "nth" must be a positive integer`); continue; }
+      const res = replaceHref(html, s.from, s.to, s.nth);
+      if (res.n === 0) P(`sources[${i}]: no link to ${s.from}${s.nth ? ` (occurrence ${s.nth})` : ''}`);
+      html = res.html;
+    }
+    ops.push(`sources:${patch.sources.length}`);
+  }
 
   // condense: only for bodies above the 2,000-word guideline. A passage is
   // replaced by a shorter wording; every number it held must still appear in

@@ -16,7 +16,7 @@
    "issuer": "Quốc hội",
    "issued": "2024-06-27",
    "effective": "2025-01-01",
-   "status": "in_force",
+   "status": "amended",
    "evidence": "fulltext",
    "facts": [
     "luat-36-2024-hieu-luc",
@@ -24,12 +24,45 @@
     "luat-36-2024-dieu-56-giay-phep",
     "luat-36-2024-dieu-57-hang-a1-a",
     "luat-36-2024-dieu-59-do-tuoi",
-    "luat-36-2024-dieu-89-chuyen-tiep"
+    "luat-36-2024-dieu-89-chuyen-tiep",
+    "luat-36-2024-dieu-13-lan-duong",
+    "luat-36-2024-dieu-57-idp",
+    "luat-36-2024-dieu-56-mang-theo"
    ],
    "sources": [
+    "https://vanban.chinhphu.vn/?pageid=27160&docid=211194",
+    "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/3/55-vbhn-vpqh.pdf",
     "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Luat-trat-tu-an-toan-giao-thong-duong-bo-2024-so-36-2024-QH15-444251.aspx"
    ],
-   "note": "Tìm văn bản sửa đổi ngày 2026-10-16: chưa thấy."
+   "note": "Sửa đổi, bổ sung bởi Luật 118/2025/QH15 (hiệu lực 01/7/2026; riêng khoản 2 Điều 88 từ 01/01/2026). Đối chiếu văn bản hợp nhất 55/VBHN-VPQH ngày 2026-10-31: các điều khoản bài đang dẫn không có chú thích sửa đổi — Điều 13 (làn đường), Điều 34 khoản 1 điểm e, g và khoản 2 điểm b, Điều 56 khoản 1, Điều 57 khoản 1 điểm a–c, khoản 6 và khoản 8, Điều 59 khoản 1, Điều 89 khoản 1–2; quy định kiểm định xe mô tô, xe gắn máy chỉ thực hiện kiểm định khí thải cũng không có chú thích sửa đổi. Các chú thích sửa đổi nằm ở điều khoản bài không dẫn: thay thẩm quyền Bộ Giao thông vận tải bằng Bộ Xây dựng hoặc Bộ Công an (ví dụ khoản 9 Điều 57), kiểm định, đào tạo, sát hạch, cấp giấy phép lái xe, cơ sở dữ liệu và thiết bị ghi hình. Lần tìm văn bản sửa đổi ngày 2026-10-16 đã bỏ sót Luật 118; phát hiện khi đối chiếu nguồn lô C06.",
+   "amended_by": "luat-118-2025",
+   "amended_from": "2026-07-01",
+   "amendment_checked": "2026-10-31"
+  },
+  {
+   "id": "luat-118-2025",
+   "cite": [
+    "luật|118/2025"
+   ],
+   "suffix": "QH15",
+   "names": [
+    "luật sửa đổi, bổ sung một số điều của 10 luật có liên quan đến an ninh, trật tự"
+   ],
+   "title": "Luật số 118/2025/QH15 sửa đổi, bổ sung một số điều của 10 luật có liên quan đến an ninh, trật tự",
+   "issuer": "Quốc hội",
+   "issued": "2025-12-10",
+   "effective": "2026-07-01",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "facts": [
+    "luat-118-2025-sua-luat-36"
+   ],
+   "sources": [
+    "https://vanban.chinhphu.vn/?classid=1&docid=216534&orggroupid=1&pageid=27160",
+    "https://congbao.chinhphu.vn/van-ban/luat-so-118-2025-qh15-468680.htm",
+    "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/3/55-vbhn-vpqh.pdf"
+   ],
+   "note": "Công báo số 35 (21/01/2026). Phần sửa Luật Trật tự, an toàn giao thông đường bộ được đối chiếu qua văn bản hợp nhất 55/VBHN-VPQH (chú thích từng khoản sửa đổi, ngày hiệu lực); các luật khác trong 10 luật không được bài viết dẫn."
   },
   {
    "id": "luat-23-2008",
@@ -284,6 +317,7 @@
     "nd-168-2024-dieu-32-khi-thai"
    ],
    "sources": [
+    "https://vanban.chinhphu.vn/?pageid=27160&docid=212167&classid=1&orggroupid=2",
     "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2024/12/43733/54010-1-202575-76168-2024-nd-cp.pdf",
     "https://thuvienphapluat.vn/van-ban/Vi-pham-hanh-chinh/Nghi-dinh-168-2024-ND-CP-xu-phat-vi-pham-hanh-chinh-trat-tu-an-toan-giao-thong-duong-bo-619502.aspx"
    ],
@@ -555,6 +589,27 @@
    ]
   },
   {
+   "id": "tt-154-2025-btc",
+   "cite": [
+    "thông tư|154/2025"
+   ],
+   "suffix": "TT-BTC",
+   "title": "Thông tư 154/2025/TT-BTC quy định mức thu, chế độ thu, nộp phí sát hạch lái xe, lệ phí cấp bằng, chứng chỉ được hoạt động trên các loại phương tiện và lệ phí đăng ký, cấp biển xe máy chuyên dùng",
+   "issuer": "Bộ Tài chính",
+   "issued": "2025-12-31",
+   "effective": "2026-01-01",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "facts": [
+    "tt-154-2025-btc-le-phi-gplx"
+   ],
+   "sources": [
+    "https://vanban.chinhphu.vn/?docid=216544&pageid=27160",
+    "https://thuvienphapluat.vn/van-ban/Thue-Phi-Le-Phi/Thong-tu-154-2025-TT-BTC%e2%80%8b-che-do-thu-nop-phi-sat-hach-lai-xe-le-phi-cap-bien-xe-may-chuyen-dung-687594.aspx"
+   ],
+   "note": "Công báo số 22 (20/01/2026), người ký Cao Anh Tuấn. Thay Thông tư 37/2023/TT-BTC (Điều 5 khoản 2): bỏ mức 135.000 đồng nộp trực tiếp và mức ưu đãi trực tuyến 115.000 đồng (hết 31/12/2025), áp dụng một mức 115.000 đồng/lần. Từ 15/8/2026 đến 28/02/2027, Nghị quyết 66.22/2026/NQ-CP và Thông tư 117/2026/TT-BTC miễn lệ phí đổi, cấp lại giấy phép lái xe nộp trực tuyến cho công dân có tài khoản định danh điện tử mức độ 2 đã tích hợp đủ giấy tờ trên VNeID; danh mục thủ tục được miễn là cấp đổi, cấp lại, không gồm cấp mới giấy phép lái xe quốc tế (theo bản tin của Công an tỉnh Gia Lai, Thanh Hóa trích Phụ lục II). Bài viết chưa dẫn hai văn bản miễn phí này."
+  },
+  {
    "id": "tt-155-2025-btc",
    "cite": [
     "thông tư|155/2025"
@@ -656,10 +711,12 @@
    "facts": [
     "tt-108-2026-idp",
     "tt-108-2026-cap-idp",
-    "tt-108-2026-cap-idp-giay-phep-viet-nam"
+    "tt-108-2026-cap-idp-giay-phep-viet-nam",
+    "tt-108-2026-khong-cap-idp"
    ],
    "sources": [
-    "https://congbaocdn.chinhphu.vn/180507251028987904/2026/7/23/470055-1784712374_v1_1784768048_signed.pdf"
+    "https://congbaocdn.chinhphu.vn/180507251028987904/2026/7/23/470055-1784712374_v1_1784768048_signed.pdf",
+    "https://congbao.chinhphu.vn/van-ban/thong-tu-so-108-2026-tt-bca-470055.htm"
    ],
    "note": "Công báo số 429; thay Thông tư 12/2025/TT-BCA từ 01/7/2026 (Điều 41 khoản 6). Đối chiếu toàn văn 2026-10-23."
   },
