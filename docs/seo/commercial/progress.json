@@ -445,7 +445,25 @@
       ],
       "changes": "BA-2004 qua tools/seo-body-review.mjs (replace:6, QA nhà máy 100 → 100, số từ QA 2000 → 2000): bỏ \"khung giờ cụ thể chưa được ban hành\"; nêu khung giờ chính thức duy nhất 19–24 giờ tối thứ Sáu, Bảy, Chủ nhật ở Khu vực 1; xe máy điện ít bị ảnh hưởng nhất nhưng tối cuối tuần vẫn không vào Khu vực 1 (thân bài, mẹo và FAQ). Mô tả meta (data/seo/article-meta.json) bỏ Chỉ thị 20/CT-TTg + \"9 phường\" (lỗi thời), thay bằng Đề án thí điểm từ 1/7/2026 ở phường Hoàn Kiếm (151 ký tự). 1 cờ content_flags đã giải quyết.",
       "technical_fix": "Trang chủ / (dựng lại ở v76, 271e48e8) mất thẻ meta google-site-verification — thẻ chỉ còn ở /agent/. Search Console kiểm tra định kỳ thẻ trên trang chủ và thu hồi quyền sở hữu sau thời gian ân hạn nếu không xác nhận được (support.google.com/webmasters/answer/9008080, đọc 2026-10-31). tools/build-blog.mjs đọc đúng thẻ từ data/site/agent.html.tpl (một nguồn) và chèn vào <head> của /; test tests/unit/search-console-verification.test.js khóa hồi quy.",
+      "live_verified": "2026-10-31: deploy 6569a471 trên trang live — / có thẻ meta google-site-verification (token khớp data/site/agent.html.tpl); BA-2004 có khung giờ chính thức duy nhất 19–24 giờ tối thứ Sáu, Bảy, Chủ nhật ở Khu vực 1, ngoại lệ xe điện ở thân bài, mẹo và FAQ, mô tả meta mới. Đọc lại toàn bài phát hiện thêm 1 mệnh đề lỗi thời trong FAQ (\"khi lộ trình đó được ban hành\") — sửa ở lô C07c"
+    },
+    {
+      "batch_id": "C07c-LEGAL-LEZ-FIX",
+      "reviewed": "2026-10-31",
+      "scope": "BA-2004: mệnh đề lỗi thời về lộ trình khí thải trong FAQ (phát hiện khi kiểm tra live C07b)",
+      "article_ids": [
+        "BA-2004"
+      ],
+      "changes": "tools/seo-body-review.mjs (replace:1, dữ kiện qd-13-2026-lo-trinh-kiem-dinh): \"khi lộ trình đó được ban hành\" → \"theo lộ trình mà Quyết định 13/2026/QĐ-TTg đã ban hành\"; QA nhà máy 100 → 100, số từ QA 2000 → 2000; 1 cờ content_flags đã giải quyết.",
       "live_verified": "chờ deploy"
+    },
+    {
+      "batch_id": "M1-MASTER-2026",
+      "reviewed": "2026-10-31",
+      "scope": "SEO MASTER COMMAND 2026 — kiểm kê 2.138 URL từ 4 nguồn (sitemap, HTML build, link graph, manifest), phân loại KEEP/IMPROVE/EXPAND/CONSOLIDATE/REDIRECT/NOINDEX theo bằng chứng, QA proxy 100 điểm, kiểm tra kỹ thuật/schema/NAP/hreflang, CWV lab, backlog P0–P3",
+      "article_ids": [],
+      "changes": "Mới: tools/seo-master-2026.py → docs/seo/MASTER-SEO-MATRIX-2026.xlsx (23 sheet + 4 phụ lục, công thức dashboard kiểm bằng LibreOffice) và docs/seo/master-2026/ (summary, url-inventory, backlog, checkpoint, formula-check, article-qa, cwv-lab); tools/seo-cwv-lab.mjs (CWV LAB, không phải field). Không đổi trang nào ngoài lô C07c.",
+      "live_verified": "không áp dụng (báo cáo dữ liệu)"
     }
   ],
   "rules": [
@@ -455,11 +473,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "C07b-LEGAL-LEZ-FIX",
-  "last_verified_commit": "77c2b84f",
+  "last_completed_batch": "M1-MASTER-2026",
+  "last_verified_commit": "6569a471",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Lô C08: kiểm tra live BA-2004 và thẻ xác minh trên / sau deploy C07b; lô M1 (Master SEO Matrix 2026, docs/seo/master-2026/) chạy song song; rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv theo cụm (ưu tiên bài dẫn Nghị định 168/2024 và Luật 36/2024 đã đối chiếu văn bản hợp nhất). Chờ chủ sở hữu: Search Console (ưu tiên theo dữ liệu khi có), trang khu vực giao xe, bật lại nhà máy ảnh, Canva, RR-12, MT-P4-10. Lưu ý theo dõi: Nghị quyết 03/2026/NQ-HĐTP (đặt cọc) đã khớp; Luật 118/2025/QH15 đã đối chiếu; vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cần cập nhật BA-2004 đầu năm 2027).",
+  "next_article_ids_note": "Lô M2: /gia-thue/ (backlog B03 trong docs/seo/master-2026/backlog.csv) — mở rộng bằng bảng giá pricing.json qua placeholder, tiền cọc, điều kiện, câu hỏi thường gặp (không FAQPage schema), giữ trang chủ Apple V3. Sau đó M3: phân trang hub chủ đề con > 100 KB (T20) và đoạn dẫn hub (B04). Song song C08: rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv. Chờ chủ sở hữu: Search Console (B02), GBP, local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cập nhật BA-2004 đầu năm 2027).",
   "p0_live_verified": [
     "/",
     "/gia-thue/",
