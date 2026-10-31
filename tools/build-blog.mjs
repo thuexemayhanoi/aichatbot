@@ -1099,8 +1099,16 @@ export function build() {
 
   // Static screens — one registry (config/site-pages.json), same shell,
   // verified facts only.
+  const builtPaths = new Set([
+    '/', '/blog/', AGENT_URL,
+    ...published.map((a) => `/blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`),
+    ...subtopicPages.map((p) => `/${p}`),
+    ...HUBS.map((h) => `/blog/${h.dir}/`),
+    ...taxonomy.clusters.map((c) => `/blog/${c.dir}/`),
+    ...SITE_PAGES.map((p) => `/${p.dir}/`)
+  ]);
   for (const page of SITE_PAGES) {
-    if (page.kind === 'price') buildPrice(page, business);
+    if (page.kind === 'price') buildPrice(page, business, published, builtPaths);
     else buildLegal(page, business);
   }
   buildNotFound(business);
@@ -1241,7 +1249,94 @@ function priceCatalogSchema(pricing, business) {
   };
 }
 
-function buildPrice(page, business) {
+/* Lô M2: /gia-thue/ below the table — built ONLY from pricing.json and
+ * business.json. Comparisons quote published rates side by side and never
+ * derive a new price (a period without a published rate keeps the
+ * priceConfirm label);
+ * policy answers are the business.json notes verbatim. Plain HTML Q&A: no
+ * FAQPage markup (Google stopped showing FAQ rich results in 2026). */
+const vnd = (n) => `${n.toLocaleString('vi-VN')}đ`;
+const joinVi = (xs) => (xs.length <= 1 ? (xs[0] ?? '') : `${xs.slice(0, -1).join(', ')} và ${xs[xs.length - 1]}`);
+/** Generic vehicle names ("Xe máy điện") read lower-case mid-sentence; brands stay as written. */
+const midName = (name) => name.replace(/^Xe /, 'xe ');
+const byOrder = (vehicles) => vehicles.slice().sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+const lowOf = (r) => r.min ?? r.max;
+const highOf = (r) => r.max ?? r.min;
+
+export function priceCompareSection(pricing) {
+  const items = [];
+  const unpriced = [];
+  for (const v of byOrder(pricing.vehicles)) {
+    const { day, week, month } = v.rates;
+    if (!hasRate(day) && !hasRate(week) && !hasRate(month)) { unpriced.push(unpriced.length ? midName(v.name) : v.name); continue; }
+    const parts = [];
+    if (hasRate(day) && hasRate(week)) {
+      parts.push(`gói tuần ${rate(week)} ${highOf(week) < 7 * lowOf(day) ? 'thấp hơn' : 'không thấp hơn'} 7 ngày thuê lẻ (${rate(day)}/ngày)`);
+    } else if (hasRate(day)) {
+      parts.push(`mới công bố giá ngày ${rate(day)}; thuê theo tuần, theo tháng cần hỏi cửa hàng`);
+    }
+    if (hasRate(week) && hasRate(month)) {
+      parts.push(`gói tháng ${rate(month)} ${highOf(month) < 4 * lowOf(week) ? 'thấp hơn' : 'không thấp hơn'} 4 gói tuần`);
+    }
+    const kind = v.category && v.category !== v.name ? ` (${esc(v.category)})` : '';
+    items.push(`<li><strong>${esc(v.name)}</strong>${kind}: ${parts.join('; ')}.</li>`);
+  }
+  if (unpriced.length) items.push(`<li><strong>${esc(joinVi(unpriced))}</strong>: chưa công bố giá tham khảo — hỏi cửa hàng trước khi đặt.</li>`);
+  return `<section class="blog-legal-card">
+  <h2>Thuê theo ngày, tuần hay tháng</h2>
+  <p>So sánh dưới đây chỉ đặt các mức giá đã công bố trong bảng cạnh nhau; kỳ thuê chưa có giá vẫn là “${esc(t('priceConfirm'))}”, không suy ra từ giá ngày.</p>
+  <ul>
+    ${items.join('\n    ')}
+  </ul>
+</section>`;
+}
+
+export function priceFaqSection(pricing, business) {
+  const vehicles = byOrder(pricing.vehicles);
+  const qa = [];
+  const dayPriced = vehicles.filter((v) => hasRate(v.rates.day));
+  if (dayPriced.length) {
+    const lo = Math.min(...dayPriced.map((v) => lowOf(v.rates.day)));
+    const hi = Math.max(...dayPriced.map((v) => highOf(v.rates.day)));
+    const at = (x, pick) => joinVi(dayPriced.filter((v) => pick(v.rates.day) === x).map((v) => midName(v.name)));
+    const noDay = vehicles.filter((v) => !hasRate(v.rates.day)).map((v) => midName(v.name));
+    qa.push(['Thuê xe máy ở Hà Nội bao nhiêu tiền một ngày?',
+      (lo === hi ? `Giá ngày tham khảo tại cửa hàng là ${vnd(lo)}` : `Giá ngày tham khảo tại cửa hàng từ ${vnd(lo)} (${at(lo, lowOf)}) đến ${vnd(hi)} (${at(hi, highOf)})`)
+      + (noDay.length ? `; ${joinVi(noDay)} chưa công bố giá tham khảo.` : '.')]);
+  }
+  const dep = business.policies.deposit;
+  if (dep.min != null && dep.max != null) {
+    const unknown = vehicles.filter((v) => !hasRate(v.deposit)).map((v) => midName(v.name));
+    qa.push(['Tiền cọc là bao nhiêu, có tính vào giá thuê không?',
+      `Tiền cọc là khoản riêng, không tính vào giá thuê: từ ${vnd(dep.min)} đến ${vnd(dep.max)} tùy xe, theo cột ${t('priceDeposit')}`
+      + (unknown.length ? `; ${joinVi(unknown)} xác nhận mức cọc theo mẫu xe.` : '.')]);
+  }
+  if (business.policies.delivery?.note) qa.push(['Cửa hàng có giao xe tận nơi không?', business.policies.delivery.note]);
+  if (business.policies.insurance?.note) qa.push(['Giá thuê đã gồm bảo hiểm chưa?', business.policies.insurance.note]);
+  return `<section class="blog-legal-card">
+  <h2>Câu hỏi thường gặp về giá thuê xe máy</h2>
+${qa.map(([q, a]) => `  <h3>${esc(q)}</h3>\n  <p>${esc(a)}</p>`).join('\n')}
+</section>`;
+}
+
+/** "Đọc thêm" for /gia-thue/: config/site-pages.json `related`; an article
+ *  link shows the article's SEO title, anything else its configured label.
+ *  Only pages this build generates are linked (a factory sandbox or an
+ *  unpublished article simply drops the item — never a broken link). */
+function priceRelatedSection(page, published, builtPaths) {
+  const titles = new Map(published.map((a) => [`/blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`, a.title]));
+  const items = (page.related ?? [])
+    .filter((r) => builtPaths.has(r.href) && (titles.has(r.href) || r.label))
+    .map((r) => `<li><a href="${esc(r.href)}">${esc(titles.get(r.href) ?? r.label)}</a></li>`);
+  return items.length ? `<section class="blog-legal-card">
+  <h2>Đọc thêm về giá thuê</h2>
+  <ul>
+    ${items.join('\n    ')}
+  </ul>
+</section>` : '';
+}
+
+function buildPrice(page, business, published = [], builtPaths = new Set()) {
   const fact = (s) => resolveFacts(s, business);
   const pricing = PRICING;
   const rows = pricing.vehicles
@@ -1283,6 +1378,10 @@ ${rows}
         <p class="blog-summary-title">Lưu ý</p>
         <p>${esc(pricing.disclaimer)}</p>
         <p>${esc(business.policies.deposit.note)}</p>
+      </div>
+      <div class="blog-grid blog-legal-grid">
+${[priceCompareSection(pricing), page.body ? fact(read(page.body)).trim() : '', priceFaqSection(pricing, business), priceRelatedSection(page, published, builtPaths)]
+    .filter(Boolean).join('\n').split('\n').map((l) => (l ? `        ${l}` : l)).join('\n')}
       </div>
 ${askAgentAction(page.askTopic)}`;
 

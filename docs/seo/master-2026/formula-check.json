@@ -48,7 +48,7 @@
     {
       "kpi": "Phân loại KEEP",
       "formula": "=COUNTIF('URL INVENTORY'!L:L,\"KEEP\")",
-      "value": 1951,
+      "value": 1952,
       "ok": true
     },
     {
@@ -60,7 +60,7 @@
     {
       "kpi": "Phân loại EXPAND",
       "formula": "=COUNTIF('URL INVENTORY'!L:L,\"EXPAND\")",
-      "value": 1,
+      "value": 0,
       "ok": true
     },
     {

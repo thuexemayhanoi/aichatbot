@@ -463,7 +463,25 @@
       "scope": "SEO MASTER COMMAND 2026 — kiểm kê 2.138 URL từ 4 nguồn (sitemap, HTML build, link graph, manifest), phân loại KEEP/IMPROVE/EXPAND/CONSOLIDATE/REDIRECT/NOINDEX theo bằng chứng, QA proxy 100 điểm, kiểm tra kỹ thuật/schema/NAP/hreflang, CWV lab, backlog P0–P3",
       "article_ids": [],
       "changes": "Mới: tools/seo-master-2026.py → docs/seo/MASTER-SEO-MATRIX-2026.xlsx (23 sheet + 4 phụ lục, công thức dashboard kiểm bằng LibreOffice) và docs/seo/master-2026/ (summary, url-inventory, backlog, checkpoint, formula-check, article-qa, cwv-lab); tools/seo-cwv-lab.mjs (CWV LAB, không phải field). Không đổi trang nào ngoài lô C07c.",
-      "live_verified": "không áp dụng (báo cáo dữ liệu)"
+      "live_verified": "không áp dụng (báo cáo dữ liệu); merged 23da60d2 (PR #54)"
+    },
+    {
+      "batch_id": "C07d-LEGAL-LEZ-FIX",
+      "reviewed": "2026-10-31",
+      "scope": "BA-2004: câu tổng kết nhóm xe thứ ba còn \"phải đáp ứng quy chuẩn khí thải khi có lộ trình\" (lô C07c chỉ sửa câu tương tự ở FAQ)",
+      "article_ids": [
+        "BA-2004"
+      ],
+      "changes": "Rà mọi body tìm \"khi có lộ trình\", \"khi lộ trình … ban hành\", \"chưa ban hành lộ trình\": chỉ còn 1 câu ở BA-2004. Sửa qua tools/seo-body-review.mjs (replace:1, dữ kiện de-an-vdd1-giai-doan-2-3): \"và từ năm 2028 phải đạt quy chuẩn khí thải mức 3\"; QA nhà máy 100 → 100, số từ QA 2000 → 2000; 1 cờ content_flags đã giải quyết.",
+      "live_verified": "chờ deploy"
+    },
+    {
+      "batch_id": "M2-PRICE-PAGE",
+      "reviewed": "2026-10-31",
+      "scope": "Backlog B03: /gia-thue/ (pillar cụm K02 \"giá thuê xe máy Hà Nội\") chỉ 274 từ nội dung chính",
+      "article_ids": [],
+      "changes": "tools/build-blog.mjs dựng thêm dưới bảng giá, chỉ từ data/business/pricing.json và business.json: so sánh ngày/tuần/tháng đặt các mức giá đã công bố cạnh nhau (không suy ra giá mới, kỳ chưa có giá giữ \"Liên hệ\"), mẹo đọc bảng giá (data/site/gia-thue.body.html, placeholder {{ business.* }}), câu hỏi thường gặp dạng HTML (không FAQPage — Google ngừng rich result FAQ 2026; câu trả lời chính sách là ghi chú business.json nguyên văn), Đọc thêm 6 liên kết (config/site-pages.json related; tiêu đề bài lấy từ article-meta). Nội dung chính 274 → 878 từ; QA proxy 93 → 97; phân loại EXPAND → KEEP. Test mới tests/unit/price-page-content.test.js: mọi số tiền trên trang là giá/cọc đã công bố.",
+      "live_verified": "chờ deploy"
     }
   ],
   "rules": [
@@ -473,11 +491,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "M1-MASTER-2026",
+  "last_completed_batch": "M2-PRICE-PAGE",
   "last_verified_commit": "6569a471",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Lô M2: /gia-thue/ (backlog B03 trong docs/seo/master-2026/backlog.csv) — mở rộng bằng bảng giá pricing.json qua placeholder, tiền cọc, điều kiện, câu hỏi thường gặp (không FAQPage schema), giữ trang chủ Apple V3. Sau đó M3: phân trang hub chủ đề con > 100 KB (T20) và đoạn dẫn hub (B04). Song song C08: rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv. Chờ chủ sở hữu: Search Console (B02), GBP, local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cập nhật BA-2004 đầu năm 2027).",
+  "next_article_ids_note": "Lô M3: hub chủ đề con — phân trang 4 hub > 100 KB (T20: /blog/dia-phuong/phuong-xa/, /blog/huong-dan/thu-tuc/, /blog/an-toan/phap-luat/, /blog/thue-xe/gia-thue/; URL /page/N/ mới, giữ URL cũ) để giảm DOM và tương tác mở menu lab 248 ms (B15), rồi đoạn dẫn hub có giá trị theo lô ≤ 20 hub (B04). Song song C08: rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv. Chờ chủ sở hữu: Search Console (B02), GBP (B12), local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cập nhật BA-2004 đầu năm 2027).",
   "p0_live_verified": [
     "/",
     "/gia-thue/",

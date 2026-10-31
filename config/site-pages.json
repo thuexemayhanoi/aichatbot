@@ -158,6 +158,15 @@
       "seoTitle": "Giá thuê xe máy Hà Nội theo ngày, tuần, tháng | Bảng giá",
       "description": "Giá thuê xe máy ở Hà Nội theo ngày, tuần, tháng: xe số, xe tay ga, 50cc, xe điện, kèm tiền cọc tách riêng. Giá thực tế được xác nhận trước khi đặt xe.",
       "lead": "Giá tham khảo tại cửa hàng {{ business.brand }} ({{ business.address.street }}, {{ business.address.district }}, Hà Nội) theo loại xe và thời gian thuê. Giá thực tế và tiền cọc được xác nhận trực tiếp trước khi đặt xe.",
+      "body": "data/site/gia-thue.body.html",
+      "related": [
+        { "href": "/blog/thue-xe/gia-thue/", "label": "Mọi bài về giá thuê trong cẩm nang" },
+        { "href": "/blog/thue-xe/gia-thue-xe-may-theo-ngay/" },
+        { "href": "/blog/thue-xe/thue-xe-may-theo-thang/" },
+        { "href": "/blog/thue-xe/thue-xe-may-gia-re/" },
+        { "href": "/blog/thue-xe/dat-coc/", "label": "Đặt cọc khi thuê xe máy: các bài hướng dẫn" },
+        { "href": "/chinh-sach/", "label": "Chính sách thuê xe: giờ hoạt động, đặt cọc, giao nhận, bảo hiểm" }
+      ],
       "askTopic": "giá thuê xe"
     },
     {

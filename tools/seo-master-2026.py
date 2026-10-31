@@ -1205,8 +1205,11 @@ def build(D, date):
          'Khôi phục thẻ từ một nguồn + test hồi quy', 'agent', 'C07b', 'DONE — live 2026-10-31 (6569a471)', 'Thẻ có trong <head> của / trên live'],
         ['B02', 'P0', 'Data', 'site', 'Search Console chưa kết nối — không có dữ liệu index/CTR/truy vấn', 'GSC PERFORMANCE', 'Owner kết nối GSC, xuất dữ liệu vào data/seo/performance/',
          'owner', '—', 'OPEN', 'Tệp xuất có trong repo; engine chuyển DATA-DRIVEN'],
-        ['B03', 'P1', 'Homepage/Pillar', '/gia-thue/', f"Trang giá (cụm K02, volume nhóm 42.160) chỉ {pages['/gia-thue/']['words'] if '/gia-thue/' in pages else NA} từ nội dung chính; SERP benchmark trung vị 1.380–1.666 từ",
-         'HOMEPAGE & PILLAR; docs/seo/battle/06', 'Mở rộng bằng dữ liệu thật pricing.json/business.json (placeholder), không bịa giá', 'agent', 'M2', 'OPEN', 'QA proxy ≥ 85; build + site-audit PASS; live'],
+        (lambda w: ['B03', 'P1', 'Homepage/Pillar', '/gia-thue/',
+                    (f'Trang giá (cụm K02, volume nhóm 42.160) chỉ {w} từ nội dung chính; SERP benchmark trung vị 1.380–1.666 từ' if w < 500
+                     else f'Trang giá (cụm K02, volume nhóm 42.160) đã mở rộng lên {w} từ nội dung chính bằng dữ liệu pricing.json/business.json (lô M2)'),
+                    'HOMEPAGE & PILLAR; docs/seo/battle/06', 'Mở rộng bằng dữ liệu thật pricing.json/business.json (placeholder), không bịa giá', 'agent', 'M2',
+                    'OPEN' if w < 500 else 'DONE (lô M2)', 'QA proxy ≥ 85; build + site-audit PASS; live'])(pages['/gia-thue/']['words'] if '/gia-thue/' in pages else 0),
         ['B04', 'P1', 'Hub/Silo', '33 hub chủ đề con + 6 danh mục', 'Hub chủ yếu là danh sách thẻ; đoạn dẫn ngắn', 'SILO & CATEGORY MATRIX', 'Bổ sung đoạn dẫn có giá trị theo lô ≤ 20 hub', 'agent', 'M3', 'OPEN', 'Từ nội dung chính tăng, không trùng lặp'],
         ['B05', 'P1', 'Existing content', f'{expand_articles} bài', 'Bài dưới 800 từ (mục tiêu 800–2.000)', 'PAGE & POST OPTIMIZATION (EXPAND)', 'Review body có nguồn, không độn chữ',
          'agent', 'C08+', 'OPEN' if expand_articles else 'DONE', 'QA nhà máy không giảm'],
