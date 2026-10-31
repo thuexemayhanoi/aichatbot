@@ -1,13 +1,13 @@
 # Hiệu lực văn bản pháp luật mà bài viết trích dẫn
 
-_Sinh bởi `node tools/seo-legal-citations.mjs` từ sổ đăng ký `data/seo/legal-documents.json` (rà ngày 30/10/2026) và 318 bài đã đăng có trích dẫn văn bản. Không sửa tay. Phân loại "đang áp dụng"/"nhắc quy định cũ" là theo từ ngữ trong câu; mỗi dòng in kèm câu để người rà soát quyết định._
+_Sinh bởi `node tools/seo-legal-citations.mjs` từ sổ đăng ký `data/seo/legal-documents.json` (rà ngày 31/10/2026) và 318 bài đã đăng có trích dẫn văn bản. Không sửa tay. Phân loại "đang áp dụng"/"nhắc quy định cũ" là theo từ ngữ trong câu; mỗi dòng in kèm câu để người rà soát quyết định._
 
 | Mục | Số |
 |---|---:|
 | Bài dẫn văn bản đã hết hiệu lực như quy định đang áp dụng (cần sửa qua review body sau khi đối chiếu toàn văn) | 0 |
 | Trích dẫn sai ký hiệu | 0 |
 | Văn bản được sửa đổi sau khi bài đăng — chờ đối chiếu | 0 |
-| Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn | 1 |
+| Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn | 0 |
 | Trích dẫn ngoài sổ đăng ký | 0 |
 
 ## 1. Bài dẫn văn bản đã hết hiệu lực như quy định đang áp dụng
@@ -38,7 +38,7 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 
 | Văn bản | Trạng thái | Bằng chứng | Bài đang dẫn | Việc chờ | Nguồn để đối chiếu |
 |---|---|---|---:|---|---|
-| bo-luat-dan-su-91-2015 | in_force | unverified | 34 | — | — |
+| — | | | | | |
 
 ## 5. Sổ đăng ký và số bài dẫn
 
@@ -48,7 +48,7 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 | luat-23-2008 | Luật Giao thông đường bộ số 23/2008/QH12 | replaced | reported | 01/07/2009 | luat-36-2024 | 0 | 3 | 3 |
 | luat-39-2024 | Luật Thủ đô số 39/2024/QH15 | replaced | fulltext | 01/01/2025 | luat-02-2026-qh16 | 0 | 0 | 0 |
 | luat-02-2026-qh16 | Luật Thủ đô số 02/2026/QH16 | in_force | fulltext | 01/07/2026 | — | 1 | 0 | 1 |
-| bo-luat-dan-su-91-2015 | Bộ luật Dân sự số 91/2015/QH13 | in_force | unverified | 01/01/2017 | — | 34 | 1 | 34 |
+| bo-luat-dan-su-91-2015 | Bộ luật Dân sự số 91/2015/QH13 | in_force | fulltext | 01/01/2017 | — | 34 | 1 | 34 |
 | luat-08-2022 | Luật Kinh doanh bảo hiểm số 08/2022/QH15 | in_force | fulltext | 01/01/2023 | — | 0 | 0 | 0 |
 | luat-91-2025 | Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 | in_force | fulltext | 01/01/2026 | — | 2 | 0 | 2 |
 | nd-168-2024 | Nghị định 168/2024/NĐ-CP quy định xử phạt vi phạm hành chính về trật tự, an toàn giao thông trong lĩnh vực giao thông đường bộ; trừ điểm, phục hồi điểm giấy phép lái xe | amended | fulltext | 01/01/2025 | nd-238-2026 | 232 | 11 | 0 |

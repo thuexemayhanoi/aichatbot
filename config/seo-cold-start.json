@@ -1416,6 +1416,70 @@
       "source": "Đối chiếu toàn văn 2026-10-30 (Công báo, Cổng TTĐT Chính phủ, vbpl.vn; toàn văn thứ cấp khi PDF chính thức là ảnh quét — data/seo/legal-documents.json, data/seo/legal-facts.json)",
       "resolved": "2026-10-30",
       "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (tt-155-2025-btc-thay-the, tt-155-2025-btc-xe-mo-to, nd-67-2023-chu-xe, qd-13-2026-lo-trinh-kiem-dinh)"
+    },
+    {
+      "article": "BA-0059",
+      "reason": "Gán các khoản bồi thường khi sức khỏe bị xâm phạm cho Điều 599 Bộ luật Dân sự 2015 (điều về người dưới mười lăm tuổi gây thiệt hại khi trường học, bệnh viện quản lý); đúng là Điều 590 | Gán quy tắc bên bị hại có lỗi một phần cho Điều 584; đúng là khoản 4 Điều 585",
+      "flagged": "2026-10-31",
+      "source": "Đối chiếu toàn văn Bộ luật Dân sự 2015 ngày 2026-10-31 (vanban.chinhphu.vn, thuvienphapluat — data/seo/legal-facts.json)",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (blds-2015-boi-thuong-suc-khoe)"
+    },
+    {
+      "article": "BA-0263",
+      "reason": "Gán toàn bộ nghĩa vụ bên cho thuê cho Điều 479 Bộ luật Dân sự 2015 (thực ra là nghĩa vụ bảo quản tài sản của bên thuê; đúng là Điều 476–478) | Ghi \"theo Điều 479, bên cho thuê không được tăng giá thuê trong thời hạn thuê\" — Bộ luật không có quy định này; Điều 473: giá do các bên thỏa thuận, khoản 2 Điều 401: hợp đồng chỉ sửa đổi theo thỏa thuận",
+      "flagged": "2026-10-31",
+      "source": "Đối chiếu toàn văn Bộ luật Dân sự 2015 ngày 2026-10-31 (vanban.chinhphu.vn, thuvienphapluat — data/seo/legal-facts.json)",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (blds-2015-thue-tai-san)"
+    },
+    {
+      "article": "BA-0269",
+      "reason": "Gán nghĩa vụ bên cho thuê xe cho Điều 479 Bộ luật Dân sự 2015; đúng là Điều 476–478",
+      "flagged": "2026-10-31",
+      "source": "Đối chiếu toàn văn Bộ luật Dân sự 2015 ngày 2026-10-31 (vanban.chinhphu.vn, thuvienphapluat — data/seo/legal-facts.json)",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (blds-2015-thue-tai-san)"
+    },
+    {
+      "article": "BA-0281",
+      "reason": "Ghi \"một bên từ chối thực hiện thì chịu phạt cọc theo thỏa thuận\"; khoản 2 Điều 328 Bộ luật Dân sự 2015 quy định bên đặt cọc từ chối thì mất cọc, bên nhận cọc từ chối thì trả cọc và khoản tương đương, trừ thỏa thuận khác; dẫn khoản 1 cho quy tắc của khoản 2",
+      "flagged": "2026-10-31",
+      "source": "Đối chiếu toàn văn Bộ luật Dân sự 2015 ngày 2026-10-31 (vanban.chinhphu.vn, thuvienphapluat — data/seo/legal-facts.json)",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (blds-2015-dat-coc)"
+    },
+    {
+      "article": "BA-0545",
+      "reason": "Gán nghĩa vụ bên cho thuê cho Điều 479 Bộ luật Dân sự 2015 và nêu nghĩa vụ \"không tăng giá thuê trong thời hạn thuê\" không có trong Bộ luật; đúng là Điều 476–478, Điều 473 và khoản 2 Điều 401",
+      "flagged": "2026-10-31",
+      "source": "Đối chiếu toàn văn Bộ luật Dân sự 2015 ngày 2026-10-31 (vanban.chinhphu.vn, thuvienphapluat — data/seo/legal-facts.json)",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (blds-2015-thue-tai-san)"
+    },
+    {
+      "article": "BA-0563",
+      "reason": "Dẫn khoản 1 Điều 328 Bộ luật Dân sự 2015 cho quy tắc hoàn cọc; quy tắc nằm ở khoản 2",
+      "flagged": "2026-10-31",
+      "source": "Đối chiếu toàn văn Bộ luật Dân sự 2015 ngày 2026-10-31 (vanban.chinhphu.vn, thuvienphapluat — data/seo/legal-facts.json)",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (blds-2015-dat-coc)"
+    },
+    {
+      "article": "BA-1097",
+      "reason": "Ghi \"một bên từ chối thực hiện thì xử lý theo thỏa thuận\"; khoản 2 Điều 328 Bộ luật Dân sự 2015 có quy tắc mặc định (mất cọc hoặc trả cọc kèm khoản tương đương), trừ thỏa thuận khác",
+      "flagged": "2026-10-31",
+      "source": "Đối chiếu toàn văn Bộ luật Dân sự 2015 ngày 2026-10-31 (vanban.chinhphu.vn, thuvienphapluat — data/seo/legal-facts.json)",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (blds-2015-dat-coc)"
+    },
+    {
+      "article": "BA-1385",
+      "reason": "Ghi \"tranh chấp của bên thứ ba\"; khoản 2 Điều 478 Bộ luật Dân sự 2015 nói tranh chấp về quyền sở hữu đối với tài sản thuê khiến bên thuê không được sử dụng ổn định",
+      "flagged": "2026-10-31",
+      "source": "Đối chiếu toàn văn Bộ luật Dân sự 2015 ngày 2026-10-31 (vanban.chinhphu.vn, thuvienphapluat — data/seo/legal-facts.json)",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (blds-2015-thue-tai-san)"
     }
   ]
 }

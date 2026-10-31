@@ -79,9 +79,9 @@
 
 | Nhãn | Ý nghĩa | Số bài |
 |---|---|---:|
-| KEEP | Không còn lỗi có bằng chứng; giữ nguyên, theo dõi Search Console | 1971 |
+| KEEP | Không còn lỗi có bằng chứng; giữ nguyên, theo dõi Search Console | 2005 |
 | FIX | Có lỗi nội dung đã xác minh, chờ sửa qua `tools/seo-body-review.mjs` (cờ `content_flags` còn mở) | 0 |
-| REVIEW | Dẫn văn bản pháp luật chưa đối chiếu toàn văn, hoặc còn dữ kiện chưa có nguồn gốc (`data/seo/content-review.json`) | 35 |
+| REVIEW | Dẫn văn bản pháp luật chưa đối chiếu toàn văn, hoặc còn dữ kiện chưa có nguồn gốc (`data/seo/content-review.json`) | 1 |
 | BLOCKED | Chờ dữ liệu hoặc quyết định của chủ cửa hàng (`data/seo/content-review.json`) | 0 |
 
 ## Batch (20 URL/batch, thứ tự P0 → P1 → P2, trang chuyển đổi/hub/pillar trước)

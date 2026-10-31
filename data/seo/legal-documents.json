@@ -1,7 +1,7 @@
 {
  "$schema": "motoai/legal-documents@1",
  "note": "Sổ đăng ký hiệu lực các văn bản pháp luật được bài viết trích dẫn (tools/seo-legal-citations.mjs đối chiếu từng trích dẫn trong body với sổ này). status: in_force | amended | replaced | unverified. evidence: fulltext = đã đối chiếu toàn văn (dữ kiện ở data/seo/legal-facts.json); reported = số hiệu, ngày ban hành, ngày hiệu lực và việc thay thế lấy từ Cổng TTĐT Chính phủ/Công báo, cổng công an hoặc nhà xuất bản luật (tiêu đề và bản tin), chưa đọc toàn văn; unverified = chưa đối chiếu trong vòng rà soát nào, chỉ ghi nhận bài đang dẫn. Mọi con số đưa vào bài vẫn chỉ qua legal-facts.json (đối chiếu toàn văn). cite = khóa trích dẫn dạng 'loại|số/năm' (chữ thường); names = tên văn bản khi bài dẫn không kèm số hiệu; suffix = ký hiệu đúng để phát hiện lỗi gõ.",
- "checked": "2026-10-30",
+ "checked": "2026-10-31",
  "documents": [
   {
    "id": "luat-36-2024",
@@ -118,9 +118,19 @@
    "issued": "2015-11-24",
    "effective": "2017-01-01",
    "status": "in_force",
-   "evidence": "unverified",
-   "sources": [],
-   "note": "Dẫn cho hợp đồng thuê tài sản, đặt cọc, bồi thường."
+   "evidence": "fulltext",
+   "sources": [
+    "https://vanban.chinhphu.vn/?classid=1&docid=183188&pageid=27160&typegroupid=3",
+    "https://thuvienphapluat.vn/van-ban/Quyen-dan-su/Bo-luat-dan-su-2015-296215.aspx"
+   ],
+   "note": "Đối chiếu 2026-10-31 (ngày ban hành, hiệu lực theo vanban.chinhphu.vn; câu chữ từ toàn văn thuvienphapluat — PDF ký số là ảnh quét): Điều 11, 20, 119, 309, 328, 401, 468, 472–482, 584, 585, 590, 599, 601, 689. Còn hiệu lực, chưa có luật sửa đổi (luatvietnam 07/2026). Phát hiện và đã sửa qua tools/seo-body-review.mjs: nghĩa vụ bên cho thuê bị gán cho Điều 479 (thực ra là nghĩa vụ bảo quản của bên thuê; đúng là Điều 476–478) và câu \"không được tăng giá thuê\" không có trong Bộ luật (Điều 473: giá do các bên thỏa thuận; Điều 401 khoản 2: sửa đổi hợp đồng theo thỏa thuận); khoản bồi thường sức khỏe bị gán cho Điều 599 (đúng là Điều 590); lỗi một phần của bên bị hại thuộc khoản 4 Điều 585; quy tắc trả/mất cọc ở khoản 2 Điều 328. Việc chờ: Nghị quyết 03/2026/NQ-HĐTP hướng dẫn đặt cọc — đối chiếu câu \"trở ngại khách quan thì không phạt cọc\".",
+   "facts": [
+    "blds-2015-hieu-luc",
+    "blds-2015-thue-tai-san",
+    "blds-2015-dat-coc",
+    "blds-2015-boi-thuong-suc-khoe",
+    "blds-2015-nguon-nguy-hiem"
+   ]
   },
   {
    "id": "luat-08-2022",
