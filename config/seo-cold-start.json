@@ -1536,6 +1536,46 @@
       "source": "Phát hiện khi kiểm tra live lô C04 ngày 2026-10-31; đối chiếu toàn văn Bộ luật Dân sự 2015 (data/seo/legal-facts.json)",
       "resolved": "2026-10-31",
       "fix": "tools/seo-body-review.mjs với dữ kiện đã đối chiếu toàn văn (blds-2015-hieu-luc)"
+    },
+    {
+      "article": "BA-0047",
+      "reason": "Ghi lệ phí cấp IDP 135.000 đồng nộp trực tiếp, 115.000 đồng trực tuyến theo trang Công an Thái Nguyên (nguồn đã mất); từ 01/01/2026 Thông tư 154/2025/TT-BTC áp dụng một mức 115.000 đồng/lần. Câu các trường hợp không cấp IDP dẫn trang dịch vụ công về cấp giấy phép lái xe sau sát hạch, không phải trang IDP",
+      "flagged": "2026-10-31",
+      "source": "RR-11 (docs/seo/master-task/review-required.csv): kiểm link ngoài 2026-10-29, trang Công an Thái Nguyên chuyển về danh sách thủ tục; đối chiếu Thông tư 154/2025/TT-BTC (Công báo số 22) và khoản 3 Điều 29 Thông tư 108/2026/TT-BCA",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs (replace + sources mới) với dữ kiện tt-154-2025-btc-le-phi-gplx, tt-108-2026-khong-cap-idp; nguồn đổi sang vanban.chinhphu.vn và Công báo"
+    },
+    {
+      "article": "BA-0323",
+      "reason": "Dẫn trang thủ tục cấp IDP của Công an Thái Nguyên (nguồn đã mất) cho ba ý khác nhau; ghi IDP được cấp bởi cơ quan của \"quốc gia họ đến\" và \"năng lực hành pháp\" — sai: IDP do nước thành viên Công ước Viên đã cấp bằng quốc gia cấp, phải mang kèm bằng quốc gia (khoản 8 Điều 57 Luật 36/2024/QH15), IDP do Việt Nam cấp không dùng được trong lãnh thổ Việt Nam",
+      "flagged": "2026-10-31",
+      "source": "RR-11 (docs/seo/master-task/review-required.csv): kiểm link ngoài 2026-10-29, trang Công an Thái Nguyên chuyển về danh sách thủ tục; đối chiếu văn bản hợp nhất 55/VBHN-VPQH và Điều 30 Thông tư 108/2026/TT-BCA",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs (replace + sources) với dữ kiện luat-36-2024-dieu-57-idp, tt-108-2026-idp; câu xử phạt dẫn Nghị định 168/2024/NĐ-CP trên vanban.chinhphu.vn"
+    },
+    {
+      "article": "BA-0329",
+      "reason": "Ghi người nước ngoài phải \"chứng minh năng lực điều khiển\" để được cấp IDP theo trang Công an Thái Nguyên (nguồn đã mất) và gán quy tắc ứng xử giao thông cho thủ tục cấp IDP — sai: du khách dùng IDP do nước thành viên Công ước Viên cấp kèm bằng quốc gia còn hạn (khoản 8 Điều 57 Luật 36/2024/QH15)",
+      "flagged": "2026-10-31",
+      "source": "RR-11 (docs/seo/master-task/review-required.csv): kiểm link ngoài 2026-10-29, trang Công an Thái Nguyên chuyển về danh sách thủ tục; đối chiếu văn bản hợp nhất 55/VBHN-VPQH",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs (replace + sources) với dữ kiện luat-36-2024-dieu-57-idp"
+    },
+    {
+      "article": "BA-0689",
+      "reason": "Diễn giải Điều 13 Luật 36/2024/QH15 thêm \"nhường đường cho xe đang đi trên làn đó\", \"không chuyển làn đột ngột hay lạng lách\" (không có trong Điều 13) và bỏ quy tắc chỉ sang một làn liền kề, giữ khoảng cách an toàn; nguồn vbpl.vn ItemID=170620 đã mất",
+      "flagged": "2026-10-31",
+      "source": "RR-11 (docs/seo/master-task/review-required.csv): ItemID vbpl chuyển về trang chủ; đối chiếu Điều 13 trong văn bản hợp nhất 55/VBHN-VPQH",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs (replace + sources) với dữ kiện luat-36-2024-dieu-13-lan-duong; nguồn đổi sang văn bản hợp nhất trên datafiles.chinhphu.vn"
+    },
+    {
+      "article": "BA-0053",
+      "reason": "Ghi bảo hiểm trách nhiệm dân sự xe máy \"mua kèm khi xe đến hạn đăng kiểm\" và xe không có bảo hiểm \"không được cấp kiểm định khi đến hạn\" — xe mô tô, xe gắn máy không đăng kiểm định kỳ, chỉ kiểm định khí thải theo lộ trình Quyết định 13/2026/QĐ-TTg (Hà Nội từ 01/7/2027)",
+      "flagged": "2026-10-31",
+      "source": "Hàng đợi lô C06 (progress.json next_article_ids); đối chiếu Luật 36/2024/QH15 (văn bản hợp nhất 55/VBHN-VPQH) và Quyết định 13/2026/QĐ-TTg",
+      "resolved": "2026-10-31",
+      "fix": "tools/seo-body-review.mjs với dữ kiện qd-13-2026-lo-trinh-kiem-dinh, luat-36-2024-dieu-56-mang-theo"
     }
   ]
 }

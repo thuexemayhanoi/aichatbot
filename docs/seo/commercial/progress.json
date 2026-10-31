@@ -17,12 +17,8 @@
     "https://chatbot.thuexemaynguyentu.com/agent/"
   ],
   "next_article_ids": [
-    "BA-0047",
-    "BA-0323",
-    "BA-0329",
-    "BA-0689",
-    "BA-0053",
-    "BA-0281"
+    "BA-2004",
+    "BA-0239"
   ],
   "batches": [
     {
@@ -397,6 +393,29 @@
       "changes": "Không sửa thân bài: mọi câu dẫn ba văn bản khớp toàn văn. Sổ thêm 3 văn bản (fulltext), 3 dữ kiện mới. Báo cáo legal-citations: cần sửa 0, sai ký hiệu 0, chưa đối chiếu 0, ngoài sổ 0 — 36 văn bản, 34 được dẫn.",
       "qa": "node --test 1179/1179; site-audit PASS 0 liên kết hỏng; seo-score 99,6 PASS",
       "live_verified": "không áp dụng (không đổi trang)"
+    },
+    {
+      "batch_id": "C06-LEGAL-SOURCES",
+      "reviewed": "2026-10-31",
+      "scope": "RR-11: nguồn pháp lý chết trong BA-0047, BA-0323, BA-0329, BA-0689; câu \"đăng kiểm\" xe máy ở BA-0053; đối chiếu BA-0281 với Nghị quyết 03/2026/NQ-HĐTP",
+      "article_ids": [
+        "BA-0047",
+        "BA-0323",
+        "BA-0329",
+        "BA-0689",
+        "BA-0053",
+        "BA-0281"
+      ],
+      "engine": "tools/seo-body-review.mjs thêm thao tác \"sources\": chỉ đổi href của link ngoài hiện có sang nguồn đã ghi trong sổ pháp lý (sources của data/seo/legal-documents.json hoặc source của dữ kiện đã đối chiếu); chữ của bài không đổi qua thao tác này (test mới trong tests/unit/seo-body-review.test.js)",
+      "documents_verified": {
+        "luat-118-2025": "Luật 118/2025/QH15 (vanban.chinhphu.vn, Công báo số 35): sửa Luật 36/2024/QH15 từ 01/7/2026, riêng khoản 2 Điều 88 từ 01/01/2026. Lần tìm văn bản sửa đổi ngày 2026-10-16 đã bỏ sót luật này.",
+        "luat-36-2024": "Đối chiếu văn bản hợp nhất 55/VBHN-VPQH: Điều 13, 34, 56 khoản 1 và 3, 57 khoản 1, 6, 8, 59 khoản 1, 89 khoản 1–2 mà 225 bài dẫn không có chú thích sửa đổi; sổ ghi status amended, amendment_checked 2026-10-31.",
+        "tt-154-2025-btc": "Thông tư 154/2025/TT-BTC (Công báo số 22): từ 01/01/2026 lệ phí cấp, đổi, cấp lại giấy phép lái xe quốc gia và quốc tế 115.000 đồng/lần, thay Thông tư 37/2023/TT-BTC.",
+        "tt-108-2026-bca": "Khoản 3 Điều 29: các trường hợp không cấp IDP.",
+        "nq-03-2026-hdtp": "Nghị quyết 03/2026/NQ-HĐTP (hiệu lực 15/10/2026), điểm a khoản 3 Điều 6: không phạt cọc khi cả hai bên cùng có lỗi, bất khả kháng hoặc trở ngại khách quan nếu các bên không có thỏa thuận khác — câu của BA-0281 khớp, không sửa, không thêm trích dẫn."
+      },
+      "changes": "5 bài sửa qua tools/seo-body-review.mjs (5/5 qua QA nhà máy): BA-0047 lệ phí IDP 115.000 đồng/lần từ 01/01/2026 (bỏ mức 135.000 đồng trực tiếp), khoản 3 Điều 29 Thông tư 108/2026/TT-BCA; BA-0323 IDP do nước thành viên Công ước Viên cấp kèm bằng quốc gia, IDP do Việt Nam cấp không dùng trong lãnh thổ Việt Nam, bỏ \"năng lực hành pháp\"; BA-0329 bỏ \"chứng minh năng lực điều khiển\", nêu khoản 8 Điều 57; BA-0689 diễn giải đúng Điều 13 (một làn liền kề, khoảng cách an toàn) ở thân bài và FAQ; BA-0053 xe máy không đăng kiểm định kỳ, chỉ kiểm định khí thải theo lộ trình (Hà Nội từ 01/7/2027), người lái mang theo chứng nhận bảo hiểm (giấy hoặc VNeID). 6 dữ kiện mới, 2 văn bản mới (luat-118-2025, tt-154-2025-btc), 5 cờ content_flags đã giải quyết, RR-11 RESOLVED.",
+      "live_verified": "chờ deploy"
     }
   ],
   "rules": [
@@ -406,11 +425,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "C04b-LEGAL-FOLLOWUP",
+  "last_completed_batch": "C06-LEGAL-SOURCES",
   "last_verified_commit": "c5c145c7",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
-  "articles_reviewed_no_change": 30,
-  "next_article_ids_note": "Lô C06: RR-11 nguồn pháp lý chết (BA-0047, BA-0323, BA-0329, BA-0689 — thay bằng nguồn chính thức còn sống), BA-0053 câu \"đăng kiểm\" xe máy, BA-0281 đối chiếu Nghị quyết 03/2026/NQ-HĐTP về đặt cọc, Nghị quyết 57/2025/NQ-HĐND sau Luật Thủ đô 02/2026. Sổ văn bản pháp luật đã đối chiếu toàn văn hết (36 văn bản). Khi có GSC, ưu tiên theo dữ liệu GSC.",
+  "articles_reviewed_no_change": 31,
+  "next_article_ids_note": "Lô C07: Nghị quyết 57/2025/NQ-HĐND (vùng phát thải thấp Hà Nội, BA-2004) và Luật Thủ đô 02/2026/QH16 (BA-0239) — kiểm tra hiệu lực tiếp tục của Nghị quyết 57 sau khi Luật Thủ đô mới có hiệu lực 01/7/2026; kiểm tra live lô C06 sau deploy. Sau đó: hàng legal_review MANDATORY còn lại theo docs/seo/commercial/SEO-COMMERCIAL-2006.csv. Khi có GSC, ưu tiên theo dữ liệu GSC.",
   "p0_live_verified": [
     "/",
     "/gia-thue/",
@@ -444,6 +463,10 @@
     "BA-0863",
     "BA-1085",
     "BA-1361",
-    "BA-1367"
+    "BA-1367",
+    "BA-0047",
+    "BA-0323",
+    "BA-0329",
+    "BA-0689"
   ]
 }
