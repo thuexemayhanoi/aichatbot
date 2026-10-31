@@ -17,7 +17,7 @@
 
 | Kiểm tra | Kết quả |
 |---|---|
-| Liên kết nội bộ (site-audit) | 402.449 liên kết kiểm tra, 0 hỏng — Đạt |
+| Liên kết nội bộ (site-audit) | 402.460 liên kết kiểm tra, 0 hỏng — Đạt |
 | SEO score (seo-score) | 99,6/100 — Đạt |
 | Ma trận URL (seo-master-audit) | 2.138 URL; DONE 2.138, KEEP 0, TECH-DONE 0, PLANNED 0; P0 0; tệp đã commit khớp |
 | Sitemap ↔ ma trận (seo-index-coverage) | Đạt (2.006 bài đăng) |
@@ -154,6 +154,7 @@
 | BA-2004 /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ | Ghi "Chưa có đề án, chưa có khung giờ chính thức" và "chưa ban hành khung giờ cấm cụ thể; xe máy điện được đi" — lỗi thời: Đề án vùng phát thải thấp trong Vành đai 1 được HĐND thông qua 15/6/2026 (Nghị quyết 34/NQ-HĐND), UBND phê duyệt 29/6/2026 (Quyết định 3273/QĐ-UBND), thí điểm từ 01/7/2026 tại Khu vực 1, 2 phường Hoàn Kiếm; Khu vực 1 cấm mọi xe cơ giới kể cả xe điện 19h00–24h00 tối thứ Sáu, Bảy, Chủ nhật; xe ôm công nghệ xăng năm 2026 chỉ khuyến khích hạn chế (cấm từ 01/01/2027), bài ghi "cấm" | Đã sửa 2026-10-31 (tools/seo-body-review.mjs với dữ kiện qd-3273-2026-ubnd-de-an, de-an-vdd1-giai-doan-1, de-an-vdd1-giai-doan-2-3) | 2 | 1.000 |
 | BA-2004 /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ | Sau lô C07 bài vẫn còn câu cũ mâu thuẫn với Đề án: "Khung giờ cụ thể chưa được ban hành", "xe máy điện là lựa chọn không bị ảnh hưởng bởi khung giờ cấm", FAQ "Không. Xe ... năng lượng sạch được lưu thông trong vùng phát thải thấp" — trong khi Khu vực 1 cấm mọi xe cơ giới kể cả xe điện 19h00–24h00 tối thứ Sáu, Bảy, Chủ nhật | Đã sửa 2026-10-31 (Lô C07b: tools/seo-body-review.mjs (replace:6) — chỉ nêu khung giờ chính thức duy nhất và ngoại lệ tối cuối tuần ở Khu vực 1 cho xe điện; không thêm số mới ngoài dữ kiện đã có trong bài) | 2 | 1.000 |
 | BA-2004 /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ | FAQ "Thuê xe máy xăng đi phố cổ năm 2026 còn được không?" ghi xe phải đáp ứng quy chuẩn khí thải "khi lộ trình đó được ban hành" — lỗi thời: Quyết định 13/2026/QĐ-TTg (hiệu lực 16/5/2026) đã ban hành lộ trình, kiểm định khí thải xe máy ở Hà Nội từ 01/7/2027 | Đã sửa 2026-10-31 (Lô C07c: tools/seo-body-review.mjs (replace:1) — "theo lộ trình mà Quyết định 13/2026/QĐ-TTg đã ban hành"; không thêm số mới) | 2 | 1.000 |
+| BA-2004 /blog/an-toan/cam-xe-may-xang-vanh-dai-1/ | Câu tổng kết nhóm xe thứ ba còn ghi xe máy xăng cho thuê "phải đáp ứng quy chuẩn khí thải khi có lộ trình" — lỗi thời: lộ trình đã có (Quyết định 13/2026/QĐ-TTg; Đề án: từ 01/01/2028 toàn Vành đai 1, xe không đạt khí thải mức 3 không được lưu thông). Lô C07c chỉ sửa câu tương tự ở FAQ | Đã sửa 2026-10-31 (Lô C07d: tools/seo-body-review.mjs (replace:1) — "và từ năm 2028 phải đạt quy chuẩn khí thải mức 3"; không thêm số mới) | 2 | 1.000 |
 
 ## Hàng đợi hành động (top 25 theo điểm ưu tiên)
 

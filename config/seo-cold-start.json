@@ -1600,6 +1600,14 @@
       "source": "Đọc lại toàn bài live sau deploy lô C07b (6569a471) ngày 2026-10-31; đối chiếu dữ kiện qd-13-2026-lo-trinh-kiem-dinh trong data/seo/legal-facts.json",
       "resolved": "2026-10-31",
       "fix": "Lô C07c: tools/seo-body-review.mjs (replace:1) — \"theo lộ trình mà Quyết định 13/2026/QĐ-TTg đã ban hành\"; không thêm số mới"
+    },
+    {
+      "article": "BA-2004",
+      "reason": "Câu tổng kết nhóm xe thứ ba còn ghi xe máy xăng cho thuê \"phải đáp ứng quy chuẩn khí thải khi có lộ trình\" — lỗi thời: lộ trình đã có (Quyết định 13/2026/QĐ-TTg; Đề án: từ 01/01/2028 toàn Vành đai 1, xe không đạt khí thải mức 3 không được lưu thông). Lô C07c chỉ sửa câu tương tự ở FAQ",
+      "flagged": "2026-10-31",
+      "source": "Rà toàn bài sau lô C07c (tìm \"khi có lộ trình\", \"chưa ban hành\", \"dự kiến\" trên mọi body); đối chiếu dữ kiện de-an-vdd1-giai-doan-2-3 trong data/seo/legal-facts.json",
+      "resolved": "2026-10-31",
+      "fix": "Lô C07d: tools/seo-body-review.mjs (replace:1) — \"và từ năm 2028 phải đạt quy chuẩn khí thải mức 3\"; không thêm số mới"
     }
   ]
 }

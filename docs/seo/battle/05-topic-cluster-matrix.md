@@ -9,9 +9,9 @@ Mô hình: pillar → hub danh mục/chủ đề con → bài supporting (liên 
 | K01 | Ứng dụng & Agent thuê xe máy | / | có | 1383/0/51 | /blog/app/ /blog/app/cai-app/ /blog/app/dat-xe/ /blog/app/huong-dan/ /blog/app/so-sanh/ /blog/app/tim-xe/ /blog/app/tinh-gia/ /blog/app/tro-ly/ /blog/app/web-app/ | 379 | 0 | 10 | 2710 | 5 | Ổn |
 | K02 | Giá thuê xe máy | /gia-thue/ | có | 736/0/34 |  | 69 | 0 | 5 | 42160 | 3 | Ổn |
 | K03 | Thuê theo ngày, tuần, tháng, dài hạn | /blog/thue-xe/ | có | 304/0/17 |  | 58 | 0 | 2 | 80 | 3 | Ổn |
-| K04 | Thủ tục, giấy tờ, hợp đồng và đặt cọc | /blog/huong-dan/thu-tuc-thue-xe-may/ | có | 27/13/6 | /blog/huong-dan/ /blog/huong-dan/chuan-bi/ /blog/huong-dan/dat-xe/ /blog/huong-dan/thu-tuc/ | 198 | 0 | 29 | 1330 | 4 | Ổn |
+| K04 | Thủ tục, giấy tờ, hợp đồng và đặt cọc | /blog/huong-dan/thu-tuc-thue-xe-may/ | có | 27/13/7 | /blog/huong-dan/ /blog/huong-dan/chuan-bi/ /blog/huong-dan/dat-xe/ /blog/huong-dan/thu-tuc/ | 198 | 0 | 29 | 1330 | 4 | Ổn |
 | K05 | Nhận xe, trả xe và kiểm tra xe | /blog/huong-dan/kiem-tra-xe-khi-nhan/ | có | 134/13/3 |  | 78 | 0 | 1 | 0 | 1 | Ổn |
-| K06 | Giao xe tận nơi, tận khách sạn | /chinh-sach/ | có | 4/0/15 |  | 32 | 0 | 1 | 10 | 1 | Ổn |
+| K06 | Giao xe tận nơi, tận khách sạn | /chinh-sach/ | có | 4/0/16 |  | 32 | 0 | 1 | 10 | 1 | Ổn |
 | K07 | Chọn loại xe: xe số, xe ga, 50cc | /blog/thue-xe/ | có | 304/0/17 |  | 83 | 0 | 5 | 60 | 3 | Ổn |
 | K08 | Xe máy điện và xe đạp điện | /blog/xe-dien/ | có | 209/0/17 | /blog/xe-dien/ /blog/xe-dien/an-toan/ /blog/xe-dien/chi-phi/ /blog/xe-dien/chon-xe/ /blog/xe-dien/pin-xe/ /blog/xe-dien/quang-duong/ /blog/xe-dien/sac-pin/ /blog/xe-dien/so-sanh/ /blog/xe-dien/thue-ngay/ | 221 | 0 | 3 | 590 | 6 | Ổn |
 | K09 | Bằng lái và luật giao thông | /blog/an-toan/ | có | 167/0/14 |  | 103 | 0 | 14 | 75550 | 12 | Ổn |

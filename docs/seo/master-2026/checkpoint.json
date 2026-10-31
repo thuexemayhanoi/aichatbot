@@ -1,9 +1,9 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-10-31",
-  "last_completed_batch": "M1-MASTER-2026",
+  "last_completed_batch": "M2-PRICE-PAGE",
   "last_verified_commit": "6569a471",
-  "next": "Lô M2: /gia-thue/ (backlog B03 trong docs/seo/master-2026/backlog.csv) — mở rộng bằng bảng giá pricing.json qua placeholder, tiền cọc, điều kiện, câu hỏi thường gặp (không FAQPage schema), giữ trang chủ Apple V3. Sau đó M3: phân trang hub chủ đề con > 100 KB (T20) và đoạn dẫn hub (B04). Song song C08: rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv. Chờ chủ sở hữu: Search Console (B02), GBP, local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cập nhật BA-2004 đầu năm 2027).",
+  "next": "Lô M3: hub chủ đề con — phân trang 4 hub > 100 KB (T20: /blog/dia-phuong/phuong-xa/, /blog/huong-dan/thu-tuc/, /blog/an-toan/phap-luat/, /blog/thue-xe/gia-thue/; URL /page/N/ mới, giữ URL cũ) để giảm DOM và tương tác mở menu lab 248 ms (B15), rồi đoạn dẫn hub có giá trị theo lô ≤ 20 hub (B04). Song song C08: rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv. Chờ chủ sở hữu: Search Console (B02), GBP (B12), local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cập nhật BA-2004 đầu năm 2027).",
   "open_backlog": [
     {
       "id": "B02",
@@ -11,13 +11,6 @@
       "issue": "Search Console chưa kết nối — không có dữ liệu index/CTR/truy vấn",
       "owner": "owner",
       "batch": "—"
-    },
-    {
-      "id": "B03",
-      "priority": "P1",
-      "issue": "Trang giá (cụm K02, volume nhóm 42.160) chỉ 274 từ nội dung chính; SERP benchmark trung vị 1.380–1.666 từ",
-      "owner": "agent",
-      "batch": "M2"
     },
     {
       "id": "B04",
