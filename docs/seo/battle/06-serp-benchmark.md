@@ -58,7 +58,7 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | kinh nghiệm lái xe máy ở hà nội | 3 | 374 | 1 | 5 | 0 | 0 | 33 | 0 | — | /blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai/ | 1343 | 7 | có | (quan sát) Không có ảnh — trung vị top 5; site không dùng ảnh minh họa trong bài, không hành động |
 | tai nạn khi đi xe thuê ai chịu trách nhiệm | 3 | 1244 | 1 | 8 | 0 | 0 | 33 | 0 | — | /blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cho-nguoi-moi/ | 1348 | 6 | có | (quan sát) Không có ảnh — trung vị top 8; site không dùng ảnh minh họa trong bài, không hành động |
 | thuê xe máy 50cc hà nội | 2 | 1047 | 3 | 4 | 0 | 0 | 0 | 50 | — |  | — | — |  | Chưa có trang đích (bài mới) |
-| thuê xe máy cho người nước ngoài | 3 | 3450 | 9 | 6 | 2 | 0 | 33 | 67 | — | /blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/ | 1412 | 7 | có | Ít từ hơn trung vị top (1412 < 3450) — quan sát, không viết dài để bằng đối thủ; (quan sát) Không có ảnh — trung vị top 6; site không dùng ảnh minh họa trong bài, không hành động |
+| thuê xe máy cho người nước ngoài | 3 | 3450 | 9 | 6 | 2 | 0 | 33 | 67 | — | /blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/ | 1416 | 7 | có | Ít từ hơn trung vị top (1416 < 3450) — quan sát, không viết dài để bằng đối thủ; (quan sát) Không có ảnh — trung vị top 6; site không dùng ảnh minh họa trong bài, không hành động |
 | thuê xe máy đi hà giang | 3 | 1640 | 4 | 21 | 1 | 0 | 0 | 0 | — | (trang bán hàng / Google Business Profile) | — | — |  | Chưa có trang đích (bài mới) |
 | thuê xe máy đi ninh bình | 3 | 1283 | 2 | 7 | 0 | 0 | 0 | 0 | — | (trang bán hàng / Google Business Profile) | — | — |  | Chưa có trang đích (bài mới) |
 | thuê xe máy điện vinfast | 2 | 641 | 5 | 3 | 0 | 0 | 50 | 0 | — |  | — | — |  | Chưa có trang đích (bài mới) |
