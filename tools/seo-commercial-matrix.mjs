@@ -36,28 +36,32 @@ const rows=source.map(r=>{const m=meta[r.article_id]||{},p=m.keyword||r.primary_
  status:'PLAN_ONLY',next_action:legal?'Check official legal source and effective date before editing':clash||headOverlap?'Check unique search intent; do not auto-apply':'Compare SERP and content, improve metadata via existing reviewed SEO layer',
  evidence:'data/blog/content-matrix.csv + data/seo/article-meta.json'
 }});
+// Owner URLs (lô M5, 2026-11-01): one intent, one URL. Day/week/month and model queries go to the
+// pillar article that already targets them (data/seo/article-meta.json), procedure to BA-0004;
+// deposit and foreign-renter intents go to the subtopic hubs with their own guide (data/blog/hub-guides.json);
+// the store's own locality (Long Biên / Bồ Đề / Nguyễn Văn Cừ) goes to /lien-he/ (verified NAP).
 const base=[
 ['CORE','cho thuê xe máy ở Hà Nội','cho thuê xe máy Hà Nội; thuê xe máy Hà Nội; thuê xe máy ở Hà Nội','/','P0'],
 ['PRICE','giá thuê xe máy Hà Nội','bảng giá thuê xe máy; cho thuê xe máy giá rẻ','/gia-thue/','P0'],
 ['CONTACT','thuê xe máy gần đây','địa chỉ thuê xe máy Hà Nội; cửa hàng thuê xe','/lien-he/','P0'],
-['MONTH','thuê xe máy tháng Hà Nội','thuê xe máy theo tháng Hà Nội; thuê dài hạn','/blog/thue-xe/','P0'],
-['DAY','thuê xe máy theo ngày Hà Nội','thuê xe máy 1 ngày; thuê 24 giờ','/blog/thue-xe/','P1'],
-['WEEK','thuê xe máy theo tuần Hà Nội','thuê xe máy 7 ngày','/blog/thue-xe/','P1'],
-['VISION','thuê xe Honda Vision Hà Nội','thuê xe tay ga Honda Vision','/blog/thue-xe/','P1'],
-['WAVE','thuê xe Honda Wave Hà Nội','thuê xe số Hà Nội','/blog/thue-xe/','P1'],
-['AIRBLADE','thuê Honda Air Blade Hà Nội','cho thuê Air Blade','/blog/thue-xe/','P1'],
-['50CC','thuê xe máy 50cc Hà Nội','xe ga 50cc; cho thuê 50cc','/blog/thue-xe/','P1'],
+['MONTH','thuê xe máy tháng Hà Nội','thuê xe máy theo tháng Hà Nội; thuê dài hạn','/blog/thue-xe/thue-xe-may-theo-thang/','P0'],
+['DAY','thuê xe máy theo ngày Hà Nội','thuê xe máy 1 ngày; thuê 24 giờ','/blog/thue-xe/gia-thue-xe-may-theo-ngay/','P1'],
+['WEEK','thuê xe máy theo tuần Hà Nội','thuê xe máy 7 ngày','/blog/thue-xe/thue-xe-may-theo-tuan/','P1'],
+['VISION','thuê xe Honda Vision Hà Nội','thuê xe tay ga Honda Vision','/blog/thue-xe/thue-honda-vision/','P1'],
+['WAVE','thuê xe Honda Wave Hà Nội','thuê xe số Hà Nội','/blog/thue-xe/thue-wave-alpha/','P1'],
+['AIRBLADE','thuê Honda Air Blade Hà Nội','cho thuê Air Blade','/blog/thue-xe/thue-honda-air-blade/','P1'],
+['50CC','thuê xe máy 50cc Hà Nội','xe ga 50cc; cho thuê 50cc','/blog/thue-xe/thue-xe-50cc/','P1'],
 ['EV','thuê xe máy điện Hà Nội','cho thuê xe máy điện Hà Nội','/blog/xe-dien/','P0'],
 ['EBIKE','thuê xe đạp điện Hà Nội','cho thuê xe đạp điện','/blog/xe-dien/','P1'],
-['LONGBIEN','thuê xe máy Long Biên','thuê xe Bồ Đề; thuê xe Nguyễn Văn Cừ','/blog/dia-phuong/','P0'],
+['LONGBIEN','thuê xe máy Long Biên','thuê xe Bồ Đề; thuê xe Nguyễn Văn Cừ','/lien-he/','P0'],
 ['HOANKIEM','thuê xe máy Hoàn Kiếm','thuê xe máy Phố Cổ','/blog/dia-phuong/','P1'],
 ['TAYHO','thuê xe máy Tây Hồ','thuê xe máy Hồ Tây','/blog/dia-phuong/','P1'],
 ['BADINH','thuê xe máy Ba Đình','cho thuê xe máy Ba Đình','/blog/dia-phuong/','P1'],
 ['GIALAM','thuê xe máy Gia Lâm','cho thuê xe máy Gia Lâm','/blog/dia-phuong/','P1'],
 ['DELIVERY','giao xe máy thuê tại Hà Nội','giao xe khách sạn; giao xe tận nơi','/lien-he/','P1'],
-['DEPOSIT','đặt cọc thuê xe máy Hà Nội','thuê xe máy cọc bao nhiêu','/blog/huong-dan/','P1'],
-['DOCUMENT','thủ tục thuê xe máy Hà Nội','giấy tờ thuê xe máy; hợp đồng thuê xe','/blog/huong-dan/','P1'],
-['FOREIGN','thuê xe máy cho người nước ngoài Hà Nội','hộ chiếu; bằng lái quốc tế','/blog/huong-dan/','P2'],
+['DEPOSIT','đặt cọc thuê xe máy Hà Nội','thuê xe máy cọc bao nhiêu','/blog/thue-xe/dat-coc/','P1'],
+['DOCUMENT','thủ tục thuê xe máy Hà Nội','giấy tờ thuê xe máy; hợp đồng thuê xe','/blog/huong-dan/thu-tuc-thue-xe-may/','P1'],
+['FOREIGN','thuê xe máy cho người nước ngoài Hà Nội','hộ chiếu; bằng lái quốc tế','/blog/thue-xe/du-khach/','P2'],
 ['AGENT','trợ lý thuê xe máy Hà Nội','ứng dụng web thuê xe máy; MotoAI','/agent/','P1']
 ];
 const targets=base.map(([id,keyword,variants,path,priority])=>({cluster_id:id,head_keyword:keyword,variants,owner_url:S.slice(0,-1)+path,priority,goal:'TOP 2–10 ASPIRATION — NOT GUARANTEED',status:'PLANNED_REVIEW',rank:'NOT_MEASURED',volume:'NOT_MEASURED',rule:'One search intent, one URL owner; verify existing page content before retargeting'}));

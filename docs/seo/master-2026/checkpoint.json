@@ -1,20 +1,20 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-11-01",
-  "last_completed_batch": "K1-COMMERCIAL",
-  "last_verified_commit": "49a83d44",
-  "next": "Lô M5: đoạn dẫn trả lời-trước (answer-first) riêng cho hub chủ đề con và hub danh mục, ưu tiên thương mại: /blog/thue-xe/ và gia-thue, thue-thang, thue-tuan, chon-xe, thu-tuc, dat-coc; rồi /blog/xe-dien/, /blog/dia-phuong/ (phuong-xa, diem-tham-quan, ha-noi); ngưỡng tối thiểu bài/hub (THIN-HUB: huong-dan/chuan-bi 1 bài). Sau đó D01–D09 đoạn văn trùng (162 bài, bài thương mại trước), BODY-STRUCT, C08+ LEGAL-CHECK, đề xuất LOCAL-SCOPE (RR-13). Chờ chủ sở hữu: Search Console (RR-09/B02), GBP (RR-17), local_scope bài LOCAL (RR-13), giá xe điện/xe đạp điện (RR-14), phí giao xe (RR-15), cách ghi địa chỉ (RR-16). Nhà máy ảnh: EXCLUDED trong chiến dịch này.",
+  "last_completed_batch": "M4-TAXONOMY-PRECISION",
+  "last_verified_commit": "ae70494a",
+  "next": "Lô M5 tiếp: guide cho hub Hướng Dẫn (danh mục + thủ tục, nhận xe, giấy tờ, trả xe, đặt xe, bản đồ) cùng hub Thuê Xe nhận xe / trả xe (liên kết chéo, tránh trùng ý định), An Toàn (danh mục + pháp luật, lái xe, mũ bảo hiểm, bằng lái, sự cố, thời tiết, du lịch), Ứng Dụng (danh mục + 7 chủ đề con), 3 hub cụm và /blog/; M6: ngưỡng tối thiểu bài/hub (THIN-HUB: huong-dan/chuan-bi 1 bài). Sau đó D01–D09 đoạn văn trùng (162 bài, bài thương mại trước), BODY-STRUCT, C08+ LEGAL-CHECK, đề xuất LOCAL-SCOPE (RR-13). Sửa nhỏ chờ lô nội dung: BA-0427 tiêu đề mục \"menu bấm chon\" → \"chọn\". Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), giá xe điện/xe đạp điện (RR-14), phí giao xe (RR-15), cách ghi địa chỉ (RR-16), giấy tờ bắt buộc khi thuê (RR-18). Nhà máy ảnh: EXCLUDED.",
   "remaining": {
     "status": {
-      "DONE_LIVE": 33,
+      "DONE_LIVE": 39,
       "REVIEWED_OK": 57,
-      "OPEN": 657,
-      "OK": 1422
+      "OPEN": 634,
+      "OK": 1439
     },
     "open_codes": {
-      "HUB-CONTENT": 52,
+      "HUB-CONTENT": 30,
       "DUP-PARA": 162,
-      "LEGAL-CHECK": 196,
+      "LEGAL-CHECK": 195,
       "BODY-STRUCT": 14,
       "LOCAL-SCOPE": 286,
       "THIN-HUB": 1,
@@ -81,7 +81,7 @@
     {
       "id": "B14",
       "priority": "P3",
-      "issue": "CSS mỗi trang 85.6 KB chưa nén (cảnh báo nội bộ ≥ 64 KB)",
+      "issue": "CSS mỗi trang 85.7 KB chưa nén (cảnh báo nội bộ ≥ 64 KB)",
       "owner": "agent",
       "batch": "—"
     },
