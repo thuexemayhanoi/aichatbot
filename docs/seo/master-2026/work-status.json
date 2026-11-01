@@ -743,6 +743,14 @@
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/kham-suc-khoe-lai-xe-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
+  },
   "/blog/an-toan/kham-suc-khoe-lai-xe-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -766,6 +774,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #72 (4bd6509f) — Pages live đã kiểm BA-0443 (điểm b khoản 5 Điều 12), BA-0461 (dưới 12 tuổi, điện thoại 800.000–1.000.000 đồng), BA-0185 (mức ma túy/nồng độ cồn); câu CTA 'MotoAI hỗ trợ tại' ở BA-0185/0191/0197 xử lý ở lô NAP3"
+  },
+  "/blog/an-toan/kham-suc-khoe-lai-xe-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
   },
   "/blog/an-toan/kham-suc-khoe-lai-xe/": {
    "status": "DONE_LIVE",
@@ -793,6 +809,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #72 (4bd6509f) — Pages live đã kiểm BA-0443 (điểm b khoản 5 Điều 12), BA-0461 (dưới 12 tuổi, điện thoại 800.000–1.000.000 đồng), BA-0185 (mức ma túy/nồng độ cồn); câu CTA 'MotoAI hỗ trợ tại' ở BA-0185/0191/0197 xử lý ở lô NAP3"
+  },
+  "/blog/an-toan/khien-nai-dich-vu-thue-xe-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
   },
   "/blog/an-toan/khien-nai-dich-vu-thue-xe/": {
    "status": "DONE_LIVE",
@@ -944,6 +968,14 @@
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
+  "/blog/an-toan/loi-khong-guong-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
+  },
   "/blog/an-toan/luat-giao-thong-duong-bo-co-ban-cau-hoi-thuong-gap/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1025,6 +1057,14 @@
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
+  "/blog/an-toan/mu-bao-hiem-chuan-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
+  },
   "/blog/an-toan/mu-bao-hiem-chuan-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1050,6 +1090,14 @@
    ],
    "date": "2026-10-30",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/mu-bao-hiem-chuan-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
   },
   "/blog/an-toan/mu-bao-hiem-chuan/": {
    "status": "DONE_LIVE",
@@ -1082,6 +1130,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #72 (4bd6509f) — Pages live đã kiểm BA-0443 (điểm b khoản 5 Điều 12), BA-0461 (dưới 12 tuổi, điện thoại 800.000–1.000.000 đồng), BA-0185 (mức ma túy/nồng độ cồn); câu CTA 'MotoAI hỗ trợ tại' ở BA-0185/0191/0197 xử lý ở lô NAP3"
+  },
+  "/blog/an-toan/mua-ban-xe-may-giay-to-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
   },
   "/blog/an-toan/mua-ban-xe-may-giay-to/": {
    "status": "DONE_LIVE",
@@ -1190,6 +1246,14 @@
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/an-toan/nghia-vu-cua-ben-cho-thue-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
+  },
   "/blog/an-toan/nghia-vu-cua-ben-cho-thue/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1280,6 +1344,14 @@
    ],
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/nong-do-con-khi-lai-xe-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
   },
   "/blog/an-toan/nong-do-con-khi-lai-xe-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -1434,6 +1506,14 @@
    "date": "2026-11-01",
    "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
+  "/blog/an-toan/quy-dinh-mu-bao-hiem-tre-em-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
+  },
   "/blog/an-toan/quy-dinh-mu-bao-hiem-tre-em/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1514,6 +1594,14 @@
    "date": "2026-11-01",
    "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
+  "/blog/an-toan/suong-mu-mua-dong-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
+  },
   "/blog/an-toan/suong-mu-mua-dong/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1545,6 +1633,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
+  "/blog/an-toan/tam-nhin-khi-lai-xe-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C13"
+   ],
+   "date": "2026-11-01",
+   "note": "Soát LEGAL-CHECK không cần sửa (đối chiếu Công báo Nghị định 168/2024/NĐ-CP và Luật 36/2024/QH15); nội dung live đã kiểm mẫu BA-2003, BA-1421"
   },
   "/blog/an-toan/tam-nhin-khi-lai-xe/": {
    "status": "DONE_LIVE",
