@@ -860,6 +860,38 @@
       ],
       "scope": "FEATURE-CLAIM C-EN2: 13 bài còn khẳng định trợ lý 'trả lời bằng tiếng Anh', 'hỗ trợ hỏi đáp tiếng Anh', 'trao đổi đa ngôn ngữ'. NAP2a: 17 bài gọi MotoAI (trợ lý) là nơi đặt địa chỉ/mở cửa, 'quận Long Biên'; BA-0072 đặt chợ Long Biên ở 'quận Long Biên'. Kèm sửa tools/external-writer.mjs: giới hạn 10 body/push chỉ đếm body mới (workflow Blog Factory Publish đỏ trên main sau mỗi lô review > 10 bài đã PUBLISHED).",
       "changes": "C-EN2 đối chiếu mã nguồn (src/app/moto-app.js: giá, cọc, giờ, liên hệ không bao giờ đi qua LLM; src/ai/local-llm.js: Agent chỉ diễn đạt lại câu gợi ý theo ngôn ngữ câu hỏi) và chạy thử engine (câu tiếng Anh có tên dòng xe vẫn ra báo giá, trả lời tiếng Việt): sửa thành 'hiểu câu hỏi tiếng Anh ngắn, trả lời bằng tiếng Việt'; BA-1195 nói rõ trợ lý cơ bản trả lời tiếng Việt, Agent khi bật chỉ diễn đạt lại một số câu gợi ý; BA-0754 bỏ 'trợ lý trả lời về chỗ đỗ quanh tuyến' (không có trong dữ liệu cửa hàng). NAP2a: 'MotoAI là trợ lý thuê xe máy đặt tại' → 'MotoAI là trợ lý thuê xe máy của cửa hàng {{ business.brand }}, đặt tại'; 'quận Long Biên' → {{ business.address.ward }}, {{ business.address.district }} hoặc 'phía/khu Long Biên'; BA-0072: chợ Long Biên ở đầu phía tây cầu Long Biên, phường Hồng Hà (trước thuộc Phúc Xá, Ba Đình) — đối chiếu nhiều nguồn địa chỉ. external-writer: thêm test 11 body PUBLISHED được bỏ qua, 11 body mới vẫn bị chặn."
+    },
+    {
+      "batch_id": "C09",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-0215",
+        "BA-0317",
+        "BA-0203",
+        "BA-0365",
+        "BA-0311",
+        "BA-0353",
+        "BA-0377",
+        "BA-0359",
+        "BA-0371",
+        "BA-0407",
+        "BA-0287",
+        "BA-0383",
+        "BA-0293",
+        "BA-0209",
+        "BA-0389",
+        "BA-0395",
+        "BA-0347",
+        "BA-0305",
+        "BA-0245",
+        "BA-0401",
+        "BA-0449",
+        "BA-0497",
+        "BA-0779",
+        "BA-1061"
+      ],
+      "scope": "LEGAL-CHECK lô C09: 20 bài pháp lý nhóm An toàn cho du khách + BA-0449 (dẫn văn bản hết hiệu lực) + 3 bài cùng họ 'ai chịu phạt khi đi xe thuê' (BA-0497, BA-0779, BA-1061) có cùng lỗi pháp lý với BA-0215.",
+      "changes": "Sổ: +5 dữ kiện đối chiếu toàn văn (Thông tư 36/2024/TT-BYT Điều 1, 7; Luật 36/2024/QH15 Điều 20, Điều 58; Nghị định 168/2024/NĐ-CP Điều 47 khoản 8); +2 văn bản (tt-36-2024-byt đang hiệu lực, ttlt-24-2015-byt-bgtvt bị thay thế từ 01/01/2025). tools/seo-legal-citations.mjs: nhận dạng 'Thông tư liên tịch' (trước đây bỏ sót, nên 2 bài dẫn TTLT 24/2015 như đang áp dụng không bị phát hiện). Sửa 10 bài qua tools/seo-body-review.mjs: BA-0359, BA-0449 tiêu chuẩn sức khỏe lái xe theo Thông tư 36/2024/TT-BYT (không áp dụng người điều khiển xe gắn máy); BA-0365 'tước quyền sử dụng giấy phép lái xe 10 điểm' → trừ 10 điểm (điểm d khoản 13), dẫn đúng khoản 1, 2 Điều 20; BA-0311 nguồn xử phạt là Nghị định chứ không phải 'Thông tư'; BA-0347 nghĩa vụ ở lại hiện trường theo Điều 80 không phụ thuộc bên kia đồng ý; BA-0287 bỏ 'không mang giấy phép lái có thể bị phạt' (chỉ xe kinh doanh vận tải), nêu đúng mức phạt người dùng bằng quốc tế không mang bằng quốc gia; BA-0215, BA-0497, BA-0779, BA-1061 'lỗi giấy tờ xe thuộc chủ xe' sai: người điều khiển không có chứng nhận đăng ký xe bị phạt 2–3 triệu đồng, không có bảo hiểm bắt buộc còn hiệu lực 200–300 nghìn đồng (xe máy chưa phải kiểm định như ô tô); BA-1061 điều kiện phục hồi 12 điểm theo Điều 58 khoản 2. 14 bài còn lại đối chiếu đúng (Điều 11, 12, 20 Luật 36; Điều 11 Thông tư 38/2024; Điều 7, 14, 18, 47 Nghị định 168), không sửa."
     }
   ],
   "rules": [
@@ -869,11 +901,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "D06B-CEN1B-M6",
-  "last_verified_commit": "ae8c8e76",
+  "last_completed_batch": "CEN2-NAP2A",
+  "last_verified_commit": "582eeda6",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Đã xong: M1–M6 (51 hub có đoạn dẫn, HUB-CONTENT 0), DUP-PARA 162 → 0 (D01–D06), FEATURE-CLAIM sửa 33 bài, LEGAL-CHECK C08 (20 bài). Tiếp: NAP2b (14 bài 'quận Long Biên'/'MotoAI ... đặt tại' còn lại — bản vá đã soạn), C09 (sửa trích dẫn Thông tư liên tịch 24/2015 đã hết hiệu lực ở BA-0359, BA-0449 + bộ quét trích dẫn nhận 'Thông tư liên tịch'), C09+ LEGAL-CHECK (172 bài còn lại, 20 bài/lô; ưu tiên sửa 'tước 10 điểm' → 'trừ 10 điểm' ở BA-0413, BA-0419, BA-0407, BA-0425, BA-0365), BODY-STRUCT (14), câu hứa dịch vụ chưa xác minh trong CTA (~50 câu), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "next_article_ids_note": "Đã xong: M1–M6 (51 hub có đoạn dẫn, HUB-CONTENT 0), DUP-PARA 162 → 0 (D01–D06), FEATURE-CLAIM sửa 33 bài, LEGAL-CHECK C08 (20 bài). Tiếp: NAP2b (14 bài 'quận Long Biên'/'MotoAI ... đặt tại' còn lại — bản vá đã soạn), PTS (~7 bài ghi sai điều kiện phục hồi 12 điểm, Điều 58 khoản 2), C10+ LEGAL-CHECK, C09+ LEGAL-CHECK (172 bài còn lại, 20 bài/lô; ưu tiên sửa 'tước 10 điểm' → 'trừ 10 điểm' ở BA-0413, BA-0419, BA-0407, BA-0425, BA-0365), BODY-STRUCT (14), câu hứa dịch vụ chưa xác minh trong CTA (~50 câu), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "p0_live_verified": [
     "/",
     "/gia-thue/",

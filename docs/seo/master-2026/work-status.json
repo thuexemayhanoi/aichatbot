@@ -60,6 +60,14 @@
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/an-toan/bang-lai-a1-a2-khac-gi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
   "/blog/an-toan/bang-lai/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -190,23 +198,73 @@
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/cho-tre-em-tren-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/den-do-va-camera-phat-nguoi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
   "/blog/an-toan/den-xe-va-an-toan-dem/": {
    "status": "DONE_LIVE",
    "batches": [
     "C04-LEGAL",
     "D03-D05-DUP-PARA",
-    "D06A-CEN1A"
+    "D06A-CEN1A",
+    "CEN2-NAP2A"
    ],
    "date": "2026-11-01",
-   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/an-toan/deo-non-dung-cach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/di-nguoc-chieu-hau-qua/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/di-nhom-an-toan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/di-xe-khong-giay-phep/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/an-toan/dien-thoai-khi-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D06A-CEN1A"
+    "D06A-CEN1A",
+    "C08-NAP1"
    ],
    "date": "2026-11-01",
-   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/an-toan/du-lich/": {
    "status": "DONE_LIVE",
@@ -224,6 +282,23 @@
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
+  "/blog/an-toan/goi-canh-sat-khi-tai-nan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1",
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/an-toan/guong-chieu-hau-an-toan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
   "/blog/an-toan/idp-va-bang-lai-quoc-te-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -239,6 +314,15 @@
    ],
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/kham-suc-khoe-lai-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1",
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/an-toan/khien-nai-dich-vu-thue-xe-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -293,12 +377,13 @@
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
   "/blog/an-toan/ky-nang-phanh-gap/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C04-LEGAL"
+    "C04-LEGAL",
+    "CEN2-NAP2A"
    ],
-   "date": "2026-10-31",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/an-toan/lai-xe/": {
    "status": "DONE_LIVE",
@@ -328,10 +413,19 @@
   "/blog/an-toan/lan-duong-va-quy-tac-nhuong/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D06A-CEN1A"
+    "D06A-CEN1A",
+    "C08-NAP1"
    ],
    "date": "2026-11-01",
-   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/luat-giao-thong-duong-bo-co-ban/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/an-toan/met-moi-khi-lai-duong-dai-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -340,6 +434,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
+  "/blog/an-toan/met-moi-khi-lai-duong-dai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/an-toan/mu-bao-hiem-chuan-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -408,10 +510,11 @@
   "/blog/an-toan/mua-lon-va-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D03-D05-DUP-PARA"
+    "D03-D05-DUP-PARA",
+    "C08-NAP1"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/an-toan/nghia-vu-cua-ben-cho-thue-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -464,6 +567,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
+  "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -602,6 +713,14 @@
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
+  "/blog/an-toan/quy-dinh-mu-bao-hiem-tre-em/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
   "/blog/an-toan/quyen-cua-nguoi-thue-xe-cho-du-khach/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -690,6 +809,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/an-toan/thu-tuc-khi-va-cham-nhe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
   "/blog/an-toan/thue-va-phi-xe-may-ca-nhan-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -731,6 +858,22 @@
    ],
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/thuoc-va-lai-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/toc-do-cho-phep-trong-pho/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cau-hoi-thuong-gap/": {
    "status": "REVIEWED_OK",
@@ -809,10 +952,11 @@
   "/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D06A-CEN1A"
+    "D06A-CEN1A",
+    "C08-NAP1"
    ],
    "date": "2026-11-01",
-   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/app/": {
    "status": "DONE_LIVE",
@@ -821,6 +965,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/app/ai-tra-loi-trong-ung-dung-thue-xe-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/app/ai-tra-loi-trong-ung-dung-thue-xe/": {
    "status": "DONE_LIVE",
@@ -874,10 +1026,11 @@
   "/blog/app/cach-dung-ung-dung-thue-xe-may-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D06A-CEN1A"
+    "D06A-CEN1A",
+    "CEN2-NAP2A"
    ],
    "date": "2026-11-01",
-   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/": {
    "status": "DONE_LIVE",
@@ -906,10 +1059,11 @@
   "/blog/app/cau-hoi-thuong-gap-ve-app-thue-xe-tai-ha-noi/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D03-D05-DUP-PARA"
+    "D03-D05-DUP-PARA",
+    "CEN2-NAP2A"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/app/cau-hoi-thuong-gap-ve-app-thue-xe/": {
    "status": "DONE_LIVE",
@@ -919,6 +1073,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
+  "/blog/app/chinh-sach-du-lieu-cua-ung-dung-thue-xe-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
   "/blog/app/chinh-sach-du-lieu-cua-ung-dung-thue-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -926,6 +1088,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/app/dat-xe-bang-ung-dung-tan-noi/": {
    "status": "DONE_LIVE",
@@ -942,6 +1112,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/app/dung-ung-dung-thue-xe-khi-di-du-lich-ha-noi-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/app/goi-y-chon-xe-may-phu-hop/": {
    "status": "DONE_LIVE",
@@ -962,10 +1140,11 @@
   "/blog/app/hoi-dap-voi-agent-thue-xe-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D06A-CEN1A"
+    "D06A-CEN1A",
+    "CEN2-NAP2A"
    ],
    "date": "2026-11-01",
-   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/app/hoi-dap-voi-agent-thue-xe-nam-2026/": {
    "status": "DONE_LIVE",
@@ -974,6 +1153,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/app/hoi-dap-voi-agent-thue-xe-tai-ha-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/app/huong-dan/": {
    "status": "DONE_LIVE",
@@ -1063,6 +1250,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/app/tro-ly-ao-tu-van-thue-xe-may-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
   "/blog/app/tro-ly-ao-tu-van-thue-xe-may-tai-ha-noi/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1137,13 +1332,22 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/app/ung-dung-thue-xe-tieng-anh-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
   "/blog/app/ung-dung-thue-xe-va-khach-vang-lai-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D03-D05-DUP-PARA"
+    "D03-D05-DUP-PARA",
+    "CEN2-NAP2A"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/app/ung-dung-thue-xe-va-khach-vang-lai-tai-ha-noi/": {
    "status": "DONE_LIVE",
@@ -1186,12 +1390,13 @@
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
   "/blog/dia-phuong/ba-dinh-xe-may-phuong/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C01"
+    "C01",
+    "CEN2-NAP2A"
    ],
-   "date": "2026-10-30",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/dia-phuong/bao-tang-ha-noi-hanh-trinh/": {
    "status": "DONE_LIVE",
@@ -1208,6 +1413,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/cho-long-bien-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/dia-phuong/chua-mot-cot-ha-noi-cuoi-tuan/": {
    "status": "DONE_LIVE",
@@ -1274,12 +1487,13 @@
    "note": "Đã rà soát, không cần đổi"
   },
   "/blog/dia-phuong/gia-lam-va-long-bien/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C01"
+    "C01",
+    "CEN2-NAP2A"
    ],
-   "date": "2026-10-30",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/dia-phuong/ha-long-duong-quoc-lo-hai-ngay-mot-dem/": {
    "status": "DONE_LIVE",
@@ -1320,6 +1534,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/ho-guom-ban-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/dia-phuong/ho-tay-va-xe-may/": {
    "status": "REVIEWED_OK",
@@ -1377,6 +1599,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/dia-phuong/pho-co-am-thuc-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/dia-phuong/phuong-xa/": {
    "status": "DONE_LIVE",
@@ -1516,6 +1746,14 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/dia-phuong/song-hong-va-cau-long-bien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
   "/blog/dia-phuong/tam-dao-bang-xe-may-hai-ngay-mot-dem/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1557,6 +1795,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/huong-dan/chay-xe-dien-lan-dau-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
   "/blog/huong-dan/chuan-bi/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1581,6 +1827,46 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/huong-dan/do-xe-o-ha-noi-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/huong-dan/doi-xe-giua-ky-thue-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/huong-dan/doi-xe-giua-ky-thue/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/huong-dan/gia-han-thoi-gian-thue-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/huong-dan/gia-han-thoi-gian-thue/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
   "/blog/huong-dan/giao-xe-tai-san-bay-noi-bai-nhanh-gon/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1589,6 +1875,22 @@
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
+  "/blog/huong-dan/giao-xe-tai-san-bay-noi-bai-tai-ha-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/huong-dan/giao-xe-tan-noi-thu-tuc/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
   "/blog/huong-dan/giay-to/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1596,6 +1898,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/huong-dan/huy-dat-xe-dung-cach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/huong-dan/len-ke-hoach-hanh-trinh-voi-agent-tai-ha-noi/": {
    "status": "DONE_LIVE",
@@ -1621,6 +1931,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/huong-dan/nhien-lieu-khi-nhan-tra-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/huong-dan/thu-tuc/": {
    "status": "DONE_LIVE",
@@ -1809,6 +2127,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
+  "/blog/thue-xe/coc-thue-xe-may-bao-nhieu/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
   "/blog/thue-xe/dat-coc/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1946,6 +2272,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
+  "/blog/thue-xe/nhan-xe-thue-can-gi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CEN2-NAP2A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
   "/blog/thue-xe/nhan-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2058,6 +2392,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/thue-xe/thue-xe-hang-nhe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/thue-xe/thue-xe-may-gia-re/": {
    "status": "REVIEWED_OK",
@@ -2211,6 +2553,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+  },
+  "/blog/xe-dien/chi-phi-dien-khi-thue-xe-dien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/xe-dien/chi-phi/": {
    "status": "DONE_LIVE",
@@ -2383,12 +2733,13 @@
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
   "/blog/xe-dien/sac-pin-xe-dien-o-dau/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C01"
+    "C01",
+    "CEN2-NAP2A"
    ],
-   "date": "2026-10-30",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
   "/blog/xe-dien/sac-pin/": {
    "status": "DONE_LIVE",
@@ -2405,6 +2756,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
+  "/blog/xe-dien/thoi-gian-sac-xe-may-dien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C08-NAP1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/xe-dien/thue-ngay/": {
    "status": "DONE_LIVE",

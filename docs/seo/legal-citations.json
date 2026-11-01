@@ -8,8 +8,8 @@
   "amended": 0,
   "unverified": 0,
   "unknown": 0,
-  "documents": 39,
-  "cited_documents": 36
+  "documents": 41,
+  "cited_documents": 38
  },
  "needs_fix": [],
  "wrong_suffix": [],
@@ -321,7 +321,7 @@
     "BA-1133",
     "BA-1232"
    ],
-   "mentions": 368
+   "mentions": 369
   },
   {
    "id": "luat-118-2025",
@@ -882,7 +882,7 @@
     "BA-1649"
    ],
    "by_name": [],
-   "mentions": 535
+   "mentions": 538
   },
   {
    "id": "nd-238-2026",
@@ -1094,6 +1094,40 @@
    "articles_historical": [],
    "by_name": [],
    "mentions": 33
+  },
+  {
+   "id": "tt-36-2024-byt",
+   "title": "Thông tư 36/2024/TT-BYT quy định về tiêu chuẩn sức khỏe, việc khám sức khỏe đối với người lái xe, người điều khiển xe máy chuyên dùng",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "effective": "2025-01-01",
+   "replaced_by": null,
+   "amended_by": null,
+   "amendment_checked": null,
+   "articles_current": [
+    "BA-0359",
+    "BA-0449"
+   ],
+   "articles_historical": [],
+   "by_name": [],
+   "mentions": 2
+  },
+  {
+   "id": "ttlt-24-2015-byt-bgtvt",
+   "title": "Thông tư liên tịch 24/2015/TTLT-BYT-BGTVT quy định về tiêu chuẩn sức khỏe của người lái xe, việc khám sức khỏe định kỳ đối với người lái xe ô tô",
+   "status": "replaced",
+   "evidence": "fulltext",
+   "effective": "2015-10-10",
+   "replaced_by": "tt-36-2024-byt",
+   "amended_by": null,
+   "amendment_checked": null,
+   "articles_current": [],
+   "articles_historical": [
+    "BA-0359",
+    "BA-0449"
+   ],
+   "by_name": [],
+   "mentions": 2
   },
   {
    "id": "tt-04-2021-bkhcn",
