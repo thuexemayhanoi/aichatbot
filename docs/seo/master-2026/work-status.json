@@ -1388,10 +1388,12 @@
   "/blog/an-toan/ngap-nuoc-va-xe-may-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C10"
+    "C10",
+    "CTA1",
+    "APP2B"
    ],
    "date": "2026-11-01",
-   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
   },
   "/blog/an-toan/ngap-nuoc-va-xe-may-tom-tat/": {
    "status": "DONE_LIVE",
@@ -1413,10 +1415,11 @@
    "status": "DONE_LIVE",
    "batches": [
     "C11",
-    "NAP3"
+    "NAP3",
+    "APP2B"
    ],
    "date": "2026-11-01",
-   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
   },
   "/blog/an-toan/nghia-vu-cua-ben-cho-thue-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -2410,6 +2413,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
+  "/blog/app/chon-xe-bang-agent/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2B"
+   ],
+   "date": "2026-11-01",
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
+  },
   "/blog/app/cong-cu-chon-xe-theo-kinh-nghiem-lai-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2437,10 +2448,11 @@
   "/blog/app/dat-xe-bang-ung-dung-nam-2026/": {
    "status": "DONE_LIVE",
    "batches": [
-    "APP2"
+    "APP2",
+    "APP2B"
    ],
    "date": "2026-11-01",
-   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
   },
   "/blog/app/dat-xe-bang-ung-dung-tan-noi/": {
    "status": "DONE_LIVE",
@@ -2652,6 +2664,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/app/tim-xe-may-thue-bang-ung-dung-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2B"
+   ],
+   "date": "2026-11-01",
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
+  },
   "/blog/app/tim-xe-may-thue-bang-ung-dung/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2679,10 +2699,11 @@
   "/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D06A-CEN1A"
+    "D06A-CEN1A",
+    "APP2B"
    ],
    "date": "2026-11-01",
-   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
   },
   "/blog/app/tro-ly-ao-tu-van-thue-xe-may-cau-hoi-thuong-gap/": {
    "status": "DONE_LIVE",
@@ -3009,12 +3030,21 @@
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
   "/blog/dia-phuong/dong-da-va-xe-may/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C01"
+    "C01",
+    "APP2B"
    ],
-   "date": "2026-10-30",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
+  },
+  "/blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may-mua-thu/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2B"
+   ],
+   "date": "2026-11-01",
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
   },
   "/blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may/": {
    "status": "REVIEWED_OK",
@@ -3044,10 +3074,11 @@
    "status": "DONE_LIVE",
    "batches": [
     "C01",
-    "CEN2-NAP2A"
+    "CEN2-NAP2A",
+    "CTA1"
    ],
    "date": "2026-11-01",
-   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+   "note": "Bỏ lời hứa 'xe luôn được kiểm tra trước mỗi lượt giao', 'luôn sẵn xe'; live dc8b4d93 (BA-0755, BA-0411)"
   },
   "/blog/dia-phuong/ha-long-duong-quoc-lo-buoi-sang/": {
    "status": "DONE_LIVE",
@@ -3112,6 +3143,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/dia-phuong/ho-tay-va-xe-may-mua-thu/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2B"
+   ],
+   "date": "2026-11-01",
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
   },
   "/blog/dia-phuong/ho-tay-va-xe-may/": {
    "status": "REVIEWED_OK",
@@ -3779,6 +3818,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/huong-dan/trom-cap-xe-va-xe-thue-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2B"
+   ],
+   "date": "2026-11-01",
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
+  },
   "/blog/kham-pha-an-toan/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4013,6 +4060,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/thue-xe/kiem-tra-xe-truoc-khi-nhan-cho-gia-dinh/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2B"
+   ],
+   "date": "2026-11-01",
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
   },
   "/blog/thue-xe/kiem-tra-xe-truoc-khi-nhan/": {
    "status": "DONE_LIVE",
@@ -4347,6 +4402,14 @@
    "date": "2026-10-30",
    "note": "Đổi title/description qua data/seo/article-meta.json, kiểm tra live"
   },
+  "/blog/thue-xe/thue-xe-may-theo-tuan-cuoi-tuan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2B"
+   ],
+   "date": "2026-11-01",
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
+  },
   "/blog/thue-xe/thue-xe-may-theo-tuan/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -4394,6 +4457,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/thue-xe/tinh-trang-xe-tai-cua-hang/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA1"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ lời hứa 'xe luôn được kiểm tra trước mỗi lượt giao', 'luôn sẵn xe'; live dc8b4d93 (BA-0755, BA-0411)"
   },
   "/blog/thue-xe/tra-xe-thue-dung-gio/": {
    "status": "DONE_LIVE",
@@ -4474,6 +4545,22 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/bao-duong-xe-dien-cho-khach-du-lich/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA1"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ lời hứa 'xe luôn được kiểm tra trước mỗi lượt giao', 'luôn sẵn xe'; live dc8b4d93 (BA-0755, BA-0411)"
+  },
+  "/blog/xe-dien/bao-duong-xe-dien-gia-tot/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA1"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ lời hứa 'xe luôn được kiểm tra trước mỗi lượt giao', 'luôn sẵn xe'; live dc8b4d93 (BA-0755, BA-0411)"
   },
   "/blog/xe-dien/bao-quan-xe-dien-mua-mua-cho-khach-du-lich/": {
    "status": "DONE_LIVE",
@@ -4605,6 +4692,22 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
+  "/blog/xe-dien/hop-so-xe-dien-mua-he/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA1"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ lời hứa 'xe luôn được kiểm tra trước mỗi lượt giao', 'luôn sẵn xe'; live dc8b4d93 (BA-0755, BA-0411)"
+  },
+  "/blog/xe-dien/hop-so-xe-dien-mua-mua/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA1"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ lời hứa 'xe luôn được kiểm tra trước mỗi lượt giao', 'luôn sẵn xe'; live dc8b4d93 (BA-0755, BA-0411)"
+  },
   "/blog/xe-dien/hop-so-xe-dien/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4648,10 +4751,11 @@
   "/blog/xe-dien/lop-xe-dien-mua-mua/": {
    "status": "DONE_LIVE",
    "batches": [
-    "APP2"
+    "APP2",
+    "APP2B"
    ],
    "date": "2026-11-01",
-   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+   "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
   },
   "/blog/xe-dien/pham-vi-hoat-dong-cua-xe-dien/": {
    "status": "REVIEWED_OK",
@@ -4879,6 +4983,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/xe-dien/xe-dien-va-duong-doc-cho-khach-du-lich/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA1"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ lời hứa 'xe luôn được kiểm tra trước mỗi lượt giao', 'luôn sẵn xe'; live dc8b4d93 (BA-0755, BA-0411)"
   },
   "/blog/xe-dien/xe-dien-va-duong-doc/": {
    "status": "DONE_LIVE",

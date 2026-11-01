@@ -1307,7 +1307,9 @@
       ],
       "scope": "Câu hứa dịch vụ chưa có trong data/business/business.json: 'xe luôn được kiểm tra/bảo dưỡng trước mỗi lượt giao', 'đảm bảo không có hư hỏng', 'luôn sẵn xe'.",
       "changes": "Sửa 8 bài qua tools/seo-body-review.mjs: đổi thành lời khuyên người thuê cùng nhân viên kiểm tra phanh, đèn, pin, truyền động khi nhận xe; BA-0314 bỏ 'đảm bảo không có hư hỏng hoặc lỗi kỹ thuật' và 'mọi thông tin đều được công khai'; BA-0755 MotoAI là trợ lý tra giá và thủ tục, xe nhận tại cửa hàng (không 'luôn sẵn xe').",
-      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6."
+      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6.",
+      "live_verified": "2026-11-01",
+      "live_note": "main dc8b4d93: BA-0755 \"MotoAI là trợ lý giúp người mới… tra nhanh giá và thủ tục, còn xe được nhận tại cửa hàng Nguyễn Tú\", BA-0411 \"bạn nên cùng nhân viên kiểm tra pin, phanh, đèn trước khi nhận xe điện\" đã hiển thị."
     },
     {
       "batch_id": "APP2B",
@@ -1328,7 +1330,43 @@
         "BA-0191"
       ],
       "scope": "APP-CLAIM lô 2b: bộ dò FEATURE-CLAIM bỏ sót câu có liên kết <a> hoặc placeholder {{ business.* }} (dấu chấm trong placeholder cắt câu) và các biến thể 'xe điện nào đang sẵn', 'xe còn sẵn', 'dòng nào còn xe'. Kiểm tra live BA-1485 phát hiện câu kết 'hỏi trợ lý MotoAI… xem xe điện nào đang sẵn' còn sót.",
-      "changes": "tools/seo-master-2026.py: feature_claims bỏ thẻ nội dòng và thay placeholder trước khi tách câu; AVAIL_CLAIM thêm 'xe/dòng <từ> nào', 'còn sẵn', 'còn xe'; test hồi quy trong tests/unit/seo-master-2026.test.js. Sửa 11 bài qua tools/seo-body-review.mjs: trợ lý cho giá tham khảo và gợi ý dòng xe, cửa hàng xác nhận xe còn trống; BA-0409 bỏ 'chốt đơn' và 'sẵn sàng giữ xe'; BA-1435 câu trả lời hiển thị bằng tiếng Việt. BA-0755, BA-0191 sửa lỗi chính tả 'Ao mưa' → 'Áo mưa'. Trước lô: 11 bài bị gắn cờ theo bộ dò mới, sau lô: 0."
+      "changes": "tools/seo-master-2026.py: feature_claims bỏ thẻ nội dòng và thay placeholder trước khi tách câu; AVAIL_CLAIM thêm 'xe/dòng <từ> nào', 'còn sẵn', 'còn xe'; test hồi quy trong tests/unit/seo-master-2026.test.js. Sửa 11 bài qua tools/seo-body-review.mjs: trợ lý cho giá tham khảo và gợi ý dòng xe, cửa hàng xác nhận xe còn trống; BA-0409 bỏ 'chốt đơn' và 'sẵn sàng giữ xe'; BA-1435 câu trả lời hiển thị bằng tiếng Việt. BA-0755, BA-0191 sửa lỗi chính tả 'Ao mưa' → 'Áo mưa'. Trước lô: 11 bài bị gắn cờ theo bộ dò mới, sau lô: 0.",
+      "live_verified": "2026-11-01",
+      "live_note": "main 43bf14d6: BA-1485 \"xem dòng xe điện nào hợp lịch trình… để hỏi giá và xe còn trống\", BA-0409 \"để cửa hàng xác nhận xe còn trống và chốt lịch nhận xe\", BA-0766 \"còn xe nào còn trống thì cửa hàng xác nhận qua tin nhắn\", BA-1435 \"hiển thị câu trả lời bằng tiếng Việt\" đã hiển thị."
+    },
+    {
+      "batch_id": "CTA2",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-0411",
+        "BA-0377",
+        "BA-0797",
+        "BA-1361",
+        "BA-0034",
+        "BA-0935",
+        "BA-1839",
+        "BA-1192",
+        "BA-1478",
+        "BA-0726",
+        "BA-0464",
+        "BA-0069",
+        "BA-0699",
+        "BA-0211",
+        "BA-1874",
+        "BA-0192",
+        "BA-0180",
+        "BA-0186",
+        "BA-0182",
+        "BA-0179",
+        "BA-0184",
+        "BA-0188",
+        "BA-0198",
+        "BA-0196",
+        "BA-0190",
+        "BA-0194"
+      ],
+      "scope": "Kiểm tra live CTA1 cho thấy còn ba nhóm câu chưa xác minh: (1) lời hứa vận hành không có trong data/business/business.json ('mọi dòng xe đều được bảo dưỡng định kỳ', 'xe đã qua sẵn khâu kiểm tra', 'mọi chiếc xe trước khi giao đều được kiểm tra gương', 'buổi nhận xe luôn được bố trí'); (2) 'liên hệ MotoAI theo số …' — MotoAI là trợ lý trên website, cửa hàng là Nguyễn Tú (NAP5, 11 bài); (3) 'kênh Zalo được công bố trên trang liên hệ' — /lien-he/ chỉ công bố điện thoại, WhatsApp, email; cùng các câu 'hỏi trợ lý về tình trạng xe' / 'khung giờ nhận đông nhất' (trợ lý không có dữ liệu này).",
+      "changes": "tools/seo-master-2026.py: FEATURE-CLAIM thêm nhóm SHOP_CLAIM ('liên hệ/gọi/nhắn MotoAI theo/qua/tại', 'cửa hàng MotoAI', 'kênh Zalo được công bố', 'mọi/toàn bộ xe … đều/luôn được kiểm tra/bảo dưỡng'); test hồi quy. Sửa 26 bài qua tools/seo-body-review.mjs: lời hứa vận hành đổi thành lời khuyên cùng nhân viên kiểm tra xe khi nhận; 'liên hệ cửa hàng {{ business.brand }} theo số'; Zalo → kênh WhatsApp/số điện thoại đang công bố; trợ lý cho giá tham khảo và mức cọc, cửa hàng xác nhận tình trạng xe. Trước lô: 26 bài bị gắn cờ, sau lô: 0."
     }
   ],
   "rules": [
@@ -1338,11 +1376,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "APP2",
-  "last_verified_commit": "8857985d",
+  "last_completed_batch": "APP2B",
+  "last_verified_commit": "43bf14d6",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0, BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP4, APP1–APP2, CTA1. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Có thể làm tiếp không cần chờ: QA-PROXY (1), rà các câu hứa dịch vụ khác khi có mẫu mới.",
+  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (gồm bộ dò SHOP_CLAIM mới), BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA2. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Có thể làm tiếp không cần chờ: QA-PROXY (1), rà các câu hứa dịch vụ khác khi có mẫu mới.",
   "p0_live_verified": [
     "/",
     "/gia-thue/",
@@ -1437,5 +1475,16 @@
     "status": "REVIEW_REQUIRED",
     "question": "Khoảng 86 bài nói mũ bảo hiểm 'đi kèm/giao kèm' xe thuê và 59 bài nhắc áo mưa đi kèm, nhưng data/business/business.json chưa ghi thông tin này. Chủ sở hữu xác nhận: (1) mỗi xe thuê có kèm mũ bảo hiểm không, bao nhiêu chiếc, có cỡ trẻ em không; (2) có kèm áo mưa không, miễn phí hay tính phí. Sau khi xác nhận, thêm vào business.json (policies.equipment) để bài viết dùng placeholder; nếu không kèm, các câu này sẽ được sửa qua quy trình review body.",
     "evidence": "Quét bodies 2026-11-01: mẫu 'mũ bảo hiểm … kèm/đi kèm/giao kèm' 90 lần/86 bài; 'áo mưa … kèm/miễn phí/tặng' 77 lần/59 bài."
+  },
+  "review_required_zalo": {
+    "id": "RR-23",
+    "status": "REVIEW_REQUIRED",
+    "opened": "2026-11-01",
+    "question": "Cửa hàng có tài khoản Zalo chính thức (ví dụ trên số 0942 467 674) không? data/business/business.json và trang /lien-he/ hiện chỉ công bố điện thoại, WhatsApp, email.",
+    "impact": "47 bài nhắc tới Zalo; phần lớn là hướng dẫn chung (cách nhận biết tài khoản chính thức), đã sửa 2 bài khẳng định 'kênh Zalo được công bố trên trang liên hệ' (BA-0211, BA-1874). Nếu có Zalo chính thức: thêm vào business.json (contact.zalo) và trang liên hệ, rồi các bài cụm Zalo có thể dẫn tới kênh đó qua placeholder.",
+    "options": [
+      "(a) Có Zalo chính thức: cung cấp số/đường dẫn, thêm vào business.json + /lien-he/",
+      "(b) Không dùng Zalo: giữ các bài ở mức hướng dẫn chung, không khẳng định kênh của cửa hàng"
+    ]
   }
 }
