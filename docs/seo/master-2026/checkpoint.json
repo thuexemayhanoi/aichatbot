@@ -1,19 +1,20 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-11-01",
-  "last_completed_batch": "PTS2-TN1",
-  "last_verified_commit": "7586218",
-  "next": "Đã xong: M1–M7, DUP-PARA 162 → 0, FEATURE-CLAIM 0, BODY-STRUCT 14 → 0, LEGAL-CHECK C08–C11, PTS (40 bài), TN1, EN2. Tiếp: C12 LEGAL-CHECK (~90 bài còn lại; đã soát trước 12 bài không lỗi; BA-0713 thêm ngoại lệ trẻ dưới 06 tuổi), APP-CLAIM (bài mô tả ứng dụng có đặt giữ chỗ, kiểm tra còn xe hoặc giá theo ngày nhận — ứng dụng chưa có các tính năng này; ví dụ BA-0481, BA-0775), câu hứa dịch vụ chưa xác minh trong CTA (~50), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "last_completed_batch": "C11",
+  "last_verified_commit": "4bd6509f",
+  "next": "Đã xong: M1–M7, DUP-PARA 162 → 0, FEATURE-CLAIM 0, BODY-STRUCT 0, LEGAL-CHECK C08–C12, PTS (40 bài), TN1, EN2. Tiếp: NAP3 (18 bài còn gọi 'MotoAI' như cửa hàng: BA-0185, 0069, 0189, 0096, 0181, 0100, 0214, 0070, 0193, 0104, 0102, 0191, 0187, 0209, 0098, 0092, 0197, 0195 — bản vá đã soạn) + C13 (16 bài LEGAL-CHECK đã soát không lỗi: BA-1487, 1205, 1397, 2003, 1427, 1145, 1355, 1391, 1421, 1283, 1235, 1241, 1373, 1325, 1247, 2001 — chỉ cần ghi sổ), APP-CLAIM (ứng dụng chưa có đặt giữ chỗ, kiểm tra còn xe hay giá theo ngày nhận), câu hứa dịch vụ chưa xác minh trong CTA, QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "remaining": {
     "status": {
-      "DONE_LIVE": 379,
+      "DONE_LIVE": 391,
       "REVIEWED_OK": 52,
-      "OK": 1405,
-      "OPEN": 332
+      "OK": 1403,
+      "OPEN": 322
     },
     "open_codes": {
-      "LEGAL-CHECK": 46,
-      "LOCAL-SCOPE": 286
+      "LEGAL-CHECK": 34,
+      "LOCAL-SCOPE": 286,
+      "DUP-PARA": 2
     }
   },
   "open_backlog": [
@@ -30,6 +31,13 @@
       "issue": "Hub chủ yếu là danh sách thẻ; đoạn dẫn dùng chung mô tả danh mục",
       "owner": "agent",
       "batch": "M5"
+    },
+    {
+      "id": "B06",
+      "priority": "P1",
+      "issue": "Đoạn văn trùng với bài khác (QA nhà máy no-cross-article-duplicate)",
+      "owner": "agent",
+      "batch": "D01+"
     },
     {
       "id": "B07",
