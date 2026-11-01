@@ -725,7 +725,7 @@ FEATURE_CLAIM = re.compile(
 AVAIL_CLAIM = re.compile(
     r'(?:trợ lý|MotoAI|ứng dụng|\bapp\b)[^.?!<]{0,90}'
     r'(?:(?:xe|dòng xe|mẫu xe|xe nào|dòng nào|mẫu nào|xe \w+ nào|dòng \w+ nào) (?:còn trống|đang sẵn|còn sẵn|còn xe)'
-    r'|(?:dòng xe|dòng|mẫu xe|xe) còn sẵn'
+    r'|(?:dòng xe|dòng|mẫu xe|xe) còn sẵn|\bxe trống\b'
     r'|tình trạng (?:xe còn trống|sẵn có)|để giữ chỗ|có xe giữ chỗ|giữ chỗ cho)', re.I)
 # Thẻ nội dòng (liên kết, nhấn mạnh) và placeholder có dấu chấm không cắt câu:
 # "hỏi trợ lý trên <a>trang chủ</a> để biết xe còn trống" vẫn là một câu.
@@ -738,11 +738,13 @@ SHOP_CLAIM = re.compile(
     r'(?:liên hệ|gọi|nhắn(?: tin)?(?: cho)?|ghé) MotoAI (?:theo|qua|tại)\b|cửa hàng MotoAI\b'
     r'|MotoAI (?:mở cửa|giao xe|cho thuê xe|đón khách|đặt tại)|kênh Zalo được công bố'
     r'|(?:mọi|toàn bộ|tất cả)(?: các)?(?: chiếc| dòng)? xe[^.?!<]{0,60}(?:đều|luôn) được (?:kiểm tra|bảo dưỡng|bảo trì|vệ sinh)'
-    r'|xe[^.?!<]{0,30}luôn được (?:kiểm tra|bảo dưỡng|bảo trì) trước mỗi', re.I)
+    r'|xe[^.?!<]{0,30}luôn được (?:kiểm tra|bảo dưỡng|bảo trì) trước mỗi'
+    r'|luôn có xe (?:sẵn|bền|đã)|luôn sẵn xe|xe luôn sẵn sàng', re.I)
 AVAIL_OK = re.compile(
     r'cửa hàng xác nhận|nhờ cửa hàng|hỏi cửa hàng|liên hệ cửa hàng|xác nhận với cửa hàng|chốt lại với cửa hàng'
     r'|gọi trực tiếp|hướng bạn|không giữ|không tự|không làm|chưa làm|chưa kiểm tra|không thể'
-    r'|người thật|nhân viên', re.I)
+    r'|người thật|nhân viên|với cửa hàng|với X\b|cửa hàng kiểm tra|để xác nhận|xác nhận lại'
+    r'|để kiểm tra|gọi cửa hàng|gọi ngay|không biết|gợi ý bạn hỏi|sẽ xác nhận|khi bạn gọi', re.I)
 
 
 def _sentence(body, start, end):

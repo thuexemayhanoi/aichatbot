@@ -122,7 +122,11 @@ print(json.dumps([bool(m.feature_claims(s)) for s in json.loads(sys.stdin.read()
     ['<p>Nếu bạn cần thuê xe, liên hệ MotoAI theo số {{ business.contact.phone_display }} để được tư vấn.</p>', true],
     ['<p>Hãy nhắn qua kênh Zalo được công bố trên trang <a href="/lien-he/">liên hệ</a>.</p>', true],
     ['<p>Mọi dòng xe ga của {{ business.display_name }} đều được bảo dưỡng định kỳ.</p>', true],
-    ['<p>Liên hệ cửa hàng {{ business.brand }} theo số {{ business.contact.phone_display }}.</p>', false]
+    ['<p>Liên hệ cửa hàng {{ business.brand }} theo số {{ business.contact.phone_display }}.</p>', false],
+    // "xe trống" reported by the assistant, and "always has bikes" promises
+    ['<p>Trợ lý cho biết xe trống theo khung giờ và hỗ trợ chốt lịch.</p>', true],
+    ['<p>Cửa hàng tại {{ business.address.full }} luôn có xe sẵn sàng cho lịch trình của bạn.</p>', true],
+    ['<p>Dùng trợ lý để chọn xe, sau đó gọi cửa hàng để kiểm tra xe trống.</p>', false]
   ];
   const r = spawnSync('python3', ['-B', '-c', py], { cwd: ROOT, input: JSON.stringify(cases.map((c) => c[0])), encoding: 'utf8' });
   if (r.error) return t.skip('python3 is not available');
