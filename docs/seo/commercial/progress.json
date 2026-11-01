@@ -786,6 +786,42 @@
       "changes": "tools/seo-body-review.mjs replace (23 bản vá, QA không giảm): câu trùng và câu 'Nhận định' về mức phạt chỉ đổi cách diễn đạt (số tiền, điều khoản giữ nguyên); gỡ 'mọi phản ánh/câu hỏi dữ liệu đều được tiếp nhận trực tiếp' (BA-0551, BA-0557); BA-0737 nói rõ trợ lý chỉ trả lời tham khảo, đổi giờ trả xe do cửa hàng xác nhận. C-EN1B: 'công cụ xử lý nhiều ngôn ngữ', 'nhận diện ngôn ngữ của câu hỏi', 'cả hai ngôn ngữ chỉ khác cách diễn đạt' → Agent trả lời tiếng Việt. Câu trùng giữa các bài: 29 → 0 (đo bằng cùng khóa 80 ký tự của QA nhà máy). M6: tools/build-blog.mjs gắn hubGuide cho hub cụm (thay đoạn intro) và /blog/ (sau khối hero); data/blog/hubs/{cong-cu-huong-dan,thue-xe-phuong-tien,kham-pha-an-toan,blog}.body.html. THIN-HUB: bỏ chủ đề con GUIDE 'chuan-bi' (1 bài BA-2006) khỏi data/blog/taxonomy.json; /blog/huong-dan/chuan-bi/ → 404 cho máy tìm kiếm + 404.html chuyển về /blog/huong-dan/ (config/retired-urls.json, batch M6-THIN-HUB); sitemap 2.169 → 2.168.",
       "rollback": "git revert; hoặc thêm lại subtopic chuan-bi vào taxonomy.json và gỡ mục trong config/retired-urls.json.",
       "live_verified": "chờ deploy"
+    },
+    {
+      "batch_id": "C08-NAP1",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-0035",
+        "BA-0149",
+        "BA-0131",
+        "BA-0161",
+        "BA-0137",
+        "BA-0179",
+        "BA-0029",
+        "BA-0143",
+        "BA-0071",
+        "BA-0095",
+        "BA-0077",
+        "BA-0125",
+        "BA-0005",
+        "BA-0173",
+        "BA-0041",
+        "BA-0155",
+        "BA-0065",
+        "BA-0167",
+        "BA-0023",
+        "BA-0119",
+        "BA-0069",
+        "BA-0631",
+        "BA-0070",
+        "BA-0101",
+        "BA-0064",
+        "BA-0066",
+        "BA-0063",
+        "BA-0068"
+      ],
+      "scope": "LEGAL-CHECK lô C08: 20 bài pháp lý trụ cột nhóm An toàn — đối chiếu từng nhận định có mức phạt, điều khoản, độ tuổi, tốc độ với toàn văn (Công báo số 75 + 76 Nghị định 168/2024/NĐ-CP; văn bản hợp nhất 55/VBHN-VPQH Luật 36/2024/QH15; Thông tư 38/2024/TT-BGTVT). NAP1: 9 bài gọi cửa hàng là 'MotoAI' (tên trợ lý) thay vì thương hiệu.",
+      "changes": "Sổ dữ kiện: +7 dữ kiện đối chiếu toàn văn (Luật 36 Điều 5, 33, 80, 88; Nghị định 168 Điều 7 khoản 2–3 chở người/mũ bảo hiểm, khoản 10 + 13 gây tai nạn 10–14 triệu đồng/trừ 10 điểm, khoản 9 + 12 ma túy). Sửa 11 bài qua tools/seo-body-review.mjs: BA-0149 trẻ em được chở 'dưới 14 tuổi' → dưới 12 tuổi, phân biệt chở 2 người (400–600 nghìn) và từ 3 người (600–800 nghìn), miễn phạt mũ với trẻ dưới 06 tuổi; BA-0155 bỏ 'trừ trường hợp được luật miễn' (luật không có ngoại lệ, chỉ nghị định không phạt khi chở trẻ dưới 06 tuổi); BA-0005 bỏ văn bản không tồn tại 'Luật Trật tự, an toàn giao thông đường bộ 2008', sửa quy tắc chở người (chỉ chở một người; tối đa hai khi chở trẻ dưới 12 tuổi, người bệnh, người già yếu, người bị áp giải), câu dây đai/ghế khi chở trẻ dưới 6 tuổi ghi đúng là trách nhiệm nhắc nhở của gia đình (Điều 5 khoản 7); BA-0179 'rượu bia nồng độ cấm' → nồng độ cồn vượt quá 80 mg/100 ml máu; BA-0029 xe gắn máy 'dưới 50 cm³' → không quá 50 cm³; BA-0023 thêm xe gắn máy tối đa 40 km/h; BA-0167 bỏ khẳng định 'thuốc kê đơn không bị xử phạt'; BA-0137 bỏ 'đi lùi' khỏi lỗi đi ngược chiều (khoản 7 điểm a không có); BA-0065 và BA-0071 bỏ 'va chạm nhẹ không bắt buộc giữ hiện trường/ba tình huống mới phải gọi' (Điều 80 yêu cầu báo tin cho mọi vụ tai nạn); BA-0095 nêu đúng lỗi gương chiếu hậu bên trái (Điều 14 khoản 1 điểm a). 9 bài còn lại đối chiếu đúng, không sửa (BA-0035, BA-0131, BA-0161, BA-0143, BA-0077, BA-0125, BA-0173, BA-0041, BA-0119 — BA-0125/0143/0119 đã sửa câu trùng ở D06A). NAP1: 'Cửa hàng MotoAI' → {{ business.brand }}, 'quận Long Biên' (đơn vị cấp huyện đã bỏ từ 01/7/2025) → {{ business.address.ward }}, {{ business.address.district }} ở 9 bài."
     }
   ],
   "rules": [
@@ -799,7 +835,7 @@
   "last_verified_commit": "725c84fe",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Đã xong: M1–M6 (51 hub có đoạn dẫn, HUB-CONTENT 0), DUP-PARA 162 → 0 (D01–D06), FEATURE-CLAIM sửa 33 bài. Tiếp: C08+ LEGAL-CHECK (192 bài pháp lý chưa qua lô đối chiếu toàn văn — 20 bài/lô, đối chiếu data/seo/legal-facts.json), BODY-STRUCT (14), rà các câu hứa dịch vụ chưa xác minh còn lại trong CTA (\"luôn được…\", ~50 câu), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13 — đã có local-scope-proposals.csv), giá xe điện/xe đạp điện (RR-14), phí giao xe (RR-15), cách ghi địa chỉ (RR-16), giấy tờ bắt buộc (RR-18), xe điện khóa app (RR-19), Agent tiếng Anh (RR-20). Nhà máy ảnh: EXCLUDED.",
+  "next_article_ids_note": "Đã xong: M1–M6 (51 hub có đoạn dẫn, HUB-CONTENT 0), DUP-PARA 162 → 0 (D01–D06), FEATURE-CLAIM sửa 33 bài, LEGAL-CHECK C08 (20 bài). Tiếp: C-EN2 (13 bài còn khẳng định trợ lý trả lời tiếng Anh/đa ngôn ngữ — mã nguồn: giá, cọc, giờ, liên hệ luôn tiếng Việt; Agent chỉ diễn đạt lại câu gợi ý), NAP2 ('quận Long Biên' còn ~30 bài, 'MotoAI là trợ lý ... đặt tại' ~29 bài), C09+ LEGAL-CHECK (172 bài còn lại, 20 bài/lô; ưu tiên sửa 'tước 10 điểm' → 'trừ 10 điểm' ở BA-0413, BA-0419, BA-0407, BA-0425, BA-0365), BODY-STRUCT (14), câu hứa dịch vụ chưa xác minh trong CTA (~50 câu), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "p0_live_verified": [
     "/",
     "/gia-thue/",

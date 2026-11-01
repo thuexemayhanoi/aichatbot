@@ -1,6 +1,6 @@
 # Hiệu lực văn bản pháp luật mà bài viết trích dẫn
 
-_Sinh bởi `node tools/seo-legal-citations.mjs` từ sổ đăng ký `data/seo/legal-documents.json` (rà ngày 31/10/2026) và 323 bài đã đăng có trích dẫn văn bản. Không sửa tay. Phân loại "đang áp dụng"/"nhắc quy định cũ" là theo từ ngữ trong câu; mỗi dòng in kèm câu để người rà soát quyết định._
+_Sinh bởi `node tools/seo-legal-citations.mjs` từ sổ đăng ký `data/seo/legal-documents.json` (rà ngày 01/11/2026) và 323 bài đã đăng có trích dẫn văn bản. Không sửa tay. Phân loại "đang áp dụng"/"nhắc quy định cũ" là theo từ ngữ trong câu; mỗi dòng in kèm câu để người rà soát quyết định._
 
 | Mục | Số |
 |---|---:|
@@ -45,7 +45,7 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 
 | Văn bản | Tên | Trạng thái | Bằng chứng | Hiệu lực | Thay/sửa bởi | Bài dẫn như hiện hành | Bài nhắc quy định cũ | Dẫn theo tên |
 |---|---|---|---|---|---|---:|---:|---:|
-| luat-36-2024 | Luật Trật tự, an toàn giao thông đường bộ số 36/2024/QH15 | amended | fulltext | 01/01/2025 | luat-118-2025 | 225 | 2 | 64 |
+| luat-36-2024 | Luật Trật tự, an toàn giao thông đường bộ số 36/2024/QH15 | amended | fulltext | 01/01/2025 | luat-118-2025 | 225 | 1 | 64 |
 | luat-118-2025 | Luật số 118/2025/QH15 sửa đổi, bổ sung một số điều của 10 luật có liên quan đến an ninh, trật tự | in_force | fulltext | 01/07/2026 | — | 0 | 0 | 0 |
 | luat-23-2008 | Luật Giao thông đường bộ số 23/2008/QH12 | replaced | reported | 01/07/2009 | luat-36-2024 | 0 | 3 | 3 |
 | luat-39-2024 | Luật Thủ đô số 39/2024/QH15 | replaced | fulltext | 01/01/2025 | luat-02-2026-qh16 | 0 | 0 | 0 |
