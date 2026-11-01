@@ -1366,7 +1366,18 @@
         "BA-0194"
       ],
       "scope": "Kiểm tra live CTA1 cho thấy còn ba nhóm câu chưa xác minh: (1) lời hứa vận hành không có trong data/business/business.json ('mọi dòng xe đều được bảo dưỡng định kỳ', 'xe đã qua sẵn khâu kiểm tra', 'mọi chiếc xe trước khi giao đều được kiểm tra gương', 'buổi nhận xe luôn được bố trí'); (2) 'liên hệ MotoAI theo số …' — MotoAI là trợ lý trên website, cửa hàng là Nguyễn Tú (NAP5, 11 bài); (3) 'kênh Zalo được công bố trên trang liên hệ' — /lien-he/ chỉ công bố điện thoại, WhatsApp, email; cùng các câu 'hỏi trợ lý về tình trạng xe' / 'khung giờ nhận đông nhất' (trợ lý không có dữ liệu này).",
-      "changes": "tools/seo-master-2026.py: FEATURE-CLAIM thêm nhóm SHOP_CLAIM ('liên hệ/gọi/nhắn MotoAI theo/qua/tại', 'cửa hàng MotoAI', 'kênh Zalo được công bố', 'mọi/toàn bộ xe … đều/luôn được kiểm tra/bảo dưỡng'); test hồi quy. Sửa 26 bài qua tools/seo-body-review.mjs: lời hứa vận hành đổi thành lời khuyên cùng nhân viên kiểm tra xe khi nhận; 'liên hệ cửa hàng {{ business.brand }} theo số'; Zalo → kênh WhatsApp/số điện thoại đang công bố; trợ lý cho giá tham khảo và mức cọc, cửa hàng xác nhận tình trạng xe. Trước lô: 26 bài bị gắn cờ, sau lô: 0."
+      "changes": "tools/seo-master-2026.py: FEATURE-CLAIM thêm nhóm SHOP_CLAIM ('liên hệ/gọi/nhắn MotoAI theo/qua/tại', 'cửa hàng MotoAI', 'kênh Zalo được công bố', 'mọi/toàn bộ xe … đều/luôn được kiểm tra/bảo dưỡng'); test hồi quy. Sửa 26 bài qua tools/seo-body-review.mjs: lời hứa vận hành đổi thành lời khuyên cùng nhân viên kiểm tra xe khi nhận; 'liên hệ cửa hàng {{ business.brand }} theo số'; Zalo → kênh WhatsApp/số điện thoại đang công bố; trợ lý cho giá tham khảo và mức cọc, cửa hàng xác nhận tình trạng xe. Trước lô: 26 bài bị gắn cờ, sau lô: 0.",
+      "live_verified": "2026-11-01",
+      "live_note": "main 63eb144b: BA-0188 \"liên hệ cửa hàng Nguyễn Tú theo số 0942 467 674\", BA-1478 \"Bạn cùng nhân viên kiểm tra năm điểm trên khi nhận xe ga\", BA-0211 \"nhắn cửa hàng Nguyễn Tú qua kênh WhatsApp được công bố tại trang liên hệ\" đã hiển thị."
+    },
+    {
+      "batch_id": "LEGAL-FEE1",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-0047"
+      ],
+      "scope": "Mục REVIEW cuối cùng của data/seo/content-review.json: BA-0047 (IDP) — lệ phí cấp giấy phép lái xe quốc tế. Bài đã được cập nhật 115.000 đồng/lần theo Thông tư 154/2025/TT-BTC (toàn văn, hiệu lực 01/01/2026) nhưng chưa nêu Thông tư 29/2026/TT-BTC: từ 01/4/2026 đến hết 31/12/2026 lệ phí cấp, đổi, cấp lại giấy phép lái xe (quốc gia và quốc tế) thu bằng 50% (Điều 1 khoản 1 số thứ tự 3, Điều 3 khoản 1; Điều 1 không ghi điều kiện nộp qua VNeID).",
+      "changes": "data/seo/legal-facts.json: dữ kiện tt-29-2026-btc-giam-le-phi-gplx (đối chiếu toàn văn 2026-11-01); data/seo/legal-documents.json: đăng ký tt-29-2026-btc (in_force, fulltext, văn bản có thời hạn tới 31/12/2026). BA-0047 qua tools/seo-body-review.mjs (giữ nguyên số từ, bài ở giới hạn 2.000 từ): nêu mức giảm một nửa từ 01/4/2026 đến hết 31/12/2026 theo Thông tư 29/2026/TT-BTC, mức gốc theo Thông tư 154/2025/TT-BTC. Gỡ BA-0047 khỏi data/seo/content-review.json (lý do REVIEW cũ đã xử lý). Việc cần làm sau 31/12/2026: rà lại câu lệ phí của BA-0047."
     }
   ],
   "rules": [
@@ -1376,11 +1387,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "APP2B",
-  "last_verified_commit": "43bf14d6",
+  "last_completed_batch": "CTA2",
+  "last_verified_commit": "63eb144b",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (gồm bộ dò SHOP_CLAIM mới), BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA2. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Có thể làm tiếp không cần chờ: QA-PROXY (1), rà các câu hứa dịch vụ khác khi có mẫu mới.",
+  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (gồm bộ dò SHOP_CLAIM mới), BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA2, LEGAL-FEE1 (content-review REVIEW 0). Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Có thể làm tiếp không cần chờ: QA-PROXY (1), rà các câu hứa dịch vụ khác khi có mẫu mới.",
   "p0_live_verified": [
     "/",
     "/gia-thue/",

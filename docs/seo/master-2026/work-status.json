@@ -656,10 +656,11 @@
   "/blog/an-toan/di-nhom-an-toan/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C08-NAP1"
+    "C08-NAP1",
+    "CTA2"
    ],
    "date": "2026-11-01",
-   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/an-toan/di-xe-khong-giay-phep-cau-hoi-thuong-gap/": {
    "status": "DONE_LIVE",
@@ -813,10 +814,11 @@
   "/blog/an-toan/guong-chieu-hau-an-toan-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C09"
+    "C09",
+    "CTA2"
    ],
    "date": "2026-11-01",
-   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/an-toan/guong-chieu-hau-an-toan-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -1004,10 +1006,11 @@
    "status": "DONE_LIVE",
    "batches": [
     "C03-LEGAL",
-    "D06B-CEN1B-M6"
+    "D06B-CEN1B-M6",
+    "CTA2"
    ],
    "date": "2026-11-01",
-   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/an-toan/kiem-dinh-xe-may-tom-tat/": {
    "status": "DONE_LIVE",
@@ -1020,10 +1023,11 @@
   "/blog/an-toan/kiem-dinh-xe-may-vi-du-thuc-te/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C03-LEGAL"
+    "C03-LEGAL",
+    "CTA2"
    ],
-   "date": "2026-10-30",
-   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/an-toan/kiem-dinh-xe-may/": {
    "status": "DONE_LIVE",
@@ -1060,10 +1064,11 @@
   "/blog/an-toan/ky-nang-phanh-gap-tom-tat/": {
    "status": "DONE_LIVE",
    "batches": [
-    "PTS2-TN1"
+    "PTS2-TN1",
+    "CTA2"
    ],
    "date": "2026-11-01",
-   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/an-toan/ky-nang-phanh-gap-vi-du-thuc-te/": {
    "status": "DONE_LIVE",
@@ -2478,6 +2483,14 @@
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
+  "/blog/app/goi-dien-tu-ung-dung-thue-xe-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/app/goi-dien-tu-ung-dung-thue-xe-nam-2026/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2558,6 +2571,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
+  "/blog/app/ket-noi-zalo-voi-ung-dung-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/app/module-goi-y-xe-trong-ung-dung-thue-xe-nam-2026/": {
    "status": "DONE_LIVE",
@@ -2933,6 +2954,14 @@
    "date": "2026-11-01",
    "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
+  "/blog/dia-phuong/banh-cuon-va-hanh-trinh/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/dia-phuong/bao-tang-ha-noi-hanh-trinh/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2940,6 +2969,22 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/dia-phuong/ca-phe-pho-co/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
+  "/blog/dia-phuong/ca-phe-trung-va-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/dia-phuong/cau-giay-di-xe-may/": {
    "status": "REVIEWED_OK",
@@ -3242,6 +3287,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
+  "/blog/dia-phuong/pho-bo-va-hanh-trinh-sang/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/dia-phuong/pho-co-am-thuc-xe-may/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3462,6 +3515,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
+  "/blog/dia-phuong/thue-xe-may-quanh-long-bien-cuoi-tuan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/dia-phuong/thue-xe-may-quanh-long-bien-hai-ngay-mot-dem/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3567,6 +3628,14 @@
    "date": "2026-11-01",
    "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
+  "/blog/huong-dan/dich-cong-chung-giay-to-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/huong-dan/do-xe-o-ha-noi-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3664,6 +3733,14 @@
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
+  "/blog/huong-dan/kiem-tra-xe-khi-nhan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/huong-dan/len-ke-hoach-hanh-trinh-voi-agent-tai-ha-noi/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3671,6 +3748,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/huong-dan/nang-nong-va-lai-xe-nhanh-gon/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/huong-dan/nhan-xe/": {
    "status": "DONE_LIVE",
@@ -3801,6 +3886,22 @@
    ],
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thue-xe-can-nguoi-bao-lanh-khong/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
+  "/blog/huong-dan/thue-xe-cho-nguoi-duoi-18-tuoi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/huong-dan/tra-xe/": {
    "status": "DONE_LIVE",
@@ -3940,6 +4041,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
+  "/blog/thue-xe/dat-xe-truoc-hay-den-truc-tiep/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/thue-xe/dieu-kien-thue-xe-may-o-ha-noi-chay-pho/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4069,6 +4178,14 @@
    "date": "2026-11-01",
    "note": "Bộ dò FEATURE-CLAIM xuyên liên kết/placeholder; live 43bf14d6 (BA-1485, BA-0409, BA-0766, BA-1435)"
   },
+  "/blog/thue-xe/kiem-tra-xe-truoc-khi-nhan-ky-nghi-le/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/thue-xe/kiem-tra-xe-truoc-khi-nhan/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4085,6 +4202,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
+  "/blog/thue-xe/lien-he-dat-xe-nhanh/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/thue-xe/mua-cao-diem-thue-xe-may-cho-sinh-vien/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4092,6 +4217,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+  },
+  "/blog/thue-xe/mua-cao-diem-thue-xe-may-cuoi-tuan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/thue-xe/nhan-xe-thue-can-gi-cho-sinh-vien/": {
    "status": "DONE_LIVE",
@@ -4313,6 +4446,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
   },
+  "/blog/thue-xe/thue-xe-ga-chay-pho/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/thue-xe/thue-xe-ga/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -4482,6 +4623,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/thue-xe/xac-nhan-gia-truoc-khi-dat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA2"
+   ],
+   "date": "2026-11-01",
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
+  },
   "/blog/thue-xe/xe-nao-de-dieu-khien-cho-sinh-vien/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4549,10 +4698,11 @@
   "/blog/xe-dien/bao-duong-xe-dien-cho-khach-du-lich/": {
    "status": "DONE_LIVE",
    "batches": [
-    "CTA1"
+    "CTA1",
+    "CTA2"
    ],
    "date": "2026-11-01",
-   "note": "Bỏ lời hứa 'xe luôn được kiểm tra trước mỗi lượt giao', 'luôn sẵn xe'; live dc8b4d93 (BA-0755, BA-0411)"
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/xe-dien/bao-duong-xe-dien-gia-tot/": {
    "status": "DONE_LIVE",
@@ -4590,10 +4740,11 @@
    "status": "DONE_LIVE",
    "batches": [
     "C08-NAP1",
-    "NAP3"
+    "NAP3",
+    "CTA2"
    ],
    "date": "2026-11-01",
-   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/xe-dien/chi-phi/": {
    "status": "DONE_LIVE",
@@ -4883,10 +5034,11 @@
   "/blog/xe-dien/thue-xe-dien-co-re-khong-gia-tot/": {
    "status": "DONE_LIVE",
    "batches": [
-    "PTS1-NAP2B"
+    "PTS1-NAP2B",
+    "CTA2"
    ],
    "date": "2026-11-01",
-   "note": "PR #69 (66fc386a) — Pages live đã kiểm BA-1343, BA-1445 (điều kiện phục hồi 12 điểm), BA-0074 (tên cửa hàng)"
+   "note": "Lời hứa bảo dưỡng chưa xác minh, 'liên hệ MotoAI theo số', Zalo chưa công bố; live 63eb144b (BA-0188, BA-1478, BA-0211)"
   },
   "/blog/xe-dien/thue-xe-dien-co-re-khong/": {
    "status": "DONE_LIVE",

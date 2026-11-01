@@ -216,7 +216,7 @@
     {
       "kpi": "URL đã sửa và kiểm tra live (DONE_LIVE)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"DONE_LIVE\")",
-      "value": 503,
+      "value": 518,
       "ok": true
     },
     {
@@ -228,7 +228,7 @@
     {
       "kpi": "URL không có việc mở (OK)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"OK\")",
-      "value": 1330,
+      "value": 1315,
       "ok": true
     },
     {
