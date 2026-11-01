@@ -48,13 +48,13 @@
     {
       "kpi": "Phân loại KEEP",
       "formula": "=COUNTIF('URL INVENTORY'!L:L,\"KEEP\")",
-      "value": 2053,
+      "value": 2094,
       "ok": true
     },
     {
       "kpi": "Phân loại IMPROVE",
       "formula": "=COUNTIF('URL INVENTORY'!L:L,\"IMPROVE\")",
-      "value": 116,
+      "value": 75,
       "ok": true
     },
     {
@@ -102,7 +102,7 @@
     {
       "kpi": "QA nhà máy trung bình (bài)",
       "formula": "=ROUND(AVERAGE('QA RESULTS'!M:M),1)",
-      "value": 98.9,
+      "value": 99,
       "ok": true
     },
     {
@@ -192,7 +192,7 @@
     {
       "kpi": "Backlog chương trình P1",
       "formula": "=COUNTIFS('PRIORITY BACKLOG'!A:A,\"Chương trình\",'PRIORITY BACKLOG'!C:C,\"P1\")",
-      "value": 7,
+      "value": 8,
       "ok": true
     },
     {
@@ -210,25 +210,25 @@
     {
       "kpi": "URL còn việc mở (OPEN)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"OPEN\")",
-      "value": 554,
+      "value": 532,
       "ok": true
     },
     {
       "kpi": "URL đã sửa và kiểm tra live (DONE_LIVE)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"DONE_LIVE\")",
-      "value": 98,
+      "value": 121,
       "ok": true
     },
     {
       "kpi": "URL đã rà soát, không cần đổi (REVIEWED_OK)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"REVIEWED_OK\")",
-      "value": 57,
+      "value": 58,
       "ok": true
     },
     {
       "kpi": "URL không có việc mở (OK)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"OK\")",
-      "value": 1460,
+      "value": 1458,
       "ok": true
     },
     {

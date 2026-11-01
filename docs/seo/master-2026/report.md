@@ -5,7 +5,7 @@ Workbook: `docs/seo/MASTER-SEO-MATRIX-2026.xlsx` — 23 sheet bắt buộc + 4 p
 ## Kết quả đo
 
 - URL kiểm kê: **2169** — sitemap 2169, HTML build 2169, có liên kết vào 2169, bài trong manifest 2006.
-- Phân loại: KEEP 2053, IMPROVE 116 (CONSOLIDATE / REDIRECT / NOINDEX-CANDIDATE: 0 — không có bằng chứng trùng nội dung hay trùng ý định).
+- Phân loại: KEEP 2094, IMPROVE 75 (CONSOLIDATE / REDIRECT / NOINDEX-CANDIDATE: 0 — không có bằng chứng trùng nội dung hay trùng ý định).
 - QA proxy 100 điểm: trung bình 94.9, thấp nhất 84, 2168/2169 URL ≥ 85 (proxy tự động, không thay review biên tập).
 - Họ biến thể slug: 331 họ, Jaccard 5-gram cao nhất 0.161 (ngưỡng gộp 0,5) → 0 ứng viên gộp.
 - Kiểm tra kỹ thuật không PASS: T21 WARN, T23 WARN, T24 N/A.
@@ -24,6 +24,7 @@ Workbook: `docs/seo/MASTER-SEO-MATRIX-2026.xlsx` — 23 sheet bắt buộc + 4 p
 - B14 P3 — CSS mỗi trang 85.7 KB chưa nén (cảnh báo nội bộ ≥ 64 KB) (agent, lô —)
 - B19 P2 — Bài pháp lý chưa qua lô đối chiếu toàn văn (agent, lô C08+)
 - B21 P2 — Bài thiếu cấu trúc H2/danh sách (agent, lô T1)
+- B22 P1 — Bài khẳng định sai tính năng Agent (tiếng Anh, xe còn trống) (agent, lô C-EN)
 
 ## Giới hạn
 

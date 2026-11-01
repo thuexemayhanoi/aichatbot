@@ -643,6 +643,46 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
   },
+  "/blog/app/ai-tra-loi-trong-ung-dung-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/app/cau-hoi-thuong-gap-ve-app-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/app/chinh-sach-du-lieu-cua-ung-dung-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
   "/blog/app/dat-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -650,6 +690,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/app/goi-y-chon-xe-may-phu-hop/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
   "/blog/app/huong-dan/": {
    "status": "DONE_LIVE",
@@ -682,6 +730,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/app/tro-ly-ao-tu-van-thue-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
   "/blog/app/tro-ly/": {
    "status": "DONE_LIVE",
@@ -757,6 +813,14 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/dia-phuong/di-pho-co-bang-xe-may-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
   "/blog/dia-phuong/di-pho-co-bang-xe-may/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -796,6 +860,30 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/ha-long-duong-quoc-lo-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/dia-phuong/ha-long-duong-quoc-lo-mua-thu/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/dia-phuong/ha-long-duong-quoc-lo/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
   "/blog/dia-phuong/ha-noi/": {
    "status": "DONE_LIVE",
@@ -838,6 +926,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
+  "/blog/dia-phuong/meo-vac-dong-cao/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
   "/blog/dia-phuong/moc-chau-hanh-trinh-dai/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -845,6 +941,22 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/dia-phuong/nha-tho-lon-ha-noi-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/dia-phuong/ninh-binh-cuoi-tuan-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
   "/blog/dia-phuong/phuong-xa/": {
    "status": "DONE_LIVE",
@@ -1163,6 +1275,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
+  "/blog/thue-xe/bang-gia-thue-xe-tham-khao-cuoi-tuan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
   "/blog/thue-xe/bang-gia-thue-xe-tham-khao/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1212,6 +1332,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
+  "/blog/thue-xe/gia-thue-thay-doi-theo-mua-khong/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
   "/blog/thue-xe/gia-thue-xe-may-theo-ngay/": {
    "status": "REVIEWED_OK",
@@ -1302,6 +1430,22 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
+  "/blog/thue-xe/lien-he-dat-xe-nhanh-gia-tot-nhat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/thue-xe/nhan-xe-thue-can-gi-cho-sinh-vien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
   "/blog/thue-xe/nhan-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1367,6 +1511,30 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/thue-xe/thue-xe-cho-cong-viec-giao-hang-ky-nghi-le/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/thue-xe/thue-xe-cho-cong-viec-giao-hang/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/thue-xe/thue-xe-cong-ty-cho-nhan-vien-cuoi-tuan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
   "/blog/thue-xe/thue-xe-ga/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -1399,6 +1567,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
+  "/blog/thue-xe/thue-xe-may-theo-thang-cho-gia-dinh/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
   "/blog/thue-xe/thue-xe-may-theo-thang/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1416,6 +1592,14 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/thue-xe/thue-xe-so-ky-nghi-le/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
   "/blog/thue-xe/thue-xe-so/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -1424,6 +1608,14 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/thue-xe/tinh-trang-xe-tai-cua-hang-ky-nghi-le/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
   "/blog/thue-xe/tra-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1431,6 +1623,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/thue-xe/xe-thue-co-bao-hiem-khong-chay-pho/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
   "/blog/xe-dien/": {
    "status": "DONE_LIVE",
@@ -1497,6 +1697,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
+  "/blog/xe-dien/coc-khi-thue-xe-dien-gia-tot/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
   "/blog/xe-dien/di-xe-dien-duong-dai/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1504,6 +1712,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/xe-dien/dich-vu-sua-xe-dien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
   "/blog/xe-dien/het-pin-giua-duong-phai-lam-gi/": {
    "status": "DONE_LIVE",
@@ -1528,6 +1744,22 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/khac-biet-xe-dien-va-xe-xang-cho-khach-du-lich/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/xe-dien/khac-biet-xe-dien-va-xe-xang-gia-tot/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
   "/blog/xe-dien/khac-biet-xe-dien-va-xe-xang/": {
    "status": "REVIEWED_OK",
@@ -1585,6 +1817,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
+  "/blog/xe-dien/sac-pin-xe-dien-o-dau-cho-khach-du-lich/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D02-D04-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
   "/blog/xe-dien/sac-pin-xe-dien-o-dau/": {
    "status": "REVIEWED_OK",

@@ -1,21 +1,22 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-11-01",
-  "last_completed_batch": "D01-DUP-PARA",
-  "last_verified_commit": "1adbeccf",
+  "last_completed_batch": "D02-D04-DUP-PARA",
+  "last_verified_commit": "037e1dc6",
   "next": "Đã xong M5 1–3 (47 hub). Tiếp: guide cho hub Hướng Dẫn (danh mục + thủ tục, nhận xe, giấy tờ, trả xe, đặt xe, bản đồ) cùng hub Thuê Xe nhận xe / trả xe (liên kết chéo, tránh trùng ý định), An Toàn (danh mục + pháp luật, lái xe, mũ bảo hiểm, bằng lái, sự cố, thời tiết, du lịch), Ứng Dụng (danh mục + 7 chủ đề con), 3 hub cụm và /blog/; M6: ngưỡng tối thiểu bài/hub (THIN-HUB: huong-dan/chuan-bi 1 bài). Sau đó D01–D09 đoạn văn trùng (162 bài, bài thương mại trước), BODY-STRUCT, C08+ LEGAL-CHECK, đề xuất LOCAL-SCOPE (RR-13). Sửa nhỏ chờ lô nội dung: BA-0427 tiêu đề mục \"menu bấm chon\" → \"chọn\". Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), giá xe điện/xe đạp điện (RR-14), phí giao xe (RR-15), cách ghi địa chỉ (RR-16), giấy tờ bắt buộc khi thuê (RR-18). Nhà máy ảnh: EXCLUDED.",
   "remaining": {
     "status": {
-      "DONE_LIVE": 98,
-      "REVIEWED_OK": 57,
-      "OPEN": 554,
-      "OK": 1460
+      "DONE_LIVE": 121,
+      "REVIEWED_OK": 58,
+      "OPEN": 532,
+      "OK": 1458
     },
     "open_codes": {
       "HUB-CONTENT": 5,
-      "DUP-PARA": 93,
+      "DUP-PARA": 52,
       "LEGAL-CHECK": 195,
       "BODY-STRUCT": 14,
+      "FEATURE-CLAIM": 11,
       "LOCAL-SCOPE": 286,
       "THIN-HUB": 1,
       "QA-PROXY": 1
@@ -98,6 +99,13 @@
       "issue": "Bài thiếu cấu trúc H2/danh sách",
       "owner": "agent",
       "batch": "T1"
+    },
+    {
+      "id": "B22",
+      "priority": "P1",
+      "issue": "Bài khẳng định sai tính năng Agent (tiếng Anh, xe còn trống)",
+      "owner": "agent",
+      "batch": "C-EN"
     }
   ],
   "resume_rule": "Khi nhận \"Tiếp tục\": fetch origin/main, đọc file này + docs/seo/commercial/progress.json, chạy lại python3 tools/seo-master-2026.py --verify, rồi làm lô kế tiếp (tối đa 5–20 URL/lô, ≤ 30 theo AGENTS.md)."
