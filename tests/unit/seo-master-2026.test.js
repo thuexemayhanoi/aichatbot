@@ -117,7 +117,12 @@ print(json.dumps([bool(m.feature_claims(s)) for s in json.loads(sys.stdin.read()
     // not claims: the store confirms, or the sentence is a question
     ['<p>Hỏi trợ lý trên <a href="/">trang chủ</a> để xem giá, còn dòng xe nào còn trống thì cửa hàng xác nhận khi bạn gọi.</p>', false],
     ['<h3>Trợ lý có báo xe còn trống không?</h3>', false],
-    ['<p>Trợ lý đối chiếu với các dòng sẵn có rồi trả về vài gợi ý kèm giá.</p>', false]
+    ['<p>Trợ lý đối chiếu với các dòng sẵn có rồi trả về vài gợi ý kèm giá.</p>', false],
+    // MotoAI is the assistant, not the store; no published Zalo; no blanket maintenance promise
+    ['<p>Nếu bạn cần thuê xe, liên hệ MotoAI theo số {{ business.contact.phone_display }} để được tư vấn.</p>', true],
+    ['<p>Hãy nhắn qua kênh Zalo được công bố trên trang <a href="/lien-he/">liên hệ</a>.</p>', true],
+    ['<p>Mọi dòng xe ga của {{ business.display_name }} đều được bảo dưỡng định kỳ.</p>', true],
+    ['<p>Liên hệ cửa hàng {{ business.brand }} theo số {{ business.contact.phone_display }}.</p>', false]
   ];
   const r = spawnSync('python3', ['-B', '-c', py], { cwd: ROOT, input: JSON.stringify(cases.map((c) => c[0])), encoding: 'utf8' });
   if (r.error) return t.skip('python3 is not available');

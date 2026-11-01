@@ -731,6 +731,14 @@ AVAIL_CLAIM = re.compile(
 # "hỏi trợ lý trên <a>trang chủ</a> để biết xe còn trống" vẫn là một câu.
 _INLINE_TAG = re.compile(r'</?(?:a|strong|em|b|i|span|abbr)\b[^>]*>', re.I)
 _PLACEHOLDER = re.compile(r'\{\{[^}]*\}\}')
+# Lô CTA2: MotoAI là trợ lý trên website, không phải cửa hàng (business.json:
+# thương hiệu Nguyễn Tú); trang liên hệ công bố điện thoại, WhatsApp, email —
+# chưa có Zalo; business.json không có cam kết bảo dưỡng/kiểm tra mọi xe.
+SHOP_CLAIM = re.compile(
+    r'(?:liên hệ|gọi|nhắn(?: tin)?(?: cho)?|ghé) MotoAI (?:theo|qua|tại)\b|cửa hàng MotoAI\b'
+    r'|MotoAI (?:mở cửa|giao xe|cho thuê xe|đón khách|đặt tại)|kênh Zalo được công bố'
+    r'|(?:mọi|toàn bộ|tất cả)(?: các)?(?: chiếc| dòng)? xe[^.?!<]{0,60}(?:đều|luôn) được (?:kiểm tra|bảo dưỡng|bảo trì|vệ sinh)'
+    r'|xe[^.?!<]{0,30}luôn được (?:kiểm tra|bảo dưỡng|bảo trì) trước mỗi', re.I)
 AVAIL_OK = re.compile(
     r'cửa hàng xác nhận|nhờ cửa hàng|hỏi cửa hàng|liên hệ cửa hàng|xác nhận với cửa hàng|chốt lại với cửa hàng'
     r'|gọi trực tiếp|hướng bạn|không giữ|không tự|không làm|chưa làm|chưa kiểm tra|không thể'
@@ -751,6 +759,9 @@ def feature_claims(body):
     for m in AVAIL_CLAIM.finditer(body):
         sent, stop = _sentence(body, m.start(), m.end())
         if stop != '?' and not AVAIL_OK.search(sent):
+            out.append(m.group(0))
+    for m in SHOP_CLAIM.finditer(body):
+        if _sentence(body, m.start(), m.end())[1] != '?':
             out.append(m.group(0))
     for m in FEATURE_CLAIM.finditer(body):
         end = min([i for i in (body.find('.', m.end()), body.find('?', m.end()), body.find('<', m.end())) if i >= 0] or [len(body)])
