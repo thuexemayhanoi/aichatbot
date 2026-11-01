@@ -1,0 +1,287 @@
+article_id,title,primary_keyword,proposed_local_scope,basis,unit_type,source,status
+BA-0012,Đi Phố Cổ bằng xe máy từ Long Biên: lộ trình và gửi xe,đi phố cổ bằng xe máy,,ORIGIN_ONLY,chỉ nêu điểm xuất phát: Long Biên,,REVIEW_REQUIRED
+BA-0024,"Đi xe máy quanh Hồ Tây: vòng hồ, gửi xe, lịch trình nửa ngày",hồ tây và xe máy,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0108,Hành trình bảo tàng Hà Nội bằng xe máy: ghép nhiều bảo tàng,bảo tàng hà nội hành trình,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0114,Đi Phố Sách Hà Nội bằng xe máy: mùa đẹp và điểm hẹn quanh đó,phố sách hà nội,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0120,"Đi Nhà Thờ Lớn Hà Nội bằng xe máy: đường đi, giờ đẹp, điểm hẹn",nhà thờ lớn hà nội,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0126,Làng gốm Bát Tràng bằng xe máy: một ngày từ Long Biên,làng gốm bát tràng,,ORIGIN_ONLY,chỉ nêu điểm xuất phát: Long Biên,,REVIEW_REQUIRED
+BA-0132,Đi chợ gốm Bát Tràng bằng xe máy: chọn gốm và chở về,bát tràng gốm xe máy,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0138,"Chạy xe máy trục đường Đồng: khung giờ, an toàn, điểm dừng",đường đồng by bike,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0144,Đi Văn Giang bằng xe điện hay xe máy: chọn xe và lịch chạy,văn giang ev and bikes,Văn Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0150,Đi chùa ở Hà Nội bằng xe máy: nhóm chùa và lộ trình một ngày,chùa và Hà Nội,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0156,"Đi đền thờ danh nhân họ Nguyễn bằng xe máy: lộ trình, gửi xe",đền nguyễn cần bằng xe,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0174,"Buổi sáng ở Hồ Gươm bằng xe máy: lộ trình, gửi xe, ăn sáng",chạy buổi sáng hồ gươm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0186,"Cà phê trứng Hà Nội bằng xe máy: quán nổi tiếng, lưu ý lái xe",cà phê trứng và xe máy,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0192,Hành trình ăn bánh cuốn Hà Nội bằng xe máy: khu nên dừng chân,bánh cuốn và hành trình,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0198,Hành trình ăn phở bò bằng xe máy: lộ trình sáng và gửi xe,phở bò và hành trình sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0204,Đi chợ hoa Hà Nội bằng xe máy: không có chợ hoa Quận 8,chợ hoa quận tám,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0210,"Đi chùa Một Cột bằng xe máy: vị trí, tích sen và điểm ghép",chùa một cột hà nội,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0216,Ngắm hoàng hôn cầu Nhật Tân bằng xe máy: điểm dừng và lộ trình,cầu nhật tân hoàng hôn,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0222,Quốc lộ 5 ngoại ô Hà Nội bằng xe máy: chặng ra phố và lưu ý,đường 5 và ngoại ô,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0228,Đi Sóc Sơn và Cổ Loa bằng xe máy: một ngày cung mạn bắc,soc son và co loa,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0234,"Đi Ba Vì cuối tuần bằng xe máy: lộ trình, điểm đến và chuẩn bị",ba vì cuối tuần,Ba Vì,VERIFIED_UNIT,xã,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0240,Đi Thạch Thất và Sơn Tây bằng xe máy: lộ trình và điểm dừng,thạch thất và sơn tây,Thạch Thất; Sơn Tây,VERIFIED_UNIT,xã; phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0246,Đi Hòa Bình đường trường: từ Hà Nội qua đèo Thung Khe,hòa bình đường trường,Hòa Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0252,"Đi Tam Đảo bằng xe máy: lộ trình, chạy đèo và thời điểm đẹp",tam đảo bằng xe máy,Tam Đảo,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0258,Đi Mộc Châu đường dài bằng xe máy: lộ trình theo quốc lộ 6,mộc châu hành trình dài,Mộc Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0264,Đi Ninh Bình bằng xe máy từ Hà Nội: lịch trình hai ngày,ninh bình cuối tuần xe máy,Ninh Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0270,"Đi Hạ Long bằng quốc lộ 18: lộ trình xe máy, lưu ý an toàn",hạ long đường quốc lộ,Hạ Long,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0276,Đi Cửa Lò bằng xe máy từ Hà Nội: chia chặng và kiểm tra xe,cửa lò ven biển,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0282,Đi Thanh Hóa bằng xe máy đường dài: chia chặng và Sầm Sơn,thanh hóa và xe đường dài,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0288,Đi Tràng An bằng xe máy từ Hà Nội: lộ trình và lưu ý,tràng an ride,Tràng An,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0294,Đi chùa Bái Đính bằng xe máy từ Hà Nội: lộ trình và lưu ý,bái đính xe máy,Bái Đính,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0300,Đi vườn quốc gia Cúc Phương bằng xe máy: lộ trình từ Hà Nội,cúc phương weekend,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0306,"Hành trình Mai Châu từ Hà Nội: bản Lác, Pom Coọng, Thung Khe",hành trình Mai Châu,Mai Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0312,"Đi Đà Lạt đường xa bằng xe máy: lộ trình, thuê và trả xe",đà lạt đường xa,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0318,"Huế xuyên Việt bằng xe máy: di sản, văn hóa và cách thuê xe",huế xuyên việt,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0324,Hành trình Bắc Nam từ Đà Nẵng bằng xe máy: điểm đến và lưu ý,đà nẵng hành trình bắc nam,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0330,"Đi Hội An cuối tuần: cách đến, lịch trình hai ngày, đi lại",hội an cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0336,Đi Sài Gòn bằng xe máy từ Hà Nội: giao thông và lộ trình,sài gòn đường nam,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0342,Đi xe máy đồng bằng sông Cửu Long: lộ trình quanh Cần Thơ,mekong delta ride,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0348,Vòng cung Hà Giang bằng xe máy: chia ngày và lưu ý đường đèo,ha giang vòng cung,Hà Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0354,"Đi cao nguyên đá Đồng Văn bằng xe máy: lịch hai ngày, chuẩn bị",cao nguyên đá đồng văn,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0360,Mèo Vạc hay Đồng Cao bằng xe máy: nên chọn điểm nào,mèo vạc đồng cao,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0444,"Hồ Gươm ban đêm hai ngày một đêm: nhận xe, vòng hồ, trả xe",hồ gươm ban đêm hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0450,"Đi ven đê sông Hồng hai ngày một đêm: lịch chiều, đêm, sáng",ven đê sông hồng hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0456,Cột cờ Hoàng Thành hai ngày một đêm: lịch trình quanh Ba Đình,cột cờ hoàng thành hai ngày một đêm,Ba Đình,VERIFIED_UNIT,phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0462,Lăng Chủ tịch hai ngày một đêm: lịch trình quanh khu Ba Đình,lăng chủ tích qua phố hai ngày một đêm,Ba Đình,VERIFIED_UNIT,phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0468,Hành trình bảo tàng Hà Nội hai ngày một đêm: chia hai cụm,bảo tàng hà nội hành trình hai ngày một đêm,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0474,Phố Sách Hà Nội hai ngày một đêm: lịch trình và chỗ gửi xe,phố sách hà nội hai ngày một đêm,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0480,Nhà Thờ Lớn Hà Nội hai ngày một đêm: lịch trình quanh phố cổ,nhà thờ lớn hà nội hai ngày một đêm,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0486,"Làng gốm Bát Tràng hai ngày một đêm: chợ gốm, đêm bên sông",làng gốm bát tràng hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0492,Xóm lò Bát Tràng và đê sông: hai ngày một đêm bằng xe máy,bát tràng gốm xe máy hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0498,"Đường Đồng hai ngày một đêm bằng xe máy: Hồ Tây, bảo tàng, đê",đường đồng by bike hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0504,"Đi Văn Giang hai ngày một đêm bằng xe điện: sạc pin, gửi xe",văn giang ev and bikes hai ngày một đêm,Văn Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0510,Đi chùa ở Hà Nội hai ngày một đêm: chùa trung tâm và ngoại ô,chùa và Hà Nội hai ngày một đêm,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0516,Thăm đền danh nhân họ Nguyễn hai ngày một đêm bằng xe máy,đền nguyễn cần bằng xe hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0534,Buổi sáng Hồ Gươm hai ngày một đêm: lịch hai buổi sáng sớm,chạy buổi sáng hồ gươm hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0546,Cà phê trứng Hà Nội hai ngày một đêm: phố cổ đến Hồ Tây,cà phê trứng và xe máy hai ngày một đêm,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0552,Hành trình ăn bánh cuốn Hà Nội hai ngày một đêm: lịch gợi ý,bánh cuốn và hành trình hai ngày một đêm,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0558,Ăn phở bò hai ngày một đêm bằng xe máy: lịch hai buổi sáng,phở bò và hành trình sáng hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0564,Đi chợ hoa Hà Nội hai ngày một đêm: phiên đêm và rạng sáng,chợ hoa quận tám hai ngày một đêm,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0570,Đi chùa Một Cột hai ngày một đêm: chuyến Ba Đình và Hồ Tây,chùa một cột hà nội hai ngày một đêm,Ba Đình,VERIFIED_UNIT,phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0576,Hoàng hôn cầu Nhật Tân hai ngày một đêm: lịch quanh cầu,cầu nhật tân hoàng hôn hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0582,Quốc lộ 5 ngoại ô Hà Nội hai ngày một đêm: chặng và nhánh nhỏ,đường 5 và ngoại ô hai ngày một đêm,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0588,Sóc Sơn và Cổ Loa hai ngày một đêm: lịch trình bằng xe máy,soc son và co loa hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0594,Đi Ba Vì hai ngày một đêm bằng xe máy: chia nhịp từng buổi,ba vì cuối tuần hai ngày một đêm,Ba Vì,VERIFIED_UNIT,xã,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0600,"Đi Thạch Thất và Sơn Tây hai ngày một đêm: chùa, làng cổ",thạch thất và sơn tây hai ngày một đêm,Thạch Thất; Sơn Tây,VERIFIED_UNIT,xã; phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0606,"Đi Hòa Bình đường trường hai ngày một đêm: Mai Châu, Thung Nai",hòa bình đường trường hai ngày một đêm,Hòa Bình; Mai Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0612,"Đi Tam Đảo bằng xe máy hai ngày một đêm: lịch trình, nghỉ đêm",tam đảo bằng xe máy hai ngày một đêm,Tam Đảo,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0618,Mộc Châu đường dài hai ngày một đêm: dòng thời gian cho xe máy,mộc châu hành trình dài hai ngày một đêm,Mộc Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0624,Đi Ninh Bình hai ngày một đêm bằng xe máy: lịch theo khung giờ,ninh bình cuối tuần xe máy hai ngày một đêm,Ninh Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0630,Đi Hạ Long hai ngày một đêm bằng xe máy: quốc lộ 18,hạ long đường quốc lộ hai ngày một đêm,Hạ Long,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0636,Đi Cửa Lò hai ngày một đêm: giờ giấc và gửi xe qua đêm,cửa lò ven biển hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0642,Đi Thanh Hóa đường dài hai ngày một đêm: lịch và giữ xe,thanh hóa và xe đường dài hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0648,Đi Tràng An bằng xe máy hai ngày một đêm: lịch thuyền sớm,tràng an ride hai ngày một đêm,Tràng An,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0654,Đi chùa Bái Đính bằng xe máy hai ngày một đêm: lịch trình,bái đính xe máy hai ngày một đêm,Bái Đính,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0660,Đi Cúc Phương hai ngày một đêm bằng xe máy: lịch nghỉ Nho Quan,cúc phương weekend hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0666,"Hành trình Mai Châu hai ngày một đêm: đèo, nhà sàn, bản Lác",hành trình mài châu hai ngày một đêm,Mai Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0672,"Đà Lạt hai ngày một đêm bằng xe máy: hồ, thác, đồi chè Cầu Đất",đà lạt đường xa hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0678,"Huế xuyên Việt hai ngày một đêm: kinh thành, chùa, lăng",huế xuyên việt hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0684,Đà Nẵng Huế hai ngày một đêm bằng xe máy: qua đèo Hải Vân,đà nẵng hành trình bắc nam hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0690,"Hội An cuối tuần hai ngày một đêm: kế hoạch gọn, thuê xe máy",hội an cuối tuần hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0696,Đi Sài Gòn bằng xe máy hai ngày một đêm: lịch theo từng buổi,sài gòn đường nam hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0702,Đi xe máy miền Tây hai ngày một đêm: chợ nổi và vòng cù lao,mekong delta ride hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0708,Vòng cung Hà Giang hai ngày một đêm: chạy được đoạn nào,ha giang vòng cung hai ngày một đêm,Hà Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0714,Đi cao nguyên đá Đồng Văn hai ngày một đêm: lịch trình xe máy,cao nguyên đá đồng văn hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0720,Mèo Vạc hay Đồng Cao hai ngày một đêm: nên chọn vùng nào,mèo vạc đồng cao hai ngày một đêm,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0804,"Hồ Gươm ban đêm cuối tuần: phố đi bộ, gửi xe, lịch ba tối",hồ gươm ban đêm cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0810,Đi ven đê sông Hồng cuối tuần: ba vòng chạy từ Long Biên,ven đê sông hồng cuối tuần,,ORIGIN_ONLY,chỉ nêu điểm xuất phát: Long Biên,,REVIEW_REQUIRED
+BA-0816,Cột cờ Hoàng Thành cuối tuần: lịch buổi sáng và cách đỗ xe,cột cờ hoàng thành cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0822,Đi lăng Chủ tịch cuối tuần bằng xe máy: giờ viếng và gửi xe,lăng chủ tích qua phố cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0828,Hành trình bảo tàng Hà Nội cuối tuần: thứ Bảy và Chủ nhật,bảo tàng hà nội hành trình cuối tuần,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0834,"Phố Sách Hà Nội cuối tuần: khung giờ, đường đi, lịch nửa ngày",phố sách hà nội cuối tuần,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0840,"Nhà Thờ Lớn Hà Nội cuối tuần: giờ ghé, gửi xe, phép lịch sự",nhà thờ lớn hà nội cuối tuần,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0846,"Làng gốm Bát Tràng cuối tuần: đặt xe giữa tuần, lịch trình",làng gốm bát tràng cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0852,"Đi chợ gốm Bát Tràng cuối tuần bằng xe máy: né đông, chở gốm",bát tràng gốm xe máy cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0858,Đi xe máy đường đồng cuối tuần: sáng thứ Bảy giữa ruộng rau,đường đồng by bike cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0864,"Đi Văn Giang cuối tuần bằng xe điện: lịch mẫu, chọn xe",văn giang ev and bikes cuối tuần,Văn Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0870,"Đi chùa ở Hà Nội cuối tuần: Tây Hồ, Ba Đình, Hoàn Kiếm",chùa và Hà Nội cuối tuần,Hoàn Kiếm; Ba Đình; Tây Hồ,VERIFIED_UNIT,phường; phường; phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0876,"Thăm đền danh nhân họ Nguyễn cuối tuần: Quang Trung, Cầu Giấy",đền nguyễn cần bằng xe cuối tuần,Cầu Giấy,VERIFIED_UNIT,phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0894,"Buổi sáng Hồ Gươm cuối tuần bằng xe máy: giờ đẹp, gửi xe",chạy buổi sáng hồ gươm cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0906,Cà phê trứng Hà Nội cuối tuần: lịch hai ngày và chỗ gửi xe,cà phê trứng và xe máy cuối tuần,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0912,Hành trình ăn bánh cuốn Hà Nội cuối tuần: lịch hai ngày nghỉ,bánh cuốn và hành trình cuối tuần,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0918,Ăn phở bò cuối tuần bằng xe máy: ba phương án buổi sáng,phở bò và hành trình sáng cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0924,Đi chợ hoa Hà Nội cuối tuần: lịch từ tối thứ Sáu đến Chủ nhật,chợ hoa quận tám cuối tuần,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0930,Đi chùa Một Cột cuối tuần: khung giờ né đông và lộ trình,chùa một cột hà nội cuối tuần,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0936,"Hoàng hôn cầu Nhật Tân cuối tuần: lịch chiều thứ Bảy, chỗ ngắm",cầu nhật tân hoàng hôn cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0942,Quốc lộ 5 ngoại ô Hà Nội cuối tuần: lịch nhận xe và lộ trình,đường 5 và ngoại ô cuối tuần,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-0948,Sóc Sơn và Cổ Loa cuối tuần: tách hai điểm thành hai ngày,soc son và co loa cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-0954,Đi Ba Vì thứ bảy hay chủ nhật: chọn ngày và giờ nhận xe hợp lý,ba vì cuối tuần cuối tuần,Ba Vì,VERIFIED_UNIT,xã,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0960,"Đi Thạch Thất và Sơn Tây cuối tuần: chùa cổ, làng đá ong",thạch thất và sơn tây cuối tuần,Thạch Thất; Sơn Tây,VERIFIED_UNIT,xã; phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-0966,"Đi Hòa Bình đường trường cuối tuần: nhận xe sớm, né giờ đông",hòa bình đường trường cuối tuần,Hòa Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0972,Đi Tam Đảo bằng xe máy cuối tuần: về trong ngày hay ngủ lại,tam đảo bằng xe máy cuối tuần,Tam Đảo,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0978,Đi Mộc Châu đường dài cuối tuần: chia chặng cho hai ngày nghỉ,mộc châu hành trình dài cuối tuần,Mộc Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0984,"Ninh Bình cuối tuần bằng xe máy: tránh đám đông, về an toàn",ninh bình cuối tuần xe máy cuối tuần,Ninh Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0990,Đi Hạ Long cuối tuần bằng xe máy: lịch chạy hai ngày,hạ long đường quốc lộ cuối tuần,Hạ Long,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-0996,Đi Cửa Lò cuối tuần bằng xe máy: ba phương án lịch trình,cửa lò ven biển cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1002,Đi Thanh Hóa đường dài cuối tuần: chặng về chiều Chủ nhật,thanh hóa và xe đường dài cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1008,"Đi Tràng An bằng xe máy cuối tuần: chọn ngày, né đông",tràng an ride cuối tuần,Tràng An,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1014,Đi chùa Bái Đính bằng xe máy cuối tuần: giờ đi và cách né đông,bái đính xe máy cuối tuần,Bái Đính,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1020,Đi Cúc Phương cuối tuần bằng xe máy: nhận xe và lịch hai ngày,cúc phương weekend cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1026,"Hành trình Mai Châu cuối tuần: lịch theo giờ, né dòng xe",hành trình mài châu cuối tuần,Mai Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1032,Đi Đà Lạt cuối tuần từ Hà Nội: thực tế và cách chuẩn bị,đà lạt đường xa cuối tuần,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1038,Huế xuyên Việt cuối tuần: chia chặng cho giấc mơ chạy xe dài,huế xuyên việt cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1044,Bắc Nam từng cuối tuần qua Đà Nẵng: cách chia chặng xe máy,đà nẵng hành trình bắc nam cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1050,"Chọn cuối tuần đi Hội An: theo mùa, đêm rằm, lần quay lại",hội an cuối tuần cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1056,Đi Sài Gòn bằng xe máy cuối tuần: lịch cho người đi làm,sài gòn đường nam cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1062,"Đi xe máy miền Tây cuối tuần: bay vào, thuê xe, đi một trục",mekong delta ride cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1068,Vòng cung Hà Giang cuối tuần: có đủ hai ngày để đi không,ha giang vòng cung cuối tuần,Hà Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1074,Đi cao nguyên đá Đồng Văn cuối tuần: lịch mẫu và đồ mang,cao nguyên đá đồng văn cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1080,Mèo Vạc hay Đồng Cao cuối tuần: chọn theo kiểu chuyến đi,mèo vạc đồng cao cuối tuần,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1164,Hồ Gươm buổi tối và sáng sớm: ghép hai khung giờ một chuyến,hồ gươm ban đêm buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1170,Đi ven đê sông Hồng buổi sáng: cung đường và lưu ý sớm,ven đê sông hồng buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1176,Cột cờ Hoàng Thành buổi sáng: lộ trình từ Long Biên sang,cột cờ hoàng thành buổi sáng,,ORIGIN_ONLY,chỉ nêu điểm xuất phát: Long Biên,,REVIEW_REQUIRED
+BA-1182,Đi lăng Chủ tịch buổi sáng bằng xe máy: các mốc giờ cần nhớ,lăng chủ tích qua phố buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1188,Hành trình bảo tàng Hà Nội buổi sáng: lịch nửa ngày,bảo tàng hà nội hành trình buổi sáng,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1194,Phố Sách Hà Nội buổi sáng: lộ trình sớm và ăn sáng quanh khu,phố sách hà nội buổi sáng,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1200,Nhà Thờ Lớn Hà Nội buổi sáng: lịch trình sớm và chụp ảnh,nhà thờ lớn hà nội buổi sáng,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1206,Làng gốm Bát Tràng buổi sáng: lộ trình sớm từ Long Biên,làng gốm bát tràng buổi sáng,,ORIGIN_ONLY,chỉ nêu điểm xuất phát: Long Biên,,REVIEW_REQUIRED
+BA-1212,Đi chợ gốm Bát Tràng buổi sáng bằng xe máy: soi men nắng sớm,bát tràng gốm xe máy buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1218,"Đi xe máy đường đồng buổi sáng: nhận xe, giờ đi, vòng ba chặng",đường đồng by bike buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1224,Đi Văn Giang buổi sáng bằng xe điện: cung đường từ Bồ Đề,văn giang ev and bikes buổi sáng,Văn Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1230,Đi chùa ở Hà Nội buổi sáng: nhận xe sớm và ba cụm chùa,chùa và Hà Nội buổi sáng,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1236,Thăm đền danh nhân họ Nguyễn buổi sáng: lộ trình từ Long Biên,đền nguyễn cần bằng xe buổi sáng,,ORIGIN_ONLY,chỉ nêu điểm xuất phát: Long Biên,,REVIEW_REQUIRED
+BA-1254,Chạy bộ buổi sáng ở Hồ Gươm: đi về bằng xe máy thuê,chạy buổi sáng hồ gươm buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1266,Cà phê trứng Hà Nội buổi sáng: chuẩn bị xe và ba lộ trình,cà phê trứng và xe máy buổi sáng,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1272,Hành trình ăn bánh cuốn Hà Nội buổi sáng: lịch đến trưa,bánh cuốn và hành trình buổi sáng,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1278,Ăn phở bò buổi sáng bằng xe máy: chuẩn bị từ tối hôm trước,phở bò và hành trình sáng buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1284,Đi chợ hoa Hà Nội buổi sáng: lịch rạng sáng và giờ nhận xe,chợ hoa quận tám buổi sáng,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1290,Đi chùa Một Cột buổi sáng: cung đường và cách xếp giờ,chùa một cột hà nội buổi sáng,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1296,"Cầu Nhật Tân buổi sáng bằng xe máy: nắng sớm, dò chỗ ngắm",cầu nhật tân hoàng hôn buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1302,"Quốc lộ 5 ngoại ô Hà Nội buổi sáng: nắng ngược, xe tải, lịch",đường 5 và ngoại ô buổi sáng,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1308,Sóc Sơn và Cổ Loa buổi sáng: đi gọn hai điểm trước trưa,soc son và co loa buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1314,Đi Ba Vì buổi sáng cuối tuần bằng xe máy: khung giờ và đèo,ba vì cuối tuần buổi sáng,Ba Vì,VERIFIED_UNIT,xã,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-1320,"Đi Thạch Thất và Sơn Tây buổi sáng: lịch sớm, về trước nắng",thạch thất và sơn tây buổi sáng,Thạch Thất; Sơn Tây,VERIFIED_UNIT,xã; phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-1326,"Đi Hòa Bình đường trường buổi sáng: lịch gợi ý, rủi ro sớm",hòa bình đường trường buổi sáng,Hòa Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1332,"Đi Tam Đảo bằng xe máy buổi sáng: lên sớm, xuống trước trưa",tam đảo bằng xe máy buổi sáng,Tam Đảo,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1338,Đi Mộc Châu đường dài buổi sáng: giờ xuất phát và rủi ro,mộc châu hành trình dài buổi sáng,Mộc Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1344,Đi Ninh Bình buổi sáng bằng xe máy: hai buổi sáng cuối tuần,ninh bình cuối tuần xe máy buổi sáng,Ninh Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1350,Đi Hạ Long buổi sáng bằng xe máy: chọn giờ xuất phát,hạ long đường quốc lộ buổi sáng,Hạ Long,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1356,"Buổi sáng ở Cửa Lò ven biển: lịch trình, bữa sáng và chăm xe",cửa lò ven biển buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1362,Đi Thanh Hóa đường dài buổi sáng: ba chặng theo ánh sáng,thanh hóa và xe đường dài buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1368,Đi Tràng An bằng xe máy buổi sáng: lịch theo từng mốc giờ,tràng an ride buổi sáng,Tràng An,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1374,"Đi chùa Bái Đính buổi sáng bằng xe máy: lấy xe sớm, tránh nắng",bái đính xe máy buổi sáng,Bái Đính,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1380,Đi Cúc Phương buổi sáng bằng xe máy: nhận xe hôm trước,cúc phương weekend buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1386,Hành trình Mai Châu buổi sáng: giờ xuất phát và qua đèo,hành trình mài châu buổi sáng,Mai Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1392,"Chạy xe máy Đà Lạt buổi sáng: sương, đèo và kiểm tra xe",đà lạt đường xa buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1398,"Huế xuyên Việt buổi sáng: chạy sớm, ngày ở Huế, đèo Hải Vân",huế xuyên việt buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1404,Đà Nẵng buổi sáng hành trình Bắc Nam: lên đèo hay xuôi nam,đà nẵng hành trình bắc nam buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1410,"Hội An cuối tuần buổi sáng: phố cổ vắng, rời phố bằng xe máy",hội an cuối tuần buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1416,Đi Sài Gòn bằng xe máy buổi sáng: cung chạy cho người mới đến,sài gòn đường nam buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1422,"Đi xe máy miền Tây buổi sáng: chợ nổi, đường làng, tránh nắng",mekong delta ride buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1428,"Vòng cung Hà Giang buổi sáng: lịch chạy, sương sớm, chợ phiên",ha giang vòng cung buổi sáng,Hà Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1434,Đi cao nguyên đá Đồng Văn buổi sáng: sương sớm và phố cổ,cao nguyên đá đồng văn buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1440,Mèo Vạc và Đồng Cao buổi sáng: lên lịch sớm để không lỡ cảnh,mèo vạc đồng cao buổi sáng,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1520,"Dạo Hồ Gươm một buổi tối bằng xe máy: lịch trình, gửi xe",hồ gươm ban đêm buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1525,"Đi ven đê sông Hồng buổi tối: đoạn đê, an toàn khi trời tối",ven đê sông hồng buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1530,"Cột cờ Hoàng Thành buổi tối: giờ đi, chỗ gửi xe, điểm ghé",cột cờ hoàng thành buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1535,"Lăng Chủ tịch buổi tối: lăng đóng cửa, Ba Đình vẫn đáng đi",lăng chủ tích qua phố buổi tối,Ba Đình,VERIFIED_UNIT,phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-1540,Hành trình bảo tàng Hà Nội buổi tối: đi gì khi bảo tàng đóng,bảo tàng hà nội hành trình buổi tối,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1545,"Phố Sách Hà Nội buổi tối: đi xe máy, dạo Hồ Gươm, về muộn",phố sách hà nội buổi tối,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1550,"Nhà Thờ Lớn Hà Nội buổi tối: lộ trình, gửi xe và an toàn",nhà thờ lớn hà nội buổi tối,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1555,Làng gốm Bát Tràng buổi tối: chuyến ngắn sau giờ làm,làng gốm bát tràng buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1560,Mua gốm Bát Tràng buổi tối bằng xe máy: giờ đi và xe phù hợp,bát tràng gốm xe máy buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1565,"Đi xe máy đường đồng buổi tối: hoàng hôn, rủi ro, đồ mang",đường đồng by bike buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1570,Đi Văn Giang buổi tối bằng xe điện: đường đê sau khi tắt nắng,văn giang ev and bikes buổi tối,Văn Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1575,Đi chùa ở Hà Nội buổi tối: lộ trình hoàng hôn đến Hồ Tây,chùa và Hà Nội buổi tối,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1580,Thăm đền danh nhân họ Nguyễn buổi tối: điều cần biết trước,đền nguyễn cần bằng xe buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1595,Buổi tối quanh Hồ Gươm bằng xe máy: phố đi bộ và chỗ gửi xe,chạy buổi sáng hồ gươm buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1605,Cà phê trứng Hà Nội buổi tối: lịch hai điểm dừng và gửi xe,cà phê trứng và xe máy buổi tối,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1610,Hành trình ăn bánh cuốn Hà Nội buổi tối: lịch từ chiều muộn,bánh cuốn và hành trình buổi tối,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1615,"Ăn phở bò buổi tối bằng xe máy: lộ trình, chọn quán, gửi xe",phở bò và hành trình sáng buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1620,Đi chợ hoa Hà Nội buổi tối: lịch chiều muộn và chạy xe đêm,chợ hoa quận tám buổi tối,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1625,Đi chùa Một Cột buổi tối: giờ mở cửa và lộ trình chiều tà,chùa một cột hà nội buổi tối,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1630,Hoàng hôn cầu Nhật Tân buổi tối: ở lại sau khi mặt trời lặn,cầu nhật tân hoàng hôn buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1635,Quốc lộ 5 ngoại ô Hà Nội buổi tối: chạy sau giờ làm,đường 5 và ngoại ô buổi tối,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1640,"Sóc Sơn và Cổ Loa buổi tối: hoàng hôn, ăn tối và đường về",soc son và co loa buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1645,Đi Ba Vì buổi tối cuối tuần bằng xe máy: ở lại đêm trên núi,ba vì cuối tuần buổi tối,Ba Vì,VERIFIED_UNIT,xã,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-1650,Đi Thạch Thất và Sơn Tây buổi tối: khung giờ và đường về,thạch thất và sơn tây buổi tối,Thạch Thất; Sơn Tây,VERIFIED_UNIT,xã; phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-1655,Đi Hòa Bình đường trường buổi tối: chặng sau giờ làm,hòa bình đường trường buổi tối,Hòa Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1660,Đi Tam Đảo bằng xe máy buổi tối: mốc giờ an toàn khi chạy đèo,tam đảo bằng xe máy buổi tối,Tam Đảo,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1665,Đi Mộc Châu đường dài buổi tối: tính giờ và chỗ nghỉ đêm,mộc châu hành trình dài buổi tối,Mộc Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1670,"Đi Ninh Bình buổi tối bằng xe máy: hoàng hôn, ăn tối, gửi xe",ninh bình cuối tuần xe máy buổi tối,Ninh Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1675,Đi Hạ Long buổi tối bằng xe máy: chạy quốc lộ 18 sau hoàng hôn,hạ long đường quốc lộ buổi tối,Hạ Long,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1680,"Buổi tối ở Cửa Lò: vòng xe dọc biển, hải sản và gửi xe",cửa lò ven biển buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1685,Đi Thanh Hóa đường dài buổi tối: chạy quốc lộ khi trời tối,thanh hóa và xe đường dài buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1690,Đi Tràng An bằng xe máy buổi tối: giờ về và ở lại một đêm,tràng an ride buổi tối,Tràng An,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1695,Đi chùa Bái Đính buổi tối bằng xe máy: lịch chiều muộn,bái đính xe máy buổi tối,Bái Đính,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1700,Đi Cúc Phương buổi tối bằng xe máy: ở lại hay chạy về,cúc phương weekend buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1705,Hành trình Mai Châu buổi tối: qua đèo trước hoàng hôn,hành trình mài châu buổi tối,Mai Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1710,"Chạy xe máy Đà Lạt buổi tối: về trước khi tối, mẹo lái đêm",đà lạt đường xa buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1715,"Huế xuyên Việt buổi tối: vào thành phố, dạo sông Hương",huế xuyên việt buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1720,"Đà Nẵng buổi tối hành trình Bắc Nam: nghỉ, gửi xe, dạo đêm",đà nẵng hành trình bắc nam buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1725,"Hội An cuối tuần buổi tối: đèn lồng, sông Hoài, chạy xe đêm",hội an cuối tuần buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1730,Đi Sài Gòn bằng xe máy buổi tối: nhịp phố và chạy đêm an toàn,sài gòn đường nam buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1735,Đi xe máy miền Tây buổi tối: chạy đường quê sao cho an toàn,mekong delta ride buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1740,Vòng cung Hà Giang buổi tối: đến nơi trước hoàng hôn,ha giang vòng cung buổi tối,Hà Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1745,Đi cao nguyên đá Đồng Văn buổi tối: tính giờ trước hoàng hôn,cao nguyên đá đồng văn buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1750,Mèo Vạc và Đồng Cao buổi tối: nghỉ đêm và chạy đèo khi tối,mèo vạc đồng cao buổi tối,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1792,"Hồ Gươm ban đêm mùa thu: khung giờ, tuyến chạy, gửi xe",hồ gươm ban đêm mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1795,Đi ven đê sông Hồng mùa thu: khoảnh khắc đẹp và an toàn,ven đê sông hồng mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1798,Cột cờ Hoàng Thành mùa thu: khung giờ đẹp và cung đường,cột cờ hoàng thành mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1801,"Đi lăng Chủ tịch mùa thu bằng xe máy: lịch viếng, Quốc khánh",lăng chủ tích qua phố mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1804,Hành trình bảo tàng Hà Nội mùa thu: xếp lịch theo ngày lễ,bảo tàng hà nội hành trình mùa thu,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1807,"Phố Sách Hà Nội mùa thu: chở sách khi mưa, dạo Hoàn Kiếm",phố sách hà nội mùa thu,Hoàn Kiếm,VERIFIED_UNIT,phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-1810,"Nhà Thờ Lớn Hà Nội mùa thu: tháng đẹp, giờ có nắng, gửi xe",nhà thờ lớn hà nội mùa thu,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1813,"Làng gốm Bát Tràng mùa thu: đi bộ ngõ làng, nặn gốm",làng gốm bát tràng mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1816,Mua gốm Bát Tràng mùa thu bằng xe máy: danh sách quà theo dịp,bát tràng gốm xe máy mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1819,"Đi xe máy đường đồng mùa thu: vòng Long Biên, Gia Lâm",đường đồng by bike mùa thu,Long Biên,VERIFIED_UNIT,phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-1822,Đi Văn Giang mùa thu bằng xe điện: cung đường và giấy tờ,văn giang ev and bikes mùa thu,Văn Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1825,Đi chùa ở Hà Nội mùa thu: lịch từ Hồ Tây đến Long Biên,chùa và Hà Nội mùa thu,Long Biên,VERIFIED_UNIT,phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-1828,Thăm đền danh nhân họ Nguyễn mùa thu: lộ trình và bằng lái,đền nguyễn cần bằng xe mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1837,"Chạy bộ quanh Hồ Gươm mùa thu: nhận xe, gửi xe, trang phục",chạy buổi sáng hồ gươm mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1843,Cà phê trứng Hà Nội mùa thu: cà phê nóng và tuyến chiều thu,cà phê trứng và xe máy mùa thu,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1846,Hành trình ăn bánh cuốn Hà Nội mùa thu: chiều se lạnh,bánh cuốn và hành trình mùa thu,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1849,Ăn phở bò mùa thu bằng xe máy: sáng se lạnh và tuyến đường,phở bò và hành trình sáng mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1852,Đi chợ hoa Hà Nội mùa thu: hoa thu và lịch chợ đêm mẫu,chợ hoa quận tám mùa thu,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1855,"Đi chùa Một Cột mùa thu: ngày nên tránh, đường và chỗ gửi xe",chùa một cột hà nội mùa thu,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1858,Hoàng hôn cầu Nhật Tân mùa thu: chọn ngày đẹp và chỗ chụp ảnh,cầu nhật tân hoàng hôn mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1861,Quốc lộ 5 ngoại ô Hà Nội mùa thu: rẽ vào đường làng mùa gặt,đường 5 và ngoại ô mùa thu,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1864,"Sóc Sơn và Cổ Loa mùa thu: lịch trình, thời tiết và thủ tục",soc son và co loa mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1867,"Đi Ba Vì mùa thu cuối tuần bằng xe máy: dã quỳ, sương và đèo",ba vì cuối tuần mùa thu,Ba Vì,VERIFIED_UNIT,xã,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-1870,"Đi Thạch Thất và Sơn Tây mùa thu: lịch theo ánh sáng, mùa gặt",thạch thất và sơn tây mùa thu,Thạch Thất; Sơn Tây,VERIFIED_UNIT,xã; phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-1873,"Đi Hòa Bình đường trường mùa thu: tuyến đi, sương sớm",hòa bình đường trường mùa thu,Hòa Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1876,"Đi Tam Đảo bằng xe máy mùa thu: săn mây, đường đèo ẩm sương",tam đảo bằng xe máy mùa thu,Tam Đảo,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1879,"Đi Mộc Châu đường dài mùa thu: sương sớm, đồ mang, điểm dừng",mộc châu hành trình dài mùa thu,Mộc Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1882,Đi Ninh Bình mùa thu bằng xe máy: lịch cuối tuần và đồ mang,ninh bình cuối tuần xe máy mùa thu,Ninh Bình,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1885,"Đi Hạ Long mùa thu bằng xe máy: giờ chạy, chọn xe, an toàn",hạ long đường quốc lộ mùa thu,Hạ Long,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1888,Đi Cửa Lò mùa thu bằng xe máy: thời tiết và lịch trình,cửa lò ven biển mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1891,"Đi Thanh Hóa đường dài mùa thu: thời tiết, chia chặng, Sầm Sơn",thanh hóa và xe đường dài mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1894,"Đi Tràng An bằng xe máy mùa thu: thuyền, vòng ngắn, mùa gặt",tràng an ride mùa thu,Tràng An,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1897,Đi chùa Bái Đính mùa thu bằng xe máy: thời tiết và lịch đi,bái đính xe máy mùa thu,Bái Đính,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1900,"Đi Cúc Phương mùa thu bằng xe máy: chọn tuần đi, lịch ngắn",cúc phương weekend mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1902,Hành trình Mai Châu mùa thu: chọn tuần đi và chuẩn bị xe,hành trình mài châu mùa thu,Mai Châu,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1904,"Đi Đà Lạt bằng xe máy mùa thu: lộ trình, đèo trong sương, xe",đà lạt đường xa mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1906,Huế xuyên Việt mùa thu: lịch chạy xe khi mưa dầm miền Trung,huế xuyên việt mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1908,"Bắc Nam bằng xe máy mùa thu qua Đà Nẵng: chia chặng, qua đèo",đà nẵng hành trình bắc nam mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1910,"Hội An cuối tuần mùa thu: lịch theo nhịp mưa nắng, Trung thu",hội an cuối tuần mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1912,"Đi Sài Gòn bằng xe máy mùa thu: mưa, triều cường, xuyên Việt",sài gòn đường nam mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1914,Đi xe máy miền Tây mùa thu: đường quê trong mùa nước nổi,mekong delta ride mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1916,"Vòng cung Hà Giang mùa thu: chia ngày, đặt trước, thời tiết",ha giang vòng cung mùa thu,Hà Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1918,"Đi cao nguyên đá Đồng Văn mùa thu: hoa tam giác mạch, đèo",cao nguyên đá đồng văn mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1920,"Mèo Vạc và Đồng Cao mùa thu: chọn tháng, rủi ro và hành lý",mèo vạc đồng cao mùa thu,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1948,Ngắm Hồ Gươm ban đêm trong ngày: trả xe tối hay giữ qua đêm,hồ gươm ban đêm trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1950,Đi ven đê sông Hồng trong ngày: lịch từ sáng đến chiều,ven đê sông hồng trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1952,Cột cờ Hoàng Thành trong ngày: lịch trình cùng trục di sản,cột cờ hoàng thành trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1954,Đi lăng Chủ tịch trong ngày bằng xe máy: xếp giờ và lộ trình,lăng chủ tích qua phố trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1956,"Hành trình bảo tàng Hà Nội trong ngày: chọn cụm, không chọn lẻ",bảo tàng hà nội hành trình trong ngày,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1958,"Phố Sách Hà Nội trong ngày: lịch trình, gửi xe, ngân sách",phố sách hà nội trong ngày,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1960,Nhà Thờ Lớn Hà Nội trong ngày: lịch trình từ sáng đến tối,nhà thờ lớn hà nội trong ngày,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1962,"Làng gốm Bát Tràng trong ngày: lịch trình mẫu, bản nửa ngày",làng gốm bát tràng trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1964,Mua gốm Bát Tràng trong ngày bằng xe máy: lịch chạy gọn,bát tràng gốm xe máy trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1966,Đi xe máy đường đồng trong ngày: lịch trọn ngày và kỹ năng,đường đồng by bike trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1968,Đi Văn Giang trong ngày bằng xe điện: quy tắc nửa pin,văn giang ev and bikes trong ngày,Văn Giang,OUTSIDE_HANOI,ngoài Hà Nội / điểm đến,,REVIEW_REQUIRED
+BA-1970,Đi chùa ở Hà Nội trong ngày: lộ trình từ Long Biên sang Hồ Tây,chùa và Hà Nội trong ngày,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1972,Thăm đền danh nhân họ Nguyễn trong ngày: lịch trình trọn ngày,đền nguyễn cần bằng xe trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1978,Đi Hồ Gươm buổi sáng trong ngày bằng xe máy: hai cách nhận xe,chạy buổi sáng hồ gươm trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1982,Cà phê trứng Hà Nội trong ngày: thời gian biểu ba chặng quán,cà phê trứng và xe máy trong ngày,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1984,Hành trình ăn bánh cuốn Hà Nội trong ngày: vòng hai bờ sông,bánh cuốn và hành trình trong ngày,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1986,Ăn phở bò trong ngày bằng xe máy: từ bát phở đến hoàng hôn,phở bò và hành trình sáng trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1988,Đi chợ hoa Hà Nội trong ngày: lịch nhận xe đến trả xe,chợ hoa quận tám trong ngày,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1990,Đi chùa Một Cột trong ngày: lịch trình một ngày bằng xe máy,chùa một cột hà nội trong ngày,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1992,Hoàng hôn cầu Nhật Tân trong ngày: lịch cả ngày hướng tây bắc,cầu nhật tân hoàng hôn trong ngày,,NO_PLACE,,,REVIEW_REQUIRED
+BA-1994,Quốc lộ 5 ngoại ô Hà Nội trong ngày: lịch vòng phía đông,đường 5 và ngoại ô trong ngày,Hà Nội,CITY_WIDE,thành phố,,REVIEW_REQUIRED
+BA-1996,Sóc Sơn và Cổ Loa trong ngày: xuất phát từ Long Biên,soc son và co loa trong ngày,,ORIGIN_ONLY,chỉ nêu điểm xuất phát: Long Biên,,REVIEW_REQUIRED
+BA-1998,Đi Ba Vì trong ngày bằng xe máy: chọn điểm và giờ quay đầu,ba vì cuối tuần trong ngày,Ba Vì,VERIFIED_UNIT,xã,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
+BA-2000,Đi Thạch Thất và Sơn Tây trong ngày: lịch mẫu và giờ trả xe,thạch thất và sơn tây trong ngày,Thạch Thất; Sơn Tây,VERIFIED_UNIT,xã; phường,data/local/hanoi.json (NQ 1656/NQ-UBTVQH15),REVIEW_REQUIRED
