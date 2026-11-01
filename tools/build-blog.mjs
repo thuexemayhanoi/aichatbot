@@ -75,6 +75,22 @@ export function canonicalIndexLinks(html) {
   return html.replace(/(<a\b[^>]*?\shref\s*=\s*)(["'])(\/[^"'?#]*?\/)index\.html\2/gi, '$1$2$3$2');
 }
 
+/** Lô M4: a body link to a retired URL (config/retired-urls.json) opens its
+ *  replacement page instead of a 404. Render-time only — bodies untouched. */
+const RETIRED_LINKS = (() => {
+  const map = {};
+  for (const r of JSON.parse(readFileSync(join(ROOT, 'config/retired-urls.json'), 'utf8')).retired) {
+    if (r.from.includes('{n}')) {
+      for (let n = r.pages[0]; n <= r.pages[1]; n++) map[r.from.replace('{n}', String(n))] = r.to;
+    } else map[r.from] = r.to;
+  }
+  return map;
+})();
+export function retiredLinks(html) {
+  return html.replace(/(<a\b[^>]*?\shref\s*=\s*)(["'])(\/[^"'?#]*)\2/gi, (m, pre, q, href) =>
+    (RETIRED_LINKS[href] ? `${pre}${q}${RETIRED_LINKS[href]}${q}` : m));
+}
+
 /** v76: the chat app moved to /agent/. A body link to "/" whose anchor names
  *  the assistant or the app ("trợ lý MotoAI", "Agent", "ứng dụng web") opens
  *  the Agent; "trang chủ" links keep pointing at the site homepage. Render-time
@@ -815,8 +831,8 @@ ${hubClusterFooter(cluster)}${askAgentAction(cluster.name, cluster.categories[0]
  */
 function buildArticle(a, business, hub, published, row, links, byId, reviews = {}, linkPages, pricing) {
   const bodyRaw = read(a.body);
-  const body = agentLinks(canonicalIndexLinks(normalizeInternalAnchors(resolveFacts(bodyRaw, business),
-    `blog/${hub.dir}/${a.slug}/index.html`, (path) => linkPages.has(path))));
+  const body = agentLinks(retiredLinks(canonicalIndexLinks(normalizeInternalAnchors(resolveFacts(bodyRaw, business),
+    `blog/${hub.dir}/${a.slug}/index.html`, (path) => linkPages.has(path)))));
   const { html: bodyWithIds, items } = buildToc(body);
   const toc = feature('toc') ? tocHtml(items) : { markup: '' };
   const path = `blog/${hub.dir}/${a.slug}/`;
@@ -1009,7 +1025,31 @@ ${askAgentAction(title)}`;
  *  URL at any depth: asset links are made root-absolute (the shell writes
  *  them relative to the page), and there is no canonical/og:url (not a page
  *  to index; robots noindex). Same shell, so header, menu and sidebar stay. */
-function buildNotFound(business) {
+/** Retired URLs (config/retired-urls.json, lô M4): expanded to concrete
+ *  paths ({n} over `pages`). A retired path may not be a page this build
+ *  generates, and its target must be one — so a redirect never loops or
+ *  lands on a 404. GitHub Pages answers retired paths with 404.html, whose
+ *  script forwards people to the target; search engines see the 404. */
+export function retiredUrls(builtPaths) {
+  const cfg = JSON.parse(read('config/retired-urls.json'));
+  const map = {};
+  for (const r of cfg.retired) {
+    const [lo, hi] = r.pages ?? [null, null];
+    const froms = r.from.includes('{n}') ? Array.from({ length: hi - lo + 1 }, (_, i) => r.from.replace('{n}', String(lo + i))) : [r.from];
+    for (const from of froms) {
+      if (builtPaths.has(from)) throw new Error(`retired-urls: ${from} is still generated — remove it from config/retired-urls.json`);
+      // A partial corpus (factory sandbox builds) may lack the target hub:
+      // forward to its nearest generated parent. The full site is held to
+      // the exact target by tests/unit/subtopic-precision.test.js.
+      let to = r.to;
+      while (!builtPaths.has(to) && to !== '/') to = to.replace(/[^/]+\/$/, '');
+      map[from] = to;
+    }
+  }
+  return map;
+}
+
+function buildNotFound(business, retired = {}) {
   const title = 'Không tìm thấy trang';
   const description = 'Đường dẫn này không còn hoặc chưa từng tồn tại trên MotoAI. Quay lại trang chủ, mở cẩm nang hoặc hỏi Agent để tìm đúng thông tin.';
   const body = resolveFacts(read('data/site/not-found.body.html'), business);
@@ -1026,6 +1066,9 @@ ${body.trim().split('\n').join('\n')}
     screen: 'not-found',
     contentHtml: content,
     headHtml: '  <meta name="robots" content="noindex">\n'
+      + (Object.keys(retired).length
+        ? `  <script>/* retired URLs (config/retired-urls.json) → their replacement page */(function(){var m=${JSON.stringify(retired)};var p=location.pathname.replace(/index\\.html$/,'');if(m[p])location.replace(m[p]+location.hash);})();</script>\n`
+        : '')
   })
     .replace(/  <link rel="canonical"[^\n]*\n/, '')
     .replace(/  <meta property="og:url"[^\n]*\n/, '')
@@ -1137,7 +1180,7 @@ export function build() {
     if (page.kind === 'price') buildPrice(page, business, published, builtPaths);
     else buildLegal(page, business);
   }
-  buildNotFound(business);
+  buildNotFound(business, retiredUrls(builtPaths));
 
   // Search index (compact; only published; cluster/subtopic/location aware).
   write('blog/search-index.json', JSON.stringify({

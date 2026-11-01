@@ -163,26 +163,26 @@
   "site": {
    "pass": true,
    "broken": 0,
-   "checked": 410278,
-   "sitemap": 2185,
+   "checked": 444131,
+   "sitemap": 2169,
    "published": 2006
   },
   "score": {
    "total": 99.6,
    "pass": true,
-   "issues": 586
+   "issues": 589
   },
   "matrix": {
-   "urls": 2185,
+   "urls": 2169,
    "by_status": {
-    "DONE": 2185,
+    "DONE": 2169,
     "KEEP": 0,
     "TECH-DONE": 0,
     "PLANNED": 0
    },
    "p0_open": 0,
    "issues": 0,
-   "committedCurrent": true
+   "committedCurrent": false
   },
   "coverage": {
    "pass": true,
@@ -192,10 +192,10 @@
      "PUBLISHED": 2006
     },
     "published": 2006,
-    "sitemap": 2185,
-    "uniqueSitemap": 2185,
+    "sitemap": 2169,
+    "uniqueSitemap": 2169,
     "publishedInSitemap": 2006,
-    "otherSitemapUrls": 179,
+    "otherSitemapUrls": 163,
     "manifestIds": 2006,
     "gscPerformancePageRows": null
    }

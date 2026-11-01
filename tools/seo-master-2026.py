@@ -36,6 +36,7 @@ import argparse
 import csv
 import html
 import json
+import unicodedata
 import re
 import shutil
 import statistics
@@ -709,34 +710,55 @@ ISSUES = {
 PRIO_RANK = {'P0': 0, 'P1': 1, 'P2': 2, 'P3': 3}
 
 
+_UNIT_NAMES = {}
+
+
+def _phrases(sub):
+    """A subtopic's phrases: `match` plus, with `match_units`, the active unit
+    names of that verified locality file (mirrors matchPhrases in taxonomy.mjs)."""
+    path = sub.get('match_units')
+    if not path:
+        return sub['match']
+    if path not in _UNIT_NAMES:
+        units = json.loads((ROOT / path).read_text(encoding='utf-8')).get('units') or []
+        _UNIT_NAMES[path] = [u['name'] for u in units if u.get('active', True) is not False and u.get('name')]
+    return [*sub['match'], *_UNIT_NAMES[path]]
+
+
 def strict_subtopic(category, row, taxonomy):
     """Accent-sensitive, whole-phrase subtopic match without the category-name
     echo in secondary_keywords — the rule lô M4 brings to tools/taxonomy.mjs."""
-    cat_name = taxonomy['categories'][category]['name'].lower()
-    sec = [x.strip() for x in (row.get('secondary_keywords') or '').split(';') if x.strip().lower() != cat_name]
-    hay = ' | '.join([row.get('primary_keyword') or '', '; '.join(sec), row.get('working_title') or '']).lower()
+    lc = lambda t: unicodedata.normalize('NFC', str(t or '')).lower()
+    cat = taxonomy['categories'][category]
+    echoes = {lc(e) for e in [cat.get('name'), cat.get('label'), *cat.get('matrix_echo', [])] if e}
+    sec = [x.strip() for x in (row.get('secondary_keywords') or '').split(';') if x.strip() and lc(x.strip()) not in echoes]
+    hay = lc(' | '.join(x for x in [row.get('primary_keyword') or '', '; '.join(sec), row.get('working_title') or ''] if x))
     for sub in taxonomy['subtopics'].get(category, []):
-        for m in sub['match']:
-            if re.search(r'(?<![\w])' + re.escape(m.lower()) + r'(?![\w])', hay):
+        for m in _phrases(sub):
+            if re.search(r'(?<![^\W_])' + re.escape(lc(m)) + r'(?![^\W_])', hay):
                 return sub['slug']
     return None
 
 
 def work_items(D, per, pages):
     """Per-URL open work (issue codes) merged with the verified-status ledger."""
-    import unicodedata
     tax = D['taxonomy']
-    fold = lambda t: unicodedata.normalize('NFD', t.lower()).encode('ascii', 'ignore').decode().replace('đ', 'd')
     current = {}
     for aid, r in D['matrix'].items():
-        if r.get('status') != 'PUBLISHED':
+        if r.get('status') != 'PUBLISHED' or aid not in D['art_path']:
             continue
-        hay = fold(' '.join([r.get('primary_keyword') or '', r.get('secondary_keywords') or '', r.get('slug') or '', r.get('working_title') or '']))
+        # The subtopic the live article actually shows: its breadcrumb's subtopic hub link.
+        cat_dir = D['cat_dir'][r['category']]
+        slugs = {sub['slug'] for sub in tax['subtopics'].get(r['category'], [])}
         cur = None
-        for sub in tax['subtopics'].get(r['category'], []):
-            if any(fold(m) in hay for m in sub['match']):
-                cur = sub['slug']
-                break
+        f = ROOT / D['art_path'][aid].lstrip('/') / 'index.html'
+        if f.exists():
+            raw = f.read_text(encoding='utf-8')
+            nav = raw[raw.find('<nav class="blog-breadcrumb"'):]
+            nav = nav[:nav.find('</nav>')]
+            for m in re.finditer(r'href="/blog/' + re.escape(cat_dir) + r'/([a-z0-9-]+)/"', nav):
+                if m.group(1) in slugs:
+                    cur = m.group(1)
         current[aid] = (cur, strict_subtopic(r['category'], r, tax))
     hub_change = defaultdict(int)
     hub_size = Counter()
