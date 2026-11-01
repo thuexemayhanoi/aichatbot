@@ -635,13 +635,62 @@
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/app/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-3"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/app/dat-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-3"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/app/huong-dan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-3"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/app/so-sanh/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-3"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/app/tim-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-3"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/app/tinh-gia/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-3"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
   "/blog/app/tro-ly/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M3-SUBTOPIC-PAGINATION"
+    "M3-SUBTOPIC-PAGINATION",
+    "M5-HUB-GUIDES-3"
    ],
    "date": "2026-11-01",
-   "note": "Phân trang 24 bài/trang — live"
+   "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
   },
   "/blog/app/tro-ly/page/2/": {
    "status": "DONE_LIVE",
@@ -668,6 +717,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/app/web-app/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-3"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
   "/blog/dia-phuong/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -683,6 +740,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/bao-tang-ha-noi-hanh-trinh/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
   "/blog/dia-phuong/cau-giay-di-xe-may/": {
    "status": "REVIEWED_OK",
@@ -767,10 +832,19 @@
   "/blog/dia-phuong/hoa-binh-duong-truong/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C03-LEGAL"
+    "C03-LEGAL",
+    "D01-DUP-PARA"
    ],
-   "date": "2026-10-30",
-   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/dia-phuong/moc-chau-hanh-trinh-dai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
   "/blog/dia-phuong/phuong-xa/": {
    "status": "DONE_LIVE",
@@ -919,12 +993,13 @@
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
   "/blog/dia-phuong/thanh-xuan-duong-di/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C01"
+    "C01",
+    "D01-DUP-PARA"
    ],
-   "date": "2026-10-30",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
   "/blog/dia-phuong/thue-xe-may-quanh-long-bien/": {
    "status": "REVIEWED_OK",
@@ -1091,18 +1166,28 @@
   "/blog/thue-xe/bang-gia-thue-xe-tham-khao/": {
    "status": "DONE_LIVE",
    "batches": [
-    "K1-COMMERCIAL"
+    "K1-COMMERCIAL",
+    "D01-DUP-PARA"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #57 (49a83d4): /lien-he/ có Khu vực giao xe + Đặt xe trong ba bước + link /agent/; BA-0254 tiêu đề 'Giá thuê xe máy theo dòng xe…'; BA-0427 FAQ 'kho ứng dụng của điện thoại'."
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/thue-xe/cach-doc-bang-gia-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
   "/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C01"
+    "C01",
+    "D01-DUP-PARA"
    ],
-   "date": "2026-10-30",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
   "/blog/thue-xe/chon-xe/": {
    "status": "DONE_LIVE",
@@ -1201,6 +1286,22 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/thue-xe/hong-xe-giua-duong-khi-thue/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/thue-xe/khoang-chi-phi-di-lai-khi-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
   "/blog/thue-xe/nhan-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1274,6 +1375,14 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/thue-xe/thue-xe-giao-tan-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
   "/blog/thue-xe/thue-xe-may-gia-re/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -1281,6 +1390,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/thue-xe/thue-xe-may-hay-di-grab/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
   "/blog/thue-xe/thue-xe-may-theo-thang/": {
    "status": "DONE_LIVE",
@@ -1331,6 +1448,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
+  "/blog/xe-dien/app-mo-khoa-xe-dien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
   "/blog/xe-dien/app-thue-xe-dien/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -1372,6 +1497,30 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
+  "/blog/xe-dien/di-xe-dien-duong-dai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/xe-dien/het-pin-giua-duong-phai-lam-gi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/xe-dien/hop-so-xe-dien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
   "/blog/xe-dien/huong-dan-su-dung-xe-may-dien/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -1395,6 +1544,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/phanh-xe-may-dien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
   "/blog/xe-dien/pin-cua-xe-may-dien/": {
    "status": "REVIEWED_OK",
@@ -1492,6 +1649,38 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/xe-dien-khi-mua/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/xe-dien/xe-dien-trong-pho/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/xe-dien/xe-dien-va-duong-doc/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/xe-dien/xe-dien-va-thoi-tiet-lanh/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D01-DUP-PARA"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
   "/gia-thue/": {
    "status": "DONE_LIVE",

@@ -600,7 +600,7 @@
       ],
       "changes": "data/blog/hubs/app* + hub-guides.json. Mô tả đúng chức năng hiện có: ứng dụng web chạy trên trình duyệt, không cài đặt, không tài khoản, không xin quyền vị trí/danh bạ/camera (đã kiểm tra agent/index.html không gọi geolocation/getUserMedia); Agent trả lời từ dữ liệu giá và chính sách của cửa hàng, KHÔNG tự chốt đơn — xe, cọc, giờ giao do cửa hàng xác nhận qua điện thoại/WhatsApp. Giá chỉ qua {{ price.from.* }}.",
       "rollback": "Xóa mục trong data/blog/hub-guides.json.",
-      "live_verified": "chờ deploy"
+      "live_verified": "2026-11-01 sau merge #61 (1adbecc): /blog/app/ đoạn trả lời + \"Giới hạn cần biết\". Ghi sổ DONE_LIVE 8 URL."
     },
     {
       "batch_id": "D01-DUP-PARA",
@@ -630,6 +630,46 @@
       ],
       "changes": "tools/seo-body-review.mjs replace (20 bản vá, 0 bị từ chối, QA không giảm): viết lại câu trùng, đưa ý riêng của bài lên đầu, giữ placeholder {{ business.* }}. Đồng thời gỡ cam kết chưa xác minh: 'mọi báo giá đều đi kèm điều khoản rõ ràng' (BA-0254), 'mọi báo giá đều kèm ghi chú' (BA-0260), 'bình xăng đầy' (BA-0248), 'xe máy điện được kiểm tra pin định kỳ' (BA-0225, BA-0231), 'phần hướng dẫn dùng khóa app sẽ được đưa bạn' và 'trải nghiệm dòng xe điện khóa app' (BA-0261), 'MotoAI hỗ trợ giao xe' → cửa hàng giao xe, chi phí xác nhận trước (BA-0218), 'dùng trang chủ để đặt xe nhanh' → hỏi trợ lý rồi gọi chốt (BA-0111, BA-0117). BA-0254: giá viết bằng chữ ('một trăm lẻ năm mươi nghìn', 'hai trăm nghìn') → {{ price.honda-wave.day.min }}, {{ price.honda-vision.day.min }}. Bài có câu trùng: 162 → 138.",
       "rollback": "git revert; data/seo/body-reviews.json ghi ngày review.",
+      "live_verified": "2026-11-01 sau merge #61 (1adbecc): BA-0254 kết luận \"quanh mức 150.000đ mỗi ngày … khoảng 200.000đ mỗi ngày\" (từ placeholder) + câu báo giá mới; BA-0261 CTA hỏi loại khóa thay cho cam kết khóa app. Ghi sổ DONE_LIVE 20 URL."
+    },
+    {
+      "batch_id": "D02-D04-DUP-PARA",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-0372",
+        "BA-0630",
+        "BA-0632",
+        "BA-0270",
+        "BA-0273",
+        "BA-0360",
+        "BA-0480",
+        "BA-0264",
+        "BA-0266",
+        "BA-0272",
+        "BA-0392",
+        "BA-0674",
+        "BA-0675",
+        "BA-0765",
+        "BA-0363",
+        "BA-0369",
+        "BA-0806",
+        "BA-0199",
+        "BA-0247",
+        "BA-0241",
+        "BA-0271",
+        "BA-0265",
+        "BA-0259",
+        "BA-0109",
+        "BA-1885",
+        "BA-1878",
+        "BA-1983",
+        "BA-1919",
+        "BA-1100",
+        "BA-1617"
+      ],
+      "scope": "DUP-PARA lô D02 (17 bài) + D04 (13 bài): câu trùng 80 ký tự đầu với bài khác; bài cùng nhóm ở lô khác được giải quyết khi bài đối ứng được viết lại.",
+      "changes": "tools/seo-body-review.mjs replace (30/30, QA không giảm). Gỡ cam kết chưa xác minh: mở cửa 'kể cả kỳ lễ' (BA-0632), 'mọi mức giá báo trước khi đặt đều được giữ nguyên đến hết kỳ thuê' (BA-0266), 'xe đi tuyến xa luôn được kiểm tra tổng' (BA-0270), 'xe điện kiểm tra pin định kỳ' (BA-0273), 'nhóm đi xa luôn được ưu tiên xe đã kiểm tra kỹ' (BA-0264), 'gói thuê dài luôn có điều kiện bảo dưỡng rõ ràng' (BA-0272), 'luôn có người thật tiếp nhận' (BA-0271, BA-0265), 'tin nhắn ngoài giờ được trợ lý ghi nhận và nhân viên trả lời sáng hôm sau' (BA-0259 — Agent không chuyển tin cho nhân viên), 'Cửa hàng MotoAI' → cửa hàng {{ business.brand }} (BA-0630, BA-0632). BA-0806: giá Honda Wave viết cứng '150.000đ/ngày' → {{ price.honda-wave.* }} đủ ngày/tuần/tháng. Bài có câu trùng 138 → 93.",
+      "rollback": "git revert.",
       "live_verified": "chờ deploy"
     }
   ],
@@ -640,8 +680,8 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "M5-HUB-GUIDES-2",
-  "last_verified_commit": "5b4ba1c1",
+  "last_completed_batch": "D01-DUP-PARA",
+  "last_verified_commit": "1adbeccf",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
   "next_article_ids_note": "Đã xong M5 1–3 (47 hub). Tiếp: guide cho hub Hướng Dẫn (danh mục + thủ tục, nhận xe, giấy tờ, trả xe, đặt xe, bản đồ) cùng hub Thuê Xe nhận xe / trả xe (liên kết chéo, tránh trùng ý định), An Toàn (danh mục + pháp luật, lái xe, mũ bảo hiểm, bằng lái, sự cố, thời tiết, du lịch), Ứng Dụng (danh mục + 7 chủ đề con), 3 hub cụm và /blog/; M6: ngưỡng tối thiểu bài/hub (THIN-HUB: huong-dan/chuan-bi 1 bài). Sau đó D01–D09 đoạn văn trùng (162 bài, bài thương mại trước), BODY-STRUCT, C08+ LEGAL-CHECK, đề xuất LOCAL-SCOPE (RR-13). Sửa nhỏ chờ lô nội dung: BA-0427 tiêu đề mục \"menu bấm chon\" → \"chọn\". Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), giá xe điện/xe đạp điện (RR-14), phí giao xe (RR-15), cách ghi địa chỉ (RR-16), giấy tờ bắt buộc khi thuê (RR-18). Nhà máy ảnh: EXCLUDED.",
