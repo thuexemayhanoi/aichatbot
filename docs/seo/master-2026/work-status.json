@@ -2735,6 +2735,14 @@
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
+  "/blog/app/tro-ly-ao-tu-van-thue-xe-may-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA3"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ 'luôn có xe sẵn', trợ lý không báo 'xe trống'; live 91940308 (BA-0607, BA-0236, BA-1137)"
+  },
   "/blog/app/tro-ly-ao-tu-van-thue-xe-may-tai-ha-noi/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3750,6 +3758,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/huong-dan/mua-dong-thue-xe-ha-noi-nhanh-gon/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA3"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ 'luôn có xe sẵn', trợ lý không báo 'xe trống'; live 91940308 (BA-0607, BA-0236, BA-1137)"
+  },
   "/blog/huong-dan/nang-nong-va-lai-xe-nhanh-gon/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4275,6 +4291,14 @@
    "date": "2026-11-01",
    "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
+  "/blog/thue-xe/so-sanh-thue-xe-may-va-taxi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA3"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ 'luôn có xe sẵn', trợ lý không báo 'xe trống'; live 91940308 (BA-0607, BA-0236, BA-1137)"
+  },
   "/blog/thue-xe/thu-tuc/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4413,6 +4437,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #77 (c9b53bea) — Pages live đã kiểm BA-0410, BA-1014 (trợ lý cho giá tham khảo, cửa hàng xác nhận xe còn trống)"
+  },
+  "/blog/thue-xe/thue-xe-chay-dich-vu/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA3"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ 'luôn có xe sẵn', trợ lý không báo 'xe trống'; live 91940308 (BA-0607, BA-0236, BA-1137)"
   },
   "/blog/thue-xe/thue-xe-cho-cong-viec-giao-hang-ky-nghi-le/": {
    "status": "DONE_LIVE",
@@ -4683,10 +4715,11 @@
   "/blog/xe-dien/app-thue-xe-dien-cho-khach-du-lich/": {
    "status": "DONE_LIVE",
    "batches": [
-    "APP2"
+    "APP2",
+    "CTA3"
    ],
    "date": "2026-11-01",
-   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+   "note": "Bỏ 'luôn có xe sẵn', trợ lý không báo 'xe trống'; live 91940308 (BA-0607, BA-0236, BA-1137)"
   },
   "/blog/xe-dien/app-thue-xe-dien/": {
    "status": "REVIEWED_OK",
@@ -4720,6 +4753,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
+  "/blog/xe-dien/bao-quan-xe-dien-mua-mua-mua-he/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA3"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ 'luôn có xe sẵn', trợ lý không báo 'xe trống'; live 91940308 (BA-0607, BA-0236, BA-1137)"
   },
   "/blog/xe-dien/bao-quan-xe-dien-mua-mua/": {
    "status": "DONE_LIVE",
@@ -5104,6 +5145,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #77 (c9b53bea) — Pages live đã kiểm BA-0410, BA-1014 (trợ lý cho giá tham khảo, cửa hàng xác nhận xe còn trống)"
+  },
+  "/blog/xe-dien/xe-dien-giam-tieng-on-pho-mua-he/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "CTA3"
+   ],
+   "date": "2026-11-01",
+   "note": "Bỏ 'luôn có xe sẵn', trợ lý không báo 'xe trống'; live 91940308 (BA-0607, BA-0236, BA-1137)"
   },
   "/blog/xe-dien/xe-dien-het-han-pin/": {
    "status": "DONE_LIVE",

@@ -1394,7 +1394,9 @@
         "BA-1137"
       ],
       "scope": "Rà các câu hứa 'luôn có xe sẵn/luôn sẵn xe/xe luôn sẵn sàng' (business.json không có cam kết tồn kho) và câu nói trợ lý báo 'xe trống' (biến thể không có chữ 'còn' mà bộ dò cũ bỏ sót).",
-      "changes": "tools/seo-master-2026.py: AVAIL_CLAIM thêm 'xe trống'; SHOP_CLAIM thêm 'luôn có xe sẵn/bền/đã', 'luôn sẵn xe', 'xe luôn sẵn sàng'; AVAIL_OK nhận các cách nói cửa hàng/nhân viên xác nhận ('với cửa hàng', 'để kiểm tra', 'gọi cửa hàng', 'sẽ xác nhận', 'khi bạn gọi'…) để không báo nhầm 28 câu đúng; test hồi quy. Sửa 7 bài qua tools/seo-body-review.mjs: trợ lý cho giá tham khảo và gợi ý dòng xe, cửa hàng/nhân viên xác nhận xe còn trống khi bạn gọi; BA-1137 đổi lời hứa 'xe đã kiểm tra trước mỗi lượt giao' thành lời khuyên kiểm tra đèn, còi, phanh khi nhận. Trước lô: 7 bài bị gắn cờ, sau lô: 0."
+      "changes": "tools/seo-master-2026.py: AVAIL_CLAIM thêm 'xe trống'; SHOP_CLAIM thêm 'luôn có xe sẵn/bền/đã', 'luôn sẵn xe', 'xe luôn sẵn sàng'; AVAIL_OK nhận các cách nói cửa hàng/nhân viên xác nhận ('với cửa hàng', 'để kiểm tra', 'gọi cửa hàng', 'sẽ xác nhận', 'khi bạn gọi'…) để không báo nhầm 28 câu đúng; test hồi quy. Sửa 7 bài qua tools/seo-body-review.mjs: trợ lý cho giá tham khảo và gợi ý dòng xe, cửa hàng/nhân viên xác nhận xe còn trống khi bạn gọi; BA-1137 đổi lời hứa 'xe đã kiểm tra trước mỗi lượt giao' thành lời khuyên kiểm tra đèn, còi, phanh khi nhận. Trước lô: 7 bài bị gắn cờ, sau lô: 0.",
+      "live_verified": "2026-11-01",
+      "live_note": "main 91940308: BA-0607 \"trả lời giá tham khảo và thủ tục… cửa hàng… sẽ xác nhận xe còn trống\", BA-0236 \"nhân viên sẽ xác nhận xe còn trống cho kế hoạch của bạn khi bạn gọi\", BA-1137 \"bạn nên cùng nhân viên kiểm tra đèn, còi và phanh\" đã hiển thị."
     }
   ],
   "rules": [
@@ -1404,11 +1406,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "LEGAL-FEE1",
-  "last_verified_commit": "52a42dde",
+  "last_completed_batch": "CTA3",
+  "last_verified_commit": "91940308",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (gồm bộ dò SHOP_CLAIM mới), BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA3, LEGAL-FEE1 (content-review REVIEW 0). Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Có thể làm tiếp không cần chờ: QA-PROXY (1), rà các câu hứa dịch vụ khác khi có mẫu mới.",
+  "next_article_ids_note": "Đã xong và xác minh live: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (bộ dò AVAIL/SHOP_CLAIM đọc xuyên liên kết và placeholder), BODY-STRUCT 0, LEGAL-CHECK 0, content-review REVIEW 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA3, LEGAL-FEE1. Lớp giá: tools/fact-bind.mjs check = 0 giá/dữ kiện gõ tay; 11 'lệch' là tổng hai xe hoặc giá tháng chia ngày, đúng số học. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Việc theo lịch: sau 31/12/2026 rà câu lệ phí BA-0047 (Thông tư 29/2026/TT-BTC hết hiệu lực); từ 28/02/2027 Thông tư 117/2026/TT-BTC hết hiệu lực.",
   "p0_live_verified": [
     "/",
     "/gia-thue/",
