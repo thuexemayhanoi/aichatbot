@@ -1,9 +1,27 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-11-01",
-  "last_completed_batch": "M3-SUBTOPIC-PAGINATION",
+  "last_completed_batch": "K1-COMMERCIAL",
   "last_verified_commit": "c944592b",
   "next": "Lô M4: độ chính xác phân loại chủ đề con (tools/taxonomy.mjs deriveSubtopic). Bằng chứng 2026-11-01: so khớp bỏ dấu + chuỗi con xếp nhầm 493/2.006 bài — \"địa phương\" khớp \"phường\" (cả 400 bài LOCAL vào hub Phường / Xã), \"đơn giản\" khớp \"giá\", \"mua bán\" khớp \"mưa\", \"kiểm tra xe\" khớp \"trả xe\", \"chính sách\" khớp \"sạc\"; tên danh mục lặp trong secondary_keywords đưa 288 bài GUIDE vào Thủ Tục, 148 bài SAFE vào Pháp Luật; \"cuối tuần\" vào Thuê Tuần. Sửa: so khớp có dấu theo nguyên từ, bỏ tên danh mục khỏi chuỗi so khớp, tinh chỉnh từ khóa match; hub trống (/blog/dia-phuong/phuong-xa/ + 16 trang, /blog/app/cai-app/) chuyển hướng tới hub phù hợp kèm phân tích tác động và phương án rollback; hub mới chỉ khi có bài thật. Sau đó: đoạn dẫn riêng cho từng hub (B04). Song song C08: legal_review MANDATORY; B06 đoạn văn trùng (162 bài). Chờ chủ sở hữu: Search Console (B02), GBP (B12), local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027.",
+  "remaining": {
+    "status": {
+      "DONE_LIVE": 55,
+      "REVIEWED_OK": 30,
+      "OPEN": 1126,
+      "OK": 974
+    },
+    "open_codes": {
+      "HUB-CONTENT": 43,
+      "DUP-PARA": 162,
+      "LEGAL-CHECK": 196,
+      "HUB-MISFILE": 934,
+      "BODY-STRUCT": 14,
+      "THIN-HUB": 2,
+      "QA-PROXY": 2,
+      "LOCAL-SCOPE": 286
+    }
+  },
   "open_backlog": [
     {
       "id": "B02",
@@ -15,27 +33,27 @@
     {
       "id": "B04",
       "priority": "P1",
-      "issue": "Hub chủ yếu là danh sách thẻ; đoạn dẫn ngắn",
+      "issue": "Hub chủ yếu là danh sách thẻ; đoạn dẫn dùng chung mô tả danh mục",
       "owner": "agent",
-      "batch": "M3"
+      "batch": "M5"
     },
     {
       "id": "B06",
-      "priority": "P2",
+      "priority": "P1",
       "issue": "Đoạn văn trùng với bài khác (QA nhà máy no-cross-article-duplicate)",
       "owner": "agent",
-      "batch": "C08+"
+      "batch": "D01+"
     },
     {
       "id": "B07",
       "priority": "P3",
       "issue": "local_scope trống trong content-matrix (QA local-angle)",
-      "owner": "owner",
-      "batch": "—"
+      "owner": "agent",
+      "batch": "L01+"
     },
     {
       "id": "B08",
-      "priority": "P2",
+      "priority": "P3",
       "issue": "IMAGE PENDING — chưa có ảnh đại diện",
       "owner": "owner",
       "batch": "—"
@@ -67,6 +85,27 @@
       "issue": "CSS mỗi trang 85.6 KB chưa nén (cảnh báo nội bộ ≥ 64 KB)",
       "owner": "agent",
       "batch": "—"
+    },
+    {
+      "id": "B16",
+      "priority": "P1",
+      "issue": "Bài xếp nhầm hub chủ đề con",
+      "owner": "agent",
+      "batch": "M4"
+    },
+    {
+      "id": "B19",
+      "priority": "P2",
+      "issue": "Bài pháp lý chưa qua lô đối chiếu toàn văn",
+      "owner": "agent",
+      "batch": "C08+"
+    },
+    {
+      "id": "B21",
+      "priority": "P2",
+      "issue": "Bài thiếu cấu trúc H2/danh sách",
+      "owner": "agent",
+      "batch": "T1"
     }
   ],
   "resume_rule": "Khi nhận \"Tiếp tục\": fetch origin/main, đọc file này + docs/seo/commercial/progress.json, chạy lại python3 tools/seo-master-2026.py --verify, rồi làm lô kế tiếp (tối đa 5–20 URL/lô, ≤ 30 theo AGENTS.md)."

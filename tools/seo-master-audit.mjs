@@ -146,7 +146,8 @@ const STATIC = {
   '/chinh-sach/': { type: 'Trang chính sách thuê xe', keyword: 'chính sách thuê xe máy', secondary: 'đặt cọc thuê xe máy; giao xe tận nơi; giấy tờ thuê xe', intent: 'Thông tin - chuyển đổi', cluster: 'K04' },
   '/gioi-thieu/': { type: 'Trang giới thiệu (E-E-A-T)', keyword: 'giới thiệu thuê xe máy Nguyễn Tú', secondary: 'MotoAI; trợ lý thuê xe máy', intent: 'Điều hướng / thương hiệu', cluster: 'K01' },
   '/privacy/': { type: 'Pháp lý', keyword: 'chính sách bảo mật MotoAI', secondary: '', intent: 'Điều hướng', cluster: '' },
-  '/terms/': { type: 'Pháp lý', keyword: 'điều khoản sử dụng MotoAI', secondary: '', intent: 'Điều hướng', cluster: '' }
+  '/terms/': { type: 'Pháp lý', keyword: 'điều khoản sử dụng MotoAI', secondary: '', intent: 'Điều hướng', cluster: '' },
+  '/doi-tac/': { type: 'Trang đối tác (B2B)', keyword: 'thuê xe máy theo đoàn', secondary: 'thuê xe máy cho công ty du lịch; thuê xe máy cho khách sạn; thuê xe máy cho hướng dẫn viên', intent: 'Thương mại / đối tác', cluster: 'K19' }
 };
 const INTENT_VI = {
   'informational-product': 'Thông tin sản phẩm', 'commercial-informational': 'Thương mại – thông tin',

@@ -5,8 +5,8 @@ Workbook: `docs/seo/MASTER-SEO-MATRIX-2026.xlsx` — 23 sheet bắt buộc + 4 p
 ## Kết quả đo
 
 - URL kiểm kê: **2185** — sitemap 2185, HTML build 2185, có liên kết vào 2185, bài trong manifest 2006.
-- Phân loại: KEEP 2000, IMPROVE 185 (CONSOLIDATE / REDIRECT / NOINDEX-CANDIDATE: 0 — không có bằng chứng trùng nội dung hay trùng ý định).
-- QA proxy 100 điểm: trung bình 94.7, thấp nhất 83, 2182/2185 URL ≥ 85 (proxy tự động, không thay review biên tập).
+- Phân loại: KEEP 2002, IMPROVE 183 (CONSOLIDATE / REDIRECT / NOINDEX-CANDIDATE: 0 — không có bằng chứng trùng nội dung hay trùng ý định).
+- QA proxy 100 điểm: trung bình 94.7, thấp nhất 84, 2183/2185 URL ≥ 85 (proxy tự động, không thay review biên tập).
 - Họ biến thể slug: 331 họ, Jaccard 5-gram cao nhất 0.161 (ngưỡng gộp 0,5) → 0 ứng viên gộp.
 - Kiểm tra kỹ thuật không PASS: T21 WARN, T23 WARN, T24 N/A.
 - Search Console: NOT CONNECTED; CWV: LAB only.
@@ -14,14 +14,17 @@ Workbook: `docs/seo/MASTER-SEO-MATRIX-2026.xlsx` — 23 sheet bắt buộc + 4 p
 ## Backlog mở (ưu tiên)
 
 - B02 P0 — Search Console chưa kết nối — không có dữ liệu index/CTR/truy vấn (owner, lô —)
-- B04 P1 — Hub chủ yếu là danh sách thẻ; đoạn dẫn ngắn (agent, lô M3)
-- B06 P2 — Đoạn văn trùng với bài khác (QA nhà máy no-cross-article-duplicate) (agent, lô C08+)
-- B07 P3 — local_scope trống trong content-matrix (QA local-angle) (owner, lô —)
-- B08 P2 — IMAGE PENDING — chưa có ảnh đại diện (owner, lô —)
+- B04 P1 — Hub chủ yếu là danh sách thẻ; đoạn dẫn dùng chung mô tả danh mục (agent, lô M5)
+- B06 P1 — Đoạn văn trùng với bài khác (QA nhà máy no-cross-article-duplicate) (agent, lô D01+)
+- B07 P3 — local_scope trống trong content-matrix (QA local-angle) (agent, lô L01+)
+- B08 P3 — IMAGE PENDING — chưa có ảnh đại diện (owner, lô —)
 - B11 P3 — Google từng hiển thị URL /index.html (SERP 2026-10-14) (owner, lô —)
 - B12 P2 — Chưa đo GBP/local pack (owner, lô —)
 - B13 P2 — Khoảng trống từ khóa chưa có trang (owner, lô —)
 - B14 P3 — CSS mỗi trang 85.6 KB chưa nén (cảnh báo nội bộ ≥ 64 KB) (agent, lô —)
+- B16 P1 — Bài xếp nhầm hub chủ đề con (agent, lô M4)
+- B19 P2 — Bài pháp lý chưa qua lô đối chiếu toàn văn (agent, lô C08+)
+- B21 P2 — Bài thiếu cấu trúc H2/danh sách (agent, lô T1)
 
 ## Giới hạn
 

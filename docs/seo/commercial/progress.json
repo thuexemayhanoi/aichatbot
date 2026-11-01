@@ -490,6 +490,25 @@
       "article_ids": [],
       "changes": "tools/build-blog.mjs phân trang hub chủ đề con như hub danh mục: PER_PAGE = 24 thẻ/trang, trang 1 giữ URL cũ, trang N ở …/page/N/ (47 URL mới, đưa vào sitemap: 2.138 → 2.185), mỗi trang có canonical, title (\"— trang N\") và description (\"Trang N.\") riêng, ItemList theo trang, breadcrumb có mục trang N, liên kết số trang bằng <a href> (không JS). paginationNav dùng chung (đường dẫn gốc) — HTML hub danh mục không đổi. Kết quả: 4 hub > 100 KB → 0 (lớn nhất 56 KB); tương tác chạm menu lab /blog/thue-xe/gia-thue/ 248 → 128 ms. Test mới tests/unit/subtopic-pagination.test.js; tests/unit/seo-hub-architecture.test.js: chuỗi Silo → Subtopic → Article chấp nhận trang phân trang của hub chủ đề con (trang 1 phải liên kết tới trang chứa bài), như nhánh Silo đã làm.",
       "live_verified": "2026-11-01: deploy c944592b trên trang live — /blog/dia-phuong/phuong-xa/page/2/ có title \"— trang 2\", description \"Trang 2.\", canonical tự thân, \"400 bài · trang 2/17\" và điều hướng 17 trang; /blog/thue-xe/gia-thue/ hiện \"170 bài · trang 1/8\" kèm liên kết trang"
+    },
+    {
+      "batch_id": "W0-WORK-QUEUE",
+      "reviewed": "2026-11-01",
+      "scope": "Lệnh FULL COMMERCIAL SEO AUTOPILOT: cập nhật Master Matrix + PRIORITY BACKLOG thành danh sách việc theo từng URL trước khi SEO tiếp",
+      "article_ids": [],
+      "changes": "tools/seo-master-2026.py: mã việc theo URL (OWNER-CONFLICT, COMMERCIAL-BLOCK, HUB-MISFILE, HUB-CONTENT, THIN-HUB, DUP-PARA, TITLE-META, BODY-STRUCT, LEGAL-CHECK, LOCAL-SCOPE, QA-PROXY) kèm ưu tiên, hành động, lô dự kiến, trạng thái; sổ trạng thái docs/seo/master-2026/work-status.json (151 URL đã xác minh từ các lô C01–M3; ghi bằng --mark sau khi kiểm tra live); docs/seo/master-2026/work-queue.csv (2.185 URL); PRIORITY BACKLOG gồm hàng chương trình + hàng URL; dashboard thêm 5 KPI trạng thái (41 công thức, 0 lỗi). review-required.csv: 4 mục ảnh → EXCLUDED (chiến dịch không làm ảnh), thêm RR-13…RR-17 (local_scope, giá xe điện/xe đạp điện, phí giao xe, cách ghi địa chỉ sau 01/7/2025, GBP).",
+      "live_verified": "không áp dụng (báo cáo dữ liệu)"
+    },
+    {
+      "batch_id": "K1-COMMERCIAL",
+      "reviewed": "2026-11-01",
+      "scope": "Việc thương mại mở trong work-queue: /lien-he/ thiếu khu vực giao xe (COMMERCIAL-BLOCK); BA-0254 nhắm \"bảng giá thuê xe máy tham khảo\" — trùng ý định với URL chủ /gia-thue/ (OWNER-CONFLICT); BA-0427 cảnh báo seo-ownership; /doi-tac/ chưa gán từ khóa",
+      "article_ids": [
+        "BA-0254",
+        "BA-0427"
+      ],
+      "changes": "/lien-he/ (data/site/lien-he.body.html): thêm \"Khu vực giao xe\" ({{ business.service_areas | list }} + ghi chú giao xe), \"Đặt xe trong ba bước\" (bảng giá → gọi/WhatsApp → xác nhận giá thực tế, cọc {{ deposit min–max }}, giao nhận), liên kết bảng giá /gia-thue/ trước website chính, sửa liên kết Agent / → /agent/. BA-0254 (data/seo/article-meta.json): từ khóa \"giá thuê xe máy theo dòng xe\", title \"Giá thuê xe máy theo dòng xe: xe số, xe ga, 50cc khác nhau ra sao\" — thân bài có sẵn so sánh xe số/xe ga/50cc; /gia-thue/ giữ cụm \"bảng giá / giá thuê xe máy Hà Nội\". BA-0427 (tools/seo-body-review.mjs replace:1): câu hỏi \"có mặt trên App Store hay Google Play\" → \"có phải tải từ kho ứng dụng của điện thoại không\" (giữ câu trả lời: ứng dụng web). tools/seo-master-audit.mjs: /doi-tac/ → \"thuê xe máy theo đoàn\". data/seo/image-plan.csv sinh lại (tiêu đề BA-0254; không tạo ảnh).",
+      "live_verified": "chờ deploy"
     }
   ],
   "rules": [
@@ -499,7 +518,7 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "M3-SUBTOPIC-PAGINATION",
+  "last_completed_batch": "K1-COMMERCIAL",
   "last_verified_commit": "c944592b",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,

@@ -11,12 +11,24 @@
   <p>{{ business.address.full }}. Xem chỉ đường trên <a data-contact-ref="map" href="#">bản đồ</a>.</p>
 </section>
 <section class="blog-legal-card">
+  <h2>Khu vực giao xe</h2>
+  <p>Cửa hàng giao xe trong các khu vực: {{ business.service_areas | list }}. {{ business.policies.delivery.note }}</p>
+</section>
+<section class="blog-legal-card">
+  <h2>Đặt xe trong ba bước</h2>
+  <ol>
+    <li>Chọn loại xe và kỳ thuê ở <a href="/gia-thue/">bảng giá thuê xe máy</a> — giá ngày, tuần, tháng là giá tham khảo.</li>
+    <li>Gọi <a data-contact-ref="call" href="#">{{ business.contact.phone_display }}</a> hoặc nhắn <a data-contact-ref="whatsapp" href="#">WhatsApp</a>: báo loại xe, ngày nhận, ngày trả và nơi muốn nhận xe.</li>
+    <li>Cửa hàng xác nhận giá thực tế, tiền đặt cọc (từ {{ business.policies.deposit.min }} đến {{ business.policies.deposit.max }} tùy xe) và thời gian giao nhận trước khi giao xe; chuẩn bị giấy tờ theo <a href="/chinh-sach/">chính sách thuê xe</a>.</li>
+  </ol>
+</section>
+<section class="blog-legal-card">
   <h2>Website cửa hàng</h2>
-  <p>Bảng giá đầy đủ theo dòng xe, lịch xe và đặt xe trực tiếp nằm trên website chính của cửa hàng: <a href="https://thuexemaynguyentu.com/" rel="noopener">thuexemaynguyentu.com</a>. Trang này là trợ lý hỏi đáp và thư viện bài hướng dẫn, pháp lý đi kèm.</p>
+  <p>Website chính của cửa hàng: <a href="https://thuexemaynguyentu.com/" rel="noopener">thuexemaynguyentu.com</a>. Trang này có <a href="/gia-thue/">bảng giá tham khảo</a>, Agent hỏi đáp và thư viện bài hướng dẫn, pháp lý đi kèm.</p>
 </section>
 <section class="blog-legal-card">
   <h2>Hỗ trợ nhanh</h2>
-  <p>Muốn hỏi về giá, xe, thủ tục? Hỏi <a href="/">Agent</a> — trả lời ngay trên web. Xem thêm <a href="/gia-thue/">bảng giá</a> và <a href="/chinh-sach/">chính sách thuê xe</a>.</p>
+  <p>Muốn hỏi về giá, xe, thủ tục? Hỏi <a href="/agent/">Agent</a> — trả lời ngay trên web. Xem thêm <a href="/gia-thue/">bảng giá</a> và <a href="/chinh-sach/">chính sách thuê xe</a>.</p>
 </section>
 <section class="blog-legal-card">
   <h2>Đối tác du lịch</h2>

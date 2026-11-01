@@ -77,7 +77,7 @@ Kết luận: từ khóa thương mại Hà Nội (bao gồm head, giá, xe đi�
 - **Trang trụ cột (pillar):** `/gia-thue/` · pillar nội dung `/blog/thue-xe/thue-xe-may-gia-re/`
 - **Bài trong cụm:** 69 (10 pillar họ chủ đề, 59 bài hỗ trợ)
   - Tính chi phí thuê xe theo ngày tuần tháng: chọn gói nào hợp lý — `/blog/app/tinh-chi-phi-thue-xe-theo-ngay-tuan-thang/` (từ khóa: tính chi phí thuê xe theo ngày tuần tháng)
-  - Bảng giá thuê xe máy tham khảo: theo ngày, tuần, tháng — `/blog/thue-xe/bang-gia-thue-xe-tham-khao/` (từ khóa: bảng giá thuê xe máy tham khảo)
+  - Giá thuê xe máy theo dòng xe: xe số, xe ga, 50cc khác nhau ra sao — `/blog/thue-xe/bang-gia-thue-xe-tham-khao/` (từ khóa: giá thuê xe máy theo dòng xe)
   - Cách đọc bảng giá thuê xe máy: giá niêm yết và chi phí thực — `/blog/thue-xe/cach-doc-bang-gia-thue-xe/` (từ khóa: cách đọc bảng giá thuê xe máy)
   - Giá thuê xe máy có thay đổi theo mùa không: khi nào nhích lên — `/blog/thue-xe/gia-thue-thay-doi-theo-mua-khong/` (từ khóa: giá thuê xe máy có thay đổi theo mùa không)
   - Giá thuê xe máy theo ngày: giá từng dòng xe, cách tính ngày — `/blog/thue-xe/gia-thue-xe-may-theo-ngay/` (từ khóa: giá thuê xe máy theo ngày)
