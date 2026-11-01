@@ -554,6 +554,34 @@
       "cannibalization": "Hub không dùng từ khóa chính của bài (kiểm bằng test). Đổi trước khi đăng: hub thuê tháng → 'thuê xe máy dài hạn Hà Nội' (BA-0020 giữ 'thuê xe máy theo tháng'), hub thuê tuần → 'gói thuê xe máy theo tuần' (BA-0014 giữ 'thuê xe máy theo tuần'), hub đặt cọc → 'đặt cọc thuê xe máy' (BA-0080 giữ 'cọc thuê xe máy bao nhiêu'). Hub Thủ tục (Thuê Xe) → 'bằng lái và điều kiện thuê xe máy' (BA-0004 giữ 'thủ tục thuê xe máy').",
       "review_by": "Trước 31/12/2026: câu khung giờ hạn chế quanh Hồ Gươm trong guide /blog/dia-phuong/diem-tham-quan/ gắn với giai đoạn thí điểm 01/7–31/12/2026 (QĐ 3273).",
       "rollback": "Xóa mục trong data/blog/hub-guides.json → hub về bản cũ khi build lại; hoặc revert commit.",
+      "live_verified": "2026-11-01 sau merge #59 (1727b56): /blog/thue-xe/gia-thue/ (H1 \"Cách tính giá thuê xe máy\", title/meta từ guide, 2 mục H2 dưới lưới bài), /blog/xe-dien/ (đoạn trả lời: giá xe điện chưa công bố), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm 19–24 giờ cuối tuần quanh Hồ Gươm). Ghi sổ work-status DONE_LIVE 22 URL."
+    },
+    {
+      "batch_id": "M5-HUB-GUIDES-2",
+      "reviewed": "2026-11-01",
+      "scope": "HUB-CONTENT: 17 hub Hướng Dẫn (danh mục + thủ tục, giấy tờ, nhận xe, trả xe, đặt xe, bản đồ), Thuê Xe nhận xe / trả xe, An Toàn (danh mục + pháp luật, lái xe, mũ bảo hiểm, bằng lái, sự cố, thời tiết, đường dài); sửa chính tả BA-0427.",
+      "urls": [
+        "/blog/an-toan/",
+        "/blog/an-toan/bang-lai/",
+        "/blog/an-toan/du-lich/",
+        "/blog/an-toan/lai-xe/",
+        "/blog/an-toan/mu-bao-hiem/",
+        "/blog/an-toan/phap-luat/",
+        "/blog/an-toan/su-co/",
+        "/blog/an-toan/thoi-tiet/",
+        "/blog/huong-dan/",
+        "/blog/huong-dan/ban-do/",
+        "/blog/huong-dan/dat-xe/",
+        "/blog/huong-dan/giay-to/",
+        "/blog/huong-dan/nhan-xe/",
+        "/blog/huong-dan/thu-tuc/",
+        "/blog/huong-dan/tra-xe/",
+        "/blog/thue-xe/nhan-xe/",
+        "/blog/thue-xe/tra-xe/",
+        "BA-0427"
+      ],
+      "changes": "data/blog/hubs/huong-dan*, an-toan*, thue-xe/nhan-xe, thue-xe/tra-xe + data/blog/hub-guides.json. Tách ý định hub trùng nhãn: Hướng Dẫn › Thủ tục = hợp đồng, cọc, gia hạn, đổi xe (Thuê Xe › Thủ tục = bằng lái và điều kiện); Hướng Dẫn › Nhận xe = các bước tại quầy (Thuê Xe › Nhận xe = chuẩn bị trước giờ nhận); Hướng Dẫn › Trả xe = quy trình và hoàn cọc (Thuê Xe › Trả xe = giờ trả và phí trễ hạn); hai bên liên kết chéo. Hub Thời tiết mở rộng sang bài mưa lớn, mùa đông, nắng nóng ở mục khác; hub Đường dài nối bài đồ đi phượt, đường trường, xe điện đi xa. Pháp lý chỉ từ data/seo/legal-facts.json (Luật 36/2024/QH15 Điều 56, 57, 89; NĐ 168/2024/NĐ-CP, NĐ 238/2026/NĐ-CP; TT 38/2024/TT-BGTVT; TT 04/2021/TT-BKHCN – QCVN 2:2021/BKHCN); không ghi mức phạt bằng tiền trong hub (dẫn về bài). Cửa hàng không cung cấp bảo hiểm (business.json). BA-0427: tiêu đề mục 'menu bấm chon' → 'menu bấm chọn' (tools/seo-body-review.mjs replace:1, QA không giảm). tools/build-blog.mjs: title trang 2+ của hub có guide = '<H1> — <danh mục> — trang N', rút gọn còn '<H1> — trang N' khi vượt giới hạn 65 ký tự (audit TITLE-LEN).",
+      "rollback": "Xóa mục trong data/blog/hub-guides.json; BA-0427: git revert.",
       "live_verified": "chờ deploy"
     }
   ],
@@ -564,8 +592,8 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "M4-TAXONOMY-PRECISION",
-  "last_verified_commit": "ae70494a",
+  "last_completed_batch": "M5-HUB-GUIDES-1",
+  "last_verified_commit": "1727b56e",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
   "next_article_ids_note": "Lô M5 tiếp: guide cho hub Hướng Dẫn (danh mục + thủ tục, nhận xe, giấy tờ, trả xe, đặt xe, bản đồ) cùng hub Thuê Xe nhận xe / trả xe (liên kết chéo, tránh trùng ý định), An Toàn (danh mục + pháp luật, lái xe, mũ bảo hiểm, bằng lái, sự cố, thời tiết, du lịch), Ứng Dụng (danh mục + 7 chủ đề con), 3 hub cụm và /blog/; M6: ngưỡng tối thiểu bài/hub (THIN-HUB: huong-dan/chuan-bi 1 bài). Sau đó D01–D09 đoạn văn trùng (162 bài, bài thương mại trước), BODY-STRUCT, C08+ LEGAL-CHECK, đề xuất LOCAL-SCOPE (RR-13). Sửa nhỏ chờ lô nội dung: BA-0427 tiêu đề mục \"menu bấm chon\" → \"chọn\". Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), giá xe điện/xe đạp điện (RR-14), phí giao xe (RR-15), cách ghi địa chỉ (RR-16), giấy tờ bắt buộc khi thuê (RR-18). Nhà máy ảnh: EXCLUDED.",

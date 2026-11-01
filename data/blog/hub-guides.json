@@ -190,6 +190,153 @@
       "body": "data/blog/hubs/dia-phuong/ha-noi.body.html",
       "batch": "M5-HUB-EV-LOCAL",
       "reviewed": "2026-11-01"
+    },
+    "/blog/huong-dan/": {
+      "keyword": "hướng dẫn thuê xe máy",
+      "body": "data/blog/hubs/huong-dan.body.html",
+      "batch": "M5-HUB-GUIDE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/huong-dan/thu-tuc/": {
+      "keyword": "hợp đồng và đặt cọc khi thuê xe máy",
+      "h1": "Hợp đồng, cọc, gia hạn và đổi xe",
+      "seo_title": "Hợp đồng thuê xe máy, đặt cọc, gia hạn, đổi xe: làm thế nào",
+      "meta": "Hợp đồng thuê xe máy cần ghi gì, đặt cọc và nhận lại cọc ra sao, giao xe tận nơi, đổi xe giữa kỳ và gia hạn: từng việc kèm danh sách kiểm tra in sẵn.",
+      "body": "data/blog/hubs/huong-dan/thu-tuc.body.html",
+      "batch": "M5-HUB-GUIDE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/huong-dan/giay-to/": {
+      "keyword": "giấy tờ thuê xe theo từng trường hợp",
+      "h1": "Giấy tờ theo từng trường hợp",
+      "seo_title": "Giấy tờ thuê xe theo từng trường hợp: CCCD, hộ chiếu, bản dịch",
+      "meta": "Giấy tờ thuê xe máy theo từng trường hợp: người Việt, người nước ngoài, giấy tờ tiếng nước ngoài cần dịch; bằng lái theo loại xe và danh sách kiểm tra từng chặng.",
+      "body": "data/blog/hubs/huong-dan/giay-to.body.html",
+      "batch": "M5-HUB-GUIDE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/huong-dan/nhan-xe/": {
+      "keyword": "nhận xe máy thuê",
+      "h1": "Nhận xe máy thuê",
+      "seo_title": "Nhận xe máy thuê: kiểm tra, chụp ảnh, nhận sớm và buổi tối",
+      "meta": "Nhận xe máy thuê trong mười phút: kiểm tra phanh, đèn, lốp, mức xăng, chụp ảnh vết xước có sẵn trước khi ký nhận; nhận xe sớm, buổi tối và danh sách kiểm tra.",
+      "body": "data/blog/hubs/huong-dan/nhan-xe.body.html",
+      "batch": "M5-HUB-GUIDE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/huong-dan/tra-xe/": {
+      "keyword": "trả xe máy thuê",
+      "h1": "Trả xe máy thuê",
+      "seo_title": "Trả xe máy thuê: quy trình, mức xăng, giờ trả và hoàn cọc",
+      "meta": "Trả xe máy thuê gồm bốn việc: về đúng giờ, kiểm tra mức xăng theo thỏa thuận, đối chiếu tình trạng xe với ảnh lúc giao, nhận lại cọc; gia hạn khi biết sẽ về muộn.",
+      "body": "data/blog/hubs/huong-dan/tra-xe.body.html",
+      "batch": "M5-HUB-GUIDE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/huong-dan/dat-xe/": {
+      "keyword": "đặt xe máy thuê",
+      "h1": "Đặt xe máy thuê",
+      "seo_title": "Đặt xe máy thuê: gửi đủ thông tin một lần, đổi hoặc hủy lịch",
+      "meta": "Đặt xe máy thuê nhanh: gửi loại xe, giờ nhận, giờ trả, nơi nhận xe trong một lần; cửa hàng xác nhận giá, cọc, giao nhận trước khi giao xe; hủy lịch đúng cách.",
+      "body": "data/blog/hubs/huong-dan/dat-xe.body.html",
+      "batch": "M5-HUB-GUIDE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/huong-dan/ban-do/": {
+      "keyword": "dẫn đường khi đi xe máy thuê",
+      "h1": "Bản đồ và dẫn đường",
+      "seo_title": "Dẫn đường khi đi xe máy thuê: ứng dụng bản đồ, định vị, gửi xe",
+      "meta": "Dẫn đường khi đi xe máy thuê ở Hà Nội: tìm điểm nhận xe, dựng tuyến tránh đường cấm và một chiều, đánh dấu chỗ gửi xe, dùng giá đỡ điện thoại khi lái.",
+      "body": "data/blog/hubs/huong-dan/ban-do.body.html",
+      "batch": "M5-HUB-GUIDE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/thue-xe/nhan-xe/": {
+      "keyword": "chuẩn bị nhận xe thuê",
+      "h1": "Chuẩn bị nhận xe thuê",
+      "seo_title": "Chuẩn bị nhận xe thuê: giấy tờ, tiền cọc và năm phút kiểm tra",
+      "meta": "Chuẩn bị nhận xe thuê: giấy tờ tùy thân và bằng lái phù hợp, tiền cọc theo loại xe, vài phút kiểm tra cùng nhân viên; bài cho dịp lễ, sinh viên, gia đình, cuối tuần.",
+      "body": "data/blog/hubs/thue-xe/nhan-xe.body.html",
+      "batch": "M5-HUB-GUIDE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/thue-xe/tra-xe/": {
+      "keyword": "giờ trả xe và phí trễ hạn",
+      "h1": "Giờ trả xe và phí trễ hạn",
+      "seo_title": "Phí trễ hạn và giờ trả xe thuê: cách tính, cách tránh",
+      "meta": "Phí trễ hạn và giờ trả xe thuê: giờ trả nằm trong giờ hoạt động, phí trễ theo hợp đồng, báo sớm để gia hạn; bài cho dịp lễ, cuối tuần, chạy phố, gia đình.",
+      "body": "data/blog/hubs/thue-xe/tra-xe.body.html",
+      "batch": "M5-HUB-GUIDE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/an-toan/": {
+      "keyword": "luật giao thông khi thuê xe máy",
+      "body": "data/blog/hubs/an-toan.body.html",
+      "batch": "M5-HUB-SAFE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/an-toan/phap-luat/": {
+      "keyword": "mức phạt lỗi xe máy thường gặp",
+      "h1": "Luật giao thông và mức phạt xe máy",
+      "seo_title": "Mức phạt lỗi xe máy thường gặp: nồng độ cồn, tốc độ, điện thoại",
+      "meta": "Mức phạt lỗi xe máy thường gặp theo Nghị định 168/2024/NĐ-CP: nồng độ cồn, quá tốc độ, điện thoại, ngược chiều, đèn đỏ; xe thuê bị phạt nguội thì ai bị liên hệ.",
+      "body": "data/blog/hubs/an-toan/phap-luat.body.html",
+      "batch": "M5-HUB-SAFE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/an-toan/lai-xe/": {
+      "keyword": "kỹ năng lái xe máy an toàn",
+      "h1": "Kỹ năng lái xe máy an toàn",
+      "seo_title": "Kỹ năng lái xe máy an toàn: phanh, khoảng cách, đèn, trời mưa",
+      "meta": "Kỹ năng lái xe máy an toàn trong phố Hà Nội: phanh gấp, khoảng cách với xe trước, chỉnh gương, đèn khi chạy đêm, lái khi mưa lớn và quy định dùng điện thoại.",
+      "body": "data/blog/hubs/an-toan/lai-xe.body.html",
+      "batch": "M5-HUB-SAFE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/an-toan/mu-bao-hiem/": {
+      "keyword": "chọn và đội mũ bảo hiểm khi thuê xe",
+      "h1": "Mũ bảo hiểm khi thuê xe",
+      "seo_title": "Mũ bảo hiểm đạt chuẩn và đội đúng cách: khi thuê xe, khi chở trẻ",
+      "meta": "Mũ bảo hiểm khi thuê xe máy: mũ đạt QCVN 2:2021/BKHCN và dấu hợp quy, kiểm tra vỏ, xốp, quai, cài quai đúng cách; mũ riêng cho trẻ em, lưu ý cho du khách.",
+      "body": "data/blog/hubs/an-toan/mu-bao-hiem.body.html",
+      "batch": "M5-HUB-SAFE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/an-toan/bang-lai/": {
+      "keyword": "hạng bằng lái xe máy",
+      "h1": "Bằng lái xe máy: hạng và giấy phép quốc tế",
+      "seo_title": "Hạng bằng lái xe máy A1, A và giấy phép quốc tế: lái xe nào",
+      "meta": "Hạng bằng lái xe máy theo Luật 36/2024/QH15: A1 đến 125 cm³, A trên 125 cm³, bằng cấp trước 2025 vẫn dùng; giấy phép lái xe quốc tế Công ước 1968 kèm bằng quốc gia.",
+      "body": "data/blog/hubs/an-toan/bang-lai.body.html",
+      "batch": "M5-HUB-SAFE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/an-toan/su-co/": {
+      "keyword": "xử lý tai nạn khi đi xe thuê",
+      "h1": "Khi gặp tai nạn với xe thuê",
+      "seo_title": "Gặp tai nạn khi đi xe thuê: gọi ai, trách nhiệm, việc cần làm",
+      "meta": "Gặp tai nạn khi đi xe máy thuê: dừng xe an toàn, gọi 115, 113 khi cần, chụp ảnh hiện trường, báo cửa hàng; trách nhiệm bồi thường với xe thuê và người khác.",
+      "body": "data/blog/hubs/an-toan/su-co.body.html",
+      "batch": "M5-HUB-SAFE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/an-toan/thoi-tiet/": {
+      "keyword": "đi xe máy khi thời tiết xấu",
+      "h1": "Đi xe máy khi thời tiết xấu",
+      "seo_title": "Đi xe máy khi thời tiết xấu ở Hà Nội: mưa lớn, sương mù, nắng",
+      "meta": "Đi xe máy khi thời tiết xấu ở Hà Nội: lái khi mưa lớn, sương mù mùa đông, nắng nóng mùa hè — giảm tốc, giữ khoảng cách, bật đèn và khi nào nên dừng chờ.",
+      "body": "data/blog/hubs/an-toan/thoi-tiet.body.html",
+      "batch": "M5-HUB-SAFE",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/an-toan/du-lich/": {
+      "keyword": "đi xe máy đường dài an toàn",
+      "h1": "An toàn khi đi xe máy đường dài",
+      "seo_title": "Đi xe máy đường dài an toàn: chia chặng, nghỉ, kiểm tra xe",
+      "meta": "Đi xe máy đường dài an toàn: chia chặng và nghỉ đều để tránh mệt, kiểm tra phanh, lốp, đèn, xăng hoặc pin trước chuyến, đồ cần mang và gợi ý cung đường từ Hà Nội.",
+      "body": "data/blog/hubs/an-toan/du-lich.body.html",
+      "batch": "M5-HUB-SAFE",
+      "reviewed": "2026-11-01"
     }
   }
 }

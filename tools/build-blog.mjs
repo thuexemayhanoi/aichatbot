@@ -30,7 +30,7 @@ import {
 import {
   SITE, esc, rel, pageHead, askAgentAction, appShellPage, AGENT_URL
 } from './app-shell.mjs';
-import { loadSeoMeta, assertSeoMeta, applySeoMeta } from './seo-meta.mjs';
+import { loadSeoMeta, assertSeoMeta, applySeoMeta, LIMITS as SEO_LIMITS } from './seo-meta.mjs';
 import { buildCss, syncChatTokens, syncEmbedTokens } from './css-build.mjs';
 import { buildAgent } from './agent-page.mjs';
 import { BLOG_HOME, SITE_HOME, SITE_PAGES } from './site-pages.mjs';
@@ -695,6 +695,13 @@ ${nav}${lead ? lead.more : ''}${sibling ? `      <p class="blog-hub-sibling">${e
  *  hundreds of articles never ships one multi-hundred-KB page (lô M3). Page 1
  *  keeps its URL; every page has its own canonical, title and description.
  *  Returns the built paths (page 1 first). */
+/** Title of list page N (> 1): "<heading> — <hub> — trang N", shortened to
+ *  "<heading> — trang N" when that would pass the SERP title limit. */
+function pagedTitle(heading, hubName, pageNo) {
+  const full = `${heading} — ${hubName} — trang ${pageNo}`;
+  return full.length <= SEO_LIMITS.titleMax ? full : `${heading} — trang ${pageNo}`;
+}
+
 function buildSubtopic(hub, sub, articles, business = null, plannedPaths = new Set()) {
   const cluster = CLUSTER_BY_ID[hub.cluster];
   const base = `/blog/${hub.dir}/${sub.slug}/`;
@@ -725,7 +732,7 @@ ${paginationNav(base, pageNo, pages)}${lead ? lead.more : ''}${askAgentAction(`$
     // The guide's meta describes page 1 only; list pages keep the generated one.
     const description = pageNo === 1 ? (guide?.meta ?? listDescription) : `${listDescription} Trang ${pageNo}.`;
     const html = appShellPage({
-      title: pageNo === 1 ? (guide?.seoTitle ?? `${sub.label} — ${hub.name} — Cẩm nang thuê xe máy`) : (guide ? `${heading} — trang ${pageNo}` : `${sub.label} — ${hub.name} — trang ${pageNo}`),
+      title: pageNo === 1 ? (guide?.seoTitle ?? `${sub.label} — ${hub.name} — Cẩm nang thuê xe máy`) : pagedTitle(guide ? heading : sub.label, hub.name, pageNo),
       // v70: own 120–165 char description (the old "label trong hub: hub.meta"
       // pattern exceeded the SERP length and repeated the hub description).
       description,
