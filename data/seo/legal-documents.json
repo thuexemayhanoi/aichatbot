@@ -1,7 +1,7 @@
 {
  "$schema": "motoai/legal-documents@1",
  "note": "Sổ đăng ký hiệu lực các văn bản pháp luật được bài viết trích dẫn (tools/seo-legal-citations.mjs đối chiếu từng trích dẫn trong body với sổ này). status: in_force | amended | replaced | unverified. evidence: fulltext = đã đối chiếu toàn văn (dữ kiện ở data/seo/legal-facts.json); reported = số hiệu, ngày ban hành, ngày hiệu lực và việc thay thế lấy từ Cổng TTĐT Chính phủ/Công báo, cổng công an hoặc nhà xuất bản luật (tiêu đề và bản tin), chưa đọc toàn văn; unverified = chưa đối chiếu trong vòng rà soát nào, chỉ ghi nhận bài đang dẫn. Mọi con số đưa vào bài vẫn chỉ qua legal-facts.json (đối chiếu toàn văn). cite = khóa trích dẫn dạng 'loại|số/năm' (chữ thường); names = tên văn bản khi bài dẫn không kèm số hiệu; suffix = ký hiệu đúng để phát hiện lỗi gõ.",
- "checked": "2026-10-31",
+ "checked": "2026-11-01",
  "documents": [
   {
    "id": "luat-36-2024",
@@ -27,14 +27,18 @@
     "luat-36-2024-dieu-89-chuyen-tiep",
     "luat-36-2024-dieu-13-lan-duong",
     "luat-36-2024-dieu-57-idp",
-    "luat-36-2024-dieu-56-mang-theo"
+    "luat-36-2024-dieu-56-mang-theo",
+    "luat-36-2024-dieu-33-cho-nguoi-mu",
+    "luat-36-2024-dieu-80-tai-nan",
+    "luat-36-2024-dieu-88-thay-luat-2008",
+    "luat-36-2024-dieu-5-tre-em-xe-may"
    ],
    "sources": [
     "https://vanban.chinhphu.vn/?pageid=27160&docid=211194",
     "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/3/55-vbhn-vpqh.pdf",
     "https://thuvienphapluat.vn/van-ban/Giao-thong-Van-tai/Luat-trat-tu-an-toan-giao-thong-duong-bo-2024-so-36-2024-QH15-444251.aspx"
    ],
-   "note": "Sửa đổi, bổ sung bởi Luật 118/2025/QH15 (hiệu lực 01/7/2026; riêng khoản 2 Điều 88 từ 01/01/2026). Đối chiếu văn bản hợp nhất 55/VBHN-VPQH ngày 2026-10-31: các điều khoản bài đang dẫn không có chú thích sửa đổi — Điều 13 (làn đường), Điều 34 khoản 1 điểm e, g và khoản 2 điểm b, Điều 56 khoản 1, Điều 57 khoản 1 điểm a–c, khoản 6 và khoản 8, Điều 59 khoản 1, Điều 89 khoản 1–2; quy định kiểm định xe mô tô, xe gắn máy chỉ thực hiện kiểm định khí thải cũng không có chú thích sửa đổi. Các chú thích sửa đổi nằm ở điều khoản bài không dẫn: thay thẩm quyền Bộ Giao thông vận tải bằng Bộ Xây dựng hoặc Bộ Công an (ví dụ khoản 9 Điều 57), kiểm định, đào tạo, sát hạch, cấp giấy phép lái xe, cơ sở dữ liệu và thiết bị ghi hình. Lần tìm văn bản sửa đổi ngày 2026-10-16 đã bỏ sót Luật 118; phát hiện khi đối chiếu nguồn lô C06.",
+   "note": "Sửa đổi, bổ sung bởi Luật 118/2025/QH15 (hiệu lực 01/7/2026; riêng khoản 2 Điều 88 từ 01/01/2026). Đối chiếu văn bản hợp nhất 55/VBHN-VPQH ngày 2026-10-31: các điều khoản bài đang dẫn không có chú thích sửa đổi — Điều 13 (làn đường), Điều 34 khoản 1 điểm e, g và khoản 2 điểm b, Điều 56 khoản 1, Điều 57 khoản 1 điểm a–c, khoản 6 và khoản 8, Điều 59 khoản 1, Điều 89 khoản 1–2; quy định kiểm định xe mô tô, xe gắn máy chỉ thực hiện kiểm định khí thải cũng không có chú thích sửa đổi. Các chú thích sửa đổi nằm ở điều khoản bài không dẫn: thay thẩm quyền Bộ Giao thông vận tải bằng Bộ Xây dựng hoặc Bộ Công an (ví dụ khoản 9 Điều 57), kiểm định, đào tạo, sát hạch, cấp giấy phép lái xe, cơ sở dữ liệu và thiết bị ghi hình. Lần tìm văn bản sửa đổi ngày 2026-10-16 đã bỏ sót Luật 118; phát hiện khi đối chiếu nguồn lô C06. Lô C08 (2026-11-01) đối chiếu thêm văn bản hợp nhất 55/VBHN-VPQH: Điều 5 khoản 7 (gia đình nhắc dùng dây đai, ghế trẻ em hoặc người lớn ngồi cùng khi chở trẻ dưới 06 tuổi bằng xe máy), Điều 11 khoản 4 (đèn tín hiệu 03 màu), Điều 33 khoản 1–3 (chở người, mũ bảo hiểm, dàn hàng ngang), Điều 80 khoản 1 (trách nhiệm khi tai nạn), Điều 88 khoản 3 (Luật Giao thông đường bộ 23/2008/QH12 hết hiệu lực) — không có chú thích sửa đổi.",
    "amended_by": "luat-118-2025",
    "amended_from": "2026-07-01",
    "amendment_checked": "2026-10-31"
@@ -315,14 +319,17 @@
     "nd-168-2024-dieu-7-toc-do",
     "nd-168-2024-dieu-18-mang-theo-giay-to",
     "nd-168-2024-dieu-18-khong-co-gplx",
-    "nd-168-2024-dieu-32-khi-thai"
+    "nd-168-2024-dieu-32-khi-thai",
+    "nd-168-2024-dieu-7-cho-nguoi-mu-bao-hiem",
+    "nd-168-2024-dieu-7-gay-tai-nan",
+    "nd-168-2024-dieu-7-ma-tuy"
    ],
    "sources": [
     "https://vanban.chinhphu.vn/?pageid=27160&docid=212167&classid=1&orggroupid=2",
     "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2024/12/43733/54010-1-202575-76168-2024-nd-cp.pdf",
     "https://thuvienphapluat.vn/van-ban/Vi-pham-hanh-chinh/Nghi-dinh-168-2024-ND-CP-xu-phat-vi-pham-hanh-chinh-trat-tu-an-toan-giao-thong-duong-bo-619502.aspx"
    ],
-   "note": "Toàn văn Công báo số 75+76 (16/01/2025) đã đối chiếu cho Điều 7, 14, 18, 32, 53 (2026-10-23). So với toàn văn Nghị định 238/2026/NĐ-CP (bản ký số, đọc từng trang): các khung phạt bài đang dẫn (Điều 7 khoản 1–10; Điều 14 khoản 1–3; Điều 18 khoản 2, 4, 5, 7; Điều 32 khoản 1, 10) giữ nguyên mức tiền; Nghị định 238 chỉ bổ sung cụm từ ở điểm e khoản 1 (chuyển làn không bảo đảm khoảng cách an toàn) và điểm b khoản 6 Điều 7 (khu vực cấm theo quy định của cấp có thẩm quyền), thêm biện pháp buộc thay thế/khôi phục thiết bị cho khoản 1 và điểm d khoản 2 Điều 14, sửa điểm b khoản 3 Điều 14 (biển số), sửa điểm a khoản 4 Điều 18 (người từ đủ 16 đến dưới 18 tuổi điều khiển xe mô tô, bỏ ngưỡng 50 cm³/4 kW), bãi bỏ điểm d, đ, e, g khoản 17 Điều 32; hành vi kết thúc trước 15/8/2026 xử theo văn bản có hiệu lực lúc vi phạm (Điều 21). Đối chiếu toàn văn phát hiện bài ghi sai mức phạt (chuyển làn, điện thoại, nồng độ cồn mức 1, tốc độ) và áp mức 200.000–300.000 đồng của lỗi không mang theo giấy tờ (chỉ dành cho xe kinh doanh vận tải) cho mọi người lái — đã sửa qua tools/seo-body-review.mjs.",
+   "note": "Toàn văn Công báo số 75+76 (16/01/2025) đã đối chiếu cho Điều 7, 14, 18, 32, 53 (2026-10-23). So với toàn văn Nghị định 238/2026/NĐ-CP (bản ký số, đọc từng trang): các khung phạt bài đang dẫn (Điều 7 khoản 1–10; Điều 14 khoản 1–3; Điều 18 khoản 2, 4, 5, 7; Điều 32 khoản 1, 10) giữ nguyên mức tiền; Nghị định 238 chỉ bổ sung cụm từ ở điểm e khoản 1 (chuyển làn không bảo đảm khoảng cách an toàn) và điểm b khoản 6 Điều 7 (khu vực cấm theo quy định của cấp có thẩm quyền), thêm biện pháp buộc thay thế/khôi phục thiết bị cho khoản 1 và điểm d khoản 2 Điều 14, sửa điểm b khoản 3 Điều 14 (biển số), sửa điểm a khoản 4 Điều 18 (người từ đủ 16 đến dưới 18 tuổi điều khiển xe mô tô, bỏ ngưỡng 50 cm³/4 kW), bãi bỏ điểm d, đ, e, g khoản 17 Điều 32; hành vi kết thúc trước 15/8/2026 xử theo văn bản có hiệu lực lúc vi phạm (Điều 21). Đối chiếu toàn văn phát hiện bài ghi sai mức phạt (chuyển làn, điện thoại, nồng độ cồn mức 1, tốc độ) và áp mức 200.000–300.000 đồng của lỗi không mang theo giấy tờ (chỉ dành cho xe kinh doanh vận tải) cho mọi người lái — đã sửa qua tools/seo-body-review.mjs. Lô C08 (2026-11-01) đối chiếu thêm Công báo số 75 + 76: Điều 7 khoản 1 điểm g (đèn chiếu sáng 18 giờ–06 giờ), khoản 2 điểm g, h, i và khoản 3 điểm b (chở người, mũ bảo hiểm), khoản 7 điểm a (đi ngược chiều; không có hành vi \"đi lùi\"), khoản 9 điểm e, g và khoản 12 điểm c (ma túy), khoản 10 và khoản 13 điểm d (gây tai nạn 10–14 triệu đồng, trừ 10 điểm); Điều 6 khoản 11 (ô tô: 30–40 triệu đồng); Điều 18 khoản 4, 5, 7; Điều 32 khoản 10 (giao xe cho người không đủ điều kiện). Nghị định 238/2026/NĐ-CP không sửa mức tiền các khoản này.",
    "amendment_checked": "2026-10-23"
   },
   {

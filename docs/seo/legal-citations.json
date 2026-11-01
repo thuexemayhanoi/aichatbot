@@ -1,6 +1,6 @@
 {
  "$schema": "motoai/legal-citations@1",
- "registry_checked": "2026-10-31",
+ "registry_checked": "2026-11-01",
  "articles_scanned": 323,
  "counts": {
   "needs_fix": 0,
@@ -253,7 +253,6 @@
     "BA-2002"
    ],
    "articles_historical": [
-    "BA-0005",
     "BA-2001"
    ],
    "by_name": [
@@ -883,7 +882,7 @@
     "BA-1649"
    ],
    "by_name": [],
-   "mentions": 534
+   "mentions": 535
   },
   {
    "id": "nd-238-2026",
