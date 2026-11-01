@@ -1250,7 +1250,9 @@
       ],
       "scope": "APP-CLAIM lô 1: câu kết bài nói trợ lý MotoAI cho biết 'xe còn trống', 'mẫu xe đang sẵn' hoặc giúp 'giữ xe'. Ứng dụng thực tế (src/app, src/recommend, src/calc): trò chuyện, ước tính giá theo gói ngày/tuần/tháng từ data/business/pricing.json, gợi ý dòng xe, thông tin cọc/giờ/địa chỉ/giao xe; nút 'Đặt xe' dẫn tới liên hệ. Ứng dụng không có dữ liệu xe còn trống, không giữ chỗ, không có đơn đặt hay thanh toán.",
       "changes": "Sửa 30 bài qua tools/seo-body-review.mjs: trợ lý cho giá tham khảo, còn xe trống hay không thì cửa hàng xác nhận (qua điện thoại/nhắn tin); BA-0050 'trợ lý đặt xe' → 'trợ lý giúp xem trước giá tham khảo'; BA-1488 giữ xe qua nhắn cửa hàng, không qua trợ lý; BA-0410/0416/0422 bỏ 'sẵn xe cho lịch trình', 'xe luôn được kiểm tra trước mỗi lượt giao' (chưa xác minh) → lời khuyên kiểm tra xe cùng nhân viên; BA-0429 quãng chạy từng dòng xe điện do cửa hàng xác nhận.",
-      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6."
+      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6.",
+      "live_verified": "2026-11-01",
+      "live_note": "Pages c9b53bea: đã kiểm live BA-0410, BA-1014. 30 URL DONE_LIVE."
     },
     {
       "batch_id": "APP2",
@@ -1287,6 +1289,23 @@
       "scope": "APP-CLAIM lô 2: câu nói trợ lý/ứng dụng báo xe còn trống, mẫu xe đang sẵn, tình trạng sẵn có theo ngày nhận hoặc giữ chỗ; BA-0100 sửa câu trùng do lô NAP3 gây ra.",
       "changes": "tools/seo-master-2026.py: bộ dò FEATURE-CLAIM thêm nhóm AVAIL_CLAIM (trợ lý/ứng dụng/MotoAI + 'xe còn trống/đang sẵn/tình trạng sẵn có/giữ chỗ'), bỏ qua câu đã nói cửa hàng xác nhận hoặc trợ lý không làm việc này; trước lô: 19 bài bị gắn cờ, sau lô: 0. Sửa 26 bài qua tools/seo-body-review.mjs: trợ lý cho giá tham khảo và gợi ý dòng xe, còn xe trống, giữ chỗ do cửa hàng xác nhận qua tin nhắn/điện thoại; BA-0315 bỏ mô tả ứng dụng chọn khu vực xem xe điện gần đó và nhập mã xác minh; BA-0091 bỏ 'đặt xe online chỉ với vài thao tác', 'MotoAI hoạt động từ … tại'; BA-1484/1485 xe điện là giá liên hệ, trợ lý hướng liên hệ cửa hàng. BA-0100: câu kết trùng 80 ký tự đầu với BA-0096 sau lô NAP3 (DUP-PARA 2 → 0).",
       "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6; hàng đợi chỉ còn LOCAL-SCOPE 286 (chờ chủ sở hữu)."
+    },
+    {
+      "batch_id": "CTA1",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-0411",
+        "BA-0723",
+        "BA-0060",
+        "BA-1185",
+        "BA-1497",
+        "BA-0314",
+        "BA-0543",
+        "BA-0755"
+      ],
+      "scope": "Câu hứa dịch vụ chưa có trong data/business/business.json: 'xe luôn được kiểm tra/bảo dưỡng trước mỗi lượt giao', 'đảm bảo không có hư hỏng', 'luôn sẵn xe'.",
+      "changes": "Sửa 8 bài qua tools/seo-body-review.mjs: đổi thành lời khuyên người thuê cùng nhân viên kiểm tra phanh, đèn, pin, truyền động khi nhận xe; BA-0314 bỏ 'đảm bảo không có hư hỏng hoặc lỗi kỹ thuật' và 'mọi thông tin đều được công khai'; BA-0755 MotoAI là trợ lý tra giá và thủ tục, xe nhận tại cửa hàng (không 'luôn sẵn xe').",
+      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6."
     }
   ],
   "rules": [
@@ -1296,11 +1315,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "NAP4-C13B",
-  "last_verified_commit": "982f5b2d",
+  "last_completed_batch": "APP1",
+  "last_verified_commit": "c9b53bea",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (tiếng Anh + báo xe còn trống/giữ chỗ), BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP4, APP1–APP2. Hàng đợi chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Tiếp: APP3 theo quyết định RR-21 (37 bài mô tả trạng thái đơn, mã đơn, nút hủy, thanh toán trong ứng dụng), câu hứa dịch vụ chưa xác minh còn lại trong CTA (quét 'luôn', 'sẵn sàng', 'miễn phí', 'nhanh'), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20), APP3 (RR-21).",
+  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0, BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP4, APP1–APP2, CTA1. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Có thể làm tiếp không cần chờ: QA-PROXY (1), rà các câu hứa dịch vụ khác khi có mẫu mới.",
   "p0_live_verified": [
     "/",
     "/gia-thue/",
@@ -1389,5 +1408,11 @@
       "BA-0877"
     ],
     "recommendation": "(a) — viết lại theo luồng thật, từng bài qua tools/seo-body-review.mjs, 10 bài/lô."
+  },
+  "review_required_equipment": {
+    "id": "RR-22",
+    "status": "REVIEW_REQUIRED",
+    "question": "Khoảng 86 bài nói mũ bảo hiểm 'đi kèm/giao kèm' xe thuê và 59 bài nhắc áo mưa đi kèm, nhưng data/business/business.json chưa ghi thông tin này. Chủ sở hữu xác nhận: (1) mỗi xe thuê có kèm mũ bảo hiểm không, bao nhiêu chiếc, có cỡ trẻ em không; (2) có kèm áo mưa không, miễn phí hay tính phí. Sau khi xác nhận, thêm vào business.json (policies.equipment) để bài viết dùng placeholder; nếu không kèm, các câu này sẽ được sửa qua quy trình review body.",
+    "evidence": "Quét bodies 2026-11-01: mẫu 'mũ bảo hiểm … kèm/đi kèm/giao kèm' 90 lần/86 bài; 'áo mưa … kèm/miễn phí/tặng' 77 lần/59 bài."
   }
 }
