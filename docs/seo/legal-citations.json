@@ -8,8 +8,8 @@
   "amended": 0,
   "unverified": 0,
   "unknown": 0,
-  "documents": 41,
-  "cited_documents": 38
+  "documents": 42,
+  "cited_documents": 39
  },
  "needs_fix": [],
  "wrong_suffix": [],
@@ -1174,6 +1174,22 @@
    "status": "in_force",
    "evidence": "fulltext",
    "effective": "2026-01-01",
+   "replaced_by": null,
+   "amended_by": null,
+   "amendment_checked": null,
+   "articles_current": [
+    "BA-0047"
+   ],
+   "articles_historical": [],
+   "by_name": [],
+   "mentions": 1
+  },
+  {
+   "id": "tt-29-2026-btc",
+   "title": "Thông tư 29/2026/TT-BTC quy định mức thu, miễn một số khoản phí, lệ phí để hỗ trợ việc kết nối, khai thác, sử dụng dữ liệu và khuyến khích thực hiện dịch vụ công trên ứng dụng VNeID",
+   "status": "in_force",
+   "evidence": "fulltext",
+   "effective": "2026-04-01",
    "replaced_by": null,
    "amended_by": null,
    "amendment_checked": null,

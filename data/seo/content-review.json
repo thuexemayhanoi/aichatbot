@@ -1,6 +1,5 @@
 {"$schema":"motoai/content-review@1",
 "note":"Phân loại nội dung từng bài cho SEO Master Matrix (tools/seo-master-audit.mjs). Chỉ ghi các bài BLOCKED (chờ dữ liệu/quyết định của chủ cửa hàng) hoặc REVIEW (còn dữ kiện chưa đối chiếu nguồn gốc) kèm lý do có bằng chứng. FIX lấy tự động từ cờ chưa xử lý trong config/seo-cold-start.json → content_flags; REVIEW cũng tự động cho bài dẫn văn bản pháp luật chưa đối chiếu toàn văn (docs/seo/legal-citations.json). Bài không thuộc nhóm nào là KEEP. Gỡ một bài khỏi tệp này khi đã xử lý xong.",
-"checked":"2026-10-26",
+"checked":"2026-11-01",
 "articles":{
-"BA-0047":{"status": "REVIEW", "reason": "Lệ phí cấp giấy phép lái xe quốc tế (135.000 đồng trực tiếp, 115.000 đồng trực tuyến) dẫn theo niêm yết của công an tỉnh, chưa đối chiếu thông tư lệ phí của Bộ Tài chính", "since": "2026-10-23"}
 }}
