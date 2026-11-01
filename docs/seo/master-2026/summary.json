@@ -135,13 +135,13 @@
   "cwv": "LAB only",
   "work": {
     "status": {
-      "DONE_LIVE": 266,
+      "DONE_LIVE": 296,
       "REVIEWED_OK": 54,
-      "OK": 1411,
-      "OPEN": 437
+      "OK": 1395,
+      "OPEN": 423
     },
     "open_codes": {
-      "LEGAL-CHECK": 137,
+      "LEGAL-CHECK": 123,
       "BODY-STRUCT": 14,
       "LOCAL-SCOPE": 286
     }

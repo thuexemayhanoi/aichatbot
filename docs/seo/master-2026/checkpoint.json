@@ -3,16 +3,16 @@
   "date": "2026-11-01",
   "last_completed_batch": "C09",
   "last_verified_commit": "d4eb438b",
-  "next": "Đã xong: M1–M6 (51 hub có đoạn dẫn, HUB-CONTENT 0), DUP-PARA 162 → 0 (D01–D06), FEATURE-CLAIM sửa 33 bài, LEGAL-CHECK C08 (20 bài). Tiếp: PTS2 (23 bài còn lại ghi sai điều kiện phục hồi 12 điểm — bản vá đã soạn) + BA-0005 (xe máy điện trên 4 kW là xe mô tô; người chở người không đội mũ là người bị phạt), C10 LEGAL-CHECK (20 bài + 'tước 10 điểm' → 'trừ 10 điểm' ở BA-0407, BA-0413, BA-0419, BA-0425; BA-0359 bỏ câu 'văn bản liên tịch'), C11+ LEGAL-CHECK, BODY-STRUCT (14), câu hứa dịch vụ chưa xác minh trong CTA (~50 câu), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "next": "Đã xong: M1–M6, DUP-PARA 162 → 0, FEATURE-CLAIM 0, LEGAL-CHECK C08, C09, C10. Tiếp: PTS2 (23 bài điều kiện phục hồi 12 điểm) + TN1 (BA-1481, BA-0917, BA-0911, BA-1469 — nghĩa vụ báo tin Điều 80) + BA-0005 (xe máy điện trên 04 kW là xe mô tô); C11 LEGAL-CHECK (BA-0467, 0185, 0443, 0461, 0473, 0191, 0437, 0197, 0431 — phạt riêng người được chở không đội mũ theo điểm b khoản 5 Điều 12 Nghị định 168/2024/NĐ-CP, trẻ dưới 12 tuổi, phạt điện thoại 800.000–1.000.000 đồng, mức ma túy/nồng độ cồn); C12+ LEGAL-CHECK (~100 bài), BODY-STRUCT (14), câu hứa dịch vụ chưa xác minh trong CTA (~50), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "remaining": {
     "status": {
-      "DONE_LIVE": 266,
+      "DONE_LIVE": 296,
       "REVIEWED_OK": 54,
-      "OK": 1411,
-      "OPEN": 437
+      "OK": 1395,
+      "OPEN": 423
     },
     "open_codes": {
-      "LEGAL-CHECK": 137,
+      "LEGAL-CHECK": 123,
       "BODY-STRUCT": 14,
       "LOCAL-SCOPE": 286
     }
