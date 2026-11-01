@@ -45,7 +45,7 @@
     "IMPROVE": 182
   },
   "qa_proxy": {
-    "mean": 94.7,
+    "mean": 94.8,
     "min": 84,
     "pass_85": 2168,
     "total": 2169
@@ -135,15 +135,15 @@
   "cwv": "LAB only",
   "work": {
     "status": {
-      "DONE_LIVE": 33,
+      "DONE_LIVE": 39,
       "REVIEWED_OK": 57,
-      "OPEN": 657,
-      "OK": 1422
+      "OPEN": 634,
+      "OK": 1439
     },
     "open_codes": {
-      "HUB-CONTENT": 52,
+      "HUB-CONTENT": 30,
       "DUP-PARA": 162,
-      "LEGAL-CHECK": 196,
+      "LEGAL-CHECK": 195,
       "BODY-STRUCT": 14,
       "LOCAL-SCOPE": 286,
       "THIN-HUB": 1,

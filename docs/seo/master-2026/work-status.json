@@ -374,6 +374,14 @@
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/an-toan/nong-do-con-khi-lai-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M4-TAXONOMY-PRECISION"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #58 (ae70494): hub mới /blog/huong-dan/nhan-xe/ (30 bài, 2 trang); /blog/dia-phuong/phuong-xa/ còn 91 bài/4 trang; /phuong-xa/page/5/ trả 404 và /page/7/ chuyển người dùng về /blog/dia-phuong/phuong-xa/; BA-0011 breadcrumb An Toàn › Pháp Luật. 895 bài đổi chủ đề con theo quy tắc mới (HUB-MISFILE tự hết khi breadcrumb khớp)."
+  },
   "/blog/an-toan/phap-luat/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -692,10 +700,11 @@
   "/blog/dia-phuong/phuong-xa/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M3-SUBTOPIC-PAGINATION"
+    "M3-SUBTOPIC-PAGINATION",
+    "M4-TAXONOMY-PRECISION"
    ],
    "date": "2026-11-01",
-   "note": "Phân trang 24 bài/trang — live"
+   "note": "Live 01/11/2026 sau merge #58 (ae70494): hub mới /blog/huong-dan/nhan-xe/ (30 bài, 2 trang); /blog/dia-phuong/phuong-xa/ còn 91 bài/4 trang; /phuong-xa/page/5/ trả 404 và /page/7/ chuyển người dùng về /blog/dia-phuong/phuong-xa/; BA-0011 breadcrumb An Toàn › Pháp Luật. 895 bài đổi chủ đề con theo quy tắc mới (HUB-MISFILE tự hết khi breadcrumb khớp)."
   },
   "/blog/dia-phuong/phuong-xa/page/10/": {
    "status": "DONE_LIVE",
@@ -848,6 +857,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/huong-dan/nhan-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M4-TAXONOMY-PRECISION"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #58 (ae70494): hub mới /blog/huong-dan/nhan-xe/ (30 bài, 2 trang); /blog/dia-phuong/phuong-xa/ còn 91 bài/4 trang; /phuong-xa/page/5/ trả 404 và /page/7/ chuyển người dùng về /blog/dia-phuong/phuong-xa/; BA-0011 breadcrumb An Toàn › Pháp Luật. 895 bài đổi chủ đề con theo quy tắc mới (HUB-MISFILE tự hết khi breadcrumb khớp)."
   },
   "/blog/huong-dan/thu-tuc/": {
    "status": "DONE_LIVE",

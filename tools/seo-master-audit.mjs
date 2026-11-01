@@ -159,6 +159,7 @@ const INTENT_VI = {
 export function crawl(root = ROOT) {
   const read = (p) => readFileSync(join(root, p), 'utf8');
   const clusters = JSON.parse(read('data/seo/keyword-clusters.json'));
+  const hubGuides = existsSync(join(root, 'data/blog/hub-guides.json')) ? JSON.parse(read('data/blog/hub-guides.json')).hubs : {};
   const matrix = readMatrix(read);
   const manifest = JSON.parse(read('data/blog/published.json')).articles;
   const seoMeta = loadSeoMeta(root);
@@ -241,7 +242,7 @@ export function crawl(root = ROOT) {
     if (!p || p.missing) continue;
     for (const t of p.allLinks) if (pages.has(t) && !depth.has(t)) { depth.set(t, depth.get(u) + 1); queue.push(t); }
   }
-  return { pages, articles, inbound, depth, clusters, matrix, seoMeta, urls };
+  return { pages, articles, inbound, depth, clusters, matrix, seoMeta, urls, hubGuides };
 }
 
 // ---------- classification ----------
@@ -256,7 +257,7 @@ export function clusterOf(clusters, category, seed) {
 }
 
 export function analyze(c) {
-  const { pages, articles, inbound, depth, clusters } = c;
+  const { pages, articles, inbound, depth, clusters, hubGuides = {} } = c;
   const clusterById = Object.fromEntries(clusters.clusters.map((k) => [k.id, k]));
   const titleCount = new Map(), descCount = new Map();
   for (const p of pages.values()) {
@@ -393,6 +394,9 @@ export function analyze(c) {
         row.intent = 'Điều hướng / danh sách';
         row.cluster = `${k.id} ${k.name}`;
         row.secondary = taxonomy.categories[catId].name.toLowerCase();
+        // Lô M5: a hub with its own guide targets the guide's keyword.
+        const guide = hubGuides[url];
+        if (guide) Object.assign(row, { keyword: guide.keyword.toLowerCase(), intent: 'Thông tin / điều hướng (có đoạn dẫn riêng)' });
       } else if (p.type === 'Hub cụm chủ đề') {
         const seoT = taxonomy.clusters.find((cl) => cl.dir === segs[1])?.seo_title;
         row.keyword = (seoT ? seoT.split(':')[0] : (p.h1[0] ?? '')).toLowerCase();

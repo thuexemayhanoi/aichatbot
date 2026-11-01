@@ -1,0 +1,195 @@
+{
+  "$schema": "motoai/hub-guides@1",
+  "note": "Lô M5 (Master SEO 2026): đoạn dẫn riêng cho hub danh mục / hub chủ đề con. Phần trước <!-- hub-guide:more --> là câu trả lời đầu trang (trên lưới bài, chỉ trang 1); phần sau (bản đồ chủ đề, phân tích, CTA) nằm dưới lưới bài. Giá và dữ kiện cửa hàng chỉ qua placeholder {{ price.* }} / {{ business.* }}; liên kết nội bộ phải tới trang đã build (builder báo lỗi nếu không). h1/seo_title/meta chỉ áp dụng cho hub chủ đề con; hub danh mục dùng seo_title trong data/blog/taxonomy.json. keyword = ý định riêng của hub, không trùng cụm đầu của URL chủ (/ , /gia-thue/, /lien-he/, /agent/). Xóa một mục = hub về bản cũ (rollback).",
+  "hubs": {
+    "/blog/thue-xe/": {
+      "keyword": "kinh nghiệm thuê xe máy",
+      "body": "data/blog/hubs/thue-xe.body.html",
+      "batch": "M5-HUB-RENT",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/thue-xe/gia-thue/": {
+      "keyword": "cách tính giá thuê xe máy",
+      "h1": "Cách tính giá thuê xe máy",
+      "seo_title": "Cách tính giá thuê xe máy: ngày, tuần, tháng và khoản phát sinh",
+      "meta": "Cách tính tổng tiền thuê xe máy: chọn giá ngày, tuần hay tháng, cộng xăng, gửi xe, phí giao nhận; tiền cọc khác giá thuê thế nào, kèm bài theo từng tình huống.",
+      "body": "data/blog/hubs/thue-xe/gia-thue.body.html",
+      "batch": "M5-HUB-RENT",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/thue-xe/thue-thang/": {
+      "keyword": "thuê xe máy dài hạn Hà Nội",
+      "h1": "Thuê xe máy dài hạn theo tháng",
+      "seo_title": "Thuê xe máy dài hạn ở Hà Nội: gói tháng, giá tham khảo, hợp đồng",
+      "meta": "Thuê xe máy dài hạn ở Hà Nội: giá gói tháng tham khảo Honda Wave, Click, Air Blade, Vision; khi nào gói tháng có lợi, hợp đồng và tiền cọc cần thống nhất trước.",
+      "body": "data/blog/hubs/thue-xe/thue-thang.body.html",
+      "batch": "M5-HUB-RENT",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/thue-xe/thue-tuan/": {
+      "keyword": "gói thuê xe máy theo tuần",
+      "h1": "Gói thuê xe máy theo tuần",
+      "seo_title": "Gói thuê xe máy 7 ngày: giá tuần từng dòng xe và cách chọn",
+      "meta": "Gói thuê xe máy 7 ngày ở Hà Nội: giá tuần Honda Wave, Click, Vision, Air Blade, khi nào gói tuần rẻ hơn thuê lẻ và khi nào nên chuyển sang gói tháng.",
+      "body": "data/blog/hubs/thue-xe/thue-tuan.body.html",
+      "batch": "M5-HUB-RENT",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/thue-xe/chon-xe/": {
+      "keyword": "chọn xe máy thuê",
+      "h1": "Chọn xe máy thuê: xe số, xe ga hay 50cc",
+      "seo_title": "Chọn xe máy thuê ở Hà Nội: Wave, Vision, Air Blade hay 50cc",
+      "meta": "Chọn xe máy thuê ở Hà Nội: so xe số Honda Wave với xe ga Vision, Air Blade, Click và xe 50cc theo giá ngày, người lái, lộ trình; kèm bài chi tiết từng dòng xe.",
+      "body": "data/blog/hubs/thue-xe/chon-xe.body.html",
+      "batch": "M5-HUB-RENT",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/thue-xe/thu-tuc/": {
+      "keyword": "bằng lái và điều kiện thuê xe máy",
+      "h1": "Bằng lái và điều kiện thuê xe máy",
+      "seo_title": "Bằng lái và điều kiện thuê xe máy: loại xe, độ tuổi, giấy tờ",
+      "meta": "Bằng lái và điều kiện thuê xe máy ở Hà Nội: hạng A1 lái được xe nào, xe gắn máy và tuổi 16, không có bằng lái thì sao, giấy tờ và tiền cọc khi nhận xe.",
+      "body": "data/blog/hubs/thue-xe/thu-tuc.body.html",
+      "batch": "M5-HUB-RENT",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/thue-xe/dat-coc/": {
+      "keyword": "đặt cọc thuê xe máy",
+      "h1": "Đặt cọc khi thuê xe máy",
+      "seo_title": "Đặt cọc khi thuê xe máy: chính sách cọc, hoàn cọc, câu cần hỏi",
+      "meta": "Đặt cọc khi thuê xe máy ở Hà Nội: mức cọc từ {{ business.policies.deposit.min }} đến {{ business.policies.deposit.max }} tùy loại xe, khoản riêng ngoài giá thuê; hỏi gì trước khi đưa cọc và cách nhận lại.",
+      "body": "data/blog/hubs/thue-xe/dat-coc.body.html",
+      "batch": "M5-HUB-RENT",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/thue-xe/du-khach/": {
+      "keyword": "thuê xe máy cho người nước ngoài Hà Nội",
+      "h1": "Thuê xe máy cho người nước ngoài ở Hà Nội",
+      "seo_title": "Thuê xe máy cho người nước ngoài ở Hà Nội: giấy phép, cọc, đặt xe",
+      "meta": "Thuê xe máy cho người nước ngoài ở Hà Nội: giấy phép lái xe có giá trị tại Việt Nam (IDP Công ước 1968 kèm bằng quốc gia), tiền cọc và cách đặt xe.",
+      "body": "data/blog/hubs/thue-xe/du-khach.body.html",
+      "batch": "M5-HUB-RENT",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/xe-dien/": {
+      "keyword": "thuê xe máy điện Hà Nội",
+      "body": "data/blog/hubs/xe-dien.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/xe-dien/quang-duong/": {
+      "keyword": "quãng đường xe máy điện",
+      "h1": "Quãng đường đi được của xe điện",
+      "seo_title": "Quãng đường xe máy điện: tầm pin thực tế và cách lên lộ trình",
+      "meta": "Quãng đường xe máy điện đi được sau một lần sạc: vì sao tầm pin thực tế thấp hơn công bố, cách tính lộ trình có dự phòng và chuẩn bị khi đi xa từ Hà Nội.",
+      "body": "data/blog/hubs/xe-dien/quang-duong.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/xe-dien/pin-xe/": {
+      "keyword": "pin xe điện khi thuê",
+      "h1": "Pin xe điện khi thuê",
+      "seo_title": "Pin xe điện khi thuê: kiểm tra lúc nhận, giữ pin bền, khi hết pin",
+      "meta": "Pin xe điện khi thuê: kiểm tra mức pin, loại pin, bộ sạc lúc nhận xe, thói quen giữ pin bền, sạc hay đổi pin, xử lý hết pin giữa đường và dấu hiệu pin đã yếu.",
+      "body": "data/blog/hubs/xe-dien/pin-xe.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/xe-dien/sac-pin/": {
+      "keyword": "sạc xe máy điện khi thuê",
+      "h1": "Sạc xe máy điện khi thuê",
+      "seo_title": "Sạc xe máy điện khi thuê: thời gian sạc, chỗ sạc và lịch sạc",
+      "meta": "Sạc xe máy điện khi thuê ở Hà Nội: bao lâu thì đầy, sạc ở chỗ ở, điểm sạc công cộng hay trạm đổi pin, ai trả tiền điện và lịch sạc cho chuyến dài ngày.",
+      "body": "data/blog/hubs/xe-dien/sac-pin.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/xe-dien/chi-phi/": {
+      "keyword": "chi phí thuê xe điện",
+      "h1": "Chi phí thuê xe điện",
+      "seo_title": "Chi phí thuê xe điện: tiền thuê, tiền sạc, cọc và khoản phát sinh",
+      "meta": "Chi phí thuê xe điện gồm những gì: tiền thuê theo kỳ, tiền điện sạc, tiền cọc và khoản phát sinh; cách đọc báo giá xe điện và so với chi phí thuê xe xăng.",
+      "body": "data/blog/hubs/xe-dien/chi-phi.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/xe-dien/thue-thang/": {
+      "keyword": "thuê xe điện dài hạn",
+      "h1": "Thuê xe điện dài hạn",
+      "seo_title": "Thuê xe điện dài hạn ở Hà Nội: gói nhiều tuần, sạc và bảo dưỡng",
+      "meta": "Thuê xe điện dài hạn ở Hà Nội: khi nào hợp, chốt giá theo kỳ, cọc và bảo dưỡng trước khi ký gói, lịch sạc theo tuần và so với thuê xe xăng cả tháng.",
+      "body": "data/blog/hubs/xe-dien/thue-thang.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/xe-dien/thue-ngay/": {
+      "keyword": "thuê xe điện ngắn hạn",
+      "h1": "Thuê xe điện ngắn hạn",
+      "seo_title": "Thuê xe điện ngắn hạn: một ngày hay vài ngày, kế hoạch pin",
+      "meta": "Thuê xe điện một ngày hoặc vài ngày ở Hà Nội: khi nào hợp, kiểm tra pin và bộ sạc lúc nhận xe, chỗ sạc qua đêm, đi mưa và cách hỏi giá theo ngày đúng mẫu xe.",
+      "body": "data/blog/hubs/xe-dien/thue-ngay.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/xe-dien/so-sanh/": {
+      "keyword": "so sánh xe điện và xe xăng khi thuê",
+      "h1": "So sánh xe điện khi thuê",
+      "seo_title": "Xe điện hay xe xăng khi thuê ở Hà Nội: so sánh theo lộ trình",
+      "meta": "So sánh xe điện và xe xăng khi thuê ở Hà Nội: lộ trình nào hợp xe điện, khi nào nên chọn xe xăng, khác biệt giữa các dòng xe điện về pin và số người chở.",
+      "body": "data/blog/hubs/xe-dien/so-sanh.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/xe-dien/chon-xe/": {
+      "keyword": "chọn xe điện để thuê",
+      "h1": "Chọn xe điện để thuê",
+      "seo_title": "Chọn xe điện để thuê: tầm pin, pin rời hay liền, số người chở",
+      "meta": "Chọn xe điện để thuê theo ba tiêu chí: tầm pin so với quãng đường mỗi ngày, pin tháo rời hay gắn liền, số người chở; kèm bài cho du lịch, mùa mưa, dài hạn.",
+      "body": "data/blog/hubs/xe-dien/chon-xe.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/xe-dien/an-toan/": {
+      "keyword": "an toàn khi đi xe điện thuê",
+      "h1": "An toàn khi đi xe điện",
+      "seo_title": "An toàn khi đi xe điện thuê: tăng tốc, pin, đi mưa, kiểm tra xe",
+      "meta": "An toàn khi đi xe điện thuê: làm quen tăng tốc và phanh, theo dõi pin còn lại, đi mưa và qua đường ngập, sạc đúng chỗ; kèm bài cho khách du lịch, thuê dài hạn.",
+      "body": "data/blog/hubs/xe-dien/an-toan.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/dia-phuong/": {
+      "keyword": "đi xe máy ở Hà Nội",
+      "body": "data/blog/hubs/dia-phuong.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/dia-phuong/phuong-xa/": {
+      "keyword": "đi xe máy theo phường xã Hà Nội",
+      "h1": "Đi xe máy theo phường, xã",
+      "seo_title": "Đi xe máy theo phường, xã ở Hà Nội: lộ trình từng khu vực",
+      "meta": "Đi xe máy theo phường, xã ở Hà Nội sau sắp xếp đơn vị hành chính 2025: lộ trình, điểm dừng, chỗ gửi xe ở Long Biên, Hoàn Kiếm, Ba Đình, Cầu Giấy, ngoại thành.",
+      "body": "data/blog/hubs/dia-phuong/phuong-xa.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/dia-phuong/diem-tham-quan/": {
+      "keyword": "điểm tham quan Hà Nội bằng xe máy",
+      "h1": "Điểm tham quan Hà Nội bằng xe máy",
+      "seo_title": "Điểm tham quan Hà Nội bằng xe máy: Phố Cổ, Hồ Gươm, Hồ Tây",
+      "meta": "Điểm tham quan Hà Nội bằng xe máy: Phố Cổ, Hồ Gươm, Hồ Tây, Hoàng Thành theo khung giờ, chỗ gửi xe, đường một chiều và giờ hạn chế xe tối cuối tuần quanh Hồ Gươm.",
+      "body": "data/blog/hubs/dia-phuong/diem-tham-quan.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/dia-phuong/ha-noi/": {
+      "keyword": "hành trình văn hóa Hà Nội bằng xe máy",
+      "h1": "Hành trình văn hóa Hà Nội bằng xe máy",
+      "seo_title": "Bảo tàng, chùa, Nhà Thờ Lớn Hà Nội bằng xe máy: lộ trình",
+      "meta": "Hành trình văn hóa Hà Nội bằng xe máy: bảo tàng, Nhà Thờ Lớn, chùa Một Cột, Phố Sách — đường đi, khung giờ, chỗ gửi xe và cách ghép thành lịch trình một ngày.",
+      "body": "data/blog/hubs/dia-phuong/ha-noi.body.html",
+      "batch": "M5-HUB-EV-LOCAL",
+      "reviewed": "2026-11-01"
+    }
+  }
+}

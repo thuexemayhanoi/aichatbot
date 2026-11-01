@@ -699,7 +699,7 @@ ISSUES = {
     'COMMERCIAL-BLOCK': ('P1', 'K2', 'Trang chuyển đổi thiếu khối dữ kiện thương mại (giá từ pricing.json, giờ mở cửa, khu vực, cách đặt) — bổ sung từ business.json'),
     'HUB-MISFILE': ('P1', 'M4', 'Chủ đề con suy ra sai (so khớp bỏ dấu/chuỗi con/tên danh mục) — sửa tools/taxonomy.mjs deriveSubtopic'),
     'HUB-CONTENT': ('P1', 'M5', 'Hub chỉ có danh sách thẻ — thêm đoạn dẫn riêng trả lời trước, liên kết silo/bài, CTA'),
-    'THIN-HUB': ('P2', 'M4', 'Hub chủ đề con dưới 3 bài — quyết định giữ/gộp theo phân loại mới'),
+    'THIN-HUB': ('P2', 'M6', 'Hub chủ đề con dưới 3 bài — quyết định giữ/gộp theo phân loại mới (ngưỡng tối thiểu bài/hub)'),
     'DUP-PARA': ('P1', 'D', 'Đoạn văn trùng với bài khác (QA nhà máy) — viết lại đoạn trùng qua tools/seo-body-review.mjs'),
     'TITLE-META': ('P2', 'T1', 'Title/description ngoài chuẩn QA nhà máy — sửa qua data/seo/article-meta.json'),
     'BODY-STRUCT': ('P2', 'T1', 'Cấu trúc thân bài thiếu H2/danh sách — bổ sung qua review body'),
@@ -738,6 +738,13 @@ def strict_subtopic(category, row, taxonomy):
             if re.search(r'(?<![^\W_])' + re.escape(lc(m)) + r'(?![^\W_])', hay):
                 return sub['slug']
     return None
+
+
+def has_guide(p):
+    """Lô M5: the built hub carries its own answer-first guide (data/blog/hub-guides.json)."""
+    if not p:
+        return False
+    return 'hub-guide-answer' in (ROOT / p['file']).read_text(encoding='utf-8')
 
 
 def work_items(D, per, pages):
@@ -801,13 +808,15 @@ def work_items(D, per, pages):
             if cur != new:
                 codes.append('HUB-MISFILE')
         elif ptype.startswith('Hub chủ đề con') and '/page/' not in path:
-            codes.append('HUB-CONTENT')
+            if not has_guide(p):
+                codes.append('HUB-CONTENT')
             if hub_change.get(path):
                 codes.append('HUB-MISFILE')
             if hub_size.get(path, 0) < 3:
                 codes.append('THIN-HUB')
         elif ptype in ('Hub danh mục', 'Hub cụm chủ đề', 'Blog home'):
-            codes.append('HUB-CONTENT')
+            if not has_guide(p):
+                codes.append('HUB-CONTENT')
         elif path in ('/', '/lien-he/') and p:
             raw = (ROOT / p['file']).read_text(encoding='utf-8')
             main = raw[raw.find('<main'):raw.find('</main>')]

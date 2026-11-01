@@ -163,7 +163,7 @@
   "site": {
    "pass": true,
    "broken": 0,
-   "checked": 444131,
+   "checked": 444336,
    "sitemap": 2169,
    "published": 2006
   },
@@ -182,7 +182,7 @@
    },
    "p0_open": 0,
    "issues": 0,
-   "committedCurrent": false
+   "committedCurrent": true
   },
   "coverage": {
    "pass": true,

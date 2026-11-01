@@ -221,6 +221,9 @@ body.content-page .site-main {
 .blog-screen-lead { margin: 0; max-width: 62ch; font-size: var(--fs-lg); line-height: 1.6; color: var(--ink-2); }
 .hub-stats { margin: 0; font-size: var(--fs-sm); font-weight: 600; color: var(--ink-3); }
 .blog-screen-lead ~ .blog-screen-lead { font-size: var(--fs-md); }
+/* Lô M5 hub guide: answer-first copy above the cards, topic map below them. */
+.hub-guide-answer { max-width: 68ch; }
+.hub-guide-more { margin-top: var(--s5); }
 
 /* Chips rail: ONE horizontal row on phones (never wraps, never clips). */
 .blog-chips {

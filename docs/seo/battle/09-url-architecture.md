@@ -2,7 +2,7 @@
 
 _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang đối thủ đã audit: 127 (5 không tải được). Sinh bởi `node tools/seo-battle-matrix.mjs` — không sửa tay._
 
-2185 URL hiện có (giữ nguyên 100%, không xóa/gộp/noindex) + 0 URL đề xuất (owner thêm ID vào data/blog/content-matrix.csv). Vị trí: Supporting của pillar họ chủ đề (1670); Trang chủ (pillar thương hiệu / K01) (1); Trang chuyển đổi (chính sách) (1); Trang chuyển đổi (2); Hub cấp 1 (4); Hub danh mục (6); Pillar (trang đích của nhóm từ khóa / pillar cụm) (336); Hub phân trang (không nhắm từ khóa) (127); E-E-A-T (1); Pháp lý (không nhắm từ khóa) (2); Hub chủ đề con (33); Ứng dụng Agent (công cụ / K01) (1); Bài viết (supporting) (1). Từ khóa chính trùng giữa URL: 0; trang nhận nhóm khác ý định SERP: 11.
+2169 URL hiện có (giữ nguyên 100%, không xóa/gộp/noindex) + 0 URL đề xuất (owner thêm ID vào data/blog/content-matrix.csv). Vị trí: Supporting của pillar họ chủ đề (1670); Trang chủ (pillar thương hiệu / K01) (1); Trang chuyển đổi (chính sách) (1); Trang chuyển đổi (2); Hub cấp 1 (4); Hub danh mục (6); Pillar (trang đích của nhóm từ khóa / pillar cụm) (336); Hub phân trang (không nhắm từ khóa) (102); E-E-A-T (1); Pháp lý (không nhắm từ khóa) (2); Hub chủ đề con (42); Ứng dụng Agent (công cụ / K01) (1); Bài viết (supporting) (1). Từ khóa chính trùng giữa URL: 0; trang nhận nhóm khác ý định SERP: 11.
 
 ## URL đề xuất mới
 
@@ -22,12 +22,12 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | /blog/an-toan/ | Hub danh mục | luật giao thông và an toàn khi thuê xe máy | Điều hướng / danh sách | K10 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/app/ | Hub danh mục | hướng dẫn dùng ứng dụng thuê xe máy | Điều hướng / danh sách | K01 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/cong-cu-huong-dan/ | Hub cụm chủ đề | công cụ và hướng dẫn thuê xe máy | Điều hướng / pillar cụm | Nhiều | Hub cấp 1 | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/dia-phuong/ | Hub danh mục | đi xe máy ở hà nội | Điều hướng / danh sách | K17 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/dia-phuong/ | Hub danh mục | đi xe máy ở hà nội | Thông tin / điều hướng (có đoạn dẫn riêng) | K17 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/huong-dan/ | Hub danh mục | hướng dẫn thuê xe máy từng bước | Điều hướng / danh sách | K04 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/kham-pha-an-toan/ | Hub cụm chủ đề | khám phá hà nội bằng xe máy thuê | Điều hướng / pillar cụm | Nhiều | Hub cấp 1 | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/thue-xe-phuong-tien/ | Hub cụm chủ đề | thuê xe máy và xe máy điện | Điều hướng / pillar cụm | Nhiều | Hub cấp 1 | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/thue-xe/ | Hub danh mục | kinh nghiệm thuê xe máy | Điều hướng / danh sách | K19 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/xe-dien/ | Hub danh mục | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/thue-xe/ | Hub danh mục | kinh nghiệm thuê xe máy | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/xe-dien/ | Hub danh mục | thuê xe máy điện hà nội | Thông tin / điều hướng (có đoạn dẫn riêng) | K08 | Hub danh mục | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/an-toan/bang-lai-a1-a2-khac-gi/ | Bài viết | bằng lái a1 a2 khác gì | Thông tin pháp lý + so sánh | K09 | Pillar (trang đích của nhóm từ khóa / pillar cụm) | Đọc xong → bài thuê xe / trang chính sách (an toàn, giấy tờ) | bằng lái a1 a2 khác gì | Thông tin |
 | /blog/an-toan/bao-hiem-khi-thue-xe-may/ | Bài viết | bảo hiểm khi thuê xe máy | Thông tin pháp lý | K11 | Pillar (trang đích của nhóm từ khóa / pillar cụm) | Đọc xong → bài thuê xe / trang chính sách (an toàn, giấy tờ) | bảo hiểm xe máy thuê | Thông tin |
 | /blog/an-toan/cac-loai-bang-lai-xe-may/ | Bài viết | các loại bằng lái xe máy | Thông tin pháp lý | K09 | Pillar (trang đích của nhóm từ khóa / pillar cụm) | Đọc xong → bài thuê xe / trang chính sách (an toàn, giấy tờ) | bằng lái xe máy là hạng gì \| các loại bằng lái xe máy | Hỗn hợp (thương mại + thông tin) \| Thông tin |
@@ -102,12 +102,13 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | /gioi-thieu/ | Trang giới thiệu (E-E-A-T) | giới thiệu thuê xe máy Nguyễn Tú | Điều hướng / thương hiệu | K01 | E-E-A-T | Niềm tin (E-E-A-T) |  |  |
 | /privacy/ | Pháp lý | chính sách bảo mật MotoAI | Điều hướng | Tất | Pháp lý (không nhắm từ khóa) | Niềm tin (E-E-A-T) |  |  |
 | /terms/ | Pháp lý | điều khoản sử dụng MotoAI | Điều hướng | Tất | Pháp lý (không nhắm từ khóa) | Niềm tin (E-E-A-T) |  |  |
+| /blog/an-toan/bang-lai/ | Hub chủ đề con | luật giao thông và an toàn khi thuê xe máy | Điều hướng / danh sách | K10 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/an-toan/du-lich/ | Hub chủ đề con | luật giao thông và an toàn khi thuê xe máy | Điều hướng / danh sách | K10 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/an-toan/lai-xe/ | Hub chủ đề con | luật giao thông và an toàn khi thuê xe máy | Điều hướng / danh sách | K10 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/an-toan/mu-bao-hiem/ | Hub chủ đề con | luật giao thông và an toàn khi thuê xe máy | Điều hướng / danh sách | K10 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/an-toan/phap-luat/ | Hub chủ đề con | luật giao thông và an toàn khi thuê xe máy | Điều hướng / danh sách | K10 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/an-toan/su-co/ | Hub chủ đề con | luật giao thông và an toàn khi thuê xe máy | Điều hướng / danh sách | K10 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/an-toan/thoi-tiet/ | Hub chủ đề con | luật giao thông và an toàn khi thuê xe máy | Điều hướng / danh sách | K10 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/app/cai-app/ | Hub chủ đề con | hướng dẫn dùng ứng dụng thuê xe máy | Điều hướng / danh sách | K01 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/app/dat-xe/ | Hub chủ đề con | hướng dẫn dùng ứng dụng thuê xe máy | Điều hướng / danh sách | K01 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/app/huong-dan/ | Hub chủ đề con | hướng dẫn dùng ứng dụng thuê xe máy | Điều hướng / danh sách | K01 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/app/so-sanh/ | Hub chủ đề con | hướng dẫn dùng ứng dụng thuê xe máy | Điều hướng / danh sách | K01 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
@@ -115,23 +116,22 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | /blog/app/tinh-gia/ | Hub chủ đề con | hướng dẫn dùng ứng dụng thuê xe máy | Điều hướng / danh sách | K01 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/app/tro-ly/ | Hub chủ đề con | hướng dẫn dùng ứng dụng thuê xe máy | Điều hướng / danh sách | K01 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/app/web-app/ | Hub chủ đề con | hướng dẫn dùng ứng dụng thuê xe máy | Điều hướng / danh sách | K01 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/dia-phuong/phuong-xa/ | Hub chủ đề con | đi xe máy ở hà nội | Điều hướng / danh sách | K17 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/dia-phuong/diem-tham-quan/ | Hub chủ đề con | điểm tham quan hà nội bằng xe máy | Thông tin / điều hướng (có đoạn dẫn riêng) | K17 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/dia-phuong/ha-noi/ | Hub chủ đề con | hành trình văn hóa hà nội bằng xe máy | Thông tin / điều hướng (có đoạn dẫn riêng) | K17 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/dia-phuong/phuong-xa/ | Hub chủ đề con | đi xe máy theo phường xã hà nội | Thông tin / điều hướng (có đoạn dẫn riêng) | K17 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/huong-dan/ban-do/ | Hub chủ đề con | hướng dẫn thuê xe máy từng bước | Điều hướng / danh sách | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/huong-dan/chuan-bi/ | Hub chủ đề con | hướng dẫn thuê xe máy từng bước | Điều hướng / danh sách | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/huong-dan/dat-xe/ | Hub chủ đề con | hướng dẫn thuê xe máy từng bước | Điều hướng / danh sách | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/huong-dan/giay-to/ | Hub chủ đề con | hướng dẫn thuê xe máy từng bước | Điều hướng / danh sách | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/huong-dan/nhan-xe/ | Hub chủ đề con | hướng dẫn thuê xe máy từng bước | Điều hướng / danh sách | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/huong-dan/thu-tuc/ | Hub chủ đề con | hướng dẫn thuê xe máy từng bước | Điều hướng / danh sách | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/thue-xe/chon-xe/ | Hub chủ đề con | kinh nghiệm thuê xe máy | Điều hướng / danh sách | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/thue-xe/dat-coc/ | Hub chủ đề con | kinh nghiệm thuê xe máy | Điều hướng / danh sách | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/thue-xe/du-khach/ | Hub chủ đề con | kinh nghiệm thuê xe máy | Điều hướng / danh sách | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/thue-xe/gia-thue/ | Hub chủ đề con | kinh nghiệm thuê xe máy | Điều hướng / danh sách | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/huong-dan/tra-xe/ | Hub chủ đề con | hướng dẫn thuê xe máy từng bước | Điều hướng / danh sách | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/thue-xe/chon-xe/ | Hub chủ đề con | chọn xe máy thuê | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/thue-xe/dat-coc/ | Hub chủ đề con | đặt cọc thuê xe máy | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/thue-xe/du-khach/ | Hub chủ đề con | thuê xe máy cho người nước ngoài hà nội | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/thue-xe/gia-thue/ | Hub chủ đề con | cách tính giá thuê xe máy | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/thue-xe/nhan-xe/ | Hub chủ đề con | kinh nghiệm thuê xe máy | Điều hướng / danh sách | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/thue-xe/thue-thang/ | Hub chủ đề con | kinh nghiệm thuê xe máy | Điều hướng / danh sách | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/thue-xe/thue-tuan/ | Hub chủ đề con | kinh nghiệm thuê xe máy | Điều hướng / danh sách | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/thue-xe/tra-xe/ | Hub chủ đề con | kinh nghiệm thuê xe máy | Điều hướng / danh sách | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/xe-dien/an-toan/ | Hub chủ đề con | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/xe-dien/chi-phi/ | Hub chủ đề con | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/xe-dien/chon-xe/ | Hub chủ đề con | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/xe-dien/pin-xe/ | Hub chủ đề con | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/xe-dien/quang-duong/ | Hub chủ đề con | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/xe-dien/sac-pin/ | Hub chủ đề con | thuê xe máy điện hà nội | Điều hướng / danh sách | K08 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/thue-xe/thu-tuc/ | Hub chủ đề con | bằng lái và điều kiện thuê xe máy | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/thue-xe/thue-thang/ | Hub chủ đề con | thuê xe máy dài hạn hà nội | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 
-Toàn bộ 2185 URL: `09-url-architecture.csv`.
+Toàn bộ 2169 URL: `09-url-architecture.csv`.

@@ -572,8 +572,37 @@ ${links.join('\n')}
 `;
 }
 
+/** Hub guides (lô M5, data/blog/hub-guides.json): a hub's own answer-first
+ *  copy. The part before GUIDE_MORE renders above the cards, the rest (topic
+ *  map, analysis, CTA) below them — page 1 only. Facts and prices come from
+ *  {{ business.* }} / {{ price.* }} placeholders. Every internal link must
+ *  point to a page this build generates; a partial corpus (factory sandbox)
+ *  skips a guide it cannot satisfy instead of shipping a broken link. */
+const HUB_GUIDES = existsSync(join(ROOT, 'data/blog/hub-guides.json'))
+  ? JSON.parse(read('data/blog/hub-guides.json')).hubs : {};
+export const GUIDE_MORE = '<!-- hub-guide:more -->';
+export function hubGuide(url, business, plannedPaths) {
+  const g = HUB_GUIDES[url];
+  if (!g) return null;
+  const html = resolveFacts(read(g.body), business);
+  const missing = [...html.matchAll(/href="(\/[^"#?]*)"/g)].map((m) => m[1]).filter((href) => !plannedPaths.has(href));
+  if (missing.length) {
+    // tests/unit/hub-guides.test.js holds the full site to every guide.
+    console.warn(`hub-guides: ${url} skipped — links to pages not generated: ${missing.join(', ')}`);
+    return null;
+  }
+  const [answer, more = ''] = html.split(GUIDE_MORE);
+  return {
+    h1: g.h1 ? resolveFacts(g.h1, business) : null,
+    seoTitle: g.seo_title ? resolveFacts(g.seo_title, business) : null,
+    meta: g.meta ? resolveFacts(g.meta, business) : null,
+    answer: `      <div class="blog-article-body hub-guide hub-guide-answer">\n        ${answer.trim()}\n      </div>\n`,
+    more: more.trim() ? `      <section class="blog-article-body hub-guide hub-guide-more">\n${more.trim()}\n      </section>\n` : ''
+  };
+}
+
 /** Category hub screen (real content hub, paginated, subtopic chips). */
-function buildHub(hub, published, subtopicMap, pillars = []) {
+function buildHub(hub, published, subtopicMap, pillars = [], business = null, plannedPaths = new Set()) {
   const articles = published.filter((a) => a.category === hub.id);
   const pages = paginate(articles);
   const builtPaths = [];
@@ -598,9 +627,11 @@ ${pillars.map((a) => `          <li><a href="/blog/${hub.dir}/${a.slug}/">${esc(
   // Sibling category in the same cluster (related category).
   const cluster = CLUSTER_BY_ID[hub.cluster];
   const sibling = cluster.categories.map((id) => HUB_BY_ID[id]).find((h) => h.id !== hub.id);
+  const guide = business ? hubGuide(`/blog/${hub.dir}/`, business, plannedPaths) : null;
 
   for (let p = 0; p < pages.length; p++) {
     const pageNo = p + 1;
+    const lead = pageNo === 1 ? guide : null;
     const path = pageNo === 1 ? `blog/${hub.dir}/` : `blog/${hub.dir}/page/${pageNo}/`;
     builtPaths.push(path);
     const cards = pages[p].map((a) => card(a, hub)).join('\n')
@@ -616,7 +647,7 @@ ${pillars.map((a) => `          <li><a href="/blog/${hub.dir}/${a.slug}/">${esc(
       + screenHead({ label: t('kickerHub'), title: hub.name, lead: hub.desc })
       + `      <p class="hub-stats">${esc(t('articleCount', { n: count(articles.length) }))}${pages.length > 1 ? ` · ${esc(t('pageOf', { page: pageNo, pages: pages.length }))}` : ''}</p>\n`
       + hubParentBlock(cluster)
-      + (hub.intro ? `      <p class="blog-screen-lead">${esc(hub.intro)}</p>\n` : '')
+      + (lead ? lead.answer : hub.intro ? `      <p class="blog-screen-lead">${esc(hub.intro)}</p>\n` : '')
       + categoryChips({ activeHub: hub.dir })
       + (chips ? `      <div class="blog-chips" aria-label="Chủ đề">
 ${chips}
@@ -626,7 +657,7 @@ ${chips}
       + `      <div class="blog-grid">
 ${cards}
       </div>
-${nav}${sibling ? `      <p class="blog-hub-sibling">${esc(t('hubSibling'))} <a href="/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
+${nav}${lead ? lead.more : ''}${sibling ? `      <p class="blog-hub-sibling">${esc(t('hubSibling'))} <a href="/blog/${sibling.dir}/">${esc(sibling.label)}</a></p>
 ` : ''}${hubClusterFooter(cluster)}${askAgentAction(hub.name, hub.id)}`;
 
     // Paginated pages keep a unique meta description (no duplicate meta).
@@ -664,31 +695,37 @@ ${nav}${sibling ? `      <p class="blog-hub-sibling">${esc(t('hubSibling'))} <a 
  *  hundreds of articles never ships one multi-hundred-KB page (lô M3). Page 1
  *  keeps its URL; every page has its own canonical, title and description.
  *  Returns the built paths (page 1 first). */
-function buildSubtopic(hub, sub, articles) {
+function buildSubtopic(hub, sub, articles, business = null, plannedPaths = new Set()) {
   const cluster = CLUSTER_BY_ID[hub.cluster];
   const base = `/blog/${hub.dir}/${sub.slug}/`;
   const pages = paginate(articles);
   const builtPaths = [];
-  const baseDescription = `Tổng hợp ${articles.length} bài về ${sub.label.toLowerCase()} trong chuyên mục ${hub.name.toLowerCase()}: hướng dẫn, kinh nghiệm và lưu ý thực tế khi thuê xe, kèm Agent để hỏi sâu hơn.`;
+  // Lô M5: a hub guide gives the subtopic its own H1, SERP title, description
+  // and answer-first copy; hubs without one keep the generated defaults.
+  const guide = business ? hubGuide(base, business, plannedPaths) : null;
+  const heading = guide?.h1 ?? sub.label;
+  const listDescription = `Tổng hợp ${articles.length} bài về ${sub.label.toLowerCase()} trong chuyên mục ${hub.name.toLowerCase()}: hướng dẫn, kinh nghiệm và lưu ý thực tế khi thuê xe, kèm Agent để hỏi sâu hơn.`;
   for (let p = 0; p < pages.length; p++) {
     const pageNo = p + 1;
+    const lead = pageNo === 1 ? guide : null;
     const path = pageHref(base, pageNo).replace(/^\//, '');
     builtPaths.push(path);
     const cards = pages[p].map((a) => card(a, hub)).join('\n');
     const trail = [{ label: hub.label, href: `/blog/${hub.dir}/` }, { label: sub.label, href: pageNo === 1 ? null : base },
       ...(pageNo > 1 ? [{ label: t('crumbPage', { n: pageNo }), href: null }] : [])];
     const content = breadcrumb(clusterTrail(cluster, trail))
-      + screenHead({ label: hub.label, title: sub.label, lead: hub.desc })
+      + screenHead({ label: hub.label, title: heading, lead: lead ? null : hub.desc })
       + `      <p class="hub-stats">${esc(t('articleCount', { n: count(articles.length) }))}${pages.length > 1 ? ` · ${esc(t('pageOf', { page: pageNo, pages: pages.length }))}` : ''}</p>
-      <div class="blog-grid">
+${lead ? lead.answer : ''}      <div class="blog-grid">
 ${cards}
       </div>
-${paginationNav(base, pageNo, pages)}${askAgentAction(`${sub.label} — ${hub.name}`, hub.id)}`;
+${paginationNav(base, pageNo, pages)}${lead ? lead.more : ''}${askAgentAction(`${sub.label} — ${hub.name}`, hub.id)}`;
 
     // Deeper pages say their number in the title and description (no duplicates).
-    const description = pageNo === 1 ? baseDescription : `${baseDescription} Trang ${pageNo}.`;
+    // The guide's meta describes page 1 only; list pages keep the generated one.
+    const description = pageNo === 1 ? (guide?.meta ?? listDescription) : `${listDescription} Trang ${pageNo}.`;
     const html = appShellPage({
-      title: pageNo === 1 ? `${sub.label} — ${hub.name} — Cẩm nang thuê xe máy` : `${sub.label} — ${hub.name} — trang ${pageNo}`,
+      title: pageNo === 1 ? (guide?.seoTitle ?? `${sub.label} — ${hub.name} — Cẩm nang thuê xe máy`) : (guide ? `${heading} — trang ${pageNo}` : `${sub.label} — ${hub.name} — trang ${pageNo}`),
       // v70: own 120–165 char description (the old "label trong hub: hub.meta"
       // pattern exceeded the SERP length and repeated the hub description).
       description,
@@ -702,7 +739,7 @@ ${paginationNav(base, pageNo, pages)}${askAgentAction(`${sub.label} — ${hub.na
       // from the same clusterTrailSchema helper as hubs/articles — no self-conflict.
       schemaHtml: ldScript({
         '@context': 'https://schema.org', '@type': 'CollectionPage',
-        name: sub.label, description: `${sub.label} trong ${hub.name.toLowerCase()}`, url: `${SITE}${path}`,
+        name: heading, description: guide ? description : `${sub.label} trong ${hub.name.toLowerCase()}`, url: `${SITE}${path}`,
         isPartOf: websiteRef(),
         mainEntity: {
           '@type': 'ItemList',
@@ -1126,6 +1163,14 @@ export function build() {
     }
   }
   setMenuSubtopicUrls(liveMenuTopics);
+  // Pages this build generates (hub guides may only link to these).
+  const plannedPaths = new Set([
+    '/', '/blog/', AGENT_URL, ...liveMenuTopics,
+    ...published.map((a) => `/blog/${taxonomy.categories[a.category].dir}/${a.slug}/`),
+    ...taxonomy.clusters.map((c) => `/blog/${c.dir}/`),
+    ...Object.values(taxonomy.categories).map((c) => `/blog/${c.dir}/`),
+    ...SITE_PAGES.map((p) => `/${p.dir}/`)
+  ]);
   const byId = new Map(published.map((a) => [a.article_id, a]));
   const links = planLinks(published, matrix, {
     subtopicOf: deriveSubtopic,
@@ -1143,7 +1188,7 @@ export function build() {
 
   buildHome(published, business);
   for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published);
-  const categoryPages = HUBS.flatMap((hub) => buildHub(hub, published, subtopicCounts(published, matrix), pillarsOf(hub.id)));
+  const categoryPages = HUBS.flatMap((hub) => buildHub(hub, published, subtopicCounts(published, matrix), pillarsOf(hub.id), business, plannedPaths));
   const subtopicPages = [];
   const subtopicPaged = [];
   for (const hub of HUBS) {
@@ -1156,7 +1201,7 @@ export function build() {
       });
       // No empty SEO hubs: a subtopic page exists only with real content.
       if (arts.length > 0) {
-        const [first, ...deeper] = buildSubtopic(hub, sub, arts);
+        const [first, ...deeper] = buildSubtopic(hub, sub, arts, business, plannedPaths);
         subtopicPages.push(first);
         subtopicPaged.push(...deeper);
       }
