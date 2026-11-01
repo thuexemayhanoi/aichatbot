@@ -37,9 +37,13 @@ function register(fileListPath) {
   const files = readFileSync(fileListPath, 'utf8').split('\n').map((s) => s.trim()).filter(Boolean);
   if (files.some((x) => x.startsWith('docs/state/'))) throw new Error('writer must not push docs/state/**');
   const bodies = files.filter((x) => pattern.test(x));
-  if (bodies.length > hardMax) throw new Error('at most 10 article bodies per push (write-ahead queue)');
   if (new Set(bodies).size !== bodies.length) throw new Error('duplicate body path');
   const rows = matrixRows(), bySlug = new Map(rows.map((r) => [r.slug, r]));
+  // The write-ahead limit is for NEW writer bodies. Edits of PUBLISHED bodies
+  // (the separate body review, tools/seo-body-review.mjs) are never registered
+  // below, so they do not count against it.
+  const fresh = bodies.filter((x) => bySlug.get(x.match(pattern)[1])?.status !== 'PUBLISHED');
+  if (fresh.length > hardMax) throw new Error('at most 10 new article bodies per push (write-ahead queue)');
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
   if (!Array.isArray(manifest.articles)) throw new Error('invalid published.json');
   const byId = new Map();

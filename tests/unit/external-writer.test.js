@@ -68,6 +68,31 @@ test('unknown body and a pushed state file fail closed before any draft mutation
   }
 });
 
+test('the ten-body limit counts only new bodies: a body review of eleven PUBLISHED articles is skipped, eleven new bodies fail closed', (t) => {
+  const { dir } = fixture(t);
+  const columns = 'article_id,batch_id,category,status,primary_keyword,working_title,slug,agent_retrieval,author';
+  const published = Array.from({ length: 11 }, (_, i) => `BA-05${String(i).padStart(2, '0')},B09,GUIDE,PUBLISHED,da xuat ban ${i},Da xuat ban ${i},bai-${i},yes,MotoAI Editorial`);
+  const planned = Array.from({ length: 11 }, (_, i) => `BA-06${String(i).padStart(2, '0')},B10,GUIDE,PLANNED,bai moi ${i},Bai moi ${i},moi-${i},yes,MotoAI Editorial`);
+  writeFileSync(join(dir, 'data/blog/content-matrix.csv'), [columns, ...published, ...planned].join('\n') + '\n');
+  const html = '<p>' + 'Đối chiếu tình trạng xe tại quầy trước khi ký biên nhận thuê xe. '.repeat(8) + '</p>';
+  for (let i = 0; i < 11; i++) {
+    writeFileSync(join(dir, `data/blog/articles/bai-${i}.body.html`), html);
+    writeFileSync(join(dir, `data/blog/articles/moi-${i}.body.html`), html);
+  }
+  const manifest = join(dir, 'data/blog/published.json');
+  const baseline = readFileSync(manifest, 'utf8');
+  writeFileSync(join(dir, 'review.txt'), Array.from({ length: 11 }, (_, i) => `data/blog/articles/bai-${i}.body.html`).join('\n') + '\n');
+  const review = run(dir, 'register', '--files', join(dir, 'review.txt'));
+  assert.equal(review.status, 0, review.stderr);
+  assert.match(review.stdout, /registered=0/);
+  assert.equal(readFileSync(manifest, 'utf8'), baseline, 'PUBLISHED bodies are never registered');
+  writeFileSync(join(dir, 'new.txt'), Array.from({ length: 11 }, (_, i) => `data/blog/articles/moi-${i}.body.html`).join('\n') + '\n');
+  const fresh = run(dir, 'register', '--files', join(dir, 'new.txt'));
+  assert.notEqual(fresh.status, 0);
+  assert.match(fresh.stderr, /at most 10 new article bodies/);
+  assert.equal(readFileSync(manifest, 'utf8'), baseline, 'nothing registered when the push is over the limit');
+});
+
 test('external writer lists only unpublished and unregistered article IDs', (t) => {
   const { dir } = fixture(t);
   const before = run(dir, 'next');
