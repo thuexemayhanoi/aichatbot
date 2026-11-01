@@ -1377,7 +1377,24 @@
         "BA-0047"
       ],
       "scope": "Mục REVIEW cuối cùng của data/seo/content-review.json: BA-0047 (IDP) — lệ phí cấp giấy phép lái xe quốc tế. Bài đã được cập nhật 115.000 đồng/lần theo Thông tư 154/2025/TT-BTC (toàn văn, hiệu lực 01/01/2026) nhưng chưa nêu Thông tư 29/2026/TT-BTC: từ 01/4/2026 đến hết 31/12/2026 lệ phí cấp, đổi, cấp lại giấy phép lái xe (quốc gia và quốc tế) thu bằng 50% (Điều 1 khoản 1 số thứ tự 3, Điều 3 khoản 1; Điều 1 không ghi điều kiện nộp qua VNeID).",
-      "changes": "data/seo/legal-facts.json: dữ kiện tt-29-2026-btc-giam-le-phi-gplx (đối chiếu toàn văn 2026-11-01); data/seo/legal-documents.json: đăng ký tt-29-2026-btc (in_force, fulltext, văn bản có thời hạn tới 31/12/2026). BA-0047 qua tools/seo-body-review.mjs (giữ nguyên số từ, bài ở giới hạn 2.000 từ): nêu mức giảm một nửa từ 01/4/2026 đến hết 31/12/2026 theo Thông tư 29/2026/TT-BTC, mức gốc theo Thông tư 154/2025/TT-BTC. Gỡ BA-0047 khỏi data/seo/content-review.json (lý do REVIEW cũ đã xử lý). Việc cần làm sau 31/12/2026: rà lại câu lệ phí của BA-0047."
+      "changes": "data/seo/legal-facts.json: dữ kiện tt-29-2026-btc-giam-le-phi-gplx (đối chiếu toàn văn 2026-11-01); data/seo/legal-documents.json: đăng ký tt-29-2026-btc (in_force, fulltext, văn bản có thời hạn tới 31/12/2026). BA-0047 qua tools/seo-body-review.mjs (giữ nguyên số từ, bài ở giới hạn 2.000 từ): nêu mức giảm một nửa từ 01/4/2026 đến hết 31/12/2026 theo Thông tư 29/2026/TT-BTC, mức gốc theo Thông tư 154/2025/TT-BTC. Gỡ BA-0047 khỏi data/seo/content-review.json (lý do REVIEW cũ đã xử lý). Việc cần làm sau 31/12/2026: rà lại câu lệ phí của BA-0047.",
+      "live_verified": "2026-11-01",
+      "live_note": "main 52a42dde: BA-0047 \"là 115.000 đồng mỗi lần, từ 01/4/2026 đến hết 31/12/2026 thu một nửa theo Thông tư 29/2026/TT-BTC\" và FAQ \"lệ phí theo mức nêu trên\" đã hiển thị."
+    },
+    {
+      "batch_id": "CTA3",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-0315",
+        "BA-0607",
+        "BA-1233",
+        "BA-1186",
+        "BA-0236",
+        "BA-0278",
+        "BA-1137"
+      ],
+      "scope": "Rà các câu hứa 'luôn có xe sẵn/luôn sẵn xe/xe luôn sẵn sàng' (business.json không có cam kết tồn kho) và câu nói trợ lý báo 'xe trống' (biến thể không có chữ 'còn' mà bộ dò cũ bỏ sót).",
+      "changes": "tools/seo-master-2026.py: AVAIL_CLAIM thêm 'xe trống'; SHOP_CLAIM thêm 'luôn có xe sẵn/bền/đã', 'luôn sẵn xe', 'xe luôn sẵn sàng'; AVAIL_OK nhận các cách nói cửa hàng/nhân viên xác nhận ('với cửa hàng', 'để kiểm tra', 'gọi cửa hàng', 'sẽ xác nhận', 'khi bạn gọi'…) để không báo nhầm 28 câu đúng; test hồi quy. Sửa 7 bài qua tools/seo-body-review.mjs: trợ lý cho giá tham khảo và gợi ý dòng xe, cửa hàng/nhân viên xác nhận xe còn trống khi bạn gọi; BA-1137 đổi lời hứa 'xe đã kiểm tra trước mỗi lượt giao' thành lời khuyên kiểm tra đèn, còi, phanh khi nhận. Trước lô: 7 bài bị gắn cờ, sau lô: 0."
     }
   ],
   "rules": [
@@ -1387,11 +1404,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "CTA2",
-  "last_verified_commit": "63eb144b",
+  "last_completed_batch": "LEGAL-FEE1",
+  "last_verified_commit": "52a42dde",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (gồm bộ dò SHOP_CLAIM mới), BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA2, LEGAL-FEE1 (content-review REVIEW 0). Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Có thể làm tiếp không cần chờ: QA-PROXY (1), rà các câu hứa dịch vụ khác khi có mẫu mới.",
+  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (gồm bộ dò SHOP_CLAIM mới), BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA3, LEGAL-FEE1 (content-review REVIEW 0). Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Có thể làm tiếp không cần chờ: QA-PROXY (1), rà các câu hứa dịch vụ khác khi có mẫu mới.",
   "p0_live_verified": [
     "/",
     "/gia-thue/",

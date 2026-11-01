@@ -896,10 +896,11 @@
   "/blog/an-toan/idp-va-bang-lai-quoc-te/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C06-LEGAL-SOURCES"
+    "C06-LEGAL-SOURCES",
+    "LEGAL-FEE1"
    ],
-   "date": "2026-10-31",
-   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+   "date": "2026-11-01",
+   "note": "Lệ phí IDP theo TT 154/2025 + giảm một nửa theo TT 29/2026 (01/4–31/12/2026); live 52a42dde"
   },
   "/blog/an-toan/kham-suc-khoe-lai-xe-cau-hoi-thuong-gap/": {
    "status": "DONE_LIVE",
