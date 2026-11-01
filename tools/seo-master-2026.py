@@ -718,10 +718,34 @@ FEATURE_CLAIM = re.compile(
     r'|(?:trợ lý|Agent)[^.?!<]{0,40}báo ngay xe còn trống', re.I)
 
 
+# Lô APP2: ứng dụng/trợ lý MotoAI không có dữ liệu xe còn trống và không giữ
+# chỗ (src/app, src/recommend, src/calc) — câu nói trợ lý/ứng dụng báo "xe còn
+# trống", "mẫu xe đang sẵn" hay giữ chỗ là khẳng định tính năng không có, trừ
+# khi chính câu đó nói cửa hàng xác nhận hoặc trợ lý không làm việc này.
+AVAIL_CLAIM = re.compile(
+    r'(?:trợ lý|MotoAI|ứng dụng|\bapp\b)[^.?!<]{0,90}'
+    r'(?:(?:xe|dòng xe|mẫu xe|xe nào|dòng nào|mẫu nào) (?:còn trống|đang sẵn)'
+    r'|tình trạng (?:xe còn trống|sẵn có)|để giữ chỗ|có xe giữ chỗ|giữ chỗ cho)', re.I)
+AVAIL_OK = re.compile(
+    r'cửa hàng xác nhận|nhờ cửa hàng|hỏi cửa hàng|liên hệ cửa hàng|xác nhận với cửa hàng|chốt lại với cửa hàng'
+    r'|gọi trực tiếp|hướng bạn|không giữ|không tự|không làm|chưa làm|chưa kiểm tra|không thể'
+    r'|người thật|nhân viên', re.I)
+
+
+def _sentence(body, start, end):
+    s = max(body.rfind('.', 0, start), body.rfind('>', 0, start)) + 1
+    e = min([i for i in (body.find('.', end), body.find('?', end), body.find('<', end)) if i >= 0] or [len(body)])
+    return body[s:e], body[e:e + 1]
+
+
 def feature_claims(body):
     """FEATURE_CLAIM matches that state the claim (a question such as an FAQ
     heading is not a claim — its answer is what gets checked)."""
     out = []
+    for m in AVAIL_CLAIM.finditer(body):
+        sent, stop = _sentence(body, m.start(), m.end())
+        if stop != '?' and not AVAIL_OK.search(sent):
+            out.append(m.group(0))
     for m in FEATURE_CLAIM.finditer(body):
         end = min([i for i in (body.find('.', m.end()), body.find('?', m.end()), body.find('<', m.end())) if i >= 0] or [len(body)])
         # A sentence that itself says the answer is shown in Vietnamese corrects

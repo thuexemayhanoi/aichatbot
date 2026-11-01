@@ -582,12 +582,10 @@
    "warnings": []
   },
   "BA-0096": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0097": {
    "score": 100,
@@ -608,12 +606,10 @@
    "warnings": []
   },
   "BA-0100": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0101": {
    "score": 100,
