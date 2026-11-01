@@ -67,6 +67,8 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 | nd-56-2023 | Nghị định 56/2023/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 96/2016/NĐ-CP, Nghị định 99/2016/NĐ-CP, Nghị định 137/2020/NĐ-CP | in_force | fulltext | 15/08/2023 | — | 2 | 0 | 0 |
 | nd-10-2022 | Nghị định 10/2022/NĐ-CP quy định về lệ phí trước bạ | in_force | fulltext | 01/03/2022 | — | 1 | 0 | 0 |
 | tt-38-2024-bgtvt | Thông tư 38/2024/TT-BGTVT quy định về tốc độ và khoảng cách an toàn của xe cơ giới, xe máy chuyên dùng tham gia giao thông đường bộ | in_force | fulltext | 01/01/2025 | — | 21 | 0 | 0 |
+| tt-36-2024-byt | Thông tư 36/2024/TT-BYT quy định về tiêu chuẩn sức khỏe, việc khám sức khỏe đối với người lái xe, người điều khiển xe máy chuyên dùng | in_force | fulltext | 01/01/2025 | — | 2 | 0 | 0 |
+| ttlt-24-2015-byt-bgtvt | Thông tư liên tịch 24/2015/TTLT-BYT-BGTVT quy định về tiêu chuẩn sức khỏe của người lái xe, việc khám sức khỏe định kỳ đối với người lái xe ô tô | replaced | fulltext | 10/10/2015 | tt-36-2024-byt | 0 | 2 | 0 |
 | tt-04-2021-bkhcn | Thông tư 04/2021/TT-BKHCN ban hành Quy chuẩn kỹ thuật quốc gia về mũ bảo hiểm cho người đi mô tô, xe máy (QCVN 2:2021/BKHCN) | in_force | fulltext | 01/08/2021 | — | 4 | 0 | 0 |
 | tt-60-2023-btc | Thông tư 60/2023/TT-BTC quy định mức thu, chế độ thu, nộp, miễn, quản lý lệ phí đăng ký, cấp biển phương tiện giao thông cơ giới đường bộ | replaced | fulltext | 22/10/2023 | tt-155-2025-btc | 0 | 5 | 0 |
 | tt-154-2025-btc | Thông tư 154/2025/TT-BTC quy định mức thu, chế độ thu, nộp phí sát hạch lái xe, lệ phí cấp bằng, chứng chỉ được hoạt động trên các loại phương tiện và lệ phí đăng ký, cấp biển xe máy chuyên dùng | in_force | fulltext | 01/01/2026 | — | 1 | 0 | 0 |

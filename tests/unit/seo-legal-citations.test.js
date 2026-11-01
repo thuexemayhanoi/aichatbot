@@ -15,7 +15,7 @@ import { analyse, build, classify, citeKey, loadRegistry, scan, STATUSES, EVIDEN
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
-const CITE_KEY = /^(bộ luật|luật|nghị định|thông tư|quyết định|nghị quyết|chỉ thị)\|\d{1,4}\/(\d{4}|ct-ttg)$/;
+const CITE_KEY = /^(bộ luật|luật|nghị định|thông tư liên tịch|thông tư|quyết định|nghị quyết|chỉ thị)\|\d{1,4}\/(\d{4}|ct-ttg)$/;
 
 test('registry: unique ids, well-formed cite keys, known status/evidence, replacement chains resolve, facts exist', () => {
   const { reg, byId } = loadRegistry(ROOT);
@@ -93,6 +93,25 @@ test('repository: every cited document is in the registry, flagged articles matc
     assert.ok(existsSync(join(ROOT, OUT_DIR, name)), `${name} committed`);
     assert.equal(read(`${OUT_DIR}/${name}`), files[name], `${name} is stale — run node tools/seo-legal-citations.mjs`);
   }
+});
+
+test('a joint circular ("Thông tư liên tịch") is its own document type, so a replaced one cited as current is caught', () => {
+  const root = mkdtempSync(join(tmpdir(), 'motoai-legal-ttlt-'));
+  mkdirSync(join(root, 'data/blog/articles'), { recursive: true });
+  mkdirSync(join(root, 'data/seo'), { recursive: true });
+  writeFileSync(join(root, REGISTRY), read(REGISTRY));
+  const body = (slug, html) => { writeFileSync(join(root, `data/blog/articles/${slug}.body.html`), html); return `data/blog/articles/${slug}.body.html`; };
+  const articles = [
+    { article_id: 'BA-0001', category: 'SAFE', slug: 'a', body: body('a', '<p>Tiêu chuẩn sức khỏe theo Thông tư liên tịch 24/2015/TTLT-BYT-BGTVT, văn bản đang áp dụng.</p>') },
+    { article_id: 'BA-0002', category: 'SAFE', slug: 'b', body: body('b', '<p>Tiêu chuẩn sức khỏe theo Thông tư 36/2024/TT-BYT, áp dụng từ 01/01/2025 thay cho Thông tư liên tịch 24/2015/TTLT-BYT-BGTVT đã hết hiệu lực.</p>') },
+  ];
+  writeFileSync(join(root, 'data/blog/published.json'), JSON.stringify({ articles }));
+  const r = analyse(root);
+  assert.deepEqual(r.unknown, []);
+  assert.deepEqual(r.needs_fix.map((f) => [f.article_id, f.doc]), [['BA-0001', 'ttlt-24-2015-byt-bgtvt']]);
+  const ttlt = r.documents.find((d) => d.id === 'ttlt-24-2015-byt-bgtvt');
+  assert.deepEqual([ttlt.articles_current, ttlt.articles_historical], [['BA-0001'], ['BA-0002']]);
+  assert.deepEqual(r.documents.find((d) => d.id === 'tt-36-2024-byt').articles_current, ['BA-0002']);
 });
 
 test('a document named between its type and number is cited by number, without borrowing a later number', () => {
