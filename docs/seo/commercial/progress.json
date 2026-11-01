@@ -1288,7 +1288,9 @@
       ],
       "scope": "APP-CLAIM lô 2: câu nói trợ lý/ứng dụng báo xe còn trống, mẫu xe đang sẵn, tình trạng sẵn có theo ngày nhận hoặc giữ chỗ; BA-0100 sửa câu trùng do lô NAP3 gây ra.",
       "changes": "tools/seo-master-2026.py: bộ dò FEATURE-CLAIM thêm nhóm AVAIL_CLAIM (trợ lý/ứng dụng/MotoAI + 'xe còn trống/đang sẵn/tình trạng sẵn có/giữ chỗ'), bỏ qua câu đã nói cửa hàng xác nhận hoặc trợ lý không làm việc này; trước lô: 19 bài bị gắn cờ, sau lô: 0. Sửa 26 bài qua tools/seo-body-review.mjs: trợ lý cho giá tham khảo và gợi ý dòng xe, còn xe trống, giữ chỗ do cửa hàng xác nhận qua tin nhắn/điện thoại; BA-0315 bỏ mô tả ứng dụng chọn khu vực xem xe điện gần đó và nhập mã xác minh; BA-0091 bỏ 'đặt xe online chỉ với vài thao tác', 'MotoAI hoạt động từ … tại'; BA-1484/1485 xe điện là giá liên hệ, trợ lý hướng liên hệ cửa hàng. BA-0100: câu kết trùng 80 ký tự đầu với BA-0096 sau lô NAP3 (DUP-PARA 2 → 0).",
-      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6; hàng đợi chỉ còn LOCAL-SCOPE 286 (chờ chủ sở hữu)."
+      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6; hàng đợi chỉ còn LOCAL-SCOPE 286 (chờ chủ sở hữu).",
+      "live_verified": "2026-11-01",
+      "live_note": "main 8857985d: BA-0315 FAQ \"mở trợ lý trên trang chủ… liên hệ cửa hàng để xác nhận xe còn trống\", BA-0100 \"đón khách thuê tại địa chỉ\", BA-1485 \"trợ lý trên website sẽ hướng bạn liên hệ trực tiếp\" đều đã hiển thị."
     },
     {
       "batch_id": "CTA1",
@@ -1306,6 +1308,27 @@
       "scope": "Câu hứa dịch vụ chưa có trong data/business/business.json: 'xe luôn được kiểm tra/bảo dưỡng trước mỗi lượt giao', 'đảm bảo không có hư hỏng', 'luôn sẵn xe'.",
       "changes": "Sửa 8 bài qua tools/seo-body-review.mjs: đổi thành lời khuyên người thuê cùng nhân viên kiểm tra phanh, đèn, pin, truyền động khi nhận xe; BA-0314 bỏ 'đảm bảo không có hư hỏng hoặc lỗi kỹ thuật' và 'mọi thông tin đều được công khai'; BA-0755 MotoAI là trợ lý tra giá và thủ tục, xe nhận tại cửa hàng (không 'luôn sẵn xe').",
       "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6."
+    },
+    {
+      "batch_id": "APP2B",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-0025",
+        "BA-1759",
+        "BA-1762",
+        "BA-1758",
+        "BA-1184",
+        "BA-1485",
+        "BA-0766",
+        "BA-0409",
+        "BA-0042",
+        "BA-0439",
+        "BA-1435",
+        "BA-0755",
+        "BA-0191"
+      ],
+      "scope": "APP-CLAIM lô 2b: bộ dò FEATURE-CLAIM bỏ sót câu có liên kết <a> hoặc placeholder {{ business.* }} (dấu chấm trong placeholder cắt câu) và các biến thể 'xe điện nào đang sẵn', 'xe còn sẵn', 'dòng nào còn xe'. Kiểm tra live BA-1485 phát hiện câu kết 'hỏi trợ lý MotoAI… xem xe điện nào đang sẵn' còn sót.",
+      "changes": "tools/seo-master-2026.py: feature_claims bỏ thẻ nội dòng và thay placeholder trước khi tách câu; AVAIL_CLAIM thêm 'xe/dòng <từ> nào', 'còn sẵn', 'còn xe'; test hồi quy trong tests/unit/seo-master-2026.test.js. Sửa 11 bài qua tools/seo-body-review.mjs: trợ lý cho giá tham khảo và gợi ý dòng xe, cửa hàng xác nhận xe còn trống; BA-0409 bỏ 'chốt đơn' và 'sẵn sàng giữ xe'; BA-1435 câu trả lời hiển thị bằng tiếng Việt. BA-0755, BA-0191 sửa lỗi chính tả 'Ao mưa' → 'Áo mưa'. Trước lô: 11 bài bị gắn cờ theo bộ dò mới, sau lô: 0."
     }
   ],
   "rules": [
@@ -1315,8 +1338,8 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "APP1",
-  "last_verified_commit": "c9b53bea",
+  "last_completed_batch": "APP2",
+  "last_verified_commit": "8857985d",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
   "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0, BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP4, APP1–APP2, CTA1. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Có thể làm tiếp không cần chờ: QA-PROXY (1), rà các câu hứa dịch vụ khác khi có mẫu mới.",
