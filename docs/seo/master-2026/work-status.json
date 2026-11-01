@@ -19,6 +19,14 @@
    "date": "2026-10-30",
    "note": "Giữ ý định trợ lý / WebApplication theo thiết kế"
   },
+  "/blog/an-toan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
   "/blog/an-toan/an-toan-khi-thanh-toan-coc-cho-du-khach/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -35,6 +43,14 @@
    ],
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/bang-lai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
   "/blog/an-toan/bao-hiem-khi-thue-xe-may-cau-hoi-thuong-gap/": {
    "status": "REVIEWED_OK",
@@ -164,6 +180,14 @@
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/an-toan/du-lich/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
   "/blog/an-toan/idp-va-bang-lai-quoc-te-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -239,10 +263,11 @@
   "/blog/an-toan/lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M3-SUBTOPIC-PAGINATION"
+    "M3-SUBTOPIC-PAGINATION",
+    "M5-HUB-GUIDES-2"
    ],
    "date": "2026-11-01",
-   "note": "Phân trang 24 bài/trang — live"
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
   "/blog/an-toan/lai-xe/page/2/": {
    "status": "DONE_LIVE",
@@ -291,6 +316,14 @@
    ],
    "date": "2026-10-30",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/mu-bao-hiem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
   "/blog/an-toan/nghia-vu-cua-ben-cho-thue-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -385,10 +418,11 @@
   "/blog/an-toan/phap-luat/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M3-SUBTOPIC-PAGINATION"
+    "M3-SUBTOPIC-PAGINATION",
+    "M5-HUB-GUIDES-2"
    ],
    "date": "2026-11-01",
-   "note": "Phân trang 24 bài/trang — live"
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
   "/blog/an-toan/phap-luat/page/2/": {
    "status": "DONE_LIVE",
@@ -485,6 +519,22 @@
    ],
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/su-co/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/an-toan/thoi-tiet/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
   "/blog/an-toan/thue-va-phi-xe-may-ca-nhan-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -612,10 +662,11 @@
   "/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao-nam-2026/": {
    "status": "DONE_LIVE",
    "batches": [
-    "K1-COMMERCIAL"
+    "K1-COMMERCIAL",
+    "M5-HUB-GUIDES-2"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #57 (49a83d4): /lien-he/ có Khu vực giao xe + Đặt xe trong ba bước + link /agent/; BA-0254 tiêu đề 'Giá thuê xe máy theo dòng xe…'; BA-0427 FAQ 'kho ứng dụng của điện thoại'."
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
   "/blog/dia-phuong/": {
    "status": "DONE_LIVE",
@@ -883,21 +934,55 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/huong-dan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/huong-dan/ban-do/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/huong-dan/dat-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/huong-dan/giay-to/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
   "/blog/huong-dan/nhan-xe/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M4-TAXONOMY-PRECISION"
+    "M4-TAXONOMY-PRECISION",
+    "M5-HUB-GUIDES-2"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #58 (ae70494): hub mới /blog/huong-dan/nhan-xe/ (30 bài, 2 trang); /blog/dia-phuong/phuong-xa/ còn 91 bài/4 trang; /phuong-xa/page/5/ trả 404 và /page/7/ chuyển người dùng về /blog/dia-phuong/phuong-xa/; BA-0011 breadcrumb An Toàn › Pháp Luật. 895 bài đổi chủ đề con theo quy tắc mới (HUB-MISFILE tự hết khi breadcrumb khớp)."
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
   "/blog/huong-dan/thu-tuc/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M3-SUBTOPIC-PAGINATION"
+    "M3-SUBTOPIC-PAGINATION",
+    "M5-HUB-GUIDES-2"
    ],
    "date": "2026-11-01",
-   "note": "Phân trang 24 bài/trang — live"
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
   "/blog/huong-dan/thu-tuc/page/10/": {
    "status": "DONE_LIVE",
@@ -986,6 +1071,14 @@
    ],
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/tra-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
   "/blog/thue-xe/": {
    "status": "DONE_LIVE",
@@ -1108,6 +1201,14 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/thue-xe/nhan-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
   "/blog/thue-xe/thu-tuc/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1205,6 +1306,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/thue-xe/tra-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-2"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
   "/blog/xe-dien/": {
    "status": "DONE_LIVE",

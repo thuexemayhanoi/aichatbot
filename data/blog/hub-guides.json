@@ -337,6 +337,75 @@
       "body": "data/blog/hubs/an-toan/du-lich.body.html",
       "batch": "M5-HUB-SAFE",
       "reviewed": "2026-11-01"
+    },
+    "/blog/app/": {
+      "keyword": "hướng dẫn dùng ứng dụng thuê xe máy",
+      "body": "data/blog/hubs/app.body.html",
+      "batch": "M5-HUB-APP",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/app/tro-ly/": {
+      "keyword": "cách hỏi Agent thuê xe",
+      "h1": "Hỏi Agent thuê xe",
+      "seo_title": "Hỏi Agent thuê xe máy: đặt câu hỏi đúng, kiểm chứng câu trả lời",
+      "meta": "Hỏi Agent thuê xe máy cho đúng: câu hỏi có dòng xe, số ngày, nơi nhận xe; Agent trả lời từ dữ liệu cửa hàng, việc nào cần hỏi trực tiếp và tin câu trả lời đến đâu.",
+      "body": "data/blog/hubs/app/tro-ly.body.html",
+      "batch": "M5-HUB-APP",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/app/tinh-gia/": {
+      "keyword": "tính giá thuê xe trước khi đặt",
+      "h1": "Tính giá thuê xe trước khi đặt",
+      "seo_title": "Tính giá thuê xe máy trước khi đặt: ngày, tuần, tháng qua Agent",
+      "meta": "Tính giá thuê xe máy trước khi đặt: bốn thông tin cần có, chọn gói ngày, tuần hay tháng theo số ngày dùng, khoản ngoài giá thuê; giá thực tế do cửa hàng xác nhận.",
+      "body": "data/blog/hubs/app/tinh-gia.body.html",
+      "batch": "M5-HUB-APP",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/app/web-app/": {
+      "keyword": "thuê xe qua ứng dụng web",
+      "h1": "Ứng dụng web, không cần cài đặt",
+      "seo_title": "Thuê xe qua ứng dụng web: không cài đặt, khác app gốc ở đâu",
+      "meta": "Thuê xe máy qua ứng dụng web: mở bằng trình duyệt, không cài đặt, không tài khoản, không xin quyền vị trí hay danh bạ; khác app gốc ở đâu.",
+      "body": "data/blog/hubs/app/web-app.body.html",
+      "batch": "M5-HUB-APP",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/app/tim-xe/": {
+      "keyword": "tìm xe máy thuê qua Agent",
+      "h1": "Tìm xe phù hợp qua Agent",
+      "seo_title": "Tìm xe máy thuê qua Agent: nêu nhu cầu, so giá, chọn dòng xe",
+      "meta": "Tìm xe máy thuê qua Agent: nêu số người, quãng đường, số ngày và nơi nhận xe để được gợi ý dòng xe và giá tham khảo; chốt xe còn trống với cửa hàng.",
+      "body": "data/blog/hubs/app/tim-xe.body.html",
+      "batch": "M5-HUB-APP",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/app/so-sanh/": {
+      "keyword": "thuê xe qua app hay trực tiếp",
+      "h1": "Thuê qua ứng dụng hay trực tiếp",
+      "seo_title": "Thuê xe qua ứng dụng hay trực tiếp: so từng khâu, chọn luồng",
+      "meta": "Thuê xe máy qua ứng dụng hay trực tiếp tại cửa hàng: so từng khâu hỏi giá, chọn xe, đặt cọc, giao xe; cách kết hợp hỏi trước qua Agent rồi chốt với cửa hàng.",
+      "body": "data/blog/hubs/app/so-sanh.body.html",
+      "batch": "M5-HUB-APP",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/app/huong-dan/": {
+      "keyword": "các bước dùng Agent thuê xe",
+      "h1": "Các bước dùng Agent",
+      "seo_title": "Các bước dùng Agent thuê xe máy: từ câu hỏi đầu đến nhận xe",
+      "meta": "Các bước dùng Agent thuê xe máy: hỏi giá theo dòng xe và số ngày, so lựa chọn, hỏi giấy tờ và cọc, chốt xe với cửa hàng, nhận xe; mẹo cho khách nước ngoài.",
+      "body": "data/blog/hubs/app/huong-dan.body.html",
+      "batch": "M5-HUB-APP",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/app/dat-xe/": {
+      "keyword": "đặt xe qua Agent",
+      "h1": "Đặt xe qua Agent và cửa hàng",
+      "seo_title": "Đặt xe qua Agent: soạn yêu cầu đủ thông tin, chốt với cửa hàng",
+      "meta": "Đặt xe qua Agent: soạn yêu cầu có dòng xe, giờ nhận, giờ trả, nơi nhận xe, số người lái rồi gửi cửa hàng; cửa hàng xác nhận giá, cọc, giờ giao trước khi giao xe.",
+      "body": "data/blog/hubs/app/dat-xe.body.html",
+      "batch": "M5-HUB-APP",
+      "reviewed": "2026-11-01"
     }
   }
 }
