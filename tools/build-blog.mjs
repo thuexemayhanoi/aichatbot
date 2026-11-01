@@ -238,7 +238,8 @@ const count = (n) => n.toLocaleString('vi-VN');
  *  the 3 parent hubs) → search → 3 PARENT HUB stages → Bài mới → the six
  *  child categories → contact band. Users and crawlers see the topical
  *  architecture before any single article. */
-function buildHome(published, business) {
+function buildHome(published, business, plannedPaths = new Set()) {
+  const guide = hubGuide('/blog/', business, plannedPaths);
   const catCount = (id) => published.filter((a) => a.category === id).length;
   const clusterCount = (c) => published.filter((a) => c.categories.includes(a.category)).length;
 
@@ -313,7 +314,7 @@ ${routes}
           </ol>
         </nav>
       </section>
-      <section class="search-band" aria-label="Tìm bài viết">
+${guide ? guide.answer : ''}      <section class="search-band" aria-label="Tìm bài viết">
         <div class="blog-search" id="blog-search">
           ${icon('search', 'i search-glyph')}
           <input id="blog-search-input" type="search" placeholder="${esc(t('searchPlaceholder'))}" aria-label="Tìm bài viết">
@@ -348,7 +349,7 @@ ${cards || `          ${emptyNote('emptyBlog')}`}
 ${categoryCards}
         </div>
       </section>
-${askAgentAction(BLOG_HOME.askTopic)}`;
+${guide ? guide.more : ''}${askAgentAction(BLOG_HOME.askTopic)}`;
 
   const html = appShellPage({
     title: BLOG_HOME.title,
@@ -809,7 +810,8 @@ ${list('blog-toc-list')}
  * Parent cluster hub (/blog/<cluster-dir>/) — a real parent page connecting
  * its two category hubs. Canonical category IDs and dirs are untouched.
  */
-function buildClusterHub(cluster, published) {
+function buildClusterHub(cluster, published, business = null, plannedPaths = new Set()) {
+  const guide = business ? hubGuide(`/blog/${cluster.dir}/`, business, plannedPaths) : null;
   // v61: a REAL topical parent hub — H1, intro, child category cards,
   // the strongest/latest articles per child, and the full cluster context.
   const cats = cluster.categories.map((id) => HUB_BY_ID[id]);
@@ -837,7 +839,7 @@ ${topCards}
   const path = `blog/${cluster.dir}/`;
   const content = breadcrumb([CRUMB_HOME, CRUMB_BLOG, { label: cluster.name, href: null }])
     + screenHead({ label: t('kickerCluster'), title: cluster.name, lead: cluster.desc })
-    + (cluster.intro ? `      <p class="blog-screen-lead">${esc(cluster.intro)}</p>\n` : '')
+    + (guide ? guide.answer : cluster.intro ? `      <p class="blog-screen-lead">${esc(cluster.intro)}</p>\n` : '')
     + `      <div class="blog-cat-grid">
 ${catCards}
       </div>
@@ -847,7 +849,7 @@ ${catCards}
 ${latestCards || `          ${emptyNote('emptyHub', { scope: t('emptyScopeCluster') })}`}
         </div>
       </section>
-${hubClusterFooter(cluster)}${askAgentAction(cluster.name, cluster.categories[0])}`;
+${guide ? guide.more : ''}${hubClusterFooter(cluster)}${askAgentAction(cluster.name, cluster.categories[0])}`;
   const itemList = [
     ...cats.map((hub) => ({ '@type': 'ListItem', position: cats.indexOf(hub) + 1, name: hub.name, url: `${SITE}blog/${hub.dir}/` })),
     ...clusterArticles.slice(0, 10).map((a, i) => ({ '@type': 'ListItem', position: cats.length + 1 + i, name: a.title, url: `${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/` }))
@@ -1193,8 +1195,8 @@ export function build() {
   const linkPages = new Set(published.map((entry) => `blog/${HUB_BY_ID[entry.category].dir}/${entry.slug}/index.html`));
   const pricing = PRICING;
 
-  buildHome(published, business);
-  for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published);
+  buildHome(published, business, plannedPaths);
+  for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published, business, plannedPaths);
   const categoryPages = HUBS.flatMap((hub) => buildHub(hub, published, subtopicCounts(published, matrix), pillarsOf(hub.id), business, plannedPaths));
   const subtopicPages = [];
   const subtopicPaged = [];

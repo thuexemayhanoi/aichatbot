@@ -63,6 +63,13 @@
       "since": "2026-11-01",
       "batch": "M4-TAXONOMY-PRECISION",
       "reason": "Hub Thuê Tuần còn 6 bài (trước 46 do \"cuối tuần\" bị tính là thuê theo tuần) = 1 trang. Trang 2 bỏ."
+    },
+    {
+      "from": "/blog/huong-dan/chuan-bi/",
+      "to": "/blog/huong-dan/",
+      "since": "2026-11-01",
+      "batch": "M6-THIN-HUB",
+      "reason": "Hub chủ đề con \"Chuẩn bị\" chỉ có 1 bài (BA-2006 đồ đi phượt) — trang danh sách một thẻ không có giá trị riêng (THIN-HUB). Bài vẫn ở hub Hướng dẫn và liên kết từ hub An toàn › Đường dài."
     }
   ]
 }

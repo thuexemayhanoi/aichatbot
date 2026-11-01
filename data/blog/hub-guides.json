@@ -406,6 +406,30 @@
       "body": "data/blog/hubs/app/dat-xe.body.html",
       "batch": "M5-HUB-APP",
       "reviewed": "2026-11-01"
+    },
+    "/blog/cong-cu-huong-dan/": {
+      "keyword": "công cụ và hướng dẫn thuê xe máy",
+      "body": "data/blog/hubs/cong-cu-huong-dan.body.html",
+      "batch": "M6-HUB-CLUSTER",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/thue-xe-phuong-tien/": {
+      "keyword": "thuê xe máy và xe máy điện",
+      "body": "data/blog/hubs/thue-xe-phuong-tien.body.html",
+      "batch": "M6-HUB-CLUSTER",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/kham-pha-an-toan/": {
+      "keyword": "khám phá Hà Nội bằng xe máy thuê",
+      "body": "data/blog/hubs/kham-pha-an-toan.body.html",
+      "batch": "M6-HUB-CLUSTER",
+      "reviewed": "2026-11-01"
+    },
+    "/blog/": {
+      "keyword": "cẩm nang thuê xe máy",
+      "body": "data/blog/hubs/blog.body.html",
+      "batch": "M6-HUB-CLUSTER",
+      "reviewed": "2026-11-01"
     }
   }
 }
