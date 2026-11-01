@@ -109,6 +109,14 @@
    "date": "2026-11-01",
    "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
+  "/blog/an-toan/bang-lai-a1-a2-khac-gi-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/bang-lai-a1-a2-khac-gi-tom-tat/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -189,6 +197,14 @@
    ],
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/bao-va-xe-may-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/bao-ve-du-lieu-ca-nhan-khi-thue-xe-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -279,6 +295,22 @@
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
+  "/blog/an-toan/den-do-va-camera-phat-nguoi-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
+  "/blog/an-toan/den-do-va-camera-phat-nguoi-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/den-do-va-camera-phat-nguoi-vi-du-thuc-te/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -311,6 +343,14 @@
    "date": "2026-11-01",
    "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
+  "/blog/an-toan/den-xe-va-an-toan-dem-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/den-xe-va-an-toan-dem-vi-du-thuc-te/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -330,6 +370,14 @@
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
+  "/blog/an-toan/deo-non-dung-cach-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/deo-non-dung-cach/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -338,6 +386,22 @@
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
+  "/blog/an-toan/di-nguoc-chieu-hau-qua-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
+  "/blog/an-toan/di-nguoc-chieu-hau-qua-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/di-nguoc-chieu-hau-qua/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -345,6 +409,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/di-nhom-an-toan-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/di-nhom-an-toan-tom-tat/": {
    "status": "DONE_LIVE",
@@ -386,6 +458,14 @@
    "date": "2026-11-01",
    "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
+  "/blog/an-toan/di-xe-khong-giay-phep-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/di-xe-khong-giay-phep-tom-tat/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -401,6 +481,22 @@
    ],
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/dien-thoai-khi-lai-xe-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
+  "/blog/an-toan/dien-thoai-khi-lai-xe-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/dien-thoai-khi-lai-xe-vi-du-thuc-te/": {
    "status": "DONE_LIVE",
@@ -438,10 +534,19 @@
   "/blog/an-toan/goi-canh-sat-khi-tai-nan-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C09"
+    "C09",
+    "C10"
    ],
    "date": "2026-11-01",
-   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
+  "/blog/an-toan/goi-canh-sat-khi-tai-nan-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/goi-canh-sat-khi-tai-nan-vi-du-thuc-te/": {
    "status": "DONE_LIVE",
@@ -468,6 +573,14 @@
    "date": "2026-11-01",
    "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
+  "/blog/an-toan/guong-chieu-hau-an-toan-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/guong-chieu-hau-an-toan/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -484,6 +597,14 @@
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/idp-va-bang-lai-quoc-te-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/idp-va-bang-lai-quoc-te/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -492,14 +613,31 @@
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/kham-suc-khoe-lai-xe-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
+  "/blog/an-toan/kham-suc-khoe-lai-xe-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/kham-suc-khoe-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
     "C08-NAP1",
-    "CEN2-NAP2A"
+    "CEN2-NAP2A",
+    "C10"
    ],
    "date": "2026-11-01",
-   "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/khien-nai-dich-vu-thue-xe-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -561,6 +699,14 @@
    "date": "2026-11-01",
    "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
+  "/blog/an-toan/ky-nang-phanh-gap-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/ky-nang-phanh-gap/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -586,6 +732,14 @@
    ],
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
+  },
+  "/blog/an-toan/lan-duong-va-quy-tac-nhuong-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/lan-duong-va-quy-tac-nhuong-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -717,6 +871,14 @@
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
+  "/blog/an-toan/ngap-nuoc-va-xe-may-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/nghia-vu-cua-ben-cho-thue-cho-du-khach/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -761,6 +923,14 @@
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-tom-tat/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -772,10 +942,11 @@
   "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C08-NAP1"
+    "C08-NAP1",
+    "C10"
    ],
    "date": "2026-11-01",
-   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -930,6 +1101,14 @@
    "date": "2026-11-01",
    "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
+  "/blog/an-toan/quy-dinh-mu-bao-hiem-tre-em-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/quy-dinh-mu-bao-hiem-tre-em/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1045,18 +1224,20 @@
   "/blog/an-toan/thu-tuc-khi-va-cham-nhe-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C09"
+    "C09",
+    "C10"
    ],
    "date": "2026-11-01",
-   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/thu-tuc-khi-va-cham-nhe-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
    "batches": [
-    "PTS1-NAP2B"
+    "PTS1-NAP2B",
+    "C10"
    ],
    "date": "2026-11-01",
-   "note": "PR #69 (66fc386a) — Pages live đã kiểm BA-1343, BA-1445 (điều kiện phục hồi 12 điểm), BA-0074 (tên cửa hàng)"
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/thu-tuc-khi-va-cham-nhe/": {
    "status": "DONE_LIVE",
@@ -1116,6 +1297,14 @@
    "date": "2026-11-01",
    "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
+  "/blog/an-toan/thuoc-va-lai-xe-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
   "/blog/an-toan/thuoc-va-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1131,6 +1320,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
+  "/blog/an-toan/toc-do-cho-phep-trong-pho-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C10"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/toc-do-cho-phep-trong-pho/": {
    "status": "DONE_LIVE",
