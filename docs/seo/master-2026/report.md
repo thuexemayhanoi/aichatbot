@@ -22,7 +22,6 @@ Workbook: `docs/seo/MASTER-SEO-MATRIX-2026.xlsx` — 23 sheet bắt buộc + 4 p
 - B12 P2 — Chưa đo GBP/local pack (owner, lô —)
 - B13 P2 — Khoảng trống từ khóa chưa có trang (owner, lô —)
 - B14 P3 — CSS mỗi trang 85.7 KB chưa nén (cảnh báo nội bộ ≥ 64 KB) (agent, lô —)
-- B19 P2 — Bài pháp lý chưa qua lô đối chiếu toàn văn (agent, lô C08+)
 
 ## Giới hạn
 
