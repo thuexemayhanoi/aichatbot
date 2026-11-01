@@ -57,7 +57,7 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 | luat-20-2023 | Luật Giao dịch điện tử số 20/2023/QH15 | in_force | fulltext | 01/07/2024 | — | 1 | 0 | 0 |
 | luat-91-2025 | Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 | in_force | fulltext | 01/01/2026 | — | 11 | 0 | 2 |
 | nd-168-2024 | Nghị định 168/2024/NĐ-CP quy định xử phạt vi phạm hành chính về trật tự, an toàn giao thông trong lĩnh vực giao thông đường bộ; trừ điểm, phục hồi điểm giấy phép lái xe | amended | fulltext | 01/01/2025 | nd-238-2026 | 232 | 11 | 0 |
-| nd-238-2026 | Nghị định 238/2026/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 168/2024/NĐ-CP | in_force | fulltext | 15/08/2026 | — | 3 | 0 | 0 |
+| nd-238-2026 | Nghị định 238/2026/NĐ-CP sửa đổi, bổ sung một số điều của Nghị định 168/2024/NĐ-CP | in_force | fulltext | 15/08/2026 | — | 2 | 0 | 0 |
 | nd-100-2019 | Nghị định 100/2019/NĐ-CP xử phạt vi phạm hành chính trong lĩnh vực giao thông đường bộ và đường sắt | replaced | reported | 01/01/2020 | nd-168-2024 | 0 | 3 | 0 |
 | nd-13-2023 | Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân | replaced | fulltext | 01/07/2023 | nd-356-2025 | 0 | 8 | 0 |
 | nd-356-2025 | Nghị định 356/2025/NĐ-CP quy định chi tiết một số điều và biện pháp thi hành Luật Bảo vệ dữ liệu cá nhân | in_force | fulltext | 01/01/2026 | — | 4 | 1 | 0 |

@@ -1054,7 +1054,9 @@
       ],
       "scope": "LEGAL-CHECK lô C11: nhóm 'cho du khách' và bài nền còn lại của hàng đợi C08–C10 + họ bài mũ bảo hiểm (dẫn sai điều khoản phạt người được chở).",
       "changes": "Sổ: +1 dữ kiện đối chiếu Công báo: nd-168-2024-dieu-12-nguoi-duoc-cho-mu (điểm b khoản 5 Điều 12 Nghị định 168/2024/NĐ-CP phạt RIÊNG người được chở không đội mũ/không cài quai 400.000–600.000 đồng, ngoài mức phạt người điều khiển tại điểm i khoản 2 Điều 7); đối chiếu thêm điểm e khoản 1 Điều 7 (chuyển làn 200.000–400.000 đồng). Sửa 13 bài qua tools/seo-body-review.mjs: người được chở bị phạt riêng và người lái cũng bị phạt, dẫn đúng điểm b khoản 5 Điều 12 (BA-0443, 0437, 0467, 0749, 0299, 0581); trẻ em được chở dưới 12 tuổi (BA-0431, 0461); phạt dùng điện thoại 800.000–1.000.000 đồng theo điểm đ khoản 4 Điều 7 (BA-0461); mức 8–10 triệu chỉ khi nồng độ cồn vượt 80 mg/100 ml máu hoặc có ma túy (BA-0185, 0191, 0197, 0473); 'đánh vòng' → 'đánh võng' (BA-0185, 0197); điều kiện phục hồi điểm đủ (BA-0869). 17 bài soát không đổi.",
-      "qa": "node --test 1202/1202; site-audit 0 lỗi; seo-score 99.6."
+      "qa": "node --test 1202/1202; site-audit 0 lỗi; seo-score 99.6.",
+      "live_verified": "2026-11-01",
+      "live_note": "Pages 4bd6509f: đã kiểm live BA-0443 (điểm b khoản 5 Điều 12), BA-0461 (trẻ dưới 12 tuổi; điện thoại 800.000–1.000.000 đồng theo điểm đ khoản 4 Điều 7), BA-0185 (mức ma túy/nồng độ cồn). 30 URL DONE_LIVE. Câu CTA 'MotoAI hỗ trợ tại …' ở BA-0185, 0191, 0197 thuộc lô NAP3."
     },
     {
       "batch_id": "M7-EN2",
@@ -1087,6 +1089,45 @@
       "scope": "M7 BODY-STRUCT: 14 bài thiếu danh sách (QA cảnh báo body-structure) + EN2: từ ngoại ngữ chen trong thân bài.",
       "changes": "tools/seo-body-review.mjs: thao tác mới 'points' — danh sách tóm 3–6 ý bài đã nêu, khép một mục H2, chỉ cho thân bài chưa có danh sách nào; cùng cổng kiểm như các thao tác khác (không số mới, không tiếng Anh, không câu cấm) + unit test. Áp dụng cho 14 bài BODY-STRUCT (QA tăng, ví dụ BA-0109 90 → 100). BA-0109 sửa thêm: 'unterwegs' → 'giữa đường'; trợ lý chỉ gợi ý dòng xe kèm giá tham khảo, chưa kiểm tra tình trạng còn xe theo ngày. EN2 (9 bài): Traffic → Giao thông (BA-0359), briefing → dặn dò (BA-0406), wobble → lắc lư (BA-0100), paperwork → giấy tờ (BA-0490), watermark → dòng chữ mờ (BA-0211), free → miễn phí (BA-0166), review → đánh giá (BA-1956), café/cafe → cà phê (BA-0248, BA-0102).",
       "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6."
+    },
+    {
+      "batch_id": "C12",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-0713",
+        "BA-1133",
+        "BA-1139",
+        "BA-1169",
+        "BA-1151",
+        "BA-1193",
+        "BA-1031",
+        "BA-1049",
+        "BA-0995",
+        "BA-0977",
+        "BA-1007",
+        "BA-0983",
+        "BA-0989",
+        "BA-1115",
+        "BA-1073",
+        "BA-1037",
+        "BA-1001",
+        "BA-1091",
+        "BA-0971",
+        "BA-1127",
+        "BA-1409",
+        "BA-1313",
+        "BA-1121",
+        "BA-1403",
+        "BA-2002",
+        "BA-1331",
+        "BA-1277",
+        "BA-1289",
+        "BA-1265",
+        "BA-1157"
+      ],
+      "scope": "LEGAL-CHECK lô C12: nhóm 'tóm tắt' và 'ví dụ thực tế' còn lại của hàng đợi + BA-0713 chuyển từ C10.",
+      "changes": "Đối chiếu Công báo số 75 + 76: điểm a khoản 5 và khoản 7 Điều 18 Nghị định 168/2024/NĐ-CP xếp 'giấy phép đã bị trừ hết điểm' cùng nhóm 'không có giấy phép' (BA-1157, BA-2002 đúng); điểm e khoản 1 Điều 7 chuyển làn sai 200.000–400.000 đồng (BA-0971 đúng); đi trên vỉa hè cùng điểm a khoản 7 Điều 7 với đi ngược chiều. Sửa 6 bài qua tools/seo-body-review.mjs: nồng độ cồn mức thấp nhất 2–3 triệu chứ không phải 2–4 triệu (BA-1133); điều kiện phục hồi điểm đủ ý (BA-1139); xe gắn máy 'không quá 50 cm³' (BA-1169, 1151); bỏ hiện trường dẫn đúng điểm c khoản 9 và điểm c khoản 13 Điều 7, bỏ câu lẫn Nghị định 238/2026 (BA-1193); ngoại lệ trẻ dưới 06 tuổi và CTA mũ trẻ em gọi cửa hàng thay vì hỏi trợ lý (BA-0713). 24 bài soát không đổi.",
+      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6."
     }
   ],
   "rules": [
@@ -1096,11 +1137,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "PTS2-TN1",
-  "last_verified_commit": "7586218",
+  "last_completed_batch": "C11",
+  "last_verified_commit": "4bd6509f",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 162 → 0, FEATURE-CLAIM 0, BODY-STRUCT 14 → 0, LEGAL-CHECK C08–C11, PTS (40 bài), TN1, EN2. Tiếp: C12 LEGAL-CHECK (~90 bài còn lại; đã soát trước 12 bài không lỗi; BA-0713 thêm ngoại lệ trẻ dưới 06 tuổi), APP-CLAIM (bài mô tả ứng dụng có đặt giữ chỗ, kiểm tra còn xe hoặc giá theo ngày nhận — ứng dụng chưa có các tính năng này; ví dụ BA-0481, BA-0775), câu hứa dịch vụ chưa xác minh trong CTA (~50), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 162 → 0, FEATURE-CLAIM 0, BODY-STRUCT 0, LEGAL-CHECK C08–C12, PTS (40 bài), TN1, EN2. Tiếp: NAP3 (18 bài còn gọi 'MotoAI' như cửa hàng: BA-0185, 0069, 0189, 0096, 0181, 0100, 0214, 0070, 0193, 0104, 0102, 0191, 0187, 0209, 0098, 0092, 0197, 0195 — bản vá đã soạn) + C13 (16 bài LEGAL-CHECK đã soát không lỗi: BA-1487, 1205, 1397, 2003, 1427, 1145, 1355, 1391, 1421, 1283, 1235, 1241, 1373, 1325, 1247, 2001 — chỉ cần ghi sổ), APP-CLAIM (ứng dụng chưa có đặt giữ chỗ, kiểm tra còn xe hay giá theo ngày nhận), câu hứa dịch vụ chưa xác minh trong CTA, QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "p0_live_verified": [
     "/",
     "/gia-thue/",

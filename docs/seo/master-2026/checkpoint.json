@@ -1,18 +1,18 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-11-01",
-  "last_completed_batch": "C10",
-  "last_verified_commit": "4d079246",
-  "next": "Đã xong: M1–M6, DUP-PARA 162 → 0, FEATURE-CLAIM 0, LEGAL-CHECK C08–C11, PTS (40 bài điều kiện phục hồi điểm), TN1. Tiếp: C12 LEGAL-CHECK (hàng đợi còn lại ~90 bài, 20–30 bài/lô; đã soát trước 12 bài không lỗi: BA-1031, 1049, 0995, 0977, 1007, 0983, 0989, 1115, 1073, 1037, 1001, 1091; BA-0971 đúng; BA-0713 thêm ngoại lệ trẻ dưới 06 tuổi), BODY-STRUCT (14 bài thiếu danh sách: cần thêm thao tác 'danh sách ý chính' vào tools/seo-body-review.mjs), câu hứa dịch vụ chưa xác minh trong CTA (~50, ví dụ 'hỏi trợ lý cửa hàng có mũ trẻ em'), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "last_completed_batch": "PTS2-TN1",
+  "last_verified_commit": "7586218",
+  "next": "Đã xong: M1–M7, DUP-PARA 162 → 0, FEATURE-CLAIM 0, BODY-STRUCT 14 → 0, LEGAL-CHECK C08–C11, PTS (40 bài), TN1, EN2. Tiếp: C12 LEGAL-CHECK (~90 bài còn lại; đã soát trước 12 bài không lỗi; BA-0713 thêm ngoại lệ trẻ dưới 06 tuổi), APP-CLAIM (bài mô tả ứng dụng có đặt giữ chỗ, kiểm tra còn xe hoặc giá theo ngày nhận — ứng dụng chưa có các tính năng này; ví dụ BA-0481, BA-0775), câu hứa dịch vụ chưa xác minh trong CTA (~50), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "remaining": {
     "status": {
-      "DONE_LIVE": 350,
-      "REVIEWED_OK": 54,
+      "DONE_LIVE": 379,
+      "REVIEWED_OK": 52,
       "OK": 1405,
-      "OPEN": 359
+      "OPEN": 332
     },
     "open_codes": {
-      "LEGAL-CHECK": 73,
+      "LEGAL-CHECK": 46,
       "LOCAL-SCOPE": 286
     }
   },
