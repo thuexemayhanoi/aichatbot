@@ -23,7 +23,6 @@ Workbook: `docs/seo/MASTER-SEO-MATRIX-2026.xlsx` — 23 sheet bắt buộc + 4 p
 - B14 P3 — CSS mỗi trang 85.7 KB chưa nén (cảnh báo nội bộ ≥ 64 KB) (agent, lô —)
 - B19 P2 — Bài pháp lý chưa qua lô đối chiếu toàn văn (agent, lô C08+)
 - B21 P2 — Bài thiếu cấu trúc H2/danh sách (agent, lô T1)
-- B22 P1 — Bài khẳng định sai tính năng Agent (tiếng Anh, xe còn trống) (agent, lô C-EN)
 
 ## Giới hạn
 
