@@ -1,20 +1,20 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-11-01",
-  "last_completed_batch": "D06A-CEN1A",
-  "last_verified_commit": "725c84fe",
-  "next": "Đã xong: M1–M6 (51 hub có đoạn dẫn, HUB-CONTENT 0), DUP-PARA 162 → 0 (D01–D06), FEATURE-CLAIM sửa 33 bài, LEGAL-CHECK C08 (20 bài). Tiếp: C-EN2 (13 bài còn khẳng định trợ lý trả lời tiếng Anh/đa ngôn ngữ — mã nguồn: giá, cọc, giờ, liên hệ luôn tiếng Việt; Agent chỉ diễn đạt lại câu gợi ý), NAP2 ('quận Long Biên' còn ~30 bài, 'MotoAI là trợ lý ... đặt tại' ~29 bài), C09+ LEGAL-CHECK (172 bài còn lại, 20 bài/lô; ưu tiên sửa 'tước 10 điểm' → 'trừ 10 điểm' ở BA-0413, BA-0419, BA-0407, BA-0425, BA-0365), BODY-STRUCT (14), câu hứa dịch vụ chưa xác minh trong CTA (~50 câu), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "last_completed_batch": "D06B-CEN1B-M6",
+  "last_verified_commit": "ae8c8e76",
+  "next": "Đã xong: M1–M6 (51 hub có đoạn dẫn, HUB-CONTENT 0), DUP-PARA 162 → 0 (D01–D06), FEATURE-CLAIM sửa 33 bài, LEGAL-CHECK C08 (20 bài). Tiếp: NAP2b (14 bài 'quận Long Biên'/'MotoAI ... đặt tại' còn lại — bản vá đã soạn), C09 (sửa trích dẫn Thông tư liên tịch 24/2015 đã hết hiệu lực ở BA-0359, BA-0449 + bộ quét trích dẫn nhận 'Thông tư liên tịch'), C09+ LEGAL-CHECK (172 bài còn lại, 20 bài/lô; ưu tiên sửa 'tước 10 điểm' → 'trừ 10 điểm' ở BA-0413, BA-0419, BA-0407, BA-0425, BA-0365), BODY-STRUCT (14), câu hứa dịch vụ chưa xác minh trong CTA (~50 câu), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "remaining": {
     "status": {
-      "DONE_LIVE": 175,
-      "REVIEWED_OK": 61,
-      "OK": 1444,
-      "OPEN": 488
+      "DONE_LIVE": 196,
+      "REVIEWED_OK": 58,
+      "OK": 1436,
+      "OPEN": 478
     },
     "open_codes": {
-      "LEGAL-CHECK": 184,
+      "LEGAL-CHECK": 175,
       "BODY-STRUCT": 14,
-      "FEATURE-CLAIM": 4,
+      "FEATURE-CLAIM": 3,
       "LOCAL-SCOPE": 286
     }
   },

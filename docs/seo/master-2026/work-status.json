@@ -19,6 +19,14 @@
    "date": "2026-10-30",
    "note": "Giữ ý định trợ lý / WebApplication theo thiết kế"
   },
+  "/blog/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
   "/blog/an-toan/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -26,6 +34,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/an-toan/ai-chiu-phat-khi-di-xe-thue-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/an-toan/an-toan-khi-thanh-toan-coc-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -102,12 +118,13 @@
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
   "/blog/an-toan/bao-ve-du-lieu-ca-nhan-khi-thue-xe-cho-du-khach/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C04-LEGAL"
+    "C04-LEGAL",
+    "D06B-CEN1B-M6"
    ],
-   "date": "2026-10-31",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/an-toan/bao-ve-du-lieu-ca-nhan-khi-thue-xe/": {
    "status": "REVIEWED_OK",
@@ -199,6 +216,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/an-toan/goi-canh-sat-khi-tai-nan-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
   "/blog/an-toan/idp-va-bang-lai-quoc-te-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -216,12 +241,13 @@
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
   "/blog/an-toan/khien-nai-dich-vu-thue-xe-cho-du-khach/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C04-LEGAL"
+    "C04-LEGAL",
+    "D06B-CEN1B-M6"
    ],
-   "date": "2026-10-31",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/an-toan/khien-nai-dich-vu-thue-xe/": {
    "status": "DONE_LIVE",
@@ -244,10 +270,11 @@
   "/blog/an-toan/kiem-dinh-xe-may-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C03-LEGAL"
+    "C03-LEGAL",
+    "D06B-CEN1B-M6"
    ],
-   "date": "2026-10-30",
-   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/an-toan/kiem-dinh-xe-may-vi-du-thuc-te/": {
    "status": "DONE_LIVE",
@@ -306,6 +333,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/an-toan/met-moi-khi-lai-duong-dai-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
   "/blog/an-toan/mu-bao-hiem-chuan-cho-du-khach/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -362,6 +397,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/an-toan/mua-lon-va-lai-xe-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
   "/blog/an-toan/mua-lon-va-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -380,12 +423,13 @@
    "note": "Đã rà soát, không cần đổi"
   },
   "/blog/an-toan/nghia-vu-cua-ben-cho-thue-cho-nguoi-moi/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C04-LEGAL"
+    "C04-LEGAL",
+    "D06B-CEN1B-M6"
    ],
-   "date": "2026-10-31",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/an-toan/nghia-vu-cua-ben-cho-thue-tom-tat/": {
    "status": "REVIEWED_OK",
@@ -412,6 +456,14 @@
    ],
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -526,6 +578,30 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/an-toan/phat-nguoi-va-xe-thue-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
+  "/blog/an-toan/phat-nguoi-va-xe-thue-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
+  "/blog/an-toan/phat-nguoi-va-xe-thue-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
   "/blog/an-toan/quyen-cua-nguoi-thue-xe-cho-du-khach/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -617,10 +693,11 @@
   "/blog/an-toan/thue-va-phi-xe-may-ca-nhan-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C03-LEGAL"
+    "C03-LEGAL",
+    "D06B-CEN1B-M6"
    ],
-   "date": "2026-10-30",
-   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/an-toan/thue-va-phi-xe-may-ca-nhan-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -721,6 +798,14 @@
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
   "/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -748,10 +833,11 @@
   "/blog/app/app-thue-xe-cho-khach-du-lich-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D03-D05-DUP-PARA"
+    "D03-D05-DUP-PARA",
+    "D06B-CEN1B-M6"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai-cau-hoi-thuong-gap/": {
    "status": "DONE_LIVE",
@@ -760,6 +846,22 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai-tai-ha-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
+  "/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai-tan-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/": {
    "status": "DONE_LIVE",
@@ -905,6 +1007,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/app/rental-assistant-la-gi-tan-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
   "/blog/app/so-sanh/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -953,6 +1063,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/app/tro-ly-ao-tu-van-thue-xe-may-tai-ha-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
   "/blog/app/tro-ly-ao-tu-van-thue-xe-may/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -960,6 +1078,22 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/app/tro-ly-thue-xe-may-la-gi-tan-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
+  "/blog/app/tro-ly-thue-xe-xu-ly-cau-hoi-da-ngon-ngu-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/app/tro-ly/": {
    "status": "DONE_LIVE",
@@ -1034,6 +1168,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/cong-cu-huong-dan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/dia-phuong/": {
    "status": "DONE_LIVE",
@@ -1415,6 +1557,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/huong-dan/chuan-bi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
   "/blog/huong-dan/dat-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1430,6 +1580,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/huong-dan/giao-xe-tai-san-bay-noi-bai-nhanh-gon/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/huong-dan/giay-to/": {
    "status": "DONE_LIVE",
@@ -1576,6 +1734,22 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/kham-pha-an-toan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
+  "/blog/thue-xe-phuong-tien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06B-CEN1B-M6"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
   "/blog/thue-xe/": {
    "status": "DONE_LIVE",
