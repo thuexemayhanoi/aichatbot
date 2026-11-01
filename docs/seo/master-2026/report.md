@@ -1,14 +1,14 @@
-# Lô M1 — Master SEO Matrix 2026 (2026-10-31)
+# Lô M1 — Master SEO Matrix 2026 (2026-11-01)
 
 Workbook: `docs/seo/MASTER-SEO-MATRIX-2026.xlsx` — 23 sheet bắt buộc + 4 phụ lục; sinh bởi `tools/seo-master-2026.py`, công thức dashboard kiểm bằng LibreOffice (`formula-check.json`).
 
 ## Kết quả đo
 
-- URL kiểm kê: **2138** — sitemap 2138, HTML build 2138, có liên kết vào 2138, bài trong manifest 2006.
-- Phân loại: KEEP 1952, IMPROVE 186 (CONSOLIDATE / REDIRECT / NOINDEX-CANDIDATE: 0 — không có bằng chứng trùng nội dung hay trùng ý định).
-- QA proxy 100 điểm: trung bình 94.4, thấp nhất 83, 2134/2138 URL ≥ 85 (proxy tự động, không thay review biên tập).
+- URL kiểm kê: **2185** — sitemap 2185, HTML build 2185, có liên kết vào 2185, bài trong manifest 2006.
+- Phân loại: KEEP 2000, IMPROVE 185 (CONSOLIDATE / REDIRECT / NOINDEX-CANDIDATE: 0 — không có bằng chứng trùng nội dung hay trùng ý định).
+- QA proxy 100 điểm: trung bình 94.7, thấp nhất 83, 2182/2185 URL ≥ 85 (proxy tự động, không thay review biên tập).
 - Họ biến thể slug: 331 họ, Jaccard 5-gram cao nhất 0.161 (ngưỡng gộp 0,5) → 0 ứng viên gộp.
-- Kiểm tra kỹ thuật không PASS: T20 FAIL, T21 WARN, T23 WARN, T24 N/A, CWV07-INTERACTION WARN.
+- Kiểm tra kỹ thuật không PASS: T21 WARN, T23 WARN, T24 N/A.
 - Search Console: NOT CONNECTED; CWV: LAB only.
 
 ## Backlog mở (ưu tiên)
@@ -22,7 +22,6 @@ Workbook: `docs/seo/MASTER-SEO-MATRIX-2026.xlsx` — 23 sheet bắt buộc + 4 p
 - B12 P2 — Chưa đo GBP/local pack (owner, lô —)
 - B13 P2 — Khoảng trống từ khóa chưa có trang (owner, lô —)
 - B14 P3 — CSS mỗi trang 85.6 KB chưa nén (cảnh báo nội bộ ≥ 64 KB) (agent, lô —)
-- B15 P2 — Chỉ số CWV lab chưa đạt: Tương tác chạm menu lab (ms, proxy INP) — Hub chủ đề con = 248 — trang hub liệt kê toàn bộ bài (DOM lớn, xem T20) (agent, lô M3)
 
 ## Giới hạn
 

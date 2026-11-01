@@ -1,11 +1,11 @@
 {
   "$schema": "motoai/master-task-checkpoint@1",
   "task": "MOTOAI IMAGE FACTORY 2000 + GITHUB EXPERT SEO SKILLS + FULL WEBSITE SEO",
-  "updated": "2026-10-31",
-  "head_at_export": "33b5eeaa0",
+  "updated": "2026-11-01",
+  "head_at_export": "66e74ab71",
   "workbook": "docs/seo/AICHATBOT-SEO-MASTER-MATRIX.xlsx",
   "dashboard": {
-    "Ngày cập nhật": "2026-10-31",
+    "Ngày cập nhật": "2026-11-01",
     "Tổng bài thực tế (manifest published.json)": 2006,
     "Tổng hàng PUBLISHED trong content-matrix.csv": 2006,
     "Tổng bài mục tiêu ảnh (BA-0001…BA-2000)": 2000,
@@ -22,13 +22,13 @@
     "Ảnh trang chủ (ghi riêng, không tính vào ảnh bài viết)": "0 ảnh cần cho bố cục: homepage Apple V3 không có ô ảnh (0 <img>, 0 background-image, kiểm 2026-10-29); ảnh chia sẻ og:image hiện là icon 512×512 — xem MT-P1-02",
     "Tiêu chuẩn ảnh (Image SEO V2)": "WebP 1200×800; 100–300 KB, ưu tiên 120–220 KB; tối đa 300 KB; dưới 100 KB vẫn hợp lệ nếu sắc nét (không độn dung lượng)",
     "Dung lượng ảnh QA_PASSED (min / trung bình / max KB)": "59 / 114 / 209 — 24/60 trong dải ưu tiên",
-    "URL đã audit SEO (seo-master-audit)": 2138,
-    "URL trạng thái DONE trong SEO master (tối ưu v70–v79)": 2138,
+    "URL đã audit SEO (seo-master-audit)": 2185,
+    "URL trạng thái DONE trong SEO master (tối ưu v70–v79)": 2185,
     "Bài cần review nội dung (Content Review = REVIEW)": 1,
     "URL có lỗi kỹ thuật mở (technical-audit)": 0,
     "Việc cần chủ sở hữu xác minh (REVIEW REQUIRED mở)": 7,
-    "Commit cuối (HEAD khi xuất)": "33b5eeaa0",
-    "Checkpoint cuối": "docs/seo/master-task/checkpoint.json @ 2026-10-31",
+    "Commit cuối (HEAD khi xuất)": "66e74ab71",
+    "Checkpoint cuối": "docs/seo/master-task/checkpoint.json @ 2026-11-01",
     "Next batch": "Chờ chủ sở hữu mở lại xưởng ảnh. Khi mở: bật lại lịch \"Image factory 2.006\" (trig_01CvqnnDpmqzsMMNC13SMwMP) rồi chạy tiếp từ checkpoint.json → next_ids (BA-0049, BA-0056 tạo lại trước, rồi BA-0059…)"
   },
   "image_status_counts": {

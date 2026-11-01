@@ -482,6 +482,14 @@
       "article_ids": [],
       "changes": "tools/build-blog.mjs dựng thêm dưới bảng giá, chỉ từ data/business/pricing.json và business.json: so sánh ngày/tuần/tháng đặt các mức giá đã công bố cạnh nhau (không suy ra giá mới, kỳ chưa có giá giữ \"Liên hệ\"), mẹo đọc bảng giá (data/site/gia-thue.body.html, placeholder {{ business.* }}), câu hỏi thường gặp dạng HTML (không FAQPage — Google ngừng rich result FAQ 2026; câu trả lời chính sách là ghi chú business.json nguyên văn), Đọc thêm 6 liên kết (config/site-pages.json related; tiêu đề bài lấy từ article-meta). Nội dung chính 274 → 878 từ; QA proxy 93 → 97; phân loại EXPAND → KEEP. Test mới tests/unit/price-page-content.test.js: mọi số tiền trên trang là giá/cọc đã công bố.",
       "live_verified": "2026-10-31: deploy 44610f13 trên trang live — /gia-thue/ có 4 phần mới dưới bảng giá (so sánh ngày/tuần/tháng, đọc bảng giá, câu hỏi thường gặp, đọc thêm 6 liên kết), số liệu khớp pricing.json"
+    },
+    {
+      "batch_id": "M3-SUBTOPIC-PAGINATION",
+      "reviewed": "2026-11-01",
+      "scope": "Master Matrix T20/B15: 9 hub chủ đề con liệt kê toàn bộ bài trên một trang (lớn nhất /blog/dia-phuong/phuong-xa/ 396 KB, 400 bài); tương tác mở menu lab 248 ms ở /blog/thue-xe/gia-thue/",
+      "article_ids": [],
+      "changes": "tools/build-blog.mjs phân trang hub chủ đề con như hub danh mục: PER_PAGE = 24 thẻ/trang, trang 1 giữ URL cũ, trang N ở …/page/N/ (47 URL mới, đưa vào sitemap: 2.138 → 2.185), mỗi trang có canonical, title (\"— trang N\") và description (\"Trang N.\") riêng, ItemList theo trang, breadcrumb có mục trang N, liên kết số trang bằng <a href> (không JS). paginationNav dùng chung (đường dẫn gốc) — HTML hub danh mục không đổi. Kết quả: 4 hub > 100 KB → 0 (lớn nhất 56 KB); tương tác chạm menu lab /blog/thue-xe/gia-thue/ 248 → 128 ms. Test mới tests/unit/subtopic-pagination.test.js; tests/unit/seo-hub-architecture.test.js: chuỗi Silo → Subtopic → Article chấp nhận trang phân trang của hub chủ đề con (trang 1 phải liên kết tới trang chứa bài), như nhánh Silo đã làm.",
+      "live_verified": "chờ deploy"
     }
   ],
   "rules": [
@@ -491,11 +499,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "M2-PRICE-PAGE",
+  "last_completed_batch": "M3-SUBTOPIC-PAGINATION",
   "last_verified_commit": "44610f13",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Lô M3: hub chủ đề con — phân trang 4 hub > 100 KB (T20: /blog/dia-phuong/phuong-xa/, /blog/huong-dan/thu-tuc/, /blog/an-toan/phap-luat/, /blog/thue-xe/gia-thue/; URL /page/N/ mới, giữ URL cũ) để giảm DOM và tương tác mở menu lab 248 ms (B15), rồi đoạn dẫn hub có giá trị theo lô ≤ 20 hub (B04). Song song C08: rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv. Chờ chủ sở hữu: Search Console (B02), GBP (B12), local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cập nhật BA-2004 đầu năm 2027).",
+  "next_article_ids_note": "Lô M4: đoạn dẫn có giá trị cho hub chủ đề con và hub danh mục (backlog B04, ≤ 20 hub/lô; hiện chỉ dùng mô tả danh mục làm lead), bắt đầu từ các hub có nhiều bài nhất (phường/xã, thủ tục, pháp luật, giá thuê). Song song C08: rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv; B06 đoạn văn trùng giữa bài (162 bài). Chờ chủ sở hữu: Search Console (B02), GBP (B12), local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cập nhật BA-2004 đầu năm 2027).",
   "p0_live_verified": [
     "/",
     "/gia-thue/",

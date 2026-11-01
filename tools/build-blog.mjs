@@ -537,18 +537,21 @@ export function paginate(list, perPage = PER_PAGE) {
   return pages.length > 0 ? pages : [[]];
 }
 
-function paginationNav(hub, page, pages) {
+/** Crawlable numbered pagination for a list screen whose page 1 lives at
+ *  `base` (a category hub `/blog/x/` or a subtopic hub `/blog/x/y/`) and
+ *  page N at `${base}page/N/` — plain <a href> links, no JS. */
+const pageHref = (base, p) => (p === 1 ? base : `${base}page/${p}/`);
+function paginationNav(base, page, pages) {
   if (pages.length <= 1) return '';
   const links = [];
   for (let i = 0; i < pages.length; i++) {
     const p = i + 1;
-    const href = p === 1 ? `/blog/${hub.dir}/` : `/blog/${hub.dir}/page/${p}/`;
-    links.push(p === page ? `      <span class="blog-page-current" aria-current="page">${p}</span>` : `      <a href="${href}">${p}</a>`);
+    links.push(p === page ? `      <span class="blog-page-current" aria-current="page">${p}</span>` : `      <a href="${pageHref(base, p)}">${p}</a>`);
   }
   return `      <nav class="blog-pagination" aria-label="Trang">
-        ${page > 1 ? `<a href="${page === 2 ? `/blog/${hub.dir}/` : `/blog/${hub.dir}/page/${page - 1}/`}">${esc(t('pagePrev'))}</a>` : ''}
+        ${page > 1 ? `<a href="${pageHref(base, page - 1)}">${esc(t('pagePrev'))}</a>` : ''}
 ${links.join('\n')}
-        ${page < pages.length ? `<a href="/blog/${hub.dir}/page/${page + 1}/">${esc(t('pageNext'))}</a>` : ''}
+        ${page < pages.length ? `<a href="${pageHref(base, page + 1)}">${esc(t('pageNext'))}</a>` : ''}
       </nav>
 `;
 }
@@ -586,7 +589,7 @@ ${pillars.map((a) => `          <li><a href="/blog/${hub.dir}/${a.slug}/">${esc(
     builtPaths.push(path);
     const cards = pages[p].map((a) => card(a, hub)).join('\n')
       || `        ${emptyNote('emptyHub', { scope: t('emptyScopeHub') })}`;
-    const nav = paginationNav(hub, pageNo, pages);
+    const nav = paginationNav(`/blog/${hub.dir}/`, pageNo, pages);
     // Page 1 is the hub itself (no "trang 1" in its title); deeper pages say their number.
     // v70: page 1 uses the hub's keyword-led SERP title (taxonomy seo_title).
     const title = pageNo > 1 ? `${hub.name} — trang ${pageNo} — Cẩm nang thuê xe máy` : (hub.seoTitle ?? `${hub.name} — Cẩm nang thuê xe máy & xe điện`);
@@ -640,45 +643,65 @@ ${nav}${sibling ? `      <p class="blog-hub-sibling">${esc(t('hubSibling'))} <a 
 }
 
 /** Subtopic hub screen — generated ONLY with >= 1 published article. */
+/** Subtopic hub (blog/<category>/<subtopic>/): paginated like a category
+ *  hub — PER_PAGE cards per page, page N at …/page/N/ — so a subtopic holding
+ *  hundreds of articles never ships one multi-hundred-KB page (lô M3). Page 1
+ *  keeps its URL; every page has its own canonical, title and description.
+ *  Returns the built paths (page 1 first). */
 function buildSubtopic(hub, sub, articles) {
-  const cards = articles.map((a) => card(a, hub)).join('\n');
   const cluster = CLUSTER_BY_ID[hub.cluster];
-  const content = breadcrumb(clusterTrail(cluster, [{ label: hub.label, href: `/blog/${hub.dir}/` }, { label: sub.label, href: null }]))
-    + screenHead({ label: hub.label, title: sub.label, lead: hub.desc })
-    + `      <p class="hub-stats">${esc(t('articleCount', { n: count(articles.length) }))}</p>
+  const base = `/blog/${hub.dir}/${sub.slug}/`;
+  const pages = paginate(articles);
+  const builtPaths = [];
+  const baseDescription = `Tổng hợp ${articles.length} bài về ${sub.label.toLowerCase()} trong chuyên mục ${hub.name.toLowerCase()}: hướng dẫn, kinh nghiệm và lưu ý thực tế khi thuê xe, kèm Agent để hỏi sâu hơn.`;
+  for (let p = 0; p < pages.length; p++) {
+    const pageNo = p + 1;
+    const path = pageHref(base, pageNo).replace(/^\//, '');
+    builtPaths.push(path);
+    const cards = pages[p].map((a) => card(a, hub)).join('\n');
+    const trail = [{ label: hub.label, href: `/blog/${hub.dir}/` }, { label: sub.label, href: pageNo === 1 ? null : base },
+      ...(pageNo > 1 ? [{ label: t('crumbPage', { n: pageNo }), href: null }] : [])];
+    const content = breadcrumb(clusterTrail(cluster, trail))
+      + screenHead({ label: hub.label, title: sub.label, lead: hub.desc })
+      + `      <p class="hub-stats">${esc(t('articleCount', { n: count(articles.length) }))}${pages.length > 1 ? ` · ${esc(t('pageOf', { page: pageNo, pages: pages.length }))}` : ''}</p>
       <div class="blog-grid">
 ${cards}
       </div>
-${askAgentAction(`${sub.label} — ${hub.name}`, hub.id)}`;
+${paginationNav(base, pageNo, pages)}${askAgentAction(`${sub.label} — ${hub.name}`, hub.id)}`;
 
-  const html = appShellPage({
-    title: `${sub.label} — ${hub.name} — Cẩm nang thuê xe máy`,
-    // v70: own 120–165 char description (the old "label trong hub: hub.meta"
-    // pattern exceeded the SERP length and repeated the hub description).
-    description: `Tổng hợp ${articles.length} bài về ${sub.label.toLowerCase()} trong chuyên mục ${hub.name.toLowerCase()}: hướng dẫn, kinh nghiệm và lưu ý thực tế khi thuê xe, kèm Agent để hỏi sâu hơn.`,
-    path: `blog/${hub.dir}/${sub.slug}/`,
-    screen: `subtopic-${sub.slug}`,
-    activeHub: hub.dir,
-    contentHtml: content,
-    // v63.1 hybrid hardening: subtopic schema = CollectionPage + ItemList
-    // + BreadcrumbList whose trail EXACTLY matches the visible breadcrumb
-    // (Agent › Cẩm nang › parent hub › silo › subtopic), derived from the
-    // same clusterTrailSchema helper as hubs/articles — no self-conflict.
-    schemaHtml: ldScript({
-      '@context': 'https://schema.org', '@type': 'CollectionPage',
-      name: sub.label, description: `${sub.label} trong ${hub.name.toLowerCase()}`, url: `${SITE}blog/${hub.dir}/${sub.slug}/`,
-      isPartOf: websiteRef(),
-      mainEntity: {
-        '@type': 'ItemList',
-        name: `${sub.label} — bài viết`,
-        itemListElement: articles.map((a, i) => ({ '@type': 'ListItem', position: i + 1, name: a.title, url: `${SITE}blog/${hub.dir}/${a.slug}/` }))
-      }
-    }) + ldScript(breadcrumbLd(clusterTrailSchema(cluster, [
-      { label: hub.label, itemPath: `blog/${hub.dir}/` },
-      { label: sub.label, itemPath: `blog/${hub.dir}/${sub.slug}/` }
-    ])))
-  });
-  write(`blog/${hub.dir}/${sub.slug}/index.html`, html);
+    // Deeper pages say their number in the title and description (no duplicates).
+    const description = pageNo === 1 ? baseDescription : `${baseDescription} Trang ${pageNo}.`;
+    const html = appShellPage({
+      title: pageNo === 1 ? `${sub.label} — ${hub.name} — Cẩm nang thuê xe máy` : `${sub.label} — ${hub.name} — trang ${pageNo}`,
+      // v70: own 120–165 char description (the old "label trong hub: hub.meta"
+      // pattern exceeded the SERP length and repeated the hub description).
+      description,
+      path,
+      screen: `subtopic-${sub.slug}`,
+      activeHub: hub.dir,
+      contentHtml: content,
+      // v63.1 hybrid hardening: subtopic schema = CollectionPage + ItemList
+      // + BreadcrumbList whose trail EXACTLY matches the visible breadcrumb
+      // (Agent › Cẩm nang › parent hub › silo › subtopic [› trang N]), derived
+      // from the same clusterTrailSchema helper as hubs/articles — no self-conflict.
+      schemaHtml: ldScript({
+        '@context': 'https://schema.org', '@type': 'CollectionPage',
+        name: sub.label, description: `${sub.label} trong ${hub.name.toLowerCase()}`, url: `${SITE}${path}`,
+        isPartOf: websiteRef(),
+        mainEntity: {
+          '@type': 'ItemList',
+          name: `${sub.label} — bài viết`,
+          itemListElement: pages[p].map((a, i) => ({ '@type': 'ListItem', position: p * PER_PAGE + i + 1, name: a.title, url: `${SITE}blog/${hub.dir}/${a.slug}/` }))
+        }
+      }) + ldScript(breadcrumbLd(clusterTrailSchema(cluster, [
+        { label: hub.label, itemPath: `blog/${hub.dir}/` },
+        { label: sub.label, itemPath: `blog/${hub.dir}/${sub.slug}/` },
+        ...(pageNo > 1 ? [{ label: t('crumbPage', { n: pageNo }), itemPath: path }] : [])
+      ])))
+    });
+    write(`${path}index.html`, html);
+  }
+  return builtPaths;
 }
 
 /**
@@ -1079,6 +1102,7 @@ export function build() {
   for (const cluster of taxonomy.clusters) buildClusterHub(cluster, published);
   const categoryPages = HUBS.flatMap((hub) => buildHub(hub, published, subtopicCounts(published, matrix), pillarsOf(hub.id)));
   const subtopicPages = [];
+  const subtopicPaged = [];
   for (const hub of HUBS) {
     const subs = (taxonomy.subtopics[hub.id] ?? []);
     for (const sub of subs) {
@@ -1089,8 +1113,9 @@ export function build() {
       });
       // No empty SEO hubs: a subtopic page exists only with real content.
       if (arts.length > 0) {
-        buildSubtopic(hub, sub, arts);
-        subtopicPages.push(`blog/${hub.dir}/${sub.slug}/`);
+        const [first, ...deeper] = buildSubtopic(hub, sub, arts);
+        subtopicPages.push(first);
+        subtopicPaged.push(...deeper);
       }
     }
   }
@@ -1103,6 +1128,7 @@ export function build() {
     '/', '/blog/', AGENT_URL,
     ...published.map((a) => `/blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`),
     ...subtopicPages.map((p) => `/${p}`),
+    ...subtopicPaged.map((p) => `/${p}`),
     ...HUBS.map((h) => `/blog/${h.dir}/`),
     ...taxonomy.clusters.map((c) => `/blog/${c.dir}/`),
     ...SITE_PAGES.map((p) => `/${p.dir}/`)
@@ -1168,6 +1194,7 @@ export function build() {
     ...taxonomy.clusters.map((c) => `${SITE}blog/${c.dir}/`),
     ...categoryPages.map((p) => `${SITE}${p}`),
     ...subtopicPages.map((p) => `${SITE}${p}`),
+    ...subtopicPaged.map((p) => `${SITE}${p}`),
     ...published.map((a) => `${SITE}blog/${HUB_BY_ID[a.category].dir}/${a.slug}/`),
     ...SITE_PAGES.map((p) => `${SITE}${p.dir}/`)];
   // v80: image sitemap extension for articles with a rendered featured image
@@ -1207,7 +1234,7 @@ Sitemap: ${SITE}sitemap.xml
   }
   write('data/blog/content-matrix.csv', csv.join('\n'));
   buildAgent(ROOT);
-  console.log(`blog built: ${published.length} published articles, ${subtopicPages.length} subtopic hubs, ${urls.length} sitemap urls`);
+  console.log(`blog built: ${published.length} published articles, ${subtopicPages.length} subtopic hubs (+${subtopicPaged.length} pages), ${urls.length} sitemap urls`);
 }
 
 /**

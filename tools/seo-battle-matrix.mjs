@@ -364,7 +364,7 @@ export function topicClusterMatrix(b) {
   const rows = b.clusters.map((c) => {
     const inCluster = [...urlRows.values()].filter((r) => String(r['Topic Cluster']).startsWith(`${c.id} `));
     const articles = inCluster.filter((r) => r['Page Type'] === 'Bài viết');
-    const hubs = inCluster.filter((r) => r['Page Type'].startsWith('Hub') && r['Page Type'] !== 'Hub danh mục (phân trang)');
+    const hubs = inCluster.filter((r) => r['Page Type'].startsWith('Hub') && !r['Page Type'].endsWith('(phân trang)'));
     const pillarUrl = c.pillar ? `${SITE.replace(/\/$/, '')}${c.pillar}` : '';
     const pillarRow = pillarUrl ? urlRows.get(pillarUrl) ?? null : null;
     const pillarExists = c.pillar ? existsSync(join(b.root, c.pillar.replace(/^\//, ''), 'index.html')) : false;
@@ -593,7 +593,7 @@ const POSITION_OF = (type) => {
   if (type === 'Pháp lý') return 'Pháp lý (không nhắm từ khóa)';
   if (type === 'Blog home' || type === 'Hub cụm chủ đề') return 'Hub cấp 1';
   if (type === 'Hub danh mục') return 'Hub danh mục';
-  if (type === 'Hub danh mục (phân trang)') return 'Hub phân trang (không nhắm từ khóa)';
+  if (type.endsWith('(phân trang)')) return 'Hub phân trang (không nhắm từ khóa)';
   if (type === 'Hub chủ đề con') return 'Hub chủ đề con';
   return 'Bài viết (supporting)';
 };
@@ -810,7 +810,7 @@ export function render(bt) {
   // W9
   const c9 = w9.rows.map((r) => ({ 'URL': r.url, 'Loại trang': r.type, 'Từ khóa chính': r.keyword, 'Ý định': r.intent, 'Cụm': r.cluster, 'Vị trí trong kiến trúc': r.position, 'Mục tiêu chuyển đổi': r.goal, 'Nhóm từ khóa engine': r.groups.join(' | '), 'Ý định SERP của nhóm': r.serpIntents.join(' | '), 'Liên kết': r.links, 'Cannibalization': r.cannibalization, 'Trạng thái': r.status }));
   f['09-url-architecture.csv'] = csv(c9);
-  f['09-url-architecture.md'] = `# W9 — Bản thiết kế kiến trúc URL (một từ khóa, một ý định, một vị trí, một mục tiêu chuyển đổi)\n\n${H(bt)}\n\n${w9.total} URL hiện có (giữ nguyên 100%, không xóa/gộp/noindex) + ${w9.proposed.length} URL đề xuất (owner thêm ID vào data/blog/content-matrix.csv). Vị trí: ${Object.entries(w9.byPosition).map(([k, n]) => `${k} (${n})`).join('; ')}. Từ khóa chính trùng giữa URL: ${w9.dupKeywords.length}; trang nhận nhóm khác ý định SERP: ${w9.mixed.length}.\n\n## URL đề xuất mới\n\n${table(w9.proposed.map((p) => ({ 'ID': p.id, 'URL': p.url, 'Từ khóa': p.keyword, 'Ý định': p.intent, 'Cụm': p.cluster, 'Vị trí': p.position, 'Mục tiêu chuyển đổi': p.goal, 'Volume': p.demand, 'Legal gate': yesNo(p.legal), 'Nguồn': p.source })), ['ID', 'URL', 'Từ khóa', 'Ý định', 'Cụm', 'Vị trí', 'Mục tiêu chuyển đổi', 'Volume', 'Legal gate'])}\n\n## Trang không phải bài viết và pillar/trang đích của nhóm từ khóa\n\n${table(c9.filter((r) => r['Loại trang'] !== 'Bài viết' && r['Loại trang'] !== 'Hub danh mục (phân trang)' || r['Nhóm từ khóa engine']).slice(0, 120), ['URL', 'Loại trang', 'Từ khóa chính', 'Ý định', 'Cụm', 'Vị trí trong kiến trúc', 'Mục tiêu chuyển đổi', 'Nhóm từ khóa engine', 'Ý định SERP của nhóm'])}\n\n${w9.dupKeywords.length ? `## Từ khóa chính trùng\n\n${list(w9.dupKeywords.map(([k, urls]) => `${k}: ${urls.join(', ')}`))}\n` : ''}Toàn bộ ${w9.total} URL: \`09-url-architecture.csv\`.\n`;
+  f['09-url-architecture.md'] = `# W9 — Bản thiết kế kiến trúc URL (một từ khóa, một ý định, một vị trí, một mục tiêu chuyển đổi)\n\n${H(bt)}\n\n${w9.total} URL hiện có (giữ nguyên 100%, không xóa/gộp/noindex) + ${w9.proposed.length} URL đề xuất (owner thêm ID vào data/blog/content-matrix.csv). Vị trí: ${Object.entries(w9.byPosition).map(([k, n]) => `${k} (${n})`).join('; ')}. Từ khóa chính trùng giữa URL: ${w9.dupKeywords.length}; trang nhận nhóm khác ý định SERP: ${w9.mixed.length}.\n\n## URL đề xuất mới\n\n${table(w9.proposed.map((p) => ({ 'ID': p.id, 'URL': p.url, 'Từ khóa': p.keyword, 'Ý định': p.intent, 'Cụm': p.cluster, 'Vị trí': p.position, 'Mục tiêu chuyển đổi': p.goal, 'Volume': p.demand, 'Legal gate': yesNo(p.legal), 'Nguồn': p.source })), ['ID', 'URL', 'Từ khóa', 'Ý định', 'Cụm', 'Vị trí', 'Mục tiêu chuyển đổi', 'Volume', 'Legal gate'])}\n\n## Trang không phải bài viết và pillar/trang đích của nhóm từ khóa\n\n${table(c9.filter((r) => r['Loại trang'] !== 'Bài viết' && !r['Loại trang'].endsWith('(phân trang)') || r['Nhóm từ khóa engine']).slice(0, 120), ['URL', 'Loại trang', 'Từ khóa chính', 'Ý định', 'Cụm', 'Vị trí trong kiến trúc', 'Mục tiêu chuyển đổi', 'Nhóm từ khóa engine', 'Ý định SERP của nhóm'])}\n\n${w9.dupKeywords.length ? `## Từ khóa chính trùng\n\n${list(w9.dupKeywords.map(([k, urls]) => `${k}: ${urls.join(', ')}`))}\n` : ''}Toàn bộ ${w9.total} URL: \`09-url-architecture.csv\`.\n`;
 
   // W10
   const c10 = w10.items.map((i) => ({ 'ID': i.id, 'Hạng': i.tier, 'Giai đoạn': i.phase, 'Điểm': i.score, 'Vũ khí': i.weapon, 'Hành động': i.action, 'Loại trang': i.pageType, 'Từ khóa/chủ đề': i.keyword, 'URL/trang đích': i.target, 'Cụm': i.cluster, 'Bằng chứng': i.evidence, 'Độ tin cậy': CONFIDENCE_LABEL[i.confidence], 'Người làm': i.owner, 'KPI': i.kpi, 'Điều kiện xác minh': i.verify, 'Việc cụ thể': i.plan.join(' | '), 'Khoảng cách': i.gaps.join(' | ') }));

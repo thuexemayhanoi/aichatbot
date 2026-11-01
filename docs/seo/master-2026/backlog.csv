@@ -13,4 +13,3 @@ B11,P3,Technical,1 URL,Google từng hiển thị URL /index.html (SERP 2026-10-
 B12,P2,Local,GBP,Chưa đo GBP/local pack,LOCAL SEO & CONVERSION,Owner đăng nhập lại công cụ Local SEO / cập nhật GBP,owner,—,OPEN,—
 B13,P2,New content,27 nhóm,Khoảng trống từ khóa chưa có trang,KEYWORD GAP,Đề xuất hàng matrix cho owner; không tạo hàng loạt khi hub chưa chuẩn hóa,owner,—,OPEN,Owner duyệt ID
 B14,P3,Performance,site,CSS mỗi trang 85.6 KB chưa nén (cảnh báo nội bộ ≥ 64 KB),T21,Theo dõi; chỉ tối ưu nếu LCP lab/field xấu đi,agent,—,WATCH,LCP lab ≤ 2.500 ms
-B15,P2,Performance,/blog/thue-xe/gia-thue/,"Chỉ số CWV lab chưa đạt: Tương tác chạm menu lab (ms, proxy INP) — Hub chủ đề con = 248 — trang hub liệt kê toàn bộ bài (DOM lớn, xem T20)",cwv-lab.json; T20,"Phân trang hub chủ đề con (URL /page/N/ mới, giữ URL cũ) để giảm DOM; đo lại",agent,M3,OPEN,Lab ≤ ngưỡng ở 3 lần đo

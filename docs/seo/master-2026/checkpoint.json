@@ -1,9 +1,9 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
-  "date": "2026-10-31",
-  "last_completed_batch": "M2-PRICE-PAGE",
+  "date": "2026-11-01",
+  "last_completed_batch": "M3-SUBTOPIC-PAGINATION",
   "last_verified_commit": "44610f13",
-  "next": "Lô M3: hub chủ đề con — phân trang 4 hub > 100 KB (T20: /blog/dia-phuong/phuong-xa/, /blog/huong-dan/thu-tuc/, /blog/an-toan/phap-luat/, /blog/thue-xe/gia-thue/; URL /page/N/ mới, giữ URL cũ) để giảm DOM và tương tác mở menu lab 248 ms (B15), rồi đoạn dẫn hub có giá trị theo lô ≤ 20 hub (B04). Song song C08: rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv. Chờ chủ sở hữu: Search Console (B02), GBP (B12), local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cập nhật BA-2004 đầu năm 2027).",
+  "next": "Lô M4: đoạn dẫn có giá trị cho hub chủ đề con và hub danh mục (backlog B04, ≤ 20 hub/lô; hiện chỉ dùng mô tả danh mục làm lead), bắt đầu từ các hub có nhiều bài nhất (phường/xã, thủ tục, pháp luật, giá thuê). Song song C08: rà các hàng legal_review MANDATORY còn lại trong docs/seo/commercial/SEO-COMMERCIAL-2006.csv; B06 đoạn văn trùng giữa bài (162 bài). Chờ chủ sở hữu: Search Console (B02), GBP (B12), local_scope bài LOCAL (B07), bật lại nhà máy ảnh (B08). Theo dõi: vùng phát thải thấp mở rộng sang Cửa Nam từ 01/01/2027 (cập nhật BA-2004 đầu năm 2027).",
   "open_backlog": [
     {
       "id": "B02",
@@ -67,13 +67,6 @@
       "issue": "CSS mỗi trang 85.6 KB chưa nén (cảnh báo nội bộ ≥ 64 KB)",
       "owner": "agent",
       "batch": "—"
-    },
-    {
-      "id": "B15",
-      "priority": "P2",
-      "issue": "Chỉ số CWV lab chưa đạt: Tương tác chạm menu lab (ms, proxy INP) — Hub chủ đề con = 248 — trang hub liệt kê toàn bộ bài (DOM lớn, xem T20)",
-      "owner": "agent",
-      "batch": "M3"
     }
   ],
   "resume_rule": "Khi nhận \"Tiếp tục\": fetch origin/main, đọc file này + docs/seo/commercial/progress.json, chạy lại python3 tools/seo-master-2026.py --verify, rồi làm lô kế tiếp (tối đa 5–20 URL/lô, ≤ 30 theo AGENTS.md)."

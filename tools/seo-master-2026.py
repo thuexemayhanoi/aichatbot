@@ -543,6 +543,12 @@ def qa_proxy(path, p, D, links, inbound_pages, broken):
         s_intent += 6
     if not kw:
         s_intent = min(s_intent, 10)
+    paged = ptype.endswith('(phân trang)')
+    if paged:
+        # Pagination pages are navigation by design (no keyword target, own
+        # numbered title/description, self-canonical): full intent credit when
+        # the page says its number; a keyword is never required.
+        s_intent = 20 if re.search(r'trang \d+', p['title']) else 10
     # 2. accuracy proxy (20)
     aid = D['path_art'].get(path)
     s_acc = 0
@@ -571,6 +577,8 @@ def qa_proxy(path, p, D, links, inbound_pages, broken):
     s_arch = 0
     if is_article:
         s_arch += 5 if ctx_in >= 3 else 2 if ctx_in >= 1 else 0
+    elif paged:
+        s_arch += 5 if total_in >= 1 else 0  # reached through its own series; more inbound is not the goal
     else:
         s_arch += 5 if total_in >= 10 else 2 if total_in >= 1 else 0
     d = links.get('depth')
