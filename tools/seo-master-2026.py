@@ -724,8 +724,13 @@ FEATURE_CLAIM = re.compile(
 # khi chính câu đó nói cửa hàng xác nhận hoặc trợ lý không làm việc này.
 AVAIL_CLAIM = re.compile(
     r'(?:trợ lý|MotoAI|ứng dụng|\bapp\b)[^.?!<]{0,90}'
-    r'(?:(?:xe|dòng xe|mẫu xe|xe nào|dòng nào|mẫu nào) (?:còn trống|đang sẵn)'
+    r'(?:(?:xe|dòng xe|mẫu xe|xe nào|dòng nào|mẫu nào|xe \w+ nào|dòng \w+ nào) (?:còn trống|đang sẵn|còn sẵn|còn xe)'
+    r'|(?:dòng xe|dòng|mẫu xe|xe) còn sẵn'
     r'|tình trạng (?:xe còn trống|sẵn có)|để giữ chỗ|có xe giữ chỗ|giữ chỗ cho)', re.I)
+# Thẻ nội dòng (liên kết, nhấn mạnh) và placeholder có dấu chấm không cắt câu:
+# "hỏi trợ lý trên <a>trang chủ</a> để biết xe còn trống" vẫn là một câu.
+_INLINE_TAG = re.compile(r'</?(?:a|strong|em|b|i|span|abbr)\b[^>]*>', re.I)
+_PLACEHOLDER = re.compile(r'\{\{[^}]*\}\}')
 AVAIL_OK = re.compile(
     r'cửa hàng xác nhận|nhờ cửa hàng|hỏi cửa hàng|liên hệ cửa hàng|xác nhận với cửa hàng|chốt lại với cửa hàng'
     r'|gọi trực tiếp|hướng bạn|không giữ|không tự|không làm|chưa làm|chưa kiểm tra|không thể'
@@ -741,6 +746,7 @@ def _sentence(body, start, end):
 def feature_claims(body):
     """FEATURE_CLAIM matches that state the claim (a question such as an FAQ
     heading is not a claim — its answer is what gets checked)."""
+    body = _PLACEHOLDER.sub('X', _INLINE_TAG.sub('', body))
     out = []
     for m in AVAIL_CLAIM.finditer(body):
         sent, stop = _sentence(body, m.start(), m.end())

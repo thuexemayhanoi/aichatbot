@@ -500,10 +500,11 @@
   "/blog/an-toan/den-xe-va-an-toan-dem-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C09"
+    "C09",
+    "APP2"
    ],
    "date": "2026-11-01",
-   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/an-toan/den-xe-va-an-toan-dem-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -2278,6 +2279,14 @@
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
+  "/blog/app/app-thue-xe-cho-khach-du-lich-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
   "/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai-cau-hoi-thuong-gap/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2305,10 +2314,19 @@
   "/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D02-D04-DUP-PARA"
+    "D02-D04-DUP-PARA",
+    "APP2"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
+  "/blog/app/app-thue-xe-may-la-gi-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/app/cach-dung-ung-dung-thue-xe-may-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
@@ -2318,6 +2336,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/app/cach-dung-ung-dung-thue-xe-may-tan-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/": {
    "status": "DONE_LIVE",
@@ -2334,6 +2360,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/app/cau-chuyen-nguoi-dung-ung-dung-thue-xe-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/app/cau-chuyen-nguoi-dung-ung-dung-thue-xe-tai-ha-noi/": {
    "status": "DONE_LIVE",
@@ -2384,6 +2418,14 @@
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
+  "/blog/app/cong-cu-tinh-gia-thue-xe-may-online/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
   "/blog/app/dat-coc-va-ung-dung-thue-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2391,6 +2433,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
+  "/blog/app/dat-xe-bang-ung-dung-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/app/dat-xe-bang-ung-dung-tan-noi/": {
    "status": "DONE_LIVE",
@@ -2415,6 +2465,22 @@
    ],
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/app/goi-dien-tu-ung-dung-thue-xe-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
+  "/blog/app/goi-y-chon-xe-may-phu-hop-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/app/goi-y-chon-xe-may-phu-hop/": {
    "status": "DONE_LIVE",
@@ -2481,6 +2547,22 @@
    "date": "2026-11-01",
    "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
+  "/blog/app/module-goi-y-xe-trong-ung-dung-thue-xe-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
+  "/blog/app/module-goi-y-xe-trong-ung-dung-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
   "/blog/app/nhan-xe-khi-dat-qua-ung-dung/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2513,13 +2595,22 @@
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
+  "/blog/app/so-sanh-cach-thue-xe-truyen-thong-va-qua-app-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
   "/blog/app/so-sanh-cach-thue-xe-truyen-thong-va-qua-app/": {
    "status": "DONE_LIVE",
    "batches": [
-    "PTS1-NAP2B"
+    "PTS1-NAP2B",
+    "APP2"
    ],
    "date": "2026-11-01",
-   "note": "PR #69 (66fc386a) — Pages live đã kiểm BA-1343, BA-1445 (điều kiện phục hồi 12 điểm), BA-0074 (tên cửa hàng)"
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/app/so-sanh/": {
    "status": "DONE_LIVE",
@@ -2544,6 +2635,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #69 (66fc386a) — Pages live đã kiểm BA-1343, BA-1445 (điều kiện phục hồi 12 điểm), BA-0074 (tên cửa hàng)"
+  },
+  "/blog/app/thue-xe-online-nhu-the-nao/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/app/tim-hieu-hybrid-search-trong-ung-dung-thue-xe-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
@@ -2708,6 +2807,14 @@
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
+  "/blog/app/ung-dung-thue-xe-va-khach-vang-lai-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
   "/blog/app/ung-dung-thue-xe-va-khach-vang-lai-tai-ha-noi/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2723,6 +2830,22 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/app/ung-dung-tim-xe-may-gia-tot-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
+  "/blog/app/ung-dung-tim-xe-may-gia-tot-tan-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/app/ung-dung-web-thue-xe-may/": {
    "status": "DONE_LIVE",
@@ -3300,6 +3423,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
+  "/blog/dia-phuong/thue-xe-may-quanh-long-bien-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
   "/blog/dia-phuong/thue-xe-may-quanh-long-bien/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -3331,6 +3462,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/huong-dan/an-uong-va-lai-xe-an-toan-tai-ha-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/huong-dan/ban-do/": {
    "status": "DONE_LIVE",
@@ -3383,10 +3522,11 @@
   "/blog/huong-dan/di-hai-nguoi-tren-xe-thue/": {
    "status": "DONE_LIVE",
    "batches": [
-    "NAP3"
+    "NAP3",
+    "APP2"
    ],
    "date": "2026-11-01",
-   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/huong-dan/do-xe-o-ha-noi-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
@@ -4028,6 +4168,14 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/thue-xe/thue-wave-alpha-gia-tot-nhat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
   "/blog/thue-xe/thue-wave-alpha-ky-nghi-le/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4044,6 +4192,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #77 (c9b53bea) — Pages live đã kiểm BA-0410, BA-1014 (trợ lý cho giá tham khảo, cửa hàng xác nhận xe còn trống)"
+  },
+  "/blog/thue-xe/thue-xe-50cc-chay-pho/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/thue-xe/thue-xe-50cc/": {
    "status": "REVIEWED_OK",
@@ -4303,6 +4459,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
+  "/blog/xe-dien/app-thue-xe-dien-cho-khach-du-lich/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
   "/blog/xe-dien/app-thue-xe-dien/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -4409,6 +4573,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
   },
+  "/blog/xe-dien/dang-ky-thue-xe-dien-gia-tot/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
   "/blog/xe-dien/di-xe-dien-duong-dai/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4473,6 +4645,14 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/xe-dien/lop-xe-dien-mua-mua/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "APP2"
+   ],
+   "date": "2026-11-01",
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
+  },
   "/blog/xe-dien/pham-vi-hoat-dong-cua-xe-dien/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -4533,10 +4713,11 @@
   "/blog/xe-dien/sac-pin-xe-dien-o-dau-cho-khach-du-lich/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D02-D04-DUP-PARA"
+    "D02-D04-DUP-PARA",
+    "APP2"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+   "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
   "/blog/xe-dien/sac-pin-xe-dien-o-dau/": {
    "status": "DONE_LIVE",

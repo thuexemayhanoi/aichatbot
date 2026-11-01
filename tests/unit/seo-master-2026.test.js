@@ -10,6 +10,7 @@ import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inflateRawSync } from 'node:zlib';
+import { spawnSync } from 'node:child_process';
 import { rate, THRESHOLDS } from '../../tools/seo-cwv-lab.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -99,4 +100,27 @@ test('CWV lab ratings use the Core Web Vitals "good" thresholds', () => {
   const lab = json('docs/seo/master-2026/cwv-lab.json');
   assert.equal(lab.kind, 'LAB');
   assert.equal(lab.field.status, 'N/A');
+});
+
+test('FEATURE-CLAIM: an assistant "xe còn trống" claim is caught through links and placeholders', (t) => {
+  const py = `
+import importlib.util, json, sys
+spec = importlib.util.spec_from_file_location('m', 'tools/seo-master-2026.py')
+m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+print(json.dumps([bool(m.feature_claims(s)) for s in json.loads(sys.stdin.read())]))`;
+  const cases = [
+    // claims (the link and the dotted placeholder used to cut the sentence)
+    ['<p>Gọi {{ business.contact.phone_display }} hoặc hỏi trợ lý trên <a href="/">trang chủ</a> để biết dòng xe còn trống.</p>', true],
+    ['<p>Hỏi trợ lý MotoAI ở <a href="/">trang chủ</a> xem xe điện nào đang sẵn cho tuần mưa tới.</p>', true],
+    ['<p>Mở trợ lý của {{ business.brand }} về xe còn sẵn và giờ nhận trả.</p>', true],
+    ['<p>Ứng dụng web của {{ business.brand }} trả lời đúng những câu ấy, bằng tiếng Anh hoặc tiếng Việt.</p>', true],
+    // not claims: the store confirms, or the sentence is a question
+    ['<p>Hỏi trợ lý trên <a href="/">trang chủ</a> để xem giá, còn dòng xe nào còn trống thì cửa hàng xác nhận khi bạn gọi.</p>', false],
+    ['<h3>Trợ lý có báo xe còn trống không?</h3>', false],
+    ['<p>Trợ lý đối chiếu với các dòng sẵn có rồi trả về vài gợi ý kèm giá.</p>', false]
+  ];
+  const r = spawnSync('python3', ['-B', '-c', py], { cwd: ROOT, input: JSON.stringify(cases.map((c) => c[0])), encoding: 'utf8' });
+  if (r.error) return t.skip('python3 is not available');
+  assert.equal(r.status, 0, r.stderr);
+  assert.deepEqual(JSON.parse(r.stdout), cases.map((c) => c[1]));
 });
