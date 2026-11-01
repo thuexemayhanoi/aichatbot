@@ -138,7 +138,7 @@ https://chatbot.thuexemaynguyentu.com/gia-thue/,Trang chuyển đổi (giá),,20
 https://chatbot.thuexemaynguyentu.com/lien-he/,Trang chuyển đổi (liên hệ),,200,2026-10-28,indexable,self,có,allowed,WebPage+WebSite,1,chưa,0,HTML 39 KB; CSS 86 KB,Không,P1,PASS
 https://chatbot.thuexemaynguyentu.com/blog/,Blog home,,200,2026-10-28,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 70 KB; CSS 86 KB,Không,P1,PASS
 https://chatbot.thuexemaynguyentu.com/blog/an-toan/,Hub danh mục,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 69 KB; CSS 86 KB,Không,P1,PASS
-https://chatbot.thuexemaynguyentu.com/blog/app/,Hub danh mục,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 69 KB; CSS 86 KB,Không,P1,PASS
+https://chatbot.thuexemaynguyentu.com/blog/app/,Hub danh mục,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 71 KB; CSS 86 KB,Không,P1,PASS
 https://chatbot.thuexemaynguyentu.com/blog/cong-cu-huong-dan/,Hub cụm chủ đề,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 48 KB; CSS 86 KB,Không,P1,PASS
 https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/,Hub danh mục,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 70 KB; CSS 86 KB,Không,P1,PASS
 https://chatbot.thuexemaynguyentu.com/blog/huong-dan/,Hub danh mục,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 70 KB; CSS 86 KB,Không,P1,PASS
@@ -426,7 +426,7 @@ https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xac-nhan-gia-truoc-khi-dat/,B
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xe-nao-de-dieu-khien/,Bài viết,BA-0302,NOT_MEASURED,,indexable,self,có,allowed,Article+BreadcrumbList+Organization,1,chưa,0,HTML 55 KB; CSS 86 KB,Không,P1,PASS
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xe-nao-tiet-kiem-xang-khi-thue/,Bài viết,BA-0296,NOT_MEASURED,,indexable,self,có,allowed,Article+BreadcrumbList+Organization,1,chưa,0,HTML 55 KB; CSS 86 KB,Không,P1,PASS
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xe-thue-co-bao-hiem-khong/,Bài viết,BA-0200,NOT_MEASURED,,indexable,self,có,allowed,Article+BreadcrumbList+Organization,1,chưa,0,HTML 54 KB; CSS 86 KB,Không,P1,PASS
-https://chatbot.thuexemaynguyentu.com/blog/xe-dien/app-mo-khoa-xe-dien/,Bài viết,BA-0261,NOT_MEASURED,,indexable,self,có,allowed,Article+BreadcrumbList+Organization,1,chưa,0,HTML 53 KB; CSS 86 KB,Không,P1,PASS
+https://chatbot.thuexemaynguyentu.com/blog/xe-dien/app-mo-khoa-xe-dien/,Bài viết,BA-0261,NOT_MEASURED,,indexable,self,có,allowed,Article+BreadcrumbList+Organization,1,chưa,0,HTML 54 KB; CSS 86 KB,Không,P1,PASS
 https://chatbot.thuexemaynguyentu.com/blog/xe-dien/app-theo-doi-pin-xe-dien/,Bài viết,BA-0177,NOT_MEASURED,,indexable,self,có,allowed,Article+BreadcrumbList+Organization,1,chưa,0,HTML 53 KB; CSS 86 KB,Không,P1,PASS
 https://chatbot.thuexemaynguyentu.com/blog/xe-dien/app-thue-xe-dien/,Bài viết,BA-0003,200,2026-10-28,indexable,self,có,allowed,Article+BreadcrumbList+Organization,1,có (QA_PASSED),0,HTML 57 KB; CSS 86 KB,Không,P1,PASS
 https://chatbot.thuexemaynguyentu.com/blog/xe-dien/bao-duong-xe-dien/,Bài viết,BA-0099,NOT_MEASURED,,indexable,self,có,allowed,Article+BreadcrumbList+Organization,1,chưa,0,HTML 56 KB; CSS 86 KB,Không,P1,PASS
@@ -2107,13 +2107,13 @@ https://chatbot.thuexemaynguyentu.com/blog/an-toan/mu-bao-hiem/,Hub chủ đề 
 https://chatbot.thuexemaynguyentu.com/blog/an-toan/phap-luat/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 60 KB; CSS 86 KB,Không,P2,PASS
 https://chatbot.thuexemaynguyentu.com/blog/an-toan/su-co/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 49 KB; CSS 86 KB,Không,P2,PASS
 https://chatbot.thuexemaynguyentu.com/blog/an-toan/thoi-tiet/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 42 KB; CSS 86 KB,Không,P2,PASS
-https://chatbot.thuexemaynguyentu.com/blog/app/dat-xe/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 41 KB; CSS 86 KB,Không,P2,PASS
-https://chatbot.thuexemaynguyentu.com/blog/app/huong-dan/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 41 KB; CSS 86 KB,Không,P2,PASS
-https://chatbot.thuexemaynguyentu.com/blog/app/so-sanh/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 47 KB; CSS 86 KB,Không,P2,PASS
-https://chatbot.thuexemaynguyentu.com/blog/app/tim-xe/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 47 KB; CSS 86 KB,Không,P2,PASS
-https://chatbot.thuexemaynguyentu.com/blog/app/tinh-gia/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 52 KB; CSS 86 KB,Không,P2,PASS
-https://chatbot.thuexemaynguyentu.com/blog/app/tro-ly/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 58 KB; CSS 86 KB,Không,P2,PASS
-https://chatbot.thuexemaynguyentu.com/blog/app/web-app/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 47 KB; CSS 86 KB,Không,P2,PASS
+https://chatbot.thuexemaynguyentu.com/blog/app/dat-xe/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 43 KB; CSS 86 KB,Không,P2,PASS
+https://chatbot.thuexemaynguyentu.com/blog/app/huong-dan/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 43 KB; CSS 86 KB,Không,P2,PASS
+https://chatbot.thuexemaynguyentu.com/blog/app/so-sanh/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 49 KB; CSS 86 KB,Không,P2,PASS
+https://chatbot.thuexemaynguyentu.com/blog/app/tim-xe/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 48 KB; CSS 86 KB,Không,P2,PASS
+https://chatbot.thuexemaynguyentu.com/blog/app/tinh-gia/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 54 KB; CSS 86 KB,Không,P2,PASS
+https://chatbot.thuexemaynguyentu.com/blog/app/tro-ly/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 60 KB; CSS 86 KB,Không,P2,PASS
+https://chatbot.thuexemaynguyentu.com/blog/app/web-app/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 48 KB; CSS 86 KB,Không,P2,PASS
 https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/diem-tham-quan/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 60 KB; CSS 86 KB,Không,P2,PASS
 https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/ha-noi/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 60 KB; CSS 86 KB,Không,P2,PASS
 https://chatbot.thuexemaynguyentu.com/blog/dia-phuong/phuong-xa/,Hub chủ đề con,,NOT_MEASURED,,indexable,self,có,allowed,BreadcrumbList+CollectionPage+ItemList+WebSite,1,chưa,0,HTML 60 KB; CSS 86 KB,Không,P2,PASS

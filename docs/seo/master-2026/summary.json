@@ -41,8 +41,8 @@
     "manifest_articles": 2006
   },
   "classification": {
-    "KEEP": 1987,
-    "IMPROVE": 182
+    "KEEP": 2009,
+    "IMPROVE": 160
   },
   "qa_proxy": {
     "mean": 94.9,
@@ -135,14 +135,14 @@
   "cwv": "LAB only",
   "work": {
     "status": {
-      "DONE_LIVE": 60,
-      "REVIEWED_OK": 57,
-      "OPEN": 617,
-      "OK": 1435
+      "DONE_LIVE": 75,
+      "REVIEWED_OK": 59,
+      "OPEN": 588,
+      "OK": 1447
     },
     "open_codes": {
-      "HUB-CONTENT": 13,
-      "DUP-PARA": 162,
+      "HUB-CONTENT": 5,
+      "DUP-PARA": 138,
       "LEGAL-CHECK": 195,
       "BODY-STRUCT": 14,
       "LOCAL-SCOPE": 286,

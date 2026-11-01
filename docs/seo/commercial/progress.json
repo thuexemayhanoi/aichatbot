@@ -582,6 +582,54 @@
       ],
       "changes": "data/blog/hubs/huong-dan*, an-toan*, thue-xe/nhan-xe, thue-xe/tra-xe + data/blog/hub-guides.json. Tách ý định hub trùng nhãn: Hướng Dẫn › Thủ tục = hợp đồng, cọc, gia hạn, đổi xe (Thuê Xe › Thủ tục = bằng lái và điều kiện); Hướng Dẫn › Nhận xe = các bước tại quầy (Thuê Xe › Nhận xe = chuẩn bị trước giờ nhận); Hướng Dẫn › Trả xe = quy trình và hoàn cọc (Thuê Xe › Trả xe = giờ trả và phí trễ hạn); hai bên liên kết chéo. Hub Thời tiết mở rộng sang bài mưa lớn, mùa đông, nắng nóng ở mục khác; hub Đường dài nối bài đồ đi phượt, đường trường, xe điện đi xa. Pháp lý chỉ từ data/seo/legal-facts.json (Luật 36/2024/QH15 Điều 56, 57, 89; NĐ 168/2024/NĐ-CP, NĐ 238/2026/NĐ-CP; TT 38/2024/TT-BGTVT; TT 04/2021/TT-BKHCN – QCVN 2:2021/BKHCN); không ghi mức phạt bằng tiền trong hub (dẫn về bài). Cửa hàng không cung cấp bảo hiểm (business.json). BA-0427: tiêu đề mục 'menu bấm chon' → 'menu bấm chọn' (tools/seo-body-review.mjs replace:1, QA không giảm). tools/build-blog.mjs: title trang 2+ của hub có guide = '<H1> — <danh mục> — trang N', rút gọn còn '<H1> — trang N' khi vượt giới hạn 65 ký tự (audit TITLE-LEN).",
       "rollback": "Xóa mục trong data/blog/hub-guides.json; BA-0427: git revert.",
+      "live_verified": "2026-11-01 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1, title, meta, đoạn trả lời), /blog/an-toan/bang-lai/ (đoạn trả lời pháp lý), BA-0427 H2 \"Trợ lý đọc hiểu câu hỏi thay vì menu bấm chọn\". Ghi sổ work-status DONE_LIVE 18 URL."
+    },
+    {
+      "batch_id": "M5-HUB-GUIDES-3",
+      "reviewed": "2026-11-01",
+      "scope": "HUB-CONTENT: 8 hub Ứng Dụng (danh mục + trợ lý, tính giá, ứng dụng web, tìm xe, so sánh, các bước, đặt xe).",
+      "urls": [
+        "/blog/app/",
+        "/blog/app/dat-xe/",
+        "/blog/app/huong-dan/",
+        "/blog/app/so-sanh/",
+        "/blog/app/tim-xe/",
+        "/blog/app/tinh-gia/",
+        "/blog/app/tro-ly/",
+        "/blog/app/web-app/"
+      ],
+      "changes": "data/blog/hubs/app* + hub-guides.json. Mô tả đúng chức năng hiện có: ứng dụng web chạy trên trình duyệt, không cài đặt, không tài khoản, không xin quyền vị trí/danh bạ/camera (đã kiểm tra agent/index.html không gọi geolocation/getUserMedia); Agent trả lời từ dữ liệu giá và chính sách của cửa hàng, KHÔNG tự chốt đơn — xe, cọc, giờ giao do cửa hàng xác nhận qua điện thoại/WhatsApp. Giá chỉ qua {{ price.from.* }}.",
+      "rollback": "Xóa mục trong data/blog/hub-guides.json.",
+      "live_verified": "chờ deploy"
+    },
+    {
+      "batch_id": "D01-DUP-PARA",
+      "reviewed": "2026-11-01",
+      "scope": "DUP-PARA (P1), lô D01 (20 bài, vai trò thương mại trước): câu mở đầu trùng 80 ký tự với bài khác (QA nhà máy no-cross-article-duplicate) — chủ yếu câu CTA bắt đầu bằng địa chỉ/giờ mở cửa.",
+      "article_ids": [
+        "BA-0105",
+        "BA-0108",
+        "BA-0111",
+        "BA-0117",
+        "BA-0026",
+        "BA-0048",
+        "BA-0165",
+        "BA-0206",
+        "BA-0218",
+        "BA-0225",
+        "BA-0231",
+        "BA-0242",
+        "BA-0243",
+        "BA-0246",
+        "BA-0248",
+        "BA-0249",
+        "BA-0254",
+        "BA-0258",
+        "BA-0260",
+        "BA-0261"
+      ],
+      "changes": "tools/seo-body-review.mjs replace (20 bản vá, 0 bị từ chối, QA không giảm): viết lại câu trùng, đưa ý riêng của bài lên đầu, giữ placeholder {{ business.* }}. Đồng thời gỡ cam kết chưa xác minh: 'mọi báo giá đều đi kèm điều khoản rõ ràng' (BA-0254), 'mọi báo giá đều kèm ghi chú' (BA-0260), 'bình xăng đầy' (BA-0248), 'xe máy điện được kiểm tra pin định kỳ' (BA-0225, BA-0231), 'phần hướng dẫn dùng khóa app sẽ được đưa bạn' và 'trải nghiệm dòng xe điện khóa app' (BA-0261), 'MotoAI hỗ trợ giao xe' → cửa hàng giao xe, chi phí xác nhận trước (BA-0218), 'dùng trang chủ để đặt xe nhanh' → hỏi trợ lý rồi gọi chốt (BA-0111, BA-0117). BA-0254: giá viết bằng chữ ('một trăm lẻ năm mươi nghìn', 'hai trăm nghìn') → {{ price.honda-wave.day.min }}, {{ price.honda-vision.day.min }}. Bài có câu trùng: 162 → 138.",
+      "rollback": "git revert; data/seo/body-reviews.json ghi ngày review.",
       "live_verified": "chờ deploy"
     }
   ],
@@ -592,11 +640,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "M5-HUB-GUIDES-1",
-  "last_verified_commit": "1727b56e",
+  "last_completed_batch": "M5-HUB-GUIDES-2",
+  "last_verified_commit": "5b4ba1c1",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Lô M5 tiếp: guide cho hub Hướng Dẫn (danh mục + thủ tục, nhận xe, giấy tờ, trả xe, đặt xe, bản đồ) cùng hub Thuê Xe nhận xe / trả xe (liên kết chéo, tránh trùng ý định), An Toàn (danh mục + pháp luật, lái xe, mũ bảo hiểm, bằng lái, sự cố, thời tiết, du lịch), Ứng Dụng (danh mục + 7 chủ đề con), 3 hub cụm và /blog/; M6: ngưỡng tối thiểu bài/hub (THIN-HUB: huong-dan/chuan-bi 1 bài). Sau đó D01–D09 đoạn văn trùng (162 bài, bài thương mại trước), BODY-STRUCT, C08+ LEGAL-CHECK, đề xuất LOCAL-SCOPE (RR-13). Sửa nhỏ chờ lô nội dung: BA-0427 tiêu đề mục \"menu bấm chon\" → \"chọn\". Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), giá xe điện/xe đạp điện (RR-14), phí giao xe (RR-15), cách ghi địa chỉ (RR-16), giấy tờ bắt buộc khi thuê (RR-18). Nhà máy ảnh: EXCLUDED.",
+  "next_article_ids_note": "Đã xong M5 1–3 (47 hub). Tiếp: guide cho hub Hướng Dẫn (danh mục + thủ tục, nhận xe, giấy tờ, trả xe, đặt xe, bản đồ) cùng hub Thuê Xe nhận xe / trả xe (liên kết chéo, tránh trùng ý định), An Toàn (danh mục + pháp luật, lái xe, mũ bảo hiểm, bằng lái, sự cố, thời tiết, du lịch), Ứng Dụng (danh mục + 7 chủ đề con), 3 hub cụm và /blog/; M6: ngưỡng tối thiểu bài/hub (THIN-HUB: huong-dan/chuan-bi 1 bài). Sau đó D01–D09 đoạn văn trùng (162 bài, bài thương mại trước), BODY-STRUCT, C08+ LEGAL-CHECK, đề xuất LOCAL-SCOPE (RR-13). Sửa nhỏ chờ lô nội dung: BA-0427 tiêu đề mục \"menu bấm chon\" → \"chọn\". Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), giá xe điện/xe đạp điện (RR-14), phí giao xe (RR-15), cách ghi địa chỉ (RR-16), giấy tờ bắt buộc khi thuê (RR-18). Nhà máy ảnh: EXCLUDED.",
   "p0_live_verified": [
     "/",
     "/gia-thue/",
