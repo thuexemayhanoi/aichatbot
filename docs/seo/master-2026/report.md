@@ -5,7 +5,7 @@ Workbook: `docs/seo/MASTER-SEO-MATRIX-2026.xlsx` — 23 sheet bắt buộc + 4 p
 ## Kết quả đo
 
 - URL kiểm kê: **2168** — sitemap 2168, HTML build 2168, có liên kết vào 2168, bài trong manifest 2006.
-- Phân loại: KEEP 2152, IMPROVE 16 (CONSOLIDATE / REDIRECT / NOINDEX-CANDIDATE: 0 — không có bằng chứng trùng nội dung hay trùng ý định).
+- Phân loại: KEEP 2154, IMPROVE 14 (CONSOLIDATE / REDIRECT / NOINDEX-CANDIDATE: 0 — không có bằng chứng trùng nội dung hay trùng ý định).
 - QA proxy 100 điểm: trung bình 94.9, thấp nhất 86, 2168/2168 URL ≥ 85 (proxy tự động, không thay review biên tập).
 - Họ biến thể slug: 331 họ, Jaccard 5-gram cao nhất 0.161 (ngưỡng gộp 0,5) → 0 ứng viên gộp.
 - Kiểm tra kỹ thuật không PASS: T21 WARN, T23 WARN, T24 N/A.
@@ -15,7 +15,6 @@ Workbook: `docs/seo/MASTER-SEO-MATRIX-2026.xlsx` — 23 sheet bắt buộc + 4 p
 
 - B02 P0 — Search Console chưa kết nối — không có dữ liệu index/CTR/truy vấn (owner, lô —)
 - B04 P1 — Hub chủ yếu là danh sách thẻ; đoạn dẫn dùng chung mô tả danh mục (agent, lô M5)
-- B06 P1 — Đoạn văn trùng với bài khác (QA nhà máy no-cross-article-duplicate) (agent, lô D01+)
 - B07 P3 — local_scope trống trong content-matrix (QA local-angle) (agent, lô L01+)
 - B08 P3 — IMAGE PENDING — chưa có ảnh đại diện (owner, lô —)
 - B11 P3 — Google từng hiển thị URL /index.html (SERP 2026-10-14) (owner, lô —)

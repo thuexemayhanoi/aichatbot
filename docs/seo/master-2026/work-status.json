@@ -679,10 +679,11 @@
   "/blog/an-toan/di-xe-khong-giay-phep-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C10"
+    "C10",
+    "NAP4"
    ],
    "date": "2026-11-01",
-   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/an-toan/di-xe-khong-giay-phep-tom-tat/": {
    "status": "DONE_LIVE",
@@ -843,10 +844,11 @@
   "/blog/an-toan/guong-chieu-hau-an-toan/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C08-NAP1"
+    "C08-NAP1",
+    "NAP4"
    ],
    "date": "2026-11-01",
-   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/an-toan/idp-va-bang-lai-quoc-te-cau-hoi-thuong-gap/": {
    "status": "DONE_LIVE",
@@ -1255,10 +1257,11 @@
    "status": "DONE_LIVE",
    "batches": [
     "C03-LEGAL",
-    "C11"
+    "C11",
+    "NAP4"
    ],
    "date": "2026-11-01",
-   "note": "PR #72 (4bd6509f) — Pages live đã kiểm BA-0443 (điểm b khoản 5 Điều 12), BA-0461 (dưới 12 tuổi, điện thoại 800.000–1.000.000 đồng), BA-0185 (mức ma túy/nồng độ cồn); câu CTA 'MotoAI hỗ trợ tại' ở BA-0185/0191/0197 xử lý ở lô NAP3"
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/an-toan/mu-bao-hiem-chuan-tom-tat/": {
    "status": "DONE_LIVE",
@@ -1508,12 +1511,13 @@
    "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
   "/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap-cho-du-khach/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C04-LEGAL"
+    "C04-LEGAL",
+    "NAP4"
    ],
-   "date": "2026-10-31",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap-cho-nguoi-moi/": {
    "status": "REVIEWED_OK",
@@ -1558,10 +1562,11 @@
   "/blog/an-toan/nong-do-con-khi-lai-xe-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C09"
+    "C09",
+    "NAP4"
    ],
    "date": "2026-11-01",
-   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/an-toan/nong-do-con-khi-lai-xe-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -2029,10 +2034,11 @@
   "/blog/an-toan/toc-do-cho-phep-trong-pho-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C10"
+    "C10",
+    "NAP4"
    ],
    "date": "2026-11-01",
-   "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/an-toan/toc-do-cho-phep-trong-pho-tom-tat/": {
    "status": "DONE_LIVE",
@@ -2685,6 +2691,14 @@
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
+  "/blog/app/ung-dung-thue-xe-tren-dien-thoai-cu/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
   "/blog/app/ung-dung-thue-xe-va-khach-vang-lai-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2751,6 +2765,22 @@
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
+  "/blog/dia-phuong/ba-vi-cuoi-tuan-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
+  "/blog/dia-phuong/bai-dinh-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
   "/blog/dia-phuong/bao-tang-ha-noi-hanh-trinh/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2767,6 +2797,14 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/dia-phuong/cau-nhat-tan-hoang-hon/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
   "/blog/dia-phuong/cho-long-bien-dem/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2782,6 +2820,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+  },
+  "/blog/dia-phuong/chua-mot-cot-ha-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/dia-phuong/chua-va-ha-noi-cuoi-tuan/": {
    "status": "DONE_LIVE",
@@ -2846,6 +2892,22 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/duong-5-va-ngoai-o-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
+  "/blog/dia-phuong/duong-5-va-ngoai-o/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/dia-phuong/gia-lam-va-long-bien/": {
    "status": "DONE_LIVE",
@@ -2915,10 +2977,11 @@
   "/blog/dia-phuong/hoa-binh-duong-truong-hai-ngay-mot-dem/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C03-LEGAL"
+    "C03-LEGAL",
+    "NAP4"
    ],
-   "date": "2026-10-30",
-   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/dia-phuong/hoa-binh-duong-truong/": {
    "status": "DONE_LIVE",
@@ -3115,6 +3178,22 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/dia-phuong/soc-son-va-co-loa-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
+  "/blog/dia-phuong/soc-son-va-co-loa/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
   "/blog/dia-phuong/song-hong-va-cau-long-bien/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3126,10 +3205,19 @@
   "/blog/dia-phuong/tam-dao-bang-xe-may-hai-ngay-mot-dem/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C03-LEGAL"
+    "C03-LEGAL",
+    "NAP4"
    ],
-   "date": "2026-10-30",
-   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
+  "/blog/dia-phuong/thach-that-va-son-tay-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/dia-phuong/thanh-xuan-duong-di/": {
    "status": "DONE_LIVE",
@@ -3730,6 +3818,14 @@
    "date": "2026-11-01",
    "note": "PR #69 (66fc386a) — Pages live đã kiểm BA-1343, BA-1445 (điều kiện phục hồi 12 điểm), BA-0074 (tên cửa hàng)"
   },
+  "/blog/thue-xe/so-sanh-thue-xe-may-va-taxi-ky-nghi-le/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
   "/blog/thue-xe/thu-tuc/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3866,6 +3962,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+  },
+  "/blog/thue-xe/thue-xe-may-hay-di-grab-ky-nghi-le/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/thue-xe/thue-xe-may-hay-di-grab/": {
    "status": "DONE_LIVE",
@@ -4004,6 +4108,22 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/xe-dien/bao-quan-xe-dien-mua-mua-cho-khach-du-lich/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
+  "/blog/xe-dien/bao-quan-xe-dien-mua-mua/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
   "/blog/xe-dien/cach-giu-pin-ben-khi-thue-xe-dien-mua-he/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4069,6 +4189,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
+  "/blog/xe-dien/cua-hang-cho-thue-xe-dien-cho-khach-du-lich/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/xe-dien/cua-hang-cho-thue-xe-dien-gia-tot/": {
    "status": "DONE_LIVE",
@@ -4157,6 +4285,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/xe-dien/pin-chay-khi-khong-dung-cho-khach-du-lich/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/xe-dien/pin-cua-xe-may-dien/": {
    "status": "REVIEWED_OK",
@@ -4248,6 +4384,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
+  "/blog/xe-dien/thue-xe-dien-ban-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
+  },
   "/blog/xe-dien/thue-xe-dien-co-re-khong-gia-tot/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -4311,6 +4455,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+  },
+  "/blog/xe-dien/xe-dien-het-han-pin/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP4"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #76 (982f5b2d) — Pages live đã kiểm BA-0293, BA-0609 (cửa hàng Nguyễn Tú; bỏ lời hứa chưa xác minh)"
   },
   "/blog/xe-dien/xe-dien-khi-mua/": {
    "status": "DONE_LIVE",

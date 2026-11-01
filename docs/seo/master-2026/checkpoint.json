@@ -1,19 +1,18 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-11-01",
-  "last_completed_batch": "C12",
-  "last_verified_commit": "c6c443ce",
-  "next": "Đã xong: M1–M7, DUP-PARA 162 → 0, FEATURE-CLAIM 0, BODY-STRUCT 0, LEGAL-CHECK 0 (C08–C13 + PTS 40 bài + TN1), EN2, NAP1–NAP4. Tiếp: APP-CLAIM (bài mô tả ứng dụng có đặt giữ chỗ, kiểm tra còn xe hoặc giá theo ngày nhận — ứng dụng chưa có các tính năng này; ví dụ BA-0481, BA-0775), câu hứa dịch vụ chưa xác minh còn lại trong CTA, QA-PROXY (1), LOCAL-SCOPE (286 — chờ chủ sở hữu duyệt phạm vi dịch vụ RR-13). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "last_completed_batch": "NAP3-C13A",
+  "last_verified_commit": "d699eca1",
+  "next": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM (tiếng Anh) 0, BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP4, APP1. Tiếp: APP2 — mở rộng bộ dò FEATURE-CLAIM cho câu 'trợ lý/ứng dụng báo xe còn trống/giữ chỗ' (~20 bài: BA-0079, 0199, 0301, 0367, 0409, 0421, 0445, 0487, 0565, 0583, 0655, 0667, 0727, 0759, 1471, 1480, 1484, 1485, 1571, 1941, 0365, 0366, 0369) rồi sửa; APP3 — nhóm bài APP mô tả ứng dụng chung có bước thanh toán, mã đơn, nút hủy, mã xác minh (BA-0547, 0553, 0559, 0649, 0315, 0091, 0475…) cần chủ sở hữu quyết định hướng sửa (RR-21). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "remaining": {
     "status": {
-      "DONE_LIVE": 435,
-      "REVIEWED_OK": 52,
-      "OK": 1393,
-      "OPEN": 288
+      "DONE_LIVE": 447,
+      "REVIEWED_OK": 51,
+      "OK": 1384,
+      "OPEN": 286
     },
     "open_codes": {
-      "LOCAL-SCOPE": 286,
-      "DUP-PARA": 2
+      "LOCAL-SCOPE": 286
     }
   },
   "open_backlog": [
@@ -30,13 +29,6 @@
       "issue": "Hub chủ yếu là danh sách thẻ; đoạn dẫn dùng chung mô tả danh mục",
       "owner": "agent",
       "batch": "M5"
-    },
-    {
-      "id": "B06",
-      "priority": "P1",
-      "issue": "Đoạn văn trùng với bài khác (QA nhà máy no-cross-article-duplicate)",
-      "owner": "agent",
-      "batch": "D01+"
     },
     {
       "id": "B07",
