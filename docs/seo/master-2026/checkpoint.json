@@ -1,14 +1,14 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-11-01",
-  "last_completed_batch": "LEGAL-FEE1",
-  "last_verified_commit": "52a42dde",
-  "next": "Đã xong: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (gồm bộ dò SHOP_CLAIM mới), BODY-STRUCT 0, LEGAL-CHECK 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA3, LEGAL-FEE1 (content-review REVIEW 0). Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Có thể làm tiếp không cần chờ: QA-PROXY (1), rà các câu hứa dịch vụ khác khi có mẫu mới.",
+  "last_completed_batch": "CTA3",
+  "last_verified_commit": "91940308",
+  "next": "Đã xong và xác minh live: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (bộ dò AVAIL/SHOP_CLAIM đọc xuyên liên kết và placeholder), BODY-STRUCT 0, LEGAL-CHECK 0, content-review REVIEW 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA3, LEGAL-FEE1. Lớp giá: tools/fact-bind.mjs check = 0 giá/dữ kiện gõ tay; 11 'lệch' là tổng hai xe hoặc giá tháng chia ngày, đúng số học. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Việc theo lịch: sau 31/12/2026 rà câu lệ phí BA-0047 (Thông tư 29/2026/TT-BTC hết hiệu lực); từ 28/02/2027 Thông tư 117/2026/TT-BTC hết hiệu lực.",
   "remaining": {
     "status": {
-      "DONE_LIVE": 518,
+      "DONE_LIVE": 524,
       "REVIEWED_OK": 49,
-      "OK": 1315,
+      "OK": 1309,
       "OPEN": 286
     },
     "open_codes": {
