@@ -891,7 +891,47 @@
         "BA-1061"
       ],
       "scope": "LEGAL-CHECK lô C09: 20 bài pháp lý nhóm An toàn cho du khách + BA-0449 (dẫn văn bản hết hiệu lực) + 3 bài cùng họ 'ai chịu phạt khi đi xe thuê' (BA-0497, BA-0779, BA-1061) có cùng lỗi pháp lý với BA-0215.",
-      "changes": "Sổ: +5 dữ kiện đối chiếu toàn văn (Thông tư 36/2024/TT-BYT Điều 1, 7; Luật 36/2024/QH15 Điều 20, Điều 58; Nghị định 168/2024/NĐ-CP Điều 47 khoản 8); +2 văn bản (tt-36-2024-byt đang hiệu lực, ttlt-24-2015-byt-bgtvt bị thay thế từ 01/01/2025). tools/seo-legal-citations.mjs: nhận dạng 'Thông tư liên tịch' (trước đây bỏ sót, nên 2 bài dẫn TTLT 24/2015 như đang áp dụng không bị phát hiện). Sửa 10 bài qua tools/seo-body-review.mjs: BA-0359, BA-0449 tiêu chuẩn sức khỏe lái xe theo Thông tư 36/2024/TT-BYT (không áp dụng người điều khiển xe gắn máy); BA-0365 'tước quyền sử dụng giấy phép lái xe 10 điểm' → trừ 10 điểm (điểm d khoản 13), dẫn đúng khoản 1, 2 Điều 20; BA-0311 nguồn xử phạt là Nghị định chứ không phải 'Thông tư'; BA-0347 nghĩa vụ ở lại hiện trường theo Điều 80 không phụ thuộc bên kia đồng ý; BA-0287 bỏ 'không mang giấy phép lái có thể bị phạt' (chỉ xe kinh doanh vận tải), nêu đúng mức phạt người dùng bằng quốc tế không mang bằng quốc gia; BA-0215, BA-0497, BA-0779, BA-1061 'lỗi giấy tờ xe thuộc chủ xe' sai: người điều khiển không có chứng nhận đăng ký xe bị phạt 2–3 triệu đồng, không có bảo hiểm bắt buộc còn hiệu lực 200–300 nghìn đồng (xe máy chưa phải kiểm định như ô tô); BA-1061 điều kiện phục hồi 12 điểm theo Điều 58 khoản 2. 14 bài còn lại đối chiếu đúng (Điều 11, 12, 20 Luật 36; Điều 11 Thông tư 38/2024; Điều 7, 14, 18, 47 Nghị định 168), không sửa."
+      "changes": "Sổ: +5 dữ kiện đối chiếu toàn văn (Thông tư 36/2024/TT-BYT Điều 1, 7; Luật 36/2024/QH15 Điều 20, Điều 58; Nghị định 168/2024/NĐ-CP Điều 47 khoản 8); +2 văn bản (tt-36-2024-byt đang hiệu lực, ttlt-24-2015-byt-bgtvt bị thay thế từ 01/01/2025). tools/seo-legal-citations.mjs: nhận dạng 'Thông tư liên tịch' (trước đây bỏ sót, nên 2 bài dẫn TTLT 24/2015 như đang áp dụng không bị phát hiện). Sửa 10 bài qua tools/seo-body-review.mjs: BA-0359, BA-0449 tiêu chuẩn sức khỏe lái xe theo Thông tư 36/2024/TT-BYT (không áp dụng người điều khiển xe gắn máy); BA-0365 'tước quyền sử dụng giấy phép lái xe 10 điểm' → trừ 10 điểm (điểm d khoản 13), dẫn đúng khoản 1, 2 Điều 20; BA-0311 nguồn xử phạt là Nghị định chứ không phải 'Thông tư'; BA-0347 nghĩa vụ ở lại hiện trường theo Điều 80 không phụ thuộc bên kia đồng ý; BA-0287 bỏ 'không mang giấy phép lái có thể bị phạt' (chỉ xe kinh doanh vận tải), nêu đúng mức phạt người dùng bằng quốc tế không mang bằng quốc gia; BA-0215, BA-0497, BA-0779, BA-1061 'lỗi giấy tờ xe thuộc chủ xe' sai: người điều khiển không có chứng nhận đăng ký xe bị phạt 2–3 triệu đồng, không có bảo hiểm bắt buộc còn hiệu lực 200–300 nghìn đồng (xe máy chưa phải kiểm định như ô tô); BA-1061 điều kiện phục hồi 12 điểm theo Điều 58 khoản 2. 13 bài còn lại đối chiếu đúng (Điều 11, 12, 20 Luật 36; Điều 11 Thông tư 38/2024; Điều 7, 14, 18, 47 Nghị định 168), không sửa. Đính chính: BA-0407 còn 'tước 10 điểm' (đúng là trừ 10 điểm) — không ghi DONE cho C09, sửa ở lô C10.",
+      "live_verified": "2026-11-01",
+      "live_note": "Pages d4eb438b: đã kiểm live BA-0215 (khoản 8 Điều 47), BA-0347 (Điều 80), BA-0359 (Thông tư 36/2024/TT-BYT). 22 bài DONE_LIVE; BA-0407 ('tước 10 điểm') và BA-0359 (còn câu 'văn bản liên tịch của Bộ Y tế và Bộ Giao thông vận tải') chuyển sang C10."
+    },
+    {
+      "batch_id": "PTS1-NAP2B",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-1343",
+        "BA-1445",
+        "BA-0881",
+        "BA-1163",
+        "BA-1552",
+        "BA-0842",
+        "BA-1259",
+        "BA-1493",
+        "BA-1211",
+        "BA-1025",
+        "BA-1307",
+        "BA-1439",
+        "BA-0875",
+        "BA-1271",
+        "BA-1396",
+        "BA-1199",
+        "BA-0079",
+        "BA-0074",
+        "BA-0629",
+        "BA-0062",
+        "BA-0699",
+        "BA-0075",
+        "BA-0763",
+        "BA-0073",
+        "BA-0067",
+        "BA-0061",
+        "BA-0085",
+        "BA-0090",
+        "BA-0081",
+        "BA-0087"
+      ],
+      "scope": "PTS1: 16/39 bài ghi sai điều kiện phục hồi 12 điểm giấy phép lái xe ('nếu không bị trừ hết trong 12 tháng'). NAP2b: 14 bài còn lại gọi MotoAI là nơi đặt địa chỉ hoặc ghi 'quận Long Biên'. Kèm tinh chỉnh bộ dò FEATURE-CLAIM (bỏ qua câu đã ghi trả lời bằng tiếng Việt).",
+      "changes": "Điều 58 khoản 2 Luật 36/2024/QH15 (văn bản hợp nhất 55/VBHN-VPQH): giấy phép chưa bị trừ hết điểm và không bị trừ điểm trong 12 tháng từ ngày bị trừ gần nhất thì được phục hồi đủ 12 điểm — sửa cụm điều kiện qua tools/seo-body-review.mjs (dữ kiện luat-36-2024-dieu-58-diem). NAP2b: 'MotoAI là trợ lý thuê xe máy đặt tại' → 'của cửa hàng {{ business.brand }}, đặt tại'; 'quận Long Biên' → {{ business.address.ward }}, {{ business.address.district }} / 'phía Long Biên'. tools/seo-master-2026.py: FEATURE-CLAIM không tính câu đã nói câu trả lời hiện bằng tiếng Việt và câu chỉ hướng dẫn cách hỏi (3 dương tính giả → 0)."
     }
   ],
   "rules": [
@@ -901,11 +941,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "CEN2-NAP2A",
-  "last_verified_commit": "582eeda6",
+  "last_completed_batch": "C09",
+  "last_verified_commit": "d4eb438b",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Đã xong: M1–M6 (51 hub có đoạn dẫn, HUB-CONTENT 0), DUP-PARA 162 → 0 (D01–D06), FEATURE-CLAIM sửa 33 bài, LEGAL-CHECK C08 (20 bài). Tiếp: NAP2b (14 bài 'quận Long Biên'/'MotoAI ... đặt tại' còn lại — bản vá đã soạn), PTS (~7 bài ghi sai điều kiện phục hồi 12 điểm, Điều 58 khoản 2), C10+ LEGAL-CHECK, C09+ LEGAL-CHECK (172 bài còn lại, 20 bài/lô; ưu tiên sửa 'tước 10 điểm' → 'trừ 10 điểm' ở BA-0413, BA-0419, BA-0407, BA-0425, BA-0365), BODY-STRUCT (14), câu hứa dịch vụ chưa xác minh trong CTA (~50 câu), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "next_article_ids_note": "Đã xong: M1–M6 (51 hub có đoạn dẫn, HUB-CONTENT 0), DUP-PARA 162 → 0 (D01–D06), FEATURE-CLAIM sửa 33 bài, LEGAL-CHECK C08 (20 bài). Tiếp: PTS2 (23 bài còn lại ghi sai điều kiện phục hồi 12 điểm — bản vá đã soạn) + BA-0005 (xe máy điện trên 4 kW là xe mô tô; người chở người không đội mũ là người bị phạt), C10 LEGAL-CHECK (20 bài + 'tước 10 điểm' → 'trừ 10 điểm' ở BA-0407, BA-0413, BA-0419, BA-0425; BA-0359 bỏ câu 'văn bản liên tịch'), C11+ LEGAL-CHECK, BODY-STRUCT (14), câu hứa dịch vụ chưa xác minh trong CTA (~50 câu), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "p0_live_verified": [
     "/",
     "/gia-thue/",

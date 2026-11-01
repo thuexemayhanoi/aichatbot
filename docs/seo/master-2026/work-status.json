@@ -38,10 +38,35 @@
   "/blog/an-toan/ai-chiu-phat-khi-di-xe-thue-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D06B-CEN1B-M6"
+    "D06B-CEN1B-M6",
+    "C09"
    ],
    "date": "2026-11-01",
-   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
+  "/blog/an-toan/ai-chiu-phat-khi-di-xe-thue-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
+  "/blog/an-toan/ai-chiu-phat-khi-di-xe-thue-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
+  "/blog/an-toan/ai-chiu-phat-khi-di-xe-thue/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
   "/blog/an-toan/an-toan-khi-thanh-toan-coc-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -59,6 +84,14 @@
    ],
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/bang-lai-a1-a2-khac-gi-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
   "/blog/an-toan/bang-lai-a1-a2-khac-gi/": {
    "status": "DONE_LIVE",
@@ -198,6 +231,14 @@
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/camera-phat-nguoi-khi-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
   "/blog/an-toan/cho-tre-em-tren-xe-may/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -213,6 +254,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/den-xe-va-an-toan-dem-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
   "/blog/an-toan/den-xe-va-an-toan-dem/": {
    "status": "DONE_LIVE",
@@ -249,6 +298,14 @@
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
+  "/blog/an-toan/di-xe-khong-giay-phep-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
   "/blog/an-toan/di-xe-khong-giay-phep/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -282,6 +339,14 @@
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
+  "/blog/an-toan/goi-canh-sat-khi-tai-nan-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
   "/blog/an-toan/goi-canh-sat-khi-tai-nan/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -290,6 +355,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
+  },
+  "/blog/an-toan/guong-chieu-hau-an-toan-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
   "/blog/an-toan/guong-chieu-hau-an-toan/": {
    "status": "DONE_LIVE",
@@ -376,6 +449,14 @@
    "date": "2026-10-30",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/ky-nang-phanh-gap-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
   "/blog/an-toan/ky-nang-phanh-gap/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -418,6 +499,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/luat-giao-thong-duong-bo-co-ban-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
   "/blog/an-toan/luat-giao-thong-duong-bo-co-ban/": {
    "status": "DONE_LIVE",
@@ -498,6 +587,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/an-toan/mua-lon-va-lai-xe-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
   "/blog/an-toan/mua-lon-va-lai-xe-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -616,6 +713,14 @@
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/an-toan/nong-do-con-khi-lai-xe-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
   "/blog/an-toan/nong-do-con-khi-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -713,6 +818,14 @@
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
+  "/blog/an-toan/phat-nguoi-va-xe-thue/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
   "/blog/an-toan/quy-dinh-mu-bao-hiem-tre-em/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -769,6 +882,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/an-toan/suong-mu-mua-dong-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
   "/blog/an-toan/suong-mu-mua-dong-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -784,6 +905,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+  },
+  "/blog/an-toan/tam-nhin-khi-lai-xe-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
   "/blog/an-toan/tam-nhin-khi-lai-xe-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -808,6 +937,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/an-toan/thu-tuc-khi-va-cham-nhe-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
   "/blog/an-toan/thu-tuc-khi-va-cham-nhe/": {
    "status": "DONE_LIVE",
@@ -859,6 +996,14 @@
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/thuoc-va-lai-xe-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
   "/blog/an-toan/thuoc-va-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -866,6 +1011,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/toc-do-cho-phep-trong-pho-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
   "/blog/an-toan/toc-do-cho-phep-trong-pho/": {
    "status": "DONE_LIVE",
@@ -925,6 +1078,14 @@
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/an-toan/tranh-app-thue-xe-lua-dao/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+  },
   "/blog/an-toan/trom-xe-va-phong-ngua-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -940,6 +1101,14 @@
    ],
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C09"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
   },
   "/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan-cho-nguoi-moi/": {
    "status": "DONE_LIVE",

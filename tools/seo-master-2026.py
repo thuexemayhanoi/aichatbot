@@ -713,7 +713,7 @@ ISSUES = {
 # running the engine: it replies in Vietnamese only and cannot see live availability).
 FEATURE_CLAIM = re.compile(
     r'(?:trợ lý|Agent|ứng dụng|app)[^.?!<]{0,80}(?:trả lời|tóm tắt|phản hồi)[^.?!<]{0,30}bằng tiếng Anh'
-    r'|bằng tiếng Anh hoặc tiếng Việt[^.?!<]{0,40}(?:trả lời|hệ thống)'
+    r'|bằng tiếng Anh hoặc tiếng Việt[^.?!<]{0,40}(?:trả lời (?:bằng|theo)|hệ thống)'
     r'|hỗ trợ đa ngôn ngữ|trợ lý thuê xe đa ngôn ngữ'
     r'|(?:trợ lý|Agent)[^.?!<]{0,40}báo ngay xe còn trống', re.I)
 
@@ -724,7 +724,10 @@ def feature_claims(body):
     out = []
     for m in FEATURE_CLAIM.finditer(body):
         end = min([i for i in (body.find('.', m.end()), body.find('?', m.end()), body.find('<', m.end())) if i >= 0] or [len(body)])
-        if body[end:end + 1] != '?':
+        # A sentence that itself says the answer is shown in Vietnamese corrects
+        # the claim ("hỏi bằng tiếng Anh hoặc tiếng Việt …, câu trả lời hiện viết
+        # bằng tiếng Việt") — not a claim of English answers.
+        if body[end:end + 1] != '?' and 'bằng tiếng Việt' not in body[m.end():end]:
             out.append(m.group(0))
     return out
 PRIO_RANK = {'P0': 0, 'P1': 1, 'P2': 2, 'P3': 3}
