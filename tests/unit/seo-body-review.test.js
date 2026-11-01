@@ -130,3 +130,30 @@ test('sources: an external link moves only to an official source the legal regis
   const all = bad.problems.join('\n');
   for (const needle of ['"to" is not a source recorded', '"from" must be an external', 'no link to https://khong-co-trong-bai.vn/x', '(occurrence 99)']) assert.ok(all.includes(needle), `expected rejection: ${needle}\n${all}`);
 });
+
+test('points: a key-point list goes under a named H2, only into bodies without any list', () => {
+  const fixture = '<p>Mở bài nói về việc chuẩn bị giấy tờ, kiểm tra xe và hỏi rõ tiền cọc trước khi nhận xe máy thuê.</p>\n\n'
+    + '<h2>Chuẩn bị trước khi nhận xe</h2>\n<p>Mang theo giấy tờ tùy thân, kiểm tra phanh, đèn, còi và chụp ảnh xe trước khi ký.</p>\n\n'
+    + '<h2>Khi trả xe</h2>\n<p>Trả xe đúng giờ hẹn, đối chiếu ảnh lúc nhận và nhận lại tiền cọc.</p>\n';
+  const items = ['Mang theo giấy tờ tùy thân khi nhận xe.', 'Kiểm tra phanh, đèn và còi trước khi ký.', 'Chụp ảnh xe để đối chiếu lúc trả.'];
+  const ok = reviewArticle({ id: SHORT.article_id, points: { after_h2: 'Chuẩn bị trước khi nhận xe', lead: 'Ba việc cần làm:', items } },
+    undefined, { original: fixture });
+  assert.deepEqual(ok.problems, []);
+  assert.deepEqual(ok.ops, ['points']);
+  const list = '<p>Ba việc cần làm:</p>\n<ul>\n' + items.map((x) => `<li>${x}</li>`).join('\n') + '\n</ul>';
+  assert.ok(ok.html.includes(list), ok.html);
+  // The recap closes that section: after its paragraphs, right before the next H2; prose is kept.
+  assert.ok(ok.html.indexOf('chụp ảnh xe trước khi ký.</p>') < ok.html.indexOf('<ul>'));
+  assert.ok(ok.html.indexOf('<ul>') < ok.html.indexOf('<h2>Khi trả xe</h2>'));
+  for (const m of fixture.matchAll(/<p>([\s\S]*?)<\/p>/g)) assert.ok(ok.html.includes(m[0]), 'original paragraph kept');
+
+  const withList = `${fixture}<ul>\n<li>Đã có danh sách.</li>\n</ul>\n`;
+  const r1 = reviewArticle({ id: SHORT.article_id, points: { after_h2: 'Khi trả xe', items } }, undefined, { original: withList });
+  assert.ok(r1.problems.join('\n').includes('already has a list'), r1.problems.join('\n'));
+  const r2 = reviewArticle({ id: SHORT.article_id, points: { after_h2: 'Không có mục này', items: [...items.slice(0, 2), 'Cọc 999 đồng.'] } },
+    undefined, { original: fixture });
+  const all = r2.problems.join('\n');
+  for (const needle of ['number "999"', 'is not an H2 of this article']) assert.ok(all.includes(needle), all);
+  const r3 = reviewArticle({ id: SHORT.article_id, points: { after_h2: 'Khi trả xe', items: items.slice(0, 2) } }, undefined, { original: fixture });
+  assert.ok(r3.problems.join('\n').includes('3–6 items'), r3.problems.join('\n'));
+});

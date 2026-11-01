@@ -1,19 +1,18 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-11-01",
-  "last_completed_batch": "PTS1-NAP2B",
-  "last_verified_commit": "66fc386a",
-  "next": "Đã xong: M1–M6, DUP-PARA 162 → 0, FEATURE-CLAIM 0, LEGAL-CHECK C08, C09, C10, PTS (39 bài điều kiện phục hồi điểm). Đã xong thêm PTS2-TN1 (29 bài). Tiếp: C11 LEGAL-CHECK (BA-0467, 0185, 0443, 0461, 0473, 0191, 0437, 0197, 0431 — phạt riêng người được chở không đội mũ theo điểm b khoản 5 Điều 12 Nghị định 168/2024/NĐ-CP, trẻ dưới 12 tuổi, phạt điện thoại 800.000–1.000.000 đồng, mức ma túy/nồng độ cồn); C12+ LEGAL-CHECK (~100 bài), BODY-STRUCT (14), câu hứa dịch vụ chưa xác minh trong CTA (~50), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "last_completed_batch": "C10",
+  "last_verified_commit": "4d079246",
+  "next": "Đã xong: M1–M6, DUP-PARA 162 → 0, FEATURE-CLAIM 0, LEGAL-CHECK C08–C11, PTS (40 bài điều kiện phục hồi điểm), TN1. Tiếp: C12 LEGAL-CHECK (hàng đợi còn lại ~90 bài, 20–30 bài/lô; đã soát trước 12 bài không lỗi: BA-1031, 1049, 0995, 0977, 1007, 0983, 0989, 1115, 1073, 1037, 1001, 1091; BA-0971 đúng; BA-0713 thêm ngoại lệ trẻ dưới 06 tuổi), BODY-STRUCT (14 bài thiếu danh sách: cần thêm thao tác 'danh sách ý chính' vào tools/seo-body-review.mjs), câu hứa dịch vụ chưa xác minh trong CTA (~50, ví dụ 'hỏi trợ lý cửa hàng có mũ trẻ em'), QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "remaining": {
     "status": {
-      "DONE_LIVE": 320,
+      "DONE_LIVE": 350,
       "REVIEWED_OK": 54,
-      "OK": 1395,
-      "OPEN": 399
+      "OK": 1405,
+      "OPEN": 359
     },
     "open_codes": {
-      "LEGAL-CHECK": 99,
-      "BODY-STRUCT": 14,
+      "LEGAL-CHECK": 73,
       "LOCAL-SCOPE": 286
     }
   },
@@ -80,13 +79,6 @@
       "issue": "Bài pháp lý chưa qua lô đối chiếu toàn văn",
       "owner": "agent",
       "batch": "C08+"
-    },
-    {
-      "id": "B21",
-      "priority": "P2",
-      "issue": "Bài thiếu cấu trúc H2/danh sách",
-      "owner": "agent",
-      "batch": "T1"
     }
   ],
   "resume_rule": "Khi nhận \"Tiếp tục\": fetch origin/main, đọc file này + docs/seo/commercial/progress.json, chạy lại python3 tools/seo-master-2026.py --verify, rồi làm lô kế tiếp (tối đa 5–20 URL/lô, ≤ 30 theo AGENTS.md)."

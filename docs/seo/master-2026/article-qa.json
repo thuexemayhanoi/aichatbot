@@ -662,12 +662,10 @@
    ]
   },
   "BA-0109": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0110": {
    "score": 100,
@@ -688,12 +686,10 @@
    "warnings": []
   },
   "BA-0113": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0114": {
    "score": 95,
@@ -1614,11 +1610,10 @@
    "warnings": []
   },
   "BA-0257": {
-   "score": 90,
+   "score": 95,
    "pass": true,
    "critical": [],
    "warnings": [
-    "body-structure",
     "title-meta-valid"
    ]
   },
@@ -2910,12 +2905,10 @@
    "warnings": []
   },
   "BA-0465": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0466": {
    "score": 100,
@@ -3014,12 +3007,10 @@
    ]
   },
   "BA-0481": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0482": {
    "score": 100,
@@ -4252,12 +4243,10 @@
    "warnings": []
   },
   "BA-0677": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0678": {
    "score": 95,
@@ -4312,12 +4301,10 @@
    "warnings": []
   },
   "BA-0686": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0687": {
    "score": 100,
@@ -4782,12 +4769,10 @@
    "warnings": []
   },
   "BA-0762": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0763": {
    "score": 100,
@@ -4826,20 +4811,16 @@
    "warnings": []
   },
   "BA-0769": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0770": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0771": {
    "score": 100,
@@ -4866,36 +4847,28 @@
    "warnings": []
   },
   "BA-0775": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0776": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0777": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0778": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "body-structure"
-   ]
+   "warnings": []
   },
   "BA-0779": {
    "score": 100,
