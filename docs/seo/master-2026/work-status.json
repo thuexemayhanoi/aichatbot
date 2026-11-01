@@ -601,6 +601,14 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "K1-COMMERCIAL"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #57 (49a83d4): /lien-he/ có Khu vực giao xe + Đặt xe trong ba bước + link /agent/; BA-0254 tiêu đề 'Giá thuê xe máy theo dòng xe…'; BA-0427 FAQ 'kho ứng dụng của điện thoại'."
+  },
   "/blog/dia-phuong/ba-dinh-xe-may-phuong/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -937,6 +945,14 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/thue-xe/bang-gia-thue-xe-tham-khao/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "K1-COMMERCIAL"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #57 (49a83d4): /lien-he/ có Khu vực giao xe + Đặt xe trong ba bước + link /agent/; BA-0254 tiêu đề 'Giá thuê xe máy theo dòng xe…'; BA-0427 FAQ 'kho ứng dụng của điện thoại'."
+  },
   "/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -1222,10 +1238,11 @@
   "/lien-he/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C00-P0"
+    "C00-P0",
+    "K1-COMMERCIAL"
    ],
-   "date": "2026-10-30",
-   "note": "Title/H1/meta/lead thương mại, kiểm tra live"
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #57 (49a83d4): /lien-he/ có Khu vực giao xe + Đặt xe trong ba bước + link /agent/; BA-0254 tiêu đề 'Giá thuê xe máy theo dòng xe…'; BA-0427 FAQ 'kho ứng dụng của điện thoại'."
   }
  }
 }

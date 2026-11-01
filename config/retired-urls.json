@@ -1,0 +1,68 @@
+{
+  "$schema": "motoai/retired-urls@1",
+  "note": "URL đã bỏ khỏi site (không còn trong sitemap, GitHub Pages trả 404). Trang 404 đọc danh sách này và chuyển người dùng tới trang thay thế; Google thấy 404 nên rút URL khỏi chỉ mục. build-blog kiểm tra: URL bỏ không được trùng trang đang sinh, trang đích phải đang sinh. Rollback: xóa mục khỏi danh sách và khôi phục quy tắc cũ (git revert lô tương ứng).",
+  "retired": [
+    {
+      "from": "/blog/app/cai-app/",
+      "to": "/blog/app/",
+      "since": "2026-11-01",
+      "batch": "M4-TAXONOMY-PRECISION",
+      "reason": "Hub \"Cài App\" chỉ có 1 bài khớp nhầm (\"không cần tải\" ↔ \"tải về\" khi bỏ dấu); theo quy tắc khớp chính xác hub không còn bài, bài vẫn ở hub danh mục Ứng Dụng."
+    },
+    {
+      "from": "/blog/dia-phuong/phuong-xa/page/{n}/",
+      "pages": [
+        5,
+        17
+      ],
+      "to": "/blog/dia-phuong/phuong-xa/",
+      "since": "2026-11-01",
+      "batch": "M4-TAXONOMY-PRECISION",
+      "reason": "Hub Phường / Xã trước có 400 bài do \"địa phương\" ↔ \"phường\"; nay khớp theo tên phường/xã đã xác minh (data/local/hanoi.json) còn 91 bài = 4 trang. Trang 5–17 (lô M3) bỏ."
+    },
+    {
+      "from": "/blog/huong-dan/thu-tuc/page/{n}/",
+      "pages": [
+        3,
+        12
+      ],
+      "to": "/blog/huong-dan/thu-tuc/",
+      "since": "2026-11-01",
+      "batch": "M4-TAXONOMY-PRECISION",
+      "reason": "Hub Thủ Tục còn 42 bài (trước 288 do tên danh mục \"Hướng dẫn / thủ tục\" lặp trong secondary_keywords) = 2 trang. Trang 3–12 bỏ."
+    },
+    {
+      "from": "/blog/an-toan/phap-luat/page/{n}/",
+      "pages": [
+        4,
+        8
+      ],
+      "to": "/blog/an-toan/phap-luat/",
+      "since": "2026-11-01",
+      "batch": "M4-TAXONOMY-PRECISION",
+      "reason": "Hub Pháp Luật còn 54 bài (trước 181 do tên danh mục \"An toàn / pháp lý\" lặp) = 3 trang. Trang 4–8 bỏ."
+    },
+    {
+      "from": "/blog/thue-xe/gia-thue/page/{n}/",
+      "pages": [
+        6,
+        8
+      ],
+      "to": "/blog/thue-xe/gia-thue/",
+      "since": "2026-11-01",
+      "batch": "M4-TAXONOMY-PRECISION",
+      "reason": "Hub Giá Thuê còn 100 bài (trước 170 do \"đơn giản\"/\"gia đình\" ↔ \"giá\" khi bỏ dấu) = 5 trang. Trang 6–8 bỏ."
+    },
+    {
+      "from": "/blog/thue-xe/thue-tuan/page/{n}/",
+      "pages": [
+        2,
+        2
+      ],
+      "to": "/blog/thue-xe/thue-tuan/",
+      "since": "2026-11-01",
+      "batch": "M4-TAXONOMY-PRECISION",
+      "reason": "Hub Thuê Tuần còn 6 bài (trước 46 do \"cuối tuần\" bị tính là thuê theo tuần) = 1 trang. Trang 2 bỏ."
+    }
+  ]
+}

@@ -6,7 +6,7 @@
 
 ## Phủ URL
 
-- Tổng URL trong sitemap đã audit: **2185** (100%) — trong đó **2006** bài viết.
+- Tổng URL trong sitemap đã audit: **2169** (100%) — trong đó **2006** bài viết.
 - Bài viết: 2006
 - Trang chủ (website): 1
 - Trang chính sách thuê xe: 1
@@ -18,9 +18,9 @@
 - Hub danh mục (phân trang): 80
 - Trang giới thiệu (E-E-A-T): 1
 - Pháp lý: 2
-- Hub chủ đề con: 33
+- Hub chủ đề con: 42
 - Ứng dụng Agent (chat): 1
-- Hub chủ đề con (phân trang): 47
+- Hub chủ đề con (phân trang): 22
 - Trang đối tác (B2B): 1
 
 ## Trước / sau
@@ -65,11 +65,11 @@
 |---|---:|
 | P0 — chặn crawl/index/truy cập | 133 |
 | P1 — chuyển đổi/SEO tiềm năng cao | 1968 |
-| P2 — semantic/topical/chất lượng nội dung | 84 |
+| P2 — semantic/topical/chất lượng nội dung | 68 |
 
 | Status | Ý nghĩa | Số URL |
 |---|---|---:|
-| DONE | Không còn vấn đề kỹ thuật lẫn nội dung | 2185 |
+| DONE | Không còn vấn đề kỹ thuật lẫn nội dung | 2169 |
 | KEEP | Đã xem xét, giữ nguyên có chủ đích (bài > 2.000 từ — không cắt nội dung có giá trị) | 0 |
 | TECH-DONE | Title/meta/link/schema đã tối ưu; còn khoảng trống nội dung chờ review body (`tools/seo-body-review.mjs`) | 0 |
 | PLANNED | Còn vấn đề kỹ thuật chưa xử lý | 0 |
@@ -87,7 +87,7 @@
 
 ## Batch (20 URL/batch, thứ tự P0 → P1 → P2, trang chuyển đổi/hub/pillar trước)
 
-Tổng 110 batch; 0 batch còn hạng mục chưa DONE (PLANNED/TECH-DONE/KEEP).
+Tổng 109 batch; 0 batch còn hạng mục chưa DONE (PLANNED/TECH-DONE/KEEP).
 
 | Batch | URL | DONE | KEEP | TECH-DONE | PLANNED | Ví dụ |
 |---|---:|---:|---:|---:|---:|---|

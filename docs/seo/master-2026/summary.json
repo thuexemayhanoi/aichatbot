@@ -33,22 +33,22 @@
     "X-OFF-PAGE BACKLINKS",
     "X-DATA SOURCES"
   ],
-  "urls": 2185,
+  "urls": 2169,
   "sources": {
-    "sitemap": 2185,
-    "build": 2185,
-    "linked": 2185,
+    "sitemap": 2169,
+    "build": 2169,
+    "linked": 2169,
     "manifest_articles": 2006
   },
   "classification": {
-    "KEEP": 2002,
-    "IMPROVE": 183
+    "KEEP": 1987,
+    "IMPROVE": 182
   },
   "qa_proxy": {
     "mean": 94.7,
     "min": 84,
-    "pass_85": 2183,
-    "total": 2185
+    "pass_85": 2168,
+    "total": 2169
   },
   "technical": {
     "T01": "PASS",
@@ -135,20 +135,19 @@
   "cwv": "LAB only",
   "work": {
     "status": {
-      "DONE_LIVE": 55,
-      "REVIEWED_OK": 30,
-      "OPEN": 1126,
-      "OK": 974
+      "DONE_LIVE": 33,
+      "REVIEWED_OK": 57,
+      "OPEN": 657,
+      "OK": 1422
     },
     "open_codes": {
-      "HUB-CONTENT": 43,
+      "HUB-CONTENT": 52,
       "DUP-PARA": 162,
       "LEGAL-CHECK": 196,
-      "HUB-MISFILE": 934,
       "BODY-STRUCT": 14,
-      "THIN-HUB": 2,
-      "QA-PROXY": 2,
-      "LOCAL-SCOPE": 286
+      "LOCAL-SCOPE": 286,
+      "THIN-HUB": 1,
+      "QA-PROXY": 1
     }
   }
 }

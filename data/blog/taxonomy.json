@@ -54,7 +54,10 @@
       "desc": "Ứng dụng web, Agent và cách dùng công cụ thuê xe máy trực tuyến.",
       "intro": "Cách dùng ứng dụng thuê xe máy MotoAI: hỏi giá, chọn xe, tính chi phí và xem thủ tục ngay trên trình duyệt — không cần cài đặt, không cần tài khoản.",
       "meta": "Ứng dụng thuê xe máy MotoAI dạng web: hỏi giá, chọn xe, tính chi phí theo ngày, tuần, tháng và xem thủ tục ngay trên trình duyệt, không cần cài đặt.",
-      "seo_title": "Hướng dẫn dùng ứng dụng thuê xe máy: hỏi giá, chọn xe, đặt xe"
+      "seo_title": "Hướng dẫn dùng ứng dụng thuê xe máy: hỏi giá, chọn xe, đặt xe",
+      "matrix_echo": [
+        "App & Ứng dụng"
+      ]
     },
     "RENT": {
       "dir": "thue-xe",
@@ -84,7 +87,10 @@
       "desc": "Thủ tục nhận xe, giấy tờ, đặt cọc và quy trình trả xe.",
       "intro": "Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, cách nhận và trả xe đúng giờ.",
       "meta": "Thủ tục thuê xe máy từng bước: giấy tờ cần mang, tiền đặt cọc theo loại xe, hợp đồng thuê, cách kiểm tra khi nhận xe và trả xe đúng giờ.",
-      "seo_title": "Hướng dẫn thuê xe máy từng bước: giấy tờ, cọc, nhận và trả xe"
+      "seo_title": "Hướng dẫn thuê xe máy từng bước: giấy tờ, cọc, nhận và trả xe",
+      "matrix_echo": [
+        "Hướng dẫn"
+      ]
     },
     "SAFE": {
       "dir": "an-toan",
@@ -117,7 +123,8 @@
           "web app",
           "pwa",
           "trình duyệt",
-          "không cần cài"
+          "không cần cài",
+          "ứng dụng web"
         ]
       },
       {
@@ -213,7 +220,9 @@
         "slug": "thu-tuc",
         "match": [
           "thủ tục",
-          "giấy tờ"
+          "giấy tờ",
+          "điều kiện thuê",
+          "bằng lái"
         ]
       },
       {
@@ -221,7 +230,8 @@
         "label": "Nhận Xe",
         "slug": "nhan-xe",
         "match": [
-          "nhận xe"
+          "nhận xe",
+          "kiểm tra xe"
         ]
       },
       {
@@ -229,7 +239,8 @@
         "label": "Trả Xe",
         "slug": "tra-xe",
         "match": [
-          "trả xe"
+          "trả xe",
+          "trễ hạn"
         ]
       },
       {
@@ -247,7 +258,9 @@
         "label": "Thuê Tuần",
         "slug": "thue-tuan",
         "match": [
-          "tuần"
+          "theo tuần",
+          "thuê tuần",
+          "gói tuần"
         ]
       },
       {
@@ -255,7 +268,9 @@
         "label": "Thuê Tháng",
         "slug": "thue-thang",
         "match": [
-          "tháng",
+          "theo tháng",
+          "thuê tháng",
+          "gói tháng",
           "dài hạn",
           "dài ngày"
         ]
@@ -269,7 +284,14 @@
           "xe số",
           "xe ga",
           "loại xe",
-          "dung tích"
+          "dung tích",
+          "50cc",
+          "vision",
+          "air blade",
+          "wave",
+          "honda",
+          "yamaha",
+          "xe hạng nhẹ"
         ]
       },
       {
@@ -316,7 +338,9 @@
         "match": [
           "quãng đường",
           "tầm hoạt động",
-          "phạm vi"
+          "phạm vi",
+          "bao xa",
+          "đường dài"
         ]
       },
       {
@@ -350,7 +374,9 @@
         "label": "So Sánh",
         "slug": "so-sanh",
         "match": [
-          "so sánh"
+          "so sánh",
+          "khác biệt",
+          "khác gì"
         ]
       },
       {
@@ -358,7 +384,9 @@
         "label": "Thuê Tháng",
         "slug": "thue-thang",
         "match": [
-          "tháng"
+          "theo tháng",
+          "thuê tháng",
+          "dài hạn"
         ]
       },
       {
@@ -366,7 +394,10 @@
         "label": "Thuê Ngày",
         "slug": "thue-ngay",
         "match": [
-          "ngày"
+          "theo ngày",
+          "thuê ngày",
+          "dài ngày",
+          "trong ngày"
         ]
       }
     ],
@@ -384,7 +415,12 @@
         "label": "Thủ Tục",
         "slug": "thu-tuc",
         "match": [
-          "thủ tục"
+          "thủ tục",
+          "hợp đồng",
+          "đặt cọc",
+          "tiền cọc",
+          "gia hạn",
+          "đổi xe"
         ]
       },
       {
@@ -403,7 +439,9 @@
         "label": "Nhận Xe",
         "slug": "nhan-xe",
         "match": [
-          "nhận xe"
+          "nhận xe",
+          "kiểm tra xe",
+          "chụp ảnh xe"
         ]
       },
       {
@@ -411,7 +449,8 @@
         "label": "Trả Xe",
         "slug": "tra-xe",
         "match": [
-          "trả xe"
+          "trả xe",
+          "trễ hạn"
         ]
       },
       {
@@ -453,22 +492,52 @@
     ],
     "SAFE": [
       {
+        "code": "MU-BAO-HIEM",
+        "label": "Mũ Bảo Hiểm",
+        "slug": "mu-bao-hiem",
+        "match": [
+          "mũ bảo hiểm",
+          "bảo hộ",
+          "đeo nón",
+          "nón bảo hiểm"
+        ]
+      },
+      {
+        "code": "PHAP-LUAT",
+        "label": "Pháp Luật",
+        "slug": "phap-luat",
+        "match": [
+          "luật",
+          "phạt",
+          "nồng độ",
+          "pháp lý",
+          "quy định",
+          "nghị định",
+          "lệnh cấm",
+          "cấm xe",
+          "tốc độ cho phép",
+          "giấy phép",
+          "ngược chiều",
+          "quy tắc",
+          "làn đường",
+          "bảo hiểm bắt buộc",
+          "đăng ký xe",
+          "đăng kiểm"
+        ]
+      },
+      {
         "code": "LAI-XE",
         "label": "Lái Xe",
         "slug": "lai-xe",
         "match": [
           "lái xe",
           "kỹ thuật lái",
-          "đi phố"
-        ]
-      },
-      {
-        "code": "MU-BAO-HIEM",
-        "label": "Mũ Bảo Hiểm",
-        "slug": "mu-bao-hiem",
-        "match": [
-          "mũ bảo hiểm",
-          "bảo hộ"
+          "đi phố",
+          "phanh",
+          "gương chiếu hậu",
+          "đèn xe",
+          "khoảng cách an toàn",
+          "vào cua"
         ]
       },
       {
@@ -503,17 +572,6 @@
           "cứu hộ",
           "tai nạn",
           "mất xe"
-        ]
-      },
-      {
-        "code": "PHAP-LUAT",
-        "label": "Pháp Luật",
-        "slug": "phap-luat",
-        "match": [
-          "luật",
-          "phạt",
-          "nồng độ",
-          "pháp lý"
         ]
       },
       {
@@ -562,25 +620,19 @@
         "match": [
           "phường",
           "xã"
-        ]
-      },
-      {
-        "code": "HA-NOI",
-        "label": "Hà Nội",
-        "slug": "ha-noi",
-        "match": [
-          "hà nội"
-        ]
+        ],
+        "match_units": "data/local/hanoi.json"
       },
       {
         "code": "GA-BEN",
         "label": "Ga / Bến Xe",
         "slug": "ga-ben-xe",
         "match": [
-          "ga ",
+          "nhà ga",
+          "ga tàu",
+          "ga hà nội",
           "bến xe",
-          "sân bay",
-          "nhà ga"
+          "sân bay"
         ]
       },
       {
@@ -591,8 +643,13 @@
           "điểm tham quan",
           "địa danh",
           "phố cổ",
-          "hồ",
-          "cầu"
+          "hồ tây",
+          "hồ gươm",
+          "hồ hoàn kiếm",
+          "cầu long biên",
+          "văn miếu",
+          "lăng bác",
+          "hoàng thành"
         ]
       },
       {
@@ -601,7 +658,7 @@
         "slug": "cung-duong",
         "match": [
           "cung đường",
-          "tuyến",
+          "tuyến đường",
           "lộ trình",
           "đường đi"
         ]
@@ -634,8 +691,17 @@
           "kết nối",
           "đi lại"
         ]
+      },
+      {
+        "code": "HA-NOI",
+        "label": "Hà Nội",
+        "slug": "ha-noi",
+        "match": [
+          "hà nội"
+        ]
       }
     ]
   },
-  "subtopic_hub_rule": "A subtopic hub page (blog/<category>/<subtopic-slug>/) is generated ONLY when at least one PUBLISHED article belongs to that subtopic. No empty SEO hubs."
+  "subtopic_hub_rule": "A subtopic hub page (blog/<category>/<subtopic-slug>/) is generated ONLY when at least one PUBLISHED article belongs to that subtopic. No empty SEO hubs.",
+  "subtopic_match_rule": "Lô M4 (2026-11-01): khớp nguyên cụm từ có dấu (chữ thường, NFC) trên primary_keyword, secondary_keywords và working_title; bỏ mục secondary_keywords chỉ lặp lại tên/nhãn danh mục (name, label, matrix_echo) vì nó không nói chủ đề riêng của bài; không dùng slug (không dấu). Chủ đề đầu tiên khớp theo thứ tự trong danh sách thắng; không khớp → Tổng quan (không có hub)."
 }

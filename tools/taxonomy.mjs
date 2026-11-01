@@ -56,18 +56,55 @@ function norm(text) {
     .replace(/đ/g, 'd');
 }
 
+/** Lower-case NFC text that KEEPS Vietnamese diacritics: "giá" ≠ "gia đình",
+ *  "mưa" ≠ "mua bán", "trả xe" ≠ "kiểm tra xe". */
+const lc = (text) => String(text ?? '').toLowerCase().normalize('NFC');
+const PHRASE = new Map();
+/** Whole-phrase match: the phrase may not start or end inside a word. */
+function hasPhrase(haystack, phrase) {
+  let re = PHRASE.get(phrase);
+  if (!re) {
+    re = new RegExp(`(?<![\\p{L}\\p{N}])${lc(phrase).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\p{L}\\p{N}])`, 'u');
+    PHRASE.set(phrase, re);
+  }
+  return re.test(haystack);
+}
+
+/** A subtopic's phrases: its `match` list plus, with `match_units`, the names
+ *  of the active administrative units in that verified locality file (e.g.
+ *  the 2025 Hà Nội wards/communes) — area articles land in the area hub. */
+const UNIT_NAMES = new Map();
+function matchPhrases(s) {
+  if (!s.match_units) return s.match;
+  if (!UNIT_NAMES.has(s.match_units)) {
+    const units = JSON.parse(readFileSync(join(ROOT, s.match_units), 'utf8')).units ?? [];
+    UNIT_NAMES.set(s.match_units, units.filter((u) => u.active !== false && u.name).map((u) => u.name));
+  }
+  return [...s.match, ...UNIT_NAMES.get(s.match_units)];
+}
+
 /**
  * Deterministically derive the subtopic of a matrix row (or published
- * article) from its keywords/slug. First matching subtopic in taxonomy
- * order wins; rows matching nothing fall back to the general "Tổng quan"
- * pseudo-subtopic which never gets its own hub page.
+ * article). First matching subtopic in taxonomy order wins; rows matching
+ * nothing fall back to the general "Tổng quan" pseudo-subtopic which never
+ * gets its own hub page.
+ *
+ * Lô M4 (2026-11-01): accent-sensitive whole-phrase matching on
+ * primary_keyword, secondary_keywords and working_title. The secondary item
+ * that only echoes the category (its name, label or `matrix_echo`, e.g.
+ * "Hướng dẫn / thủ tục") is ignored — it says nothing about the article's
+ * own topic and used to file every guide under "Thủ tục". The accent-free
+ * slug is not matched any more ("địa phương" used to match "phường").
  */
 export function deriveSubtopic(categoryId, row) {
   const subtopics = taxonomy.subtopics[categoryId] ?? [];
-  const haystack = norm([row.primary_keyword, row.secondary_keywords, row.slug, row.working_title].filter(Boolean).join(' '));
+  const cat = taxonomy.categories[categoryId] ?? {};
+  const echoes = new Set([cat.name, cat.label, ...(cat.matrix_echo ?? [])].filter(Boolean).map(lc));
+  const secondary = String(row.secondary_keywords ?? '').split(';').map((s) => s.trim()).filter((s) => s && !echoes.has(lc(s)));
+  const haystack = lc([row.primary_keyword, secondary.join('; '), row.working_title].filter(Boolean).join(' | '));
   for (const s of subtopics) {
-    for (const m of s.match) {
-      if (haystack.includes(norm(m))) {
+    for (const m of matchPhrases(s)) {
+      if (hasPhrase(haystack, m)) {
         return { code: s.code, label: s.label, slug: s.slug, fallback: false };
       }
     }
