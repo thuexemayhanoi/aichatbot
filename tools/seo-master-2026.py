@@ -416,6 +416,7 @@ def load():
     D['cat_dir'] = {k: v['dir'] for k, v in D['taxonomy']['categories'].items()}
     D['art_path'] = {aid: f"/blog/{D['cat_dir'][a['category']]}/{a['slug']}/" for aid, a in D['published'].items()}
     D['path_art'] = {v: k for k, v in D['art_path'].items()}
+    D['bodies'] = {aid: (ROOT / a['body']).read_text(encoding='utf-8') for aid, a in D['published'].items() if a.get('body') and (ROOT / a['body']).exists()}
     mm = rjson('docs/seo/seo-master-matrix.json')
     D['master'] = {path_of(r['URL']): r for r in mm['rows']}
     D['tech'] = {path_of(r['URL']): r for r in rcsv('docs/seo/master-task/technical-audit.csv')}
@@ -706,7 +707,26 @@ ISSUES = {
     'LEGAL-CHECK': ('P2', 'C08', 'Bài pháp lý chưa qua lô đối chiếu toàn văn — rà nhận định với data/seo/legal-facts.json'),
     'LOCAL-SCOPE': ('P3', 'L', 'Bài LOCAL thiếu local_scope — đề xuất từ chủ đề thật của bài, không bịa địa điểm'),
     'QA-PROXY': ('P2', 'T1', 'QA proxy < 85 — xem cột thành phần trong QA RESULTS'),
+    'FEATURE-CLAIM': ('P1', 'C-EN', 'Bài khẳng định Agent trả lời/tóm tắt bằng tiếng Anh, đa ngôn ngữ hoặc báo xe còn trống — Agent chỉ trả lời tiếng Việt và không thấy xe trống (chạy thử engine 01/11/2026); sửa qua tools/seo-body-review.mjs (RR-20)'),
 }
+# Lô C-EN: sentences that state a capability the Agent does not have (verified by
+# running the engine: it replies in Vietnamese only and cannot see live availability).
+FEATURE_CLAIM = re.compile(
+    r'(?:trợ lý|Agent|ứng dụng|app)[^.?!<]{0,80}(?:trả lời|tóm tắt|phản hồi)[^.?!<]{0,30}bằng tiếng Anh'
+    r'|bằng tiếng Anh hoặc tiếng Việt[^.?!<]{0,40}(?:trả lời|hệ thống)'
+    r'|hỗ trợ đa ngôn ngữ|trợ lý thuê xe đa ngôn ngữ'
+    r'|(?:trợ lý|Agent)[^.?!<]{0,40}báo ngay xe còn trống', re.I)
+
+
+def feature_claims(body):
+    """FEATURE_CLAIM matches that state the claim (a question such as an FAQ
+    heading is not a claim — its answer is what gets checked)."""
+    out = []
+    for m in FEATURE_CLAIM.finditer(body):
+        end = min([i for i in (body.find('.', m.end()), body.find('?', m.end()), body.find('<', m.end())) if i >= 0] or [len(body)])
+        if body[end:end + 1] != '?':
+            out.append(m.group(0))
+    return out
 PRIO_RANK = {'P0': 0, 'P1': 1, 'P2': 2, 'P3': 3}
 
 
@@ -801,6 +821,8 @@ def work_items(D, per, pages):
                 codes.append('BODY-STRUCT')
             if 'local-angle' in warns:
                 codes.append('LOCAL-SCOPE')
+            if feature_claims(D['bodies'].get(aid, '')):
+                codes.append('FEATURE-CLAIM')
             row = D['commercial'].get(aid, {})
             if row.get('legal_review') == 'MANDATORY' and path not in D['ledger']:
                 codes.append('LEGAL-CHECK')
@@ -1418,7 +1440,8 @@ def build(D, date):
             ('B18', 'COMMERCIAL-BLOCK', 'Commercial', 'trang chuyển đổi thiếu dữ kiện thương mại'),
             ('B19', 'LEGAL-CHECK', 'Existing content', 'bài pháp lý chưa qua lô đối chiếu toàn văn'),
             ('B20', 'TITLE-META', 'On-page', 'bài title/description ngoài chuẩn'),
-            ('B21', 'BODY-STRUCT', 'On-page', 'bài thiếu cấu trúc H2/danh sách')):
+            ('B21', 'BODY-STRUCT', 'On-page', 'bài thiếu cấu trúc H2/danh sách'),
+            ('B22', 'FEATURE-CLAIM', 'Existing content', 'bài khẳng định sai tính năng Agent (tiếng Anh, xe còn trống)')):
         n = open_codes.get(code, 0)
         prio, batch, action = ISSUES[code]
         backlog.append([bid, prio, group, f'{n} URL', scope_note[0].upper() + scope_note[1:], 'work-queue.csv (mã ' + code + ')', action, 'agent', batch + ('+' if code in ('LEGAL-CHECK',) else ''),

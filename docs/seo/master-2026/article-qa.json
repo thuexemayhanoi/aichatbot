@@ -614,12 +614,10 @@
    "warnings": []
   },
   "BA-0101": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0102": {
    "score": 100,
@@ -646,20 +644,16 @@
    "warnings": []
   },
   "BA-0106": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0107": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0108": {
    "score": 95,
@@ -731,12 +725,10 @@
    "warnings": []
   },
   "BA-0118": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0119": {
    "score": 95,
@@ -4294,12 +4286,10 @@
    ]
   },
   "BA-0673": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0674": {
    "score": 100,
@@ -5233,12 +5223,10 @@
    "warnings": []
   },
   "BA-0819": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0820": {
    "score": 100,
@@ -5427,12 +5415,10 @@
    "warnings": []
   },
   "BA-0849": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0850": {
    "score": 100,
@@ -5561,11 +5547,10 @@
    "warnings": []
   },
   "BA-0870": {
-   "score": 90,
+   "score": 95,
    "pass": true,
    "critical": [],
    "warnings": [
-    "no-cross-article-duplicate",
     "local-angle"
    ]
   },
@@ -5576,12 +5561,10 @@
    "warnings": []
   },
   "BA-0872": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0873": {
    "score": 100,
@@ -5604,11 +5587,10 @@
    ]
   },
   "BA-0876": {
-   "score": 90,
+   "score": 95,
    "pass": true,
    "critical": [],
    "warnings": [
-    "no-cross-article-duplicate",
     "local-angle"
    ]
   },
@@ -5631,12 +5613,10 @@
    "warnings": []
   },
   "BA-0880": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0881": {
    "score": 100,
@@ -5657,20 +5637,16 @@
    "warnings": []
   },
   "BA-0884": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0885": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0886": {
    "score": 100,
@@ -5699,20 +5675,16 @@
    "warnings": []
   },
   "BA-0890": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0891": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0892": {
    "score": 100,
@@ -5721,12 +5693,10 @@
    "warnings": []
   },
   "BA-0893": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0894": {
    "score": 95,
@@ -5743,12 +5713,10 @@
    "warnings": []
   },
   "BA-0896": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0897": {
    "score": 100,
@@ -5781,12 +5749,10 @@
    "warnings": []
   },
   "BA-0902": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0903": {
    "score": 100,
@@ -5909,12 +5875,10 @@
    "warnings": []
   },
   "BA-0922": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0923": {
    "score": 100,
@@ -5943,12 +5907,10 @@
    "warnings": []
   },
   "BA-0927": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0928": {
    "score": 100,
@@ -5963,11 +5925,10 @@
    "warnings": []
   },
   "BA-0930": {
-   "score": 90,
+   "score": 95,
    "pass": true,
    "critical": [],
    "warnings": [
-    "no-cross-article-duplicate",
     "local-angle"
    ]
   },
@@ -5984,12 +5945,10 @@
    "warnings": []
   },
   "BA-0933": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0934": {
    "score": 100,
@@ -6094,12 +6053,10 @@
    "warnings": []
   },
   "BA-0950": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0951": {
    "score": 100,
@@ -6172,12 +6129,10 @@
    "warnings": []
   },
   "BA-0962": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0963": {
    "score": 100,
@@ -6340,12 +6295,10 @@
    "warnings": []
   },
   "BA-0988": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-0989": {
    "score": 100,
@@ -6438,12 +6391,10 @@
    ]
   },
   "BA-1003": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1004": {
    "score": 100,
@@ -6484,12 +6435,10 @@
    "warnings": []
   },
   "BA-1010": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1011": {
    "score": 100,
@@ -6556,20 +6505,16 @@
    ]
   },
   "BA-1021": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1022": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1023": {
    "score": 100,
@@ -6698,12 +6643,10 @@
    "warnings": []
   },
   "BA-1043": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1044": {
    "score": 95,
@@ -6752,12 +6695,10 @@
    ]
   },
   "BA-1051": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1052": {
    "score": 100,
@@ -6818,12 +6759,10 @@
    "warnings": []
   },
   "BA-1061": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1062": {
    "score": 95,
@@ -6910,12 +6849,10 @@
    ]
   },
   "BA-1075": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1076": {
    "score": 100,
@@ -7034,12 +6971,10 @@
    "warnings": []
   },
   "BA-1095": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1096": {
    "score": 100,
@@ -7346,12 +7281,10 @@
    "warnings": []
   },
   "BA-1146": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1147": {
    "score": 100,
@@ -7372,12 +7305,10 @@
    "warnings": []
   },
   "BA-1150": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1151": {
    "score": 100,
@@ -7392,12 +7323,10 @@
    "warnings": []
   },
   "BA-1153": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1154": {
    "score": 100,
@@ -8868,12 +8797,10 @@
    ]
   },
   "BA-1387": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1388": {
    "score": 100,
@@ -9540,12 +9467,10 @@
    "warnings": []
   },
   "BA-1495": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1496": {
    "score": 100,
@@ -9608,12 +9533,10 @@
    "warnings": []
   },
   "BA-1506": {
-   "score": 95,
+   "score": 100,
    "pass": true,
    "critical": [],
-   "warnings": [
-    "no-cross-article-duplicate"
-   ]
+   "warnings": []
   },
   "BA-1507": {
    "score": 100,
@@ -10298,11 +10221,10 @@
    "warnings": []
   },
   "BA-1615": {
-   "score": 90,
+   "score": 95,
    "pass": true,
    "critical": [],
    "warnings": [
-    "no-cross-article-duplicate",
     "local-angle"
    ]
   },
