@@ -1,0 +1,1231 @@
+{
+ "$schema": "motoai/seo-work-status@1",
+ "note": "Sổ trạng thái theo URL của chiến dịch SEO (lô đã xác minh). DONE_LIVE = đã sửa và kiểm tra trên trang live; REVIEWED_OK = đã rà soát, không cần đổi; REVIEW_REQUIRED = chờ chủ sở hữu xác nhận dữ kiện. Cập nhật sau mỗi lô bằng python3 tools/seo-master-2026.py --mark; không ghi DONE_LIVE khi chưa kiểm tra live.",
+ "urls": {
+  "/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C00-P0",
+    "C07b-LEGAL-LEZ-FIX"
+   ],
+   "date": "2026-10-31",
+   "note": "Khôi phục thẻ xác minh Search Console — live"
+  },
+  "/agent/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C00-P0"
+   ],
+   "date": "2026-10-30",
+   "note": "Giữ ý định trợ lý / WebApplication theo thiết kế"
+  },
+  "/blog/an-toan/an-toan-khi-thanh-toan-coc-cho-du-khach/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/an-toan-khi-thanh-toan-coc/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL",
+    "C06-LEGAL-SOURCES"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/bao-hiem-khi-thue-xe-may-cau-hoi-thuong-gap/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/bao-hiem-khi-thue-xe-may-cho-du-khach/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/bao-hiem-khi-thue-xe-may-cho-nguoi-moi/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/bao-hiem-khi-thue-xe-may-tom-tat/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/bao-hiem-khi-thue-xe-may-vi-du-thuc-te/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/bao-hiem-khi-thue-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL",
+    "C06-LEGAL-SOURCES"
+   ],
+   "date": "2026-10-31",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/bao-ve-du-lieu-ca-nhan-khi-thue-xe-cho-du-khach/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/bao-ve-du-lieu-ca-nhan-khi-thue-xe/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/cam-do-xe-may-dung-luat-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL",
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/cam-do-xe-may-dung-luat-cho-nguoi-moi/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL",
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/cam-do-xe-may-dung-luat-tom-tat/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL",
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/cam-do-xe-may-dung-luat-vi-du-thuc-te/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/cam-do-xe-may-dung-luat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL",
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/cam-xe-may-xang-vanh-dai-1/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C07-LEGAL-LEZ",
+    "C07b-LEGAL-LEZ-FIX",
+    "C07c-LEGAL-LEZ-FIX",
+    "C07d-LEGAL-LEZ-FIX"
+   ],
+   "date": "2026-10-31",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/den-xe-va-an-toan-dem/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/idp-va-bang-lai-quoc-te-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C06-LEGAL-SOURCES"
+   ],
+   "date": "2026-10-31",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/idp-va-bang-lai-quoc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C06-LEGAL-SOURCES"
+   ],
+   "date": "2026-10-31",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/khien-nai-dich-vu-thue-xe-cho-du-khach/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/khien-nai-dich-vu-thue-xe/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/kiem-dinh-xe-may-cho-du-khach/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/kiem-dinh-xe-may-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/kiem-dinh-xe-may-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/kiem-dinh-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/ky-nang-phanh-gap/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/lai-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Phân trang 24 bài/trang — live"
+  },
+  "/blog/an-toan/lai-xe/page/2/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/an-toan/lan-duong-va-quy-tac-nhuong-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C06-LEGAL-SOURCES"
+   ],
+   "date": "2026-10-31",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/mu-bao-hiem-chuan-cho-du-khach/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/mu-bao-hiem-chuan-cho-nguoi-moi/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/mu-bao-hiem-chuan-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/mu-bao-hiem-chuan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/nghia-vu-cua-ben-cho-thue-cho-du-khach/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL",
+    "C04b-LEGAL-FOLLOWUP"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/nghia-vu-cua-ben-cho-thue-cho-nguoi-moi/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/nghia-vu-cua-ben-cho-thue-tom-tat/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/nghia-vu-cua-ben-cho-thue/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL",
+    "C04b-LEGAL-FOLLOWUP"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C06-LEGAL-SOURCES"
+   ],
+   "date": "2026-10-31",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap-cho-du-khach/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap-cho-nguoi-moi/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap-tom-tat/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap-vi-du-thuc-te/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/nhan-dien-hop-dong-thue-xe-hop-phap/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/phap-luat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Phân trang 24 bài/trang — live"
+  },
+  "/blog/an-toan/phap-luat/page/2/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/an-toan/phap-luat/page/3/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/an-toan/phap-luat/page/4/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/an-toan/phap-luat/page/5/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/an-toan/phap-luat/page/6/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/an-toan/phap-luat/page/7/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/an-toan/phap-luat/page/8/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/an-toan/quyen-cua-nguoi-thue-xe-cho-du-khach/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/quyen-cua-nguoi-thue-xe-cho-nguoi-moi/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/quyen-cua-nguoi-thue-xe-tom-tat/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/quyen-cua-nguoi-thue-xe-vi-du-thuc-te/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/quyen-cua-nguoi-thue-xe/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/thue-va-phi-xe-may-ca-nhan-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/thue-va-phi-xe-may-ca-nhan-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/thue-va-phi-xe-may-ca-nhan-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/thue-va-phi-xe-may-ca-nhan-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/thue-va-phi-xe-may-ca-nhan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL",
+    "C07-LEGAL-LEZ"
+   ],
+   "date": "2026-10-31",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cau-hoi-thuong-gap/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04b-LEGAL-FOLLOWUP"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cho-du-khach/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cho-nguoi-moi/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04b-LEGAL-FOLLOWUP"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-tom-tat/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL",
+    "C04b-LEGAL-FOLLOWUP"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-vi-du-thuc-te/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04b-LEGAL-FOLLOWUP"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL",
+    "C04b-LEGAL-FOLLOWUP"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/trom-xe-va-phong-ngua-tom-tat/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C04-LEGAL"
+   ],
+   "date": "2026-10-31",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/app/tro-ly/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Phân trang 24 bài/trang — live"
+  },
+  "/blog/app/tro-ly/page/2/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/app/tro-ly/page/3/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/ba-dinh-xe-may-phuong/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/cau-giay-di-xe-may/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/di-pho-co-bang-xe-may/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/dong-da-va-xe-may/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/du-lich-hoan-kiem-bang-xe-may/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/gia-lam-va-long-bien/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/hai-ba-trung-hanh-trinh/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/ho-tay-va-xe-may/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/hoa-binh-duong-truong-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/dia-phuong/hoa-binh-duong-truong/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/dia-phuong/phuong-xa/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Phân trang 24 bài/trang — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/10/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/11/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/12/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/13/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/14/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/15/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/16/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/17/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/2/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/3/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/4/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/5/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/6/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/7/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/8/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/phuong-xa/page/9/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/dia-phuong/tam-dao-bang-xe-may-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C03-LEGAL"
+   ],
+   "date": "2026-10-30",
+   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+  },
+  "/blog/dia-phuong/thanh-xuan-duong-di/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/thue-xe-may-quanh-long-bien/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/huong-dan/thu-tuc/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Phân trang 24 bài/trang — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/10/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/11/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/12/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/2/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/3/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/4/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/5/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/6/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/7/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/8/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/huong-dan/thu-tuc/page/9/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/thue-xe/cho-thue-xe-may-thu-tuc-don-gian/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/thue-xe/gia-thue-xe-may-theo-ngay/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/thue-xe/gia-thue/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Phân trang 24 bài/trang — live"
+  },
+  "/blog/thue-xe/gia-thue/page/2/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/thue-xe/gia-thue/page/3/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/thue-xe/gia-thue/page/4/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/thue-xe/gia-thue/page/5/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/thue-xe/gia-thue/page/6/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/thue-xe/gia-thue/page/7/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/thue-xe/gia-thue/page/8/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/thue-xe/thue-honda-air-blade/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/thue-xe/thue-honda-vision/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/thue-xe/thue-tuan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Phân trang 24 bài/trang — live"
+  },
+  "/blog/thue-xe/thue-tuan/page/2/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/thue-xe/thue-xe-50cc/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/thue-xe/thue-xe-ga/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/thue-xe/thue-xe-may-gia-re/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/thue-xe/thue-xe-may-theo-thang/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C01",
+    "C02-CLUSTERS"
+   ],
+   "date": "2026-10-30",
+   "note": "Đổi title/description qua data/seo/article-meta.json, kiểm tra live"
+  },
+  "/blog/thue-xe/thue-xe-may-theo-tuan/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/thue-xe/thue-xe-so/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/app-thue-xe-dien/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/chi-phi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Phân trang 24 bài/trang — live"
+  },
+  "/blog/xe-dien/chi-phi/page/2/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/xe-dien/chon-xe-dien-phu-hop/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/huong-dan-su-dung-xe-may-dien/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/khac-biet-xe-dien-va-xe-xang/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/pham-vi-hoat-dong-cua-xe-dien/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/pin-cua-xe-may-dien/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/pin-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Phân trang 24 bài/trang — live"
+  },
+  "/blog/xe-dien/pin-xe/page/2/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M3-SUBTOPIC-PAGINATION"
+   ],
+   "date": "2026-11-01",
+   "note": "Trang phân trang mới — live"
+  },
+  "/blog/xe-dien/sac-pin-xe-dien-o-dau/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/thue-xe-dien-dai-ngay/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/thue-xe-dien-theo-ngay/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/ung-dung-thue-xe-may-dien/": {
+   "status": "REVIEWED_OK",
+   "batches": [
+    "C01"
+   ],
+   "date": "2026-10-30",
+   "note": "Đã rà soát, không cần đổi"
+  },
+  "/gia-thue/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C00-P0",
+    "M2-PRICE-PAGE"
+   ],
+   "date": "2026-10-31",
+   "note": "So sánh kỳ thuê, mẹo đọc bảng giá, hỏi đáp, đọc thêm — live"
+  },
+  "/lien-he/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "C00-P0"
+   ],
+   "date": "2026-10-30",
+   "note": "Title/H1/meta/lead thương mại, kiểm tra live"
+  }
+ }
+}

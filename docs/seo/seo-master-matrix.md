@@ -21,7 +21,7 @@
 - Hub chủ đề con: 33
 - Ứng dụng Agent (chat): 1
 - Hub chủ đề con (phân trang): 47
-- Khác: 1
+- Trang đối tác (B2B): 1
 
 ## Trước / sau
 

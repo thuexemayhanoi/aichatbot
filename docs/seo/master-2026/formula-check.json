@@ -1,5 +1,5 @@
 {
-  "checked": 36,
+  "checked": 41,
   "errors": [],
   "engine": "LibreOffice headless recalculation",
   "results": [
@@ -48,13 +48,13 @@
     {
       "kpi": "Phân loại KEEP",
       "formula": "=COUNTIF('URL INVENTORY'!L:L,\"KEEP\")",
-      "value": 2000,
+      "value": 2002,
       "ok": true
     },
     {
       "kpi": "Phân loại IMPROVE",
       "formula": "=COUNTIF('URL INVENTORY'!L:L,\"IMPROVE\")",
-      "value": 185,
+      "value": 183,
       "ok": true
     },
     {
@@ -184,27 +184,57 @@
       "ok": true
     },
     {
-      "kpi": "Backlog P0",
-      "formula": "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P0\")",
+      "kpi": "Backlog chương trình P0",
+      "formula": "=COUNTIFS('PRIORITY BACKLOG'!A:A,\"Chương trình\",'PRIORITY BACKLOG'!C:C,\"P0\")",
       "value": 2,
       "ok": true
     },
     {
-      "kpi": "Backlog P1",
-      "formula": "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P1\")",
-      "value": 3,
+      "kpi": "Backlog chương trình P1",
+      "formula": "=COUNTIFS('PRIORITY BACKLOG'!A:A,\"Chương trình\",'PRIORITY BACKLOG'!C:C,\"P1\")",
+      "value": 7,
       "ok": true
     },
     {
-      "kpi": "Backlog P2",
-      "formula": "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P2\")",
+      "kpi": "Backlog chương trình P2",
+      "formula": "=COUNTIFS('PRIORITY BACKLOG'!A:A,\"Chương trình\",'PRIORITY BACKLOG'!C:C,\"P2\")",
+      "value": 6,
+      "ok": true
+    },
+    {
+      "kpi": "Backlog chương trình P3",
+      "formula": "=COUNTIFS('PRIORITY BACKLOG'!A:A,\"Chương trình\",'PRIORITY BACKLOG'!C:C,\"P3\")",
       "value": 5,
       "ok": true
     },
     {
-      "kpi": "Backlog P3",
-      "formula": "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P3\")",
-      "value": 4,
+      "kpi": "URL còn việc mở (OPEN)",
+      "formula": "=COUNTIF('URL INVENTORY'!N:N,\"OPEN\")",
+      "value": 1126,
+      "ok": true
+    },
+    {
+      "kpi": "URL đã sửa và kiểm tra live (DONE_LIVE)",
+      "formula": "=COUNTIF('URL INVENTORY'!N:N,\"DONE_LIVE\")",
+      "value": 55,
+      "ok": true
+    },
+    {
+      "kpi": "URL đã rà soát, không cần đổi (REVIEWED_OK)",
+      "formula": "=COUNTIF('URL INVENTORY'!N:N,\"REVIEWED_OK\")",
+      "value": 30,
+      "ok": true
+    },
+    {
+      "kpi": "URL không có việc mở (OK)",
+      "formula": "=COUNTIF('URL INVENTORY'!N:N,\"OK\")",
+      "value": 974,
+      "ok": true
+    },
+    {
+      "kpi": "URL chờ chủ sở hữu (REVIEW_REQUIRED)",
+      "formula": "=COUNTIF('URL INVENTORY'!N:N,\"REVIEW_REQUIRED\")",
+      "value": 0,
       "ok": true
     },
     {

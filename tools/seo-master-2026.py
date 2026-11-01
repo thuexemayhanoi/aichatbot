@@ -448,6 +448,8 @@ def load():
     D['commercial'] = {r['id']: r for r in rcsv('docs/seo/commercial/SEO-COMMERCIAL-2006.csv')}
     D['progress'] = rjson('docs/seo/commercial/progress.json')
     D['site_pages'] = rjson('config/site-pages.json')
+    ledger = ROOT / OUT_DIR / 'work-status.json'
+    D['ledger'] = json.loads(ledger.read_text(encoding='utf-8'))['urls'] if ledger.exists() else {}
     return D
 
 
@@ -681,6 +683,147 @@ def families(D):
     return mods, result
 
 
+# ---------------------------------------------------------------- work queue
+# Head phrases owned by one URL each (config/seo-ownership.json v2): an
+# article whose principal keyword IS one of them competes with its owner.
+OWNER_PHRASES = {
+    'cho thuê xe máy ở hà nội': '/', 'cho thuê xe máy hà nội': '/', 'thuê xe máy hà nội': '/', 'thuê xe máy ở hà nội': '/',
+    'thuê xe máy': '/', 'cho thuê xe máy': '/', 'giá thuê xe máy hà nội': '/gia-thue/', 'giá thuê xe máy': '/gia-thue/',
+    'bảng giá thuê xe máy': '/gia-thue/', 'bảng giá thuê xe máy tham khảo': '/gia-thue/', 'bảng giá thuê xe máy hà nội': '/gia-thue/',
+}
+ISSUES = {
+    # code: (priority, planned batch, action)
+    'OWNER-CONFLICT': ('P1', 'K1', 'Từ khóa chính trùng cụm đầu của URL chủ — đổi sang ý định riêng qua data/seo/article-meta.json, liên kết về URL chủ'),
+    'OWNERSHIP-WARN': ('P1', 'K1', 'QA nhà máy seo-ownership: rà ý định / tuyên bố toàn quốc / app gốc'),
+    'COMMERCIAL-BLOCK': ('P1', 'K2', 'Trang chuyển đổi thiếu khối dữ kiện thương mại (giá từ pricing.json, giờ mở cửa, khu vực, cách đặt) — bổ sung từ business.json'),
+    'HUB-MISFILE': ('P1', 'M4', 'Chủ đề con suy ra sai (so khớp bỏ dấu/chuỗi con/tên danh mục) — sửa tools/taxonomy.mjs deriveSubtopic'),
+    'HUB-CONTENT': ('P1', 'M5', 'Hub chỉ có danh sách thẻ — thêm đoạn dẫn riêng trả lời trước, liên kết silo/bài, CTA'),
+    'THIN-HUB': ('P2', 'M4', 'Hub chủ đề con dưới 3 bài — quyết định giữ/gộp theo phân loại mới'),
+    'DUP-PARA': ('P1', 'D', 'Đoạn văn trùng với bài khác (QA nhà máy) — viết lại đoạn trùng qua tools/seo-body-review.mjs'),
+    'TITLE-META': ('P2', 'T1', 'Title/description ngoài chuẩn QA nhà máy — sửa qua data/seo/article-meta.json'),
+    'BODY-STRUCT': ('P2', 'T1', 'Cấu trúc thân bài thiếu H2/danh sách — bổ sung qua review body'),
+    'LEGAL-CHECK': ('P2', 'C08', 'Bài pháp lý chưa qua lô đối chiếu toàn văn — rà nhận định với data/seo/legal-facts.json'),
+    'LOCAL-SCOPE': ('P3', 'L', 'Bài LOCAL thiếu local_scope — đề xuất từ chủ đề thật của bài, không bịa địa điểm'),
+    'QA-PROXY': ('P2', 'T1', 'QA proxy < 85 — xem cột thành phần trong QA RESULTS'),
+}
+PRIO_RANK = {'P0': 0, 'P1': 1, 'P2': 2, 'P3': 3}
+
+
+def strict_subtopic(category, row, taxonomy):
+    """Accent-sensitive, whole-phrase subtopic match without the category-name
+    echo in secondary_keywords — the rule lô M4 brings to tools/taxonomy.mjs."""
+    cat_name = taxonomy['categories'][category]['name'].lower()
+    sec = [x.strip() for x in (row.get('secondary_keywords') or '').split(';') if x.strip().lower() != cat_name]
+    hay = ' | '.join([row.get('primary_keyword') or '', '; '.join(sec), row.get('working_title') or '']).lower()
+    for sub in taxonomy['subtopics'].get(category, []):
+        for m in sub['match']:
+            if re.search(r'(?<![\w])' + re.escape(m.lower()) + r'(?![\w])', hay):
+                return sub['slug']
+    return None
+
+
+def work_items(D, per, pages):
+    """Per-URL open work (issue codes) merged with the verified-status ledger."""
+    import unicodedata
+    tax = D['taxonomy']
+    fold = lambda t: unicodedata.normalize('NFD', t.lower()).encode('ascii', 'ignore').decode().replace('đ', 'd')
+    current = {}
+    for aid, r in D['matrix'].items():
+        if r.get('status') != 'PUBLISHED':
+            continue
+        hay = fold(' '.join([r.get('primary_keyword') or '', r.get('secondary_keywords') or '', r.get('slug') or '', r.get('working_title') or '']))
+        cur = None
+        for sub in tax['subtopics'].get(r['category'], []):
+            if any(fold(m) in hay for m in sub['match']):
+                cur = sub['slug']
+                break
+        current[aid] = (cur, strict_subtopic(r['category'], r, tax))
+    hub_change = defaultdict(int)
+    hub_size = Counter()
+    for aid, (cur, new) in current.items():
+        cat_dir = D['cat_dir'][D['matrix'][aid]['category']]
+        if cur:
+            hub_size[f'/blog/{cat_dir}/{cur}/'] += 1
+        if cur != new:
+            for slug in (cur, new):
+                if slug:
+                    hub_change[f'/blog/{cat_dir}/{slug}/'] += 1
+    meta = D['meta'].get('articles', D['meta'])
+    out = {}
+    for path, x in per.items():
+        aid, ptype, p = x['aid'], x['ptype'], x['p']
+        codes = []
+        f = x['factory'] or {}
+        warns = set(f.get('warnings', []))
+        if aid:
+            kw = (meta.get(aid, {}).get('keyword') or '').strip().lower()
+            owner = OWNER_PHRASES.get(kw)
+            if owner and owner != path:
+                codes.append('OWNER-CONFLICT')
+            if 'seo-ownership' in warns:
+                codes.append('OWNERSHIP-WARN')
+            if 'no-cross-article-duplicate' in warns:
+                codes.append('DUP-PARA')
+            # Live title/description (article-meta layer) — the factory warning reads the
+            # manifest, which only the factory may change.
+            if p and not (30 <= len(p['title']) <= 70 and 100 <= len(p['description']) <= 180):
+                codes.append('TITLE-META')
+            if 'body-structure' in warns:
+                codes.append('BODY-STRUCT')
+            if 'local-angle' in warns:
+                codes.append('LOCAL-SCOPE')
+            row = D['commercial'].get(aid, {})
+            if row.get('legal_review') == 'MANDATORY' and path not in D['ledger']:
+                codes.append('LEGAL-CHECK')
+            cur, new = current.get(aid, (None, None))
+            if cur != new:
+                codes.append('HUB-MISFILE')
+        elif ptype.startswith('Hub chủ đề con') and '/page/' not in path:
+            codes.append('HUB-CONTENT')
+            if hub_change.get(path):
+                codes.append('HUB-MISFILE')
+            if hub_size.get(path, 0) < 3:
+                codes.append('THIN-HUB')
+        elif ptype in ('Hub danh mục', 'Hub cụm chủ đề', 'Blog home'):
+            codes.append('HUB-CONTENT')
+        elif path in ('/', '/lien-he/') and p:
+            raw = (ROOT / p['file']).read_text(encoding='utf-8')
+            main = raw[raw.find('<main'):raw.find('</main>')]
+            # The homepage carries no price amounts by design (tests/unit/site-home-v3.test.js:
+            # /gia-thue/ is the single pricing owner); only the contact page is checked here.
+            if path == '/lien-he/' and not all(a in main for a in D['business']['service_areas']):
+                codes.append('COMMERCIAL-BLOCK')  # service areas (business.json) not shown on the contact page
+        if isinstance(x['total'], int) and x['total'] < 85 and '/page/' not in path:
+            codes.append('QA-PROXY')
+        led = D['ledger'].get(path)
+        if codes:
+            status = 'OPEN'
+        elif led:
+            status = led['status']
+        else:
+            status = 'OK'
+        prio = min((ISSUES[c][0] for c in codes), key=lambda q: PRIO_RANK[q]) if codes else '—'
+        out[path] = {
+            'codes': codes, 'priority': prio, 'status': status,
+            'actions': ' | '.join(ISSUES[c][2] for c in codes),
+            'batch': ', '.join(dict.fromkeys(ISSUES[c][1] for c in codes)),
+            'last': ', '.join(led['batches']) if led else '', 'last_date': led['date'] if led else '',
+            'misfile': current.get(aid) if aid else None,
+        }
+    # D-batches: duplicate-paragraph articles, commercial roles first, 20 per batch.
+    dup = [pth for pth, w in out.items() if 'DUP-PARA' in w['codes']]
+    role = lambda pth: {'COMMERCIAL_SUPPORT': 0, 'APP_PRODUCT': 1}.get(D['commercial'].get(per[pth]['aid'], {}).get('role'), 2)
+    for i, pth in enumerate(sorted(dup, key=lambda q: (role(q), per[q]['aid']))):
+        out[pth]['batch'] = out[pth]['batch'].replace('D', f'D{i // 20 + 1:02d}', 1) if 'D' in out[pth]['batch'].split(', ') else out[pth]['batch']
+    # L-batches (30 per batch) and C08 legal (20 per batch) in article order.
+    for code, size, prefix in (('LOCAL-SCOPE', 30, 'L'), ('LEGAL-CHECK', 20, 'C')):
+        items = sorted((pth for pth, w in out.items() if code in w['codes']), key=lambda q: per[q]['aid'])
+        for i, pth in enumerate(items):
+            tag = f'{prefix}{i // size + (8 if prefix == "C" else 1):02d}'
+            out[pth]['batch'] = ', '.join(tag if b == ISSUES[code][1] else b for b in out[pth]['batch'].split(', '))
+    return out
+
+
 # ---------------------------------------------------------------- workbook
 def build(D, date):
     from openpyxl import Workbook
@@ -772,6 +915,7 @@ def build(D, date):
                          content_in=content_in, factory=factory, parts=parts, total=total, cls=cls, why=why)
 
     # ---------------- 2. URL INVENTORY
+    work = work_items(D, per, pages)
     inv_rows = []
     for path, x in per.items():
         p = x['p']
@@ -782,12 +926,13 @@ def build(D, date):
             len(x['inbound_pages']), 'Có' if x['aid'] in D['published'] else ('Không áp dụng' if not x['aid'] else 'Không'),
             serp_live.get(path, 'Chưa kiểm tra live trong lô này'), sources,
             'OK' if (path in D['sitemap'] and p and x['inbound_pages']) else 'CHECK',
-            x['cls'], x['why'],
+            x['cls'], x['why'], work[path]['status'], work[path]['priority'], ', '.join(work[path]['codes']) or 'Không',
         ])
     S_INV = 'URL INVENTORY'
     sheet(S_INV, ['URL', 'Article ID', 'Loại trang', 'Danh mục', 'Trong sitemap', 'Có file build', 'Số trang liên kết vào (mọi vị trí)',
-                  'Trong manifest bài', 'HTTP live (ngày)', 'Số nguồn xác nhận', 'Đối soát', 'Phân loại', 'Lý do phân loại'],
-          inv_rows, widths={'URL': 70, 'Lý do phân loại': 70}, status_cols=('Đối soát', 'Phân loại'))
+                  'Trong manifest bài', 'HTTP live (ngày)', 'Số nguồn xác nhận', 'Đối soát', 'Phân loại', 'Lý do phân loại',
+                  'Trạng thái công việc', 'Ưu tiên công việc', 'Mã việc mở'],
+          inv_rows, widths={'URL': 70, 'Lý do phân loại': 70, 'Mã việc mở': 40}, status_cols=('Đối soát', 'Phân loại', 'Trạng thái công việc'))
 
     # ---------------- 3. KEYWORD MASTER
     km_head = list(D['kw_master'][0].keys())
@@ -1218,14 +1363,14 @@ def build(D, date):
                      else f'Trang giá (cụm K02, volume nhóm 42.160) đã mở rộng lên {w} từ nội dung chính bằng dữ liệu pricing.json/business.json (lô M2)'),
                     'HOMEPAGE & PILLAR; docs/seo/battle/06', 'Mở rộng bằng dữ liệu thật pricing.json/business.json (placeholder), không bịa giá', 'agent', 'M2',
                     'OPEN' if w < 500 else 'DONE (lô M2)', 'QA proxy ≥ 85; build + site-audit PASS; live'])(pages['/gia-thue/']['words'] if '/gia-thue/' in pages else 0),
-        ['B04', 'P1', 'Hub/Silo', '33 hub chủ đề con + 6 danh mục', 'Hub chủ yếu là danh sách thẻ; đoạn dẫn ngắn', 'SILO & CATEGORY MATRIX', 'Bổ sung đoạn dẫn có giá trị theo lô ≤ 20 hub', 'agent', 'M3', 'OPEN', 'Từ nội dung chính tăng, không trùng lặp'],
+        ['B04', 'P1', 'Hub/Silo', f"{sum(1 for w in work.values() if 'HUB-CONTENT' in w['codes'])} hub", 'Hub chủ yếu là danh sách thẻ; đoạn dẫn dùng chung mô tả danh mục', 'SILO & CATEGORY MATRIX', 'Đoạn dẫn riêng trả lời trước, liên kết silo/bài, CTA — theo lô ≤ 20 hub', 'agent', 'M5', 'OPEN', 'Mỗi hub có lead riêng, không trùng lặp; test + live'],
         ['B05', 'P1', 'Existing content', f'{expand_articles} bài', 'Bài dưới 800 từ (mục tiêu 800–2.000)', 'PAGE & POST OPTIMIZATION (EXPAND)', 'Review body có nguồn, không độn chữ',
          'agent', 'C08+', 'OPEN' if expand_articles else 'DONE', 'QA nhà máy không giảm'],
-        ['B06', 'P2', 'Existing content', f"{warn_counts.get('no-cross-article-duplicate', 0)} bài", 'Đoạn văn trùng với bài khác (QA nhà máy no-cross-article-duplicate)', 'article-qa.json',
-         'Viết lại đoạn trùng qua tools/seo-body-review.mjs', 'agent', 'C08+', 'OPEN', 'Cảnh báo về 0'],
+        ['B06', 'P1', 'Existing content', f"{warn_counts.get('no-cross-article-duplicate', 0)} bài", 'Đoạn văn trùng với bài khác (QA nhà máy no-cross-article-duplicate)', 'article-qa.json',
+         'Viết lại đoạn trùng qua tools/seo-body-review.mjs — bài thương mại trước, 20 bài/lô', 'agent', 'D01+', 'OPEN' if warn_counts.get('no-cross-article-duplicate') else 'DONE', 'Cảnh báo về 0'],
         ['B07', 'P3', 'Data', f"{warn_counts.get('local-angle', 0)} bài LOCAL", 'local_scope trống trong content-matrix (QA local-angle)', 'article-qa.json',
-         'Owner điền local_scope (matrix do owner quản lý)', 'owner', '—', 'OPEN', 'Cảnh báo về 0'],
-        ['B08', 'P2', 'Image', f'{no_img} bài', 'IMAGE PENDING — chưa có ảnh đại diện', 'IMAGE SEO', 'Bật lại nhà máy ảnh (owner) — không dùng ảnh giả/ảnh đối thủ', 'owner', '—', 'PAUSED', 'Ảnh QA_PASSED + live'],
+         'Đề xuất local_scope từ chủ đề thật của từng bài (không bịa địa điểm); ghi vào matrix theo quy trình được phép', 'agent', 'L01+', 'OPEN', 'Cảnh báo về 0'],
+        ['B08', 'P3', 'Image', f'{no_img} bài', 'IMAGE PENDING — chưa có ảnh đại diện', 'IMAGE SEO', 'Loại khỏi chiến dịch SEO theo lệnh chủ sở hữu 2026-11-01: không tạo/gắn ảnh mới, giữ ảnh đang chạy', 'owner', '—', 'EXCLUDED', 'Không chặn việc SEO khác'],
         ['B09', 'P2', 'Internal links', 'site', 'Kế hoạch liên kết do tools/seo-links.mjs quản lý; không chèn hàng loạt', 'INTERNAL LINK MATRIX', 'Chỉ sửa trang mồ côi nếu có', 'agent', '—',
          'DONE' if not any(r[0] == 'T07' and r[4] for r in tech) else 'OPEN', 'T07 = 0'],
         ['B10', 'P3', 'Structured data', '/agent/', 'FAQPage không còn rich result; WebApplication thiếu rating (không bịa)', 'STRUCTURED DATA', 'Giữ nguyên (vô hại); không thêm FAQPage mới', 'agent', '—', 'ACCEPTED', '—'],
@@ -1235,13 +1380,35 @@ def build(D, date):
          'Đề xuất hàng matrix cho owner; không tạo hàng loạt khi hub chưa chuẩn hóa', 'owner', '—', 'OPEN', 'Owner duyệt ID'],
         ['B14', 'P3', 'Performance', 'site', f'CSS mỗi trang {css_kb} KB chưa nén (cảnh báo nội bộ ≥ 64 KB)', 'T21', 'Theo dõi; chỉ tối ưu nếu LCP lab/field xấu đi', 'agent', '—', 'WATCH', 'LCP lab ≤ 2.500 ms'],
     ]
+    open_codes = Counter(c for w in work.values() for c in w['codes'])
+    for bid, code, group, scope_note in (
+            ('B16', 'HUB-MISFILE', 'Hub/Silo', 'bài xếp nhầm hub chủ đề con'),
+            ('B17', 'OWNER-CONFLICT', 'Commercial', 'bài trùng cụm đầu của URL chủ'),
+            ('B18', 'COMMERCIAL-BLOCK', 'Commercial', 'trang chuyển đổi thiếu dữ kiện thương mại'),
+            ('B19', 'LEGAL-CHECK', 'Existing content', 'bài pháp lý chưa qua lô đối chiếu toàn văn'),
+            ('B20', 'TITLE-META', 'On-page', 'bài title/description ngoài chuẩn'),
+            ('B21', 'BODY-STRUCT', 'On-page', 'bài thiếu cấu trúc H2/danh sách')):
+        n = open_codes.get(code, 0)
+        prio, batch, action = ISSUES[code]
+        backlog.append([bid, prio, group, f'{n} URL', scope_note[0].upper() + scope_note[1:], 'work-queue.csv (mã ' + code + ')', action, 'agent', batch + ('+' if code in ('LEGAL-CHECK',) else ''),
+                        'OPEN' if n else 'DONE', 'Mã việc về 0; build + test + live'])
     if lab_fail:
         backlog.append(['B15', 'P2', 'Performance', ', '.join(sorted({r[3] for r in lab_fail})),
                         'Chỉ số CWV lab chưa đạt: ' + '; '.join(f'{r[2]} = {r[5]}' for r in lab_fail) + ' — trang hub liệt kê toàn bộ bài (DOM lớn, xem T20)',
                         'cwv-lab.json; T20', 'Phân trang hub chủ đề con (URL /page/N/ mới, giữ URL cũ) để giảm DOM; đo lại', 'agent', 'M3', 'OPEN', 'Lab ≤ ngưỡng ở 3 lần đo'])
-    sheet('PRIORITY BACKLOG', ['ID', 'Ưu tiên', 'Nhóm', 'Phạm vi URL', 'Vấn đề', 'Bằng chứng', 'Hành động', 'Người làm', 'Lô', 'Trạng thái', 'Điều kiện xác minh'],
-          backlog, widths={'Vấn đề': 70, 'Hành động': 60, 'Phạm vi URL': 30}, status_cols=('Ưu tiên', 'Trạng thái'), freeze='A2',
-          note='Thứ tự: Technical blockers → Homepage/Pillar → Hub/Silo → Nội dung hiện có → Internal links → Nội dung mới → Nâng cao.')
+    url_rows = []
+    for path, w in sorted(work.items(), key=lambda kv: (PRIO_RANK.get(kv[1]['priority'], 9), kv[0])):
+        if w['status'] not in ('OPEN', 'REVIEW_REQUIRED'):
+            continue
+        x = per[path]
+        url_rows.append([x['aid'] or path, w['priority'], x['ptype'], full(path),
+                         ', '.join(w['codes']), f"QA proxy {x['total']}; QA nhà máy {(x['factory'] or {}).get('score', NA)}; từ khóa: {keyword_of(path, D) or NA}",
+                         w['actions'], 'agent', w['batch'], w['status'], 'Mã việc được xử lý; build + test + live'])
+    backlog_all = [['Chương trình'] + r for r in backlog] + [['URL'] + r for r in url_rows]
+    sheet('PRIORITY BACKLOG', ['Loại', 'ID', 'Ưu tiên', 'Nhóm', 'Phạm vi URL', 'Vấn đề', 'Bằng chứng', 'Hành động', 'Người làm', 'Lô', 'Trạng thái', 'Điều kiện xác minh'],
+          backlog_all, widths={'Vấn đề': 50, 'Hành động': 70, 'Phạm vi URL': 60, 'Bằng chứng': 50}, status_cols=('Ưu tiên', 'Trạng thái'), freeze='A2',
+          note='Thứ tự: Technical blockers → Commercial (trang chủ/giá/liên hệ/URL chủ) → Hub/Silo → Nội dung hiện có → Internal links → Nội dung mới → Nâng cao. Hàng "URL" = việc mở theo từng URL (work-queue.csv).')
+    D['work'] = work
 
     # ---------------- 22. QA RESULTS
     qa_rows = []
@@ -1340,10 +1507,15 @@ def build(D, date):
         ('Trang mồ côi nội dung', f"=COUNTIF('INTERNAL LINK MATRIX'!{L('INTERNAL LINK MATRIX', 'Mồ côi nội dung')}:{L('INTERNAL LINK MATRIX', 'Mồ côi nội dung')},\"Có\")", 'INTERNAL LINK MATRIX', ''),
         ('Vào ngữ cảnh TB / bài', f"=ROUND(AVERAGEIF('INTERNAL LINK MATRIX'!{L('INTERNAL LINK MATRIX', 'Loại trang')}:{L('INTERNAL LINK MATRIX', 'Loại trang')},\"Bài viết\",'INTERNAL LINK MATRIX'!{L('INTERNAL LINK MATRIX', 'Vào: từ thân bài (trang)')}:{L('INTERNAL LINK MATRIX', 'Vào: từ thân bài (trang)')}),1)", 'INTERNAL LINK MATRIX', ''),
         ('Nhóm CONSOLIDATE-CANDIDATE (cannibalization)', f"=COUNTIF('CANNIBALIZATION'!{L('CANNIBALIZATION', 'Kết luận')}:{L('CANNIBALIZATION', 'Kết luận')},\"CONSOLIDATE-CANDIDATE\")", 'CANNIBALIZATION', ''),
-        ('Backlog P0', "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P0\")", 'PRIORITY BACKLOG', ''),
-        ('Backlog P1', "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P1\")", 'PRIORITY BACKLOG', ''),
-        ('Backlog P2', "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P2\")", 'PRIORITY BACKLOG', ''),
-        ('Backlog P3', "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P3\")", 'PRIORITY BACKLOG', ''),
+        ('Backlog chương trình P0', "=COUNTIFS('PRIORITY BACKLOG'!A:A,\"Chương trình\",'PRIORITY BACKLOG'!C:C,\"P0\")", 'PRIORITY BACKLOG', ''),
+        ('Backlog chương trình P1', "=COUNTIFS('PRIORITY BACKLOG'!A:A,\"Chương trình\",'PRIORITY BACKLOG'!C:C,\"P1\")", 'PRIORITY BACKLOG', ''),
+        ('Backlog chương trình P2', "=COUNTIFS('PRIORITY BACKLOG'!A:A,\"Chương trình\",'PRIORITY BACKLOG'!C:C,\"P2\")", 'PRIORITY BACKLOG', ''),
+        ('Backlog chương trình P3', "=COUNTIFS('PRIORITY BACKLOG'!A:A,\"Chương trình\",'PRIORITY BACKLOG'!C:C,\"P3\")", 'PRIORITY BACKLOG', ''),
+        ('URL còn việc mở (OPEN)', f'=COUNTIF({inv}!{L(S_INV, "Trạng thái công việc")}:{L(S_INV, "Trạng thái công việc")},"OPEN")', 'URL INVENTORY', 'work-queue.csv'),
+        ('URL đã sửa và kiểm tra live (DONE_LIVE)', f'=COUNTIF({inv}!{L(S_INV, "Trạng thái công việc")}:{L(S_INV, "Trạng thái công việc")},"DONE_LIVE")', 'URL INVENTORY', 'work-status.json'),
+        ('URL đã rà soát, không cần đổi (REVIEWED_OK)', f'=COUNTIF({inv}!{L(S_INV, "Trạng thái công việc")}:{L(S_INV, "Trạng thái công việc")},"REVIEWED_OK")', 'URL INVENTORY', 'work-status.json'),
+        ('URL không có việc mở (OK)', f'=COUNTIF({inv}!{L(S_INV, "Trạng thái công việc")}:{L(S_INV, "Trạng thái công việc")},"OK")', 'URL INVENTORY', ''),
+        ('URL chờ chủ sở hữu (REVIEW_REQUIRED)', f'=COUNTIF({inv}!{L(S_INV, "Trạng thái công việc")}:{L(S_INV, "Trạng thái công việc")},"REVIEW_REQUIRED")', 'URL INVENTORY', 'review-required.csv'),
         ('Search Console', "='GSC PERFORMANCE'!B2", 'GSC PERFORMANCE', 'Owner kết nối'),
         ('Hreflang', "='HREFLANG MATRIX'!E2", 'HREFLANG MATRIX', 'Site đơn ngữ'),
     ]
@@ -1379,6 +1551,16 @@ def write_evidence(D, per, tech, backlog, fams, hub_rows, date):
         for path, x in per.items():
             w.writerow([full(path), x['aid'], x['ptype'], int(path in D['sitemap']), int(bool(x['p'])), len(x['inbound_pages']),
                         x['total'], x['cls'], x['why']])
+    work = D.get('work', {})
+    with (out / 'work-queue.csv').open('w', encoding='utf-8', newline='') as f:
+        w = csv.writer(f, lineterminator='\n')
+        w.writerow(['url', 'article_id', 'page_type', 'primary_keyword', 'intent', 'priority', 'issues', 'actions', 'planned_batch',
+                    'qa_proxy', 'factory_qa', 'status', 'last_batches', 'last_verified'])
+        for path, x in per.items():
+            k = work.get(path, {})
+            w.writerow([full(path), x['aid'], x['ptype'], keyword_of(path, D), (x['m'].get('Search Intent') or ''), k.get('priority', ''),
+                        ' '.join(k.get('codes', [])), k.get('actions', ''), k.get('batch', ''), x['total'],
+                        (x['factory'] or {}).get('score', ''), k.get('status', ''), k.get('last', ''), k.get('last_date', '')])
     with (out / 'backlog.csv').open('w', encoding='utf-8', newline='') as f:
         w = csv.writer(f, lineterminator='\n')
         w.writerow(['id', 'priority', 'area', 'scope', 'issue', 'evidence', 'action', 'owner', 'batch', 'status', 'verify'])
@@ -1401,6 +1583,8 @@ def write_evidence(D, per, tech, backlog, fams, hub_rows, date):
         'hubs_12': {r[0]: r[7] for r in hub_rows},
         'gsc': 'NOT CONNECTED',
         'cwv': 'LAB only' if D['cwv'] else 'N/A',
+        'work': {'status': dict(Counter(w['status'] for w in work.values())),
+                 'open_codes': dict(Counter(c for w in work.values() for c in w['codes']))},
     }
     (out / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     prog = D['progress']
@@ -1410,6 +1594,7 @@ def write_evidence(D, per, tech, backlog, fams, hub_rows, date):
         'last_completed_batch': prog.get('last_completed_batch'),
         'last_verified_commit': prog.get('last_verified_commit'),
         'next': prog.get('next_article_ids_note'),
+        'remaining': summary['work'],
         'open_backlog': [{'id': b[0], 'priority': b[1], 'issue': b[4], 'owner': b[7], 'batch': b[8]} for b in backlog
                          if b[9] not in ('DONE', 'ACCEPTED') and not str(b[9]).startswith('DONE')],
         'resume_rule': 'Khi nhận "Tiếp tục": fetch origin/main, đọc file này + docs/seo/commercial/progress.json, chạy lại '
@@ -1469,11 +1654,41 @@ def verify(path):
                 'sheets': calc.sheetnames}
 
 
+def mark_ledger(status, batch, date, note, urls):
+    """Record a verified batch outcome per URL — the only writer of work-status.json."""
+    if not batch or not urls:
+        sys.exit('--mark needs --batch and --urls')
+    path = ROOT / OUT_DIR / 'work-status.json'
+    data = json.loads(path.read_text(encoding='utf-8'))
+    pub = {a['article_id']: a for a in rjson('data/blog/published.json')['articles']}
+    dirs = {k: v['dir'] for k, v in rjson('data/blog/taxonomy.json')['categories'].items()}
+    for u in urls:
+        if u in pub:
+            u = f"/blog/{dirs[pub[u]['category']]}/{pub[u]['slug']}/"
+        if not u.startswith('/'):
+            sys.exit(f'not a site path or article id: {u}')
+        e = data['urls'].setdefault(u, {'status': status, 'batches': [], 'date': date, 'note': note})
+        e['status'], e['date'], e['note'] = status, date, note or e.get('note', '')
+        if batch not in e['batches']:
+            e['batches'].append(batch)
+    data['urls'] = dict(sorted(data['urls'].items()))
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+    print(f'work-status: {len(urls)} URL → {status} ({batch})')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--date', default=datetime.now().strftime('%Y-%m-%d'))
     ap.add_argument('--verify', action='store_true', help='recalculate with LibreOffice and write formula-check.json')
+    ap.add_argument('--mark', choices=['DONE_LIVE', 'REVIEWED_OK', 'REVIEW_REQUIRED'],
+                    help='update docs/seo/master-2026/work-status.json for --urls (after live verification) and exit')
+    ap.add_argument('--batch', help='batch id for --mark')
+    ap.add_argument('--note', default='', help='what was done/verified, for --mark')
+    ap.add_argument('--urls', nargs='*', default=[], help='site paths (/blog/x/y/) or article IDs for --mark')
     a = ap.parse_args()
+    if a.mark:
+        mark_ledger(a.mark, a.batch, a.date, a.note, a.urls)
+        return
     D = load()
     wb, per, tech, backlog, fams, kpis, hub_rows = build(D, a.date)
     (ROOT / OUT_XLSX).parent.mkdir(parents=True, exist_ok=True)

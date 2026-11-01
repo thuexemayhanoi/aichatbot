@@ -3,10 +3,10 @@ https://chatbot.thuexemaynguyentu.com/,,Trang chủ (website),1,1,2185,97,KEEP,"
 https://chatbot.thuexemaynguyentu.com/agent/,,Ứng dụng Agent (chat),1,1,2184,87,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/,,Blog home,1,1,2185,98,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/chinh-sach/,,Trang chính sách thuê xe,1,1,2185,91,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
-https://chatbot.thuexemaynguyentu.com/doi-tac/,,Khác,1,1,2185,83,IMPROVE,chưa gán từ khóa chính trong seo-master-matrix; QA proxy 83/100 < 85
+https://chatbot.thuexemaynguyentu.com/doi-tac/,,Trang đối tác (B2B),1,1,2185,93,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/gia-thue/,,Trang chuyển đổi (giá),1,1,2185,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/gioi-thieu/,,Trang giới thiệu (E-E-A-T),1,1,2185,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
-https://chatbot.thuexemaynguyentu.com/lien-he/,,Trang chuyển đổi (liên hệ),1,1,2185,88,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
+https://chatbot.thuexemaynguyentu.com/lien-he/,,Trang chuyển đổi (liên hệ),1,1,2185,93,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/privacy/,,Pháp lý,1,1,2185,96,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/terms/,,Pháp lý,1,1,2185,93,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/an-toan/,,Hub danh mục,1,1,2185,96,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
@@ -584,7 +584,7 @@ https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-khong-can-tai-ta
 https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-khong-can-tai/,BA-0163,Bài viết,1,1,33,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao-cau-hoi-thuong-gap/,BA-1796,Bài viết,1,1,6,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao-cho-khach-nuoc-ngoai/,BA-1159,Bài viết,1,1,15,94,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
-https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao-nam-2026/,BA-0427,Bài viết,1,1,12,95,IMPROVE,QA nhà máy cảnh báo: seo-ownership
+https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao-nam-2026/,BA-0427,Bài viết,1,1,12,95,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao-tai-ha-noi/,BA-0793,Bài viết,1,1,6,90,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao-tan-noi/,BA-1521,Bài viết,1,1,8,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/app/ung-dung-thue-xe-may-hoat-dong-ra-sao/,BA-0061,Bài viết,1,1,31,95,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
@@ -1352,7 +1352,7 @@ https://chatbot.thuexemaynguyentu.com/blog/thue-xe/bang-gia-thue-xe-tham-khao-ch
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/bang-gia-thue-xe-tham-khao-cho-sinh-vien/,BA-0974,Bài viết,1,1,15,92,IMPROVE,QA nhà máy cảnh báo: no-cross-article-duplicate
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/bang-gia-thue-xe-tham-khao-cuoi-tuan/,BA-1878,Bài viết,1,1,15,92,IMPROVE,QA nhà máy cảnh báo: no-cross-article-duplicate
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/bang-gia-thue-xe-tham-khao-ky-nghi-le/,BA-0614,Bài viết,1,1,16,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
-https://chatbot.thuexemaynguyentu.com/blog/thue-xe/bang-gia-thue-xe-tham-khao/,BA-0254,Bài viết,1,1,28,97,IMPROVE,QA nhà máy cảnh báo: no-cross-article-duplicate
+https://chatbot.thuexemaynguyentu.com/blog/thue-xe/bang-gia-thue-xe-tham-khao/,BA-0254,Bài viết,1,1,24,97,IMPROVE,QA nhà máy cảnh báo: no-cross-article-duplicate
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/bang-lai-a1-va-thue-xe-may-chay-pho/,BA-1552,Bài viết,1,1,15,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/bang-lai-a1-va-thue-xe-may-cho-gia-dinh/,BA-1202,Bài viết,1,1,16,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/bang-lai-a1-va-thue-xe-may-cho-sinh-vien/,BA-0842,Bài viết,1,1,15,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
@@ -1428,12 +1428,12 @@ https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-thay-doi-theo-mua-kh
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-thay-doi-theo-mua-khong-cho-sinh-vien/,BA-0986,Bài viết,1,1,15,94,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-thay-doi-theo-mua-khong-cuoi-tuan/,BA-1884,Bài viết,1,1,11,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-thay-doi-theo-mua-khong-ky-nghi-le/,BA-0626,Bài viết,1,1,13,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
-https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-thay-doi-theo-mua-khong/,BA-0266,Bài viết,1,1,22,97,IMPROVE,QA nhà máy cảnh báo: no-cross-article-duplicate
+https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-thay-doi-theo-mua-khong/,BA-0266,Bài viết,1,1,23,97,IMPROVE,QA nhà máy cảnh báo: no-cross-article-duplicate
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-xe-may-theo-ngay-chay-pho/,BA-1448,Bài viết,1,1,16,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-xe-may-theo-ngay-cho-gia-dinh/,BA-1088,Bài viết,1,1,19,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-xe-may-theo-ngay-cho-sinh-vien/,BA-0728,Bài viết,1,1,24,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-xe-may-theo-ngay-cuoi-tuan/,BA-1755,Bài viết,1,1,16,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
-https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-xe-may-theo-ngay-gia-tot-nhat/,BA-1923,Bài viết,1,1,13,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
+https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-xe-may-theo-ngay-gia-tot-nhat/,BA-1923,Bài viết,1,1,16,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-xe-may-theo-ngay-ky-nghi-le/,BA-0368,Bài viết,1,1,28,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue-xe-may-theo-ngay/,BA-0008,Bài viết,1,1,57,100,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/gia-thue/,,Hub chủ đề con,1,1,2185,90,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
@@ -1463,7 +1463,7 @@ https://chatbot.thuexemaynguyentu.com/blog/thue-xe/hop-dong-thue-xe-may-cho-sinh
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/hop-dong-thue-xe-may-cuoi-tuan/,BA-1917,Bài viết,1,1,15,94,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/hop-dong-thue-xe-may-ky-nghi-le/,BA-0710,Bài viết,1,1,15,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/hop-dong-thue-xe-may/,BA-0350,Bài viết,1,1,31,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
-https://chatbot.thuexemaynguyentu.com/blog/thue-xe/khach-du-lich-thue-xe-may-chay-pho/,BA-1562,Bài viết,1,1,11,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
+https://chatbot.thuexemaynguyentu.com/blog/thue-xe/khach-du-lich-thue-xe-may-chay-pho/,BA-1562,Bài viết,1,1,12,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/khach-du-lich-thue-xe-may-cho-gia-dinh/,BA-1214,Bài viết,1,1,16,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/khach-du-lich-thue-xe-may-cho-sinh-vien/,BA-0854,Bài viết,1,1,7,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/khach-du-lich-thue-xe-may-cuoi-tuan/,BA-1818,Bài viết,1,1,17,94,IMPROVE,QA nhà máy cảnh báo: no-cross-article-duplicate
@@ -1627,7 +1627,7 @@ https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-giao-tan-noi-cho-sinh
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-giao-tan-noi-cuoi-tuan/,BA-1860,Bài viết,1,1,14,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-giao-tan-noi-gia-tot-nhat/,BA-1993,Bài viết,1,1,10,94,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-giao-tan-noi-ky-nghi-le/,BA-0578,Bài viết,1,1,17,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
-https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-giao-tan-noi/,BA-0218,Bài viết,1,1,43,95,IMPROVE,"QA nhà máy cảnh báo: no-cross-article-duplicate, title-meta-valid"
+https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-giao-tan-noi/,BA-0218,Bài viết,1,1,44,95,IMPROVE,"QA nhà máy cảnh báo: no-cross-article-duplicate, title-meta-valid"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-hai-nguoi-chay-pho/,BA-1572,Bài viết,1,1,18,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-hai-nguoi-cho-gia-dinh/,BA-1226,Bài viết,1,1,16,92,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/thue-xe-hai-nguoi-cho-sinh-vien/,BA-0866,Bài viết,1,1,16,94,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
@@ -1729,7 +1729,7 @@ https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xac-nhan-gia-truoc-khi-dat-ch
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xac-nhan-gia-truoc-khi-dat-cuoi-tuan/,BA-1848,Bài viết,1,1,15,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xac-nhan-gia-truoc-khi-dat-gia-tot-nhat/,BA-1985,Bài viết,1,1,11,95,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xac-nhan-gia-truoc-khi-dat-ky-nghi-le/,BA-0554,Bài viết,1,1,9,94,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
-https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xac-nhan-gia-truoc-khi-dat/,BA-0194,Bài viết,1,1,55,95,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
+https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xac-nhan-gia-truoc-khi-dat/,BA-0194,Bài viết,1,1,54,95,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xe-nao-de-dieu-khien-chay-pho/,BA-1702,Bài viết,1,1,21,97,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xe-nao-de-dieu-khien-cho-gia-dinh/,BA-1382,Bài viết,1,1,9,94,KEEP,"QA proxy ≥ 85, không cờ mở, không cảnh báo nội dung"
 https://chatbot.thuexemaynguyentu.com/blog/thue-xe/xe-nao-de-dieu-khien-cho-sinh-vien/,BA-1022,Bài viết,1,1,8,97,IMPROVE,QA nhà máy cảnh báo: no-cross-article-duplicate
