@@ -90,7 +90,7 @@
     {
       "kpi": "QA proxy trung bình (/100)",
       "formula": "=ROUND(AVERAGE('QA RESULTS'!K:K),1)",
-      "value": 94.8,
+      "value": 94.9,
       "ok": true
     },
     {
@@ -210,13 +210,13 @@
     {
       "kpi": "URL còn việc mở (OPEN)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"OPEN\")",
-      "value": 634,
+      "value": 617,
       "ok": true
     },
     {
       "kpi": "URL đã sửa và kiểm tra live (DONE_LIVE)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"DONE_LIVE\")",
-      "value": 39,
+      "value": 60,
       "ok": true
     },
     {
@@ -228,7 +228,7 @@
     {
       "kpi": "URL không có việc mở (OK)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"OK\")",
-      "value": 1439,
+      "value": 1435,
       "ok": true
     },
     {

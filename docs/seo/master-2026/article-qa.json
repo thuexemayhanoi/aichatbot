@@ -3450,9 +3450,11 @@
    "warnings": []
   },
   "BA-0529": {
-   "score": 100,
-   "pass": true,
-   "critical": [],
+   "score": 0,
+   "pass": false,
+   "critical": [
+    "internal-links-resolve"
+   ],
    "warnings": []
   },
   "BA-0530": {

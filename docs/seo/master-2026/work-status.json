@@ -617,6 +617,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #57 (49a83d4): /lien-he/ có Khu vực giao xe + Đặt xe trong ba bước + link /agent/; BA-0254 tiêu đề 'Giá thuê xe máy theo dòng xe…'; BA-0427 FAQ 'kho ứng dụng của điện thoại'."
   },
+  "/blog/dia-phuong/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
   "/blog/dia-phuong/ba-dinh-xe-may-phuong/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -641,6 +649,14 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/dia-phuong/diem-tham-quan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
   "/blog/dia-phuong/dong-da-va-xe-may/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -664,6 +680,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/ha-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
   "/blog/dia-phuong/hai-ba-trung-hanh-trinh/": {
    "status": "REVIEWED_OK",
@@ -701,10 +725,11 @@
    "status": "DONE_LIVE",
    "batches": [
     "M3-SUBTOPIC-PAGINATION",
-    "M4-TAXONOMY-PRECISION"
+    "M4-TAXONOMY-PRECISION",
+    "M5-HUB-GUIDES-1"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #58 (ae70494): hub mới /blog/huong-dan/nhan-xe/ (30 bài, 2 trang); /blog/dia-phuong/phuong-xa/ còn 91 bài/4 trang; /phuong-xa/page/5/ trả 404 và /page/7/ chuyển người dùng về /blog/dia-phuong/phuong-xa/; BA-0011 breadcrumb An Toàn › Pháp Luật. 895 bài đổi chủ đề con theo quy tắc mới (HUB-MISFILE tự hết khi breadcrumb khớp)."
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
   "/blog/dia-phuong/phuong-xa/page/10/": {
    "status": "DONE_LIVE",
@@ -962,6 +987,14 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
   "/blog/thue-xe/bang-gia-thue-xe-tham-khao/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -978,6 +1011,30 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/thue-xe/chon-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
+  "/blog/thue-xe/dat-coc/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
+  "/blog/thue-xe/du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
   "/blog/thue-xe/gia-thue-xe-may-theo-ngay/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -989,10 +1046,11 @@
   "/blog/thue-xe/gia-thue/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M3-SUBTOPIC-PAGINATION"
+    "M3-SUBTOPIC-PAGINATION",
+    "M5-HUB-GUIDES-1"
    ],
    "date": "2026-11-01",
-   "note": "Phân trang 24 bài/trang — live"
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
   "/blog/thue-xe/gia-thue/page/2/": {
    "status": "DONE_LIVE",
@@ -1050,6 +1108,14 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/thue-xe/thu-tuc/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
   "/blog/thue-xe/thue-honda-air-blade/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -1066,13 +1132,22 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/thue-xe/thue-thang/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
   "/blog/thue-xe/thue-tuan/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M3-SUBTOPIC-PAGINATION"
+    "M3-SUBTOPIC-PAGINATION",
+    "M5-HUB-GUIDES-1"
    ],
    "date": "2026-11-01",
-   "note": "Phân trang 24 bài/trang — live"
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
   "/blog/thue-xe/thue-tuan/page/2/": {
    "status": "DONE_LIVE",
@@ -1131,6 +1206,22 @@
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/xe-dien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
+  "/blog/xe-dien/an-toan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
   "/blog/xe-dien/app-thue-xe-dien/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -1142,10 +1233,11 @@
   "/blog/xe-dien/chi-phi/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M3-SUBTOPIC-PAGINATION"
+    "M3-SUBTOPIC-PAGINATION",
+    "M5-HUB-GUIDES-1"
    ],
    "date": "2026-11-01",
-   "note": "Phân trang 24 bài/trang — live"
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
   "/blog/xe-dien/chi-phi/page/2/": {
    "status": "DONE_LIVE",
@@ -1162,6 +1254,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/chon-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
   "/blog/xe-dien/huong-dan-su-dung-xe-may-dien/": {
    "status": "REVIEWED_OK",
@@ -1198,10 +1298,11 @@
   "/blog/xe-dien/pin-xe/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M3-SUBTOPIC-PAGINATION"
+    "M3-SUBTOPIC-PAGINATION",
+    "M5-HUB-GUIDES-1"
    ],
    "date": "2026-11-01",
-   "note": "Phân trang 24 bài/trang — live"
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
   "/blog/xe-dien/pin-xe/page/2/": {
    "status": "DONE_LIVE",
@@ -1211,6 +1312,14 @@
    "date": "2026-11-01",
    "note": "Trang phân trang mới — live"
   },
+  "/blog/xe-dien/quang-duong/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
   "/blog/xe-dien/sac-pin-xe-dien-o-dau/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -1218,6 +1327,38 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/sac-pin/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
+  "/blog/xe-dien/so-sanh/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
+  "/blog/xe-dien/thue-ngay/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+  },
+  "/blog/xe-dien/thue-thang/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M5-HUB-GUIDES-1"
+   ],
+   "date": "2026-11-01",
+   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
   },
   "/blog/xe-dien/thue-xe-dien-dai-ngay/": {
    "status": "REVIEWED_OK",
