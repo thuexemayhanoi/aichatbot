@@ -1127,7 +1127,9 @@
       ],
       "scope": "LEGAL-CHECK lô C12: nhóm 'tóm tắt' và 'ví dụ thực tế' còn lại của hàng đợi + BA-0713 chuyển từ C10.",
       "changes": "Đối chiếu Công báo số 75 + 76: điểm a khoản 5 và khoản 7 Điều 18 Nghị định 168/2024/NĐ-CP xếp 'giấy phép đã bị trừ hết điểm' cùng nhóm 'không có giấy phép' (BA-1157, BA-2002 đúng); điểm e khoản 1 Điều 7 chuyển làn sai 200.000–400.000 đồng (BA-0971 đúng); đi trên vỉa hè cùng điểm a khoản 7 Điều 7 với đi ngược chiều. Sửa 6 bài qua tools/seo-body-review.mjs: nồng độ cồn mức thấp nhất 2–3 triệu chứ không phải 2–4 triệu (BA-1133); điều kiện phục hồi điểm đủ ý (BA-1139); xe gắn máy 'không quá 50 cm³' (BA-1169, 1151); bỏ hiện trường dẫn đúng điểm c khoản 9 và điểm c khoản 13 Điều 7, bỏ câu lẫn Nghị định 238/2026 (BA-1193); ngoại lệ trẻ dưới 06 tuổi và CTA mũ trẻ em gọi cửa hàng thay vì hỏi trợ lý (BA-0713). 24 bài soát không đổi.",
-      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6."
+      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6.",
+      "live_verified": "2026-11-01",
+      "live_note": "Pages c6c443ce: đã kiểm live BA-1133 (nồng độ cồn mức thấp nhất 2–3 triệu đồng), BA-1193 (điểm c khoản 9 và điểm c khoản 13 Điều 7). 30 URL DONE_LIVE. Hàng đợi LEGAL-CHECK: 0 bài OPEN."
     },
     {
       "batch_id": "NAP3-C13A",
@@ -1167,6 +1169,45 @@
       "scope": "NAP3: 18 bài CTA còn gọi 'MotoAI' như cửa hàng ('MotoAI tiếp khách/hỗ trợ/tư vấn tại {{ business.address }}'). C13A: 12 bài LEGAL-CHECK đã soát không cần sửa.",
       "changes": "Sửa 18 bài qua tools/seo-body-review.mjs: 'MotoAI …' → 'cửa hàng {{ business.brand }} …' (MotoAI là trợ lý của cửa hàng); BA-0069 bỏ 'quận Long Biên' (dùng placeholder phường/quận); bỏ các lời hứa chưa có trong data/business/business.json: 'có sẵn phụ kiện đi mưa' (BA-0185), 'tư vấn tận nơi' (BA-0189), 'thuê nhanh' (BA-0193), 'xe máy có khóa an toàn tốt' (BA-0197); BA-0214 thêm 'thời gian và chi phí giao nhận được xác nhận trước' theo chính sách giao xe. Quét lại: 0 câu 'MotoAI … tại địa chỉ cửa hàng'. C13A ghi sổ DONE_LIVE (live đã kiểm mẫu BA-2003, BA-1421).",
       "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6."
+    },
+    {
+      "batch_id": "NAP4-C13B",
+      "reviewed": "2026-11-01",
+      "article_ids": [
+        "BA-0594",
+        "BA-0294",
+        "BA-0609",
+        "BA-0297",
+        "BA-0216",
+        "BA-0210",
+        "BA-0579",
+        "BA-0593",
+        "BA-0582",
+        "BA-0222",
+        "BA-0095",
+        "BA-0606",
+        "BA-0581",
+        "BA-0533",
+        "BA-0293",
+        "BA-0603",
+        "BA-0596",
+        "BA-0588",
+        "BA-0228",
+        "BA-0612",
+        "BA-0600",
+        "BA-0219",
+        "BA-0602",
+        "BA-0587",
+        "BA-0229",
+        "BA-0213",
+        "BA-1373",
+        "BA-1325",
+        "BA-1247",
+        "BA-2001"
+      ],
+      "scope": "NAP4: 26 bài CTA 'MotoAI cho thuê/giao xe …' (MotoAI dùng như tên cửa hàng) kèm lời hứa dịch vụ chưa xác minh. C13B: 4 bài LEGAL-CHECK cuối đã soát không cần sửa.",
+      "changes": "Sửa 26 bài qua tools/seo-body-review.mjs: 'MotoAI cho thuê/giao xe' → 'cửa hàng {{ business.brand }} cho thuê …'; bỏ hoặc đổi thành lời khuyên các câu không có trong data/business/business.json: 'xe điện được kiểm tra kín nước', 'hỗ trợ nhanh khi gặp sự cố' (policies.rescue = null), 'kiểm tra pin/đèn định kỳ', 'tư vấn pháp lý cơ bản tại quầy', 'đặt xe nhanh', 'giá niêm yết' → 'giá tham khảo', 'giao mũ bảo hiểm kèm mỗi xe', 'đặt thêm mũ cỡ trẻ em' → hỏi cửa hàng trước; BA-0229 tách rõ cửa hàng cho thuê xe và trợ lý MotoAI là ứng dụng web. Quét lại: 0 câu 'MotoAI cho thuê/giao xe/nhà xe MotoAI/cửa hàng MotoAI'. C13B ghi sổ DONE_LIVE (nội dung live không đổi).",
+      "qa": "node --test 1203/1203; site-audit 0 lỗi; seo-score 99.6."
     }
   ],
   "rules": [
@@ -1176,11 +1217,11 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "C11",
-  "last_verified_commit": "4bd6509f",
+  "last_completed_batch": "C12",
+  "last_verified_commit": "c6c443ce",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
-  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 162 → 0, FEATURE-CLAIM 0, BODY-STRUCT 0, LEGAL-CHECK C08–C12 (+C13A 12 bài), PTS (40 bài), TN1, EN2, NAP3. Tiếp: NAP4 (26 bài 'MotoAI cho thuê/giao xe …' kèm lời hứa chưa xác minh: kiểm tra kín nước, hỗ trợ sự cố nhanh, tư vấn pháp lý, đặt xe nhanh, mũ trẻ em — bản vá đã soạn) + C13B (4 bài: BA-1373, 1325, 1247, 2001), APP-CLAIM, câu hứa dịch vụ chưa xác minh còn lại trong CTA, QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "next_article_ids_note": "Đã xong: M1–M7, DUP-PARA 162 → 0, FEATURE-CLAIM 0, BODY-STRUCT 0, LEGAL-CHECK 0 (C08–C13 + PTS 40 bài + TN1), EN2, NAP1–NAP4. Tiếp: APP-CLAIM (bài mô tả ứng dụng có đặt giữ chỗ, kiểm tra còn xe hoặc giá theo ngày nhận — ứng dụng chưa có các tính năng này; ví dụ BA-0481, BA-0775), câu hứa dịch vụ chưa xác minh còn lại trong CTA, QA-PROXY (1), LOCAL-SCOPE (286 — chờ chủ sở hữu duyệt phạm vi dịch vụ RR-13). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "p0_live_verified": [
     "/",
     "/gia-thue/",
