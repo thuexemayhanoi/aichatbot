@@ -210,19 +210,19 @@
     {
       "kpi": "URL còn việc mở (OPEN)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"OPEN\")",
-      "value": 359,
+      "value": 332,
       "ok": true
     },
     {
       "kpi": "URL đã sửa và kiểm tra live (DONE_LIVE)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"DONE_LIVE\")",
-      "value": 350,
+      "value": 379,
       "ok": true
     },
     {
       "kpi": "URL đã rà soát, không cần đổi (REVIEWED_OK)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"REVIEWED_OK\")",
-      "value": 54,
+      "value": 52,
       "ok": true
     },
     {
