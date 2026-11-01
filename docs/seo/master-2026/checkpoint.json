@@ -1,14 +1,14 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
   "date": "2026-11-01",
-  "last_completed_batch": "C11",
-  "last_verified_commit": "4bd6509f",
-  "next": "Đã xong: M1–M7, DUP-PARA 162 → 0, FEATURE-CLAIM 0, BODY-STRUCT 0, LEGAL-CHECK C08–C12 (+C13A 12 bài), PTS (40 bài), TN1, EN2, NAP3. Tiếp: NAP4 (26 bài 'MotoAI cho thuê/giao xe …' kèm lời hứa chưa xác minh: kiểm tra kín nước, hỗ trợ sự cố nhanh, tư vấn pháp lý, đặt xe nhanh, mũ trẻ em — bản vá đã soạn) + C13B (4 bài: BA-1373, 1325, 1247, 2001), APP-CLAIM, câu hứa dịch vụ chưa xác minh còn lại trong CTA, QA-PROXY (1). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
+  "last_completed_batch": "C12",
+  "last_verified_commit": "c6c443ce",
+  "next": "Đã xong: M1–M7, DUP-PARA 162 → 0, FEATURE-CLAIM 0, BODY-STRUCT 0, LEGAL-CHECK 0 (C08–C13 + PTS 40 bài + TN1), EN2, NAP1–NAP4. Tiếp: APP-CLAIM (bài mô tả ứng dụng có đặt giữ chỗ, kiểm tra còn xe hoặc giá theo ngày nhận — ứng dụng chưa có các tính năng này; ví dụ BA-0481, BA-0775), câu hứa dịch vụ chưa xác minh còn lại trong CTA, QA-PROXY (1), LOCAL-SCOPE (286 — chờ chủ sở hữu duyệt phạm vi dịch vụ RR-13). Chờ chủ sở hữu: Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20).",
   "remaining": {
     "status": {
-      "DONE_LIVE": 425,
+      "DONE_LIVE": 435,
       "REVIEWED_OK": 52,
-      "OK": 1403,
+      "OK": 1393,
       "OPEN": 288
     },
     "open_codes": {
