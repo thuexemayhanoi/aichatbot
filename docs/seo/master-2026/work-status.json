@@ -526,10 +526,11 @@
   "/blog/an-toan/goi-canh-sat-khi-tai-nan-cau-hoi-thuong-gap/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D06B-CEN1B-M6"
+    "D06B-CEN1B-M6",
+    "PTS2-TN1"
    ],
    "date": "2026-11-01",
-   "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/goi-canh-sat-khi-tai-nan-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -547,6 +548,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
+  "/blog/an-toan/goi-canh-sat-khi-tai-nan-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/goi-canh-sat-khi-tai-nan-vi-du-thuc-te/": {
    "status": "DONE_LIVE",
@@ -581,6 +590,22 @@
    "date": "2026-11-01",
    "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
+  "/blog/an-toan/guong-chieu-hau-an-toan-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
+  "/blog/an-toan/guong-chieu-hau-an-toan-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
   "/blog/an-toan/guong-chieu-hau-an-toan/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -588,6 +613,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/idp-va-bang-lai-quoc-te-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/idp-va-bang-lai-quoc-te-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -604,6 +637,22 @@
    ],
    "date": "2026-11-01",
    "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
+  "/blog/an-toan/idp-va-bang-lai-quoc-te-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
+  "/blog/an-toan/idp-va-bang-lai-quoc-te-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/idp-va-bang-lai-quoc-te/": {
    "status": "DONE_LIVE",
@@ -675,6 +724,14 @@
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
+  "/blog/an-toan/kiem-dinh-xe-may-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
   "/blog/an-toan/kiem-dinh-xe-may-vi-du-thuc-te/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -691,6 +748,14 @@
    "date": "2026-10-30",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/ky-nang-phanh-gap-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
   "/blog/an-toan/ky-nang-phanh-gap-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -706,6 +771,22 @@
    ],
    "date": "2026-11-01",
    "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
+  "/blog/an-toan/ky-nang-phanh-gap-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
+  "/blog/an-toan/ky-nang-phanh-gap-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/ky-nang-phanh-gap/": {
    "status": "DONE_LIVE",
@@ -749,6 +830,14 @@
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/lan-duong-va-quy-tac-nhuong-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
   "/blog/an-toan/lan-duong-va-quy-tac-nhuong/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -757,6 +846,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/luat-giao-thong-duong-bo-co-ban-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/luat-giao-thong-duong-bo-co-ban-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -769,10 +866,11 @@
   "/blog/an-toan/luat-giao-thong-duong-bo-co-ban/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C08-NAP1"
+    "C08-NAP1",
+    "PTS2-TN1"
    ],
    "date": "2026-11-01",
-   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/met-moi-khi-lai-duong-dai-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -781,6 +879,22 @@
    ],
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
+  "/blog/an-toan/met-moi-khi-lai-duong-dai-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
+  "/blog/an-toan/met-moi-khi-lai-duong-dai-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/met-moi-khi-lai-duong-dai/": {
    "status": "DONE_LIVE",
@@ -862,6 +976,14 @@
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
+  "/blog/an-toan/mua-lon-va-lai-xe-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
   "/blog/an-toan/mua-lon-va-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -878,6 +1000,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
+  "/blog/an-toan/ngap-nuoc-va-xe-may-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/nghia-vu-cua-ben-cho-thue-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -914,6 +1044,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -1093,6 +1231,14 @@
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
   },
+  "/blog/an-toan/phat-nguoi-va-xe-thue-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
   "/blog/an-toan/phat-nguoi-va-xe-thue/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1181,6 +1327,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/an-toan/suong-mu-mua-dong-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
   "/blog/an-toan/suong-mu-mua-dong/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1205,6 +1359,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/an-toan/tam-nhin-khi-lai-xe-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
   "/blog/an-toan/tam-nhin-khi-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1220,6 +1382,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/an-toan/thu-tuc-khi-va-cham-nhe-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/thu-tuc-khi-va-cham-nhe-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -1238,6 +1408,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
+  },
+  "/blog/an-toan/thu-tuc-khi-va-cham-nhe-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/thu-tuc-khi-va-cham-nhe/": {
    "status": "DONE_LIVE",
@@ -1267,10 +1445,11 @@
   "/blog/an-toan/thue-va-phi-xe-may-ca-nhan-tom-tat/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C03-LEGAL"
+    "C03-LEGAL",
+    "PTS2-TN1"
    ],
-   "date": "2026-10-30",
-   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/thue-va-phi-xe-may-ca-nhan-vi-du-thuc-te/": {
    "status": "DONE_LIVE",
@@ -1305,6 +1484,22 @@
    "date": "2026-11-01",
    "note": "PR #70 (4d079246) — Pages live đã kiểm BA-0641 (Điều 57 khoản 5), BA-0635 (Điều 80), BA-0713 (dưới 12 tuổi); BA-0713 chuyển C12 (thiếu ngoại lệ trẻ dưới 06 tuổi)"
   },
+  "/blog/an-toan/thuoc-va-lai-xe-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
+  "/blog/an-toan/thuoc-va-lai-xe-vi-du-thuc-te/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
+  },
   "/blog/an-toan/thuoc-va-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1312,6 +1507,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+  },
+  "/blog/an-toan/toc-do-cho-phep-trong-pho-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/toc-do-cho-phep-trong-pho-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -1338,12 +1541,13 @@
    "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
   },
   "/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cau-hoi-thuong-gap/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C04b-LEGAL-FOLLOWUP"
+    "C04b-LEGAL-FOLLOWUP",
+    "PTS2-TN1"
    ],
-   "date": "2026-10-31",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/trach-nhiem-khi-tai-nan-voi-xe-thue-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -1426,6 +1630,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #65 (ae8c8e7) live sau khi chạy lại Pages deploy (xung đột deploy treo): /blog/ và 3 hub cụm có đoạn dẫn, BA-0497 câu mới, /blog/huong-dan/chuan-bi/ trả 404 + chuyển hướng"
+  },
+  "/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan-tom-tat/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "PTS2-TN1"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #71 (7586218) — Pages live đã kiểm BA-1469 (Điều 80), BA-0005 (xe máy điện 04 kW), BA-0941 (phục hồi 12 điểm)"
   },
   "/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan/": {
    "status": "DONE_LIVE",

@@ -16,6 +16,9 @@
  *              anchor text changes go through replace
  *   links    : wrap an existing phrase in a contextual link to a published article
  *   table    : a comparison table summarising what the article already says
+ *   points   : a short bulleted recap (3–6 items, optional lead-in sentence) of
+ *              key points the article already makes, closing a named H2
+ *              section — only for bodies that have no list at all (structure)
  *   faq      : a "Câu hỏi thường gặp" section (only if the body has none)
  *   sections : extra H2 sections for thin articles (< 800 words)
  *   condense : shorter wording for passages of bodies above 2,000 words
@@ -223,13 +226,14 @@ function tableHtml(t) {
  * Build the reviewed body for one patch. Returns { html, problems, ops, before, after }.
  * Pure: never writes.
  */
-export function reviewArticle(patch, idx = manifestIndex()) {
+export function reviewArticle(patch, idx = manifestIndex(), opts = {}) {
   const problems = [];
   const ops = [];
   const a = idx.byId.get(patch.id);
   if (!a) return { problems: [`${patch.id}: unknown article`] };
   const selfUrl = `/blog/${taxonomy.categories[a.category].dir}/${a.slug}/`;
-  const original = read(a.body);
+  // opts.original: unit tests review a fixture body instead of the file on disk.
+  const original = opts.original ?? read(a.body);
   const allowed = digitsOf(stripTags(original));
   // A legal correction may bring numbers the body never had, but only those of verified facts.
   const facts = [];
@@ -319,6 +323,26 @@ export function reviewArticle(patch, idx = manifestIndex()) {
   }
   if (patch.links?.length) ops.push(`links:${patch.links.length}`);
 
+  if (patch.points) {
+    const pt = patch.points;
+    if (/<(ul|ol)\b/i.test(original)) P('points: the article already has a list');
+    else if (!Array.isArray(pt.items) || pt.items.length < 3 || pt.items.length > 6) P('points: 3–6 items');
+    else {
+      if (pt.lead !== undefined) for (const p of textProblems('points.lead', pt.lead, allowed)) P(p);
+      for (const [j, it] of pt.items.entries()) for (const p of textProblems(`points.items[${j}]`, it, allowed)) P(p);
+      const h2 = [...html.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)].find((m) => stripTags(m[1]).trim() === String(pt.after_h2 ?? '').trim());
+      if (!h2) P(`points: after_h2 "${pt.after_h2}" is not an H2 of this article`);
+      else {
+        // A recap closes the section: right before the next H2 (or the end of the body).
+        const next = html.indexOf('<h2', h2.index + h2[0].length);
+        const at = next < 0 ? html.length : next;
+        const lead = pt.lead !== undefined ? `<p>${escText(pt.lead)}</p>\n` : '';
+        html = `${html.slice(0, at).replace(/\s+$/, '')}\n${lead}<ul>\n${pt.items.map((x) => `<li>${escText(x)}</li>`).join('\n')}\n</ul>\n\n${html.slice(at)}`;
+        ops.push('points');
+      }
+    }
+  }
+
   if (patch.table) {
     const t = patch.table;
     const cols = t.head?.length ?? 0;
@@ -378,7 +402,7 @@ export function reviewArticle(patch, idx = manifestIndex()) {
   if (after < before - removedWords) P(`word count dropped ${before} -> ${after}`);
   if (before < MIN_WORDS && after < MIN_WORDS && (patch.sections?.length || patch.faq?.length)) P(`thin article still ${after} words (< ${MIN_WORDS})`);
   if (after > MAX_WORDS && after > before && before <= MAX_WORDS) P(`additions push the body to ${after} words (> ${MAX_WORDS})`);
-  if (before > MAX_WORDS && (patch.sections?.length || patch.faq?.length || patch.table)) P(`body already ${before} words: only replace/links/intro allowed`);
+  if (before > MAX_WORDS && (patch.sections?.length || patch.faq?.length || patch.table || patch.points)) P(`body already ${before} words: only replace/links/intro allowed`);
   if (!ops.length) P('empty patch');
   return { id: patch.id, html, original, problems, ops, facts, before, after, removedWords, body: a.body };
 }
