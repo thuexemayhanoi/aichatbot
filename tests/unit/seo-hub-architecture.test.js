@@ -29,6 +29,11 @@ import { publishedManifestArticles } from '../helpers/factory-sandbox.mjs';
 const walk = (dir) => readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]);
 const blogPages = () => walk('blog').filter((p) => p.endsWith('index.html'));
+// M3: a subtopic hub's pages (page 1 + …/page/N/), read once per file.
+const cache = new Map();
+const readCached = (p) => (cache.has(p) ? cache.get(p) : cache.set(p, read(p)).get(p));
+const subtopicPagesOf = (base) => [`${base}index.html`, ...(existsSync(join(ROOT, base, 'page'))
+  ? readdirSync(join(ROOT, base, 'page')).sort((x, y) => Number(x) - Number(y)).map((n) => `${base}page/${n}/index.html`) : [])];
 const PARENT_DIRS = taxonomy.clusters.map((c) => c.dir);
 const CHILD_DIRS = Object.values(taxonomy.categories).map((c) => c.dir);
 const ARTICLES = publishedManifestArticles(ROOT);
@@ -402,8 +407,17 @@ test('audit: full hybrid chain Super Hub → Parent Hub → Silo → Subtopic �
     const sub = deriveSubtopic(a.category, ROWS[a.article_id] ?? {});
     if (!sub.fallback) {
       assert.ok(siloPage.includes(`href="/blog/${cat.dir}/${sub.slug}/"`), `silo ${cat.dir} → subtopic ${sub.slug}`);
-      const subPage = read(`blog/${cat.dir}/${sub.slug}/index.html`);
-      assert.ok(subPage.includes(`href="/blog/${cat.dir}/${a.slug}/"`), `subtopic ${sub.slug} → article ${a.slug}`);
+      // M3: a large subtopic hub is paginated like its silo (…/page/N/). The
+      // chain still holds: page 1 of the subtopic links the page that lists
+      // the article, and that page links the article.
+      const subBase = `blog/${cat.dir}/${sub.slug}/`;
+      const subPage = read(`${subBase}index.html`);
+      const holder = subtopicPagesOf(subBase).find((p) => readCached(p).includes(`href="/blog/${cat.dir}/${a.slug}/"`));
+      assert.ok(holder, `subtopic ${sub.slug} → article ${a.slug}`);
+      if (holder !== `${subBase}index.html`) {
+        const n = /page\/(\d+)\/index\.html$/.exec(holder)[1];
+        assert.ok(subPage.includes(`href="/${subBase}page/${n}/"`), `subtopic ${sub.slug} page 1 → page ${n} (article ${a.slug})`);
+      }
     } else {
       const siloPages = blogPages().filter((p) =>
         p === `blog/${cat.dir}/index.html` || p.startsWith(`blog/${cat.dir}/page/`));

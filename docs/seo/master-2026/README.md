@@ -35,7 +35,9 @@ python3 tools/seo-master-2026.py --verify   # workbook + bằng chứng + kiểm
   - `REDIRECT-CANDIDATE` / `NOINDEX-CANDIDATE`: chỉ khi trùng nội dung và ý định đã chứng minh; trang phân trang
     tự canonical là chuỗi hợp lệ, không noindex.
 - **QA proxy 100 điểm** (ý định 20, chính xác 20, on-page 15, kiến trúc 15, kỹ thuật 15, UX/media/chuyển đổi 10,
-  schema/địa phương 5; mục tiêu ≥ 85) tính từ tín hiệu đo được. Phần "chính xác" chỉ đo cờ nội dung, sổ văn bản
+  schema/địa phương 5; mục tiêu ≥ 85) tính từ tín hiệu đo được. Trang phân trang (`…/page/N/` của hub danh mục và hub chủ đề con)
+  là trang điều hướng, không nhắm từ khóa: ý định chấm theo việc trang ghi số trang trong title, kiến trúc chỉ cần
+  được liên kết từ chuỗi phân trang của nó. Phần "chính xác" chỉ đo cờ nội dung, sổ văn bản
   pháp luật và QA nhà máy — không thay review biên tập/pháp lý.
 - **Structured data**: đọc mọi khối JSON-LD; đối chiếu thuộc tính theo tài liệu Google cho Article,
   BreadcrumbList, Organization, LocalBusiness (AutoRental); ghi chú FAQPage không còn rich result (Google, 05/2026)

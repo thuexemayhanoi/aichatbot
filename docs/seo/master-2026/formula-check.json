@@ -6,31 +6,31 @@
     {
       "kpi": "Tổng URL kiểm kê",
       "formula": "=COUNTA('URL INVENTORY'!A:A)-1",
-      "value": 2138,
+      "value": 2185,
       "ok": true
     },
     {
       "kpi": "URL trong sitemap",
       "formula": "=COUNTIF('URL INVENTORY'!E:E,\"Có\")",
-      "value": 2138,
+      "value": 2185,
       "ok": true
     },
     {
       "kpi": "URL có file build",
       "formula": "=COUNTIF('URL INVENTORY'!F:F,\"Có\")",
-      "value": 2138,
+      "value": 2185,
       "ok": true
     },
     {
       "kpi": "URL có ≥ 1 trang liên kết vào",
       "formula": "=COUNTIF('URL INVENTORY'!G:G,\">0\")",
-      "value": 2138,
+      "value": 2185,
       "ok": true
     },
     {
       "kpi": "URL đối soát OK (≥ 3 nguồn)",
       "formula": "=COUNTIF('URL INVENTORY'!K:K,\"OK\")",
-      "value": 2138,
+      "value": 2185,
       "ok": true
     },
     {
@@ -48,13 +48,13 @@
     {
       "kpi": "Phân loại KEEP",
       "formula": "=COUNTIF('URL INVENTORY'!L:L,\"KEEP\")",
-      "value": 1952,
+      "value": 2000,
       "ok": true
     },
     {
       "kpi": "Phân loại IMPROVE",
       "formula": "=COUNTIF('URL INVENTORY'!L:L,\"IMPROVE\")",
-      "value": 186,
+      "value": 185,
       "ok": true
     },
     {
@@ -90,13 +90,13 @@
     {
       "kpi": "QA proxy trung bình (/100)",
       "formula": "=ROUND(AVERAGE('QA RESULTS'!K:K),1)",
-      "value": 94.4,
+      "value": 94.7,
       "ok": true
     },
     {
       "kpi": "Tỉ lệ URL đạt QA proxy ≥ 85",
       "formula": "=ROUND(COUNTIF('QA RESULTS'!K:K,\">=85\")/COUNT('QA RESULTS'!K:K),3)",
-      "value": 0.998,
+      "value": 0.999,
       "ok": true
     },
     {
@@ -132,19 +132,19 @@
     {
       "kpi": "Kiểm tra kỹ thuật FAIL",
       "formula": "=COUNTIF('TECHNICAL SEO AUDIT'!H:H,\"FAIL\")",
-      "value": 1,
+      "value": 0,
       "ok": true
     },
     {
       "kpi": "Kiểm tra kỹ thuật WARN",
       "formula": "=COUNTIF('TECHNICAL SEO AUDIT'!H:H,\"WARN\")",
-      "value": 3,
+      "value": 2,
       "ok": true
     },
     {
       "kpi": "LCP lab tệ nhất (ms)",
       "formula": "=_xlfn.MAXIFS('TECHNICAL SEO AUDIT'!F:F,'TECHNICAL SEO AUDIT'!B:B,\"Core Web Vitals (LAB)\",'TECHNICAL SEO AUDIT'!C:C,\"LCP*\")",
-      "value": 856,
+      "value": 912,
       "ok": true
     },
     {
@@ -198,7 +198,7 @@
     {
       "kpi": "Backlog P2",
       "formula": "=COUNTIF('PRIORITY BACKLOG'!B:B,\"P2\")",
-      "value": 6,
+      "value": 5,
       "ok": true
     },
     {

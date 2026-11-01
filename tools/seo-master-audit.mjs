@@ -184,6 +184,8 @@ export function crawl(root = ROOT) {
     else if (segs.length === 2 && clusterDirs.has(segs[1])) type = 'Hub cụm chủ đề';
     else if (segs.length === 2 && catByDir[segs[1]]) type = 'Hub danh mục';
     else if (segs.length === 4 && segs[2] === 'page') type = 'Hub danh mục (phân trang)';
+    // M3: large subtopic hubs are paginated like their category (…/<sub>/page/N/).
+    else if (segs.length === 5 && segs[3] === 'page' && subSlugs.has(segs[2])) type = 'Hub chủ đề con (phân trang)';
     else if (segs.length === 3 && articles.has(url)) type = 'Bài viết';
     else if (segs.length === 3 && subSlugs.has(segs[2])) type = 'Hub chủ đề con';
     else type = 'Khác';
@@ -225,7 +227,7 @@ export function crawl(root = ROOT) {
     if (!isArticle) {
       // Hub/static content links; deep pagination pages (page >= 2) are not
       // counted as a strong signal — they are what made pages near-orphans.
-      if (p.type !== 'Hub danh mục (phân trang)') {
+      if (!p.type.endsWith('(phân trang)')) {
         for (const t of new Set(p.mainLinks)) if (t !== p.url && inbound.has(t)) inbound.get(t).hub.add(p.url);
       }
     }
@@ -310,7 +312,7 @@ export function analyze(c) {
     if (seedTypos(p.title).length) issues.push('TITLE-TYPO');
     if (p.desc && !/[.?!…]$/.test(p.desc.trim())) issues.push('DESC-CUT');
     if (p.desc && (p.desc.length < 120 || p.desc.length > LIMITS.descMax)) issues.push('DESC-LEN');
-    if (['Hub danh mục', 'Hub danh mục (phân trang)', 'Hub chủ đề con', 'Hub cụm chủ đề', 'Blog home'].includes(p.type)) {
+    if (['Hub danh mục', 'Hub danh mục (phân trang)', 'Hub chủ đề con', 'Hub chủ đề con (phân trang)', 'Hub cụm chủ đề', 'Blog home'].includes(p.type)) {
       const cp = p.schemas.find((s) => s['@type'] === 'CollectionPage');
       if (cp && !cp.mainEntity) issues.push('NO-ITEMLIST');
     }

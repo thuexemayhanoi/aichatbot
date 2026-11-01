@@ -1,6 +1,6 @@
 {
   "$schema": "motoai/cwv-lab@1",
-  "generated": "2026-10-31T17:18:08.225Z",
+  "generated": "2026-11-01T04:07:16.941Z",
   "kind": "LAB",
   "method": {
     "tool": "tools/seo-cwv-lab.mjs (Playwright Chromium headless)",
@@ -32,13 +32,13 @@
       "template": "Trang chủ",
       "status": 200,
       "median": {
-        "ttfb_ms": 5,
-        "fcp_ms": 760,
-        "lcp_ms": 760,
-        "cls": 0,
-        "tbt_ms": 6,
-        "interaction_ms": 96,
-        "load_ms": 961,
+        "ttfb_ms": 4,
+        "fcp_ms": 752,
+        "lcp_ms": 752,
+        "cls": 0.016,
+        "tbt_ms": 47,
+        "interaction_ms": 160,
+        "load_ms": 1057,
         "transfer_kb": 68,
         "requests": 10,
         "dom_nodes": 889
@@ -47,22 +47,22 @@
       "tap_target": "#motoai-menu-btn",
       "runs": [
         {
-          "lcp_ms": 760,
-          "cls": 0,
-          "tbt_ms": 6,
-          "interaction_ms": 88
-        },
-        {
-          "lcp_ms": 760,
+          "lcp_ms": 1148,
           "cls": 0.016,
-          "tbt_ms": 7,
-          "interaction_ms": 96
+          "tbt_ms": 101,
+          "interaction_ms": 168
         },
         {
-          "lcp_ms": 728,
-          "cls": 0,
-          "tbt_ms": 2,
-          "interaction_ms": 120
+          "lcp_ms": 688,
+          "cls": 0.016,
+          "tbt_ms": 47,
+          "interaction_ms": 152
+        },
+        {
+          "lcp_ms": 752,
+          "cls": 0.016,
+          "tbt_ms": 8,
+          "interaction_ms": 160
         }
       ],
       "lab_rating": {
@@ -77,37 +77,37 @@
       "template": "Trang giá (chuyển đổi)",
       "status": 200,
       "median": {
-        "ttfb_ms": 4,
-        "fcp_ms": 664,
-        "lcp_ms": 664,
+        "ttfb_ms": 3,
+        "fcp_ms": 756,
+        "lcp_ms": 756,
         "cls": 0,
-        "tbt_ms": 2,
-        "interaction_ms": 80,
-        "load_ms": 893,
-        "transfer_kb": 65,
+        "tbt_ms": 29,
+        "interaction_ms": 96,
+        "load_ms": 954,
+        "transfer_kb": 66,
         "requests": 10,
-        "dom_nodes": 582
+        "dom_nodes": 638
       },
       "lcp_element": "p.blog-screen-lead",
       "tap_target": "#motoai-menu-btn",
       "runs": [
         {
-          "lcp_ms": 664,
+          "lcp_ms": 804,
           "cls": 0,
-          "tbt_ms": 3,
-          "interaction_ms": 80
+          "tbt_ms": 29,
+          "interaction_ms": 104
         },
         {
-          "lcp_ms": 596,
+          "lcp_ms": 756,
           "cls": 0,
-          "tbt_ms": 0,
-          "interaction_ms": 80
+          "tbt_ms": 22,
+          "interaction_ms": 96
         },
         {
-          "lcp_ms": 700,
-          "cls": 0,
-          "tbt_ms": 2,
-          "interaction_ms": 72
+          "lcp_ms": 756,
+          "cls": 0.016,
+          "tbt_ms": 31,
+          "interaction_ms": 88
         }
       ],
       "lab_rating": {
@@ -122,13 +122,13 @@
       "template": "Trang liên hệ (chuyển đổi)",
       "status": 200,
       "median": {
-        "ttfb_ms": 3,
-        "fcp_ms": 728,
-        "lcp_ms": 728,
+        "ttfb_ms": 5,
+        "fcp_ms": 668,
+        "lcp_ms": 668,
         "cls": 0,
-        "tbt_ms": 0,
-        "interaction_ms": 80,
-        "load_ms": 919,
+        "tbt_ms": 24,
+        "interaction_ms": 96,
+        "load_ms": 933,
         "transfer_kb": 65,
         "requests": 10,
         "dom_nodes": 546
@@ -137,21 +137,21 @@
       "tap_target": "#motoai-menu-btn",
       "runs": [
         {
-          "lcp_ms": 676,
+          "lcp_ms": 668,
           "cls": 0,
-          "tbt_ms": 0,
-          "interaction_ms": 56
+          "tbt_ms": 29,
+          "interaction_ms": 96
         },
         {
-          "lcp_ms": 728,
+          "lcp_ms": 668,
           "cls": 0,
-          "tbt_ms": 0,
-          "interaction_ms": 80
+          "tbt_ms": 23,
+          "interaction_ms": 104
         },
         {
-          "lcp_ms": 760,
+          "lcp_ms": 756,
           "cls": 0,
-          "tbt_ms": 10,
+          "tbt_ms": 24,
           "interaction_ms": 80
         }
       ],
@@ -167,13 +167,13 @@
       "template": "Ứng dụng Agent",
       "status": 200,
       "median": {
-        "ttfb_ms": 4,
-        "fcp_ms": 560,
-        "lcp_ms": 560,
+        "ttfb_ms": 3,
+        "fcp_ms": 568,
+        "lcp_ms": 592,
         "cls": 0.037,
-        "tbt_ms": 71,
-        "interaction_ms": 64,
-        "load_ms": 2571,
+        "tbt_ms": 96,
+        "interaction_ms": 56,
+        "load_ms": 2589,
         "transfer_kb": 126,
         "requests": 72,
         "dom_nodes": 465
@@ -182,22 +182,22 @@
       "tap_target": "#motoai-menu-btn",
       "runs": [
         {
-          "lcp_ms": 564,
+          "lcp_ms": 620,
           "cls": 0.037,
-          "tbt_ms": 71,
-          "interaction_ms": 80
-        },
-        {
-          "lcp_ms": 552,
-          "cls": 0.037,
-          "tbt_ms": 67,
-          "interaction_ms": 48
-        },
-        {
-          "lcp_ms": 560,
-          "cls": 0.037,
-          "tbt_ms": 91,
+          "tbt_ms": 148,
           "interaction_ms": 64
+        },
+        {
+          "lcp_ms": 592,
+          "cls": 0.037,
+          "tbt_ms": 96,
+          "interaction_ms": 56
+        },
+        {
+          "lcp_ms": 568,
+          "cls": 0.037,
+          "tbt_ms": 74,
+          "interaction_ms": 48
         }
       ],
       "lab_rating": {
@@ -213,12 +213,12 @@
       "status": 200,
       "median": {
         "ttfb_ms": 4,
-        "fcp_ms": 824,
-        "lcp_ms": 824,
+        "fcp_ms": 780,
+        "lcp_ms": 780,
         "cls": 0.016,
-        "tbt_ms": 0,
-        "interaction_ms": 120,
-        "load_ms": 1044,
+        "tbt_ms": 26,
+        "interaction_ms": 152,
+        "load_ms": 1180,
         "transfer_kb": 71,
         "requests": 11,
         "dom_nodes": 941
@@ -227,22 +227,22 @@
       "tap_target": "#motoai-menu-btn",
       "runs": [
         {
-          "lcp_ms": 848,
+          "lcp_ms": 856,
           "cls": 0.016,
-          "tbt_ms": 10,
-          "interaction_ms": 120
+          "tbt_ms": 21,
+          "interaction_ms": 144
         },
         {
-          "lcp_ms": 800,
-          "cls": 0,
-          "tbt_ms": 0,
-          "interaction_ms": 112
+          "lcp_ms": 780,
+          "cls": 0.016,
+          "tbt_ms": 29,
+          "interaction_ms": 152
         },
         {
-          "lcp_ms": 824,
+          "lcp_ms": 764,
           "cls": 0.016,
-          "tbt_ms": 0,
-          "interaction_ms": 128
+          "tbt_ms": 26,
+          "interaction_ms": 176
         }
       ],
       "lab_rating": {
@@ -257,13 +257,13 @@
       "template": "Hub danh mục",
       "status": 200,
       "median": {
-        "ttfb_ms": 3,
-        "fcp_ms": 740,
-        "lcp_ms": 740,
-        "cls": 0,
-        "tbt_ms": 5,
-        "interaction_ms": 120,
-        "load_ms": 943,
+        "ttfb_ms": 4,
+        "fcp_ms": 596,
+        "lcp_ms": 824,
+        "cls": 0.016,
+        "tbt_ms": 15,
+        "interaction_ms": 128,
+        "load_ms": 1011,
         "transfer_kb": 69,
         "requests": 10,
         "dom_nodes": 887
@@ -272,22 +272,22 @@
       "tap_target": "#motoai-menu-btn",
       "runs": [
         {
-          "lcp_ms": 740,
-          "cls": 0,
-          "tbt_ms": 0,
+          "lcp_ms": 824,
+          "cls": 0.016,
+          "tbt_ms": 15,
           "interaction_ms": 128
         },
         {
           "lcp_ms": 744,
           "cls": 0,
-          "tbt_ms": 5,
-          "interaction_ms": 120
+          "tbt_ms": 8,
+          "interaction_ms": 200
         },
         {
-          "lcp_ms": 736,
+          "lcp_ms": 928,
           "cls": 0.016,
-          "tbt_ms": 13,
-          "interaction_ms": 80
+          "tbt_ms": 18,
+          "interaction_ms": 128
         }
       ],
       "lab_rating": {
@@ -302,44 +302,44 @@
       "template": "Hub chủ đề con",
       "status": 200,
       "median": {
-        "ttfb_ms": 5,
-        "fcp_ms": 696,
-        "lcp_ms": 744,
+        "ttfb_ms": 3,
+        "fcp_ms": 724,
+        "lcp_ms": 748,
         "cls": 0.017,
-        "tbt_ms": 13,
-        "interaction_ms": 248,
-        "load_ms": 1235,
-        "transfer_kb": 84,
+        "tbt_ms": 30,
+        "interaction_ms": 128,
+        "load_ms": 1023,
+        "transfer_kb": 67,
         "requests": 10,
-        "dom_nodes": 1884
+        "dom_nodes": 726
       },
       "lcp_element": "p",
       "tap_target": "#motoai-menu-btn",
       "runs": [
         {
-          "lcp_ms": 696,
+          "lcp_ms": 724,
           "cls": 0.017,
-          "tbt_ms": 13,
-          "interaction_ms": 248
+          "tbt_ms": 33,
+          "interaction_ms": 168
         },
         {
-          "lcp_ms": 744,
+          "lcp_ms": 904,
           "cls": 0.017,
-          "tbt_ms": 0,
-          "interaction_ms": 248
+          "tbt_ms": 30,
+          "interaction_ms": 128
         },
         {
-          "lcp_ms": 1040,
-          "cls": 0.017,
-          "tbt_ms": 13,
-          "interaction_ms": 232
+          "lcp_ms": 748,
+          "cls": 0,
+          "tbt_ms": 20,
+          "interaction_ms": 128
         }
       ],
       "lab_rating": {
         "lcp": "GOOD",
         "cls": "GOOD",
         "tbt": "GOOD",
-        "interaction": "NEEDS IMPROVEMENT"
+        "interaction": "GOOD"
       }
     },
     {
@@ -347,13 +347,13 @@
       "template": "Bài viết (không ảnh)",
       "status": 200,
       "median": {
-        "ttfb_ms": 3,
-        "fcp_ms": 712,
-        "lcp_ms": 712,
-        "cls": 0,
-        "tbt_ms": 3,
-        "interaction_ms": 80,
-        "load_ms": 949,
+        "ttfb_ms": 4,
+        "fcp_ms": 652,
+        "lcp_ms": 652,
+        "cls": 0.016,
+        "tbt_ms": 22,
+        "interaction_ms": 112,
+        "load_ms": 989,
         "transfer_kb": 69,
         "requests": 10,
         "dom_nodes": 713
@@ -362,22 +362,22 @@
       "tap_target": "#motoai-menu-btn",
       "runs": [
         {
-          "lcp_ms": 748,
-          "cls": 0,
-          "tbt_ms": 0,
-          "interaction_ms": 72
+          "lcp_ms": 652,
+          "cls": 0.016,
+          "tbt_ms": 39,
+          "interaction_ms": 120
+        },
+        {
+          "lcp_ms": 664,
+          "cls": 0.016,
+          "tbt_ms": 18,
+          "interaction_ms": 96
         },
         {
           "lcp_ms": 644,
           "cls": 0.016,
-          "tbt_ms": 4,
-          "interaction_ms": 80
-        },
-        {
-          "lcp_ms": 712,
-          "cls": 0,
-          "tbt_ms": 3,
-          "interaction_ms": 88
+          "tbt_ms": 22,
+          "interaction_ms": 112
         }
       ],
       "lab_rating": {
@@ -393,12 +393,12 @@
       "status": 200,
       "median": {
         "ttfb_ms": 3,
-        "fcp_ms": 732,
-        "lcp_ms": 856,
+        "fcp_ms": 744,
+        "lcp_ms": 912,
         "cls": 0.016,
-        "tbt_ms": 4,
-        "interaction_ms": 88,
-        "load_ms": 1047,
+        "tbt_ms": 21,
+        "interaction_ms": 104,
+        "load_ms": 1102,
         "transfer_kb": 110,
         "requests": 11,
         "dom_nodes": 684
@@ -407,22 +407,22 @@
       "tap_target": "#motoai-menu-btn",
       "runs": [
         {
-          "lcp_ms": 832,
-          "cls": 0,
-          "tbt_ms": 4,
-          "interaction_ms": 88
+          "lcp_ms": 912,
+          "cls": 0.016,
+          "tbt_ms": 30,
+          "interaction_ms": 104
         },
         {
-          "lcp_ms": 860,
+          "lcp_ms": 924,
           "cls": 0.016,
-          "tbt_ms": 0,
+          "tbt_ms": 21,
           "interaction_ms": 96
         },
         {
-          "lcp_ms": 856,
+          "lcp_ms": 896,
           "cls": 0.016,
-          "tbt_ms": 6,
-          "interaction_ms": 72
+          "tbt_ms": 17,
+          "interaction_ms": 136
         }
       ],
       "lab_rating": {

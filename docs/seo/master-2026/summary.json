@@ -1,6 +1,6 @@
 {
   "$schema": "motoai/master-seo-2026@1",
-  "date": "2026-10-31",
+  "date": "2026-11-01",
   "workbook": "docs/seo/MASTER-SEO-MATRIX-2026.xlsx",
   "sheets": [
     "EXECUTIVE DASHBOARD",
@@ -33,22 +33,22 @@
     "X-OFF-PAGE BACKLINKS",
     "X-DATA SOURCES"
   ],
-  "urls": 2138,
+  "urls": 2185,
   "sources": {
-    "sitemap": 2138,
-    "build": 2138,
-    "linked": 2138,
+    "sitemap": 2185,
+    "build": 2185,
+    "linked": 2185,
     "manifest_articles": 2006
   },
   "classification": {
-    "KEEP": 1952,
-    "IMPROVE": 186
+    "KEEP": 2000,
+    "IMPROVE": 185
   },
   "qa_proxy": {
-    "mean": 94.4,
+    "mean": 94.7,
     "min": 83,
-    "pass_85": 2134,
-    "total": 2138
+    "pass_85": 2182,
+    "total": 2185
   },
   "technical": {
     "T01": "PASS",
@@ -70,7 +70,7 @@
     "T17": "PASS",
     "T18": "PASS",
     "T19": "PASS",
-    "T20": "FAIL",
+    "T20": "PASS",
     "T21": "WARN",
     "T22": "PASS",
     "T23": "WARN",
@@ -101,7 +101,7 @@
     "CWV06-TBT": "PASS",
     "CWV07-LCP": "PASS",
     "CWV07-CLS": "PASS",
-    "CWV07-INTERACTION": "WARN",
+    "CWV07-INTERACTION": "PASS",
     "CWV07-TBT": "PASS",
     "CWV08-LCP": "PASS",
     "CWV08-CLS": "PASS",
