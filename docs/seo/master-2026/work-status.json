@@ -258,10 +258,11 @@
   "/blog/an-toan/bao-va-xe-may/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C11"
+    "C11",
+    "NAP3"
    ],
    "date": "2026-11-01",
-   "note": "PR #72 (4bd6509f) — Pages live đã kiểm BA-0443 (điểm b khoản 5 Điều 12), BA-0461 (dưới 12 tuổi, điện thoại 800.000–1.000.000 đồng), BA-0185 (mức ma túy/nồng độ cồn); câu CTA 'MotoAI hỗ trợ tại' ở BA-0185/0191/0197 xử lý ở lô NAP3"
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/an-toan/bao-ve-du-lieu-ca-nhan-khi-thue-xe-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -1407,10 +1408,11 @@
   "/blog/an-toan/ngap-nuoc-va-xe-may/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C11"
+    "C11",
+    "NAP3"
    ],
    "date": "2026-11-01",
-   "note": "PR #72 (4bd6509f) — Pages live đã kiểm BA-0443 (điểm b khoản 5 Điều 12), BA-0461 (dưới 12 tuổi, điện thoại 800.000–1.000.000 đồng), BA-0185 (mức ma túy/nồng độ cồn); câu CTA 'MotoAI hỗ trợ tại' ở BA-0185/0191/0197 xử lý ở lô NAP3"
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/an-toan/nghia-vu-cua-ben-cho-thue-cho-du-khach/": {
    "status": "REVIEWED_OK",
@@ -1693,10 +1695,11 @@
   "/blog/an-toan/phat-nguoi-va-xe-thue/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C09"
+    "C09",
+    "NAP3"
    ],
    "date": "2026-11-01",
-   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/an-toan/quy-dinh-mu-bao-hiem-tre-em-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -2181,10 +2184,11 @@
   "/blog/an-toan/trom-xe-va-phong-ngua/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C11"
+    "C11",
+    "NAP3"
    ],
    "date": "2026-11-01",
-   "note": "PR #72 (4bd6509f) — Pages live đã kiểm BA-0443 (điểm b khoản 5 Điều 12), BA-0461 (dưới 12 tuổi, điện thoại 800.000–1.000.000 đồng), BA-0185 (mức ma túy/nồng độ cồn); câu CTA 'MotoAI hỗ trợ tại' ở BA-0185/0191/0197 xử lý ở lô NAP3"
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -2374,6 +2378,14 @@
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
+  "/blog/app/dat-coc-va-ung-dung-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
   "/blog/app/dat-xe-bang-ung-dung-tan-noi/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2454,6 +2466,22 @@
    ],
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/app/huy-lich-thue-xe-qua-app/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
+  "/blog/app/nhan-xe-khi-dat-qua-ung-dung/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/app/quy-trinh-tu-van-tu-dong-chon-xe-tai-ha-noi/": {
    "status": "DONE_LIVE",
@@ -2763,6 +2791,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
   },
+  "/blog/dia-phuong/cot-co-hoang-thanh/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
   "/blog/dia-phuong/den-nguyen-can-bang-xe-cuoi-tuan/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2892,6 +2928,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+  },
+  "/blog/dia-phuong/lang-chu-tich-qua-pho/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/dia-phuong/meo-vac-dong-cao/": {
    "status": "DONE_LIVE",
@@ -3160,6 +3204,14 @@
    "date": "2026-11-01",
    "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
+  "/blog/huong-dan/di-hai-nguoi-tren-xe-thue/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
   "/blog/huong-dan/do-xe-o-ha-noi-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3208,6 +3260,14 @@
    "date": "2026-11-01",
    "note": "PR #67 (582eeda) live: kiểm BA-1105 (C-EN2), BA-0072 (chợ Long Biên, NAP2a)"
   },
+  "/blog/huong-dan/giao-xe-tai-khach-san/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
   "/blog/huong-dan/giao-xe-tai-san-bay-noi-bai-nhanh-gon/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3227,10 +3287,11 @@
   "/blog/huong-dan/giao-xe-tan-noi-thu-tuc/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C08-NAP1"
+    "C08-NAP1",
+    "NAP3"
    ],
    "date": "2026-11-01",
-   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/huong-dan/giay-to/": {
    "status": "DONE_LIVE",
@@ -3605,6 +3666,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
   },
+  "/blog/thue-xe/kiem-tra-xe-truoc-khi-nhan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
   "/blog/thue-xe/lien-he-dat-xe-nhanh-gia-tot-nhat/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3644,6 +3713,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/thue-xe/phi-tre-han-khi-thue-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/thue-xe/so-sanh-gia-cac-loai-xe-may-cho-thue/": {
    "status": "DONE_LIVE",
@@ -3855,6 +3932,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
+  "/blog/thue-xe/tra-xe-thue-dung-gio/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
   "/blog/thue-xe/tra-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3930,10 +4015,11 @@
   "/blog/xe-dien/chi-phi-dien-khi-thue-xe-dien/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C08-NAP1"
+    "C08-NAP1",
+    "NAP3"
    ],
    "date": "2026-11-01",
-   "note": "PR #66 (2980b1f) live qua deploy của PR #67 (deploy riêng bị xung đột): kiểm BA-0149, BA-0005"
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/xe-dien/chi-phi/": {
    "status": "DONE_LIVE",
@@ -3975,6 +4061,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/xe-dien/cong-cu-uoc-tinh-quang-duong-xe-dien/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/xe-dien/cua-hang-cho-thue-xe-dien-gia-tot/": {
    "status": "DONE_LIVE",
@@ -4249,6 +4343,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+  },
+  "/blog/xe-dien/xe-dien-va-mui-moi-truong/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "NAP3"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
   },
   "/blog/xe-dien/xe-dien-va-thoi-tiet-lanh/": {
    "status": "DONE_LIVE",
