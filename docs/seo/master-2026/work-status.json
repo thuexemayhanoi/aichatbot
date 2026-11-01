@@ -156,10 +156,11 @@
    "status": "DONE_LIVE",
    "batches": [
     "C03-LEGAL",
-    "C04-LEGAL"
+    "C04-LEGAL",
+    "D06A-CEN1A"
    ],
-   "date": "2026-10-31",
-   "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/an-toan/cam-xe-may-xang-vanh-dai-1/": {
    "status": "DONE_LIVE",
@@ -176,10 +177,19 @@
    "status": "DONE_LIVE",
    "batches": [
     "C04-LEGAL",
-    "D03-D05-DUP-PARA"
+    "D03-D05-DUP-PARA",
+    "D06A-CEN1A"
    ],
    "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/an-toan/dien-thoai-khi-lai-xe/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/an-toan/du-lich/": {
    "status": "DONE_LIVE",
@@ -214,20 +224,22 @@
    "note": "Đã rà soát, không cần đổi"
   },
   "/blog/an-toan/khien-nai-dich-vu-thue-xe/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C04-LEGAL"
+    "C04-LEGAL",
+    "D06A-CEN1A"
    ],
-   "date": "2026-10-31",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/an-toan/kiem-dinh-xe-may-cho-du-khach/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
-    "C03-LEGAL"
+    "C03-LEGAL",
+    "D06A-CEN1A"
    ],
-   "date": "2026-10-30",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/an-toan/kiem-dinh-xe-may-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -286,6 +298,14 @@
    "date": "2026-10-31",
    "note": "Sửa thân bài qua tools/seo-body-review.mjs, kiểm tra live"
   },
+  "/blog/an-toan/lan-duong-va-quy-tac-nhuong/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/an-toan/mu-bao-hiem-chuan-cho-du-khach/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -326,6 +346,22 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/an-toan/mua-ban-xe-may-giay-to-cho-du-khach/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/an-toan/mua-ban-xe-may-giay-to/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/an-toan/mua-lon-va-lai-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -360,13 +396,14 @@
    "note": "Đã rà soát, không cần đổi"
   },
   "/blog/an-toan/nghia-vu-cua-ben-cho-thue/": {
-   "status": "REVIEWED_OK",
+   "status": "DONE_LIVE",
    "batches": [
     "C04-LEGAL",
-    "C04b-LEGAL-FOLLOWUP"
+    "C04b-LEGAL-FOLLOWUP",
+    "D06A-CEN1A"
    ],
-   "date": "2026-10-31",
-   "note": "Đã rà soát, không cần đổi"
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/an-toan/nguoi-nuoc-ngoai-lai-xe-o-viet-nam-cho-du-khach/": {
    "status": "DONE_LIVE",
@@ -537,6 +574,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/an-toan/suong-mu-mua-dong-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/an-toan/suong-mu-mua-dong/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -544,6 +589,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+  },
+  "/blog/an-toan/tam-nhin-khi-lai-xe-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/an-toan/tam-nhin-khi-lai-xe/": {
    "status": "DONE_LIVE",
@@ -652,6 +705,14 @@
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
   },
+  "/blog/an-toan/trom-xe-va-phong-ngua-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/an-toan/trom-xe-va-phong-ngua-tom-tat/": {
    "status": "REVIEWED_OK",
    "batches": [
@@ -659,6 +720,14 @@
    ],
    "date": "2026-10-31",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/an-toan/xe-co-phia-truoc-va-khoang-cach-an-toan/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/app/": {
    "status": "DONE_LIVE",
@@ -684,6 +753,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
   },
+  "/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/app/app-thue-xe-cho-nguoi-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -692,6 +769,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
+  "/blog/app/cach-dung-ung-dung-thue-xe-may-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -699,6 +784,22 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
+  },
+  "/blog/app/cau-chuyen-nguoi-dung-ung-dung-thue-xe-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/app/cau-chuyen-nguoi-dung-ung-dung-thue-xe-tai-ha-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/app/cau-hoi-thuong-gap-ve-app-thue-xe-tai-ha-noi/": {
    "status": "DONE_LIVE",
@@ -748,6 +849,30 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #62 (037e1dc): BA-0259 kết bài 'ngoài giờ này, trợ lý vẫn trả lời câu hỏi tham khảo, còn việc chốt xe cần gọi lại cửa hàng'; BA-0266 'Giá thuê mùa cao điểm có thể khác ngày thường…'. Câu trùng 138 → 93 bài."
   },
+  "/blog/app/hoi-dap-voi-agent-thue-xe-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/app/hoi-dap-voi-agent-thue-xe-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
+  "/blog/app/hoi-dap-voi-agent-thue-xe-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/app/huong-dan/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -756,6 +881,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
   },
+  "/blog/app/huy-lich-thue-xe-qua-app-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/app/quy-trinh-tu-van-tu-dong-chon-xe-tai-ha-noi/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -763,6 +896,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+  },
+  "/blog/app/rental-assistant-la-gi-tai-ha-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/app/so-sanh/": {
    "status": "DONE_LIVE",
@@ -780,6 +921,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
   },
+  "/blog/app/tim-hieu-hybrid-search-trong-ung-dung-thue-xe-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/app/tim-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -795,6 +944,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+  },
+  "/blog/app/tinh-nang-tim-hieu-thu-tuc-trong-app-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/app/tro-ly-ao-tu-van-thue-xe-may/": {
    "status": "DONE_LIVE",
@@ -838,6 +995,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/app/ung-dung-thue-xe-tieng-anh-cau-hoi-thuong-gap/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/app/ung-dung-thue-xe-va-khach-vang-lai-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -853,6 +1018,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
+  },
+  "/blog/app/ung-dung-thue-xe-va-nguoi-moi-biet-lai-xe-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/app/web-app/": {
    "status": "DONE_LIVE",
@@ -1250,6 +1423,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
   },
+  "/blog/huong-dan/di-cho-bang-xe-thue/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
+  },
   "/blog/huong-dan/giay-to/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -1257,6 +1438,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/huong-dan/len-ke-hoach-hanh-trinh-voi-agent-tai-ha-noi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/huong-dan/nhan-xe/": {
    "status": "DONE_LIVE",
@@ -1266,6 +1455,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/huong-dan/nhien-lieu-khi-nhan-tra-xe-cho-khach-nuoc-ngoai/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/huong-dan/thu-tuc/": {
    "status": "DONE_LIVE",
@@ -1371,6 +1568,14 @@
    ],
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #60 (5b4ba1c): /blog/huong-dan/thu-tuc/ (H1 'Hợp đồng, cọc, gia hạn và đổi xe', title/meta mới), /blog/an-toan/bang-lai/ (đoạn trả lời theo Luật 36/2024/QH15), BA-0427 H2 'menu bấm chọn'."
+  },
+  "/blog/huong-dan/troi-mua-thue-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "D06A-CEN1A"
+   ],
+   "date": "2026-11-01",
+   "note": "PR #64 (725c84f) live: câu trùng D06A + sửa khẳng định Agent tiếng Anh; kiểm live BA-0143, BA-0083, BA-1105"
   },
   "/blog/thue-xe/": {
    "status": "DONE_LIVE",

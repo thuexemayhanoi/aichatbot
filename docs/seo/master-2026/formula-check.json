@@ -6,31 +6,31 @@
     {
       "kpi": "Tổng URL kiểm kê",
       "formula": "=COUNTA('URL INVENTORY'!A:A)-1",
-      "value": 2169,
+      "value": 2168,
       "ok": true
     },
     {
       "kpi": "URL trong sitemap",
       "formula": "=COUNTIF('URL INVENTORY'!E:E,\"Có\")",
-      "value": 2169,
+      "value": 2168,
       "ok": true
     },
     {
       "kpi": "URL có file build",
       "formula": "=COUNTIF('URL INVENTORY'!F:F,\"Có\")",
-      "value": 2169,
+      "value": 2168,
       "ok": true
     },
     {
       "kpi": "URL có ≥ 1 trang liên kết vào",
       "formula": "=COUNTIF('URL INVENTORY'!G:G,\">0\")",
-      "value": 2169,
+      "value": 2168,
       "ok": true
     },
     {
       "kpi": "URL đối soát OK (≥ 3 nguồn)",
       "formula": "=COUNTIF('URL INVENTORY'!K:K,\"OK\")",
-      "value": 2169,
+      "value": 2168,
       "ok": true
     },
     {
@@ -48,13 +48,13 @@
     {
       "kpi": "Phân loại KEEP",
       "formula": "=COUNTIF('URL INVENTORY'!L:L,\"KEEP\")",
-      "value": 2112,
+      "value": 2141,
       "ok": true
     },
     {
       "kpi": "Phân loại IMPROVE",
       "formula": "=COUNTIF('URL INVENTORY'!L:L,\"IMPROVE\")",
-      "value": 57,
+      "value": 27,
       "ok": true
     },
     {
@@ -102,7 +102,7 @@
     {
       "kpi": "QA nhà máy trung bình (bài)",
       "formula": "=ROUND(AVERAGE('QA RESULTS'!M:M),1)",
-      "value": 99.1,
+      "value": 99.2,
       "ok": true
     },
     {
@@ -210,25 +210,25 @@
     {
       "kpi": "URL còn việc mở (OPEN)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"OPEN\")",
-      "value": 513,
+      "value": 488,
       "ok": true
     },
     {
       "kpi": "URL đã sửa và kiểm tra live (DONE_LIVE)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"DONE_LIVE\")",
-      "value": 144,
+      "value": 175,
       "ok": true
     },
     {
       "kpi": "URL đã rà soát, không cần đổi (REVIEWED_OK)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"REVIEWED_OK\")",
-      "value": 60,
+      "value": 61,
       "ok": true
     },
     {
       "kpi": "URL không có việc mở (OK)",
       "formula": "=COUNTIF('URL INVENTORY'!N:N,\"OK\")",
-      "value": 1452,
+      "value": 1444,
       "ok": true
     },
     {

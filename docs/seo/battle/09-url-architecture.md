@@ -2,7 +2,7 @@
 
 _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang đối thủ đã audit: 127 (5 không tải được). Sinh bởi `node tools/seo-battle-matrix.mjs` — không sửa tay._
 
-2169 URL hiện có (giữ nguyên 100%, không xóa/gộp/noindex) + 0 URL đề xuất (owner thêm ID vào data/blog/content-matrix.csv). Vị trí: Supporting của pillar họ chủ đề (1670); Trang chủ (pillar thương hiệu / K01) (1); Trang chuyển đổi (chính sách) (1); Trang chuyển đổi (2); Hub cấp 1 (4); Hub danh mục (6); Pillar (trang đích của nhóm từ khóa / pillar cụm) (336); Hub phân trang (không nhắm từ khóa) (102); E-E-A-T (1); Pháp lý (không nhắm từ khóa) (2); Hub chủ đề con (42); Ứng dụng Agent (công cụ / K01) (1); Bài viết (supporting) (1). Từ khóa chính trùng giữa URL: 0; trang nhận nhóm khác ý định SERP: 11.
+2168 URL hiện có (giữ nguyên 100%, không xóa/gộp/noindex) + 0 URL đề xuất (owner thêm ID vào data/blog/content-matrix.csv). Vị trí: Supporting của pillar họ chủ đề (1670); Trang chủ (pillar thương hiệu / K01) (1); Trang chuyển đổi (chính sách) (1); Trang chuyển đổi (2); Hub cấp 1 (4); Hub danh mục (6); Pillar (trang đích của nhóm từ khóa / pillar cụm) (336); Hub phân trang (không nhắm từ khóa) (102); E-E-A-T (1); Pháp lý (không nhắm từ khóa) (2); Hub chủ đề con (41); Ứng dụng Agent (công cụ / K01) (1); Bài viết (supporting) (1). Từ khóa chính trùng giữa URL: 0; trang nhận nhóm khác ý định SERP: 11.
 
 ## URL đề xuất mới
 
@@ -120,7 +120,6 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | /blog/dia-phuong/ha-noi/ | Hub chủ đề con | hành trình văn hóa hà nội bằng xe máy | Thông tin / điều hướng (có đoạn dẫn riêng) | K17 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/dia-phuong/phuong-xa/ | Hub chủ đề con | đi xe máy theo phường xã hà nội | Thông tin / điều hướng (có đoạn dẫn riêng) | K17 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/huong-dan/ban-do/ | Hub chủ đề con | dẫn đường khi đi xe máy thuê | Thông tin / điều hướng (có đoạn dẫn riêng) | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
-| /blog/huong-dan/chuan-bi/ | Hub chủ đề con | hướng dẫn thuê xe máy từng bước | Điều hướng / danh sách | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/huong-dan/dat-xe/ | Hub chủ đề con | đặt xe máy thuê | Thông tin / điều hướng (có đoạn dẫn riêng) | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/huong-dan/giay-to/ | Hub chủ đề con | giấy tờ thuê xe theo từng trường hợp | Thông tin / điều hướng (có đoạn dẫn riêng) | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/huong-dan/nhan-xe/ | Hub chủ đề con | nhận xe máy thuê | Thông tin / điều hướng (có đoạn dẫn riêng) | K04 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
@@ -133,5 +132,6 @@ _Chế độ ZERO-DATA; SERP đã chụp: 2026-10-14.json (72 truy vấn); trang
 | /blog/thue-xe/nhan-xe/ | Hub chủ đề con | chuẩn bị nhận xe thuê | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/thue-xe/thu-tuc/ | Hub chủ đề con | bằng lái và điều kiện thuê xe máy | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 | /blog/thue-xe/thue-thang/ | Hub chủ đề con | thuê xe máy dài hạn hà nội | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
+| /blog/thue-xe/thue-tuan/ | Hub chủ đề con | gói thuê xe máy theo tuần | Thông tin / điều hướng (có đoạn dẫn riêng) | K19 | Hub chủ đề con | Điều hướng tới pillar và bài phù hợp |  |  |
 
-Toàn bộ 2169 URL: `09-url-architecture.csv`.
+Toàn bộ 2168 URL: `09-url-architecture.csv`.
