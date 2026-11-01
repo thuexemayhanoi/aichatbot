@@ -30,7 +30,7 @@ Mỗi bài dưới đây phải có cờ trong `config/seo-cold-start.json` → 
 |---|---|---|---:|---|
 | — | | | | |
 
-Đã đối chiếu toàn văn văn bản sửa đổi: luat-36-2024 ← luat-118-2025 (rà ngày 31/10/2026, 225 bài dẫn; ghi chú trong sổ đăng ký).
+Đã đối chiếu toàn văn văn bản sửa đổi: luat-36-2024 ← luat-118-2025 (rà ngày 31/10/2026, 226 bài dẫn; ghi chú trong sổ đăng ký).
 Đã đối chiếu toàn văn văn bản sửa đổi: nd-168-2024 ← nd-238-2026 (rà ngày 23/10/2026, 232 bài dẫn; ghi chú trong sổ đăng ký).
 
 ## 4. Văn bản dẫn như hiện hành nhưng chưa đối chiếu toàn văn
@@ -45,7 +45,7 @@ Hàng đợi đối chiếu (cần truy cập nguồn chính thức: Cổng TTĐ
 
 | Văn bản | Tên | Trạng thái | Bằng chứng | Hiệu lực | Thay/sửa bởi | Bài dẫn như hiện hành | Bài nhắc quy định cũ | Dẫn theo tên |
 |---|---|---|---|---|---|---:|---:|---:|
-| luat-36-2024 | Luật Trật tự, an toàn giao thông đường bộ số 36/2024/QH15 | amended | fulltext | 01/01/2025 | luat-118-2025 | 225 | 1 | 64 |
+| luat-36-2024 | Luật Trật tự, an toàn giao thông đường bộ số 36/2024/QH15 | amended | fulltext | 01/01/2025 | luat-118-2025 | 226 | 1 | 64 |
 | luat-118-2025 | Luật số 118/2025/QH15 sửa đổi, bổ sung một số điều của 10 luật có liên quan đến an ninh, trật tự | in_force | fulltext | 01/07/2026 | — | 0 | 0 | 0 |
 | luat-23-2008 | Luật Giao thông đường bộ số 23/2008/QH12 | replaced | reported | 01/07/2009 | luat-36-2024 | 0 | 3 | 3 |
 | luat-39-2024 | Luật Thủ đô số 39/2024/QH15 | replaced | fulltext | 01/01/2025 | luat-02-2026-qh16 | 0 | 0 | 0 |
