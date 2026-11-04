@@ -10,6 +10,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { reviewArticle, REVIEW_LOG, loadLegalFacts, legalFactProblems, registeredSources } from '../../tools/seo-body-review.mjs';
 import { taxonomy } from '../../tools/taxonomy.mjs';
+import { unaccentedWords, FAQ_HEADING_RE } from '../../tools/seo-meta.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
@@ -75,6 +76,29 @@ test('body hygiene: no leaked editor notes, foreign-script glitches or English l
     assert.ok(!/\bHmm\b|\btypo\b|\blebih\b/.test(body), `${a.article_id}: leaked editor note or foreign word`);
     assert.ok(!/\b(CLAIM|SUBJECT|CONDITION|PRIMARY SOURCE)\b/.test(body) && !/\b(claim|subject|condition|primary source):/i.test(body), `${a.article_id}: legal-gate labels must be Vietnamese`);
   }
+});
+
+test('body hygiene: no Vietnamese words written without their diacritics ("xe xang", "Thue xe")', () => {
+  // BA-0331 is about the assistant reading unaccented messages: its examples
+  // ("giá thue xe máy bao nhiêu, cua hang mo cua may gio") are the topic.
+  const DEMONSTRATES_UNACCENTED_TYPING = new Set(['BA-0331']);
+  for (const a of MANIFEST) {
+    if (DEMONSTRATES_UNACCENTED_TYPING.has(a.article_id)) continue;
+    const words = unaccentedWords(read(a.body));
+    assert.deepEqual(words, [], `${a.article_id}: unaccented Vietnamese in prose: ${words.slice(0, 5).join(', ')}`);
+  }
+  assert.deepEqual(unaccentedWords('<p>So với xe xang, khi Thue xe</p>'), ['xang', 'Thue']);
+  assert.deepEqual(unaccentedWords('<p>Gõ "thue vision 3 ngay" vẫn hiểu; Hoan Kiem, Long Bien; luống rau mới gieo.</p>'), []);
+  assert.deepEqual(unaccentedWords('<p>đi đường an toàn, nguoi moi</p>'), ['nguoi']);
+});
+
+test('one Q&A definition: the SEO score accepts what the body review treats as an FAQ', () => {
+  assert.ok(FAQ_HEADING_RE.test('<h2>Thắc mắc thường gặp về chở hành lý</h2>'));
+  assert.ok(FAQ_HEADING_RE.test('<h2 id="x">Câu hỏi du khách hay hỏi về cọc xe điện</h2>'));
+  assert.ok(!FAQ_HEADING_RE.test('<h2>Tổng kết</h2>'));
+  assert.ok(!FAQ_HEADING_RE.test('<h3>Câu hỏi thường gặp</h3>'), 'only an H2 opens a section');
+  const score = read('tools/seo-score.mjs');
+  assert.match(score, /FAQ_HEADING_RE\.test\(html\)/, 'seo-score uses the shared definition');
 });
 
 test('condense only shortens bodies above 2,000 words, with a shorter wording', () => {

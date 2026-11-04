@@ -53,6 +53,36 @@ export function seedTypos(text) {
   return SEED_TYPOS.filter((x) => t.includes(x));
 }
 
+/** A body's question-and-answer section: an H2 whose heading names questions
+ *  ("Câu hỏi thường gặp", "Thắc mắc thường gặp về …", "Câu hỏi du khách hay
+ *  hỏi …", FAQ). One definition for the body review (never adds a second FAQ)
+ *  and the SEO score (Q&A present). */
+export const FAQ_HEADING_RE = /<h2[^>]*>[^<]*(câu hỏi|hỏi đáp|faq|thắc mắc)/i;
+
+/** Vietnamese words written without their diacritics, which are spelling
+ *  errors in prose: "iê", "uô", "ươ", "yê" always carry a mark, and a few
+ *  frequent words have no valid unaccented form. Quoted text is skipped —
+ *  articles quote unaccented messages on purpose ("thue vision 3 ngay").
+ *  Capitalised tokens are skipped for the vowel rule (English place names
+ *  such as Hoan Kiem, Long Bien in English passages). */
+const UNACCENTED_WORDS = new Set(['thue', 'xang', 'khong', 'duoc', 'nguoi', 'viec', 'neu']);
+const UNACCENTED_OK = new Set(['gieo', 'yes']);
+export function unaccentedWords(html) {
+  const text = String(html ?? '')
+    .replace(/\{\{[^}]*\}\}/g, ' ')
+    .replace(/<[^>]+>/g, '\n')
+    .replace(/"[^"\n]{0,200}"/g, ' ')
+    .replace(/“[^”\n]{0,200}”/g, ' ');
+  const out = [];
+  for (const [w] of text.matchAll(/(?<![A-Za-zÀ-ỹđĐ])[A-Za-z]+(?![A-Za-zÀ-ỹđĐ])/g)) {
+    const lw = w.toLowerCase();
+    if (UNACCENTED_OK.has(lw)) continue;
+    const vowelRule = w === lw && /^(ngh|ng|nh|ch|tr|th|kh|gh|ph|gi|qu|[bcdghklmnpqrstvx])?(ie|uo|uye|ye)[a-z]{1,2}$/.test(lw);
+    if (UNACCENTED_WORDS.has(lw) || vowelRule) out.push(w);
+  }
+  return out;
+}
+
 /** Read the SEO metadata map { article_id -> entry }; missing file = {}. */
 export function loadSeoMeta(root) {
   const p = join(root, SEO_META_PATH);
