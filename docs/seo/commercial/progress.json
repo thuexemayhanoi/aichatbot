@@ -1433,9 +1433,11 @@
       ],
       "scope": "Vệ sinh nội dung: chữ tiếng Việt thiếu dấu trong văn bản (không phải câu ví dụ trong ngoặc kép) trên 14 bài; lời hứa dịch vụ chưa xác minh ('luôn hướng dẫn') ở 2 bài; bộ dò mục hỏi đáp của seo-score hẹp hơn định nghĩa của công cụ review body (18 bài báo nhầm).",
       "changes": "Sửa qua tools/seo-body-review.mjs (replace): 'xe xang' → 'xe xăng' (11 bài, 29 chỗ), 'tiết kiệm xang' (BA-0302), 'xe thue' (BA-0316), tiêu đề 'Hợp Đồng Thue Xe' → câu thường (BA-0329), 'Thue xe số' (BA-0290); BA-0310: viết lại đoạn Tổng kết vốn không dấu và vô nghĩa thành tóm tắt đúng nội dung bài, 'tính lô trình' → 'tính lộ trình', 'dây cương' → 'dây ga', anchor viết hoa từng chữ, câu 'Cửa hàng … luôn hướng dẫn … Mọi thay đổi sẽ được ghi nhận' → lời khuyên cho người thuê; BA-0371: 'đội ngũ luôn hướng dẫn khách làm quen phanh' → lời khuyên tự làm quen ở đoạn vắng. tools/seo-meta.mjs: FAQ_HEADING_RE dùng chung (seo-body-review + seo-score) và unaccentedWords(); test vệ sinh mới chặn chữ thiếu dấu (bỏ qua ngoặc kép, BA-0331 minh họa cách gõ không dấu). REVIEW_DATE 2026-11-04.",
-      "qa": "QA nhà máy trước/sau: 15/15 giữ hoặc tăng (BA-0371 95 → 100); seo-score 100/100, cảnh báo 19 → 1 (chỉ còn CSS, B14); site-audit 0 link hỏng; seo-legal-citations 0 lỗi; node --test (xem PR).",
+      "qa": "QA nhà máy trước/sau: 15/15 giữ hoặc tăng (BA-0371 95 → 100); seo-score 100/100, cảnh báo 19 → 1 (chỉ còn CSS, B14); site-audit 0 link hỏng; seo-legal-citations 0 lỗi; node --test 1206/1206; CI, Distribution, Blog Shared Rebuild, Blog Factory, Pages trên main xanh.",
       "not_changed": "'chứng minh thư' ở 9 bài để lại: giấy tờ cửa hàng yêu cầu đang chờ chủ sở hữu (RR-18).",
-      "live_verified": "chờ deploy"
+      "live_verified": "2026-11-04",
+      "merged": "2977f599 (PR #88)",
+      "live_note": "Firecrawl maxAge 0 sau Pages deploy 2977f599: BA-0310 đoạn Tổng kết mới (\"Nếu bạn là người mới, việc thuê xe máy lần đầu sẽ suôn sẻ hơn…\"), 0 \"Neu ban\", 0 \"dây cương\", 0 \"luôn hướng dẫn\"; BA-0087 0 \"xe xang\", 9 \"xe xăng\"; byline \"cập nhật 2026-11-04\", Article dateModified 2026-11-04. Ghi sổ work-status DONE_LIVE 15 URL."
     }
   ],
   "rules": [
@@ -1446,7 +1448,7 @@
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
   "last_completed_batch": "H3-DIACRITIC",
-  "last_verified_commit": "e9194024",
+  "last_verified_commit": "2977f599",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
   "next_article_ids_note": "Đã xong và xác minh live: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (bộ dò AVAIL/SHOP_CLAIM đọc xuyên liên kết và placeholder), BODY-STRUCT 0, LEGAL-CHECK 0, content-review REVIEW 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA3, LEGAL-FEE1. Lớp giá: tools/fact-bind.mjs check = 0 giá/dữ kiện gõ tay; 11 'lệch' là tổng hai xe hoặc giá tháng chia ngày, đúng số học. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Việc theo lịch: sau 31/12/2026 rà câu lệ phí BA-0047 (Thông tư 29/2026/TT-BTC hết hiệu lực); từ 28/02/2027 Thông tư 117/2026/TT-BTC hết hiệu lực.",
