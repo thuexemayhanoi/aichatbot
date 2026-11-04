@@ -1406,8 +1406,9 @@
       "scope": "Nhãn chủ đề con trùng tên danh mục làm một anchor text trỏ hai URL khác nhau trên mọi trang (menu): 'Hướng Dẫn' (/blog/app/huong-dan/ và /blog/huong-dan/), 'An Toàn' (/blog/xe-dien/an-toan/ và /blog/an-toan/), 'Xe Điện' (chủ đề con của An Toàn, chưa có hub). seo-score: 556 bài 'exact-match anchor used >6 times' (302 Hướng Dẫn, 254 An Toàn).",
       "changes": "data/blog/taxonomy.json: HD-APP 'Hướng Dẫn' → 'Cách Dùng App'; AN-TOAN-EV 'An Toàn' → 'Lái An Toàn' (nhãn menu phải 2–3 từ theo test menu-completeness/nav-sync-v3); XE-DIEN-SAFE 'Xe Điện' → 'Luật Xe Điện'. Slug, URL, sitemap, body, published.json, content-matrix không đổi; hub con giữ title/H1 từ hub guide (M5). Build lại site (menu/drawer/breadcrumb/chip/ItemList đổi nhãn), sinh lại docs/seo/seo-master-matrix.{csv,json} và data/seo/image-plan.csv (cột subtopic).",
       "qa": "seo-score 99.6 → 100/100 (Internal Linking 9.6 → 10; anchor trùng 556 → 0); site-audit 2168 trang, 0 link hỏng; Playwright 390 px (drawer) và 1440 px (dropdown + sidebar): nhãn mới hiển thị một dòng, không tràn, scrollWidth = viewport; node --test (xem PR).",
-      "live_verified": "chờ deploy",
-      "live_note": "Kiểm live sau merge: /blog/xe-dien/an-toan/ và /blog/app/huong-dan/ (breadcrumb, chip, menu) và một bài mỗi chủ đề con."
+      "live_verified": "2026-11-04",
+      "live_note": "Firecrawl maxAge 0 sau Pages deploy e9194024 (meta motoai-build v76): /blog/xe-dien/an-toan/ breadcrumb \"… › Xe Điện › Lái An Toàn\"; /blog/app/huong-dan/ breadcrumb \"… › Ứng Dụng › Cách Dùng App\"; BA-0007 chip \"Ứng Dụng | Cách Dùng App\"; BA-0093 chip \"Xe Điện | Lái An Toàn\"; 0 nhãn cũ (aria-label \"Ứng Dụng: Hướng Dẫn\", \"Xe Điện: An Toàn\") trên 4 trang. Ghi sổ work-status DONE_LIVE 4 URL.",
+      "merged": "faca9d97 (PR #85); deploy kích hoạt lại bởi e9194024 (PR #86) vì merge #85 trả 502 trong sự cố GitHub 04/11 và không phát sự kiện push"
     }
   ],
   "rules": [
@@ -1418,7 +1419,7 @@
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
   "last_completed_batch": "M8-ANCHOR",
-  "last_verified_commit": "91940308",
+  "last_verified_commit": "e9194024",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
   "next_article_ids_note": "Đã xong và xác minh live: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (bộ dò AVAIL/SHOP_CLAIM đọc xuyên liên kết và placeholder), BODY-STRUCT 0, LEGAL-CHECK 0, content-review REVIEW 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA3, LEGAL-FEE1. Lớp giá: tools/fact-bind.mjs check = 0 giá/dữ kiện gõ tay; 11 'lệch' là tổng hai xe hoặc giá tháng chia ngày, đúng số học. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Việc theo lịch: sau 31/12/2026 rà câu lệ phí BA-0047 (Thông tư 29/2026/TT-BTC hết hiệu lực); từ 28/02/2027 Thông tư 117/2026/TT-BTC hết hiệu lực.",

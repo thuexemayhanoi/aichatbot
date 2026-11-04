@@ -2354,6 +2354,14 @@
    "date": "2026-11-01",
    "note": "APP-CLAIM lô 2: trợ lý không báo xe còn trống/giữ chỗ; live 8857985d (BA-0315 FAQ, BA-0100, BA-1485)"
   },
+  "/blog/app/cach-dung-ung-dung-thue-xe-may/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M8-ANCHOR"
+   ],
+   "date": "2026-11-04",
+   "note": "Nhãn chủ đề con không trùng tên danh mục (Cách Dùng App, Lái An Toàn); kiểm live build v76 sau deploy e9194024: breadcrumb, chip, menu đúng nhãn mới; 0 nhãn cũ"
+  },
   "/blog/app/cach-ung-dung-hieu-cau-hoi-ve-gia-xe/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -2552,10 +2560,11 @@
   "/blog/app/huong-dan/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M5-HUB-GUIDES-3"
+    "M5-HUB-GUIDES-3",
+    "M8-ANCHOR"
    ],
-   "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #61 (1adbecc): /blog/app/ có đoạn trả lời (Agent không tự chốt đơn) và mục 'Giới hạn cần biết'."
+   "date": "2026-11-04",
+   "note": "Nhãn chủ đề con không trùng tên danh mục (Cách Dùng App, Lái An Toàn); kiểm live build v76 sau deploy e9194024: breadcrumb, chip, menu đúng nhãn mới; 0 nhãn cũ"
   },
   "/blog/app/huy-lich-thue-xe-qua-app-cho-khach-nuoc-ngoai/": {
    "status": "DONE_LIVE",
@@ -4691,10 +4700,11 @@
   "/blog/xe-dien/an-toan/": {
    "status": "DONE_LIVE",
    "batches": [
-    "M5-HUB-GUIDES-1"
+    "M5-HUB-GUIDES-1",
+    "M8-ANCHOR"
    ],
-   "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #59 (1727b56): đoạn trả lời đầu trang + bản đồ chủ đề trên trang 1; kiểm tra /blog/thue-xe/gia-thue/ (H1 'Cách tính giá thuê xe máy', title/meta mới), /blog/xe-dien/ (giá xe điện 'chưa công bố'), /blog/dia-phuong/diem-tham-quan/ (khung giờ thí điểm Hồ Gươm)."
+   "date": "2026-11-04",
+   "note": "Nhãn chủ đề con không trùng tên danh mục (Cách Dùng App, Lái An Toàn); kiểm live build v76 sau deploy e9194024: breadcrumb, chip, menu đúng nhãn mới; 0 nhãn cũ"
   },
   "/blog/xe-dien/app-mo-khoa-xe-dien-gia-tot/": {
    "status": "DONE_LIVE",
@@ -5121,6 +5131,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/xe-dien/xe-dien-an-toan-khong/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "M8-ANCHOR"
+   ],
+   "date": "2026-11-04",
+   "note": "Nhãn chủ đề con không trùng tên danh mục (Cách Dùng App, Lái An Toàn); kiểm live build v76 sau deploy e9194024: breadcrumb, chip, menu đúng nhãn mới; 0 nhãn cũ"
   },
   "/blog/xe-dien/xe-dien-chay-bao-xa/": {
    "status": "DONE_LIVE",
