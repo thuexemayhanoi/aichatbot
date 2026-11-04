@@ -23,6 +23,7 @@
  */
 import { readFileSync, existsSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { FAQ_HEADING_RE } from './seo-meta.mjs';
 import { fileURLToPath } from 'node:url';
 import { SITE } from '../src/config/site.js';
 import { auditSite, createSiteIo, resolveInternal } from './site-audit.mjs';
@@ -318,7 +319,9 @@ function checkAiGEO(pages, io, ctx) {
   for (const p of pages.filter((x) => x.kind === 'article')) {
     const html = io.read(p.path);
     const t = text(html);
-    add(/Câu hỏi thường gặp|FAQ|hỏi đáp/i.test(t), 'no Q&A section', p.path);
+    // Same definition as the body review: an H2 naming questions ("Thắc mắc thường gặp",
+    // "Câu hỏi du khách hay hỏi …"), not only the literal "Câu hỏi thường gặp".
+    add(FAQ_HEADING_RE.test(html) || /Câu hỏi thường gặp|FAQ|hỏi đáp/i.test(t), 'no Q&A section', p.path);
     add(html.includes(business.hours.display) || !/mở cửa|giờ/i.test(t) || t.includes(business.hours.display), 'hours claim not backed by verified data', p.path);
     // v80: only a stated deposit AMOUNT can contradict business.json; a page
     // that mentions deposits without a number defers to the booking step.

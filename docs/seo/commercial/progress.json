@@ -1409,6 +1409,33 @@
       "live_verified": "2026-11-04",
       "live_note": "Firecrawl maxAge 0 sau Pages deploy e9194024 (meta motoai-build v76): /blog/xe-dien/an-toan/ breadcrumb \"… › Xe Điện › Lái An Toàn\"; /blog/app/huong-dan/ breadcrumb \"… › Ứng Dụng › Cách Dùng App\"; BA-0007 chip \"Ứng Dụng | Cách Dùng App\"; BA-0093 chip \"Xe Điện | Lái An Toàn\"; 0 nhãn cũ (aria-label \"Ứng Dụng: Hướng Dẫn\", \"Xe Điện: An Toàn\") trên 4 trang. Ghi sổ work-status DONE_LIVE 4 URL.",
       "merged": "faca9d97 (PR #85); deploy kích hoạt lại bởi e9194024 (PR #86) vì merge #85 trả 502 trong sự cố GitHub 04/11 và không phát sự kiện push"
+    },
+    {
+      "batch_id": "H3-DIACRITIC",
+      "reviewed": "2026-11-04",
+      "branch": "claude/seo-diacritic1",
+      "article_ids": [
+        "BA-0310",
+        "BA-0371",
+        "BA-0316",
+        "BA-0329",
+        "BA-0290",
+        "BA-0302",
+        "BA-0279",
+        "BA-0089",
+        "BA-0164",
+        "BA-0777",
+        "BA-0387",
+        "BA-0093",
+        "BA-0081",
+        "BA-0399",
+        "BA-0087"
+      ],
+      "scope": "Vệ sinh nội dung: chữ tiếng Việt thiếu dấu trong văn bản (không phải câu ví dụ trong ngoặc kép) trên 14 bài; lời hứa dịch vụ chưa xác minh ('luôn hướng dẫn') ở 2 bài; bộ dò mục hỏi đáp của seo-score hẹp hơn định nghĩa của công cụ review body (18 bài báo nhầm).",
+      "changes": "Sửa qua tools/seo-body-review.mjs (replace): 'xe xang' → 'xe xăng' (11 bài, 29 chỗ), 'tiết kiệm xang' (BA-0302), 'xe thue' (BA-0316), tiêu đề 'Hợp Đồng Thue Xe' → câu thường (BA-0329), 'Thue xe số' (BA-0290); BA-0310: viết lại đoạn Tổng kết vốn không dấu và vô nghĩa thành tóm tắt đúng nội dung bài, 'tính lô trình' → 'tính lộ trình', 'dây cương' → 'dây ga', anchor viết hoa từng chữ, câu 'Cửa hàng … luôn hướng dẫn … Mọi thay đổi sẽ được ghi nhận' → lời khuyên cho người thuê; BA-0371: 'đội ngũ luôn hướng dẫn khách làm quen phanh' → lời khuyên tự làm quen ở đoạn vắng. tools/seo-meta.mjs: FAQ_HEADING_RE dùng chung (seo-body-review + seo-score) và unaccentedWords(); test vệ sinh mới chặn chữ thiếu dấu (bỏ qua ngoặc kép, BA-0331 minh họa cách gõ không dấu). REVIEW_DATE 2026-11-04.",
+      "qa": "QA nhà máy trước/sau: 15/15 giữ hoặc tăng (BA-0371 95 → 100); seo-score 100/100, cảnh báo 19 → 1 (chỉ còn CSS, B14); site-audit 0 link hỏng; seo-legal-citations 0 lỗi; node --test (xem PR).",
+      "not_changed": "'chứng minh thư' ở 9 bài để lại: giấy tờ cửa hàng yêu cầu đang chờ chủ sở hữu (RR-18).",
+      "live_verified": "chờ deploy"
     }
   ],
   "rules": [
@@ -1418,7 +1445,7 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "M8-ANCHOR",
+  "last_completed_batch": "H3-DIACRITIC",
   "last_verified_commit": "e9194024",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,

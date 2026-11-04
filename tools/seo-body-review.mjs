@@ -49,7 +49,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { englishTokens } from './seo-meta.mjs';
+import { englishTokens, FAQ_HEADING_RE as FAQ_RE } from './seo-meta.mjs';
 import { taxonomy } from './taxonomy.mjs';
 import { resolveFacts } from './build-blog.mjs';
 import { PRICING, priceFact } from './blog-components.mjs';
@@ -58,7 +58,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 export const REVIEW_LOG = 'data/seo/body-reviews.json';
 export const LEGAL_FACTS = 'data/seo/legal-facts.json';
-export const REVIEW_DATE = '2026-11-01';
+export const REVIEW_DATE = '2026-11-04';
 const FORBIDDEN = ['app store', 'google play', 'toàn quốc', 'không cần cọc', 'miễn cọc', 'rẻ nhất', 'số 1', 'uy tín nhất',
   'tốt nhất việt nam', 'giao xe miễn phí', 'miễn phí giao', 'cam kết 100%', '24/7'];
 const MAX_WORDS = 2000, MIN_WORDS = 800;
@@ -67,7 +67,6 @@ const escText = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').re
 const stripTags = (h) => String(h).replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&[a-z]+;/g, ' ');
 const wordCount = (h) => stripTags(h).split(/\s+/).filter(Boolean).length;
 const digitsOf = (s) => new Set((String(s).replace(/\{\{[^}]*\}\}/g, '').match(/\d+/g) ?? []).map((d) => d.replace(/^0+(?=\d)/, '')));
-const FAQ_RE = /<h2[^>]*>[^<]*(câu hỏi|hỏi đáp|faq|thắc mắc)/i;
 
 function manifestIndex() {
   const arts = JSON.parse(read('data/blog/published.json')).articles;
