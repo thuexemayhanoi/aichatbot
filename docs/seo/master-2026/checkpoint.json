@@ -1,9 +1,9 @@
 {
   "$schema": "motoai/master-seo-2026-checkpoint@1",
-  "date": "2026-11-01",
-  "last_completed_batch": "CTA3",
+  "date": "2026-11-04",
+  "last_completed_batch": "M8-ANCHOR",
   "last_verified_commit": "91940308",
-  "next": "Đã xong và xác minh live: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (bộ dò AVAIL/SHOP_CLAIM đọc xuyên liên kết và placeholder), BODY-STRUCT 0, LEGAL-CHECK 0, content-review REVIEW 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA3, LEGAL-FEE1. Lớp giá: tools/fact-bind.mjs check = 0 giá/dữ kiện gõ tay; 11 'lệch' là tổng hai xe hoặc giá tháng chia ngày, đúng số học. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Việc theo lịch: sau 31/12/2026 rà câu lệ phí BA-0047 (Thông tư 29/2026/TT-BTC hết hiệu lực); từ 28/02/2027 Thông tư 117/2026/TT-BTC hết hiệu lực.",
+  "next": "Lô M8-ANCHOR (PR #85, faca9d97): nhãn chủ đề con trùng tên danh mục → \"Cách Dùng App\", \"Lái An Toàn\", \"Luật Xe Điện\"; seo-score 100/100, anchor trùng 556 → 0; chờ deploy + kiểm live /blog/xe-dien/an-toan/ và /blog/app/huong-dan/. Đã xong và xác minh live: M1–M7, DUP-PARA 0, FEATURE-CLAIM 0 (bộ dò AVAIL/SHOP_CLAIM đọc xuyên liên kết và placeholder), BODY-STRUCT 0, LEGAL-CHECK 0, content-review REVIEW 0, PTS, TN1, EN2, NAP1–NAP5, APP1–APP2B, CTA1–CTA3, LEGAL-FEE1. Lớp giá: tools/fact-bind.mjs check = 0 giá/dữ kiện gõ tay; 11 'lệch' là tổng hai xe hoặc giá tháng chia ngày, đúng số học. Hàng đợi công việc chỉ còn LOCAL-SCOPE 286 (chờ RR-13). Còn lại phụ thuộc chủ sở hữu: APP3 (RR-21, 37 bài), mũ bảo hiểm/áo mưa đi kèm (RR-22), Zalo chính thức (RR-23), Search Console (RR-09), GBP (RR-17), local_scope (RR-13), Agent tiếng Anh (RR-20). Việc theo lịch: sau 31/12/2026 rà câu lệ phí BA-0047 (Thông tư 29/2026/TT-BTC hết hiệu lực); từ 28/02/2027 Thông tư 117/2026/TT-BTC hết hiệu lực.",
   "remaining": {
     "status": {
       "DONE_LIVE": 524,
@@ -68,10 +68,16 @@
     {
       "id": "B14",
       "priority": "P3",
-      "issue": "CSS mỗi trang 85.7 KB chưa nén (cảnh báo nội bộ ≥ 64 KB)",
+      "issue": "CSS mỗi trang 85.7 KB chưa nén (cảnh báo nội bộ ≥ 64 KB) — cảnh báo duy nhất còn lại của seo-score (blog.css 51 KB + style.css 36.6 KB; Pages nén gzip khi phục vụ)",
       "owner": "agent",
       "batch": "—"
     }
   ],
-  "resume_rule": "Khi nhận \"Tiếp tục\": fetch origin/main, đọc file này + docs/seo/commercial/progress.json, chạy lại python3 tools/seo-master-2026.py --verify, rồi làm lô kế tiếp (tối đa 5–20 URL/lô, ≤ 30 theo AGENTS.md)."
+  "resume_rule": "Khi nhận \"Tiếp tục\": fetch origin/main, đọc file này + docs/seo/commercial/progress.json, chạy lại python3 tools/seo-master-2026.py --verify, rồi làm lô kế tiếp (tối đa 5–20 URL/lô, ≤ 30 theo AGENTS.md).",
+  "pending_live_verification": {
+    "batch": "M8-ANCHOR",
+    "merge_commit": "faca9d97",
+    "pr": 85,
+    "note": "Merge qua API trả 502 nhưng PR đã merged; không có run CI/Distribution/pages trên main cho faca9d97 sau 30 phút (sự kiện push bị mất). Commit sổ công việc này đẩy main để kích hoạt deploy; kiểm live sau đó."
+  }
 }
