@@ -128,10 +128,11 @@
   "/blog/an-toan/bang-lai-a1-a2-khac-gi-cho-du-khach/": {
    "status": "DONE_LIVE",
    "batches": [
-    "C09"
+    "C09",
+    "H4-ANCHORS-HEADINGS"
    ],
-   "date": "2026-11-01",
-   "note": "PR #68 (d4eb438b) — Pages live đã kiểm BA-0215/0347/0359; BA-0407 và BA-0359 (còn câu 'văn bản liên tịch') chuyển sang C10"
+   "date": "2026-11-07",
+   "note": "Anchor hỏng dấu, tiêu đề viết hoa từng chữ, lộ trình sai ở BA-0312 sửa qua review body. Kiểm live sau deploy 0ab2e749 (TinyFish ttl 0): BA-0312 lộ trình quốc lộ ven biển / đường Hồ Chí Minh, 'thường kéo dài nhiều ngày', 0 'Lào Cai', 0 '12 đến 18 giờ'; BA-0328 ba tiêu đề viết thường"
   },
   "/blog/an-toan/bang-lai-a1-a2-khac-gi-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -865,10 +866,11 @@
    "status": "DONE_LIVE",
    "batches": [
     "C06-LEGAL-SOURCES",
-    "H3-DIACRITIC"
+    "H3-DIACRITIC",
+    "H4-ANCHORS-HEADINGS"
    ],
-   "date": "2026-11-04",
-   "note": "Chữ thiếu dấu ('xe xang', 'Thue xe'…) sửa qua review body; BA-0310 đoạn Tổng kết viết lại; bỏ lời hứa 'luôn hướng dẫn' (BA-0310, BA-0371). Kiểm live sau deploy 2977f599: BA-0310 đoạn kết mới, BA-0087 0 'xe xang' / 9 'xe xăng', dateModified 2026-11-04"
+   "date": "2026-11-07",
+   "note": "Anchor hỏng dấu, tiêu đề viết hoa từng chữ, lộ trình sai ở BA-0312 sửa qua review body. Kiểm live sau deploy 0ab2e749 (TinyFish ttl 0): BA-0312 lộ trình quốc lộ ven biển / đường Hồ Chí Minh, 'thường kéo dài nhiều ngày', 0 'Lào Cai', 0 '12 đến 18 giờ'; BA-0328 ba tiêu đề viết thường"
   },
   "/blog/an-toan/idp-va-bang-lai-quoc-te-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -2674,6 +2676,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
   },
+  "/blog/app/thue-xe-online-nhu-the-nao-nam-2026/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "H4-ANCHORS-HEADINGS"
+   ],
+   "date": "2026-11-07",
+   "note": "Anchor hỏng dấu, tiêu đề viết hoa từng chữ, lộ trình sai ở BA-0312 sửa qua review body. Kiểm live sau deploy 0ab2e749 (TinyFish ttl 0): BA-0312 lộ trình quốc lộ ven biển / đường Hồ Chí Minh, 'thường kéo dài nhiều ngày', 0 'Lào Cai', 0 '12 đến 18 giờ'; BA-0328 ba tiêu đề viết thường"
+  },
   "/blog/app/thue-xe-online-nhu-the-nao-tai-ha-noi/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3055,6 +3065,14 @@
    "date": "2026-11-01",
    "note": "Live 01/11/2026 sau merge #63 (eba184d): BA-1153 FAQ 'Hiện trợ lý trả lời bằng tiếng Việt…'; BA-0107 câu căn cứ 'Văn bản áp dụng khi lái trong sương mù…' và câu giao xe mới. Câu trùng 93 → 52 bài."
   },
+  "/blog/dia-phuong/chua-va-ha-noi-hai-ngay-mot-dem/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "H4-ANCHORS-HEADINGS"
+   ],
+   "date": "2026-11-07",
+   "note": "Anchor hỏng dấu, tiêu đề viết hoa từng chữ, lộ trình sai ở BA-0312 sửa qua review body. Kiểm live sau deploy 0ab2e749 (TinyFish ttl 0): BA-0312 lộ trình quốc lộ ven biển / đường Hồ Chí Minh, 'thường kéo dài nhiều ngày', 0 'Lào Cai', 0 '12 đến 18 giờ'; BA-0328 ba tiêu đề viết thường"
+  },
   "/blog/dia-phuong/cot-co-hoang-thanh/": {
    "status": "DONE_LIVE",
    "batches": [
@@ -3062,6 +3080,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #75 (d699eca1) — Pages live đã kiểm BA-0185, BA-0069, BA-0214 (cửa hàng Nguyễn Tú thay cho MotoAI trong câu kết)"
+  },
+  "/blog/dia-phuong/da-lat-duong-xa/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "H4-ANCHORS-HEADINGS"
+   ],
+   "date": "2026-11-07",
+   "note": "Anchor hỏng dấu, tiêu đề viết hoa từng chữ, lộ trình sai ở BA-0312 sửa qua review body. Kiểm live sau deploy 0ab2e749 (TinyFish ttl 0): BA-0312 lộ trình quốc lộ ven biển / đường Hồ Chí Minh, 'thường kéo dài nhiều ngày', 0 'Lào Cai', 0 '12 đến 18 giờ'; BA-0328 ba tiêu đề viết thường"
   },
   "/blog/dia-phuong/den-nguyen-can-bang-xe-cuoi-tuan/": {
    "status": "DONE_LIVE",
@@ -3201,6 +3227,14 @@
    ],
    "date": "2026-10-30",
    "note": "Đã rà soát, không cần đổi"
+  },
+  "/blog/dia-phuong/hanh-trinh-mai-chau/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "H4-ANCHORS-HEADINGS"
+   ],
+   "date": "2026-11-07",
+   "note": "Anchor hỏng dấu, tiêu đề viết hoa từng chữ, lộ trình sai ở BA-0312 sửa qua review body. Kiểm live sau deploy 0ab2e749 (TinyFish ttl 0): BA-0312 lộ trình quốc lộ ven biển / đường Hồ Chí Minh, 'thường kéo dài nhiều ngày', 0 'Lào Cai', 0 '12 đến 18 giờ'; BA-0328 ba tiêu đề viết thường"
   },
   "/blog/dia-phuong/ho-guom-ban-dem/": {
    "status": "DONE_LIVE",
@@ -3826,6 +3860,14 @@
    ],
    "date": "2026-11-01",
    "note": "PR #77 (c9b53bea) — Pages live đã kiểm BA-0410, BA-1014 (trợ lý cho giá tham khảo, cửa hàng xác nhận xe còn trống)"
+  },
+  "/blog/huong-dan/quy-trinh-nhan-xe-cho-nguoi-moi/": {
+   "status": "DONE_LIVE",
+   "batches": [
+    "H4-ANCHORS-HEADINGS"
+   ],
+   "date": "2026-11-07",
+   "note": "Anchor hỏng dấu, tiêu đề viết hoa từng chữ, lộ trình sai ở BA-0312 sửa qua review body. Kiểm live sau deploy 0ab2e749 (TinyFish ttl 0): BA-0312 lộ trình quốc lộ ven biển / đường Hồ Chí Minh, 'thường kéo dài nhiều ngày', 0 'Lào Cai', 0 '12 đến 18 giờ'; BA-0328 ba tiêu đề viết thường"
   },
   "/blog/huong-dan/thu-tuc-thue-xe-may-cho-nguoi-moi/": {
    "status": "DONE_LIVE",
@@ -5022,10 +5064,11 @@
   "/blog/xe-dien/phanh-xe-may-dien/": {
    "status": "DONE_LIVE",
    "batches": [
-    "D01-DUP-PARA"
+    "D01-DUP-PARA",
+    "H4-ANCHORS-HEADINGS"
    ],
-   "date": "2026-11-01",
-   "note": "Live 01/11/2026 sau merge #61: BA-0254 kết luận dùng giá từ placeholder (150.000đ / 200.000đ) và câu CTA mới; BA-0261 bỏ cam kết khóa app. Câu trùng 162 → 138 bài."
+   "date": "2026-11-07",
+   "note": "Anchor hỏng dấu, tiêu đề viết hoa từng chữ, lộ trình sai ở BA-0312 sửa qua review body. Kiểm live sau deploy 0ab2e749 (TinyFish ttl 0): BA-0312 lộ trình quốc lộ ven biển / đường Hồ Chí Minh, 'thường kéo dài nhiều ngày', 0 'Lào Cai', 0 '12 đến 18 giờ'; BA-0328 ba tiêu đề viết thường"
   },
   "/blog/xe-dien/pin-chay-khi-khong-dung-cho-khach-du-lich/": {
    "status": "DONE_LIVE",
