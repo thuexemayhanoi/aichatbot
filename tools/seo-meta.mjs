@@ -83,6 +83,23 @@ export function unaccentedWords(html) {
   return out;
 }
 
+/** H2/H3 headings written in English-style Title Case ("Kiểm Tra Tình Trạng
+ *  Xe Khi Nhận"). Vietnamese headings use sentence case; proper nouns keep
+ *  their capitals, so a heading only counts when a function word ("Và",
+ *  "Khi", "Của", "Là"…) is capitalised mid-heading as well. */
+const TITLE_CASE_FUNCTION_WORDS = new Set(['Và', 'Khi', 'Của', 'Là', 'Gì', 'Tại', 'Về', 'Cho', 'Trong', 'Với',
+  'Có', 'Không', 'Để', 'Các', 'Những', 'Hay', 'Hoặc', 'Theo', 'Sau', 'Trước', 'Nên', 'Cần', 'Bị', 'Được', 'Như',
+  'Nào', 'Sao', 'Từ', 'Đến', 'Bằng', 'Ở', 'Thì', 'Mà', 'Này', 'Đó']);
+export function titleCaseHeadings(html) {
+  const out = [];
+  for (const [, text] of String(html ?? '').matchAll(/<h[23]\b[^>]*>([^<]+)<\/h[23]>/g)) {
+    const words = text.match(/[A-Za-zÀ-ỹđĐ]+/g) ?? [];
+    if (words.length >= 3 && words.every((w) => w[0] === w[0].toUpperCase())
+      && words.slice(1).some((w) => TITLE_CASE_FUNCTION_WORDS.has(w))) out.push(text.trim());
+  }
+  return out;
+}
+
 /** Read the SEO metadata map { article_id -> entry }; missing file = {}. */
 export function loadSeoMeta(root) {
   const p = join(root, SEO_META_PATH);
