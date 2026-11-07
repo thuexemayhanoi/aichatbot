@@ -1438,6 +1438,25 @@
       "live_verified": "2026-11-04",
       "merged": "2977f599 (PR #88)",
       "live_note": "Firecrawl maxAge 0 sau Pages deploy 2977f599: BA-0310 đoạn Tổng kết mới (\"Nếu bạn là người mới, việc thuê xe máy lần đầu sẽ suôn sẻ hơn…\"), 0 \"Neu ban\", 0 \"dây cương\", 0 \"luôn hướng dẫn\"; BA-0087 0 \"xe xang\", 9 \"xe xăng\"; byline \"cập nhật 2026-11-04\", Article dateModified 2026-11-04. Ghi sổ work-status DONE_LIVE 15 URL."
+    },
+    {
+      "batch_id": "H4-ANCHORS-HEADINGS",
+      "reviewed": "2026-11-07",
+      "branch": "claude/seo-h4-anchors",
+      "article_ids": [
+        "BA-0306",
+        "BA-0312",
+        "BA-0510",
+        "BA-0397",
+        "BA-0243",
+        "BA-0317",
+        "BA-0328",
+        "BA-0329"
+      ],
+      "scope": "Anchor hỏng dấu/sai chữ chép từ tên manifest lỗi ('Moc Chau Hành Trình Đại', 'Ba Vi', 'bài Đinh', 'Sơn Tay', 'Hà Long', 'làng Chủ tịch', 'canh giác', 'xe cơ'); 6 tiêu đề H2 viết hoa từng chữ; BA-0312 (Đà Lạt đường xa) sai địa lý.",
+      "changes": "Sửa qua tools/seo-body-review.mjs (replace). BA-0312: hai lộ trình bịa (qua Lào Cai, Lai Châu, Phú Thọ để vào Lâm Đồng) → quốc lộ ven biển qua miền Trung rồi lên Lâm Đồng, hoặc đường Hồ Chí Minh qua Tây Nguyên; thời gian '12 đến 18 giờ' cho quãng hơn 1.500 km → 'thường kéo dài nhiều ngày' (không thêm số mới); 'thị xã Buôn Ma Thuột' bỏ; câu chính sách chưa xác minh ('tính theo khoảng cách', 'nhân viên sẽ hướng dẫn') → xác nhận với cửa hàng / lời khuyên; anchor 'Hoa Binh – Đương Trường', hai anchor 'Hà Long'. tools/seo-meta.mjs: titleCaseHeadings() + test vệ sinh chặn tiêu đề viết hoa từng chữ. REVIEW_DATE 2026-11-07. Mở RR-24 (cửa hàng có cho mang xe đi tỉnh xa / trả nơi khác không, 24 bài họ đường dài).",
+      "qa": "QA nhà máy trước/sau: 8/8 giữ hoặc tăng (BA-0243 95 → 100); seo-score 100/100 (cảnh báo duy nhất: CSS, B14); site-audit 0 link hỏng; seo-legal-citations 0 lỗi; node --test (xem PR).",
+      "live_verified": "chờ deploy"
     }
   ],
   "rules": [
@@ -1447,7 +1466,7 @@
     "Keep image factory paused",
     "Preserve 2006 URL integrity, crawlability, pricing/legal data"
   ],
-  "last_completed_batch": "H3-DIACRITIC",
+  "last_completed_batch": "H4-ANCHORS-HEADINGS",
   "last_verified_commit": "2977f599",
   "site_wide_scan_2026_10_30": "2.006/2.006 bài có metadata đã duyệt (article-meta.json): title 35–65 ký tự, description 110–165, không lặp từ; 828 bài đã qua review body. Đòn bẩy còn lại cho bài viết: (1) dữ liệu Search Console để chọn truy vấn có hiển thị nhưng CTR/vị trí yếu, (2) 254 hàng legal_review MANDATORY + RR-08/RR-11 (nguồn pháp lý) qua quy trình review body.",
   "articles_reviewed_no_change": 32,
@@ -1556,6 +1575,17 @@
     "options": [
       "(a) Có Zalo chính thức: cung cấp số/đường dẫn, thêm vào business.json + /lien-he/",
       "(b) Không dùng Zalo: giữ các bài ở mức hướng dẫn chung, không khẳng định kênh của cửa hàng"
+    ]
+  },
+  "review_required_long_distance": {
+    "id": "RR-24",
+    "status": "REVIEW_REQUIRED",
+    "opened": "2026-11-07",
+    "question": "Cửa hàng có cho mang xe thuê đi tỉnh xa (Đà Lạt, Sài Gòn, Huế, Đà Nẵng) không, và có nhận trả xe ở nơi khác Hà Nội không? data/business/business.json chỉ ghi giao xe trong giờ hoạt động và khu vực phục vụ quanh Hà Nội.",
+    "impact": "24 bài họ đường dài (da-lat-duong-xa, sai-gon-duong-nam, hue-xuyen-viet, da-nang-hanh-trinh-bac-nam và các biến thể) mô tả thuê xe để đi xa và trả xe 'tại điểm hẹn'. Lô H4 chỉ sửa sai địa lý ở BA-0312; chưa đổi phần chính sách.",
+    "options": [
+      "(a) Có cho đi tỉnh xa: ghi điều kiện (giới hạn quãng đường, trả xe ở đâu, phí) vào business.json để bài dùng placeholder",
+      "(b) Không cho: sửa các bài thành hướng dẫn chung, nói rõ xe thuê của cửa hàng dùng trong Hà Nội và vùng lân cận"
     ]
   }
 }

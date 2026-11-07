@@ -10,7 +10,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { reviewArticle, REVIEW_LOG, loadLegalFacts, legalFactProblems, registeredSources } from '../../tools/seo-body-review.mjs';
 import { taxonomy } from '../../tools/taxonomy.mjs';
-import { unaccentedWords, FAQ_HEADING_RE } from '../../tools/seo-meta.mjs';
+import { unaccentedWords, titleCaseHeadings, FAQ_HEADING_RE } from '../../tools/seo-meta.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
@@ -90,6 +90,16 @@ test('body hygiene: no Vietnamese words written without their diacritics ("xe xa
   assert.deepEqual(unaccentedWords('<p>So với xe xang, khi Thue xe</p>'), ['xang', 'Thue']);
   assert.deepEqual(unaccentedWords('<p>Gõ "thue vision 3 ngay" vẫn hiểu; Hoan Kiem, Long Bien; luống rau mới gieo.</p>'), []);
   assert.deepEqual(unaccentedWords('<p>đi đường an toàn, nguoi moi</p>'), ['nguoi']);
+});
+
+test('body hygiene: H2/H3 headings use Vietnamese sentence case, not Title Case', () => {
+  for (const a of MANIFEST) {
+    const heads = titleCaseHeadings(read(a.body));
+    assert.deepEqual(heads, [], `${a.article_id}: Title Case heading: ${heads.join(' | ')}`);
+  }
+  assert.deepEqual(titleCaseHeadings('<h2>Kiểm Tra Tình Trạng Xe Khi Nhận</h2>'), ['Kiểm Tra Tình Trạng Xe Khi Nhận']);
+  assert.deepEqual(titleCaseHeadings('<h3>Long Biên, Bồ Đề, Gia Lâm</h3><h3>09:30 – 11:30: Văn Miếu – Quốc Tử Giám</h3>'), [], 'place names keep their capitals');
+  assert.deepEqual(titleCaseHeadings('<h2>Kiểm tra tình trạng xe khi nhận</h2>'), []);
 });
 
 test('one Q&A definition: the SEO score accepts what the body review treats as an FAQ', () => {
